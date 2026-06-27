@@ -22,6 +22,94 @@ const programTypes = [
   "Family travel",
 ];
 
+const briefTemplates = [
+  {
+    label: "FIT / private trip",
+    programType: "Private FIT",
+    message: [
+      "Client profile:",
+      "Two private travelers looking for a custom China itinerary.",
+      "",
+      "Route or destinations:",
+      "Please suggest the best route based on the travel window and preferred pace.",
+      "",
+      "Service expectations:",
+      "Private guide, private transfers, quote-ready hotel options, key attraction tickets, and clear inclusions/exclusions.",
+      "",
+      "Important preferences:",
+      "Preferred pace, hotel level, dietary needs, special interests, and any must-see places will be confirmed after your first proposal.",
+    ].join("\n"),
+  },
+  {
+    label: "Group series",
+    programType: "Small group",
+    message: [
+      "Group profile:",
+      "We are planning a China group program and need net rates for a sellable itinerary.",
+      "",
+      "Expected group size:",
+      "Please quote based on the group size entered above, and advise if pricing changes at key passenger numbers.",
+      "",
+      "Route requirements:",
+      "Please recommend a practical route with realistic driving times, hotel standards, guide service, attraction tickets, and meal planning.",
+      "",
+      "What we need back:",
+      "Net rate, inclusions, exclusions, hotel category, guide/vehicle standard, cancellation terms, and operational notes.",
+    ].join("\n"),
+  },
+  {
+    label: "MICE / incentive",
+    programType: "MICE / incentive",
+    message: [
+      "Program goal:",
+      "We are planning a corporate / incentive China program and need ground support plus experience ideas.",
+      "",
+      "Required services:",
+      "Airport handling, hotel options, private transfers, hosted meals, meeting or event support, team activities, VIP handling, and emergency support.",
+      "",
+      "Group profile:",
+      "Please consider executive comfort, timing discipline, clear communication, and backup plans.",
+      "",
+      "What we need back:",
+      "Suggested routing, sample inclusions, net estimate, staffing plan, and any venue or logistics notes.",
+    ].join("\n"),
+  },
+  {
+    label: "Muslim-friendly",
+    programType: "Muslim-friendly",
+    message: [
+      "Traveler needs:",
+      "We need a Muslim-friendly China program with practical halal meal planning and prayer-time awareness.",
+      "",
+      "Route expectations:",
+      "Please suggest destinations and attractions that work well for Muslim travelers, with realistic restaurant options and guide support.",
+      "",
+      "Service requirements:",
+      "Halal-friendly meals where available, mosque or prayer-stop advice, private transfers, English-speaking guide, and clear notes where local options are limited.",
+      "",
+      "What we need back:",
+      "Net rate, route recommendation, meal notes, inclusions, exclusions, and operational limitations if any.",
+    ].join("\n"),
+  },
+  {
+    label: "Family travel",
+    programType: "Family travel",
+    message: [
+      "Family profile:",
+      "We are planning a family-friendly China program and need a route that balances culture, comfort, and activities for children.",
+      "",
+      "Child details:",
+      "Please advise based on the children's ages, preferred pace, and any theme park or animal experiences that fit the route.",
+      "",
+      "Service requirements:",
+      "Private transfers, family-friendly guide, hotel room configuration advice, child-friendly meals, and realistic daily timing.",
+      "",
+      "What we need back:",
+      "Suggested route, net rate, family room options, included/excluded items, and practical notes for parents.",
+    ].join("\n"),
+  },
+];
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -64,6 +152,14 @@ export default function Contact() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const applyTemplate = (template: typeof briefTemplates[number]) => {
+    setForm((prev) => ({
+      ...prev,
+      programType: prev.programType || template.programType,
+      message: template.message,
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -227,12 +323,26 @@ export default function Contact() {
             </div>
 
             <div style={{ marginBottom: 20 }}>
-              <label style={labelStyle}>Brief *</label>
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <label style={{ ...labelStyle, marginBottom: 0 }}>Brief *</label>
+                <div className="flex flex-wrap gap-2">
+                  {briefTemplates.map((template) => (
+                    <button
+                      key={template.label}
+                      type="button"
+                      onClick={() => applyTemplate(template)}
+                      className="border border-[var(--brand-border)] bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-gray-700)] transition-colors hover:border-[var(--brand-black)] hover:text-[var(--brand-black)]"
+                    >
+                      {template.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
               <textarea
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                rows={7}
+                rows={10}
                 placeholder="Tell us what your client or group needs, what is confirmed, and what still needs advice."
                 required
                 style={{ ...inputStyle, resize: "vertical" }}

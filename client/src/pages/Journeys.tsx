@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, SlidersHorizontal, X } from "lucide-react";
+import { ArrowRight, Mail, SlidersHorizontal, X } from "lucide-react";
+import { EMAIL } from "@/lib/data";
+import type { Journey } from "@/lib/programData";
 import { journeyFilterOptions, journeys } from "@/lib/programData";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -49,6 +51,38 @@ function durationBand(days: number) {
 
 function toggleValue(values: string[], value: string) {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
+}
+
+function programEmailHref(journey: Journey) {
+  const subject = `Net rate request: ${journey.title}`;
+  const body = [
+    "Hello China Prime DMC team,",
+    "",
+    "We would like to request a B2B net rate and operating advice for the following program:",
+    "",
+    `Program: ${journey.title}`,
+    `Duration: ${journey.duration}`,
+    `Route: ${journey.route}`,
+    `Best season: ${journey.bestTime}`,
+    `Traveler fit: ${journey.travelerTypes.join(", ")}`,
+    `Themes: ${journey.themes.join(", ")}`,
+    `Pace / physical level: ${journey.pace} / ${journey.physicalLevel}`,
+    "",
+    "Our client / group details:",
+    "Market source:",
+    "Estimated group size:",
+    "Travel window:",
+    "Preferred hotel level:",
+    "Meal or dietary requirements:",
+    "Guide language:",
+    "Any route changes needed:",
+    "",
+    "Please send net pricing, inclusions, exclusions, payment terms, and any operational notes we should know before presenting this to our client.",
+    "",
+    "Thank you.",
+  ].join("\n");
+
+  return `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 function FilterSelect({
@@ -209,7 +243,7 @@ export default function Journeys() {
         <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] xl:grid-cols-2">
           {filteredJourneys.map((journey, index) => (
             <FadeSection key={journey.id} delay={(index % 6) * 35}>
-              <Link href={`/journeys/${journey.id}`} className="group grid min-h-full bg-white text-[var(--brand-black)] no-underline transition-colors hover:bg-[var(--brand-gray-50)]">
+              <article className="group grid min-h-full bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)]">
                 <div className="relative aspect-[16/9] overflow-hidden bg-[var(--brand-gray-100)]">
                   <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                   <div className="absolute left-4 top-4 bg-[var(--brand-black)] px-3 py-2 text-xs font-bold uppercase tracking-[0.1em] text-white">
@@ -242,14 +276,22 @@ export default function Journeys() {
                       <span key={tag} className="border border-[var(--brand-border)] px-2.5 py-1 text-xs text-[var(--brand-gray-700)]">{tag}</span>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-sm font-semibold text-[var(--brand-black)]">View B2B program details</span>
-                    <span className="inline-flex h-10 w-10 items-center justify-center border border-[var(--brand-border)] transition-colors group-hover:bg-[var(--brand-black)] group-hover:text-white">
-                      <ArrowRight size={16} />
-                    </span>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <Link
+                      href={`/journeys/${journey.id}`}
+                      className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--brand-black)] bg-[var(--brand-black)] px-4 text-sm font-semibold text-white no-underline transition-colors hover:bg-[var(--brand-gray-800)]"
+                    >
+                      View details <ArrowRight size={15} />
+                    </Link>
+                    <a
+                      href={programEmailHref(journey)}
+                      className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--brand-border)] bg-white px-4 text-sm font-semibold text-[var(--brand-black)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)]"
+                    >
+                      Request by email <Mail size={15} />
+                    </a>
                   </div>
                 </div>
-              </Link>
+              </article>
             </FadeSection>
           ))}
         </div>
