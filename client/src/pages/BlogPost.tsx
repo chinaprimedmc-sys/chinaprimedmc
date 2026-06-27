@@ -65,7 +65,7 @@ export default function BlogPost() {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#FFFFFF", paddingTop: "72px" }}>
         <div className="text-center">
-          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2rem", color: "var(--brand-text)", marginBottom: "24px" }}>Article not found</h2>
+          <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "2rem", color: "var(--brand-text)", marginBottom: "24px" }}>Article not found</h2>
           <Link href="/blog" className="inline-flex items-center gap-2" style={{
             backgroundColor: "var(--brand-champagne)",
             color: "#FFFFFF",
@@ -93,18 +93,18 @@ export default function BlogPost() {
         <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.4) 0%, rgba(17, 24, 39, 0.1) 60%)" }} />
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pb-20 w-full">
-          <Link href="/blog" className="inline-flex items-center gap-2 mb-6 text-xs tracking-[0.15em] uppercase transition-colors" style={{ color: "#F7F5F0", fontFamily: "'Montserrat', sans-serif" }} onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }} onMouseLeave={(e) => { e.currentTarget.style.color = "#F7F5F0"; }}>
+          <Link href="/blog" className="inline-flex items-center gap-2 mb-6 text-xs tracking-[0.15em] uppercase transition-colors" style={{ color: "var(--brand-gray-100)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }} onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }} onMouseLeave={(e) => { e.currentTarget.style.color = "var(--brand-gray-100)"; }}>
             <ArrowLeft size={12} /> All Articles
           </Link>
           <div className="flex flex-wrap items-center gap-4 mb-6">
-            <span style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontWeight: 600 }}>
+            <span style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontWeight: 600 }}>
               {post.category}
             </span>
-            <div className="flex items-center gap-2" style={{ fontSize: "0.75rem", color: "#F7F5F0", fontFamily: "'Montserrat', sans-serif" }}>
+            <div className="flex items-center gap-2" style={{ fontSize: "0.75rem", color: "var(--brand-gray-100)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
               <Clock size={12} /> {post.readTime}
             </div>
           </div>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+          <h1 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
             {post.title}
           </h1>
         </div>
@@ -116,11 +116,11 @@ export default function BlogPost() {
       <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[800px] mx-auto">
           <FadeSection>
-            <div className="prose prose-lg max-w-none" style={{ color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>
+            <div className="prose prose-lg max-w-none" style={{ color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
               {paragraphs.map((para, i) => {
                 if (para.startsWith("##")) {
                   return (
-                    <h2 key={i} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2rem", fontWeight: 400, color: "var(--brand-text)", marginTop: "2rem", marginBottom: "1rem", letterSpacing: "-0.01em" }}>
+                    <h2 key={i} style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "2rem", fontWeight: 400, color: "var(--brand-text)", marginTop: "2rem", marginBottom: "1rem", letterSpacing: "-0.01em" }}>
                       {para.replace("## ", "")}
                     </h2>
                   );
@@ -156,7 +156,7 @@ export default function BlogPost() {
 
           {/* CTA */}
           <div className="mt-16 p-8 rounded-lg" style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)" }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.8rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "12px" }}>
+            <h3 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "1.8rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "12px" }}>
               Interested in exploring China?
             </h3>
             <p style={{ fontSize: "0.95rem", color: "var(--brand-text-muted)", marginBottom: "16px", lineHeight: 1.7 }}>
@@ -203,7 +203,7 @@ export default function BlogPost() {
               <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
                 More Insights
               </div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
                 Related Articles
               </h2>
             </FadeSection>
@@ -218,7 +218,7 @@ export default function BlogPost() {
                         <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "8px", fontWeight: 600 }}>
                           {article.category}
                         </div>
-                        <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.2rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "8px", lineHeight: 1.3 }}>
+                        <h3 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "1.2rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "8px", lineHeight: 1.3 }}>
                           {article.title}
                         </h3>
                         <p style={{ fontSize: "0.85rem", color: "var(--brand-text-muted)", lineHeight: 1.6 }}>

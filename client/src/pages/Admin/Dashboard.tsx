@@ -40,25 +40,25 @@ export default function AdminDashboard() {
       label: "Total Submissions",
       value: submissions.length,
       icon: Mail,
-      color: "bg-[#EEEAE2] text-[#111827]",
+      color: "bg-[var(--brand-gray-100)] text-[var(--brand-black)]",
     },
     {
       label: "New",
       value: submissions.filter((s: ContactSubmission) => s.status === "new").length,
       icon: Clock,
-      color: "bg-[#F3E9D6] text-[#9A7442]",
+      color: "bg-[var(--brand-gray-100)] text-[var(--brand-gray-800)]",
     },
     {
       label: "Contacted",
       value: submissions.filter((s: ContactSubmission) => s.status === "contacted").length,
       icon: CheckCircle,
-      color: "bg-[#E7F0EC] text-[#2F6F5E]",
+      color: "bg-[var(--brand-gray-100)] text-[var(--brand-gray-800)]",
     },
     {
       label: "Archived",
       value: submissions.filter((s: ContactSubmission) => s.status === "archived").length,
       icon: Users,
-      color: "bg-[#EEEAE2] text-[#374151]",
+      color: "bg-[var(--brand-gray-100)] text-[var(--brand-gray-700)]",
     },
   ] : [];
 
@@ -155,9 +155,9 @@ export default function AdminDashboard() {
                       <td className="py-3 px-4" style={{ color: "var(--brand-text-muted)" }}>{submission.email}</td>
                       <td className="py-3 px-4">
                         <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          submission.status === "new" ? "bg-[#F3E9D6] text-[#9A7442]" :
-                          submission.status === "contacted" ? "bg-[#E7F0EC] text-[#2F6F5E]" :
-                          "bg-[#EEEAE2] text-[#374151]"
+                          submission.status === "new" ? "bg-[var(--brand-gray-100)] text-[var(--brand-gray-800)]" :
+                          submission.status === "contacted" ? "bg-[var(--brand-gray-100)] text-[var(--brand-gray-800)]" :
+                          "bg-[var(--brand-gray-100)] text-[var(--brand-gray-700)]"
                         }`}>
                           {submission.status}
                         </span>

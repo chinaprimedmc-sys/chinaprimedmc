@@ -56,7 +56,7 @@ export default function About() {
             <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
               Our Story
             </div>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.8rem, 7vw, 5.5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+            <h1 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.8rem, 7vw, 5.5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
               About China<br />Prime DMC
             </h1>
           </FadeSection>
@@ -74,17 +74,17 @@ export default function About() {
                 Who We Are
               </div>
               <div style={{ width: "60px", height: "2px", background: "var(--brand-champagne)", marginBottom: "2.5rem" }} />
-              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: "var(--brand-text)", lineHeight: 1.15, marginBottom: "2rem", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: "var(--brand-text)", lineHeight: 1.15, marginBottom: "2rem", letterSpacing: "-0.02em" }}>
                 We are not a travel agency.<br />
                 <em style={{ color: "var(--brand-champagne)" }}>We are China specialists.</em>
               </h2>
-              <p style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem", color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>
+              <p style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem", color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
                 China Prime DMC was founded on a simple belief: that China is the world's most extraordinary travel destination, and that most travelers only scratch its surface.
               </p>
-              <p style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem", color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>
+              <p style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem", color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
                 We are a team of China specialists — historians, photographers, food experts, and cultural guides — who have spent decades building the relationships and knowledge that make truly extraordinary journeys possible.
               </p>
-              <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>
+              <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
                 Our operator, Youyouhui Travel Services Co., Ltd., has been designing private journeys for international travelers since 2001. In that time, we have welcomed travelers from over 30 countries and designed thousands of completely bespoke itineraries.
               </p>
             </FadeSection>
@@ -94,8 +94,8 @@ export default function About() {
                 {/* 拉引文 */}
                 <div className="p-8 relative overflow-hidden" style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)" }}>
                   <div className="absolute -top-4 -left-2 pointer-events-none select-none"
-                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "10rem", fontWeight: 700, color: "rgba(184, 145, 90, 0.06)", lineHeight: 1 }}>"</div>
-                  <blockquote className="relative" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.4rem", fontWeight: 300, color: "var(--brand-text)", fontStyle: "italic", lineHeight: 1.6 }}>
+                    style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "10rem", fontWeight: 700, color: "rgba(0, 0, 0, 0.04)", lineHeight: 1 }}>"</div>
+                  <blockquote className="relative" style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "1.4rem", fontWeight: 300, color: "var(--brand-text)", fontStyle: "italic", lineHeight: 1.6 }}>
                     The China that most visitors never see — and the journeys that reveal it.
                   </blockquote>
                 </div>
@@ -108,8 +108,8 @@ export default function About() {
                     { n: "24/7", l: "Support" },
                   ].map((s) => (
                     <div key={s.l} className="p-6 text-center" style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)" }}>
-                      <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2.5rem", fontWeight: 300, color: "var(--brand-champagne)", lineHeight: 1 }}>{s.n}</div>
-                      <div style={{ fontSize: "0.65rem", letterSpacing: "0.18em", textTransform: "uppercase", marginTop: "8px", color: "var(--brand-text-muted)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>{s.l}</div>
+                      <div style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "2.5rem", fontWeight: 300, color: "var(--brand-champagne)", lineHeight: 1 }}>{s.n}</div>
+                      <div style={{ fontSize: "0.65rem", letterSpacing: "0.18em", textTransform: "uppercase", marginTop: "8px", color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontWeight: 500 }}>{s.l}</div>
                     </div>
                   ))}
                 </div>
@@ -128,7 +128,7 @@ export default function About() {
             <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
               Our Philosophy
             </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
               How We Design Journeys
             </h2>
           </FadeSection>
@@ -138,13 +138,13 @@ export default function About() {
               <FadeSection key={v.title} delay={i * 80}>
                 <div className="p-10 h-full relative overflow-hidden" style={{ backgroundColor: "#FFFFFF", border: "1px solid var(--brand-border)" }}>
                   <div className="absolute -bottom-6 -right-4 pointer-events-none select-none"
-                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "9rem", fontWeight: 700, color: "rgba(184, 145, 90, 0.04)", lineHeight: 1 }}>
+                    style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "9rem", fontWeight: 700, color: "rgba(0, 0, 0, 0.03)", lineHeight: 1 }}>
                     {v.n}
                   </div>
                   <div className="relative">
-                    <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "12px", color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontWeight: 600 }}>{v.n}</div>
-                    <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.8rem", fontWeight: 300, color: "var(--brand-text)", lineHeight: 1.2, marginBottom: "12px" }}>{v.title}</h3>
-                    <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>{v.desc}</p>
+                    <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "12px", color: "var(--brand-champagne)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontWeight: 600 }}>{v.n}</div>
+                    <h3 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "1.8rem", fontWeight: 300, color: "var(--brand-text)", lineHeight: 1.2, marginBottom: "12px" }}>{v.title}</h3>
+                    <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>{v.desc}</p>
                   </div>
                 </div>
               </FadeSection>
@@ -164,7 +164,7 @@ export default function About() {
                 What Makes Us Different
               </div>
               <div style={{ width: "60px", height: "2px", background: "var(--brand-champagne)", marginBottom: "2rem" }} />
-              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: "var(--brand-text)", lineHeight: 1.15, marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: "var(--brand-text)", lineHeight: 1.15, marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
                 23 years of relationships<br />
                 <em style={{ color: "var(--brand-champagne)" }}>that open doors</em>
               </h2>
@@ -178,8 +178,8 @@ export default function About() {
                     <div className="flex gap-5">
                       <div style={{ width: "2px", flexShrink: 0, backgroundColor: "var(--brand-champagne)", marginTop: "4px" }} />
                       <div>
-                        <h4 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "8px" }}>{item.t}</h4>
-                        <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>{item.d}</p>
+                        <h4 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "8px" }}>{item.t}</h4>
+                        <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>{item.d}</p>
                       </div>
                     </div>
                   </FadeSection>
@@ -206,7 +206,7 @@ export default function About() {
             <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
               Our Team
             </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
               Meet the Experts
             </h2>
           </FadeSection>
@@ -227,7 +227,7 @@ export default function About() {
                     fontSize: "2rem",
                     fontWeight: 600,
                     margin: "0 auto 16px",
-                    fontFamily: "'Montserrat', sans-serif",
+                    fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
                   }}>
                     {member.initials}
                   </div>
@@ -237,7 +237,7 @@ export default function About() {
                   <p style={{ fontSize: "0.85rem", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 500 }}>
                     {member.role}
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--brand-text-muted)", lineHeight: 1.6, fontFamily: "'Lora', Georgia, serif" }}>
+                  <p style={{ fontSize: "0.9rem", color: "var(--brand-text-muted)", lineHeight: 1.6, fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
                     {member.bio}
                   </p>
                 </div>
@@ -253,10 +253,10 @@ export default function About() {
       <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[900px] mx-auto text-center">
           <FadeSection>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3rem", fontWeight: 300, color: "var(--brand-text)", marginBottom: "16px", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "3rem", fontWeight: 300, color: "var(--brand-text)", marginBottom: "16px", letterSpacing: "-0.02em" }}>
               Ready to Begin?
             </h2>
-            <p style={{ fontSize: "1.1rem", color: "var(--brand-text-muted)", marginBottom: "32px", lineHeight: 1.8, fontFamily: "'Lora', Georgia, serif" }}>
+            <p style={{ fontSize: "1.1rem", color: "var(--brand-text-muted)", marginBottom: "32px", lineHeight: 1.8, fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
               Contact us today to discuss your perfect journey. Our team will work with you to create an experience tailored to your interests, pace, and style.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">

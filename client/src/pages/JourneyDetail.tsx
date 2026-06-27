@@ -33,7 +33,7 @@ export default function JourneyDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#FFFFFF", paddingTop: "72px" }}>
         <div className="text-center">
-          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2rem", color: "var(--brand-text)", marginBottom: "24px" }}>Journey not found</h2>
+          <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "2rem", color: "var(--brand-text)", marginBottom: "24px" }}>Journey not found</h2>
           <Link href="/journeys" className="inline-flex items-center gap-2" style={{
             backgroundColor: "var(--brand-champagne)",
             color: "#FFFFFF",
@@ -58,21 +58,21 @@ export default function JourneyDetail() {
         <img src={journey.image} alt={journey.title} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.4) 0%, rgba(17, 24, 39, 0.1) 60%)" }} />
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pb-20 w-full">
-          <Link href="/journeys" className="inline-flex items-center gap-2 mb-6 text-xs tracking-[0.15em] uppercase transition-colors" style={{ color: "#F7F5F0", fontFamily: "'Montserrat', sans-serif" }} onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }} onMouseLeave={(e) => { e.currentTarget.style.color = "#F7F5F0"; }}>
+          <Link href="/journeys" className="inline-flex items-center gap-2 mb-6 text-xs tracking-[0.15em] uppercase transition-colors" style={{ color: "var(--brand-gray-100)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }} onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }} onMouseLeave={(e) => { e.currentTarget.style.color = "var(--brand-gray-100)"; }}>
             <ArrowLeft size={12} /> All Journeys
           </Link>
           <div className="flex flex-wrap items-center gap-4 mb-4">
-            <span className="text-[9px] tracking-[0.2em] uppercase px-3 py-1" style={{ backgroundColor: "rgba(184, 145, 90, 0.2)", color: "#FFFFFF", fontFamily: "'Montserrat', sans-serif" }}>
+            <span className="text-[9px] tracking-[0.2em] uppercase px-3 py-1" style={{ backgroundColor: "rgba(255, 255, 255, 0.16)", color: "#FFFFFF", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
               {journey.duration}
             </span>
-            <span className="text-[9px] tracking-[0.15em] uppercase" style={{ color: "#F7F5F0", fontFamily: "'Montserrat', sans-serif" }}>
+            <span className="text-[9px] tracking-[0.15em] uppercase" style={{ color: "var(--brand-gray-100)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
               {journey.difficulty}
             </span>
           </div>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.05, marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
+          <h1 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.05, marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
             {journey.title}
           </h1>
-          <p style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "1.3rem", fontStyle: "italic", color: "#F7F5F0" }}>{journey.subtitle}</p>
+          <p style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "1.3rem", fontStyle: "italic", color: "var(--brand-gray-100)" }}>{journey.subtitle}</p>
         </div>
       </section>
 
@@ -87,7 +87,7 @@ export default function JourneyDetail() {
                 Journey Overview
               </div>
               <div style={{ width: "60px", height: "2px", background: "var(--brand-champagne)", marginBottom: "2rem" }} />
-              <p style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem", color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>
+              <p style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem", color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
                 {journey.overview}
               </p>
               <div className="flex flex-wrap gap-4">
@@ -128,7 +128,7 @@ export default function JourneyDetail() {
                   {journey.highlights.map((h) => (
                     <div key={h} className="flex items-start gap-3">
                       <CheckCircle size={16} style={{ color: "var(--brand-champagne)", marginTop: "2px", flexShrink: 0 }} />
-                      <span style={{ fontSize: "0.95rem", color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>{h}</span>
+                      <span style={{ fontSize: "0.95rem", color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>{h}</span>
                     </div>
                   ))}
                 </div>
@@ -147,7 +147,7 @@ export default function JourneyDetail() {
             <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
               Itinerary
             </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
               Day by Day
             </h2>
           </FadeSection>
@@ -176,7 +176,7 @@ export default function JourneyDetail() {
                       <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "4px", fontWeight: 600 }}>
                         Day {i + 1}
                       </div>
-                      <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.3rem", fontWeight: 400, color: "var(--brand-text)" }}>
+                      <h3 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "1.3rem", fontWeight: 400, color: "var(--brand-text)" }}>
                         {day.title}
                       </h3>
                     </div>
@@ -184,7 +184,7 @@ export default function JourneyDetail() {
                   </button>
                   {openFaq === i && (
                     <div style={{ padding: "0 24px 20px", borderTop: "1px solid var(--brand-border)", backgroundColor: "var(--brand-parchment)" }}>
-                      <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>
+                      <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
                         {day.description}
                       </p>
                     </div>
@@ -202,10 +202,10 @@ export default function JourneyDetail() {
       <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[900px] mx-auto text-center">
           <FadeSection>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3rem", fontWeight: 300, color: "var(--brand-text)", marginBottom: "16px", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "3rem", fontWeight: 300, color: "var(--brand-text)", marginBottom: "16px", letterSpacing: "-0.02em" }}>
               Ready to Begin This Journey?
             </h2>
-            <p style={{ fontSize: "1.1rem", color: "var(--brand-text-muted)", marginBottom: "32px", lineHeight: 1.8, fontFamily: "'Lora', Georgia, serif" }}>
+            <p style={{ fontSize: "1.1rem", color: "var(--brand-text-muted)", marginBottom: "32px", lineHeight: 1.8, fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
               Contact us today to customize this journey or discuss variations tailored to your interests and schedule.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">

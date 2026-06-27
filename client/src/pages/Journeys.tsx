@@ -1,7 +1,3 @@
-/**
- * Journeys Page — Light Editorial Luxury Design System
- * Pure white background + deep navy + soft gray + gold accents
- */
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Clock, MapPin } from "lucide-react";
@@ -21,7 +17,7 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
     return () => observer.disconnect();
   }, []);
   return (
-    <div ref={ref} className={className} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(28px)", transition: `opacity 0.75s cubic-bezier(0.23,1,0.32,1) ${delay}ms, transform 0.75s cubic-bezier(0.23,1,0.32,1) ${delay}ms` }}>
+    <div ref={ref} className={className} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(22px)", transition: `opacity 0.65s cubic-bezier(0.23,1,0.32,1) ${delay}ms, transform 0.65s cubic-bezier(0.23,1,0.32,1) ${delay}ms` }}>
       {children}
     </div>
   );
@@ -45,129 +41,113 @@ export default function Journeys() {
 
   const filteredJourneys = selectedCategories.includes("All")
     ? journeys
-    : journeys.filter(journey => 
-        selectedCategories.includes(journey.category) || 
+    : journeys.filter(journey =>
+        selectedCategories.includes(journey.category) ||
         (journey.tags && journey.tags.some(tag => selectedCategories.includes(tag)))
       );
 
   return (
-    <div style={{ backgroundColor: "#FFFFFF", color: "var(--brand-ink)", paddingTop: "72px" }}>
-
-      {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="py-24 border-b" style={{ backgroundColor: "var(--brand-parchment)", borderColor: "var(--brand-border)" }}>
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <main style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap grid grid-cols-1 gap-10 lg:grid-cols-[1fr_0.55fr]">
           <FadeSection>
-            <div className="text-xs tracking-[0.2em] uppercase mb-4" style={{ fontFamily: "'Montserrat', sans-serif", color: "var(--brand-champagne)", fontWeight: 500 }}>Curated Experiences</div>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3.5rem", fontWeight: 300, color: "var(--brand-ink)", marginBottom: "16px" }}>
-              Curated Journeys
-            </h1>
-            <p style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: "700px" }}>
-              Each journey is a carefully crafted narrative — not a list of sights, but a story to be lived. Every itinerary can be adapted entirely to your interests, pace, and travel philosophy.
+            <p className="b2b-eyebrow">Sample program library</p>
+            <h1 className="b2b-heading" style={{ maxWidth: 860 }}>Reference programs for China proposals.</h1>
+          </FadeSection>
+          <FadeSection delay={100} className="self-end">
+            <p className="b2b-lede" style={{ marginTop: 0 }}>
+              These are starting points for partner proposals. Every routing, pace, hotel level, meal plan, and service standard can be rebuilt around your client brief.
             </p>
           </FadeSection>
         </div>
       </section>
 
-      {/* ── FILTER ───────────────────────────────────────────── */}
-      <section className="py-12">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <section className="border-y border-[var(--brand-border)] bg-white px-6 py-6 lg:px-10">
+        <div className="mono-wrap">
           <FadeSection>
-            <div className="flex flex-wrap gap-3">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => toggleCategory(cat)}
-                  className="px-5 py-2 rounded transition-all text-sm font-medium"
-                  style={{
-                    backgroundColor: selectedCategories.includes(cat) ? "var(--brand-champagne)" : "var(--brand-parchment)",
-                    color: selectedCategories.includes(cat) ? "#FFFFFF" : "var(--brand-ink)",
-                    border: selectedCategories.includes(cat) ? "none" : "1px solid var(--brand-border)",
-                    letterSpacing: "0.05em",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!selectedCategories.includes(cat)) {
-                      e.currentTarget.style.backgroundColor = "var(--brand-border)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!selectedCategories.includes(cat)) {
-                      e.currentTarget.style.backgroundColor = "var(--brand-parchment)";
-                    }
-                  }}
-                >
-                  {cat}
-                </button>
-              ))}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => {
+                const active = selectedCategories.includes(cat);
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => toggleCategory(cat)}
+                    className="transition-colors"
+                    style={{
+                      backgroundColor: active ? "var(--brand-black)" : "var(--brand-white)",
+                      border: "1px solid var(--brand-border)",
+                      color: active ? "var(--brand-white)" : "var(--brand-gray-700)",
+                      fontSize: "0.72rem",
+                      fontWeight: 720,
+                      letterSpacing: "0.08em",
+                      minHeight: 38,
+                      padding: "0 14px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
             </div>
           </FadeSection>
         </div>
       </section>
 
-      {/* ── JOURNEYS GRID ────────────────────────────────────── */}
-      <section className="py-24">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {filteredJourneys.map((journey, i) => (
-              <FadeSection key={journey.id} delay={i * 50}>
-                <Link href={`/journeys/${journey.id}`} className="group block" style={{ textDecoration: "none" }}>
-                  <div className="relative overflow-hidden rounded mb-6" style={{ height: "320px" }}>
-                    <img src={journey.image} alt={journey.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      <section className="mono-section bg-[var(--brand-white)]">
+        <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)]">
+          {filteredJourneys.map((journey, index) => (
+            <FadeSection key={journey.id} delay={index * 45}>
+              <Link href={`/journeys/${journey.id}`} className="group grid bg-white md:grid-cols-[340px_1fr_auto]" style={{ textDecoration: "none" }}>
+                <div className="relative h-64 overflow-hidden md:h-full">
+                  <img
+                    src={journey.image}
+                    alt={journey.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    style={{ filter: "grayscale(1)", opacity: 0.88 }}
+                  />
+                </div>
+                <div className="p-6 md:p-8">
+                  <div className="mb-5 flex flex-wrap gap-2">
+                    <span className="mono-index border border-[var(--brand-border)] px-3 py-1">{journey.duration}</span>
+                    <span className="mono-index border border-[var(--brand-border)] px-3 py-1">{journey.difficulty}</span>
+                    <span className="mono-index border border-[var(--brand-border)] px-3 py-1">{journey.category}</span>
                   </div>
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="text-xs tracking-[0.1em] uppercase px-3 py-1 rounded" style={{ backgroundColor: "var(--brand-parchment)", color: "var(--brand-ink)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
-                      {journey.duration}
-                    </span>
-                    <span className="text-xs tracking-[0.1em] uppercase px-3 py-1 rounded" style={{ backgroundColor: "var(--brand-parchment)", color: "var(--brand-ink)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
-                      {journey.difficulty}
-                    </span>
-                  </div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.8rem", fontWeight: 400, color: "var(--brand-ink)", marginBottom: "8px" }}>
+                  <h2 className="text-2xl font-semibold md:text-3xl" style={{ color: "var(--brand-black)", letterSpacing: 0, lineHeight: 1.08, marginBottom: 14 }}>
                     {journey.title}
-                  </h3>
-                  <p style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif", fontSize: "0.95rem", lineHeight: 1.6, marginBottom: "12px" }}>
-                    {journey.subtitle}
-                  </p>
-                  <div className="flex items-center gap-6 text-sm mb-6" style={{ color: "var(--brand-text-muted)" }}>
-                    <span className="flex items-center gap-2">
-                      <Clock size={16} /> {journey.duration}
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <MapPin size={16} /> {journey.destinations?.length || 0} stops
-                    </span>
+                  </h2>
+                  <p className="b2b-body" style={{ maxWidth: 760 }}>{journey.subtitle}</p>
+                  <div className="mt-7 flex flex-wrap gap-6 text-sm text-[var(--brand-gray-600)]">
+                    <span className="flex items-center gap-2"><Clock size={15} /> {journey.duration}</span>
+                    <span className="flex items-center gap-2"><MapPin size={15} /> {journey.destinations?.length || 0} stops</span>
                   </div>
-                  <div className="flex items-center gap-2" style={{ color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.05em" }}>
-                    View Journey <ArrowRight size={14} />
-                  </div>
-                </Link>
-              </FadeSection>
-            ))}
-          </div>
+                </div>
+                <div className="flex items-end p-6 md:p-8">
+                  <span className="mono-button mono-button-secondary">
+                    Open <ArrowRight size={16} />
+                  </span>
+                </div>
+              </Link>
+            </FadeSection>
+          ))}
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="py-24 border-t" style={{ backgroundColor: "var(--brand-parchment)", borderColor: "var(--brand-border)" }}>
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10 text-center">
+      <section className="mono-section bg-[var(--brand-black)] text-white">
+        <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2.8rem", fontWeight: 300, color: "var(--brand-ink)", marginBottom: "16px" }}>
-              Don't see your perfect journey?
+            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Need a different routing?</p>
+            <h2 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 860 }}>
+              Treat every sample as a draft, not a fixed product.
             </h2>
-            <p style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "24px" }}>
-              Every itinerary can be customized. Contact us to discuss your dream China experience.
-            </p>
-            <Link href="/contact" className="px-6 py-3 rounded transition-all" style={{
-              backgroundColor: "var(--brand-champagne)",
-              color: "#FFFFFF",
-              textDecoration: "none",
-              fontWeight: 500,
-              letterSpacing: "0.05em",
-              display: "inline-block",
-            }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; }}>
-              Customize Your Journey
+          </FadeSection>
+          <FadeSection delay={100}>
+            <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+              Send your brief <ArrowRight size={17} />
             </Link>
           </FadeSection>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

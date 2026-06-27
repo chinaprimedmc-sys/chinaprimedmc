@@ -43,30 +43,42 @@
 }
 
 :root {
-  /* China Prime DMC B2B palette: deep ink, warm champagne, quiet trade neutrals */
-  --brand-ink: #111827;
-  --brand-ink-2: #1F2937;
-  --brand-ink-3: #374151;
-  --brand-champagne: #B8915A;
-  --brand-champagne-hover: #9A7442;
-  --brand-champagne-soft: #E8D8BD;
-  --brand-parchment: #F7F5F0;
+  /* China Prime DMC monochrome B2B system: black, white, and calibrated grays only */
+  --brand-black: #050505;
+  --brand-ink: #0A0A0A;
+  --brand-ink-2: #171717;
+  --brand-ink-3: #2E2E2E;
+  --brand-gray-900: #111111;
+  --brand-gray-800: #262626;
+  --brand-gray-700: #404040;
+  --brand-gray-600: #5F5F5F;
+  --brand-gray-500: #7A7A7A;
+  --brand-gray-400: #A3A3A3;
+  --brand-gray-300: #D4D4D4;
+  --brand-gray-200: #E5E5E5;
+  --brand-gray-100: #F3F3F3;
+  --brand-gray-50: #FAFAFA;
+  --brand-white: #FFFFFF;
+  --brand-champagne: var(--brand-black);
+  --brand-champagne-hover: var(--brand-gray-800);
+  --brand-champagne-soft: var(--brand-gray-200);
+  --brand-parchment: var(--brand-gray-50);
   --brand-surface: #FFFFFF;
-  --brand-surface-muted: #EEEAE2;
-  --brand-border: #D8D2C6;
-  --brand-text: #111827;
-  --brand-text-muted: #6B7280;
-  --brand-success: #2F6F5E;
-  --brand-danger: #9F3A38;
+  --brand-surface-muted: var(--brand-gray-100);
+  --brand-border: var(--brand-gray-200);
+  --brand-text: var(--brand-black);
+  --brand-text-muted: var(--brand-gray-600);
+  --brand-success: var(--brand-gray-800);
+  --brand-danger: var(--brand-gray-900);
 
   --primary: var(--brand-ink);
   --primary-foreground: #FFFFFF;
   --sidebar-primary: var(--brand-ink);
   --sidebar-primary-foreground: #FFFFFF;
   --chart-1: var(--brand-champagne);
-  --chart-2: var(--brand-success);
+  --chart-2: var(--brand-gray-700);
   --chart-3: var(--brand-ink-3);
-  --chart-4: var(--brand-champagne-hover);
+  --chart-4: var(--brand-gray-500);
   --chart-5: var(--brand-ink);
   --radius: 0.5rem;
   
@@ -86,13 +98,13 @@
   --destructive-foreground: #FFFFFF;
   --border: var(--brand-border);
   --input: var(--brand-surface);
-  --ring: var(--brand-champagne);
+  --ring: var(--brand-black);
   --sidebar: var(--brand-surface);
   --sidebar-foreground: var(--brand-text);
   --sidebar-accent: var(--brand-surface-muted);
   --sidebar-accent-foreground: var(--brand-text);
   --sidebar-border: var(--brand-border);
-  --sidebar-ring: var(--brand-champagne);
+  --sidebar-ring: var(--brand-black);
 }
 
 @layer base {
@@ -101,7 +113,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-feature-settings: "kern", "liga", "calt";
+    letter-spacing: 0;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -118,28 +132,33 @@
   h1 {
     @apply text-5xl md:text-6xl font-bold tracking-tight;
     color: var(--brand-text);
-    letter-spacing: -0.02em;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0;
   }
   
   h2 {
     @apply text-4xl md:text-5xl font-bold tracking-tight;
     color: var(--brand-text);
-    letter-spacing: -0.02em;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0;
   }
   
   h3 {
     @apply text-2xl md:text-3xl font-semibold;
     color: var(--brand-text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   }
   
   h4 {
     @apply text-xl md:text-2xl font-semibold;
     color: var(--brand-text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   }
   
   p {
     @apply text-base md:text-lg leading-relaxed;
     color: var(--brand-text-muted);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   }
 }
 
@@ -172,26 +191,26 @@
     }
   }
   
-  /* Apple 风格按钮 */
   .btn-primary {
-    @apply px-8 py-3 rounded-full font-semibold text-white transition-all duration-200;
-    background-color: var(--brand-champagne);
+    @apply px-8 py-3 font-semibold text-white transition-all duration-200;
+    background-color: var(--brand-black);
+    border-radius: 0;
   }
   
   .btn-primary:hover {
-    background-color: var(--brand-champagne-hover);
-    transform: scale(1.02);
+    background-color: var(--brand-gray-800);
   }
   
   .btn-secondary {
-    @apply px-8 py-3 rounded-full font-semibold border-2 transition-all duration-200;
+    @apply px-8 py-3 font-semibold border transition-all duration-200;
     border-color: var(--brand-ink);
     color: var(--brand-ink);
     background-color: transparent;
+    border-radius: 0;
   }
   
   .btn-secondary:hover {
-    background-color: var(--brand-parchment);
+    background-color: var(--brand-gray-100);
   }
   
   /* 文本样式 */
@@ -208,49 +227,115 @@
   }
 
   .b2b-eyebrow {
-    color: var(--brand-champagne);
-    font-family: 'Montserrat', sans-serif;
+    color: var(--brand-gray-600);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
     font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    margin-bottom: 12px;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    margin-bottom: 16px;
     text-transform: uppercase;
   }
 
   .b2b-heading {
     color: var(--brand-text);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2.25rem, 4.4vw, 4.25rem);
-    font-weight: 300;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(2.4rem, 5vw, 5.4rem);
+    font-weight: 520;
     letter-spacing: 0;
-    line-height: 1.02;
+    line-height: 0.96;
     margin: 0;
   }
 
   .b2b-lede {
     color: var(--brand-text-muted);
-    font-family: 'Lora', Georgia, serif;
-    font-size: clamp(1rem, 1.5vw, 1.18rem);
-    line-height: 1.75;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(1rem, 1.35vw, 1.12rem);
+    line-height: 1.72;
     margin-top: 20px;
     max-width: 760px;
   }
 
   .b2b-card-title {
     color: var(--brand-text);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.45rem;
-    font-weight: 500;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.12rem;
+    font-weight: 650;
     letter-spacing: 0;
-    line-height: 1.15;
+    line-height: 1.2;
     margin-bottom: 12px;
   }
 
   .b2b-body {
     color: var(--brand-text-muted);
-    font-family: 'Lora', Georgia, serif;
-    font-size: 0.96rem;
-    line-height: 1.72;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.94rem;
+    line-height: 1.68;
+  }
+
+  .mono-shell {
+    background:
+      linear-gradient(var(--brand-gray-200) 1px, transparent 1px),
+      linear-gradient(90deg, var(--brand-gray-200) 1px, transparent 1px);
+    background-color: var(--brand-white);
+    background-size: 64px 64px;
+  }
+
+  .mono-section {
+    border-top: 1px solid var(--brand-border);
+    padding: clamp(72px, 9vw, 132px) 24px;
+  }
+
+  .mono-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+  }
+
+  .mono-button {
+    align-items: center;
+    background: var(--brand-black);
+    border: 1px solid var(--brand-black);
+    color: var(--brand-white);
+    display: inline-flex;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.83rem;
+    font-weight: 700;
+    gap: 10px;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    min-height: 48px;
+    padding: 0 22px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .mono-button:hover {
+    background: var(--brand-gray-800);
+    border-color: var(--brand-gray-800);
+  }
+
+  .mono-button-secondary {
+    background: transparent;
+    color: var(--brand-black);
+  }
+
+  .mono-button-secondary:hover {
+    background: var(--brand-gray-100);
+    border-color: var(--brand-black);
+  }
+
+  .mono-card {
+    background: var(--brand-white);
+    border: 1px solid var(--brand-border);
+  }
+
+  .mono-index {
+    color: var(--brand-gray-400);
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   
   /* 分隔线 */

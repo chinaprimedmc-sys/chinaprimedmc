@@ -2,21 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight,
-  Briefcase,
-  CheckCircle2,
+  Check,
   ClipboardList,
-  Globe2,
-  Handshake,
   Headphones,
-  Hotel,
   MapPinned,
   ShieldCheck,
   UsersRound,
 } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
-
-const HERO_IMAGE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663786910793/nv3b3r8xSigzoBGpUx4ZRH/hero-cultural-immersion-Pas5vaV8mbQ3edgX897AQX.webp";
 
 function FadeSection({
   children,
@@ -52,8 +45,8 @@ function FadeSection({
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
-        transition: `opacity 0.7s cubic-bezier(0.23,1,0.32,1) ${delay}ms, transform 0.7s cubic-bezier(0.23,1,0.32,1) ${delay}ms`,
+        transform: visible ? "translateY(0)" : "translateY(18px)",
+        transition: `opacity 0.65s cubic-bezier(0.23,1,0.32,1) ${delay}ms, transform 0.65s cubic-bezier(0.23,1,0.32,1) ${delay}ms`,
       }}
     >
       {children}
@@ -61,195 +54,152 @@ function FadeSection({
   );
 }
 
-const stats = [
-  { value: "2012", label: "Established in China" },
-  { value: "30+", label: "Destinations operated" },
-  { value: "13", label: "China city network" },
-  { value: "24/7", label: "On-trip support" },
+const metrics = [
+  { value: "2012", label: "Established" },
+  { value: "30+", label: "China destinations" },
+  { value: "13", label: "City network" },
+  { value: "24/7", label: "In-trip support" },
 ];
 
-const partnerServices = [
+const services = [
   {
-    icon: <ClipboardList size={24} />,
-    title: "White-label itinerary design",
-    desc: "Custom China programs built around your brand, client profile, budget, pace, and commercial structure.",
+    icon: <ClipboardList size={20} />,
+    title: "Itinerary architecture",
+    desc: "Partner-ready China programs with routing logic, pace control, inclusions, options, and operational notes.",
   },
   {
-    icon: <MapPinned size={24} />,
-    title: "Ground operations across China",
-    desc: "Guides, vehicles, hotels, restaurants, rail, flights, tickets, special access, contingency planning, and local coordination.",
+    icon: <MapPinned size={20} />,
+    title: "Ground execution",
+    desc: "Guides, vehicles, hotels, restaurants, rail, flights, entrances, local hosts, and day-by-day coordination.",
   },
   {
-    icon: <UsersRound size={24} />,
-    title: "Groups, FIT, MICE, and incentives",
-    desc: "From luxury private clients to educational groups, corporate delegations, incentive trips, and specialist-interest tours.",
+    icon: <UsersRound size={20} />,
+    title: "Groups, FIT, MICE",
+    desc: "Private clients, specialist groups, incentive programs, educational travel, delegations, and multi-city series.",
   },
   {
-    icon: <Headphones size={24} />,
-    title: "Partner support before and during travel",
-    desc: "Fast quoting, clear documentation, bilingual operation support, and live assistance while your clients are in China.",
+    icon: <Headphones size={20} />,
+    title: "Partner support",
+    desc: "Fast quoting, clear documentation, feasibility advice, bilingual coordination, and live support in China.",
   },
 ];
 
-const partnerTypes = [
+const partnerFit = [
   "Travel advisors and luxury agencies",
   "Outbound tour operators",
   "DMCs needing China coverage",
   "Corporate travel and incentive teams",
-  "Education and special-interest groups",
-  "Muslim-friendly and family travel planners",
-];
-
-const operatingStrengths = [
-  {
-    icon: <ShieldCheck size={22} />,
-    title: "Licensed local operator",
-    desc: "Operated by Youyouhui Travel Services Co., Ltd., with China-based relationships and on-the-ground accountability.",
-  },
-  {
-    icon: <Hotel size={22} />,
-    title: "Supplier depth",
-    desc: "Hotels, guides, restaurants, transport providers, attractions, and local hosts selected for reliability and service fit.",
-  },
-  {
-    icon: <Handshake size={22} />,
-    title: "Trade-friendly model",
-    desc: "Net pricing, white-label delivery, flexible quoting, and clear communication designed for professional partners.",
-  },
+  "Education and specialist-interest groups",
+  "Family, halal, accessibility, and VIP planners",
 ];
 
 const process = [
-  { step: "01", title: "Brief", desc: "Send destination, dates, client type, budget, pace, hotel level, and must-have experiences." },
-  { step: "02", title: "Design", desc: "We return a clean, partner-ready itinerary with routing logic, inclusions, and operational notes." },
-  { step: "03", title: "Quote", desc: "You receive transparent net pricing, options, and practical alternatives where availability or seasonality matters." },
-  { step: "04", title: "Operate", desc: "Our China team manages the ground while you keep the client relationship and brand ownership." },
+  { step: "01", title: "Brief", desc: "Send dates, destinations, client type, budget level, pace, hotel preference, and must-have experiences." },
+  { step: "02", title: "Design", desc: "We return a clean program structure with routing, feasibility notes, supplier logic, and alternatives." },
+  { step: "03", title: "Quote", desc: "You receive net pricing, inclusions, upgrade options, availability notes, and practical trade-offs." },
+  { step: "04", title: "Operate", desc: "Our China team delivers on the ground while you keep the client relationship and brand ownership." },
 ];
 
 export default function Home() {
   return (
-    <main style={{ backgroundColor: "#FFFFFF", color: "var(--brand-text)", paddingTop: "72px" }}>
-      <section className="relative overflow-hidden" style={{ minHeight: "calc(100vh - 72px)" }}>
-        <img src={HERO_IMAGE} alt="China DMC ground operations" className="absolute inset-0 h-full w-full object-cover" />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(17,24,39,0.86) 0%, rgba(17,24,39,0.68) 45%, rgba(17,24,39,0.2) 100%)",
-          }}
-        />
-        <div className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-[1400px] items-center px-6 py-20 lg:px-10">
-          <FadeSection className="max-w-3xl">
-            <p
-              style={{
-                color: "var(--brand-champagne)",
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: "0.78rem",
-                fontWeight: 700,
-                letterSpacing: "0.2em",
-                marginBottom: "20px",
-                textTransform: "uppercase",
-              }}
-            >
-              China ground partner for travel brands
-            </p>
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: "clamp(3rem, 7vw, 6.5rem)",
-                fontWeight: 300,
-                letterSpacing: "0",
-                lineHeight: 0.96,
-                marginBottom: "26px",
-                maxWidth: "980px",
-              }}
-            >
-              Reliable China programs for your clients.
-            </h1>
-            <p
-              style={{
-                color: "#E8ECEF",
-                fontFamily: "'Lora', Georgia, serif",
-                fontSize: "clamp(1.05rem, 2vw, 1.35rem)",
-                lineHeight: 1.65,
-                marginBottom: "34px",
-                maxWidth: "680px",
-              }}
-            >
-              China Prime DMC designs and operates private tours, groups, incentive trips, and specialist programs for travel advisors, tour operators, and corporate partners.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2"
+    <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
+      <section className="px-6 lg:px-10" style={{ paddingBottom: "clamp(64px, 8vw, 104px)", paddingTop: "clamp(48px, 7vw, 88px)" }}>
+        <div className="mono-wrap grid grid-cols-1 gap-10 lg:grid-cols-[0.92fr_0.78fr] lg:items-start lg:justify-between">
+          <div className="flex flex-col justify-between">
+            <div>
+              <p className="b2b-eyebrow">China ground services for travel brands</p>
+              <h1
                 style={{
-                  backgroundColor: "var(--brand-champagne)",
-                  borderRadius: "999px",
-                  color: "#FFFFFF",
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "0.95rem",
-                  fontWeight: 700,
-                  padding: "15px 28px",
-                  textDecoration: "none",
+                  color: "var(--brand-black)",
+                  fontSize: "clamp(3.2rem, 7vw, 7.2rem)",
+                  fontWeight: 540,
+                  letterSpacing: 0,
+                  lineHeight: 0.88,
+                  margin: 0,
+                  maxWidth: 980,
                 }}
               >
-                Request a Partner Quote <ArrowRight size={18} />
+                China,
+                <br />
+                operated precisely.
+              </h1>
+              <p className="b2b-lede" style={{ fontSize: "clamp(1.05rem, 1.45vw, 1.22rem)", marginTop: 28, maxWidth: 700 }}>
+                China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, and corporate travel teams.
+              </p>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link href="/contact" className="mono-button">
+                Request a quote <ArrowRight size={17} />
               </Link>
-              <Link
-                href="/b2b"
-                className="inline-flex items-center gap-2"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.72)",
-                  borderRadius: "999px",
-                  color: "#FFFFFF",
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "0.95rem",
-                  fontWeight: 700,
-                  padding: "14px 26px",
-                  textDecoration: "none",
-                }}
-              >
-                View Partner Services
+              <Link href="/b2b" className="mono-button mono-button-secondary">
+                View services
               </Link>
             </div>
-          </FadeSection>
+          </div>
+
+          <div className="lg:pt-8">
+            <div className="h-full border border-[var(--brand-black)] bg-white">
+              <div className="grid grid-cols-2 border-b border-[var(--brand-border)]">
+                {metrics.map((item) => (
+                  <div key={item.label} className="border-r border-b border-[var(--brand-border)] p-6 last:border-r-0 sm:p-8">
+                    <div style={{ color: "var(--brand-black)", fontSize: "clamp(2rem, 4vw, 3.6rem)", fontWeight: 560, lineHeight: 1 }}>
+                      {item.value}
+                    </div>
+                    <div className="mono-index mt-3">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="p-6 sm:p-8">
+                <div className="mb-5 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center bg-[var(--brand-black)] text-white">
+                    <ShieldCheck size={19} />
+                  </div>
+                  <div>
+                    <div className="mono-index">Operating model</div>
+                    <h2 className="text-xl font-semibold" style={{ color: "var(--brand-black)", margin: 0 }}>
+                      White-label China delivery
+                    </h2>
+                  </div>
+                </div>
+                <p className="b2b-body" style={{ maxWidth: 620 }}>
+                  Your team owns the client relationship. We handle feasibility, suppliers, local coordination, and on-trip problem solving.
+                </p>
+                <div className="mt-8 grid gap-3">
+                  {["Net pricing", "Partner-ready proposals", "China-based operations", "Bilingual support"].map((item) => (
+                    <div key={item} className="flex items-center justify-between border-t border-[var(--brand-border)] pt-3">
+                      <span className="text-sm font-semibold" style={{ color: "var(--brand-gray-800)" }}>{item}</span>
+                      <Check size={16} style={{ color: "var(--brand-black)" }} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section style={{ backgroundColor: "var(--brand-parchment)", borderBottom: "1px solid var(--brand-border)", borderTop: "1px solid var(--brand-border)" }}>
-        <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-px px-6 py-10 md:grid-cols-4 lg:px-10">
-          {stats.map((stat, index) => (
-            <FadeSection key={stat.label} delay={index * 60} className="px-4 py-4 text-center">
-              <div style={{ color: "var(--brand-text)", fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2.7rem", fontWeight: 400 }}>
-                {stat.value}
-              </div>
-              <div style={{ color: "var(--brand-text-muted)", fontFamily: "'Montserrat', sans-serif", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                {stat.label}
-              </div>
-            </FadeSection>
-          ))}
-        </div>
-      </section>
-
-      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="mx-auto max-w-[1400px]">
-          <FadeSection className="mb-14 max-w-3xl">
-            <p className="b2b-eyebrow">What we do</p>
-            <h2 className="b2b-heading">A China operations desk your team can trust.</h2>
-            <p className="b2b-lede">
-              We are built for partners who need precise answers, commercially usable proposals, and dependable delivery once clients land in China.
+      <section className="mono-section bg-[var(--brand-black)] text-white">
+        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <FadeSection>
+            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>What we do</p>
+            <h2 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 620 }}>
+              An operations desk, not a travel brochure.
+            </h2>
+            <p className="b2b-lede" style={{ color: "var(--brand-gray-300)" }}>
+              The site should feel like a dependable trade partner: concise, structured, and commercially useful.
             </p>
           </FadeSection>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {partnerServices.map((service, index) => (
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] md:grid-cols-2">
+            {services.map((service, index) => (
               <FadeSection key={service.title} delay={index * 70}>
-                <article className="h-full border border-[var(--brand-border)] bg-[var(--brand-surface)] p-7">
-                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[var(--brand-surface-muted)] text-[var(--brand-champagne-hover)]">
+                <article className="h-full bg-[var(--brand-black)] p-7 sm:p-8">
+                  <div className="mb-8 flex h-10 w-10 items-center justify-center border border-[var(--brand-gray-600)] text-[var(--brand-white)]">
                     {service.icon}
                   </div>
-                  <h3 className="b2b-card-title">{service.title}</h3>
-                  <p className="b2b-body">{service.desc}</p>
+                  <h3 className="b2b-card-title" style={{ color: "var(--brand-white)" }}>{service.title}</h3>
+                  <p className="b2b-body" style={{ color: "var(--brand-gray-300)" }}>{service.desc}</p>
                 </article>
               </FadeSection>
             ))}
@@ -257,43 +207,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "var(--brand-ink)" }}>
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="mono-section bg-[var(--brand-white)]">
+        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1fr]">
           <FadeSection>
             <p className="b2b-eyebrow">Partner fit</p>
-            <h2 className="b2b-heading" style={{ color: "#FFFFFF" }}>
+            <h2 className="b2b-heading" style={{ maxWidth: 720 }}>
               Built for teams selling China under their own brand.
             </h2>
-            <p className="b2b-lede" style={{ color: "#CBD2DC" }}>
-              Your clients see your brand. Behind the scenes, our China team handles feasibility, supplier coordination, and ground delivery.
-            </p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2"
-              style={{
-                backgroundColor: "var(--brand-champagne)",
-                borderRadius: "999px",
-                color: "#FFFFFF",
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: "0.92rem",
-                fontWeight: 700,
-                padding: "14px 24px",
-                textDecoration: "none",
-              }}
-            >
-              Talk to Our B2B Team <ArrowRight size={18} />
-            </a>
           </FadeSection>
-          <FadeSection delay={120}>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {partnerTypes.map((type) => (
-                <div key={type} className="flex items-start gap-3 border border-white/10 bg-white/[0.04] p-5">
-                  <CheckCircle2 size={18} style={{ color: "var(--brand-champagne)", flexShrink: 0, marginTop: 3 }} />
-                  <span style={{ color: "#F7F5F0", fontFamily: "'Montserrat', sans-serif", fontSize: "0.95rem", fontWeight: 600 }}>
-                    {type}
-                  </span>
+
+          <FadeSection delay={100}>
+            <div className="grid gap-px bg-[var(--brand-border)]">
+              {partnerFit.map((type) => (
+                <div key={type} className="flex items-center gap-4 bg-white p-5">
+                  <span className="mono-index w-10 shrink-0">OK</span>
+                  <span className="text-base font-semibold" style={{ color: "var(--brand-black)" }}>{type}</span>
                 </div>
               ))}
             </div>
@@ -301,44 +229,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "var(--brand-parchment)" }}>
-        <div className="mx-auto max-w-[1400px]">
-          <FadeSection className="mb-14 text-center">
-            <p className="b2b-eyebrow">Why partners choose us</p>
-            <h2 className="b2b-heading">Local control, trade clarity, and human support.</h2>
-          </FadeSection>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {operatingStrengths.map((item, index) => (
-              <FadeSection key={item.title} delay={index * 80}>
-                <article className="h-full bg-white p-8">
-                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[var(--brand-surface-muted)] text-[var(--brand-champagne-hover)]">
-                    {item.icon}
-                  </div>
-                  <h3 className="b2b-card-title">{item.title}</h3>
-                  <p className="b2b-body">{item.desc}</p>
-                </article>
-              </FadeSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="mx-auto max-w-[1400px]">
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap">
           <FadeSection className="mb-14 max-w-3xl">
             <p className="b2b-eyebrow">Workflow</p>
             <h2 className="b2b-heading">A quote process designed for busy sales teams.</h2>
           </FadeSection>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-4">
             {process.map((item, index) => (
               <FadeSection key={item.step} delay={index * 70}>
-                <article className="h-full border-l-2 border-[var(--brand-champagne)] bg-[var(--brand-surface)] p-6">
-                  <div style={{ color: "var(--brand-champagne)", fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3rem", lineHeight: 1 }}>
-                    {item.step}
-                  </div>
-                  <h3 className="b2b-card-title" style={{ marginTop: 18 }}>
-                    {item.title}
-                  </h3>
+                <article className="h-full bg-[var(--brand-gray-50)] p-7 sm:p-8">
+                  <div className="mono-index">{item.step}</div>
+                  <h3 className="b2b-card-title mt-10">{item.title}</h3>
                   <p className="b2b-body">{item.desc}</p>
                 </article>
               </FadeSection>
@@ -347,35 +250,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "var(--brand-ink-2)" }}>
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto]">
+      <section className="mono-section bg-[var(--brand-black)] text-white">
+        <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
-            <p className="b2b-eyebrow">Ready for a China quote?</p>
-            <h2 className="b2b-heading" style={{ color: "#FFFFFF" }}>
-              Send us your brief. We will turn it into a workable China program.
+            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Ready for a China quote?</p>
+            <h2 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 900 }}>
+              Send the brief. We will turn it into an operable China program.
             </h2>
-            <p className="b2b-lede" style={{ color: "#CBD2DC" }}>
-              Best for: private clients, small groups, incentive trips, educational travel, special-interest programs, and multi-city China itineraries.
-            </p>
           </FadeSection>
           <FadeSection delay={100}>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2"
-              style={{
-                backgroundColor: "var(--brand-champagne)",
-                borderRadius: "999px",
-                color: "#FFFFFF",
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: "0.95rem",
-                fontWeight: 800,
-                minWidth: "230px",
-                padding: "16px 28px",
-                textDecoration: "none",
-              }}
-            >
-              Request a Quote <ArrowRight size={18} />
-            </Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+              Talk to partner desk <ArrowRight size={17} />
+            </a>
           </FadeSection>
         </div>
       </section>

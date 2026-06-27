@@ -76,13 +76,13 @@ function SubmissionsList() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "new":
-        return "bg-[#F3E9D6] text-[#9A7442]";
+        return "bg-[var(--brand-gray-100)] text-[var(--brand-gray-800)]";
       case "contacted":
-        return "bg-[#E7F0EC] text-[#2F6F5E]";
+        return "bg-[var(--brand-gray-100)] text-[var(--brand-gray-800)]";
       case "archived":
-        return "bg-[#EEEAE2] text-[#374151]";
+        return "bg-[var(--brand-gray-100)] text-[var(--brand-gray-700)]";
       default:
-        return "bg-[#EEEAE2] text-[#374151]";
+        return "bg-[var(--brand-gray-100)] text-[var(--brand-gray-700)]";
     }
   };
 

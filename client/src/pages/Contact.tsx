@@ -78,71 +78,56 @@ export default function Contact() {
   };
 
   const inputStyle: React.CSSProperties = {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "var(--brand-white)",
     border: "1px solid var(--brand-border)",
-    borderRadius: "6px",
+    borderRadius: 0,
     boxSizing: "border-box",
-    color: "var(--brand-text)",
-    fontFamily: "'Lora', Georgia, serif",
+    color: "var(--brand-black)",
+    fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
     fontSize: "0.95rem",
     outline: "none",
-    padding: "12px 14px",
+    padding: "13px 14px",
     width: "100%",
   };
 
   const labelStyle: React.CSSProperties = {
-    color: "var(--brand-text-muted)",
+    color: "var(--brand-gray-600)",
     display: "block",
-    fontFamily: "'Montserrat', sans-serif",
-    fontSize: "0.72rem",
-    fontWeight: 700,
+    fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
+    fontSize: "0.7rem",
+    fontWeight: 760,
     letterSpacing: "0.1em",
-    marginBottom: "7px",
+    marginBottom: "8px",
     textTransform: "uppercase",
   };
 
   return (
-    <main style={{ backgroundColor: "#FFFFFF", paddingTop: "72px" }}>
-      <section style={{ backgroundColor: "var(--brand-ink)", padding: "92px 24px" }}>
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 md:grid-cols-[0.95fr_1.05fr]">
+    <main style={{ backgroundColor: "var(--brand-white)", paddingTop: "72px" }}>
+      <section className="mono-section bg-[var(--brand-black)] text-white">
+        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[1fr_0.85fr]">
           <div>
-            <p className="b2b-eyebrow">Partner quote desk</p>
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: "clamp(2.6rem, 6vw, 5rem)",
-                fontWeight: 300,
-                letterSpacing: "0",
-                lineHeight: 1,
-                marginBottom: "22px",
-              }}
-            >
-              Send us your China brief.
+            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Partner quote desk</p>
+            <h1 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 860 }}>
+              Send a brief your operator can actually use.
             </h1>
-            <p className="b2b-lede" style={{ color: "#CBD2DC" }}>
-              Share the essentials and our partner desk will respond with routing advice, feasibility notes, and next-step quote requirements.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] sm:grid-cols-2">
             {[
-              { icon: <MessageCircle size={20} />, label: "WhatsApp", value: "+44 7985 052302", href: WHATSAPP_URL },
-              { icon: <Mail size={20} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
-              { icon: <MapPin size={20} />, label: "Base", value: "Guangzhou, China", href: null },
-              { icon: <Briefcase size={20} />, label: "Best for", value: "B2B, groups, FIT, MICE", href: null },
+              { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "+44 7985 052302", href: WHATSAPP_URL },
+              { icon: <Mail size={18} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+              { icon: <MapPin size={18} />, label: "Base", value: "Guangzhou, China", href: null },
+              { icon: <Briefcase size={18} />, label: "Best for", value: "B2B, groups, FIT, MICE", href: null },
             ].map((item) => (
-              <div key={item.label} style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", padding: 22 }}>
-                <div style={{ color: "var(--brand-champagne)", marginBottom: 12 }}>{item.icon}</div>
-                <p style={{ color: "var(--brand-champagne-soft)", fontFamily: "'Montserrat', sans-serif", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 6, textTransform: "uppercase" }}>
-                  {item.label}
-                </p>
+              <div key={item.label} className="bg-[var(--brand-black)] p-6">
+                <div className="mb-5 text-[var(--brand-gray-400)]">{item.icon}</div>
+                <p className="mono-index mb-2" style={{ color: "var(--brand-gray-500)" }}>{item.label}</p>
                 {item.href ? (
-                  <a href={item.href} style={{ color: "#FFFFFF", fontFamily: "'Lora', Georgia, serif", fontSize: "0.98rem", textDecoration: "none" }}>
+                  <a href={item.href} className="text-sm font-semibold text-white" style={{ textDecoration: "none" }}>
                     {item.value}
                   </a>
                 ) : (
-                  <p style={{ color: "#FFFFFF", fontFamily: "'Lora', Georgia, serif", fontSize: "0.98rem", margin: 0 }}>{item.value}</p>
+                  <p className="text-sm font-semibold text-white" style={{ margin: 0 }}>{item.value}</p>
                 )}
               </div>
             ))}
@@ -150,12 +135,12 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="px-6 py-20 lg:px-10">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 lg:grid-cols-[0.75fr_1.25fr]">
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr]">
           <aside>
-            <p className="b2b-eyebrow">What to include</p>
-            <h2 className="b2b-heading">The better the brief, the faster the quote.</h2>
-            <div className="mt-8 space-y-4">
+            <p className="b2b-eyebrow">Brief structure</p>
+            <h2 className="b2b-heading" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>Faster quote, fewer follow-ups.</h2>
+            <div className="mt-10 grid gap-px bg-[var(--brand-border)]">
               {[
                 "Client profile and travel style",
                 "Dates or season",
@@ -164,15 +149,15 @@ export default function Contact() {
                 "Hotel level and budget range",
                 "Special needs: halal, accessibility, VIP, education, MICE",
               ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <Send size={16} style={{ color: "var(--brand-champagne)", flexShrink: 0, marginTop: 5 }} />
+                <div key={item} className="flex items-start gap-4 bg-[var(--brand-gray-50)] p-5">
+                  <Send size={15} style={{ color: "var(--brand-black)", flexShrink: 0, marginTop: 4 }} />
                   <p className="b2b-body" style={{ margin: 0 }}>{item}</p>
                 </div>
               ))}
             </div>
           </aside>
 
-          <form onSubmit={handleSubmit} style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)", padding: "clamp(24px, 4vw, 42px)" }}>
+          <form onSubmit={handleSubmit} className="mono-card p-6 sm:p-8 lg:p-10">
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
                 <label style={labelStyle}>Full name *</label>
@@ -255,56 +240,22 @@ export default function Contact() {
             </div>
 
             {error && (
-              <div style={{ backgroundColor: "#FEF2F2", border: "1px solid #FCA5A5", color: "var(--brand-danger)", fontFamily: "'Lora', Georgia, serif", fontSize: "0.92rem", marginBottom: 18, padding: "12px 14px" }}>
+              <div className="mb-5 border border-[var(--brand-black)] bg-white p-4 text-sm font-semibold text-[var(--brand-black)]">
                 {error}
               </div>
             )}
 
             {submitted && (
-              <div style={{ backgroundColor: "#ECFDF5", border: "1px solid #86EFAC", color: "var(--brand-success)", fontFamily: "'Lora', Georgia, serif", fontSize: "0.92rem", marginBottom: 18, padding: "12px 14px" }}>
+              <div className="mb-5 border border-[var(--brand-border)] bg-[var(--brand-gray-100)] p-4 text-sm font-semibold text-[var(--brand-black)]">
                 Your email app should open with the prepared brief. You can also send it by WhatsApp below.
               </div>
             )}
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <button
-                type="submit"
-                style={{
-                  alignItems: "center",
-                  backgroundColor: "var(--brand-champagne)",
-                  border: "none",
-                  borderRadius: "999px",
-                  color: "#FFFFFF",
-                  display: "inline-flex",
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "0.92rem",
-                  fontWeight: 800,
-                  gap: 8,
-                  justifyContent: "center",
-                  padding: "14px 24px",
-                }}
-              >
-                Prepare Email Brief <Mail size={17} />
+              <button type="submit" className="mono-button">
+                Prepare email <Mail size={17} />
               </button>
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  alignItems: "center",
-                  border: "1px solid var(--brand-text)",
-                  borderRadius: "999px",
-                  color: "var(--brand-text)",
-                  display: "inline-flex",
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "0.92rem",
-                  fontWeight: 800,
-                  gap: 8,
-                  justifyContent: "center",
-                  padding: "13px 22px",
-                  textDecoration: "none",
-                }}
-              >
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="mono-button mono-button-secondary">
                 Send by WhatsApp <MessageCircle size={17} />
               </a>
             </div>
