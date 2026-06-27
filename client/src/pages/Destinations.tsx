@@ -51,6 +51,9 @@ const regionClusters = coverageRegions.map((region) => ({
   positioning: region.summary,
   link: `/destinations/${region.id}`,
   signal: region.bestFor[0],
+  image: region.heroImage,
+  imageAlt: region.gallery[0]?.alt || region.name,
+  highlights: region.cities.slice(0, 4).map((city) => city.name),
 }));
 
 const fitMatrix = [
@@ -189,16 +192,39 @@ export default function Destinations() {
                       handleRegionClick(coverageRegions[index].id);
                     }
                   }}
-                  className="group grid min-h-full cursor-pointer bg-white p-6 text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-black)] md:p-7"
+                  className="group grid min-h-full cursor-pointer grid-rows-[auto_1fr] overflow-hidden bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-black)]"
                 >
-                  <div className="mb-8 flex items-center justify-between gap-4">
-                    <span className="mono-index border border-[var(--brand-border)] px-3 py-2">{cluster.signal}</span>
-                    <MapPin size={18} className="text-[var(--brand-gray-500)]" />
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[var(--brand-black)]">
+                    <img
+                      src={cluster.image}
+                      alt={cluster.imageAlt}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      loading={index < 3 ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/18 to-transparent" />
+                    <div className="absolute left-5 right-5 top-5 flex items-start justify-between gap-4">
+                      <span className="bg-white px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--brand-black)]">{cluster.signal}</span>
+                      <span className="flex h-9 w-9 items-center justify-center border border-white/45 bg-black/35 text-white backdrop-blur-sm">
+                        <MapPin size={17} />
+                      </span>
+                    </div>
+                    <div className="absolute bottom-5 left-5 right-5">
+                      <div className="text-[11px] font-bold uppercase leading-5 tracking-[0.12em] text-white/72">{cluster.cities}</div>
+                      <h3 className="mt-2 text-3xl font-semibold leading-tight text-white">{cluster.region}</h3>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-semibold leading-tight text-[var(--brand-black)]">{cluster.region}</h3>
-                  <p className="mt-4 text-sm font-bold uppercase leading-6 tracking-[0.08em] text-[var(--brand-gray-500)]">{cluster.cities}</p>
-                  <p className="mt-5 text-sm leading-7 text-[var(--brand-gray-700)]">{cluster.positioning}</p>
-                  <div className="mt-8 grid gap-4">
+
+                  <div className="grid p-6 md:p-7">
+                    <p className="line-clamp-[7] text-sm leading-7 text-[var(--brand-gray-700)]">{cluster.positioning}</p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {cluster.highlights.map((item) => (
+                        <span key={item} className="border border-[var(--brand-border)] px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--brand-gray-600)]">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  <div className="mt-7 grid gap-4">
                     <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-black)]">
                       {selectedRegionId === coverageRegions[index].id ? "Region selected" : "Select on map"} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </div>
@@ -211,6 +237,7 @@ export default function Destinations() {
                         Open regional coverage <ArrowRight size={15} />
                       </Link>
                     )}
+                  </div>
                   </div>
                 </article>
               </FadeSection>
