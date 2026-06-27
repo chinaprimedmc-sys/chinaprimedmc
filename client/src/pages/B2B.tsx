@@ -64,22 +64,22 @@ const whyPartner = [
 
 export default function B2B() {
   return (
-    <div style={{ backgroundColor: "#FFFFFF", color: "#0F0F0F", paddingTop: "72px" }}>
+    <div style={{ backgroundColor: "#FFFFFF", color: "var(--brand-text)", paddingTop: "72px" }}>
       {/* ══════════════════════════════════════════════════════════════
           HERO SECTION
           ══════════════════════════════════════════════════════════════ */}
       <section className="relative h-[65vh] min-h-[480px] overflow-hidden flex items-end">
         <img src={HERO_BG} alt="B2B Partnerships" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15, 15, 15, 0.4) 0%, rgba(15, 15, 15, 0.1) 60%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.4) 0%, rgba(17, 24, 39, 0.1) 60%)" }} />
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pb-20 w-full">
           <FadeSection>
-            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px", fontWeight: 600 }}>
+            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
               Trade & Partnerships
             </div>
             <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.1, marginBottom: "1rem", letterSpacing: "-0.02em" }}>
               B2B Partnerships
             </h1>
-            <p style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "1.3rem", fontStyle: "italic", color: "#F0F0F0" }}>
+            <p style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "1.3rem", fontStyle: "italic", color: "#F7F5F0" }}>
               Your trusted China ground partner
             </p>
           </FadeSection>
@@ -92,10 +92,10 @@ export default function B2B() {
       <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[1400px] mx-auto">
           <FadeSection className="mb-16 text-center">
-            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px", fontWeight: 600 }}>
+            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
               Partnership Models
             </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "#0F0F0F", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
               We Work With Partners at Every Level
             </h2>
           </FadeSection>
@@ -103,21 +103,21 @@ export default function B2B() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {partnerTypes.map((partner, i) => (
               <FadeSection key={partner.title} delay={i * 80}>
-                <div style={{ backgroundColor: "#F9F7F4", border: "1px solid #E5E3E0", borderRadius: "8px", padding: "32px" }}>
-                  <div style={{ color: "#B8860B", marginBottom: "16px" }}>
+                <div style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)", borderRadius: "8px", padding: "32px" }}>
+                  <div style={{ color: "var(--brand-champagne)", marginBottom: "16px" }}>
                     {partner.icon}
                   </div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.5rem", fontWeight: 400, color: "#0F0F0F", marginBottom: "12px" }}>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.5rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "12px" }}>
                     {partner.title}
                   </h3>
-                  <p style={{ fontSize: "0.95rem", color: "#6B6B6B", lineHeight: 1.7, marginBottom: "16px", fontFamily: "'Lora', Georgia, serif" }}>
+                  <p style={{ fontSize: "0.95rem", color: "var(--brand-text-muted)", lineHeight: 1.7, marginBottom: "16px", fontFamily: "'Lora', Georgia, serif" }}>
                     {partner.desc}
                   </p>
                   <ul className="space-y-2">
                     {partner.features.map((feature, j) => (
                       <li key={j} className="flex gap-3 items-start">
-                        <CheckCircle size={16} style={{ color: "#B8860B", marginTop: "2px", flexShrink: 0 }} />
-                        <span style={{ fontSize: "0.9rem", color: "#6B6B6B", fontFamily: "'Lora', Georgia, serif" }}>
+                        <CheckCircle size={16} style={{ color: "var(--brand-champagne)", marginTop: "2px", flexShrink: 0 }} />
+                        <span style={{ fontSize: "0.9rem", color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>
                           {feature}
                         </span>
                       </li>
@@ -133,13 +133,13 @@ export default function B2B() {
       {/* ══════════════════════════════════════════════════════════════
           WHY PARTNER WITH US
           ══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#F9F7F4", borderTop: "1px solid #E5E3E0" }}>
+      <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "var(--brand-parchment)", borderTop: "1px solid var(--brand-border)" }}>
         <div className="max-w-[1400px] mx-auto">
           <FadeSection className="mb-16 text-center">
-            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px", fontWeight: 600 }}>
+            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
               Why Partner With Us
             </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "#0F0F0F", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
               The China Prime Advantage
             </h2>
           </FadeSection>
@@ -147,11 +147,11 @@ export default function B2B() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whyPartner.map((item, i) => (
               <FadeSection key={item.title} delay={i * 80}>
-                <div style={{ backgroundColor: "#FFFFFF", border: "1px solid #E5E3E0", borderRadius: "8px", padding: "24px" }}>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.3rem", fontWeight: 400, color: "#0F0F0F", marginBottom: "12px" }}>
+                <div style={{ backgroundColor: "#FFFFFF", border: "1px solid var(--brand-border)", borderRadius: "8px", padding: "24px" }}>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.3rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "12px" }}>
                     {item.title}
                   </h3>
-                  <p style={{ fontSize: "0.95rem", color: "#6B6B6B", lineHeight: 1.7, fontFamily: "'Lora', Georgia, serif" }}>
+                  <p style={{ fontSize: "0.95rem", color: "var(--brand-text-muted)", lineHeight: 1.7, fontFamily: "'Lora', Georgia, serif" }}>
                     {item.desc}
                   </p>
                 </div>
@@ -167,10 +167,10 @@ export default function B2B() {
       <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[1400px] mx-auto">
           <FadeSection className="mb-16 text-center">
-            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px", fontWeight: 600 }}>
+            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
               Getting Started
             </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "#0F0F0F", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
               The Partnership Process
             </h2>
           </FadeSection>
@@ -187,16 +187,16 @@ export default function B2B() {
                   <div style={{
                     fontSize: "3rem",
                     fontWeight: 300,
-                    color: "#B8860B",
+                    color: "var(--brand-champagne)",
                     marginBottom: "12px",
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
                   }}>
                     {item.step}
                   </div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.3rem", fontWeight: 400, color: "#0F0F0F", marginBottom: "8px" }}>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.3rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "8px" }}>
                     {item.title}
                   </h3>
-                  <p style={{ fontSize: "0.9rem", color: "#6B6B6B", lineHeight: 1.6, fontFamily: "'Lora', Georgia, serif" }}>
+                  <p style={{ fontSize: "0.9rem", color: "var(--brand-text-muted)", lineHeight: 1.6, fontFamily: "'Lora', Georgia, serif" }}>
                     {item.desc}
                   </p>
                 </div>
@@ -209,18 +209,18 @@ export default function B2B() {
       {/* ══════════════════════════════════════════════════════════════
           FINAL CTA
           ══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#F9F7F4", borderTop: "1px solid #E5E3E0" }}>
+      <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "var(--brand-parchment)", borderTop: "1px solid var(--brand-border)" }}>
         <div className="max-w-[900px] mx-auto text-center">
           <FadeSection>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3rem", fontWeight: 300, color: "#0F0F0F", marginBottom: "16px", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3rem", fontWeight: 300, color: "var(--brand-text)", marginBottom: "16px", letterSpacing: "-0.02em" }}>
               Ready to Partner With Us?
             </h2>
-            <p style={{ fontSize: "1.1rem", color: "#6B6B6B", marginBottom: "32px", lineHeight: 1.8, fontFamily: "'Lora', Georgia, serif" }}>
+            <p style={{ fontSize: "1.1rem", color: "var(--brand-text-muted)", marginBottom: "32px", lineHeight: 1.8, fontFamily: "'Lora', Georgia, serif" }}>
               Let's discuss how China Prime DMC can help you expand your China offering and delight your clients with extraordinary journeys.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2" style={{
-                backgroundColor: "#B8860B",
+                backgroundColor: "var(--brand-champagne)",
                 color: "#FFFFFF",
                 padding: "14px 32px",
                 borderRadius: "50px",
@@ -228,12 +228,12 @@ export default function B2B() {
                 fontWeight: 500,
                 fontSize: "1rem",
                 transition: "all 0.3s ease",
-              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#A67C0A"; e.currentTarget.style.transform = "scale(1.05)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#B8860B"; e.currentTarget.style.transform = "scale(1)"; }}>
+              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)"; e.currentTarget.style.transform = "scale(1.05)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.transform = "scale(1)"; }}>
                 Start a Conversation <ArrowRight size={18} />
               </a>
               <Link href="/contact" className="inline-flex items-center gap-2" style={{
-                border: "2px solid #B8860B",
-                color: "#B8860B",
+                border: "2px solid var(--brand-champagne)",
+                color: "var(--brand-champagne)",
                 padding: "12px 28px",
                 borderRadius: "50px",
                 textDecoration: "none",
@@ -241,7 +241,7 @@ export default function B2B() {
                 fontSize: "1rem",
                 transition: "all 0.3s ease",
                 backgroundColor: "transparent",
-              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#B8860B"; e.currentTarget.style.color = "#FFFFFF"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#B8860B"; }}>
+              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.color = "#FFFFFF"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "var(--brand-champagne)"; }}>
                 Contact Us
               </Link>
             </div>

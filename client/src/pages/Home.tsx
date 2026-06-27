@@ -127,21 +127,21 @@ const process = [
 
 export default function Home() {
   return (
-    <main style={{ backgroundColor: "#FFFFFF", color: "#111827", paddingTop: "72px" }}>
+    <main style={{ backgroundColor: "#FFFFFF", color: "var(--brand-text)", paddingTop: "72px" }}>
       <section className="relative overflow-hidden" style={{ minHeight: "calc(100vh - 72px)" }}>
         <img src={HERO_IMAGE} alt="China DMC ground operations" className="absolute inset-0 h-full w-full object-cover" />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(90deg, rgba(8,20,35,0.86) 0%, rgba(8,20,35,0.68) 45%, rgba(8,20,35,0.2) 100%)",
+              "linear-gradient(90deg, rgba(17,24,39,0.86) 0%, rgba(17,24,39,0.68) 45%, rgba(17,24,39,0.2) 100%)",
           }}
         />
         <div className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-[1400px] items-center px-6 py-20 lg:px-10">
           <FadeSection className="max-w-3xl">
             <p
               style={{
-                color: "#D4A373",
+                color: "var(--brand-champagne)",
                 fontFamily: "'Montserrat', sans-serif",
                 fontSize: "0.78rem",
                 fontWeight: 700,
@@ -168,7 +168,7 @@ export default function Home() {
             </h1>
             <p
               style={{
-                color: "#E5E7EB",
+                color: "#E8ECEF",
                 fontFamily: "'Lora', Georgia, serif",
                 fontSize: "clamp(1.05rem, 2vw, 1.35rem)",
                 lineHeight: 1.65,
@@ -183,7 +183,7 @@ export default function Home() {
                 href="/contact"
                 className="inline-flex items-center gap-2"
                 style={{
-                  backgroundColor: "#D4A373",
+                  backgroundColor: "var(--brand-champagne)",
                   borderRadius: "999px",
                   color: "#FFFFFF",
                   fontFamily: "'Montserrat', sans-serif",
@@ -216,14 +216,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ backgroundColor: "#F7F4EF", borderBottom: "1px solid #E5E0D8", borderTop: "1px solid #E5E0D8" }}>
+      <section style={{ backgroundColor: "var(--brand-parchment)", borderBottom: "1px solid var(--brand-border)", borderTop: "1px solid var(--brand-border)" }}>
         <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-px px-6 py-10 md:grid-cols-4 lg:px-10">
           {stats.map((stat, index) => (
             <FadeSection key={stat.label} delay={index * 60} className="px-4 py-4 text-center">
-              <div style={{ color: "#111827", fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2.7rem", fontWeight: 400 }}>
+              <div style={{ color: "var(--brand-text)", fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2.7rem", fontWeight: 400 }}>
                 {stat.value}
               </div>
-              <div style={{ color: "#6B7280", fontFamily: "'Montserrat', sans-serif", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              <div style={{ color: "var(--brand-text-muted)", fontFamily: "'Montserrat', sans-serif", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
                 {stat.label}
               </div>
             </FadeSection>
@@ -244,8 +244,8 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
             {partnerServices.map((service, index) => (
               <FadeSection key={service.title} delay={index * 70}>
-                <article className="h-full border border-[#E5E0D8] bg-[#FAFAF8] p-7">
-                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#F3E7D7] text-[#9A6A20]">
+                <article className="h-full border border-[var(--brand-border)] bg-[var(--brand-surface)] p-7">
+                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[var(--brand-surface-muted)] text-[var(--brand-champagne-hover)]">
                     {service.icon}
                   </div>
                   <h3 className="b2b-card-title">{service.title}</h3>
@@ -257,14 +257,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "#0F172A" }}>
+      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "var(--brand-ink)" }}>
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <FadeSection>
             <p className="b2b-eyebrow">Partner fit</p>
             <h2 className="b2b-heading" style={{ color: "#FFFFFF" }}>
               Built for teams selling China under their own brand.
             </h2>
-            <p className="b2b-lede" style={{ color: "#CBD5E1" }}>
+            <p className="b2b-lede" style={{ color: "#CBD2DC" }}>
               Your clients see your brand. Behind the scenes, our China team handles feasibility, supplier coordination, and ground delivery.
             </p>
             <a
@@ -273,7 +273,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2"
               style={{
-                backgroundColor: "#D4A373",
+                backgroundColor: "var(--brand-champagne)",
                 borderRadius: "999px",
                 color: "#FFFFFF",
                 fontFamily: "'Montserrat', sans-serif",
@@ -290,8 +290,8 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {partnerTypes.map((type) => (
                 <div key={type} className="flex items-start gap-3 border border-white/10 bg-white/[0.04] p-5">
-                  <CheckCircle2 size={18} style={{ color: "#D4A373", flexShrink: 0, marginTop: 3 }} />
-                  <span style={{ color: "#F8FAFC", fontFamily: "'Montserrat', sans-serif", fontSize: "0.95rem", fontWeight: 600 }}>
+                  <CheckCircle2 size={18} style={{ color: "var(--brand-champagne)", flexShrink: 0, marginTop: 3 }} />
+                  <span style={{ color: "#F7F5F0", fontFamily: "'Montserrat', sans-serif", fontSize: "0.95rem", fontWeight: 600 }}>
                     {type}
                   </span>
                 </div>
@@ -301,7 +301,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "#F7F4EF" }}>
+      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "var(--brand-parchment)" }}>
         <div className="mx-auto max-w-[1400px]">
           <FadeSection className="mb-14 text-center">
             <p className="b2b-eyebrow">Why partners choose us</p>
@@ -311,7 +311,7 @@ export default function Home() {
             {operatingStrengths.map((item, index) => (
               <FadeSection key={item.title} delay={index * 80}>
                 <article className="h-full bg-white p-8">
-                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#F3E7D7] text-[#9A6A20]">
+                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[var(--brand-surface-muted)] text-[var(--brand-champagne-hover)]">
                     {item.icon}
                   </div>
                   <h3 className="b2b-card-title">{item.title}</h3>
@@ -332,8 +332,8 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
             {process.map((item, index) => (
               <FadeSection key={item.step} delay={index * 70}>
-                <article className="h-full border-l-2 border-[#D4A373] bg-[#FAFAF8] p-6">
-                  <div style={{ color: "#D4A373", fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3rem", lineHeight: 1 }}>
+                <article className="h-full border-l-2 border-[var(--brand-champagne)] bg-[var(--brand-surface)] p-6">
+                  <div style={{ color: "var(--brand-champagne)", fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3rem", lineHeight: 1 }}>
                     {item.step}
                   </div>
                   <h3 className="b2b-card-title" style={{ marginTop: 18 }}>
@@ -347,14 +347,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "#102033" }}>
+      <section className="px-6 py-24 lg:px-10" style={{ backgroundColor: "var(--brand-ink-2)" }}>
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
             <p className="b2b-eyebrow">Ready for a China quote?</p>
             <h2 className="b2b-heading" style={{ color: "#FFFFFF" }}>
               Send us your brief. We will turn it into a workable China program.
             </h2>
-            <p className="b2b-lede" style={{ color: "#CBD5E1" }}>
+            <p className="b2b-lede" style={{ color: "#CBD2DC" }}>
               Best for: private clients, small groups, incentive trips, educational travel, special-interest programs, and multi-city China itineraries.
             </p>
           </FadeSection>
@@ -363,7 +363,7 @@ export default function Home() {
               href="/contact"
               className="inline-flex items-center justify-center gap-2"
               style={{
-                backgroundColor: "#D4A373",
+                backgroundColor: "var(--brand-champagne)",
                 borderRadius: "999px",
                 color: "#FFFFFF",
                 fontFamily: "'Montserrat', sans-serif",

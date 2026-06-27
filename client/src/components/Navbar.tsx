@@ -1,14 +1,10 @@
 /**
- * Navbar — Smart Scroll-Aware Design
- * - At top: transparent / light background
- * - Scrolled: frosted glass (white/blur)
- * - Scroll down: hides; scroll up: reappears
+ * Navbar — stable B2B brand bar
+ * A consistent parchment surface keeps the logo and navigation readable across every page.
  */
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
-
-const LOGO_URL = "/manus-storage/logo_ab631d47.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -51,21 +47,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navBg = scrolled
-    ? "rgba(255, 255, 255, 0.92)"
-    : "rgba(255, 255, 255, 0.0)";
+  const navBg = scrolled ? "rgba(255, 255, 255, 0.94)" : "rgba(247, 245, 240, 0.98)";
+  const navBorder = scrolled ? "1px solid rgba(216, 210, 198, 0.82)" : "1px solid var(--brand-border)";
 
-  const navBorder = scrolled
-    ? "1px solid rgba(226, 232, 240, 0.8)"
-    : "1px solid transparent";
+  const navShadow = scrolled ? "0 2px 20px rgba(0,0,0,0.08)" : "none";
 
-  const navShadow = scrolled
-    ? "0 2px 20px rgba(0,0,0,0.08)"
-    : "none";
-
-  const textColor = scrolled ? "#475569" : "#FFFFFF";
-  const activeColor = "#D4A373";
-  const logoTextColor = scrolled ? "#0F172A" : "#FFFFFF";
+  const textColor = "var(--brand-ink-3)";
+  const activeColor = "var(--brand-champagne)";
+  const logoTextColor = "var(--brand-ink)";
 
   return (
     <>
@@ -73,8 +62,8 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 z-50"
         style={{
           backgroundColor: navBg,
-          backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
+          backdropFilter: "blur(20px) saturate(180%)",
+          WebkitBackdropFilter: "blur(20px) saturate(180%)",
           borderBottom: navBorder,
           boxShadow: navShadow,
           transform: visible ? "translateY(0)" : "translateY(-100%)",
@@ -86,13 +75,25 @@ export default function Navbar() {
 
             {/* Brand Lockup */}
             <Link href="/" className="flex items-center gap-3 group" style={{ textDecoration: "none" }}>
-              <div className="relative flex-shrink-0">
-                <img
-                  src={LOGO_URL}
-                  alt="China Prime DMC"
-                  className="object-contain group-hover:scale-105 transition-transform duration-300"
-                  style={{ width: "48px", height: "48px" }}
-                />
+              <div
+                className="relative flex-shrink-0 group-hover:scale-105 transition-transform duration-300"
+                aria-hidden="true"
+                style={{
+                  alignItems: "center",
+                  backgroundColor: "var(--brand-ink)",
+                  border: "1px solid var(--brand-ink)",
+                  color: "var(--brand-champagne-soft)",
+                  display: "flex",
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: "1.1rem",
+                  fontWeight: 600,
+                  height: "42px",
+                  justifyContent: "center",
+                  letterSpacing: "0.02em",
+                  width: "42px",
+                }}
+              >
+                CP
               </div>
               <div className="hidden sm:block">
                 <div style={{
@@ -111,7 +112,7 @@ export default function Navbar() {
                   fontSize: "0.65rem",
                   letterSpacing: "0.3em",
                   textTransform: "uppercase",
-                  color: "#D4A373",
+                  color: "var(--brand-champagne)",
                   marginTop: "2px",
                   fontWeight: 500,
                 }}>
@@ -141,8 +142,8 @@ export default function Navbar() {
                     }}
                     onMouseEnter={(e) => {
                       if (!isActive) {
-                        e.currentTarget.style.color = scrolled ? "#0F172A" : "#F0E6D3";
-                        e.currentTarget.style.borderBottom = `2px solid ${scrolled ? "#E2C99A" : "rgba(212,163,115,0.6)"}`;
+                        e.currentTarget.style.color = "var(--brand-ink)";
+                        e.currentTarget.style.borderBottom = "2px solid var(--brand-champagne-soft)";
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -169,18 +170,18 @@ export default function Navbar() {
               href="/contact"
               className="hidden md:block px-5 py-2 rounded text-sm font-medium transition-all duration-200"
               style={{
-                backgroundColor: "#D4A373",
+                backgroundColor: "var(--brand-champagne)",
                 color: "#FFFFFF",
                 textDecoration: "none",
                 letterSpacing: "0.05em",
                 fontFamily: "'Montserrat', sans-serif",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#B8915F";
-                e.currentTarget.style.boxShadow = "0 4px 12px rgba(212, 163, 115, 0.35)";
+                e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(184, 145, 90, 0.35)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#D4A373";
+                e.currentTarget.style.backgroundColor = "var(--brand-champagne)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
@@ -192,8 +193,8 @@ export default function Navbar() {
               className="md:hidden p-2 rounded transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               style={{
-                color: scrolled ? "#0F172A" : "#FFFFFF",
-                backgroundColor: mobileOpen ? "rgba(248,245,240,0.9)" : "transparent",
+                color: "var(--brand-ink)",
+                backgroundColor: mobileOpen ? "rgba(247,245,240,0.9)" : "transparent",
                 transition: "color 0.3s ease",
               }}
             >
@@ -211,7 +212,7 @@ export default function Navbar() {
             backgroundColor: "rgba(255,255,255,0.97)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            borderBottom: "1px solid #E2E8F0",
+            borderBottom: "1px solid var(--brand-border)",
             boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
           }}
         >
@@ -222,11 +223,11 @@ export default function Navbar() {
                 href={link.href}
                 className="text-sm font-medium transition-colors"
                 style={{
-                  color: location === link.href ? "#D4A373" : "#475569",
+                  color: location === link.href ? "var(--brand-champagne)" : "var(--brand-ink-3)",
                   textDecoration: "none",
                   fontFamily: "'Montserrat', sans-serif",
                   letterSpacing: "0.04em",
-                  borderLeft: location === link.href ? "3px solid #D4A373" : "3px solid transparent",
+                  borderLeft: location === link.href ? "3px solid var(--brand-champagne)" : "3px solid transparent",
                   paddingLeft: "12px",
                   transition: "all 0.15s ease",
                 }}
@@ -238,7 +239,7 @@ export default function Navbar() {
               href="/contact"
               className="px-4 py-2 rounded text-sm font-medium text-center transition-all"
               style={{
-                backgroundColor: "#D4A373",
+                backgroundColor: "var(--brand-champagne)",
                 color: "#FFFFFF",
                 textDecoration: "none",
                 marginTop: "8px",

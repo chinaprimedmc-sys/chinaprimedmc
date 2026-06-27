@@ -23,10 +23,10 @@ export default function AdminDashboard() {
 
   if (!user || user.role !== "admin") {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="flex items-center justify-center min-h-screen" style={{ backgroundColor: "var(--brand-parchment)" }}>
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
-          <p className="text-gray-600 mb-6">You do not have permission to access this page.</p>
+          <h1 className="text-2xl font-bold mb-4" style={{ color: "var(--brand-ink)" }}>Access Denied</h1>
+          <p className="mb-6" style={{ color: "var(--brand-text-muted)" }}>You do not have permission to access this page.</p>
           <Button onClick={() => navigate("/")} variant="default">
             Return to Home
           </Button>
@@ -40,36 +40,36 @@ export default function AdminDashboard() {
       label: "Total Submissions",
       value: submissions.length,
       icon: Mail,
-      color: "bg-blue-50 text-blue-600",
+      color: "bg-[#EEEAE2] text-[#111827]",
     },
     {
       label: "New",
       value: submissions.filter((s: ContactSubmission) => s.status === "new").length,
       icon: Clock,
-      color: "bg-yellow-50 text-yellow-600",
+      color: "bg-[#F3E9D6] text-[#9A7442]",
     },
     {
       label: "Contacted",
       value: submissions.filter((s: ContactSubmission) => s.status === "contacted").length,
       icon: CheckCircle,
-      color: "bg-green-50 text-green-600",
+      color: "bg-[#E7F0EC] text-[#2F6F5E]",
     },
     {
       label: "Archived",
       value: submissions.filter((s: ContactSubmission) => s.status === "archived").length,
       icon: Users,
-      color: "bg-gray-50 text-gray-600",
+      color: "bg-[#EEEAE2] text-[#374151]",
     },
   ] : [];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ backgroundColor: "var(--brand-parchment)" }}>
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header className="sticky top-0 z-50" style={{ backgroundColor: "var(--brand-surface)", borderBottom: "1px solid var(--brand-border)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-            <p className="text-sm text-gray-600 mt-1">Welcome, {user.name || user.email}</p>
+            <h1 className="text-2xl font-bold" style={{ color: "var(--brand-ink)" }}>Admin Dashboard</h1>
+            <p className="text-sm mt-1" style={{ color: "var(--brand-text-muted)" }}>Welcome, {user.name || user.email}</p>
           </div>
           <Button
             onClick={() => {
@@ -95,8 +95,8 @@ export default function AdminDashboard() {
               <Card key={idx} className="p-6">
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">{stat.label}</p>
-                    <p className="text-3xl font-bold text-gray-900 mt-2">{stat.value}</p>
+                    <p className="text-sm font-medium" style={{ color: "var(--brand-text-muted)" }}>{stat.label}</p>
+                    <p className="text-3xl font-bold mt-2" style={{ color: "var(--brand-ink)" }}>{stat.value}</p>
                   </div>
                   <div className={`p-3 rounded-lg ${stat.color}`}>
                     <Icon size={24} />
@@ -112,27 +112,27 @@ export default function AdminDashboard() {
           <Card className="p-6 hover:shadow-lg transition cursor-pointer" onClick={() => navigate("/admin/contact-submissions")}>
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">Contact Submissions</h3>
-                <p className="text-sm text-gray-600 mt-2">View and manage all customer inquiries</p>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--brand-ink)" }}>Contact Submissions</h3>
+                <p className="text-sm mt-2" style={{ color: "var(--brand-text-muted)" }}>View and manage all customer inquiries</p>
               </div>
-              <Mail size={32} className="text-blue-600" />
+              <Mail size={32} style={{ color: "var(--brand-champagne)" }} />
             </div>
           </Card>
 
           <Card className="p-6 opacity-50">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">Journeys Management</h3>
-                <p className="text-sm text-gray-600 mt-2">Coming soon...</p>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--brand-ink)" }}>Journeys Management</h3>
+                <p className="text-sm mt-2" style={{ color: "var(--brand-text-muted)" }}>Coming soon...</p>
               </div>
-              <Users size={32} className="text-gray-400" />
+              <Users size={32} style={{ color: "var(--brand-border)" }} />
             </div>
           </Card>
         </div>
 
         {/* Recent Submissions */}
         <Card className="p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Submissions</h2>
+          <h2 className="text-lg font-semibold mb-4" style={{ color: "var(--brand-ink)" }}>Recent Submissions</h2>
           {isLoading ? (
             <div className="flex items-center justify-center py-8">
               <Loader2 className="animate-spin" size={32} />
@@ -141,28 +141,28 @@ export default function AdminDashboard() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">Name</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">Email</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">Date</th>
+                  <tr style={{ borderBottom: "1px solid var(--brand-border)" }}>
+                    <th className="text-left py-3 px-4 font-semibold" style={{ color: "var(--brand-ink-3)" }}>Name</th>
+                    <th className="text-left py-3 px-4 font-semibold" style={{ color: "var(--brand-ink-3)" }}>Email</th>
+                    <th className="text-left py-3 px-4 font-semibold" style={{ color: "var(--brand-ink-3)" }}>Status</th>
+                    <th className="text-left py-3 px-4 font-semibold" style={{ color: "var(--brand-ink-3)" }}>Date</th>
                   </tr>
                 </thead>
                 <tbody>
                   {submissions.slice(0, 5).map((submission: ContactSubmission) => (
-                    <tr key={submission.id} className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer" onClick={() => navigate("/admin/contact-submissions")}>
-                      <td className="py-3 px-4 text-gray-900">{submission.name}</td>
-                      <td className="py-3 px-4 text-gray-600">{submission.email}</td>
+                    <tr key={submission.id} className="cursor-pointer" style={{ borderBottom: "1px solid rgba(216, 210, 198, 0.55)" }} onClick={() => navigate("/admin/contact-submissions")}>
+                      <td className="py-3 px-4" style={{ color: "var(--brand-ink)" }}>{submission.name}</td>
+                      <td className="py-3 px-4" style={{ color: "var(--brand-text-muted)" }}>{submission.email}</td>
                       <td className="py-3 px-4">
                         <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          submission.status === "new" ? "bg-blue-100 text-blue-800" :
-                          submission.status === "contacted" ? "bg-green-100 text-green-800" :
-                          "bg-gray-100 text-gray-800"
+                          submission.status === "new" ? "bg-[#F3E9D6] text-[#9A7442]" :
+                          submission.status === "contacted" ? "bg-[#E7F0EC] text-[#2F6F5E]" :
+                          "bg-[#EEEAE2] text-[#374151]"
                         }`}>
                           {submission.status}
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-gray-600 text-sm">
+                      <td className="py-3 px-4 text-sm" style={{ color: "var(--brand-text-muted)" }}>
                         {new Date(submission.createdAt).toLocaleDateString()}
                       </td>
                     </tr>
@@ -171,7 +171,7 @@ export default function AdminDashboard() {
               </table>
             </div>
           ) : (
-            <p className="text-gray-600 text-center py-8">No submissions yet</p>
+            <p className="text-center py-8" style={{ color: "var(--brand-text-muted)" }}>No submissions yet</p>
           )}
           {submissions && submissions.length > 5 && (
             <Button

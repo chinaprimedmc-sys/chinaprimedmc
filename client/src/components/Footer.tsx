@@ -1,16 +1,14 @@
 /**
- * Footer — Light Editorial Luxury Design System
- * Pure white background + deep navy text + gold accents
+ * Footer — quiet B2B brand surface
+ * Parchment background, deep ink text, and restrained champagne accents.
  */
 import { Link } from "wouter";
 import { WHATSAPP_URL, EMAIL } from "@/lib/data";
 
-const LOGO_URL = "/manus-storage/china-prime-logo_05497ab4.png";
-
 export default function Footer() {
   return (
     <footer
-      style={{ backgroundColor: "#F8F5F0", borderTop: "1px solid #E2E8F0" }}
+      style={{ backgroundColor: "var(--brand-parchment)", borderTop: "1px solid var(--brand-border)" }}
     >
       {/* Main Footer */}
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
@@ -18,24 +16,38 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <img src={LOGO_URL} alt="China Prime DMC" className="w-12 h-12 object-contain" />
+              <div
+                aria-hidden="true"
+                className="flex h-12 w-12 items-center justify-center"
+                style={{
+                  backgroundColor: "var(--brand-ink)",
+                  border: "1px solid var(--brand-ink)",
+                  color: "var(--brand-champagne-soft)",
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: "1.25rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.02em",
+                }}
+              >
+                CP
+              </div>
               <div>
-                <div className="font-display text-lg" style={{ color: "#0F172A", fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <div className="font-display text-lg" style={{ color: "var(--brand-ink)", fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   China Prime
                 </div>
-                <div className="font-label text-[9px] tracking-[0.25em] uppercase" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
+                <div className="font-label text-[9px] tracking-[0.25em] uppercase" style={{ color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
                   DMC
                 </div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed mb-6" style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif" }}>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif" }}>
               China ground services for travel advisors, tour operators, DMC partners, and corporate travel teams. Established in 2012.
             </p>
             <div className="space-y-2">
-              <p className="font-label text-[10px] tracking-[0.15em] uppercase mb-3" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
+              <p className="font-label text-[10px] tracking-[0.15em] uppercase mb-3" style={{ color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
                 Operated By
               </p>
-              <p className="text-xs" style={{ color: "#0F172A", fontFamily: "'Lora', Georgia, serif" }}>
+              <p className="text-xs" style={{ color: "var(--brand-ink)", fontFamily: "'Lora', Georgia, serif" }}>
                 Youyouhui Travel Services Co., Ltd.
               </p>
             </div>
@@ -43,7 +55,7 @@ export default function Footer() {
 
           {/* Explore */}
           <div>
-            <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
+            <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
               For Partners
             </h4>
             <ul className="space-y-3">
@@ -58,9 +70,9 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     className="text-sm transition-colors duration-200"
-                    style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif", textDecoration: "none" }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = "#D4A373"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = "#475569"; }}
+                    style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif", textDecoration: "none" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "var(--brand-ink-3)"; }}
                   >
                     {link.label}
                   </Link>
@@ -71,7 +83,7 @@ export default function Footer() {
 
           {/* Destinations */}
           <div>
-            <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
+            <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
               China Coverage
             </h4>
             <ul className="space-y-3">
@@ -80,9 +92,9 @@ export default function Footer() {
                   <Link
                     href={`/destinations/${dest.toLowerCase().replace("'", "").replace(" ", "-")}`}
                     className="text-sm transition-colors duration-200"
-                    style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif", textDecoration: "none" }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = "#D4A373"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = "#475569"; }}
+                    style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif", textDecoration: "none" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "var(--brand-ink-3)"; }}
                   >
                     {dest}
                   </Link>
@@ -93,10 +105,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
+            <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
               Partner Desk
             </h4>
-            <p className="text-sm leading-relaxed mb-6" style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif" }}>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif" }}>
               Send us your China brief. We respond fastest on WhatsApp and email.
             </p>
             <a
@@ -105,18 +117,18 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="block text-xs text-center mb-4 px-4 py-2 rounded transition-all"
               style={{
-                backgroundColor: "#D4A373",
+                backgroundColor: "var(--brand-champagne)",
                 color: "#FFFFFF",
                 textDecoration: "none",
                 fontWeight: 500,
                 letterSpacing: "0.05em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#B8915F";
-                e.currentTarget.style.boxShadow = "0 4px 12px rgba(212, 163, 115, 0.15)";
+                e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(184, 145, 90, 0.15)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#D4A373";
+                e.currentTarget.style.backgroundColor = "var(--brand-champagne)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
@@ -127,14 +139,14 @@ export default function Footer() {
               className="block text-xs text-center px-4 py-2 rounded transition-all"
               style={{
                 backgroundColor: "transparent",
-                color: "#0F172A",
-                border: "1px solid #0F172A",
+                color: "var(--brand-ink)",
+                border: "1px solid var(--brand-ink)",
                 textDecoration: "none",
                 fontWeight: 500,
                 letterSpacing: "0.05em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#F8F5F0";
+                e.currentTarget.style.backgroundColor = "var(--brand-parchment)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "transparent";
@@ -147,12 +159,12 @@ export default function Footer() {
       </div>
 
       {/* Divider */}
-      <div style={{ height: "1px", backgroundColor: "#E2E8F0" }} />
+      <div style={{ height: "1px", backgroundColor: "var(--brand-border)" }} />
 
       {/* Bottom bar */}
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs" style={{ color: "#94A3B8", fontFamily: "'Montserrat', sans-serif" }}>
+            <p className="text-xs" style={{ color: "var(--brand-text-muted)", fontFamily: "'Montserrat', sans-serif" }}>
             © {new Date().getFullYear()} China Prime DMC. All rights reserved. | {EMAIL}
           </p>
           <div className="flex items-center gap-6">
@@ -161,9 +173,9 @@ export default function Footer() {
                 key={item}
                 href="#"
                 className="text-xs transition-colors duration-200"
-                style={{ color: "#94A3B8", fontFamily: "'Montserrat', sans-serif", textDecoration: "none" }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = "#D4A373"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = "#94A3B8"; }}
+                style={{ color: "var(--brand-text-muted)", fontFamily: "'Montserrat', sans-serif", textDecoration: "none" }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "var(--brand-text-muted)"; }}
               >
                 {item}
               </a>

@@ -65,9 +65,9 @@ export default function BlogPost() {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#FFFFFF", paddingTop: "72px" }}>
         <div className="text-center">
-          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2rem", color: "#0F0F0F", marginBottom: "24px" }}>Article not found</h2>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2rem", color: "var(--brand-text)", marginBottom: "24px" }}>Article not found</h2>
           <Link href="/blog" className="inline-flex items-center gap-2" style={{
-            backgroundColor: "#B8860B",
+            backgroundColor: "var(--brand-champagne)",
             color: "#FFFFFF",
             padding: "12px 24px",
             borderRadius: "50px",
@@ -85,22 +85,22 @@ export default function BlogPost() {
   const paragraphs = content.split("\n\n").filter(Boolean);
 
   return (
-    <div style={{ backgroundColor: "#FFFFFF", color: "#0F0F0F", paddingTop: "72px" }}>
+    <div style={{ backgroundColor: "#FFFFFF", color: "var(--brand-text)", paddingTop: "72px" }}>
       {/* ══════════════════════════════════════════════════════════════
           HERO SECTION
           ══════════════════════════════════════════════════════════════ */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden flex items-end">
         <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15, 15, 15, 0.4) 0%, rgba(15, 15, 15, 0.1) 60%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.4) 0%, rgba(17, 24, 39, 0.1) 60%)" }} />
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pb-20 w-full">
-          <Link href="/blog" className="inline-flex items-center gap-2 mb-6 text-xs tracking-[0.15em] uppercase transition-colors" style={{ color: "#F0F0F0", fontFamily: "'Montserrat', sans-serif" }} onMouseEnter={(e) => { e.currentTarget.style.color = "#B8860B"; }} onMouseLeave={(e) => { e.currentTarget.style.color = "#F0F0F0"; }}>
+          <Link href="/blog" className="inline-flex items-center gap-2 mb-6 text-xs tracking-[0.15em] uppercase transition-colors" style={{ color: "#F7F5F0", fontFamily: "'Montserrat', sans-serif" }} onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }} onMouseLeave={(e) => { e.currentTarget.style.color = "#F7F5F0"; }}>
             <ArrowLeft size={12} /> All Articles
           </Link>
           <div className="flex flex-wrap items-center gap-4 mb-6">
-            <span style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", fontFamily: "'Montserrat', sans-serif", fontWeight: 600 }}>
+            <span style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontWeight: 600 }}>
               {post.category}
             </span>
-            <div className="flex items-center gap-2" style={{ fontSize: "0.75rem", color: "#F0F0F0", fontFamily: "'Montserrat', sans-serif" }}>
+            <div className="flex items-center gap-2" style={{ fontSize: "0.75rem", color: "#F7F5F0", fontFamily: "'Montserrat', sans-serif" }}>
               <Clock size={12} /> {post.readTime}
             </div>
           </div>
@@ -116,17 +116,17 @@ export default function BlogPost() {
       <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[800px] mx-auto">
           <FadeSection>
-            <div className="prose prose-lg max-w-none" style={{ color: "#6B6B6B", fontFamily: "'Lora', Georgia, serif" }}>
+            <div className="prose prose-lg max-w-none" style={{ color: "var(--brand-text-muted)", fontFamily: "'Lora', Georgia, serif" }}>
               {paragraphs.map((para, i) => {
                 if (para.startsWith("##")) {
                   return (
-                    <h2 key={i} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2rem", fontWeight: 400, color: "#0F0F0F", marginTop: "2rem", marginBottom: "1rem", letterSpacing: "-0.01em" }}>
+                    <h2 key={i} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2rem", fontWeight: 400, color: "var(--brand-text)", marginTop: "2rem", marginBottom: "1rem", letterSpacing: "-0.01em" }}>
                       {para.replace("## ", "")}
                     </h2>
                   );
                 }
                 return (
-                  <p key={i} style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem", color: "#6B6B6B" }}>
+                  <p key={i} style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem", color: "var(--brand-text-muted)" }}>
                     {para}
                   </p>
                 );
@@ -135,14 +135,14 @@ export default function BlogPost() {
           </FadeSection>
 
           {/* Tags */}
-          <div className="mt-12 pt-8" style={{ borderTop: "1px solid #E5E3E0" }}>
+          <div className="mt-12 pt-8" style={{ borderTop: "1px solid var(--brand-border)" }}>
             <div className="flex flex-wrap gap-2 items-center">
-              <Tag size={16} style={{ color: "#B8860B" }} />
+              <Tag size={16} style={{ color: "var(--brand-champagne)" }} />
               {post.tags.map((tag) => (
                 <span key={tag} style={{
                   display: "inline-block",
-                  backgroundColor: "#F9F7F4",
-                  color: "#B8860B",
+                  backgroundColor: "var(--brand-parchment)",
+                  color: "var(--brand-champagne)",
                   padding: "6px 12px",
                   borderRadius: "20px",
                   fontSize: "0.85rem",
@@ -155,16 +155,16 @@ export default function BlogPost() {
           </div>
 
           {/* CTA */}
-          <div className="mt-16 p-8 rounded-lg" style={{ backgroundColor: "#F9F7F4", border: "1px solid #E5E3E0" }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.8rem", fontWeight: 400, color: "#0F0F0F", marginBottom: "12px" }}>
+          <div className="mt-16 p-8 rounded-lg" style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)" }}>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.8rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "12px" }}>
               Interested in exploring China?
             </h3>
-            <p style={{ fontSize: "0.95rem", color: "#6B6B6B", marginBottom: "16px", lineHeight: 1.7 }}>
+            <p style={{ fontSize: "0.95rem", color: "var(--brand-text-muted)", marginBottom: "16px", lineHeight: 1.7 }}>
               Our team of specialists would love to help you design a journey based on the insights from this article. Contact us for a complimentary consultation.
             </p>
             <div className="flex gap-4 flex-wrap">
               <Link href="/contact" className="inline-flex items-center gap-2" style={{
-                backgroundColor: "#B8860B",
+                backgroundColor: "var(--brand-champagne)",
                 color: "#FFFFFF",
                 padding: "12px 24px",
                 borderRadius: "50px",
@@ -172,12 +172,12 @@ export default function BlogPost() {
                 fontWeight: 500,
                 fontSize: "0.95rem",
                 transition: "all 0.3s ease",
-              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#A67C0A"; e.currentTarget.style.transform = "scale(1.05)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#B8860B"; e.currentTarget.style.transform = "scale(1)"; }}>
+              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)"; e.currentTarget.style.transform = "scale(1.05)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.transform = "scale(1)"; }}>
                 Get in Touch <ArrowRight size={16} />
               </Link>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2" style={{
-                border: "2px solid #B8860B",
-                color: "#B8860B",
+                border: "2px solid var(--brand-champagne)",
+                color: "var(--brand-champagne)",
                 padding: "10px 20px",
                 borderRadius: "50px",
                 textDecoration: "none",
@@ -185,7 +185,7 @@ export default function BlogPost() {
                 fontSize: "0.95rem",
                 transition: "all 0.3s ease",
                 backgroundColor: "transparent",
-              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#B8860B"; e.currentTarget.style.color = "#FFFFFF"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#B8860B"; }}>
+              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.color = "#FFFFFF"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "var(--brand-champagne)"; }}>
                 WhatsApp
               </a>
             </div>
@@ -197,13 +197,13 @@ export default function BlogPost() {
           RELATED ARTICLES
           ══════════════════════════════════════════════════════════════ */}
       {related.length > 0 && (
-        <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#F9F7F4", borderTop: "1px solid #E5E3E0" }}>
+        <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "var(--brand-parchment)", borderTop: "1px solid var(--brand-border)" }}>
           <div className="max-w-[1400px] mx-auto">
             <FadeSection className="mb-16 text-center">
-              <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "12px", fontWeight: 600 }}>
+              <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
                 More Insights
               </div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "#0F0F0F", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
                 Related Articles
               </h2>
             </FadeSection>
@@ -212,16 +212,16 @@ export default function BlogPost() {
               {related.map((article, i) => (
                 <FadeSection key={article.id} delay={i * 80}>
                   <Link href={`/blog/${article.id}`} style={{ textDecoration: "none" }}>
-                    <div style={{ backgroundColor: "#FFFFFF", border: "1px solid #E5E3E0", borderRadius: "8px", overflow: "hidden", transition: "all 0.3s ease", cursor: "pointer" }} onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.08)"; }} onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
+                    <div style={{ backgroundColor: "#FFFFFF", border: "1px solid var(--brand-border)", borderRadius: "8px", overflow: "hidden", transition: "all 0.3s ease", cursor: "pointer" }} onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.08)"; }} onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
                       <img src={article.image} alt={article.title} style={{ width: "100%", height: "200px", objectFit: "cover" }} />
                       <div style={{ padding: "20px" }}>
-                        <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#B8860B", marginBottom: "8px", fontWeight: 600 }}>
+                        <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "8px", fontWeight: 600 }}>
                           {article.category}
                         </div>
-                        <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.2rem", fontWeight: 400, color: "#0F0F0F", marginBottom: "8px", lineHeight: 1.3 }}>
+                        <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.2rem", fontWeight: 400, color: "var(--brand-text)", marginBottom: "8px", lineHeight: 1.3 }}>
                           {article.title}
                         </h3>
-                        <p style={{ fontSize: "0.85rem", color: "#6B6B6B", lineHeight: 1.6 }}>
+                        <p style={{ fontSize: "0.85rem", color: "var(--brand-text-muted)", lineHeight: 1.6 }}>
                           {article.excerpt}
                         </p>
                       </div>

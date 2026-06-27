@@ -43,42 +43,56 @@
 }
 
 :root {
-  /* 方案 B：现代极简奢华 */
-  --primary: #B8860B;
+  /* China Prime DMC B2B palette: deep ink, warm champagne, quiet trade neutrals */
+  --brand-ink: #111827;
+  --brand-ink-2: #1F2937;
+  --brand-ink-3: #374151;
+  --brand-champagne: #B8915A;
+  --brand-champagne-hover: #9A7442;
+  --brand-champagne-soft: #E8D8BD;
+  --brand-parchment: #F7F5F0;
+  --brand-surface: #FFFFFF;
+  --brand-surface-muted: #EEEAE2;
+  --brand-border: #D8D2C6;
+  --brand-text: #111827;
+  --brand-text-muted: #6B7280;
+  --brand-success: #2F6F5E;
+  --brand-danger: #9F3A38;
+
+  --primary: var(--brand-ink);
   --primary-foreground: #FFFFFF;
-  --sidebar-primary: #B8860B;
+  --sidebar-primary: var(--brand-ink);
   --sidebar-primary-foreground: #FFFFFF;
-  --chart-1: #D4AF37;
-  --chart-2: #B8860B;
-  --chart-3: #8B6914;
-  --chart-4: #6B5410;
-  --chart-5: #4B3410;
+  --chart-1: var(--brand-champagne);
+  --chart-2: var(--brand-success);
+  --chart-3: var(--brand-ink-3);
+  --chart-4: var(--brand-champagne-hover);
+  --chart-5: var(--brand-ink);
   --radius: 0.5rem;
   
-  /* 浅色主题 - 纯白背景 */
-  --background: #FFFFFF;
-  --foreground: #0F0F0F;
-  --card: #F9F7F4;
-  --card-foreground: #0F0F0F;
-  --popover: #FFFFFF;
-  --popover-foreground: #0F0F0F;
-  --secondary: #F9F7F4;
-  --secondary-foreground: #0F0F0F;
-  --muted: #E5E3E0;
-  --muted-foreground: #6B6B6B;
-  --accent: #B8860B;
+  --background: var(--brand-parchment);
+  --foreground: var(--brand-text);
+  --card: var(--brand-surface);
+  --card-foreground: var(--brand-text);
+  --popover: var(--brand-surface);
+  --popover-foreground: var(--brand-text);
+  --secondary: var(--brand-surface-muted);
+  --secondary-foreground: var(--brand-text);
+  --muted: var(--brand-surface-muted);
+  --muted-foreground: var(--brand-text-muted);
+  --accent: var(--brand-champagne);
   --accent-foreground: #FFFFFF;
-  --destructive: #DC2626;
+  --destructive: var(--brand-danger);
   --destructive-foreground: #FFFFFF;
-  --border: #E5E3E0;
-  --input: #F9F7F4;
-  --ring: #B8860B;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #0F0F0F;
-  --sidebar-accent: #F9F7F4;
-  --sidebar-accent-foreground: #0F0F0F;
-  --sidebar-border: #E5E3E0;
-  --sidebar-ring: #B8860B;
+  --border: var(--brand-border);
+  --input: var(--brand-surface);
+  --ring: var(--brand-champagne);
+  --sidebar: var(--brand-surface);
+  --sidebar-foreground: var(--brand-text);
+  --sidebar-accent: var(--brand-surface-muted);
+  --sidebar-accent-foreground: var(--brand-text);
+  --sidebar-border: var(--brand-border);
+  --sidebar-ring: var(--brand-champagne);
 }
 
 @layer base {
@@ -103,29 +117,29 @@
   
   h1 {
     @apply text-5xl md:text-6xl font-bold tracking-tight;
-    color: #0F0F0F;
+    color: var(--brand-text);
     letter-spacing: -0.02em;
   }
   
   h2 {
     @apply text-4xl md:text-5xl font-bold tracking-tight;
-    color: #0F0F0F;
+    color: var(--brand-text);
     letter-spacing: -0.02em;
   }
   
   h3 {
     @apply text-2xl md:text-3xl font-semibold;
-    color: #0F0F0F;
+    color: var(--brand-text);
   }
   
   h4 {
     @apply text-xl md:text-2xl font-semibold;
-    color: #0F0F0F;
+    color: var(--brand-text);
   }
   
   p {
     @apply text-base md:text-lg leading-relaxed;
-    color: #6B6B6B;
+    color: var(--brand-text-muted);
   }
 }
 
@@ -161,40 +175,40 @@
   /* Apple 风格按钮 */
   .btn-primary {
     @apply px-8 py-3 rounded-full font-semibold text-white transition-all duration-200;
-    background-color: #B8860B;
+    background-color: var(--brand-champagne);
   }
   
   .btn-primary:hover {
-    background-color: #A67C0A;
+    background-color: var(--brand-champagne-hover);
     transform: scale(1.02);
   }
   
   .btn-secondary {
     @apply px-8 py-3 rounded-full font-semibold border-2 transition-all duration-200;
-    border-color: #0F0F0F;
-    color: #0F0F0F;
+    border-color: var(--brand-ink);
+    color: var(--brand-ink);
     background-color: transparent;
   }
   
   .btn-secondary:hover {
-    background-color: #F9F7F4;
+    background-color: var(--brand-parchment);
   }
   
   /* 文本样式 */
   .text-muted {
-    color: #6B6B6B;
+    color: var(--brand-text-muted);
   }
   
   .text-primary {
-    color: #0F0F0F;
+    color: var(--brand-text);
   }
   
   .text-accent {
-    color: #B8860B;
+    color: var(--brand-champagne);
   }
 
   .b2b-eyebrow {
-    color: #B8860B;
+    color: var(--brand-champagne);
     font-family: 'Montserrat', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
@@ -204,7 +218,7 @@
   }
 
   .b2b-heading {
-    color: #111827;
+    color: var(--brand-text);
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(2.25rem, 4.4vw, 4.25rem);
     font-weight: 300;
@@ -214,7 +228,7 @@
   }
 
   .b2b-lede {
-    color: #5F6673;
+    color: var(--brand-text-muted);
     font-family: 'Lora', Georgia, serif;
     font-size: clamp(1rem, 1.5vw, 1.18rem);
     line-height: 1.75;
@@ -223,7 +237,7 @@
   }
 
   .b2b-card-title {
-    color: #111827;
+    color: var(--brand-text);
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 1.45rem;
     font-weight: 500;
@@ -233,7 +247,7 @@
   }
 
   .b2b-body {
-    color: #5F6673;
+    color: var(--brand-text-muted);
     font-family: 'Lora', Georgia, serif;
     font-size: 0.96rem;
     line-height: 1.72;
@@ -241,7 +255,7 @@
   
   /* 分隔线 */
   .divider {
-    background-color: #E5E3E0;
+    background-color: var(--brand-border);
   }
 }
 

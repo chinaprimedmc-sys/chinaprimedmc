@@ -79,10 +79,10 @@ export default function Contact() {
 
   const inputStyle: React.CSSProperties = {
     backgroundColor: "#FFFFFF",
-    border: "1px solid #D9D4CC",
+    border: "1px solid var(--brand-border)",
     borderRadius: "6px",
     boxSizing: "border-box",
-    color: "#111827",
+    color: "var(--brand-text)",
     fontFamily: "'Lora', Georgia, serif",
     fontSize: "0.95rem",
     outline: "none",
@@ -91,7 +91,7 @@ export default function Contact() {
   };
 
   const labelStyle: React.CSSProperties = {
-    color: "#6B7280",
+    color: "var(--brand-text-muted)",
     display: "block",
     fontFamily: "'Montserrat', sans-serif",
     fontSize: "0.72rem",
@@ -103,7 +103,7 @@ export default function Contact() {
 
   return (
     <main style={{ backgroundColor: "#FFFFFF", paddingTop: "72px" }}>
-      <section style={{ backgroundColor: "#0F172A", padding: "92px 24px" }}>
+      <section style={{ backgroundColor: "var(--brand-ink)", padding: "92px 24px" }}>
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 md:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="b2b-eyebrow">Partner quote desk</p>
@@ -120,7 +120,7 @@ export default function Contact() {
             >
               Send us your China brief.
             </h1>
-            <p className="b2b-lede" style={{ color: "#CBD5E1" }}>
+            <p className="b2b-lede" style={{ color: "#CBD2DC" }}>
               Share the essentials and our partner desk will respond with routing advice, feasibility notes, and next-step quote requirements.
             </p>
           </div>
@@ -133,8 +133,8 @@ export default function Contact() {
               { icon: <Briefcase size={20} />, label: "Best for", value: "B2B, groups, FIT, MICE", href: null },
             ].map((item) => (
               <div key={item.label} style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", padding: 22 }}>
-                <div style={{ color: "#D4A373", marginBottom: 12 }}>{item.icon}</div>
-                <p style={{ color: "#94A3B8", fontFamily: "'Montserrat', sans-serif", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 6, textTransform: "uppercase" }}>
+                <div style={{ color: "var(--brand-champagne)", marginBottom: 12 }}>{item.icon}</div>
+                <p style={{ color: "var(--brand-champagne-soft)", fontFamily: "'Montserrat', sans-serif", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 6, textTransform: "uppercase" }}>
                   {item.label}
                 </p>
                 {item.href ? (
@@ -165,14 +165,14 @@ export default function Contact() {
                 "Special needs: halal, accessibility, VIP, education, MICE",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <Send size={16} style={{ color: "#D4A373", flexShrink: 0, marginTop: 5 }} />
+                  <Send size={16} style={{ color: "var(--brand-champagne)", flexShrink: 0, marginTop: 5 }} />
                   <p className="b2b-body" style={{ margin: 0 }}>{item}</p>
                 </div>
               ))}
             </div>
           </aside>
 
-          <form onSubmit={handleSubmit} style={{ backgroundColor: "#F7F4EF", border: "1px solid #E5E0D8", padding: "clamp(24px, 4vw, 42px)" }}>
+          <form onSubmit={handleSubmit} style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)", padding: "clamp(24px, 4vw, 42px)" }}>
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
                 <label style={labelStyle}>Full name *</label>
@@ -255,13 +255,13 @@ export default function Contact() {
             </div>
 
             {error && (
-              <div style={{ backgroundColor: "#FEF2F2", border: "1px solid #FCA5A5", color: "#B91C1C", fontFamily: "'Lora', Georgia, serif", fontSize: "0.92rem", marginBottom: 18, padding: "12px 14px" }}>
+              <div style={{ backgroundColor: "#FEF2F2", border: "1px solid #FCA5A5", color: "var(--brand-danger)", fontFamily: "'Lora', Georgia, serif", fontSize: "0.92rem", marginBottom: 18, padding: "12px 14px" }}>
                 {error}
               </div>
             )}
 
             {submitted && (
-              <div style={{ backgroundColor: "#ECFDF5", border: "1px solid #86EFAC", color: "#166534", fontFamily: "'Lora', Georgia, serif", fontSize: "0.92rem", marginBottom: 18, padding: "12px 14px" }}>
+              <div style={{ backgroundColor: "#ECFDF5", border: "1px solid #86EFAC", color: "var(--brand-success)", fontFamily: "'Lora', Georgia, serif", fontSize: "0.92rem", marginBottom: 18, padding: "12px 14px" }}>
                 Your email app should open with the prepared brief. You can also send it by WhatsApp below.
               </div>
             )}
@@ -271,7 +271,7 @@ export default function Contact() {
                 type="submit"
                 style={{
                   alignItems: "center",
-                  backgroundColor: "#D4A373",
+                  backgroundColor: "var(--brand-champagne)",
                   border: "none",
                   borderRadius: "999px",
                   color: "#FFFFFF",
@@ -292,9 +292,9 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 style={{
                   alignItems: "center",
-                  border: "1px solid #111827",
+                  border: "1px solid var(--brand-text)",
                   borderRadius: "999px",
-                  color: "#111827",
+                  color: "var(--brand-text)",
                   display: "inline-flex",
                   fontFamily: "'Montserrat', sans-serif",
                   fontSize: "0.92rem",

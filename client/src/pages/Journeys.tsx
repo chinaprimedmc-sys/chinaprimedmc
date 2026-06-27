@@ -51,17 +51,17 @@ export default function Journeys() {
       );
 
   return (
-    <div style={{ backgroundColor: "#FFFFFF", color: "#0F172A", paddingTop: "72px" }}>
+    <div style={{ backgroundColor: "#FFFFFF", color: "var(--brand-ink)", paddingTop: "72px" }}>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="py-24 border-b" style={{ backgroundColor: "#F8F5F0", borderColor: "#E2E8F0" }}>
+      <section className="py-24 border-b" style={{ backgroundColor: "var(--brand-parchment)", borderColor: "var(--brand-border)" }}>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <FadeSection>
-            <div className="text-xs tracking-[0.2em] uppercase mb-4" style={{ fontFamily: "'Montserrat', sans-serif", color: "#D4A373", fontWeight: 500 }}>Curated Experiences</div>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3.5rem", fontWeight: 300, color: "#0F172A", marginBottom: "16px" }}>
+            <div className="text-xs tracking-[0.2em] uppercase mb-4" style={{ fontFamily: "'Montserrat', sans-serif", color: "var(--brand-champagne)", fontWeight: 500 }}>Curated Experiences</div>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "3.5rem", fontWeight: 300, color: "var(--brand-ink)", marginBottom: "16px" }}>
               Curated Journeys
             </h1>
-            <p style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: "700px" }}>
+            <p style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: "700px" }}>
               Each journey is a carefully crafted narrative — not a list of sights, but a story to be lived. Every itinerary can be adapted entirely to your interests, pace, and travel philosophy.
             </p>
           </FadeSection>
@@ -79,19 +79,19 @@ export default function Journeys() {
                   onClick={() => toggleCategory(cat)}
                   className="px-5 py-2 rounded transition-all text-sm font-medium"
                   style={{
-                    backgroundColor: selectedCategories.includes(cat) ? "#D4A373" : "#F8F5F0",
-                    color: selectedCategories.includes(cat) ? "#FFFFFF" : "#0F172A",
-                    border: selectedCategories.includes(cat) ? "none" : "1px solid #E2E8F0",
+                    backgroundColor: selectedCategories.includes(cat) ? "var(--brand-champagne)" : "var(--brand-parchment)",
+                    color: selectedCategories.includes(cat) ? "#FFFFFF" : "var(--brand-ink)",
+                    border: selectedCategories.includes(cat) ? "none" : "1px solid var(--brand-border)",
                     letterSpacing: "0.05em",
                   }}
                   onMouseEnter={(e) => {
                     if (!selectedCategories.includes(cat)) {
-                      e.currentTarget.style.backgroundColor = "#E2E8F0";
+                      e.currentTarget.style.backgroundColor = "var(--brand-border)";
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!selectedCategories.includes(cat)) {
-                      e.currentTarget.style.backgroundColor = "#F8F5F0";
+                      e.currentTarget.style.backgroundColor = "var(--brand-parchment)";
                     }
                   }}
                 >
@@ -114,20 +114,20 @@ export default function Journeys() {
                     <img src={journey.image} alt={journey.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="flex items-center gap-4 mb-4">
-                    <span className="text-xs tracking-[0.1em] uppercase px-3 py-1 rounded" style={{ backgroundColor: "#F8F5F0", color: "#0F172A", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
+                    <span className="text-xs tracking-[0.1em] uppercase px-3 py-1 rounded" style={{ backgroundColor: "var(--brand-parchment)", color: "var(--brand-ink)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
                       {journey.duration}
                     </span>
-                    <span className="text-xs tracking-[0.1em] uppercase px-3 py-1 rounded" style={{ backgroundColor: "#F8F5F0", color: "#0F172A", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
+                    <span className="text-xs tracking-[0.1em] uppercase px-3 py-1 rounded" style={{ backgroundColor: "var(--brand-parchment)", color: "var(--brand-ink)", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
                       {journey.difficulty}
                     </span>
                   </div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.8rem", fontWeight: 400, color: "#0F172A", marginBottom: "8px" }}>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.8rem", fontWeight: 400, color: "var(--brand-ink)", marginBottom: "8px" }}>
                     {journey.title}
                   </h3>
-                  <p style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif", fontSize: "0.95rem", lineHeight: 1.6, marginBottom: "12px" }}>
+                  <p style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif", fontSize: "0.95rem", lineHeight: 1.6, marginBottom: "12px" }}>
                     {journey.subtitle}
                   </p>
-                  <div className="flex items-center gap-6 text-sm mb-6" style={{ color: "#94A3B8" }}>
+                  <div className="flex items-center gap-6 text-sm mb-6" style={{ color: "var(--brand-text-muted)" }}>
                     <span className="flex items-center gap-2">
                       <Clock size={16} /> {journey.duration}
                     </span>
@@ -135,7 +135,7 @@ export default function Journeys() {
                       <MapPin size={16} /> {journey.destinations?.length || 0} stops
                     </span>
                   </div>
-                  <div className="flex items-center gap-2" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.05em" }}>
+                  <div className="flex items-center gap-2" style={{ color: "var(--brand-champagne)", fontFamily: "'Montserrat', sans-serif", fontSize: "0.85rem", fontWeight: 500, letterSpacing: "0.05em" }}>
                     View Journey <ArrowRight size={14} />
                   </div>
                 </Link>
@@ -146,23 +146,23 @@ export default function Journeys() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="py-24 border-t" style={{ backgroundColor: "#F8F5F0", borderColor: "#E2E8F0" }}>
+      <section className="py-24 border-t" style={{ backgroundColor: "var(--brand-parchment)", borderColor: "var(--brand-border)" }}>
         <div className="max-w-[900px] mx-auto px-6 lg:px-10 text-center">
           <FadeSection>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2.8rem", fontWeight: 300, color: "#0F172A", marginBottom: "16px" }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "2.8rem", fontWeight: 300, color: "var(--brand-ink)", marginBottom: "16px" }}>
               Don't see your perfect journey?
             </h2>
-            <p style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "24px" }}>
+            <p style={{ color: "var(--brand-ink-3)", fontFamily: "'Lora', Georgia, serif", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "24px" }}>
               Every itinerary can be customized. Contact us to discuss your dream China experience.
             </p>
             <Link href="/contact" className="px-6 py-3 rounded transition-all" style={{
-              backgroundColor: "#D4A373",
+              backgroundColor: "var(--brand-champagne)",
               color: "#FFFFFF",
               textDecoration: "none",
               fontWeight: 500,
               letterSpacing: "0.05em",
               display: "inline-block",
-            }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#B8915F"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#D4A373"; }}>
+            }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; }}>
               Customize Your Journey
             </Link>
           </FadeSection>
