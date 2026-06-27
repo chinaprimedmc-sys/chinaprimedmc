@@ -111,7 +111,6 @@ export default function Home() {
   return (
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
       <section className="relative overflow-hidden bg-[var(--brand-white)] px-6 lg:px-10" style={{ paddingBottom: "clamp(72px, 8vw, 108px)", paddingTop: "clamp(62px, 7vw, 104px)" }}>
-        <div aria-hidden="true" className="absolute left-0 top-0 hidden h-full w-[9vw] border-r border-[var(--brand-border)] xl:block" />
         <div className="mono-wrap">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.78fr_0.92fr] lg:items-center">
             <div>
@@ -133,7 +132,7 @@ export default function Home() {
                 China ground operations,
                 <br className="hidden sm:block" /> built for trade.
               </h1>
-              <div className="mt-8 grid max-w-3xl grid-cols-1 gap-7 border-l border-[var(--brand-black)] pl-6 md:grid-cols-[1fr_auto] md:items-end">
+              <div className="mt-8 grid max-w-3xl grid-cols-1 gap-7 md:grid-cols-[1fr_auto] md:items-end">
                 <p className="b2b-lede" style={{ fontSize: "clamp(1.05rem, 1.45vw, 1.22rem)", marginTop: 0, maxWidth: 650 }}>
                   China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, and corporate travel teams.
                 </p>
