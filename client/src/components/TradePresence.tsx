@@ -49,7 +49,7 @@ export default function TradePresence({ variant = "home" }: TradePresenceProps) 
                     <img
                       src={primary.src}
                       alt={primary.alt}
-                      className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.025] group-hover:grayscale-0"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
                       loading="lazy"
                     />
                     <div className="absolute left-4 top-4 bg-[var(--brand-black)] px-3 py-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-white">

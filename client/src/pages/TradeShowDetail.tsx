@@ -142,7 +142,7 @@ export default function TradeShowDetail() {
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
             {supporting.map((image) => (
               <figure key={image.src} className="bg-white">
-                <img src={image.src} alt={image.alt} className="h-72 w-full object-cover grayscale" loading="lazy" />
+                <img src={image.src} alt={image.alt} className="h-72 w-full object-cover" loading="lazy" />
                 <figcaption className="p-4 text-sm leading-6 text-[var(--brand-gray-600)]">{image.caption}</figcaption>
               </figure>
             ))}
