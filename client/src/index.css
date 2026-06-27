@@ -273,11 +273,7 @@
   }
 
   .mono-shell {
-    background:
-      linear-gradient(var(--brand-gray-200) 1px, transparent 1px),
-      linear-gradient(90deg, var(--brand-gray-200) 1px, transparent 1px);
     background-color: var(--brand-white);
-    background-size: 64px 64px;
   }
 
   .mono-section {
