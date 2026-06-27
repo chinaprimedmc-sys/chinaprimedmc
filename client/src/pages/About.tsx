@@ -29,10 +29,10 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 }
 
 const teamMembers = [
-  { name: "David Chen", initials: "DC", role: "Founder & Chief Experience Officer", bio: "Born in Shenzhen, educated in London, David has spent 23 years designing private journeys for discerning international travelers. His philosophy: every journey should change the way you see the world." },
-  { name: "Sarah Liu", initials: "SL", role: "Head of Journey Design", bio: "Former National Geographic photographer and Yunnan specialist. Sarah's deep knowledge of China's minority cultures and remote landscapes shapes our most extraordinary itineraries." },
-  { name: "James Wu", initials: "JW", role: "Tibet & Xinjiang Expert", bio: "With 15 years of experience in China's most challenging destinations, James has led over 200 expeditions to Tibet and the Silk Road. He speaks Tibetan and Uyghur." },
-  { name: "Emma Zhang", initials: "EZ", role: "Guest Experience Director", bio: "Emma ensures every detail of your journey exceeds expectations — from the first conversation to the final farewell. She is your dedicated contact throughout your journey." },
+  { name: "China Operations Desk", initials: "CO", role: "Ground Operations", bio: "Our China-based team coordinates guides, vehicles, hotels, tickets, meals, and on-trip support for overseas travel partners." },
+  { name: "Product Design Team", initials: "PD", role: "Itinerary Design", bio: "The product team turns partner briefs into practical China programs with clear pacing, route logic, and quote-ready service inclusions." },
+  { name: "Regional Supplier Network", initials: "RS", role: "Local Delivery", bio: "We work with licensed local guides, drivers, hotels, restaurants, and attraction partners across China to keep delivery consistent." },
+  { name: "Partner Support Team", initials: "PS", role: "B2B Communication", bio: "Our partner support team handles quotation updates, special requests, dietary needs, and operational follow-up before and during travel." },
 ];
 
 const values = [
@@ -83,10 +83,10 @@ export default function About() {
                 China Prime DMC was founded on a simple belief: that China is the world's most extraordinary travel destination, and that most travelers only scratch its surface.
               </p>
               <p style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem", color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-                We are a team of China specialists — historians, photographers, food experts, and cultural guides — who have spent decades building the relationships and knowledge that make truly extraordinary journeys possible.
+                We are a China-based DMC team supporting global travel advisors, tour operators, wholesalers, corporate travel planners, education groups, and specialist-interest partners.
               </p>
               <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-                Our operator, Youyouhui Travel Services Co., Ltd., has been designing private journeys for international travelers since 2001. In that time, we have welcomed travelers from over 30 countries and designed thousands of completely bespoke itineraries.
+                Our operator, Youyouhui Travel Services Co., Ltd., was established in 2012. Since then, we have focused on practical China ground services, custom itinerary design, and reliable local delivery for overseas partners.
               </p>
             </FadeSection>
 
@@ -103,7 +103,7 @@ export default function About() {
                 {/* 统计网格 */}
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { n: "23+", l: "Years Experience" },
+                    { n: "2012", l: "Established" },
                     { n: "30+", l: "Countries" },
                     { n: "1000s", l: "Journeys" },
                     { n: "24/7", l: "Support" },
@@ -166,14 +166,14 @@ export default function About() {
               </div>
               <div style={{ width: "60px", height: "2px", background: "var(--brand-champagne)", marginBottom: "2rem" }} />
               <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: "var(--brand-text)", lineHeight: 1.15, marginBottom: "2.5rem", letterSpacing: "-0.02em" }}>
-                23 years of relationships<br />
-                <em style={{ color: "var(--brand-champagne)" }}>that open doors</em>
+                China relationships built for<br />
+                <em style={{ color: "var(--brand-champagne)" }}>global B2B delivery</em>
               </h2>
               <div className="space-y-8">
                 {[
-                  { t: "Private Access", d: "We have spent 23 years building relationships that give our travelers access to places and experiences simply not available through other operators — private viewings, after-hours access, and introductions to remarkable people." },
-                  { t: "Local Network", d: "Our network of guides, drivers, hoteliers, and local families spans every province of China. These are not contractors — they are colleagues and friends who share our commitment to extraordinary travel." },
-                  { t: "No Off-The-Shelf Itineraries", d: "Every journey we design begins with a blank page. We do not have standard packages. We have a deep knowledge of China and a commitment to designing journeys that are uniquely yours." },
+                  { t: "B2B Operating Mindset", d: "We design for partners who need quote clarity, reliable execution, realistic pacing, net-rate logic, and fast communication across time zones." },
+                  { t: "Local Network", d: "Our network of licensed guides, drivers, hotels, restaurants, and regional suppliers helps us operate China programs across classic cities and emerging destinations." },
+                  { t: "Flexible Program Design", d: "Every sample program can be rebuilt around your source market, group size, hotel level, meal needs, budget position, and client profile." },
                 ].map((item, i) => (
                   <FadeSection key={item.t} delay={i * 80}>
                     <div className="flex gap-5">

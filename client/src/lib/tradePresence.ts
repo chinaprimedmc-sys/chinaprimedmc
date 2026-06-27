@@ -264,7 +264,7 @@ export const tradeShows: TradeShowPresence[] = [
     summary:
       "China Prime DMC joined ICGTE 2026 Singapore to meet travel trade partners, present China program materials, and discuss how Singapore-based agencies can sell China with stronger routing logic, clearer ground-service support, and partner-ready product language.",
     detailIntro:
-      "Singapore is a compact but influential travel trade market. Agencies there often think regionally, move quickly, and expect supplier conversations to be practical. For China Prime DMC, ICGTE Singapore was less about broad destination promotion and more about sharpening how China is explained, packaged, and supported for professional sellers.",
+      "Singapore is a compact but influential travel trade market. Agencies there often think regionally, move quickly, and expect supplier conversations to be practical. For China Prime DMC, ICGTE Singapore was less about broad destination promotion and more about sharpening how China is explained, packaged, and supported for global B2B travel partners.",
     metaDescription:
       "China Prime DMC at ICGTE 2026 Singapore: China DMC support for Singapore travel agents, regional distribution, fast quoting, white-label itinerary design, and China ground operations.",
     conversationLead: {

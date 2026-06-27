@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
-import { ArrowRight, Clock, Filter, MapPin, SlidersHorizontal, Users } from "lucide-react";
+import { ArrowRight, SlidersHorizontal, X } from "lucide-react";
 import { journeyFilterOptions, journeys } from "@/lib/programData";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -51,20 +51,31 @@ function toggleValue(values: string[], value: string) {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
 }
 
-function FilterButton({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+function FilterSelect({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  options: string[];
+  onChange: (value: string) => void;
+}) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="border px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition-colors"
-      style={{
-        backgroundColor: active ? "var(--brand-black)" : "var(--brand-white)",
-        borderColor: active ? "var(--brand-black)" : "var(--brand-border)",
-        color: active ? "var(--brand-white)" : "var(--brand-gray-700)",
-      }}
-    >
-      {label}
-    </button>
+    <label className="grid gap-2">
+      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-500)]">{label}</span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-12 w-full border border-[var(--brand-border)] bg-white px-3 text-sm font-semibold text-[var(--brand-black)] outline-none transition-colors hover:border-[var(--brand-gray-400)] focus:border-[var(--brand-black)]"
+      >
+        <option value="">All {label.toLowerCase()}</option>
+        {options.map((item) => (
+          <option key={item} value={item}>{item}</option>
+        ))}
+      </select>
+    </label>
   );
 }
 
@@ -91,7 +102,22 @@ export default function Journeys() {
     return filtered;
   }, [destinationFilters, durationFilters, paceFilters, sortKey, themeFilters, travelerFilters]);
 
-  const activeCount = destinationFilters.length + durationFilters.length + themeFilters.length + travelerFilters.length + paceFilters.length;
+  const activeFilters = [
+    ...destinationFilters.map((value) => ({ group: "destination", value })),
+    ...durationFilters.map((value) => ({ group: "duration", value })),
+    ...themeFilters.map((value) => ({ group: "theme", value })),
+    ...travelerFilters.map((value) => ({ group: "traveler", value })),
+    ...paceFilters.map((value) => ({ group: "pace", value })),
+  ];
+  const activeCount = activeFilters.length;
+
+  const removeFilter = (group: string, value: string) => {
+    if (group === "destination") setDestinationFilters(destinationFilters.filter((item) => item !== value));
+    if (group === "duration") setDurationFilters(durationFilters.filter((item) => item !== value));
+    if (group === "theme") setThemeFilters(themeFilters.filter((item) => item !== value));
+    if (group === "traveler") setTravelerFilters(travelerFilters.filter((item) => item !== value));
+    if (group === "pace") setPaceFilters(paceFilters.filter((item) => item !== value));
+  };
 
   const resetFilters = () => {
     setDestinationFilters([]);
@@ -118,81 +144,63 @@ export default function Journeys() {
         </div>
       </section>
 
-      <section className="border-y border-[var(--brand-border)] bg-[var(--brand-gray-50)] px-6 py-7 lg:px-10">
+      <section className="border-y border-[var(--brand-border)] bg-[var(--brand-gray-50)] px-6 py-8 lg:px-10">
         <div className="mono-wrap">
           <FadeSection>
-            <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-[var(--brand-border)] pb-5">
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-10 w-10 items-center justify-center border border-[var(--brand-border)] bg-white">
-                  <SlidersHorizontal size={17} />
+                <span className="inline-flex h-11 w-11 items-center justify-center border border-[var(--brand-border)] bg-white">
+                  <SlidersHorizontal size={18} />
                 </span>
                 <div>
-                  <div className="text-sm font-semibold text-[var(--brand-black)]">Filter programs</div>
-                  <div className="text-xs text-[var(--brand-gray-600)]">{filteredJourneys.length} of {journeys.length} programs shown</div>
+                  <div className="text-base font-semibold text-[var(--brand-black)]">Program finder</div>
+                  <div className="text-sm text-[var(--brand-gray-600)]">{filteredJourneys.length} of {journeys.length} programs shown</div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
-                <select
-                  value={sortKey}
-                  onChange={(event) => setSortKey(event.target.value as SortKey)}
-                  className="h-10 border border-[var(--brand-border)] bg-white px-3 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-gray-700)]"
-                >
-                  <option value="recommended">Recommended</option>
-                  <option value="duration-asc">Shortest first</option>
-                  <option value="duration-desc">Longest first</option>
-                </select>
                 {activeCount > 0 && (
-                  <button type="button" onClick={resetFilters} className="h-10 border border-[var(--brand-border)] bg-white px-4 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-black)]">
-                    Reset {activeCount}
+                  <button type="button" onClick={resetFilters} className="h-11 border border-[var(--brand-border)] bg-white px-4 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-black)] hover:bg-[var(--brand-black)] hover:text-white">
+                    Clear filters
                   </button>
                 )}
               </div>
             </div>
 
-            <div className="grid gap-5">
-              <div>
-                <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-600)]"><MapPin size={13} /> Destination</div>
-                <div className="flex flex-wrap gap-2">
-                  {journeyFilterOptions.destinations.map((item) => (
-                    <FilterButton key={item} label={item} active={destinationFilters.includes(item)} onClick={() => setDestinationFilters(toggleValue(destinationFilters, item))} />
-                  ))}
-                </div>
-              </div>
-              <div className="grid gap-5 lg:grid-cols-3">
-                <div>
-                  <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-600)]"><Clock size={13} /> Duration</div>
-                  <div className="flex flex-wrap gap-2">
-                    {journeyFilterOptions.durationBands.map((item) => (
-                      <FilterButton key={item} label={item} active={durationFilters.includes(item)} onClick={() => setDurationFilters(toggleValue(durationFilters, item))} />
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-600)]"><Filter size={13} /> Pace</div>
-                  <div className="flex flex-wrap gap-2">
-                    {journeyFilterOptions.pace.map((item) => (
-                      <FilterButton key={item} label={item} active={paceFilters.includes(item)} onClick={() => setPaceFilters(toggleValue(paceFilters, item))} />
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-600)]"><Users size={13} /> Traveler</div>
-                  <div className="flex flex-wrap gap-2">
-                    {journeyFilterOptions.travelerTypes.map((item) => (
-                      <FilterButton key={item} label={item} active={travelerFilters.includes(item)} onClick={() => setTravelerFilters(toggleValue(travelerFilters, item))} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-600)]">Theme</div>
-                <div className="flex flex-wrap gap-2">
-                  {journeyFilterOptions.themes.map((item) => (
-                    <FilterButton key={item} label={item} active={themeFilters.includes(item)} onClick={() => setThemeFilters(toggleValue(themeFilters, item))} />
-                  ))}
-                </div>
-              </div>
+            <div className="grid gap-4 lg:grid-cols-[1fr_0.72fr_1fr_1fr_0.7fr_0.72fr]">
+              <FilterSelect label="Destination" value={destinationFilters[0] || ""} options={journeyFilterOptions.destinations} onChange={(value) => setDestinationFilters(value ? [value] : [])} />
+              <FilterSelect label="Duration" value={durationFilters[0] || ""} options={journeyFilterOptions.durationBands} onChange={(value) => setDurationFilters(value ? [value] : [])} />
+              <FilterSelect label="Theme" value={themeFilters[0] || ""} options={journeyFilterOptions.themes} onChange={(value) => setThemeFilters(value ? [value] : [])} />
+              <FilterSelect label="Traveler" value={travelerFilters[0] || ""} options={journeyFilterOptions.travelerTypes} onChange={(value) => setTravelerFilters(value ? [value] : [])} />
+              <FilterSelect label="Pace" value={paceFilters[0] || ""} options={journeyFilterOptions.pace} onChange={(value) => setPaceFilters(value ? [value] : [])} />
+              <label className="grid gap-2">
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-500)]">Sort</span>
+                <select
+                  value={sortKey}
+                  onChange={(event) => setSortKey(event.target.value as SortKey)}
+                  className="h-12 w-full border border-[var(--brand-border)] bg-white px-3 text-sm font-semibold text-[var(--brand-black)] outline-none transition-colors hover:border-[var(--brand-gray-400)] focus:border-[var(--brand-black)]"
+                >
+                  <option value="recommended">Recommended</option>
+                  <option value="duration-asc">Shortest first</option>
+                  <option value="duration-desc">Longest first</option>
+                </select>
+              </label>
             </div>
+
+            {activeCount > 0 && (
+              <div className="mt-5 flex flex-wrap gap-2">
+                {activeFilters.map((filter) => (
+                  <button
+                    key={`${filter.group}-${filter.value}`}
+                    type="button"
+                    onClick={() => removeFilter(filter.group, filter.value)}
+                    className="inline-flex h-9 items-center gap-2 border border-[var(--brand-black)] bg-[var(--brand-black)] px-3 text-xs font-bold uppercase tracking-[0.08em] text-white"
+                  >
+                    {filter.value}
+                    <X size={13} />
+                  </button>
+                ))}
+              </div>
+            )}
           </FadeSection>
         </div>
       </section>

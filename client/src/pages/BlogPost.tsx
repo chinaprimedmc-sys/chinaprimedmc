@@ -28,7 +28,7 @@ function generateContent(post: typeof blogPosts[0]): string {
   return `
 ${post.title} is one of the most important topics for anyone planning a journey to China. Whether you are a first-time visitor or a seasoned traveler returning to explore new regions, understanding this subject deeply will transform your experience.
 
-China is not a single destination — it is a continent-sized country of extraordinary diversity, where climate, culture, cuisine, and landscape change dramatically from province to province. The knowledge we share here comes from over 23 years of designing private journeys for international travelers, and from the deep local relationships we have built across every region of the country.
+China is not a single destination — it is a continent-sized country of extraordinary diversity, where climate, culture, cuisine, and landscape change dramatically from province to province. The knowledge we share here comes from our China-based operations work and the supplier relationships we have built since Youyouhui Travel Services Co., Ltd. was established in 2012.
 
 ## Why This Matters for Your Journey
 
@@ -38,7 +38,7 @@ This is not about reading guidebooks. It is about developing a genuine understan
 
 ## What Our Experts Say
 
-Our team of China specialists has collectively spent hundreds of years in the country. We have walked every major trail, eaten in every significant culinary region, and built relationships with communities that most travelers never encounter.
+Our China-based team works with licensed guides, drivers, hotels, restaurants, attractions, and regional suppliers across the country. We focus on practical, current, partner-ready knowledge rather than generic travel writing.
 
 The insights we share in this article come from that accumulated experience — not from secondary sources or generic travel writing, but from the ground-level knowledge that only comes from deep, sustained engagement with a place.
 

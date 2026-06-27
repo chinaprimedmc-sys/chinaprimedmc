@@ -269,7 +269,7 @@ export default function B2B() {
             <div>
               <p className="b2b-eyebrow">China ground services for travel brands</p>
               <h1 style={{ color: "var(--brand-black)", fontSize: "clamp(3rem, 7vw, 7rem)", fontWeight: 560, letterSpacing: 0, lineHeight: 0.9, margin: 0, maxWidth: 980 }}>
-                Services built for professional sellers of China.
+                China ground services for global travel partners.
               </h1>
               <p className="b2b-lede" style={{ fontSize: "clamp(1.05rem, 1.4vw, 1.22rem)", marginTop: 28, maxWidth: 760 }}>
                 China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, corporate travel teams, education groups, and specialist-interest planners.
