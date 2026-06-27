@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
+import TradePresence from "@/components/TradePresence";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663786910793/nv3b3r8xSigzoBGpUx4ZRH/about-hero-WB6Ffx8gCWVUQwGjnBwSM4.webp";
 const HERO_BG_2 = "https://d2xsxph8kpxj0f.cloudfront.net/310519663786910793/nv3b3r8xSigzoBGpUx4ZRH/hero-bg-2-GoNbVjS2NTZPw3Hq8K79y4.webp";
@@ -246,6 +247,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <TradePresence variant="about" />
 
       {/* ══════════════════════════════════════════════════════════════
           FINAL CTA

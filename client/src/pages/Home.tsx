@@ -10,6 +10,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
+import TradePresence from "@/components/TradePresence";
 
 function FadeSection({
   children,
@@ -228,6 +229,8 @@ export default function Home() {
           </FadeSection>
         </div>
       </section>
+
+      <TradePresence variant="home" />
 
       <section className="mono-section bg-[var(--brand-gray-50)]">
         <div className="mono-wrap">
