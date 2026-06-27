@@ -18,6 +18,8 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import B2B from "./pages/B2B";
 import Contact from "./pages/Contact";
+import TradeShows from "./pages/TradeShows";
+import TradeShowDetail from "./pages/TradeShowDetail";
 
 function Router() {
   const [location] = useLocation();
@@ -37,6 +39,8 @@ function Router() {
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:id" component={BlogPost} />
       <Route path="/b2b" component={B2B} />
+      <Route path="/trade-shows" component={TradeShows} />
+      <Route path="/trade-shows/:id" component={TradeShowDetail} />
       <Route path="/contact" component={Contact} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />

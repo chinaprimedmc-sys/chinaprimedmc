@@ -10,10 +10,13 @@ export type TradeShowPresence = {
   name: string;
   shortName: string;
   date: string;
+  isoDate: string;
   city: string;
   country: string;
   headline: string;
+  cardIntro: string;
   summary: string;
+  detailIntro: string;
   proofPoints: Array<{
     title: string;
     body: string;
@@ -30,11 +33,16 @@ export const tradeShows: TradeShowPresence[] = [
     name: "Inbound China & Global Travel Exchange",
     shortName: "ICGTE 2026",
     date: "April 21, 2026",
+    isoDate: "2026-04-21",
     city: "Kuala Lumpur",
     country: "Malaysia",
     headline: "Face-to-face with the travel trade in Kuala Lumpur.",
+    cardIntro:
+      "China Prime DMC met Malaysian travel buyers and Muslim-friendly travel planners to discuss practical China programs for overseas partners.",
     summary:
       "At ICGTE 2026, China Prime DMC met with Malaysian travel buyers, Muslim-friendly travel planners, and regional trade partners to discuss China ground services, private programs, group travel, and white-label itinerary support.",
+    detailIntro:
+      "For B2B partners, trade shows are not just photo opportunities. They are where real demand becomes clear: what travel agents are selling, what clients hesitate about, what routes feel practical, and what support overseas partners need from a China-based DMC.",
     proofPoints: [
       {
         title: "Real buyer conversations",
