@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ArrowRight, Check, MapPin, MoveRight } from "lucide-react";
+import { CoverageMap } from "@/components/CoverageMap";
 import { coverageRegions } from "@/lib/coverageData";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -96,6 +97,19 @@ const routeExamples = [
 ];
 
 export default function Destinations() {
+  const [, navigate] = useLocation();
+  const [activeRegionId, setActiveRegionId] = useState(coverageRegions[0].id);
+  const [selectedRegionId, setSelectedRegionId] = useState<string | null>(null);
+
+  function handleRegionClick(regionId: string) {
+    if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches) {
+      setActiveRegionId(regionId);
+      setSelectedRegionId(regionId);
+      return;
+    }
+    navigate(`/destinations/${regionId}`);
+  }
+
   return (
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
       <section className="mono-section bg-[var(--brand-black)] text-white">
@@ -141,17 +155,42 @@ export default function Destinations() {
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.55fr_1fr]">
             <div>
               <p className="b2b-eyebrow">Regional network</p>
-              <h2 className="b2b-heading">Coverage by operating region, not just city names.</h2>
+              <h2 className="b2b-heading">Coverage by operating region, with cities mapped clearly.</h2>
             </div>
             <p className="b2b-lede mt-0">
-              B2B partners need more than a destination list. They need to know which parts of China are reliable for resale, which regions need stronger operational planning, and how each area fits a specific traveler profile.
+              B2B partners need to see where a region sits before they can sell it. Use the map to understand which gateway cities, cultural stops, and specialist routes belong to each operating region.
             </p>
+          </FadeSection>
+
+          <FadeSection className="mb-12">
+            <CoverageMap
+              activeRegionId={activeRegionId}
+              onRegionHover={(regionId) => {
+                if (regionId) setActiveRegionId(regionId);
+              }}
+              onRegionSelect={(regionId) => {
+                setActiveRegionId(regionId);
+                setSelectedRegionId(regionId);
+              }}
+            />
           </FadeSection>
 
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
             {regionClusters.map((cluster, index) => (
               <FadeSection key={cluster.region} delay={(index % 6) * 45}>
-                <Link href={cluster.link} className="group grid min-h-full bg-white p-6 text-[var(--brand-black)] no-underline transition-colors hover:bg-[var(--brand-gray-50)] md:p-7">
+                <article
+                  role="link"
+                  tabIndex={0}
+                  onMouseEnter={() => setActiveRegionId(coverageRegions[index].id)}
+                  onClick={() => handleRegionClick(coverageRegions[index].id)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      handleRegionClick(coverageRegions[index].id);
+                    }
+                  }}
+                  className="group grid min-h-full cursor-pointer bg-white p-6 text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-black)] md:p-7"
+                >
                   <div className="mb-8 flex items-center justify-between gap-4">
                     <span className="mono-index border border-[var(--brand-border)] px-3 py-2">{cluster.signal}</span>
                     <MapPin size={18} className="text-[var(--brand-gray-500)]" />
@@ -159,10 +198,21 @@ export default function Destinations() {
                   <h3 className="text-2xl font-semibold leading-tight text-[var(--brand-black)]">{cluster.region}</h3>
                   <p className="mt-4 text-sm font-bold uppercase leading-6 tracking-[0.08em] text-[var(--brand-gray-500)]">{cluster.cities}</p>
                   <p className="mt-5 text-sm leading-7 text-[var(--brand-gray-700)]">{cluster.positioning}</p>
-                  <div className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-black)]">
-                    Open regional coverage <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                  <div className="mt-8 grid gap-4">
+                    <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-black)]">
+                      {selectedRegionId === coverageRegions[index].id ? "Region selected" : "Select on map"} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    </div>
+                    {selectedRegionId === coverageRegions[index].id && (
+                      <Link
+                        href={cluster.link}
+                        onClick={(event) => event.stopPropagation()}
+                        className="mono-button w-full md:hidden"
+                      >
+                        Open regional coverage <ArrowRight size={15} />
+                      </Link>
+                    )}
                   </div>
-                </Link>
+                </article>
               </FadeSection>
             ))}
           </div>

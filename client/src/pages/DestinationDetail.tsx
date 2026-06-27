@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "wouter";
 import { ArrowLeft, ArrowRight, Check, Image as ImageIcon, MapPin, Route, Search } from "lucide-react";
 import { coverageRegions, findCoverageRegion, type CoverageRegion } from "@/lib/coverageData";
+import { journeys, type Journey } from "@/lib/programData";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -55,6 +56,53 @@ const cityToRegion: Record<string, string> = {
 
 function resolveRegion(id?: string) {
   return findCoverageRegion(id) || findCoverageRegion(id ? cityToRegion[id] : undefined);
+}
+
+const relatedAliases: Record<string, string[]> = {
+  "Gubei Water Town and Simatai": ["Gubei", "Simatai", "Great Wall", "Beijing"],
+  Datong: ["Datong", "Shanxi"],
+  Pingyao: ["Pingyao", "Shanxi"],
+  Chengde: ["Chengde", "Beijing"],
+  "Inner Mongolia": ["Inner Mongolia", "Hohhot", "Hulunbuir", "Arxan"],
+  "Hong Kong and Macau": ["Hong Kong", "Macau", "Guangzhou", "Shenzhen"],
+  "Longji Rice Terraces": ["Longji", "Guilin", "Yangshuo"],
+  "Jiuzhaigou and Western Sichuan": ["Jiuzhaigou", "Western Sichuan", "Sichuan", "Chengdu", "Huanglong", "Mount Siguniang"],
+  Dunhuang: ["Dunhuang", "Mogao", "Gansu", "Silk Road"],
+  Zhangye: ["Zhangye", "Gansu", "Silk Road"],
+  Jiayuguan: ["Jiayuguan", "Gansu", "Silk Road"],
+  Ningxia: ["Ningxia", "Yinchuan", "Zhongwei", "Shapotou"],
+  Xinjiang: ["Xinjiang", "Urumqi", "Kashgar", "Turpan", "Silk Road"],
+  "Longmen Grottoes": ["Longmen", "Luoyang", "Henan"],
+  "Shaolin and Dengfeng": ["Shaolin", "Dengfeng", "Henan", "Luoyang"],
+  Kaifeng: ["Kaifeng", "Henan", "Luoyang"],
+  "Changsha and Fenghuang": ["Changsha", "Fenghuang", "Zhangjiajie", "Hunan"],
+  Nyingchi: ["Nyingchi", "Tibet", "Lhasa"],
+  "Shigatse and Everest routes": ["Shigatse", "Everest", "Tibet", "Lhasa"],
+  Qinghai: ["Qinghai", "Xining", "Tibet", "Silk Road"],
+  "Western Sichuan": ["Western Sichuan", "Sichuan", "Chengdu", "Mount Siguniang", "Jiuzhaigou"],
+  "Highland Yunnan": ["Yunnan", "Shangri-La", "Dali", "Lijiang", "Meili"],
+};
+
+function relatedJourneysForCity(cityName: string): Journey[] {
+  const aliases = [cityName, ...(relatedAliases[cityName] || [])].map((item) => item.toLowerCase());
+  return journeys
+    .map((journey) => {
+      const haystack = [
+        journey.title,
+        journey.subtitle,
+        journey.route,
+        journey.routeSummary,
+        ...journey.destinations,
+        ...journey.themes,
+        ...journey.highlights,
+      ].join(" ").toLowerCase();
+      const score = aliases.reduce((sum, alias) => sum + (haystack.includes(alias) ? 1 : 0), 0);
+      return { journey, score };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || b.journey.durationDays - a.journey.durationDays)
+    .slice(0, 3)
+    .map((item) => item.journey);
 }
 
 function RegionHero({ region }: { region: CoverageRegion }) {
@@ -201,6 +249,27 @@ export default function DestinationDetail() {
                         <span>{highlight}</span>
                       </div>
                     ))}
+                  </div>
+                  <div className="mt-7 border-t border-[var(--brand-border)] pt-6">
+                    <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-500)]">Related journeys</div>
+                    {relatedJourneysForCity(city.name).length > 0 ? (
+                      <div className="grid gap-3">
+                        {relatedJourneysForCity(city.name).map((journey) => (
+                          <Link
+                            key={journey.id}
+                            href={`/journeys/${journey.id}`}
+                            className="group grid gap-1 border border-[var(--brand-border)] p-3 text-[var(--brand-black)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)]"
+                          >
+                            <span className="text-sm font-semibold leading-5">{journey.title}</span>
+                            <span className="text-xs leading-5 text-[var(--brand-gray-600)]">{journey.duration} · {journey.route}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm leading-7 text-[var(--brand-gray-600)]">
+                        Route can be custom-built on request for this city or regional combination.
+                      </p>
+                    )}
                   </div>
                 </article>
               </FadeSection>
