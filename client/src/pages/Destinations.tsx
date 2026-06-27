@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Check, MapPin, MoveRight } from "lucide-react";
+import { coverageRegions } from "@/lib/coverageData";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,57 +44,13 @@ const coverageStats = [
   { value: "FIT / Groups / MICE", label: "Core formats" },
 ];
 
-const regionClusters = [
-  {
-    region: "North China",
-    cities: "Beijing, Tianjin, Chengde, Datong, Pingyao",
-    positioning: "Classic first-time China, imperial heritage, Great Wall programs, student groups, senior-friendly cultural routes.",
-    link: "/destinations/beijing",
-    signal: "High-volume gateway",
-  },
-  {
-    region: "East China",
-    cities: "Shanghai, Suzhou, Hangzhou, Huangshan, Wuzhen",
-    positioning: "Premium city stays, canal towns, garden culture, luxury FIT extensions, incentive pre- and post-tours.",
-    link: "/destinations/shanghai",
-    signal: "Premium leisure + MICE",
-  },
-  {
-    region: "South China",
-    cities: "Guilin, Yangshuo, Guangzhou, Shenzhen, Hong Kong, Macau",
-    positioning: "Soft adventure, family travel, Greater Bay Area business extensions, cruise-linked China routing.",
-    link: "/destinations/guilin",
-    signal: "Gateway flexibility",
-  },
-  {
-    region: "Southwest China",
-    cities: "Chengdu, Chongqing, Yunnan, Guizhou, Zhangjiajie",
-    positioning: "Pandas, ethnic culture, karst landscapes, family programs, photography, light adventure, emerging destination product.",
-    link: "/destinations/chengdu",
-    signal: "High-demand experiential China",
-  },
-  {
-    region: "Northwest China",
-    cities: "Xi'an, Gansu, Dunhuang, Ningxia, Qinghai, Xinjiang",
-    positioning: "Silk Road journeys, Muslim-friendly routing, halal-aware meal planning, desert landscapes, heritage-led group series.",
-    link: "/destinations/xian",
-    signal: "Special-interest depth",
-  },
-  {
-    region: "Central China",
-    cities: "Wuhan, Luoyang, Shaolin, Changsha, Fenghuang",
-    positioning: "Civilization routes, rail-linked group operations, student programs, culture-heavy extensions between major gateways.",
-    link: "/destinations/henan",
-    signal: "Efficient regional add-ons",
-  },
-  {
-    region: "Western China",
-    cities: "Tibet, Qinghai, Western Sichuan, highland Yunnan",
-    positioning: "Permit-aware routing, high-altitude pacing, monastery culture, serious landscape travel, experienced traveler programs.",
-    link: "/destinations/tibet",
-    signal: "Complex operations",
-  },
-];
+const regionClusters = coverageRegions.map((region) => ({
+  region: region.name.replace(" Coverage", ""),
+  cities: region.eyebrow,
+  positioning: region.summary,
+  link: `/destinations/${region.id}`,
+  signal: region.bestFor[0],
+}));
 
 const fitMatrix = [
   { segment: "First-time China groups", bestRegions: "Beijing, Xi'an, Shanghai, Suzhou, Guilin", why: "Recognizable icons, strong guide supply, clean logistics, easy sales language." },
@@ -203,7 +160,7 @@ export default function Destinations() {
                   <p className="mt-4 text-sm font-bold uppercase leading-6 tracking-[0.08em] text-[var(--brand-gray-500)]">{cluster.cities}</p>
                   <p className="mt-5 text-sm leading-7 text-[var(--brand-gray-700)]">{cluster.positioning}</p>
                   <div className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-black)]">
-                    Open sample destination <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    Open regional coverage <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                   </div>
                 </Link>
               </FadeSection>

@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { EMAIL, WHATSAPP_URL } from "@/lib/data";
+import { coverageRegions } from "@/lib/coverageData";
 
 const partnerLinks = [
   { href: "/b2b", label: "Services" },
@@ -8,8 +9,6 @@ const partnerLinks = [
   { href: "/about", label: "Company" },
   { href: "/contact", label: "Contact" },
 ];
-
-const coverage = ["Beijing", "Shanghai", "Yunnan", "Tibet", "Xi'an", "Guilin", "Chengdu", "Xinjiang"];
 
 export default function Footer() {
   return (
@@ -50,14 +49,14 @@ export default function Footer() {
           <div>
             <h4 className="mb-6 text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-500)]">Coverage</h4>
             <ul className="space-y-3">
-              {coverage.map((dest) => (
-                <li key={dest}>
+              {coverageRegions.slice(0, 7).map((region) => (
+                <li key={region.id}>
                   <Link
-                    href={`/destinations/${dest.toLowerCase().replace("'", "").replace(" ", "-")}`}
+                    href={`/destinations/${region.id}`}
                     className="text-sm text-[var(--brand-gray-200)] transition-colors hover:text-white"
                     style={{ textDecoration: "none" }}
                   >
-                    {dest}
+                    {region.name.replace(" Coverage", "")}
                   </Link>
                 </li>
               ))}
