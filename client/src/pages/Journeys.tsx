@@ -240,28 +240,28 @@ export default function Journeys() {
       </section>
 
       <section className="mono-section bg-[var(--brand-white)]">
-        <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] xl:grid-cols-2">
+        <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
           {filteredJourneys.map((journey, index) => (
             <FadeSection key={journey.id} delay={(index % 6) * 35}>
               <article className="group grid min-h-full bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)]">
-                <div className="relative aspect-[16/9] overflow-hidden bg-[var(--brand-gray-100)]">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[var(--brand-gray-100)]">
                   <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-                  <div className="absolute left-4 top-4 bg-[var(--brand-black)] px-3 py-2 text-xs font-bold uppercase tracking-[0.1em] text-white">
+                  <div className="absolute left-3 top-3 bg-[var(--brand-black)] px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-white">
                     {journey.pricingNote}
                   </div>
                 </div>
-                <div className="grid gap-6 p-6 md:p-8">
+                <div className="grid gap-5 p-5 md:p-6">
                   <div className="flex flex-wrap gap-2">
-                    <span className="mono-index border border-[var(--brand-border)] px-3 py-1">{journey.duration}</span>
-                    <span className="mono-index border border-[var(--brand-border)] px-3 py-1">{journey.pace}</span>
-                    <span className="mono-index border border-[var(--brand-border)] px-3 py-1">{journey.physicalLevel}</span>
+                    <span className="mono-index border border-[var(--brand-border)] px-2.5 py-1">{journey.duration}</span>
+                    <span className="mono-index border border-[var(--brand-border)] px-2.5 py-1">{journey.pace}</span>
+                    <span className="mono-index border border-[var(--brand-border)] px-2.5 py-1">{journey.physicalLevel}</span>
                   </div>
                   <div>
-                    <p className="mb-3 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-500)]">{journey.route}</p>
-                    <h2 className="text-2xl font-semibold leading-tight text-[var(--brand-black)] md:text-3xl">{journey.title}</h2>
-                    <p className="mt-4 text-base leading-7 text-[var(--brand-gray-600)]">{journey.subtitle}</p>
+                    <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-500)]">{journey.route}</p>
+                    <h2 className="text-xl font-semibold leading-tight text-[var(--brand-black)] md:text-[1.45rem]">{journey.title}</h2>
+                    <p className="mt-3 text-sm leading-6 text-[var(--brand-gray-600)]">{journey.subtitle}</p>
                   </div>
-                  <div className="grid gap-4 border-y border-[var(--brand-border)] py-5 md:grid-cols-2">
+                  <div className="grid gap-4 border-y border-[var(--brand-border)] py-4 2xl:grid-cols-2">
                     <div>
                       <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--brand-gray-500)]">Best for</div>
                       <div className="text-sm leading-6 text-[var(--brand-gray-700)]">{journey.bestFor.slice(0, 2).join(" / ")}</div>
@@ -276,7 +276,7 @@ export default function Journeys() {
                       <span key={tag} className="border border-[var(--brand-border)] px-2.5 py-1 text-xs text-[var(--brand-gray-700)]">{tag}</span>
                     ))}
                   </div>
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="grid gap-3 2xl:grid-cols-2">
                     <Link
                       href={`/journeys/${journey.id}`}
                       className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--brand-black)] bg-[var(--brand-black)] px-4 text-sm font-semibold text-white no-underline transition-colors hover:bg-[var(--brand-gray-800)]"
