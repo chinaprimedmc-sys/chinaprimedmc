@@ -1,0 +1,623 @@
+{
+  "beijing-great-wall-gubei-5-day": [
+    {
+      "topic": "Great Wall of China",
+      "src": "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/The_Great_Wall_of_China_at_Jinshanling-edit.jpg/1920px-The_Great_Wall_of_China_at_Jinshanling-edit.jpg"
+    },
+    {
+      "topic": "Forbidden City",
+      "src": "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/The_Forbidden_City_-_View_from_Coal_Hill.jpg/1920px-The_Forbidden_City_-_View_from_Coal_Hill.jpg"
+    },
+    {
+      "topic": "Temple of Heaven",
+      "src": "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-temple-of-heaven.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Temple_of_Heaven_20160323_01.jpg/1920px-Temple_of_Heaven_20160323_01.jpg"
+    },
+    {
+      "topic": "Summer Palace",
+      "src": "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-summer-palace.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Longevity_Hill_of_the_Summer_Palace.jpg/1920px-Longevity_Hill_of_the_Summer_Palace.jpg"
+    },
+    {
+      "topic": "Gubei Water Town",
+      "src": "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-gubei-water-town.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Gateway_of_Gubei_village%2C_Beijing_-_panoramio.jpg/1920px-Gateway_of_Gubei_village%2C_Beijing_-_panoramio.jpg"
+    }
+  ],
+  "zhangjiajie-fenghuang-5-day": [
+    {
+      "topic": "Zhangjiajie National Forest Park",
+      "src": "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/1_tianzishan_wulingyuan_zhangjiajie_2012.jpg/1920px-1_tianzishan_wulingyuan_zhangjiajie_2012.jpg"
+    },
+    {
+      "topic": "Tianmen Mountain",
+      "src": "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Tianmen_38330-Zhangjiajie_%2849047525877%29.jpg/1920px-Tianmen_38330-Zhangjiajie_%2849047525877%29.jpg"
+    },
+    {
+      "topic": "Wulingyuan",
+      "src": "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-wulingyuan.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Wulingyuan_3.jpg"
+    },
+    {
+      "topic": "Fenghuang County",
+      "src": "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-fenghuang-county.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/11/Fenghuang_hunan.jpg"
+    },
+    {
+      "topic": "Zhangjiajie Glass Bridge",
+      "src": "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-glass-bridge.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/ZhangjiajieGlassByHighestBridges.jpg/1920px-ZhangjiajieGlassByHighestBridges.jpg"
+    }
+  ],
+  "silk-road-gansu-ningxia-8-day": [
+    {
+      "topic": "Mogao Caves",
+      "src": "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-mogao-caves.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Mogao_Caves_%2854376969262%29.jpg/1920px-Mogao_Caves_%2854376969262%29.jpg"
+    },
+    {
+      "topic": "Crescent Lake (Dunhuang)",
+      "src": "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-crescent-lake-dunhuang.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Crescent_Lake_from_the_Singing_Sand_Dunes_%2820230918101214%29.jpg/1920px-Crescent_Lake_from_the_Singing_Sand_Dunes_%2820230918101214%29.jpg"
+    },
+    {
+      "topic": "Jiayuguan Pass",
+      "src": "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-jiayuguan-pass.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/10/JiayuguanFort.jpg"
+    },
+    {
+      "topic": "Zhangye National Geopark",
+      "src": "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Zhangye_National_Geopark_5.jpg/1920px-Zhangye_National_Geopark_5.jpg"
+    },
+    {
+      "topic": "Shapotou",
+      "src": "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-shapotou.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Shapotou.jpg"
+    }
+  ],
+  "southern-xinjiang-silk-road-9-day": [
+    {
+      "topic": "Heavenly Lake of Tian Shan",
+      "src": "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-heavenly-lake-of-tian-shan.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f0/The_Heavenly_Lake_%E5%A4%A9%E6%B1%A0_%288064381762%29.jpg"
+    },
+    {
+      "topic": "Kashgar",
+      "src": "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-kashgar.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/H%C3%ABytgah_Mosque%2C_Kashi_%2820230923100109%29.jpg/1920px-H%C3%ABytgah_Mosque%2C_Kashi_%2820230923100109%29.jpg"
+    },
+    {
+      "topic": "Karakul Lake",
+      "src": "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Karakul-muztagh-ata-d12.jpg"
+    },
+    {
+      "topic": "Kizil Caves",
+      "src": "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-kizil-caves.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Kizil_sky.jpg/1920px-Kizil_sky.jpg"
+    },
+    {
+      "topic": "Taklamakan Desert",
+      "src": "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-taklamakan-desert.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Taklamakan_desert.jpg"
+    }
+  ],
+  "sichuan-tibetan-nature-10-day": [
+    {
+      "topic": "Chengdu Research Base of Giant Panda Breeding",
+      "src": "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Chengdu_Research_Base_Eingang.jpg/1920px-Chengdu_Research_Base_Eingang.jpg"
+    },
+    {
+      "topic": "Jiuzhaigou",
+      "src": "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/1_jiuzhaigou_valley_wu_hua_hai_2011b.jpg/1920px-1_jiuzhaigou_valley_wu_hua_hai_2011b.jpg"
+    },
+    {
+      "topic": "Huanglong Scenic and Historic Interest Area",
+      "src": "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-huanglong-scenic-and-historic-interest-area.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/1_huanglong_pools_aerial_2011.jpg/1920px-1_huanglong_pools_aerial_2011.jpg"
+    },
+    {
+      "topic": "Mount Siguniang",
+      "src": "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-mount-siguniang.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Mount_Siguniang_2.jpg/1920px-Mount_Siguniang_2.jpg"
+    },
+    {
+      "topic": "Dujiangyan Irrigation System",
+      "src": "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-dujiangyan-irrigation-system.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/55/Dujiangyan_irrigation_system%2C_Sichuan%2C_China.JPG"
+    }
+  ],
+  "tibet-lhasa-nyingchi-8-day": [
+    {
+      "topic": "Potala Palace",
+      "src": "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-potala-palace.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Potala_Palace_HQ.jpg"
+    },
+    {
+      "topic": "Jokhang",
+      "src": "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-jokhang.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Jokhang_Temple_in_Tibet.jpg"
+    },
+    {
+      "topic": "Namtso",
+      "src": "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-namtso.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Namtso-and-holy-rock.jpg/1920px-Namtso-and-holy-rock.jpg"
+    },
+    {
+      "topic": "Yarlung Tsangpo Grand Canyon",
+      "src": "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-yarlung-tsangpo-grand-canyon.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Yarlung_Zangpo_Grand_Canyon%2C_Tibet.jpg"
+    },
+    {
+      "topic": "Nyingchi",
+      "src": "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-nyingchi.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Nyingchi_city_June_2019.jpg/1920px-Nyingchi_city_June_2019.jpg"
+    }
+  ],
+  "guizhou-ethnic-karst-6-day": [
+    {
+      "topic": "Huangguoshu Waterfall",
+      "src": "/programs/guizhou-ethnic-karst-6-day/china-prime-dmc-guizhou-ethnic-karst-6-day-huangguoshu-waterfall.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/30/HuangguoshuFall.jpg"
+    },
+    {
+      "topic": "Zhaoxing Dong Village",
+      "src": "/programs/guizhou-ethnic-karst-6-day/china-prime-dmc-guizhou-ethnic-karst-6-day-zhaoxing-dong-village.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/1_zhaoxing_2015.jpg/1920px-1_zhaoxing_2015.jpg"
+    },
+    {
+      "topic": "Xijiang Qianhu Miao Village",
+      "src": "/programs/guizhou-ethnic-karst-6-day/china-prime-dmc-guizhou-ethnic-karst-6-day-xijiang-qianhu-miao-village.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Xijiang_Guizhou_Evening.jpeg/1920px-Xijiang_Guizhou_Evening.jpeg"
+    },
+    {
+      "topic": "Fanjingshan",
+      "src": "/programs/guizhou-ethnic-karst-6-day/china-prime-dmc-guizhou-ethnic-karst-6-day-fanjingshan.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/a5/%E6%A2%B5%E6%B7%A8%E5%B1%B1%E7%B4%85%E9%9B%B2%E9%87%91%E9%A0%82%EF%BC%88%E6%96%B0%E9%87%91%E9%A0%82%EF%BC%89.jpg"
+    },
+    {
+      "topic": "Libo County",
+      "src": "/programs/guizhou-ethnic-karst-6-day/china-prime-dmc-guizhou-ethnic-karst-6-day-libo-county.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Xiaoqikong.JPG/1920px-Xiaoqikong.JPG"
+    }
+  ],
+  "shangri-la-meili-snow-mountain-8-day": [
+    {
+      "topic": "Shangri-La City",
+      "src": "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-shangri-la-city.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/78/Tibetan_cheese_-_close-up_-_Zhongdian_Market.jpg"
+    },
+    {
+      "topic": "Meili Snow Mountains",
+      "src": "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/%E6%A2%85%E9%87%8C%E9%9B%AA%E5%B1%B1_-_%E6%A0%B8%E5%BF%83%E5%B1%B1%E5%B3%B0%E5%85%A8%E6%99%AF_-_2025-05-10_IMG_3463.jpg/1920px-%E6%A2%85%E9%87%8C%E9%9B%AA%E5%B1%B1_-_%E6%A0%B8%E5%BF%83%E5%B1%B1%E5%B3%B0%E5%85%A8%E6%99%AF_-_2025-05-10_IMG_3463.jpg"
+    },
+    {
+      "topic": "Tiger Leaping Gorge",
+      "src": "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-tiger-leaping-gorge.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/%E8%99%8E%E8%B7%B3%E5%B3%A1.JPG/1920px-%E8%99%8E%E8%B7%B3%E5%B3%A1.JPG"
+    },
+    {
+      "topic": "Songzanlin Monastery",
+      "src": "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-songzanlin-monastery.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Songzanlin_Monastery%2C_Shangri-La%2C_China_-_panoramio.jpg"
+    },
+    {
+      "topic": "Dali City",
+      "src": "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-dali-city.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chongsheng_Temple_%2811050634113%29.jpg/1920px-Chongsheng_Temple_%2811050634113%29.jpg"
+    }
+  ],
+  "hulunbuir-arxan-grassland-8-day": [
+    {
+      "topic": "Hulunbuir",
+      "src": "/programs/hulunbuir-arxan-grassland-8-day/china-prime-dmc-hulunbuir-arxan-grassland-8-day-hulunbuir.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/6/60/%E5%91%BC%E4%BC%A6%E8%B4%9D%E5%B0%94_%E5%93%88%E5%85%8B_-_panoramio.jpg"
+    },
+    {
+      "topic": "Ergun",
+      "src": "/programs/hulunbuir-arxan-grassland-8-day/china-prime-dmc-hulunbuir-arxan-grassland-8-day-ergun.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/00/ChinaHulunbuirErgun.png"
+    },
+    {
+      "topic": "Manzhouli",
+      "src": "/programs/hulunbuir-arxan-grassland-8-day/china-prime-dmc-hulunbuir-arxan-grassland-8-day-manzhouli.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/%E5%9F%8E%E5%B8%82%E9%A3%8E%E5%85%89_-_panoramio.jpg/1920px-%E5%9F%8E%E5%B8%82%E9%A3%8E%E5%85%89_-_panoramio.jpg"
+    },
+    {
+      "topic": "Greater Khingan Range",
+      "src": "/programs/hulunbuir-arxan-grassland-8-day/china-prime-dmc-hulunbuir-arxan-grassland-8-day-greater-khingan-range.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Yalu_river_%28nonni_river_tributary%29_in_Greater_Khingan_range%2C_Manchuria%2C_China.JPG/1920px-Yalu_river_%28nonni_river_tributary%29_in_Greater_Khingan_range%2C_Manchuria%2C_China.JPG"
+    },
+    {
+      "topic": "Hailar District",
+      "src": "/programs/hulunbuir-arxan-grassland-8-day/china-prime-dmc-hulunbuir-arxan-grassland-8-day-hailar-district.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/%E6%B5%B7%E6%8B%89%E5%B0%94_Hailar_-_panoramio.jpg/1920px-%E6%B5%B7%E6%8B%89%E5%B0%94_Hailar_-_panoramio.jpg"
+    }
+  ],
+  "inner-mongolia-cultural-5-day": [
+    {
+      "topic": "Hohhot",
+      "src": "/programs/inner-mongolia-cultural-5-day/china-prime-dmc-inner-mongolia-cultural-5-day-hohhot.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Hohhot_Central_Square.jpg/1920px-Hohhot_Central_Square.jpg"
+    },
+    {
+      "topic": "Dazhao Temple",
+      "src": "/programs/inner-mongolia-cultural-5-day/china-prime-dmc-inner-mongolia-cultural-5-day-dazhao-temple.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Hohhot_Dazhao_temple_drum_tower.jpg/1920px-Hohhot_Dazhao_temple_drum_tower.jpg"
+    },
+    {
+      "topic": "Xilamuren Grassland",
+      "src": "/programs/inner-mongolia-cultural-5-day/china-prime-dmc-inner-mongolia-cultural-5-day-xilamuren-grassland.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Horse_rider_on_the_Xilamuren_Grasslands%2C_Inner_Mongolia%2C_China.jpg/1920px-Horse_rider_on_the_Xilamuren_Grasslands%2C_Inner_Mongolia%2C_China.jpg"
+    },
+    {
+      "topic": "Inner Mongolia Museum",
+      "src": "/programs/inner-mongolia-cultural-5-day/china-prime-dmc-inner-mongolia-cultural-5-day-inner-mongolia-museum.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Inner_Mongolia_Museum.JPG/1920px-Inner_Mongolia_Museum.JPG"
+    },
+    {
+      "topic": "Zhaojun Tomb",
+      "src": "/programs/inner-mongolia-cultural-5-day/china-prime-dmc-inner-mongolia-cultural-5-day-zhaojun-tomb.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Statue_at_the_Wang_Zhaojun_Tomb.jpg"
+    }
+  ],
+  "chongqing-chengdu-culture-food-5-day": [
+    {
+      "topic": "Chongqing",
+      "src": "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-chongqing.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Chongqing_Nightscape.jpg/1920px-Chongqing_Nightscape.jpg"
+    },
+    {
+      "topic": "Hongya Cave",
+      "src": "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/202308_Hongya_Cave_at_night_from_Qiansimen_Bridge.jpg/1920px-202308_Hongya_Cave_at_night_from_Qiansimen_Bridge.jpg"
+    },
+    {
+      "topic": "Ciqikou",
+      "src": "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-ciqikou.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Ciqikou_station_platform.jpg/1920px-Ciqikou_station_platform.jpg"
+    },
+    {
+      "topic": "Chengdu",
+      "src": "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-chengdu.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/%E9%9B%AA%E5%B1%B1%E4%B8%8B%E7%9A%84%E6%88%90%E9%83%BD%E5%B8%82%E5%A4%A9%E9%99%85%E7%BA%BF_Chengdu_skyline_with_snow_capped_mountains.jpg/1920px-%E9%9B%AA%E5%B1%B1%E4%B8%8B%E7%9A%84%E6%88%90%E9%83%BD%E5%B8%82%E5%A4%A9%E9%99%85%E7%BA%BF_Chengdu_skyline_with_snow_capped_mountains.jpg"
+    },
+    {
+      "topic": "Sichuan cuisine",
+      "src": "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-sichuan-cuisine.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Kung-pao-shanghai.jpg/1920px-Kung-pao-shanghai.jpg"
+    }
+  ],
+  "chongqing-jiuzhaigou-chengdu-6-day": [
+    {
+      "topic": "Three Gorges",
+      "src": "/programs/chongqing-jiuzhaigou-chengdu-6-day/china-prime-dmc-chongqing-jiuzhaigou-chengdu-6-day-three-gorges.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Qutang_Gorge_on_Changjiang.jpg/1920px-Qutang_Gorge_on_Changjiang.jpg"
+    },
+    {
+      "topic": "Fengdu Ghost City",
+      "src": "/programs/chongqing-jiuzhaigou-chengdu-6-day/china-prime-dmc-chongqing-jiuzhaigou-chengdu-6-day-fengdu-ghost-city.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/%E5%B9%BD%E9%83%BD.JPG/1920px-%E5%B9%BD%E9%83%BD.JPG"
+    },
+    {
+      "topic": "Chengdu Research Base of Giant Panda Breeding",
+      "src": "/programs/chongqing-jiuzhaigou-chengdu-6-day/china-prime-dmc-chongqing-jiuzhaigou-chengdu-6-day-chengdu-research-base-of-giant-panda-breeding.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Chengdu_Sichuan_China_Panda-breeding-and-research-center-01.jpg/1920px-Chengdu_Sichuan_China_Panda-breeding-and-research-center-01.jpg"
+    },
+    {
+      "topic": "Kuanzhai Alley",
+      "src": "/programs/chongqing-jiuzhaigou-chengdu-6-day/china-prime-dmc-chongqing-jiuzhaigou-chengdu-6-day-kuanzhai-alley.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Food_stall_-_Kuanzhai_Alleys_-_Chengdu%2C_China_-_DSC05324.jpg/1920px-Food_stall_-_Kuanzhai_Alleys_-_Chengdu%2C_China_-_DSC05324.jpg"
+    },
+    {
+      "topic": "Dazu Rock Carvings",
+      "src": "/programs/chongqing-jiuzhaigou-chengdu-6-day/china-prime-dmc-chongqing-jiuzhaigou-chengdu-6-day-dazu-rock-carvings.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Dazu_2007_685_full_view.jpg/1920px-Dazu_2007_685_full_view.jpg"
+    }
+  ],
+  "guangzhou-guilin-yangshuo-6-day": [
+    {
+      "topic": "Canton Tower",
+      "src": "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-canton-tower.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/16/Canton_Tower_20241027_%28cropped%29.jpg"
+    },
+    {
+      "topic": "Chen Clan Ancestral Hall",
+      "src": "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-chen-clan-ancestral-hall.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Chen_Clan_Ancestral_Hall_2025.06_02.jpg/1920px-Chen_Clan_Ancestral_Hall_2025.06_02.jpg"
+    },
+    {
+      "topic": "Li River",
+      "src": "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-li-river.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/87318-Li-River.jpg/1920px-87318-Li-River.jpg"
+    },
+    {
+      "topic": "Yangshuo County",
+      "src": "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-yangshuo-county.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/1_guilin_yangshuo_2017.jpg/1920px-1_guilin_yangshuo_2017.jpg"
+    },
+    {
+      "topic": "Longji Rice Terraces",
+      "src": "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-longji-rice-terraces.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/b/be/Terrace_field_guangxi_longji_china.jpg"
+    }
+  ],
+  "shanghai-hangzhou-huangshan-9-day": [
+    {
+      "topic": "The Bund",
+      "src": "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-the-bund.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Bund_2.jpg/1920px-The_Bund_2.jpg"
+    },
+    {
+      "topic": "West Lake",
+      "src": "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/West_Lake%2C_Hangzhou_2025.jpg/1920px-West_Lake%2C_Hangzhou_2025.jpg"
+    },
+    {
+      "topic": "Huangshan",
+      "src": "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Huangshan_pic_4.jpg/1920px-Huangshan_pic_4.jpg"
+    },
+    {
+      "topic": "Hongcun",
+      "src": "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-hongcun.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Yixian_Hongcun_2016.09.09_17-27-03.jpg/1920px-Yixian_Hongcun_2016.09.09_17-27-03.jpg"
+    },
+    {
+      "topic": "Xidi",
+      "src": "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/%E8%A5%BF%E9%80%92%E7%89%8C%E6%A5%BC.jpg/1920px-%E8%A5%BF%E9%80%92%E7%89%8C%E6%A5%BC.jpg"
+    }
+  ],
+  "beijing-xian-shanghai-8-day": [
+    {
+      "topic": "Mutianyu",
+      "src": "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-mutianyu.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Great_Wall_of_China_July_2006.JPG/1920px-Great_Wall_of_China_July_2006.JPG"
+    },
+    {
+      "topic": "Terracotta Army",
+      "src": "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-terracotta-army.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/51714-Terracota-Army.jpg/1920px-51714-Terracota-Army.jpg"
+    },
+    {
+      "topic": "Muslim Quarter, Xi'an",
+      "src": "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-muslim-quarter-xi-an.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Muslim_Quarter_Xi%27an_China.jpg"
+    },
+    {
+      "topic": "Yu Garden",
+      "src": "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-yu-garden.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Shanghai_-_Yu_Garden_-_0035.jpg/1920px-Shanghai_-_Yu_Garden_-_0035.jpg"
+    },
+    {
+      "topic": "Shanghai Tower",
+      "src": "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-shanghai-tower.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/20191114_Shanghai_Tower_%282%29.jpg/1920px-20191114_Shanghai_Tower_%282%29.jpg"
+    }
+  ],
+  "classic-china-beijing-xian-shanghai-12-day": [
+    {
+      "topic": "Tiananmen Square",
+      "src": "/programs/classic-china-beijing-xian-shanghai-12-day/china-prime-dmc-classic-china-beijing-xian-shanghai-12-day-tiananmen-square.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Tiananmen_Square_%2854137047250%29.jpg/1920px-Tiananmen_Square_%2854137047250%29.jpg"
+    },
+    {
+      "topic": "Badaling",
+      "src": "/programs/classic-china-beijing-xian-shanghai-12-day/china-prime-dmc-classic-china-beijing-xian-shanghai-12-day-badaling.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/The_Great_Wall_of_China_-_Badaling.jpg/1920px-The_Great_Wall_of_China_-_Badaling.jpg"
+    },
+    {
+      "topic": "Xi'an City Wall",
+      "src": "/programs/classic-china-beijing-xian-shanghai-12-day/china-prime-dmc-classic-china-beijing-xian-shanghai-12-day-xi-an-city-wall.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Xi%27an_city_walls.jpg/1920px-Xi%27an_city_walls.jpg"
+    },
+    {
+      "topic": "Big Wild Goose Pagoda",
+      "src": "/programs/classic-china-beijing-xian-shanghai-12-day/china-prime-dmc-classic-china-beijing-xian-shanghai-12-day-big-wild-goose-pagoda.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Big_Wild_Goose_Pagoda_1.jpg/1920px-Big_Wild_Goose_Pagoda_1.jpg"
+    },
+    {
+      "topic": "Nanjing Road",
+      "src": "/programs/classic-china-beijing-xian-shanghai-12-day/china-prime-dmc-classic-china-beijing-xian-shanghai-12-day-nanjing-road.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/East_Nanjing_Road_2020_%2850361842166%29.jpg/1920px-East_Nanjing_Road_2020_%2850361842166%29.jpg"
+    }
+  ],
+  "china-yangtze-cruise-13-day": [
+    {
+      "topic": "Yangtze",
+      "src": "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-yangtze.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Dusk_on_the_Yangtze_River.jpg/1920px-Dusk_on_the_Yangtze_River.jpg"
+    },
+    {
+      "topic": "Three Gorges Dam",
+      "src": "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-three-gorges-dam.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/ThreeGorgesDam-China2009.jpg/1920px-ThreeGorgesDam-China2009.jpg"
+    },
+    {
+      "topic": "Shanghai World Financial Center",
+      "src": "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-shanghai-world-financial-center.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Shanghai_World_Financial_Center_%28March_9th_2024%29_%28cropped2%29.jpg"
+    },
+    {
+      "topic": "Wu Gorge",
+      "src": "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-wu-gorge.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Wushan_Yangtse.jpg/1920px-Wushan_Yangtse.jpg"
+    },
+    {
+      "topic": "Shennong Stream",
+      "src": "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-shennong-stream.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/ShennongXi-fall-into-Yangtze-5058.jpg/1920px-ShennongXi-fall-into-Yangtze-5058.jpg"
+    }
+  ],
+  "xinjiang-xian-silk-road-14-day": [
+    {
+      "topic": "Turpan",
+      "src": "/programs/xinjiang-xian-silk-road-14-day/china-prime-dmc-xinjiang-xian-silk-road-14-day-turpan.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Turpan-jiaohe-ruinas-d16.jpg"
+    },
+    {
+      "topic": "Flaming Mountains",
+      "src": "/programs/xinjiang-xian-silk-road-14-day/china-prime-dmc-xinjiang-xian-silk-road-14-day-flaming-mountains.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Turpan-flaming-mountains-d02.jpg"
+    },
+    {
+      "topic": "Gaochang",
+      "src": "/programs/xinjiang-xian-silk-road-14-day/china-prime-dmc-xinjiang-xian-silk-road-14-day-gaochang.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Turpan-gaochang-d10.jpg"
+    },
+    {
+      "topic": "Karez",
+      "src": "/programs/xinjiang-xian-silk-road-14-day/china-prime-dmc-xinjiang-xian-silk-road-14-day-karez.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Turpan-karez-museo-d02.jpg/1920px-Turpan-karez-museo-d02.jpg"
+    },
+    {
+      "topic": "Lanzhou",
+      "src": "/programs/xinjiang-xian-silk-road-14-day/china-prime-dmc-xinjiang-xian-silk-road-14-day-lanzhou.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Skyline_Lanzhou_August_2025.jpg/1920px-Skyline_Lanzhou_August_2025.jpg"
+    }
+  ],
+  "southwest-china-yangtze-14-day": [
+    {
+      "topic": "Kunming Stone Forest",
+      "src": "/programs/southwest-china-yangtze-14-day/china-prime-dmc-southwest-china-yangtze-14-day-kunming-stone-forest.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/9b/1996_-255-35A_Kunming_Stone_Forest_of_Lunan_%285069088484%29.jpg"
+    },
+    {
+      "topic": "Lijiang",
+      "src": "/programs/southwest-china-yangtze-14-day/china-prime-dmc-southwest-china-yangtze-14-day-lijiang.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Black_Dragon_%E9%BB%91%E9%BE%99%E6%BD%AD_%285496141333%29.jpg/1920px-Black_Dragon_%E9%BB%91%E9%BE%99%E6%BD%AD_%285496141333%29.jpg"
+    },
+    {
+      "topic": "Chongqing Yangtze River",
+      "src": "/programs/southwest-china-yangtze-14-day/china-prime-dmc-southwest-china-yangtze-14-day-chongqing-yangtze-river.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/49/Voa_chinese_Wu-River_29jun10_300.jpg"
+    },
+    {
+      "topic": "Lujiazui",
+      "src": "/programs/southwest-china-yangtze-14-day/china-prime-dmc-southwest-china-yangtze-14-day-lujiazui.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Huangpu_Park_20124-Shanghai_%2832208802494%29.jpg/1920px-Huangpu_Park_20124-Shanghai_%2832208802494%29.jpg"
+    },
+    {
+      "topic": "Dali City",
+      "src": "/programs/southwest-china-yangtze-14-day/china-prime-dmc-southwest-china-yangtze-14-day-dali-city.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/A_Yankee_on_the_Yangtze_-_being_a_narrative_of_a_journey_from_Shanghai_through_the_central_kingdom_to_Burma_%281904%29_%2814598529027%29.jpg/1920px-A_Yankee_on_the_Yangtze_-_being_a_narrative_of_a_journey_from_Shanghai_through_the_central_kingdom_to_Burma_%281904%29_%2814598529027%29.jpg"
+    }
+  ],
+  "family-beijing-shanghai-guangzhou-10-day": [
+    {
+      "topic": "Universal Beijing Resort",
+      "src": "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-universal-beijing-resort.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Universal_Studios_Beijing_globe_square_%2820210907121340%29.jpg"
+    },
+    {
+      "topic": "Shanghai Disneyland",
+      "src": "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-shanghai-disneyland.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/18-03-12_ShanghaiDisney_013.jpg/1920px-18-03-12_ShanghaiDisney_013.jpg"
+    },
+    {
+      "topic": "Chimelong Safari Park",
+      "src": "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-chimelong-safari-park.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Chimelong_Safari_Park_%28Safari_on_wheels_01%29.JPG/1920px-Chimelong_Safari_Park_%28Safari_on_wheels_01%29.JPG"
+    },
+    {
+      "topic": "Guangzhou",
+      "src": "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-guangzhou.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Canton_Tower_20241027.jpg/1920px-Canton_Tower_20241027.jpg"
+    },
+    {
+      "topic": "Beijing National Stadium",
+      "src": "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-beijing-national-stadium.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Beijing_China_Beijing-National-Stadium-01.jpg/1920px-Beijing_China_Beijing-National-Stadium-01.jpg"
+    }
+  ],
+  "women-beijing-xian-shanghai-11-day": [
+    {
+      "topic": "Beijing hutong",
+      "src": "/programs/women-beijing-xian-shanghai-11-day/china-prime-dmc-women-beijing-xian-shanghai-11-day-beijing-hutong.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Hutong_Jiemen_%28Snowyowls%29.jpg"
+    },
+    {
+      "topic": "Humble Administrator's Garden",
+      "src": "/programs/women-beijing-xian-shanghai-11-day/china-prime-dmc-women-beijing-xian-shanghai-11-day-humble-administrator-s-garden.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Suzhou_Zhuozheng_Yuan_2015.04.23_08-13-49.jpg/1920px-Suzhou_Zhuozheng_Yuan_2015.04.23_08-13-49.jpg"
+    },
+    {
+      "topic": "Zhujiajiao",
+      "src": "/programs/women-beijing-xian-shanghai-11-day/china-prime-dmc-women-beijing-xian-shanghai-11-day-zhujiajiao.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/1_zhujiajiao_2023_aerial.jpg/1920px-1_zhujiajiao_2023_aerial.jpg"
+    },
+    {
+      "topic": "Shaanxi History Museum",
+      "src": "/programs/women-beijing-xian-shanghai-11-day/china-prime-dmc-women-beijing-xian-shanghai-11-day-shaanxi-history-museum.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Shaanxi_History_Museum.jpg/1920px-Shaanxi_History_Museum.jpg"
+    },
+    {
+      "topic": "Shanghai French Concession",
+      "src": "/programs/women-beijing-xian-shanghai-11-day/china-prime-dmc-women-beijing-xian-shanghai-11-day-shanghai-french-concession.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/47/French_Concession_building_-_Shanghai.JPG"
+    }
+  ],
+  "women-beijing-zhangjiajie-shanghai-11-day": [
+    {
+      "topic": "Liangma River",
+      "src": "/programs/women-beijing-zhangjiajie-shanghai-11-day/china-prime-dmc-women-beijing-zhangjiajie-shanghai-11-day-liangma-river.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Liangma_River_at_Xinyuan_St_%2820200808164518%29.jpg/1920px-Liangma_River_at_Xinyuan_St_%2820200808164518%29.jpg"
+    },
+    {
+      "topic": "Yuanjiajie",
+      "src": "/programs/women-beijing-zhangjiajie-shanghai-11-day/china-prime-dmc-women-beijing-zhangjiajie-shanghai-11-day-yuanjiajie.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/China_IMG_3871_%2829742848945%29.jpg/1920px-China_IMG_3871_%2829742848945%29.jpg"
+    },
+    {
+      "topic": "Tianzi Mountain",
+      "src": "/programs/women-beijing-zhangjiajie-shanghai-11-day/china-prime-dmc-women-beijing-zhangjiajie-shanghai-11-day-tianzi-mountain.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/China_Tianzi_Gebirge.JPG/1920px-China_Tianzi_Gebirge.JPG"
+    },
+    {
+      "topic": "West Lake",
+      "src": "/programs/women-beijing-zhangjiajie-shanghai-11-day/china-prime-dmc-women-beijing-zhangjiajie-shanghai-11-day-west-lake.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nigeen_Lake_pano_%28edited%29.jpg/1920px-Nigeen_Lake_pano_%28edited%29.jpg"
+    },
+    {
+      "topic": "Longjing tea",
+      "src": "/programs/women-beijing-zhangjiajie-shanghai-11-day/china-prime-dmc-women-beijing-zhangjiajie-shanghai-11-day-longjing-tea.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Longjing_tea.jpg/1920px-Longjing_tea.jpg"
+    }
+  ],
+  "female-friendly-cultural-china-10-day": [
+    {
+      "topic": "Prince Gong Mansion",
+      "src": "/programs/female-friendly-cultural-china-10-day/china-prime-dmc-female-friendly-cultural-china-10-day-prince-gong-mansion.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Prince_Gong_1.jpg"
+    },
+    {
+      "topic": "Luoyi Ancient City",
+      "src": "/programs/female-friendly-cultural-china-10-day/china-prime-dmc-female-friendly-cultural-china-10-day-luoyi-ancient-city.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/78/20230124_Luoyi_Ancient_City_03.jpg"
+    },
+    {
+      "topic": "Jiefangbei",
+      "src": "/programs/female-friendly-cultural-china-10-day/china-prime-dmc-female-friendly-cultural-china-10-day-jiefangbei.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/41/Jiefangbei.jpg"
+    },
+    {
+      "topic": "Chengdu tea house",
+      "src": "/programs/female-friendly-cultural-china-10-day/china-prime-dmc-female-friendly-cultural-china-10-day-chengdu-tea-house.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Tea_house_and_restaurant_-_Chengdu_Botanical_Garden_-_Chengdu%2C_China_-_DSC03501.JPG/1920px-Tea_house_and_restaurant_-_Chengdu_Botanical_Garden_-_Chengdu%2C_China_-_DSC03501.JPG"
+    },
+    {
+      "topic": "Luoyang",
+      "src": "/programs/female-friendly-cultural-china-10-day/china-prime-dmc-female-friendly-cultural-china-10-day-luoyang.jpg",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Longmen_Grottoes_3.jpg/1920px-Longmen_Grottoes_3.jpg"
+    }
+  ]
+}

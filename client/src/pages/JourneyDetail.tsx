@@ -1,194 +1,196 @@
-/**
- * Journey Detail Page — Light Editorial Luxury Design System (方案 B)
- * 纯白背景、深黑标题、中性灰正文、深金色强调
- */
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "wouter";
-import { ArrowRight, ArrowLeft, CheckCircle, ChevronDown } from "lucide-react";
-import { journeys, WHATSAPP_URL } from "@/lib/data";
+import { ArrowLeft, ArrowRight, Check, Clock, MapPin, Minus, Users } from "lucide-react";
+import { WHATSAPP_URL } from "@/lib/data";
+import { journeys } from "@/lib/programData";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } }, { threshold: 0.08 });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.08 },
+    );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
   return (
-    <div ref={ref} className={className} style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(28px)", transition: `opacity 0.7s cubic-bezier(0.23,1,0.32,1) ${delay}ms, transform 0.7s cubic-bezier(0.23,1,0.32,1) ${delay}ms` }}>
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(22px)",
+        transition: `opacity 0.6s cubic-bezier(0.23,1,0.32,1) ${delay}ms, transform 0.6s cubic-bezier(0.23,1,0.32,1) ${delay}ms`,
+      }}
+    >
       {children}
+    </div>
+  );
+}
+
+function SectionTitle({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
+  return (
+    <FadeSection className="mb-10">
+      <p className="b2b-eyebrow">{eyebrow}</p>
+      <h2 className="b2b-heading max-w-4xl">{title}</h2>
+      {body && <p className="b2b-lede mt-5 max-w-3xl">{body}</p>}
+    </FadeSection>
+  );
+}
+
+function BulletList({ items, icon = "check" }: { items: string[]; icon?: "check" | "minus" }) {
+  const Icon = icon === "check" ? Check : Minus;
+  return (
+    <div className="grid gap-3">
+      {items.map((item) => (
+        <div key={item} className="flex gap-3 text-sm leading-6 text-[var(--brand-gray-700)]">
+          <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center border border-[var(--brand-border)]">
+            <Icon size={12} />
+          </span>
+          <span>{item}</span>
+        </div>
+      ))}
     </div>
   );
 }
 
 export default function JourneyDetail() {
   const params = useParams<{ id: string }>();
-  const journey = journeys.find(j => j.id === params.id);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const journey = journeys.find((item) => item.id === params.id);
 
   if (!journey) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#FFFFFF", paddingTop: "72px" }}>
+      <main className="flex min-h-screen items-center justify-center bg-white px-6 pt-[72px]">
         <div className="text-center">
-          <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "2rem", color: "var(--brand-text)", marginBottom: "24px" }}>Journey not found</h2>
-          <Link href="/journeys" className="inline-flex items-center gap-2" style={{
-            backgroundColor: "var(--brand-champagne)",
-            color: "#FFFFFF",
-            padding: "12px 24px",
-            borderRadius: "50px",
-            textDecoration: "none",
-            fontWeight: 500,
-          }}>
-            <ArrowLeft size={16} /> Back to Journeys
+          <h1 className="text-3xl font-semibold text-[var(--brand-black)]">Program not found</h1>
+          <Link href="/journeys" className="mono-button mt-8">
+            <ArrowLeft size={16} /> Back to programs
           </Link>
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div style={{ backgroundColor: "#FFFFFF", color: "var(--brand-text)", paddingTop: "72px" }}>
-      {/* ══════════════════════════════════════════════════════════════
-          HERO SECTION
-          ══════════════════════════════════════════════════════════════ */}
-      <section className="relative h-[80vh] min-h-[550px] overflow-hidden flex items-end">
-        <img src={journey.image} alt={journey.title} className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.4) 0%, rgba(17, 24, 39, 0.1) 60%)" }} />
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pb-20 w-full">
-          <Link href="/journeys" className="inline-flex items-center gap-2 mb-6 text-xs tracking-[0.15em] uppercase transition-colors" style={{ color: "var(--brand-gray-100)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }} onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }} onMouseLeave={(e) => { e.currentTarget.style.color = "var(--brand-gray-100)"; }}>
-            <ArrowLeft size={12} /> All Journeys
-          </Link>
-          <div className="flex flex-wrap items-center gap-4 mb-4">
-            <span className="text-[9px] tracking-[0.2em] uppercase px-3 py-1" style={{ backgroundColor: "rgba(255, 255, 255, 0.16)", color: "#FFFFFF", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-              {journey.duration}
-            </span>
-            <span className="text-[9px] tracking-[0.15em] uppercase" style={{ color: "var(--brand-gray-100)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-              {journey.difficulty}
-            </span>
-          </div>
-          <h1 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.05, marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
-            {journey.title}
-          </h1>
-          <p style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "1.3rem", fontStyle: "italic", color: "var(--brand-gray-100)" }}>{journey.subtitle}</p>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          OVERVIEW
-          ══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid lg:grid-cols-[1.3fr_1fr] gap-16">
-            <FadeSection>
-              <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
-                Journey Overview
+    <main style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
+      <section className="relative min-h-[82vh] overflow-hidden bg-[var(--brand-black)]">
+        <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="absolute inset-0 h-full w-full object-cover opacity-75" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" />
+        <div className="relative flex min-h-[82vh] items-end px-6 pb-12 lg:px-10 lg:pb-16">
+          <div className="mono-wrap w-full">
+            <Link href="/journeys" className="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-white no-underline">
+              <ArrowLeft size={14} /> All programs
+            </Link>
+            <div className="max-w-6xl">
+              <div className="mb-5 flex flex-wrap gap-2">
+                {[journey.duration, journey.pace, journey.physicalLevel, journey.pricingNote].map((item) => (
+                  <span key={item} className="border border-white/30 bg-black/35 px-3 py-2 text-xs font-bold uppercase tracking-[0.1em] text-white backdrop-blur">
+                    {item}
+                  </span>
+                ))}
               </div>
-              <div style={{ width: "60px", height: "2px", background: "var(--brand-champagne)", marginBottom: "2rem" }} />
-              <p style={{ fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem", color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-                {journey.overview}
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/contact" className="inline-flex items-center gap-2" style={{
-                  backgroundColor: "var(--brand-champagne)",
-                  color: "#FFFFFF",
-                  padding: "14px 32px",
-                  borderRadius: "50px",
-                  textDecoration: "none",
-                  fontWeight: 500,
-                  fontSize: "1rem",
-                  transition: "all 0.3s ease",
-                }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)"; e.currentTarget.style.transform = "scale(1.05)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.transform = "scale(1)"; }}>
-                  Enquire <ArrowRight size={16} />
-                </Link>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2" style={{
-                  border: "2px solid var(--brand-champagne)",
-                  color: "var(--brand-champagne)",
-                  padding: "12px 28px",
-                  borderRadius: "50px",
-                  textDecoration: "none",
-                  fontWeight: 500,
-                  fontSize: "1rem",
-                  transition: "all 0.3s ease",
-                  backgroundColor: "transparent",
-                }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.color = "#FFFFFF"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "var(--brand-champagne)"; }}>
-                  WhatsApp
-                </a>
-              </div>
-            </FadeSection>
-
-            <FadeSection delay={150}>
-              <div style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)", borderRadius: "8px", padding: "24px" }}>
-                <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "16px", fontWeight: 600 }}>
-                  Trip Highlights
-                </div>
-                <div className="space-y-3">
-                  {journey.highlights.map((h) => (
-                    <div key={h} className="flex items-start gap-3">
-                      <CheckCircle size={16} style={{ color: "var(--brand-champagne)", marginTop: "2px", flexShrink: 0 }} />
-                      <span style={{ fontSize: "0.95rem", color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>{h}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          DAY BY DAY
-          ══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "var(--brand-parchment)", borderTop: "1px solid var(--brand-border)" }}>
-        <div className="max-w-[1400px] mx-auto">
-          <FadeSection className="mb-16">
-            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
-              Itinerary
+              <h1 className="text-[clamp(2.4rem,7vw,6rem)] font-semibold leading-[0.95] text-white">{journey.title}</h1>
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--brand-gray-100)] md:text-xl">{journey.subtitle}</p>
             </div>
-            <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", fontWeight: 300, color: "var(--brand-text)", letterSpacing: "-0.02em" }}>
-              Day by Day
-            </h2>
-          </FadeSection>
+          </div>
+        </div>
+      </section>
 
-          <div className="space-y-4">
-            {journey.days.map((day, i) => (
-              <FadeSection key={i} delay={i * 40}>
-                <div style={{ backgroundColor: "#FFFFFF", border: "1px solid var(--brand-border)", borderRadius: "8px", overflow: "hidden" }}>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    style={{
-                      width: "100%",
-                      padding: "20px 24px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      backgroundColor: "#FFFFFF",
-                      border: "none",
-                      cursor: "pointer",
-                      transition: "all 0.3s ease",
-                    }}
-                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-parchment)"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#FFFFFF"; }}
-                  >
-                    <div style={{ textAlign: "left" }}>
-                      <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "4px", fontWeight: 600 }}>
-                        Day {i + 1}
-                      </div>
-                      <h3 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "1.3rem", fontWeight: 400, color: "var(--brand-text)" }}>
-                        {day.title}
-                      </h3>
-                    </div>
-                    <ChevronDown size={20} style={{ color: "var(--brand-champagne)", transform: openFaq === i ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }} />
-                  </button>
-                  {openFaq === i && (
-                    <div style={{ padding: "0 24px 20px", borderTop: "1px solid var(--brand-border)", backgroundColor: "var(--brand-parchment)" }}>
-                      <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "var(--brand-text-muted)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-                        {day.description}
-                      </p>
-                    </div>
-                  )}
+      <section className="border-b border-[var(--brand-border)] bg-white px-6 py-7 lg:px-10">
+        <div className="mono-wrap grid gap-px bg-[var(--brand-border)] md:grid-cols-4">
+          {[
+            { icon: Clock, label: "Duration", value: journey.duration },
+            { icon: MapPin, label: "Route", value: journey.route },
+            { icon: Users, label: "Best for", value: journey.bestFor.slice(0, 2).join(" / ") },
+            { icon: Check, label: "Season", value: journey.bestTime },
+          ].map((item) => (
+            <div key={item.label} className="bg-white p-5">
+              <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[var(--brand-border)]">
+                <item.icon size={15} />
+              </div>
+              <div className="mb-1 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-500)]">{item.label}</div>
+              <div className="text-sm font-semibold leading-6 text-[var(--brand-black)]">{item.value}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-white)]">
+        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.75fr_1fr]">
+          <FadeSection>
+            <p className="b2b-eyebrow">B2B snapshot</p>
+            <h2 className="b2b-heading">What this program is built to sell.</h2>
+          </FadeSection>
+          <FadeSection delay={100}>
+            <p className="b2b-lede mt-0">{journey.overview}</p>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {[...journey.themes, ...journey.travelerTypes].map((tag) => (
+                <span key={tag} className="border border-[var(--brand-border)] px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-gray-700)]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </FadeSection>
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap">
+          <SectionTitle eyebrow="Why it sells" title="Clear trade value, not generic travel copy." body={journey.routeSummary} />
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-3">
+            {journey.whyItSells.map((item, index) => (
+              <FadeSection key={item} delay={index * 70} className="bg-white p-7">
+                <div className="mb-8 inline-block bg-[var(--brand-black)] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">0{index + 1}</div>
+                <p className="text-base leading-7 text-[var(--brand-gray-700)]">{item}</p>
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-white">
+        <div className="mono-wrap">
+          <SectionTitle eyebrow="Gallery" title="Route-specific visual references." />
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-5">
+            {journey.gallery.map((image, index) => (
+              <FadeSection key={image.src} delay={index * 45}>
+                <figure className="bg-white">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+                  </div>
+                  <figcaption className="min-h-20 border-t border-[var(--brand-border)] p-4 text-sm leading-6 text-[var(--brand-gray-600)]">
+                    {image.topic}
+                  </figcaption>
+                </figure>
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap">
+          <SectionTitle eyebrow="Day by day" title="A flexible operating framework." />
+          <div className="grid gap-px bg-[var(--brand-border)]">
+            {journey.days.map((day, index) => (
+              <FadeSection key={`${day.day}-${day.title}`} delay={(index % 8) * 35}>
+                <div className="grid gap-6 bg-white p-6 md:grid-cols-[180px_1fr] md:p-8">
+                  <div>
+                    <div className="mono-index">{day.day}</div>
+                    <h3 className="mt-3 text-xl font-semibold leading-tight text-[var(--brand-black)]">{day.title}</h3>
+                  </div>
+                  <p className="m-0 text-base leading-8 text-[var(--brand-gray-700)]">{day.description}</p>
                 </div>
               </FadeSection>
             ))}
@@ -196,48 +198,74 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          FINAL CTA
-          ══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="max-w-[900px] mx-auto text-center">
+      <section className="mono-section bg-white">
+        <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] lg:grid-cols-2">
+          <div className="bg-white p-7 md:p-9">
+            <h2 className="mb-8 text-3xl font-semibold text-[var(--brand-black)]">Included</h2>
+            <BulletList items={journey.included} />
+          </div>
+          <div className="bg-white p-7 md:p-9">
+            <h2 className="mb-8 text-3xl font-semibold text-[var(--brand-black)]">Not included</h2>
+            <BulletList items={journey.notIncluded} icon="minus" />
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap">
+          <SectionTitle eyebrow="Operations" title="The details your sales and operations team need before quoting." />
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
+            {[
+              ["Hotel level", journey.hotelLevel.join(" / ")],
+              ["Meal support", journey.mealSupport],
+              ["Transport", journey.transport],
+              ["Guide language", journey.guideLanguage],
+              ["Customization", journey.customization.join(" / ")],
+              ["Operational notes", journey.operationalNotes.join(" / ")],
+            ].map(([label, value]) => (
+              <FadeSection key={label} className="bg-white p-7">
+                <div className="mb-3 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-500)]">{label}</div>
+                <p className="m-0 text-base leading-8 text-[var(--brand-gray-700)]">{value}</p>
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-white">
+        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.7fr_1fr]">
+          <SectionTitle eyebrow="FAQ" title="Trade-facing questions." />
+          <div className="grid gap-px bg-[var(--brand-border)]">
+            {journey.faqs.map((faq) => (
+              <FadeSection key={faq.q} className="bg-white p-7">
+                <h3 className="mb-3 text-lg font-semibold leading-tight text-[var(--brand-black)]">{faq.q}</h3>
+                <p className="m-0 text-base leading-7 text-[var(--brand-gray-700)]">{faq.a}</p>
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-black)] text-white">
+        <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
-            <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "3rem", fontWeight: 300, color: "var(--brand-text)", marginBottom: "16px", letterSpacing: "-0.02em" }}>
-              Ready to Begin This Journey?
+            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Request net rate</p>
+            <h2 className="b2b-heading max-w-4xl" style={{ color: "var(--brand-white)" }}>
+              Quote this route with your travel window, group size, hotel level, and special requirements.
             </h2>
-            <p style={{ fontSize: "1.1rem", color: "var(--brand-text-muted)", marginBottom: "32px", lineHeight: 1.8, fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-              Contact us today to customize this journey or discuss variations tailored to your interests and schedule.
-            </p>
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Link href="/contact" className="inline-flex items-center gap-2" style={{
-                backgroundColor: "var(--brand-champagne)",
-                color: "#FFFFFF",
-                padding: "14px 32px",
-                borderRadius: "50px",
-                textDecoration: "none",
-                fontWeight: 500,
-                fontSize: "1rem",
-                transition: "all 0.3s ease",
-              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)"; e.currentTarget.style.transform = "scale(1.05)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.transform = "scale(1)"; }}>
-                Enquire Now <ArrowRight size={18} />
+          </FadeSection>
+          <FadeSection delay={100}>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+                Send brief <ArrowRight size={17} />
               </Link>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2" style={{
-                border: "2px solid var(--brand-champagne)",
-                color: "var(--brand-champagne)",
-                padding: "12px 28px",
-                borderRadius: "50px",
-                textDecoration: "none",
-                fontWeight: 500,
-                fontSize: "1rem",
-                transition: "all 0.3s ease",
-                backgroundColor: "transparent",
-              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.color = "#FFFFFF"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "var(--brand-champagne)"; }}>
-                WhatsApp Us
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button mono-button-secondary border-[var(--brand-gray-700)] text-white">
+                WhatsApp
               </a>
             </div>
           </FadeSection>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
