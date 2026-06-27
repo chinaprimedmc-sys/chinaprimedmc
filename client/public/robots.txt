@@ -1,21 +1,15 @@
-# China Prime - robots.txt
-# Allow all search engines to crawl the site
+# China Prime DMC - robots.txt
+# Allow search engines to crawl public B2B travel pages.
 
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api
 
-# Specific rules for Google
 User-agent: Googlebot
 Allow: /
 
-# Specific rules for Bing
 User-agent: Bingbot
 Allow: /
 
-# Sitemap location
-Sitemap: https://chinaprimedmc.com/sitemap.xml
-
-# Crawl delay (in seconds)
-Crawl-delay: 1
+Sitemap: https://www.chinaprimedmc.com/sitemap.xml
