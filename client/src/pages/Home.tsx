@@ -101,78 +101,117 @@ const process = [
   { step: "04", title: "Operate", desc: "Our China team delivers on the ground while you keep the client relationship and brand ownership." },
 ];
 
+const heroImages = {
+  meeting: "/services/china-prime-dmc-b2b-services-travel-trade-buyer-meeting.jpeg",
+  greatWall: "/services/china-prime-dmc-china-itinerary-design-great-wall.jpeg",
+  shanghai: "/services/china-prime-dmc-ground-operations-shanghai-business-travel.jpeg",
+};
+
 export default function Home() {
   return (
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
-      <section className="px-6 lg:px-10" style={{ paddingBottom: "clamp(64px, 8vw, 104px)", paddingTop: "clamp(48px, 7vw, 88px)" }}>
-        <div className="mono-wrap grid grid-cols-1 gap-10 lg:grid-cols-[0.92fr_0.78fr] lg:items-start lg:justify-between">
-          <div className="flex flex-col justify-between">
+      <section className="relative overflow-hidden bg-[var(--brand-white)] px-6 lg:px-10" style={{ paddingBottom: "clamp(72px, 8vw, 108px)", paddingTop: "clamp(62px, 7vw, 104px)" }}>
+        <div aria-hidden="true" className="absolute left-0 top-0 hidden h-full w-[9vw] border-r border-[var(--brand-border)] xl:block" />
+        <div className="mono-wrap">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.78fr_0.92fr] lg:items-center">
             <div>
-              <p className="b2b-eyebrow">China ground services for travel brands</p>
+              <div className="mb-8 flex items-center gap-4">
+                <div className="h-px w-16 bg-[var(--brand-black)]" />
+                <p className="b2b-eyebrow mb-0">China ground services for travel brands</p>
+              </div>
               <h1
                 style={{
                   color: "var(--brand-black)",
-                  fontSize: "clamp(3.2rem, 7vw, 7.2rem)",
+                  fontSize: "clamp(3.55rem, 7.2vw, 7.8rem)",
                   fontWeight: 540,
                   letterSpacing: 0,
                   lineHeight: 0.88,
                   margin: 0,
-                  maxWidth: 980,
+                  maxWidth: 860,
                 }}
               >
-                China,
-                <br />
-                operated precisely.
+                China ground operations,
+                <br className="hidden sm:block" /> built for trade.
               </h1>
-              <p className="b2b-lede" style={{ fontSize: "clamp(1.05rem, 1.45vw, 1.22rem)", marginTop: 28, maxWidth: 700 }}>
-                China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, and corporate travel teams.
-              </p>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="mono-button">
-                Request a quote <ArrowRight size={17} />
-              </Link>
-              <Link href="/b2b" className="mono-button mono-button-secondary">
-                View services
-              </Link>
-            </div>
-          </div>
-
-          <div className="lg:pt-8">
-            <div className="h-full border border-[var(--brand-black)] bg-white">
-              <div className="grid grid-cols-2 border-b border-[var(--brand-border)]">
-                {metrics.map((item) => (
-                  <div key={item.label} className="border-r border-b border-[var(--brand-border)] p-6 last:border-r-0 sm:p-8">
-                    <div style={{ color: "var(--brand-black)", fontSize: "clamp(2rem, 4vw, 3.6rem)", fontWeight: 560, lineHeight: 1 }}>
-                      {item.value}
-                    </div>
-                    <div className="mono-index mt-3">{item.label}</div>
-                  </div>
-                ))}
+              <div className="mt-8 grid max-w-3xl grid-cols-1 gap-7 border-l border-[var(--brand-black)] pl-6 md:grid-cols-[1fr_auto] md:items-end">
+                <p className="b2b-lede" style={{ fontSize: "clamp(1.05rem, 1.45vw, 1.22rem)", marginTop: 0, maxWidth: 650 }}>
+                  China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, and corporate travel teams.
+                </p>
+                <div className="hidden w-28 text-right text-[0.68rem] font-bold uppercase leading-5 tracking-[0.16em] text-[var(--brand-gray-500)] md:block">
+                  Est. 2012
+                  <br />
+                  China based
+                </div>
               </div>
-              <div className="p-6 sm:p-8">
-                <div className="mb-5 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center bg-[var(--brand-black)] text-white">
-                    <ShieldCheck size={19} />
-                  </div>
-                  <div>
-                    <div className="mono-index">Operating model</div>
-                    <h2 className="text-xl font-semibold" style={{ color: "var(--brand-black)", margin: 0 }}>
-                      White-label China delivery
-                    </h2>
+
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Link href="/contact" className="mono-button">
+                  Request a quote <ArrowRight size={17} />
+                </Link>
+                <Link href="/b2b" className="mono-button mono-button-secondary">
+                  View services
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute right-0 top-0 z-10 hidden bg-[var(--brand-black)] px-5 py-3 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white lg:block">
+                Partner desk
+              </div>
+              <div className="border border-[var(--brand-black)] bg-[var(--brand-black)]">
+                <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] md:grid-cols-[1fr_0.42fr]">
+                  <figure className="relative min-h-[430px] overflow-hidden bg-[var(--brand-black)]">
+                    <img
+                      src={heroImages.meeting}
+                      alt="China Prime DMC meeting travel trade partners for China ground operations."
+                      className="h-full min-h-[430px] w-full object-cover"
+                    />
+                    <figcaption className="absolute bottom-0 left-0 max-w-[520px] bg-[var(--brand-black)] p-5 text-sm leading-6 text-[var(--brand-gray-200)]">
+                      Real trade conversations shape the programs we quote and operate for overseas partners.
+                    </figcaption>
+                  </figure>
+                  <div className="grid grid-cols-2 gap-px bg-[var(--brand-gray-800)] md:grid-cols-1">
+                    <img
+                      src={heroImages.greatWall}
+                      alt="Great Wall route planning for China itinerary design."
+                      className="h-44 w-full object-cover md:h-full"
+                    />
+                    <img
+                      src={heroImages.shanghai}
+                      alt="Shanghai business travel operations for China DMC partners."
+                      className="h-44 w-full object-cover md:h-full"
+                    />
                   </div>
                 </div>
-                <p className="b2b-body" style={{ maxWidth: 620 }}>
-                  Your team owns the client relationship. We handle feasibility, suppliers, local coordination, and on-trip problem solving.
-                </p>
-                <div className="mt-8 grid gap-3">
-                  {["Net pricing", "Partner-ready proposals", "China-based operations", "Bilingual support"].map((item) => (
-                    <div key={item} className="flex items-center justify-between border-t border-[var(--brand-border)] pt-3">
-                      <span className="text-sm font-semibold" style={{ color: "var(--brand-gray-800)" }}>{item}</span>
-                      <Check size={16} style={{ color: "var(--brand-black)" }} />
+                <div className="grid grid-cols-2 gap-px bg-[var(--brand-gray-800)] md:grid-cols-4">
+                  {metrics.map((item) => (
+                    <div key={item.label} className="bg-[var(--brand-black)] p-5 sm:p-6">
+                      <div className="text-3xl font-semibold leading-none text-white md:text-4xl">{item.value}</div>
+                      <div className="mono-index mt-3 text-[var(--brand-gray-400)]">{item.label}</div>
                     </div>
                   ))}
+                </div>
+              </div>
+              <div className="ml-auto mt-4 max-w-xl border border-[var(--brand-border)] bg-white p-5 shadow-[8px_8px_0_var(--brand-black)] sm:p-6">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[var(--brand-black)] text-white">
+                    <ShieldCheck size={19} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="mono-index">Operating model</div>
+                    <h2 className="mt-1 text-xl font-semibold leading-tight text-[var(--brand-black)]">White-label China delivery</h2>
+                    <p className="b2b-body mt-3">
+                      Your team owns the client relationship. We handle feasibility, suppliers, local coordination, and on-trip problem solving.
+                    </p>
+                    <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      {["Net pricing", "Partner-ready proposals", "China-based operations", "Bilingual support"].map((item) => (
+                        <div key={item} className="flex items-center justify-between gap-3 border-t border-[var(--brand-border)] pt-2">
+                          <span className="text-sm font-semibold text-[var(--brand-gray-800)]">{item}</span>
+                          <Check size={15} className="shrink-0 text-[var(--brand-black)]" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
