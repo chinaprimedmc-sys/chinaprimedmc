@@ -38,6 +38,11 @@ export type TradeShowPresence = {
     url: string;
     description: string;
   }>;
+  contextLinks: Array<{
+    label: string;
+    url: string;
+    sentence: string;
+  }>;
   seoKeywords: string[];
   images: TradeShowImage[];
 };
@@ -155,6 +160,26 @@ export const tradeShows: TradeShowPresence[] = [
         url: "https://my.china-embassy.gov.cn/eng/fwzc/lsyw/qz/202508/t20250801_11681401.htm",
         description:
           "Official consular context on short-term visa-free travel between China and Malaysia.",
+      },
+    ],
+    contextLinks: [
+      {
+        label: "Pentagon Exhibitions & Events",
+        url: "https://www.pentagonevents.my/",
+        sentence:
+          "organized the regional trade setting, giving China Prime DMC direct conversations with Malaysian agencies and Southeast Asian travel planners.",
+      },
+      {
+        label: "Pavilion Hotel Kuala Lumpur",
+        url: "https://www.banyantree.com/malaysia/pavilion-hotel/meeting-venues/the-pavilion-ballroom",
+        sentence:
+          "provided a focused meeting venue where buyer consultations could move from destination interest into practical questions about China ground services.",
+      },
+      {
+        label: "China-Malaysia mutual visa exemption",
+        url: "https://my.china-embassy.gov.cn/eng/fwzc/lsyw/qz/202508/t20250801_11681401.htm",
+        sentence:
+          "adds a timely travel-policy context for Malaysian agencies rebuilding China programs for short-stay leisure and group clients.",
       },
     ],
     seoKeywords: [
@@ -321,6 +346,26 @@ export const tradeShows: TradeShowPresence[] = [
         url: "https://sg.china-embassy.gov.cn/eng/",
         description:
           "Official Chinese Embassy resource for Singapore-based travelers and China-related consular information.",
+      },
+    ],
+    contextLinks: [
+      {
+        label: "Singapore Tourism Board",
+        url: "https://www.stb.gov.sg/",
+        sentence:
+          "offers useful context on Singapore's role as a polished travel and business-events hub, which shapes how local agencies evaluate supplier professionalism.",
+      },
+      {
+        label: "Chinese Embassy in Singapore",
+        url: "https://sg.china-embassy.gov.cn/eng/",
+        sentence:
+          "is the relevant official source for Singapore-based China travel and consular information, making it a better reference point for this market than Malaysia-specific visa pages.",
+      },
+      {
+        label: "Pentagon Exhibitions & Events",
+        url: "https://www.pentagonevents.my/",
+        sentence:
+          "provided the trade-show platform where China Prime DMC could present China program materials and meet Singapore-facing travel sellers.",
       },
     ],
     seoKeywords: [
