@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ArrowRight, Mail, SlidersHorizontal, X } from "lucide-react";
 import { EMAIL } from "@/lib/data";
 import type { Journey } from "@/lib/programData";
@@ -114,6 +114,7 @@ function FilterSelect({
 }
 
 export default function Journeys() {
+  const [, navigate] = useLocation();
   const [destinationFilters, setDestinationFilters] = useState<string[]>([]);
   const [durationFilters, setDurationFilters] = useState<string[]>([]);
   const [themeFilters, setThemeFilters] = useState<string[]>([]);
@@ -243,7 +244,18 @@ export default function Journeys() {
         <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
           {filteredJourneys.map((journey, index) => (
             <FadeSection key={journey.id} delay={(index % 6) * 35}>
-              <article className="group grid min-h-full bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)]">
+              <article
+                role="link"
+                tabIndex={0}
+                onClick={() => navigate(`/journeys/${journey.id}`)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    navigate(`/journeys/${journey.id}`);
+                  }
+                }}
+                className="group grid min-h-full cursor-pointer bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-black)]"
+              >
                 <div className="relative aspect-[4/3] overflow-hidden bg-[var(--brand-gray-100)]">
                   <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                   <div className="absolute left-3 top-3 bg-[var(--brand-black)] px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-white">
@@ -279,12 +291,14 @@ export default function Journeys() {
                   <div className="grid gap-3 2xl:grid-cols-2">
                     <Link
                       href={`/journeys/${journey.id}`}
+                      onClick={(event) => event.stopPropagation()}
                       className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--brand-black)] bg-[var(--brand-black)] px-4 text-sm font-semibold text-white no-underline transition-colors hover:bg-[var(--brand-gray-800)]"
                     >
                       View details <ArrowRight size={15} />
                     </Link>
                     <a
                       href={programEmailHref(journey)}
+                      onClick={(event) => event.stopPropagation()}
                       className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--brand-border)] bg-white px-4 text-sm font-semibold text-[var(--brand-black)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)]"
                     >
                       Request by email <Mail size={15} />
