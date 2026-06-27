@@ -82,6 +82,10 @@ export default function JourneyDetail() {
     );
   }
 
+  const galleryImages = journey.gallery.filter((image) => image.src !== journey.image);
+  const ctaImage = galleryImages.length > 1 ? galleryImages[galleryImages.length - 1] : undefined;
+  const cinematicGallery = ctaImage ? galleryImages.slice(0, -1) : galleryImages.length > 0 ? galleryImages : journey.gallery;
+
   return (
     <main style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
       <section className="relative min-h-[82vh] overflow-hidden bg-[var(--brand-black)]">
@@ -159,18 +163,52 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section bg-white">
+      <section className="mono-section overflow-hidden bg-[var(--brand-black)] text-white">
         <div className="mono-wrap">
-          <SectionTitle eyebrow="Gallery" title="Route-specific visual references." />
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-5">
-            {journey.gallery.map((image, index) => (
-              <FadeSection key={image.src} delay={index * 45}>
-                <figure className="bg-white">
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.52fr_1fr] lg:items-end">
+            <div>
+              <p className="b2b-eyebrow text-[var(--brand-gray-400)]">Cinematic gallery</p>
+              <h2 className="b2b-heading max-w-4xl text-white">Landmark images that help buyers feel the route.</h2>
+            </div>
+            <p className="b2b-lede mt-0 text-[var(--brand-gray-300)]">
+              A route should be easy to picture before it is quoted. These large-format visuals give partners a stronger sense of scale, atmosphere, and sales value without adding extra initial-load weight.
+            </p>
+          </FadeSection>
+
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-6 md:gap-4">
+            {cinematicGallery.map((image, index) => (
+              <FadeSection
+                key={image.src}
+                delay={index * 45}
+                className={[
+                  index === 0 ? "md:col-span-4 md:row-span-2" : "md:col-span-2",
+                  index === 3 ? "md:col-span-3" : "",
+                  index === 4 ? "md:col-span-3" : "",
+                ].join(" ")}
+              >
+                <figure
+                  className={[
+                    "group relative h-full overflow-hidden bg-[var(--brand-gray-900)]",
+                  ].join(" ")}
+                >
+                  <div className={index === 0 ? "aspect-[16/10] md:aspect-[16/11]" : "aspect-[16/10]"}>
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
-                  <figcaption className="min-h-20 border-t border-[var(--brand-border)] p-4 text-sm leading-6 text-[var(--brand-gray-600)]">
-                    {image.topic}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/10 to-transparent" />
+                  <figcaption className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                    <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-300)]">
+                      {String(index + 1).padStart(2, "0")} / {cinematicGallery.length}
+                    </div>
+                    <h3 className="text-xl font-semibold leading-tight text-white md:text-2xl">{image.topic}</h3>
+                    <p className="mt-2 hidden max-w-xl text-sm leading-6 text-[var(--brand-gray-200)] sm:block">
+                      {image.caption}
+                    </p>
                   </figcaption>
                 </figure>
               </FadeSection>
@@ -246,7 +284,16 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
+      <section className="mono-section relative isolate overflow-hidden bg-[var(--brand-black)] text-white">
+        <img
+          src={ctaImage?.src || journey.image}
+          alt={ctaImage?.alt || journey.title}
+          className="absolute inset-0 -z-20 h-full w-full object-cover opacity-45"
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.94)_0%,rgba(0,0,0,0.78)_48%,rgba(0,0,0,0.50)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.22)_58%,rgba(0,0,0,0.68)_100%)]" />
         <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
             <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Request net rate</p>

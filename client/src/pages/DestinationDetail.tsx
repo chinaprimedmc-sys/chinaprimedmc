@@ -4,6 +4,8 @@ import { ArrowLeft, ArrowRight, Check, Image as ImageIcon, MapPin, Route, Search
 import { coverageRegions, findCoverageRegion, type CoverageRegion } from "@/lib/coverageData";
 import { journeys, type Journey } from "@/lib/programData";
 
+type VisualImage = { src: string; alt: string; caption?: string; topic?: string };
+
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -105,7 +107,79 @@ function relatedJourneysForCity(cityName: string): Journey[] {
     .map((item) => item.journey);
 }
 
-function RegionHero({ region }: { region: CoverageRegion }) {
+function relatedJourneyImage(journey: Journey, seed: number) {
+  const gallery = journey.gallery.length > 0 ? journey.gallery : [{ src: journey.image, alt: journey.title }];
+  const image = gallery[seed % gallery.length];
+  return {
+    src: image.src,
+    alt: image.alt || journey.title,
+  };
+}
+
+function rotateImages(images: VisualImage[], seed: number) {
+  if (images.length === 0) return images;
+  const offset = seed % images.length;
+  return [...images.slice(offset), ...images.slice(0, offset)];
+}
+
+function uniqueImages(images: VisualImage[]) {
+  const seen = new Set<string>();
+  return images.filter((image) => {
+    if (seen.has(image.src)) return false;
+    seen.add(image.src);
+    return true;
+  });
+}
+
+function journeyVisuals(journey: Journey): VisualImage[] {
+  return uniqueImages([
+    ...journey.gallery.map((image) => ({
+      src: image.src,
+      alt: image.alt || journey.title,
+      caption: image.caption,
+      topic: image.topic,
+    })),
+    { src: journey.image, alt: journey.title },
+  ]);
+}
+
+function regionVisualPool(region: CoverageRegion): VisualImage[] {
+  const relatedJourneyImages = region.cities
+    .flatMap((city) => relatedJourneysForCity(city.name))
+    .flatMap((journey) => journeyVisuals(journey));
+
+  return uniqueImages([
+    ...region.gallery,
+    ...relatedJourneyImages,
+    { src: region.heroImage, alt: region.name, caption: region.summary },
+  ]);
+}
+
+function createImageAllocator(initialUsed: string[] = []) {
+  const used = new Set(initialUsed.filter(Boolean));
+
+  function reserve(candidates: VisualImage[]) {
+    const uniqueCandidates = uniqueImages(candidates);
+    const image = uniqueCandidates.find((item) => !used.has(item.src));
+    if (image) used.add(image.src);
+    return image;
+  }
+
+  function reserveMany(candidates: VisualImage[], count: number) {
+    const selected: VisualImage[] = [];
+    for (const image of uniqueImages(candidates)) {
+      if (selected.length >= count) break;
+      if (used.has(image.src)) continue;
+      used.add(image.src);
+      selected.push(image);
+    }
+    return selected;
+  }
+
+  return { reserve, reserveMany };
+}
+
+function RegionHero({ region, stripImages }: { region: CoverageRegion; stripImages: VisualImage[] }) {
   return (
     <section className="relative isolate overflow-hidden bg-[var(--brand-black)] text-white">
       <img
@@ -136,7 +210,7 @@ function RegionHero({ region }: { region: CoverageRegion }) {
         <FadeSection delay={120}>
           <div className="grid gap-px bg-white/20 backdrop-blur-sm">
             <div className="grid grid-cols-3 gap-px">
-              {region.gallery.slice(1, 4).map((image) => (
+              {stripImages.map((image) => (
                 <figure key={image.src} className="bg-[var(--brand-black)]">
                   <div className="aspect-[4/3] overflow-hidden">
                     <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
@@ -197,9 +271,32 @@ export default function DestinationDetail() {
     );
   }
 
+  const visualPool = regionVisualPool(region);
+  const imageAllocator = createImageAllocator([region.heroImage]);
+  const heroStripImages = imageAllocator.reserveMany(region.gallery, 3);
+  const buyerContextImage = imageAllocator.reserve([...region.gallery.slice(3), ...visualPool]);
+  const seoImage = imageAllocator.reserve([...region.gallery.slice(4), ...visualPool]);
+  const relatedJourneysByCity = new Map<string, Journey[]>();
+  const relatedJourneyImages = new Map<string, VisualImage>();
+
+  region.cities.forEach((city, cityIndex) => {
+    const relatedJourneys = relatedJourneysForCity(city.name);
+    relatedJourneysByCity.set(city.name, relatedJourneys);
+    relatedJourneys.forEach((journey, journeyIndex) => {
+      const key = `${city.name}-${journey.id}`;
+      const image =
+        imageAllocator.reserve(rotateImages(journeyVisuals(journey), cityIndex + journeyIndex + 1)) ||
+        imageAllocator.reserve(rotateImages(visualPool, cityIndex + journeyIndex + 1)) ||
+        relatedJourneyImage(journey, cityIndex + journeyIndex + 1);
+      relatedJourneyImages.set(key, image);
+    });
+  });
+
+  const galleryImages = imageAllocator.reserveMany(visualPool, 9);
+
   return (
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
-      <RegionHero region={region} />
+      <RegionHero region={region} stripImages={heroStripImages} />
       <StatStrip region={region} />
 
       <section className="mono-section bg-[var(--brand-white)]">
@@ -241,7 +338,9 @@ export default function DestinationDetail() {
           </FadeSection>
 
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] lg:grid-cols-2">
-            {region.cities.map((city, index) => (
+            {region.cities.map((city, index) => {
+              const relatedJourneys = relatedJourneysByCity.get(city.name) || [];
+              return (
               <FadeSection key={city.name} delay={(index % 6) * 45}>
                 <article className="grid min-h-full bg-white p-6 md:p-8">
                   <div className="mb-8 flex items-start justify-between gap-6">
@@ -263,18 +362,33 @@ export default function DestinationDetail() {
                   </div>
                   <div className="mt-7 border-t border-[var(--brand-border)] pt-6">
                     <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-500)]">Related journeys</div>
-                    {relatedJourneysForCity(city.name).length > 0 ? (
+                    {relatedJourneys.length > 0 ? (
                       <div className="grid gap-3">
-                        {relatedJourneysForCity(city.name).map((journey) => (
+                        {relatedJourneys.map((journey, journeyIndex) => {
+                          const image = relatedJourneyImages.get(`${city.name}-${journey.id}`) || relatedJourneyImage(journey, index + journeyIndex + 1);
+                          return (
                           <Link
                             key={journey.id}
                             href={`/journeys/${journey.id}`}
-                            className="group grid gap-1 border border-[var(--brand-border)] p-3 text-[var(--brand-black)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)]"
+                            className="group grid grid-cols-[92px_1fr] overflow-hidden border border-[var(--brand-border)] text-[var(--brand-black)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)] sm:grid-cols-[116px_1fr]"
                           >
-                            <span className="text-sm font-semibold leading-5">{journey.title}</span>
-                            <span className="text-xs leading-5 text-[var(--brand-gray-600)]">{journey.duration} · {journey.route}</span>
+                            <span className="relative aspect-square overflow-hidden bg-[var(--brand-gray-100)] sm:aspect-[4/3]">
+                              <img
+                                src={image.src}
+                                alt={image.alt}
+                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                              <span className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+                            </span>
+                            <span className="grid content-center gap-1 p-3">
+                              <span className="text-sm font-semibold leading-5">{journey.title}</span>
+                              <span className="text-xs leading-5 text-[var(--brand-gray-600)]">{journey.duration} · {journey.route}</span>
+                            </span>
                           </Link>
-                        ))}
+                          );
+                        })}
                       </div>
                     ) : (
                       <p className="text-sm leading-7 text-[var(--brand-gray-600)]">
@@ -284,12 +398,24 @@ export default function DestinationDetail() {
                   </div>
                 </article>
               </FadeSection>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
+      <section className="mono-section relative isolate overflow-hidden bg-[var(--brand-black)] text-white">
+        {buyerContextImage && (
+          <img
+            src={buyerContextImage.src}
+            alt={buyerContextImage.alt}
+            className="absolute inset-0 -z-20 h-full w-full object-cover opacity-55"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.76)_46%,rgba(0,0,0,0.50)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.86)_0%,rgba(0,0,0,0.20)_58%,rgba(0,0,0,0.68)_100%)]" />
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.42fr_1fr]">
           <FadeSection>
             <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Buyer context</p>
@@ -298,7 +424,7 @@ export default function DestinationDetail() {
           <FadeSection delay={120}>
             <div className="grid gap-px bg-[var(--brand-gray-800)]">
               {region.buyerContext.map((item, index) => (
-                <div key={item} className="grid grid-cols-[auto_1fr] gap-5 bg-[var(--brand-black)] p-6">
+                <div key={item} className="grid grid-cols-[auto_1fr] gap-5 bg-black/72 p-6 backdrop-blur-sm">
                   <div className="flex h-9 w-9 items-center justify-center border border-[var(--brand-gray-700)] text-xs font-bold text-white">
                     {String(index + 1).padStart(2, "0")}
                   </div>
@@ -366,12 +492,12 @@ export default function DestinationDetail() {
               <h2 className="b2b-heading">More than one image, with destination-specific context.</h2>
             </div>
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-500)]">
-              <ImageIcon size={15} /> {region.gallery.length} regional images
+              <ImageIcon size={15} /> {galleryImages.length} unique regional images
             </div>
           </FadeSection>
 
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
-            {region.gallery.map((image, index) => (
+            {galleryImages.map((image, index) => (
               <FadeSection key={image.src} delay={(index % 6) * 45}>
                 <figure className="min-h-full bg-white">
                   <div className="aspect-[4/3] overflow-hidden bg-[var(--brand-gray-100)]">
@@ -379,7 +505,7 @@ export default function DestinationDetail() {
                   </div>
                   <figcaption className="p-5 text-sm leading-7 text-[var(--brand-gray-700)]">
                     <strong className="block text-[var(--brand-black)]">{image.alt}</strong>
-                    {image.caption}
+                    {image.caption || `${image.topic || image.alt} - destination-specific visual reference for B2B China itinerary planning.`}
                   </figcaption>
                 </figure>
               </FadeSection>
@@ -388,7 +514,17 @@ export default function DestinationDetail() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
+      <section className="mono-section relative isolate overflow-hidden bg-[var(--brand-black)] text-white">
+        {seoImage && (
+          <img
+            src={seoImage.src}
+            alt={seoImage.alt}
+            className="absolute inset-0 -z-20 h-full w-full object-cover opacity-45"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.78)_52%,rgba(0,0,0,0.58)_100%)]" />
         <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
             <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>SEO focus</p>
