@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { ArrowLeft, ArrowRight, CalendarDays, MapPin } from "lucide-react";
+import { useEffect } from "react";
+import { ArrowLeft, ArrowRight, CalendarDays, ExternalLink, MapPin } from "lucide-react";
 import { Link, useParams } from "wouter";
 import { tradeShows } from "@/lib/tradePresence";
 
@@ -14,6 +15,23 @@ function HighlightMarker({ children }: { children: ReactNode }) {
 export default function TradeShowDetail() {
   const params = useParams<{ id: string }>();
   const show = tradeShows.find((event) => event.id === params.id);
+
+  useEffect(() => {
+    if (!show) return;
+
+    const originalTitle = document.title;
+    const description = `China Prime DMC at ${show.shortName} in ${show.city}, ${show.country}: B2B China ground services, Muslim-friendly travel planning, white-label itinerary support, and buyer conversations.`;
+    const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "";
+    const metaDescription = document.querySelector('meta[name="description"]');
+
+    document.title = `${show.shortName} ${show.city} | China DMC Trade Show Case Study`;
+    metaDescription?.setAttribute("content", description);
+
+    return () => {
+      document.title = originalTitle;
+      metaDescription?.setAttribute("content", previousDescription);
+    };
+  }, [show]);
 
   if (!show) {
     return (
@@ -31,6 +49,19 @@ export default function TradeShowDetail() {
   const primary = show.images.find((image) => image.role === "primary") ?? show.images[0];
   const supporting = show.images.filter((image) => image.role !== "primary");
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: show.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <main
       className="mono-shell"
@@ -45,6 +76,7 @@ export default function TradeShowDetail() {
       <div itemProp="location" itemScope itemType="https://schema.org/Place">
         <meta itemProp="name" content={`${show.city}, ${show.country}`} />
       </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <section className="mono-section bg-[var(--brand-white)]">
         <div className="mono-wrap">
@@ -102,11 +134,37 @@ export default function TradeShowDetail() {
             <p className="b2b-body text-lg">
               At this event, the most useful conversations centered on <HighlightMarker>Muslim-friendly China travel</HighlightMarker>, private and group routing, practical ground handling, and the kind of white-label support travel agencies need before they can confidently sell China.
             </p>
+            <p className="b2b-body text-lg">
+              For China Prime DMC, the value of ICGTE Kuala Lumpur was simple: it helped us hear directly from travel agencies in Malaysia and nearby markets. Those conversations influence how we design China private tours, group programs, incentive travel, family itineraries, and white-label China ground services for overseas partners.
+            </p>
           </div>
         </div>
       </section>
 
       <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap">
+          <div className="mb-10 grid grid-cols-1 gap-8 lg:grid-cols-[0.82fr_1fr] lg:items-end">
+            <div>
+              <p className="b2b-eyebrow">Buyer context</p>
+              <h2 className="b2b-heading">What partners wanted to understand.</h2>
+            </div>
+            <p className="b2b-lede" style={{ marginTop: 0 }}>
+              The conversations were practical, commercial, and focused on what helps a travel agency sell China with confidence.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
+            {show.discussionTopics.map((topic) => (
+              <article key={topic.title} className="bg-white p-7 sm:p-8">
+                <h3 className="b2b-card-title">{topic.title}</h3>
+                <p className="b2b-body">{topic.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-white)]">
         <div className="mono-wrap">
           <div className="mb-10 max-w-3xl">
             <p className="b2b-eyebrow">Partner signals</p>
@@ -121,6 +179,25 @@ export default function TradeShowDetail() {
                 </div>
                 <h3 className="b2b-card-title text-[var(--brand-black)]">{point.title}</h3>
                 <p className="b2b-body">{point.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap">
+          <div className="mb-10 max-w-3xl">
+            <p className="b2b-eyebrow">Why partners benefit</p>
+            <h2 className="b2b-heading">How one event improves future China programs.</h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
+            {show.partnerValue.map((item) => (
+              <article key={item.title} className="bg-white p-7 sm:p-8">
+                <div className="mono-index mb-8">B2B value</div>
+                <h3 className="b2b-card-title">{item.title}</h3>
+                <p className="b2b-body">{item.body}</p>
               </article>
             ))}
           </div>
@@ -145,6 +222,55 @@ export default function TradeShowDetail() {
                 <img src={image.src} alt={image.alt} className="h-72 w-full object-cover" loading="lazy" />
                 <figcaption className="p-4 text-sm leading-6 text-[var(--brand-gray-600)]">{image.caption}</figcaption>
               </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.78fr_1fr]">
+          <div>
+            <p className="b2b-eyebrow">FAQ</p>
+            <h2 className="text-4xl font-semibold leading-tight text-[var(--brand-black)] md:text-5xl">
+              Questions partners ask after a trade show meeting.
+            </h2>
+          </div>
+          <div className="grid gap-px bg-[var(--brand-border)]">
+            {show.faqs.map((faq) => (
+              <article key={faq.question} className="bg-white p-6 sm:p-7">
+                <h3 className="text-lg font-semibold leading-snug text-[var(--brand-black)]">{faq.question}</h3>
+                <p className="b2b-body mt-3">{faq.answer}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mono-section bg-[var(--brand-white)]">
+        <div className="mono-wrap">
+          <div className="mb-10 max-w-3xl">
+            <p className="b2b-eyebrow">External context</p>
+            <h2 className="b2b-heading">Useful references for partners.</h2>
+            <p className="b2b-lede">
+              These external links give additional context around the event, venue, organizer, and China-Malaysia travel environment.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
+            {show.externalLinks.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-white p-7 text-[var(--brand-black)] no-underline sm:p-8"
+              >
+                <div className="mb-8 inline-flex h-10 w-10 items-center justify-center border border-[var(--brand-border)]">
+                  <ExternalLink size={16} />
+                </div>
+                <h3 className="b2b-card-title group-hover:underline">{link.title}</h3>
+                <p className="b2b-body">{link.description}</p>
+              </a>
             ))}
           </div>
         </div>

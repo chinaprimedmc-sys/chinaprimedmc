@@ -21,6 +21,23 @@ export type TradeShowPresence = {
     title: string;
     body: string;
   }>;
+  discussionTopics: Array<{
+    title: string;
+    body: string;
+  }>;
+  partnerValue: Array<{
+    title: string;
+    body: string;
+  }>;
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+  externalLinks: Array<{
+    title: string;
+    url: string;
+    description: string;
+  }>;
   seoKeywords: string[];
   images: TradeShowImage[];
 };
@@ -61,12 +78,93 @@ export const tradeShows: TradeShowPresence[] = [
         body: "which helps us refine China products around what overseas clients actually ask before they book.",
       },
     ],
+    discussionTopics: [
+      {
+        title: "China routing that feels easy to sell",
+        body: "Many overseas agencies want China programs that are impressive without becoming operationally heavy. We discussed practical routing through gateway cities, realistic travel times, supplier coordination, and how to present China to clients who may be visiting for the first time.",
+      },
+      {
+        title: "Muslim-friendly travel planning",
+        body: "Malaysia is an important source market for Muslim travelers, so conversations naturally covered halal-aware dining, prayer-friendly pacing, family comfort, guide communication, and the importance of clear notes before clients arrive in China.",
+      },
+      {
+        title: "Private, group, and white-label support",
+        body: "Travel partners asked about private FIT arrangements, small group departures, educational groups, incentive travel, and white-label support that lets them keep the client relationship while we operate the China side on the ground.",
+      },
+      {
+        title: "Confidence before booking",
+        body: "Several discussions focused on the details that help agencies close sales: transparent inclusions, net pricing logic, hotel standards, restaurant planning, guide quality, emergency support, and fast answers during the quoting stage.",
+      },
+    ],
+    partnerValue: [
+      {
+        title: "Better product-market fit",
+        body: "Buyer feedback helps us shape China itineraries around what overseas travelers actually ask for, rather than building programs only from an internal destination list.",
+      },
+      {
+        title: "Sharper B2B documentation",
+        body: "In-person conversations show us where partners need clearer language, stronger selling points, better routing explanations, and cleaner operational notes.",
+      },
+      {
+        title: "More relevant Muslim-friendly programs",
+        body: "The Kuala Lumpur meetings reinforced the need for practical Muslim-friendly China travel design that goes beyond a simple restaurant label.",
+      },
+      {
+        title: "Stronger trade relationships",
+        body: "Meeting agencies face to face makes follow-up faster, more specific, and more useful when a partner later sends a real China inquiry.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Why does ICGTE 2026 matter for China Prime DMC partners?",
+        answer:
+          "ICGTE 2026 gave China Prime DMC direct access to Malaysian travel buyers, Muslim-friendly travel planners, and regional agencies interested in selling China. For B2B partners, that matters because our China programs are shaped by real trade conversations, not only destination research.",
+      },
+      {
+        question: "Does China Prime DMC support Muslim-friendly China itineraries?",
+        answer:
+          "Yes. We help partners plan Muslim-friendly China travel with attention to routing, meal planning, prayer-aware pacing, family comfort, guide communication, and clear pre-trip operating notes. The goal is to make the journey practical for travelers and easy for agencies to sell.",
+      },
+      {
+        question: "Can travel agencies use China Prime DMC as a white-label ground handler?",
+        answer:
+          "Yes. We support travel advisors, tour operators, and DMC partners with white-label China itinerary design, net pricing, supplier coordination, guides, vehicles, hotels, restaurants, entrances, trains, flights, and in-trip support.",
+      },
+      {
+        question: "What kinds of China programs were discussed at the event?",
+        answer:
+          "The conversations covered private China journeys, group travel, Muslim-friendly programs, family travel, incentive travel, educational trips, multi-city classic routes, and customized China ground services for overseas travel brands.",
+      },
+    ],
+    externalLinks: [
+      {
+        title: "Pentagon Exhibitions & Events",
+        url: "https://www.pentagonevents.my/",
+        description:
+          "Malaysia-based event organizer specializing in meetings, incentives, conferences, and exhibitions.",
+      },
+      {
+        title: "Pavilion Hotel Kuala Lumpur meeting venue",
+        url: "https://www.banyantree.com/malaysia/pavilion-hotel/meeting-venues/the-pavilion-ballroom",
+        description:
+          "Official venue information for the Pavilion Ballroom at Pavilion Hotel Kuala Lumpur.",
+      },
+      {
+        title: "China-Malaysia mutual visa exemption FAQ",
+        url: "https://my.china-embassy.gov.cn/eng/fwzc/lsyw/qz/202508/t20250801_11681401.htm",
+        description:
+          "Official consular context on short-term visa-free travel between China and Malaysia.",
+      },
+    ],
     seoKeywords: [
       "China DMC at ICGTE 2026",
       "Kuala Lumpur travel trade show China operator",
       "China ground handler for Malaysian travel agents",
       "Muslim-friendly China travel DMC",
       "B2B China travel partner",
+      "China private tour ground handler",
+      "white-label China itinerary design",
+      "China inbound operator for travel agencies",
     ],
     images: [
       {
