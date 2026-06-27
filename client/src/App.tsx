@@ -18,7 +18,6 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import B2B from "./pages/B2B";
 import Contact from "./pages/Contact";
-import AdminDashboard from "./pages/Admin/Dashboard";
 
 function Router() {
   const [location] = useLocation();
@@ -39,7 +38,6 @@ function Router() {
       <Route path="/blog/:id" component={BlogPost} />
       <Route path="/b2b" component={B2B} />
       <Route path="/contact" component={Contact} />
-      <Route path="/admin" component={AdminDashboard} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

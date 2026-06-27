@@ -12,11 +12,10 @@ const LOGO_URL = "/manus-storage/logo_ab631d47.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/destinations", label: "Destinations" },
-  { href: "/journeys", label: "Journeys" },
-  { href: "/blog", label: "Blog" },
-  { href: "/b2b", label: "B2B Partnerships" },
+  { href: "/b2b", label: "Services" },
+  { href: "/journeys", label: "Sample Programs" },
+  { href: "/destinations", label: "China Coverage" },
+  { href: "/about", label: "Company" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -185,7 +184,7 @@ export default function Navbar() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              Begin Your Journey
+              Request a Quote
             </Link>
 
             {/* Mobile Menu Button */}
@@ -246,7 +245,7 @@ export default function Navbar() {
                 fontFamily: "'Montserrat', sans-serif",
               }}
             >
-              Begin Your Journey
+              Request a Quote
             </Link>
           </nav>
         </div>

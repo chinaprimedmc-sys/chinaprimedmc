@@ -1,0 +1,10 @@
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist/public",
+  "rewrites": [
+    {
+      "source": "/((?!assets/|manus-storage/|__manus__/|robots.txt|sitemap.xml).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

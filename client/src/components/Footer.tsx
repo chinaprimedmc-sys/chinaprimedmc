@@ -29,7 +29,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm leading-relaxed mb-6" style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif" }}>
-              Private tailor-made journeys through China's most extraordinary landscapes and cultures. Designed by local experts with 23+ years of experience.
+              China ground services for travel advisors, tour operators, DMC partners, and corporate travel teams. Established in 2012.
             </p>
             <div className="space-y-2">
               <p className="font-label text-[10px] tracking-[0.15em] uppercase mb-3" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
@@ -44,15 +44,15 @@ export default function Footer() {
           {/* Explore */}
           <div>
             <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
-              Explore
+              For Partners
             </h4>
             <ul className="space-y-3">
               {[
-                { href: "/destinations", label: "Destinations" },
-                { href: "/journeys", label: "Journeys" },
-                { href: "/blog", label: "Travel Journal" },
-                { href: "/about", label: "Our Story" },
-                { href: "/b2b", label: "B2B Partnerships" },
+                { href: "/b2b", label: "Partner Services" },
+                { href: "/journeys", label: "Sample Programs" },
+                { href: "/destinations", label: "China Coverage" },
+                { href: "/about", label: "Company" },
+                { href: "/contact", label: "Request a Quote" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -72,7 +72,7 @@ export default function Footer() {
           {/* Destinations */}
           <div>
             <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
-              Popular Destinations
+              China Coverage
             </h4>
             <ul className="space-y-3">
               {["Beijing", "Shanghai", "Yunnan", "Tibet", "Xi'an", "Guilin", "Chengdu", "Xinjiang"].map((dest) => (
@@ -94,10 +94,10 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-6" style={{ color: "#D4A373", fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}>
-              Begin Your Journey
+              Partner Desk
             </h4>
             <p className="text-sm leading-relaxed mb-6" style={{ color: "#475569", fontFamily: "'Lora', Georgia, serif" }}>
-              Every journey begins with a conversation. Reach us via WhatsApp for the fastest response.
+              Send us your China brief. We respond fastest on WhatsApp and email.
             </p>
             <a
               href={WHATSAPP_URL}
@@ -120,7 +120,7 @@ export default function Footer() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              WhatsApp Us
+              WhatsApp Partner Desk
             </a>
             <Link
               href="/contact"
@@ -140,7 +140,7 @@ export default function Footer() {
                 e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
-              Send an Enquiry
+              Request a Quote
             </Link>
           </div>
         </div>
