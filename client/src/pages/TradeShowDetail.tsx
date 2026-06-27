@@ -33,12 +33,11 @@ export default function TradeShowDetail() {
     if (!show) return;
 
     const originalTitle = document.title;
-    const description = `China Prime DMC at ${show.shortName} in ${show.city}, ${show.country}: B2B China ground services, Muslim-friendly travel planning, white-label itinerary support, and buyer conversations.`;
     const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "";
     const metaDescription = document.querySelector('meta[name="description"]');
 
     document.title = `${show.shortName} ${show.city} | China DMC Trade Show Case Study`;
-    metaDescription?.setAttribute("content", description);
+    metaDescription?.setAttribute("content", show.metaDescription);
 
     return () => {
       document.title = originalTitle;
@@ -145,7 +144,7 @@ export default function TradeShowDetail() {
               {show.detailIntro}
             </p>
             <p className="b2b-body text-lg">
-              At this event, the most useful conversations centered on <HighlightMarker>Muslim-friendly China travel</HighlightMarker>, private and group routing, practical ground handling, and the kind of white-label support travel agencies need before they can confidently sell China.
+              {show.conversationLead.before} <HighlightMarker>{show.conversationLead.highlight}</HighlightMarker>, {show.conversationLead.after}
             </p>
             <p className="b2b-body text-lg">
               For China Prime DMC, the value of {show.city} was simple: it gave us market-specific conversations that influence how we design China private tours, group programs, incentive travel, family itineraries, and white-label China ground services for overseas partners.

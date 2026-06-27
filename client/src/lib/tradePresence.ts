@@ -17,6 +17,12 @@ export type TradeShowPresence = {
   cardIntro: string;
   summary: string;
   detailIntro: string;
+  metaDescription: string;
+  conversationLead: {
+    before: string;
+    highlight: string;
+    after: string;
+  };
   proofPoints: Array<{
     title: string;
     body: string;
@@ -66,6 +72,13 @@ export const tradeShows: TradeShowPresence[] = [
       "At ICGTE 2026, China Prime DMC met with Malaysian travel buyers, Muslim-friendly travel planners, and regional trade partners to discuss China ground services, private programs, group travel, and white-label itinerary support.",
     detailIntro:
       "For B2B partners, trade shows are not just photo opportunities. They are where real demand becomes clear: what travel agents are selling, what clients hesitate about, what routes feel practical, and what support overseas partners need from a China-based DMC.",
+    metaDescription:
+      "China Prime DMC at ICGTE 2026 Kuala Lumpur: B2B China ground services, Muslim-friendly China travel planning, white-label itinerary support, and buyer conversations with Malaysian travel partners.",
+    conversationLead: {
+      before: "At this event, the most useful conversations centered on",
+      highlight: "Muslim-friendly China travel",
+      after: "private and group routing, practical ground handling, and the kind of white-label support travel agencies need before they can confidently sell China.",
+    },
     proofPoints: [
       {
         title: "Real buyer conversations",
@@ -252,6 +265,13 @@ export const tradeShows: TradeShowPresence[] = [
       "China Prime DMC joined ICGTE 2026 Singapore to meet travel trade partners, present China program materials, and discuss how Singapore-based agencies can sell China with stronger routing logic, clearer ground-service support, and partner-ready product language.",
     detailIntro:
       "Singapore is a compact but influential travel trade market. Agencies there often think regionally, move quickly, and expect supplier conversations to be practical. For China Prime DMC, ICGTE Singapore was less about broad destination promotion and more about sharpening how China is explained, packaged, and supported for professional sellers.",
+    metaDescription:
+      "China Prime DMC at ICGTE 2026 Singapore: China DMC support for Singapore travel agents, regional distribution, fast quoting, white-label itinerary design, and China ground operations.",
+    conversationLead: {
+      before: "At this event, the most useful conversations centered on",
+      highlight: "regional China product distribution",
+      after: "fast quoting, sharper itinerary packaging, second-trip China ideas, and the kind of white-label execution Singapore agencies need when clients are already comparing destinations.",
+    },
     proofPoints: [
       {
         title: "Singapore-based trade feedback",
@@ -359,7 +379,7 @@ export const tradeShows: TradeShowPresence[] = [
         label: "Chinese Embassy in Singapore",
         url: "https://sg.china-embassy.gov.cn/eng/",
         sentence:
-          "is the relevant official source for Singapore-based China travel and consular information, making it a better reference point for this market than Malaysia-specific visa pages.",
+          "is the relevant official source for Singapore-based China travel and consular information, making it the right policy reference for this market.",
       },
       {
         label: "Pentagon Exhibitions & Events",
@@ -417,9 +437,9 @@ export const tradeShows: TradeShowPresence[] = [
       },
       {
         role: "gallery",
-        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-muslim-friendly-travel-buyers.jpeg`,
-        alt: "China Prime DMC team with Muslim-friendly travel buyers at ICGTE 2026 Singapore.",
-        caption: "Discussing Muslim-friendly China travel opportunities with Southeast Asian travel buyers.",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-regional-travel-buyers.jpeg`,
+        alt: "China Prime DMC team with regional travel buyers at ICGTE 2026 Singapore.",
+        caption: "Discussing China product opportunities with regional travel buyers at ICGTE 2026 Singapore.",
       },
       {
         role: "gallery",
