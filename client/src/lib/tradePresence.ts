@@ -43,6 +43,7 @@ export type TradeShowPresence = {
 };
 
 const icgteBase = "/trade-shows/icgte-2026-kuala-lumpur";
+const icgteSingaporeBase = "/trade-shows/icgte-2026-singapore";
 
 export const tradeShows: TradeShowPresence[] = [
   {
@@ -208,6 +209,178 @@ export const tradeShows: TradeShowPresence[] = [
         src: `${icgteBase}/china-prime-dmc-icgte-2026-kuala-lumpur-muslim-friendly-partner-selfie.jpeg`,
         alt: "China Prime DMC team with a Muslim-friendly travel partner at ICGTE 2026 Kuala Lumpur.",
         caption: "Connecting with Muslim-friendly travel partners.",
+      },
+    ],
+  },
+  {
+    id: "icgte-2026-singapore",
+    name: "Inbound China & Global Travel Exchange",
+    shortName: "ICGTE 2026",
+    date: "April 23, 2026",
+    isoDate: "2026-04-23",
+    city: "Singapore",
+    country: "Singapore",
+    headline: "A sharper China conversation with Singapore travel partners.",
+    cardIntro:
+      "At ICGTE 2026 Singapore, China Prime DMC connected with regional travel sellers, product planners, and China-focused partners looking for cleaner ways to package and operate China.",
+    summary:
+      "China Prime DMC joined ICGTE 2026 Singapore to meet travel trade partners, present China program materials, and discuss how Singapore-based agencies can sell China with stronger routing logic, clearer ground-service support, and partner-ready product language.",
+    detailIntro:
+      "Singapore is a compact but influential travel trade market. Agencies there often think regionally, move quickly, and expect supplier conversations to be practical. For China Prime DMC, ICGTE Singapore was less about broad destination promotion and more about sharpening how China is explained, packaged, and supported for professional sellers.",
+    proofPoints: [
+      {
+        title: "Singapore-based trade feedback",
+        body: "from agencies and regional sellers who need China programs to be clear, efficient, and easy to explain to well-traveled clients.",
+      },
+      {
+        title: "Visible China product materials",
+        body: "including brochures and table-side program information that helped partners understand our routing, service scope, and B2B support model.",
+      },
+      {
+        title: "Regional distribution conversations",
+        body: "with partners who sell beyond one market and need a China DMC that can support private tours, groups, and repeat inquiry flow.",
+      },
+      {
+        title: "On-the-floor product refinement",
+        body: "based on real questions about pacing, hotel standards, guide quality, food planning, and what makes China easier to sell from Singapore.",
+      },
+    ],
+    discussionTopics: [
+      {
+        title: "How to make China easier to package",
+        body: "Singapore travel sellers often need China itineraries that are rich but not overcomplicated. We discussed how to frame classic routes, emerging destinations, seasonal hooks, and city combinations in a way that feels premium, practical, and ready for sales conversations.",
+      },
+      {
+        title: "Shorter response cycles for agencies",
+        body: "The Singapore market rewards speed. Partners wanted to know how quickly a China DMC can return routing advice, net pricing, hotel options, restaurant notes, and operational trade-offs when a client is already comparing destinations.",
+      },
+      {
+        title: "China for sophisticated repeat travelers",
+        body: "Unlike first-time-only markets, Singapore agencies often serve clients who have already traveled widely in Asia. We talked about deeper China experiences, second-trip ideas, food-led routing, cultural access, and ways to make China feel fresh rather than generic.",
+      },
+      {
+        title: "Partner ownership and white-label delivery",
+        body: "Several conversations focused on brand control. Agencies want to keep the client relationship while relying on a China-based operator for ground execution, supplier coordination, guide teams, transport, tickets, and in-trip problem solving.",
+      },
+    ],
+    partnerValue: [
+      {
+        title: "Cleaner China sales language",
+        body: "The Singapore meetings helped us refine how we describe China programs for agencies that need concise, commercially useful copy rather than long destination essays.",
+      },
+      {
+        title: "More efficient inquiry handling",
+        body: "Questions from partners reinforced the importance of fast feasibility checks, direct answers, and proposal structures that make it easier for sales teams to move from inquiry to quote.",
+      },
+      {
+        title: "Stronger regional product thinking",
+        body: "Singapore's travel trade often looks across Southeast Asia, so these conversations help us build China programs that work for regional distribution instead of a single local audience.",
+      },
+      {
+        title: "Better proof for overseas agencies",
+        body: "Photos from the booth, buyer meetings, and event backdrop give future partners visible evidence that China Prime DMC is active in the travel trade, not hidden behind a generic website.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Why is Singapore an important market for a China DMC?",
+        answer:
+          "Singapore is a regional travel hub with agencies serving sophisticated travelers, corporate clients, families, and multi-market audiences. For a China DMC, conversations in Singapore help refine how China is packaged for partners who expect speed, clarity, and professional ground support.",
+      },
+      {
+        question: "What did China Prime DMC discuss at ICGTE 2026 Singapore?",
+        answer:
+          "The discussions focused on China itinerary packaging, private and group travel, white-label ground services, fast quoting, regional distribution, hotel standards, food planning, and how to present China to clients who may already know Asia well.",
+      },
+      {
+        question: "Can Singapore travel agencies work with China Prime DMC on white-label programs?",
+        answer:
+          "Yes. We can support Singapore agencies with white-label China itinerary design, net pricing, guides, vehicles, hotels, restaurants, ticketing, rail and flight coordination, and in-trip operational support while the agency keeps the client relationship.",
+      },
+      {
+        question: "Does China Prime DMC support customized China trips for experienced travelers?",
+        answer:
+          "Yes. We help partners design China journeys beyond standard sightseeing, including food-focused routes, cultural access, family-friendly programs, incentive travel, soft adventure, regional extensions, and second-trip ideas for clients who want more than a basic package.",
+      },
+    ],
+    externalLinks: [
+      {
+        title: "Pentagon Exhibitions & Events",
+        url: "https://www.pentagonevents.my/",
+        description:
+          "Event organizer behind travel trade exhibitions and MICE platforms in the region.",
+      },
+      {
+        title: "Singapore Tourism Board",
+        url: "https://www.stb.gov.sg/",
+        description:
+          "Official tourism board resource for Singapore's travel and business events ecosystem.",
+      },
+      {
+        title: "Chinese Embassy in Singapore",
+        url: "https://sg.china-embassy.gov.cn/eng/",
+        description:
+          "Official Chinese Embassy resource for Singapore-based travelers and China-related consular information.",
+      },
+    ],
+    seoKeywords: [
+      "China Prime DMC at ICGTE 2026 Singapore",
+      "China DMC for Singapore travel agents",
+      "China ground handler for Singapore agencies",
+      "B2B China travel partner Singapore",
+      "white-label China itinerary support",
+      "China inbound operator for Southeast Asia",
+      "China private tour DMC Singapore",
+      "China travel trade meeting Singapore",
+    ],
+    images: [
+      {
+        role: "primary",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-official-exhibition-backdrop-team-photo.jpeg`,
+        alt: "China Prime DMC team at the official ICGTE 2026 Singapore exhibition backdrop for Inbound China and Global Travel Exchange.",
+        caption: "China Prime DMC at ICGTE 2026 Singapore, meeting travel trade partners interested in China programs.",
+      },
+      {
+        role: "supporting",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-booth-table-china-travel-brochures.jpeg`,
+        alt: "China Prime DMC booth table with China travel brochures at ICGTE 2026 Singapore.",
+        caption: "China travel materials and B2B program information presented at the ICGTE Singapore booth.",
+      },
+      {
+        role: "supporting",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-one-on-one-buyer-consultation.jpeg`,
+        alt: "China Prime DMC in a one-on-one buyer consultation at ICGTE 2026 Singapore.",
+        caption: "One-on-one buyer consultation for China private tours, groups, and B2B ground services.",
+      },
+      {
+        role: "gallery",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-official-backdrop-travel-easy-sign.jpeg`,
+        alt: "China Prime DMC representative at the ICGTE 2026 Singapore official event backdrop holding a Travel Easy Travel Happy sign.",
+        caption: "Representing China Prime DMC at the official ICGTE 2026 Singapore backdrop.",
+      },
+      {
+        role: "gallery",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-travel-trade-partner-selfie.jpeg`,
+        alt: "China Prime DMC team taking a selfie with a travel trade partner at ICGTE 2026 Singapore.",
+        caption: "Building face-to-face relationships with travel trade partners at ICGTE 2026 Singapore.",
+      },
+      {
+        role: "gallery",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-buyer-meeting-travel-agents-selfie.jpeg`,
+        alt: "China Prime DMC team with Singapore travel agents during a buyer meeting at ICGTE 2026.",
+        caption: "Meeting Singapore travel agents to discuss China itineraries and ground services.",
+      },
+      {
+        role: "gallery",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-muslim-friendly-travel-buyers.jpeg`,
+        alt: "China Prime DMC team with Muslim-friendly travel buyers at ICGTE 2026 Singapore.",
+        caption: "Discussing Muslim-friendly China travel opportunities with Southeast Asian travel buyers.",
+      },
+      {
+        role: "gallery",
+        src: `${icgteSingaporeBase}/china-prime-dmc-icgte-2026-singapore-southeast-asia-travel-partners.jpeg`,
+        alt: "China Prime DMC meeting Southeast Asia travel partners at ICGTE 2026 Singapore.",
+        caption: "Connecting with Southeast Asian travel partners interested in China programs.",
       },
     ],
   },
