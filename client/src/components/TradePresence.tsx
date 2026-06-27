@@ -84,7 +84,7 @@ export default function TradePresence({ variant = "home" }: TradePresenceProps) 
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
           <p className="b2b-body max-w-2xl">
-            Each event page includes the full story, buyer context, image gallery, and SEO-ready event details.
+            These meetings give our team current buyer insight before we design, quote, and operate China programs for overseas partners.
           </p>
           {variant === "home" && (
             <Link href="/trade-shows" className="mono-button mono-button-secondary">

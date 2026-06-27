@@ -263,7 +263,7 @@ export default function B2B() {
   return (
     <main className="mono-shell" style={{ color: "var(--brand-black)", paddingTop: "72px" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <section className="px-6 lg:px-10" style={{ paddingBottom: "clamp(72px, 8vw, 118px)", paddingTop: "clamp(52px, 7vw, 96px)" }}>
+      <section className="px-6 lg:px-10" style={{ paddingBottom: "clamp(72px, 8vw, 118px)", paddingTop: "clamp(92px, 8vw, 132px)" }}>
         <div className="mono-wrap grid grid-cols-1 gap-10 lg:grid-cols-[0.92fr_0.8fr] lg:items-stretch">
           <FadeSection className="flex flex-col justify-between">
             <div>
@@ -284,9 +284,6 @@ export default function B2B() {
           <FadeSection delay={100}>
             <figure className="h-full border border-[var(--brand-black)] bg-white">
               <img src={serviceImages.hero} alt="China Prime DMC discussing B2B China ground services with travel trade buyers." className="h-[440px] w-full object-cover lg:h-full" />
-              <figcaption className="border-t border-[var(--brand-border)] p-5 text-sm text-[var(--brand-gray-600)]">
-                B2B travel conversations help us shape China programs around what agencies actually need to sell.
-              </figcaption>
             </figure>
           </FadeSection>
         </div>
