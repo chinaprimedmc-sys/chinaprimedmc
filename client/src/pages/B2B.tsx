@@ -15,6 +15,8 @@ import {
   Users,
 } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
+import MediaHero from "@/components/MediaHero";
+import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -263,40 +265,20 @@ export default function B2B() {
   return (
     <main className="mono-shell" style={{ color: "var(--brand-black)", paddingTop: "72px" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <section className="px-6 lg:px-10" style={{ paddingBottom: "clamp(72px, 8vw, 118px)", paddingTop: "clamp(92px, 8vw, 132px)" }}>
-        <div className="mono-wrap grid grid-cols-1 gap-10 lg:grid-cols-[0.92fr_0.8fr] lg:items-stretch">
-          <FadeSection className="flex flex-col justify-between">
-            <div>
-              <p className="b2b-eyebrow">China ground services for travel brands</p>
-              <h1 style={{ color: "var(--brand-black)", fontSize: "clamp(3rem, 7vw, 7rem)", fontWeight: 560, letterSpacing: 0, lineHeight: 0.9, margin: 0, maxWidth: 980 }}>
-                China ground services for global travel partners.
-              </h1>
-              <p className="b2b-lede" style={{ fontSize: "clamp(1.05rem, 1.4vw, 1.22rem)", marginTop: 28, maxWidth: 760 }}>
-                China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, corporate travel teams, education groups, and specialist-interest planners.
-              </p>
-            </div>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="mono-button">Send a brief <ArrowRight size={17} /></Link>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button mono-button-secondary">Start conversation</a>
-            </div>
-          </FadeSection>
-
-          <FadeSection delay={100}>
-            <figure className="h-full border border-[var(--brand-black)] bg-white">
-              <img src={serviceImages.hero} alt="China Prime DMC discussing B2B China ground services with travel trade buyers." className="h-[440px] w-full object-cover lg:h-full" loading="eager" decoding="async" fetchPriority="high" />
-            </figure>
-          </FadeSection>
-        </div>
-
-        <div className="mono-wrap mt-10 grid grid-cols-2 gap-px bg-[var(--brand-border)] md:grid-cols-4">
-          {metrics.map((item) => (
-            <div key={item.label} className="bg-white p-5 sm:p-7">
-              <div className="text-3xl font-semibold text-[var(--brand-black)] md:text-5xl">{item.value}</div>
-              <div className="mono-index mt-3">{item.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <MediaHero
+        image={pageHeroImages.services}
+        alt="Shanghai ground operations and business travel logistics for China DMC partners."
+        eyebrow="China ground services for travel brands"
+        title="China ground services for global travel partners."
+        body="China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, corporate travel teams, education groups, and specialist-interest planners."
+        actions={
+          <>
+            <Link href="/contact" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">Send a brief <ArrowRight size={17} /></Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button border-white bg-transparent text-white hover:bg-white hover:text-[var(--brand-black)]">Start conversation</a>
+          </>
+        }
+        stats={metrics}
+      />
 
       <section className="mono-section bg-[var(--brand-black)] text-white">
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1fr]">

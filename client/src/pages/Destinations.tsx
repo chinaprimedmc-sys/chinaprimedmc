@@ -3,6 +3,8 @@ import { Link, useLocation } from "wouter";
 import { ArrowRight, Check, MapPin, MoveRight } from "lucide-react";
 import { CoverageMap } from "@/components/CoverageMap";
 import { coverageRegions } from "@/lib/coverageData";
+import MediaHero from "@/components/MediaHero";
+import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -115,30 +117,14 @@ export default function Destinations() {
 
   return (
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[1fr_0.44fr]">
-          <FadeSection>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>China coverage</p>
-            <h1 className="b2b-heading max-w-5xl text-[var(--brand-white)]">
-              China coverage built for global travel partners.
-            </h1>
-            <p className="b2b-lede max-w-3xl text-[var(--brand-gray-300)]">
-              From first-tier gateways to remote cultural regions, China Prime DMC supports tailor-made programs, group series, MICE movements, and special-interest travel across China with a practical operating lens.
-            </p>
-          </FadeSection>
-
-          <FadeSection delay={120} className="self-end">
-            <div className="grid gap-px bg-[var(--brand-gray-800)]">
-              {coverageStats.map((stat) => (
-                <div key={stat.label} className="bg-[var(--brand-black)] p-6">
-                  <div className="text-2xl font-semibold leading-none text-white">{stat.value}</div>
-                  <div className="mt-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-500)]">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </FadeSection>
-        </div>
-      </section>
+      <MediaHero
+        image={pageHeroImages.coverage}
+        alt="Yangtze River route representing China nationwide DMC coverage."
+        eyebrow="China coverage"
+        title="China coverage built for global travel partners."
+        body="From first-tier gateways to remote cultural regions, China Prime DMC supports tailor-made programs, group series, MICE movements, and special-interest travel across China with a practical operating lens."
+        stats={coverageStats}
+      />
 
       <section className="border-y border-[var(--brand-border)] bg-white">
         <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-3">
@@ -199,7 +185,7 @@ export default function Destinations() {
                       src={cluster.image}
                       alt={cluster.imageAlt}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                      loading={index < 3 ? "eager" : "lazy"}
+                      loading="lazy"
                       decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/18 to-transparent" />

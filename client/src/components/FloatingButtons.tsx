@@ -18,7 +18,7 @@ const links = [
 
 export default function FloatingButtons() {
   return (
-    <div className="fixed bottom-6 right-5 z-50 flex flex-col border border-[var(--brand-border)] bg-white shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
+    <div className="fixed bottom-6 right-5 z-50 hidden flex-col border border-[var(--brand-border)] bg-white shadow-[0_12px_40px_rgba(0,0,0,0.12)] md:flex">
       {links.map((link, index) => (
         <a
           key={link.label}

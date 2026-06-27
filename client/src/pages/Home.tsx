@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
 import TradePresence from "@/components/TradePresence";
+import MediaHero from "@/components/MediaHero";
+import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({
   children,
@@ -102,7 +104,7 @@ const process = [
 ];
 
 const heroImages = {
-  meeting: "/services/china-prime-dmc-b2b-services-travel-trade-buyer-meeting.jpeg",
+  materials: "/services/china-prime-dmc-white-label-itinerary-support-trade-materials.jpeg",
   greatWall: "/services/china-prime-dmc-china-itinerary-design-great-wall.jpeg",
   shanghai: "/services/china-prime-dmc-ground-operations-shanghai-business-travel.jpeg",
 };
@@ -110,6 +112,25 @@ const heroImages = {
 export default function Home() {
   return (
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
+      <MediaHero
+        image={pageHeroImages.home}
+        alt="China Prime DMC meeting global travel trade partners for China ground operations."
+        eyebrow="China ground services for global B2B partners"
+        title={<>China ground operations,<br className="hidden sm:block" /> built for trade.</>}
+        body="China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, corporate travel teams, and specialist group planners."
+        actions={
+          <>
+            <Link href="/contact" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">
+              Request a quote <ArrowRight size={17} />
+            </Link>
+            <Link href="/b2b" className="mono-button border-white bg-transparent text-white hover:bg-white hover:text-[var(--brand-black)]">
+              View services
+            </Link>
+          </>
+        }
+        stats={metrics}
+      />
+
       <section className="relative overflow-hidden bg-[var(--brand-white)] px-6 lg:px-10" style={{ paddingBottom: "clamp(72px, 8vw, 108px)", paddingTop: "clamp(62px, 7vw, 104px)" }}>
         <div className="mono-wrap">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.78fr_0.92fr] lg:items-center">
@@ -161,12 +182,11 @@ export default function Home() {
                 <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] md:grid-cols-[1fr_0.42fr]">
                   <figure className="relative min-h-[430px] overflow-hidden bg-[var(--brand-black)]">
                     <img
-                      src={heroImages.meeting}
-                      alt="China Prime DMC meeting travel trade partners for China ground operations."
+                      src={heroImages.materials}
+                      alt="China Prime DMC white-label itinerary materials for travel trade partners."
                       className="h-full min-h-[430px] w-full object-cover"
-                      loading="eager"
+                      loading="lazy"
                       decoding="async"
-                      fetchPriority="high"
                     />
                     <figcaption className="absolute bottom-0 left-0 max-w-[520px] bg-[var(--brand-black)] p-5 text-sm leading-6 text-[var(--brand-gray-200)]">
                       Real trade conversations shape the programs we quote and operate for overseas partners.

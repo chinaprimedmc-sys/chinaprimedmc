@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import { Briefcase, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { EMAIL, WHATSAPP_URL } from "@/lib/data";
+import MediaHero from "@/components/MediaHero";
+import { pageHeroImages } from "@/lib/heroImages";
 
 const partnerTypes = [
   "Travel advisor / agency",
@@ -199,16 +201,14 @@ export default function Contact() {
 
   return (
     <main style={{ backgroundColor: "var(--brand-white)", paddingTop: "72px" }}>
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[1fr_0.85fr]">
-          <div>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Partner quote desk</p>
-            <h1 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 860 }}>
-              Send a brief your operator can actually use.
-            </h1>
-          </div>
-
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] sm:grid-cols-2">
+      <MediaHero
+        image={pageHeroImages.contact}
+        alt="China Prime DMC one-on-one buyer consultation at Singapore travel trade show."
+        eyebrow="Partner quote desk"
+        title="Send a brief your operator can actually use."
+        body="Use the form or prepared email template to give us the details that affect China routing, pricing, supplier selection, and on-trip delivery."
+      >
+          <div className="grid grid-cols-1 gap-px bg-white/20 sm:grid-cols-2">
             {[
               { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "+44 7985 052302", href: WHATSAPP_URL },
               { icon: <Mail size={18} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
@@ -228,8 +228,7 @@ export default function Contact() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </MediaHero>
 
       <section className="mono-section bg-[var(--brand-gray-50)]">
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr]">

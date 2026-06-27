@@ -107,8 +107,19 @@ function relatedJourneysForCity(cityName: string): Journey[] {
 
 function RegionHero({ region }: { region: CoverageRegion }) {
   return (
-    <section className="bg-[var(--brand-black)] text-white">
-      <div className="mono-wrap grid min-h-[calc(100vh-72px)] grid-cols-1 gap-12 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+    <section className="relative isolate overflow-hidden bg-[var(--brand-black)] text-white">
+      <img
+        src={region.heroImage}
+        alt={region.name}
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
+      />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.66)_48%,rgba(0,0,0,0.30)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.76)_0%,rgba(0,0,0,0.10)_54%,rgba(0,0,0,0.38)_100%)]" />
+
+      <div className="mono-wrap grid min-h-[calc(100svh-72px)] grid-cols-1 gap-12 px-6 py-14 lg:grid-cols-[0.92fr_0.72fr] lg:items-end lg:px-10 lg:py-16">
         <FadeSection className="pb-4">
           <Link href="/destinations" className="mb-10 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-400)] no-underline hover:text-white">
             <ArrowLeft size={14} /> All coverage
@@ -123,11 +134,8 @@ function RegionHero({ region }: { region: CoverageRegion }) {
         </FadeSection>
 
         <FadeSection delay={120}>
-          <div className="grid gap-px bg-[var(--brand-gray-800)]">
-            <div className="relative aspect-[16/10] overflow-hidden bg-[var(--brand-gray-900)]">
-              <img src={region.heroImage} alt={region.name} className="h-full w-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
-            </div>
-            <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] md:grid-cols-3">
+          <div className="grid gap-px bg-white/20 backdrop-blur-sm">
+            <div className="grid grid-cols-3 gap-px">
               {region.gallery.slice(1, 4).map((image) => (
                 <figure key={image.src} className="bg-[var(--brand-black)]">
                   <div className="aspect-[4/3] overflow-hidden">
@@ -135,6 +143,9 @@ function RegionHero({ region }: { region: CoverageRegion }) {
                   </div>
                 </figure>
               ))}
+            </div>
+            <div className="bg-black/62 p-5 text-sm leading-7 text-[var(--brand-gray-200)]">
+              Regional coverage includes gateway cities, secondary cultural stops, route modules, supplier logic, and related programs for B2B resale.
             </div>
           </div>
         </FadeSection>

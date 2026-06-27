@@ -1,19 +1,22 @@
 import TradePresence from "@/components/TradePresence";
+import MediaHero from "@/components/MediaHero";
+import { pageHeroImages } from "@/lib/heroImages";
 
 export default function TradeShows() {
   return (
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap">
-          <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Trade show archive</p>
-          <h1 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 980 }}>
-            Where China Prime DMC meets the travel trade.
-          </h1>
-          <p className="b2b-lede" style={{ color: "var(--brand-gray-300)", maxWidth: 760 }}>
-            A curated record of industry events, buyer meetings, and partner conversations that shape how we build China programs for overseas travel brands.
-          </p>
-        </div>
-      </section>
+      <MediaHero
+        image={pageHeroImages.tradeShows}
+        alt="China Prime DMC exhibition backdrop at ICGTE Kuala Lumpur travel trade event."
+        eyebrow="Trade show archive"
+        title="Where China Prime DMC meets the travel trade."
+        body="A curated record of industry events, buyer meetings, and partner conversations that shape how we build China programs for overseas travel brands."
+        stats={[
+          { value: "2026", label: "Latest events" },
+          { value: "Kuala Lumpur / Singapore", label: "Buyer markets" },
+          { value: "B2B", label: "Trade focus" },
+        ]}
+      />
 
       <TradePresence variant="about" />
     </main>

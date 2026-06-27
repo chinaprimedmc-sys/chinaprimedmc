@@ -90,32 +90,45 @@ export default function TradeShowDetail() {
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <section className="mono-section bg-[var(--brand-white)]">
-        <div className="mono-wrap">
-          <Link href="/trade-shows" className="mb-10 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-600)] no-underline hover:text-[var(--brand-black)]">
+      <section className="relative isolate overflow-hidden bg-[var(--brand-black)] text-white">
+        <img
+          src={primary.src}
+          alt={primary.alt}
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          itemProp="image"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.68)_48%,rgba(0,0,0,0.28)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.10)_52%,rgba(0,0,0,0.40)_100%)]" />
+        <div className="mono-wrap flex min-h-[calc(100svh-72px)] items-end px-6 py-14 lg:px-10 lg:py-16">
+          <div className="w-full">
+          <Link href="/trade-shows" className="mb-10 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-300)] no-underline hover:text-white">
             <ArrowLeft size={14} /> Trade show archive
           </Link>
 
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.92fr_0.8fr] lg:items-end">
             <div>
-              <p className="b2b-eyebrow">{show.shortName}</p>
-              <h1 className="text-[clamp(2.5rem,8vw,6.2rem)] font-semibold leading-[0.95] text-[var(--brand-black)]">
+              <p className="b2b-eyebrow text-[var(--brand-gray-300)]">{show.shortName}</p>
+              <h1 className="text-[clamp(2.5rem,8vw,6.2rem)] font-semibold leading-[0.95] text-white">
                 {show.headline}
               </h1>
             </div>
             <div>
               <div className="mb-6 flex flex-wrap gap-3">
-                <span className="mono-index inline-flex items-center gap-2 border border-[var(--brand-border)] bg-white px-3 py-2">
+                <span className="mono-index inline-flex items-center gap-2 border border-white/25 bg-black/40 px-3 py-2 text-[var(--brand-gray-200)] backdrop-blur">
                   <CalendarDays size={14} /> {show.date}
                 </span>
-                <span className="mono-index inline-flex items-center gap-2 border border-[var(--brand-border)] bg-white px-3 py-2">
+                <span className="mono-index inline-flex items-center gap-2 border border-white/25 bg-black/40 px-3 py-2 text-[var(--brand-gray-200)] backdrop-blur">
                   <MapPin size={14} /> {show.city}, {show.country}
                 </span>
               </div>
-              <p className="b2b-lede" style={{ marginTop: 0 }} itemProp="description">
+              <p className="b2b-lede text-[var(--brand-gray-100)]" style={{ marginTop: 0 }} itemProp="description">
                 {show.summary}
               </p>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -123,7 +136,7 @@ export default function TradeShowDetail() {
       <section className="px-6 pb-0 lg:px-10">
         <div className="mono-wrap">
           <figure className="border border-[var(--brand-border)] bg-white">
-            <img src={primary.src} alt={primary.alt} className="h-[58vh] min-h-[360px] w-full object-cover" itemProp="image" loading="eager" decoding="async" fetchPriority="high" />
+            <img src={primary.src} alt={primary.alt} className="h-[58vh] min-h-[360px] w-full object-cover" loading="lazy" decoding="async" />
             <figcaption className="border-t border-[var(--brand-border)] p-5 text-sm text-[var(--brand-gray-600)]">
               {primary.caption}
             </figcaption>

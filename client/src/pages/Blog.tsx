@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Clock } from "lucide-react";
 import { blogPosts } from "@/lib/data";
+import MediaHero from "@/components/MediaHero";
+import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,21 +49,21 @@ export default function Blog() {
   const filtered = activeCategory === "All" ? blogPosts : blogPosts.filter(p => p.category === activeCategory);
 
   return (
-    <div style={{ backgroundColor: "#FFFFFF", color: "var(--brand-ink)" }}>
+    <div style={{ backgroundColor: "#FFFFFF", color: "var(--brand-ink)", paddingTop: "72px" }}>
       {/* Hero */}
-      <section className="pt-40 pb-20 px-6 lg:px-10" style={{ backgroundColor: "var(--brand-parchment)" }}>
-        <div className="max-w-[1400px] mx-auto">
-          <FadeSection>
-            <div className="section-label mb-4" style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>Travel Journal</div>
-            <h1 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 300, color: "var(--brand-ink)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
-              The China Journal
-            </h1>
-            <p className="text-lg max-w-2xl leading-relaxed" style={{ color: "var(--brand-ink-3)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-              Authoritative guides, insider knowledge, and stories from the field. Everything you need to understand and plan your China journey.
-            </p>
-          </FadeSection>
-        </div>
-      </section>
+      <MediaHero
+        image={pageHeroImages.journal}
+        alt="Zhangye Danxia landscape for China travel journal insights."
+        eyebrow="Travel journal"
+        title="The China Journal"
+        body="Authoritative guides, insider knowledge, and stories from the field. Everything partners need to understand, position, and plan China journeys."
+        stats={[
+          { value: String(blogPosts.length), label: "Field notes" },
+          { value: "2012", label: "China-based perspective" },
+          { value: "B2B", label: "Planning lens" },
+        ]}
+        minHeightClassName="min-h-[72svh]"
+      />
 
       {/* Filter */}
       <section
@@ -105,7 +107,7 @@ export default function Blog() {
               <Link href={`/blog/${blogPosts[0].id}`}>
                 <div className="card-hover group grid md:grid-cols-2 overflow-hidden cursor-pointer" style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)", borderRadius: "2px" }}>
                   <div className="img-zoom-container h-72 md:h-auto relative">
-                    <img src={blogPosts[0].image} alt={blogPosts[0].title} className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
+                      <img src={blogPosts[0].image} alt={blogPosts[0].title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(to right, transparent 60%, rgba(17,24,39,0.5) 100%)" }} />
                   </div>
                   <div className="p-10 flex flex-col justify-center">

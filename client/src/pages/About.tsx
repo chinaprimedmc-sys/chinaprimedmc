@@ -7,9 +7,10 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
 import TradePresence from "@/components/TradePresence";
+import { pageHeroImages } from "@/lib/heroImages";
 
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663786910793/nv3b3r8xSigzoBGpUx4ZRH/about-hero-WB6Ffx8gCWVUQwGjnBwSM4.webp";
-const HERO_BG_2 = "https://d2xsxph8kpxj0f.cloudfront.net/310519663786910793/nv3b3r8xSigzoBGpUx4ZRH/hero-bg-2-GoNbVjS2NTZPw3Hq8K79y4.webp";
+const HERO_BG = pageHeroImages.company;
+const HERO_BG_2 = "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,16 +49,16 @@ export default function About() {
       {/* ══════════════════════════════════════════════════════════════
           HERO SECTION
           ══════════════════════════════════════════════════════════════ */}
-      <section className="relative h-[72vh] min-h-[520px] overflow-hidden flex items-end">
+      <section className="relative flex h-[78vh] min-h-[560px] items-end overflow-hidden bg-[var(--brand-black)]">
         <img src={HERO_BG} alt="About China Prime DMC" className="absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.4) 0%, rgba(17, 24, 39, 0.1) 60%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.62) 46%, rgba(0,0,0,0.20) 100%), linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.06) 60%)" }} />
         
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pb-24 w-full">
           <FadeSection>
-            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "12px", fontWeight: 600 }}>
+            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-gray-300)", marginBottom: "12px", fontWeight: 600 }}>
               Our Story
             </div>
-            <h1 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.8rem, 7vw, 5.5rem)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+            <h1 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "clamp(2.8rem, 7vw, 6.4rem)", fontWeight: 560, color: "#FFFFFF", lineHeight: 0.95, letterSpacing: 0 }}>
               About China<br />Prime DMC
             </h1>
           </FadeSection>

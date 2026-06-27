@@ -4,6 +4,8 @@ import { ArrowRight, Mail, SlidersHorizontal, X } from "lucide-react";
 import { EMAIL } from "@/lib/data";
 import type { Journey } from "@/lib/programData";
 import { journeyFilterOptions, journeys } from "@/lib/programData";
+import MediaHero from "@/components/MediaHero";
+import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -165,19 +167,18 @@ export default function Journeys() {
 
   return (
     <main style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
-      <section className="mono-section bg-[var(--brand-white)]">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[1fr_0.48fr]">
-          <FadeSection>
-            <p className="b2b-eyebrow">B2B program library</p>
-            <h1 className="b2b-heading max-w-5xl">China programs built for resale, quoting, and partner customization.</h1>
-          </FadeSection>
-          <FadeSection delay={100} className="self-end">
-            <p className="b2b-lede mt-0">
-              Browse ready-to-customize China itineraries by destination, duration, theme, pace, and traveler profile. Every program is a trade framework, not a fixed retail package.
-            </p>
-          </FadeSection>
-        </div>
-      </section>
+      <MediaHero
+        image={pageHeroImages.programs}
+        alt="Tiger Leaping Gorge in Yunnan for B2B China program library."
+        eyebrow="B2B program library"
+        title="China programs built for resale, quoting, and partner customization."
+        body="Browse ready-to-customize China itineraries by destination, duration, theme, pace, and traveler profile. Every program is a trade framework, not a fixed retail package."
+        stats={[
+          { value: String(journeys.length), label: "Program frameworks" },
+          { value: "5-14", label: "Typical days" },
+          { value: "FIT / Groups / MICE", label: "Partner formats" },
+        ]}
+      />
 
       <section className="border-y border-[var(--brand-border)] bg-[var(--brand-gray-50)] px-6 py-8 lg:px-10">
         <div className="mono-wrap">
@@ -257,7 +258,7 @@ export default function Journeys() {
                 className="group grid min-h-full cursor-pointer bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-black)]"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-[var(--brand-gray-100)]">
-                  <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading={index < 6 ? "eager" : "lazy"} decoding="async" />
+                  <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" decoding="async" />
                   <div className="absolute left-3 top-3 bg-[var(--brand-black)] px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-white">
                     {journey.pricingNote}
                   </div>
