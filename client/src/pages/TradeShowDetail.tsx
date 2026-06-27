@@ -12,6 +12,19 @@ function HighlightMarker({ children }: { children: ReactNode }) {
   );
 }
 
+function ExternalTextLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-semibold text-[var(--brand-black)] underline decoration-[var(--brand-gray-400)] underline-offset-4 hover:decoration-[var(--brand-black)]"
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function TradeShowDetail() {
   const params = useParams<{ id: string }>();
   const show = tradeShows.find((event) => event.id === params.id);
@@ -48,6 +61,9 @@ export default function TradeShowDetail() {
 
   const primary = show.images.find((image) => image.role === "primary") ?? show.images[0];
   const supporting = show.images.filter((image) => image.role !== "primary");
+  const organizerLink = show.externalLinks.find((link) => link.title.includes("Pentagon"))?.url ?? "https://www.pentagonevents.my/";
+  const venueLink = show.externalLinks.find((link) => link.title.includes("Pavilion"))?.url ?? "https://www.banyantree.com/malaysia/pavilion-hotel/meeting-venues/the-pavilion-ballroom";
+  const visaLink = show.externalLinks.find((link) => link.title.includes("visa"))?.url ?? "https://my.china-embassy.gov.cn/eng/fwzc/lsyw/qz/202508/t20250801_11681401.htm";
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -135,7 +151,10 @@ export default function TradeShowDetail() {
               At this event, the most useful conversations centered on <HighlightMarker>Muslim-friendly China travel</HighlightMarker>, private and group routing, practical ground handling, and the kind of white-label support travel agencies need before they can confidently sell China.
             </p>
             <p className="b2b-body text-lg">
-              For China Prime DMC, the value of ICGTE Kuala Lumpur was simple: it helped us hear directly from travel agencies in Malaysia and nearby markets. Those conversations influence how we design China private tours, group programs, incentive travel, family itineraries, and white-label China ground services for overseas partners.
+              For China Prime DMC, the value of ICGTE Kuala Lumpur was simple: it helped us hear directly from travel agencies in Malaysia and nearby markets. Organized by <ExternalTextLink href={organizerLink}>Pentagon Exhibitions & Events</ExternalTextLink>, the event gave us practical conversations that influence how we design China private tours, group programs, incentive travel, family itineraries, and white-label China ground services for overseas partners.
+            </p>
+            <p className="b2b-body text-lg">
+              The event setting also mattered. Meeting partners at <ExternalTextLink href={venueLink}>Pavilion Hotel Kuala Lumpur</ExternalTextLink> made the conversations focused and trade-oriented, while the <ExternalTextLink href={visaLink}>China-Malaysia mutual visa exemption</ExternalTextLink> gives agencies a timely reason to revisit China as an easier destination to sell.
             </p>
           </div>
         </div>
