@@ -85,7 +85,7 @@ export default function JourneyDetail() {
   return (
     <main style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
       <section className="relative min-h-[82vh] overflow-hidden bg-[var(--brand-black)]">
-        <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="absolute inset-0 h-full w-full object-cover opacity-75" />
+        <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="absolute inset-0 h-full w-full object-cover opacity-75" loading="eager" decoding="async" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" />
         <div className="relative flex min-h-[82vh] items-end px-6 pb-12 lg:px-10 lg:pb-16">
           <div className="mono-wrap w-full">
@@ -167,7 +167,7 @@ export default function JourneyDetail() {
               <FadeSection key={image.src} delay={index * 45}>
                 <figure className="bg-white">
                   <div className="aspect-[4/3] overflow-hidden">
-                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
                   </div>
                   <figcaption className="min-h-20 border-t border-[var(--brand-border)] p-4 text-sm leading-6 text-[var(--brand-gray-600)]">
                     {image.topic}

@@ -283,7 +283,7 @@ export default function B2B() {
 
           <FadeSection delay={100}>
             <figure className="h-full border border-[var(--brand-black)] bg-white">
-              <img src={serviceImages.hero} alt="China Prime DMC discussing B2B China ground services with travel trade buyers." className="h-[440px] w-full object-cover lg:h-full" />
+              <img src={serviceImages.hero} alt="China Prime DMC discussing B2B China ground services with travel trade buyers." className="h-[440px] w-full object-cover lg:h-full" loading="eager" decoding="async" fetchPriority="high" />
             </figure>
           </FadeSection>
         </div>
@@ -355,7 +355,7 @@ export default function B2B() {
         <div className="mono-wrap grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <FadeSection>
             <figure className="border border-[var(--brand-border)] bg-white">
-              <img src={serviceImages.materials} alt="China Prime DMC white-label itinerary support materials for travel trade partners." className="h-[520px] w-full object-cover" />
+              <img src={serviceImages.materials} alt="China Prime DMC white-label itinerary support materials for travel trade partners." className="h-[520px] w-full object-cover" loading="lazy" decoding="async" />
               <figcaption className="border-t border-[var(--brand-border)] p-5 text-sm text-[var(--brand-gray-600)]">
                 Trade-ready materials matter because overseas partners need China programs they can explain quickly.
               </figcaption>
@@ -414,7 +414,7 @@ export default function B2B() {
           ].map((item, index) => (
             <FadeSection key={item.title} delay={(index + 1) * 90}>
               <figure className="h-full bg-[var(--brand-black)]">
-                <img src={item.src} alt={item.alt} className="h-80 w-full object-cover md:h-[460px]" />
+                <img src={item.src} alt={item.alt} className="h-80 w-full object-cover md:h-[460px]" loading="lazy" decoding="async" />
                 <figcaption className="flex items-center gap-3 border border-[var(--brand-gray-800)] border-t-0 p-5 text-sm font-semibold text-[var(--brand-gray-200)]">
                   {item.icon} {item.title}
                 </figcaption>
@@ -433,7 +433,7 @@ export default function B2B() {
               The best B2B service pages answer a practical question: "Can this team handle my situation?" These are common partner briefs we can support.
             </p>
             <figure className="mt-10 border border-[var(--brand-border)] bg-white">
-              <img src={serviceImages.forbiddenCity} alt="Forbidden City Beijing private China tour service for travel advisors." className="h-80 w-full object-cover" />
+              <img src={serviceImages.forbiddenCity} alt="Forbidden City Beijing private China tour service for travel advisors." className="h-80 w-full object-cover" loading="lazy" decoding="async" />
             </figure>
           </FadeSection>
           <FadeSection delay={100}>
@@ -460,7 +460,7 @@ export default function B2B() {
           </FadeSection>
           <FadeSection delay={100}>
             <figure className="border border-[var(--brand-border)] bg-white">
-              <img src={serviceImages.mice} alt="Shanghai skyline representing China MICE and incentive travel operations." className="h-[420px] w-full object-cover" />
+              <img src={serviceImages.mice} alt="Shanghai skyline representing China MICE and incentive travel operations." className="h-[420px] w-full object-cover" loading="lazy" decoding="async" />
               <figcaption className="border-t border-[var(--brand-border)] p-5 text-sm text-[var(--brand-gray-600)]">
                 MICE and incentive programs need a different operating rhythm than private leisure travel.
               </figcaption>
@@ -481,7 +481,7 @@ export default function B2B() {
           </FadeSection>
           <FadeSection delay={100}>
             <figure className="border border-[var(--brand-border)] bg-white">
-              <img src={serviceImages.tradeShow} alt="China Prime DMC at ICGTE Singapore travel trade show." className="h-[460px] w-full object-cover" />
+              <img src={serviceImages.tradeShow} alt="China Prime DMC at ICGTE Singapore travel trade show." className="h-[460px] w-full object-cover" loading="lazy" decoding="async" />
             </figure>
           </FadeSection>
         </div>

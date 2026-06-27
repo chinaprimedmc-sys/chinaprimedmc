@@ -257,7 +257,7 @@ export default function Journeys() {
                 className="group grid min-h-full cursor-pointer bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-black)]"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-[var(--brand-gray-100)]">
-                  <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                  <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading={index < 6 ? "eager" : "lazy"} decoding="async" />
                   <div className="absolute left-3 top-3 bg-[var(--brand-black)] px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-white">
                     {journey.pricingNote}
                   </div>

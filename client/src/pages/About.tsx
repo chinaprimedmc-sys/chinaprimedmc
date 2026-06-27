@@ -49,7 +49,7 @@ export default function About() {
           HERO SECTION
           ══════════════════════════════════════════════════════════════ */}
       <section className="relative h-[72vh] min-h-[520px] overflow-hidden flex items-end">
-        <img src={HERO_BG} alt="About China Prime DMC" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={HERO_BG} alt="About China Prime DMC" className="absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.4) 0%, rgba(17, 24, 39, 0.1) 60%)" }} />
         
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pb-24 w-full">
@@ -190,7 +190,7 @@ export default function About() {
 
             <FadeSection delay={150}>
               <div className="relative">
-                <img src={HERO_BG_2} alt="China landscape" className="w-full h-[620px] object-cover rounded-lg" />
+                <img src={HERO_BG_2} alt="China landscape" className="w-full h-[620px] object-cover rounded-lg" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 rounded-lg" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.3) 0%, transparent 60%)" }} />
               </div>
             </FadeSection>

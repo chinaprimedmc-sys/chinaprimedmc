@@ -164,6 +164,9 @@ export default function Home() {
                       src={heroImages.meeting}
                       alt="China Prime DMC meeting travel trade partners for China ground operations."
                       className="h-full min-h-[430px] w-full object-cover"
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
                     />
                     <figcaption className="absolute bottom-0 left-0 max-w-[520px] bg-[var(--brand-black)] p-5 text-sm leading-6 text-[var(--brand-gray-200)]">
                       Real trade conversations shape the programs we quote and operate for overseas partners.
@@ -174,11 +177,15 @@ export default function Home() {
                       src={heroImages.greatWall}
                       alt="Great Wall route planning for China itinerary design."
                       className="h-44 w-full object-cover md:h-full"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <img
                       src={heroImages.shanghai}
                       alt="Shanghai business travel operations for China DMC partners."
                       className="h-44 w-full object-cover md:h-full"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </div>

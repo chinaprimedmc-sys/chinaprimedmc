@@ -123,7 +123,7 @@ export default function TradeShowDetail() {
       <section className="px-6 pb-0 lg:px-10">
         <div className="mono-wrap">
           <figure className="border border-[var(--brand-border)] bg-white">
-            <img src={primary.src} alt={primary.alt} className="h-[58vh] min-h-[360px] w-full object-cover" itemProp="image" />
+            <img src={primary.src} alt={primary.alt} className="h-[58vh] min-h-[360px] w-full object-cover" itemProp="image" loading="eager" decoding="async" fetchPriority="high" />
             <figcaption className="border-t border-[var(--brand-border)] p-5 text-sm text-[var(--brand-gray-600)]">
               {primary.caption}
             </figcaption>
@@ -236,7 +236,7 @@ export default function TradeShowDetail() {
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
             {supporting.map((image) => (
               <figure key={image.src} className="bg-white">
-                <img src={image.src} alt={image.alt} className="h-72 w-full object-cover" loading="lazy" />
+                <img src={image.src} alt={image.alt} className="h-72 w-full object-cover" loading="lazy" decoding="async" />
                 <figcaption className="p-4 text-sm leading-6 text-[var(--brand-gray-600)]">{image.caption}</figcaption>
               </figure>
             ))}

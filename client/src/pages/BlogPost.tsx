@@ -90,7 +90,7 @@ export default function BlogPost() {
           HERO SECTION
           ══════════════════════════════════════════════════════════════ */}
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden flex items-end">
-        <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" />
+        <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17, 24, 39, 0.4) 0%, rgba(17, 24, 39, 0.1) 60%)" }} />
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pb-20 w-full">
           <Link href="/blog" className="inline-flex items-center gap-2 mb-6 text-xs tracking-[0.15em] uppercase transition-colors" style={{ color: "var(--brand-gray-100)", fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }} onMouseEnter={(e) => { e.currentTarget.style.color = "var(--brand-champagne)"; }} onMouseLeave={(e) => { e.currentTarget.style.color = "var(--brand-gray-100)"; }}>
@@ -213,7 +213,7 @@ export default function BlogPost() {
                 <FadeSection key={article.id} delay={i * 80}>
                   <Link href={`/blog/${article.id}`} style={{ textDecoration: "none" }}>
                     <div style={{ backgroundColor: "#FFFFFF", border: "1px solid var(--brand-border)", borderRadius: "8px", overflow: "hidden", transition: "all 0.3s ease", cursor: "pointer" }} onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.08)"; }} onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
-                      <img src={article.image} alt={article.title} style={{ width: "100%", height: "200px", objectFit: "cover" }} />
+                      <img src={article.image} alt={article.title} style={{ width: "100%", height: "200px", objectFit: "cover" }} loading="lazy" decoding="async" />
                       <div style={{ padding: "20px" }}>
                         <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--brand-champagne)", marginBottom: "8px", fontWeight: 600 }}>
                           {article.category}

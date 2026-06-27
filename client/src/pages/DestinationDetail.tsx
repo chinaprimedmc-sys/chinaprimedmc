@@ -77,13 +77,13 @@ function RegionHero({ region }: { region: CoverageRegion }) {
         <FadeSection delay={120}>
           <div className="grid gap-px bg-[var(--brand-gray-800)]">
             <div className="relative aspect-[16/10] overflow-hidden bg-[var(--brand-gray-900)]">
-              <img src={region.heroImage} alt={region.name} className="h-full w-full object-cover" />
+              <img src={region.heroImage} alt={region.name} className="h-full w-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
             </div>
             <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] md:grid-cols-3">
               {region.gallery.slice(1, 4).map((image) => (
                 <figure key={image.src} className="bg-[var(--brand-black)]">
                   <div className="aspect-[4/3] overflow-hidden">
-                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
                   </div>
                 </figure>
               ))}
@@ -295,7 +295,7 @@ export default function DestinationDetail() {
               <FadeSection key={image.src} delay={(index % 6) * 45}>
                 <figure className="min-h-full bg-white">
                   <div className="aspect-[4/3] overflow-hidden bg-[var(--brand-gray-100)]">
-                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
                   </div>
                   <figcaption className="p-5 text-sm leading-7 text-[var(--brand-gray-700)]">
                     <strong className="block text-[var(--brand-black)]">{image.alt}</strong>

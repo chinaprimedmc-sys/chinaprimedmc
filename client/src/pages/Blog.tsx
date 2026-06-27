@@ -105,7 +105,7 @@ export default function Blog() {
               <Link href={`/blog/${blogPosts[0].id}`}>
                 <div className="card-hover group grid md:grid-cols-2 overflow-hidden cursor-pointer" style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)", borderRadius: "2px" }}>
                   <div className="img-zoom-container h-72 md:h-auto relative">
-                    <img src={blogPosts[0].image} alt={blogPosts[0].title} className="w-full h-full object-cover" />
+                    <img src={blogPosts[0].image} alt={blogPosts[0].title} className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(to right, transparent 60%, rgba(17,24,39,0.5) 100%)" }} />
                   </div>
                   <div className="p-10 flex flex-col justify-center">
@@ -143,7 +143,7 @@ export default function Blog() {
                 <Link href={`/blog/${post.id}`}>
                   <div className="card-hover group cursor-pointer h-full" style={{ backgroundColor: "var(--brand-parchment)", border: "1px solid var(--brand-border)", borderRadius: "2px" }}>
                     <div className="img-zoom-container h-52 relative">
-                      <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+                      <img src={post.image} alt={post.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                       <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(17,24,39,0.7) 0%, transparent 60%)" }} />
                     </div>
                     <div className="p-6">
