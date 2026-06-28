@@ -3,12 +3,12 @@ import { Link, useLocation } from "wouter";
 import { ArrowRight, Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "/", label: "Opening" },
-  { href: "/journeys", label: "Journeys" },
-  { href: "/private-china-tours", label: "Private" },
-  { href: "/destinations", label: "China" },
-  { href: "/about", label: "Studio" },
-  { href: "/b2b", label: "Advisors" },
+  { href: "/", label: "Start" },
+  { href: "/journeys", label: "Trip Ideas" },
+  { href: "/private-china-tours", label: "Private Design" },
+  { href: "/destinations", label: "Where to Go" },
+  { href: "/about", label: "Why Trust Us" },
+  { href: "/b2b", label: "For Advisors" },
 ];
 
 export default function Navbar() {
@@ -38,9 +38,9 @@ export default function Navbar() {
             <span className="cinema-brand-mark" aria-hidden="true">
               <span>CP</span>
             </span>
-            <span className="cinema-brand-copy">
+              <span className="cinema-brand-copy">
               <span className="cinema-brand-name">China Prime</span>
-              <span className="cinema-brand-sub">Private China journeys</span>
+              <span className="cinema-brand-sub">China, made effortless</span>
             </span>
           </Link>
 
@@ -60,7 +60,7 @@ export default function Navbar() {
           </nav>
 
           <Link href="/contact" className="cinema-nav-cta">
-            Begin <ArrowRight size={14} />
+            Plan My China <ArrowRight size={14} />
           </Link>
 
           <button
@@ -79,7 +79,7 @@ export default function Navbar() {
           <nav>
             <Link href="/" className="cinema-mobile-feature">
               <span>China Prime DMC</span>
-              <strong>Enter China with a better point of view.</strong>
+              <strong>Your first China trip should feel thrilling, not complicated.</strong>
             </Link>
             {navLinks.map((link) => (
               <Link
@@ -91,7 +91,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link href="/contact">
-              Start a private brief
+              Get My First Route Idea
             </Link>
           </nav>
         </div>

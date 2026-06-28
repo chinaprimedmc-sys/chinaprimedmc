@@ -301,16 +301,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -453,16 +453,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -601,16 +601,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -755,16 +755,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -923,16 +923,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -1089,16 +1089,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -1243,16 +1243,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -1385,16 +1385,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -1533,16 +1533,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -1687,16 +1687,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -1841,16 +1841,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -1995,16 +1995,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -2143,16 +2143,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -2305,16 +2305,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -2474,16 +2474,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -2641,16 +2641,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -2802,16 +2802,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -2970,16 +2970,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -3131,16 +3131,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -3284,16 +3284,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -3445,16 +3445,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -3600,16 +3600,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -3761,16 +3761,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -3915,16 +3915,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -4076,16 +4076,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -4230,16 +4230,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -4378,16 +4378,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -4545,16 +4545,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -4699,16 +4699,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   },
@@ -4853,16 +4853,16 @@ export const journeys: Journey[] = [
     ],
     "faqs": [
       {
-        "q": "Can this trip be customized?",
-        "a": "Yes. Every trip is a planning framework. We can adjust cities, pace, hotel level, meal needs, guide style, and the number of scenic days."
+        "q": "Can this route be changed around my family or travel style?",
+        "a": "Yes. Every trip is a starting point. We can adjust cities, pace, hotel level, meal needs, guide style, walking time, and the number of scenic days so the route fits the people traveling."
       },
       {
-        "q": "Is this a fixed-price package?",
-        "a": "No. Final pricing depends on travel dates, hotel level, group size, rooming, transport availability, and confirmed inclusions."
+        "q": "Will you tell me what the trip is likely to cost before anything is confirmed?",
+        "a": "Yes. We prepare a clear custom quote after we know your dates, hotel level, group size, rooming, transport availability, and the inclusions you want. No one is asked to commit before the route and assumptions make sense."
       },
       {
-        "q": "Can you plan for families, Muslim travelers, women travelers, or seniors?",
-        "a": "Yes. We label trips by traveler fit and can rebuild the route around meals, pace, mobility, privacy, and comfort level."
+        "q": "Can you plan around children, halal-aware meals, older parents, or privacy needs?",
+        "a": "Yes. We can rebuild the route around meals, pace, mobility, prayer-time awareness where practical, privacy, hotel comfort, and the energy level of your group."
       }
     ]
   }

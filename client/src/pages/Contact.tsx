@@ -63,11 +63,11 @@ const programTypes = [
 
 const briefTemplates = [
   {
-    label: "Private traveler",
+    label: "First China trip",
     programType: "First-time China",
     message: [
       "Traveler profile:",
-      "We are planning our own private China trip and would like help shaping the route.",
+      "We are planning our first private China trip and want the route to feel exciting, safe, and not rushed.",
       "",
       "Travel window and group:",
       "Please advise based on our travel month, number of travelers, ages, comfort level, and preferred pace.",
@@ -76,15 +76,15 @@ const briefTemplates = [
       "Classic China icons, scenic landscapes, food, culture, family-friendly experiences, Muslim-friendly planning, women-friendly flow, or senior-friendly pacing.",
       "",
       "What we need back:",
-      "A suggested private route, how many days it should take, what can be customized, and what details you need before quoting.",
+      "A first route idea, how many days it should take, what you would avoid, and what details you need before quoting.",
     ].join("\n"),
   },
   {
-    label: "Private trip",
+    label: "Couple / private",
     programType: "Private trip",
     message: [
       "Client profile:",
-      "Two private travelers looking for a custom China itinerary.",
+      "Two private travelers looking for a custom China itinerary with strong hotels, smooth transfers, and enough time to enjoy each stop.",
       "",
       "Route or destinations:",
       "Please suggest the best route based on the travel window and preferred pace.",
@@ -97,11 +97,11 @@ const briefTemplates = [
     ].join("\n"),
   },
   {
-    label: "Small group",
+    label: "Friends / small group",
     programType: "Multi-city China",
     message: [
       "Group profile:",
-      "We are planning a private China trip for a small group and need a practical, customizable itinerary.",
+      "We are planning a private China trip for friends or a small group and need a practical route that feels premium without becoming over-scheduled.",
       "",
       "Expected group size:",
       "Please quote based on the group size entered above, and advise if pricing changes at key passenger numbers.",
@@ -114,11 +114,11 @@ const briefTemplates = [
     ].join("\n"),
   },
   {
-    label: "Muslim-friendly",
+    label: "Halal-aware",
     programType: "Muslim-friendly",
     message: [
       "Traveler needs:",
-      "We need a Muslim-friendly China trip with practical halal meal planning and prayer-time awareness.",
+      "We need a Muslim-friendly China trip with practical halal meal planning, prayer-time awareness, and clear guidance on where options are strong or limited.",
       "",
       "Route expectations:",
       "Please suggest destinations and attractions that work well for Muslim travelers, with realistic restaurant options and guide support.",
@@ -131,11 +131,11 @@ const briefTemplates = [
     ].join("\n"),
   },
   {
-    label: "Family travel",
+    label: "Kids / family",
     programType: "Family trip",
     message: [
       "Family profile:",
-      "We are planning a family-friendly China trip and need a route that balances culture, comfort, and activities for children.",
+      "We are planning China with children and need a route that balances culture, comfort, fun, and realistic energy levels.",
       "",
       "Child details:",
       "Please advise based on the children's ages, preferred pace, and any theme park or animal experiences that fit the route.",
@@ -174,8 +174,8 @@ export default function Contact() {
       `Company: ${form.company}`,
       `Email: ${form.email}`,
       `WhatsApp / phone: ${form.whatsapp}`,
-      `Request type: ${form.partnerType}`,
-      `Trip type: ${form.programType}`,
+      `Traveler type: ${form.partnerType}`,
+      `Trip style: ${form.programType}`,
       `Number of travelers: ${form.groupSize}`,
       `Destinations / routing: ${form.destinations}`,
       `Travel window: ${form.travelWindow}`,
@@ -205,7 +205,7 @@ export default function Contact() {
     e.preventDefault();
     setError("");
     if (!form.name.trim() || !form.company.trim() || !form.email.trim() || !form.message.trim()) {
-      setError("Please include your name, company, email, and a short brief.");
+      setError("Please include your name, family or group name, email, and a short note. Rough is enough.");
       return;
     }
     setSubmitted(true);
@@ -229,9 +229,9 @@ export default function Contact() {
         <div className="btoc-hero-inner btoc-wrap min-h-[72svh]">
           <div className="btoc-hero-grid">
             <FadeSection>
-              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>Private trip concierge</span>
-              <h1>Tell us the China you want.</h1>
-              <p className="btoc-lede">Send a wish list, a rough route, or a fully formed plan. We will shape it around your dates, pace, comfort level, family needs, food preferences, and must-see places.</p>
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>Private China planning</span>
+              <h1>Start with the trip in your head. We will make it workable.</h1>
+              <p className="btoc-lede">You do not need the perfect brief. Send your dates, who is traveling, what you want to feel, and what worries you. We will shape the first route around pace, comfort, food, family needs, and the parts of China worth your time.</p>
             </FadeSection>
             <FadeSection delay={120}>
               <div className="btoc-glass-panel">
@@ -240,7 +240,7 @@ export default function Contact() {
                     { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "+44 7985 052302", href: WHATSAPP_URL },
                     { icon: <Mail size={18} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
                     { icon: <MapPin size={18} />, label: "Base", value: "Guangzhou, China", href: null },
-                    { icon: <Briefcase size={18} />, label: "Best for", value: "Private trips", href: null },
+                    { icon: <Briefcase size={18} />, label: "Best for", value: "Private trips and families", href: null },
                   ].map((item) => (
                     <div key={item.label} className="bg-white/12 p-6 backdrop-blur-sm">
                       <div className="mb-5 text-white/74">{item.icon}</div>
@@ -258,16 +258,16 @@ export default function Contact() {
       <section className="btoc-section">
         <div className="btoc-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr]">
           <aside>
-            <p className="btoc-eyebrow">Brief structure</p>
-            <h2 className="btoc-title-small" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>A simpler way to start planning China.</h2>
+            <p className="btoc-eyebrow">No perfect brief needed</p>
+            <h2 className="btoc-title-small" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>Tell us enough to start. We will ask the smarter questions.</h2>
             <div className="mt-10 grid gap-px bg-[var(--brand-border)]">
               {[
-                "Traveler profile and travel style",
-                "Dates or season",
-                "Number of travelers",
-                "Preferred destinations or routing",
-                "Hotel level and budget range",
-                "Special needs: halal, accessibility, family, senior, women-friendly, VIP",
+                "Who is traveling and what pace feels comfortable",
+                "Travel month, season, or school-holiday window",
+                "Ages, mobility notes, and family considerations",
+                "Places you already care about, even if the route is rough",
+                "Hotel style, comfort level, and value expectations",
+                "Food, halal, accessibility, senior, women-friendly, or VIP needs",
               ].map((item) => (
                 <div key={item} className="btoc-card flex items-start gap-4 p-5">
                   <Send size={15} style={{ color: "var(--btoc-gold)", flexShrink: 0, marginTop: 4 }} />
@@ -285,7 +285,7 @@ export default function Contact() {
               </div>
               <div>
                 <label className="btoc-label" style={labelStyle}>Family / group name *</label>
-                <input className="btoc-field" name="company" value={form.company} onChange={handleChange} placeholder="Company, agency, or family name" style={inputStyle} required />
+                <input className="btoc-field" name="company" value={form.company} onChange={handleChange} placeholder="Family name, group name, or company" style={inputStyle} required />
               </div>
             </div>
 
@@ -302,14 +302,14 @@ export default function Contact() {
 
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
-                <label className="btoc-label" style={labelStyle}>Request type</label>
+                <label className="btoc-label" style={labelStyle}>Who is traveling?</label>
                 <select className="btoc-field" name="partnerType" value={form.partnerType} onChange={handleChange} style={inputStyle}>
                   <option value="">Select...</option>
                   {partnerTypes.map((type) => <option key={type} value={type}>{type}</option>)}
                 </select>
               </div>
               <div>
-                <label className="btoc-label" style={labelStyle}>Trip type</label>
+                <label className="btoc-label" style={labelStyle}>What kind of trip feels right?</label>
                 <select className="btoc-field" name="programType" value={form.programType} onChange={handleChange} style={inputStyle}>
                   <option value="">Select...</option>
                   {programTypes.map((type) => <option key={type} value={type}>{type}</option>)}
@@ -334,7 +334,7 @@ export default function Contact() {
                 <input className="btoc-field" name="destinations" value={form.destinations} onChange={handleChange} placeholder="e.g. Beijing, Xi'an, Shanghai" style={inputStyle} />
               </div>
               <div>
-                <label className="btoc-label" style={labelStyle}>Budget level</label>
+                <label className="btoc-label" style={labelStyle}>Comfort / budget level</label>
                 <select className="btoc-field" name="budgetLevel" value={form.budgetLevel} onChange={handleChange} style={inputStyle}>
                   <option value="">Select...</option>
                   <option value="Comfort">Comfort</option>
@@ -348,7 +348,7 @@ export default function Contact() {
 
             <div style={{ marginBottom: 20 }}>
               <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                <label className="btoc-label" style={{ ...labelStyle, marginBottom: 0 }}>Brief *</label>
+                <label className="btoc-label" style={{ ...labelStyle, marginBottom: 0 }}>Tell us what you know so far *</label>
                 <div className="flex flex-wrap gap-2">
                   {briefTemplates.map((template) => (
                     <button
@@ -367,7 +367,7 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 rows={10}
-                placeholder="Tell us who is traveling, when you want to go, what you want to see, your pace, hotel style, dietary needs, and anything we should plan around."
+                placeholder="A few notes are enough: who is traveling, when you might go, what you want to see, what pace feels right, hotel style, food needs, and what you are worried about."
                 required
                 className="btoc-field"
                 style={{ ...inputStyle, resize: "vertical" }}
@@ -382,16 +382,16 @@ export default function Contact() {
 
             {submitted && (
               <div className="btoc-alert mb-5 bg-[rgba(49,91,69,0.08)] text-[var(--btoc-forest)]">
-                Your email app should open with the prepared brief. You can also send it by WhatsApp below.
+                Your email app should open with the prepared note. You can also send it by WhatsApp below.
               </div>
             )}
 
             <div className="flex flex-col gap-3 sm:flex-row">
               <button type="submit" className="btoc-button">
-                Prepare email <Mail size={17} />
+                Prepare my route request <Mail size={17} />
               </button>
               <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btoc-button btoc-button-secondary">
-                Send by WhatsApp <MessageCircle size={17} />
+                Ask on WhatsApp <MessageCircle size={17} />
               </a>
             </div>
           </form>
@@ -405,9 +405,9 @@ export default function Contact() {
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,39,0.78),rgba(17,24,39,0.36),rgba(17,24,39,0.10))]" />
             <div className="absolute bottom-0 left-0 right-0 p-7 md:p-12 lg:p-16">
               <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Before you brief us</span>
-              <h2 className="max-w-4xl text-[clamp(2.1rem,4.5vw,5rem)] font-semibold leading-[0.98] text-white">The more specific the wish list, the better the first route.</h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/76">Dates, traveler type, group size, hotel expectation, route idea, meal needs, and pace help us shape a trip that feels effortless on the ground.</p>
-              <div className="btoc-action-row"><a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btoc-button">Send by WhatsApp <MessageCircle size={17} /></a></div>
+              <h2 className="max-w-4xl text-[clamp(2.1rem,4.5vw,5rem)] font-semibold leading-[0.98] text-white">The best first message is honest, not polished.</h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-white/76">Tell us what excites you and what feels uncertain: children, parents, food, walking, payments, hotels, trains, or simply where to begin. That is enough for us to start.</p>
+              <div className="btoc-action-row"><a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btoc-button">Ask on WhatsApp <MessageCircle size={17} /></a></div>
             </div>
           </div>
         </div>

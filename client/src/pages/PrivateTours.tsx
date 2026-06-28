@@ -64,9 +64,9 @@ const privateImages = {
 } as const;
 
 const heroStats = [
-  { value: "Private", label: "Custom China travel" },
-  { value: "2012", label: "China-based team" },
-  { value: "24/7", label: "In-trip support" },
+  { value: "Private", label: "No fixed group schedule" },
+  { value: "2012", label: "Planning from inside China" },
+  { value: "24/7", label: "Support while you travel" },
 ];
 
 const travelStyles = [
@@ -132,16 +132,16 @@ const wowStops = [
 ];
 
 const planningFlow = [
-  { step: "01", title: "Tell us your travel style", body: "Dates, travelers, pace, hotel level, must-see places, food needs, mobility notes, and what you do not want." },
-  { step: "02", title: "We shape the route", body: "We turn the wish list into a realistic private China itinerary with better timing, smarter city order, and clear trade-offs." },
-  { step: "03", title: "You refine the details", body: "Adjust hotels, daily pace, food, special interests, and scenic extensions before anything is locked." },
-  { step: "04", title: "Travel with local support", body: "Your guides, drivers, tickets, transfers, and on-trip adjustments are coordinated by a China-based team." },
+  { step: "01", title: "Tell us what has to feel easy", body: "Kids, parents, food, walking, payments, hotel style, privacy, faith needs, and the pace you know your group can enjoy." },
+  { step: "02", title: "We remove the wrong parts", body: "We edit the route before adding more: fewer awkward transfers, better hotel locations, realistic starts, and enough time where it matters." },
+  { step: "03", title: "You refine with a real person", body: "Adjust hotels, daily rhythm, special interests, scenic extensions, and comfort level before anything is locked." },
+  { step: "04", title: "You travel with backup", body: "Guides, drivers, tickets, transfers, and on-trip adjustments are coordinated by a China-based team that knows the ground." },
 ];
 
 const ctaBrief = [
   "Hello China Prime DMC team,",
   "",
-  "I am planning a private China trip and would like itinerary advice.",
+  "I am planning a private China trip and would like help turning a rough idea into a route that feels easy on the ground.",
   "",
   "Travel month:",
   "Number of travelers:",
@@ -177,10 +177,10 @@ export default function PrivateTours() {
     const metaDescription = document.querySelector('meta[name="description"]');
     const previousDescription = metaDescription?.getAttribute("content") ?? "";
 
-    document.title = "Private China Tours | Custom China Travel Planning";
+    document.title = "Private China Tours | Custom Luxury China Travel Planning";
     metaDescription?.setAttribute(
       "content",
-      "Plan a private China tour with China Prime DMC. Custom routes for families, first-time travelers, Muslim-friendly travel, women-friendly trips, senior travelers, culture, nature, and luxury private journeys.",
+      "Plan a private China tour with China Prime DMC. Custom luxury China travel for families, first-time visitors, Muslim-friendly travelers, senior travelers, and private clients who want China handled with care.",
     );
 
     return () => {
@@ -211,17 +211,17 @@ export default function PrivateTours() {
               <FadeSection>
                 <p className="b2b-eyebrow text-[var(--brand-gray-300)]">Private China tours</p>
                 <h1 className="text-[clamp(3rem,7vw,7.4rem)] font-semibold leading-[0.9] text-white">
-                  Your China trip should feel impossible to forget.
+                  Your China trip should feel easier than you imagined.
                 </h1>
                 <p className="mt-7 max-w-3xl text-base leading-8 text-[var(--brand-gray-100)] md:text-xl md:leading-9">
-                  Custom private China journeys for families, first-time visitors, Muslim-friendly travelers, women-friendly trips, senior travelers, and anyone who wants China planned around their pace instead of a fixed package.
+                  Private China tours for families, first-time visitors, Muslim-friendly travelers, women-friendly trips, senior travelers, and private clients who want the icons, the beauty, and the local life without trying to solve China by themselves.
                 </p>
                 <div className="mt-9 flex flex-wrap gap-3">
                   <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">
-                    Plan by WhatsApp <MessageCircle size={17} />
+                    Ask for route advice <MessageCircle size={17} />
                   </a>
                   <a href={mailtoHref} className="mono-button border-white bg-transparent text-white hover:bg-white hover:text-[var(--brand-black)]">
-                    Email trip details <Mail size={17} />
+                    Send my travel notes <Mail size={17} />
                   </a>
                 </div>
               </FadeSection>
@@ -245,9 +245,9 @@ export default function PrivateTours() {
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.58fr_1fr]">
           <FadeSection>
             <p className="b2b-eyebrow">Who this is for</p>
-            <h2 className="b2b-heading">Private travel, planned with the discipline of a local operator.</h2>
+            <h2 className="b2b-heading">For travelers who want China, not the stress of planning China.</h2>
             <p className="b2b-lede">
-              You do not need to know China's train system, hotel geography, meal limitations, ticket timing, or which scenic region belongs with which city. That is what we handle.
+              You do not need to know China's train system, hotel geography, meal limitations, ticket timing, payment habits, or which scenic region belongs with which city. That is what we handle before you arrive.
             </p>
           </FadeSection>
 
@@ -285,11 +285,11 @@ export default function PrivateTours() {
         <div className="mono-wrap">
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.52fr_1fr]">
             <div>
-              <p className="b2b-eyebrow">Big visual stops</p>
-              <h2 className="b2b-heading">Add one unforgettable landscape to the classic China route.</h2>
+              <p className="b2b-eyebrow">The moment that makes the trip yours</p>
+              <h2 className="b2b-heading">One unforgettable landscape can change the whole meaning of China.</h2>
             </div>
             <p className="b2b-lede mt-0">
-              The best private China trips balance famous icons with one image that feels deeply personal. We help choose the right visual anchor for your travel style, season, and comfort level.
+              The best private China trips balance famous icons with one place that feels personal: a mountain, a desert, a river town, a panda morning, or a night city your family will talk about years later.
             </p>
           </FadeSection>
 
@@ -315,7 +315,7 @@ export default function PrivateTours() {
         image={privateImages.huanglong}
         alt="Huanglong scenic pools for private China nature travel."
         eyebrow="How planning works"
-        title="A private tour is not a list of cities. It is a rhythm."
+        title="A private tour is not a list of cities. It is a rhythm your group can actually enjoy."
         body="We design around the real experience: when to start, how long to drive, when to use high-speed rail, where to slow down, which guide style fits, and what to skip so the trip does not become a checklist."
         imagePosition="center"
       >
@@ -338,14 +338,14 @@ export default function PrivateTours() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/64 via-black/6 to-transparent" />
               <figcaption className="absolute bottom-0 left-0 right-0 max-w-2xl p-7">
                 <div className="mono-index mb-3 text-[var(--brand-gray-300)]">Yunnan extension</div>
-                <h2 className="text-4xl font-semibold leading-tight text-white md:text-5xl">Private trips can go far beyond the first-time triangle.</h2>
+                <h2 className="text-4xl font-semibold leading-tight text-white md:text-5xl">China does not have to stop at Beijing, Xi'an, and Shanghai.</h2>
               </figcaption>
             </figure>
           </FadeSection>
 
           <FadeSection delay={100} className="bg-white p-8 lg:p-10">
-            <p className="b2b-eyebrow">What we coordinate</p>
-            <h2 className="text-4xl font-semibold leading-tight text-[var(--brand-black)] md:text-5xl">The details that make China feel easy.</h2>
+            <p className="b2b-eyebrow">What you do not have to solve</p>
+            <h2 className="text-4xl font-semibold leading-tight text-[var(--brand-black)] md:text-5xl">The details that make China feel calm.</h2>
             <div className="mt-8 grid gap-px bg-[var(--brand-border)]">
               {[
                 "Private guides and drivers matched to your travel style",
@@ -369,16 +369,16 @@ export default function PrivateTours() {
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.74fr_1fr] lg:items-center">
           <FadeSection>
             <p className="b2b-eyebrow">Start here</p>
-            <h2 className="b2b-heading">Send the rough idea. We will help shape the route.</h2>
+            <h2 className="b2b-heading">Send the rough idea. We will turn it into a first route you can react to.</h2>
             <p className="b2b-lede">
-              You can come with a full wish list or only a travel month and a few interests. We will ask the right questions and turn it into a private China route that makes sense.
+              You can come with a full wish list or only a travel month and a few worries. We will ask the right questions and turn it into a private China route that makes sense for the people traveling.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="mono-button">
-                Plan by WhatsApp <MessageCircle size={17} />
+                Ask for route advice <MessageCircle size={17} />
               </a>
               <a href={mailtoHref} className="mono-button mono-button-secondary">
-                Email trip details <Mail size={17} />
+                Send my travel notes <Mail size={17} />
               </a>
             </div>
           </FadeSection>

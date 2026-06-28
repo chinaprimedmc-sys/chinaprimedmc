@@ -43,8 +43,8 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 
 const coverageStats = [
   { value: "2012", label: "Established" },
-  { value: "7", label: "Operating regions" },
-  { value: "40+", label: "Trip destinations" },
+  { value: "7", label: "Ways to understand China" },
+  { value: "40+", label: "Places we can connect" },
 ];
 
 const regionClusters = coverageRegions.map((region) => ({
@@ -60,39 +60,39 @@ const regionClusters = coverageRegions.map((region) => ({
 
 const fitMatrix = [
   {
-    segment: "First-time China travelers",
+    segment: "Your first time in China",
     bestRegions: "Beijing, Xi'an, Shanghai, Suzhou, Guilin",
-    why: "Famous icons, simple sales language, strong guides.",
+    why: "Recognizable icons, strong guides, easier logistics, and enough context to feel grounded.",
     image: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city.jpg",
   },
   {
     segment: "Luxury private travelers",
     bestRegions: "Shanghai, Hangzhou, Beijing, Yunnan, Chengdu",
-    why: "Better hotels, private moments, flexible pacing.",
+    why: "Better hotels, private moments, flexible pacing, and fewer compromises on comfort.",
     image: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg",
   },
   {
     segment: "Muslim-friendly travelers",
     bestRegions: "Xi'an, Ningxia, Gansu, Xinjiang, Beijing, Shanghai",
-    why: "Muslim heritage, halal-aware meals, mosque visits.",
+    why: "Muslim heritage, halal-aware meals, mosque access where practical, and honest local guidance.",
     image: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-kashgar.jpg",
   },
   {
     segment: "Families with children",
     bestRegions: "Chengdu, Guilin, Beijing, Shanghai, Zhangjiajie",
-    why: "Pandas, rivers, hands-on culture, visual impact.",
+    why: "Pandas, rivers, hands-on culture, visual impact, and days that respect real family energy.",
     image: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
   },
   {
-    segment: "Senior travelers",
+    segment: "Older parents and senior travelers",
     bestRegions: "Beijing, Shanghai, Suzhou, Hangzhou, Chengdu",
-    why: "Comfortable pace, shorter transfers, mature supply.",
+    why: "Comfortable pacing, shorter transfers, mature hotels, and less unnecessary walking.",
     image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg",
   },
   {
     segment: "Multi-city private trips",
     bestRegions: "Shanghai, Beijing, Guangzhou, Guilin, Chengdu, Hangzhou",
-    why: "Air access, rail connections, strong hotels, easy routing.",
+    why: "Air access, rail connections, strong hotels, and route logic that feels clear before you go.",
     image: "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-beijing-national-stadium.jpg",
   },
 ];
@@ -162,9 +162,9 @@ export default function Destinations() {
         <div className="btoc-hero-inner btoc-wrap min-h-[78svh]">
           <div className="btoc-hero-grid">
             <FadeSection>
-              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>China coverage</span>
-              <h1>Where should your China story begin?</h1>
-              <p className="btoc-lede">Explore China by operating region, gateway city, landscape, season, and travel style. The map helps turn a huge country into a route you can actually picture.</p>
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>Where to go in China</span>
+              <h1>China is huge. Your route should not feel confusing.</h1>
+              <p className="btoc-lede">Use the regions to understand what belongs together: gateway cities, pandas, gardens, Muslim heritage, mountains, river towns, food cities, high-speed rail, and the places worth slowing down for.</p>
             </FadeSection>
             <FadeSection delay={120}>
               <div className="btoc-glass-panel"><div className="btoc-stat-grid">
@@ -177,10 +177,10 @@ export default function Destinations() {
 
       <section className="btoc-section py-8">
         <div className="btoc-wrap grid grid-cols-1 gap-4 md:grid-cols-3">
-          {["Where you should go", "When the route works best", "How the trip feels on the ground"].map((item, index) => (
+          {["Which places belong together", "When the route will feel best", "What the days feel like on the ground"].map((item, index) => (
             <FadeSection key={item} delay={index * 70}>
               <div className="btoc-card min-h-full p-7">
-                <div className="mb-6 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--brand-gray-400)]">Coverage question 0{index + 1}</div>
+                <div className="mb-6 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--brand-gray-400)]">Planning question 0{index + 1}</div>
                 <h2 className="text-2xl font-semibold leading-tight text-[var(--brand-black)]">{item}</h2>
               </div>
             </FadeSection>
@@ -192,11 +192,11 @@ export default function Destinations() {
         <div className="btoc-wrap">
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.55fr_1fr]">
             <div>
-              <p className="btoc-eyebrow">Regional network</p>
-              <h2 className="btoc-title-small">Coverage by operating region, with cities mapped clearly.</h2>
+              <p className="btoc-eyebrow">Make the map less intimidating</p>
+              <h2 className="btoc-title-small">See China as a set of journeys, not a list of cities.</h2>
             </div>
             <p className="btoc-lede mt-0">
-              Use the map to understand which gateway cities, cultural stops, natural landscapes, and specialist routes belong to each operating region before choosing your trip.
+              The right private China tour is usually a smart combination: a gateway city, a cultural anchor, one emotional landscape, and enough breathing room between them.
             </p>
           </FadeSection>
 
@@ -261,7 +261,7 @@ export default function Destinations() {
                     </div>
                   <div className="mt-7 grid gap-4">
                     <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-black)]">
-                      {selectedRegionId === coverageRegions[index].id ? "Region selected" : "Select on map"} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                      {selectedRegionId === coverageRegions[index].id ? "Region selected" : "Tap to understand this region"} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </div>
                     {selectedRegionId === coverageRegions[index].id && (
                       <Link
@@ -269,7 +269,7 @@ export default function Destinations() {
                         onClick={(event) => event.stopPropagation()}
                         className="btoc-button w-full md:hidden"
                       >
-                        Open regional coverage <ArrowRight size={15} />
+                        See this region in detail <ArrowRight size={15} />
                       </Link>
                     )}
                   </div>
@@ -285,9 +285,9 @@ export default function Destinations() {
         <div className="btoc-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.42fr_1fr]">
           <FadeSection>
             <p className="btoc-eyebrow">Trip fit</p>
-            <h2 className="btoc-title-small">Which regions make sense for which travelers?</h2>
+            <h2 className="btoc-title-small">Where should you go if this is your situation?</h2>
             <p className="btoc-lede mt-6">
-              The right China route depends on travel style, budget level, pacing, season, mobility, dietary needs, and how much time you want to spend in transit.
+              The right China route depends less on a bucket list and more on who is traveling: children, older parents, food needs, mobility, season, hotel expectations, and how much moving around still feels enjoyable.
             </p>
           </FadeSection>
 
@@ -317,9 +317,9 @@ export default function Destinations() {
       <DarkImageSection
         image="/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-three-gorges-dam.jpg"
         alt="Three Gorges Dam for nationwide private China route coverage."
-        eyebrow="Operational confidence"
-        title="Coverage only matters if the route can be operated cleanly."
-        body="We look at each destination through the details that affect your sale and your client experience: transfers, guide quality, hotel fit, meal planning, seasonality, permits, pacing, and on-trip communication."
+        eyebrow="What makes a route feel easy"
+        title="Beautiful places matter. Clean execution matters more."
+        body="Before recommending a destination, we look at the details travelers actually feel: transfer time, guide quality, hotel location, meal planning, seasonality, permits, walking pressure, and what happens if plans need to change."
       >
           <FadeSection delay={120}>
             <div className="grid gap-px bg-white/20 md:grid-cols-2">
@@ -338,10 +338,10 @@ export default function Destinations() {
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.58fr_1fr]">
             <div>
         <p className="btoc-eyebrow">Route architecture</p>
-        <h2 className="btoc-title-small">Multi-city China trips that are easy to understand before you go.</h2>
+        <h2 className="btoc-title-small">Multi-city China trips should feel clear before you ever board the flight.</h2>
             </div>
             <p className="btoc-lede mt-0">
-              Most travelers do not need one isolated city. They need a route that connects clearly, moves comfortably, and gives each destination enough time to matter.
+              Most travelers do not need one isolated city. They need a route that connects clearly, moves comfortably, and gives each destination enough time to mean something.
             </p>
           </FadeSection>
 
@@ -380,12 +380,12 @@ export default function Destinations() {
           <FadeSection>
             <p className="btoc-eyebrow">Trip brief</p>
             <h2 className="max-w-4xl text-4xl font-semibold leading-tight text-[var(--btoc-ink)] md:text-6xl">
-              Send us your dates, group size, and dream regions. We will shape the China route.
+              Tell us the China you are imagining. We will tell you which regions make sense first.
             </h2>
           </FadeSection>
           <FadeSection delay={100}>
             <Link href="/contact" className="btoc-button">
-              Request route advice <ArrowRight size={16} />
+              Get region advice <ArrowRight size={16} />
             </Link>
           </FadeSection>
         </div>

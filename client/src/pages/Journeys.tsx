@@ -78,11 +78,11 @@ function toggleValue(values: string[], value: string) {
 }
 
 function tripEmailHref(journey: Journey) {
-  const subject = `Private China trip request: ${journey.title}`;
+  const subject = `Can this China route fit my trip? ${journey.title}`;
   const body = [
     "Hello China Prime DMC team,",
     "",
-    "I am interested in planning this private China trip:",
+    "I am looking at this private China trip and would like your advice:",
     "",
     `Trip: ${journey.title}`,
     `Duration: ${journey.duration}`,
@@ -100,7 +100,7 @@ function tripEmailHref(journey: Journey) {
     "Places I want to add or remove:",
     "Approximate budget level:",
     "",
-    "Please suggest the best route, what can be customized, and what information you need before quoting.",
+    "Please tell me if this route fits my travelers, what you would adjust, and what information you need before preparing a quote.",
     "",
     "Thank you.",
   ].join("\n");
@@ -195,20 +195,20 @@ export default function Journeys() {
         <div className="btoc-hero-inner btoc-wrap min-h-[76svh]">
           <div className="btoc-hero-grid">
             <FadeSection>
-              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>Private China trips</span>
-              <h1>Choose your way into China.</h1>
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>Private China trip ideas</span>
+              <h1>Find the China route that feels right for your people.</h1>
               <p className="btoc-lede">
-                Filter cinematic private routes by destination, duration, travel style, pace, and traveler needs. Every trip is a starting point, not a fixed package.
+                Start with the trip that feels closest, then let us adjust the pace, hotels, food, rail, walking time, and special needs around the travelers you are bringing.
               </p>
               <div className="btoc-action-row">
-                <Link href="/contact" className="btoc-button">Plan my trip <ArrowRight size={17} /></Link>
-                <Link href="/b2b" className="btoc-button btoc-button-secondary">B2B partners</Link>
+                <Link href="/contact" className="btoc-button">Get my first route idea <ArrowRight size={17} /></Link>
+                <Link href="/b2b" className="btoc-button btoc-button-secondary">For travel advisors</Link>
               </div>
             </FadeSection>
             <FadeSection delay={120}>
               <div className="btoc-glass-panel">
                 <div className="btoc-stat-grid">
-                  {[{ value: String(journeys.length), label: "Trip ideas" }, { value: "5-14", label: "Typical days" }, { value: "68", label: "Destination tags" }, { value: "Private", label: "Custom pace" }].map((item) => (
+                  {[{ value: String(journeys.length), label: "Starting routes" }, { value: "5-14", label: "Typical days" }, { value: "68", label: "Places and styles" }, { value: "Private", label: "Your pace" }].map((item) => (
                     <div key={item.label} className="btoc-stat"><strong>{item.value}</strong><span>{item.label}</span></div>
                   ))}
                 </div>
@@ -227,14 +227,14 @@ export default function Journeys() {
                   <SlidersHorizontal size={18} />
                 </span>
                 <div>
-                  <div className="text-base font-semibold text-[var(--btoc-ink)]">Trip finder</div>
-                  <div className="text-sm text-[rgba(17,24,39,0.62)]">{filteredJourneys.length} of {journeys.length} trips shown</div>
+                  <div className="text-base font-semibold text-[var(--btoc-ink)]">Match the route to your travelers</div>
+                  <div className="text-sm text-[rgba(17,24,39,0.62)]">{filteredJourneys.length} of {journeys.length} ideas fit your filters</div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
                 {activeCount > 0 && (
                   <button type="button" onClick={resetFilters} className="btoc-button" style={{ minHeight: 44, padding: "0 18px" }}>
-                    Clear filters
+                    Reset my filters
                   </button>
                 )}
               </div>
@@ -283,10 +283,10 @@ export default function Journeys() {
         <div className="btoc-wrap">
           <FadeSection className="mb-10 grid gap-6 lg:grid-cols-[0.42fr_1fr] lg:items-end">
             <div>
-              <span className="btoc-eyebrow">Trip moods</span>
-              <h2 className="btoc-title-small">Start with the feeling.</h2>
+              <span className="btoc-eyebrow">Start with what matters</span>
+              <h2 className="btoc-title-small">The right China trip begins with the traveler, not the map.</h2>
             </div>
-            <p className="btoc-lede m-0">Classic icons, family demand, soft adventure, and Silk Road culture give travelers a fast emotional way to understand China.</p>
+            <p className="btoc-lede m-0">Some travelers want the icons without exhaustion. Some need halal-aware planning. Some are bringing children or older parents. Use these routes as a first conversation, not a fixed package.</p>
           </FadeSection>
           <div className="grid gap-4 md:grid-cols-4">
             {visualCategories.map((item, index) => (
@@ -295,7 +295,7 @@ export default function Journeys() {
                   <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                   <div className="btoc-image-overlay" />
                   <figcaption className="absolute bottom-5 left-5 right-5">
-                    <span className="btoc-badge mb-3">Trip style</span>
+                    <span className="btoc-badge mb-3">Best when you want</span>
                     <h2 className="text-3xl font-semibold leading-tight text-white">{item.title}</h2>
                   </figcaption>
                 </figure>
@@ -340,12 +340,12 @@ export default function Journeys() {
                   </div>
                   <div className="grid gap-4 border-y border-[rgba(20,33,61,0.10)] py-4 2xl:grid-cols-2">
                     <div>
-                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--btoc-stone)]">Best for</div>
+                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--btoc-stone)]">Works well for</div>
                       <div className="text-sm leading-6 text-[var(--brand-gray-700)]">{journey.bestFor.slice(0, 2).join(" / ")}</div>
                     </div>
                     <div>
-                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--btoc-stone)]">Typical support</div>
-                      <div className="text-sm leading-6 text-[var(--brand-gray-700)]">Private guide, transfers, hotels, ticket coordination</div>
+                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--btoc-stone)]">Handled for you</div>
+                      <div className="text-sm leading-6 text-[var(--brand-gray-700)]">Guides, transfers, hotels, tickets, rail timing, meal logic</div>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -359,14 +359,14 @@ export default function Journeys() {
                       onClick={(event) => event.stopPropagation()}
                       className="btoc-button" style={{ minHeight: 46 }}
                     >
-                      View details <ArrowRight size={15} />
+                      See if this fits <ArrowRight size={15} />
                     </Link>
                     <a
                       href={tripEmailHref(journey)}
                       onClick={(event) => event.stopPropagation()}
                       className="inline-flex h-11 items-center justify-center gap-2 border border-[rgba(20,33,61,0.10)] bg-white px-4 text-sm font-semibold text-[var(--btoc-ink)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)]"
                     >
-                      Plan this trip <Mail size={15} />
+                      Ask for this route <Mail size={15} />
                     </a>
                   </div>
                 </div>
@@ -382,10 +382,10 @@ export default function Journeys() {
             <img src="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi.jpg" alt="Xidi Anhui village for custom East China private trip planning." loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,39,0.78),rgba(17,24,39,0.36),rgba(17,24,39,0.08))]" />
             <div className="absolute bottom-0 left-0 right-0 p-7 md:p-12 lg:p-16">
-              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Custom planning</span>
-              <h2 className="max-w-4xl text-[clamp(2.3rem,5vw,5.4rem)] font-semibold leading-[0.95] text-white">Tell us your dates, comfort level, interests, and special needs.</h2>
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Not sure where to begin?</span>
+              <h2 className="max-w-4xl text-[clamp(2.3rem,5vw,5.4rem)] font-semibold leading-[0.95] text-white">Tell us who is traveling. We will suggest the China route that makes sense first.</h2>
               <div className="btoc-action-row">
-                <Link href="/contact" className="btoc-button">Start planning <ArrowRight size={17} /></Link>
+                <Link href="/contact" className="btoc-button">Build my itinerary <ArrowRight size={17} /></Link>
               </div>
             </div>
           </div>

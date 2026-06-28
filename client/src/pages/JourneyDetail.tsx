@@ -66,11 +66,11 @@ function BulletList({ items, icon = "check" }: { items: string[]; icon?: "check"
 }
 
 function buildInquiryLinks(journey: Journey) {
-  const subject = `Private China trip request: ${journey.title}`;
+  const subject = `Can this China route fit my travelers? ${journey.title}`;
   const body = [
     `Hello China Prime DMC,`,
     ``,
-    `I would like help planning this private China trip:`,
+    `I am interested in this private China route and would like your advice before planning:`,
     `${journey.title}`,
     ``,
     `Route: ${journey.route}`,
@@ -82,7 +82,7 @@ function buildInquiryLinks(journey: Journey) {
     `Dietary, family, mobility, or religious needs:`,
     `Places to add or remove:`,
     ``,
-    `Please suggest the best routing, pacing, inclusions, exclusions, and customization options before quoting.`,
+    `Please tell me if this route fits my travelers, what you would adjust, and what you need before preparing a quote.`,
   ].join("\n");
 
   return {
@@ -275,7 +275,7 @@ function StickyInquiryBar({ journey }: { journey: Journey }) {
         <a
           href={inquiryLinks.mailto}
           className="flex h-12 w-12 items-center justify-center bg-[var(--brand-black)] text-white"
-          aria-label="Plan this trip by email"
+          aria-label="Ask about this route by email"
         >
           <Mail size={17} />
         </a>
@@ -284,7 +284,7 @@ function StickyInquiryBar({ journey }: { journey: Journey }) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex h-12 w-12 items-center justify-center border border-[var(--brand-black)] bg-white text-[var(--brand-black)]"
-          aria-label="Plan this trip on WhatsApp"
+          aria-label="Ask about this route on WhatsApp"
         >
           <MessageCircle size={17} />
         </a>
@@ -363,8 +363,8 @@ export default function JourneyDetail() {
       <section className="btoc-section">
         <div className="btoc-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.75fr_1fr]">
           <FadeSection>
-            <p className="btoc-eyebrow">Trip snapshot</p>
-            <h2 className="btoc-title-small">What this journey feels like in real life.</h2>
+              <p className="btoc-eyebrow">Trip snapshot</p>
+            <h2 className="btoc-title-small">What this route is meant to feel like.</h2>
           </FadeSection>
           <FadeSection delay={100}>
             <p className="btoc-lede mt-0">{journey.overview}</p>
@@ -397,11 +397,11 @@ export default function JourneyDetail() {
         <div className="btoc-wrap">
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.52fr_1fr] lg:items-end">
             <div>
-              <p className="btoc-eyebrow">Cinematic gallery</p>
-              <h2 className="btoc-title-small max-w-4xl text-white">Landmark images that help you feel the route.</h2>
+              <p className="btoc-eyebrow">Before you picture yourself there</p>
+              <h2 className="btoc-title-small max-w-4xl text-white">The places that give this journey its emotional shape.</h2>
             </div>
             <p className="btoc-lede mt-0 text-white/72">
-              A good private trip should be easy to picture before you book it. These large-format visuals show the scale, atmosphere, and destination variety without adding unnecessary initial-load weight.
+              Use the images to sense the rhythm: where the trip feels grand, where it slows down, and where your family may want more time than a standard package would allow.
             </p>
           </FadeSection>
 
@@ -411,7 +411,7 @@ export default function JourneyDetail() {
 
       <section className="btoc-section">
         <div className="btoc-wrap">
-          <SectionTitle eyebrow="Day by day" title="A flexible private route." />
+          <SectionTitle eyebrow="Day by day" title="The shape of the journey, ready to adjust around you." />
           <div className="btoc-timeline">
             {journey.days.map((day, index) => (
               <FadeSection key={`${day.day}-${day.title}`} delay={(index % 8) * 35}>
@@ -443,7 +443,7 @@ export default function JourneyDetail() {
 
       <section className="btoc-section">
         <div className="btoc-wrap">
-          <SectionTitle eyebrow="Travel details" title="The practical details to shape before we quote." />
+          <SectionTitle eyebrow="Travel details" title="The practical choices that make the trip feel calm." />
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
             {[
               ["Hotel level", journey.hotelLevel.join(" / ")],
@@ -464,7 +464,7 @@ export default function JourneyDetail() {
 
       <section className="btoc-section bg-white/40">
         <div className="btoc-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.7fr_1fr]">
-          <SectionTitle eyebrow="FAQ" title="Questions before planning." />
+          <SectionTitle eyebrow="FAQ" title="Questions travelers usually ask before they feel ready." />
           <div className="btoc-timeline">
             {journey.faqs.map((faq) => (
               <FadeSection key={faq.q} className="btoc-card p-7">
@@ -488,18 +488,18 @@ export default function JourneyDetail() {
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.10)_58%,rgba(0,0,0,0.42)_100%)]" />
         <div className="btoc-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
-            <p className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Plan this trip</p>
+            <p className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Is this the right route?</p>
             <h2 className="btoc-title-small max-w-4xl" style={{ color: "var(--brand-white)" }}>
-              Send your travel window, group size, hotel level, pace, and special requirements.
+              Send your travel window, who is coming, the comfort level you expect, and anything that would make China feel easier.
             </h2>
           </FadeSection>
           <FadeSection delay={100}>
             <div className="flex flex-wrap gap-3">
               <Link href="/contact" className="btoc-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-                Send trip brief <ArrowRight size={17} />
+                Start my route check <ArrowRight size={17} />
               </Link>
               <a href={inquiryLinks.mailto} className="btoc-button btoc-button-secondary">
-                Email trip request
+                Email my questions
               </a>
               <a href={inquiryLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="btoc-button btoc-button-secondary">
                 WhatsApp

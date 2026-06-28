@@ -53,10 +53,10 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 }
 
 const metrics = [
-  { value: "2012", label: "China-based operator" },
-  { value: "Private", label: "Every route built to order" },
-  { value: "Human", label: "Reviewed by local specialists" },
-  { value: "On trip", label: "Support while you travel" },
+  { value: "2012", label: "Planning China from inside China" },
+  { value: "Private", label: "No shopping groups or fixed buses" },
+  { value: "Human", label: "Every route reviewed by a specialist" },
+  { value: "On trip", label: "Real support while you travel" },
 ];
 
 const heroGallery = [
@@ -150,13 +150,13 @@ export default function Home() {
         <div className="cinema-scene-content">
           <FadeSection>
             <p className="cinema-kicker">Private China journeys</p>
-            <h1>China, planned with taste and control.</h1>
+            <h1>China can feel effortless, even the first time.</h1>
             <p>
-              For travelers who want the country to feel beautiful, intelligent, and quietly handled from the first airport pickup to the final hotel departure.
+              You bring the curiosity. We handle the language, pacing, trains, tickets, meals, guides, and the quiet details that make a private China trip feel calm from the first airport pickup.
             </p>
             <div className="cinema-actions">
-              <Link href="/journeys">View journeys <ArrowRight size={16} /></Link>
-              <Link href="/contact">Speak with a planner</Link>
+              <Link href="/contact">Get my first route idea <ArrowRight size={16} /></Link>
+              <Link href="/journeys">See trips that fit</Link>
             </div>
           </FadeSection>
           <FadeSection delay={120} className="cinema-proof">
@@ -176,11 +176,11 @@ export default function Home() {
         </div>
         <div className="cinema-editorial-copy">
           <FadeSection>
-            <p className="cinema-kicker">Why China deserves better</p>
-            <h2>A country this layered should never feel like a package.</h2>
-            <p>The value is not only in famous places. It is in the order of the days, the guide who understands the room, the hotel that saves an hour of traffic, the restaurant that works for your family, and the quiet confidence that someone has thought ahead.</p>
+            <p className="cinema-kicker">The problem with planning China from overseas</p>
+            <h2>The famous places are easy to name. The hard part is making them feel good.</h2>
+            <p>A China vacation can become too rushed, too crowded, too hard to explain to children, too uncertain for parents, or too complicated around meals and payments. The difference is not a longer checklist. It is the order of the days, the guide who reads your family, the hotel that saves an hour in traffic, and a plan that has already thought ahead.</p>
             <div className="cinema-trust-list">
-              {["Private guide standards", "Honest meal planning", "Rail and transfer timing", "China-based support"].map((item) => <span key={item}>{item}</span>)}
+              {["No shopping-tour pressure", "Honest meal planning", "Rail and transfer timing", "China-based support"].map((item) => <span key={item}>{item}</span>)}
             </div>
           </FadeSection>
         </div>
@@ -194,8 +194,8 @@ export default function Home() {
           </figure>
         ))}
         <FadeSection className="cinema-gallery-title">
-          <p className="cinema-kicker">The country opens in layers</p>
-          <h2>Pandas. Peaks. Old towns. High lakes. Night cities.</h2>
+          <p className="cinema-kicker">What travelers remember</p>
+          <h2>The panda morning. The quiet garden. The train that simply worked. The city lights after dinner.</h2>
         </FadeSection>
       </section>
 
@@ -206,9 +206,9 @@ export default function Home() {
         <div className="cinema-scene-scrim" />
         <div className="cinema-scene-content cinema-two-column">
           <FadeSection>
-            <p className="cinema-kicker">Who the journey is for</p>
-            <h2>The same China should feel different for every traveler.</h2>
-            <p>We start with appetite, pace, privacy, comfort, culture, faith needs, and the moments worth protecting.</p>
+            <p className="cinema-kicker">Your trip, not a template</p>
+            <h2>A family with children, a couple, and parents in their seventies should not travel China the same way.</h2>
+            <p>We start with who is actually traveling: energy level, privacy, comfort, culture, faith needs, food concerns, walking tolerance, and the moments worth protecting.</p>
           </FadeSection>
           <div className="cinema-lens-list">
             {travelStyles.map((style, index) => (
@@ -228,8 +228,8 @@ export default function Home() {
         </div>
         <div className="cinema-control-copy">
           <FadeSection>
-            <p className="cinema-kicker">Planning standard</p>
-            <h2>Luxury is what the traveler never has to solve.</h2>
+            <p className="cinema-kicker">The standard behind the scenes</p>
+            <h2>Luxury is not more activity. It is fewer things you have to solve.</h2>
           </FadeSection>
           <div className="cinema-flow">
             {planningSteps.map((step, index) => (
@@ -253,10 +253,10 @@ export default function Home() {
         <div className="cinema-scene-content">
           <FadeSection>
             <p className="cinema-kicker">Begin with a conversation</p>
-            <h2>Tell us the China you want to feel. We will make it practical.</h2>
+            <h2>Tell us what would make China feel worth the flight. We will turn it into a route that works.</h2>
             <div className="cinema-actions">
-              <Link href="/contact">Request a private route <ArrowRight size={16} /></Link>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+              <Link href="/contact">Start my China brief <ArrowRight size={16} /></Link>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a>
             </div>
             <Link href="/b2b" className="cinema-advisor-link">Travel advisor or tour operator? View partnership standards</Link>
           </FadeSection>
