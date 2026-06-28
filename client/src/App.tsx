@@ -167,8 +167,10 @@ const experiences: Experience[] = [
     title: "Eat where the city actually eats",
     copy: "A private food walk can be elegant without becoming staged: night markets, tea houses, family-run kitchens, and the right table at the right hour.",
     image: {
-      jpg: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-sichuan-cuisine.jpg",
-      alt: "Sichuan cuisine served for a private China food journey",
+      avif: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.avif",
+      webp: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.webp",
+      jpg: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg",
+      alt: "Chongqing night skyline for a private China food and city life journey",
     },
   },
   {
@@ -192,14 +194,16 @@ const experienceClusters: ExperienceCluster[] = [
   {
     title: "Food journeys",
     subtitle: "For travelers who remember a city by the table.",
-    promise: "A China food trip should feel generous, curious, and safe to enjoy. We design around private tastings, local markets, tea houses, family-run kitchens, and dining confidence for every comfort level.",
+    promise: "A China food trip should feel generous, curious, and easy to enjoy. We design the evenings around local flavor, neighborhood walks, night views, tea, family-run kitchens, and dining confidence for every comfort level.",
     bestFor: "Food lovers, couples, curious families",
-    pace: "Evenings matter; mornings stay softer after big food nights.",
+    pace: "Evenings carry the mood; mornings stay softer after big food nights.",
     pairsWith: ["Chengdu", "Chongqing", "Xi'an", "Shanghai"],
     routeIdeas: ["Sichuan flavor with pandas and teahouses", "Xi'an noodles, Muslim Quarter, and imperial history", "Shanghai dining with water-town calm"],
     image: {
-      jpg: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-sichuan-cuisine.jpg",
-      alt: "Sichuan cuisine for a private China food journey",
+      avif: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.avif",
+      webp: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.webp",
+      jpg: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg",
+      alt: "Chongqing night skyline for a private China food and city life journey",
     },
   },
   {
@@ -467,13 +471,14 @@ function Picture({ image, className, loading = "lazy" }: { image: ImageAsset; cl
   );
 }
 
-function PageLink({ page, children, className }: { page: PageKey; children: ReactNode; className?: string }) {
+function PageLink({ page, children, className, onNavigate }: { page: PageKey; children: ReactNode; className?: string; onNavigate?: () => void }) {
   return (
     <a
       className={className}
       href={routes[page]}
       onClick={(event) => {
         event.preventDefault();
+        onNavigate?.();
         navigateTo(page);
       }}
     >
@@ -491,9 +496,12 @@ function InquiryLink({ children, className, subject }: { children: ReactNode; cl
 }
 
 function Header({ page }: { page: PageKey }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="nav" aria-label="Primary navigation">
-      <PageLink page="home" className="brand">
+      <PageLink page="home" className="brand" onNavigate={closeMenu}>
         <span className="brand-mark">CP</span>
         <span>China Prime</span>
       </PageLink>
@@ -503,7 +511,27 @@ function Header({ page }: { page: PageKey }) {
         <PageLink page="tours" className={page === "tours" ? "is-active" : undefined}>Private Tours</PageLink>
         <a href={page === "home" ? "#trust" : "/#trust"}>Why Us</a>
       </nav>
-      <PageLink className="nav-cta" page="contact">Start Planning</PageLink>
+      <PageLink className="nav-cta" page="contact" onNavigate={closeMenu}>Start Planning</PageLink>
+      <button
+        className="mobile-menu-button"
+        type="button"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+      {menuOpen ? (
+        <nav className="mobile-nav-panel" aria-label="Mobile menu">
+          <PageLink page="destinations" className={page === "destinations" ? "is-active" : undefined} onNavigate={closeMenu}>Destinations</PageLink>
+          <PageLink page="experiences" className={page === "experiences" ? "is-active" : undefined} onNavigate={closeMenu}>Experiences</PageLink>
+          <PageLink page="tours" className={page === "tours" ? "is-active" : undefined} onNavigate={closeMenu}>Private Tours</PageLink>
+          <a href={page === "home" ? "#trust" : "/#trust"} onClick={closeMenu}>Why Us</a>
+          <PageLink page="contact" className="mobile-nav-cta" onNavigate={closeMenu}>Start Planning</PageLink>
+        </nav>
+      ) : null}
     </header>
   );
 }
@@ -760,6 +788,10 @@ function ContactPage() {
             <span>No shopping-tour pressure</span>
             <span>Private planning since 2012</span>
           </div>
+          <div className="contact-visual-mosaic" aria-label="Private China trip planning scenes">
+            <Picture image={destinations[4].image} />
+            <Picture image={destinations[1].image} />
+          </div>
         </div>
 
         <form
@@ -993,7 +1025,7 @@ export default function App() {
       <Header page={page} />
       {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage /> : page === "contact" ? <ContactPage /> : <HomePage />}
       <Footer />
-      <PageLink className="floating-inquiry" page="contact">Plan my trip</PageLink>
+      {page !== "contact" ? <PageLink className="floating-inquiry" page="contact">Start planning</PageLink> : null}
     </div>
   );
 }
