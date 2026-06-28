@@ -3011,3 +3011,380 @@ textarea::placeholder {
     min-height: 320px;
   }
 }
+
+/* Bright editorial pass: premium travel should feel clear, luminous, and easy to read. */
+:root {
+  --bright-paper: #fbfaf7;
+  --bright-panel: rgba(255, 255, 255, 0.82);
+  --bright-panel-strong: rgba(255, 255, 255, 0.92);
+  --bright-ink: #111417;
+  --bright-body: #30363b;
+  --bright-muted: #687078;
+  --bright-line: rgba(17, 20, 23, 0.14);
+  --bright-green: #234637;
+}
+
+body {
+  background: var(--bright-paper) !important;
+}
+
+.cinema-nav {
+  color: var(--bright-ink) !important;
+}
+
+.cinema-nav.is-scrolled {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-bottom: 1px solid rgba(17, 20, 23, 0.10) !important;
+  box-shadow: 0 18px 60px rgba(17, 20, 23, 0.08);
+}
+
+.cinema-brand,
+.cinema-brand-name,
+.cinema-menu-button {
+  color: var(--bright-ink) !important;
+}
+
+.cinema-brand-mark,
+.cinema-menu-button,
+.cinema-nav-cta {
+  border-color: rgba(17, 20, 23, 0.24) !important;
+}
+
+.cinema-brand-sub,
+.cinema-nav-link,
+.cinema-nav-cta {
+  color: rgba(17, 20, 23, 0.66) !important;
+}
+
+.cinema-nav-link:hover,
+.cinema-nav-link.is-active,
+.cinema-nav-cta:hover {
+  color: var(--bright-ink) !important;
+}
+
+.cinema-mobile-menu {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(17, 20, 23, 0.12) !important;
+  color: var(--bright-ink) !important;
+}
+
+.cinema-mobile-menu a,
+.cinema-mobile-feature span {
+  color: rgba(17, 20, 23, 0.66) !important;
+}
+
+.cinema-mobile-menu a.is-active,
+.cinema-mobile-menu a:hover,
+.cinema-mobile-feature strong {
+  color: var(--bright-ink) !important;
+}
+
+.btoc-shell,
+.cinema-home {
+  background: var(--bright-paper) !important;
+  color: var(--bright-ink) !important;
+}
+
+.btoc-section,
+.btoc-section:not(:has(.btoc-hero)),
+.cinema-scene,
+.cinema-control-copy,
+.btoc-dark-band,
+.btoc-logistics-section,
+.btoc-immersive-cta {
+  background: var(--bright-paper) !important;
+  color: var(--bright-ink) !important;
+}
+
+.cinema-scene-media img,
+.btoc-hero-media img,
+.btoc-image-frame img,
+.visual-card-image img,
+.cinema-gallery-shot img,
+.cinema-portrait img,
+.cinema-wide-photo img {
+  filter: saturate(1.12) contrast(1.02) brightness(1.12) !important;
+}
+
+.cinema-scene-scrim,
+.btoc-shell .btoc-hero::after,
+.cinema-traveler-scene .cinema-scene-scrim,
+.cinema-signals-scrim {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.62) 42%, rgba(255, 255, 255, 0.16) 100%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.10) 58%, rgba(255, 255, 255, 0.48) 100%) !important;
+}
+
+.btoc-image-overlay,
+.cinema-gallery-shot::after {
+  background: linear-gradient(0deg, rgba(17, 20, 23, 0.32), rgba(17, 20, 23, 0.04) 60%, rgba(255, 255, 255, 0.02)) !important;
+}
+
+.cinema-scene-content > div:first-child,
+.btoc-hero-grid > div:first-child,
+.cinema-editorial-copy > div,
+.cinema-gallery-title,
+.cinema-control-copy > div:first-child,
+.cinema-signals-intro,
+.cinema-featured-signal {
+  background: var(--bright-panel) !important;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  box-shadow: 0 24px 80px rgba(17, 20, 23, 0.12) !important;
+  padding: clamp(24px, 4vw, 48px);
+  backdrop-filter: blur(18px);
+}
+
+.cinema-control-copy > div:first-child {
+  align-self: start;
+}
+
+.cinema-scene h1,
+.cinema-scene h2,
+.btoc-hero h1,
+.btoc-title,
+.btoc-title-small,
+.b2b-heading,
+.cinema-signals-intro h2,
+.cinema-featured-signal blockquote {
+  color: var(--bright-ink) !important;
+  text-shadow: none !important;
+}
+
+.cinema-scene p,
+.btoc-hero .btoc-lede,
+.btoc-lede,
+.b2b-lede,
+.cinema-signals-intro p,
+.cinema-featured-signal p {
+  color: var(--bright-body) !important;
+  text-shadow: none !important;
+}
+
+.cinema-kicker,
+.btoc-eyebrow,
+.b2b-eyebrow,
+.btoc-caption,
+.cinema-featured-signal span,
+.cinema-signal-card span {
+  color: var(--bright-muted) !important;
+  text-shadow: none !important;
+}
+
+.cinema-actions a,
+.btoc-button-secondary,
+.mono-button-secondary,
+.cinema-advisor-link,
+.cinema-featured-signal a,
+.cinema-signal-card a {
+  border-color: rgba(17, 20, 23, 0.24) !important;
+  color: var(--bright-ink) !important;
+}
+
+.cinema-actions a:first-child,
+.btoc-button,
+.mono-button,
+.btoc-filter-panel .btoc-button,
+.btoc-shell form .btoc-button,
+.btoc-card .btoc-button,
+.btoc-trip-card .btoc-button {
+  background: var(--bright-ink) !important;
+  border-color: var(--bright-ink) !important;
+  color: #ffffff !important;
+}
+
+.cinema-actions a:hover,
+.btoc-button:hover,
+.mono-button:hover {
+  background: var(--bright-green) !important;
+  border-color: var(--bright-green) !important;
+  color: #ffffff !important;
+}
+
+.cinema-proof,
+.btoc-glass-panel,
+.cinema-lens-row,
+.cinema-flow article,
+.cinema-trust-list span,
+.cinema-signal-card,
+.btoc-card,
+.visual-card,
+.btoc-process-card,
+.btoc-timeline-card,
+.btoc-filter-panel,
+.btoc-shell form,
+.btoc-trip-card,
+.btoc-trip-card > .grid,
+.btoc-shell .btoc-trip-card,
+.btoc-shell .btoc-trip-card > .grid {
+  background: var(--bright-panel-strong) !important;
+  border-color: var(--bright-line) !important;
+  color: var(--bright-ink) !important;
+  box-shadow: 0 18px 56px rgba(17, 20, 23, 0.08) !important;
+}
+
+.cinema-proof strong,
+.cinema-lens-row strong,
+.cinema-flow h3,
+.cinema-signal-card strong,
+.btoc-card h1,
+.btoc-card h2,
+.btoc-card h3,
+.btoc-trip-card h2,
+.btoc-trip-card h3,
+.btoc-trip-card strong,
+.btoc-dark-band h2,
+.btoc-dark-band h3,
+.btoc-dark-band strong {
+  color: var(--bright-ink) !important;
+}
+
+.cinema-proof span,
+.cinema-lens-row span,
+.cinema-flow span,
+.btoc-trip-card p,
+.btoc-trip-card div:not(.btoc-badge):not(.btoc-pill),
+.btoc-dark-band p,
+.btoc-card p,
+.btoc-card div,
+.btoc-card span,
+.visual-card p,
+.visual-card div,
+.visual-card span,
+.btoc-process-card p,
+.btoc-process-card div,
+.btoc-process-card span,
+.btoc-timeline-card p,
+.btoc-timeline-card div,
+.btoc-timeline-card span,
+.cinema-lens-row p,
+.cinema-flow article p,
+.cinema-signal-card p {
+  color: var(--bright-body) !important;
+  text-shadow: none !important;
+}
+
+.btoc-pill,
+.btoc-badge,
+.btoc-card .btoc-pill,
+.btoc-trip-card .btoc-pill,
+.visual-card .compact-list-item {
+  background: rgba(17, 20, 23, 0.06) !important;
+  border-color: rgba(17, 20, 23, 0.12) !important;
+  color: var(--bright-ink) !important;
+}
+
+.btoc-trip-card a:not(.btoc-button) {
+  border-color: rgba(17, 20, 23, 0.22) !important;
+  color: var(--bright-ink) !important;
+}
+
+.cinema-signal-language-row button {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border-color: rgba(17, 20, 23, 0.16) !important;
+  color: rgba(17, 20, 23, 0.66) !important;
+}
+
+.cinema-signal-language-row button:hover,
+.cinema-signal-language-row button.is-active {
+  background: var(--bright-ink) !important;
+  border-color: var(--bright-ink) !important;
+  color: #ffffff !important;
+}
+
+.btoc-field,
+.btoc-select,
+.btoc-shell select,
+.btoc-shell input,
+.btoc-shell textarea {
+  background: #ffffff !important;
+  border-color: rgba(17, 20, 23, 0.20) !important;
+  color: var(--bright-ink) !important;
+}
+
+@media (min-width: 900px) {
+  .btoc-shell .btoc-trip-card > .grid {
+    background: var(--bright-panel-strong) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .cinema-scene-content > div:first-child,
+  .btoc-hero-grid > div:first-child,
+  .cinema-editorial-copy > div,
+  .cinema-gallery-title,
+  .cinema-control-copy > div:first-child,
+  .cinema-signals-intro,
+  .cinema-featured-signal {
+    padding: 22px !important;
+  }
+}
+
+/* Bright refinement: keep the site luminous without washing out the destination photography. */
+.cinema-scene-scrim,
+.btoc-shell .btoc-hero::after,
+.cinema-traveler-scene .cinema-scene-scrim,
+.cinema-signals-scrim {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.36) 40%, rgba(255, 255, 255, 0.02) 100%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.46) 0%, rgba(255, 255, 255, 0.04) 58%, rgba(255, 255, 255, 0.22) 100%) !important;
+}
+
+.cinema-scene-media img,
+.btoc-hero-media img {
+  filter: saturate(1.16) contrast(1.08) brightness(1.06) !important;
+}
+
+.cinema-scene-content > div:first-child,
+.btoc-hero-grid > div:first-child,
+.cinema-editorial-copy > div,
+.cinema-gallery-title,
+.cinema-control-copy > div:first-child,
+.cinema-signals-intro,
+.cinema-featured-signal {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(255, 255, 255, 0.86) !important;
+  box-shadow: 0 24px 90px rgba(17, 20, 23, 0.14) !important;
+}
+
+.cinema-proof,
+.btoc-glass-panel {
+  background: rgba(255, 255, 255, 0.84) !important;
+  border: 1px solid rgba(17, 20, 23, 0.12) !important;
+  box-shadow: 0 22px 70px rgba(17, 20, 23, 0.12) !important;
+}
+
+.cinema-proof strong,
+.btoc-stat strong,
+.btoc-glass-panel strong {
+  color: var(--bright-ink) !important;
+  opacity: 1 !important;
+}
+
+.cinema-proof span,
+.btoc-stat span,
+.btoc-glass-panel span {
+  color: rgba(17, 20, 23, 0.64) !important;
+  opacity: 1 !important;
+}
+
+.cinema-gallery-title,
+.cinema-featured-signal,
+.cinema-signal-card,
+.cinema-lens-row,
+.cinema-flow article,
+.cinema-trust-list span {
+  background: rgba(255, 255, 255, 0.86) !important;
+}
+
+.cinema-contact-rail a {
+  background: rgba(255, 255, 255, 0.86) !important;
+  border-color: rgba(17, 20, 23, 0.14) !important;
+  box-shadow: 0 14px 42px rgba(17, 20, 23, 0.12);
+  color: var(--bright-ink) !important;
+}
+
+.cinema-contact-rail a:hover {
+  background: var(--bright-ink) !important;
+  border-color: var(--bright-ink) !important;
+  color: #ffffff !important;
+}
