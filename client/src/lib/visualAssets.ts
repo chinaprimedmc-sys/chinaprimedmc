@@ -97,6 +97,14 @@ export const visualAssets = {
     page: "Home",
     story: "Trust and operational control behind a famous landmark.",
   },
+  homeTravelerVoices: {
+    id: "home-trust-lijiang-rooftops",
+    src: "/programs/southwest-china-yangtze-14-day/china-prime-dmc-southwest-china-yangtze-14-day-lijiang.jpg",
+    alt: "Lijiang old town rooftops for traveler trust and private China planning notes.",
+    role: "background",
+    page: "Home",
+    story: "A trust-building scene where traveler concerns are answered with specific route logic.",
+  },
   homeFinalCta: {
     id: "home-cta-meili-snow-mountain",
     src: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg",

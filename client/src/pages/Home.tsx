@@ -17,6 +17,7 @@ import {
 import { WHATSAPP_URL } from "@/lib/data";
 import { pageHeroImages } from "@/lib/heroImages";
 import { visualAssets } from "@/lib/visualAssets";
+import { planningSignalLanguages, travelerPlanningSignals, type PlanningSignalLanguage } from "@/lib/travelerPlanningSignals";
 import ResponsiveImage from "@/components/ResponsiveImage";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -138,6 +139,12 @@ const planningSteps = [
 ];
 
 export default function Home() {
+  const [activeSignalLanguage, setActiveSignalLanguage] = useState<"All" | PlanningSignalLanguage>("All");
+  const filteredSignals = activeSignalLanguage === "All"
+    ? travelerPlanningSignals
+    : travelerPlanningSignals.filter((signal) => signal.language === activeSignalLanguage);
+  const featuredSignal = filteredSignals[0] || travelerPlanningSignals[0];
+
   return (
     <main className="btoc-shell cinema-home">
       <section className="cinema-scene cinema-opening">
@@ -237,6 +244,54 @@ export default function Home() {
                   <h3>{step.title}</h3>
                   <p>{step.body}</p>
                 </article>
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="cinema-scene cinema-signals-scene">
+        <div className="cinema-scene-media">
+          <img src={visualAssets.homeTravelerVoices.src} alt={visualAssets.homeTravelerVoices.alt} loading="lazy" decoding="async" />
+        </div>
+        <div className="cinema-signals-scrim" />
+        <div className="cinema-signals-content">
+          <FadeSection className="cinema-signals-intro">
+            <p className="cinema-kicker">Trust is built before the deposit</p>
+            <h2>What travelers ask before they trust the trip.</h2>
+            <p>
+              These are the concerns we design around every day: children, parents, halal-aware meals, rail timing, walking pressure, language, hotel location, and whether China will feel beautiful instead of complicated.
+            </p>
+            <div className="cinema-signal-language-row" role="tablist" aria-label="Planning note languages">
+              {planningSignalLanguages.map((language) => (
+                <button
+                  key={language}
+                  type="button"
+                  className={activeSignalLanguage === language ? "is-active" : ""}
+                  onClick={() => setActiveSignalLanguage(language)}
+                  role="tab"
+                  aria-selected={activeSignalLanguage === language}
+                >
+                  {language}
+                </button>
+              ))}
+            </div>
+          </FadeSection>
+
+          <FadeSection delay={120} className="cinema-featured-signal">
+            <span>{featuredSignal.language} / {featuredSignal.travelerProfile}</span>
+            <blockquote>{featuredSignal.concern}</blockquote>
+            <p>{featuredSignal.planningResponse}</p>
+            <Link href={`/journeys/${featuredSignal.journeyId}`}>{featuredSignal.journeyTitle}</Link>
+          </FadeSection>
+
+          <div className="cinema-signal-rail" aria-label="Traveler planning concerns by itinerary">
+            {filteredSignals.map((signal, index) => (
+              <FadeSection key={signal.id} delay={Math.min(index, 8) * 35} className="cinema-signal-card">
+                <span>{signal.language}</span>
+                <strong>{signal.concern}</strong>
+                <p>{signal.planningResponse}</p>
+                <Link href={`/journeys/${signal.journeyId}`}>{signal.journeyTitle}</Link>
               </FadeSection>
             ))}
           </div>
