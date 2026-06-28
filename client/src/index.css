@@ -4594,3 +4594,91 @@ th {
 .btoc-stat * {
   text-shadow: none !important;
 }
+
+/* Explicit readable content zones for Trips and Destinations. */
+.btoc-readable-block,
+.btoc-readable-block *,
+.btoc-readable-trip-card,
+.btoc-readable-trip-card * {
+  text-shadow: none !important;
+}
+
+.btoc-readable-block,
+.btoc-readable-trip-card {
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: var(--clarity-ink) !important;
+}
+
+.btoc-readable-block .btoc-eyebrow,
+.btoc-readable-block .btoc-caption,
+.btoc-readable-block .mono-index {
+  color: #4f5962 !important;
+}
+
+.btoc-readable-block h1,
+.btoc-readable-block h2,
+.btoc-readable-block h3,
+.btoc-readable-trip-card h1,
+.btoc-readable-trip-card h2,
+.btoc-readable-trip-card h3,
+.btoc-readable-trip-card strong {
+  color: #111417 !important;
+}
+
+.btoc-readable-block p,
+.btoc-readable-block .btoc-lede,
+.btoc-readable-trip-card p,
+.btoc-readable-trip-card div:not(.btoc-badge):not(.btoc-pill),
+.btoc-readable-trip-card span:not(.btoc-badge):not(.btoc-pill) {
+  color: #30363b !important;
+}
+
+.btoc-readable-trip-card .btoc-pill,
+.btoc-readable-trip-card .btoc-badge {
+  background: rgba(15, 18, 20, 0.08) !important;
+  border-color: rgba(15, 18, 20, 0.16) !important;
+  color: #111417 !important;
+}
+
+.btoc-readable-trip-card a:not(.btoc-button) {
+  color: #111417 !important;
+}
+
+.btoc-image-frame .btoc-image-overlay {
+  background: linear-gradient(0deg, rgba(8, 10, 12, 0.66), rgba(8, 10, 12, 0.08) 58%, rgba(8, 10, 12, 0.02)) !important;
+}
+
+.btoc-image-frame figcaption,
+.btoc-image-frame figcaption * {
+  color: #ffffff !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.62) !important;
+}
+
+.btoc-image-frame figcaption .btoc-badge {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.52) !important;
+  color: #111417 !important;
+  text-shadow: none !important;
+}
+
+/* Highest-priority Trips card readability fix. */
+.btoc-shell .btoc-readable-trip-card h1,
+.btoc-shell .btoc-readable-trip-card h2,
+.btoc-shell .btoc-readable-trip-card h3,
+.btoc-shell .btoc-readable-trip-card strong,
+.btoc-shell .btoc-readable-trip-card a:not(.btoc-button) {
+  color: #111417 !important;
+  text-shadow: none !important;
+}
+
+.btoc-shell .btoc-readable-trip-card p,
+.btoc-shell .btoc-readable-trip-card div:not(.btoc-badge):not(.btoc-pill),
+.btoc-shell .btoc-readable-trip-card span:not(.btoc-badge):not(.btoc-pill) {
+  color: #30363b !important;
+  text-shadow: none !important;
+}
+
+.btoc-shell .btoc-readable-trip-card .btoc-button,
+.btoc-shell .btoc-readable-trip-card .btoc-button * {
+  color: #ffffff !important;
+}

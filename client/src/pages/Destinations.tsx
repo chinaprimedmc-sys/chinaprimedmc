@@ -192,7 +192,7 @@ export default function Destinations() {
 
       <section className="btoc-section">
         <div className="btoc-wrap">
-          <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.55fr_1fr]">
+          <FadeSection className="btoc-readable-block mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.55fr_1fr]">
             <div>
               <p className="btoc-eyebrow">Make the map less intimidating</p>
               <h2 className="btoc-title-small">See China as a set of journeys, not a list of cities.</h2>

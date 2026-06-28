@@ -283,7 +283,7 @@ export default function Journeys() {
 
       <section className="btoc-section pt-8">
         <div className="btoc-wrap">
-          <FadeSection className="mb-10 grid gap-6 lg:grid-cols-[0.42fr_1fr] lg:items-end">
+          <FadeSection className="btoc-readable-block mb-10 grid gap-6 lg:grid-cols-[0.42fr_1fr] lg:items-end">
             <div>
               <span className="btoc-eyebrow">Start with what matters</span>
               <h2 className="btoc-title-small">The right China trip begins with the traveler, not the map.</h2>
@@ -321,7 +321,7 @@ export default function Journeys() {
                     navigate(`/journeys/${journey.id}`);
                   }
                 }}
-                className="btoc-trip-card group text-[var(--btoc-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--btoc-gold)]"
+                className="btoc-trip-card btoc-readable-trip-card group text-[var(--btoc-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--btoc-gold)]"
               >
                 <div className="relative aspect-[16/11] overflow-hidden bg-[var(--btoc-ink)]">
                   <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" decoding="async" />
