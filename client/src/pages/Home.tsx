@@ -10,7 +10,6 @@ import {
   UsersRound,
 } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
-import TradePresence from "@/components/TradePresence";
 import MediaHero from "@/components/MediaHero";
 import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
@@ -68,56 +67,55 @@ const metrics = [
 const services = [
   {
     icon: <ClipboardList size={20} />,
-    title: "Itinerary architecture",
-    desc: "Partner-ready China programs with routing logic, pace control, inclusions, options, and operational notes.",
+    title: "Custom route design",
+    desc: "We shape the trip around your dates, pace, hotel style, interests, family needs, food preferences, and comfort level.",
   },
   {
     icon: <MapPinned size={20} />,
-    title: "Ground execution",
-    desc: "Guides, vehicles, hotels, restaurants, rail, flights, entrances, local hosts, and day-by-day coordination.",
+    title: "Private local support",
+    desc: "Private guides, transfers, hotels, rail, flights, tickets, restaurants, and local hosts are coordinated before you land.",
   },
   {
     icon: <UsersRound size={20} />,
-    title: "Groups, FIT, MICE",
-    desc: "Private clients, specialist groups, incentive programs, educational travel, delegations, and multi-city series.",
+    title: "Traveler-friendly planning",
+    desc: "Families, Muslim travelers, women travelers, senior travelers, first-time visitors, couples, and multi-generation groups get the right pacing.",
   },
   {
     icon: <Headphones size={20} />,
-    title: "Partner support",
-    desc: "Fast quoting, clear documentation, feasibility advice, bilingual coordination, and live support in China.",
+    title: "In-trip confidence",
+    desc: "Our China-based team supports the trip on the ground, so the route feels smooth, practical, and easy to enjoy.",
   },
 ];
 
 const partnerFit = [
-  "Travel advisors and luxury agencies",
-  "Outbound tour operators",
-  "DMCs needing China coverage",
-  "Corporate travel and incentive teams",
-  "Education and specialist-interest groups",
-  "Family, halal, accessibility, and VIP planners",
+  "First-time China travelers who want the icons without feeling rushed",
+  "Families who need smart pacing, kid-friendly days, and fewer logistics surprises",
+  "Muslim travelers who need halal-aware routing and practical meal planning",
+  "Women travelers who want comfort, privacy, style, and thoughtful local flow",
+  "Senior travelers who prefer private transfers, softer walking days, and clear timing",
+  "Repeat visitors looking for Yunnan, Guizhou, Xinjiang, Tibet, Inner Mongolia, or Zhangjiajie",
 ];
 
 const process = [
-  { step: "01", title: "Brief", desc: "Send dates, destinations, client type, budget level, pace, hotel preference, and must-have experiences." },
-  { step: "02", title: "Design", desc: "We return a clean program structure with routing, feasibility notes, supplier logic, and alternatives." },
-  { step: "03", title: "Quote", desc: "You receive net pricing, inclusions, upgrade options, availability notes, and practical trade-offs." },
-  { step: "04", title: "Operate", desc: "Our China team delivers on the ground while you keep the client relationship and brand ownership." },
+  { step: "01", title: "Tell us your style", desc: "Share dates, group size, must-see places, comfort level, dietary needs, walking tolerance, and the kind of China you want to feel." },
+  { step: "02", title: "We shape the route", desc: "We suggest realistic cities, daily pacing, hotel areas, transport logic, guide style, and alternatives when a route is too rushed." },
+  { step: "03", title: "You customize", desc: "Add or remove cities, slow the pace, upgrade hotels, add food, photography, family, halal, senior-friendly, or women-friendly details." },
+  { step: "04", title: "Travel with support", desc: "Private guides and our local team keep the trip clear on the ground, from transfers and tickets to timing changes and practical help." },
 ];
 
 const heroImages = {
-  materials: "/services/china-prime-dmc-white-label-itinerary-support-trade-materials.jpeg",
+  materials: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-yu-garden.jpg",
   greatWall: "/services/china-prime-dmc-china-itinerary-design-great-wall.jpeg",
-  shanghai: "/services/china-prime-dmc-ground-operations-shanghai-business-travel.jpeg",
-  mice: "/services/china-prime-dmc-china-mice-incentive-travel-shanghai-skyline.jpeg",
+  shanghai: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg",
   forbiddenCity: "/services/china-prime-dmc-private-china-tours-forbidden-city-beijing.jpeg",
-  tradeShow: "/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-regional-travel-buyers.jpeg",
+  tradeShow: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-crescent-lake-dunhuang.jpg",
 };
 
 const visualProof = [
-  { src: heroImages.forbiddenCity, alt: "Forbidden City private China touring for global travel advisors.", title: "Private FIT" },
-  { src: heroImages.mice, alt: "Shanghai skyline for China MICE and incentive travel.", title: "MICE" },
-  { src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg", alt: "Tianmen Mountain in Zhangjiajie for China nature programs.", title: "Nature routes" },
-  { src: heroImages.tradeShow, alt: "China Prime DMC speaking with travel trade buyers.", title: "Trade proof" },
+  { src: heroImages.forbiddenCity, alt: "Forbidden City private China tour for first-time travelers.", title: "First-time China" },
+  { src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg", alt: "Chengdu panda base for family-friendly China trips.", title: "Family travel" },
+  { src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg", alt: "Tianmen Mountain in Zhangjiajie for dramatic private China nature trips.", title: "Nature routes" },
+  { src: heroImages.tradeShow, alt: "Crescent Lake Dunhuang for Muslim-friendly Silk Road private China trips.", title: "Silk Road" },
 ];
 
 export default function Home() {
@@ -125,17 +123,17 @@ export default function Home() {
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
       <MediaHero
         image={pageHeroImages.home}
-        alt="China Prime DMC meeting global travel trade partners for China ground operations."
-        eyebrow="China travel design for partners and private clients"
+        alt="Mutianyu Great Wall private China tour for first-time travelers."
+        eyebrow="Private China trips, designed around real travelers"
         title={<>China journeys,<br className="hidden sm:block" /> built around you.</>}
-        body="China Prime DMC designs and operates China programs for travel partners, private families, first-time visitors, and special-interest travelers who need a route that feels clear, personal, and reliable."
+        body="Plan a private China trip that fits your pace, family, food needs, comfort level, and curiosity. From Beijing, Xi'an, and Shanghai to Yunnan, Zhangjiajie, Tibet, Xinjiang, Guilin, and Guizhou, we make the route feel clear before you go."
         actions={
           <>
-            <Link href="/private-china-tours" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">
-              Private travelers <ArrowRight size={17} />
+            <Link href="/journeys" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">
+              Explore trips <ArrowRight size={17} />
             </Link>
             <Link href="/b2b" className="mono-button border-white bg-transparent text-white hover:bg-white hover:text-[var(--brand-black)]">
-              Travel partners
+              B2B partners
             </Link>
           </>
         }
@@ -148,7 +146,7 @@ export default function Home() {
             <div>
               <div className="mb-8 flex items-center gap-4">
                 <div className="h-px w-16 bg-[var(--brand-black)]" />
-                <p className="b2b-eyebrow mb-0">Choose your path</p>
+                <p className="b2b-eyebrow mb-0">Private China, made practical</p>
               </div>
               <h1
                 style={{
@@ -166,7 +164,7 @@ export default function Home() {
               </h1>
               <div className="mt-8 grid max-w-3xl grid-cols-1 gap-7 md:grid-cols-[1fr_auto] md:items-end">
                 <p className="b2b-lede" style={{ fontSize: "clamp(1.05rem, 1.45vw, 1.22rem)", marginTop: 0, maxWidth: 650 }}>
-                  For travel partners, we operate China behind your brand. For private travelers, we design the route around your pace, interests, comfort, and real-life needs.
+                  China can feel huge from the outside. We turn it into a private route that makes sense: the right cities, the right pace, the right guide, and the right amount of breathing room.
                 </p>
                 <div className="hidden w-28 text-right text-[0.68rem] font-bold uppercase leading-5 tracking-[0.16em] text-[var(--brand-gray-500)] md:block">
                   Est. 2012
@@ -176,31 +174,31 @@ export default function Home() {
               </div>
 
               <div className="mt-10 flex flex-wrap gap-3">
-                <Link href="/private-china-tours" className="mono-button">
-                  Private China tours <ArrowRight size={17} />
+                <Link href="/journeys" className="mono-button">
+                  Browse private trips <ArrowRight size={17} />
                 </Link>
                 <Link href="/b2b" className="mono-button mono-button-secondary">
-                  B2B partner services
+                  B2B partner portal
                 </Link>
               </div>
             </div>
 
             <div className="relative">
               <div className="absolute right-0 top-0 z-10 hidden bg-[var(--brand-black)] px-5 py-3 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white lg:block">
-                Partner desk
+                Trip planning
               </div>
               <div className="border border-[var(--brand-black)] bg-[var(--brand-black)]">
                 <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] md:grid-cols-[1fr_0.42fr]">
                   <figure className="relative min-h-[430px] overflow-hidden bg-[var(--brand-black)]">
                     <img
                       src={heroImages.materials}
-                      alt="China Prime DMC white-label itinerary materials for travel trade partners."
+                      alt="Yu Garden Shanghai private China trip planning."
                       className="h-full min-h-[430px] w-full object-cover"
                       loading="lazy"
                       decoding="async"
                     />
                     <figcaption className="absolute bottom-0 left-0 max-w-[520px] bg-[var(--brand-black)] p-5 text-sm leading-6 text-[var(--brand-gray-200)]">
-                      Real trade conversations shape the programs we quote and operate for overseas partners.
+                      Private routes should feel personal before they feel complicated.
                     </figcaption>
                   </figure>
                   <div className="grid grid-cols-2 gap-px bg-[var(--brand-gray-800)] md:grid-cols-1">
@@ -213,7 +211,7 @@ export default function Home() {
                     />
                     <img
                       src={heroImages.shanghai}
-                      alt="Shanghai business travel operations for China DMC partners."
+                      alt="Hongya Cave Chongqing for colorful private China city trips."
                       className="h-44 w-full object-cover md:h-full"
                       loading="lazy"
                       decoding="async"
@@ -235,13 +233,13 @@ export default function Home() {
                     <ShieldCheck size={19} />
                   </div>
                   <div className="min-w-0">
-                    <div className="mono-index">Operating model</div>
-                    <h2 className="mt-1 text-xl font-semibold leading-tight text-[var(--brand-black)]">White-label China delivery</h2>
+                    <div className="mono-index">Travel model</div>
+                    <h2 className="mt-1 text-xl font-semibold leading-tight text-[var(--brand-black)]">Private, flexible, China-based</h2>
                     <p className="b2b-body mt-3">
-                      Your team owns the client relationship. We handle feasibility, suppliers, local coordination, and on-trip problem solving.
+                      You bring the wish list. We turn it into a route with realistic days, good guide matching, transport logic, and on-trip support.
                     </p>
                     <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                      {["Net pricing", "Partner-ready proposals", "China-based operations", "Bilingual support"].map((item) => (
+                      {["Private guides", "Custom pacing", "Family and halal support", "China-based team"].map((item) => (
                         <div key={item} className="flex items-center justify-between gap-3 border-t border-[var(--brand-border)] pt-2">
                           <span className="text-sm font-semibold text-[var(--brand-gray-800)]">{item}</span>
                           <Check size={15} className="shrink-0 text-[var(--brand-black)]" />
@@ -260,8 +258,8 @@ export default function Home() {
         image="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg"
         alt="West Lake Hangzhou for premium East China itinerary planning."
         eyebrow="What we do"
-        title="An operations desk, not a travel brochure."
-        body="The site should feel like a dependable trade partner: concise, structured, commercially useful, and visually grounded in real China programs."
+        title="Private trips with the logistics already thought through."
+        body="A beautiful China itinerary still needs smart timing, realistic transfers, good hotels, clear meal planning, and the right local support. That is where we do the quiet work."
         imagePosition="center"
       >
         <div className="grid grid-cols-1 gap-px bg-white/20 md:grid-cols-2">
@@ -284,11 +282,11 @@ export default function Home() {
           <FadeSection>
             <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.5fr_1fr] lg:items-end">
               <div>
-                <p className="b2b-eyebrow">Visual proof</p>
-                <h2 className="b2b-heading">China products should be easy to picture before they are quoted.</h2>
+                <p className="b2b-eyebrow">Trip styles</p>
+                <h2 className="b2b-heading">Choose the China story that fits your travelers.</h2>
               </div>
               <p className="b2b-lede mt-0">
-                Strong images help partners understand product category, sales angle, destination scale, and client fit before they send a brief.
+                Some travelers want classic icons. Some want pandas and easy family days. Some want mountains, deserts, old towns, halal-aware routing, or a slower senior-friendly pace.
               </p>
             </div>
           </FadeSection>
@@ -312,9 +310,9 @@ export default function Home() {
       <section className="mono-section bg-[var(--brand-white)]">
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1fr]">
           <FadeSection>
-            <p className="b2b-eyebrow">Partner fit</p>
+            <p className="b2b-eyebrow">Traveler fit</p>
             <h2 className="b2b-heading" style={{ maxWidth: 720 }}>
-              Built for teams selling China under their own brand.
+              Built for travelers who want China planned around real needs.
             </h2>
           </FadeSection>
 
@@ -331,13 +329,11 @@ export default function Home() {
         </div>
       </section>
 
-      <TradePresence variant="home" />
-
       <section className="mono-section bg-[var(--brand-gray-50)]">
         <div className="mono-wrap">
           <FadeSection className="mb-14 max-w-3xl">
-            <p className="b2b-eyebrow">Workflow</p>
-            <h2 className="b2b-heading">A quote process designed for busy sales teams.</h2>
+            <p className="b2b-eyebrow">How planning works</p>
+            <h2 className="b2b-heading">From a rough idea to a route you can actually picture.</h2>
           </FadeSection>
 
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-4">
@@ -356,13 +352,13 @@ export default function Home() {
 
       <DarkImageSection
         image="/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-mutianyu.jpg"
-        alt="Mutianyu Great Wall route for B2B China itinerary planning."
-        eyebrow="Ready for a China quote?"
-        title="Send the brief. We will turn it into an operable China program."
+        alt="Mutianyu Great Wall route for private China trip planning."
+        eyebrow="Ready to shape your China trip?"
+        title="Send your travel window, group size, interests, and pace. We will turn it into a private route."
         imagePosition="center top"
         actions={
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-            Talk to partner desk <ArrowRight size={17} />
+            Ask on WhatsApp <ArrowRight size={17} />
           </a>
         }
       />

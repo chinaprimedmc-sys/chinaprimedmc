@@ -7,23 +7,21 @@ import { pageHeroImages } from "@/lib/heroImages";
 
 const partnerTypes = [
   "Private traveler / family",
-  "Travel advisor / agency",
-  "Tour operator",
-  "DMC partner",
-  "Corporate travel / incentive",
-  "Education / special-interest group",
+  "Couple",
+  "Friends / small group",
+  "Multi-generation family",
+  "Senior travelers",
+  "Muslim travelers",
+  "Women travelers",
   "Other",
 ];
 
 const programTypes = [
-  "Private FIT",
-  "Small group",
+  "Private trip",
+  "Family trip",
   "Luxury / VIP",
-  "MICE / incentive",
-  "Corporate delegation",
-  "Student / education",
+  "Multi-city China",
   "Muslim-friendly",
-  "Family travel",
   "First-time China",
   "Senior-friendly",
   "Women-friendly",
@@ -49,8 +47,8 @@ const briefTemplates = [
     ].join("\n"),
   },
   {
-    label: "FIT / private trip",
-    programType: "Private FIT",
+    label: "Private trip",
+    programType: "Private trip",
     message: [
       "Client profile:",
       "Two private travelers looking for a custom China itinerary.",
@@ -66,11 +64,11 @@ const briefTemplates = [
     ].join("\n"),
   },
   {
-    label: "Group series",
-    programType: "Small group",
+    label: "Small group",
+    programType: "Multi-city China",
     message: [
       "Group profile:",
-      "We are planning a China group program and need net rates for a sellable itinerary.",
+      "We are planning a private China trip for a small group and need a practical, customizable itinerary.",
       "",
       "Expected group size:",
       "Please quote based on the group size entered above, and advise if pricing changes at key passenger numbers.",
@@ -79,24 +77,7 @@ const briefTemplates = [
       "Please recommend a practical route with realistic driving times, hotel standards, guide service, attraction tickets, and meal planning.",
       "",
       "What we need back:",
-      "Net rate, inclusions, exclusions, hotel category, guide/vehicle standard, cancellation terms, and operational notes.",
-    ].join("\n"),
-  },
-  {
-    label: "MICE / incentive",
-    programType: "MICE / incentive",
-    message: [
-      "Program goal:",
-      "We are planning a corporate / incentive China program and need ground support plus experience ideas.",
-      "",
-      "Required services:",
-      "Airport handling, hotel options, private transfers, hosted meals, meeting or event support, team activities, VIP handling, and emergency support.",
-      "",
-      "Group profile:",
-      "Please consider executive comfort, timing discipline, clear communication, and backup plans.",
-      "",
-      "What we need back:",
-      "Suggested routing, sample inclusions, net estimate, staffing plan, and any venue or logistics notes.",
+      "Suggested route, inclusions, exclusions, hotel category, guide/vehicle standard, cancellation terms, and operational notes.",
     ].join("\n"),
   },
   {
@@ -104,7 +85,7 @@ const briefTemplates = [
     programType: "Muslim-friendly",
     message: [
       "Traveler needs:",
-      "We need a Muslim-friendly China program with practical halal meal planning and prayer-time awareness.",
+      "We need a Muslim-friendly China trip with practical halal meal planning and prayer-time awareness.",
       "",
       "Route expectations:",
       "Please suggest destinations and attractions that work well for Muslim travelers, with realistic restaurant options and guide support.",
@@ -113,15 +94,15 @@ const briefTemplates = [
       "Halal-friendly meals where available, mosque or prayer-stop advice, private transfers, English-speaking guide, and clear notes where local options are limited.",
       "",
       "What we need back:",
-      "Net rate, route recommendation, meal notes, inclusions, exclusions, and operational limitations if any.",
+      "Route recommendation, meal notes, inclusions, exclusions, and operational limitations if any.",
     ].join("\n"),
   },
   {
     label: "Family travel",
-    programType: "Family travel",
+    programType: "Family trip",
     message: [
       "Family profile:",
-      "We are planning a family-friendly China program and need a route that balances culture, comfort, and activities for children.",
+      "We are planning a family-friendly China trip and need a route that balances culture, comfort, and activities for children.",
       "",
       "Child details:",
       "Please advise based on the children's ages, preferred pace, and any theme park or animal experiences that fit the route.",
@@ -130,7 +111,7 @@ const briefTemplates = [
       "Private transfers, family-friendly guide, hotel room configuration advice, child-friendly meals, and realistic daily timing.",
       "",
       "What we need back:",
-      "Suggested route, net rate, family room options, included/excluded items, and practical notes for parents.",
+      "Suggested route, family room options, included/excluded items, and practical notes for parents.",
     ].join("\n"),
   },
 ];
@@ -154,15 +135,15 @@ export default function Contact() {
 
   const brief = useMemo(() => {
     return [
-      "China Prime DMC partner quote request",
+      "China Prime DMC private trip request",
       "",
       `Name: ${form.name}`,
       `Company: ${form.company}`,
       `Email: ${form.email}`,
       `WhatsApp / phone: ${form.whatsapp}`,
-      `Partner type: ${form.partnerType}`,
-      `Program type: ${form.programType}`,
-      `Estimated group size: ${form.groupSize}`,
+      `Request type: ${form.partnerType}`,
+      `Trip type: ${form.programType}`,
+      `Number of travelers: ${form.groupSize}`,
       `Destinations / routing: ${form.destinations}`,
       `Travel window: ${form.travelWindow}`,
       `Budget level: ${form.budgetLevel}`,
@@ -172,7 +153,7 @@ export default function Contact() {
     ].join("\n");
   }, [form]);
 
-  const mailtoHref = `mailto:${EMAIL}?subject=${encodeURIComponent("Partner quote request for China program")}&body=${encodeURIComponent(brief)}`;
+  const mailtoHref = `mailto:${EMAIL}?subject=${encodeURIComponent("Private China trip request")}&body=${encodeURIComponent(brief)}`;
   const whatsappHref = `${WHATSAPP_URL}?text=${encodeURIComponent(brief)}`;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -226,17 +207,17 @@ export default function Contact() {
     <main style={{ backgroundColor: "var(--brand-white)", paddingTop: "72px" }}>
       <MediaHero
         image={pageHeroImages.contact}
-        alt="China Prime DMC one-on-one buyer consultation at Singapore travel trade show."
-        eyebrow="China quote desk"
+        alt="China Prime DMC private China trip planning consultation."
+        eyebrow="Private China trip desk"
         title="Tell us what kind of China trip you are planning."
-        body="Travel professionals can send a trade brief. Private travelers can send a simple wish list. We will route the request correctly and ask for the details that matter."
+        body="Send a simple wish list, a rough route, or a fully formed plan. We will help shape the trip around your dates, pace, comfort level, dietary needs, family needs, and must-see places."
       >
           <div className="grid grid-cols-1 gap-px bg-white/20 sm:grid-cols-2">
             {[
               { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "+44 7985 052302", href: WHATSAPP_URL },
               { icon: <Mail size={18} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
               { icon: <MapPin size={18} />, label: "Base", value: "Guangzhou, China", href: null },
-              { icon: <Briefcase size={18} />, label: "Best for", value: "Private trips, B2B, groups, FIT, MICE", href: null },
+              { icon: <Briefcase size={18} />, label: "Best for", value: "Private trips, families, Muslim travelers, senior travelers", href: null },
             ].map((item) => (
               <div key={item.label} className="bg-black/56 p-6 backdrop-blur-sm">
                 <div className="mb-5 text-[var(--brand-gray-400)]">{item.icon}</div>
@@ -257,15 +238,15 @@ export default function Contact() {
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr]">
           <aside>
             <p className="b2b-eyebrow">Brief structure</p>
-            <h2 className="b2b-heading" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>One form for partners and private travelers.</h2>
+            <h2 className="b2b-heading" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>A simpler way to start planning China.</h2>
             <div className="mt-10 grid gap-px bg-[var(--brand-border)]">
               {[
-                "Client or traveler profile and travel style",
+                "Traveler profile and travel style",
                 "Dates or season",
-                "Estimated group size",
+                "Number of travelers",
                 "Preferred destinations or routing",
                 "Hotel level and budget range",
-                "Special needs: halal, accessibility, family, senior, VIP, education, MICE",
+                "Special needs: halal, accessibility, family, senior, women-friendly, VIP",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-4 bg-[var(--brand-gray-50)] p-5">
                   <Send size={15} style={{ color: "var(--brand-black)", flexShrink: 0, marginTop: 4 }} />
@@ -282,7 +263,7 @@ export default function Contact() {
                 <input name="name" value={form.name} onChange={handleChange} style={inputStyle} required />
               </div>
               <div>
-                <label style={labelStyle}>Company / family name *</label>
+                <label style={labelStyle}>Family / group name *</label>
                 <input name="company" value={form.company} onChange={handleChange} placeholder="Company, agency, or family name" style={inputStyle} required />
               </div>
             </div>
@@ -307,7 +288,7 @@ export default function Contact() {
                 </select>
               </div>
               <div>
-                <label style={labelStyle}>Program type</label>
+                <label style={labelStyle}>Trip type</label>
                 <select name="programType" value={form.programType} onChange={handleChange} style={inputStyle}>
                   <option value="">Select...</option>
                   {programTypes.map((type) => <option key={type} value={type}>{type}</option>)}
@@ -317,7 +298,7 @@ export default function Contact() {
 
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
-                <label style={labelStyle}>Estimated group size</label>
+                <label style={labelStyle}>Number of travelers</label>
                 <input name="groupSize" value={form.groupSize} onChange={handleChange} placeholder="e.g. 2 VIPs, 18 guests, 60 pax" style={inputStyle} />
               </div>
               <div>
@@ -365,7 +346,7 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 rows={10}
-                placeholder="Tell us what your client, group, family, or private trip needs, what is confirmed, and what still needs advice."
+                placeholder="Tell us who is traveling, when you want to go, what you want to see, your pace, hotel style, dietary needs, and anything we should plan around."
                 required
                 style={{ ...inputStyle, resize: "vertical" }}
               />
@@ -397,10 +378,10 @@ export default function Contact() {
 
       <DarkImageSection
         image="/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-one-on-one-buyer-consultation.jpeg"
-        alt="China Prime DMC one-on-one buyer consultation for partner quote support."
+        alt="China Prime DMC private China trip planning support."
         eyebrow="Before you brief us"
-        title="The more specific the brief, the faster we can quote responsibly."
-        body="Dates, traveler type, group size, hotel expectation, route idea, meal needs, and pace tell us which China suppliers, guides, vehicles, and routing logic make sense."
+        title="The more specific the wish list, the better the first route."
+        body="Dates, traveler type, group size, hotel expectation, route idea, meal needs, and pace tell us which guides, vehicles, hotels, and daily timing make sense."
         actions={
           <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
             Send brief by WhatsApp <MessageCircle size={17} />
@@ -408,7 +389,7 @@ export default function Contact() {
         }
       >
         <div className="grid gap-px bg-white/20 sm:grid-cols-2">
-          {["Route logic", "Net pricing", "Ground delivery", "In-trip support"].map((item) => (
+          {["Route logic", "Private guides", "Ground delivery", "In-trip support"].map((item) => (
             <div key={item} className="bg-black/58 p-6 text-sm font-semibold uppercase tracking-[0.1em] text-white backdrop-blur-sm">
               {item}
             </div>

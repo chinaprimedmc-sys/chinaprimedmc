@@ -66,22 +66,23 @@ function BulletList({ items, icon = "check" }: { items: string[]; icon?: "check"
 }
 
 function buildInquiryLinks(journey: Journey) {
-  const subject = `Net rate request: ${journey.title}`;
+  const subject = `Private China trip request: ${journey.title}`;
   const body = [
     `Hello China Prime DMC,`,
     ``,
-    `I would like to request B2B net rates and operating details for:`,
+    `I would like help planning this private China trip:`,
     `${journey.title}`,
     ``,
     `Route: ${journey.route}`,
     `Duration: ${journey.duration}`,
     `Travel window:`,
-    `Group size:`,
+    `Number of travelers:`,
     `Hotel level:`,
-    `Client market:`,
-    `Special requirements:`,
+    `Traveler profile:`,
+    `Dietary, family, mobility, or religious needs:`,
+    `Places to add or remove:`,
     ``,
-    `Please send availability, suggested pacing, inclusions, exclusions, and any operational notes we should know before quoting.`,
+    `Please suggest the best routing, pacing, inclusions, exclusions, and customization options before quoting.`,
   ].join("\n");
 
   return {
@@ -269,12 +270,12 @@ function StickyInquiryBar({ journey }: { journey: Journey }) {
           href="/journeys"
           className="min-w-0 border border-[var(--brand-border)] bg-white px-3 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-black)] no-underline"
         >
-          Programs
+          Trips
         </Link>
         <a
           href={inquiryLinks.mailto}
           className="flex h-12 w-12 items-center justify-center bg-[var(--brand-black)] text-white"
-          aria-label="Request quote by email"
+          aria-label="Plan this trip by email"
         >
           <Mail size={17} />
         </a>
@@ -283,7 +284,7 @@ function StickyInquiryBar({ journey }: { journey: Journey }) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex h-12 w-12 items-center justify-center border border-[var(--brand-black)] bg-white text-[var(--brand-black)]"
-          aria-label="Request quote on WhatsApp"
+          aria-label="Plan this trip on WhatsApp"
         >
           <MessageCircle size={17} />
         </a>
@@ -301,9 +302,9 @@ export default function JourneyDetail() {
     return (
       <main className="flex min-h-screen items-center justify-center bg-white px-6 pt-[72px]">
         <div className="text-center">
-          <h1 className="text-3xl font-semibold text-[var(--brand-black)]">Program not found</h1>
+          <h1 className="text-3xl font-semibold text-[var(--brand-black)]">Trip not found</h1>
           <Link href="/journeys" className="mono-button mt-8">
-            <ArrowLeft size={16} /> Back to programs
+            <ArrowLeft size={16} /> Back to trips
           </Link>
         </div>
       </main>
@@ -323,7 +324,7 @@ export default function JourneyDetail() {
         <div className="relative flex min-h-[82vh] items-end px-6 pb-12 lg:px-10 lg:pb-16">
           <div className="mono-wrap w-full">
             <Link href="/journeys" className="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-white no-underline">
-              <ArrowLeft size={14} /> All programs
+              <ArrowLeft size={14} /> All trips
             </Link>
             <div className="max-w-6xl">
               <div className="mb-5 flex flex-wrap gap-2">
@@ -362,8 +363,8 @@ export default function JourneyDetail() {
       <section className="mono-section bg-[var(--brand-white)]">
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.75fr_1fr]">
           <FadeSection>
-            <p className="b2b-eyebrow">B2B snapshot</p>
-            <h2 className="b2b-heading">What this program is built to sell.</h2>
+            <p className="b2b-eyebrow">Trip snapshot</p>
+            <h2 className="b2b-heading">What this journey feels like in real life.</h2>
           </FadeSection>
           <FadeSection delay={100}>
             <p className="b2b-lede mt-0">{journey.overview}</p>
@@ -380,7 +381,7 @@ export default function JourneyDetail() {
 
       <section className="mono-section bg-[var(--brand-gray-50)]">
         <div className="mono-wrap">
-          <SectionTitle eyebrow="Why it sells" title="Clear trade value, not generic travel copy." body={journey.routeSummary} />
+          <SectionTitle eyebrow="Why travelers love it" title="A clear route with real reasons to go." body={journey.routeSummary} />
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-3">
             {journey.whyItSells.map((item, index) => (
               <FadeSection key={item} delay={index * 70} className="bg-white p-7">
@@ -397,10 +398,10 @@ export default function JourneyDetail() {
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.52fr_1fr] lg:items-end">
             <div>
               <p className="b2b-eyebrow text-[var(--brand-gray-400)]">Cinematic gallery</p>
-              <h2 className="b2b-heading max-w-4xl text-white">Landmark images that help buyers feel the route.</h2>
+              <h2 className="b2b-heading max-w-4xl text-white">Landmark images that help you feel the route.</h2>
             </div>
             <p className="b2b-lede mt-0 text-[var(--brand-gray-300)]">
-              A route should be easy to picture before it is quoted. These large-format visuals give partners a stronger sense of scale, atmosphere, and sales value without adding extra initial-load weight.
+              A good private trip should be easy to picture before you book it. These large-format visuals show the scale, atmosphere, and destination variety without adding unnecessary initial-load weight.
             </p>
           </FadeSection>
 
@@ -410,7 +411,7 @@ export default function JourneyDetail() {
 
       <section className="mono-section bg-[var(--brand-gray-50)]">
         <div className="mono-wrap">
-          <SectionTitle eyebrow="Day by day" title="A flexible operating framework." />
+          <SectionTitle eyebrow="Day by day" title="A flexible private route." />
           <div className="grid gap-px bg-[var(--brand-border)]">
             {journey.days.map((day, index) => (
               <FadeSection key={`${day.day}-${day.title}`} delay={(index % 8) * 35}>
@@ -442,7 +443,7 @@ export default function JourneyDetail() {
 
       <section className="mono-section bg-[var(--brand-gray-50)]">
         <div className="mono-wrap">
-          <SectionTitle eyebrow="Operations" title="The details your sales and operations team need before quoting." />
+          <SectionTitle eyebrow="Travel details" title="The practical details to shape before we quote." />
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
             {[
               ["Hotel level", journey.hotelLevel.join(" / ")],
@@ -463,7 +464,7 @@ export default function JourneyDetail() {
 
       <section className="mono-section bg-white">
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.7fr_1fr]">
-          <SectionTitle eyebrow="FAQ" title="Trade-facing questions." />
+          <SectionTitle eyebrow="FAQ" title="Questions before planning." />
           <div className="grid gap-px bg-[var(--brand-border)]">
             {journey.faqs.map((faq) => (
               <FadeSection key={faq.q} className="bg-white p-7">
@@ -487,18 +488,18 @@ export default function JourneyDetail() {
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.10)_58%,rgba(0,0,0,0.42)_100%)]" />
         <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Request net rate</p>
+            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Plan this trip</p>
             <h2 className="b2b-heading max-w-4xl" style={{ color: "var(--brand-white)" }}>
-              Quote this route with your travel window, group size, hotel level, and special requirements.
+              Send your travel window, group size, hotel level, pace, and special requirements.
             </h2>
           </FadeSection>
           <FadeSection delay={100}>
             <div className="flex flex-wrap gap-3">
               <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-                Send brief <ArrowRight size={17} />
+                Send trip brief <ArrowRight size={17} />
               </Link>
               <a href={inquiryLinks.mailto} className="mono-button mono-button-secondary border-[var(--brand-gray-700)] text-white">
-                Email quote
+                Email trip request
               </a>
               <a href={inquiryLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="mono-button mono-button-secondary border-[var(--brand-gray-700)] text-white">
                 WhatsApp

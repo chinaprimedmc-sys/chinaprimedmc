@@ -45,7 +45,7 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 const coverageStats = [
   { value: "2012", label: "Established" },
   { value: "7", label: "Operating regions" },
-  { value: "FIT / Groups / MICE", label: "Core formats" },
+  { value: "40+", label: "Trip destinations" },
 ];
 
 const regionClusters = coverageRegions.map((region) => ({
@@ -61,19 +61,19 @@ const regionClusters = coverageRegions.map((region) => ({
 
 const fitMatrix = [
   {
-    segment: "First-time China groups",
+    segment: "First-time China travelers",
     bestRegions: "Beijing, Xi'an, Shanghai, Suzhou, Guilin",
     why: "Famous icons, simple sales language, strong guides.",
     image: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city.jpg",
   },
   {
-    segment: "Luxury FIT travelers",
+    segment: "Luxury private travelers",
     bestRegions: "Shanghai, Hangzhou, Beijing, Yunnan, Chengdu",
     why: "Better hotels, private moments, flexible pacing.",
     image: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg",
   },
   {
-    segment: "Muslim-friendly groups",
+    segment: "Muslim-friendly travelers",
     bestRegions: "Xi'an, Ningxia, Gansu, Xinjiang, Beijing, Shanghai",
     why: "Muslim heritage, halal-aware meals, mosque visits.",
     image: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-kashgar.jpg",
@@ -91,22 +91,22 @@ const fitMatrix = [
     image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg",
   },
   {
-    segment: "MICE and incentives",
-    bestRegions: "Shanghai, Beijing, Guangzhou, Shenzhen, Chengdu, Hangzhou",
-    why: "Air access, venues, executive hotels, gala options.",
+    segment: "Multi-city private trips",
+    bestRegions: "Shanghai, Beijing, Guangzhou, Guilin, Chengdu, Hangzhou",
+    why: "Air access, rail connections, strong hotels, easy routing.",
     image: "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-beijing-national-stadium.jpg",
   },
 ];
 
 const operatingCapabilities = [
-  "Route design for FIT, group series, incentive travel, and special-interest programs",
+  "Route design for private trips, families, couples, senior travelers, and special-interest journeys",
   "Local guide, driver, hotel, restaurant, attraction, and venue coordination",
-  "Meal planning for halal-aware, vegetarian, family, senior, and executive groups",
+  "Meal planning for halal-aware, vegetarian, family, senior, and comfort-focused travelers",
   "High-speed rail, domestic flight, charter vehicle, and airport transfer sequencing",
   "Permit-aware planning for sensitive or operationally complex regions",
   "Seasonal advice for weather, crowd pressure, hotel compression, and route risk",
-  "White-label documentation and B2B quotation support for global partners",
-  "English-language partner communication before, during, and after operation",
+  "Clear trip notes before confirmation so travelers understand the route",
+  "English-language communication before, during, and after travel",
 ];
 
 const routeExamples = [
@@ -158,16 +158,16 @@ export default function Destinations() {
     <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
       <MediaHero
         image={pageHeroImages.coverage}
-        alt="Yangtze River route representing China nationwide DMC coverage."
+        alt="Yangtze River route representing nationwide private China trip coverage."
         eyebrow="China coverage"
-        title="China coverage built for global travel partners."
-        body="From first-tier gateways to remote cultural regions, China Prime DMC supports tailor-made programs, group series, MICE movements, and special-interest travel across China with a practical operating lens."
+        title="Where your private China trip can go."
+        body="From first-tier gateways to remote cultural regions, China Prime DMC helps travelers understand which cities, landscapes, heritage sites, and specialist regions fit their dates, pace, interests, and comfort level."
         stats={coverageStats}
       />
 
       <section className="border-y border-[var(--brand-border)] bg-white">
         <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-3">
-          {["Where your clients should go", "When the route operates best", "How the program gets delivered"].map((item, index) => (
+          {["Where you should go", "When the route works best", "How the trip feels on the ground"].map((item, index) => (
             <FadeSection key={item} delay={index * 70}>
               <div className="min-h-full bg-white p-7">
                 <div className="mb-6 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--brand-gray-400)]">Coverage question 0{index + 1}</div>
@@ -186,7 +186,7 @@ export default function Destinations() {
               <h2 className="b2b-heading">Coverage by operating region, with cities mapped clearly.</h2>
             </div>
             <p className="b2b-lede mt-0">
-              B2B partners need to see where a region sits before they can sell it. Use the map to understand which gateway cities, cultural stops, and specialist routes belong to each operating region.
+              Use the map to understand which gateway cities, cultural stops, natural landscapes, and specialist routes belong to each operating region before choosing your trip.
             </p>
           </FadeSection>
 
@@ -274,10 +274,10 @@ export default function Destinations() {
       <section className="mono-section bg-[var(--brand-white)]">
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.42fr_1fr]">
           <FadeSection>
-            <p className="b2b-eyebrow">Program fit</p>
-            <h2 className="b2b-heading">Which regions make sense for which clients?</h2>
+            <p className="b2b-eyebrow">Trip fit</p>
+            <h2 className="b2b-heading">Which regions make sense for which travelers?</h2>
             <p className="b2b-body mt-6">
-              The right China route depends on market source, travel style, budget level, pacing, season, and the amount of operational complexity a partner wants to absorb.
+              The right China route depends on travel style, budget level, pacing, season, mobility, dietary needs, and how much time you want to spend in transit.
             </p>
           </FadeSection>
 
@@ -306,7 +306,7 @@ export default function Destinations() {
 
       <DarkImageSection
         image="/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-three-gorges-dam.jpg"
-        alt="Three Gorges Dam for nationwide China DMC operating coverage."
+        alt="Three Gorges Dam for nationwide private China route coverage."
         eyebrow="Operational confidence"
         title="Coverage only matters if the route can be operated cleanly."
         body="We look at each destination through the details that affect your sale and your client experience: transfers, guide quality, hotel fit, meal planning, seasonality, permits, pacing, and on-trip communication."
@@ -327,11 +327,11 @@ export default function Destinations() {
         <div className="mono-wrap">
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.58fr_1fr]">
             <div>
-              <p className="b2b-eyebrow">Route architecture</p>
-              <h2 className="b2b-heading">Multi-city China programs that are easy to quote and explain.</h2>
+        <p className="b2b-eyebrow">Route architecture</p>
+        <h2 className="b2b-heading">Multi-city China trips that are easy to understand before you go.</h2>
             </div>
             <p className="b2b-lede mt-0">
-              Many global partners do not need one isolated city. They need a route that sells clearly, prices cleanly, and moves travelers through China without exhausting them.
+              Most travelers do not need one isolated city. They need a route that connects clearly, moves comfortably, and gives each destination enough time to matter.
             </p>
           </FadeSection>
 
@@ -368,14 +368,14 @@ export default function Destinations() {
       <section className="mono-section bg-[var(--brand-white)]">
         <div className="mono-wrap grid grid-cols-1 items-end gap-10 border-y border-[var(--brand-border)] py-12 md:grid-cols-[1fr_auto]">
           <FadeSection>
-            <p className="b2b-eyebrow">Partner brief</p>
+            <p className="b2b-eyebrow">Trip brief</p>
             <h2 className="max-w-4xl text-4xl font-semibold leading-tight text-[var(--brand-black)] md:text-6xl">
-              Send us the market, dates, group size, and regions. We will shape the China route.
+              Send us your dates, group size, and dream regions. We will shape the China route.
             </h2>
           </FadeSection>
           <FadeSection delay={100}>
             <Link href="/contact" className="mono-button">
-              Request coverage advice <ArrowRight size={16} />
+              Request route advice <ArrowRight size={16} />
             </Link>
           </FadeSection>
         </div>

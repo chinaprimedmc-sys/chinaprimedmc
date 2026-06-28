@@ -49,22 +49,22 @@ const visualCategories = [
   {
     title: "Classic icons",
     src: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city.jpg",
-    alt: "Forbidden City Beijing B2B private program visual.",
+    alt: "Forbidden City Beijing private China trip visual.",
   },
   {
     title: "Family demand",
     src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
-    alt: "Chengdu panda base for family-friendly China programs.",
+    alt: "Chengdu panda base for family-friendly private China trips.",
   },
   {
     title: "Soft adventure",
     src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-wulingyuan.jpg",
-    alt: "Wulingyuan Zhangjiajie scenery for soft adventure China programs.",
+    alt: "Wulingyuan Zhangjiajie scenery for soft adventure China trips.",
   },
   {
     title: "Silk Road",
     src: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark.jpg",
-    alt: "Zhangye National Geopark for China Silk Road programs.",
+    alt: "Zhangye National Geopark for private Silk Road trips in China.",
   },
 ];
 
@@ -79,31 +79,30 @@ function toggleValue(values: string[], value: string) {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
 }
 
-function programEmailHref(journey: Journey) {
-  const subject = `Net rate request: ${journey.title}`;
+function tripEmailHref(journey: Journey) {
+  const subject = `Private China trip request: ${journey.title}`;
   const body = [
     "Hello China Prime DMC team,",
     "",
-    "We would like to request a B2B net rate and operating advice for the following program:",
+    "I am interested in planning this private China trip:",
     "",
-    `Program: ${journey.title}`,
+    `Trip: ${journey.title}`,
     `Duration: ${journey.duration}`,
     `Route: ${journey.route}`,
     `Best season: ${journey.bestTime}`,
     `Traveler fit: ${journey.travelerTypes.join(", ")}`,
     `Themes: ${journey.themes.join(", ")}`,
-    `Pace / physical level: ${journey.pace} / ${journey.physicalLevel}`,
+    `Preferred pace / physical level: ${journey.pace} / ${journey.physicalLevel}`,
     "",
-    "Our client / group details:",
-    "Market source:",
-    "Estimated group size:",
+    "My travel details:",
+    "Number of travelers:",
     "Travel window:",
     "Preferred hotel level:",
-    "Meal or dietary requirements:",
-    "Guide language:",
-    "Any route changes needed:",
+    "Dietary, mobility, family, or religious needs:",
+    "Places I want to add or remove:",
+    "Approximate budget level:",
     "",
-    "Please send net pricing, inclusions, exclusions, payment terms, and any operational notes we should know before presenting this to our client.",
+    "Please suggest the best route, what can be customized, and what information you need before quoting.",
     "",
     "Thank you.",
   ].join("\n");
@@ -193,14 +192,24 @@ export default function Journeys() {
     <main style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
       <MediaHero
         image={pageHeroImages.programs}
-        alt="Tiger Leaping Gorge in Yunnan for B2B China program library."
-        eyebrow="B2B program library"
-        title="China programs built for resale, quoting, and partner customization."
-        body="Browse ready-to-customize China itineraries by destination, duration, theme, pace, and traveler profile. Every program is a trade framework, not a fixed retail package."
+        alt="Tiger Leaping Gorge in Yunnan for private China trip planning."
+        eyebrow="Private China trips"
+        title="Find a China trip that matches how you actually travel."
+        body="Browse private China routes by destination, duration, theme, pace, and traveler needs. These are flexible starting points for families, couples, Muslim travelers, women travelers, senior travelers, first-time visitors, and repeat China guests."
+        actions={
+          <>
+            <Link href="/contact" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">
+              Plan my trip <ArrowRight size={17} />
+            </Link>
+            <Link href="/b2b" className="mono-button border-white bg-transparent text-white hover:bg-white hover:text-[var(--brand-black)]">
+              B2B travel partners
+            </Link>
+          </>
+        }
         stats={[
-          { value: String(journeys.length), label: "Program frameworks" },
+          { value: String(journeys.length), label: "Private trip ideas" },
           { value: "5-14", label: "Typical days" },
-          { value: "FIT / Groups / MICE", label: "Partner formats" },
+          { value: "68", label: "Destination tags" },
         ]}
       />
 
@@ -213,8 +222,8 @@ export default function Journeys() {
                   <SlidersHorizontal size={18} />
                 </span>
                 <div>
-                  <div className="text-base font-semibold text-[var(--brand-black)]">Program finder</div>
-                  <div className="text-sm text-[var(--brand-gray-600)]">{filteredJourneys.length} of {journeys.length} programs shown</div>
+                  <div className="text-base font-semibold text-[var(--brand-black)]">Trip finder</div>
+                  <div className="text-sm text-[var(--brand-gray-600)]">{filteredJourneys.length} of {journeys.length} trips shown</div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -274,7 +283,7 @@ export default function Journeys() {
                   <img src={item.src} alt={item.alt} className="h-full min-h-[260px] w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" decoding="async" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/6 to-transparent" />
                   <figcaption className="absolute bottom-0 left-0 right-0 p-5">
-                    <div className="mono-index mb-2 text-[var(--brand-gray-300)]">Program signal</div>
+                    <div className="mono-index mb-2 text-[var(--brand-gray-300)]">Trip style</div>
                     <h2 className="text-2xl font-semibold leading-tight text-white">{item.title}</h2>
                   </figcaption>
                 </figure>
@@ -323,7 +332,7 @@ export default function Journeys() {
                       <div className="text-sm leading-6 text-[var(--brand-gray-700)]">{journey.bestFor.slice(0, 2).join(" / ")}</div>
                     </div>
                     <div>
-                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--brand-gray-500)]">Includes</div>
+                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--brand-gray-500)]">Typical support</div>
                       <div className="text-sm leading-6 text-[var(--brand-gray-700)]">Private guide, transfers, hotels, ticket coordination</div>
                     </div>
                   </div>
@@ -341,11 +350,11 @@ export default function Journeys() {
                       View details <ArrowRight size={15} />
                     </Link>
                     <a
-                      href={programEmailHref(journey)}
+                      href={tripEmailHref(journey)}
                       onClick={(event) => event.stopPropagation()}
                       className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--brand-border)] bg-white px-4 text-sm font-semibold text-[var(--brand-black)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)]"
                     >
-                      Request by email <Mail size={15} />
+                      Plan this trip <Mail size={15} />
                     </a>
                   </div>
                 </div>
@@ -357,13 +366,13 @@ export default function Journeys() {
 
       <DarkImageSection
         image="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi.jpg"
-        alt="Xidi Anhui village for custom East China program quoting."
-        eyebrow="Custom quoting"
-        title="Send us your market, group size, travel window, hotel level, and dietary needs."
+        alt="Xidi Anhui village for custom East China private trip planning."
+        eyebrow="Custom planning"
+        title="Tell us your dates, group size, comfort level, interests, and special needs."
         imagePosition="center top"
         actions={
           <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-            Request net rate <ArrowRight size={17} />
+            Start planning <ArrowRight size={17} />
           </Link>
         }
       />

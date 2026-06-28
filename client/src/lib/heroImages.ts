@@ -1,5 +1,5 @@
 export const pageHeroImages = {
-  home: "/services/china-prime-dmc-b2b-services-travel-trade-buyer-meeting.jpeg",
+  home: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-mutianyu.jpg",
   services: "/services/china-prime-dmc-ground-operations-shanghai-business-travel.jpeg",
   programs: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-tiger-leaping-gorge.jpg",
   coverage: "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-yangtze.jpg",
