@@ -4,6 +4,7 @@ import { ArrowRight, Check, MapPin, MoveRight } from "lucide-react";
 import { CoverageMap } from "@/components/CoverageMap";
 import { coverageRegions } from "@/lib/coverageData";
 import MediaHero from "@/components/MediaHero";
+import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -256,30 +257,24 @@ export default function Destinations() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1fr]">
-          <FadeSection>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Operational confidence</p>
-            <h2 className="b2b-heading max-w-3xl text-[var(--brand-white)]">
-              Coverage only matters if the route can be operated cleanly.
-            </h2>
-            <p className="b2b-lede max-w-2xl text-[var(--brand-gray-300)]">
-              We look at each destination through the details that affect your sale and your client experience: transfers, guide quality, hotel fit, meal planning, seasonality, permits, pacing, and on-trip communication.
-            </p>
-          </FadeSection>
-
+      <DarkImageSection
+        image="/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-three-gorges-dam.jpg"
+        alt="Three Gorges Dam for nationwide China DMC operating coverage."
+        eyebrow="Operational confidence"
+        title="Coverage only matters if the route can be operated cleanly."
+        body="We look at each destination through the details that affect your sale and your client experience: transfers, guide quality, hotel fit, meal planning, seasonality, permits, pacing, and on-trip communication."
+      >
           <FadeSection delay={120}>
-            <div className="grid gap-px bg-[var(--brand-gray-800)] md:grid-cols-2">
+            <div className="grid gap-px bg-white/20 md:grid-cols-2">
               {operatingCapabilities.map((item) => (
-                <div key={item} className="flex gap-4 bg-[var(--brand-black)] p-5">
+                <div key={item} className="flex gap-4 bg-black/62 p-5 backdrop-blur-sm">
                   <Check size={17} className="mt-1 shrink-0 text-white" />
-                  <p className="text-sm leading-7 text-[var(--brand-gray-300)]">{item}</p>
+                  <p className="text-sm leading-7 text-[var(--brand-gray-100)]">{item}</p>
                 </div>
               ))}
             </div>
           </FadeSection>
-        </div>
-      </section>
+      </DarkImageSection>
 
       <section className="mono-section bg-[var(--brand-gray-50)]">
         <div className="mono-wrap">

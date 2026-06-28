@@ -5,6 +5,7 @@ import { EMAIL } from "@/lib/data";
 import type { Journey } from "@/lib/programData";
 import { journeyFilterOptions, journeys } from "@/lib/programData";
 import MediaHero from "@/components/MediaHero";
+import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -43,6 +44,29 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 }
 
 type SortKey = "recommended" | "duration-asc" | "duration-desc";
+
+const visualCategories = [
+  {
+    title: "Classic icons",
+    src: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city.jpg",
+    alt: "Forbidden City Beijing B2B private program visual.",
+  },
+  {
+    title: "Family demand",
+    src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
+    alt: "Chengdu panda base for family-friendly China programs.",
+  },
+  {
+    title: "Soft adventure",
+    src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-wulingyuan.jpg",
+    alt: "Wulingyuan Zhangjiajie scenery for soft adventure China programs.",
+  },
+  {
+    title: "Silk Road",
+    src: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark.jpg",
+    alt: "Zhangye National Geopark for China Silk Road programs.",
+  },
+];
 
 function durationBand(days: number) {
   if (days <= 6) return "5-6 Days";
@@ -241,6 +265,25 @@ export default function Journeys() {
         </div>
       </section>
 
+      <section className="border-b border-[var(--brand-border)] bg-[var(--brand-black)] px-6 py-8 text-white lg:px-10">
+        <div className="mono-wrap">
+          <div className="grid grid-cols-1 gap-px bg-white/20 md:grid-cols-4">
+            {visualCategories.map((item, index) => (
+              <FadeSection key={item.src} delay={index * 45}>
+                <figure className="group relative min-h-[260px] overflow-hidden bg-[var(--brand-black)]">
+                  <img src={item.src} alt={item.alt} className="h-full min-h-[260px] w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" decoding="async" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/6 to-transparent" />
+                  <figcaption className="absolute bottom-0 left-0 right-0 p-5">
+                    <div className="mono-index mb-2 text-[var(--brand-gray-300)]">Program signal</div>
+                    <h2 className="text-2xl font-semibold leading-tight text-white">{item.title}</h2>
+                  </figcaption>
+                </figure>
+              </FadeSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="mono-section bg-[var(--brand-white)]">
         <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
           {filteredJourneys.map((journey, index) => (
@@ -312,21 +355,18 @@ export default function Journeys() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
-          <FadeSection>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Custom quoting</p>
-            <h2 className="b2b-heading max-w-4xl" style={{ color: "var(--brand-white)" }}>
-              Send us your market, group size, travel window, hotel level, and dietary needs.
-            </h2>
-          </FadeSection>
-          <FadeSection delay={100}>
-            <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-              Request net rate <ArrowRight size={17} />
-            </Link>
-          </FadeSection>
-        </div>
-      </section>
+      <DarkImageSection
+        image="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi.jpg"
+        alt="Xidi Anhui village for custom East China program quoting."
+        eyebrow="Custom quoting"
+        title="Send us your market, group size, travel window, hotel level, and dietary needs."
+        imagePosition="center top"
+        actions={
+          <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+            Request net rate <ArrowRight size={17} />
+          </Link>
+        }
+      />
     </main>
   );
 }

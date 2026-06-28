@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
 import MediaHero from "@/components/MediaHero";
+import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -280,28 +281,25 @@ export default function B2B() {
         stats={metrics}
       />
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1fr]">
-          <FadeSection>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Who we serve</p>
-            <h2 className="b2b-heading" style={{ color: "var(--brand-white)" }}>A China operating desk for different trade models.</h2>
-            <p className="b2b-lede" style={{ color: "var(--brand-gray-300)" }}>
-              A tour operator, a luxury advisor, a corporate planner, and another DMC do not need the same kind of China support. We adapt the service model to how your business sells.
-            </p>
-          </FadeSection>
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] md:grid-cols-2">
+      <DarkImageSection
+        image={serviceImages.hero}
+        alt="China Prime DMC meeting travel trade buyers for B2B China service planning."
+        eyebrow="Who we serve"
+        title="A China operating desk for different trade models."
+        body="A tour operator, a luxury advisor, a corporate planner, and another DMC do not need the same kind of China support. We adapt the service model to how your business sells."
+      >
+          <div className="grid grid-cols-1 gap-px bg-white/20 md:grid-cols-2">
             {audiences.map((item, index) => (
               <FadeSection key={item.title} delay={index * 70}>
-                <article className="h-full bg-[var(--brand-black)] p-7 sm:p-8">
-                  <div className="mono-index mb-10 text-[var(--brand-gray-500)]">Partner model</div>
+                <article className="h-full bg-black/62 p-7 backdrop-blur-sm sm:p-8">
+                  <div className="mono-index mb-10 text-[var(--brand-gray-300)]">Partner model</div>
                   <h3 className="b2b-card-title" style={{ color: "var(--brand-white)" }}>{item.title}</h3>
-                  <p className="b2b-body" style={{ color: "var(--brand-gray-300)" }}>{item.body}</p>
+                  <p className="b2b-body" style={{ color: "var(--brand-gray-200)" }}>{item.body}</p>
                 </article>
               </FadeSection>
             ))}
           </div>
-        </div>
-      </section>
+      </DarkImageSection>
 
       <section className="mono-section bg-[var(--brand-white)]">
         <div className="mono-wrap">
@@ -381,7 +379,10 @@ export default function B2B() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
+      <section className="mono-section relative isolate overflow-hidden bg-[var(--brand-black)] text-white">
+        <img src="/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-wu-gorge.jpg" alt="Wu Gorge Yangtze River for complex China route operations." className="absolute inset-0 -z-30 h-full w-full object-cover opacity-75" loading="lazy" decoding="async" />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(0,0,0,0.86)_0%,rgba(0,0,0,0.58)_50%,rgba(0,0,0,0.20)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.10)_58%,rgba(0,0,0,0.44)_100%)]" />
         <div className="mono-wrap grid grid-cols-1 gap-10 lg:grid-cols-3">
           <FadeSection className="lg:col-span-1">
             <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Operating coverage</p>
@@ -390,14 +391,14 @@ export default function B2B() {
               Beijing, Shanghai, Xi'an, Guilin, Yunnan, Chengdu, Zhangjiajie, Tibet, Xinjiang, and the Silk Road all require different supplier logic, timing, and risk management.
             </p>
           </FadeSection>
-          {[
-            { src: serviceImages.shanghai, alt: "Shanghai skyline for China business travel and ground operations.", title: "Urban and business travel", icon: <Building2 size={18} /> },
+            {[
+            { src: "/programs/southwest-china-yangtze-14-day/china-prime-dmc-southwest-china-yangtze-14-day-lujiazui.jpg", alt: "Lujiazui Shanghai for China business travel and ground operations.", title: "Urban and business travel", icon: <Building2 size={18} /> },
             { src: serviceImages.greatWall, alt: "Great Wall of China itinerary design for travel partners.", title: "Classic China routing", icon: <Landmark size={18} /> },
           ].map((item, index) => (
             <FadeSection key={item.title} delay={(index + 1) * 90}>
-              <figure className="h-full bg-[var(--brand-black)]">
+              <figure className="h-full bg-black/56 backdrop-blur-sm">
                 <img src={item.src} alt={item.alt} className="h-80 w-full object-cover md:h-[460px]" loading="lazy" decoding="async" />
-                <figcaption className="flex items-center gap-3 border border-[var(--brand-gray-800)] border-t-0 p-5 text-sm font-semibold text-[var(--brand-gray-200)]">
+                <figcaption className="flex items-center gap-3 border border-white/15 border-t-0 p-5 text-sm font-semibold text-[var(--brand-gray-100)]">
                   {item.icon} {item.title}
                 </figcaption>
               </figure>
@@ -488,24 +489,22 @@ export default function B2B() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
-          <FadeSection>
-            <BadgeCheck size={28} className="mb-8 text-[var(--brand-gray-400)]" />
-            <h2 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 940 }}>
-              Send the brief. We will tell you what works in China.
-            </h2>
-            <p className="b2b-lede" style={{ color: "var(--brand-gray-300)" }}>
-              Share your dates, traveler profile, cities, budget level, and service expectations. We will help turn the idea into a China program your team can sell and we can operate.
-            </p>
-          </FadeSection>
-          <FadeSection delay={100}>
-            <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-              Request quote <ArrowRight size={17} />
-            </Link>
-          </FadeSection>
+      <DarkImageSection
+        image="/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-official-exhibition-backdrop-team-photo.jpeg"
+        alt="China Prime DMC team at Singapore travel trade show."
+        eyebrow="Send the brief"
+        title="We will tell you what works in China."
+        body="Share your dates, traveler profile, cities, budget level, and service expectations. We will help turn the idea into a China program your team can sell and we can operate."
+        actions={
+          <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+            Request quote <ArrowRight size={17} />
+          </Link>
+        }
+      >
+        <div className="hidden lg:flex justify-end">
+          <BadgeCheck size={72} className="text-white/70" />
         </div>
-      </section>
+      </DarkImageSection>
     </main>
   );
 }

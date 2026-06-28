@@ -38,8 +38,8 @@ export default function MediaHero({
         decoding="async"
         fetchPriority="high"
       />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.68)_44%,rgba(0,0,0,0.28)_100%)]" />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.10)_52%,rgba(0,0,0,0.38)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.58)_44%,rgba(0,0,0,0.14)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.66)_0%,rgba(0,0,0,0.06)_52%,rgba(0,0,0,0.30)_100%)]" />
 
       <div className={`flex ${minHeightClassName} items-end px-6 py-12 lg:px-10 lg:py-16`}>
         <div className="mono-wrap w-full">
@@ -60,7 +60,7 @@ export default function MediaHero({
             {(stats || children) && (
               <div className="grid gap-px bg-white/20 backdrop-blur-sm">
                 {stats?.map((item) => (
-                  <div key={item.label} className="bg-black/62 p-5 sm:p-6">
+                  <div key={item.label} className="bg-black/52 p-5 backdrop-blur-sm sm:p-6">
                     <div className="text-2xl font-semibold leading-none text-white md:text-4xl">{item.value}</div>
                     <div className="mono-index mt-3 text-[var(--brand-gray-300)]">{item.label}</div>
                   </div>

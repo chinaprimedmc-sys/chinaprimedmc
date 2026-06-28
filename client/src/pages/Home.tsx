@@ -12,6 +12,7 @@ import {
 import { WHATSAPP_URL } from "@/lib/data";
 import TradePresence from "@/components/TradePresence";
 import MediaHero from "@/components/MediaHero";
+import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({
@@ -107,7 +108,17 @@ const heroImages = {
   materials: "/services/china-prime-dmc-white-label-itinerary-support-trade-materials.jpeg",
   greatWall: "/services/china-prime-dmc-china-itinerary-design-great-wall.jpeg",
   shanghai: "/services/china-prime-dmc-ground-operations-shanghai-business-travel.jpeg",
+  mice: "/services/china-prime-dmc-china-mice-incentive-travel-shanghai-skyline.jpeg",
+  forbiddenCity: "/services/china-prime-dmc-private-china-tours-forbidden-city-beijing.jpeg",
+  tradeShow: "/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-regional-travel-buyers.jpeg",
 };
+
+const visualProof = [
+  { src: heroImages.forbiddenCity, alt: "Forbidden City private China touring for global travel advisors.", title: "Private FIT" },
+  { src: heroImages.mice, alt: "Shanghai skyline for China MICE and incentive travel.", title: "MICE" },
+  { src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg", alt: "Tianmen Mountain in Zhangjiajie for China nature programs.", title: "Nature routes" },
+  { src: heroImages.tradeShow, alt: "China Prime DMC speaking with travel trade buyers.", title: "Trade proof" },
+];
 
 export default function Home() {
   return (
@@ -245,28 +256,53 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <FadeSection>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>What we do</p>
-            <h2 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 620 }}>
-              An operations desk, not a travel brochure.
-            </h2>
-            <p className="b2b-lede" style={{ color: "var(--brand-gray-300)" }}>
-              The site should feel like a dependable trade partner: concise, structured, and commercially useful.
-            </p>
-          </FadeSection>
+      <DarkImageSection
+        image="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg"
+        alt="West Lake Hangzhou for premium East China itinerary planning."
+        eyebrow="What we do"
+        title="An operations desk, not a travel brochure."
+        body="The site should feel like a dependable trade partner: concise, structured, commercially useful, and visually grounded in real China programs."
+        imagePosition="center"
+      >
+        <div className="grid grid-cols-1 gap-px bg-white/20 md:grid-cols-2">
+          {services.map((service, index) => (
+            <FadeSection key={service.title} delay={index * 70}>
+              <article className="h-full bg-black/62 p-7 backdrop-blur-sm sm:p-8">
+                <div className="mb-8 flex h-10 w-10 items-center justify-center border border-white/25 text-[var(--brand-white)]">
+                  {service.icon}
+                </div>
+                <h3 className="b2b-card-title" style={{ color: "var(--brand-white)" }}>{service.title}</h3>
+                <p className="b2b-body" style={{ color: "var(--brand-gray-200)" }}>{service.desc}</p>
+              </article>
+            </FadeSection>
+          ))}
+        </div>
+      </DarkImageSection>
 
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-gray-800)] md:grid-cols-2">
-            {services.map((service, index) => (
-              <FadeSection key={service.title} delay={index * 70}>
-                <article className="h-full bg-[var(--brand-black)] p-7 sm:p-8">
-                  <div className="mb-8 flex h-10 w-10 items-center justify-center border border-[var(--brand-gray-600)] text-[var(--brand-white)]">
-                    {service.icon}
-                  </div>
-                  <h3 className="b2b-card-title" style={{ color: "var(--brand-white)" }}>{service.title}</h3>
-                  <p className="b2b-body" style={{ color: "var(--brand-gray-300)" }}>{service.desc}</p>
-                </article>
+      <section className="mono-section bg-[var(--brand-gray-50)]">
+        <div className="mono-wrap">
+          <FadeSection>
+            <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.5fr_1fr] lg:items-end">
+              <div>
+                <p className="b2b-eyebrow">Visual proof</p>
+                <h2 className="b2b-heading">China products should be easy to picture before they are quoted.</h2>
+              </div>
+              <p className="b2b-lede mt-0">
+                Strong images help partners understand product category, sales angle, destination scale, and client fit before they send a brief.
+              </p>
+            </div>
+          </FadeSection>
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-4">
+            {visualProof.map((item, index) => (
+              <FadeSection key={item.src} delay={index * 60}>
+                <figure className="group relative min-h-[320px] overflow-hidden bg-[var(--brand-black)] md:min-h-[430px]">
+                  <img src={item.src} alt={item.alt} className="h-full min-h-[320px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] md:min-h-[430px]" loading="lazy" decoding="async" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/8 to-transparent" />
+                  <figcaption className="absolute bottom-0 left-0 right-0 p-5">
+                    <div className="mono-index mb-2 text-[var(--brand-gray-300)]">0{index + 1}</div>
+                    <h3 className="text-2xl font-semibold leading-tight text-white">{item.title}</h3>
+                  </figcaption>
+                </figure>
               </FadeSection>
             ))}
           </div>
@@ -318,21 +354,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
-          <FadeSection>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Ready for a China quote?</p>
-            <h2 className="b2b-heading" style={{ color: "var(--brand-white)", maxWidth: 900 }}>
-              Send the brief. We will turn it into an operable China program.
-            </h2>
-          </FadeSection>
-          <FadeSection delay={100}>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-              Talk to partner desk <ArrowRight size={17} />
-            </a>
-          </FadeSection>
-        </div>
-      </section>
+      <DarkImageSection
+        image="/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-mutianyu.jpg"
+        alt="Mutianyu Great Wall route for B2B China itinerary planning."
+        eyebrow="Ready for a China quote?"
+        title="Send the brief. We will turn it into an operable China program."
+        imagePosition="center top"
+        actions={
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+            Talk to partner desk <ArrowRight size={17} />
+          </a>
+        }
+      />
     </main>
   );
 }

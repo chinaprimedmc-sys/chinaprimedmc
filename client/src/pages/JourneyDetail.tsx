@@ -479,12 +479,12 @@ export default function JourneyDetail() {
         <img
           src={ctaImage?.src || journey.image}
           alt={ctaImage?.alt || journey.title}
-          className="absolute inset-0 -z-20 h-full w-full object-cover opacity-45"
+          className="absolute inset-0 -z-20 h-full w-full object-cover opacity-68"
           loading="lazy"
           decoding="async"
         />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.94)_0%,rgba(0,0,0,0.78)_48%,rgba(0,0,0,0.50)_100%)]" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.22)_58%,rgba(0,0,0,0.68)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.84)_0%,rgba(0,0,0,0.60)_48%,rgba(0,0,0,0.24)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.10)_58%,rgba(0,0,0,0.42)_100%)]" />
         <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
             <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Request net rate</p>

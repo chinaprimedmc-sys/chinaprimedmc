@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Briefcase, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { EMAIL, WHATSAPP_URL } from "@/lib/data";
 import MediaHero from "@/components/MediaHero";
+import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 const partnerTypes = [
@@ -215,7 +216,7 @@ export default function Contact() {
               { icon: <MapPin size={18} />, label: "Base", value: "Guangzhou, China", href: null },
               { icon: <Briefcase size={18} />, label: "Best for", value: "B2B, groups, FIT, MICE", href: null },
             ].map((item) => (
-              <div key={item.label} className="bg-[var(--brand-black)] p-6">
+              <div key={item.label} className="bg-black/56 p-6 backdrop-blur-sm">
                 <div className="mb-5 text-[var(--brand-gray-400)]">{item.icon}</div>
                 <p className="mono-index mb-2" style={{ color: "var(--brand-gray-500)" }}>{item.label}</p>
                 {item.href ? (
@@ -371,6 +372,27 @@ export default function Contact() {
           </form>
         </div>
       </section>
+
+      <DarkImageSection
+        image="/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-one-on-one-buyer-consultation.jpeg"
+        alt="China Prime DMC one-on-one buyer consultation for partner quote support."
+        eyebrow="Before you brief us"
+        title="The more specific the brief, the faster we can quote responsibly."
+        body="Dates, traveler type, group size, hotel expectation, route idea, meal needs, and pace tell us which China suppliers, guides, vehicles, and routing logic make sense."
+        actions={
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+            Send brief by WhatsApp <MessageCircle size={17} />
+          </a>
+        }
+      >
+        <div className="grid gap-px bg-white/20 sm:grid-cols-2">
+          {["Route logic", "Net pricing", "Ground delivery", "In-trip support"].map((item) => (
+            <div key={item} className="bg-black/58 p-6 text-sm font-semibold uppercase tracking-[0.1em] text-white backdrop-blur-sm">
+              {item}
+            </div>
+          ))}
+        </div>
+      </DarkImageSection>
     </main>
   );
 }

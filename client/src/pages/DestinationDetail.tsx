@@ -412,13 +412,13 @@ export default function DestinationDetail() {
           <img
             src={buyerContextImage.src}
             alt={buyerContextImage.alt}
-            className="absolute inset-0 -z-20 h-full w-full object-cover opacity-55"
+            className="absolute inset-0 -z-20 h-full w-full object-cover opacity-72"
             loading="lazy"
             decoding="async"
           />
         )}
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.76)_46%,rgba(0,0,0,0.50)_100%)]" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.86)_0%,rgba(0,0,0,0.20)_58%,rgba(0,0,0,0.68)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.84)_0%,rgba(0,0,0,0.62)_46%,rgba(0,0,0,0.22)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.76)_0%,rgba(0,0,0,0.10)_58%,rgba(0,0,0,0.42)_100%)]" />
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.42fr_1fr]">
           <FadeSection>
             <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Buyer context</p>
@@ -427,7 +427,7 @@ export default function DestinationDetail() {
           <FadeSection delay={120}>
             <div className="grid gap-px bg-[var(--brand-gray-800)]">
               {region.buyerContext.map((item, index) => (
-                <div key={item} className="grid grid-cols-[auto_1fr] gap-5 bg-black/72 p-6 backdrop-blur-sm">
+                <div key={item} className="grid grid-cols-[auto_1fr] gap-5 bg-black/62 p-6 backdrop-blur-sm">
                   <div className="flex h-9 w-9 items-center justify-center border border-[var(--brand-gray-700)] text-xs font-bold text-white">
                     {String(index + 1).padStart(2, "0")}
                   </div>
@@ -522,12 +522,12 @@ export default function DestinationDetail() {
           <img
             src={seoImage.src}
             alt={seoImage.alt}
-            className="absolute inset-0 -z-20 h-full w-full object-cover opacity-45"
+            className="absolute inset-0 -z-20 h-full w-full object-cover opacity-68"
             loading="lazy"
             decoding="async"
           />
         )}
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.78)_52%,rgba(0,0,0,0.58)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.84)_0%,rgba(0,0,0,0.62)_52%,rgba(0,0,0,0.26)_100%)]" />
         <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
             <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>SEO focus</p>

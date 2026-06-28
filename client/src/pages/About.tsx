@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
 import TradePresence from "@/components/TradePresence";
+import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 const HERO_BG = pageHeroImages.company;
@@ -254,45 +255,23 @@ export default function About() {
       {/* ══════════════════════════════════════════════════════════════
           FINAL CTA
           ══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 lg:px-10" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="max-w-[900px] mx-auto text-center">
-          <FadeSection>
-            <h2 style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif", fontSize: "3rem", fontWeight: 300, color: "var(--brand-text)", marginBottom: "16px", letterSpacing: "-0.02em" }}>
-              Ready to Begin?
-            </h2>
-            <p style={{ fontSize: "1.1rem", color: "var(--brand-text-muted)", marginBottom: "32px", lineHeight: 1.8, fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}>
-              Contact us today to discuss your perfect journey. Our team will work with you to create an experience tailored to your interests, pace, and style.
-            </p>
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Link href="/contact" className="inline-flex items-center gap-2" style={{
-                backgroundColor: "var(--brand-champagne)",
-                color: "#FFFFFF",
-                padding: "14px 32px",
-                borderRadius: "50px",
-                textDecoration: "none",
-                fontWeight: 500,
-                fontSize: "1rem",
-                transition: "all 0.3s ease",
-              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne-hover)"; e.currentTarget.style.transform = "scale(1.05)"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.transform = "scale(1)"; }}>
-                Plan Your Journey <ArrowRight size={18} />
-              </Link>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2" style={{
-                border: "2px solid var(--brand-champagne)",
-                color: "var(--brand-champagne)",
-                padding: "12px 28px",
-                borderRadius: "50px",
-                textDecoration: "none",
-                fontWeight: 500,
-                fontSize: "1rem",
-                transition: "all 0.3s ease",
-                backgroundColor: "transparent",
-              }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--brand-champagne)"; e.currentTarget.style.color = "#FFFFFF"; }} onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "var(--brand-champagne)"; }}>
-                WhatsApp Us
-              </a>
-            </div>
-          </FadeSection>
-        </div>
-      </section>
+      <DarkImageSection
+        image="/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-official-exhibition-backdrop-team-photo.jpeg"
+        alt="China Prime DMC team at ICGTE Singapore travel trade show."
+        eyebrow="Work with China Prime DMC"
+        title="Send us the brief. We will shape the China route around your client."
+        body="Our team will help you turn market source, travel window, client profile, and service expectations into a China program your team can sell and we can operate."
+        actions={
+          <>
+            <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+              Send a brief <ArrowRight size={18} />
+            </Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button border-white bg-transparent text-white hover:bg-white hover:text-[var(--brand-black)]">
+              WhatsApp us
+            </a>
+          </>
+        }
+      />
     </div>
   );
 }
