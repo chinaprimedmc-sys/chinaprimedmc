@@ -5,6 +5,8 @@ import { EMAIL } from "@/lib/data";
 import type { Journey } from "@/lib/programData";
 import { journeyFilterOptions, journeys } from "@/lib/programData";
 import { pageHeroImages } from "@/lib/heroImages";
+import { visualAssets } from "@/lib/visualAssets";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -46,23 +48,23 @@ type SortKey = "recommended" | "duration-asc" | "duration-desc";
 const visualCategories = [
   {
     title: "Classic icons",
-    src: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg",
-    alt: "Great Wall Beijing private China trip visual.",
+    src: visualAssets.journeysClassicIcon.src,
+    alt: visualAssets.journeysClassicIcon.alt,
   },
   {
     title: "Family demand",
-    src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
-    alt: "Chengdu panda base for family-friendly private China trips.",
+    src: visualAssets.journeysFamilyDemand.src,
+    alt: visualAssets.journeysFamilyDemand.alt,
   },
   {
     title: "Soft adventure",
-    src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park.jpg",
-    alt: "Wulingyuan Zhangjiajie scenery for soft adventure China trips.",
+    src: visualAssets.journeysSoftAdventure.src,
+    alt: visualAssets.journeysSoftAdventure.alt,
   },
   {
     title: "Silk Road",
-    src: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
-    alt: "Zhangye National Geopark for private Silk Road trips in China.",
+    src: visualAssets.journeysSilkRoad.src,
+    alt: visualAssets.journeysSilkRoad.alt,
   },
 ];
 
@@ -190,7 +192,7 @@ export default function Journeys() {
     <main className="btoc-shell" style={{ paddingTop: "72px" }}>
       <section className="btoc-hero min-h-[76svh]">
         <div className="btoc-hero-media">
-          <img src={pageHeroImages.programs} alt="Tiger Leaping Gorge in Yunnan for private China trip planning." loading="eager" decoding="async" fetchPriority="high" />
+          <ResponsiveImage src={pageHeroImages.programs} alt={visualAssets.journeysHeroPanda.alt} widths={[960, 1400, 1920]} loading="eager" decoding="async" fetchPriority="high" />
         </div>
         <div className="btoc-hero-inner btoc-wrap min-h-[76svh]">
           <div className="btoc-hero-grid">
@@ -379,7 +381,7 @@ export default function Journeys() {
       <section className="btoc-section pt-4">
         <div className="btoc-wrap">
           <div className="btoc-image-frame min-h-[58vh] rounded-[34px]">
-            <img src="/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg" alt="Meili Snow Mountain for custom China private trip planning." loading="lazy" decoding="async" />
+            <img src={visualAssets.journeysCta.src} alt={visualAssets.journeysCta.alt} loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,39,0.78),rgba(17,24,39,0.36),rgba(17,24,39,0.08))]" />
             <div className="absolute bottom-0 left-0 right-0 p-7 md:p-12 lg:p-16">
               <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Not sure where to begin?</span>

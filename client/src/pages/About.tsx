@@ -5,6 +5,7 @@ import { WHATSAPP_URL } from "@/lib/data";
 import MediaHero from "@/components/MediaHero";
 import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
+import { visualAssets } from "@/lib/visualAssets";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,48 +53,48 @@ const operatingPrinciples = [
   {
     icon: <ClipboardList size={18} />,
     title: "We plan before we promise",
-    image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan.jpg",
-    alt: "Huangshan mountain scenery for private China itinerary planning.",
+    image: visualAssets.aboutPlanning.src,
+    alt: visualAssets.aboutPlanning.alt,
     points: ["Feasibility before pricing", "Clear inclusions and assumptions", "No vague promises before route logic"],
   },
   {
     icon: <MapPinned size={18} />,
     title: "The route has to make sense",
-    image: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-shanghai-tower.jpg",
-    alt: "Shanghai Tower for China gateway and route planning.",
+    image: visualAssets.aboutRoute.src,
+    alt: visualAssets.aboutRoute.alt,
     points: ["Smarter city order", "Realistic daily pacing", "Destinations that belong together"],
   },
   {
     icon: <ShieldCheck size={18} />,
     title: "The ground details matter",
-    image: "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-shennong-stream.jpg",
-    alt: "Shennong Stream for China local delivery and route operations.",
+    image: visualAssets.aboutGround.src,
+    alt: visualAssets.aboutGround.alt,
     points: ["Guide and vehicle coordination", "Hotel and meal logic", "Day-by-day issue response"],
   },
   {
     icon: <Headphones size={18} />,
     title: "You are not left on your own",
-    image: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
-    alt: "Karakul Lake Xinjiang for private China travel support and route planning.",
+    image: visualAssets.aboutSupport.src,
+    alt: visualAssets.aboutSupport.alt,
     points: ["Fast brief intake", "Plain-English route advice", "Support before and during travel"],
   },
 ];
 
 const proofImages = [
   {
-    src: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-crescent-lake-dunhuang.jpg",
-    alt: "Crescent Lake Dunhuang for China Silk Road travel planning.",
-    title: "Silk Road scale",
+    src: "/programs/xinjiang-xian-silk-road-14-day/china-prime-dmc-xinjiang-xian-silk-road-14-day-gaochang.jpg",
+    alt: "Gaochang ruins for China Silk Road travel planning.",
+    title: "Silk Road memory",
   },
   {
-    src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou.jpg",
-    alt: "Jiuzhaigou national park for nature-focused China journeys.",
-    title: "Nature that children remember",
+    src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-mount-siguniang.jpg",
+    alt: "Mount Siguniang for nature-focused China journeys.",
+    title: "Nature with room to breathe",
   },
   {
-    src: "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-potala-palace.jpg",
-    alt: "Potala Palace Lhasa for specialist China route planning.",
-    title: "Highland journeys, handled carefully",
+    src: "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-nyingchi.jpg",
+    alt: "Nyingchi highland scenery for specialist China route planning.",
+    title: "Highland journeys, paced carefully",
   },
 ];
 
@@ -143,7 +144,7 @@ export default function About() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(companySchema) }} />
       <MediaHero
         image={pageHeroImages.company}
-        alt="Forbidden City Beijing representing China Prime DMC company story and China expertise."
+        alt={visualAssets.aboutHero.alt}
         eyebrow="About China Prime DMC"
         title={<>The guide behind a China trip you can trust.</>}
         body="Established in 2012, China Prime DMC plans private China journeys from inside China for travelers who want the country to feel inspiring, safe, well paced, and quietly handled."
@@ -211,8 +212,8 @@ export default function About() {
       </section>
 
       <DarkImageSection
-        image="/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg"
-        alt="Great Wall of China for private China travelers."
+        image="/programs/classic-china-beijing-xian-shanghai-12-day/china-prime-dmc-classic-china-beijing-xian-shanghai-12-day-xi-an-city-wall.jpg"
+        alt="Xi'an City Wall for honest route editing in private China travel."
         eyebrow="What makes the work different"
         title="China becomes easier when someone edits the trip with honesty."
         body="We do not add cities because they sound impressive. We ask what each stop gives you, what it costs in time and energy, and whether it makes the whole journey better."
@@ -256,8 +257,8 @@ export default function About() {
       </section>
 
       <DarkImageSection
-        image="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-the-bund.jpg"
-        alt="The Bund Shanghai for global China travel partner route planning."
+        image="/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-yangtze.jpg"
+        alt="Yangtze River for private China route planning conversation."
         eyebrow="Start planning"
         title="Send the China trip you are imagining. We will make it practical."
         body="Tell us who is traveling, when you may go, what you want to feel, and what worries you. We will respond with practical route thinking and the next questions that matter."

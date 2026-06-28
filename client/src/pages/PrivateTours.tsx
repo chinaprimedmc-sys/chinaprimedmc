@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { EMAIL, WHATSAPP_URL } from "@/lib/data";
 import DarkImageSection from "@/components/DarkImageSection";
+import { visualAssets } from "@/lib/visualAssets";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,18 +50,18 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 }
 
 const privateImages = {
-  hero: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
-  gubei: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg",
-  yuGarden: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-the-bund.jpg",
-  chengdu: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip.webp",
-  glassBridge: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg",
+  hero: visualAssets.privateHero.src,
+  gubei: visualAssets.privateFirstTime.src,
+  family: visualAssets.privateFamily.src,
+  women: visualAssets.privateWomen.src,
+  glassBridge: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-glass-bridge.jpg",
   huangguoshu: "/programs/guizhou-ethnic-karst-6-day/china-prime-dmc-guizhou-ethnic-karst-6-day-huangguoshu-waterfall.jpg",
-  shapotou: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-shapotou.jpg",
-  karakul: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
-  songzanlin: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-songzanlin-monastery.jpg",
-  huanglong: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-huanglong-scenic-and-historic-interest-area.jpg",
-  stoneForest: "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-longji-rice-terraces.jpg",
-  heavenlyLake: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-heavenly-lake-of-tian-shan.jpg",
+  shapotou: visualAssets.privateMuslim.src,
+  karakul: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-taklamakan-desert.jpg",
+  songzanlin: visualAssets.privateFinal.src,
+  huanglong: visualAssets.privateRouteRhythm.src,
+  stoneForest: visualAssets.privateExtension.src,
+  final: visualAssets.privateFinal.src,
 } as const;
 
 const heroStats = [
@@ -74,15 +75,15 @@ const travelStyles = [
     icon: <UsersRound size={18} />,
     title: "First-time China",
     image: privateImages.gubei,
-    alt: "Great Wall for private first-time China tours.",
+    alt: visualAssets.privateFirstTime.alt,
     body: "Beijing, Xi'an, Shanghai, Suzhou, Hangzhou, and one scenic extension, paced so the trip feels exciting rather than exhausting.",
     points: ["Classic icons", "Private guide", "Easy pacing"],
   },
   {
     icon: <HeartHandshake size={18} />,
     title: "Family travel",
-    image: privateImages.chengdu,
-    alt: "Giant panda for family-friendly private China travel planning.",
+    image: privateImages.family,
+    alt: visualAssets.privateFamily.alt,
     body: "Pandas, hands-on food experiences, short transfer days, flexible starts, and guides who understand how families actually move.",
     points: ["Kid-aware timing", "Panda moments", "Family rooms"],
   },
@@ -97,8 +98,8 @@ const travelStyles = [
   {
     icon: <Sparkles size={18} />,
     title: "Women-friendly journeys",
-    image: privateImages.yuGarden,
-    alt: "Yu Garden Shanghai for women-friendly private China journeys.",
+    image: privateImages.women,
+    alt: visualAssets.privateWomen.alt,
     body: "Culture, design, food, tea, safe evening timing, boutique neighborhoods, and a guide style that feels comfortable and unhurried.",
     points: ["Comfortable flow", "Culture and food", "Flexible guide"],
   },
@@ -196,7 +197,7 @@ export default function PrivateTours() {
       <section className="relative isolate min-h-[calc(100svh-72px)] overflow-hidden bg-[var(--brand-black)] text-white">
         <img
           src={privateImages.hero}
-          alt="Namtso Lake Tibet for private custom China tours."
+          alt={visualAssets.privateHero.alt}
           className="absolute inset-0 -z-20 h-full w-full object-cover"
           loading="eager"
           decoding="async"
@@ -334,7 +335,7 @@ export default function PrivateTours() {
         <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] lg:grid-cols-[1.1fr_0.9fr]">
           <FadeSection>
             <figure className="relative min-h-[520px] overflow-hidden bg-[var(--brand-black)]">
-              <img src={privateImages.stoneForest} alt="Longji Rice Terraces for private South China travel." className="h-full min-h-[520px] w-full object-cover" loading="lazy" decoding="async" />
+              <img src={privateImages.stoneForest} alt={visualAssets.privateExtension.alt} className="h-full min-h-[520px] w-full object-cover" loading="lazy" decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/64 via-black/6 to-transparent" />
               <figcaption className="absolute bottom-0 left-0 right-0 max-w-2xl p-7">
                 <div className="mono-index mb-3 text-[var(--brand-gray-300)]">Yunnan extension</div>
@@ -385,7 +386,7 @@ export default function PrivateTours() {
 
           <FadeSection delay={120}>
             <figure className="relative min-h-[460px] overflow-hidden bg-[var(--brand-black)]">
-              <img src={privateImages.heavenlyLake} alt="Heavenly Lake of Tian Shan for private China travel inspiration." className="h-full min-h-[460px] w-full object-cover" loading="lazy" decoding="async" />
+              <img src={privateImages.final} alt={visualAssets.privateFinal.alt} className="h-full min-h-[460px] w-full object-cover" loading="lazy" decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/66 via-black/6 to-transparent" />
               <figcaption className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="mono-index mb-3 text-[var(--brand-gray-300)]">Private China design</div>

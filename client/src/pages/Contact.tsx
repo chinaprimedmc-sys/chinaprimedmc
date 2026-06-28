@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Briefcase, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { EMAIL, WHATSAPP_URL } from "@/lib/data";
 import { pageHeroImages } from "@/lib/heroImages";
+import { visualAssets } from "@/lib/visualAssets";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -224,7 +226,7 @@ export default function Contact() {
     <main className="btoc-shell" style={{ paddingTop: "72px" }}>
       <section className="btoc-hero min-h-[72svh]">
         <div className="btoc-hero-media">
-          <img src={pageHeroImages.contact} alt="China Prime DMC private China trip planning consultation." loading="eager" decoding="async" fetchPriority="high" />
+          <ResponsiveImage src={pageHeroImages.contact} alt={visualAssets.contactHero.alt} widths={[960, 1400, 1920]} loading="eager" decoding="async" fetchPriority="high" />
         </div>
         <div className="btoc-hero-inner btoc-wrap min-h-[72svh]">
           <div className="btoc-hero-grid">
@@ -401,7 +403,7 @@ export default function Contact() {
       <section className="btoc-section pt-0">
         <div className="btoc-wrap">
           <div className="btoc-image-frame min-h-[54vh] rounded-[34px]">
-            <img src="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg" alt="West Lake Hangzhou private China trip planning inspiration." loading="lazy" decoding="async" />
+            <img src={visualAssets.contactCta.src} alt={visualAssets.contactCta.alt} loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,39,0.78),rgba(17,24,39,0.36),rgba(17,24,39,0.10))]" />
             <div className="absolute bottom-0 left-0 right-0 p-7 md:p-12 lg:p-16">
               <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Before you brief us</span>

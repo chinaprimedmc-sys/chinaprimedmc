@@ -10,6 +10,7 @@
     "check": "tsc --noEmit",
     "format": "prettier --write .",
     "optimize:images": "node scripts/optimize-public-images.mjs",
+    "audit:visuals": "node scripts/audit-visual-assets.mjs",
     "test": "vitest run",
     "db:push": "drizzle-kit generate && drizzle-kit migrate"
   },

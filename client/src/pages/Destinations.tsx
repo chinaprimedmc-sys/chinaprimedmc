@@ -5,6 +5,8 @@ import { CoverageMap } from "@/components/CoverageMap";
 import { coverageRegions } from "@/lib/coverageData";
 import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
+import { visualAssets } from "@/lib/visualAssets";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -63,37 +65,37 @@ const fitMatrix = [
     segment: "Your first time in China",
     bestRegions: "Beijing, Xi'an, Shanghai, Suzhou, Guilin",
     why: "Recognizable icons, strong guides, easier logistics, and enough context to feel grounded.",
-    image: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city.jpg",
+    image: "/programs/classic-china-beijing-xian-shanghai-12-day/china-prime-dmc-classic-china-beijing-xian-shanghai-12-day-big-wild-goose-pagoda.jpg",
   },
   {
     segment: "Luxury private travelers",
     bestRegions: "Shanghai, Hangzhou, Beijing, Yunnan, Chengdu",
     why: "Better hotels, private moments, flexible pacing, and fewer compromises on comfort.",
-    image: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg",
+    image: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-shangri-la-city.jpg",
   },
   {
     segment: "Muslim-friendly travelers",
     bestRegions: "Xi'an, Ningxia, Gansu, Xinjiang, Beijing, Shanghai",
     why: "Muslim heritage, halal-aware meals, mosque access where practical, and honest local guidance.",
-    image: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-kashgar.jpg",
+    image: "/programs/xinjiang-xian-silk-road-14-day/china-prime-dmc-xinjiang-xian-silk-road-14-day-turpan.jpg",
   },
   {
     segment: "Families with children",
     bestRegions: "Chengdu, Guilin, Beijing, Shanghai, Zhangjiajie",
     why: "Pandas, rivers, hands-on culture, visual impact, and days that respect real family energy.",
-    image: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
+    image: "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-universal-beijing-resort.jpg",
   },
   {
     segment: "Older parents and senior travelers",
     bestRegions: "Beijing, Shanghai, Suzhou, Hangzhou, Chengdu",
     why: "Comfortable pacing, shorter transfers, mature hotels, and less unnecessary walking.",
-    image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg",
+    image: "/programs/women-beijing-xian-shanghai-11-day/china-prime-dmc-women-beijing-xian-shanghai-11-day-humble-administrator-s-garden.jpg",
   },
   {
     segment: "Multi-city private trips",
     bestRegions: "Shanghai, Beijing, Guangzhou, Guilin, Chengdu, Hangzhou",
     why: "Air access, rail connections, strong hotels, and route logic that feels clear before you go.",
-    image: "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-beijing-national-stadium.jpg",
+    image: "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-shanghai-world-financial-center.jpg",
   },
 ];
 
@@ -127,15 +129,15 @@ const routeExamples = [
     title: "Silk Road + Muslim Heritage",
     path: "Xi'an -> Lanzhou -> Dunhuang -> Urumqi / Kashgar",
     note: "A high-value route for Muslim-friendly groups, repeat China visitors, and culture-led programs.",
-    image: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark.jpg",
-    alt: "Zhangye National Geopark for Silk Road China routing.",
+    image: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-jiayuguan-pass.jpg",
+    alt: "Jiayuguan Pass for Silk Road China routing.",
   },
   {
     title: "Premium East China Extension",
     path: "Shanghai -> Suzhou -> Hangzhou -> Huangshan",
     note: "Works as a luxury FIT module, incentive extension, or post-cruise cultural program.",
-    image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan.jpg",
-    alt: "Huangshan mountain for premium East China extensions.",
+    image: "/programs/women-beijing-zhangjiajie-shanghai-11-day/china-prime-dmc-women-beijing-zhangjiajie-shanghai-11-day-longjing-tea.jpg",
+    alt: "Longjing tea fields for premium East China extensions.",
   },
 ];
 
@@ -157,7 +159,7 @@ export default function Destinations() {
     <main className="btoc-shell" style={{ paddingTop: "72px" }}>
       <section className="btoc-hero min-h-[78svh]">
         <div className="btoc-hero-media">
-          <img src={pageHeroImages.coverage} alt="Yangtze River route representing nationwide private China trip coverage." loading="eager" decoding="async" fetchPriority="high" />
+          <ResponsiveImage src={pageHeroImages.coverage} alt={visualAssets.destinationsHero.alt} widths={[960, 1400, 1920]} loading="eager" decoding="async" fetchPriority="high" />
         </div>
         <div className="btoc-hero-inner btoc-wrap min-h-[78svh]">
           <div className="btoc-hero-grid">
@@ -315,8 +317,8 @@ export default function Destinations() {
       </section>
 
       <DarkImageSection
-        image="/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-three-gorges-dam.jpg"
-        alt="Three Gorges Dam for nationwide private China route coverage."
+        image={visualAssets.destinationsExecutionBanner.src}
+        alt={visualAssets.destinationsExecutionBanner.alt}
         eyebrow="What makes a route feel easy"
         title="Beautiful places matter. Clean execution matters more."
         body="Before recommending a destination, we look at the details travelers actually feel: transfer time, guide quality, hotel location, meal planning, seasonality, permits, walking pressure, and what happens if plans need to change."

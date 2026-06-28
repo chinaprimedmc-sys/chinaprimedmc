@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/data";
 import { pageHeroImages } from "@/lib/heroImages";
+import { visualAssets } from "@/lib/visualAssets";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -79,29 +81,29 @@ const heroGallery = [
 
 const storyImages = [
   {
-    src: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip.webp",
-    alt: "Real giant panda for family-friendly private China trips.",
-    label: "Pandas & family days",
+    src: visualAssets.homeStoryJiuzhaigou.src,
+    alt: visualAssets.homeStoryJiuzhaigou.alt,
+    label: "Blue lakes",
   },
   {
-    src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park.jpg",
-    alt: "Tianmen Mountain Zhangjiajie cinematic landscape.",
-    label: "Avatar peaks",
+    src: visualAssets.homeStoryHuangshan.src,
+    alt: visualAssets.homeStoryHuangshan.alt,
+    label: "Cloud peaks",
   },
   {
-    src: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan.jpg",
-    alt: "West Lake Hangzhou slow travel scene.",
-    label: "Garden cities",
+    src: visualAssets.homeStoryCrescentLake.src,
+    alt: visualAssets.homeStoryCrescentLake.alt,
+    label: "Desert light",
   },
   {
-    src: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
-    alt: "Kashgar old town for Muslim-friendly Silk Road travel.",
-    label: "Muslim heritage",
+    src: visualAssets.homeStoryWestLake.src,
+    alt: visualAssets.homeStoryWestLake.alt,
+    label: "Slow water",
   },
   {
-    src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou.jpg",
-    alt: "Potala Palace Lhasa private Tibet journey.",
-    label: "Highland culture",
+    src: visualAssets.homeStoryNamtso.src,
+    alt: visualAssets.homeStoryNamtso.alt,
+    label: "Highland silence",
   },
 ];
 
@@ -110,33 +112,29 @@ const travelStyles = [
     icon: <Heart size={18} />,
     title: "Luxury family travel",
     body: "Pandas, landmark days, sane pacing, child-aware meals, and hotels chosen because family travel should feel composed, not improvised.",
-    image: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip.webp",
   },
   {
     icon: <Utensils size={18} />,
     title: "Muslim-friendly China",
     body: "Halal-aware routing, mosque access where practical, realistic restaurant planning, and clear notes where local options need care.",
-    image: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-muslim-quarter-xi-an.jpg",
   },
   {
     icon: <Camera size={18} />,
     title: "Women-friendly flow",
     body: "Private guides, elegant neighborhoods, beautiful local life, softer evenings, and the kind of pacing that lets the trip breathe.",
-    image: "/programs/women-beijing-xian-shanghai-11-day/china-prime-dmc-women-beijing-xian-shanghai-11-day-shanghai-french-concession.jpg",
   },
   {
     icon: <Clock3 size={18} />,
     title: "Senior comfort",
     body: "Shorter walking blocks, private vehicles, better hotel locations, realistic timing, and room to enjoy China without pressure.",
-    image: "/programs/classic-china-beijing-xian-shanghai-12-day/china-prime-dmc-classic-china-beijing-xian-shanghai-12-day-tiananmen-square.jpg",
   },
 ];
 
 const planningSteps = [
-  { icon: <Compass size={18} />, title: "Listen first", body: "We start with the people traveling: age, pace, food, hotel taste, mobility, faith needs, and what China should feel like.", image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg" },
-  { icon: <MapPinned size={18} />, title: "Edit the route", body: "We remove the rushed parts, protect the good hours of the day, and connect cities with a rhythm that feels intelligent.", image: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-yu-garden.jpg" },
-  { icon: <Train size={18} />, title: "Control the ground", body: "Guides, vehicles, rail, tickets, meal logic, hotel location, and backup thinking are planned before the trip starts.", image: "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-beijing-national-stadium.jpg" },
-  { icon: <Headphones size={18} />, title: "Stay close", body: "A China-based team remains reachable while the journey is moving, because premium travel needs calm support.", image: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-chongqing.jpg" },
+  { icon: <Compass size={18} />, title: "Listen first", body: "We start with the people traveling: age, pace, food, hotel taste, mobility, faith needs, and what China should feel like." },
+  { icon: <MapPinned size={18} />, title: "Edit the route", body: "We remove the rushed parts, protect the good hours of the day, and connect cities with a rhythm that feels intelligent." },
+  { icon: <Train size={18} />, title: "Control the ground", body: "Guides, vehicles, rail, tickets, meal logic, hotel location, and backup thinking are planned before the trip starts." },
+  { icon: <Headphones size={18} />, title: "Stay close", body: "A China-based team remains reachable while the journey is moving, because premium travel needs calm support." },
 ];
 
 export default function Home() {
@@ -144,7 +142,7 @@ export default function Home() {
     <main className="btoc-shell cinema-home">
       <section className="cinema-scene cinema-opening">
         <div className="cinema-scene-media">
-          <img src={pageHeroImages.home} alt="Mutianyu Great Wall private China tour for first-time travelers." loading="eager" decoding="async" fetchPriority="high" />
+          <ResponsiveImage src={pageHeroImages.home} alt={visualAssets.homeHero.alt} widths={[960, 1400, 1920]} loading="eager" decoding="async" fetchPriority="high" />
         </div>
         <div className="cinema-scene-scrim" />
         <div className="cinema-scene-content">
@@ -172,7 +170,7 @@ export default function Home() {
 
       <section className="cinema-scene cinema-split-scene">
         <div className="cinema-portrait">
-          <img src="/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-li-river.jpg" alt="Li River Guilin private luxury China journey." loading="lazy" decoding="async" />
+          <img src={visualAssets.homeRiverScene.src} alt={visualAssets.homeRiverScene.alt} loading="lazy" decoding="async" />
         </div>
         <div className="cinema-editorial-copy">
           <FadeSection>
@@ -201,7 +199,7 @@ export default function Home() {
 
       <section className="cinema-scene cinema-traveler-scene">
         <div className="cinema-scene-media">
-          <img src="/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg" alt="Chongqing Hongya Cave night view for China private trips." className="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <img src={visualAssets.homeNightScene.src} alt={visualAssets.homeNightScene.alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
         </div>
         <div className="cinema-scene-scrim" />
         <div className="cinema-scene-content cinema-two-column">
@@ -224,7 +222,7 @@ export default function Home() {
 
       <section className="cinema-scene cinema-control-scene">
         <div className="cinema-wide-photo">
-          <img src="/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg" alt="Great Wall private China trip logistics planning." loading="lazy" decoding="async" />
+          <img src={visualAssets.homeControlScene.src} alt={visualAssets.homeControlScene.alt} loading="lazy" decoding="async" />
         </div>
         <div className="cinema-control-copy">
           <FadeSection>
@@ -247,7 +245,7 @@ export default function Home() {
 
       <section className="cinema-scene cinema-final-scene">
         <div className="cinema-scene-media">
-          <img src="/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg" alt="Meili Snow Mountain Yunnan cinematic private China journey." loading="lazy" decoding="async" />
+          <img src={visualAssets.homeFinalCta.src} alt={visualAssets.homeFinalCta.alt} loading="lazy" decoding="async" />
         </div>
         <div className="cinema-scene-scrim" />
         <div className="cinema-scene-content">

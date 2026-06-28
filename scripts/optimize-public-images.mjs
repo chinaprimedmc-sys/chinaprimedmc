@@ -3,10 +3,13 @@ import path from "node:path";
 import sharp from "sharp";
 
 const publicDir = path.resolve("client/public");
+const visualAssetsFile = path.resolve("client/src/lib/visualAssets.ts");
 const supported = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const maxWidth = 1400;
 const maxHeight = 1400;
 const minSavings = 1024;
+const derivativeWidths = [960, 1400];
+const heroWidth = 1920;
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -24,6 +27,21 @@ function outputFormat(ext) {
   if (ext === ".png") return "png";
   if (ext === ".webp") return "webp";
   return "jpeg";
+}
+
+function isGeneratedDerivative(file) {
+  return /-\d+\.(avif|webp)$/i.test(file);
+}
+
+async function visualAssetTargets() {
+  const content = await fs.readFile(visualAssetsFile, "utf8");
+  const blocks = [...content.matchAll(/\w+:\s*\{([\s\S]*?)\n\s*\}/g)].map((match) => match[1]);
+  return new Map(blocks.flatMap((block) => {
+    const src = block.match(/src:\s*"([^"]+)"/)?.[1];
+    const role = block.match(/role:\s*"([^"]+)"/)?.[1];
+    if (!src || !role) return [];
+    return [[path.resolve(publicDir, src.replace(/^\//, "")), role]];
+  }));
 }
 
 async function optimize(file) {
@@ -53,10 +71,40 @@ async function optimize(file) {
   return { file, original: original.length, optimized: original.length, changed: false };
 }
 
-const files = (await walk(publicDir)).filter((file) => supported.has(path.extname(file).toLowerCase()));
+async function derivative(file, width, format) {
+  const ext = path.extname(file).toLowerCase();
+  if (ext === `.${format}`) return null;
+  const output = file.replace(ext, `-${width}.${format}`);
+  const source = await fs.readFile(file);
+  const pipeline = sharp(source, { failOn: "none" }).rotate().resize({
+    width,
+    fit: "inside",
+    withoutEnlargement: true,
+  });
+  const converted = format === "avif"
+    ? await pipeline.avif({ quality: 52, effort: 5 }).toBuffer()
+    : await pipeline.webp({ quality: 74, effort: 5 }).toBuffer();
+  await fs.writeFile(output, converted);
+  return { file: output, bytes: converted.length };
+}
+
+const files = (await walk(publicDir)).filter((file) => supported.has(path.extname(file).toLowerCase()) && !isGeneratedDerivative(file));
+const derivativeTargets = await visualAssetTargets();
 const results = [];
+const derivatives = [];
 for (const file of files) {
   results.push(await optimize(file));
+  const role = derivativeTargets.get(file);
+  if (!role) continue;
+  const metadata = await sharp(file, { failOn: "none" }).metadata();
+  const candidateWidths = role === "hero" ? [...derivativeWidths, heroWidth] : derivativeWidths;
+  const widths = candidateWidths.filter((width) => !metadata.width || metadata.width >= width * 0.72);
+  for (const width of widths) {
+    const avif = await derivative(file, width, "avif");
+    const webp = await derivative(file, width, "webp");
+    if (avif) derivatives.push(avif);
+    if (webp) derivatives.push(webp);
+  }
 }
 
 const changed = results.filter((item) => item.changed);
@@ -71,6 +119,7 @@ console.log(JSON.stringify({
   afterBytes: after,
   savedBytes: saved,
   savedPercent: Number(((saved / before) * 100).toFixed(1)),
+  derivatives: derivatives.length,
   largestSavings: changed
     .map((item) => ({
       file: path.relative(process.cwd(), item.file),
