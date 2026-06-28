@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "wouter";
-import { ArrowLeft, ArrowRight, Check, Clock, MapPin, Minus, Users } from "lucide-react";
-import { WHATSAPP_URL } from "@/lib/data";
-import { journeys } from "@/lib/programData";
+import { ArrowLeft, ArrowRight, Check, ChevronLeft, ChevronRight, Clock, Mail, MapPin, Maximize2, MessageCircle, Minus, Users, X } from "lucide-react";
+import { EMAIL, WHATSAPP_URL } from "@/lib/data";
+import { journeys, type ProgramImage, type Journey } from "@/lib/programData";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -65,9 +65,237 @@ function BulletList({ items, icon = "check" }: { items: string[]; icon?: "check"
   );
 }
 
+function buildInquiryLinks(journey: Journey) {
+  const subject = `Net rate request: ${journey.title}`;
+  const body = [
+    `Hello China Prime DMC,`,
+    ``,
+    `I would like to request B2B net rates and operating details for:`,
+    `${journey.title}`,
+    ``,
+    `Route: ${journey.route}`,
+    `Duration: ${journey.duration}`,
+    `Travel window:`,
+    `Group size:`,
+    `Hotel level:`,
+    `Client market:`,
+    `Special requirements:`,
+    ``,
+    `Please send availability, suggested pacing, inclusions, exclusions, and any operational notes we should know before quoting.`,
+  ].join("\n");
+
+  return {
+    mailto: `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+    whatsapp: `${WHATSAPP_URL}?text=${encodeURIComponent(body)}`,
+  };
+}
+
+function ImageLightbox({
+  images,
+  activeIndex,
+  onClose,
+  onNavigate,
+}: {
+  images: ProgramImage[];
+  activeIndex: number | null;
+  onClose: () => void;
+  onNavigate: (index: number) => void;
+}) {
+  const isOpen = activeIndex !== null;
+  const image = isOpen ? images[activeIndex] : undefined;
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+      if (event.key === "ArrowLeft") onNavigate((activeIndex - 1 + images.length) % images.length);
+      if (event.key === "ArrowRight") onNavigate((activeIndex + 1) % images.length);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeIndex, images.length, isOpen, onClose, onNavigate]);
+
+  if (!isOpen || !image) return null;
+
+  const previousIndex = (activeIndex - 1 + images.length) % images.length;
+  const nextIndex = (activeIndex + 1) % images.length;
+
+  return (
+    <div className="fixed inset-0 z-[90] bg-black text-white">
+      <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 border-b border-white/10 bg-black/72 px-4 py-3 backdrop-blur md:px-7">
+        <div className="min-w-0">
+          <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--brand-gray-400)]">
+            {String(activeIndex + 1).padStart(2, "0")} / {images.length}
+          </div>
+          <div className="truncate text-sm font-semibold text-white md:text-base">{image.topic}</div>
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/20 bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-200)]"
+          aria-label="Close image preview"
+        >
+          <X size={18} />
+        </button>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => onNavigate(previousIndex)}
+        className="absolute left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center border border-white/20 bg-black/55 text-white backdrop-blur transition-colors hover:bg-white hover:text-[var(--brand-black)] md:flex"
+        aria-label="Previous image"
+      >
+        <ChevronLeft size={22} />
+      </button>
+      <button
+        type="button"
+        onClick={() => onNavigate(nextIndex)}
+        className="absolute right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center border border-white/20 bg-black/55 text-white backdrop-blur transition-colors hover:bg-white hover:text-[var(--brand-black)] md:flex"
+        aria-label="Next image"
+      >
+        <ChevronRight size={22} />
+      </button>
+
+      <div className="flex h-full touch-pan-y items-center justify-center px-3 pb-32 pt-20 md:px-20 md:pb-32 md:pt-24">
+        <img
+          src={image.src}
+          alt={image.alt}
+          className="max-h-full max-w-full object-contain"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/82 p-4 backdrop-blur md:p-7">
+        <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-[1fr_auto] md:items-end">
+          <div>
+            <h3 className="text-xl font-semibold leading-tight text-white md:text-4xl">{image.topic}</h3>
+            <p className="mt-2 line-clamp-2 max-w-3xl text-sm leading-6 text-[var(--brand-gray-300)] md:line-clamp-none md:text-base md:leading-7">{image.caption}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-px bg-white/20 md:w-36">
+            <button
+              type="button"
+              onClick={() => onNavigate(previousIndex)}
+              className="flex h-11 items-center justify-center bg-white text-[var(--brand-black)]"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate(nextIndex)}
+              className="flex h-11 items-center justify-center bg-white text-[var(--brand-black)]"
+              aria-label="Next image"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CinematicGallery({
+  images,
+  onOpen,
+}: {
+  images: ProgramImage[];
+  onOpen: (index: number) => void;
+}) {
+  return (
+    <div className="-mx-6 flex snap-x gap-3 overflow-x-auto px-6 pb-3 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-6 md:gap-4 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
+      {images.map((image, index) => (
+        <FadeSection
+          key={image.src}
+          delay={index * 45}
+          className={[
+            "min-w-[82vw] snap-center md:min-w-0",
+            index === 0 ? "md:col-span-4 md:row-span-2" : "md:col-span-2",
+            index === 3 ? "md:col-span-3" : "",
+            index === 4 ? "md:col-span-3" : "",
+          ].join(" ")}
+        >
+          <button
+            type="button"
+            onClick={() => onOpen(index)}
+            className="group relative block h-full w-full overflow-hidden bg-[var(--brand-gray-900)] text-left text-white"
+            aria-label={`Open ${image.topic} image`}
+          >
+            <div className={index === 0 ? "aspect-[4/5] md:aspect-[16/11]" : "aspect-[4/5] md:aspect-[16/10]"}>
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-[1.035] md:object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/8 to-black/10 md:from-black/82 md:via-black/10 md:to-transparent" />
+            <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center border border-white/25 bg-black/45 text-white backdrop-blur transition-colors group-hover:bg-white group-hover:text-[var(--brand-black)]">
+              <Maximize2 size={16} />
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+              <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-300)]">
+                {String(index + 1).padStart(2, "0")} / {images.length}
+              </div>
+              <h3 className="text-xl font-semibold leading-tight text-white md:text-2xl">{image.topic}</h3>
+              <p className="mt-2 line-clamp-2 max-w-xl text-sm leading-6 text-[var(--brand-gray-200)] md:line-clamp-none">
+                {image.caption}
+              </p>
+            </div>
+          </button>
+        </FadeSection>
+      ))}
+    </div>
+  );
+}
+
+function StickyInquiryBar({ journey }: { journey: Journey }) {
+  const inquiryLinks = buildInquiryLinks(journey);
+
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--brand-border)] bg-white/94 px-3 py-3 shadow-[0_-12px_34px_rgba(0,0,0,0.14)] backdrop-blur md:hidden">
+      <div className="grid grid-cols-[1fr_auto_auto] items-center gap-2">
+        <Link
+          href="/journeys"
+          className="min-w-0 border border-[var(--brand-border)] bg-white px-3 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-black)] no-underline"
+        >
+          Programs
+        </Link>
+        <a
+          href={inquiryLinks.mailto}
+          className="flex h-12 w-12 items-center justify-center bg-[var(--brand-black)] text-white"
+          aria-label="Request quote by email"
+        >
+          <Mail size={17} />
+        </a>
+        <a
+          href={inquiryLinks.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex h-12 w-12 items-center justify-center border border-[var(--brand-black)] bg-white text-[var(--brand-black)]"
+          aria-label="Request quote on WhatsApp"
+        >
+          <MessageCircle size={17} />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function JourneyDetail() {
   const params = useParams<{ id: string }>();
   const journey = journeys.find((item) => item.id === params.id);
+  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
 
   if (!journey) {
     return (
@@ -85,11 +313,12 @@ export default function JourneyDetail() {
   const galleryImages = journey.gallery.filter((image) => image.src !== journey.image);
   const ctaImage = galleryImages.length > 1 ? galleryImages[galleryImages.length - 1] : undefined;
   const cinematicGallery = ctaImage ? galleryImages.slice(0, -1) : galleryImages.length > 0 ? galleryImages : journey.gallery;
+  const inquiryLinks = buildInquiryLinks(journey);
 
   return (
-    <main style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
+    <main className="pb-24 md:pb-0" style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
       <section className="relative min-h-[82vh] overflow-hidden bg-[var(--brand-black)]">
-        <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="absolute inset-0 h-full w-full object-cover opacity-75" loading="eager" decoding="async" fetchPriority="high" />
+        <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="absolute inset-0 h-full w-full object-cover object-top opacity-75 md:object-center" loading="eager" decoding="async" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" />
         <div className="relative flex min-h-[82vh] items-end px-6 pb-12 lg:px-10 lg:pb-16">
           <div className="mono-wrap w-full">
@@ -175,45 +404,7 @@ export default function JourneyDetail() {
             </p>
           </FadeSection>
 
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-6 md:gap-4">
-            {cinematicGallery.map((image, index) => (
-              <FadeSection
-                key={image.src}
-                delay={index * 45}
-                className={[
-                  index === 0 ? "md:col-span-4 md:row-span-2" : "md:col-span-2",
-                  index === 3 ? "md:col-span-3" : "",
-                  index === 4 ? "md:col-span-3" : "",
-                ].join(" ")}
-              >
-                <figure
-                  className={[
-                    "group relative h-full overflow-hidden bg-[var(--brand-gray-900)]",
-                  ].join(" ")}
-                >
-                  <div className={index === 0 ? "aspect-[16/10] md:aspect-[16/11]" : "aspect-[16/10]"}>
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/10 to-transparent" />
-                  <figcaption className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                    <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-300)]">
-                      {String(index + 1).padStart(2, "0")} / {cinematicGallery.length}
-                    </div>
-                    <h3 className="text-xl font-semibold leading-tight text-white md:text-2xl">{image.topic}</h3>
-                    <p className="mt-2 hidden max-w-xl text-sm leading-6 text-[var(--brand-gray-200)] sm:block">
-                      {image.caption}
-                    </p>
-                  </figcaption>
-                </figure>
-              </FadeSection>
-            ))}
-          </div>
+          <CinematicGallery images={cinematicGallery} onOpen={setActiveImageIndex} />
         </div>
       </section>
 
@@ -306,13 +497,23 @@ export default function JourneyDetail() {
               <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
                 Send brief <ArrowRight size={17} />
               </Link>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mono-button mono-button-secondary border-[var(--brand-gray-700)] text-white">
+              <a href={inquiryLinks.mailto} className="mono-button mono-button-secondary border-[var(--brand-gray-700)] text-white">
+                Email quote
+              </a>
+              <a href={inquiryLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="mono-button mono-button-secondary border-[var(--brand-gray-700)] text-white">
                 WhatsApp
               </a>
             </div>
           </FadeSection>
         </div>
       </section>
+      <ImageLightbox
+        images={cinematicGallery}
+        activeIndex={activeImageIndex}
+        onClose={() => setActiveImageIndex(null)}
+        onNavigate={setActiveImageIndex}
+      />
+      <StickyInquiryBar journey={journey} />
     </main>
   );
 }

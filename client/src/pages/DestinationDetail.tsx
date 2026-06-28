@@ -385,6 +385,9 @@ export default function DestinationDetail() {
                             <span className="grid content-center gap-1 p-3">
                               <span className="text-sm font-semibold leading-5">{journey.title}</span>
                               <span className="text-xs leading-5 text-[var(--brand-gray-600)]">{journey.duration} · {journey.route}</span>
+                              <span className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--brand-black)]">
+                                Open program <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                              </span>
                             </span>
                           </Link>
                           );
