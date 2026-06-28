@@ -37,12 +37,13 @@ type Tour = {
   image: ImageAsset;
 };
 
-type PageKey = "home" | "destinations" | "tours";
+type PageKey = "home" | "destinations" | "tours" | "contact";
 
 const routes: Record<PageKey, string> = {
   home: "/",
   destinations: "/destinations",
   tours: "/private-china-tours",
+  contact: "/contact",
 };
 
 const heroImage: ImageAsset = {
@@ -291,11 +292,16 @@ const pageMeta: Record<PageKey, { title: string; description: string }> = {
     title: "Private China Tours & Custom Itinerary Ideas | China Prime",
     description: "Browse private China tour ideas for first-time visitors, families, Muslim travelers, photographers, food lovers, and luxury couples. Every route is customized.",
   },
+  contact: {
+    title: "Plan a Private China Trip With a Local Specialist | China Prime",
+    description: "Share your dates, travel style, food needs, pace, and must-see places. China Prime will turn your first ideas into a private China itinerary direction.",
+  },
 };
 
 function getPageFromPath(pathname: string): PageKey {
   if (pathname.startsWith(routes.destinations)) return "destinations";
   if (pathname.startsWith(routes.tours)) return "tours";
+  if (pathname.startsWith(routes.contact)) return "contact";
   return "home";
 }
 
@@ -366,7 +372,7 @@ function Header({ page }: { page: PageKey }) {
         <PageLink page="tours" className={page === "tours" ? "is-active" : undefined}>Private Tours</PageLink>
         <a href={page === "home" ? "#trust" : "/#trust"}>Why Us</a>
       </nav>
-      <InquiryLink className="nav-cta" subject="Plan my private China journey">Start Planning</InquiryLink>
+      <PageLink className="nav-cta" page="contact">Start Planning</PageLink>
     </header>
   );
 }
@@ -536,6 +542,102 @@ function ToursPage() {
   );
 }
 
+function ContactPage() {
+  const travelStyles = ["First-time China", "Family trip", "Luxury pace", "Muslim-friendly", "Food journey", "Photography", "Soft adventure", "Senior-friendly"];
+  const briefTemplates = [
+    "We are visiting China for the first time and want the icons without feeling rushed.",
+    "We are traveling with children or older parents and need a comfortable pace.",
+    "We care most about food, culture, local life, and a route that feels personal.",
+    "We need halal-aware planning, private transport, and dining confidence.",
+  ];
+
+  return (
+    <main id="top">
+      <PageHero
+        eyebrow="Trip planner"
+        title="Tell us the trip you are hoping for. We will make it easier to see."
+        copy="You do not need a perfect itinerary yet. Share your dates, travelers, comfort level, and a few dreams. We will turn that into a first private China route direction."
+        image={destinations[1].image}
+      />
+      <section className="contact-shell" aria-labelledby="contact-title">
+        <div className="contact-story">
+          <p className="eyebrow dark">Start here</p>
+          <h2 id="contact-title">A good China plan begins with the questions travelers are almost afraid to ask.</h2>
+          <p>
+            Is the pace too tiring? Will the food work? Can children enjoy it? How do trains, payments, guides, and language actually feel on the ground? Tell us what matters, and we will design around it.
+          </p>
+          <div className="contact-assurance">
+            <span>Reply with a first route idea</span>
+            <span>No shopping-tour pressure</span>
+            <span>Private planning since 2012</span>
+          </div>
+        </div>
+
+        <form
+          className="planner-form"
+          action="mailto:chinaprimedmc@gmail.com"
+          method="post"
+          encType="text/plain"
+        >
+          <label>
+            <span>Your name</span>
+            <input name="Name" placeholder="Jane Smith" autoComplete="name" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="Email" type="email" placeholder="jane@example.com" autoComplete="email" />
+          </label>
+          <label>
+            <span>Approximate travel dates</span>
+            <input name="Travel dates" placeholder="October 2026, around 10-12 days" />
+          </label>
+          <label>
+            <span>Travelers</span>
+            <input name="Travelers" placeholder="2 adults, 2 children, grandparents..." />
+          </label>
+          <label className="full-field">
+            <span>What kind of China trip sounds right?</span>
+            <div className="choice-grid">
+              {travelStyles.map((style) => (
+                <label key={style} className="choice-pill">
+                  <input type="checkbox" name="Travel style" value={style} />
+                  <span>{style}</span>
+                </label>
+              ))}
+            </div>
+          </label>
+          <label className="full-field">
+            <span>Use a quick brief starter</span>
+            <select name="Brief starter" defaultValue="">
+              <option value="" disabled>Choose the closest starting point</option>
+              {briefTemplates.map((template) => <option key={template}>{template}</option>)}
+            </select>
+          </label>
+          <label className="full-field">
+            <span>Your notes</span>
+            <textarea
+              name="Trip notes"
+              rows={7}
+              placeholder="Tell us must-see places, food needs, pace, hotel style, budget range, mobility concerns, or what you want this trip to feel like."
+            />
+          </label>
+          <button type="submit" className="button button-primary">Send my trip brief</button>
+          <p className="form-note">Prefer email? Write to chinaprimedmc@gmail.com with your dates and traveler count.</p>
+        </form>
+      </section>
+      <section className="contact-aftercare" aria-labelledby="aftercare-title">
+        <p className="eyebrow dark">What happens next</p>
+        <h2 id="aftercare-title">You get a thoughtful first direction, not a generic package.</h2>
+        <div className="comparison-grid">
+          <article><strong>1. We read for intent</strong><p>We look for pace, comfort needs, traveler mix, and the emotional reason behind the trip.</p></article>
+          <article><strong>2. We shape a route</strong><p>We suggest a realistic China path with the right contrast: icons, landscapes, food, rest, and logistics.</p></article>
+          <article><strong>3. You refine it with us</strong><p>Hotels, guides, food needs, budget, and daily rhythm are adjusted before anything feels final.</p></article>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function FeaturedTours({ limit, expanded = false }: { limit: number; expanded?: boolean }) {
   return (
     <section className="tours" id="tours" aria-labelledby="tours-title">
@@ -682,7 +784,7 @@ function Footer() {
         <PageLink page="destinations">Destinations</PageLink>
         <a href="/#experiences">Experiences</a>
         <PageLink page="tours">Private Tours</PageLink>
-        <a href="mailto:chinaprimedmc@gmail.com">Contact</a>
+        <PageLink page="contact">Contact</PageLink>
       </div>
     </footer>
   );
@@ -700,9 +802,9 @@ export default function App() {
   return (
     <div className="site-shell">
       <Header page={page} />
-      {page === "destinations" ? <DestinationsPage /> : page === "tours" ? <ToursPage /> : <HomePage />}
+      {page === "destinations" ? <DestinationsPage /> : page === "tours" ? <ToursPage /> : page === "contact" ? <ContactPage /> : <HomePage />}
       <Footer />
-      <InquiryLink className="floating-inquiry" subject="Private China trip inquiry">Plan my trip</InquiryLink>
+      <PageLink className="floating-inquiry" page="contact">Plan my trip</PageLink>
     </div>
   );
 }
