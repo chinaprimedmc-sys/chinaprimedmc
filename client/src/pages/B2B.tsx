@@ -66,19 +66,19 @@ const metrics = [
 const audiences = [
   {
     title: "Tour operators",
-    body: "For operators building China departures, private extensions, or multi-city programs, we provide routing logic, net pricing, supplier coordination, and the operational notes your sales and product teams need before they publish or quote.",
+    body: "Multi-city China programs with routing logic, net pricing, supplier coordination, and sales-ready operating notes.",
   },
   {
     title: "Travel advisors",
-    body: "For advisors selling private China journeys, we help turn a client brief into a practical program with the right pace, guide style, hotel level, food planning, special access, and on-trip support.",
+    body: "Private China journeys shaped around client profile, hotel level, guide style, dining needs, and real-time support.",
   },
   {
     title: "DMC partners",
-    body: "For DMCs that need China coverage under their own brand, we work as a quiet operating partner: itinerary design, ground execution, supplier management, and white-label documentation when needed.",
+    body: "Quiet China coverage under your brand, from itinerary design to ground execution and white-label documentation.",
   },
   {
     title: "Corporate and MICE teams",
-    body: "For incentive, education, delegation, and special-interest groups, we coordinate movement, timing, service flow, contingency planning, and local delivery across China cities.",
+    body: "Incentives, delegations, education groups, and special-interest programs with timing, flow, and contingency planning.",
   },
 ];
 
@@ -86,42 +86,66 @@ const coreServices = [
   {
     icon: <Map size={19} />,
     title: "Itinerary Design & Routing",
-    body: "We build China itineraries around travel time, client profile, seasonality, hotel logic, guide availability, restaurant planning, and realistic pacing. A good China program is not just a list of sights. It is a sequence that protects energy, reduces friction, and gives your sales team a clear reason for every city, transfer, and experience.",
+    body: "China itinerary architecture built around route logic, seasonality, travel time, hotel fit, and sellable pacing.",
+    image: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg",
+    alt: "Tianmen Mountain Zhangjiajie for China itinerary design and dramatic nature routes.",
+    points: ["Clear city sequence", "Realistic daily pacing", "Strong sales angle"],
   },
   {
     icon: <FileText size={19} />,
     title: "Net Pricing & Quote Support",
-    body: "We provide trade-friendly net pricing with inclusions, exclusions, upgrade options, and practical notes on what changes the cost. Partners can request private tours, group series, MICE programs, family trips, or China extensions, and receive quote structures designed for resale rather than consumer-style package copy.",
+    body: "Trade-ready quote structures with net rates, inclusions, exclusions, upgrade logic, and cost assumptions.",
+    image: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-terracotta-army.jpg",
+    alt: "Terracotta Army Xi'an for classic China tour quote support.",
+    points: ["Net-rate clarity", "Upgrade options", "Resale-friendly notes"],
   },
   {
     icon: <ClipboardList size={19} />,
     title: "White-Label Proposal Support",
-    body: "When you want to keep the client relationship fully under your own brand, we can support white-label China itinerary language, partner-ready program outlines, destination notes, supplier explanations, and proposal copy that your team can adapt quickly.",
+    body: "Proposal language, destination notes, supplier explanations, and itinerary copy your team can adapt quickly.",
+    image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi.jpg",
+    alt: "Xidi village Anhui for white-label China itinerary proposal support.",
+    points: ["Your brand in front", "Reusable copy", "Partner-ready structure"],
   },
   {
     icon: <ShieldCheck size={19} />,
     title: "Ground Operations in China",
-    body: "Our China-based team coordinates guides, vehicles, hotels, restaurants, train tickets, domestic flights, entrance reservations, local hosts, timing, and day-by-day execution. We focus on operational clarity before the trip begins, because most service problems are prevented during planning.",
+    body: "China-based coordination for guides, vehicles, hotels, restaurants, tickets, entrances, and day-by-day delivery.",
+    image: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-chongqing.jpg",
+    alt: "Chongqing skyline for China ground operations and city logistics.",
+    points: ["Supplier coordination", "Local execution", "On-trip response"],
   },
   {
     icon: <Train size={19} />,
     title: "Rail, Flight & Transfer Coordination",
-    body: "China logistics can be smooth when planned carefully. We help partners decide when to use high-speed rail, when a domestic flight makes sense, how to sequence airport and station transfers, and where buffers are needed for groups, VIPs, families, or time-sensitive corporate travelers.",
+    body: "High-speed rail, domestic flights, airport transfers, station movement, and buffer planning for complex routes.",
+    image: "/programs/china-yangtze-cruise-13-day/china-prime-dmc-china-yangtze-cruise-13-day-shanghai-world-financial-center.jpg",
+    alt: "Shanghai World Financial Center for China rail flight and transfer coordination.",
+    points: ["Rail vs flight logic", "Transfer sequencing", "Group buffers"],
   },
   {
     icon: <Building2 size={19} />,
     title: "Hotels, Guides & Supplier Matching",
-    body: "We match hotels, guides, vehicles, restaurants, and activity suppliers to the commercial position of the trip. A luxury private journey, a student group, a corporate delegation, and a family program should not use the same supplier logic.",
+    body: "Supplier matching by client profile: luxury FIT, student groups, corporate delegations, families, and series tours.",
+    image: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
+    alt: "Chengdu giant panda base for family friendly China supplier matching.",
+    points: ["Hotel-level logic", "Guide matching", "Meal planning"],
   },
   {
     icon: <Users size={19} />,
     title: "Groups, Series & MICE Operations",
-    body: "For group and MICE programs, we think through arrival patterns, rooming lists, luggage flow, coach movement, restaurant capacity, meeting timing, hosted dinners, contingency plans, and the communication rhythm between your team and our China operations desk.",
+    body: "Rooming lists, coach movement, dining capacity, hosted moments, venue timing, and communication rhythm.",
+    image: "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-canton-tower.jpg",
+    alt: "Canton Tower Guangzhou for China MICE and group operations.",
+    points: ["Arrival flow", "Group movement", "Backup plans"],
   },
   {
     icon: <Headphones size={19} />,
     title: "In-Trip Support & Problem Solving",
-    body: "Travel does not end when the proposal is approved. We stay close to the operation while clients are in China, helping with schedule adjustments, supplier communication, weather changes, restaurant issues, traffic, ticket changes, and urgent service needs.",
+    body: "Live support for schedule changes, traffic, supplier communication, weather issues, ticket changes, and urgent needs.",
+    image: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-mogao-caves.jpg",
+    alt: "Mogao Caves Dunhuang for on-trip China travel support and route management.",
+    points: ["Fast adjustments", "Local communication", "Issue resolution"],
   },
 ];
 
@@ -129,32 +153,32 @@ const process = [
   {
     step: "01",
     title: "Brief",
-    body: "Send dates, cities, client type, budget level, hotel preference, pace, must-have experiences, meal needs, mobility notes, and your commercial model. A better brief means fewer rounds of revision.",
+    body: "Send dates, cities, client type, budget level, hotel preference, pace, meal needs, and must-have experiences.",
   },
   {
     step: "02",
     title: "Feasibility",
-    body: "We check routing, seasonality, transport logic, supplier availability, group constraints, special requests, and where the program may need a smarter alternative.",
+    body: "We check route logic, seasonality, transport, supplier availability, group constraints, and smarter alternatives.",
   },
   {
     step: "03",
     title: "Design",
-    body: "We build the itinerary structure with daily timing, city sequence, experience logic, guide needs, hotel assumptions, and operating notes your team can understand quickly.",
+    body: "We build daily timing, city sequence, experience logic, guide needs, hotel assumptions, and operating notes.",
   },
   {
     step: "04",
     title: "Quote",
-    body: "You receive net pricing, inclusions, exclusions, upgrade options, assumptions, and trade-offs. We keep the quote useful for decision-making, not just a number in a spreadsheet.",
+    body: "You receive net pricing, inclusions, exclusions, upgrade options, assumptions, and trade-offs.",
   },
   {
     step: "05",
     title: "Confirm",
-    body: "After approval, we lock key suppliers, refine timing, confirm names and rooming needs, align documentation, and prepare the China operation for delivery.",
+    body: "We lock suppliers, refine timing, confirm rooming needs, align documents, and prepare delivery.",
   },
   {
     step: "06",
     title: "Operate",
-    body: "Our team manages the China side while you keep ownership of the client relationship. We coordinate the ground experience and stay available when plans need adjustment.",
+    body: "Our China team delivers the ground experience while your team keeps client ownership.",
   },
 ];
 
@@ -181,27 +205,27 @@ const deliverables = [
 const faqs = [
   {
     question: "Do you work white-label for travel agencies and DMC partners?",
-    answer: "Yes. We can operate as your China ground partner while your team keeps the client relationship. Depending on the project, we can provide white-label itinerary language, net pricing, supplier notes, and China-side delivery under your brand position.",
+    answer: "Yes. We can provide white-label itinerary language, net pricing, supplier notes, and China-side delivery while your team keeps the client relationship.",
   },
   {
     question: "Do you provide net rates for resale?",
-    answer: "Yes. Our B2B quoting is designed for trade partners. We can provide net pricing, inclusions, exclusions, upgrade options, assumptions, and notes that help your team decide how to package and sell the program.",
+    answer: "Yes. Our B2B quotes include net pricing, inclusions, exclusions, upgrade options, assumptions, and resale notes.",
   },
   {
     question: "Can you support both FIT and groups?",
-    answer: "Yes. We support private FIT, families, small groups, series programs, education groups, incentive travel, corporate delegations, and specialist-interest travel. The operating model changes by client type, but the goal is always clear delivery on the ground.",
+    answer: "Yes. We support private FIT, families, small groups, series tours, education groups, incentives, delegations, and specialist-interest travel.",
   },
   {
     question: "How fast can you quote a China program?",
-    answer: "Timing depends on complexity, season, group size, and how complete the brief is. Simple private programs can often move quickly; complex MICE, multi-city groups, or special-access requests require more feasibility work before pricing is responsible.",
+    answer: "Simple private programs can move quickly. Complex MICE, multi-city groups, and special-access requests need more feasibility work before responsible pricing.",
   },
   {
     question: "Can you customize an itinerary we already have?",
-    answer: "Yes. Many partners send a draft route or old program and ask us to improve pacing, update hotels, check feasibility, add better experiences, or rebuild the quote for a specific client profile.",
+    answer: "Yes. Send the draft route and we can improve pacing, hotels, feasibility, experiences, and quote logic.",
   },
   {
     question: "What information should we send in a brief?",
-    answer: "Send travel dates, city preferences, traveler type, group size, budget level, hotel expectations, pace, meal needs, mobility notes, must-have experiences, and whether you need white-label support or just ground pricing.",
+    answer: "Send dates, cities, traveler type, group size, budget, hotel level, pace, meal needs, mobility notes, must-haves, and white-label needs.",
   },
 ];
 
@@ -291,7 +315,7 @@ export default function B2B() {
           <div className="grid grid-cols-1 gap-px bg-white/20 md:grid-cols-2">
             {audiences.map((item, index) => (
               <FadeSection key={item.title} delay={index * 70}>
-                <article className="h-full bg-black/62 p-7 backdrop-blur-sm sm:p-8">
+                <article className="h-full bg-black/48 p-7 backdrop-blur-sm sm:p-8">
                   <div className="mono-index mb-10 text-[var(--brand-gray-300)]">Partner model</div>
                   <h3 className="b2b-card-title" style={{ color: "var(--brand-white)" }}>{item.title}</h3>
                   <p className="b2b-body" style={{ color: "var(--brand-gray-200)" }}>{item.body}</p>
@@ -315,15 +339,29 @@ export default function B2B() {
             </FadeSection>
           </div>
 
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-4">
             {coreServices.map((service, index) => (
               <FadeSection key={service.title} delay={index * 35}>
-                <article className="h-full bg-white p-7 sm:p-8">
-                  <div className="mb-8 flex h-10 w-10 items-center justify-center border border-[var(--brand-border)] text-[var(--brand-black)]">
-                    {service.icon}
+                <article className="visual-card group">
+                  <div className="visual-card-image">
+                    <img src={service.image} alt={service.alt} loading="lazy" decoding="async" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/8 to-transparent" />
+                    <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center bg-white text-[var(--brand-black)]">
+                      {service.icon}
+                    </div>
                   </div>
-                  <h3 className="b2b-card-title">{service.title}</h3>
-                  <p className="b2b-body">{service.body}</p>
+                  <div className="visual-card-caption">
+                    <h3 className="b2b-card-title">{service.title}</h3>
+                    <p className="line-clamp-3 text-sm leading-6 text-[var(--brand-gray-700)]">{service.body}</p>
+                    <div className="compact-list">
+                      {service.points.map((point) => (
+                        <div key={point} className="compact-list-item">
+                          <Check size={14} className="shrink-0" />
+                          {point}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </article>
               </FadeSection>
             ))}
@@ -345,7 +383,7 @@ export default function B2B() {
             <p className="b2b-eyebrow">White-label support</p>
             <h2 className="b2b-heading">Your brand stays in front. We operate behind it.</h2>
             <p className="b2b-lede">
-              Many partners do not need another public-facing travel brand. They need a China team that can make their own promise operational. We can support white-label proposals, net rates, itinerary language, supplier logic, and China-side delivery without competing for your client relationship.
+              Many partners do not need another public-facing brand. They need a China team that makes their promise operational with white-label proposals, net rates, supplier logic, and reliable delivery.
             </p>
             <div className="mt-8 grid gap-px bg-[var(--brand-border)] sm:grid-cols-2">
               {deliverables.map((item) => (
@@ -396,7 +434,7 @@ export default function B2B() {
             { src: serviceImages.greatWall, alt: "Great Wall of China itinerary design for travel partners.", title: "Classic China routing", icon: <Landmark size={18} /> },
           ].map((item, index) => (
             <FadeSection key={item.title} delay={(index + 1) * 90}>
-              <figure className="h-full bg-black/56 backdrop-blur-sm">
+              <figure className="h-full bg-black/42 backdrop-blur-sm">
                 <img src={item.src} alt={item.alt} className="h-80 w-full object-cover md:h-[460px]" loading="lazy" decoding="async" />
                 <figcaption className="flex items-center gap-3 border border-white/15 border-t-0 p-5 text-sm font-semibold text-[var(--brand-gray-100)]">
                   {item.icon} {item.title}

@@ -60,12 +60,42 @@ const regionClusters = coverageRegions.map((region) => ({
 }));
 
 const fitMatrix = [
-  { segment: "First-time China groups", bestRegions: "Beijing, Xi'an, Shanghai, Suzhou, Guilin", why: "Recognizable icons, strong guide supply, clean logistics, easy sales language." },
-  { segment: "Luxury FIT travelers", bestRegions: "Shanghai, Hangzhou, Beijing, Yunnan, Chengdu", why: "Better hotel depth, private experiences, dining quality, flexible pacing." },
-  { segment: "Muslim-friendly groups", bestRegions: "Xi'an, Ningxia, Gansu, Xinjiang, Beijing, Shanghai", why: "Halal-aware routing, mosque visits, Muslim heritage, practical meal planning." },
-  { segment: "Families with children", bestRegions: "Chengdu, Guilin, Beijing, Shanghai, Zhangjiajie", why: "Pandas, nature, hands-on culture, manageable travel times, high visual impact." },
-  { segment: "Senior travelers", bestRegions: "Beijing, Shanghai, Suzhou, Hangzhou, Chengdu", why: "Comfortable pacing, mature hotel supply, shorter transfers, strong medical access." },
-  { segment: "MICE and incentives", bestRegions: "Shanghai, Beijing, Guangzhou, Shenzhen, Chengdu, Hangzhou", why: "Air access, venue inventory, executive hotels, gala and activity options." },
+  {
+    segment: "First-time China groups",
+    bestRegions: "Beijing, Xi'an, Shanghai, Suzhou, Guilin",
+    why: "Famous icons, simple sales language, strong guides.",
+    image: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city.jpg",
+  },
+  {
+    segment: "Luxury FIT travelers",
+    bestRegions: "Shanghai, Hangzhou, Beijing, Yunnan, Chengdu",
+    why: "Better hotels, private moments, flexible pacing.",
+    image: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg",
+  },
+  {
+    segment: "Muslim-friendly groups",
+    bestRegions: "Xi'an, Ningxia, Gansu, Xinjiang, Beijing, Shanghai",
+    why: "Muslim heritage, halal-aware meals, mosque visits.",
+    image: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-kashgar.jpg",
+  },
+  {
+    segment: "Families with children",
+    bestRegions: "Chengdu, Guilin, Beijing, Shanghai, Zhangjiajie",
+    why: "Pandas, rivers, hands-on culture, visual impact.",
+    image: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
+  },
+  {
+    segment: "Senior travelers",
+    bestRegions: "Beijing, Shanghai, Suzhou, Hangzhou, Chengdu",
+    why: "Comfortable pace, shorter transfers, mature supply.",
+    image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg",
+  },
+  {
+    segment: "MICE and incentives",
+    bestRegions: "Shanghai, Beijing, Guangzhou, Shenzhen, Chengdu, Hangzhou",
+    why: "Air access, venues, executive hotels, gala options.",
+    image: "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-beijing-national-stadium.jpg",
+  },
 ];
 
 const operatingCapabilities = [
@@ -83,22 +113,30 @@ const routeExamples = [
   {
     title: "Classic China Introduction",
     path: "Beijing -> Xi'an -> Shanghai / Suzhou",
-    note: "Best for first-time travelers, long-haul markets, student groups, and standard escorted series.",
+    note: "Best for first-time travelers, long-haul markets, student groups, and escorted series.",
+    image: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-mutianyu.jpg",
+    alt: "Mutianyu Great Wall for classic China introduction routes.",
   },
   {
     title: "Nature + Family China",
     path: "Chengdu -> Zhangjiajie -> Guilin / Yangshuo",
-    note: "Strong for families and visual campaigns where pandas, mountains, rivers, and soft adventure matter.",
+    note: "Strong when pandas, mountains, rivers, and soft adventure need to sell the trip fast.",
+    image: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-wulingyuan.jpg",
+    alt: "Wulingyuan Zhangjiajie for nature and family China routes.",
   },
   {
     title: "Silk Road + Muslim Heritage",
     path: "Xi'an -> Lanzhou -> Dunhuang -> Urumqi / Kashgar",
-    note: "A high-value route for culturally curious travelers, Muslim-friendly groups, and repeat China visitors.",
+    note: "A high-value route for Muslim-friendly groups, repeat China visitors, and culture-led programs.",
+    image: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark.jpg",
+    alt: "Zhangye National Geopark for Silk Road China routing.",
   },
   {
     title: "Premium East China Extension",
     path: "Shanghai -> Suzhou -> Hangzhou -> Huangshan",
-    note: "Works well as a luxury FIT module, incentive extension, or post-cruise cultural program.",
+    note: "Works as a luxury FIT module, incentive extension, or post-cruise cultural program.",
+    image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan.jpg",
+    alt: "Huangshan mountain for premium East China extensions.",
   },
 ];
 
@@ -244,13 +282,22 @@ export default function Destinations() {
           </FadeSection>
 
           <FadeSection delay={100}>
-            <div className="grid gap-px bg-[var(--brand-border)]">
+            <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
               {fitMatrix.map((row) => (
-                <div key={row.segment} className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-[0.38fr_0.36fr_1fr]">
-                  <div className="bg-[var(--brand-black)] p-5 text-sm font-semibold leading-6 text-white">{row.segment}</div>
-                  <div className="bg-white p-5 text-sm font-semibold leading-6 text-[var(--brand-black)]">{row.bestRegions}</div>
-                  <div className="bg-white p-5 text-sm leading-7 text-[var(--brand-gray-700)]">{row.why}</div>
-                </div>
+                <article key={row.segment} className="visual-card group">
+                  <div className="visual-card-image">
+                    <img src={row.image} alt={`${row.segment} China coverage planning.`} loading="lazy" decoding="async" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/8 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-2xl font-semibold leading-tight text-white">{row.segment}</h3>
+                    </div>
+                  </div>
+                  <div className="visual-card-caption">
+                    <div className="mono-index mb-3">Best regions</div>
+                    <p className="text-base font-semibold leading-7 text-[var(--brand-black)]">{row.bestRegions}</p>
+                    <p className="mt-3 text-sm leading-6 text-[var(--brand-gray-700)]">{row.why}</p>
+                  </div>
+                </article>
               ))}
             </div>
           </FadeSection>
@@ -288,24 +335,30 @@ export default function Destinations() {
             </p>
           </FadeSection>
 
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] lg:grid-cols-4">
             {routeExamples.map((route, index) => (
               <FadeSection key={route.title} delay={index * 55}>
-                <div className="min-h-full bg-white p-7 md:p-8">
-                  <div className="mb-8 inline-flex h-10 w-10 items-center justify-center bg-[var(--brand-black)] text-sm font-semibold text-white">
-                    {String(index + 1).padStart(2, "0")}
+                <article className="visual-card group">
+                  <div className="visual-card-image">
+                    <img src={route.image} alt={route.alt} loading="lazy" decoding="async" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/10 to-transparent" />
+                    <div className="absolute left-4 top-4 bg-white px-3 py-2 text-xs font-bold text-[var(--brand-black)]">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-semibold leading-tight text-[var(--brand-black)]">{route.title}</h3>
-                  <div className="my-5 flex flex-wrap items-center gap-2 text-xs font-bold uppercase leading-6 tracking-[0.08em] text-[var(--brand-gray-500)] sm:gap-3 sm:text-sm">
+                  <div className="visual-card-caption">
+                    <h3 className="text-2xl font-semibold leading-tight text-[var(--brand-black)]">{route.title}</h3>
+                    <div className="my-5 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase leading-6 tracking-[0.08em] text-[var(--brand-gray-500)]">
                     {route.path.split(" -> ").map((stop, stopIndex, stops) => (
                       <span key={stop} className="inline-flex min-w-0 items-center gap-2 sm:gap-3">
                         <span className="break-words">{stop}</span>
                         {stopIndex < stops.length - 1 && <MoveRight size={14} className="shrink-0" />}
                       </span>
                     ))}
+                    </div>
+                    <p className="text-sm leading-6 text-[var(--brand-gray-700)]">{route.note}</p>
                   </div>
-                  <p className="text-sm leading-7 text-[var(--brand-gray-700)]">{route.note}</p>
-                </div>
+                </article>
               </FadeSection>
             ))}
           </div>

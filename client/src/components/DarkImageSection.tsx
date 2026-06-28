@@ -28,13 +28,13 @@ export default function DarkImageSection({
       <img
         src={image}
         alt={alt}
-        className="absolute inset-0 -z-30 h-full w-full object-cover opacity-80"
+        className="absolute inset-0 -z-30 h-full w-full object-cover opacity-100"
         style={{ objectPosition: imagePosition }}
         loading="lazy"
         decoding="async"
       />
-      <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.66)_45%,rgba(0,0,0,0.22)_100%)]" />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.76)_0%,rgba(0,0,0,0.18)_52%,rgba(0,0,0,0.42)_100%)]" />
+      <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(0,0,0,0.76)_0%,rgba(0,0,0,0.52)_42%,rgba(0,0,0,0.12)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.06)_54%,rgba(0,0,0,0.30)_100%)]" />
 
       <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1fr] lg:items-end">
         <div>
