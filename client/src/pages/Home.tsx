@@ -84,22 +84,22 @@ const storyImages = [
     label: "Pandas & family days",
   },
   {
-    src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg",
+    src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park.jpg",
     alt: "Tianmen Mountain Zhangjiajie cinematic landscape.",
     label: "Avatar peaks",
   },
   {
-    src: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg",
+    src: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan.jpg",
     alt: "West Lake Hangzhou slow travel scene.",
     label: "Garden cities",
   },
   {
-    src: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-kashgar.jpg",
+    src: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
     alt: "Kashgar old town for Muslim-friendly Silk Road travel.",
     label: "Muslim heritage",
   },
   {
-    src: "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-potala-palace.jpg",
+    src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou.jpg",
     alt: "Potala Palace Lhasa private Tibet journey.",
     label: "Highland culture",
   },
@@ -172,7 +172,7 @@ export default function Home() {
 
       <section className="cinema-scene cinema-split-scene">
         <div className="cinema-portrait">
-          <img src="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg" alt="West Lake Hangzhou private luxury China journey." loading="lazy" decoding="async" />
+          <img src="/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-li-river.jpg" alt="Li River Guilin private luxury China journey." loading="lazy" decoding="async" />
         </div>
         <div className="cinema-editorial-copy">
           <FadeSection>
@@ -201,7 +201,7 @@ export default function Home() {
 
       <section className="cinema-scene cinema-traveler-scene">
         <div className="cinema-scene-media">
-          <img src="/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-chongqing.jpg" alt="Chongqing skyline night view for China private trips." className="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <img src="/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg" alt="Chongqing Hongya Cave night view for China private trips." className="h-full w-full object-cover" loading="lazy" decoding="async" />
         </div>
         <div className="cinema-scene-scrim" />
         <div className="cinema-scene-content cinema-two-column">
@@ -224,7 +224,7 @@ export default function Home() {
 
       <section className="cinema-scene cinema-control-scene">
         <div className="cinema-wide-photo">
-          <img src="/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-mutianyu.jpg" alt="Mutianyu Great Wall private China trip logistics planning." loading="lazy" decoding="async" />
+          <img src="/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg" alt="Great Wall private China trip logistics planning." loading="lazy" decoding="async" />
         </div>
         <div className="cinema-control-copy">
           <FadeSection>

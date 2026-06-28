@@ -1375,6 +1375,214 @@ body {
   color: var(--cinema-white) !important;
 }
 
+/* Final readability and image-first rescue layer.
+   This sits after the legacy systems so dark cinematic pages remain legible and light cards never inherit white text. */
+.btoc-shell .btoc-hero::after {
+  background:
+    radial-gradient(circle at 22% 70%, rgba(0, 0, 0, 0.72), transparent 34%),
+    linear-gradient(90deg, rgba(4, 7, 9, 0.82) 0%, rgba(4, 7, 9, 0.52) 42%, rgba(4, 7, 9, 0.16) 100%),
+    linear-gradient(0deg, rgba(4, 7, 9, 0.80) 0%, rgba(4, 7, 9, 0.20) 56%, rgba(4, 7, 9, 0.34) 100%) !important;
+}
+
+.cinema-scene-scrim {
+  background:
+    radial-gradient(circle at 18% 72%, rgba(0, 0, 0, 0.74), transparent 34%),
+    linear-gradient(90deg, rgba(5, 8, 10, 0.84) 0%, rgba(5, 8, 10, 0.54) 44%, rgba(5, 8, 10, 0.14) 100%),
+    linear-gradient(0deg, rgba(5, 8, 10, 0.82) 0%, rgba(5, 8, 10, 0.14) 58%, rgba(5, 8, 10, 0.30) 100%) !important;
+}
+
+.cinema-scene-content > div:first-child,
+.btoc-hero-grid > div:first-child,
+.cinema-gallery-title,
+.cinema-control-copy > div:first-child {
+  max-width: 980px;
+}
+
+.cinema-scene h1,
+.cinema-scene h2,
+.btoc-hero h1,
+.btoc-title,
+.btoc-title-small,
+.b2b-heading {
+  max-width: 1080px;
+  text-shadow: 0 3px 28px rgba(0, 0, 0, 0.50);
+}
+
+.cinema-scene p,
+.btoc-hero .btoc-lede,
+.btoc-lede,
+.b2b-lede {
+  color: rgba(255, 255, 255, 0.84) !important;
+  max-width: 760px;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.42);
+}
+
+.cinema-kicker,
+.btoc-eyebrow,
+.b2b-eyebrow {
+  color: rgba(255, 255, 255, 0.76) !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.48);
+}
+
+.cinema-proof,
+.btoc-glass-panel {
+  background: rgba(6, 10, 12, 0.44) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(20px);
+}
+
+.cinema-proof {
+  padding: clamp(22px, 3vw, 42px);
+}
+
+.btoc-stat,
+.btoc-glass-panel > div > div {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.btoc-section:not(:has(.btoc-hero)) {
+  background:
+    linear-gradient(180deg, #080b0d 0%, #0e1214 48%, #080b0d 100%) !important;
+}
+
+.btoc-filter-panel,
+.btoc-card,
+.btoc-trip-card,
+.btoc-process-card,
+.visual-card,
+.mono-card,
+.btoc-timeline-card {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #101417 !important;
+}
+
+.btoc-filter-panel *,
+.btoc-card *,
+.btoc-trip-card *,
+.btoc-process-card *,
+.visual-card *,
+.mono-card *,
+.btoc-timeline-card * {
+  text-shadow: none !important;
+}
+
+.btoc-filter-panel h1,
+.btoc-filter-panel h2,
+.btoc-filter-panel h3,
+.btoc-card h1,
+.btoc-card h2,
+.btoc-card h3,
+.btoc-trip-card h1,
+.btoc-trip-card h2,
+.btoc-trip-card h3,
+.btoc-process-card h1,
+.btoc-process-card h2,
+.btoc-process-card h3,
+.visual-card h1,
+.visual-card h2,
+.visual-card h3,
+.mono-card h1,
+.mono-card h2,
+.mono-card h3,
+.btoc-timeline-card h1,
+.btoc-timeline-card h2,
+.btoc-timeline-card h3 {
+  color: #101417 !important;
+}
+
+.btoc-filter-panel p,
+.btoc-card p,
+.btoc-trip-card p,
+.btoc-process-card p,
+.visual-card p,
+.mono-card p,
+.btoc-timeline-card p,
+.btoc-filter-panel div,
+.btoc-card div,
+.btoc-trip-card div,
+.btoc-process-card div,
+.visual-card div,
+.mono-card div,
+.btoc-timeline-card div {
+  color: #2d3336 !important;
+}
+
+.btoc-filter-panel .btoc-pill,
+.btoc-card .btoc-pill,
+.btoc-trip-card .btoc-pill,
+.visual-card .compact-list-item {
+  background: #f0eee8 !important;
+  border-color: rgba(16, 20, 23, 0.12) !important;
+  color: #101417 !important;
+}
+
+.btoc-filter-panel .btoc-button,
+.btoc-trip-card .btoc-button,
+.btoc-card .btoc-button {
+  background: #101417 !important;
+  border-color: #101417 !important;
+  color: #ffffff !important;
+}
+
+.btoc-filter-panel .btoc-button *,
+.btoc-trip-card .btoc-button *,
+.btoc-card .btoc-button * {
+  color: #ffffff !important;
+}
+
+.btoc-field,
+.btoc-select,
+.btoc-shell select,
+.btoc-shell input,
+.btoc-shell textarea {
+  background: #ffffff !important;
+  border-color: rgba(16, 20, 23, 0.18) !important;
+  color: #101417 !important;
+}
+
+.btoc-label,
+.btoc-filter-panel label span,
+.btoc-shell option {
+  color: #343a3e !important;
+}
+
+.btoc-image-frame {
+  box-shadow: 0 34px 120px rgba(0, 0, 0, 0.38);
+}
+
+.btoc-image-overlay,
+.cinema-gallery-shot::after {
+  background:
+    linear-gradient(0deg, rgba(3, 5, 6, 0.72), rgba(3, 5, 6, 0.12) 58%, rgba(3, 5, 6, 0.06)) !important;
+}
+
+.cinema-gallery-title {
+  background: rgba(5, 8, 10, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: clamp(22px, 3vw, 42px);
+  backdrop-filter: blur(18px);
+}
+
+.cinema-lens-row,
+.cinema-flow article,
+.cinema-trust-list span {
+  background: rgba(5, 8, 10, 0.40);
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  backdrop-filter: blur(12px);
+}
+
+.cinema-lens-row p,
+.cinema-flow article p {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.btoc-shell img,
+.mono-shell img,
+.cinema-scene img {
+  filter: saturate(1.08) contrast(1.04);
+}
+
 .btoc-card:hover,
 .btoc-trip-card:hover,
 .btoc-process-card:hover,
@@ -2081,5 +2289,545 @@ textarea {
 
   .cinema-contact-rail a span {
     display: none;
+  }
+}
+
+/* Destination and trip gallery refinement: no skinny image strips, no invisible copy. */
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 {
+  align-items: stretch;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card {
+  background: rgba(247, 246, 241, 0.97) !important;
+  color: var(--read-ink) !important;
+  min-height: 100%;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card > .relative {
+  aspect-ratio: 16 / 10 !important;
+  min-height: 260px !important;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card > .grid,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card > div:last-child {
+  background: rgba(247, 246, 241, 0.97) !important;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card h3,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card h2 {
+  color: var(--read-ink) !important;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card p,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card div:not(.btoc-badge):not(.btoc-pill) {
+  color: var(--read-body) !important;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.lg\:grid-cols-4 .btoc-card,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.md\:grid-cols-2 .btoc-card {
+  background: rgba(247, 246, 241, 0.97) !important;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.lg\:grid-cols-4 .btoc-card h3,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.md\:grid-cols-2 .btoc-card h3 {
+  color: var(--read-ink) !important;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.lg\:grid-cols-4 .btoc-card p,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.md\:grid-cols-2 .btoc-card p,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.lg\:grid-cols-4 .btoc-card div,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.md\:grid-cols-2 .btoc-card div {
+  color: var(--read-body) !important;
+}
+
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.lg\:grid-cols-4 .btoc-image-frame img,
+.btoc-shell .btoc-wrap.grid.grid-cols-1.gap-5.md\:grid-cols-2 .btoc-image-frame img {
+  object-fit: cover;
+}
+
+@media (min-width: 900px) {
+  .btoc-shell .btoc-wrap.grid.grid-cols-1.gap-6.md\:grid-cols-2.xl\:grid-cols-3 .btoc-trip-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+}
+
+/* Readability rescue: keep cinematic darkness, but never sacrifice legibility. */
+.btoc-shell,
+.mono-shell {
+  --read-dark: #080b0d;
+  --read-ink: #111417;
+  --read-body: #30343a;
+  --read-muted: #626973;
+  --read-paper: #f7f6f1;
+  --read-line: rgba(12, 16, 20, 0.14);
+}
+
+.btoc-shell p,
+.mono-shell p,
+.btoc-lede,
+.b2b-lede {
+  color: rgba(247, 245, 239, 0.84) !important;
+}
+
+.btoc-eyebrow,
+.b2b-eyebrow,
+.mono-index,
+.btoc-caption,
+.cinema-kicker {
+  color: rgba(247, 245, 239, 0.76) !important;
+}
+
+.cinema-scene h1,
+.cinema-scene h2,
+.btoc-hero h1,
+.mono-shell h1,
+.btoc-title-small,
+.b2b-heading {
+  text-wrap: balance;
+}
+
+.cinema-gallery-title {
+  background: rgba(8, 11, 13, 0.82);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+}
+
+.cinema-gallery-title h2 {
+  font-size: clamp(2.8rem, 6.6vw, 7.4rem) !important;
+  line-height: 0.9 !important;
+}
+
+.cinema-scene-scrim {
+  background:
+    linear-gradient(90deg, rgba(8, 11, 13, 0.86) 0%, rgba(8, 11, 13, 0.58) 46%, rgba(8, 11, 13, 0.18) 100%),
+    linear-gradient(0deg, rgba(8, 11, 13, 0.78), rgba(8, 11, 13, 0.10) 54%, rgba(8, 11, 13, 0.36));
+}
+
+.cinema-gallery-shot::after,
+.btoc-image-overlay {
+  background: linear-gradient(0deg, rgba(8, 11, 13, 0.68), rgba(8, 11, 13, 0.08) 58%, rgba(8, 11, 13, 0.06));
+}
+
+.visual-card-caption,
+.compact-list,
+.btoc-card,
+.btoc-alert,
+.btoc-field,
+.btoc-select,
+.btoc-filter-panel select,
+.btoc-filter-panel input,
+.btoc-filter-panel textarea,
+.mono-shell [class*="bg-white"],
+.btoc-shell [class*="bg-white"],
+.mono-shell [class*="brand-white"],
+.btoc-shell [class*="brand-white"],
+.mono-shell [class*="brand-gray-50"],
+.btoc-shell [class*="brand-gray-50"] {
+  color: var(--read-ink) !important;
+}
+
+.visual-card-caption p,
+.visual-card-caption div,
+.visual-card-caption span,
+.compact-list,
+.compact-list *,
+.btoc-card p,
+.btoc-card div,
+.btoc-card span,
+.btoc-card li,
+.btoc-alert,
+.mono-shell [class*="bg-white"] p,
+.mono-shell [class*="bg-white"] div,
+.mono-shell [class*="bg-white"] span,
+.btoc-shell [class*="bg-white"] p,
+.btoc-shell [class*="bg-white"] div,
+.btoc-shell [class*="bg-white"] span {
+  color: var(--read-body) !important;
+}
+
+.visual-card-caption h2,
+.visual-card-caption h3,
+.btoc-card h2,
+.btoc-card h3,
+.mono-shell [class*="bg-white"] h2,
+.mono-shell [class*="bg-white"] h3,
+.btoc-shell [class*="bg-white"] h2,
+.btoc-shell [class*="bg-white"] h3 {
+  color: var(--read-ink) !important;
+}
+
+.visual-card-caption,
+.btoc-card,
+.mono-shell [class*="bg-white"],
+.btoc-shell [class*="bg-white"] {
+  background-color: var(--read-paper) !important;
+  border-color: rgba(12, 16, 20, 0.12) !important;
+}
+
+.btoc-trip-card,
+.btoc-trip-card > .grid,
+.btoc-dark-band,
+.cinema-control-copy,
+.cinema-footer,
+.cinema-home,
+.mono-shell > section,
+.btoc-shell > section {
+  color: var(--cinema-white);
+}
+
+.btoc-trip-card h2,
+.btoc-trip-card h3,
+.btoc-trip-card strong,
+.btoc-dark-band h2,
+.btoc-dark-band h3,
+.btoc-dark-band strong {
+  color: var(--cinema-white) !important;
+}
+
+.btoc-trip-card p,
+.btoc-trip-card div:not(.btoc-badge):not(.btoc-pill),
+.btoc-dark-band p {
+  color: rgba(247, 245, 239, 0.78) !important;
+}
+
+.btoc-trip-card .btoc-badge,
+.btoc-trip-card .btoc-pill,
+.btoc-pill,
+.btoc-badge {
+  color: rgba(247, 245, 239, 0.9) !important;
+}
+
+.btoc-filter-panel {
+  background: rgba(247, 246, 241, 0.96) !important;
+  border-color: rgba(12, 16, 20, 0.14) !important;
+  color: var(--read-ink) !important;
+}
+
+.btoc-filter-panel *,
+.btoc-filter-panel p,
+.btoc-filter-panel div,
+.btoc-filter-panel span,
+.btoc-filter-panel label {
+  color: var(--read-ink) !important;
+}
+
+.btoc-filter-panel .btoc-button {
+  background: var(--read-ink) !important;
+  border-color: var(--read-ink) !important;
+  color: #fff !important;
+}
+
+.btoc-field,
+.btoc-select,
+select,
+input,
+textarea {
+  background: #fff !important;
+  color: var(--read-ink) !important;
+}
+
+.btoc-field::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: rgba(17, 20, 23, 0.48) !important;
+}
+
+.btoc-label {
+  color: rgba(17, 20, 23, 0.72) !important;
+}
+
+.btoc-button-secondary,
+.mono-button-secondary {
+  color: var(--cinema-white) !important;
+}
+
+.btoc-card .btoc-button-secondary,
+.visual-card-caption .btoc-button-secondary,
+.btoc-filter-panel .btoc-button-secondary,
+.mono-shell [class*="bg-white"] .mono-button-secondary,
+.btoc-shell [class*="bg-white"] .btoc-button-secondary {
+  border-color: rgba(12, 16, 20, 0.28) !important;
+  color: var(--read-ink) !important;
+}
+
+.btoc-image-frame img,
+.visual-card-image img,
+.cinema-scene-media img,
+.cinema-gallery-shot img,
+.cinema-portrait img,
+.cinema-wide-photo img {
+  filter: saturate(1.08) contrast(1.04);
+}
+
+@media (max-width: 900px) {
+  .cinema-gallery-title {
+    grid-column: 1 / 13;
+    grid-row: 3 / 7;
+    margin: 0 18px;
+  }
+
+  .cinema-lens-row,
+  .cinema-flow article {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .cinema-lens-row p,
+  .cinema-flow p {
+    grid-column: 2;
+  }
+}
+
+/* Absolute final pass: legibility wins over every older layer above. */
+.btoc-shell .btoc-hero::after,
+.cinema-scene-scrim {
+  background:
+    radial-gradient(circle at 18% 72%, rgba(0, 0, 0, 0.78), transparent 34%),
+    linear-gradient(90deg, rgba(5, 8, 10, 0.88) 0%, rgba(5, 8, 10, 0.58) 44%, rgba(5, 8, 10, 0.18) 100%),
+    linear-gradient(0deg, rgba(5, 8, 10, 0.84) 0%, rgba(5, 8, 10, 0.16) 58%, rgba(5, 8, 10, 0.34) 100%) !important;
+}
+
+.cinema-scene h1,
+.cinema-scene h2,
+.btoc-hero h1,
+.btoc-title,
+.btoc-title-small,
+.b2b-heading {
+  color: #fffaf0 !important;
+  max-width: 1120px;
+  text-shadow: 0 4px 34px rgba(0, 0, 0, 0.62) !important;
+  text-wrap: balance;
+}
+
+.cinema-scene p,
+.btoc-hero .btoc-lede,
+.btoc-lede,
+.b2b-lede {
+  color: rgba(255, 250, 240, 0.86) !important;
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.52) !important;
+}
+
+.cinema-kicker,
+.btoc-eyebrow,
+.b2b-eyebrow,
+.btoc-caption {
+  color: rgba(255, 250, 240, 0.78) !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.54) !important;
+}
+
+.btoc-filter-panel,
+.btoc-shell form,
+.btoc-card,
+.visual-card,
+.btoc-process-card,
+.btoc-timeline-card,
+.mono-shell [class*="bg-white"],
+.btoc-shell [class*="bg-white"] {
+  background: rgba(250, 249, 245, 0.97) !important;
+  color: #101417 !important;
+}
+
+.btoc-filter-panel *,
+.btoc-shell form *,
+.btoc-card *,
+.visual-card *,
+.btoc-process-card *,
+.btoc-timeline-card *,
+.mono-shell [class*="bg-white"] *,
+.btoc-shell [class*="bg-white"] * {
+  text-shadow: none !important;
+}
+
+.btoc-filter-panel h1,
+.btoc-filter-panel h2,
+.btoc-filter-panel h3,
+.btoc-shell form h1,
+.btoc-shell form h2,
+.btoc-shell form h3,
+.btoc-card h1,
+.btoc-card h2,
+.btoc-card h3,
+.visual-card h1,
+.visual-card h2,
+.visual-card h3,
+.btoc-process-card h1,
+.btoc-process-card h2,
+.btoc-process-card h3,
+.mono-shell [class*="bg-white"] h1,
+.mono-shell [class*="bg-white"] h2,
+.mono-shell [class*="bg-white"] h3,
+.btoc-shell [class*="bg-white"] h1,
+.btoc-shell [class*="bg-white"] h2,
+.btoc-shell [class*="bg-white"] h3 {
+  color: #101417 !important;
+}
+
+.btoc-filter-panel p,
+.btoc-filter-panel div,
+.btoc-filter-panel span,
+.btoc-filter-panel label,
+.btoc-shell form p,
+.btoc-shell form div,
+.btoc-shell form span,
+.btoc-shell form label,
+.btoc-card p,
+.btoc-card div,
+.btoc-card span,
+.visual-card p,
+.visual-card div,
+.visual-card span,
+.btoc-process-card p,
+.btoc-process-card div,
+.btoc-process-card span,
+.mono-shell [class*="bg-white"] p,
+.mono-shell [class*="bg-white"] div,
+.mono-shell [class*="bg-white"] span,
+.btoc-shell [class*="bg-white"] p,
+.btoc-shell [class*="bg-white"] div,
+.btoc-shell [class*="bg-white"] span {
+  color: #30343a !important;
+}
+
+.btoc-field,
+.btoc-select,
+.btoc-shell select,
+.btoc-shell input,
+.btoc-shell textarea {
+  background: #ffffff !important;
+  border-color: rgba(16, 20, 23, 0.22) !important;
+  color: #101417 !important;
+}
+
+.btoc-field::placeholder,
+.btoc-shell input::placeholder,
+.btoc-shell textarea::placeholder {
+  color: rgba(16, 20, 23, 0.48) !important;
+}
+
+.btoc-filter-panel .btoc-button,
+.btoc-shell form .btoc-button,
+.btoc-card .btoc-button,
+.btoc-trip-card .btoc-button {
+  background: #101417 !important;
+  border-color: #101417 !important;
+  color: #ffffff !important;
+}
+
+.btoc-filter-panel .btoc-button *,
+.btoc-shell form .btoc-button *,
+.btoc-card .btoc-button *,
+.btoc-trip-card .btoc-button * {
+  color: #ffffff !important;
+}
+
+.btoc-pill,
+.btoc-badge,
+.btoc-card .btoc-pill,
+.btoc-trip-card .btoc-pill,
+.visual-card .compact-list-item {
+  background: rgba(16, 20, 23, 0.08) !important;
+  border-color: rgba(16, 20, 23, 0.14) !important;
+  color: #101417 !important;
+}
+
+.btoc-trip-card {
+  background: #080b0d !important;
+  color: #fffaf0 !important;
+}
+
+.btoc-trip-card > .grid {
+  background: #080b0d !important;
+}
+
+.btoc-trip-card h2,
+.btoc-trip-card h3,
+.btoc-trip-card strong {
+  color: #fffaf0 !important;
+}
+
+.btoc-trip-card p,
+.btoc-trip-card div:not(.btoc-badge):not(.btoc-pill) {
+  color: rgba(255, 250, 240, 0.78) !important;
+}
+
+.btoc-trip-card a:not(.btoc-button) {
+  border-color: rgba(255, 250, 240, 0.24) !important;
+  color: #fffaf0 !important;
+}
+
+.btoc-image-overlay,
+.cinema-gallery-shot::after {
+  background: linear-gradient(0deg, rgba(3, 5, 6, 0.74), rgba(3, 5, 6, 0.10) 60%, rgba(3, 5, 6, 0.04)) !important;
+}
+
+.btoc-shell img,
+.mono-shell img,
+.cinema-scene img {
+  filter: saturate(1.12) contrast(1.06) brightness(1.03);
+}
+
+.btoc-glass-panel,
+.btoc-glass-panel [class*="bg-white/"],
+.mono-section[class*="bg-\\[var\\(--brand-black\\)"] [class*="bg-white/"],
+.btoc-dark-band [class*="bg-white/"],
+.btoc-hero [class*="bg-white/"],
+.cinema-scene [class*="bg-white/"] {
+  background: rgba(5, 8, 10, 0.36) !important;
+  color: #fffaf0 !important;
+}
+
+.btoc-glass-panel *,
+.btoc-glass-panel p,
+.btoc-glass-panel div,
+.btoc-glass-panel span,
+.btoc-glass-panel a,
+.btoc-hero [class*="bg-white/"] *,
+.btoc-dark-band [class*="bg-white/"] *,
+.cinema-scene [class*="bg-white/"] * {
+  color: rgba(255, 250, 240, 0.88) !important;
+}
+
+.btoc-glass-panel strong,
+.btoc-glass-panel h2,
+.btoc-glass-panel h3,
+.btoc-hero [class*="bg-white/"] strong,
+.btoc-hero [class*="bg-white/"] h2,
+.btoc-hero [class*="bg-white/"] h3 {
+  color: #ffffff !important;
+}
+
+.btoc-hero [class*="text-white"],
+.btoc-dark-band [class*="text-white"],
+.cinema-scene [class*="text-white"] {
+  color: #fffaf0 !important;
+}
+
+@media (max-width: 760px) {
+  .cinema-scene h1,
+  .btoc-hero h1 {
+    font-size: clamp(3rem, 15vw, 5.1rem) !important;
+    line-height: 0.9 !important;
+  }
+
+  .cinema-scene h2,
+  .btoc-title-small,
+  .b2b-heading {
+    font-size: clamp(2.45rem, 12vw, 4.4rem) !important;
+    line-height: 0.94 !important;
+  }
+
+  .cinema-scene p,
+  .btoc-lede {
+    font-size: 1rem !important;
+    line-height: 1.68 !important;
+  }
+
+  .btoc-hero-media img,
+  .cinema-scene-media img {
+    object-position: center center;
+  }
+
+  .btoc-trip-card .relative,
+  .btoc-image-frame {
+    min-height: 320px;
   }
 }

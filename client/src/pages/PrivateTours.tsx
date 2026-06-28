@@ -49,17 +49,17 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 }
 
 const privateImages = {
-  hero: "/programs/tibet-lhasa-nyingchi-8-day/china-prime-dmc-tibet-lhasa-nyingchi-8-day-namtso.jpg",
-  gubei: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-gubei-water-town.jpg",
-  yuGarden: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-yu-garden.jpg",
-  chengdu: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-chengdu.jpg",
-  glassBridge: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-glass-bridge.jpg",
+  hero: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
+  gubei: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg",
+  yuGarden: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-the-bund.jpg",
+  chengdu: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip.webp",
+  glassBridge: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg",
   huangguoshu: "/programs/guizhou-ethnic-karst-6-day/china-prime-dmc-guizhou-ethnic-karst-6-day-huangguoshu-waterfall.jpg",
   shapotou: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-shapotou.jpg",
   karakul: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
   songzanlin: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-songzanlin-monastery.jpg",
   huanglong: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-huanglong-scenic-and-historic-interest-area.jpg",
-  stoneForest: "/programs/southwest-china-yangtze-14-day/china-prime-dmc-southwest-china-yangtze-14-day-kunming-stone-forest.jpg",
+  stoneForest: "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-longji-rice-terraces.jpg",
   heavenlyLake: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-heavenly-lake-of-tian-shan.jpg",
 } as const;
 
@@ -74,7 +74,7 @@ const travelStyles = [
     icon: <UsersRound size={18} />,
     title: "First-time China",
     image: privateImages.gubei,
-    alt: "Gubei Water Town near the Great Wall for private first-time China tours.",
+    alt: "Great Wall for private first-time China tours.",
     body: "Beijing, Xi'an, Shanghai, Suzhou, Hangzhou, and one scenic extension, paced so the trip feels exciting rather than exhausting.",
     points: ["Classic icons", "Private guide", "Easy pacing"],
   },
@@ -82,7 +82,7 @@ const travelStyles = [
     icon: <HeartHandshake size={18} />,
     title: "Family travel",
     image: privateImages.chengdu,
-    alt: "Chengdu city for family-friendly private China travel planning.",
+    alt: "Giant panda for family-friendly private China travel planning.",
     body: "Pandas, hands-on food experiences, short transfer days, flexible starts, and guides who understand how families actually move.",
     points: ["Kid-aware timing", "Panda moments", "Family rooms"],
   },
@@ -108,7 +108,7 @@ const wowStops = [
   {
     title: "Zhangjiajie glass bridge",
     image: privateImages.glassBridge,
-    alt: "Zhangjiajie Glass Bridge for dramatic private China nature tours.",
+    alt: "Tianmen Mountain Zhangjiajie for dramatic private China nature tours.",
     text: "A high-impact nature stop for travelers who want China to feel cinematic from the first glance.",
   },
   {
@@ -334,7 +334,7 @@ export default function PrivateTours() {
         <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] lg:grid-cols-[1.1fr_0.9fr]">
           <FadeSection>
             <figure className="relative min-h-[520px] overflow-hidden bg-[var(--brand-black)]">
-              <img src={privateImages.stoneForest} alt="Kunming Stone Forest for private Yunnan China travel." className="h-full min-h-[520px] w-full object-cover" loading="lazy" decoding="async" />
+              <img src={privateImages.stoneForest} alt="Longji Rice Terraces for private South China travel." className="h-full min-h-[520px] w-full object-cover" loading="lazy" decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/64 via-black/6 to-transparent" />
               <figcaption className="absolute bottom-0 left-0 right-0 max-w-2xl p-7">
                 <div className="mono-index mb-3 text-[var(--brand-gray-300)]">Yunnan extension</div>

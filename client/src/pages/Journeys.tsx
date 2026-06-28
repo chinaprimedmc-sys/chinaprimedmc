@@ -46,8 +46,8 @@ type SortKey = "recommended" | "duration-asc" | "duration-desc";
 const visualCategories = [
   {
     title: "Classic icons",
-    src: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city.jpg",
-    alt: "Forbidden City Beijing private China trip visual.",
+    src: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg",
+    alt: "Great Wall Beijing private China trip visual.",
   },
   {
     title: "Family demand",
@@ -56,12 +56,12 @@ const visualCategories = [
   },
   {
     title: "Soft adventure",
-    src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-wulingyuan.jpg",
+    src: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park.jpg",
     alt: "Wulingyuan Zhangjiajie scenery for soft adventure China trips.",
   },
   {
     title: "Silk Road",
-    src: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark.jpg",
+    src: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
     alt: "Zhangye National Geopark for private Silk Road trips in China.",
   },
 ];
@@ -379,7 +379,7 @@ export default function Journeys() {
       <section className="btoc-section pt-4">
         <div className="btoc-wrap">
           <div className="btoc-image-frame min-h-[58vh] rounded-[34px]">
-            <img src="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi.jpg" alt="Xidi Anhui village for custom East China private trip planning." loading="lazy" decoding="async" />
+            <img src="/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg" alt="Meili Snow Mountain for custom China private trip planning." loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,39,0.78),rgba(17,24,39,0.36),rgba(17,24,39,0.08))]" />
             <div className="absolute bottom-0 left-0 right-0 p-7 md:p-12 lg:p-16">
               <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Not sure where to begin?</span>

@@ -52,8 +52,8 @@ const operatingPrinciples = [
   {
     icon: <ClipboardList size={18} />,
     title: "We plan before we promise",
-    image: "/services/china-prime-dmc-white-label-itinerary-support-trade-materials.jpeg",
-    alt: "China Prime DMC itinerary planning notes for private China travelers.",
+    image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan.jpg",
+    alt: "Huangshan mountain scenery for private China itinerary planning.",
     points: ["Feasibility before pricing", "Clear inclusions and assumptions", "No vague promises before route logic"],
   },
   {
@@ -73,8 +73,8 @@ const operatingPrinciples = [
   {
     icon: <Headphones size={18} />,
     title: "You are not left on your own",
-    image: "/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-one-on-one-buyer-consultation.jpeg",
-    alt: "China Prime DMC one-on-one buyer consultation at Kuala Lumpur travel trade show.",
+    image: "/programs/southern-xinjiang-silk-road-9-day/china-prime-dmc-southern-xinjiang-silk-road-9-day-karakul-lake.jpg",
+    alt: "Karakul Lake Xinjiang for private China travel support and route planning.",
     points: ["Fast brief intake", "Plain-English route advice", "Support before and during travel"],
   },
 ];
