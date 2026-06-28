@@ -79,8 +79,8 @@ const heroGallery = [
 
 const storyImages = [
   {
-    src: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
-    alt: "Chengdu panda base for family-friendly China trips.",
+    src: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip.webp",
+    alt: "Real giant panda for family-friendly private China trips.",
     label: "Pandas & family days",
   },
   {
@@ -110,7 +110,7 @@ const travelStyles = [
     icon: <Heart size={18} />,
     title: "Family rhythm",
     body: "Pandas, easy transfers, child-friendly meals, hotels that make sense, and days that do not collapse by 4 pm.",
-    image: "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-shanghai-disneyland.jpg",
+    image: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip.webp",
   },
   {
     icon: <Utensils size={18} />,
@@ -133,10 +133,10 @@ const travelStyles = [
 ];
 
 const planningSteps = [
-  { icon: <Compass size={18} />, title: "Tell us the dream", body: "Dates, pace, food needs, hotel style, who is traveling, and what China should feel like." },
-  { icon: <MapPinned size={18} />, title: "We shape the route", body: "Cities, nights, guide logic, transport, hotels, meals, and the moments worth slowing down for." },
-  { icon: <Train size={18} />, title: "Travel without guessing", body: "Private guides, high-speed rail, transfers, tickets, local support, and backup thinking." },
-  { icon: <Headphones size={18} />, title: "Stay supported", body: "A China-based team helps before arrival and while the journey is moving on the ground." },
+  { icon: <Compass size={18} />, title: "Tell us the dream", body: "Dates, pace, food needs, hotel style, who is traveling, and what China should feel like.", image: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg" },
+  { icon: <MapPinned size={18} />, title: "We shape the route", body: "Cities, nights, guide logic, transport, hotels, meals, and the moments worth slowing down for.", image: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-yu-garden.jpg" },
+  { icon: <Train size={18} />, title: "Travel without guessing", body: "Private guides, high-speed rail, transfers, tickets, local support, and backup thinking.", image: "/programs/family-beijing-shanghai-guangzhou-10-day/china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-beijing-national-stadium.jpg" },
+  { icon: <Headphones size={18} />, title: "Stay supported", body: "A China-based team helps before arrival and while the journey is moving on the ground.", image: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-chongqing.jpg" },
 ];
 
 export default function Home() {
@@ -219,23 +219,26 @@ export default function Home() {
           <img src="/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-chongqing.jpg" alt="Chongqing skyline night view for China private trips." className="h-full w-full object-cover" loading="lazy" decoding="async" />
         </div>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,33,61,0.92),rgba(20,33,61,0.72),rgba(20,33,61,0.38))]" />
-        <div className="btoc-wrap relative z-10 grid gap-12 lg:grid-cols-[0.72fr_1fr] lg:items-end">
-          <FadeSection>
+        <div className="btoc-wrap relative z-10 grid gap-12 lg:grid-cols-[0.62fr_1fr] lg:items-center">
+          <FadeSection className="lg:sticky lg:top-32">
             <span className="btoc-eyebrow">Travel styles</span>
             <h2 className="btoc-title-small">One country. Many ways to fall in love with it.</h2>
+            <p className="mt-6 max-w-xl text-base leading-8 text-white/72">
+              Start with the traveler, then let the route follow. Family days, halal-aware planning, softer city flow, and senior comfort should all feel visually clear before anyone reads the details.
+            </p>
           </FadeSection>
           <div className="grid gap-4 sm:grid-cols-2">
             {travelStyles.map((style, index) => (
               <FadeSection key={style.title} delay={index * 70}>
-                <article className="btoc-card bg-white/90">
-                  <div className="btoc-image-frame aspect-[16/10] rounded-none">
+                <article className="btoc-style-card group">
+                  <div className="absolute left-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white text-[var(--btoc-navy)] shadow-lg">{style.icon}</div>
+                  <div className="absolute inset-0">
                     <img src={style.image} alt={`${style.title} private China trip image.`} loading="lazy" decoding="async" />
-                    <div className="btoc-image-overlay" />
-                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-white text-[var(--btoc-navy)]">{style.icon}</div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-[var(--btoc-ink)]">{style.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-[rgba(17,24,39,0.70)]">{style.body}</p>
+                  <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(7,12,24,0.84),rgba(7,12,24,0.18)_54%,rgba(7,12,24,0.16))]" />
+                  <div className="relative z-10 mt-auto p-6 md:p-7">
+                    <h3 className="text-2xl font-semibold leading-tight text-white md:text-3xl">{style.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-white/78">{style.body}</p>
                   </div>
                 </article>
               </FadeSection>
@@ -244,20 +247,36 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="btoc-section">
+      <section className="btoc-section btoc-logistics-section">
         <div className="btoc-wrap">
-          <FadeSection className="max-w-4xl">
-            <span className="btoc-eyebrow">How it works</span>
-            <h2 className="btoc-title-small">A beautiful trip still needs invisible logistics.</h2>
-          </FadeSection>
+          <div className="grid gap-10 lg:grid-cols-[0.58fr_1fr] lg:items-end">
+            <FadeSection>
+              <span className="btoc-eyebrow">How it works</span>
+              <h2 className="btoc-title-small">A beautiful trip still needs invisible logistics.</h2>
+            </FadeSection>
+            <FadeSection delay={100}>
+              <figure className="btoc-image-frame aspect-[16/7] rounded-[32px]">
+                <img src="/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-mutianyu.jpg" alt="Mutianyu Great Wall private China trip logistics planning." loading="lazy" decoding="async" />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,18,33,0.58),rgba(10,18,33,0.08))]" />
+                <figcaption className="absolute bottom-5 left-5 text-sm font-bold uppercase tracking-[0.12em] text-white/82">Private guides, smart routing, clear support</figcaption>
+              </figure>
+            </FadeSection>
+          </div>
           <div className="mt-12 grid gap-5 md:grid-cols-4">
             {planningSteps.map((step, index) => (
               <FadeSection key={step.title} delay={index * 80}>
-                <article className="btoc-card h-full p-6 md:p-7">
-                  <div className="mb-10 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--btoc-navy)] text-white">{step.icon}</div>
-                  <div className="btoc-caption">0{index + 1}</div>
-                  <h3 className="mt-3 text-2xl font-semibold text-[var(--btoc-ink)]">{step.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-[rgba(17,24,39,0.68)]">{step.body}</p>
+                <article className="btoc-process-card group">
+                  <div className="btoc-process-image">
+                    <img src={step.image} alt={`${step.title} for private China trip planning.`} loading="lazy" decoding="async" />
+                  </div>
+                  <div className="p-5 md:p-6">
+                    <div className="mb-5 flex items-center justify-between">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--btoc-navy)] text-white">{step.icon}</div>
+                      <div className="btoc-caption">0{index + 1}</div>
+                    </div>
+                    <h3 className="text-xl font-semibold leading-tight text-[var(--btoc-ink)]">{step.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-[rgba(17,24,39,0.68)]">{step.body}</p>
+                  </div>
                 </article>
               </FadeSection>
             ))}
@@ -265,12 +284,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="btoc-section pt-0">
-        <div className="btoc-wrap">
-          <div className="btoc-image-frame min-h-[72vh] rounded-[34px]">
+      <section className="btoc-immersive-cta">
+        <div className="btoc-image-frame min-h-[82vh] rounded-none">
             <img src="/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg" alt="Meili Snow Mountain Yunnan cinematic private China journey." loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,39,0.78),rgba(17,24,39,0.34),rgba(17,24,39,0.10))]" />
-            <div className="absolute inset-x-0 bottom-0 p-6 md:p-12 lg:p-16">
+            <div className="btoc-wrap absolute inset-x-0 bottom-0 p-6 md:p-12 lg:p-16">
               <FadeSection>
                 <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>The brief</span>
                 <h2 className="max-w-4xl text-[clamp(2.4rem,5vw,5.8rem)] font-semibold leading-[0.94] text-white">
@@ -282,7 +300,6 @@ export default function Home() {
                 </div>
               </FadeSection>
             </div>
-          </div>
         </div>
       </section>
 
