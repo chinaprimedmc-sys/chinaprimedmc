@@ -6,6 +6,7 @@ import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 const partnerTypes = [
+  "Private traveler / family",
   "Travel advisor / agency",
   "Tour operator",
   "DMC partner",
@@ -23,9 +24,30 @@ const programTypes = [
   "Student / education",
   "Muslim-friendly",
   "Family travel",
+  "First-time China",
+  "Senior-friendly",
+  "Women-friendly",
+  "Nature and photography",
 ];
 
 const briefTemplates = [
+  {
+    label: "Private traveler",
+    programType: "First-time China",
+    message: [
+      "Traveler profile:",
+      "We are planning our own private China trip and would like help shaping the route.",
+      "",
+      "Travel window and group:",
+      "Please advise based on our travel month, number of travelers, ages, comfort level, and preferred pace.",
+      "",
+      "Places or experiences we like:",
+      "Classic China icons, scenic landscapes, food, culture, family-friendly experiences, Muslim-friendly planning, women-friendly flow, or senior-friendly pacing.",
+      "",
+      "What we need back:",
+      "A suggested private route, how many days it should take, what can be customized, and what details you need before quoting.",
+    ].join("\n"),
+  },
   {
     label: "FIT / private trip",
     programType: "Private FIT",
@@ -205,16 +227,16 @@ export default function Contact() {
       <MediaHero
         image={pageHeroImages.contact}
         alt="China Prime DMC one-on-one buyer consultation at Singapore travel trade show."
-        eyebrow="Partner quote desk"
-        title="Send a brief your operator can actually use."
-        body="Use the form or prepared email template to give us the details that affect China routing, pricing, supplier selection, and on-trip delivery."
+        eyebrow="China quote desk"
+        title="Tell us what kind of China trip you are planning."
+        body="Travel professionals can send a trade brief. Private travelers can send a simple wish list. We will route the request correctly and ask for the details that matter."
       >
           <div className="grid grid-cols-1 gap-px bg-white/20 sm:grid-cols-2">
             {[
               { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "+44 7985 052302", href: WHATSAPP_URL },
               { icon: <Mail size={18} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
               { icon: <MapPin size={18} />, label: "Base", value: "Guangzhou, China", href: null },
-              { icon: <Briefcase size={18} />, label: "Best for", value: "B2B, groups, FIT, MICE", href: null },
+              { icon: <Briefcase size={18} />, label: "Best for", value: "Private trips, B2B, groups, FIT, MICE", href: null },
             ].map((item) => (
               <div key={item.label} className="bg-black/56 p-6 backdrop-blur-sm">
                 <div className="mb-5 text-[var(--brand-gray-400)]">{item.icon}</div>
@@ -235,15 +257,15 @@ export default function Contact() {
         <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr]">
           <aside>
             <p className="b2b-eyebrow">Brief structure</p>
-            <h2 className="b2b-heading" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>Faster quote, fewer follow-ups.</h2>
+            <h2 className="b2b-heading" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>One form for partners and private travelers.</h2>
             <div className="mt-10 grid gap-px bg-[var(--brand-border)]">
               {[
-                "Client profile and travel style",
+                "Client or traveler profile and travel style",
                 "Dates or season",
                 "Estimated group size",
                 "Preferred destinations or routing",
                 "Hotel level and budget range",
-                "Special needs: halal, accessibility, VIP, education, MICE",
+                "Special needs: halal, accessibility, family, senior, VIP, education, MICE",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-4 bg-[var(--brand-gray-50)] p-5">
                   <Send size={15} style={{ color: "var(--brand-black)", flexShrink: 0, marginTop: 4 }} />
@@ -260,8 +282,8 @@ export default function Contact() {
                 <input name="name" value={form.name} onChange={handleChange} style={inputStyle} required />
               </div>
               <div>
-                <label style={labelStyle}>Company *</label>
-                <input name="company" value={form.company} onChange={handleChange} style={inputStyle} required />
+                <label style={labelStyle}>Company / family name *</label>
+                <input name="company" value={form.company} onChange={handleChange} placeholder="Company, agency, or family name" style={inputStyle} required />
               </div>
             </div>
 
@@ -278,7 +300,7 @@ export default function Contact() {
 
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
-                <label style={labelStyle}>Partner type</label>
+                <label style={labelStyle}>Request type</label>
                 <select name="partnerType" value={form.partnerType} onChange={handleChange} style={inputStyle}>
                   <option value="">Select...</option>
                   {partnerTypes.map((type) => <option key={type} value={type}>{type}</option>)}
@@ -343,7 +365,7 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 rows={10}
-                placeholder="Tell us what your client or group needs, what is confirmed, and what still needs advice."
+                placeholder="Tell us what your client, group, family, or private trip needs, what is confirmed, and what still needs advice."
                 required
                 style={{ ...inputStyle, resize: "vertical" }}
               />

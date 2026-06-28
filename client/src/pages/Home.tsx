@@ -126,16 +126,16 @@ export default function Home() {
       <MediaHero
         image={pageHeroImages.home}
         alt="China Prime DMC meeting global travel trade partners for China ground operations."
-        eyebrow="China ground services for global B2B partners"
-        title={<>China ground operations,<br className="hidden sm:block" /> built for trade.</>}
-        body="China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, corporate travel teams, and specialist group planners."
+        eyebrow="China travel design for partners and private clients"
+        title={<>China journeys,<br className="hidden sm:block" /> built around you.</>}
+        body="China Prime DMC designs and operates China programs for travel partners, private families, first-time visitors, and special-interest travelers who need a route that feels clear, personal, and reliable."
         actions={
           <>
-            <Link href="/contact" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">
-              Request a quote <ArrowRight size={17} />
+            <Link href="/private-china-tours" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">
+              Private travelers <ArrowRight size={17} />
             </Link>
             <Link href="/b2b" className="mono-button border-white bg-transparent text-white hover:bg-white hover:text-[var(--brand-black)]">
-              View services
+              Travel partners
             </Link>
           </>
         }
@@ -148,7 +148,7 @@ export default function Home() {
             <div>
               <div className="mb-8 flex items-center gap-4">
                 <div className="h-px w-16 bg-[var(--brand-black)]" />
-                <p className="b2b-eyebrow mb-0">China ground services for travel brands</p>
+                <p className="b2b-eyebrow mb-0">Choose your path</p>
               </div>
               <h1
                 style={{
@@ -161,12 +161,12 @@ export default function Home() {
                   maxWidth: 860,
                 }}
               >
-                China ground operations,
-                <br className="hidden sm:block" /> built for trade.
+                China journeys,
+                <br className="hidden sm:block" /> built around you.
               </h1>
               <div className="mt-8 grid max-w-3xl grid-cols-1 gap-7 md:grid-cols-[1fr_auto] md:items-end">
                 <p className="b2b-lede" style={{ fontSize: "clamp(1.05rem, 1.45vw, 1.22rem)", marginTop: 0, maxWidth: 650 }}>
-                  China Prime DMC designs, quotes, and operates China programs for travel advisors, tour operators, DMC partners, and corporate travel teams.
+                  For travel partners, we operate China behind your brand. For private travelers, we design the route around your pace, interests, comfort, and real-life needs.
                 </p>
                 <div className="hidden w-28 text-right text-[0.68rem] font-bold uppercase leading-5 tracking-[0.16em] text-[var(--brand-gray-500)] md:block">
                   Est. 2012
@@ -176,11 +176,11 @@ export default function Home() {
               </div>
 
               <div className="mt-10 flex flex-wrap gap-3">
-                <Link href="/contact" className="mono-button">
-                  Request a quote <ArrowRight size={17} />
+                <Link href="/private-china-tours" className="mono-button">
+                  Private China tours <ArrowRight size={17} />
                 </Link>
                 <Link href="/b2b" className="mono-button mono-button-secondary">
-                  View services
+                  B2B partner services
                 </Link>
               </div>
             </div>

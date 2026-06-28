@@ -17,6 +17,7 @@ const JourneyDetail = lazy(() => import("./pages/JourneyDetail"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const B2B = lazy(() => import("./pages/B2B"));
+const PrivateTours = lazy(() => import("./pages/PrivateTours"));
 const Contact = lazy(() => import("./pages/Contact"));
 const TradeShows = lazy(() => import("./pages/TradeShows"));
 const TradeShowDetail = lazy(() => import("./pages/TradeShowDetail"));
@@ -62,6 +63,7 @@ function Router() {
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:id" component={BlogPost} />
         <Route path="/b2b" component={B2B} />
+        <Route path="/private-china-tours" component={PrivateTours} />
         <Route path="/trade-shows" component={TradeShows} />
         <Route path="/trade-shows/:id" component={TradeShowDetail} />
         <Route path="/contact" component={Contact} />

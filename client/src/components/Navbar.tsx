@@ -6,6 +6,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/b2b", label: "Services" },
   { href: "/journeys", label: "Programs" },
+  { href: "/private-china-tours", label: "Private Tours" },
   { href: "/destinations", label: "Coverage" },
   { href: "/about", label: "Company" },
   { href: "/contact", label: "Contact" },
@@ -95,7 +96,7 @@ export default function Navbar() {
               </div>
             </Link>
 
-            <nav className="hidden items-center gap-7 md:flex">
+            <nav className="hidden items-center gap-5 md:flex">
               {navLinks.map((link) => {
                 const isActive = location === link.href;
                 return (
