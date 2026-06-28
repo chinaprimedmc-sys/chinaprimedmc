@@ -3,6 +3,8 @@ import { type ReactNode, useEffect, useMemo, useState } from "react";
 type ImageAsset = {
   avif?: string;
   webp?: string;
+  avifSet?: string;
+  webpSet?: string;
   jpg: string;
   alt: string;
 };
@@ -58,12 +60,171 @@ const routes: Record<PageKey, string> = {
   contact: "/contact",
 };
 
-const heroImage: ImageAsset = {
-  avif: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park-1920.avif",
-  webp: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park-1920.webp",
-  jpg: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park.jpg",
-  alt: "Misty sandstone peaks in Zhangjiajie National Forest Park, China",
+function programImage(folder: string, name: string, alt: string): ImageAsset {
+  const base = `/programs/${folder}/${name}`;
+  return {
+    avif: `${base}-1920.avif`,
+    webp: `${base}-1920.webp`,
+    avifSet: `${base}-960.avif 960w, ${base}-1400.avif 1400w, ${base}-1920.avif 1920w`,
+    webpSet: `${base}-960.webp 960w, ${base}-1400.webp 1400w, ${base}-1920.webp 1920w`,
+    jpg: `${base}.jpg`,
+    alt,
+  };
+}
+
+function jpgImage(folder: string, name: string, alt: string): ImageAsset {
+  return {
+    jpg: `/programs/${folder}/${name}.jpg`,
+    alt,
+  };
+}
+
+const visuals = {
+  zhangjiajieForest: programImage(
+    "zhangjiajie-fenghuang-5-day",
+    "china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park",
+    "Misty sandstone peaks in Zhangjiajie National Forest Park, China",
+  ),
+  tianmenMountain: programImage(
+    "zhangjiajie-fenghuang-5-day",
+    "china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain",
+    "Tianmen Mountain road and cliffs in Zhangjiajie",
+  ),
+  panda: {
+    avif: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip-1920.avif",
+    avifSet: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip-960.avif 960w, /editorial/china-prime-dmc-real-giant-panda-family-china-trip-1400.avif 1400w, /editorial/china-prime-dmc-real-giant-panda-family-china-trip-1920.avif 1920w",
+    webp: "/editorial/china-prime-dmc-real-giant-panda-family-china-trip.webp",
+    jpg: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
+    alt: "Real giant panda for a family China journey in Chengdu",
+  },
+  liRiver: programImage(
+    "guangzhou-guilin-yangshuo-6-day",
+    "china-prime-dmc-guangzhou-guilin-yangshuo-6-day-li-river",
+    "Li River karst mountains near Guilin and Yangshuo",
+  ),
+  yangshuo: programImage(
+    "guangzhou-guilin-yangshuo-6-day",
+    "china-prime-dmc-guangzhou-guilin-yangshuo-6-day-yangshuo-county",
+    "Yangshuo countryside with limestone karst scenery",
+  ),
+  meili: programImage(
+    "shangri-la-meili-snow-mountain-8-day",
+    "china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains",
+    "Meili Snow Mountains in Yunnan at sunrise",
+  ),
+  songzanlin: programImage(
+    "shangri-la-meili-snow-mountain-8-day",
+    "china-prime-dmc-shangri-la-meili-snow-mountain-8-day-songzanlin-monastery",
+    "Songzanlin Monastery in Shangri-La, Yunnan",
+  ),
+  greatWall: programImage(
+    "beijing-great-wall-gubei-5-day",
+    "china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china",
+    "Great Wall of China winding across mountain ridges",
+  ),
+  forbiddenCity: programImage(
+    "beijing-great-wall-gubei-5-day",
+    "china-prime-dmc-beijing-great-wall-gubei-5-day-forbidden-city",
+    "Forbidden City palace architecture in Beijing",
+  ),
+  crescentLake: programImage(
+    "silk-road-gansu-ningxia-8-day",
+    "china-prime-dmc-silk-road-gansu-ningxia-8-day-crescent-lake-dunhuang",
+    "Crescent Lake and desert dunes in Dunhuang",
+  ),
+  zhangye: programImage(
+    "silk-road-gansu-ningxia-8-day",
+    "china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark",
+    "Zhangye National Geopark rainbow mountains in Gansu",
+  ),
+  westLake: programImage(
+    "shanghai-hangzhou-huangshan-9-day",
+    "china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake",
+    "West Lake in Hangzhou for a luxury slow China journey",
+  ),
+  huangshan: programImage(
+    "shanghai-hangzhou-huangshan-9-day",
+    "china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan",
+    "Huangshan granite peaks above clouds",
+  ),
+  bund: programImage(
+    "shanghai-hangzhou-huangshan-9-day",
+    "china-prime-dmc-shanghai-hangzhou-huangshan-9-day-the-bund",
+    "Shanghai skyline from the Bund at blue hour",
+  ),
+  xidi: programImage(
+    "shanghai-hangzhou-huangshan-9-day",
+    "china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi",
+    "Xidi ancient village architecture near Huangshan",
+  ),
+  jiuzhaigou: programImage(
+    "sichuan-tibetan-nature-10-day",
+    "china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou",
+    "Jiuzhaigou lakes and mountain scenery in Sichuan",
+  ),
+  huanglong: programImage(
+    "sichuan-tibetan-nature-10-day",
+    "china-prime-dmc-sichuan-tibetan-nature-10-day-huanglong-scenic-and-historic-interest-area",
+    "Huanglong travertine pools in Sichuan",
+  ),
+  hongya: programImage(
+    "chongqing-chengdu-culture-food-5-day",
+    "china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave",
+    "Hongya Cave and Chongqing skyline at night",
+  ),
+  heavenlyLake: programImage(
+    "southern-xinjiang-silk-road-9-day",
+    "china-prime-dmc-southern-xinjiang-silk-road-9-day-heavenly-lake-of-tian-shan",
+    "Heavenly Lake of Tianshan in Xinjiang",
+  ),
+  kashgar: programImage(
+    "southern-xinjiang-silk-road-9-day",
+    "china-prime-dmc-southern-xinjiang-silk-road-9-day-kashgar",
+    "Kashgar old city on a Silk Road China journey",
+  ),
+  lujiazui: programImage(
+    "southwest-china-yangtze-14-day",
+    "china-prime-dmc-southwest-china-yangtze-14-day-lujiazui",
+    "Lujiazui skyline in Shanghai",
+  ),
+  namtso: programImage(
+    "tibet-lhasa-nyingchi-8-day",
+    "china-prime-dmc-tibet-lhasa-nyingchi-8-day-namtso",
+    "Namtso lake and Tibetan plateau scenery",
+  ),
+  yangtzeGorge: programImage(
+    "china-yangtze-cruise-13-day",
+    "china-prime-dmc-china-yangtze-cruise-13-day-wu-gorge",
+    "Wu Gorge cliffs along the Yangtze River",
+  ),
+  shennongStream: programImage(
+    "china-yangtze-cruise-13-day",
+    "china-prime-dmc-china-yangtze-cruise-13-day-shennong-stream",
+    "Shennong Stream canyon scenery on the Yangtze",
+  ),
+  terracotta: jpgImage(
+    "beijing-xian-shanghai-8-day",
+    "china-prime-dmc-beijing-xian-shanghai-8-day-terracotta-army",
+    "Terracotta Army in Xian for a classic private China tour",
+  ),
+  muslimQuarter: jpgImage(
+    "beijing-xian-shanghai-8-day",
+    "china-prime-dmc-beijing-xian-shanghai-8-day-muslim-quarter-xi-an",
+    "Xian Muslim Quarter for Muslim-friendly private China travel",
+  ),
+  foodStreet: jpgImage(
+    "chongqing-chengdu-culture-food-5-day",
+    "china-prime-dmc-chongqing-chengdu-culture-food-5-day-sichuan-cuisine",
+    "Sichuan cuisine table for a private China food journey",
+  ),
+  templeOfHeaven: programImage(
+    "beijing-great-wall-gubei-5-day",
+    "china-prime-dmc-beijing-great-wall-gubei-5-day-temple-of-heaven",
+    "Temple of Heaven in Beijing for a private culture trip",
+  ),
 };
+
+const heroImage = visuals.zhangjiajieForest;
 
 const destinations: Destination[] = [
   {
@@ -75,12 +236,7 @@ const destinations: Destination[] = [
     bestTime: "April to June and September to November for softer weather, clearer light, and fewer heavy holiday crowds.",
     highlights: ["Avatar-style sandstone peaks", "Tianmen Mountain", "Forest viewpoints", "Fenghuang old town add-on"],
     travelFor: ["Photographers", "Adventure-light families", "Couples", "Nature lovers"],
-    image: {
-      avif: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain-1920.avif",
-      webp: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain-1920.webp",
-      jpg: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain.jpg",
-      alt: "Tianmen Mountain landscape in Zhangjiajie",
-    },
+    image: visuals.tianmenMountain,
   },
   {
     name: "Chengdu & Sichuan",
@@ -91,10 +247,7 @@ const destinations: Destination[] = [
     bestTime: "March to June and September to November. Winter can also work well for pandas and slower city days.",
     highlights: ["Giant panda base", "Sichuan food walks", "Teahouse culture", "Jiuzhaigou or Leshan extensions"],
     travelFor: ["Families", "Food lovers", "Senior-friendly pacing", "Soft adventure"],
-    image: {
-      jpg: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-chengdu-research-base-of-giant-panda-breeding.jpg",
-      alt: "Giant panda experience in Chengdu, Sichuan",
-    },
+    image: visuals.panda,
   },
   {
     name: "Guilin & Yangshuo",
@@ -105,12 +258,7 @@ const destinations: Destination[] = [
     bestTime: "April to June for green countryside, and September to October for comfortable weather and clear views.",
     highlights: ["Li River scenery", "Yangshuo countryside", "Longji rice terraces", "Cooking or cycling experiences"],
     travelFor: ["Couples", "Families", "Landscape photographers", "Slow travelers"],
-    image: {
-      avif: "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-li-river-1920.avif",
-      webp: "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-li-river-1920.webp",
-      jpg: "/programs/guangzhou-guilin-yangshuo-6-day/china-prime-dmc-guangzhou-guilin-yangshuo-6-day-li-river.jpg",
-      alt: "Li River karst mountains near Guilin and Yangshuo",
-    },
+    image: visuals.liRiver,
   },
   {
     name: "Yunnan Highlands",
@@ -121,12 +269,7 @@ const destinations: Destination[] = [
     bestTime: "March to May and October to November for crisp light, mild temperatures, and strong mountain visibility.",
     highlights: ["Dali and Lijiang", "Shangri-La", "Meili Snow Mountain", "Tiger Leaping Gorge"],
     travelFor: ["Luxury travelers", "Couples", "Culture seekers", "Scenic road trips"],
-    image: {
-      avif: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains-1920.avif",
-      webp: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains-1920.webp",
-      jpg: "/programs/shangri-la-meili-snow-mountain-8-day/china-prime-dmc-shangri-la-meili-snow-mountain-8-day-meili-snow-mountains.jpg",
-      alt: "Meili Snow Mountains in Yunnan",
-    },
+    image: visuals.meili,
   },
   {
     name: "Beijing, Xi'an & Shanghai",
@@ -137,12 +280,7 @@ const destinations: Destination[] = [
     bestTime: "March to May and September to November. Winter is crisp and often excellent for photography in Beijing.",
     highlights: ["Great Wall", "Forbidden City", "Terracotta Warriors", "Shanghai skyline"],
     travelFor: ["First-time visitors", "Families", "History lovers", "Multi-generation trips"],
-    image: {
-      avif: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china-1920.avif",
-      webp: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china-1920.webp",
-      jpg: "/programs/beijing-great-wall-gubei-5-day/china-prime-dmc-beijing-great-wall-gubei-5-day-great-wall-of-china.jpg",
-      alt: "Great Wall of China private travel experience",
-    },
+    image: visuals.greatWall,
   },
   {
     name: "Silk Road & Dunhuang",
@@ -153,12 +291,7 @@ const destinations: Destination[] = [
     bestTime: "May to June and September to October for comfortable desert travel and beautiful evening light.",
     highlights: ["Dunhuang", "Mogao Caves", "Crescent Lake", "Zhangye rainbow mountains"],
     travelFor: ["Adventure travelers", "Photographers", "Culture lovers", "Repeat visitors"],
-    image: {
-      avif: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-crescent-lake-dunhuang-1920.avif",
-      webp: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-crescent-lake-dunhuang-1920.webp",
-      jpg: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-crescent-lake-dunhuang.jpg",
-      alt: "Crescent Lake in Dunhuang for a Silk Road China journey",
-    },
+    image: visuals.crescentLake,
   },
 ];
 
@@ -166,27 +299,17 @@ const experiences: Experience[] = [
   {
     title: "Eat where the city actually eats",
     copy: "A private food walk can be elegant without becoming staged: night markets, tea houses, family-run kitchens, and the right table at the right hour.",
-    image: {
-      avif: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.avif",
-      webp: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.webp",
-      jpg: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg",
-      alt: "Chongqing night skyline for a private China food and city life journey",
-    },
+    image: visuals.hongya,
   },
   {
     title: "See the icons without the exhaustion",
     copy: "The Great Wall, Forbidden City, Terracotta Warriors, and Shanghai skyline can feel personal when the pacing is designed around your family.",
-    image: destinations[4].image,
+    image: visuals.forbiddenCity,
   },
   {
     title: "Make China feel easy",
     copy: "English-speaking support, private transfers, high-speed rail planning, food preferences, family rhythm, and local help when plans change.",
-    image: {
-      avif: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-the-bund-1920.avif",
-      webp: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-the-bund-1920.webp",
-      jpg: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-the-bund.jpg",
-      alt: "Shanghai skyline on the Bund for a modern China itinerary",
-    },
+    image: visuals.bund,
   },
 ];
 
@@ -199,12 +322,7 @@ const experienceClusters: ExperienceCluster[] = [
     pace: "Evenings carry the mood; mornings stay softer after big food nights.",
     pairsWith: ["Chengdu", "Chongqing", "Xi'an", "Shanghai"],
     routeIdeas: ["Sichuan flavor with pandas and teahouses", "Xi'an noodles, Muslim Quarter, and imperial history", "Shanghai dining with water-town calm"],
-    image: {
-      avif: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.avif",
-      webp: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.webp",
-      jpg: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg",
-      alt: "Chongqing night skyline for a private China food and city life journey",
-    },
+    image: visuals.hongya,
   },
   {
     title: "Culture & local life",
@@ -214,10 +332,7 @@ const experienceClusters: ExperienceCluster[] = [
     pace: "One deep cultural anchor per day, with room to wander.",
     pairsWith: ["Beijing", "Xi'an", "Suzhou", "Luoyang"],
     routeIdeas: ["Beijing hutongs before the palace crowds", "Suzhou gardens with a quieter water-town afternoon", "Luoyang heritage with modern rail comfort"],
-    image: {
-      jpg: "/programs/female-friendly-cultural-china-10-day/china-prime-dmc-female-friendly-cultural-china-10-day-prince-gong-mansion.jpg",
-      alt: "Historic Beijing mansion courtyard for a private China culture trip",
-    },
+    image: visuals.templeOfHeaven,
   },
   {
     title: "Nature & landscapes",
@@ -227,12 +342,7 @@ const experienceClusters: ExperienceCluster[] = [
     pace: "Scenic days need recovery space between transfers.",
     pairsWith: ["Zhangjiajie", "Guilin", "Huangshan", "Yunnan"],
     routeIdeas: ["Zhangjiajie peaks with Fenghuang old town", "Guilin and Yangshuo river country", "Yunnan mountains with boutique-style pacing"],
-    image: {
-      avif: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou-1920.avif",
-      webp: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou-1920.webp",
-      jpg: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou.jpg",
-      alt: "Jiuzhaigou lakes and mountain scenery for a private China nature journey",
-    },
+    image: visuals.jiuzhaigou,
   },
   {
     title: "Family China",
@@ -242,10 +352,7 @@ const experienceClusters: ExperienceCluster[] = [
     pace: "Balanced days with private transfers and fewer hotel changes.",
     pairsWith: ["Beijing", "Chengdu", "Guilin", "Shanghai"],
     routeIdeas: ["Great Wall, pandas, and skyline finale", "Guilin countryside with child-friendly soft adventure", "Shanghai plus water town and food"],
-    image: {
-      jpg: "/programs/chongqing-jiuzhaigou-chengdu-6-day/china-prime-dmc-chongqing-jiuzhaigou-chengdu-6-day-chengdu-research-base-of-giant-panda-breeding.jpg",
-      alt: "Giant panda in Chengdu for a family China tour",
-    },
+    image: visuals.panda,
   },
   {
     title: "Luxury slow travel",
@@ -255,12 +362,7 @@ const experienceClusters: ExperienceCluster[] = [
     pace: "Slower, hotel-aware, with fewer rushed departures.",
     pairsWith: ["Yunnan", "Hangzhou", "Shanghai", "Huangshan"],
     routeIdeas: ["Yunnan highlands with old towns and snow mountains", "Shanghai and Hangzhou with gardens and design-led stays", "Huangshan with village architecture and sunrise pacing"],
-    image: {
-      avif: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake-1920.avif",
-      webp: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake-1920.webp",
-      jpg: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg",
-      alt: "West Lake in Hangzhou for a luxury slow China journey",
-    },
+    image: visuals.westLake,
   },
   {
     title: "Soft adventure",
@@ -270,10 +372,7 @@ const experienceClusters: ExperienceCluster[] = [
     pace: "Active mornings, comfortable transfers, optional harder routes.",
     pairsWith: ["Zhangjiajie", "Yangshuo", "Tiger Leaping Gorge", "Huangshan"],
     routeIdeas: ["Zhangjiajie viewpoints without overpacking", "Yangshuo cycling and river scenery", "Yunnan gorge views with private driver support"],
-    image: {
-      jpg: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-glass-bridge.jpg",
-      alt: "Zhangjiajie glass bridge for a soft adventure China trip",
-    },
+    image: visuals.yangshuo,
   },
   {
     title: "Muslim-friendly travel",
@@ -283,10 +382,7 @@ const experienceClusters: ExperienceCluster[] = [
     pace: "Private, food-aware, with practical downtime.",
     pairsWith: ["Beijing", "Xi'an", "Shanghai", "Guilin"],
     routeIdeas: ["Classic China with researched halal dining", "Xi'an culture with Muslim Quarter context", "Guilin scenery with easier family pacing"],
-    image: {
-      jpg: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-muslim-quarter-xi-an.jpg",
-      alt: "Xi'an Muslim Quarter for Muslim-friendly private China travel",
-    },
+    image: visuals.muslimQuarter,
   },
   {
     title: "Photography trips",
@@ -296,12 +392,7 @@ const experienceClusters: ExperienceCluster[] = [
     pace: "Early starts when worth it, slower middays, flexible evenings.",
     pairsWith: ["Huangshan", "Guilin", "Dunhuang", "Shanghai"],
     routeIdeas: ["Huangshan sunrise with ancient villages", "Dunhuang desert light and Buddhist caves", "Shanghai skyline and water-town contrast"],
-    image: {
-      avif: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark-1920.avif",
-      webp: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark-1920.webp",
-      jpg: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark.jpg",
-      alt: "Zhangye National Geopark colors for a China photography journey",
-    },
+    image: visuals.zhangye,
   },
 ];
 
@@ -316,10 +407,7 @@ const tours: Tour[] = [
     places: "Beijing, Xi'an, Chengdu or Guilin, Shanghai",
     copy: "The essential China route, rewritten around comfort: private guides, calmer starts, high-speed rail where it makes sense, and enough unscheduled time to let the trip breathe.",
     includes: ["Great Wall timing", "Panda or Guilin add-on", "Family-friendly food planning", "Private transfers"],
-    image: {
-      jpg: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-terracotta-army.jpg",
-      alt: "Terracotta Army in Xi'an for a classic private China tour",
-    },
+    image: visuals.greatWall,
   },
   {
     title: "Mountains, rivers, and quiet villages",
@@ -330,12 +418,7 @@ const tours: Tour[] = [
     places: "Zhangjiajie, Guilin, Huangshan, Yunnan",
     copy: "A route for travelers who want China to look cinematic without feeling rushed. We plan the light, the transfers, and the recovery time between big landscapes.",
     includes: ["Sunrise windows", "Less crowded viewpoints", "Flexible hiking levels", "Village and river experiences"],
-    image: {
-      avif: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan-1920.avif",
-      webp: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan-1920.webp",
-      jpg: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-huangshan.jpg",
-      alt: "Huangshan mountains for a scenic China photography journey",
-    },
+    image: visuals.huangshan,
   },
   {
     title: "Halal-aware China, privately planned",
@@ -346,10 +429,7 @@ const tours: Tour[] = [
     places: "Beijing, Xi'an, Shanghai, Chengdu or Guilin",
     copy: "A comfortable China itinerary with halal dining research, prayer-aware pacing, private transport, and major cultural highlights without making the trip feel constrained.",
     includes: ["Halal dining research", "Private driver-guide days", "Mosque and culture stops", "Family-friendly pacing"],
-    image: {
-      jpg: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-muslim-quarter-xi-an.jpg",
-      alt: "Muslim Quarter in Xi'an for Muslim-friendly China travel",
-    },
+    image: visuals.kashgar,
   },
   {
     title: "Yunnan soft-luxury mountain journey",
@@ -360,7 +440,7 @@ const tours: Tour[] = [
     places: "Dali, Lijiang, Shangri-La, Meili Snow Mountain",
     copy: "Old towns, mountain lodges, Tibetan culture, and private scenic drives designed for travelers who want beauty without daily overpacking.",
     includes: ["Scenic private drives", "Boutique-style stays", "Old town evenings", "Mountain-view pacing"],
-    image: destinations[3].image,
+    image: visuals.songzanlin,
   },
   {
     title: "Chengdu, Chongqing and panda country",
@@ -371,12 +451,7 @@ const tours: Tour[] = [
     places: "Chengdu, Leshan or Dujiangyan, Chongqing",
     copy: "A playful route that mixes pandas, Sichuan food, teahouses, river-city night views, and private support for families who want China to feel welcoming quickly.",
     includes: ["Panda visit", "Food walk", "Teahouse time", "Optional mountain or river extension"],
-    image: {
-      avif: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.avif",
-      webp: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave-1920.webp",
-      jpg: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-hongya-cave.jpg",
-      alt: "Hongya Cave night view in Chongqing for a Chengdu and Chongqing private tour",
-    },
+    image: visuals.hongya,
   },
   {
     title: "Silk Road desert and cave journey",
@@ -387,7 +462,7 @@ const tours: Tour[] = [
     places: "Lanzhou, Zhangye, Jiayuguan, Dunhuang",
     copy: "A western China route for travelers drawn to desert light, Buddhist art, old trade routes, and a side of China that feels wide open and deeply historic.",
     includes: ["Mogao Caves planning", "Desert sunset timing", "Rainbow mountain viewpoints", "Private overland logistics"],
-    image: destinations[5].image,
+    image: visuals.crescentLake,
   },
 ];
 
@@ -464,9 +539,9 @@ function navigateTo(page: PageKey) {
 function Picture({ image, className, loading = "lazy" }: { image: ImageAsset; className?: string; loading?: "lazy" | "eager" }) {
   return (
     <picture className={className}>
-      {image.avif ? <source srcSet={image.avif} type="image/avif" /> : null}
-      {image.webp ? <source srcSet={image.webp} type="image/webp" /> : null}
-      <img src={image.jpg} alt={image.alt} loading={loading} decoding="async" />
+      {image.avif ? <source srcSet={image.avifSet ?? image.avif} sizes="(max-width: 680px) 100vw, (max-width: 1180px) 92vw, 1440px" type="image/avif" /> : null}
+      {image.webp ? <source srcSet={image.webpSet ?? image.webp} sizes="(max-width: 680px) 100vw, (max-width: 1180px) 92vw, 1440px" type="image/webp" /> : null}
+      <img src={image.jpg} alt={image.alt} loading={loading} decoding="async" fetchPriority={loading === "eager" ? "high" : "auto"} />
     </picture>
   );
 }
@@ -631,7 +706,7 @@ function DestinationsPage() {
         eyebrow="Destinations"
         title="The China you choose changes the whole story."
         copy="Start with the feeling: dramatic mountains, easier family days, food-led cities, heritage icons, soft luxury, or desert light. Then we design the route around your pace."
-        image={destinations[2].image}
+        image={visuals.liRiver}
       />
       <section className="page-intro" aria-labelledby="destinations-planner-title">
         <div>
@@ -678,7 +753,7 @@ function ExperiencesPage() {
         eyebrow="Experiences"
         title="Choose the kind of China you want to feel."
         copy="Some travelers come for food. Some for mountains. Some need a family rhythm, halal-aware planning, or a quieter luxury pace. Start here, then we shape the cities around the experience."
-        image={experienceClusters[2].image}
+        image={visuals.jiuzhaigou}
       />
       <section className="experience-manifesto" aria-labelledby="experience-manifesto-title">
         <div>
@@ -735,7 +810,7 @@ function ToursPage() {
         eyebrow="Private China tours"
         title="Begin with an idea. We will make it feel like your trip."
         copy="Every route below is a starting point, not a package. We adjust pace, hotels, food needs, guides, transport, and daily rhythm around the people who are actually traveling."
-        image={tours[1].image}
+        image={visuals.huangshan}
       />
       <section className="tour-filter-story" aria-labelledby="tour-filter-title">
         <div>
@@ -776,7 +851,7 @@ function ContactPage() {
         eyebrow="Trip planner"
         title="Tell us the trip you are hoping for. We will make it easier to see."
         copy="You do not need a perfect itinerary yet. Share your dates, travelers, comfort level, and a few dreams. We will turn that into a first private China route direction."
-        image={destinations[1].image}
+        image={visuals.greatWall}
       />
       <section className="contact-shell" aria-labelledby="contact-title">
         <div className="contact-story">
@@ -791,8 +866,8 @@ function ContactPage() {
             <span>Private planning since 2012</span>
           </div>
           <div className="contact-visual-mosaic" aria-label="Private China trip planning scenes">
-            <Picture image={destinations[4].image} />
-            <Picture image={destinations[1].image} />
+            <Picture image={visuals.westLake} />
+            <Picture image={visuals.panda} />
           </div>
         </div>
 
@@ -953,7 +1028,7 @@ function ReviewSection() {
 function PlannerSection() {
   return (
     <section className="planner" aria-labelledby="planner-title">
-      <Picture image={destinations[5].image} className="planner-media" />
+      <Picture image={visuals.yangtzeGorge} className="planner-media" />
       <div className="planner-card">
         <p className="eyebrow dark">Plan with less friction</p>
         <h2 id="planner-title">Tell us what kind of China you want to feel.</h2>
