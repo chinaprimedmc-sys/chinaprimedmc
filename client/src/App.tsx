@@ -25,6 +25,17 @@ type Experience = {
   image: ImageAsset;
 };
 
+type ExperienceCluster = {
+  title: string;
+  subtitle: string;
+  promise: string;
+  bestFor: string;
+  pace: string;
+  pairsWith: string[];
+  routeIdeas: string[];
+  image: ImageAsset;
+};
+
 type Tour = {
   title: string;
   slug: string;
@@ -37,11 +48,12 @@ type Tour = {
   image: ImageAsset;
 };
 
-type PageKey = "home" | "destinations" | "tours" | "contact";
+type PageKey = "home" | "destinations" | "experiences" | "tours" | "contact";
 
 const routes: Record<PageKey, string> = {
   home: "/",
   destinations: "/destinations",
+  experiences: "/experiences",
   tours: "/private-china-tours",
   contact: "/contact",
 };
@@ -176,6 +188,120 @@ const experiences: Experience[] = [
   },
 ];
 
+const experienceClusters: ExperienceCluster[] = [
+  {
+    title: "Food journeys",
+    subtitle: "For travelers who remember a city by the table.",
+    promise: "A China food trip should feel generous, curious, and safe to enjoy. We design around private tastings, local markets, tea houses, family-run kitchens, and dining confidence for every comfort level.",
+    bestFor: "Food lovers, couples, curious families",
+    pace: "Evenings matter; mornings stay softer after big food nights.",
+    pairsWith: ["Chengdu", "Chongqing", "Xi'an", "Shanghai"],
+    routeIdeas: ["Sichuan flavor with pandas and teahouses", "Xi'an noodles, Muslim Quarter, and imperial history", "Shanghai dining with water-town calm"],
+    image: {
+      jpg: "/programs/chongqing-chengdu-culture-food-5-day/china-prime-dmc-chongqing-chengdu-culture-food-5-day-sichuan-cuisine.jpg",
+      alt: "Sichuan cuisine for a private China food journey",
+    },
+  },
+  {
+    title: "Culture & local life",
+    subtitle: "For travelers who want context, not a lecture.",
+    promise: "Temples, old neighborhoods, gardens, calligraphy, tea, museums, markets, and guide-led stories are paced so China feels understandable without becoming academic.",
+    bestFor: "First-time visitors, culture seekers, multi-generation trips",
+    pace: "One deep cultural anchor per day, with room to wander.",
+    pairsWith: ["Beijing", "Xi'an", "Suzhou", "Luoyang"],
+    routeIdeas: ["Beijing hutongs before the palace crowds", "Suzhou gardens with a quieter water-town afternoon", "Luoyang heritage with modern rail comfort"],
+    image: {
+      jpg: "/programs/female-friendly-cultural-china-10-day/china-prime-dmc-female-friendly-cultural-china-10-day-prince-gong-mansion.jpg",
+      alt: "Historic Beijing mansion courtyard for a private China culture trip",
+    },
+  },
+  {
+    title: "Nature & landscapes",
+    subtitle: "For the moment China suddenly feels larger than expected.",
+    promise: "We plan mountains, rivers, terraces, snow peaks, and desert light around weather, crowds, transfers, walking levels, and photography windows, so the beauty does not come with exhaustion.",
+    bestFor: "Photographers, couples, active families, repeat travelers",
+    pace: "Scenic days need recovery space between transfers.",
+    pairsWith: ["Zhangjiajie", "Guilin", "Huangshan", "Yunnan"],
+    routeIdeas: ["Zhangjiajie peaks with Fenghuang old town", "Guilin and Yangshuo river country", "Yunnan mountains with boutique-style pacing"],
+    image: {
+      avif: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou-1920.avif",
+      webp: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou-1920.webp",
+      jpg: "/programs/sichuan-tibetan-nature-10-day/china-prime-dmc-sichuan-tibetan-nature-10-day-jiuzhaigou.jpg",
+      alt: "Jiuzhaigou lakes and mountain scenery for a private China nature journey",
+    },
+  },
+  {
+    title: "Family China",
+    subtitle: "For children, parents, and grandparents traveling at one real pace.",
+    promise: "The goal is not to make children endure China. It is to make China feel alive for them: pandas, trains, hands-on food, short cultural moments, flexible mornings, and hotels that make sense.",
+    bestFor: "Families with children, teens, or older parents",
+    pace: "Balanced days with private transfers and fewer hotel changes.",
+    pairsWith: ["Beijing", "Chengdu", "Guilin", "Shanghai"],
+    routeIdeas: ["Great Wall, pandas, and skyline finale", "Guilin countryside with child-friendly soft adventure", "Shanghai plus water town and food"],
+    image: {
+      jpg: "/programs/chongqing-jiuzhaigou-chengdu-6-day/china-prime-dmc-chongqing-jiuzhaigou-chengdu-6-day-chengdu-research-base-of-giant-panda-breeding.jpg",
+      alt: "Giant panda in Chengdu for a family China tour",
+    },
+  },
+  {
+    title: "Luxury slow travel",
+    subtitle: "For travelers who would rather feel more than see more.",
+    promise: "Luxury in China is not only a better hotel. It is a cleaner route, quieter timing, private guide chemistry, beautiful meals, scenic transfers, and days that leave space for surprise.",
+    bestFor: "Couples, high-net-worth travelers, honeymoon-style trips",
+    pace: "Slower, hotel-aware, with fewer rushed departures.",
+    pairsWith: ["Yunnan", "Hangzhou", "Shanghai", "Huangshan"],
+    routeIdeas: ["Yunnan highlands with old towns and snow mountains", "Shanghai and Hangzhou with gardens and design-led stays", "Huangshan with village architecture and sunrise pacing"],
+    image: {
+      avif: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake-1920.avif",
+      webp: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake-1920.webp",
+      jpg: "/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg",
+      alt: "West Lake in Hangzhou for a luxury slow China journey",
+    },
+  },
+  {
+    title: "Soft adventure",
+    subtitle: "For travelers who want movement without pressure.",
+    promise: "Glass bridges, river walks, cable cars, village cycling, canyon views, and mountain trails can be exciting without becoming extreme. We match the route to your real energy level.",
+    bestFor: "Active couples, teens, photography travelers, fit seniors",
+    pace: "Active mornings, comfortable transfers, optional harder routes.",
+    pairsWith: ["Zhangjiajie", "Yangshuo", "Tiger Leaping Gorge", "Huangshan"],
+    routeIdeas: ["Zhangjiajie viewpoints without overpacking", "Yangshuo cycling and river scenery", "Yunnan gorge views with private driver support"],
+    image: {
+      jpg: "/programs/zhangjiajie-fenghuang-5-day/china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-glass-bridge.jpg",
+      alt: "Zhangjiajie glass bridge for a soft adventure China trip",
+    },
+  },
+  {
+    title: "Muslim-friendly travel",
+    subtitle: "For families who need confidence before the trip begins.",
+    promise: "Halal-aware planning is not one restaurant note. It is route choice, dining research, prayer-aware timing, private transport, family comfort, and clear expectations city by city.",
+    bestFor: "Muslim families, multi-generation travelers, first-time China visitors",
+    pace: "Private, food-aware, with practical downtime.",
+    pairsWith: ["Beijing", "Xi'an", "Shanghai", "Guilin"],
+    routeIdeas: ["Classic China with researched halal dining", "Xi'an culture with Muslim Quarter context", "Guilin scenery with easier family pacing"],
+    image: {
+      jpg: "/programs/beijing-xian-shanghai-8-day/china-prime-dmc-beijing-xian-shanghai-8-day-muslim-quarter-xi-an.jpg",
+      alt: "Xi'an Muslim Quarter for Muslim-friendly private China travel",
+    },
+  },
+  {
+    title: "Photography trips",
+    subtitle: "For travelers who build the day around light.",
+    promise: "We consider sunrise access, blue-hour city views, weather buffers, viewpoint logistics, crowd timing, and routes that let the camera rest between big scenes.",
+    bestFor: "Landscape photographers, creators, couples, repeat travelers",
+    pace: "Early starts when worth it, slower middays, flexible evenings.",
+    pairsWith: ["Huangshan", "Guilin", "Dunhuang", "Shanghai"],
+    routeIdeas: ["Huangshan sunrise with ancient villages", "Dunhuang desert light and Buddhist caves", "Shanghai skyline and water-town contrast"],
+    image: {
+      avif: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark-1920.avif",
+      webp: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark-1920.webp",
+      jpg: "/programs/silk-road-gansu-ningxia-8-day/china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark.jpg",
+      alt: "Zhangye National Geopark colors for a China photography journey",
+    },
+  },
+];
+
+
 const tours: Tour[] = [
   {
     title: "First China, beautifully paced",
@@ -288,6 +414,10 @@ const pageMeta: Record<PageKey, { title: string; description: string }> = {
     title: "Best Places to Visit in China for a Private Custom Trip | China Prime",
     description: "Explore China destinations for families, couples, luxury travelers, photographers, food lovers, and first-time visitors, with best times, highlights, and route ideas.",
   },
+  experiences: {
+    title: "China Travel Experiences for Families, Food Lovers & Luxury Travelers | China Prime",
+    description: "Choose private China travel experiences by style: food, culture, nature, family, luxury slow travel, soft adventure, Muslim-friendly planning, and photography routes.",
+  },
   tours: {
     title: "Private China Tours & Custom Itinerary Ideas | China Prime",
     description: "Browse private China tour ideas for first-time visitors, families, Muslim travelers, photographers, food lovers, and luxury couples. Every route is customized.",
@@ -300,6 +430,7 @@ const pageMeta: Record<PageKey, { title: string; description: string }> = {
 
 function getPageFromPath(pathname: string): PageKey {
   if (pathname.startsWith(routes.destinations)) return "destinations";
+  if (pathname.startsWith(routes.experiences)) return "experiences";
   if (pathname.startsWith(routes.tours)) return "tours";
   if (pathname.startsWith(routes.contact)) return "contact";
   return "home";
@@ -368,7 +499,7 @@ function Header({ page }: { page: PageKey }) {
       </PageLink>
       <nav className="nav-links" aria-label="Main menu">
         <PageLink page="destinations" className={page === "destinations" ? "is-active" : undefined}>Destinations</PageLink>
-        <a href={page === "home" ? "#experiences" : "/#experiences"}>Experiences</a>
+        <PageLink page="experiences" className={page === "experiences" ? "is-active" : undefined}>Experiences</PageLink>
         <PageLink page="tours" className={page === "tours" ? "is-active" : undefined}>Private Tours</PageLink>
         <a href={page === "home" ? "#trust" : "/#trust"}>Why Us</a>
       </nav>
@@ -440,7 +571,7 @@ function HomePage() {
           <p>
             Your China can be food-led, culture-led, nature-led, family-led, luxury-led, or quietly adventurous. The route should adapt to you, not the other way around.
           </p>
-          <InquiryLink className="text-link" subject="I want a custom China experience">Tell us what you love</InquiryLink>
+          <PageLink className="text-link" page="experiences">Choose your travel style</PageLink>
         </div>
         <div className="experience-stack">
           {experiences.map((experience) => (
@@ -504,6 +635,64 @@ function DestinationsPage() {
         ))}
       </section>
       <RouteBuilder />
+      <PlannerSection />
+    </main>
+  );
+}
+
+
+function ExperiencesPage() {
+  return (
+    <main id="top">
+      <PageHero
+        eyebrow="Experiences"
+        title="Choose the kind of China you want to feel."
+        copy="Some travelers come for food. Some for mountains. Some need a family rhythm, halal-aware planning, or a quieter luxury pace. Start here, then we shape the cities around the experience."
+        image={experienceClusters[2].image}
+      />
+      <section className="experience-manifesto" aria-labelledby="experience-manifesto-title">
+        <div>
+          <p className="eyebrow dark">A better starting point</p>
+          <h2 id="experience-manifesto-title">Most China trips start with places. The best ones start with people.</h2>
+        </div>
+        <p>
+          A first-time family, a food-obsessed couple, a Muslim household, and a photographer should not receive the same route with different hotel names. The experience you want changes the pace, guide style, dining plan, transport choices, and even which cities belong in the itinerary.
+        </p>
+      </section>
+
+      <section className="experience-editorial" aria-label="China travel experience styles">
+        {experienceClusters.map((experience, index) => (
+          <article className="experience-feature" key={experience.title}>
+            <Picture image={experience.image} className="experience-feature-media" />
+            <div className="experience-feature-copy">
+              <span className="experience-number">{String(index + 1).padStart(2, "0")}</span>
+              <p className="eyebrow dark">{experience.bestFor}</p>
+              <h2>{experience.title}</h2>
+              <h3>{experience.subtitle}</h3>
+              <p>{experience.promise}</p>
+              <div className="experience-detail-grid">
+                <div className="info-strip slim"><span>Pace</span><strong>{experience.pace}</strong></div>
+                <div className="info-strip slim"><span>Pairs well with</span><strong>{experience.pairsWith.join(" / ")}</strong></div>
+              </div>
+              <div className="mini-list">
+                {experience.routeIdeas.map((idea) => <span key={idea}>{idea}</span>)}
+              </div>
+              <InquiryLink className="text-link" subject={`Design a ${experience.title} China journey`}>Ask for this experience style</InquiryLink>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="experience-method" aria-labelledby="experience-method-title">
+        <p className="eyebrow dark">How we translate style into route</p>
+        <h2 id="experience-method-title">The same destination can become a completely different trip.</h2>
+        <div className="comparison-grid">
+          <article><strong>Food-led</strong><p>Later starts, stronger local dining, market walks, tea, flexible evenings, and guides who know when to explain and when to let the table speak.</p></article>
+          <article><strong>Family-led</strong><p>Shorter cultural blocks, private transfers, panda or hands-on moments, fewer hard hotel changes, and a route that protects everyone&apos;s energy.</p></article>
+          <article><strong>Image-led</strong><p>Sunrise timing, viewpoint sequencing, weather buffers, scenic transfers, and fewer rushed museum-heavy days when the light is better outside.</p></article>
+        </div>
+      </section>
+      <FeaturedTours limit={3} />
       <PlannerSection />
     </main>
   );
@@ -782,7 +971,7 @@ function Footer() {
       </div>
       <div className="footer-links">
         <PageLink page="destinations">Destinations</PageLink>
-        <a href="/#experiences">Experiences</a>
+        <PageLink page="experiences">Experiences</PageLink>
         <PageLink page="tours">Private Tours</PageLink>
         <PageLink page="contact">Contact</PageLink>
       </div>
@@ -802,7 +991,7 @@ export default function App() {
   return (
     <div className="site-shell">
       <Header page={page} />
-      {page === "destinations" ? <DestinationsPage /> : page === "tours" ? <ToursPage /> : page === "contact" ? <ContactPage /> : <HomePage />}
+      {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage /> : page === "contact" ? <ContactPage /> : <HomePage />}
       <Footer />
       <PageLink className="floating-inquiry" page="contact">Plan my trip</PageLink>
     </div>
