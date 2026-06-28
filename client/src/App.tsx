@@ -42,15 +42,48 @@ type Tour = {
   title: string;
   slug: string;
   days: string;
+  nights: string;
   fit: string;
   pace: string;
   places: string;
   copy: string;
   includes: string[];
+  excludes: string[];
+  themes: string[];
+  audiences: string[];
+  destinationTags: string[];
+  bestTime: string;
+  transport: string;
+  priceFrom: string;
+  heroPromise: string;
+  coreReasons: string[];
+  highlights: { title: string; copy: string; image: ImageAsset }[];
+  daysPlan: { day: string; place: string; highlight: string; morning: string; afternoon: string; evening: string }[];
+  comfortNotes: string[];
+  faq: { q: string; a: string }[];
   image: ImageAsset;
 };
 
 type PageKey = "home" | "destinations" | "experiences" | "tours" | "contact";
+
+type LocationState = {
+  page: PageKey;
+  pathname: string;
+  search: string;
+};
+
+type TravelStyle = {
+  id: "classic" | "premium" | "signature";
+  name: string;
+  price: string;
+  promise: string;
+  hotel: string;
+  guide: string;
+  dining: string;
+  pace: string;
+  access: string;
+  bestFor: string;
+};
 
 const routes: Record<PageKey, string> = {
   home: "/",
@@ -222,9 +255,101 @@ const visuals = {
     "china-prime-dmc-beijing-great-wall-gubei-5-day-temple-of-heaven",
     "Temple of Heaven in Beijing for a private culture trip",
   ),
+  gubei: programImage(
+    "beijing-great-wall-gubei-5-day",
+    "china-prime-dmc-beijing-great-wall-gubei-5-day-gubei-water-town",
+    "Gubei Water Town near the Great Wall at dusk",
+  ),
+  shapotou: programImage(
+    "silk-road-gansu-ningxia-8-day",
+    "china-prime-dmc-silk-road-gansu-ningxia-8-day-shapotou",
+    "Shapotou desert and Yellow River landscape in Ningxia",
+  ),
+  chimelong: programImage(
+    "family-beijing-shanghai-guangzhou-10-day",
+    "china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-chimelong-safari-park",
+    "Chimelong Safari Park for a family China journey",
+  ),
+  disney: programImage(
+    "family-beijing-shanghai-guangzhou-10-day",
+    "china-prime-dmc-family-beijing-shanghai-guangzhou-10-day-shanghai-disneyland",
+    "Shanghai Disneyland for a China with kids itinerary",
+  ),
+  dali: programImage(
+    "shangri-la-meili-snow-mountain-8-day",
+    "china-prime-dmc-shangri-la-meili-snow-mountain-8-day-dali-city",
+    "Dali old town and Cangshan mountain in Yunnan",
+  ),
+  longji: jpgImage(
+    "guangzhou-guilin-yangshuo-6-day",
+    "china-prime-dmc-guangzhou-guilin-yangshuo-6-day-longji-rice-terraces",
+    "Longji rice terraces near Guilin",
+  ),
+  hongcun: jpgImage(
+    "shanghai-hangzhou-huangshan-9-day",
+    "china-prime-dmc-shanghai-hangzhou-huangshan-9-day-hongcun",
+    "Hongcun ancient village near Huangshan",
+  ),
+  potala: jpgImage(
+    "tibet-lhasa-nyingchi-8-day",
+    "china-prime-dmc-tibet-lhasa-nyingchi-8-day-potala-palace",
+    "Potala Palace in Lhasa, Tibet",
+  ),
+  stoneForest: jpgImage(
+    "southwest-china-yangtze-14-day",
+    "china-prime-dmc-southwest-china-yangtze-14-day-kunming-stone-forest",
+    "Stone Forest karst landscape in Kunming",
+  ),
 };
 
 const heroImage = visuals.zhangjiajieForest;
+
+const travelStyles: TravelStyle[] = [
+  {
+    id: "classic",
+    name: "Classic Private",
+    price: "US$220-320 pp/day",
+    promise: "Private comfort without overcomplication.",
+    hotel: "Comfortable 4-star or character boutique hotels in practical locations.",
+    guide: "Private English-speaking guide on touring days, with private transfers where they matter most.",
+    dining: "Local restaurant suggestions and flexible dining at your own pace.",
+    pace: "Balanced sightseeing with efficient logistics and clear daily structure.",
+    access: "Essential highlights, smart timing, and no shopping-tour pressure.",
+    bestFor: "First-time visitors who want China to feel easy, private, and well organized.",
+  },
+  {
+    id: "premium",
+    name: "Premium Private",
+    price: "US$380-550 pp/day",
+    promise: "Better hotels, better pacing, better guide matching.",
+    hotel: "Handpicked 4.5-5 star hotels or better boutique stays with stronger locations.",
+    guide: "Guide matching by interest: family, food, culture, photography, or soft adventure.",
+    dining: "More thoughtful restaurant planning, comfort-aware choices, and special local meals.",
+    pace: "Fewer rushed starts, more room for children or older parents, and smoother city changes.",
+    access: "Private moments, scenic timing, stronger support, and more refined daily flow.",
+    bestFor: "Families, couples, and multi-city travelers who want the trip to feel polished.",
+  },
+  {
+    id: "signature",
+    name: "Signature Luxury",
+    price: "US$600-950+ pp/day",
+    promise: "The most personal version of China we can design.",
+    hotel: "Luxury hotels, suites, design-led stays, or top-tier boutique properties where available.",
+    guide: "Senior guide matching, VIP-style logistics, and more flexible daily control.",
+    dining: "Curated dining, private cultural moments, scenic meals, and special experience planning.",
+    pace: "Slower rhythm, fewer compromises, more privacy, and more room for surprise.",
+    access: "Milestone-level planning, upgraded logistics, and bespoke experiences where feasible.",
+    bestFor: "Honeymoons, milestone family trips, high-net-worth travelers, and complex custom requests.",
+  },
+];
+
+function contactPathForTour(tour: Tour, style: TravelStyle) {
+  const params = new URLSearchParams({
+    journey: tour.slug,
+    style: style.id,
+  });
+  return `${routes.contact}?${params.toString()}`;
+}
 
 const destinations: Destination[] = [
   {
@@ -397,73 +522,117 @@ const experienceClusters: ExperienceCluster[] = [
 ];
 
 
+type TourInput = {
+  title: string;
+  slug: string;
+  days: number;
+  places: string[];
+  fit: string;
+  pace: string;
+  copy: string;
+  audiences: string[];
+  themes: string[];
+  image: ImageAsset;
+  highlightImages: ImageAsset[];
+  bestTime?: string;
+  transport?: string;
+  priceFrom?: string;
+};
+
+function makeTour(input: TourInput): Tour {
+  const dayBlocks = input.places.map((place, index) => {
+    const base = Math.floor(input.days / input.places.length);
+    const extra = index < input.days % input.places.length ? 1 : 0;
+    const length = Math.max(1, base + extra);
+    const start = input.places.slice(0, index).reduce((sum, _, prevIndex) => sum + Math.max(1, base + (prevIndex < input.days % input.places.length ? 1 : 0)), 1);
+    const end = start + length - 1;
+    return {
+      day: start === end ? `Day ${start}` : `Days ${start}-${end}`,
+      place,
+      highlight: `Let ${place} become more than a stop on the map.`,
+      morning: `Begin with the place that gives ${place} its emotional shape, paced around quiet timing and guide context.`,
+      afternoon: `Continue with a softer local moment: a neighborhood walk, scenic transfer, museum, market, garden, or landscape viewpoint depending on the city.`,
+      evening: `Keep the evening flexible, with dining suggestions and enough space to rest rather than rush into the next day.`,
+    };
+  });
+
+  const highlightTitles = [
+    input.places[0] ? `${input.places[0]} with better timing` : "Private timing",
+    input.places[1] ? `${input.places[1]} without the rush` : "Local context",
+    input.places[2] ? `${input.places[2]} as a real memory` : "Comfortable flow",
+  ];
+
+  return {
+    title: input.title,
+    slug: input.slug,
+    days: `${input.days} Days`,
+    nights: `${Math.max(1, input.days - 1)} Nights`,
+    fit: input.fit,
+    pace: input.pace,
+    places: input.places.join(", "),
+    copy: input.copy,
+    includes: ["Private English-speaking guide on touring days", "Private transfers and high-speed rail planning", "Handpicked hotels based on selected travel style", "Daily timing designed around comfort, weather, and crowds"],
+    excludes: ["International flights", "China visa fees", "Travel insurance", "Personal expenses and optional upgrades"],
+    themes: input.themes,
+    audiences: input.audiences,
+    destinationTags: input.places,
+    bestTime: input.bestTime ?? "March-May and September-November are usually the most comfortable, with seasonal adjustments available.",
+    transport: input.transport ?? "Private car, high-speed rail, and selected domestic flights when they protect comfort.",
+    priceFrom: input.priceFrom ?? "From US$220 pp/day",
+    heroPromise: input.copy,
+    coreReasons: highlightTitles,
+    highlights: highlightTitles.map((title, index) => ({
+      title,
+      copy: index === 0
+        ? "We place the biggest moment where it belongs in the day, not where a generic schedule would put it."
+        : index === 1
+          ? "The route protects energy between cities so the journey feels considered, not compressed."
+          : "Private planning lets food, hotels, guide chemistry, and daily rhythm match the travelers.",
+      image: input.highlightImages[index % input.highlightImages.length],
+    })),
+    daysPlan: dayBlocks,
+    comfortNotes: ["No shopping-tour pressure", "Guide matching based on traveler style", "Food preferences and halal-aware planning can be built in", "Senior-friendly and child-friendly pacing can be requested before quotation"],
+    faq: [
+      { q: "Can this journey be customized?", a: "Yes. The route is a starting point. We adjust hotels, pace, cities, food needs, walking level, and guide style around your dates and travelers." },
+      { q: "Is this suitable for a first trip to China?", a: input.audiences.includes("First-time visitors") ? "Yes. This route is designed to make China feel understandable without stripping away the wonder." : "It can be adapted for first-time visitors, though we may simplify transfers if it is your first China journey." },
+      { q: "Do you include shopping stops?", a: "No. We design private journeys around travel value, not commission-driven shopping stops." },
+      { q: "How does pricing work?", a: "You choose a travel style first. Final pricing depends on dates, hotel level, room mix, guide needs, transport, and special experiences." },
+    ],
+    image: input.image,
+  };
+}
+
 const tours: Tour[] = [
-  {
-    title: "First China, beautifully paced",
-    slug: "first-china-family-private-tour",
-    days: "10-12 days",
-    fit: "Families / Couples / First-timers",
-    pace: "Balanced, private, low-friction",
-    places: "Beijing, Xi'an, Chengdu or Guilin, Shanghai",
-    copy: "The essential China route, rewritten around comfort: private guides, calmer starts, high-speed rail where it makes sense, and enough unscheduled time to let the trip breathe.",
-    includes: ["Great Wall timing", "Panda or Guilin add-on", "Family-friendly food planning", "Private transfers"],
-    image: visuals.greatWall,
-  },
-  {
-    title: "Mountains, rivers, and quiet villages",
-    slug: "china-photography-nature-private-tour",
-    days: "9-14 days",
-    fit: "Photography / Nature / Slow Travel",
-    pace: "Scenic, spacious, sunrise-aware",
-    places: "Zhangjiajie, Guilin, Huangshan, Yunnan",
-    copy: "A route for travelers who want China to look cinematic without feeling rushed. We plan the light, the transfers, and the recovery time between big landscapes.",
-    includes: ["Sunrise windows", "Less crowded viewpoints", "Flexible hiking levels", "Village and river experiences"],
-    image: visuals.huangshan,
-  },
-  {
-    title: "Halal-aware China, privately planned",
-    slug: "muslim-friendly-private-china-tour",
-    days: "8-14 days",
-    fit: "Muslim Families / Multi-city",
-    pace: "Prayer-aware, food-aware, private",
-    places: "Beijing, Xi'an, Shanghai, Chengdu or Guilin",
-    copy: "A comfortable China itinerary with halal dining research, prayer-aware pacing, private transport, and major cultural highlights without making the trip feel constrained.",
-    includes: ["Halal dining research", "Private driver-guide days", "Mosque and culture stops", "Family-friendly pacing"],
-    image: visuals.kashgar,
-  },
-  {
-    title: "Yunnan soft-luxury mountain journey",
-    slug: "yunnan-luxury-private-tour",
-    days: "8-11 days",
-    fit: "Couples / Luxury / Culture",
-    pace: "Slow, scenic, boutique-style",
-    places: "Dali, Lijiang, Shangri-La, Meili Snow Mountain",
-    copy: "Old towns, mountain lodges, Tibetan culture, and private scenic drives designed for travelers who want beauty without daily overpacking.",
-    includes: ["Scenic private drives", "Boutique-style stays", "Old town evenings", "Mountain-view pacing"],
-    image: visuals.songzanlin,
-  },
-  {
-    title: "Chengdu, Chongqing and panda country",
-    slug: "chengdu-chongqing-food-family-tour",
-    days: "6-9 days",
-    fit: "Families / Food Lovers / Soft Adventure",
-    pace: "Warm, flavorful, flexible",
-    places: "Chengdu, Leshan or Dujiangyan, Chongqing",
-    copy: "A playful route that mixes pandas, Sichuan food, teahouses, river-city night views, and private support for families who want China to feel welcoming quickly.",
-    includes: ["Panda visit", "Food walk", "Teahouse time", "Optional mountain or river extension"],
-    image: visuals.hongya,
-  },
-  {
-    title: "Silk Road desert and cave journey",
-    slug: "silk-road-dunhuang-private-tour",
-    days: "8-12 days",
-    fit: "Adventure / Photography / Culture",
-    pace: "Big landscapes, carefully spaced",
-    places: "Lanzhou, Zhangye, Jiayuguan, Dunhuang",
-    copy: "A western China route for travelers drawn to desert light, Buddhist art, old trade routes, and a side of China that feels wide open and deeply historic.",
-    includes: ["Mogao Caves planning", "Desert sunset timing", "Rainbow mountain viewpoints", "Private overland logistics"],
-    image: visuals.crescentLake,
-  },
+  makeTour({ title: "First China, beautifully paced", slug: "first-china-family-private-tour", days: 10, places: ["Beijing", "Xi'an", "Chengdu", "Shanghai"], fit: "Families / Couples / First-time visitors", pace: "Balanced, private, low-friction", audiences: ["First-time visitors", "Families", "Couples"], themes: ["Classic China", "Family friendly", "Culture"], image: visuals.greatWall, highlightImages: [visuals.greatWall, visuals.terracotta, visuals.panda], copy: "The essential China route, shaped around comfort: the Great Wall, imperial Beijing, the Terracotta Warriors, pandas, and a modern Shanghai finale without forcing every day to feel packed." }),
+  makeTour({ title: "A Family China Journey With Pandas and River Light", slug: "family-china-beijing-xian-guilin-shanghai", days: 12, places: ["Beijing", "Xi'an", "Guilin", "Yangshuo", "Shanghai"], fit: "Families / Multi-generation", pace: "Balanced with child-friendly breathing room", audiences: ["Families", "Children", "Older parents"], themes: ["Family friendly", "Nature", "Classic China"], image: visuals.panda, highlightImages: [visuals.panda, visuals.liRiver, visuals.greatWall], copy: "A family-first route that mixes China icons with pandas, karst mountains, easy countryside time, and private support for children or grandparents." }),
+  makeTour({ title: "China With Kids, Made Easy", slug: "china-with-kids-beijing-chengdu-yangshuo-shanghai", days: 11, places: ["Beijing", "Chengdu", "Yangshuo", "Shanghai"], fit: "Families with younger children", pace: "Easy, playful, private", audiences: ["Families", "Children", "First-time visitors"], themes: ["Family friendly", "Pandas", "Soft adventure"], image: visuals.yangshuo, highlightImages: [visuals.panda, visuals.yangshuo, visuals.disney], copy: "A softer China itinerary for families who want pandas, gentle nature, hands-on moments, and fewer hard hotel changes." }),
+  makeTour({ title: "The Golden Triangle of China", slug: "golden-triangle-beijing-xian-shanghai", days: 8, places: ["Beijing", "Xi'an", "Shanghai"], fit: "First-time visitors / Couples", pace: "Efficient and polished", audiences: ["First-time visitors", "Couples", "Senior-friendly"], themes: ["Classic China", "Culture", "City icons"], image: visuals.forbiddenCity, highlightImages: [visuals.forbiddenCity, visuals.terracotta, visuals.bund], copy: "A clean, iconic route for travelers who want the Great Wall, the Terracotta Warriors, and Shanghai in one private journey." }),
+  makeTour({ title: "Grand China: Icons, Pandas, Rivers and Skyline", slug: "grand-china-icons-pandas-rivers-skyline", days: 14, places: ["Beijing", "Xi'an", "Chengdu", "Guilin", "Yangshuo", "Shanghai"], fit: "Families / First-timers / Couples", pace: "Rich but carefully spaced", audiences: ["First-time visitors", "Families", "Couples"], themes: ["Classic China", "Nature", "Pandas"], image: visuals.liRiver, highlightImages: [visuals.greatWall, visuals.panda, visuals.liRiver], copy: "A fuller first China journey with the icons, panda country, river landscapes, and a polished city finale." }),
+  makeTour({ title: "Beijing, Xi'an and Zhangjiajie for First-Timers", slug: "beijing-xian-zhangjiajie-private-tour", days: 9, places: ["Beijing", "Xi'an", "Zhangjiajie"], fit: "First-timers / Photography", pace: "Scenic, active-light", audiences: ["First-time visitors", "Photographers", "Couples"], themes: ["Classic China", "Photography", "Nature"], image: visuals.tianmenMountain, highlightImages: [visuals.greatWall, visuals.terracotta, visuals.tianmenMountain], copy: "A compact route that pairs China history with the surreal sandstone peaks of Zhangjiajie." }),
+  makeTour({ title: "China Icons and Avatar Peaks", slug: "beijing-zhangjiajie-guilin-shanghai", days: 12, places: ["Beijing", "Zhangjiajie", "Guilin", "Yangshuo", "Shanghai"], fit: "Couples / Families / Photographers", pace: "Scenic and balanced", audiences: ["Families", "Photographers", "Couples"], themes: ["Nature", "Classic China", "Soft adventure"], image: visuals.zhangjiajieForest, highlightImages: [visuals.zhangjiajieForest, visuals.liRiver, visuals.bund], copy: "A high-impact visual route for travelers who want China to feel cinematic from mountains to river country to skyline." }),
+  makeTour({ title: "Shanghai, Hangzhou, Huangshan and Beijing", slug: "shanghai-hangzhou-huangshan-beijing", days: 10, places: ["Shanghai", "Hangzhou", "Huangshan", "Beijing"], fit: "Couples / Culture / Photography", pace: "Elegant, scenic, polished", audiences: ["Couples", "Photographers", "Luxury travelers"], themes: ["Luxury pace", "Photography", "Culture"], image: visuals.huangshan, highlightImages: [visuals.bund, visuals.westLake, visuals.huangshan], copy: "A sophisticated east-China route with skyline, gardens, West Lake, ancient villages, mountain views, and a Beijing finale." }),
+  makeTour({ title: "Yangtze, Chengdu and Classic China", slug: "yangtze-chengdu-classic-china", days: 13, places: ["Beijing", "Xi'an", "Chengdu", "Yangtze River", "Shanghai"], fit: "Couples / Senior-friendly / Slow travel", pace: "Comfortable and scenic", audiences: ["Senior-friendly", "Couples", "First-time visitors"], themes: ["Classic China", "River journey", "Slow travel"], image: visuals.yangtzeGorge, highlightImages: [visuals.greatWall, visuals.panda, visuals.yangtzeGorge], copy: "A slower route that blends China's classic cities with pandas and the dramatic gorges of the Yangtze." }),
+  makeTour({ title: "China Icons and Landscapes in Two Weeks", slug: "china-icons-landscapes-two-weeks", days: 15, places: ["Beijing", "Xi'an", "Zhangjiajie", "Guilin", "Shanghai"], fit: "First-timers / Nature lovers", pace: "Immersive and varied", audiences: ["First-time visitors", "Nature lovers", "Photographers"], themes: ["Classic China", "Nature", "Photography"], image: visuals.meili, highlightImages: [visuals.greatWall, visuals.zhangjiajieForest, visuals.liRiver], copy: "A two-week private journey for travelers who want the recognizable icons and the landscapes that make China feel immense." }),
+  makeTour({ title: "Panda Country and Sichuan Family Time", slug: "panda-family-chengdu-leshan-chongqing", days: 8, places: ["Chengdu", "Leshan", "Dujiangyan", "Chongqing"], fit: "Families / Food lovers", pace: "Warm, flavorful, flexible", audiences: ["Families", "Children", "Food lovers"], themes: ["Pandas", "Food", "Family friendly"], image: visuals.panda, highlightImages: [visuals.panda, visuals.hongya, visuals.huanglong], copy: "A playful Sichuan route with pandas, teahouses, giant Buddha heritage, local food, and Chongqing night views." }),
+  makeTour({ title: "Family Soft Adventure Across China", slug: "family-soft-adventure-beijing-chengdu-guilin-shanghai", days: 10, places: ["Beijing", "Chengdu", "Guilin", "Shanghai"], fit: "Families / First-timers", pace: "Balanced with soft adventure", audiences: ["Families", "Children", "First-time visitors"], themes: ["Family friendly", "Soft adventure", "Nature"], image: visuals.longji, highlightImages: [visuals.greatWall, visuals.panda, visuals.longji], copy: "A family route that keeps the icons but adds pandas, countryside, food, and easy movement without turning the trip into endurance travel." }),
+  makeTour({ title: "Multi-Generation China at a Comfortable Pace", slug: "multi-generation-china-beijing-xian-chengdu-hangzhou", days: 12, places: ["Beijing", "Xi'an", "Chengdu", "Hangzhou"], fit: "Multi-generation / Senior-friendly", pace: "Comfortable, private, thoughtful", audiences: ["Senior-friendly", "Families", "Older parents"], themes: ["Family friendly", "Senior-friendly", "Culture"], image: visuals.westLake, highlightImages: [visuals.greatWall, visuals.terracotta, visuals.westLake], copy: "A private route for families traveling with older parents, balancing famous sights with calmer hotels, gardens, tea, and fewer rushed starts." }),
+  makeTour({ title: "Easy China With Children", slug: "easy-china-children-shanghai-hangzhou-guilin", days: 9, places: ["Shanghai", "Hangzhou", "Guilin", "Yangshuo"], fit: "Families / Easy pace", pace: "Gentle, scenic, low-friction", audiences: ["Families", "Children"], themes: ["Family friendly", "Easy pace", "Nature"], image: visuals.disney, highlightImages: [visuals.disney, visuals.westLake, visuals.yangshuo], copy: "An easier first route for families who want China to feel welcoming through skyline, water, gardens, food, and countryside." }),
+  makeTour({ title: "Teen-Friendly China With Big Views", slug: "teen-friendly-china-beijing-xian-zhangjiajie-shanghai", days: 11, places: ["Beijing", "Xi'an", "Zhangjiajie", "Shanghai"], fit: "Families with teens", pace: "Active-light and visual", audiences: ["Families", "Teenagers", "Photographers"], themes: ["Soft adventure", "Family friendly", "Classic China"], image: visuals.tianmenMountain, highlightImages: [visuals.greatWall, visuals.tianmenMountain, visuals.bund], copy: "A visual, high-energy route for families with teens: history, mountain viewpoints, glass walkways, and a modern skyline ending." }),
+  makeTour({ title: "Muslim-Friendly Classic China", slug: "muslim-friendly-classic-beijing-xian-shanghai", days: 8, places: ["Beijing", "Xi'an", "Shanghai"], fit: "Muslim families / First-timers", pace: "Prayer-aware, food-aware, private", audiences: ["Muslim travelers", "Families", "First-time visitors"], themes: ["Muslim-friendly", "Classic China", "Culture"], image: visuals.kashgar, highlightImages: [visuals.greatWall, visuals.muslimQuarter, visuals.bund], copy: "A halal-aware version of China's classic triangle, with researched dining, private transport, and realistic pacing." }),
+  makeTour({ title: "Muslim-Friendly China With Guilin", slug: "muslim-friendly-china-guilin", days: 10, places: ["Beijing", "Xi'an", "Guilin", "Shanghai"], fit: "Muslim families / Nature", pace: "Private, food-aware, scenic", audiences: ["Muslim travelers", "Families", "Nature lovers"], themes: ["Muslim-friendly", "Nature", "Classic China"], image: visuals.liRiver, highlightImages: [visuals.muslimQuarter, visuals.liRiver, visuals.greatWall], copy: "A Muslim-friendly private route that adds Guilin's river landscapes to China's classic cultural spine." }),
+  makeTour({ title: "Halal-Aware Family China", slug: "halal-aware-family-china-beijing-xian-chengdu-shanghai", days: 12, places: ["Beijing", "Xi'an", "Chengdu", "Shanghai"], fit: "Muslim families / Multi-generation", pace: "Private and comfort-aware", audiences: ["Muslim travelers", "Families", "Older parents"], themes: ["Muslim-friendly", "Family friendly", "Pandas"], image: visuals.panda, highlightImages: [visuals.greatWall, visuals.muslimQuarter, visuals.panda], copy: "A family-friendly China route with halal-aware planning, pandas, culture, and practical private logistics." }),
+  makeTour({ title: "Silk Road Muslim Heritage Journey", slug: "silk-road-muslim-heritage-xian-lanzhou-dunhuang-zhangye", days: 9, places: ["Xi'an", "Lanzhou", "Zhangye", "Dunhuang"], fit: "Muslim travelers / Culture / Photography", pace: "Historic and scenic", audiences: ["Muslim travelers", "Culture lovers", "Photographers"], themes: ["Muslim-friendly", "Silk Road", "Photography"], image: visuals.crescentLake, highlightImages: [visuals.muslimQuarter, visuals.zhangye, visuals.crescentLake], copy: "A westward route through old trade corridors, desert light, Buddhist caves, and Muslim heritage connections." }),
+  makeTour({ title: "Luxury China for Couples", slug: "luxury-china-couples-shanghai-hangzhou-huangshan", days: 10, places: ["Shanghai", "Hangzhou", "Huangshan"], fit: "Couples / Luxury", pace: "Slow, design-led, scenic", audiences: ["Couples", "Luxury travelers"], themes: ["Luxury pace", "Honeymoon", "Photography"], image: visuals.westLake, highlightImages: [visuals.bund, visuals.westLake, visuals.huangshan], copy: "A refined route for couples who want skyline, gardens, mountain atmosphere, private pacing, and space for excellent hotels." }),
+  makeTour({ title: "Yunnan Slow Luxury", slug: "yunnan-slow-luxury-dali-lijiang-shangri-la-meili", days: 12, places: ["Dali", "Lijiang", "Shangri-La", "Meili Snow Mountain"], fit: "Luxury / Couples / Scenic roads", pace: "Slow, scenic, boutique-style", audiences: ["Luxury travelers", "Couples", "Culture lovers"], themes: ["Luxury pace", "Nature", "Culture"], image: visuals.meili, highlightImages: [visuals.dali, visuals.songzanlin, visuals.meili], copy: "A spacious Yunnan journey through old towns, Tibetan culture, scenic roads, and mountain light." }),
+  makeTour({ title: "China Honeymoon: Skyline, Lake, Karst and Highlands", slug: "china-honeymoon-shanghai-hangzhou-guilin-yunnan", days: 13, places: ["Shanghai", "Hangzhou", "Guilin", "Yangshuo", "Yunnan"], fit: "Honeymoon / Couples", pace: "Romantic, scenic, unhurried", audiences: ["Couples", "Luxury travelers"], themes: ["Honeymoon", "Luxury pace", "Nature"], image: visuals.yangshuo, highlightImages: [visuals.bund, visuals.westLake, visuals.yangshuo], copy: "A romantic route built around contrast: city lights, lake calm, river landscapes, and Yunnan highlands." }),
+  makeTour({ title: "Signature Heritage China", slug: "signature-heritage-beijing-hangzhou-shanghai-zhangjiajie", days: 14, places: ["Beijing", "Hangzhou", "Shanghai", "Zhangjiajie"], fit: "Luxury / Culture / Nature", pace: "Polished and spacious", audiences: ["Luxury travelers", "Couples", "Families"], themes: ["Luxury pace", "Culture", "Nature"], image: visuals.gubei, highlightImages: [visuals.gubei, visuals.westLake, visuals.zhangjiajieForest], copy: "A premium heritage-and-landscape journey with private timing, strong hotels, slower days, and high-impact scenery." }),
+  makeTour({ title: "Zhangjiajie and Fenghuang Photography Journey", slug: "zhangjiajie-fenghuang-photography", days: 9, places: ["Zhangjiajie", "Tianmen Mountain", "Fenghuang"], fit: "Photography / Nature", pace: "Image-led with early starts", audiences: ["Photographers", "Couples", "Nature lovers"], themes: ["Photography", "Nature", "Soft adventure"], image: visuals.zhangjiajieForest, highlightImages: [visuals.zhangjiajieForest, visuals.tianmenMountain, visuals.gubei], copy: "A focused visual journey through Zhangjiajie's peaks, cliff roads, and the old-town atmosphere of Fenghuang." }),
+  makeTour({ title: "Guilin, Longji and Huangshan Landscape Journey", slug: "guilin-longji-huangshan-landscape", days: 11, places: ["Guilin", "Longji", "Yangshuo", "Huangshan"], fit: "Photography / Nature", pace: "Scenic, sunrise-aware", audiences: ["Photographers", "Nature lovers", "Couples"], themes: ["Photography", "Nature", "Slow travel"], image: visuals.huangshan, highlightImages: [visuals.liRiver, visuals.longji, visuals.huangshan], copy: "A landscape-first China route connecting karst rivers, rice terraces, villages, and Huangshan mountain light." }),
+  makeTour({ title: "Silk Road Desert Photography", slug: "silk-road-desert-photography-xian-zhangye-dunhuang-turpan", days: 12, places: ["Xi'an", "Zhangye", "Dunhuang", "Turpan"], fit: "Photography / Adventure", pace: "Big landscapes, carefully spaced", audiences: ["Photographers", "Adventure travelers", "Culture lovers"], themes: ["Photography", "Silk Road", "Adventure"], image: visuals.zhangye, highlightImages: [visuals.zhangye, visuals.crescentLake, visuals.shapotou], copy: "A desert-light journey through frontier cities, rainbow mountains, dunes, caves, and Silk Road stories." }),
+  makeTour({ title: "Chengdu and Chongqing Food Journey", slug: "chengdu-chongqing-food-journey", days: 7, places: ["Chengdu", "Leshan", "Chongqing"], fit: "Food lovers / Couples", pace: "Flavorful and flexible", audiences: ["Food lovers", "Couples", "Families"], themes: ["Food", "City life", "Pandas"], image: visuals.hongya, highlightImages: [visuals.foodStreet, visuals.panda, visuals.hongya], copy: "A food-led route through teahouses, Sichuan flavors, pandas, river-city night views, and private local guidance." }),
+  makeTour({ title: "Shanghai, Suzhou and Hangzhou Food and Design", slug: "shanghai-suzhou-hangzhou-food-design", days: 9, places: ["Shanghai", "Suzhou", "Hangzhou"], fit: "Food / Design / Couples", pace: "Polished and urban-soft", audiences: ["Couples", "Food lovers", "Luxury travelers"], themes: ["Food", "Design", "Luxury pace"], image: visuals.bund, highlightImages: [visuals.bund, visuals.xidi, visuals.westLake], copy: "A refined lower-Yangtze route through skyline, gardens, tea, design neighborhoods, and graceful dining." }),
+  makeTour({ title: "Senior-Friendly Classic China", slug: "senior-friendly-classic-china", days: 8, places: ["Beijing", "Xi'an", "Shanghai"], fit: "Senior-friendly / First-time visitors", pace: "Easy, private, low-stress", audiences: ["Senior-friendly", "First-time visitors", "Couples"], themes: ["Senior-friendly", "Classic China", "Easy pace"], image: visuals.templeOfHeaven, highlightImages: [visuals.templeOfHeaven, visuals.terracotta, visuals.bund], copy: "A classic China route redesigned around comfortable starts, private transfers, fewer hard walking blocks, and clear guide support." }),
+  makeTour({ title: "Easy-Pace China: Cities, Gardens and Pandas", slug: "easy-pace-china-shanghai-hangzhou-guilin-chengdu", days: 10, places: ["Shanghai", "Hangzhou", "Guilin", "Chengdu"], fit: "Easy pace / Families / Senior-friendly", pace: "Gentle, scenic, private", audiences: ["Senior-friendly", "Families", "Couples"], themes: ["Easy pace", "Nature", "Pandas"], image: visuals.westLake, highlightImages: [visuals.westLake, visuals.liRiver, visuals.panda], copy: "A softer private route that avoids hard intensity while still giving travelers skyline, gardens, river scenery, and pandas." }),
 ];
 
 const reviews = [
@@ -515,25 +684,36 @@ function getPageFromPath(pathname: string): PageKey {
   return "home";
 }
 
-function usePage(): PageKey {
-  const [page, setPage] = useState<PageKey>(() => getPageFromPath(window.location.pathname));
+function getLocationState(): LocationState {
+  return {
+    page: getPageFromPath(window.location.pathname),
+    pathname: window.location.pathname,
+    search: window.location.search,
+  };
+}
+
+function useLocationState(): LocationState {
+  const [locationState, setLocationState] = useState<LocationState>(() => getLocationState());
 
   useEffect(() => {
-    const onPopState = () => setPage(getPageFromPath(window.location.pathname));
+    const onPopState = () => setLocationState(getLocationState());
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
-  return page;
+  return locationState;
 }
 
-function navigateTo(page: PageKey) {
-  const path = routes[page];
-  if (window.location.pathname !== path) {
+function navigatePath(path: string) {
+  if (`${window.location.pathname}${window.location.search}` !== path) {
     window.history.pushState({}, "", path);
     window.dispatchEvent(new PopStateEvent("popstate"));
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function navigateTo(page: PageKey) {
+  navigatePath(routes[page]);
 }
 
 function Picture({ image, className, loading = "lazy" }: { image: ImageAsset; className?: string; loading?: "lazy" | "eager" }) {
@@ -803,7 +983,14 @@ function ExperiencesPage() {
   );
 }
 
-function ToursPage() {
+function ToursPage({ pathname }: { pathname: string }) {
+  const selectedSlug = pathname.replace(`${routes.tours}/`, "");
+  const selectedTour = selectedSlug && selectedSlug !== routes.tours ? tours.find((tour) => tour.slug === selectedSlug) : undefined;
+
+  if (selectedTour) {
+    return <TourDetailPage tour={selectedTour} />;
+  }
+
   return (
     <main id="top">
       <PageHero
@@ -821,7 +1008,7 @@ function ToursPage() {
           {['First-time China', 'Family friendly', 'Muslim-friendly', 'Luxury pace', 'Food-led', 'Photography', 'Soft adventure'].map((item) => <span key={item}>{item}</span>)}
         </div>
       </section>
-      <FeaturedTours limit={tours.length} expanded />
+      <TripExplorer />
       <section className="comparison-band" aria-labelledby="comparison-title">
         <p className="eyebrow dark">What changes when it is private</p>
         <h2 id="comparison-title">Less guessing. More moments that feel designed for you.</h2>
@@ -836,14 +1023,20 @@ function ToursPage() {
   );
 }
 
-function ContactPage() {
-  const travelStyles = ["First-time China", "Family trip", "Luxury pace", "Muslim-friendly", "Food journey", "Photography", "Soft adventure", "Senior-friendly"];
+function ContactPage({ search }: { search: string }) {
+  const params = new URLSearchParams(search);
+  const selectedTour = tours.find((tour) => tour.slug === params.get("journey"));
+  const selectedStyle = travelStyles.find((style) => style.id === params.get("style"));
+  const travelStyleChoices = ["First-time China", "Family trip", "Luxury pace", "Muslim-friendly", "Food journey", "Photography", "Soft adventure", "Senior-friendly"];
   const briefTemplates = [
     "We are visiting China for the first time and want the icons without feeling rushed.",
     "We are traveling with children or older parents and need a comfortable pace.",
     "We care most about food, culture, local life, and a route that feels personal.",
     "We need halal-aware planning, private transport, and dining confidence.",
   ];
+  const selectedBrief = selectedTour && selectedStyle
+    ? `Hi China Prime DMC,\n\nI am interested in the ${selectedStyle.name} version of this journey.\n\nJourney: ${selectedTour.title}\nRoute: ${selectedTour.places}\nSelected Travel Style: ${selectedStyle.name}\nBudget Guide: ${selectedStyle.price}\n\nApproximate travel dates:\nNumber of travelers:\nAges of children or older travelers:\nHotel preference:\nFood requirements:\nPreferred pace:\nQuestions:\n`
+    : "";
 
   return (
     <main id="top">
@@ -865,6 +1058,13 @@ function ContactPage() {
             <span>No shopping-tour pressure</span>
             <span>Private planning since 2012</span>
           </div>
+          {selectedTour && selectedStyle ? (
+            <div className="selected-brief-card">
+              <span>You selected</span>
+              <strong>{selectedTour.title}</strong>
+              <p>{selectedStyle.name} / {selectedStyle.price}</p>
+            </div>
+          ) : null}
           <div className="contact-visual-mosaic" aria-label="Private China trip planning scenes">
             <Picture image={visuals.westLake} />
             <Picture image={visuals.panda} />
@@ -896,7 +1096,7 @@ function ContactPage() {
           <label className="full-field">
             <span>What kind of China trip sounds right?</span>
             <div className="choice-grid">
-              {travelStyles.map((style) => (
+              {travelStyleChoices.map((style) => (
                 <label key={style} className="choice-pill">
                   <input type="checkbox" name="Travel style" value={style} />
                   <span>{style}</span>
@@ -916,6 +1116,7 @@ function ContactPage() {
             <textarea
               name="Trip notes"
               rows={7}
+              defaultValue={selectedBrief}
               placeholder="Tell us must-see places, food needs, pace, hotel style, budget range, mobility concerns, or what you want this trip to feel like."
             />
           </label>
@@ -933,6 +1134,234 @@ function ContactPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+function TripExplorer() {
+  const [activeTheme, setActiveTheme] = useState("All");
+  const [activeAudience, setActiveAudience] = useState("All");
+  const [activeDuration, setActiveDuration] = useState("All");
+  const themeOptions = ["All", "Classic China", "Family friendly", "Muslim-friendly", "Luxury pace", "Nature", "Photography", "Food", "Senior-friendly"];
+  const audienceOptions = ["All", "First-time visitors", "Families", "Couples", "Muslim travelers", "Senior-friendly", "Luxury travelers", "Photographers"];
+  const durationOptions = ["All", "7-9 Days", "10-12 Days", "13+ Days"];
+  const filteredTours = tours.filter((tour) => {
+    const dayCount = Number.parseInt(tour.days, 10);
+    const durationMatch = activeDuration === "All"
+      || (activeDuration === "7-9 Days" && dayCount <= 9)
+      || (activeDuration === "10-12 Days" && dayCount >= 10 && dayCount <= 12)
+      || (activeDuration === "13+ Days" && dayCount >= 13);
+    return (activeTheme === "All" || tour.themes.includes(activeTheme))
+      && (activeAudience === "All" || tour.audiences.includes(activeAudience))
+      && durationMatch;
+  });
+
+  return (
+    <section className="trip-explorer" aria-labelledby="trip-explorer-title">
+      <div className="section-heading narrow">
+        <p className="eyebrow dark">30 private journey ideas</p>
+        <h2 id="trip-explorer-title">Filter by the way you want China to feel.</h2>
+        <p>These routes are original China Prime journey frameworks inspired by proven inbound travel logic from leading luxury travel brands, then rewritten around private pacing, comfort, and conversion-ready detail.</p>
+      </div>
+      <div className="trip-filter-panel" aria-label="Trip filters">
+        <FilterGroup label="Theme" options={themeOptions} value={activeTheme} onChange={setActiveTheme} />
+        <FilterGroup label="Traveler" options={audienceOptions} value={activeAudience} onChange={setActiveAudience} />
+        <FilterGroup label="Length" options={durationOptions} value={activeDuration} onChange={setActiveDuration} />
+      </div>
+      <div className="trip-result-count">{filteredTours.length} journey ideas match your filters</div>
+      <div className="tour-grid tour-grid-expanded">
+        {filteredTours.map((tour) => (
+          <article className="tour-card trip-card" key={tour.slug}>
+            <button className="trip-card-link" type="button" onClick={() => navigatePath(`${routes.tours}/${tour.slug}`)} aria-label={`View ${tour.title}`} />
+            <Picture image={tour.image} className="tour-media" />
+            <div className="tour-body">
+              <div className="tour-meta">
+                <span>{tour.days}</span>
+                <span>{tour.priceFrom}</span>
+              </div>
+              <h3>{tour.title}</h3>
+              <p>{tour.copy}</p>
+              <div className="info-strip slim"><span>Route</span><strong>{tour.places}</strong></div>
+              <div className="trip-badges">
+                {[...tour.audiences.slice(0, 2), ...tour.themes.slice(0, 2)].map((item) => <span key={item}>{item}</span>)}
+              </div>
+              <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(`${routes.tours}/${tour.slug}`)}>View journey details</button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FilterGroup({ label, options, value, onChange }: { label: string; options: string[]; value: string; onChange: (value: string) => void }) {
+  return (
+    <div className="filter-group">
+      <span>{label}</span>
+      <div className="filter-options">
+        {options.map((option) => (
+          <button className={option === value ? "is-selected" : undefined} type="button" key={option} onClick={() => onChange(option)}>
+            {option}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TourDetailPage({ tour }: { tour: Tour }) {
+  const related = tours.filter((candidate) => candidate.slug !== tour.slug && candidate.themes.some((theme) => tour.themes.includes(theme))).slice(0, 3);
+
+  return (
+    <main id="top">
+      <section className="tour-detail-hero" aria-labelledby="tour-detail-title">
+        <Picture image={tour.image} className="page-hero-media" loading="eager" />
+        <div className="page-hero-overlay" />
+        <div className="tour-detail-hero-copy">
+          <button className="back-link" type="button" onClick={() => navigateTo("tours")}>Back to journeys</button>
+          <p className="eyebrow">{tour.fit}</p>
+          <h1 id="tour-detail-title">{tour.title}</h1>
+          <p>{tour.heroPromise}</p>
+          <div className="hero-actions">
+            <button className="button button-primary" type="button" onClick={() => navigatePath(contactPathForTour(tour, travelStyles[1]))}>Design the Premium version</button>
+            <a className="button button-ghost" href="#travel-style">Compare travel styles</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="quick-facts" aria-label="Journey quick facts">
+        {[
+          ["Length", `${tour.days} / ${tour.nights}`],
+          ["Route", tour.places],
+          ["Pace", tour.pace],
+          ["Best time", tour.bestTime],
+          ["Transport", tour.transport],
+          ["Budget guide", tour.priceFrom],
+        ].map(([label, value]) => (
+          <div className="quick-fact" key={label}>
+            <span>{label}</span>
+            <strong>{value}</strong>
+          </div>
+        ))}
+      </section>
+
+      <section className="journey-reasons" aria-labelledby="journey-reasons-title">
+        <p className="eyebrow dark">Why this journey works</p>
+        <h2 id="journey-reasons-title">The route gives you contrast without making China feel exhausting.</h2>
+        <div className="reason-grid">
+          {tour.coreReasons.map((reason) => <article key={reason}><strong>{reason}</strong><p>{tour.copy}</p></article>)}
+        </div>
+      </section>
+
+      <section className="visual-highlights" aria-labelledby="visual-highlights-title">
+        <div className="section-heading narrow">
+          <p className="eyebrow dark">Moments that carry the trip</p>
+          <h2 id="visual-highlights-title">Highlights are designed as memories, not checklist items.</h2>
+        </div>
+        <div className="highlight-grid">
+          {tour.highlights.map((highlight) => (
+            <article className="highlight-card" key={highlight.title}>
+              <Picture image={highlight.image} className="highlight-media" />
+              <div>
+                <h3>{highlight.title}</h3>
+                <p>{highlight.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="day-plan" aria-labelledby="day-plan-title">
+        <div className="section-heading narrow">
+          <p className="eyebrow dark">Day by day</p>
+          <h2 id="day-plan-title">A clear rhythm, with one highlight anchoring each stop.</h2>
+        </div>
+        <div className="day-plan-list">
+          {tour.daysPlan.map((day) => (
+            <article className="day-card" key={`${day.day}-${day.place}`}>
+              <span>{day.day}</span>
+              <h3>{day.place}</h3>
+              <strong>Highlight: {day.highlight}</strong>
+              <p><b>Morning:</b> {day.morning}</p>
+              <p><b>Afternoon:</b> {day.afternoon}</p>
+              <p><b>Evening:</b> {day.evening}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <TravelStyleSelector tour={tour} />
+
+      <section className="journey-practical" aria-labelledby="journey-practical-title">
+        <p className="eyebrow dark">Comfort and clarity</p>
+        <h2 id="journey-practical-title">Know what is handled before you ask for a quote.</h2>
+        <div className="practical-grid">
+          <article><h3>Included</h3>{tour.includes.map((item) => <p key={item}>{item}</p>)}</article>
+          <article><h3>Not included</h3>{tour.excludes.map((item) => <p key={item}>{item}</p>)}</article>
+          <article><h3>Comfort notes</h3>{tour.comfortNotes.map((item) => <p key={item}>{item}</p>)}</article>
+        </div>
+      </section>
+
+      <section className="faq-section" aria-labelledby="faq-title">
+        <p className="eyebrow dark">Before you decide</p>
+        <h2 id="faq-title">Questions travelers usually ask before China feels possible.</h2>
+        <div className="faq-grid">
+          {tour.faq.map((item) => <article key={item.q}><strong>{item.q}</strong><p>{item.a}</p></article>)}
+        </div>
+      </section>
+
+      {related.length ? (
+        <section className="related-journeys" aria-labelledby="related-title">
+          <div className="section-heading narrow">
+            <p className="eyebrow dark">Related journeys</p>
+            <h2 id="related-title">Similar routes worth comparing.</h2>
+          </div>
+          <div className="tour-grid">
+            {related.map((item) => (
+              <article className="tour-card trip-card" key={item.slug}>
+                <button className="trip-card-link" type="button" onClick={() => navigatePath(`${routes.tours}/${item.slug}`)} aria-label={`View ${item.title}`} />
+                <Picture image={item.image} className="tour-media" />
+                <div className="tour-body">
+                  <div className="tour-meta"><span>{item.days}</span><span>{item.priceFrom}</span></div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+      <PlannerSection />
+    </main>
+  );
+}
+
+function TravelStyleSelector({ tour }: { tour: Tour }) {
+  return (
+    <section className="travel-style-selector" id="travel-style" aria-labelledby="travel-style-title">
+      <div className="section-heading narrow">
+        <p className="eyebrow dark">Choose your travel style</p>
+        <h2 id="travel-style-title">Select the level of service before you ask for a route.</h2>
+        <p>Guests are not choosing cheap, medium, and expensive. They are choosing how polished, flexible, and personal the journey should feel.</p>
+      </div>
+      <div className="style-grid">
+        {travelStyles.map((style) => (
+          <article className={`style-card ${style.id === "premium" ? "is-featured" : ""}`} key={style.id}>
+            {style.id === "premium" ? <span className="style-ribbon">Most requested</span> : null}
+            <h3>{style.name}</h3>
+            <strong>{style.price}</strong>
+            <p>{style.promise}</p>
+            <dl>
+              <div><dt>Hotel style</dt><dd>{style.hotel}</dd></div>
+              <div><dt>Guide & driver</dt><dd>{style.guide}</dd></div>
+              <div><dt>Dining</dt><dd>{style.dining}</dd></div>
+              <div><dt>Pace</dt><dd>{style.pace}</dd></div>
+              <div><dt>Special access</dt><dd>{style.access}</dd></div>
+            </dl>
+            <button className="button button-primary" type="button" onClick={() => navigatePath(contactPathForTour(tour, style))}>Design this style</button>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -1089,8 +1518,13 @@ function Footer() {
 }
 
 export default function App() {
-  const page = usePage();
-  const meta = useMemo(() => pageMeta[page], [page]);
+  const locationState = useLocationState();
+  const page = locationState.page;
+  const activeTour = page === "tours" ? tours.find((tour) => locationState.pathname.endsWith(`/${tour.slug}`)) : undefined;
+  const meta = useMemo(() => activeTour ? {
+    title: `${activeTour.title} | Private China Tour | China Prime`,
+    description: activeTour.copy,
+  } : pageMeta[page], [activeTour, page]);
 
   useEffect(() => {
     document.title = meta.title;
@@ -1100,7 +1534,7 @@ export default function App() {
   return (
     <div className="site-shell">
       <Header page={page} />
-      {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage /> : page === "contact" ? <ContactPage /> : <HomePage />}
+      {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
       <Footer />
       {page !== "contact" ? <PageLink className="floating-inquiry" page="contact">Start planning</PageLink> : null}
     </div>

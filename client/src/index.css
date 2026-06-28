@@ -2077,3 +2077,467 @@ h1 {
     align-content: start;
   }
 }
+
+/* Trips system: filterable cards, editorial detail pages, and travel style selector. */
+.trip-explorer,
+.visual-highlights,
+.day-plan,
+.travel-style-selector,
+.journey-practical,
+.faq-section,
+.related-journeys,
+.journey-reasons {
+  padding: clamp(74px, 10vw, 140px) clamp(20px, 5vw, 72px);
+}
+
+.trip-explorer,
+.day-plan,
+.faq-section {
+  background: #fbfbf8;
+}
+
+.trip-filter-panel {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(23, 22, 21, 0.08);
+  border-radius: 30px;
+  box-shadow: 0 18px 54px rgba(28, 25, 22, 0.08);
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+  padding: clamp(18px, 3vw, 30px);
+}
+
+.filter-group {
+  display: grid;
+  gap: 10px;
+}
+
+.filter-group > span,
+.trip-result-count,
+.quick-fact span,
+.day-card > span,
+.selected-brief-card span {
+  color: var(--clay);
+  font-size: 0.72rem;
+  font-weight: 840;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.filter-options,
+.trip-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-options button,
+.trip-badges span {
+  background: rgba(35, 72, 59, 0.07);
+  border: 1px solid rgba(35, 72, 59, 0.12);
+  border-radius: 999px;
+  color: var(--forest);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 780;
+  min-height: 38px;
+  padding: 0 12px;
+}
+
+.filter-options button.is-selected {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.trip-result-count {
+  margin: 18px 0 26px;
+}
+
+.trip-card {
+  position: relative;
+}
+
+.trip-card-link {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  inset: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.trip-card .tour-body,
+.trip-card .tour-media,
+.trip-card .text-link {
+  position: relative;
+  z-index: 3;
+}
+
+.trip-text-button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  justify-self: start;
+  padding: 0;
+}
+
+.tour-detail-hero {
+  min-height: 100svh;
+  overflow: hidden;
+  position: relative;
+}
+
+.tour-detail-hero-copy {
+  color: var(--white);
+  display: grid;
+  gap: 20px;
+  max-width: 980px;
+  padding: clamp(132px, 18vw, 210px) clamp(20px, 6vw, 92px) clamp(70px, 9vw, 120px);
+  position: relative;
+  z-index: 2;
+}
+
+.tour-detail-hero-copy h1 {
+  max-width: 980px;
+}
+
+.tour-detail-hero-copy > p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(1.08rem, 1.5vw, 1.35rem);
+  line-height: 1.72;
+  max-width: 760px;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.22);
+}
+
+.back-link {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 780;
+  justify-self: start;
+  min-height: 40px;
+  padding: 0 14px;
+}
+
+.quick-facts {
+  background: var(--ink);
+  color: var(--white);
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.quick-fact {
+  background: rgba(255, 255, 255, 0.07);
+  display: grid;
+  gap: 8px;
+  min-height: 150px;
+  padding: 24px;
+}
+
+.quick-fact strong {
+  color: var(--white);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.journey-reasons,
+.travel-style-selector,
+.related-journeys {
+  background: var(--paper);
+}
+
+.journey-reasons h2,
+.visual-highlights h2,
+.day-plan h2,
+.travel-style-selector h2,
+.journey-practical h2,
+.faq-section h2,
+.related-journeys h2 {
+  color: var(--ink);
+  font-size: clamp(2.25rem, 4.8vw, 5.4rem);
+  font-weight: 620;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  max-width: 980px;
+}
+
+.reason-grid,
+.highlight-grid,
+.practical-grid,
+.faq-grid,
+.style-grid {
+  display: grid;
+  gap: 18px;
+  margin-top: clamp(26px, 5vw, 54px);
+}
+
+.reason-grid,
+.practical-grid,
+.faq-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reason-grid article,
+.practical-grid article,
+.faq-grid article {
+  background: var(--white);
+  border: 1px solid rgba(23, 22, 21, 0.07);
+  border-radius: 28px;
+  box-shadow: 0 14px 38px rgba(28, 25, 22, 0.07);
+  padding: 24px;
+}
+
+.reason-grid strong,
+.practical-grid h3,
+.faq-grid strong {
+  color: var(--ink);
+  display: block;
+  font-size: 1.18rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.reason-grid p,
+.practical-grid p,
+.faq-grid p,
+.highlight-card p,
+.day-card p,
+.style-card p,
+.style-card dd {
+  color: var(--body);
+  line-height: 1.68;
+}
+
+.highlight-grid {
+  grid-template-columns: 1.25fr 0.9fr 0.9fr;
+}
+
+.highlight-card {
+  background: var(--white);
+  border-radius: 30px;
+  box-shadow: 0 18px 54px rgba(28, 25, 22, 0.08);
+  overflow: hidden;
+}
+
+.highlight-card:first-child {
+  grid-row: span 2;
+}
+
+.highlight-media {
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+}
+
+.highlight-card:first-child .highlight-media {
+  aspect-ratio: 4 / 5;
+}
+
+.highlight-card div:not(.highlight-media) {
+  padding: 22px;
+}
+
+.highlight-card h3,
+.day-card h3,
+.style-card h3 {
+  color: var(--ink);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.day-plan-list {
+  display: grid;
+  gap: 14px;
+}
+
+.day-card {
+  background: var(--white);
+  border: 1px solid rgba(23, 22, 21, 0.07);
+  border-radius: 28px;
+  box-shadow: 0 14px 38px rgba(28, 25, 22, 0.06);
+  display: grid;
+  gap: 10px;
+  padding: clamp(22px, 3vw, 34px);
+}
+
+.day-card strong {
+  color: var(--forest);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.style-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.style-card {
+  background: var(--white);
+  border: 1px solid rgba(23, 22, 21, 0.08);
+  border-radius: 30px;
+  box-shadow: 0 16px 48px rgba(28, 25, 22, 0.08);
+  display: grid;
+  gap: 16px;
+  padding: clamp(22px, 3vw, 34px);
+  position: relative;
+}
+
+.style-card.is-featured {
+  background: #172d25;
+  color: var(--white);
+  transform: translateY(-12px);
+}
+
+.style-card.is-featured h3,
+.style-card.is-featured strong,
+.style-card.is-featured dt,
+.style-card.is-featured dd,
+.style-card.is-featured p {
+  color: var(--white);
+}
+
+.style-ribbon {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 820;
+  justify-self: start;
+  letter-spacing: 0.1em;
+  padding: 8px 10px;
+  text-transform: uppercase;
+}
+
+.style-card > strong {
+  color: var(--forest);
+  font-size: 1.2rem;
+}
+
+.style-card dl {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.style-card dt {
+  color: var(--clay);
+  font-size: 0.7rem;
+  font-weight: 840;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.style-card dd {
+  margin: 0;
+}
+
+.selected-brief-card {
+  background: var(--forest);
+  border-radius: 24px;
+  color: var(--white);
+  display: grid;
+  gap: 6px;
+  padding: 20px;
+}
+
+.selected-brief-card span,
+.selected-brief-card strong,
+.selected-brief-card p {
+  color: var(--white);
+}
+
+@media (max-width: 980px) {
+  .quick-facts,
+  .reason-grid,
+  .practical-grid,
+  .faq-grid,
+  .style-grid,
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .style-card.is-featured {
+    transform: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .trip-explorer,
+  .visual-highlights,
+  .day-plan,
+  .travel-style-selector,
+  .journey-practical,
+  .faq-section,
+  .related-journeys,
+  .journey-reasons {
+    padding: 76px 18px;
+  }
+
+  .tour-detail-hero {
+    min-height: 92svh;
+  }
+
+  .tour-detail-hero-copy {
+    padding: 108px 18px 54px;
+  }
+
+  .quick-fact {
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .filter-options {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .filter-options button {
+    flex: 0 0 auto;
+  }
+
+  .highlight-card:first-child .highlight-media,
+  .highlight-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .style-card {
+    border-radius: 26px;
+  }
+}
+
+/* Trips polish: keep interactive elements above the full-card hit area and compress mobile pricing cards. */
+.trip-card .tour-body button,
+.trip-card .tour-body a {
+  z-index: 4;
+}
+
+@media (max-width: 680px) {
+  .style-card dl {
+    gap: 9px;
+  }
+
+  .style-card dd {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .style-card {
+    gap: 12px;
+    padding: 22px;
+  }
+
+  .trip-filter-panel {
+    border-radius: 24px;
+  }
+}
