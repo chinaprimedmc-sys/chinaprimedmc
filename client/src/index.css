@@ -3620,7 +3620,7 @@ body {
     max-width: none;
     overflow: hidden;
     padding: 20px !important;
-    width: calc(100vw - 32px);
+    width: 100%;
   }
 
   .cinema-scene-content > *,
@@ -3633,7 +3633,7 @@ body {
   .btoc-hero h1 {
     font-size: clamp(2.35rem, 11.2vw, 3.25rem) !important;
     line-height: 1.03 !important;
-    max-width: calc(100vw - 72px);
+    max-width: 100%;
     overflow-wrap: normal;
     word-break: normal;
   }
@@ -3654,7 +3654,7 @@ body {
     font-size: 0.98rem !important;
     line-height: 1.64 !important;
     margin-top: 16px;
-    max-width: calc(100vw - 72px) !important;
+    max-width: 100% !important;
     overflow-wrap: break-word;
   }
 
@@ -3912,5 +3912,550 @@ body {
 
   .cinema-footer {
     padding-bottom: 92px;
+  }
+}
+
+/* Text clarity master pass: every page must read cleanly before it tries to feel cinematic. */
+:root {
+  --clarity-ink: #0f1214;
+  --clarity-body: #2e3439;
+  --clarity-muted: #59626a;
+  --clarity-soft: #737b83;
+  --clarity-paper: #fbfbfa;
+  --clarity-panel: rgba(255, 255, 255, 0.91);
+  --clarity-panel-solid: #ffffff;
+  --clarity-line: rgba(15, 18, 20, 0.14);
+  --clarity-invert: #ffffff;
+  --clarity-invert-body: rgba(255, 255, 255, 0.88);
+}
+
+html,
+body,
+#root {
+  color: var(--clarity-ink) !important;
+  background: var(--clarity-paper) !important;
+}
+
+body,
+main,
+section,
+article,
+aside,
+nav,
+footer {
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.btoc-title,
+.btoc-title-small,
+.b2b-heading {
+  color: var(--clarity-ink) !important;
+}
+
+p,
+li,
+dd,
+figcaption,
+blockquote,
+.btoc-lede,
+.b2b-lede {
+  color: var(--clarity-body) !important;
+}
+
+small,
+label,
+.btoc-caption,
+.btoc-eyebrow,
+.b2b-eyebrow,
+.mono-index,
+.cinema-kicker {
+  color: var(--clarity-muted) !important;
+}
+
+a {
+  color: inherit;
+}
+
+.btoc-shell,
+.cinema-home,
+.mono-shell,
+.btoc-section,
+.mono-section,
+.cinema-control-copy,
+.btoc-logistics-section,
+.btoc-dark-band,
+.btoc-immersive-cta {
+  background-color: var(--clarity-paper) !important;
+  color: var(--clarity-ink) !important;
+}
+
+.cinema-nav,
+.cinema-nav.is-scrolled {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-bottom: 1px solid rgba(15, 18, 20, 0.10) !important;
+  color: var(--clarity-ink) !important;
+}
+
+.cinema-brand,
+.cinema-brand-name,
+.cinema-menu-button,
+.cinema-nav-link:hover,
+.cinema-nav-link.is-active,
+.cinema-nav-cta:hover {
+  color: var(--clarity-ink) !important;
+}
+
+.cinema-brand-sub,
+.cinema-nav-link,
+.cinema-nav-cta,
+.cinema-mobile-menu a,
+.cinema-mobile-feature span {
+  color: var(--clarity-muted) !important;
+}
+
+.cinema-mobile-menu,
+.cinema-footer,
+.cinema-footer-grid,
+.cinema-footer-bottom {
+  background: var(--clarity-paper) !important;
+  border-color: var(--clarity-line) !important;
+  color: var(--clarity-ink) !important;
+}
+
+.cinema-footer h2,
+.cinema-footer h4,
+.cinema-footer strong,
+.cinema-footer-brand,
+.cinema-footer-brand strong,
+.cinema-footer-grid a,
+.cinema-footer-actions a {
+  color: var(--clarity-ink) !important;
+}
+
+.cinema-footer p,
+.cinema-footer small,
+.cinema-footer-bottom,
+.cinema-footer li {
+  color: var(--clarity-body) !important;
+}
+
+.cinema-footer-actions a,
+.cinema-nav-cta,
+.cinema-menu-button,
+.cinema-brand-mark {
+  border-color: rgba(15, 18, 20, 0.20) !important;
+}
+
+.cinema-scene-media img,
+.btoc-hero-media img,
+.btoc-image-frame img,
+.visual-card-image img,
+.cinema-gallery-shot img,
+.cinema-portrait img,
+.cinema-wide-photo img,
+.mono-section img {
+  filter: saturate(1.08) contrast(1.03) brightness(1.08) !important;
+}
+
+.cinema-scene-scrim,
+.btoc-shell .btoc-hero::after,
+.cinema-traveler-scene .cinema-scene-scrim,
+.cinema-signals-scrim {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.50) 42%, rgba(255, 255, 255, 0.06) 100%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0.06) 58%, rgba(255, 255, 255, 0.34) 100%) !important;
+}
+
+.cinema-scene-content > div:first-child,
+.btoc-hero-grid > div:first-child,
+.cinema-editorial-copy > div,
+.cinema-gallery-title,
+.cinema-control-copy > div:first-child,
+.cinema-signals-intro,
+.cinema-featured-signal,
+.cinema-proof,
+.btoc-glass-panel,
+.cinema-lens-row,
+.cinema-flow article,
+.cinema-trust-list span,
+.cinema-signal-card,
+.btoc-card,
+.visual-card,
+.btoc-process-card,
+.btoc-timeline-card,
+.btoc-filter-panel,
+.btoc-shell form,
+.mono-card,
+.btoc-trip-card,
+.btoc-trip-card > .grid,
+.btoc-shell .btoc-trip-card,
+.btoc-shell .btoc-trip-card > .grid,
+[class*="bg-white"],
+[class*="brand-gray-50"],
+[class*="brand-gray-100"] {
+  background: var(--clarity-panel) !important;
+  border-color: var(--clarity-line) !important;
+  color: var(--clarity-ink) !important;
+  text-shadow: none !important;
+}
+
+.cinema-scene-content > div:first-child *,
+.btoc-hero-grid > div:first-child *,
+.cinema-editorial-copy > div *,
+.cinema-gallery-title *,
+.cinema-control-copy > div:first-child *,
+.cinema-signals-intro *,
+.cinema-featured-signal *,
+.cinema-proof *,
+.btoc-glass-panel *,
+.cinema-lens-row *,
+.cinema-flow article *,
+.cinema-trust-list span *,
+.cinema-signal-card *,
+.btoc-card *,
+.visual-card *,
+.btoc-process-card *,
+.btoc-timeline-card *,
+.btoc-filter-panel *,
+.btoc-shell form *,
+.mono-card *,
+.btoc-trip-card *,
+[class*="bg-white"] *,
+[class*="brand-gray-50"] *,
+[class*="brand-gray-100"] * {
+  text-shadow: none !important;
+}
+
+.cinema-scene-content > div:first-child h1,
+.cinema-scene-content > div:first-child h2,
+.btoc-hero-grid > div:first-child h1,
+.btoc-hero-grid > div:first-child h2,
+.cinema-editorial-copy h1,
+.cinema-editorial-copy h2,
+.cinema-gallery-title h2,
+.cinema-signals-intro h2,
+.cinema-featured-signal blockquote,
+.cinema-proof strong,
+.cinema-lens-row strong,
+.cinema-flow h3,
+.cinema-signal-card strong,
+.btoc-card h1,
+.btoc-card h2,
+.btoc-card h3,
+.visual-card h1,
+.visual-card h2,
+.visual-card h3,
+.btoc-process-card h1,
+.btoc-process-card h2,
+.btoc-process-card h3,
+.btoc-timeline-card h1,
+.btoc-timeline-card h2,
+.btoc-timeline-card h3,
+.btoc-trip-card h2,
+.btoc-trip-card h3,
+.btoc-trip-card strong,
+.mono-card h1,
+.mono-card h2,
+.mono-card h3,
+[class*="bg-white"] h1,
+[class*="bg-white"] h2,
+[class*="bg-white"] h3 {
+  color: var(--clarity-ink) !important;
+}
+
+.cinema-scene-content > div:first-child p,
+.btoc-hero-grid > div:first-child p,
+.cinema-editorial-copy p,
+.cinema-gallery-title p,
+.cinema-signals-intro p,
+.cinema-featured-signal p,
+.cinema-proof span,
+.cinema-lens-row p,
+.cinema-flow article p,
+.cinema-signal-card p,
+.btoc-card p,
+.btoc-card div,
+.btoc-card span,
+.visual-card p,
+.visual-card div,
+.visual-card span,
+.btoc-process-card p,
+.btoc-process-card div,
+.btoc-process-card span,
+.btoc-timeline-card p,
+.btoc-timeline-card div,
+.btoc-timeline-card span,
+.btoc-trip-card p,
+.btoc-trip-card div:not(.btoc-badge):not(.btoc-pill),
+.mono-card p,
+.mono-card div,
+.mono-card span,
+[class*="bg-white"] p,
+[class*="bg-white"] div,
+[class*="bg-white"] span,
+[class*="brand-gray-50"] p,
+[class*="brand-gray-100"] p {
+  color: var(--clarity-body) !important;
+}
+
+.cinema-scene:not(:has(.cinema-scene-content > div:first-child)) h1,
+.cinema-scene:not(:has(.cinema-scene-content > div:first-child)) h2,
+.btoc-hero:not(:has(.btoc-hero-grid > div:first-child)) h1,
+.mono-section[class*="bg-\[var\(--brand-black\)"] h1,
+.mono-section[class*="bg-\[var\(--brand-black\)"] h2,
+.mono-section[class*="text-white"] h1,
+.mono-section[class*="text-white"] h2,
+.btoc-section[class*="text-white"] h1,
+.btoc-section[class*="text-white"] h2,
+.btoc-image-overlay h1,
+.btoc-image-overlay h2,
+.btoc-image-overlay h3,
+.cinema-gallery-shot figcaption {
+  color: var(--clarity-invert) !important;
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.56) !important;
+}
+
+.mono-section[class*="bg-\[var\(--brand-black\)"] p,
+.mono-section[class*="text-white"] p,
+.btoc-section[class*="text-white"] p,
+.btoc-image-overlay p,
+.btoc-image-overlay span,
+.cinema-gallery-shot figcaption {
+  color: var(--clarity-invert-body) !important;
+}
+
+.btoc-image-overlay,
+.cinema-gallery-shot::after {
+  background: linear-gradient(0deg, rgba(15, 18, 20, 0.58), rgba(15, 18, 20, 0.10) 58%, rgba(15, 18, 20, 0.03)) !important;
+}
+
+.btoc-button,
+.mono-button,
+.cinema-actions a:first-child,
+.btoc-filter-panel .btoc-button,
+.btoc-shell form .btoc-button,
+.btoc-card .btoc-button,
+.btoc-trip-card .btoc-button,
+button[type="submit"] {
+  background: var(--clarity-ink) !important;
+  border-color: var(--clarity-ink) !important;
+  color: #ffffff !important;
+}
+
+.btoc-button *,
+.mono-button *,
+.cinema-actions a:first-child *,
+button[type="submit"] * {
+  color: #ffffff !important;
+}
+
+.btoc-button-secondary,
+.mono-button-secondary,
+.cinema-actions a:not(:first-child),
+.cinema-footer-actions a,
+.btoc-trip-card a:not(.btoc-button),
+.cinema-featured-signal a,
+.cinema-signal-card a {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(15, 18, 20, 0.22) !important;
+  color: var(--clarity-ink) !important;
+}
+
+.btoc-pill,
+.btoc-badge,
+.btoc-card .btoc-pill,
+.btoc-trip-card .btoc-pill,
+.visual-card .compact-list-item,
+.inline-flex[class*="text-white"],
+span[class*="text-white"] {
+  background: rgba(15, 18, 20, 0.08) !important;
+  border-color: rgba(15, 18, 20, 0.14) !important;
+  color: var(--clarity-ink) !important;
+}
+
+input,
+select,
+textarea,
+.btoc-field,
+.btoc-select,
+.btoc-shell select,
+.btoc-shell input,
+.btoc-shell textarea {
+  background: #ffffff !important;
+  border-color: rgba(15, 18, 20, 0.24) !important;
+  color: var(--clarity-ink) !important;
+  caret-color: var(--clarity-ink) !important;
+}
+
+input::placeholder,
+textarea::placeholder,
+.btoc-field::placeholder,
+.btoc-shell input::placeholder,
+.btoc-shell textarea::placeholder {
+  color: rgba(15, 18, 20, 0.52) !important;
+}
+
+option {
+  background: #ffffff !important;
+  color: var(--clarity-ink) !important;
+}
+
+table,
+thead,
+tbody,
+tr,
+td,
+th {
+  color: var(--clarity-ink) !important;
+}
+
+@media (max-width: 767px) {
+  .cinema-scene-content > div:first-child,
+  .btoc-hero-grid > div:first-child,
+  .cinema-editorial-copy > div,
+  .cinema-gallery-title,
+  .cinema-control-copy > div:first-child,
+  .cinema-signals-intro,
+  .cinema-featured-signal,
+  .btoc-card,
+  .visual-card,
+  .btoc-trip-card,
+  .btoc-filter-panel,
+  .btoc-shell form {
+    background: rgba(255, 255, 255, 0.94) !important;
+  }
+
+  .cinema-scene-scrim,
+  .btoc-shell .btoc-hero::after,
+  .cinema-traveler-scene .cinema-scene-scrim,
+  .cinema-signals-scrim {
+    background:
+      linear-gradient(0deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.40) 58%, rgba(255, 255, 255, 0.58) 100%) !important;
+  }
+}
+
+/* True final clarity lock: appended last so older cinematic layers cannot reintroduce clipped or faint text. */
+.btoc-hero-grid,
+.cinema-scene-content,
+.cinema-signals-content {
+  max-width: 100% !important;
+  overflow: visible;
+}
+
+.btoc-hero-grid > div:first-child,
+.cinema-scene-content > div:first-child,
+.cinema-signals-intro,
+.cinema-featured-signal {
+  box-sizing: border-box;
+  min-width: 0 !important;
+  overflow-wrap: break-word;
+}
+
+.btoc-glass-panel .bg-white\/12,
+.btoc-glass-panel [class*="bg-white/"] {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(15, 18, 20, 0.12) !important;
+  color: var(--clarity-ink) !important;
+}
+
+.btoc-glass-panel .bg-white\/12 *,
+.btoc-glass-panel [class*="bg-white/"] * {
+  color: var(--clarity-body) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.btoc-glass-panel .bg-white\/12 a,
+.btoc-glass-panel [class*="bg-white/"] a,
+.btoc-glass-panel .bg-white\/12 .btoc-caption,
+.btoc-glass-panel [class*="bg-white/"] .btoc-caption,
+.btoc-glass-panel .bg-white\/12 p.font-semibold,
+.btoc-glass-panel [class*="bg-white/"] p.font-semibold {
+  color: var(--clarity-ink) !important;
+}
+
+@media (max-width: 767px) {
+  html,
+  body,
+  #root,
+  main,
+  .btoc-shell,
+  .cinema-home {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  .btoc-hero,
+  .btoc-hero-inner,
+  .cinema-scene,
+  .cinema-scene-content,
+  .cinema-signals-content {
+    overflow-x: clip !important;
+  }
+
+  .btoc-hero-grid,
+  .btoc-hero-grid > div,
+  .cinema-scene-content > div,
+  .cinema-signals-content > div {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .btoc-hero-grid {
+    left: 50% !important;
+    margin-left: -50vw !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    position: relative !important;
+    width: 100vw !important;
+  }
+
+  .btoc-hero-grid > div:first-child,
+  .cinema-scene-content > div:first-child,
+  .cinema-editorial-copy > div,
+  .cinema-gallery-title,
+  .cinema-control-copy > div:first-child,
+  .cinema-signals-intro,
+  .cinema-featured-signal {
+    left: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+    position: relative !important;
+    padding-right: 36px !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  .btoc-hero-grid > div:first-child h1,
+  .btoc-hero-grid > div:first-child p,
+  .cinema-scene-content > div:first-child h1,
+  .cinema-scene-content > div:first-child h2,
+  .cinema-scene-content > div:first-child p,
+  .cinema-signals-intro h2,
+  .cinema-signals-intro p,
+  .cinema-featured-signal blockquote,
+  .cinema-featured-signal p {
+    max-width: calc(100% - 8px) !important;
+    width: 100% !important;
+  }
+
+  .btoc-hero-grid > div:first-child .btoc-action-row,
+  .cinema-scene-content > div:first-child .cinema-actions {
+    max-width: calc(100% - 8px) !important;
+  }
+
+  .cinema-contact-rail {
+    box-sizing: border-box !important;
+    max-width: calc(100vw - 28px) !important;
+    overflow: hidden !important;
   }
 }
