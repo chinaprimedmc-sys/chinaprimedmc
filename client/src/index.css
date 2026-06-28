@@ -4459,3 +4459,138 @@ th {
     overflow: hidden !important;
   }
 }
+
+/* Mobile hero containment override: keep every word inside the phone viewport. */
+@media (max-width: 767px) {
+  .btoc-hero-inner.btoc-wrap {
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    width: 100% !important;
+  }
+
+  .btoc-hero-grid {
+    display: block !important;
+    left: auto !important;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    position: static !important;
+    width: 100% !important;
+  }
+
+  .btoc-hero-grid > div:first-child {
+    box-sizing: border-box !important;
+    max-width: calc(100vw - 32px) !important;
+    overflow: hidden !important;
+    padding: 20px !important;
+    padding-right: 34px !important;
+    width: calc(100vw - 32px) !important;
+  }
+
+  .btoc-hero-grid > div:first-child h1,
+  .btoc-hero h1,
+  .btoc-hero-grid > div:first-child p,
+  .btoc-hero .btoc-lede,
+  .btoc-hero-grid > div:first-child .btoc-action-row {
+    box-sizing: border-box !important;
+    max-width: calc(100% - 10px) !important;
+    padding-right: 14px !important;
+    width: auto !important;
+  }
+
+  .btoc-hero h1,
+  .cinema-scene h1 {
+    font-size: clamp(2.05rem, 8.4vw, 2.74rem) !important;
+    line-height: 1.02 !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    hyphens: auto;
+  }
+
+  .btoc-hero-grid > div:first-child h1 {
+    display: block !important;
+    text-wrap: auto !important;
+  }
+
+  .btoc-hero-grid > div:first-child p,
+  .btoc-hero .btoc-lede {
+    display: block !important;
+    max-width: min(286px, 100%) !important;
+    text-wrap: auto !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    width: auto !important;
+  }
+
+  .cinema-scene h1 {
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  .btoc-hero .btoc-lede,
+  .cinema-scene p {
+    font-size: 0.96rem !important;
+    line-height: 1.62 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .btoc-action-row,
+  .cinema-actions {
+    width: 100% !important;
+  }
+
+  .btoc-hero-media img,
+  .cinema-scene-media img {
+    left: 0 !important;
+    max-width: 100vw !important;
+    transform: none !important;
+    width: 100vw !important;
+  }
+}
+
+/* Page-wide contrast cleanup for faint statistic, badge, and glass text. */
+.btoc-stat strong,
+.btoc-stat span,
+.btoc-glass-panel strong,
+.btoc-glass-panel span,
+.btoc-glass-panel div,
+.cinema-proof strong,
+.cinema-proof span,
+.mono-index,
+.btoc-caption,
+.b2b-eyebrow,
+.btoc-eyebrow {
+  opacity: 1 !important;
+}
+
+.btoc-stat strong,
+.btoc-glass-panel strong,
+.cinema-proof strong {
+  color: var(--clarity-ink) !important;
+}
+
+.btoc-stat span,
+.btoc-glass-panel span,
+.cinema-proof span,
+.mono-index,
+.btoc-caption,
+.b2b-eyebrow,
+.btoc-eyebrow {
+  color: #4f5962 !important;
+}
+
+.cinema-proof,
+.btoc-glass-panel,
+.btoc-stat {
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: var(--clarity-ink) !important;
+}
+
+.cinema-proof *,
+.btoc-glass-panel *,
+.btoc-stat * {
+  text-shadow: none !important;
+}
