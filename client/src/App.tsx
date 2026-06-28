@@ -513,15 +513,17 @@ function Header({ page }: { page: PageKey }) {
       </nav>
       <PageLink className="nav-cta" page="contact" onNavigate={closeMenu}>Start Planning</PageLink>
       <button
-        className="mobile-menu-button"
+        className={`mobile-menu-button ${menuOpen ? "is-open" : ""}`}
         type="button"
         aria-label={menuOpen ? "Close menu" : "Open menu"}
         aria-expanded={menuOpen}
         onClick={() => setMenuOpen((open) => !open)}
       >
-        <span />
-        <span />
-        <span />
+        <span className="mobile-menu-label">{menuOpen ? "Close" : "Menu"}</span>
+        <span className="mobile-menu-icon" aria-hidden="true">
+          <span />
+          <span />
+        </span>
       </button>
       {menuOpen ? (
         <nav className="mobile-nav-panel" aria-label="Mobile menu">
