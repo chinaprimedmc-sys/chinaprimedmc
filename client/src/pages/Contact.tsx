@@ -1,8 +1,6 @@
 import { useMemo, useState } from "react";
 import { Briefcase, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { EMAIL, WHATSAPP_URL } from "@/lib/data";
-import MediaHero from "@/components/MediaHero";
-import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 const partnerTypes = [
@@ -180,65 +178,53 @@ export default function Contact() {
   };
 
   const inputStyle: React.CSSProperties = {
-    backgroundColor: "var(--brand-white)",
-    border: "1px solid var(--brand-border)",
-    borderRadius: 0,
-    boxSizing: "border-box",
-    color: "var(--brand-black)",
     fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
-    fontSize: "0.95rem",
-    outline: "none",
-    padding: "13px 14px",
-    width: "100%",
   };
 
   const labelStyle: React.CSSProperties = {
-    color: "var(--brand-gray-600)",
-    display: "block",
     fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
-    fontSize: "0.7rem",
-    fontWeight: 760,
-    letterSpacing: "0.1em",
-    marginBottom: "8px",
-    textTransform: "uppercase",
   };
 
   return (
-    <main style={{ backgroundColor: "var(--brand-white)", paddingTop: "72px" }}>
-      <MediaHero
-        image={pageHeroImages.contact}
-        alt="China Prime DMC private China trip planning consultation."
-        eyebrow="Private China trip desk"
-        title="Tell us what kind of China trip you are planning."
-        body="Send a simple wish list, a rough route, or a fully formed plan. We will help shape the trip around your dates, pace, comfort level, dietary needs, family needs, and must-see places."
-      >
-          <div className="grid grid-cols-1 gap-px bg-white/20 sm:grid-cols-2">
-            {[
-              { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "+44 7985 052302", href: WHATSAPP_URL },
-              { icon: <Mail size={18} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
-              { icon: <MapPin size={18} />, label: "Base", value: "Guangzhou, China", href: null },
-              { icon: <Briefcase size={18} />, label: "Best for", value: "Private trips, families, Muslim travelers, senior travelers", href: null },
-            ].map((item) => (
-              <div key={item.label} className="bg-black/56 p-6 backdrop-blur-sm">
-                <div className="mb-5 text-[var(--brand-gray-400)]">{item.icon}</div>
-                <p className="mono-index mb-2" style={{ color: "var(--brand-gray-500)" }}>{item.label}</p>
-                {item.href ? (
-                  <a href={item.href} className="text-sm font-semibold text-white" style={{ textDecoration: "none" }}>
-                    {item.value}
-                  </a>
-                ) : (
-                  <p className="text-sm font-semibold text-white" style={{ margin: 0 }}>{item.value}</p>
-                )}
+    <main className="btoc-shell" style={{ paddingTop: "72px" }}>
+      <section className="btoc-hero min-h-[72svh]">
+        <div className="btoc-hero-media">
+          <img src={pageHeroImages.contact} alt="China Prime DMC private China trip planning consultation." loading="eager" decoding="async" fetchPriority="high" />
+        </div>
+        <div className="btoc-hero-inner btoc-wrap min-h-[72svh]">
+          <div className="btoc-hero-grid">
+            <FadeSection>
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>Private trip concierge</span>
+              <h1>Tell us the China you want.</h1>
+              <p className="btoc-lede">Send a wish list, a rough route, or a fully formed plan. We will shape it around your dates, pace, comfort level, family needs, food preferences, and must-see places.</p>
+            </FadeSection>
+            <FadeSection delay={120}>
+              <div className="btoc-glass-panel">
+                <div className="grid gap-px bg-white/15 sm:grid-cols-2">
+                  {[
+                    { icon: <MessageCircle size={18} />, label: "WhatsApp", value: "+44 7985 052302", href: WHATSAPP_URL },
+                    { icon: <Mail size={18} />, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+                    { icon: <MapPin size={18} />, label: "Base", value: "Guangzhou, China", href: null },
+                    { icon: <Briefcase size={18} />, label: "Best for", value: "Private trips", href: null },
+                  ].map((item) => (
+                    <div key={item.label} className="bg-white/12 p-6 backdrop-blur-sm">
+                      <div className="mb-5 text-white/74">{item.icon}</div>
+                      <p className="btoc-caption mb-2 text-white/56">{item.label}</p>
+                      {item.href ? <a href={item.href} className="text-sm font-semibold text-white no-underline">{item.value}</a> : <p className="m-0 text-sm font-semibold text-white">{item.value}</p>}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            </FadeSection>
           </div>
-      </MediaHero>
+        </div>
+      </section>
 
-      <section className="mono-section bg-[var(--brand-gray-50)]">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr]">
+      <section className="btoc-section">
+        <div className="btoc-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr]">
           <aside>
-            <p className="b2b-eyebrow">Brief structure</p>
-            <h2 className="b2b-heading" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>A simpler way to start planning China.</h2>
+            <p className="btoc-eyebrow">Brief structure</p>
+            <h2 className="btoc-title-small" style={{ fontSize: "clamp(2.2rem, 4vw, 4.2rem)" }}>A simpler way to start planning China.</h2>
             <div className="mt-10 grid gap-px bg-[var(--brand-border)]">
               {[
                 "Traveler profile and travel style",
@@ -248,48 +234,48 @@ export default function Contact() {
                 "Hotel level and budget range",
                 "Special needs: halal, accessibility, family, senior, women-friendly, VIP",
               ].map((item) => (
-                <div key={item} className="flex items-start gap-4 bg-[var(--brand-gray-50)] p-5">
-                  <Send size={15} style={{ color: "var(--brand-black)", flexShrink: 0, marginTop: 4 }} />
-                  <p className="b2b-body" style={{ margin: 0 }}>{item}</p>
+                <div key={item} className="btoc-card flex items-start gap-4 p-5">
+                  <Send size={15} style={{ color: "var(--btoc-gold)", flexShrink: 0, marginTop: 4 }} />
+                  <p className="m-0 text-sm leading-7 text-[rgba(17,24,39,0.70)]">{item}</p>
                 </div>
               ))}
             </div>
           </aside>
 
-          <form onSubmit={handleSubmit} className="mono-card p-6 sm:p-8 lg:p-10">
+          <form onSubmit={handleSubmit} className="btoc-card p-6 sm:p-8 lg:p-10">
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
-                <label style={labelStyle}>Full name *</label>
-                <input name="name" value={form.name} onChange={handleChange} style={inputStyle} required />
+                <label className="btoc-label" style={labelStyle}>Full name *</label>
+                <input className="btoc-field" name="name" value={form.name} onChange={handleChange} style={inputStyle} required />
               </div>
               <div>
-                <label style={labelStyle}>Family / group name *</label>
-                <input name="company" value={form.company} onChange={handleChange} placeholder="Company, agency, or family name" style={inputStyle} required />
+                <label className="btoc-label" style={labelStyle}>Family / group name *</label>
+                <input className="btoc-field" name="company" value={form.company} onChange={handleChange} placeholder="Company, agency, or family name" style={inputStyle} required />
               </div>
             </div>
 
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
-                <label style={labelStyle}>Email *</label>
-                <input name="email" type="email" value={form.email} onChange={handleChange} style={inputStyle} required />
+                <label className="btoc-label" style={labelStyle}>Email *</label>
+                <input className="btoc-field" name="email" type="email" value={form.email} onChange={handleChange} style={inputStyle} required />
               </div>
               <div>
-                <label style={labelStyle}>WhatsApp / phone</label>
-                <input name="whatsapp" value={form.whatsapp} onChange={handleChange} style={inputStyle} />
+                <label className="btoc-label" style={labelStyle}>WhatsApp / phone</label>
+                <input className="btoc-field" name="whatsapp" value={form.whatsapp} onChange={handleChange} style={inputStyle} />
               </div>
             </div>
 
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
-                <label style={labelStyle}>Request type</label>
-                <select name="partnerType" value={form.partnerType} onChange={handleChange} style={inputStyle}>
+                <label className="btoc-label" style={labelStyle}>Request type</label>
+                <select className="btoc-field" name="partnerType" value={form.partnerType} onChange={handleChange} style={inputStyle}>
                   <option value="">Select...</option>
                   {partnerTypes.map((type) => <option key={type} value={type}>{type}</option>)}
                 </select>
               </div>
               <div>
-                <label style={labelStyle}>Trip type</label>
-                <select name="programType" value={form.programType} onChange={handleChange} style={inputStyle}>
+                <label className="btoc-label" style={labelStyle}>Trip type</label>
+                <select className="btoc-field" name="programType" value={form.programType} onChange={handleChange} style={inputStyle}>
                   <option value="">Select...</option>
                   {programTypes.map((type) => <option key={type} value={type}>{type}</option>)}
                 </select>
@@ -298,23 +284,23 @@ export default function Contact() {
 
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
-                <label style={labelStyle}>Number of travelers</label>
-                <input name="groupSize" value={form.groupSize} onChange={handleChange} placeholder="e.g. 2 VIPs, 18 guests, 60 pax" style={inputStyle} />
+                <label className="btoc-label" style={labelStyle}>Number of travelers</label>
+                <input className="btoc-field" name="groupSize" value={form.groupSize} onChange={handleChange} placeholder="e.g. 2 VIPs, 18 guests, 60 pax" style={inputStyle} />
               </div>
               <div>
-                <label style={labelStyle}>Travel window</label>
-                <input name="travelWindow" value={form.travelWindow} onChange={handleChange} placeholder="e.g. October 2026" style={inputStyle} />
+                <label className="btoc-label" style={labelStyle}>Travel window</label>
+                <input className="btoc-field" name="travelWindow" value={form.travelWindow} onChange={handleChange} placeholder="e.g. October 2026" style={inputStyle} />
               </div>
             </div>
 
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, marginBottom: 18 }}>
               <div>
-                <label style={labelStyle}>Destinations / routing</label>
-                <input name="destinations" value={form.destinations} onChange={handleChange} placeholder="e.g. Beijing, Xi'an, Shanghai" style={inputStyle} />
+                <label className="btoc-label" style={labelStyle}>Destinations / routing</label>
+                <input className="btoc-field" name="destinations" value={form.destinations} onChange={handleChange} placeholder="e.g. Beijing, Xi'an, Shanghai" style={inputStyle} />
               </div>
               <div>
-                <label style={labelStyle}>Budget level</label>
-                <select name="budgetLevel" value={form.budgetLevel} onChange={handleChange} style={inputStyle}>
+                <label className="btoc-label" style={labelStyle}>Budget level</label>
+                <select className="btoc-field" name="budgetLevel" value={form.budgetLevel} onChange={handleChange} style={inputStyle}>
                   <option value="">Select...</option>
                   <option value="Comfort">Comfort</option>
                   <option value="Premium">Premium</option>
@@ -327,14 +313,14 @@ export default function Contact() {
 
             <div style={{ marginBottom: 20 }}>
               <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                <label style={{ ...labelStyle, marginBottom: 0 }}>Brief *</label>
+                <label className="btoc-label" style={{ ...labelStyle, marginBottom: 0 }}>Brief *</label>
                 <div className="flex flex-wrap gap-2">
                   {briefTemplates.map((template) => (
                     <button
                       key={template.label}
                       type="button"
                       onClick={() => applyTemplate(template)}
-                      className="border border-[var(--brand-border)] bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-gray-700)] transition-colors hover:border-[var(--brand-black)] hover:text-[var(--brand-black)]"
+                      className="btoc-pill transition-transform hover:-translate-y-0.5"
                     >
                       {template.label}
                     </button>
@@ -348,27 +334,28 @@ export default function Contact() {
                 rows={10}
                 placeholder="Tell us who is traveling, when you want to go, what you want to see, your pace, hotel style, dietary needs, and anything we should plan around."
                 required
+                className="btoc-field"
                 style={{ ...inputStyle, resize: "vertical" }}
               />
             </div>
 
             {error && (
-              <div className="mb-5 border border-[var(--brand-black)] bg-white p-4 text-sm font-semibold text-[var(--brand-black)]">
+              <div className="btoc-alert mb-5 bg-white text-[var(--btoc-ink)]">
                 {error}
               </div>
             )}
 
             {submitted && (
-              <div className="mb-5 border border-[var(--brand-border)] bg-[var(--brand-gray-100)] p-4 text-sm font-semibold text-[var(--brand-black)]">
+              <div className="btoc-alert mb-5 bg-[rgba(49,91,69,0.08)] text-[var(--btoc-forest)]">
                 Your email app should open with the prepared brief. You can also send it by WhatsApp below.
               </div>
             )}
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <button type="submit" className="mono-button">
+              <button type="submit" className="btoc-button">
                 Prepare email <Mail size={17} />
               </button>
-              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="mono-button mono-button-secondary">
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btoc-button btoc-button-secondary">
                 Send by WhatsApp <MessageCircle size={17} />
               </a>
             </div>
@@ -376,26 +363,20 @@ export default function Contact() {
         </div>
       </section>
 
-      <DarkImageSection
-        image="/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-one-on-one-buyer-consultation.jpeg"
-        alt="China Prime DMC private China trip planning support."
-        eyebrow="Before you brief us"
-        title="The more specific the wish list, the better the first route."
-        body="Dates, traveler type, group size, hotel expectation, route idea, meal needs, and pace tell us which guides, vehicles, hotels, and daily timing make sense."
-        actions={
-          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-            Send brief by WhatsApp <MessageCircle size={17} />
-          </a>
-        }
-      >
-        <div className="grid gap-px bg-white/20 sm:grid-cols-2">
-          {["Route logic", "Private guides", "Ground delivery", "In-trip support"].map((item) => (
-            <div key={item} className="bg-black/58 p-6 text-sm font-semibold uppercase tracking-[0.1em] text-white backdrop-blur-sm">
-              {item}
+      <section className="btoc-section pt-0">
+        <div className="btoc-wrap">
+          <div className="btoc-image-frame min-h-[54vh] rounded-[34px]">
+            <img src="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-west-lake.jpg" alt="West Lake Hangzhou private China trip planning inspiration." loading="lazy" decoding="async" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,39,0.78),rgba(17,24,39,0.36),rgba(17,24,39,0.10))]" />
+            <div className="absolute bottom-0 left-0 right-0 p-7 md:p-12 lg:p-16">
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Before you brief us</span>
+              <h2 className="max-w-4xl text-[clamp(2.1rem,4.5vw,5rem)] font-semibold leading-[0.98] text-white">The more specific the wish list, the better the first route.</h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-white/76">Dates, traveler type, group size, hotel expectation, route idea, meal needs, and pace help us shape a trip that feels effortless on the ground.</p>
+              <div className="btoc-action-row"><a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btoc-button">Send by WhatsApp <MessageCircle size={17} /></a></div>
             </div>
-          ))}
+          </div>
         </div>
-      </DarkImageSection>
+      </section>
     </main>
   );
 }

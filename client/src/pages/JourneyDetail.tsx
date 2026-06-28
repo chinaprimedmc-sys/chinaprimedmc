@@ -42,9 +42,9 @@ function FadeSection({ children, className = "", delay = 0 }: { children: React.
 function SectionTitle({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
   return (
     <FadeSection className="mb-10">
-      <p className="b2b-eyebrow">{eyebrow}</p>
-      <h2 className="b2b-heading max-w-4xl">{title}</h2>
-      {body && <p className="b2b-lede mt-5 max-w-3xl">{body}</p>}
+      <p className="btoc-eyebrow">{eyebrow}</p>
+      <h2 className="btoc-title-small max-w-4xl">{title}</h2>
+      {body && <p className="btoc-lede mt-5 max-w-3xl">{body}</p>}
     </FadeSection>
   );
 }
@@ -303,7 +303,7 @@ export default function JourneyDetail() {
       <main className="flex min-h-screen items-center justify-center bg-white px-6 pt-[72px]">
         <div className="text-center">
           <h1 className="text-3xl font-semibold text-[var(--brand-black)]">Trip not found</h1>
-          <Link href="/journeys" className="mono-button mt-8">
+          <Link href="/journeys" className="btoc-button mt-8">
             <ArrowLeft size={16} /> Back to trips
           </Link>
         </div>
@@ -317,40 +317,40 @@ export default function JourneyDetail() {
   const inquiryLinks = buildInquiryLinks(journey);
 
   return (
-    <main className="pb-24 md:pb-0" style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
-      <section className="relative min-h-[82vh] overflow-hidden bg-[var(--brand-black)]">
-        <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="absolute inset-0 h-full w-full object-cover object-top opacity-75 md:object-center" loading="eager" decoding="async" fetchPriority="high" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" />
-        <div className="relative flex min-h-[82vh] items-end px-6 pb-12 lg:px-10 lg:pb-16">
-          <div className="mono-wrap w-full">
+    <main className="btoc-shell pb-24 md:pb-0" style={{ paddingTop: "72px" }}>
+      <section className="btoc-hero min-h-[86svh]">
+        <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="absolute inset-0 h-full w-full object-cover object-top md:object-center" loading="eager" decoding="async" fetchPriority="high" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,18,33,0.80),rgba(10,18,33,0.42),rgba(10,18,33,0.10))]" /><div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(10,18,33,0.82),rgba(10,18,33,0.12)_54%,rgba(10,18,33,0.28))]" />
+        <div className="relative z-10 flex min-h-[86svh] items-end pb-12 lg:pb-16">
+          <div className="btoc-wrap w-full">
             <Link href="/journeys" className="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-white no-underline">
               <ArrowLeft size={14} /> All trips
             </Link>
             <div className="max-w-6xl">
               <div className="mb-5 flex flex-wrap gap-2">
                 {[journey.duration, journey.pace, journey.physicalLevel, journey.pricingNote].map((item) => (
-                  <span key={item} className="border border-white/30 bg-black/35 px-3 py-2 text-xs font-bold uppercase tracking-[0.1em] text-white backdrop-blur">
+                  <span key={item} className="btoc-badge">
                     {item}
                   </span>
                 ))}
               </div>
-              <h1 className="text-[clamp(2.4rem,7vw,6rem)] font-semibold leading-[0.95] text-white">{journey.title}</h1>
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--brand-gray-100)] md:text-xl">{journey.subtitle}</p>
+              <h1 className="max-w-6xl text-[clamp(3rem,8vw,8rem)] font-semibold leading-[0.88] text-white">{journey.title}</h1>
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-white/82 md:text-xl">{journey.subtitle}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-[var(--brand-border)] bg-white px-6 py-7 lg:px-10">
-        <div className="mono-wrap grid gap-px bg-[var(--brand-border)] md:grid-cols-4">
+      <section className="btoc-section py-8">
+        <div className="btoc-wrap grid gap-4 md:grid-cols-4">
           {[
             { icon: Clock, label: "Duration", value: journey.duration },
             { icon: MapPin, label: "Route", value: journey.route },
             { icon: Users, label: "Best for", value: journey.bestFor.slice(0, 2).join(" / ") },
             { icon: Check, label: "Season", value: journey.bestTime },
           ].map((item) => (
-            <div key={item.label} className="bg-white p-5">
-              <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[var(--brand-border)]">
+            <div key={item.label} className="btoc-card p-5">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--btoc-navy)] text-white">
                 <item.icon size={15} />
               </div>
               <div className="mb-1 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-500)]">{item.label}</div>
@@ -360,17 +360,17 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-white)]">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.75fr_1fr]">
+      <section className="btoc-section">
+        <div className="btoc-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.75fr_1fr]">
           <FadeSection>
-            <p className="b2b-eyebrow">Trip snapshot</p>
-            <h2 className="b2b-heading">What this journey feels like in real life.</h2>
+            <p className="btoc-eyebrow">Trip snapshot</p>
+            <h2 className="btoc-title-small">What this journey feels like in real life.</h2>
           </FadeSection>
           <FadeSection delay={100}>
-            <p className="b2b-lede mt-0">{journey.overview}</p>
+            <p className="btoc-lede mt-0">{journey.overview}</p>
             <div className="mt-8 flex flex-wrap gap-2">
               {[...journey.themes, ...journey.travelerTypes].map((tag) => (
-                <span key={tag} className="border border-[var(--brand-border)] px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-gray-700)]">
+                <span key={tag} className="btoc-pill">
                   {tag}
                 </span>
               ))}
@@ -379,13 +379,13 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-gray-50)]">
-        <div className="mono-wrap">
+      <section className="btoc-section">
+        <div className="btoc-wrap">
           <SectionTitle eyebrow="Why travelers love it" title="A clear route with real reasons to go." body={journey.routeSummary} />
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {journey.whyItSells.map((item, index) => (
-              <FadeSection key={item} delay={index * 70} className="bg-white p-7">
-                <div className="mb-8 inline-block bg-[var(--brand-black)] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">0{index + 1}</div>
+              <FadeSection key={item} delay={index * 70} className="btoc-card p-7">
+                <div className="mb-8 inline-block rounded-full bg-[var(--btoc-gold)] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">0{index + 1}</div>
                 <p className="text-base leading-7 text-[var(--brand-gray-700)]">{item}</p>
               </FadeSection>
             ))}
@@ -393,14 +393,14 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section overflow-hidden bg-[var(--brand-black)] text-white">
-        <div className="mono-wrap">
+      <section className="btoc-section btoc-dark-band overflow-hidden">
+        <div className="btoc-wrap">
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.52fr_1fr] lg:items-end">
             <div>
-              <p className="b2b-eyebrow text-[var(--brand-gray-400)]">Cinematic gallery</p>
-              <h2 className="b2b-heading max-w-4xl text-white">Landmark images that help you feel the route.</h2>
+              <p className="btoc-eyebrow">Cinematic gallery</p>
+              <h2 className="btoc-title-small max-w-4xl text-white">Landmark images that help you feel the route.</h2>
             </div>
-            <p className="b2b-lede mt-0 text-[var(--brand-gray-300)]">
+            <p className="btoc-lede mt-0 text-white/72">
               A good private trip should be easy to picture before you book it. These large-format visuals show the scale, atmosphere, and destination variety without adding unnecessary initial-load weight.
             </p>
           </FadeSection>
@@ -409,15 +409,15 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-gray-50)]">
-        <div className="mono-wrap">
+      <section className="btoc-section">
+        <div className="btoc-wrap">
           <SectionTitle eyebrow="Day by day" title="A flexible private route." />
-          <div className="grid gap-px bg-[var(--brand-border)]">
+          <div className="btoc-timeline">
             {journey.days.map((day, index) => (
               <FadeSection key={`${day.day}-${day.title}`} delay={(index % 8) * 35}>
-                <div className="grid gap-6 bg-white p-6 md:grid-cols-[180px_1fr] md:p-8">
+                <div className="btoc-timeline-card grid gap-6 md:grid-cols-[180px_1fr]">
                   <div>
-                    <div className="mono-index">{day.day}</div>
+                    <div className="btoc-caption">{day.day}</div>
                     <h3 className="mt-3 text-xl font-semibold leading-tight text-[var(--brand-black)]">{day.title}</h3>
                   </div>
                   <p className="m-0 text-base leading-8 text-[var(--brand-gray-700)]">{day.description}</p>
@@ -428,21 +428,21 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section bg-white">
-        <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] lg:grid-cols-2">
-          <div className="bg-white p-7 md:p-9">
+      <section className="btoc-section bg-white/40">
+        <div className="btoc-wrap grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <div className="btoc-card p-7 md:p-9">
             <h2 className="mb-8 text-3xl font-semibold text-[var(--brand-black)]">Included</h2>
             <BulletList items={journey.included} />
           </div>
-          <div className="bg-white p-7 md:p-9">
+          <div className="btoc-card p-7 md:p-9">
             <h2 className="mb-8 text-3xl font-semibold text-[var(--brand-black)]">Not included</h2>
             <BulletList items={journey.notIncluded} icon="minus" />
           </div>
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-gray-50)]">
-        <div className="mono-wrap">
+      <section className="btoc-section">
+        <div className="btoc-wrap">
           <SectionTitle eyebrow="Travel details" title="The practical details to shape before we quote." />
           <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
             {[
@@ -453,7 +453,7 @@ export default function JourneyDetail() {
               ["Customization", journey.customization.join(" / ")],
               ["Operational notes", journey.operationalNotes.join(" / ")],
             ].map(([label, value]) => (
-              <FadeSection key={label} className="bg-white p-7">
+              <FadeSection key={label} className="btoc-card p-7">
                 <div className="mb-3 text-xs font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-500)]">{label}</div>
                 <p className="m-0 text-base leading-8 text-[var(--brand-gray-700)]">{value}</p>
               </FadeSection>
@@ -462,12 +462,12 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section bg-white">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.7fr_1fr]">
+      <section className="btoc-section bg-white/40">
+        <div className="btoc-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.7fr_1fr]">
           <SectionTitle eyebrow="FAQ" title="Questions before planning." />
-          <div className="grid gap-px bg-[var(--brand-border)]">
+          <div className="btoc-timeline">
             {journey.faqs.map((faq) => (
-              <FadeSection key={faq.q} className="bg-white p-7">
+              <FadeSection key={faq.q} className="btoc-card p-7">
                 <h3 className="mb-3 text-lg font-semibold leading-tight text-[var(--brand-black)]">{faq.q}</h3>
                 <p className="m-0 text-base leading-7 text-[var(--brand-gray-700)]">{faq.a}</p>
               </FadeSection>
@@ -476,7 +476,7 @@ export default function JourneyDetail() {
         </div>
       </section>
 
-      <section className="mono-section relative isolate overflow-hidden bg-[var(--brand-black)] text-white">
+      <section className="btoc-section relative isolate overflow-hidden bg-[var(--btoc-navy)] text-white">
         <img
           src={ctaImage?.src || journey.image}
           alt={ctaImage?.alt || journey.title}
@@ -486,22 +486,22 @@ export default function JourneyDetail() {
         />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.84)_0%,rgba(0,0,0,0.60)_48%,rgba(0,0,0,0.24)_100%)]" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.10)_58%,rgba(0,0,0,0.42)_100%)]" />
-        <div className="mono-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
+        <div className="btoc-wrap grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_auto]">
           <FadeSection>
-            <p className="b2b-eyebrow" style={{ color: "var(--brand-gray-400)" }}>Plan this trip</p>
-            <h2 className="b2b-heading max-w-4xl" style={{ color: "var(--brand-white)" }}>
+            <p className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Plan this trip</p>
+            <h2 className="btoc-title-small max-w-4xl" style={{ color: "var(--brand-white)" }}>
               Send your travel window, group size, hotel level, pace, and special requirements.
             </h2>
           </FadeSection>
           <FadeSection delay={100}>
             <div className="flex flex-wrap gap-3">
-              <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
+              <Link href="/contact" className="btoc-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
                 Send trip brief <ArrowRight size={17} />
               </Link>
-              <a href={inquiryLinks.mailto} className="mono-button mono-button-secondary border-[var(--brand-gray-700)] text-white">
+              <a href={inquiryLinks.mailto} className="btoc-button btoc-button-secondary">
                 Email trip request
               </a>
-              <a href={inquiryLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="mono-button mono-button-secondary border-[var(--brand-gray-700)] text-white">
+              <a href={inquiryLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="btoc-button btoc-button-secondary">
                 WhatsApp
               </a>
             </div>

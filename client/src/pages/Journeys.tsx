@@ -4,8 +4,6 @@ import { ArrowRight, Mail, SlidersHorizontal, X } from "lucide-react";
 import { EMAIL } from "@/lib/data";
 import type { Journey } from "@/lib/programData";
 import { journeyFilterOptions, journeys } from "@/lib/programData";
-import MediaHero from "@/components/MediaHero";
-import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
 function FadeSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -123,11 +121,11 @@ function FilterSelect({
 }) {
   return (
     <label className="grid gap-2">
-      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-500)]">{label}</span>
+      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--btoc-stone)]">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-12 w-full border border-[var(--brand-border)] bg-white px-3 text-sm font-semibold text-[var(--brand-black)] outline-none transition-colors hover:border-[var(--brand-gray-400)] focus:border-[var(--brand-black)]"
+        className="h-12 w-full border border-[rgba(20,33,61,0.10)] bg-white px-3 text-sm font-semibold text-[var(--btoc-ink)] outline-none transition-colors hover:border-[var(--brand-gray-400)] focus:border-[var(--brand-black)]"
       >
         <option value="">All {label.toLowerCase()}</option>
         {options.map((item) => (
@@ -189,46 +187,53 @@ export default function Journeys() {
   };
 
   return (
-    <main style={{ backgroundColor: "var(--brand-white)", color: "var(--brand-black)", paddingTop: "72px" }}>
-      <MediaHero
-        image={pageHeroImages.programs}
-        alt="Tiger Leaping Gorge in Yunnan for private China trip planning."
-        eyebrow="Private China trips"
-        title="Find a China trip that matches how you actually travel."
-        body="Browse private China routes by destination, duration, theme, pace, and traveler needs. These are flexible starting points for families, couples, Muslim travelers, women travelers, senior travelers, first-time visitors, and repeat China guests."
-        actions={
-          <>
-            <Link href="/contact" className="mono-button bg-white text-[var(--brand-black)] hover:bg-[var(--brand-gray-200)] hover:text-[var(--brand-black)]">
-              Plan my trip <ArrowRight size={17} />
-            </Link>
-            <Link href="/b2b" className="mono-button border-white bg-transparent text-white hover:bg-white hover:text-[var(--brand-black)]">
-              B2B travel partners
-            </Link>
-          </>
-        }
-        stats={[
-          { value: String(journeys.length), label: "Private trip ideas" },
-          { value: "5-14", label: "Typical days" },
-          { value: "68", label: "Destination tags" },
-        ]}
-      />
+    <main className="btoc-shell" style={{ paddingTop: "72px" }}>
+      <section className="btoc-hero min-h-[76svh]">
+        <div className="btoc-hero-media">
+          <img src={pageHeroImages.programs} alt="Tiger Leaping Gorge in Yunnan for private China trip planning." loading="eager" decoding="async" fetchPriority="high" />
+        </div>
+        <div className="btoc-hero-inner btoc-wrap min-h-[76svh]">
+          <div className="btoc-hero-grid">
+            <FadeSection>
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>Private China trips</span>
+              <h1>Choose your way into China.</h1>
+              <p className="btoc-lede">
+                Filter cinematic private routes by destination, duration, travel style, pace, and traveler needs. Every trip is a starting point, not a fixed package.
+              </p>
+              <div className="btoc-action-row">
+                <Link href="/contact" className="btoc-button">Plan my trip <ArrowRight size={17} /></Link>
+                <Link href="/b2b" className="btoc-button btoc-button-secondary">B2B partners</Link>
+              </div>
+            </FadeSection>
+            <FadeSection delay={120}>
+              <div className="btoc-glass-panel">
+                <div className="btoc-stat-grid">
+                  {[{ value: String(journeys.length), label: "Trip ideas" }, { value: "5-14", label: "Typical days" }, { value: "68", label: "Destination tags" }, { value: "Private", label: "Custom pace" }].map((item) => (
+                    <div key={item.label} className="btoc-stat"><strong>{item.value}</strong><span>{item.label}</span></div>
+                  ))}
+                </div>
+              </div>
+            </FadeSection>
+          </div>
+        </div>
+      </section>
 
-      <section className="border-y border-[var(--brand-border)] bg-[var(--brand-gray-50)] px-6 py-8 lg:px-10">
-        <div className="mono-wrap">
-          <FadeSection>
-            <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-[var(--brand-border)] pb-5">
+      <section className="btoc-section pb-8 pt-10">
+        <div className="btoc-wrap">
+          <FadeSection className="btoc-filter-panel -mt-24 relative z-20">
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-[rgba(20,33,61,0.10)] pb-5">
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-11 w-11 items-center justify-center border border-[var(--brand-border)] bg-white">
+                <span className="inline-flex h-11 w-11 items-center justify-center border border-[rgba(20,33,61,0.10)] bg-white">
                   <SlidersHorizontal size={18} />
                 </span>
                 <div>
-                  <div className="text-base font-semibold text-[var(--brand-black)]">Trip finder</div>
-                  <div className="text-sm text-[var(--brand-gray-600)]">{filteredJourneys.length} of {journeys.length} trips shown</div>
+                  <div className="text-base font-semibold text-[var(--btoc-ink)]">Trip finder</div>
+                  <div className="text-sm text-[rgba(17,24,39,0.62)]">{filteredJourneys.length} of {journeys.length} trips shown</div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
                 {activeCount > 0 && (
-                  <button type="button" onClick={resetFilters} className="h-11 border border-[var(--brand-border)] bg-white px-4 text-xs font-bold uppercase tracking-[0.08em] text-[var(--brand-black)] hover:bg-[var(--brand-black)] hover:text-white">
+                  <button type="button" onClick={resetFilters} className="btoc-button" style={{ minHeight: 44, padding: "0 18px" }}>
                     Clear filters
                   </button>
                 )}
@@ -242,11 +247,11 @@ export default function Journeys() {
               <FilterSelect label="Traveler" value={travelerFilters[0] || ""} options={journeyFilterOptions.travelerTypes} onChange={(value) => setTravelerFilters(value ? [value] : [])} />
               <FilterSelect label="Pace" value={paceFilters[0] || ""} options={journeyFilterOptions.pace} onChange={(value) => setPaceFilters(value ? [value] : [])} />
               <label className="grid gap-2">
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--brand-gray-500)]">Sort</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--btoc-stone)]">Sort</span>
                 <select
                   value={sortKey}
                   onChange={(event) => setSortKey(event.target.value as SortKey)}
-                  className="h-12 w-full border border-[var(--brand-border)] bg-white px-3 text-sm font-semibold text-[var(--brand-black)] outline-none transition-colors hover:border-[var(--brand-gray-400)] focus:border-[var(--brand-black)]"
+                  className="h-12 w-full border border-[rgba(20,33,61,0.10)] bg-white px-3 text-sm font-semibold text-[var(--btoc-ink)] outline-none transition-colors hover:border-[var(--brand-gray-400)] focus:border-[var(--brand-black)]"
                 >
                   <option value="recommended">Recommended</option>
                   <option value="duration-asc">Shortest first</option>
@@ -274,17 +279,24 @@ export default function Journeys() {
         </div>
       </section>
 
-      <section className="border-b border-[var(--brand-border)] bg-[var(--brand-black)] px-6 py-8 text-white lg:px-10">
-        <div className="mono-wrap">
-          <div className="grid grid-cols-1 gap-px bg-white/20 md:grid-cols-4">
+      <section className="btoc-section pt-8">
+        <div className="btoc-wrap">
+          <FadeSection className="mb-10 grid gap-6 lg:grid-cols-[0.42fr_1fr] lg:items-end">
+            <div>
+              <span className="btoc-eyebrow">Trip moods</span>
+              <h2 className="btoc-title-small">Start with the feeling.</h2>
+            </div>
+            <p className="btoc-lede m-0">Classic icons, family demand, soft adventure, and Silk Road culture give travelers a fast emotional way to understand China.</p>
+          </FadeSection>
+          <div className="grid gap-4 md:grid-cols-4">
             {visualCategories.map((item, index) => (
               <FadeSection key={item.src} delay={index * 45}>
-                <figure className="group relative min-h-[260px] overflow-hidden bg-[var(--brand-black)]">
-                  <img src={item.src} alt={item.alt} className="h-full min-h-[260px] w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" decoding="async" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/6 to-transparent" />
-                  <figcaption className="absolute bottom-0 left-0 right-0 p-5">
-                    <div className="mono-index mb-2 text-[var(--brand-gray-300)]">Trip style</div>
-                    <h2 className="text-2xl font-semibold leading-tight text-white">{item.title}</h2>
+                <figure className="btoc-image-frame aspect-[4/5]">
+                  <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+                  <div className="btoc-image-overlay" />
+                  <figcaption className="absolute bottom-5 left-5 right-5">
+                    <span className="btoc-badge mb-3">Trip style</span>
+                    <h2 className="text-3xl font-semibold leading-tight text-white">{item.title}</h2>
                   </figcaption>
                 </figure>
               </FadeSection>
@@ -293,8 +305,8 @@ export default function Journeys() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-white)]">
-        <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
+      <section className="btoc-section pt-8">
+        <div className="btoc-wrap grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-3">
           {filteredJourneys.map((journey, index) => (
             <FadeSection key={journey.id} delay={(index % 6) * 35}>
               <article
@@ -307,52 +319,52 @@ export default function Journeys() {
                     navigate(`/journeys/${journey.id}`);
                   }
                 }}
-                className="group grid min-h-full cursor-pointer bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-black)]"
+                className="btoc-trip-card group text-[var(--btoc-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--btoc-gold)]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-[var(--brand-gray-100)]">
+                <div className="relative aspect-[16/11] overflow-hidden bg-[var(--btoc-ink)]">
                   <img src={journey.image} alt={journey.gallery[0]?.alt || journey.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" decoding="async" />
-                  <div className="absolute left-3 top-3 bg-[var(--brand-black)] px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-white">
+                  <div className="btoc-badge absolute left-4 top-4">
                     {journey.pricingNote}
                   </div>
                 </div>
-                <div className="grid gap-5 p-5 md:p-6">
+                <div className="grid gap-5 p-5 md:p-7">
                   <div className="flex flex-wrap gap-2">
-                    <span className="mono-index border border-[var(--brand-border)] px-2.5 py-1">{journey.duration}</span>
-                    <span className="mono-index border border-[var(--brand-border)] px-2.5 py-1">{journey.pace}</span>
-                    <span className="mono-index border border-[var(--brand-border)] px-2.5 py-1">{journey.physicalLevel}</span>
+                    <span className="btoc-pill">{journey.duration}</span>
+                    <span className="btoc-pill">{journey.pace}</span>
+                    <span className="btoc-pill">{journey.physicalLevel}</span>
                   </div>
                   <div>
-                    <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--brand-gray-500)]">{journey.route}</p>
-                    <h2 className="text-xl font-semibold leading-tight text-[var(--brand-black)] md:text-[1.45rem]">{journey.title}</h2>
-                    <p className="mt-3 text-sm leading-6 text-[var(--brand-gray-600)]">{journey.subtitle}</p>
+                    <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--btoc-stone)]">{journey.route}</p>
+                    <h2 className="text-xl font-semibold leading-tight text-[var(--btoc-ink)] md:text-[1.45rem]">{journey.title}</h2>
+                    <p className="mt-3 text-sm leading-6 text-[rgba(17,24,39,0.62)]">{journey.subtitle}</p>
                   </div>
-                  <div className="grid gap-4 border-y border-[var(--brand-border)] py-4 2xl:grid-cols-2">
+                  <div className="grid gap-4 border-y border-[rgba(20,33,61,0.10)] py-4 2xl:grid-cols-2">
                     <div>
-                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--brand-gray-500)]">Best for</div>
+                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--btoc-stone)]">Best for</div>
                       <div className="text-sm leading-6 text-[var(--brand-gray-700)]">{journey.bestFor.slice(0, 2).join(" / ")}</div>
                     </div>
                     <div>
-                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--brand-gray-500)]">Typical support</div>
+                      <div className="mb-2 text-xs font-bold uppercase tracking-[0.1em] text-[var(--btoc-stone)]">Typical support</div>
                       <div className="text-sm leading-6 text-[var(--brand-gray-700)]">Private guide, transfers, hotels, ticket coordination</div>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {[...journey.themes.slice(0, 3), ...journey.travelerTypes.slice(0, 2)].map((tag) => (
-                      <span key={tag} className="border border-[var(--brand-border)] px-2.5 py-1 text-xs text-[var(--brand-gray-700)]">{tag}</span>
+                      <span key={tag} className="btoc-pill">{tag}</span>
                     ))}
                   </div>
                   <div className="grid gap-3 2xl:grid-cols-2">
                     <Link
                       href={`/journeys/${journey.id}`}
                       onClick={(event) => event.stopPropagation()}
-                      className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--brand-black)] bg-[var(--brand-black)] px-4 text-sm font-semibold text-white no-underline transition-colors hover:bg-[var(--brand-gray-800)]"
+                      className="btoc-button" style={{ minHeight: 46 }}
                     >
                       View details <ArrowRight size={15} />
                     </Link>
                     <a
                       href={tripEmailHref(journey)}
                       onClick={(event) => event.stopPropagation()}
-                      className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--brand-border)] bg-white px-4 text-sm font-semibold text-[var(--brand-black)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)]"
+                      className="inline-flex h-11 items-center justify-center gap-2 border border-[rgba(20,33,61,0.10)] bg-white px-4 text-sm font-semibold text-[var(--btoc-ink)] no-underline transition-colors hover:border-[var(--brand-black)] hover:bg-[var(--brand-gray-50)]"
                     >
                       Plan this trip <Mail size={15} />
                     </a>
@@ -364,18 +376,21 @@ export default function Journeys() {
         </div>
       </section>
 
-      <DarkImageSection
-        image="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi.jpg"
-        alt="Xidi Anhui village for custom East China private trip planning."
-        eyebrow="Custom planning"
-        title="Tell us your dates, group size, comfort level, interests, and special needs."
-        imagePosition="center top"
-        actions={
-          <Link href="/contact" className="mono-button" style={{ backgroundColor: "var(--brand-white)", borderColor: "var(--brand-white)", color: "var(--brand-black)" }}>
-            Start planning <ArrowRight size={17} />
-          </Link>
-        }
-      />
+      <section className="btoc-section pt-4">
+        <div className="btoc-wrap">
+          <div className="btoc-image-frame min-h-[58vh] rounded-[34px]">
+            <img src="/programs/shanghai-hangzhou-huangshan-9-day/china-prime-dmc-shanghai-hangzhou-huangshan-9-day-xidi.jpg" alt="Xidi Anhui village for custom East China private trip planning." loading="lazy" decoding="async" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,24,39,0.78),rgba(17,24,39,0.36),rgba(17,24,39,0.08))]" />
+            <div className="absolute bottom-0 left-0 right-0 p-7 md:p-12 lg:p-16">
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.78)" }}>Custom planning</span>
+              <h2 className="max-w-4xl text-[clamp(2.3rem,5vw,5.4rem)] font-semibold leading-[0.95] text-white">Tell us your dates, comfort level, interests, and special needs.</h2>
+              <div className="btoc-action-row">
+                <Link href="/contact" className="btoc-button">Start planning <ArrowRight size={17} /></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

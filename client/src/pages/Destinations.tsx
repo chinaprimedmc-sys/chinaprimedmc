@@ -3,7 +3,6 @@ import { Link, useLocation } from "wouter";
 import { ArrowRight, Check, MapPin, MoveRight } from "lucide-react";
 import { CoverageMap } from "@/components/CoverageMap";
 import { coverageRegions } from "@/lib/coverageData";
-import MediaHero from "@/components/MediaHero";
 import DarkImageSection from "@/components/DarkImageSection";
 import { pageHeroImages } from "@/lib/heroImages";
 
@@ -155,21 +154,32 @@ export default function Destinations() {
   }
 
   return (
-    <main className="mono-shell" style={{ color: "var(--brand-text)", paddingTop: "72px" }}>
-      <MediaHero
-        image={pageHeroImages.coverage}
-        alt="Yangtze River route representing nationwide private China trip coverage."
-        eyebrow="China coverage"
-        title="Where your private China trip can go."
-        body="From first-tier gateways to remote cultural regions, China Prime DMC helps travelers understand which cities, landscapes, heritage sites, and specialist regions fit their dates, pace, interests, and comfort level."
-        stats={coverageStats}
-      />
+    <main className="btoc-shell" style={{ paddingTop: "72px" }}>
+      <section className="btoc-hero min-h-[78svh]">
+        <div className="btoc-hero-media">
+          <img src={pageHeroImages.coverage} alt="Yangtze River route representing nationwide private China trip coverage." loading="eager" decoding="async" fetchPriority="high" />
+        </div>
+        <div className="btoc-hero-inner btoc-wrap min-h-[78svh]">
+          <div className="btoc-hero-grid">
+            <FadeSection>
+              <span className="btoc-eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>China coverage</span>
+              <h1>Where should your China story begin?</h1>
+              <p className="btoc-lede">Explore China by operating region, gateway city, landscape, season, and travel style. The map helps turn a huge country into a route you can actually picture.</p>
+            </FadeSection>
+            <FadeSection delay={120}>
+              <div className="btoc-glass-panel"><div className="btoc-stat-grid">
+                {coverageStats.map((item) => <div key={item.label} className="btoc-stat"><strong>{item.value}</strong><span>{item.label}</span></div>)}
+              </div></div>
+            </FadeSection>
+          </div>
+        </div>
+      </section>
 
-      <section className="border-y border-[var(--brand-border)] bg-white">
-        <div className="mono-wrap grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-3">
+      <section className="btoc-section py-8">
+        <div className="btoc-wrap grid grid-cols-1 gap-4 md:grid-cols-3">
           {["Where you should go", "When the route works best", "How the trip feels on the ground"].map((item, index) => (
             <FadeSection key={item} delay={index * 70}>
-              <div className="min-h-full bg-white p-7">
+              <div className="btoc-card min-h-full p-7">
                 <div className="mb-6 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--brand-gray-400)]">Coverage question 0{index + 1}</div>
                 <h2 className="text-2xl font-semibold leading-tight text-[var(--brand-black)]">{item}</h2>
               </div>
@@ -178,14 +188,14 @@ export default function Destinations() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-gray-50)]">
-        <div className="mono-wrap">
+      <section className="btoc-section">
+        <div className="btoc-wrap">
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.55fr_1fr]">
             <div>
-              <p className="b2b-eyebrow">Regional network</p>
-              <h2 className="b2b-heading">Coverage by operating region, with cities mapped clearly.</h2>
+              <p className="btoc-eyebrow">Regional network</p>
+              <h2 className="btoc-title-small">Coverage by operating region, with cities mapped clearly.</h2>
             </div>
-            <p className="b2b-lede mt-0">
+            <p className="btoc-lede mt-0">
               Use the map to understand which gateway cities, cultural stops, natural landscapes, and specialist routes belong to each operating region before choosing your trip.
             </p>
           </FadeSection>
@@ -203,7 +213,7 @@ export default function Destinations() {
             />
           </FadeSection>
 
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
             {regionClusters.map((cluster, index) => (
               <FadeSection key={cluster.region} delay={(index % 6) * 45}>
                 <article
@@ -217,9 +227,9 @@ export default function Destinations() {
                       handleRegionClick(coverageRegions[index].id);
                     }
                   }}
-                  className="group grid min-h-full cursor-pointer grid-rows-[auto_1fr] overflow-hidden bg-white text-[var(--brand-black)] transition-colors hover:bg-[var(--brand-gray-50)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-black)]"
+                  className="btoc-trip-card group grid-rows-[auto_1fr] text-[var(--btoc-ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--btoc-gold)]"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-[var(--brand-black)]">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[var(--btoc-ink)]">
                     <img
                       src={cluster.image}
                       alt={cluster.imageAlt}
@@ -229,7 +239,7 @@ export default function Destinations() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/18 to-transparent" />
                     <div className="absolute left-5 right-5 top-5 flex items-start justify-between gap-4">
-                      <span className="bg-white px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--brand-black)]">{cluster.signal}</span>
+                      <span className="btoc-badge">{cluster.signal}</span>
                       <span className="flex h-9 w-9 items-center justify-center border border-white/45 bg-black/35 text-white backdrop-blur-sm">
                         <MapPin size={17} />
                       </span>
@@ -244,7 +254,7 @@ export default function Destinations() {
                     <p className="line-clamp-[7] text-sm leading-7 text-[var(--brand-gray-700)]">{cluster.positioning}</p>
                     <div className="mt-6 flex flex-wrap gap-2">
                       {cluster.highlights.map((item) => (
-                        <span key={item} className="border border-[var(--brand-border)] px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--brand-gray-600)]">
+                        <span key={item} className="btoc-pill">
                           {item}
                         </span>
                       ))}
@@ -257,7 +267,7 @@ export default function Destinations() {
                       <Link
                         href={cluster.link}
                         onClick={(event) => event.stopPropagation()}
-                        className="mono-button w-full md:hidden"
+                        className="btoc-button w-full md:hidden"
                       >
                         Open regional coverage <ArrowRight size={15} />
                       </Link>
@@ -271,31 +281,31 @@ export default function Destinations() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-white)]">
-        <div className="mono-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.42fr_1fr]">
+      <section className="btoc-section bg-white/30">
+        <div className="btoc-wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.42fr_1fr]">
           <FadeSection>
-            <p className="b2b-eyebrow">Trip fit</p>
-            <h2 className="b2b-heading">Which regions make sense for which travelers?</h2>
-            <p className="b2b-body mt-6">
+            <p className="btoc-eyebrow">Trip fit</p>
+            <h2 className="btoc-title-small">Which regions make sense for which travelers?</h2>
+            <p className="btoc-lede mt-6">
               The right China route depends on travel style, budget level, pacing, season, mobility, dietary needs, and how much time you want to spend in transit.
             </p>
           </FadeSection>
 
           <FadeSection delay={100}>
-            <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               {fitMatrix.map((row) => (
-                <article key={row.segment} className="visual-card group">
-                  <div className="visual-card-image">
+                <article key={row.segment} className="btoc-card group overflow-hidden">
+                  <div className="btoc-image-frame aspect-[16/10] rounded-none">
                     <img src={row.image} alt={`${row.segment} China coverage planning.`} loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/8 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="text-2xl font-semibold leading-tight text-white">{row.segment}</h3>
                     </div>
                   </div>
-                  <div className="visual-card-caption">
-                    <div className="mono-index mb-3">Best regions</div>
-                    <p className="text-base font-semibold leading-7 text-[var(--brand-black)]">{row.bestRegions}</p>
-                    <p className="mt-3 text-sm leading-6 text-[var(--brand-gray-700)]">{row.why}</p>
+                  <div className="p-6 md:p-7">
+                    <div className="btoc-caption mb-3">Best regions</div>
+                    <p className="text-base font-semibold leading-7 text-[var(--btoc-ink)]">{row.bestRegions}</p>
+                    <p className="mt-3 text-sm leading-6 text-[rgba(17,24,39,0.68)]">{row.why}</p>
                   </div>
                 </article>
               ))}
@@ -323,31 +333,31 @@ export default function Destinations() {
           </FadeSection>
       </DarkImageSection>
 
-      <section className="mono-section bg-[var(--brand-gray-50)]">
-        <div className="mono-wrap">
+      <section className="btoc-section">
+        <div className="btoc-wrap">
           <FadeSection className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.58fr_1fr]">
             <div>
-        <p className="b2b-eyebrow">Route architecture</p>
-        <h2 className="b2b-heading">Multi-city China trips that are easy to understand before you go.</h2>
+        <p className="btoc-eyebrow">Route architecture</p>
+        <h2 className="btoc-title-small">Multi-city China trips that are easy to understand before you go.</h2>
             </div>
-            <p className="b2b-lede mt-0">
+            <p className="btoc-lede mt-0">
               Most travelers do not need one isolated city. They need a route that connects clearly, moves comfortably, and gives each destination enough time to matter.
             </p>
           </FadeSection>
 
-          <div className="grid grid-cols-1 gap-px bg-[var(--brand-border)] lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
             {routeExamples.map((route, index) => (
               <FadeSection key={route.title} delay={index * 55}>
-                <article className="visual-card group">
-                  <div className="visual-card-image">
+                <article className="btoc-card group overflow-hidden">
+                  <div className="btoc-image-frame aspect-[16/10] rounded-none">
                     <img src={route.image} alt={route.alt} loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/10 to-transparent" />
-                    <div className="absolute left-4 top-4 bg-white px-3 py-2 text-xs font-bold text-[var(--brand-black)]">
+                    <div className="btoc-badge absolute left-4 top-4">
                       {String(index + 1).padStart(2, "0")}
                     </div>
                   </div>
-                  <div className="visual-card-caption">
-                    <h3 className="text-2xl font-semibold leading-tight text-[var(--brand-black)]">{route.title}</h3>
+                  <div className="p-6 md:p-7">
+                    <h3 className="text-2xl font-semibold leading-tight text-[var(--btoc-ink)]">{route.title}</h3>
                     <div className="my-5 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase leading-6 tracking-[0.08em] text-[var(--brand-gray-500)]">
                     {route.path.split(" -> ").map((stop, stopIndex, stops) => (
                       <span key={stop} className="inline-flex min-w-0 items-center gap-2 sm:gap-3">
@@ -356,7 +366,7 @@ export default function Destinations() {
                       </span>
                     ))}
                     </div>
-                    <p className="text-sm leading-6 text-[var(--brand-gray-700)]">{route.note}</p>
+                    <p className="text-sm leading-6 text-[rgba(17,24,39,0.68)]">{route.note}</p>
                   </div>
                 </article>
               </FadeSection>
@@ -365,16 +375,16 @@ export default function Destinations() {
         </div>
       </section>
 
-      <section className="mono-section bg-[var(--brand-white)]">
-        <div className="mono-wrap grid grid-cols-1 items-end gap-10 border-y border-[var(--brand-border)] py-12 md:grid-cols-[1fr_auto]">
+      <section className="btoc-section bg-white/30">
+        <div className="btoc-wrap grid grid-cols-1 items-end gap-10 rounded-[34px] bg-white/70 p-8 shadow-[var(--btoc-shadow)] md:grid-cols-[1fr_auto] md:p-12">
           <FadeSection>
-            <p className="b2b-eyebrow">Trip brief</p>
-            <h2 className="max-w-4xl text-4xl font-semibold leading-tight text-[var(--brand-black)] md:text-6xl">
+            <p className="btoc-eyebrow">Trip brief</p>
+            <h2 className="max-w-4xl text-4xl font-semibold leading-tight text-[var(--btoc-ink)] md:text-6xl">
               Send us your dates, group size, and dream regions. We will shape the China route.
             </h2>
           </FadeSection>
           <FadeSection delay={100}>
-            <Link href="/contact" className="mono-button">
+            <Link href="/contact" className="btoc-button">
               Request route advice <ArrowRight size={16} />
             </Link>
           </FadeSection>
