@@ -3391,6 +3391,46 @@ h1 {
     gap: 10px;
   }
 
+  .trip-explorer,
+  .guide-intro,
+  .related-guides,
+  .industry-events {
+    padding-bottom: 86px;
+  }
+
+  .trip-filter-panel {
+    border-radius: 22px;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 14px;
+  }
+
+  .filter-group {
+    gap: 7px;
+    min-width: 0;
+  }
+
+  .filter-options {
+    flex-wrap: nowrap;
+    margin-inline: -2px;
+    overflow-x: auto;
+    padding: 2px 22px 6px 2px;
+    scroll-padding-inline: 2px;
+    scrollbar-width: none;
+  }
+
+  .filter-options::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-options button {
+    flex: 0 0 auto;
+  }
+
+  .trip-result-count {
+    margin: 12px 0 14px;
+  }
+
   .hero-proof {
     border-radius: 26px;
     bottom: auto;
@@ -6786,5 +6826,620 @@ h1 {
     left: 10px;
     position: absolute;
     right: 10px;
+  }
+}
+
+/* Mobile compact system: preserve the homepage hero, tighten every other page for faster scanning. */
+@media (max-width: 680px) {
+  html {
+    font-size: 13.5px;
+  }
+
+  body {
+    font-size: 13.5px;
+  }
+
+  main > section:not(.hero):not(.page-hero):not(.destination-hero):not(.tour-detail-hero):not(.guide-article-hero):not(.industry-event-hero) {
+    padding-block: 42px;
+    padding-inline: 14px;
+  }
+
+  .page-hero,
+  .destination-hero,
+  .tour-detail-hero,
+  .guide-article-hero,
+  .industry-event-hero {
+    min-height: 56svh;
+  }
+
+  .page-hero-copy,
+  .destination-hero-copy,
+  .tour-detail-hero-copy,
+  .guide-article-hero-copy,
+  .industry-event-hero-copy {
+    gap: 9px;
+    padding: 92px 16px 34px;
+  }
+
+  .page-hero-copy h1,
+  .destination-hero-copy h1,
+  .tour-detail-hero-copy h1,
+  .guide-article-hero-copy h1,
+  .industry-event-hero-copy h1 {
+    font-size: clamp(1.72rem, 8.2vw, 2.62rem);
+    letter-spacing: -0.038em;
+    line-height: 1.02;
+    max-width: 13ch;
+  }
+
+  .page-hero-copy p:not(.eyebrow),
+  .destination-hero-copy > p:not(.eyebrow),
+  .tour-detail-hero-copy > p:not(.eyebrow),
+  .guide-article-hero-copy > p:not(.eyebrow),
+  .industry-event-hero-copy p:not(.eyebrow) {
+    font-size: 0.82rem;
+    line-height: 1.42;
+    max-width: 34ch;
+  }
+
+  .eyebrow,
+  .section-kicker,
+  .eyebrow.dark {
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+  }
+
+  .intro h2,
+  .section-heading h2,
+  .split-copy h2,
+  .trust h2,
+  .planner-card h2,
+  .stories-intro h2,
+  .stories-cta h2,
+  .page-intro h2,
+  .tour-filter-story h2,
+  .route-builder h2,
+  .route-builder-panel h2,
+  .comparison-band h2,
+  .destination-detail-copy h2,
+  .destination-map-panel h2,
+  .destination-sense h2,
+  .destination-fit h2,
+  .destination-cta h2,
+  .experience-manifesto h2,
+  .experience-method h2,
+  .experience-feature-copy h2,
+  .contact-story h2,
+  .contact-aftercare h2,
+  .journey-reasons h2,
+  .visual-highlights h2,
+  .day-plan h2,
+  .travel-style-selector h2,
+  .journey-practical h2,
+  .faq-section h2,
+  .related-journeys h2,
+  .proposal-fit h2,
+  .proposal-planning h2,
+  .proposal-cta-copy h2,
+  .related-guides h2,
+  .guide-preview-copy h2,
+  .guide-intro h2,
+  .guide-feature-copy h2,
+  .guide-conversion h2,
+  .guide-article-body h2,
+  .guide-faq h2,
+  .market-proof-copy h2,
+  .event-learning-section h2,
+  .event-gallery-section h2 {
+    font-size: clamp(1.26rem, 5.8vw, 1.82rem);
+    letter-spacing: -0.034em;
+    line-height: 1.06;
+    max-width: 15ch;
+  }
+
+  .section-heading,
+  .page-intro,
+  .intro-grid,
+  .split-copy,
+  .trust-copy,
+  .destination-map-panel,
+  .destination-sense,
+  .destination-fit,
+  .experience-feature-copy,
+  .guide-preview-copy,
+  .guide-feature-copy,
+  .contact-story,
+  .contact-aftercare,
+  .market-proof-copy,
+  .event-learning-section,
+  .event-story-grid,
+  .faq-section,
+  .related-guides {
+    gap: 12px;
+  }
+
+  .section-heading p,
+  .page-intro > p,
+  .intro p,
+  .split-copy p,
+  .planner-card p,
+  .trust-grid p,
+  .comparison-grid p,
+  .destination-map-panel p:not(.eyebrow),
+  .destination-sense p,
+  .destination-fit p,
+  .experience-feature-copy p,
+  .guide-preview-copy p,
+  .guide-feature-copy p,
+  .guide-card-copy p,
+  .contact-story p,
+  .contact-aftercare p,
+  .event-story-card p,
+  .event-learning-section p,
+  .market-proof-copy p:not(.eyebrow),
+  .guide-article-body p {
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+
+  .button,
+  .button-primary,
+  .hero-glass-button,
+  .text-link,
+  .trip-text-button,
+  .event-back-link,
+  .market-proof-link {
+    font-size: 0.68rem;
+    min-height: 34px;
+    padding-inline: 12px;
+  }
+
+  .destination-grid,
+  .tour-grid,
+  .tour-grid-expanded,
+  .review-grid,
+  .review-wall,
+  .guide-grid,
+  .industry-event-grid,
+  .highlight-grid,
+  .reason-grid,
+  .practical-grid,
+  .faq-grid,
+  .planning-note-grid,
+  .related-guide-grid,
+  .comparison-grid,
+  .style-grid {
+    gap: 10px;
+  }
+
+  .destination-card,
+  .destination-card:nth-child(2),
+  .destination-card:nth-child(4),
+  .compact-destination-grid .destination-card:nth-child(n+3) {
+    border-radius: 22px;
+    min-height: 220px;
+  }
+
+  .card-copy {
+    border-radius: 15px;
+    bottom: 8px;
+    gap: 4px;
+    left: 8px;
+    padding: 9px;
+    right: 8px;
+  }
+
+  .card-copy h3 {
+    font-size: 0.94rem;
+    line-height: 1.04;
+  }
+
+  .card-copy p,
+  .card-copy span {
+    font-size: 0.56rem;
+    line-height: 1.28;
+  }
+
+  .tour-card,
+  .review-card,
+  .experience-card,
+  .guide-card,
+  .related-guide-card,
+  .highlight-card,
+  .day-card,
+  .style-card,
+  .planner-card,
+  .destination-detail-card,
+  .quick-fact,
+  .reason-grid article,
+  .practical-grid article,
+  .faq-grid article,
+  .planning-note-grid article,
+  .event-story-card,
+  .event-learning-list article,
+  .market-proof-grid article,
+  .selected-brief-card {
+    border-radius: 18px;
+  }
+
+  .tour-body,
+  .tour-grid-expanded .tour-card .tour-body,
+  .review-card,
+  .experience-card,
+  .guide-card-copy,
+  .related-guide-card,
+  .highlight-card div:not(.highlight-media),
+  .day-card,
+  .style-card,
+  .planner-card,
+  .destination-detail-copy,
+  .quick-fact,
+  .reason-grid article,
+  .practical-grid article,
+  .faq-grid article,
+  .planning-note-grid article,
+  .event-story-card,
+  .event-learning-list article,
+  .market-proof-grid article,
+  .selected-brief-card {
+    gap: 6px;
+    padding: 11px;
+  }
+
+  .tour-body h3,
+  .tour-grid-expanded .tour-card h3,
+  .review-card h3,
+  .experience-card h3,
+  .guide-card-copy h3,
+  .related-guide-card h3,
+  .highlight-card h3,
+  .day-card h3,
+  .style-card h3,
+  .planner-card h2,
+  .destination-detail-copy h2,
+  .event-story-card h2,
+  .event-learning-list strong,
+  .market-proof-grid strong {
+    font-size: clamp(0.94rem, 4.3vw, 1.16rem);
+    line-height: 1.1;
+  }
+
+  .tour-body p,
+  .tour-grid-expanded .tour-card .tour-body > p,
+  .review-card p,
+  .experience-card p,
+  .guide-card-copy p,
+  .related-guide-card p,
+  .highlight-card p,
+  .day-card p,
+  .style-card p,
+  .reason-grid p,
+  .practical-grid p,
+  .faq-grid p,
+  .planning-note-grid p,
+  .market-proof-grid span {
+    font-size: 0.74rem;
+    line-height: 1.36;
+  }
+
+  .tour-grid-expanded .tour-card .tour-body > p,
+  .guide-card-copy p,
+  .related-guide-card p,
+  .review-card blockquote,
+  .experience-card p,
+  .highlight-card p,
+  .day-card p,
+  .style-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .tour-grid-expanded .tour-card .tour-body > p,
+  .guide-card-copy p,
+  .related-guide-card p {
+    -webkit-line-clamp: 2;
+  }
+
+  .review-card blockquote {
+    font-size: 0.92rem;
+    letter-spacing: -0.02em;
+    line-height: 1.28;
+  }
+
+  .review-card {
+    gap: 8px;
+    min-height: 0;
+  }
+
+  .tour-media,
+  .tour-grid-expanded .tour-media,
+  .guide-card-media,
+  .related-guide-card .guide-card-media,
+  .highlight-media,
+  .event-gallery-grid figure,
+  .industry-event-media {
+    aspect-ratio: 16 / 7.4;
+    border-radius: 16px;
+  }
+
+  .tour-grid-expanded .tour-media,
+  .guide-card-media,
+  .industry-event-media {
+    aspect-ratio: 16 / 6.2;
+  }
+
+  .tour-grid-expanded .tour-card,
+  .guide-card,
+  .industry-event-card {
+    grid-template-rows: auto auto;
+  }
+
+  .info-strip.slim {
+    border-radius: 12px;
+    gap: 2px;
+    padding: 7px 8px;
+  }
+
+  .info-strip.slim span {
+    font-size: 0.5rem;
+  }
+
+  .info-strip.slim strong {
+    font-size: 0.66rem;
+    line-height: 1.24;
+  }
+
+  .trip-badges {
+    gap: 4px;
+  }
+
+  .trip-badges span:nth-child(n + 4) {
+    display: none;
+  }
+
+  .tour-grid-expanded .trip-text-button,
+  .guide-card .trip-text-button,
+  .related-guide-card .trip-text-button {
+    margin-top: 1px;
+  }
+
+  .experience-card {
+    grid-template-columns: 108px 1fr;
+    min-height: 0;
+  }
+
+  .experience-card .card-media,
+  .experience-card > picture {
+    min-height: 96px;
+  }
+
+  .tour-meta,
+  .trip-badges,
+  .audience-row,
+  .guide-category-row,
+  .route-choice-options,
+  .tour-hero-trust,
+  .hero-actions,
+  .footer-links {
+    gap: 6px;
+  }
+
+  .tour-meta span,
+  .trip-badges span,
+  .audience-row span,
+  .guide-category-row span,
+  .route-choice-options button,
+  .tour-hero-trust span,
+  .review-card-meta span,
+  .industry-event-card .eyebrow,
+  .event-meta-row span {
+    font-size: 0.52rem;
+    min-height: 24px;
+    padding: 4px 7px;
+  }
+
+  .destination-map-panel {
+    border-radius: 22px;
+    padding: 16px;
+  }
+
+  .destination-map {
+    aspect-ratio: 4 / 4.6;
+    border-radius: 20px;
+  }
+
+  .map-marker-rail {
+    padding-right: 136px;
+  }
+
+  .map-marker-rail button {
+    font-size: 0.64rem;
+    min-height: 30px;
+    padding-inline: 10px;
+  }
+
+  .map-preview-mobile {
+    border-radius: 18px;
+  }
+
+  .map-preview-mobile .map-preview-media {
+    aspect-ratio: 16 / 6.8;
+  }
+
+  .map-preview-copy h3 {
+    font-size: 0.98rem;
+  }
+
+  .map-preview-copy p {
+    font-size: 0.76rem;
+  }
+
+  .destination-glance {
+    gap: 8px;
+  }
+
+  .destination-glance article {
+    min-height: 94px;
+    padding: 12px;
+  }
+
+  .quick-facts {
+    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 14px;
+  }
+
+  .quick-fact strong {
+    font-size: 0.9rem;
+  }
+
+  .quick-fact span {
+    font-size: 0.54rem;
+  }
+
+  .contact-shell,
+  .contact-form-card,
+  .contact-visual-mosaic,
+  .route-builder-panel {
+    border-radius: 20px;
+  }
+
+  .contact-form-card,
+  .route-builder-panel {
+    padding: 14px;
+  }
+
+  .contact-form-card input,
+  .contact-form-card textarea,
+  .contact-form-card select {
+    font-size: 0.78rem;
+    min-height: 38px;
+    padding: 9px 11px;
+  }
+
+  .contact-dock-trigger {
+    min-height: 34px;
+    padding-inline: 9px;
+  }
+
+  .contact-dock-trigger span {
+    font-size: 0.6rem;
+  }
+
+  .contact-dock-trigger-icon {
+    height: 18px;
+    width: 18px;
+  }
+}
+
+@media (max-width: 390px) {
+  main > section:not(.hero):not(.page-hero):not(.destination-hero):not(.tour-detail-hero):not(.guide-article-hero):not(.industry-event-hero) {
+    padding-block: 36px;
+    padding-inline: 12px;
+  }
+
+  .page-hero-copy,
+  .destination-hero-copy,
+  .tour-detail-hero-copy,
+  .guide-article-hero-copy,
+  .industry-event-hero-copy {
+    padding-inline: 14px;
+  }
+
+  .destination-card,
+  .destination-card:nth-child(2),
+  .destination-card:nth-child(4),
+  .compact-destination-grid .destination-card:nth-child(n+3) {
+    min-height: 204px;
+  }
+}
+
+/* Mobile list density: route, guide, and event cards become compact image-led rows. */
+@media (max-width: 680px) {
+  .tour-grid-expanded .tour-card.trip-card,
+  .guide-grid .guide-card,
+  .industry-event-grid .industry-event-card,
+  .related-guide-grid .related-guide-card {
+    align-items: stretch;
+    display: grid;
+    grid-template-columns: 116px minmax(0, 1fr);
+    grid-template-rows: auto;
+    min-height: 0;
+  }
+
+  .tour-grid-expanded .tour-card.trip-card .tour-media,
+  .guide-grid .guide-card .guide-card-media,
+  .industry-event-grid .industry-event-card .industry-event-media,
+  .related-guide-grid .related-guide-card .guide-card-media {
+    aspect-ratio: auto;
+    border-radius: 16px 0 0 16px;
+    height: 100%;
+    min-height: 164px;
+  }
+
+  .tour-grid-expanded .tour-card.trip-card .tour-body,
+  .guide-grid .guide-card .guide-card-copy,
+  .industry-event-grid .industry-event-card .industry-event-copy,
+  .related-guide-grid .related-guide-card {
+    align-content: start;
+    min-width: 0;
+    padding: 10px;
+  }
+
+  .tour-grid-expanded .tour-card.trip-card h3,
+  .guide-grid .guide-card h3,
+  .industry-event-grid .industry-event-card h3,
+  .related-guide-grid .related-guide-card h3 {
+    font-size: clamp(0.92rem, 4vw, 1.08rem);
+    line-height: 1.08;
+  }
+
+  .tour-grid-expanded .tour-card.trip-card .tour-body > p,
+  .guide-grid .guide-card p,
+  .industry-event-grid .industry-event-card p,
+  .related-guide-grid .related-guide-card p {
+    font-size: 0.7rem;
+    line-height: 1.32;
+    -webkit-line-clamp: 2;
+  }
+
+  .tour-grid-expanded .tour-card.trip-card .info-strip.slim {
+    display: none;
+  }
+
+  .tour-grid-expanded .tour-card.trip-card .tour-meta {
+    gap: 4px;
+  }
+
+  .tour-grid-expanded .tour-card.trip-card .trip-badges span:nth-child(n + 3) {
+    display: none;
+  }
+
+  .tour-grid-expanded .tour-card.trip-card .trip-text-button,
+  .guide-grid .guide-card .trip-text-button,
+  .related-guide-grid .related-guide-card .trip-text-button {
+    align-self: end;
+    font-size: 0.58rem;
+    min-height: 26px;
+    padding-inline: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .tour-grid-expanded .tour-card.trip-card,
+  .guide-grid .guide-card,
+  .industry-event-grid .industry-event-card,
+  .related-guide-grid .related-guide-card {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .tour-grid-expanded .tour-card.trip-card .tour-media,
+  .guide-grid .guide-card .guide-card-media,
+  .industry-event-grid .industry-event-card .industry-event-media,
+  .related-guide-grid .related-guide-card .guide-card-media {
+    min-height: 150px;
   }
 }
