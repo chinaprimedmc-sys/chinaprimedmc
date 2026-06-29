@@ -279,6 +279,14 @@ const visuals = {
     "china-prime-dmc-southwest-china-yangtze-14-day-lujiazui",
     "Lujiazui skyline in Shanghai",
   ),
+  shanghaiPudong: {
+    avif: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1920.avif",
+    webp: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1920.webp",
+    avifSet: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-960.avif 960w, /editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1400.avif 1400w, /editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1920.avif 1920w",
+    webpSet: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-960.webp 960w, /editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1400.webp 1400w, /editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1920.webp 1920w",
+    jpg: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline.jpg",
+    alt: "Immersive Shanghai Pudong skyline for a private China journey finale",
+  },
   namtso: programImage(
     "tibet-lhasa-nyingchi-8-day",
     "china-prime-dmc-tibet-lhasa-nyingchi-8-day-namtso",
@@ -713,7 +721,7 @@ const destinations: Destination[] = [
     bestTime: "March to May and September to November. Winter is crisp and often excellent for photography in Beijing.",
     highlights: ["Great Wall", "Forbidden City", "Terracotta Warriors", "Shanghai skyline"],
     travelFor: ["First-time visitors", "Families", "History lovers", "Multi-generation trips"],
-    image: visuals.greatWall,
+    image: visuals.shanghaiPudong,
     region: "North, Central and East China",
     mapLabel: "Classic triangle",
     mapPosition: { x: 62, y: 44 },
