@@ -105,7 +105,7 @@ type Review = {
   tags: string[];
 };
 
-type PageKey = "home" | "destinations" | "experiences" | "tours" | "guide" | "stories" | "contact";
+type PageKey = "home" | "destinations" | "experiences" | "tours" | "guide" | "stories" | "events" | "contact";
 
 type LocationState = {
   page: PageKey;
@@ -133,6 +133,7 @@ const routes: Record<PageKey, string> = {
   tours: "/private-china-tours",
   guide: "/china-travel-guide",
   stories: "/china-tour-reviews",
+  events: "/industry-events",
   contact: "/contact",
 };
 
@@ -371,6 +372,7 @@ const heroImage: ImageAsset = {
 
 const industryEvents = [
   {
+    slug: "icgte-2026-kuala-lumpur",
     title: "ICGTE Kuala Lumpur 2026",
     date: "April 21, 2026",
     location: "Kuala Lumpur, Malaysia",
@@ -378,9 +380,30 @@ const industryEvents = [
       jpg: "/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-travel-trade-buyer-meeting.jpeg",
       alt: "China Prime DMC meeting travel trade buyers at ICGTE 2026 in Kuala Lumpur",
     },
+    gallery: [
+      { jpg: "/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-booth-team-brochures.jpeg", alt: "China Prime DMC team presenting private China travel brochures at ICGTE Kuala Lumpur 2026" },
+      { jpg: "/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-muslim-travel-buyers.jpeg", alt: "Muslim travel buyers discussing China itineraries with China Prime DMC in Kuala Lumpur" },
+      { jpg: "/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-one-on-one-buyer-consultation.jpeg", alt: "One on one consultation about private China tours at ICGTE Kuala Lumpur 2026" },
+      { jpg: "/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-exhibition-backdrop.jpeg", alt: "ICGTE Kuala Lumpur 2026 exhibition backdrop for travel trade meetings" },
+    ],
     summary: "Conversations with Southeast Asian travel buyers sharpened how we explain private China journeys for families, Muslim travelers, and first-time visitors who need confidence before they book.",
+    lead: "Kuala Lumpur gave us a direct look at what regional advisors need before they can confidently recommend China: clarity, halal-aware planning, realistic pacing, and proof that the trip will feel private rather than complicated.",
+    buyerQuestions: [
+      "Can a first-time China route feel comfortable for Muslim families without limiting the experience?",
+      "How do you balance bucket-list icons with prayer time, family rhythm, and better food planning?",
+      "What makes a private China DMC different from a generic tour operator selling fixed departures?",
+    ],
+    learnings: [
+      "Trust begins before the itinerary. Advisors wanted plain-language answers about food, guides, pacing, payments, and how travelers are supported once they land.",
+      "Muslim-friendly China travel needs to be designed, not labeled. The route, hotel location, dining windows, and local guide briefing all matter.",
+      "Families respond better to routes that mix icons with soft moments: pandas, scenic rail, markets, hands-on culture, and enough space to rest.",
+    ],
+    whyMatters: "These conversations help us design China journeys that international travelers can understand quickly. The result is not more information; it is less friction, more confidence, and a private route that feels human from the first email.",
+    seoTitle: "ICGTE Kuala Lumpur 2026 | China Prime DMC Travel Trade Story",
+    metaDescription: "See how China Prime DMC connected with Southeast Asian travel buyers at ICGTE Kuala Lumpur 2026 to improve Muslim-friendly, family-friendly, private China travel planning.",
   },
   {
+    slug: "icgte-2026-singapore",
     title: "ICGTE Singapore 2026",
     date: "April 23, 2026",
     location: "Singapore",
@@ -388,7 +411,27 @@ const industryEvents = [
       jpg: "/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-one-on-one-buyer-consultation.jpeg",
       alt: "China Prime DMC one on one buyer consultation at ICGTE 2026 in Singapore",
     },
+    gallery: [
+      { jpg: "/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-official-exhibition-backdrop-team-photo.jpeg", alt: "China Prime DMC team photo at the official ICGTE Singapore 2026 exhibition backdrop" },
+      { jpg: "/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-regional-travel-buyers.jpeg", alt: "Regional travel buyers meeting China Prime DMC at ICGTE Singapore 2026" },
+      { jpg: "/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-booth-table-china-travel-brochures.jpeg", alt: "China travel brochures on the China Prime DMC booth table in Singapore" },
+      { jpg: "/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-southeast-asia-travel-partners.jpeg", alt: "Southeast Asia travel partners speaking with China Prime DMC in Singapore" },
+    ],
     summary: "Meeting regional partners in Singapore helped us translate China planning into clearer language: comfort, pacing, guide quality, food needs, and the small details that make private travel feel easy.",
+    lead: "Singapore was less about handing out brochures and more about listening closely. The strongest conversations focused on how China can feel premium, calm, and easy for travelers who may be visiting for the first time.",
+    buyerQuestions: [
+      "How do you explain China to a traveler who is excited, but worried about complexity?",
+      "Which routes work best for families, older parents, and travelers who want comfort without losing cultural depth?",
+      "How can advisors position China as a high-value private journey rather than a difficult destination?",
+    ],
+    learnings: [
+      "Advisors need routes that are easy to explain in one minute: one icon, one emotional landscape, one personal local moment.",
+      "Premium travelers care about the invisible details: where the hotel sits, how early the day starts, whether transfers feel smooth, and whether guides can adjust in real time.",
+      "The best China journeys do not feel packed. They feel edited, intentional, and supported by people who know the ground deeply.",
+    ],
+    whyMatters: "The Singapore event pushed us to make our B2C pages clearer, lighter, and more traveler-centered. Every route now has to answer the question buyers kept asking: will this feel easy enough for my client to say yes?",
+    seoTitle: "ICGTE Singapore 2026 | China Prime DMC Partner Event Story",
+    metaDescription: "Read how China Prime DMC met regional travel partners at ICGTE Singapore 2026 and refined private China travel planning for families, luxury travelers, and first-time visitors.",
   },
 ];
 
@@ -1650,6 +1693,10 @@ const pageMeta: Record<PageKey, { title: string; description: string }> = {
     title: "China Tour Reviews From Families, Couples & Private Travel Guests | China Prime",
     description: "Read private China tour reviews from families, couples, Muslim travelers, senior-friendly guests, food lovers, and first-time visitors in English, German, French, and Italian.",
   },
+  events: {
+    title: "China Prime DMC Industry Events & Travel Trade Stories",
+    description: "Follow China Prime DMC at international travel trade events and see how buyer conversations shape better private China journeys for global travelers.",
+  },
   contact: {
     title: "Plan a Private China Trip With a Local Specialist | China Prime",
     description: "Share your dates, travel style, food needs, pace, and must-see places. China Prime will turn your first ideas into a private China itinerary direction.",
@@ -1662,6 +1709,7 @@ function getPageFromPath(pathname: string): PageKey {
   if (pathname.startsWith(routes.tours)) return "tours";
   if (pathname.startsWith(routes.guide)) return "guide";
   if (pathname.startsWith(routes.stories)) return "stories";
+  if (pathname.startsWith(routes.events)) return "events";
   if (pathname.startsWith(routes.contact)) return "contact";
   return "home";
 }
@@ -1879,20 +1927,135 @@ function IndustryEventsSection() {
         <p>
           Trade shows are not decoration for us. They are where we listen to travel advisors, regional buyers, and partners who hear the real questions travelers ask before choosing China: comfort, language, food, pace, value, and trust.
         </p>
+        <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(routes.events)}>View all industry stories</button>
       </div>
       <div className="industry-event-grid" aria-label="China Prime DMC travel industry event highlights">
         {industryEvents.map((event) => (
           <article className="industry-event-card" key={event.title}>
+            <button className="industry-event-card-link" type="button" onClick={() => navigatePath(`${routes.events}/${event.slug}`)} aria-label={`Read ${event.title} story`} />
             <Picture image={event.image} className="industry-event-media" />
             <div className="industry-event-body">
               <span>{event.date} / {event.location}</span>
               <h3>{event.title}</h3>
               <p>{event.summary}</p>
+              <strong>Read the event story</strong>
             </div>
           </article>
         ))}
       </div>
     </section>
+  );
+}
+
+function IndustryEventsPage({ pathname }: { pathname: string }) {
+  const selectedSlug = pathname.replace(`${routes.events}/`, "");
+  const selectedEvent = selectedSlug && selectedSlug !== routes.events ? industryEvents.find((event) => event.slug === selectedSlug) : undefined;
+
+  if (selectedEvent) {
+    return <IndustryEventDetailPage event={selectedEvent} />;
+  }
+
+  return (
+    <main id="top">
+      <PageHero
+        eyebrow="Industry Events"
+        title="Where our China planning gets sharper."
+        copy="International travel trade conversations help us hear the real questions behind every inquiry: comfort, food, family rhythm, guide quality, and trust."
+        image={industryEvents[0].image}
+      />
+      <section className="industry-events industry-events-page" aria-labelledby="industry-events-page-title">
+        <div className="industry-events-copy">
+          <p className="eyebrow dark">Trade shows and partner conversations</p>
+          <h2 id="industry-events-page-title">The work behind better private China journeys.</h2>
+          <p>
+            These stories show how China Prime DMC listens to travel advisors, regional buyers, and partners across Asia, then turns those conversations into clearer, more comfortable journeys for international travelers.
+          </p>
+        </div>
+        <div className="industry-event-grid">
+          {industryEvents.map((event) => (
+            <article className="industry-event-card" key={event.slug}>
+              <button className="industry-event-card-link" type="button" onClick={() => navigatePath(`${routes.events}/${event.slug}`)} aria-label={`Read ${event.title} story`} />
+              <Picture image={event.image} className="industry-event-media" />
+              <div className="industry-event-body">
+                <span>{event.date} / {event.location}</span>
+                <h3>{event.title}</h3>
+                <p>{event.summary}</p>
+                <strong>Open the full story</strong>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <PlannerSection />
+    </main>
+  );
+}
+
+function IndustryEventDetailPage({ event }: { event: typeof industryEvents[number] }) {
+  return (
+    <main id="top">
+      <section className="industry-event-hero" aria-labelledby="event-title">
+        <Picture image={event.image} className="industry-event-hero-media" loading="eager" />
+        <div className="industry-event-hero-copy">
+          <button className="event-back-link" type="button" onClick={() => navigatePath(routes.events)}>Industry Events</button>
+          <p className="eyebrow">{event.date} / {event.location}</p>
+          <h1 id="event-title">{event.title}</h1>
+          <p>{event.lead}</p>
+        </div>
+      </section>
+
+      <section className="event-story-grid" aria-label={`${event.title} event story`}>
+        <article className="event-story-panel event-story-panel-large">
+          <p className="eyebrow dark">What buyers asked us</p>
+          <h2>The best questions were practical, not promotional.</h2>
+          <div className="event-question-list">
+            {event.buyerQuestions.map((question) => <p key={question}>{question}</p>)}
+          </div>
+        </article>
+        <article className="event-story-panel">
+          <p className="eyebrow dark">Why it matters</p>
+          <p>{event.whyMatters}</p>
+          <button className="button button-primary" type="button" onClick={() => navigatePath(`${routes.contact}?event=${event.slug}`)}>Talk to a China specialist</button>
+        </article>
+      </section>
+
+      <section className="event-learning-section" aria-labelledby="event-learning-title">
+        <div>
+          <p className="eyebrow dark">What we brought home</p>
+          <h2 id="event-learning-title">Small planning details decide whether China feels easy.</h2>
+        </div>
+        <div className="event-learning-list">
+          {event.learnings.map((learning, index) => (
+            <article key={learning}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <p>{learning}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="event-gallery-section" aria-labelledby="event-gallery-title">
+        <div className="event-gallery-heading">
+          <p className="eyebrow dark">On the floor</p>
+          <h2 id="event-gallery-title">A closer look at the conversations.</h2>
+        </div>
+        <div className="event-gallery-grid">
+          {event.gallery.map((image, index) => (
+            <figure key={image.jpg} className={index === 0 ? "event-gallery-feature" : undefined}>
+              <Picture image={image} className="event-gallery-image" />
+              <figcaption>{image.alt}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="event-detail-cta" aria-labelledby="event-cta-title">
+        <p className="eyebrow">Private China planning</p>
+        <h2 id="event-cta-title">Bring us the questions your travelers are already asking.</h2>
+        <p>We will turn them into a clear first route idea, with pacing, food needs, hotels, guides, and comfort handled from the beginning.</p>
+        <button className="button hero-glass-button hero-glass-primary" type="button" onClick={() => navigatePath(`${routes.contact}?event=${event.slug}`)}>Start a private China brief</button>
+      </section>
+    </main>
   );
 }
 
@@ -3331,7 +3494,7 @@ function Footer() {
         <PageLink page="tours">Private Tours</PageLink>
         <PageLink page="guide">Travel Guide</PageLink>
         <PageLink page="stories">Reviews</PageLink>
-        <a href="/#industry-events">Industry Events</a>
+        <PageLink page="events">Industry Events</PageLink>
         <PageLink page="contact">Contact</PageLink>
       </div>
     </footer>
@@ -3344,6 +3507,7 @@ export default function App() {
   const activeTour = page === "tours" ? tours.find((tour) => locationState.pathname.endsWith(`/${tour.slug}`)) : undefined;
   const activeArticle = page === "guide" ? guideArticles.find((article) => locationState.pathname.endsWith(`/${article.slug}`)) : undefined;
   const activeDestination = page === "destinations" ? destinations.find((destination) => locationState.pathname.endsWith(`/${destination.slug}`)) : undefined;
+  const activeEvent = page === "events" ? industryEvents.find((event) => locationState.pathname.endsWith(`/${event.slug}`)) : undefined;
   const meta = useMemo(() => activeTour ? {
     title: `${activeTour.title} | Private China Tour | China Prime`,
     description: activeTour.copy,
@@ -3353,7 +3517,10 @@ export default function App() {
   } : activeArticle ? {
     title: activeArticle.metaTitle,
     description: activeArticle.metaDescription,
-  } : pageMeta[page], [activeArticle, activeDestination, activeTour, page]);
+  } : activeEvent ? {
+    title: activeEvent.seoTitle,
+    description: activeEvent.metaDescription,
+  } : pageMeta[page], [activeArticle, activeDestination, activeEvent, activeTour, page]);
 
   useEffect(() => {
     document.title = meta.title;
@@ -3363,7 +3530,7 @@ export default function App() {
   return (
     <div className="site-shell">
       <Header page={page} />
-      {page === "destinations" ? <DestinationsPage pathname={locationState.pathname} /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "stories" ? <StoriesPage /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
+      {page === "destinations" ? <DestinationsPage pathname={locationState.pathname} /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "stories" ? <StoriesPage /> : page === "events" ? <IndustryEventsPage pathname={locationState.pathname} /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
       <Footer />
       {page !== "contact" ? <ContactDock /> : null}
     </div>
