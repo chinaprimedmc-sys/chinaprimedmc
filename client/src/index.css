@@ -458,11 +458,14 @@ h1 {
 
 .tour-card {
   border-radius: var(--radius-xl);
+  display: grid;
+  grid-template-rows: auto 1fr;
   overflow: hidden;
 }
 
 .tour-media {
   aspect-ratio: 16 / 11;
+  display: block;
   overflow: hidden;
 }
 
@@ -2164,7 +2167,7 @@ h1 {
   inset: 0;
   padding: 0;
   position: absolute;
-  z-index: 2;
+  z-index: 4;
 }
 
 .trip-card .tour-body,
@@ -2538,10 +2541,15 @@ h1 {
 /* Trips polish: keep interactive elements above the full-card hit area and compress mobile pricing cards. */
 .trip-card .tour-body button,
 .trip-card .tour-body a {
-  z-index: 4;
+  position: relative;
+  z-index: 5;
 }
 
 @media (max-width: 680px) {
+  .tour-grid-expanded .tour-card .tour-meta span:nth-child(2) {
+    display: inline-flex;
+  }
+
   .style-card dl {
     gap: 9px;
   }
