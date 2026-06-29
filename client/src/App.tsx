@@ -2001,13 +2001,14 @@ function HomePage() {
       <section className="intro scene-bright" aria-labelledby="intro-title">
         <div className="section-kicker">Dream first. Details second.</div>
         <div className="intro-grid">
-          <h2 id="intro-title">The right China trip does not feel like a checklist.</h2>
+          <h2 id="intro-title">The right China trip feels edited, not packed.</h2>
           <p>
-            It feels like watching your children meet a panda in Chengdu. Like stepping onto the Great Wall before the day gets loud. Like eating noodles in a city you did not expect to love. We handle the complexity so the journey can stay human.
+            Start with the kind of traveler you are. We will help you choose the icons, landscapes, food, hotels, and daily rhythm that make China feel possible.
           </p>
         </div>
       </section>
 
+      <JourneyPathfinder />
       <MarketProofStrip />
 
       <section className="destinations" id="destinations" aria-labelledby="destinations-title">
@@ -2062,6 +2063,54 @@ function HomePage() {
       <ReviewSection />
       <PlannerSection />
     </main>
+  );
+}
+
+function JourneyPathfinder() {
+  const paths = [
+    {
+      title: "First time in China",
+      copy: "You want the icons, but not a rushed checklist.",
+      image: visuals.forbiddenCity,
+      action: "See first-trip routes",
+      href: `${routes.tours}?audience=first-time`,
+    },
+    {
+      title: "Family or older parents",
+      copy: "You need comfort, flexibility, and days that do not exhaust everyone.",
+      image: visuals.panda,
+      action: "Plan an easier pace",
+      href: `${routes.contact}?type=family`,
+    },
+    {
+      title: "Food, culture, or scenery",
+      copy: "You want China to feel vivid, local, and worth the distance.",
+      image: visuals.liRiver,
+      action: "Choose a travel style",
+      href: routes.experiences,
+    },
+  ];
+
+  return (
+    <section className="journey-pathfinder" aria-labelledby="journey-pathfinder-title">
+      <div className="section-heading narrow">
+        <p className="eyebrow dark">Start with your question</p>
+        <h2 id="journey-pathfinder-title">What kind of China trip are you really trying to plan?</h2>
+        <p>Most travelers do not need more options. They need a clearer first direction.</p>
+      </div>
+      <div className="pathfinder-grid">
+        {paths.map((path) => (
+          <article className="pathfinder-card" key={path.title}>
+            <Picture image={path.image} className="pathfinder-media" />
+            <div className="pathfinder-copy">
+              <h3>{path.title}</h3>
+              <p>{path.copy}</p>
+              <a className="pathfinder-link" href={path.href}>{path.action}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -2585,17 +2634,19 @@ function ToursPage({ pathname }: { pathname: string }) {
     <main id="top">
       <PageHero
         eyebrow="Private China tours"
-        title="Begin with an idea. We will make it feel like your trip."
-        copy="Every route below is a starting point, not a package. We adjust pace, hotels, food needs, guides, transport, and daily rhythm around the people who are actually traveling."
+        title="Choose a route by how you want China to feel."
+        copy="Every journey below is a starting point. Compare the route, pace, best-fit traveler, and budget level first; we customize the details after we understand who is traveling."
         image={visuals.huangshan}
       />
-      <section className="tour-filter-story" aria-labelledby="tour-filter-title">
-        <div>
-          <p className="eyebrow dark">Route logic</p>
-          <h2 id="tour-filter-title">B2C travelers do not need more products. They need a route they can trust.</h2>
+      <section className="tour-decision-strip" aria-labelledby="tour-decision-title">
+        <div className="tour-decision-copy">
+          <p className="eyebrow dark">How to choose</p>
+          <h2 id="tour-decision-title">Pick by traveler need, not by city count.</h2>
         </div>
-        <div className="filter-pills" aria-label="Tour styles">
-          {['First-time China', 'Family friendly', 'Muslim-friendly', 'Luxury pace', 'Food-led', 'Photography', 'Soft adventure'].map((item) => <span key={item}>{item}</span>)}
+        <div className="tour-decision-grid">
+          <article><span>01</span><strong>Who is traveling?</strong><p>Children, older parents, couples, Muslim travelers, photographers, or first-time visitors all need different rhythm.</p></article>
+          <article><span>02</span><strong>How much movement feels right?</strong><p>Some routes are city-to-city. Others slow down for landscapes, food, or hotel time.</p></article>
+          <article><span>03</span><strong>What level of comfort?</strong><p>Classic, Premium, and Signature change hotels, guide matching, dining, flexibility, and invisible support.</p></article>
         </div>
       </section>
       <RouteIdeaBuilder placement="tours" />
@@ -2897,8 +2948,8 @@ function ContactPage({ search }: { search: string }) {
             <p>Most travelers do not need a finished itinerary. We just need enough clues to suggest a first private China route that feels realistic.</p>
           </div>
 
-          <fieldset className="planner-step">
-            <legend><span>01</span>Your basic travel window</legend>
+          <fieldset className="planner-step planner-step-essential">
+            <legend><span>01</span>The essentials</legend>
             <div className="planner-two-col">
               <label>
                 <span>Your name</span>
@@ -2923,8 +2974,8 @@ function ContactPage({ search }: { search: string }) {
             </div>
           </fieldset>
 
-          <fieldset className="planner-step">
-            <legend><span>02</span>Choose the service level that feels right</legend>
+          <fieldset className="planner-step planner-step-service">
+            <legend><span>02</span>Preferred comfort level</legend>
             <div className="planner-style-grid">
               {travelStyles.map((style) => (
                 <label className={`planner-style-card ${selectedStyle?.id === style.id ? "is-selected" : ""}`} key={style.id}>
@@ -2937,8 +2988,10 @@ function ContactPage({ search }: { search: string }) {
             </div>
           </fieldset>
 
-          <fieldset className="planner-step">
-            <legend><span>03</span>What should the trip include?</legend>
+          <fieldset className="planner-step planner-step-preferences">
+            <legend><span>03</span>Trip signals</legend>
+            <p className="planner-step-hint">Choose anything that helps us understand the route. You do not need to know every city yet.</p>
+            <span className="choice-label">Travel style</span>
             <div className="choice-grid">
               {travelStyleChoices.map((style) => (
                 <label key={style} className="choice-pill">
@@ -2947,10 +3000,7 @@ function ContactPage({ search }: { search: string }) {
                 </label>
               ))}
             </div>
-          </fieldset>
-
-          <fieldset className="planner-step">
-            <legend><span>04</span>Places you are considering</legend>
+            <span className="choice-label">Places you are considering</span>
             <div className="choice-grid">
               {destinationChoices.map((destination) => (
                 <label key={destination} className="choice-pill">
@@ -2959,10 +3009,7 @@ function ContactPage({ search }: { search: string }) {
                 </label>
               ))}
             </div>
-          </fieldset>
-
-          <fieldset className="planner-step">
-            <legend><span>05</span>What do you want us to solve first?</legend>
+            <span className="choice-label">What should we solve first?</span>
             <div className="choice-grid concern-grid">
               {concernChoices.map((concern) => (
                 <label key={concern} className="choice-pill">
@@ -2971,10 +3018,7 @@ function ContactPage({ search }: { search: string }) {
                 </label>
               ))}
             </div>
-          </fieldset>
-
-          <fieldset className="planner-step">
-            <legend><span>06</span>What should this journey feel like?</legend>
+            <span className="choice-label">Desired feeling</span>
             <div className="choice-grid">
               {feelingChoices.map((feeling) => (
                 <label key={feeling} className="choice-pill">
@@ -2985,8 +3029,8 @@ function ContactPage({ search }: { search: string }) {
             </div>
           </fieldset>
 
-          <fieldset className="planner-step">
-            <legend><span>07</span>Add anything we should know</legend>
+          <fieldset className="planner-step planner-step-notes">
+            <legend><span>04</span>Anything we should know?</legend>
             <label className="full-field">
               <span>Use a quick brief starter</span>
               <select name="Brief starter" defaultValue="">
@@ -3068,12 +3112,19 @@ function TripExplorer() {
                 <span>{tour.priceFrom}</span>
               </div>
               <h3>{tour.title}</h3>
-              <p>{tour.copy}</p>
+              <p>{tour.heroPromise || tour.copy}</p>
               <div className="info-strip slim"><span>Route</span><strong>{tour.places}</strong></div>
+              <div className="info-strip slim decision-strip"><span>Pace</span><strong>{tour.pace}</strong></div>
+              <div className="card-highlights" aria-label={`${tour.title} highlights`}>
+                {tour.coreReasons.slice(0, 3).map((item) => <span key={item}>{item}</span>)}
+              </div>
               <div className="trip-badges">
                 {[...tour.audiences.slice(0, 2), ...tour.themes.slice(0, 2)].map((item) => <span key={item}>{item}</span>)}
               </div>
-              <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(`${routes.tours}/${tour.slug}`)}>View journey details</button>
+              <div className="trip-card-actions">
+                <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(`${routes.tours}/${tour.slug}`)}>View journey</button>
+                <button className="text-link trip-text-button trip-plan-button" type="button" onClick={() => navigatePath(contactPathForTour(tour, travelStyles[1]))}>Build around me</button>
+              </div>
             </div>
           </article>
         ))}
