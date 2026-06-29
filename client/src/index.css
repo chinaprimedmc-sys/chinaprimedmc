@@ -150,15 +150,15 @@ img {
 }
 
 .hero-media img {
-  filter: saturate(1.08) contrast(1.02) brightness(1.12);
-  object-position: 50% 44%;
+  filter: saturate(1.12) contrast(1.02) brightness(1.1);
+  object-position: 50% 52%;
   transform: scale(1.035);
 }
 
 .hero-overlay {
   background:
-    radial-gradient(circle at 50% 34%, rgba(255, 255, 255, 0.08) 0%, rgba(14, 18, 16, 0.04) 30%, rgba(14, 18, 16, 0.34) 82%),
-    linear-gradient(180deg, rgba(9, 12, 11, 0.2) 0%, rgba(9, 12, 11, 0.04) 36%, rgba(9, 12, 11, 0.56) 100%);
+    radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.1) 0%, rgba(14, 18, 16, 0.04) 32%, rgba(14, 18, 16, 0.28) 82%),
+    linear-gradient(180deg, rgba(9, 12, 11, 0.14) 0%, rgba(9, 12, 11, 0.03) 36%, rgba(9, 12, 11, 0.58) 100%);
   z-index: 1;
 }
 
@@ -2935,8 +2935,8 @@ h1 {
 
 .hero-overlay {
   background:
-    radial-gradient(circle at 50% 34%, rgba(255, 255, 255, 0.1) 0%, rgba(10, 13, 12, 0.04) 30%, rgba(10, 13, 12, 0.32) 82%),
-    linear-gradient(180deg, rgba(10, 13, 12, 0.2) 0%, rgba(10, 13, 12, 0.04) 40%, rgba(10, 13, 12, 0.56) 100%);
+    radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.1) 0%, rgba(10, 13, 12, 0.04) 32%, rgba(10, 13, 12, 0.28) 82%),
+    linear-gradient(180deg, rgba(10, 13, 12, 0.14) 0%, rgba(10, 13, 12, 0.03) 40%, rgba(10, 13, 12, 0.58) 100%);
 }
 
 .page-hero-overlay {
@@ -3052,23 +3052,23 @@ h1 {
   }
 
   .hero-media img {
-    filter: saturate(1.08) contrast(1.02) brightness(1.16);
-    object-position: 52% 32%;
+    filter: saturate(1.12) contrast(1.02) brightness(1.16);
+    object-position: 50% 38%;
     transform: scale(1.03);
   }
 
   .hero-overlay {
     background:
-      linear-gradient(180deg, rgba(8, 10, 9, 0.28) 0%, rgba(8, 10, 9, 0.04) 28%, rgba(8, 10, 9, 0.16) 54%, rgba(8, 10, 9, 0.72) 100%),
-      radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.12), rgba(8, 10, 9, 0.2) 72%);
+      linear-gradient(180deg, rgba(8, 10, 9, 0.16) 0%, rgba(8, 10, 9, 0.02) 26%, rgba(8, 10, 9, 0.12) 54%, rgba(8, 10, 9, 0.68) 100%),
+      radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.14), rgba(8, 10, 9, 0.18) 74%);
   }
 
   .hero-content {
-    align-content: end;
+    align-content: center;
     gap: 10px;
     justify-items: center;
     min-height: 100svh;
-    padding: 112px 18px 88px;
+    padding: 128px 18px 116px;
     text-align: center;
   }
 

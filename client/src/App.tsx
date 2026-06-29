@@ -361,12 +361,12 @@ const visuals = {
 };
 
 const heroImage: ImageAsset = {
-  avif: "/journey-covers/golden-triangle-forbidden-city-beijing-1920.avif",
-  webp: "/journey-covers/golden-triangle-forbidden-city-beijing-1920.webp",
-  avifSet: "/journey-covers/golden-triangle-forbidden-city-beijing-960.avif 960w, /journey-covers/golden-triangle-forbidden-city-beijing-1400.avif 1400w, /journey-covers/golden-triangle-forbidden-city-beijing-1920.avif 1920w",
-  webpSet: "/journey-covers/golden-triangle-forbidden-city-beijing-960.webp 960w, /journey-covers/golden-triangle-forbidden-city-beijing-1400.webp 1400w, /journey-covers/golden-triangle-forbidden-city-beijing-1920.webp 1920w",
-  jpg: "/journey-covers/golden-triangle-forbidden-city-beijing.jpg",
-  alt: "Forbidden City rooftops in bright daylight from Jingshan Hill in Beijing",
+  avif: "/journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake-1920.avif",
+  webp: "/journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake-1920.webp",
+  avifSet: "/journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake-960.avif 960w, /journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake-1400.avif 1400w, /journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake-1920.avif 1920w",
+  webpSet: "/journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake-960.webp 960w, /journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake-1400.webp 1400w, /journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake-1920.webp 1920w",
+  jpg: "/journey-covers/easy-pace-china-jiuzhaigou-five-flower-lake.jpg",
+  alt: "Jiuzhaigou Five Flower Lake with clear blue water and mountain forest in Sichuan China",
 };
 
 const travelStyles: TravelStyle[] = [
