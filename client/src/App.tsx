@@ -845,6 +845,17 @@ const journeyCovers = {
   },
 };
 
+const editorialVisuals = {
+  plannerCta: {
+    avif: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1920.avif",
+    webp: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1920.webp",
+    avifSet: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-960.avif 960w, /editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1400.avif 1400w, /editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1920.avif 1920w",
+    webpSet: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-960.webp 960w, /editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1400.webp 1400w, /editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline-1920.webp 1920w",
+    jpg: "/editorial/china-prime-dmc-plan-private-china-trip-shanghai-pudong-skyline.jpg",
+    alt: "Shanghai Pudong skyline as a modern landmark for planning a private China trip",
+  },
+};
+
 const tours: Tour[] = [
   makeTour({ title: "First China, beautifully paced", slug: "first-china-family-private-tour", days: 10, places: ["Beijing", "Xi'an", "Chengdu", "Shanghai"], fit: "Families / Couples / First-time visitors", pace: "Balanced, private, low-friction", audiences: ["First-time visitors", "Families", "Couples"], themes: ["Classic China", "Family friendly", "Culture"], image: journeyCovers.firstChinaFamilyPrivateTour, highlightImages: [visuals.greatWall, visuals.terracotta, visuals.panda], copy: "The essential China route, shaped around comfort: the Great Wall, imperial Beijing, the Terracotta Warriors, pandas, and a modern Shanghai finale without forcing every day to feel packed." }),
   makeTour({ title: "A Family China Journey With Pandas and River Light", slug: "family-china-beijing-xian-guilin-shanghai", days: 12, places: ["Beijing", "Xi'an", "Guilin", "Yangshuo", "Shanghai"], fit: "Families / Multi-generation", pace: "Balanced with child-friendly breathing room", audiences: ["Families", "Children", "Older parents"], themes: ["Family friendly", "Nature", "Classic China"], image: journeyCovers.familyChinaBeijingXianGuilinShanghai, highlightImages: [visuals.panda, visuals.liRiver, visuals.greatWall], copy: "A family-first route that mixes China icons with pandas, karst mountains, easy countryside time, and private support for children or grandparents." }),
@@ -1700,7 +1711,7 @@ function ReviewSection() {
 function PlannerSection() {
   return (
     <section className="planner" aria-labelledby="planner-title">
-      <Picture image={visuals.yangtzeGorge} className="planner-media" />
+      <Picture image={editorialVisuals.plannerCta} className="planner-media" />
       <div className="planner-card">
         <p className="eyebrow dark">Plan with less friction</p>
         <h2 id="planner-title">Tell us what kind of China you want to feel.</h2>
