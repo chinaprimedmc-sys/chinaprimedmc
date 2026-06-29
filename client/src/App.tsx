@@ -19,6 +19,20 @@ type Destination = {
   highlights: string[];
   travelFor: string[];
   image: ImageAsset;
+  region: string;
+  mapLabel: string;
+  mapPosition: { x: number; y: number };
+  where: string;
+  suggestedDays: string;
+  gateway: string;
+  routeLogic: string;
+  idealFor: string[];
+  routePairings: string[];
+  signatureMoments: { title: string; copy: string; image: ImageAsset }[];
+  faqs: { q: string; a: string }[];
+  relatedTourSlugs: string[];
+  seoTitle: string;
+  metaDescription: string;
 };
 
 type Experience = {
@@ -147,6 +161,16 @@ const visuals = {
     "china-prime-dmc-zhangjiajie-fenghuang-5-day-zhangjiajie-national-forest-park",
     "Misty sandstone peaks in Zhangjiajie National Forest Park, China",
   ),
+  fenghuang: jpgImage(
+    "zhangjiajie-fenghuang-5-day",
+    "china-prime-dmc-zhangjiajie-fenghuang-5-day-fenghuang-county",
+    "Fenghuang ancient town riverside lights in Hunan",
+  ),
+  wulingyuan: jpgImage(
+    "zhangjiajie-fenghuang-5-day",
+    "china-prime-dmc-zhangjiajie-fenghuang-5-day-wulingyuan",
+    "Wulingyuan scenic area in Zhangjiajie",
+  ),
   tianmenMountain: programImage(
     "zhangjiajie-fenghuang-5-day",
     "china-prime-dmc-zhangjiajie-fenghuang-5-day-tianmen-mountain",
@@ -198,6 +222,11 @@ const visuals = {
     "silk-road-gansu-ningxia-8-day",
     "china-prime-dmc-silk-road-gansu-ningxia-8-day-zhangye-national-geopark",
     "Zhangye National Geopark rainbow mountains in Gansu",
+  ),
+  mogao: jpgImage(
+    "silk-road-gansu-ningxia-8-day",
+    "china-prime-dmc-silk-road-gansu-ningxia-8-day-mogao-caves",
+    "Mogao Caves near Dunhuang on the Silk Road",
   ),
   westLake: programImage(
     "shanghai-hangzhou-huangshan-9-day",
@@ -480,6 +509,28 @@ const destinations: Destination[] = [
     highlights: ["Avatar-style sandstone peaks", "Tianmen Mountain", "Forest viewpoints", "Fenghuang old town add-on"],
     travelFor: ["Photographers", "Adventure-light families", "Couples", "Nature lovers"],
     image: visuals.tianmenMountain,
+    region: "Central China",
+    mapLabel: "Hunan",
+    mapPosition: { x: 58, y: 60 },
+    where: "Zhangjiajie sits in Hunan Province in central China, usually reached by flight or high-speed rail connections from major gateway cities.",
+    suggestedDays: "3-5 days",
+    gateway: "Changsha, Shanghai, Beijing, or Chengdu depending on the route.",
+    routeLogic: "Use Zhangjiajie as the emotional landscape chapter after Beijing, Xi'an, Shanghai, or Chengdu. It works best when travelers have enough time for weather flexibility and viewpoint pacing.",
+    idealFor: ["First-time visitors who want a true wow moment", "Families with teenagers", "Photographers", "Couples who prefer nature over museums"],
+    routePairings: ["Beijing + Xi'an + Zhangjiajie + Shanghai", "Chengdu + Zhangjiajie + Guilin", "Zhangjiajie + Fenghuang + Shanghai"],
+    signatureMoments: [
+      { title: "Sandstone peaks above the forest", copy: "The national forest park is the reason people come: vertical pillars, changing mist, and viewpoints that feel larger than the photos suggest.", image: visuals.zhangjiajieForest },
+      { title: "Tianmen Mountain without rushing", copy: "The cliff road, cableway, glass walk sections, and mountain gate need careful timing so the day feels thrilling rather than exhausting.", image: visuals.tianmenMountain },
+      { title: "Fenghuang as a softer ending", copy: "A riverside old town can add evening atmosphere after the big mountain days, especially for couples and photographers.", image: visuals.fenghuang },
+    ],
+    faqs: [
+      { q: "Is Zhangjiajie difficult for older travelers?", a: "It can be manageable with private pacing, cableways, elevators, and selective viewpoints. It is not ideal for travelers who cannot handle stairs or uneven walking at all." },
+      { q: "How many days should we spend in Zhangjiajie?", a: "Three full touring days is a comfortable minimum. Four or five days gives better weather protection and allows Fenghuang or a slower mountain rhythm." },
+      { q: "Can Zhangjiajie fit into a first China trip?", a: "Yes. It pairs especially well with Beijing, Xi'an, Shanghai, Chengdu, or Guilin when the route is not overloaded." },
+    ],
+    relatedTourSlugs: ["zhangjiajie-fenghuang-photography", "beijing-xian-zhangjiajie-private-tour", "teen-friendly-china-beijing-xian-zhangjiajie-shanghai"],
+    seoTitle: "Zhangjiajie Private Tours & China Avatar Mountains Travel Guide | China Prime",
+    metaDescription: "Plan a private Zhangjiajie tour with Avatar-style peaks, Tianmen Mountain, Fenghuang add-ons, best time to visit, family pacing, route pairings, and related China journeys.",
   },
   {
     name: "Chengdu & Sichuan",
@@ -491,6 +542,28 @@ const destinations: Destination[] = [
     highlights: ["Giant panda base", "Sichuan food walks", "Teahouse culture", "Jiuzhaigou or Leshan extensions"],
     travelFor: ["Families", "Food lovers", "Senior-friendly pacing", "Soft adventure"],
     image: visuals.panda,
+    region: "Southwest China",
+    mapLabel: "Sichuan",
+    mapPosition: { x: 43, y: 56 },
+    where: "Chengdu is the relaxed capital of Sichuan in southwest China, with direct flight links and strong connections to Xi'an, Chongqing, Yunnan, and national parks.",
+    suggestedDays: "3-7 days",
+    gateway: "Chengdu Tianfu or Chengdu Shuangliu airports, often paired with Xi'an, Chongqing, Guilin, or Yunnan.",
+    routeLogic: "Chengdu is the easiest way to make China feel warm, human, and family-friendly. It can be a short panda and food stop or the base for a deeper Sichuan nature route.",
+    idealFor: ["Families with children", "Food lovers", "Multi-generation travelers", "Travelers who want a softer city rhythm"],
+    routePairings: ["Beijing + Xi'an + Chengdu + Shanghai", "Chengdu + Chongqing food journey", "Chengdu + Jiuzhaigou + Leshan"],
+    signatureMoments: [
+      { title: "Real pandas, planned at the right hour", copy: "The panda base is most rewarding when the day starts early and the route avoids turning the visit into a rushed photo stop.", image: visuals.panda },
+      { title: "Tea, parks, and local rhythm", copy: "Chengdu is not only about sights. Its charm is in slower mornings, park life, teahouses, and a guide who can explain what daily life feels like.", image: visuals.foodStreet },
+      { title: "Sichuan as a nature gateway", copy: "Leshan, Jiuzhaigou, Huanglong, and Tibetan-edge landscapes can turn Chengdu into the gateway for a much richer southwest China route.", image: visuals.jiuzhaigou },
+    ],
+    faqs: [
+      { q: "Is Chengdu good for families?", a: "Yes. Pandas, relaxed city pacing, food variety, parks, and flexible private touring make Chengdu one of China's strongest family destinations." },
+      { q: "Is Sichuan food too spicy?", a: "It can be spicy, but private planning makes meals flexible. We can include mild dishes, familiar options, food walks, and stronger local restaurants for curious eaters." },
+      { q: "Can Chengdu connect with nature destinations?", a: "Yes. Jiuzhaigou, Huanglong, Leshan, Emei, and western Sichuan landscapes can be built around Chengdu with the right time and transport choices." },
+    ],
+    relatedTourSlugs: ["panda-family-chengdu-leshan-chongqing", "chengdu-chongqing-food-journey", "halal-aware-family-china-beijing-xian-chengdu-shanghai"],
+    seoTitle: "Chengdu & Sichuan Private Tours for Families, Pandas and Food | China Prime",
+    metaDescription: "Plan a private Chengdu and Sichuan tour with pandas, teahouses, Sichuan food, Leshan, Jiuzhaigou, family pacing, best time to visit, and related China itinerary ideas.",
   },
   {
     name: "Guilin & Yangshuo",
@@ -502,6 +575,28 @@ const destinations: Destination[] = [
     highlights: ["Li River scenery", "Yangshuo countryside", "Longji rice terraces", "Cooking or cycling experiences"],
     travelFor: ["Couples", "Families", "Landscape photographers", "Slow travelers"],
     image: visuals.liRiver,
+    region: "South China",
+    mapLabel: "Guangxi",
+    mapPosition: { x: 55, y: 73 },
+    where: "Guilin and Yangshuo are in Guangxi in southern China, best used as a scenic break between major cities or as part of a family-friendly south China route.",
+    suggestedDays: "3-5 days",
+    gateway: "Guilin airport or high-speed rail from Guangzhou, Shenzhen, or other southern hubs.",
+    routeLogic: "Use Guilin and Yangshuo when the trip needs quiet scenery, village roads, cooking, river light, and a slower rhythm after big cities.",
+    idealFor: ["Couples", "Families who want gentle outdoor days", "Landscape photographers", "Travelers who need a break from city intensity"],
+    routePairings: ["Shanghai + Guilin + Yangshuo + Hong Kong", "Beijing + Xi'an + Guilin + Shanghai", "Chengdu + Guilin + Yangshuo"],
+    signatureMoments: [
+      { title: "Li River scenery that feels painted", copy: "The river is the classic image of south China: karst peaks, soft light, and a pace that helps travelers breathe again.", image: visuals.liRiver },
+      { title: "Yangshuo countryside up close", copy: "Village lanes, local markets, cycling, cooking, and short walks make Yangshuo feel personal instead of purely scenic.", image: visuals.yangshuo },
+      { title: "Longji rice terraces when the season is right", copy: "The terraces add texture and culture, especially for photographers and travelers who want a deeper rural chapter.", image: visuals.longji },
+    ],
+    faqs: [
+      { q: "Is Guilin or Yangshuo better?", a: "Guilin is the gateway; Yangshuo is usually where travelers feel the landscape most deeply. Many private routes use both." },
+      { q: "Is this destination suitable for children?", a: "Yes. Gentle outdoor activities, short transfers, cooking, biking options, and river scenery can work very well for families." },
+      { q: "How many days do we need?", a: "Three days gives a good taste. Four or five days allows Yangshuo, Longji, and a less rushed south China rhythm." },
+    ],
+    relatedTourSlugs: ["china-with-kids-beijing-chengdu-yangshuo-shanghai", "guilin-longji-huangshan-landscape", "china-honeymoon-shanghai-hangzhou-guilin-yunnan"],
+    seoTitle: "Guilin & Yangshuo Private Tours, Li River and Karst Landscapes | China Prime",
+    metaDescription: "Plan a private Guilin and Yangshuo tour with Li River scenery, karst mountains, Longji rice terraces, family-friendly activities, best time, and related China routes.",
   },
   {
     name: "Yunnan Highlands",
@@ -513,6 +608,28 @@ const destinations: Destination[] = [
     highlights: ["Dali and Lijiang", "Shangri-La", "Meili Snow Mountain", "Tiger Leaping Gorge"],
     travelFor: ["Luxury travelers", "Couples", "Culture seekers", "Scenic road trips"],
     image: visuals.meili,
+    region: "Southwest China",
+    mapLabel: "Yunnan",
+    mapPosition: { x: 41, y: 70 },
+    where: "Yunnan sits in China's southwest, bordering the Tibetan world and Southeast Asia, with Dali, Lijiang, Shangri-La, and Meili forming the most cinematic highland route.",
+    suggestedDays: "6-10 days",
+    gateway: "Kunming, Dali, or Lijiang, often paired with Shanghai, Chengdu, or Guilin.",
+    routeLogic: "Yunnan works best as a slower chapter, not a rushed add-on. It rewards travelers who want boutique-style stays, mountain light, minority culture, and scenic roads.",
+    idealFor: ["Couples", "Luxury slow travelers", "Photography lovers", "Travelers who have already seen the classic icons"],
+    routePairings: ["Shanghai + Yunnan + Hong Kong", "Chengdu + Yunnan highlands", "Guilin + Yunnan slow luxury"],
+    signatureMoments: [
+      { title: "Old towns with mountain air", copy: "Dali and Lijiang are strongest when they are not rushed: courtyards, lanes, cafés, views, and cultural context need space.", image: visuals.dali },
+      { title: "Shangri-La and monastery life", copy: "At higher altitude, the route changes tone: Tibetan-influenced culture, prayer flags, monasteries, and crisp light.", image: visuals.songzanlin },
+      { title: "Meili Snow Mountain at sunrise", copy: "This is one of China's most memorable highland scenes, but it needs careful pacing, weather realism, and comfort planning.", image: visuals.meili },
+    ],
+    faqs: [
+      { q: "Is Yunnan a good first China trip?", a: "It can be, especially for couples or nature-focused travelers, but many first-timers pair it with Shanghai, Beijing, Chengdu, or Guilin for contrast." },
+      { q: "Is altitude a concern?", a: "Some areas such as Shangri-La and Meili are high altitude. We design pacing, hotel choices, and route order carefully, especially for older travelers." },
+      { q: "How long should a Yunnan trip be?", a: "Six days can cover Dali and Lijiang. Eight to ten days is better if Shangri-La or Meili Snow Mountain is included." },
+    ],
+    relatedTourSlugs: ["yunnan-slow-luxury-dali-lijiang-shangri-la-meili", "china-honeymoon-yangshuo-yunnan-shanghai", "china-icons-landscapes-two-weeks"],
+    seoTitle: "Yunnan Private Tours, Dali, Lijiang, Shangri-La and Meili | China Prime",
+    metaDescription: "Plan a private Yunnan tour with Dali, Lijiang, Shangri-La, Meili Snow Mountain, boutique pacing, best time to visit, altitude notes, and related China journeys.",
   },
   {
     name: "Beijing, Xi'an & Shanghai",
@@ -524,6 +641,28 @@ const destinations: Destination[] = [
     highlights: ["Great Wall", "Forbidden City", "Terracotta Warriors", "Shanghai skyline"],
     travelFor: ["First-time visitors", "Families", "History lovers", "Multi-generation trips"],
     image: visuals.greatWall,
+    region: "North, Central and East China",
+    mapLabel: "Classic triangle",
+    mapPosition: { x: 62, y: 44 },
+    where: "This classic route connects northern imperial China, ancient Xi'an, and modern Shanghai, usually by high-speed rail and short flights depending on comfort.",
+    suggestedDays: "7-10 days",
+    gateway: "Beijing or Shanghai, with Xi'an as the heritage anchor between them.",
+    routeLogic: "This is the clearest first China route because it answers the big question: ancient empire, world-famous history, and modern China in one logical arc.",
+    idealFor: ["First-time visitors", "Families with limited time", "History lovers", "Travelers who want the essential China story"],
+    routePairings: ["Beijing + Xi'an + Shanghai", "Beijing + Xi'an + Chengdu + Shanghai", "Classic triangle + Zhangjiajie or Guilin"],
+    signatureMoments: [
+      { title: "The Great Wall with breathing room", copy: "The Wall is most powerful when timing, section choice, walking level, and crowd strategy are handled before the day begins.", image: visuals.greatWall },
+      { title: "Xi'an makes history visible", copy: "The Terracotta Warriors, city walls, food streets, and Muslim Quarter give the route a deeper human story between two major cities.", image: visuals.terracotta },
+      { title: "Shanghai as the modern finale", copy: "Shanghai should feel like a reveal: skyline, design, food, boutiques, and a softer final day before flying home.", image: visuals.bund },
+    ],
+    faqs: [
+      { q: "Is this the best first China itinerary?", a: "For many travelers, yes. It is the easiest way to understand China's imperial history, ancient Silk Road depth, and modern urban energy." },
+      { q: "Can families handle this route?", a: "Yes, if the days are paced well. Private guiding, smart hotel locations, and fewer forced early starts make a major difference." },
+      { q: "Should we add Chengdu, Guilin, or Zhangjiajie?", a: "If you have 10 to 14 days, adding one nature or family-focused chapter can make the trip feel much more emotional." },
+    ],
+    relatedTourSlugs: ["golden-triangle-beijing-xian-shanghai", "first-china-family-private-tour", "grand-china-icons-pandas-rivers-skyline"],
+    seoTitle: "Beijing Xi'an Shanghai Private China Tour for First-Time Visitors | China Prime",
+    metaDescription: "Plan a private Beijing, Xi'an and Shanghai tour with the Great Wall, Forbidden City, Terracotta Warriors, Shanghai skyline, family pacing, best time, and related routes.",
   },
   {
     name: "Silk Road & Dunhuang",
@@ -535,6 +674,28 @@ const destinations: Destination[] = [
     highlights: ["Dunhuang", "Mogao Caves", "Crescent Lake", "Zhangye rainbow mountains"],
     travelFor: ["Adventure travelers", "Photographers", "Culture lovers", "Repeat visitors"],
     image: visuals.crescentLake,
+    region: "Northwest China",
+    mapLabel: "Gansu / Ningxia",
+    mapPosition: { x: 38, y: 42 },
+    where: "Dunhuang and the Silk Road sit in northwest China, where desert, Buddhist cave art, frontier towns, and old trade routes create a completely different China.",
+    suggestedDays: "6-9 days",
+    gateway: "Xi'an, Lanzhou, Dunhuang, or Yinchuan depending on the route design.",
+    routeLogic: "Use the Silk Road when travelers want China to feel vast, ancient, and less expected. It is especially strong after Xi'an or as a specialist photography and culture journey.",
+    idealFor: ["Photographers", "Culture-focused travelers", "Repeat China visitors", "Adventurous families with older children"],
+    routePairings: ["Xi'an + Lanzhou + Dunhuang + Zhangye", "Beijing + Xi'an + Silk Road", "Muslim heritage route through northwest China"],
+    signatureMoments: [
+      { title: "Crescent Lake at desert scale", copy: "The image is simple and unforgettable: dunes, oasis, camel silhouettes, and evening light that feels far from coastal China.", image: visuals.crescentLake },
+      { title: "Mogao Caves with cultural context", copy: "The cave art is not just a sight. It needs a guide who can explain why this place mattered along the old trade routes.", image: visuals.mogao },
+      { title: "Zhangye's rainbow mountains", copy: "Colorful landforms add another visual chapter, especially when the timing protects light and temperature.", image: visuals.zhangye },
+    ],
+    faqs: [
+      { q: "Is the Silk Road too remote for a private luxury trip?", a: "It is more remote than classic China, but private logistics, good route order, and realistic hotel expectations can make it comfortable and memorable." },
+      { q: "Is this good for first-time visitors?", a: "It can be, but it works best for travelers who already know they want culture, desert landscapes, and a less conventional China route." },
+      { q: "When is the best time to travel?", a: "May to June and September to October are usually the most comfortable for desert temperatures and photography light." },
+    ],
+    relatedTourSlugs: ["silk-road-muslim-heritage-xian-lanzhou-dunhuang-zhangye", "silk-road-desert-photography-xian-zhangye-dunhuang-turpan", "muslim-friendly-classic-beijing-xian-shanghai"],
+    seoTitle: "Silk Road and Dunhuang Private Tours, Desert China Travel Guide | China Prime",
+    metaDescription: "Plan a private Silk Road and Dunhuang tour with Mogao Caves, Crescent Lake, Zhangye Danxia, Muslim heritage, photography timing, best season, and related China routes.",
   },
 ];
 
@@ -1084,6 +1245,14 @@ const reviews: Review[] = reviewSeeds.map(([language, name, location, travelerTy
 function getReviewsForTour(tour: Tour, limit = 3) {
   const exact = reviews.filter((review) => review.tourSlug === tour.slug);
   const related = reviews.filter((review) => review.tourSlug !== tour.slug && review.tags.some((tag) => tour.themes.includes(tag) || tour.audiences.includes(tag)));
+  return [...exact, ...related].slice(0, limit);
+}
+
+function getRelatedToursForDestination(destination: Destination, limit = 3) {
+  const exact = destination.relatedTourSlugs
+    .map((slug) => tours.find((tour) => tour.slug === slug))
+    .filter(Boolean) as Tour[];
+  const related = tours.filter((tour) => !exact.includes(tour) && tour.destinationTags.some((tag) => destination.name.includes(tag) || destination.highlights.some((item) => item.includes(tag)) || destination.region.includes(tag)));
   return [...exact, ...related].slice(0, limit);
 }
 
@@ -1667,7 +1836,14 @@ function HomePage() {
   );
 }
 
-function DestinationsPage() {
+function DestinationsPage({ pathname }: { pathname: string }) {
+  const selectedSlug = pathname.replace(`${routes.destinations}/`, "");
+  const selectedDestination = selectedSlug && selectedSlug !== routes.destinations ? destinations.find((destination) => destination.slug === selectedSlug) : undefined;
+
+  if (selectedDestination) {
+    return <DestinationDetailPage destination={selectedDestination} />;
+  }
+
   return (
     <main id="top">
       <PageHero
@@ -1685,10 +1861,42 @@ function DestinationsPage() {
           First-time travelers often try to see everything. A better China journey has contrast: one icon city, one landscape, one local-life moment, and enough space between them. These destination clusters are built to help you decide what belongs in your first route.
         </p>
       </section>
+      <section className="destination-orientation" aria-labelledby="destination-orientation-title">
+        <div className="destination-map-panel">
+          <p className="eyebrow dark">China at a glance</p>
+          <h2 id="destination-orientation-title">Where each chapter sits in the journey.</h2>
+          <p>China is not one landscape. It is imperial north, modern east, panda country, karst south, highland southwest, and desert west. The best route chooses contrast without making the trip feel scattered.</p>
+          <div className="destination-map" aria-label="Simplified China destination orientation map">
+            {destinations.map((destination) => (
+              <button
+                className="map-pin"
+                type="button"
+                key={destination.slug}
+                style={{ left: `${destination.mapPosition.x}%`, top: `${destination.mapPosition.y}%` }}
+                onClick={() => navigatePath(`${routes.destinations}/${destination.slug}`)}
+                aria-label={`Open ${destination.name}`}
+              >
+                <span>{destination.mapLabel}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="orientation-list">
+          {destinations.map((destination) => (
+            <button type="button" key={destination.slug} onClick={() => navigatePath(`${routes.destinations}/${destination.slug}`)}>
+              <span>{destination.region}</span>
+              <strong>{destination.name}</strong>
+              <em>{destination.promise}</em>
+            </button>
+          ))}
+        </div>
+      </section>
       <section className="destination-index" aria-label="China destination guide cards">
         {destinations.map((destination) => (
           <article className="destination-detail-card" key={destination.slug}>
-            <Picture image={destination.image} className="destination-detail-media" />
+            <button className="destination-card-link" type="button" onClick={() => navigatePath(`${routes.destinations}/${destination.slug}`)} aria-label={`Open ${destination.name} destination guide`}>
+              <Picture image={destination.image} className="destination-detail-media" />
+            </button>
             <div className="destination-detail-copy">
               <p className="eyebrow dark">{destination.mood}</p>
               <h2>{destination.name}</h2>
@@ -1703,12 +1911,136 @@ function DestinationsPage() {
               <div className="audience-row">
                 {destination.travelFor.map((item) => <span key={item}>{item}</span>)}
               </div>
+              <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(`${routes.destinations}/${destination.slug}`)}>Understand this destination</button>
             </div>
           </article>
         ))}
       </section>
       <RouteBuilder />
       <PlannerSection />
+    </main>
+  );
+}
+
+function DestinationDetailPage({ destination }: { destination: Destination }) {
+  const relatedTours = getRelatedToursForDestination(destination, 3);
+
+  return (
+    <main id="top">
+      <section className="destination-hero" aria-labelledby="destination-title">
+        <Picture image={destination.image} className="page-hero-media" loading="eager" />
+        <div className="page-hero-overlay" />
+        <div className="destination-hero-copy">
+          <button className="back-link" type="button" onClick={() => navigateTo("destinations")}>Back to destinations</button>
+          <p className="eyebrow">{destination.region}</p>
+          <h1 id="destination-title">{destination.name}: {destination.promise}</h1>
+          <p>{destination.why}</p>
+          <div className="hero-actions">
+            <button className="button button-primary" type="button" onClick={() => navigatePath(`${routes.contact}?destination=${destination.slug}`)}>Plan around {destination.name}</button>
+            <a className="button button-ghost" href="#related-journeys">See related trips</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="destination-glance" aria-label={`${destination.name} at a glance`}>
+        {[
+          ["Where", destination.mapLabel],
+          ["Suggested stay", destination.suggestedDays],
+          ["Best time", destination.bestTime],
+          ["Gateway", destination.gateway],
+        ].map(([label, value]) => (
+          <article key={label}>
+            <span>{label}</span>
+            <strong>{value}</strong>
+          </article>
+        ))}
+      </section>
+
+      <section className="destination-sense" aria-labelledby="destination-sense-title">
+        <div>
+          <p className="eyebrow dark">Make sense of the map</p>
+          <h2 id="destination-sense-title">Where it is, why it matters, and how it fits.</h2>
+        </div>
+        <div className="destination-sense-copy">
+          <p>{destination.where}</p>
+          <p>{destination.routeLogic}</p>
+          <div className="route-pairings">
+            <span>Strong route pairings</span>
+            {destination.routePairings.map((pairing) => <strong key={pairing}>{pairing}</strong>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="destination-storyboard" aria-labelledby="destination-storyboard-title">
+        <div className="section-heading narrow">
+          <p className="eyebrow dark">What travelers actually remember</p>
+          <h2 id="destination-storyboard-title">The destination is easier to understand through moments.</h2>
+        </div>
+        <div className="destination-moment-grid">
+          {destination.signatureMoments.map((moment, index) => (
+            <article className={index === 0 ? "destination-moment is-large" : "destination-moment"} key={moment.title}>
+              <Picture image={moment.image} className="destination-moment-media" />
+              <div>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{moment.title}</h3>
+                <p>{moment.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="destination-fit" aria-labelledby="destination-fit-title">
+        <div>
+          <p className="eyebrow dark">Good fit if</p>
+          <h2 id="destination-fit-title">This is the kind of traveler who usually loves {destination.name}.</h2>
+        </div>
+        <div className="fit-tag-grid">
+          {destination.idealFor.map((item) => <span key={item}>{item}</span>)}
+        </div>
+      </section>
+
+      {relatedTours.length ? (
+        <section className="related-journeys destination-related" id="related-journeys" aria-labelledby="destination-related-title">
+          <div className="section-heading narrow">
+            <p className="eyebrow dark">Related private journeys</p>
+            <h2 id="destination-related-title">Routes where {destination.name} earns its place.</h2>
+            <p>Use these as a first conversation, then we adjust hotels, pacing, dining, and daily intensity around your travelers.</p>
+          </div>
+          <div className="tour-grid">
+            {relatedTours.map((tour) => (
+              <article className="tour-card trip-card" key={tour.slug}>
+                <button className="trip-card-link" type="button" onClick={() => navigatePath(`${routes.tours}/${tour.slug}`)} aria-label={`View ${tour.title}`} />
+                <Picture image={tour.image} className="tour-media" />
+                <div className="tour-body">
+                  <div className="tour-meta"><span>{tour.days}</span><span>{tour.priceFrom}</span></div>
+                  <h3>{tour.title}</h3>
+                  <p>{tour.copy}</p>
+                  <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(`${routes.tours}/${tour.slug}`)}>Compare this journey</button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="faq-section destination-faq" aria-labelledby="destination-faq-title">
+        <p className="eyebrow dark">Before you decide</p>
+        <h2 id="destination-faq-title">Questions travelers ask before choosing {destination.name}.</h2>
+        <div className="faq-grid">
+          {destination.faqs.map((item) => <article key={item.q}><strong>{item.q}</strong><p>{item.a}</p></article>)}
+        </div>
+      </section>
+
+      <section className="destination-cta" aria-labelledby="destination-cta-title">
+        <Picture image={destination.signatureMoments[0]?.image ?? destination.image} className="destination-cta-media" />
+        <div>
+          <p className="eyebrow">Start with one honest question</p>
+          <h2 id="destination-cta-title">Should {destination.name} belong in your China trip?</h2>
+          <p>Tell us your dates, traveler ages, must-see places, and comfort level. We will tell you where this destination fits, where it does not, and what route would feel strongest.</p>
+          <button className="button button-primary" type="button" onClick={() => navigatePath(`${routes.contact}?destination=${destination.slug}`)}>Ask a China specialist</button>
+        </div>
+      </section>
     </main>
   );
 }
@@ -2736,13 +3068,17 @@ export default function App() {
   const page = locationState.page;
   const activeTour = page === "tours" ? tours.find((tour) => locationState.pathname.endsWith(`/${tour.slug}`)) : undefined;
   const activeArticle = page === "guide" ? guideArticles.find((article) => locationState.pathname.endsWith(`/${article.slug}`)) : undefined;
+  const activeDestination = page === "destinations" ? destinations.find((destination) => locationState.pathname.endsWith(`/${destination.slug}`)) : undefined;
   const meta = useMemo(() => activeTour ? {
     title: `${activeTour.title} | Private China Tour | China Prime`,
     description: activeTour.copy,
+  } : activeDestination ? {
+    title: activeDestination.seoTitle,
+    description: activeDestination.metaDescription,
   } : activeArticle ? {
     title: activeArticle.metaTitle,
     description: activeArticle.metaDescription,
-  } : pageMeta[page], [activeArticle, activeTour, page]);
+  } : pageMeta[page], [activeArticle, activeDestination, activeTour, page]);
 
   useEffect(() => {
     document.title = meta.title;
@@ -2752,7 +3088,7 @@ export default function App() {
   return (
     <div className="site-shell">
       <Header page={page} />
-      {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "stories" ? <StoriesPage /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
+      {page === "destinations" ? <DestinationsPage pathname={locationState.pathname} /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "stories" ? <StoriesPage /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
       <Footer />
       {page !== "contact" ? <PageLink className="floating-inquiry" page="contact">Start planning</PageLink> : null}
     </div>
