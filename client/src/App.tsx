@@ -781,14 +781,94 @@ const destinations: Destination[] = [
 ];
 
 const destinationMapMarkers = [
-  { label: "Dunhuang", shortLabel: "DH", slug: "silk-road-dunhuang", x: 36.2, y: 43.1, labelX: -24, labelY: -34 },
-  { label: "Beijing", shortLabel: "BJ", slug: "classic-china", x: 69, y: 43.8, labelX: 16, labelY: -36 },
-  { label: "Xi'an", shortLabel: "XA", slug: "classic-china", x: 57.7, y: 58.5, labelX: -18, labelY: -34 },
-  { label: "Shanghai", shortLabel: "SH", slug: "classic-china", x: 76.6, y: 66.3, labelX: 20, labelY: -10 },
-  { label: "Chengdu", shortLabel: "CD", slug: "chengdu-sichuan", x: 50.4, y: 68, labelX: -96, labelY: 0 },
-  { label: "Zhangjiajie", shortLabel: "ZJJ", slug: "zhangjiajie", x: 60, y: 71.5, labelX: 22, labelY: 10 },
-  { label: "Yunnan", shortLabel: "YN", slug: "yunnan-highlands", x: 48.5, y: 81.5, labelX: -82, labelY: 16 },
-  { label: "Guilin", shortLabel: "GL", slug: "guilin-yangshuo", x: 59.7, y: 80.6, labelX: 24, labelY: 28 },
+  {
+    label: "Dunhuang",
+    slug: "silk-road-dunhuang",
+    x: 36.2,
+    y: 43.1,
+    cardX: 18,
+    cardY: -22,
+    image: visuals.crescentLake,
+    summary: "Desert light, Mogao Caves, oasis scenery, and the old Silk Road feeling of China at its widest.",
+    bestFor: "Culture lovers / Photographers",
+  },
+  {
+    label: "Beijing",
+    slug: "classic-china",
+    x: 69,
+    y: 43.8,
+    cardX: -252,
+    cardY: -118,
+    image: visuals.forbiddenCity,
+    summary: "Imperial China, the Great Wall, and the clearest first chapter for travelers meeting China for the first time.",
+    bestFor: "First-time visitors / Families",
+  },
+  {
+    label: "Xi'an",
+    slug: "classic-china",
+    x: 57.7,
+    y: 58.5,
+    cardX: -250,
+    cardY: -190,
+    image: visuals.terracotta,
+    summary: "Terracotta Warriors, city walls, Muslim Quarter food culture, and the human story between Beijing and Shanghai.",
+    bestFor: "History / Food / First-timers",
+  },
+  {
+    label: "Shanghai",
+    slug: "classic-china",
+    x: 76.6,
+    y: 66.3,
+    cardX: -266,
+    cardY: -188,
+    image: visuals.bund,
+    summary: "A polished modern finale: skyline, design, dining, gardens nearby, and a softer last chapter before flying home.",
+    bestFor: "Couples / City lovers",
+  },
+  {
+    label: "Chengdu",
+    slug: "chengdu-sichuan",
+    x: 50.4,
+    y: 68,
+    cardX: 18,
+    cardY: -190,
+    image: visuals.panda,
+    summary: "Pandas, tea houses, Sichuan food, and a warm family-friendly rhythm that makes China feel easier.",
+    bestFor: "Families / Food lovers",
+  },
+  {
+    label: "Zhangjiajie",
+    slug: "zhangjiajie",
+    x: 60,
+    y: 71.5,
+    cardX: 20,
+    cardY: -202,
+    image: visuals.zhangjiajieForest,
+    summary: "Sandstone pillars, cliff roads, glass walkways, and cinematic mountain days for travelers who want the big reveal.",
+    bestFor: "Nature / Photography",
+  },
+  {
+    label: "Yunnan",
+    slug: "yunnan-highlands",
+    x: 48.5,
+    y: 81.5,
+    cardX: 18,
+    cardY: -218,
+    image: visuals.dali,
+    summary: "Old towns, mountain air, scenic roads, Tibetan-edge culture, and a slower boutique-style China chapter.",
+    bestFor: "Couples / Slow luxury",
+  },
+  {
+    label: "Guilin",
+    slug: "guilin-yangshuo",
+    x: 59.7,
+    y: 80.6,
+    cardX: -266,
+    cardY: -214,
+    image: visuals.liRiver,
+    summary: "Karst peaks, Li River light, Yangshuo countryside, cooking, cycling, and the soft scenic break many routes need.",
+    bestFor: "Families / Landscape lovers",
+  },
 ];
 
 const chinaBoundaryPath =
@@ -2169,6 +2249,8 @@ function IndustryEventDetailPage({ event }: { event: typeof industryEvents[numbe
 function DestinationsPage({ pathname }: { pathname: string }) {
   const selectedSlug = pathname.replace(`${routes.destinations}/`, "");
   const selectedDestination = selectedSlug && selectedSlug !== routes.destinations ? destinations.find((destination) => destination.slug === selectedSlug) : undefined;
+  const [activeMarkerSlug, setActiveMarkerSlug] = useState("classic-china-Beijing");
+  const activeMarker = destinationMapMarkers.find((marker) => `${marker.slug}-${marker.label}` === activeMarkerSlug) ?? destinationMapMarkers[1];
 
   if (selectedDestination) {
     return <DestinationDetailPage destination={selectedDestination} />;
@@ -2200,27 +2282,77 @@ function DestinationsPage({ pathname }: { pathname: string }) {
             <ChinaMapOutline />
             {destinationMapMarkers.map((marker) => (
               <button
-                className="map-pin"
+                className={`map-pin ${activeMarker === marker ? "is-active" : ""}`}
                 type="button"
                 key={`${marker.slug}-${marker.label}`}
                 style={{
                   left: `${marker.x}%`,
                   top: `${marker.y}%`,
-                  "--label-x": `${marker.labelX}px`,
-                  "--label-y": `${marker.labelY}px`,
                 } as CSSProperties}
-                onClick={() => navigatePath(`${routes.destinations}/${marker.slug}`)}
-                aria-label={`Open ${marker.label} destination guide`}
+                onClick={() => setActiveMarkerSlug(`${marker.slug}-${marker.label}`)}
+                aria-label={`Preview ${marker.label}`}
               >
-                <span className="pin-label-full">{marker.label}</span>
-                <span className="pin-label-short">{marker.shortLabel}</span>
+              </button>
+            ))}
+            <article
+              className="map-preview-card"
+              style={{
+                left: `${activeMarker.x}%`,
+                top: `${activeMarker.y}%`,
+                "--card-x": `${activeMarker.cardX}px`,
+                "--card-y": `${activeMarker.cardY}px`,
+              } as CSSProperties}
+            >
+              <Picture image={activeMarker.image} className="map-preview-media" />
+              <div className="map-preview-copy">
+                <span>{activeMarker.bestFor}</span>
+                <h3>{activeMarker.label}</h3>
+                <p>{activeMarker.summary}</p>
+                <button className="map-preview-link" type="button" onClick={() => navigatePath(`${routes.destinations}/${activeMarker.slug}`)}>
+                  Open guide
+                </button>
+              </div>
+            </article>
+          </div>
+          <div className="map-marker-rail" aria-label="Choose a destination on the China map">
+            {destinationMapMarkers.map((marker) => (
+              <button
+                type="button"
+                key={`rail-${marker.slug}-${marker.label}`}
+                className={activeMarker === marker ? "is-active" : ""}
+                onClick={() => setActiveMarkerSlug(`${marker.slug}-${marker.label}`)}
+              >
+                {marker.label}
               </button>
             ))}
           </div>
+          <article className="map-preview-card map-preview-mobile">
+            <Picture image={activeMarker.image} className="map-preview-media" />
+            <div className="map-preview-copy">
+              <span>{activeMarker.bestFor}</span>
+              <h3>{activeMarker.label}</h3>
+              <p>{activeMarker.summary}</p>
+              <button className="map-preview-link" type="button" onClick={() => navigatePath(`${routes.destinations}/${activeMarker.slug}`)}>
+                Open guide
+              </button>
+            </div>
+          </article>
         </div>
         <div className="orientation-list">
           {destinations.map((destination) => (
-            <button type="button" key={destination.slug} onClick={() => navigatePath(`${routes.destinations}/${destination.slug}`)}>
+            <button
+              type="button"
+              key={destination.slug}
+              className={activeMarker.slug === destination.slug ? "is-active" : ""}
+              onClick={() => {
+                const marker = destinationMapMarkers.find((item) => item.slug === destination.slug);
+                if (marker) {
+                  setActiveMarkerSlug(`${marker.slug}-${marker.label}`);
+                  return;
+                }
+                navigatePath(`${routes.destinations}/${destination.slug}`);
+              }}
+            >
               <span>{destination.region}</span>
               <strong>{destination.name}</strong>
               <em>{destination.promise}</em>
