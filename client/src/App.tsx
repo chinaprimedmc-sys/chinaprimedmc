@@ -360,7 +360,14 @@ const visuals = {
   ),
 };
 
-const heroImage = visuals.forbiddenCity;
+const heroImage: ImageAsset = {
+  avif: "/journey-covers/golden-triangle-forbidden-city-beijing-1920.avif",
+  webp: "/journey-covers/golden-triangle-forbidden-city-beijing-1920.webp",
+  avifSet: "/journey-covers/golden-triangle-forbidden-city-beijing-960.avif 960w, /journey-covers/golden-triangle-forbidden-city-beijing-1400.avif 1400w, /journey-covers/golden-triangle-forbidden-city-beijing-1920.avif 1920w",
+  webpSet: "/journey-covers/golden-triangle-forbidden-city-beijing-960.webp 960w, /journey-covers/golden-triangle-forbidden-city-beijing-1400.webp 1400w, /journey-covers/golden-triangle-forbidden-city-beijing-1920.webp 1920w",
+  jpg: "/journey-covers/golden-triangle-forbidden-city-beijing.jpg",
+  alt: "Forbidden City rooftops in bright daylight from Jingshan Hill in Beijing",
+};
 
 const travelStyles: TravelStyle[] = [
   {
@@ -1765,7 +1772,7 @@ function HomePage() {
           <div className="hero-actions">
             <a className="button hero-glass-button hero-glass-primary" href="#build-my-china-route">Start Planning My Trip</a>
             <PageLink className="button hero-glass-button" page="tours">View Private Journeys</PageLink>
-            <a className="button hero-glass-button hero-glass-advisor" href="/contact?type=travel-advisor">For Travel Advisors</a>
+            <button className="button hero-glass-button hero-glass-advisor" type="button" onClick={() => navigatePath(`${routes.contact}?type=travel-advisor`)}>For Travel Advisors</button>
           </div>
         </div>
         <div className="hero-proof" aria-label="Travel planning highlights">
