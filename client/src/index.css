@@ -5492,3 +5492,24 @@ h1 {
     max-width: 12ch;
   }
 }
+
+/* Hero button spacing polish. */
+.hero-actions {
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.hero-proof {
+  margin-top: 8px;
+}
+
+@media (max-width: 680px) {
+  .hero-actions {
+    gap: 10px;
+    margin-top: 5px;
+  }
+
+  .hero-proof {
+    margin-top: 7px;
+  }
+}
