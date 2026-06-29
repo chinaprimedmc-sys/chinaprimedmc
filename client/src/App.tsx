@@ -1953,6 +1953,13 @@ function MarketProofStrip() {
         <p>
           Before a traveler says yes to China, advisors ask the hard questions: food, comfort, family pace, guide quality, payments, and what happens if plans change. We build around those questions.
         </p>
+        <figure className="market-proof-photo">
+          <Picture image={industryEvents[1].gallery[1]} className="market-proof-photo-media" />
+          <figcaption>
+            <strong>Singapore, 2026</strong>
+            <span>Regional buyer meetings that sharpened how we explain private China travel.</span>
+          </figcaption>
+        </figure>
       </div>
       <div className="market-proof-grid" aria-label="China Prime DMC trust signals">
         <article>

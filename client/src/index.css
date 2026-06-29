@@ -6124,6 +6124,59 @@ h1 {
   line-height: 1.66;
 }
 
+.market-proof-photo {
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  backdrop-filter: blur(24px) saturate(1.2);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.28)),
+    rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 22px 58px rgba(28, 25, 22, 0.1);
+  display: grid;
+  gap: 0;
+  margin: clamp(10px, 2vw, 18px) 0 0;
+  max-width: 520px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.market-proof-photo-media {
+  aspect-ratio: 16 / 9;
+  border-radius: 22px;
+  display: block;
+  overflow: hidden;
+}
+
+.market-proof-photo-media img {
+  filter: saturate(1.08) contrast(1.03) brightness(1.04);
+}
+
+.market-proof-photo figcaption {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 11px 8px 4px;
+}
+
+.market-proof-photo figcaption strong {
+  color: var(--ink);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.market-proof-photo figcaption span {
+  color: var(--body);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-align: right;
+}
+
 .market-proof-grid {
   -webkit-backdrop-filter: blur(34px) saturate(1.35) brightness(1.05);
   backdrop-filter: blur(34px) saturate(1.35) brightness(1.05);
@@ -6342,6 +6395,43 @@ h1 {
     -webkit-line-clamp: 3;
     line-height: 1.45;
     overflow: hidden;
+  }
+
+  .market-proof-photo {
+    border-radius: 22px;
+    margin-top: 4px;
+    padding: 6px;
+    position: relative;
+  }
+
+  .market-proof-photo-media {
+    aspect-ratio: 16 / 7.2;
+    border-radius: 17px;
+  }
+
+  .market-proof-photo figcaption {
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+    backdrop-filter: blur(18px) saturate(1.25);
+    background: rgba(255, 255, 255, 0.54);
+    border: 1px solid rgba(255, 255, 255, 0.62);
+    border-radius: 14px;
+    bottom: 12px;
+    display: grid;
+    gap: 2px;
+    left: 12px;
+    padding: 7px 9px;
+    position: absolute;
+    right: 12px;
+  }
+
+  .market-proof-photo figcaption strong {
+    font-size: 0.66rem;
+  }
+
+  .market-proof-photo figcaption span {
+    font-size: 0.72rem;
+    line-height: 1.28;
+    text-align: left;
   }
 
   .market-proof-grid {
