@@ -3142,31 +3142,31 @@ const contactChannels = [
     name: "WhatsApp",
     detail: "Fastest for quick questions",
     href: "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20to%20plan%20a%20private%20China%20trip.",
-    icon: "WA",
+    icon: "whatsapp",
   },
   {
     name: "Email",
     detail: "Best for detailed trip briefs",
     href: "mailto:chinaprimedmc@gmail.com?subject=Plan%20my%20private%20China%20trip&body=Travel%20dates:%0ATravelers:%0APlaces%20we%20are%20considering:%0AFood%20or%20accessibility%20needs:%0APreferred%20pace:%0AQuestions:",
-    icon: "EM",
+    icon: "email",
   },
   {
     name: "Instagram",
     detail: "See recent China moments",
     href: "https://www.instagram.com/chinaprimedmc?igsh=eGc4bzRneHgxaWF2&utm_source=",
-    icon: "IG",
+    icon: "instagram",
   },
   {
     name: "Facebook",
     detail: "Updates, reviews, and messages",
     href: "https://www.facebook.com/share/1CqXTAXD1e/?mibextid=wwXIfr",
-    icon: "FB",
+    icon: "facebook",
   },
   {
     name: "TikTok",
     detail: "Short travel scenes",
     href: "https://www.tiktok.com/@chinaprimedmc",
-    icon: "TT",
+    icon: "tiktok",
   },
 ];
 
@@ -3193,7 +3193,7 @@ function ContactDock() {
         <div className="contact-channel-list">
           {contactChannels.map((channel) => (
             <a className="contact-channel" href={channel.href} target="_blank" rel="noreferrer" key={channel.name} onClick={() => setOpen(false)}>
-              <span className="contact-channel-icon">{channel.icon}</span>
+              <span className={`contact-channel-icon contact-channel-icon-${channel.icon}`}><ContactChannelIcon type={channel.icon} /></span>
               <span>
                 <strong>{channel.name}</strong>
                 <em>{channel.detail}</em>
@@ -3208,6 +3208,51 @@ function ContactDock() {
         <span className="mobile-label">Plan My China Trip</span>
       </button>
     </div>
+  );
+}
+
+
+function ContactChannelIcon({ type }: { type: string }) {
+  if (type === "whatsapp") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20.4 11.8a8.3 8.3 0 0 1-12.2 7.3L4 20.2l1.2-4A8.3 8.3 0 1 1 20.4 11.8Z" />
+        <path d="M8.8 8.3c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .6.4l.8 1.8c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.3.5.8 1.2 1.4 1.7.9.8 1.6 1 2.1 1.2.3.1.5.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.4.5-.1.7-.6 1.5-1.2 1.8-.5.3-1.3.4-2.6 0-2.2-.7-4.1-2-5.4-3.8-1-1.4-1.5-2.6-1.4-3.4 0-.5.4-1 .8-1.2Z" />
+      </svg>
+    );
+  }
+
+  if (type === "instagram") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="5" y="5" width="14" height="14" rx="4" />
+        <circle cx="12" cy="12" r="3.2" />
+        <circle cx="16.3" cy="7.8" r=".8" />
+      </svg>
+    );
+  }
+
+  if (type === "facebook") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M14.2 8.2h2.1V5.3c-.4-.1-1.5-.2-2.8-.2-2.8 0-4.6 1.7-4.6 4.8v2.7H6v3.3h2.9V23h3.5v-7.1h2.9l.5-3.3h-3.4v-2.4c0-.9.3-2 1.8-2Z" />
+      </svg>
+    );
+  }
+
+  if (type === "tiktok") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M14.2 4.8c.4 2.4 1.8 3.9 4.1 4.2v3.1a7.4 7.4 0 0 1-4.1-1.3v5.3c0 3-2.1 5.2-5.1 5.2a5 5 0 0 1-5.1-5c0-3.1 2.6-5.4 5.8-5v3.2c-1.4-.2-2.5.6-2.5 1.8 0 1.1.8 1.8 1.8 1.8 1.1 0 1.8-.7 1.8-2V4.8h3.3Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M4.8 7.2h14.4v9.6H4.8V7.2Z" />
+      <path d="m5.4 7.8 6.6 5.1 6.6-5.1" />
+    </svg>
   );
 }
 
