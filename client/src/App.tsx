@@ -368,6 +368,95 @@ function contactPathForTour(tour: Tour, style: TravelStyle) {
   return `${routes.contact}?${params.toString()}`;
 }
 
+function getTourProposal(tour: Tour) {
+  const isFamily = tour.audiences.some((item) => ["Families", "Children", "Teenagers", "Older parents"].includes(item));
+  const isMuslim = tour.themes.some((item) => item.includes("Muslim")) || tour.audiences.some((item) => item.includes("Muslim"));
+  const isLuxury = tour.themes.includes("Luxury pace") || tour.audiences.includes("Luxury travelers") || tour.themes.includes("Honeymoon");
+  const isPhoto = tour.themes.includes("Photography") || tour.audiences.includes("Photographers");
+  const isSenior = tour.themes.includes("Senior-friendly") || tour.audiences.includes("Senior-friendly") || tour.audiences.includes("Older parents");
+  const isFood = tour.themes.includes("Food") || tour.audiences.includes("Food lovers");
+  const places = tour.destinationTags;
+  const firstPlace = places[0] ?? "China";
+  const finalPlace = places[places.length - 1] ?? "your final city";
+
+  const bestFor = [
+    isMuslim ? "Muslim travelers who need food confidence, private timing, and realistic city-by-city planning." : null,
+    isSenior ? "Older travelers or multi-generation families who need fewer hard transfers and clearer comfort decisions." : null,
+    isLuxury ? "Couples or luxury travelers who care about hotels, guide chemistry, dining, and a slower sense of arrival." : null,
+    isPhoto ? "Photographers who want stronger light, viewpoint logic, and enough space between big scenes." : null,
+    isFood ? "Food lovers who want the table to be part of the story, not an afterthought." : null,
+    isFamily ? "Families who want China to feel exciting without turning every day into a long march." : null,
+  ].filter(Boolean) as string[];
+
+  const notFor = [
+    "Travelers who want a fixed coach-tour schedule with the lowest possible price.",
+    "Guests who prefer to cover as many cities as possible even if the route becomes rushed.",
+    "Anyone looking for commission-driven shopping stops or mandatory tourist stores.",
+  ];
+
+  const logic = [
+    {
+      title: `Start in ${firstPlace} with context`,
+      copy: `The opening stop gives the journey its first emotional anchor, so the guide, hotel location, and first full day need to make China feel understandable rather than overwhelming.`,
+    },
+    {
+      title: `Let the route change texture`,
+      copy: `${tour.places} should not feel like a sequence of transfers. The itinerary is shaped to move between icons, local life, scenery, food, or culture so each stop has a reason to exist.`,
+    },
+    {
+      title: `Finish with room to breathe in ${finalPlace}`,
+      copy: `The final days should protect energy for shopping, favorite meals, skyline moments, hotel comfort, or slower family time before the flight home.`,
+    },
+  ];
+
+  const planningNotes = [
+    {
+      title: "Guide matching",
+      copy: "The guide should fit the travelers: patient with children, clear with first-timers, food-curious, photography-aware, halal-aware, or senior-friendly when needed.",
+    },
+    {
+      title: "Hotel logic",
+      copy: "We prioritize location and recovery value, because a slightly better hotel choice can save the trip from long drives, weak breakfasts, or difficult evenings.",
+    },
+    {
+      title: "Daily rhythm",
+      copy: "The route protects the day after arrivals, long scenic transfers, heavy walking, and early starts, so the trip feels designed rather than merely scheduled.",
+    },
+    {
+      title: "Food confidence",
+      copy: isMuslim ? "Halal-aware restaurant research, timing, and city expectations are discussed before quotation." : "Dining can stay flexible, but comfort level, allergies, picky eaters, and serious local-food interests should be known before the route is finalized.",
+    },
+  ];
+
+  const relatedGuides = guideArticles.filter((article) => {
+    if (isFamily && article.category === "Family Travel") return true;
+    if (isMuslim && article.category === "Muslim-Friendly Travel") return true;
+    if (isSenior && article.category === "Senior-Friendly Travel") return true;
+    if (isLuxury && article.category === "Budget & Value") return true;
+    if (article.category === "First Trip Planning" && tour.audiences.includes("First-time visitors")) return true;
+    if (article.category === "Route Ideas" && tour.themes.includes("Classic China")) return true;
+    if (article.category === "Seasonal Planning" && (tour.themes.includes("Nature") || isPhoto)) return true;
+    return false;
+  }).slice(0, 3);
+
+  if (relatedGuides.length < 3) {
+    guideArticles.forEach((article) => {
+      if (relatedGuides.length < 3 && !relatedGuides.includes(article)) relatedGuides.push(article);
+    });
+  }
+
+  return {
+    bestFor: bestFor.length ? bestFor : [
+      "Travelers who want a private China itinerary with clear logic, strong contrast, and enough flexibility to feel personal.",
+      "First-time visitors who want famous sights, local context, and practical support without joining a fixed group tour.",
+    ],
+    notFor,
+    logic,
+    planningNotes,
+    relatedGuides,
+  };
+}
+
 const destinations: Destination[] = [
   {
     name: "Zhangjiajie",
@@ -1803,7 +1892,7 @@ function ContactPage({ search }: { search: string }) {
     "We need halal-aware planning, private transport, and dining confidence.",
   ];
   const selectedBrief = selectedTour && selectedStyle
-    ? `Hi China Prime DMC,\n\nI am interested in the ${selectedStyle.name} version of this journey.\n\nJourney: ${selectedTour.title}\nRoute: ${selectedTour.places}\nSelected Travel Style: ${selectedStyle.name}\nBudget Guide: ${selectedStyle.price}\n\nApproximate travel dates:\nNumber of travelers:\nAges of children or older travelers:\nHotel preference:\nFood requirements:\nPreferred pace:\nQuestions:\n`
+    ? `Hi China Prime DMC,\n\nI am interested in the ${selectedStyle.name} version of this journey.\n\nJourney: ${selectedTour.title}\nRoute: ${selectedTour.places}\nSelected Travel Style: ${selectedStyle.name}\nBudget Guide: ${selectedStyle.price}\n\nApproximate travel dates:\nNumber of travelers:\nAges of children or older travelers:\nHotel preference:\nFood requirements:\nPreferred pace:\nMain concern to solve:\nWhat we want this trip to feel like:\nQuestions:\n`
     : selectedGuide
       ? `Hi China Prime DMC,\n\nI read your guide: ${selectedGuide.title}\n\nI would like a first private China route idea based on this concern.\n\nApproximate travel dates:\nNumber of travelers:\nTraveler ages:\nPlaces we are considering:\nMain concerns:\nHotel preference:\nFood requirements:\nPreferred pace:\nBudget range:\n`
     : "";
@@ -1980,6 +2069,7 @@ function FilterGroup({ label, options, value, onChange }: { label: string; optio
 
 function TourDetailPage({ tour }: { tour: Tour }) {
   const related = tours.filter((candidate) => candidate.slug !== tour.slug && candidate.themes.some((theme) => tour.themes.includes(theme))).slice(0, 3);
+  const proposal = getTourProposal(tour);
 
   return (
     <main id="top">
@@ -1994,6 +2084,11 @@ function TourDetailPage({ tour }: { tour: Tour }) {
           <div className="hero-actions">
             <button className="button button-primary" type="button" onClick={() => navigatePath(contactPathForTour(tour, travelStyles[1]))}>Design the Premium version</button>
             <a className="button button-ghost" href="#travel-style">Compare travel styles</a>
+          </div>
+          <div className="tour-hero-trust" aria-label="Private journey assurances">
+            <span>No shopping-tour pressure</span>
+            <span>Private guide matching</span>
+            <span>Customizable before quote</span>
           </div>
         </div>
       </section>
@@ -2014,11 +2109,32 @@ function TourDetailPage({ tour }: { tour: Tour }) {
         ))}
       </section>
 
+      <section className="proposal-fit" aria-labelledby="proposal-fit-title">
+        <div className="proposal-fit-lead">
+          <p className="eyebrow dark">Fit check</p>
+          <h2 id="proposal-fit-title">This journey should feel right before it feels impressive.</h2>
+          <p>{tour.copy}</p>
+        </div>
+        <div className="fit-columns">
+          <article>
+            <span>Best for</span>
+            {proposal.bestFor.map((item) => <p key={item}>{item}</p>)}
+          </article>
+          <article>
+            <span>Not ideal for</span>
+            {proposal.notFor.map((item) => <p key={item}>{item}</p>)}
+          </article>
+        </div>
+      </section>
+
       <section className="journey-reasons" aria-labelledby="journey-reasons-title">
-        <p className="eyebrow dark">Why this journey works</p>
-        <h2 id="journey-reasons-title">The route gives you contrast without making China feel exhausting.</h2>
-        <div className="reason-grid">
-          {tour.coreReasons.map((reason) => <article key={reason}><strong>{reason}</strong><p>{tour.copy}</p></article>)}
+        <div className="section-heading narrow">
+          <p className="eyebrow dark">Route logic</p>
+          <h2 id="journey-reasons-title">Why this route works as a private journey.</h2>
+          <p>Every stop needs a job. The point is not to make the map look full; it is to make each city or landscape earn its place in the story.</p>
+        </div>
+        <div className="reason-grid route-logic-grid">
+          {proposal.logic.map((item) => <article key={item.title}><strong>{item.title}</strong><p>{item.copy}</p></article>)}
         </div>
       </section>
 
@@ -2040,10 +2156,26 @@ function TourDetailPage({ tour }: { tour: Tour }) {
         </div>
       </section>
 
+      <section className="proposal-planning" aria-labelledby="proposal-planning-title">
+        <div>
+          <p className="eyebrow dark">Planning intelligence</p>
+          <h2 id="proposal-planning-title">The invisible details decide whether the trip feels premium.</h2>
+        </div>
+        <div className="planning-note-grid">
+          {proposal.planningNotes.map((note) => (
+            <article key={note.title}>
+              <strong>{note.title}</strong>
+              <p>{note.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="day-plan" aria-labelledby="day-plan-title">
         <div className="section-heading narrow">
           <p className="eyebrow dark">Day by day</p>
           <h2 id="day-plan-title">A clear rhythm, with one highlight anchoring each stop.</h2>
+          <p>This is a planning framework, not a locked schedule. We adjust timing, hotels, meals, and activity intensity after we understand who is traveling.</p>
         </div>
         <div className="day-plan-list">
           {tour.daysPlan.map((day) => (
@@ -2061,6 +2193,16 @@ function TourDetailPage({ tour }: { tour: Tour }) {
 
       <TravelStyleSelector tour={tour} />
 
+      <section className="proposal-cta-strip" aria-labelledby="proposal-cta-title">
+        <Picture image={tour.highlights[0]?.image ?? tour.image} className="proposal-cta-media" />
+        <div className="proposal-cta-copy">
+          <p className="eyebrow dark">Make it yours</p>
+          <h2 id="proposal-cta-title">Want this route shaped around your dates and travelers?</h2>
+          <p>Tell us your travel month, group size, preferred style, and biggest concern. We will return with a clearer first route direction rather than a generic package reply.</p>
+          <button className="button button-primary" type="button" onClick={() => navigatePath(contactPathForTour(tour, travelStyles[1]))}>Get my first route idea</button>
+        </div>
+      </section>
+
       <section className="journey-practical" aria-labelledby="journey-practical-title">
         <p className="eyebrow dark">Comfort and clarity</p>
         <h2 id="journey-practical-title">Know what is handled before you ask for a quote.</h2>
@@ -2068,6 +2210,23 @@ function TourDetailPage({ tour }: { tour: Tour }) {
           <article><h3>Included</h3>{tour.includes.map((item) => <p key={item}>{item}</p>)}</article>
           <article><h3>Not included</h3>{tour.excludes.map((item) => <p key={item}>{item}</p>)}</article>
           <article><h3>Comfort notes</h3>{tour.comfortNotes.map((item) => <p key={item}>{item}</p>)}</article>
+        </div>
+      </section>
+
+      <section className="related-guides" aria-labelledby="related-guides-title">
+        <div className="section-heading narrow">
+          <p className="eyebrow dark">Useful planning guides</p>
+          <h2 id="related-guides-title">Read this before you finalize the route.</h2>
+        </div>
+        <div className="related-guide-grid">
+          {proposal.relatedGuides.map((article) => (
+            <article className="related-guide-card" key={article.slug}>
+              <span>{article.category}</span>
+              <h3>{article.title}</h3>
+              <p>{article.excerpt}</p>
+              <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(`${routes.guide}/${article.slug}`)}>Open the guide</button>
+            </article>
+          ))}
         </div>
       </section>
 
