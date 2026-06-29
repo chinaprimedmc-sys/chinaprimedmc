@@ -64,7 +64,23 @@ type Tour = {
   image: ImageAsset;
 };
 
-type PageKey = "home" | "destinations" | "experiences" | "tours" | "contact";
+type GuideArticle = {
+  title: string;
+  slug: string;
+  category: string;
+  audience: string;
+  readTime: string;
+  excerpt: string;
+  promise: string;
+  image: ImageAsset;
+  relatedTourSlugs: string[];
+  sections: { heading: string; body: string[]; highlight?: string }[];
+  faq: { q: string; a: string }[];
+  metaTitle: string;
+  metaDescription: string;
+};
+
+type PageKey = "home" | "destinations" | "experiences" | "tours" | "guide" | "contact";
 
 type LocationState = {
   page: PageKey;
@@ -90,6 +106,7 @@ const routes: Record<PageKey, string> = {
   destinations: "/destinations",
   experiences: "/experiences",
   tours: "/private-china-tours",
+  guide: "/china-travel-guide",
   contact: "/contact",
 };
 
@@ -907,6 +924,345 @@ const reviews = [
   },
 ];
 
+const guideArticles: GuideArticle[] = [
+  {
+    title: "How to Plan a First Trip to China Without Feeling Overwhelmed",
+    slug: "how-to-plan-first-trip-to-china",
+    category: "First Trip Planning",
+    audience: "First-time visitors",
+    readTime: "7 min read",
+    excerpt: "A calm framework for choosing cities, pacing the route, handling trains and food, and avoiding the classic mistake of trying to see everything.",
+    promise: "Your first China trip should feel clear before it feels ambitious.",
+    image: visuals.greatWall,
+    relatedTourSlugs: ["first-china-family-private-tour", "golden-triangle-beijing-xian-shanghai", "grand-china-icons-pandas-rivers-skyline"],
+    metaTitle: "How to Plan a First Trip to China | Private China Travel Guide",
+    metaDescription: "Plan a first trip to China with clear route logic, pacing advice, train tips, family comfort notes, and private tour ideas for first-time visitors.",
+    sections: [
+      {
+        heading: "Start with contrast, not a long list",
+        highlight: "The strongest first China itineraries usually combine one icon city, one human moment, one landscape, and one modern finale.",
+        body: [
+          "Most first-time travelers begin with a map and quickly feel lost. China is too large for that approach. A better way is to decide what kind of memories you want: the Great Wall before the crowds, pandas in Chengdu, river light in Guilin, food in Xi'an, or a skyline finale in Shanghai.",
+          "For many travelers, Beijing, Xi'an, Chengdu or Guilin, and Shanghai create a strong first route. It gives history, culture, family appeal, and a modern ending without asking you to cross the country every day.",
+        ],
+      },
+      {
+        heading: "Protect your energy between big moments",
+        body: [
+          "The mistake is not choosing too many famous places. The mistake is placing them too tightly. A private China tour should leave space for jet lag, walking days, children, older parents, meals, and guide conversations that make the country easier to understand.",
+          "High-speed rail can be excellent when the stations and luggage timing are planned properly. Domestic flights can help when distance becomes too punishing. The right answer depends on your route, dates, and how much comfort you want built into the day.",
+        ],
+      },
+      {
+        heading: "Plan around the concerns you actually have",
+        body: [
+          "First-time visitors often worry about language, payments, food, bathrooms, pace, crowds, and whether children or older parents will enjoy the trip. These are not small details. They shape the entire itinerary.",
+          "A good private planner should ask about walking tolerance, food comfort, hotel expectations, room setup, and how your family behaves on long travel days before suggesting a route.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "How many days do I need for a first China trip?", a: "Eight days can work for Beijing, Xi'an, and Shanghai. Ten to fourteen days gives a much better rhythm if you want pandas, Guilin, Zhangjiajie, or another landscape stop." },
+      { q: "Is Beijing, Xi'an, and Shanghai too basic?", a: "No. It becomes basic only when rushed or poorly guided. With private timing, strong context, and the right hotels, the classic route is still one of the clearest ways to understand China." },
+      { q: "Should I book a private China tour?", a: "If you care about comfort, language support, family pacing, halal-aware planning, or avoiding shopping-tour pressure, private planning removes a lot of friction." },
+    ],
+  },
+  {
+    title: "Is China Safe for Families Traveling With Kids?",
+    slug: "is-china-safe-for-families-with-kids",
+    category: "Family Travel",
+    audience: "Parents",
+    readTime: "6 min read",
+    excerpt: "What parents usually want to know before bringing children to China: pace, food, guides, bathrooms, trains, hotels, and realistic kid-friendly routing.",
+    promise: "China can be surprisingly easy for families when the route is designed around real children.",
+    image: visuals.panda,
+    relatedTourSlugs: ["china-with-kids-beijing-chengdu-yangshuo-shanghai", "family-china-beijing-xian-guilin-shanghai", "easy-china-children-shanghai-hangzhou-guilin"],
+    metaTitle: "Is China Safe for Families With Kids? | China Family Travel Guide",
+    metaDescription: "A practical guide for families visiting China with kids, covering safety, food, pacing, trains, hotels, pandas, and private family tour planning.",
+    sections: [
+      {
+        heading: "Safety is only one part of family comfort",
+        highlight: "Parents are usually not only asking if China is safe. They are asking whether the trip will feel manageable.",
+        body: [
+          "Large Chinese cities can feel busy, but family travel works well when a private guide helps with timing, transport, tickets, food, and realistic walking distances. The country is highly functional for families when the day is not overloaded.",
+          "Children usually respond well to China when the route includes pandas, trains, hands-on food, river scenery, city lights, and short cultural moments rather than museum-heavy days from morning to evening.",
+        ],
+      },
+      {
+        heading: "Choose fewer cities and better days",
+        body: [
+          "A family itinerary should not copy an adult checklist. Beijing and Chengdu are often a strong pairing because children get the Great Wall and pandas while parents still get culture and food. Guilin or Yangshuo adds outdoor breathing room.",
+          "Shanghai can work beautifully at the end because it feels modern, easy, and visually exciting. It is also a good place for families who want a softer final hotel and fewer logistics before flying home.",
+        ],
+      },
+      {
+        heading: "Food and routines need planning, not panic",
+        body: [
+          "Families do not need every meal prearranged, but they do need options. Some children love dumplings and noodles immediately. Others need familiar backup choices near the hotel. A private guide can make this feel simple.",
+          "Hotel location matters. Families should avoid saving a small amount on rooms if it creates long drives, weak breakfast options, or awkward evening walks after a full day.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What are the best places in China for kids?", a: "Beijing, Chengdu, Guilin/Yangshuo, and Shanghai are among the easiest first choices because they combine famous sights with pandas, trains, scenery, and modern comfort." },
+      { q: "Can grandparents travel with children in the same itinerary?", a: "Yes, but the route should protect everyone: later starts, private transfers, fewer one-night stays, and hotel choices with reliable elevators and breakfast." },
+      { q: "Do kids enjoy cultural sites in China?", a: "They can, when the guide keeps context short, visual, and interactive. The Forbidden City or Terracotta Warriors should not feel like a school lecture." },
+    ],
+  },
+  {
+    title: "How Much Does a Private China Tour Cost?",
+    slug: "private-china-tour-cost",
+    category: "Budget & Value",
+    audience: "Luxury-minded travelers",
+    readTime: "8 min read",
+    excerpt: "A transparent way to think about private China tour pricing, daily budget bands, hotel levels, guide quality, and what actually changes when you spend more.",
+    promise: "Price should explain comfort, not hide behind a vague package label.",
+    image: visuals.westLake,
+    relatedTourSlugs: ["luxury-china-couples-shanghai-hangzhou-huangshan", "signature-heritage-beijing-hangzhou-shanghai-zhangjiajie", "yunnan-slow-luxury-dali-lijiang-shangri-la-meili"],
+    metaTitle: "Private China Tour Cost Guide | Luxury China Travel Pricing",
+    metaDescription: "Understand private China tour costs by day, travel style, hotels, guides, transport, and service level for classic, premium, and luxury China vacations.",
+    sections: [
+      {
+        heading: "Think in service levels, not package prices",
+        highlight: "A private China trip is usually priced by the quality of hotels, guide matching, transport comfort, special access, and daily pacing.",
+        body: [
+          "A classic private trip may begin around a practical per-person daily range when using comfortable hotels, private touring, and efficient transport. A premium trip rises when hotels, guide matching, dining planning, and route flexibility improve.",
+          "Luxury China travel costs more because the invisible work becomes deeper: better hotel locations, fewer compromises, more flexible days, senior guides, scenic timing, and stronger support when plans change.",
+        ],
+      },
+      {
+        heading: "What changes when the budget goes up",
+        body: [
+          "The jump is not only a nicer room. It can change how early you need to start, how much time is lost in traffic, how well the guide matches your interests, where you eat, and how smooth the route feels between cities.",
+          "For a USD 6,000-plus journey, travelers should expect a route that feels considered: no shopping pressure, honest pacing, strong local support, and daily decisions that protect the experience rather than simply fill the schedule.",
+        ],
+      },
+      {
+        heading: "The right budget depends on your trip personality",
+        body: [
+          "Families often benefit from spending more on hotel location and private transfers. Couples may value boutique-style stays and dining. Senior travelers may need slower routing and better vehicle comfort. Photographers may need timing flexibility and weather buffers.",
+          "The smartest question is not 'What is the cheapest way to do China?' It is 'What level of comfort will let me actually enjoy the China I came to see?'",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is private China travel expensive?", a: "It can be very good value compared with many luxury destinations, but pricing varies widely by hotel level, city mix, season, guide quality, and transport choices." },
+      { q: "Should I choose a daily budget before the itinerary?", a: "Yes. A budget range helps the planner design honestly instead of suggesting hotels and experiences that do not match your comfort level." },
+      { q: "Why not publish exact package prices?", a: "Private China trips change with dates, room mix, train or flight availability, guide needs, and hotel level. A useful quote should reflect your actual trip." },
+    ],
+  },
+  {
+    title: "The Best China Itinerary for First-Time Visitors",
+    slug: "best-china-itinerary-first-time-visitors",
+    category: "Route Ideas",
+    audience: "First-time visitors",
+    readTime: "7 min read",
+    excerpt: "A high-trust route framework for travelers who want the Great Wall, pandas, ancient China, landscapes, and Shanghai without turning the trip into a race.",
+    promise: "The best first itinerary gives China scale, warmth, history, and one unforgettable landscape.",
+    image: visuals.liRiver,
+    relatedTourSlugs: ["grand-china-icons-pandas-rivers-skyline", "first-china-family-private-tour", "china-icons-landscapes-two-weeks"],
+    metaTitle: "Best China Itinerary for First-Time Visitors | Private China Tours",
+    metaDescription: "Compare the best first-time China itinerary ideas with Beijing, Xi'an, Chengdu, Guilin, Zhangjiajie, and Shanghai route logic.",
+    sections: [
+      {
+        heading: "The route we recommend most often",
+        highlight: "For ten to fourteen days, Beijing, Xi'an, Chengdu, Guilin or Zhangjiajie, and Shanghai is one of the strongest first-China frameworks.",
+        body: [
+          "Beijing gives imperial history and the Great Wall. Xi'an gives the Terracotta Warriors and a different food culture. Chengdu softens the trip with pandas, teahouses, and Sichuan flavor. Guilin or Zhangjiajie adds the landscape travelers did not expect. Shanghai brings the journey back to modern China.",
+          "This route works because every stop has a distinct emotional purpose. You are not just changing cities. You are changing the feeling of the trip.",
+        ],
+      },
+      {
+        heading: "When to choose Guilin versus Zhangjiajie",
+        body: [
+          "Choose Guilin and Yangshuo if you want river scenery, countryside, cycling, cooking, family softness, and a more relaxed landscape rhythm. It is excellent for families, couples, and travelers who want natural beauty without too much intensity.",
+          "Choose Zhangjiajie if you want dramatic viewpoints, glass walkways, sandstone pillars, and a more cinematic mountain experience. It can be excellent for teens, photographers, and travelers who want visual impact.",
+        ],
+      },
+      {
+        heading: "Do not underestimate travel days",
+        body: [
+          "A route can look elegant on paper and still feel tiring if every city change becomes a full-day event. Good planning protects arrival times, luggage flow, station transfers, and the first evening after a move.",
+          "This is where private planning adds value. The best itinerary is not the one with the most stops. It is the one where every stop still feels worth the energy it takes to reach it.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What is the best 10-day China itinerary?", a: "Beijing, Xi'an, Chengdu, and Shanghai is a strong 10-day route. Add Guilin or Zhangjiajie only if you can protect the pace." },
+      { q: "What is the best 14-day China itinerary?", a: "Beijing, Xi'an, Chengdu, Guilin/Yangshuo or Zhangjiajie, and Shanghai gives a rich but balanced first trip." },
+      { q: "Should first-time visitors include Yunnan or Tibet?", a: "They can, but those regions usually work better when you have more time or already know you want a slower scenic journey." },
+    ],
+  },
+  {
+    title: "Muslim-Friendly Travel in China: Food, Prayer, and Private Planning",
+    slug: "muslim-friendly-travel-in-china",
+    category: "Muslim-Friendly Travel",
+    audience: "Muslim families",
+    readTime: "7 min read",
+    excerpt: "How to plan a halal-aware China trip with realistic dining expectations, mosque visits, prayer-aware timing, private transport, and family comfort.",
+    promise: "Muslim-friendly planning is not a label. It is a route designed with care.",
+    image: visuals.muslimQuarter,
+    relatedTourSlugs: ["muslim-friendly-classic-beijing-xian-shanghai", "halal-aware-family-china-beijing-xian-chengdu-shanghai", "silk-road-muslim-heritage-xian-lanzhou-dunhuang-zhangye"],
+    metaTitle: "Muslim-Friendly China Travel Guide | Halal-Aware Private Tours",
+    metaDescription: "Plan Muslim-friendly travel in China with halal-aware dining, prayer timing, mosque context, private guides, family comfort, and route ideas.",
+    sections: [
+      {
+        heading: "Food confidence should be planned city by city",
+        highlight: "Halal-aware travel in China works best when expectations are clear before the route is finalized.",
+        body: [
+          "Beijing, Xi'an, Shanghai, Guangzhou, and parts of the Silk Road can work well for Muslim travelers, but the experience differs by city. Some places have stronger Muslim food heritage. Others require more careful restaurant research and flexible backup options.",
+          "A private guide can help with translation, timing, and restaurant selection, but the itinerary should not assume every scenic stop has easy halal dining nearby.",
+        ],
+      },
+      {
+        heading: "Xi'an is often the cultural anchor",
+        body: [
+          "Xi'an's Muslim Quarter and Great Mosque give Muslim travelers a meaningful connection to China's long Islamic history. It is also an accessible city to combine with Beijing and Shanghai on a first trip.",
+          "For travelers who want a deeper Muslim heritage route, Gansu, Ningxia, Xinjiang, or Silk Road routing may be considered, depending on season, comfort level, and available time.",
+        ],
+      },
+      {
+        heading: "Private pacing matters more than usual",
+        body: [
+          "Prayer-aware timing, family privacy, dining confidence, and private transport can make the difference between a trip that merely works and one that feels genuinely comfortable.",
+          "We recommend discussing food requirements, prayer needs, hotel expectations, and whether you prefer stricter halal arrangements or halal-aware flexibility before any route is quoted.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is halal food easy to find in China?", a: "It depends on the city. Xi'an, Beijing, and some Silk Road destinations can be easier, while scenic areas may require careful planning." },
+      { q: "Can a China itinerary include mosque visits?", a: "Yes. Xi'an, Beijing, Guangzhou, and Silk Road cities can include mosque or Muslim heritage stops where appropriate." },
+      { q: "Is Muslim-friendly China travel suitable for families?", a: "Yes, especially with private transport, researched dining, flexible timing, and clear expectations before arrival." },
+    ],
+  },
+  {
+    title: "How High-Speed Rail Works for Foreign Travelers in China",
+    slug: "china-high-speed-rail-guide-foreign-travelers",
+    category: "Travel Logistics",
+    audience: "Practical planners",
+    readTime: "6 min read",
+    excerpt: "What international travelers should know about China high-speed rail: station timing, luggage, passports, comfort classes, route choices, and when flying is smarter.",
+    promise: "High-speed rail can be one of the best parts of China when it is planned calmly.",
+    image: visuals.lujiazui,
+    relatedTourSlugs: ["golden-triangle-beijing-xian-shanghai", "shanghai-suzhou-hangzhou-food-design", "senior-friendly-classic-china"],
+    metaTitle: "China High-Speed Rail Guide for Foreign Travelers | Private Tour Tips",
+    metaDescription: "Learn how China high-speed rail works for foreign travelers, including timing, passports, luggage, station transfers, comfort classes, and private tour logistics.",
+    sections: [
+      {
+        heading: "The train is easy. The station flow needs planning.",
+        highlight: "China's high-speed rail is fast and impressive, but the comfort comes from managing timing, luggage, and station transfers.",
+        body: [
+          "Many first-time visitors are surprised by how modern and efficient China's high-speed rail network feels. Trains can be a smart way to connect Beijing, Xi'an, Shanghai, Hangzhou, Suzhou, Guilin, and many other cities.",
+          "The stress usually comes from the parts around the train: reaching the right station, passport checks, finding the gate, handling luggage, and knowing how early to arrive.",
+        ],
+      },
+      {
+        heading: "When rail is better than flying",
+        body: [
+          "Rail is often better when city-center station access, predictable timing, and avoided airport procedures save energy. Beijing to Xi'an, Shanghai to Hangzhou, Shanghai to Suzhou, and many lower-Yangtze routes can work beautifully by train.",
+          "Flying may still be better for longer distances or routes where rail time becomes too long. A private itinerary should compare real door-to-door comfort, not just train speed.",
+        ],
+      },
+      {
+        heading: "Choose the class that matches the traveler",
+        body: [
+          "Second class can be practical. First class adds space. Business class can be worth considering for older travelers, luxury trips, or longer train legs where comfort changes the day.",
+          "For families, luggage and station assistance may matter more than seat class. For senior travelers, fewer transfers and better arrival timing may matter most.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Do foreign travelers need passports for China trains?", a: "Yes. Passport information is used for ticketing and station checks, so names and document details must be accurate." },
+      { q: "Is high-speed rail good for families?", a: "Yes, especially on routes where it avoids airports and gives children a smoother travel day. Luggage planning still matters." },
+      { q: "Should I book train tickets myself?", a: "You can, but private tour planning helps coordinate tickets with guides, transfers, hotel timing, and realistic sightseeing schedules." },
+    ],
+  },
+  {
+    title: "Best Time to Visit China for a Private Tour",
+    slug: "best-time-to-visit-china-private-tour",
+    category: "Seasonal Planning",
+    audience: "Date-sensitive travelers",
+    readTime: "6 min read",
+    excerpt: "A practical seasonal guide to China weather, crowds, school holidays, mountain visibility, family travel, and when private planning can make shoulder season better.",
+    promise: "The best time depends on the China you want to feel.",
+    image: visuals.huangshan,
+    relatedTourSlugs: ["shanghai-hangzhou-huangshan-beijing", "guilin-longji-huangshan-landscape", "yunnan-slow-luxury-dali-lijiang-shangri-la-meili"],
+    metaTitle: "Best Time to Visit China | Private Tour Seasonal Guide",
+    metaDescription: "Find the best time to visit China for private tours, family trips, landscapes, cities, pandas, Silk Road, Yunnan, and first-time itineraries.",
+    sections: [
+      {
+        heading: "Spring and autumn are the easiest answers",
+        highlight: "March to May and September to November are usually the most comfortable seasons for a first private China trip.",
+        body: [
+          "Spring brings softer temperatures, flowers, greener landscapes, and comfortable city touring. Autumn often brings clearer skies, beautiful mountain visibility, and excellent conditions for Beijing, Xi'an, Guilin, Yunnan, and Huangshan.",
+          "These seasons are popular for good reason, so private timing still matters. The best guide can shift a day around weather, crowds, and light.",
+        ],
+      },
+      {
+        heading: "Summer can work for families",
+        body: [
+          "Summer is warm and can be humid, but families often travel then because of school schedules. The route should be designed with softer mornings, hotel pools where possible, shaded experiences, and realistic transfer days.",
+          "Yunnan, higher-altitude regions, and some mountain areas can be attractive in summer, while certain city-heavy routes may need more careful pacing.",
+        ],
+      },
+      {
+        heading: "Winter is underrated for the right traveler",
+        body: [
+          "Winter can be crisp and photogenic in Beijing, calmer in some cultural sites, and appealing for travelers who dislike heat. It is not ideal for every landscape, but it can make iconic cities feel more atmospheric.",
+          "Holiday timing, Chinese New Year dates, and regional weather should be considered before committing to a winter route.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "What is the best month to visit China?", a: "April, May, September, and October are often excellent, but the best month depends on the regions you want to include." },
+      { q: "Should I avoid Chinese holidays?", a: "Major holidays can create heavy crowds and higher prices. Private planning can help, but avoiding peak holiday dates is often wise." },
+      { q: "When is the best time for pandas?", a: "Pandas can be seen year-round in Chengdu, with cooler mornings often better for activity." },
+    ],
+  },
+  {
+    title: "China With Older Parents: How to Keep the Trip Comfortable",
+    slug: "china-with-older-parents-senior-friendly-travel",
+    category: "Senior-Friendly Travel",
+    audience: "Multi-generation families",
+    readTime: "7 min read",
+    excerpt: "How to plan China with older parents: walking levels, hotels, guide style, train choices, slower mornings, medical comfort, and routes that still feel meaningful.",
+    promise: "Senior-friendly does not mean less memorable. It means better edited.",
+    image: visuals.templeOfHeaven,
+    relatedTourSlugs: ["senior-friendly-classic-china", "multi-generation-china-beijing-xian-chengdu-hangzhou", "easy-pace-china-shanghai-hangzhou-guilin-chengdu"],
+    metaTitle: "China With Older Parents | Senior-Friendly Private Tour Guide",
+    metaDescription: "Plan a senior-friendly China trip with older parents, including route pacing, hotels, walking levels, private guides, trains, and multi-generation tour ideas.",
+    sections: [
+      {
+        heading: "Comfort starts before the sightseeing",
+        highlight: "The right hotel location, start time, guide style, and transfer plan matter as much as the attractions.",
+        body: [
+          "Older travelers can absolutely enjoy China, but the itinerary should not be a standard route with slower walking added later. It should be built from the beginning around energy, rest, bathrooms, meals, elevators, and hotel convenience.",
+          "Private transfers reduce friction, especially in Beijing, Xi'an, Shanghai, and scenic regions where long walking days can sneak into the schedule.",
+        ],
+      },
+      {
+        heading: "Choose meaningful highlights, not maximum coverage",
+        body: [
+          "A senior-friendly route might include the Great Wall with an easier access section, the Temple of Heaven, the Terracotta Warriors with good timing, West Lake in Hangzhou, pandas in Chengdu, or a calmer Shanghai finale.",
+          "The goal is to keep the trip emotionally rich while removing the parts that feel punishing: too many hotel changes, hard stairs, late flights, and consecutive full-day touring.",
+        ],
+      },
+      {
+        heading: "Multi-generation trips need one shared rhythm",
+        body: [
+          "When children, parents, and grandparents travel together, the route should give each generation something to love without making any one traveler carry the entire pace.",
+          "A private guide can adjust in real time: shorten a museum, add a tea break, split an optional activity, or change the order when weather or energy shifts.",
+        ],
+      },
+    ],
+    faq: [
+      { q: "Is China suitable for older travelers?", a: "Yes, with private planning, good hotels, realistic walking levels, and carefully chosen routes." },
+      { q: "Which China cities are best for senior travelers?", a: "Beijing, Xi'an, Shanghai, Hangzhou, Chengdu, and Guilin can work well when paced correctly." },
+      { q: "Should senior travelers avoid high-speed rail?", a: "Not necessarily. Rail can be very comfortable, but station assistance, luggage, seat class, and transfer timing should be planned." },
+    ],
+  },
+];
+
 const pageMeta: Record<PageKey, { title: string; description: string }> = {
   home: {
     title: "Private China Tours for Families, Couples & Luxury Travelers | China Prime",
@@ -924,6 +1280,10 @@ const pageMeta: Record<PageKey, { title: string; description: string }> = {
     title: "Private China Tours & Custom Itinerary Ideas | China Prime",
     description: "Browse private China tour ideas for first-time visitors, families, Muslim travelers, photographers, food lovers, and luxury couples. Every route is customized.",
   },
+  guide: {
+    title: "China Travel Guide for First-Time Visitors, Families & Luxury Travelers | China Prime",
+    description: "Read practical China travel guides for first-time visitors, families, Muslim travelers, senior-friendly trips, private tour costs, high-speed rail, and itinerary planning.",
+  },
   contact: {
     title: "Plan a Private China Trip With a Local Specialist | China Prime",
     description: "Share your dates, travel style, food needs, pace, and must-see places. China Prime will turn your first ideas into a private China itinerary direction.",
@@ -934,6 +1294,7 @@ function getPageFromPath(pathname: string): PageKey {
   if (pathname.startsWith(routes.destinations)) return "destinations";
   if (pathname.startsWith(routes.experiences)) return "experiences";
   if (pathname.startsWith(routes.tours)) return "tours";
+  if (pathname.startsWith(routes.guide)) return "guide";
   if (pathname.startsWith(routes.contact)) return "contact";
   return "home";
 }
@@ -1018,6 +1379,7 @@ function Header({ page }: { page: PageKey }) {
         <PageLink page="destinations" className={page === "destinations" ? "is-active" : undefined}>Destinations</PageLink>
         <PageLink page="experiences" className={page === "experiences" ? "is-active" : undefined}>Experiences</PageLink>
         <PageLink page="tours" className={page === "tours" ? "is-active" : undefined}>Private Tours</PageLink>
+        <PageLink page="guide" className={page === "guide" ? "is-active" : undefined}>Travel Guide</PageLink>
         <a href={page === "home" ? "#trust" : "/#trust"}>Why Us</a>
       </nav>
       <PageLink className="nav-cta" page="contact" onNavigate={closeMenu}>Start Planning</PageLink>
@@ -1039,6 +1401,7 @@ function Header({ page }: { page: PageKey }) {
           <PageLink page="destinations" className={page === "destinations" ? "is-active" : undefined} onNavigate={closeMenu}>Destinations</PageLink>
           <PageLink page="experiences" className={page === "experiences" ? "is-active" : undefined} onNavigate={closeMenu}>Experiences</PageLink>
           <PageLink page="tours" className={page === "tours" ? "is-active" : undefined} onNavigate={closeMenu}>Private Tours</PageLink>
+          <PageLink page="guide" className={page === "guide" ? "is-active" : undefined} onNavigate={closeMenu}>Travel Guide</PageLink>
           <a href={page === "home" ? "#trust" : "/#trust"} onClick={closeMenu}>Why Us</a>
           <PageLink page="contact" className="mobile-nav-cta" onNavigate={closeMenu}>Start Planning</PageLink>
         </nav>
@@ -1127,6 +1490,7 @@ function HomePage() {
 
       <FeaturedTours limit={3} />
       <TrustSection />
+      <GuidePreview />
       <ReviewSection />
       <PlannerSection />
     </main>
@@ -1277,10 +1641,160 @@ function ToursPage({ pathname }: { pathname: string }) {
   );
 }
 
+function GuidePage({ pathname }: { pathname: string }) {
+  const selectedSlug = pathname.replace(`${routes.guide}/`, "");
+  const selectedArticle = selectedSlug && selectedSlug !== routes.guide ? guideArticles.find((article) => article.slug === selectedSlug) : undefined;
+
+  if (selectedArticle) {
+    return <GuideArticlePage article={selectedArticle} />;
+  }
+
+  const featuredArticle = guideArticles[0];
+  const categories = Array.from(new Set(guideArticles.map((article) => article.category)));
+
+  return (
+    <main id="top">
+      <PageHero
+        eyebrow="China Travel Guide"
+        title="Before China feels far away, make it feel understandable."
+        copy="Clear answers for first-time visitors, families, Muslim travelers, luxury guests, and anyone trying to turn curiosity about China into a trip that feels calm, beautiful, and worth the distance."
+        image={visuals.huangshan}
+      />
+      <section className="guide-intro" aria-labelledby="guide-intro-title">
+        <div>
+          <p className="eyebrow dark">Advisor notes</p>
+          <h2 id="guide-intro-title">These guides are written for the questions travelers ask before they inquire.</h2>
+        </div>
+        <p>
+          The best China planning content should reduce anxiety before it sells anything. Start with safety, pacing, food, rail, budget, and route logic. Then choose a private journey with more confidence.
+        </p>
+      </section>
+
+      <section className="guide-feature" aria-labelledby="guide-feature-title">
+        <Picture image={featuredArticle.image} className="guide-feature-media" />
+        <div className="guide-feature-copy">
+          <p className="eyebrow dark">{featuredArticle.category} / {featuredArticle.readTime}</p>
+          <h2 id="guide-feature-title">{featuredArticle.title}</h2>
+          <p>{featuredArticle.excerpt}</p>
+          <button className="button button-primary" type="button" onClick={() => navigatePath(`${routes.guide}/${featuredArticle.slug}`)}>Start with the planning framework</button>
+        </div>
+      </section>
+
+      <section className="guide-library" aria-labelledby="guide-library-title">
+        <div className="section-heading narrow">
+          <p className="eyebrow dark">Practical travel intelligence</p>
+          <h2 id="guide-library-title">Choose the question closest to what you are wondering.</h2>
+          <div className="guide-category-row" aria-label="Guide categories">
+            {categories.map((category) => <span key={category}>{category}</span>)}
+          </div>
+        </div>
+        <div className="guide-grid">
+          {guideArticles.slice(1).map((article) => (
+            <article className="guide-card" key={article.slug}>
+              <Picture image={article.image} className="guide-card-media" />
+              <div className="guide-card-copy">
+                <span>{article.category} / {article.readTime}</span>
+                <h3>{article.title}</h3>
+                <p>{article.excerpt}</p>
+                <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(`${routes.guide}/${article.slug}`)}>Use this guide</button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="guide-conversion" aria-labelledby="guide-conversion-title">
+        <div>
+          <p className="eyebrow dark">From research to route</p>
+          <h2 id="guide-conversion-title">If you are comparing tabs, you are probably ready for a first route idea.</h2>
+        </div>
+        <div className="comparison-grid">
+          <article><strong>Tell us your concerns</strong><p>Safety, children, halal-aware dining, budget, pace, rail, hotels, or older parents. The question you are stuck on is often the key to the right route.</p></article>
+          <article><strong>We translate them into structure</strong><p>City order, nights per stop, transport, daily rhythm, guide style, and hotel level should all answer your real concerns.</p></article>
+          <article><strong>You refine before you commit</strong><p>The first route is a conversation starter. It becomes your journey only after pace, comfort, and value feel right.</p></article>
+        </div>
+      </section>
+      <PlannerSection />
+    </main>
+  );
+}
+
+function GuideArticlePage({ article }: { article: GuideArticle }) {
+  const relatedTours = article.relatedTourSlugs
+    .map((slug) => tours.find((tour) => tour.slug === slug))
+    .filter((tour): tour is Tour => Boolean(tour));
+
+  return (
+    <main id="top">
+      <section className="guide-article-hero" aria-labelledby="guide-article-title">
+        <Picture image={article.image} className="page-hero-media" loading="eager" />
+        <div className="page-hero-overlay" />
+        <div className="guide-article-hero-copy">
+          <button className="back-link" type="button" onClick={() => navigateTo("guide")}>Back to China Travel Guide</button>
+          <p className="eyebrow">{article.category} / {article.audience} / {article.readTime}</p>
+          <h1 id="guide-article-title">{article.title}</h1>
+          <p>{article.promise}</p>
+        </div>
+      </section>
+
+      <article className="guide-article-shell">
+        <aside className="guide-article-aside" aria-label="Guide summary">
+          <span>Advisor summary</span>
+          <strong>{article.promise}</strong>
+          <p>{article.excerpt}</p>
+          <button className="button button-primary" type="button" onClick={() => navigatePath(`${routes.contact}?guide=${article.slug}`)}>Ask for a route based on this</button>
+        </aside>
+        <div className="guide-article-body">
+          {article.sections.map((section) => (
+            <section className="guide-story-block" key={section.heading}>
+              <h2>{section.heading}</h2>
+              {section.highlight ? <blockquote>{section.highlight}</blockquote> : null}
+              {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </section>
+          ))}
+        </div>
+      </article>
+
+      <section className="guide-faq" aria-labelledby="guide-faq-title">
+        <p className="eyebrow dark">Traveler questions</p>
+        <h2 id="guide-faq-title">The questions that usually decide the route.</h2>
+        <div className="faq-grid">
+          {article.faq.map((item) => <article key={item.q}><strong>{item.q}</strong><p>{item.a}</p></article>)}
+        </div>
+      </section>
+
+      {relatedTours.length ? (
+        <section className="related-journeys" aria-labelledby="guide-related-title">
+          <div className="section-heading narrow">
+            <p className="eyebrow dark">Related private journeys</p>
+            <h2 id="guide-related-title">Route ideas that answer this guide in practice.</h2>
+          </div>
+          <div className="tour-grid">
+            {relatedTours.map((tour) => (
+              <article className="tour-card trip-card" key={tour.slug}>
+                <button className="trip-card-link" type="button" onClick={() => navigatePath(`${routes.tours}/${tour.slug}`)} aria-label={`View ${tour.title}`} />
+                <Picture image={tour.image} className="tour-media" />
+                <div className="tour-body">
+                  <div className="tour-meta"><span>{tour.days}</span><span>{tour.priceFrom}</span></div>
+                  <h3>{tour.title}</h3>
+                  <p>{tour.copy}</p>
+                  <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(`${routes.tours}/${tour.slug}`)}>Compare this route</button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+      <PlannerSection />
+    </main>
+  );
+}
+
 function ContactPage({ search }: { search: string }) {
   const params = new URLSearchParams(search);
   const selectedTour = tours.find((tour) => tour.slug === params.get("journey"));
   const selectedStyle = travelStyles.find((style) => style.id === params.get("style"));
+  const selectedGuide = guideArticles.find((article) => article.slug === params.get("guide"));
   const travelStyleChoices = ["First-time China", "Family trip", "Luxury pace", "Muslim-friendly", "Food journey", "Photography", "Soft adventure", "Senior-friendly"];
   const briefTemplates = [
     "We are visiting China for the first time and want the icons without feeling rushed.",
@@ -1290,6 +1804,8 @@ function ContactPage({ search }: { search: string }) {
   ];
   const selectedBrief = selectedTour && selectedStyle
     ? `Hi China Prime DMC,\n\nI am interested in the ${selectedStyle.name} version of this journey.\n\nJourney: ${selectedTour.title}\nRoute: ${selectedTour.places}\nSelected Travel Style: ${selectedStyle.name}\nBudget Guide: ${selectedStyle.price}\n\nApproximate travel dates:\nNumber of travelers:\nAges of children or older travelers:\nHotel preference:\nFood requirements:\nPreferred pace:\nQuestions:\n`
+    : selectedGuide
+      ? `Hi China Prime DMC,\n\nI read your guide: ${selectedGuide.title}\n\nI would like a first private China route idea based on this concern.\n\nApproximate travel dates:\nNumber of travelers:\nTraveler ages:\nPlaces we are considering:\nMain concerns:\nHotel preference:\nFood requirements:\nPreferred pace:\nBudget range:\n`
     : "";
 
   return (
@@ -1708,6 +2224,29 @@ function ReviewSection() {
   );
 }
 
+function GuidePreview() {
+  return (
+    <section className="guide-preview" aria-labelledby="guide-preview-title">
+      <div className="guide-preview-copy">
+        <p className="eyebrow dark">China Travel Guide</p>
+        <h2 id="guide-preview-title">The answers you want before the itinerary begins.</h2>
+        <p>
+          Safety, cost, children, halal-aware dining, high-speed rail, weather, and route logic. These guides help you understand China before you ask us to design it.
+        </p>
+        <PageLink className="button button-dark" page="guide">Read the planning guides</PageLink>
+      </div>
+      <div className="guide-preview-list">
+        {guideArticles.slice(0, 3).map((article) => (
+          <button type="button" key={article.slug} onClick={() => navigatePath(`${routes.guide}/${article.slug}`)}>
+            <span>{article.category}</span>
+            <strong>{article.title}</strong>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function PlannerSection() {
   return (
     <section className="planner" aria-labelledby="planner-title">
@@ -1765,6 +2304,7 @@ function Footer() {
         <PageLink page="destinations">Destinations</PageLink>
         <PageLink page="experiences">Experiences</PageLink>
         <PageLink page="tours">Private Tours</PageLink>
+        <PageLink page="guide">Travel Guide</PageLink>
         <PageLink page="contact">Contact</PageLink>
       </div>
     </footer>
@@ -1775,10 +2315,14 @@ export default function App() {
   const locationState = useLocationState();
   const page = locationState.page;
   const activeTour = page === "tours" ? tours.find((tour) => locationState.pathname.endsWith(`/${tour.slug}`)) : undefined;
+  const activeArticle = page === "guide" ? guideArticles.find((article) => locationState.pathname.endsWith(`/${article.slug}`)) : undefined;
   const meta = useMemo(() => activeTour ? {
     title: `${activeTour.title} | Private China Tour | China Prime`,
     description: activeTour.copy,
-  } : pageMeta[page], [activeTour, page]);
+  } : activeArticle ? {
+    title: activeArticle.metaTitle,
+    description: activeArticle.metaDescription,
+  } : pageMeta[page], [activeArticle, activeTour, page]);
 
   useEffect(() => {
     document.title = meta.title;
@@ -1788,7 +2332,7 @@ export default function App() {
   return (
     <div className="site-shell">
       <Header page={page} />
-      {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
+      {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
       <Footer />
       {page !== "contact" ? <PageLink className="floating-inquiry" page="contact">Start planning</PageLink> : null}
     </div>
