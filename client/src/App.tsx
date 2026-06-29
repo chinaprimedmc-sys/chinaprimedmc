@@ -1774,11 +1774,11 @@ function HomePage() {
             <PageLink className="button hero-glass-button" page="tours">View Private Journeys</PageLink>
             <button className="button hero-glass-button hero-glass-advisor" type="button" onClick={() => navigatePath(`${routes.contact}?type=travel-advisor`)}>For Travel Advisors</button>
           </div>
-        </div>
-        <div className="hero-proof" aria-label="Travel planning highlights">
-          <span>Licensed inbound agency</span>
-          <span>Founded 2012</span>
-          <span>Private China specialists</span>
+          <div className="hero-proof" aria-label="Travel planning highlights">
+            <span>Licensed inbound agency</span>
+            <span>Founded 2012</span>
+            <span>Private China specialists</span>
+          </div>
         </div>
       </section>
 

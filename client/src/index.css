@@ -5301,3 +5301,115 @@ h1 {
     padding: 5px 8px;
   }
 }
+
+/* Hero balance and refined floating inquiry button. */
+.hero-content h1 {
+  font-size: clamp(3.8rem, 7.4vw, 8rem);
+  line-height: 0.94;
+}
+
+.hero-proof {
+  bottom: auto;
+  left: auto;
+  margin-top: 2px;
+  position: relative;
+  transform: none;
+  z-index: 4;
+}
+
+.contact-dock-trigger {
+  -webkit-backdrop-filter: blur(26px) saturate(1.45);
+  backdrop-filter: blur(26px) saturate(1.45);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.24)),
+    rgba(255, 255, 255, 0.26);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 14px 38px rgba(20, 24, 22, 0.13);
+  min-height: 46px;
+  padding: 0 15px;
+}
+
+.contact-dock-trigger span {
+  font-size: 0.8rem;
+}
+
+.contact-dock-trigger-icon {
+  background: rgba(255, 255, 255, 0.28);
+  height: 24px;
+  width: 24px;
+}
+
+@media (max-width: 680px) {
+  .hero-content {
+    padding-bottom: 104px;
+  }
+
+  h1,
+  .hero-content h1 {
+    font-size: clamp(2.12rem, 9.4vw, 2.72rem);
+    line-height: 1.02;
+    max-width: 12ch;
+  }
+
+  .hero-proof {
+    bottom: auto;
+    gap: 8px;
+    left: auto;
+    margin-top: 4px;
+    padding: 0 10px;
+    position: relative;
+    right: auto;
+    width: min(100%, 318px);
+  }
+
+  .hero-proof span {
+    font-size: 0.48rem;
+    min-height: 32px;
+  }
+
+  .contact-dock {
+    bottom: max(12px, env(safe-area-inset-bottom));
+    left: auto;
+    right: 14px;
+    justify-items: end;
+  }
+
+  .contact-dock-trigger {
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)),
+      rgba(255, 255, 255, 0.24);
+    border-color: rgba(255, 255, 255, 0.66);
+    color: var(--ink);
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 13px;
+    width: auto;
+  }
+
+  .contact-dock-trigger:hover,
+  .contact-dock.is-open .contact-dock-trigger {
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.26)),
+      rgba(255, 255, 255, 0.3);
+    color: var(--ink);
+  }
+
+  .contact-dock-trigger span {
+    font-size: 0.72rem;
+  }
+
+  .contact-dock-trigger-icon {
+    height: 22px;
+    width: 22px;
+  }
+
+  .contact-dock-trigger .mobile-label {
+    display: inline;
+  }
+
+  .contact-dock-menu {
+    width: min(calc(100vw - 28px), 360px);
+  }
+}
