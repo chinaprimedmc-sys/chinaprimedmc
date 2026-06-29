@@ -3137,6 +3137,80 @@ function RouteBuilder() {
   );
 }
 
+const contactChannels = [
+  {
+    name: "WhatsApp",
+    detail: "Fastest for quick questions",
+    href: "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20to%20plan%20a%20private%20China%20trip.",
+    icon: "WA",
+  },
+  {
+    name: "Email",
+    detail: "Best for detailed trip briefs",
+    href: "mailto:chinaprimedmc@gmail.com?subject=Plan%20my%20private%20China%20trip&body=Travel%20dates:%0ATravelers:%0APlaces%20we%20are%20considering:%0AFood%20or%20accessibility%20needs:%0APreferred%20pace:%0AQuestions:",
+    icon: "EM",
+  },
+  {
+    name: "Instagram",
+    detail: "See recent China moments",
+    href: "https://www.instagram.com/chinaprimedmc/",
+    icon: "IG",
+  },
+  {
+    name: "Facebook",
+    detail: "Updates, reviews, and messages",
+    href: "https://www.facebook.com/chinaprimedmc",
+    icon: "FB",
+  },
+  {
+    name: "TikTok",
+    detail: "Short travel scenes",
+    href: "https://www.tiktok.com/@chinaprimedmc",
+    icon: "TT",
+  },
+];
+
+function ContactDock() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
+  return (
+    <div className={`contact-dock ${open ? "is-open" : ""}`}>
+      <button className="contact-dock-backdrop" type="button" aria-label="Close contact options" onClick={() => setOpen(false)} />
+      <div className="contact-dock-menu" aria-hidden={!open}>
+        <div className="contact-dock-menu-head">
+          <span>Start the conversation your way</span>
+          <button type="button" aria-label="Close contact options" onClick={() => setOpen(false)}>×</button>
+        </div>
+        <div className="contact-channel-list">
+          {contactChannels.map((channel) => (
+            <a className="contact-channel" href={channel.href} target="_blank" rel="noreferrer" key={channel.name} onClick={() => setOpen(false)}>
+              <span className="contact-channel-icon">{channel.icon}</span>
+              <span>
+                <strong>{channel.name}</strong>
+                <em>{channel.detail}</em>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <button className="contact-dock-trigger" type="button" aria-expanded={open} aria-controls="contact-dock-menu" onClick={() => setOpen((value) => !value)}>
+        <span className="contact-dock-trigger-icon">••</span>
+        <span className="desktop-label">Ask a China Specialist</span>
+        <span className="mobile-label">Plan My China Trip</span>
+      </button>
+    </div>
+  );
+}
+
 function Footer() {
   return (
     <footer className="footer">
@@ -3183,7 +3257,7 @@ export default function App() {
       <Header page={page} />
       {page === "destinations" ? <DestinationsPage pathname={locationState.pathname} /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "stories" ? <StoriesPage /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
       <Footer />
-      {page !== "contact" ? <PageLink className="floating-inquiry" page="contact">Start planning</PageLink> : null}
+      {page !== "contact" ? <ContactDock /> : null}
     </div>
   );
 }
