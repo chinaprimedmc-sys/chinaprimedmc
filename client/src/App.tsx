@@ -369,6 +369,29 @@ const heroImage: ImageAsset = {
   alt: "Jiuzhaigou Five Flower Lake with clear blue water and mountain forest in Sichuan China",
 };
 
+const industryEvents = [
+  {
+    title: "ICGTE Kuala Lumpur 2026",
+    date: "April 21, 2026",
+    location: "Kuala Lumpur, Malaysia",
+    image: {
+      jpg: "/trade-shows/icgte-2026-kuala-lumpur/china-prime-dmc-icgte-2026-kuala-lumpur-travel-trade-buyer-meeting.jpeg",
+      alt: "China Prime DMC meeting travel trade buyers at ICGTE 2026 in Kuala Lumpur",
+    },
+    summary: "Conversations with Southeast Asian travel buyers sharpened how we explain private China journeys for families, Muslim travelers, and first-time visitors who need confidence before they book.",
+  },
+  {
+    title: "ICGTE Singapore 2026",
+    date: "April 23, 2026",
+    location: "Singapore",
+    image: {
+      jpg: "/trade-shows/icgte-2026-singapore/china-prime-dmc-icgte-2026-singapore-one-on-one-buyer-consultation.jpeg",
+      alt: "China Prime DMC one on one buyer consultation at ICGTE 2026 in Singapore",
+    },
+    summary: "Meeting regional partners in Singapore helped us translate China planning into clearer language: comfort, pacing, guide quality, food needs, and the small details that make private travel feel easy.",
+  },
+];
+
 const travelStyles: TravelStyle[] = [
   {
     id: "classic",
@@ -1840,9 +1863,36 @@ function HomePage() {
       <TrustSection />
       <RouteIdeaBuilder placement="home" />
       <GuidePreview />
+      <IndustryEventsSection />
       <ReviewSection />
       <PlannerSection />
     </main>
+  );
+}
+
+function IndustryEventsSection() {
+  return (
+    <section className="industry-events" id="industry-events" aria-labelledby="industry-events-title">
+      <div className="industry-events-copy">
+        <p className="eyebrow dark">Global travel connections</p>
+        <h2 id="industry-events-title">We stay close to the people who send travelers to China.</h2>
+        <p>
+          Trade shows are not decoration for us. They are where we listen to travel advisors, regional buyers, and partners who hear the real questions travelers ask before choosing China: comfort, language, food, pace, value, and trust.
+        </p>
+      </div>
+      <div className="industry-event-grid" aria-label="China Prime DMC travel industry event highlights">
+        {industryEvents.map((event) => (
+          <article className="industry-event-card" key={event.title}>
+            <Picture image={event.image} className="industry-event-media" />
+            <div className="industry-event-body">
+              <span>{event.date} / {event.location}</span>
+              <h3>{event.title}</h3>
+              <p>{event.summary}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -3281,6 +3331,7 @@ function Footer() {
         <PageLink page="tours">Private Tours</PageLink>
         <PageLink page="guide">Travel Guide</PageLink>
         <PageLink page="stories">Reviews</PageLink>
+        <a href="/#industry-events">Industry Events</a>
         <PageLink page="contact">Contact</PageLink>
       </div>
     </footer>
