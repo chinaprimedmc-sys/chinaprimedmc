@@ -780,6 +780,42 @@ const destinations: Destination[] = [
   },
 ];
 
+const destinationMapMarkers = [
+  { label: "Dunhuang", shortLabel: "DH", slug: "silk-road-dunhuang", x: 35, y: 31 },
+  { label: "Beijing", shortLabel: "BJ", slug: "classic-china", x: 70, y: 31 },
+  { label: "Xi'an", shortLabel: "XA", slug: "classic-china", x: 58, y: 43 },
+  { label: "Shanghai", shortLabel: "SH", slug: "classic-china", x: 79, y: 49 },
+  { label: "Chengdu", shortLabel: "CD", slug: "chengdu-sichuan", x: 49, y: 51 },
+  { label: "Zhangjiajie", shortLabel: "ZJJ", slug: "zhangjiajie", x: 65, y: 54 },
+  { label: "Yunnan", shortLabel: "YN", slug: "yunnan-highlands", x: 47, y: 62 },
+  { label: "Guilin", shortLabel: "GL", slug: "guilin-yangshuo", x: 60, y: 64 },
+];
+
+function ChinaMapOutline() {
+  return (
+    <svg className="china-map-outline" viewBox="0 0 100 76" aria-hidden="true" focusable="false">
+      <path
+        className="china-map-land"
+        d="M0.8 35.5 0 30.5 3.4 22.6 3.1 12.6 11.8 7.6 19.8 10.4 29.1 9.6 36.8 13.4 44.7 11.2 52.8 14.2 57.3 8.2 66.8 5.4 74.7 2.2 85.6 8.4 99.2 12.5 94.4 21.8 87.8 27.8 81.6 31.7 78 39.1 78.2 48.2 76.2 57.5 70.1 66.4 61.2 71.2 51.8 72.1 44.9 68.4 39.5 62.6 30.2 58.2 21.1 55.1 12.4 49 4.3 43.2 0.8 35.5Z"
+      />
+      <path
+        className="china-map-coast"
+        d="M74.7 2.2c1.5 5.8 5.7 10.2 12.8 13.2M94.4 21.8c-8.8 4.6-14 10.3-15.7 17.2M78.2 48.2c-2.6 6.9-5.9 12.9-9.9 18M51.8 72.1c-1.8-6.1-6-10.4-12.3-12.9M21.1 55.1c-0.9-7.2-5.1-12.5-12.4-15.9M3.4 22.6c7.8 3.2 14.3 3.1 19.3-0.3M36.8 13.4c5.2 3.3 12 3.5 20.5 0.8"
+      />
+      <path className="china-map-island" d="M62.8 74.1c2.4-1.4 5.3-1.4 7.4 0.2-1.4 1.9-5.4 2.1-7.4-0.2Z" />
+      <path className="china-map-island china-map-island-taiwan" d="M86.2 61.4c2.4 3.3 2.4 7.4-0.2 11.3-2.3-3.4-2.2-7.9 0.2-11.3Z" />
+      <path
+        className="china-map-route"
+        d="M35 31 C45 29 53 35 58 43 S70 47 79 49"
+      />
+      <path
+        className="china-map-route"
+        d="M49 51 C53 57 56 61 60 64"
+      />
+    </svg>
+  );
+}
+
 const experiences: Experience[] = [
   {
     title: "Eat where the city actually eats",
@@ -2163,17 +2199,19 @@ function DestinationsPage({ pathname }: { pathname: string }) {
           <p className="eyebrow dark">China at a glance</p>
           <h2 id="destination-orientation-title">Where each chapter sits in the journey.</h2>
           <p>China is not one landscape. It is imperial north, modern east, panda country, karst south, highland southwest, and desert west. The best route chooses contrast without making the trip feel scattered.</p>
-          <div className="destination-map" aria-label="Simplified China destination orientation map">
-            {destinations.map((destination) => (
+          <div className="destination-map" aria-label="China destination orientation map with major cities marked">
+            <ChinaMapOutline />
+            {destinationMapMarkers.map((marker) => (
               <button
                 className="map-pin"
                 type="button"
-                key={destination.slug}
-                style={{ left: `${destination.mapPosition.x}%`, top: `${destination.mapPosition.y}%` }}
-                onClick={() => navigatePath(`${routes.destinations}/${destination.slug}`)}
-                aria-label={`Open ${destination.name}`}
+                key={`${marker.slug}-${marker.label}`}
+                style={{ left: `${marker.x}%`, top: `${marker.y}%` }}
+                onClick={() => navigatePath(`${routes.destinations}/${marker.slug}`)}
+                aria-label={`Open ${marker.label} destination guide`}
               >
-                <span>{destination.mapLabel}</span>
+                <span className="pin-label-full">{marker.label}</span>
+                <span className="pin-label-short">{marker.shortLabel}</span>
               </button>
             ))}
           </div>
