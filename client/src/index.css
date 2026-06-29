@@ -1946,13 +1946,13 @@ figcaption span {
 
 .china-map-outline {
   filter: drop-shadow(0 22px 34px rgba(35, 72, 59, 0.16));
-  height: 80%;
+  height: 96%;
   left: 50%;
-  max-width: 92%;
+  max-width: 96%;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 92%;
+  width: 96%;
   z-index: 1;
 }
 
@@ -1963,45 +1963,29 @@ figcaption span {
   stroke-width: 1.25;
 }
 
-.china-map-island {
-  fill: rgba(241, 245, 238, 0.94);
-  stroke: rgba(35, 72, 59, 0.5);
-  stroke-linejoin: round;
-  stroke-width: 0.78;
-}
-
-.china-map-coast {
-  fill: none;
-  opacity: 0.55;
-  stroke: rgba(35, 72, 59, 0.28);
-  stroke-linecap: round;
-  stroke-width: 0.6;
-}
-
 .china-map-route {
   fill: none;
   opacity: 0.44;
   stroke: rgba(109, 75, 63, 0.55);
-  stroke-dasharray: 2 2.8;
+  stroke-dasharray: 8 10;
   stroke-linecap: round;
-  stroke-width: 0.72;
+  stroke-width: 3;
 }
 
 .map-pin {
   align-items: center;
-  background: rgba(255, 255, 255, 0.74);
-  backdrop-filter: blur(18px) saturate(150%);
-  border: 1px solid rgba(23, 22, 21, 0.14);
+  background: transparent;
+  border: 0;
   border-radius: 999px;
-  box-shadow: 0 14px 34px rgba(23, 22, 21, 0.14);
   color: var(--ink);
   cursor: pointer;
-  display: inline-flex;
+  display: block;
   font: inherit;
-  gap: 5px;
-  min-height: 30px;
-  padding: 0 10px 0 8px;
+  height: 18px;
+  min-height: 0;
+  padding: 0;
   position: absolute;
+  width: 18px;
   transform: translate(-50%, -50%);
   transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
   z-index: 3;
@@ -2013,16 +1997,30 @@ figcaption span {
   border-radius: 999px;
   box-shadow: 0 0 0 5px rgba(35, 72, 59, 0.1);
   content: "";
-  flex: 0 0 auto;
-  height: 9px;
-  width: 9px;
+  height: 12px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  z-index: 2;
 }
 
 .map-pin:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(35, 72, 59, 0.34);
-  box-shadow: 0 18px 38px rgba(23, 22, 21, 0.18);
   transform: translate(-50%, -50%) scale(1.05);
+}
+
+.map-pin::after {
+  background: rgba(35, 72, 59, 0.28);
+  content: "";
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: rotate(var(--line-angle, 0deg));
+  transform-origin: left center;
+  width: 28px;
+  z-index: 1;
 }
 
 .map-pin:focus-visible {
@@ -2031,11 +2029,26 @@ figcaption span {
 }
 
 .map-pin span {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(23, 22, 21, 0.12);
+  border-radius: 999px;
+  box-shadow: 0 14px 30px rgba(23, 22, 21, 0.12);
   font-size: 0.66rem;
   font-weight: 860;
   letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 9px 11px;
+  position: absolute;
+  transform: translate(var(--label-x), var(--label-y));
   text-transform: uppercase;
   white-space: nowrap;
+  z-index: 3;
+}
+
+.map-pin:hover span {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(35, 72, 59, 0.3);
 }
 
 .pin-label-short {
@@ -3667,27 +3680,32 @@ h1 {
   }
 
   .china-map-outline {
-    height: 68%;
-    top: 47%;
+    height: 94%;
+    top: 49%;
     width: 112%;
   }
 
   .map-pin {
-    gap: 4px;
-    min-height: 26px;
-    padding: 0 6px 0 6px;
+    height: 16px;
+    width: 16px;
   }
 
   .map-pin::before {
     border-width: 1.5px;
     box-shadow: 0 0 0 4px rgba(35, 72, 59, 0.1);
-    height: 7px;
-    width: 7px;
+    height: 10px;
+    width: 10px;
+  }
+
+  .map-pin::after {
+    display: none;
   }
 
   .map-pin span {
     font-size: 0.52rem;
     letter-spacing: 0.03em;
+    padding: 7px 8px;
+    transform: translate(-50%, -32px);
   }
 
   .pin-label-full {
