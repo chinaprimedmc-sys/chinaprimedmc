@@ -360,7 +360,7 @@ const visuals = {
   ),
 };
 
-const heroImage = visuals.zhangjiajieForest;
+const heroImage = visuals.forbiddenCity;
 
 const travelStyles: TravelStyle[] = [
   {
@@ -1756,20 +1756,22 @@ function HomePage() {
         <Picture image={heroImage} className="hero-media" loading="eager" />
         <div className="hero-overlay" />
         <div className="hero-content">
+          <p className="hero-brandmark">China Prime DMC</p>
           <p className="eyebrow">Private China journeys for international travelers</p>
-          <h1 id="hero-title">China should feel extraordinary, not complicated.</h1>
+          <h1 id="hero-title">China, planned like it matters.</h1>
           <p className="hero-copy">
-            We design private China trips around the way you actually travel: your pace, your food needs, your family rhythm, your first questions, and the moments you will remember years later.
+            Private journeys for travelers who want the icons, the quiet moments, and every detail handled with care.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#build-my-china-route">Build my itinerary</a>
-            <PageLink className="button button-ghost" page="destinations">See where China begins</PageLink>
+            <a className="button hero-glass-button hero-glass-primary" href="#build-my-china-route">Start Planning My Trip</a>
+            <PageLink className="button hero-glass-button" page="tours">View Private Journeys</PageLink>
+            <a className="button hero-glass-button hero-glass-advisor" href="/contact?type=travel-advisor">For Travel Advisors</a>
           </div>
         </div>
         <div className="hero-proof" aria-label="Travel planning highlights">
+          <span>Licensed inbound agency</span>
           <span>Founded 2012</span>
-          <span>Private guides</span>
-          <span>Family & halal-aware planning</span>
+          <span>Private China specialists</span>
         </div>
       </section>
 
@@ -2359,6 +2361,7 @@ function ContactPage({ search }: { search: string }) {
   const selectedStyle = travelStyles.find((style) => style.id === params.get("style"));
   const selectedGuide = guideArticles.find((article) => article.slug === params.get("guide"));
   const builderBrief = params.get("builder") ?? "";
+  const isAdvisorInquiry = params.get("type") === "travel-advisor";
   const travelStyleChoices = ["First-time China", "Family trip", "Luxury pace", "Muslim-friendly", "Food journey", "Photography", "Soft adventure", "Senior-friendly"];
   const destinationChoices = ["Beijing", "Shanghai", "Xi'an", "Chengdu", "Guilin / Yangshuo", "Zhangjiajie", "Yunnan", "Silk Road", "Huangshan", "Not sure yet"];
   const concernChoices = ["Will the pace be too tiring?", "Can kids or older parents enjoy it?", "Will food be comfortable?", "Do we need halal-aware planning?", "How do trains and payments work?", "How much should we budget?", "How do we avoid a shopping tour?", "Which cities actually belong?"];
@@ -2369,7 +2372,9 @@ function ContactPage({ search }: { search: string }) {
     "We care most about food, culture, local life, and a route that feels personal.",
     "We need halal-aware planning, private transport, and dining confidence.",
   ];
-  const selectedBrief = builderBrief || (selectedTour && selectedStyle
+  const selectedBrief = builderBrief || (isAdvisorInquiry
+    ? `Hi China Prime DMC,\n\nI am a travel advisor interested in working with your team for private China journeys.\n\nAgency name:\nMy market / client base:\nTypical client profile:\nDestinations or travel styles my clients ask about:\nUpcoming inquiry or group size:\nWhat I need from a China DMC partner:\nQuestions:\n`
+    : selectedTour && selectedStyle
     ? `Hi China Prime DMC,\n\nI am interested in the ${selectedStyle.name} version of this journey.\n\nJourney: ${selectedTour.title}\nRoute: ${selectedTour.places}\nSelected Travel Style: ${selectedStyle.name}\nBudget Guide: ${selectedStyle.price}\n\nApproximate travel dates:\nNumber of travelers:\nAges of children or older travelers:\nHotel preference:\nFood requirements:\nPreferred pace:\nMain concern to solve:\nWhat we want this trip to feel like:\nQuestions:\n`
     : selectedGuide
       ? `Hi China Prime DMC,\n\nI read your guide: ${selectedGuide.title}\n\nI would like a first private China route idea based on this concern.\n\nApproximate travel dates:\nNumber of travelers:\nTraveler ages:\nPlaces we are considering:\nMain concerns:\nHotel preference:\nFood requirements:\nPreferred pace:\nBudget range:\n`
