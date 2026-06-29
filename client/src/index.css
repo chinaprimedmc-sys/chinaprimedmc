@@ -274,7 +274,11 @@ h1 {
 .destinations,
 .split-story,
 .tours,
-.reviews {
+.reviews,
+.related-reviews,
+.stories-intro,
+.stories-filter,
+.stories-cta {
   padding: clamp(74px, 10vw, 140px) clamp(20px, 5vw, 72px);
 }
 
@@ -519,26 +523,47 @@ h1 {
   color: rgba(255, 255, 255, 0.82);
 }
 
-.review-grid {
+.review-grid,
+.review-wall {
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .review-card {
+  border: 1px solid rgba(23, 22, 21, 0.07);
   border-radius: var(--radius-lg);
   display: grid;
-  gap: 28px;
+  gap: 22px;
   margin: 0;
-  min-height: 300px;
+  min-height: 330px;
   padding: clamp(24px, 3vw, 34px);
+}
+
+.review-card-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.review-card-meta span {
+  background: rgba(35, 72, 59, 0.08);
+  border: 1px solid rgba(35, 72, 59, 0.12);
+  border-radius: 999px;
+  color: var(--forest);
+  font-size: 0.7rem;
+  font-weight: 840;
+  letter-spacing: 0.1em;
+  padding: 8px 10px;
+  text-transform: uppercase;
 }
 
 blockquote {
   color: var(--ink);
-  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-size: clamp(1.18rem, 1.75vw, 1.78rem);
   letter-spacing: -0.03em;
-  line-height: 1.2;
+  line-height: 1.25;
   margin: 0;
 }
 
@@ -556,6 +581,110 @@ figcaption span {
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.5;
+}
+
+.related-reviews {
+  background:
+    linear-gradient(180deg, #fbfbf8 0%, #f4f6f1 100%);
+}
+
+.stories-intro {
+  align-items: end;
+  background: var(--white);
+  display: grid;
+  gap: clamp(28px, 7vw, 96px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
+}
+
+.stories-intro h2,
+.stories-cta h2 {
+  color: var(--ink);
+  font-size: clamp(2.25rem, 4.8vw, 5.4rem);
+  font-weight: 620;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  margin-top: 14px;
+}
+
+.stories-metrics {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stories-metrics article {
+  background:
+    linear-gradient(135deg, rgba(35, 72, 59, 0.08), rgba(237, 241, 236, 0.92)),
+    var(--warm);
+  border: 1px solid rgba(35, 72, 59, 0.1);
+  border-radius: 26px;
+  display: grid;
+  gap: 6px;
+  padding: 22px;
+}
+
+.stories-metrics strong {
+  color: var(--forest);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+.stories-metrics span,
+.story-count {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 780;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stories-filter {
+  background:
+    linear-gradient(180deg, #fbfbf8 0%, #f4f6f1 100%);
+}
+
+.stories-filter-options {
+  margin-bottom: 16px;
+}
+
+.story-count {
+  margin-bottom: 24px;
+}
+
+.review-wall {
+  align-items: start;
+}
+
+.review-wall .review-card:nth-child(6n + 1),
+.review-wall .review-card:nth-child(6n + 4) {
+  min-height: 410px;
+}
+
+.review-wall .review-card:nth-child(5n + 2) {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 236, 0.86)),
+    var(--white);
+}
+
+.stories-cta {
+  background: var(--forest);
+  color: var(--white);
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+}
+
+.stories-cta .eyebrow,
+.stories-cta h2,
+.stories-cta p {
+  color: var(--white);
+}
+
+.stories-cta p {
+  font-size: clamp(1rem, 1.22vw, 1.18rem);
+  line-height: 1.74;
+  max-width: 820px;
 }
 
 .planner {
@@ -640,13 +769,15 @@ figcaption span {
 
   .destination-grid,
   .tour-grid,
-  .review-grid {
+  .review-grid,
+  .review-wall {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .intro-grid,
   .split-story,
-  .trust {
+  .trust,
+  .stories-intro {
     grid-template-columns: 1fr;
   }
 
@@ -707,6 +838,10 @@ figcaption span {
   .split-story,
   .tours,
   .reviews,
+  .related-reviews,
+  .stories-intro,
+  .stories-filter,
+  .stories-cta,
   .trust {
     padding-left: 18px;
     padding-right: 18px;
@@ -723,7 +858,9 @@ figcaption span {
 
   .destination-grid,
   .tour-grid,
-  .review-grid {
+  .review-grid,
+  .review-wall,
+  .stories-metrics {
     grid-template-columns: 1fr;
   }
 
@@ -1794,6 +1931,8 @@ h1 {
   .split-copy h2,
   .trust h2,
   .planner-card h2,
+  .stories-intro h2,
+  .stories-cta h2,
   .page-intro h2,
   .tour-filter-story h2,
   .route-builder h2,
@@ -1814,6 +1953,10 @@ h1 {
   .split-story,
   .tours,
   .reviews,
+  .related-reviews,
+  .stories-intro,
+  .stories-filter,
+  .stories-cta,
   .trust,
   .page-intro,
   .tour-filter-story,

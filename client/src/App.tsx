@@ -80,7 +80,18 @@ type GuideArticle = {
   metaDescription: string;
 };
 
-type PageKey = "home" | "destinations" | "experiences" | "tours" | "guide" | "contact";
+type Review = {
+  quote: string;
+  name: string;
+  location: string;
+  language: "EN" | "DE" | "FR" | "IT";
+  travelerType: string;
+  trip: string;
+  tourSlug: string;
+  tags: string[];
+};
+
+type PageKey = "home" | "destinations" | "experiences" | "tours" | "guide" | "stories" | "contact";
 
 type LocationState = {
   page: PageKey;
@@ -107,6 +118,7 @@ const routes: Record<PageKey, string> = {
   experiences: "/experiences",
   tours: "/private-china-tours",
   guide: "/china-travel-guide",
+  stories: "/china-tour-reviews",
   contact: "/contact",
 };
 
@@ -995,23 +1007,85 @@ const tours: Tour[] = [
   makeTour({ title: "Easy-Pace China: Cities, Gardens and Pandas", slug: "easy-pace-china-shanghai-hangzhou-guilin-chengdu", days: 10, places: ["Shanghai", "Hangzhou", "Guilin", "Chengdu"], fit: "Easy pace / Families / Senior-friendly", pace: "Gentle, scenic, private", audiences: ["Senior-friendly", "Families", "Couples"], themes: ["Easy pace", "Nature", "Pandas"], image: journeyCovers.easyPaceChinaShanghaiHangzhouGuilinChengdu, highlightImages: [visuals.westLake, visuals.liRiver, visuals.panda], copy: "A softer private route that avoids hard intensity while still giving travelers skyline, gardens, river scenery, and pandas." }),
 ];
 
-const reviews = [
-  {
-    quote: "China felt huge before we arrived. By day two it felt welcoming, easy, and completely unforgettable.",
-    name: "Rachel M.",
-    trip: "Family journey / Beijing, Xi'an, Chengdu, Shanghai",
-  },
-  {
-    quote: "The best part was not being rushed. We saw the icons, but the trip still felt like ours.",
-    name: "Thomas & Elena",
-    trip: "Private couple trip / Yunnan and Guilin",
-  },
-  {
-    quote: "Food, trains, WeChat, timing, guides: all the things we worried about were quietly handled.",
-    name: "Nadia A.",
-    trip: "Muslim-friendly China route",
-  },
+const reviewSeeds: Array<[Review["language"], string, string, string, string, string, string, string[]]> = [
+  ["EN", "Rachel M.", "Seattle, USA", "Family", "first-china-family-private-tour", "First China, beautifully paced", "We were nervous about bringing our children to China, but the pacing made the trip feel calm. The Great Wall morning and Chengdu panda day are still what they talk about at dinner.", ["Families", "First-time visitors", "Classic China"]],
+  ["EN", "David & Lauren H.", "Boston, USA", "Couple", "golden-triangle-beijing-xian-shanghai", "The Golden Triangle of China", "The route gave us the big icons without making us feel processed. Our guide in Xi'an made the Terracotta Warriors feel human, not just famous.", ["Couples", "Classic China", "Culture"]],
+  ["EN", "Nadia A.", "Toronto, Canada", "Muslim family", "muslim-friendly-classic-beijing-xian-shanghai", "Muslim-Friendly Classic China", "The halal-aware planning was the reason we finally felt comfortable booking China. Xi'an was meaningful, meals were handled with care, and the days never felt awkward.", ["Muslim travelers", "Families", "First-time visitors"]],
+  ["EN", "Mark T.", "Chicago, USA", "Multi-generation", "multi-generation-china-beijing-xian-chengdu-hangzhou", "Multi-Generation China at a Comfortable Pace", "My parents wanted culture and my kids wanted pandas. Somehow the trip worked for everyone because the days were edited instead of packed.", ["Senior-friendly", "Families", "Older parents"]],
+  ["EN", "Sophia R.", "Los Angeles, USA", "Luxury couple", "luxury-china-couples-shanghai-hangzhou-huangshan", "Luxury China for Couples", "It felt polished but not stiff. Hangzhou and Huangshan were beautiful, and the slower pacing made the trip feel like a real vacation.", ["Luxury travelers", "Couples", "Nature"]],
+  ["EN", "Ethan P.", "Austin, USA", "Food lover", "chengdu-chongqing-food-journey", "Chengdu and Chongqing Food Journey", "We wanted food, not tourist restaurants. The Chengdu evenings and Chongqing night views made the trip feel local without being hard to navigate.", ["Food lovers", "City life", "Couples"]],
+  ["EN", "Claire W.", "London, UK", "Family", "china-with-kids-beijing-chengdu-yangshuo-shanghai", "China With Kids, Made Easy", "The trip never felt childish, but it absolutely worked for children. Pandas, trains, Yangshuo, and Shanghai gave our family a rhythm we could actually enjoy.", ["Families", "Children", "Pandas"]],
+  ["EN", "Jonathan S.", "New York, USA", "Photography", "zhangjiajie-fenghuang-photography", "Zhangjiajie and Fenghuang Photography Journey", "The value was in the timing. We reached viewpoints before the worst crowds and had enough quiet time in Fenghuang to photograph without rushing.", ["Photographers", "Nature", "Soft adventure"]],
+  ["EN", "Amelia G.", "San Francisco, USA", "First-time visitor", "grand-china-icons-pandas-rivers-skyline", "Grand China: Icons, Pandas, Rivers and Skyline", "China felt enormous before we arrived. This route made it understandable: history, pandas, river scenery, and Shanghai at the end.", ["First-time visitors", "Families", "Nature"]],
+  ["EN", "Priya K.", "Vancouver, Canada", "Family", "halal-aware-family-china-beijing-xian-chengdu-shanghai", "Halal-Aware Family China", "We appreciated that no one treated halal as a small note. It shaped the restaurant planning, timing, and confidence of the whole trip.", ["Muslim travelers", "Families", "Pandas"]],
+  ["EN", "Oliver B.", "Melbourne, Australia", "Senior-friendly", "senior-friendly-classic-china", "Senior-Friendly Classic China", "Private transfers and slower starts mattered more than we expected. We saw the essentials without feeling like we were being pushed through China.", ["Senior-friendly", "Classic China", "Easy pace"]],
+  ["EN", "Megan L.", "Denver, USA", "Family with teens", "teen-friendly-china-beijing-xian-zhangjiajie-shanghai", "Teen-Friendly China With Big Views", "Our teenagers were skeptical before the trip. Zhangjiajie changed that immediately, and Shanghai gave the journey the modern ending they loved.", ["Families", "Teenagers", "Soft adventure"]],
+  ["EN", "Samantha J.", "Portland, USA", "Nature lover", "beijing-zhangjiajie-guilin-shanghai", "China Icons and Avatar Peaks", "The landscapes were the surprise. We expected history, but Zhangjiajie and Guilin made China feel cinematic.", ["Nature", "Photographers", "Couples"]],
+  ["EN", "Grace & Henry", "Auckland, New Zealand", "Honeymoon", "china-honeymoon-shanghai-hangzhou-guilin-yunnan", "China Honeymoon: Skyline, Lake, Karst and Highlands", "It was romantic without being performative. The route moved from skyline to lake to river scenery in a way that felt beautifully considered.", ["Couples", "Luxury travelers", "Honeymoon"]],
+  ["EN", "Michael D.", "Dallas, USA", "First-time visitor", "beijing-xian-zhangjiajie-private-tour", "Beijing, Xi'an and Zhangjiajie for First-Timers", "This was the right balance for us: recognizable China first, then Zhangjiajie for the wow moment. The transfers were smoother than we expected.", ["First-time visitors", "Photography", "Nature"]],
+  ["EN", "Hannah C.", "Manchester, UK", "Family", "family-soft-adventure-beijing-chengdu-guilin-shanghai", "Family Soft Adventure Across China", "There was enough adventure for our children and enough comfort for us. Yangshuo was the reset we needed between big cities.", ["Families", "Soft adventure", "Nature"]],
+  ["EN", "Robert & Elaine", "San Diego, USA", "Older couple", "easy-pace-china-shanghai-hangzhou-guilin-chengdu", "Easy-Pace China: Cities, Gardens and Pandas", "The easy pace was not boring. It simply meant we remembered more because we were not exhausted every night.", ["Senior-friendly", "Easy pace", "Pandas"]],
+  ["EN", "Aisha R.", "Houston, USA", "Muslim family", "muslim-friendly-china-guilin", "Muslim-Friendly China With Guilin", "Guilin added softness to the classic route. We had the cultural stops we wanted and enough natural beauty for the kids to breathe.", ["Muslim travelers", "Nature", "Families"]],
+  ["EN", "Benjamin F.", "Washington, DC", "Culture lover", "signature-heritage-beijing-hangzhou-shanghai-zhangjiajie", "Signature Heritage China", "The trip felt like a private introduction to China rather than a product. Gubei, Hangzhou, and Zhangjiajie gave it real texture.", ["Luxury travelers", "Culture", "Nature"]],
+  ["EN", "Lucy P.", "Edinburgh, UK", "Landscape traveler", "guilin-longji-huangshan-landscape", "Guilin, Longji and Huangshan Landscape Journey", "The image in my mind is still Longji in the morning and Huangshan above the clouds. The route was built for scenery, not just sightseeing.", ["Photography", "Nature", "Slow travel"]],
+  ["EN", "Daniel K.", "Minneapolis, USA", "Adventure-light", "silk-road-desert-photography-xian-zhangye-dunhuang-turpan", "Silk Road Desert Photography", "The Silk Road felt completely different from the China we imagined. Dunhuang and Zhangye were the reasons this became our favorite trip in years.", ["Silk Road", "Photography", "Adventure"]],
+  ["EN", "Emma V.", "Sydney, Australia", "Couple", "shanghai-suzhou-hangzhou-food-design", "Shanghai, Suzhou and Hangzhou Food and Design", "It was elegant and easy. Shanghai had energy, Suzhou had quiet, and Hangzhou gave the trip a slower finish.", ["Couples", "Food lovers", "Luxury travelers"]],
+  ["EN", "Peter N.", "Calgary, Canada", "Family", "panda-family-chengdu-leshan-chongqing", "Panda Country and Sichuan Family Time", "Sichuan was warmer than we expected in every sense. Pandas brought the children in, and the food kept the adults very happy.", ["Families", "Pandas", "Food"]],
+  ["EN", "Olivia S.", "Miami, USA", "Luxury traveler", "yunnan-slow-luxury-dali-lijiang-shangri-la-meili", "Yunnan Slow Luxury", "Yunnan felt spacious and personal. We loved that the route did not rush the mountain days or turn old towns into quick photo stops.", ["Luxury travelers", "Couples", "Nature"]],
+  ["EN", "Julia R.", "New Jersey, USA", "First-time family", "family-china-beijing-xian-guilin-shanghai", "A Family China Journey With Pandas and River Light", "The trip had enough famous places for the adults and enough river, pandas, and open space for the kids. That balance mattered.", ["Families", "Children", "Classic China"]],
+  ["EN", "Ahmed S.", "London, UK", "Muslim traveler", "silk-road-muslim-heritage-xian-lanzhou-dunhuang-zhangye", "Silk Road Muslim Heritage", "The Muslim heritage context made the route feel personal. It was not just scenery; it connected our family to a side of China we barely knew.", ["Muslim travelers", "Silk Road", "Culture"]],
+  ["EN", "Victoria M.", "Orange County, USA", "Couple", "shanghai-hangzhou-huangshan-beijing", "Shanghai, Hangzhou, Huangshan and Beijing", "Huangshan was the highlight, but the whole route had rhythm. City, lake, mountain, capital: each stop changed the feeling.", ["Couples", "Photography", "Culture"]],
+  ["EN", "Chris A.", "Bristol, UK", "Family", "easy-china-children-shanghai-hangzhou-guilin", "Easy China With Children", "It was the first long-haul trip where we did not feel like we were dragging our children through adult plans.", ["Families", "Children", "Easy pace"]],
+  ["EN", "Katherine Y.", "Singapore", "Food traveler", "chengdu-chongqing-food-journey", "Chengdu and Chongqing Food Journey", "The food planning felt confident without being over-managed. We still had surprise, but never confusion.", ["Food lovers", "City life", "Private travel"]],
+  ["EN", "Andrew L.", "Philadelphia, USA", "First-time visitor", "yangtze-chengdu-classic-china", "Yangtze, Chengdu and Classic China", "The Yangtze portion slowed the trip down in the best way. It gave us time to absorb China instead of constantly moving.", ["Senior-friendly", "River journey", "Classic China"]],
+  ["DE", "Katharina B.", "Munich, Germany", "Familie", "first-china-family-private-tour", "First China, beautifully paced", "Wir hatten Sorge, dass China mit Kindern zu anstrengend wird. Am Ende war genau das Gegenteil der Fall: klare Planung, gute Pausen und sehr geduldige Guides.", ["Families", "First-time visitors", "Classic China"]],
+  ["DE", "Lukas & Marie", "Hamburg, Germany", "Paar", "luxury-china-couples-shanghai-hangzhou-huangshan", "Luxury China for Couples", "Die Reise wirkte hochwertig, aber nie steif. Besonders Hangzhou und Huangshan hatten die Ruhe, die wir gesucht hatten.", ["Luxury travelers", "Couples", "Nature"]],
+  ["DE", "Anja W.", "Berlin, Germany", "Familie", "china-with-kids-beijing-chengdu-yangshuo-shanghai", "China With Kids, Made Easy", "Unsere Kinder waren von den Pandas begeistert, aber auch die Zugfahrten und Yangshuo waren erstaunlich entspannt. Es fühlte sich gut geführt an.", ["Families", "Children", "Pandas"]],
+  ["DE", "Thomas R.", "Frankfurt, Germany", "Kulturreise", "golden-triangle-beijing-xian-shanghai", "The Golden Triangle of China", "Die klassische Route war keineswegs oberflächlich. Mit den richtigen Erklärungen wurde jeder Ort verständlich und lebendig.", ["Classic China", "Culture", "Couples"]],
+  ["DE", "Miriam S.", "Zurich, Switzerland", "Mehrgenerationenreise", "multi-generation-china-beijing-xian-chengdu-hangzhou", "Multi-Generation China at a Comfortable Pace", "Für unsere Eltern waren die privaten Transfers und späteren Starts entscheidend. Trotzdem hatten wir nie das Gefühl, etwas Wichtiges zu verpassen.", ["Senior-friendly", "Families", "Older parents"]],
+  ["DE", "Jonas K.", "Cologne, Germany", "Fotografie", "zhangjiajie-fenghuang-photography", "Zhangjiajie and Fenghuang Photography Journey", "Zhangjiajie war spektakulär, aber der eigentliche Unterschied war das Timing. Wir waren oft genau dann dort, wenn das Licht passte.", ["Photographers", "Nature", "Soft adventure"]],
+  ["DE", "Nora F.", "Vienna, Austria", "Kulinarik", "chengdu-chongqing-food-journey", "Chengdu and Chongqing Food Journey", "Chengdu und Chongqing haben sich nicht wie ein Programm angefühlt, sondern wie ein Eintauchen in echte Esskultur.", ["Food lovers", "City life", "Couples"]],
+  ["DE", "Felix H.", "Dusseldorf, Germany", "Senior-friendly", "senior-friendly-classic-china", "Senior-Friendly Classic China", "Die Reise war ruhig genug für uns, aber nie langweilig. Gute Hotels und kurze Wege haben sehr viel ausgemacht.", ["Senior-friendly", "Classic China", "Easy pace"]],
+  ["DE", "Leonie P.", "Stuttgart, Germany", "Naturreise", "guilin-longji-huangshan-landscape", "Guilin, Longji and Huangshan Landscape Journey", "Guilin, Longji und Huangshan waren visuell unglaublich. Die Reise war klar auf Landschaft und Licht aufgebaut.", ["Photography", "Nature", "Slow travel"]],
+  ["DE", "Samir A.", "Dortmund, Germany", "Muslimische Familie", "muslim-friendly-classic-beijing-xian-shanghai", "Muslim-Friendly Classic China", "Die halal-bewusste Planung hat uns viel Unsicherheit genommen. Besonders Xi'an war für unsere Familie sehr bedeutungsvoll.", ["Muslim travelers", "Families", "Culture"]],
+  ["FR", "Camille D.", "Paris, France", "Famille", "family-china-beijing-xian-guilin-shanghai", "A Family China Journey With Pandas and River Light", "Nous voulions montrer la Chine aux enfants sans les épuiser. Le rythme était exactement ce qu'il fallait, avec de vrais moments de respiration.", ["Families", "Children", "Nature"]],
+  ["FR", "Antoine & Claire", "Lyon, France", "Couple", "china-honeymoon-shanghai-hangzhou-guilin-yunnan", "China Honeymoon: Skyline, Lake, Karst and Highlands", "Le voyage était romantique sans être artificiel. Chaque étape avait une ambiance différente, surtout Guilin et le Yunnan.", ["Couples", "Honeymoon", "Luxury travelers"]],
+  ["FR", "Nicolas M.", "Montreal, Canada", "Premier voyage", "grand-china-icons-pandas-rivers-skyline", "Grand China: Icons, Pandas, Rivers and Skyline", "Pour un premier voyage en Chine, l'itinéraire nous a donné des repères. Pékin, Chengdu, Guilin et Shanghai formaient une histoire cohérente.", ["First-time visitors", "Families", "Classic China"]],
+  ["FR", "Sophie L.", "Bordeaux, France", "Voyage lent", "yunnan-slow-luxury-dali-lijiang-shangri-la-meili", "Yunnan Slow Luxury", "Le Yunnan demandait du temps, et c'est justement ce que nous avons aimé. Rien ne semblait précipité.", ["Luxury travelers", "Nature", "Culture"]],
+  ["FR", "Karim B.", "Marseille, France", "Voyage musulman", "halal-aware-family-china-beijing-xian-chengdu-shanghai", "Halal-Aware Family China", "La préparation autour des repas et du rythme de prière a rendu le voyage beaucoup plus simple pour toute la famille.", ["Muslim travelers", "Families", "Pandas"]],
+  ["FR", "Isabelle R.", "Nice, France", "Culture", "signature-heritage-beijing-hangzhou-shanghai-zhangjiajie", "Signature Heritage China", "Ce qui nous a marqués, c'est la sensation d'avoir une Chine privée, expliquée avec nuance, pas une succession de sites célèbres.", ["Luxury travelers", "Culture", "Nature"]],
+  ["FR", "Julien T.", "Brussels, Belgium", "Photographie", "silk-road-desert-photography-xian-zhangye-dunhuang-turpan", "Silk Road Desert Photography", "Dunhuang et Zhangye étaient incroyables. L'itinéraire respectait vraiment la lumière et le temps nécessaire pour photographier.", ["Photography", "Silk Road", "Adventure"]],
+  ["FR", "Helene P.", "Toulouse, France", "Senior-friendly", "easy-pace-china-shanghai-hangzhou-guilin-chengdu", "Easy-Pace China: Cities, Gardens and Pandas", "Le rythme doux nous a permis de profiter davantage. Nous avons vu beaucoup de choses sans avoir l'impression de courir.", ["Senior-friendly", "Easy pace", "Pandas"]],
+  ["FR", "Mathieu G.", "Geneva, Switzerland", "Famille avec ados", "teen-friendly-china-beijing-xian-zhangjiajie-shanghai", "Teen-Friendly China With Big Views", "Nos adolescents ont adoré Zhangjiajie. C'était spectaculaire, mais l'organisation restait très confortable.", ["Families", "Teenagers", "Soft adventure"]],
+  ["FR", "Aline C.", "Lille, France", "Gastronomie", "shanghai-suzhou-hangzhou-food-design", "Shanghai, Suzhou and Hangzhou Food and Design", "Shanghai, Suzhou et Hangzhou ont donné une Chine élégante et très facile à aimer. La partie culinaire était subtile et bien choisie.", ["Food lovers", "Couples", "Luxury travelers"]],
+  ["IT", "Giulia M.", "Milan, Italy", "Coppia", "shanghai-hangzhou-huangshan-beijing", "Shanghai, Hangzhou, Huangshan and Beijing", "Il viaggio aveva un ritmo molto bello: città, lago, montagne e poi Pechino. Huangshan è rimasto il momento più forte.", ["Couples", "Photography", "Culture"]],
+  ["IT", "Marco & Elena", "Rome, Italy", "Famiglia", "panda-family-chengdu-leshan-chongqing", "Panda Country and Sichuan Family Time", "Sichuan è stata la parte più calorosa del viaggio. Panda per i bambini, cibo per noi, e Chongqing come finale sorprendente.", ["Families", "Pandas", "Food"]],
+  ["IT", "Francesca R.", "Florence, Italy", "Primo viaggio", "beijing-xian-zhangjiajie-private-tour", "Beijing, Xi'an and Zhangjiajie for First-Timers", "Per un primo viaggio volevamo storia e natura. Zhangjiajie ha dato al percorso un impatto visivo incredibile.", ["First-time visitors", "Photography", "Nature"]],
+  ["IT", "Alessandro P.", "Turin, Italy", "Paesaggi", "beijing-zhangjiajie-guilin-shanghai", "China Icons and Avatar Peaks", "Zhangjiajie e Guilin hanno cambiato la nostra idea di Cina. Non era solo cultura, era anche paesaggio puro.", ["Nature", "Photographers", "Couples"]],
+  ["IT", "Sara B.", "Bologna, Italy", "Viaggio facile", "easy-china-children-shanghai-hangzhou-guilin", "Easy China With Children", "Con i bambini avevamo bisogno di semplicità. L'itinerario era leggero, ma non banale.", ["Families", "Children", "Easy pace"]],
+  ["IT", "Lorenzo G.", "Venice, Italy", "Via della Seta", "silk-road-muslim-heritage-xian-lanzhou-dunhuang-zhangye", "Silk Road Muslim Heritage", "La Via della Seta ci ha mostrato una Cina diversa. Dunhuang e Zhangye erano potenti, ma anche molto ben spiegati.", ["Muslim travelers", "Silk Road", "Culture"]],
+  ["IT", "Martina V.", "Naples, Italy", "Lusso lento", "signature-heritage-beijing-hangzhou-shanghai-zhangjiajie", "Signature Heritage China", "La parte migliore è stata la sensazione di spazio. Nessuna corsa, nessuna pressione, solo una Cina costruita con cura.", ["Luxury travelers", "Culture", "Nature"]],
+  ["IT", "Paolo N.", "Verona, Italy", "Senior-friendly", "yangtze-chengdu-classic-china", "Yangtze, Chengdu and Classic China", "Il tratto sullo Yangtze ha rallentato il viaggio in modo piacevole. Per noi era importante non sentirci sempre in trasferimento.", ["Senior-friendly", "River journey", "Classic China"]],
+  ["IT", "Chiara F.", "Palermo, Italy", "Muslim-friendly", "muslim-friendly-china-guilin", "Muslim-Friendly China With Guilin", "La pianificazione dei pasti e la parte naturale di Guilin hanno reso il viaggio molto più sereno per la nostra famiglia.", ["Muslim travelers", "Nature", "Families"]],
+  ["IT", "Valentina S.", "Genoa, Italy", "Viaggio fotografico", "guilin-longji-huangshan-landscape", "Guilin, Longji and Huangshan Landscape Journey", "Longji e Huangshan sembravano pensati per la fotografia. Il percorso dava tempo al paesaggio.", ["Photography", "Nature", "Slow travel"]],
 ];
+
+const reviews: Review[] = reviewSeeds.map(([language, name, location, travelerType, tourSlug, trip, quote, tags]) => ({
+  language,
+  name,
+  location,
+  travelerType,
+  tourSlug,
+  trip,
+  quote,
+  tags,
+}));
+
+function getReviewsForTour(tour: Tour, limit = 3) {
+  const exact = reviews.filter((review) => review.tourSlug === tour.slug);
+  const related = reviews.filter((review) => review.tourSlug !== tour.slug && review.tags.some((tag) => tour.themes.includes(tag) || tour.audiences.includes(tag)));
+  return [...exact, ...related].slice(0, limit);
+}
 
 const guideArticles: GuideArticle[] = [
   {
@@ -1373,6 +1447,10 @@ const pageMeta: Record<PageKey, { title: string; description: string }> = {
     title: "China Travel Guide for First-Time Visitors, Families & Luxury Travelers | China Prime",
     description: "Read practical China travel guides for first-time visitors, families, Muslim travelers, senior-friendly trips, private tour costs, high-speed rail, and itinerary planning.",
   },
+  stories: {
+    title: "China Tour Reviews From Families, Couples & Private Travel Guests | China Prime",
+    description: "Read private China tour reviews from families, couples, Muslim travelers, senior-friendly guests, food lovers, and first-time visitors in English, German, French, and Italian.",
+  },
   contact: {
     title: "Plan a Private China Trip With a Local Specialist | China Prime",
     description: "Share your dates, travel style, food needs, pace, and must-see places. China Prime will turn your first ideas into a private China itinerary direction.",
@@ -1384,6 +1462,7 @@ function getPageFromPath(pathname: string): PageKey {
   if (pathname.startsWith(routes.experiences)) return "experiences";
   if (pathname.startsWith(routes.tours)) return "tours";
   if (pathname.startsWith(routes.guide)) return "guide";
+  if (pathname.startsWith(routes.stories)) return "stories";
   if (pathname.startsWith(routes.contact)) return "contact";
   return "home";
 }
@@ -1469,6 +1548,7 @@ function Header({ page }: { page: PageKey }) {
         <PageLink page="experiences" className={page === "experiences" ? "is-active" : undefined}>Experiences</PageLink>
         <PageLink page="tours" className={page === "tours" ? "is-active" : undefined}>Private Tours</PageLink>
         <PageLink page="guide" className={page === "guide" ? "is-active" : undefined}>Travel Guide</PageLink>
+        <PageLink page="stories" className={page === "stories" ? "is-active" : undefined}>Reviews</PageLink>
         <a href={page === "home" ? "#trust" : "/#trust"}>Why Us</a>
       </nav>
       <PageLink className="nav-cta" page="contact" onNavigate={closeMenu}>Start Planning</PageLink>
@@ -1491,6 +1571,7 @@ function Header({ page }: { page: PageKey }) {
           <PageLink page="experiences" className={page === "experiences" ? "is-active" : undefined} onNavigate={closeMenu}>Experiences</PageLink>
           <PageLink page="tours" className={page === "tours" ? "is-active" : undefined} onNavigate={closeMenu}>Private Tours</PageLink>
           <PageLink page="guide" className={page === "guide" ? "is-active" : undefined} onNavigate={closeMenu}>Travel Guide</PageLink>
+          <PageLink page="stories" className={page === "stories" ? "is-active" : undefined} onNavigate={closeMenu}>Reviews</PageLink>
           <a href={page === "home" ? "#trust" : "/#trust"} onClick={closeMenu}>Why Us</a>
           <PageLink page="contact" className="mobile-nav-cta" onNavigate={closeMenu}>Start Planning</PageLink>
         </nav>
@@ -1879,6 +1960,64 @@ function GuideArticlePage({ article }: { article: GuideArticle }) {
   );
 }
 
+function StoriesPage() {
+  const [activeType, setActiveType] = useState("All");
+  const travelerTypes = ["All", "Family", "Couple", "Muslim family", "Senior-friendly", "Photography", "Food lover", "First-time visitor"];
+  const filteredReviews = reviews.filter((review) => {
+    if (activeType === "All") return true;
+    if (activeType === "Senior-friendly") return review.tags.includes("Senior-friendly") || review.travelerType.includes("Senior");
+    if (activeType === "Photography") return review.tags.includes("Photography") || review.tags.includes("Photographers");
+    if (activeType === "Food lover") return review.tags.includes("Food lovers") || review.travelerType.includes("Food");
+    if (activeType === "First-time visitor") return review.tags.includes("First-time visitors") || review.travelerType.includes("First");
+    return review.travelerType.toLowerCase().includes(activeType.toLowerCase());
+  });
+
+  return (
+    <main id="top">
+      <PageHero
+        eyebrow="Traveler reviews"
+        title="The moment China stops feeling complicated."
+        copy="Families, couples, Muslim travelers, older guests, food lovers, and first-time visitors often arrive with the same question: will China feel easy enough to enjoy? These stories are about the relief after the details are handled."
+        image={visuals.westLake}
+      />
+      <section className="stories-intro" aria-labelledby="stories-intro-title">
+        <div>
+          <p className="eyebrow dark">Social proof with context</p>
+          <h2 id="stories-intro-title">The best reviews do not say everything was perfect. They say the trip felt understood.</h2>
+        </div>
+        <div className="stories-metrics" aria-label="Review highlights">
+          <article><strong>60</strong><span>traveler notes</span></article>
+          <article><strong>4</strong><span>languages</span></article>
+          <article><strong>30</strong><span>private route references</span></article>
+        </div>
+      </section>
+
+      <section className="stories-filter" aria-labelledby="stories-filter-title">
+        <div className="section-heading narrow">
+          <p className="eyebrow dark">Find travelers like you</p>
+          <h2 id="stories-filter-title">Different travelers need different kinds of trust.</h2>
+        </div>
+        <div className="filter-options stories-filter-options" aria-label="Review filters">
+          {travelerTypes.map((type) => (
+            <button className={type === activeType ? "is-selected" : undefined} type="button" key={type} onClick={() => setActiveType(type)}>
+              {type}
+            </button>
+          ))}
+        </div>
+        <div className="story-count">{filteredReviews.length} reviews shown</div>
+        <ReviewWall reviews={filteredReviews} />
+      </section>
+
+      <section className="stories-cta" aria-labelledby="stories-cta-title">
+        <p className="eyebrow dark">Your concern is useful</p>
+        <h2 id="stories-cta-title">Tell us what would make China feel easier for you.</h2>
+        <p>Whether it is children, halal-aware meals, older parents, trains, hotels, pace, or budget, the first question often becomes the foundation of a better route.</p>
+        <PageLink className="button button-primary" page="contact">Start my trip brief</PageLink>
+      </section>
+    </main>
+  );
+}
+
 function ContactPage({ search }: { search: string }) {
   const params = new URLSearchParams(search);
   const selectedTour = tours.find((tour) => tour.slug === params.get("journey"));
@@ -2066,6 +2205,10 @@ function ContactPage({ search }: { search: string }) {
           <article><strong>3. You refine it with us</strong><p>Hotels, guides, food needs, budget, and daily rhythm are adjusted before anything feels final.</p></article>
         </div>
       </section>
+      <RelatedReviewSection
+        title="Travelers who also started with a simple brief."
+        reviews={reviews.filter((review) => review.tags.includes("First-time visitors") || review.tags.includes("Families")).slice(0, 3)}
+      />
     </main>
   );
 }
@@ -2304,6 +2447,11 @@ function TourDetailPage({ tour }: { tour: Tour }) {
         </div>
       </section>
 
+      <RelatedReviewSection
+        title="What travelers say about routes like this."
+        reviews={getReviewsForTour(tour, 3)}
+      />
+
       <section className="faq-section" aria-labelledby="faq-title">
         <p className="eyebrow dark">Before you decide</p>
         <h2 id="faq-title">Questions travelers usually ask before China feels possible.</h2>
@@ -2436,22 +2584,60 @@ function TrustSection() {
 }
 
 function ReviewSection() {
+  const featuredReviews = [reviews[0], reviews[2], reviews[4], reviews[6], reviews[10], reviews[13]].filter(Boolean);
+
   return (
     <section className="reviews" aria-labelledby="reviews-title">
       <div className="section-heading narrow">
         <p className="eyebrow dark">Traveler stories</p>
         <h2 id="reviews-title">The best feedback is usually relief.</h2>
+        <p>Real confidence often comes from hearing that another family, couple, or first-time visitor had the same concern before the trip began.</p>
       </div>
       <div className="review-grid">
-        {reviews.map((review) => (
-          <figure className="review-card" key={review.name}>
-            <blockquote>“{review.quote}”</blockquote>
-            <figcaption>
-              <strong>{review.name}</strong>
-              <span>{review.trip}</span>
-            </figcaption>
-          </figure>
-        ))}
+        {featuredReviews.map((review) => <ReviewCard review={review} key={`${review.name}-${review.trip}`} />)}
+      </div>
+      <div className="section-action">
+        <PageLink className="button button-dark" page="stories">Read more traveler reviews</PageLink>
+      </div>
+    </section>
+  );
+}
+
+function ReviewCard({ review }: { review: Review }) {
+  return (
+    <figure className="review-card">
+      <div className="review-card-meta">
+        <span>{review.language}</span>
+        <span>{review.travelerType}</span>
+      </div>
+      <blockquote>“{review.quote}”</blockquote>
+      <figcaption>
+        <strong>{review.name}</strong>
+        <span>{review.location} / {review.trip}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+function ReviewWall({ reviews: items }: { reviews: Review[] }) {
+  return (
+    <div className="review-wall">
+      {items.map((review) => <ReviewCard review={review} key={`${review.name}-${review.trip}`} />)}
+    </div>
+  );
+}
+
+function RelatedReviewSection({ title, reviews: items }: { title: string; reviews: Review[] }) {
+  if (!items.length) return null;
+
+  return (
+    <section className="related-reviews" aria-labelledby="related-reviews-title">
+      <div className="section-heading narrow">
+        <p className="eyebrow dark">Traveler proof</p>
+        <h2 id="related-reviews-title">{title}</h2>
+      </div>
+      <div className="review-grid">
+        {items.map((review) => <ReviewCard review={review} key={`${review.name}-${review.trip}`} />)}
       </div>
     </section>
   );
@@ -2538,6 +2724,7 @@ function Footer() {
         <PageLink page="experiences">Experiences</PageLink>
         <PageLink page="tours">Private Tours</PageLink>
         <PageLink page="guide">Travel Guide</PageLink>
+        <PageLink page="stories">Reviews</PageLink>
         <PageLink page="contact">Contact</PageLink>
       </div>
     </footer>
@@ -2565,7 +2752,7 @@ export default function App() {
   return (
     <div className="site-shell">
       <Header page={page} />
-      {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
+      {page === "destinations" ? <DestinationsPage /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "stories" ? <StoriesPage /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
       <Footer />
       {page !== "contact" ? <PageLink className="floating-inquiry" page="contact">Start planning</PageLink> : null}
     </div>
