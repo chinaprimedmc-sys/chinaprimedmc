@@ -4685,3 +4685,366 @@ h1 {
     padding: 11px;
   }
 }
+
+/* Premium glass card system: faster scanning, lighter cards, clearer hierarchy. */
+.destination-card,
+.tour-card,
+.review-card,
+.experience-card,
+.planner-card,
+.destination-detail-card,
+.tour-filter-story,
+.contact-story,
+.contact-aftercare,
+.planner-style-card,
+.quick-fact,
+.fit-columns article,
+.reason-grid article,
+.practical-grid article,
+.faq-grid article,
+.planning-note-grid article,
+.related-guide-card,
+.highlight-card,
+.day-card,
+.style-card,
+.guide-card,
+.guide-feature-copy,
+.guide-preview-list button,
+.guide-story-block,
+.guide-article-aside,
+.selected-brief-card,
+.route-choice-group,
+.route-builder-panel {
+  -webkit-backdrop-filter: blur(22px) saturate(1.18);
+  backdrop-filter: blur(22px) saturate(1.18);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.52)),
+    rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 18px 48px rgba(28, 25, 22, 0.1);
+}
+
+.destination-card,
+.tour-card,
+.review-card,
+.experience-card,
+.guide-card,
+.related-guide-card,
+.highlight-card,
+.day-card,
+.style-card {
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.destination-card:hover,
+.tour-card:hover,
+.review-card:hover,
+.experience-card:hover,
+.guide-card:hover,
+.related-guide-card:hover,
+.highlight-card:hover,
+.style-card:hover {
+  border-color: rgba(255, 255, 255, 0.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 24px 62px rgba(28, 25, 22, 0.14);
+  transform: translateY(-4px);
+}
+
+.destination-card,
+.tour-card,
+.guide-card,
+.highlight-card,
+.style-card,
+.related-guide-card {
+  border-radius: 24px;
+}
+
+.tour-body,
+.guide-card-copy {
+  gap: 10px;
+  padding: 20px;
+}
+
+.tour-body h3,
+.guide-card-copy h3,
+.related-guide-card h3,
+.highlight-card h3,
+.day-card h3,
+.style-card h3 {
+  letter-spacing: -0.025em;
+}
+
+.tour-body p,
+.guide-card-copy p,
+.related-guide-card p,
+.review-card p,
+.experience-card p,
+.highlight-card p,
+.day-card p,
+.style-card p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.tour-meta,
+.trip-badges,
+.audience-row,
+.guide-category-row {
+  gap: 7px;
+}
+
+.tour-meta span,
+.trip-badges span,
+.audience-row span,
+.guide-category-row span,
+.route-choice-options button {
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: var(--forest);
+}
+
+.card-copy {
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  backdrop-filter: blur(16px) saturate(1.15);
+  background: linear-gradient(180deg, rgba(12, 14, 13, 0.12), rgba(12, 14, 13, 0.42));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+  bottom: 16px;
+  left: 16px;
+  padding: 18px;
+  right: 16px;
+}
+
+.card-copy h3 {
+  font-size: clamp(1.35rem, 1.8vw, 1.82rem);
+}
+
+.card-copy span {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.tour-grid-expanded .tour-media {
+  aspect-ratio: 16 / 8.6;
+}
+
+.tour-grid-expanded .tour-card .tour-body {
+  gap: 9px;
+  padding: 18px;
+}
+
+.tour-grid-expanded .tour-card h3 {
+  font-size: clamp(1.22rem, 1.65vw, 1.7rem);
+  line-height: 1.08;
+  margin-bottom: 0;
+}
+
+.tour-grid-expanded .tour-card .tour-body > p {
+  -webkit-line-clamp: 2;
+  font-size: 0.93rem;
+  line-height: 1.48;
+}
+
+.tour-grid-expanded .tour-card .info-strip.slim {
+  gap: 4px;
+  padding: 10px 12px;
+}
+
+.tour-grid-expanded .tour-card .info-strip.slim strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trip-badges {
+  max-height: 74px;
+  overflow: hidden;
+}
+
+.trip-badges span:nth-child(n+4) {
+  display: none;
+}
+
+.review-card {
+  padding: 22px;
+}
+
+.review-card p {
+  -webkit-line-clamp: 4;
+}
+
+@media (max-width: 680px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: clamp(2.35rem, 10.8vw, 3.35rem);
+    line-height: 0.98;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 8.8vw, 2.7rem);
+    max-width: 12ch;
+  }
+
+  .hero-copy {
+    font-size: 0.86rem;
+    line-height: 1.42;
+    max-width: 30ch;
+  }
+
+  .hero-actions .button {
+    font-size: 0.78rem;
+    min-height: 40px;
+  }
+
+  .intro h2,
+  .section-heading h2,
+  .split-copy h2,
+  .trust h2,
+  .planner-card h2,
+  .stories-intro h2,
+  .stories-cta h2,
+  .page-intro h2,
+  .tour-filter-story h2,
+  .route-builder h2,
+  .route-builder-panel h2,
+  .comparison-band h2,
+  .destination-detail-copy h2,
+  .destination-map-panel h2,
+  .destination-sense h2,
+  .destination-fit h2,
+  .destination-cta h2,
+  .experience-manifesto h2,
+  .experience-method h2,
+  .experience-feature-copy h2,
+  .contact-story h2,
+  .contact-aftercare h2,
+  .journey-reasons h2,
+  .visual-highlights h2,
+  .day-plan h2,
+  .travel-style-selector h2,
+  .journey-practical h2,
+  .faq-section h2,
+  .related-journeys h2,
+  .proposal-fit h2,
+  .proposal-planning h2,
+  .proposal-cta-copy h2,
+  .related-guides h2,
+  .guide-preview-copy h2,
+  .guide-intro h2,
+  .guide-feature-copy h2,
+  .guide-conversion h2,
+  .guide-article-body h2,
+  .guide-faq h2 {
+    font-size: clamp(1.72rem, 7.4vw, 2.42rem);
+    letter-spacing: -0.032em;
+    line-height: 1.04;
+  }
+
+  .destination-card,
+  .destination-card:nth-child(2),
+  .destination-card:nth-child(4),
+  .compact-destination-grid .destination-card:nth-child(n+3) {
+    border-radius: 22px;
+    min-height: 310px;
+  }
+
+  .card-copy {
+    bottom: 12px;
+    gap: 6px;
+    left: 12px;
+    padding: 14px;
+    right: 12px;
+  }
+
+  .card-copy h3 {
+    font-size: 1.22rem;
+    line-height: 1.04;
+  }
+
+  .card-copy p,
+  .card-copy span {
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+
+  .tour-grid-expanded .tour-card,
+  .guide-card,
+  .review-card,
+  .experience-card,
+  .related-guide-card,
+  .highlight-card,
+  .day-card,
+  .style-card,
+  .quick-fact,
+  .fit-columns article,
+  .reason-grid article,
+  .practical-grid article,
+  .faq-grid article,
+  .planning-note-grid article {
+    border-radius: 22px;
+  }
+
+  .tour-body,
+  .tour-grid-expanded .tour-card .tour-body,
+  .guide-card-copy,
+  .related-guide-card,
+  .highlight-card,
+  .day-card,
+  .style-card,
+  .quick-fact,
+  .reason-grid article,
+  .practical-grid article,
+  .faq-grid article,
+  .planning-note-grid article {
+    gap: 9px;
+    padding: 16px;
+  }
+
+  .tour-body h3,
+  .tour-grid-expanded .tour-card h3,
+  .guide-card-copy h3,
+  .related-guide-card h3,
+  .highlight-card h3,
+  .day-card h3,
+  .style-card h3 {
+    font-size: clamp(1.12rem, 5.6vw, 1.45rem);
+    line-height: 1.08;
+  }
+
+  .tour-body p,
+  .tour-grid-expanded .tour-card .tour-body > p,
+  .guide-card-copy p,
+  .related-guide-card p,
+  .review-card p,
+  .experience-card p,
+  .highlight-card p,
+  .day-card p,
+  .style-card p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    -webkit-line-clamp: 2;
+  }
+
+  .tour-meta span,
+  .trip-badges span,
+  .audience-row span,
+  .guide-category-row span,
+  .route-choice-options button {
+    font-size: 0.66rem;
+    min-height: 32px;
+    padding: 7px 10px;
+  }
+}
