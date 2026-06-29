@@ -6412,26 +6412,24 @@ h1 {
   .market-proof-photo figcaption {
     -webkit-backdrop-filter: blur(18px) saturate(1.25);
     backdrop-filter: blur(18px) saturate(1.25);
-    background: rgba(255, 255, 255, 0.54);
+    background: rgba(255, 255, 255, 0.38);
     border: 1px solid rgba(255, 255, 255, 0.62);
-    border-radius: 14px;
-    bottom: 12px;
-    display: grid;
-    gap: 2px;
-    left: 12px;
-    padding: 7px 9px;
+    border-radius: 999px;
+    bottom: 10px;
+    display: inline-flex;
+    left: 10px;
+    padding: 6px 9px;
     position: absolute;
-    right: 12px;
+    right: auto;
   }
 
   .market-proof-photo figcaption strong {
-    font-size: 0.66rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
   }
 
   .market-proof-photo figcaption span {
-    font-size: 0.72rem;
-    line-height: 1.28;
-    text-align: left;
+    display: none;
   }
 
   .market-proof-grid {
