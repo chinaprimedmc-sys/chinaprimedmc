@@ -1885,6 +1885,9 @@ function ContactPage({ search }: { search: string }) {
   const selectedStyle = travelStyles.find((style) => style.id === params.get("style"));
   const selectedGuide = guideArticles.find((article) => article.slug === params.get("guide"));
   const travelStyleChoices = ["First-time China", "Family trip", "Luxury pace", "Muslim-friendly", "Food journey", "Photography", "Soft adventure", "Senior-friendly"];
+  const destinationChoices = ["Beijing", "Shanghai", "Xi'an", "Chengdu", "Guilin / Yangshuo", "Zhangjiajie", "Yunnan", "Silk Road", "Huangshan", "Not sure yet"];
+  const concernChoices = ["Will the pace be too tiring?", "Can kids or older parents enjoy it?", "Will food be comfortable?", "Do we need halal-aware planning?", "How do trains and payments work?", "How much should we budget?", "How do we avoid a shopping tour?", "Which cities actually belong?"];
+  const feelingChoices = ["Iconic but not rushed", "Family-friendly and playful", "Luxury and slow", "Food-led and local", "Scenic and cinematic", "Culturally rich", "Easy for older parents", "Private and flexible"];
   const briefTemplates = [
     "We are visiting China for the first time and want the icons without feeling rushed.",
     "We are traveling with children or older parents and need a comfortable pace.",
@@ -1936,24 +1939,54 @@ function ContactPage({ search }: { search: string }) {
           method="post"
           encType="text/plain"
         >
-          <label>
-            <span>Your name</span>
-            <input name="Name" placeholder="Jane Smith" autoComplete="name" />
-          </label>
-          <label>
-            <span>Email</span>
-            <input name="Email" type="email" placeholder="jane@example.com" autoComplete="email" />
-          </label>
-          <label>
-            <span>Approximate travel dates</span>
-            <input name="Travel dates" placeholder="October 2026, around 10-12 days" />
-          </label>
-          <label>
-            <span>Travelers</span>
-            <input name="Travelers" placeholder="2 adults, 2 children, grandparents..." />
-          </label>
-          <label className="full-field">
-            <span>What kind of China trip sounds right?</span>
+          <div className="planner-form-header">
+            <span>Guided trip brief</span>
+            <h3>Start with what you know. Leave the route logic to us.</h3>
+            <p>Most travelers do not need a finished itinerary. We just need enough clues to suggest a first private China route that feels realistic.</p>
+          </div>
+
+          <fieldset className="planner-step">
+            <legend><span>01</span>Your basic travel window</legend>
+            <div className="planner-two-col">
+              <label>
+                <span>Your name</span>
+                <input name="Name" placeholder="Jane Smith" autoComplete="name" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input name="Email" type="email" placeholder="jane@example.com" autoComplete="email" />
+              </label>
+              <label>
+                <span>Approximate travel dates</span>
+                <input name="Travel dates" placeholder="October 2026, flexible by a few days" />
+              </label>
+              <label>
+                <span>Trip length</span>
+                <input name="Trip length" placeholder="8-10 days, 12-14 days, or not sure" />
+              </label>
+              <label className="full-field">
+                <span>Travelers</span>
+                <input name="Travelers" placeholder="2 adults, 2 children aged 8 and 12, grandparents..." />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset className="planner-step">
+            <legend><span>02</span>Choose the service level that feels right</legend>
+            <div className="planner-style-grid">
+              {travelStyles.map((style) => (
+                <label className={`planner-style-card ${selectedStyle?.id === style.id ? "is-selected" : ""}`} key={style.id}>
+                  <input type="radio" name="Preferred service level" value={`${style.name} / ${style.price}`} defaultChecked={selectedStyle?.id === style.id} />
+                  <span>{style.name}</span>
+                  <strong>{style.price}</strong>
+                  <p>{style.promise}</p>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset className="planner-step">
+            <legend><span>03</span>What should the trip include?</legend>
             <div className="choice-grid">
               {travelStyleChoices.map((style) => (
                 <label key={style} className="choice-pill">
@@ -1962,25 +1995,66 @@ function ContactPage({ search }: { search: string }) {
                 </label>
               ))}
             </div>
-          </label>
-          <label className="full-field">
-            <span>Use a quick brief starter</span>
-            <select name="Brief starter" defaultValue="">
-              <option value="" disabled>Choose the closest starting point</option>
-              {briefTemplates.map((template) => <option key={template}>{template}</option>)}
-            </select>
-          </label>
-          <label className="full-field">
-            <span>Your notes</span>
-            <textarea
-              name="Trip notes"
-              rows={7}
-              defaultValue={selectedBrief}
-              placeholder="Tell us must-see places, food needs, pace, hotel style, budget range, mobility concerns, or what you want this trip to feel like."
-            />
-          </label>
+          </fieldset>
+
+          <fieldset className="planner-step">
+            <legend><span>04</span>Places you are considering</legend>
+            <div className="choice-grid">
+              {destinationChoices.map((destination) => (
+                <label key={destination} className="choice-pill">
+                  <input type="checkbox" name="Destinations of interest" value={destination} defaultChecked={selectedTour?.destinationTags.includes(destination)} />
+                  <span>{destination}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset className="planner-step">
+            <legend><span>05</span>What do you want us to solve first?</legend>
+            <div className="choice-grid concern-grid">
+              {concernChoices.map((concern) => (
+                <label key={concern} className="choice-pill">
+                  <input type="checkbox" name="Main concerns" value={concern} />
+                  <span>{concern}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset className="planner-step">
+            <legend><span>06</span>What should this journey feel like?</legend>
+            <div className="choice-grid">
+              {feelingChoices.map((feeling) => (
+                <label key={feeling} className="choice-pill">
+                  <input type="checkbox" name="Desired feeling" value={feeling} />
+                  <span>{feeling}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset className="planner-step">
+            <legend><span>07</span>Add anything we should know</legend>
+            <label className="full-field">
+              <span>Use a quick brief starter</span>
+              <select name="Brief starter" defaultValue="">
+                <option value="" disabled>Choose the closest starting point</option>
+                {briefTemplates.map((template) => <option key={template}>{template}</option>)}
+              </select>
+            </label>
+            <label className="full-field">
+              <span>Your notes</span>
+              <textarea
+                name="Trip notes"
+                rows={8}
+                defaultValue={selectedBrief}
+                placeholder="Tell us must-see places, food needs, pace, hotel style, budget range, mobility concerns, or what you want this trip to feel like."
+              />
+            </label>
+          </fieldset>
+
           <button type="submit" className="button button-primary">Send my trip brief</button>
-          <p className="form-note">Prefer email? Write to chinaprimedmc@gmail.com with your dates and traveler count.</p>
+          <p className="form-note">Prefer direct email? Write to chinaprimedmc@gmail.com with dates, travelers, and what you want China to feel like.</p>
         </form>
       </section>
       <section className="contact-aftercare" aria-labelledby="aftercare-title">
