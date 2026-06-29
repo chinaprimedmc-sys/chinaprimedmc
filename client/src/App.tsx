@@ -3049,7 +3049,7 @@ function TripExplorer() {
       <div className="section-heading narrow">
         <p className="eyebrow dark">30 private journey ideas</p>
         <h2 id="trip-explorer-title">Filter by the way you want China to feel.</h2>
-        <p>These routes are original China Prime journey frameworks inspired by proven inbound travel logic from leading luxury travel brands, then rewritten around private pacing, comfort, and conversion-ready detail.</p>
+        <p>Start with a route that already balances icons, comfort, food, rest days, and private pacing. We will shape it around your dates, travelers, budget tier, and the moments you want to remember.</p>
       </div>
       <div className="trip-filter-panel" aria-label="Trip filters">
         <FilterGroup label="Theme" options={themeOptions} value={activeTheme} onChange={setActiveTheme} />
