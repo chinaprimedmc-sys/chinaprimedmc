@@ -3153,13 +3153,13 @@ const contactChannels = [
   {
     name: "Instagram",
     detail: "See recent China moments",
-    href: "https://www.instagram.com/chinaprimedmc/",
+    href: "https://www.instagram.com/chinaprimedmc?igsh=eGc4bzRneHgxaWF2&utm_source=",
     icon: "IG",
   },
   {
     name: "Facebook",
     detail: "Updates, reviews, and messages",
-    href: "https://www.facebook.com/chinaprimedmc",
+    href: "https://www.facebook.com/share/1CqXTAXD1e/?mibextid=wwXIfr",
     icon: "FB",
   },
   {
