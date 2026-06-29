@@ -1785,6 +1785,283 @@ figcaption span {
   }
 }
 
+/* Creative direction alignment: bright premium editorial site, image-first, glass as accent only. */
+:root {
+  --brand-red: #8f1f1b;
+  --brand-gold: #b8965d;
+  --luxury-paper: #fbfbf8;
+  --luxury-soft: #f2f3ef;
+}
+
+.site-shell {
+  background: var(--luxury-paper);
+}
+
+.hero {
+  min-height: 92svh;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1) 36%, rgba(0, 0, 0, 0.38)),
+    radial-gradient(circle at 50% 44%, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.3) 78%);
+}
+
+.hero-content h1 {
+  max-width: 10ch;
+}
+
+.intro {
+  background: var(--luxury-paper);
+}
+
+.intro-grid {
+  align-items: end;
+}
+
+.intro-grid h2 {
+  max-width: 9ch;
+}
+
+.intro-grid p {
+  max-width: 34rem;
+}
+
+.why-prime {
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff, var(--luxury-soft));
+  display: grid;
+  gap: clamp(32px, 6vw, 76px);
+  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1fr);
+}
+
+.why-prime-lead {
+  display: grid;
+  gap: 18px;
+}
+
+.why-prime-lead h2 {
+  color: var(--readable-ink);
+  font-size: clamp(2.5rem, 5vw, 5.6rem);
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+  margin: 0;
+  max-width: 9ch;
+}
+
+.why-prime-lead p {
+  color: var(--readable-body);
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.58;
+  margin: 0;
+  max-width: 35rem;
+}
+
+.why-prime-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.why-prime-card {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(17, 19, 18, 0.06);
+  border-radius: 30px;
+  box-shadow: 0 18px 54px rgba(17, 19, 18, 0.08);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr);
+  overflow: hidden;
+  padding: 12px 22px 12px 12px;
+}
+
+.why-prime-card:nth-child(2) {
+  transform: none;
+}
+
+.why-prime-media {
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  display: block;
+  overflow: hidden;
+}
+
+.why-prime-card h3 {
+  color: var(--readable-ink);
+  font-size: clamp(1.25rem, 1.8vw, 1.85rem);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  margin: 0 0 8px;
+}
+
+.why-prime-card p {
+  color: var(--readable-body);
+  font-size: 0.95rem;
+  line-height: 1.48;
+  margin: 0;
+}
+
+.destinations {
+  background: #fff;
+}
+
+.destination-grid.compact-destination-grid {
+  gap: clamp(14px, 2vw, 24px);
+}
+
+.destination-card {
+  box-shadow: 0 20px 56px rgba(17, 19, 18, 0.12);
+}
+
+.destination-card::after {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.05) 68%);
+}
+
+.split-story {
+  background: var(--luxury-soft);
+}
+
+.experience-card,
+.tour-card,
+.review-card,
+.guide-card,
+.planner-card,
+.pathfinder-card,
+.why-prime-card {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.tours {
+  background: #fff;
+}
+
+.trust {
+  background:
+    linear-gradient(90deg, rgba(17, 19, 18, 0.88), rgba(17, 19, 18, 0.62)),
+    var(--readable-ink);
+}
+
+.guide-preview {
+  background: linear-gradient(180deg, var(--luxury-paper), #fff);
+}
+
+.planner {
+  margin-top: 0;
+}
+
+body {
+  overflow-x: clip;
+}
+
+.hero-media,
+.page-hero-media,
+.planner-media,
+.destination-card,
+.why-prime-card,
+.tour-card,
+.experience-card {
+  contain: paint;
+}
+
+.hero-media img,
+.page-hero-media img,
+.planner-media img {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 88svh;
+  }
+
+  .hero-content {
+    padding-bottom: 70px;
+  }
+
+  .hero-content h1 {
+    max-width: 8.5ch;
+  }
+
+  .intro-grid {
+    gap: 16px;
+  }
+
+  .intro-grid h2 {
+    max-width: 10ch;
+  }
+
+  .why-prime {
+    grid-template-columns: 1fr;
+  }
+
+  .why-prime-lead h2 {
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    max-width: 11ch;
+  }
+
+  .why-prime-card,
+  .why-prime-card:nth-child(2) {
+    grid-template-columns: 1fr;
+    padding: 0;
+    transform: none;
+  }
+
+  .why-prime-media {
+    aspect-ratio: 16 / 9;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .why-prime-card > div {
+    padding: 0 16px 16px;
+  }
+
+  .why-prime-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .why-prime-card p {
+    font-size: 0.86rem;
+    line-height: 1.42;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-content h1 {
+    font-size: clamp(2.76rem, 13vw, 3.7rem);
+    max-width: 8.4ch;
+  }
+
+  .hero-copy {
+    max-width: 300px;
+  }
+
+  .hero-proof {
+    grid-template-columns: 1fr;
+    max-width: 310px;
+  }
+
+  .hero-proof span {
+    min-height: 32px;
+  }
+
+  .destination-card {
+    min-height: 390px;
+  }
+
+  .card-copy {
+    padding: 20px;
+  }
+
+  .card-copy h3 {
+    font-size: 1.7rem;
+  }
+
+  .planner {
+    min-height: 520px !important;
+  }
+}
+
 .nav-links a.is-active {
   color: var(--ink);
 }

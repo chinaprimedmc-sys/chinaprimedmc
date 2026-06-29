@@ -2001,20 +2001,19 @@ function HomePage() {
       <section className="intro scene-bright" aria-labelledby="intro-title">
         <div className="section-kicker">Dream first. Details second.</div>
         <div className="intro-grid">
-          <h2 id="intro-title">The right China trip feels edited, not packed.</h2>
+          <h2 id="intro-title">The right China trip feels beautifully edited.</h2>
           <p>
-            Start with the kind of traveler you are. We will help you choose the icons, landscapes, food, hotels, and daily rhythm that make China feel possible.
+            One iconic first impression. One landscape that stays with you. One local moment that makes the country feel personal.
           </p>
         </div>
       </section>
 
-      <JourneyPathfinder />
-      <MarketProofStrip />
+      <WhyChinaPrimeSection />
 
       <section className="destinations" id="destinations" aria-labelledby="destinations-title">
         <div className="section-heading">
-          <p className="eyebrow dark">Popular ways to enter China</p>
-          <h2 id="destinations-title">Choose the feeling first. We will shape the route.</h2>
+          <p className="eyebrow dark">Popular destinations</p>
+          <h2 id="destinations-title">Start with the place that pulls you in.</h2>
         </div>
         <div className="destination-grid compact-destination-grid">
           {destinations.slice(0, 4).map((destination) => (
@@ -2035,10 +2034,10 @@ function HomePage() {
 
       <section className="split-story" id="experiences" aria-labelledby="experiences-title">
         <div className="split-copy">
-          <p className="eyebrow dark">Experiences</p>
-          <h2 id="experiences-title">You are not coming this far for a generic tour.</h2>
+          <p className="eyebrow dark">Signature experiences</p>
+          <h2 id="experiences-title">The story lives between the landmarks.</h2>
           <p>
-            Your China can be food-led, culture-led, nature-led, family-led, luxury-led, or quietly adventurous. The route should adapt to you, not the other way around.
+            Food, culture, nature, family rhythm, hotels, and quiet local moments are planned as carefully as the famous sights.
           </p>
           <PageLink className="text-link" page="experiences">Choose your travel style</PageLink>
         </div>
@@ -2056,13 +2055,53 @@ function HomePage() {
       </section>
 
       <FeaturedTours limit={3} />
-      <IndustryEventsSection />
       <TrustSection />
-      <RouteIdeaBuilder placement="home" />
-      <GuidePreview />
       <ReviewSection />
+      <GuidePreview />
       <PlannerSection />
     </main>
+  );
+}
+
+function WhyChinaPrimeSection() {
+  const reasons = [
+    {
+      title: "Local team, private rhythm",
+      copy: "Guides, drivers, hotels, meals, and timing are shaped around the people actually traveling.",
+      image: visuals.forbiddenCity,
+    },
+    {
+      title: "Comfort before complexity",
+      copy: "We make trains, payments, food, language, and daily pacing feel calm before you arrive.",
+      image: visuals.panda,
+    },
+    {
+      title: "Founded 2012",
+      copy: "A licensed inbound travel company with real support on the ground in China.",
+      image: visuals.greatWall,
+    },
+  ];
+
+  return (
+    <section className="why-prime" aria-labelledby="why-prime-title">
+      <div className="why-prime-lead">
+        <p className="eyebrow dark">Why China Prime</p>
+        <h2 id="why-prime-title">A private China journey should feel effortless before it feels impressive.</h2>
+        <p>Luxury here is not only the hotel. It is the confidence that every transfer, guide, meal, and day has been thought through.</p>
+        <PageLink className="button button-dark" page="contact">Talk to a China specialist</PageLink>
+      </div>
+      <div className="why-prime-grid">
+        {reasons.map((reason) => (
+          <article className="why-prime-card" key={reason.title}>
+            <Picture image={reason.image} className="why-prime-media" />
+            <div>
+              <h3>{reason.title}</h3>
+              <p>{reason.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
