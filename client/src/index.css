@@ -6082,8 +6082,9 @@ h1 {
 .market-proof-strip {
   align-items: center;
   background:
-    radial-gradient(circle at 8% 0%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 30%),
-    linear-gradient(135deg, #fbfaf7 0%, #f5f7f2 100%);
+    radial-gradient(circle at 14% 8%, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0) 34%),
+    radial-gradient(circle at 78% 22%, rgba(232, 240, 234, 0.78), rgba(232, 240, 234, 0) 38%),
+    linear-gradient(135deg, #fbfaf7 0%, #f3f5ef 100%);
   display: grid;
   gap: clamp(24px, 5vw, 64px);
   grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
@@ -6124,35 +6125,85 @@ h1 {
 }
 
 .market-proof-grid {
+  -webkit-backdrop-filter: blur(34px) saturate(1.35) brightness(1.05);
+  backdrop-filter: blur(34px) saturate(1.35) brightness(1.05);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.34) 52%, rgba(255, 255, 255, 0.62)),
+    rgba(255, 255, 255, 0.36);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 32px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(23, 22, 21, 0.06),
+    inset 18px 18px 44px rgba(255, 255, 255, 0.18),
+    0 26px 76px rgba(28, 25, 22, 0.12);
   display: grid;
-  gap: 12px;
+  gap: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+}
+
+.market-proof-grid::before {
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.18) 42%, rgba(255, 255, 255, 0));
+  border-radius: inherit;
+  content: "";
+  inset: 1px;
+  opacity: 0.72;
+  pointer-events: none;
+  position: absolute;
+}
+
+.market-proof-grid::after {
+  background: radial-gradient(circle at 78% 0%, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0) 34%);
+  content: "";
+  height: 140px;
+  pointer-events: none;
+  position: absolute;
+  right: -42px;
+  top: -58px;
+  width: 240px;
 }
 
 .market-proof-grid article {
-  -webkit-backdrop-filter: blur(24px) saturate(1.18);
-  backdrop-filter: blur(24px) saturate(1.18);
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.5)),
-    rgba(255, 255, 255, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.68);
-  border-radius: 22px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.82),
-    0 16px 44px rgba(28, 25, 22, 0.08);
+  background: rgba(255, 255, 255, 0.01);
+  border: 0;
+  border-radius: 24px;
+  box-shadow: none;
   display: grid;
   gap: 8px;
   min-height: 132px;
-  padding: 18px;
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  padding: 22px;
+  position: relative;
+  transition: background 220ms ease, transform 220ms ease;
+  z-index: 1;
+}
+
+.market-proof-grid article:nth-child(odd)::after {
+  background: linear-gradient(180deg, rgba(23, 22, 21, 0.1), rgba(23, 22, 21, 0.02));
+  content: "";
+  height: calc(100% - 34px);
+  position: absolute;
+  right: 0;
+  top: 17px;
+  width: 1px;
+}
+
+.market-proof-grid article:nth-child(-n + 2)::before {
+  background: linear-gradient(90deg, rgba(23, 22, 21, 0.08), rgba(255, 255, 255, 0.52), rgba(23, 22, 21, 0.04));
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 18px;
+  position: absolute;
+  right: 18px;
 }
 
 .market-proof-grid article:hover {
-  border-color: rgba(35, 72, 59, 0.18);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.92),
-    0 22px 58px rgba(28, 25, 22, 0.11);
-  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(-2px);
 }
 
 .market-proof-grid strong {
@@ -6170,8 +6221,12 @@ h1 {
 
 .market-proof-link {
   align-items: center;
-  background: rgba(23, 22, 21, 0.06);
-  border: 1px solid rgba(23, 22, 21, 0.1);
+  -webkit-backdrop-filter: blur(24px) saturate(1.28);
+  backdrop-filter: blur(24px) saturate(1.28);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.3)),
+    rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 999px;
   color: var(--ink);
   cursor: pointer;
@@ -6184,8 +6239,11 @@ h1 {
   letter-spacing: 0.08em;
   min-height: 42px;
   padding: 0 16px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 14px 34px rgba(28, 25, 22, 0.08);
   text-transform: uppercase;
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
 .market-proof-link::after {
@@ -6194,8 +6252,13 @@ h1 {
 }
 
 .market-proof-link:hover {
-  background: var(--ink);
-  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.42)),
+    rgba(255, 255, 255, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    0 18px 44px rgba(28, 25, 22, 0.12);
+  color: var(--ink);
   transform: translateY(-2px);
 }
 
@@ -6282,15 +6345,26 @@ h1 {
   }
 
   .market-proof-grid {
-    gap: 8px;
     grid-template-columns: 1fr 1fr;
+    border-radius: 24px;
+    padding: 8px;
   }
 
   .market-proof-grid article {
-    border-radius: 16px;
+    border-radius: 18px;
     gap: 6px;
     min-height: 108px;
-    padding: 11px;
+    padding: 13px;
+  }
+
+  .market-proof-grid article:nth-child(odd)::after {
+    height: calc(100% - 24px);
+    top: 12px;
+  }
+
+  .market-proof-grid article:nth-child(-n + 2)::before {
+    left: 10px;
+    right: 10px;
   }
 
   .market-proof-grid strong {
@@ -6319,5 +6393,20 @@ h1 {
 
   .market-proof-grid article {
     min-height: auto;
+  }
+
+  .market-proof-grid article:nth-child(odd)::after {
+    display: none;
+  }
+
+  .market-proof-grid article:nth-child(-n + 3)::before {
+    background: linear-gradient(90deg, rgba(23, 22, 21, 0.08), rgba(255, 255, 255, 0.5), rgba(23, 22, 21, 0.02));
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 10px;
+    position: absolute;
+    right: 10px;
   }
 }
