@@ -1734,12 +1734,36 @@ function useLocationState(): LocationState {
   return locationState;
 }
 
+function getScrollBehavior(): ScrollBehavior {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+}
+
+function scrollToHash(hash: string) {
+  const target = document.getElementById(decodeURIComponent(hash.replace("#", "")));
+  if (target) {
+    target.scrollIntoView({ block: "start", behavior: getScrollBehavior() });
+    return;
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: getScrollBehavior() });
+}
+
 function navigatePath(path: string) {
-  if (`${window.location.pathname}${window.location.search}` !== path) {
-    window.history.pushState({}, "", path);
+  const next = new URL(path, window.location.origin);
+  const nextPath = `${next.pathname}${next.search}${next.hash}`;
+  const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+  if (currentPath !== nextPath) {
+    window.history.pushState({}, "", nextPath);
     window.dispatchEvent(new PopStateEvent("popstate"));
   }
-  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  requestAnimationFrame(() => {
+    if (next.hash) {
+      scrollToHash(next.hash);
+      return;
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: getScrollBehavior() });
+  });
 }
 
 function navigateTo(page: PageKey) {
@@ -1863,6 +1887,8 @@ function HomePage() {
         </div>
       </section>
 
+      <MarketProofStrip />
+
       <section className="destinations" id="destinations" aria-labelledby="destinations-title">
         <div className="section-heading">
           <p className="eyebrow dark">Popular ways to enter China</p>
@@ -1908,13 +1934,46 @@ function HomePage() {
       </section>
 
       <FeaturedTours limit={3} />
+      <IndustryEventsSection />
       <TrustSection />
       <RouteIdeaBuilder placement="home" />
       <GuidePreview />
-      <IndustryEventsSection />
       <ReviewSection />
       <PlannerSection />
     </main>
+  );
+}
+
+function MarketProofStrip() {
+  return (
+    <section className="market-proof-strip" aria-labelledby="market-proof-title">
+      <div className="market-proof-copy">
+        <p className="eyebrow dark">Proof behind the promise</p>
+        <h2 id="market-proof-title">Trusted in the rooms where China travel is sold.</h2>
+        <p>
+          Before a traveler says yes to China, advisors ask the hard questions: food, comfort, family pace, guide quality, payments, and what happens if plans change. We build around those questions.
+        </p>
+      </div>
+      <div className="market-proof-grid" aria-label="China Prime DMC trust signals">
+        <article>
+          <strong>Founded 2012</strong>
+          <span>Local China expertise with years of inbound travel practice.</span>
+        </article>
+        <article>
+          <strong>Licensed inbound agency</strong>
+          <span>Real ground support, private guides, drivers, and planning inside China.</span>
+        </article>
+        <article>
+          <strong>ICGTE 2026</strong>
+          <span>Kuala Lumpur and Singapore buyer conversations now shape our traveler pages.</span>
+        </article>
+        <article>
+          <strong>Family and halal-aware</strong>
+          <span>Routes designed around comfort needs, not labels added at the end.</span>
+        </article>
+      </div>
+      <button className="market-proof-link" type="button" onClick={() => navigatePath(routes.events)}>See our industry event stories</button>
+    </section>
   );
 }
 
@@ -1922,10 +1981,10 @@ function IndustryEventsSection() {
   return (
     <section className="industry-events" id="industry-events" aria-labelledby="industry-events-title">
       <div className="industry-events-copy">
-        <p className="eyebrow dark">Global travel connections</p>
-        <h2 id="industry-events-title">We stay close to the people who send travelers to China.</h2>
+        <p className="eyebrow dark">Market trust</p>
+        <h2 id="industry-events-title">What global travel buyers ask before they trust China to their clients.</h2>
         <p>
-          Trade shows are not decoration for us. They are where we listen to travel advisors, regional buyers, and partners who hear the real questions travelers ask before choosing China: comfort, language, food, pace, value, and trust.
+          These meetings are not decoration. They are where we listen to the people who hear traveler concerns first, then turn those concerns into clearer private routes, better pacing, and more useful pre-trip answers.
         </p>
         <button className="text-link trip-text-button" type="button" onClick={() => navigatePath(routes.events)}>View all industry stories</button>
       </div>
@@ -3530,7 +3589,9 @@ export default function App() {
   return (
     <div className="site-shell">
       <Header page={page} />
-      {page === "destinations" ? <DestinationsPage pathname={locationState.pathname} /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "stories" ? <StoriesPage /> : page === "events" ? <IndustryEventsPage pathname={locationState.pathname} /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
+      <div className="page-transition" key={`${locationState.pathname}${locationState.search}`}>
+        {page === "destinations" ? <DestinationsPage pathname={locationState.pathname} /> : page === "experiences" ? <ExperiencesPage /> : page === "tours" ? <ToursPage pathname={locationState.pathname} /> : page === "guide" ? <GuidePage pathname={locationState.pathname} /> : page === "stories" ? <StoriesPage /> : page === "events" ? <IndustryEventsPage pathname={locationState.pathname} /> : page === "contact" ? <ContactPage search={locationState.search} /> : <HomePage />}
+      </div>
       <Footer />
       {page !== "contact" ? <ContactDock /> : null}
     </div>
