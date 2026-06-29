@@ -1762,7 +1762,7 @@ function HomePage() {
             We design private China trips around the way you actually travel: your pace, your food needs, your family rhythm, your first questions, and the moments you will remember years later.
           </p>
           <div className="hero-actions">
-            <InquiryLink className="button button-primary" subject="Start planning my China journey">Build my itinerary</InquiryLink>
+            <a className="button button-primary" href="#build-my-china-route">Build my itinerary</a>
             <PageLink className="button button-ghost" page="destinations">See where China begins</PageLink>
           </div>
         </div>
@@ -1829,6 +1829,7 @@ function HomePage() {
 
       <FeaturedTours limit={3} />
       <TrustSection />
+      <RouteIdeaBuilder placement="home" />
       <GuidePreview />
       <ReviewSection />
       <PlannerSection />
@@ -1891,6 +1892,7 @@ function DestinationsPage({ pathname }: { pathname: string }) {
           ))}
         </div>
       </section>
+      <RouteIdeaBuilder placement="destinations" />
       <section className="destination-index" aria-label="China destination guide cards">
         {destinations.map((destination) => (
           <article className="destination-detail-card" key={destination.slug}>
@@ -2128,6 +2130,7 @@ function ToursPage({ pathname }: { pathname: string }) {
           {['First-time China', 'Family friendly', 'Muslim-friendly', 'Luxury pace', 'Food-led', 'Photography', 'Soft adventure'].map((item) => <span key={item}>{item}</span>)}
         </div>
       </section>
+      <RouteIdeaBuilder placement="tours" />
       <TripExplorer />
       <section className="comparison-band" aria-labelledby="comparison-title">
         <p className="eyebrow dark">What changes when it is private</p>
@@ -2355,6 +2358,7 @@ function ContactPage({ search }: { search: string }) {
   const selectedTour = tours.find((tour) => tour.slug === params.get("journey"));
   const selectedStyle = travelStyles.find((style) => style.id === params.get("style"));
   const selectedGuide = guideArticles.find((article) => article.slug === params.get("guide"));
+  const builderBrief = params.get("builder") ?? "";
   const travelStyleChoices = ["First-time China", "Family trip", "Luxury pace", "Muslim-friendly", "Food journey", "Photography", "Soft adventure", "Senior-friendly"];
   const destinationChoices = ["Beijing", "Shanghai", "Xi'an", "Chengdu", "Guilin / Yangshuo", "Zhangjiajie", "Yunnan", "Silk Road", "Huangshan", "Not sure yet"];
   const concernChoices = ["Will the pace be too tiring?", "Can kids or older parents enjoy it?", "Will food be comfortable?", "Do we need halal-aware planning?", "How do trains and payments work?", "How much should we budget?", "How do we avoid a shopping tour?", "Which cities actually belong?"];
@@ -2365,11 +2369,11 @@ function ContactPage({ search }: { search: string }) {
     "We care most about food, culture, local life, and a route that feels personal.",
     "We need halal-aware planning, private transport, and dining confidence.",
   ];
-  const selectedBrief = selectedTour && selectedStyle
+  const selectedBrief = builderBrief || (selectedTour && selectedStyle
     ? `Hi China Prime DMC,\n\nI am interested in the ${selectedStyle.name} version of this journey.\n\nJourney: ${selectedTour.title}\nRoute: ${selectedTour.places}\nSelected Travel Style: ${selectedStyle.name}\nBudget Guide: ${selectedStyle.price}\n\nApproximate travel dates:\nNumber of travelers:\nAges of children or older travelers:\nHotel preference:\nFood requirements:\nPreferred pace:\nMain concern to solve:\nWhat we want this trip to feel like:\nQuestions:\n`
     : selectedGuide
       ? `Hi China Prime DMC,\n\nI read your guide: ${selectedGuide.title}\n\nI would like a first private China route idea based on this concern.\n\nApproximate travel dates:\nNumber of travelers:\nTraveler ages:\nPlaces we are considering:\nMain concerns:\nHotel preference:\nFood requirements:\nPreferred pace:\nBudget range:\n`
-    : "";
+    : "");
 
   return (
     <main id="top">
@@ -2391,7 +2395,13 @@ function ContactPage({ search }: { search: string }) {
             <span>No shopping-tour pressure</span>
             <span>Private planning since 2012</span>
           </div>
-          {selectedTour && selectedStyle ? (
+          {builderBrief ? (
+            <div className="selected-brief-card">
+              <span>Your route signal</span>
+              <strong>Build My China Route</strong>
+              <p>We prefilled your brief from the choices you just made.</p>
+            </div>
+          ) : selectedTour && selectedStyle ? (
             <div className="selected-brief-card">
               <span>You selected</span>
               <strong>{selectedTour.title}</strong>
@@ -2995,6 +3005,89 @@ function GuidePreview() {
         ))}
       </div>
     </section>
+  );
+}
+
+
+function RouteIdeaBuilder({ placement = "home" }: { placement?: "home" | "destinations" | "tours" }) {
+  const [traveler, setTraveler] = useState("First-time visitors");
+  const [season, setSeason] = useState("Spring or fall");
+  const [companions, setCompanions] = useState("Couple or two adults");
+  const [mustSee, setMustSee] = useState("Icons + one landscape");
+  const [pace, setPace] = useState("Premium private pace");
+
+  const travelerOptions = ["First-time visitors", "Family with children", "Couple / honeymoon", "Older parents", "Muslim travelers", "Photography lovers"];
+  const seasonOptions = ["Spring or fall", "Summer holidays", "Winter / festive", "Flexible dates"];
+  const companionOptions = ["Couple or two adults", "Family with kids", "Multi-generation", "Private small group"];
+  const mustSeeOptions = ["Icons + one landscape", "Pandas + food", "Great Wall + history", "Karst rivers + villages", "Mountains + photography", "Silk Road culture"];
+  const paceOptions = ["Classic private pace", "Premium private pace", "Signature luxury pace", "Easy senior-friendly pace"];
+
+  const brief = [
+    "Hi China Prime DMC,",
+    "",
+    "I used the Build My China Route tool and would like a first private itinerary direction.",
+    "",
+    `Traveler type: ${traveler}`,
+    `Travel season: ${season}`,
+    `Who is traveling: ${companions}`,
+    `Must-see style: ${mustSee}`,
+    `Preferred pace / budget style: ${pace}`,
+    "",
+    "Please suggest a route that feels realistic, beautiful, and not rushed. I would also like guidance on the best cities to combine, daily pacing, hotels, food comfort, and whether this route makes sense for a first China trip.",
+    "",
+    "Approximate travel dates:",
+    "Number of travelers:",
+    "Departure city:",
+    "Questions or concerns:",
+  ].join("\n");
+
+  const params = new URLSearchParams({ builder: brief });
+  const routeLabel = placement === "tours" ? "Find the route that fits" : placement === "destinations" ? "Turn places into a route" : "Build your first China route";
+
+  return (
+    <section className={`route-idea-builder route-idea-builder-${placement}`} id={placement === "home" ? "build-my-china-route" : undefined} aria-labelledby={`route-builder-${placement}-title`}>
+      <div className="route-builder-visual">
+        <Picture image={placement === "destinations" ? visuals.liRiver : placement === "tours" ? visuals.greatWall : visuals.panda} className="route-builder-photo" />
+        <div className="route-builder-caption">
+          <span>60-second route direction</span>
+          <strong>{routeLabel}</strong>
+          <p>Choose a few signals. We turn them into a private China route conversation.</p>
+        </div>
+      </div>
+      <div className="route-builder-panel">
+        <p className="eyebrow dark">Build My China Route</p>
+        <h2 id={`route-builder-${placement}-title`}>Not sure where China should begin? Start with the way you travel.</h2>
+        <p className="route-builder-lede">You do not need to know every city yet. These choices help us understand the shape of your trip before we suggest Beijing, Chengdu, Guilin, Zhangjiajie, Yunnan, the Silk Road, or something quieter.</p>
+        <div className="route-builder-groups">
+          <RouteChoiceGroup label="Traveler" value={traveler} options={travelerOptions} onChange={setTraveler} />
+          <RouteChoiceGroup label="Season" value={season} options={seasonOptions} onChange={setSeason} />
+          <RouteChoiceGroup label="Traveling with" value={companions} options={companionOptions} onChange={setCompanions} />
+          <RouteChoiceGroup label="Must-see feeling" value={mustSee} options={mustSeeOptions} onChange={setMustSee} />
+          <RouteChoiceGroup label="Pace" value={pace} options={paceOptions} onChange={setPace} />
+        </div>
+        <div className="route-builder-summary" aria-label="Route builder summary">
+          <span>Your first signal</span>
+          <strong>{traveler} / {mustSee}</strong>
+          <p>{pace}. {season}. {companions}.</p>
+        </div>
+        <button className="button button-primary" type="button" onClick={() => navigatePath(`${routes.contact}?${params.toString()}`)}>Build my first route</button>
+      </div>
+    </section>
+  );
+}
+
+function RouteChoiceGroup({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (value: string) => void }) {
+  return (
+    <div className="route-choice-group">
+      <span>{label}</span>
+      <div className="route-choice-options">
+        {options.map((option) => (
+          <button className={option === value ? "is-selected" : undefined} type="button" key={option} onClick={() => onChange(option)}>
+            {option}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
 
