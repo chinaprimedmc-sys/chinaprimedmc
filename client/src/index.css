@@ -2136,15 +2136,20 @@ h1 {
 
 .filter-options button,
 .trip-badges span {
+  align-items: center;
   background: rgba(35, 72, 59, 0.07);
   border: 1px solid rgba(35, 72, 59, 0.12);
   border-radius: 999px;
   color: var(--forest);
   cursor: pointer;
+  display: inline-flex;
   font-size: 0.82rem;
   font-weight: 780;
+  justify-content: center;
+  line-height: 1.15;
   min-height: 38px;
   padding: 0 12px;
+  text-align: center;
 }
 
 .filter-options button.is-selected {
@@ -2548,6 +2553,11 @@ h1 {
 @media (max-width: 680px) {
   .tour-grid-expanded .tour-card .tour-meta span:nth-child(2) {
     display: inline-flex;
+  }
+
+  .trip-badges span {
+    min-height: 36px;
+    padding: 0 13px;
   }
 
   .style-card dl {
