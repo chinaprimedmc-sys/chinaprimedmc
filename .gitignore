@@ -1,5 +1,4 @@
 node_modules
-.pnpm-store
 .next
 out
 dist
@@ -11,5 +10,4 @@ dist
 coverage
 *.tsbuildinfo
 .vercel
-.cms
 .env*
