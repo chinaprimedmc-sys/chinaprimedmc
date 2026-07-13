@@ -14,7 +14,7 @@ type CtaButtonProps = {
 
 const variants = {
   primary: "bg-foreground text-background hover:bg-foreground/85",
-  secondary: "bg-brand-forest text-white hover:bg-brand-forest/90",
+  secondary: "bg-foreground text-background hover:bg-foreground/85",
   outline: "border border-foreground/20 bg-transparent text-foreground hover:bg-foreground/5",
   glass:
     "border border-white/65 bg-white/58 text-foreground shadow-[var(--shadow-glass)] backdrop-blur-2xl hover:bg-white/76",
@@ -37,7 +37,7 @@ export function CtaButton({
   return (
     <a
       className={cn(
-        "group focus-visible:ring-brand-red focus-visible:ring-offset-background inline-flex items-center justify-center rounded-full font-semibold transition duration-300 ease-[var(--ease-apple)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
+        "group focus-visible:ring-brand-red focus-visible:ring-offset-background inline-flex items-center justify-center rounded font-medium transition duration-300 ease-[var(--ease-apple)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
         variants[variant],
         sizes[size],
         className,

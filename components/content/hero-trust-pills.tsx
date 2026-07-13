@@ -7,11 +7,11 @@ type HeroTrustPillsProps = {
 
 export function HeroTrustPills({ className, items }: HeroTrustPillsProps) {
   return (
-    <div className={cn("mt-8 flex flex-wrap justify-center gap-2 text-white/90", className)}>
+    <div className={cn("mt-8 flex flex-wrap justify-center gap-2 text-white/88", className)}>
       {items.map((item) => (
         <span
           key={item}
-          className="rounded-full border border-white/35 bg-black/18 px-4 py-2 text-[0.68rem] font-semibold tracking-[0.12em] uppercase shadow-[var(--shadow-glass)] backdrop-blur-2xl"
+          className="rounded border border-white/35 bg-transparent px-3.5 py-2 text-[0.66rem] font-medium tracking-[0.08em] uppercase backdrop-blur-sm"
         >
           {item}
         </span>

@@ -12,17 +12,19 @@ type SiteFooterProps = {
 };
 
 export function SiteFooter({
-  brand = "China Prime DMC",
-  description = "Private China journeys shaped with local expertise, calm logistics, and thoughtful care.",
+  brand = "aviora",
+  description = "aviora — a China Prime DMC company.",
   columns,
-  email = "hello@chinaprimedmc.com",
+  email = "chinaprimedmc@gmail.com",
   social = [],
 }: SiteFooterProps) {
   return (
     <footer className="bg-neutral-950 px-5 py-12 text-white md:px-8 md:py-16">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_1.4fr]">
         <div>
-          <p className="text-xl font-semibold">{brand}</p>
+          <p className="brand-wordmark text-xl [--brand-wordmark-color:rgba(255,255,255,0.92)]">
+            {brand}
+          </p>
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/68">{description}</p>
           <div className="mt-6">
             <CtaButton href={`mailto:${email}`} variant="glass">
@@ -53,7 +55,7 @@ export function SiteFooter({
         </div>
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
-        <p>© {new Date().getFullYear()} China Prime DMC. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} aviora — a China Prime DMC company.</p>
         <div className="flex flex-wrap gap-4">
           {social.map((item) => (
             <Link

@@ -42,7 +42,7 @@ import {
 export const metadata: Metadata = createMetadata({
   title: "Private China Tours for Families, Couples, and Luxury Travelers",
   description:
-    "Plan a private China journey with China Prime DMC: custom routes, private guides, family-friendly pacing, luxury hotels, and stress-free local logistics.",
+    "Plan a private China journey with aviora: custom routes, private guides, family-friendly pacing, luxury hotels, and stress-free local logistics.",
   image: heroImage.src,
 });
 
@@ -54,7 +54,7 @@ export default function HomePage() {
         data={{
           "@context": "https://schema.org",
           "@type": "TravelAgency",
-          name: "China Prime DMC",
+          name: "aviora",
           url: "https://chinaprimedmc.com/",
           description:
             "Private China tours and custom inbound travel planning for international families, couples, luxury travelers, and travel advisors.",
@@ -71,11 +71,19 @@ export default function HomePage() {
       <SiteNavigation
         items={homeNavItems}
         cta={{ label: "Plan My Trip", href: primaryAction.href }}
-        whatsapp={{ label: "WhatsApp", href: "/contact" }}
+        whatsapp={{ label: "WhatsApp", href: "https://wa.me/447985052302" }}
       />
       <HeroLargeImage
-        eyebrow="China Prime DMC"
+        eyebrow="aviora — a China Prime DMC company"
         title="China, beautifully within reach."
+        rotatingTitle={{
+          fixedText: "China, ",
+          items: [
+            "beautifully within reach.",
+            "without the friction.",
+            "paced around your family.",
+          ],
+        }}
         subtitle="Private China journeys with the wonder kept in, and the friction quietly designed out."
         image={heroImage}
         primary={{ label: "Plan My Trip", href: primaryAction.href }}
@@ -245,23 +253,41 @@ export default function HomePage() {
         </ContentContainer>
       </Section>
 
-      <Section id="stories" spacing="default" className="bg-white">
+      <div
+        aria-hidden="true"
+        className="h-14 bg-gradient-to-b from-neutral-950 to-[var(--bg-dark-primary)]"
+      />
+      <Section
+        id="stories"
+        spacing="default"
+        className="bg-[var(--bg-dark-primary)] text-[var(--text-on-dark-primary)]"
+      >
         <ContentContainer size="xl" className="grid gap-8">
-          <EditorialReview
-            review={{
-              quote:
-                "The right China trip does not feel rushed. It feels like someone quietly removed the friction.",
-              name: "China Prime DMC planning principle",
-              country: "Private travel",
-            }}
-          />
+          <div className="[&_figcaption]:text-[var(--text-on-dark-secondary)]">
+            <EditorialReview
+              review={{
+                quote:
+                  "The right China trip does not feel rushed. It feels like someone quietly removed the friction.",
+                name: "aviora planning principle",
+                country: "Private travel",
+              }}
+            />
+          </div>
           <GridSystem columns={3}>
             {reviews.map((review) => (
-              <ReviewCard key={`${review.name}-${review.trip}`} review={review} />
+              <ReviewCard
+                key={`${review.name}-${review.trip}`}
+                review={review}
+                className="border-white/10 bg-[var(--bg-dark-secondary)] text-[var(--text-on-dark-primary)] !shadow-[0_24px_70px_rgba(0,0,0,0.24)] [&_.text-brand-gold]:text-[var(--accent-on-dark)] [&_.text-muted]:text-[var(--text-on-dark-secondary)]"
+              />
             ))}
           </GridSystem>
         </ContentContainer>
       </Section>
+      <div
+        aria-hidden="true"
+        className="h-14 bg-gradient-to-b from-[var(--bg-dark-primary)] to-[var(--bg-primary)]"
+      />
 
       <Section id="journal" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
@@ -325,10 +351,7 @@ export default function HomePage() {
             items: journal.map((article) => ({ label: article.category, href: article.href })),
           },
         ]}
-        social={[
-          { label: "Facebook", href: "https://www.facebook.com/share/1CqXTAXD1e/?mibextid=wwXIfr" },
-          { label: "Instagram", href: "https://www.instagram.com/chinaprimedmc" },
-        ]}
+        social={[]}
       />
       <FloatingCta label="Plan My China Trip" href={primaryAction.href} />
       <StickyMobileCta label="Plan Trip" href={primaryAction.href} showAfter={720} />

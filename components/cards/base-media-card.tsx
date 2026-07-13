@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-import { imageZoom } from "@/animations/motion-presets";
 import { Badge } from "@/components/ui/badge";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { cn } from "@/lib/utils/cn";
@@ -37,6 +36,14 @@ const imageSizes = {
   featured: "(min-width:1024px) 62vw, 100vw",
 };
 
+const cardHoverTransition = { duration: 0.56, ease: [0.22, 1, 0.36, 1] as const };
+const cardTapTransition = { duration: 0.18, ease: [0.22, 1, 0.36, 1] as const };
+const mediaZoom: Variants = {
+  rest: { scale: 1 },
+  hover: { scale: 1.04, transition: cardHoverTransition },
+  tap: { scale: 1.02, transition: cardTapTransition },
+};
+
 export function BaseMediaCard({
   title,
   description,
@@ -49,18 +56,38 @@ export function BaseMediaCard({
   variant = "medium",
   className,
 }: BaseMediaCardProps) {
+  const shouldReduceMotion = useReducedMotion();
   const content = (
     <motion.article
       initial="rest"
       whileHover="hover"
+      whileTap="tap"
+      variants={
+        shouldReduceMotion
+          ? { rest: { y: 0 }, hover: { y: 0 }, tap: { y: 0 } }
+          : {
+              rest: { y: 0 },
+              hover: {
+                y: -6,
+                transition: cardHoverTransition,
+              },
+              tap: {
+                y: -2,
+                transition: cardTapTransition,
+              },
+            }
+      }
       className={cn(
-        "group relative flex overflow-hidden rounded-[1.75rem] bg-neutral-200 text-white shadow-sm",
+        "group relative flex overflow-hidden rounded-[1.75rem] bg-neutral-200 text-white shadow-sm transition-shadow duration-[560ms] ease-out hover:shadow-[0_28px_80px_rgba(43,42,37,0.18)] active:shadow-[0_18px_48px_rgba(43,42,37,0.14)] motion-reduce:transition-none",
         variants[variant],
         className,
       )}
     >
       {image ? (
-        <motion.div variants={imageZoom} className="absolute inset-0">
+        <motion.div
+          variants={shouldReduceMotion ? { rest: { scale: 1 }, hover: { scale: 1 } } : mediaZoom}
+          className="absolute inset-0"
+        >
           <OptimizedImage
             src={image.src}
             alt={image.alt}
@@ -68,14 +95,26 @@ export function BaseMediaCard({
             sizes={imageSizes[variant]}
             objectPosition={image.objectPosition}
             frameClassName="h-full bg-neutral-200"
-            className="h-full w-full"
+            className="h-full w-full motion-reduce:transform-none"
           />
         </motion.div>
       ) : (
         <div className="absolute inset-0 bg-neutral-900" />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-black/10" />
-      <div className="relative z-10 mt-auto grid w-full gap-4 p-5 md:p-6">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/34 via-black/8 to-transparent opacity-0 transition-opacity duration-[560ms] ease-out group-hover:opacity-100 group-active:opacity-70 motion-reduce:transition-none" />
+      <motion.div
+        variants={
+          shouldReduceMotion
+            ? { rest: { y: 0 }, hover: { y: 0 }, tap: { y: 0 } }
+            : {
+                rest: { y: 0 },
+                hover: { y: -8, transition: cardHoverTransition },
+                tap: { y: -3, transition: cardTapTransition },
+              }
+        }
+        className="relative z-10 mt-auto grid w-full gap-4 p-5 md:p-6"
+      >
         <div className="flex flex-wrap gap-2">
           {eyebrow ? (
             <Badge className="border-white/25 bg-white/18 text-white backdrop-blur-xl">
@@ -116,7 +155,7 @@ export function BaseMediaCard({
             />
           </span>
         ) : null}
-      </div>
+      </motion.div>
     </motion.article>
   );
 

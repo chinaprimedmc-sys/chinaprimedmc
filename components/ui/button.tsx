@@ -28,7 +28,7 @@ export function Button({ className, variant = "primary", size = "md", ...props }
   return (
     <button
       className={cn(
-        "focus-visible:ring-brand-red focus-visible:ring-offset-background inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-[var(--ease-apple)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+        "focus-visible:ring-brand-red focus-visible:ring-offset-background inline-flex items-center justify-center rounded font-semibold transition duration-200 ease-[var(--ease-apple)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
         variants[variant],
         sizes[size],
         className,

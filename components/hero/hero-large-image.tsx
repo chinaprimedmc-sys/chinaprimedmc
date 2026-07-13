@@ -2,6 +2,7 @@ import { ArrowDown } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { CtaButton } from "@/components/cta";
+import { RotatingHeroTitle } from "@/components/hero/rotating-hero-title";
 import { HeroLayout } from "@/components/layout";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { cn } from "@/lib/utils/cn";
@@ -10,6 +11,10 @@ import type { LinkAction, MediaAsset } from "@/types/component-library";
 type HeroLargeImageProps = {
   eyebrow?: string;
   title: string;
+  rotatingTitle?: {
+    fixedText: string;
+    items: string[];
+  };
   subtitle?: string;
   image: MediaAsset;
   primary?: LinkAction;
@@ -28,6 +33,7 @@ const overlays = {
 export function HeroLargeImage({
   eyebrow,
   title,
+  rotatingTitle,
   subtitle,
   image,
   primary,
@@ -58,13 +64,9 @@ export function HeroLargeImage({
       }
     >
       <div className="max-w-5xl text-white">
-        {eyebrow ? (
-          <p className="mb-5 text-xs font-semibold tracking-[0.22em] text-white/80 uppercase">
-            {eyebrow}
-          </p>
-        ) : null}
-        <h1 className="text-5xl leading-[0.96] font-semibold tracking-[-0.04em] text-balance md:text-7xl lg:text-8xl">
-          {title}
+        {eyebrow ? <p className="hero-eyebrow mb-5 text-xs text-white/80">{eyebrow}</p> : null}
+        <h1 className="font-serif text-5xl leading-[0.96] font-medium tracking-[-0.015em] text-balance md:text-7xl lg:text-8xl">
+          {rotatingTitle ? <RotatingHeroTitle {...rotatingTitle} /> : title}
         </h1>
         {subtitle ? (
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/88 md:text-xl md:leading-8">
@@ -74,7 +76,7 @@ export function HeroLargeImage({
         {primary || secondary ? (
           <div className={cn("mt-8 flex flex-wrap gap-3", align === "center" && "justify-center")}>
             {primary ? (
-              <CtaButton href={primary.href} variant="glass">
+              <CtaButton href={primary.href} variant="primary">
                 {primary.label}
               </CtaButton>
             ) : null}
@@ -82,7 +84,7 @@ export function HeroLargeImage({
               <CtaButton
                 href={secondary.href}
                 variant="outline"
-                className="border-white/45 text-white hover:bg-white/12"
+                className="border-white/55 bg-transparent !text-white hover:border-white/80 hover:bg-white/10"
               >
                 {secondary.label}
               </CtaButton>
