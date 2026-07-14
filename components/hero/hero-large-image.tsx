@@ -63,9 +63,9 @@ export function HeroLargeImage({
         </>
       }
     >
-      <div className="max-w-5xl text-white">
+      <div className="w-full max-w-5xl min-w-0 text-white">
         {eyebrow ? <p className="hero-eyebrow mb-5 text-xs text-white/80">{eyebrow}</p> : null}
-        <h1 className="font-serif text-5xl leading-[0.96] font-medium tracking-[-0.015em] text-balance md:text-7xl lg:text-8xl">
+        <h1 className="max-w-full font-serif text-[clamp(2.6rem,12vw,4rem)] leading-[0.98] font-medium tracking-[-0.01em] text-balance break-words md:text-7xl md:tracking-[-0.015em] lg:text-8xl">
           {rotatingTitle ? <RotatingHeroTitle {...rotatingTitle} /> : title}
         </h1>
         {subtitle ? (
@@ -74,9 +74,14 @@ export function HeroLargeImage({
           </p>
         ) : null}
         {primary || secondary ? (
-          <div className={cn("mt-8 flex flex-wrap gap-3", align === "center" && "justify-center")}>
+          <div
+            className={cn(
+              "mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap",
+              align === "center" && "justify-center",
+            )}
+          >
             {primary ? (
-              <CtaButton href={primary.href} variant="primary">
+              <CtaButton href={primary.href} variant="primary" className="w-full sm:w-auto">
                 {primary.label}
               </CtaButton>
             ) : null}
@@ -84,7 +89,7 @@ export function HeroLargeImage({
               <CtaButton
                 href={secondary.href}
                 variant="outline"
-                className="border-white/55 bg-transparent !text-white hover:border-white/80 hover:bg-white/10"
+                className="w-full border-white/55 bg-transparent !text-white hover:border-white/80 hover:bg-white/10 sm:w-auto"
               >
                 {secondary.label}
               </CtaButton>

@@ -97,19 +97,22 @@ a {
 
 .hero-title-visible {
   display: inline;
+  max-width: 100%;
 }
 
 .hero-title-rotator {
   display: inline-grid;
   min-height: 1.02em;
+  max-width: 100%;
   position: relative;
   vertical-align: baseline;
+  white-space: normal;
 }
 
 .hero-title-measure {
   grid-area: 1 / 1;
   visibility: hidden;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .hero-title-item {
@@ -119,7 +122,7 @@ a {
   transition:
     opacity 460ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .hero-title-item[data-active="true"] {
