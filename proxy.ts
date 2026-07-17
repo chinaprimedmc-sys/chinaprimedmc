@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const protectedPrefixes = ["/admin", "/component-showcase", "/component-playground"];
+const protectedPrefixes = ["/admin", "/api/admin", "/component-showcase", "/component-playground"];
 
 function isProtectedPath(pathname: string) {
   return protectedPrefixes.some(
@@ -15,7 +15,7 @@ function applySecurityHeaders(response: NextResponse) {
     "form-action 'self' mailto:",
     "frame-ancestors 'none'",
     "object-src 'none'",
-    "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org",
+    "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co",
     "font-src 'self'",
     "script-src 'self' 'unsafe-inline'",
     "style-src 'self' 'unsafe-inline'",

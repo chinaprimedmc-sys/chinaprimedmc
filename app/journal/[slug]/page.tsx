@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { getArticleBySlug, getArticleSlugs } from "@/content/journal";
 import { ArticleTemplate } from "@/features/journal/article-template";
+import { cmsBlogToArticle } from "@/lib/cms/adapters";
+import { getPublishedCmsPost, getPublishedCmsPosts } from "@/lib/cms/data";
 import { getRelationshipsForArticle } from "@/lib/content/relationship-engine";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -13,13 +15,17 @@ type ArticlePageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return getArticleSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const cmsPosts = await getPublishedCmsPosts();
+  return [...new Set([...getArticleSlugs(), ...cmsPosts.map((post) => post.slug)])].map((slug) => ({
+    slug,
+  }));
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const localArticle = getArticleBySlug(slug);
+  const article = localArticle ?? cmsBlogToArticle(await getPublishedCmsPost(slug));
 
   if (!article) {
     return createMetadata({ title: "Article Not Found", noIndex: true });
@@ -35,7 +41,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const localArticle = getArticleBySlug(slug);
+  const article = localArticle ?? cmsBlogToArticle(await getPublishedCmsPost(slug));
 
   if (!article) {
     notFound();

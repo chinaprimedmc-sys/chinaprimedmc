@@ -67,7 +67,12 @@ export function TourTemplate({ tour }: TourTemplateProps) {
 
       <Section id="overview" spacing="compact" className="bg-white">
         <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader eyebrow="Journey overview" title={tour.overview.pitch} />
+          <SectionHeader
+            eyebrow="Journey overview"
+            title={tour.overview.pitch}
+            className="md:grid-cols-1"
+            titleClassName="max-w-none lg:w-4/5"
+          />
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {tour.overview.facts.map((fact) => (
               <QuickFactCard key={fact.label} {...fact} />
@@ -103,7 +108,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           <SectionHeader
             eyebrow="Interactive itinerary"
             title="Open each day like a private travel proposal."
-            description="Each day supports activities, meals, hotels, transport, guide notes, images, and future map linking from CMS-managed data."
+            description="Open a day to see its illustrative rhythm, activities, transfer notes, images, and practical planning details."
           />
           <ItineraryEngine days={tour.itinerary} />
         </ContentContainer>
@@ -115,7 +120,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
             <SectionHeader
               eyebrow="Accommodation"
               title="Hotels are part of the rhythm, not an afterthought."
-              description="The template supports room styles, hotel notes, highlights, and future luxury upgrade logic."
+              description="Accommodation notes explain how room setup, comfort, and location can support the route."
             />
             <GridSystem columns={2}>
               {tour.accommodations.map((hotel) => (
@@ -142,7 +147,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           <SectionHeader
             eyebrow="Included and excluded"
             title="Clear boundaries create trust before the inquiry."
-            description="In production this section can be customized by tour tier, season, and final proposal version."
+            description="The final proposal confirms which services are included for your dates, travelers, and selected comfort level."
           />
           <div className="grid gap-5 md:grid-cols-2">
             <ListPanel title="Included" items={tour.included} tone="positive" />
@@ -156,7 +161,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           <SectionHeader
             eyebrow="Optional experiences"
             title="Upgrade the feeling of the journey without making it busier."
-            description="Optional cards can be recommended by travel style, destination tags, family needs, dietary requirements, and CMS priority."
+            description="Optional experiences can be added when they suit your interests, pace, dietary needs, and comfort."
           />
           <GridSystem columns={3}>
             {tour.optionalExperiences.map((experience) => (
@@ -209,7 +214,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           <SectionHeader
             eyebrow="Gallery"
             title="The visual texture of the route."
-            description="Gallery media is CMS-managed and optimized through the shared image component."
+            description="A visual sequence of the route, from historic spaces to city life."
           />
           <GridGallery images={tour.gallery} mode="editorial" />
         </ContentContainer>
@@ -220,44 +225,46 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           <SectionHeader
             eyebrow="FAQ"
             title="Questions travelers ask before trusting a private China route."
-            description="FAQ content powers both the on-page accordion and FAQ schema for long-tail SEO."
+            description="Clear answers to the questions travelers ask before choosing a private China route."
           />
           <TourFaqAccordion tour={tour} />
         </ContentContainer>
       </Section>
 
-      <Section id="related-tours" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Related tours"
-            title="Other routes that may fit your travelers better."
-            description="The relationship system can recommend by route overlap, theme, duration, and conversion priority."
-          />
-          <GridSystem columns={3}>
-            {tour.related.tours.map((related) => (
-              <TourCard
-                key={related.title}
-                title={related.title}
-                description={related.description}
-                image={related.image}
-                badges={related.tags}
-                meta={[
-                  { label: "Route", value: related.route },
-                  { label: "Length", value: related.duration },
-                ]}
-                action={{ label: "Ask for this route", href: related.href }}
-              />
-            ))}
-          </GridSystem>
-        </ContentContainer>
-      </Section>
+      {tour.related.tours.length ? (
+        <Section id="related-tours" spacing="default" className="bg-white">
+          <ContentContainer size="xl" className="grid gap-8">
+            <SectionHeader
+              eyebrow="Related tours"
+              title="Other routes that may fit your travelers better."
+              description="Browse other route directions by pace, theme, and the places you want to understand."
+            />
+            <GridSystem columns={3}>
+              {tour.related.tours.map((related) => (
+                <TourCard
+                  key={related.title}
+                  title={related.title}
+                  description={related.description}
+                  image={related.image}
+                  badges={related.tags}
+                  meta={[
+                    { label: "Route", value: related.route },
+                    { label: "Length", value: related.duration },
+                  ]}
+                  action={{ label: "Ask for this route", href: related.href }}
+                />
+              ))}
+            </GridSystem>
+          </ContentContainer>
+        </Section>
+      ) : null}
 
       <Section id="related-destinations" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Related destinations"
             title="Understand the places inside the journey."
-            description="Tour pages link back to destination pages, creating a clean content network for travelers and search engines."
+            description="Move from the route overview into destination context before you decide what belongs in the final plan."
           />
           <GridSystem columns={3}>
             {tour.related.destinations.map((destination) => (
@@ -277,8 +284,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       <Section spacing="default" className="bg-white">
         <ContentContainer size="xl">
           <CtaCard
-            variant="image"
-            image={tour.hero.image}
+            variant="glass"
             eyebrow="Customize this journey"
             title="Keep the route. Change the rhythm."
             description="The best private China trips usually start from a strong route idea, then change around your people, dates, comfort level, and concerns."

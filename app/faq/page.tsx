@@ -58,9 +58,9 @@ export default function FaqPage() {
       />
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Plan Your Journey", href: primaryAction.href }}
+        cta={{ label: "Plan My Trip", href: primaryAction.href }}
       />
-      <Section spacing="spacious" className="pt-32">
+      <Section spacing="spacious">
         <ContentContainer size="md" className="grid gap-8">
           <div>
             <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">FAQ</p>
@@ -90,10 +90,13 @@ export default function FaqPage() {
             eyebrow="Next step"
             title="The useful answer usually starts with your exact travelers."
             description="Tell us who is going, when, and what kind of China you want to remember."
-            primary={{ label: "Ask a China Specialist", href: primaryAction.href }}
+            primary={{
+              label: "Email a Specialist",
+              href: "mailto:chinaprimedmc@gmail.com?subject=Question%20for%20a%20China%20Specialist",
+            }}
             secondary={{
-              label: "Explore Route Ideas",
-              href: "/tours/first-china-beautifully-paced",
+              label: "Browse Tours",
+              href: "/tours",
             }}
           />
         </ContentContainer>

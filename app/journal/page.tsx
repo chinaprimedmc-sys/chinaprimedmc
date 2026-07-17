@@ -4,6 +4,8 @@ import { JournalHubTemplate } from "@/features/journal/journal-hub-template";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
+import { cmsBlogToArticle } from "@/lib/cms/adapters";
+import { getPublishedCmsPosts } from "@/lib/cms/data";
 
 export const metadata = createMetadata({
   title: "Travel Journal",
@@ -12,10 +14,16 @@ export const metadata = createMetadata({
   path: "/journal",
 });
 
-export default function JournalPage() {
+export default async function JournalPage() {
   const featured = getFeaturedArticle();
-  const editorPicks = getEditorPicks();
-  const latest = journalArticles;
+  const cmsPosts = await getPublishedCmsPosts();
+  const localSlugs = new Set(journalArticles.map((article) => article.slug));
+  const cmsArticles = cmsPosts
+    .filter((post) => !localSlugs.has(post.slug))
+    .map(cmsBlogToArticle)
+    .filter((article): article is NonNullable<typeof article> => Boolean(article));
+  const editorPicks = [...getEditorPicks(), ...cmsArticles.slice(0, 2)];
+  const latest = [...cmsArticles, ...journalArticles];
 
   return (
     <>

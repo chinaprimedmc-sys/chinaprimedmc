@@ -14,6 +14,7 @@ type BlogCardProps = {
   date?: string;
   variant?: ComponentVariant;
   className?: string;
+  eager?: boolean;
 };
 
 export function BlogCard({
@@ -25,12 +26,13 @@ export function BlogCard({
   date,
   variant = "medium",
   className,
+  eager = false,
 }: BlogCardProps) {
   return (
     <Link
       href={href}
       className={cn(
-        "group ring-border grid overflow-hidden rounded-[1.75rem] bg-white shadow-sm ring-1 transition-[transform,box-shadow] duration-[560ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_28px_80px_rgba(43,42,37,0.14)] active:-translate-y-0.5 active:shadow-[0_18px_48px_rgba(43,42,37,0.1)] motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+        "group ring-border grid overflow-hidden rounded-[1.75rem] bg-white shadow-sm ring-1 transition-[transform,box-shadow] duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] hover:-translate-y-1.5 hover:shadow-[0_28px_80px_rgba(43,42,37,0.14)] active:-translate-y-0.5 active:shadow-[0_18px_48px_rgba(43,42,37,0.1)] motion-reduce:transition-none motion-reduce:hover:translate-y-0",
         variant === "featured" && "md:grid-cols-2",
         className,
       )}
@@ -42,14 +44,15 @@ export function BlogCard({
             alt={image.alt}
             width={image.width ?? 900}
             height={image.height ?? 680}
+            loading={eager ? "eager" : "lazy"}
             sizes="(min-width:1024px) 33vw, 100vw"
             frameClassName="aspect-[4/3]"
-            className="h-full w-full transition-transform duration-[560ms] ease-out group-hover:scale-[1.04] group-active:scale-[1.02] motion-reduce:transform-none motion-reduce:transition-none"
+            className="h-full w-full transition-transform duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] group-hover:scale-[1.04] group-active:scale-[1.02] motion-reduce:transform-none motion-reduce:transition-none"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/24 via-black/6 to-transparent opacity-0 transition-opacity duration-[560ms] ease-out group-hover:opacity-100 group-active:opacity-60 motion-reduce:transition-none" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/24 via-black/6 to-transparent opacity-0 transition-opacity duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] group-hover:opacity-100 group-active:opacity-60 motion-reduce:transition-none" />
         </div>
       ) : null}
-      <div className="grid content-between gap-6 p-5 transition-transform duration-[560ms] ease-out group-hover:-translate-y-1.5 group-active:-translate-y-0.5 motion-reduce:transform-none motion-reduce:transition-none md:p-6">
+      <div className="grid content-between gap-6 p-5 transition-transform duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] group-hover:-translate-y-1.5 group-active:-translate-y-0.5 motion-reduce:transform-none motion-reduce:transition-none md:p-6">
         <div>
           <div className="mb-4 flex flex-wrap gap-2">
             {category ? <Badge>{category}</Badge> : null}

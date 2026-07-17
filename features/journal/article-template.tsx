@@ -31,6 +31,11 @@ type ArticleTemplateProps = {
 export function ArticleTemplate({ article, relationships }: ArticleTemplateProps) {
   const headings = article.content.filter((block) => block.type === "heading");
   const faqs = article.content.filter((block) => block.type === "faq");
+  const articleNavItems = [
+    { label: "Journal", href: "/journal" },
+    ...(relationships.tours.length ? [{ label: "Related Tours", href: "#related-tours" }] : []),
+    ...(faqs.length ? [{ label: "FAQ", href: "#article-faq" }] : []),
+  ];
 
   return (
     <PageContainer className="pb-24 md:pb-0">
@@ -43,11 +48,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
         }}
       />
       <SiteNavigation
-        items={[
-          { label: "Journal", href: "/journal" },
-          { label: "Related Tours", href: "#related-tours" },
-          { label: "FAQ", href: "#article-faq" },
-        ]}
+        items={articleNavItems}
         cta={{ label: "Plan My Journey", href: "mailto:chinaprimedmc@gmail.com" }}
       />
 
@@ -101,7 +102,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                 <Badge>{article.category}</Badge>
                 <p className="text-muted text-sm leading-6">
                   This article is connected to destinations, private journeys, and experiences
-                  through the content relationship engine.
+                  through related destinations, journeys, and practical planning notes.
                 </p>
                 <div className="flex gap-2">
                   <span className="border-border grid size-10 place-items-center rounded-full border">
@@ -160,7 +161,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <SectionHeader
               eyebrow="Related private journeys"
               title="Turn the idea into a route."
-              description="Tour recommendations are generated from article tags, route themes, and manual editorial priority."
+              description="A considered selection of private journey ideas related to this story."
             />
             <GridSystem columns={3}>
               {relationships.tours.map((tour) => (
@@ -236,7 +237,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <SectionHeader
               eyebrow="FAQ"
               title="Questions this guide helps answer."
-              description="FAQ blocks can power both on-page reading and Article FAQ schema."
+              description="Practical questions answered in this guide."
             />
             <div className="grid gap-3">
               {faqs.map((faq) =>
@@ -281,8 +282,10 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             title: "Journal",
             items: [
               { label: "All stories", href: "/journal" },
-              { label: "Related tours", href: "#related-tours" },
-              { label: "FAQ", href: "#article-faq" },
+              ...(relationships.tours.length
+                ? [{ label: "Related tours", href: "#related-tours" }]
+                : []),
+              ...(faqs.length ? [{ label: "FAQ", href: "#article-faq" }] : []),
             ],
           },
           {

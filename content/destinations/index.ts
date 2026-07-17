@@ -142,34 +142,12 @@ export const destinations: Destination[] = [
       {
         title: "First China, Beautifully Paced",
         description:
-          "Beijing, Xi'an, Chengdu, and Shanghai with private guides, stronger pacing, and the big icons handled calmly.",
+          "Beijing, Xi'an, and Shanghai with private guides, stronger pacing, and the big icons handled calmly.",
         tags: ["First-time", "Private"],
         image: destinationAsset.beijingForbiddenCity,
-        route: "Beijing, Xi'an, Chengdu, Shanghai",
-        duration: "10-12 days",
+        route: "Beijing, Xi'an, Shanghai",
+        duration: "9 days",
         style: "Private classic",
-        href: inquiryHref,
-      },
-      {
-        title: "China With Kids",
-        description:
-          "A family-friendly route with Beijing, pandas, easy nature, hands-on meals, and shorter city days.",
-        tags: ["Family", "Children"],
-        image: destinationAsset.chengduPanda,
-        route: "Beijing, Chengdu, Yangshuo, Shanghai",
-        duration: "9-11 days",
-        style: "Easy family",
-        href: inquiryHref,
-      },
-      {
-        title: "Imperial China and Cinematic Landscapes",
-        description:
-          "Pair Beijing's imperial story with Xi'an history and one dramatic landscape chapter.",
-        tags: ["Culture", "Photography"],
-        image: destinationAsset.xianTerracotta,
-        route: "Beijing, Xi'an, Zhangjiajie",
-        duration: "8-10 days",
-        style: "Culture and nature",
         href: inquiryHref,
       },
     ],
@@ -243,6 +221,355 @@ export const destinations: Destination[] = [
           href: inquiryHref,
         },
       ],
+    },
+  },
+  {
+    slug: "shanghai",
+    name: "Shanghai",
+    region: "East China",
+    coordinates: { latitude: 31.2304, longitude: 121.4737 },
+    hero: {
+      eyebrow: "Destination guide",
+      tagline: "Modern China with an elegant soft landing.",
+      summary:
+        "Shanghai pairs skyline drama, Art Deco streets, design hotels, and easy international comfort.",
+      image: destinationAsset.shanghaiSkyline,
+      primary: { label: "Explore Shanghai Tours", href: "#suggested-tours" },
+      secondary: { label: "Plan My Shanghai Trip", href: inquiryHref },
+    },
+    seo: {
+      title: "Private Shanghai Tours and Luxury Shanghai Travel",
+      description:
+        "Plan a private Shanghai journey with aviora: skyline evenings, Art Deco neighborhoods, food, design hotels, and private guide logistics.",
+      keywords: [
+        "private Shanghai tours",
+        "luxury Shanghai travel",
+        "Shanghai private guide",
+        "Shanghai family tour",
+      ],
+    },
+    quickFacts: [
+      { label: "Location", value: "East China", helper: "A natural arrival or finale city." },
+      { label: "Best Season", value: "Mar-May, Sep-Nov", helper: "Comfortable walking weather." },
+      {
+        label: "Recommended Stay",
+        value: "2-4 nights",
+        helper: "Enough for both old and new Shanghai.",
+      },
+      {
+        label: "Travel Style",
+        value: "Design, food, culture",
+        helper: "Strong for couples and first-timers.",
+      },
+      {
+        label: "Suitable For",
+        value: "Families, couples, seniors",
+        helper: "Easy hotel and transport comfort.",
+      },
+      {
+        label: "Travel planning",
+        value: "Flexible",
+        helper: "Final route details are shaped around your travelers.",
+      },
+    ],
+    whyVisit: {
+      title: "Shanghai helps travelers understand China's present tense.",
+      body: "The city works beautifully as a first or final chapter: international hotels, layered neighborhoods, skyline views, and a gentler bridge between China and home.",
+      image: destinationAsset.shanghaiSkyline,
+    },
+    bestTime: {
+      title: "Shanghai is easiest when the weather supports slow neighborhood time.",
+      summary:
+        "Spring and autumn are usually strongest. Winter can be stylish and quieter, while summer needs heat-aware pacing.",
+      seasons: [
+        {
+          label: "Spring",
+          value: "Fresh and walkable",
+          helper: "Good for lanes, food, and gardens.",
+        },
+        { label: "Summer", value: "Hot and humid", helper: "Use hotel breaks and indoor culture." },
+        {
+          label: "Autumn",
+          value: "Best overall",
+          helper: "Comfortable light and skyline evenings.",
+        },
+        {
+          label: "Winter",
+          value: "Quiet city style",
+          helper: "Cool but manageable with smart routing.",
+        },
+      ],
+    },
+    highlights: [
+      {
+        title: "Bund skyline with context",
+        description:
+          "Read the city through riverfront architecture, treaty-port history, and modern Pudong contrast.",
+        category: "Architecture",
+        image: destinationAsset.shanghaiSkyline,
+      },
+      {
+        title: "Former French Concession texture",
+        description:
+          "Quiet streets, design shops, cafes, and local stories without turning the day into a shopping route.",
+        category: "Culture",
+        image: destinationAsset.shanghaiSkyline,
+      },
+      {
+        title: "Food-led Shanghai",
+        description:
+          "Dumplings, neighborhood restaurants, and refined dining can be adjusted around family or senior comfort.",
+        category: "Food",
+        image: destinationAsset.shanghaiSkyline,
+      },
+    ],
+    experiences: [
+      {
+        title: "Architecture walk without overload",
+        description:
+          "A private guide connects the Bund, Art Deco streets, and modern design in a calm half-day route.",
+        badges: ["Architecture", "Private guide"],
+        image: destinationAsset.shanghaiSkyline,
+      },
+      {
+        title: "Food and neighborhood evening",
+        description:
+          "A soft, flexible evening designed around appetite, jet lag, and preferred walking distance.",
+        badges: ["Food", "Couples"],
+        image: destinationAsset.shanghaiSkyline,
+      },
+      {
+        title: "Family-friendly modern China",
+        description:
+          "Museums, skyline moments, parks, and downtime arranged so children do not spend the day in transit.",
+        badges: ["Family", "Easy pacing"],
+        image: destinationAsset.shanghaiSkyline,
+      },
+    ],
+    hotels: [],
+    tours: [
+      {
+        title: "First China, Beautifully Paced",
+        description:
+          "A calm first China route ending with Shanghai's skyline, food, and international ease.",
+        tags: ["First-time", "Private"],
+        image: destinationAsset.shanghaiSkyline,
+        route: "Beijing, Xi'an, Shanghai",
+        duration: "9 days",
+        style: "Private classic",
+        href: "/tours/first-china-beautifully-paced",
+      },
+    ],
+    gallery: [destinationAsset.shanghaiSkyline],
+    tips: [
+      {
+        title: "Use Shanghai as a soft landing or finale.",
+        description:
+          "Its hotels, airport access, and international comfort make arrival and departure days easier.",
+        category: "Transportation",
+      },
+      {
+        title: "Protect walking comfort.",
+        description:
+          "Neighborhoods are rewarding, but private routing should avoid unnecessary backtracking.",
+        category: "Safety",
+      },
+      {
+        title: "Separate sightseeing from shopping.",
+        description:
+          "Retail can be added when requested, but the core day should stay experience-led.",
+        category: "Payment",
+      },
+      {
+        title: "Plan skyline timing around weather.",
+        description:
+          "Evening views are strongest when the schedule leaves room to adjust around visibility.",
+        category: "Weather",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Shanghai a good first city in China?",
+        answer:
+          "Yes. Shanghai can be an easy arrival point because hotels, airport transfers, dining, and international comfort are strong.",
+      },
+      {
+        question: "How many nights should we spend in Shanghai?",
+        answer:
+          "Two to four nights works for most private travelers, depending on arrival timing, food interests, and whether you want a day trip.",
+      },
+      {
+        question: "Is Shanghai suitable for senior travelers?",
+        answer:
+          "Yes, with hotel location, private transfers, shorter walking blocks, and elevator-aware routing.",
+      },
+    ],
+    related: {
+      journeys: [],
+      experiences: [],
+      articles: [],
+    },
+  },
+  {
+    slug: "chengdu",
+    name: "Chengdu",
+    region: "Southwest China",
+    coordinates: { latitude: 30.5728, longitude: 104.0668 },
+    hero: {
+      eyebrow: "Destination guide",
+      tagline: "Pandas, teahouses, and a gentler rhythm.",
+      summary:
+        "Chengdu gives a private China journey its softer chapter: pandas, Sichuan food, parks, tea, and a pace that works especially well for families.",
+      image: destinationAsset.chengduPanda,
+      primary: { label: "Explore Chengdu Tours", href: "#suggested-tours" },
+      secondary: { label: "Plan My Chengdu Trip", href: inquiryHref },
+    },
+    seo: {
+      title: "Private Chengdu Tours, Panda Experiences and Sichuan Travel",
+      description:
+        "Plan private Chengdu travel with pandas, teahouses, Sichuan food, family-friendly pacing, and tailored China logistics.",
+      keywords: ["private Chengdu tours", "Chengdu panda tour", "Sichuan family travel"],
+    },
+    quickFacts: [
+      {
+        label: "Location",
+        value: "Southwest China",
+        helper: "Pairs well with Xi'an, Yunnan, or Yangshuo.",
+      },
+      {
+        label: "Best Season",
+        value: "Mar-Jun, Sep-Nov",
+        helper: "Comfortable city and panda days.",
+      },
+      {
+        label: "Recommended Stay",
+        value: "2-4 nights",
+        helper: "Enough for pandas and Sichuan texture.",
+      },
+      {
+        label: "Travel Style",
+        value: "Family, food, slow travel",
+        helper: "A softer route chapter.",
+      },
+      {
+        label: "Suitable For",
+        value: "Families, couples, seniors",
+        helper: "Private pacing is very useful.",
+      },
+      {
+        label: "Travel planning",
+        value: "Flexible",
+        helper: "Final route details are shaped around your travelers.",
+      },
+    ],
+    whyVisit: {
+      title: "Chengdu makes the journey breathe.",
+      body: "After heavier historic chapters, Chengdu offers pandas, food, teahouses, parks, and a slower sense of daily life. It is often where family travelers relax into China.",
+      image: destinationAsset.chengduTeaHouse,
+    },
+    bestTime: {
+      title: "Chengdu works best when days are paced around pandas and meals.",
+      summary:
+        "Spring and autumn are most comfortable. Summer can still work for families with morning panda timing and softer afternoons.",
+      seasons: [
+        { label: "Spring", value: "Soft and green", helper: "Good for parks and food walks." },
+        {
+          label: "Summer",
+          value: "Warm and humid",
+          helper: "Keep pandas early and afternoons flexible.",
+        },
+        { label: "Autumn", value: "Comfortable", helper: "Strong overall season." },
+        { label: "Winter", value: "Cool and local", helper: "Good for food and teahouses." },
+      ],
+    },
+    highlights: [
+      {
+        title: "Panda mornings at a better hour",
+        description:
+          "Plan around activity windows and family energy instead of treating pandas as a rushed photo stop.",
+        category: "Family",
+        image: destinationAsset.chengduPanda,
+      },
+      {
+        title: "Teahouse and park life",
+        description:
+          "A slower look at Chengdu's social rhythm, from tea to mahjong to neighborhood walks.",
+        category: "Culture",
+        image: destinationAsset.chengduTeaHouse,
+      },
+      {
+        title: "Sichuan food without pressure",
+        description:
+          "Food can be playful, refined, spicy, mild, halal-aware, or child-friendly depending on the group.",
+        category: "Food",
+        image: destinationAsset.chengduTeaHouse,
+      },
+    ],
+    experiences: [
+      {
+        title: "Panda base with family pacing",
+        description:
+          "Early timing, private transfers, realistic walking, and enough flexibility for children or older parents.",
+        badges: ["Family", "Wildlife"],
+        image: destinationAsset.chengduPanda,
+      },
+      {
+        title: "Sichuan food introduction",
+        description:
+          "A guided food experience that can be adjusted for spice level, dietary needs, and comfort.",
+        badges: ["Food", "Local life"],
+        image: destinationAsset.chengduTeaHouse,
+      },
+      {
+        title: "Tea and neighborhood afternoon",
+        description:
+          "A calmer day layer for travelers who want China to feel lived-in, not performed.",
+        badges: ["Slow travel", "Culture"],
+        image: destinationAsset.chengduTeaHouse,
+      },
+    ],
+    hotels: [],
+    tours: [],
+    gallery: [destinationAsset.chengduPanda, destinationAsset.chengduTeaHouse],
+    tips: [
+      {
+        title: "Visit pandas early.",
+        description: "Morning timing usually supports better panda activity and happier children.",
+        category: "Weather",
+      },
+      {
+        title: "Keep one slow afternoon.",
+        description: "Chengdu's value is partly its rhythm, so avoid overfilling every hour.",
+        category: "Packing",
+      },
+      {
+        title: "Brief food preferences clearly.",
+        description:
+          "Spice, halal, vegetarian, and child-friendly needs can all be handled better when planned in advance.",
+        category: "Safety",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Chengdu worth adding to a first China trip?",
+        answer:
+          "For families and travelers who want a softer rhythm, yes. Chengdu balances heavier history chapters with pandas, food, and local life.",
+      },
+      {
+        question: "Can Chengdu work for children?",
+        answer:
+          "Very well, especially when panda timing, meal choices, and afternoon pacing are designed around children.",
+      },
+      {
+        question: "How many nights are enough in Chengdu?",
+        answer:
+          "Two nights can cover pandas and a food or tea layer; three or four nights allow a richer Sichuan chapter.",
+      },
+    ],
+    related: {
+      journeys: [],
+      experiences: [],
+      articles: [],
     },
   },
 ];

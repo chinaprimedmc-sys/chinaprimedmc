@@ -3,11 +3,11 @@ import type { Variants } from "framer-motion";
 import { motionTokens } from "@/design-system/tokens";
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: motionTokens.offset.enter },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: motionTokens.duration.base, ease: motionTokens.ease.enter },
+    transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
   },
 };
 
@@ -16,7 +16,7 @@ export const reveal: Variants = {
   visible: {
     opacity: 1,
     clipPath: "inset(0 0 0% 0)",
-    transition: { duration: motionTokens.duration.slow, ease: motionTokens.ease.apple },
+    transition: { duration: motionTokens.duration.transition, ease: motionTokens.easing.inOut },
   },
 };
 
@@ -25,7 +25,7 @@ export const scaleIn: Variants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: motionTokens.duration.base, ease: motionTokens.ease.enter },
+    transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
   },
 };
 
@@ -33,6 +33,6 @@ export const imageZoom: Variants = {
   rest: { scale: 1 },
   hover: {
     scale: 1.045,
-    transition: { duration: motionTokens.duration.slow, ease: motionTokens.ease.apple },
+    transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
   },
 };

@@ -24,9 +24,9 @@ export default function AboutPage() {
     <PageContainer>
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Plan Your Journey", href: primaryAction.href }}
+        cta={{ label: "Plan My Trip", href: primaryAction.href }}
       />
-      <Section spacing="spacious" className="pt-32">
+      <Section spacing="spacious">
         <ContentContainer size="lg" className="grid gap-10">
           <div className="max-w-4xl">
             <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">About</p>

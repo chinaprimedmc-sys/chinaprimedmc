@@ -155,7 +155,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           <SectionHeader
             eyebrow="Signature experiences"
             title="Ways to feel the destination, not just see it."
-            description="Each experience card can be linked to CMS-managed activities and reused across destinations."
+            description="Explore ways to experience the destination through private guiding, local texture, and a pace that suits your group."
           />
           <GridSystem columns={3}>
             {destination.experiences.map((experience) => (
@@ -178,7 +178,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
             <SectionHeader
               eyebrow="Featured luxury hotels"
               title="Stay choices should support the rhythm of the trip."
-              description="Hotel content is optional in the CMS, but the template is ready for luxury, heritage, and family-friendly stays."
+              description="Stay choices can be matched to the route rhythm, room needs, and comfort level your travelers prefer."
             />
             <GridSystem columns={2}>
               {destination.hotels.map((hotel) => (
@@ -201,7 +201,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           <SectionHeader
             eyebrow="Suggested tours"
             title={`Private routes that pair well with ${destination.name}.`}
-            description="The relationship system can recommend tours by destination tags, route overlap, travel style, or manual CMS priority."
+            description="See private route ideas that include this destination, with the pace and details shaped around your travelers."
           />
           <GridSystem columns={3}>
             {destination.related.journeys.map((tour) => (
@@ -227,7 +227,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           <SectionHeader
             eyebrow="Travel inspiration gallery"
             title="A quick visual sense of the journey."
-            description="Gallery images remain CMS-managed, optimized through Next Image, and ready for lightbox or carousel views."
+            description="A visual sequence of the destination, with space to notice its architecture, neighborhoods, and daily rhythm."
           />
           <GridGallery images={destination.gallery} mode="editorial" />
         </ContentContainer>
@@ -258,7 +258,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           <SectionHeader
             eyebrow="FAQ"
             title={`Questions travelers ask about ${destination.name}.`}
-            description="FAQ content powers both the on-page accordion and FAQ schema for destination SEO."
+            description="Practical answers about pace, timing, and comfort help you decide whether this destination suits your route."
           />
           <DestinationFaqAccordion destination={destination} />
         </ContentContainer>
@@ -283,7 +283,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           <SectionHeader
             eyebrow="Related inspiration"
             title="Keep building the route."
-            description="Related content is generated from destination relationships, travel style tags, and CMS priority."
+            description="Keep exploring planning notes and ideas for shaping a private route through China."
           />
           <GridSystem columns={3}>
             {destination.related.articles.map((article) => (
@@ -314,9 +314,9 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           {
             title: "Travel styles",
             items: [
-              { label: "Family China", href: "#experiences" },
-              { label: "Luxury China", href: "#hotels" },
-              { label: "Private routes", href: "#suggested-tours" },
+              { label: "Family China", href: "/styles/family" },
+              { label: "Luxury China", href: "/styles/luxury" },
+              { label: "Private routes", href: "/tours" },
             ],
           },
           {

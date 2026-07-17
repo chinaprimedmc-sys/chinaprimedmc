@@ -89,7 +89,7 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
           <SectionHeader
             eyebrow="Travel guides"
             title="Useful without becoming a textbook."
-            description="Each guide can connect to related destinations, tours, experiences, and future downloadable planning tools."
+            description="Each guide connects practical destination context with the route questions travelers ask before planning."
           />
           <GridSystem columns={3}>
             {latest.map((article) => (
@@ -104,12 +104,12 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
           <SectionHeader
             eyebrow="Destination collections"
             title="Explore by the kind of China you want to feel."
-            description="Collections are category and tag driven, so future CMS content can scale into destination, seasonal, and audience clusters."
+            description="Browse guides by destination, season, and the kind of travel experience you want to shape."
           />
           <GridSystem columns={3}>
             <DestinationCard
               title="First-time China"
-              description="Imperial Beijing, ancient Xi'an, pandas, Shanghai, and a route that does not try to do everything."
+              description="Imperial Beijing, ancient Xi'an, modern Shanghai, and a route that does not try to do everything."
               image={featured.hero.image}
               badges={["Travel Guides"]}
               href="/journal/how-to-plan-a-first-private-trip-to-china"
@@ -137,7 +137,7 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
           <SectionHeader
             eyebrow="Experiences"
             title="Stories can point toward the right private experience."
-            description="The relationship engine supports Blog to Experience links for pandas, food, rail, guides, culture, and future experience pages."
+            description="Use the journal to move from an idea about pandas, food, rail, guides, or culture into a more considered route conversation."
           />
           <GridSystem columns={4}>
             <FeatureCard

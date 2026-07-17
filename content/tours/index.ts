@@ -1,93 +1,97 @@
 import { destinationAsset } from "@/content/destinations/assets";
+import { firstChinaAsset } from "@/content/tours/assets";
 import type { Tour } from "@/types/tour";
 
-const firstChinaInquiry =
+const firstChinaEmail =
   "mailto:chinaprimedmc@gmail.com?subject=Customize%20First%20China%20Beautifully%20Paced&body=Hi%20China%20Prime%20DMC%2C%0A%0AI%27d%20like%20to%20customize%20First%20China%2C%20Beautifully%20Paced.%0A%0ATravelers%3A%0ADates%3A%0APreferred%20comfort%20level%3A%0AKey%20concerns%3A%0A";
+
+const firstChinaWhatsApp =
+  "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20to%20customize%20First%20China%2C%20Beautifully%20Paced.";
 
 export const tours: Tour[] = [
   {
     slug: "first-china-beautifully-paced",
     title: "First China, Beautifully Paced",
     subtitle:
-      "A private 11-day journey through Beijing, Xi'an, Chengdu, and Shanghai for travelers who want the icons without the exhaustion.",
-    duration: "11 Days / 10 Nights",
-    route: "Beijing, Xi'an, Chengdu, Shanghai",
+      "A private 9-day China journey through Beijing, Xi'an, and Shanghai for travelers who want the essential chapters without the exhaustion.",
+    duration: "9 Days / 8 Nights",
+    route: "Beijing, Xi'an, Shanghai",
     styles: ["First-time China", "Family", "Culture", "Luxury"],
     hero: {
       eyebrow: "Private journey proposal",
-      image: destinationAsset.beijingForbiddenCity,
+      image: firstChinaAsset.beijingForbiddenCityMoat,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
       secondary: { label: "Customize My Journey", href: "#inquiry" },
     },
     seo: {
-      title: "11 Day Private China Tour: Beijing, Xi'an, Chengdu and Shanghai",
+      title: "9-Day Private Beijing Xi'an Shanghai Tour",
       description:
-        "Customize an 11-day private China itinerary with Beijing, Xi'an, Chengdu, and Shanghai. Designed for first-time travelers, families, and luxury private travel.",
+        "Plan a private 9-day Beijing Xi'an Shanghai tour with flexible pacing, private guides, thoughtful transfers, and a route shaped around your travelers.",
       keywords: [
+        "private Beijing Xi'an Shanghai tour",
+        "9 day China itinerary",
         "private China tour",
-        "11 day China itinerary",
-        "luxury China travel",
-        "China family tour",
-        "Beijing Xi'an Chengdu Shanghai tour",
+        "luxury Beijing Xi'an Shanghai travel",
+        "Beijing Xi'an Shanghai family tour",
       ],
     },
     overview: {
       pitch:
-        "This is the calm version of a first China trip: major icons, private guides, smart transfer days, child- and senior-aware pacing, and enough quiet moments for the country to feel personal.",
+        "A clear first-China arc: four days in Beijing, two days in Xi'an, and three days in Shanghai, with the timing and comfort level adjusted around your group.",
       facts: [
         {
           label: "Duration",
-          value: "11 days",
-          helper: "A balanced rhythm for first-time travelers.",
+          value: "9 days / 8 nights",
+          helper: "Beijing 4 days, Xi'an 2, Shanghai 3.",
         },
         {
           label: "Destinations",
-          value: "4 cities",
-          helper: "Imperial, historic, playful, and modern China.",
+          value: "3 cities",
+          helper: "Imperial Beijing, historic Xi'an, modern Shanghai.",
         },
         {
           label: "Travel Style",
           value: "Private, flexible",
-          helper: "Designed around your family and pace.",
+          helper: "A route idea shaped around your travelers.",
         },
         {
-          label: "Difficulty",
+          label: "Pacing",
           value: "Easy to moderate",
-          helper: "Walking days are shaped carefully.",
+          helper: "Walking and transfer days are adjusted in planning.",
         },
         {
           label: "Suitable For",
           value: "Couples, families, seniors",
-          helper: "Private logistics reduce friction.",
+          helper: "Private logistics reduce unnecessary friction.",
         },
         {
           label: "Price Guide",
-          value: "Upon request",
-          helper: "Varies by hotel tier, season, and guide style.",
+          value: "By comfort tier",
+          helper: "Comfortable, Luxury, or Ultra-bespoke after inquiry.",
         },
       ],
     },
     highlights: [
       {
-        title: "Beijing with context, not crowds",
+        title: "Beijing, with room for the scale",
         description:
-          "See the Forbidden City, temple life, and hutong texture with a guide who knows when to pause.",
+          "Give the Forbidden City, Temple of Heaven, hutong texture, and Great Wall their own breathing room instead of racing between landmarks.",
         category: "Culture",
-        image: destinationAsset.beijingForbiddenCityWide,
+        image: firstChinaAsset.beijingGreatWallWide,
       },
       {
-        title: "Xi'an without rushing the story",
+        title: "Xi'an, one deep historical chapter",
         description:
-          "Let the Terracotta Army feel human, then balance it with food streets, old city walls, and slower evenings.",
+          "Use two focused days to understand the Terracotta Army, with the visit paced around energy, interest, and the rest of the route.",
         category: "First-time China",
-        image: destinationAsset.xianTerracotta,
+        image: firstChinaAsset.xianTerracottaGroup,
       },
       {
-        title: "Chengdu made playful",
+        title: "Shanghai, a modern final note",
         description:
-          "Pandas, tea houses, relaxed food choices, and softer days after the heavier imperial chapters.",
-        category: "Family",
-        image: destinationAsset.chengduPanda,
+          "Move between riverfront architecture, neighborhood life, food, and skyline views without turning the finale into a shopping schedule.",
+        category: "Luxury",
+        image: firstChinaAsset.shanghaiWaterfrontGroup,
       },
     ],
     itinerary: [
@@ -96,24 +100,25 @@ export const tours: Tour[] = [
         title: "Arrive in Beijing",
         destination: "Beijing",
         summary:
-          "Private airport welcome, hotel check-in, and a gentle first evening shaped around jet lag.",
-        image: destinationAsset.beijingForbiddenCity,
-        hotel: "Luxury hotel in central Beijing",
-        meals: ["Welcome snacks"],
-        transport: "Private airport transfer",
+          "Illustrative — shaped around you. A private arrival, a calm hotel check-in, and a first evening that respects your flight time and energy.",
+        image: firstChinaAsset.beijingTempleOfHeavenCorridor,
+        hotel: "Beijing stay: Comfortable, Luxury, or Ultra-bespoke tier selected after inquiry",
+        meals: ["As arranged in the final proposal"],
+        transport: "Private airport transfer, subject to final proposal",
         activities: [
           {
             title: "Arrival support",
             description:
-              "Your guide meets you at arrivals and helps with the first practical details.",
+              "Your arrival plan can include airport meeting support, luggage flow, and a direct transfer to your selected stay.",
           },
           {
-            title: "Soft landing evening",
-            description: "Optional neighborhood walk or early rest depending on your flight time.",
+            title: "A soft first evening",
+            description:
+              "Keep the first night open for rest or a short neighborhood introduction if your arrival time allows.",
           },
         ],
         guideNote:
-          "The first day should build confidence, not pressure. We keep it light unless you arrive early.",
+          "The first day is intentionally light. Exact meeting arrangements, meals, and hotel selection are confirmed in the personalized proposal.",
         coordinates: { latitude: 39.9042, longitude: 116.4074 },
       },
       {
@@ -121,401 +126,385 @@ export const tours: Tour[] = [
         title: "Imperial Beijing",
         destination: "Beijing",
         summary:
-          "A carefully paced Forbidden City route, temple atmosphere, and private storytelling instead of a checklist.",
-        image: destinationAsset.beijingForbiddenCityWide,
-        hotel: "Luxury hotel in central Beijing",
-        meals: ["Breakfast", "Lunch"],
-        transport: "Private car",
+          "Illustrative — shaped around you. Put the Forbidden City at the center of the day, then add a quieter cultural layer if the group has the energy for it.",
+        image: firstChinaAsset.beijingForbiddenCityLion,
+        hotel: "Beijing stay: selected comfort tier",
+        meals: ["As arranged in the final proposal"],
+        transport: "Private vehicle and guide support, subject to final proposal",
         activities: [
           {
             time: "Morning",
-            title: "Forbidden City",
-            description: "Move through the palace axis with historical context and photo pauses.",
+            title: "Forbidden City context",
+            description:
+              "Follow the palace axis with historical storytelling, photo pauses, and a route adjusted to walking comfort.",
           },
           {
             time: "Afternoon",
-            title: "Temple or hutong texture",
-            description: "Choose a quieter cultural layer based on energy and interest.",
+            title: "A second layer of Beijing",
+            description:
+              "Choose temple atmosphere, hutong texture, or an earlier finish based on the group.",
           },
         ],
         guideNote:
-          "For families, we shorten museum blocks and add hands-on breaks. For photographers, we tune timing around light.",
+          "Site sequence and entry timing depend on availability, season, and the final route plan.",
         coordinates: { latitude: 39.9163, longitude: 116.3972 },
       },
       {
         day: 3,
-        title: "Great Wall day",
+        title: "Temple life and Beijing texture",
         destination: "Beijing",
         summary:
-          "A dedicated Wall day with private timing, fewer rushed stops, and enough space for the moment to land.",
-        image: destinationAsset.beijingForbiddenCityWide,
-        hotel: "Luxury hotel in central Beijing",
-        meals: ["Breakfast", "Lunch"],
-        transport: "Private car",
+          "Illustrative — shaped around you. A slower day for the Temple of Heaven, architectural detail, and the everyday side of the capital.",
+        image: firstChinaAsset.beijingTempleOfHeavenReflection,
+        hotel: "Beijing stay: selected comfort tier",
+        meals: ["As arranged in the final proposal"],
+        transport: "Private vehicle and guide support, subject to final proposal",
         activities: [
           {
-            title: "Private Great Wall excursion",
-            description: "Select the section based on season, fitness, and crowd tolerance.",
+            time: "Morning",
+            title: "Temple of Heaven",
+            description:
+              "Use the complex as a place to notice proportion, color, ritual architecture, and the rhythm of the surrounding park.",
           },
           {
-            title: "Slow return",
-            description: "Keep the afternoon flexible for rest, tea, or a relaxed dinner.",
+            time: "Afternoon",
+            title: "Flexible Beijing afternoon",
+            description:
+              "Leave room for a neighborhood walk, a hands-on cultural moment, or rest before the Great Wall day.",
           },
         ],
         guideNote:
-          "The exact Wall image is intentionally CMS-managed. This template is ready for precise section imagery.",
-        coordinates: { latitude: 40.4319, longitude: 116.5704 },
+          "The activity mix can be softened for older travelers or made more hands-on for families.",
+        coordinates: { latitude: 39.8822, longitude: 116.4066 },
       },
       {
         day: 4,
-        title: "High-speed rail to Xi'an",
-        destination: "Xi'an",
+        title: "The Great Wall, at your pace",
+        destination: "Beijing",
         summary:
-          "Move from imperial Beijing to ancient Xi'an with luggage support and a calm first look at the city wall.",
-        image: destinationAsset.xianTerracotta,
-        hotel: "Heritage-inspired hotel in Xi'an",
-        meals: ["Breakfast"],
-        transport: "High-speed rail and private transfers",
+          "Illustrative — shaped around you. Give the Great Wall a full day, with the section, start time, and walking expectations chosen around the group.",
+        image: firstChinaAsset.beijingGreatWallSolo,
+        hotel: "Beijing stay: selected comfort tier",
+        meals: ["As arranged in the final proposal"],
+        transport: "Private vehicle and guide support, subject to final proposal",
         activities: [
           {
-            title: "Rail transfer support",
+            title: "A dedicated Wall day",
             description:
-              "Your team handles station timing, tickets, luggage flow, and arrival pickup.",
+              "Choose the final section and route according to season, fitness, weather, and crowd tolerance.",
           },
           {
-            title: "Xi'an orientation",
-            description: "A short city wall or old quarter introduction if energy allows.",
+            title: "A measured return",
+            description:
+              "Keep the evening open so the day ends with the view, not a second checklist.",
           },
         ],
-        coordinates: { latitude: 34.3416, longitude: 108.9398 },
+        guideNote:
+          "The exact Great Wall section is not fixed on this sample page and will be confirmed against your group profile.",
+        coordinates: { latitude: 40.4319, longitude: 116.5704 },
       },
       {
         day: 5,
-        title: "Terracotta Army and old Xi'an",
+        title: "High-speed rail to Xi'an",
         destination: "Xi'an",
         summary:
-          "A deeper Terracotta Army visit balanced with city flavor, Muslim Quarter texture, and private pacing.",
-        image: destinationAsset.xianTerracotta,
-        hotel: "Heritage-inspired hotel in Xi'an",
-        meals: ["Breakfast", "Lunch"],
-        transport: "Private car",
+          "Illustrative — shaped around you. Travel from Beijing to Xi'an with station and luggage support, then settle into a first look at the city.",
+        image: firstChinaAsset.xianTerracottaPit,
+        hotel: "Xi'an stay: Comfortable, Luxury, or Ultra-bespoke tier selected after inquiry",
+        meals: ["As arranged in the final proposal"],
+        transport: "High-speed rail and private transfers, subject to final proposal",
+        activities: [
+          {
+            title: "Rail transition",
+            description:
+              "The route can include station timing guidance, ticket coordination, luggage flow, and an arrival transfer.",
+          },
+          {
+            title: "Xi'an orientation",
+            description:
+              "Use the arrival window for a light introduction if the group feels ready; otherwise keep it restorative.",
+          },
+        ],
+        guideNote:
+          "Transport schedules, ticket class, and final transfer details are confirmed only after dates and traveler needs are known.",
+        coordinates: { latitude: 34.3416, longitude: 108.9398 },
+      },
+      {
+        day: 6,
+        title: "The Terracotta Army and Xi'an",
+        destination: "Xi'an",
+        summary:
+          "Illustrative — shaped around you. Spend the day with the Terracotta Army, then leave space for Xi'an food culture or a gentler city finish.",
+        image: firstChinaAsset.xianTerracottaPortrait,
+        hotel: "Xi'an stay: selected comfort tier",
+        meals: ["As arranged in the final proposal"],
+        transport: "Private vehicle and guide support, subject to final proposal",
         activities: [
           {
             title: "Terracotta Army",
             description:
-              "Understand the site as a human-scale story, not only an archaeological headline.",
+              "Let the excavation pits and surviving figures carry the story, with time for questions and unhurried viewing.",
           },
           {
-            title: "Old city food walk",
+            title: "A flexible Xi'an evening",
             description:
-              "Taste Xi'an carefully, with halal-aware alternatives available when requested.",
+              "Add a food-focused or old-city layer only if it suits the group's interests and energy.",
           },
         ],
         guideNote:
-          "This day can become Muslim-friendly, family-focused, or photography-led without changing the core route.",
+          "Any food, prayer, dietary, or walking requirements should be shared before the proposal is finalized.",
         coordinates: { latitude: 34.384, longitude: 109.278 },
       },
       {
-        day: 6,
-        title: "Fly to Chengdu",
-        destination: "Chengdu",
-        summary:
-          "A lighter transition day into Sichuan, with tea-house rhythm and softer evening choices.",
-        image: destinationAsset.chengduTeaHouse,
-        hotel: "Comfortable design hotel in Chengdu",
-        meals: ["Breakfast"],
-        transport: "Domestic flight and private transfers",
-        activities: [
-          {
-            title: "Chengdu tea-house afternoon",
-            description: "Ease into the city with tea, slower streets, and a less formal pace.",
-          },
-        ],
-        coordinates: { latitude: 30.5728, longitude: 104.0668 },
-      },
-      {
         day: 7,
-        title: "Pandas and Chengdu life",
-        destination: "Chengdu",
+        title: "Arrive in Shanghai",
+        destination: "Shanghai",
         summary:
-          "Panda time at a smarter hour, followed by a relaxed food or culture experience that fits your group.",
-        image: destinationAsset.chengduPanda,
-        hotel: "Comfortable design hotel in Chengdu",
-        meals: ["Breakfast", "Lunch"],
-        transport: "Private car",
+          "Illustrative — shaped around you. Transition east, then let Shanghai make its first impression through the riverfront and skyline.",
+        image: firstChinaAsset.shanghaiHuangpuSunset,
+        hotel: "Shanghai stay: Comfortable, Luxury, or Ultra-bespoke tier selected after inquiry",
+        meals: ["As arranged in the final proposal"],
+        transport: "Selected domestic transport and private transfers, subject to final proposal",
         activities: [
           {
-            time: "Morning",
-            title: "Panda experience",
-            description: "Visit when pandas are more active and children are still fresh.",
+            title: "A gentle Shanghai arrival",
+            description:
+              "Keep the first Shanghai window simple: settle in, read the skyline, and let the city arrive at its own pace.",
           },
           {
-            time: "Afternoon",
-            title: "Food, parks, or culture",
+            title: "Waterfront evening",
             description:
-              "Choose a cooking, tea, or neighborhood experience based on your interests.",
+              "An evening view can be considered around weather, energy, and the group's preferred walking distance.",
           },
         ],
-        coordinates: { latitude: 30.7334, longitude: 104.148 },
+        guideNote:
+          "The best arrival-day plan depends on the final transport schedule and how much energy remains after the transfer.",
+        coordinates: { latitude: 31.2304, longitude: 121.4737 },
       },
       {
         day: 8,
-        title: "Shanghai arrival",
-        destination: "Shanghai",
-        summary:
-          "Fly east into modern China, with a skyline evening and a softer introduction to the city's scale.",
-        image: destinationAsset.shanghaiSkyline,
-        hotel: "Contemporary hotel in central Shanghai",
-        meals: ["Breakfast"],
-        transport: "Domestic flight and private transfers",
-        activities: [
-          {
-            title: "Bund and skyline evening",
-            description:
-              "A cinematic first impression of Shanghai without overloading the transfer day.",
-          },
-        ],
-        coordinates: { latitude: 31.2304, longitude: 121.4737 },
-      },
-      {
-        day: 9,
         title: "Old and new Shanghai",
         destination: "Shanghai",
         summary:
-          "Architecture, food, local neighborhoods, and elegant contrast between treaty-port history and future city energy.",
-        image: destinationAsset.shanghaiSkyline,
-        hotel: "Contemporary hotel in central Shanghai",
-        meals: ["Breakfast", "Lunch"],
-        transport: "Private car and short walks",
+          "Illustrative — shaped around you. Move between architecture, neighborhood life, food, and modern city views without making shopping the point.",
+        image: firstChinaAsset.shanghaiBicycleRide,
+        hotel: "Shanghai stay: selected comfort tier",
+        meals: ["As arranged in the final proposal"],
+        transport: "Private vehicle, guide support, and short walks, subject to final proposal",
         activities: [
           {
-            title: "Shanghai contrasts",
+            title: "Neighborhood perspective",
             description:
-              "Pair skyline views with quieter lanes, food stops, and architecture-led storytelling.",
+              "A private guide can connect riverfront history, local streets, design, and contemporary city life in one readable day.",
+          },
+          {
+            title: "A lived-in layer",
+            description:
+              "Consider a bicycle, market, or food experience only when it matches the group's comfort and interests.",
           },
         ],
         guideNote:
-          "Shopping is never forced. The day stays experience-led unless you request boutique retail time.",
+          "Shopping is never required. The final day plan can stay experience-led unless the group specifically requests retail time.",
         coordinates: { latitude: 31.2406, longitude: 121.4908 },
       },
       {
-        day: 10,
-        title: "Flexible final day",
+        day: 9,
+        title: "A measured Shanghai farewell",
         destination: "Shanghai",
         summary:
-          "Keep one day open for a water town, art and design, family downtime, or deeper food exploration.",
-        image: destinationAsset.shanghaiSkyline,
-        hotel: "Contemporary hotel in central Shanghai",
-        meals: ["Breakfast"],
-        transport: "Private car or rail depending on choice",
+          "Illustrative — shaped around you. Keep the final morning flexible, then arrange departure support around your confirmed flight time.",
+        image: firstChinaAsset.shanghaiBundNight,
+        meals: ["As arranged in the final proposal"],
+        transport: "Private airport transfer, subject to final proposal",
         activities: [
           {
-            title: "Choose your ending",
+            title: "A final choice",
             description:
-              "Water town, museums, food, wellness, or a slower city day before departure.",
+              "Use the remaining time for a quiet breakfast, a short local walk, or a last view of the city if the schedule allows.",
+          },
+          {
+            title: "Departure support",
+            description:
+              "The departure plan can include timing guidance, luggage assistance, and a private transfer to the airport.",
           },
         ],
         guideNote:
-          "The last full day should match your energy. We avoid ending the trip with a forced march.",
-        coordinates: { latitude: 31.2304, longitude: 121.4737 },
-      },
-      {
-        day: 11,
-        title: "Depart Shanghai",
-        destination: "Shanghai",
-        summary:
-          "Private airport transfer, departure support, and optional post-trip extension planning.",
-        image: destinationAsset.shanghaiSkyline,
-        meals: ["Breakfast"],
-        transport: "Private airport transfer",
-        activities: [
-          {
-            title: "Departure support",
-            description: "Airport timing, luggage help, and a calm ending to the route.",
-          },
-        ],
+          "Final airport timing is always based on the confirmed flight details and the group's preferred margin.",
         coordinates: { latitude: 31.1443, longitude: 121.8083 },
       },
     ],
     accommodations: [
       {
-        name: "Central Beijing luxury base",
+        name: "Beijing stay | selected comfort tier",
         destination: "Beijing",
         description:
-          "Selected for easier access to imperial sites, reliable service, and a calm return after big walking days.",
-        roomStyle: "Deluxe or family connecting rooms",
-        highlights: ["Historic access", "Breakfast quality", "Private transfer efficiency"],
-        image: destinationAsset.beijingForbiddenCity,
+          "Choose a Comfortable, Luxury, or Ultra-bespoke stay based on location, room configuration, service expectations, and the group's walking needs.",
+        roomStyle: "Room configuration confirmed after inquiry",
+        highlights: ["Location fit", "Room comfort", "Transfer efficiency"],
+        image: firstChinaAsset.beijingTempleOfHeavenMorning,
       },
       {
-        name: "Chengdu design stay",
-        destination: "Chengdu",
+        name: "Xi'an stay | selected comfort tier",
+        destination: "Xi'an",
         description:
-          "A softer hotel chapter with comfortable rooms, good dining access, and a relaxed Sichuan rhythm.",
-        roomStyle: "Premier room or suite upgrade",
-        highlights: ["Easy panda access", "Food neighborhoods", "Family-friendly pacing"],
-        image: destinationAsset.chengduTeaHouse,
-      },
-    ],
-    included: [
-      "Private English-speaking guides in each city",
-      "Private airport, rail, and city transfers",
-      "Domestic transport planning and ticket support",
-      "Curated sightseeing and timed reservations",
-      "Daily operational support while traveling",
-    ],
-    excluded: [
-      "International flights",
-      "China visa fees when required",
-      "Personal expenses and optional upgrades",
-      "Travel insurance",
-      "Meals not listed in the final proposal",
-    ],
-    optionalExperiences: [
-      {
-        title: "Halal-aware food planning",
-        description:
-          "Restaurant checks, guide notes, and route choices for Muslim families who want comfort without losing local flavor.",
-        badges: ["Muslim-friendly", "Food"],
+          "The final stay is selected around access, rest, room needs, and the balance between the Terracotta Army visit and city time.",
+        roomStyle: "Room configuration confirmed after inquiry",
+        highlights: ["Rest between site visits", "Route position", "Group requirements"],
         image: destinationAsset.xianTerracotta,
       },
       {
-        title: "Private photography moments",
+        name: "Shanghai stay | selected comfort tier",
+        destination: "Shanghai",
         description:
-          "Earlier starts, cleaner viewpoints, and guide coordination for travelers who care about images.",
-        badges: ["Photography", "Luxury"],
-        image: destinationAsset.shanghaiSkyline,
+          "Choose the final hotel tier and neighborhood after dates, preferred atmosphere, room needs, and departure logistics are understood.",
+        roomStyle: "Room configuration confirmed after inquiry",
+        highlights: ["Neighborhood fit", "Finale comfort", "Airport access"],
+        image: firstChinaAsset.shanghaiPudongSkyline,
+      },
+    ],
+    included: [
+      "Private itinerary planning around your dates and travelers",
+      "English-speaking guide support in each destination, subject to final proposal",
+      "Private airport, rail, and city transfers where included in the confirmed plan",
+      "Sightseeing and reservation coordination agreed in the final proposal",
+      "Operational support while traveling, as outlined before confirmation",
+    ],
+    excluded: [
+      "International flights",
+      "China visa fees or documentation costs when applicable",
+      "Hotel, guide, transport, and meal upgrades outside the selected proposal",
+      "Personal expenses and optional activities",
+      "Travel insurance",
+    ],
+    optionalExperiences: [
+      {
+        title: "A gentler walking rhythm",
+        description:
+          "Adjust site order, vehicle support, rest windows, and daily starts around older travelers, children, or anyone who prefers less walking.",
+        badges: ["Senior-aware", "Family"],
+        image: firstChinaAsset.beijingGreatWallCouple,
       },
       {
-        title: "Family hands-on layer",
+        title: "Food and neighborhood texture",
         description:
-          "Dumplings, pandas, tea, calligraphy, and child-friendly museum pacing woven into the main route.",
-        badges: ["Family", "Culture"],
-        image: destinationAsset.chengduPanda,
+          "Build in local food or market time around dietary needs, appetite, comfort, and the level of interpretation your group wants.",
+        badges: ["Food", "Local life"],
+        image: firstChinaAsset.shanghaiMarketVisit,
+      },
+      {
+        title: "Photography-led timing",
+        description:
+          "Shape starts, pauses, and viewpoints around light and personal interest without turning the route into a production schedule.",
+        badges: ["Photography", "Private"],
+        image: firstChinaAsset.shanghaiSkyscrapersAtNight,
       },
     ],
     transportation: {
-      title: "Transfers should make China feel easy.",
+      title: "Transfers should make the route feel lighter.",
       description:
-        "The route uses private cars, high-speed rail, and selected domestic flights only where they protect comfort and time.",
+        "The sample route uses high-speed rail between Beijing and Xi'an, then selected domestic transport to Shanghai. Exact services, class, and timings are confirmed after dates are known.",
       items: [
         {
           label: "Airport",
-          value: "Private meet-and-greet",
-          helper: "Arrival and departure support.",
+          value: "Private arrival and departure support",
+          helper: "Included only as defined in the final proposal.",
         },
         {
           label: "Rail",
-          value: "High-speed train",
-          helper: "Beijing to Xi'an with guided station flow.",
+          value: "Beijing to Xi'an by high-speed rail",
+          helper: "Station flow and luggage planning can be arranged.",
         },
         {
-          label: "Flights",
-          value: "Selected domestic legs",
-          helper: "Used when they preserve the journey rhythm.",
+          label: "City transfer",
+          value: "Xi'an to Shanghai connection",
+          helper: "The final mode depends on dates, comfort, and schedule.",
         },
       ],
     },
     routeMap: {
-      title: "A clean first-China arc.",
+      title: "A focused first-China arc.",
       description:
-        "Imperial Beijing, ancient Xi'an, relaxed Chengdu, and modern Shanghai create a route that feels complete without trying to see everything.",
+        "Four days in Beijing, two in Xi'an, and three in Shanghai create a compact route with enough room for the major chapters to feel personal.",
       stops: [
         {
           name: "Beijing",
-          days: "Days 1-3",
-          description: "Imperial scale, hutongs, temples, and the Great Wall.",
+          days: "Days 1-4",
+          description: "Forbidden City, Temple of Heaven, hutong texture, and the Great Wall.",
           coordinates: { latitude: 39.9042, longitude: 116.4074 },
         },
         {
           name: "Xi'an",
-          days: "Days 4-5",
-          description: "Terracotta Army, old city texture, and food culture.",
+          days: "Days 5-6",
+          description: "Terracotta Army and one focused chapter of historic city life.",
           coordinates: { latitude: 34.3416, longitude: 108.9398 },
         },
         {
-          name: "Chengdu",
-          days: "Days 6-7",
-          description: "Pandas, tea houses, and softer Sichuan pacing.",
-          coordinates: { latitude: 30.5728, longitude: 104.0668 },
-        },
-        {
           name: "Shanghai",
-          days: "Days 8-11",
-          description: "Skyline, architecture, food, and an elegant final chapter.",
+          days: "Days 7-9",
+          description: "Riverfront architecture, neighborhood life, food, and a modern finale.",
           coordinates: { latitude: 31.2304, longitude: 121.4737 },
         },
       ],
     },
     gallery: [
-      destinationAsset.beijingForbiddenCity,
-      destinationAsset.xianTerracotta,
-      destinationAsset.chengduPanda,
-      destinationAsset.chengduTeaHouse,
-      destinationAsset.shanghaiSkyline,
-      destinationAsset.beijingForbiddenCityWide,
+      firstChinaAsset.beijingGreatWallGroup,
+      firstChinaAsset.beijingTempleOfHeavenCeiling,
+      firstChinaAsset.beijingTempleOfHeavenClose,
+      firstChinaAsset.beijingTempleOfHeavenCostumeEncounter,
+      firstChinaAsset.beijingTempleOfHeavenCostumeWalk,
+      firstChinaAsset.shanghaiPudongCoupleNight,
+      firstChinaAsset.shanghaiStreetFoodGroup,
+      firstChinaAsset.shanghaiStreetFoodMen,
+      firstChinaAsset.shanghaiTempleAndModernCity,
+      firstChinaAsset.shanghaiYuyuanGroup,
     ],
     faqs: [
       {
-        question: "Can this route be adjusted for children or older parents?",
-        answer:
-          "Yes. The structure is designed for private pacing, so museum time, walking blocks, meal timing, and transfer days can be softened without losing the core journey.",
-      },
-      {
         question: "Is this a fixed package?",
         answer:
-          "No. Treat this as a strong first route idea. Hotels, daily starts, dining, special interests, and comfort level should be customized before confirmation.",
+          "No. This is a carefully shaped route idea. Hotel tier, daily starts, transport details, meals, accessibility needs, and optional experiences are confirmed only after your inquiry.",
       },
       {
-        question: "Can the trip be made Muslim-friendly?",
+        question: "Can the route work for children or older parents?",
         answer:
-          "Yes. Xi'an and larger cities can support halal-aware planning, and the route can include restaurant checks, prayer-time sensitivity, and guide briefing.",
+          "Yes, the private format allows walking blocks, rest windows, vehicle support, and meal timing to be shaped around the people traveling. The final plan should be reviewed against each traveler's needs.",
       },
       {
-        question: "How much walking should we expect?",
+        question: "What does the hotel level mean?",
         answer:
-          "Beijing and Xi'an can involve significant walking, but the private route can shorten site blocks, add vehicle support, and include rest periods.",
+          "Comfortable, Luxury, and Ultra-bespoke are planning tiers rather than promises of specific properties. Actual hotel suggestions depend on dates, availability, room needs, and your preferences.",
+      },
+      {
+        question: "Is shopping required?",
+        answer:
+          "No. The route is designed around culture, local life, food, architecture, and personal pace. Shopping is only added when you request it.",
       },
     ],
     related: {
-      tours: [
-        {
-          title: "China With Kids",
-          description:
-            "A softer family route with pandas, rivers, hands-on food, and shorter city days.",
-          tags: ["Family", "Children"],
-          image: destinationAsset.chengduPanda,
-          route: "Beijing, Chengdu, Yangshuo, Shanghai",
-          duration: "9-11 days",
-          href: firstChinaInquiry,
-        },
-        {
-          title: "Imperial China and Cinematic Landscapes",
-          description:
-            "Pair Beijing and Xi'an with one dramatic nature chapter for stronger visual contrast.",
-          tags: ["Culture", "Photography"],
-          image: destinationAsset.zhangjiajieForest,
-          route: "Beijing, Xi'an, Zhangjiajie",
-          duration: "8-10 days",
-          href: firstChinaInquiry,
-        },
-      ],
+      tours: [],
       destinations: [
         {
           name: "Beijing",
           description:
-            "The clearest first chapter for imperial China, temple life, and the Great Wall.",
+            "The imperial opening chapter: palace scale, temple mornings, hutongs, and the Great Wall.",
           image: destinationAsset.beijingForbiddenCity,
           href: "/destinations/beijing",
+        },
+        {
+          name: "Shanghai",
+          description:
+            "A modern finale with riverfront architecture, neighborhood life, and easy departure logistics.",
+          image: destinationAsset.shanghaiSkyline,
+          href: "/destinations/shanghai",
         },
       ],
     },
     inquiry: {
-      emailHref: firstChinaInquiry,
-      whatsappHref: firstChinaInquiry,
-      scheduleCallHref: firstChinaInquiry,
+      emailHref: firstChinaEmail,
+      whatsappHref: firstChinaWhatsApp,
+      scheduleCallHref: "tel:+447985052302",
       defaultMessage:
-        "I am interested in First China, Beautifully Paced. Please suggest the best route, hotel level, and pacing for my travelers.",
+        "I am interested in First China, Beautifully Paced. Please suggest the best route, hotel tier, and pacing for my travelers.",
     },
   },
 ];

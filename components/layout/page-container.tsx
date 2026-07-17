@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
+import { SocialContactRail } from "@/components/cta/social-contact-rail";
 import { cn } from "@/lib/utils/cn";
 
 type PageContainerProps = {
@@ -20,8 +21,13 @@ export function PageContainer({
   ...props
 }: PageContainerProps) {
   return (
-    <main className={cn("min-h-svh overflow-x-clip", tones[tone], className)} {...props}>
+    <main
+      data-page-container="true"
+      className={cn("page-container min-h-svh overflow-x-clip", tones[tone], className)}
+      {...props}
+    >
       {children}
+      <SocialContactRail />
     </main>
   );
 }

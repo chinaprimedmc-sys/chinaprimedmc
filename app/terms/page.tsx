@@ -20,9 +20,9 @@ export default function TermsPage() {
     <PageContainer>
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Plan Your Journey", href: primaryAction.href }}
+        cta={{ label: "Plan My Trip", href: primaryAction.href }}
       />
-      <Section spacing="spacious" className="pt-32">
+      <Section spacing="spacious">
         <ContentContainer size="sm" className="max-w-3xl">
           <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">Legal</p>
           <h1 className="mt-4 text-4xl leading-tight font-semibold tracking-[-0.04em]">

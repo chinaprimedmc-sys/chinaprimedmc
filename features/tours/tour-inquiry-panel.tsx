@@ -90,7 +90,7 @@ export function TourInquiryPanel({ tour }: TourInquiryPanelProps) {
         <TextAreaField
           label="What should we know?"
           defaultValue={tour.inquiry.defaultMessage}
-          helper="This local form is a reusable UI shell. Production submission can connect to CRM, email, or CMS workflow later."
+          helper="Tell us what matters most and we will use it to shape the first route idea."
         />
         <CtaButton
           href={tour.inquiry.emailHref}

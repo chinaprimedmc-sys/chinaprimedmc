@@ -1,117 +1,146 @@
-import type { LinkAction, MediaAsset, NavigationItem, ReviewItem } from "@/types/component-library";
+import type { LinkAction, MediaAsset, NavigationItem } from "@/types/component-library";
+
+import { firstChinaAsset } from "@/content/tours/assets";
 
 export const homeNavItems: NavigationItem[] = [
   {
     label: "Journeys",
-    href: "#journeys",
-    children: [
-      {
-        label: "Classic China",
-        href: "#journeys",
-        description: "Beijing, Xi'an, Chengdu, and Shanghai in a calm private rhythm.",
-      },
-      {
-        label: "Family China",
-        href: "#journeys",
-        description: "Pandas, hands-on food moments, easy nature, and child-aware pacing.",
-      },
-      {
-        label: "Scenic China",
-        href: "#journeys",
-        description: "Guilin, Zhangjiajie, Yunnan, and mountain scenery with private logistics.",
-      },
-      {
-        label: "Silk Road & Beyond",
-        href: "#journeys",
-        description: "Xi'an, Dunhuang, desert color, Muslim heritage, and western China routes.",
-      },
-    ],
+    href: "/tours",
   },
   {
     label: "Destinations",
-    href: "#destinations",
-    children: [
-      {
-        label: "Beijing",
-        href: "#destinations",
-        description: "Imperial courtyards, hutongs, and private Great Wall timing.",
-      },
-      {
-        label: "Xi'an",
-        href: "#journeys",
-        description: "Terracotta Warriors, city walls, food streets, and Tang heritage.",
-      },
-      {
-        label: "Shanghai",
-        href: "#destinations",
-        description: "Skyline views, Art Deco streets, design hotels, and easy arrivals.",
-      },
-      {
-        label: "Guilin",
-        href: "#destinations",
-        description: "Karst rivers, village paths, cycling, and soft family adventure.",
-      },
-      {
-        label: "Zhangjiajie",
-        href: "#destinations",
-        description: "Cinematic sandstone peaks, forest walks, and glass bridge moments.",
-      },
-      {
-        label: "Chengdu",
-        href: "#destinations",
-        description: "Pandas, teahouses, Sichuan flavors, and a gentler rhythm.",
-      },
-    ],
+    href: "/destinations",
   },
   {
     label: "Styles",
-    href: "#experiences",
-    children: [
-      {
-        label: "Families",
-        href: "#experiences",
-        description: "Slower pacing, child-aware guides, and hotels that make sense.",
-      },
-      {
-        label: "Couples",
-        href: "#experiences",
-        description: "Beautiful hotels, flexible days, food, culture, and room to wander.",
-      },
-      {
-        label: "Small Groups",
-        href: "#experiences",
-        description: "Private guides and vehicles for friends, relatives, and affinity groups.",
-      },
-      {
-        label: "Luxury Travelers",
-        href: "#why",
-        description: "Better rooms, smoother transfers, stronger guides, and quieter timing.",
-      },
-      {
-        label: "Muslim-Friendly",
-        href: "#why",
-        description: "Halal-aware meals, prayer timing awareness, and respectful routing.",
-      },
-      {
-        label: "First-Time Visitors",
-        href: "#journeys",
-        description: "A clear first China route without the checklist rush.",
-      },
-    ],
+    href: "/styles",
   },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Why Us", href: "#why" },
-  { label: "Journal", href: "#journal" },
+  { label: "Planning", href: "/planning" },
+  { label: "Journal", href: "/journal" },
 ];
 
-export const heroImage: MediaAsset = {
-  src: "/home/jiuzhaigou-five-flower-lake.jpg",
-  alt: "Five Flower Lake in Jiuzhaigou with turquoise water, forest, and mountain reflections",
-  width: 1920,
-  height: 1200,
-  priority: true,
-  objectPosition: "50% 44%",
+export const primaryAction: LinkAction = {
+  label: "Plan My Trip",
+  href: "/start-planning",
 };
+
+export const secondaryHeroActions = {
+  whatsapp: {
+    label: "WhatsApp Us",
+    href: "https://wa.me/447985052302",
+  },
+  email: {
+    label: "Email a Specialist",
+    href: "mailto:chinaprimedmc@gmail.com?subject=Question%20for%20a%20China%20Specialist",
+  },
+};
+
+export const heroImage: MediaAsset = {
+  src: "/home/beijing-temple-of-heaven-full-portrait.jpg",
+  alt: "The Hall of Prayer for Good Harvests at Beijing's Temple of Heaven in clear morning light",
+  width: 1820,
+  height: 2428,
+  priority: true,
+  objectPosition: "50% 100%",
+};
+
+export const homeEditorialImages = {
+  greatWall: {
+    src: "/home/editorial/great-wall-private-china-travel.webp",
+    alt: "A traveler looking across the Great Wall as it winds through green mountains near Beijing",
+    width: 1086,
+    height: 1448,
+    objectPosition: "50% 44%",
+  },
+  shanghaiWaterfront: {
+    src: "/home/editorial/shanghai-family-waterfront.webp",
+    alt: "Travelers gathered along the Shanghai waterfront with the Pudong skyline behind them",
+    width: 1350,
+    height: 1800,
+    objectPosition: "50% 42%",
+  },
+  paintingExperience: {
+    src: "/home/editorial/chinese-painting-cultural-experience.webp",
+    alt: "A traveler practicing traditional Chinese brush painting during a hands-on cultural experience",
+    width: 1350,
+    height: 1800,
+    objectPosition: "50% 50%",
+  },
+  guilinLandscape: {
+    src: "/home/editorial/guilin-li-river-karst-landscape.webp",
+    alt: "Karst mountains and a river curving around a village near Guilin",
+    width: 1800,
+    height: 1200,
+    objectPosition: "50% 48%",
+  },
+  tradeConsultation: {
+    src: "/home/editorial/travel-trade-consultation-kuala-lumpur.webp",
+    alt: "A face-to-face China travel consultation at an inbound tourism trade event in Kuala Lumpur",
+    width: 1080,
+    height: 720,
+    objectPosition: "50% 48%",
+  },
+  tradeBuyerMeeting: {
+    src: "/home/editorial/travel-trade-buyer-meeting-kuala-lumpur.webp",
+    alt: "A face-to-face discussion with a regional travel buyer at an inbound tourism event in Kuala Lumpur",
+    width: 1080,
+    height: 720,
+    objectPosition: "50% 50%",
+  },
+  tradeMuslimBuyers: {
+    src: "/home/editorial/muslim-travel-buyers-kuala-lumpur.webp",
+    alt: "China travel representatives speaking with Muslim travel buyers at a tourism event in Kuala Lumpur",
+    width: 1080,
+    height: 720,
+    objectPosition: "50% 50%",
+  },
+} satisfies Record<string, MediaAsset>;
+
+export const exploreChina = [
+  {
+    eyebrow: "Destination",
+    title: "Beijing",
+    description: "Imperial scale, quiet courtyards, and Great Wall timing shaped around your pace.",
+    href: "/destinations/beijing",
+    image: homeEditorialImages.greatWall,
+  },
+  {
+    eyebrow: "Destination",
+    title: "Shanghai",
+    description: "Skyline energy, neighborhood texture, and an easy first landing in modern China.",
+    href: "/destinations/shanghai",
+    image: homeEditorialImages.shanghaiWaterfront,
+  },
+  {
+    eyebrow: "Travel styles",
+    title: "Find your rhythm",
+    description:
+      "Family time, quiet luxury, photography, or a slower journey with room to notice more.",
+    href: "/styles",
+    image: homeEditorialImages.guilinLandscape,
+  },
+];
+
+export const planningSteps = [
+  {
+    number: "01",
+    title: "Tell us the shape of the trip",
+    description:
+      "Dates, travelers, interests, pace, comfort level, and anything that needs extra care.",
+  },
+  {
+    number: "02",
+    title: "Receive a first route direction",
+    description:
+      "We connect the right cities, travel time, daily rhythm, and hotel logic into a clear starting point.",
+  },
+  {
+    number: "03",
+    title: "Refine it with a specialist",
+    description:
+      "We adjust the details with you until the journey feels personal, practical, and ready to travel.",
+  },
+];
 
 export const destinationImages = {
   beijing: {
@@ -203,25 +232,6 @@ export const destinations = [
     image: destinationImages.chengdu,
     badges: ["Pandas", "Food"],
   },
-  {
-    title: "Guilin & Yangshuo",
-    description: "Karst peaks, riverside villages, cycling lanes, and painterly morning light.",
-    image: destinationImages.guilin,
-    badges: ["Nature", "Soft adventure"],
-  },
-  {
-    title: "Zhangjiajie",
-    description: "Sandstone pillars, forest walks, and the cinematic China teenagers remember.",
-    image: destinationImages.zhangjiajie,
-    badges: ["Drama", "Adventure"],
-  },
-  {
-    title: "Yunnan",
-    description:
-      "Old towns, mountain air, Naxi culture, boutique stays, and a slower southwest rhythm.",
-    image: destinationImages.yunnan,
-    badges: ["Culture", "Slow travel"],
-  },
 ];
 
 export const experiences = [
@@ -253,33 +263,11 @@ export const journeys = [
     title: "First China, Beautifully Paced",
     description:
       "A private introduction for couples or families who want the icons, but not the rush.",
-    image: destinationImages.beijing,
-    badges: ["10-12 days"],
+    image: firstChinaAsset.beijingForbiddenCityMoat,
+    badges: ["9 days / 8 nights"],
     meta: [
-      { label: "Route", value: "Beijing, Xi'an, Chengdu, Shanghai" },
+      { label: "Route", value: "Beijing, Xi'an, Shanghai" },
       { label: "Best for", value: "First-time visitors" },
-    ],
-  },
-  {
-    title: "China With Kids",
-    description:
-      "Pandas, easy nature, hands-on food moments, and hotels chosen for comfort between discoveries.",
-    image: destinationImages.guilin,
-    badges: ["9-11 days"],
-    meta: [
-      { label: "Route", value: "Beijing, Chengdu, Yangshuo, Shanghai" },
-      { label: "Pace", value: "Easy, playful, private" },
-    ],
-  },
-  {
-    title: "Landscapes That Stay With You",
-    description:
-      "A cinematic route through river valleys, mountain parks, and the kind of scenery people cross oceans for.",
-    image: destinationImages.zhangjiajie,
-    badges: ["12-14 days"],
-    meta: [
-      { label: "Route", value: "Guilin, Zhangjiajie, Yunnan" },
-      { label: "Style", value: "Nature and photography" },
     ],
   },
 ];
@@ -302,47 +290,21 @@ export const proofPoints = [
   },
 ];
 
-export const reviews: ReviewItem[] = [
-  {
-    quote:
-      "We wanted China to feel exciting, not overwhelming. The pacing made all the difference.",
-    name: "Family traveler",
-    country: "United States",
-    rating: 5,
-    trip: "First China, Beautifully Paced",
-  },
-  {
-    quote:
-      "Our guide knew when to explain, when to step back, and when the kids simply needed snacks.",
-    name: "Private family guest",
-    country: "Australia",
-    rating: 5,
-    trip: "China With Kids",
-  },
-  {
-    quote: "The logistics were invisible. That is exactly what made the journey feel luxurious.",
-    name: "Couple traveler",
-    country: "United Kingdom",
-    rating: 5,
-    trip: "Landscapes That Stay With You",
-  },
-];
-
 export const journal = [
   {
     title: "How to plan a first private trip to China",
     excerpt:
       "The practical questions travelers ask before they fall in love with the route: pace, trains, food, payment, hotels, and guides.",
     href: "/journal/how-to-plan-a-first-private-trip-to-china",
-    image: destinationImages.beijing,
+    image: firstChinaAsset.beijingTempleOfHeavenCeiling,
     category: "First-time China",
   },
   {
-    title: "China with kids: what actually works",
+    title: "Family travel: what actually works",
     excerpt:
       "Why pandas, rivers, hands-on meals, and shorter city days often work better than a checklist of landmarks.",
     href: "/journal/china-with-kids-what-actually-works",
-    image: destinationImages.chengdu,
+    image: firstChinaAsset.shanghaiMarketVisit,
     category: "Family travel",
   },
   {
@@ -350,17 +312,12 @@ export const journal = [
     excerpt:
       "A calmer way to think about spring, autumn, school holidays, mountain weather, and photography seasons.",
     href: "/journal/best-time-for-a-first-china-journey",
-    image: heroImage,
+    image: firstChinaAsset.xianTerracottaPit,
     category: "Seasonal planning",
   },
 ];
 
-export const primaryAction: LinkAction = {
-  label: "Start Planning My China Journey",
-  href: "mailto:chinaprimedmc@gmail.com?subject=Private%20China%20Journey%20Inquiry",
-};
-
 export const b2bAction: LinkAction = {
   label: "For Travel Advisors",
-  href: "#footer",
+  href: "/contact",
 };

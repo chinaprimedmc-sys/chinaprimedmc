@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
-import { getTourBySlug, getTourSlugs } from "@/content/tours";
+import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
+import { getTourBySlug } from "@/content/tours";
+import { TourFrameworkTemplate } from "@/features/tours/tour-framework-template";
 import { TourTemplate } from "@/features/tours/tour-template";
+import { CmsJourneyTemplate } from "@/features/tours/cms-journey-template";
+import { getPublishedCmsJourney, getPublishedCmsJourneys } from "@/lib/cms/data";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -12,13 +16,43 @@ type TourPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return getTourSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const cmsJourneys = await getPublishedCmsJourneys();
+  return [
+    ...new Set([
+      ...journeyCatalog.map((item) => item.slug),
+      ...cmsJourneys.map((item) => item.slug),
+    ]),
+  ].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
   const { slug } = await params;
   const tour = getTourBySlug(slug);
+  const framework = getJourneyCatalogItem(slug);
+  const cmsJourney = !tour && !framework ? await getPublishedCmsJourney(slug) : null;
+
+  if (!tour && !framework && !cmsJourney) {
+    return createMetadata({ title: "Tour Not Found", noIndex: true });
+  }
+
+  if (framework && !tour) {
+    return createMetadata({
+      title: framework.title,
+      description: framework.summary,
+      path: `/tours/${framework.slug}`,
+      image: framework.image.src,
+    });
+  }
+
+  if (cmsJourney) {
+    return createMetadata({
+      title: cmsJourney.seo_title,
+      description: cmsJourney.seo_description,
+      path: `/tours/${cmsJourney.slug}`,
+      image: cmsJourney.hero_image?.url,
+    });
+  }
 
   if (!tour) {
     return createMetadata({ title: "Tour Not Found", noIndex: true });
@@ -35,6 +69,44 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 export default async function TourPage({ params }: TourPageProps) {
   const { slug } = await params;
   const tour = getTourBySlug(slug);
+  const framework = getJourneyCatalogItem(slug);
+  const cmsJourney = !tour && !framework ? await getPublishedCmsJourney(slug) : null;
+
+  if (!tour && !framework && !cmsJourney) {
+    notFound();
+  }
+
+  if (framework && !tour) {
+    return (
+      <>
+        <JsonLd
+          id={`${framework.slug}-breadcrumb-schema`}
+          data={breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Journeys", path: "/tours" },
+            { name: framework.title, path: `/tours/${framework.slug}` },
+          ])}
+        />
+        <TourFrameworkTemplate item={framework} />
+      </>
+    );
+  }
+
+  if (cmsJourney) {
+    return (
+      <>
+        <JsonLd
+          id={`${cmsJourney.slug}-breadcrumb-schema`}
+          data={breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Journeys", path: "/tours" },
+            { name: cmsJourney.title, path: `/tours/${cmsJourney.slug}` },
+          ])}
+        />
+        <CmsJourneyTemplate journey={cmsJourney} />
+      </>
+    );
+  }
 
   if (!tour) {
     notFound();

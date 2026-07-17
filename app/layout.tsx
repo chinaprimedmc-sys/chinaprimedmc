@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { JsonLd } from "@/lib/seo/json-ld";
+import { PageTransition } from "@/components/loading/page-transition";
 import { createMetadata } from "@/lib/seo/metadata";
 import { organizationSchema } from "@/lib/seo/schema";
 import { AppProviders } from "@/providers/app-providers";
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <AppProviders>{children}</AppProviders>
+        <AppProviders>
+          <PageTransition>{children}</PageTransition>
+        </AppProviders>
         <JsonLd id="organization-schema" data={organizationSchema()} />
       </body>
     </html>

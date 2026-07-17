@@ -17,7 +17,7 @@ export function NoToursState() {
     <EmptyState
       icon={<Compass size={20} />}
       title="No journeys match this view"
-      description="Future trip pages can use this state without inventing new styling."
+      description="This route is not available yet. Start a conversation and we can suggest a suitable direction."
     />
   );
 }
@@ -27,7 +27,7 @@ export function ComingSoonState() {
     <EmptyState
       icon={<Wrench size={20} />}
       title="Coming soon"
-      description="This area is reserved for a future sprint."
+      description="This area is not available yet. Please return to the main planning pages."
     />
   );
 }

@@ -7,23 +7,23 @@ export const motionLibrary = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: motionTokens.duration.base, ease: motionTokens.ease.enter },
+      transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
     },
   },
   fadeUp: {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: motionTokens.offset.enter },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: motionTokens.duration.base, ease: motionTokens.ease.enter },
+      transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
     },
   },
   slide: {
-    hidden: { opacity: 0, x: 32 },
+    hidden: { opacity: 0, x: motionTokens.offset.enter },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: motionTokens.duration.base, ease: motionTokens.ease.apple },
+      transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
     },
   },
   scale: {
@@ -31,7 +31,7 @@ export const motionLibrary = {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: motionTokens.duration.base, ease: motionTokens.ease.apple },
+      transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
     },
   },
   reveal: {
@@ -39,14 +39,14 @@ export const motionLibrary = {
     visible: {
       opacity: 1,
       clipPath: "inset(0 0 0% 0)",
-      transition: { duration: motionTokens.duration.slow, ease: motionTokens.ease.apple },
+      transition: { duration: motionTokens.duration.transition, ease: motionTokens.easing.inOut },
     },
   },
   imageZoom: {
     rest: { scale: 1 },
     hover: {
       scale: 1.045,
-      transition: { duration: motionTokens.duration.slow, ease: motionTokens.ease.apple },
+      transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
     },
   },
   glassTransition: {
@@ -54,7 +54,7 @@ export const motionLibrary = {
     animate: {
       opacity: 1,
       backdropFilter: "blur(24px)",
-      transition: { duration: motionTokens.duration.base, ease: motionTokens.ease.apple },
+      transition: { duration: motionTokens.duration.enter, ease: motionTokens.easing.out },
     },
   },
 } satisfies Record<string, Variants>;

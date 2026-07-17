@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
 import { OptimizedImage } from "@/components/media/optimized-image";
+import { motionTokens } from "@/design-system/tokens/motion";
 import { cn } from "@/lib/utils/cn";
 import type { CardMeta, ComponentVariant, LinkAction, MediaAsset } from "@/types/component-library";
 
@@ -36,8 +37,14 @@ const imageSizes = {
   featured: "(min-width:1024px) 62vw, 100vw",
 };
 
-const cardHoverTransition = { duration: 0.56, ease: [0.22, 1, 0.36, 1] as const };
-const cardTapTransition = { duration: 0.18, ease: [0.22, 1, 0.36, 1] as const };
+const cardHoverTransition = {
+  duration: motionTokens.duration.enter,
+  ease: motionTokens.easing.out,
+};
+const cardTapTransition = {
+  duration: motionTokens.duration.micro,
+  ease: motionTokens.easing.out,
+};
 const mediaZoom: Variants = {
   rest: { scale: 1 },
   hover: { scale: 1.04, transition: cardHoverTransition },
@@ -78,7 +85,7 @@ export function BaseMediaCard({
             }
       }
       className={cn(
-        "group relative flex overflow-hidden rounded-[1.75rem] bg-neutral-200 text-white shadow-sm transition-shadow duration-[560ms] ease-out hover:shadow-[0_28px_80px_rgba(43,42,37,0.18)] active:shadow-[0_18px_48px_rgba(43,42,37,0.14)] motion-reduce:transition-none",
+        "group relative flex overflow-hidden rounded-[1.75rem] bg-[var(--bg-secondary)] text-white shadow-sm transition-shadow duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] hover:shadow-[0_28px_80px_rgba(43,42,37,0.18)] active:shadow-[0_18px_48px_rgba(43,42,37,0.14)] motion-reduce:transition-none",
         variants[variant],
         className,
       )}
@@ -94,7 +101,7 @@ export function BaseMediaCard({
             fill
             sizes={imageSizes[variant]}
             objectPosition={image.objectPosition}
-            frameClassName="h-full bg-neutral-200"
+            frameClassName="h-full bg-[var(--bg-secondary)]"
             className="h-full w-full motion-reduce:transform-none"
           />
         </motion.div>
@@ -102,7 +109,7 @@ export function BaseMediaCard({
         <div className="absolute inset-0 bg-neutral-900" />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-black/10" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/34 via-black/8 to-transparent opacity-0 transition-opacity duration-[560ms] ease-out group-hover:opacity-100 group-active:opacity-70 motion-reduce:transition-none" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/34 via-black/8 to-transparent opacity-0 transition-opacity duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] group-hover:opacity-100 group-active:opacity-70 motion-reduce:transition-none" />
       <motion.div
         variants={
           shouldReduceMotion

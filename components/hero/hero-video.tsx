@@ -53,16 +53,12 @@ export function HeroVideo({
         {primary || secondary ? (
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {primary ? (
-              <CtaButton href={primary.href} variant="glass">
+              <CtaButton href={primary.href} variant="primary">
                 {primary.label}
               </CtaButton>
             ) : null}
             {secondary ? (
-              <CtaButton
-                href={secondary.href}
-                variant="outline"
-                className="border-white/45 text-white hover:bg-white/12"
-              >
+              <CtaButton href={secondary.href} variant="glass">
                 {secondary.label}
               </CtaButton>
             ) : null}

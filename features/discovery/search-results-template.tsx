@@ -68,7 +68,7 @@ export function SearchResultsTemplate({
           <SectionHeader
             eyebrow="Recommended"
             title="Useful places to continue."
-            description="Recommendations are generated from the same discovery index and relationship logic used across the site."
+            description="A few useful places to continue exploring China travel ideas."
           />
           <div className="grid gap-5 md:grid-cols-2">
             {recommended.map((item) => (

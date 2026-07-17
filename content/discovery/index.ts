@@ -1,59 +1,42 @@
-import { getDestinationBySlug } from "@/content/destinations";
+import { destinations, getDestinationBySlug } from "@/content/destinations";
 import { destinationAsset } from "@/content/destinations/assets";
 import { journalArticles } from "@/content/journal";
+import { audienceGuides, planningCards, planningFaqCategories } from "@/content/planning";
 import { tours } from "@/content/tours";
+import { travelStyles } from "@/content/travel-styles";
 import type { DiscoveryFilters, DiscoveryItem, DiscoveryType } from "@/types/discovery";
 
-const destinationItems: DiscoveryItem[] = [
-  {
-    id: "destination:beijing",
+const destinationItems: DiscoveryItem[] = destinations.map((destination) => {
+  const travelStyle = destination.quickFacts.find((fact) => fact.label === "Travel Style")?.value;
+  const seasons = destination.bestTime.seasons.map((season) => season.label);
+
+  return {
+    id: `destination:${destination.slug}`,
     type: "destination",
-    title: "Beijing",
-    description:
-      "Imperial scale, hutong texture, temple mornings, and Great Wall planning for first-time China travelers.",
-    href: "/destinations/beijing",
-    image: destinationAsset.beijingForbiddenCity,
+    title: destination.name,
+    description: `${destination.hero.tagline} ${destination.hero.summary}`,
+    href: `/destinations/${destination.slug}`,
+    image: destination.hero.image,
     category: "Destination",
-    tags: ["beijing", "first-time-china", "culture", "history", "family-travel"],
-    region: "North China",
-    season: ["Spring", "Autumn", "Winter"],
-    travelStyle: ["First-time China", "Family", "Culture", "Luxury"],
-    interests: ["Culture", "History", "Photography", "Family"],
-    familyFriendly: true,
-  },
-  {
-    id: "destination:chengdu",
-    type: "destination",
-    title: "Chengdu",
-    description:
-      "Panda mornings, Sichuan food culture, tea houses, and an easier rhythm for families entering western China.",
-    href: "/search?type=destination&q=chengdu",
-    image: destinationAsset.chengduPanda,
-    category: "Destination",
-    tags: ["chengdu", "pandas", "food", "family-travel", "southwest-china"],
-    region: "Southwest China",
-    season: ["Spring", "Autumn"],
-    travelStyle: ["Family", "Food", "First-time China"],
-    interests: ["Family", "Food", "Nature"],
-    familyFriendly: true,
-  },
-  {
-    id: "destination:shanghai",
-    type: "destination",
-    title: "Shanghai",
-    description:
-      "A soft landing into modern China, with skyline evenings, art deco streets, and strong international comfort.",
-    href: "/search?type=destination&q=shanghai",
-    image: destinationAsset.shanghaiSkyline,
-    category: "Destination",
-    tags: ["shanghai", "city", "architecture", "first-time-china", "luxury"],
-    region: "East China",
-    season: ["Spring", "Autumn", "Winter"],
-    travelStyle: ["First-time China", "Luxury", "Culture"],
-    interests: ["Architecture", "Food", "Photography"],
-    familyFriendly: true,
-  },
-];
+    tags: [
+      destination.slug,
+      destination.region.toLowerCase().replaceAll(" ", "-"),
+      ...destination.highlights.map((highlight) => highlight.category.toLowerCase()),
+      ...(travelStyle
+        ? travelStyle.split(",").map((style) => style.trim().toLowerCase().replaceAll(" ", "-"))
+        : []),
+    ],
+    region: destination.region,
+    season: seasons,
+    travelStyle: travelStyle?.split(",").map((style) => style.trim()),
+    interests: destination.highlights.map((highlight) => highlight.category),
+    familyFriendly: destination.quickFacts
+      .find((fact) => fact.label === "Suitable For")
+      ?.value.toLowerCase()
+      .includes("famil"),
+    privateTour: true,
+  };
+});
 
 const tourItems: DiscoveryItem[] = tours.map((tour) => ({
   id: `tour:${tour.slug}`,
@@ -147,10 +130,98 @@ const articleItems: DiscoveryItem[] = journalArticles.map((article) => ({
   familyFriendly: article.tags.includes("family-travel"),
 }));
 
+const travelStyleItems: DiscoveryItem[] = travelStyles.map((style) => ({
+  id: `style:${style.slug}`,
+  type: "experience",
+  title: style.title,
+  description: style.summary,
+  href: `/styles/${style.slug}`,
+  image: style.image,
+  category: "Travel Style",
+  tags: [
+    style.slug,
+    ...style.idealFor.map((item) => item.toLowerCase().replaceAll(" ", "-")),
+    ...style.designNotes.map((item) => item.toLowerCase().replaceAll(" ", "-")),
+  ],
+  travelStyle: [style.title],
+  interests: style.designNotes,
+  familyFriendly: style.slug === "family",
+  privateTour: true,
+}));
+
+const planningItems: DiscoveryItem[] = planningCards.map((card) => ({
+  id: `planning:${card.href}`,
+  type: card.href === "/planning/faq" ? "faq" : "experience",
+  title: card.title,
+  description: card.description,
+  href: card.href,
+  image: card.image,
+  category: "Planning",
+  tags: [
+    card.title.toLowerCase().replaceAll(" ", "-"),
+    ...card.badges.map((badge) => badge.toLowerCase().replaceAll(" ", "-")),
+  ],
+  familyFriendly: card.href === "/family-travel",
+  privateTour: true,
+}));
+
+const startPlanningItem: DiscoveryItem = {
+  id: "planning:start-planning",
+  type: "experience",
+  title: "Start Planning",
+  description:
+    "A short multi-step inquiry for private China travelers covering who is traveling, dates, style, and contact preferences.",
+  href: "/start-planning",
+  category: "Planning",
+  tags: ["start-planning", "inquiry", "custom-route", "private-china"],
+  privateTour: true,
+};
+
+const audienceGuideItems: DiscoveryItem[] = audienceGuides.map((guide) => ({
+  id: `audience:${guide.slug}`,
+  type: "experience",
+  title: guide.slug === "family-travel" ? "Family Travel" : "Senior Travel",
+  description: guide.summary,
+  href: `/${guide.slug}`,
+  image: guide.image,
+  category: "Audience",
+  tags: [
+    guide.slug,
+    ...guide.bestFor.map((item) => item.toLowerCase().replaceAll(" ", "-")),
+    ...guide.designDetails.map((item) => item.title.toLowerCase().replaceAll(" ", "-")),
+  ],
+  travelStyle: [guide.slug === "family-travel" ? "Family" : "Senior-friendly"],
+  interests: guide.designDetails.map((item) => item.title),
+  familyFriendly: guide.slug === "family-travel",
+  privateTour: true,
+}));
+
+const planningFaqItems: DiscoveryItem[] = planningFaqCategories.flatMap((category, index) =>
+  category.items.map((item, itemIndex) => ({
+    id: `planning-faq:${index}-${itemIndex}`,
+    type: "faq" as const,
+    title: item.question,
+    description: item.answer,
+    href: "/planning/faq",
+    category: "Planning FAQ",
+    tags: [
+      category.category.toLowerCase().replaceAll(" ", "-"),
+      "faq",
+      item.question.toLowerCase().replaceAll(" ", "-"),
+    ],
+    interests: [category.category],
+  })),
+);
+
 export const discoveryIndex: DiscoveryItem[] = [
   ...destinationItems,
   ...tourItems,
   ...experienceItems,
+  ...travelStyleItems,
+  startPlanningItem,
+  ...planningItems,
+  ...audienceGuideItems,
+  ...planningFaqItems,
   ...articleItems,
 ];
 
@@ -161,6 +232,9 @@ export const popularSearches = [
   "First China itinerary",
   "High-speed rail",
   "Best time to visit China",
+  "Visa",
+  "Family travel",
+  "Senior travel",
 ];
 
 export function searchDiscovery(query: string, filters: DiscoveryFilters = {}) {

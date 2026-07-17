@@ -85,7 +85,7 @@ export const journalArticles: JournalArticle[] = [
       },
       {
         type: "paragraph",
-        body: "For a first visit, Beijing, Xi'an, Chengdu, and Shanghai create a clear arc: imperial scale, ancient history, relaxed Sichuan life, and modern China. The route feels complete without pretending to cover the whole country.",
+        body: "For a first visit, Beijing, Xi'an, and Shanghai create a clear arc: imperial scale, ancient history, and modern city life. The route feels complete without pretending to cover the whole country.",
       },
       {
         type: "image",
@@ -124,7 +124,7 @@ export const journalArticles: JournalArticle[] = [
           "Tell us who is traveling, what pace feels right, and what worries you. We will suggest the first route shape.",
         primary: { label: "Get My First Route Idea", href: inquiryHref },
         secondary: {
-          label: "View the 11-day sample route",
+          label: "View the 9-day sample route",
           href: "/tours/first-china-beautifully-paced",
         },
         image: destinationAsset.chengduPanda,
@@ -142,7 +142,7 @@ export const journalArticles: JournalArticle[] = [
         type: "faq",
         question: "How many days should a first China trip be?",
         answer:
-          "For most private travelers, 10 to 14 days is more comfortable than one rushed week. It gives enough time for Beijing, Xi'an, Chengdu or Guilin, and Shanghai without making every day feel heavy.",
+          "For this sample route, nine days gives travelers four days in Beijing, two in Xi'an, and three in Shanghai. The schedule remains illustrative and can be softened or extended around your dates and needs.",
       },
       {
         type: "faq",
@@ -173,7 +173,7 @@ export const journalArticles: JournalArticle[] = [
   },
   {
     slug: "china-with-kids-what-actually-works",
-    title: "China With Kids: What Actually Works",
+    title: "Family Travel: What Actually Works",
     dek: "Pandas, rivers, food, and shorter city days usually work better than an adult checklist.",
     excerpt:
       "A family-first look at designing China routes children can enjoy and parents can trust.",
@@ -203,7 +203,7 @@ export const journalArticles: JournalArticle[] = [
       },
     ],
     seo: {
-      title: "China With Kids: Family Travel Planning Guide",
+      title: "Family Travel Planning Guide",
       description:
         "Plan a family-friendly China trip with private pacing, pandas, hands-on food, shorter museum blocks, and child-aware route design.",
       keywords: ["China with kids", "China family tour", "family-friendly China itinerary"],

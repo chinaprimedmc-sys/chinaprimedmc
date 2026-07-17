@@ -71,4 +71,11 @@ export const destinationAsset = {
     height: 1200,
     objectPosition: "52% 38%",
   },
+  zhangjiajieSpirePortrait: {
+    src: "/home/zhangjiajie-sandstone-spire-portrait.jpg",
+    alt: "Vertical sandstone spires in Zhangjiajie National Forest Park",
+    width: 3376,
+    height: 5064,
+    objectPosition: "50% 44%",
+  },
 } satisfies Record<string, MediaAsset>;

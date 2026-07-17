@@ -13,9 +13,6 @@ import { homeNavItems, primaryAction } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
 import { createMetadata } from "@/lib/seo/metadata";
 
-const inquiryHref =
-  "mailto:chinaprimedmc@gmail.com?subject=Private%20China%20Journey%20Inquiry&body=Hi%20China%20Prime%20DMC%2C%0A%0AI%27d%20like%20help%20planning%20a%20private%20China%20journey.%0A%0ATravelers%3A%0ADates%3A%0ADestinations%20or%20interests%3A%0AComfort%20level%3A%0AKey%20concerns%3A%0A";
-
 export const metadata: Metadata = createMetadata({
   title: "Contact China Prime DMC",
   description:
@@ -28,9 +25,9 @@ export default function ContactPage() {
     <PageContainer>
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Plan Your Journey", href: primaryAction.href }}
+        cta={{ label: "Plan My Trip", href: primaryAction.href }}
       />
-      <Section spacing="spacious" className="pt-32">
+      <Section spacing="spacious">
         <ContentContainer size="lg" className="grid gap-10">
           <div className="max-w-4xl">
             <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">Contact</p>
@@ -46,11 +43,11 @@ export default function ContactPage() {
             <div>
               <h2 className="text-2xl font-semibold tracking-[-0.03em]">Private journey inquiry</h2>
               <p className="text-muted mt-2 text-sm leading-6">
-                Email is the production-ready inquiry path for this release. A full backend form can
-                be connected in the next operational sprint.
+                Share the essential trip details through our secure planning form. A China
+                specialist will review them and reply within 24 hours.
               </p>
             </div>
-            <CtaButton href={inquiryHref}>Email China Prime DMC</CtaButton>
+            <CtaButton href="/start-planning?source=/contact">Start Planning</CtaButton>
           </Card>
           <GridSystem columns={3}>
             <FeatureCard title="Email" description={siteConfig.email} />
