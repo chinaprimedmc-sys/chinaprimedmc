@@ -22,11 +22,11 @@ export const trustPrinciples = [
 export const verifiedCredentials = [
   {
     title: siteConfig.operator.tourismLicense.shortLabel,
-    description: `${siteConfig.operator.legalName} is ${siteConfig.operator.tourismLicense.statement}.`,
+    description: `${siteConfig.operator.englishReferenceName} is ${siteConfig.operator.tourismLicense.statement}.`,
   },
   {
     title: "China-registered operating company",
-    description: "游友汇（广州）国际旅行社有限公司 was registered in Guangzhou on March 28, 2018.",
+    description: `${siteConfig.operator.englishReferenceName} was registered in Guangzhou on March 28, 2018.`,
   },
   {
     title: "Clear contracting relationship",

@@ -57,7 +57,8 @@ export function SiteFooter({
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
         <p>
-          © {new Date().getFullYear()} AVIORA · China operator: {siteConfig.operator.legalName}
+          © {new Date().getFullYear()} AVIORA · China operator:{" "}
+          {siteConfig.operator.englishReferenceName}
         </p>
         <div className="flex flex-wrap gap-4">
           {social.map((item) => (

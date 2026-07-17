@@ -19,8 +19,9 @@ export default function PrivacyPage() {
       introduction={
         <p>
           AVIORA is the international-facing travel brand. China journey planning and ground
-          services are operated in China by {siteConfig.operator.legalName} (
-          {siteConfig.operator.englishReferenceName}), referred to here as “we,” “us,” or “our.”
+          services are operated in China by {siteConfig.operator.englishReferenceName} (
+          {siteConfig.operator.legalName}; English translation for reference), referred to here as
+          “we,” “us,” or “our.”
         </p>
       }
     >

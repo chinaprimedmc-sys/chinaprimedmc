@@ -39,8 +39,8 @@ export default function AboutPage() {
             <p className="text-muted mt-5 max-w-2xl text-base leading-7 md:text-lg">
               AVIORA is how international travelers meet us. China Prime DMC describes the
               destination-management work behind each journey. Ground services in China are
-              contracted and operated by {siteConfig.operator.legalName}, a Guangzhou-registered
-              company that is {siteConfig.operator.tourismLicense.statement}.
+              contracted and operated by {siteConfig.operator.englishReferenceName}, a
+              Guangzhou-registered company that is {siteConfig.operator.tourismLicense.statement}.
             </p>
           </div>
           <GridSystem columns={3}>
@@ -86,10 +86,10 @@ export default function AboutPage() {
                 guides, transfers, tickets, stays, and day-to-day support in China.
               </p>
               <p>
-                The legal operator is {siteConfig.operator.legalName} (
-                {siteConfig.operator.englishReferenceName}), registered in Guangzhou on March 28,
-                2018. It is {siteConfig.operator.tourismLicense.statement}. Every confirmed proposal
-                identifies the relevant contracting details before payment.
+                The legal operator is {siteConfig.operator.englishReferenceName} (
+                {siteConfig.operator.legalName}; English translation for reference), registered in
+                Guangzhou on March 28, 2018. It is {siteConfig.operator.tourismLicense.statement}.
+                Every confirmed proposal identifies the relevant contracting details before payment.
               </p>
             </div>
           </div>

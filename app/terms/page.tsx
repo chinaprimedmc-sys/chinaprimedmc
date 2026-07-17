@@ -30,10 +30,9 @@ export default function TermsPage() {
           AVIORA is the international-facing brand used to present and plan private China journeys.
           “China Prime DMC” describes our China destination-management role. Unless your booking
           confirmation states otherwise, China ground services are contracted and operated by{" "}
-          <strong className="text-foreground">{siteConfig.operator.legalName}</strong> (
-          {siteConfig.operator.englishReferenceName}, English rendering for reference), a company
-          registered in Guangzhou on March 28, 2018 and{" "}
-          {siteConfig.operator.tourismLicense.statement}.
+          <strong className="text-foreground">{siteConfig.operator.englishReferenceName}</strong> (
+          {siteConfig.operator.legalName}; English translation for reference), a company registered
+          in Guangzhou on March 28, 2018 and {siteConfig.operator.tourismLicense.statement}.
         </p>
       </LegalSection>
 
