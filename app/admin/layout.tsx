@@ -9,6 +9,7 @@ export const metadata: Metadata = createMetadata({
   description: "China Prime DMC 中文内容管理后台。",
   path: "/admin",
   noIndex: true,
+  noFollow: true,
 });
 
 export default function AdminLayout({ children }: { children: ReactNode }) {

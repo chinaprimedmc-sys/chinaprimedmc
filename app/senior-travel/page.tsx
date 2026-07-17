@@ -54,7 +54,7 @@ export default function SeniorTravelPage() {
           "@type": "WebPage",
           name: "Senior Travel",
           description: guide.seo.description,
-          url: "https://chinaprimedmc.com/senior-travel",
+          url: new URL("/senior-travel", siteConfig.url).toString(),
           keywords: guide.seo.keywords,
         }}
       />

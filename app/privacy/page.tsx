@@ -1,59 +1,154 @@
 import type { Metadata } from "next";
 
-import { SiteFooter } from "@/components/footer/site-footer";
-import { ContentContainer } from "@/components/layout/content-container";
-import { PageContainer } from "@/components/layout/page-container";
-import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { homeNavItems, primaryAction } from "@/content/home/homepage";
-import { Section } from "@/design-system/primitives/section";
+import { LegalDocument, LegalList, LegalSection } from "@/components/legal";
+import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "China Prime DMC privacy policy for inquiry, planning, analytics, and communication data.",
+    "How AVIORA and its China operating company collect, use, secure, retain, and share personal information for private China journey planning.",
   path: "/privacy",
 });
 
 export default function PrivacyPage() {
   return (
-    <PageContainer>
-      <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-      />
-      <Section spacing="spacious">
-        <ContentContainer size="sm" className="max-w-3xl">
-          <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">Legal</p>
-          <h1 className="mt-4 text-4xl leading-tight font-semibold tracking-[-0.04em]">
-            Privacy Policy
-          </h1>
-          <p className="text-muted mt-5">Last updated: June 30, 2026</p>
-          <p className="text-muted mt-8 text-base leading-7">
-            China Prime DMC collects only the information needed to respond to travel inquiries and
-            design private China journeys, such as name, email, travel interests, dates, and
-            planning preferences.
-          </p>
-          <h2 className="mt-10 text-2xl font-semibold tracking-[-0.025em]">
-            How we use information
-          </h2>
-          <p className="text-muted mt-3 text-base leading-7">
-            We use inquiry details to communicate with travelers, prepare route ideas, coordinate
-            services, and improve the website experience. We do not sell personal information.
-          </p>
-          <h2 className="mt-10 text-2xl font-semibold tracking-[-0.025em]">Analytics</h2>
-          <p className="text-muted mt-3 text-base leading-7">
-            Analytics tools are optional and configured through environment variables. When enabled,
-            they should be used to understand aggregate website performance and improve content.
-          </p>
-          <h2 className="mt-10 text-2xl font-semibold tracking-[-0.025em]">Contact</h2>
-          <p className="text-muted mt-3 text-base leading-7">
-            For privacy questions, contact us at{" "}
-            <a href="mailto:chinaprimedmc@gmail.com">chinaprimedmc@gmail.com</a>.
-          </p>
-        </ContentContainer>
-      </Section>
-      <SiteFooter columns={[{ title: "Explore", items: homeNavItems }]} social={[]} />
-    </PageContainer>
+    <LegalDocument
+      eyebrow="Privacy"
+      title="Privacy Policy"
+      introduction={
+        <p>
+          AVIORA is the international-facing travel brand. China journey planning and ground
+          services are operated in China by {siteConfig.operator.legalName} (
+          {siteConfig.operator.englishReferenceName}), referred to here as “we,” “us,” or “our.”
+        </p>
+      }
+    >
+      <LegalSection title="1. Information we collect">
+        <p>We collect information you choose to provide when you contact us or plan a journey.</p>
+        <LegalList>
+          <li>Name, email address, telephone number, WhatsApp details, and contact preference.</li>
+          <li>
+            Travel dates, destinations, traveler numbers, ages or family composition, budget tier,
+            room needs, mobility considerations, dietary needs, and other planning preferences.
+          </li>
+          <li>
+            Booking information reasonably required to arrange confirmed services, such as passport
+            details, emergency contacts, arrival information, and payment records.
+          </li>
+          <li>
+            Technical information such as IP address, device and browser type, referral page, and
+            basic security logs when you use the website or submit a form.
+          </li>
+        </LegalList>
+        <p>
+          Please do not send passport copies, medical records, or payment-card details through an
+          ordinary inquiry form or email unless we specifically provide a secure method and explain
+          why the information is needed.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="2. Why we use your information">
+        <LegalList>
+          <li>To respond to an inquiry and prepare a relevant route, proposal, or quotation.</li>
+          <li>To arrange, administer, and support services you ask us to book.</li>
+          <li>To communicate operational updates before and during travel.</li>
+          <li>To protect our forms, systems, customers, and business from fraud or abuse.</li>
+          <li>To comply with accounting, tax, regulatory, insurance, and legal obligations.</li>
+          <li>
+            To understand website performance and improve our service where analytics are enabled.
+          </li>
+        </LegalList>
+        <p>
+          Depending on the circumstances and applicable law, we rely on your request before a
+          contract, performance of a contract, legal obligations, legitimate business interests, or
+          consent. We do not sell personal information.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="3. Sensitive and traveler information">
+        <p>
+          Health, accessibility, dietary, religious, and passport information can be sensitive. We
+          request it only when it is relevant to safety, suitability, entry formalities, or a
+          service you ask us to arrange. When you provide information about another traveler, you
+          confirm that you are authorized to share it and that the traveler understands how it will
+          be used.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="4. Who may receive information">
+        <p>We disclose only what is reasonably necessary to:</p>
+        <LegalList>
+          <li>
+            Hotels, guides, transport providers, ticketing partners, restaurants, activity
+            providers, insurers, and other suppliers involved in a requested or confirmed journey.
+          </li>
+          <li>
+            Technology providers that support website hosting, inquiry storage, communications,
+            security, and payment processing under appropriate contractual or security controls.
+          </li>
+          <li>
+            Professional advisers, regulators, law-enforcement bodies, or courts where disclosure is
+            required or reasonably necessary to protect legal rights and safety.
+          </li>
+        </LegalList>
+        <p>
+          Travel services may require information to move between your country and China, and
+          between jurisdictions used by our technology or communications providers. We use
+          reasonable safeguards appropriate to the information and transfer.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="5. Storage, security, and retention">
+        <p>
+          Inquiry data is stored in access-controlled systems. We use technical and organizational
+          safeguards intended to prevent unauthorized access, alteration, disclosure, or loss.
+          Internet transmission can never be guaranteed to be completely secure.
+        </p>
+        <p>
+          We retain inquiries for the period reasonably needed to continue the planning
+          conversation, maintain service history, and protect the parties&apos; legitimate
+          interests. Booking, transaction, tax, dispute, and safety records may be retained longer
+          where necessary for the contract or required by law. We delete or anonymize information
+          when it is no longer reasonably needed.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="6. Cookies and analytics">
+        <p>
+          The website may use essential storage required for security, session handling, and form
+          operation. If optional analytics or advertising technology is introduced, we will update
+          this policy and provide consent choices where required. Browser settings can restrict
+          cookies, although doing so may affect parts of the website.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="7. Your choices and rights">
+        <p>
+          Subject to applicable law, you may ask to access, correct, delete, restrict, or receive a
+          copy of personal information, or object to certain uses. You may withdraw consent where
+          processing is based on consent. We may need to verify identity and may retain information
+          that we are legally required or entitled to keep.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="8. Children">
+        <p>
+          Our services are arranged by adults. Information about children should be provided only by
+          a parent, guardian, or authorized group organizer and only when necessary to plan or
+          deliver the journey.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="9. Contact and updates">
+        <p>
+          Privacy questions or requests can be sent to{" "}
+          <a className="text-foreground underline" href={`mailto:${siteConfig.email}`}>
+            {siteConfig.email}
+          </a>
+          . Material changes will be published here with a revised effective date.
+        </p>
+      </LegalSection>
+    </LegalDocument>
   );
 }

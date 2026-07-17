@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { siteConfig } from "@/config/site";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { destinations } from "@/content/destinations";
 import { homeNavItems, primaryAction } from "@/content/home/homepage";
@@ -44,11 +45,11 @@ export default async function ToursPage() {
           name: "Private China Tours",
           description:
             "Private China journey ideas for international travelers, families, seniors, and travel advisors.",
-          url: "https://chinaprimedmc.com/tours",
+          url: new URL("/tours", siteConfig.url).toString(),
           hasPart: catalog.map((tour) => ({
             "@type": "TouristTrip",
             name: tour.title,
-            url: `https://chinaprimedmc.com/tours/${tour.slug}`,
+            url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
           })),
         }}
       />
@@ -69,6 +70,7 @@ export default async function ToursPage() {
           <SectionHeader
             eyebrow="Journeys"
             title="The starting point is never a package."
+            titleAs="h1"
             description="Choose a route direction, a travel style, or simply a city you want to understand. We shape the first proposal around who is traveling, how they like to move, and what should be left out."
           />
           <JourneyEditorialGrid items={catalog} />

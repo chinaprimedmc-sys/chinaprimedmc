@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { getArticleBySlug, getArticleSlugs } from "@/content/journal";
 import { ArticleTemplate } from "@/features/journal/article-template";
-import { cmsBlogToArticle } from "@/lib/cms/adapters";
+import { cmsBlogToArticle, isIndexableCmsPost } from "@/lib/cms/adapters";
 import { getPublishedCmsPost, getPublishedCmsPosts } from "@/lib/cms/data";
 import { getRelationshipsForArticle } from "@/lib/content/relationship-engine";
 import { JsonLd } from "@/lib/seo/json-ld";
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   const article = (cmsPost ? cmsBlogToArticle(cmsPost) : null) ?? getArticleBySlug(slug);
 
   if (!article) {
-    return createMetadata({ title: "Article Not Found", noIndex: true });
+    notFound();
   }
 
   return createMetadata({
@@ -36,6 +36,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     description: article.seo.description,
     path: article.seo.canonicalPath ?? `/journal/${article.slug}`,
     image: article.seo.ogImage?.src ?? article.hero.image.src,
+    type: "article",
+    noIndex: cmsPost ? !isIndexableCmsPost(cmsPost) : false,
   });
 }
 

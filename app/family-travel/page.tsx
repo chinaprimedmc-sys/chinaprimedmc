@@ -13,6 +13,7 @@ import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { siteConfig } from "@/config/site";
 import { destinations } from "@/content/destinations";
 import { homeNavItems, primaryAction, storyImages } from "@/content/home/homepage";
 import { getAudienceGuide } from "@/content/planning";
@@ -51,7 +52,7 @@ export default function FamilyTravelPage() {
           "@type": "WebPage",
           name: "Family Travel",
           description: guide.seo.description,
-          url: "https://chinaprimedmc.com/family-travel",
+          url: new URL("/family-travel", siteConfig.url).toString(),
           keywords: guide.seo.keywords,
         }}
       />
@@ -156,7 +157,7 @@ export default function FamilyTravelPage() {
           <SectionHeader
             eyebrow="Family-friendly chapters"
             title="Places that support softer family pacing."
-            description="Destination links keep this audience page connected to the broader site architecture."
+            description="Compare cities through the practical details that matter when children or older relatives are traveling."
           />
           <GridSystem columns={3}>
             {familyDestinations.map((destination) => (

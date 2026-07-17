@@ -10,6 +10,7 @@ import { ContentContainer } from "@/components/layout/content-container";
 import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { siteConfig } from "@/config/site";
 import { destinations } from "@/content/destinations";
 import { heroImage, homeNavItems, primaryAction, storyImages } from "@/content/home/homepage";
 import { tours } from "@/content/tours";
@@ -21,7 +22,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = createMetadata({
   title: "Private China Destinations",
   description:
-    "Explore private China destination guides for Beijing, Shanghai, Chengdu, and future China routes with family, senior, luxury, and slow-travel pacing.",
+    "Explore private China destination guides for Beijing, Shanghai, and Chengdu with practical notes for family, senior, luxury, and slow-travel pacing.",
   path: "/destinations",
   image: heroImage.src,
 });
@@ -39,11 +40,11 @@ export default function DestinationsPage() {
           name: "Private China Destinations",
           description:
             "Destination guides for private China journeys, designed around international travelers, families, seniors, and travel advisors.",
-          url: "https://chinaprimedmc.com/destinations",
+          url: new URL("/destinations", siteConfig.url).toString(),
           hasPart: destinations.map((destination) => ({
             "@type": "TouristDestination",
             name: destination.name,
-            url: `https://chinaprimedmc.com/destinations/${destination.slug}`,
+            url: new URL(`/destinations/${destination.slug}`, siteConfig.url).toString(),
           })),
         }}
       />
@@ -118,11 +119,11 @@ export default function DestinationsPage() {
             />
             <FeatureCard
               title="Season and stay length"
-              description="Best-season and recommended-stay fields are exposed as quick facts, metadata, and internal linking context."
+              description="Compare weather, walking comfort, crowd levels, and a realistic number of nights before choosing the route."
             />
             <FeatureCard
               title="Tour relationships"
-              description="Destination pages link into matching private routes, so travelers can move from place inspiration to route planning."
+              description="Move from an individual city guide into a private route that connects the places naturally."
             />
           </GridSystem>
         </ContentContainer>
@@ -134,7 +135,7 @@ export default function DestinationsPage() {
             <SectionHeader
               eyebrow="Route example"
               title="Start from a place, then shape the journey."
-              description="The destination hub links into journey pages and keeps SEO pages from becoming isolated."
+              description="See how a destination can fit into a wider private journey without forcing unnecessary stops."
             />
             <GridSystem columns={2}>
               <TourCard

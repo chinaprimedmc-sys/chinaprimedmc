@@ -55,7 +55,7 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
           <SectionHeader
             eyebrow="Featured story"
             title="Start with the question most travelers are quietly asking."
-            description="The Journal is designed as a premium content hub: image-led, practical, and connected to destinations and private journeys."
+            description="A useful first read for the questions that shape pace, comfort, routing, and the feel of a private journey."
           />
           <BlogCard
             title={featured.title}
@@ -169,7 +169,7 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
           <SectionHeader
             eyebrow="Food and culture"
             title="Let images carry some of the story."
-            description="Journal pages use visual rhythm, captions, quotes, and connected CTAs instead of long blocks of unbroken text."
+            description="Field details, images, and practical context help turn a place from an idea into a journey you can picture."
           />
           <GridGallery images={featured.gallery} mode="editorial" />
         </ContentContainer>
@@ -179,8 +179,8 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Categories and tags"
-            title="Built for long-term SEO clusters."
-            description="Categories and tags are shared content infrastructure, not visual decoration."
+            title="Follow the questions that matter to your trip."
+            description="Browse by destination, season, traveler type, or the practical experience you are planning around."
           />
           <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
             <div className="border-border bg-background/70 rounded-[1.75rem] border p-5">

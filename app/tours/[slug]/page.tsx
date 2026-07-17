@@ -7,6 +7,7 @@ import { getTourBySlug } from "@/content/tours";
 import { TourFrameworkTemplate } from "@/features/tours/tour-framework-template";
 import { TourTemplate } from "@/features/tours/tour-template";
 import { CmsJourneyTemplate } from "@/features/tours/cms-journey-template";
+import { isIndexableCmsJourney } from "@/lib/cms/adapters";
 import { getPublishedCmsJourney, getPublishedCmsJourneys } from "@/lib/cms/data";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   const cmsJourney = await getPublishedCmsJourney(slug);
 
   if (!tour && !framework && !cmsJourney) {
-    return createMetadata({ title: "Tour Not Found", noIndex: true });
+    notFound();
   }
 
   if (cmsJourney) {
@@ -42,6 +43,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       description: cmsJourney.seo_description,
       path: `/tours/${cmsJourney.slug}`,
       image: cmsJourney.hero_image?.url,
+      noIndex: !isIndexableCmsJourney(cmsJourney),
     });
   }
 
@@ -51,11 +53,12 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       description: framework.summary,
       path: `/tours/${framework.slug}`,
       image: framework.image.src,
+      noIndex: true,
     });
   }
 
   if (!tour) {
-    return createMetadata({ title: "Tour Not Found", noIndex: true });
+    notFound();
   }
 
   return createMetadata({

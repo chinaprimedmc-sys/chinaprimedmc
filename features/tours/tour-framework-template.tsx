@@ -53,7 +53,7 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
           <SectionHeader
             eyebrow="What we shape with you"
             title="The useful details come after we understand the travelers."
-            description="This framework keeps the direction clear without pretending that a personal route can be responsibly finalized from a generic card."
+            description="We use this direction to ask better questions, then confirm the cities, daily rhythm, stays, and logistics around your travelers."
           />
           <div className="grid gap-4 md:grid-cols-3">
             {[

@@ -13,6 +13,7 @@ import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
+import { siteConfig } from "@/config/site";
 import { destinations } from "@/content/destinations";
 import { homeNavItems, primaryAction } from "@/content/home/homepage";
 import { tours } from "@/content/tours";
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: StylePageProps): Promise<Meta
   const style = getTravelStyleBySlug(slug);
 
   if (!style) {
-    return createMetadata({ title: "Travel Style Not Found", noIndex: true });
+    notFound();
   }
 
   return createMetadata({
@@ -68,7 +69,7 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
           "@type": "WebPage",
           name: style.title,
           description: style.seo.description,
-          url: `https://chinaprimedmc.com/styles/${style.slug}`,
+          url: new URL(`/styles/${style.slug}`, siteConfig.url).toString(),
           keywords: style.seo.keywords,
         }}
       />
@@ -168,7 +169,7 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
           <SectionHeader
             eyebrow="Related destinations"
             title="Places that often support this style."
-            description="Destination links keep style pages connected to the broader site architecture."
+            description="These places often work well with this travel rhythm, but the final route remains personal to your group."
           />
           <GridSystem columns={3}>
             {relatedDestinations.map((destination) => (

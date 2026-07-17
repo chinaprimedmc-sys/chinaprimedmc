@@ -27,6 +27,7 @@ export function generateMetadata(): Metadata {
     description:
       "Search premium China destinations, private tours, experiences, and travel guides. Save ideas into My Trip and request a customized journey.",
     path: "/search",
+    noIndex: true,
   });
 }
 

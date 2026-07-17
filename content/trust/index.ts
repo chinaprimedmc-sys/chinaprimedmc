@@ -1,4 +1,5 @@
 import type { ReviewItem } from "@/types/component-library";
+import { siteConfig } from "@/config/site";
 
 export const trustPrinciples = [
   {
@@ -18,20 +19,24 @@ export const trustPrinciples = [
   },
 ];
 
-export const credentialPlaceholders = [
+export const verifiedCredentials = [
   {
-    title: "Inbound travel qualification",
-    description: "Verified documentation is available during the planning conversation.",
+    title: siteConfig.operator.tourismLicense.shortLabel,
+    description: `${siteConfig.operator.legalName} is ${siteConfig.operator.tourismLicense.statement}.`,
   },
   {
-    title: "Company registration",
-    description: "Company details can be provided when they are relevant to your booking.",
+    title: "China-registered operating company",
+    description: "游友汇（广州）国际旅行社有限公司 was registered in Guangzhou on March 28, 2018.",
   },
   {
-    title: "Insurance and supplier checks",
-    description: "Operational details are discussed as part of the route and supplier review.",
+    title: "Clear contracting relationship",
+    description:
+      "AVIORA is the overseas-facing brand; your written booking identifies the China contracting and operating entity.",
   },
 ];
+
+/** @deprecated Use verifiedCredentials. */
+export const credentialPlaceholders = verifiedCredentials;
 
 export const teamPlaceholders: { name: string; role: string; bio: string }[] = [];
 

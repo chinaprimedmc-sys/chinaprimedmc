@@ -10,6 +10,7 @@ import { ContentContainer } from "@/components/layout/content-container";
 import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { siteConfig } from "@/config/site";
 import { destinations } from "@/content/destinations";
 import { homeNavItems, primaryAction, storyImages } from "@/content/home/homepage";
 import { tours } from "@/content/tours";
@@ -37,11 +38,11 @@ export default function StylesPage() {
           name: "Private China Travel Styles",
           description:
             "Travel style guides for private China journey planning, including family, quiet luxury, slow travel, and photography-led routes.",
-          url: "https://chinaprimedmc.com/styles",
+          url: new URL("/styles", siteConfig.url).toString(),
           hasPart: travelStyles.map((style) => ({
             "@type": "WebPage",
             name: style.title,
-            url: `https://chinaprimedmc.com/styles/${style.slug}`,
+            url: new URL(`/styles/${style.slug}`, siteConfig.url).toString(),
           })),
         }}
       />

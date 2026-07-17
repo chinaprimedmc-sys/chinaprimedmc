@@ -16,6 +16,7 @@ import { PageContainer } from "@/components/layout/page-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
+import { siteConfig } from "@/config/site";
 import {
   exploreChina,
   heroImage,
@@ -29,7 +30,6 @@ import {
   secondaryHeroActions,
 } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
-import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createMetadata({
@@ -44,25 +44,6 @@ export default function HomePage() {
 
   return (
     <PageContainer className="pb-20 md:pb-0">
-      <JsonLd
-        id="home-travel-agency-schema"
-        data={{
-          "@context": "https://schema.org",
-          "@type": "TravelAgency",
-          name: "aviora",
-          url: "https://chinaprimedmc.com/",
-          description:
-            "Private China tours and custom inbound travel planning for international families, couples, luxury travelers, and travel advisors.",
-          areaServed: ["China", "United States", "Canada", "United Kingdom", "Australia"],
-          knowsAbout: [
-            "Private China tours",
-            "Luxury China travel",
-            "China family tours",
-            "Custom China itinerary planning",
-            "Muslim-friendly China travel",
-          ],
-        }}
-      />
       <SiteNavigation
         items={homeNavItems}
         cta={{ label: "Plan My Trip", href: primaryAction.href }}
@@ -70,7 +51,7 @@ export default function HomePage() {
       />
 
       <HeroLargeImage
-        brandLockup={{ name: "AVIORA", descriptor: "A China Prime DMC company" }}
+        brandLockup={{ name: "AVIORA", descriptor: "Private China journeys by China Prime DMC" }}
         title="China, beautifully within reach."
         subtitle="Private China journeys with the wonder kept in, and the friction quietly designed out."
         image={heroImage}
@@ -83,7 +64,11 @@ export default function HomePage() {
         <HeroTrustPills
           mode="ticker"
           tone="light"
-          items={["Licensed inbound operator", "Founded 2012", "Private, no-shopping travel"]}
+          items={[
+            siteConfig.operator.tourismLicense.shortLabel,
+            "China-registered operating company",
+            "Private, no-shopping travel",
+          ]}
         />
       </HeroLargeImage>
 
@@ -214,7 +199,7 @@ export default function HomePage() {
           </div>
           <div className="grid border-y border-white/12 md:grid-cols-3">
             {[
-              ["2012", "Founded"],
+              ["Licensed", "Inbound tourism operator"],
               ["Private", "Daily rhythm"],
               ["0", "Shopping-tour pressure"],
             ].map(([value, label], index) => (

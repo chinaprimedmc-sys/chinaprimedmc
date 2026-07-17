@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
   const destination = getDestinationBySlug(slug);
 
   if (!destination) {
-    return createMetadata({ title: "Destination Not Found", noIndex: true });
+    notFound();
   }
 
   return createMetadata({

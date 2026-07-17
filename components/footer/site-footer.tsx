@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";
+import { siteConfig } from "@/config/site";
 import type { NavigationItem } from "@/types/component-library";
 
 type SiteFooterProps = {
@@ -12,8 +13,8 @@ type SiteFooterProps = {
 };
 
 export function SiteFooter({
-  brand = "aviora",
-  description = "aviora — a China Prime DMC company.",
+  brand = "AVIORA",
+  description = `Private China journeys by China Prime DMC, operated in China by a ${siteConfig.operator.tourismLicense.shortLabel.toLowerCase()}.`,
   columns,
   email = "chinaprimedmc@gmail.com",
   social = [],
@@ -55,7 +56,9 @@ export function SiteFooter({
         </div>
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
-        <p>© {new Date().getFullYear()} aviora — a China Prime DMC company.</p>
+        <p>
+          © {new Date().getFullYear()} AVIORA · China operator: {siteConfig.operator.legalName}
+        </p>
         <div className="flex flex-wrap gap-4">
           {social.map((item) => (
             <Link
@@ -67,6 +70,12 @@ export function SiteFooter({
             </Link>
           ))}
           <Link
+            href="/about"
+            className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
+          >
+            Company
+          </Link>
+          <Link
             href="/privacy"
             className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
           >
@@ -76,7 +85,7 @@ export function SiteFooter({
             href="/terms"
             className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
           >
-            Terms
+            Booking Terms
           </Link>
         </div>
       </div>

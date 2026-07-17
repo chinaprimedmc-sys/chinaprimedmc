@@ -19,7 +19,7 @@ type SiteNavigationProps = {
 };
 
 export function SiteNavigation({
-  brand = "aviora",
+  brand = "AVIORA",
   items,
   cta = { label: "Plan My Trip", href: "/contact" },
   whatsapp = { label: "WhatsApp", href: "https://wa.me/447985052302" },
@@ -183,7 +183,7 @@ function MobileNavigation({
               {whatsapp.label}
             </a>
             <p className="px-1 pt-1 text-center text-xs leading-5 text-neutral-500">
-              aviora — a China Prime DMC company.
+              AVIORA — private China journeys by China Prime DMC.
             </p>
           </div>
         </Dialog.Content>

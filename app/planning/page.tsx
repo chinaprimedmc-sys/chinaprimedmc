@@ -10,6 +10,7 @@ import { ContentContainer } from "@/components/layout/content-container";
 import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { siteConfig } from "@/config/site";
 import { heroImage, homeNavItems, primaryAction, storyImages } from "@/content/home/homepage";
 import { planningCards } from "@/content/planning";
 import { Section } from "@/design-system/primitives/section";
@@ -36,11 +37,11 @@ export default function PlanningPage() {
           name: "China Travel Planning Guide",
           description:
             "Planning resources for private China travel, visa preparation, FAQ, family travel, and senior-friendly journeys.",
-          url: "https://chinaprimedmc.com/planning",
+          url: new URL("/planning", siteConfig.url).toString(),
           hasPart: planningCards.map((card) => ({
             "@type": "WebPage",
             name: card.title,
-            url: `https://chinaprimedmc.com${card.href}`,
+            url: new URL(card.href, siteConfig.url).toString(),
           })),
         }}
       />

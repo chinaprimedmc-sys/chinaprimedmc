@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:backend": "node --test tests/backend-security.test.mjs",
+    "audit:seo": "node scripts/audit-seo.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky"

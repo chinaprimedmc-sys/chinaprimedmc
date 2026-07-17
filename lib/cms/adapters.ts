@@ -58,6 +58,28 @@ export function cmsJourneyToCatalogItem(journey: CmsJourney): JourneyCatalogItem
   };
 }
 
+export function isIndexableCmsJourney(journey: CmsJourney) {
+  return Boolean(
+    journey.hero_image &&
+    journey.seo_title.trim() &&
+    journey.seo_description.trim().length >= 80 &&
+    journey.content.intro?.trim() &&
+    journey.content.days &&
+    journey.content.days.length >= 3,
+  );
+}
+
+export function isIndexableCmsPost(post: CmsBlogPost) {
+  return Boolean(
+    post.hero_image &&
+    post.published_at &&
+    post.seo_title.trim() &&
+    post.seo_description.trim().length >= 80 &&
+    post.content.body &&
+    post.content.body.trim().length >= 700,
+  );
+}
+
 export function cmsBlogToArticle(post: CmsBlogPost): JournalArticle | null {
   if (!post.hero_image || !post.published_at) return null;
 

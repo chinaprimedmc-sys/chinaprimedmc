@@ -63,7 +63,7 @@ export default function AdminSeoPage() {
             <TextField label="页面名称" defaultValue={selected.page} />
             <TextField
               label="Canonical URL"
-              defaultValue={`https://chinaprimedmc.com${selected.path}`}
+              defaultValue={`https://www.chinaprimedmc.com${selected.path}`}
             />
             <TextField
               label="SEO 标题"
