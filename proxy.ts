@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { getAdminSessionCookieName, verifyAdminSession } from "@/lib/admin/session";
+
 const protectedPrefixes = ["/admin", "/api/admin", "/component-showcase", "/component-playground"];
+const publicAdminPaths = new Set(["/admin/login", "/api/admin/session"]);
+const retiredAdminPaths = new Set([
+  "/admin/analytics",
+  "/admin/customers",
+  "/admin/destinations",
+  "/admin/experiences",
+  "/admin/seo",
+  "/admin/settings",
+  "/admin/system",
+]);
 
 function isProtectedPath(pathname: string) {
   return protectedPrefixes.some(
@@ -29,76 +41,48 @@ function applySecurityHeaders(response: NextResponse) {
   response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
   response.headers.set("X-DNS-Prefetch-Control", "on");
+  response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
 
   return response;
 }
 
-function getAdminCredentials() {
-  return {
-    username: process.env.ADMIN_USERNAME,
-    password: process.env.ADMIN_PASSWORD,
-  };
-}
-
-function readBasicAuthCredentials(request: NextRequest) {
-  const authorization = request.headers.get("authorization");
-
-  if (!authorization?.startsWith("Basic ")) {
-    return null;
-  }
-
-  try {
-    const decoded = atob(authorization.slice("Basic ".length));
-    const separatorIndex = decoded.indexOf(":");
-
-    if (separatorIndex === -1) {
-      return null;
-    }
-
-    return {
-      username: decoded.slice(0, separatorIndex),
-      password: decoded.slice(separatorIndex + 1),
-    };
-  } catch {
-    return null;
-  }
-}
-
-function credentialsMatch(provided: string | undefined, expected: string | undefined) {
-  if (!provided || !expected || provided.length !== expected.length) {
-    return false;
-  }
-
-  let difference = 0;
-  for (let index = 0; index < expected.length; index += 1) {
-    difference |= expected.charCodeAt(index) ^ provided.charCodeAt(index);
-  }
-
-  return difference === 0;
-}
-
-function unauthorizedAdminResponse() {
-  const denied = new NextResponse("Admin access required.", { status: 401 });
-  denied.headers.set("WWW-Authenticate", 'Basic realm="China Prime DMC Admin", charset="UTF-8"');
+function unauthorizedAdminResponse(request: NextRequest) {
+  const isApi = request.nextUrl.pathname.startsWith("/api/");
+  const denied = isApi
+    ? NextResponse.json({ error: "Admin access required." }, { status: 401 })
+    : NextResponse.redirect(new URL("/admin/login", request.url));
   denied.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
   return applySecurityHeaders(denied);
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const response = NextResponse.next();
 
-  if (isProtectedPath(pathname)) {
+  if (retiredAdminPaths.has(pathname)) {
+    return applySecurityHeaders(NextResponse.redirect(new URL("/admin", request.url)));
+  }
+
+  if (isProtectedPath(pathname) && !publicAdminPaths.has(pathname)) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
 
-    const expected = getAdminCredentials();
-    const provided = readBasicAuthCredentials(request);
-    const hasAccess =
-      credentialsMatch(provided?.username, expected.username) &&
-      credentialsMatch(provided?.password, expected.password);
+    const session = await verifyAdminSession(
+      request.cookies.get(getAdminSessionCookieName())?.value,
+    );
 
-    if (!hasAccess) {
-      return unauthorizedAdminResponse();
+    if (!session) {
+      return unauthorizedAdminResponse(request);
+    }
+    response.headers.set("Cache-Control", "private, no-store");
+
+    if (
+      pathname.startsWith("/api/admin") &&
+      !["GET", "HEAD", "OPTIONS"].includes(request.method) &&
+      request.headers.get("origin") !== request.nextUrl.origin
+    ) {
+      return applySecurityHeaders(
+        NextResponse.json({ error: "Invalid request origin." }, { status: 403 }),
+      );
     }
   }
 

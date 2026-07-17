@@ -1,17 +1,4 @@
-import {
-  BarChart3,
-  BookOpenText,
-  FileSearch,
-  Gauge,
-  Globe2,
-  ImageIcon,
-  Inbox,
-  Luggage,
-  MapPinned,
-  Settings,
-  Sparkles,
-  Users,
-} from "lucide-react";
+import { BookOpenText, Gauge, ImageIcon, Inbox, Luggage } from "lucide-react";
 
 import { destinationAsset } from "@/content/destinations/assets";
 import { journalArticles } from "@/content/journal";
@@ -19,17 +6,10 @@ import { tours } from "@/content/tours";
 
 export const adminNavigation = [
   { label: "数据概览", href: "/admin", icon: Gauge },
-  { label: "目的地管理", href: "/admin/destinations", icon: MapPinned },
   { label: "线路管理", href: "/admin/tours", icon: Luggage },
-  { label: "旅行体验", href: "/admin/experiences", icon: Sparkles },
   { label: "旅行杂志", href: "/admin/journal", icon: BookOpenText },
   { label: "媒体资源", href: "/admin/media", icon: ImageIcon },
   { label: "询盘管理", href: "/admin/inquiries", icon: Inbox },
-  { label: "客户管理", href: "/admin/customers", icon: Users, disabled: true },
-  { label: "SEO 管理", href: "/admin/seo", icon: FileSearch },
-  { label: "网站设置", href: "/admin/settings", icon: Settings },
-  { label: "数据统计", href: "/admin/analytics", icon: BarChart3, disabled: true },
-  { label: "系统设置", href: "/admin/system", icon: Globe2, disabled: true },
 ];
 
 export const dashboardStats = [

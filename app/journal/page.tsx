@@ -17,13 +17,13 @@ export const metadata = createMetadata({
 export default async function JournalPage() {
   const featured = getFeaturedArticle();
   const cmsPosts = await getPublishedCmsPosts();
-  const localSlugs = new Set(journalArticles.map((article) => article.slug));
   const cmsArticles = cmsPosts
-    .filter((post) => !localSlugs.has(post.slug))
     .map(cmsBlogToArticle)
     .filter((article): article is NonNullable<typeof article> => Boolean(article));
+  const cmsSlugs = new Set(cmsArticles.map((article) => article.slug));
+  const localArticles = journalArticles.filter((article) => !cmsSlugs.has(article.slug));
   const editorPicks = [...getEditorPicks(), ...cmsArticles.slice(0, 2)];
-  const latest = [...cmsArticles, ...journalArticles];
+  const latest = [...cmsArticles, ...localArticles];
 
   return (
     <>

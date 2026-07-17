@@ -62,6 +62,9 @@ export async function POST(request: Request) {
       metadata: { uploaded_via: "admin-cms" },
     }),
     cache: "no-store",
+  }).catch(async (error) => {
+    await deleteStorageObject(storagePath);
+    throw error;
   });
 
   return NextResponse.json({
@@ -75,4 +78,43 @@ export async function POST(request: Request) {
       objectPosition: "50% 50%",
     },
   });
+}
+
+export async function DELETE(request: Request) {
+  const id = new URL(request.url).searchParams.get("id");
+  if (!id) return NextResponse.json({ error: "Missing media ID." }, { status: 400 });
+  const rows = await supabaseRest<Array<{ storage_path: string }>>(
+    `cms_media_assets?select=storage_path&id=eq.${encodeURIComponent(id)}&limit=1`,
+    { role: "service", cache: "no-store" },
+  );
+  const media = rows[0];
+  if (!media) return NextResponse.json({ error: "Media not found." }, { status: 404 });
+
+  const referenced = await supabaseRest<boolean>("rpc/media_is_referenced", {
+    role: "service",
+    method: "POST",
+    body: JSON.stringify({ media_id: id }),
+    cache: "no-store",
+  });
+  if (referenced) {
+    return NextResponse.json({ error: "图片仍被内容引用，不能删除。" }, { status: 409 });
+  }
+
+  await deleteStorageObject(media.storage_path);
+  await supabaseRest(`cms_media_assets?id=eq.${id}`, {
+    role: "service",
+    method: "DELETE",
+    headers: { Prefer: "return=minimal" },
+    cache: "no-store",
+  });
+  return NextResponse.json({ ok: true });
+}
+
+async function deleteStorageObject(storagePath: string) {
+  const { url, key } = getSupabaseServiceConfig();
+  const response = await fetch(`${url}/storage/v1/object/cms-media/${storagePath}`, {
+    method: "DELETE",
+    headers: { apikey: key, Authorization: `Bearer ${key}` },
+  });
+  if (!response.ok && response.status !== 404) throw new Error("Storage cleanup failed.");
 }

@@ -1,0 +1,59 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+export default function AdminLoginPage() {
+  const router = useRouter();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setLoading(true);
+    setError("");
+    const form = new FormData(event.currentTarget);
+    const response = await fetch("/api/admin/session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: form.get("username"), password: form.get("password") }),
+    });
+    const result = (await response.json()) as { error?: string };
+    if (!response.ok) {
+      setError(result.error ?? "登录失败，请重试。");
+      setLoading(false);
+      return;
+    }
+    router.replace("/admin");
+    router.refresh();
+  }
+
+  return (
+    <main className="bg-background grid min-h-svh place-items-center px-5 py-12">
+      <form
+        onSubmit={submit}
+        className="border-border w-full max-w-md rounded-2xl border bg-white p-7 shadow-lg"
+      >
+        <p className="text-muted text-xs font-semibold tracking-[0.16em] uppercase">AVIORA CMS</p>
+        <h1 className="text-foreground mt-3 font-serif text-4xl">后台登录</h1>
+        <div className="mt-7 grid gap-4">
+          <label className="grid gap-2 text-sm font-medium">
+            账号
+            <Input name="username" autoComplete="username" required />
+          </label>
+          <label className="grid gap-2 text-sm font-medium">
+            密码
+            <Input name="password" type="password" autoComplete="current-password" required />
+          </label>
+        </div>
+        {error ? <p className="text-brand-red mt-4 text-sm">{error}</p> : null}
+        <Button type="submit" className="mt-6 w-full" disabled={loading}>
+          {loading ? "登录中" : "登录后台"}
+        </Button>
+      </form>
+    </main>
+  );
+}

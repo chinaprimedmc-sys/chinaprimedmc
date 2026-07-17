@@ -24,8 +24,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const localArticle = getArticleBySlug(slug);
-  const article = localArticle ?? cmsBlogToArticle(await getPublishedCmsPost(slug));
+  const cmsPost = await getPublishedCmsPost(slug);
+  const article = (cmsPost ? cmsBlogToArticle(cmsPost) : null) ?? getArticleBySlug(slug);
 
   if (!article) {
     return createMetadata({ title: "Article Not Found", noIndex: true });
@@ -41,8 +41,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const localArticle = getArticleBySlug(slug);
-  const article = localArticle ?? cmsBlogToArticle(await getPublishedCmsPost(slug));
+  const cmsPost = await getPublishedCmsPost(slug);
+  const article = (cmsPost ? cmsBlogToArticle(cmsPost) : null) ?? getArticleBySlug(slug);
 
   if (!article) {
     notFound();

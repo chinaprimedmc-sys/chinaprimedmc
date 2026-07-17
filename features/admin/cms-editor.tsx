@@ -1,6 +1,6 @@
 "use client";
 
-import { ImagePlus, LoaderCircle, Plus, Save, Trash2 } from "lucide-react";
+import { History, ImagePlus, LoaderCircle, Plus, Save, Trash2 } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { RadioField, TextAreaField, TextField } from "@/components/forms";
@@ -15,6 +15,7 @@ type UploadedMedia = MediaAsset & { id: string };
 
 type EditorState = {
   id?: string;
+  updatedAt?: string;
   title: string;
   slug: string;
   subtitle: string;
@@ -105,14 +106,18 @@ export function CmsEditor({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const result = (await response.json()) as { error?: string; record?: { id: string } };
+      const result = (await response.json()) as {
+        error?: string;
+        record?: { id: string; updated_at: string };
+      };
       if (!response.ok || !result.record)
         throw new Error(result.error || "保存失败。请检查字段。 ");
       const id = result.record.id;
-      const stored = fromEditorState(type, { ...state, id });
+      const stored = fromEditorState(type, { ...state, id, updatedAt: result.record.updated_at });
       setItems((current) => [stored, ...current.filter((item) => item.id !== id)]);
       setSelectedId(id);
       update("id", id);
+      update("updatedAt", result.record.updated_at);
       setMessage(state.status === "published" ? "已发布，网站将在 60 秒内更新。" : "草稿已保存。 ");
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "保存失败，请重试。 ");
@@ -205,6 +210,8 @@ export function CmsEditor({
           />
         </Card>
 
+        {state.id ? <RevisionPanel type={type} id={state.id} /> : null}
+
         <MediaSection type={type} state={state} update={update} />
 
         {type === "journey" ? (
@@ -249,6 +256,72 @@ export function CmsEditor({
         </div>
       </div>
     </div>
+  );
+}
+
+function RevisionPanel({ type, id }: { type: EditorType; id: string }) {
+  const [revisions, setRevisions] = useState<
+    Array<{ id: string; revision_number: number; created_at: string }>
+  >([]);
+  const [message, setMessage] = useState("");
+
+  async function load() {
+    const resourceType = type === "journey" ? "journeys" : "blog_posts";
+    const response = await fetch(`/api/admin/cms/revisions?type=${resourceType}&id=${id}`);
+    const result = (await response.json()) as { revisions?: typeof revisions; error?: string };
+    if (!response.ok) {
+      setMessage(result.error ?? "历史版本加载失败。");
+      return;
+    }
+    setRevisions(result.revisions ?? []);
+    setMessage(result.revisions?.length ? "" : "还没有可恢复的历史版本。");
+  }
+
+  async function restore(revisionId: string) {
+    if (!window.confirm("确认恢复此历史版本？当前版本会自动保存为新的修订快照。")) return;
+    const response = await fetch("/api/admin/cms/revisions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ revisionId, type: type === "journey" ? "journeys" : "blog_posts" }),
+    });
+    if (!response.ok) {
+      setMessage("恢复失败，请重试。");
+      return;
+    }
+    window.location.reload();
+  }
+
+  return (
+    <Card className="grid gap-4 p-5 md:p-6">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h2 className="text-xl font-semibold">历史版本</h2>
+          <p className="text-muted mt-1 text-sm">每次覆盖保存前自动保留一份快照。</p>
+        </div>
+        <Button type="button" variant="secondary" size="sm" onClick={load}>
+          <History size={15} /> 查看版本
+        </Button>
+      </div>
+      {message ? <p className="text-muted text-sm">{message}</p> : null}
+      {revisions.length ? (
+        <div className="grid gap-2">
+          {revisions.map((revision) => (
+            <div
+              key={revision.id}
+              className="border-border flex items-center justify-between gap-3 border-t pt-3"
+            >
+              <p className="text-sm">
+                版本 {revision.revision_number} ·{" "}
+                {new Date(revision.created_at).toLocaleString("zh-CN")}
+              </p>
+              <Button type="button" variant="ghost" size="sm" onClick={() => restore(revision.id)}>
+                恢复
+              </Button>
+            </div>
+          ))}
+        </div>
+      ) : null}
+    </Card>
   );
 }
 
@@ -539,6 +612,7 @@ function toEditorState(type: EditorType, item: CmsJourney | CmsBlogPost): Editor
   return {
     ...emptyState,
     id: item.id,
+    updatedAt: item.updated_at,
     title: item.title,
     slug: item.slug,
     subtitle: item.subtitle,
@@ -568,6 +642,7 @@ function toPayload(type: EditorType, state: EditorState) {
   const common = {
     type,
     id: state.id,
+    updatedAt: state.updatedAt,
     title: state.title,
     slug: state.slug,
     subtitle: state.subtitle,

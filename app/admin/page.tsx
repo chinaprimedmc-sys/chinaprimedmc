@@ -1,141 +1,65 @@
-import {
-  AdminLinkCard,
-  AdminPageHeader,
-  AdminPanel,
-  AdminStatCard,
-  ContentTitleCell,
-  StatusBadge,
-} from "@/features/admin/admin-components";
-import {
-  adminArticles,
-  adminTours,
-  dashboardStats,
-  hotDestinations,
-  inquiries,
-  recentEdits,
-} from "@/features/admin/admin-data";
+import Link from "next/link";
 
-export default function AdminDashboardPage() {
+import { getAdminCmsRows, getAdminMedia } from "@/lib/cms/data";
+import type { CmsBlogPost, CmsJourney } from "@/lib/cms/types";
+import { getAdminInquiries } from "@/lib/inquiries/data";
+
+export default async function AdminDashboardPage() {
+  const [inquiries, journeys, posts, media] = await Promise.all([
+    getAdminInquiries(),
+    getAdminCmsRows<CmsJourney>("cms_journeys"),
+    getAdminCmsRows<CmsBlogPost>("cms_blog_posts"),
+    getAdminMedia(),
+  ]);
+  const cards = [
+    {
+      label: "新询盘",
+      value: inquiries.filter((item) => item.status === "new").length,
+      href: "/admin/inquiries",
+    },
+    { label: "行程", value: journeys.length, href: "/admin/tours" },
+    { label: "博客", value: posts.length, href: "/admin/journal" },
+    { label: "媒体", value: media.length, href: "/admin/media" },
+  ];
   return (
-    <>
-      <AdminPageHeader
-        eyebrow="数据概览"
-        title="今天需要关注什么？"
-        description="快速查看询盘、热门内容、待发布事项和网站健康状态，让运营团队先处理最重要的事情。"
-        primaryLabel="新增线路"
-      />
-
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {dashboardStats.map((stat) => (
-          <AdminStatCard
-            key={stat.label}
-            {...stat}
-            tone={stat.tone as "neutral" | "positive" | "warning"}
-          />
+    <div className="grid gap-7">
+      <div>
+        <p className="text-muted text-xs font-semibold tracking-[0.14em] uppercase">实时数据</p>
+        <h1 className="mt-2 text-4xl font-semibold">运营概览</h1>
+        <p className="text-muted mt-2">所有数字均直接来自 Supabase，不包含示例数据。</p>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {cards.map((card) => (
+          <Link
+            key={card.label}
+            href={card.href}
+            className="border-border rounded-xl border bg-white p-5"
+          >
+            <p className="text-muted text-sm">{card.label}</p>
+            <p className="mt-3 text-4xl font-semibold">{card.value}</p>
+          </Link>
         ))}
-      </section>
-
-      <section className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
-        <AdminPanel title="近期询盘" description="优先处理新询盘和已报价客户。">
-          <div className="grid gap-3">
-            {inquiries.slice(0, 3).map((inquiry) => (
-              <div
-                key={inquiry.email}
-                className="border-border bg-background/72 flex flex-wrap items-center justify-between gap-3 rounded-[1.25rem] border p-4"
-              >
-                <div>
-                  <p className="font-semibold">{inquiry.name}</p>
-                  <p className="text-muted mt-1 text-sm">
-                    {inquiry.country} / {inquiry.interest}
-                  </p>
-                </div>
-                <StatusBadge status={inquiry.status} />
+      </div>
+      <section className="border-border rounded-xl border bg-white p-5">
+        <h2 className="text-xl font-semibold">最近询盘</h2>
+        <div className="mt-4 grid gap-3">
+          {inquiries.slice(0, 5).map((item) => (
+            <div
+              key={item.id}
+              className="border-border flex flex-wrap justify-between gap-3 border-t pt-3"
+            >
+              <div>
+                <p className="font-semibold">{item.name}</p>
+                <p className="text-muted text-sm">{item.email || item.whatsapp || item.phone}</p>
               </div>
-            ))}
-          </div>
-        </AdminPanel>
-
-        <AdminPanel title="热门目的地" description="用于判断首页和推荐位内容优先级。">
-          <div className="grid gap-3">
-            {hotDestinations.map((destination) => (
-              <div key={destination.name} className="grid grid-cols-[1fr_auto] items-center gap-3">
-                <div>
-                  <p className="font-semibold">{destination.name}</p>
-                  <p className="text-muted text-sm">{destination.views} 次浏览</p>
-                </div>
-                <StatusBadge status={destination.status} />
-              </div>
-            ))}
-          </div>
-        </AdminPanel>
+              <p className="text-muted text-sm">
+                {new Date(item.created_at).toLocaleString("zh-CN")}
+              </p>
+            </div>
+          ))}
+          {!inquiries.length ? <p className="text-muted text-sm">目前还没有真实询盘。</p> : null}
+        </div>
       </section>
-
-      <section className="grid gap-6 xl:grid-cols-3">
-        <AdminPanel title="热门线路" description="未来可接入真实访问和询盘转化数据。">
-          <div className="grid gap-4">
-            {adminTours.slice(0, 2).map((tour) => (
-              <ContentTitleCell
-                key={tour.slug}
-                title={tour.title}
-                meta={tour.route}
-                image={tour.image}
-              />
-            ))}
-          </div>
-        </AdminPanel>
-
-        <AdminPanel title="热门文章" description="内容团队可优先更新带来询盘的文章。">
-          <div className="grid gap-4">
-            {adminArticles.slice(0, 2).map((article) => (
-              <ContentTitleCell
-                key={article.slug}
-                title={article.title}
-                meta={article.category}
-                image={article.image}
-              />
-            ))}
-          </div>
-        </AdminPanel>
-
-        <AdminPanel title="最近编辑" description="便于团队交接和内容复盘。">
-          <div className="grid gap-3">
-            {recentEdits.map((edit) => (
-              <div
-                key={`${edit.title}-${edit.time}`}
-                className="bg-background/72 rounded-[1rem] p-3"
-              >
-                <p className="text-sm font-semibold">{edit.title}</p>
-                <p className="text-muted mt-1 text-xs">
-                  {edit.type} / {edit.owner} / {edit.time}
-                </p>
-              </div>
-            ))}
-          </div>
-        </AdminPanel>
-      </section>
-
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <AdminLinkCard
-          title="目的地管理"
-          description="维护 Hero、图库、FAQ、SEO 和推荐关系。"
-          href="/admin/destinations"
-        />
-        <AdminLinkCard
-          title="线路管理"
-          description="编辑每日行程、酒店、费用、图库和询盘引导。"
-          href="/admin/tours"
-        />
-        <AdminLinkCard
-          title="询盘管理"
-          description="查看客户来源、状态、备注并跟进报价。"
-          href="/admin/inquiries"
-        />
-        <AdminLinkCard
-          title="SEO 管理"
-          description="集中检查标题、描述、Canonical 和 Schema。"
-          href="/admin/seo"
-        />
-      </section>
-    </>
+    </div>
   );
 }

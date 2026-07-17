@@ -9,6 +9,7 @@ const slugSchema = z
 
 const commonSchema = z.object({
   id: z.uuid().optional(),
+  updatedAt: z.iso.datetime().optional(),
   title: z.string().trim().min(3).max(180),
   slug: slugSchema,
   subtitle: z.string().trim().min(10).max(400),

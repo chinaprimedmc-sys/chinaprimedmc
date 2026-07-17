@@ -22,6 +22,25 @@ export async function POST(request: Request) {
   const now = new Date().toISOString();
   const isJourney = input.type === "journey";
   const table = isJourney ? "cms_journeys" : "cms_blog_posts";
+  const existingRows = input.id
+    ? await supabaseRest<Array<{ published_at: string | null }>>(
+        `${table}?select=published_at&id=eq.${input.id}&limit=1`,
+        { role: "service", cache: "no-store" },
+      )
+    : [];
+  const existing = existingRows[0];
+  if (!input.id) {
+    const duplicate = await supabaseRest<Array<{ id: string }>>(
+      `${table}?select=id&slug=eq.${encodeURIComponent(input.slug)}&limit=1`,
+      { role: "service", cache: "no-store" },
+    );
+    if (duplicate.length) {
+      return NextResponse.json(
+        { error: "这个 slug 已存在，请打开现有内容编辑。" },
+        { status: 409 },
+      );
+    }
+  }
   const record = isJourney
     ? {
         title: input.title,
@@ -44,7 +63,7 @@ export async function POST(request: Request) {
           days: input.days,
           gallery: input.gallery,
         },
-        published_at: input.status === "published" ? now : null,
+        published_at: input.status === "published" ? (existing?.published_at ?? now) : null,
         updated_at: now,
       }
     : {
@@ -64,26 +83,33 @@ export async function POST(request: Request) {
           gallery: input.gallery,
           readingTime: input.readingTime,
         },
-        published_at: input.status === "published" ? now : null,
+        published_at: input.status === "published" ? (existing?.published_at ?? now) : null,
         updated_at: now,
       };
 
-  const conflict = input.id ? `id=eq.${input.id}` : "on_conflict=slug";
+  const conflict = input.id
+    ? `id=eq.${input.id}${input.updatedAt ? `&updated_at=eq.${encodeURIComponent(input.updatedAt)}` : ""}`
+    : "";
   const method = input.id ? "PATCH" : "POST";
-  const result = await supabaseRest<Array<{ id: string; slug: string }>>(
-    `${table}?${conflict}&select=id,slug`,
+  const result = await supabaseRest<Array<{ id: string; slug: string; updated_at: string }>>(
+    `${table}?${conflict}${conflict ? "&" : ""}select=id,slug,updated_at`,
     {
       role: "service",
       method,
       headers: {
-        Prefer: input.id
-          ? "return=representation"
-          : "resolution=merge-duplicates,return=representation",
+        Prefer: "return=representation",
       },
       body: JSON.stringify(record),
       cache: "no-store",
     },
   );
+
+  if (input.id && !result.length) {
+    return NextResponse.json(
+      { error: "此内容已在其他窗口更新。请刷新页面后重新编辑。" },
+      { status: 409 },
+    );
+  }
 
   revalidateTag(isJourney ? "cms-journeys" : "cms-blog-posts", "max");
   revalidatePath(isJourney ? "/tours" : "/journal");

@@ -2,30 +2,13 @@ import "server-only";
 
 import type { InquiryInput } from "@/lib/inquiries/schema";
 
-type SupabaseConfig = {
-  url: string;
-  anonKey: string;
-};
-
-function getSupabaseConfig(): SupabaseConfig {
-  const url = process.env.SUPABASE_URL?.replace(/\/$/, "");
-  const anonKey = process.env.SUPABASE_ANON_KEY;
-
-  if (!url || !anonKey) {
-    throw new Error("Supabase inquiry storage is not configured.");
-  }
-
-  return { url, anonKey };
-}
+import { supabaseRest } from "@/lib/supabase/server";
 
 export async function createInquiry(input: InquiryInput) {
-  const { url, anonKey } = getSupabaseConfig();
-  const response = await fetch(`${url}/rest/v1/inquiries`, {
+  await supabaseRest("inquiries", {
+    role: "service",
     method: "POST",
     headers: {
-      apikey: anonKey,
-      Authorization: `Bearer ${anonKey}`,
-      "Content-Type": "application/json",
       Prefer: "return=minimal",
     },
     body: JSON.stringify({
@@ -49,10 +32,4 @@ export async function createInquiry(input: InquiryInput) {
     }),
     cache: "no-store",
   });
-
-  if (!response.ok) {
-    const details = await response.text();
-    console.error("Supabase inquiry insert failed", response.status, details);
-    throw new Error("Inquiry storage failed.");
-  }
 }

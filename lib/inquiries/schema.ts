@@ -28,6 +28,7 @@ export const inquirySchema = z
       .max(3),
     notes: z.string().trim().max(4000).optional().default(""),
     website: z.string().max(0).optional().default(""),
+    turnstileToken: z.string().max(4000).optional().default(""),
   })
   .superRefine((data, context) => {
     if (!data.email && !data.whatsapp && !data.phone) {

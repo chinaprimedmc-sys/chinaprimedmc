@@ -25,12 +25,14 @@ export const metadata: Metadata = createMetadata({
 
 export default async function ToursPage() {
   const cmsJourneys = await getPublishedCmsJourneys();
-  const localSlugs = new Set(journeyCatalog.map((journey) => journey.slug));
   const cmsCatalogItems = cmsJourneys
-    .filter((journey) => !localSlugs.has(journey.slug))
     .map(cmsJourneyToCatalogItem)
     .filter((journey): journey is NonNullable<typeof journey> => Boolean(journey));
-  const catalog = [...journeyCatalog, ...cmsCatalogItems];
+  const cmsSlugs = new Set(cmsCatalogItems.map((journey) => journey.slug));
+  const catalog = [
+    ...journeyCatalog.filter((journey) => !cmsSlugs.has(journey.slug)),
+    ...cmsCatalogItems,
+  ];
 
   return (
     <PageContainer>

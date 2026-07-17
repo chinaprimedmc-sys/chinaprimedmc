@@ -30,19 +30,10 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   const { slug } = await params;
   const tour = getTourBySlug(slug);
   const framework = getJourneyCatalogItem(slug);
-  const cmsJourney = !tour && !framework ? await getPublishedCmsJourney(slug) : null;
+  const cmsJourney = await getPublishedCmsJourney(slug);
 
   if (!tour && !framework && !cmsJourney) {
     return createMetadata({ title: "Tour Not Found", noIndex: true });
-  }
-
-  if (framework && !tour) {
-    return createMetadata({
-      title: framework.title,
-      description: framework.summary,
-      path: `/tours/${framework.slug}`,
-      image: framework.image.src,
-    });
   }
 
   if (cmsJourney) {
@@ -51,6 +42,15 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       description: cmsJourney.seo_description,
       path: `/tours/${cmsJourney.slug}`,
       image: cmsJourney.hero_image?.url,
+    });
+  }
+
+  if (framework && !tour) {
+    return createMetadata({
+      title: framework.title,
+      description: framework.summary,
+      path: `/tours/${framework.slug}`,
+      image: framework.image.src,
     });
   }
 
@@ -70,26 +70,10 @@ export default async function TourPage({ params }: TourPageProps) {
   const { slug } = await params;
   const tour = getTourBySlug(slug);
   const framework = getJourneyCatalogItem(slug);
-  const cmsJourney = !tour && !framework ? await getPublishedCmsJourney(slug) : null;
+  const cmsJourney = await getPublishedCmsJourney(slug);
 
   if (!tour && !framework && !cmsJourney) {
     notFound();
-  }
-
-  if (framework && !tour) {
-    return (
-      <>
-        <JsonLd
-          id={`${framework.slug}-breadcrumb-schema`}
-          data={breadcrumbSchema([
-            { name: "Home", path: "/" },
-            { name: "Journeys", path: "/tours" },
-            { name: framework.title, path: `/tours/${framework.slug}` },
-          ])}
-        />
-        <TourFrameworkTemplate item={framework} />
-      </>
-    );
   }
 
   if (cmsJourney) {
@@ -104,6 +88,22 @@ export default async function TourPage({ params }: TourPageProps) {
           ])}
         />
         <CmsJourneyTemplate journey={cmsJourney} />
+      </>
+    );
+  }
+
+  if (framework && !tour) {
+    return (
+      <>
+        <JsonLd
+          id={`${framework.slug}-breadcrumb-schema`}
+          data={breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Journeys", path: "/tours" },
+            { name: framework.title, path: `/tours/${framework.slug}` },
+          ])}
+        />
+        <TourFrameworkTemplate item={framework} />
       </>
     );
   }

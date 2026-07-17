@@ -2,7 +2,7 @@
 
 import { PanelLeftClose, PanelLeftOpen, Search } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ type AdminShellProps = {
 
 export function AdminShell({ children }: AdminShellProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -24,6 +25,8 @@ export function AdminShell({ children }: AdminShellProps) {
     if (!normalized) return adminNavigation;
     return adminNavigation.filter((item) => item.label.toLowerCase().includes(normalized));
   }, [query]);
+
+  if (pathname === "/admin/login") return children;
 
   return (
     <div className="bg-background text-foreground min-h-svh">
@@ -85,18 +88,6 @@ export function AdminShell({ children }: AdminShellProps) {
               </>
             );
 
-            if (item.disabled) {
-              return (
-                <span
-                  key={item.href}
-                  className="text-muted/55 flex min-h-11 items-center gap-3 rounded-2xl px-3 text-sm"
-                  aria-disabled="true"
-                >
-                  {content}
-                </span>
-              );
-            }
-
             return (
               <Link
                 key={item.href}
@@ -124,6 +115,17 @@ export function AdminShell({ children }: AdminShellProps) {
           <p className="text-muted mt-2 text-xs leading-5">
             发布前请检查 SEO、图片 Alt、关联线路与页面预览。
           </p>
+          <button
+            type="button"
+            className="text-muted mt-4 text-xs font-semibold underline underline-offset-4"
+            onClick={async () => {
+              await fetch("/api/admin/session", { method: "DELETE" });
+              router.replace("/admin/login");
+              router.refresh();
+            }}
+          >
+            退出后台
+          </button>
         </div>
       </aside>
 
@@ -143,21 +145,18 @@ export function AdminShell({ children }: AdminShellProps) {
             </Button>
           </div>
           <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-            {adminNavigation
-              .filter((item) => !item.disabled)
-              .slice(0, 8)
-              .map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "border-border shrink-0 rounded-full border bg-white px-3 py-2 text-xs font-semibold",
-                    pathname === item.href && "bg-foreground text-background",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            {adminNavigation.slice(0, 8).map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "border-border shrink-0 rounded-full border bg-white px-3 py-2 text-xs font-semibold",
+                  pathname === item.href && "bg-foreground text-background",
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </header>
 
