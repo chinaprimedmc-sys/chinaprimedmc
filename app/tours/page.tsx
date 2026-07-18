@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
 
 import { JourneyEditorialGrid } from "@/components/cards/journey-editorial-grid";
-import { SectionHeader } from "@/components/content";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { destinations } from "@/content/destinations";
 import { homeNavItems, primaryAction } from "@/content/home/homepage";
-import { Section } from "@/design-system/primitives/section";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -63,19 +60,10 @@ export default async function ToursPage() {
       <SiteNavigation
         items={homeNavItems}
         cta={{ label: "Plan My Trip", href: primaryAction.href }}
+        tone="dark"
       />
 
-      <Section spacing="default">
-        <ContentContainer size="xl" className="grid gap-10">
-          <SectionHeader
-            eyebrow="Journeys"
-            title="The starting point is never a package."
-            titleAs="h1"
-            description="Choose a route direction, a travel style, or simply a city you want to understand. We shape the first proposal around who is traveling, how they like to move, and what should be left out."
-          />
-          <JourneyEditorialGrid items={catalog} />
-        </ContentContainer>
-      </Section>
+      <JourneyEditorialGrid items={catalog} />
 
       <SiteFooter
         columns={[

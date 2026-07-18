@@ -22,7 +22,14 @@ export const metadata: Metadata = createMetadata({
   image: heroImage.src,
 });
 
-export default function StartPlanningPage() {
+export default async function StartPlanningPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ journeys?: string }>;
+}) {
+  const params = await searchParams;
+  const savedJourneys = parseSavedJourneys(params.journeys);
+
   return (
     <PageContainer>
       <JsonLd
@@ -82,7 +89,7 @@ export default function StartPlanningPage() {
               </div>
             </Card>
           </div>
-          <StartPlanningForm />
+          <StartPlanningForm savedJourneys={savedJourneys} />
         </ContentContainer>
       </Section>
 
@@ -134,4 +141,19 @@ export default function StartPlanningPage() {
       />
     </PageContainer>
   );
+}
+
+function parseSavedJourneys(value?: string) {
+  if (!value) return [];
+
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed)
+      ? parsed.filter(
+          (journey): journey is string => typeof journey === "string" && Boolean(journey.trim()),
+        )
+      : [];
+  } catch {
+    return [];
+  }
 }

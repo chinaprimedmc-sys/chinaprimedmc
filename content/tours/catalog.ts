@@ -17,10 +17,45 @@ export type JourneyCatalogItem = {
   styleFilters: string[];
   destinationFilters: string[];
   bestForFilters: string[];
+  experienceFilters: JourneyExperienceId[];
+  travelerFilters: JourneyTravelerId[];
+  planningNeedFilters: JourneyPlanningNeedId[];
+  recommendedDaysMin: number;
+  recommendedDaysMax: number;
   destinations: { label: string; href: string }[];
   statusLabel?: string;
   planningNote?: string;
 };
+
+export type JourneyExperienceId =
+  | "pandas"
+  | "great-wall"
+  | "ancient-china"
+  | "food"
+  | "scenery"
+  | "modern-cities"
+  | "local-life"
+  | "photography"
+  | "silk-road";
+
+export type JourneyTravelerId =
+  | "first-time"
+  | "couples"
+  | "families"
+  | "multigenerational"
+  | "older-travelers"
+  | "private-groups"
+  | "travel-advisors";
+
+export type JourneyPlanningNeedId =
+  | "muslim-friendly"
+  | "vegetarian-friendly"
+  | "slower-pacing"
+  | "child-friendly"
+  | "mobility-aware"
+  | "quiet-luxury"
+  | "food-focused"
+  | "photography-led";
 
 const flagship = tours[0];
 const chengdu = tours.find((tour) => tour.slug === "chengdu-pandas-sichuan-table");
@@ -43,10 +78,39 @@ const firstChina: JourneyCatalogItem = {
   href: `/tours/${flagship.slug}`,
   kind: "featured",
   routeLabel: flagship.route,
-  durationLabel: "9-12 days",
+  durationLabel: "9 days / 8 nights",
   styleFilters: ["Quiet Luxury"],
   destinationFilters: ["Beijing", "Xi'an", "Shanghai"],
   bestForFilters: ["First-time visitors", "Families", "Couples", "Luxury travelers"],
+  experienceFilters: [
+    "great-wall",
+    "ancient-china",
+    "food",
+    "modern-cities",
+    "local-life",
+    "photography",
+  ],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "travel-advisors",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "quiet-luxury",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 9,
+  recommendedDaysMax: 9,
   destinations: [
     { label: "Beijing", href: "/destinations/beijing" },
     { label: "Xi'an", href: `/tours/${flagship.slug}#itinerary` },
@@ -68,6 +132,25 @@ const chengduJourney: JourneyCatalogItem = {
   styleFilters: ["Family", "Food", "Slow Travel"],
   destinationFilters: ["Chengdu", "Leshan"],
   bestForFilters: ["Families", "Seniors", "Food lovers"],
+  experienceFilters: ["pandas", "food", "scenery", "local-life", "photography"],
+  travelerFilters: [
+    "first-time",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "travel-advisors",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "food-focused",
+  ],
+  recommendedDaysMin: 5,
+  recommendedDaysMax: 5,
   destinations: [
     { label: "Chengdu", href: "/destinations/chengdu" },
     { label: "Leshan", href: `/tours/${chengdu.slug}#itinerary` },
@@ -90,6 +173,33 @@ const frameworkJourneys: JourneyCatalogItem[] = [
     styleFilters: ["Family"],
     destinationFilters: ["Beijing", "Shanghai", "Chengdu"],
     bestForFilters: ["Families"],
+    experienceFilters: [
+      "pandas",
+      "great-wall",
+      "ancient-china",
+      "food",
+      "modern-cities",
+      "local-life",
+    ],
+    travelerFilters: [
+      "first-time",
+      "families",
+      "multigenerational",
+      "older-travelers",
+      "private-groups",
+      "travel-advisors",
+    ],
+    planningNeedFilters: [
+      "muslim-friendly",
+      "vegetarian-friendly",
+      "slower-pacing",
+      "child-friendly",
+      "mobility-aware",
+      "quiet-luxury",
+      "food-focused",
+    ],
+    recommendedDaysMin: 9,
+    recommendedDaysMax: 12,
     destinations: [
       { label: "Beijing", href: "/destinations/beijing" },
       { label: "Shanghai", href: "/destinations/shanghai" },
@@ -114,6 +224,24 @@ const frameworkJourneys: JourneyCatalogItem[] = [
     styleFilters: ["Quiet Luxury"],
     destinationFilters: ["Beijing", "Shanghai"],
     bestForFilters: ["Couples", "Luxury travelers"],
+    experienceFilters: ["great-wall", "ancient-china", "food", "modern-cities", "local-life"],
+    travelerFilters: [
+      "first-time",
+      "couples",
+      "older-travelers",
+      "private-groups",
+      "travel-advisors",
+    ],
+    planningNeedFilters: [
+      "muslim-friendly",
+      "vegetarian-friendly",
+      "slower-pacing",
+      "mobility-aware",
+      "quiet-luxury",
+      "food-focused",
+    ],
+    recommendedDaysMin: 9,
+    recommendedDaysMax: 12,
     destinations: [
       { label: "Beijing", href: "/destinations/beijing" },
       { label: "Shanghai", href: "/destinations/shanghai" },
@@ -137,6 +265,25 @@ const frameworkJourneys: JourneyCatalogItem[] = [
     styleFilters: ["Slow Travel"],
     destinationFilters: ["Chengdu", "Shanghai"],
     bestForFilters: ["Couples", "Families"],
+    experienceFilters: ["food", "scenery", "modern-cities", "local-life"],
+    travelerFilters: [
+      "couples",
+      "families",
+      "multigenerational",
+      "older-travelers",
+      "private-groups",
+      "travel-advisors",
+    ],
+    planningNeedFilters: [
+      "muslim-friendly",
+      "vegetarian-friendly",
+      "slower-pacing",
+      "mobility-aware",
+      "quiet-luxury",
+      "food-focused",
+    ],
+    recommendedDaysMin: 9,
+    recommendedDaysMax: 12,
     destinations: [
       { label: "Chengdu", href: "/destinations/chengdu" },
       { label: "Shanghai", href: "/destinations/shanghai" },
@@ -160,6 +307,24 @@ const frameworkJourneys: JourneyCatalogItem[] = [
     styleFilters: ["Photography"],
     destinationFilters: ["Beijing", "Shanghai"],
     bestForFilters: ["First-time visitors", "Couples"],
+    experienceFilters: [
+      "great-wall",
+      "ancient-china",
+      "scenery",
+      "modern-cities",
+      "local-life",
+      "photography",
+    ],
+    travelerFilters: ["first-time", "couples", "private-groups", "travel-advisors"],
+    planningNeedFilters: [
+      "vegetarian-friendly",
+      "slower-pacing",
+      "mobility-aware",
+      "quiet-luxury",
+      "photography-led",
+    ],
+    recommendedDaysMin: 9,
+    recommendedDaysMax: 12,
     destinations: [
       { label: "Beijing", href: "/destinations/beijing" },
       { label: "Shanghai", href: "/destinations/shanghai" },

@@ -17,6 +17,7 @@ type SiteNavigationProps = {
   whatsapp?: { label: string; href: string };
   languages?: string[];
   currencies?: string[];
+  tone?: "adaptive" | "dark";
 };
 
 export function SiteNavigation({
@@ -24,6 +25,7 @@ export function SiteNavigation({
   items,
   cta = { label: "Plan My Trip", href: "/contact" },
   whatsapp = { label: "WhatsApp", href: "https://wa.me/447985052302" },
+  tone = "adaptive",
 }: SiteNavigationProps) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -39,7 +41,9 @@ export function SiteNavigation({
       className={cn(
         "fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-[border-color,box-shadow,padding] duration-300 ease-[var(--ease-apple)] md:px-5",
         scrolled
-          ? "border-b border-neutral-950/8 bg-[var(--bg-primary)] pt-0 shadow-[0_10px_30px_rgba(22,21,18,0.08)]"
+          ? tone === "dark"
+            ? "border-b border-white/10 bg-neutral-950/94 pt-0 shadow-[0_10px_30px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+            : "border-b border-neutral-950/8 bg-[var(--bg-primary)] pt-0 shadow-[0_10px_30px_rgba(22,21,18,0.08)]"
           : "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-28 before:bg-gradient-to-b before:from-black/35 before:to-transparent",
       )}
     >
@@ -47,7 +51,9 @@ export function SiteNavigation({
         className={cn(
           "mx-auto flex h-[58px] max-w-7xl items-center justify-between px-3.5 transition duration-300 ease-[var(--ease-apple)] md:h-[62px] md:px-4 lg:px-5",
           scrolled
-            ? "h-[70px] text-neutral-950 [--brand-wordmark-color:var(--text-primary)] md:h-[70px]"
+            ? tone === "dark"
+              ? "h-[70px] text-white [--brand-wordmark-color:#ffffff] md:h-[70px]"
+              : "h-[70px] text-neutral-950 [--brand-wordmark-color:var(--text-primary)] md:h-[70px]"
             : "text-white [--brand-wordmark-color:#ffffff]",
         )}
       >
@@ -61,6 +67,7 @@ export function SiteNavigation({
               key={`${item.label}-${item.href}`}
               item={item}
               scrolled={scrolled}
+              dark={tone === "dark"}
             />
           ))}
         </nav>
@@ -80,10 +87,18 @@ export function SiteNavigation({
   );
 }
 
-function NavigationMenuItem({ item, scrolled }: { item: NavigationItem; scrolled: boolean }) {
+function NavigationMenuItem({
+  item,
+  scrolled,
+  dark,
+}: {
+  item: NavigationItem;
+  scrolled: boolean;
+  dark: boolean;
+}) {
   const triggerClassName = cn(
     "inline-flex min-h-10 items-center rounded-full px-3 py-2 !text-[15px] !font-medium transition focus-visible:outline-none focus-visible:ring-1",
-    scrolled
+    scrolled && !dark
       ? "hover:bg-neutral-950/[0.06] focus-visible:ring-neutral-950/20"
       : "hover:bg-white/14 focus-visible:ring-white/35",
   );

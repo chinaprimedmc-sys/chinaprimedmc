@@ -788,6 +788,40 @@ svg {
   }
 }
 
+@keyframes journey-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.992);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes journey-card-leave-next {
+  to {
+    opacity: 0;
+    transform: translateX(-3rem) rotate(-0.7deg);
+  }
+}
+
+@keyframes journey-card-leave-previous {
+  to {
+    opacity: 0;
+    transform: translateX(3rem) rotate(0.7deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

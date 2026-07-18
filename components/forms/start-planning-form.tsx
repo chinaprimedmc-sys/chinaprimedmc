@@ -59,9 +59,17 @@ const steps = [
   { label: "Contact", helper: "How we reply" },
 ];
 
-export function StartPlanningForm() {
+export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: string[] }) {
+  const savedJourneyNotes = savedJourneys.length
+    ? `I'd like to learn more about these saved journeys:\n${savedJourneys
+        .map((journey, index) => `${index + 1}. ${journey}`)
+        .join("\n")}`
+    : "";
   const [step, setStep] = useState(0);
-  const [state, setState] = useState<PlanningFormState>(initialState);
+  const [state, setState] = useState<PlanningFormState>({
+    ...initialState,
+    notes: savedJourneyNotes,
+  });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
