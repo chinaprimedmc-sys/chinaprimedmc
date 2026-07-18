@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
         pathname: "/storage/v1/object/public/cms-media/**",
       },
     ],
-    deviceSizes: [360, 414, 640, 768, 1024, 1280, 1536, 1920],
+    deviceSizes: [360, 414, 640, 720, 768, 1024, 1280, 1536, 1920],
     imageSizes: [64, 96, 128, 256, 384],
   },
   experimental: {
