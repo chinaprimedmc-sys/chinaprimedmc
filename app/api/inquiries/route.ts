@@ -30,31 +30,45 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  let stage = "request-setup";
+
   try {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
     const contact = parsed.data.email || parsed.data.whatsapp || parsed.data.phone;
-    const [ipAllowed, contactAllowed] = await Promise.all([
-      consumeRateLimit("inquiry-ip", await hashRateLimitKey(ip), 6, 3600),
-      consumeRateLimit("inquiry-contact", await hashRateLimitKey(contact), 3, 86400),
-    ]);
+    stage = "rate-limit-ip";
+    const ipAllowed = await consumeRateLimit("inquiry-ip", await hashRateLimitKey(ip), 6, 3600);
+    stage = "rate-limit-contact";
+    const contactAllowed = await consumeRateLimit(
+      "inquiry-contact",
+      await hashRateLimitKey(contact),
+      3,
+      86400,
+    );
     if (!ipAllowed || !contactAllowed) {
       return NextResponse.json(
         { error: "Too many submissions. Please contact us on WhatsApp if you need help." },
         { status: 429 },
       );
     }
+    stage = "turnstile";
     if (!(await verifyTurnstile(parsed.data.turnstileToken, ip))) {
       return NextResponse.json(
         { error: "Security check failed. Please try again." },
         { status: 400 },
       );
     }
+    stage = "database-write";
     await createInquiry(parsed.data);
+    stage = "notification";
     await notifyInquiry(parsed.data).catch((error) =>
       console.error("Inquiry notification failed", error),
     );
     return NextResponse.json({ ok: true }, { status: 201 });
-  } catch {
+  } catch (error) {
+    console.error("Inquiry submission failed", {
+      stage,
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
     return NextResponse.json(
       { error: "We could not save your inquiry. Please try again or contact us on WhatsApp." },
       { status: 503 },
