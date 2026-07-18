@@ -16,7 +16,7 @@ type ItineraryEngineProps = {
 };
 
 export function ItineraryEngine({ days }: ItineraryEngineProps) {
-  const defaultValue = days.map((day) => `day-${day.day}`);
+  const defaultValue = days.length ? [`day-${days[0].day}`] : [];
   const [activeDays, setActiveDays] = useState(defaultValue);
 
   const activeIndex = useMemo(() => {

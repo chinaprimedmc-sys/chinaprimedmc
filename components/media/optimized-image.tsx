@@ -20,19 +20,23 @@ export function OptimizedImage({
   style,
   showSkeleton = true,
   onLoad,
+  fetchPriority,
+  loading,
+  priority,
   ...props
 }: OptimizedImageProps) {
   const imageRef = useRef<HTMLImageElement>(null);
   const [loadedSrc, setLoadedSrc] = useState<ImageProps["src"] | null>(null);
-  const loaded = loadedSrc === props.src;
+  const optimizedSrc = getOptimizedLocalSrc(props.src);
+  const loaded = loadedSrc === optimizedSrc;
 
   useEffect(() => {
     const image = imageRef.current;
 
     if (image?.complete && image.naturalWidth > 0) {
-      setLoadedSrc(props.src);
+      setLoadedSrc(optimizedSrc);
     }
-  }, [props.src]);
+  }, [optimizedSrc]);
 
   return (
     <div className={cn("relative overflow-hidden bg-[var(--bg-secondary)]", frameClassName)}>
@@ -53,8 +57,10 @@ export function OptimizedImage({
           className,
         )}
         alt={alt}
+        fetchPriority={fetchPriority ?? (priority ? "high" : "auto")}
+        loading={loading ?? (priority ? "eager" : "lazy")}
         onLoad={(event) => {
-          setLoadedSrc(props.src);
+          setLoadedSrc(optimizedSrc);
           onLoad?.(event);
         }}
         style={{
@@ -62,7 +68,15 @@ export function OptimizedImage({
           ...style,
         }}
         {...props}
+        priority={priority}
+        src={optimizedSrc}
       />
     </div>
   );
+}
+
+function getOptimizedLocalSrc(src: ImageProps["src"]): ImageProps["src"] {
+  if (typeof src !== "string" || !src.startsWith("/")) return src;
+  if (!/\.(?:png|jpe?g)$/i.test(src)) return src;
+  return src.replace(/\.(?:png|jpe?g)$/i, ".webp");
 }
