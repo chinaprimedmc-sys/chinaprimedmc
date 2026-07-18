@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 
+import { cn } from "@/lib/utils/cn";
+
 const whatsappHref = "https://wa.me/447985052302";
 const emailHref = "mailto:chinaprimedmc@gmail.com";
 
@@ -47,7 +49,7 @@ export function SocialContactRail() {
 
   return (
     <Popover.Root>
-      <div className={`social-contact-rail${isVisible ? "is-visible" : ""}`}>
+      <div className={cn("social-contact-rail", isVisible && "is-visible")}>
         <Popover.Trigger className="social-contact-rail__trigger" aria-label="Contact us">
           <span className="social-contact-rail__trigger-label">Contact us</span>
         </Popover.Trigger>
