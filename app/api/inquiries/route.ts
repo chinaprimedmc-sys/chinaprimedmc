@@ -67,13 +67,28 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Inquiry submission failed", {
       stage,
-      error: error instanceof Error ? error.message : "Unknown error",
+      error: summarizeInquiryError(error),
     });
     return NextResponse.json(
       { error: "We could not save your inquiry. Please try again or contact us on WhatsApp." },
       { status: 503 },
     );
   }
+}
+
+function summarizeInquiryError(error: unknown) {
+  if (!(error instanceof Error)) return "Unknown error";
+
+  const supabaseStatus = error.message.match(/^Supabase request failed \((\d{3})\)/)?.[1];
+  if (supabaseStatus) return `Supabase request failed (${supabaseStatus})`;
+  if (
+    error.message.startsWith("Supabase ") &&
+    error.message.endsWith("configuration is missing.")
+  ) {
+    return error.message;
+  }
+
+  return error.name;
 }
 
 async function verifyTurnstile(token: string, ip: string) {

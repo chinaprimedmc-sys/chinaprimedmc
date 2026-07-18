@@ -1,5 +1,7 @@
 import "server-only";
 
+import { parseSupabaseResponse } from "@/lib/supabase/response";
+
 type SupabaseRole = "anon" | "service";
 
 function getConfig(role: SupabaseRole) {
@@ -30,13 +32,7 @@ export async function supabaseRest<T>(
     },
   });
 
-  if (!response.ok) {
-    const details = await response.text();
-    throw new Error(`Supabase request failed (${response.status}): ${details}`);
-  }
-
-  if (response.status === 204) return undefined as T;
-  return (await response.json()) as T;
+  return parseSupabaseResponse<T>(response);
 }
 
 export function getSupabaseServiceConfig() {

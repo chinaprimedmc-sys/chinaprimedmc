@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:backend": "node --test tests/backend-security.test.mjs",
+    "test:backend": "node --test tests/backend-security.test.mjs tests/supabase-rest.test.mjs",
     "audit:seo": "node scripts/audit-seo.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
