@@ -7,6 +7,13 @@ const tourImage = (src: string, alt: string, width: number, height: number): Med
   height,
 });
 
+const chengduImage = (src: string, alt: string, width: number, height: number): MediaAsset => ({
+  src: `/tours/chengdu-pandas/${src}`,
+  alt,
+  width,
+  height,
+});
+
 export const firstChinaAsset = {
   beijingForbiddenCityMoat: tourImage(
     "beijing-forbidden-city-moat.webp",
@@ -175,5 +182,113 @@ export const firstChinaAsset = {
     "Two travelers beside the illuminated Shanghai Pudong skyline at night",
     1440,
     1920,
+  ),
+} satisfies Record<string, MediaAsset>;
+
+export const chengduAsset = {
+  heroPanda: chengduImage(
+    "chengdu-hero-panda.png",
+    "A giant panda resting among bamboo near Chengdu",
+    6016,
+    4016,
+  ),
+  heroCity: chengduImage(
+    "chengdu-hero-city.png",
+    "A quiet cultural landscape near Chengdu",
+    4256,
+    2832,
+  ),
+  pandaMorning: chengduImage(
+    "day-panda-01.png",
+    "Giant pandas during a quiet morning visit near Chengdu",
+    3024,
+    4032,
+  ),
+  pandaDetail: chengduImage(
+    "day-panda-02.png",
+    "A close view of a giant panda in Chengdu",
+    3024,
+    4032,
+  ),
+  tea: chengduImage("day-tea.png", "Tea being served in Chengdu's People's Park", 1920, 2560),
+  food: chengduImage("day-food.png", "A local food moment with a Chengdu guide", 3024, 4032),
+  leshan: chengduImage("day-leshan.png", "The Leshan Giant Buddha beside the river", 3024, 4032),
+  rail: chengduImage(
+    "day-rail.png",
+    "China's high-speed rail ready for an onward journey",
+    1536,
+    1024,
+  ),
+  guide: chengduImage(
+    "guide.png",
+    "An English-speaking guide during a Chengdu journey",
+    2316,
+    3088,
+  ),
+  spice: chengduImage(
+    "detail-spice.png",
+    "Sichuan pepper and spices for a Chengdu meal",
+    1661,
+    2560,
+  ),
+  car: chengduImage(
+    "detail-car.png",
+    "A comfortable private vehicle for Chengdu travel",
+    3024,
+    4032,
+  ),
+  carInterior: chengduImage(
+    "detail-car-02.png",
+    "The interior of a comfortable private vehicle for Chengdu travel",
+    3024,
+    4032,
+  ),
+  teaDetail: chengduImage(
+    "detail-tea.png",
+    "A traditional covered tea bowl in Chengdu",
+    3024,
+    4032,
+  ),
+  routeLeshan: chengduImage(
+    "route-leshan.png",
+    "The Leshan Giant Buddha viewed from below",
+    1080,
+    1440,
+  ),
+  cityGalleryOne: chengduImage(
+    "gallery-city-01.png",
+    "An atmospheric evening scene during a Chengdu journey",
+    2815,
+    3755,
+  ),
+  cityGalleryTwo: chengduImage(
+    "gallery-city-02.png",
+    "A local cultural scene in Chengdu",
+    3024,
+    4032,
+  ),
+  cityGalleryThree: chengduImage(
+    "gallery-city-03.png",
+    "A quiet Chengdu scene after dark",
+    3024,
+    4032,
+  ),
+  teaGalleryOne: chengduImage(
+    "gallery-tea-01.png",
+    "A covered tea bowl in Chengdu's People's Park",
+    1920,
+    2560,
+  ),
+  teaGalleryTwo: chengduImage(
+    "gallery-tea-02.png",
+    "Tea house life in Chengdu's People's Park",
+    1920,
+    2560,
+  ),
+  teaGalleryThree: chengduImage(
+    "gallery-tea-03.png",
+    "A relaxed tea house moment in Chengdu",
+    1920,
+    2560,
   ),
 } satisfies Record<string, MediaAsset>;

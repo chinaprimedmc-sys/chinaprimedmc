@@ -1,5 +1,5 @@
 import { destinationAsset } from "@/content/destinations/assets";
-import { firstChinaAsset } from "@/content/tours/assets";
+import { chengduAsset, firstChinaAsset } from "@/content/tours/assets";
 import type { Tour } from "@/types/tour";
 
 const firstChinaEmail =
@@ -505,6 +505,352 @@ export const tours: Tour[] = [
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
         "I am interested in First China, Beautifully Paced. Please suggest the best route, hotel tier, and pacing for my travelers.",
+    },
+  },
+  {
+    slug: "chengdu-pandas-sichuan-table",
+    title: "Chengdu, Pandas & Sichuan Table",
+    subtitle:
+      "A private 5-day Chengdu journey built around pandas, teahouse afternoons, and the layered heat and fragrance of Sichuan cooking.",
+    duration: "5 Days / 4 Nights",
+    route: "Chengdu and Leshan",
+    styles: ["Family", "Food", "Culture", "Senior-friendly"],
+    hero: {
+      eyebrow: "Private Chengdu journey",
+      image: chengduAsset.heroPanda,
+      primary: { label: "Explore Itinerary", href: "#itinerary" },
+      secondary: { label: "Customize My Journey", href: "#inquiry" },
+    },
+    seo: {
+      title: "5-Day Private Chengdu Panda and Sichuan Food Tour",
+      description:
+        "A private 5-day Chengdu itinerary with an early panda visit, teahouse culture, Sichuan food, private car travel, and a flexible Leshan option.",
+      keywords: [
+        "private Chengdu panda tour",
+        "5 day Chengdu itinerary",
+        "Sichuan food tour",
+        "Chengdu family tour",
+        "private China tour Chengdu",
+      ],
+    },
+    overview: {
+      pitch:
+        "A softer western-China chapter: pandas in the morning, tea and neighbourhood life in the afternoon, with the route adjusted around children, older travellers, and appetite.",
+      facts: [
+        { label: "Duration", value: "5 days / 4 nights", helper: "Four nights based in Chengdu." },
+        {
+          label: "Destinations",
+          value: "Chengdu + Leshan",
+          helper: "Leshan is optional, not compulsory.",
+        },
+        {
+          label: "Travel Style",
+          value: "Private, flexible",
+          helper: "Private car and personally vetted guide.",
+        },
+        {
+          label: "Pacing",
+          value: "Easy to moderate",
+          helper: "The panda visit anchors the day; afternoons stay breathable.",
+        },
+        {
+          label: "Suitable For",
+          value: "Families, seniors, food lovers",
+          helper: "Activities and spice levels are adjusted around your group.",
+        },
+        {
+          label: "Price Guide",
+          value: "By comfort tier",
+          helper: "Confirmed after dates, rooms, and traveler needs are known.",
+        },
+      ],
+    },
+    highlights: [
+      {
+        title: "Pandas before the crowds",
+        description:
+          "Enter early, stay as long as the group enjoys it, then return by private car for tea and lunch rather than stacking another sightseeing block.",
+        category: "Family",
+        image: chengduAsset.pandaDetail,
+      },
+      {
+        title: "Sichuan, at your level of heat",
+        description:
+          "A personally vetted guide can introduce markets, tea, and local dishes around allergies, children, and your comfort with spice.",
+        category: "Food",
+        image: chengduAsset.food,
+      },
+      {
+        title: "Chengdu's softer social rhythm",
+        description:
+          "Tea, parks, and neighbourhood life give the route a gentler centre before you decide whether Leshan belongs in the final day.",
+        category: "Culture",
+        image: chengduAsset.tea,
+      },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive into Chengdu's easy pace",
+        destination: "Chengdu",
+        summary:
+          "Your private driver meets you at the airport or station and settles you into the city without adding a sightseeing obligation.",
+        image: chengduAsset.heroCity,
+        hotel: "Chengdu stay: selected comfort tier",
+        meals: ["As arranged in the final proposal"],
+        transport: "Private airport or station transfer",
+        activities: [
+          {
+            title: "A soft first evening",
+            description:
+              "Take a gentle walk through a neighbourhood such as Kuixinglou, or simply rest before your first full day.",
+          },
+        ],
+        guideNote: "Arrival timing and the first evening are shaped around your flight and energy.",
+        coordinates: { latitude: 30.5728, longitude: 104.0668 },
+      },
+      {
+        day: 2,
+        title: "Pandas before the day begins",
+        destination: "Chengdu",
+        summary:
+          "Visit the Chengdu Research Base early, when the pandas are most active and the paths are quieter, then return to the city for tea.",
+        image: chengduAsset.pandaMorning,
+        hotel: "Chengdu stay: selected comfort tier",
+        meals: ["Breakfast; other meals as arranged"],
+        transport: "Private vehicle and guide",
+        activities: [
+          {
+            time: "Morning",
+            title: "Chengdu Research Base",
+            description:
+              "Your guide keeps the route shaded and manageable, with time to pause rather than chase every enclosure.",
+          },
+          {
+            time: "Afternoon",
+            title: "People's Park tea",
+            description:
+              "A proper teahouse pause gives children room to move and grandparents time to watch the city.",
+          },
+        ],
+        guideNote:
+          "The panda base is the day's main experience; the afternoon remains intentionally light.",
+        coordinates: { latitude: 30.7337, longitude: 104.1436 },
+      },
+      {
+        day: 3,
+        title: "A city understood through taste",
+        destination: "Chengdu",
+        summary:
+          "Move between Wuhou Shrine, old lanes, and a food experience that can be fragrant and mild or properly fiery.",
+        image: chengduAsset.spice,
+        hotel: "Chengdu stay: selected comfort tier",
+        meals: ["Breakfast; Sichuan meal or cooking experience as arranged"],
+        transport: "Private vehicle and guide",
+        activities: [
+          {
+            title: "History and neighbourhood texture",
+            description:
+              "Visit Wuhou Shrine or nearby lanes with a guide who explains the city without turning the day into a lecture.",
+          },
+          {
+            title: "Market or cooking",
+            description:
+              "Choose a food walk or small cooking lesson around your group's appetite, allergies, and confidence with spice.",
+          },
+        ],
+        guideNote: "A slower afternoon, extra tea, or a rest window can replace any optional stop.",
+        coordinates: { latitude: 30.6499, longitude: 104.0557 },
+      },
+      {
+        day: 4,
+        title: "Leshan, or more Chengdu",
+        destination: "Leshan / Chengdu",
+        summary:
+          "Those who want the scale of the Leshan Giant Buddha can make the private journey; others can stay in Chengdu for a market, gallery, or long lunch.",
+        image: chengduAsset.leshan,
+        hotel: "Chengdu stay: selected comfort tier",
+        meals: ["Breakfast; lunch as arranged"],
+        transport: "Private vehicle, with a flexible return",
+        activities: [
+          {
+            title: "Leshan option",
+            description:
+              "Choose an accessible viewing route and return when the river cliffs have said enough.",
+          },
+          {
+            title: "Chengdu alternative",
+            description: "Keep the day local with tea, a market, or an unhurried meal.",
+          },
+        ],
+        guideNote: "Leshan is optional and never treated as a test of endurance.",
+        coordinates: { latitude: 29.5483, longitude: 103.7677 },
+      },
+      {
+        day: 5,
+        title: "A final morning, then onward",
+        destination: "Chengdu",
+        summary:
+          "Have one last bowl of noodles, a quiet park walk, or a lie-in before your driver takes you to the station or airport.",
+        image: chengduAsset.rail,
+        meals: ["Breakfast"],
+        transport: "Private departure transfer",
+        activities: [
+          {
+            title: "A final choice",
+            description:
+              "Use the remaining time for tea, breakfast, or a gentle local walk before departure.",
+          },
+          {
+            title: "Onward support",
+            description:
+              "We remain reachable as you continue to Xi'an, Chongqing, or your next China chapter.",
+          },
+        ],
+        guideNote:
+          "Departure timing follows your confirmed connection, with a practical margin for the group.",
+        coordinates: { latitude: 30.5728, longitude: 104.0668 },
+      },
+    ],
+    accommodations: [
+      {
+        name: "Private travel comfort | selected around your group",
+        destination: "Chengdu",
+        description:
+          "The final hotel and vehicle plan is chosen around room configuration, quiet rest, easy access, and the mobility needs of your family.",
+        roomStyle: "Hotel and room configuration confirmed after inquiry",
+        highlights: ["Private transfers", "Quiet rest", "Easy access"],
+        image: chengduAsset.carInterior,
+      },
+    ],
+    included: [
+      "Private itinerary planning around your dates and travelers",
+      "Private car and driver on route days where included in the final proposal",
+      "English-speaking, personally vetted guide support",
+      "Sightseeing and reservation coordination agreed in the final proposal",
+      "Operational WhatsApp support while traveling",
+    ],
+    excluded: [
+      "International flights",
+      "China visa fees or documentation costs when applicable",
+      "Hotel, guide, transport, and meal upgrades outside the selected proposal",
+      "Personal expenses and travel insurance",
+    ],
+    optionalExperiences: [
+      {
+        title: "A gentler walking rhythm",
+        description:
+          "Adjust panda-base routes, rest windows, vehicle support, and daily starts around children or older travelers.",
+        badges: ["Senior-aware", "Family"],
+        image: chengduAsset.car,
+      },
+      {
+        title: "Food and tea texture",
+        description:
+          "Build in a market, tea house, or cooking moment around appetite and spice tolerance.",
+        badges: ["Food", "Local life"],
+        image: chengduAsset.teaDetail,
+      },
+      {
+        title: "A human point of contact",
+        description:
+          "Your personally vetted guide remains part of the experience, with direct support when the plan needs to change.",
+        badges: ["Flexible", "Private"],
+        image: chengduAsset.guide,
+      },
+    ],
+    transportation: {
+      title: "Private transport keeps the route light.",
+      description:
+        "A private car and driver handle airport, city, panda-base, and optional Leshan transfers, with the day able to slow down when the group needs it.",
+      items: [
+        {
+          label: "Airport",
+          value: "Private arrival and departure support",
+          helper: "Included as defined in the final proposal.",
+        },
+        {
+          label: "City transfer",
+          value: "Private car and driver",
+          helper: "No forced group joins or coach timetable.",
+        },
+        {
+          label: "Onward",
+          value: "Rail or flight support",
+          helper: "Station and luggage flow can be arranged.",
+        },
+      ],
+    },
+    routeMap: {
+      title: "A compact Chengdu chapter.",
+      description:
+        "Four nights in Chengdu create room for pandas, food, tea, and a considered Leshan option without overfilling every day.",
+      stops: [
+        {
+          name: "Chengdu",
+          days: "Days 1-5",
+          description: "Pandas, tea houses, Wuhou Shrine, Sichuan food, and flexible city time.",
+          coordinates: { latitude: 30.5728, longitude: 104.0668 },
+        },
+        {
+          name: "Leshan",
+          days: "Optional Day 4",
+          description:
+            "The Giant Buddha, reached by private car when the group wants the wider day.",
+          coordinates: { latitude: 29.5483, longitude: 103.7677 },
+        },
+      ],
+    },
+    gallery: [
+      chengduAsset.routeLeshan,
+      chengduAsset.cityGalleryOne,
+      chengduAsset.cityGalleryTwo,
+      chengduAsset.cityGalleryThree,
+      chengduAsset.teaGalleryOne,
+      chengduAsset.teaGalleryTwo,
+      chengduAsset.teaGalleryThree,
+    ],
+    faqs: [
+      {
+        question: "Is this a fixed package?",
+        answer:
+          "No. This is a five-day route idea. Hotel tier, starts, meals, walking load, and the Leshan option are confirmed around your travelers.",
+      },
+      {
+        question: "Can we skip Leshan?",
+        answer:
+          "Yes. Leshan is optional. A slower Chengdu day with tea, food, markets, or rest is a complete alternative.",
+      },
+      {
+        question: "Is the route suitable for older travelers?",
+        answer:
+          "Often yes, when the panda-base walking route and daily starts are reviewed honestly in advance. Private transport makes shorter days possible.",
+      },
+      {
+        question: "Can Sichuan food be mild?",
+        answer:
+          "Yes. We plan around allergies, children, and spice tolerance, from fragrant and mild to properly fiery.",
+      },
+    ],
+    related: {
+      tours: [],
+      destinations: [
+        {
+          name: "Chengdu",
+          description: "Pandas, tea houses, Sichuan food, and a slower sense of daily life.",
+          image: destinationAsset.chengduPanda,
+          href: "/destinations/chengdu",
+        },
+      ],
+    },
+    inquiry: {
+      emailHref:
+        "mailto:chinaprimedmc@gmail.com?subject=Customize%20Chengdu%2C%20Pandas%20%26%20Sichuan%20Table",
+      whatsappHref:
+        "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20to%20customize%20the%20Chengdu%20panda%20and%20Sichuan%20journey.",
+      scheduleCallHref: "tel:+447985052302",
+      defaultMessage:
+        "I am interested in Chengdu, Pandas & Sichuan Table. Please suggest the best pacing for my travelers.",
     },
   },
 ];

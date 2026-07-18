@@ -48,7 +48,8 @@ export function OptimizedImage({
       <Image
         ref={imageRef}
         className={cn(
-          "relative z-10 object-cover opacity-100 transition-opacity duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] motion-reduce:transition-none",
+          "relative z-10 opacity-100 transition-opacity duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] motion-reduce:transition-none",
+          "object-cover",
           className,
         )}
         alt={alt}

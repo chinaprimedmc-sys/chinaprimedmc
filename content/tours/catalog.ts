@@ -23,9 +23,14 @@ export type JourneyCatalogItem = {
 };
 
 const flagship = tours[0];
+const chengdu = tours.find((tour) => tour.slug === "chengdu-pandas-sichuan-table");
 
 if (!flagship) {
   throw new Error("The flagship journey is required for the journeys catalog.");
+}
+
+if (!chengdu) {
+  throw new Error("The Chengdu journey is required for the journeys catalog.");
 }
 
 const firstChina: JourneyCatalogItem = {
@@ -46,6 +51,26 @@ const firstChina: JourneyCatalogItem = {
     { label: "Beijing", href: "/destinations/beijing" },
     { label: "Xi'an", href: `/tours/${flagship.slug}#itinerary` },
     { label: "Shanghai", href: "/destinations/shanghai" },
+  ],
+};
+
+const chengduJourney: JourneyCatalogItem = {
+  slug: chengdu.slug,
+  title: chengdu.title,
+  eyebrow: "Private journey",
+  summary: chengdu.subtitle,
+  hook: "Pandas, tea, and Sichuan food with enough breathing room for families and older travelers.",
+  image: chengdu.hero.image,
+  href: `/tours/${chengdu.slug}`,
+  kind: "featured",
+  routeLabel: chengdu.route,
+  durationLabel: "5 days / 4 nights",
+  styleFilters: ["Family", "Food", "Slow Travel"],
+  destinationFilters: ["Chengdu", "Leshan"],
+  bestForFilters: ["Families", "Seniors", "Food lovers"],
+  destinations: [
+    { label: "Chengdu", href: "/destinations/chengdu" },
+    { label: "Leshan", href: `/tours/${chengdu.slug}#itinerary` },
   ],
 };
 
@@ -145,7 +170,11 @@ const frameworkJourneys: JourneyCatalogItem[] = [
   },
 ];
 
-export const journeyCatalog: JourneyCatalogItem[] = [firstChina, ...frameworkJourneys];
+export const journeyCatalog: JourneyCatalogItem[] = [
+  firstChina,
+  chengduJourney,
+  ...frameworkJourneys,
+];
 
 export function getJourneyCatalogItem(slug: string) {
   return journeyCatalog.find((item) => item.slug === slug);

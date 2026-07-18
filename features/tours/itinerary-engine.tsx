@@ -16,13 +16,13 @@ type ItineraryEngineProps = {
 };
 
 export function ItineraryEngine({ days }: ItineraryEngineProps) {
-  const defaultValue = "day-1";
-  const [activeDay, setActiveDay] = useState(defaultValue);
+  const defaultValue = days.map((day) => `day-${day.day}`);
+  const [activeDays, setActiveDays] = useState(defaultValue);
 
   const activeIndex = useMemo(() => {
-    const index = days.findIndex((day) => `day-${day.day}` === activeDay);
+    const index = days.findIndex((day) => `day-${day.day}` === activeDays[0]);
     return index >= 0 ? index : 0;
-  }, [activeDay, days]);
+  }, [activeDays, days]);
 
   return (
     <div className="grid max-w-full min-w-0 gap-5 lg:grid-cols-[15rem_minmax(0,1fr)] lg:items-start">
@@ -32,10 +32,16 @@ export function ItineraryEngine({ days }: ItineraryEngineProps) {
             <button
               key={day.day}
               type="button"
-              onClick={() => setActiveDay(`day-${day.day}`)}
+              onClick={() =>
+                setActiveDays((current) =>
+                  current.includes(`day-${day.day}`)
+                    ? current.filter((value) => value !== `day-${day.day}`)
+                    : [...current, `day-${day.day}`],
+                )
+              }
               className={cn(
                 "min-w-[7.25rem] rounded-[1.15rem] px-3 py-3 text-left transition duration-300 ease-[var(--ease-apple)] lg:min-w-0",
-                index === activeIndex
+                activeDays.includes(`day-${day.day}`)
                   ? "bg-foreground text-background shadow-sm"
                   : "hover:bg-foreground/6 text-foreground",
               )}
@@ -53,10 +59,9 @@ export function ItineraryEngine({ days }: ItineraryEngineProps) {
       </aside>
 
       <Accordion.Root
-        type="single"
-        collapsible
-        value={activeDay}
-        onValueChange={(value) => value && setActiveDay(value)}
+        type="multiple"
+        value={activeDays}
+        onValueChange={setActiveDays}
         className="grid min-w-0 gap-4"
       >
         {days.map((day) => (

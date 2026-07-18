@@ -18,6 +18,7 @@ const staticPublicSlugs: Record<string, Set<string>> = {
   styles: new Set(["family", "luxury", "slow-travel", "photography"]),
   tours: new Set([
     "first-china-beautifully-paced",
+    "chengdu-pandas-sichuan-table",
     "family-china",
     "quiet-luxury-china",
     "slow-travel-china",
