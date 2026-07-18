@@ -112,7 +112,7 @@ export function HeroLargeImage({
               fill
               loading="eager"
               priority={image.priority ?? true}
-              sizes="(min-width: 768px) 58vw, 100vw"
+              sizes="(min-width: 768px) 58vw, calc(100vw - 1.5rem)"
               objectPosition={image.objectPosition}
               frameClassName="h-full w-full bg-transparent"
               className="h-full w-full object-contain object-bottom md:object-right-bottom"
