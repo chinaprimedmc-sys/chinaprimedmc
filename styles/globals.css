@@ -110,24 +110,27 @@ a {
 }
 
 .social-contact-rail {
+  align-items: center;
   bottom: calc(var(--mobile-sticky-cta-height) + env(safe-area-inset-bottom) + 1.25rem);
-  left: 50%;
+  display: flex;
+  justify-content: center;
+  left: 0;
   position: fixed;
-  right: auto;
-  transform: translate(-50%, 1rem);
+  right: 0;
+  transform: translateY(1rem);
   transition:
     opacity var(--motion-duration-micro) var(--motion-ease-out),
     transform var(--motion-duration-micro) var(--motion-ease-out),
     visibility var(--motion-duration-micro) var(--motion-ease-out);
   visibility: hidden;
   opacity: 0;
-  width: max-content;
+  width: 100%;
   z-index: 40;
 }
 
 .social-contact-rail.is-visible {
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: translateY(0);
   visibility: visible;
 }
 

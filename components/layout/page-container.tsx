@@ -1,6 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-import { SocialContactRail } from "@/components/cta/social-contact-rail";
 import { cn } from "@/lib/utils/cn";
 
 type PageContainerProps = {
@@ -27,7 +26,6 @@ export function PageContainer({
       {...props}
     >
       {children}
-      <SocialContactRail />
     </main>
   );
 }
