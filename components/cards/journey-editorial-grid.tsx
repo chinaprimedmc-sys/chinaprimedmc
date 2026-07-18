@@ -142,7 +142,7 @@ function CatalogFilters({
           <button
             type="button"
             onClick={onClear}
-            className="text-muted decoration-border min-h-10 shrink-0 text-xs font-medium tracking-[0.12em] uppercase underline underline-offset-4"
+            className="shrink-0 rounded-full border border-white/80 bg-white/56 px-4 py-2.5 text-xs font-semibold tracking-[0.08em] text-[var(--text-primary)] shadow-[var(--button-glass-shadow-subtle)] backdrop-blur-xl transition hover:bg-white/86 hover:shadow-[var(--button-glass-shadow)]"
           >
             Clear filters
           </button>
@@ -195,8 +195,8 @@ function FilterGroup({
               onClick={() => onChange(group.key, index === 0 ? null : value)}
               className={
                 active
-                  ? "min-h-10 rounded border border-[var(--accent)] bg-[var(--accent)] px-3 text-xs font-medium tracking-[0.04em] text-white"
-                  : "border-border text-muted hover:border-foreground/40 hover:text-foreground min-h-10 rounded border bg-transparent px-3 text-xs font-medium tracking-[0.04em] transition-colors"
+                  ? "min-h-10 rounded-full border border-white bg-white/92 px-4 text-xs font-semibold tracking-[0.04em] text-[var(--text-primary)] shadow-[var(--button-glass-shadow)] backdrop-blur-xl"
+                  : "min-h-10 rounded-full border border-white/72 bg-white/38 px-4 text-xs font-medium tracking-[0.04em] text-[var(--text-secondary)] shadow-[var(--button-glass-shadow-subtle)] backdrop-blur-xl transition hover:border-white hover:bg-white/74 hover:text-[var(--text-primary)]"
               }
             >
               {value}

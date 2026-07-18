@@ -112,7 +112,7 @@ export function StartPlanningForm() {
           </CtaButton>
           <button
             type="button"
-            className="text-muted hover:text-foreground justify-self-start text-sm font-semibold"
+            className="rounded-full border border-white/75 bg-white/52 px-4 py-2.5 text-sm font-semibold text-[var(--text-primary)] shadow-[var(--button-glass-shadow-subtle)] backdrop-blur-xl transition hover:border-white hover:bg-white/82 hover:shadow-[var(--button-glass-shadow)]"
             onClick={() => {
               setSubmitted(false);
               setStep(0);

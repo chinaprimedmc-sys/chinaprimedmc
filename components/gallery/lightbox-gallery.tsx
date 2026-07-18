@@ -5,6 +5,8 @@ import { X } from "lucide-react";
 import { useState } from "react";
 
 import { OptimizedImage } from "@/components/media/optimized-image";
+import { iconButtonStyles } from "@/components/ui/button-styles";
+import { cn } from "@/lib/utils/cn";
 import type { MediaAsset } from "@/types/component-library";
 
 export function LightboxGallery({ images }: { images: MediaAsset[] }) {
@@ -38,7 +40,7 @@ export function LightboxGallery({ images }: { images: MediaAsset[] }) {
           <Dialog.Content className="fixed inset-4 z-[91] grid place-items-center">
             <Dialog.Title className="sr-only">Image preview</Dialog.Title>
             <Dialog.Close
-              className="absolute top-0 right-0 z-10 grid size-11 place-items-center rounded-full bg-white/85"
+              className={cn(iconButtonStyles, "absolute top-0 right-0 z-10")}
               aria-label="Close image preview"
             >
               <X size={20} aria-hidden="true" />

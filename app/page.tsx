@@ -75,18 +75,18 @@ export default function HomePage() {
       <Section id="journeys" spacing="spacious" className="bg-[var(--bg-secondary)]">
         <ContentContainer
           size="xl"
-          className="home-section-safe grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16"
+          className="home-section-safe grid items-center gap-10 max-md:text-center lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:text-left"
         >
-          <div className="max-w-xl">
+          <div className="mx-auto max-w-xl lg:mx-0">
             <Badge>Featured journey</Badge>
-            <h2 className="mt-6 font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] text-balance md:text-7xl">
+            <h2 className="mt-6 font-serif text-[clamp(2.65rem,11vw,4rem)] leading-[0.98] font-medium tracking-[-0.02em] text-balance md:text-7xl">
               {featuredJourney.title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-[var(--text-secondary)]">
+            <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-[var(--text-secondary)] md:text-lg md:leading-8 lg:mx-0">
               Beijing, Xi&apos;an, and Shanghai in nine private days, with room for the icons and
               enough space to actually enjoy them.
             </p>
-            <dl className="mt-8 grid grid-cols-2 gap-5 border-y border-[var(--border)] py-6 text-sm">
+            <dl className="mt-8 grid grid-cols-2 gap-5 border-y border-[var(--border)] py-6 text-center text-sm lg:text-left">
               {featuredJourney.meta.map((item) => (
                 <div key={item.label}>
                   <dt className="text-xs tracking-[0.12em] text-[var(--text-secondary)] uppercase">
@@ -96,18 +96,21 @@ export default function HomePage() {
                 </div>
               ))}
             </dl>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col items-center gap-4 lg:flex-row lg:items-center lg:justify-start lg:gap-3">
               <CtaButton href="/tours/first-china-beautifully-paced" variant="primary" size="sm">
                 Explore the journey
               </CtaButton>
-              <CtaButton href="/tours" variant="outline" size="sm">
-                Browse all journeys
-              </CtaButton>
+              <Link
+                href="/tours"
+                className="text-sm font-medium text-[var(--text-secondary)] underline decoration-[var(--border)] underline-offset-4 transition-colors hover:text-[var(--text-primary)]"
+              >
+                Browse all journeys <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
           <Link
             href="/tours/first-china-beautifully-paced"
-            className="group relative min-h-[31rem] overflow-hidden rounded-[1.5rem] md:min-h-[42rem]"
+            className="group relative mx-auto aspect-[4/5] w-full max-w-[32rem] overflow-hidden rounded-[1.5rem] md:mx-0 md:aspect-auto md:min-h-[42rem]"
           >
             <OptimizedImage
               src={featuredJourney.image.src}

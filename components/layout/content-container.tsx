@@ -23,14 +23,7 @@ export function ContentContainer({
   ...props
 }: ContentContainerProps) {
   return (
-    <div
-      className={cn(
-        "mx-auto w-full px-5 max-md:pr-[4.25rem] sm:px-6 lg:px-8",
-        sizes[size],
-        className,
-      )}
-      {...props}
-    >
+    <div className={cn("mx-auto w-full px-5 sm:px-6 lg:px-8", sizes[size], className)} {...props}>
       {children}
     </div>
   );

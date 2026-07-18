@@ -84,7 +84,7 @@ export function HeroLargeImage({
                       href={primary.href}
                       variant="lightFrosted"
                       size="sm"
-                      className="min-h-12 rounded-2xl px-6 py-3.5 sm:px-8"
+                      className="min-h-12 px-6 py-3.5 sm:px-8"
                     >
                       {primary.label}
                     </CtaButton>
@@ -94,7 +94,7 @@ export function HeroLargeImage({
                       href={secondary.href}
                       variant="whatsappFrosted"
                       size="sm"
-                      className="min-h-12 rounded-2xl px-6 py-3.5 sm:px-8"
+                      className="min-h-12 px-6 py-3.5 sm:px-8"
                     >
                       {secondary.label}
                     </CtaButton>

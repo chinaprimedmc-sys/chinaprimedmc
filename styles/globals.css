@@ -29,6 +29,11 @@
   --font-cormorant: Georgia, Cambria, "Times New Roman", Times, serif;
   --radius-card: 1.5rem;
   --shadow-glass: 0 18px 54px var(--shadow), inset 0 1px 0 rgba(250, 250, 247, 0.68);
+  --button-glass-shadow: 0 12px 32px rgba(22, 21, 18, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  --button-glass-shadow-subtle:
+    0 8px 24px rgba(22, 21, 18, 0.065), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --button-glass-shadow-hover:
+    0 16px 42px rgba(22, 21, 18, 0.14), inset 0 1px 0 rgba(255, 255, 255, 1);
   --ease-apple: cubic-bezier(0.2, 0.8, 0.2, 1);
   --motion-duration-micro: 200ms;
   --motion-duration-enter: 500ms;
@@ -134,12 +139,6 @@ a {
   visibility: visible;
 }
 
-@media (min-width: 1024px) and (max-width: 1535px) {
-  .home-section-safe {
-    padding-right: 5.75rem;
-  }
-}
-
 .social-contact-rail__trigger {
   align-items: center;
   backdrop-filter: blur(12px);
@@ -188,7 +187,7 @@ a {
   -webkit-backdrop-filter: blur(18px);
   background: rgba(250, 250, 247, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   box-shadow:
     0 20px 54px rgba(22, 21, 18, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -226,7 +225,7 @@ a {
 
 .social-contact-rail__option {
   align-items: center;
-  border-radius: 0.7rem;
+  border-radius: 1rem;
   display: flex;
   gap: 0.7rem;
   min-height: 3.5rem;
@@ -244,7 +243,7 @@ a {
 .social-contact-rail__option-mark {
   align-items: center;
   background: rgba(22, 21, 18, 0.06);
-  border-radius: 0.6rem;
+  border-radius: 9999px;
   display: inline-flex;
   height: 2.25rem;
   justify-content: center;
@@ -293,14 +292,15 @@ a {
 }
 
 .social-contact-rail__close {
-  background: transparent;
-  border: 0;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 9999px;
   color: var(--text-secondary);
   cursor: pointer;
   display: block;
   font-size: 0.65rem;
-  margin: 0.55rem 0.3rem 0.1rem auto;
-  padding: 0.15rem;
+  margin: 0.7rem 0.1rem 0.1rem auto;
+  padding: 0.38rem 0.75rem;
   text-transform: uppercase;
 }
 
@@ -574,7 +574,7 @@ a {
   .home-hero-split__media {
     aspect-ratio: 1820 / 2428;
     border-radius: 1.5rem 1.5rem 0 0;
-    margin-inline: 0.75rem;
+    margin-inline: auto;
     min-height: 0;
     overflow: hidden;
     width: calc(100% - 1.5rem);

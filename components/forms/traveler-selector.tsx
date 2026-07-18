@@ -2,6 +2,8 @@
 
 import { Minus, Plus } from "lucide-react";
 
+import { iconButtonStyles } from "@/components/ui/button-styles";
+
 type TravelerSelectorProps = {
   label: string;
   value: number;
@@ -23,7 +25,7 @@ export function TravelerSelector({
       <div className="flex items-center gap-3">
         <button
           type="button"
-          className="border-border grid size-9 place-items-center rounded-full border disabled:opacity-40"
+          className={iconButtonStyles}
           disabled={value <= min}
           onClick={() => onChange(Math.max(min, value - 1))}
           aria-label={`Decrease ${label}`}
@@ -33,7 +35,7 @@ export function TravelerSelector({
         <span className="w-6 text-center text-sm font-semibold">{value}</span>
         <button
           type="button"
-          className="border-border grid size-9 place-items-center rounded-full border disabled:opacity-40"
+          className={iconButtonStyles}
           disabled={value >= max}
           onClick={() => onChange(Math.min(max, value + 1))}
           aria-label={`Increase ${label}`}

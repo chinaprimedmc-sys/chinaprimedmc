@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState, type SVGProps } from "react";
 
 import { CtaButton } from "@/components/cta";
+import { iconButtonStyles } from "@/components/ui/button-styles";
 import { cn } from "@/lib/utils/cn";
 import type { NavigationItem } from "@/types/component-library";
 
@@ -65,26 +66,14 @@ export function SiteNavigation({
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
-          <WhatsAppLink
-            href={whatsapp.href}
-            label={whatsapp.label}
-            compact={false}
-            scrolled={scrolled}
-          />
+          <WhatsAppLink href={whatsapp.href} label={whatsapp.label} compact={false} />
           <CtaButton href={cta.href} size="sm" className="h-10 min-h-10 px-5 text-sm font-medium">
             {cta.label}
           </CtaButton>
         </div>
 
         <div className="flex items-center gap-1.5 lg:hidden">
-          <WhatsAppLink href={whatsapp.href} label={whatsapp.label} compact scrolled={scrolled} />
-          <MobileNavigation
-            brand={brand}
-            items={items}
-            cta={cta}
-            whatsapp={whatsapp}
-            scrolled={scrolled}
-          />
+          <MobileNavigation brand={brand} items={items} cta={cta} whatsapp={whatsapp} />
         </div>
       </div>
     </header>
@@ -93,7 +82,7 @@ export function SiteNavigation({
 
 function NavigationMenuItem({ item, scrolled }: { item: NavigationItem; scrolled: boolean }) {
   const triggerClassName = cn(
-    "inline-flex min-h-10 items-center rounded px-3 py-2 !text-[15px] !font-medium transition focus-visible:outline-none focus-visible:ring-1",
+    "inline-flex min-h-10 items-center rounded-full px-3 py-2 !text-[15px] !font-medium transition focus-visible:outline-none focus-visible:ring-1",
     scrolled
       ? "hover:bg-neutral-950/[0.06] focus-visible:ring-neutral-950/20"
       : "hover:bg-white/14 focus-visible:ring-white/35",
@@ -119,27 +108,16 @@ function MobileNavigation({
   items,
   cta,
   whatsapp,
-  scrolled,
 }: {
   brand: string;
   items: NavigationItem[];
   cta: { label: string; href: string };
   whatsapp: { label: string; href: string };
-  scrolled: boolean;
 }) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button
-          type="button"
-          className={cn(
-            "grid size-10 place-items-center rounded border transition",
-            scrolled
-              ? "border-neutral-950/10 bg-neutral-950/[0.04] text-neutral-950"
-              : "border-white/20 bg-white/12 text-white",
-          )}
-          aria-label="Open menu"
-        >
+        <button type="button" className={cn(iconButtonStyles, "size-11")} aria-label="Open menu">
           <Menu size={18} aria-hidden="true" />
         </button>
       </Dialog.Trigger>
@@ -150,10 +128,7 @@ function MobileNavigation({
             <Dialog.Title className="text-[15px] font-semibold tracking-[-0.01em]">
               {brand}
             </Dialog.Title>
-            <Dialog.Close
-              className="grid size-10 place-items-center rounded transition hover:bg-neutral-950/[0.06]"
-              aria-label="Close menu"
-            >
+            <Dialog.Close className={iconButtonStyles} aria-label="Close menu">
               <X size={18} aria-hidden="true" />
             </Dialog.Close>
           </div>
@@ -163,7 +138,7 @@ function MobileNavigation({
               <Dialog.Close key={`${item.label}-${item.href}`} asChild>
                 <Link
                   href={item.href}
-                  className="flex min-h-12 items-center rounded-2xl px-3 text-[15px] font-medium transition hover:bg-neutral-950/[0.045]"
+                  className="flex min-h-12 items-center rounded-full px-4 text-[15px] font-medium transition hover:bg-neutral-950/[0.045]"
                 >
                   {item.label}
                 </Link>
@@ -175,13 +150,17 @@ function MobileNavigation({
             <CtaButton href={cta.href} size="sm" className="h-11 w-full">
               {cta.label}
             </CtaButton>
-            <a
+            <CtaButton
               href={whatsapp.href}
-              className="inline-flex h-10 items-center justify-center gap-2 rounded border border-neutral-950/10 text-sm font-medium text-neutral-800 transition hover:bg-neutral-950/[0.045]"
+              variant="whatsappFrosted"
+              size="sm"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full"
             >
               <WhatsAppIcon size={16} aria-hidden="true" />
               {whatsapp.label}
-            </a>
+            </CtaButton>
             <p className="px-1 pt-1 text-center text-xs leading-5 text-neutral-500">
               AVIORA — private China journeys by China Prime DMC.
             </p>
@@ -192,45 +171,17 @@ function MobileNavigation({
   );
 }
 
-function WhatsAppLink({
-  href,
-  label,
-  compact,
-  scrolled,
-}: {
-  href: string;
-  label: string;
-  compact: boolean;
-  scrolled: boolean;
-}) {
+function WhatsAppLink({ href, label, compact }: { href: string; label: string; compact: boolean }) {
   if (compact) {
     return (
-      <a
-        href={href}
-        aria-label={label}
-        className={cn(
-          "grid size-11 place-items-center rounded border transition",
-          scrolled
-            ? "border-neutral-950/10 bg-neutral-950/[0.04] text-neutral-950"
-            : "border-white/20 bg-white/12 text-white",
-        )}
-      >
+      <a href={href} aria-label={label} className={cn(iconButtonStyles, "size-11 !text-[#128c48]")}>
         <WhatsAppIcon size={22} aria-hidden="true" />
       </a>
     );
   }
 
   return (
-    <a
-      href={href}
-      className={cn(
-        "grid size-10 place-items-center rounded transition",
-        scrolled
-          ? "text-neutral-700 hover:bg-neutral-950/[0.055]"
-          : "text-white/88 hover:bg-white/12",
-      )}
-      aria-label={label}
-    >
+    <a href={href} className={cn(iconButtonStyles, "size-10 !text-[#128c48]")} aria-label={label}>
       <WhatsAppIcon size={22} aria-hidden="true" />
     </a>
   );

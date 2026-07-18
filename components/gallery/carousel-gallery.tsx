@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { OptimizedImage } from "@/components/media/optimized-image";
+import { iconButtonStyles } from "@/components/ui/button-styles";
 import type { MediaAsset } from "@/types/component-library";
 
 type CarouselGalleryProps = {
@@ -37,7 +38,7 @@ export function CarouselGallery({ images }: CarouselGalleryProps) {
       </div>
       <div className="mt-4 flex justify-end gap-2">
         <button
-          className="border-border grid size-10 place-items-center rounded-full border bg-white"
+          className={iconButtonStyles}
           type="button"
           aria-label="Previous image"
           onClick={() => emblaApi?.scrollPrev()}
@@ -45,7 +46,7 @@ export function CarouselGallery({ images }: CarouselGalleryProps) {
           <ChevronLeft size={18} aria-hidden="true" />
         </button>
         <button
-          className="border-border grid size-10 place-items-center rounded-full border bg-white"
+          className={iconButtonStyles}
           type="button"
           aria-label="Next image"
           onClick={() => emblaApi?.scrollNext()}

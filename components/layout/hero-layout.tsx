@@ -30,7 +30,7 @@ export function HeroLayout({
       {media ? <div className="absolute inset-0 z-0">{media}</div> : null}
       <div
         className={cn(
-          "relative z-20 mx-auto flex w-full max-w-6xl min-w-0 flex-col justify-center px-5 pt-[calc(var(--site-nav-offset)+1rem)] pb-24 max-md:pr-[4.25rem] sm:px-6 lg:px-8",
+          "relative z-20 mx-auto flex w-full max-w-6xl min-w-0 flex-col justify-center px-5 pt-[calc(var(--site-nav-offset)+1rem)] pb-24 sm:px-6 lg:px-8",
           align === "center" && "items-center text-center",
           align === "left" && "items-start text-left",
         )}
