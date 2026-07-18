@@ -2,19 +2,54 @@
 
 import * as Popover from "@radix-ui/react-popover";
 import { ArrowUpRight, Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
 
 const whatsappHref = "https://wa.me/447985052302";
 const emailHref = "mailto:chinaprimedmc@gmail.com";
 
 export function SocialContactRail() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const [heroHasPassed, setHeroHasPassed] = useState(false);
+
+  useEffect(() => {
+    if (!isHomePage) {
+      return;
+    }
+
+    const hero = document.querySelector<HTMLElement>(".home-hero-split");
+
+    if (!hero) {
+      return;
+    }
+
+    const updateVisibility = () => {
+      setHeroHasPassed(hero.getBoundingClientRect().bottom <= 0);
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setHeroHasPassed(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0);
+    });
+    observer.observe(hero);
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    const frame = window.requestAnimationFrame(updateVisibility);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateVisibility);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [isHomePage]);
+
+  const isVisible = !isHomePage || heroHasPassed;
+
   return (
     <Popover.Root>
-      <div className="social-contact-rail">
+      <div className={`social-contact-rail${isVisible ? "is-visible" : ""}`}>
         <Popover.Trigger className="social-contact-rail__trigger" aria-label="Contact us">
-          <WhatsAppIcon className="social-contact-rail__trigger-icon" />
           <span className="social-contact-rail__trigger-label">Contact us</span>
-          <span className="social-contact-rail__trigger-dot" aria-hidden="true" />
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content
