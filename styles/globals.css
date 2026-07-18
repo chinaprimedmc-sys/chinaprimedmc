@@ -113,6 +113,7 @@ a {
   bottom: calc(var(--mobile-sticky-cta-height) + env(safe-area-inset-bottom) + 1.25rem);
   left: 50%;
   position: fixed;
+  right: auto;
   transform: translate(-50%, 1rem);
   transition:
     opacity var(--motion-duration-micro) var(--motion-ease-out),
@@ -120,6 +121,7 @@ a {
     visibility var(--motion-duration-micro) var(--motion-ease-out);
   visibility: hidden;
   opacity: 0;
+  width: max-content;
   z-index: 40;
 }
 
