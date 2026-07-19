@@ -23,6 +23,17 @@ type PlanningStep = {
   description: string;
 };
 
+type FeaturedJourney = {
+  title: string;
+  poeticTitle: string;
+  description: string;
+  image: MediaAsset;
+  href: string;
+  duration: string;
+  route: string;
+  bestFor: string;
+};
+
 export function HomeReveal({
   children,
   className,
@@ -121,6 +132,127 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
         ))}
       </div>
     </div>
+  );
+}
+
+export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[] }) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const updateActiveJourney = () => {
+      const bounds = section.getBoundingClientRect();
+      const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-bounds.top / travel, 0), 0.999);
+      setActiveIndex(Math.min(Math.floor(progress * journeys.length), journeys.length - 1));
+    };
+
+    updateActiveJourney();
+    window.addEventListener("scroll", updateActiveJourney, { passive: true });
+    return () => window.removeEventListener("scroll", updateActiveJourney);
+  }, [journeys.length]);
+
+  const goToJourney = (index: number) => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const sectionTop = window.scrollY + section.getBoundingClientRect().top;
+    const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
+    const target = sectionTop + travel * ((index + 0.15) / journeys.length);
+    window.scrollTo({ top: target, behavior: "smooth" });
+  };
+
+  return (
+    <section
+      ref={sectionRef}
+      id="journeys"
+      className="home-featured-cinema"
+      style={{ "--featured-count": journeys.length } as CSSProperties}
+    >
+      <div className="home-featured-cinema__stage">
+        <div className="home-featured-cinema__media" aria-hidden="true">
+          {journeys.map((journey, index) => (
+            <div
+              className="home-featured-cinema__scene"
+              data-active={index === activeIndex}
+              key={journey.href}
+            >
+              <OptimizedImage
+                src={journey.image.src}
+                alt=""
+                fill
+                sizes="100vw"
+                objectPosition={journey.image.objectPosition}
+                frameClassName="absolute inset-0 h-full"
+                className="home-featured-cinema__image h-full w-full"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="home-featured-cinema__wash" aria-hidden="true" />
+
+        <div className="home-featured-cinema__content">
+          {journeys.map((journey, index) => (
+            <article
+              key={journey.href}
+              className="home-featured-cinema__chapter"
+              data-active={index === activeIndex}
+              aria-hidden={index !== activeIndex}
+            >
+              <p className="home-featured-cinema__eyebrow">
+                Featured journey · {String(index + 1).padStart(2, "0")} /{" "}
+                {String(journeys.length).padStart(2, "0")}
+              </p>
+              <h2>{journey.title}</h2>
+              <p className="home-featured-cinema__poetic">{journey.poeticTitle}</p>
+              <dl className="home-featured-cinema__facts">
+                <div>
+                  <dt>Journey</dt>
+                  <dd>{journey.duration}</dd>
+                </div>
+                <div>
+                  <dt>Route</dt>
+                  <dd>{journey.route}</dd>
+                </div>
+                <div>
+                  <dt>Best for</dt>
+                  <dd>{journey.bestFor}</dd>
+                </div>
+              </dl>
+              <p className="home-featured-cinema__summary">{journey.description}</p>
+              <Link href={journey.href} className="home-featured-cinema__link">
+                Explore this journey
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
+            </article>
+          ))}
+        </div>
+
+        <div className="home-featured-cinema__navigation" aria-label="Featured journeys">
+          {journeys.map((journey, index) => (
+            <button
+              type="button"
+              key={journey.href}
+              onClick={() => goToJourney(index)}
+              aria-label={`Show ${journey.title}`}
+              aria-pressed={index === activeIndex}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <i />
+              <strong>{index === 0 ? "Essential China" : "Chengdu"}</strong>
+            </button>
+          ))}
+        </div>
+
+        <div className="home-featured-cinema__scroll-cue" aria-hidden="true">
+          <span>Scroll to explore</span>
+          <i />
+        </div>
+      </div>
+    </section>
   );
 }
 

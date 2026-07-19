@@ -1,6 +1,6 @@
 import type { LinkAction, MediaAsset, NavigationItem } from "@/types/component-library";
 
-import { firstChinaAsset } from "@/content/tours/assets";
+import { chengduAsset, firstChinaAsset } from "@/content/tours/assets";
 
 export const homeNavItems: NavigationItem[] = [
   {
@@ -260,15 +260,24 @@ export const experiences = [
 
 export const journeys = [
   {
-    title: "First China, Beautifully Paced",
-    description:
-      "A private introduction for couples or families who want the icons, but not the rush.",
+    title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
+    poeticTitle: "China's essential first journey, beautifully paced.",
+    description: "Imperial Beijing, historic Xi'an, and modern Shanghai without the rush.",
     image: firstChinaAsset.beijingForbiddenCityMoat,
-    badges: ["9 days / 8 nights"],
-    meta: [
-      { label: "Route", value: "Beijing, Xi'an, Shanghai" },
-      { label: "Best for", value: "First-time visitors" },
-    ],
+    href: "/tours/first-china-beautifully-paced",
+    duration: "9 days / 8 nights",
+    route: "Beijing · Xi'an · Shanghai",
+    bestFor: "First-time visitors",
+  },
+  {
+    title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
+    poeticTitle: "Pandas, teahouses, and Sichuan flavor at an unhurried pace.",
+    description: "A softer Chengdu chapter built around pandas, tea, food, and local life.",
+    image: chengduAsset.heroPanda,
+    href: "/tours/chengdu-pandas-sichuan-table",
+    duration: "5 days / 4 nights",
+    route: "Chengdu · Optional Leshan",
+    bestFor: "Families and food lovers",
   },
 ];
 

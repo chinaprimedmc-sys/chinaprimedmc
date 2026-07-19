@@ -1,6 +1,5 @@
-import { ArrowUpRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { BlogCard } from "@/components/cards/blog-card";
 import { HeroTrustPills, SectionHeader } from "@/components/content";
@@ -12,6 +11,7 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { HeroLargeImage } from "@/components/hero/hero-large-image";
 import {
   DestinationFocusGallery,
+  FeaturedJourneyCinema,
   HomeReveal,
   PlanningStory,
 } from "@/components/home/home-immersive-sections";
@@ -45,8 +45,6 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function HomePage() {
-  const featuredJourney = journeys[0];
-
   return (
     <PageContainer className="pb-20 md:pb-0">
       <SiteNavigation
@@ -77,69 +75,7 @@ export default function HomePage() {
         />
       </HeroLargeImage>
 
-      <Section id="journeys" spacing="spacious" className="bg-[var(--bg-secondary)]">
-        <ContentContainer
-          size="xl"
-          className="home-section-safe grid items-center gap-10 max-md:text-center lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:text-left"
-        >
-          <HomeReveal className="mx-auto max-w-xl lg:mx-0">
-            <Badge>Featured journey</Badge>
-            <h2 className="mt-6 font-serif text-[clamp(2.65rem,11vw,4rem)] leading-[0.98] font-medium tracking-[-0.02em] text-balance md:text-7xl">
-              {featuredJourney.title}
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-[var(--text-secondary)] md:text-lg md:leading-8 lg:mx-0">
-              Beijing, Xi&apos;an, and Shanghai in nine private days, with room for the icons and
-              enough space to actually enjoy them.
-            </p>
-            <dl className="mt-8 grid grid-cols-2 gap-5 border-y border-[var(--border)] py-6 text-center text-sm lg:text-left">
-              {featuredJourney.meta.map((item) => (
-                <div key={item.label}>
-                  <dt className="text-xs tracking-[0.12em] text-[var(--text-secondary)] uppercase">
-                    {item.label}
-                  </dt>
-                  <dd className="mt-2 font-medium">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
-            <div className="mt-8 flex flex-col items-center gap-4 lg:flex-row lg:items-center lg:justify-start lg:gap-3">
-              <CtaButton href="/tours/first-china-beautifully-paced" variant="primary" size="sm">
-                Explore the journey
-              </CtaButton>
-              <Link
-                href="/tours"
-                className="text-sm font-medium text-[var(--text-secondary)] underline decoration-[var(--border)] underline-offset-4 transition-colors hover:text-[var(--text-primary)]"
-              >
-                Browse all journeys <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </HomeReveal>
-          <HomeReveal delay={100} className="home-featured-visual">
-            <Link
-              href="/tours/first-china-beautifully-paced"
-              className="group relative block aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] md:aspect-auto md:min-h-[42rem]"
-            >
-              <OptimizedImage
-                src={featuredJourney.image.src}
-                alt={featuredJourney.image.alt}
-                fill
-                sizes="(min-width:1024px) 58vw, 100vw"
-                objectPosition={featuredJourney.image.objectPosition}
-                frameClassName="absolute inset-0 h-full"
-                className="home-featured-visual__image h-full w-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/52 via-transparent to-transparent" />
-              <div className="home-featured-visual__route">
-                <span>Beijing</span>
-                <i />
-                <span>Xi&apos;an</span>
-                <i />
-                <span>Shanghai</span>
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </div>
-            </Link>
-          </HomeReveal>
-        </ContentContainer>
-      </Section>
+      <FeaturedJourneyCinema journeys={journeys} />
 
       <Section id="destinations" spacing="spacious">
         <ContentContainer size="xl" className="home-section-safe grid gap-10">
