@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { SocialContactRail } from "@/components/cta/social-contact-rail";
 import { JsonLd } from "@/lib/seo/json-ld";
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <PageTransition>{children}</PageTransition>
         </AppProviders>
         <Analytics />
+        <SpeedInsights />
         <SocialContactRail />
         <JsonLd id="organization-schema" data={organizationSchema()} />
         <JsonLd id="website-schema" data={websiteSchema()} />
