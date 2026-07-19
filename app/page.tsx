@@ -237,7 +237,6 @@ export default function HomePage() {
                   href={article.href}
                   image={article.image}
                   category={article.category}
-                  eager
                 />
               ))}
             </GridSystem>

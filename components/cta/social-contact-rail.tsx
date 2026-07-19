@@ -28,21 +28,16 @@ export function SocialContactRail() {
       return;
     }
 
-    const updateVisibility = () => {
-      setHeroHasPassed(hero.getBoundingClientRect().bottom <= 0);
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      setHeroHasPassed(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0);
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHeroHasPassed(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0);
+      },
+      { threshold: 0 },
+    );
     observer.observe(hero);
-    window.addEventListener("scroll", updateVisibility, { passive: true });
-    const frame = window.requestAnimationFrame(updateVisibility);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", updateVisibility);
-      window.cancelAnimationFrame(frame);
     };
   }, [isHomePage]);
 

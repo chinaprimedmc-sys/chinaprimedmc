@@ -142,22 +142,42 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
 
 export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[] }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
+    let frame = 0;
+
     const updateActiveJourney = () => {
+      frame = 0;
       const bounds = section.getBoundingClientRect();
+      if (bounds.bottom < 0 || bounds.top > window.innerHeight) return;
+
       const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
       const progress = Math.min(Math.max(-bounds.top / travel, 0), 0.999);
-      setActiveIndex(Math.min(Math.floor(progress * journeys.length), journeys.length - 1));
+      const nextIndex = Math.min(Math.floor(progress * journeys.length), journeys.length - 1);
+      if (nextIndex === activeIndexRef.current) return;
+
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+    };
+
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateActiveJourney);
     };
 
     updateActiveJourney();
-    window.addEventListener("scroll", updateActiveJourney, { passive: true });
-    return () => window.removeEventListener("scroll", updateActiveJourney);
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      window.cancelAnimationFrame(frame);
+    };
   }, [journeys.length]);
 
   const goToJourney = (index: number) => {

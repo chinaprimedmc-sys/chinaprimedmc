@@ -31,10 +31,28 @@ export function SiteNavigation({
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 18);
+    let frame = 0;
+    let previous = window.scrollY > 18;
+
+    const update = () => {
+      frame = 0;
+      const next = window.scrollY > 18;
+      if (next === previous) return;
+      previous = next;
+      setScrolled(next);
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(update);
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (

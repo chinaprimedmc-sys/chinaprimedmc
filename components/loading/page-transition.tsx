@@ -1,50 +1,31 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useEffect, type ReactNode } from "react";
-
-import { motionTokens } from "@/design-system/tokens/motion";
+import { useEffect, useRef, type ReactNode } from "react";
 
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const shouldReduceMotion = useReducedMotion();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const previousPathname = useRef(pathname);
 
   useEffect(() => {
     window.scrollTo({ left: 0, top: 0 });
-  }, [pathname]);
 
-  if (shouldReduceMotion) {
-    return (
-      <div key={pathname} className="min-h-svh">
-        {children}
-      </div>
-    );
-  }
+    if (previousPathname.current === pathname) return;
+    previousPathname.current = pathname;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    contentRef.current?.animate([{ opacity: 0.35 }, { opacity: 1 }], {
+      duration: 360,
+      easing: "cubic-bezier(0.65, 0, 0.35, 1)",
+    });
+  }, [pathname]);
 
   return (
     <div className="relative min-h-svh overflow-x-clip">
-      <AnimatePresence initial={false} mode="sync" presenceAffectsLayout={false}>
-        <motion.div
-          key={pathname}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{
-            opacity: 0,
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            width: "100%",
-          }}
-          transition={{
-            duration: motionTokens.duration.transition,
-            ease: motionTokens.easing.inOut,
-          }}
-          className="min-h-svh"
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      <div ref={contentRef} className="min-h-svh">
+        {children}
+      </div>
     </div>
   );
 }
