@@ -10,6 +10,11 @@ import { FloatingCta } from "@/components/cta/floating-cta";
 import { StickyMobileCta } from "@/components/cta/sticky-mobile-cta";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { HeroLargeImage } from "@/components/hero/hero-large-image";
+import {
+  DestinationFocusGallery,
+  HomeReveal,
+  PlanningStory,
+} from "@/components/home/home-immersive-sections";
 import { ContentContainer } from "@/components/layout/content-container";
 import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
@@ -77,7 +82,7 @@ export default function HomePage() {
           size="xl"
           className="home-section-safe grid items-center gap-10 max-md:text-center lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:text-left"
         >
-          <div className="mx-auto max-w-xl lg:mx-0">
+          <HomeReveal className="mx-auto max-w-xl lg:mx-0">
             <Badge>Featured journey</Badge>
             <h2 className="mt-6 font-serif text-[clamp(2.65rem,11vw,4rem)] leading-[0.98] font-medium tracking-[-0.02em] text-balance md:text-7xl">
               {featuredJourney.title}
@@ -107,26 +112,32 @@ export default function HomePage() {
                 Browse all journeys <span aria-hidden="true">→</span>
               </Link>
             </div>
-          </div>
-          <Link
-            href="/tours/first-china-beautifully-paced"
-            className="group relative mx-auto aspect-[4/5] w-full max-w-[32rem] overflow-hidden rounded-[1.5rem] md:mx-0 md:aspect-auto md:min-h-[42rem]"
-          >
-            <OptimizedImage
-              src={featuredJourney.image.src}
-              alt={featuredJourney.image.alt}
-              fill
-              sizes="(min-width:1024px) 58vw, 100vw"
-              objectPosition={featuredJourney.image.objectPosition}
-              frameClassName="absolute inset-0 h-full"
-              className="h-full w-full transition-transform duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] group-hover:scale-[1.04] motion-reduce:transform-none"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/48 via-transparent to-transparent" />
-            <span className="absolute right-6 bottom-6 inline-flex items-center gap-2 text-sm font-medium text-white">
-              Beijing · Xi&apos;an · Shanghai
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </span>
-          </Link>
+          </HomeReveal>
+          <HomeReveal delay={100} className="home-featured-visual">
+            <Link
+              href="/tours/first-china-beautifully-paced"
+              className="group relative block aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] md:aspect-auto md:min-h-[42rem]"
+            >
+              <OptimizedImage
+                src={featuredJourney.image.src}
+                alt={featuredJourney.image.alt}
+                fill
+                sizes="(min-width:1024px) 58vw, 100vw"
+                objectPosition={featuredJourney.image.objectPosition}
+                frameClassName="absolute inset-0 h-full"
+                className="home-featured-visual__image h-full w-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/52 via-transparent to-transparent" />
+              <div className="home-featured-visual__route">
+                <span>Beijing</span>
+                <i />
+                <span>Xi&apos;an</span>
+                <i />
+                <span>Shanghai</span>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </div>
+            </Link>
+          </HomeReveal>
         </ContentContainer>
       </Section>
 
@@ -137,56 +148,15 @@ export default function HomePage() {
             title="Begin with a place. Then find your pace."
             description="A few strong starting points for the route, the atmosphere, and the way you want to travel."
           />
-          <div className="grid gap-5 lg:grid-cols-12 lg:grid-rows-2">
-            {exploreChina.map((item, index) => (
-              <Link
-                href={item.href}
-                key={item.title}
-                className={`group relative overflow-hidden rounded-[1.25rem] ${
-                  index === 0
-                    ? "min-h-[36rem] lg:col-span-7 lg:row-span-2 lg:min-h-[46rem]"
-                    : "min-h-[24rem] lg:col-span-5 lg:min-h-0"
-                }`}
-              >
-                <OptimizedImage
-                  src={item.image.src}
-                  alt={item.image.alt}
-                  fill
-                  sizes={
-                    index === 0
-                      ? "(min-width:1024px) 58vw, 100vw"
-                      : "(min-width:1024px) 42vw, 100vw"
-                  }
-                  objectPosition={item.image.objectPosition}
-                  frameClassName="absolute inset-0 h-full"
-                  className="h-full w-full transition-transform duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] group-hover:scale-[1.04] motion-reduce:transform-none"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
-                  <p className="text-[0.65rem] font-semibold tracking-[0.16em] text-white/70 uppercase">
-                    {item.eyebrow}
-                  </p>
-                  <div className="mt-3 flex items-end justify-between gap-5">
-                    <div>
-                      <h3 className="font-serif text-4xl leading-none font-medium md:text-5xl">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 max-w-lg text-sm leading-6 text-white/78">
-                        {item.description}
-                      </p>
-                    </div>
-                    <ArrowUpRight className="shrink-0" size={20} aria-hidden="true" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <HomeReveal delay={80}>
+            <DestinationFocusGallery items={exploreChina} />
+          </HomeReveal>
         </ContentContainer>
       </Section>
 
       <Section id="why" spacing="spacious" className="bg-[var(--bg-dark-primary)] text-white">
         <ContentContainer size="xl" className="home-section-safe grid gap-14">
-          <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+          <HomeReveal className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
             <div>
               <p className="text-xs font-semibold tracking-[0.18em] text-white/55 uppercase">
                 Why AVIORA
@@ -199,8 +169,8 @@ export default function HomePage() {
               A beautiful China trip is scenery, yes. It is also language, pacing, tickets, meals,
               transfers, rest, and knowing exactly who is taking care of the details.
             </p>
-          </div>
-          <div className="grid border-y border-white/12 md:grid-cols-3">
+          </HomeReveal>
+          <HomeReveal delay={80} className="grid border-y border-white/12 md:grid-cols-3">
             {[
               ["Licensed", "Inbound tourism operator"],
               ["Private", "Daily rhythm"],
@@ -214,39 +184,27 @@ export default function HomePage() {
                 <p className="mt-3 text-xs tracking-[0.14em] text-white/55 uppercase">{label}</p>
               </div>
             ))}
-          </div>
-          <GridSystem columns={3}>
-            {proofPoints.map((point, index) => {
-              const Icon = index === 0 ? ShieldCheck : index === 1 ? CheckCircle2 : Sparkles;
-              return (
-                <article key={point.title} className="border-t border-white/14 pt-6">
-                  <Icon size={18} className="text-white/58" aria-hidden="true" />
-                  <h3 className="mt-5 text-lg font-medium">{point.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/58">{point.description}</p>
-                </article>
-              );
-            })}
-          </GridSystem>
+          </HomeReveal>
+          <HomeReveal delay={140}>
+            <GridSystem columns={3}>
+              {proofPoints.map((point, index) => {
+                const Icon = index === 0 ? ShieldCheck : index === 1 ? CheckCircle2 : Sparkles;
+                return (
+                  <article key={point.title} className="border-t border-white/14 pt-6">
+                    <Icon size={18} className="text-white/58" aria-hidden="true" />
+                    <h3 className="mt-5 text-lg font-medium">{point.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-white/58">{point.description}</p>
+                  </article>
+                );
+              })}
+            </GridSystem>
+          </HomeReveal>
         </ContentContainer>
       </Section>
 
       <Section id="planning" spacing="spacious">
-        <ContentContainer
-          size="xl"
-          className="home-section-safe grid items-start gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16"
-        >
-          <div className="relative min-h-[34rem] overflow-hidden rounded-[1.25rem] lg:sticky lg:top-28 lg:min-h-[43rem]">
-            <OptimizedImage
-              src={homeEditorialImages.paintingExperience.src}
-              alt={homeEditorialImages.paintingExperience.alt}
-              fill
-              sizes="(min-width:1024px) 44vw, 100vw"
-              objectPosition={homeEditorialImages.paintingExperience.objectPosition}
-              frameClassName="absolute inset-0 h-full"
-              className="h-full w-full"
-            />
-          </div>
-          <div>
+        <ContentContainer size="xl" className="home-section-safe grid gap-10">
+          <HomeReveal>
             <Badge>How planning works</Badge>
             <h2 className="mt-6 max-w-3xl font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] md:text-7xl">
               Start with your reality, not a fixed package.
@@ -255,34 +213,19 @@ export default function HomePage() {
               The first conversation gives us enough context to suggest a route direction without
               asking you to solve the whole trip before we begin.
             </p>
-            <ol className="mt-10 border-t border-[var(--border)]">
-              {planningSteps.map((step) => (
-                <li
-                  key={step.number}
-                  className="grid gap-4 border-b border-[var(--border)] py-7 sm:grid-cols-[4rem_1fr]"
-                >
-                  <span className="font-serif text-2xl text-[var(--text-secondary)]">
-                    {step.number}
-                  </span>
-                  <div>
-                    <h3 className="text-xl font-medium">{step.title}</h3>
-                    <p className="mt-2 max-w-xl text-sm leading-7 text-[var(--text-secondary)]">
-                      {step.description}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <CtaButton href={primaryAction.href} className="mt-8" size="sm">
-              Start planning
-            </CtaButton>
-          </div>
+          </HomeReveal>
+          <HomeReveal delay={80}>
+            <PlanningStory image={homeEditorialImages.paintingExperience} steps={planningSteps} />
+          </HomeReveal>
+          <CtaButton href={primaryAction.href} className="w-fit max-md:mx-auto" size="sm">
+            Start planning
+          </CtaButton>
         </ContentContainer>
       </Section>
 
       <Section spacing="spacious" className="bg-[var(--bg-secondary)]">
         <ContentContainer size="xl" className="home-section-safe grid gap-10">
-          <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <HomeReveal className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
               <Badge>Travel trade presence</Badge>
               <h2 className="mt-6 font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] md:text-7xl">
@@ -293,9 +236,12 @@ export default function HomePage() {
               Recent face-to-face conversations in Kuala Lumpur, focused on practical inbound China
               travel and clearer local delivery.
             </p>
-          </div>
-          <div className="grid gap-5 lg:grid-cols-12 lg:grid-rows-2">
-            <figure className="relative min-h-[31rem] overflow-hidden rounded-[1.25rem] lg:col-span-8 lg:row-span-2 lg:min-h-[42rem]">
+          </HomeReveal>
+          <HomeReveal
+            delay={100}
+            className="home-trade-gallery grid gap-5 lg:grid-cols-12 lg:grid-rows-2"
+          >
+            <figure className="home-trade-gallery__image relative min-h-[31rem] overflow-hidden rounded-[1.25rem] lg:col-span-8 lg:row-span-2 lg:min-h-[42rem]">
               <OptimizedImage
                 src={homeEditorialImages.tradeConsultation.src}
                 alt={homeEditorialImages.tradeConsultation.alt}
@@ -312,7 +258,7 @@ export default function HomePage() {
             {[homeEditorialImages.tradeBuyerMeeting, homeEditorialImages.tradeMuslimBuyers].map(
               (image, index) => (
                 <figure
-                  className="relative min-h-[19rem] overflow-hidden rounded-[1.25rem] lg:col-span-4 lg:min-h-0"
+                  className="home-trade-gallery__image relative min-h-[19rem] overflow-hidden rounded-[1.25rem] lg:col-span-4 lg:min-h-0"
                   key={image.src}
                 >
                   <OptimizedImage
@@ -330,30 +276,34 @@ export default function HomePage() {
                 </figure>
               ),
             )}
-          </div>
+          </HomeReveal>
         </ContentContainer>
       </Section>
 
       <Section id="journal" spacing="spacious">
         <ContentContainer size="xl" className="home-section-safe grid gap-10">
-          <SectionHeader
-            eyebrow="Travel journal"
-            title="Useful thinking before you choose a route."
-            description="Practical planning notes for the questions travelers ask before the journey feels real."
-          />
-          <GridSystem columns={3}>
-            {journal.map((article) => (
-              <BlogCard
-                key={article.title}
-                title={article.title}
-                excerpt={article.excerpt}
-                href={article.href}
-                image={article.image}
-                category={article.category}
-                eager
-              />
-            ))}
-          </GridSystem>
+          <HomeReveal>
+            <SectionHeader
+              eyebrow="Travel journal"
+              title="Useful thinking before you choose a route."
+              description="Practical planning notes for the questions travelers ask before the journey feels real."
+            />
+          </HomeReveal>
+          <HomeReveal delay={100}>
+            <GridSystem columns={3}>
+              {journal.map((article) => (
+                <BlogCard
+                  key={article.title}
+                  title={article.title}
+                  excerpt={article.excerpt}
+                  href={article.href}
+                  image={article.image}
+                  category={article.category}
+                  eager
+                />
+              ))}
+            </GridSystem>
+          </HomeReveal>
         </ContentContainer>
       </Section>
 

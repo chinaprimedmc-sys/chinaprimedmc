@@ -119,7 +119,7 @@ export function HeroLargeImage({
               sizes="(min-width: 768px) 58vw, calc(100vw - 1.5rem)"
               objectPosition={image.objectPosition}
               frameClassName="h-full w-full bg-transparent"
-              className="h-full w-full object-contain object-bottom md:object-right-bottom"
+              className="home-hero-split__image h-full w-full object-contain object-bottom md:object-right-bottom"
             />
             <div className="home-hero-split__blend" aria-hidden="true" />
           </div>
