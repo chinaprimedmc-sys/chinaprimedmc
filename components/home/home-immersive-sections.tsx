@@ -25,6 +25,11 @@ type PlanningStep = {
 
 type FeaturedJourney = {
   title: string;
+  titleLocation: string;
+  titleExperience: string;
+  titleSuffix: string;
+  durationBadge: string;
+  accent: "gold" | "bamboo";
   poeticTitle: string;
   description: string;
   image: MediaAsset;
@@ -200,19 +205,26 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
               key={journey.href}
               className="home-featured-cinema__chapter"
               data-active={index === activeIndex}
+              data-accent={journey.accent}
               aria-hidden={index !== activeIndex}
             >
               <p className="home-featured-cinema__eyebrow">
                 Featured journey · {String(index + 1).padStart(2, "0")} /{" "}
                 {String(journeys.length).padStart(2, "0")}
               </p>
-              <h2>{journey.title}</h2>
+              <p className="home-featured-cinema__duration">{journey.durationBadge}</p>
+              <h2 aria-label={journey.title}>
+                <span className="sr-only">{journey.durationBadge.split(" DAYS")[0]}-Day </span>
+                <span className="home-featured-cinema__location">{journey.titleLocation}</span>
+                {journey.titleExperience ? (
+                  <span className="home-featured-cinema__experience">
+                    {journey.titleExperience}
+                  </span>
+                ) : null}
+                <span className="home-featured-cinema__suffix">{journey.titleSuffix}</span>
+              </h2>
               <p className="home-featured-cinema__poetic">{journey.poeticTitle}</p>
               <dl className="home-featured-cinema__facts">
-                <div>
-                  <dt>Journey</dt>
-                  <dd>{journey.duration}</dd>
-                </div>
                 <div>
                   <dt>Route</dt>
                   <dd>{journey.route}</dd>

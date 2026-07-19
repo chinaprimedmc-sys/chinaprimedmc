@@ -35,6 +35,7 @@ import {
   secondaryHeroActions,
 } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
+import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createMetadata({
@@ -47,6 +48,7 @@ export const metadata: Metadata = createMetadata({
 export default function HomePage() {
   return (
     <PageContainer className="pb-20 md:pb-0">
+      <JsonLd id="featured-journeys-schema" data={featuredJourneysSchema()} />
       <SiteNavigation
         items={homeNavItems}
         cta={{ label: "Plan My Trip", href: primaryAction.href }}
@@ -286,4 +288,36 @@ export default function HomePage() {
       <StickyMobileCta label="Plan My Trip" href={primaryAction.href} showAfter={720} />
     </PageContainer>
   );
+}
+
+function featuredJourneysSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Featured private China tours",
+    description:
+      "Featured private China journeys designed by AVIORA and delivered by a licensed inbound tourism operator.",
+    numberOfItems: journeys.length,
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    itemListElement: journeys.map((journey, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "TouristTrip",
+        name: journey.title,
+        description: journey.description,
+        url: new URL(journey.href, siteConfig.url).toString(),
+        image: new URL(journey.image.src, siteConfig.url).toString(),
+        duration: journey.isoDuration,
+        touristType: journey.bestFor,
+        itinerary: journey.route,
+        provider: {
+          "@type": "TravelAgency",
+          name: siteConfig.name,
+          url: siteConfig.url,
+          email: siteConfig.email,
+        },
+      },
+    })),
+  };
 }

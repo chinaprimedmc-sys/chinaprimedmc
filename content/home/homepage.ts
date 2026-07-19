@@ -261,6 +261,12 @@ export const experiences = [
 export const journeys = [
   {
     title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
+    titleLocation: "Beijing, Xi'an & Shanghai",
+    titleExperience: "",
+    titleSuffix: "Private Tour",
+    durationBadge: "9 DAYS · 8 NIGHTS",
+    isoDuration: "P9D",
+    accent: "gold" as const,
     poeticTitle: "China's essential first journey, beautifully paced.",
     description: "Imperial Beijing, historic Xi'an, and modern Shanghai without the rush.",
     image: firstChinaAsset.beijingForbiddenCityMoat,
@@ -271,6 +277,12 @@ export const journeys = [
   },
   {
     title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
+    titleLocation: "Chengdu",
+    titleExperience: "Panda & Sichuan Food",
+    titleSuffix: "Private Tour",
+    durationBadge: "5 DAYS · 4 NIGHTS",
+    isoDuration: "P5D",
+    accent: "bamboo" as const,
     poeticTitle: "Pandas, teahouses, and Sichuan flavor at an unhurried pace.",
     description: "A softer Chengdu chapter built around pandas, tea, food, and local life.",
     image: chengduAsset.heroPanda,
