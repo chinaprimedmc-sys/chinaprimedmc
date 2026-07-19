@@ -18,7 +18,7 @@ type SiteNavigationProps = {
   whatsapp?: { label: string; href: string };
   languages?: string[];
   currencies?: string[];
-  tone?: "adaptive" | "dark";
+  tone?: "adaptive" | "dark" | "light";
 };
 
 export function SiteNavigation({
@@ -63,7 +63,9 @@ export function SiteNavigation({
           ? tone === "dark"
             ? "border-b border-white/10 bg-neutral-950/94 pt-0 shadow-[0_10px_30px_rgba(0,0,0,0.24)] backdrop-blur-xl"
             : "border-b border-neutral-950/8 bg-[var(--bg-primary)] pt-0 shadow-[0_10px_30px_rgba(22,21,18,0.08)]"
-          : "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-28 before:bg-gradient-to-b before:from-black/35 before:to-transparent",
+          : tone === "light"
+            ? "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-28 before:bg-gradient-to-b before:from-white/72 before:to-transparent"
+            : "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-28 before:bg-gradient-to-b before:from-black/35 before:to-transparent",
       )}
     >
       <div
@@ -73,7 +75,9 @@ export function SiteNavigation({
             ? tone === "dark"
               ? "h-[70px] text-white [--brand-wordmark-color:#ffffff] md:h-[70px]"
               : "h-[70px] text-neutral-950 [--brand-wordmark-color:var(--text-primary)] md:h-[70px]"
-            : "text-white [--brand-wordmark-color:#ffffff]",
+            : tone === "light"
+              ? "text-neutral-950 [--brand-wordmark-color:var(--text-primary)]"
+              : "text-white [--brand-wordmark-color:#ffffff]",
         )}
       >
         <Link href="/" className="brand-wordmark h-10 shrink-0 text-[18px]">
@@ -87,6 +91,7 @@ export function SiteNavigation({
               item={item}
               scrolled={scrolled}
               dark={tone === "dark"}
+              light={tone === "light"}
             />
           ))}
         </nav>
@@ -110,14 +115,16 @@ function NavigationMenuItem({
   item,
   scrolled,
   dark,
+  light,
 }: {
   item: NavigationItem;
   scrolled: boolean;
   dark: boolean;
+  light: boolean;
 }) {
   const triggerClassName = cn(
     "inline-flex min-h-10 items-center rounded-full px-3 py-2 !text-[15px] !font-medium transition focus-visible:outline-none focus-visible:ring-1",
-    scrolled && !dark
+    (scrolled && !dark) || (!scrolled && light)
       ? "hover:bg-neutral-950/[0.06] focus-visible:ring-neutral-950/20"
       : "hover:bg-white/14 focus-visible:ring-white/35",
   );

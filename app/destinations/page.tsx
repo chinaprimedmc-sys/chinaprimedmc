@@ -22,7 +22,7 @@ export default function DestinationsPage() {
   const pageUrl = new URL("/destinations", siteConfig.url).toString();
 
   return (
-    <main className="min-h-svh overflow-x-clip bg-[#090a09]">
+    <main className="min-h-svh overflow-x-clip bg-[#f7f7f3]">
       <JsonLd
         id="destinations-collection-schema"
         data={{
@@ -58,7 +58,7 @@ export default function DestinationsPage() {
         ])}
       />
       <SiteNavigation
-        tone="dark"
+        tone="light"
         items={homeNavItems}
         cta={{ label: "Plan My Trip", href: primaryAction.href }}
       />
