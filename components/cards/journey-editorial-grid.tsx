@@ -11,7 +11,6 @@ import {
   ChevronRight,
   Layers3,
   Mail,
-  MessageCircle,
   X,
 } from "lucide-react";
 import Link from "next/link";
@@ -27,6 +26,7 @@ import {
 } from "react";
 
 import { OptimizedImage } from "@/components/media/optimized-image";
+import { WhatsAppIcon } from "@/components/icons";
 import { buttonBaseStyles, buttonSizes, buttonVariants } from "@/components/ui/button-styles";
 import { destinationAsset } from "@/content/destinations/assets";
 import type {
@@ -1495,12 +1495,12 @@ function SavedJourneys({
                     rel="noreferrer"
                     className={cn(
                       buttonBaseStyles,
-                      buttonVariants.lightFrosted,
+                      buttonVariants.whatsappFrosted,
                       buttonSizes.sm,
-                      "w-full",
+                      "w-full gap-2.5",
                     )}
                   >
-                    <MessageCircle size={16} className="text-[#128c48]" aria-hidden="true" />
+                    <WhatsAppIcon className="size-[18px] shrink-0" />
                     WhatsApp
                   </a>
                   <a

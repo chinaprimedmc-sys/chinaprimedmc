@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { CtaButton } from "@/components/cta";
 import { RotatingHeroTitle } from "@/components/hero/rotating-hero-title";
+import { WhatsAppIcon } from "@/components/icons";
 import { HeroLayout } from "@/components/layout";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { cn } from "@/lib/utils/cn";
@@ -94,9 +95,12 @@ export function HeroLargeImage({
                       href={secondary.href}
                       variant="whatsappFrosted"
                       size="sm"
-                      className="min-h-12 px-6 py-3.5 sm:px-8"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="min-h-12 flex-row gap-2.5 px-6 py-3.5 sm:px-8"
                     >
-                      {secondary.label}
+                      <WhatsAppIcon className="size-[19px] shrink-0" />
+                      <span>{secondary.label}</span>
                     </CtaButton>
                   ) : null}
                 </div>

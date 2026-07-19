@@ -1,10 +1,11 @@
 "use client";
 
-import { CalendarDays, Mail, MessageCircle, Send } from "lucide-react";
+import { CalendarDays, Mail, Send } from "lucide-react";
 import { useState } from "react";
 
 import { CtaButton } from "@/components/cta/cta-button";
 import { SelectField } from "@/components/forms/select-field";
+import { WhatsAppIcon } from "@/components/icons";
 import { TextAreaField, TextField } from "@/components/forms/form-field";
 import { TravelerSelector } from "@/components/forms/traveler-selector";
 import { Badge } from "@/components/ui/badge";
@@ -42,11 +43,13 @@ export function TourInquiryPanel({ tour }: TourInquiryPanelProps) {
           <div className="grid gap-3 sm:grid-cols-2">
             <CtaButton
               href={tour.inquiry.whatsappHref ?? tour.inquiry.emailHref}
-              variant="outline"
-              className="justify-center"
-              icon={<MessageCircle size={17} aria-hidden="true" />}
+              variant="whatsappFrosted"
+              target="_blank"
+              rel="noreferrer"
+              className="flex-row justify-center gap-2.5"
             >
-              WhatsApp
+              <WhatsAppIcon className="size-[19px] shrink-0" />
+              <span>Chat on WhatsApp</span>
             </CtaButton>
             <CtaButton
               href={tour.inquiry.scheduleCallHref ?? tour.inquiry.emailHref}

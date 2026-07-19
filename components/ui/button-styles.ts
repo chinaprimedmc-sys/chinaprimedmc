@@ -18,7 +18,7 @@ export const buttonVariants = {
   lightFrostedSubtle:
     "border border-white/76 bg-white/52 !text-[var(--text-primary)] shadow-[var(--button-glass-shadow-subtle)] backdrop-blur-[18px] [-webkit-backdrop-filter:blur(18px)] hover:border-white hover:bg-white/[0.8] hover:shadow-[var(--button-glass-shadow)]",
   whatsappFrosted:
-    "border border-white/88 bg-white/74 !text-[var(--text-primary)] shadow-[var(--button-glass-shadow)] backdrop-blur-[18px] [-webkit-backdrop-filter:blur(18px)] hover:border-white hover:bg-white/94 hover:shadow-[var(--button-glass-shadow-hover)]",
+    "border border-[#42df79] bg-[#25D366] !text-white shadow-[0_12px_30px_rgba(37,211,102,0.24),inset_0_1px_0_rgba(255,255,255,0.28)] hover:border-[#52e184] hover:bg-[#20bd5a] hover:shadow-[0_16px_38px_rgba(37,211,102,0.32),inset_0_1px_0_rgba(255,255,255,0.34)] focus-visible:ring-[#25D366]",
 } as const;
 
 export const buttonSizes = {

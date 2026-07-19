@@ -252,11 +252,14 @@ a {
 
 .social-contact-rail__option-icon {
   height: 1.15rem;
+  width: 1.15rem;
+}
+
+.social-contact-rail__option-icon--email {
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.8;
-  width: 1.15rem;
 }
 
 .social-contact-rail__option-icon--whatsapp {

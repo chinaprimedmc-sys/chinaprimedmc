@@ -41,7 +41,9 @@ export function CtaButton({
       )}
       {...props}
     >
-      <span>{children}</span>
+      <span className="inline-flex min-w-0 items-center justify-center gap-2.5 leading-none">
+        {children}
+      </span>
       {icon ? <span className="transition group-hover:translate-x-0.5">{icon}</span> : null}
     </a>
   );

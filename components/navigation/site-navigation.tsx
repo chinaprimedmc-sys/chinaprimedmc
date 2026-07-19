@@ -3,10 +3,11 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, type SVGProps } from "react";
+import { useEffect, useState } from "react";
 
 import { CtaButton } from "@/components/cta";
-import { iconButtonStyles } from "@/components/ui/button-styles";
+import { WhatsAppIcon } from "@/components/icons";
+import { buttonBaseStyles, buttonVariants, iconButtonStyles } from "@/components/ui/button-styles";
 import { cn } from "@/lib/utils/cn";
 import type { NavigationItem } from "@/types/component-library";
 
@@ -73,7 +74,7 @@ export function SiteNavigation({
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
-          <WhatsAppLink href={whatsapp.href} label={whatsapp.label} compact={false} />
+          <WhatsAppLink href={whatsapp.href} label={whatsapp.label} />
           <CtaButton href={cta.href} size="sm" className="h-10 min-h-10 px-5 text-sm font-medium">
             {cta.label}
           </CtaButton>
@@ -171,10 +172,10 @@ function MobileNavigation({
               size="sm"
               target="_blank"
               rel="noreferrer"
-              className="w-full"
+              className="h-11 w-full flex-row gap-2.5"
             >
-              <WhatsAppIcon size={16} aria-hidden="true" />
-              {whatsapp.label}
+              <WhatsAppIcon className="size-[18px] shrink-0" />
+              <span>Chat on WhatsApp</span>
             </CtaButton>
             <p className="px-1 pt-1 text-center text-xs leading-5 text-neutral-500">
               AVIORA — private China journeys by China Prime DMC.
@@ -186,37 +187,21 @@ function MobileNavigation({
   );
 }
 
-function WhatsAppLink({ href, label, compact }: { href: string; label: string; compact: boolean }) {
-  if (compact) {
-    return (
-      <a href={href} aria-label={label} className={cn(iconButtonStyles, "size-11 !text-[#128c48]")}>
-        <WhatsAppIcon size={22} aria-hidden="true" />
-      </a>
-    );
-  }
-
+function WhatsAppLink({ href, label }: { href: string; label: string }) {
   return (
-    <a href={href} className={cn(iconButtonStyles, "size-10 !text-[#128c48]")} aria-label={label}>
-      <WhatsAppIcon size={22} aria-hidden="true" />
-    </a>
-  );
-}
-
-function WhatsAppIcon({ size = 18, ...props }: SVGProps<SVGSVGElement> & { size?: number }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-      {...props}
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className={cn(
+        buttonBaseStyles,
+        buttonVariants.whatsappFrosted,
+        "h-10 min-h-10 gap-2.5 px-4 text-sm font-semibold",
+      )}
+      aria-label={label}
     >
-      <path d="M5.2 19.1 6.3 15a7.4 7.4 0 1 1 2.8 2.8l-3.9 1.3Z" />
-      <path d="M9.6 8.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.3.1.4-.1.6l-.4.5c-.1.1-.2.3-.1.5.4.8 1.1 1.5 2 2 .2.1.3.1.5-.1l.5-.6c.2-.2.4-.2.6-.1l1.4.7c.3.1.4.3.4.5v.4c0 .3-.1.6-.4.8-.5.4-1.2.6-1.9.5-1.2-.2-2.7-.9-3.9-2.1-1.1-1.1-1.9-2.5-2.1-3.8-.1-.7.2-1.4.6-1.8Z" />
-    </svg>
+      <WhatsAppIcon className="size-[18px] shrink-0" />
+      <span>{label}</span>
+    </a>
   );
 }
