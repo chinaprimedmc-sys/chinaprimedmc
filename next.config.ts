@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/why-us",
-        destination: "/contact",
+        destination: "/about",
         permanent: true,
       },
       {

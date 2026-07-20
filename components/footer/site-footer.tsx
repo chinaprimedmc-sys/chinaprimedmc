@@ -74,7 +74,7 @@ export function SiteFooter({
             href="/about"
             className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
           >
-            Company
+            About AVIORA
           </Link>
           <Link
             href="/privacy"

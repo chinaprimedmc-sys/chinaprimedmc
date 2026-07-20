@@ -16,6 +16,7 @@ export const homeNavItems: NavigationItem[] = [
     href: "/styles",
   },
   { label: "Planning", href: "/planning" },
+  { label: "About AVIORA", href: "/about" },
   { label: "Journal", href: "/journal" },
 ];
 
