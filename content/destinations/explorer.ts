@@ -315,6 +315,10 @@ export const explorerDestinations: ExplorerDestination[] = [
   },
 ];
 
+for (const destination of explorerDestinations) {
+  destination.guideHref = `/destinations/${destination.id}`;
+}
+
 export const destinationInterestImages: Record<DestinationInterest, MediaAsset> = {
   icons: images.beijing,
   pandas: images.chengdu,

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/config/site";
-import { getDestinationSlugs } from "@/content/destinations";
+import { explorerDestinations } from "@/content/destinations/explorer";
 import { journalArticles } from "@/content/journal";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { getTravelStyleSlugs } from "@/content/travel-styles";
@@ -41,8 +41,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  const destinationEntries: MetadataRoute.Sitemap = getDestinationSlugs().map((slug) => ({
-    url: new URL(`/destinations/${slug}`, siteConfig.url).toString(),
+  const destinationEntries: MetadataRoute.Sitemap = explorerDestinations.map(({ id }) => ({
+    url: new URL(`/destinations/${id}`, siteConfig.url).toString(),
     changeFrequency: "monthly",
     priority: 0.8,
   }));

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { explorerDestinations } from "@/content/destinations/explorer";
 import { getAdminSessionCookieName, verifyAdminSession } from "@/lib/admin/session";
 
 const protectedPrefixes = ["/admin", "/api/admin", "/component-showcase", "/component-playground"];
@@ -14,7 +15,7 @@ const retiredAdminPaths = new Set([
   "/admin/system",
 ]);
 const staticPublicSlugs: Record<string, Set<string>> = {
-  destinations: new Set(["beijing", "shanghai", "chengdu"]),
+  destinations: new Set(explorerDestinations.map(({ id }) => id)),
   styles: new Set(["family", "luxury", "slow-travel", "photography"]),
   tours: new Set([
     "first-china-beautifully-paced",
