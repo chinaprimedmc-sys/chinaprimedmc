@@ -12,13 +12,13 @@ function R2ImageInput(props: ObjectInputProps<Record<string, unknown>>) {
     setUploading(true);
     setMessage("");
     try {
-      const response = await fetch("/api/admin/r2", {
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await fetch("/api/admin/r2/upload", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fileName: file.name, contentType: file.type, size: file.size }),
+        body: formData,
       });
       const result = (await response.json()) as {
-        uploadUrl?: string;
         publicUrl?: string;
         key?: string;
         error?: string;
@@ -26,16 +26,9 @@ function R2ImageInput(props: ObjectInputProps<Record<string, unknown>>) {
       if (response.status === 401) {
         throw new Error("后台登录已过期，请重新登录后再上传。");
       }
-      if (!response.ok || !result.uploadUrl || !result.publicUrl || !result.key) {
-        throw new Error(result.error || "无法创建上传地址。");
+      if (!response.ok || !result.publicUrl || !result.key) {
+        throw new Error(result.error || "图片上传失败。");
       }
-
-      const uploadResponse = await fetch(result.uploadUrl, {
-        method: "PUT",
-        headers: { "Content-Type": file.type },
-        body: file,
-      });
-      if (!uploadResponse.ok) throw new Error("图片上传到 R2 失败。");
 
       const dimensions = await readImageDimensions(file);
       props.onChange(
