@@ -18,6 +18,7 @@ export function SocialContactRail({
 }) {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const isBackend = pathname.startsWith("/admin") || pathname.startsWith("/studio");
   const [heroHasPassed, setHeroHasPassed] = useState(false);
 
   useEffect(() => {
@@ -43,6 +44,8 @@ export function SocialContactRail({
       observer.disconnect();
     };
   }, [isHomePage]);
+
+  if (isBackend) return null;
 
   const isVisible = !isHomePage || heroHasPassed;
 

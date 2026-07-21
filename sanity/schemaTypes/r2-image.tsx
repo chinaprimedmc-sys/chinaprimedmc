@@ -23,6 +23,9 @@ function R2ImageInput(props: ObjectInputProps<Record<string, unknown>>) {
         key?: string;
         error?: string;
       };
+      if (response.status === 401) {
+        throw new Error("后台登录已过期，请重新登录后再上传。");
+      }
       if (!response.ok || !result.uploadUrl || !result.publicUrl || !result.key) {
         throw new Error(result.error || "无法创建上传地址。");
       }
@@ -51,7 +54,7 @@ function R2ImageInput(props: ObjectInputProps<Record<string, unknown>>) {
           }),
         ),
       );
-      setMessage("已上传。请补充准确的英文 Alt 文本后再发布。");
+      setMessage("上传完成。请检查英文 Alt 文本和图片焦点，再发布内容。");
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "上传失败，请稍后重试。");
     } finally {
@@ -62,7 +65,9 @@ function R2ImageInput(props: ObjectInputProps<Record<string, unknown>>) {
 
   return (
     <div style={{ display: "grid", gap: 12 }}>
-      <div style={{ border: "1px solid #d8d8d8", borderRadius: 8, padding: 12 }}>
+      <div
+        style={{ border: "1px solid #d8ddd7", borderRadius: 8, padding: 14, background: "#f8faf7" }}
+      >
         <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           {typeof props.value?.url === "string" ? (
             <div style={{ width: 112, aspectRatio: "3 / 2", overflow: "hidden", borderRadius: 6 }}>
@@ -76,8 +81,8 @@ function R2ImageInput(props: ObjectInputProps<Record<string, unknown>>) {
           ) : null}
           <div style={{ display: "grid", gap: 8, flex: 1 }}>
             <strong style={{ fontSize: 14 }}>Cloudflare R2 媒体</strong>
-            <span style={{ color: "#666", fontSize: 13 }}>
-              建议使用 WebP/AVIF/JPEG，单张不超过 12 MB。
+            <span style={{ color: "#666", fontSize: 13, lineHeight: 1.6 }}>
+              WebP、AVIF、JPEG 或 PNG，单张不超过 12 MB。
             </span>
             <div>
               <button
@@ -86,9 +91,10 @@ function R2ImageInput(props: ObjectInputProps<Record<string, unknown>>) {
                 onClick={() => inputRef.current?.click()}
                 style={{
                   border: "1px solid #bbb",
-                  borderRadius: 6,
-                  background: "white",
-                  padding: "9px 12px",
+                  borderRadius: 999,
+                  background: "#173c2f",
+                  color: "white",
+                  padding: "9px 15px",
                   cursor: "pointer",
                 }}
               >
@@ -108,7 +114,11 @@ function R2ImageInput(props: ObjectInputProps<Record<string, unknown>>) {
           }}
         />
       </div>
-      {message ? <span style={{ fontSize: 13 }}>{message}</span> : null}
+      {message ? (
+        <span style={{ fontSize: 13, color: message.includes("完成") ? "#35674e" : "#9b3f38" }}>
+          {message}
+        </span>
+      ) : null}
       {props.renderDefault(props)}
     </div>
   );
@@ -137,9 +147,16 @@ export const r2ImageType = defineType({
       title: "公开 URL",
       type: "url",
       readOnly: true,
+      hidden: true,
       validation: (rule) => rule.required(),
     }),
-    defineField({ name: "key", title: "R2 Object Key", type: "string", readOnly: true }),
+    defineField({
+      name: "key",
+      title: "R2 Object Key",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: "alt",
       title: "英文 Alt 文本",

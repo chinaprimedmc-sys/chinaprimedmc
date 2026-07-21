@@ -1,13 +1,15 @@
 import Link from "next/link";
 
 import { getPublishedCmsJourneys, getPublishedCmsPosts } from "@/lib/cms/data";
+import { getPublicDestinations } from "@/lib/cms/public-content";
 import { getAdminInquiries } from "@/lib/inquiries/data";
 
 export default async function AdminDashboardPage() {
-  const [inquiries, journeys, posts] = await Promise.all([
+  const [inquiries, journeys, posts, destinations] = await Promise.all([
     getAdminInquiries(),
     getPublishedCmsJourneys(),
     getPublishedCmsPosts(),
+    getPublicDestinations(),
   ]);
   const r2Configured = Boolean(
     process.env.CLOUDFLARE_R2_ACCOUNT_ID &&
@@ -22,9 +24,14 @@ export default async function AdminDashboardPage() {
       value: inquiries.filter((item) => item.status === "new").length,
       href: "/admin/inquiries",
     },
-    { label: "已发布行程", value: journeys.length, href: "/studio/structure/journey" },
-    { label: "已发布博客", value: posts.length, href: "/studio/structure/blogPost" },
-    { label: "R2 媒体", value: r2Configured ? "已接通" : "待配置", href: "/studio" },
+    { label: "已发布行程", value: journeys.length, href: "/studio/content/journeys-live" },
+    { label: "目的地", value: destinations.length, href: "/studio/content/destinations-live" },
+    { label: "已发布博客", value: posts.length, href: "/studio/content/blogs-live" },
+    {
+      label: "R2 图片",
+      value: r2Configured ? "正常" : "待配置",
+      href: "/studio/content/dashboard",
+    },
   ];
   return (
     <div className="grid gap-7">
@@ -35,7 +42,7 @@ export default async function AdminDashboardPage() {
           客户询盘由 Supabase 安全保存；公开内容由 Sanity 管理，图片存储在 Cloudflare R2。
         </p>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         {cards.map((card) => (
           <Link
             key={card.label}

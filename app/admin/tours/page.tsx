@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default async function AdminToursPage() {
-  redirect("/studio/structure/journey");
+  redirect("/studio/content/journeys-live");
 }

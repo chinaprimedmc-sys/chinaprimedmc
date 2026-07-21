@@ -26,25 +26,25 @@ function isProtectedPath(pathname: string) {
   );
 }
 
-function applySecurityHeaders(response: NextResponse, studio = false) {
+function applySecurityHeaders(response: NextResponse, studio = false, studioPreview = false) {
   const csp = [
     "default-src 'self'",
     "base-uri 'self'",
     "form-action 'self' mailto:",
-    "frame-ancestors 'none'",
+    studioPreview ? "frame-ancestors 'self'" : "frame-ancestors 'none'",
     "object-src 'none'",
     "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://cdn.sanity.io https://*.r2.dev",
     "font-src 'self'",
     `script-src 'self' 'unsafe-inline'${studio ? " 'unsafe-eval' https://*.sanity.io https://*.sanity-cdn.com" : ""}`,
     "style-src 'self' 'unsafe-inline'",
-    `connect-src 'self' mailto: https://*.sanity.io https://*.sanity-cdn.com https://*.r2.cloudflarestorage.com${studio ? " wss://*.sanity.io" : ""}`,
+    `connect-src 'self' mailto: https://*.sanity.io https://*.sanity-cdn.com https://*.r2.cloudflarestorage.com${studio ? " https://registry.npmjs.org wss://*.sanity.io" : ""}`,
     "upgrade-insecure-requests",
   ].join("; ");
 
   response.headers.set("Content-Security-Policy", csp);
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set("X-Content-Type-Options", "nosniff");
-  response.headers.set("X-Frame-Options", "DENY");
+  response.headers.set("X-Frame-Options", studioPreview ? "SAMEORIGIN" : "DENY");
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
   response.headers.set("X-DNS-Prefetch-Control", "on");
   response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
@@ -56,7 +56,9 @@ function unauthorizedAdminResponse(request: NextRequest) {
   const isApi = request.nextUrl.pathname.startsWith("/api/");
   const denied = isApi
     ? NextResponse.json({ error: "Admin access required." }, { status: 401 })
-    : NextResponse.redirect(new URL("/admin/login", request.url));
+    : NextResponse.redirect(
+        new URL(`/admin/login?next=${encodeURIComponent(request.nextUrl.pathname)}`, request.url),
+      );
   denied.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
   return applySecurityHeaders(denied);
 }
@@ -65,6 +67,9 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const response = NextResponse.next();
   const isStudio = pathname === "/studio" || pathname.startsWith("/studio/");
+  const isStudioPreview =
+    request.nextUrl.searchParams.get("studioPreview") === "1" &&
+    request.headers.get("sec-fetch-site") === "same-origin";
 
   if (retiredAdminPaths.has(pathname)) {
     return applySecurityHeaders(NextResponse.redirect(new URL("/admin", request.url)), isStudio);
@@ -93,7 +98,7 @@ export async function proxy(request: NextRequest) {
     }
   }
 
-  return applySecurityHeaders(response, isStudio);
+  return applySecurityHeaders(response, isStudio, isStudioPreview);
 }
 
 export const config = {
