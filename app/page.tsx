@@ -41,7 +41,8 @@ export default async function HomePage() {
     .filter((journey) => journey.hero_image)
     .map((journey, index) => ({
       title: journey.title,
-      titleLocation: journey.route,
+      navLabel: journey.title,
+      titleLocation: journey.title,
       titleExperience: "",
       titleSuffix: "Private Journey",
       durationBadge: journey.duration_label.toUpperCase(),

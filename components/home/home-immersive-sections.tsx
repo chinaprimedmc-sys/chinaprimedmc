@@ -25,6 +25,7 @@ type PlanningStep = {
 
 type FeaturedJourney = {
   title: string;
+  navLabel: string;
   titleLocation: string;
   titleExperience: string;
   titleSuffix: string;
@@ -274,7 +275,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
             >
               <span>{String(index + 1).padStart(2, "0")}</span>
               <i />
-              <strong>{index === 0 ? "Essential China" : "Chengdu"}</strong>
+              <strong>{journey.navLabel || journey.title}</strong>
             </button>
           ))}
         </div>
