@@ -27,6 +27,7 @@ import { Section } from "@/design-system/primitives/section";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { getPublicHomePage, getPublicSiteSettings } from "@/lib/cms/public-content";
+import { mergeCoreJourneyFallbacks } from "@/lib/cms/core-journey-fallbacks";
 
 export const metadata: Metadata = createMetadata({
   title: "Private China Tours for Families, Couples, and Luxury Travelers",
@@ -37,7 +38,7 @@ export const metadata: Metadata = createMetadata({
 
 export default async function HomePage() {
   const [home, settings] = await Promise.all([getPublicHomePage(), getPublicSiteSettings()]);
-  const featuredJourneys = home.featuredJourneys
+  const featuredJourneys = mergeCoreJourneyFallbacks(home.featuredJourneys)
     .filter((journey) => journey.hero_image)
     .map((journey, index) => ({
       title: journey.title,

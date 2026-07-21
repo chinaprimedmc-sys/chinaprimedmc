@@ -24,6 +24,7 @@ import {
   getSanitySiteSettings,
   type SanityDestination,
 } from "@/lib/cms/sanity";
+import { mergeCoreJourneyFallbacks } from "@/lib/cms/core-journey-fallbacks";
 import type { MediaAsset } from "@/types/component-library";
 
 export async function getPublicSiteSettings() {
@@ -124,7 +125,7 @@ export async function getPublicDestinationHub() {
     journeysCopy:
       value?.journeysCopy ||
       "These private routes show how different chapters of China can connect without forcing the pace.",
-    featuredJourneys: value?.featuredJourneys || [],
+    featuredJourneys: mergeCoreJourneyFallbacks(value?.featuredJourneys || []),
     ctaEyebrow: value?.ctaEyebrow || "05 · A route made personal",
     ctaTitle: value?.ctaTitle || "Not sure where to begin?",
     ctaCopy:

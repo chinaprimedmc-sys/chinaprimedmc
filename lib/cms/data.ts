@@ -7,18 +7,23 @@ import {
   getSanityPost,
   getSanityPosts,
 } from "@/lib/cms/sanity";
+import {
+  getCoreJourneyFallback,
+  mergeCoreJourneyFallbacks,
+  normalizeCoreJourneyTitle,
+} from "@/lib/cms/core-journey-fallbacks";
 import type { CmsMediaAsset } from "@/lib/cms/types";
 
 const mediaColumns =
   "id,file_name,url,storage_path,mime_type,size_bytes,width,height,alt_text,object_position";
 
 export async function getPublishedCmsJourneys() {
-  return (await safeSanity(getSanityJourneys)) ?? [];
+  return mergeCoreJourneyFallbacks((await safeSanity(getSanityJourneys)) ?? []);
 }
 
 export async function getPublishedCmsJourney(slug: string) {
   const sanityJourney = await safeSanity(() => getSanityJourney(slug));
-  return sanityJourney ?? null;
+  return sanityJourney ? normalizeCoreJourneyTitle(sanityJourney) : getCoreJourneyFallback(slug);
 }
 
 export async function getPublishedCmsPosts() {
