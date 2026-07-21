@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 const projectRoot = new URL("../", import.meta.url);
 const env = parseEnv(await readFile(new URL(".env.local", projectRoot), "utf8"));
 const tokenPath = process.argv[2];
+const skipR2Upload = process.argv.includes("--skip-r2-upload");
 
 if (!tokenPath) throw new Error("Pass the temporary Sanity token file path.");
 
@@ -47,22 +48,26 @@ const [journeys, media] = await Promise.all([
 
 const mediaBySource = new Map();
 for (const asset of media) {
-  const sourceResponse = await fetch(asset.url);
-  if (!sourceResponse.ok) throw new Error(`Could not download ${asset.file_name}.`);
+  const key = skipR2Upload
+    ? `${asset.id}-${safeFileName(asset.file_name)}`
+    : `cms/migrated/${asset.id}-${safeFileName(asset.file_name)}`;
+  if (!skipR2Upload) {
+    const sourceResponse = await fetch(asset.url);
+    if (!sourceResponse.ok) throw new Error(`Could not download ${asset.file_name}.`);
 
-  const body = Buffer.from(await sourceResponse.arrayBuffer());
-  const key = `cms/migrated/${asset.id}-${safeFileName(asset.file_name)}`;
-  await r2.send(
-    new PutObjectCommand({
-      Bucket: env.CLOUDFLARE_R2_BUCKET,
-      Key: key,
-      Body: body,
-      ContentType: asset.mime_type,
-      CacheControl: "public, max-age=31536000, immutable",
-    }),
-  );
+    const body = Buffer.from(await sourceResponse.arrayBuffer());
+    await r2.send(
+      new PutObjectCommand({
+        Bucket: env.CLOUDFLARE_R2_BUCKET,
+        Key: key,
+        Body: body,
+        ContentType: asset.mime_type,
+        CacheControl: "public, max-age=31536000, immutable",
+      }),
+    );
+    process.stdout.write(`Uploaded ${asset.file_name}\n`);
+  }
   mediaBySource.set(asset.url, toR2Image(asset, key));
-  process.stdout.write(`Uploaded ${asset.file_name}\n`);
 }
 
 const destinationNames = new Set(
