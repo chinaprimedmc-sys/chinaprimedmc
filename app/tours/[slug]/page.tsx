@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { getTourBySlug } from "@/content/tours";
 import { CmsJourneyTemplate } from "@/features/tours/cms-journey-template";
+import { TourTemplate } from "@/features/tours/tour-template";
 import { isIndexableCmsJourney } from "@/lib/cms/adapters";
 import { getPublishedCmsJourney, getPublishedCmsJourneys } from "@/lib/cms/data";
 import { getPublicSiteSettings } from "@/lib/cms/public-content";
@@ -20,6 +22,17 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const staticTour = getTourBySlug(slug);
+
+  if (staticTour) {
+    return createMetadata({
+      title: staticTour.seo.title,
+      description: staticTour.seo.description,
+      path: `/tours/${staticTour.slug}`,
+      image: staticTour.hero.image.src,
+    });
+  }
+
   const cmsJourney = await getPublishedCmsJourney(slug);
 
   if (!cmsJourney) {
@@ -37,6 +50,24 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 
 export default async function TourPage({ params }: TourPageProps) {
   const { slug } = await params;
+  const staticTour = getTourBySlug(slug);
+
+  if (staticTour) {
+    return (
+      <>
+        <JsonLd
+          id={`${staticTour.slug}-breadcrumb-schema`}
+          data={breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Journeys", path: "/tours" },
+            { name: staticTour.title, path: `/tours/${staticTour.slug}` },
+          ])}
+        />
+        <TourTemplate tour={staticTour} />
+      </>
+    );
+  }
+
   const [cmsJourney, settings] = await Promise.all([
     getPublishedCmsJourney(slug),
     getPublicSiteSettings(),
