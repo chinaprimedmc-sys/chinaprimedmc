@@ -23,11 +23,13 @@ type AdminPageHeaderProps = {
   eyebrow?: string;
   title: string;
   description: string;
+  actions?: ReactNode;
   primaryLabel?: string;
   secondaryLabel?: string;
 };
 
 export function AdminPageHeader({
+  actions,
   description,
   eyebrow = "China Prime DMC 后台",
   primaryLabel = "新增内容",
@@ -44,14 +46,18 @@ export function AdminPageHeader({
         <p className="text-muted mt-3 max-w-3xl text-sm leading-6 md:text-base">{description}</p>
       </div>
       <div className="flex flex-wrap gap-2">
-        <Button variant="secondary" className="gap-2">
-          <Eye size={16} aria-hidden="true" />
-          {secondaryLabel}
-        </Button>
-        <Button className="gap-2">
-          <Plus size={16} aria-hidden="true" />
-          {primaryLabel}
-        </Button>
+        {actions || (
+          <>
+            <Button variant="secondary" className="gap-2">
+              <Eye size={16} aria-hidden="true" />
+              {secondaryLabel}
+            </Button>
+            <Button className="gap-2">
+              <Plus size={16} aria-hidden="true" />
+              {primaryLabel}
+            </Button>
+          </>
+        )}
       </div>
     </section>
   );

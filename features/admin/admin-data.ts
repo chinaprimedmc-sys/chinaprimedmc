@@ -1,4 +1,4 @@
-import { BookOpenText, Gauge, ImageIcon, Inbox, Luggage } from "lucide-react";
+import { BookOpenText, Gauge, ImageIcon, Inbox, Luggage, ShieldCheck } from "lucide-react";
 
 import { destinationAsset } from "@/content/destinations/assets";
 import { journalArticles } from "@/content/journal";
@@ -10,6 +10,7 @@ export const adminNavigation = [
   { label: "线路管理", href: "/studio/content/journeys-live", icon: Luggage },
   { label: "旅行杂志", href: "/studio/content/blogs-live", icon: BookOpenText },
   { label: "询盘管理", href: "/admin/inquiries", icon: Inbox },
+  { label: "系统健康", href: "/admin/system", icon: ShieldCheck },
 ];
 
 export const dashboardStats = [

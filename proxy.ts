@@ -17,7 +17,6 @@ const retiredAdminPaths = new Set([
   "/admin/experiences",
   "/admin/seo",
   "/admin/settings",
-  "/admin/system",
 ]);
 
 function isProtectedPath(pathname: string) {
