@@ -53,7 +53,7 @@ function applySecurityHeaders(response: NextResponse, studio = false) {
     "object-src 'none'",
     "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://cdn.sanity.io https://*.r2.dev",
     "font-src 'self'",
-    `script-src 'self' 'unsafe-inline'${studio ? " 'unsafe-eval' https://*.sanity.io" : ""}`,
+    `script-src 'self' 'unsafe-inline'${studio ? " 'unsafe-eval' https://*.sanity.io https://*.sanity-cdn.com" : ""}`,
     "style-src 'self' 'unsafe-inline'",
     `connect-src 'self' mailto: https://*.sanity.io https://*.sanity-cdn.com https://*.r2.cloudflarestorage.com${studio ? " wss://*.sanity.io" : ""}`,
     "upgrade-insecure-requests",

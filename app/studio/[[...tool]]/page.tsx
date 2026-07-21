@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { NextStudio } from "next-sanity/studio";
 
-import config from "@/sanity.config";
+import { StudioClient } from "@/app/studio/studio-client";
 
 export const metadata: Metadata = {
   title: "AVIORA 内容后台",
@@ -9,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function StudioPage() {
-  return <NextStudio config={config} />;
+  return <StudioClient />;
 }
