@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { inquirySchema } from "@/lib/inquiries/schema";
 import { createInquiry } from "@/lib/inquiries/supabase";
 import { consumeRateLimit, hashRateLimitKey } from "@/lib/security/rate-limit";
+import { verifyTurnstileToken } from "@/lib/security/turnstile";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -51,7 +52,9 @@ export async function POST(request: Request) {
       );
     }
     stage = "turnstile";
-    if (!(await verifyTurnstile(parsed.data.turnstileToken, ip))) {
+    if (
+      !(await verifyTurnstileToken(parsed.data.turnstileToken, ip, new URL(request.url).hostname))
+    ) {
       return NextResponse.json(
         { error: "Security check failed. Please try again." },
         { status: 400 },
@@ -91,28 +94,20 @@ function summarizeInquiryError(error: unknown) {
   return error.name;
 }
 
-async function verifyTurnstile(token: string, ip: string) {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true;
-  if (!token) return false;
-  const body = new URLSearchParams({ secret, response: token, remoteip: ip });
-  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    method: "POST",
-    body,
-    cache: "no-store",
-  });
-  const result = (await response.json()) as { success?: boolean };
-  return result.success === true;
-}
-
 async function notifyInquiry(input: import("@/lib/inquiries/schema").InquiryInput) {
   const webhook = process.env.INQUIRY_WEBHOOK_URL;
   if (!webhook) return;
+  const inquiry = Object.fromEntries(
+    Object.entries(input).filter(([key]) => key !== "turnstileToken" && key !== "website"),
+  );
+  const webhookUrl = new URL(webhook);
+  if (webhookUrl.protocol !== "https:") throw new Error("Inquiry webhook must use HTTPS.");
   const response = await fetch(webhook, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ event: "inquiry.created", inquiry: input }),
+    body: JSON.stringify({ event: "inquiry.created", inquiry }),
     cache: "no-store",
+    signal: AbortSignal.timeout(5000),
   });
   if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
 }

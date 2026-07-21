@@ -26,21 +26,29 @@ function isProtectedPath(pathname: string) {
   );
 }
 
-function applySecurityHeaders(response: NextResponse, studio = false, studioPreview = false) {
-  const csp = [
+function buildContentSecurityPolicy(studio: boolean, studioPreview: boolean, nonce = "") {
+  const r2Source = getR2Source();
+  const development = process.env.NODE_ENV !== "production";
+  return [
     "default-src 'self'",
     "base-uri 'self'",
     "form-action 'self' mailto:",
     studioPreview ? "frame-ancestors 'self'" : "frame-ancestors 'none'",
     "object-src 'none'",
-    "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://cdn.sanity.io https://*.r2.dev",
+    `img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://cdn.sanity.io https://*.r2.dev${r2Source}`,
     "font-src 'self'",
-    `script-src 'self' 'unsafe-inline'${studio ? " 'unsafe-eval' https://*.sanity.io https://*.sanity-cdn.com" : ""}`,
+    studio
+      ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.sanity.io https://*.sanity-cdn.com"
+      : `script-src 'self' 'nonce-${nonce}' https://challenges.cloudflare.com${development ? " 'unsafe-eval'" : ""}`,
     "style-src 'self' 'unsafe-inline'",
-    `connect-src 'self' mailto: https://*.sanity.io https://*.sanity-cdn.com https://*.r2.cloudflarestorage.com${studio ? " https://registry.npmjs.org wss://*.sanity.io" : ""}`,
+    `connect-src 'self' mailto: https://*.sanity.io https://*.sanity-cdn.com https://*.r2.cloudflarestorage.com https://challenges.cloudflare.com${studio ? " https://registry.npmjs.org wss://*.sanity.io" : ""}${development ? " ws: wss:" : ""}`,
+    "frame-src 'self' https://challenges.cloudflare.com https://*.sanity.io",
+    "worker-src 'self' blob:",
     "upgrade-insecure-requests",
   ].join("; ");
+}
 
+function applySecurityHeaders(response: NextResponse, csp: string, studioPreview = false) {
   response.headers.set("Content-Security-Policy", csp);
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set("X-Content-Type-Options", "nosniff");
@@ -48,11 +56,13 @@ function applySecurityHeaders(response: NextResponse, studio = false, studioPrev
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
   response.headers.set("X-DNS-Prefetch-Control", "on");
   response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  response.headers.set("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+  response.headers.set("Origin-Agent-Cluster", "?1");
 
   return response;
 }
 
-function unauthorizedAdminResponse(request: NextRequest) {
+function unauthorizedAdminResponse(request: NextRequest, csp: string) {
   const isApi = request.nextUrl.pathname.startsWith("/api/");
   const denied = isApi
     ? NextResponse.json({ error: "Admin access required." }, { status: 401 })
@@ -60,33 +70,43 @@ function unauthorizedAdminResponse(request: NextRequest) {
         new URL(`/admin/login?next=${encodeURIComponent(request.nextUrl.pathname)}`, request.url),
       );
   denied.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
-  return applySecurityHeaders(denied);
+  return applySecurityHeaders(denied, csp);
 }
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const response = NextResponse.next();
   const isStudio = pathname === "/studio" || pathname.startsWith("/studio/");
   const isStudioPreview =
     request.nextUrl.searchParams.get("studioPreview") === "1" &&
     request.headers.get("sec-fetch-site") === "same-origin";
+  const nonce = isStudio ? "" : createNonce();
+  const csp = buildContentSecurityPolicy(isStudio, isStudioPreview, nonce);
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("Content-Security-Policy", csp);
+  if (nonce) requestHeaders.set("x-nonce", nonce);
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
+
+  if (isProtectedPath(pathname)) {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+    response.headers.set("Cache-Control", "private, no-store");
+  }
 
   if (retiredAdminPaths.has(pathname)) {
-    return applySecurityHeaders(NextResponse.redirect(new URL("/admin", request.url)), isStudio);
+    return applySecurityHeaders(
+      NextResponse.redirect(new URL("/admin", request.url)),
+      csp,
+      isStudioPreview,
+    );
   }
 
   if (isProtectedPath(pathname) && !publicAdminPaths.has(pathname)) {
-    response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
-
     const session = await verifyAdminSession(
       request.cookies.get(getAdminSessionCookieName())?.value,
     );
 
     if (!session) {
-      return unauthorizedAdminResponse(request);
+      return unauthorizedAdminResponse(request, csp);
     }
-    response.headers.set("Cache-Control", "private, no-store");
-
     if (
       pathname.startsWith("/api/admin") &&
       !["GET", "HEAD", "OPTIONS"].includes(request.method) &&
@@ -94,23 +114,30 @@ export async function proxy(request: NextRequest) {
     ) {
       return applySecurityHeaders(
         NextResponse.json({ error: "Invalid request origin." }, { status: 403 }),
+        csp,
       );
     }
   }
 
-  return applySecurityHeaders(response, isStudio, isStudioPreview);
+  return applySecurityHeaders(response, csp, isStudioPreview);
+}
+
+function createNonce() {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  return btoa(String.fromCharCode(...bytes));
+}
+
+function getR2Source() {
+  try {
+    const url = new URL(process.env.NEXT_PUBLIC_CLOUDFLARE_R2_PUBLIC_URL || "");
+    return url.protocol === "https:" ? ` ${url.origin}` : "";
+  } catch {
+    return "";
+  }
 }
 
 export const config = {
   matcher: [
-    "/admin/:path*",
-    "/api/admin/:path*",
-    "/studio/:path*",
-    "/component-showcase/:path*",
-    "/component-playground/:path*",
-    "/tours/:slug",
-    "/journal/:slug",
-    "/destinations/:slug",
-    "/styles/:slug",
+    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif)$).*)",
   ],
 };

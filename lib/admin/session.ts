@@ -1,9 +1,11 @@
 const sessionCookieName = "aviora_admin_session";
-const sessionLifetimeSeconds = 60 * 60 * 8;
+const sessionLifetimeSeconds = 60 * 60 * 4;
 
 type AdminSession = {
   username: string;
+  issuedAt: number;
   expiresAt: number;
+  version: string;
 };
 
 export function getAdminSessionCookieName() {
@@ -21,9 +23,12 @@ export function getAdminSessionCookieOptions() {
 }
 
 export async function createAdminSession(username: string) {
+  const issuedAt = Math.floor(Date.now() / 1000);
   const payload: AdminSession = {
     username,
-    expiresAt: Math.floor(Date.now() / 1000) + sessionLifetimeSeconds,
+    issuedAt,
+    expiresAt: issuedAt + sessionLifetimeSeconds,
+    version: getSessionVersion(),
   };
   const encoded = encodeBase64Url(JSON.stringify(payload));
   const signature = await sign(encoded);
@@ -40,18 +45,41 @@ export async function verifyAdminSession(value: string | undefined) {
 
   try {
     const payload = JSON.parse(decodeBase64Url(encoded)) as AdminSession;
-    if (!payload.username || payload.expiresAt <= Math.floor(Date.now() / 1000)) return null;
+    const now = Math.floor(Date.now() / 1000);
+    if (
+      !payload.username ||
+      !payload.issuedAt ||
+      payload.issuedAt > now + 60 ||
+      payload.expiresAt <= now ||
+      payload.version !== getSessionVersion()
+    )
+      return null;
     return payload;
   } catch {
     return null;
   }
 }
 
+function getSessionVersion() {
+  return process.env.ADMIN_SESSION_VERSION?.trim() || "1";
+}
+
 export function adminCredentialsMatch(username: string, password: string) {
+  if (!adminConfigurationIsSecure()) return false;
   return (
     constantTimeEqual(username, process.env.ADMIN_USERNAME ?? "") &&
     constantTimeEqual(password, process.env.ADMIN_PASSWORD ?? "")
   );
+}
+
+export function adminConfigurationIsSecure() {
+  const username = process.env.ADMIN_USERNAME ?? "";
+  const password = process.env.ADMIN_PASSWORD ?? "";
+  const secret = process.env.ADMIN_SESSION_SECRET ?? "";
+  if (process.env.NODE_ENV !== "production") {
+    return Boolean(username && password && secret.length >= 32);
+  }
+  return username.length >= 3 && password.length >= 16 && secret.length >= 32;
 }
 
 async function sign(value: string) {

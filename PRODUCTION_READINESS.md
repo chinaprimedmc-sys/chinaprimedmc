@@ -18,27 +18,29 @@ pnpm build
 
 ## Required Environment Variables
 
-- `NEXT_PUBLIC_SITE_URL`: canonical public origin, for example `https://chinaprimedmc.com`
-- `ADMIN_USERNAME`: admin username for `/admin`, `/component-showcase`, and `/component-playground`
-- `ADMIN_PASSWORD`: admin password for `/admin`, `/component-showcase`, and `/component-playground`
-- `INQUIRY_NOTIFICATION_EMAIL`: operational inbox for future server-side inquiry delivery
+Use `.env.example` as the authoritative inventory. Production requires:
 
-Optional analytics variables:
+- Supabase URL, anonymous key, and service-role key for private inquiries.
+- Sanity project ID, dataset, and revalidation secret for public content.
+- Cloudflare R2 account, access keys, bucket, and public URL for CMS media.
+- `ADMIN_USERNAME`, a unique random `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`,
+  `ADMIN_SESSION_VERSION`, and `RATE_LIMIT_SALT` for the owner dashboard.
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` for inquiry abuse protection.
+- `NEXT_PUBLIC_SITE_URL=https://www.chinaprimedmc.com` for canonical and Turnstile hostname checks.
 
-- `NEXT_PUBLIC_GA4_ID`
-- `NEXT_PUBLIC_GTM_ID`
-- `NEXT_PUBLIC_CLARITY_ID`
+Never place service-role keys, admin credentials, or secret keys in a `NEXT_PUBLIC_*` variable.
 
 ## Admin Access
 
-In production, open `/admin` and enter the HTTP Basic Auth credentials configured through:
+In production, open `/admin` and enter the application credentials configured through:
 
 ```text
 ADMIN_USERNAME
 ADMIN_PASSWORD
 ```
 
-Without valid credentials, admin routes return `401`.
+The application issues a four-hour, signed, HttpOnly, Secure, SameSite Strict session cookie.
+Increment `ADMIN_SESSION_VERSION` whenever every existing admin session must be revoked.
 
 ## Rollback
 
@@ -50,17 +52,18 @@ Keep the previous successful deployment available in the hosting platform. If a 
 
 ## Backup
 
-This release uses static content files. Before connecting a database-backed CMS, back up:
-
-- `content/`
-- `public/`
-- deployment environment variables
-- any future media storage bucket
+Back up Supabase inquiries, the Sanity production dataset, Cloudflare R2 objects, and deployment
+environment variables. Test restoration periodically instead of treating backup creation as proof of
+recoverability.
 
 ## Prelaunch Manual Checks
 
 - Confirm final domain points to the production deployment.
 - Confirm `ADMIN_USERNAME` and `ADMIN_PASSWORD` are set.
-- Confirm `/admin` returns `401` without credentials in production.
-- Submit a test inquiry via the mailto flow.
+- Confirm `/admin` redirects to login and protected APIs return `401` without a session.
+- Confirm old `/api/admin/cms`, `/api/admin/cms/revisions`, and `/api/admin/media` endpoints return
+  `410` after authentication.
+- Complete Turnstile and submit a real inquiry, then confirm it appears only in the protected admin.
+- Upload valid and invalid image fixtures to confirm signature and dimension validation.
+- Confirm public pages use nonce-based CSP while `/studio` uses its isolated Sanity policy.
 - Inspect Search Console after sitemap submission.

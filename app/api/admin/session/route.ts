@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import {
+  adminConfigurationIsSecure,
   adminCredentialsMatch,
   createAdminSession,
   getAdminSessionCookieName,
@@ -9,6 +10,13 @@ import {
 import { consumeRateLimit, hashRateLimitKey } from "@/lib/security/rate-limit";
 
 export async function POST(request: Request) {
+  if (!isSameOrigin(request)) {
+    return NextResponse.json({ error: "Invalid request origin." }, { status: 403 });
+  }
+  if (!adminConfigurationIsSecure()) {
+    console.error("Admin authentication configuration does not meet production requirements.");
+    return NextResponse.json({ error: "后台安全配置不完整，请联系管理员。" }, { status: 503 });
+  }
   const body = (await request.json().catch(() => null)) as {
     username?: string;
     password?: string;
@@ -32,11 +40,19 @@ export async function POST(request: Request) {
   return response;
 }
 
-export async function DELETE() {
+export async function DELETE(request: Request) {
+  if (!isSameOrigin(request)) {
+    return NextResponse.json({ error: "Invalid request origin." }, { status: 403 });
+  }
   const response = NextResponse.json({ ok: true });
   response.cookies.set(getAdminSessionCookieName(), "", {
     ...getAdminSessionCookieOptions(),
     maxAge: 0,
   });
   return response;
+}
+
+function isSameOrigin(request: Request) {
+  const origin = request.headers.get("origin");
+  return Boolean(origin && origin === new URL(request.url).origin);
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { CtaButton } from "@/components/cta";
 import {
@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { startPlanningOptions } from "@/content/planning";
 import { cn } from "@/lib/utils/cn";
+import { isTurnstileConfigured, TurnstileWidget } from "@/components/security/turnstile-widget";
 
 type PlanningFormState = {
   travelerType: string;
@@ -73,6 +74,9 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+  const handleTurnstileToken = useCallback((token: string) => setTurnstileToken(token), []);
 
   const progress = ((step + 1) / steps.length) * 100;
 
@@ -177,6 +181,10 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
             setSubmitError(validationError);
             return;
           }
+          if (!isTurnstileConfigured || !turnstileToken) {
+            setSubmitError("Please complete the security verification before submitting.");
+            return;
+          }
 
           setSubmitting(true);
           setSubmitError("");
@@ -190,6 +198,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
                 ...state,
                 ...sourceContext,
                 website: "",
+                turnstileToken,
               }),
             });
             const result = (await response.json()) as { error?: string };
@@ -200,6 +209,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
 
             setSubmitted(true);
           } catch (error) {
+            setTurnstileResetSignal((current) => current + 1);
             setSubmitError(
               error instanceof Error
                 ? error.message
@@ -366,6 +376,10 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
               aria-hidden="true"
               className="hidden"
             />
+            <TurnstileWidget
+              onTokenChange={handleTurnstileToken}
+              resetSignal={turnstileResetSignal}
+            />
           </div>
         ) : null}
 
@@ -379,7 +393,10 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
             <ArrowLeft size={16} aria-hidden="true" />
             Back
           </Button>
-          <Button type="submit" disabled={submitting}>
+          <Button
+            type="submit"
+            disabled={submitting || (step === steps.length - 1 && !isTurnstileConfigured)}
+          >
             {step === steps.length - 1
               ? submitting
                 ? "Submitting..."
