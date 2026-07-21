@@ -6,7 +6,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createMetadata({
   title: "后台管理系统",
-  description: "China Prime DMC 中文内容管理后台。",
+  description: "AVIORA 询盘与网站运营后台。",
   path: "/admin",
   noIndex: true,
   noFollow: true,

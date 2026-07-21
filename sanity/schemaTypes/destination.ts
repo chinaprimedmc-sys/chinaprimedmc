@@ -1,0 +1,107 @@
+import { defineArrayMember, defineField, defineType } from "sanity";
+
+import { commonGroups, portableTextField, seoFields } from "@/sanity/schemaTypes/shared";
+
+export const destinationType = defineType({
+  name: "destination",
+  title: "目的地",
+  type: "document",
+  groups: commonGroups,
+  fields: [
+    defineField({
+      name: "name",
+      title: "城市/地区英文名",
+      type: "string",
+      group: "content",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "slug",
+      title: "URL Slug",
+      type: "slug",
+      options: { source: "name", maxLength: 80 },
+      group: "content",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "region",
+      title: "区域",
+      type: "string",
+      group: "content",
+      options: {
+        list: [
+          "North China",
+          "East China",
+          "Southwest China",
+          "Northwest China",
+          "Central China",
+          "South China",
+          "Northeast China",
+        ],
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "headline",
+      title: "页面主标题",
+      type: "string",
+      group: "content",
+      validation: (rule) => rule.required().min(12),
+    }),
+    defineField({
+      name: "summary",
+      title: "目的地摘要",
+      type: "text",
+      rows: 4,
+      group: "content",
+      validation: (rule) => rule.required().min(80).max(500),
+    }),
+    defineField({ name: "recommendedStay", title: "建议停留", type: "string", group: "content" }),
+    defineField({ name: "bestTime", title: "适合季节", type: "string", group: "content" }),
+    portableTextField,
+    defineField({
+      name: "heroImage",
+      title: "Hero 图片",
+      type: "r2Image",
+      group: "media",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "gallery",
+      title: "图片画廊",
+      type: "array",
+      of: [defineArrayMember({ type: "r2Image" })],
+      group: "media",
+    }),
+    defineField({
+      name: "highlights",
+      title: "体验亮点",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+      group: "content",
+    }),
+    defineField({
+      name: "relatedJourneys",
+      title: "关联行程",
+      type: "array",
+      of: [defineArrayMember({ type: "reference", to: [{ type: "journey" }] })],
+      group: "relations",
+    }),
+    defineField({
+      name: "featured",
+      title: "目的地页精选",
+      type: "boolean",
+      initialValue: false,
+      group: "relations",
+    }),
+    defineField({
+      name: "sortOrder",
+      title: "排序",
+      type: "number",
+      initialValue: 100,
+      group: "relations",
+    }),
+    ...seoFields,
+  ],
+  preview: { select: { title: "name", subtitle: "region" } },
+});

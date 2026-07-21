@@ -1,6 +1,5 @@
-import { MediaManager } from "@/features/admin/media-manager";
-import { getAdminMedia } from "@/lib/cms/data";
+import { redirect } from "next/navigation";
 
 export default async function AdminMediaPage() {
-  return <MediaManager initialItems={await getAdminMedia()} />;
+  redirect("/studio");
 }

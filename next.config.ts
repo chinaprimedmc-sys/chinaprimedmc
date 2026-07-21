@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 
+const r2PublicUrl = process.env.NEXT_PUBLIC_CLOUDFLARE_R2_PUBLIC_URL;
+const r2PublicHost = r2PublicUrl ? new URL(r2PublicUrl).hostname : null;
+
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
@@ -9,11 +12,11 @@ const securityHeaders = [
       "form-action 'self' mailto:",
       "frame-ancestors 'none'",
       "object-src 'none'",
-      "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co",
+      "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://cdn.sanity.io https://*.r2.dev",
       "font-src 'self'",
       "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
-      "connect-src 'self' mailto:",
+      "connect-src 'self' mailto: https://*.sanity.io https://*.sanity-cdn.com https://*.r2.cloudflarestorage.com",
       "upgrade-insecure-requests",
     ].join("; "),
   },
@@ -63,6 +66,22 @@ const nextConfig: NextConfig = {
         hostname: "nuffatfbaydrzigihman.supabase.co",
         pathname: "/storage/v1/object/public/cms-media/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+      {
+        protocol: "https",
+        hostname: "**.r2.dev",
+      },
+      ...(r2PublicHost
+        ? [
+            {
+              protocol: "https" as const,
+              hostname: r2PublicHost,
+            },
+          ]
+        : []),
     ],
     deviceSizes: [360, 414, 640, 720, 768, 1024, 1280, 1536, 1920],
     imageSizes: [64, 96, 128, 256, 384],

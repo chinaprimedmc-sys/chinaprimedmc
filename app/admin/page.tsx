@@ -1,32 +1,39 @@
 import Link from "next/link";
 
-import { getAdminCmsRows, getAdminMedia } from "@/lib/cms/data";
-import type { CmsBlogPost, CmsJourney } from "@/lib/cms/types";
+import { getPublishedCmsJourneys, getPublishedCmsPosts } from "@/lib/cms/data";
 import { getAdminInquiries } from "@/lib/inquiries/data";
 
 export default async function AdminDashboardPage() {
-  const [inquiries, journeys, posts, media] = await Promise.all([
+  const [inquiries, journeys, posts] = await Promise.all([
     getAdminInquiries(),
-    getAdminCmsRows<CmsJourney>("cms_journeys"),
-    getAdminCmsRows<CmsBlogPost>("cms_blog_posts"),
-    getAdminMedia(),
+    getPublishedCmsJourneys(),
+    getPublishedCmsPosts(),
   ]);
+  const r2Configured = Boolean(
+    process.env.CLOUDFLARE_R2_ACCOUNT_ID &&
+    process.env.CLOUDFLARE_R2_ACCESS_KEY_ID &&
+    process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY &&
+    process.env.CLOUDFLARE_R2_BUCKET &&
+    process.env.NEXT_PUBLIC_CLOUDFLARE_R2_PUBLIC_URL,
+  );
   const cards = [
     {
       label: "新询盘",
       value: inquiries.filter((item) => item.status === "new").length,
       href: "/admin/inquiries",
     },
-    { label: "行程", value: journeys.length, href: "/admin/tours" },
-    { label: "博客", value: posts.length, href: "/admin/journal" },
-    { label: "媒体", value: media.length, href: "/admin/media" },
+    { label: "已发布行程", value: journeys.length, href: "/studio/structure/journey" },
+    { label: "已发布博客", value: posts.length, href: "/studio/structure/blogPost" },
+    { label: "R2 媒体", value: r2Configured ? "已接通" : "待配置", href: "/studio" },
   ];
   return (
     <div className="grid gap-7">
       <div>
         <p className="text-muted text-xs font-semibold tracking-[0.14em] uppercase">实时数据</p>
         <h1 className="mt-2 text-4xl font-semibold">运营概览</h1>
-        <p className="text-muted mt-2">所有数字均直接来自 Supabase，不包含示例数据。</p>
+        <p className="text-muted mt-2">
+          客户询盘由 Supabase 安全保存；公开内容由 Sanity 管理，图片存储在 Cloudflare R2。
+        </p>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {cards.map((card) => (

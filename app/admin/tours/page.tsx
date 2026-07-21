@@ -1,8 +1,5 @@
-import { CmsEditor } from "@/features/admin/cms-editor";
-import { getAdminCmsRows } from "@/lib/cms/data";
-import type { CmsJourney } from "@/lib/cms/types";
+import { redirect } from "next/navigation";
 
 export default async function AdminToursPage() {
-  const journeys = await getAdminCmsRows<CmsJourney>("cms_journeys");
-  return <CmsEditor type="journey" initialItems={journeys} />;
+  redirect("/studio/structure/journey");
 }

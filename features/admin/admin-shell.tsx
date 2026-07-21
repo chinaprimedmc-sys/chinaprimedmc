@@ -42,7 +42,7 @@ export function AdminShell({ children }: AdminShellProps) {
               China Prime DMC
             </span>
             <span className={cn("text-muted block text-xs", collapsed && "sr-only")}>
-              中文内容管理后台
+              询盘与运营中心
             </span>
             {collapsed ? (
               <span className="bg-foreground text-background grid size-10 place-items-center rounded-2xl text-sm font-bold">
@@ -113,7 +113,7 @@ export function AdminShell({ children }: AdminShellProps) {
         >
           <p className="text-sm font-semibold">运营提示</p>
           <p className="text-muted mt-2 text-xs leading-5">
-            发布前请检查 SEO、图片 Alt、关联线路与页面预览。
+            内容编辑请进入 Sanity；客户询盘继续在此处安全管理。
           </p>
           <button
             type="button"
@@ -138,7 +138,7 @@ export function AdminShell({ children }: AdminShellProps) {
         <header className="border-border bg-background/82 sticky top-0 z-30 border-b px-5 py-3 backdrop-blur-2xl lg:hidden">
           <div className="flex items-center justify-between">
             <Link href="/admin" className="font-semibold">
-              China Prime CMS
+              AVIORA 运营中心
             </Link>
             <Button size="sm" variant="secondary">
               预览网站

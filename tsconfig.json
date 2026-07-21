@@ -20,6 +20,8 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "sanity": ["./node_modules/sanity/lib/index.d.ts"],
+      "sanity/*": ["./node_modules/sanity/lib/*"],
       "@/*": ["./*"],
       "@/app/*": ["./app/*"],
       "@/components/*": ["./components/*"],

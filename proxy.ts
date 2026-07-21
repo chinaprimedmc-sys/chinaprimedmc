@@ -3,7 +3,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { explorerDestinations } from "@/content/destinations/explorer";
 import { getAdminSessionCookieName, verifyAdminSession } from "@/lib/admin/session";
 
-const protectedPrefixes = ["/admin", "/api/admin", "/component-showcase", "/component-playground"];
+const protectedPrefixes = [
+  "/admin",
+  "/api/admin",
+  "/studio",
+  "/component-showcase",
+  "/component-playground",
+];
 const publicAdminPaths = new Set(["/admin/login", "/api/admin/session"]);
 const retiredAdminPaths = new Set([
   "/admin/analytics",
@@ -38,18 +44,18 @@ function isProtectedPath(pathname: string) {
   );
 }
 
-function applySecurityHeaders(response: NextResponse) {
+function applySecurityHeaders(response: NextResponse, studio = false) {
   const csp = [
     "default-src 'self'",
     "base-uri 'self'",
     "form-action 'self' mailto:",
     "frame-ancestors 'none'",
     "object-src 'none'",
-    "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co",
+    "img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://cdn.sanity.io https://*.r2.dev",
     "font-src 'self'",
-    "script-src 'self' 'unsafe-inline'",
+    `script-src 'self' 'unsafe-inline'${studio ? " 'unsafe-eval' https://*.sanity.io" : ""}`,
     "style-src 'self' 'unsafe-inline'",
-    "connect-src 'self' mailto:",
+    `connect-src 'self' mailto: https://*.sanity.io https://*.sanity-cdn.com https://*.r2.cloudflarestorage.com${studio ? " wss://*.sanity.io" : ""}`,
     "upgrade-insecure-requests",
   ].join("; ");
 
@@ -80,6 +86,25 @@ async function publicDynamicRouteExists(pathname: string) {
   const [, collection, slug] = match;
   if (staticPublicSlugs[collection]?.has(slug)) return true;
   if (collection === "destinations" || collection === "styles") return false;
+
+  const sanityType = collection === "tours" ? "journey" : "blogPost";
+  const sanityProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "yycku2v3";
+  const sanityDataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+  const sanityQuery = encodeURIComponent(`count(*[_type == $type && slug.current == $slug]) > 0`);
+  const sanityParams = `&$type=${encodeURIComponent(JSON.stringify(sanityType))}&$slug=${encodeURIComponent(JSON.stringify(slug))}`;
+
+  try {
+    const response = await fetch(
+      `https://${sanityProjectId}.api.sanity.io/v2025-02-19/data/query/${sanityDataset}?query=${sanityQuery}${sanityParams}`,
+      { next: { revalidate: 60 } },
+    );
+    if (response.ok) {
+      const payload = (await response.json()) as { result?: boolean };
+      if (payload.result) return true;
+    }
+  } catch {
+    // Continue to the legacy CMS during migration.
+  }
 
   const table = collection === "tours" ? "cms_journeys" : "cms_blog_posts";
   const supabaseUrl = process.env.SUPABASE_URL?.replace(/\/$/, "");
@@ -149,9 +174,10 @@ function notFoundDocument() {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const response = NextResponse.next();
+  const isStudio = pathname === "/studio" || pathname.startsWith("/studio/");
 
   if (retiredAdminPaths.has(pathname)) {
-    return applySecurityHeaders(NextResponse.redirect(new URL("/admin", request.url)));
+    return applySecurityHeaders(NextResponse.redirect(new URL("/admin", request.url)), isStudio);
   }
 
   if (["GET", "HEAD"].includes(request.method) && !(await publicDynamicRouteExists(pathname))) {
@@ -181,13 +207,14 @@ export async function proxy(request: NextRequest) {
     }
   }
 
-  return applySecurityHeaders(response);
+  return applySecurityHeaders(response, isStudio);
 }
 
 export const config = {
   matcher: [
     "/admin/:path*",
     "/api/admin/:path*",
+    "/studio/:path*",
     "/component-showcase/:path*",
     "/component-playground/:path*",
     "/tours/:slug",
