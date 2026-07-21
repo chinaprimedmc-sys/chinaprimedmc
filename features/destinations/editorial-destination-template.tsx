@@ -6,44 +6,48 @@ import type { ReactNode } from "react";
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { homeNavItems } from "@/content/home/homepage";
-import {
-  destinationRegions,
-  explorerDestinations,
-  type ExplorerDestination,
-} from "@/content/destinations/explorer";
-import { getDestinationEditorial } from "@/content/destinations/editorial";
+import type { CmsDestinationCard } from "@/components/destinations/destination-explorer";
+import type { NavigationItem } from "@/types/component-library";
 
 export function EditorialDestinationTemplate({
   destination,
+  destinations,
+  navigation,
+  cta,
 }: {
-  destination: ExplorerDestination;
+  destination: CmsDestinationCard & {
+    bestTime: string;
+    orientation: string;
+    highlights: string[];
+    planningNotes: string[];
+  };
+  destinations: CmsDestinationCard[];
+  navigation: NavigationItem[];
+  cta: { label: string; href: string };
 }) {
-  const editorial = getDestinationEditorial(destination);
-  const region = destinationRegions.find((item) => item.id === destination.region);
-  const related = explorerDestinations
-    .filter((item) => item.region === destination.region && item.id !== destination.id)
+  const related = destinations
+    .filter((item) => item.region === destination.region && item.slug !== destination.slug)
     .slice(0, 3);
 
   return (
     <main className="min-h-svh overflow-x-clip bg-[#f7f7f3] text-[#1b1c19]">
       <SiteNavigation
         tone="light"
-        items={homeNavItems}
+        items={navigation}
         cta={{
-          label: "Plan My Trip",
-          href: `/start-planning?destination=${encodeURIComponent(destination.name)}&source=destination-guide`,
+          label: cta.label,
+          href: `${cta.href}?destination=${encodeURIComponent(destination.name)}&source=destination-guide`,
         }}
       />
       <section data-hero-layout="true" className="relative min-h-[88svh] overflow-hidden">
         <Image
-          src={destination.image.src}
-          alt={destination.image.alt}
+          src={destination.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp"}
+          alt={destination.heroImage?.alt ?? destination.name}
           fill
           priority
           sizes="100vw"
           className="object-cover motion-safe:animate-[destination-hero-breathe_16s_ease-out_both]"
-          style={{ objectPosition: destination.image.objectPosition }}
+          style={{ objectPosition: destination.heroImage?.objectPosition }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,247,243,.96)_0%,rgba(247,247,243,.82)_31%,rgba(247,247,243,.18)_55%,transparent_74%),linear-gradient(0deg,rgba(247,247,243,.32),transparent_42%)] max-md:bg-[linear-gradient(0deg,rgba(247,247,243,.98)_0%,rgba(247,247,243,.88)_35%,rgba(247,247,243,.08)_62%,transparent_78%)]" />
         <div className="relative mx-auto flex min-h-[88svh] max-w-[92rem] items-end px-5 pb-16 sm:px-6 md:items-center md:pb-0 lg:px-8">
@@ -55,16 +59,16 @@ export function EditorialDestinationTemplate({
               <ArrowLeft className="size-4" /> All destinations
             </Link>
             <p className="mt-8 text-xs font-semibold tracking-[0.2em] text-[#607868] uppercase">
-              {destination.kicker} · {region?.label}
+              {destination.kicker} · {destination.region}
             </p>
             <h1 className="mt-5 font-serif text-[clamp(4rem,9vw,8rem)] leading-[.9]">
               {destination.name}
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-[#1b1c19]/68">
-              {destination.description}
+              {destination.summary}
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
-              <Fact icon={<CalendarDays className="size-4" />} text={destination.stay} />
+              <Fact icon={<CalendarDays className="size-4" />} text={destination.recommendedStay} />
               <Fact icon={<Compass className="size-4" />} text={destination.bestFor} />
             </div>
           </div>
@@ -81,10 +85,10 @@ export function EditorialDestinationTemplate({
           </h2>
         </div>
         <div className="grid gap-6 text-base leading-8 text-[#1b1c19]/66 md:text-lg">
-          <p>{editorial.orientation}</p>
+          <p>{destination.orientation}</p>
           <p>
-            {destination.description} It can stand alone as a focused visit or become part of a
-            wider private route, depending on the season, available time and the people traveling.
+            {destination.summary} It can stand alone as a focused visit or become part of a wider
+            private route, depending on the season, available time and the people traveling.
           </p>
         </div>
       </section>
@@ -98,7 +102,7 @@ export function EditorialDestinationTemplate({
             What gives {destination.name} its character.
           </h2>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {editorial.experiences.map((experience, index) => (
+            {destination.highlights.map((experience, index) => (
               <article
                 key={experience}
                 className="rounded-[1.5rem] border border-black/8 bg-[#f7f7f3] p-7"
@@ -117,14 +121,14 @@ export function EditorialDestinationTemplate({
             When to go
           </p>
           <h2 className="mt-5 font-serif text-4xl md:text-5xl">Season changes the feeling.</h2>
-          <p className="mt-6 text-base leading-8 text-[#1b1c19]/64">{editorial.bestTime}</p>
+          <p className="mt-6 text-base leading-8 text-[#1b1c19]/64">{destination.bestTime}</p>
         </div>
         <div>
           <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
             Planning notes
           </p>
           <ul className="mt-5 divide-y divide-black/8 border-y border-black/8">
-            {editorial.planningNotes.map((note) => (
+            {destination.planningNotes.map((note) => (
               <li key={note} className="flex gap-4 py-5 text-base leading-7">
                 <MapPin className="mt-1 size-4 shrink-0 text-[#607868]" />
                 {note}
@@ -140,19 +144,19 @@ export function EditorialDestinationTemplate({
             Nearby chapters
           </p>
           <h2 className="mt-5 font-serif text-4xl md:text-6xl">
-            Continue through {region?.label}.
+            Continue through {destination.region}.
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {related.map((item) => (
-              <Link key={item.id} href={`/destinations/${item.id}`} className="group">
+              <Link key={item.slug} href={`/destinations/${item.slug}`} className="group">
                 <span className="relative block aspect-[3/2] overflow-hidden rounded-[1.4rem]">
                   <Image
-                    src={item.image.src}
-                    alt={item.image.alt}
+                    src={item.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp"}
+                    alt={item.heroImage?.alt ?? item.name}
                     fill
                     sizes="(min-width:768px) 33vw, 100vw"
                     className="object-cover transition duration-700 group-hover:scale-105"
-                    style={{ objectPosition: item.image.objectPosition }}
+                    style={{ objectPosition: item.heroImage?.objectPosition }}
                   />
                 </span>
                 <span className="mt-5 flex items-center justify-between text-xl font-semibold">
@@ -160,7 +164,7 @@ export function EditorialDestinationTemplate({
                   <ArrowRight className="size-4 transition group-hover:translate-x-1" />
                 </span>
                 <span className="mt-2 block text-sm text-[#1b1c19]/55">
-                  {item.kicker} · {item.stay}
+                  {item.kicker} · {item.recommendedStay}
                 </span>
               </Link>
             ))}
@@ -183,7 +187,7 @@ export function EditorialDestinationTemplate({
             </p>
           </div>
           <CtaButton
-            href={`/start-planning?destination=${encodeURIComponent(destination.name)}&source=destination-guide`}
+            href={`${cta.href}?destination=${encodeURIComponent(destination.name)}&source=destination-guide`}
             size="lg"
           >
             Plan this destination
@@ -197,7 +201,7 @@ export function EditorialDestinationTemplate({
             title: "Destinations",
             items: [
               { label: "All destinations", href: "/destinations" },
-              ...related.map((item) => ({ label: item.name, href: `/destinations/${item.id}` })),
+              ...related.map((item) => ({ label: item.name, href: `/destinations/${item.slug}` })),
             ],
           },
           {

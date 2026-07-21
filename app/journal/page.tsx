@@ -1,5 +1,4 @@
 import { siteConfig } from "@/config/site";
-import { getEditorPicks, getFeaturedArticle, journalArticles } from "@/content/journal";
 import { JournalHubTemplate } from "@/features/journal/journal-hub-template";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -15,15 +14,20 @@ export const metadata = createMetadata({
 });
 
 export default async function JournalPage() {
-  const featured = getFeaturedArticle();
   const cmsPosts = await getPublishedCmsPosts();
   const cmsArticles = cmsPosts
     .map(cmsBlogToArticle)
     .filter((article): article is NonNullable<typeof article> => Boolean(article));
-  const cmsSlugs = new Set(cmsArticles.map((article) => article.slug));
-  const localArticles = journalArticles.filter((article) => !cmsSlugs.has(article.slug));
-  const editorPicks = [...getEditorPicks(), ...cmsArticles.slice(0, 2)];
-  const latest = [...cmsArticles, ...localArticles];
+  const [featured, ...editorPicks] = cmsArticles;
+  const latest = cmsArticles;
+
+  if (!featured) return null;
+
+  const categories = [...new Set(cmsArticles.map((article) => article.category))];
+  const tags = [...new Set(cmsArticles.flatMap((article) => article.tags))].map((tag) => ({
+    slug: tag,
+    label: tag,
+  }));
 
   return (
     <>
@@ -56,7 +60,13 @@ export default async function JournalPage() {
           { name: "Travel Journal", path: "/journal" },
         ])}
       />
-      <JournalHubTemplate featured={featured} editorPicks={editorPicks} latest={latest} />
+      <JournalHubTemplate
+        featured={featured}
+        editorPicks={editorPicks}
+        latest={latest}
+        categories={categories}
+        tags={tags}
+      />
     </>
   );
 }

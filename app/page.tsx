@@ -22,21 +22,11 @@ import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/config/site";
-import {
-  exploreChina,
-  heroImage,
-  homeEditorialImages,
-  homeNavItems,
-  journal,
-  journeys,
-  planningSteps,
-  primaryAction,
-  proofPoints,
-  secondaryHeroActions,
-} from "@/content/home/homepage";
+import { heroImage } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
+import { getPublicHomePage, getPublicSiteSettings } from "@/lib/cms/public-content";
 
 export const metadata: Metadata = createMetadata({
   title: "Private China Tours for Families, Couples, and Luxury Travelers",
@@ -45,49 +35,85 @@ export const metadata: Metadata = createMetadata({
   image: heroImage.src,
 });
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [home, settings] = await Promise.all([getPublicHomePage(), getPublicSiteSettings()]);
+  const featuredJourneys = home.featuredJourneys
+    .filter((journey) => journey.hero_image)
+    .map((journey, index) => ({
+      title: journey.title,
+      titleLocation: journey.route,
+      titleExperience: "",
+      titleSuffix: "Private Journey",
+      durationBadge: journey.duration_label.toUpperCase(),
+      accent: index % 2 ? ("bamboo" as const) : ("gold" as const),
+      poeticTitle: journey.subtitle,
+      description: journey.summary,
+      image: {
+        src: journey.hero_image!.url,
+        alt: journey.hero_image!.alt_text,
+        objectPosition: journey.hero_image!.object_position,
+      },
+      href: `/tours/${journey.slug}`,
+      duration: journey.duration_label,
+      route: journey.route,
+      bestFor: journey.best_for,
+    }));
+  const exploreItems = home.featuredDestinations.length
+    ? home.featuredDestinations.map((destination) => ({
+        eyebrow: destination.kicker || "Destination",
+        title: destination.name,
+        description: destination.summary,
+        href: `/destinations/${destination.slug}`,
+        image: destination.heroImage ?? home.heroImage,
+      }))
+    : home.fallbackExploreChina;
+  const journalItems = home.featuredPosts
+    .filter((post) => post.hero_image)
+    .map((post) => ({
+      title: post.title,
+      excerpt: post.summary,
+      href: `/journal/${post.slug}`,
+      image: {
+        src: post.hero_image!.url,
+        alt: post.hero_image!.alt_text,
+        objectPosition: post.hero_image!.object_position,
+      },
+      category: post.category,
+    }));
   return (
     <PageContainer className="pb-20 md:pb-0">
-      <JsonLd id="featured-journeys-schema" data={featuredJourneysSchema()} />
+      <JsonLd id="featured-journeys-schema" data={featuredJourneysSchema(featuredJourneys)} />
       <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-        whatsapp={{ label: "WhatsApp", href: "https://wa.me/447985052302" }}
+        items={settings.navigation}
+        cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
+        whatsapp={{ label: settings.whatsappLabel, href: settings.whatsappHref }}
       />
 
       <HeroLargeImage
-        brandLockup={{ name: "AVIORA", descriptor: "Private China journeys by China Prime DMC" }}
-        title="China, beautifully within reach."
-        subtitle="Private China journeys with the wonder kept in, and the friction quietly designed out."
-        image={heroImage}
-        primary={{ label: "Plan My Trip", href: primaryAction.href }}
-        secondary={secondaryHeroActions.whatsapp}
+        brandLockup={{ name: settings.siteTitle, descriptor: settings.brandDescriptor }}
+        title={home.heroTitle}
+        subtitle={home.heroCopy}
+        image={home.heroImage}
+        primary={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
+        secondary={{ label: settings.whatsappLabel, href: settings.whatsappHref }}
         composition="editorial"
         align="left"
         overlay="subtle"
       >
-        <HeroTrustPills
-          mode="ticker"
-          tone="light"
-          items={[
-            siteConfig.operator.tourismLicense.shortLabel,
-            "China-registered operating company",
-            "Private, no-shopping travel",
-          ]}
-        />
+        <HeroTrustPills mode="ticker" tone="light" items={home.heroTrustItems} />
       </HeroLargeImage>
 
-      <FeaturedJourneyCinema journeys={journeys} />
+      {featuredJourneys.length ? <FeaturedJourneyCinema journeys={featuredJourneys} /> : null}
 
       <Section id="destinations" spacing="spacious">
         <ContentContainer size="xl" className="home-section-safe grid gap-10">
           <SectionHeader
-            eyebrow="Explore China"
-            title="Begin with a place. Then find your pace."
-            description="A few strong starting points for the route, the atmosphere, and the way you want to travel."
+            eyebrow={home.destinationsEyebrow}
+            title={home.destinationsTitle}
+            description={home.destinationsCopy}
           />
           <HomeReveal delay={80}>
-            <DestinationFocusGallery items={exploreChina} />
+            <DestinationFocusGallery items={exploreItems} />
           </HomeReveal>
         </ContentContainer>
       </Section>
@@ -97,35 +123,30 @@ export default function HomePage() {
           <HomeReveal className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
             <div>
               <p className="text-xs font-semibold tracking-[0.18em] text-white/55 uppercase">
-                Why AVIORA
+                {home.whyEyebrow}
               </p>
               <h2 className="mt-5 max-w-3xl font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] md:text-7xl">
-                The practical worries are part of the design.
+                {home.whyTitle}
               </h2>
             </div>
-            <p className="max-w-2xl text-base leading-8 text-white/66 md:text-lg">
-              A beautiful China trip is scenery, yes. It is also language, pacing, tickets, meals,
-              transfers, rest, and knowing exactly who is taking care of the details.
-            </p>
+            <p className="max-w-2xl text-base leading-8 text-white/66 md:text-lg">{home.whyCopy}</p>
           </HomeReveal>
           <HomeReveal delay={80} className="grid border-y border-white/12 md:grid-cols-3">
-            {[
-              ["Licensed", "Inbound tourism operator"],
-              ["Private", "Daily rhythm"],
-              ["0", "Shopping-tour pressure"],
-            ].map(([value, label], index) => (
+            {home.whyStats.map((stat, index) => (
               <div
-                key={label}
+                key={stat.title}
                 className={`py-8 md:px-8 md:py-10 ${index ? "border-t border-white/12 md:border-t-0 md:border-l" : ""}`}
               >
-                <p className="font-serif text-5xl leading-none md:text-6xl">{value}</p>
-                <p className="mt-3 text-xs tracking-[0.14em] text-white/55 uppercase">{label}</p>
+                <p className="font-serif text-5xl leading-none md:text-6xl">{stat.title}</p>
+                <p className="mt-3 text-xs tracking-[0.14em] text-white/55 uppercase">
+                  {stat.description}
+                </p>
               </div>
             ))}
           </HomeReveal>
           <HomeReveal delay={140}>
             <GridSystem columns={3}>
-              {proofPoints.map((point, index) => {
+              {home.whyPoints.map((point, index) => {
                 const Icon = index === 0 ? ShieldCheck : index === 1 ? CheckCircle2 : Sparkles;
                 return (
                   <article key={point.title} className="border-t border-white/14 pt-6">
@@ -143,19 +164,18 @@ export default function HomePage() {
       <Section id="planning" spacing="spacious">
         <ContentContainer size="xl" className="home-section-safe grid gap-10">
           <HomeReveal>
-            <Badge>How planning works</Badge>
+            <Badge>{home.planningEyebrow}</Badge>
             <h2 className="mt-6 max-w-3xl font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] md:text-7xl">
-              Start with your reality, not a fixed package.
+              {home.planningTitle}
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--text-secondary)]">
-              The first conversation gives us enough context to suggest a route direction without
-              asking you to solve the whole trip before we begin.
+              {home.planningCopy}
             </p>
           </HomeReveal>
           <HomeReveal delay={80}>
-            <PlanningStory image={homeEditorialImages.paintingExperience} steps={planningSteps} />
+            <PlanningStory image={home.planningImage} steps={home.planningSteps} />
           </HomeReveal>
-          <CtaButton href={primaryAction.href} className="w-fit max-md:mx-auto" size="sm">
+          <CtaButton href={settings.primaryCtaHref} className="w-fit max-md:mx-auto" size="sm">
             Start planning
           </CtaButton>
         </ContentContainer>
@@ -165,14 +185,13 @@ export default function HomePage() {
         <ContentContainer size="xl" className="home-section-safe grid gap-10">
           <HomeReveal className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
-              <Badge>Travel trade presence</Badge>
+              <Badge>{home.tradeEyebrow}</Badge>
               <h2 className="mt-6 font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] md:text-7xl">
-                In the room where China travel is discussed.
+                {home.tradeTitle}
               </h2>
             </div>
             <p className="max-w-2xl text-lg leading-8 text-[var(--text-secondary)]">
-              Recent face-to-face conversations in Kuala Lumpur, focused on practical inbound China
-              travel and clearer local delivery.
+              {home.tradeCopy}
             </p>
           </HomeReveal>
           <HomeReveal
@@ -181,11 +200,11 @@ export default function HomePage() {
           >
             <figure className="home-trade-gallery__image relative min-h-[31rem] overflow-hidden rounded-[1.25rem] lg:col-span-8 lg:row-span-2 lg:min-h-[42rem]">
               <OptimizedImage
-                src={homeEditorialImages.tradeConsultation.src}
-                alt={homeEditorialImages.tradeConsultation.alt}
+                src={home.tradeImages[0]?.src ?? home.heroImage.src}
+                alt={home.tradeImages[0]?.alt ?? "Travel trade consultation"}
                 fill
                 sizes="(min-width:1024px) 66vw, 100vw"
-                objectPosition={homeEditorialImages.tradeConsultation.objectPosition}
+                objectPosition={home.tradeImages[0]?.objectPosition}
                 frameClassName="absolute inset-0 h-full"
                 className="h-full w-full"
               />
@@ -193,27 +212,25 @@ export default function HomePage() {
                 Face-to-face travel consultation
               </figcaption>
             </figure>
-            {[homeEditorialImages.tradeBuyerMeeting, homeEditorialImages.tradeMuslimBuyers].map(
-              (image, index) => (
-                <figure
-                  className="home-trade-gallery__image relative min-h-[19rem] overflow-hidden rounded-[1.25rem] lg:col-span-4 lg:min-h-0"
-                  key={image.src}
-                >
-                  <OptimizedImage
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(min-width:1024px) 34vw, 100vw"
-                    objectPosition={image.objectPosition}
-                    frameClassName="absolute inset-0 h-full"
-                    className="h-full w-full"
-                  />
-                  <figcaption className="absolute right-4 bottom-4 rounded-full border border-white/30 bg-black/36 px-3 py-2 text-[0.6rem] font-medium tracking-[0.1em] text-white uppercase backdrop-blur-xl">
-                    {index === 0 ? "Travel buyer meeting" : "Muslim travel buyers"}
-                  </figcaption>
-                </figure>
-              ),
-            )}
+            {home.tradeImages.slice(1, 3).map((image, index) => (
+              <figure
+                className="home-trade-gallery__image relative min-h-[19rem] overflow-hidden rounded-[1.25rem] lg:col-span-4 lg:min-h-0"
+                key={image.src}
+              >
+                <OptimizedImage
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width:1024px) 34vw, 100vw"
+                  objectPosition={image.objectPosition}
+                  frameClassName="absolute inset-0 h-full"
+                  className="h-full w-full"
+                />
+                <figcaption className="absolute right-4 bottom-4 rounded-full border border-white/30 bg-black/36 px-3 py-2 text-[0.6rem] font-medium tracking-[0.1em] text-white uppercase backdrop-blur-xl">
+                  {index === 0 ? "Travel buyer meeting" : "Muslim travel buyers"}
+                </figcaption>
+              </figure>
+            ))}
           </HomeReveal>
         </ContentContainer>
       </Section>
@@ -222,14 +239,14 @@ export default function HomePage() {
         <ContentContainer size="xl" className="home-section-safe grid gap-10">
           <HomeReveal>
             <SectionHeader
-              eyebrow="Travel journal"
-              title="Useful thinking before you choose a route."
-              description="Practical planning notes for the questions travelers ask before the journey feels real."
+              eyebrow={home.journalEyebrow}
+              title={home.journalTitle}
+              description={home.journalCopy}
             />
           </HomeReveal>
           <HomeReveal delay={100}>
             <GridSystem columns={3}>
-              {journal.map((article) => (
+              {journalItems.map((article) => (
                 <BlogCard
                   key={article.title}
                   title={article.title}
@@ -248,14 +265,14 @@ export default function HomePage() {
         <ContentContainer size="xl" className="home-section-safe">
           <CtaCard
             variant="image"
-            image={homeEditorialImages.guilinLandscape}
-            eyebrow="Start the conversation"
-            title="Tell us who is traveling. We will suggest the first shape of the journey."
-            description="Start with dates, travelers, pace, comfort level, and the questions you are not sure how to ask yet."
-            primary={{ label: "Plan My Trip", href: primaryAction.href }}
+            image={home.ctaImage}
+            eyebrow={home.ctaEyebrow}
+            title={home.ctaTitle}
+            description={home.ctaCopy}
+            primary={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
             secondary={{
-              label: secondaryHeroActions.email.label,
-              href: secondaryHeroActions.email.href,
+              label: "Email a Specialist",
+              href: `mailto:${settings.email}`,
             }}
           />
         </ContentContainer>
@@ -263,7 +280,7 @@ export default function HomePage() {
 
       <SiteFooter
         columns={[
-          { title: "Explore", items: homeNavItems },
+          { title: "Explore", items: settings.navigation },
           {
             title: "Travel styles",
             items: [
@@ -274,22 +291,36 @@ export default function HomePage() {
           },
           {
             title: "Planning",
-            items: [{ label: "First route idea", href: primaryAction.href }],
+            items: [{ label: "First route idea", href: settings.primaryCtaHref }],
           },
           {
             title: "Journal",
-            items: journal.map((article) => ({ label: article.category, href: article.href })),
+            items: journalItems.map((article) => ({ label: article.category, href: article.href })),
           },
         ]}
         social={[]}
       />
-      <FloatingCta label="Plan My Trip" href={primaryAction.href} />
-      <StickyMobileCta label="Plan My Trip" href={primaryAction.href} showAfter={720} />
+      <FloatingCta label={settings.primaryCtaLabel} href={settings.primaryCtaHref} />
+      <StickyMobileCta
+        label={settings.primaryCtaLabel}
+        href={settings.primaryCtaHref}
+        showAfter={720}
+      />
     </PageContainer>
   );
 }
 
-function featuredJourneysSchema() {
+function featuredJourneysSchema(
+  journeys: Array<{
+    title: string;
+    description: string;
+    href: string;
+    image: { src: string };
+    duration: string;
+    route: string;
+    bestFor: string;
+  }>,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -307,7 +338,7 @@ function featuredJourneysSchema() {
         description: journey.description,
         url: new URL(journey.href, siteConfig.url).toString(),
         image: new URL(journey.image.src, siteConfig.url).toString(),
-        duration: journey.isoDuration,
+        duration: journey.duration,
         touristType: journey.bestFor,
         itinerary: journey.route,
         provider: {

@@ -1,7 +1,7 @@
 import type { DocumentActionComponent } from "sanity";
 import type { StructureResolver } from "sanity/structure";
 
-const singletonTypes = new Set(["homePage", "siteSettings"]);
+const singletonTypes = new Set(["homePage", "destinationHub", "siteSettings"]);
 
 export const structure: StructureResolver = (structureBuilder) =>
   structureBuilder
@@ -29,6 +29,13 @@ export const structure: StructureResolver = (structureBuilder) =>
         .id("home-page")
         .title("首页精选")
         .child(structureBuilder.document().schemaType("homePage").documentId("homePage")),
+      structureBuilder
+        .listItem()
+        .id("destination-hub")
+        .title("目的地总览")
+        .child(
+          structureBuilder.document().schemaType("destinationHub").documentId("destinationHub"),
+        ),
       structureBuilder
         .listItem()
         .id("site-settings")

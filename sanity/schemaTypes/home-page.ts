@@ -1,5 +1,18 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
+const textBlock = defineArrayMember({
+  type: "object",
+  fields: [
+    defineField({
+      name: "title",
+      title: "标题",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({ name: "description", title: "说明", type: "text", rows: 3 }),
+  ],
+});
+
 export const homePageType = defineType({
   name: "homePage",
   title: "首页设置",
@@ -18,6 +31,12 @@ export const homePageType = defineType({
       title: "Hero 图片",
       type: "r2Image",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "heroTrustItems",
+      title: "Hero 信任标签",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
     }),
     defineField({
       name: "featuredJourneys",
@@ -40,6 +59,54 @@ export const homePageType = defineType({
       of: [defineArrayMember({ type: "reference", to: [{ type: "blogPost" }] })],
       validation: (rule) => rule.max(4),
     }),
+    defineField({ name: "destinationsEyebrow", title: "目的地章节标签", type: "string" }),
+    defineField({ name: "destinationsTitle", title: "目的地章节标题", type: "string" }),
+    defineField({ name: "destinationsCopy", title: "目的地章节说明", type: "text", rows: 3 }),
+    defineField({ name: "whyEyebrow", title: "Why AVIORA 标签", type: "string" }),
+    defineField({ name: "whyTitle", title: "Why AVIORA 标题", type: "string" }),
+    defineField({ name: "whyCopy", title: "Why AVIORA 说明", type: "text", rows: 3 }),
+    defineField({
+      name: "whyStats",
+      title: "Why AVIORA 数据项",
+      type: "array",
+      of: [textBlock],
+      validation: (rule) => rule.max(4),
+    }),
+    defineField({
+      name: "whyPoints",
+      title: "Why AVIORA 承诺",
+      type: "array",
+      of: [textBlock],
+      validation: (rule) => rule.max(4),
+    }),
+    defineField({ name: "planningEyebrow", title: "规划章节标签", type: "string" }),
+    defineField({ name: "planningTitle", title: "规划章节标题", type: "string" }),
+    defineField({ name: "planningCopy", title: "规划章节说明", type: "text", rows: 3 }),
+    defineField({ name: "planningImage", title: "规划章节图片", type: "r2Image" }),
+    defineField({
+      name: "planningSteps",
+      title: "规划步骤",
+      type: "array",
+      of: [textBlock],
+      validation: (rule) => rule.max(5),
+    }),
+    defineField({ name: "tradeEyebrow", title: "行业背书标签", type: "string" }),
+    defineField({ name: "tradeTitle", title: "行业背书标题", type: "string" }),
+    defineField({ name: "tradeCopy", title: "行业背书说明", type: "text", rows: 3 }),
+    defineField({
+      name: "tradeImages",
+      title: "行业背书图片",
+      type: "array",
+      of: [defineArrayMember({ type: "r2Image" })],
+      validation: (rule) => rule.max(3),
+    }),
+    defineField({ name: "journalEyebrow", title: "博客章节标签", type: "string" }),
+    defineField({ name: "journalTitle", title: "博客章节标题", type: "string" }),
+    defineField({ name: "journalCopy", title: "博客章节说明", type: "text", rows: 3 }),
+    defineField({ name: "ctaEyebrow", title: "底部 CTA 标签", type: "string" }),
+    defineField({ name: "ctaTitle", title: "底部 CTA 标题", type: "string" }),
+    defineField({ name: "ctaCopy", title: "底部 CTA 说明", type: "text", rows: 3 }),
+    defineField({ name: "ctaImage", title: "底部 CTA 图片", type: "r2Image" }),
   ],
   preview: { prepare: () => ({ title: "AVIORA 首页内容" }) },
 });

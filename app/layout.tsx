@@ -9,6 +9,7 @@ import { PageTransition } from "@/components/loading/page-transition";
 import { createMetadata } from "@/lib/seo/metadata";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
 import { AppProviders } from "@/providers/app-providers";
+import { getPublicSiteSettings } from "@/lib/cms/public-content";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = createMetadata();
@@ -20,7 +21,8 @@ export const viewport: Viewport = {
   themeColor: "#faf9f5",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const settings = await getPublicSiteSettings();
   return (
     <html lang="en-US" suppressHydrationWarning>
       <body className="font-sans antialiased">
@@ -29,7 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </AppProviders>
         <Analytics />
         <SpeedInsights />
-        <SocialContactRail />
+        <SocialContactRail whatsappHref={settings.whatsappHref} email={settings.email} />
         <JsonLd id="organization-schema" data={organizationSchema()} />
         <JsonLd id="website-schema" data={websiteSchema()} />
       </body>

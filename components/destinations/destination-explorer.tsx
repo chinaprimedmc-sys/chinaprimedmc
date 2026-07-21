@@ -6,28 +6,75 @@ import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 
 import { CtaButton } from "@/components/cta";
-import {
-  destinationInterestImages,
-  destinationInterests,
-  destinationRegions,
-  explorerDestinations,
-  type DestinationInterest,
-} from "@/content/destinations/explorer";
 import { cn } from "@/lib/utils/cn";
+import type { MediaAsset } from "@/types/component-library";
 
-export function DestinationExplorer() {
-  const [interest, setInterest] = useState<DestinationInterest | "all">("all");
+export type CmsDestinationCard = {
+  slug: string;
+  name: string;
+  region: string;
+  kicker: string;
+  summary: string;
+  recommendedStay: string;
+  bestFor: string;
+  interests: string[];
+  heroImage?: MediaAsset;
+};
+
+type DestinationExplorerContent = {
+  heroEyebrow: string;
+  heroTitle: string;
+  heroCopy: string;
+  heroImage?: MediaAsset;
+  interestEyebrow: string;
+  interestTitle: string;
+  interestCopy: string;
+  interests: Array<{ id: string; label: string; note: string; image?: MediaAsset }>;
+  featuredEyebrow: string;
+  featuredTitle: string;
+  featuredCopy: string;
+  regionsEyebrow: string;
+  regionsTitle: string;
+  regionsCopy: string;
+  regions: Array<{ id: string; label: string; note: string }>;
+  journeysEyebrow: string;
+  journeysTitle: string;
+  journeysCopy: string;
+  ctaEyebrow: string;
+  ctaTitle: string;
+  ctaCopy: string;
+  ctaLabel: string;
+};
+
+type JourneyPanelData = {
+  title: string;
+  route: string;
+  duration: string;
+  href: string;
+  image?: MediaAsset;
+};
+
+export function DestinationExplorer({
+  content,
+  destinations,
+  journeys,
+}: {
+  content: DestinationExplorerContent;
+  destinations: CmsDestinationCard[];
+  journeys: JourneyPanelData[];
+}) {
+  const [interest, setInterest] = useState<string | "all">("all");
   const filmstrip = useRef<HTMLDivElement>(null);
 
   const featured = useMemo(
     () =>
       interest === "all"
-        ? explorerDestinations
-        : explorerDestinations.filter((destination) => destination.interests.includes(interest)),
-    [interest],
+        ? destinations
+        : destinations.filter((destination) => destination.interests.includes(interest)),
+    [destinations, interest],
   );
 
-  function chooseInterest(id: DestinationInterest) {
+  function chooseInterest(id: string) {
     setInterest(id);
     window.setTimeout(() => filmstrip.current?.scrollIntoView({ behavior: "smooth" }), 100);
   }
@@ -36,8 +83,10 @@ export function DestinationExplorer() {
     <div className="bg-[#f7f7f3] text-[#1b1c19]">
       <section data-hero-layout="true" className="relative isolate min-h-svh overflow-hidden">
         <Image
-          src="/home/beijing-forbidden-city-1400.webp"
-          alt="Imperial rooftops in Beijing opening a journey across China"
+          src={content.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp"}
+          alt={
+            content.heroImage?.alt ?? "Imperial rooftops in Beijing opening a journey across China"
+          }
           fill
           priority
           unoptimized
@@ -48,14 +97,13 @@ export function DestinationExplorer() {
         <div className="relative mx-auto flex min-h-svh max-w-[92rem] items-end px-5 pb-16 sm:px-6 md:items-center md:pb-0 lg:px-8">
           <div className="max-w-3xl pt-28 motion-safe:animate-[destination-copy-reveal_.9s_var(--motion-ease-out)_both]">
             <p className="text-xs font-semibold tracking-[0.24em] text-[#607868] uppercase">
-              Explore China by feeling
+              {content.heroEyebrow}
             </p>
             <h1 className="mt-6 max-w-3xl font-serif text-[clamp(3.25rem,7.6vw,7.75rem)] leading-[0.86] font-medium tracking-[0.01em] text-balance">
-              Where in China would you like to begin?
+              {content.heroTitle}
             </h1>
             <p className="mt-7 max-w-xl text-base leading-7 text-[#1b1c19]/68 md:text-lg md:leading-8">
-              Start with what moves you. Discover the landscapes, cities and living cultures that
-              can shape a private journey through China.
+              {content.heroCopy}
             </p>
             <a
               href="#interests"
@@ -69,13 +117,13 @@ export function DestinationExplorer() {
 
       <section id="interests" className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-28 lg:px-8">
         <SectionIntro
-          eyebrow="01 · Follow your curiosity"
-          title="What draws you to China?"
-          description="Choose an instinct, not a place name. We will reveal the destinations that express it best."
+          eyebrow={content.interestEyebrow}
+          title={content.interestTitle}
+          description={content.interestCopy}
         />
         <div className="mt-12 grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {destinationInterests.map((item, index) => {
-            const image = destinationInterestImages[item.id];
+          {content.interests.map((item, index) => {
+            const image = item.image;
             return (
               <button
                 key={item.id}
@@ -88,12 +136,16 @@ export function DestinationExplorer() {
               >
                 <span className="relative block aspect-[3/2] overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#eceee9] shadow-[0_18px_50px_rgba(27,28,25,.07)]">
                   <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={
+                      image?.src ??
+                      content.heroImage?.src ??
+                      "/home/beijing-forbidden-city-1400.webp"
+                    }
+                    alt={image?.alt ?? item.label}
                     fill
                     sizes="(min-width:1024px) 31vw, (min-width:640px) 48vw, 100vw"
                     className="object-cover transition duration-700 ease-[var(--motion-ease-out)] group-hover:scale-[1.045]"
-                    style={{ objectPosition: image.objectPosition }}
+                    style={{ objectPosition: image?.objectPosition }}
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-black/12 to-transparent" />
                   <span className="absolute top-4 left-4 rounded-full border border-white/80 bg-white/74 px-3 py-2 text-xs font-semibold tracking-[0.16em] text-[#607868] backdrop-blur-xl">
@@ -119,29 +171,33 @@ export function DestinationExplorer() {
       >
         <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
           <SectionIntro
-            eyebrow="02 · The cinematic edit"
+            eyebrow={content.featuredEyebrow}
             title={
               interest === "all"
-                ? "China, one chapter at a time."
+                ? content.featuredTitle
                 : `${featured.length} places that match your curiosity.`
             }
-            description="Scroll through the edit. Every frame opens a real destination guide."
+            description={content.featuredCopy}
           />
         </div>
         <div className="mt-12 flex snap-x snap-mandatory [scrollbar-width:none] gap-5 overflow-x-auto px-[max(1.25rem,calc((100vw-92rem)/2+2rem))] pb-8">
           {featured.map((destination) => (
             <Link
-              key={destination.id}
-              href={`/destinations/${destination.id}`}
+              key={destination.slug}
+              href={`/destinations/${destination.slug}`}
               className="group relative aspect-[4/5] w-[82vw] max-w-[31rem] shrink-0 snap-center overflow-hidden rounded-[1.75rem] border border-white/70 bg-white shadow-[0_22px_70px_rgba(27,28,25,.12)] transition duration-500 md:w-[42vw] lg:w-[34vw] lg:snap-always lg:hover:-translate-y-2 lg:hover:scale-[1.015]"
             >
               <Image
-                src={destination.image.src}
-                alt={destination.image.alt}
+                src={
+                  destination.heroImage?.src ??
+                  content.heroImage?.src ??
+                  "/home/beijing-forbidden-city-1400.webp"
+                }
+                alt={destination.heroImage?.alt ?? destination.name}
                 fill
                 sizes="(min-width:1024px) 34vw, (min-width:768px) 42vw, 82vw"
                 className="object-cover transition duration-[900ms] group-hover:scale-[1.055]"
-                style={{ objectPosition: destination.image.objectPosition }}
+                style={{ objectPosition: destination.heroImage?.objectPosition }}
               />
               <span className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/5 to-transparent" />
               <span className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
@@ -152,7 +208,7 @@ export function DestinationExplorer() {
                   {destination.name}
                 </span>
                 <span className="mt-4 block max-w-sm text-sm leading-6 text-white/76">
-                  {destination.description}
+                  {destination.summary}
                 </span>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
                   Explore destination{" "}
@@ -169,15 +225,13 @@ export function DestinationExplorer() {
         className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8"
       >
         <SectionIntro
-          eyebrow="03 · Read the country"
-          title="Five regions. Twenty ways into China."
-          description="Explore every destination by region. Each card links to practical guidance on character, pacing, timing and signature experiences."
+          eyebrow={content.regionsEyebrow}
+          title={content.regionsTitle}
+          description={content.regionsCopy}
         />
         <div className="mt-14 grid gap-16">
-          {destinationRegions.map((region, regionIndex) => {
-            const cities = explorerDestinations.filter(
-              (destination) => destination.region === region.id,
-            );
+          {content.regions.map((region, regionIndex) => {
+            const cities = destinations.filter((destination) => destination.region === region.id);
             return (
               <section
                 key={region.id}
@@ -195,7 +249,7 @@ export function DestinationExplorer() {
                 </div>
                 <div className="grid gap-x-5 gap-y-10 sm:grid-cols-2">
                   {cities.map((destination) => (
-                    <DestinationCard key={destination.id} destination={destination} />
+                    <DestinationCard key={destination.slug} destination={destination} />
                   ))}
                 </div>
               </section>
@@ -207,23 +261,18 @@ export function DestinationExplorer() {
       <section className="border-y border-black/8 bg-white py-24 md:py-28">
         <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
           <SectionIntro
-            eyebrow="04 · Journeys that connect"
-            title="See how places become a journey."
-            description="These private routes show how different chapters of China can connect without forcing the pace."
+            eyebrow={content.journeysEyebrow}
+            title={content.journeysTitle}
+            description={content.journeysCopy}
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            <JourneyPanel
-              href="/tours/first-china-beautifully-paced"
-              image="/tours/first-china-beautifully-paced/beijing-great-wall-wide.webp"
-              eyebrow="9 days · Beijing · Xi'an · Shanghai"
-              title="First China: Beijing, Xi'an & Shanghai"
-            />
-            <JourneyPanel
-              href="/tours/chengdu-pandas-sichuan-table"
-              image="/tours/chengdu-pandas/chengdu-hero-panda.webp"
-              eyebrow="Private Sichuan journey"
-              title="Chengdu: Pandas, Food & Local Life"
-            />
+            {journeys.map((journey) => (
+              <JourneyPanel
+                key={journey.href}
+                {...journey}
+                eyebrow={`${journey.duration} · ${journey.route}`}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -232,18 +281,17 @@ export function DestinationExplorer() {
         <div className="grid gap-10 rounded-[2rem] border border-[#607868]/16 bg-[radial-gradient(circle_at_top_right,rgba(183,150,93,.16),transparent_40%),#dfe8e0] p-7 shadow-[0_22px_70px_rgba(63,83,68,.1)] md:grid-cols-[1fr_auto] md:items-end md:p-12">
           <div>
             <p className="text-xs font-semibold tracking-[0.2em] text-[#607868] uppercase">
-              05 · A route made personal
+              {content.ctaEyebrow}
             </p>
             <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-tight md:text-6xl">
-              Not sure where to begin?
+              {content.ctaTitle}
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-[#1b1c19]/62">
-              A China specialist can connect the destinations, dates and pace into one coherent
-              private journey.
+              {content.ctaCopy}
             </p>
           </div>
           <CtaButton href="/start-planning?source=destinations" size="lg">
-            Shape my China journey
+            {content.ctaLabel}
           </CtaButton>
         </div>
       </section>
@@ -251,17 +299,17 @@ export function DestinationExplorer() {
   );
 }
 
-function DestinationCard({ destination }: { destination: (typeof explorerDestinations)[number] }) {
+function DestinationCard({ destination }: { destination: CmsDestinationCard }) {
   return (
-    <Link href={`/destinations/${destination.id}`} className="group block">
+    <Link href={`/destinations/${destination.slug}`} className="group block">
       <span className="relative block aspect-[3/2] overflow-hidden rounded-[1.4rem] border border-black/8 bg-[#eceee9] shadow-[0_15px_44px_rgba(27,28,25,.07)]">
         <Image
-          src={destination.image.src}
-          alt={destination.image.alt}
+          src={destination.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp"}
+          alt={destination.heroImage?.alt ?? destination.name}
           fill
           sizes="(min-width:1024px) 31vw, (min-width:640px) 45vw, 100vw"
           className="object-cover transition duration-700 group-hover:scale-[1.045]"
-          style={{ objectPosition: destination.image.objectPosition }}
+          style={{ objectPosition: destination.heroImage?.objectPosition }}
         />
       </span>
       <span className="block px-1 pt-5">
@@ -275,10 +323,10 @@ function DestinationCard({ destination }: { destination: (typeof explorerDestina
           <ArrowRight className="mt-6 size-5 shrink-0 transition group-hover:translate-x-1" />
         </span>
         <span className="mt-3 block text-sm leading-6 text-[#1b1c19]/58">
-          {destination.description}
+          {destination.summary}
         </span>
         <span className="mt-3 block text-xs font-semibold text-[#1b1c19]/45">
-          {destination.stay} · {destination.bestFor}
+          {destination.recommendedStay} · {destination.bestFor}
         </span>
       </span>
     </Link>
@@ -312,7 +360,7 @@ function JourneyPanel({
   title,
 }: {
   href: string;
-  image: string;
+  image?: MediaAsset;
   eyebrow: string;
   title: string;
 }) {
@@ -322,7 +370,7 @@ function JourneyPanel({
       className="group relative min-h-[30rem] overflow-hidden rounded-[1.75rem] border border-black/8 shadow-[0_18px_54px_rgba(27,28,25,.08)]"
     >
       <Image
-        src={image}
+        src={image?.src ?? "/home/beijing-forbidden-city-1400.webp"}
         alt=""
         fill
         sizes="(min-width:1024px) 50vw, 100vw"

@@ -13,7 +13,6 @@ import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
-import { journalCategories, journalTags } from "@/content/journal";
 import { Section } from "@/design-system/primitives/section";
 import type { JournalArticle } from "@/types/journal";
 
@@ -21,6 +20,8 @@ type JournalHubTemplateProps = {
   featured: JournalArticle;
   editorPicks: JournalArticle[];
   latest: JournalArticle[];
+  categories: string[];
+  tags: Array<{ slug: string; label: string }>;
 };
 
 const journalNav = [
@@ -30,7 +31,13 @@ const journalNav = [
   { label: "Tips", href: "#tips" },
 ];
 
-export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHubTemplateProps) {
+export function JournalHubTemplate({
+  featured,
+  editorPicks,
+  latest,
+  categories,
+  tags,
+}: JournalHubTemplateProps) {
   return (
     <PageContainer>
       <SiteNavigation
@@ -186,7 +193,7 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
             <div className="border-border bg-background/70 rounded-[1.75rem] border p-5">
               <h3 className="text-xl font-semibold tracking-[-0.02em]">Categories</h3>
               <div className="mt-4 flex flex-wrap gap-2">
-                {journalCategories.slice(0, 12).map((category) => (
+                {categories.slice(0, 12).map((category) => (
                   <Badge key={category}>{category}</Badge>
                 ))}
               </div>
@@ -194,7 +201,7 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
             <div className="border-border bg-background/70 rounded-[1.75rem] border p-5">
               <h3 className="text-xl font-semibold tracking-[-0.02em]">Tags</h3>
               <div className="mt-4 flex flex-wrap gap-2">
-                {journalTags.map((tag) => (
+                {tags.map((tag) => (
                   <Badge key={tag.slug} className="bg-foreground/4 text-muted">
                     {tag.label}
                   </Badge>
@@ -227,9 +234,7 @@ export function JournalHubTemplate({ featured, editorPicks, latest }: JournalHub
           { title: "Journal", items: journalNav },
           {
             title: "Categories",
-            items: journalCategories
-              .slice(0, 4)
-              .map((category) => ({ label: category, href: "#tips" })),
+            items: categories.slice(0, 4).map((category) => ({ label: category, href: "#tips" })),
           },
           {
             title: "Planning",

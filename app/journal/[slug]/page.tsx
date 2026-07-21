@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
-import { getArticleBySlug, getArticleSlugs } from "@/content/journal";
 import { ArticleTemplate } from "@/features/journal/article-template";
 import { cmsBlogToArticle, isIndexableCmsPost } from "@/lib/cms/adapters";
 import { getPublishedCmsPost, getPublishedCmsPosts } from "@/lib/cms/data";
-import { getRelationshipsForArticle } from "@/lib/content/relationship-engine";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -17,15 +15,13 @@ type ArticlePageProps = {
 
 export async function generateStaticParams() {
   const cmsPosts = await getPublishedCmsPosts();
-  return [...new Set([...getArticleSlugs(), ...cmsPosts.map((post) => post.slug)])].map((slug) => ({
-    slug,
-  }));
+  return cmsPosts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
   const cmsPost = await getPublishedCmsPost(slug);
-  const article = (cmsPost ? cmsBlogToArticle(cmsPost) : null) ?? getArticleBySlug(slug);
+  const article = cmsPost ? cmsBlogToArticle(cmsPost) : null;
 
   if (!article) {
     notFound();
@@ -44,13 +40,13 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
   const cmsPost = await getPublishedCmsPost(slug);
-  const article = (cmsPost ? cmsBlogToArticle(cmsPost) : null) ?? getArticleBySlug(slug);
+  const article = cmsPost ? cmsBlogToArticle(cmsPost) : null;
 
   if (!article) {
     notFound();
   }
 
-  const relationships = getRelationshipsForArticle(article);
+  const relationships = { destinations: [], tours: [], experiences: [], articles: [] };
   const faqs = article.content.filter((block) => block.type === "faq");
 
   return (
@@ -90,7 +86,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   );
 }
 
-function articleSchema(article: NonNullable<ReturnType<typeof getArticleBySlug>>) {
+function articleSchema(article: NonNullable<ReturnType<typeof cmsBlogToArticle>>) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",

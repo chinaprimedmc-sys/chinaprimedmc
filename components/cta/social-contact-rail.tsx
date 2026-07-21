@@ -9,10 +9,13 @@ import { useEffect, useState } from "react";
 import { WhatsAppIcon } from "@/components/icons";
 import { cn } from "@/lib/utils/cn";
 
-const whatsappHref = "https://wa.me/447985052302";
-const emailHref = "mailto:chinaprimedmc@gmail.com";
-
-export function SocialContactRail() {
+export function SocialContactRail({
+  whatsappHref,
+  email,
+}: {
+  whatsappHref: string;
+  email: string;
+}) {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const [heroHasPassed, setHeroHasPassed] = useState(false);
@@ -70,7 +73,11 @@ export function SocialContactRail() {
               >
                 <WhatsAppIcon className="social-contact-rail__option-icon social-contact-rail__option-icon--whatsapp" />
               </ContactOption>
-              <ContactOption href={emailHref} label="Email us" detail="Thoughtful trip planning">
+              <ContactOption
+                href={`mailto:${email}`}
+                label="Email us"
+                detail="Thoughtful trip planning"
+              >
                 <Mail
                   className="social-contact-rail__option-icon social-contact-rail__option-icon--email"
                   aria-hidden="true"

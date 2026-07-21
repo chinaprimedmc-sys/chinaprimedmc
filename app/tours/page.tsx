@@ -5,14 +5,12 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import { journeyCatalog } from "@/content/tours/catalog";
-import { destinations } from "@/content/destinations";
-import { homeNavItems, primaryAction } from "@/content/home/homepage";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 import { cmsJourneyToCatalogItem } from "@/lib/cms/adapters";
 import { getPublishedCmsJourneys } from "@/lib/cms/data";
+import { getPublicDestinations, getPublicSiteSettings } from "@/lib/cms/public-content";
 
 export const metadata: Metadata = createMetadata({
   title: "Private China Tours and Custom Itinerary Ideas",
@@ -22,15 +20,15 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default async function ToursPage() {
-  const cmsJourneys = await getPublishedCmsJourneys();
+  const [cmsJourneys, destinations, settings] = await Promise.all([
+    getPublishedCmsJourneys(),
+    getPublicDestinations(),
+    getPublicSiteSettings(),
+  ]);
   const cmsCatalogItems = cmsJourneys
     .map(cmsJourneyToCatalogItem)
     .filter((journey): journey is NonNullable<typeof journey> => Boolean(journey));
-  const cmsSlugs = new Set(cmsCatalogItems.map((journey) => journey.slug));
-  const catalog = [
-    ...journeyCatalog.filter((journey) => !cmsSlugs.has(journey.slug)),
-    ...cmsCatalogItems,
-  ];
+  const catalog = cmsCatalogItems;
 
   return (
     <PageContainer>
@@ -58,8 +56,8 @@ export default async function ToursPage() {
         ])}
       />
       <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
+        items={settings.navigation}
+        cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
         tone="dark"
       />
 
@@ -90,7 +88,7 @@ export default async function ToursPage() {
             ],
           },
         ]}
-        social={[]}
+        social={settings.socialLinks}
       />
     </PageContainer>
   );

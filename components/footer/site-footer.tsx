@@ -16,7 +16,7 @@ export function SiteFooter({
   brand = "AVIORA",
   description = `Private China journeys by China Prime DMC, operated in China by a ${siteConfig.operator.tourismLicense.shortLabel.toLowerCase()}.`,
   columns,
-  email = "chinaprimedmc@gmail.com",
+  email = siteConfig.email,
   social = [],
 }: SiteFooterProps) {
   return (

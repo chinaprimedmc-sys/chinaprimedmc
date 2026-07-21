@@ -8,12 +8,18 @@ import { HeroLargeImage } from "@/components/hero/hero-large-image";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { homeNavItems, primaryAction } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
 import { cmsMediaToAsset } from "@/lib/cms/adapters";
 import type { CmsJourney } from "@/lib/cms/types";
+import type { SanitySiteSettings } from "@/lib/cms/sanity";
 
-export function CmsJourneyTemplate({ journey }: { journey: CmsJourney }) {
+export function CmsJourneyTemplate({
+  journey,
+  settings,
+}: {
+  journey: CmsJourney;
+  settings: SanitySiteSettings;
+}) {
   if (!journey.hero_image) return null;
 
   const hero = cmsMediaToAsset(journey.hero_image);
@@ -23,8 +29,8 @@ export function CmsJourneyTemplate({ journey }: { journey: CmsJourney }) {
   return (
     <PageContainer className="pb-28 md:pb-0">
       <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
+        items={settings.navigation}
+        cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
       />
       <HeroLargeImage
         eyebrow="Private journey"
@@ -122,7 +128,7 @@ export function CmsJourneyTemplate({ journey }: { journey: CmsJourney }) {
             ],
           },
         ]}
-        social={[]}
+        social={settings.socialLinks}
       />
     </PageContainer>
   );

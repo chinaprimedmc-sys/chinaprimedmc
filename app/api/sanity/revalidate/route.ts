@@ -28,11 +28,17 @@ export async function POST(request: Request) {
     revalidatePath("/journal");
     if (slug) revalidatePath(`/journal/${slug}`);
   } else if (document._type === "destination") {
+    revalidateTag("cms-destinations", "max");
     revalidatePath("/destinations");
     if (slug) revalidatePath(`/destinations/${slug}`);
   } else if (document._type === "homePage") {
+    revalidateTag("cms-home", "max");
     revalidatePath("/");
+  } else if (document._type === "destinationHub") {
+    revalidateTag("cms-destination-hub", "max");
+    revalidatePath("/destinations");
   } else if (document._type === "siteSettings") {
+    revalidateTag("cms-site-settings", "max");
     revalidatePath("/", "layout");
   }
 

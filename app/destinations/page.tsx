@@ -4,8 +4,11 @@ import { DestinationExplorer } from "@/components/destinations/destination-explo
 import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import { explorerDestinations } from "@/content/destinations/explorer";
-import { heroImage, homeNavItems, primaryAction } from "@/content/home/homepage";
+import {
+  getPublicDestinationHub,
+  getPublicDestinations,
+  getPublicSiteSettings,
+} from "@/lib/cms/public-content";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -15,10 +18,15 @@ export const metadata: Metadata = createMetadata({
   description:
     "Explore Beijing, Xi'an, Shanghai, Chengdu, Yunnan, Guilin, Zhangjiajie, the Silk Road and more by interests, regions and realistic private-trip pacing.",
   path: "/destinations",
-  image: heroImage.src,
+  image: "/home/beijing-forbidden-city-1400.webp",
 });
 
-export default function DestinationsPage() {
+export default async function DestinationsPage() {
+  const [hub, destinations, settings] = await Promise.all([
+    getPublicDestinationHub(),
+    getPublicDestinations(),
+    getPublicSiteSettings(),
+  ]);
   const pageUrl = new URL("/destinations", siteConfig.url).toString();
 
   return (
@@ -34,17 +42,15 @@ export default function DestinationsPage() {
           url: pageUrl,
           mainEntity: {
             "@type": "ItemList",
-            numberOfItems: explorerDestinations.length,
-            itemListElement: explorerDestinations.map((destination, index) => ({
+            numberOfItems: destinations.length,
+            itemListElement: destinations.map((destination, index) => ({
               "@type": "ListItem",
               position: index + 1,
               item: {
                 "@type": "TouristDestination",
                 name: destination.name,
-                description: destination.description,
-                url: destination.guideHref
-                  ? new URL(destination.guideHref, siteConfig.url).toString()
-                  : `${pageUrl}#${destination.id}`,
+                description: destination.summary,
+                url: new URL(`/destinations/${destination.slug}`, siteConfig.url).toString(),
               },
             })),
           },
@@ -59,17 +65,34 @@ export default function DestinationsPage() {
       />
       <SiteNavigation
         tone="light"
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
+        items={settings.navigation}
+        cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
       />
-      <DestinationExplorer />
+      <DestinationExplorer
+        content={hub}
+        destinations={destinations}
+        journeys={hub.featuredJourneys.map((journey) => ({
+          title: journey.title,
+          route: journey.route,
+          duration: journey.duration_label,
+          href: `/tours/${journey.slug}`,
+          image: journey.hero_image
+            ? {
+                src: journey.hero_image.url,
+                alt: journey.hero_image.alt_text,
+                objectPosition: journey.hero_image.object_position,
+              }
+            : undefined,
+        }))}
+      />
       <SiteFooter
         columns={[
           {
             title: "Destination guides",
-            items: explorerDestinations
-              .filter((destination) => destination.guideHref)
-              .map((destination) => ({ label: destination.name, href: destination.guideHref! })),
+            items: destinations.map((destination) => ({
+              label: destination.name,
+              href: `/destinations/${destination.slug}`,
+            })),
           },
           {
             title: "Explore",
