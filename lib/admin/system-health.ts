@@ -26,7 +26,6 @@ export async function getSystemHealthReport(): Promise<SystemHealthReport> {
     checkSupabaseInquiries(),
     checkR2Configuration(),
     checkTurnstileConfiguration(),
-    checkRevalidateSecret(),
     checkAdminConfiguration(),
     checkInquiryNotification(),
   ]);
@@ -131,25 +130,6 @@ function checkTurnstileConfiguration(): HealthCheck {
     label: "Cloudflare Turnstile",
     status: "healthy",
     detail: "站点密钥和服务端密钥均已配置，询盘接口会失败关闭。",
-  };
-}
-
-function checkRevalidateSecret(): HealthCheck {
-  const secret = process.env.SANITY_REVALIDATE_SECRET || "";
-  if (secret.length < 32) {
-    return {
-      id: "revalidate",
-      label: "网站发布刷新",
-      status: "warning",
-      detail: "刷新 webhook secret 过短或未配置。",
-      action: "网站内容随代码提交自动通过 Vercel 发布，不需要 Sanity webhook。",
-    };
-  }
-  return {
-    id: "revalidate",
-    label: "网站发布刷新",
-    status: "healthy",
-    detail: "网站内容由代码提交触发 Vercel 发布。",
   };
 }
 

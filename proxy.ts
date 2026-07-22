@@ -2,13 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { getAdminSessionCookieName, verifyAdminSession } from "@/lib/admin/session";
 
-const protectedPrefixes = [
-  "/admin",
-  "/api/admin",
-  "/studio",
-  "/component-showcase",
-  "/component-playground",
-];
+const protectedPrefixes = ["/admin", "/api/admin", "/component-showcase", "/component-playground"];
 const publicAdminPaths = new Set(["/admin/login", "/api/admin/session"]);
 const retiredAdminPaths = new Set([
   "/admin/analytics",
@@ -25,33 +19,31 @@ function isProtectedPath(pathname: string) {
   );
 }
 
-function buildContentSecurityPolicy(studio: boolean, studioPreview: boolean, nonce = "") {
+function buildContentSecurityPolicy(nonce = "") {
   const r2Source = getR2Source();
   const development = process.env.NODE_ENV !== "production";
   return [
     "default-src 'self'",
     "base-uri 'self'",
     "form-action 'self' mailto:",
-    studioPreview ? "frame-ancestors 'self'" : "frame-ancestors 'none'",
+    "frame-ancestors 'none'",
     "object-src 'none'",
-    `img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://cdn.sanity.io https://*.r2.dev${r2Source}`,
+    `img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://*.r2.dev${r2Source}`,
     "font-src 'self'",
-    studio
-      ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.sanity.io https://*.sanity-cdn.com"
-      : `script-src 'self' 'nonce-${nonce}' https://challenges.cloudflare.com${development ? " 'unsafe-eval'" : ""}`,
+    `script-src 'self' 'nonce-${nonce}' https://challenges.cloudflare.com${development ? " 'unsafe-eval'" : ""}`,
     "style-src 'self' 'unsafe-inline'",
-    `connect-src 'self' mailto: https://*.sanity.io https://*.sanity-cdn.com https://*.r2.cloudflarestorage.com https://challenges.cloudflare.com${studio ? " https://registry.npmjs.org wss://*.sanity.io" : ""}${development ? " ws: wss:" : ""}`,
-    "frame-src 'self' https://challenges.cloudflare.com https://*.sanity.io",
+    `connect-src 'self' mailto: https://*.r2.cloudflarestorage.com https://challenges.cloudflare.com${development ? " ws: wss:" : ""}`,
+    "frame-src 'self' https://challenges.cloudflare.com",
     "worker-src 'self' blob:",
     "upgrade-insecure-requests",
   ].join("; ");
 }
 
-function applySecurityHeaders(response: NextResponse, csp: string, studioPreview = false) {
+function applySecurityHeaders(response: NextResponse, csp: string) {
   response.headers.set("Content-Security-Policy", csp);
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set("X-Content-Type-Options", "nosniff");
-  response.headers.set("X-Frame-Options", studioPreview ? "SAMEORIGIN" : "DENY");
+  response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
   response.headers.set("X-DNS-Prefetch-Control", "on");
   response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
@@ -74,12 +66,8 @@ function unauthorizedAdminResponse(request: NextRequest, csp: string) {
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const isStudio = pathname === "/studio" || pathname.startsWith("/studio/");
-  const isStudioPreview =
-    request.nextUrl.searchParams.get("studioPreview") === "1" &&
-    request.headers.get("sec-fetch-site") === "same-origin";
-  const nonce = isStudio ? "" : createNonce();
-  const csp = buildContentSecurityPolicy(isStudio, isStudioPreview, nonce);
+  const nonce = createNonce();
+  const csp = buildContentSecurityPolicy(nonce);
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("Content-Security-Policy", csp);
   if (nonce) requestHeaders.set("x-nonce", nonce);
@@ -91,11 +79,7 @@ export async function proxy(request: NextRequest) {
   }
 
   if (retiredAdminPaths.has(pathname)) {
-    return applySecurityHeaders(
-      NextResponse.redirect(new URL("/admin", request.url)),
-      csp,
-      isStudioPreview,
-    );
+    return applySecurityHeaders(NextResponse.redirect(new URL("/admin", request.url)), csp);
   }
 
   if (isProtectedPath(pathname) && !publicAdminPaths.has(pathname)) {
@@ -118,7 +102,7 @@ export async function proxy(request: NextRequest) {
     }
   }
 
-  return applySecurityHeaders(response, csp, isStudioPreview);
+  return applySecurityHeaders(response, csp);
 }
 
 function createNonce() {

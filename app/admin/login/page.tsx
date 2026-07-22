@@ -28,10 +28,7 @@ export default function AdminLoginPage() {
       return;
     }
     const requestedPath = new URLSearchParams(window.location.search).get("next");
-    const nextPath =
-      requestedPath?.startsWith("/studio") || requestedPath?.startsWith("/admin")
-        ? requestedPath
-        : "/admin";
+    const nextPath = requestedPath?.startsWith("/admin") ? requestedPath : "/admin";
     router.replace(nextPath);
     router.refresh();
   }
@@ -43,10 +40,8 @@ export default function AdminLoginPage() {
         className="border-border w-full max-w-md rounded-[2rem] border bg-white p-8 shadow-[0_24px_80px_rgba(22,21,18,0.12)]"
       >
         <p className="text-muted text-xs font-semibold tracking-[0.16em] uppercase">AVIORA</p>
-        <h1 className="text-foreground mt-3 font-serif text-4xl">内容与询盘后台</h1>
-        <p className="text-muted mt-3 text-sm leading-6">
-          一次登录即可管理网站内容、图片和客户询盘。
-        </p>
+        <h1 className="text-foreground mt-3 font-serif text-4xl">询盘管理后台</h1>
+        <p className="text-muted mt-3 text-sm leading-6">登录后可安全查看和管理客户询盘。</p>
         <div className="mt-7 grid gap-4">
           <label className="grid gap-2 text-sm font-medium">
             账号

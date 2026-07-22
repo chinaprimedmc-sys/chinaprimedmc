@@ -21,7 +21,7 @@ pnpm build
 Use `.env.example` as the authoritative inventory. Production requires:
 
 - Supabase URL, anonymous key, and service-role key for private inquiries.
-- Sanity project ID, dataset, and revalidation secret for public content.
+- Public journeys, destinations, and articles are maintained in the repository and deployed through GitHub and Vercel.
 - Cloudflare R2 account, access keys, bucket, and public URL for CMS media.
 - `ADMIN_USERNAME`, a unique random `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`,
   `ADMIN_SESSION_VERSION`, and `RATE_LIMIT_SALT` for the owner dashboard.
@@ -52,18 +52,16 @@ Keep the previous successful deployment available in the hosting platform. If a 
 
 ## Backup
 
-Back up Supabase inquiries, the Sanity production dataset, Cloudflare R2 objects, and deployment
-environment variables. Test restoration periodically instead of treating backup creation as proof of
-recoverability.
+Back up Supabase inquiries, Cloudflare R2 objects, the Git repository, and deployment environment
+variables. Test restoration periodically instead of treating backup creation as proof of recoverability.
 
 ## Prelaunch Manual Checks
 
 - Confirm final domain points to the production deployment.
 - Confirm `ADMIN_USERNAME` and `ADMIN_PASSWORD` are set.
 - Confirm `/admin` redirects to login and protected APIs return `401` without a session.
-- Confirm old `/api/admin/cms`, `/api/admin/cms/revisions`, and `/api/admin/media` endpoints return
-  `410` after authentication.
+- Confirm retired content-management routes return `404`.
 - Complete Turnstile and submit a real inquiry, then confirm it appears only in the protected admin.
-- Upload valid and invalid image fixtures to confirm signature and dimension validation.
-- Confirm public pages use nonce-based CSP while `/studio` uses its isolated Sanity policy.
+- Confirm the protected R2 upload endpoint accepts only validated image formats.
+- Confirm public pages use nonce-based CSP and do not allow retired CMS origins.
 - Inspect Search Console after sitemap submission.

@@ -52,10 +52,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cdn.sanity.io",
-      },
-      {
-        protocol: "https",
         hostname: "**.r2.dev",
       },
       ...(r2PublicHost

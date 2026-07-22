@@ -18,7 +18,7 @@ export function SocialContactRail({
 }) {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const isBackend = pathname.startsWith("/admin") || pathname.startsWith("/studio");
+  const isBackend = pathname.startsWith("/admin");
   const [heroHasPassed, setHeroHasPassed] = useState(false);
 
   useEffect(() => {
