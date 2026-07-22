@@ -15,6 +15,12 @@ const chengduImage = (src: string, alt: string, width: number, height: number): 
 });
 
 export const firstChinaAsset = {
+  beijingGreatWallSunriseHero: tourImage(
+    "beijing-great-wall-sunrise-hero.jpg",
+    "The Great Wall winding across mountain ridges near Beijing in warm evening light",
+    1920,
+    1080,
+  ),
   beijingForbiddenCityMoat: tourImage(
     "beijing-forbidden-city-moat.webp",
     "The Forbidden City outer wall and moat in Beijing beneath a bright sky",

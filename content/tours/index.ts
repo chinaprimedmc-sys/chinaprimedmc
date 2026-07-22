@@ -19,7 +19,7 @@ export const tours: Tour[] = [
     styles: ["First-time China", "Family", "Culture", "Luxury"],
     hero: {
       eyebrow: "Private journey proposal",
-      image: firstChinaAsset.beijingForbiddenCityMoat,
+      image: firstChinaAsset.beijingGreatWallSunriseHero,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
       secondary: { label: "Customize My Journey", href: "#inquiry" },
     },

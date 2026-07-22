@@ -270,7 +270,7 @@ export const journeys = [
     accent: "gold" as const,
     poeticTitle: "China's essential first journey, beautifully paced.",
     description: "Imperial Beijing, historic Xi'an, and modern Shanghai without the rush.",
-    image: firstChinaAsset.beijingForbiddenCityMoat,
+    image: firstChinaAsset.beijingGreatWallSunriseHero,
     href: "/tours/first-china-beautifully-paced",
     duration: "9 days / 8 nights",
     route: "Beijing · Xi'an · Shanghai",
