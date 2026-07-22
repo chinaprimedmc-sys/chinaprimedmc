@@ -108,10 +108,10 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
 
   const previous = () => setActiveIndex((current) => (current - 1 + items.length) % items.length);
   const next = () => setActiveIndex((current) => (current + 1) % items.length);
-  const pauseAfterInteraction = () => {
+  const pauseAfterInteraction = (duration = 1200) => {
     setIsPaused(true);
     if (interactionTimer.current) window.clearTimeout(interactionTimer.current);
-    interactionTimer.current = window.setTimeout(() => setIsPaused(false), 1200);
+    interactionTimer.current = window.setTimeout(() => setIsPaused(false), duration);
   };
 
   return (
@@ -189,7 +189,6 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
                 transform: `translate(calc(-50% + ${offset} * clamp(12rem, 28vw, 28rem)), -50%) scale(${scale}) rotateY(${offset * -12}deg)`,
                 zIndex: active ? 20 : distance === 1 ? 10 : 1,
               }}
-              onFocus={() => setActiveIndex(index)}
               onClick={(event) => {
                 if (didSwipe.current) {
                   event.preventDefault();
@@ -199,7 +198,7 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
                 if (!active) {
                   event.preventDefault();
                   setActiveIndex(index);
-                  pauseAfterInteraction();
+                  pauseAfterInteraction(6000);
                 }
               }}
               aria-label={`${item.title}: ${item.description}`}
