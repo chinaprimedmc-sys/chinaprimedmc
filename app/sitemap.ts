@@ -5,8 +5,6 @@ import { explorerDestinations } from "@/content/destinations/explorer";
 import { journalArticles } from "@/content/journal";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { getTravelStyleSlugs } from "@/content/travel-styles";
-import { isIndexableCmsJourney, isIndexableCmsPost } from "@/lib/cms/adapters";
-import { getPublishedCmsJourneys, getPublishedCmsPosts } from "@/lib/cms/data";
 
 const staticRoutes = [
   ["/", "weekly", 1],
@@ -28,11 +26,6 @@ const staticRoutes = [
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [cmsJourneys, cmsPosts] = await Promise.all([
-    getPublishedCmsJourneys(),
-    getPublishedCmsPosts(),
-  ]);
-
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map(
     ([path, changeFrequency, priority]) => ({
       url: new URL(path, siteConfig.url).toString(),
@@ -55,15 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     }));
 
-  const cmsJourneyEntries: MetadataRoute.Sitemap = cmsJourneys
-    .filter(isIndexableCmsJourney)
-    .map((journey) => ({
-      url: new URL(`/tours/${journey.slug}`, siteConfig.url).toString(),
-      lastModified: journey.updated_at,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    }));
-
   const styleEntries: MetadataRoute.Sitemap = getTravelStyleSlugs().map((slug) => ({
     url: new URL(`/styles/${slug}`, siteConfig.url).toString(),
     changeFrequency: "monthly",
@@ -77,24 +61,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.72,
   }));
 
-  const localArticleSlugs = new Set(journalArticles.map(({ slug }) => slug));
-  const cmsPostEntries: MetadataRoute.Sitemap = cmsPosts
-    .filter((post) => !localArticleSlugs.has(post.slug) && isIndexableCmsPost(post))
-    .map((post) => ({
-      url: new URL(`/journal/${post.slug}`, siteConfig.url).toString(),
-      lastModified: post.updated_at,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    }));
-
   return deduplicate([
     ...staticEntries,
     ...destinationEntries,
     ...flagshipEntries,
-    ...cmsJourneyEntries,
     ...styleEntries,
     ...localArticleEntries,
-    ...cmsPostEntries,
   ]);
 }
 

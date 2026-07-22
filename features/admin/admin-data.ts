@@ -6,9 +6,9 @@ import { tours } from "@/content/tours";
 
 export const adminNavigation = [
   { label: "数据概览", href: "/admin", icon: Gauge },
-  { label: "内容管理", href: "/studio/content/dashboard", icon: ImageIcon },
-  { label: "线路管理", href: "/studio/content/journeys-live", icon: Luggage },
-  { label: "旅行杂志", href: "/studio/content/blogs-live", icon: BookOpenText },
+  { label: "内容预览", href: "/destinations", icon: ImageIcon },
+  { label: "线路预览", href: "/tours", icon: Luggage },
+  { label: "旅行杂志", href: "/journal", icon: BookOpenText },
   { label: "询盘管理", href: "/admin/inquiries", icon: Inbox },
   { label: "系统健康", href: "/admin/system", icon: ShieldCheck },
 ];

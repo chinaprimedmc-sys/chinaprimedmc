@@ -1,7 +1,7 @@
 import "server-only";
 
-import { getPublishedCmsJourneys, getPublishedCmsPosts } from "@/lib/cms/data";
-import { getSanitySiteSettings } from "@/lib/cms/sanity";
+import { journalArticles } from "@/content/journal";
+import { journeyCatalog } from "@/content/tours/catalog";
 import { getAdminInquiries } from "@/lib/inquiries/data";
 
 export type HealthStatus = "healthy" | "warning" | "critical";
@@ -22,7 +22,7 @@ export type SystemHealthReport = {
 
 export async function getSystemHealthReport(): Promise<SystemHealthReport> {
   const checks = await Promise.all([
-    checkSanityRead(),
+    checkLocalContent(),
     checkSupabaseInquiries(),
     checkR2Configuration(),
     checkTurnstileConfiguration(),
@@ -38,39 +38,19 @@ export async function getSystemHealthReport(): Promise<SystemHealthReport> {
   };
 }
 
-async function checkSanityRead(): Promise<HealthCheck> {
-  try {
-    const [settings, journeys, posts] = await Promise.all([
-      getSanitySiteSettings(),
-      getPublishedCmsJourneys(),
-      getPublishedCmsPosts(),
-    ]);
-    const journeyCount = journeys.length;
-    const postCount = posts.length;
-    if (!settings) {
-      return {
-        id: "sanity",
-        label: "Sanity 内容后台",
-        status: "warning",
-        detail: `可读取内容，但站点设置未完整返回。当前线路 ${journeyCount} 条，文章 ${postCount} 篇。`,
-        action: "检查 Sanity 的 Site Settings 文档是否已发布。",
-      };
-    }
-    return {
-      id: "sanity",
-      label: "Sanity 内容后台",
-      status: "healthy",
-      detail: `读取正常。当前前台可用线路 ${journeyCount} 条，文章 ${postCount} 篇。`,
-    };
-  } catch {
-    return {
-      id: "sanity",
-      label: "Sanity 内容后台",
-      status: "critical",
-      detail: "无法读取 Sanity 内容。",
-      action: "检查 Sanity 项目、dataset、CORS 和 Vercel 环境变量。",
-    };
-  }
+function checkLocalContent(): HealthCheck {
+  const journeyCount = journeyCatalog.length;
+  const postCount = journalArticles.length;
+  return {
+    id: "local-content",
+    label: "代码内容库",
+    status: journeyCount && postCount ? "healthy" : "critical",
+    detail: `公开内容由代码仓库维护。当前线路 ${journeyCount} 条，文章 ${postCount} 篇。`,
+    action:
+      journeyCount && postCount
+        ? undefined
+        : "检查 content/tours 和 content/journal 是否存在有效内容。",
+  };
 }
 
 async function checkSupabaseInquiries(): Promise<HealthCheck> {
@@ -159,17 +139,17 @@ function checkRevalidateSecret(): HealthCheck {
   if (secret.length < 32) {
     return {
       id: "revalidate",
-      label: "Sanity 发布刷新",
+      label: "网站发布刷新",
       status: "warning",
       detail: "刷新 webhook secret 过短或未配置。",
-      action: "在 Vercel 和 Sanity webhook 中使用至少 32 位随机 secret。",
+      action: "网站内容随代码提交自动通过 Vercel 发布，不需要 Sanity webhook。",
     };
   }
   return {
     id: "revalidate",
-    label: "Sanity 发布刷新",
+    label: "网站发布刷新",
     status: "healthy",
-    detail: "刷新 webhook secret 已配置，发布后可触发缓存更新。",
+    detail: "网站内容由代码提交触发 Vercel 发布。",
   };
 }
 

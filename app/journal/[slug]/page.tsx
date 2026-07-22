@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
+import { getArticleBySlug, getArticleSlugs } from "@/content/journal";
+import type { JournalArticle } from "@/types/journal";
 import { ArticleTemplate } from "@/features/journal/article-template";
-import { cmsBlogToArticle, isIndexableCmsPost } from "@/lib/cms/adapters";
-import { getPublishedCmsPost, getPublishedCmsPosts } from "@/lib/cms/data";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -14,14 +14,12 @@ type ArticlePageProps = {
 };
 
 export async function generateStaticParams() {
-  const cmsPosts = await getPublishedCmsPosts();
-  return cmsPosts.map((post) => ({ slug: post.slug }));
+  return getArticleSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const cmsPost = await getPublishedCmsPost(slug);
-  const article = cmsPost ? cmsBlogToArticle(cmsPost) : null;
+  const article = getArticleBySlug(slug);
 
   if (!article) {
     notFound();
@@ -33,14 +31,13 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     path: article.seo.canonicalPath ?? `/journal/${article.slug}`,
     image: article.seo.ogImage?.src ?? article.hero.image.src,
     type: "article",
-    noIndex: cmsPost ? !isIndexableCmsPost(cmsPost) : false,
+    noIndex: false,
   });
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const cmsPost = await getPublishedCmsPost(slug);
-  const article = cmsPost ? cmsBlogToArticle(cmsPost) : null;
+  const article = getArticleBySlug(slug);
 
   if (!article) {
     notFound();
@@ -86,7 +83,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   );
 }
 
-function articleSchema(article: NonNullable<ReturnType<typeof cmsBlogToArticle>>) {
+function articleSchema(article: JournalArticle) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",

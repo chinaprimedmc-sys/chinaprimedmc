@@ -113,7 +113,7 @@ export function AdminShell({ children }: AdminShellProps) {
         >
           <p className="text-sm font-semibold">运营提示</p>
           <p className="text-muted mt-2 text-xs leading-5">
-            内容编辑请进入 Sanity；客户询盘继续在此处安全管理。
+            网站内容由维护者直接更新并随网站发布；客户询盘继续在此处安全管理。
           </p>
           <button
             type="button"

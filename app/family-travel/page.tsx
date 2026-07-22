@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { DestinationCard } from "@/components/cards/destination-card";
 import { FeatureCard } from "@/components/cards/feature-card";
@@ -33,7 +34,7 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function FamilyTravelPage() {
-  if (!guide) return null;
+  if (!guide) notFound();
 
   const familyTours = tours.filter((tour) => tour.styles.includes("Family"));
   const familyDestinations = destinations.filter((destination) =>

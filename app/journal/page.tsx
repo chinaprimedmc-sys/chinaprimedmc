@@ -3,8 +3,7 @@ import { JournalHubTemplate } from "@/features/journal/journal-hub-template";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
-import { cmsBlogToArticle } from "@/lib/cms/adapters";
-import { getPublishedCmsPosts } from "@/lib/cms/data";
+import { journalArticles as localJournalArticles } from "@/content/journal";
 
 export const metadata = createMetadata({
   title: "Travel Journal",
@@ -14,17 +13,32 @@ export const metadata = createMetadata({
 });
 
 export default async function JournalPage() {
-  const cmsPosts = await getPublishedCmsPosts();
-  const cmsArticles = cmsPosts
-    .map(cmsBlogToArticle)
-    .filter((article): article is NonNullable<typeof article> => Boolean(article));
-  const [featured, ...editorPicks] = cmsArticles;
-  const latest = cmsArticles;
+  const latest = [...localJournalArticles].sort((a, b) =>
+    b.publishedAt.localeCompare(a.publishedAt),
+  );
+  const featured = latest.find((article) => article.featured) ?? latest[0];
+  const editorPicks = latest.filter((article) => article.editorPick);
 
-  if (!featured) return null;
+  if (!featured) {
+    return (
+      <main className="mx-auto grid min-h-[60vh] max-w-3xl place-items-center px-6 py-24 text-center">
+        <div>
+          <p className="text-muted text-xs font-semibold tracking-[0.18em] uppercase">
+            Travel Journal
+          </p>
+          <h1 className="mt-4 text-4xl font-semibold tracking-[-0.03em]">
+            Stories are being prepared.
+          </h1>
+          <p className="text-muted mt-4 leading-7">
+            Please check back soon or contact our China journey team for planning advice.
+          </p>
+        </div>
+      </main>
+    );
+  }
 
-  const categories = [...new Set(cmsArticles.map((article) => article.category))];
-  const tags = [...new Set(cmsArticles.flatMap((article) => article.tags))].map((tag) => ({
+  const categories = [...new Set(latest.map((article) => article.category))];
+  const tags = [...new Set(latest.flatMap((article) => article.tags))].map((tag) => ({
     slug: tag,
     label: tag,
   }));

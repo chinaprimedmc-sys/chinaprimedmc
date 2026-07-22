@@ -1,5 +1,5 @@
 const baseUrl = new URL(process.env.SEO_BASE_URL || "https://www.chinaprimedmc.com");
-const canonicalOrigin = (process.env.SEO_SITE_ORIGIN || "https://www.chinaprimedmc.com").replace(
+const canonicalOrigin = (process.env.SEO_SITE_ORIGIN || baseUrl.origin).replace(
   /\/$/,
   "",
 );

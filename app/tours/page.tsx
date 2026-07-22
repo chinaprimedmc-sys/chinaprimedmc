@@ -5,11 +5,10 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
+import { journeyCatalog } from "@/content/tours/catalog";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
-import { cmsJourneyToCatalogItem } from "@/lib/cms/adapters";
-import { getPublishedCmsJourneys } from "@/lib/cms/data";
 import { getPublicDestinations, getPublicSiteSettings } from "@/lib/cms/public-content";
 
 export const metadata: Metadata = createMetadata({
@@ -20,15 +19,11 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default async function ToursPage() {
-  const [cmsJourneys, destinations, settings] = await Promise.all([
-    getPublishedCmsJourneys(),
+  const [destinations, settings] = await Promise.all([
     getPublicDestinations(),
     getPublicSiteSettings(),
   ]);
-  const cmsCatalogItems = cmsJourneys
-    .map(cmsJourneyToCatalogItem)
-    .filter((journey): journey is NonNullable<typeof journey> => Boolean(journey));
-  const catalog = cmsCatalogItems;
+  const catalog = journeyCatalog;
 
   return (
     <PageContainer>

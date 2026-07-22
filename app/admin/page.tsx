@@ -1,14 +1,13 @@
 import Link from "next/link";
 
-import { getPublishedCmsJourneys, getPublishedCmsPosts } from "@/lib/cms/data";
+import { journeyCatalog } from "@/content/tours/catalog";
+import { journalArticles } from "@/content/journal";
 import { getPublicDestinations } from "@/lib/cms/public-content";
 import { getAdminInquiries } from "@/lib/inquiries/data";
 
 export default async function AdminDashboardPage() {
-  const [inquiries, journeys, posts, destinations] = await Promise.all([
+  const [inquiries, destinations] = await Promise.all([
     getAdminInquiries(),
-    getPublishedCmsJourneys(),
-    getPublishedCmsPosts(),
     getPublicDestinations(),
   ]);
   const r2Configured = Boolean(
@@ -24,13 +23,13 @@ export default async function AdminDashboardPage() {
       value: inquiries.filter((item) => item.status === "new").length,
       href: "/admin/inquiries",
     },
-    { label: "已发布行程", value: journeys.length, href: "/studio/content/journeys-live" },
-    { label: "目的地", value: destinations.length, href: "/studio/content/destinations-live" },
-    { label: "已发布博客", value: posts.length, href: "/studio/content/blogs-live" },
+    { label: "已发布行程", value: journeyCatalog.length, href: "/tours" },
+    { label: "目的地", value: destinations.length, href: "/destinations" },
+    { label: "已发布博客", value: journalArticles.length, href: "/journal" },
     {
       label: "R2 图片",
       value: r2Configured ? "正常" : "待配置",
-      href: "/studio/content/dashboard",
+      href: "/admin/media",
     },
   ];
   return (
@@ -39,7 +38,7 @@ export default async function AdminDashboardPage() {
         <p className="text-muted text-xs font-semibold tracking-[0.14em] uppercase">实时数据</p>
         <h1 className="mt-2 text-4xl font-semibold">运营概览</h1>
         <p className="text-muted mt-2">
-          客户询盘由 Supabase 安全保存；公开内容由 Sanity 管理，图片存储在 Cloudflare R2。
+          客户询盘由 Supabase 安全保存；公开内容由代码仓库维护并随网站发布。
         </p>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">

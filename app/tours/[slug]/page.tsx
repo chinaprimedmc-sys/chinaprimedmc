@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getTourBySlug } from "@/content/tours";
-import { CmsJourneyTemplate } from "@/features/tours/cms-journey-template";
+import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
+import { TourFrameworkTemplate } from "@/features/tours/tour-framework-template";
 import { TourTemplate } from "@/features/tours/tour-template";
-import { isIndexableCmsJourney } from "@/lib/cms/adapters";
-import { getPublishedCmsJourney, getPublishedCmsJourneys } from "@/lib/cms/data";
-import { getPublicSiteSettings } from "@/lib/cms/public-content";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -16,8 +14,7 @@ type TourPageProps = {
 };
 
 export async function generateStaticParams() {
-  const cmsJourneys = await getPublishedCmsJourneys();
-  return cmsJourneys.map((item) => ({ slug: item.slug }));
+  return journeyCatalog.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
@@ -33,18 +30,17 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
     });
   }
 
-  const cmsJourney = await getPublishedCmsJourney(slug);
+  const journey = getJourneyCatalogItem(slug);
 
-  if (!cmsJourney) {
+  if (!journey) {
     notFound();
   }
 
   return createMetadata({
-    title: cmsJourney.seo_title,
-    description: cmsJourney.seo_description,
-    path: `/tours/${cmsJourney.slug}`,
-    image: cmsJourney.hero_image?.url,
-    noIndex: !isIndexableCmsJourney(cmsJourney),
+    title: journey.title,
+    description: journey.summary,
+    path: `/tours/${journey.slug}`,
+    image: journey.image.src,
   });
 }
 
@@ -68,26 +64,23 @@ export default async function TourPage({ params }: TourPageProps) {
     );
   }
 
-  const [cmsJourney, settings] = await Promise.all([
-    getPublishedCmsJourney(slug),
-    getPublicSiteSettings(),
-  ]);
+  const journey = getJourneyCatalogItem(slug);
 
-  if (!cmsJourney) {
+  if (!journey) {
     notFound();
   }
 
   return (
     <>
       <JsonLd
-        id={`${cmsJourney.slug}-breadcrumb-schema`}
+        id={`${journey.slug}-breadcrumb-schema`}
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
           { name: "Journeys", path: "/tours" },
-          { name: cmsJourney.title, path: `/tours/${cmsJourney.slug}` },
+          { name: journey.title, path: `/tours/${journey.slug}` },
         ])}
       />
-      <CmsJourneyTemplate journey={cmsJourney} settings={settings} />
+      <TourFrameworkTemplate item={journey} />
     </>
   );
 }
