@@ -1,28 +1,19 @@
-"use client";
-
-import { CalendarDays, Mail, Send } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Mail } from "lucide-react";
 
 import { CtaButton } from "@/components/cta/cta-button";
-import { SelectField } from "@/components/forms/select-field";
 import { WhatsAppIcon } from "@/components/icons";
-import { TextAreaField, TextField } from "@/components/forms/form-field";
-import { TravelerSelector } from "@/components/forms/traveler-selector";
 import { Badge } from "@/components/ui/badge";
 import type { Tour } from "@/types/tour";
 
 type TourInquiryPanelProps = {
   tour: Tour;
+  planningHref: string;
 };
 
-export function TourInquiryPanel({ tour }: TourInquiryPanelProps) {
-  const [adults, setAdults] = useState(2);
-  const [children, setChildren] = useState(0);
-  const [comfort, setComfort] = useState("premium");
-
+export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) {
   return (
-    <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-      <div className="rounded-[2rem] border border-white/70 bg-white/62 p-6 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:p-8">
+    <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+      <div className="rounded-[2rem] border border-white/70 bg-white/62 p-6 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:p-8 lg:p-10">
         <Badge>Quick consultation</Badge>
         <h2 className="mt-5 text-3xl leading-tight font-semibold tracking-[-0.035em] md:text-5xl">
           Start with the route, then make it yours.
@@ -34,11 +25,11 @@ export function TourInquiryPanel({ tour }: TourInquiryPanelProps) {
 
         <div className="mt-7 grid gap-3">
           <CtaButton
-            href={tour.inquiry.emailHref}
+            href={planningHref}
             className="w-full justify-center"
-            icon={<Mail size={17} aria-hidden="true" />}
+            icon={<ArrowRight size={17} aria-hidden="true" />}
           >
-            Email My Trip Request
+            Open Secure Planning Form
           </CtaButton>
           <div className="grid gap-3 sm:grid-cols-2">
             <CtaButton
@@ -52,57 +43,35 @@ export function TourInquiryPanel({ tour }: TourInquiryPanelProps) {
               <span>Chat on WhatsApp</span>
             </CtaButton>
             <CtaButton
-              href={tour.inquiry.scheduleCallHref ?? tour.inquiry.emailHref}
+              href={tour.inquiry.emailHref}
               variant="outline"
               className="justify-center"
-              icon={<CalendarDays size={17} aria-hidden="true" />}
+              icon={<Mail size={17} aria-hidden="true" />}
             >
-              Schedule Call
+              Email a Specialist
             </CtaButton>
           </div>
         </div>
       </div>
 
-      <form className="border-border grid gap-4 rounded-[2rem] border bg-white p-5 shadow-sm md:p-6">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <TextField label="Name" placeholder="Your name" autoComplete="name" />
-          <TextField
-            label="Email"
-            placeholder="you@example.com"
-            autoComplete="email"
-            type="email"
-          />
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <TextField label="Travel dates" placeholder="Month or exact dates" />
-          <SelectField
-            label="Comfort level"
-            value={comfort}
-            onValueChange={setComfort}
-            options={[
-              { label: "Premium private", value: "premium" },
-              { label: "Luxury", value: "luxury" },
-              { label: "Ultra-luxury", value: "ultra-luxury" },
-            ]}
-          />
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          <TravelerSelector label="Adults" value={adults} min={1} onChange={setAdults} />
-          <TravelerSelector label="Children" value={children} onChange={setChildren} />
-        </div>
-        <TextAreaField
-          label="What should we know?"
-          defaultValue={tour.inquiry.defaultMessage}
-          helper="Tell us what matters most and we will use it to shape the first route idea."
-        />
-        <CtaButton
-          href={tour.inquiry.emailHref}
-          className="justify-center"
-          icon={<Send size={17} aria-hidden="true" />}
-        >
-          Send Inquiry
-        </CtaButton>
-      </form>
+      <div className="border-border rounded-[2rem] border bg-white p-6 shadow-sm md:p-8">
+        <p className="text-muted text-xs font-semibold tracking-[0.16em] uppercase">
+          One clear process
+        </p>
+        <h3 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">
+          Your answers go directly to our China planning team.
+        </h3>
+        <ul className="text-muted mt-6 grid gap-4 text-sm leading-6">
+          <li className="border-border border-t pt-4">Four focused steps, usually 3–5 minutes.</li>
+          <li className="border-border border-t pt-4">
+            This journey and source page are attached automatically.
+          </li>
+          <li className="border-border border-t pt-4">
+            Your inquiry is stored securely and reviewed by a specialist.
+          </li>
+          <li className="border-border border-t pt-4">Expected personal reply within 24 hours.</li>
+        </ul>
+      </div>
     </div>
   );
 }

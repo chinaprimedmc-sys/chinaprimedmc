@@ -7,7 +7,7 @@ import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { SectionHeader } from "@/components/content";
-import { homeNavItems, primaryAction, storyImages } from "@/content/home/homepage";
+import { homeNavItems, storyImages } from "@/content/home/homepage";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import { Section } from "@/design-system/primitives/section";
 
@@ -16,19 +16,18 @@ type TourFrameworkTemplateProps = {
 };
 
 export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
+  const planningHref = `/start-planning?source=${encodeURIComponent(`/tours/${item.slug}`)}&journey=${encodeURIComponent(item.slug)}`;
+
   return (
     <PageContainer className="pb-28 md:pb-0">
-      <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-      />
+      <SiteNavigation items={homeNavItems} cta={{ label: "Plan My Trip", href: planningHref }} />
 
       <HeroLargeImage
         eyebrow={item.eyebrow}
         title={item.title}
         subtitle={item.summary}
         image={item.image}
-        primary={{ label: "Start Planning", href: primaryAction.href }}
+        primary={{ label: "Start Planning", href: planningHref }}
         secondary={{ label: "Back to Journeys", href: "/tours" }}
         overlay="medium"
       />
@@ -100,7 +99,7 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
             eyebrow="Shape the first proposal"
             title="Tell us who is traveling and what a good day feels like."
             description="We will use this direction as a starting point, then confirm the route, timing, comfort level, and practical details with you."
-            primary={{ label: "Start Planning", href: primaryAction.href }}
+            primary={{ label: "Start Planning", href: planningHref }}
             secondary={{ label: "View all journeys", href: "/tours" }}
           />
         </ContentContainer>

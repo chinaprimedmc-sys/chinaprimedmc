@@ -28,16 +28,17 @@ type TourTemplateProps = {
   tour: Tour;
 };
 
-const tourNav = [
-  { label: "Overview", href: "#overview" },
-  { label: "Itinerary", href: "#itinerary" },
-  { label: "Hotels", href: "#accommodation" },
-  { label: "Map", href: "#route-map" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Inquiry", href: "#inquiry" },
-];
-
 export function TourTemplate({ tour }: TourTemplateProps) {
+  const planningHref = `/start-planning?source=${encodeURIComponent(`/tours/${tour.slug}`)}&journey=${encodeURIComponent(tour.slug)}`;
+  const tourNav = [
+    { label: "Overview", href: "#overview" },
+    { label: "Itinerary", href: "#itinerary" },
+    { label: "Hotels", href: "#accommodation" },
+    { label: "Map", href: "#route-map" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Inquiry", href: planningHref },
+  ];
+
   return (
     <PageContainer className="pb-28 md:pb-0">
       <RecordViewed
@@ -48,10 +49,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           href: `/tours/${tour.slug}`,
         }}
       />
-      <SiteNavigation
-        items={tourNav}
-        cta={{ label: "Customize Journey", href: tour.hero.secondary.href }}
-      />
+      <SiteNavigation items={tourNav} cta={{ label: "Customize Journey", href: planningHref }} />
 
       <HeroLargeImage
         eyebrow={tour.hero.eyebrow ?? "Private journey"}
@@ -59,7 +57,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         subtitle={tour.subtitle}
         image={tour.hero.image}
         primary={tour.hero.primary}
-        secondary={tour.hero.secondary}
+        secondary={{ label: tour.hero.secondary.label, href: planningHref }}
         overlay="medium"
       >
         <HeroTrustPills items={[tour.duration, tour.route, ...tour.styles.slice(0, 2)]} />
@@ -288,7 +286,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
             eyebrow="Customize this journey"
             title="Keep the route. Change the rhythm."
             description="The best private China trips usually start from a strong route idea, then change around your people, dates, comfort level, and concerns."
-            primary={{ label: "Customize My Journey", href: "#inquiry" }}
+            primary={{ label: "Customize My Journey", href: planningHref }}
             secondary={{ label: "Email a Specialist", href: tour.inquiry.emailHref }}
           />
         </ContentContainer>
@@ -296,7 +294,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
 
       <Section id="inquiry" spacing="default">
         <ContentContainer size="xl">
-          <TourInquiryPanel tour={tour} />
+          <TourInquiryPanel tour={tour} planningHref={planningHref} />
         </ContentContainer>
       </Section>
 
@@ -306,7 +304,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           {
             title: "Planning",
             items: [
-              { label: "Customize journey", href: "#inquiry" },
+              { label: "Customize journey", href: planningHref },
               { label: "Interactive itinerary", href: "#itinerary" },
               { label: "FAQ", href: "#faq" },
             ],
@@ -332,10 +330,10 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         ]}
       />
 
-      <FloatingCta label="Customize Journey" href="#inquiry" />
+      <FloatingCta label="Customize Journey" href={planningHref} />
       <StickyMobileCta
         label="Customize"
-        href="#inquiry"
+        href={planningHref}
         showAfter={1200}
         className="right-3 bottom-[calc(env(safe-area-inset-bottom)+0.85rem)] scale-[0.82]"
       />
