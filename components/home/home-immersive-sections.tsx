@@ -86,6 +86,8 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
   const [isPaused, setIsPaused] = useState(false);
   const pointerStart = useRef<number | null>(null);
   const didSwipe = useRef(false);
+  const wheelLock = useRef(false);
+  const interactionTimer = useRef<number | null>(null);
 
   useEffect(() => {
     if (isPaused || items.length < 2) return;
@@ -95,17 +97,37 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
     return () => window.clearInterval(timer);
   }, [isPaused, items.length]);
 
+  useEffect(
+    () => () => {
+      if (interactionTimer.current) window.clearTimeout(interactionTimer.current);
+    },
+    [],
+  );
+
   if (!items.length) return null;
 
   const previous = () => setActiveIndex((current) => (current - 1 + items.length) % items.length);
   const next = () => setActiveIndex((current) => (current + 1) % items.length);
+  const pauseAfterInteraction = () => {
+    setIsPaused(true);
+    if (interactionTimer.current) window.clearTimeout(interactionTimer.current);
+    interactionTimer.current = window.setTimeout(() => setIsPaused(false), 1200);
+  };
 
   return (
     <div
       className="home-destination-gallery"
       data-active={activeIndex % 3}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onWheel={(event) => {
+        if (Math.abs(event.deltaY) < 10 || wheelLock.current) return;
+        wheelLock.current = true;
+        if (event.deltaY > 0) next();
+        else previous();
+        pauseAfterInteraction();
+        window.setTimeout(() => {
+          wheelLock.current = false;
+        }, 260);
+      }}
     >
       <div
         className="home-destination-gallery__rail"
@@ -115,16 +137,18 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
           if (event.key === "ArrowLeft") {
             event.preventDefault();
             previous();
+            pauseAfterInteraction();
           }
           if (event.key === "ArrowRight") {
             event.preventDefault();
             next();
+            pauseAfterInteraction();
           }
         }}
         onPointerDown={(event) => {
           pointerStart.current = event.clientX;
           didSwipe.current = false;
-          setIsPaused(true);
+          pauseAfterInteraction();
         }}
         onPointerUp={(event) => {
           if (pointerStart.current === null) return;
@@ -135,11 +159,11 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
             else previous();
           }
           pointerStart.current = null;
-          setIsPaused(false);
+          pauseAfterInteraction();
         }}
         onPointerCancel={() => {
           pointerStart.current = null;
-          setIsPaused(false);
+          pauseAfterInteraction();
         }}
       >
         {items.map((item, index) => {
@@ -175,6 +199,7 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
                 if (!active) {
                   event.preventDefault();
                   setActiveIndex(index);
+                  pauseAfterInteraction();
                 }
               }}
               aria-label={`${item.title}: ${item.description}`}
@@ -214,15 +239,32 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
               key={item.title}
               aria-label={`Show ${item.title}`}
               aria-pressed={index === activeIndex}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                setActiveIndex(index);
+                pauseAfterInteraction();
+              }}
             />
           ))}
         </div>
         <div className="home-destination-gallery__arrows">
-          <button type="button" onClick={previous} aria-label="Previous destination">
+          <button
+            type="button"
+            onClick={() => {
+              previous();
+              pauseAfterInteraction();
+            }}
+            aria-label="Previous destination"
+          >
             <ArrowLeft aria-hidden="true" />
           </button>
-          <button type="button" onClick={next} aria-label="Next destination">
+          <button
+            type="button"
+            onClick={() => {
+              next();
+              pauseAfterInteraction();
+            }}
+            aria-label="Next destination"
+          >
             <ArrowRight aria-hidden="true" />
           </button>
         </div>
