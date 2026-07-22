@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
@@ -83,12 +83,72 @@ export function HomeReveal({
 
 export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const pointerStart = useRef<number | null>(null);
+  const didSwipe = useRef(false);
+
+  useEffect(() => {
+    if (isPaused || items.length < 2) return;
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % items.length);
+    }, 6200);
+    return () => window.clearInterval(timer);
+  }, [isPaused, items.length]);
+
+  if (!items.length) return null;
+
+  const previous = () => setActiveIndex((current) => (current - 1 + items.length) % items.length);
+  const next = () => setActiveIndex((current) => (current + 1) % items.length);
 
   return (
-    <div className="home-destination-gallery" data-active={activeIndex}>
-      <div className="home-destination-gallery__rail" aria-label="Explore China">
+    <div
+      className="home-destination-gallery"
+      data-active={activeIndex % 3}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div
+        className="home-destination-gallery__rail"
+        aria-label="Explore China destinations"
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            previous();
+          }
+          if (event.key === "ArrowRight") {
+            event.preventDefault();
+            next();
+          }
+        }}
+        onPointerDown={(event) => {
+          pointerStart.current = event.clientX;
+          didSwipe.current = false;
+          setIsPaused(true);
+        }}
+        onPointerUp={(event) => {
+          if (pointerStart.current === null) return;
+          const distance = event.clientX - pointerStart.current;
+          if (Math.abs(distance) > 42) {
+            didSwipe.current = true;
+            if (distance < 0) next();
+            else previous();
+          }
+          pointerStart.current = null;
+          setIsPaused(false);
+        }}
+        onPointerCancel={() => {
+          pointerStart.current = null;
+          setIsPaused(false);
+        }}
+      >
         {items.map((item, index) => {
-          const active = index === activeIndex;
+          const offset = homeCircularOffset(index, activeIndex, items.length);
+          const distance = Math.abs(offset);
+          const active = distance === 0;
+          const visible = distance <= 2;
+          const scale = active ? 1 : distance === 1 ? 0.78 : 0.64;
+          const opacity = active ? 1 : distance === 1 ? 0.66 : 0.3;
 
           return (
             <Link
@@ -96,9 +156,27 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
               key={item.title}
               className="home-destination-gallery__item group"
               data-active={active}
+              data-visible={visible}
+              aria-hidden={!visible}
+              tabIndex={visible ? 0 : -1}
+              style={{
+                opacity,
+                filter: active ? "saturate(1)" : "saturate(.65) brightness(.72)",
+                transform: `translate(calc(-50% + ${offset} * clamp(12rem, 28vw, 28rem)), -50%) scale(${scale}) rotateY(${offset * -12}deg)`,
+                zIndex: active ? 20 : distance === 1 ? 10 : 1,
+              }}
               onFocus={() => setActiveIndex(index)}
-              onMouseEnter={() => setActiveIndex(index)}
-              onPointerDown={() => setActiveIndex(index)}
+              onClick={(event) => {
+                if (didSwipe.current) {
+                  event.preventDefault();
+                  didSwipe.current = false;
+                  return;
+                }
+                if (!active) {
+                  event.preventDefault();
+                  setActiveIndex(index);
+                }
+              }}
               aria-label={`${item.title}: ${item.description}`}
             >
               <OptimizedImage
@@ -118,27 +196,46 @@ export function DestinationFocusGallery({ items }: { items: ExploreItem[] }) {
                   <ArrowUpRight size={20} aria-hidden="true" />
                 </div>
                 <span>{item.description}</span>
+                <strong>{active ? "Explore destination" : "Bring to centre"}</strong>
               </div>
             </Link>
           );
         })}
       </div>
-      <div className="home-destination-gallery__controls" aria-label="Choose a visual story">
-        {items.map((item, index) => (
-          <button
-            type="button"
-            key={item.title}
-            aria-label={`Show ${item.title}`}
-            aria-pressed={index === activeIndex}
-            onClick={() => setActiveIndex(index)}
-          >
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            {item.title}
+      <div className="home-destination-gallery__controls">
+        <p>
+          <span>{String(activeIndex + 1).padStart(2, "0")}</span> /{" "}
+          {String(items.length).padStart(2, "0")} · {items[activeIndex]?.title}
+        </p>
+        <div className="home-destination-gallery__progress" aria-label="Choose a destination">
+          {items.map((item, index) => (
+            <button
+              type="button"
+              key={item.title}
+              aria-label={`Show ${item.title}`}
+              aria-pressed={index === activeIndex}
+              onClick={() => setActiveIndex(index)}
+            />
+          ))}
+        </div>
+        <div className="home-destination-gallery__arrows">
+          <button type="button" onClick={previous} aria-label="Previous destination">
+            <ArrowLeft aria-hidden="true" />
           </button>
-        ))}
+          <button type="button" onClick={next} aria-label="Next destination">
+            <ArrowRight aria-hidden="true" />
+          </button>
+        </div>
       </div>
     </div>
   );
+}
+
+function homeCircularOffset(index: number, activeIndex: number, total: number) {
+  let offset = index - activeIndex;
+  if (offset > total / 2) offset -= total;
+  if (offset < -total / 2) offset += total;
+  return offset;
 }
 
 export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[] }) {

@@ -3,7 +3,7 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { CtaButton } from "@/components/cta";
 import { cn } from "@/lib/utils/cn";
@@ -64,10 +64,7 @@ export function DestinationExplorer({
   journeys: JourneyPanelData[];
 }) {
   const [interest, setInterest] = useState<string | "all">("all");
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const filmstrip = useRef<HTMLDivElement>(null);
-  const pointerStart = useRef<number | null>(null);
 
   const featured = useMemo(
     () =>
@@ -77,17 +74,8 @@ export function DestinationExplorer({
     [destinations, interest],
   );
 
-  useEffect(() => {
-    if (isPaused || featured.length < 2) return;
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % featured.length);
-    }, 6500);
-    return () => window.clearInterval(timer);
-  }, [featured.length, isPaused]);
-
   function chooseInterest(id: string) {
     setInterest(id);
-    setActiveIndex(0);
     window.setTimeout(() => filmstrip.current?.scrollIntoView({ behavior: "smooth" }), 100);
   }
 
@@ -179,7 +167,7 @@ export function DestinationExplorer({
       <section
         ref={filmstrip}
         id="featured-destinations"
-        className="overflow-hidden border-y border-white/10 bg-[#151815] py-24 text-white md:py-28"
+        className="overflow-hidden border-y border-black/8 bg-[#e9ede9] py-24 md:py-28"
       >
         <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
           <SectionIntro
@@ -190,31 +178,46 @@ export function DestinationExplorer({
                 : `${featured.length} places that match your curiosity.`
             }
             description={content.featuredCopy}
-            dark
           />
         </div>
-        <DestinationCoverflow
-          destinations={featured}
-          activeIndex={activeIndex}
-          isPaused={isPaused}
-          onPauseChange={setIsPaused}
-          onSelect={setActiveIndex}
-          onPointerStart={(clientX) => {
-            pointerStart.current = clientX;
-          }}
-          onPointerEnd={(clientX) => {
-            if (pointerStart.current === null) return;
-            const distance = clientX - pointerStart.current;
-            if (Math.abs(distance) > 42) {
-              setActiveIndex((current) =>
-                distance < 0
-                  ? (current + 1) % featured.length
-                  : (current - 1 + featured.length) % featured.length,
-              );
-            }
-            pointerStart.current = null;
-          }}
-        />
+        <div className="mt-12 flex snap-x snap-mandatory [scrollbar-width:none] gap-5 overflow-x-auto px-[max(1.25rem,calc((100vw-92rem)/2+2rem))] pb-8">
+          {featured.map((destination) => (
+            <Link
+              key={destination.slug}
+              href={`/destinations/${destination.slug}`}
+              className="group relative aspect-[4/5] w-[82vw] max-w-[31rem] shrink-0 snap-center overflow-hidden rounded-[1.75rem] border border-white/70 bg-white shadow-[0_22px_70px_rgba(27,28,25,.12)] transition duration-500 md:w-[42vw] lg:w-[34vw] lg:snap-always lg:hover:-translate-y-2 lg:hover:scale-[1.015]"
+            >
+              <Image
+                src={
+                  destination.heroImage?.src ??
+                  content.heroImage?.src ??
+                  "/home/beijing-forbidden-city-1400.webp"
+                }
+                alt={destination.heroImage?.alt ?? destination.name}
+                fill
+                sizes="(min-width:1024px) 34vw, (min-width:768px) 42vw, 82vw"
+                className="object-cover transition duration-[900ms] group-hover:scale-[1.055]"
+                style={{ objectPosition: destination.heroImage?.objectPosition }}
+              />
+              <span className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/5 to-transparent" />
+              <span className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
+                <span className="text-xs font-semibold tracking-[0.18em] text-white/68 uppercase">
+                  {destination.kicker}
+                </span>
+                <span className="mt-3 block font-serif text-4xl md:text-5xl">
+                  {destination.name}
+                </span>
+                <span className="mt-4 block max-w-sm text-sm leading-6 text-white/76">
+                  {destination.summary}
+                </span>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
+                  Explore destination{" "}
+                  <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                </span>
+              </span>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section
@@ -334,180 +337,20 @@ function SectionIntro({
   eyebrow,
   title,
   description,
-  dark = false,
 }: {
   eyebrow: string;
   title: string;
   description: string;
-  dark?: boolean;
 }) {
   return (
     <div className="max-w-3xl">
-      <p
-        className={cn(
-          "text-xs font-semibold tracking-[0.2em] uppercase",
-          dark ? "text-[#b8d0bb]" : "text-[#607868]",
-        )}
-      >
-        {eyebrow}
-      </p>
-      <h2
-        className={cn("mt-5 font-serif text-4xl leading-[1.02] md:text-6xl", dark && "text-white")}
-      >
-        {title}
-      </h2>
-      <p
-        className={cn(
-          "mt-5 max-w-2xl text-base leading-7 md:text-lg",
-          dark ? "text-white/58" : "text-[#1b1c19]/58",
-        )}
-      >
+      <p className="text-xs font-semibold tracking-[0.2em] text-[#607868] uppercase">{eyebrow}</p>
+      <h2 className="mt-5 font-serif text-4xl leading-[1.02] md:text-6xl">{title}</h2>
+      <p className="mt-5 max-w-2xl text-base leading-7 text-[#1b1c19]/58 md:text-lg">
         {description}
       </p>
     </div>
   );
-}
-
-function DestinationCoverflow({
-  destinations,
-  activeIndex,
-  isPaused,
-  onPauseChange,
-  onSelect,
-  onPointerStart,
-  onPointerEnd,
-}: {
-  destinations: CmsDestinationCard[];
-  activeIndex: number;
-  isPaused: boolean;
-  onPauseChange: (paused: boolean) => void;
-  onSelect: (index: number) => void;
-  onPointerStart: (clientX: number) => void;
-  onPointerEnd: (clientX: number) => void;
-}) {
-  if (!destinations.length) {
-    return (
-      <p className="mx-auto mt-12 max-w-[92rem] px-5 text-white/60">
-        No destinations match this selection yet.
-      </p>
-    );
-  }
-
-  return (
-    <div
-      className="relative mt-12 touch-pan-y outline-none select-none md:mt-14"
-      tabIndex={0}
-      aria-label="Featured destinations carousel"
-      onMouseEnter={() => onPauseChange(true)}
-      onMouseLeave={() => onPauseChange(false)}
-      onKeyDown={(event) => {
-        if (event.key === "ArrowRight") {
-          event.preventDefault();
-          onSelect((activeIndex + 1) % destinations.length);
-        }
-        if (event.key === "ArrowLeft") {
-          event.preventDefault();
-          onSelect((activeIndex - 1 + destinations.length) % destinations.length);
-        }
-      }}
-      onPointerDown={(event) => onPointerStart(event.clientX)}
-      onPointerUp={(event) => onPointerEnd(event.clientX)}
-      onPointerCancel={(event) => onPointerEnd(event.clientX)}
-    >
-      <div className="relative mx-auto h-[min(72vh,680px)] min-h-[520px] w-full max-w-[96rem] overflow-hidden [perspective:1400px]">
-        {destinations.map((destination, index) => {
-          const offset = circularOffset(index, activeIndex, destinations.length);
-          const distance = Math.abs(offset);
-          const visible = distance <= 2;
-          const scale = distance === 0 ? 1 : distance === 1 ? 0.78 : 0.62;
-          const opacity = distance === 0 ? 1 : distance === 1 ? 0.62 : 0.28;
-          const image = destination.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp";
-
-          return (
-            <Link
-              key={destination.slug}
-              href={`/destinations/${destination.slug}`}
-              aria-label={`Explore ${destination.name}`}
-              aria-hidden={!visible}
-              tabIndex={visible ? 0 : -1}
-              onClick={(event) => {
-                if (distance !== 0) {
-                  event.preventDefault();
-                  onSelect(index);
-                }
-              }}
-              className={cn(
-                "group absolute top-1/2 left-1/2 block aspect-[4/5] w-[min(78vw,35rem)] overflow-hidden rounded-[1.6rem] border border-white/20 bg-[#273028] shadow-[0_30px_90px_rgba(0,0,0,.42)] transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,.8,.24,1)] will-change-transform focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none md:rounded-[2rem]",
-                distance === 0 ? "z-20" : distance === 1 ? "z-10" : "z-0",
-                !visible && "pointer-events-none",
-              )}
-              style={{
-                opacity,
-                filter: distance === 0 ? "saturate(1)" : "saturate(.65) brightness(.72)",
-                transform: `translate(calc(-50% + ${offset} * clamp(13rem, 29vw, 28rem)), -50%) scale(${scale}) rotateY(${offset * -12}deg)`,
-              }}
-            >
-              <Image
-                src={image}
-                alt={destination.heroImage?.alt ?? destination.name}
-                fill
-                sizes="(min-width:1024px) 38vw, 78vw"
-                className="object-cover transition duration-[1200ms] ease-[var(--motion-ease-out)] group-hover:scale-[1.04]"
-                style={{ objectPosition: destination.heroImage?.objectPosition }}
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/8 to-black/8" />
-              <span className="absolute inset-x-0 bottom-0 p-6 text-white md:p-9">
-                <span className="text-xs font-semibold tracking-[0.18em] text-white/68 uppercase">
-                  {destination.kicker}
-                </span>
-                <span className="mt-3 block font-serif text-4xl leading-none md:text-6xl">
-                  {destination.name}
-                </span>
-                <span className="mt-4 block max-w-md text-sm leading-6 text-white/76 md:text-base">
-                  {destination.summary}
-                </span>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold">
-                  {distance === 0 ? "Explore destination" : "Bring to centre"}
-                  <ArrowRight className="size-4 transition group-hover:translate-x-1" />
-                </span>
-              </span>
-            </Link>
-          );
-        })}
-      </div>
-      <div className="mx-auto flex max-w-[96rem] items-center justify-between gap-6 px-5 md:px-8">
-        <p className="text-xs font-semibold tracking-[0.16em] text-white/48 uppercase">
-          {String(activeIndex + 1).padStart(2, "0")} /{" "}
-          {String(destinations.length).padStart(2, "0")} · {destinations[activeIndex]?.name}
-        </p>
-        <div className="flex items-center gap-2" aria-label="Choose featured destination">
-          {destinations.map((destination, index) => (
-            <button
-              key={destination.slug}
-              type="button"
-              aria-label={`Show ${destination.name}`}
-              aria-current={index === activeIndex ? "true" : undefined}
-              onClick={() => onSelect(index)}
-              className={cn(
-                "h-1 rounded-full transition-all duration-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none",
-                index === activeIndex ? "w-10 bg-white" : "w-2 bg-white/25 hover:bg-white/60",
-              )}
-            />
-          ))}
-        </div>
-        <p className="hidden text-xs tracking-[0.14em] text-white/38 uppercase md:block">
-          {isPaused ? "Paused" : "Auto exploring"} · Drag or use arrows
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function circularOffset(index: number, activeIndex: number, total: number) {
-  let offset = index - activeIndex;
-  if (offset > total / 2) offset -= total;
-  if (offset < -total / 2) offset += total;
-  return offset;
 }
 
 function JourneyPanel({
