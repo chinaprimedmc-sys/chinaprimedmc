@@ -22,6 +22,26 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/tours/family-china",
+        destination: "/tours",
+        permanent: true,
+      },
+      {
+        source: "/tours/quiet-luxury-china",
+        destination: "/tours",
+        permanent: true,
+      },
+      {
+        source: "/tours/slow-travel-china",
+        destination: "/tours",
+        permanent: true,
+      },
+      {
+        source: "/tours/photography-focused-china",
+        destination: "/tours",
+        permanent: true,
+      },
+      {
         source: "/why-us",
         destination: "/about",
         permanent: true,
