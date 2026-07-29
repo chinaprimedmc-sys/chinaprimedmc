@@ -53,7 +53,7 @@ export default async function ToursPage() {
       <SiteNavigation
         items={settings.navigation}
         cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
-        tone="dark"
+        tone="light"
       />
 
       <JourneyEditorialGrid items={catalog} />
