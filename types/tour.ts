@@ -112,8 +112,19 @@ export type TourInquiry = {
 
 export type TourPricingTier = {
   partySize: string;
+  serviceBasis?: string;
+  label?: string;
   perPerson: string;
   total: string;
+  alternateRates?: {
+    label: string;
+    perPerson: string;
+    total: string;
+  }[];
+  childRate?: {
+    perPerson: string;
+    note: string;
+  };
 };
 
 export type Tour = {

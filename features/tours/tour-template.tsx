@@ -188,37 +188,92 @@ export function TourTemplate({ tour }: TourTemplateProps) {
               title={tour.pricing.title}
               description={tour.pricing.description}
             />
-            <div
-              className={`grid border-y border-[var(--border-default)] ${
-                tour.pricing.tiers.length === 4 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"
-              }`}
-            >
-              {tour.pricing.tiers.map((tier, index) => (
-                <article
-                  key={tier.partySize}
-                  className={`py-7 md:px-7 md:py-9 ${
-                    index ? "border-t border-[var(--border-default)] md:border-t-0 md:border-l" : ""
+            {(() => {
+              const hasDetailedRates = tour.pricing.tiers.some(
+                (tier) => tier.alternateRates?.length || tier.childRate || tier.serviceBasis,
+              );
+
+              return (
+                <div
+                  className={`grid border-y border-[var(--border-default)] ${
+                    hasDetailedRates ? "md:grid-cols-2" : "md:grid-cols-3"
                   }`}
                 >
-                  <p className="text-xs font-semibold tracking-[0.14em] text-[var(--text-tertiary)] uppercase">
-                    Party size
-                  </p>
-                  <h3 className="mt-3 font-serif text-3xl font-medium text-[var(--text-primary)]">
-                    {tier.partySize}
-                  </h3>
-                  <dl className="mt-6 grid gap-3 text-sm">
-                    <div className="flex items-center justify-between gap-4">
-                      <dt className="text-[var(--text-secondary)]">Per person</dt>
-                      <dd className="font-medium text-[var(--text-primary)]">{tier.perPerson}</dd>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <dt className="text-[var(--text-secondary)]">Party total</dt>
-                      <dd className="font-medium text-[var(--text-primary)]">{tier.total}</dd>
-                    </div>
-                  </dl>
-                </article>
-              ))}
-            </div>
+                  {tour.pricing.tiers.map((tier, index) => {
+                    const desktopBorder = hasDetailedRates
+                      ? `${index % 2 ? "md:border-l" : ""} ${index >= 2 ? "md:border-t" : "md:border-t-0"}`
+                      : index
+                        ? "md:border-t-0 md:border-l"
+                        : "md:border-t-0";
+
+                    return (
+                      <article
+                        key={tier.partySize}
+                        className={`py-7 md:px-7 md:py-9 ${
+                          index ? "border-t border-[var(--border-default)]" : ""
+                        } ${desktopBorder}`}
+                      >
+                        <p className="text-xs font-semibold tracking-[0.14em] text-[var(--text-tertiary)] uppercase">
+                          Party size
+                        </p>
+                        <h3 className="mt-3 font-serif text-3xl font-medium text-[var(--text-primary)]">
+                          {tier.partySize}
+                        </h3>
+                        {tier.serviceBasis ? (
+                          <p className="mt-2 min-h-10 max-w-sm text-sm leading-5 text-[var(--text-secondary)]">
+                            {tier.serviceBasis}
+                          </p>
+                        ) : null}
+                        <dl className="mt-6 grid gap-4 text-sm">
+                          <div className="grid grid-cols-[1fr_auto] items-end gap-x-4 gap-y-1">
+                            <dt className="font-medium text-[var(--text-primary)]">
+                              {tier.label ?? "Per person"}
+                            </dt>
+                            <dd className="text-right text-lg font-semibold text-[var(--text-primary)]">
+                              {tier.perPerson}
+                            </dd>
+                            <dt className="text-xs text-[var(--text-tertiary)]">Party total</dt>
+                            <dd className="text-right text-xs text-[var(--text-secondary)]">
+                              {tier.total}
+                            </dd>
+                          </div>
+                          {tier.alternateRates?.map((rate) => (
+                            <div
+                              key={rate.label}
+                              className="grid grid-cols-[1fr_auto] items-end gap-x-4 gap-y-1 border-t border-[var(--border-default)] pt-4"
+                            >
+                              <dt className="font-medium text-[var(--text-primary)]">
+                                {rate.label}
+                              </dt>
+                              <dd className="text-right text-lg font-semibold text-[var(--text-primary)]">
+                                {rate.perPerson}
+                              </dd>
+                              <dt className="text-xs text-[var(--text-tertiary)]">Party total</dt>
+                              <dd className="text-right text-xs text-[var(--text-secondary)]">
+                                {rate.total}
+                              </dd>
+                            </div>
+                          ))}
+                          {tier.childRate ? (
+                            <div className="border-t border-[var(--border-default)] pt-4">
+                              <div className="flex items-baseline justify-between gap-4">
+                                <dt className="font-medium text-[var(--text-primary)]">Child</dt>
+                                <dd className="text-right text-lg font-semibold text-[var(--text-primary)]">
+                                  {tier.childRate.perPerson}
+                                </dd>
+                              </div>
+                              <dd className="mt-2 max-w-md text-xs leading-5 text-[var(--text-tertiary)]">
+                                {tier.childRate.note}
+                              </dd>
+                            </div>
+                          ) : null}
+                        </dl>
+                      </article>
+                    );
+                  })}
+                </div>
+              );
+            })()}
             <p className="max-w-3xl text-sm leading-7 text-[var(--text-secondary)]">
               {tour.pricing.note}
             </p>

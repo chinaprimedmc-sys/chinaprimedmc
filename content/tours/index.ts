@@ -875,7 +875,7 @@ export const tours: Tour[] = [
     seo: {
       title: "5-Day Private Beijing Tour | Beijing Unhurried",
       description:
-        "Experience Beijing at a measured pace on a private 5-day tour with the Forbidden City, Mutianyu Great Wall, hutong life, private transfers, an English-speaking guide, and flexible dining and prayer planning.",
+        "Experience Beijing at a measured pace on a private 5-day tour with the Forbidden City, Mutianyu Great Wall, hutong life, private transfers, English-speaking support, and flexible dining and prayer planning.",
       keywords: [
         "5 day private Beijing tour",
         "Beijing private itinerary",
@@ -903,7 +903,8 @@ export const tours: Tour[] = [
         {
           label: "Travel Style",
           value: "Private, unhurried",
-          helper: "Private vehicle and professional English-speaking guide.",
+          helper:
+            "English-speaking driver-host for 2 or 4 travelers; separate driver and guide for 6 or 8.",
         },
         {
           label: "Pacing",
@@ -918,8 +919,8 @@ export const tours: Tour[] = [
         },
         {
           label: "Price Guide",
-          value: "Price on request",
-          helper: "Quotation places are reserved for 2, 4, 6 and 8 travelers.",
+          value: "From US$840 per adult",
+          helper: "Based on 8 adults sharing with 4-star accommodation.",
         },
       ],
     },
@@ -960,7 +961,7 @@ export const tours: Tour[] = [
       {
         title: "Imperial Beijing, without the checklist",
         description:
-          "Give the Forbidden City time for context, architecture and photography, then let a private guide adjust the route around walking comfort and interest.",
+          "Give the Forbidden City time for context, architecture and photography, then let your English-speaking host or guide adjust the route around walking comfort and interest.",
         category: "Culture",
         image: beijingUnhurriedAsset.forbiddenCityOverview,
       },
@@ -1012,11 +1013,11 @@ export const tours: Tour[] = [
         title: "The Forbidden City and hutong life",
         destination: "Beijing",
         summary:
-          "Follow the imperial axis with a private guide, then move into the quieter scale of Beijing's hutongs and courtyard life.",
+          "Follow the imperial axis with English-speaking local support, then move into the quieter scale of Beijing's hutongs and courtyard life.",
         image: beijingUnhurriedAsset.forbiddenCity,
         hotel: "Beijing hotel",
         meals: ["Breakfast"],
-        transport: "Private vehicle, guide support and walking",
+        transport: "Private vehicle, English-speaking support and walking",
         activities: [
           {
             time: "Morning",
@@ -1044,7 +1045,8 @@ export const tours: Tour[] = [
         image: beijingUnhurriedAsset.greatWallSunrise,
         hotel: "Beijing hotel",
         meals: ["Breakfast"],
-        transport: "Private vehicle and guide support; scenic-area transport as required",
+        transport:
+          "Private vehicle and English-speaking support; scenic-area transport as required",
         activities: [
           {
             time: "Morning",
@@ -1072,7 +1074,7 @@ export const tours: Tour[] = [
         image: beijingUnhurriedAsset.summerPalace,
         hotel: "Beijing hotel",
         meals: ["Breakfast"],
-        transport: "Private vehicle, guide support and walking",
+        transport: "Private vehicle, English-speaking support and walking",
         activities: [
           {
             time: "Morning",
@@ -1088,7 +1090,7 @@ export const tours: Tour[] = [
           },
         ],
         guideNote:
-          "The afternoon remains flexible for rest, prayer timing or a shorter cultural route. Your guide can recommend and reserve suitable places; meal costs are paid directly unless the final confirmation states otherwise.",
+          "The afternoon remains flexible for rest, prayer timing or a shorter cultural route. Your local host or guide can recommend and reserve suitable places; meal costs are paid directly unless the final confirmation states otherwise.",
         coordinates: { latitude: 39.9998, longitude: 116.275 },
       },
       {
@@ -1133,7 +1135,7 @@ export const tours: Tour[] = [
       "Hotel breakfast on Days 2-5",
       "Private airport or railway-station arrival and departure transfers",
       "Air-conditioned private touring vehicle",
-      "Professional English-speaking guide on sightseeing days",
+      "English-speaking driver-host for parties of 2 or 4, or a private driver and English-speaking guide for parties of 6 or 8",
       "Standard admission and scenic-area transport required by the confirmed itinerary",
       "Mutianyu cable-car option only when listed in the final confirmation",
       "No compulsory shopping stops",
@@ -1145,20 +1147,72 @@ export const tours: Tour[] = [
       "Specific restaurant meal costs unless stated in the final confirmation",
       "Room upgrades, single supplements, early check-in and late check-out",
       "Optional cultural workshops, boat rides or cable-car upgrades unless confirmed",
-      "Guide and driver gratuities",
+      "Host, guide and driver gratuities",
       "Extra costs caused by weather, traffic, venue operations or events beyond reasonable control",
     ],
     pricing: {
-      title: "A clear quotation prepared for your party.",
+      title: "Private Beijing pricing, clearly shown.",
       description:
-        "Prices remain open until your travel dates, hotel basis, room arrangements, dietary requirements and confirmed services are checked.",
+        "Prices are per person in USD and based on twin or double sharing. Choose a 4-star or 5-star stay, then confirm dates, rooms and final services with our China team.",
       tiers: [
-        { partySize: "2 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
-        { partySize: "4 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
-        { partySize: "6 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
-        { partySize: "8 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
+        {
+          partySize: "2 travelers",
+          serviceBasis: "English-speaking driver-host",
+          label: "4-star stay",
+          perPerson: "US$1,150 / person",
+          total: "US$2,300",
+          alternateRates: [
+            { label: "5-star stay", perPerson: "US$1,260 / person", total: "US$2,520" },
+          ],
+          childRate: {
+            perPerson: "US$700 / person",
+            note: "No extra bed or breakfast; complimentary attraction admission is subject to eligibility.",
+          },
+        },
+        {
+          partySize: "4 travelers",
+          serviceBasis: "English-speaking driver-host",
+          label: "4-star stay",
+          perPerson: "US$850 / person",
+          total: "US$3,400",
+          alternateRates: [
+            { label: "5-star stay", perPerson: "US$950 / person", total: "US$3,800" },
+          ],
+          childRate: {
+            perPerson: "US$400 / person",
+            note: "No extra bed or breakfast; complimentary attraction admission is subject to eligibility.",
+          },
+        },
+        {
+          partySize: "6 travelers",
+          serviceBasis: "Private driver + English-speaking guide",
+          label: "4-star stay",
+          perPerson: "US$930 / person",
+          total: "US$5,580",
+          alternateRates: [
+            { label: "5-star stay", perPerson: "US$1,030 / person", total: "US$6,180" },
+          ],
+          childRate: {
+            perPerson: "US$480 / person",
+            note: "No extra bed or breakfast; complimentary attraction admission is subject to eligibility.",
+          },
+        },
+        {
+          partySize: "8 travelers",
+          serviceBasis: "Private driver + English-speaking guide",
+          label: "4-star stay",
+          perPerson: "US$840 / person",
+          total: "US$6,720",
+          alternateRates: [
+            { label: "5-star stay", perPerson: "US$940 / person", total: "US$7,520" },
+          ],
+          childRate: {
+            perPerson: "US$390 / person",
+            note: "No extra bed or breakfast; complimentary attraction admission is subject to eligibility.",
+          },
+        },
       ],
-      note: "The final quotation will state currency, hotel and room basis, child policy, meal and dietary basis, validity date, deposit, payment schedule and cancellation terms. No price is confirmed until issued in writing.",
+      note: "Prices are per person in USD, based on twin or double sharing. Child prices assume no extra bed, no hotel breakfast, and eligibility for complimentary attraction admission. Final child pricing depends on age, height, passport, hotel and venue rules. Travel dates, hotel availability, room configuration and Chinese public-holiday surcharges may change the final quotation. Written quotations are valid for seven days unless stated otherwise.",
     },
     optionalExperiences: [
       {
@@ -1197,7 +1251,8 @@ export const tours: Tour[] = [
         {
           label: "Sightseeing days",
           value: "Private touring vehicle",
-          helper: "A professional driver and English-speaking guide support the confirmed route.",
+          helper:
+            "An English-speaking driver-host supports parties of 2 or 4; parties of 6 or 8 have a separate driver and guide.",
         },
         {
           label: "Great Wall access",
