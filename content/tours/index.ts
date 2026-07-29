@@ -1,5 +1,10 @@
 import { destinationAsset } from "@/content/destinations/assets";
-import { chengduAsset, firstChinaAsset, shanghaiZhangjiajieAsset } from "@/content/tours/assets";
+import {
+  beijingUnhurriedAsset,
+  chengduAsset,
+  firstChinaAsset,
+  shanghaiZhangjiajieAsset,
+} from "@/content/tours/assets";
 import type { Tour } from "@/types/tour";
 
 const firstChinaEmail =
@@ -851,6 +856,456 @@ export const tours: Tour[] = [
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
         "I am interested in Chengdu, Pandas & Sichuan Table. Please suggest the best pacing for my travelers.",
+    },
+  },
+  {
+    slug: "beijing-unhurried-private-5-day-journey",
+    title: "Beijing Unhurried — A Private 5-Day Journey",
+    subtitle:
+      "A private 5-day Beijing journey for travelers who want the Forbidden City, the Great Wall, hutong life, and quieter cultural moments without rushing between them.",
+    duration: "5 Days / 4 Nights",
+    route: "Beijing",
+    styles: ["Culture", "Luxury", "Senior-friendly", "Muslim-friendly"],
+    hero: {
+      eyebrow: "Private Beijing journey",
+      image: beijingUnhurriedAsset.hero,
+      primary: { label: "Explore Itinerary", href: "#itinerary" },
+      secondary: { label: "Plan My Beijing Journey", href: "#inquiry" },
+    },
+    seo: {
+      title: "5-Day Private Beijing Tour | Beijing Unhurried",
+      description:
+        "Experience Beijing at a measured pace on a private 5-day tour with the Forbidden City, Mutianyu Great Wall, hutong life, private transfers, an English-speaking guide, and flexible dining and prayer planning.",
+      keywords: [
+        "5 day private Beijing tour",
+        "Beijing private itinerary",
+        "Beijing Great Wall and Forbidden City tour",
+        "Muslim-friendly Beijing tour",
+        "luxury Beijing private journey",
+        "Beijing hutong private tour",
+      ],
+    },
+    overview: {
+      pitch:
+        "A single-city Beijing route with one hotel, private support, no compulsory shopping, and enough breathing room to experience the capital with care. Dietary preferences, prayer timing, walking comfort, and daily pacing can be discussed before confirmation.",
+      facts: [
+        {
+          label: "Duration",
+          value: "5 days / 4 nights",
+          helper: "One Beijing hotel throughout the journey.",
+        },
+        {
+          label: "Destinations",
+          value: "Beijing",
+          helper:
+            "Forbidden City, hutongs, Mutianyu Great Wall, Temple of Heaven and Summer Palace.",
+        },
+        {
+          label: "Travel Style",
+          value: "Private, unhurried",
+          helper: "Private vehicle and professional English-speaking guide.",
+        },
+        {
+          label: "Pacing",
+          value: "Easy to moderate",
+          helper:
+            "Walking, rest periods, cable-car options and starts are reviewed around the group.",
+        },
+        {
+          label: "Planning",
+          value: "Muslim-friendly available",
+          helper: "Dining preferences and prayer timing are discussed before confirmation.",
+        },
+        {
+          label: "Price Guide",
+          value: "Price on request",
+          helper: "Quotation places are reserved for 2, 4, 6 and 8 travelers.",
+        },
+      ],
+    },
+    planningSupport: {
+      eyebrow: "Muslim-friendly planning",
+      title: "Built around your requirements, confirmed before your journey.",
+      description:
+        "We do not assume what comfortable travel means for your family. Share your dietary, prayer, privacy and pacing needs, then we check the practical details against your actual Beijing dates and route.",
+      items: [
+        {
+          label: "Halal, no-pork or no-alcohol preferences",
+          value: "Dining preferences",
+          helper:
+            "Tell us whether a certification requirement is essential and how you would like meals handled.",
+        },
+        {
+          label: "Daily prayer windows and Friday considerations",
+          value: "Prayer timing",
+          helper:
+            "The route can keep suitable breaks in mind where timing and venue operations allow.",
+        },
+        {
+          label: "Nearby mosque or prayer-space information",
+          value: "Local context",
+          helper:
+            "Specific access, opening hours and practical details are checked rather than assumed.",
+        },
+        {
+          label: "Walking load, privacy and family comfort",
+          value: "A measured pace",
+          helper:
+            "Starts, rest periods, room arrangements and route intensity are reviewed around your group.",
+        },
+      ],
+      note: "Specific restaurant certification, mosque access, prayer space and opening hours are confirmed for your dates before booking. Meal costs are paid directly unless your final proposal states otherwise.",
+    },
+    highlights: [
+      {
+        title: "Imperial Beijing, without the checklist",
+        description:
+          "Give the Forbidden City time for context, architecture and photography, then let a private guide adjust the route around walking comfort and interest.",
+        category: "Culture",
+        image: beijingUnhurriedAsset.forbiddenCityOverview,
+      },
+      {
+        title: "The Great Wall at a gentler rhythm",
+        description:
+          "Choose the Mutianyu route, start time and cable-car option around the group, with a private vehicle and a measured return to the city.",
+        category: "Senior-friendly",
+        image: beijingUnhurriedAsset.greatWallOverview,
+      },
+      {
+        title: "Faith and dietary needs, planned before confirmation",
+        description:
+          "Tell us about halal preferences, certification requirements, no-pork or no-alcohol needs, prayer timing and privacy preferences. We check practical options for your actual dates and route.",
+        category: "Muslim-friendly",
+        image: beijingUnhurriedAsset.dining,
+      },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive in Beijing, then settle in",
+        destination: "Beijing",
+        summary:
+          "A private arrival transfer, calm hotel check-in, and an intentionally light first evening shaped around your flight time.",
+        image: beijingUnhurriedAsset.arrivalHutong,
+        hotel:
+          "One Beijing hotel throughout the journey, selected and confirmed around your comfort level",
+        meals: ["No meals included today"],
+        transport: "Private airport or railway-station transfer",
+        activities: [
+          {
+            title: "Private arrival support",
+            description:
+              "Meet your local representative, move smoothly with your luggage, and transfer directly to the confirmed Beijing stay.",
+          },
+          {
+            title: "A soft first evening",
+            description:
+              "Rest at the hotel or take a short neighborhood introduction if arrival time and energy allow.",
+          },
+        ],
+        guideNote:
+          "Share dietary, prayer, mobility and room preferences before arrival so the local team can prepare the right first-day support.",
+        coordinates: { latitude: 39.9042, longitude: 116.4074 },
+      },
+      {
+        day: 2,
+        title: "The Forbidden City and hutong life",
+        destination: "Beijing",
+        summary:
+          "Follow the imperial axis with a private guide, then move into the quieter scale of Beijing's hutongs and courtyard life.",
+        image: beijingUnhurriedAsset.forbiddenCity,
+        hotel: "Beijing hotel",
+        meals: ["Breakfast"],
+        transport: "Private vehicle, guide support and walking",
+        activities: [
+          {
+            time: "Morning",
+            title: "Forbidden City",
+            description:
+              "Explore the palace complex through stories, architectural details and photo pauses, with the walking route adjusted to the group.",
+          },
+          {
+            time: "Afternoon",
+            title: "Hutong workshop and local texture",
+            description:
+              "Add a private cultural workshop or a slower courtyard and neighborhood walk, depending on the group's interests.",
+          },
+        ],
+        guideNote:
+          "Lunch and prayer timing can be planned around the Forbidden City and hutong route. Specific restaurant certification, prayer space and opening hours are checked for your dates before booking.",
+        coordinates: { latitude: 39.9163, longitude: 116.3972 },
+      },
+      {
+        day: 3,
+        title: "Mutianyu Great Wall, at your pace",
+        destination: "Beijing",
+        summary:
+          "Give Beijing's most iconic landscape a full day, with the walking route, start time and cable-car option chosen around your travelers.",
+        image: beijingUnhurriedAsset.greatWallSunrise,
+        hotel: "Beijing hotel",
+        meals: ["Breakfast"],
+        transport: "Private vehicle and guide support; scenic-area transport as required",
+        activities: [
+          {
+            time: "Morning",
+            title: "Mutianyu Great Wall",
+            description:
+              "Take a quieter section of the Wall with time for views, photography and rest rather than a rushed loop.",
+          },
+          {
+            time: "Afternoon",
+            title: "Flexible descent and return",
+            description:
+              "Use the cable car when it suits the group, then return to Beijing with the evening deliberately left open.",
+          },
+        ],
+        guideNote:
+          "The Wall includes uneven surfaces, steps and changing weather. Dining and prayer timing can be built into the day after the route and requirements are confirmed.",
+        coordinates: { latitude: 40.4319, longitude: 116.5704 },
+      },
+      {
+        day: 4,
+        title: "Temple of Heaven and Summer Palace",
+        destination: "Beijing",
+        summary:
+          "A measured cultural day combining ritual architecture, open space, water and a more spacious view of Beijing life.",
+        image: beijingUnhurriedAsset.summerPalace,
+        hotel: "Beijing hotel",
+        meals: ["Breakfast"],
+        transport: "Private vehicle, guide support and walking",
+        activities: [
+          {
+            time: "Morning",
+            title: "Temple of Heaven",
+            description:
+              "Notice the symbolism, proportions and park life around the Hall of Prayer for Good Harvests.",
+          },
+          {
+            time: "Afternoon",
+            title: "Summer Palace",
+            description:
+              "Take a calm route around Kunming Lake and the imperial gardens, with boat or walking options subject to operations and comfort.",
+          },
+        ],
+        guideNote:
+          "The afternoon remains flexible for rest, prayer timing or a shorter cultural route. Your guide can recommend and reserve suitable places; meal costs are paid directly unless the final confirmation states otherwise.",
+        coordinates: { latitude: 39.9998, longitude: 116.275 },
+      },
+      {
+        day: 5,
+        title: "A considered Beijing departure",
+        destination: "Beijing",
+        summary:
+          "Breakfast, a final quiet morning where the flight allows, and a private transfer timed around your onward journey.",
+        image: beijingUnhurriedAsset.privateMpv,
+        meals: ["Breakfast"],
+        transport: "Private airport or railway-station transfer",
+        activities: [
+          {
+            title: "Protected departure timing",
+            description:
+              "Leave the hotel with realistic time for traffic, baggage and the confirmed terminal or station.",
+          },
+          {
+            title: "A light final option",
+            description:
+              "For later departures, a short nearby walk or relaxed breakfast extension can be discussed separately.",
+          },
+        ],
+        guideNote:
+          "There is no hotel stay tonight. Early departures may require a breakfast box, subject to hotel policy.",
+        coordinates: { latitude: 40.0799, longitude: 116.6031 },
+      },
+    ],
+    accommodations: [
+      {
+        name: "One Carefully Selected Beijing Stay",
+        destination: "Beijing, 4 nights",
+        description:
+          "Keep the route simple with one hotel base, reducing luggage movement and making the daily rhythm easier to adjust.",
+        roomStyle: "Comfortable, Luxury or bespoke tier confirmed after inquiry",
+        highlights: ["Breakfast on Days 2-5", "Room configuration and bedding checked in writing"],
+        image: beijingUnhurriedAsset.hotelRoom,
+      },
+    ],
+    included: [
+      "Four nights at the Beijing hotel confirmed in the final proposal",
+      "Hotel breakfast on Days 2-5",
+      "Private airport or railway-station arrival and departure transfers",
+      "Air-conditioned private touring vehicle",
+      "Professional English-speaking guide on sightseeing days",
+      "Standard admission and scenic-area transport required by the confirmed itinerary",
+      "Mutianyu cable-car option only when listed in the final confirmation",
+      "No compulsory shopping stops",
+      "Planning discussion for dietary preferences, prayer timing, walking comfort and privacy needs",
+    ],
+    excluded: [
+      "International flights, visa, travel insurance and personal expenses",
+      "Lunches and dinners unless specifically included in the final proposal",
+      "Specific restaurant meal costs unless stated in the final confirmation",
+      "Room upgrades, single supplements, early check-in and late check-out",
+      "Optional cultural workshops, boat rides or cable-car upgrades unless confirmed",
+      "Guide and driver gratuities",
+      "Extra costs caused by weather, traffic, venue operations or events beyond reasonable control",
+    ],
+    pricing: {
+      title: "A clear quotation prepared for your party.",
+      description:
+        "Prices remain open until your travel dates, hotel basis, room arrangements, dietary requirements and confirmed services are checked.",
+      tiers: [
+        { partySize: "2 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
+        { partySize: "4 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
+        { partySize: "6 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
+        { partySize: "8 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
+      ],
+      note: "The final quotation will state currency, hotel and room basis, child policy, meal and dietary basis, validity date, deposit, payment schedule and cancellation terms. No price is confirmed until issued in writing.",
+    },
+    optionalExperiences: [
+      {
+        title: "Mutianyu cable-car option",
+        description:
+          "Reduce the climbing load when it suits the group. Operating conditions, tickets and the final route are confirmed before booking.",
+        badges: ["Optional", "Pacing"],
+        image: beijingUnhurriedAsset.greatWallWalk,
+      },
+      {
+        title: "A private hutong cultural workshop",
+        description:
+          "Add a hands-on moment such as a traditional craft or courtyard experience when it fits the group's interests and energy.",
+        badges: ["Culture", "Private"],
+        image: beijingUnhurriedAsset.handsOnCulture,
+      },
+      {
+        title: "A more flexible dining plan",
+        description:
+          "Share halal preferences, certification requirements, no-pork or no-alcohol needs and prayer timing before we check suitable options for your dates.",
+        badges: ["Muslim-friendly", "Planning"],
+        image: beijingUnhurriedAsset.dining,
+      },
+    ],
+    transportation: {
+      title: "Private support, with the route kept easy to understand.",
+      description:
+        "Private airport transfers and a dedicated vehicle connect one Beijing hotel with the city's historic sites and the Mutianyu Great Wall.",
+      items: [
+        {
+          label: "Arrival and departure",
+          value: "Private transfer",
+          helper:
+            "Vehicle size is selected around travelers, luggage and the confirmed airport or station.",
+        },
+        {
+          label: "Sightseeing days",
+          value: "Private touring vehicle",
+          helper: "A professional driver and English-speaking guide support the confirmed route.",
+        },
+        {
+          label: "Great Wall access",
+          value: "Scenic-area transport",
+          helper:
+            "Cable-car or other venue transport is included only when listed in the final confirmation.",
+        },
+      ],
+    },
+    routeMap: {
+      title: "One hotel base. Five days of Beijing context.",
+      description:
+        "Stay in Beijing throughout, moving between imperial landmarks, hutong neighborhoods, the Mutianyu mountains and the city's open garden spaces.",
+      stops: [
+        {
+          name: "Central Beijing",
+          days: "Days 1-2",
+          description:
+            "Arrival, the Forbidden City, hutong life and a private cultural workshop option.",
+          coordinates: { latitude: 39.9163, longitude: 116.3972 },
+        },
+        {
+          name: "Mutianyu",
+          days: "Day 3",
+          description:
+            "A full Great Wall day with a route and cable-car option shaped around your group.",
+          coordinates: { latitude: 40.4319, longitude: 116.5704 },
+        },
+        {
+          name: "Temple of Heaven and Summer Palace",
+          days: "Day 4",
+          description:
+            "Ritual architecture, water, gardens and flexible time for rest or prayer planning.",
+          coordinates: { latitude: 39.9998, longitude: 116.275 },
+        },
+        {
+          name: "Beijing departure",
+          days: "Day 5",
+          description: "A private transfer timed around your onward flight or rail connection.",
+          coordinates: { latitude: 40.0799, longitude: 116.6031 },
+        },
+      ],
+    },
+    gallery: [
+      beijingUnhurriedAsset.hero,
+      beijingUnhurriedAsset.forbiddenCityOverview,
+      beijingUnhurriedAsset.forbiddenCityGuide,
+      beijingUnhurriedAsset.hutongLife,
+      beijingUnhurriedAsset.greatWallSunrise,
+      beijingUnhurriedAsset.greatWallWalk,
+      beijingUnhurriedAsset.summerPalace,
+      beijingUnhurriedAsset.handsOnCulture,
+      beijingUnhurriedAsset.dining,
+      beijingUnhurriedAsset.hotelRoom,
+      beijingUnhurriedAsset.privateMpv,
+    ],
+    faqs: [
+      {
+        question: "Is this a fixed package or can it be adjusted?",
+        answer:
+          "It is a complete five-day route framework. Hotel tier, start times, walking load, meals, cultural workshop, cable-car option and the final price are confirmed around your travelers and dates.",
+      },
+      {
+        question: "How is the journey Muslim-friendly?",
+        answer:
+          "We discuss halal preferences, certification requirements, no-pork or no-alcohol needs, prayer timing, nearby prayer-space information and privacy preferences before confirmation. Specific restaurant certification, mosque access, prayer space and opening hours are checked for your dates rather than assumed.",
+      },
+      {
+        question: "Can you guarantee certified halal restaurants?",
+        answer:
+          "We do not make a blanket guarantee before checking the actual route and dates. Tell us whether certification is essential, and the final proposal will state the dining basis and any confirmed restaurant information clearly.",
+      },
+      {
+        question: "Is the Great Wall suitable for older travelers?",
+        answer:
+          "Often yes, when the section, start time, cable-car option, rest points and walking expectations are reviewed honestly in advance. The Wall still includes uneven ground and steps, so the route should be matched to the group rather than assumed.",
+      },
+      {
+        question: "Are lunch and dinner included?",
+        answer:
+          "They are not included unless the final proposal states otherwise. Your guide may recommend and reserve suitable places after your dietary requirements are checked; meal costs are paid directly unless included in the final confirmation.",
+      },
+      {
+        question: "Are there compulsory shopping stops?",
+        answer:
+          "No. Restaurants and shopping venues are not selected to generate commission, and there are no compulsory shopping stops in this route framework.",
+      },
+    ],
+    related: {
+      tours: [],
+      destinations: [
+        {
+          name: "Beijing",
+          description:
+            "Imperial architecture, hutong neighborhoods, the Great Wall and a capital with many different rhythms.",
+          image: destinationAsset.beijingForbiddenCityWide,
+          href: "/destinations/beijing",
+        },
+      ],
+    },
+    inquiry: {
+      emailHref:
+        "mailto:chinaprimedmc@gmail.com?subject=Beijing%20Unhurried%20Private%205-Day%20Journey%20Quotation",
+      whatsappHref:
+        "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20a%20quotation%20for%20Beijing%20Unhurried%20%E2%80%94%20A%20Private%205-Day%20Journey.%0A%0AMuslim-friendly%20planning%20needs%3A%20",
+      scheduleCallHref: "tel:+447985052302",
+      defaultMessage:
+        "I am interested in Beijing Unhurried — A Private 5-Day Journey. Please help me plan my dining preferences, prayer timing and the right pace for my travelers.",
     },
   },
   {

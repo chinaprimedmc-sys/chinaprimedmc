@@ -6,12 +6,14 @@ import type { Tour } from "@/types/tour";
 const coreJourneyTitleOverrides: Record<string, string> = {
   "first-china-beautifully-paced": "9-Day Beijing, Xi'an & Shanghai Private Tour",
   "chengdu-pandas-sichuan-table": "5-Day Chengdu Panda & Sichuan Food Private Tour",
+  "beijing-unhurried-private-5-day-journey": "Beijing Unhurried — A Private 5-Day Journey",
   "shanghai-zhangjiajie-floating-peaks": "Shanghai Skylines & Zhangjiajie's Floating Peaks",
 };
 
 const coreJourneyOrder = [
   "first-china-beautifully-paced",
   "chengdu-pandas-sichuan-table",
+  "beijing-unhurried-private-5-day-journey",
   "shanghai-zhangjiajie-floating-peaks",
 ];
 

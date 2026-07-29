@@ -60,6 +60,9 @@ const chengdu = tours.find((tour) => tour.slug === "chengdu-pandas-sichuan-table
 const shanghaiZhangjiajie = tours.find(
   (tour) => tour.slug === "shanghai-zhangjiajie-floating-peaks",
 );
+const beijingUnhurried = tours.find(
+  (tour) => tour.slug === "beijing-unhurried-private-5-day-journey",
+);
 
 if (!flagship) {
   throw new Error("The flagship journey is required for the journeys catalog.");
@@ -71,6 +74,10 @@ if (!chengdu) {
 
 if (!shanghaiZhangjiajie) {
   throw new Error("The Shanghai and Zhangjiajie journey is required for the journeys catalog.");
+}
+
+if (!beijingUnhurried) {
+  throw new Error("The Beijing Unhurried journey is required for the journeys catalog.");
 }
 
 const firstChina: JourneyCatalogItem = {
@@ -203,9 +210,49 @@ const shanghaiZhangjiajieJourney: JourneyCatalogItem = {
   ],
 };
 
+const beijingUnhurriedJourney: JourneyCatalogItem = {
+  slug: beijingUnhurried.slug,
+  title: beijingUnhurried.title,
+  eyebrow: "New private journey",
+  summary: beijingUnhurried.subtitle,
+  hook: "Beijing's essential landmarks with one hotel, private support, measured pacing, and Muslim-friendly planning available before confirmation.",
+  image: beijingUnhurried.hero.image,
+  href: `/tours/${beijingUnhurried.slug}`,
+  kind: "featured",
+  routeLabel: beijingUnhurried.route,
+  durationLabel: "5 days / 4 nights",
+  styleFilters: ["Quiet Luxury", "Culture", "Slow Travel"],
+  destinationFilters: ["Beijing"],
+  bestForFilters: ["First-time visitors", "Families", "Couples", "Seniors"],
+  experienceFilters: ["great-wall", "ancient-china", "food", "local-life", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "travel-advisors",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "quiet-luxury",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 5,
+  recommendedDaysMax: 5,
+  destinations: [{ label: "Beijing", href: "/destinations/beijing" }],
+};
+
 export const journeyCatalog: JourneyCatalogItem[] = [
   firstChina,
   chengduJourney,
+  beijingUnhurriedJourney,
   shanghaiZhangjiajieJourney,
 ];
 

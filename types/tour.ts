@@ -95,6 +95,14 @@ export type TourFaq = {
   answer: string;
 };
 
+export type TourPlanningSupport = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  items: TourOverviewFact[];
+  note: string;
+};
+
 export type TourInquiry = {
   emailHref: string;
   whatsappHref?: string;
@@ -130,6 +138,7 @@ export type Tour = {
     pitch: string;
     facts: TourOverviewFact[];
   };
+  planningSupport?: TourPlanningSupport;
   highlights: TourHighlight[];
   itinerary: TourItineraryDay[];
   accommodations: TourAccommodation[];

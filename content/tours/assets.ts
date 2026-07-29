@@ -26,6 +26,20 @@ const shanghaiZhangjiajieImage = (
   height,
 });
 
+const beijingUnhurriedImage = (
+  src: string,
+  alt: string,
+  width: number,
+  height: number,
+  objectPosition?: string,
+): MediaAsset => ({
+  src: `/tours/beijing-unhurried/${src}`,
+  alt,
+  width,
+  height,
+  objectPosition,
+});
+
 export const firstChinaAsset = {
   beijingGreatWallSunriseHero: tourImage(
     "beijing-great-wall-sunrise-hero.jpg",
@@ -198,6 +212,106 @@ export const firstChinaAsset = {
   shanghaiPudongCoupleNight: tourImage(
     "shanghai-pudong-couple-night.webp",
     "Two travelers beside the illuminated Shanghai Pudong skyline at night",
+    1440,
+    1920,
+  ),
+} satisfies Record<string, MediaAsset>;
+
+export const beijingUnhurriedAsset = {
+  hero: beijingUnhurriedImage(
+    "hero.webp",
+    "The Mutianyu section of the Great Wall winding through Beijing's autumn mountains",
+    1600,
+    2400,
+    "50% 52%",
+  ),
+  privateService: beijingUnhurriedImage(
+    "private-service.webp",
+    "Travelers with their English-speaking guide on the Great Wall near Beijing",
+    1800,
+    2400,
+  ),
+  forbiddenCityOverview: beijingUnhurriedImage(
+    "forbidden-city-overview.webp",
+    "The Forbidden City seen from Jingshan Park in Beijing",
+    1800,
+    2400,
+  ),
+  greatWallOverview: beijingUnhurriedImage(
+    "great-wall-overview.webp",
+    "The Great Wall crossing the wooded mountains near Beijing",
+    864,
+    1488,
+  ),
+  hutongLife: beijingUnhurriedImage(
+    "hutong-life.webp",
+    "A local hutong and courtyard-life moment in Beijing",
+    1499,
+    2248,
+  ),
+  arrivalHutong: beijingUnhurriedImage(
+    "arrival-hutong.webp",
+    "A relaxed hutong introduction in Beijing",
+    1440,
+    1920,
+  ),
+  forbiddenCity: beijingUnhurriedImage(
+    "forbidden-city.webp",
+    "Imperial palace roofs and autumn trees in Beijing's Forbidden City",
+    1800,
+    2400,
+  ),
+  forbiddenCityGuide: beijingUnhurriedImage(
+    "forbidden-city-guide.webp",
+    "An English-speaking guide explaining details inside the Forbidden City",
+    1280,
+    1742,
+  ),
+  greatWallSunrise: beijingUnhurriedImage(
+    "great-wall-sunrise.webp",
+    "The Great Wall rising above the clouds near Beijing at sunrise",
+    1406,
+    2400,
+  ),
+  greatWallWalk: beijingUnhurriedImage(
+    "great-wall-walk.webp",
+    "Travelers walking on the Great Wall near Beijing",
+    2400,
+    1641,
+  ),
+  hutongCourtyard: beijingUnhurriedImage(
+    "hutong-courtyard.webp",
+    "A quiet courtyard and hutong street in Beijing",
+    1800,
+    2400,
+  ),
+  handsOnCulture: beijingUnhurriedImage(
+    "hands-on-culture.webp",
+    "A hands-on Chinese cultural workshop in Beijing",
+    1800,
+    2400,
+  ),
+  summerPalace: beijingUnhurriedImage(
+    "summer-palace.webp",
+    "A boat gliding across Kunming Lake at Beijing's Summer Palace",
+    1441,
+    1920,
+  ),
+  hotelRoom: beijingUnhurriedImage(
+    "hotel-room.webp",
+    "A comfortable Beijing hotel room selected around the final proposal",
+    2400,
+    1800,
+  ),
+  dining: beijingUnhurriedImage(
+    "dining.webp",
+    "A Beijing dining table with shared Chinese dishes",
+    1728,
+    2304,
+  ),
+  privateMpv: beijingUnhurriedImage(
+    "private-mpv.webp",
+    "A comfortable private MPV prepared for Beijing transfers and touring",
     1440,
     1920,
   ),

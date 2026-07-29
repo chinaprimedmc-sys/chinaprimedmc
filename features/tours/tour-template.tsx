@@ -32,6 +32,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
   const planningHref = `/start-planning?source=${encodeURIComponent(`/tours/${tour.slug}`)}&journey=${encodeURIComponent(tour.slug)}`;
   const tourNav = [
     { label: "Overview", href: "#overview" },
+    ...(tour.planningSupport ? [{ label: "Planning", href: "#planning-support" }] : []),
     { label: "Itinerary", href: "#itinerary" },
     { label: "Hotels", href: "#accommodation" },
     { label: "Map", href: "#route-map" },
@@ -78,6 +79,31 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           </div>
         </ContentContainer>
       </Section>
+
+      {tour.planningSupport ? (
+        <Section id="planning-support" spacing="default">
+          <ContentContainer size="xl" className="grid gap-8">
+            <SectionHeader
+              eyebrow={tour.planningSupport.eyebrow}
+              title={tour.planningSupport.title}
+              description={tour.planningSupport.description}
+            />
+            <GridSystem columns={2}>
+              {tour.planningSupport.items.map((item) => (
+                <FeatureCard
+                  key={item.label}
+                  icon={<Check size={18} aria-hidden="true" />}
+                  title={item.value}
+                  description={`${item.label}. ${item.helper ?? ""}`}
+                />
+              ))}
+            </GridSystem>
+            <p className="max-w-3xl text-sm leading-7 text-[var(--text-secondary)]">
+              {tour.planningSupport.note}
+            </p>
+          </ContentContainer>
+        </Section>
+      ) : null}
 
       <Section id="highlights" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
@@ -162,7 +188,11 @@ export function TourTemplate({ tour }: TourTemplateProps) {
               title={tour.pricing.title}
               description={tour.pricing.description}
             />
-            <div className="grid border-y border-[var(--border-default)] md:grid-cols-3">
+            <div
+              className={`grid border-y border-[var(--border-default)] ${
+                tour.pricing.tiers.length === 4 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"
+              }`}
+            >
               {tour.pricing.tiers.map((tier, index) => (
                 <article
                   key={tier.partySize}
