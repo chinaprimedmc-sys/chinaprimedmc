@@ -14,6 +14,18 @@ const chengduImage = (src: string, alt: string, width: number, height: number): 
   height,
 });
 
+const shanghaiZhangjiajieImage = (
+  src: string,
+  alt: string,
+  width: number,
+  height: number,
+): MediaAsset => ({
+  src: `/tours/shanghai-zhangjiajie-floating-peaks/${src}`,
+  alt,
+  width,
+  height,
+});
+
 export const firstChinaAsset = {
   beijingGreatWallSunriseHero: tourImage(
     "beijing-great-wall-sunrise-hero.jpg",
@@ -296,5 +308,68 @@ export const chengduAsset = {
     "A relaxed tea house moment in Chengdu",
     1920,
     2560,
+  ),
+} satisfies Record<string, MediaAsset>;
+
+export const shanghaiZhangjiajieAsset = {
+  hero: shanghaiZhangjiajieImage(
+    "hero-floating-peaks.webp",
+    "Quartz-sandstone pillars rising above the forest in Zhangjiajie",
+    1280,
+    1920,
+  ),
+  shanghaiDusk: shanghaiZhangjiajieImage(
+    "shanghai-skyline-dusk.webp",
+    "Shanghai's Pudong skyline glowing beside the Huangpu River at dusk",
+    1236,
+    1920,
+  ),
+  shanghaiNight: shanghaiZhangjiajieImage(
+    "shanghai-pudong-night.webp",
+    "Shanghai's illuminated Pudong skyline seen across the Huangpu River",
+    1440,
+    1920,
+  ),
+  shanghaiBund: shanghaiZhangjiajieImage(
+    "shanghai-bund-clocktower.webp",
+    "Historic architecture and the Customs House clock tower on Shanghai's Bund",
+    1441,
+    1920,
+  ),
+  wulingyuan: shanghaiZhangjiajieImage(
+    "wulingyuan-peaks.webp",
+    "Travelers looking across the sandstone peak landscape of Wulingyuan",
+    1440,
+    1920,
+  ),
+  glassBridge: shanghaiZhangjiajieImage(
+    "zhangjiajie-glass-bridge.webp",
+    "The glass bridge spanning Zhangjiajie Grand Canyon",
+    1440,
+    1920,
+  ),
+  goldenWhipStream: shanghaiZhangjiajieImage(
+    "golden-whip-stream.webp",
+    "The forest and clear water along Golden Whip Stream in Zhangjiajie",
+    1920,
+    1440,
+  ),
+  tianmenCave: shanghaiZhangjiajieImage(
+    "tianmen-mountain-cave.webp",
+    "A dramatic mountain opening and sky at Tianmen Mountain in Zhangjiajie",
+    1179,
+    1609,
+  ),
+  tianmenCableway: shanghaiZhangjiajieImage(
+    "tianmen-cableway.webp",
+    "Cable cars traveling above the forested slopes near Tianmen Mountain",
+    1440,
+    1920,
+  ),
+  privateMpv: shanghaiZhangjiajieImage(
+    "private-mpv.webp",
+    "A spacious private MPV prepared for airport transfers and touring",
+    1440,
+    1920,
   ),
 } satisfies Record<string, MediaAsset>;

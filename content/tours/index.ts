@@ -1,5 +1,5 @@
 import { destinationAsset } from "@/content/destinations/assets";
-import { chengduAsset, firstChinaAsset } from "@/content/tours/assets";
+import { chengduAsset, firstChinaAsset, shanghaiZhangjiajieAsset } from "@/content/tours/assets";
 import type { Tour } from "@/types/tour";
 
 const firstChinaEmail =
@@ -851,6 +851,529 @@ export const tours: Tour[] = [
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
         "I am interested in Chengdu, Pandas & Sichuan Table. Please suggest the best pacing for my travelers.",
+    },
+  },
+  {
+    slug: "shanghai-zhangjiajie-floating-peaks",
+    title: "Shanghai Skylines & Zhangjiajie's Floating Peaks",
+    subtitle:
+      "A private 8-day journey pairing Shanghai's riverfront energy with Zhangjiajie's extraordinary sandstone peaks, connected at a comfortable pace.",
+    duration: "8 Days / 7 Nights",
+    route: "Shanghai, Wulingyuan, Zhangjiajie",
+    styles: ["Nature", "Luxury", "Family", "Photography"],
+    hero: {
+      eyebrow: "Private Shanghai and Zhangjiajie journey",
+      image: shanghaiZhangjiajieAsset.hero,
+      primary: { label: "Explore Itinerary", href: "#itinerary" },
+      secondary: { label: "Request My Quotation", href: "#inquiry" },
+    },
+    seo: {
+      title: "8-Day Private Shanghai and Zhangjiajie Tour",
+      description:
+        "Explore Shanghai and Zhangjiajie on a private 8-day China tour with English-speaking guides, private transfers, domestic flights, park transport, and flexible pacing.",
+      keywords: [
+        "Shanghai Zhangjiajie private tour",
+        "8 day Shanghai Zhangjiajie itinerary",
+        "luxury Zhangjiajie tour",
+        "private China nature tour",
+        "Shanghai and Avatar Mountains tour",
+      ],
+    },
+    overview: {
+      pitch:
+        "Two contrasting sides of China, joined with enough time to enjoy both without turning the journey into a race.",
+      facts: [
+        {
+          label: "Duration",
+          value: "8 days / 7 nights",
+          helper: "Three Shanghai nights and four nights across the Zhangjiajie region.",
+        },
+        {
+          label: "Destinations",
+          value: "Shanghai + Zhangjiajie",
+          helper: "City skyline, Wulingyuan peaks, Golden Whip Stream, and Tianmen Mountain.",
+        },
+        {
+          label: "Travel Style",
+          value: "Private and unhurried",
+          helper: "Private transfers and English-speaking local guides.",
+        },
+        {
+          label: "Pacing",
+          value: "Easy to moderate",
+          helper: "Walking routes and glass experiences can be adjusted.",
+        },
+        {
+          label: "Suitable For",
+          value: "Couples, families, private groups",
+          helper: "Designed for mid- to high-end international travelers.",
+        },
+        {
+          label: "Price Guide",
+          value: "Price on request",
+          helper: "Quotation places are reserved for 2, 4, and 6 travelers.",
+        },
+      ],
+    },
+    highlights: [
+      {
+        title: "Shanghai from old lanes to river lights",
+        description:
+          "Move from Yu Garden and the historic Bund to Pudong's illuminated skyline, with a Huangpu River cruise when conditions allow.",
+        category: "Culture",
+        image: shanghaiZhangjiajieAsset.shanghaiDusk,
+      },
+      {
+        title: "Among Zhangjiajie's floating peaks",
+        description:
+          "Use the Bailong Elevator, official park shuttles, and cableways to reach Yuanjiajie and Tianzi Mountain without overloading the day.",
+        category: "Nature",
+        image: shanghaiZhangjiajieAsset.wulingyuan,
+      },
+      {
+        title: "A protected final night in Shanghai",
+        description:
+          "Return to Shanghai one day before the international departure, creating a calmer ending and a practical buffer around the domestic flight.",
+        category: "Luxury",
+        image: shanghaiZhangjiajieAsset.shanghaiNight,
+      },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive in Shanghai",
+        destination: "Shanghai",
+        summary:
+          "Meet your representative, transfer privately to the hotel, and keep the first evening deliberately light.",
+        image: shanghaiZhangjiajieAsset.privateMpv,
+        hotel:
+          "Carefully selected Shanghai hotel; final property and room category confirmed in writing",
+        meals: ["No meals included today"],
+        transport: "Private airport or railway-station transfer",
+        activities: [
+          {
+            title: "Private arrival support",
+            description:
+              "A vehicle selected around your party and luggage takes you directly to the confirmed hotel.",
+          },
+          {
+            title: "A quiet first evening",
+            description:
+              "Settle in, confirm the next morning's meeting time, and keep dinner flexible near the hotel.",
+          },
+        ],
+        guideNote:
+          "The first day is about arriving well. Drive time is usually 45-90 minutes, depending on the airport, hotel, and traffic.",
+        coordinates: { latitude: 31.2304, longitude: 121.4737 },
+      },
+      {
+        day: 2,
+        title: "Old and New Shanghai",
+        destination: "Shanghai",
+        summary:
+          "Classical garden details, historic waterfront architecture, and Shanghai's skyline after dark.",
+        image: shanghaiZhangjiajieAsset.shanghaiBund,
+        hotel: "Shanghai hotel",
+        meals: ["Breakfast"],
+        transport: "Private vehicle, walking, and standard river cruise when confirmed",
+        activities: [
+          {
+            time: "Morning",
+            title: "Yu Garden and the Old City",
+            description:
+              "Explore rockwork, water, pavilions, and nearby lanes with context from your private guide.",
+          },
+          {
+            time: "Afternoon",
+            title: "The Bund",
+            description:
+              "Walk a selected section of the waterfront where early twentieth-century architecture faces modern Pudong.",
+          },
+          {
+            time: "Evening",
+            title: "Huangpu River lights",
+            description:
+              "Take a standard evening cruise if weather and operations allow, or return to the hotel earlier.",
+          },
+        ],
+        guideNote: "Typical walking is 3-5 kilometres and can be adjusted around the group.",
+        coordinates: { latitude: 31.2397, longitude: 121.4998 },
+      },
+      {
+        day: 3,
+        title: "Shanghai to Zhangjiajie",
+        destination: "Shanghai to Wulingyuan",
+        summary:
+          "A slow city morning followed by the best confirmed domestic connection to Zhangjiajie.",
+        image: shanghaiZhangjiajieAsset.shanghaiDusk,
+        hotel: "Carefully selected Wulingyuan hotel near the national-park entrance",
+        meals: ["Breakfast"],
+        transport: "Private transfers and economy-class domestic flight",
+        activities: [
+          {
+            time: "Morning",
+            title: "Shanghai at street level",
+            description:
+              "Take a short neighborhood walk selected around the hotel's location and flight time.",
+          },
+          {
+            time: "Afternoon",
+            title: "Domestic connection",
+            description:
+              "Transfer privately to the airport and fly on the best confirmed schedule; a direct service is preferred when operating.",
+          },
+          {
+            time: "Evening",
+            title: "Arrive in Wulingyuan",
+            description:
+              "Meet the local team and continue approximately 45-60 minutes to the hotel near the national park.",
+          },
+        ],
+        guideNote:
+          "Seasonal flight schedules may require a different timing or connection. The final sector and baggage basis are confirmed before payment.",
+        coordinates: { latitude: 29.345, longitude: 110.551 },
+      },
+      {
+        day: 4,
+        title: "Yuanjiajie and Tianzi Mountain",
+        destination: "Wulingyuan Scenic Area",
+        summary:
+          "The classic high-peaks day, made more manageable with the Bailong Elevator, park shuttles, and cableways.",
+        image: shanghaiZhangjiajieAsset.wulingyuan,
+        hotel: "Wulingyuan hotel",
+        meals: ["Breakfast"],
+        transport: "Private transfer outside the park, then official scenic-area transport",
+        activities: [
+          {
+            time: "Morning",
+            title: "Bailong Elevator and Yuanjiajie",
+            description:
+              "Reach the upper landscape and follow a viewpoint route with photography and rest stops.",
+          },
+          {
+            time: "Afternoon",
+            title: "Tianzi Mountain",
+            description:
+              "Continue by official shuttle for a different perspective across the quartz-sandstone pillars.",
+          },
+        ],
+        guideNote:
+          "Private vehicles cannot enter the core scenic area. Your guide stays with you and manages shared park shuttles, tickets, queues, and route decisions.",
+        coordinates: { latitude: 29.354, longitude: 110.475 },
+      },
+      {
+        day: 5,
+        title: "Golden Whip Stream and Optional Glass Bridge",
+        destination: "Zhangjiajie National Forest Park",
+        summary:
+          "A gentler forest-and-water morning, followed by a glass experience only for travelers who want it.",
+        image: shanghaiZhangjiajieAsset.goldenWhipStream,
+        hotel: "Carefully selected Zhangjiajie City hotel",
+        meals: ["Breakfast"],
+        transport: "Private vehicle and scenic-area access",
+        activities: [
+          {
+            time: "Morning",
+            title: "Golden Whip Stream",
+            description:
+              "Walk a selected 2-4 kilometre section beneath the peaks rather than automatically completing the full valley trail.",
+          },
+          {
+            time: "Afternoon",
+            title: "Zhangjiajie Grand Canyon",
+            description:
+              "Cross the Glass Bridge only if everyone is comfortable; a non-glass alternative can be arranged before tickets are confirmed.",
+          },
+          {
+            time: "Evening",
+            title: "Move to Zhangjiajie City",
+            description:
+              "Relocate to the city to reduce the following morning's transfer to Tianmen Mountain.",
+          },
+        ],
+        guideNote:
+          "Wild macaques may be present near Golden Whip Stream. Keep food packed away, give wildlife space, and follow your guide's instructions.",
+        coordinates: { latitude: 29.323, longitude: 110.439 },
+      },
+      {
+        day: 6,
+        title: "Tianmen Mountain",
+        destination: "Zhangjiajie City",
+        summary:
+          "Cableway, cliff scenery, and Tianmen Cave on a route adapted to weather, operations, and walking comfort.",
+        image: shanghaiZhangjiajieAsset.tianmenCableway,
+        hotel: "Zhangjiajie City hotel",
+        meals: ["Breakfast"],
+        transport: "Private transfer and Tianmen Mountain transport system",
+        activities: [
+          {
+            time: "Morning",
+            title: "Cableway and cliff route",
+            description:
+              "Use the confirmed entry route, then follow a selected cliffside path with regular pauses; glass walkways are optional.",
+          },
+          {
+            time: "Afternoon",
+            title: "Tianmen Cave",
+            description:
+              "Continue toward the natural arch using the most suitable operating route; the 999-step staircase is not compulsory.",
+          },
+        ],
+        guideNote:
+          "Visibility changes quickly. The local team may reorder Days 4-6 when weather and ticket availability support a better experience.",
+        coordinates: { latitude: 29.05, longitude: 110.478 },
+      },
+      {
+        day: 7,
+        title: "Return to Shanghai",
+        destination: "Zhangjiajie to Shanghai",
+        summary:
+          "Return one day before the international departure, creating a useful operational buffer and a calm final evening.",
+        image: shanghaiZhangjiajieAsset.shanghaiNight,
+        hotel: "Shanghai hotel selected around the final departure plan",
+        meals: ["Breakfast"],
+        transport: "Private transfers and economy-class domestic flight",
+        activities: [
+          {
+            time: "Morning",
+            title: "Depart Zhangjiajie",
+            description:
+              "Transfer privately to the airport with realistic timing for baggage and the confirmed flight.",
+          },
+          {
+            time: "Afternoon",
+            title: "Arrive in Shanghai",
+            description:
+              "Meet the Shanghai driver and return to the hotel for a relaxed final night.",
+          },
+        ],
+        guideNote:
+          "If timing and energy allow, add a simple riverside walk or dinner; no fixed sightseeing is required.",
+        coordinates: { latitude: 31.2304, longitude: 121.4737 },
+      },
+      {
+        day: 8,
+        title: "Shanghai Departure",
+        destination: "Shanghai",
+        summary:
+          "Breakfast and a private airport transfer timed around the confirmed international flight.",
+        image: shanghaiZhangjiajieAsset.privateMpv,
+        meals: ["Breakfast"],
+        transport: "Private airport transfer",
+        activities: [
+          {
+            title: "A protected final morning",
+            description:
+              "Check out and transfer to the correct terminal with a sensible departure time reconfirmed by the local team.",
+          },
+          {
+            title: "Later-flight options",
+            description:
+              "Late check-out, extra vehicle time, or a light activity can be quoted separately when useful.",
+          },
+        ],
+        guideNote:
+          "Very early flights may require a breakfast box, subject to hotel policy. There is no hotel stay tonight.",
+        coordinates: { latitude: 31.1443, longitude: 121.8083 },
+      },
+    ],
+    accommodations: [
+      {
+        name: "Carefully Selected Shanghai Stay",
+        destination: "Shanghai, 3 nights in total",
+        description:
+          "Central access for the first chapter and a practical final night selected around the departure plan.",
+        roomStyle: "Confirmed after inquiry",
+        highlights: ["Breakfast included", "Room and bedding confirmed in writing"],
+        image: shanghaiZhangjiajieAsset.shanghaiDusk,
+      },
+      {
+        name: "Wulingyuan National Park Base",
+        destination: "Wulingyuan, 2 nights",
+        description:
+          "A well-positioned base near the park entrance, reducing morning driving before the main scenic days.",
+        roomStyle: "Confirmed after inquiry",
+        highlights: ["Near scenic-area access", "Selected for recovery and sleep quality"],
+        image: shanghaiZhangjiajieAsset.hero,
+      },
+      {
+        name: "Zhangjiajie City Base",
+        destination: "Zhangjiajie City, 2 nights",
+        description:
+          "Convenient for Tianmen Mountain and the airport, avoiding unnecessary backtracking before the return flight.",
+        roomStyle: "Confirmed after inquiry",
+        highlights: ["Convenient city location", "Room configuration checked before booking"],
+        image: shanghaiZhangjiajieAsset.tianmenCave,
+      },
+    ],
+    included: [
+      "Seven nights at the hotels confirmed in the final proposal",
+      "Hotel breakfast on Days 2-8",
+      "Private airport transfers in Shanghai and Zhangjiajie",
+      "Air-conditioned private touring vehicle outside restricted scenic areas",
+      "Professional English-speaking local guides on sightseeing days",
+      "Economy-class domestic flights between Shanghai and Zhangjiajie when listed in the final confirmation",
+      "Standard admission, park shuttles, elevators, and cableways required by the confirmed itinerary",
+      "Huangpu River cruise and Glass Bridge only when listed in the final confirmation",
+      "Bottled water during touring and 24-hour emergency support",
+      "No compulsory shopping stops",
+    ],
+    excluded: [
+      "International flights to and from China",
+      "Lunches and dinners throughout the journey",
+      "Visa, travel insurance, medical costs, and personal expenses",
+      "Early check-in, late check-out, room upgrades, and single supplements",
+      "Guide and driver gratuities",
+      "Optional shows, premium cruise upgrades, and activities not confirmed in writing",
+      "Excess baggage and airline seat-selection fees unless specifically included",
+      "Extra costs caused by weather, traffic, flight disruption, or events beyond reasonable control",
+    ],
+    pricing: {
+      title: "A clear quotation prepared for your party.",
+      description:
+        "Prices remain open until travel dates, room arrangements, domestic flight schedules, and confirmed services are checked.",
+      tiers: [
+        { partySize: "2 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
+        { partySize: "4 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
+        { partySize: "6 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
+      ],
+      note: "The final quotation will state currency, hotel and room basis, child policy, domestic flight and baggage basis, validity date, deposit, and payment schedule. No price is confirmed until issued in writing.",
+    },
+    optionalExperiences: [
+      {
+        title: "Zhangjiajie Glass Bridge",
+        description:
+          "Add the Grand Canyon glass bridge only when the group is comfortable and current venue rules fit the day.",
+        badges: ["Optional", "Weather dependent"],
+        image: shanghaiZhangjiajieAsset.glassBridge,
+      },
+      {
+        title: "A slower Shanghai neighborhood morning",
+        description:
+          "Use the transfer day for coffee, a bakery, or a small park instead of adding another major sight.",
+        badges: ["Local life", "Flexible"],
+        image: shanghaiZhangjiajieAsset.shanghaiBund,
+      },
+      {
+        title: "Adjustable Tianmen Mountain route",
+        description:
+          "Select cliff walks, glass sections, escalator-assisted access, and rest points around comfort and operations.",
+        badges: ["Nature", "Pacing"],
+        image: shanghaiZhangjiajieAsset.tianmenCave,
+      },
+    ],
+    transportation: {
+      title: "Private logistics outside the parks, smart shared systems inside them.",
+      description:
+        "Private transfers connect airports, hotels, and scenic areas. Inside protected parks, official shared shuttles, elevators, cableways, and escalators are required.",
+      items: [
+        {
+          label: "Private transfers",
+          value: "Air-conditioned vehicle",
+          helper: "Vehicle size is confirmed around travelers, luggage, and mobility needs.",
+        },
+        {
+          label: "Domestic flights",
+          value: "Shanghai-Zhangjiajie return",
+          helper: "Economy fare, schedule, and baggage basis are confirmed before payment.",
+        },
+        {
+          label: "Protected areas",
+          value: "Official park transport",
+          helper: "Your guide manages required shared systems and adjusts the operating order.",
+        },
+      ],
+    },
+    routeMap: {
+      title: "City energy, mountain scale, and a protected return.",
+      description:
+        "Begin with two Shanghai nights, spend four nights across the Zhangjiajie region, then return to Shanghai before the international departure.",
+      stops: [
+        {
+          name: "Shanghai",
+          days: "Days 1-3 and 7-8",
+          description: "Yu Garden, the Bund, Huangpu River lights, and the final departure buffer.",
+          coordinates: { latitude: 31.2304, longitude: 121.4737 },
+        },
+        {
+          name: "Wulingyuan",
+          days: "Days 3-5",
+          description:
+            "Yuanjiajie, Tianzi Mountain, Golden Whip Stream, and the Grand Canyon option.",
+          coordinates: { latitude: 29.345, longitude: 110.551 },
+        },
+        {
+          name: "Zhangjiajie City",
+          days: "Days 5-7",
+          description: "Tianmen Mountain, city hotel base, and the return flight to Shanghai.",
+          coordinates: { latitude: 29.117, longitude: 110.479 },
+        },
+      ],
+    },
+    gallery: [
+      shanghaiZhangjiajieAsset.shanghaiDusk,
+      shanghaiZhangjiajieAsset.shanghaiNight,
+      shanghaiZhangjiajieAsset.shanghaiBund,
+      shanghaiZhangjiajieAsset.hero,
+      shanghaiZhangjiajieAsset.wulingyuan,
+      shanghaiZhangjiajieAsset.goldenWhipStream,
+      shanghaiZhangjiajieAsset.glassBridge,
+      shanghaiZhangjiajieAsset.tianmenCableway,
+      shanghaiZhangjiajieAsset.privateMpv,
+    ],
+    faqs: [
+      {
+        question: "Is this a fixed package?",
+        answer:
+          "It is a complete eight-day route framework. Hotels, room types, flight sectors, vehicle size, tickets, and the final price are confirmed in writing around your dates and travelers.",
+      },
+      {
+        question: "Are the Glass Bridge and glass walkways compulsory?",
+        answer:
+          "No. Glass experiences are optional. A non-glass alternative or a slower afternoon can be arranged before tickets are confirmed.",
+      },
+      {
+        question: "How difficult is the walking?",
+        answer:
+          "The route is easy to moderate and uses cableways, elevators, escalators, and adjustable walking sections. Uneven paths, steps, queues, and changing weather cannot be removed completely.",
+      },
+      {
+        question: "Why does the journey return to Shanghai on Day 7?",
+        answer:
+          "The final Shanghai night protects the international departure from the risk and stress of a same-day domestic connection.",
+      },
+      {
+        question: "Can you support dietary or mobility needs?",
+        answer:
+          "Yes, when shared before quotation. Tell us about allergies, vegetarian or vegan needs, halal preferences, walking comfort, child seats, and room arrangements so they can be checked properly.",
+      },
+    ],
+    related: {
+      tours: [],
+      destinations: [
+        {
+          name: "Shanghai",
+          description: "Historic riverfront architecture, neighborhood life, and Pudong's skyline.",
+          image: destinationAsset.shanghaiSkyline,
+          href: "/destinations/shanghai",
+        },
+        {
+          name: "Zhangjiajie",
+          description:
+            "Sandstone peaks, forest paths, cableways, and weather-shaped mountain days.",
+          image: destinationAsset.zhangjiajieForest,
+          href: "/destinations/zhangjiajie",
+        },
+      ],
+    },
+    inquiry: {
+      emailHref:
+        "mailto:chinaprimedmc@gmail.com?subject=Shanghai%20Skylines%20%26%20Zhangjiajie%27s%20Floating%20Peaks%20Quotation",
+      whatsappHref:
+        "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20a%20quotation%20for%20Shanghai%20Skylines%20%26%20Zhangjiajie%27s%20Floating%20Peaks.",
+      scheduleCallHref: "tel:+447985052302",
+      defaultMessage:
+        "I am interested in Shanghai Skylines & Zhangjiajie's Floating Peaks. Please prepare a quotation for my party.",
     },
   },
 ];

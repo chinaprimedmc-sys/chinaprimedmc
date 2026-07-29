@@ -57,6 +57,9 @@ export type JourneyPlanningNeedId =
 
 const flagship = tours[0];
 const chengdu = tours.find((tour) => tour.slug === "chengdu-pandas-sichuan-table");
+const shanghaiZhangjiajie = tours.find(
+  (tour) => tour.slug === "shanghai-zhangjiajie-floating-peaks",
+);
 
 if (!flagship) {
   throw new Error("The flagship journey is required for the journeys catalog.");
@@ -64,6 +67,10 @@ if (!flagship) {
 
 if (!chengdu) {
   throw new Error("The Chengdu journey is required for the journeys catalog.");
+}
+
+if (!shanghaiZhangjiajie) {
+  throw new Error("The Shanghai and Zhangjiajie journey is required for the journeys catalog.");
 }
 
 const firstChina: JourneyCatalogItem = {
@@ -155,7 +162,52 @@ const chengduJourney: JourneyCatalogItem = {
   ],
 };
 
-export const journeyCatalog: JourneyCatalogItem[] = [firstChina, chengduJourney];
+const shanghaiZhangjiajieJourney: JourneyCatalogItem = {
+  slug: shanghaiZhangjiajie.slug,
+  title: shanghaiZhangjiajie.title,
+  eyebrow: "New private journey",
+  summary: shanghaiZhangjiajie.subtitle,
+  hook: "Shanghai's skyline and Zhangjiajie's floating peaks, connected with private logistics and a protected final night.",
+  image: shanghaiZhangjiajie.hero.image,
+  href: `/tours/${shanghaiZhangjiajie.slug}`,
+  kind: "featured",
+  routeLabel: shanghaiZhangjiajie.route,
+  durationLabel: "8 days / 7 nights",
+  styleFilters: ["Quiet Luxury", "Family", "Photography", "Slow Travel"],
+  destinationFilters: ["Shanghai", "Zhangjiajie"],
+  bestForFilters: ["First-time visitors", "Families", "Couples", "Luxury travelers"],
+  experienceFilters: ["scenery", "modern-cities", "local-life", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "travel-advisors",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "quiet-luxury",
+    "photography-led",
+  ],
+  recommendedDaysMin: 8,
+  recommendedDaysMax: 8,
+  destinations: [
+    { label: "Shanghai", href: "/destinations/shanghai" },
+    { label: "Zhangjiajie", href: "/destinations/zhangjiajie" },
+  ],
+};
+
+export const journeyCatalog: JourneyCatalogItem[] = [
+  firstChina,
+  chengduJourney,
+  shanghaiZhangjiajieJourney,
+];
 
 export function getJourneyCatalogItem(slug: string) {
   return journeyCatalog.find((item) => item.slug === slug);

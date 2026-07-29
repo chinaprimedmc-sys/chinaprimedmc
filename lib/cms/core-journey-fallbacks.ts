@@ -6,9 +6,14 @@ import type { Tour } from "@/types/tour";
 const coreJourneyTitleOverrides: Record<string, string> = {
   "first-china-beautifully-paced": "9-Day Beijing, Xi'an & Shanghai Private Tour",
   "chengdu-pandas-sichuan-table": "5-Day Chengdu Panda & Sichuan Food Private Tour",
+  "shanghai-zhangjiajie-floating-peaks": "Shanghai Skylines & Zhangjiajie's Floating Peaks",
 };
 
-const coreJourneyOrder = ["first-china-beautifully-paced", "chengdu-pandas-sichuan-table"];
+const coreJourneyOrder = [
+  "first-china-beautifully-paced",
+  "chengdu-pandas-sichuan-table",
+  "shanghai-zhangjiajie-floating-peaks",
+];
 
 export function normalizeCoreJourneyTitle(journey: CmsJourney): CmsJourney {
   const title = coreJourneyTitleOverrides[journey.slug];

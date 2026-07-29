@@ -154,6 +154,48 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         </ContentContainer>
       </Section>
 
+      {tour.pricing ? (
+        <Section id="pricing" spacing="default">
+          <ContentContainer size="xl" className="grid gap-8">
+            <SectionHeader
+              eyebrow="Private party pricing"
+              title={tour.pricing.title}
+              description={tour.pricing.description}
+            />
+            <div className="grid border-y border-[var(--border-default)] md:grid-cols-3">
+              {tour.pricing.tiers.map((tier, index) => (
+                <article
+                  key={tier.partySize}
+                  className={`py-7 md:px-7 md:py-9 ${
+                    index ? "border-t border-[var(--border-default)] md:border-t-0 md:border-l" : ""
+                  }`}
+                >
+                  <p className="text-xs font-semibold tracking-[0.14em] text-[var(--text-tertiary)] uppercase">
+                    Party size
+                  </p>
+                  <h3 className="mt-3 font-serif text-3xl font-medium text-[var(--text-primary)]">
+                    {tier.partySize}
+                  </h3>
+                  <dl className="mt-6 grid gap-3 text-sm">
+                    <div className="flex items-center justify-between gap-4">
+                      <dt className="text-[var(--text-secondary)]">Per person</dt>
+                      <dd className="font-medium text-[var(--text-primary)]">{tier.perPerson}</dd>
+                    </div>
+                    <div className="flex items-center justify-between gap-4">
+                      <dt className="text-[var(--text-secondary)]">Party total</dt>
+                      <dd className="font-medium text-[var(--text-primary)]">{tier.total}</dd>
+                    </div>
+                  </dl>
+                </article>
+              ))}
+            </div>
+            <p className="max-w-3xl text-sm leading-7 text-[var(--text-secondary)]">
+              {tour.pricing.note}
+            </p>
+          </ContentContainer>
+        </Section>
+      ) : null}
+
       <Section id="optional-experiences" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
