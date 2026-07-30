@@ -20,6 +20,7 @@ export function SocialContactRail({
   const isHomePage = pathname === "/";
   const isBackend = pathname.startsWith("/admin");
   const [heroHasPassed, setHeroHasPassed] = useState(false);
+  const [featuredJourneyInView, setFeaturedJourneyInView] = useState(false);
 
   useEffect(() => {
     if (!isHomePage) {
@@ -27,6 +28,7 @@ export function SocialContactRail({
     }
 
     const hero = document.querySelector<HTMLElement>(".home-hero-split");
+    const featuredJourney = document.querySelector<HTMLElement>(".home-featured-cinema");
 
     if (!hero) {
       return;
@@ -40,14 +42,23 @@ export function SocialContactRail({
     );
     observer.observe(hero);
 
+    const featuredObserver = featuredJourney
+      ? new IntersectionObserver(
+          ([entry]) => setFeaturedJourneyInView(Boolean(entry?.isIntersecting)),
+          { threshold: 0.08 },
+        )
+      : null;
+    if (featuredJourney) featuredObserver?.observe(featuredJourney);
+
     return () => {
       observer.disconnect();
+      featuredObserver?.disconnect();
     };
   }, [isHomePage]);
 
   if (isBackend) return null;
 
-  const isVisible = !isHomePage || heroHasPassed;
+  const isVisible = !isHomePage || (heroHasPassed && !featuredJourneyInView);
 
   return (
     <Popover.Root>

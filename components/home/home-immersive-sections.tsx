@@ -25,13 +25,11 @@ type PlanningStep = {
 
 type FeaturedJourney = {
   title: string;
+  displayTitle: string;
   navLabel: string;
-  titleLocation: string;
-  titleExperience: string;
-  titleSuffix: string;
+  titleLength: "short" | "medium" | "long";
   durationBadge: string;
   accent: "gold" | "bamboo";
-  poeticTitle: string;
   description: string;
   image: MediaAsset;
   href: string;
@@ -281,6 +279,7 @@ function homeCircularOffset(index: number, activeIndex: number, total: number) {
 
 export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[] }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const navigationRef = useRef<HTMLDivElement>(null);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -318,6 +317,16 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
       window.cancelAnimationFrame(frame);
     };
   }, [journeys.length]);
+
+  useEffect(() => {
+    const navigation = navigationRef.current;
+    const activeItem = navigation?.querySelector<HTMLElement>('[aria-current="true"]');
+    if (!navigation || !activeItem || window.innerWidth >= 768) return;
+
+    const targetLeft =
+      activeItem.offsetLeft - (navigation.clientWidth - activeItem.offsetWidth) / 2;
+    navigation.scrollTo({ left: Math.max(targetLeft, 0), behavior: "smooth" });
+  }, [activeIndex]);
 
   const goToJourney = (index: number) => {
     const section = sectionRef.current;
@@ -365,24 +374,17 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
               className="home-featured-cinema__chapter"
               data-active={index === activeIndex}
               data-accent={journey.accent}
+              data-title-length={journey.titleLength}
               aria-hidden={index !== activeIndex}
+              inert={index !== activeIndex}
             >
               <p className="home-featured-cinema__eyebrow">
                 Featured journey · {String(index + 1).padStart(2, "0")} /{" "}
                 {String(journeys.length).padStart(2, "0")}
               </p>
               <p className="home-featured-cinema__duration">{journey.durationBadge}</p>
-              <h2 aria-label={journey.title}>
-                <span className="sr-only">{journey.durationBadge.split(" DAYS")[0]}-Day </span>
-                <span className="home-featured-cinema__location">{journey.titleLocation}</span>
-                {journey.titleExperience ? (
-                  <span className="home-featured-cinema__experience">
-                    {journey.titleExperience}
-                  </span>
-                ) : null}
-                <span className="home-featured-cinema__suffix">{journey.titleSuffix}</span>
-              </h2>
-              <p className="home-featured-cinema__poetic">{journey.poeticTitle}</p>
+              <h2 title={journey.title}>{journey.displayTitle}</h2>
+              <p className="home-featured-cinema__summary">{journey.description}</p>
               <dl className="home-featured-cinema__facts">
                 <div>
                   <dt>Route</dt>
@@ -393,34 +395,49 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                   <dd>{journey.bestFor}</dd>
                 </div>
               </dl>
-              <p className="home-featured-cinema__summary">{journey.description}</p>
-              <Link href={journey.href} className="home-featured-cinema__link">
-                Explore this journey
-                <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
+              <div className="home-featured-cinema__actions">
+                <Link href={journey.href} className="home-featured-cinema__link">
+                  View full journey
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                </Link>
+                <Link
+                  href={`/start-planning?journey=${encodeURIComponent(journey.title)}`}
+                  className="home-featured-cinema__link home-featured-cinema__link--secondary"
+                >
+                  Plan a similar journey
+                </Link>
+              </div>
             </article>
           ))}
         </div>
 
-        <div className="home-featured-cinema__navigation" aria-label="Featured journeys">
+        <div
+          ref={navigationRef}
+          className="home-featured-cinema__navigation"
+          aria-label="Featured journeys"
+        >
           {journeys.map((journey, index) => (
-            <button
-              type="button"
+            <Link
+              href={journey.href}
               key={journey.href}
-              onClick={() => goToJourney(index)}
-              aria-label={`Show ${journey.title}`}
-              aria-pressed={index === activeIndex}
+              onClick={(event) => {
+                if (index === activeIndex) return;
+                event.preventDefault();
+                goToJourney(index);
+              }}
+              aria-label={
+                index === activeIndex ? `View ${journey.title} details` : `Show ${journey.title}`
+              }
+              aria-current={index === activeIndex ? "true" : undefined}
             >
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <i />
-              <strong>{journey.navLabel || journey.title}</strong>
-            </button>
+              <span className="home-featured-cinema__navigation-copy">
+                <strong>{journey.navLabel || journey.title}</strong>
+                <small>{journey.duration}</small>
+              </span>
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
           ))}
-        </div>
-
-        <div className="home-featured-cinema__scroll-cue" aria-hidden="true">
-          <span>Scroll to explore</span>
-          <i />
         </div>
       </div>
     </section>

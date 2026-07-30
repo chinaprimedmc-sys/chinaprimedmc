@@ -29,6 +29,32 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { getPublicHomePage, getPublicSiteSettings } from "@/lib/cms/public-content";
 import { mergeCoreJourneyFallbacks } from "@/lib/cms/core-journey-fallbacks";
 
+const featuredJourneyDisplayTitles: Record<string, string> = {
+  "first-china-beautifully-paced": "Beijing, Xi'an & Shanghai",
+  "chengdu-pandas-sichuan-table": "Chengdu, Pandas & Sichuan Food",
+  "beijing-unhurried-private-5-day-journey": "Beijing Unhurried",
+  "shanghai-zhangjiajie-floating-peaks": "Shanghai & Zhangjiajie",
+};
+
+function getFeaturedJourneyDisplayTitle(slug: string, title: string) {
+  const preferredTitle = featuredJourneyDisplayTitles[slug];
+  if (preferredTitle) return preferredTitle;
+
+  const simplifiedTitle = title
+    .replace(/^\s*\d+\s*[-–—]?\s*day\s+/i, "")
+    .replace(/\s*[-–—]\s*a\s+private\s+\d+\s*[-–—]?\s*day\s+journey\s*$/i, "")
+    .replace(/\s+(?:private\s+)?(?:tour|journey)\s*$/i, "")
+    .trim();
+
+  return simplifiedTitle || title;
+}
+
+function getFeaturedTitleLength(title: string) {
+  if (title.length <= 28) return "short" as const;
+  if (title.length <= 42) return "medium" as const;
+  return "long" as const;
+}
+
 export const metadata: Metadata = createMetadata({
   title: "Private China Tours for Families, Couples, and Luxury Travelers",
   description:
@@ -40,26 +66,28 @@ export default async function HomePage() {
   const [home, settings] = await Promise.all([getPublicHomePage(), getPublicSiteSettings()]);
   const featuredJourneys = mergeCoreJourneyFallbacks(home.featuredJourneys)
     .filter((journey) => journey.hero_image)
-    .map((journey, index) => ({
-      title: journey.title,
-      navLabel: journey.title,
-      titleLocation: journey.title,
-      titleExperience: "",
-      titleSuffix: "Private Journey",
-      durationBadge: journey.duration_label.toUpperCase(),
-      accent: index % 2 ? ("bamboo" as const) : ("gold" as const),
-      poeticTitle: journey.subtitle,
-      description: journey.summary,
-      image: {
-        src: journey.hero_image!.url,
-        alt: journey.hero_image!.alt_text,
-        objectPosition: journey.hero_image!.object_position,
-      },
-      href: `/tours/${journey.slug}`,
-      duration: journey.duration_label,
-      route: journey.route,
-      bestFor: journey.best_for,
-    }));
+    .map((journey, index) => {
+      const displayTitle = getFeaturedJourneyDisplayTitle(journey.slug, journey.title);
+
+      return {
+        title: journey.title,
+        displayTitle,
+        navLabel: displayTitle,
+        titleLength: getFeaturedTitleLength(displayTitle),
+        durationBadge: journey.duration_label.toUpperCase(),
+        accent: index % 2 ? ("bamboo" as const) : ("gold" as const),
+        description: journey.summary,
+        image: {
+          src: journey.hero_image!.url,
+          alt: journey.hero_image!.alt_text,
+          objectPosition: journey.hero_image!.object_position,
+        },
+        href: `/tours/${journey.slug}`,
+        duration: journey.duration_label,
+        route: journey.route,
+        bestFor: journey.best_for,
+      };
+    });
   const exploreItems = home.featuredDestinations.length
     ? home.featuredDestinations.map((destination) => ({
         eyebrow: destination.kicker || "Destination",
