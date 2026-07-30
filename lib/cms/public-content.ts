@@ -48,7 +48,7 @@ export async function getPublicDestinations() {
       name: destination.name,
       slug: destination.id,
       region: destination.region,
-      headline: `${destination.name}, designed around your pace.`,
+      headline: `Private travel in ${destination.name}`,
       summary: destination.description,
       kicker: destination.kicker,
       bestFor: destination.bestFor,
@@ -60,8 +60,8 @@ export async function getPublicDestinations() {
       planningNotes: [...editorial.planningNotes],
       featured: Boolean(destination.guideHref),
       sortOrder: 100,
-      seoTitle: `${destination.name} Private Travel Guide | AVIORA`,
-      seoDescription: destination.description,
+      seoTitle: `Private ${destination.name} Tours and Travel Guide`,
+      seoDescription: `${destination.description} Plan the right stay, season and private route with local China specialists.`,
       heroImage: destination.image,
     };
   });
@@ -73,18 +73,17 @@ export async function getPublicDestination(slug: string) {
 
 export async function getPublicDestinationHub() {
   return {
-    heroEyebrow: "Explore China by feeling",
-    heroTitle: "Where in China would you like to begin?",
+    heroEyebrow: "Private China travel guide",
+    heroTitle: "Find the China that stays with you.",
     heroCopy:
-      "Start with what moves you. Discover the landscapes, cities and living cultures that can shape a private journey through China.",
+      "Explore China's defining cities, landscapes and cultures, then see how they fit into a well-planned private route.",
     heroImage: {
       src: "/home/beijing-forbidden-city-1400.webp",
       alt: "Imperial rooftops in Beijing opening a journey across China",
     } satisfies MediaAsset,
     interestEyebrow: "01 · Follow your curiosity",
     interestTitle: "What draws you to China?",
-    interestCopy:
-      "Choose an instinct, not a place name. We will reveal the destinations that express it best.",
+    interestCopy: "Start with an interest. We will show you the places where it comes alive.",
     interests: destinationInterests.map((item) => ({
       ...item,
       image: destinationInterestImages[item.id],
@@ -115,9 +114,9 @@ export async function getPublicHomePage() {
   const featuredJourneys = mergeCoreJourneyFallbacks([]);
   return {
     heroEyebrow: "AVIORA",
-    heroTitle: "China, beautifully within reach.",
+    heroTitle: "Private China, thoughtfully designed.",
     heroCopy:
-      "Private China journeys with the wonder kept in, and the friction quietly designed out.",
+      "Distinctive journeys, carefully chosen hotels and expert local support from first idea to final departure.",
     heroImage,
     heroTrustItems: [
       "Licensed inbound tourism operator",
@@ -138,23 +137,23 @@ export async function getPublicHomePage() {
       },
     })),
     destinationsEyebrow: "Explore China",
-    destinationsTitle: "Begin with a place. Then find your pace.",
+    destinationsTitle: "Begin with the China that interests you.",
     destinationsCopy:
-      "A few strong starting points for the route, the atmosphere, and the way you want to travel.",
+      "Compare places by culture, landscape and the experience they add to a private route.",
     whyEyebrow: "Why AVIORA",
-    whyTitle: "The practical worries are part of the design.",
+    whyTitle: "The difference is in the decisions.",
     whyCopy:
-      "A beautiful China trip is scenery, yes. It is also language, pacing, tickets, meals, transfers, rest, and knowing exactly who is taking care of the details.",
+      "We choose the right hotel location, guide, timing and transport for each route, then stay reachable while you travel.",
     whyStats: [
       { title: "Licensed", description: "Inbound tourism operator" },
-      { title: "Private", description: "Daily rhythm" },
-      { title: "0", description: "Shopping-tour pressure" },
+      { title: "Private", description: "Guide and vehicle" },
+      { title: "None", description: "Forced shopping" },
     ],
     whyPoints: proofPoints,
     planningEyebrow: "How planning works",
-    planningTitle: "Start with your reality, not a fixed package.",
+    planningTitle: "A considered proposal starts with you.",
     planningCopy:
-      "The first conversation gives us enough context to suggest a route direction without asking you to solve the whole trip before we begin.",
+      "Share your dates, travelers and priorities. A specialist will shape the first route, hotel and service direction.",
     planningImage: homeEditorialImages.paintingExperience,
     planningSteps,
     tradeEyebrow: "Travel trade presence",
@@ -167,13 +166,12 @@ export async function getPublicHomePage() {
       homeEditorialImages.tradeMuslimBuyers,
     ],
     journalEyebrow: "Travel journal",
-    journalTitle: "Useful thinking before you choose a route.",
+    journalTitle: "Make informed choices before you book.",
     journalCopy:
-      "Practical planning notes for the questions travelers ask before the journey feels real.",
+      "Clear advice on routes, seasons, hotels, family travel and private touring in China.",
     ctaEyebrow: "Start the conversation",
-    ctaTitle: "Tell us who is traveling. We will suggest the first shape of the journey.",
-    ctaCopy:
-      "Start with dates, travelers, pace, comfort level, and the questions you are not sure how to ask yet.",
+    ctaTitle: "Start with your dates and who is traveling.",
+    ctaCopy: "A China specialist will recommend the right route, hotel level and daily pace.",
     ctaImage: homeEditorialImages.guilinLandscape,
     fallbackExploreChina: exploreChina,
   };

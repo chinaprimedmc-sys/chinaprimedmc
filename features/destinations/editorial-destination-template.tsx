@@ -81,14 +81,15 @@ export function EditorialDestinationTemplate({
             Why this destination
           </p>
           <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
-            A distinct chapter of China.
+            Why {destination.name} belongs in the route.
           </h2>
         </div>
         <div className="grid gap-6 text-base leading-8 text-[#1b1c19]/66 md:text-lg">
           <p>{destination.orientation}</p>
           <p>
-            {destination.summary} It can stand alone as a focused visit or become part of a wider
-            private route, depending on the season, available time and the people traveling.
+            We recommend {destination.recommendedStay.toLowerCase()} here. The right onward
+            connection depends on your season, available time and the contrast you want from the
+            next destination.
           </p>
         </div>
       </section>
@@ -179,11 +180,11 @@ export function EditorialDestinationTemplate({
               Private China planning
             </p>
             <h2 className="mt-5 max-w-3xl font-serif text-4xl md:text-6xl">
-              Place {destination.name} in the right journey.
+              Build {destination.name} into the right private tour.
             </h2>
             <p className="mt-5 max-w-2xl leading-7 text-[#1b1c19]/62">
-              Tell us who is traveling, your dates and preferred pace. We will suggest how this
-              destination can fit naturally into a private China route.
+              Share your dates, travelers and hotel expectations. We will recommend the right stay,
+              onward connection and private service plan.
             </p>
           </div>
           <CtaButton

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { assertPublicRouteSlugs, publicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { EditorialDestinationTemplate } from "@/features/destinations/editorial-destination-template";
 import {
@@ -14,8 +15,15 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 
 type DestinationPageProps = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  return (await getPublicDestinations()).map(({ slug }) => ({ slug }));
+  const destinations = await getPublicDestinations();
+  assertPublicRouteSlugs(
+    "destinations",
+    destinations.map(({ slug }) => slug),
+  );
+  return publicRouteSlugs.destinations.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: DestinationPageProps): Promise<Metadata> {

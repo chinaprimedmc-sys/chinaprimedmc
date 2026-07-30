@@ -53,7 +53,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       <SiteNavigation items={tourNav} cta={{ label: "Customize Journey", href: planningHref }} />
 
       <HeroLargeImage
-        eyebrow={tour.hero.eyebrow ?? "Private journey"}
+        eyebrow={tour.hero.eyebrow ?? "Tailored private tour"}
         title={tour.title}
         subtitle={tour.subtitle}
         image={tour.hero.image}
@@ -67,7 +67,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       <Section id="overview" spacing="compact" className="bg-white">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
-            eyebrow="Journey overview"
+            eyebrow="At a glance"
             title={tour.overview.pitch}
             className="md:grid-cols-1"
             titleClassName="max-w-none lg:w-4/5"
@@ -108,9 +108,9 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       <Section id="highlights" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
-            eyebrow="Journey highlights"
-            title="The moments that make the proposal worth a conversation."
-            description="Highlights are short, visual, and decision-oriented. They help travelers understand the emotional promise before they study each day."
+            eyebrow="Signature experiences"
+            title="What makes this route distinctive."
+            description="The defining places and experiences, selected for their timing, context and fit within the wider route."
           />
           <GridSystem columns={3}>
             {tour.highlights.map((highlight) => (
@@ -130,9 +130,9 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       <Section id="itinerary" spacing="default" className="bg-white">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
-            eyebrow="Interactive itinerary"
-            title="Open each day like a private travel proposal."
-            description="Open a day to see its illustrative rhythm, activities, transfer notes, images, and practical planning details."
+            eyebrow="Day by day"
+            title="A clear view of how each day unfolds."
+            description="Open any day for its activities, transfer plan, hotel notes and the decisions that can be adjusted before booking."
           />
           <ItineraryEngine days={tour.itinerary} />
         </ContentContainer>
@@ -143,8 +143,8 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           <ContentContainer size="xl" className="grid gap-8">
             <SectionHeader
               eyebrow="Accommodation"
-              title="Hotels are part of the rhythm, not an afterthought."
-              description="Accommodation notes explain how room setup, comfort, and location can support the route."
+              title="The right hotel improves the whole route."
+              description="We consider location, room category, breakfast, service and transfer time before recommending a property."
             />
             <GridSystem columns={2}>
               {tour.accommodations.map((hotel) => (
@@ -169,9 +169,9 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       <Section id="included" spacing="default" className="bg-white">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
-            eyebrow="Included and excluded"
-            title="Clear boundaries create trust before the inquiry."
-            description="The final proposal confirms which services are included for your dates, travelers, and selected comfort level."
+            eyebrow="Service details"
+            title="Know what is included before you book."
+            description="Your final proposal confirms every included service, selected hotel, room category and payable extra in writing."
           />
           <div className="grid gap-5 md:grid-cols-2">
             <ListPanel title="Included" items={tour.included} tone="positive" />
@@ -285,8 +285,8 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Optional experiences"
-            title="Upgrade the feeling of the journey without making it busier."
-            description="Optional experiences can be added when they suit your interests, pace, dietary needs, and comfort."
+            title="Add experiences that earn their place."
+            description="We recommend additions only when they suit your interests and improve the day rather than simply filling it."
           />
           <GridSystem columns={3}>
             {tour.optionalExperiences.map((experience) => (
@@ -326,7 +326,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       <Section id="route-map" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
-            eyebrow="Interactive map"
+            eyebrow="Route map"
             title={tour.routeMap.title}
             description={tour.routeMap.description}
           />
@@ -338,8 +338,8 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Gallery"
-            title="The visual texture of the route."
-            description="A visual sequence of the route, from historic spaces to city life."
+            title="See the character of the route."
+            description="A closer look at the places, landscapes and private services included in this journey."
           />
           <GridGallery images={tour.gallery} mode="editorial" />
         </ContentContainer>
@@ -349,8 +349,8 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <ContentContainer size="lg" className="grid gap-8">
           <SectionHeader
             eyebrow="FAQ"
-            title="Questions travelers ask before trusting a private China route."
-            description="Clear answers to the questions travelers ask before choosing a private China route."
+            title="Important details before you decide."
+            description="Clear answers on customization, hotels, walking, meals, private services and booking conditions."
           />
           <TourFaqAccordion tour={tour} />
         </ContentContainer>
@@ -360,9 +360,9 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <Section id="related-tours" spacing="default" className="bg-white">
           <ContentContainer size="xl" className="grid gap-8">
             <SectionHeader
-              eyebrow="Related tours"
-              title="Other routes that may fit your travelers better."
-              description="Browse other route directions by pace, theme, and the places you want to understand."
+              eyebrow="Compare journeys"
+              title="Another route may suit you better."
+              description="Compare destination combinations, duration and travel style before choosing a starting point."
             />
             <GridSystem columns={3}>
               {tour.related.tours.map((related) => (
@@ -388,8 +388,8 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Related destinations"
-            title="Understand the places inside the journey."
-            description="Move from the route overview into destination context before you decide what belongs in the final plan."
+            title="Understand the places on this route."
+            description="Read the practical destination guides for timing, signature experiences and recommended length of stay."
           />
           <GridSystem columns={3}>
             {tour.related.destinations.map((destination) => (
@@ -410,10 +410,10 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <ContentContainer size="xl">
           <CtaCard
             variant="glass"
-            eyebrow="Customize this journey"
-            title="Keep the route. Change the rhythm."
-            description="The best private China trips usually start from a strong route idea, then change around your people, dates, comfort level, and concerns."
-            primary={{ label: "Customize My Journey", href: planningHref }}
+            eyebrow="Your private proposal"
+            title="Make this journey fit your travelers."
+            description="We will confirm the right hotels, room categories, guide service, daily pace and final quotation for your dates."
+            primary={{ label: "Request My Proposal", href: planningHref }}
             secondary={{ label: "Email a Specialist", href: tour.inquiry.emailHref }}
           />
         </ContentContainer>

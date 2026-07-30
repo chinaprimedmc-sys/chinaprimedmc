@@ -125,21 +125,19 @@ export const exploreChina = [
 export const planningSteps = [
   {
     number: "01",
-    title: "Tell us the shape of the trip",
+    title: "Share the essentials",
     description:
-      "Dates, travelers, interests, pace, comfort level, and anything that needs extra care.",
+      "Dates, travelers, priorities, hotel expectations and anything needing extra care.",
   },
   {
     number: "02",
-    title: "Receive a first route direction",
-    description:
-      "We connect the right cities, travel time, daily rhythm, and hotel logic into a clear starting point.",
+    title: "Review a considered direction",
+    description: "We recommend the route, length of stay, hotel level and private service plan.",
   },
   {
     number: "03",
-    title: "Refine it with a specialist",
-    description:
-      "We adjust the details with you until the journey feels personal, practical, and ready to travel.",
+    title: "Confirm every important detail",
+    description: "Hotels, room categories, inclusions and final pricing are confirmed in writing.",
   },
 ];
 
@@ -296,19 +294,17 @@ export const journeys = [
 
 export const proofPoints = [
   {
-    title: "You will not be left figuring China out alone.",
-    description:
-      "Rail timing, payments, tickets, transfers, and guide communication are planned before they become stress.",
+    title: "A guide chosen for judgment, not just language.",
+    description: "Strong English, destination knowledge and the confidence to adjust a day well.",
   },
   {
-    title: "The trip is private, not a shopping tour.",
-    description:
-      "Your guide, vehicle, pace, meals, and daily rhythm are built around your family or group.",
+    title: "Hotels selected beyond the star rating.",
+    description: "We consider location, room category, service, breakfast and route efficiency.",
   },
   {
-    title: "Special needs are planned before arrival.",
+    title: "Local support throughout the journey.",
     description:
-      "Children, older parents, halal-aware meals, lighter walking days, and dietary notes are designed in.",
+      "A China-based team remains reachable for timing, transport and practical changes.",
   },
 ];
 

@@ -139,7 +139,7 @@ export function BaseMediaCard({
             {title}
           </h3>
           {description ? (
-            <p className="mt-2 line-clamp-3 text-sm leading-6 text-white/82">{description}</p>
+            <p className="mt-2 text-sm leading-6 text-white/86">{description}</p>
           ) : null}
         </div>
         {meta?.length ? (

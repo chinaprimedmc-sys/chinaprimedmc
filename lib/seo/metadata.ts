@@ -22,7 +22,9 @@ export function createMetadata({
   type = "website",
 }: CreateMetadataInput = {}): Metadata {
   const url = new URL(path, siteConfig.url).toString();
-  const fullTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+  const includesBrandSuffix = title.toLowerCase().endsWith(`| ${siteConfig.name.toLowerCase()}`);
+  const fullTitle =
+    title === siteConfig.name || includesBrandSuffix ? title : `${title} | ${siteConfig.name}`;
   const openGraphImage =
     image === siteConfig.ogImage
       ? { url: image, width: 1200, height: 630, alt: `${title} — ${siteConfig.name}` }

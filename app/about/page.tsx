@@ -12,7 +12,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = createMetadata({
-  title: "About AVIORA | Licensed China Travel Operator",
+  title: "About AVIORA and Our Licensed China Team",
   description:
     "Meet AVIORA and China Prime DMC: private China journey design backed by a Guangzhou-registered operator licensed for inbound tourism business in China.",
   path: "/about",
@@ -24,25 +24,25 @@ const reasons = [
     number: "01",
     title: "A China-based operating team",
     description:
-      "The people coordinating guides, vehicles, tickets and day-to-day support are working with the realities on the ground in China.",
+      "Our local team coordinates guides, vehicles, tickets and support with current knowledge on the ground.",
   },
   {
     number: "02",
     title: "Private, flexible and no forced shopping",
     description:
-      "Journey time belongs to the traveler. Shopping is included only when requested, never as an obligation hidden inside the itinerary.",
+      "Your time remains yours. Shopping is included only when requested, never hidden inside the itinerary.",
   },
   {
     number: "03",
     title: "Travel designed around real people",
     description:
-      "Families, older parents, Muslim travelers and guests with dietary or mobility needs require different pacing and practical decisions.",
+      "Pacing, meals and access are adapted for families, older parents, Muslim travelers and specific needs.",
   },
   {
     number: "04",
     title: "Human support from inquiry to travel",
     description:
-      "A specialist remains responsible for the journey logic, while the local team coordinates the details that keep the trip moving clearly.",
+      "One specialist guides the proposal while our local team manages delivery and live support.",
   },
 ];
 
@@ -120,12 +120,11 @@ export default function AboutPage() {
               About AVIORA
             </p>
             <h1 className="mt-6 max-w-3xl font-serif text-[clamp(3.6rem,7.5vw,7.6rem)] leading-[.88] text-balance">
-              China, handled with clarity and care.
+              Private China, handled by people who know it.
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-8 text-[#1b1c19]/68 md:text-lg">
-              Private China journeys, no forced shopping, and local operation by a company licensed
-              for inbound tourism business in China. Our travel work began in 2012; the current
-              Guangzhou operating company was registered in 2018.
+              Tailored tours, selected local partners and responsive support from a licensed inbound
+              operator. Our travel work began in 2012; the Guangzhou company was registered in 2018.
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
               {["Private journeys", "No forced shopping", "Licensed China operator"].map((item) => (

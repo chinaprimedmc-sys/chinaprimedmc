@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "AVIORA",
   url: "https://www.chinaprimedmc.com",
   description:
-    "Private China journeys designed by AVIORA and delivered in China by a licensed inbound tourism operator.",
+    "Tailored private China tours with carefully selected hotels, exceptional local guides and licensed on-the-ground support.",
   email: "chinaprimedmc@gmail.com",
   phone: "+44 7985 052302",
   phoneHref: "tel:+447985052302",

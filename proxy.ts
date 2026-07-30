@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { isKnownPublicDetailPath } from "@/config/public-route-slugs";
 import { getAdminSessionCookieName, verifyAdminSession } from "@/lib/admin/session";
 
 const protectedPrefixes = ["/admin", "/api/admin", "/component-showcase", "/component-playground"];
@@ -71,6 +72,19 @@ export async function proxy(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("Content-Security-Policy", csp);
   if (nonce) requestHeaders.set("x-nonce", nonce);
+
+  if (!isKnownPublicDetailPath(pathname)) {
+    const notFoundResponse = NextResponse.rewrite(
+      new URL("/__invalid-public-detail", request.url),
+      {
+        status: 404,
+        request: { headers: requestHeaders },
+      },
+    );
+    notFoundResponse.headers.set("X-Robots-Tag", "noindex, follow");
+    return applySecurityHeaders(notFoundResponse, csp);
+  }
+
   const response = NextResponse.next({ request: { headers: requestHeaders } });
 
   if (isProtectedPath(pathname)) {

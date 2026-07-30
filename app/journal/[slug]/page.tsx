@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { assertPublicRouteSlugs, publicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { getArticleBySlug, getArticleSlugs } from "@/content/journal";
 import type { JournalArticle } from "@/types/journal";
@@ -13,8 +14,12 @@ type ArticlePageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  return getArticleSlugs().map((slug) => ({ slug }));
+  const articleSlugs = getArticleSlugs();
+  assertPublicRouteSlugs("journal", articleSlugs);
+  return publicRouteSlugs.journal.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {

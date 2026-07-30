@@ -1131,7 +1131,7 @@ function ImmersiveJourneyCard({
           <p className="mt-2 text-sm font-semibold text-white/84 md:mt-3 md:text-[#29342d]">
             {item.durationLabel}
           </p>
-          <p className="mt-2 line-clamp-1 text-sm leading-6 text-white/64 md:mt-3 md:line-clamp-2 md:text-black/56">
+          <p className="mt-2 line-clamp-2 text-sm leading-6 text-white/72 md:mt-3 md:text-black/56">
             {item.hook}
           </p>
           <div className="mt-4 hidden flex-wrap gap-2 sm:flex">

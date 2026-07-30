@@ -13,6 +13,7 @@ import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
+import { assertPublicRouteSlugs, publicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { destinations } from "@/content/destinations";
 import { homeNavItems, primaryAction } from "@/content/home/homepage";
@@ -27,8 +28,12 @@ type StylePageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return getTravelStyleSlugs().map((slug) => ({ slug }));
+  const styleSlugs = getTravelStyleSlugs();
+  assertPublicRouteSlugs("styles", styleSlugs);
+  return publicRouteSlugs.styles.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: StylePageProps): Promise<Metadata> {
@@ -100,15 +105,15 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Who this suits"
-            title="The style becomes real in daily planning details."
-            description="The route takes shape through practical decisions about pace, comfort, guiding, and the details your travelers care about."
+            title="See what changes in the actual journey."
+            description="Hotel selection, guide service, private transport and daily timing are adjusted around these priorities."
           />
           <GridSystem columns={3}>
             {style.idealFor.map((item) => (
               <FeatureCard
                 key={item}
                 title={item}
-                description="This preference helps shape the route, daily rhythm, and level of support in the first proposal."
+                description="We address this requirement in the route, hotel and service recommendations."
               />
             ))}
           </GridSystem>

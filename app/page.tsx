@@ -63,9 +63,9 @@ function getFeaturedTitleLength(title: string) {
 }
 
 export const metadata: Metadata = createMetadata({
-  title: "Private China Tours for Families, Couples, and Luxury Travelers",
+  title: "Private China Tours, Tailored by Local Experts",
   description:
-    "Plan a private China journey with aviora: custom routes, private guides, family-friendly pacing, luxury hotels, and stress-free local logistics.",
+    "Plan a private China tour with carefully selected hotels, exceptional local guides, private transfers and licensed local support.",
   image: heroImage.src,
 });
 

@@ -3,19 +3,19 @@ import { siteConfig } from "@/config/site";
 
 export const trustPrinciples = [
   {
-    title: "No shopping-tour pressure",
+    title: "No forced shopping",
     description:
-      "Private journeys should be experience-led. Shopping time is added only when travelers ask for it.",
+      "Your time is reserved for the journey. Shopping appears only when you request it.",
   },
   {
-    title: "Pacing before quantity",
+    title: "Hotels chosen for the route",
     description:
-      "The route is designed around the people traveling, not around proving how many sites can fit into a day.",
+      "Location, room category, breakfast and transfer time matter as much as the star rating.",
   },
   {
-    title: "Local operations, human support",
+    title: "Local support that stays reachable",
     description:
-      "Travelers need help with transfers, tickets, timing, food, weather, and unexpected changes while they are actually on the ground.",
+      "A China-based team coordinates guides, vehicles, tickets and changes while you travel.",
   },
 ];
 

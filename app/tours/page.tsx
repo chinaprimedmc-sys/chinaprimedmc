@@ -12,9 +12,9 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 import { getPublicDestinations, getPublicSiteSettings } from "@/lib/cms/public-content";
 
 export const metadata: Metadata = createMetadata({
-  title: "Private China Tours and Custom Itinerary Ideas",
+  title: "Private China Tour Packages and Tailored Journeys",
   description:
-    "Explore private China journey ideas for first-time visitors, families, couples, and luxury travelers. Every route is shaped around your travelers.",
+    "Compare private China tours with expert guides, carefully selected hotels and flexible daily plans for couples, families and private groups.",
   path: "/tours",
 });
 

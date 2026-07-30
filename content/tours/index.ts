@@ -16,9 +16,9 @@ const firstChinaWhatsApp =
 export const tours: Tour[] = [
   {
     slug: "first-china-beautifully-paced",
-    title: "First China, Beautifully Paced",
+    title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
     subtitle:
-      "A private 9-day China journey through Beijing, Xi'an, and Shanghai for travelers who want the essential chapters without the exhaustion.",
+      "China's essential first route, with expert private guiding, considered hotel choices and comfortable city-to-city travel.",
     duration: "9 Days / 8 Nights",
     route: "Beijing, Xi'an, Shanghai",
     styles: ["First-time China", "Family", "Culture", "Luxury"],
@@ -31,7 +31,7 @@ export const tours: Tour[] = [
     seo: {
       title: "9-Day Private Beijing Xi'an Shanghai Tour",
       description:
-        "Plan a private 9-day Beijing Xi'an Shanghai tour with flexible pacing, private guides, thoughtful transfers, and a route shaped around your travelers.",
+        "A 9-day private Beijing, Xi'an and Shanghai tour with expert guides, selected hotels, private transfers and carefully planned rail travel.",
       keywords: [
         "private Beijing Xi'an Shanghai tour",
         "9 day China itinerary",
@@ -42,7 +42,7 @@ export const tours: Tour[] = [
     },
     overview: {
       pitch:
-        "A clear first-China arc: four days in Beijing, two days in Xi'an, and three days in Shanghai, with the timing and comfort level adjusted around your group.",
+        "Three defining cities, connected with private support and enough time to appreciate each one.",
       facts: [
         {
           label: "Duration",
@@ -514,9 +514,9 @@ export const tours: Tour[] = [
   },
   {
     slug: "chengdu-pandas-sichuan-table",
-    title: "Chengdu, Pandas & Sichuan Table",
+    title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
     subtitle:
-      "A private 5-day Chengdu journey built around pandas, teahouse afternoons, and the layered heat and fragrance of Sichuan cooking.",
+      "Early panda encounters, teahouse culture and Sichuan food, with a private guide and one comfortable Chengdu base.",
     duration: "5 Days / 4 Nights",
     route: "Chengdu and Leshan",
     styles: ["Family", "Food", "Culture", "Senior-friendly"],
@@ -529,7 +529,7 @@ export const tours: Tour[] = [
     seo: {
       title: "5-Day Private Chengdu Panda and Sichuan Food Tour",
       description:
-        "A private 5-day Chengdu itinerary with an early panda visit, teahouse culture, Sichuan food, private car travel, and a flexible Leshan option.",
+        "A 5-day private Chengdu tour with pandas, teahouse culture, Sichuan food, private transport and an optional Leshan day trip.",
       keywords: [
         "private Chengdu panda tour",
         "5 day Chengdu itinerary",
@@ -540,7 +540,7 @@ export const tours: Tour[] = [
     },
     overview: {
       pitch:
-        "A softer western-China chapter: pandas in the morning, tea and neighbourhood life in the afternoon, with the route adjusted around children, older travellers, and appetite.",
+        "See Chengdu at its best hours, then enjoy its food and daily life without changing hotels.",
       facts: [
         { label: "Duration", value: "5 days / 4 nights", helper: "Four nights based in Chengdu." },
         {
@@ -860,9 +860,9 @@ export const tours: Tour[] = [
   },
   {
     slug: "beijing-unhurried-private-5-day-journey",
-    title: "Beijing Unhurried — A Private 5-Day Journey",
+    title: "5-Day Private Beijing Tour",
     subtitle:
-      "A private 5-day Beijing journey for travelers who want the Forbidden City, the Great Wall, hutong life, and quieter cultural moments without rushing between them.",
+      "One well-located hotel, private support and five considered days across imperial Beijing and the Great Wall.",
     duration: "5 Days / 4 Nights",
     route: "Beijing",
     styles: ["Culture", "Luxury", "Senior-friendly", "Muslim-friendly"],
@@ -873,9 +873,9 @@ export const tours: Tour[] = [
       secondary: { label: "Plan My Beijing Journey", href: "#inquiry" },
     },
     seo: {
-      title: "5-Day Private Beijing Tour | Beijing Unhurried",
+      title: "5-Day Private Beijing Tour with Great Wall",
       description:
-        "Experience Beijing at a measured pace on a private 5-day tour with the Forbidden City, Mutianyu Great Wall, hutong life, private transfers, English-speaking support, and flexible dining and prayer planning.",
+        "A 5-day private Beijing tour with the Forbidden City, Mutianyu Great Wall, hutongs, private transfers and Muslim-friendly planning on request.",
       keywords: [
         "5 day private Beijing tour",
         "Beijing private itinerary",
@@ -887,7 +887,7 @@ export const tours: Tour[] = [
     },
     overview: {
       pitch:
-        "A single-city Beijing route with one hotel, private support, no compulsory shopping, and enough breathing room to experience the capital with care. Dietary preferences, prayer timing, walking comfort, and daily pacing can be discussed before confirmation.",
+        "Beijing's essential landmarks, one hotel base and a daily plan adjusted to your interests and walking comfort.",
       facts: [
         {
           label: "Duration",
@@ -1365,9 +1365,9 @@ export const tours: Tour[] = [
   },
   {
     slug: "shanghai-zhangjiajie-floating-peaks",
-    title: "Shanghai Skylines & Zhangjiajie's Floating Peaks",
+    title: "8-Day Shanghai & Zhangjiajie Private Tour",
     subtitle:
-      "A private 8-day journey pairing Shanghai's riverfront energy with Zhangjiajie's extraordinary sandstone peaks, connected at a comfortable pace.",
+      "Shanghai's riverfront and Zhangjiajie's sandstone peaks, connected by private transfers, local guides and a protected final night.",
     duration: "8 Days / 7 Nights",
     route: "Shanghai, Wulingyuan, Zhangjiajie",
     styles: ["Nature", "Luxury", "Family", "Photography"],
@@ -1380,7 +1380,7 @@ export const tours: Tour[] = [
     seo: {
       title: "8-Day Private Shanghai and Zhangjiajie Tour",
       description:
-        "Explore Shanghai and Zhangjiajie on a private 8-day China tour with English-speaking guides, private transfers, domestic flights, park transport, and flexible pacing.",
+        "An 8-day private Shanghai and Zhangjiajie tour with expert guides, private transfers, domestic flights, park transport and selected hotels.",
       keywords: [
         "Shanghai Zhangjiajie private tour",
         "8 day Shanghai Zhangjiajie itinerary",
@@ -1391,7 +1391,7 @@ export const tours: Tour[] = [
     },
     overview: {
       pitch:
-        "Two contrasting sides of China, joined with enough time to enjoy both without turning the journey into a race.",
+        "Contemporary Shanghai and extraordinary mountain scenery, joined by a carefully managed domestic flight plan.",
       facts: [
         {
           label: "Duration",

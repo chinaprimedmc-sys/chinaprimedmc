@@ -24,7 +24,7 @@ export const travelStyles: TravelStyle[] = [
     title: "Family China",
     eyebrow: "Travel style",
     summary:
-      "Private China journeys for families who need wonder, flexibility, and realistic daily pacing.",
+      "Engaging guides, practical hotel choices and flexible days designed around both children and parents.",
     idealFor: [
       "Parents traveling with school-age children or teens",
       "Multi-generational families balancing different energy levels",
@@ -50,7 +50,7 @@ export const travelStyles: TravelStyle[] = [
     title: "Quiet Luxury China",
     eyebrow: "Travel style",
     summary:
-      "Luxury here means better rhythm, better rooms, better guide judgment, and fewer moments of friction.",
+      "Better-located hotels, exceptional guides, private transport and more control over how each day is spent.",
     idealFor: [
       "Couples or families who value calm logistics over public package travel",
       "Travelers who want premium hotels but still want local texture",
@@ -67,7 +67,7 @@ export const travelStyles: TravelStyle[] = [
     seo: {
       title: "Luxury Private China Travel",
       description:
-        "Design a quiet luxury China journey with private guides, better hotels, smooth transfers, and custom routing for international travelers.",
+        "Plan luxury private travel in China with carefully selected hotels, exceptional guides, private transfers and responsive local support.",
       keywords: ["luxury China travel", "private luxury China tour", "China DMC luxury"],
     },
   },
@@ -76,7 +76,7 @@ export const travelStyles: TravelStyle[] = [
     title: "Slow Travel China",
     eyebrow: "Travel style",
     summary:
-      "A slower China journey leaves room for neighborhoods, meals, rest, and unscripted context.",
+      "Fewer hotel changes, considered days and enough local context to understand each place properly.",
     idealFor: [
       "Travelers who dislike checklist pacing",
       "Older guests who want comfort without losing depth",
@@ -106,7 +106,7 @@ export const travelStyles: TravelStyle[] = [
     title: "Photography-Focused China",
     eyebrow: "Travel style",
     summary:
-      "Photography-led trips protect light, timing, viewpoints, and the patience needed for better images.",
+      "Light, viewpoints, crowd patterns and transfer windows planned around the images you want to make.",
     idealFor: [
       "Travelers who care about light and composition",
       "Couples or small groups who want visual variety",
