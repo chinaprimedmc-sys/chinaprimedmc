@@ -50,7 +50,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           href: `/tours/${tour.slug}`,
         }}
       />
-      <SiteNavigation items={tourNav} cta={{ label: "Customize Journey", href: planningHref }} />
+      <SiteNavigation items={tourNav} cta={{ label: "Plan This Tour", href: planningHref }} />
 
       <HeroLargeImage
         eyebrow={tour.hero.eyebrow ?? "Tailored private tour"}
@@ -171,7 +171,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           <SectionHeader
             eyebrow="Service details"
             title="Know what is included before you book."
-            description="Your final proposal confirms every included service, selected hotel, room category and payable extra in writing."
+            description="Your written quotation confirms every included service, selected hotel, room category and payable extra."
           />
           <div className="grid gap-5 md:grid-cols-2">
             <ListPanel title="Included" items={tour.included} tone="positive" />
@@ -410,10 +410,10 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <ContentContainer size="xl">
           <CtaCard
             variant="glass"
-            eyebrow="Your private proposal"
+            eyebrow="Your personal trip plan"
             title="Make this journey fit your travelers."
-            description="We will confirm the right hotels, room categories, guide service, daily pace and final quotation for your dates."
-            primary={{ label: "Request My Proposal", href: planningHref }}
+            description="We will recommend the right hotels, room categories, guide service and daily pace, then send a clear quotation for your dates."
+            primary={{ label: "Request My Trip Plan", href: planningHref }}
             secondary={{ label: "Email a Specialist", href: tour.inquiry.emailHref }}
           />
         </ContentContainer>
@@ -457,7 +457,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         ]}
       />
 
-      <FloatingCta label="Customize Journey" href={planningHref} />
+      <FloatingCta label="Plan This Tour" href={planningHref} />
       <StickyMobileCta
         label="Customize"
         href={planningHref}

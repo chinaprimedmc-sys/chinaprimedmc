@@ -57,7 +57,7 @@ export default function PlanningFaqPage() {
               Planning FAQ
             </p>
             <h1 className="mt-5 text-4xl leading-tight font-semibold tracking-[-0.04em] md:text-6xl">
-              Practical answers before China becomes an itinerary.
+              Practical answers before you book China.
             </h1>
             <p className="text-muted mt-5 max-w-2xl text-base leading-7 md:text-lg">
               Questions are grouped by the concerns travelers usually feel before booking: safety,
@@ -74,8 +74,8 @@ export default function PlanningFaqPage() {
             variant="image"
             image={storyImages.tea}
             eyebrow="Still unsure?"
-            title="A private route should answer your specific constraint."
-            description="Send the question that would make the trip easier to say yes to. We will start there."
+            title="Your most important question deserves a personal answer."
+            description="Tell us what you are unsure about. We will answer it in the context of your dates and travel plans."
             primary={{
               label: "Email a Specialist",
               href: "mailto:chinaprimedmc@gmail.com?subject=Question%20for%20a%20China%20Specialist",

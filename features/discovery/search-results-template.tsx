@@ -39,7 +39,7 @@ export function SearchResultsTemplate({
 
   return (
     <PageContainer>
-      <SiteNavigation items={searchNav} cta={{ label: "Plan My Journey", href: "#my-trip" }} />
+      <SiteNavigation items={searchNav} cta={{ label: "Plan My Trip", href: "#my-trip" }} />
 
       <SearchHero query={query} />
 
@@ -67,8 +67,8 @@ export function SearchResultsTemplate({
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Recommended"
-            title="Useful places to continue."
-            description="A few useful places to continue exploring China travel ideas."
+            title="Continue exploring China."
+            description="Browse destinations, private tours and guides related to your search."
           />
           <div className="grid gap-5 md:grid-cols-2">
             {recommended.map((item) => (
@@ -85,8 +85,8 @@ export function SearchResultsTemplate({
             image={destinationAsset.beijingForbiddenCity}
             eyebrow="Private planning"
             title="Not sure what to search for?"
-            description="Send us a few interests and we will suggest the first China route shape."
-            primary={{ label: "Ask for Route Ideas", href: "mailto:chinaprimedmc@gmail.com" }}
+            description="Share your dates and interests, and a China specialist will suggest a sensible starting route."
+            primary={{ label: "Start Planning", href: "/start-planning" }}
             secondary={{
               label: "Read Planning Guide",
               href: "/journal/how-to-plan-a-first-private-trip-to-china",
@@ -151,7 +151,7 @@ function SearchHero({ query }: { query: string }) {
           <div className="pb-2">
             <Badge>Discovery</Badge>
             <h1 className="mt-5 max-w-4xl text-4xl leading-[0.98] font-semibold tracking-[-0.04em] text-balance sm:text-5xl md:text-7xl">
-              {query ? `Ideas for "${query}"` : "Find the China journey that fits your people."}
+              {query ? `Ideas for "${query}"` : "Find the China trip that fits you."}
             </h1>
             <p className="text-muted mt-6 max-w-2xl text-base leading-7 md:text-lg">
               Search destinations, private journeys, experiences, and travel guides. Save the ideas

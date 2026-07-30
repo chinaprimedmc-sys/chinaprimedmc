@@ -42,8 +42,8 @@ export type JourneyTravelerId =
   | "families"
   | "multigenerational"
   | "older-travelers"
-  | "private-groups"
-  | "travel-advisors";
+  | "solo-travelers"
+  | "private-groups";
 
 export type JourneyPlanningNeedId =
   | "muslim-friendly"
@@ -109,7 +109,7 @@ const firstChina: JourneyCatalogItem = {
     "multigenerational",
     "older-travelers",
     "private-groups",
-    "travel-advisors",
+    "solo-travelers",
   ],
   planningNeedFilters: [
     "muslim-friendly",
@@ -151,7 +151,7 @@ const chengduJourney: JourneyCatalogItem = {
     "multigenerational",
     "older-travelers",
     "private-groups",
-    "travel-advisors",
+    "solo-travelers",
   ],
   planningNeedFilters: [
     "muslim-friendly",
@@ -191,7 +191,7 @@ const shanghaiZhangjiajieJourney: JourneyCatalogItem = {
     "multigenerational",
     "older-travelers",
     "private-groups",
-    "travel-advisors",
+    "solo-travelers",
   ],
   planningNeedFilters: [
     "muslim-friendly",
@@ -232,7 +232,7 @@ const beijingUnhurriedJourney: JourneyCatalogItem = {
     "multigenerational",
     "older-travelers",
     "private-groups",
-    "travel-advisors",
+    "solo-travelers",
   ],
   planningNeedFilters: [
     "muslim-friendly",

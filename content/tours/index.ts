@@ -8,10 +8,10 @@ import {
 import type { Tour } from "@/types/tour";
 
 const firstChinaEmail =
-  "mailto:chinaprimedmc@gmail.com?subject=Customize%20First%20China%20Beautifully%20Paced&body=Hi%20China%20Prime%20DMC%2C%0A%0AI%27d%20like%20to%20customize%20First%20China%2C%20Beautifully%20Paced.%0A%0ATravelers%3A%0ADates%3A%0APreferred%20comfort%20level%3A%0AKey%20concerns%3A%0A";
+  "mailto:chinaprimedmc@gmail.com?subject=9-Day%20Beijing%20Xi%27an%20Shanghai%20Private%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.%0A%0ATravelers%3A%0ADates%3A%0AHotel%20preference%3A%0AQuestions%3A%0A";
 
 const firstChinaWhatsApp =
-  "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20to%20customize%20First%20China%2C%20Beautifully%20Paced.";
+  "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.";
 
 export const tours: Tour[] = [
   {
@@ -23,10 +23,10 @@ export const tours: Tour[] = [
     route: "Beijing, Xi'an, Shanghai",
     styles: ["First-time China", "Family", "Culture", "Luxury"],
     hero: {
-      eyebrow: "Private journey proposal",
+      eyebrow: "Private tour idea",
       image: firstChinaAsset.beijingGreatWallSunriseHero,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
-      secondary: { label: "Customize My Journey", href: "#inquiry" },
+      secondary: { label: "Plan This Tour", href: "#inquiry" },
     },
     seo: {
       title: "9-Day Private Beijing Xi'an Shanghai Tour",
@@ -67,7 +67,7 @@ export const tours: Tour[] = [
         {
           label: "Suitable For",
           value: "Couples, families, seniors",
-          helper: "Private logistics reduce unnecessary friction.",
+          helper: "Private transfers make arrivals and sightseeing days easier.",
         },
         {
           label: "Price Guide",
@@ -105,11 +105,11 @@ export const tours: Tour[] = [
         title: "Arrive in Beijing",
         destination: "Beijing",
         summary:
-          "Illustrative — shaped around you. A private arrival, a calm hotel check-in, and a first evening that respects your flight time and energy.",
+          "Meet your driver for a private transfer, settle into the hotel and keep the first evening light after your flight.",
         image: firstChinaAsset.beijingTempleOfHeavenCorridor,
         hotel: "Beijing stay: Comfortable, Luxury, or Ultra-bespoke tier selected after inquiry",
-        meals: ["As arranged in the final proposal"],
-        transport: "Private airport transfer, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Private airport transfer, as confirmed in writing",
         activities: [
           {
             title: "Arrival support",
@@ -123,7 +123,7 @@ export const tours: Tour[] = [
           },
         ],
         guideNote:
-          "The first day is intentionally light. Exact meeting arrangements, meals, and hotel selection are confirmed in the personalized proposal.",
+          "The first day is intentionally light. Your meeting arrangements, meals and hotel are confirmed in writing before you book.",
         coordinates: { latitude: 39.9042, longitude: 116.4074 },
       },
       {
@@ -131,11 +131,11 @@ export const tours: Tour[] = [
         title: "Imperial Beijing",
         destination: "Beijing",
         summary:
-          "Illustrative — shaped around you. Put the Forbidden City at the center of the day, then add a quieter cultural layer if the group has the energy for it.",
+          "Give the Forbidden City the time it deserves, then add a quieter cultural visit if the group still has energy.",
         image: firstChinaAsset.beijingForbiddenCityLion,
         hotel: "Beijing stay: selected comfort tier",
-        meals: ["As arranged in the final proposal"],
-        transport: "Private vehicle and guide support, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Private vehicle and guide, as confirmed in writing",
         activities: [
           {
             time: "Morning",
@@ -159,11 +159,11 @@ export const tours: Tour[] = [
         title: "Temple life and Beijing texture",
         destination: "Beijing",
         summary:
-          "Illustrative — shaped around you. A slower day for the Temple of Heaven, architectural detail, and the everyday side of the capital.",
+          "Explore the Temple of Heaven, architectural detail and the everyday side of Beijing at a measured pace.",
         image: firstChinaAsset.beijingTempleOfHeavenReflection,
         hotel: "Beijing stay: selected comfort tier",
-        meals: ["As arranged in the final proposal"],
-        transport: "Private vehicle and guide support, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Private vehicle and guide, as confirmed in writing",
         activities: [
           {
             time: "Morning",
@@ -187,11 +187,11 @@ export const tours: Tour[] = [
         title: "The Great Wall, at your pace",
         destination: "Beijing",
         summary:
-          "Illustrative — shaped around you. Give the Great Wall a full day, with the section, start time, and walking expectations chosen around the group.",
+          "Give the Great Wall a full day, choosing the section, start time and walking level around your group.",
         image: firstChinaAsset.beijingGreatWallSolo,
         hotel: "Beijing stay: selected comfort tier",
-        meals: ["As arranged in the final proposal"],
-        transport: "Private vehicle and guide support, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Private vehicle and guide, as confirmed in writing",
         activities: [
           {
             title: "A dedicated Wall day",
@@ -213,11 +213,11 @@ export const tours: Tour[] = [
         title: "High-speed rail to Xi'an",
         destination: "Xi'an",
         summary:
-          "Illustrative — shaped around you. Travel from Beijing to Xi'an with station and luggage support, then settle into a first look at the city.",
+          "Travel from Beijing to Xi'an with station and luggage support, then settle in with a first look at the city.",
         image: firstChinaAsset.xianTerracottaPit,
         hotel: "Xi'an stay: Comfortable, Luxury, or Ultra-bespoke tier selected after inquiry",
-        meals: ["As arranged in the final proposal"],
-        transport: "High-speed rail and private transfers, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "High-speed rail and private transfers, as confirmed in writing",
         activities: [
           {
             title: "Rail transition",
@@ -239,11 +239,11 @@ export const tours: Tour[] = [
         title: "The Terracotta Army and Xi'an",
         destination: "Xi'an",
         summary:
-          "Illustrative — shaped around you. Spend the day with the Terracotta Army, then leave space for Xi'an food culture or a gentler city finish.",
+          "Spend the day with the Terracotta Army, then leave space for Xi'an food culture or a quieter evening.",
         image: firstChinaAsset.xianTerracottaPortrait,
         hotel: "Xi'an stay: selected comfort tier",
-        meals: ["As arranged in the final proposal"],
-        transport: "Private vehicle and guide support, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Private vehicle and guide, as confirmed in writing",
         activities: [
           {
             title: "Terracotta Army",
@@ -257,7 +257,7 @@ export const tours: Tour[] = [
           },
         ],
         guideNote:
-          "Any food, prayer, dietary, or walking requirements should be shared before the proposal is finalized.",
+          "Share any dietary, prayer or walking requirements before the services are confirmed.",
         coordinates: { latitude: 34.384, longitude: 109.278 },
       },
       {
@@ -265,11 +265,11 @@ export const tours: Tour[] = [
         title: "Arrive in Shanghai",
         destination: "Shanghai",
         summary:
-          "Illustrative — shaped around you. Transition east, then let Shanghai make its first impression through the riverfront and skyline.",
+          "Travel east and let Shanghai make its first impression through the riverfront and skyline.",
         image: firstChinaAsset.shanghaiHuangpuSunset,
         hotel: "Shanghai stay: Comfortable, Luxury, or Ultra-bespoke tier selected after inquiry",
-        meals: ["As arranged in the final proposal"],
-        transport: "Selected domestic transport and private transfers, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Selected domestic transport and private transfers, as confirmed in writing",
         activities: [
           {
             title: "A gentle Shanghai arrival",
@@ -291,11 +291,11 @@ export const tours: Tour[] = [
         title: "Old and new Shanghai",
         destination: "Shanghai",
         summary:
-          "Illustrative — shaped around you. Move between architecture, neighborhood life, food, and modern city views without making shopping the point.",
+          "Move between architecture, neighborhood life, food and modern city views, with no compulsory shopping stops.",
         image: firstChinaAsset.shanghaiBicycleRide,
         hotel: "Shanghai stay: selected comfort tier",
-        meals: ["As arranged in the final proposal"],
-        transport: "Private vehicle, guide support, and short walks, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Private vehicle, guide and short walks, as confirmed in writing",
         activities: [
           {
             title: "Neighborhood perspective",
@@ -317,10 +317,10 @@ export const tours: Tour[] = [
         title: "A measured Shanghai farewell",
         destination: "Shanghai",
         summary:
-          "Illustrative — shaped around you. Keep the final morning flexible, then arrange departure support around your confirmed flight time.",
+          "Keep the final morning flexible, then transfer to the airport around your confirmed flight time.",
         image: firstChinaAsset.shanghaiBundNight,
-        meals: ["As arranged in the final proposal"],
-        transport: "Private airport transfer, subject to final proposal",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Private airport transfer, as confirmed in writing",
         activities: [
           {
             title: "A final choice",
@@ -369,15 +369,15 @@ export const tours: Tour[] = [
     ],
     included: [
       "Private itinerary planning around your dates and travelers",
-      "English-speaking guide support in each destination, subject to final proposal",
+      "English-speaking private guide in each destination, as confirmed in writing",
       "Private airport, rail, and city transfers where included in the confirmed plan",
-      "Sightseeing and reservation coordination agreed in the final proposal",
-      "Operational support while traveling, as outlined before confirmation",
+      "Sightseeing and reservations listed in your written quotation",
+      "Local support while traveling, as explained before booking",
     ],
     excluded: [
       "International flights",
       "China visa fees or documentation costs when applicable",
-      "Hotel, guide, transport, and meal upgrades outside the selected proposal",
+      "Hotel, guide, transport and meal upgrades not listed in your quotation",
       "Personal expenses and optional activities",
       "Travel insurance",
     ],
@@ -412,7 +412,7 @@ export const tours: Tour[] = [
         {
           label: "Airport",
           value: "Private arrival and departure support",
-          helper: "Included only as defined in the final proposal.",
+          helper: "Included only when listed in your written quotation.",
         },
         {
           label: "Rail",
@@ -509,7 +509,7 @@ export const tours: Tour[] = [
       whatsappHref: firstChinaWhatsApp,
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
-        "I am interested in First China, Beautifully Paced. Please suggest the best route, hotel tier, and pacing for my travelers.",
+        "I am interested in the 9-Day Beijing, Xi'an & Shanghai Private Tour. Please recommend the right hotels and daily pace for my group.",
     },
   },
   {
@@ -524,7 +524,7 @@ export const tours: Tour[] = [
       eyebrow: "Private Chengdu journey",
       image: chengduAsset.heroPanda,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
-      secondary: { label: "Customize My Journey", href: "#inquiry" },
+      secondary: { label: "Plan This Tour", href: "#inquiry" },
     },
     seo: {
       title: "5-Day Private Chengdu Panda and Sichuan Food Tour",
@@ -602,7 +602,7 @@ export const tours: Tour[] = [
           "Your private driver meets you at the airport or station and settles you into the city without adding a sightseeing obligation.",
         image: chengduAsset.heroCity,
         hotel: "Chengdu stay: selected comfort tier",
-        meals: ["As arranged in the final proposal"],
+        meals: ["As confirmed in your written quotation"],
         transport: "Private airport or station transfer",
         activities: [
           {
@@ -730,15 +730,15 @@ export const tours: Tour[] = [
     ],
     included: [
       "Private itinerary planning around your dates and travelers",
-      "Private car and driver on route days where included in the final proposal",
+      "Private car and driver on the days listed in your written quotation",
       "English-speaking, personally vetted guide support",
-      "Sightseeing and reservation coordination agreed in the final proposal",
-      "Operational WhatsApp support while traveling",
+      "Sightseeing and reservations listed in your written quotation",
+      "WhatsApp support while traveling",
     ],
     excluded: [
       "International flights",
       "China visa fees or documentation costs when applicable",
-      "Hotel, guide, transport, and meal upgrades outside the selected proposal",
+      "Hotel, guide, transport and meal upgrades not listed in your quotation",
       "Personal expenses and travel insurance",
     ],
     optionalExperiences: [
@@ -772,7 +772,7 @@ export const tours: Tour[] = [
         {
           label: "Airport",
           value: "Private arrival and departure support",
-          helper: "Included as defined in the final proposal.",
+          helper: "Included when listed in your written quotation.",
         },
         {
           label: "City transfer",
@@ -852,7 +852,7 @@ export const tours: Tour[] = [
       emailHref:
         "mailto:chinaprimedmc@gmail.com?subject=Customize%20Chengdu%2C%20Pandas%20%26%20Sichuan%20Table",
       whatsappHref:
-        "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20to%20customize%20the%20Chengdu%20panda%20and%20Sichuan%20journey.",
+        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%205-day%20Chengdu%20panda%20and%20Sichuan%20food%20private%20tour.",
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
         "I am interested in Chengdu, Pandas & Sichuan Table. Please suggest the best pacing for my travelers.",
@@ -955,7 +955,7 @@ export const tours: Tour[] = [
             "Starts, rest periods, room arrangements and route intensity are reviewed around your group.",
         },
       ],
-      note: "Specific restaurant certification, mosque access, prayer space and opening hours are confirmed for your dates before booking. Meal costs are paid directly unless your final proposal states otherwise.",
+      note: "Specific restaurant certification, mosque access, prayer space and opening hours are checked for your dates before booking. Meal costs are paid directly unless your written quotation includes them.",
     },
     highlights: [
       {
@@ -1131,7 +1131,7 @@ export const tours: Tour[] = [
       },
     ],
     included: [
-      "Four nights at the Beijing hotel confirmed in the final proposal",
+      "Four nights at the Beijing hotel confirmed in your written quotation",
       "Hotel breakfast on Days 2-5",
       "Private airport or railway-station arrival and departure transfers",
       "Air-conditioned private touring vehicle",
@@ -1143,7 +1143,7 @@ export const tours: Tour[] = [
     ],
     excluded: [
       "International flights, visa, travel insurance and personal expenses",
-      "Lunches and dinners unless specifically included in the final proposal",
+      "Lunches and dinners unless specifically included in your written quotation",
       "Specific restaurant meal costs unless stated in the final confirmation",
       "Room upgrades, single supplements, early check-in and late check-out",
       "Optional cultural workshops, boat rides or cable-car upgrades unless confirmed",
@@ -1313,7 +1313,7 @@ export const tours: Tour[] = [
       {
         question: "Is this a fixed package or can it be adjusted?",
         answer:
-          "It is a complete five-day route framework. Hotel tier, start times, walking load, meals, cultural workshop, cable-car option and the final price are confirmed around your travelers and dates.",
+          "It is a complete five-day tour that can be adjusted. Hotel level, start times, walking load, meals, cultural workshop, cable-car option and final price are confirmed for your group and dates.",
       },
       {
         question: "How is the journey Muslim-friendly?",
@@ -1323,7 +1323,7 @@ export const tours: Tour[] = [
       {
         question: "Can you guarantee certified halal restaurants?",
         answer:
-          "We do not make a blanket guarantee before checking the actual route and dates. Tell us whether certification is essential, and the final proposal will state the dining basis and any confirmed restaurant information clearly.",
+          "We check the actual route and dates before making any commitment. Tell us whether certification is essential; your written confirmation will state the dining basis and any verified restaurant information.",
       },
       {
         question: "Is the Great Wall suitable for older travelers?",
@@ -1333,12 +1333,12 @@ export const tours: Tour[] = [
       {
         question: "Are lunch and dinner included?",
         answer:
-          "They are not included unless the final proposal states otherwise. Your guide may recommend and reserve suitable places after your dietary requirements are checked; meal costs are paid directly unless included in the final confirmation.",
+          "They are not included unless your written quotation says otherwise. Your guide may recommend and reserve suitable places after your dietary requirements are checked; meal costs are paid directly unless included in the booking confirmation.",
       },
       {
         question: "Are there compulsory shopping stops?",
         answer:
-          "No. Restaurants and shopping venues are not selected to generate commission, and there are no compulsory shopping stops in this route framework.",
+          "No. Restaurants and shopping venues are not selected to generate commission, and this tour has no compulsory shopping stops.",
       },
     ],
     related: {
@@ -1357,7 +1357,7 @@ export const tours: Tour[] = [
       emailHref:
         "mailto:chinaprimedmc@gmail.com?subject=Beijing%20Unhurried%20Private%205-Day%20Journey%20Quotation",
       whatsappHref:
-        "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20a%20quotation%20for%20Beijing%20Unhurried%20%E2%80%94%20A%20Private%205-Day%20Journey.%0A%0AMuslim-friendly%20planning%20needs%3A%20",
+        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20quotation%20for%20the%205-day%20private%20Beijing%20tour.%0A%0AMuslim-friendly%20planning%20needs%3A%20",
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
         "I am interested in Beijing Unhurried — A Private 5-Day Journey. Please help me plan my dining preferences, prayer timing and the right pace for my travelers.",
@@ -1638,7 +1638,7 @@ export const tours: Tour[] = [
         title: "Return to Shanghai",
         destination: "Zhangjiajie to Shanghai",
         summary:
-          "Return one day before the international departure, creating a useful operational buffer and a calm final evening.",
+          "Return one day before the international departure, allowing more protection against disruption and a calm final evening.",
         image: shanghaiZhangjiajieAsset.shanghaiNight,
         hotel: "Shanghai hotel selected around the final departure plan",
         meals: ["Breakfast"],
@@ -1717,7 +1717,7 @@ export const tours: Tour[] = [
       },
     ],
     included: [
-      "Seven nights at the hotels confirmed in the final proposal",
+      "Seven nights at the hotels confirmed in your written quotation",
       "Hotel breakfast on Days 2-8",
       "Private airport transfers in Shanghai and Zhangjiajie",
       "Air-conditioned private touring vehicle outside restricted scenic areas",
@@ -1835,7 +1835,7 @@ export const tours: Tour[] = [
       {
         question: "Is this a fixed package?",
         answer:
-          "It is a complete eight-day route framework. Hotels, room types, flight sectors, vehicle size, tickets, and the final price are confirmed in writing around your dates and travelers.",
+          "It is a complete eight-day tour that can be adjusted. Hotels, room types, flights, vehicle size, tickets and final price are confirmed in writing for your dates and group.",
       },
       {
         question: "Are the Glass Bridge and glass walkways compulsory?",
@@ -1880,7 +1880,7 @@ export const tours: Tour[] = [
       emailHref:
         "mailto:chinaprimedmc@gmail.com?subject=Shanghai%20Skylines%20%26%20Zhangjiajie%27s%20Floating%20Peaks%20Quotation",
       whatsappHref:
-        "https://wa.me/447985052302?text=Hi%20China%20Prime%20DMC%2C%20I%27d%20like%20a%20quotation%20for%20Shanghai%20Skylines%20%26%20Zhangjiajie%27s%20Floating%20Peaks.",
+        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20quotation%20for%20the%208-day%20Shanghai%20and%20Zhangjiajie%20private%20tour.",
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
         "I am interested in Shanghai Skylines & Zhangjiajie's Floating Peaks. Please prepare a quotation for my party.",

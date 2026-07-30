@@ -54,7 +54,7 @@ export const travelStyles: TravelStyle[] = [
     idealFor: [
       "Couples or families who value calm logistics over public package travel",
       "Travelers who want premium hotels but still want local texture",
-      "Advisors seeking a polished DMC ground partner",
+      "Travelers who want each important service confirmed clearly before booking",
     ],
     designNotes: [
       "Hotel tier and room category are matched to the route rhythm",
@@ -68,7 +68,7 @@ export const travelStyles: TravelStyle[] = [
       title: "Luxury Private China Travel",
       description:
         "Plan luxury private travel in China with carefully selected hotels, exceptional guides, private transfers and responsive local support.",
-      keywords: ["luxury China travel", "private luxury China tour", "China DMC luxury"],
+      keywords: ["luxury China travel", "private luxury China tour", "tailored China tour"],
     },
   },
   {

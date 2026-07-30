@@ -41,7 +41,7 @@ export const journalArticles: JournalArticle[] = [
   {
     slug: "how-to-plan-a-first-private-trip-to-china",
     title: "How to Plan a First Private Trip to China Without Feeling Overwhelmed",
-    dek: "The practical questions behind a beautiful China journey: pace, trains, food, guides, children, older parents, and what to leave out.",
+    dek: "How to choose the right route, pace, guides and transport for a first private trip to China.",
     excerpt:
       "A calmer planning guide for first-time travelers who want the icons, but not the exhaustion.",
     category: "Travel Guides",
@@ -56,8 +56,8 @@ export const journalArticles: JournalArticle[] = [
       "train-travel",
     ],
     author: {
-      name: "China Prime DMC Editorial Team",
-      role: "Private China travel planners",
+      name: "AVIORA Travel Team",
+      role: "China travel specialists",
     },
     publishedAt: "2026-06-29",
     readingTime: "7 min read",
@@ -81,7 +81,7 @@ export const journalArticles: JournalArticle[] = [
       },
       {
         type: "paragraph",
-        body: "Most first China itineraries become stressful for one simple reason: they try to prove too much. A better private route begins with the people traveling. Children need shorter museum blocks. Older parents need vehicle support and realistic walking days. Couples may want stronger hotels and quieter evenings. Once the rhythm is honest, the route becomes easier to trust.",
+        body: "First trips to China often become tiring because they try to include too much. Start with the people traveling. Children may need shorter museum visits, older parents may value more vehicle support, and couples may prefer stronger hotels and quieter evenings. Once the daily pace feels honest, choosing the route becomes easier.",
       },
       {
         type: "paragraph",
@@ -99,13 +99,13 @@ export const journalArticles: JournalArticle[] = [
       },
       {
         type: "paragraph",
-        body: "The Forbidden City, Great Wall, Terracotta Army, pandas, and Shanghai skyline are famous for a reason. The question is not whether to see them. The question is how. Private timing, fewer daily stops, and guides who can adjust the story to your travelers make the difference between a list and a memory.",
+        body: "The Forbidden City, Great Wall, Terracotta Army, pandas and Shanghai skyline are famous for good reason. What matters is how you see them. Better timing, fewer stops and guides who adapt the day to your interests can turn a checklist into a memorable experience.",
       },
       {
         type: "quote",
         quote:
-          "A luxury China trip is not about doing more. It is about removing the friction that stops travelers from feeling present.",
-        attribution: "China Prime DMC planning note",
+          "Better travel is not about doing more. It is about having the time and support to be present where you are.",
+        attribution: "AVIORA travel note",
       },
       {
         type: "heading",
@@ -114,7 +114,7 @@ export const journalArticles: JournalArticle[] = [
       },
       {
         type: "paragraph",
-        body: "China is easier to travel than many first-time visitors expect, but it still rewards planning. High-speed rail stations are large. Tickets and timed entries matter. Payment, messaging, meal timing, and traffic can feel unfamiliar. A good private itinerary handles these details before arrival so the traveler can focus on the place.",
+        body: "China is easier to travel than many first-time visitors expect, but advance planning still matters. Rail stations are large, major sights use timed tickets, and payments or messaging may feel unfamiliar. Arrange these details before arrival so your attention can stay on the place rather than the process.",
       },
       {
         type: "cta",
@@ -122,7 +122,7 @@ export const journalArticles: JournalArticle[] = [
         title: "Want a first China route shaped around your travelers?",
         description:
           "Tell us who is traveling, what pace feels right, and what worries you. We will suggest the first route shape.",
-        primary: { label: "Get My First Route Idea", href: inquiryHref },
+        primary: { label: "Plan My Trip", href: inquiryHref },
         secondary: {
           label: "View the 9-day sample route",
           href: "/tours/first-china-beautifully-paced",
@@ -136,13 +136,13 @@ export const journalArticles: JournalArticle[] = [
       },
       {
         type: "paragraph",
-        body: "The most confident itineraries leave room. They do not force every major site into every day. They protect sleep after long flights. They allow a final flexible day. They build in choices for food, photography, children, shopping, or rest. This is where private travel earns its value.",
+        body: "A confident itinerary leaves room. It protects rest after long flights, avoids forcing major sights into every day and keeps choices open for food, photography, children or downtime. That flexibility is one of the clearest benefits of traveling privately.",
       },
       {
         type: "faq",
         question: "How many days should a first China trip be?",
         answer:
-          "For this sample route, nine days gives travelers four days in Beijing, two in Xi'an, and three in Shanghai. The schedule remains illustrative and can be softened or extended around your dates and needs.",
+          "For this route, nine days allows four days in Beijing, two in Xi'an and three in Shanghai. It can be slowed down or extended around your dates and needs.",
       },
       {
         type: "faq",
@@ -180,8 +180,8 @@ export const journalArticles: JournalArticle[] = [
     category: "Family Travel",
     tags: ["chengdu", "family-travel", "pandas", "food", "first-time-china"],
     author: {
-      name: "China Prime DMC Editorial Team",
-      role: "Family travel planners",
+      name: "AVIORA Travel Team",
+      role: "Family travel specialists",
     },
     publishedAt: "2026-06-29",
     readingTime: "5 min read",
@@ -223,8 +223,8 @@ export const journalArticles: JournalArticle[] = [
     category: "Travel Guides",
     tags: ["spring", "autumn", "first-time-china", "beijing", "shanghai"],
     author: {
-      name: "China Prime DMC Editorial Team",
-      role: "Seasonal route planners",
+      name: "AVIORA Travel Team",
+      role: "China travel specialists",
     },
     publishedAt: "2026-06-29",
     readingTime: "4 min read",
@@ -247,7 +247,7 @@ export const journalArticles: JournalArticle[] = [
     seo: {
       title: "Best Time to Visit China for a First Private Trip",
       description:
-        "Compare spring, summer, autumn, and winter for a first private China journey, with notes for families and luxury travelers.",
+        "Compare spring, summer, autumn and winter for a first private China trip, with practical notes on weather, crowds and family comfort.",
       keywords: ["best time to visit China", "China travel seasons", "China autumn travel"],
       ogImage: destinationAsset.shanghaiSkyline,
     },

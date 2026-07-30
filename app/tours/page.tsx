@@ -34,7 +34,7 @@ export default async function ToursPage() {
           "@type": "CollectionPage",
           name: "Private China Tours",
           description:
-            "Private China journey ideas for international travelers, families, seniors, and travel advisors.",
+            "Private China tour ideas for couples, families, solo travelers, older guests and small groups.",
           url: new URL("/tours", siteConfig.url).toString(),
           hasPart: catalog.map((tour) => ({
             "@type": "TouristTrip",

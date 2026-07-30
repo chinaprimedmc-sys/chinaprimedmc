@@ -13,7 +13,7 @@ export function MyTripPanel() {
   const clearTrip = useAppStore((state) => state.clearTrip);
 
   const mailBody = encodeURIComponent(
-    `Hi China Prime DMC,\n\nI'd like help customizing a China journey based on these saved ideas:\n\n${tripItems
+    `Hello AVIORA,\n\nI'd like help planning a private China trip based on these saved ideas:\n\n${tripItems
       .map((item) => `- ${item.title} (${item.type})`)
       .join("\n")}\n\nTravelers:\nDates:\nComfort level:\nKey concerns:\n`,
   );
@@ -62,8 +62,8 @@ export function MyTripPanel() {
           ))
         ) : (
           <p className="text-muted rounded-[1.15rem] bg-white p-4 text-sm leading-6">
-            Save destinations, journeys, articles, or experiences. They will appear here as a first
-            draft of your private China journey.
+            Save destinations, journeys, articles or experiences here. We can use your choices as a
+            starting point for a personal China trip.
           </p>
         )}
       </div>

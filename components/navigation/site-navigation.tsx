@@ -203,7 +203,7 @@ function MobileNavigation({
               <span>Chat on WhatsApp</span>
             </CtaButton>
             <p className="px-1 pt-1 text-center text-xs leading-5 text-neutral-500">
-              AVIORA — private China journeys by China Prime DMC.
+              AVIORA — tailored private travel across China.
             </p>
           </div>
         </Dialog.Content>

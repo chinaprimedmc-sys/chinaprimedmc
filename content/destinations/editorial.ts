@@ -292,13 +292,13 @@ export function getDestinationEditorial(destination: ExplorerDestination): Desti
     editorial[destination.id] ?? {
       bestTime:
         "Spring and autumn are often comfortable, but the right season depends on the wider route.",
-      orientation: `${destination.name} works best when its time, transfers and daily pace are considered as part of the full journey.`,
+      orientation: `${destination.name} works best when its stay, transfers and daily pace are planned as part of the full route.`,
       experiences: destination.interests
         .slice(0, 3)
         .map((interest) => interestExperiences[interest]) as [string, string, string],
       planningNotes: [
         "Allow enough time to experience the destination without rushing",
-        "Match walking and transfer expectations to the travelers",
+        "Match walking and transfer expectations to your group",
         "Confirm seasonal conditions before fixing the final route",
       ],
     }

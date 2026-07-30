@@ -49,7 +49,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
       />
       <SiteNavigation
         items={articleNavItems}
-        cta={{ label: "Plan My Journey", href: "mailto:chinaprimedmc@gmail.com" }}
+        cta={{ label: "Plan My Trip", href: "/start-planning" }}
       />
 
       <HeroLargeImage
@@ -101,8 +101,8 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
               <div className="sticky top-28 grid gap-3">
                 <Badge>{article.category}</Badge>
                 <p className="text-muted text-sm leading-6">
-                  This article is connected to destinations, private journeys, and experiences
-                  through related destinations, journeys, and practical planning notes.
+                  This guide connects the places, experiences and practical choices that can shape
+                  your own China trip.
                 </p>
                 <div className="flex gap-2">
                   <span className="border-border grid size-10 place-items-center rounded-full border">
@@ -124,7 +124,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <SectionHeader
               eyebrow="Image gallery"
               title="A visual pause inside the guide."
-              description="Article galleries use the shared lightbox component and optimized images."
+              description="A closer look at the places and experiences discussed in this guide."
             />
             <LightboxGallery images={article.gallery} />
           </ContentContainer>
@@ -137,7 +137,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <SectionHeader
               eyebrow="Related destination"
               title="Understand the place behind the story."
-              description="Destination relationships can be manual or inferred from tags."
+              description="Explore the destinations behind the story and see how long they may deserve."
             />
             <GridSystem columns={3}>
               {relationships.destinations.map((destination) => (
@@ -161,7 +161,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <SectionHeader
               eyebrow="Related private journeys"
               title="Turn the idea into a route."
-              description="A considered selection of private journey ideas related to this story."
+              description="Start with a route that includes this idea, then adjust it around your dates and interests."
             />
             <GridSystem columns={3}>
               {relationships.tours.map((tour) => (
@@ -189,7 +189,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <SectionHeader
               eyebrow="Related experiences"
               title="What this article naturally leads to."
-              description="Experience relationships connect editorial inspiration with specific private travel moments."
+              description="See how this idea can become a real moment in a private China trip."
             />
             <GridSystem columns={3}>
               {relationships.experiences.map((experience) => (
@@ -213,7 +213,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <SectionHeader
               eyebrow="Keep reading"
               title="Related planning notes."
-              description="Article-to-article links create topical clusters for readers and search engines."
+              description="Keep reading for practical answers that may help you choose your route."
             />
             <GridSystem columns={3}>
               {relationships.articles.map((related) => (
@@ -237,7 +237,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <SectionHeader
               eyebrow="FAQ"
               title="Questions this guide helps answer."
-              description="Practical questions answered in this guide."
+              description="The questions travelers most often ask before making this part of the trip."
             />
             <div className="grid gap-3">
               {faqs.map((faq) =>
@@ -262,11 +262,11 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             variant="image"
             image={article.hero.image}
             eyebrow="Plan around this idea"
-            title="Let us turn the guide into a private China route."
-            description="Share who is traveling, your dates, and what you want to avoid. We will suggest the first route shape."
+            title="Turn this idea into your China trip."
+            description="Share who is traveling, your dates and what matters most. We will suggest a sensible starting route."
             primary={{
-              label: "Talk to a China Specialist",
-              href: "mailto:chinaprimedmc@gmail.com",
+              label: "Start Planning",
+              href: "/start-planning",
             }}
             secondary={{
               label: "View Sample Journey",

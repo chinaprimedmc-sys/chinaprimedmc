@@ -274,9 +274,9 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
               onChange={(event) => update("duration", event.target.value)}
             />
             <TextAreaField
-              label="Destinations or practical constraints"
-              helper="Cities you already know, entry route, walking concerns, hotel expectations, or dates that cannot move."
-              placeholder="Tell us anything that would shape the route."
+              label="Places and priorities"
+              helper="Share any cities, walking concerns, hotel expectations or fixed dates we should know about."
+              placeholder="What would make this trip work well for you?"
               value={state.notes}
               onChange={(event) => update("notes", event.target.value)}
               className="md:col-span-2"
@@ -400,7 +400,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
             {step === steps.length - 1
               ? submitting
                 ? "Submitting..."
-                : "Submit Inquiry"
+                : "Send My Trip Details"
               : "Continue"}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>

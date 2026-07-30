@@ -68,8 +68,8 @@ export default function StylesPage() {
               The same China route should feel different for different travelers.
             </h1>
             <p className="text-muted mt-5 max-w-2xl text-base leading-7 md:text-lg">
-              These style pages explain how we adjust pacing, hotel logic, guide style, and daily
-              rhythm before we build a proposal.
+              See how hotel choice, guide service, transport and daily pace can change the same
+              route for different people.
             </p>
           </div>
           <GridSystem columns={2} gap="lg">
@@ -93,8 +93,8 @@ export default function StylesPage() {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Design principles"
-            title="Travel style is an operations decision, not a label."
-            description="A family route, a luxury route, and a slow route may use the same cities but require different timing, hotels, and guide notes."
+            title="Your travel style should change the actual trip."
+            description="The same cities can feel completely different depending on timing, hotel choice, guide service and how much you do each day."
           />
           <GridSystem columns={3}>
             <FeatureCard
@@ -106,8 +106,8 @@ export default function StylesPage() {
               description="Hotel location, room setup, breakfast reliability, vehicle flow, and guide judgment change the feeling of the trip."
             />
             <FeatureCard
-              title="Internal links"
-              description="Each style connects to example tours and destinations, keeping the site structure useful for users and search engines."
+              title="Personal priorities"
+              description="Meals, photography, family needs and mobility requirements are discussed before anything is confirmed."
             />
           </GridSystem>
         </ContentContainer>
@@ -118,7 +118,7 @@ export default function StylesPage() {
           <SectionHeader
             eyebrow="Route examples"
             title="Start with a route idea, then adjust the style."
-            description="The same route can become more family-aware, slower, more premium, or more photography-led."
+            description="Use these tours as a starting point, then change the hotels, pace and experiences around your interests."
           />
           <GridSystem columns={2}>
             {tours.map((tour) => (
@@ -148,7 +148,7 @@ export default function StylesPage() {
             image={storyImages.tea}
             eyebrow="Custom planning"
             title="Tell us who is traveling before choosing the itinerary."
-            description="Families, older parents, couples, photographers, and advisors need different China from the same map."
+            description="Families, older parents, couples, solo travelers and photographers need different days even when they visit the same places."
             primary={{ label: "Start Planning", href: primaryAction.href }}
             secondary={{ label: "Browse Destinations", href: "/destinations" }}
           />

@@ -238,7 +238,7 @@ export default async function HomePage() {
             <figure className="home-trade-gallery__image relative min-h-[31rem] overflow-hidden rounded-[1.25rem] lg:col-span-8 lg:row-span-2 lg:min-h-[42rem]">
               <OptimizedImage
                 src={home.tradeImages[0]?.src ?? home.heroImage.src}
-                alt={home.tradeImages[0]?.alt ?? "Travel trade consultation"}
+                alt={home.tradeImages[0]?.alt ?? "In-person China travel consultation"}
                 fill
                 sizes="(min-width:1024px) 66vw, 100vw"
                 objectPosition={home.tradeImages[0]?.objectPosition}
@@ -264,7 +264,7 @@ export default async function HomePage() {
                   className="h-full w-full"
                 />
                 <figcaption className="absolute right-4 bottom-4 rounded-full border border-white/30 bg-black/36 px-3 py-2 text-[0.6rem] font-medium tracking-[0.1em] text-white uppercase backdrop-blur-xl">
-                  {index === 0 ? "Travel buyer meeting" : "Muslim travel buyers"}
+                  {index === 0 ? "China travel conversation" : "Muslim travel consultation"}
                 </figcaption>
               </figure>
             ))}

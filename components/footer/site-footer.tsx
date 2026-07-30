@@ -14,7 +14,7 @@ type SiteFooterProps = {
 
 export function SiteFooter({
   brand = "AVIORA",
-  description = `Private China journeys by China Prime DMC, operated in China by a ${siteConfig.operator.tourismLicense.shortLabel.toLowerCase()}.`,
+  description = `Tailored private China tours with local guides, carefully chosen hotels and clear support from arrival to departure.`,
   columns,
   email = siteConfig.email,
   social = [],
@@ -57,7 +57,7 @@ export function SiteFooter({
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
         <p>
-          © {new Date().getFullYear()} AVIORA · China operator:{" "}
+          © {new Date().getFullYear()} AVIORA · Operated in China by{" "}
           {siteConfig.operator.englishReferenceName}
         </p>
         <div className="flex flex-wrap gap-4">

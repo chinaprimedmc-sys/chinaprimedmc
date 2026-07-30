@@ -8,7 +8,7 @@ import { journalArticles as localJournalArticles } from "@/content/journal";
 export const metadata = createMetadata({
   title: "Travel Journal",
   description:
-    "Premium China travel guides, destination stories, family travel advice, seasonal planning, food, culture, and private journey inspiration.",
+    "Practical China travel guides covering routes, seasons, family trips, food, culture, hotels and private touring.",
   path: "/journal",
 });
 
@@ -50,9 +50,9 @@ export default async function JournalPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "Blog",
-          name: "China Prime DMC Travel Journal",
+          name: "AVIORA China Travel Journal",
           description:
-            "Premium China travel guides, destination stories, family travel advice, seasonal planning, food, culture, and private journey inspiration.",
+            "Practical China travel guides covering routes, seasons, family trips, food, culture, hotels and private touring.",
           url: new URL("/journal", siteConfig.url).toString(),
           publisher: {
             "@type": "TravelAgency",

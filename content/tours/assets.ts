@@ -299,7 +299,7 @@ export const beijingUnhurriedAsset = {
   ),
   hotelRoom: beijingUnhurriedImage(
     "hotel-room.webp",
-    "A comfortable Beijing hotel room selected around the final proposal",
+    "A comfortable Beijing hotel room selected for the guest's confirmed trip plan",
     2400,
     1800,
   ),

@@ -44,8 +44,8 @@ export default function VisaPlanningPage() {
 
       <HeroLargeImage
         eyebrow="Visa planning"
-        title="Entry rules should shape the route before the route shapes the trip."
-        subtitle="This page is a structured home for current visa and transit notes. Real policy text should be verified before ticketing and again before departure."
+        title="Check entry rules before booking your route."
+        subtitle="Visa and transit rules depend on nationality, itinerary and current policy. Verify them before ticketing and again before departure."
         image={heroImage}
         primary={{ label: "Ask About Entry", href: primaryAction.href }}
         secondary={{ label: "Planning FAQ", href: "/planning/faq" }}
@@ -56,7 +56,7 @@ export default function VisaPlanningPage() {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="At a glance"
-            title="Keep policy details structured, visible, and replaceable."
+            title="The checks to make before you book."
             description="Entry requirements should be verified against passport nationality, route, and travel dates before tickets are issued."
           />
           <GridSystem columns={4}>

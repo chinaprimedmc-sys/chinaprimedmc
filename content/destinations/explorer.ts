@@ -80,7 +80,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     description:
       "The Great Wall, palace scale and hutong life, with enough time to understand what you are seeing.",
     stay: "3–5 nights",
-    bestFor: "A first journey",
+    bestFor: "A first trip to China",
     interests: ["icons", "heritage", "food"],
     image: images.beijing,
     guideHref: "/destinations/beijing",
@@ -273,7 +273,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     description:
       "Dim sum traditions, riverfront modernity and a trading-city confidence with deep roots.",
     stay: "2–3 nights",
-    bestFor: "Food and business travel",
+    bestFor: "Food and city life",
     interests: ["food", "city", "heritage"],
     image: images.tea,
   },

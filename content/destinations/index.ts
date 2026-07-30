@@ -20,9 +20,9 @@ export const destinations: Destination[] = [
       secondary: { label: "Plan My Beijing Trip", href: inquiryHref },
     },
     seo: {
-      title: "Private Beijing Tours and Luxury Beijing Travel",
+      title: "Private Beijing Tours with Local Guides",
       description:
-        "Plan a private Beijing journey with China Prime DMC: Forbidden City, Great Wall, hutongs, family-friendly pacing, luxury hotels, and expert local guides.",
+        "Plan a private Beijing tour with the Forbidden City, Great Wall, hutongs, well-located hotels and an expert local guide.",
       keywords: [
         "private Beijing tours",
         "luxury Beijing travel",
@@ -140,7 +140,7 @@ export const destinations: Destination[] = [
     hotels: [],
     tours: [
       {
-        title: "First China, Beautifully Paced",
+        title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
         description:
           "Beijing, Xi'an, and Shanghai with private guides, stronger pacing, and the big icons handled calmly.",
         tags: ["First-time", "Private"],
@@ -238,9 +238,9 @@ export const destinations: Destination[] = [
       secondary: { label: "Plan My Shanghai Trip", href: inquiryHref },
     },
     seo: {
-      title: "Private Shanghai Tours and Luxury Shanghai Travel",
+      title: "Private Shanghai Tours and Local Experiences",
       description:
-        "Plan a private Shanghai journey with aviora: skyline evenings, Art Deco neighborhoods, food, design hotels, and private guide logistics.",
+        "Plan a private Shanghai tour with skyline evenings, Art Deco neighborhoods, local food, carefully selected hotels and an expert guide.",
       keywords: [
         "private Shanghai tours",
         "luxury Shanghai travel",
@@ -274,7 +274,7 @@ export const destinations: Destination[] = [
     ],
     whyVisit: {
       title: "Shanghai helps travelers understand China's present tense.",
-      body: "The city works beautifully as a first or final chapter: international hotels, layered neighborhoods, skyline views, and a gentler bridge between China and home.",
+      body: "The city works well at the beginning or end of a trip, with strong international hotels, layered neighborhoods, skyline views and easy flight connections.",
       image: destinationAsset.shanghaiSkyline,
     },
     bestTime: {
@@ -349,7 +349,7 @@ export const destinations: Destination[] = [
     hotels: [],
     tours: [
       {
-        title: "First China, Beautifully Paced",
+        title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
         description:
           "A calm first China route ending with Shanghai's skyline, food, and international ease.",
         tags: ["First-time", "Private"],

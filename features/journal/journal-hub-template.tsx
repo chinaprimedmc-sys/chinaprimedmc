@@ -47,7 +47,7 @@ export function JournalHubTemplate({
 
       <HeroLargeImage
         eyebrow="Travel Journal"
-        title="China, planned with more feeling and less friction."
+        title="China, planned with more clarity and more feeling."
         subtitle="Guides, field notes, seasonal ideas, and private travel thinking for travelers who want China to feel inspiring before it feels complicated."
         image={featured.hero.image}
         primary={{ label: "Read Featured Story", href: `/journal/${featured.slug}` }}
@@ -144,7 +144,7 @@ export function JournalHubTemplate({
           <SectionHeader
             eyebrow="Experiences"
             title="Stories can point toward the right private experience."
-            description="Use the journal to move from an idea about pandas, food, rail, guides, or culture into a more considered route conversation."
+            description="Use the journal to move from an idea about pandas, food, rail, guides or culture into a trip you can picture."
           />
           <GridSystem columns={4}>
             <FeatureCard
@@ -218,9 +218,9 @@ export function JournalHubTemplate({
             variant="image"
             image={featured.hero.image}
             eyebrow="Private China planning"
-            title="Turn what you are reading into a route that fits your travelers."
-            description="Share your dates, travelers, and comfort level. We will suggest a first private China route idea."
-            primary={{ label: "Get My First Route Idea", href: "mailto:chinaprimedmc@gmail.com" }}
+            title="Turn what you are reading into your own route."
+            description="Share your dates, who is traveling and what you want to experience. We will suggest a first direction."
+            primary={{ label: "Start Planning", href: "/start-planning" }}
             secondary={{
               label: "View Sample Journey",
               href: "/tours/first-china-beautifully-paced",

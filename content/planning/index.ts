@@ -76,7 +76,7 @@ export const startPlanningOptions = {
     {
       label: "Small group",
       value: "small-group",
-      helper: "Friends, relatives, affinity groups, or advisor-led groups.",
+      helper: "Friends, relatives or a small group traveling together.",
     },
   ],
   travelStyles: [
@@ -122,7 +122,7 @@ export const startPlanningOptions = {
     {
       label: "Luxury",
       value: "luxury",
-      helper: "Higher hotel standards, stronger room choices, and a more seamless pace.",
+      helper: "Higher hotel standards, better room choices and more time-saving private services.",
     },
     {
       label: "Ultra-bespoke",
@@ -331,7 +331,7 @@ export const audienceGuides: AudienceGuide[] = [
     ],
     ctaTitle: "Tell us the ages before choosing the route.",
     ctaDescription:
-      "A family proposal should start with traveler ages, school-holiday dates, comfort level, and any meals or activity concerns.",
+      "Tell us the children's ages, travel dates, hotel expectations and any meal or activity concerns so we can recommend the right plan.",
     seo: {
       title: "Private China Family Travel With Kids",
       description:
@@ -361,7 +361,7 @@ export const audienceGuides: AudienceGuide[] = [
           "Heavier walking days can be identified early and adjusted around mobility, stairs, and rest timing.",
       },
       {
-        title: "Private transfers reduce friction",
+        title: "Private transfers protect your time",
         description:
           "Airport flow, station timing, luggage movement, and hotel location are treated as core trip design, not afterthoughts.",
         detail:

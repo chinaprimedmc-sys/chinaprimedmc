@@ -25,7 +25,7 @@ export function generateMetadata(): Metadata {
   return createMetadata({
     title: "Search China Journeys",
     description:
-      "Search premium China destinations, private tours, experiences, and travel guides. Save ideas into My Trip and request a customized journey.",
+      "Search China destinations, private tours, experiences and travel guides. Save useful ideas and ask us to shape them into your trip.",
     path: "/search",
     noIndex: true,
   });
@@ -52,7 +52,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           "@type": "CollectionPage",
           name: "Search China Journeys",
           description:
-            "Search premium China destinations, private tours, experiences, and travel guides.",
+            "Search China destinations, private tours, experiences and practical travel guides.",
           url: new URL("/search", siteConfig.url).toString(),
           isPartOf: {
             "@type": "WebSite",

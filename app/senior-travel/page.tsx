@@ -86,14 +86,14 @@ export default function SeniorTravelPage() {
           <SectionHeader
             eyebrow="Who it suits"
             title={guide.primaryConcern}
-            description="Senior-friendly does not mean less meaningful. It means the cultural depth is carried by a calmer operating plan."
+            description="A gentler pace does not mean seeing less. It means choosing the right access, timing and amount for each day."
           />
           <GridSystem columns={3}>
             {guide.bestFor.map((item) => (
               <FeatureCard
                 key={item}
                 title={item}
-                description="A private route can be adjusted around this traveler's needs, energy, and preferred level of support."
+                description="We can adjust the route around your energy, mobility and preferred level of assistance."
               />
             ))}
           </GridSystem>

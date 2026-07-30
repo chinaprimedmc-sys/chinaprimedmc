@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = createMetadata({
   title: "Terms and Booking Conditions",
   description:
-    "AVIORA terms for private China journey proposals, booking confirmation, payment, traveler changes, cancellation, suppliers, insurance, and liability.",
+    "AVIORA booking terms for private China tours, including quotations, payment, changes, cancellation, suppliers, insurance and liability.",
   path: "/terms",
 });
 
@@ -27,9 +27,9 @@ export default function TermsPage() {
     >
       <LegalSection title="1. Brand and contracting entity">
         <p>
-          AVIORA is the international-facing brand used to present and plan private China journeys.
-          “China Prime DMC” describes our China destination-management role. Unless your booking
-          confirmation states otherwise, China ground services are contracted and operated by{" "}
+          AVIORA is the travel brand used on this website. “China Prime DMC” is a service name for
+          our work in China. Unless your booking confirmation states otherwise, your travel services
+          in China are contracted and provided by{" "}
           <strong className="text-foreground">{siteConfig.operator.englishReferenceName}</strong> (
           {siteConfig.operator.legalName}; English translation for reference), a company registered
           in Guangzhou on March 28, 2018 and {siteConfig.operator.tourismLicense.statement}.

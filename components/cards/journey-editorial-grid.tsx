@@ -139,8 +139,8 @@ const travelerOptions: ChoiceOption<JourneyTravelerId>[] = [
   { id: "families", label: "Families with children" },
   { id: "multigenerational", label: "Multi-generational families" },
   { id: "older-travelers", label: "Older travelers" },
+  { id: "solo-travelers", label: "Solo travelers" },
   { id: "private-groups", label: "Private groups" },
-  { id: "travel-advisors", label: "Travel advisors" },
 ];
 
 const planningNeedOptions: ChoiceOption<JourneyPlanningNeedId>[] = [
@@ -566,7 +566,7 @@ export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
               <p className="mt-5 border-t border-black/8 pt-4 text-xs leading-5 text-black/46">
                 Muslim-friendly requests are planned around dietary and prayer needs. Specific
                 restaurants, certification status, mosque access, and daily timing are confirmed in
-                your proposal, not assumed here.
+                your written trip plan, not assumed here.
               </p>
             </FinderPanel>
           </div>

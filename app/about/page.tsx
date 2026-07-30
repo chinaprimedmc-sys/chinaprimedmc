@@ -14,7 +14,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = createMetadata({
   title: "About AVIORA and Our Licensed China Team",
   description:
-    "Meet AVIORA and China Prime DMC: private China journey design backed by a Guangzhou-registered operator licensed for inbound tourism business in China.",
+    "Meet the licensed China team behind AVIORA's tailored private tours, hotel selection, local guides and on-trip support.",
   path: "/about",
   image: homeEditorialImages.tradeConsultation.src,
 });
@@ -22,7 +22,7 @@ export const metadata: Metadata = createMetadata({
 const reasons = [
   {
     number: "01",
-    title: "A China-based operating team",
+    title: "A team based in China",
     description:
       "Our local team coordinates guides, vehicles, tickets and support with current knowledge on the ground.",
   },
@@ -42,7 +42,7 @@ const reasons = [
     number: "04",
     title: "Human support from inquiry to travel",
     description:
-      "One specialist guides the proposal while our local team manages delivery and live support.",
+      "One specialist helps shape your trip while our local team manages the details and stays reachable as you travel.",
   },
 ];
 
@@ -57,7 +57,7 @@ const process = [
   },
   {
     step: "Confirm",
-    text: "You receive clear inclusions, choices and contracting details before payment.",
+    text: "You receive a written quotation with hotels, services, inclusions and payment terms before you book.",
   },
   {
     step: "Operate",
@@ -70,7 +70,7 @@ const process = [
 ];
 
 const promises = [
-  "Transparent proposals",
+  "Clear written quotations",
   "No forced shopping",
   "Private pacing",
   "Clear local support",
@@ -94,7 +94,7 @@ export default function AboutPage() {
           name: "About AVIORA and China Prime DMC",
           url: new URL("/about", siteConfig.url).toString(),
           description:
-            "The brand, destination-management role and licensed China operating company behind AVIORA private China journeys.",
+            "The licensed China team, company and service standards behind AVIORA private tours.",
           mainEntity: { "@id": `${siteConfig.url}/#organization` },
         }}
       />
@@ -146,22 +146,22 @@ export default function AboutPage() {
       >
         <SectionIntro
           eyebrow="01 · Who we are"
-          title="One traveler-facing brand. One accountable China operator."
-          description="The names describe different roles in one clearly identified service relationship."
+          title="One travel brand. One accountable team in China."
+          description="AVIORA is the name you travel with. The licensed Guangzhou company is responsible for your services in China."
         />
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
           <IdentityBlock
             label="International brand"
             title="AVIORA"
-            body="The name international travelers see: journey design, communication and the customer experience."
+            body="The name you see throughout planning, booking and travel: one consistent point of contact for your trip."
           />
           <IdentityBlock
-            label="Destination role"
+            label="China travel services"
             title="China Prime DMC"
-            body="Our destination-management role: coordinating the route, guides, transport, tickets, stays and local support."
+            body="The team coordinating your route, guides, private transport, tickets, hotels and local support."
           />
           <IdentityBlock
-            label="China legal operator"
+            label="Licensed company in China"
             title={siteConfig.operator.englishReferenceName}
             body={`${siteConfig.operator.legalName}. Registered in Guangzhou on March 28, 2018 and ${siteConfig.operator.tourismLicense.statement}.`}
           />
@@ -195,7 +195,7 @@ export default function AboutPage() {
             />
             <CredentialLine
               title="Document check"
-              text="Relevant operating and contracting documents can be verified during proposal and booking discussions."
+              text="Relevant licence and contracting documents can be verified before you make a booking."
             />
           </div>
         </div>
@@ -232,7 +232,7 @@ export default function AboutPage() {
           <SectionIntro
             eyebrow="03 · How we work"
             title="Five stages. One continuous line of responsibility."
-            description="Each stage describes what the traveler receives, not a promise hidden behind industry language."
+            description="At every stage, you know what happens next and which details will be confirmed in writing."
           />
         </div>
         <div className="mt-14 flex snap-x snap-mandatory [scrollbar-width:none] gap-4 overflow-x-auto px-[max(1.25rem,calc((100vw-92rem)/2+2rem))] pb-8">
@@ -254,24 +254,24 @@ export default function AboutPage() {
       </section>
 
       <section
-        id="industry-presence"
+        id="international-conversations"
         className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8"
       >
         <SectionIntro
-          eyebrow="04 · Industry presence"
-          title="Trust is built face to face."
-          description="Real conversations with regional travel buyers help us understand how different markets ask about China, from family pacing to Muslim-friendly travel."
+          eyebrow="04 · International conversations"
+          title="We listen to how different guests want to experience China."
+          description="Our conversations in Kuala Lumpur covered the questions international guests ask most, from family comfort to Muslim-friendly planning and local support."
         />
         <div className="mt-14 grid gap-4 lg:grid-cols-[1.15fr_.85fr]">
           <TradeImage
             image={homeEditorialImages.tradeBuyerMeeting}
-            label="Travel buyer meeting · Kuala Lumpur"
+            label="China travel conversation · Kuala Lumpur"
             featured
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             <TradeImage
               image={homeEditorialImages.tradeMuslimBuyers}
-              label="Muslim travel buyers · Kuala Lumpur"
+              label="Muslim-friendly travel discussion · Kuala Lumpur"
             />
             <TradeImage
               image={homeEditorialImages.tradeConsultation}
@@ -280,9 +280,8 @@ export default function AboutPage() {
           </div>
         </div>
         <p className="mt-6 max-w-3xl text-sm leading-7 text-[#1b1c19]/55">
-          These photographs document our participation in travel-trade conversations. We use them as
-          evidence of real industry activity, not as a substitute for guest reviews or unverifiable
-          claims of scale.
+          These are photographs of real conversations about travel in China. We share them to show
+          the people behind AVIORA, without making claims that cannot be independently verified.
         </p>
       </section>
 
@@ -368,7 +367,7 @@ export default function AboutPage() {
               { label: "Who we are", href: "#who-we-are" },
               { label: "Why travel with us", href: "#why-travel-with-us" },
               { label: "How we work", href: "#how-we-work" },
-              { label: "Industry presence", href: "#industry-presence" },
+              { label: "International conversations", href: "#international-conversations" },
             ],
           },
           {

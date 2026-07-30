@@ -67,12 +67,11 @@ export default async function StartPlanningPage({
               Start planning
             </p>
             <h1 className="mt-5 text-4xl leading-tight font-semibold tracking-[-0.04em] md:text-6xl">
-              Tell us enough to shape the first route intelligently.
+              Tell us what your ideal China trip looks like.
             </h1>
             <p className="text-muted mt-5 max-w-2xl text-base leading-7 md:text-lg">
-              Four short steps cover who is traveling, timing, travel style, and the easiest way to
-              reply. No price is shown here because the proposal depends on hotels, season, pace,
-              and guide level.
+              Four short steps cover who is traveling, timing, travel style and how you prefer us to
+              reply. Your quotation will reflect your dates, hotels and selected services.
             </p>
             <Card className="mt-8 p-5">
               <p className="text-sm font-semibold">Prefer direct contact?</p>
@@ -97,22 +96,22 @@ export default async function StartPlanningPage({
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="What happens next"
-            title="This is a planning brief, not a booking form."
-            description="The next operational step is a human reply with route direction, pacing questions, hotel logic, and any practical constraints to resolve before proposal."
+            title="This starts a conversation. It does not confirm a booking."
+            description="A China specialist will review your answers, suggest a sensible direction and ask any questions needed before preparing your quotation."
           />
           <div className="grid gap-4 md:grid-cols-3">
             {[
               {
-                title: "1. We read the constraints",
-                body: "Traveler ages, dates, comfort level, entry route, and practical concerns shape the first response.",
+                title: "1. We review your priorities",
+                body: "Your dates, group, interests, hotel expectations and practical needs shape our first reply.",
               },
               {
                 title: "2. We suggest a direction",
-                body: "You receive a route logic, not a generic package. We can then narrow hotel level and pacing.",
+                body: "We suggest a route, length of stay and daily pace that make sense for your time in China.",
               },
               {
-                title: "3. Proposal follows clarity",
-                body: "Pricing and final route details come after the trip shape makes operational sense.",
+                title: "3. You receive a written quotation",
+                body: "Once the direction is clear, we confirm hotels, services, inclusions and pricing in writing.",
               },
             ].map((item) => (
               <Card key={item.title} className="p-5 md:p-6">

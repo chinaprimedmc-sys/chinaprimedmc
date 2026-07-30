@@ -102,8 +102,8 @@ export default function FamilyTravelPage() {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Design details"
-            title="Family travel changes the operating plan."
-            description="These are the practical levers we adjust before a family route becomes a proposal."
+            title="Family travel changes how each day should work."
+            description="Start times, meal breaks, hotel setup and the length of each visit should reflect your children's ages and interests."
           />
           <div className="grid gap-4">
             {guide.designDetails.map((detail, index) => (
@@ -181,7 +181,7 @@ export default function FamilyTravelPage() {
           <CtaCard
             variant="image"
             image={storyImages.tea}
-            eyebrow="Family proposal"
+            eyebrow="Your family trip"
             title={guide.ctaTitle}
             description={guide.ctaDescription}
             primary={{ label: "Email a Family Inquiry", href: primaryAction.href }}
@@ -211,7 +211,7 @@ export default function FamilyTravelPage() {
             title: "Family Planning",
             items: [
               {
-                label: "First China, Beautifully Paced",
+                label: "Beijing, Xi'an & Shanghai Private Tour",
                 href: "/tours/first-china-beautifully-paced",
               },
               { label: "Planning FAQ", href: "/planning/faq" },

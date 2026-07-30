@@ -59,8 +59,8 @@ export default function PlanningPage() {
 
       <HeroLargeImage
         eyebrow="Planning"
-        title="The quieter parts of China travel matter most."
-        subtitle="Visa notes, daily comfort, family rhythm, older-parent pacing, and practical questions belong in the plan before the route looks beautiful."
+        title="Plan the details that make China easier."
+        subtitle="Entry rules, daily pace, family needs, walking comfort and practical questions are easier to solve before you book."
         image={heroImage}
         primary={{ label: "Start Planning", href: primaryAction.href }}
         secondary={{ label: "Read FAQ", href: "/planning/faq" }}
@@ -71,8 +71,8 @@ export default function PlanningPage() {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Planning hub"
-            title="Choose the question behind the itinerary."
-            description="These pages are structured for real operating notes later, while already giving users a clear path through practical concerns."
+            title="Start with the questions that affect your trip."
+            description="Use these guides to understand entry rules, daily logistics, family travel and comfort before choosing your route."
           />
           <GridSystem columns={2} gap="lg">
             {planningCards.map((card) => (
@@ -95,8 +95,8 @@ export default function PlanningPage() {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Planning principles"
-            title="Good route design prevents small problems from becoming the trip."
-            description="This planning section keeps practical topics visible without turning the site into a generic travel manual."
+            title="Good planning protects your time in China."
+            description="A few early decisions can reduce unnecessary transfers, tiring days and uncertainty after arrival."
           />
           <GridSystem columns={3}>
             <FeatureCard
@@ -105,7 +105,7 @@ export default function PlanningPage() {
             />
             <FeatureCard
               title="Design around the people"
-              description="Children, older parents, couples, and advisors need different timing even when the destination list is the same."
+              description="Children, older parents, couples and solo travelers need different timing even when the destination list is the same."
             />
             <FeatureCard
               title="Keep contact simple"
@@ -121,7 +121,7 @@ export default function PlanningPage() {
             variant="image"
             image={storyImages.tea}
             eyebrow="Next step"
-            title="Send the practical constraints first."
+            title="Tell us the important details first."
             description="Dates, ages, passport nationality, walking tolerance, dietary needs, and hotel expectations help us design a route that works in real life."
             primary={{ label: "Start Planning", href: primaryAction.href }}
             secondary={{ label: "Visa Notes", href: "/planning/visa" }}

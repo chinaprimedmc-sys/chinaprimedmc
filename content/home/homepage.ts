@@ -76,21 +76,21 @@ export const homeEditorialImages = {
   },
   tradeConsultation: {
     src: "/home/editorial/travel-trade-consultation-kuala-lumpur.webp",
-    alt: "A face-to-face China travel consultation at an inbound tourism trade event in Kuala Lumpur",
+    alt: "A face-to-face conversation about planning travel in China in Kuala Lumpur",
     width: 1080,
     height: 720,
     objectPosition: "50% 48%",
   },
   tradeBuyerMeeting: {
     src: "/home/editorial/travel-trade-buyer-meeting-kuala-lumpur.webp",
-    alt: "A face-to-face discussion with a regional travel buyer at an inbound tourism event in Kuala Lumpur",
+    alt: "The AVIORA team discussing private China travel at an international tourism event in Kuala Lumpur",
     width: 1080,
     height: 720,
     objectPosition: "50% 50%",
   },
   tradeMuslimBuyers: {
     src: "/home/editorial/muslim-travel-buyers-kuala-lumpur.webp",
-    alt: "China travel representatives speaking with Muslim travel buyers at a tourism event in Kuala Lumpur",
+    alt: "The AVIORA team discussing Muslim-friendly China travel in Kuala Lumpur",
     width: 1080,
     height: 720,
     objectPosition: "50% 50%",
@@ -116,7 +116,7 @@ export const exploreChina = [
     eyebrow: "Travel styles",
     title: "Find your rhythm",
     description:
-      "Family time, quiet luxury, photography, or a slower journey with room to notice more.",
+      "Family time, exceptional comfort, photography, or a slower trip with room to notice more.",
     href: "/styles",
     image: homeEditorialImages.guilinLandscape,
   },
@@ -242,9 +242,9 @@ export const experiences = [
     badges: ["Family"],
   },
   {
-    title: "Luxury is the absence of friction",
+    title: "Comfort shows in the details",
     description:
-      "Private transfers, flexible pacing, stronger hotels, smart rail planning, and calm English communication.",
+      "Private transfers, flexible days, better-located hotels, well-planned rail travel and clear English communication.",
     image: storyImages.rail,
     badges: ["Luxury"],
   },
@@ -266,7 +266,7 @@ export const journeys = [
     durationBadge: "9 DAYS · 8 NIGHTS",
     isoDuration: "P9D",
     accent: "gold" as const,
-    poeticTitle: "China's essential first journey, beautifully paced.",
+    poeticTitle: "Three defining cities, planned at a comfortable pace.",
     description: "Imperial Beijing, historic Xi'an, and modern Shanghai without the rush.",
     image: firstChinaAsset.beijingGreatWallSunriseHero,
     href: "/tours/first-china-beautifully-paced",
@@ -334,8 +334,3 @@ export const journal = [
     category: "Seasonal planning",
   },
 ];
-
-export const b2bAction: LinkAction = {
-  label: "For Travel Advisors",
-  href: "/contact",
-};

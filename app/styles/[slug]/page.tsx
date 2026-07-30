@@ -125,7 +125,7 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
           <SectionHeader
             eyebrow="How we design it"
             title="What changes behind the scenes."
-            description="This section is intentionally practical: route design, hotels, transfer flow, and guide briefing."
+            description="These choices affect the route, hotel location, private transport, guide service and daily timing."
           />
           <div className="grid gap-4">
             {style.designNotes.map((note, index) => (
@@ -146,7 +146,7 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
           <SectionHeader
             eyebrow="Matching tours"
             title="Route examples that can be shaped in this style."
-            description="These are not fixed products. They are strong starting points for a tailored proposal."
+            description="These are starting points. We can adjust the route, hotels and services around your dates and priorities."
           />
           <GridSystem columns={2}>
             {relatedTours.map((tour) => (
@@ -196,7 +196,7 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
       <Section spacing="default" className="bg-white">
         <ContentContainer size="xl">
           <CtaCard
-            eyebrow="Custom proposal"
+            eyebrow="Your personal trip plan"
             title={`Design a ${style.title.toLowerCase()} journey around your people.`}
             description="Tell us who is traveling, when, and what needs to feel easy. We will shape the first route idea."
             primary={{ label: "Start Planning", href: primaryAction.href }}

@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "How AVIORA and its China operating company collect, use, secure, retain, and share personal information for private China journey planning.",
+    "How AVIORA and its licensed China company collect, use, secure, retain and share information when you plan or book a trip.",
   path: "/privacy",
 });
 
@@ -18,8 +18,8 @@ export default function PrivacyPage() {
       title="Privacy Policy"
       introduction={
         <p>
-          AVIORA is the international-facing travel brand. China journey planning and ground
-          services are operated in China by {siteConfig.operator.englishReferenceName} (
+          AVIORA is the travel brand you see on this website. Trip planning and travel services in
+          China are provided by {siteConfig.operator.englishReferenceName} (
           {siteConfig.operator.legalName}; English translation for reference), referred to here as
           “we,” “us,” or “our.”
         </p>
@@ -51,9 +51,9 @@ export default function PrivacyPage() {
 
       <LegalSection title="2. Why we use your information">
         <LegalList>
-          <li>To respond to an inquiry and prepare a relevant route, proposal, or quotation.</li>
+          <li>To respond to your inquiry and prepare a relevant route or written quotation.</li>
           <li>To arrange, administer, and support services you ask us to book.</li>
-          <li>To communicate operational updates before and during travel.</li>
+          <li>To share important service updates before and during your trip.</li>
           <li>To protect our forms, systems, customers, and business from fraud or abuse.</li>
           <li>To comply with accounting, tax, regulatory, insurance, and legal obligations.</li>
           <li>

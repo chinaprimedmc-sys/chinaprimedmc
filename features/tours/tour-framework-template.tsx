@@ -51,8 +51,8 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
         <ContentContainer size="lg" className="grid gap-8">
           <SectionHeader
             eyebrow="What we shape with you"
-            title="The useful details come after we understand the travelers."
-            description="We use this direction to ask better questions, then confirm the cities, daily rhythm, stays, and logistics around your travelers."
+            title="The right details begin with you."
+            description="Tell us who is traveling, then we can shape the cities, hotels, daily rhythm and services around your group."
           />
           <div className="grid gap-4 md:grid-cols-3">
             {[
@@ -74,7 +74,7 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
           <SectionHeader
             eyebrow="Places to consider"
             title="Begin with the cities that fit the feeling."
-            description="These links provide destination context. They are not a promise that every city will appear in the final proposal."
+            description="These guides help you understand the places. Your final route will be confirmed around your dates and priorities."
           />
           <div className="flex flex-wrap gap-3">
             {item.destinations.map((destination) => (
@@ -96,7 +96,7 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
           <CtaCard
             variant="image"
             image={storyImages.tea}
-            eyebrow="Shape the first proposal"
+            eyebrow="Start your personal plan"
             title="Tell us who is traveling and what a good day feels like."
             description="We will use this direction as a starting point, then confirm the route, timing, comfort level, and practical details with you."
             primary={{ label: "Start Planning", href: planningHref }}
