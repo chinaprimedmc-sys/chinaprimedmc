@@ -46,7 +46,14 @@ function getFeaturedJourneyDisplayTitle(slug: string, title: string) {
     .replace(/\s+(?:private\s+)?(?:tour|journey)\s*$/i, "")
     .trim();
 
-  return simplifiedTitle || title;
+  const displayTitle = simplifiedTitle || title;
+  if (displayTitle.length <= 58) return displayTitle;
+
+  const shortenedTitle = displayTitle
+    .slice(0, 58)
+    .replace(/\s+\S*$/, "")
+    .trim();
+  return `${shortenedTitle || displayTitle.slice(0, 58).trim()}…`;
 }
 
 function getFeaturedTitleLength(title: string) {
