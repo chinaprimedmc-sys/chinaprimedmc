@@ -37,12 +37,12 @@ export const secondaryHeroActions = {
 };
 
 export const heroImage: MediaAsset = {
-  src: "/home/beijing-temple-of-heaven-full-portrait.jpg",
-  alt: "The Hall of Prayer for Good Harvests at Beijing's Temple of Heaven in clear morning light",
-  width: 1820,
-  height: 2428,
+  src: "/home/beijing-forbidden-city-1400.webp",
+  alt: "The Forbidden City and Beijing skyline under warm morning light",
+  width: 1400,
+  height: 875,
   priority: true,
-  objectPosition: "50% 100%",
+  objectPosition: "58% 52%",
 };
 
 export const homeEditorialImages = {

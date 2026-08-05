@@ -19,6 +19,7 @@ type SiteNavigationProps = {
   languages?: string[];
   currencies?: string[];
   tone?: "adaptive" | "dark" | "light";
+  showWhatsapp?: boolean;
 };
 
 export function SiteNavigation({
@@ -27,6 +28,7 @@ export function SiteNavigation({
   cta = { label: "Plan My Trip", href: "/contact" },
   whatsapp = { label: "WhatsApp", href: "https://wa.me/447985052302" },
   tone = "adaptive",
+  showWhatsapp = true,
 }: SiteNavigationProps) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -97,14 +99,20 @@ export function SiteNavigation({
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
-          <WhatsAppLink href={whatsapp.href} label={whatsapp.label} />
+          {showWhatsapp ? <WhatsAppLink href={whatsapp.href} label={whatsapp.label} /> : null}
           <CtaButton href={cta.href} size="sm" className="h-10 min-h-10 px-5 text-sm font-medium">
             {cta.label}
           </CtaButton>
         </div>
 
         <div className="flex items-center gap-1.5 lg:hidden">
-          <MobileNavigation brand={brand} items={items} cta={cta} whatsapp={whatsapp} />
+          <MobileNavigation
+            brand={brand}
+            items={items}
+            cta={cta}
+            whatsapp={whatsapp}
+            showWhatsapp={showWhatsapp}
+          />
         </div>
       </div>
     </header>
@@ -149,11 +157,13 @@ function MobileNavigation({
   items,
   cta,
   whatsapp,
+  showWhatsapp,
 }: {
   brand: string;
   items: NavigationItem[];
   cta: { label: string; href: string };
   whatsapp: { label: string; href: string };
+  showWhatsapp: boolean;
 }) {
   return (
     <Dialog.Root>
@@ -191,17 +201,19 @@ function MobileNavigation({
             <CtaButton href={cta.href} size="sm" className="h-11 w-full">
               {cta.label}
             </CtaButton>
-            <CtaButton
-              href={whatsapp.href}
-              variant="whatsappFrosted"
-              size="sm"
-              target="_blank"
-              rel="noreferrer"
-              className="h-11 w-full flex-row gap-2.5"
-            >
-              <WhatsAppIcon className="size-[18px] shrink-0" />
-              <span>Chat on WhatsApp</span>
-            </CtaButton>
+            {showWhatsapp ? (
+              <CtaButton
+                href={whatsapp.href}
+                variant="whatsappFrosted"
+                size="sm"
+                target="_blank"
+                rel="noreferrer"
+                className="h-11 w-full flex-row gap-2.5"
+              >
+                <WhatsAppIcon className="size-[18px] shrink-0" />
+                <span>Chat on WhatsApp</span>
+              </CtaButton>
+            ) : null}
             <p className="px-1 pt-1 text-center text-xs leading-5 text-neutral-500">
               AVIORA — tailored private travel across China.
             </p>

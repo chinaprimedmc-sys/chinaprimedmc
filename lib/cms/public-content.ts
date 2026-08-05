@@ -10,6 +10,7 @@ import {
 import { getDestinationEditorial } from "@/content/destinations/editorial";
 import { journalArticles } from "@/content/journal";
 import {
+  destinationImages,
   exploreChina,
   heroImage,
   homeEditorialImages,
@@ -157,9 +158,9 @@ export async function getPublicHomePage() {
   const featuredJourneys = mergeCoreJourneyFallbacks([]);
   return {
     heroEyebrow: "AVIORA",
-    heroTitle: "Private China, thoughtfully designed.",
+    heroTitle: "Private China tours, designed around you.",
     heroCopy:
-      "Distinctive journeys, carefully chosen hotels and expert local support from first idea to final departure.",
+      "Thoughtful routes, carefully chosen hotels and local support throughout your journey.",
     heroImage,
     heroTrustItems: [
       "Licensed inbound tourism operator",
@@ -179,6 +180,60 @@ export async function getPublicHomePage() {
         object_position: article.hero.image.objectPosition,
       },
     })),
+    intentPaths: [
+      {
+        eyebrow: "A defining first route",
+        title: "First trip to China",
+        description: "Beijing, Xi'an and Shanghai with private support and a comfortable pace.",
+        href: "/tours/first-china-beautifully-paced",
+        image: destinationImages.beijing,
+      },
+      {
+        eyebrow: "Easy family moments",
+        title: "Pandas and family time",
+        description: "Chengdu's pandas, teahouses and food culture from one well-planned base.",
+        href: "/tours/chengdu-pandas-sichuan-table",
+        image: destinationImages.chengdu,
+      },
+      {
+        eyebrow: "A closer cultural view",
+        title: "Food and local life",
+        description: "Markets, regional flavors and everyday traditions experienced with context.",
+        href: "/destinations/chengdu",
+        image: {
+          src: "/home/chengdu-tea-house.webp",
+          alt: "A traditional Chengdu teahouse where local food and daily life come together",
+          width: 1920,
+          height: 1200,
+          objectPosition: "50% 50%",
+        } satisfies MediaAsset,
+      },
+      {
+        eyebrow: "China in the landscape",
+        title: "Scenery and nature",
+        description: "Shanghai's skyline paired with Zhangjiajie's extraordinary sandstone peaks.",
+        href: "/tours/shanghai-zhangjiajie-floating-peaks",
+        image: destinationImages.zhangjiajie,
+      },
+    ],
+    trustPoints: [
+      {
+        title: "Licensed inbound tourism operator",
+        description: "Your trip is operated in China by a registered and licensed local company.",
+      },
+      {
+        title: "Private travel without forced shopping",
+        description: "Your time is reserved for the places and experiences you chose.",
+      },
+      {
+        title: "Hotels and pacing chosen around you",
+        description: "Location, room needs, walking comfort and daily rhythm shape the route.",
+      },
+      {
+        title: "China-based support throughout",
+        description: "Our local team remains reachable before arrival and while you travel.",
+      },
+    ],
     destinationsEyebrow: "Explore China",
     destinationsTitle: "Begin with the China that interests you.",
     destinationsCopy:

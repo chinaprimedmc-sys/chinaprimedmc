@@ -1,26 +1,14 @@
-import { CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { BlogCard } from "@/components/cards/blog-card";
-import { HeroTrustPills, SectionHeader } from "@/components/content";
 import { CtaButton } from "@/components/cta";
-import { CtaCard } from "@/components/cta/cta-card";
-import { FloatingCta } from "@/components/cta/floating-cta";
-import { StickyMobileCta } from "@/components/cta/sticky-mobile-cta";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { HeroLargeImage } from "@/components/hero/hero-large-image";
-import {
-  DestinationFocusGallery,
-  FeaturedJourneyCinema,
-  HomeReveal,
-  PlanningStory,
-} from "@/components/home/home-immersive-sections";
+import { FeaturedJourneyCinema, HomeReveal } from "@/components/home/home-immersive-sections";
 import { ContentContainer } from "@/components/layout/content-container";
-import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/config/site";
 import { heroImage } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
@@ -95,253 +83,237 @@ export default async function HomePage() {
         bestFor: journey.best_for,
       };
     });
-  const exploreItems = home.featuredDestinations.length
-    ? home.featuredDestinations.map((destination) => ({
-        eyebrow: destination.kicker || "Destination",
-        title: destination.name,
-        description: destination.summary,
-        href: `/destinations/${destination.slug}`,
-        image: destination.heroImage ?? home.heroImage,
-      }))
-    : home.fallbackExploreChina;
-  const journalItems = home.featuredPosts
-    .filter((post) => post.hero_image)
-    .map((post) => ({
-      title: post.title,
-      excerpt: post.summary,
-      href: `/journal/${post.slug}`,
-      image: {
-        src: post.hero_image!.url,
-        alt: post.hero_image!.alt_text,
-        objectPosition: post.hero_image!.object_position,
-      },
-      category: post.category,
-    }));
+  const homeNavigation = settings.navigation.filter((item) =>
+    ["Journeys", "Destinations", "About AVIORA", "Journal"].includes(item.label),
+  );
+
   return (
     <PageContainer className="pb-20 md:pb-0">
       <JsonLd id="featured-journeys-schema" data={featuredJourneysSchema(featuredJourneys)} />
       <SiteNavigation
-        items={settings.navigation}
-        cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
-        whatsapp={{ label: settings.whatsappLabel, href: settings.whatsappHref }}
+        items={homeNavigation}
+        cta={{ label: "Start Planning", href: settings.primaryCtaHref }}
+        showWhatsapp={false}
       />
 
-      <HeroLargeImage
-        brandLockup={{ name: settings.siteTitle, descriptor: settings.brandDescriptor }}
-        title={home.heroTitle}
-        subtitle={home.heroCopy}
-        image={home.heroImage}
-        primary={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
-        secondary={{ label: settings.whatsappLabel, href: settings.whatsappHref }}
-        composition="editorial"
-        align="left"
-        overlay="subtle"
-      >
-        <HeroTrustPills mode="ticker" tone="light" items={home.heroTrustItems} />
-      </HeroLargeImage>
+      <section className="home-conversion-hero">
+        <OptimizedImage
+          src={home.heroImage.src}
+          alt={home.heroImage.alt}
+          fill
+          loading="eager"
+          priority
+          sizes="100vw"
+          objectPosition={home.heroImage.objectPosition}
+          frameClassName="absolute inset-0 h-full"
+          className="home-conversion-hero__image h-full w-full"
+        />
+        <div className="home-conversion-hero__shade" aria-hidden="true" />
+        <ContentContainer
+          size="xl"
+          className="home-conversion-hero__content relative z-20 flex h-full flex-col justify-end"
+        >
+          <div className="max-w-[48rem] text-white">
+            <p className="text-xs font-semibold tracking-[0.16em] text-white/72 uppercase">
+              AVIORA · Private China travel
+            </p>
+            <h1 className="mt-5 max-w-[46rem] font-serif text-[clamp(3.35rem,7.4vw,6.75rem)] leading-[0.9] font-medium text-balance">
+              {home.heroTitle}
+            </h1>
+            <p className="mt-6 max-w-[38rem] text-base leading-7 text-white/82 md:text-lg md:leading-8">
+              {home.heroCopy}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-5">
+              <CtaButton href={settings.primaryCtaHref} size="md">
+                Start Planning
+              </CtaButton>
+              <Link href="#journeys" className="home-conversion-hero__secondary">
+                Explore journeys
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+          <div className="home-conversion-hero__trust" aria-label="Why travelers choose AVIORA">
+            {home.heroTrustItems.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+            <span>China-based support</span>
+          </div>
+        </ContentContainer>
+        <Link
+          href="#journeys"
+          className="home-conversion-hero__scroll"
+          aria-label="See featured journeys"
+        >
+          <ArrowDown size={15} aria-hidden="true" />
+        </Link>
+      </section>
 
       {featuredJourneys.length ? <FeaturedJourneyCinema journeys={featuredJourneys} /> : null}
 
-      <Section id="destinations" spacing="spacious">
+      <Section id="find-your-china" spacing="spacious" className="bg-[var(--bg-primary)]">
         <ContentContainer size="xl" className="home-section-safe grid gap-10">
-          <SectionHeader
-            eyebrow={home.destinationsEyebrow}
-            title={home.destinationsTitle}
-            description={home.destinationsCopy}
-          />
-          <HomeReveal delay={80}>
-            <DestinationFocusGallery items={exploreItems} />
-          </HomeReveal>
-        </ContentContainer>
-      </Section>
-
-      <Section id="why" spacing="spacious" className="bg-[var(--bg-dark-primary)] text-white">
-        <ContentContainer size="xl" className="home-section-safe grid gap-14">
-          <HomeReveal className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+          <HomeReveal className="grid gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-end">
             <div>
-              <p className="text-xs font-semibold tracking-[0.18em] text-white/55 uppercase">
-                {home.whyEyebrow}
+              <p className="text-xs font-semibold tracking-[0.16em] text-[var(--text-tertiary)] uppercase">
+                Find your China
               </p>
-              <h2 className="mt-5 max-w-3xl font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] md:text-7xl">
-                {home.whyTitle}
+              <h2 className="mt-5 max-w-3xl font-serif text-5xl leading-[0.95] font-medium text-balance md:text-7xl">
+                Not sure where to begin?
               </h2>
             </div>
-            <p className="max-w-2xl text-base leading-8 text-white/66 md:text-lg">{home.whyCopy}</p>
-          </HomeReveal>
-          <HomeReveal delay={80} className="grid border-y border-white/12 md:grid-cols-3">
-            {home.whyStats.map((stat, index) => (
-              <div
-                key={stat.title}
-                className={`py-8 md:px-8 md:py-10 ${index ? "border-t border-white/12 md:border-t-0 md:border-l" : ""}`}
-              >
-                <p className="font-serif text-5xl leading-none md:text-6xl">{stat.title}</p>
-                <p className="mt-3 text-xs tracking-[0.14em] text-white/55 uppercase">
-                  {stat.description}
-                </p>
-              </div>
-            ))}
-          </HomeReveal>
-          <HomeReveal delay={140}>
-            <GridSystem columns={3}>
-              {home.whyPoints.map((point, index) => {
-                const Icon = index === 0 ? ShieldCheck : index === 1 ? CheckCircle2 : Sparkles;
-                return (
-                  <article key={point.title} className="border-t border-white/14 pt-6">
-                    <Icon size={18} className="text-white/58" aria-hidden="true" />
-                    <h3 className="mt-5 text-lg font-medium">{point.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-white/58">{point.description}</p>
-                  </article>
-                );
-              })}
-            </GridSystem>
-          </HomeReveal>
-        </ContentContainer>
-      </Section>
-
-      <Section id="planning" spacing="spacious">
-        <ContentContainer size="xl" className="home-section-safe grid gap-10">
-          <HomeReveal>
-            <Badge>{home.planningEyebrow}</Badge>
-            <h2 className="mt-6 max-w-3xl font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] md:text-7xl">
-              {home.planningTitle}
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--text-secondary)]">
-              {home.planningCopy}
+            <p className="max-w-2xl text-base leading-8 text-[var(--text-secondary)] md:text-lg">
+              Start with the experience you want. Each path opens a route or destination that makes
+              the choice easier.
             </p>
           </HomeReveal>
-          <HomeReveal delay={80}>
-            <PlanningStory image={home.planningImage} steps={home.planningSteps} />
-          </HomeReveal>
-          <CtaButton href={settings.primaryCtaHref} className="w-fit max-md:mx-auto" size="sm">
-            Start planning
-          </CtaButton>
-        </ContentContainer>
-      </Section>
-
-      <Section spacing="spacious" className="bg-[var(--bg-secondary)]">
-        <ContentContainer size="xl" className="home-section-safe grid gap-10">
-          <HomeReveal className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <Badge>{home.tradeEyebrow}</Badge>
-              <h2 className="mt-6 font-serif text-5xl leading-[0.96] font-medium tracking-[-0.02em] md:text-7xl">
-                {home.tradeTitle}
-              </h2>
-            </div>
-            <p className="max-w-2xl text-lg leading-8 text-[var(--text-secondary)]">
-              {home.tradeCopy}
-            </p>
-          </HomeReveal>
-          <HomeReveal
-            delay={100}
-            className="home-trade-gallery grid gap-5 lg:grid-cols-12 lg:grid-rows-2"
-          >
-            <figure className="home-trade-gallery__image relative min-h-[31rem] overflow-hidden rounded-[1.25rem] lg:col-span-8 lg:row-span-2 lg:min-h-[42rem]">
-              <OptimizedImage
-                src={home.tradeImages[0]?.src ?? home.heroImage.src}
-                alt={home.tradeImages[0]?.alt ?? "In-person China travel consultation"}
-                fill
-                sizes="(min-width:1024px) 66vw, 100vw"
-                objectPosition={home.tradeImages[0]?.objectPosition}
-                frameClassName="absolute inset-0 h-full"
-                className="h-full w-full"
-              />
-              <figcaption className="absolute right-5 bottom-5 rounded-full border border-white/30 bg-black/36 px-4 py-2 text-[0.65rem] font-medium tracking-[0.12em] text-white uppercase backdrop-blur-xl">
-                Face-to-face travel consultation
-              </figcaption>
-            </figure>
-            {home.tradeImages.slice(1, 3).map((image, index) => (
-              <figure
-                className="home-trade-gallery__image relative min-h-[19rem] overflow-hidden rounded-[1.25rem] lg:col-span-4 lg:min-h-0"
-                key={image.src}
-              >
-                <OptimizedImage
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(min-width:1024px) 34vw, 100vw"
-                  objectPosition={image.objectPosition}
-                  frameClassName="absolute inset-0 h-full"
-                  className="h-full w-full"
-                />
-                <figcaption className="absolute right-4 bottom-4 rounded-full border border-white/30 bg-black/36 px-3 py-2 text-[0.6rem] font-medium tracking-[0.1em] text-white uppercase backdrop-blur-xl">
-                  {index === 0 ? "China travel conversation" : "Muslim travel consultation"}
-                </figcaption>
-              </figure>
+          <div className="home-intent-grid">
+            {home.intentPaths.map((item, index) => (
+              <HomeReveal key={item.title} delay={index * 70}>
+                <Link href={item.href} className="home-intent-card group">
+                  <OptimizedImage
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    objectPosition={item.image.objectPosition}
+                    frameClassName="absolute inset-0 h-full"
+                    className="home-intent-card__image h-full w-full"
+                  />
+                  <div className="home-intent-card__shade" aria-hidden="true" />
+                  <div className="home-intent-card__copy">
+                    <p>{item.eyebrow}</p>
+                    <div>
+                      <h3>{item.title}</h3>
+                      <ArrowUpRight size={20} aria-hidden="true" />
+                    </div>
+                    <span>{item.description}</span>
+                  </div>
+                </Link>
+              </HomeReveal>
             ))}
-          </HomeReveal>
+          </div>
+          <Link href="/destinations" className="home-text-link">
+            Explore all destinations
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
         </ContentContainer>
       </Section>
 
-      <Section id="journal" spacing="spacious">
-        <ContentContainer size="xl" className="home-section-safe grid gap-10">
-          <HomeReveal>
-            <SectionHeader
-              eyebrow={home.journalEyebrow}
-              title={home.journalTitle}
-              description={home.journalCopy}
+      <Section id="why" spacing="spacious" className="bg-white">
+        <ContentContainer size="xl" className="home-trust-section home-section-safe">
+          <HomeReveal className="home-trust-section__media">
+            <OptimizedImage
+              src={home.tradeImages[0]?.src ?? home.heroImage.src}
+              alt={home.tradeImages[0]?.alt ?? "A personal conversation about private China travel"}
+              fill
+              sizes="(min-width: 1024px) 48vw, 100vw"
+              objectPosition={home.tradeImages[0]?.objectPosition}
+              frameClassName="absolute inset-0 h-full"
+              className="home-trust-section__image h-full w-full"
             />
+            <p>Real conversations. Local decisions. Clear support.</p>
           </HomeReveal>
-          <HomeReveal delay={100}>
-            <GridSystem columns={3}>
-              {journalItems.map((article) => (
-                <BlogCard
-                  key={article.title}
-                  title={article.title}
-                  excerpt={article.excerpt}
-                  href={article.href}
-                  image={article.image}
-                  category={article.category}
-                />
+          <HomeReveal delay={90} className="home-trust-section__copy">
+            <p className="text-xs font-semibold tracking-[0.16em] text-[var(--text-tertiary)] uppercase">
+              Why AVIORA
+            </p>
+            <h2 className="mt-5 font-serif text-5xl leading-[0.95] font-medium text-balance md:text-7xl">
+              Travel with clarity from the first conversation.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--text-secondary)] md:text-lg">
+              We shape the route around the people traveling, confirm the important details in
+              writing and remain reachable while the trip is underway.
+            </p>
+            <div className="home-trust-points">
+              {home.trustPoints.map((point) => (
+                <article key={point.title}>
+                  <Check size={17} aria-hidden="true" />
+                  <div>
+                    <h3>{point.title}</h3>
+                    <p>{point.description}</p>
+                  </div>
+                </article>
               ))}
-            </GridSystem>
+            </div>
+            <ol className="home-planning-steps" aria-label="How planning works">
+              {home.planningSteps.map((step) => (
+                <li key={step.number}>
+                  <span>{step.number}</span>
+                  <strong>{step.title}</strong>
+                </li>
+              ))}
+            </ol>
+            <CtaButton href={settings.primaryCtaHref} size="sm" className="mt-8 w-fit">
+              Start Planning
+            </CtaButton>
           </HomeReveal>
         </ContentContainer>
       </Section>
 
-      <Section spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="home-section-safe">
-          <CtaCard
-            variant="image"
-            image={home.ctaImage}
-            eyebrow={home.ctaEyebrow}
-            title={home.ctaTitle}
-            description={home.ctaCopy}
-            primary={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
-            secondary={{
-              label: "Email a Specialist",
-              href: `mailto:${settings.email}`,
-            }}
-          />
+      <section className="home-final-cta">
+        <OptimizedImage
+          src={home.ctaImage.src}
+          alt={home.ctaImage.alt}
+          fill
+          sizes="100vw"
+          objectPosition={home.ctaImage.objectPosition}
+          frameClassName="absolute inset-0 h-full"
+          className="home-final-cta__image h-full w-full"
+        />
+        <div className="home-final-cta__shade" aria-hidden="true" />
+        <ContentContainer
+          size="xl"
+          className="relative z-20 flex min-h-[36rem] items-end py-16 md:py-20"
+        >
+          <HomeReveal className="max-w-3xl text-white">
+            <p className="text-xs font-semibold tracking-[0.16em] text-white/72 uppercase">
+              Start the conversation
+            </p>
+            <h2 className="mt-5 font-serif text-5xl leading-[0.94] font-medium text-balance md:text-7xl">
+              Tell us what your ideal China trip looks like.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/80 md:text-lg">
+              Share your dates, who is traveling and what matters most. A China specialist will
+              recommend the first useful route direction.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-5">
+              <CtaButton href={settings.primaryCtaHref} size="md">
+                Request My Trip Plan
+              </CtaButton>
+              <Link
+                href="/journal/how-to-plan-a-first-private-trip-to-china"
+                className="home-conversion-hero__secondary"
+              >
+                Read the first-trip guide
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
+            </div>
+          </HomeReveal>
         </ContentContainer>
-      </Section>
+      </section>
 
       <SiteFooter
         columns={[
-          { title: "Explore", items: settings.navigation },
+          { title: "Explore", items: homeNavigation },
           {
-            title: "Travel styles",
+            title: "Planning",
             items: [
-              { label: "Family China", href: "/family-travel" },
-              { label: "Luxury China", href: "/styles/luxury" },
-              { label: "Muslim-friendly", href: "/planning/faq" },
+              { label: "Start Planning", href: settings.primaryCtaHref },
+              { label: "Planning FAQ", href: "/planning/faq" },
+              { label: "Visa notes", href: "/planning/visa" },
             ],
           },
           {
-            title: "Planning",
-            items: [{ label: "First route idea", href: settings.primaryCtaHref }],
-          },
-          {
-            title: "Journal",
-            items: journalItems.map((article) => ({ label: article.category, href: article.href })),
+            title: "Company",
+            items: [
+              { label: "About AVIORA", href: "/about" },
+              { label: "Privacy", href: "/privacy" },
+              { label: "Terms", href: "/terms" },
+            ],
           },
         ]}
         social={[]}
-      />
-      <FloatingCta label={settings.primaryCtaLabel} href={settings.primaryCtaHref} />
-      <StickyMobileCta
-        label={settings.primaryCtaLabel}
-        href={settings.primaryCtaHref}
-        showAfter={720}
       />
     </PageContainer>
   );

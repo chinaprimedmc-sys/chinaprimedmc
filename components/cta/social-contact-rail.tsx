@@ -27,7 +27,7 @@ export function SocialContactRail({
       return;
     }
 
-    const hero = document.querySelector<HTMLElement>(".home-hero-split");
+    const hero = document.querySelector<HTMLElement>(".home-conversion-hero, .home-hero-split");
     const featuredJourney = document.querySelector<HTMLElement>(".home-featured-cinema");
 
     if (!hero) {

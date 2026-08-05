@@ -278,72 +278,62 @@ function homeCircularOffset(index: number, activeIndex: number, total: number) {
 }
 
 export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[] }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const navigationRef = useRef<HTMLDivElement>(null);
-  const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const pointerStart = useRef<number | null>(null);
+  const didSwipe = useRef(false);
+  const resumeTimer = useRef<number | null>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    if (isPaused || journeys.length < 2) return;
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % journeys.length);
+    }, 7600);
+    return () => window.clearInterval(timer);
+  }, [isPaused, journeys.length]);
 
-    let frame = 0;
+  useEffect(
+    () => () => {
+      if (resumeTimer.current) window.clearTimeout(resumeTimer.current);
+    },
+    [],
+  );
 
-    const updateActiveJourney = () => {
-      frame = 0;
-      const bounds = section.getBoundingClientRect();
-      if (bounds.bottom < 0 || bounds.top > window.innerHeight) return;
+  if (!journeys.length) return null;
 
-      const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
-      const progress = Math.min(Math.max(-bounds.top / travel, 0), 0.999);
-      const nextIndex = Math.min(Math.floor(progress * journeys.length), journeys.length - 1);
-      if (nextIndex === activeIndexRef.current) return;
-
-      activeIndexRef.current = nextIndex;
-      setActiveIndex(nextIndex);
-    };
-
-    const scheduleUpdate = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(updateActiveJourney);
-    };
-
-    updateActiveJourney();
-    window.addEventListener("scroll", scheduleUpdate, { passive: true });
-    window.addEventListener("resize", scheduleUpdate, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", scheduleUpdate);
-      window.removeEventListener("resize", scheduleUpdate);
-      window.cancelAnimationFrame(frame);
-    };
-  }, [journeys.length]);
-
-  useEffect(() => {
-    const navigation = navigationRef.current;
-    const activeItem = navigation?.querySelector<HTMLElement>('[aria-current="true"]');
-    if (!navigation || !activeItem || window.innerWidth >= 768) return;
-
-    const targetLeft =
-      activeItem.offsetLeft - (navigation.clientWidth - activeItem.offsetWidth) / 2;
-    navigation.scrollTo({ left: Math.max(targetLeft, 0), behavior: "smooth" });
-  }, [activeIndex]);
-
-  const goToJourney = (index: number) => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const sectionTop = window.scrollY + section.getBoundingClientRect().top;
-    const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
-    const target = sectionTop + travel * ((index + 0.15) / journeys.length);
-    window.scrollTo({ top: target, behavior: "smooth" });
+  const pauseAfterInteraction = () => {
+    setIsPaused(true);
+    if (resumeTimer.current) window.clearTimeout(resumeTimer.current);
+    resumeTimer.current = window.setTimeout(() => setIsPaused(false), 9000);
+  };
+  const showJourney = (index: number) => {
+    setActiveIndex((index + journeys.length) % journeys.length);
+    pauseAfterInteraction();
   };
 
   return (
     <section
-      ref={sectionRef}
       id="journeys"
       className="home-featured-cinema"
-      style={{ "--featured-count": journeys.length } as CSSProperties}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onPointerDown={(event) => {
+        pointerStart.current = event.clientX;
+        didSwipe.current = false;
+        pauseAfterInteraction();
+      }}
+      onPointerUp={(event) => {
+        if (pointerStart.current === null) return;
+        const distance = event.clientX - pointerStart.current;
+        if (Math.abs(distance) > 48) {
+          didSwipe.current = true;
+          showJourney(activeIndex + (distance < 0 ? 1 : -1));
+        }
+        pointerStart.current = null;
+      }}
+      onPointerCancel={() => {
+        pointerStart.current = null;
+      }}
     >
       <div className="home-featured-cinema__stage">
         <div className="home-featured-cinema__media" aria-hidden="true">
@@ -396,38 +386,41 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                 </div>
               </dl>
               <div className="home-featured-cinema__actions">
-                <Link href={journey.href} className="home-featured-cinema__link">
-                  View full journey
+                <Link
+                  href={journey.href}
+                  className="home-featured-cinema__link"
+                  onClick={(event) => {
+                    if (!didSwipe.current) return;
+                    event.preventDefault();
+                    didSwipe.current = false;
+                  }}
+                >
+                  View journey
                   <ArrowUpRight size={17} aria-hidden="true" />
                 </Link>
                 <Link
                   href={`/start-planning?journey=${encodeURIComponent(journey.title)}`}
                   className="home-featured-cinema__link home-featured-cinema__link--secondary"
+                  onClick={(event) => {
+                    if (!didSwipe.current) return;
+                    event.preventDefault();
+                    didSwipe.current = false;
+                  }}
                 >
-                  Plan a similar journey
+                  Plan this trip
                 </Link>
               </div>
             </article>
           ))}
         </div>
 
-        <div
-          ref={navigationRef}
-          className="home-featured-cinema__navigation"
-          aria-label="Featured journeys"
-        >
+        <div className="home-featured-cinema__navigation" aria-label="Featured journeys">
           {journeys.map((journey, index) => (
-            <Link
-              href={journey.href}
+            <button
+              type="button"
               key={journey.href}
-              onClick={(event) => {
-                if (index === activeIndex) return;
-                event.preventDefault();
-                goToJourney(index);
-              }}
-              aria-label={
-                index === activeIndex ? `View ${journey.title} details` : `Show ${journey.title}`
-              }
+              onClick={() => showJourney(index)}
+              aria-label={`Show ${journey.title}`}
               aria-current={index === activeIndex ? "true" : undefined}
             >
               <span>{String(index + 1).padStart(2, "0")}</span>
@@ -435,9 +428,27 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                 <strong>{journey.navLabel || journey.title}</strong>
                 <small>{journey.duration}</small>
               </span>
-              <ArrowUpRight size={15} aria-hidden="true" />
-            </Link>
+            </button>
           ))}
+        </div>
+        <div className="home-featured-cinema__arrows">
+          <button
+            type="button"
+            onClick={() => showJourney(activeIndex - 1)}
+            aria-label="Previous journey"
+          >
+            <ArrowLeft aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={() => showJourney(activeIndex + 1)}
+            aria-label="Next journey"
+          >
+            <ArrowRight aria-hidden="true" />
+          </button>
+        </div>
+        <div className="home-featured-cinema__progress" aria-hidden="true">
+          <span key={activeIndex} style={{ "--featured-duration": "7600ms" } as CSSProperties} />
         </div>
       </div>
     </section>
