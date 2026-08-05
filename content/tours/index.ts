@@ -859,8 +859,8 @@ export const tours: Tour[] = [
     },
   },
   {
-    slug: "beijing-unhurried-private-5-day-journey",
-    title: "5-Day Private Beijing Tour",
+    slug: "beijing-great-wall-private-5-day-tour",
+    title: "5-Day Beijing & Great Wall Private Tour",
     subtitle:
       "One well-located hotel, private support and five considered days across imperial Beijing and the Great Wall.",
     duration: "5 Days / 4 Nights",
@@ -902,7 +902,7 @@ export const tours: Tour[] = [
         },
         {
           label: "Travel Style",
-          value: "Private, unhurried",
+          value: "Private and flexible",
           helper:
             "English-speaking driver-host for 2 or 4 travelers; separate driver and guide for 6 or 8.",
         },
@@ -1355,12 +1355,12 @@ export const tours: Tour[] = [
     },
     inquiry: {
       emailHref:
-        "mailto:chinaprimedmc@gmail.com?subject=Beijing%20Unhurried%20Private%205-Day%20Journey%20Quotation",
+        "mailto:chinaprimedmc@gmail.com?subject=5-Day%20Beijing%20%26%20Great%20Wall%20Private%20Tour%20Quotation",
       whatsappHref:
         "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20quotation%20for%20the%205-day%20private%20Beijing%20tour.%0A%0AMuslim-friendly%20planning%20needs%3A%20",
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
-        "I am interested in Beijing Unhurried — A Private 5-Day Journey. Please help me plan my dining preferences, prayer timing and the right pace for my travelers.",
+        "I am interested in the 5-Day Beijing & Great Wall Private Tour. Please help me plan dining preferences, prayer timing and a suitable pace for my travelers.",
     },
   },
   {
@@ -1878,12 +1878,12 @@ export const tours: Tour[] = [
     },
     inquiry: {
       emailHref:
-        "mailto:chinaprimedmc@gmail.com?subject=Shanghai%20Skylines%20%26%20Zhangjiajie%27s%20Floating%20Peaks%20Quotation",
+        "mailto:chinaprimedmc@gmail.com?subject=8-Day%20Shanghai%20%26%20Zhangjiajie%20Private%20Tour%20Quotation",
       whatsappHref:
         "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20quotation%20for%20the%208-day%20Shanghai%20and%20Zhangjiajie%20private%20tour.",
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
-        "I am interested in Shanghai Skylines & Zhangjiajie's Floating Peaks. Please prepare a quotation for my party.",
+        "I am interested in the 8-Day Shanghai & Zhangjiajie Private Tour. Please prepare a quotation for my party.",
     },
   },
 ];

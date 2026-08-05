@@ -61,7 +61,7 @@ const shanghaiZhangjiajie = tours.find(
   (tour) => tour.slug === "shanghai-zhangjiajie-floating-peaks",
 );
 const beijingUnhurried = tours.find(
-  (tour) => tour.slug === "beijing-unhurried-private-5-day-journey",
+  (tour) => tour.slug === "beijing-great-wall-private-5-day-tour",
 );
 
 if (!flagship) {
@@ -77,7 +77,7 @@ if (!shanghaiZhangjiajie) {
 }
 
 if (!beijingUnhurried) {
-  throw new Error("The Beijing Unhurried journey is required for the journeys catalog.");
+  throw new Error("The five-day Beijing journey is required for the journeys catalog.");
 }
 
 const firstChina: JourneyCatalogItem = {

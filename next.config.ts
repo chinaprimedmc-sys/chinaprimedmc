@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/tours/beijing-unhurried-private-5-day-journey",
+        destination: "/tours/beijing-great-wall-private-5-day-tour",
+        permanent: true,
+      },
+      {
         source: "/tours/family-china",
         destination: "/tours",
         permanent: true,

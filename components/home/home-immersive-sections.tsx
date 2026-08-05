@@ -27,9 +27,7 @@ type FeaturedJourney = {
   title: string;
   displayTitle: string;
   navLabel: string;
-  titleLength: "short" | "medium" | "long";
-  durationBadge: string;
-  accent: "gold" | "bamboo";
+  routeLine: string;
   description: string;
   image: MediaAsset;
   href: string;
@@ -286,6 +284,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
 
   useEffect(() => {
     if (isPaused || journeys.length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % journeys.length);
     }, 7600);
@@ -336,99 +335,112 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
       }}
     >
       <div className="home-featured-cinema__stage">
-        <div className="home-featured-cinema__media" aria-hidden="true">
-          {journeys.map((journey, index) => (
-            <div
-              className="home-featured-cinema__scene"
-              data-active={index === activeIndex}
-              key={journey.href}
-            >
-              <OptimizedImage
-                src={journey.image.src}
-                alt=""
-                fill
-                sizes="100vw"
-                objectPosition={journey.image.objectPosition}
-                frameClassName="absolute inset-0 h-full"
-                className="home-featured-cinema__image h-full w-full"
-              />
-            </div>
-          ))}
-        </div>
-        <div className="home-featured-cinema__wash" aria-hidden="true" />
+        <header className="home-featured-cinema__header">
+          <p>Featured private journeys</p>
+          <p aria-live="polite">
+            {String(activeIndex + 1).padStart(2, "0")} / {String(journeys.length).padStart(2, "0")}
+          </p>
+        </header>
 
-        <div className="home-featured-cinema__content">
-          {journeys.map((journey, index) => (
-            <article
-              key={journey.href}
-              className="home-featured-cinema__chapter"
-              data-active={index === activeIndex}
-              data-accent={journey.accent}
-              data-title-length={journey.titleLength}
-              aria-hidden={index !== activeIndex}
-              inert={index !== activeIndex}
-            >
-              <p className="home-featured-cinema__eyebrow">
-                Featured journey · {String(index + 1).padStart(2, "0")} /{" "}
-                {String(journeys.length).padStart(2, "0")}
-              </p>
-              <p className="home-featured-cinema__duration">{journey.durationBadge}</p>
-              <h2 title={journey.title}>{journey.displayTitle}</h2>
-              <p className="home-featured-cinema__summary">{journey.description}</p>
-              <dl className="home-featured-cinema__facts">
-                <div>
-                  <dt>Route</dt>
-                  <dd>{journey.route}</dd>
-                </div>
-                <div>
-                  <dt>Best for</dt>
-                  <dd>{journey.bestFor}</dd>
-                </div>
-              </dl>
-              <div className="home-featured-cinema__actions">
-                <Link
-                  href={journey.href}
-                  className="home-featured-cinema__link"
-                  onClick={(event) => {
-                    if (!didSwipe.current) return;
-                    event.preventDefault();
-                    didSwipe.current = false;
-                  }}
-                >
-                  View journey
-                  <ArrowUpRight size={17} aria-hidden="true" />
-                </Link>
-                <Link
-                  href={`/start-planning?journey=${encodeURIComponent(journey.title)}`}
-                  className="home-featured-cinema__link home-featured-cinema__link--secondary"
-                  onClick={(event) => {
-                    if (!didSwipe.current) return;
-                    event.preventDefault();
-                    didSwipe.current = false;
-                  }}
-                >
-                  Plan this trip
-                </Link>
+        <div className="home-featured-cinema__layout">
+          <div className="home-featured-cinema__media">
+            {journeys.map((journey, index) => (
+              <div
+                className="home-featured-cinema__scene"
+                data-active={index === activeIndex}
+                key={journey.href}
+                aria-hidden={index !== activeIndex}
+              >
+                <OptimizedImage
+                  src={journey.image.src}
+                  alt={index === activeIndex ? journey.image.alt : ""}
+                  fill
+                  sizes="(min-width: 768px) 62vw, calc(100vw - 2rem)"
+                  frameClassName="absolute inset-0 h-full"
+                  className="home-featured-cinema__image h-full w-full object-contain"
+                />
               </div>
-            </article>
-          ))}
+            ))}
+          </div>
+
+          <div className="home-featured-cinema__content">
+            {journeys.map((journey, index) => (
+              <article
+                key={journey.href}
+                className="home-featured-cinema__chapter"
+                data-active={index === activeIndex}
+                aria-hidden={index !== activeIndex}
+                inert={index !== activeIndex}
+              >
+                <p className="home-featured-cinema__route">{journey.routeLine}</p>
+                <h2 title={journey.title}>{journey.displayTitle}</h2>
+                <p className="home-featured-cinema__summary">{journey.description}</p>
+                <div className="home-featured-cinema__actions">
+                  <Link
+                    href={journey.href}
+                    className="home-featured-cinema__link"
+                    onClick={(event) => {
+                      if (!didSwipe.current) return;
+                      event.preventDefault();
+                      didSwipe.current = false;
+                    }}
+                  >
+                    Explore the journey
+                    <ArrowUpRight size={17} aria-hidden="true" />
+                  </Link>
+                  <Link
+                    href={`/start-planning?journey=${encodeURIComponent(journey.title)}`}
+                    className="home-featured-cinema__link home-featured-cinema__link--secondary"
+                    onClick={(event) => {
+                      if (!didSwipe.current) return;
+                      event.preventDefault();
+                      didSwipe.current = false;
+                    }}
+                  >
+                    Tailor this journey
+                    <ArrowUpRight size={15} aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div className="home-featured-cinema__navigation" aria-label="Featured journeys">
           {journeys.map((journey, index) => (
-            <button
-              type="button"
+            <Link
+              href={journey.href}
               key={journey.href}
-              onClick={() => showJourney(index)}
-              aria-label={`Show ${journey.title}`}
+              onClick={(event) => {
+                if (index === activeIndex) return;
+                event.preventDefault();
+                showJourney(index);
+              }}
+              aria-label={
+                index === activeIndex
+                  ? `Open ${journey.displayTitle}`
+                  : `Show ${journey.displayTitle}`
+              }
               aria-current={index === activeIndex ? "true" : undefined}
             >
-              <span>{String(index + 1).padStart(2, "0")}</span>
+              <span className="home-featured-cinema__thumb">
+                <OptimizedImage
+                  src={journey.image.src}
+                  alt=""
+                  fill
+                  sizes="5rem"
+                  frameClassName="absolute inset-0 h-full"
+                  className="h-full w-full object-contain"
+                />
+              </span>
               <span className="home-featured-cinema__navigation-copy">
                 <strong>{journey.navLabel || journey.title}</strong>
                 <small>{journey.duration}</small>
+                <span className="home-featured-cinema__navigation-index" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </span>
-            </button>
+            </Link>
           ))}
         </div>
         <div className="home-featured-cinema__arrows">

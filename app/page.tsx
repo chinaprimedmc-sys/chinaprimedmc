@@ -10,23 +10,46 @@ import { PageContainer } from "@/components/layout/page-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import { desktopHeroImage, heroImage } from "@/content/home/homepage";
+import { desktopHeroImage, heroImage, mobileHeroImage } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { getPublicHomePage, getPublicSiteSettings } from "@/lib/cms/public-content";
 import { mergeCoreJourneyFallbacks } from "@/lib/cms/core-journey-fallbacks";
 
-const featuredJourneyDisplayTitles: Record<string, string> = {
-  "first-china-beautifully-paced": "Beijing, Xi'an & Shanghai",
-  "chengdu-pandas-sichuan-table": "Chengdu, Pandas & Sichuan Food",
-  "beijing-unhurried-private-5-day-journey": "Beijing Unhurried",
-  "shanghai-zhangjiajie-floating-peaks": "Shanghai & Zhangjiajie",
+const featuredJourneyEditorial: Record<
+  string,
+  { title: string; routeLine: string; description: string }
+> = {
+  "first-china-beautifully-paced": {
+    title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
+    routeLine: "9 days · Beijing, Xi'an and Shanghai",
+    description:
+      "China's three defining cities, privately arranged with considered pacing and local support throughout.",
+  },
+  "chengdu-pandas-sichuan-table": {
+    title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
+    routeLine: "5 days · Chengdu and Leshan",
+    description:
+      "Pandas, regional cuisine and Chengdu's everyday life, arranged from one carefully chosen base.",
+  },
+  "beijing-great-wall-private-5-day-tour": {
+    title: "5-Day Beijing & Great Wall Private Tour",
+    routeLine: "5 days · Beijing",
+    description:
+      "Beijing's imperial landmarks, neighborhoods and cultural traditions, shaped around your interests and preferred pace.",
+  },
+  "shanghai-zhangjiajie-floating-peaks": {
+    title: "8-Day Shanghai & Zhangjiajie Private Tour",
+    routeLine: "8 days · Shanghai, Wulingyuan and Zhangjiajie",
+    description:
+      "Contemporary Shanghai and remarkable mountain landscapes, connected through seamless private arrangements.",
+  },
 };
 
-function getFeaturedJourneyDisplayTitle(slug: string, title: string) {
-  const preferredTitle = featuredJourneyDisplayTitles[slug];
-  if (preferredTitle) return preferredTitle;
+function getFeaturedJourneyEditorial(slug: string, title: string, duration: string, route: string) {
+  const preferredEditorial = featuredJourneyEditorial[slug];
+  if (preferredEditorial) return preferredEditorial;
 
   const simplifiedTitle = title
     .replace(/^\s*\d+\s*[-–—]?\s*day\s+/i, "")
@@ -35,19 +58,23 @@ function getFeaturedJourneyDisplayTitle(slug: string, title: string) {
     .trim();
 
   const displayTitle = simplifiedTitle || title;
-  if (displayTitle.length <= 58) return displayTitle;
+  if (displayTitle.length <= 58) {
+    return {
+      title: displayTitle,
+      routeLine: `${duration} · ${route.replaceAll(" · ", ", ")}`,
+      description: "A private China journey arranged around your interests, comfort and pace.",
+    };
+  }
 
   const shortenedTitle = displayTitle
     .slice(0, 58)
     .replace(/\s+\S*$/, "")
     .trim();
-  return `${shortenedTitle || displayTitle.slice(0, 58).trim()}…`;
-}
-
-function getFeaturedTitleLength(title: string) {
-  if (title.length <= 28) return "short" as const;
-  if (title.length <= 42) return "medium" as const;
-  return "long" as const;
+  return {
+    title: `${shortenedTitle || displayTitle.slice(0, 58).trim()}…`,
+    routeLine: `${duration} · ${route.replaceAll(" · ", ", ")}`,
+    description: "A private China journey arranged around your interests, comfort and pace.",
+  };
 }
 
 export const metadata: Metadata = createMetadata({
@@ -61,17 +88,20 @@ export default async function HomePage() {
   const [home, settings] = await Promise.all([getPublicHomePage(), getPublicSiteSettings()]);
   const featuredJourneys = mergeCoreJourneyFallbacks(home.featuredJourneys)
     .filter((journey) => journey.hero_image)
-    .map((journey, index) => {
-      const displayTitle = getFeaturedJourneyDisplayTitle(journey.slug, journey.title);
+    .map((journey) => {
+      const editorial = getFeaturedJourneyEditorial(
+        journey.slug,
+        journey.title,
+        journey.duration_label,
+        journey.route,
+      );
 
       return {
         title: journey.title,
-        displayTitle,
-        navLabel: displayTitle,
-        titleLength: getFeaturedTitleLength(displayTitle),
-        durationBadge: journey.duration_label.toUpperCase(),
-        accent: index % 2 ? ("bamboo" as const) : ("gold" as const),
-        description: journey.summary,
+        displayTitle: editorial.title,
+        navLabel: editorial.title,
+        routeLine: editorial.routeLine,
+        description: editorial.description,
         image: {
           src: journey.hero_image!.url,
           alt: journey.hero_image!.alt_text,
@@ -100,10 +130,10 @@ export default async function HomePage() {
         <picture className="home-conversion-hero__media">
           <source media="(min-width: 768px)" srcSet={desktopHeroImage.src} type="image/avif" />
           <img
-            src={home.heroImage.src}
-            alt="An immersive view of China, from its cultural landmarks to its natural landscapes"
-            width={desktopHeroImage.width}
-            height={desktopHeroImage.height}
+            src={mobileHeroImage.src}
+            alt={mobileHeroImage.alt}
+            width={mobileHeroImage.width}
+            height={mobileHeroImage.height}
             loading="eager"
             fetchPriority="high"
             className="home-conversion-hero__image"
