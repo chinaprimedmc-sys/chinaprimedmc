@@ -357,7 +357,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                   fill
                   sizes="(min-width: 768px) 62vw, calc(100vw - 2rem)"
                   frameClassName="absolute inset-0 h-full"
-                  className="home-featured-cinema__image h-full w-full object-contain"
+                  className="home-featured-cinema__image h-full w-full object-cover"
                 />
               </div>
             ))}
@@ -430,7 +430,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                   fill
                   sizes="5rem"
                   frameClassName="absolute inset-0 h-full"
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-cover"
                 />
               </span>
               <span className="home-featured-cinema__navigation-copy">

@@ -19,31 +19,45 @@ import { mergeCoreJourneyFallbacks } from "@/lib/cms/core-journey-fallbacks";
 
 const featuredJourneyEditorial: Record<
   string,
-  { title: string; routeLine: string; description: string }
+  {
+    title: string;
+    routeLine: string;
+    description: string;
+    imageSrc: string;
+    imageAlt: string;
+  }
 > = {
   "first-china-beautifully-paced": {
     title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
     routeLine: "9 days · Beijing, Xi'an and Shanghai",
     description:
       "China's three defining cities, privately arranged with considered pacing and local support throughout.",
+    imageSrc: "/home/featured-journeys/beijing-xian-shanghai.avif",
+    imageAlt: "The Great Wall crossing mountain ridges near Beijing in warm evening light",
   },
   "chengdu-pandas-sichuan-table": {
     title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
     routeLine: "5 days · Chengdu and Leshan",
     description:
       "Pandas, regional cuisine and Chengdu's everyday life, arranged from one carefully chosen base.",
+    imageSrc: "/home/featured-journeys/chengdu-pandas.avif",
+    imageAlt: "Three giant pandas eating bamboo in Chengdu",
   },
   "beijing-great-wall-private-5-day-tour": {
     title: "5-Day Beijing & Great Wall Private Tour",
     routeLine: "5 days · Beijing",
     description:
       "Beijing's imperial landmarks, neighborhoods and cultural traditions, shaped around your interests and preferred pace.",
+    imageSrc: "/home/featured-journeys/beijing-great-wall.avif",
+    imageAlt: "The Great Wall winding through autumn forest near Beijing",
   },
   "shanghai-zhangjiajie-floating-peaks": {
     title: "8-Day Shanghai & Zhangjiajie Private Tour",
     routeLine: "8 days · Shanghai, Wulingyuan and Zhangjiajie",
     description:
       "Contemporary Shanghai and remarkable mountain landscapes, connected through seamless private arrangements.",
+    imageSrc: "/home/featured-journeys/shanghai-zhangjiajie.avif",
+    imageAlt: "Sandstone pillars rising through Zhangjiajie National Forest Park",
   },
 };
 
@@ -63,6 +77,8 @@ function getFeaturedJourneyEditorial(slug: string, title: string, duration: stri
       title: displayTitle,
       routeLine: `${duration} · ${route.replaceAll(" · ", ", ")}`,
       description: "A private China journey arranged around your interests, comfort and pace.",
+      imageSrc: "",
+      imageAlt: "",
     };
   }
 
@@ -74,6 +90,8 @@ function getFeaturedJourneyEditorial(slug: string, title: string, duration: stri
     title: `${shortenedTitle || displayTitle.slice(0, 58).trim()}…`,
     routeLine: `${duration} · ${route.replaceAll(" · ", ", ")}`,
     description: "A private China journey arranged around your interests, comfort and pace.",
+    imageSrc: "",
+    imageAlt: "",
   };
 }
 
@@ -103,9 +121,9 @@ export default async function HomePage() {
         routeLine: editorial.routeLine,
         description: editorial.description,
         image: {
-          src: journey.hero_image!.url,
-          alt: journey.hero_image!.alt_text,
-          objectPosition: journey.hero_image!.object_position,
+          src: editorial.imageSrc || journey.hero_image!.url,
+          alt: editorial.imageAlt || journey.hero_image!.alt_text,
+          objectPosition: editorial.imageSrc ? "50% 50%" : journey.hero_image!.object_position,
         },
         href: `/tours/${journey.slug}`,
         duration: journey.duration_label,
