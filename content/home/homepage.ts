@@ -45,6 +45,15 @@ export const heroImage: MediaAsset = {
   objectPosition: "58% 52%",
 };
 
+export const desktopHeroImage: MediaAsset = {
+  src: "/home/jiuzhaigou-autumn-desktop-hero.avif",
+  alt: "Turquoise lake, autumn forest and snow-covered mountains in Jiuzhaigou, China",
+  width: 1440,
+  height: 1440,
+  priority: true,
+  objectPosition: "50% 24%",
+};
+
 export const homeEditorialImages = {
   greatWall: {
     src: "/home/editorial/great-wall-private-china-travel.webp",

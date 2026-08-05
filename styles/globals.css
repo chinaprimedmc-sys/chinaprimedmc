@@ -335,11 +335,11 @@ a {
   }
 
   .home-conversion-hero {
-    height: max(40rem, 92svh);
+    height: 100svh;
   }
 
   .home-conversion-hero__image {
-    object-position: 62% 50% !important;
+    object-position: 62% 50%;
   }
 
   .home-conversion-hero__shade {
@@ -419,21 +419,38 @@ a {
 }
 
 .home-conversion-hero {
-  height: max(40rem, 92svh);
+  height: 100svh;
   margin-top: calc(-1 * var(--site-nav-offset));
   min-height: 0;
   overflow: hidden;
   position: relative;
 }
 
+.home-conversion-hero__media {
+  background: var(--bg-dark-primary);
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
 .home-conversion-hero__image {
   animation: home-conversion-camera 18s var(--motion-ease-out) both;
+  height: 100%;
   object-fit: cover;
+  object-position: 50% 24%;
   transform-origin: 58% 52%;
+  width: 100%;
 }
 
 .home-conversion-hero__shade {
-  background: rgba(7, 8, 7, 0.42);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 8, 7, 0.62) 0%,
+      rgba(7, 8, 7, 0.38) 44%,
+      rgba(7, 8, 7, 0.12) 100%
+    ),
+    linear-gradient(0deg, rgba(7, 8, 7, 0.32) 0%, transparent 48%, rgba(7, 8, 7, 0.12) 100%);
   inset: 0;
   position: absolute;
   z-index: 10;

@@ -10,7 +10,7 @@ import { PageContainer } from "@/components/layout/page-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import { heroImage } from "@/content/home/homepage";
+import { desktopHeroImage, heroImage } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -97,17 +97,18 @@ export default async function HomePage() {
       />
 
       <section className="home-conversion-hero">
-        <OptimizedImage
-          src={home.heroImage.src}
-          alt={home.heroImage.alt}
-          fill
-          loading="eager"
-          priority
-          sizes="100vw"
-          objectPosition={home.heroImage.objectPosition}
-          frameClassName="absolute inset-0 h-full"
-          className="home-conversion-hero__image h-full w-full"
-        />
+        <picture className="home-conversion-hero__media">
+          <source media="(min-width: 768px)" srcSet={desktopHeroImage.src} type="image/avif" />
+          <img
+            src={home.heroImage.src}
+            alt="An immersive view of China, from its cultural landmarks to its natural landscapes"
+            width={desktopHeroImage.width}
+            height={desktopHeroImage.height}
+            loading="eager"
+            fetchPriority="high"
+            className="home-conversion-hero__image"
+          />
+        </picture>
         <div className="home-conversion-hero__shade" aria-hidden="true" />
         <ContentContainer
           size="xl"
