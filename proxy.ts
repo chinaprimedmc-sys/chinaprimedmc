@@ -20,7 +20,7 @@ function isProtectedPath(pathname: string) {
   );
 }
 
-function buildContentSecurityPolicy() {
+function buildContentSecurityPolicy(nonce = "") {
   const r2Source = getR2Source();
   const development = process.env.NODE_ENV !== "production";
   return [
@@ -31,7 +31,7 @@ function buildContentSecurityPolicy() {
     "object-src 'none'",
     `img-src 'self' data: blob: https://images.unsplash.com https://upload.wikimedia.org https://nuffatfbaydrzigihman.supabase.co https://*.r2.dev${r2Source}`,
     "font-src 'self'",
-    `script-src 'self' https://challenges.cloudflare.com${development ? " 'unsafe-eval'" : ""}`,
+    `script-src 'self' 'nonce-${nonce}' https://challenges.cloudflare.com${development ? " 'unsafe-eval'" : ""}`,
     "style-src 'self' 'unsafe-inline'",
     `connect-src 'self' mailto: https://*.r2.cloudflarestorage.com https://challenges.cloudflare.com${development ? " ws: wss:" : ""}`,
     "frame-src 'self' https://challenges.cloudflare.com",
@@ -67,8 +67,11 @@ function unauthorizedAdminResponse(request: NextRequest, csp: string) {
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const csp = buildContentSecurityPolicy();
+  const nonce = createNonce();
+  const csp = buildContentSecurityPolicy(nonce);
   const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("Content-Security-Policy", csp);
+  requestHeaders.set("x-nonce", nonce);
 
   if (!isKnownPublicDetailPath(pathname)) {
     const notFoundResponse = NextResponse.rewrite(
@@ -114,6 +117,11 @@ export async function proxy(request: NextRequest) {
   }
 
   return applySecurityHeaders(response, csp);
+}
+
+function createNonce() {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  return btoa(String.fromCharCode(...bytes));
 }
 
 function getR2Source() {
