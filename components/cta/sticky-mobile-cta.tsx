@@ -1,3 +1,11 @@
+"use client";
+
+import { ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import { CtaButton } from "@/components/cta/cta-button";
+import { cn } from "@/lib/utils/cn";
+
 export function StickyMobileCta({
   label = "Plan My Trip",
   href = "/contact",
@@ -9,10 +17,27 @@ export function StickyMobileCta({
   className?: string;
   showAfter?: number;
 }) {
-  void label;
-  void href;
-  void className;
-  void showAfter;
+  const [hasPassedThreshold, setHasPassedThreshold] = useState(showAfter === 0);
 
-  return null;
+  useEffect(() => {
+    if (showAfter === 0) return;
+
+    const updateVisibility = () => setHasPassedThreshold(window.scrollY >= showAfter);
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, [showAfter]);
+
+  return (
+    <div className={cn("sticky-mobile-cta", hasPassedThreshold && "is-visible", className)}>
+      <CtaButton
+        href={href}
+        variant="primary"
+        size="md"
+        icon={<ArrowUpRight size={16} aria-hidden="true" />}
+      >
+        {label}
+      </CtaButton>
+    </div>
+  );
 }

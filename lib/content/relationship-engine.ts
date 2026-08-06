@@ -53,7 +53,9 @@ const experienceCatalog: Record<string, TourExperienceOption> = {
 
 export function getRelationshipsForArticle(article: JournalArticle): ContentRelationships {
   const manualDestinationSlugs = article.related?.destinations ?? [];
-  const inferredDestinationSlugs = article.tags.filter((tag) => ["beijing"].includes(tag));
+  const inferredDestinationSlugs = article.tags.filter((tag) =>
+    ["beijing", "xian", "chengdu", "shanghai", "guilin", "zhangjiajie"].includes(tag),
+  );
   const destinationSlugs = unique([...manualDestinationSlugs, ...inferredDestinationSlugs]);
 
   const manualTourSlugs = article.related?.tours ?? [];

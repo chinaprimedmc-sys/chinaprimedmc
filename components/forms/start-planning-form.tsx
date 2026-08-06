@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { CtaButton } from "@/components/cta";
 import {
@@ -16,6 +16,7 @@ import { Card } from "@/components/ui/card";
 import { startPlanningOptions } from "@/content/planning";
 import { cn } from "@/lib/utils/cn";
 import { isTurnstileConfigured, TurnstileWidget } from "@/components/security/turnstile-widget";
+import { trackEvent } from "@/lib/analytics/events";
 
 type PlanningFormState = {
   travelerType: string;
@@ -33,6 +34,20 @@ type PlanningFormState = {
   phone: string;
   contactMethods: string[];
   notes: string;
+};
+
+type SourceContext = {
+  sourcePage: string;
+  landingPage: string;
+  referrer: string;
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  utmContent: string;
+  utmTerm: string;
+  gclid: string;
+  journeySlug: string;
+  viewedJourneys: string[];
 };
 
 const initialState: PlanningFormState = {
@@ -78,7 +93,16 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
   const handleTurnstileToken = useCallback((token: string) => setTurnstileToken(token), []);
 
+  useEffect(() => {
+    trackEvent("form_start", { saved_journeys: savedJourneys.length });
+  }, [savedJourneys.length]);
+
   const progress = ((step + 1) / steps.length) * 100;
+
+  function advanceStep() {
+    trackEvent("form_step_complete", { step: step + 1, label: steps[step].label });
+    setStep((current) => current + 1);
+  }
 
   function update<K extends keyof PlanningFormState>(key: K, value: PlanningFormState[K]) {
     setState((current) => ({ ...current, [key]: value }));
@@ -172,7 +196,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
         onSubmit={async (event) => {
           event.preventDefault();
           if (step < steps.length - 1) {
-            setStep((current) => current + 1);
+            advanceStep();
             return;
           }
 
@@ -191,6 +215,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
 
           try {
             const sourceContext = getSourceContext();
+            trackEvent("form_submit", { source: sourceContext.utmSource || "direct" });
             const response = await fetch("/api/inquiries", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -208,6 +233,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
             }
 
             setSubmitted(true);
+            trackEvent("form_success", { source: sourceContext.utmSource || "direct" });
           } catch (error) {
             setTurnstileResetSignal((current) => current + 1);
             setSubmitError(
@@ -215,6 +241,9 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
                 ? error.message
                 : "We could not save your inquiry. Please try again.",
             );
+            trackEvent("form_error", {
+              message: error instanceof Error ? error.message.slice(0, 100) : "unknown",
+            });
           } finally {
             setSubmitting(false);
           }
@@ -432,26 +461,61 @@ function validateContactStep(state: PlanningFormState) {
   return "";
 }
 
-function getSourceContext() {
+function getSourceContext(): SourceContext {
   const params = new URLSearchParams(window.location.search);
-  let referrerPath = "";
+  const landingStorageKey = "aviora-first-landing-page";
+  const storedLandingPage = window.sessionStorage.getItem(landingStorageKey);
+  const landingPage = storedLandingPage || `${window.location.pathname}${window.location.search}`;
+  if (!storedLandingPage) window.sessionStorage.setItem(landingStorageKey, landingPage);
+  const storedAttribution = readStoredAttribution();
+  const viewedJourneys = readViewedJourneys();
+  let referrer = "";
 
   if (document.referrer) {
     try {
-      const referrer = new URL(document.referrer);
-      if (referrer.origin === window.location.origin) {
-        referrerPath = `${referrer.pathname}${referrer.search}`;
-      }
+      const parsedReferrer = new URL(document.referrer);
+      referrer =
+        parsedReferrer.origin === window.location.origin
+          ? parsedReferrer.pathname
+          : parsedReferrer.origin;
     } catch {
-      referrerPath = "";
+      referrer = "";
     }
   }
 
   return {
     sourcePage:
-      params.get("source") ||
-      referrerPath ||
-      `${window.location.pathname}${window.location.search}`,
+      params.get("source") || referrer || `${window.location.pathname}${window.location.search}`,
+    landingPage,
+    referrer: storedAttribution.referrer || referrer,
+    utmSource: storedAttribution.utmSource || params.get("utm_source") || "",
+    utmMedium: storedAttribution.utmMedium || params.get("utm_medium") || "",
+    utmCampaign: storedAttribution.utmCampaign || params.get("utm_campaign") || "",
+    utmContent: storedAttribution.utmContent || params.get("utm_content") || "",
+    utmTerm: storedAttribution.utmTerm || params.get("utm_term") || "",
+    gclid: storedAttribution.gclid || params.get("gclid") || "",
     journeySlug: params.get("journey") || "",
+    viewedJourneys,
   };
+}
+
+function readStoredAttribution() {
+  try {
+    return JSON.parse(
+      window.sessionStorage.getItem("aviora-attribution") || "{}",
+    ) as Partial<SourceContext>;
+  } catch {
+    return {};
+  }
+}
+
+function readViewedJourneys() {
+  try {
+    const value = JSON.parse(window.sessionStorage.getItem("aviora-viewed-journeys") || "[]");
+    return Array.isArray(value)
+      ? value.filter((item): item is string => typeof item === "string").slice(0, 20)
+      : [];
+  } catch {
+    return [];
+  }
 }

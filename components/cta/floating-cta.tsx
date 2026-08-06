@@ -1,3 +1,8 @@
+import { ArrowUpRight } from "lucide-react";
+
+import { CtaButton } from "@/components/cta/cta-button";
+import { cn } from "@/lib/utils/cn";
+
 export function FloatingCta({
   label = "Start Planning",
   href = "/contact",
@@ -7,9 +12,16 @@ export function FloatingCta({
   href?: string;
   className?: string;
 }) {
-  void label;
-  void href;
-  void className;
-
-  return null;
+  return (
+    <div className={cn("floating-cta", className)}>
+      <CtaButton
+        href={href}
+        variant="lightFrosted"
+        size="sm"
+        icon={<ArrowUpRight size={15} aria-hidden="true" />}
+      >
+        {label}
+      </CtaButton>
+    </div>
+  );
 }

@@ -19,6 +19,7 @@ export type CmsDestinationCard = {
   bestFor: string;
   interests: string[];
   heroImage?: MediaAsset;
+  relatedJourneys?: JourneyPanelData[];
 };
 
 type DestinationExplorerContent = {
@@ -89,7 +90,6 @@ export function DestinationExplorer({
           }
           fill
           priority
-          unoptimized
           sizes="100vw"
           className="object-cover object-center motion-safe:animate-[destination-hero-breathe_16s_ease-out_both]"
         />

@@ -8,10 +8,13 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import type { CmsDestinationCard } from "@/components/destinations/destination-explorer";
 import type { NavigationItem } from "@/types/component-library";
+import type { JourneyCatalogItem } from "@/content/tours/catalog";
+import { journalArticles } from "@/content/journal";
 
 export function EditorialDestinationTemplate({
   destination,
   destinations,
+  journeys,
   navigation,
   cta,
 }: {
@@ -22,11 +25,19 @@ export function EditorialDestinationTemplate({
     planningNotes: string[];
   };
   destinations: CmsDestinationCard[];
+  journeys: JourneyCatalogItem[];
   navigation: NavigationItem[];
   cta: { label: string; href: string };
 }) {
   const related = destinations
     .filter((item) => item.region === destination.region && item.slug !== destination.slug)
+    .slice(0, 3);
+  const relatedGuides = journalArticles
+    .filter(
+      (article) =>
+        article.tags.includes(destination.slug) ||
+        article.related?.destinations?.includes(destination.slug),
+    )
     .slice(0, 3);
 
   return (
@@ -172,6 +183,83 @@ export function EditorialDestinationTemplate({
           </div>
         </div>
       </section>
+
+      {journeys.length ? (
+        <section className="border-y border-black/8 bg-white py-24">
+          <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
+            <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+              Private journeys including {destination.name}
+            </p>
+            <h2 className="mt-5 max-w-3xl font-serif text-4xl md:text-6xl">
+              See how {destination.name} fits into a considered route.
+            </h2>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {journeys.map((journey) => (
+                <Link
+                  key={journey.slug}
+                  href={journey.href}
+                  className="group grid gap-5 sm:grid-cols-[.8fr_1.2fr]"
+                >
+                  <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#eceee9]">
+                    <Image
+                      src={journey.image.src}
+                      alt={journey.image.alt}
+                      fill
+                      sizes="(min-width:768px) 30vw, 100vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                      style={{ objectPosition: journey.image.objectPosition }}
+                    />
+                  </span>
+                  <span className="self-center">
+                    <span className="text-xs font-semibold tracking-[.15em] text-[#607868] uppercase">
+                      {journey.durationLabel}
+                    </span>
+                    <span className="mt-2 block text-xl font-semibold">{journey.title}</span>
+                    <span className="mt-2 block text-sm leading-6 text-[#1b1c19]/58">
+                      {journey.routeLabel}
+                    </span>
+                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold">
+                      View journey{" "}
+                      <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                    </span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {relatedGuides.length ? (
+        <section className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8">
+          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+            Practical planning guides
+          </p>
+          <h2 className="mt-5 max-w-3xl font-serif text-4xl md:text-6xl">
+            Prepare for {destination.name} with clearer answers.
+          </h2>
+          <div className="mt-12 grid gap-8 border-y border-black/8">
+            {relatedGuides.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/journal/${article.slug}`}
+                className="group grid gap-4 border-b border-black/8 py-6 last:border-0 sm:grid-cols-[1fr_auto] sm:items-center"
+              >
+                <span>
+                  <span className="text-xs font-semibold tracking-[.15em] text-[#607868] uppercase">
+                    {article.category} · {article.readingTime}
+                  </span>
+                  <span className="mt-2 block text-xl font-semibold">{article.title}</span>
+                  <span className="mt-2 block max-w-2xl text-sm leading-6 text-[#1b1c19]/58">
+                    {article.excerpt}
+                  </span>
+                </span>
+                <ArrowRight className="size-5 transition group-hover:translate-x-1" />
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8">
         <div className="grid gap-10 rounded-[2rem] bg-[#dfe8e0] p-7 md:grid-cols-[1fr_auto] md:items-end md:p-12">

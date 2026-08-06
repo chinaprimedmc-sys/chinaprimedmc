@@ -116,6 +116,19 @@ export default async function TourPage({ params }: TourPageProps) {
   return (
     <>
       <JsonLd
+        id={`${journey.slug}-tour-schema`}
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TouristTrip",
+          name: journey.title,
+          description: journey.summary,
+          url: new URL(`/tours/${journey.slug}`, siteConfig.url).toString(),
+          image: new URL(journey.image.src, siteConfig.url).toString(),
+          touristType: journey.bestForFilters,
+          provider: { "@id": `${siteConfig.url}/#organization` },
+        }}
+      />
+      <JsonLd
         id={`${journey.slug}-breadcrumb-schema`}
         data={breadcrumbSchema([
           { name: "Home", path: "/" },

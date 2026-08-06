@@ -12,6 +12,7 @@ import {
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
+import { journeyCatalog } from "@/content/tours/catalog";
 
 type DestinationPageProps = { params: Promise<{ slug: string }> };
 
@@ -79,6 +80,9 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
       <EditorialDestinationTemplate
         destination={destination}
         destinations={destinations}
+        journeys={journeyCatalog.filter((journey) =>
+          journey.destinationFilters.includes(destination.name),
+        )}
         navigation={settings.navigation}
         cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
       />

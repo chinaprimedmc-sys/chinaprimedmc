@@ -10,6 +10,7 @@ import { SectionHeader } from "@/components/content";
 import { homeNavItems, storyImages } from "@/content/home/homepage";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import { Section } from "@/design-system/primitives/section";
+import { RecordViewed } from "@/features/discovery/record-viewed";
 
 type TourFrameworkTemplateProps = {
   item: JourneyCatalogItem;
@@ -20,6 +21,9 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
 
   return (
     <PageContainer className="pb-28 md:pb-0">
+      <RecordViewed
+        item={{ id: `tour:${item.slug}`, type: "tour", title: item.title, href: item.href }}
+      />
       <SiteNavigation items={homeNavItems} cta={{ label: "Plan My Trip", href: planningHref }} />
 
       <HeroLargeImage

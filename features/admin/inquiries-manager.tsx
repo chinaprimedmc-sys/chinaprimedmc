@@ -78,9 +78,29 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
                   {item.adults} 成人 · {item.children} 儿童
                   <br />
                   <span className="text-muted">{item.destinations.join(", ") || "未指定"}</span>
+                  {item.viewed_journeys?.length ? (
+                    <>
+                      <br />
+                      <span className="text-muted text-xs">
+                        Viewed: {item.viewed_journeys.join(", ")}
+                      </span>
+                    </>
+                  ) : null}
                 </td>
                 <td className="px-4 py-4">{item.budget_tier}</td>
-                <td className="text-muted px-4 py-4">{item.source_page}</td>
+                <td className="text-muted max-w-xs px-4 py-4">
+                  <span className="font-medium text-[var(--text-primary)]">
+                    {item.utm_source || sourceLabel(item.referrer, item.source_page)}
+                  </span>
+                  <br />
+                  <span>{item.landing_page || item.source_page}</span>
+                  {item.utm_campaign ? (
+                    <>
+                      <br />
+                      Campaign: {item.utm_campaign}
+                    </>
+                  ) : null}
+                </td>
                 <td className="text-muted max-w-xs px-4 py-4">{item.notes || "—"}</td>
                 <td className="px-4 py-4">
                   <select
@@ -104,4 +124,18 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
       </div>
     </div>
   );
+}
+
+function sourceLabel(referrer: string | null, sourcePage: string) {
+  if (referrer) {
+    try {
+      return new URL(referrer).hostname.replace(/^www\./, "");
+    } catch {
+      return referrer;
+    }
+  }
+  if (sourcePage.includes("utm_source=")) {
+    return new URLSearchParams(sourcePage.split("?")[1]).get("utm_source") || "Campaign";
+  }
+  return sourcePage.startsWith("/") ? "Direct / internal" : sourcePage;
 }

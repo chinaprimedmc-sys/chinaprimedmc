@@ -10,6 +10,7 @@ import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 import { hydrateJournalArticle } from "@/lib/content/journal-markdown";
+import { getRelationshipsForArticle } from "@/lib/content/relationship-engine";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -53,7 +54,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   const article = await hydrateJournalArticle(articleSummary);
 
-  const relationships = { destinations: [], tours: [], experiences: [], articles: [] };
+  const relationships = getRelationshipsForArticle(article);
   const faqs = article.content.filter((block) => block.type === "faq");
 
   return (

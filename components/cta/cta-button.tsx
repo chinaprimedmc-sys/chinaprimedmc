@@ -1,6 +1,9 @@
-import type { AnchorHTMLAttributes, ReactNode } from "react";
+"use client";
+
+import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
 
 import { buttonBaseStyles, buttonSizes, buttonVariants } from "@/components/ui/button-styles";
+import { trackCtaClick } from "@/lib/analytics/events";
 import { cn } from "@/lib/utils/cn";
 
 type CtaVariant =
@@ -28,6 +31,7 @@ export function CtaButton({
   variant = "primary",
   size = "md",
   icon,
+  onClick,
   ...props
 }: CtaButtonProps) {
   return (
@@ -39,6 +43,11 @@ export function CtaButton({
         buttonSizes[size],
         className,
       )}
+      onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+        const href = event.currentTarget.getAttribute("href") || "";
+        trackCtaClick(typeof children === "string" ? children : "cta", href);
+        onClick?.(event);
+      }}
       {...props}
     >
       <span className="inline-flex min-w-0 items-center justify-center gap-2.5 leading-none">

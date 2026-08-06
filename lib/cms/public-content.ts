@@ -20,6 +20,7 @@ import {
   proofPoints,
 } from "@/content/home/homepage";
 import { mergeCoreJourneyFallbacks } from "@/lib/cms/core-journey-fallbacks";
+import { journeyCatalog } from "@/content/tours/catalog";
 import type { MediaAsset } from "@/types/component-library";
 
 const destinationSeoDescriptions: Record<string, string> = {
@@ -107,6 +108,15 @@ export async function getPublicDestinations() {
         destinationSeoDescriptions[destination.id] ??
         `${destination.description} Plan the right stay, season and route with local China specialists.`,
       heroImage: destination.image,
+      relatedJourneys: journeyCatalog
+        .filter((journey) => journey.destinationFilters.includes(destination.name))
+        .map((journey) => ({
+          title: journey.title,
+          route: journey.routeLabel,
+          duration: journey.durationLabel,
+          href: journey.href,
+          image: journey.image,
+        })),
     };
   });
 }

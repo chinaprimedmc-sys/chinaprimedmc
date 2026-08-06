@@ -5,7 +5,16 @@ const optionalContact = z.string().trim().max(200).optional().default("");
 export const inquirySchema = z
   .object({
     sourcePage: z.string().trim().min(1).max(500),
+    landingPage: z.string().trim().max(500).optional().default(""),
+    referrer: z.string().trim().max(500).optional().default(""),
+    utmSource: z.string().trim().max(160).optional().default(""),
+    utmMedium: z.string().trim().max(160).optional().default(""),
+    utmCampaign: z.string().trim().max(160).optional().default(""),
+    utmContent: z.string().trim().max(160).optional().default(""),
+    utmTerm: z.string().trim().max(160).optional().default(""),
+    gclid: z.string().trim().max(240).optional().default(""),
     journeySlug: z.string().trim().max(160).optional().default(""),
+    viewedJourneys: z.array(z.string().trim().min(1).max(160)).max(40).optional().default([]),
     travelerType: z.enum(["family", "couple", "solo", "small-group"]),
     adults: z.number().int().min(1).max(20),
     children: z.number().int().min(0).max(20),

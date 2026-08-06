@@ -333,12 +333,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
         ]}
       />
       <FloatingCta label="Plan This Trip" href={inquiryHref} />
-      <StickyMobileCta
-        label="Plan"
-        href={inquiryHref}
-        showAfter={1200}
-        className="right-4 bottom-[calc(env(safe-area-inset-bottom)+1rem)] scale-90"
-      />
+      <StickyMobileCta label="Plan" href={inquiryHref} showAfter={1200} />
     </PageContainer>
   );
 }

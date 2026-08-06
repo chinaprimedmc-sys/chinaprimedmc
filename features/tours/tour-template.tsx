@@ -279,7 +279,34 @@ export function TourTemplate({ tour }: TourTemplateProps) {
             </p>
           </ContentContainer>
         </Section>
-      ) : null}
+      ) : (
+        <Section id="pricing" spacing="default">
+          <ContentContainer size="xl" className="grid gap-8">
+            <SectionHeader
+              eyebrow="Private quotation"
+              title="Pricing is prepared for your exact travel party."
+              description="Share your dates, party size and hotel preference. We will return a written quotation showing the per-person price, party total, included services and any optional upgrades."
+            />
+            <div className="grid gap-4 border-y border-[var(--border-default)] py-6 md:grid-cols-3">
+              <QuickFactCard
+                label="1"
+                value="Confirm your dates"
+                helper="Season and availability affect hotels and transport."
+              />
+              <QuickFactCard
+                label="2"
+                value="Choose your comfort level"
+                helper="We compare location, room category and service."
+              />
+              <QuickFactCard
+                label="3"
+                value="Receive a written quote"
+                helper="No booking is made until you approve it."
+              />
+            </div>
+          </ContentContainer>
+        </Section>
+      )}
 
       <Section id="optional-experiences" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
@@ -458,12 +485,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       />
 
       <FloatingCta label="Plan This Tour" href={planningHref} />
-      <StickyMobileCta
-        label="Customize"
-        href={planningHref}
-        showAfter={1200}
-        className="right-3 bottom-[calc(env(safe-area-inset-bottom)+0.85rem)] scale-[0.82]"
-      />
+      <StickyMobileCta label="Customize" href={planningHref} showAfter={1200} />
     </PageContainer>
   );
 }

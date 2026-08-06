@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 import { WhatsAppIcon } from "@/components/icons";
 import { cn } from "@/lib/utils/cn";
+import { trackEvent } from "@/lib/analytics/events";
 
 export function SocialContactRail({
   whatsappHref,
@@ -150,6 +151,7 @@ function ContactOption({
     <a
       href={href}
       className="social-contact-rail__option"
+      onClick={() => trackEvent(external ? "whatsapp_click" : "email_click")}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
     >

@@ -311,12 +311,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
       />
 
       <FloatingCta label="Plan From This" href="#inquiry-cta" />
-      <StickyMobileCta
-        label="Plan"
-        href="#inquiry-cta"
-        showAfter={1200}
-        className="right-3 bottom-[calc(env(safe-area-inset-bottom)+0.85rem)] scale-[0.82]"
-      />
+      <StickyMobileCta label="Plan" href="#inquiry-cta" showAfter={1200} />
     </PageContainer>
   );
 }

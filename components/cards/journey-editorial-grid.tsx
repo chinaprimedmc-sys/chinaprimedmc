@@ -37,6 +37,7 @@ import type {
 } from "@/content/tours/catalog";
 import { firstChinaAsset } from "@/content/tours/assets";
 import { cn } from "@/lib/utils/cn";
+import { trackEvent } from "@/lib/analytics/events";
 import type { MediaAsset } from "@/types/component-library";
 
 type JourneyEditorialGridProps = {
@@ -382,10 +383,10 @@ export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
   });
 
   function toggleSaved(slug: string) {
+    const saved = savedSlugs.includes(slug);
+    trackEvent(saved ? "journey_unsave" : "save_journey", { journey: slug });
     setSavedSlugs((current) =>
-      current.includes(slug)
-        ? current.filter((currentSlug) => currentSlug !== slug)
-        : [...current, slug],
+      saved ? current.filter((currentSlug) => currentSlug !== slug) : [...current, slug],
     );
   }
 
