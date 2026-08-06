@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  outputFileTracingIncludes: {
+    "/journal/[slug]": ["./content/journal/articles/**/*.md"],
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
