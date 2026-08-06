@@ -101,6 +101,7 @@ export type JournalArticle = {
     ogImage?: MediaAsset;
   };
   related?: JournalRelatedManual;
+  sourcePath?: string;
 };
 
 export type JournalCardArticle = {

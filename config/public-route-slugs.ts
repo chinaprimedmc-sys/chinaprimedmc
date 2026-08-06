@@ -28,6 +28,11 @@ export const publicRouteSlugs = {
     "urumqi",
   ],
   journal: [
+    "china-240-hour-visa-free-transit-guide",
+    "china-accommodation-registration-foreigners",
+    "china-high-speed-train-foreigners",
+    "china-mobile-payments-foreign-tourists",
+    "forbidden-city-tickets-foreigners",
     "how-to-plan-a-first-private-trip-to-china",
     "china-with-kids-what-actually-works",
     "best-time-for-a-first-china-journey",

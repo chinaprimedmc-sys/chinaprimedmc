@@ -353,7 +353,7 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
         </h2>
       );
     case "paragraph":
-      return <p className="text-muted text-lg leading-9">{block.body}</p>;
+      return <p className="text-muted text-lg leading-9">{renderInlineLinks(block.body)}</p>;
     case "image":
       return (
         <figure>
@@ -406,4 +406,26 @@ function formatDate(value: string) {
     day: "numeric",
     year: "numeric",
   }).format(new Date(value));
+}
+
+function renderInlineLinks(value: string) {
+  const tokens = value.split(/(\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)]+)/g);
+
+  return tokens.map((token, index) => {
+    const markdownLink = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    const href = markdownLink?.[2] ?? (token.startsWith("http") ? token : null);
+
+    if (!href) return token;
+
+    return (
+      <a
+        key={`${href}-${index}`}
+        href={href}
+        className="text-foreground underline decoration-1 underline-offset-4"
+        {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+      >
+        {markdownLink?.[1] ?? token}
+      </a>
+    );
+  });
 }

@@ -1,4 +1,5 @@
 import { destinationAsset } from "@/content/destinations/assets";
+import { publishedJournalArticles } from "@/content/journal/published";
 import type { JournalArticle, JournalCategory, JournalTag } from "@/types/journal";
 
 export const journalCategories: JournalCategory[] = [
@@ -37,7 +38,7 @@ export const journalTags: JournalTag[] = [
 
 const inquiryHref = "mailto:chinaprimedmc@gmail.com?subject=Private%20China%20Journey%20Planning";
 
-export const journalArticles: JournalArticle[] = [
+const originalJournalArticles: JournalArticle[] = [
   {
     slug: "how-to-plan-a-first-private-trip-to-china",
     title: "How to Plan a First Private Trip to China Without Feeling Overwhelmed",
@@ -256,6 +257,11 @@ export const journalArticles: JournalArticle[] = [
       tours: ["first-china-beautifully-paced"],
     },
   },
+];
+
+export const journalArticles: JournalArticle[] = [
+  ...publishedJournalArticles,
+  ...originalJournalArticles,
 ];
 
 export function getArticleBySlug(slug: string) {

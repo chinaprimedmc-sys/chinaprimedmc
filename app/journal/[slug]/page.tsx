@@ -9,6 +9,7 @@ import { ArticleTemplate } from "@/features/journal/article-template";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
+import { hydrateJournalArticle } from "@/lib/content/journal-markdown";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -24,11 +25,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const articleSummary = getArticleBySlug(slug);
 
-  if (!article) {
+  if (!articleSummary) {
     notFound();
   }
+
+  const article = await hydrateJournalArticle(articleSummary);
 
   return createMetadata({
     title: article.seo.title,
@@ -42,11 +45,13 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const articleSummary = getArticleBySlug(slug);
 
-  if (!article) {
+  if (!articleSummary) {
     notFound();
   }
+
+  const article = await hydrateJournalArticle(articleSummary);
 
   const relationships = { destinations: [], tours: [], experiences: [], articles: [] };
   const faqs = article.content.filter((block) => block.type === "faq");
