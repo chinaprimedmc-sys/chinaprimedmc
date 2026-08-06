@@ -389,7 +389,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                   <Link
-                    href={`/start-planning?journey=${encodeURIComponent(journey.title)}`}
+                    href={`/start-planning?journey=${encodeURIComponent(journey.href.split("/").pop() ?? "")}`}
                     className="home-featured-cinema__link home-featured-cinema__link--secondary"
                     onClick={(event) => {
                       if (!didSwipe.current) return;
@@ -397,7 +397,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                       didSwipe.current = false;
                     }}
                   >
-                    Tailor this journey
+                    Request a proposal
                     <ArrowUpRight size={15} aria-hidden="true" />
                   </Link>
                 </div>

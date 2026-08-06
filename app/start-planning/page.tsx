@@ -15,9 +15,9 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = createMetadata({
-  title: "Start Planning a Private China Journey",
+  title: "Request a Private China Travel Proposal",
   description:
-    "Start planning a private China journey with a short multi-step inquiry for travelers, timing, travel style, and contact preferences.",
+    "Tell AVIORA about your dates, travelers and priorities. Receive a considered private China travel proposal with no obligation to book.",
   path: "/start-planning",
   image: heroImage.src,
 });
@@ -57,7 +57,7 @@ export default async function StartPlanningPage({
       />
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
+        cta={{ label: "Request a Proposal", href: primaryAction.href }}
       />
 
       <Section spacing="spacious">
@@ -67,11 +67,11 @@ export default async function StartPlanningPage({
               Start planning
             </p>
             <h1 className="mt-5 text-4xl leading-tight font-semibold tracking-[-0.04em] md:text-6xl">
-              Tell us what your ideal China trip looks like.
+              Tell us what would make your China journey feel right.
             </h1>
             <p className="text-muted mt-5 max-w-2xl text-base leading-7 md:text-lg">
-              Four short steps cover who is traveling, timing, travel style and how you prefer us to
-              reply. Your quotation will reflect your dates, hotels and selected services.
+              Share the essentials first. We will use your answers to shape the route, hotels and
+              services before preparing a clear private proposal.
             </p>
             <Card className="mt-8 p-5">
               <p className="text-sm font-semibold">Prefer direct contact?</p>

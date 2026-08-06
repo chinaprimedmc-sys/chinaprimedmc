@@ -24,14 +24,17 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
       <RecordViewed
         item={{ id: `tour:${item.slug}`, type: "tour", title: item.title, href: item.href }}
       />
-      <SiteNavigation items={homeNavItems} cta={{ label: "Plan My Trip", href: planningHref }} />
+      <SiteNavigation
+        items={homeNavItems}
+        cta={{ label: "Request a Proposal", href: planningHref }}
+      />
 
       <HeroLargeImage
         eyebrow={item.eyebrow}
         title={item.title}
         subtitle={item.summary}
         image={item.image}
-        primary={{ label: "Start Planning", href: planningHref }}
+        primary={{ label: "Request My Private Proposal", href: planningHref }}
         secondary={{ label: "Back to Journeys", href: "/tours" }}
         overlay="medium"
       />
@@ -39,14 +42,17 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
       <Section spacing="default" className="bg-white">
         <ContentContainer size="lg" className="grid gap-10">
           <SectionHeader
-            eyebrow="A route direction, not a fixed package"
+            eyebrow="A private journey direction"
             title={item.hook}
-            description={item.planningNote}
+            description={
+              item.planningNote ??
+              "This is a starting direction rather than a fixed package. We will shape the final route, hotels and services around your dates and travelers."
+            }
           />
           <div className="border-border grid gap-4 border-y py-6 sm:grid-cols-3">
             <Fact label="Route direction" value={item.routeLabel} />
-            <Fact label="Planning range" value={item.durationLabel} />
-            <Fact label="Status" value={item.statusLabel ?? "Shaped after inquiry"} />
+            <Fact label="Suggested length" value={item.durationLabel} />
+            <Fact label="Planning status" value={item.statusLabel ?? "Shaped after inquiry"} />
           </div>
         </ContentContainer>
       </Section>
@@ -103,7 +109,7 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
             eyebrow="Start your personal plan"
             title="Tell us who is traveling and what a good day feels like."
             description="We will use this direction as a starting point, then confirm the route, timing, comfort level, and practical details with you."
-            primary={{ label: "Start Planning", href: planningHref }}
+            primary={{ label: "Request My Private Proposal", href: planningHref }}
             secondary={{ label: "View all journeys", href: "/tours" }}
           />
         </ContentContainer>

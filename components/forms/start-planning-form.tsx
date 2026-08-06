@@ -129,14 +129,14 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
           </div>
           <div>
             <p className="text-muted text-xs font-semibold tracking-[0.18em] uppercase">
-              Inquiry received
+              Enquiry received
             </p>
             <h2 className="mt-4 text-3xl leading-tight font-semibold tracking-[-0.03em] md:text-5xl">
-              Thank you. We will contact you within 24 hours.
+              Your enquiry is with our China team.
             </h2>
             <p className="text-muted mt-4 max-w-2xl text-sm leading-7 md:text-base">
-              Your trip details have been received securely. A China specialist will review the
-              route, timing, and traveler needs before replying.
+              A China specialist will review your route direction, dates and traveler needs, then
+              reply personally within 24 hours.
             </p>
           </div>
           <CtaButton
@@ -144,7 +144,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
             variant="glass"
             icon={<MessageCircle size={16} aria-hidden="true" />}
           >
-            Add a note on WhatsApp
+            Continue on WhatsApp
           </CtaButton>
           <button
             type="button"
@@ -429,7 +429,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
             {step === steps.length - 1
               ? submitting
                 ? "Submitting..."
-                : "Send My Trip Details"
+                : "Send My Enquiry"
               : "Continue"}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>

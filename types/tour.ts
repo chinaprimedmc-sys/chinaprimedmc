@@ -110,23 +110,6 @@ export type TourInquiry = {
   defaultMessage: string;
 };
 
-export type TourPricingTier = {
-  partySize: string;
-  serviceBasis?: string;
-  label?: string;
-  perPerson: string;
-  total: string;
-  alternateRates?: {
-    label: string;
-    perPerson: string;
-    total: string;
-  }[];
-  childRate?: {
-    perPerson: string;
-    note: string;
-  };
-};
-
 export type Tour = {
   slug: string;
   title: string;
@@ -155,12 +138,6 @@ export type Tour = {
   accommodations: TourAccommodation[];
   included: string[];
   excluded: string[];
-  pricing?: {
-    title: string;
-    description: string;
-    tiers: TourPricingTier[];
-    note: string;
-  };
   optionalExperiences: TourExperienceOption[];
   transportation: {
     title: string;

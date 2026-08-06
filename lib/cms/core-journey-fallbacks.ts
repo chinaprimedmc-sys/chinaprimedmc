@@ -57,7 +57,6 @@ function tourToCmsJourney(tour: Tour, index: number): CmsJourney {
     summary: tour.overview.pitch,
     route: tour.route.replaceAll(",", " · "),
     duration_label: tour.duration,
-    price: "Price on request",
     best_for: bestForFromTour(tour),
     status: "published",
     seo_title: tour.seo.title,

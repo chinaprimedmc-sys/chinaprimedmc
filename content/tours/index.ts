@@ -69,11 +69,6 @@ export const tours: Tour[] = [
           value: "Couples, families, seniors",
           helper: "Private transfers make arrivals and sightseeing days easier.",
         },
-        {
-          label: "Price Guide",
-          value: "By comfort tier",
-          helper: "Comfortable, Luxury, or Ultra-bespoke after inquiry.",
-        },
       ],
     },
     highlights: [
@@ -563,11 +558,6 @@ export const tours: Tour[] = [
           value: "Families, seniors, food lovers",
           helper: "Activities and spice levels are adjusted around your group.",
         },
-        {
-          label: "Price Guide",
-          value: "By comfort tier",
-          helper: "Confirmed after dates, rooms, and traveler needs are known.",
-        },
       ],
     },
     highlights: [
@@ -917,11 +907,6 @@ export const tours: Tour[] = [
           value: "Muslim-friendly available",
           helper: "Dining preferences and prayer timing are discussed before confirmation.",
         },
-        {
-          label: "Price Guide",
-          value: "From US$840 per adult",
-          helper: "Based on 8 adults sharing with 4-star accommodation.",
-        },
       ],
     },
     planningSupport: {
@@ -1150,70 +1135,6 @@ export const tours: Tour[] = [
       "Host, guide and driver gratuities",
       "Extra costs caused by weather, traffic, venue operations or events beyond reasonable control",
     ],
-    pricing: {
-      title: "Private Beijing pricing, clearly shown.",
-      description:
-        "Prices are per person in USD and based on twin or double sharing. Choose a 4-star or 5-star stay, then confirm dates, rooms and final services with our China team.",
-      tiers: [
-        {
-          partySize: "2 travelers",
-          serviceBasis: "English-speaking driver-host",
-          label: "4-star stay",
-          perPerson: "US$1,150 / person",
-          total: "US$2,300",
-          alternateRates: [
-            { label: "5-star stay", perPerson: "US$1,260 / person", total: "US$2,520" },
-          ],
-          childRate: {
-            perPerson: "US$700 / person",
-            note: "No extra bed or breakfast; complimentary attraction admission is subject to eligibility.",
-          },
-        },
-        {
-          partySize: "4 travelers",
-          serviceBasis: "English-speaking driver-host",
-          label: "4-star stay",
-          perPerson: "US$850 / person",
-          total: "US$3,400",
-          alternateRates: [
-            { label: "5-star stay", perPerson: "US$950 / person", total: "US$3,800" },
-          ],
-          childRate: {
-            perPerson: "US$400 / person",
-            note: "No extra bed or breakfast; complimentary attraction admission is subject to eligibility.",
-          },
-        },
-        {
-          partySize: "6 travelers",
-          serviceBasis: "Private driver + English-speaking guide",
-          label: "4-star stay",
-          perPerson: "US$930 / person",
-          total: "US$5,580",
-          alternateRates: [
-            { label: "5-star stay", perPerson: "US$1,030 / person", total: "US$6,180" },
-          ],
-          childRate: {
-            perPerson: "US$480 / person",
-            note: "No extra bed or breakfast; complimentary attraction admission is subject to eligibility.",
-          },
-        },
-        {
-          partySize: "8 travelers",
-          serviceBasis: "Private driver + English-speaking guide",
-          label: "4-star stay",
-          perPerson: "US$840 / person",
-          total: "US$6,720",
-          alternateRates: [
-            { label: "5-star stay", perPerson: "US$940 / person", total: "US$7,520" },
-          ],
-          childRate: {
-            perPerson: "US$390 / person",
-            note: "No extra bed or breakfast; complimentary attraction admission is subject to eligibility.",
-          },
-        },
-      ],
-      note: "Prices are per person in USD, based on twin or double sharing. Child prices assume no extra bed, no hotel breakfast, and eligibility for complimentary attraction admission. Final child pricing depends on age, height, passport, hotel and venue rules. Travel dates, hotel availability, room configuration and Chinese public-holiday surcharges may change the final quotation. Written quotations are valid for seven days unless stated otherwise.",
-    },
     optionalExperiences: [
       {
         title: "Mutianyu cable-car option",
@@ -1417,11 +1338,6 @@ export const tours: Tour[] = [
           label: "Suitable For",
           value: "Couples, families, private groups",
           helper: "Designed for mid- to high-end international travelers.",
-        },
-        {
-          label: "Price Guide",
-          value: "Price on request",
-          helper: "Quotation places are reserved for 2, 4, and 6 travelers.",
         },
       ],
     },
@@ -1738,17 +1654,6 @@ export const tours: Tour[] = [
       "Excess baggage and airline seat-selection fees unless specifically included",
       "Extra costs caused by weather, traffic, flight disruption, or events beyond reasonable control",
     ],
-    pricing: {
-      title: "A clear quotation prepared for your party.",
-      description:
-        "Prices remain open until travel dates, room arrangements, domestic flight schedules, and confirmed services are checked.",
-      tiers: [
-        { partySize: "2 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
-        { partySize: "4 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
-        { partySize: "6 travelers", perPerson: "To be confirmed", total: "To be confirmed" },
-      ],
-      note: "The final quotation will state currency, hotel and room basis, child policy, domestic flight and baggage basis, validity date, deposit, and payment schedule. No price is confirmed until issued in writing.",
-    },
     optionalExperiences: [
       {
         title: "Zhangjiajie Glass Bridge",

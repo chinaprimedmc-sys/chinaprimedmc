@@ -36,7 +36,6 @@ export const cmsJourneyInputSchema = commonSchema.extend({
   type: z.literal("journey"),
   route: z.string().trim().min(3).max(300),
   durationLabel: z.string().trim().min(2).max(80),
-  price: z.string().trim().max(100).default("Price on request"),
   bestFor: z.string().trim().min(3).max(300),
   styles: z.array(z.string().trim().min(1).max(80)).max(12),
   destinations: z.array(z.string().trim().min(1).max(80)).max(20),

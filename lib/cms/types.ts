@@ -32,7 +32,6 @@ export type CmsJourney = {
   summary: string;
   route: string;
   duration_label: string;
-  price: string;
   best_for: string;
   status: CmsStatus;
   seo_title: string;

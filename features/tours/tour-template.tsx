@@ -37,7 +37,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
     { label: "Hotels", href: "#accommodation" },
     { label: "Map", href: "#route-map" },
     { label: "FAQ", href: "#faq" },
-    { label: "Inquiry", href: planningHref },
+    { label: "Proposal", href: "#proposal" },
   ];
 
   return (
@@ -50,15 +50,15 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           href: `/tours/${tour.slug}`,
         }}
       />
-      <SiteNavigation items={tourNav} cta={{ label: "Plan This Tour", href: planningHref }} />
+      <SiteNavigation items={tourNav} cta={{ label: "Request a Proposal", href: planningHref }} />
 
       <HeroLargeImage
         eyebrow={tour.hero.eyebrow ?? "Tailored private tour"}
         title={tour.title}
         subtitle={tour.subtitle}
         image={tour.hero.image}
-        primary={tour.hero.primary}
-        secondary={{ label: tour.hero.secondary.label, href: planningHref }}
+        primary={{ label: "Request My Private Proposal", href: planningHref }}
+        secondary={{ label: "Explore Itinerary", href: "#itinerary" }}
         overlay="medium"
       >
         <HeroTrustPills items={[tour.duration, tour.route, ...tour.styles.slice(0, 2)]} />
@@ -180,133 +180,48 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         </ContentContainer>
       </Section>
 
-      {tour.pricing ? (
-        <Section id="pricing" spacing="default">
-          <ContentContainer size="xl" className="grid gap-8">
-            <SectionHeader
-              eyebrow="Private party pricing"
-              title={tour.pricing.title}
-              description={tour.pricing.description}
+      <Section id="proposal" spacing="default">
+        <ContentContainer size="xl" className="grid gap-8">
+          <SectionHeader
+            eyebrow="A private proposal for your dates"
+            title="The journey is shaped around your party."
+            description="There is no fixed package price. We confirm the right hotels, services and inclusions around your dates, group size, preferences and travel rhythm, then send everything in writing."
+          />
+          <div className="grid gap-4 border-y border-[var(--border-default)] py-6 md:grid-cols-3">
+            <QuickFactCard
+              label="01"
+              value="Share your essentials"
+              helper="Dates, travelers, interests and anything that needs extra care."
             />
-            {(() => {
-              const hasDetailedRates = tour.pricing.tiers.some(
-                (tier) => tier.alternateRates?.length || tier.childRate || tier.serviceBasis,
-              );
-
-              return (
-                <div
-                  className={`grid border-y border-[var(--border-default)] ${
-                    hasDetailedRates ? "md:grid-cols-2" : "md:grid-cols-3"
-                  }`}
-                >
-                  {tour.pricing.tiers.map((tier, index) => {
-                    const desktopBorder = hasDetailedRates
-                      ? `${index % 2 ? "md:border-l" : ""} ${index >= 2 ? "md:border-t" : "md:border-t-0"}`
-                      : index
-                        ? "md:border-t-0 md:border-l"
-                        : "md:border-t-0";
-
-                    return (
-                      <article
-                        key={tier.partySize}
-                        className={`py-7 md:px-7 md:py-9 ${
-                          index ? "border-t border-[var(--border-default)]" : ""
-                        } ${desktopBorder}`}
-                      >
-                        <p className="text-xs font-semibold tracking-[0.14em] text-[var(--text-tertiary)] uppercase">
-                          Party size
-                        </p>
-                        <h3 className="mt-3 font-serif text-3xl font-medium text-[var(--text-primary)]">
-                          {tier.partySize}
-                        </h3>
-                        {tier.serviceBasis ? (
-                          <p className="mt-2 min-h-10 max-w-sm text-sm leading-5 text-[var(--text-secondary)]">
-                            {tier.serviceBasis}
-                          </p>
-                        ) : null}
-                        <dl className="mt-6 grid gap-4 text-sm">
-                          <div className="grid grid-cols-[1fr_auto] items-end gap-x-4 gap-y-1">
-                            <dt className="font-medium text-[var(--text-primary)]">
-                              {tier.label ?? "Per person"}
-                            </dt>
-                            <dd className="text-right text-lg font-semibold text-[var(--text-primary)]">
-                              {tier.perPerson}
-                            </dd>
-                            <dt className="text-xs text-[var(--text-tertiary)]">Party total</dt>
-                            <dd className="text-right text-xs text-[var(--text-secondary)]">
-                              {tier.total}
-                            </dd>
-                          </div>
-                          {tier.alternateRates?.map((rate) => (
-                            <div
-                              key={rate.label}
-                              className="grid grid-cols-[1fr_auto] items-end gap-x-4 gap-y-1 border-t border-[var(--border-default)] pt-4"
-                            >
-                              <dt className="font-medium text-[var(--text-primary)]">
-                                {rate.label}
-                              </dt>
-                              <dd className="text-right text-lg font-semibold text-[var(--text-primary)]">
-                                {rate.perPerson}
-                              </dd>
-                              <dt className="text-xs text-[var(--text-tertiary)]">Party total</dt>
-                              <dd className="text-right text-xs text-[var(--text-secondary)]">
-                                {rate.total}
-                              </dd>
-                            </div>
-                          ))}
-                          {tier.childRate ? (
-                            <div className="border-t border-[var(--border-default)] pt-4">
-                              <div className="flex items-baseline justify-between gap-4">
-                                <dt className="font-medium text-[var(--text-primary)]">Child</dt>
-                                <dd className="text-right text-lg font-semibold text-[var(--text-primary)]">
-                                  {tier.childRate.perPerson}
-                                </dd>
-                              </div>
-                              <dd className="mt-2 max-w-md text-xs leading-5 text-[var(--text-tertiary)]">
-                                {tier.childRate.note}
-                              </dd>
-                            </div>
-                          ) : null}
-                        </dl>
-                      </article>
-                    );
-                  })}
-                </div>
-              );
-            })()}
-            <p className="max-w-3xl text-sm leading-7 text-[var(--text-secondary)]">
-              {tour.pricing.note}
-            </p>
-          </ContentContainer>
-        </Section>
-      ) : (
-        <Section id="pricing" spacing="default">
-          <ContentContainer size="xl" className="grid gap-8">
-            <SectionHeader
-              eyebrow="Private quotation"
-              title="Pricing is prepared for your exact travel party."
-              description="Share your dates, party size and hotel preference. We will return a written quotation showing the per-person price, party total, included services and any optional upgrades."
+            <QuickFactCard
+              label="02"
+              value="We check the details"
+              helper="Hotels, room needs, transport, guides and availability."
             />
-            <div className="grid gap-4 border-y border-[var(--border-default)] py-6 md:grid-cols-3">
-              <QuickFactCard
-                label="1"
-                value="Confirm your dates"
-                helper="Season and availability affect hotels and transport."
-              />
-              <QuickFactCard
-                label="2"
-                value="Choose your comfort level"
-                helper="We compare location, room category and service."
-              />
-              <QuickFactCard
-                label="3"
-                value="Receive a written quote"
-                helper="No booking is made until you approve it."
-              />
+            <QuickFactCard
+              label="03"
+              value="Receive your proposal"
+              helper="A clear written plan with inclusions and next steps."
+            />
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="border-border border-t pt-4">
+              <h3 className="font-semibold">What can be tailored</h3>
+              <p className="text-muted mt-2 text-sm leading-6">
+                Dates, hotel level, room configuration, daily pace, vehicle and guide service,
+                meals, dietary requirements, optional experiences and domestic transport.
+              </p>
             </div>
-          </ContentContainer>
-        </Section>
-      )}
+            <div className="border-border border-t pt-4">
+              <h3 className="font-semibold">No obligation to book</h3>
+              <p className="text-muted mt-2 text-sm leading-6">
+                Your proposal is prepared for review. Nothing is confirmed until you have checked
+                and approved the written details.
+              </p>
+            </div>
+          </div>
+        </ContentContainer>
+      </Section>
 
       <Section id="optional-experiences" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
@@ -438,9 +353,9 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           <CtaCard
             variant="glass"
             eyebrow="Your personal trip plan"
-            title="Make this journey fit your travelers."
-            description="We will recommend the right hotels, room categories, guide service and daily pace, then send a clear quotation for your dates."
-            primary={{ label: "Request My Trip Plan", href: planningHref }}
+            title="Make this journey yours."
+            description="Tell us your dates, travelers and priorities. We will recommend the right route, hotels and services, then send a clear private proposal."
+            primary={{ label: "Request My Private Proposal", href: planningHref }}
             secondary={{ label: "Email a Specialist", href: tour.inquiry.emailHref }}
           />
         </ContentContainer>
@@ -484,8 +399,8 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         ]}
       />
 
-      <FloatingCta label="Plan This Tour" href={planningHref} />
-      <StickyMobileCta label="Customize" href={planningHref} showAfter={1200} />
+      <FloatingCta label="Request a Proposal" href={planningHref} />
+      <StickyMobileCta label="Request a Proposal" href={planningHref} showAfter={1200} />
     </PageContainer>
   );
 }
