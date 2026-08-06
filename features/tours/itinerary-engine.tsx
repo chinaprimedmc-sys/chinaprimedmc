@@ -1,12 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Clock3, Hotel, MapPin, TrainFront, Utensils } from "lucide-react";
+import { ArrowLeft, ArrowRight, Hotel, MapPin, TrainFront, Utensils } from "lucide-react";
 import { useState } from "react";
 
 import { fadeUp } from "@/animations/motion-presets";
 import { OptimizedImage } from "@/components/media/optimized-image";
-import { Badge } from "@/components/ui/badge";
 import type { TourItineraryDay } from "@/types/tour";
 
 type ItineraryEngineProps = {
@@ -59,24 +58,26 @@ export function ItineraryEngine({ days }: ItineraryEngineProps) {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="grid min-w-0 overflow-hidden rounded-[1.5rem] border border-[var(--border-default)] bg-white shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]"
+          className="grid min-w-0 overflow-hidden rounded-[1.5rem] border border-[var(--border-default)] bg-white shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]"
         >
-          <div className="order-2 grid min-w-0 content-start gap-5 p-5 md:order-1 md:p-7">
-            <div className="grid gap-2">
+          <div className="order-2 grid min-w-0 content-start gap-6 p-5 md:order-1 md:p-8 lg:p-10">
+            <div className="grid max-w-2xl gap-3">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge>Day {activeDay.day}</Badge>
+                <span className="text-xs font-bold tracking-[0.16em] text-[var(--accent)] uppercase">
+                  Day {activeDay.day}
+                </span>
                 <span className="text-muted inline-flex items-center gap-1.5 text-xs font-semibold">
                   <MapPin size={14} aria-hidden="true" />
                   {activeDay.destination}
                 </span>
               </div>
-              <h3 className="text-2xl leading-tight font-semibold tracking-[-0.025em] md:text-3xl">
+              <h3 className="max-w-xl text-[clamp(1.7rem,3vw,2.6rem)] leading-[1.04] font-semibold tracking-[-0.025em]">
                 {activeDay.title}
               </h3>
               <p className="text-muted text-sm leading-7 md:text-base">{activeDay.summary}</p>
             </div>
 
-            <div className="grid gap-3 text-sm">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 border-y border-[var(--border-default)] py-4 text-sm">
               {activeDay.hotel ? (
                 <Meta icon={<Hotel size={16} />} label="Hotel" value={activeDay.hotel} />
               ) : null}
@@ -96,26 +97,23 @@ export function ItineraryEngine({ days }: ItineraryEngineProps) {
               ) : null}
             </div>
 
-            <div className="grid gap-3">
+            <div className="relative grid gap-0 pl-7 before:absolute before:top-3 before:bottom-3 before:left-[0.3rem] before:w-px before:bg-[var(--border-default)]">
               {activeDay.activities.map((activity) => (
-                <div
-                  key={`${activeDay.day}-${activity.title}`}
-                  className="bg-foreground/[0.035] rounded-[1rem] p-4"
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="bg-foreground text-background mt-0.5 grid size-8 shrink-0 place-items-center rounded-full">
-                      <Clock3 size={14} aria-hidden="true" />
-                    </span>
-                    <div>
-                      <p className="text-xs font-bold tracking-[0.14em] uppercase opacity-60">
-                        {activity.time ?? "Flexible"}
-                      </p>
-                      <h4 className="mt-1 text-base font-semibold tracking-[-0.015em]">
-                        {activity.title}
-                      </h4>
-                      <p className="text-muted mt-1 text-sm leading-6">{activity.description}</p>
-                    </div>
+                <div key={`${activeDay.day}-${activity.title}`} className="relative pb-5 last:pb-0">
+                  <span className="absolute top-0.5 -left-7 grid size-4 place-items-center rounded-full border-2 border-white bg-[var(--accent)] shadow-[0_0_0_1px_var(--accent)]">
+                    <span className="sr-only">Activity</span>
+                  </span>
+                  <div className="flex items-baseline gap-3">
+                    <p className="min-w-[4.5rem] text-[0.68rem] font-bold tracking-[0.12em] text-[var(--text-secondary)] uppercase">
+                      {activity.time ?? "Flexible"}
+                    </p>
+                    <h4 className="text-base font-semibold tracking-[-0.015em]">
+                      {activity.title}
+                    </h4>
                   </div>
+                  <p className="text-muted mt-1 max-w-xl text-sm leading-6">
+                    {activity.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -126,15 +124,15 @@ export function ItineraryEngine({ days }: ItineraryEngineProps) {
               </p>
             ) : null}
           </div>
-          <div className="order-1 min-h-[15rem] md:order-2 md:min-h-full">
+          <div className="order-1 p-3 pb-0 md:order-2 md:p-5 md:pb-5 md:pl-0">
             <OptimizedImage
               src={activeDay.image.src}
               alt={activeDay.image.alt}
               width={activeDay.image.width ?? 1200}
               height={activeDay.image.height ?? 900}
-              sizes="(min-width: 768px) 52vw, 100vw"
+              sizes="(min-width: 768px) 40vw, 100vw"
               objectPosition={activeDay.image.objectPosition}
-              frameClassName="h-full min-h-[15rem] md:min-h-[34rem]"
+              frameClassName="aspect-[4/3] h-auto min-h-0 w-full rounded-[1.15rem] md:aspect-[4/3] lg:max-h-[34rem]"
               className="h-full w-full"
               showSkeleton={false}
             />
