@@ -22,7 +22,7 @@ search_intent: "Understand who must register a foreign visitor’s stay, when it
 suggested_internal_links:
   ["/planning", "/planning/visa", "/planning/faq", "/start-planning", "/contact"]
 sources_verified_at: "2026-08-06"
-image_status: "needed"
+image_status: "approved_owner_supplied"
 cssclasses:
   - aviora-journal-draft
 ---
@@ -142,7 +142,7 @@ No. Entry permission and accommodation registration are separate processes.
 
 ## Image Requirements
 
-No suitable approved asset found. Required: original hotel or serviced-apartment check-in scene with a guest and host reviewing documents, no readable passport or personal data, 16:9, 2400×1350 hero. Alt direction: “Guest completing accommodation registration at a residence in China.” Optional 4:3 detail of a neutral itinerary and key card after “Mixed hotel and private-home itineraries.”
+Published hero: `/public/journal/2026-08-06/accommodation-registration-check-in.webp`, supplied and approved by the owner. It shows international guests with hotel staff at reception and contains no readable passport data. Alt: “International guests with hotel staff at a reception in China.”
 
 ## Sources
 

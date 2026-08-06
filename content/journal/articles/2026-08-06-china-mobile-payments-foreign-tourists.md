@@ -28,7 +28,7 @@ suggested_internal_links:
     "/start-planning",
   ]
 sources_verified_at: "2026-08-06"
-image_status: "needed"
+image_status: "approved_owner_supplied"
 cssclasses:
   - aviora-journal-draft
 ---
@@ -157,7 +157,7 @@ Not necessarily. One tested wallet plus a different card and some cash is more v
 
 ## Image Requirements
 
-No suitable approved repository asset found. Required: original close-up of an international traveler making a mobile payment at a China café or shop, with a generic QR interface and no real account, card or personal data. Hero 16:9, 2400×1350; optional 4:5 crop. Alt direction: “International visitor using a mobile payment at a café in China.”
+Published hero: `/public/journal/2026-08-06/china-mobile-payment.webp`, supplied and approved by the owner. The visible interface contains no readable account, card or payment-code data. Alt: “Traveler completing a mobile payment at a counter in China.”
 
 ## Sources
 

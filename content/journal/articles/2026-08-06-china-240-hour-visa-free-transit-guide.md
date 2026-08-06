@@ -28,7 +28,7 @@ suggested_internal_links:
     "/start-planning",
   ]
 sources_verified_at: "2026-08-06"
-image_status: "needs_rights_confirmation"
+image_status: "approved_owner_supplied"
 cssclasses:
   - aviora-journal-draft
 ---
@@ -151,7 +151,7 @@ No travel company can guarantee a border decision. AVIORA can review itinerary l
 
 ## Image Requirements
 
-Candidate asset: `/public/home/shanghai-pudong-skyline.webp`, subject to owner confirmation that AVIORA holds publication rights. Preferred hero: an original international arrival or skyline image communicating a planned stopover, 16:9, 2400×1350. Alt direction: “International traveler arriving in Shanghai for a China stopover.” Place at hero; optional 4:3 route-planning detail after “Five checks.”
+Published hero: `/public/journal/2026-08-06/visa-free-transit-shanghai.webp`, supplied and approved by the owner. Alt: “International visitors on the Bund with the Shanghai skyline behind them.”
 
 ## Sources
 

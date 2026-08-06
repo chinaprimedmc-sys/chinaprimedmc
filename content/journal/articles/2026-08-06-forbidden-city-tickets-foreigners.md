@@ -28,7 +28,7 @@ suggested_internal_links:
     "/start-planning",
   ]
 sources_verified_at: "2026-08-06"
-image_status: "needs_rights_confirmation"
+image_status: "approved_owner_supplied"
 cssclasses:
   - aviora-journal-draft
 ---
@@ -153,7 +153,7 @@ The official visitor page states a daily limit of 40,000. That figure and all bo
 
 ## Image Requirements
 
-Candidate hero: `/public/home/beijing-forbidden-city-1400.webp`, subject to owner confirmation of AVIORA publication rights. Use 16:9, 2400×1350 if a higher-resolution original exists; alt direction: “Meridian Gate at the Forbidden City in Beijing.” Additional required image: original entry-detail scene with a passport held closed or all data fully obscured, 4:3, placed after “A reliable reservation workflow.”
+Published hero: `/public/journal/2026-08-06/forbidden-city-entrance.webp`, supplied and approved by the owner. Alt: “Bronze guardian lion at the entrance to the Forbidden City in Beijing.”
 
 ## Sources
 

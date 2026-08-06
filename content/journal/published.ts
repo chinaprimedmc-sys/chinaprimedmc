@@ -6,6 +6,44 @@ const author = {
   role: "China travel specialists",
 };
 
+const journalImages = {
+  visaFreeTransit: {
+    src: "/journal/2026-08-06/visa-free-transit-shanghai.webp",
+    alt: "International visitors on the Bund with the Shanghai skyline behind them",
+    width: 1620,
+    height: 1080,
+    objectPosition: "50% 52%",
+  },
+  accommodationRegistration: {
+    src: "/journal/2026-08-06/accommodation-registration-check-in.webp",
+    alt: "International guests with hotel staff at a reception in China",
+    width: 1706,
+    height: 1279,
+    objectPosition: "50% 58%",
+  },
+  highSpeedTrain: {
+    src: "/journal/2026-08-06/china-high-speed-train-boarding.webp",
+    alt: "International traveler beside a high-speed train platform in China",
+    width: 2400,
+    height: 3200,
+    objectPosition: "50% 48%",
+  },
+  mobilePayment: {
+    src: "/journal/2026-08-06/china-mobile-payment.webp",
+    alt: "Traveler completing a mobile payment at a counter in China",
+    width: 2400,
+    height: 3200,
+    objectPosition: "50% 57%",
+  },
+  forbiddenCityEntrance: {
+    src: "/journal/2026-08-06/forbidden-city-entrance.webp",
+    alt: "Bronze guardian lion at the entrance to the Forbidden City in Beijing",
+    width: 2400,
+    height: 3199,
+    objectPosition: "64% 60%",
+  },
+} as const;
+
 export const publishedJournalArticles: JournalArticle[] = [
   {
     slug: "china-240-hour-visa-free-transit-guide",
@@ -18,8 +56,8 @@ export const publishedJournalArticles: JournalArticle[] = [
     author,
     publishedAt: "2026-08-06",
     readingTime: "10 min read",
-    hero: { eyebrow: "Entry planning", image: destinationAsset.shanghaiSkyline },
-    gallery: [destinationAsset.shanghaiSkyline, destinationAsset.beijingForbiddenCityWide],
+    hero: { eyebrow: "Entry planning", image: journalImages.visaFreeTransit },
+    gallery: [journalImages.visaFreeTransit, destinationAsset.beijingForbiddenCityWide],
     content: [],
     seo: {
       title: "China 240-Hour Visa-Free Transit Guide 2026",
@@ -31,7 +69,7 @@ export const publishedJournalArticles: JournalArticle[] = [
         "China TWOV rules",
         "China stopover itinerary",
       ],
-      ogImage: destinationAsset.shanghaiSkyline,
+      ogImage: journalImages.visaFreeTransit,
     },
     related: {
       destinations: ["beijing", "shanghai"],
@@ -50,8 +88,8 @@ export const publishedJournalArticles: JournalArticle[] = [
     author,
     publishedAt: "2026-08-06",
     readingTime: "8 min read",
-    hero: { eyebrow: "Arrival essentials", image: destinationAsset.chengduTeaHouse },
-    gallery: [destinationAsset.chengduTeaHouse, destinationAsset.shanghaiSkyline],
+    hero: { eyebrow: "Arrival essentials", image: journalImages.accommodationRegistration },
+    gallery: [journalImages.accommodationRegistration, destinationAsset.shanghaiSkyline],
     content: [],
     seo: {
       title: "China Accommodation Registration for Foreigners",
@@ -62,7 +100,7 @@ export const publishedJournalArticles: JournalArticle[] = [
         "China temporary residence registration tourist",
         "register stay in China private apartment",
       ],
-      ogImage: destinationAsset.chengduTeaHouse,
+      ogImage: journalImages.accommodationRegistration,
     },
     sourcePath:
       "content/journal/articles/2026-08-06-china-accommodation-registration-foreigners.md",
@@ -78,8 +116,8 @@ export const publishedJournalArticles: JournalArticle[] = [
     author,
     publishedAt: "2026-08-06",
     readingTime: "9 min read",
-    hero: { eyebrow: "Rail planning", image: destinationAsset.xianTerracotta },
-    gallery: [destinationAsset.xianTerracotta, destinationAsset.shanghaiSkyline],
+    hero: { eyebrow: "Rail planning", image: journalImages.highSpeedTrain },
+    gallery: [journalImages.highSpeedTrain, destinationAsset.shanghaiSkyline],
     content: [],
     seo: {
       title: "China High-Speed Train Guide for Foreigners",
@@ -91,7 +129,7 @@ export const publishedJournalArticles: JournalArticle[] = [
         "China Railway 12306 foreign passport",
         "China train baggage rules",
       ],
-      ogImage: destinationAsset.xianTerracotta,
+      ogImage: journalImages.highSpeedTrain,
     },
     related: {
       destinations: ["beijing", "shanghai"],
@@ -111,8 +149,8 @@ export const publishedJournalArticles: JournalArticle[] = [
     author,
     publishedAt: "2026-08-06",
     readingTime: "9 min read",
-    hero: { eyebrow: "Practical planning", image: destinationAsset.shanghaiSkyline },
-    gallery: [destinationAsset.shanghaiSkyline, destinationAsset.chengduTeaHouse],
+    hero: { eyebrow: "Practical planning", image: journalImages.mobilePayment },
+    gallery: [journalImages.mobilePayment, destinationAsset.chengduTeaHouse],
     content: [],
     seo: {
       title: "China Mobile Payments for Tourists: Setup Guide",
@@ -124,7 +162,7 @@ export const publishedJournalArticles: JournalArticle[] = [
         "WeChat Pay overseas card",
         "paying in China as a tourist",
       ],
-      ogImage: destinationAsset.shanghaiSkyline,
+      ogImage: journalImages.mobilePayment,
     },
     sourcePath: "content/journal/articles/2026-08-06-china-mobile-payments-foreign-tourists.md",
   },
@@ -139,8 +177,8 @@ export const publishedJournalArticles: JournalArticle[] = [
     author,
     publishedAt: "2026-08-06",
     readingTime: "8 min read",
-    hero: { eyebrow: "Beijing planning", image: destinationAsset.beijingForbiddenCityWide },
-    gallery: [destinationAsset.beijingForbiddenCityWide, destinationAsset.beijingForbiddenCity],
+    hero: { eyebrow: "Beijing planning", image: journalImages.forbiddenCityEntrance },
+    gallery: [journalImages.forbiddenCityEntrance, destinationAsset.beijingForbiddenCityWide],
     content: [],
     seo: {
       title: "Forbidden City Tickets for Foreigners: 2026 Guide",
@@ -152,7 +190,7 @@ export const publishedJournalArticles: JournalArticle[] = [
         "Forbidden City advance booking",
         "Forbidden City closed Monday",
       ],
-      ogImage: destinationAsset.beijingForbiddenCityWide,
+      ogImage: journalImages.forbiddenCityEntrance,
     },
     related: {
       destinations: ["beijing"],

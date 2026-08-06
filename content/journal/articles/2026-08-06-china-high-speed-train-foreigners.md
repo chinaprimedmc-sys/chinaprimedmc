@@ -28,7 +28,7 @@ suggested_internal_links:
     "/start-planning",
   ]
 sources_verified_at: "2026-08-06"
-image_status: "needs_rights_confirmation"
+image_status: "approved_owner_supplied"
 cssclasses:
   - aviora-journal-draft
 ---
@@ -154,7 +154,7 @@ No. Second class works well for many travelers. First or business class can be w
 
 ## Image Requirements
 
-Candidate asset: `/public/tours/chengdu-pandas/day-rail.webp`, subject to confirmation of AVIORA publication rights and factual suitability. Preferred hero: original traveler approaching a modern China high-speed train, 16:9, 2400×1350. Alt direction: “Traveler preparing to board a high-speed train in China.” Optional 3:2 carriage-detail image after “Choosing a seat class.”
+Published hero: `/public/journal/2026-08-06/china-high-speed-train-boarding.webp`, supplied and approved by the owner. Alt: “International traveler beside a high-speed train platform in China.”
 
 ## Sources
 
