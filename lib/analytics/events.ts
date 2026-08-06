@@ -8,10 +8,17 @@ export function trackEvent(name: string, properties?: Record<string, AnalyticsVa
   track(name, properties);
 }
 
-export function trackCtaClick(label: string, href: string) {
+export function trackCtaClick(
+  label: string,
+  href: string,
+  placement?: string,
+  journeySlug?: string,
+) {
   trackEvent("cta_click", {
     label: label.slice(0, 80),
     destination: getSafeDestination(href),
+    ...(placement ? { placement: placement.slice(0, 40) } : {}),
+    ...(journeySlug ? { journey: journeySlug.slice(0, 160) } : {}),
   });
 }
 

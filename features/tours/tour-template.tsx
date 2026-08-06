@@ -7,7 +7,6 @@ import { FeatureCard } from "@/components/cards/feature-card";
 import { HotelCard } from "@/components/cards/hotel-card";
 import { TourCard } from "@/components/cards/tour-card";
 import { HeroTrustPills, QuickFactCard, SectionHeader } from "@/components/content";
-import { CtaCard } from "@/components/cta/cta-card";
 import { CtaButton } from "@/components/cta/cta-button";
 import { FloatingCta } from "@/components/cta/floating-cta";
 import { StickyMobileCta } from "@/components/cta/sticky-mobile-cta";
@@ -52,16 +51,20 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           href: `/tours/${tour.slug}`,
         }}
       />
-      <SiteNavigation items={tourNav} cta={{ label: "Request a Proposal", href: planningHref }} />
+      <SiteNavigation
+        items={tourNav}
+        cta={{ label: "Request a Private Proposal", href: planningHref }}
+      />
 
       <HeroLargeImage
         eyebrow={tour.hero.eyebrow ?? "Tailored private tour"}
         title={tour.title}
         subtitle={tour.subtitle}
         image={tour.hero.image}
-        primary={{ label: "Request My Private Proposal", href: planningHref }}
+        primary={{ label: "Request a Private Proposal", href: planningHref }}
         secondary={{ label: "Explore Itinerary", href: "#itinerary" }}
         overlay="medium"
+        journeySlug={tour.slug}
       >
         <HeroTrustPills items={[tour.duration, tour.route, ...tour.styles.slice(0, 2)]} />
       </HeroLargeImage>
@@ -153,8 +156,10 @@ export function TourTemplate({ tour }: TourTemplateProps) {
                 href={planningHref}
                 size="md"
                 icon={<ArrowRight size={16} aria-hidden="true" />}
+                data-cta-placement="proposal"
+                data-journey-slug={tour.slug}
               >
-                Request My Private Proposal
+                Request a Private Proposal
               </CtaButton>
               {tour.inquiry.whatsappHref ? (
                 <CtaButton
@@ -162,9 +167,11 @@ export function TourTemplate({ tour }: TourTemplateProps) {
                   variant="whatsappFrosted"
                   target="_blank"
                   rel="noreferrer"
+                  data-cta-placement="proposal-whatsapp"
+                  data-journey-slug={tour.slug}
                 >
                   <WhatsAppIcon className="size-[18px] shrink-0" />
-                  WhatsApp
+                  WhatsApp a Specialist
                 </CtaButton>
               ) : null}
             </div>
@@ -244,19 +251,6 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         </ContentContainer>
       </Section>
 
-      <Section spacing="compact" className="bg-white">
-        <ContentContainer size="xl">
-          <CtaCard
-            variant="glass"
-            eyebrow="Your personal trip plan"
-            title="Make this journey yours."
-            description="Tell us your dates, travelers and priorities. We will recommend the right route, hotels and services, then send a clear private proposal."
-            primary={{ label: "Request My Private Proposal", href: planningHref }}
-            secondary={{ label: "Email a Specialist", href: tour.inquiry.emailHref }}
-          />
-        </ContentContainer>
-      </Section>
-
       <Section id="inquiry" spacing="default">
         <ContentContainer size="xl">
           <TourInquiryPanel tour={tour} planningHref={planningHref} />
@@ -295,8 +289,19 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         ]}
       />
 
-      <FloatingCta label="Request a Proposal" href={planningHref} />
-      <StickyMobileCta label="Request a Proposal" href={planningHref} showAfter={1200} />
+      <FloatingCta
+        label="Request a Private Proposal"
+        href={planningHref}
+        placement="floating"
+        journeySlug={tour.slug}
+      />
+      <StickyMobileCta
+        label="Request a Private Proposal"
+        href={planningHref}
+        showAfter={1200}
+        placement="mobile-sticky"
+        journeySlug={tour.slug}
+      />
     </PageContainer>
   );
 }

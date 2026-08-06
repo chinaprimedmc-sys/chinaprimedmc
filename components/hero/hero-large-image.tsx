@@ -27,6 +27,7 @@ type HeroLargeImageProps = {
   align?: "left" | "center";
   composition?: "default" | "editorial";
   overlay?: "subtle" | "soft" | "medium" | "strong";
+  journeySlug?: string;
   children?: ReactNode;
 };
 
@@ -49,6 +50,7 @@ export function HeroLargeImage({
   align = "center",
   composition = "default",
   overlay = "medium",
+  journeySlug,
   children,
 }: HeroLargeImageProps) {
   if (composition === "editorial") {
@@ -86,6 +88,8 @@ export function HeroLargeImage({
                       variant="lightFrosted"
                       size="sm"
                       className="min-h-12 px-6 py-3.5 sm:px-8"
+                      data-cta-placement="hero"
+                      data-journey-slug={journeySlug}
                     >
                       {primary.label}
                     </CtaButton>
@@ -98,6 +102,8 @@ export function HeroLargeImage({
                       target="_blank"
                       rel="noreferrer"
                       className="min-h-12 flex-row gap-2.5 px-6 py-3.5 sm:px-8"
+                      data-cta-placement="hero-secondary"
+                      data-journey-slug={journeySlug}
                     >
                       <WhatsAppIcon className="size-[19px] shrink-0" />
                       <span>{secondary.label}</span>
@@ -172,6 +178,8 @@ export function HeroLargeImage({
                 variant="primary"
                 size="sm"
                 className="min-h-12 px-5 py-3 sm:min-h-14 sm:px-8 sm:py-4"
+                data-cta-placement="hero"
+                data-journey-slug={journeySlug}
               >
                 {primary.label}
               </CtaButton>
@@ -182,6 +190,8 @@ export function HeroLargeImage({
                 variant="glass"
                 size="sm"
                 className="min-h-12 px-5 py-3 sm:min-h-14 sm:px-8 sm:py-4"
+                data-cta-placement="hero-secondary"
+                data-journey-slug={journeySlug}
               >
                 {secondary.label}
               </CtaButton>

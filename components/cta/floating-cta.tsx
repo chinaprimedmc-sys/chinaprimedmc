@@ -7,10 +7,14 @@ export function FloatingCta({
   label = "Start Planning",
   href = "/contact",
   className,
+  placement,
+  journeySlug,
 }: {
   label?: string;
   href?: string;
   className?: string;
+  placement?: string;
+  journeySlug?: string;
 }) {
   return (
     <div className={cn("floating-cta", className)}>
@@ -19,6 +23,8 @@ export function FloatingCta({
         variant="lightFrosted"
         size="sm"
         icon={<ArrowUpRight size={15} aria-hidden="true" />}
+        data-cta-placement={placement}
+        data-journey-slug={journeySlug}
       >
         {label}
       </CtaButton>

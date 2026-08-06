@@ -23,6 +23,8 @@ type CtaButtonProps = {
   variant?: CtaVariant;
   size?: CtaSize;
   icon?: ReactNode;
+  "data-cta-placement"?: string;
+  "data-journey-slug"?: string;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export function CtaButton({
@@ -31,6 +33,8 @@ export function CtaButton({
   variant = "primary",
   size = "md",
   icon,
+  "data-cta-placement": ctaPlacement,
+  "data-journey-slug": journeySlug,
   onClick,
   ...props
 }: CtaButtonProps) {
@@ -45,7 +49,12 @@ export function CtaButton({
       )}
       onClick={(event: MouseEvent<HTMLAnchorElement>) => {
         const href = event.currentTarget.getAttribute("href") || "";
-        trackCtaClick(typeof children === "string" ? children : "cta", href);
+        trackCtaClick(
+          typeof children === "string" ? children : "cta",
+          href,
+          ctaPlacement,
+          journeySlug,
+        );
         onClick?.(event);
       }}
       {...props}

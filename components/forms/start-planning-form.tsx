@@ -50,6 +50,11 @@ type SourceContext = {
   viewedJourneys: string[];
 };
 
+type CurrentJourney = {
+  slug: string;
+  title: string;
+};
+
 const initialState: PlanningFormState = {
   travelerType: "family",
   adults: 2,
@@ -75,16 +80,24 @@ const steps = [
   { label: "Contact", helper: "How we reply" },
 ];
 
-export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: string[] }) {
-  const savedJourneyNotes = savedJourneys.length
-    ? `I'd like to learn more about these saved journeys:\n${savedJourneys
-        .map((journey, index) => `${index + 1}. ${journey}`)
-        .join("\n")}`
-    : "";
+export function StartPlanningForm({
+  savedJourneys = [],
+  currentJourney,
+}: {
+  savedJourneys?: string[];
+  currentJourney?: CurrentJourney;
+}) {
+  const journeyNotes = currentJourney
+    ? `I'd like to request a private proposal for:\n${currentJourney.title}`
+    : savedJourneys.length
+      ? `I'd like to learn more about these saved journeys:\n${savedJourneys
+          .map((journey, index) => `${index + 1}. ${journey}`)
+          .join("\n")}`
+      : "";
   const [step, setStep] = useState(0);
   const [state, setState] = useState<PlanningFormState>({
     ...initialState,
-    notes: savedJourneyNotes,
+    notes: journeyNotes,
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -95,7 +108,7 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
 
   useEffect(() => {
     trackEvent("form_start", { saved_journeys: savedJourneys.length });
-  }, [savedJourneys.length]);
+  }, [savedJourneys.length, currentJourney?.slug]);
 
   const progress = ((step + 1) / steps.length) * 100;
 
@@ -121,6 +134,10 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
   }
 
   if (submitted) {
+    const whatsappHref = currentJourney
+      ? `https://wa.me/447985052302?text=${encodeURIComponent(`Hello AVIORA, I have just submitted an enquiry about ${currentJourney.title}.`)}`
+      : "https://wa.me/447985052302";
+
     return (
       <Card className="p-6 md:p-8">
         <div className="grid gap-6">
@@ -140,9 +157,13 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
             </p>
           </div>
           <CtaButton
-            href="https://wa.me/447985052302"
+            href={whatsappHref}
             variant="glass"
             icon={<MessageCircle size={16} aria-hidden="true" />}
+            target="_blank"
+            rel="noreferrer"
+            data-cta-placement="form-success-whatsapp"
+            data-journey-slug={currentJourney?.slug}
           >
             Continue on WhatsApp
           </CtaButton>
@@ -172,6 +193,14 @@ export function StartPlanningForm({ savedJourneys = [] }: { savedJourneys?: stri
             </p>
             <h2 className="mt-2 text-2xl font-semibold tracking-[-0.025em]">{steps[step].label}</h2>
             <p className="text-muted mt-1 text-sm leading-6">{steps[step].helper}</p>
+            {currentJourney ? (
+              <div className="mt-4 max-w-xl rounded-2xl border border-[var(--border-default)] bg-[var(--bg-secondary)] px-4 py-3">
+                <p className="text-[0.68rem] font-bold tracking-[0.14em] text-[var(--text-secondary)] uppercase">
+                  Enquiring about
+                </p>
+                <p className="mt-1 text-sm font-semibold">{currentJourney.title}</p>
+              </div>
+            ) : null}
           </div>
           <div className="grid gap-2 md:min-w-64">
             <div className="bg-foreground/8 h-1.5 overflow-hidden rounded-full">

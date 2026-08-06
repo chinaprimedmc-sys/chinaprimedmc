@@ -9,6 +9,8 @@ import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Card } from "@/components/ui/card";
 import { siteConfig } from "@/config/site";
 import { heroImage, homeNavItems, primaryAction } from "@/content/home/homepage";
+import { getTourBySlug } from "@/content/tours";
+import { getJourneyCatalogItem } from "@/content/tours/catalog";
 import { Section } from "@/design-system/primitives/section";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -25,10 +27,11 @@ export const metadata: Metadata = createMetadata({
 export default async function StartPlanningPage({
   searchParams,
 }: {
-  searchParams: Promise<{ journeys?: string }>;
+  searchParams: Promise<{ journeys?: string; journey?: string }>;
 }) {
   const params = await searchParams;
   const savedJourneys = parseSavedJourneys(params.journeys);
+  const currentJourney = getCurrentJourney(params.journey);
 
   return (
     <PageContainer>
@@ -57,7 +60,7 @@ export default async function StartPlanningPage({
       />
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Request a Proposal", href: primaryAction.href }}
+        cta={{ label: "Request a Private Proposal", href: primaryAction.href }}
       />
 
       <Section spacing="spacious">
@@ -88,7 +91,7 @@ export default async function StartPlanningPage({
               </div>
             </Card>
           </div>
-          <StartPlanningForm savedJourneys={savedJourneys} />
+          <StartPlanningForm savedJourneys={savedJourneys} currentJourney={currentJourney} />
         </ContentContainer>
       </Section>
 
@@ -140,6 +143,16 @@ export default async function StartPlanningPage({
       />
     </PageContainer>
   );
+}
+
+function getCurrentJourney(slug?: string) {
+  if (!slug) return undefined;
+
+  const tour = getTourBySlug(slug);
+  if (tour) return { slug: tour.slug, title: tour.title };
+
+  const journey = getJourneyCatalogItem(slug);
+  return journey ? { slug: journey.slug, title: journey.title } : undefined;
 }
 
 function parseSavedJourneys(value?: string) {

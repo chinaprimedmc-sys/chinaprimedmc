@@ -28,8 +28,10 @@ export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) 
             href={planningHref}
             className="w-full justify-center"
             icon={<ArrowRight size={17} aria-hidden="true" />}
+            data-cta-placement="inquiry-panel"
+            data-journey-slug={tour.slug}
           >
-            Open Secure Planning Form
+            Request a Private Proposal
           </CtaButton>
           <div className="grid gap-3 sm:grid-cols-2">
             <CtaButton
@@ -38,6 +40,8 @@ export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) 
               target="_blank"
               rel="noreferrer"
               className="flex-row justify-center gap-2.5"
+              data-cta-placement="inquiry-whatsapp"
+              data-journey-slug={tour.slug}
             >
               <WhatsAppIcon className="size-[19px] shrink-0" />
               <span>Chat on WhatsApp</span>
@@ -47,6 +51,8 @@ export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) 
               variant="outline"
               className="justify-center"
               icon={<Mail size={17} aria-hidden="true" />}
+              data-cta-placement="inquiry-email"
+              data-journey-slug={tour.slug}
             >
               Email a Specialist
             </CtaButton>

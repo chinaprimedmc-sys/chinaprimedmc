@@ -11,11 +11,15 @@ export function StickyMobileCta({
   href = "/contact",
   className,
   showAfter = 420,
+  placement,
+  journeySlug,
 }: {
   label?: string;
   href?: string;
   className?: string;
   showAfter?: number;
+  placement?: string;
+  journeySlug?: string;
 }) {
   const [hasPassedThreshold, setHasPassedThreshold] = useState(showAfter === 0);
 
@@ -35,6 +39,8 @@ export function StickyMobileCta({
         variant="primary"
         size="md"
         icon={<ArrowUpRight size={16} aria-hidden="true" />}
+        data-cta-placement={placement}
+        data-journey-slug={journeySlug}
       >
         {label}
       </CtaButton>

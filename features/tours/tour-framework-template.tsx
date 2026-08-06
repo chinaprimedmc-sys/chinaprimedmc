@@ -26,7 +26,7 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
       />
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Request a Proposal", href: planningHref }}
+        cta={{ label: "Request a Private Proposal", href: planningHref }}
       />
 
       <HeroLargeImage
@@ -34,7 +34,8 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
         title={item.title}
         subtitle={item.summary}
         image={item.image}
-        primary={{ label: "Request My Private Proposal", href: planningHref }}
+        primary={{ label: "Request a Private Proposal", href: planningHref }}
+        journeySlug={item.slug}
         secondary={{ label: "Back to Journeys", href: "/tours" }}
         overlay="medium"
       />
@@ -109,7 +110,7 @@ export function TourFrameworkTemplate({ item }: TourFrameworkTemplateProps) {
             eyebrow="Start your personal plan"
             title="Tell us who is traveling and what a good day feels like."
             description="We will use this direction as a starting point, then confirm the route, timing, comfort level, and practical details with you."
-            primary={{ label: "Request My Private Proposal", href: planningHref }}
+            primary={{ label: "Request a Private Proposal", href: planningHref }}
             secondary={{ label: "View all journeys", href: "/tours" }}
           />
         </ContentContainer>
