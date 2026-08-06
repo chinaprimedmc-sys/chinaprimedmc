@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -15,6 +16,7 @@ import { getPublicSiteSettings } from "@/lib/cms/public-content";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = createMetadata();
+export const dynamic = "force-dynamic";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -23,11 +25,13 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
+  const requestHeaders = await headers();
+  const nonce = requestHeaders.get("x-nonce") ?? "";
   const settings = await getPublicSiteSettings();
   return (
     <html lang="en-US" suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <CspNonceProvider nonce="">
+        <CspNonceProvider nonce={nonce}>
           <AppProviders>
             <PageTransition>{children}</PageTransition>
           </AppProviders>
