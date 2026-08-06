@@ -32,17 +32,17 @@ export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps
         showWhatsapp={false}
       />
 
-      <section className="journal-masthead border-b border-black/6 bg-white py-10 md:py-12 lg:py-14">
+      <section className="journal-masthead border-b border-black/6 bg-white py-8 md:py-10 lg:py-12">
         <ContentContainer
           size="xl"
           className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
         >
           <div className="max-w-4xl">
             <Badge>AVIORA Journal</Badge>
-            <h1 className="mt-5 max-w-4xl font-serif text-[clamp(3.25rem,8vw,6.7rem)] leading-[0.9] font-medium tracking-normal text-balance text-neutral-950">
+            <h1 className="mt-4 max-w-4xl font-serif text-[clamp(2.8rem,6vw,5.2rem)] leading-[0.92] font-medium tracking-normal text-balance text-neutral-950">
               China travel, made clearer.
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-neutral-600 md:text-lg md:leading-8">
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-neutral-600 md:text-base md:leading-7">
               Practical guidance for planning a private journey, from entry and transport to pacing,
               hotels and local support.
             </p>
@@ -52,7 +52,7 @@ export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps
               href="/start-planning"
               size="sm"
               icon={<ArrowRight size={17} aria-hidden="true" />}
-              className="min-h-12 px-6"
+              className="min-h-11 px-5"
             >
               Plan with our China team
             </CtaButton>
@@ -62,7 +62,7 @@ export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps
 
       <JournalGuideExplorer articles={latest} featuredSlug={featured.slug} />
 
-      <Section className="bg-neutral-950 text-white" spacing="spacious">
+      <Section className="bg-neutral-950 text-white" spacing="compact">
         <ContentContainer
           size="xl"
           className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
@@ -71,10 +71,10 @@ export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps
             <p className="text-xs font-semibold tracking-[0.14em] text-white/55 uppercase">
               Personal planning support
             </p>
-            <h2 className="mt-4 font-serif text-[2.75rem] leading-[0.98] font-medium tracking-normal text-balance md:text-6xl">
+            <h2 className="mt-3 font-serif text-[2.2rem] leading-[1] font-medium tracking-normal text-balance md:text-5xl">
               Still unsure where to begin?
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-white/68 md:text-lg">
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-white/68 md:text-base md:leading-7">
               Tell us what you are planning. Our China team will help you shape the right route.
             </p>
           </div>
