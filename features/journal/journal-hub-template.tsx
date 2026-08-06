@@ -1,231 +1,99 @@
-import { BookOpen, Camera, Compass, Utensils } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import { BlogCard } from "@/components/cards/blog-card";
-import { DestinationCard } from "@/components/cards/destination-card";
-import { FeatureCard } from "@/components/cards/feature-card";
-import { HeroTrustPills, SectionHeader } from "@/components/content";
-import { CtaCard } from "@/components/cta/cta-card";
+import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { GridGallery } from "@/components/gallery/grid-gallery";
-import { HeroLargeImage } from "@/components/hero/hero-large-image";
+import { WhatsAppIcon } from "@/components/icons";
 import { ContentContainer } from "@/components/layout/content-container";
-import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
 import { Section } from "@/design-system/primitives/section";
+import { JournalGuideExplorer } from "@/features/journal/journal-guide-explorer";
 import type { JournalArticle } from "@/types/journal";
 
 type JournalHubTemplateProps = {
   featured: JournalArticle;
-  editorPicks: JournalArticle[];
   latest: JournalArticle[];
-  categories: string[];
-  tags: Array<{ slug: string; label: string }>;
 };
 
 const journalNav = [
-  { label: "Featured", href: "#featured" },
   { label: "Guides", href: "#guides" },
-  { label: "Destinations", href: "#collections" },
-  { label: "Tips", href: "#tips" },
+  { label: "Destinations", href: "/destinations" },
+  { label: "About AVIORA", href: "/about" },
 ];
 
-export function JournalHubTemplate({
-  featured,
-  editorPicks,
-  latest,
-  categories,
-  tags,
-}: JournalHubTemplateProps) {
+export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps) {
   return (
-    <PageContainer>
+    <PageContainer tone="white">
       <SiteNavigation
         items={journalNav}
-        cta={{ label: "Plan My Journey", href: "mailto:chinaprimedmc@gmail.com" }}
+        cta={{ label: "Start Planning", href: "/start-planning" }}
+        tone="light"
+        showWhatsapp={false}
       />
 
-      <HeroLargeImage
-        eyebrow="Travel Journal"
-        title="China, planned with more clarity and more feeling."
-        subtitle="Guides, field notes, seasonal ideas, and private travel thinking for travelers who want China to feel inspiring before it feels complicated."
-        image={featured.hero.image}
-        primary={{ label: "Read Featured Story", href: `/journal/${featured.slug}` }}
-        secondary={{ label: "Browse Guides", href: "#guides" }}
-        overlay="medium"
-      >
-        <HeroTrustPills items={["Travel Guides", "Private Routes", "Destination Stories"]} />
-      </HeroLargeImage>
-
-      <Section id="featured" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Featured story"
-            title="Start with the question most travelers are quietly asking."
-            description="A useful first read for the questions that shape pace, comfort, routing, and the feel of a private journey."
-          />
-          <BlogCard
-            title={featured.title}
-            excerpt={featured.excerpt}
-            href={`/journal/${featured.slug}`}
-            image={featured.hero.image}
-            category={featured.category}
-            date={formatDate(featured.publishedAt)}
-            variant="featured"
-          />
-        </ContentContainer>
-      </Section>
-
-      <Section id="editors-picks" spacing="default">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Editor's picks"
-            title="Good planning usually starts with better questions."
-            description="Short, useful reads that help travelers understand pace, comfort, culture, and route design."
-          />
-          <GridSystem columns={3}>
-            {editorPicks.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </GridSystem>
-        </ContentContainer>
-      </Section>
-
-      <Section id="guides" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Travel guides"
-            title="Useful without becoming a textbook."
-            description="Each guide connects practical destination context with the route questions travelers ask before planning."
-          />
-          <GridSystem columns={3}>
-            {latest.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </GridSystem>
-        </ContentContainer>
-      </Section>
-
-      <Section id="collections" spacing="default">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Destination collections"
-            title="Explore by the kind of China you want to feel."
-            description="Browse guides by destination, season, and the kind of travel experience you want to shape."
-          />
-          <GridSystem columns={3}>
-            <DestinationCard
-              title="First-time China"
-              description="Imperial Beijing, ancient Xi'an, modern Shanghai, and a route that does not try to do everything."
-              image={featured.hero.image}
-              badges={["Travel Guides"]}
-              href="/journal/how-to-plan-a-first-private-trip-to-china"
-            />
-            <DestinationCard
-              title="Family China"
-              description="Children need rhythm, hands-on moments, and routes that leave room for rest."
-              image={editorPicks[0]?.hero.image ?? featured.hero.image}
-              badges={["Family Travel"]}
-              href="/journal/china-with-kids-what-actually-works"
-            />
-            <DestinationCard
-              title="Seasonal China"
-              description="Spring, autumn, school holidays, and the weather choices that shape comfort."
-              image={latest[0]?.hero.image ?? featured.hero.image}
-              badges={["Travel Guides"]}
-              href="/journal/best-time-for-a-first-china-journey"
-            />
-          </GridSystem>
-        </ContentContainer>
-      </Section>
-
-      <Section id="experiences" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Experiences"
-            title="Stories can point toward the right private experience."
-            description="Use the journal to move from an idea about pandas, food, rail, guides or culture into a trip you can picture."
-          />
-          <GridSystem columns={4}>
-            <FeatureCard
-              icon={<Compass size={18} aria-hidden="true" />}
-              title="Private guiding"
-              description="Context that adapts to your people, not a memorized script."
-            />
-            <FeatureCard
-              icon={<Camera size={18} aria-hidden="true" />}
-              title="Photography rhythm"
-              description="Cleaner timing, quieter viewpoints, and fewer rushed days."
-            />
-            <FeatureCard
-              icon={<Utensils size={18} aria-hidden="true" />}
-              title="Food and culture"
-              description="Local flavor with comfort, dietary awareness, and smart pacing."
-            />
-            <FeatureCard
-              icon={<BookOpen size={18} aria-hidden="true" />}
-              title="Travel guides"
-              description="Practical answers that naturally lead into a custom route."
-            />
-          </GridSystem>
-        </ContentContainer>
-      </Section>
-
-      <Section id="food-culture" spacing="default">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Food and culture"
-            title="Let images carry some of the story."
-            description="Field details, images, and practical context help turn a place from an idea into a journey you can picture."
-          />
-          <GridGallery images={featured.gallery} mode="editorial" />
-        </ContentContainer>
-      </Section>
-
-      <Section id="tips" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Categories and tags"
-            title="Follow the questions that matter to your trip."
-            description="Browse by destination, season, traveler type, or the practical experience you are planning around."
-          />
-          <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="border-border bg-background/70 rounded-[1.75rem] border p-5">
-              <h3 className="text-xl font-semibold tracking-[-0.02em]">Categories</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {categories.slice(0, 12).map((category) => (
-                  <Badge key={category}>{category}</Badge>
-                ))}
-              </div>
-            </div>
-            <div className="border-border bg-background/70 rounded-[1.75rem] border p-5">
-              <h3 className="text-xl font-semibold tracking-[-0.02em]">Tags</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <Badge key={tag.slug} className="bg-foreground/4 text-muted">
-                    {tag.label}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+      <section className="journal-masthead border-b border-black/6 bg-white py-10 md:py-12 lg:py-14">
+        <ContentContainer
+          size="xl"
+          className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
+        >
+          <div className="max-w-4xl">
+            <Badge>AVIORA Journal</Badge>
+            <h1 className="mt-5 max-w-4xl font-serif text-[clamp(3.25rem,8vw,6.7rem)] leading-[0.9] font-medium tracking-normal text-balance text-neutral-950">
+              China travel, made clearer.
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-neutral-600 md:text-lg md:leading-8">
+              Practical guidance for planning a private journey, from entry and transport to pacing,
+              hotels and local support.
+            </p>
+          </div>
+          <div className="lg:pb-1">
+            <CtaButton
+              href="/start-planning"
+              size="sm"
+              icon={<ArrowRight size={17} aria-hidden="true" />}
+              className="min-h-12 px-6"
+            >
+              Plan with our China team
+            </CtaButton>
           </div>
         </ContentContainer>
-      </Section>
+      </section>
 
-      <Section spacing="default">
-        <ContentContainer size="xl">
-          <CtaCard
-            variant="image"
-            image={featured.hero.image}
-            eyebrow="Private China planning"
-            title="Turn what you are reading into your own route."
-            description="Share your dates, who is traveling and what you want to experience. We will suggest a first direction."
-            primary={{ label: "Start Planning", href: "/start-planning" }}
-            secondary={{
-              label: "View Sample Journey",
-              href: "/tours/first-china-beautifully-paced",
-            }}
-          />
+      <JournalGuideExplorer articles={latest} featuredSlug={featured.slug} />
+
+      <Section className="bg-neutral-950 text-white" spacing="spacious">
+        <ContentContainer
+          size="xl"
+          className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
+        >
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold tracking-[0.14em] text-white/55 uppercase">
+              Personal planning support
+            </p>
+            <h2 className="mt-4 font-serif text-[2.75rem] leading-[0.98] font-medium tracking-normal text-balance md:text-6xl">
+              Still unsure where to begin?
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/68 md:text-lg">
+              Tell us what you are planning. Our China team will help you shape the right route.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 lg:justify-end">
+            <CtaButton href="/start-planning" variant="lightFrosted" size="sm">
+              Start Planning
+            </CtaButton>
+            <CtaButton
+              href="https://wa.me/447985052302"
+              variant="whatsappFrosted"
+              size="sm"
+              target="_blank"
+              rel="noreferrer"
+              className="flex-row gap-2.5"
+            >
+              <WhatsAppIcon className="size-[18px] shrink-0" />
+              <span>Chat on WhatsApp</span>
+            </CtaButton>
+          </div>
         </ContentContainer>
       </Section>
 
@@ -233,14 +101,10 @@ export function JournalHubTemplate({
         columns={[
           { title: "Journal", items: journalNav },
           {
-            title: "Categories",
-            items: categories.slice(0, 4).map((category) => ({ label: category, href: "#tips" })),
-          },
-          {
             title: "Planning",
             items: [
-              { label: "Private China tours", href: "/tours/first-china-beautifully-paced" },
-              { label: "Destinations", href: "/destinations/beijing" },
+              { label: "Private China tours", href: "/tours" },
+              { label: "Start planning", href: "/start-planning" },
               { label: "Email us", href: "mailto:chinaprimedmc@gmail.com" },
             ],
           },
@@ -252,25 +116,4 @@ export function JournalHubTemplate({
       />
     </PageContainer>
   );
-}
-
-function ArticleCard({ article }: { article: JournalArticle }) {
-  return (
-    <BlogCard
-      title={article.title}
-      excerpt={article.excerpt}
-      href={`/journal/${article.slug}`}
-      image={article.hero.image}
-      category={article.category}
-      date={formatDate(article.publishedAt)}
-    />
-  );
-}
-
-function formatDate(value: string) {
-  return new Intl.DateTimeFormat("en", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).format(new Date(value));
 }

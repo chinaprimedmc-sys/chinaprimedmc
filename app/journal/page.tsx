@@ -17,7 +17,6 @@ export default async function JournalPage() {
     b.publishedAt.localeCompare(a.publishedAt),
   );
   const featured = latest.find((article) => article.featured) ?? latest[0];
-  const editorPicks = latest.filter((article) => article.editorPick);
 
   if (!featured) {
     return (
@@ -36,12 +35,6 @@ export default async function JournalPage() {
       </main>
     );
   }
-
-  const categories = [...new Set(latest.map((article) => article.category))];
-  const tags = [...new Set(latest.flatMap((article) => article.tags))].map((tag) => ({
-    slug: tag,
-    label: tag,
-  }));
 
   return (
     <>
@@ -74,13 +67,7 @@ export default async function JournalPage() {
           { name: "Travel Journal", path: "/journal" },
         ])}
       />
-      <JournalHubTemplate
-        featured={featured}
-        editorPicks={editorPicks}
-        latest={latest}
-        categories={categories}
-        tags={tags}
-      />
+      <JournalHubTemplate featured={featured} latest={latest} />
     </>
   );
 }

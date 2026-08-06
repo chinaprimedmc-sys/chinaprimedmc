@@ -13,6 +13,7 @@ type BlogCardProps = {
   category?: string;
   date?: string;
   variant?: ComponentVariant;
+  imageRatio?: "standard" | "landscape";
   className?: string;
   eager?: boolean;
 };
@@ -25,6 +26,7 @@ export function BlogCard({
   category,
   date,
   variant = "medium",
+  imageRatio = "standard",
   className,
   eager = false,
 }: BlogCardProps) {
@@ -46,7 +48,10 @@ export function BlogCard({
             height={image.height ?? 680}
             loading={eager ? "eager" : "lazy"}
             sizes="(min-width:1024px) 33vw, 100vw"
-            frameClassName="aspect-[4/3]"
+            frameClassName={cn(
+              imageRatio === "landscape" ? "aspect-video" : "aspect-[4/3]",
+              variant === "featured" && "md:h-full md:aspect-auto",
+            )}
             className="h-full w-full transition-transform duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] group-hover:scale-[1.04] group-active:scale-[1.02] motion-reduce:transform-none motion-reduce:transition-none"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/24 via-black/6 to-transparent opacity-0 transition-opacity duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] group-hover:opacity-100 group-active:opacity-60 motion-reduce:transition-none" />

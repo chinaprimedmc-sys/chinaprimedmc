@@ -18,9 +18,11 @@ export function SocialContactRail({
 }) {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const isJournalPage = pathname === "/journal";
   const isBackend = pathname.startsWith("/admin");
   const [heroHasPassed, setHeroHasPassed] = useState(false);
   const [featuredJourneyInView, setFeaturedJourneyInView] = useState(false);
+  const [journalMastheadPassed, setJournalMastheadPassed] = useState(false);
 
   useEffect(() => {
     if (!isHomePage) {
@@ -56,9 +58,33 @@ export function SocialContactRail({
     };
   }, [isHomePage]);
 
+  useEffect(() => {
+    if (!isJournalPage) {
+      return;
+    }
+
+    const masthead = document.querySelector<HTMLElement>(".journal-masthead");
+
+    if (!masthead) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setJournalMastheadPassed(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0);
+      },
+      { threshold: 0 },
+    );
+    observer.observe(masthead);
+
+    return () => observer.disconnect();
+  }, [isJournalPage]);
+
   if (isBackend) return null;
 
-  const isVisible = !isHomePage || (heroHasPassed && !featuredJourneyInView);
+  const isVisible = isJournalPage
+    ? journalMastheadPassed
+    : !isHomePage || (heroHasPassed && !featuredJourneyInView);
 
   return (
     <Popover.Root>
