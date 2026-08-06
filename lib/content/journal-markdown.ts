@@ -4,11 +4,28 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import type { JournalArticle, JournalContentBlock } from "@/types/journal";
+import visaTransitMarkdown from "@/content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md";
+import accommodationMarkdown from "@/content/journal/articles/2026-08-06-china-accommodation-registration-foreigners.md";
+import trainMarkdown from "@/content/journal/articles/2026-08-06-china-high-speed-train-foreigners.md";
+import paymentsMarkdown from "@/content/journal/articles/2026-08-06-china-mobile-payments-foreign-tourists.md";
+import forbiddenCityMarkdown from "@/content/journal/articles/2026-08-06-forbidden-city-tickets-foreigners.md";
+
+const bundledMarkdown: Record<string, string> = {
+  "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md":
+    visaTransitMarkdown,
+  "content/journal/articles/2026-08-06-china-accommodation-registration-foreigners.md":
+    accommodationMarkdown,
+  "content/journal/articles/2026-08-06-china-high-speed-train-foreigners.md": trainMarkdown,
+  "content/journal/articles/2026-08-06-china-mobile-payments-foreign-tourists.md": paymentsMarkdown,
+  "content/journal/articles/2026-08-06-forbidden-city-tickets-foreigners.md": forbiddenCityMarkdown,
+};
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {
   if (!article.sourcePath) return article;
 
-  const markdown = await readFile(path.join(process.cwd(), article.sourcePath), "utf8");
+  const markdown =
+    bundledMarkdown[article.sourcePath] ??
+    (await readFile(path.join(process.cwd(), article.sourcePath), "utf8"));
 
   return {
     ...article,

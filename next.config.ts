@@ -19,6 +19,13 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/journal/[slug]": ["./content/journal/articles/**/*.md"],
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.md$/i,
+      type: "asset/source",
+    });
+    return config;
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
