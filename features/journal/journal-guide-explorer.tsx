@@ -56,10 +56,10 @@ const guideFilters: GuideFilter[] = [
 ];
 
 const preferredLeadSlugs: Partial<Record<GuideFilter["id"], string>> = {
-  "first-trip": "how-to-plan-a-first-private-trip-to-china",
+  "first-trip": "china-240-hour-visa-free-transit-guide",
   entry: "china-240-hour-visa-free-transit-guide",
   practical: "china-high-speed-train-foreigners",
-  family: "china-with-kids-what-actually-works",
+  family: "china-mobile-payments-foreign-tourists",
   destinations: "forbidden-city-tickets-foreigners",
 };
 

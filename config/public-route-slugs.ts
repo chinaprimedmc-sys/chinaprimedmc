@@ -33,9 +33,6 @@ export const publicRouteSlugs = {
     "china-high-speed-train-foreigners",
     "china-mobile-payments-foreign-tourists",
     "forbidden-city-tickets-foreigners",
-    "how-to-plan-a-first-private-trip-to-china",
-    "china-with-kids-what-actually-works",
-    "best-time-for-a-first-china-journey",
   ],
   styles: ["family", "luxury", "slow-travel", "photography"],
 } as const;

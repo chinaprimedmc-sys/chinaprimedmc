@@ -331,10 +331,10 @@ export default async function HomePage() {
                 Request My Trip Plan
               </CtaButton>
               <Link
-                href="/journal/how-to-plan-a-first-private-trip-to-china"
+                href="/journal/china-240-hour-visa-free-transit-guide"
                 className="home-conversion-hero__secondary"
               >
-                Read the first-trip guide
+                Read the entry-planning guide
                 <ArrowUpRight size={17} aria-hidden="true" />
               </Link>
             </div>

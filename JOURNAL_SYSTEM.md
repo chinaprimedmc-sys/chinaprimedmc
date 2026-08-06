@@ -31,7 +31,7 @@ Dynamic route:
 
 Example:
 
-`/journal/how-to-plan-a-first-private-trip-to-china`
+`/journal/china-240-hour-visa-free-transit-guide`
 
 Article structure:
 

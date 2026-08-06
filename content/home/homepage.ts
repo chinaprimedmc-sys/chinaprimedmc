@@ -328,27 +328,25 @@ export const proofPoints = [
 
 export const journal = [
   {
-    title: "How to plan a first private trip to China",
+    title: "China’s 240-hour visa-free transit explained",
     excerpt:
-      "The practical questions travelers ask before they fall in love with the route: pace, trains, food, payment, hotels, and guides.",
-    href: "/journal/how-to-plan-a-first-private-trip-to-china",
+      "Check nationality, ports, onward routing and permitted areas before building a visa-free China stopover.",
+    href: "/journal/china-240-hour-visa-free-transit-guide",
     image: firstChinaAsset.beijingTempleOfHeavenCeiling,
-    category: "First-time China",
+    category: "Entry planning",
   },
   {
-    title: "Family travel: what actually works",
-    excerpt:
-      "Why pandas, rivers, hands-on meals, and shorter city days often work better than a checklist of landmarks.",
-    href: "/journal/china-with-kids-what-actually-works",
+    title: "Mobile payments in China for visitors",
+    excerpt: "Prepare mobile wallets, overseas cards and RMB cash before traveling in China.",
+    href: "/journal/china-mobile-payments-foreign-tourists",
     image: firstChinaAsset.shanghaiMarketVisit,
-    category: "Family travel",
+    category: "Practical travel",
   },
   {
-    title: "When to visit China for the best light and comfort",
-    excerpt:
-      "A calmer way to think about spring, autumn, school holidays, mountain weather, and photography seasons.",
-    href: "/journal/best-time-for-a-first-china-journey",
+    title: "China high-speed trains: passport to platform",
+    excerpt: "Book and board with the right passport details, station timing and seat choice.",
+    href: "/journal/china-high-speed-train-foreigners",
     image: firstChinaAsset.xianTerracottaPit,
-    category: "Seasonal planning",
+    category: "Rail planning",
   },
 ];

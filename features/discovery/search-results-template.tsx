@@ -88,8 +88,8 @@ export function SearchResultsTemplate({
             description="Share your dates and interests, and a China specialist will suggest a sensible starting route."
             primary={{ label: "Start Planning", href: "/start-planning" }}
             secondary={{
-              label: "Read Planning Guide",
-              href: "/journal/how-to-plan-a-first-private-trip-to-china",
+              label: "Read Entry Guide",
+              href: "/journal/china-240-hour-visa-free-transit-guide",
             }}
           />
         </ContentContainer>

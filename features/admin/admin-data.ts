@@ -174,7 +174,7 @@ export const inquiries = [
     name: "Marco Rossi",
     country: "Italy",
     email: "marco@example.it",
-    source: "/journal/best-time-for-a-first-china-journey",
+    source: "/journal/forbidden-city-tickets-foreigners",
     interest: "秋季高端摄影路线",
     submittedAt: "2 天前",
     status: "已成交",
