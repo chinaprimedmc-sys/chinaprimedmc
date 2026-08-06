@@ -349,9 +349,13 @@ function SignatureExperiences({ highlights }: { highlights: Tour["highlights"] }
           showSkeleton={false}
         />
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-5 pt-20 text-white md:p-7 md:pt-24">
-          <p className="text-xs font-semibold tracking-[0.14em] text-white/75 uppercase">
-            {lead.category}
-          </p>
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-bold tracking-[0.14em] text-white/90 uppercase">01</span>
+            <span className="h-px w-8 bg-white/55" aria-hidden="true" />
+            <p className="text-xs font-semibold tracking-[0.14em] text-white/75 uppercase">
+              {lead.category}
+            </p>
+          </div>
           <h3 className="mt-2 max-w-lg text-2xl leading-tight font-semibold tracking-[-0.025em] md:text-3xl">
             {lead.title}
           </h3>
