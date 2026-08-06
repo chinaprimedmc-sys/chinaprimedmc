@@ -1,5 +1,5 @@
 import * as Accordion from "@radix-ui/react-accordion";
-import { Check, ChevronDown, Circle, Compass, Map, Plane, X } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, Circle, Compass, Map, Plane, X } from "lucide-react";
 
 import { DestinationCard } from "@/components/cards/destination-card";
 import { ExperienceCard } from "@/components/cards/experience-card";
@@ -8,11 +8,14 @@ import { HotelCard } from "@/components/cards/hotel-card";
 import { TourCard } from "@/components/cards/tour-card";
 import { HeroTrustPills, QuickFactCard, SectionHeader } from "@/components/content";
 import { CtaCard } from "@/components/cta/cta-card";
+import { CtaButton } from "@/components/cta/cta-button";
 import { FloatingCta } from "@/components/cta/floating-cta";
 import { StickyMobileCta } from "@/components/cta/sticky-mobile-cta";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { GridGallery } from "@/components/gallery/grid-gallery";
 import { HeroLargeImage } from "@/components/hero/hero-large-image";
+import { OptimizedImage } from "@/components/media/optimized-image";
+import { WhatsAppIcon } from "@/components/icons";
 import { ContentContainer } from "@/components/layout/content-container";
 import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
@@ -32,10 +35,9 @@ export function TourTemplate({ tour }: TourTemplateProps) {
   const planningHref = `/start-planning?source=${encodeURIComponent(`/tours/${tour.slug}`)}&journey=${encodeURIComponent(tour.slug)}`;
   const tourNav = [
     { label: "Overview", href: "#overview" },
-    ...(tour.planningSupport ? [{ label: "Planning", href: "#planning-support" }] : []),
+    { label: "Why this journey", href: "#highlights" },
     { label: "Itinerary", href: "#itinerary" },
-    { label: "Hotels", href: "#accommodation" },
-    { label: "Map", href: "#route-map" },
+    { label: "Details", href: "#details" },
     { label: "FAQ", href: "#faq" },
     { label: "Proposal", href: "#proposal" },
   ];
@@ -80,50 +82,14 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         </ContentContainer>
       </Section>
 
-      {tour.planningSupport ? (
-        <Section id="planning-support" spacing="default">
-          <ContentContainer size="xl" className="grid gap-8">
-            <SectionHeader
-              eyebrow={tour.planningSupport.eyebrow}
-              title={tour.planningSupport.title}
-              description={tour.planningSupport.description}
-            />
-            <GridSystem columns={2}>
-              {tour.planningSupport.items.map((item) => (
-                <FeatureCard
-                  key={item.label}
-                  icon={<Check size={18} aria-hidden="true" />}
-                  title={item.value}
-                  description={`${item.label}. ${item.helper ?? ""}`}
-                />
-              ))}
-            </GridSystem>
-            <p className="max-w-3xl text-sm leading-7 text-[var(--text-secondary)]">
-              {tour.planningSupport.note}
-            </p>
-          </ContentContainer>
-        </Section>
-      ) : null}
-
       <Section id="highlights" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Signature experiences"
-            title="What makes this route distinctive."
-            description="The defining places and experiences, selected for their timing, context and fit within the wider route."
+            title="A route with room to feel the place."
+            description="The defining experiences, selected for their timing, context and fit within the wider journey."
           />
-          <GridSystem columns={3}>
-            {tour.highlights.map((highlight) => (
-              <DestinationCard
-                key={highlight.title}
-                title={highlight.title}
-                description={highlight.description}
-                image={highlight.image}
-                badges={[highlight.category]}
-                variant="medium"
-              />
-            ))}
-          </GridSystem>
+          <SignatureExperiences highlights={tour.highlights} />
         </ContentContainer>
       </Section>
 
@@ -131,52 +97,10 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
             eyebrow="Day by day"
-            title="A clear view of how each day unfolds."
-            description="Open any day for its activities, transfer plan, hotel notes and the decisions that can be adjusted before booking."
+            title="See the rhythm of the journey."
+            description="Move through the days one at a time. Every detail can be adjusted around your dates, interests and pace."
           />
           <ItineraryEngine days={tour.itinerary} />
-        </ContentContainer>
-      </Section>
-
-      {tour.accommodations.length ? (
-        <Section id="accommodation" spacing="default">
-          <ContentContainer size="xl" className="grid gap-8">
-            <SectionHeader
-              eyebrow="Accommodation"
-              title="The right hotel improves the whole route."
-              description="We consider location, room category, breakfast, service and transfer time before recommending a property."
-            />
-            <GridSystem columns={2}>
-              {tour.accommodations.map((hotel) => (
-                <HotelCard
-                  key={hotel.name}
-                  title={hotel.name}
-                  description={`${hotel.destination}. ${hotel.description}`}
-                  image={hotel.image}
-                  badges={hotel.roomStyle ? [hotel.roomStyle] : undefined}
-                  meta={hotel.highlights.slice(0, 2).map((highlight, index) => ({
-                    label: `Highlight ${index + 1}`,
-                    value: highlight,
-                  }))}
-                  variant="large"
-                />
-              ))}
-            </GridSystem>
-          </ContentContainer>
-        </Section>
-      ) : null}
-
-      <Section id="included" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Service details"
-            title="Know what is included before you book."
-            description="Your written quotation confirms every included service, selected hotel, room category and payable extra."
-          />
-          <div className="grid gap-5 md:grid-cols-2">
-            <ListPanel title="Included" items={tour.included} tone="positive" />
-            <ListPanel title="Not included" items={tour.excluded} tone="muted" />
-          </div>
         </ContentContainer>
       </Section>
 
@@ -220,70 +144,42 @@ export function TourTemplate({ tour }: TourTemplateProps) {
               </p>
             </div>
           </div>
+          <div className="flex flex-col gap-3 border-t border-[var(--border-default)] pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-muted max-w-xl text-sm leading-6">
+              Start with a few details. We will reply personally and there is no obligation to book.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <CtaButton
+                href={planningHref}
+                size="md"
+                icon={<ArrowRight size={16} aria-hidden="true" />}
+              >
+                Request My Private Proposal
+              </CtaButton>
+              {tour.inquiry.whatsappHref ? (
+                <CtaButton
+                  href={tour.inquiry.whatsappHref}
+                  variant="whatsappFrosted"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <WhatsAppIcon className="size-[18px] shrink-0" />
+                  WhatsApp
+                </CtaButton>
+              ) : null}
+            </div>
+          </div>
         </ContentContainer>
       </Section>
 
-      <Section id="optional-experiences" spacing="default">
-        <ContentContainer size="xl" className="grid gap-8">
+      <Section id="details" spacing="compact" className="bg-white">
+        <ContentContainer size="xl" className="grid gap-7">
           <SectionHeader
-            eyebrow="Optional experiences"
-            title="Add experiences that earn their place."
-            description="We recommend additions only when they suit your interests and improve the day rather than simply filling it."
+            eyebrow="Practical details"
+            title="Everything important, easy to find."
+            description="Open a section when you are ready to look closer. Your final proposal confirms the exact hotels, services and inclusions for your dates."
           />
-          <GridSystem columns={3}>
-            {tour.optionalExperiences.map((experience) => (
-              <ExperienceCard
-                key={experience.title}
-                title={experience.title}
-                description={experience.description}
-                image={experience.image}
-                badges={experience.badges}
-                variant="medium"
-              />
-            ))}
-          </GridSystem>
-        </ContentContainer>
-      </Section>
-
-      <Section id="transportation" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Transportation"
-            title={tour.transportation.title}
-            description={tour.transportation.description}
-          />
-          <GridSystem columns={3}>
-            {tour.transportation.items.map((item) => (
-              <FeatureCard
-                key={item.label}
-                icon={<Plane size={18} aria-hidden="true" />}
-                title={item.value}
-                description={`${item.label}. ${item.helper ?? ""}`}
-              />
-            ))}
-          </GridSystem>
-        </ContentContainer>
-      </Section>
-
-      <Section id="route-map" spacing="default">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Route map"
-            title={tour.routeMap.title}
-            description={tour.routeMap.description}
-          />
-          <RouteMap tour={tour} />
-        </ContentContainer>
-      </Section>
-
-      <Section id="gallery" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Gallery"
-            title="See the character of the route."
-            description="A closer look at the places, landscapes and private services included in this journey."
-          />
-          <GridGallery images={tour.gallery} mode="editorial" />
+          <TourDetailsAccordion tour={tour} />
         </ContentContainer>
       </Section>
 
@@ -348,7 +244,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         </ContentContainer>
       </Section>
 
-      <Section spacing="default" className="bg-white">
+      <Section spacing="compact" className="bg-white">
         <ContentContainer size="xl">
           <CtaCard
             variant="glass"
@@ -373,7 +269,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           {
             title: "Planning",
             items: [
-              { label: "Customize journey", href: planningHref },
+              { label: "Request a proposal", href: planningHref },
               { label: "Interactive itinerary", href: "#itinerary" },
               { label: "FAQ", href: "#faq" },
             ],
@@ -382,7 +278,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
             title: "Route",
             items: tour.routeMap.stops.map((stop) => ({
               label: stop.name,
-              href: "#route-map",
+              href: "#details",
             })),
           },
           {
@@ -430,6 +326,240 @@ function ListPanel({
         ))}
       </ul>
     </article>
+  );
+}
+
+function SignatureExperiences({ highlights }: { highlights: Tour["highlights"] }) {
+  const lead = highlights[0];
+
+  if (!lead) return null;
+
+  return (
+    <div className="grid gap-5 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:items-stretch">
+      <div className="relative min-h-[20rem] overflow-hidden rounded-[1.5rem] bg-[var(--bg-secondary)] md:min-h-[28rem]">
+        <OptimizedImage
+          src={lead.image.src}
+          alt={lead.image.alt}
+          width={lead.image.width ?? 1200}
+          height={lead.image.height ?? 900}
+          sizes="(min-width: 1024px) 56vw, 100vw"
+          objectPosition={lead.image.objectPosition}
+          frameClassName="absolute inset-0"
+          className="h-full w-full"
+          showSkeleton={false}
+        />
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-5 pt-20 text-white md:p-7 md:pt-24">
+          <p className="text-xs font-semibold tracking-[0.14em] text-white/75 uppercase">
+            {lead.category}
+          </p>
+          <h3 className="mt-2 max-w-lg text-2xl leading-tight font-semibold tracking-[-0.025em] md:text-3xl">
+            {lead.title}
+          </h3>
+        </div>
+      </div>
+      <div className="grid divide-y divide-[var(--border-default)] border-y border-[var(--border-default)]">
+        {highlights.slice(1, 4).map((highlight, index) => (
+          <article key={highlight.title} className="grid gap-2 py-5 first:pt-0 last:pb-0 lg:py-6">
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-bold tracking-[0.14em] text-[var(--accent)] uppercase">
+                0{index + 2}
+              </span>
+              <p className="text-xs font-semibold tracking-[0.12em] text-[var(--text-secondary)] uppercase">
+                {highlight.category}
+              </p>
+            </div>
+            <h3 className="text-xl leading-tight font-semibold tracking-[-0.025em]">
+              {highlight.title}
+            </h3>
+            <p className="text-muted text-sm leading-6">{highlight.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TourDetailsAccordion({ tour }: { tour: Tour }) {
+  return (
+    <Accordion.Root type="multiple" className="grid gap-3">
+      {tour.planningSupport ? (
+        <Accordion.Item
+          value="designed-around-you"
+          className="border-border overflow-hidden rounded-2xl border bg-white"
+        >
+          <Accordion.Header>
+            <Accordion.Trigger className="group flex w-full items-center justify-between gap-5 p-5 text-left md:p-6">
+              <span>
+                <span className="text-xs font-semibold tracking-[0.14em] text-[var(--accent)] uppercase">
+                  Designed around you
+                </span>
+                <span className="mt-2 block text-lg font-semibold tracking-[-0.02em]">
+                  {tour.planningSupport.title}
+                </span>
+              </span>
+              <ChevronDown
+                size={20}
+                aria-hidden="true"
+                className="shrink-0 transition group-data-[state=open]:rotate-180"
+              />
+            </Accordion.Trigger>
+          </Accordion.Header>
+          <Accordion.Content className="border-border border-t px-5 pb-5 md:px-6 md:pb-6">
+            <p className="text-muted max-w-3xl pt-5 text-sm leading-7">
+              {tour.planningSupport.description}
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {tour.planningSupport.items.map((item) => (
+                <FeatureCard
+                  key={item.label}
+                  icon={<Check size={17} aria-hidden="true" />}
+                  title={item.value}
+                  description={`${item.label}. ${item.helper ?? ""}`}
+                />
+              ))}
+            </div>
+            <p className="text-muted mt-5 text-sm leading-6">{tour.planningSupport.note}</p>
+          </Accordion.Content>
+        </Accordion.Item>
+      ) : null}
+
+      {tour.accommodations.length ? (
+        <Accordion.Item
+          value="accommodation"
+          className="border-border overflow-hidden rounded-2xl border bg-white"
+        >
+          <AccordionHeader eyebrow="Hotels" title="The right hotel improves the whole route." />
+          <Accordion.Content className="border-border border-t p-5 md:p-6">
+            <p className="text-muted text-sm leading-7">
+              We consider location, room category, breakfast, service and transfer time before
+              recommending a property.
+            </p>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {tour.accommodations.map((hotel) => (
+                <HotelCard
+                  key={hotel.name}
+                  title={hotel.name}
+                  description={`${hotel.destination}. ${hotel.description}`}
+                  image={hotel.image}
+                  badges={hotel.roomStyle ? [hotel.roomStyle] : undefined}
+                  meta={hotel.highlights.slice(0, 2).map((highlight, index) => ({
+                    label: `Highlight ${index + 1}`,
+                    value: highlight,
+                  }))}
+                  variant="large"
+                />
+              ))}
+            </div>
+          </Accordion.Content>
+        </Accordion.Item>
+      ) : null}
+
+      <Accordion.Item
+        value="included"
+        className="border-border overflow-hidden rounded-2xl border bg-white"
+      >
+        <AccordionHeader eyebrow="Services" title="Know what is included before you book." />
+        <Accordion.Content className="border-border border-t p-5 md:p-6">
+          <p className="text-muted text-sm leading-7">
+            Your written proposal confirms every included service, selected hotel, room category and
+            payable extra.
+          </p>
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <ListPanel title="Included" items={tour.included} tone="positive" />
+            <ListPanel title="Not included" items={tour.excluded} tone="muted" />
+          </div>
+        </Accordion.Content>
+      </Accordion.Item>
+
+      <Accordion.Item
+        value="transportation"
+        className="border-border overflow-hidden rounded-2xl border bg-white"
+      >
+        <AccordionHeader eyebrow="Transport" title={tour.transportation.title} />
+        <Accordion.Content className="border-border border-t p-5 md:p-6">
+          <p className="text-muted text-sm leading-7">{tour.transportation.description}</p>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            {tour.transportation.items.map((item) => (
+              <FeatureCard
+                key={item.label}
+                icon={<Plane size={17} aria-hidden="true" />}
+                title={item.value}
+                description={`${item.label}. ${item.helper ?? ""}`}
+              />
+            ))}
+          </div>
+        </Accordion.Content>
+      </Accordion.Item>
+
+      <Accordion.Item
+        value="route"
+        className="border-border overflow-hidden rounded-2xl border bg-white"
+      >
+        <AccordionHeader eyebrow="Route map" title={tour.routeMap.title} />
+        <Accordion.Content className="border-border border-t p-5 md:p-6">
+          <p className="text-muted mb-5 text-sm leading-7">{tour.routeMap.description}</p>
+          <RouteMap tour={tour} />
+        </Accordion.Content>
+      </Accordion.Item>
+
+      {tour.optionalExperiences.length ? (
+        <Accordion.Item
+          value="optional-experiences"
+          className="border-border overflow-hidden rounded-2xl border bg-white"
+        >
+          <AccordionHeader eyebrow="Optional experiences" title="Add only what earns its place." />
+          <Accordion.Content className="border-border border-t p-5 md:p-6">
+            <p className="text-muted text-sm leading-7">
+              We recommend additions only when they suit your interests and improve the day.
+            </p>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {tour.optionalExperiences.map((experience) => (
+                <ExperienceCard
+                  key={experience.title}
+                  title={experience.title}
+                  description={experience.description}
+                  image={experience.image}
+                  badges={experience.badges}
+                  variant="medium"
+                />
+              ))}
+            </div>
+          </Accordion.Content>
+        </Accordion.Item>
+      ) : null}
+
+      {tour.gallery.length ? (
+        <Accordion.Item
+          value="gallery"
+          className="border-border overflow-hidden rounded-2xl border bg-white"
+        >
+          <AccordionHeader eyebrow="Gallery" title="See the character of the route." />
+          <Accordion.Content className="border-border border-t p-5 md:p-6">
+            <GridGallery images={tour.gallery} mode="editorial" />
+          </Accordion.Content>
+        </Accordion.Item>
+      ) : null}
+    </Accordion.Root>
+  );
+}
+
+function AccordionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <Accordion.Header>
+      <Accordion.Trigger className="group flex w-full items-center justify-between gap-5 p-5 text-left md:p-6">
+        <span>
+          <span className="text-xs font-semibold tracking-[0.14em] text-[var(--accent)] uppercase">
+            {eyebrow}
+          </span>
+          <span className="mt-2 block text-lg font-semibold tracking-[-0.02em]">{title}</span>
+        </span>
+        <ChevronDown
+          size={20}
+          aria-hidden="true"
+          className="shrink-0 transition group-data-[state=open]:rotate-180"
+        />
+      </Accordion.Trigger>
+    </Accordion.Header>
   );
 }
 
