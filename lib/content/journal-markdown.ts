@@ -9,6 +9,14 @@ import accommodationMarkdown from "@/content/journal/articles/2026-08-06-china-a
 import trainMarkdown from "@/content/journal/articles/2026-08-06-china-high-speed-train-foreigners.md";
 import paymentsMarkdown from "@/content/journal/articles/2026-08-06-china-mobile-payments-foreign-tourists.md";
 import forbiddenCityMarkdown from "@/content/journal/articles/2026-08-06-forbidden-city-tickets-foreigners.md";
+import pandaBaseMarkdown from "@/content/journal/articles/2026-08-07-chengdu-panda-base-tickets-foreigners.md";
+import simCardMarkdown from "@/content/journal/articles/2026-08-07-china-sim-card-esim-internet-foreign-tourists.md";
+import shanghaiAirportMarkdown from "@/content/journal/articles/2026-08-07-shanghai-pudong-hongqiao-airport-guide.md";
+import medicineMarkdown from "@/content/journal/articles/2026-08-08-bringing-prescription-medicine-to-china.md";
+import powerBankMarkdown from "@/content/journal/articles/2026-08-08-china-domestic-flight-power-bank-rules.md";
+import goldenWeekMarkdown from "@/content/journal/articles/2026-08-08-china-golden-week-travel-2026.md";
+import greatWallMarkdown from "@/content/journal/articles/2026-08-08-mutianyu-badaling-jinshanling-great-wall.md";
+import terracottaArmyMarkdown from "@/content/journal/articles/2026-08-08-terracotta-army-tickets-foreign-visitors.md";
 
 const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md":
@@ -18,6 +26,20 @@ const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-06-china-high-speed-train-foreigners.md": trainMarkdown,
   "content/journal/articles/2026-08-06-china-mobile-payments-foreign-tourists.md": paymentsMarkdown,
   "content/journal/articles/2026-08-06-forbidden-city-tickets-foreigners.md": forbiddenCityMarkdown,
+  "content/journal/articles/2026-08-07-chengdu-panda-base-tickets-foreigners.md": pandaBaseMarkdown,
+  "content/journal/articles/2026-08-07-china-sim-card-esim-internet-foreign-tourists.md":
+    simCardMarkdown,
+  "content/journal/articles/2026-08-07-shanghai-pudong-hongqiao-airport-guide.md":
+    shanghaiAirportMarkdown,
+  "content/journal/articles/2026-08-08-bringing-prescription-medicine-to-china.md":
+    medicineMarkdown,
+  "content/journal/articles/2026-08-08-china-domestic-flight-power-bank-rules.md":
+    powerBankMarkdown,
+  "content/journal/articles/2026-08-08-china-golden-week-travel-2026.md": goldenWeekMarkdown,
+  "content/journal/articles/2026-08-08-mutianyu-badaling-jinshanling-great-wall.md":
+    greatWallMarkdown,
+  "content/journal/articles/2026-08-08-terracotta-army-tickets-foreign-visitors.md":
+    terracottaArmyMarkdown,
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {
@@ -34,7 +56,11 @@ export async function hydrateJournalArticle(article: JournalArticle): Promise<Jo
 }
 
 function parseJournalMarkdown(markdown: string): JournalContentBlock[] {
-  const draft = section(markdown, "## Draft", "## Suggested structured data");
+  const draft = section(markdown, "## Draft", [
+    "## Suggested structured data",
+    "## Structured Data Recommendation",
+    "## SEO & GEO Review",
+  ]);
   const sources = section(markdown, "## Sources", "## Review Notes");
   const blocks = parseBlocks(draft);
 
@@ -46,11 +72,15 @@ function parseJournalMarkdown(markdown: string): JournalContentBlock[] {
   return blocks;
 }
 
-function section(markdown: string, start: string, end: string) {
+function section(markdown: string, start: string, end: string | string[]) {
   const startIndex = markdown.indexOf(start);
   if (startIndex === -1) return "";
   const contentStart = startIndex + start.length;
-  const endIndex = markdown.indexOf(end, contentStart);
+  const endIndex = [end]
+    .flat()
+    .map((heading) => markdown.indexOf(heading, contentStart))
+    .filter((index) => index !== -1)
+    .sort((a, b) => a - b)[0];
   return markdown.slice(contentStart, endIndex === -1 ? undefined : endIndex).trim();
 }
 
@@ -60,6 +90,7 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
   let paragraph: string[] = [];
   let inFaq = false;
   let faqQuestion: string | null = null;
+  let pendingImageIndex: number | null = null;
 
   const flushParagraph = () => {
     const body = paragraph.join(" ").trim();
@@ -82,6 +113,32 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
       flushParagraph();
       continue;
     }
+
+    const image = line.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
+    if (image) {
+      flushParagraph();
+      blocks.push({
+        type: "image",
+        image: {
+          src: image[2],
+          alt: image[1],
+        },
+      });
+      pendingImageIndex = blocks.length - 1;
+      continue;
+    }
+
+    const caption = line.match(/^([*_])([^*_].*)\1$/);
+    if (pendingImageIndex !== null && caption) {
+      const pendingImage = blocks[pendingImageIndex];
+      if (pendingImage?.type === "image") {
+        pendingImage.caption = cleanMarkdown(caption[2]);
+      }
+      pendingImageIndex = null;
+      continue;
+    }
+
+    pendingImageIndex = null;
 
     if (line === "## FAQ" && parseFaq) {
       flushParagraph();

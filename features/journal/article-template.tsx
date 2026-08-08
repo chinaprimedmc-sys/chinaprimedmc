@@ -90,7 +90,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
 
             <article className="min-w-0">
               <ArticleMeta article={article} />
-              <div className="mt-8 grid gap-7">
+              <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-7">
                 {article.content.map((block, index) => (
                   <ArticleBlock key={`${block.type}-${index}`} block={block} />
                 ))}
@@ -351,7 +351,7 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
       return <p className="text-muted text-lg leading-9">{renderInlineLinks(block.body)}</p>;
     case "image":
       return (
-        <figure>
+        <figure className="min-w-0">
           <OptimizedImage
             src={block.image.src}
             alt={block.image.alt}
@@ -359,7 +359,7 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
             height={block.image.height ?? 800}
             sizes="(min-width:1024px) 720px, 100vw"
             objectPosition={block.image.objectPosition}
-            frameClassName="aspect-[4/3] rounded-[1.5rem]"
+            frameClassName="aspect-[4/3] w-full rounded-[1.5rem]"
             className="h-full w-full"
           />
           {block.caption ? (
