@@ -2,6 +2,7 @@ export const publicRouteSlugs = {
   tours: [
     "first-china-beautifully-paced",
     "chengdu-pandas-sichuan-table",
+    "chengdu-pandas-jiuzhaigou-private-7-day-tour",
     "beijing-great-wall-private-5-day-tour",
     "shanghai-zhangjiajie-floating-peaks",
   ],

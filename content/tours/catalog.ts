@@ -57,6 +57,9 @@ export type JourneyPlanningNeedId =
 
 const flagship = tours[0];
 const chengdu = tours.find((tour) => tour.slug === "chengdu-pandas-sichuan-table");
+const chengduJiuzhaigou = tours.find(
+  (tour) => tour.slug === "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+);
 const shanghaiZhangjiajie = tours.find(
   (tour) => tour.slug === "shanghai-zhangjiajie-floating-peaks",
 );
@@ -70,6 +73,10 @@ if (!flagship) {
 
 if (!chengdu) {
   throw new Error("The Chengdu journey is required for the journeys catalog.");
+}
+
+if (!chengduJiuzhaigou) {
+  throw new Error("The Chengdu and Jiuzhaigou journey is required for the journeys catalog.");
 }
 
 if (!shanghaiZhangjiajie) {
@@ -169,6 +176,49 @@ const chengduJourney: JourneyCatalogItem = {
   ],
 };
 
+const chengduJiuzhaigouJourney: JourneyCatalogItem = {
+  slug: chengduJiuzhaigou.slug,
+  title: chengduJiuzhaigou.title,
+  eyebrow: "Private Sichuan journey",
+  summary: chengduJiuzhaigou.subtitle,
+  hook: "Pandas at a better hour, Sichuan food and Jiuzhaigou's alpine lakes, connected with private support.",
+  image: chengduJiuzhaigou.hero.image,
+  href: `/tours/${chengduJiuzhaigou.slug}`,
+  kind: "featured",
+  routeLabel: chengduJiuzhaigou.route,
+  durationLabel: "7 days / 6 nights",
+  styleFilters: ["Nature", "Family", "Food", "Photography", "Slow Travel"],
+  destinationFilters: ["Chengdu", "Jiuzhaigou"],
+  bestForFilters: ["Families", "Couples", "Nature travellers", "Photography travellers"],
+  experienceFilters: ["pandas", "food", "scenery", "local-life", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "solo-travelers",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 7,
+  recommendedDaysMax: 8,
+  destinations: [
+    { label: "Chengdu", href: "/destinations/chengdu" },
+    { label: "Jiuzhaigou", href: "/destinations/jiuzhaigou" },
+  ],
+  planningNote:
+    "Ends in the Jiuzhaigou area; add a Chengdu return when your onward flight requires it.",
+};
+
 const shanghaiZhangjiajieJourney: JourneyCatalogItem = {
   slug: shanghaiZhangjiajie.slug,
   title: shanghaiZhangjiajie.title,
@@ -252,6 +302,7 @@ const beijingUnhurriedJourney: JourneyCatalogItem = {
 export const journeyCatalog: JourneyCatalogItem[] = [
   firstChina,
   chengduJourney,
+  chengduJiuzhaigouJourney,
   beijingUnhurriedJourney,
   shanghaiZhangjiajieJourney,
 ];

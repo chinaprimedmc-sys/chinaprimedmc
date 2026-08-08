@@ -13,6 +13,53 @@ const firstChinaEmail =
 const firstChinaWhatsApp =
   "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.";
 
+const chengduJiuzhaigouImage = (src: string, alt: string, width = 1600, height = 1067) => ({
+  src: `/tours/chengdu-pandas-jiuzhaigou/${src}`,
+  alt,
+  width,
+  height,
+});
+
+const chengduJiuzhaigouAsset = {
+  hero: chengduJiuzhaigouImage(
+    "hero.webp",
+    "Autumn forest and a turquoise lake in Jiuzhaigou National Park",
+  ),
+  day01: chengduJiuzhaigouImage(
+    "day-01.webp",
+    "Traditional covered tea bowl in a Chengdu tea house",
+  ),
+  day02: chengduJiuzhaigouImage(
+    "day-02.webp",
+    "Giant panda resting among bamboo at Chengdu Panda Base",
+  ),
+  day03: chengduJiuzhaigouImage("day-03.webp", "Tea house setting in Chengdu's People's Park"),
+  day04: chengduJiuzhaigouImage(
+    "day-04.webp",
+    "Summer mountain lake and forest scenery near Jiuzhaigou",
+  ),
+  day05: chengduJiuzhaigouImage(
+    "day-05.webp",
+    "Clear turquoise lake surrounded by forest in Jiuzhaigou",
+  ),
+  day06: chengduJiuzhaigouImage(
+    "day-06.webp",
+    "Autumn colours reflected in a Jiuzhaigou mountain lake",
+  ),
+  day07: chengduJiuzhaigouImage(
+    "day-07.webp",
+    "Mountain valley and alpine lake scenery in Jiuzhaigou",
+  ),
+  gallery: Array.from({ length: 13 }, (_, index) =>
+    chengduJiuzhaigouImage(
+      `gallery-${String(index + 1).padStart(2, "0")}.webp`,
+      "Sichuan and Jiuzhaigou scenery from a private China journey",
+      1200,
+      800,
+    ),
+  ),
+};
+
 export const tours: Tour[] = [
   {
     slug: "first-china-beautifully-paced",
@@ -846,6 +893,507 @@ export const tours: Tour[] = [
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
         "I am interested in Chengdu, Pandas & Sichuan Table. Please suggest the best pacing for my travelers.",
+    },
+  },
+  {
+    slug: "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+    title: "7-Day Chengdu Panda & Jiuzhaigou Private Journey",
+    subtitle:
+      "Giant pandas, Sichuan food and Jiuzhaigou's alpine lakes, connected with private support and a comfortable daily rhythm.",
+    duration: "7 Days / 6 Nights",
+    route: "Chengdu, Jiuzhaigou",
+    styles: ["Nature", "Family", "Food", "Photography", "Senior-friendly"],
+    hero: {
+      eyebrow: "Private Sichuan journey",
+      image: chengduJiuzhaigouAsset.hero,
+      primary: { label: "Explore Itinerary", href: "#itinerary" },
+      secondary: { label: "Request a Tailored Proposal", href: "#inquiry" },
+    },
+    seo: {
+      title: "7-Day Chengdu Panda & Jiuzhaigou Private Tour",
+      description:
+        "Plan a private 7-day Chengdu and Jiuzhaigou tour with pandas, Sichuan food, alpine lakes, private transfers and flexible pacing.",
+      keywords: [
+        "Chengdu and Jiuzhaigou private tour",
+        "7 day Chengdu Jiuzhaigou itinerary",
+        "Chengdu panda and Jiuzhaigou tour",
+        "private Jiuzhaigou tour",
+        "Jiuzhaigou tour from Chengdu",
+        "China panda and nature tour",
+        "Chengdu family private tour",
+        "Jiuzhaigou tour for seniors",
+      ],
+    },
+    overview: {
+      pitch:
+        "See pandas at a better hour, understand Chengdu through food and tea, then reach Jiuzhaigou with the regional logistics handled around your group.",
+      facts: [
+        {
+          label: "Duration",
+          value: "7 days / 6 nights",
+          helper: "Three nights in Chengdu and three in the Jiuzhaigou area.",
+        },
+        {
+          label: "Destinations",
+          value: "Chengdu + Jiuzhaigou",
+          helper: "City culture, pandas and alpine landscapes in one Sichuan route.",
+        },
+        {
+          label: "Travel Style",
+          value: "Private, tailored",
+          helper: "Hotels, transport and daily intensity are confirmed around your group.",
+        },
+        {
+          label: "Pacing",
+          value: "Easy to moderate",
+          helper: "Park transport reduces distance, but paths, steps and altitude remain.",
+        },
+        {
+          label: "Suitable For",
+          value: "Couples, families, private groups",
+          helper: "Especially strong for nature, pandas and photography interests.",
+        },
+      ],
+    },
+    planningSupport: {
+      eyebrow: "Before your proposal",
+      title: "Mountain logistics deserve a clear plan.",
+      description:
+        "The right connection, hotel location and walking plan depend on your dates, party and onward travel.",
+      items: [
+        {
+          label: "Journey end",
+          value: "Jiuzhaigou area",
+          helper: "A return to Chengdu can be added as an eighth day.",
+        },
+        {
+          label: "Altitude",
+          value: "Discuss before booking",
+          helper: "Huanglong is optional and higher than the main Jiuzhaigou visit.",
+        },
+        {
+          label: "Dietary needs",
+          value: "Checked in advance",
+          helper: "Share halal, vegetarian and allergy requirements before quotation.",
+        },
+        {
+          label: "Season",
+          value: "Conditions vary",
+          helper: "Weather, access and transport schedules shape the final plan.",
+        },
+      ],
+      note: "Your written proposal will confirm the operating transport, hotels, tickets and included services for your dates.",
+    },
+    highlights: [
+      {
+        title: "Pandas at a better hour",
+        description:
+          "An early private transfer supports a calmer visit and a better chance of seeing active pandas before the day becomes busier.",
+        category: "Family",
+        image: chengduJiuzhaigouAsset.day02,
+      },
+      {
+        title: "Jiuzhaigou without the planning burden",
+        description:
+          "Regional transport, private road transfers, park arrangements and hotel stays are connected around your dates rather than left as separate bookings.",
+        category: "Nature",
+        image: chengduJiuzhaigouAsset.day05,
+      },
+      {
+        title: "Two contrasting sides of Sichuan",
+        description:
+          "Chengdu's tea houses and kitchens lead naturally into forested valleys, clear lakes and changing mountain light.",
+        category: "Photography",
+        image: chengduJiuzhaigouAsset.day03,
+      },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive in Chengdu",
+        destination: "Chengdu",
+        summary:
+          "Meet your local team on arrival and transfer privately to your hotel. The first evening stays light so you can settle in and begin without pressure.",
+        image: chengduJiuzhaigouAsset.day01,
+        hotel: "Chengdu stay: hotel and room category selected after inquiry",
+        meals: ["As confirmed in your written quotation"],
+        transport: "Private airport or station transfer",
+        activities: [
+          {
+            title: "Private arrival support",
+            description:
+              "Your driver meets the confirmed flight or train and takes you directly to the selected hotel.",
+          },
+          {
+            title: "A deliberately quiet evening",
+            description:
+              "Rest after the journey or take a short neighbourhood walk if your arrival time and energy allow.",
+          },
+        ],
+        guideNote:
+          "Arrival support and transfer timing are arranged around your confirmed details.",
+        coordinates: { latitude: 30.5728, longitude: 104.0668 },
+      },
+      {
+        day: 2,
+        title: "Pandas and a quiet Chengdu afternoon",
+        destination: "Chengdu",
+        summary:
+          "Begin with a carefully timed visit to Chengdu Panda Base, then return to the city for tea, a relaxed neighbourhood walk or time at leisure.",
+        image: chengduJiuzhaigouAsset.day02,
+        hotel: "Chengdu stay: hotel and room category selected after inquiry",
+        meals: ["Breakfast; other meals as confirmed"],
+        transport: "Private vehicle and English-speaking guide",
+        activities: [
+          {
+            time: "Morning",
+            title: "Chengdu Research Base",
+            description:
+              "Follow a manageable route through the panda areas with time to pause rather than rushing between every enclosure.",
+          },
+          {
+            time: "Afternoon",
+            title: "Tea house or neighbourhood time",
+            description:
+              "Choose a traditional tea house, a short local walk or a restful afternoon according to the group.",
+          },
+        ],
+        guideNote:
+          "Earlier starts generally support a more comfortable panda visit; the afternoon remains flexible.",
+        coordinates: { latitude: 30.7337, longitude: 104.1436 },
+      },
+      {
+        day: 3,
+        title: "Sichuan flavours and local life",
+        destination: "Chengdu",
+        summary:
+          "Explore Chengdu through its food culture and everyday rhythm, with a private guide adapting the day around spice tolerance, dietary needs and energy.",
+        image: chengduJiuzhaigouAsset.day03,
+        hotel: "Chengdu stay: hotel and room category selected after inquiry",
+        meals: ["Breakfast; food experience as confirmed"],
+        transport: "Private vehicle and English-speaking guide",
+        activities: [
+          {
+            title: "Market and neighbourhood context",
+            description:
+              "See how local ingredients, tea and daily routines fit into Chengdu life with explanation from your guide.",
+          },
+          {
+            title: "A Sichuan table shaped around you",
+            description:
+              "Select a guided meal, food walk or cooking experience suited to your appetite and preferences.",
+          },
+        ],
+        guideNote:
+          "Halal, vegetarian, allergy and other dietary requirements must be shared before confirmation so suitable options can be checked.",
+        coordinates: { latitude: 30.657, longitude: 104.066 },
+      },
+      {
+        day: 4,
+        title: "From Chengdu into the mountains",
+        destination: "Chengdu to Jiuzhaigou",
+        summary:
+          "Travel towards Jiuzhaigou using the most suitable rail and private road connection operating for your dates, as the landscape changes from urban Sichuan to mountain valleys.",
+        image: chengduJiuzhaigouAsset.day04,
+        hotel: "Jiuzhaigou area stay: selected around park access and comfort",
+        meals: ["Breakfast; other meals as confirmed"],
+        transport: "Rail and private road transfer, confirmed for your travel date",
+        activities: [
+          {
+            title: "Managed regional connection",
+            description:
+              "Tickets, station assistance and the onward private transfer are coordinated as one journey rather than separate bookings.",
+          },
+          {
+            title: "Settle into the Jiuzhaigou area",
+            description:
+              "Keep the evening free for rest, an early meal and adjustment before the national park day.",
+          },
+        ],
+        guideNote:
+          "The exact connection depends on seasonal schedules and operating conditions and will be stated in your written proposal.",
+        coordinates: { latitude: 33.2609, longitude: 103.9186 },
+      },
+      {
+        day: 5,
+        title: "Jiuzhaigou's lakes and forested valleys",
+        destination: "Jiuzhaigou",
+        summary:
+          "Spend a full day among Jiuzhaigou's clear lakes, waterfalls and forested valleys, with the route adjusted around weather, walking comfort and the places that matter most to you.",
+        image: chengduJiuzhaigouAsset.day05,
+        hotel: "Jiuzhaigou area stay: selected around park access and comfort",
+        meals: ["Breakfast; other meals as confirmed"],
+        transport: "Private hotel transfers and national park transport",
+        activities: [
+          {
+            title: "A considered national park route",
+            description:
+              "Use the park transport and selected walking sections to experience the valleys without treating every stop as compulsory.",
+          },
+          {
+            title: "Time for changing light",
+            description:
+              "The day leaves room to pause at the lakes and viewpoints that suit the season and visibility.",
+          },
+        ],
+        guideNote:
+          "Park transport reduces distance, but paths, steps, queues and changing weather cannot be removed completely.",
+        coordinates: { latitude: 33.252, longitude: 103.918 },
+      },
+      {
+        day: 6,
+        title: "A second mountain day, chosen carefully",
+        destination: "Jiuzhaigou / Huanglong",
+        summary:
+          "Choose a gentler second day around Jiuzhaigou or consider Huanglong when the season, weather, access, health and walking ability make it appropriate.",
+        image: chengduJiuzhaigouAsset.day06,
+        hotel: "Jiuzhaigou area stay: selected around park access and comfort",
+        meals: ["Breakfast; other meals as confirmed"],
+        transport: "Private vehicle according to the confirmed option",
+        activities: [
+          {
+            title: "Gentler Jiuzhaigou option",
+            description:
+              "Use the day for a slower scenic experience, cultural context or rest rather than repeating a demanding park schedule.",
+          },
+          {
+            title: "Huanglong option",
+            description:
+              "Visit Huanglong only when current access and the group's altitude and walking considerations support it.",
+          },
+        ],
+        guideNote:
+          "Huanglong is optional, reaches higher altitude and is never presented as compulsory.",
+        coordinates: { latitude: 32.754, longitude: 103.83 },
+      },
+      {
+        day: 7,
+        title: "Depart from the Jiuzhaigou area",
+        destination: "Jiuzhaigou",
+        summary:
+          "Transfer privately to Jiuzhai Huanglong Airport or your confirmed onward connection. An additional return to Chengdu can be arranged as an eighth day.",
+        image: chengduJiuzhaigouAsset.day07,
+        meals: ["Breakfast"],
+        transport: "Private departure transfer",
+        activities: [
+          {
+            title: "Onward travel support",
+            description:
+              "Departure timing is planned around the confirmed flight or onward arrangement with a practical margin.",
+          },
+          {
+            title: "Optional Chengdu return",
+            description:
+              "Add an extra night and return connection when your international flight or wider China route requires it.",
+          },
+        ],
+        guideNote:
+          "This seven-day version ends in the Jiuzhaigou area; a Chengdu return is quoted separately.",
+        coordinates: { latitude: 32.8533, longitude: 103.6822 },
+      },
+    ],
+    accommodations: [
+      {
+        name: "Chengdu stay | selected around location and rest",
+        destination: "Chengdu",
+        description:
+          "Your hotel is selected around room configuration, breakfast, reliable access and an easy return after private touring.",
+        roomStyle: "Hotel tier and room category confirmed after inquiry",
+        highlights: ["Well-planned location", "Breakfast", "Private transfers"],
+        image: chengduJiuzhaigouAsset.gallery[0],
+      },
+      {
+        name: "Jiuzhaigou stay | selected around park access",
+        destination: "Jiuzhaigou",
+        description:
+          "The mountain stay is chosen around park access, heating or climate comfort, room needs and realistic transfer times.",
+        roomStyle: "Hotel tier and room category confirmed after inquiry",
+        highlights: ["Park access", "Mountain comfort", "Local support"],
+        image: chengduJiuzhaigouAsset.gallery[1],
+      },
+    ],
+    included: [
+      "Private itinerary planning around your dates and travelers",
+      "Hotels and breakfasts listed in the final written proposal",
+      "Private airport, station and road transfers listed in the final proposal",
+      "English-speaking guide service as confirmed for each destination",
+      "Domestic rail or flight segment when stated in the final proposal",
+      "National park transport and attraction tickets listed in the final proposal",
+      "Local support before arrival and while traveling",
+      "No forced shopping visits",
+    ],
+    excluded: [
+      "International flights",
+      "China visa costs or documentation services unless stated",
+      "Meals, drinks and optional experiences not listed in the final proposal",
+      "Travel insurance, medical costs and personal expenses",
+      "Any service not confirmed in the final written proposal",
+    ],
+    optionalExperiences: [
+      {
+        title: "A gentler mountain rhythm",
+        description:
+          "Adjust park sections, starts, rest windows and the second scenic day around children, older travelers or walking comfort.",
+        badges: ["Flexible pace", "Private"],
+        image: chengduJiuzhaigouAsset.gallery[2],
+      },
+      {
+        title: "Dietary planning before arrival",
+        description:
+          "Discuss halal, vegetarian, allergy and spice requirements so suitable restaurants and menus can be checked before confirmation.",
+        badges: ["Dietary care", "Food"],
+        image: chengduJiuzhaigouAsset.gallery[3],
+      },
+      {
+        title: "An eighth day back to Chengdu",
+        description:
+          "Add a return connection and Chengdu night when it creates a safer or more comfortable onward departure.",
+        badges: ["Onward travel", "Flexible"],
+        image: chengduJiuzhaigouAsset.gallery[4],
+      },
+    ],
+    transportation: {
+      title: "The transport plan is part of the product.",
+      description:
+        "Chengdu and Jiuzhaigou are connected using the most suitable operating rail, road or flight combination for your dates, with private transfers at each end.",
+      items: [
+        {
+          label: "Chengdu",
+          value: "Private city transfers",
+          helper: "Airport, panda base and city touring as confirmed.",
+        },
+        {
+          label: "Regional connection",
+          value: "Schedule checked by date",
+          helper: "The exact rail, road or flight arrangement is confirmed in writing.",
+        },
+        {
+          label: "Jiuzhaigou",
+          value: "Private local transfers",
+          helper: "Hotel, park and departure logistics according to the final plan.",
+        },
+      ],
+    },
+    routeMap: {
+      title: "From Sichuan's capital to its alpine valleys.",
+      description:
+        "Three Chengdu nights create room for pandas and local life before three nights in the Jiuzhaigou area protect the mountain experience from a rushed turnaround.",
+      stops: [
+        {
+          name: "Chengdu",
+          days: "Days 1-4",
+          description: "Arrival, pandas, tea, Sichuan food and the managed regional connection.",
+          coordinates: { latitude: 30.5728, longitude: 104.0668 },
+        },
+        {
+          name: "Jiuzhaigou",
+          days: "Days 4-7",
+          description:
+            "Alpine lakes, forested valleys, a flexible second mountain day and onward departure.",
+          coordinates: { latitude: 33.2609, longitude: 103.9186 },
+        },
+      ],
+    },
+    gallery: [
+      chengduJiuzhaigouAsset.hero,
+      chengduJiuzhaigouAsset.day01,
+      chengduJiuzhaigouAsset.day02,
+      chengduJiuzhaigouAsset.day03,
+      chengduJiuzhaigouAsset.day04,
+      chengduJiuzhaigouAsset.day05,
+      chengduJiuzhaigouAsset.day06,
+      chengduJiuzhaigouAsset.day07,
+      ...chengduJiuzhaigouAsset.gallery,
+    ],
+    faqs: [
+      {
+        question: "How do we travel from Chengdu to Jiuzhaigou?",
+        answer:
+          "The most suitable rail, road or flight combination is selected for your dates. Your written proposal will name the stations or airports, ticket class, private transfers and expected journey flow.",
+      },
+      {
+        question: "Does this seven-day itinerary return to Chengdu?",
+        answer:
+          "No. The seven-day version ends in the Jiuzhaigou area. A return connection and additional Chengdu night can be added as an eighth day when it suits your onward travel.",
+      },
+      {
+        question: "Is Jiuzhaigou suitable for older travelers?",
+        answer:
+          "It can be, when walking comfort, altitude, hotel access and the park route are reviewed honestly before booking. Park vehicles reduce distance, but paths, steps and queues remain.",
+      },
+      {
+        question: "How much walking is involved?",
+        answer:
+          "The main park day is easy to moderate for many travelers, using park transport between selected areas. The final walking plan depends on seasonal access, crowds and your group's comfort.",
+      },
+      {
+        question: "What altitude should we expect?",
+        answer:
+          "Jiuzhaigou is a mountain destination and Huanglong is higher. Share relevant health or mobility concerns before planning and seek medical advice when appropriate; Huanglong remains optional.",
+      },
+      {
+        question: "Can families with children take this journey?",
+        answer:
+          "Yes. Panda timing, private transfers, lighter afternoons and a flexible second mountain day make the route adaptable for many families.",
+      },
+      {
+        question: "Can you arrange halal or vegetarian meals?",
+        answer:
+          "We can discuss and check suitable options before confirmation. Availability and menu suitability vary by destination, so dietary requirements should be shared before quotation.",
+      },
+      {
+        question: "Can Huanglong be added?",
+        answer:
+          "Yes, when seasonal access, weather, altitude and walking ability make it appropriate. It is an optional choice rather than a compulsory part of the journey.",
+      },
+      {
+        question: "What happens if mountain weather affects the plan?",
+        answer:
+          "The local team reviews current conditions and adjusts timing or the second scenic day where possible. Access and visibility cannot be guaranteed, and material changes are discussed with you.",
+      },
+      {
+        question: "How is the private tour quotation calculated?",
+        answer:
+          "The proposal is based on your dates, party size, hotel and room preferences, transport schedule, guide configuration and requested inclusions. No fixed price is shown because every confirmed plan is tailored.",
+      },
+    ],
+    related: {
+      tours: [
+        {
+          title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
+          description:
+            "A compact Chengdu stay for travelers who want pandas, food and tea without adding a mountain journey.",
+          tags: ["Pandas", "Food", "One hotel base"],
+          image: chengduJiuzhaigouAsset.day02,
+          route: "Chengdu and Leshan",
+          duration: "5 Days / 4 Nights",
+          href: "/tours/chengdu-pandas-sichuan-table",
+        },
+      ],
+      destinations: [
+        {
+          name: "Chengdu",
+          description: "Pandas, tea houses, Sichuan food and an easy local rhythm.",
+          image: chengduJiuzhaigouAsset.day02,
+          href: "/destinations/chengdu",
+        },
+        {
+          name: "Jiuzhaigou",
+          description:
+            "Clear alpine lakes, waterfalls and forested valleys shaped by season and light.",
+          image: chengduJiuzhaigouAsset.day05,
+          href: "/destinations/jiuzhaigou",
+        },
+      ],
+    },
+    inquiry: {
+      emailHref:
+        "mailto:chinaprimedmc@gmail.com?subject=7-Day%20Chengdu%20Panda%20%26%20Jiuzhaigou%20Private%20Journey",
+      whatsappHref:
+        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20tailored%20proposal%20for%20the%207-day%20Chengdu%20Panda%20and%20Jiuzhaigou%20private%20journey.",
+      scheduleCallHref: "tel:+447985052302",
+      defaultMessage:
+        "I am interested in the 7-Day Chengdu Panda & Jiuzhaigou Private Journey. Please recommend the right hotels, transport plan and daily pace for my group.",
     },
   },
   {
