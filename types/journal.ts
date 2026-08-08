@@ -15,7 +15,8 @@ export type JournalCategory =
   | "Train Travel"
   | "Nature"
   | "History"
-  | "Shopping";
+  | "Shopping"
+  | "Industry News";
 
 export type JournalTagType =
   "city" | "province" | "theme" | "travel-style" | "season" | "audience" | "experience";
@@ -74,6 +75,13 @@ export type JournalRelatedManual = {
   articles?: string[];
 };
 
+export type JournalCitation = {
+  name: string;
+  url: string;
+  publisher: string;
+  publishedAt: string;
+};
+
 export type JournalArticle = {
   slug: string;
   title: string;
@@ -101,6 +109,7 @@ export type JournalArticle = {
     ogImage?: MediaAsset;
   };
   related?: JournalRelatedManual;
+  citations?: JournalCitation[];
   sourcePath?: string;
 };
 

@@ -64,6 +64,7 @@ const preferredLeadSlugs: Partial<Record<GuideFilter["id"], string>> = {
 };
 
 function getPrimaryLabel(article: JournalArticle) {
+  if (article.category === "Industry News") return "AVIORA News";
   if (article.category === "Visa") return "Entry & Visas";
   if (article.category === "Train Travel" || article.slug.includes("mobile-payments")) {
     return "Practical Travel";

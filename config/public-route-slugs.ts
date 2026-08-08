@@ -43,6 +43,7 @@ export const publicRouteSlugs = {
     "terracotta-army-tickets-foreign-visitors",
     "china-domestic-flight-power-bank-rules",
     "bringing-prescription-medicine-to-china",
+    "aviora-ttg-asia-matta-connect-2026",
   ],
   styles: ["family", "luxury", "slow-travel", "photography"],
 } as const;

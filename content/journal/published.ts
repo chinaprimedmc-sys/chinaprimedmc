@@ -1,4 +1,5 @@
 import { destinationAsset } from "@/content/destinations/assets";
+import { homeEditorialImages } from "@/content/home/homepage";
 import type { JournalArticle } from "@/types/journal";
 
 const author = {
@@ -171,6 +172,58 @@ const journalImages = {
 } as const;
 
 export const publishedJournalArticles: JournalArticle[] = [
+  {
+    slug: "aviora-ttg-asia-matta-connect-2026",
+    title: "Listening Before Designing: AVIORA at MATTA Connect",
+    dek: "TTG Asia named Guohui Shi of China Prime DMC, AVIORA's China operating team, in its MATTA Connect 2026 coverage. The more important story is why listening comes before itinerary design.",
+    excerpt:
+      "How AVIORA turns conversations with Malaysian travel buyers into clearer, more considerate private journeys through China.",
+    category: "Industry News",
+    tags: ["travel-trade", "malaysia", "muslim-friendly", "private-guides"],
+    author,
+    publishedAt: "2026-08-08",
+    readingTime: "6 min read",
+    featured: true,
+    editorPick: true,
+    hero: {
+      eyebrow: "AVIORA in the travel trade",
+      image: homeEditorialImages.tradeBuyerMeeting,
+    },
+    gallery: [homeEditorialImages.tradeMuslimBuyers, homeEditorialImages.tradeConsultation],
+    content: [],
+    seo: {
+      title: "AVIORA at MATTA Connect | Featured in TTG Asia",
+      description:
+        "TTG Asia named Guohui Shi of AVIORA's China operating team in its MATTA Connect coverage. Read how listening shapes more thoughtful private China journeys.",
+      keywords: [
+        "AVIORA MATTA Connect",
+        "AVIORA private China travel",
+        "China Prime DMC TTG Asia",
+        "China Prime DMC MATTA Connect",
+        "Guohui Shi China Prime DMC",
+        "China inbound travel specialist",
+        "Malaysia China private travel",
+      ],
+      ogImage: homeEditorialImages.tradeBuyerMeeting,
+    },
+    related: {
+      tours: [
+        "first-china-beautifully-paced",
+        "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+        "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      ],
+      articles: ["china-240-hour-visa-free-transit-guide", "china-high-speed-train-foreigners"],
+    },
+    citations: [
+      {
+        name: "MATTA Connect gains traction as B2B platform",
+        url: "https://www.ttgasia.com/2026/07/30/matta-connect-gains-traction-as-b2b-platform/",
+        publisher: "TTG Asia",
+        publishedAt: "2026-07-30",
+      },
+    ],
+    sourcePath: "content/journal/articles/2026-08-08-china-prime-dmc-ttg-asia-matta-connect.md",
+  },
   {
     slug: "china-240-hour-visa-free-transit-guide",
     title: "China’s 240-Hour Visa-Free Transit: A Route-First Guide",

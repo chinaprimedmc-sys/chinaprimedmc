@@ -41,6 +41,18 @@ export function organizationSchema() {
       availableLanguage: ["English", "Chinese"],
     },
     sameAs: siteConfig.socials,
+    subjectOf: {
+      "@type": "NewsArticle",
+      headline: "MATTA Connect gains traction as B2B platform",
+      url: "https://www.ttgasia.com/2026/07/30/matta-connect-gains-traction-as-b2b-platform/",
+      datePublished: "2026-07-30",
+      publisher: {
+        "@type": "Organization",
+        name: "TTG Asia",
+        url: "https://www.ttgasia.com/",
+      },
+      about: { "@id": organizationId },
+    },
   };
 }
 

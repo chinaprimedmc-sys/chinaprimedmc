@@ -114,5 +114,19 @@ function articleSchema(article: JournalArticle) {
     },
     mainEntityOfPage: new URL(`/journal/${article.slug}`, siteConfig.url).toString(),
     keywords: article.seo.keywords,
+    ...(article.citations?.length
+      ? {
+          citation: article.citations.map((citation) => ({
+            "@type": "NewsArticle",
+            headline: citation.name,
+            url: citation.url,
+            datePublished: citation.publishedAt,
+            publisher: {
+              "@type": "Organization",
+              name: citation.publisher,
+            },
+          })),
+        }
+      : {}),
   };
 }

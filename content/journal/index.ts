@@ -17,6 +17,7 @@ export const journalCategories: JournalCategory[] = [
   "Nature",
   "History",
   "Shopping",
+  "Industry News",
 ];
 
 export const journalTags: JournalTag[] = [
@@ -33,6 +34,9 @@ export const journalTags: JournalTag[] = [
   { slug: "food", label: "Food", type: "theme" },
   { slug: "spring", label: "Spring", type: "season" },
   { slug: "autumn", label: "Autumn", type: "season" },
+  { slug: "travel-trade", label: "Travel Trade", type: "theme" },
+  { slug: "muslim-friendly", label: "Muslim-friendly", type: "audience" },
+  { slug: "malaysia", label: "Malaysia", type: "theme" },
 ];
 
 export const journalArticles: JournalArticle[] = publishedJournalArticles;

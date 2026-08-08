@@ -1,6 +1,7 @@
 import { ArrowRight, Check, FileCheck2, MessageCircle, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
@@ -283,6 +284,12 @@ export default function AboutPage() {
           These are photographs of real conversations about travel in China. We share them to show
           the people behind AVIORA, without making claims that cannot be independently verified.
         </p>
+        <Link
+          href="/journal/aviora-ttg-asia-matta-connect-2026"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#405848] underline decoration-[#607868]/35 underline-offset-4 transition hover:text-[#1b1c19]"
+        >
+          Read our MATTA Connect story <ArrowRight className="size-4" />
+        </Link>
       </section>
 
       <section id="team" className="border-y border-black/8 bg-white py-24 md:py-32">
