@@ -10,6 +10,8 @@ const coreJourneyTitleOverrides: Record<string, string> = {
     "7-Day Chengdu Panda & Jiuzhaigou Private Journey",
   "beijing-great-wall-private-5-day-tour": "5-Day Beijing & Great Wall Private Tour",
   "shanghai-zhangjiajie-floating-peaks": "8-Day Shanghai & Zhangjiajie Private Tour",
+  "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour":
+    "6-Day Xi'an & Beijing Private Tour",
 };
 
 const coreJourneyOrder = [
@@ -18,6 +20,7 @@ const coreJourneyOrder = [
   "chengdu-pandas-jiuzhaigou-private-7-day-tour",
   "beijing-great-wall-private-5-day-tour",
   "shanghai-zhangjiajie-floating-peaks",
+  "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
 ];
 
 export function normalizeCoreJourneyTitle(journey: CmsJourney): CmsJourney {

@@ -5,6 +5,7 @@ export const publicRouteSlugs = {
     "chengdu-pandas-jiuzhaigou-private-7-day-tour",
     "beijing-great-wall-private-5-day-tour",
     "shanghai-zhangjiajie-floating-peaks",
+    "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
   ],
   destinations: [
     "beijing",

@@ -5,7 +5,68 @@ import {
   firstChinaAsset,
   shanghaiZhangjiajieAsset,
 } from "@/content/tours/assets";
+import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
+
+const xianBeijingImage = (src: string, alt: string): MediaAsset => ({
+  src: `/tours/xian-beijing-private-journey/${src}`,
+  alt,
+  width: 1600,
+  height: 1067,
+});
+
+const xianBeijingGalleryAlt = [
+  "Coffee overlooking Shichahai and Beijing's historic rooftops",
+  "A quiet cafe storefront in Beijing's Guozijian hutong area",
+  "A tree-lined Beijing hutong with a relaxed neighborhood atmosphere",
+  "A bright guest room inside a Beijing courtyard residence",
+  "A landscaped courtyard at a traditional Beijing siheyuan stay",
+  "Traditional interior details inside a Beijing courtyard residence",
+  "A garden pond and historic architecture in a Beijing courtyard",
+  "Xi'an's old city illuminated during a winter festival evening",
+  "Colorful festival decorations in central Xi'an at night",
+  "Crowds and historic architecture during an illuminated Xi'an evening",
+  "An autumn road surrounded by golden foliage near Beijing",
+  "A traveler among vivid autumn leaves near the Great Wall",
+  "Beijing's modern CBD skyline at blue hour",
+  "A spacious premium seat aboard a China high-speed train",
+  "The interior of a modern China high-speed train carriage",
+  "The Forbidden City seen from Jingshan Park in Beijing",
+  "Close portrait detail of a Terracotta Warrior in Xi'an",
+  "Rows of Terracotta Warriors inside the main excavation hall",
+  "The Terracotta Army excavation pits near Xi'an",
+  "Xi'an City Wall and historic towers at sunset",
+  "The Giant Wild Goose Pagoda illuminated at night in Xi'an",
+  "Traditional Xi'an architecture glowing after dark",
+  "The Temple of Heaven framed by historic park architecture in Beijing",
+  "Xi'an-style halal barbecue prepared over an open grill",
+  "The Hall of Prayer for Good Harvests reflected after rain in Beijing",
+] as const;
+
+const xianBeijingAsset = {
+  hero: xianBeijingImage(
+    "hero.webp",
+    "The Great Wall rising above the mountains near Beijing in warm evening light",
+  ),
+  day01: xianBeijingImage("day-01.webp", "Xi'an City Wall and Yongning Gate glowing after rain"),
+  day02: xianBeijingImage(
+    "day-02.webp",
+    "Terracotta Warriors standing in formation at the Emperor Qinshihuang museum",
+  ),
+  day03: xianBeijingImage("day-03.webp", "Datang Everbright City illuminated at night in Xi'an"),
+  day04: xianBeijingImage(
+    "day-04.webp",
+    "China high-speed train prepared for the journey from Xi'an to Beijing",
+  ),
+  day05: xianBeijingImage("day-05.webp", "Aerial view of the Forbidden City and imperial Beijing"),
+  day06: xianBeijingImage(
+    "day-06.webp",
+    "Mutianyu Great Wall crossing autumn mountains near Beijing",
+  ),
+  gallery: xianBeijingGalleryAlt.map((alt, index) =>
+    xianBeijingImage(`gallery-${String(index + 1).padStart(2, "0")}.webp`, alt),
+  ),
+} satisfies Record<string, MediaAsset | MediaAsset[]>;
 
 const firstChinaEmail =
   "mailto:chinaprimedmc@gmail.com?subject=9-Day%20Beijing%20Xi%27an%20Shanghai%20Private%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.%0A%0ATravelers%3A%0ADates%3A%0AHotel%20preference%3A%0AQuestions%3A%0A";
@@ -2337,6 +2398,444 @@ export const tours: Tour[] = [
       scheduleCallHref: "tel:+447985052302",
       defaultMessage:
         "I am interested in the 8-Day Shanghai & Zhangjiajie Private Tour. Please prepare a quotation for my party.",
+    },
+  },
+  {
+    slug: "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+    title: "6-Day Xi'an & Beijing Private Tour",
+    subtitle:
+      "Terracotta Warriors, the Great Wall and two imperial capitals, arranged with private guiding, comfortable rail travel and a pace shaped around your group.",
+    duration: "6 Days / 5 Nights",
+    route: "Xi'an, Beijing",
+    styles: ["First-time China", "Culture", "Luxury", "Family", "Muslim-friendly"],
+    hero: {
+      eyebrow: "Private two-city China journey",
+      image: xianBeijingAsset.hero,
+      primary: { label: "Explore Itinerary", href: "#itinerary" },
+      secondary: { label: "Request My Tailored Proposal", href: "#inquiry" },
+    },
+    seo: {
+      title: "6-Day Private Xi'an and Beijing Tour | Terracotta Warriors & Great Wall",
+      description:
+        "A private 6-day Xi'an and Beijing tour with the Terracotta Warriors, Xi'an City Wall, Forbidden City, Mutianyu Great Wall, high-speed rail and flexible Muslim-friendly planning.",
+      keywords: [
+        "private Xi'an and Beijing tour",
+        "6 day Xi'an Beijing itinerary",
+        "Terracotta Warriors and Great Wall tour",
+        "Beijing Xi'an private tour",
+        "private Terracotta Warriors tour",
+        "Muslim-friendly Xi'an Beijing tour",
+        "China imperial capitals itinerary",
+        "luxury Xi'an and Beijing travel",
+      ],
+    },
+    overview: {
+      pitch:
+        "Two of China's most meaningful chapters, privately paced: Xi'an for the Terracotta Warriors and Silk Road heritage, then Beijing for imperial landmarks and the Great Wall.",
+      facts: [
+        {
+          label: "Duration",
+          value: "6 days / 5 nights",
+          helper: "Three nights in Xi'an and two nights in Beijing.",
+        },
+        {
+          label: "Destinations",
+          value: "Xi'an + Beijing",
+          helper: "Terracotta Warriors, City Wall, Forbidden City and Mutianyu Great Wall.",
+        },
+        {
+          label: "Travel Style",
+          value: "Private and considered",
+          helper: "Private touring, English-speaking support and high-speed rail between cities.",
+        },
+        {
+          label: "Pacing",
+          value: "Easy to moderate",
+          helper:
+            "Walking, start times, rest windows and Great Wall access are reviewed around your group.",
+        },
+        {
+          label: "Planning",
+          value: "Muslim-friendly available",
+          helper:
+            "Halal dining, prayer timing and dietary needs can be planned before confirmation.",
+        },
+      ],
+    },
+    highlights: [
+      {
+        title: "Meet the Terracotta Warriors with context",
+        description:
+          "A private guide helps you read the museum as an archaeological story, from the scale of the pits to the individuality of the figures.",
+        category: "Culture",
+        image: xianBeijingAsset.day02,
+      },
+      {
+        title: "Travel between capitals with ease",
+        description:
+          "The Xi'an to Beijing high-speed rail journey replaces airport friction with a direct, comfortable transition through China's interior.",
+        category: "Culture",
+        image: xianBeijingAsset.day04,
+      },
+      {
+        title: "Walk the Great Wall on your terms",
+        description:
+          "Mutianyu is planned around the season, your preferred start time, walking comfort and whether a cable car makes the day more enjoyable.",
+        category: "Nature",
+        image: xianBeijingAsset.day06,
+      },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive in Xi'an",
+        destination: "Xi'an",
+        summary:
+          "Arrive in Xi'an, meet your local representative and settle into the first historical chapter without adding a demanding sightseeing schedule.",
+        image: xianBeijingAsset.day01,
+        hotel: "Xi'an hotel selected around the Old City and your room requirements",
+        meals: ["No meals included today"],
+        transport: "Private airport or railway-station transfer",
+        activities: [
+          {
+            time: "Arrival",
+            title: "A smooth welcome",
+            description:
+              "Your driver meets you at the confirmed arrival point and takes you directly to the hotel with luggage space planned in advance.",
+          },
+          {
+            time: "Evening",
+            title: "Optional City Wall atmosphere",
+            description:
+              "If arrival timing and energy allow, take a short orientation walk near Yongning Gate or keep the evening open for rest and a suitable dinner.",
+          },
+        ],
+        guideNote:
+          "Arrival timing is kept flexible. The final meeting point and transfer plan are confirmed around your international or domestic connection.",
+        coordinates: { latitude: 34.3416, longitude: 108.9398 },
+      },
+      {
+        day: 2,
+        title: "The Terracotta Warriors",
+        destination: "Xi'an / Lintong",
+        summary:
+          "Spend the main day with the Terracotta Warriors, using a private guide to bring scale, craft and the First Emperor's world into focus.",
+        image: xianBeijingAsset.day02,
+        hotel: "Xi'an hotel",
+        meals: ["Breakfast"],
+        transport: "Private vehicle to and from the museum",
+        activities: [
+          {
+            time: "Morning",
+            title: "Pit 1, 2 and 3",
+            description:
+              "Visit the principal excavation halls in a considered order, with time to look closely at the figures, horses, weapon details and restoration work.",
+          },
+          {
+            time: "Afternoon",
+            title: "A flexible return to Xi'an",
+            description:
+              "Return at a sensible pace, with the option of a quieter museum, hotel rest or a private introduction to local food depending on the group.",
+          },
+        ],
+        guideNote:
+          "Museum entry is subject to operating rules and ticket availability. Flash photography and tripods are not permitted in the exhibition halls.",
+        coordinates: { latitude: 34.3841, longitude: 109.2785 },
+      },
+      {
+        day: 3,
+        title: "Xi'an's City Wall, Food and Night Heritage",
+        destination: "Xi'an",
+        summary:
+          "See Xi'an beyond the museum: the City Wall, old-city rhythm, Muslim Quarter food culture and an evening shaped around your interests.",
+        image: xianBeijingAsset.day03,
+        hotel: "Xi'an hotel",
+        meals: ["Breakfast"],
+        transport: "Private vehicle and walking",
+        activities: [
+          {
+            time: "Morning",
+            title: "City Wall and central Xi'an",
+            description:
+              "Walk or cycle a manageable section of the Ming-era wall, then continue through the central city with pauses for photographs and local context.",
+          },
+          {
+            time: "Afternoon",
+            title: "A table planned around you",
+            description:
+              "Explore the Muslim Quarter or another neighborhood with dining checked around halal, vegetarian, allergy, spice and family requirements.",
+          },
+          {
+            time: "Evening",
+            title: "Datang Everbright City or a quieter alternative",
+            description:
+              "Choose the illuminated Tang-inspired promenade when the atmosphere suits you, or replace it with a calm dinner and early return.",
+          },
+        ],
+        guideNote:
+          "Xi'an's Muslim Quarter is a living food and trading district, not a staged attraction. The route can be adjusted around crowds, prayer timing and dining preferences.",
+        coordinates: { latitude: 34.2583, longitude: 108.9471 },
+      },
+      {
+        day: 4,
+        title: "High-Speed Rail to Beijing",
+        destination: "Xi'an to Beijing",
+        summary:
+          "Move from Xi'an to Beijing by high-speed rail, with private station transfers and an afternoon introduction to the capital after arrival.",
+        image: xianBeijingAsset.day04,
+        hotel: "Beijing hotel selected around the historic centre and departure plan",
+        meals: ["Breakfast"],
+        transport: "Private station transfers and high-speed rail",
+        activities: [
+          {
+            time: "Morning",
+            title: "A comfortable rail transition",
+            description:
+              "Your local team manages the hotel departure, station arrival and luggage flow around the confirmed train and seat class.",
+          },
+          {
+            time: "Afternoon",
+            title: "Beijing at street level",
+            description:
+              "After checking in, take a light introduction through a nearby hutong, park or historic quarter rather than forcing a major landmark into the arrival day.",
+          },
+        ],
+        guideNote:
+          "The exact train and station details are confirmed in writing before payment. A private transfer is arranged at both ends.",
+        coordinates: { latitude: 39.9042, longitude: 116.4074 },
+      },
+      {
+        day: 5,
+        title: "Imperial Beijing and the Great Wall",
+        destination: "Beijing / Mutianyu",
+        summary:
+          "Choose the order that best fits current ticketing and weather: a carefully timed Great Wall visit and the essential imperial centre of Beijing.",
+        image: xianBeijingAsset.day06,
+        hotel: "Beijing hotel",
+        meals: ["Breakfast"],
+        transport: "Private vehicle; cable car or chairlift optional at the Great Wall",
+        activities: [
+          {
+            time: "Morning",
+            title: "Mutianyu Great Wall",
+            description:
+              "Walk a selected section of the Wall with pauses for views and photographs. Cable-car or chairlift access can be considered around walking comfort.",
+          },
+          {
+            time: "Afternoon",
+            title: "Forbidden City or Temple of Heaven",
+            description:
+              "When opening hours, tickets and energy allow, continue with one imperial landmark; otherwise the visit is paced across the most suitable available order.",
+          },
+        ],
+        guideNote:
+          "The Great Wall involves uneven ground and steps even when assisted access is used. We match the section and timing honestly to the group.",
+        coordinates: { latitude: 40.4319, longitude: 116.5704 },
+      },
+      {
+        day: 6,
+        title: "A Thoughtful Beijing Departure",
+        destination: "Beijing",
+        summary:
+          "Leave Beijing with a practical airport transfer and enough margin for your confirmed international flight, or extend the journey when you prefer more time.",
+        image: xianBeijingAsset.day05,
+        meals: ["Breakfast"],
+        transport: "Private airport transfer",
+        activities: [
+          {
+            title: "A calm final morning",
+            description:
+              "Keep the morning open for breakfast, a short neighborhood walk or a late check-out when available and useful.",
+          },
+          {
+            title: "Onward travel support",
+            description:
+              "Transfer timing is reviewed around the terminal, luggage, traffic and airline check-in requirements before departure.",
+          },
+        ],
+        guideNote:
+          "The journey can be extended with additional Beijing nights, a slower Great Wall day or another city when your wider China plans require it.",
+        coordinates: { latitude: 40.0799, longitude: 116.6031 },
+      },
+    ],
+    accommodations: [
+      {
+        name: "Xi'an historic-centre stay",
+        destination: "Xi'an, 3 nights",
+        description:
+          "A well-located hotel selected around access to the Old City, room configuration, breakfast and a comfortable return after the museum day.",
+        roomStyle: "Hotel tier and room category confirmed after inquiry",
+        highlights: ["Central access", "Breakfast", "Room needs checked"],
+        image: xianBeijingAsset.gallery[0],
+      },
+      {
+        name: "Beijing historic-centre stay",
+        destination: "Beijing, 2 nights",
+        description:
+          "A practical, comfortable base selected around the historic centre, airport plan and your preferred balance of convenience and atmosphere.",
+        roomStyle: "Hotel tier and room category confirmed after inquiry",
+        highlights: ["Well-planned location", "Breakfast", "Private transfers"],
+        image: xianBeijingAsset.gallery[3],
+      },
+    ],
+    included: [
+      "Private itinerary planning around your dates and travelers",
+      "Hotels and breakfasts listed in the final written proposal",
+      "Private airport, station and sightseeing transfers listed in the final proposal",
+      "English-speaking guide service as confirmed for each destination",
+      "High-speed rail between Xi'an and Beijing when stated in the final proposal",
+      "Attraction tickets and required scenic-area transport listed in the final proposal",
+      "Halal, vegetarian, allergy and prayer-timing planning when shared before confirmation",
+      "Local support before arrival and while traveling",
+      "No forced shopping visits",
+    ],
+    excluded: [
+      "International flights",
+      "China visa costs or documentation services unless stated",
+      "Meals, drinks and optional experiences not listed in the final proposal",
+      "Travel insurance, medical costs and personal expenses",
+      "Any service not confirmed in the final written proposal",
+    ],
+    optionalExperiences: [
+      {
+        title: "Muslim-friendly dining and heritage",
+        description:
+          "Plan suitable halal restaurants, local Muslim food culture, prayer timing and restaurant locations around the day rather than leaving dining to chance.",
+        badges: ["Muslim-friendly", "Food"],
+        image: xianBeijingAsset.gallery[23],
+      },
+      {
+        title: "A slower Great Wall day",
+        description:
+          "Adjust the Wall section, cable-car option, start time and rest windows around walking comfort, weather and photography priorities.",
+        badges: ["Flexible pace", "Private"],
+        image: xianBeijingAsset.day06,
+      },
+      {
+        title: "An extra Beijing chapter",
+        description:
+          "Add a night for the Summer Palace, a deeper hutong day, a more spacious Forbidden City visit or a gentler departure.",
+        badges: ["Extendable", "Local life"],
+        image: xianBeijingAsset.gallery[0],
+      },
+    ],
+    transportation: {
+      title: "The transition between cities is part of the design.",
+      description:
+        "Private transfers, confirmed rail details and local support keep the journey clear between Xi'an's heritage and Beijing's imperial scale.",
+      items: [
+        {
+          label: "Xi'an",
+          value: "Private city and airport transfers",
+          helper: "Vehicle size and luggage space confirmed around your group.",
+        },
+        {
+          label: "Intercity rail",
+          value: "Xi'an to Beijing high-speed rail",
+          helper: "Train number, seat class and station transfers confirmed in writing.",
+        },
+        {
+          label: "Beijing",
+          value: "Private touring and airport support",
+          helper: "Great Wall access and departure timing planned by date and comfort.",
+        },
+      ],
+    },
+    routeMap: {
+      title: "Two imperial capitals, privately paced.",
+      description:
+        "Three nights in Xi'an create space for the Terracotta Warriors, City Wall and food culture before two nights in Beijing bring the route to the Forbidden City and Great Wall.",
+      stops: [
+        {
+          name: "Xi'an",
+          days: "Days 1-4",
+          description:
+            "Arrival, Terracotta Warriors, City Wall, Muslim Quarter and Tang-era night life.",
+          coordinates: { latitude: 34.3416, longitude: 108.9398 },
+        },
+        {
+          name: "Beijing",
+          days: "Days 4-6",
+          description:
+            "High-speed rail arrival, imperial landmarks, Mutianyu Great Wall and departure.",
+          coordinates: { latitude: 39.9042, longitude: 116.4074 },
+        },
+      ],
+    },
+    gallery: [
+      xianBeijingAsset.hero,
+      xianBeijingAsset.day01,
+      xianBeijingAsset.day02,
+      xianBeijingAsset.day03,
+      xianBeijingAsset.day04,
+      xianBeijingAsset.day05,
+      xianBeijingAsset.day06,
+      ...xianBeijingAsset.gallery,
+    ],
+    faqs: [
+      {
+        question: "Is this a fixed package or can it be customized?",
+        answer:
+          "It is a complete private journey framework. Hotels, room types, train class, vehicle size, sightseeing order and final quotation are confirmed around your dates and group.",
+      },
+      {
+        question: "Can you arrange halal food in Xi'an and Beijing?",
+        answer:
+          "Yes. Share halal, vegetarian, allergy, spice and prayer-timing requirements before quotation so restaurants and daily timing can be checked properly.",
+      },
+      {
+        question: "How do we travel from Xi'an to Beijing?",
+        answer:
+          "The route uses high-speed rail when the schedule suits your dates. Your written proposal names the train, station transfers, seat class and expected journey flow.",
+      },
+      {
+        question: "Is the Great Wall suitable for older travelers?",
+        answer:
+          "It can be suitable when the section, start time, cable-car option, rest points and walking expectations are reviewed honestly. Uneven ground and steps remain part of the experience.",
+      },
+      {
+        question: "Are meals included?",
+        answer:
+          "Breakfast is included when stated in the written proposal. Lunches and dinners can be arranged around dietary preferences and paid directly unless specifically included.",
+      },
+      {
+        question: "Are there compulsory shopping stops?",
+        answer:
+          "No. This journey has no compulsory shopping stops. Any market or neighborhood visit is included for cultural interest and remains optional.",
+      },
+      {
+        question: "Can the trip be extended?",
+        answer:
+          "Yes. Add Beijing nights, a slower Wall day, more time in Xi'an or another destination when your wider China plans require it.",
+      },
+    ],
+    related: {
+      tours: [],
+      destinations: [
+        {
+          name: "Xi'an",
+          description:
+            "Terracotta Warriors, ancient city walls, Silk Road history and Muslim food culture.",
+          image: destinationAsset.xianTerracotta,
+          href: "/destinations/xian",
+        },
+        {
+          name: "Beijing",
+          description:
+            "The Forbidden City, hutongs, imperial parks and the Great Wall beyond the city.",
+          image: destinationAsset.beijingForbiddenCityWide,
+          href: "/destinations/beijing",
+        },
+      ],
+    },
+    inquiry: {
+      emailHref:
+        "mailto:chinaprimedmc@gmail.com?subject=6-Day%20Xi%27an%20%26%20Beijing%20Private%20Tour%20Quotation&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%206-day%20Xi%27an%20and%20Beijing%20private%20tour.%0A%0ATravelers%3A%0ADates%3A%0AHotel%20preference%3A%0ADietary%20or%20prayer%20requirements%3A%0AQuestions%3A%0A",
+      whatsappHref:
+        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20tailored%20proposal%20for%20the%206-day%20Xi%27an%20and%20Beijing%20private%20tour.%20I%27m%20interested%20in%20the%20Terracotta%20Warriors%2C%20the%20Great%20Wall%20and%20Muslim-friendly%20planning.",
+      scheduleCallHref: "tel:+447985052302",
+      defaultMessage:
+        "I am interested in the 6-Day Xi'an & Beijing Private Tour. Please recommend the right hotels, rail plan, daily pace and dining arrangements for my group.",
     },
   },
 ];

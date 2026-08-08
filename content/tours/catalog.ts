@@ -66,6 +66,9 @@ const shanghaiZhangjiajie = tours.find(
 const beijingUnhurried = tours.find(
   (tour) => tour.slug === "beijing-great-wall-private-5-day-tour",
 );
+const xianBeijing = tours.find(
+  (tour) => tour.slug === "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+);
 
 if (!flagship) {
   throw new Error("The flagship journey is required for the journeys catalog.");
@@ -85,6 +88,10 @@ if (!shanghaiZhangjiajie) {
 
 if (!beijingUnhurried) {
   throw new Error("The five-day Beijing journey is required for the journeys catalog.");
+}
+
+if (!xianBeijing) {
+  throw new Error("The Xi'an and Beijing journey is required for the journeys catalog.");
 }
 
 const firstChina: JourneyCatalogItem = {
@@ -299,12 +306,55 @@ const beijingUnhurriedJourney: JourneyCatalogItem = {
   destinations: [{ label: "Beijing", href: "/destinations/beijing" }],
 };
 
+const xianBeijingJourney: JourneyCatalogItem = {
+  slug: xianBeijing.slug,
+  title: xianBeijing.title,
+  eyebrow: "Private imperial capitals journey",
+  summary: xianBeijing.subtitle,
+  hook: "Terracotta Warriors, Xi'an's living heritage and the Great Wall, linked by private support and high-speed rail.",
+  image: xianBeijing.hero.image,
+  href: `/tours/${xianBeijing.slug}`,
+  kind: "featured",
+  routeLabel: xianBeijing.route,
+  durationLabel: "6 days / 5 nights",
+  styleFilters: ["Quiet Luxury", "Culture", "Family", "Slow Travel"],
+  destinationFilters: ["Xi'an", "Beijing"],
+  bestForFilters: ["First-time visitors", "Families", "Couples", "Muslim travelers"],
+  experienceFilters: ["great-wall", "ancient-china", "food", "local-life", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "solo-travelers",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "quiet-luxury",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 6,
+  recommendedDaysMax: 7,
+  destinations: [
+    { label: "Xi'an", href: "/destinations/xian" },
+    { label: "Beijing", href: "/destinations/beijing" },
+  ],
+};
+
 export const journeyCatalog: JourneyCatalogItem[] = [
   firstChina,
   chengduJourney,
   chengduJiuzhaigouJourney,
   beijingUnhurriedJourney,
   shanghaiZhangjiajieJourney,
+  xianBeijingJourney,
 ];
 
 export function getJourneyCatalogItem(slug: string) {
