@@ -1,8 +1,5 @@
 const baseUrl = new URL(process.env.SEO_BASE_URL || "https://www.chinaprimedmc.com");
-const canonicalOrigin = (process.env.SEO_SITE_ORIGIN || baseUrl.origin).replace(
-  /\/$/,
-  "",
-);
+const configuredCanonicalOrigin = process.env.SEO_SITE_ORIGIN?.replace(/\/$/, "");
 
 const issues = [];
 const sitemapResponse = await fetch(new URL("/sitemap.xml", baseUrl));
@@ -11,10 +8,17 @@ if (!sitemapResponse.ok) fail(`Sitemap returned ${sitemapResponse.status}.`);
 const sitemapXml = await sitemapResponse.text();
 const sitemapUrls = [...sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 if (!sitemapUrls.length) fail("Sitemap contains no URLs.");
+const sitemapOrigin = new URL(sitemapUrls[0]).origin;
+const canonicalOrigin = configuredCanonicalOrigin || sitemapOrigin;
+if (new Set(sitemapUrls).size !== sitemapUrls.length) {
+  issues.push("Sitemap contains duplicate URLs.");
+}
 
 for (const canonicalUrl of sitemapUrls) {
   const canonical = new URL(canonicalUrl);
-  const response = await fetch(new URL(`${canonical.pathname}${canonical.search}`, baseUrl));
+  if (canonical.search) issues.push(`${canonicalUrl}: sitemap URL contains a query string`);
+
+  const response = await fetch(new URL(canonical.pathname, baseUrl), { redirect: "manual" });
   const html = await response.text();
 
   if (response.status !== 200) issues.push(`${canonicalUrl}: HTTP ${response.status}`);
@@ -29,7 +33,14 @@ for (const canonicalUrl of sitemapUrls) {
   if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) {
     issues.push(`${canonicalUrl}: sitemap URL is noindex`);
   }
-  if (/foundation mode|not built yet|built for long-term seo|metadata and internal linking/i.test(html)) {
+  if (response.headers.get("location")) {
+    issues.push(`${canonicalUrl}: sitemap URL redirects to ${response.headers.get("location")}`);
+  }
+  if (
+    /foundation mode|not built yet|built for long-term seo|metadata and internal linking/i.test(
+      html,
+    )
+  ) {
     issues.push(`${canonicalUrl}: developer-facing copy detected`);
   }
 }
@@ -42,7 +53,8 @@ for (const pathname of [
   "/destinations/__seo-missing__",
 ]) {
   const response = await fetch(new URL(pathname, baseUrl), { redirect: "manual" });
-  if (response.status !== 404) issues.push(`${pathname}: expected 404, received ${response.status}`);
+  if (response.status !== 404)
+    issues.push(`${pathname}: expected 404, received ${response.status}`);
 }
 
 const searchResponse = await fetch(new URL("/search?q=china", baseUrl));

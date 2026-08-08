@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { assertPublicRouteSlugs, publicRouteSlugs } from "@/config/public-route-slugs";
+import { assertPublicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { getArticleBySlug, getArticleSlugs } from "@/content/journal";
 import type { JournalArticle } from "@/types/journal";
@@ -21,7 +21,7 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const articleSlugs = getArticleSlugs();
   assertPublicRouteSlugs("journal", articleSlugs);
-  return publicRouteSlugs.journal.map((slug) => ({ slug }));
+  return articleSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {

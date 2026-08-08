@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { assertPublicRouteSlugs, publicRouteSlugs } from "@/config/public-route-slugs";
+import { assertPublicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
     "tours",
     journeyCatalog.map(({ slug }) => slug),
   );
-  return publicRouteSlugs.tours.map((slug) => ({ slug }));
+  return journeyCatalog.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {

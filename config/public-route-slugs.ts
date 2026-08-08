@@ -39,6 +39,19 @@ export const publicRouteSlugs = {
 
 export type PublicRouteKind = keyof typeof publicRouteSlugs;
 
+const publicSlugSets = Object.fromEntries(
+  Object.entries(publicRouteSlugs).map(([kind, slugs]) => [kind, new Set(slugs)]),
+) as Record<PublicRouteKind, Set<string>>;
+
+for (const [kind, slugs] of Object.entries(publicRouteSlugs) as [
+  PublicRouteKind,
+  readonly string[],
+][]) {
+  if (publicSlugSets[kind].size !== slugs.length) {
+    throw new Error(`Duplicate public ${kind} slug detected.`);
+  }
+}
+
 export function isKnownPublicDetailPath(pathname: string) {
   for (const [kind, slugs] of Object.entries(publicRouteSlugs)) {
     const prefix = `/${kind}/`;

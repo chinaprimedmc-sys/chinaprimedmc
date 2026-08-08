@@ -13,7 +13,7 @@ import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
-import { assertPublicRouteSlugs, publicRouteSlugs } from "@/config/public-route-slugs";
+import { assertPublicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { destinations } from "@/content/destinations";
 import { homeNavItems, primaryAction } from "@/content/home/homepage";
@@ -33,7 +33,7 @@ export const dynamicParams = false;
 export function generateStaticParams() {
   const styleSlugs = getTravelStyleSlugs();
   assertPublicRouteSlugs("styles", styleSlugs);
-  return publicRouteSlugs.styles.map((slug) => ({ slug }));
+  return styleSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: StylePageProps): Promise<Metadata> {
