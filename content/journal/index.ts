@@ -37,6 +37,7 @@ export const journalTags: JournalTag[] = [
   { slug: "travel-trade", label: "Travel Trade", type: "theme" },
   { slug: "muslim-friendly", label: "Muslim-friendly", type: "audience" },
   { slug: "malaysia", label: "Malaysia", type: "theme" },
+  { slug: "singapore", label: "Singapore", type: "theme" },
 ];
 
 export const journalArticles: JournalArticle[] = publishedJournalArticles;

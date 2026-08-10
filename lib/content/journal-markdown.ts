@@ -18,6 +18,9 @@ import goldenWeekMarkdown from "@/content/journal/articles/2026-08-08-china-gold
 import greatWallMarkdown from "@/content/journal/articles/2026-08-08-mutianyu-badaling-jinshanling-great-wall.md";
 import terracottaArmyMarkdown from "@/content/journal/articles/2026-08-08-terracotta-army-tickets-foreign-visitors.md";
 import mattaConnectMarkdown from "@/content/journal/articles/2026-08-08-china-prime-dmc-ttg-asia-matta-connect.md";
+import privateChinaTourCostMarkdown from "@/content/journal/articles/2026-08-10-private-china-tour-cost-2026.md";
+import tenDayChinaItineraryMarkdown from "@/content/journal/articles/2026-08-10-10-day-china-itinerary-first-time-visitors.md";
+import singaporePrivateChinaTourMarkdown from "@/content/journal/articles/2026-08-10-private-china-tour-from-singapore.md";
 
 const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md":
@@ -43,6 +46,12 @@ const bundledMarkdown: Record<string, string> = {
     terracottaArmyMarkdown,
   "content/journal/articles/2026-08-08-china-prime-dmc-ttg-asia-matta-connect.md":
     mattaConnectMarkdown,
+  "content/journal/articles/2026-08-10-private-china-tour-cost-2026.md":
+    privateChinaTourCostMarkdown,
+  "content/journal/articles/2026-08-10-10-day-china-itinerary-first-time-visitors.md":
+    tenDayChinaItineraryMarkdown,
+  "content/journal/articles/2026-08-10-private-china-tour-from-singapore.md":
+    singaporePrivateChinaTourMarkdown,
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {

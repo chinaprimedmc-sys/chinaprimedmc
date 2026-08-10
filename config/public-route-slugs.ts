@@ -31,6 +31,9 @@ export const publicRouteSlugs = {
     "urumqi",
   ],
   journal: [
+    "private-china-tour-cost-2026",
+    "10-day-china-itinerary-first-time-visitors",
+    "private-china-tour-from-singapore",
     "china-240-hour-visa-free-transit-guide",
     "china-accommodation-registration-foreigners",
     "china-high-speed-train-foreigners",

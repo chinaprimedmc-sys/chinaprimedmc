@@ -31,6 +31,9 @@ type ArticleTemplateProps = {
 export function ArticleTemplate({ article, relationships }: ArticleTemplateProps) {
   const headings = article.content.filter((block) => block.type === "heading");
   const faqs = article.content.filter((block) => block.type === "faq");
+  const planningHref =
+    article.conversion?.href ??
+    `/start-planning?source=journal&content=${encodeURIComponent(article.slug)}`;
   const articleNavItems = [
     { label: "Journal", href: "/journal" },
     ...(relationships.tours.length ? [{ label: "Related Tours", href: "#related-tours" }] : []),
@@ -49,7 +52,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
       />
       <SiteNavigation
         items={articleNavItems}
-        cta={{ label: "Plan My Trip", href: "/start-planning" }}
+        cta={{ label: article.conversion?.label ?? "Plan My Trip", href: planningHref }}
       />
 
       <HeroLargeImage
@@ -261,16 +264,19 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
           <CtaCard
             variant="image"
             image={article.hero.image}
-            eyebrow="Plan around this idea"
-            title="Turn this idea into your China trip."
-            description="Share who is traveling, your dates and what matters most. We will suggest a sensible starting route."
+            eyebrow={article.conversion?.eyebrow ?? "Plan around this idea"}
+            title={article.conversion?.title ?? "Turn this idea into your China trip."}
+            description={
+              article.conversion?.description ??
+              "Share who is traveling, your dates and what matters most. We will suggest a sensible starting route."
+            }
             primary={{
-              label: "Start Planning",
-              href: "/start-planning",
+              label: article.conversion?.label ?? "Start Planning",
+              href: planningHref,
             }}
             secondary={{
               label: "View Sample Journey",
-              href: "/tours/first-china-beautifully-paced",
+              href: relationships.tours[0]?.href ?? "/tours/first-china-beautifully-paced",
             }}
           />
         </ContentContainer>
@@ -310,8 +316,8 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
         ]}
       />
 
-      <FloatingCta label="Plan From This" href="#inquiry-cta" />
-      <StickyMobileCta label="Plan" href="#inquiry-cta" showAfter={1200} />
+      <FloatingCta label="Plan From This" href={planningHref} />
+      <StickyMobileCta label="Plan This Trip" href={planningHref} showAfter={1200} />
     </PageContainer>
   );
 }

@@ -110,6 +110,13 @@ export type JournalArticle = {
   };
   related?: JournalRelatedManual;
   citations?: JournalCitation[];
+  conversion?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    label: string;
+    href?: string;
+  };
   sourcePath?: string;
 };
 

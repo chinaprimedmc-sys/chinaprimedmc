@@ -8,6 +8,27 @@ const author = {
 };
 
 const journalImages = {
+  privateChinaTourCost: {
+    src: "/home/editorial/great-wall-private-china-travel.webp",
+    alt: "Private travelers walking on the Great Wall during a tailored China journey",
+    width: 1086,
+    height: 1448,
+    objectPosition: "50% 48%",
+  },
+  tenDayChinaItinerary: {
+    src: "/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp",
+    alt: "International visitors beside the Shanghai waterfront on a first China journey",
+    width: 1920,
+    height: 1440,
+    objectPosition: "50% 50%",
+  },
+  singaporePrivateChinaTour: {
+    src: "/home/editorial/travel-trade-team-singapore.webp",
+    alt: "AVIORA China travel specialists meeting international travel partners in Singapore",
+    width: 1080,
+    height: 810,
+    objectPosition: "50% 48%",
+  },
   visaFreeTransit: {
     src: "/journal/2026-08-06/visa-free-transit-shanghai.webp",
     alt: "International visitors on the Bund with the Shanghai skyline behind them",
@@ -172,6 +193,165 @@ const journalImages = {
 } as const;
 
 export const publishedJournalArticles: JournalArticle[] = [
+  {
+    slug: "private-china-tour-cost-2026",
+    title: "How Much Does a Private China Tour Cost in 2026?",
+    dek: "Understand the hotel, guide, transport and service decisions behind a private China quotation before comparing the total price.",
+    excerpt:
+      "A transparent guide to private China tour costs, price drivers and the questions that make two quotations genuinely comparable.",
+    category: "Luxury Travel",
+    tags: ["first-time-china", "luxury-travel", "family-travel", "private-guides"],
+    author,
+    publishedAt: "2026-08-10",
+    readingTime: "12 min read",
+    editorPick: true,
+    hero: { eyebrow: "Tour price planning", image: journalImages.privateChinaTourCost },
+    gallery: [
+      journalImages.privateChinaTourCost,
+      journalImages.tenDayChinaItinerary,
+      destinationAsset.shanghaiSkyline,
+    ],
+    content: [],
+    seo: {
+      title: "Private China Tour Cost in 2026: Price Guide",
+      description:
+        "Understand private China tour costs in 2026, including hotels, guides, transport, tickets and the questions needed for a comparable quotation.",
+      keywords: [
+        "private China tour cost",
+        "how much does a private China tour cost",
+        "China private tour price",
+        "China tour cost 2026",
+        "luxury China tour cost",
+      ],
+      ogImage: journalImages.privateChinaTourCost,
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      experiences: ["private-guides", "train-travel"],
+      articles: ["10-day-china-itinerary-first-time-visitors", "private-china-tour-from-singapore"],
+    },
+    conversion: {
+      eyebrow: "A clearer quotation",
+      title: "Receive a China tour proposal you can compare properly.",
+      description:
+        "Share your dates, travelers, hotel expectations and preferred route. We will explain the route assumptions and principal inclusions before asking you to decide.",
+      label: "Request My Costed Proposal",
+      href: "/start-planning?source=journal-cost-guide",
+    },
+    sourcePath: "content/journal/articles/2026-08-10-private-china-tour-cost-2026.md",
+  },
+  {
+    slug: "10-day-china-itinerary-first-time-visitors",
+    title: "The Best 10-Day China Itinerary for First-Time Visitors",
+    dek: "Use Beijing, Xi’an and Shanghai to build a first China trip with realistic travel days, three strong city chapters and room to enjoy them.",
+    excerpt:
+      "A day-by-day Beijing, Xi’an and Shanghai route with practical pacing, transport choices and alternatives for families and older travelers.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "beijing", "xian", "shanghai", "train-travel"],
+    author,
+    publishedAt: "2026-08-10",
+    readingTime: "14 min read",
+    editorPick: true,
+    hero: { eyebrow: "First China itinerary", image: journalImages.tenDayChinaItinerary },
+    gallery: [
+      journalImages.tenDayChinaItinerary,
+      destinationAsset.beijingForbiddenCityWide,
+      journalImages.terracottaArmy,
+    ],
+    content: [],
+    seo: {
+      title: "10-Day China Itinerary for First-Time Visitors",
+      description:
+        "Plan 10 days in China with Beijing, Xi’an and Shanghai, realistic travel time, a Great Wall day and practical private-tour pacing.",
+      keywords: [
+        "10 day China itinerary",
+        "China itinerary 10 days",
+        "first time China itinerary",
+        "Beijing Xi'an Shanghai itinerary",
+        "10 days in China",
+      ],
+      ogImage: journalImages.tenDayChinaItinerary,
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      experiences: ["private-guides", "train-travel"],
+      articles: [
+        "private-china-tour-cost-2026",
+        "china-high-speed-train-foreigners",
+        "mutianyu-badaling-jinshanling-great-wall",
+      ],
+    },
+    conversion: {
+      eyebrow: "Your ten-day route",
+      title: "Make the classic itinerary fit the people taking it.",
+      description:
+        "Tell us your dates, interests and walking preferences. We will adjust the city sequence, transport and daily load before preparing the proposal.",
+      label: "Shape My 10-Day Route",
+      href: "/start-planning?source=journal-10-day-itinerary",
+    },
+    sourcePath: "content/journal/articles/2026-08-10-10-day-china-itinerary-first-time-visitors.md",
+  },
+  {
+    slug: "private-china-tour-from-singapore",
+    title: "How to Plan a Private China Tour from Singapore",
+    dek: "Choose the route, gateways, hotels and local support for a private China holiday designed around travelers departing from Singapore.",
+    excerpt:
+      "A Singapore-focused planning guide covering trip length, route ideas, entry checks, payments, families and Muslim-friendly requirements.",
+    category: "Travel Guides",
+    tags: ["singapore", "first-time-china", "family-travel", "muslim-friendly"],
+    author,
+    publishedAt: "2026-08-10",
+    readingTime: "13 min read",
+    editorPick: true,
+    hero: {
+      eyebrow: "Singapore to China",
+      image: journalImages.singaporePrivateChinaTour,
+    },
+    gallery: [
+      journalImages.singaporePrivateChinaTour,
+      journalImages.tenDayChinaItinerary,
+      destinationAsset.chengduPanda,
+    ],
+    content: [],
+    seo: {
+      title: "Private China Tour from Singapore: Planning Guide",
+      description:
+        "Plan a private China tour from Singapore with route ideas, flight logic, entry checks, payments, family pacing and local support.",
+      keywords: [
+        "private China tour from Singapore",
+        "China private tour package from Singapore",
+        "China itinerary from Singapore",
+        "China tour for Singapore travellers",
+        "Muslim friendly China private tour",
+      ],
+      ogImage: journalImages.singaporePrivateChinaTour,
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: [
+        "first-china-beautifully-paced",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+        "chengdu-pandas-sichuan-table",
+      ],
+      experiences: ["private-guides", "train-travel", "food"],
+      articles: [
+        "10-day-china-itinerary-first-time-visitors",
+        "private-china-tour-cost-2026",
+        "china-mobile-payments-foreign-tourists",
+      ],
+    },
+    conversion: {
+      eyebrow: "Singapore to China",
+      title: "Plan the route before committing to the wrong flights.",
+      description:
+        "Share your travel window, party and priorities. We will suggest the right arrival city, trip length and route for a private journey from Singapore.",
+      label: "Plan From Singapore",
+      href: "/start-planning?source=journal-singapore-guide",
+    },
+    sourcePath: "content/journal/articles/2026-08-10-private-china-tour-from-singapore.md",
+  },
   {
     slug: "aviora-ttg-asia-matta-connect-2026",
     title: "Listening Before Designing: AVIORA at MATTA Connect",
