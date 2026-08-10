@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
@@ -263,15 +269,22 @@ function homeCircularOffset(index: number, activeIndex: number, total: number) {
 
 export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const pointerStart = useRef<number | null>(null);
   const didSwipe = useRef(false);
   const resumeTimer = useRef<number | null>(null);
+  const mediaX = useMotionValue(0);
+  const mediaY = useMotionValue(0);
+  const mediaSpringX = useSpring(mediaX, { stiffness: 75, damping: 24, mass: 0.9 });
+  const mediaSpringY = useSpring(mediaY, { stiffness: 75, damping: 24, mass: 0.9 });
 
   useEffect(() => {
     if (isPaused || journeys.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => {
+      setDirection(1);
       setActiveIndex((current) => (current + 1) % journeys.length);
     }, 7600);
     return () => window.clearInterval(timer);
@@ -292,16 +305,20 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
     resumeTimer.current = window.setTimeout(() => setIsPaused(false), 9000);
   };
   const showJourney = (index: number) => {
+    setDirection(index > activeIndex ? 1 : -1);
     setActiveIndex((index + journeys.length) % journeys.length);
     pauseAfterInteraction();
   };
+  const activeJourney = journeys[activeIndex];
 
   return (
-    <section
+    <motion.section
       id="journeys"
       className="home-featured-cinema"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      initial={shouldReduceMotion ? false : { opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       onPointerDown={(event) => {
         pointerStart.current = event.clientX;
         didSwipe.current = false;
@@ -321,49 +338,162 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
       }}
     >
       <div className="home-featured-cinema__stage">
-        <header className="home-featured-cinema__header">
+        <motion.header
+          className="home-featured-cinema__header"
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+        >
           <p>Featured private journeys</p>
           <p aria-live="polite">
-            {String(activeIndex + 1).padStart(2, "0")} / {String(journeys.length).padStart(2, "0")}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={activeIndex}
+                className="home-featured-cinema__counter"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 7 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={shouldReduceMotion ? undefined : { opacity: 0, y: -7 }}
+                transition={{ duration: 0.28 }}
+              >
+                {String(activeIndex + 1).padStart(2, "0")}
+              </motion.span>
+            </AnimatePresence>{" "}
+            / {String(journeys.length).padStart(2, "0")}
           </p>
-        </header>
+        </motion.header>
 
         <div className="home-featured-cinema__layout">
-          <div className="home-featured-cinema__media">
-            {journeys.map((journey, index) => (
-              <div
+          <motion.div
+            className="home-featured-cinema__media"
+            initial={
+              shouldReduceMotion ? false : { opacity: 0, y: 28, clipPath: "inset(0 0 18% 0)" }
+            }
+            whileInView={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            onPointerMove={(event) => {
+              if (shouldReduceMotion || event.pointerType === "touch") return;
+              const bounds = event.currentTarget.getBoundingClientRect();
+              mediaX.set(((event.clientX - bounds.left) / bounds.width - 0.5) * -18);
+              mediaY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * -14);
+            }}
+            onPointerLeave={() => {
+              mediaX.set(0);
+              mediaY.set(0);
+            }}
+          >
+            <AnimatePresence initial={false} custom={direction}>
+              <motion.div
                 className="home-featured-cinema__scene"
-                data-active={index === activeIndex}
-                key={journey.href}
-                aria-hidden={index !== activeIndex}
+                data-active="true"
+                key={activeJourney.href}
+                initial={
+                  shouldReduceMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        x: direction * 52,
+                        clipPath: direction > 0 ? "inset(0 0 0 14%)" : "inset(0 14% 0 0)",
+                      }
+                }
+                animate={{ opacity: 1, x: 0, clipPath: "inset(0 0% 0 0%)" }}
+                exit={
+                  shouldReduceMotion
+                    ? undefined
+                    : {
+                        opacity: 0,
+                        x: direction * -28,
+                        clipPath: direction > 0 ? "inset(0 12% 0 0)" : "inset(0 0 0 12%)",
+                      }
+                }
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               >
-                <OptimizedImage
-                  src={journey.image.src}
-                  alt={index === activeIndex ? journey.image.alt : ""}
-                  fill
-                  sizes="(min-width: 768px) 62vw, calc(100vw - 2rem)"
-                  frameClassName="absolute inset-0 h-full"
-                  className="home-featured-cinema__image h-full w-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
+                <motion.div
+                  className="home-featured-cinema__image-motion"
+                  style={shouldReduceMotion ? undefined : { x: mediaSpringX, y: mediaSpringY }}
+                  animate={shouldReduceMotion ? undefined : { scale: [1.025, 1.075] }}
+                  transition={{ duration: 7.6, ease: "linear" }}
+                >
+                  <OptimizedImage
+                    src={activeJourney.image.src}
+                    alt={activeJourney.image.alt}
+                    fill
+                    sizes="(min-width: 768px) 62vw, calc(100vw - 2rem)"
+                    frameClassName="absolute inset-0 h-full"
+                    className="home-featured-cinema__image h-full w-full object-cover"
+                  />
+                </motion.div>
+                <div className="home-featured-cinema__media-shade" aria-hidden="true" />
+                {!shouldReduceMotion ? (
+                  <motion.span
+                    className="home-featured-cinema__light-sweep"
+                    aria-hidden="true"
+                    initial={{ x: "-125%" }}
+                    animate={{ x: "185%" }}
+                    transition={{ duration: 1.25, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                ) : null}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
 
           <div className="home-featured-cinema__content">
-            {journeys.map((journey, index) => (
-              <article
-                key={journey.href}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.article
+                key={activeJourney.href}
                 className="home-featured-cinema__chapter"
-                data-active={index === activeIndex}
-                aria-hidden={index !== activeIndex}
-                inert={index !== activeIndex}
+                data-active="true"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 26 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={shouldReduceMotion ? undefined : { opacity: 0, y: -18 }}
+                transition={{ duration: 0.62, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
               >
-                <p className="home-featured-cinema__route">{journey.routeLine}</p>
-                <h2 title={journey.title}>{journey.displayTitle}</h2>
-                <p className="home-featured-cinema__summary">{journey.description}</p>
-                <div className="home-featured-cinema__actions">
+                <motion.p
+                  className="home-featured-cinema__route"
+                  initial={shouldReduceMotion ? false : { opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.55, delay: 0.16 }}
+                >
+                  {activeJourney.routeLine}
+                </motion.p>
+                <h2 title={activeJourney.title}>
+                  {activeJourney.displayTitle.split(/\s+/).map((word, index, words) => (
+                    <span key={`${word}-${index}`}>
+                      <span className="home-featured-cinema__word-mask">
+                        <motion.span
+                          className="home-featured-cinema__word"
+                          initial={shouldReduceMotion ? false : { y: "112%", opacity: 0 }}
+                          animate={{ y: "0%", opacity: 1 }}
+                          transition={{
+                            duration: 0.72,
+                            delay: 0.2 + index * 0.035,
+                            ease: [0.16, 1, 0.3, 1],
+                          }}
+                        >
+                          {word}
+                        </motion.span>
+                      </span>
+                      {index < words.length - 1 ? " " : null}
+                    </span>
+                  ))}
+                </h2>
+                <motion.p
+                  className="home-featured-cinema__summary"
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.42 }}
+                >
+                  {activeJourney.description}
+                </motion.p>
+                <motion.div
+                  className="home-featured-cinema__actions"
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.52 }}
+                >
                   <Link
-                    href={journey.href}
+                    href={activeJourney.href}
                     className="home-featured-cinema__link"
                     onClick={(event) => {
                       if (!didSwipe.current) return;
@@ -375,7 +505,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                   <Link
-                    href={`/start-planning?journey=${encodeURIComponent(journey.href.split("/").pop() ?? "")}`}
+                    href={`/start-planning?journey=${encodeURIComponent(activeJourney.href.split("/").pop() ?? "")}`}
                     className="home-featured-cinema__link home-featured-cinema__link--secondary"
                     onClick={(event) => {
                       if (!didSwipe.current) return;
@@ -386,13 +516,20 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                     Request a proposal
                     <ArrowUpRight size={15} aria-hidden="true" />
                   </Link>
-                </div>
-              </article>
-            ))}
+                </motion.div>
+              </motion.article>
+            </AnimatePresence>
           </div>
         </div>
 
-        <div className="home-featured-cinema__navigation" aria-label="Featured journeys">
+        <motion.div
+          className="home-featured-cinema__navigation"
+          aria-label="Featured journeys"
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.7, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+        >
           {journeys.map((journey, index) => (
             <Link
               href={journey.href}
@@ -409,6 +546,14 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
               }
               aria-current={index === activeIndex ? "true" : undefined}
             >
+              {index === activeIndex ? (
+                <motion.span
+                  className="home-featured-cinema__active-rail"
+                  layoutId="home-featured-active-rail"
+                  transition={{ type: "spring", stiffness: 280, damping: 30 }}
+                  aria-hidden="true"
+                />
+              ) : null}
               <span className="home-featured-cinema__thumb">
                 <OptimizedImage
                   src={journey.image.src}
@@ -428,7 +573,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
               </span>
             </Link>
           ))}
-        </div>
+        </motion.div>
         <div className="home-featured-cinema__arrows">
           <button
             type="button"
@@ -446,10 +591,137 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
           </button>
         </div>
         <div className="home-featured-cinema__progress" aria-hidden="true">
-          <span key={activeIndex} style={{ "--featured-duration": "7600ms" } as CSSProperties} />
+          <span
+            key={`${activeIndex}-${isPaused}`}
+            style={
+              {
+                "--featured-duration": "7600ms",
+                animationPlayState: isPaused ? "paused" : "running",
+              } as CSSProperties
+            }
+          />
         </div>
+        <style>{`
+          .home-featured-cinema__counter {
+            display: inline-block;
+            min-width: 1.35rem;
+          }
+
+          .home-featured-cinema__header p:last-child {
+            margin-right: 6.75rem;
+            min-width: 4.25rem;
+            text-align: right;
+          }
+
+          .home-featured-cinema__image-motion {
+            inset: -14px;
+            position: absolute;
+            will-change: transform;
+          }
+
+          .home-featured-cinema__media-shade {
+            background: linear-gradient(115deg, rgba(7, 8, 7, 0.08), transparent 42%, rgba(7, 8, 7, 0.04));
+            inset: 0;
+            pointer-events: none;
+            position: absolute;
+            z-index: 2;
+          }
+
+          .home-featured-cinema__light-sweep {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+            inset: 0 auto 0 -35%;
+            pointer-events: none;
+            position: absolute;
+            transform: skewX(-12deg);
+            width: 42%;
+            z-index: 3;
+          }
+
+          .home-featured-cinema__word-mask {
+            display: inline-block;
+            margin-bottom: -0.18em;
+            overflow: hidden;
+            padding-block: 0.06em 0.18em;
+            vertical-align: bottom;
+          }
+
+          .home-featured-cinema__word {
+            display: inline-block;
+            will-change: transform, opacity;
+          }
+
+          .home-featured-cinema__navigation > a {
+            overflow: hidden;
+            position: relative;
+          }
+
+          .home-featured-cinema__active-rail {
+            background: var(--text-primary);
+            height: 2px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 3;
+          }
+
+          .home-featured-cinema__thumb img {
+            filter: saturate(0.72);
+            transform: scale(1.01);
+            transition: filter 600ms ease, transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+          }
+
+          .home-featured-cinema__navigation > a:hover .home-featured-cinema__thumb img,
+          .home-featured-cinema__navigation > a[aria-current="true"] .home-featured-cinema__thumb img {
+            filter: saturate(1.08);
+            transform: scale(1.09);
+          }
+
+          .home-featured-cinema__link svg,
+          .home-featured-cinema__arrows svg {
+            transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+          }
+
+          .home-featured-cinema__link:hover svg {
+            transform: translate(2px, -2px);
+          }
+
+          .home-featured-cinema__arrows button:hover svg {
+            transform: translateX(2px);
+          }
+
+          .home-featured-cinema__arrows button:first-child:hover svg {
+            transform: translateX(-2px);
+          }
+
+          @media (max-width: 767px) {
+            .home-featured-cinema__header p:last-child {
+              margin-right: 0;
+            }
+
+            .home-featured-cinema__image-motion {
+              inset: -8px;
+            }
+
+            .home-featured-cinema__light-sweep {
+              display: none;
+            }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .home-featured-cinema__image-motion,
+            .home-featured-cinema__word,
+            .home-featured-cinema__thumb img,
+            .home-featured-cinema__link svg,
+            .home-featured-cinema__arrows svg {
+              animation: none;
+              transform: none;
+              transition: none;
+            }
+          }
+        `}</style>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
