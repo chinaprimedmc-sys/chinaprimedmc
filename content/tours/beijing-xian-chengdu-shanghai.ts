@@ -1,5 +1,9 @@
 import { destinationAsset } from "@/content/destinations/assets";
-import { beijingUnhurriedAsset, chengduAsset, firstChinaAsset } from "@/content/tours/assets";
+import {
+  fourCityAsset,
+  fourCityGallery,
+} from "@/content/tours/beijing-xian-chengdu-shanghai-assets";
+import { firstChinaAsset } from "@/content/tours/assets";
 import type { Tour } from "@/types/tour";
 
 const slug = "beijing-xian-chengdu-shanghai-private-11-day-tour";
@@ -14,7 +18,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
   styles: ["First-time China", "Family", "Culture", "Food"],
   hero: {
     eyebrow: "Signature first-time China journey",
-    image: firstChinaAsset.beijingGreatWallSunriseHero,
+    image: fourCityAsset.hero,
     primary: { label: "Explore Itinerary", href: "#itinerary" },
     secondary: { label: "Request a Private Proposal", href: "#proposal" },
   },
@@ -96,28 +100,28 @@ export const beijingXianChengduShanghaiTour: Tour = {
       description:
         "Visit Mutianyu with the start time, cable-car plan and walking section shaped around weather, crowds and your group's comfort.",
       category: "Culture",
-      image: beijingUnhurriedAsset.greatWallWalk,
+      image: fourCityAsset.greatWall,
     },
     {
       title: "The Terracotta Warriors with context",
       description:
         "A private guide connects the excavation pits to Qin history, craftsmanship and the wider story of Xi'an rather than leaving the site as a photo stop.",
       category: "First-time China",
-      image: firstChinaAsset.xianTerracottaGroup,
+      image: fourCityAsset.xianTerracotta,
     },
     {
       title: "Pandas before the day gets busy",
       description:
         "Plan an early Chengdu Panda Base visit around seasonal conditions and the animals' more active morning hours, with honest guidance on walking and crowds.",
       category: "Family",
-      image: chengduAsset.heroPanda,
+      image: fourCityAsset.pandaHighlight,
     },
     {
       title: "Shanghai as a modern finale",
       description:
         "Finish with the Bund, neighborhood life and the skyline, leaving one flexible day for deeper Shanghai, a water town or Suzhou.",
       category: "Culture",
-      image: firstChinaAsset.shanghaiWaterfrontGroup,
+      image: fourCityAsset.shanghaiBund,
     },
   ],
   itinerary: [
@@ -127,7 +131,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Beijing",
       summary:
         "Meet your driver for a private airport transfer, settle into your hotel and keep the first evening light after the flight.",
-      image: firstChinaAsset.beijingTempleOfHeavenCorridor,
+      image: fourCityAsset.arrival,
       hotel: "Beijing stay: hotel and room category confirmed in your private proposal",
       meals: ["As confirmed in the written proposal"],
       transport: "Private airport transfer",
@@ -153,7 +157,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Beijing",
       summary:
         "Explore the Forbidden City and Beijing's historic axis with private storytelling, sensible walking blocks and time to understand what you are seeing.",
-      image: beijingUnhurriedAsset.forbiddenCity,
+      image: fourCityAsset.beijingImperial,
       hotel: "Beijing stay: confirmed in your private proposal",
       meals: ["Breakfast when included with the confirmed hotel"],
       transport: "Private vehicle and English-speaking guide",
@@ -181,7 +185,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Beijing",
       summary:
         "Spend an unhurried day at Mutianyu, with the Wall section and access method matched to your group's energy and the season.",
-      image: beijingUnhurriedAsset.greatWallSunrise,
+      image: fourCityAsset.greatWall,
       hotel: "Beijing stay: confirmed in your private proposal",
       meals: ["Breakfast when included", "Other meals as confirmed"],
       transport: "Private return transfer to Mutianyu",
@@ -209,7 +213,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Beijing to Xi'an",
       summary:
         "Move from Beijing to Xi'an with private station transfers and rail details coordinated as one journey rather than separate bookings.",
-      image: chengduAsset.rail,
+      image: fourCityAsset.rail,
       hotel: "Xi'an stay: hotel and room category confirmed in your private proposal",
       meals: ["Breakfast when included", "Meals during travel as confirmed"],
       transport: "Private station transfers and high-speed rail",
@@ -235,7 +239,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Xi'an",
       summary:
         "Give the Terracotta Warriors a focused private visit, then return to the city for its walls, food culture or an earlier finish.",
-      image: firstChinaAsset.xianTerracottaPit,
+      image: fourCityAsset.xianTerracotta,
       hotel: "Xi'an stay: confirmed in your private proposal",
       meals: ["Breakfast when included", "Other meals as confirmed"],
       transport: "Private vehicle and English-speaking guide",
@@ -263,7 +267,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Xi'an to Chengdu",
       summary:
         "Use the morning for one final layer of Xi'an before a managed high-speed rail journey to Chengdu.",
-      image: firstChinaAsset.xianTerracottaGroup,
+      image: fourCityAsset.xianSunset,
       hotel: "Chengdu stay: hotel and room category confirmed in your private proposal",
       meals: ["Breakfast when included", "Meals as confirmed"],
       transport: "Private station transfers and high-speed rail",
@@ -291,7 +295,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Chengdu",
       summary:
         "Visit the pandas during the more favorable morning window, then slow the day down through tea-house life and Sichuan food.",
-      image: chengduAsset.pandaMorning,
+      image: fourCityAsset.chengduPandas,
       hotel: "Chengdu stay: confirmed in your private proposal",
       meals: ["Breakfast when included", "Other meals as confirmed"],
       transport: "Private vehicle and English-speaking guide",
@@ -319,7 +323,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Chengdu to Shanghai",
       summary:
         "Take a domestic flight to Shanghai with private airport transfers and a relaxed first look at the city after arrival.",
-      image: firstChinaAsset.shanghaiHuangpuSunset,
+      image: fourCityAsset.shanghaiArrival,
       hotel: "Shanghai stay: hotel and room category confirmed in your private proposal",
       meals: ["Breakfast when included", "Meals during travel as confirmed"],
       transport: "Private airport transfers and domestic flight",
@@ -345,7 +349,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Shanghai",
       summary:
         "Read the city across both banks of the Huangpu, then move into neighborhoods where Shanghai feels more personal.",
-      image: firstChinaAsset.shanghaiWaterfrontGroup,
+      image: fourCityAsset.shanghaiBund,
       hotel: "Shanghai stay: confirmed in your private proposal",
       meals: ["Breakfast when included", "Other meals as confirmed"],
       transport: "Private vehicle and English-speaking guide as confirmed",
@@ -372,7 +376,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Shanghai or nearby",
       summary:
         "Keep the final full day genuinely flexible: deepen Shanghai, visit a water town or travel privately to Suzhou.",
-      image: firstChinaAsset.shanghaiBicycleRide,
+      image: fourCityAsset.waterTown,
       hotel: "Shanghai stay: confirmed in your private proposal",
       meals: ["Breakfast when included", "Other meals as confirmed"],
       transport: "Private touring or rail plan according to the selected option",
@@ -398,7 +402,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       destination: "Shanghai",
       summary:
         "Your driver collects you for a private airport transfer planned around the correct terminal, traffic and check-in time.",
-      image: firstChinaAsset.shanghaiPudongSkyline,
+      image: fourCityAsset.shanghaiDeparture,
       meals: ["Breakfast when included with the confirmed hotel"],
       transport: "Private departure transfer",
       activities: [
@@ -421,7 +425,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Selected around access to the historic centre, room requirements and a sensible balance between atmosphere and transfer time.",
       roomStyle: "Hotel and room category confirmed after inquiry",
       highlights: ["Practical location", "Breakfast option", "Private transfers"],
-      image: beijingUnhurriedAsset.hotelRoom,
+      image: fourCityAsset.beijingHotel,
     },
     {
       name: "Xi'an central stay",
@@ -430,7 +434,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "A well-placed base for the City Wall, evening exploration and the road journey to the Terracotta Warriors.",
       roomStyle: "Hotel and room category confirmed after inquiry",
       highlights: ["Central access", "Family room planning", "Breakfast option"],
-      image: firstChinaAsset.xianTerracottaPortrait,
+      image: fourCityAsset.xianHotel,
     },
     {
       name: "Chengdu city stay",
@@ -439,7 +443,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Chosen for rest, food access and the wider transport plan rather than simply selecting the most recognizable hotel name.",
       roomStyle: "Hotel and room category confirmed after inquiry",
       highlights: ["Comfortable base", "Dining access", "Airport and rail planning"],
-      image: chengduAsset.teaGalleryTwo,
+      image: fourCityAsset.chengduHotel,
     },
     {
       name: "Shanghai finale",
@@ -448,7 +452,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Choose between Bund access, a characterful historic neighborhood or a modern business-district base according to your priorities.",
       roomStyle: "Hotel and room category confirmed after inquiry",
       highlights: ["Location choice", "International departure access", "Room-view options"],
-      image: firstChinaAsset.shanghaiPudongSkyline,
+      image: fourCityAsset.shanghaiHotel,
     },
   ],
   included: [
@@ -476,21 +480,21 @@ export const beijingXianChengduShanghaiTour: Tour = {
       description:
         "Adjust start times, walking blocks, room configuration and hands-on activities around children or a multigenerational group.",
       badges: ["Family", "Flexible pacing"],
-      image: firstChinaAsset.beijingGreatWallGroup,
+      image: fourCityAsset.familyTravel,
     },
     {
       title: "Food with local guidance",
       description:
         "Add selected Beijing, Xi'an, Chengdu or Shanghai food experiences with dietary needs checked before confirmation.",
       badges: ["Food", "Local life"],
-      image: firstChinaAsset.shanghaiStreetFoodGroup,
+      image: fourCityAsset.food,
     },
     {
       title: "A quieter final day",
       description:
         "Keep Day 10 in Shanghai, add free time or choose a nearby excursion according to energy, weather and interests.",
       badges: ["Tailor-made", "Slow travel"],
-      image: firstChinaAsset.shanghaiMarketVisit,
+      image: fourCityAsset.finalDay,
     },
   ],
   transportation: {
@@ -551,24 +555,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       },
     ],
   },
-  gallery: [
-    firstChinaAsset.beijingGreatWallSunriseHero,
-    beijingUnhurriedAsset.forbiddenCityOverview,
-    beijingUnhurriedAsset.greatWallWalk,
-    firstChinaAsset.beijingTempleOfHeavenReflection,
-    firstChinaAsset.xianTerracottaGroup,
-    firstChinaAsset.xianTerracottaPit,
-    firstChinaAsset.xianTerracottaPortrait,
-    chengduAsset.heroPanda,
-    chengduAsset.pandaMorning,
-    chengduAsset.tea,
-    chengduAsset.food,
-    firstChinaAsset.shanghaiWaterfrontGroup,
-    firstChinaAsset.shanghaiBundNight,
-    firstChinaAsset.shanghaiPudongSkyline,
-    firstChinaAsset.shanghaiBicycleRide,
-    firstChinaAsset.shanghaiStreetFoodGroup,
-  ],
+  gallery: fourCityGallery,
   faqs: [
     {
       question: "Is this a fixed group tour?",
