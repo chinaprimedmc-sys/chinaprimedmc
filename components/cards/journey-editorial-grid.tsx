@@ -553,7 +553,7 @@ function JourneyEditorialCard({
   onSave: () => void;
 }) {
   return (
-    <article className="group min-w-0">
+    <article className="group grid h-full min-w-0 grid-rows-[auto_1fr]">
       <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[#dfe7df]">
         <Link href={item.href} aria-label={`Explore ${item.title}`} className="block h-full">
           <OptimizedImage
@@ -587,18 +587,20 @@ function JourneyEditorialCard({
         </button>
       </div>
 
-      <div className="grid gap-5 border-b border-black/10 py-6 md:grid-cols-[1fr_auto] md:items-end">
-        <div className="min-w-0">
+      <div className="grid h-full gap-5 border-b border-black/10 py-6 md:grid-cols-[1fr_auto] md:items-end">
+        <div className="flex min-w-0 flex-col">
           <p className="text-[0.65rem] font-semibold tracking-[0.12em] text-[#5f7567] uppercase">
             {item.durationLabel} · {item.routeLabel}
           </p>
           <Link href={item.href}>
-            <h3 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,3.3vw,3.6rem)] leading-[0.96] font-medium text-balance">
+            <h3 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,3.3vw,3.6rem)] leading-[0.96] font-medium text-balance md:min-h-[3.84em]">
               {item.title}
             </h3>
           </Link>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-black/54">{item.hook}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-black/54 md:min-h-[4.5rem]">
+            {item.hook}
+          </p>
+          <div className="mt-4 flex min-h-8 flex-wrap content-start gap-2">
             {item.styleFilters.slice(0, 3).map((style) => (
               <span
                 key={style}
