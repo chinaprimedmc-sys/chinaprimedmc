@@ -11,7 +11,7 @@ import { CtaButton } from "@/components/cta/cta-button";
 import { FloatingCta } from "@/components/cta/floating-cta";
 import { StickyMobileCta } from "@/components/cta/sticky-mobile-cta";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { GridGallery } from "@/components/gallery/grid-gallery";
+import { CinematicJourneyGallery } from "@/components/gallery/cinematic-journey-gallery";
 import { HeroLargeImage } from "@/components/hero/hero-large-image";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { WhatsAppIcon } from "@/components/icons";
@@ -34,7 +34,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
   const planningHref = `/start-planning?source=${encodeURIComponent(`/tours/${tour.slug}`)}&journey=${encodeURIComponent(tour.slug)}`;
   const tourNav = [
     { label: "Overview", href: "#overview" },
-    { label: "Why this journey", href: "#highlights" },
+    { label: "Gallery", href: "#gallery" },
     { label: "Itinerary", href: "#itinerary" },
     { label: "Details", href: "#details" },
     { label: "FAQ", href: "#faq" },
@@ -84,6 +84,10 @@ export function TourTemplate({ tour }: TourTemplateProps) {
           </div>
         </ContentContainer>
       </Section>
+
+      {tour.gallery.length ? (
+        <CinematicJourneyGallery images={tour.gallery} title="The journey, seen more closely." />
+      ) : null}
 
       <Section id="highlights" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
@@ -533,18 +537,6 @@ function TourDetailsAccordion({ tour }: { tour: Tour }) {
                 />
               ))}
             </div>
-          </Accordion.Content>
-        </Accordion.Item>
-      ) : null}
-
-      {tour.gallery.length ? (
-        <Accordion.Item
-          value="gallery"
-          className="border-border overflow-hidden rounded-2xl border bg-white"
-        >
-          <AccordionHeader eyebrow="Gallery" title="See the character of the route." />
-          <Accordion.Content className="border-border border-t p-5 md:p-6">
-            <GridGallery images={tour.gallery} mode="editorial" />
           </Accordion.Content>
         </Accordion.Item>
       ) : null}

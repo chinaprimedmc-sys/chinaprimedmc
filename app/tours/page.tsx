@@ -12,9 +12,9 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 import { getPublicDestinations, getPublicSiteSettings } from "@/lib/cms/public-content";
 
 export const metadata: Metadata = createMetadata({
-  title: "Private China Tour Packages and Tailored Journeys",
+  title: "Private China Journeys and Tailor-Made Tours",
   description:
-    "Compare private China tours with expert guides, carefully selected hotels and flexible daily plans for couples, families and private groups.",
+    "Explore private China journeys designed around your dates, interests and pace, with local guides, considered hotels and support across every transition.",
   path: "/tours",
 });
 
@@ -32,9 +32,9 @@ export default async function ToursPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Private China Tours",
+          name: "Private China Journeys",
           description:
-            "Private China tour ideas for couples, families, solo travelers, older guests and small groups.",
+            "Tailor-made private China journey ideas for couples, families, older travelers and small private groups.",
           url: new URL("/tours", siteConfig.url).toString(),
           hasPart: catalog.map((tour) => ({
             "@type": "TouristTrip",
@@ -47,7 +47,7 @@ export default async function ToursPage() {
         id="tours-breadcrumb-schema"
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "Tours", path: "/tours" },
+          { name: "Journeys", path: "/tours" },
         ])}
       />
       <SiteNavigation
@@ -61,7 +61,7 @@ export default async function ToursPage() {
       <SiteFooter
         columns={[
           {
-            title: "Tours",
+            title: "Journeys",
             items: catalog.map((journey) => ({
               label: journey.title,
               href: journey.href,
