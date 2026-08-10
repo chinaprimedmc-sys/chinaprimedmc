@@ -86,7 +86,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       </Section>
 
       {tour.gallery.length ? (
-        <CinematicJourneyGallery images={tour.gallery} title="The journey, seen more closely." />
+        <CinematicJourneyGallery images={tour.gallery} title="Scenes from this journey." />
       ) : null}
 
       <Section id="highlights" spacing="default">

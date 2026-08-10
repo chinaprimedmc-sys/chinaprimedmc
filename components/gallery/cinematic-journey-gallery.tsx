@@ -22,7 +22,8 @@ export function CinematicJourneyGallery({
   const shouldReduceMotion = useReducedMotion();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "center",
-    loop: images.length > 1,
+    containScroll: false,
+    loop: false,
     skipSnaps: false,
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -30,6 +31,7 @@ export function CinematicJourneyGallery({
   const [hoverPaused, setHoverPaused] = useState(false);
   const [fullscreenOpen, setFullscreenOpen] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const syncSelection = useCallback(() => {
     if (!emblaApi) return;
@@ -59,7 +61,10 @@ export function CinematicJourneyGallery({
       return;
     }
 
-    const interval = window.setInterval(() => emblaApi.scrollNext(), 6500);
+    const interval = window.setInterval(() => {
+      if (emblaApi.canScrollNext()) emblaApi.scrollNext();
+      else emblaApi.scrollTo(0, true);
+    }, 6500);
     return () => window.clearInterval(interval);
   }, [emblaApi, fullscreenOpen, hoverPaused, images.length, manualPaused, shouldReduceMotion]);
 
@@ -74,6 +79,27 @@ export function CinematicJourneyGallery({
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [emblaApi, fullscreenOpen]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        document.documentElement.classList.toggle(
+          "journey-gallery-in-view",
+          Boolean(entry?.isIntersecting),
+        );
+      },
+      { rootMargin: "-10% 0px -10%", threshold: 0.12 },
+    );
+
+    observer.observe(section);
+    return () => {
+      observer.disconnect();
+      document.documentElement.classList.remove("journey-gallery-in-view");
+    };
+  }, []);
 
   if (!images.length) return null;
 
@@ -91,8 +117,16 @@ export function CinematicJourneyGallery({
 
   function move(direction: -1 | 1) {
     setManualPaused(true);
-    if (direction === -1) emblaApi?.scrollPrev();
-    else emblaApi?.scrollNext();
+    if (!emblaApi) return;
+
+    if (direction === -1) {
+      if (emblaApi.canScrollPrev()) emblaApi.scrollPrev();
+      else emblaApi.scrollTo(images.length - 1, true);
+      return;
+    }
+
+    if (emblaApi.canScrollNext()) emblaApi.scrollNext();
+    else emblaApi.scrollTo(0, true);
   }
 
   function finishFullscreenSwipe(clientX: number) {
@@ -106,106 +140,112 @@ export function CinematicJourneyGallery({
     <Dialog.Root open={fullscreenOpen} onOpenChange={setFullscreenOpen}>
       <section
         id="gallery"
-        className="overflow-hidden bg-[#101410] py-14 text-white md:py-20"
+        ref={sectionRef}
+        className="scroll-mt-24 overflow-hidden bg-[#f3f5f0] py-10 text-[#171a16] md:py-12"
         onPointerEnter={() => setHoverPaused(true)}
         onPointerLeave={() => setHoverPaused(false)}
       >
-        <div className="mx-auto w-full max-w-[96rem] px-5 sm:px-6 lg:px-8">
-          <header className="flex flex-col gap-6 border-b border-white/14 pb-7 md:flex-row md:items-end md:justify-between">
+        <div className="mx-auto w-full max-w-[90rem] px-5 sm:px-6 lg:px-8">
+          <header className="grid gap-5 border-b border-black/10 pb-5 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-white/52 uppercase">
+              <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-[#617064] uppercase">
                 Journey gallery
               </p>
-              <h2 className="mt-3 max-w-4xl font-serif text-[clamp(2.5rem,5vw,5.25rem)] leading-[0.94] font-medium">
+              <h2 className="mt-3 max-w-4xl font-serif text-[clamp(2.2rem,3.3vw,3.5rem)] leading-[0.98] font-medium">
                 {title}
               </h2>
             </div>
-            <div className="max-w-md md:text-right">
-              <p className="text-sm leading-6 text-white/58">
-                Move through every photograph. Select a side image to bring it forward, then select
-                the centre image to view it full screen.
-              </p>
-              <p className="mt-3 text-xs font-semibold tracking-[0.12em] text-white/42 uppercase">
+            <div className="md:text-right">
+              <p className="text-xs font-semibold tracking-[0.12em] text-black/42 uppercase">
                 Drag or swipe · {images.length} photographs
               </p>
             </div>
           </header>
         </div>
 
-        <div className="mt-9 md:mt-12" ref={emblaRef}>
-          <div className="flex touch-pan-y items-center gap-3 md:gap-6">
-            {images.map((image, index) => {
-              const active = index === selectedIndex;
-              const directDistance = Math.abs(index - selectedIndex);
-              const loopDistance = Math.min(directDistance, images.length - directDistance);
-              const shouldLoadImage = loopDistance <= 2;
-              return (
-                <button
-                  key={`${image.src}-${index}`}
-                  type="button"
-                  onClick={() => selectImage(index)}
-                  aria-label={
-                    active
-                      ? `Open image ${index + 1} full screen: ${image.alt}`
-                      : `Show image ${index + 1}: ${image.alt}`
-                  }
-                  className={cn(
-                    "relative min-w-0 flex-[0_0_90%] overflow-hidden rounded-lg border bg-black/30 text-left transition-[opacity,transform,border-color] duration-700 ease-[cubic-bezier(.16,1,.3,1)] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none sm:flex-[0_0_82%] lg:flex-[0_0_72%]",
-                    active
-                      ? "scale-100 border-white/28 opacity-100"
-                      : "scale-[0.9] border-white/8 opacity-40 hover:opacity-70",
-                  )}
-                >
-                  {shouldLoadImage ? (
-                    <OptimizedImage
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes="(min-width: 1024px) 72vw, (min-width: 640px) 82vw, 90vw"
-                      objectPosition={image.objectPosition}
-                      loading={active ? "eager" : "lazy"}
-                      showSkeleton
-                      frameClassName="h-[54svh] min-h-[24rem] bg-[#090b09] md:h-[68svh] md:min-h-[34rem]"
-                      className="h-full w-full object-contain"
-                    />
-                  ) : (
-                    <span className="grid h-[54svh] min-h-[24rem] place-items-center bg-[#090b09] text-xs font-semibold tracking-[0.16em] text-white/18 md:h-[68svh] md:min-h-[34rem]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  )}
-                  {active ? (
-                    <span className="absolute right-4 bottom-4 grid size-11 place-items-center rounded-full border border-white/24 bg-black/38 text-white backdrop-blur-xl md:right-6 md:bottom-6">
-                      <Maximize2 size={18} aria-hidden="true" />
-                    </span>
-                  ) : null}
-                </button>
-              );
-            })}
+        <div className="mx-auto mt-6 w-full max-w-[90rem] px-5 sm:px-6 lg:px-8">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex touch-pan-y items-center gap-4 py-3 md:gap-6 md:py-4">
+              {images.map((image, index) => {
+                const active = index === selectedIndex;
+                const directDistance = Math.abs(index - selectedIndex);
+                const loopDistance = Math.min(directDistance, images.length - directDistance);
+                const shouldLoadImage = loopDistance <= 2;
+                const format = getImageFormat(image);
+                return (
+                  <button
+                    key={`${image.src}-${index}`}
+                    type="button"
+                    onClick={() => selectImage(index)}
+                    aria-label={
+                      active
+                        ? `Open image ${index + 1} full screen: ${image.alt}`
+                        : `Show image ${index + 1}: ${image.alt}`
+                    }
+                    className={cn(
+                      "relative min-w-0 flex-none overflow-hidden rounded-md border bg-[#e4e8e1] text-left transition-[opacity,transform,border-color,box-shadow] duration-700 ease-[cubic-bezier(.16,1,.3,1)] focus-visible:ring-2 focus-visible:ring-[#506457] focus-visible:outline-none",
+                      format === "portrait" &&
+                        "aspect-[3/4] basis-[74%] sm:basis-[19rem] md:basis-[21rem] lg:basis-[22rem]",
+                      format === "landscape" &&
+                        "aspect-[3/2] basis-[88%] sm:basis-[36rem] md:basis-[42rem] lg:basis-[44rem]",
+                      format === "square" &&
+                        "aspect-square basis-[80%] sm:basis-[24rem] md:basis-[28rem] lg:basis-[29rem]",
+                      active
+                        ? "scale-100 border-black/14 opacity-100 shadow-[0_24px_70px_rgba(26,36,28,0.14)]"
+                        : "scale-[0.92] border-black/8 opacity-[0.42] hover:opacity-70",
+                    )}
+                  >
+                    {shouldLoadImage ? (
+                      <OptimizedImage
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="(min-width: 1024px) 72vw, (min-width: 640px) 82vw, 90vw"
+                        objectPosition={image.objectPosition}
+                        loading={active ? "eager" : "lazy"}
+                        showSkeleton
+                        frameClassName="h-full w-full bg-[#e4e8e1]"
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <span className="grid h-full w-full place-items-center bg-[#e4e8e1] text-xs font-semibold tracking-[0.16em] text-black/18">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    )}
+                    {active ? (
+                      <span className="absolute right-4 bottom-4 grid size-10 place-items-center rounded-full border border-white/72 bg-white/74 text-[#171a16] shadow-sm backdrop-blur-xl md:right-5 md:bottom-5">
+                        <Maximize2 size={18} aria-hidden="true" />
+                      </span>
+                    ) : null}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        <div className="mx-auto mt-7 grid w-full max-w-[96rem] gap-5 px-5 sm:px-6 md:grid-cols-[1fr_auto] md:items-end lg:px-8">
+        <div className="mx-auto mt-4 grid w-full max-w-[90rem] gap-5 px-5 sm:px-6 md:grid-cols-[1fr_auto] md:items-end lg:px-8">
           <div>
             <div className="flex items-center gap-4">
-              <p className="min-w-20 text-xs font-semibold tracking-[0.16em] text-white/52 uppercase">
+              <p className="min-w-20 text-xs font-semibold tracking-[0.16em] text-black/46 uppercase">
                 {String(selectedIndex + 1).padStart(2, "0")} /{" "}
                 {String(images.length).padStart(2, "0")}
               </p>
-              <div className="h-px flex-1 overflow-hidden bg-white/14">
+              <div className="h-px flex-1 overflow-hidden bg-black/12">
                 <div
-                  className="h-full bg-white/72 transition-[width] duration-500"
+                  className="h-full bg-[#52685a] transition-[width] duration-500"
                   style={{ width: progress }}
                 />
               </div>
             </div>
-            <p className="mt-4 max-w-3xl text-sm leading-6 text-white/68">{activeImage.alt}</p>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-black/56">{activeImage.alt}</p>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={() => move(-1)}
-              className="grid size-11 place-items-center rounded-full border border-white/18 bg-white/6 text-white transition hover:border-white/36 hover:bg-white/12"
+              className="grid size-10 place-items-center rounded-full border border-black/12 bg-white/58 text-[#171a16] transition hover:border-black/24 hover:bg-white"
               aria-label="Previous image"
             >
               <ChevronLeft size={18} aria-hidden="true" />
@@ -214,7 +254,7 @@ export function CinematicJourneyGallery({
               <button
                 type="button"
                 onClick={() => setManualPaused((current) => !current)}
-                className="grid size-11 place-items-center rounded-full border border-white/18 bg-white/6 text-white transition hover:border-white/36 hover:bg-white/12"
+                className="grid size-10 place-items-center rounded-full border border-black/12 bg-white/58 text-[#171a16] transition hover:border-black/24 hover:bg-white"
                 aria-label={manualPaused ? "Resume gallery autoplay" : "Pause gallery autoplay"}
               >
                 {manualPaused ? (
@@ -227,7 +267,7 @@ export function CinematicJourneyGallery({
             <button
               type="button"
               onClick={() => move(1)}
-              className="grid size-11 place-items-center rounded-full border border-white/18 bg-white/6 text-white transition hover:border-white/36 hover:bg-white/12"
+              className="grid size-10 place-items-center rounded-full border border-black/12 bg-white/58 text-[#171a16] transition hover:border-black/24 hover:bg-white"
               aria-label="Next image"
             >
               <ChevronRight size={18} aria-hidden="true" />
@@ -235,6 +275,16 @@ export function CinematicJourneyGallery({
           </div>
         </div>
       </section>
+
+      <style>{`
+        html.journey-gallery-in-view .floating-cta,
+        html.journey-gallery-in-view .social-contact-rail,
+        html.journey-gallery-in-view .sticky-mobile-cta {
+          opacity: 0 !important;
+          pointer-events: none !important;
+          visibility: hidden !important;
+        }
+      `}</style>
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-[100] bg-black/92 backdrop-blur-md" />
@@ -301,4 +351,13 @@ export function CinematicJourneyGallery({
       </Dialog.Portal>
     </Dialog.Root>
   );
+}
+
+function getImageFormat(image: MediaAsset): "portrait" | "landscape" | "square" {
+  if (!image.width || !image.height) return "landscape";
+
+  const ratio = image.width / image.height;
+  if (ratio < 0.9) return "portrait";
+  if (ratio > 1.12) return "landscape";
+  return "square";
 }
