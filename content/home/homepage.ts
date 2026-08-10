@@ -46,19 +46,19 @@ export const heroImage: MediaAsset = {
 };
 
 export const desktopHeroImage: MediaAsset = {
-  src: "/home/jiuzhaigou-autumn-desktop-hero.avif",
-  alt: "Turquoise lake, autumn forest and snow-covered mountains in Jiuzhaigou, China",
-  width: 1440,
-  height: 1440,
+  src: "/home/shanghai-blue-hour-desktop-hero.avif",
+  alt: "Shanghai's Lujiazui skyline and the Oriental Pearl Tower at blue hour",
+  width: 2400,
+  height: 1600,
   priority: true,
-  objectPosition: "50% 24%",
+  objectPosition: "50% 50%",
 };
 
 export const mobileHeroImage: MediaAsset = {
-  src: "/home/jiuzhaigou-autumn-mobile-hero.avif",
-  alt: "Autumn forest, turquoise lake and snow-covered mountains in Jiuzhaigou, China",
+  src: "/home/shanghai-blue-hour-mobile-hero.avif",
+  alt: "The Oriental Pearl Tower above Shanghai at blue hour",
   width: 1080,
-  height: 1837,
+  height: 2337,
   priority: true,
   objectPosition: "50% 50%",
 };
