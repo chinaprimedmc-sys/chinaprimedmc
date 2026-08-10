@@ -4,6 +4,8 @@ import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
 const coreJourneyTitleOverrides: Record<string, string> = {
+  "beijing-xian-chengdu-shanghai-private-11-day-tour":
+    "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
   "first-china-beautifully-paced": "9-Day Beijing, Xi'an & Shanghai Private Tour",
   "chengdu-pandas-sichuan-table": "5-Day Chengdu Panda & Sichuan Food Private Tour",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour":
@@ -15,6 +17,7 @@ const coreJourneyTitleOverrides: Record<string, string> = {
 };
 
 const coreJourneyOrder = [
+  "beijing-xian-chengdu-shanghai-private-11-day-tour",
   "first-china-beautifully-paced",
   "chengdu-pandas-sichuan-table",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour",

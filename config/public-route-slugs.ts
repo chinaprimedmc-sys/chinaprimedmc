@@ -1,5 +1,6 @@
 export const publicRouteSlugs = {
   tours: [
+    "beijing-xian-chengdu-shanghai-private-11-day-tour",
     "first-china-beautifully-paced",
     "chengdu-pandas-sichuan-table",
     "chengdu-pandas-jiuzhaigou-private-7-day-tour",

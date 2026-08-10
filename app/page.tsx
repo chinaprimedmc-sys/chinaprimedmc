@@ -27,6 +27,14 @@ const featuredJourneyEditorial: Record<
     imageAlt: string;
   }
 > = {
+  "beijing-xian-chengdu-shanghai-private-11-day-tour": {
+    title: "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
+    routeLine: "11 days · Beijing, Xi'an, Chengdu and Shanghai",
+    description:
+      "The Great Wall, Terracotta Warriors, giant pandas and contemporary Shanghai, privately connected across one balanced journey.",
+    imageSrc: "",
+    imageAlt: "",
+  },
   "first-china-beautifully-paced": {
     title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
     routeLine: "9 days · Beijing, Xi'an and Shanghai",

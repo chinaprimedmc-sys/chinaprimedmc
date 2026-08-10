@@ -1,4 +1,5 @@
 import { destinationAsset } from "@/content/destinations/assets";
+import { beijingXianChengduShanghaiTour } from "@/content/tours/beijing-xian-chengdu-shanghai";
 import {
   beijingUnhurriedAsset,
   chengduAsset,
@@ -122,6 +123,7 @@ const chengduJiuzhaigouAsset = {
 };
 
 export const tours: Tour[] = [
+  beijingXianChengduShanghaiTour,
   {
     slug: "first-china-beautifully-paced",
     title: "9-Day Beijing, Xi'an & Shanghai Private Tour",

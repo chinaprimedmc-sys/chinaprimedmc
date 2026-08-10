@@ -55,7 +55,10 @@ export type JourneyPlanningNeedId =
   | "food-focused"
   | "photography-led";
 
-const flagship = tours[0];
+const flagship = tours.find((tour) => tour.slug === "first-china-beautifully-paced");
+const beijingXianChengduShanghai = tours.find(
+  (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
+);
 const chengdu = tours.find((tour) => tour.slug === "chengdu-pandas-sichuan-table");
 const chengduJiuzhaigou = tours.find(
   (tour) => tour.slug === "chengdu-pandas-jiuzhaigou-private-7-day-tour",
@@ -72,6 +75,10 @@ const xianBeijing = tours.find(
 
 if (!flagship) {
   throw new Error("The flagship journey is required for the journeys catalog.");
+}
+
+if (!beijingXianChengduShanghai) {
+  throw new Error("The 11-day Beijing, Xi'an, Chengdu and Shanghai journey is required.");
 }
 
 if (!chengdu) {
@@ -142,6 +149,57 @@ const firstChina: JourneyCatalogItem = {
     { label: "Xi'an", href: `/tours/${flagship.slug}#itinerary` },
     { label: "Shanghai", href: "/destinations/shanghai" },
   ],
+};
+
+const beijingXianChengduShanghaiJourney: JourneyCatalogItem = {
+  slug: beijingXianChengduShanghai.slug,
+  title: beijingXianChengduShanghai.title,
+  eyebrow: "Signature first-time China journey",
+  summary: beijingXianChengduShanghai.subtitle,
+  hook: "The Great Wall, Terracotta Warriors, giant pandas and Shanghai, connected with private support across eleven balanced days.",
+  image: beijingXianChengduShanghai.hero.image,
+  href: `/tours/${beijingXianChengduShanghai.slug}`,
+  kind: "featured",
+  routeLabel: beijingXianChengduShanghai.route,
+  durationLabel: "11 days / 10 nights",
+  styleFilters: ["First-time China", "Family", "Culture", "Food"],
+  destinationFilters: ["Beijing", "Xi'an", "Chengdu", "Shanghai"],
+  bestForFilters: ["First-time visitors", "Families", "Couples", "Multigenerational travelers"],
+  experienceFilters: [
+    "pandas",
+    "great-wall",
+    "ancient-china",
+    "food",
+    "modern-cities",
+    "local-life",
+    "photography",
+  ],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "food-focused",
+  ],
+  recommendedDaysMin: 11,
+  recommendedDaysMax: 12,
+  destinations: [
+    { label: "Beijing", href: "/destinations/beijing" },
+    { label: "Xi'an", href: "/destinations/xian" },
+    { label: "Chengdu", href: "/destinations/chengdu" },
+    { label: "Shanghai", href: "/destinations/shanghai" },
+  ],
+  planningNote:
+    "The framework uses high-speed rail between Beijing, Xi'an and Chengdu, then a domestic flight to Shanghai; final services depend on your dates.",
 };
 
 const chengduJourney: JourneyCatalogItem = {
@@ -349,6 +407,7 @@ const xianBeijingJourney: JourneyCatalogItem = {
 };
 
 export const journeyCatalog: JourneyCatalogItem[] = [
+  beijingXianChengduShanghaiJourney,
   firstChina,
   chengduJourney,
   chengduJiuzhaigouJourney,
