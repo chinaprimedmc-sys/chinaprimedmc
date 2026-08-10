@@ -14,6 +14,7 @@ import type { NavigationItem } from "@/types/component-library";
 type SiteNavigationProps = {
   brand?: string;
   items: NavigationItem[];
+  className?: string;
   cta?: { label: string; href: string };
   whatsapp?: { label: string; href: string };
   languages?: string[];
@@ -25,6 +26,7 @@ type SiteNavigationProps = {
 export function SiteNavigation({
   brand = "AVIORA",
   items,
+  className,
   cta = { label: "Plan My Trip", href: "/contact" },
   whatsapp = { label: "WhatsApp", href: "https://wa.me/447985052302" },
   tone = "adaptive",
@@ -68,6 +70,7 @@ export function SiteNavigation({
           : tone === "light"
             ? "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-28 before:bg-gradient-to-b before:from-white/72 before:to-transparent"
             : "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-28 before:bg-gradient-to-b before:from-black/35 before:to-transparent",
+        className,
       )}
     >
       <div

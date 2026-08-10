@@ -1,9 +1,10 @@
-import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
+import { HomeHeroMotion } from "@/components/home/home-hero-motion";
 import { FeaturedJourneyCinema, HomeReveal } from "@/components/home/home-immersive-sections";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
@@ -148,63 +149,21 @@ export default async function HomePage() {
       <JsonLd id="featured-journeys-schema" data={featuredJourneysSchema(featuredJourneys)} />
       <SiteNavigation
         items={homeNavigation}
+        className="home-navigation-entrance"
         cta={{ label: "Start Planning", href: settings.primaryCtaHref }}
         showWhatsapp={false}
       />
 
-      <section className="home-conversion-hero">
-        <picture className="home-conversion-hero__media">
-          <source media="(min-width: 768px)" srcSet={desktopHeroImage.src} type="image/avif" />
-          <img
-            src={mobileHeroImage.src}
-            alt={mobileHeroImage.alt}
-            width={mobileHeroImage.width}
-            height={mobileHeroImage.height}
-            loading="eager"
-            fetchPriority="high"
-            className="home-conversion-hero__image"
-          />
-        </picture>
-        <div className="home-conversion-hero__shade" aria-hidden="true" />
-        <ContentContainer
-          size="xl"
-          className="home-conversion-hero__content relative z-20 flex h-full flex-col justify-end"
-        >
-          <div className="max-w-[48rem] text-white">
-            <p className="text-xs font-semibold tracking-[0.16em] text-white/72 uppercase">
-              AVIORA · Private China travel
-            </p>
-            <h1 className="mt-5 max-w-[46rem] font-serif text-[clamp(3.35rem,7.4vw,6.75rem)] leading-[0.9] font-medium text-balance">
-              {home.heroTitle}
-            </h1>
-            <p className="mt-6 max-w-[38rem] text-base leading-7 text-white/82 md:text-lg md:leading-8">
-              {home.heroCopy}
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-5">
-              <CtaButton href={settings.primaryCtaHref} size="md">
-                Start Planning
-              </CtaButton>
-              <Link href="#journeys" className="home-conversion-hero__secondary">
-                Explore journeys
-                <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-          <div className="home-conversion-hero__trust" aria-label="Why travelers choose AVIORA">
-            {home.heroTrustItems.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-            <span>China-based support</span>
-          </div>
-        </ContentContainer>
-        <Link
-          href="#journeys"
-          className="home-conversion-hero__scroll"
-          aria-label="See featured journeys"
-        >
-          <ArrowDown size={15} aria-hidden="true" />
-        </Link>
-      </section>
+      <HomeHeroMotion
+        desktopImage={desktopHeroImage}
+        mobileImage={mobileHeroImage}
+        eyebrow="AVIORA · Private China travel"
+        title={home.heroTitle}
+        copy={home.heroCopy}
+        primary={{ label: "Start Planning", href: settings.primaryCtaHref }}
+        secondary={{ label: "Explore journeys", href: "#journeys" }}
+        trustItems={[...home.heroTrustItems, "China-based support"]}
+      />
 
       {featuredJourneys.length ? <FeaturedJourneyCinema journeys={featuredJourneys} /> : null}
 
