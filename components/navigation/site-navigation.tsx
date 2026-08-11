@@ -21,6 +21,7 @@ type SiteNavigationProps = {
   currencies?: string[];
   tone?: "adaptive" | "dark" | "light";
   showWhatsapp?: boolean;
+  scrollThreshold?: number | "hero";
 };
 
 export function SiteNavigation({
@@ -31,16 +32,19 @@ export function SiteNavigation({
   whatsapp = { label: "WhatsApp", href: "https://wa.me/447985052302" },
   tone = "adaptive",
   showWhatsapp = true,
+  scrollThreshold = 18,
 }: SiteNavigationProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     let frame = 0;
-    let previous = window.scrollY > 18;
+    const threshold = () =>
+      scrollThreshold === "hero" ? Math.round(window.innerHeight * 0.18) : scrollThreshold;
+    let previous = window.scrollY > threshold();
 
     const update = () => {
       frame = 0;
-      const next = window.scrollY > 18;
+      const next = window.scrollY > threshold();
       if (next === previous) return;
       previous = next;
       setScrolled(next);
@@ -57,7 +61,7 @@ export function SiteNavigation({
       window.removeEventListener("scroll", onScroll);
       window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [scrollThreshold]);
 
   return (
     <header
