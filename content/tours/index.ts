@@ -1,5 +1,6 @@
 import { destinationAsset } from "@/content/destinations/assets";
 import { beijingXianChengduShanghaiTour } from "@/content/tours/beijing-xian-chengdu-shanghai";
+import { chengduChongqingZhangjiajieTour } from "@/content/tours/chengdu-chongqing-zhangjiajie";
 import {
   beijingUnhurriedAsset,
   chengduAsset,
@@ -123,6 +124,7 @@ const chengduJiuzhaigouAsset = {
 };
 
 export const tours: Tour[] = [
+  chengduChongqingZhangjiajieTour,
   beijingXianChengduShanghaiTour,
   {
     slug: "first-china-beautifully-paced",

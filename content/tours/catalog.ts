@@ -59,6 +59,9 @@ const flagship = tours.find((tour) => tour.slug === "first-china-beautifully-pac
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
 );
+const chengduChongqingZhangjiajie = tours.find(
+  (tour) => tour.slug === "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+);
 const chengdu = tours.find((tour) => tour.slug === "chengdu-pandas-sichuan-table");
 const chengduJiuzhaigou = tours.find(
   (tour) => tour.slug === "chengdu-pandas-jiuzhaigou-private-7-day-tour",
@@ -79,6 +82,10 @@ if (!flagship) {
 
 if (!beijingXianChengduShanghai) {
   throw new Error("The 11-day Beijing, Xi'an, Chengdu and Shanghai journey is required.");
+}
+
+if (!chengduChongqingZhangjiajie) {
+  throw new Error("The 11-day Chengdu, Chongqing and Zhangjiajie journey is required.");
 }
 
 if (!chengdu) {
@@ -149,6 +156,57 @@ const firstChina: JourneyCatalogItem = {
     { label: "Xi'an", href: `/tours/${flagship.slug}#itinerary` },
     { label: "Shanghai", href: "/destinations/shanghai" },
   ],
+};
+
+const chengduChongqingZhangjiajieJourney: JourneyCatalogItem = {
+  slug: chengduChongqingZhangjiajie.slug,
+  title: chengduChongqingZhangjiajie.title,
+  eyebrow: "New private journey",
+  summary: chengduChongqingZhangjiajie.subtitle,
+  hook: "Pandas, Sichuan flavor, Chongqing after dark and Zhangjiajie's sandstone peaks, with two days left open for your own rhythm.",
+  image: chengduChongqingZhangjiajie.hero.image,
+  href: `/tours/${chengduChongqingZhangjiajie.slug}`,
+  kind: "featured",
+  routeLabel: chengduChongqingZhangjiajie.route,
+  durationLabel: "11 days / 10 nights",
+  styleFilters: ["Nature", "Family", "Food", "Photography", "Quiet Luxury", "Slow Travel"],
+  destinationFilters: ["Chengdu", "Chongqing", "Zhangjiajie"],
+  bestForFilters: [
+    "Couples",
+    "Families",
+    "Nature travellers",
+    "Food lovers",
+    "Photography travellers",
+  ],
+  experienceFilters: ["pandas", "food", "scenery", "modern-cities", "local-life", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "solo-travelers",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "quiet-luxury",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 10,
+  recommendedDaysMax: 12,
+  destinations: [
+    { label: "Chengdu", href: "/destinations/chengdu" },
+    { label: "Chongqing", href: "/destinations/chongqing" },
+    { label: "Zhangjiajie", href: "/destinations/zhangjiajie" },
+  ],
+  planningNote:
+    "Days 6 and 10 can remain entirely open or become paid private experiences selected in advance.",
 };
 
 const beijingXianChengduShanghaiJourney: JourneyCatalogItem = {
@@ -407,6 +465,7 @@ const xianBeijingJourney: JourneyCatalogItem = {
 };
 
 export const journeyCatalog: JourneyCatalogItem[] = [
+  chengduChongqingZhangjiajieJourney,
   beijingXianChengduShanghaiJourney,
   firstChina,
   chengduJourney,
