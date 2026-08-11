@@ -198,9 +198,9 @@ export function HomeHeroMotion({
 
         .home-conversion-hero__word-mask {
           display: inline-block;
-          margin-top: -0.08em;
+          margin-block: -0.08em -0.18em;
           overflow: hidden;
-          padding-top: 0.08em;
+          padding-block: 0.08em 0.18em;
           vertical-align: bottom;
         }
 
