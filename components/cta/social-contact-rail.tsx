@@ -20,6 +20,7 @@ export function SocialContactRail({
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const isJournalPage = pathname === "/journal";
+  const isTourDetailPage = /^\/tours\/.+/.test(pathname);
   const isBackend = pathname.startsWith("/admin");
   const [heroHasPassed, setHeroHasPassed] = useState(false);
   const [featuredJourneyInView, setFeaturedJourneyInView] = useState(false);
@@ -81,7 +82,7 @@ export function SocialContactRail({
     return () => observer.disconnect();
   }, [isJournalPage]);
 
-  if (isBackend) return null;
+  if (isBackend || isTourDetailPage) return null;
 
   const isVisible = isJournalPage
     ? journalMastheadPassed

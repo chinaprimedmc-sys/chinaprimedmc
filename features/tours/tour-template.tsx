@@ -6,15 +6,14 @@ import { ExperienceCard } from "@/components/cards/experience-card";
 import { FeatureCard } from "@/components/cards/feature-card";
 import { HotelCard } from "@/components/cards/hotel-card";
 import { TourCard } from "@/components/cards/tour-card";
-import { HeroTrustPills, QuickFactCard, SectionHeader } from "@/components/content";
+import { SectionHeader } from "@/components/content";
 import { CtaButton } from "@/components/cta/cta-button";
 import { FloatingCta } from "@/components/cta/floating-cta";
 import { StickyMobileCta } from "@/components/cta/sticky-mobile-cta";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { CinematicJourneyGallery } from "@/components/gallery/cinematic-journey-gallery";
-import { HeroLargeImage } from "@/components/hero/hero-large-image";
-import { OptimizedImage } from "@/components/media/optimized-image";
 import { WhatsAppIcon } from "@/components/icons";
+import { ScrollReveal } from "@/components/interaction/scroll-reveal";
 import { ContentContainer } from "@/components/layout/content-container";
 import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
@@ -23,6 +22,9 @@ import { Badge } from "@/components/ui/badge";
 import { Section } from "@/design-system/primitives/section";
 import { RecordViewed } from "@/features/discovery/record-viewed";
 import { ItineraryEngine } from "@/features/tours/itinerary-engine";
+import { JourneyRouteChapters } from "@/features/tours/journey-route-chapters";
+import { SignatureExperienceStory } from "@/features/tours/signature-experience-story";
+import { TourCinematicHero } from "@/features/tours/tour-cinematic-hero";
 import { TourInquiryPanel } from "@/features/tours/tour-inquiry-panel";
 import type { Tour } from "@/types/tour";
 
@@ -56,30 +58,39 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         cta={{ label: "Request a Private Proposal", href: planningHref }}
       />
 
-      <HeroLargeImage
-        eyebrow={tour.hero.eyebrow ?? "Tailored private tour"}
-        title={tour.title}
-        subtitle={tour.subtitle}
-        image={tour.hero.image}
-        primary={{ label: "Request a Private Proposal", href: planningHref }}
-        secondary={{ label: "Explore Itinerary", href: "#itinerary" }}
-        overlay="medium"
-        journeySlug={tour.slug}
-      >
-        <HeroTrustPills items={[tour.duration, tour.route, ...tour.styles.slice(0, 2)]} />
-      </HeroLargeImage>
+      <TourCinematicHero tour={tour} planningHref={planningHref} />
 
-      <Section id="overview" spacing="compact" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="At a glance"
-            title={tour.overview.pitch}
-            className="md:grid-cols-1"
-            titleClassName="max-w-none lg:w-4/5"
-          />
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {tour.overview.facts.map((fact) => (
-              <QuickFactCard key={fact.label} {...fact} />
+      <Section id="overview" spacing="default" className="bg-[#f7f8f4]">
+        <ContentContainer size="xl" className="grid gap-10">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="At a glance"
+              title={tour.overview.pitch}
+              className="md:grid-cols-1"
+              titleClassName="max-w-none lg:w-4/5"
+            />
+          </ScrollReveal>
+          <div className="grid border-y border-black/10 sm:grid-cols-2 lg:grid-cols-4">
+            {tour.overview.facts.slice(0, 4).map((fact, index) => (
+              <ScrollReveal
+                key={fact.label}
+                delay={index * 0.08}
+                className="border-b border-black/10 py-6 last:border-b-0 sm:odd:border-r lg:border-r lg:border-b-0 lg:last:border-r-0 sm:[&:nth-last-child(-n+2)]:border-b-0"
+              >
+                <div className="px-0 sm:px-5 lg:px-6 lg:first:pl-0">
+                  <p className="text-[0.66rem] font-semibold tracking-[0.15em] text-[var(--accent)] uppercase">
+                    {fact.label}
+                  </p>
+                  <p className="mt-3 font-serif text-2xl leading-tight text-[var(--text-primary)] md:text-3xl">
+                    {fact.value}
+                  </p>
+                  {fact.helper ? (
+                    <p className="mt-3 max-w-xs text-xs leading-5 text-[var(--text-secondary)]">
+                      {fact.helper}
+                    </p>
+                  ) : null}
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </ContentContainer>
@@ -89,51 +100,75 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         <CinematicJourneyGallery images={tour.gallery} title="Scenes from this journey." />
       ) : null}
 
-      <Section id="highlights" spacing="default">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Signature experiences"
-            title="A route with room to feel the place."
-            description="The defining experiences, selected for their timing, context and fit within the wider journey."
-          />
-          <SignatureExperiences highlights={tour.highlights} />
+      <JourneyRouteChapters stops={tour.routeMap.stops} days={tour.itinerary} />
+
+      <Section id="highlights" spacing="default" className="bg-[#f7f8f4]">
+        <ContentContainer size="xl" className="grid gap-10">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Signature experiences"
+              title="A route with room to feel the place."
+              description="The defining experiences, selected for their timing, context and fit within the wider journey."
+            />
+          </ScrollReveal>
+          <SignatureExperienceStory highlights={tour.highlights} />
         </ContentContainer>
       </Section>
 
       <Section id="itinerary" spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Day by day"
-            title="See the rhythm of the journey."
-            description="Move through the days one at a time. Every detail can be adjusted around your dates, interests and pace."
-          />
+        <ContentContainer size="xl" className="grid gap-10">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Day by day"
+              title="See the rhythm of the journey."
+              description="Move through the days one at a time. Every detail can be adjusted around your dates, interests and pace."
+            />
+          </ScrollReveal>
           <ItineraryEngine days={tour.itinerary} />
         </ContentContainer>
       </Section>
 
-      <Section id="proposal" spacing="default">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="A private proposal for your dates"
-            title="The journey is shaped around your party."
-            description="There is no fixed package price. We confirm the right hotels, services and inclusions around your dates, group size, preferences and travel rhythm, then send everything in writing."
-          />
+      <Section id="proposal" spacing="default" className="bg-[#f7f8f4]">
+        <ContentContainer size="xl" className="grid gap-10">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="A private proposal for your dates"
+              title="The journey is shaped around your party."
+              description="There is no fixed package price. We confirm the right hotels, services and inclusions around your dates, group size, preferences and travel rhythm, then send everything in writing."
+            />
+          </ScrollReveal>
           <div className="grid gap-4 border-y border-[var(--border-default)] py-6 md:grid-cols-3">
-            <QuickFactCard
-              label="01"
-              value="Share your essentials"
-              helper="Dates, travelers, interests and anything that needs extra care."
-            />
-            <QuickFactCard
-              label="02"
-              value="We check the details"
-              helper="Hotels, room needs, transport, guides and availability."
-            />
-            <QuickFactCard
-              label="03"
-              value="Receive your proposal"
-              helper="A clear written plan with inclusions and next steps."
-            />
+            {[
+              {
+                label: "01",
+                value: "Share your essentials",
+                helper: "Dates, travelers, interests and anything that needs extra care.",
+              },
+              {
+                label: "02",
+                value: "We check the details",
+                helper: "Hotels, room needs, transport, guides and availability.",
+              },
+              {
+                label: "03",
+                value: "Receive your proposal",
+                helper: "A clear written plan with inclusions and next steps.",
+              },
+            ].map((step, index) => (
+              <ScrollReveal
+                key={step.label}
+                delay={index * 0.1}
+                className="border-b border-black/10 py-3 last:border-b-0 md:border-r md:border-b-0 md:px-6 md:first:pl-0 md:last:border-r-0"
+              >
+                <p className="text-[0.68rem] font-bold tracking-[0.16em] text-[var(--accent)] uppercase">
+                  {step.label}
+                </p>
+                <h3 className="mt-4 font-serif text-2xl leading-tight md:text-3xl">{step.value}</h3>
+                <p className="mt-3 max-w-sm text-sm leading-6 text-[var(--text-secondary)]">
+                  {step.helper}
+                </p>
+              </ScrollReveal>
+            ))}
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <div className="border-border border-t pt-4">
@@ -185,22 +220,26 @@ export function TourTemplate({ tour }: TourTemplateProps) {
 
       <Section id="details" spacing="compact" className="bg-white">
         <ContentContainer size="xl" className="grid gap-7">
-          <SectionHeader
-            eyebrow="Practical details"
-            title="Everything important, easy to find."
-            description="Open a section when you are ready to look closer. Your final proposal confirms the exact hotels, services and inclusions for your dates."
-          />
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Practical details"
+              title="Everything important, easy to find."
+              description="Open a section when you are ready to look closer. Your final proposal confirms the exact hotels, services and inclusions for your dates."
+            />
+          </ScrollReveal>
           <TourDetailsAccordion tour={tour} />
         </ContentContainer>
       </Section>
 
       <Section id="faq" spacing="default">
         <ContentContainer size="lg" className="grid gap-8">
-          <SectionHeader
-            eyebrow="FAQ"
-            title="Important details before you decide."
-            description="Clear answers on customization, hotels, walking, meals, private services and booking conditions."
-          />
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="FAQ"
+              title="Important details before you decide."
+              description="Clear answers on customization, hotels, walking, meals, private services and booking conditions."
+            />
+          </ScrollReveal>
           <TourFaqAccordion tour={tour} />
         </ContentContainer>
       </Section>
@@ -208,11 +247,13 @@ export function TourTemplate({ tour }: TourTemplateProps) {
       {tour.related.tours.length ? (
         <Section id="related-tours" spacing="default" className="bg-white">
           <ContentContainer size="xl" className="grid gap-8">
-            <SectionHeader
-              eyebrow="Compare journeys"
-              title="Another route may suit you better."
-              description="Compare destination combinations, duration and travel style before choosing a starting point."
-            />
+            <ScrollReveal>
+              <SectionHeader
+                eyebrow="Compare journeys"
+                title="Another route may suit you better."
+                description="Compare destination combinations, duration and travel style before choosing a starting point."
+              />
+            </ScrollReveal>
             <GridSystem columns={3}>
               {tour.related.tours.map((related) => (
                 <TourCard
@@ -235,11 +276,13 @@ export function TourTemplate({ tour }: TourTemplateProps) {
 
       <Section id="related-destinations" spacing="default">
         <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="Related destinations"
-            title="Understand the places on this route."
-            description="Read the practical destination guides for timing, signature experiences and recommended length of stay."
-          />
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Related destinations"
+              title="Understand the places on this route."
+              description="Read the practical destination guides for timing, signature experiences and recommended length of stay."
+            />
+          </ScrollReveal>
           <GridSystem columns={3}>
             {tour.related.destinations.map((destination) => (
               <DestinationCard
@@ -298,6 +341,7 @@ export function TourTemplate({ tour }: TourTemplateProps) {
         href={planningHref}
         placement="floating"
         journeySlug={tour.slug}
+        showAfter={720}
       />
       <StickyMobileCta
         label="Request a Private Proposal"
@@ -335,60 +379,6 @@ function ListPanel({
         ))}
       </ul>
     </article>
-  );
-}
-
-function SignatureExperiences({ highlights }: { highlights: Tour["highlights"] }) {
-  const lead = highlights[0];
-
-  if (!lead) return null;
-
-  return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] lg:items-stretch">
-      <div className="relative min-h-[20rem] overflow-hidden rounded-[1.5rem] bg-[var(--bg-secondary)] md:min-h-[28rem]">
-        <OptimizedImage
-          src={lead.image.src}
-          alt={lead.image.alt}
-          width={lead.image.width ?? 1200}
-          height={lead.image.height ?? 900}
-          sizes="(min-width: 1024px) 56vw, 100vw"
-          objectPosition={lead.image.objectPosition}
-          frameClassName="absolute inset-0"
-          className="h-full w-full"
-          showSkeleton={false}
-        />
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-5 pt-20 text-white md:p-7 md:pt-24">
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-bold tracking-[0.14em] text-white/90 uppercase">01</span>
-            <span className="h-px w-8 bg-white/55" aria-hidden="true" />
-            <p className="text-xs font-semibold tracking-[0.14em] text-white/75 uppercase">
-              {lead.category}
-            </p>
-          </div>
-          <h3 className="mt-2 max-w-lg text-2xl leading-tight font-semibold tracking-[-0.025em] md:text-3xl">
-            {lead.title}
-          </h3>
-        </div>
-      </div>
-      <div className="grid divide-y divide-[var(--border-default)] border-y border-[var(--border-default)]">
-        {highlights.slice(1, 4).map((highlight, index) => (
-          <article key={highlight.title} className="grid gap-2 py-5 first:pt-0 last:pb-0 lg:py-6">
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-bold tracking-[0.14em] text-[var(--accent)] uppercase">
-                0{index + 2}
-              </span>
-              <p className="text-xs font-semibold tracking-[0.12em] text-[var(--text-secondary)] uppercase">
-                {highlight.category}
-              </p>
-            </div>
-            <h3 className="text-xl leading-tight font-semibold tracking-[-0.025em]">
-              {highlight.title}
-            </h3>
-            <p className="text-muted text-sm leading-6">{highlight.description}</p>
-          </article>
-        ))}
-      </div>
-    </div>
   );
 }
 
