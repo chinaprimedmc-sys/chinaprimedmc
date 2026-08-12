@@ -260,7 +260,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     readingTime: "11 min read",
     editorPick: true,
     hero: { eyebrow: "Chengdu stay planning", image: journalImages.chengduDays },
-    gallery: [chengduImages[3], chengduImages[15], chengduImages[17]],
+    gallery: [chengduImages[3], chengduImages[15], chengduImages[8]],
     content: [],
     seo: {
       title: "How Many Days in Chengdu? 3-to-5-Day Itinerary",
