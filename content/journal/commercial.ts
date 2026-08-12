@@ -8,6 +8,81 @@ const author = {
   role: "China travel specialists",
 };
 
+const commercialHeroImages = {
+  privateVsGroup: {
+    src: "/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp",
+    alt: "International travelers exploring Shanghai together on a private China journey",
+    width: 1920,
+    height: 1440,
+  },
+  fourCity: {
+    src: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp",
+    alt: "The Great Wall crossing Beijing's mountains in warm evening light",
+    width: 1920,
+    height: 1080,
+  },
+  chengduJiuzhaigou: {
+    src: "/tours/chengdu-pandas-jiuzhaigou/hero.webp",
+    alt: "Turquoise alpine lakes and forest in Jiuzhaigou National Park",
+    width: 1600,
+    height: 1067,
+  },
+  shanghaiZhangjiajie: {
+    src: "/tours/shanghai-zhangjiajie-floating-peaks/hero-floating-peaks.webp",
+    alt: "Sandstone peaks rising through the forest in Zhangjiajie",
+    width: 1280,
+    height: 1920,
+  },
+  beijingXian: {
+    src: "/tours/xian-beijing-private-journey/hero.webp",
+    alt: "The Great Wall rising above the mountains near Beijing",
+    width: 1600,
+    height: 1067,
+  },
+  bestTime: {
+    src: "/home/jiuzhaigou-five-flower-lake.webp",
+    alt: "Seasonal forest reflected in the clear water of Jiuzhaigou",
+    width: 1920,
+    height: 1200,
+  },
+  chooseCompany: {
+    src: "/home/editorial/travel-trade-team-singapore.webp",
+    alt: "AVIORA China travel specialists meeting international travel partners",
+    width: 1080,
+    height: 810,
+  },
+  privateWorth: {
+    src: "/tours/beijing-unhurried/great-wall-walk.webp",
+    alt: "Travelers walking along Great Wall ramparts in the Beijing mountains",
+    width: 2400,
+    height: 1641,
+  },
+  family: {
+    src: "/home/editorial/shanghai-family-waterfront.webp",
+    alt: "A family enjoying the Shanghai waterfront during a private China trip",
+    width: 1350,
+    height: 1800,
+  },
+  olderTravelers: {
+    src: "/tours/beijing-unhurried/great-wall-overview.webp",
+    alt: "A quieter Great Wall route crossing green mountains near Beijing",
+    width: 864,
+    height: 1488,
+  },
+  tripLength: {
+    src: "/tours/first-china-beautifully-paced/shanghai-huangpu-sunset.webp",
+    alt: "Shanghai's skyline across the Huangpu River at sunset",
+    width: 1439,
+    height: 1920,
+  },
+  inclusions: {
+    src: "/journal/2026-08-06/china-high-speed-train-boarding.webp",
+    alt: "An international traveler boarding a high-speed train in China",
+    width: 2400,
+    height: 3200,
+  },
+} satisfies Record<string, MediaAsset>;
+
 type CommercialArticleInput = {
   slug: string;
   title: string;
@@ -79,7 +154,7 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "private-guides", "family-travel", "luxury-travel"],
     readingTime: "11 min read",
     eyebrow: "Choose your travel style",
-    hero: destinationAsset.beijingForbiddenCityWide,
+    hero: commercialHeroImages.privateVsGroup,
     gallery: [
       destinationAsset.xianTerracotta,
       destinationAsset.shanghaiSkyline,
@@ -113,7 +188,7 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["beijing", "xian", "chengdu", "shanghai", "first-time-china", "train-travel"],
     readingTime: "14 min read",
     eyebrow: "Four-city China itinerary",
-    hero: destinationAsset.beijingForbiddenCity,
+    hero: commercialHeroImages.fourCity,
     gallery: [
       destinationAsset.chengduPanda,
       destinationAsset.shanghaiSkyline,
@@ -147,7 +222,7 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["chengdu", "pandas", "family-travel", "photography", "food"],
     readingTime: "13 min read",
     eyebrow: "Sichuan nature itinerary",
-    hero: destinationAsset.jiuzhaigouLake,
+    hero: commercialHeroImages.chengduJiuzhaigou,
     gallery: [
       destinationAsset.chengduPanda,
       destinationAsset.chengduTeaHouse,
@@ -181,7 +256,7 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["shanghai", "zhangjiajie", "photography", "family-travel", "first-time-china"],
     readingTime: "13 min read",
     eyebrow: "City and mountain itinerary",
-    hero: destinationAsset.zhangjiajieForest,
+    hero: commercialHeroImages.shanghaiZhangjiajie,
     gallery: [
       destinationAsset.shanghaiSkyline,
       destinationAsset.zhangjiajieSpirePortrait,
@@ -215,10 +290,10 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["beijing", "xian", "first-time-china", "train-travel", "family-travel"],
     readingTime: "12 min read",
     eyebrow: "Historic capitals itinerary",
-    hero: destinationAsset.xianTerracotta,
+    hero: commercialHeroImages.beijingXian,
     gallery: [
-      destinationAsset.beijingForbiddenCityWide,
-      destinationAsset.beijingForbiddenCity,
+      destinationAsset.xianTerracotta,
+      destinationAsset.chengduTeaHouse,
       destinationAsset.shanghaiSkyline,
     ],
     seoTitle: "Beijing and Xi'an Itinerary: 5, 6 or 7 Days",
@@ -255,9 +330,9 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "spring", "autumn", "family-travel", "photography"],
     readingTime: "15 min read",
     eyebrow: "China season planner",
-    hero: destinationAsset.jiuzhaigouLake,
+    hero: commercialHeroImages.bestTime,
     gallery: [
-      destinationAsset.beijingForbiddenCityWide,
+      destinationAsset.jiuzhaigouLake,
       destinationAsset.zhangjiajieForest,
       destinationAsset.shanghaiSkyline,
     ],
@@ -293,9 +368,9 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["private-guides", "luxury-travel", "first-time-china", "family-travel"],
     readingTime: "12 min read",
     eyebrow: "Choose a China operator",
-    hero: destinationAsset.shanghaiSkyline,
+    hero: commercialHeroImages.chooseCompany,
     gallery: [
-      destinationAsset.beijingForbiddenCityWide,
+      destinationAsset.shanghaiSkyline,
       destinationAsset.chengduTeaHouse,
       destinationAsset.xianTerracotta,
     ],
@@ -326,9 +401,9 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["private-guides", "luxury-travel", "first-time-china", "family-travel"],
     readingTime: "11 min read",
     eyebrow: "Private tour value",
-    hero: destinationAsset.chengduTeaHouse,
+    hero: commercialHeroImages.privateWorth,
     gallery: [
-      destinationAsset.beijingForbiddenCityWide,
+      destinationAsset.zhangjiajieForest,
       destinationAsset.xianTerracotta,
       destinationAsset.shanghaiSkyline,
     ],
@@ -359,9 +434,9 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["family-travel", "first-time-china", "pandas", "beijing", "chengdu"],
     readingTime: "15 min read",
     eyebrow: "Family China itinerary",
-    hero: destinationAsset.chengduPanda,
+    hero: commercialHeroImages.family,
     gallery: [
-      destinationAsset.beijingForbiddenCity,
+      destinationAsset.chengduPanda,
       destinationAsset.shanghaiSkyline,
       destinationAsset.chengduTeaHouse,
     ],
@@ -396,11 +471,11 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "beijing", "xian", "shanghai", "private-guides"],
     readingTime: "14 min read",
     eyebrow: "Comfortable China travel",
-    hero: destinationAsset.beijingForbiddenCityWide,
+    hero: commercialHeroImages.olderTravelers,
     gallery: [
       destinationAsset.xianTerracotta,
       destinationAsset.shanghaiSkyline,
-      destinationAsset.beijingForbiddenCity,
+      destinationAsset.chengduTeaHouse,
     ],
     seoTitle: "China Itinerary for Older Travelers: 10 Days",
     seoDescription:
@@ -433,9 +508,9 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "family-travel", "train-travel", "private-guides"],
     readingTime: "14 min read",
     eyebrow: "Choose your trip length",
-    hero: destinationAsset.shanghaiSkyline,
+    hero: commercialHeroImages.tripLength,
     gallery: [
-      destinationAsset.beijingForbiddenCityWide,
+      destinationAsset.zhangjiajieForest,
       destinationAsset.jiuzhaigouLake,
       destinationAsset.xianTerracotta,
     ],
@@ -471,7 +546,7 @@ export const commercialJournalArticles: JournalArticle[] = [
     tags: ["private-guides", "luxury-travel", "first-time-china", "family-travel"],
     readingTime: "12 min read",
     eyebrow: "Understand your proposal",
-    hero: destinationAsset.beijingForbiddenCity,
+    hero: commercialHeroImages.inclusions,
     gallery: [
       destinationAsset.shanghaiSkyline,
       destinationAsset.chengduTeaHouse,

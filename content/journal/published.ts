@@ -511,7 +511,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     hero: { eyebrow: "First China itinerary", image: journalImages.tenDayChinaItinerary },
     gallery: [
       journalImages.tenDayChinaItinerary,
-      destinationAsset.beijingForbiddenCityWide,
+      journalImages.greatWallComparison,
       journalImages.terracottaArmy,
     ],
     content: [],
@@ -671,7 +671,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     publishedAt: "2026-08-06",
     readingTime: "10 min read",
     hero: { eyebrow: "Entry planning", image: journalImages.visaFreeTransit },
-    gallery: [journalImages.visaFreeTransit, destinationAsset.beijingForbiddenCityWide],
+    gallery: [journalImages.visaFreeTransit, journalImages.greatWallComparison],
     content: [],
     seo: {
       title: "China 240-Hour Visa-Free Transit Guide 2026",
@@ -792,7 +792,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     publishedAt: "2026-08-06",
     readingTime: "8 min read",
     hero: { eyebrow: "Beijing planning", image: journalImages.forbiddenCityEntrance },
-    gallery: [journalImages.forbiddenCityEntrance, destinationAsset.beijingForbiddenCityWide],
+    gallery: [journalImages.forbiddenCityEntrance, journalImages.greatWallComparison],
     content: [],
     seo: {
       title: "Forbidden City Tickets for Foreigners: 2026 Guide",

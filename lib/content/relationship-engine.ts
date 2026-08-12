@@ -33,7 +33,7 @@ const experienceCatalog: Record<string, TourExperienceOption> = {
     description:
       "Context-rich guiding that adapts to children, older parents, photographers, food lovers, or first-time visitors.",
     badges: ["Private", "Culture"],
-    image: destinationAsset.beijingForbiddenCityWide,
+    image: destinationAsset.xianTerracotta,
   },
   "train-travel": {
     title: "High-speed rail made easy",
