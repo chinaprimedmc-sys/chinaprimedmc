@@ -206,7 +206,7 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
 }
 
 function cleanMarkdown(value: string) {
-  return value.replace(/\*\*(.*?)\*\*/g, "$1").replace(/`(.*?)`/g, "$1");
+  return value.replace(/`(.*?)`/g, "$1");
 }
 
 function slugify(value: string) {

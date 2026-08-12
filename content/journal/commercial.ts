@@ -1,7 +1,7 @@
 import { destinationAsset } from "@/content/destinations/assets";
 import { commercialArticleContent } from "@/content/journal/commercial-content";
 import type { MediaAsset } from "@/types/component-library";
-import type { JournalArticle, JournalCategory } from "@/types/journal";
+import type { JournalArticle, JournalCategory, JournalCitation } from "@/types/journal";
 
 const author = {
   name: "AVIORA Travel Team",
@@ -101,6 +101,7 @@ type CommercialArticleInput = {
   tours: string[];
   experiences?: string[];
   articles?: string[];
+  citations?: JournalCitation[];
   conversionTitle: string;
   conversionDescription: string;
   conversionLabel: string;
@@ -133,6 +134,8 @@ function commercialArticle(input: CommercialArticleInput): JournalArticle {
       experiences: input.experiences,
       articles: input.articles,
     },
+    citations: input.citations,
+    updatedAt: "2026-08-12",
     conversion: {
       eyebrow: "Plan with a China specialist",
       title: input.conversionTitle,
@@ -812,6 +815,20 @@ export const commercialJournalArticles: JournalArticle[] = [
       "11-day-beijing-xian-chengdu-shanghai-itinerary",
       "beijing-xian-itinerary-how-many-days",
     ],
+    citations: [
+      {
+        name: "The Great Wall",
+        url: "https://whc.unesco.org/en/list/438/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1987-01-01",
+      },
+      {
+        name: "Mausoleum of the First Qin Emperor",
+        url: "https://whc.unesco.org/en/list/441/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1987-01-01",
+      },
+    ],
     conversionTitle: "Make the classic route fit your flight times and energy.",
     conversionDescription:
       "Tell us your arrival city, dates, hotel expectations and walking comfort. We will adjust the nine-day framework before preparing a date-specific proposal.",
@@ -870,6 +887,20 @@ export const commercialJournalArticles: JournalArticle[] = [
     tours: ["chengdu-pandas-sichuan-table", "chengdu-chongqing-zhangjiajie-private-11-day-tour"],
     experiences: ["pandas", "food", "private-guides"],
     articles: ["how-many-days-in-chengdu-itinerary", "chengdu-panda-base-tickets-foreigners"],
+    citations: [
+      {
+        name: "Mount Emei Scenic Area, including Leshan Giant Buddha Scenic Area",
+        url: "https://whc.unesco.org/en/list/779/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1996-01-01",
+      },
+      {
+        name: "Chengdu Research Base of Giant Panda Breeding",
+        url: "https://www.panda.org.cn/en/",
+        publisher: "Chengdu Research Base of Giant Panda Breeding",
+        publishedAt: "2026-08-12",
+      },
+    ],
     conversionTitle: "Choose the Leshan day that suits your walking and river interests.",
     conversionDescription:
       "Share your group size, panda priorities and comfort with stairs. We will compare the best confirmed viewing approach and keep Chengdu's slower moments intact.",
@@ -928,6 +959,20 @@ export const commercialJournalArticles: JournalArticle[] = [
     tours: ["beijing-great-wall-private-5-day-tour", "first-china-beautifully-paced"],
     experiences: ["private-guides"],
     articles: ["mutianyu-badaling-jinshanling-great-wall", "forbidden-city-tickets-foreigners"],
+    citations: [
+      {
+        name: "The Great Wall",
+        url: "https://whc.unesco.org/en/list/438/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1987-01-01",
+      },
+      {
+        name: "Imperial Palaces of the Ming and Qing Dynasties in Beijing and Shenyang",
+        url: "https://whc.unesco.org/en/list/439/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1987-01-01",
+      },
+    ],
     conversionTitle: "Match the Wall section and city rhythm to your travelers.",
     conversionDescription:
       "Tell us about walking comfort, cable-car preferences, children or older parents. We will build a five-day Beijing plan around your actual group.",
@@ -989,6 +1034,20 @@ export const commercialJournalArticles: JournalArticle[] = [
     ],
     experiences: ["private-guides", "train-travel"],
     articles: ["beijing-xian-itinerary-how-many-days", "terracotta-army-tickets-foreign-visitors"],
+    citations: [
+      {
+        name: "Mausoleum of the First Qin Emperor",
+        url: "https://whc.unesco.org/en/list/441/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1987-01-01",
+      },
+      {
+        name: "China Railway 12306 English FAQ",
+        url: "https://www.12306.cn/en/faq.html",
+        publisher: "China State Railway Group",
+        publishedAt: "2026-08-12",
+      },
+    ],
     conversionTitle: "Put the archaeological day before the long city walks.",
     conversionDescription:
       "Share your arrival gateway, train preferences and walking comfort. We will sequence Xi'an and Beijing so the history has time to land.",
@@ -1047,6 +1106,14 @@ export const commercialJournalArticles: JournalArticle[] = [
     tours: ["chengdu-pandas-sichuan-table"],
     experiences: ["private-guides", "food"],
     articles: ["5-day-chengdu-leshan-itinerary", "how-many-days-in-chengdu-itinerary"],
+    citations: [
+      {
+        name: "Mount Emei Scenic Area, including Leshan Giant Buddha Scenic Area",
+        url: "https://whc.unesco.org/en/list/779/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1996-01-01",
+      },
+    ],
     conversionTitle: "Add Leshan without sacrificing Chengdu's best moments.",
     conversionDescription:
       "Tell us your Chengdu dates, mobility needs and interest in river or cliff views. We will recommend the most realistic Leshan day and transfer plan.",

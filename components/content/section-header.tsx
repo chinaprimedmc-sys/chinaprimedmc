@@ -32,7 +32,7 @@ export function SectionHeader({
         </Title>
       </div>
       {description ? (
-        <p className="text-muted max-w-2xl text-base leading-7 md:text-lg">{description}</p>
+        <p className="max-w-2xl text-base leading-7 text-black md:text-lg">{description}</p>
       ) : null}
     </div>
   );

@@ -82,7 +82,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                     <a
                       key={heading.id}
                       href={`#${heading.id}`}
-                      className="text-muted hover:text-foreground rounded-xl px-3 py-2 text-sm transition"
+                      className="rounded-xl px-3 py-2 text-sm text-black transition hover:text-black"
                     >
                       {heading.title}
                     </a>
@@ -103,7 +103,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <aside className="hidden lg:block">
               <div className="sticky top-28 grid gap-3">
                 <Badge>{article.category}</Badge>
-                <p className="text-muted text-sm leading-6">
+                <p className="text-sm leading-6 text-black">
                   This guide connects the places, experiences and practical choices that can shape
                   your own China trip.
                 </p>
@@ -251,11 +251,42 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                     className="border-border rounded-[1.35rem] border bg-white p-5"
                   >
                     <h3 className="text-lg font-semibold tracking-[-0.02em]">{faq.question}</h3>
-                    <p className="text-muted mt-2 text-sm leading-7">{faq.answer}</p>
+                    <p className="mt-2 text-sm leading-7 text-black">
+                      {renderInlineContent(faq.answer)}
+                    </p>
                   </article>
                 ) : null,
               )}
             </div>
+          </ContentContainer>
+        </Section>
+      ) : null}
+
+      {article.citations?.length ? (
+        <Section id="article-sources" spacing="compact" className="bg-white">
+          <ContentContainer size="lg" className="grid gap-5">
+            <SectionHeader
+              eyebrow="Sources and verification"
+              title="Facts checked against authoritative sources."
+              description="Heritage status and general planning context are linked below. Tickets, opening arrangements, transport schedules and access conditions must still be rechecked for your dates."
+            />
+            <ul className="border-border bg-background grid gap-2 rounded-[1.35rem] border p-5">
+              {article.citations.map((citation) => (
+                <li key={citation.url} className="text-sm leading-6 text-black">
+                  <a
+                    href={citation.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-black italic underline decoration-current/30 underline-offset-4 hover:decoration-current"
+                  >
+                    {citation.name}
+                  </a>{" "}
+                  <span>
+                    — {citation.publisher}; source date {formatDate(citation.publishedAt)}.
+                  </span>
+                </li>
+              ))}
+            </ul>
           </ContentContainer>
         </Section>
       ) : null}
@@ -336,7 +367,7 @@ function ArticleMeta({ article }: { article: JournalArticle }) {
           {article.readingTime}
         </span>
       </div>
-      <p className="text-muted mt-3 text-sm leading-6">
+      <p className="mt-3 text-sm leading-6 text-black">
         By {article.author.name}, {article.author.role}
       </p>
     </div>
@@ -355,7 +386,7 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
         </h2>
       );
     case "paragraph":
-      return <p className="text-muted text-lg leading-9">{renderInlineLinks(block.body)}</p>;
+      return <p className="text-lg leading-9 text-black">{renderInlineContent(block.body)}</p>;
     case "image":
       return (
         <figure className="min-w-0">
@@ -370,7 +401,7 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
             className="h-full w-full"
           />
           {block.caption ? (
-            <figcaption className="text-muted mt-3 text-sm leading-6">{block.caption}</figcaption>
+            <figcaption className="mt-3 text-sm leading-6 text-black">{block.caption}</figcaption>
           ) : null}
         </figure>
       );
@@ -379,7 +410,7 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
         <blockquote className="border-foreground border-l-4 pl-5">
           <p className="text-2xl leading-tight font-semibold tracking-[-0.025em]">{block.quote}</p>
           {block.attribution ? (
-            <cite className="text-muted mt-3 block text-sm not-italic">{block.attribution}</cite>
+            <cite className="mt-3 block text-sm text-black not-italic">{block.attribution}</cite>
           ) : null}
         </blockquote>
       );
@@ -410,24 +441,32 @@ function formatDate(value: string) {
   }).format(new Date(value));
 }
 
-function renderInlineLinks(value: string) {
-  const tokens = value.split(/(\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)]+)/g);
+function renderInlineContent(value: string, keyPrefix = "inline") {
+  const tokens = value.split(/(\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)]+|\*\*[^*]+\*\*|\*[^*]+\*)/g);
 
   return tokens.map((token, index) => {
     const markdownLink = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     const href = markdownLink?.[2] ?? (token.startsWith("http") ? token : null);
 
-    if (!href) return token;
+    if (href) {
+      return (
+        <a
+          key={`${keyPrefix}-${href}-${index}`}
+          href={href}
+          className="text-black italic underline decoration-1 underline-offset-4 hover:decoration-2"
+          {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+        >
+          {renderInlineContent(markdownLink?.[1] ?? token, `${keyPrefix}-${index}`)}
+        </a>
+      );
+    }
 
-    return (
-      <a
-        key={`${href}-${index}`}
-        href={href}
-        className="text-foreground underline decoration-1 underline-offset-4"
-        {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
-      >
-        {markdownLink?.[1] ?? token}
-      </a>
-    );
+    const bold = token.match(/^\*\*(.+)\*\*$/);
+    if (bold) return <strong key={`${keyPrefix}-bold-${index}`}>{bold[1]}</strong>;
+
+    const italic = token.match(/^\*(.+)\*$/);
+    if (italic) return <em key={`${keyPrefix}-italic-${index}`}>{italic[1]}</em>;
+
+    return token;
   });
 }

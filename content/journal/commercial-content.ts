@@ -7,7 +7,10 @@ function article(sections: Section[], faqs: Faq[]): JournalContentBlock[] {
   return [
     ...sections.flatMap<JournalContentBlock>((section) => [
       { type: "heading", id: slugify(section.title), title: section.title },
-      ...section.paragraphs.map<JournalContentBlock>((body) => ({ type: "paragraph", body })),
+      ...section.paragraphs.map<JournalContentBlock>((body) => ({
+        type: "paragraph",
+        body: emphasizeDecision(body),
+      })),
     ]),
     ...faqs.map<JournalContentBlock>(({ question, answer }) => ({
       type: "faq",
@@ -15,6 +18,19 @@ function article(sections: Section[], faqs: Faq[]): JournalContentBlock[] {
       answer,
     })),
   ];
+}
+
+function emphasizeDecision(body: string) {
+  if (body.includes("**") || body.includes("![")) return body;
+
+  const sentence = body.match(/^(.+?[.!?])(?:\s|$)/)?.[1];
+  if (!sentence || sentence.length < 45 || sentence.length > 260) return body;
+
+  const decisionLead =
+    /^(Choose|Do not|Don't|Keep|Use|Start|Share|Tell|Compare|Select|Add|Avoid|Most |No |Yes |The best|A responsible|A practical|High-speed|Five days|Six days|Nine days|Leshan is|Private service)/i;
+  if (!decisionLead.test(sentence)) return body;
+
+  return `**${sentence}**${body.slice(sentence.length)}`;
 }
 
 function slugify(value: string) {
@@ -1086,6 +1102,13 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
   "9-day-beijing-xian-shanghai-itinerary": article(
     [
       {
+        title: "Quick decision: who should choose this route",
+        paragraphs: [
+          "Choose this nine-day route when you want China's clearest first contrast—imperial Beijing, archaeological Xi'an and modern Shanghai—and you are comfortable with two intercity transitions. It is a strong fit for first-time couples, families with school-holiday limits and travelers who want a well-supported introduction without adding pandas or mountain scenery.",
+          "Do not choose it unchanged if your arrival is late, anyone needs a slow walking pace, or Chengdu is a non-negotiable priority. In those cases, add a night or use the longer four-city route. This is the key decision, because removing recovery time usually creates a worse trip than seeing one fewer landmark.",
+        ],
+      },
+      {
         title: "Why nine days is a useful first route",
         paragraphs: [
           "Nine days gives a first-time visitor three different views of China without pretending that every province can fit into one holiday: imperial Beijing, the archaeological depth of Xi'an and Shanghai's contemporary riverfront. The route is compact, but it works when the city order and transfer days are planned before individual attractions.",
@@ -1125,6 +1148,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         paragraphs: [
           "Write down your international arrival and departure airports, the one experience that cannot move, your walking comfort and whether you want guiding every day. Those four details determine whether nine days feels elegant or hurried.",
           "Send them through our [trip planning form](/start-planning?source=journal-nine-day-bjs-mid). We will show which nights are doing useful work, where a train or transfer buffer belongs and what should be left for a future visit.",
+          "At the time of writing, heritage-site access, train schedules and attraction release rules remain date-sensitive. Recheck the official ticket channel before payment; a published itinerary is a planning framework, not a guarantee of capacity.",
         ],
       },
     ],
@@ -1159,6 +1183,13 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
 
   "5-day-chengdu-leshan-itinerary": article(
     [
+      {
+        title: "Quick decision: is Leshan worth one of your five days",
+        paragraphs: [
+          "Add Leshan when you want one major cultural landscape beyond Chengdu and are willing to spend a full day on a regional excursion. Keep it out when your main goal is slow Chengdu life, when Jiuzhaigou follows immediately, or when a tight flight leaves no return buffer.",
+          "The route earns its value by contrast: pandas and city rhythm first, the river-and-cliff scale of Leshan later. Treating Leshan as a rushed photo stop removes the historical context and makes the day feel longer than it needs to be.",
+        ],
+      },
       {
         title: "What five days can realistically include",
         paragraphs: [
@@ -1206,6 +1237,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         paragraphs: [
           "Choose seven days when you want Jiuzhaigou, a slower Chengdu stay or a wider nature route. Choose the [Chengdu, Chongqing and Zhangjiajie journey](/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour) when the vertical city and mountain scenery are priorities. Five days is strongest when Chengdu itself is the subject and Leshan is the one carefully chosen extension.",
           "Tell us your onward city, travelers and walking needs through [start planning](/start-planning?source=journal-chengdu-leshan-mid). We will test whether Leshan fits cleanly or whether it would weaken the rest of the route.",
+          "Verify current entry, river-view and transport arrangements for your travel date. Conditions at a large scenic site can change by season, weather and operating decision; our proposal will state what is confirmed and what remains conditional.",
         ],
       },
     ],
@@ -1240,6 +1272,13 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
 
   "5-day-beijing-great-wall-itinerary": article(
     [
+      {
+        title: "Quick decision: the five-day Beijing test",
+        paragraphs: [
+          "Choose this route when the Great Wall is a priority and you prefer one hotel base. It suits travelers who want imperial history with a manageable number of hotel changes. Choose a longer route when you want multiple museums, extensive hutong time, photography at both sunrise and sunset, or a second city.",
+          "The most important trade-off is physical, not geographic. A cable car can reduce some climbing but cannot remove steps, uneven surfaces, exposure or weather. If the Wall is central to your trip, select the section around the people traveling rather than around an internet ranking.",
+        ],
+      },
       {
         title: "Why one Beijing base is the right starting point",
         paragraphs: [
@@ -1280,6 +1319,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         paragraphs: [
           "Add nights when the Great Wall is a major photography goal, when mobility requires slower movement or when you want both the Summer Palace and a deeper hutong or museum program. If Xi'an is next, compare the [six-day Xi'an and Beijing route](/journal/6-day-xian-beijing-itinerary) rather than forcing the two cities into a four-night stay.",
           "Share your dates, hotel area and walking preferences through [Beijing trip planning](/start-planning?source=journal-beijing-five-day-mid). We will recommend a route that remains enjoyable after real transfer time is counted.",
+          "Ticket capacity, cable-car operations and local access arrangements should be checked again for the date of travel. We do not treat a sample route or a historical opening pattern as a promise.",
         ],
       },
     ],
@@ -1314,6 +1354,13 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
 
   "6-day-xian-beijing-itinerary": article(
     [
+      {
+        title: "Quick decision: history in six days",
+        paragraphs: [
+          "Choose six days when you want two concentrated historical chapters and are happy for Beijing and Xi'an to carry the trip. It is particularly effective for travelers who value interpretation, archaeology and the Great Wall more than shopping or a large number of neighborhoods.",
+          "Extend the route when you need a slower start, a full food program in Xi'an or more than one Beijing garden and hutong day. Six days is a focused route, not a claim that both cities can be explored exhaustively.",
+        ],
+      },
       {
         title: "The six-day idea: archaeology first, imperial Beijing second",
         paragraphs: [
@@ -1354,6 +1401,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         paragraphs: [
           "Tell us whether the Terracotta Army, the Wall or food culture is the emotional center of the trip. Then share walking comfort, train preferences and departure constraints. Those details determine where private guidance and station support create value.",
           "Use [start planning](/start-planning?source=journal-xian-beijing-six-day-mid) to request a route that states what is confirmed, what remains availability-dependent and how the transfer day will work in practice.",
+          "Reconfirm passport requirements, attraction release windows and rail availability before final payment. These are operational details, not permanent itinerary facts, and they can change after an article is published.",
         ],
       },
     ],
@@ -1388,6 +1436,13 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
 
   "leshan-giant-buddha-day-trip-guide": article(
     [
+      {
+        title: "Quick decision: the right Leshan visitor",
+        paragraphs: [
+          "Leshan is a strong choice for travelers who want heritage in its landscape: a monumental Buddhist project, a river setting and an explanation of how the site worked. It is a weaker choice for anyone seeking only a short city-side attraction, a zero-stairs visit or a guaranteed quiet viewpoint.",
+          "Choose the day only after deciding how much walking and waiting your group accepts. That decision determines whether the cliff route, a river perspective or a shorter interpretation-led visit is the most responsible recommendation.",
+        ],
+      },
       {
         title: "Decide what you want to understand at Leshan",
         paragraphs: [
@@ -1428,6 +1483,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         paragraphs: [
           "Wear shoes with stable grip, carry water and sun protection, and keep your passport or booking reference available when the attraction requires it. Tell your planner about stairs, heat, allergies and child or senior pacing before the proposal is written.",
           "The best Leshan day is not the one with the most stops. It is the one where you understand the Buddha's setting, return without stress and still remember Chengdu as a living city.",
+          "Check current ticket, river and access arrangements before departure. Weather and site operations can change the practical route, so use the official channel and your confirmed local contact for final instructions.",
         ],
       },
     ],
