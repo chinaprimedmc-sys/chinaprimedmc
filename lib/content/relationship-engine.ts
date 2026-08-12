@@ -51,6 +51,15 @@ const experienceCatalog: Record<string, TourExperienceOption> = {
   },
 };
 
+const journalDestinationImages: Record<string, MediaAsset> = {
+  beijing: {
+    src: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp",
+    alt: "The Great Wall crossing the mountains near Beijing in warm evening light",
+    width: 1920,
+    height: 1080,
+  },
+};
+
 export function getRelationshipsForArticle(article: JournalArticle): ContentRelationships {
   const manualDestinationSlugs = article.related?.destinations ?? [];
   const inferredDestinationSlugs = article.tags.filter((tag) =>
@@ -88,7 +97,7 @@ export function getRelationshipsForArticle(article: JournalArticle): ContentRela
       .map((destination) => ({
         name: destination.name,
         description: destination.hero.tagline,
-        image: destination.hero.image,
+        image: journalDestinationImages[destination.slug] ?? destination.hero.image,
         href: `/destinations/${destination.slug}`,
       })),
     tours: tourSlugs
