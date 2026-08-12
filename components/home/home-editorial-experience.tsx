@@ -2,10 +2,10 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, type ReactNode } from "react";
 
-import { OptimizedImage } from "@/components/media/optimized-image";
 import type { MediaAsset } from "@/types/component-library";
 
 import styles from "./home-editorial-experience.module.css";
@@ -51,6 +51,12 @@ type HomeEditorialExperienceProps = {
 };
 
 const ease = [0.16, 1, 0.3, 1] as const;
+const mobileTrustTitles = [
+  "Local decisions, made locally.",
+  "Private travel, without forced shopping.",
+  "Hotels and pacing, chosen around you.",
+  "Support that stays close.",
+];
 
 export function HomeEditorialExperience({
   desktopImage,
@@ -102,7 +108,7 @@ function EditorialHero({
         transition={{ duration: 24, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
       >
         <picture>
-          <source media="(min-width: 768px)" srcSet={desktopImage.src} />
+          <source media="(min-width: 769px)" srcSet={desktopImage.src} />
           <img
             src={mobileImage.src}
             alt={desktopImage.alt}
@@ -138,16 +144,19 @@ function EditorialHero({
           aria-hidden="true"
         />
 
-        <h1 id="home-hero-title" className={styles.heroTitle}>
+        <h1 id="home-hero-title" className={styles.heroTitle} aria-label="Private, designed.">
           {["Private,", "designed."].map((line, index) => (
-            <span className={styles.lineMask} key={line}>
-              <motion.span
-                initial={reduceMotion ? false : { y: "105%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.86, delay: 0.52 + index * 0.11, ease }}
-              >
-                {line}
-              </motion.span>
+            <span key={line}>
+              <span className={styles.lineMask}>
+                <motion.span
+                  initial={reduceMotion ? false : { y: "105%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.86, delay: 0.52 + index * 0.11, ease }}
+                >
+                  {line}
+                </motion.span>
+              </span>
+              {index === 0 ? " " : null}
             </span>
           ))}
         </h1>
@@ -219,7 +228,8 @@ function BrandManifesto({ trustPoints, image }: { trustPoints: TrustPoint[]; ima
               <article>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3>{point.title}</h3>
+                  <h3 className={styles.desktopTrustTitle}>{point.title}</h3>
+                  <h3 className={styles.mobileTrustTitle}>{mobileTrustTitles[index]}</h3>
                   <p>{point.description}</p>
                 </div>
               </article>
@@ -229,15 +239,7 @@ function BrandManifesto({ trustPoints, image }: { trustPoints: TrustPoint[]; ima
       </div>
 
       <Reveal className={styles.manifestoImage}>
-        <OptimizedImage
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes="(min-width: 1024px) 34vw, 86vw"
-          objectPosition={image.objectPosition}
-          frameClassName="absolute inset-0 h-full"
-          className="h-full w-full object-cover"
-        />
+        <ResponsiveEditorialImage image={image} sizes="(min-width: 1024px) 34vw, 86vw" />
       </Reveal>
     </section>
   );
@@ -291,7 +293,7 @@ function SelectedJourneys({
         }}
       >
         <div className={styles.journeyMedia}>
-          <AnimatePresence initial={false} mode="sync">
+          <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={activeJourney.href}
               className={styles.journeyScene}
@@ -300,14 +302,10 @@ function SelectedJourneys({
               exit={reduceMotion ? undefined : { opacity: 0, scale: 0.992 }}
               transition={{ duration: 0.95, ease }}
             >
-              <OptimizedImage
-                src={activeJourney.image.src}
-                alt={activeJourney.image.alt}
-                fill
+              <ResponsiveEditorialImage
+                image={activeJourney.image}
                 sizes="(min-width: 1024px) 68vw, 100vw"
-                objectPosition={activeJourney.image.objectPosition}
-                frameClassName="absolute inset-0 h-full"
-                className="h-full w-full object-cover"
+                priority={activeIndex === 0}
               />
             </motion.div>
           </AnimatePresence>
@@ -326,6 +324,20 @@ function SelectedJourneys({
             </motion.div>
           </AnimatePresence>
         </div>
+
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={`${activeJourney.href}-mobile-title`}
+            className={styles.mobileJourneyTitle}
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.52, ease }}
+          >
+            <p>{activeJourney.routeLine}</p>
+            <h3>{activeJourney.displayTitle}</h3>
+          </motion.div>
+        </AnimatePresence>
 
         <div className={styles.journeyDetails} aria-live="polite">
           <AnimatePresence mode="wait" initial={false}>
@@ -377,14 +389,7 @@ function SelectedJourneys({
             onClick={() => show(index)}
           >
             <span className={styles.filmThumb}>
-              <OptimizedImage
-                src={journey.image.src}
-                alt=""
-                fill
-                sizes="9rem"
-                frameClassName="absolute inset-0 h-full"
-                className="h-full w-full object-cover"
-              />
+              <ResponsiveEditorialImage image={{ ...journey.image, alt: "" }} sizes="7rem" />
             </span>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <strong>{journey.displayTitle}</strong>
@@ -411,19 +416,12 @@ function IntentDirectory({ items }: { items: IntentPath[] }) {
         {items.map((item, index) => (
           <Reveal key={item.title} delay={index * 85} className={styles.intentReveal}>
             <Link href={item.href} className={styles.intentItem} data-layout={index + 1}>
-              {index !== 2 ? (
-                <span className={styles.intentMedia}>
-                  <OptimizedImage
-                    src={item.image.src}
-                    alt={item.image.alt}
-                    fill
-                    sizes={index === 0 ? "32vw" : "52vw"}
-                    objectPosition={item.image.objectPosition}
-                    frameClassName="absolute inset-0 h-full"
-                    className="h-full w-full object-cover"
-                  />
-                </span>
-              ) : null}
+              <span className={styles.intentMedia}>
+                <ResponsiveEditorialImage
+                  image={item.image}
+                  sizes={index === 0 ? "32vw" : "52vw"}
+                />
+              </span>
               <span className={styles.intentCopy}>
                 <small>{item.eyebrow}</small>
                 <span>
@@ -471,14 +469,9 @@ function PlanningLine({ steps, images }: { steps: PlanningStep[]; images: MediaA
             <span className={styles.planningNode} aria-hidden="true" />
             <div className={styles.planningPhoto} data-index={index + 1}>
               {images[index] ? (
-                <OptimizedImage
-                  src={images[index].src}
-                  alt={images[index].alt}
-                  fill
-                  sizes="(min-width: 768px) 30vw, 88vw"
-                  objectPosition={images[index].objectPosition}
-                  frameClassName="absolute inset-0 h-full"
-                  className="h-full w-full object-cover"
+                <ResponsiveEditorialImage
+                  image={images[index]}
+                  sizes="(min-width: 769px) 30vw, calc(100vw - 64px)"
                 />
               ) : null}
             </div>
@@ -496,15 +489,7 @@ function FinalConversation({ image, primaryHref }: { image: MediaAsset; primaryH
   return (
     <section className={styles.finalCta}>
       <Reveal className={styles.finalImage}>
-        <OptimizedImage
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes="(min-width: 768px) 58vw, 100vw"
-          objectPosition={image.objectPosition}
-          frameClassName="absolute inset-0 h-full"
-          className="h-full w-full object-cover"
-        />
+        <ResponsiveEditorialImage image={image} sizes="(min-width: 768px) 58vw, 100vw" />
       </Reveal>
       <Reveal className={styles.finalCopy}>
         <p>05 / The beginning of a considered journey</p>
@@ -566,5 +551,33 @@ function EditorialLink({
       <span>{children}</span>
       <ArrowUpRight size={16} aria-hidden="true" />
     </Link>
+  );
+}
+
+function ResponsiveEditorialImage({
+  image,
+  sizes,
+  priority = false,
+}: {
+  image: MediaAsset;
+  sizes: string;
+  priority?: boolean;
+}) {
+  const width = image.width ?? 1600;
+  const height = image.height ?? 900;
+
+  return (
+    <span className={styles.responsiveImage}>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={width}
+        height={height}
+        sizes={sizes}
+        priority={priority}
+        loading={priority ? "eager" : "lazy"}
+        style={{ objectPosition: image.objectPosition }}
+      />
+    </span>
   );
 }

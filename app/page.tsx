@@ -148,6 +148,7 @@ export default async function HomePage() {
         showWhatsapp={false}
         tone="light"
         scrollThreshold="hero"
+        mobileMenuTone="editorial-dark"
       />
 
       <HomeEditorialExperience

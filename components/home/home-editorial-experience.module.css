@@ -33,6 +33,28 @@
   right: 0.8rem;
 }
 
+.responsiveImage,
+.mobileJourneyTitle,
+.mobileTrustTitle {
+  display: block;
+}
+
+.responsiveImage,
+.responsiveImage img {
+  height: 100%;
+  width: 100%;
+}
+
+.responsiveImage {
+  inset: 0;
+  position: absolute;
+}
+
+.responsiveImage img {
+  display: block;
+  object-fit: cover;
+}
+
 .hero {
   background: var(--editorial-warm);
   min-height: 100svh;
@@ -832,180 +854,350 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  .page {
+    --mobile-gutter: clamp(1.25rem, 5.5vw, 1.5rem);
+  }
+
+  .responsiveImage {
+    background: #e5e2da;
+    display: block;
+    inset: auto;
+    position: relative;
+    width: 100%;
+  }
+
+  .responsiveImage img {
+    display: block;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    width: 100%;
+  }
+
   .hero {
-    display: flex;
-    flex-direction: column;
-    min-height: 100svh;
-    padding-top: 0;
+    display: block;
+    min-height: 0;
   }
 
   .heroMedia {
-    height: 54svh;
+    background: #d5dde2;
+    height: auto;
     left: 0;
-    min-height: 25rem;
+    min-height: 0;
+    overflow: visible;
     position: relative;
     right: auto;
     top: auto;
+    transform: none !important;
+    width: 100%;
+  }
+
+  .heroMedia picture,
+  .heroMedia img {
+    height: auto;
+  }
+
+  .heroMedia img {
+    object-fit: contain;
+    object-position: center;
     width: 100%;
   }
 
   .heroVeil {
-    bottom: auto;
-    height: 54svh;
-    inset: 0 0 auto;
+    display: none;
   }
 
   .heroCopy {
     min-height: auto;
-    padding: 3rem 1.25rem 5.5rem;
+    padding: 2rem var(--mobile-gutter) 2.5rem;
     width: 100%;
   }
 
+  .eyebrow,
+  .darkEyebrow,
+  .sectionHeading > p,
+  .intentHeading > p,
+  .planningHeading > p,
+  .finalCopy > p {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+  }
+
   .heroTitle {
-    font-size: 4.1rem;
-    line-height: 0.86;
-    margin-top: 1.75rem;
+    font-size: clamp(3.55rem, 17vw, 4.45rem);
+    line-height: 0.9;
+    margin-top: 1.6rem;
   }
 
   .heroDescription {
-    font-size: 0.92rem;
-    margin-top: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-top: 1.6rem;
   }
 
   .heroActions {
-    gap: 1.25rem;
-    margin-top: 1.5rem;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1.75rem;
+    width: 100%;
+  }
+
+  .heroActions .editorialLink {
+    justify-content: space-between;
+    min-height: 3.25rem;
+    width: 100%;
   }
 
   .heroFolio {
-    bottom: auto;
-    color: rgba(255, 255, 255, 0.82);
-    left: 1rem;
-    right: 1rem;
-    top: calc(54svh - 2rem);
-  }
-
-  .heroFolio span:first-child {
     display: none;
   }
 
   .scrollCue {
-    bottom: 1.25rem;
+    border-top: 1px solid #c9c6be;
     color: #646961;
-    right: 1.25rem;
+    justify-content: flex-end;
+    min-height: 3.75rem;
+    padding: 0 var(--mobile-gutter);
+    position: static;
+    width: 100%;
+  }
+
+  .scrollCue span {
+    font-size: 0.72rem;
   }
 
   .manifesto {
     display: block;
     min-height: 0;
-    padding: 6.5rem 1.25rem;
+    overflow: visible;
+    padding: 5rem var(--mobile-gutter);
   }
 
   .manifestoStatement h2 {
-    font-size: 4rem;
+    font-size: clamp(3.4rem, 15.5vw, 4.25rem);
+    line-height: 0.94;
+    margin-top: 1.5rem;
   }
 
   .manifestoBody {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
+  }
+
+  .manifestoLead {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .trustLedger {
+    margin-top: 2rem;
+  }
+
+  .trustLedger article {
+    gap: 1rem;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    padding: 1.5rem 0;
+  }
+
+  .trustLedger article > span {
+    font-size: 0.8rem;
+  }
+
+  .desktopTrustTitle {
+    display: none;
+  }
+
+  .mobileTrustTitle {
+    display: block;
+    font-size: 1rem !important;
+    line-height: 1.45;
+  }
+
+  .trustLedger p {
+    font-size: 0.88rem;
+    line-height: 1.65;
   }
 
   .manifestoImage {
     bottom: auto;
-    height: 18rem;
+    height: auto;
     left: auto;
-    margin-top: 3.5rem;
-    opacity: 0.72;
+    margin-top: 2.5rem;
+    opacity: 1;
+    overflow: visible;
     position: relative;
-    width: 88%;
+    width: 100%;
+  }
+
+  .manifestoImage .responsiveImage {
+    background: #20241f;
   }
 
   .journeys {
-    padding: 6.5rem 0;
+    padding: 5rem 0;
   }
 
   .sectionHeading,
   .planningHeading {
     display: block;
-    margin-bottom: 3rem;
-    padding-inline: 1.25rem;
+    margin-bottom: 2.5rem;
+    padding-inline: var(--mobile-gutter);
   }
 
   .sectionHeading h2,
   .planningHeading h2 {
-    font-size: 3.65rem;
-    margin-top: 1.5rem;
+    font-size: clamp(3.35rem, 15vw, 4rem);
+    line-height: 0.94;
+    margin-top: 1.25rem;
   }
 
   .sectionHeading > span,
   .planningHeading > span {
     display: block;
-    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-top: 1.35rem;
   }
 
   .journeyStage {
     display: block;
-    padding-inline: 1rem;
+    padding-inline: var(--mobile-gutter);
   }
 
   .journeyMedia {
-    height: 57svh;
-    min-height: 27rem;
+    background: #e2dfd7;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
   }
 
+  .journeyScene {
+    position: relative;
+  }
+
+  .journeyShade,
   .journeyTitle {
-    bottom: 1.5rem;
-    left: 1.25rem;
-    right: 1.25rem;
+    display: none;
   }
 
-  .journeyTitle h3 {
-    font-size: 3.25rem;
+  .journeyScene .responsiveImage {
+    background: #e2dfd7;
+  }
+
+  .mobileJourneyTitle {
+    border-bottom: 1px solid #cccec7;
+    display: block;
+    padding: 1.5rem 0 1.65rem;
+  }
+
+  .mobileJourneyTitle p,
+  .journeyCount {
+    color: #6e736b;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+
+  .mobileJourneyTitle h3 {
+    font-family: var(--font-cormorant);
+    font-size: clamp(2.7rem, 12.5vw, 3.35rem);
+    font-weight: 500;
+    line-height: 0.98;
+    margin-top: 0.85rem;
   }
 
   .journeyDetails {
     border-top: 0;
-    padding: 1.75rem 0 1.25rem;
+    display: block;
+    padding: 1.5rem 0 1.75rem;
+  }
+
+  .journeySummary {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-top: 1rem;
   }
 
   .journeyActions {
     align-items: flex-start;
+    gap: 0;
+    width: 100%;
+  }
+
+  .journeyActions .editorialLink {
+    justify-content: space-between;
+    min-height: 3.25rem;
+    width: 100%;
   }
 
   .journeyArrows {
+    gap: 0.75rem;
     margin-top: 1.5rem;
   }
 
+  .journeyArrows button {
+    height: 3.25rem;
+    width: 3.25rem;
+  }
+
   .filmStrip {
-    display: flex;
-    gap: 0;
+    display: block;
     margin-top: 1rem;
-    overflow-x: auto;
-    padding: 0 1rem 0.75rem;
-    scroll-snap-type: x mandatory;
+    overflow: visible;
+    padding: 0 var(--mobile-gutter);
   }
 
   .filmStrip button {
-    flex: 0 0 11rem;
-    grid-template-columns: 1.25rem minmax(0, 1fr);
-    min-height: 5.75rem;
-    scroll-snap-align: start;
+    align-items: center;
+    border-top: 1px solid #cfd1ca;
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: 6.5rem 1.5rem minmax(0, 1fr);
+    min-height: 6.75rem;
+    padding: 0.9rem 0;
+    width: 100%;
   }
 
   .filmStrip button + button {
     border-left: 0;
   }
 
+  .filmThumb {
+    aspect-ratio: auto;
+    display: block;
+    filter: none;
+    overflow: visible;
+  }
+
+  .filmThumb .responsiveImage {
+    background: #e5e2da;
+  }
+
+  .filmStrip button > span:not(.filmThumb) {
+    font-size: 0.72rem;
+  }
+
+  .filmStrip strong {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
   .intents {
-    padding: 7rem 1.25rem;
+    padding: 5.5rem var(--mobile-gutter);
   }
 
   .intentHeading {
-    margin-bottom: 4rem;
+    margin-bottom: 3.5rem;
   }
 
   .intentHeading h2 {
-    font-size: 4.25rem;
+    font-size: clamp(3.5rem, 15.5vw, 4.25rem);
+    line-height: 0.94;
+    margin-top: 1.25rem;
   }
 
   .intentGrid {
@@ -1016,32 +1208,60 @@
   .intentReveal,
   .intentReveal:nth-child(2),
   .intentReveal:nth-child(4) {
-    margin: 0 0 4.5rem;
+    margin: 0 0 3.5rem;
   }
 
-  .intentItem[data-layout="1"] {
-    width: 82%;
+  .intentItem {
+    display: flex;
+    flex-direction: column;
+    margin: 0 !important;
+    width: 100% !important;
   }
 
-  .intentItem[data-layout="2"] {
-    margin-left: 10%;
-  }
-
-  .intentItem[data-layout="3"] {
-    margin-left: 6%;
-    width: 82%;
-  }
-
+  .intentItem[data-layout="2"],
   .intentItem[data-layout="4"] {
-    width: 94%;
+    flex-direction: column-reverse;
+  }
+
+  .intentItem[data-layout="2"] .intentCopy,
+  .intentItem[data-layout="4"] .intentCopy {
+    margin: 0 0 1.25rem;
+  }
+
+  .intentMedia,
+  .intentItem[data-layout="1"] .intentMedia,
+  .intentItem[data-layout="2"] .intentMedia,
+  .intentItem[data-layout="4"] .intentMedia {
+    aspect-ratio: auto;
+    background: #e5e2da;
+    overflow: visible;
+  }
+
+  .intentMedia .responsiveImage {
+    background: #e5e2da;
+  }
+
+  .intentMedia img {
+    filter: none;
+    transform: none;
   }
 
   .intentCopy h3 {
-    font-size: 2.35rem;
+    font-size: 2.55rem;
+    line-height: 1;
+  }
+
+  .intentCopy small {
+    font-size: 0.78rem;
+  }
+
+  .intentCopy p {
+    font-size: 1rem;
+    line-height: 1.65;
   }
 
   .planning {
-    padding: 6.5rem 1.25rem 7rem;
+    padding: 5.5rem var(--mobile-gutter) 6rem;
   }
 
   .planningHeading {
@@ -1050,7 +1270,7 @@
 
   .planningTrack {
     display: block;
-    padding-left: 1.5rem;
+    padding-left: 1.75rem;
     padding-top: 0;
   }
 
@@ -1065,7 +1285,7 @@
   }
 
   .planningStep {
-    margin-bottom: 4rem;
+    margin-bottom: 3.75rem;
   }
 
   .planningNode {
@@ -1076,12 +1296,26 @@
   .planningPhoto,
   .planningPhoto[data-index="2"],
   .planningPhoto[data-index="3"] {
-    height: 16rem;
+    height: auto;
     margin: 0 0 1.5rem;
+    overflow: visible;
   }
 
-  .planningPhoto[data-index="2"] {
-    height: 20rem;
+  .planningPhoto .responsiveImage {
+    background: #e5e2da;
+  }
+
+  .planningStep > p {
+    font-size: 0.78rem;
+  }
+
+  .planningStep h3 {
+    font-size: 2.6rem;
+  }
+
+  .planningStep > span:last-child {
+    font-size: 1rem;
+    line-height: 1.65;
   }
 
   .finalCta {
@@ -1091,22 +1325,43 @@
   }
 
   .finalImage {
-    height: 48svh;
-    min-height: 23rem;
+    background: #20241f;
+    height: auto;
+    min-height: 0;
     order: 1;
+    overflow: visible;
   }
 
   .finalImage::after {
-    background: linear-gradient(0deg, #151814 0%, transparent 42%);
+    display: none;
+  }
+
+  .finalImage .responsiveImage {
+    background: #20241f;
   }
 
   .finalCopy {
     order: 2;
-    padding: 3.5rem 1.25rem 5rem;
+    padding: 3.5rem var(--mobile-gutter) max(5rem, calc(3rem + env(safe-area-inset-bottom)));
   }
 
   .finalCopy h2 {
-    font-size: 4rem;
+    font-size: clamp(3.35rem, 15vw, 4rem);
+    line-height: 0.94;
+  }
+
+  .finalCopy > span {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .editorialLink {
+    font-size: 0.9rem;
+    min-height: 3rem;
+  }
+
+  .editorialLink:active {
+    opacity: 0.58;
   }
 }
 

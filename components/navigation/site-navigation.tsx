@@ -22,6 +22,7 @@ type SiteNavigationProps = {
   tone?: "adaptive" | "dark" | "light";
   showWhatsapp?: boolean;
   scrollThreshold?: number | "hero";
+  mobileMenuTone?: "default" | "editorial-dark";
 };
 
 export function SiteNavigation({
@@ -33,6 +34,7 @@ export function SiteNavigation({
   tone = "adaptive",
   showWhatsapp = true,
   scrollThreshold = 18,
+  mobileMenuTone = "default",
 }: SiteNavigationProps) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -119,6 +121,7 @@ export function SiteNavigation({
             cta={cta}
             whatsapp={whatsapp}
             showWhatsapp={showWhatsapp}
+            tone={mobileMenuTone}
           />
         </div>
       </div>
@@ -165,13 +168,17 @@ function MobileNavigation({
   cta,
   whatsapp,
   showWhatsapp,
+  tone,
 }: {
   brand: string;
   items: NavigationItem[];
   cta: { label: string; href: string };
   whatsapp: { label: string; href: string };
   showWhatsapp: boolean;
+  tone: "default" | "editorial-dark";
 }) {
+  const editorialDark = tone === "editorial-dark";
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -180,23 +187,49 @@ function MobileNavigation({
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[80] bg-black/28 backdrop-blur-sm" />
-        <Dialog.Content className="fixed top-3 right-3 bottom-3 z-[81] flex w-[min(86vw,360px)] flex-col rounded-[1.5rem] border border-white/70 bg-white/94 p-4 text-neutral-950 shadow-[0_28px_90px_rgba(15,23,42,0.22)] backdrop-blur-2xl">
+        <Dialog.Overlay
+          className={cn(
+            "fixed inset-0 z-[80]",
+            editorialDark ? "bg-[#151814]" : "bg-black/28 backdrop-blur-sm",
+          )}
+        />
+        <Dialog.Content
+          className={cn(
+            "fixed z-[81] flex flex-col p-4",
+            editorialDark
+              ? "inset-0 w-screen border-0 bg-[#151814] px-5 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] text-white shadow-none"
+              : "top-3 right-3 bottom-3 w-[min(86vw,360px)] rounded-[1.5rem] border border-white/70 bg-white/94 text-neutral-950 shadow-[0_28px_90px_rgba(15,23,42,0.22)] backdrop-blur-2xl",
+          )}
+        >
           <div className="flex items-center justify-between gap-4">
             <Dialog.Title className="text-[15px] font-semibold tracking-[-0.01em]">
               {brand}
             </Dialog.Title>
-            <Dialog.Close className={iconButtonStyles} aria-label="Close menu">
+            <Dialog.Close
+              className={cn(
+                iconButtonStyles,
+                editorialDark && "border-white/18 bg-white/8 text-white",
+              )}
+              aria-label="Close menu"
+            >
               <X size={18} aria-hidden="true" />
             </Dialog.Close>
           </div>
 
-          <nav aria-label="Mobile primary" className="mt-6 grid gap-1">
+          <nav
+            aria-label="Mobile primary"
+            className={cn("mt-8 grid", editorialDark ? "border-t border-white/16" : "gap-1")}
+          >
             {items.map((item) => (
               <Dialog.Close key={`${item.label}-${item.href}`} asChild>
                 <Link
                   href={item.href}
-                  className="flex min-h-12 items-center rounded-full px-4 text-[15px] font-medium transition hover:bg-neutral-950/[0.045]"
+                  className={cn(
+                    "flex min-h-12 items-center px-4 text-[15px] font-medium transition",
+                    editorialDark
+                      ? "min-h-16 border-b border-white/16 px-0 font-serif text-3xl font-medium hover:text-[#c7a567]"
+                      : "rounded-full hover:bg-neutral-950/[0.045]",
+                  )}
                 >
                   {item.label}
                 </Link>
@@ -204,7 +237,12 @@ function MobileNavigation({
             ))}
           </nav>
 
-          <div className="mt-auto grid gap-2 border-t border-neutral-950/8 pt-4">
+          <div
+            className={cn(
+              "mt-auto grid gap-2 border-t pt-4",
+              editorialDark ? "border-white/16" : "border-neutral-950/8",
+            )}
+          >
             <CtaButton href={cta.href} size="sm" className="h-11 w-full">
               {cta.label}
             </CtaButton>
@@ -221,7 +259,12 @@ function MobileNavigation({
                 <span>Chat on WhatsApp</span>
               </CtaButton>
             ) : null}
-            <p className="px-1 pt-1 text-center text-xs leading-5 text-neutral-500">
+            <p
+              className={cn(
+                "px-1 pt-2 text-center text-xs leading-5",
+                editorialDark ? "text-white/48" : "text-neutral-500",
+              )}
+            >
               AVIORA — tailored private travel across China.
             </p>
           </div>
