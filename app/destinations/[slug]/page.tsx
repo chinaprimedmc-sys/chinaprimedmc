@@ -77,6 +77,18 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
           { name: destination.name, path: `/destinations/${slug}` },
         ])}
       />
+      <JsonLd
+        id={`${slug}-faq-schema`}
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: destination.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
+        }}
+      />
       <EditorialDestinationTemplate
         destination={destination}
         destinations={destinations}

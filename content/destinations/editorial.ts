@@ -1,306 +1,350 @@
-import type { DestinationInterest, ExplorerDestination } from "@/content/destinations/explorer";
+import type { ExplorerDestination } from "@/content/destinations/explorer";
 
-type DestinationEditorial = {
+export type DestinationEditorial = {
   bestTime: string;
   orientation: string;
   experiences: [string, string, string];
   planningNotes: [string, string, string];
+  arrival: string;
+  gettingAround: string;
+  stayStrategy: string;
+  firstTimerNote: string;
+  faqs: Array<{ question: string; answer: string }>;
 };
 
 const editorial: Record<string, DestinationEditorial> = {
+  beijing: {
+    bestTime:
+      "April to May and September to October usually bring the most comfortable walking weather. Summer is hot and busy; winter is cold but often quieter and visually striking.",
+    orientation:
+      "Beijing is not a compact monument district. The Forbidden City, hutongs, Summer Palace and Great Wall sit across a very large urban area, so a good private plan protects one major story at a time instead of stacking distant sights into the same day.",
+    experiences: [
+      "Read the Forbidden City as an imperial city, not a sequence of photo stops",
+      "Give the Great Wall its own day, with the section chosen around mobility and crowd tolerance",
+      "Balance monumental Beijing with hutong lanes, temple parks and neighborhood food",
+    ],
+    planningNotes: [
+      "Reserve the Forbidden City and other high-demand sites before arrival",
+      "Expect security checks and extensive walking even with private transport",
+      "Choose the Great Wall section according to fitness, season and preferred cable-car access",
+    ],
+    arrival:
+      "Beijing Capital Airport and Beijing Daxing Airport both serve international arrivals. High-speed rail connects Beijing with Xi'an and Shanghai; the correct station matters because the terminals are far apart.",
+    gettingAround:
+      "The metro is extensive, but a private vehicle is valuable when combining large sites, traveling with luggage, or managing children and older parents. Vehicles cannot remove the walking inside palace and temple complexes.",
+    stayStrategy:
+      "For a first visit, stay within practical reach of the historic center rather than choosing a hotel only for a skyline view. Three nights cover the essentials; four or five create a calmer Great Wall day and more local texture.",
+    firstTimerNote:
+      "Do not judge distances by the map alone. Beijing blocks, security zones and attraction entrances can turn a short-looking transfer into a substantial part of the day.",
+    faqs: [
+      {
+        question: "How many days do first-time visitors need in Beijing?",
+        answer:
+          "Plan at least three full sightseeing days. Four or five nights are more comfortable if the Great Wall, Forbidden City, hutongs and Summer Palace all matter to you.",
+      },
+      {
+        question: "Which Great Wall section is best for international visitors?",
+        answer:
+          "Mutianyu suits many first-time visitors because it combines restored scenery with cable-car options. The best choice still depends on mobility, season, photography goals and crowd tolerance.",
+      },
+      {
+        question: "Can Beijing work for families and senior travelers?",
+        answer:
+          "Yes. The route should limit major sites per day, use private transfers strategically and account honestly for long walking distances inside attractions.",
+      },
+    ],
+  },
   xian: {
-    bestTime: "Spring and autumn usually offer the most comfortable walking weather.",
+    bestTime:
+      "March to May and September to early November usually offer comfortable conditions for archaeological sites and city walking. Summer can be hot, while winter is colder and often less crowded.",
     orientation:
-      "Xi'an works best as a focused historical chapter between Beijing and another major city, rather than a hurried day trip.",
+      "Xi'an is where a first China itinerary gains historical depth. The Terracotta Army lies outside the center, while the City Wall, old lanes and food districts form a separate urban chapter. Two full days prevent the city from becoming a single museum stop.",
     experiences: [
-      "See the Terracotta Army with historical context and measured timing",
-      "Walk or cycle a suitable section of the city wall",
-      "Explore the Muslim Quarter through its food and layered Silk Road history",
+      "See the Terracotta Army with the Qin dynasty story explained before entering the main pits",
+      "Walk or cycle an appropriate section of the City Wall near softer morning or evening light",
+      "Explore the Muslim Quarter through food, mosque history and Xi'an's Silk Road connections",
     ],
     planningNotes: [
-      "Allow two full sightseeing days",
-      "Use private transfers for the archaeological sites",
-      "Discuss dietary needs before food-focused visits",
+      "Allow a half day for the Terracotta Army including the road transfer",
+      "Discuss halal and other dietary requirements before a food-focused visit",
+      "Use high-speed rail to connect with Beijing when the wider route allows it",
+    ],
+    arrival:
+      "Xi'an is commonly reached by high-speed rail from Beijing or by domestic flight. Xi'an North is the main high-speed rail station; the airport and archaeological sites are outside the central sightseeing area.",
+    gettingAround:
+      "Metro works well for parts of central Xi'an. Private transport is most useful for the Terracotta Army and for joining distant stops without losing the day to transfers.",
+    stayStrategy:
+      "Stay near the City Wall or a convenient metro connection for evening access and simpler transfers. Two or three nights suit most first-time routes; add time if archaeology, food or Tang history is a major interest.",
+    firstTimerNote:
+      "The Terracotta Army is not in central Xi'an. Combining it with too many city attractions creates a rushed day and leaves little time to understand the site.",
+    faqs: [
+      {
+        question: "Is one day enough for Xi'an?",
+        answer:
+          "One day can cover the Terracotta Army but not Xi'an well. Two full days allow one archaeological day and one city day for the wall, historic neighborhoods and food culture.",
+      },
+      {
+        question: "Should I fly or take the train from Beijing to Xi'an?",
+        answer:
+          "High-speed rail is often the simpler city-to-city choice once airport travel and security time are included. The right option depends on the complete route and available train times.",
+      },
+      {
+        question: "Is Xi'an suitable for Muslim travelers?",
+        answer:
+          "Xi'an has a significant Muslim heritage and many halal food options. A well-briefed guide can add historical context and confirm suitable meals instead of relying only on a busy market walk.",
+      },
     ],
   },
-  harbin: {
+  shanghai: {
     bestTime:
-      "Winter is the defining season; summer offers a completely different northern-city experience.",
+      "March to May and October to November are usually comfortable for walking. Summer is hot and humid, while winter is cool and often manageable with layered clothing.",
     orientation:
-      "Harbin is a seasonal destination with a strong architectural identity and a climate that should shape every part of the plan.",
+      "Shanghai works as an easy international arrival, a modern contrast to the historic capitals, or a protected final stop before flying home. Its value lies beyond the skyline: former concession streets, local markets and river history explain how the city became modern China.",
     experiences: [
-      "Experience the winter ice and snow displays after dark",
-      "Read the city's architectural history through its streets",
-      "Try the distinctive food traditions of China's northeast",
+      "Walk the Bund with the river's trading history and Pudong's transformation in view",
+      "Explore former concession streets, lane neighborhoods and local food at street level",
+      "Use an evening river view or rooftop selectively rather than chasing every skyline angle",
     ],
     planningNotes: [
-      "Build winter plans around warming breaks",
-      "Prepare proper cold-weather clothing",
-      "Confirm seasonal opening dates before fixing the route",
+      "Check whether your flight uses Pudong or Hongqiao airport",
+      "Protect the final Shanghai night before a long-haul departure when the route includes domestic travel",
+      "Choose hotel location around the experiences you want, not simply the tallest view",
+    ],
+    arrival:
+      "Pudong handles most long-haul international flights; Hongqiao is closer to central Shanghai and shares a transport hub with a major high-speed rail station. Always verify the airport and terminal before departure.",
+    gettingAround:
+      "Shanghai's metro is efficient and extensive. Private transfers remain useful with luggage, for airport movements and when a tailored neighborhood route would otherwise require repeated changes.",
+    stayStrategy:
+      "The Bund and former concession area provide different atmospheres. Two full days give a useful introduction; three or four nights allow neighborhoods, food and a day trip or a less hurried final departure.",
+    firstTimerNote:
+      "Pudong and Hongqiao are not interchangeable. A transfer planned for the wrong airport can create a serious departure problem.",
+    faqs: [
+      {
+        question: "How many days should I spend in Shanghai?",
+        answer:
+          "Two full days cover the Bund, central neighborhoods and modern skyline. Three or four nights work better if Shanghai is your arrival city, departure buffer or base for a nearby excursion.",
+      },
+      {
+        question: "Which Shanghai airport should international visitors use?",
+        answer:
+          "Most intercontinental flights use Pudong, while Hongqiao handles many domestic and regional services. Use the airport printed on the confirmed ticket, not a general Shanghai airport assumption.",
+      },
+      {
+        question: "Is Shanghai a good first stop in China?",
+        answer:
+          "Yes. It offers strong international air access, an efficient metro and a relatively gentle introduction to mobile payments, food and contemporary city life.",
+      },
     ],
   },
-  "inner-mongolia": {
+  chengdu: {
     bestTime:
-      "Late spring through early autumn is generally the practical window for grassland travel.",
+      "March to June and September to November are generally comfortable. Chengdu can be cloudy and humid, but its tea houses, food and city life work in every season with sensible daily timing.",
     orientation:
-      "Inner Mongolia is a broad region, not a single stop. A good route chooses one landscape zone and gives it enough time.",
+      "Chengdu deserves more than a panda morning. The strongest stay combines an early conservation-base visit with tea-house life, Sichuan food and enough unscheduled time to feel the city's relaxed social rhythm.",
     experiences: [
-      "Spend unhurried time in open grassland landscapes",
-      "Learn about local pastoral traditions with respectful hosts",
-      "Photograph changing light across the steppe",
+      "Visit giant pandas early, when they are more likely to be active and visitor pressure is lower",
+      "Share covered-bowl tea in People's Park with a guide who can explain local social life",
+      "Explore Sichuan flavor through markets and meals adjusted to your preferred heat level",
     ],
     planningNotes: [
-      "Expect longer road transfers",
-      "Choose accommodation for comfort as well as location",
-      "Avoid treating cultural encounters as staged entertainment",
+      "Choose the panda base before fixing the rest of the day's geography",
+      "Brief allergies, vegetarian needs and spice tolerance in advance",
+      "Use three to five days depending on whether Leshan or a wider Sichuan route is included",
     ],
-  },
-  hangzhou: {
-    bestTime:
-      "Spring and autumn are especially pleasant, while each season changes the mood of West Lake.",
-    orientation:
-      "Hangzhou adds a calm, refined counterpoint to Shanghai and is easy to place within a Lower Yangtze route.",
-    experiences: [
-      "Explore West Lake at a quieter hour",
-      "Visit tea country and understand Longjing culture",
-      "Taste the city's restrained regional cooking",
-    ],
-    planningNotes: [
-      "Stay overnight rather than rushing from Shanghai",
-      "Use early morning for the lake",
-      "Balance famous sights with slower garden and tea time",
-    ],
-  },
-  suzhou: {
-    bestTime:
-      "Spring and autumn are comfortable for gardens and walking; summer requires lighter pacing.",
-    orientation:
-      "Suzhou rewards close looking. Its gardens and canals are more meaningful with time for design, history and daily life.",
-    experiences: [
-      "Read the spatial logic of a classical garden",
-      "Walk a quieter canal-side neighborhood",
-      "Discover silk, craft and Jiangnan aesthetics",
-    ],
-    planningNotes: [
-      "Choose fewer gardens and explore them properly",
-      "Avoid compressing Suzhou into a rushed checklist",
-      "Pair naturally with Shanghai or Hangzhou",
-    ],
-  },
-  huangshan: {
-    bestTime:
-      "Spring and autumn are popular for clearer hiking conditions; weather remains changeable year-round.",
-    orientation:
-      "Huangshan combines mountain scenery with historic villages, and the route must be designed around walking ability and weather.",
-    experiences: [
-      "Watch light move across Huangshan's granite peaks",
-      "Explore an Anhui village with architectural context",
-      "Choose a mountain route suited to the group's fitness",
-    ],
-    planningNotes: [
-      "Build flexibility around mountain weather",
-      "Clarify steps and walking expectations",
-      "Allow at least one night close to the landscape",
+    arrival:
+      "Chengdu Tianfu handles many international and domestic flights, while Shuangliu remains an important airport. High-speed rail provides easy links to Chongqing and several Sichuan destinations.",
+    gettingAround:
+      "The metro is useful in central Chengdu. Private transfers make the panda morning and optional Leshan day more reliable, especially when opening times and road distance matter.",
+    stayStrategy:
+      "Choose a central base with practical access to food, parks and evening walks. Three nights suit a focused city stay; four or five days create room for food, tea, rest and a Leshan option.",
+    firstTimerNote:
+      "There is more than one panda facility around Chengdu. Travel time, breeding focus and expected visitor volume differ, so the name and location should be confirmed before booking.",
+    faqs: [
+      {
+        question: "How many days are enough for Chengdu?",
+        answer:
+          "Three days work for pandas, city life and Sichuan food. Four or five days are better for a slower pace, a cooking or market experience, and an optional Leshan day.",
+      },
+      {
+        question: "What time should I visit the pandas?",
+        answer:
+          "Morning is usually best because pandas tend to be more active around feeding time and the temperature is often more comfortable.",
+      },
+      {
+        question: "Can Sichuan food be arranged for travelers who do not eat very spicy food?",
+        answer:
+          "Yes. Sichuan cuisine is broader than extreme heat. Explain spice tolerance and dietary restrictions before the trip so appropriate dishes and restaurants can be selected.",
+      },
     ],
   },
   chongqing: {
     bestTime:
-      "Spring and autumn are generally the easiest seasons; summer is hot and visually dramatic at night.",
+      "March to May and October to November are generally easiest for walking. Summer is hot and humid, but evening light and river views can be especially dramatic.",
     orientation:
-      "Chongqing is best understood as a vertical river city, where transport, viewpoints and neighborhoods form part of the experience.",
+      "Chongqing is a vertical river city, not a conventional flat downtown. Streets that appear adjacent on a map may sit on different levels, and the best itinerary uses bridges, lifts, rail and viewpoints as part of the story.",
     experiences: [
-      "See the layered city reveal itself after dark",
-      "Taste hotpot with the spice level planned around the group",
-      "Navigate hillside streets and river crossings with a local guide",
+      "See the layered city reveal itself from daylight through blue hour",
+      "Cross the Yangtze by cableway or follow the monorail through Chongqing's vertical geography",
+      "Share a hotpot dinner with broth, ingredients and spice level planned around the group",
     ],
     planningNotes: [
-      "Expect slopes, stairs and complex street levels",
-      "Use private transport strategically",
-      "Plan night views without overfilling the day",
+      "Expect slopes, stairs and entrances on surprising building levels",
+      "Use private transport strategically rather than trying to drive door to door everywhere",
+      "Plan one coherent evening route instead of collecting disconnected viral viewpoints",
+    ],
+    arrival:
+      "Chongqing has a major international airport and several rail stations. High-speed trains from Chengdu are frequent, but the exact arrival station affects the final road transfer.",
+    gettingAround:
+      "Metro and monorail are part of the experience, while private transport helps connect districts. Walking routes require local knowledge because ordinary map directions may not show vertical level changes clearly.",
+    stayStrategy:
+      "Choose the hotel around river access, night plans and walking comfort. Two full days introduce the city; three nights allow food, neighborhoods and viewpoints without turning every evening into a late finish.",
+    firstTimerNote:
+      "A location can be physically close but vertically difficult to reach. Elevation, bridge access and building entrances matter as much as distance.",
+    faqs: [
+      {
+        question: "How many days do I need in Chongqing?",
+        answer:
+          "Two full days cover the essential city geography and one strong evening. Three days are better for food, neighborhoods and a more relaxed pace.",
+      },
+      {
+        question: "Is Chongqing difficult for older travelers?",
+        answer:
+          "It can be demanding because of slopes and stairs, but a private route can use vehicles, lifts and carefully selected viewpoints to reduce unnecessary walking.",
+      },
+      {
+        question: "Can Chongqing hotpot be made less spicy?",
+        answer:
+          "Yes. Split pots and mild broths are widely available, but preferences and dietary restrictions should be communicated before the restaurant is chosen.",
+      },
+    ],
+  },
+  leshan: {
+    bestTime:
+      "Spring and autumn are usually comfortable. River conditions, rain and holiday crowds can influence whether a boat view or walking route is the better choice.",
+    orientation:
+      "Leshan is most useful as a focused cultural day from Chengdu. The Giant Buddha is experienced differently from the river and from the cliff-side walking route, so the plan should match mobility, weather and crowd conditions.",
+    experiences: [
+      "Understand why the Giant Buddha was carved at the meeting of three rivers",
+      "Choose a river view or walking approach based on mobility and conditions",
+      "Pair monumental heritage with Leshan's distinctive local food traditions",
+    ],
+    planningNotes: [
+      "Treat Leshan as a full private day rather than a quick photo stop",
+      "Confirm whether steps and cliff-side paths suit every traveler",
+      "Keep the Chengdu alternative open if weather or mobility makes the visit unsuitable",
+    ],
+    arrival:
+      "Leshan is commonly visited from Chengdu by high-speed rail plus local transfer or by private vehicle. The complete door-to-door plan matters more than the train time alone.",
+    gettingAround:
+      "The heritage area requires either a boat segment or walking with substantial steps. Private transfers simplify the connection between station, river, heritage entrances and meal stops.",
+    stayStrategy:
+      "Most international visitors use Leshan as a day trip from a Chengdu hotel. One overnight can make sense when adding Mount Emei or when a slower regional pace is important.",
+    firstTimerNote:
+      "The boat view and walking route are not the same experience. The boat gives scale with less walking; the land route offers closer detail but may involve queues and steep steps.",
+    faqs: [
+      {
+        question: "Can I visit Leshan as a day trip from Chengdu?",
+        answer:
+          "Yes. It is a practical full-day private excursion when station transfers, tickets and the viewing method are planned in advance.",
+      },
+      {
+        question: "Is the Leshan Giant Buddha suitable for senior travelers?",
+        answer:
+          "The boat view can reduce the walking burden. The cliff-side route includes many steps and should be assessed against individual mobility and current site conditions.",
+      },
+      {
+        question: "Should I stay overnight in Leshan?",
+        answer:
+          "A day trip suits most Chengdu itineraries. Stay overnight if you are continuing to Mount Emei or want a deliberately slower regional journey.",
+      },
     ],
   },
   jiuzhaigou: {
     bestTime:
-      "Late spring to autumn provides the broadest access, with autumn known for strong colour.",
+      "Late spring through autumn offers the broadest access. October is famous for color and can also be extremely busy; winter is quieter but requires a cold-weather plan and current access checks.",
     orientation:
-      "Jiuzhaigou is a landscape-led journey where altitude, transfers and crowd timing matter as much as the scenery.",
+      "Jiuzhaigou is a high-altitude landscape journey, not a casual add-on to Chengdu. Transport, acclimatization, park buses and walking choices need to be designed together so the lakes and forests remain the focus.",
     experiences: [
-      "Follow the valley's sequence of clear lakes and forests",
-      "Pause at viewpoints instead of racing between them",
-      "Understand the Tibetan and Qiang cultural setting of the region",
+      "Follow the valley's sequence of clear lakes, waterfalls and forest without racing between stops",
+      "Use changing light and park transport to choose a realistic daily route",
+      "Understand the Tibetan and Qiang cultural context of northern Sichuan respectfully",
     ],
     planningNotes: [
-      "Allow for altitude adjustment",
-      "Confirm current access arrangements",
-      "Use a measured walking plan for seniors and children",
+      "Allow a light arrival day before the main park visit",
+      "Discuss altitude, mobility and health considerations before confirmation",
+      "Check current transport schedules and park access rather than relying on old itineraries",
     ],
-  },
-  dali: {
-    bestTime:
-      "Spring and autumn are comfortable; the highland light and weather can shift quickly.",
-    orientation:
-      "Dali offers a slower Yunnan rhythm shaped by Erhai Lake, villages and the Cangshan mountain backdrop.",
-    experiences: [
-      "Travel along Erhai Lake without turning it into a photo checklist",
-      "Meet Bai cultural traditions through villages and food",
-      "Leave room for an unstructured old-town evening",
-    ],
-    planningNotes: [
-      "Use Dali as a base for two or three full days",
-      "Respect local communities and residential spaces",
-      "Plan for strong highland sun",
-    ],
-  },
-  lijiang: {
-    bestTime:
-      "Spring and autumn are comfortable, with year-round changes in mountain visibility and visitor levels.",
-    orientation:
-      "Lijiang becomes more rewarding when the route moves beyond the busiest old-town lanes and includes Naxi culture and the wider landscape.",
-    experiences: [
-      "Explore Lijiang Old Town before the busiest hours",
-      "Learn about Naxi history, music and written culture",
-      "See the mountain setting at a pace suited to altitude",
-    ],
-    planningNotes: [
-      "Choose accommodation for access and quiet",
-      "Avoid an overpacked high-altitude schedule",
-      "Connect naturally with Dali or Shangri-La",
-    ],
-  },
-  "shangri-la": {
-    bestTime:
-      "Late spring to early autumn is the main travel season; winter is quieter and much colder.",
-    orientation:
-      "Shangri-La is a high-altitude cultural landscape that needs slower pacing, realistic expectations and respect for local Tibetan life.",
-    experiences: [
-      "Visit a monastery with cultural context and respectful timing",
-      "Experience highland valleys and seasonal landscapes",
-      "Understand local food, architecture and daily life",
-    ],
-    planningNotes: [
-      "Discuss altitude suitability in advance",
-      "Keep the first day light",
-      "Weather can change transport and activity plans",
-    ],
-  },
-  guilin: {
-    bestTime:
-      "Spring and autumn are popular; river conditions and seasonal rain influence the visual character.",
-    orientation:
-      "Guilin and Yangshuo should be treated as one landscape chapter, combining the Li River with country roads and village life.",
-    experiences: [
-      "Travel through the Li River karst landscape",
-      "Explore Yangshuo's countryside at a comfortable pace",
-      "See sunrise or evening light away from the busiest viewpoints",
-    ],
-    planningNotes: [
-      "Stay in the landscape rather than only in Guilin city",
-      "Check river and weather conditions",
-      "Choose cycling, walking or vehicle support to fit the group",
+    arrival:
+      "Travel options from Chengdu may include high-speed rail connections, road transfers or flights depending on current schedules. Door-to-door travel still takes substantial time and should be treated as a journey day.",
+    gettingAround:
+      "Inside the national park, visitors use the park's shared shuttle system and walk between selected stops. A private guide can improve sequencing but cannot replace mandatory park transport rules.",
+    stayStrategy:
+      "Stay close enough to the park entrance to protect the morning. A three- or four-night regional plan allows arrival, a full park day and weather or pacing flexibility.",
+    firstTimerNote:
+      "Jiuzhaigou sits at altitude. Even travelers who are comfortable walkers at sea level should keep the arrival day light and avoid overpacking the first park day.",
+    faqs: [
+      {
+        question: "How many days do I need for Jiuzhaigou?",
+        answer:
+          "Allow at least three nights in the region so the arrival transfer, a full park day and departure are not compressed into an exhausting schedule.",
+      },
+      {
+        question: "Can a private vehicle drive inside Jiuzhaigou National Park?",
+        answer:
+          "No. Visitors generally use the park's own shuttle buses. Private service is valuable for transfers, planning and guiding outside the restricted transport system.",
+      },
+      {
+        question: "Will altitude be a problem in Jiuzhaigou?",
+        answer:
+          "Many visitors travel comfortably, but altitude affects people differently. Keep the arrival light and discuss medical or mobility concerns with an appropriate professional before travel.",
+      },
     ],
   },
   zhangjiajie: {
     bestTime:
-      "Spring and autumn are generally comfortable; mist and rain can dramatically change visibility.",
+      "April to May and September to November are often comfortable, but mountain visibility changes quickly. Mist can be atmospheric; heavy rain or low cloud may require a different sequence.",
     orientation:
-      "Zhangjiajie's scale is thrilling, but good planning is essential to manage queues, lifts, steps and changing mountain weather.",
+      "Zhangjiajie is a region with several distinct scenic areas, not one viewpoint. Wulingyuan, Yuanjiajie, Tianzi Mountain, Golden Whip Stream and Tianmen Mountain require different bases and transport logic.",
     experiences: [
-      "See sandstone pillars from contrasting viewpoints",
-      "Use cableways and lifts to manage the walking load",
-      "Spend time in the forest beyond a single famous platform",
+      "See the sandstone pillars from contrasting cliff-top and valley perspectives",
+      "Use cableways, lifts and park shuttles intelligently to manage walking load",
+      "Spend time in the forest and streams instead of reducing the region to one famous platform",
     ],
     planningNotes: [
-      "Sequence major areas to reduce backtracking",
-      "Clarify height and mobility concerns",
-      "Keep weather flexibility in the schedule",
+      "Choose Wulingyuan or Zhangjiajie City according to the next day's sightseeing area",
+      "Keep one flexible window for weather-dependent mountain views",
+      "Discuss steps, heights and cableway comfort before fixing the route",
+    ],
+    arrival:
+      "Zhangjiajie has a regional airport and rail connections. Arrival in Zhangjiajie City does not mean you are already at the Wulingyuan park entrances; the final transfer must be included.",
+    gettingAround:
+      "Private vehicles handle airport, station, hotel and park-gate transfers. Inside major scenic areas, travelers use regulated park buses, cableways and lifts shared with other visitors.",
+    stayStrategy:
+      "Wulingyuan is practical for the national forest park, while Zhangjiajie City suits Tianmen Mountain and transport connections. Three to four nights, sometimes split between bases, reduce backtracking.",
+    firstTimerNote:
+      "A hotel labeled 'Zhangjiajie' may be far from the entrance needed the next morning. Confirm the exact base, not only the city name.",
+    faqs: [
+      {
+        question: "Should I stay in Wulingyuan or Zhangjiajie City?",
+        answer:
+          "Use Wulingyuan for national forest park days and Zhangjiajie City for Tianmen Mountain and many transport connections. A split stay can be the most efficient choice.",
+      },
+      {
+        question: "How many days are enough for Zhangjiajie?",
+        answer:
+          "Three full sightseeing days provide a strong introduction. Four nights offer better weather flexibility and a more manageable walking pace.",
+      },
+      {
+        question: "Is Zhangjiajie suitable for travelers with limited mobility?",
+        answer:
+          "Some major viewpoints are accessible with cableways, lifts and shuttle buses, but steps and queues remain. The route must be selected around the traveler's specific mobility needs.",
+      },
     ],
   },
-  guangzhou: {
-    bestTime: "Autumn through spring is usually the most comfortable period for urban exploration.",
-    orientation:
-      "Guangzhou is a food-led southern city with deep trading history, riverfront modernity and strong connections across the Greater Bay Area.",
-    experiences: [
-      "Begin a morning with traditional dim sum",
-      "Read the city's trading history through historic districts",
-      "See contemporary Guangzhou along the Pearl River",
-    ],
-    planningNotes: [
-      "Plan meals as core experiences",
-      "Brief halal or dietary requirements early",
-      "Combine with business travel or a wider southern route",
-    ],
-  },
-  dunhuang: {
-    bestTime: "Late spring and early autumn are generally most comfortable for desert travel.",
-    orientation:
-      "Dunhuang is a concentrated Silk Road chapter where cave art, desert geography and conservation rules require thoughtful advance planning.",
-    experiences: [
-      "Understand the Mogao Caves with specialist context",
-      "Experience the dunes and oasis landscape at a better hour",
-      "Connect Buddhist art to the wider Silk Road story",
-    ],
-    planningNotes: [
-      "Reserve key visits in advance",
-      "Protect the schedule from midday desert heat",
-      "Respect photography and conservation restrictions",
-    ],
-  },
-  kashgar: {
-    bestTime:
-      "Late spring through autumn is the main practical season, with considerable temperature variation.",
-    orientation:
-      "Kashgar is culturally and geographically distinct, and deserves enough time for its old city, markets, food and wider landscape.",
-    experiences: [
-      "Explore the old city through craft and everyday life",
-      "Understand the region's Central Asian connections",
-      "Taste local breads, fruit and dishes with dietary guidance",
-    ],
-    planningNotes: [
-      "Expect long travel distances in the wider region",
-      "Check current entry and permit requirements",
-      "Approach photography and local encounters respectfully",
-    ],
-  },
-  urumqi: {
-    bestTime: "Summer and early autumn give the broadest access to mountain and lake landscapes.",
-    orientation:
-      "Urumqi is primarily a gateway to Xinjiang's immense landscapes and food cultures, so the route should look beyond the city itself.",
-    experiences: [
-      "Travel into the Tianshan mountain landscape",
-      "Discover Uyghur and wider regional food traditions",
-      "Use the city to understand the scale of China's far west",
-    ],
-    planningNotes: [
-      "Allow realistic time for overland distances",
-      "Confirm current access requirements",
-      "Plan temperature changes between city and mountains",
-    ],
-  },
-};
-
-const interestExperiences: Record<DestinationInterest, string> = {
-  icons: "See nationally significant landmarks with historical context",
-  pandas: "Understand wildlife conservation through a responsibly planned visit",
-  food: "Explore regional food through markets, meals and local storytelling",
-  landscape: "Experience the landscape at hours when light and pace feel more considered",
-  heritage: "Meet living traditions through architecture, craft and community history",
-  city: "Read contemporary China through neighborhoods, design and city life",
 };
 
 export function getDestinationEditorial(destination: ExplorerDestination): DestinationEditorial {
-  return (
-    editorial[destination.id] ?? {
-      bestTime:
-        "Spring and autumn are often comfortable, but the right season depends on the wider route.",
-      orientation: `${destination.name} works best when its stay, transfers and daily pace are planned as part of the full route.`,
-      experiences: destination.interests
-        .slice(0, 3)
-        .map((interest) => interestExperiences[interest]) as [string, string, string],
-      planningNotes: [
-        "Allow enough time to experience the destination without rushing",
-        "Match walking and transfer expectations to your group",
-        "Confirm seasonal conditions before fixing the final route",
-      ],
-    }
-  );
+  const content = editorial[destination.id];
+  if (!content) throw new Error(`Missing destination editorial for ${destination.id}.`);
+  return content;
 }

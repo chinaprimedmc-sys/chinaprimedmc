@@ -1,4 +1,13 @@
-import { ArrowLeft, ArrowRight, CalendarDays, Compass, MapPin } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  BedDouble,
+  CalendarDays,
+  Compass,
+  Lightbulb,
+  MapPin,
+  Route,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -23,12 +32,18 @@ export function EditorialDestinationTemplate({
     orientation: string;
     highlights: string[];
     planningNotes: string[];
+    arrival: string;
+    gettingAround: string;
+    stayStrategy: string;
+    firstTimerNote: string;
+    faqs: Array<{ question: string; answer: string }>;
   };
   destinations: CmsDestinationCard[];
   journeys: JourneyCatalogItem[];
   navigation: NavigationItem[];
   cta: { label: string; href: string };
 }) {
+  const planningHref = `${cta.href}?destination=${encodeURIComponent(destination.name)}&source=destination-guide`;
   const related = destinations
     .filter((item) => item.region === destination.region && item.slug !== destination.slug)
     .slice(0, 3);
@@ -47,7 +62,7 @@ export function EditorialDestinationTemplate({
         items={navigation}
         cta={{
           label: cta.label,
-          href: `${cta.href}?destination=${encodeURIComponent(destination.name)}&source=destination-guide`,
+          href: planningHref,
         }}
       />
       <section data-hero-layout="true" className="relative min-h-[88svh] overflow-hidden">
@@ -81,6 +96,16 @@ export function EditorialDestinationTemplate({
             <div className="mt-8 flex flex-wrap gap-2">
               <Fact icon={<CalendarDays className="size-4" />} text={destination.recommendedStay} />
               <Fact icon={<Compass className="size-4" />} text={destination.bestFor} />
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <CtaButton href={planningHref} size="lg">
+                Plan my {destination.name} trip
+              </CtaButton>
+              {journeys[0] ? (
+                <CtaButton href={journeys[0].href} variant="secondary" size="lg">
+                  View a real itinerary
+                </CtaButton>
+              ) : null}
             </div>
           </div>
         </div>
@@ -153,6 +178,41 @@ export function EditorialDestinationTemplate({
       <section className="border-y border-black/8 bg-[#e9ede9] py-24">
         <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+            Practical orientation for international visitors
+          </p>
+          <h2 className="mt-5 max-w-4xl font-serif text-4xl md:text-6xl">
+            How {destination.name} works on the ground.
+          </h2>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            <PlanningCard
+              icon={<Route className="size-5" />}
+              title="Arriving and connecting"
+              text={destination.arrival}
+            />
+            <PlanningCard
+              icon={<Compass className="size-5" />}
+              title="Getting around"
+              text={destination.gettingAround}
+            />
+            <PlanningCard
+              icon={<BedDouble className="size-5" />}
+              title="Where and how long to stay"
+              text={destination.stayStrategy}
+            />
+          </div>
+          <div className="mt-5 flex gap-4 rounded-[1.25rem] border border-[#607868]/20 bg-white p-6">
+            <Lightbulb className="mt-1 size-5 shrink-0 text-[#607868]" aria-hidden="true" />
+            <div>
+              <h3 className="font-semibold">What first-time visitors often underestimate</h3>
+              <p className="mt-2 leading-7 text-[#1b1c19]/64">{destination.firstTimerNote}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
+        <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
+          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
             Nearby chapters
           </p>
           <h2 className="mt-5 font-serif text-4xl md:text-6xl">
@@ -185,7 +245,7 @@ export function EditorialDestinationTemplate({
       </section>
 
       {journeys.length ? (
-        <section className="border-y border-black/8 bg-white py-24">
+        <section id="private-journeys" className="border-y border-black/8 bg-white py-24">
           <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
             <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
               Private journeys including {destination.name}
@@ -193,6 +253,10 @@ export function EditorialDestinationTemplate({
             <h2 className="mt-5 max-w-3xl font-serif text-4xl md:text-6xl">
               See how {destination.name} fits into a considered route.
             </h2>
+            <p className="mt-5 max-w-3xl leading-7 text-[#1b1c19]/62">
+              These are published AVIORA products, not generic route suggestions. Open any journey
+              to review its day-by-day structure, included private services and planning options.
+            </p>
             <div className="mt-12 grid gap-5 md:grid-cols-2">
               {journeys.map((journey) => (
                 <Link
@@ -229,6 +293,28 @@ export function EditorialDestinationTemplate({
           </div>
         </section>
       ) : null}
+
+      <section className="border-y border-black/8 bg-white py-24">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
+          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+            {destination.name} travel FAQ
+          </p>
+          <h2 className="mt-5 font-serif text-4xl md:text-6xl">
+            Clear answers before you choose the route.
+          </h2>
+          <div className="mt-10 divide-y divide-black/10 border-y border-black/10">
+            {destination.faqs.map((faq) => (
+              <details key={faq.question} className="group py-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-lg font-semibold">
+                  {faq.question}
+                  <span className="text-[#607868] transition group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-4 max-w-3xl leading-7 text-[#1b1c19]/64">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {relatedGuides.length ? (
         <section className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8">
@@ -275,10 +361,7 @@ export function EditorialDestinationTemplate({
               onward connection and private service plan.
             </p>
           </div>
-          <CtaButton
-            href={`${cta.href}?destination=${encodeURIComponent(destination.name)}&source=destination-guide`}
-            size="lg"
-          >
+          <CtaButton href={planningHref} size="lg">
             Plan this destination
           </CtaButton>
         </div>
@@ -314,5 +397,17 @@ function Fact({ icon, text }: { icon: ReactNode; text: string }) {
       {icon}
       {text}
     </span>
+  );
+}
+
+function PlanningCard({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
+  return (
+    <article className="rounded-[1.25rem] border border-black/8 bg-white p-6">
+      <span className="grid size-10 place-items-center rounded-full bg-[#dfe8e0] text-[#607868]">
+        {icon}
+      </span>
+      <h3 className="mt-5 text-xl font-semibold">{title}</h3>
+      <p className="mt-3 text-sm leading-7 text-[#1b1c19]/64">{text}</p>
+    </article>
   );
 }

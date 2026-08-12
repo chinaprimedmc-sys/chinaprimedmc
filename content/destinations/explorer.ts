@@ -37,11 +37,6 @@ export const destinationRegions = [
     label: "South & Karst Country",
     note: "River landscapes and expressive regional food",
   },
-  {
-    id: "northwest",
-    label: "Silk Road & Far West",
-    note: "Desert history, bazaars and immense horizons",
-  },
 ] as const;
 
 export type DestinationRegion = (typeof destinationRegions)[number]["id"];
@@ -64,11 +59,23 @@ const images = {
   shanghai: destinationAsset.shanghaiSkyline,
   chengdu: destinationAsset.chengduPanda,
   tea: destinationAsset.chengduTeaHouse,
-  guilin: destinationAsset.guilinRiver,
   jiuzhaigou: destinationAsset.jiuzhaigouLake,
   xian: destinationAsset.xianTerracotta,
-  yunnan: destinationAsset.yunnanLijiang,
   zhangjiajie: destinationAsset.zhangjiajieForest,
+  chongqing: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/chongqing-01.webp",
+    alt: "Chongqing's layered skyline during the blue hour",
+    width: 1600,
+    height: 1067,
+    objectPosition: "50% 48%",
+  },
+  leshan: {
+    src: "/tours/chengdu-pandas/day-leshan.webp",
+    alt: "The Leshan Giant Buddha beside the river",
+    width: 2000,
+    height: 2667,
+    objectPosition: "50% 44%",
+  },
 };
 
 export const explorerDestinations: ExplorerDestination[] = [
@@ -97,29 +104,6 @@ export const explorerDestinations: ExplorerDestination[] = [
     image: images.xian,
   },
   {
-    id: "harbin",
-    name: "Harbin",
-    region: "north",
-    kicker: "Winter spectacle",
-    description: "A northern city transformed by ice, snow and a distinctive architectural story.",
-    stay: "2–3 nights",
-    bestFor: "Winter travel",
-    interests: ["city", "heritage"],
-    image: images.jiuzhaigou,
-  },
-  {
-    id: "inner-mongolia",
-    name: "Inner Mongolia",
-    region: "north",
-    kicker: "Open horizons",
-    description:
-      "Grasslands, pastoral traditions and a sense of space rarely associated with a first image of China.",
-    stay: "3–5 nights",
-    bestFor: "Nature and families",
-    interests: ["landscape", "heritage"],
-    image: images.zhangjiajie,
-  },
-  {
     id: "shanghai",
     name: "Shanghai",
     region: "east",
@@ -131,42 +115,6 @@ export const explorerDestinations: ExplorerDestination[] = [
     interests: ["city", "food", "heritage"],
     image: images.shanghai,
     guideHref: "/destinations/shanghai",
-  },
-  {
-    id: "hangzhou",
-    name: "Hangzhou",
-    region: "east",
-    kicker: "Lake & tea country",
-    description:
-      "West Lake calm, refined food and green tea landscapes within easy reach of Shanghai.",
-    stay: "2–3 nights",
-    bestFor: "Slow elegance",
-    interests: ["landscape", "food", "heritage"],
-    image: images.tea,
-  },
-  {
-    id: "suzhou",
-    name: "Suzhou",
-    region: "east",
-    kicker: "Gardens & canals",
-    description:
-      "Classical gardens, intimate canals and the disciplined beauty of Jiangnan design.",
-    stay: "1–2 nights",
-    bestFor: "Art and architecture",
-    interests: ["heritage", "landscape"],
-    image: images.yunnan,
-  },
-  {
-    id: "huangshan",
-    name: "Huangshan",
-    region: "east",
-    kicker: "Ink-painting peaks",
-    description:
-      "Granite summits, mountain light and historic villages that reward an unhurried approach.",
-    stay: "3–4 nights",
-    bestFor: "Hikers and photographers",
-    interests: ["landscape", "heritage"],
-    image: images.zhangjiajie,
   },
   {
     id: "chengdu",
@@ -191,7 +139,19 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "2–3 nights",
     bestFor: "Urban energy",
     interests: ["city", "food"],
-    image: images.shanghai,
+    image: images.chongqing,
+  },
+  {
+    id: "leshan",
+    name: "Leshan",
+    region: "southwest",
+    kicker: "Giant Buddha & river landscape",
+    description:
+      "The UNESCO-listed Giant Buddha and its river setting, planned as a considered private day from Chengdu.",
+    stay: "Day trip or 1 night",
+    bestFor: "Culture and monumental heritage",
+    interests: ["icons", "heritage", "landscape"],
+    image: images.leshan,
   },
   {
     id: "jiuzhaigou",
@@ -206,54 +166,6 @@ export const explorerDestinations: ExplorerDestination[] = [
     image: images.jiuzhaigou,
   },
   {
-    id: "dali",
-    name: "Dali",
-    region: "southwest",
-    kicker: "Lake & mountain life",
-    description:
-      "A gentler Yunnan chapter shaped by Erhai Lake, village encounters and open skies.",
-    stay: "3–4 nights",
-    bestFor: "Slow travel",
-    interests: ["landscape", "heritage", "food"],
-    image: images.yunnan,
-  },
-  {
-    id: "lijiang",
-    name: "Lijiang",
-    region: "southwest",
-    kicker: "Old town & high peaks",
-    description:
-      "Naxi heritage, stone lanes and mountain landscapes, best explored beyond the busiest hours.",
-    stay: "3–4 nights",
-    bestFor: "Culture and scenery",
-    interests: ["heritage", "landscape"],
-    image: images.yunnan,
-  },
-  {
-    id: "shangri-la",
-    name: "Shangri-La",
-    region: "southwest",
-    kicker: "Highland Yunnan",
-    description:
-      "Tibetan cultural landscapes, monasteries and high-altitude valleys requiring thoughtful pacing.",
-    stay: "3–4 nights",
-    bestFor: "Remote discovery",
-    interests: ["landscape", "heritage"],
-    image: images.jiuzhaigou,
-  },
-  {
-    id: "guilin",
-    name: "Guilin & Yangshuo",
-    region: "south",
-    kicker: "Karst country",
-    description:
-      "River journeys, limestone silhouettes and country roads that make landscape the main event.",
-    stay: "3–4 nights",
-    bestFor: "Soft adventure",
-    interests: ["landscape", "food"],
-    image: images.guilin,
-  },
-  {
     id: "zhangjiajie",
     name: "Zhangjiajie",
     region: "south",
@@ -265,54 +177,6 @@ export const explorerDestinations: ExplorerDestination[] = [
     interests: ["landscape"],
     image: images.zhangjiajie,
   },
-  {
-    id: "guangzhou",
-    name: "Guangzhou",
-    region: "south",
-    kicker: "Cantonese China",
-    description:
-      "Dim sum traditions, riverfront modernity and a trading-city confidence with deep roots.",
-    stay: "2–3 nights",
-    bestFor: "Food and city life",
-    interests: ["food", "city", "heritage"],
-    image: images.tea,
-  },
-  {
-    id: "dunhuang",
-    name: "Dunhuang",
-    region: "northwest",
-    kicker: "Desert Silk Road",
-    description:
-      "Cave art, dunes and oasis history at one of the Silk Road's most resonant crossroads.",
-    stay: "3–4 nights",
-    bestFor: "Art and archaeology",
-    interests: ["heritage", "landscape"],
-    image: images.xian,
-  },
-  {
-    id: "kashgar",
-    name: "Kashgar",
-    region: "northwest",
-    kicker: "Western crossroads",
-    description:
-      "Bazaars, craft traditions and a Central Asian cultural texture unlike eastern China.",
-    stay: "3–5 nights",
-    bestFor: "Experienced explorers",
-    interests: ["heritage", "food"],
-    image: images.yunnan,
-  },
-  {
-    id: "urumqi",
-    name: "Urumqi & Tianshan",
-    region: "northwest",
-    kicker: "Mountains beyond the city",
-    description:
-      "A gateway to alpine lakes, vast distances and the food cultures of China's far west.",
-    stay: "3–5 nights",
-    bestFor: "Landscape and food",
-    interests: ["landscape", "food"],
-    image: images.jiuzhaigou,
-  },
 ];
 
 for (const destination of explorerDestinations) {
@@ -323,7 +187,7 @@ export const destinationInterestImages: Record<DestinationInterest, MediaAsset> 
   icons: images.beijing,
   pandas: images.chengdu,
   food: images.tea,
-  landscape: images.guilin,
+  landscape: images.zhangjiajie,
   heritage: images.xian,
   city: images.shanghai,
 };

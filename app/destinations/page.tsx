@@ -16,7 +16,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = createMetadata({
   title: "China Destinations for Private Journeys",
   description:
-    "Explore Beijing, Xi'an, Shanghai, Chengdu, Yunnan, Guilin, Zhangjiajie, the Silk Road and more by interests, regions and realistic private-trip pacing.",
+    "Explore Beijing, Xi'an, Shanghai, Chengdu, Chongqing, Leshan, Jiuzhaigou and Zhangjiajie, each connected to a real private China journey.",
   path: "/destinations",
   image: "/home/beijing-forbidden-city-1400.webp",
 });

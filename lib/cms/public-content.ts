@@ -27,41 +27,18 @@ const destinationSeoDescriptions: Record<string, string> = {
   beijing:
     "Plan a private Beijing tour with the Great Wall, Forbidden City, hutongs, expert local guides and three to five nights in a well-located hotel.",
   xian: "Explore Xi'an on a private tour with the Terracotta Army, city walls, Silk Road history, Muslim Quarter food and a recommended two to three nights.",
-  harbin:
-    "Plan a winter trip to Harbin for its ice festival, snow displays, architecture and northeastern food, with seasonal dates and cold-weather logistics checked early.",
-  "inner-mongolia":
-    "Discover Inner Mongolia through grassland landscapes and local traditions, with realistic road times, carefully chosen stays and a route suited to the season.",
   shanghai:
     "Plan a private Shanghai tour with the Bund, Art Deco streets, local neighborhoods, skyline evenings, selected hotels and an expert local guide.",
-  hangzhou:
-    "Add Hangzhou to a private China trip for West Lake, Longjing tea country, refined regional food and a calm two- or three-night stay near Shanghai.",
-  suzhou:
-    "Explore Suzhou's classical gardens, canals, silk heritage and Jiangnan design with a private guide, ideally as an overnight stay from Shanghai.",
-  huangshan:
-    "Plan a Huangshan trip around mountain weather, walking ability and historic Anhui villages, with enough time for changing light and scenic viewpoints.",
   chengdu:
     "Plan a private Chengdu tour with early panda visits, teahouse culture, Sichuan food, family-friendly days and three to five nights in one comfortable base.",
   chongqing:
     "Explore Chongqing's layered river city, night views, hillside streets and hotpot with private transport planned around slopes, stairs and evening timing.",
+  leshan:
+    "Plan a private Leshan Giant Buddha day from Chengdu with the right river or walking view, realistic transfers, mobility guidance and a real Sichuan itinerary.",
   jiuzhaigou:
     "Visit Jiuzhaigou for clear lakes, forests and highland scenery, with altitude, seasonal access, transfers and walking comfort planned in advance.",
-  dali: "Plan a slower stay in Dali around Erhai Lake, Bai villages, local food and open mountain views, with three to four nights in one comfortable base.",
-  lijiang:
-    "Explore Lijiang's Naxi heritage, old town and mountain setting beyond the busiest hours, with hotel access and altitude considered before booking.",
-  "shangri-la":
-    "Plan a Shangri-La trip with Tibetan cultural landscapes, monasteries and highland valleys, allowing time for altitude and changing weather.",
-  guilin:
-    "Plan a private Guilin and Yangshuo tour with Li River scenery, country roads, karst viewpoints and a stay in the landscape rather than a rushed day trip.",
   zhangjiajie:
     "Explore Zhangjiajie's sandstone peaks with private guides, crowd-aware timing, cableways and a walking plan matched to your comfort and the weather.",
-  guangzhou:
-    "Discover Guangzhou through dim sum, trading history, historic neighborhoods and the Pearl River, with dietary needs and meal reservations planned early.",
-  dunhuang:
-    "Plan a Dunhuang trip around the Mogao Caves, desert dunes and Silk Road history, with advance reservations and cooler sightseeing hours.",
-  kashgar:
-    "Explore Kashgar's old city, markets, crafts and Central Asian food culture with current access requirements and wider regional distances checked carefully.",
-  urumqi:
-    "Use Urumqi as a gateway to the Tianshan mountains, alpine lakes and Xinjiang food cultures, with realistic road times and current access checks.",
 };
 
 export async function getPublicSiteSettings() {
@@ -101,6 +78,11 @@ export async function getPublicDestinations() {
       interests: [...destination.interests],
       highlights: [...editorial.experiences],
       planningNotes: [...editorial.planningNotes],
+      arrival: editorial.arrival,
+      gettingAround: editorial.gettingAround,
+      stayStrategy: editorial.stayStrategy,
+      firstTimerNote: editorial.firstTimerNote,
+      faqs: [...editorial.faqs],
       featured: Boolean(destination.guideHref),
       sortOrder: 100,
       seoTitle: `Private ${destination.name} Tours and Travel Guide`,
@@ -146,7 +128,7 @@ export async function getPublicDestinationHub() {
     featuredTitle: "China, one chapter at a time.",
     featuredCopy: "Scroll through the edit. Every frame opens a real destination guide.",
     regionsEyebrow: "03 · Read the country",
-    regionsTitle: "Five regions. Twenty ways into China.",
+    regionsTitle: "Four regions. Eight destinations with real journeys.",
     regionsCopy:
       "Explore every destination by region. Each card links to practical guidance on character, pacing, timing and signature experiences.",
     regions: [...destinationRegions],
