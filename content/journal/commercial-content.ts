@@ -860,4 +860,226 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
       },
     ],
   ),
+
+  "china-honeymoon-itinerary-10-to-14-days": article(
+    [
+      {
+        title: "What makes a China honeymoon work",
+        paragraphs: [
+          "A memorable China honeymoon is not a checklist of famous places. It is a sequence of contrasting experiences with enough space to enjoy breakfast, an unplanned walk or a quiet drink without racing to the next ticketed sight.",
+          "For most couples, the strongest structure is two or three major bases plus one carefully chosen extension. Private guides are most useful on complex heritage and nature days; evenings, neighborhood walks and selected meals can remain your own.",
+        ],
+      },
+      {
+        title: "A balanced 10-day honeymoon route",
+        paragraphs: [
+          "Use three nights in Beijing for the Forbidden City, Temple of Heaven and a dedicated Great Wall day. Continue by high-speed rail to Xi'an for two nights and give the Terracotta Warriors a full morning with time for the old city afterward. Finish with three nights in Shanghai, combining Bund architecture, a slower neighborhood and a final evening with a view.",
+          "Ten days is enough for a rich first impression, but it is not the right length for every couple. Avoid adding Chengdu or Zhangjiajie unless you are comfortable giving up a slower day or extending the trip.",
+        ],
+      },
+      {
+        title: "A 14-day route with a scenic extension",
+        paragraphs: [
+          "With fourteen days, add three nights in Chengdu for pandas, tea-house culture and Sichuan food, or three nights in Zhangjiajie for mountain scenery. Chengdu is the gentler choice when food and daily life matter; Zhangjiajie adds dramatic landscapes but more weather and transfer variables.",
+          "A practical sequence is Beijing, Xi'an, Chengdu, then Shanghai. A Zhangjiajie extension can sit between Xi'an and Shanghai when transport schedules align. The [destination guides](/destinations) help you compare the character of each stop before committing to another hotel change.",
+        ],
+      },
+      {
+        title: "Build in private moments, not just private vehicles",
+        paragraphs: [
+          "Ask for the moments that make the route personal: a Great Wall section matched to your walking comfort, a guide who can explain imperial symbolism without rushing, a food experience that respects allergies, or a hotel area where you can step out for an evening walk.",
+          "Private service should also protect your energy. Schedule the major attraction early, leave the afternoon open when possible and keep arrival nights light. Our [first China journey](/tours/first-china-beautifully-paced) can be adapted with private guiding and independent time rather than treated as a fixed package.",
+        ],
+      },
+      {
+        title: "Hotels, trains and celebration details",
+        paragraphs: [
+          "Choose hotels by location, room quality and the atmosphere you want, not only by star rating. A riverside view in Shanghai or a quiet courtyard-style property can matter more than a long list of facilities. Connecting rooms are unnecessary for a couple, but bed type and late-arrival policy should be confirmed.",
+          "Tell your planner about anniversaries, photography, dietary needs and any surprise you want to arrange. These details need lead time and supplier confirmation. For a transparent quotation, compare the full [private China tour cost guide](/journal/private-china-tour-cost-2026) rather than relying on a headline package price.",
+        ],
+      },
+      {
+        title: "When to request a tailored plan",
+        paragraphs: [
+          "Start with your international flight gateway, total nights and the two experiences you would regret missing. Then decide whether you want daily guiding, selected private days or a fully escorted route. This prevents a honeymoon from becoming a standard itinerary with romantic language added afterward.",
+          "Send those priorities through our [honeymoon planning form](/start-planning?source=journal-honeymoon-mid). We will show what fits comfortably, where availability affects the sequence and which choices change the character of the trip.",
+        ],
+      },
+    ],
+    [
+      {
+        question: "Is China a good honeymoon destination?",
+        answer:
+          "Yes, when the route balances landmark cities, meaningful cultural experiences, comfortable transfers and private time. A specialist plan is especially useful when this is your first visit.",
+      },
+      {
+        question: "How many days are ideal for a China honeymoon?",
+        answer:
+          "Ten days creates a strong Beijing, Xi'an and Shanghai route. Fourteen days allows Chengdu or Zhangjiajie without removing every rest period.",
+      },
+      {
+        question: "Should couples take trains or flights?",
+        answer:
+          "High-speed rail is usually comfortable between Beijing and Xi'an. Flights may save time on longer western or southern sectors; the best choice depends on schedules and hotel nights.",
+      },
+      {
+        question: "Can we have free time on a private honeymoon tour?",
+        answer:
+          "Yes. Private planning can reserve expert support for complex days and leave evenings or selected days independent.",
+      },
+      {
+        question: "Can you arrange honeymoon surprises?",
+        answer:
+          "Requests such as room notes, celebration meals or photography can be explored with suppliers, subject to availability and the confirmed quotation.",
+      },
+    ],
+  ),
+
+  "how-to-travel-between-beijing-xian-chengdu-shanghai": article(
+    [
+      {
+        title: "The simple route logic",
+        paragraphs: [
+          "For a first visit, Beijing to Xi'an is a natural high-speed rail pairing: the stations are well connected, the journey is straightforward and you keep a useful sightseeing day. Xi'an to Chengdu is also commonly handled by high-speed rail. Chengdu to Shanghai is the sector where a domestic flight often protects more time, although schedules and fares should be checked for your dates.",
+          "The fastest option on paper is not always the easiest door-to-door. Add hotel-to-station transfers, security, boarding time, luggage and the time needed to reach the next hotel before comparing a train with a flight.",
+        ],
+      },
+      {
+        title: "Beijing to Xi'an by high-speed rail",
+        paragraphs: [
+          "Most travelers can treat this as a half-day transition rather than losing a full day. Choose a departure that allows breakfast and a calm hotel checkout, then plan a lighter Xi'an arrival afternoon. Passport details must match the booking, and a station is not a place to improvise with unclear luggage or meeting arrangements.",
+          "Read our [China high-speed train guide for foreigners](/journal/china-high-speed-train-foreigners) for real-name booking, station flow and practical boarding advice. A private station transfer is useful when you have large cases, children or a tight connection.",
+        ],
+      },
+      {
+        title: "Xi'an to Chengdu: rail or flight",
+        paragraphs: [
+          "High-speed rail is usually the more comfortable default because city-center stations simplify the day and the journey itself is predictable. A flight can work when your hotel is near the airport, a good schedule appears or the route needs to connect with a mountain extension.",
+          "Do not schedule the Terracotta Warriors immediately before an evening departure unless you have built in traffic and ticket timing. Protecting a buffer is cheaper than turning an archaeological highlight into a stressful transfer.",
+        ],
+      },
+      {
+        title: "Chengdu to Shanghai: protect the arrival day",
+        paragraphs: [
+          "The distance makes a flight the usual time-saving choice. Allow for the airport transfer, check-in and arrival journey across Shanghai. Keep the first evening for a nearby meal or the Bund only if your arrival time and energy genuinely support it.",
+          "The [11-day four-city itinerary](/journal/11-day-beijing-xian-chengdu-shanghai-itinerary) shows a realistic balance: major sightseeing is placed after arrival recovery, not on top of it. Shanghai's two airports also serve different parts of the city, so airport choice should be matched to your hotel.",
+        ],
+      },
+      {
+        title: "Luggage, stations and private support",
+        paragraphs: [
+          "Pack for movement between hotels: one manageable case per traveler is easier than maximizing checked baggage. Keep passports, booking details, medication and one change of clothes accessible. Train stations can be large; the correct entrance and a clear meeting point matter more than arriving excessively early.",
+          "A private route can include hotel-to-station transfers, ticket coordination and local assistance while leaving the train ride itself independent. Compare the service pattern inside our [Beijing, Xi'an, Chengdu and Shanghai private tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) rather than assuming every sector needs a guide onboard.",
+        ],
+      },
+      {
+        title: "Book the route before the individual tickets",
+        paragraphs: [
+          "Confirm the order of cities, international gateways and hotel nights first. Then check date-specific rail and flight availability, followed by attraction reservations. This sequence keeps a single unavailable departure from forcing an unnecessary extra hotel change.",
+          "Share your flights and luggage needs through our [city-connection planning form](/start-planning?source=journal-transport-mid). We will explain which sectors are best by rail, which by air and where a buffer is worth protecting.",
+        ],
+      },
+    ],
+    [
+      {
+        question: "What is the best way to travel from Beijing to Xi'an?",
+        answer:
+          "High-speed rail is often the most practical choice because it links central stations and avoids airport transfers, subject to your dates and hotel locations.",
+      },
+      {
+        question: "Is there a direct train from Xi'an to Chengdu?",
+        answer:
+          "High-speed rail services commonly connect the cities, but schedules and availability are date-specific and should be checked before finalizing hotels.",
+      },
+      {
+        question: "Should I fly from Chengdu to Shanghai?",
+        answer:
+          "A domestic flight often saves time on this longer sector. Compare the complete door-to-door day, including airport transfers and arrival time.",
+      },
+      {
+        question: "Can foreign visitors buy China train tickets?",
+        answer:
+          "Yes, tickets use real-name passport details. Use an official channel or a clearly scoped operator service, and ensure the booking name matches the passport.",
+      },
+      {
+        question: "How much transfer time should I allow?",
+        answer:
+          "Allow meaningful buffers for hotel checkout, traffic, station or airport security and arrival at the next hotel. The right buffer depends on the city and service time.",
+      },
+    ],
+  ),
+
+  "china-travel-safety-for-foreign-visitors": article(
+    [
+      {
+        title: "A calm way to think about safety in China",
+        paragraphs: [
+          "For most visitors, China travel safety is less about dramatic risk and more about preparing for ordinary friction: a passport-linked booking, a large station, a payment problem, a language gap or a hotel registration question. A little preparation keeps those moments small.",
+          "Rules and service availability can change. Use this as a practical framework, then check official sources and your confirmed itinerary close to departure. No tour operator can replace travel insurance, medical advice or your own judgment.",
+        ],
+      },
+      {
+        title: "Documents and arrival records",
+        paragraphs: [
+          "Carry a valid passport and keep a secure offline copy of the photo page, visa or transit eligibility evidence, insurance details and emergency contacts. Match passport spelling exactly when booking trains and capacity-controlled attractions.",
+          "Hotels normally handle the accommodation registration process for foreign guests, but the process still takes time. Read our [accommodation registration guide](/journal/china-accommodation-registration-foreigners) and keep your first-night hotel address available in English and Chinese.",
+        ],
+      },
+      {
+        title: "Connectivity and payments",
+        paragraphs: [
+          "Arrange a realistic data plan before or on arrival, and keep key addresses, booking references and guide contacts offline. Test your payment setup before leaving the airport; carry a small backup method because a single app or bank card should not be your only option.",
+          "Our guides to [SIM cards and eSIMs](/journal/china-sim-card-esim-internet-foreign-tourists) and [mobile payments](/journal/china-mobile-payments-foreign-tourists) explain the preparation steps without promising universal access or a fixed provider outcome.",
+        ],
+      },
+      {
+        title: "Moving through cities safely",
+        paragraphs: [
+          "Use licensed taxis, official ride-hailing channels or the confirmed driver details in your itinerary. At stations and airports, verify the name, vehicle and meeting point before walking away with anyone who approaches you. Keep valuables secure in crowded areas and follow attraction staff instructions.",
+          "China's cities are busy and sometimes physically demanding. Wear shoes with stable grip, allow rest and take extra care at mountain viewpoints, wet paths and escalators. Families should agree on a meeting plan if phones lose signal.",
+        ],
+      },
+      {
+        title: "Health, food and emergencies",
+        paragraphs: [
+          "Bring regularly used medicine in original packaging with supporting documentation, and identify the active ingredient rather than relying only on a brand name. Hydrate, pace yourself in heat or at altitude and tell your planner about allergies or mobility limits early.",
+          "Save the local emergency numbers and your insurer's assistance line before departure. A private guide team can help with translation and local logistics, but medical decisions belong to qualified professionals. Keep a written hotel address for situations when your phone is unavailable.",
+        ],
+      },
+      {
+        title: "Make support part of the itinerary",
+        paragraphs: [
+          "The most useful support is specific: an airport meeting plan, station assistance, passport-ticket checks, a local contact and a clear procedure for delays. It should reduce uncertainty without making you feel escorted every minute.",
+          "Our [private China journeys](/tours/first-china-beautifully-paced) can include that practical layer alongside independent time. Share your party, arrival details and concerns through [start planning](/start-planning?source=journal-safety-mid), and we will state what support is included in the proposal.",
+        ],
+      },
+    ],
+    [
+      {
+        question: "Is China safe for foreign tourists?",
+        answer:
+          "Most visitors experience China as a manageable destination when they prepare documents, connectivity, payments and transport. Conditions and rules vary, so check current official guidance for your trip.",
+      },
+      {
+        question: "What emergency number should visitors use in China?",
+        answer:
+          "Common mainland emergency numbers are 110 for police, 120 for medical emergencies and 119 for fire. Save your insurer and local travel contacts as well.",
+      },
+      {
+        question: "Do hotels register foreign guests?",
+        answer:
+          "Hotels normally complete accommodation registration for foreign guests. Keep your passport and allow time at check-in; private apartments may follow different rules.",
+      },
+      {
+        question: "What should I do if I lose my passport?",
+        answer:
+          "Contact local police, your embassy or consulate and your insurer, then notify your tour or hotel contact. Keep a secure copy of the passport page to support the process.",
+      },
+      {
+        question: "Can a private guide help in an emergency?",
+        answer:
+          "A local team can help with translation, directions and practical coordination. They do not replace emergency services, medical professionals or travel insurance.",
+      },
+    ],
+  ),
 };
