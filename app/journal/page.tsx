@@ -6,7 +6,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 import { journalArticles as localJournalArticles } from "@/content/journal";
 
 export const metadata = createMetadata({
-  title: "Travel Journal",
+  title: "China Travel Guides and Planning Journal",
   description:
     "Practical China travel guides covering routes, seasons, family trips, food, culture, hotels and private touring.",
   path: "/journal",

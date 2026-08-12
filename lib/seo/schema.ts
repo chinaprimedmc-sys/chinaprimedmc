@@ -70,6 +70,59 @@ export function websiteSchema() {
   };
 }
 
+export function articleSchemaData(input: {
+  headline: string;
+  description: string;
+  image: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  authorName: string;
+  authorRole: string;
+  keywords?: string[];
+  citations?: Array<{
+    name: string;
+    url: string;
+    publisher: string;
+    publishedAt: string;
+  }>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: input.headline,
+    description: input.description,
+    image: input.image,
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    author: {
+      "@type": "Organization",
+      name: input.authorName,
+      description: input.authorRole,
+      url: siteConfig.url,
+      "@id": `${siteConfig.url}/#organization`,
+    },
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": input.url },
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    ...(input.keywords?.length ? { keywords: input.keywords } : {}),
+    ...(input.citations?.length
+      ? {
+          citation: input.citations.map((citation) => ({
+            "@type": "NewsArticle",
+            headline: citation.name,
+            url: citation.url,
+            datePublished: citation.publishedAt,
+            publisher: {
+              "@type": "Organization",
+              name: citation.publisher,
+            },
+          })),
+        }
+      : {}),
+  };
+}
+
 export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
   return {
     "@context": "https://schema.org",

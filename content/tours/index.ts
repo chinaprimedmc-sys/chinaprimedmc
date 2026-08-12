@@ -2419,9 +2419,9 @@ export const tours: Tour[] = [
       secondary: { label: "Request My Tailored Proposal", href: "#inquiry" },
     },
     seo: {
-      title: "6-Day Private Xi'an and Beijing Tour | Terracotta Warriors & Great Wall",
+      title: "6-Day Private Xi'an and Beijing Tour",
       description:
-        "A private 6-day Xi'an and Beijing tour with the Terracotta Warriors, Xi'an City Wall, Forbidden City, Mutianyu Great Wall, high-speed rail and flexible Muslim-friendly planning.",
+        "A private six-day Xi'an and Beijing tour with the Terracotta Warriors, Forbidden City, Mutianyu Great Wall, high-speed rail and tailored pacing.",
       keywords: [
         "private Xi'an and Beijing tour",
         "6 day Xi'an Beijing itinerary",

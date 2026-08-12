@@ -12,9 +12,9 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 import { getPublicDestinations, getPublicSiteSettings } from "@/lib/cms/public-content";
 
 export const metadata: Metadata = createMetadata({
-  title: "Private China Journeys and Tailor-Made Tours",
+  title: "Private China Journeys | Tailor-Made Travel by AVIORA",
   description:
-    "Explore private China journeys designed around your dates, interests and pace, with local guides, considered hotels and support across every transition.",
+    "Explore private China journeys through Beijing, Xi'an, Chengdu and Shanghai, with thoughtful routes, considered hotels and local support.",
   path: "/tours",
 });
 

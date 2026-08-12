@@ -8,7 +8,7 @@ import type { JournalArticle } from "@/types/journal";
 import { ArticleTemplate } from "@/features/journal/article-template";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema } from "@/lib/seo/schema";
+import { articleSchemaData, breadcrumbSchema } from "@/lib/seo/schema";
 import { hydrateJournalArticle } from "@/lib/content/journal-markdown";
 import { getRelationshipsForArticle } from "@/lib/content/relationship-engine";
 
@@ -95,38 +95,16 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 }
 
 function articleSchema(article: JournalArticle) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
+  return articleSchemaData({
     headline: article.title,
     description: article.seo.description,
     image: new URL(article.seo.ogImage?.src ?? article.hero.image.src, siteConfig.url).toString(),
+    url: new URL(`/journal/${article.slug}`, siteConfig.url).toString(),
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
-    author: {
-      "@type": "Organization",
-      name: article.author.name,
-    },
-    publisher: {
-      "@type": "TravelAgency",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    mainEntityOfPage: new URL(`/journal/${article.slug}`, siteConfig.url).toString(),
+    authorName: article.author.name,
+    authorRole: article.author.role,
     keywords: article.seo.keywords,
-    ...(article.citations?.length
-      ? {
-          citation: article.citations.map((citation) => ({
-            "@type": "NewsArticle",
-            headline: citation.name,
-            url: citation.url,
-            datePublished: citation.publishedAt,
-            publisher: {
-              "@type": "Organization",
-              name: citation.publisher,
-            },
-          })),
-        }
-      : {}),
-  };
+    citations: article.citations,
+  });
 }

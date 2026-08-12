@@ -2,6 +2,7 @@ const baseUrl = new URL(process.env.SEO_BASE_URL || "https://www.chinaprimedmc.c
 const configuredCanonicalOrigin = process.env.SEO_SITE_ORIGIN?.replace(/\/$/, "");
 
 const issues = [];
+const pages = [];
 const sitemapResponse = await fetch(new URL("/sitemap.xml", baseUrl));
 if (!sitemapResponse.ok) fail(`Sitemap returned ${sitemapResponse.status}.`);
 
@@ -21,10 +22,27 @@ for (const canonicalUrl of sitemapUrls) {
   const response = await fetch(new URL(canonical.pathname, baseUrl), { redirect: "manual" });
   const html = await response.text();
 
+  const title = html.match(/<title>([^<]*)<\/title>/i)?.[1]?.trim() || "";
+  const description = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || "";
+  const imageCount = [...html.matchAll(/<img\b/gi)].length;
+  const missingAltCount = [...html.matchAll(/<img\b(?![^>]*\balt=)[^>]*>/gi)].length;
+  const bodyText = html
+    .replace(/<script(?![^>]*self\.__next_f)[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const contentText = canonical.pathname.startsWith("/journal/")
+    ? bodyText + " " + extractNextFlightText(html)
+    : bodyText;
+  pages.push({ canonicalUrl, title, description, imageCount, missingAltCount, contentText });
+
   if (response.status !== 200) issues.push(`${canonicalUrl}: HTTP ${response.status}`);
   checkTag(html, /<title>[^<]+<\/title>/i, canonicalUrl, "title");
   checkTag(html, /<meta\s+name="description"\s+content="[^"]+"/i, canonicalUrl, "description");
-  checkTag(html, /<h1(?:\s|>)/i, canonicalUrl, "H1");
+  // Next.js may stream the rendered heading inside an RSC payload. Check both
+  // the final HTML and the serialized element name to avoid a false negative.
+  if (!hasH1(html)) issues.push(`${canonicalUrl}: missing H1`);
 
   const canonicalMatch = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i);
   if (!canonicalMatch?.[1] || normalizeUrl(canonicalMatch[1]) !== normalizeUrl(canonicalUrl)) {
@@ -43,6 +61,35 @@ for (const canonicalUrl of sitemapUrls) {
   ) {
     issues.push(`${canonicalUrl}: developer-facing copy detected`);
   }
+  if (missingAltCount) issues.push(`${canonicalUrl}: ${missingAltCount} image(s) missing alt text`);
+  if (contentText.split(/\s+/).filter(Boolean).length < 120 && !isUtilityPage(canonical.pathname)) {
+    issues.push(`${canonicalUrl}: body content appears thin`);
+  }
+}
+
+const titles = new Map();
+const descriptions = new Map();
+for (const page of pages) {
+  if (page.title) titles.set(page.title, [...(titles.get(page.title) || []), page.canonicalUrl]);
+  if (page.description)
+    descriptions.set(page.description, [
+      ...(descriptions.get(page.description) || []),
+      page.canonicalUrl,
+    ]);
+  if (page.title.length < 30 || page.title.length > 70) {
+    issues.push(`${page.canonicalUrl}: title length is ${page.title.length} characters`);
+  }
+  if (page.description.length < 70 || page.description.length > 165) {
+    issues.push(
+      `${page.canonicalUrl}: description length is ${page.description.length} characters`,
+    );
+  }
+}
+for (const [title, urls] of titles) {
+  if (urls.length > 1) issues.push(`Duplicate title: "${title}" on ${urls.join(", ")}`);
+}
+for (const [, urls] of descriptions) {
+  if (urls.length > 1) issues.push(`Duplicate description on ${urls.join(", ")}`);
 }
 
 for (const pathname of [
@@ -87,6 +134,25 @@ console.log(`SEO audit passed: ${sitemapUrls.length} indexable URLs checked.`);
 
 function checkTag(html, pattern, url, label) {
   if (!pattern.test(html)) issues.push(`${url}: missing ${label}`);
+}
+
+function hasH1(html) {
+  return /<h1(?:\s|>)/i.test(html) || /\\"h1\\"/.test(html);
+}
+
+function isUtilityPage(pathname) {
+  return ["/contact", "/start-planning", "/faq", "/planning/faq", "/planning/visa"].includes(
+    pathname,
+  );
+}
+
+function extractNextFlightText(html) {
+  return [...html.matchAll(/self\.__next_f\.push\(\[1,"([\s\S]*?)"\]\)/g)]
+    .map((match) => match[1])
+    .join(" ")
+    .replace(/\\n/g, " ")
+    .replace(/\\"/g, '"')
+    .replace(/\\\\/g, "\\");
 }
 
 function normalizeUrl(value) {

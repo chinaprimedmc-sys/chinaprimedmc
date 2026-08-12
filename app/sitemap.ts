@@ -21,8 +21,6 @@ const staticRoutes = [
   ["/planning/faq", "monthly", 0.64],
   ["/family-travel", "monthly", 0.68],
   ["/senior-travel", "monthly", 0.68],
-  ["/privacy", "yearly", 0.2],
-  ["/terms", "yearly", 0.2],
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -40,13 +38,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  const flagshipEntries: MetadataRoute.Sitemap = journeyCatalog
-    .filter(({ kind }) => kind === "featured")
-    .map(({ slug }) => ({
-      url: new URL(`/tours/${slug}`, siteConfig.url).toString(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    }));
+  // Every published journey is a commercial landing page. Framework journeys
+  // are still useful entry points for searchers and must not depend on the
+  // featured flag to be discovered.
+  const journeyEntries: MetadataRoute.Sitemap = journeyCatalog.map(({ slug, kind }) => ({
+    url: new URL(`/tours/${slug}`, siteConfig.url).toString(),
+    changeFrequency: "monthly",
+    priority: kind === "featured" ? 0.9 : 0.82,
+  }));
 
   const styleEntries: MetadataRoute.Sitemap = getTravelStyleSlugs().map((slug) => ({
     url: new URL(`/styles/${slug}`, siteConfig.url).toString(),
@@ -64,7 +63,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return deduplicate([
     ...staticEntries,
     ...destinationEntries,
-    ...flagshipEntries,
+    ...journeyEntries,
     ...styleEntries,
     ...localArticleEntries,
   ]);

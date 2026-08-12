@@ -796,7 +796,7 @@ export const commercialJournalArticles: JournalArticle[] = [
         objectPosition: "50% 48%",
       },
     ],
-    seoTitle: "9-Day Beijing Xi'an Shanghai Itinerary for First-Time Visitors",
+    seoTitle: "9-Day Beijing, Xi'an and Shanghai Itinerary",
     seoDescription:
       "Plan a realistic 9-day Beijing, Xi'an and Shanghai itinerary with the Great Wall, Terracotta Warriors, high-speed rail, hotels and private tour support.",
     keywords: [
