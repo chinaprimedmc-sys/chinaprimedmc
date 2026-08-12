@@ -126,6 +126,16 @@ export function HomeTrustIntroduction() {
     return () => query.removeEventListener("change", update);
   }, []);
 
+  useEffect(() => {
+    if (!isInView) return;
+    const preloaders = assurances.map((item) => {
+      const image = new window.Image();
+      image.src = item.image;
+      return image;
+    });
+    return () => preloaders.forEach((image) => (image.src = ""));
+  }, [isInView]);
+
   const active = assurances[activeIndex];
 
   const updatePointer = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -192,7 +202,7 @@ export function HomeTrustIntroduction() {
               01 · Why AVIORA
             </motion.p>
             <h2 id="home-trust-title" className={styles.title}>
-              {["Behind every private journey", "is a team already here."].map((line, index) => (
+              {["The people behind", "your journey."].map((line, index) => (
                 <span className={styles.titleMask} key={line}>
                   <motion.span
                     initial={reduceMotion ? false : { y: "108%" }}
@@ -264,7 +274,7 @@ export function HomeTrustIntroduction() {
                     alt={active.alt}
                     fill
                     sizes="(min-width: 1100px) 54vw, 100vw"
-                    loading={activeIndex === 0 ? "eager" : "lazy"}
+                    loading="eager"
                     objectPosition={active.position}
                     frameClassName={styles.photoInner}
                     className={styles.photoImage}
