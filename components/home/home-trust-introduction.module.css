@@ -393,10 +393,6 @@
 }
 
 @media (max-width: 767px) {
-  .story {
-    display: none;
-  }
-
   .peopleSection,
   .presenceSection,
   .operationSection,
