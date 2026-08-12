@@ -7,6 +7,11 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { HomeExpertConsultation } from "@/components/home/home-expert-consultation";
 import { HomeHeroMotion } from "@/components/home/home-hero-motion";
 import { FeaturedJourneyCinema, HomeReveal } from "@/components/home/home-immersive-sections";
+import {
+  HomeMobileTrustDetails,
+  HomeMobileTrustSummary,
+} from "@/components/home/home-mobile-conversion";
+import mobileStyles from "@/components/home/home-mobile-conversion.module.css";
 import { HomeTrustIntroduction } from "@/components/home/home-trust-introduction";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
@@ -147,7 +152,7 @@ export default async function HomePage() {
   );
 
   return (
-    <PageContainer className="pb-20 md:pb-0">
+    <PageContainer className={`${mobileStyles.mobileOptimizedPage} pb-20 md:pb-0`}>
       <JsonLd id="featured-journeys-schema" data={featuredJourneysSchema(featuredJourneys)} />
       <SiteNavigation
         items={homeNavigation}
@@ -167,13 +172,17 @@ export default async function HomePage() {
         trustItems={[...home.heroTrustItems, "China-based support"]}
       />
 
+      <HomeMobileTrustSummary />
+
       <HomeTrustIntroduction />
 
       {featuredJourneys.length ? <FeaturedJourneyCinema journeys={featuredJourneys} /> : null}
 
       <HomeExpertConsultation />
 
-      <Section id="planning-process" spacing="spacious" className="bg-white">
+      <HomeMobileTrustDetails />
+
+      <Section id="planning-process" spacing="spacious" className="home-planning-process bg-white">
         <ContentContainer size="xl" className="home-trust-section home-section-safe">
           <HomeReveal className="home-trust-section__media">
             <OptimizedImage

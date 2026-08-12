@@ -1,0 +1,346 @@
+.summary,
+.details {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .summary,
+  .details {
+    display: block;
+  }
+
+  .summary {
+    background: #f5f4ef;
+    color: #1d1f1c;
+    padding: 4.5rem 20px 4rem;
+  }
+
+  .summary > p,
+  .teamStory > p,
+  .assurances > p,
+  .pressNote > p {
+    color: #8c654e;
+    font-size: 0.62rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .summary h2 {
+    font-family: var(--font-cormorant);
+    font-size: clamp(2.75rem, 12.5vw, 3.6rem);
+    font-weight: 500;
+    line-height: 0.95;
+    margin-top: 1rem;
+    max-width: 22rem;
+  }
+
+  .summary ul {
+    border-top: 1px solid rgba(29, 31, 28, 0.15);
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+
+  .summary li {
+    align-items: center;
+    border-bottom: 1px solid rgba(29, 31, 28, 0.15);
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    min-height: 3.5rem;
+  }
+
+  .summary li span {
+    color: #9a6a50;
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+  }
+
+  .summary li strong {
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .summary li svg {
+    color: #718276;
+  }
+
+  .summary > a,
+  .teamStory > a,
+  .pressNote > a {
+    align-items: center;
+    border-bottom: 1px solid rgba(29, 31, 28, 0.28);
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    min-height: 2.75rem;
+  }
+
+  .details {
+    background: #f9f8f4;
+    color: #1d1f1c;
+    padding: 4.75rem 20px;
+  }
+
+  .teamImage {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  .teamStory > p {
+    margin-top: 1.25rem;
+  }
+
+  .teamStory h2 {
+    font-family: var(--font-cormorant);
+    font-size: clamp(2.8rem, 13vw, 3.7rem);
+    font-weight: 500;
+    line-height: 0.94;
+    margin-top: 0.85rem;
+  }
+
+  .teamStory > span,
+  .pressNote > span {
+    color: rgba(29, 31, 28, 0.65);
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.68;
+    margin-top: 1.2rem;
+  }
+
+  .assurances {
+    margin-top: 4.25rem;
+  }
+
+  .assurances > p {
+    margin-bottom: 1rem;
+  }
+
+  .assurances details {
+    border-top: 1px solid rgba(29, 31, 28, 0.16);
+  }
+
+  .assurances details:last-child {
+    border-bottom: 1px solid rgba(29, 31, 28, 0.16);
+  }
+
+  .assurances summary {
+    align-items: center;
+    cursor: pointer;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: 2rem minmax(0, 1fr) 1rem;
+    min-height: 4rem;
+    list-style: none;
+  }
+
+  .assurances summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .assurances summary > span {
+    color: #9a6a50;
+    font-size: 0.58rem;
+    font-weight: 750;
+  }
+
+  .assurances summary strong {
+    font-family: var(--font-cormorant);
+    font-size: 1.55rem;
+    font-weight: 500;
+  }
+
+  .assurances summary i {
+    height: 1rem;
+    position: relative;
+    width: 1rem;
+  }
+
+  .assurances summary i::before,
+  .assurances summary i::after {
+    background: currentColor;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+
+  .assurances summary i::after {
+    transform: rotate(90deg);
+    transition: transform 300ms ease;
+  }
+
+  .assurances details[open] summary i::after {
+    transform: rotate(0);
+  }
+
+  .assurances details > p {
+    color: rgba(29, 31, 28, 0.63);
+    font-size: 0.88rem;
+    line-height: 1.65;
+    padding: 0 0 1.35rem 2.8rem;
+  }
+
+  .pressNote {
+    background: #e8ede8;
+    margin: 4.25rem -20px -4.75rem;
+    padding: 3.75rem 20px 4.25rem;
+  }
+
+  .pressNote h3 {
+    font-family: var(--font-cormorant);
+    font-size: 4.5rem;
+    font-weight: 500;
+    line-height: 0.85;
+    margin-top: 1rem;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema) {
+    height: auto;
+    min-height: 0;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__stage) {
+    display: block;
+    height: auto;
+    overflow: visible;
+    padding: 4.75rem 20px 4rem;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__layout) {
+    display: block;
+    padding: 1.5rem 0 0;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__media) {
+    aspect-ratio: 16 / 10;
+    background: #eeefe9;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__image) {
+    object-fit: contain !important;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__image-motion) {
+    inset: 0;
+    position: absolute;
+    transform: none !important;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__media-shade),
+  .mobileOptimizedPage :global(.home-featured-cinema__light-sweep),
+  .mobileOptimizedPage :global(.home-featured-cinema__progress) {
+    display: none;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__content) {
+    height: auto;
+    margin-top: 1.5rem;
+    max-height: none;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__chapter) {
+    inset: auto;
+    min-height: 0;
+    opacity: 1;
+    position: relative;
+    transform: none;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__chapter h2) {
+    font-size: clamp(2.45rem, 11vw, 3.1rem);
+    line-height: 0.96;
+    margin-top: 0.75rem;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__summary) {
+    font-size: 0.88rem;
+    line-height: 1.62;
+    margin-top: 1rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__actions) {
+    display: grid;
+    gap: 0.65rem;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1.25rem;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__link) {
+    font-size: 0.68rem;
+    min-height: 3rem;
+    padding-inline: 0.75rem;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__link--secondary) {
+    border: 1px solid rgba(29, 31, 28, 0.22);
+    padding-inline: 0.75rem;
+    text-decoration: none;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__navigation) {
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 0;
+    margin-top: 2rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 0.4rem;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__navigation::-webkit-scrollbar) {
+    display: none;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__navigation > a) {
+    border-left: 0 !important;
+    border-top: 2px solid transparent;
+    flex: 0 0 3.2rem;
+    min-height: 2.8rem;
+    padding: 0.75rem 0 0;
+    scroll-snap-align: start;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__navigation > a[aria-current="true"]) {
+    border-top-color: var(--text-primary);
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__navigation-index) {
+    font-size: 0.62rem;
+  }
+
+  .mobileOptimizedPage :global(.home-featured-cinema__arrows) {
+    display: none;
+  }
+
+  .mobileOptimizedPage :global(.home-planning-process) {
+    display: none;
+  }
+
+  .mobileOptimizedPage :global(.home-final-cta) {
+    min-height: 32rem;
+  }
+
+  .mobileOptimizedPage :global(.home-final-cta > div:last-of-type) {
+    min-height: 32rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assurances summary i::after {
+    transition: none;
+  }
+}

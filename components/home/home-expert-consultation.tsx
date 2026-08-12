@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Check, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
@@ -40,6 +40,8 @@ export function HomeExpertConsultation() {
   const [state, setState] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [mobileStep, setMobileStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const [error, setError] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
@@ -47,6 +49,14 @@ export function HomeExpertConsultation() {
 
   useEffect(() => {
     trackEvent("form_view", { placement: "home_expert_consultation" });
+  }, []);
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
   }, []);
 
   function update(key: keyof FormState, value: string) {
@@ -63,6 +73,14 @@ export function HomeExpertConsultation() {
     }
     if (!state.email.trim()) {
       setError("Please enter your email address so our specialist can reply.");
+      return;
+    }
+    if (isMobile && mobileStep === 0) {
+      setMobileStep(1);
+      trackEvent("form_step_complete", {
+        placement: "home_expert_consultation",
+        step: 1,
+      });
       return;
     }
     if (!isTurnstileConfigured || !turnstileToken) {
@@ -203,18 +221,32 @@ export function HomeExpertConsultation() {
                 </a>
               </motion.div>
             ) : (
-              <motion.form key="form" className={styles.form} onSubmit={submit} noValidate>
+              <motion.form
+                key="form"
+                className={styles.form}
+                data-mobile-step={mobileStep}
+                method="post"
+                onSubmit={submit}
+                noValidate
+              >
                 <div className={styles.formHeading}>
                   <p className={styles.formEyebrow}>Tell us the essentials</p>
                   <h3>Start with a few details.</h3>
                   <p>No obligation. No generic package response.</p>
+                  <p className={styles.mobileReply}>Personal reply from China within 24 hours.</p>
+                  <div className={styles.mobileProgress} aria-label={`Step ${mobileStep + 1} of 2`}>
+                    <span data-active="true" />
+                    <span data-active={mobileStep === 1} />
+                    <small>{mobileStep + 1} / 2</small>
+                  </div>
                 </div>
 
                 <div className={styles.fieldGrid}>
-                  <label>
+                  <label className={styles.stepOneField}>
                     <span>Name</span>
                     <input
                       type="text"
+                      name="name"
                       autoComplete="name"
                       value={state.name}
                       onChange={(event) => update("name", event.target.value)}
@@ -222,10 +254,11 @@ export function HomeExpertConsultation() {
                       required
                     />
                   </label>
-                  <label>
+                  <label className={styles.stepOneField}>
                     <span>Email</span>
                     <input
                       type="email"
+                      name="email"
                       autoComplete="email"
                       value={state.email}
                       onChange={(event) => update("email", event.target.value)}
@@ -233,18 +266,20 @@ export function HomeExpertConsultation() {
                       required
                     />
                   </label>
-                  <label>
+                  <label className={styles.stepOneField}>
                     <span>When might you travel?</span>
                     <input
                       type="text"
+                      name="timing"
                       value={state.timing}
                       onChange={(event) => update("timing", event.target.value)}
                       placeholder="e.g. October 2026"
                     />
                   </label>
-                  <label>
+                  <label className={styles.stepOneField}>
                     <span>Travelers</span>
                     <select
+                      name="travelers"
                       value={state.adults}
                       onChange={(event) => update("adults", event.target.value)}
                     >
@@ -258,21 +293,23 @@ export function HomeExpertConsultation() {
                       <option value="10">9-10 travelers</option>
                     </select>
                   </label>
-                  <label className={styles.fullField}>
+                  <label className={`${styles.fullField} ${styles.stepTwoField}`}>
                     <span>What would you like help with?</span>
                     <textarea
+                      name="notes"
                       value={state.notes}
                       onChange={(event) => update("notes", event.target.value)}
                       placeholder="Destinations, interests, pace, hotel preferences or anything you are unsure about."
                       rows={4}
                     />
                   </label>
-                  <label className={styles.fullField}>
+                  <label className={`${styles.fullField} ${styles.stepTwoField}`}>
                     <span>
                       WhatsApp <small>Optional</small>
                     </span>
                     <input
                       type="tel"
+                      name="whatsapp"
                       autoComplete="tel"
                       value={state.whatsapp}
                       onChange={(event) => update("whatsapp", event.target.value)}
@@ -289,10 +326,12 @@ export function HomeExpertConsultation() {
                   aria-hidden="true"
                   className={styles.honeypot}
                 />
-                <TurnstileWidget
-                  onTokenChange={handleTurnstileToken}
-                  resetSignal={turnstileResetSignal}
-                />
+                <div className={styles.stepTwoField}>
+                  <TurnstileWidget
+                    onTokenChange={handleTurnstileToken}
+                    resetSignal={turnstileResetSignal}
+                  />
+                </div>
 
                 {error ? (
                   <p className={styles.error} role="alert">
@@ -300,14 +339,35 @@ export function HomeExpertConsultation() {
                   </p>
                 ) : null}
 
-                <button
-                  className={styles.submitButton}
-                  type="submit"
-                  disabled={submitting || !isTurnstileConfigured}
-                >
-                  {submitting ? "Sending..." : "Ask a China specialist"}
-                  <ArrowRight size={17} aria-hidden="true" />
-                </button>
+                <div className={styles.formActions}>
+                  {mobileStep === 1 ? (
+                    <button
+                      className={styles.backButton}
+                      type="button"
+                      onClick={() => {
+                        setMobileStep(0);
+                        setError("");
+                      }}
+                    >
+                      <ArrowLeft size={16} aria-hidden="true" />
+                      Back
+                    </button>
+                  ) : null}
+                  <button
+                    className={styles.submitButton}
+                    type="submit"
+                    disabled={
+                      submitting || ((!isMobile || mobileStep === 1) && !isTurnstileConfigured)
+                    }
+                  >
+                    {submitting
+                      ? "Sending..."
+                      : isMobile && mobileStep === 0
+                        ? "Continue"
+                        : "Ask a China specialist"}
+                    <ArrowRight size={17} aria-hidden="true" />
+                  </button>
+                </div>
 
                 <div className={styles.formFooter}>
                   <span>Your details are used only to respond to your enquiry.</span>
