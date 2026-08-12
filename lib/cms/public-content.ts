@@ -8,6 +8,7 @@ import {
   explorerDestinations,
 } from "@/content/destinations/explorer";
 import { getDestinationEditorial } from "@/content/destinations/editorial";
+import { destinationGuideAssets } from "@/content/destinations/guide-assets";
 import { journalArticles } from "@/content/journal";
 import {
   destinationImages,
@@ -83,6 +84,10 @@ export async function getPublicDestinations() {
       stayStrategy: editorial.stayStrategy,
       firstTimerNote: editorial.firstTimerNote,
       faqs: [...editorial.faqs],
+      culturalStory: editorial.culturalStory,
+      foodStory: editorial.foodStory,
+      itinerary: [...editorial.itinerary],
+      gallery: destinationGuideAssets[destination.id].gallery,
       featured: Boolean(destination.guideHref),
       sortOrder: 100,
       seoTitle: `Private ${destination.name} Tours and Travel Guide`,

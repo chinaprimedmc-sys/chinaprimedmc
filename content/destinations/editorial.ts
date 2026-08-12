@@ -10,6 +10,9 @@ export type DestinationEditorial = {
   stayStrategy: string;
   firstTimerNote: string;
   faqs: Array<{ question: string; answer: string }>;
+  culturalStory: { title: string; paragraphs: [string, string] };
+  foodStory: { title: string; paragraphs: [string, string] };
+  itinerary: Array<{ day: string; title: string; description: string }>;
 };
 
 const editorial: Record<string, DestinationEditorial> = {
@@ -53,6 +56,46 @@ const editorial: Record<string, DestinationEditorial> = {
           "Yes. The route should limit major sites per day, use private transfers strategically and account honestly for long walking distances inside attractions.",
       },
     ],
+    culturalStory: {
+      title: "An imperial capital still lived at neighborhood scale",
+      paragraphs: [
+        "Beijing served as the political center of the Ming and Qing dynasties, and its old city was organized around a powerful north-south axis. The Forbidden City, Temple of Heaven and historic gates were not isolated monuments: together they expressed how the state, ritual and urban life were ordered.",
+        "That monumental history still sits beside a more intimate Beijing. Hutong lanes, courtyard homes and public parks reveal how residents use shared space, exercise, eat and socialize. A valuable visit moves between both scales, because the city makes more sense when imperial architecture and everyday life are read together.",
+      ],
+    },
+    foodStory: {
+      title: "Northern flavors, shared tables and food with history",
+      paragraphs: [
+        "Beijing food is shaped by northern wheat, imperial kitchens and migration from across China. Roast duck is the famous ritual meal, but noodles, dumplings, sesame pastries and seasonal home-style dishes often reveal more about daily life.",
+        "International travelers benefit from ordering with context: portion sizes are usually designed for sharing, meal timing can affect the day, and dietary needs should be translated clearly. A guide can choose a restaurant for the group rather than treating one famous dish as the entire food story.",
+      ],
+    },
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Imperial Beijing",
+        description:
+          "Forbidden City and central-axis context, with a measured neighborhood evening.",
+      },
+      {
+        day: "Day 2",
+        title: "Temple and local life",
+        description:
+          "Temple of Heaven at a better hour, followed by hutongs or a hands-on cultural experience.",
+      },
+      {
+        day: "Day 3",
+        title: "The Great Wall",
+        description:
+          "A dedicated private day at the section best matched to mobility, season and crowd tolerance.",
+      },
+      {
+        day: "Day 4",
+        title: "A quieter final chapter",
+        description:
+          "Summer Palace, specialist interest or a slower departure according to flight time.",
+      },
+    ],
   },
   xian: {
     bestTime:
@@ -92,6 +135,40 @@ const editorial: Record<string, DestinationEditorial> = {
         question: "Is Xi'an suitable for Muslim travelers?",
         answer:
           "Xi'an has a significant Muslim heritage and many halal food options. A well-briefed guide can add historical context and confirm suitable meals instead of relying only on a busy market walk.",
+      },
+    ],
+    culturalStory: {
+      title: "China's ancient capital and the eastern threshold of the Silk Road",
+      paragraphs: [
+        "Known historically as Chang'an, Xi'an was the capital of several dynasties and one of the great cities of the ancient world. The Terracotta Army belongs to the unification story of the Qin, while later Tang-era history connects the city to trade, religion and cultural exchange across Eurasia.",
+        "The surviving City Wall gives modern visitors an unusually clear sense of urban form. Inside and around it, mosques, markets, temples and newer districts show that Xi'an is not frozen in one dynasty. The city's value comes from seeing multiple historical layers rather than treating the warriors as its only reason to visit.",
+      ],
+    },
+    foodStory: {
+      title: "A wheat-based food culture shaped by migration and trade",
+      paragraphs: [
+        "Xi'an is known for hand-pulled and hand-torn noodles, flatbreads, dumplings and richly seasoned lamb dishes. These foods reflect northern agriculture as well as the city's long position on routes connecting China with Central Asia.",
+        "The Muslim Quarter is culturally significant, but it is also busy and commercial. A useful food walk distinguishes spectacle from substance, explains halal traditions and includes places where the cooking, not only the crowd, carries the story.",
+      ],
+    },
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "The Qin dynasty",
+        description:
+          "Terracotta Army with historical framing, followed by a calm return to central Xi'an.",
+      },
+      {
+        day: "Day 2",
+        title: "The living ancient city",
+        description:
+          "City Wall, mosque and food traditions, with an evening chosen around energy levels.",
+      },
+      {
+        day: "Day 3",
+        title: "A deeper Xi'an",
+        description:
+          "Add Tang history, a museum or a specialist archaeological site before the onward train.",
       },
     ],
   },
@@ -135,6 +212,38 @@ const editorial: Record<string, DestinationEditorial> = {
           "Yes. It offers strong international air access, an efficient metro and a relatively gentle introduction to mobile payments, food and contemporary city life.",
       },
     ],
+    culturalStory: {
+      title: "A Chinese port city that continually rewrites itself",
+      paragraphs: [
+        "Shanghai's modern identity grew from its position on the Huangpu River and its role in global trade. The Bund's banks and trading houses face Pudong's towers across the water, turning one riverfront into a visible timeline of economic change.",
+        "The city becomes more human away from the skyline. Lilong lane housing, former concession streets, temples, markets and neighborhood parks reveal how local life adapted through dramatic political and commercial change. Shanghai is most rewarding when modern ambition and lived-in streets share the itinerary.",
+      ],
+    },
+    foodStory: {
+      title: "Delicate seasoning, river produce and neighborhood breakfast culture",
+      paragraphs: [
+        "Shanghai cooking tends to be sweeter and more restrained than Sichuan food, with soy-braised dishes, freshwater ingredients and seasonal vegetables. Xiaolongbao are well known, but breakfast stalls and neighborhood shops often provide the clearest introduction.",
+        "A food route should be planned around freshness and geography. Rather than crossing the city for one famous shop, combine tastings with markets, lanes and architecture so food explains the neighborhood around it.",
+      ],
+    },
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "River and skyline",
+        description: "Bund history, Pudong's rise and a well-timed evening beside the Huangpu.",
+      },
+      {
+        day: "Day 2",
+        title: "Shanghai at street level",
+        description: "Former concession streets, local food, markets and residential lanes.",
+      },
+      {
+        day: "Day 3",
+        title: "Old city and personal interests",
+        description:
+          "Yu Garden area plus design, art, Jewish heritage or a slower neighborhood route.",
+      },
+    ],
   },
   chengdu: {
     bestTime:
@@ -174,6 +283,45 @@ const editorial: Record<string, DestinationEditorial> = {
         question: "Can Sichuan food be arranged for travelers who do not eat very spicy food?",
         answer:
           "Yes. Sichuan cuisine is broader than extreme heat. Explain spice tolerance and dietary restrictions before the trip so appropriate dishes and restaurants can be selected.",
+      },
+    ],
+    culturalStory: {
+      title: "A Sichuan capital where public life moves at a social pace",
+      paragraphs: [
+        "Chengdu has been an important Sichuan center for more than two millennia, but visitors often remember its present-day rhythm as strongly as its history. Tea houses, parks and food streets are social infrastructure: places to meet, talk, play cards, listen to performances and let the day unfold.",
+        "Panda conservation adds a globally recognized chapter, yet it should not eclipse the city. Irrigation history, Shu culture, religious sites and neighborhood life explain why Chengdu feels distinct from China's eastern megacities. The best itinerary protects both the panda morning and the slower urban afternoon.",
+      ],
+    },
+    foodStory: {
+      title: "Sichuan food is about aroma and balance, not only heat",
+      paragraphs: [
+        "Sichuan cuisine builds flavor through chilies, fermented bean paste, pickles, aromatics and the citrus-like numbing quality of Sichuan pepper. Hotpot is one expression, while cold dishes, fish-fragrant seasoning, smoked ingredients and careful vegetable cooking show its range.",
+        "Foreign visitors should state allergies, spice tolerance and dietary restrictions before restaurants are chosen. A split hotpot or thoughtfully ordered shared meal can preserve the regional character without turning dinner into an endurance test.",
+      ],
+    },
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Pandas at the right hour",
+        description: "An early conservation-base visit followed by a light, unhurried afternoon.",
+      },
+      {
+        day: "Day 2",
+        title: "Tea and city life",
+        description:
+          "People's Park, neighborhood history and a Sichuan table planned around your group.",
+      },
+      {
+        day: "Day 3",
+        title: "Taste and choose",
+        description:
+          "Market, cooking or specialist culture, with space rather than another long transfer.",
+      },
+      {
+        day: "Day 4",
+        title: "Leshan or deeper Chengdu",
+        description:
+          "Choose the Giant Buddha day only when it fits your interests and walking comfort.",
       },
     ],
   },
@@ -217,6 +365,39 @@ const editorial: Record<string, DestinationEditorial> = {
           "Yes. Split pots and mild broths are widely available, but preferences and dietary restrictions should be communicated before the restaurant is chosen.",
       },
     ],
+    culturalStory: {
+      title: "A mountain-and-river city built in three dimensions",
+      paragraphs: [
+        "Chongqing grew where the Yangtze and Jialing rivers meet, and its steep terrain shaped a city of bridges, stairways, elevated roads and buildings entered from different levels. Wartime history and later industrial growth added further layers to its strong urban identity.",
+        "The city is often photographed as a futuristic spectacle, but its culture is equally grounded in resilience, direct social energy and close neighborhood life. Markets, hillside streets and river crossings help visitors understand why Chongqing feels unlike flatter Chinese cities.",
+      ],
+    },
+    foodStory: {
+      title: "Hotpot as a social ritual in a humid river city",
+      paragraphs: [
+        "Chongqing hotpot uses a deeply aromatic broth, traditionally rich with chilies and rendered fat, into which diners cook ingredients together. The shared pot reflects the city's sociable, energetic character as much as it reflects a taste for heat.",
+        "A good introduction explains broth choice, cooking times, dipping sauces and ingredient ordering. Mild or divided pots are legitimate planning choices for international groups; the aim is participation and flavor, not proving tolerance.",
+      ],
+    },
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Learn the vertical city",
+        description:
+          "River confluence, layered streets and a blue-hour route that explains the geography.",
+      },
+      {
+        day: "Day 2",
+        title: "Transit, neighborhoods and hotpot",
+        description: "Cableway or monorail, street-level life and a properly guided shared dinner.",
+      },
+      {
+        day: "Day 3",
+        title: "Choose a deeper chapter",
+        description:
+          "Dazu Rock Carvings, local neighborhoods or a slower open day before Zhangjiajie.",
+      },
+    ],
   },
   leshan: {
     bestTime:
@@ -256,6 +437,39 @@ const editorial: Record<string, DestinationEditorial> = {
         question: "Should I stay overnight in Leshan?",
         answer:
           "A day trip suits most Chengdu itineraries. Stay overnight if you are continuing to Mount Emei or want a deliberately slower regional journey.",
+      },
+    ],
+    culturalStory: {
+      title: "A monumental Buddhist work shaped by river danger and devotion",
+      paragraphs: [
+        "The Leshan Giant Buddha was begun in the eighth century during the Tang dynasty. Carved into a red sandstone cliff at the meeting of the Min, Dadu and Qingyi rivers, the figure was intended to calm dangerous waters and protect those who traveled through them.",
+        "Its meaning comes from more than scale. The engineering of drainage channels, the relationship between sculpture and cliff, and the continuing religious significance all deserve explanation. Seeing the Buddha from the river emphasizes landscape; walking near the figure reveals craft and physical detail.",
+      ],
+    },
+    foodStory: {
+      title: "A Sichuan river city with a food identity of its own",
+      paragraphs: [
+        "Leshan's food culture includes bobo chicken, sweet-skinned duck, tofu dishes and small snacks that differ from the meals most visitors associate with Chengdu. The city is known within Sichuan as a serious eating destination.",
+        "A day trip becomes much richer when lunch is treated as part of the place rather than a pause between transfers. Restaurant choice should still reflect hygiene expectations, dietary needs and the group's preferred level of adventure.",
+      ],
+    },
+    itinerary: [
+      {
+        day: "Morning",
+        title: "Travel from Chengdu",
+        description:
+          "Use private road transport or coordinated rail and transfer according to the final schedule.",
+      },
+      {
+        day: "Midday",
+        title: "Understand the Giant Buddha",
+        description:
+          "Choose river view, land route or a combination based on conditions and mobility.",
+      },
+      {
+        day: "Afternoon",
+        title: "Taste Leshan",
+        description: "Add a locally planned meal before returning to the same Chengdu hotel.",
       },
     ],
   },
@@ -299,6 +513,40 @@ const editorial: Record<string, DestinationEditorial> = {
           "Many visitors travel comfortably, but altitude affects people differently. Keep the arrival light and discuss medical or mobility concerns with an appropriate professional before travel.",
       },
     ],
+    culturalStory: {
+      title: "A protected valley where water, forest and highland cultures meet",
+      paragraphs: [
+        "Jiuzhaigou means 'Valley of Nine Villages,' referring to Tibetan villages historically located in the region. Its famous blue and green lakes are formed by mineral-rich water, fallen trees and travertine barriers, creating an unusual sequence of color and clarity.",
+        "The landscape should not be separated from its human setting. Tibetan and Qiang cultures, conservation rules and the realities of rebuilding after earthquakes all form part of the contemporary destination. Respectful travel avoids turning local identity into decorative scenery.",
+      ],
+    },
+    foodStory: {
+      title: "Mountain travel requires practical expectations around food",
+      paragraphs: [
+        "Food in the wider region may draw on Sichuan, Tibetan and Qiang traditions, with yak products, barley, preserved ingredients and warming dishes appearing alongside familiar Chinese options. Tourist-area quality varies considerably.",
+        "Meals should be planned for comfort, dietary safety and the day's altitude demands. Travelers with strict needs benefit from advance briefing and realistic expectations rather than assuming the same restaurant range available in Chengdu.",
+      ],
+    },
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Arrive and acclimatize",
+        description:
+          "Treat the regional transfer as a journey day and keep the evening deliberately light.",
+      },
+      {
+        day: "Day 2",
+        title: "Jiuzhaigou National Park",
+        description:
+          "Use park shuttles and selected walks to follow lakes, falls and forest without racing.",
+      },
+      {
+        day: "Day 3",
+        title: "A second landscape choice",
+        description:
+          "Choose a gentler valley day or Huanglong only after weather and altitude are assessed.",
+      },
+    ],
   },
   zhangjiajie: {
     bestTime:
@@ -338,6 +586,44 @@ const editorial: Record<string, DestinationEditorial> = {
         question: "Is Zhangjiajie suitable for travelers with limited mobility?",
         answer:
           "Some major viewpoints are accessible with cableways, lifts and shuttle buses, but steps and queues remain. The route must be selected around the traveler's specific mobility needs.",
+      },
+    ],
+    culturalStory: {
+      title: "A landscape shaped by geology, weather and Tujia culture",
+      paragraphs: [
+        "Zhangjiajie's quartz-sandstone pillars were shaped over immense periods by uplift, water and erosion. Their vertical forms look otherworldly, yet the region is a real ecological system of forest, streams and changing mountain weather rather than a single cinematic viewpoint.",
+        "The wider area is also home to Tujia and other communities whose history predates modern tourism. A thoughtful guide separates genuine regional context from staged claims, while helping visitors understand how park development, conservation and local livelihoods interact.",
+      ],
+    },
+    foodStory: {
+      title: "Hunan flavors after a day in the mountains",
+      paragraphs: [
+        "Local cooking belongs to the broader Hunan tradition, known for fresh chilies, smoked ingredients, pickled vegetables and direct, savory flavors. Meals can feel particularly restorative after cool or wet mountain days.",
+        "Spice tolerance should be discussed before ordering, and mountain-area restaurant choices should balance regional character with consistency. The most useful guide orders a coherent shared meal instead of presenting unfamiliar dishes without explanation.",
+      ],
+    },
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Yuanjiajie and Tianzi Mountain",
+        description: "Use lifts, shuttles and cableways for the main cliff-top pillar landscapes.",
+      },
+      {
+        day: "Day 2",
+        title: "Golden Whip Stream",
+        description:
+          "Experience the forest and sandstone from the valley rather than another high platform.",
+      },
+      {
+        day: "Day 3",
+        title: "Tianmen Mountain",
+        description:
+          "Move to the city base for the cableway, cliff route and Tianmen Cave when conditions allow.",
+      },
+      {
+        day: "Day 4",
+        title: "Weather buffer or chosen extension",
+        description: "Keep flexibility for photography, Grand Canyon or a slower mountain day.",
       },
     ],
   },

@@ -1,4 +1,5 @@
 import { destinationAsset } from "@/content/destinations/assets";
+import { destinationGuideAssets } from "@/content/destinations/guide-assets";
 import type { MediaAsset } from "@/types/component-library";
 
 export const destinationInterests = [
@@ -89,7 +90,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–5 nights",
     bestFor: "A first trip to China",
     interests: ["icons", "heritage", "food"],
-    image: images.beijing,
+    image: destinationGuideAssets.beijing.hero,
     guideHref: "/destinations/beijing",
   },
   {
@@ -101,7 +102,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "2–3 nights",
     bestFor: "History in context",
     interests: ["icons", "heritage", "food"],
-    image: images.xian,
+    image: destinationGuideAssets.xian.hero,
   },
   {
     id: "shanghai",
@@ -113,7 +114,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "2–4 nights",
     bestFor: "An easy finale",
     interests: ["city", "food", "heritage"],
-    image: images.shanghai,
+    image: destinationGuideAssets.shanghai.hero,
     guideHref: "/destinations/shanghai",
   },
   {
@@ -126,7 +127,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–5 nights",
     bestFor: "Families and food lovers",
     interests: ["pandas", "food", "city"],
-    image: images.chengdu,
+    image: destinationGuideAssets.chengdu.hero,
     guideHref: "/destinations/chengdu",
   },
   {
@@ -139,7 +140,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "2–3 nights",
     bestFor: "Urban energy",
     interests: ["city", "food"],
-    image: images.chongqing,
+    image: destinationGuideAssets.chongqing.hero,
   },
   {
     id: "leshan",
@@ -151,7 +152,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "Day trip or 1 night",
     bestFor: "Culture and monumental heritage",
     interests: ["icons", "heritage", "landscape"],
-    image: images.leshan,
+    image: destinationGuideAssets.leshan.hero,
   },
   {
     id: "jiuzhaigou",
@@ -163,7 +164,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–4 nights",
     bestFor: "Landscape seekers",
     interests: ["landscape"],
-    image: images.jiuzhaigou,
+    image: destinationGuideAssets.jiuzhaigou.hero,
   },
   {
     id: "zhangjiajie",
@@ -175,7 +176,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–4 nights",
     bestFor: "Big scenery",
     interests: ["landscape"],
-    image: images.zhangjiajie,
+    image: destinationGuideAssets.zhangjiajie.hero,
   },
 ];
 

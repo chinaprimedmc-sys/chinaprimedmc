@@ -37,6 +37,10 @@ export function EditorialDestinationTemplate({
     stayStrategy: string;
     firstTimerNote: string;
     faqs: Array<{ question: string; answer: string }>;
+    culturalStory: { title: string; paragraphs: [string, string] };
+    foodStory: { title: string; paragraphs: [string, string] };
+    itinerary: Array<{ day: string; title: string; description: string }>;
+    gallery: Array<{ src: string; alt: string; objectPosition?: string }>;
   };
   destinations: CmsDestinationCard[];
   journeys: JourneyCatalogItem[];
@@ -111,6 +115,46 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
+      <section className="border-y border-black/8 bg-white py-24 md:py-32">
+        <div className="mx-auto grid max-w-[92rem] gap-12 px-5 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+          <div className="self-center">
+            <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+              Culture and historical context
+            </p>
+            <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
+              {destination.culturalStory.title}
+            </h2>
+            <div className="mt-7 grid gap-5 text-base leading-8 text-[#1b1c19]/68 md:text-lg">
+              {destination.culturalStory.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+          <EditorialImage image={destination.gallery[0]} />
+        </div>
+      </section>
+
+      {journeys[0] ? (
+        <section className="bg-[#dfe8e0] py-16">
+          <div className="mx-auto grid max-w-[92rem] gap-8 px-5 sm:px-6 md:grid-cols-[1fr_auto] md:items-center lg:px-8">
+            <div>
+              <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+                A real route including {destination.name}
+              </p>
+              <h2 className="mt-3 max-w-3xl font-serif text-3xl md:text-4xl">
+                {journeys[0].title}
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-[#1b1c19]/64">
+                {journeys[0].durationLabel} · {journeys[0].routeLabel}
+              </p>
+            </div>
+            <CtaButton href={journeys[0].href} size="lg">
+              View this itinerary
+            </CtaButton>
+          </div>
+        </section>
+      ) : null}
+
       <section className="mx-auto grid max-w-[92rem] gap-12 px-5 py-24 sm:px-6 md:grid-cols-[.72fr_1.28fr] md:py-32 lg:px-8">
         <div>
           <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
@@ -127,6 +171,41 @@ export function EditorialDestinationTemplate({
             connection depends on your season, available time and the contrast you want from the
             next destination.
           </p>
+        </div>
+      </section>
+
+      <section className="border-y border-black/8 bg-white py-24 md:py-32">
+        <div className="mx-auto grid max-w-[92rem] gap-12 px-5 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+          <div className="grid grid-cols-2 gap-4">
+            {destination.gallery.slice(1, 3).map((image, index) => (
+              <div
+                key={image.src}
+                className={`relative overflow-hidden rounded-[1.25rem] ${index === 0 ? "aspect-[3/4]" : "mt-12 aspect-[3/4]"}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width:1024px) 22vw, 48vw"
+                  className="object-cover"
+                  style={{ objectPosition: image.objectPosition }}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="self-center">
+            <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+              Food and social life
+            </p>
+            <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
+              {destination.foodStory.title}
+            </h2>
+            <div className="mt-7 grid gap-5 text-base leading-8 text-[#1b1c19]/68 md:text-lg">
+              {destination.foodStory.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -148,6 +227,41 @@ export function EditorialDestinationTemplate({
                 <h3 className="mt-8 text-xl leading-8 font-semibold">{experience}</h3>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-black/8 bg-[#e9ede9] py-24 md:py-32">
+        <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
+          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+            Suggested {destination.name} itinerary
+          </p>
+          <h2 className="mt-5 max-w-4xl font-serif text-4xl md:text-6xl">
+            A realistic way to use {destination.recommendedStay.toLowerCase()}.
+          </h2>
+          <div className="mt-12 divide-y divide-black/10 border-y border-black/10">
+            {destination.itinerary.map((item) => (
+              <article
+                key={`${item.day}-${item.title}`}
+                className="grid gap-3 py-6 md:grid-cols-[8rem_18rem_1fr] md:items-baseline"
+              >
+                <p className="text-xs font-semibold tracking-[.16em] text-[#607868] uppercase">
+                  {item.day}
+                </p>
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+                <p className="leading-7 text-[#1b1c19]/64">{item.description}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {journeys[0] ? (
+              <CtaButton href={journeys[0].href} size="lg">
+                See the complete journey
+              </CtaButton>
+            ) : null}
+            <CtaButton href={planningHref} variant="secondary" size="lg">
+              Customize this pace
+            </CtaButton>
           </div>
         </div>
       </section>
@@ -409,5 +523,24 @@ function PlanningCard({ icon, title, text }: { icon: ReactNode; title: string; t
       <h3 className="mt-5 text-xl font-semibold">{title}</h3>
       <p className="mt-3 text-sm leading-7 text-[#1b1c19]/64">{text}</p>
     </article>
+  );
+}
+
+function EditorialImage({
+  image,
+}: {
+  image: { src: string; alt: string; objectPosition?: string };
+}) {
+  return (
+    <div className="relative min-h-[28rem] overflow-hidden rounded-[1.5rem] md:min-h-[38rem]">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes="(min-width:1024px) 45vw, 100vw"
+        className="object-cover"
+        style={{ objectPosition: image.objectPosition }}
+      />
+    </div>
   );
 }
