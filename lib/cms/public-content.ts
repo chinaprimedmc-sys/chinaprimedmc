@@ -109,24 +109,24 @@ export async function getPublicDestination(slug: string) {
 
 export async function getPublicDestinationHub() {
   return {
-    heroEyebrow: "Private China travel guide",
-    heroTitle: "Choose the China that fits your journey.",
+    heroEyebrow: "China destination guides",
+    heroTitle: "Find the right destinations for your China journey.",
     heroCopy:
-      "Eight destinations already connected to real private journeys, with practical guides to help you choose the right place and pace.",
-    interestEyebrow: "Eight places, clearly presented",
-    interestTitle: "Start with the cities and landscapes you want to experience.",
+      "Explore China's historic capitals, modern cities and extraordinary landscapes. Each guide explains what makes the destination special, how long to stay and how it can fit into a private China tour.",
+    interestEyebrow: "Explore China by destination",
+    interestTitle: "Cities, culture and landscapes worth building a journey around.",
     interestCopy:
-      "Open a destination guide for culture, food, timing and a private journey that brings it to life.",
-    journeysEyebrow: "Private journeys",
-    journeysTitle: "See how destinations connect.",
+      "Use our in-depth China travel guides to compare local culture, signature food, the best time to visit and a comfortable length of stay before choosing your route.",
+    journeysEyebrow: "Private China tours",
+    journeysTitle: "Turn the places you choose into one well-paced journey.",
     journeysCopy:
-      "These private routes show how different chapters of China can connect without forcing the pace.",
+      "Explore private China tour itineraries that connect major sights with meaningful local experiences, realistic travel times and room to enjoy each destination.",
     featuredJourneys: mergeCoreJourneyFallbacks([]),
-    ctaEyebrow: "05 · A route made personal",
-    ctaTitle: "Not sure where to begin?",
+    ctaEyebrow: "Plan with a local China specialist",
+    ctaTitle: "Not sure which China destinations work well together?",
     ctaCopy:
-      "A China specialist can connect the destinations, dates and pace into one coherent private journey.",
-    ctaLabel: "Shape my China journey",
+      "Tell us what interests you, when you want to travel and how you like to explore. We will suggest a practical private route with the right destinations, hotels and pace.",
+    ctaLabel: "Plan my private China tour",
   };
 }
 

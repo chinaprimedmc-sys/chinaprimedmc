@@ -14,9 +14,9 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = createMetadata({
-  title: "China Destinations for Private Journeys",
+  title: "China Destinations & Private Tour Travel Guides",
   description:
-    "Explore Beijing, Xi'an, Shanghai, Chengdu, Chongqing, Leshan, Jiuzhaigou and Zhangjiajie, each connected to a real private China journey.",
+    "Explore expert China destination guides with culture, food, best times to visit, recommended stays and private tours planned by local travel specialists.",
   path: "/destinations",
   image: "/home/beijing-forbidden-city-1400.webp",
 });
@@ -36,9 +36,9 @@ export default async function DestinationsPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "China destinations for private journeys",
+          name: "China destinations and private tour travel guides",
           description:
-            "Eight China destinations with practical guides and private journeys for international travelers.",
+            "Expert China destination guides covering local culture, food, travel planning, recommended stays and private tours for international travelers.",
           url: pageUrl,
           mainEntity: {
             "@type": "ItemList",

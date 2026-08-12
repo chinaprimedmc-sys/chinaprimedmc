@@ -75,7 +75,7 @@ export function DestinationExplorer({
               href="#all-destinations"
               className="group inline-flex items-center gap-2 text-sm font-semibold"
             >
-              Explore all eight{" "}
+              Explore destination guides{" "}
               <ArrowRight className="size-4 transition group-hover:translate-x-1" />
             </a>
           </div>
