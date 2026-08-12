@@ -32,6 +32,7 @@ export const publicRouteSlugs = {
     "urumqi",
   ],
   journal: [
+    "chengdu-chongqing-zhangjiajie-itinerary",
     "private-china-tour-cost-2026",
     "10-day-china-itinerary-first-time-visitors",
     "private-china-tour-from-singapore",

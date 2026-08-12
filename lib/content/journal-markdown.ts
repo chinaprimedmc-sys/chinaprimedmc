@@ -21,6 +21,7 @@ import mattaConnectMarkdown from "@/content/journal/articles/2026-08-08-china-pr
 import privateChinaTourCostMarkdown from "@/content/journal/articles/2026-08-10-private-china-tour-cost-2026.md";
 import tenDayChinaItineraryMarkdown from "@/content/journal/articles/2026-08-10-10-day-china-itinerary-first-time-visitors.md";
 import singaporePrivateChinaTourMarkdown from "@/content/journal/articles/2026-08-10-private-china-tour-from-singapore.md";
+import chengduChongqingZhangjiajieMarkdown from "@/content/journal/articles/2026-08-12-chengdu-chongqing-zhangjiajie-itinerary.md";
 
 const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md":
@@ -52,6 +53,8 @@ const bundledMarkdown: Record<string, string> = {
     tenDayChinaItineraryMarkdown,
   "content/journal/articles/2026-08-10-private-china-tour-from-singapore.md":
     singaporePrivateChinaTourMarkdown,
+  "content/journal/articles/2026-08-12-chengdu-chongqing-zhangjiajie-itinerary.md":
+    chengduChongqingZhangjiajieMarkdown,
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {

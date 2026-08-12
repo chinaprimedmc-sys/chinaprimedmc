@@ -8,6 +8,34 @@ const author = {
 };
 
 const journalImages = {
+  chengduChongqingZhangjiajie: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/hero-01.webp",
+    alt: "International travelers looking across Zhangjiajie's sandstone peaks",
+    width: 1600,
+    height: 1067,
+    objectPosition: "50% 46%",
+  },
+  chengduChongqingZhangjiajieChengdu: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/chengdu-01.webp",
+    alt: "Giant panda resting in a green habitat in Chengdu",
+    width: 1600,
+    height: 1067,
+    objectPosition: "50% 48%",
+  },
+  chengduChongqingZhangjiajieChongqing: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/chongqing-01.webp",
+    alt: "Chongqing's layered skyline during the blue hour",
+    width: 1600,
+    height: 1067,
+    objectPosition: "50% 48%",
+  },
+  chengduChongqingZhangjiajieForest: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/zhangjiajie-01.webp",
+    alt: "Forest and sandstone peaks in Zhangjiajie National Forest Park",
+    width: 1600,
+    height: 1067,
+    objectPosition: "50% 48%",
+  },
   privateChinaTourCost: {
     src: "/home/editorial/great-wall-private-china-travel.webp",
     alt: "Private travelers walking on the Great Wall during a tailored China journey",
@@ -193,6 +221,66 @@ const journalImages = {
 } as const;
 
 export const publishedJournalArticles: JournalArticle[] = [
+  {
+    slug: "chengdu-chongqing-zhangjiajie-itinerary",
+    title: "11-Day Chengdu, Chongqing & Zhangjiajie Itinerary",
+    dek: "Connect pandas, Sichuan food, Chongqing's vertical cityscape and Zhangjiajie's mountain scenery without turning the trip into a transfer schedule.",
+    excerpt:
+      "A practical 11-day route with realistic city stays, weather-aware mountain days, physical-load advice and two flexible days.",
+    category: "Destinations",
+    tags: ["chengdu", "chongqing", "zhangjiajie", "nature", "food", "photography"],
+    author,
+    publishedAt: "2026-08-12",
+    readingTime: "13 min read",
+    featured: true,
+    editorPick: true,
+    hero: {
+      eyebrow: "Three-region private route",
+      image: journalImages.chengduChongqingZhangjiajie,
+    },
+    gallery: [
+      journalImages.chengduChongqingZhangjiajieChengdu,
+      journalImages.chengduChongqingZhangjiajieChongqing,
+      journalImages.chengduChongqingZhangjiajieForest,
+    ],
+    content: [],
+    seo: {
+      title: "11-Day Chengdu, Chongqing & Zhangjiajie Itinerary",
+      description:
+        "Plan an 11-day Chengdu, Chongqing and Zhangjiajie trip with pandas, Sichuan food, mountain scenery, open days and private local support.",
+      keywords: [
+        "Chengdu Chongqing Zhangjiajie itinerary",
+        "11 day China itinerary Chengdu Chongqing Zhangjiajie",
+        "Chengdu Chongqing Zhangjiajie tour",
+        "private Zhangjiajie itinerary",
+        "China panda and Zhangjiajie tour",
+      ],
+      ogImage: journalImages.chengduChongqingZhangjiajie,
+    },
+    related: {
+      destinations: ["chengdu", "chongqing", "zhangjiajie"],
+      tours: [
+        "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+        "chengdu-pandas-sichuan-table",
+        "shanghai-zhangjiajie-floating-peaks",
+      ],
+      experiences: ["pandas", "food", "private-guides"],
+      articles: [
+        "chengdu-panda-base-tickets-foreigners",
+        "10-day-china-itinerary-first-time-visitors",
+        "private-china-tour-cost-2026",
+      ],
+    },
+    conversion: {
+      eyebrow: "Shape the three-region route",
+      title: "Decide the pace before we price the trip.",
+      description:
+        "Share your dates, party, hotel expectations and walking preferences. We will recommend the transport, open-day use and mountain pacing before preparing the proposal.",
+      label: "Request the 11-Day Proposal",
+      href: "/start-planning?source=journal-ccz-itinerary",
+    },
+    sourcePath: "content/journal/articles/2026-08-12-chengdu-chongqing-zhangjiajie-itinerary.md",
+  },
   {
     slug: "private-china-tour-cost-2026",
     title: "How Much Does a Private China Tour Cost in 2026?",

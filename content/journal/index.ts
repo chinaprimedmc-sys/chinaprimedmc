@@ -24,6 +24,8 @@ export const journalTags: JournalTag[] = [
   { slug: "beijing", label: "Beijing", type: "city" },
   { slug: "xian", label: "Xi'an", type: "city" },
   { slug: "chengdu", label: "Chengdu", type: "city" },
+  { slug: "chongqing", label: "Chongqing", type: "city" },
+  { slug: "zhangjiajie", label: "Zhangjiajie", type: "city" },
   { slug: "shanghai", label: "Shanghai", type: "city" },
   { slug: "first-time-china", label: "First-time China", type: "travel-style" },
   { slug: "family-travel", label: "Family Travel", type: "audience" },
