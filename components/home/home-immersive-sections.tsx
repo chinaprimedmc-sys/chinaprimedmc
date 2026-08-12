@@ -8,6 +8,7 @@ import {
   useSpring,
 } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
@@ -338,6 +339,84 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
         pointerStart.current = null;
       }}
     >
+      <div className="home-featured-mobile">
+        <header className="home-featured-mobile__header">
+          <p>Featured private journeys</p>
+          <p aria-live="polite">
+            {String(activeIndex + 1).padStart(2, "0")} / {String(journeys.length).padStart(2, "0")}
+          </p>
+        </header>
+
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.article
+            className="home-featured-mobile__journey"
+            key={activeJourney.href}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Link
+              href={activeJourney.href}
+              className="home-featured-mobile__media"
+              aria-label={`Explore ${activeJourney.displayTitle}`}
+              onClick={(event) => {
+                if (!didSwipe.current) return;
+                event.preventDefault();
+                didSwipe.current = false;
+              }}
+            >
+              <Image
+                src={activeJourney.image.src}
+                alt={activeJourney.image.alt}
+                width={activeJourney.image.width ?? 1600}
+                height={activeJourney.image.height ?? 1000}
+                sizes="calc(100vw - 40px)"
+                className="home-featured-mobile__image"
+              />
+              <span className="home-featured-mobile__image-action" aria-hidden="true">
+                View journey
+                <ArrowUpRight size={15} />
+              </span>
+            </Link>
+
+            <div className="home-featured-mobile__copy">
+              <p className="home-featured-mobile__route">{activeJourney.routeLine}</p>
+              <h2>{getMobileJourneyTitle(activeJourney)}</h2>
+              <p className="home-featured-mobile__summary">{activeJourney.description}</p>
+              <div className="home-featured-mobile__actions">
+                <Link href={activeJourney.href} className="home-featured-mobile__primary">
+                  Explore the journey
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                </Link>
+                <Link
+                  href={`/start-planning?journey=${encodeURIComponent(activeJourney.href.split("/").pop() ?? "")}`}
+                  className="home-featured-mobile__secondary"
+                >
+                  Request a private proposal
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </motion.article>
+        </AnimatePresence>
+
+        <div className="home-featured-mobile__rail" aria-label="Choose a featured journey">
+          {journeys.map((journey, index) => (
+            <button
+              type="button"
+              key={journey.href}
+              aria-label={`Show ${journey.displayTitle}`}
+              aria-pressed={index === activeIndex}
+              onClick={() => showJourney(index)}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{getMobileJourneyLabel(journey)}</strong>
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="home-featured-cinema__stage">
         <motion.header
           className="home-featured-cinema__header"
@@ -724,6 +803,26 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
       </div>
     </motion.section>
   );
+}
+
+function getMobileJourneyLabel(journey: FeaturedJourney) {
+  const destinations = journey.route
+    .split(/\s*[·,]\s*/)
+    .map((destination) => destination.trim())
+    .filter(Boolean);
+
+  if (!destinations.length) return journey.duration;
+  if (destinations.length === 1) return destinations[0];
+  return `${destinations[0]} +${destinations.length - 1}`;
+}
+
+function getMobileJourneyTitle(journey: FeaturedJourney) {
+  const title = journey.displayTitle
+    .replace(/^\d+[-–—]?\s*day[s]?\s+/i, "")
+    .replace(/\s+(?:private\s+)?(?:tour|journey)$/i, "")
+    .trim();
+
+  return title || journey.displayTitle;
 }
 
 export function PlanningStory({ image, steps }: { image: MediaAsset; steps: PlanningStep[] }) {
