@@ -1,12 +1,7 @@
 import "server-only";
 
 import { siteConfig } from "@/config/site";
-import {
-  destinationInterestImages,
-  destinationInterests,
-  destinationRegions,
-  explorerDestinations,
-} from "@/content/destinations/explorer";
+import { explorerDestinations } from "@/content/destinations/explorer";
 import { getDestinationEditorial } from "@/content/destinations/editorial";
 import { destinationGuideAssets } from "@/content/destinations/guide-assets";
 import { journalArticles } from "@/content/journal";
@@ -115,30 +110,15 @@ export async function getPublicDestination(slug: string) {
 export async function getPublicDestinationHub() {
   return {
     heroEyebrow: "Private China travel guide",
-    heroTitle: "Find the China that stays with you.",
+    heroTitle: "Choose the China that fits your journey.",
     heroCopy:
-      "Explore China's defining cities, landscapes and cultures, then see how they fit into a well-planned private route.",
-    heroImage: {
-      src: "/home/beijing-forbidden-city-1400.webp",
-      alt: "Imperial rooftops in Beijing opening a journey across China",
-    } satisfies MediaAsset,
-    interestEyebrow: "01 · Follow your curiosity",
-    interestTitle: "What draws you to China?",
-    interestCopy: "Start with an interest. We will show you the places where it comes alive.",
-    interests: destinationInterests.map((item) => ({
-      ...item,
-      image: destinationInterestImages[item.id],
-    })),
-    featuredEyebrow: "02 · The cinematic edit",
-    featuredTitle: "China, one chapter at a time.",
-    featuredCopy: "Scroll through the edit. Every frame opens a real destination guide.",
-    regionsEyebrow: "03 · Read the country",
-    regionsTitle: "Four regions. Eight destinations with real journeys.",
-    regionsCopy:
-      "Explore every destination by region. Each card links to practical guidance on character, pacing, timing and signature experiences.",
-    regions: [...destinationRegions],
-    journeysEyebrow: "04 · Journeys that connect",
-    journeysTitle: "See how places become a journey.",
+      "Eight destinations already connected to real private journeys, with practical guides to help you choose the right place and pace.",
+    interestEyebrow: "Eight places, clearly presented",
+    interestTitle: "Start with the cities and landscapes you want to experience.",
+    interestCopy:
+      "Open a destination guide for culture, food, timing and a private journey that brings it to life.",
+    journeysEyebrow: "Private journeys",
+    journeysTitle: "See how destinations connect.",
     journeysCopy:
       "These private routes show how different chapters of China can connect without forcing the pace.",
     featuredJourneys: mergeCoreJourneyFallbacks([]),

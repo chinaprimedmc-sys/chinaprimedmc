@@ -38,7 +38,7 @@ export default async function DestinationsPage() {
           "@type": "CollectionPage",
           name: "China destinations for private journeys",
           description:
-            "An interest-led guide to China's major cultural, landscape, food and city destinations for private international travelers.",
+            "Eight China destinations with practical guides and private journeys for international travelers.",
           url: pageUrl,
           mainEntity: {
             "@type": "ItemList",
