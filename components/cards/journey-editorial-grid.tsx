@@ -1,17 +1,9 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-} from "framer-motion";
 import { ArrowRight, Bookmark, Check, ChevronDown, Mail, SlidersHorizontal, X } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState, type MouseEvent, type PointerEvent } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { WhatsAppIcon } from "@/components/icons";
 import { OptimizedImage } from "@/components/media/optimized-image";
@@ -121,13 +113,10 @@ const needOptions: Array<{ id: JourneyPlanningNeedId; label: string }> = [
 ];
 
 export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
-  const router = useRouter();
-  const reduceMotion = useReducedMotion();
   const [filters, setFilters] = useState<FilterState>(emptyFilters);
   const [refineOpen, setRefineOpen] = useState(false);
   const [savedSlugs, setSavedSlugs] = useState<string[]>([]);
   const [savedReady, setSavedReady] = useState(false);
-  const [transitionItem, setTransitionItem] = useState<JourneyCatalogItem | null>(null);
 
   const filteredItems = useMemo(
     () => items.filter((item) => matchesFilters(item, filters)),
@@ -190,74 +179,31 @@ export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
     });
   }
 
-  function openJourney(event: MouseEvent<HTMLAnchorElement>, item: JourneyCatalogItem) {
-    if (
-      event.defaultPrevented ||
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey
-    ) {
-      return;
-    }
-
-    event.preventDefault();
-    setTransitionItem(item);
-    window.setTimeout(() => router.push(item.href), 520);
-  }
-
   return (
     <main className="bg-[#f7f8f4] text-[#171914]">
-      <section className="relative isolate flex min-h-[62svh] items-end overflow-hidden border-b border-black/8">
+      <section className="relative isolate flex min-h-[66svh] items-end overflow-hidden border-b border-black/8">
         {heroJourney ? (
-          <motion.div
-            className="absolute inset-0 -z-20"
-            initial={reduceMotion ? false : { scale: 1.04 }}
-            animate={reduceMotion ? undefined : { scale: [1.04, 1.075, 1.045] }}
-            transition={
-              reduceMotion
-                ? undefined
-                : { duration: 19, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }
-            }
-          >
-            <OptimizedImage
-              src={heroJourney.image.src}
-              alt={heroJourney.image.alt}
-              fill
-              sizes="100vw"
-              objectPosition={heroJourney.image.objectPosition}
-              priority
-              showSkeleton={false}
-              frameClassName="absolute inset-0 h-full bg-[#dfe7df]"
-              className="h-full w-full brightness-[0.88] saturate-[1.08]"
-            />
-          </motion.div>
+          <OptimizedImage
+            src={heroJourney.image.src}
+            alt={heroJourney.image.alt}
+            fill
+            sizes="100vw"
+            objectPosition={heroJourney.image.objectPosition}
+            priority
+            showSkeleton={false}
+            frameClassName="absolute inset-0 -z-20 h-full bg-[#dfe7df]"
+            className="h-full w-full brightness-[0.88] saturate-[1.08]"
+          />
         ) : null}
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(16,20,16,0.78)_0%,rgba(16,20,16,0.58)_48%,rgba(16,20,16,0.18)_100%)] max-md:bg-[linear-gradient(180deg,rgba(16,20,16,0.35),rgba(16,20,16,0.82))]" />
         <div className="mx-auto w-full max-w-[92rem] px-5 pt-32 pb-14 text-white sm:px-6 md:pb-18 lg:px-8">
-          <motion.p
-            className="text-[0.68rem] font-semibold tracking-[0.2em] text-white/62 uppercase"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <p className="text-[0.68rem] font-semibold tracking-[0.2em] text-white/62 uppercase">
             AVIORA private journeys
-          </motion.p>
-          <motion.h1
-            className="mt-5 max-w-5xl font-serif text-[3.4rem] leading-[0.9] font-medium text-balance md:text-[5.25rem] lg:text-[6.5rem]"
-            initial={{ opacity: 0, y: 34, clipPath: "inset(0 0 22% 0)" }}
-            animate={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
+          </p>
+          <h1 className="mt-5 max-w-5xl font-serif text-[clamp(3.5rem,8vw,7.75rem)] leading-[0.86] font-medium text-balance">
             Private journeys through China.
-          </motion.h1>
-          <motion.div
-            className="mt-7 grid max-w-5xl gap-6 border-t border-white/24 pt-6 md:grid-cols-[1fr_auto] md:items-end"
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
-          >
+          </h1>
+          <div className="mt-7 grid max-w-5xl gap-6 border-t border-white/24 pt-6 md:grid-cols-[1fr_auto] md:items-end">
             <p className="max-w-2xl text-base leading-7 text-white/76 md:text-lg md:leading-8">
               Explore thoughtfully designed routes, then shape the hotels, daily rhythm and private
               support around your dates and the people travelling with you.
@@ -279,7 +225,7 @@ export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
               Browse all journeys
               <ArrowRight size={17} aria-hidden="true" />
             </button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -473,7 +419,7 @@ export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
               <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-[#5f7567] uppercase">
                 All private journeys
               </p>
-              <h2 className="mt-3 max-w-4xl font-serif text-[2.7rem] leading-[0.94] font-medium md:text-[3.8rem] lg:text-[4.35rem]">
+              <h2 className="mt-3 font-serif text-[clamp(2.7rem,5vw,5.25rem)] leading-[0.92] font-medium">
                 A starting point, made private.
               </h2>
             </div>
@@ -484,7 +430,7 @@ export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
           </header>
 
           {filteredItems.length ? (
-            <div className="mt-10 grid gap-x-6 gap-y-10 md:grid-cols-2 xl:grid-cols-12 xl:gap-x-8 xl:gap-y-14">
+            <div className="mt-10 grid gap-x-6 gap-y-12 md:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
               {filteredItems.map((item, index) => (
                 <JourneyEditorialCard
                   key={item.slug}
@@ -492,7 +438,6 @@ export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
                   index={index}
                   saved={savedSlugs.includes(item.slug)}
                   onSave={() => toggleSaved(item.slug)}
-                  onOpen={(event) => openJourney(event, item)}
                 />
               ))}
             </div>
@@ -555,10 +500,6 @@ export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
       </section>
 
       <SavedJourneys items={savedItems} onRemove={(slug) => toggleSaved(slug)} ready={savedReady} />
-
-      <AnimatePresence>
-        {transitionItem ? <JourneySheetTransition item={transitionItem} /> : null}
-      </AnimatePresence>
     </main>
   );
 }
@@ -605,64 +546,16 @@ function JourneyEditorialCard({
   index,
   saved,
   onSave,
-  onOpen,
 }: {
   item: JourneyCatalogItem;
   index: number;
   saved: boolean;
   onSave: () => void;
-  onOpen: (event: MouseEvent<HTMLAnchorElement>) => void;
 }) {
-  const reduceMotion = useReducedMotion();
-  const rotateX = useMotionValue(0);
-  const rotateY = useMotionValue(0);
-  const springX = useSpring(rotateX, { stiffness: 180, damping: 24, mass: 0.65 });
-  const springY = useSpring(rotateY, { stiffness: 180, damping: 24, mass: 0.65 });
-  const theme = journeyTheme(item);
-  const layoutClass = index % 4 === 0 || index % 4 === 3 ? "xl:col-span-7" : "xl:col-span-5";
-  const imageClass =
-    index % 4 === 0 || index % 4 === 3 ? "aspect-[16/10] xl:aspect-[16/8.6]" : "aspect-[16/10]";
-
-  function handlePointerMove(event: PointerEvent<HTMLElement>) {
-    if (reduceMotion || event.pointerType === "touch") return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const normalizedX = (event.clientX - bounds.left) / bounds.width - 0.5;
-    const normalizedY = (event.clientY - bounds.top) / bounds.height - 0.5;
-    rotateY.set(normalizedX * 4.4);
-    rotateX.set(normalizedY * -3.4);
-  }
-
-  function resetTilt() {
-    rotateX.set(0);
-    rotateY.set(0);
-  }
-
   return (
-    <motion.article
-      className={cn(
-        "group relative grid h-full min-w-0 grid-rows-[auto_1fr] will-change-transform",
-        layoutClass,
-      )}
-      style={reduceMotion ? undefined : { rotateX: springX, rotateY: springY, perspective: 1200 }}
-      initial={reduceMotion ? false : { opacity: 0, y: 34 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.7, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={resetTilt}
-    >
-      <span
-        className="absolute top-0 right-0 left-0 z-20 h-0.5 origin-left scale-x-0 transition-transform duration-700 group-hover:scale-x-100"
-        style={{ backgroundColor: theme }}
-        aria-hidden="true"
-      />
-      <div className={cn("relative overflow-hidden rounded-lg bg-[#dfe7df]", imageClass)}>
-        <Link
-          href={item.href}
-          aria-label={`Explore ${item.title}`}
-          className="block h-full"
-          onClick={onOpen}
-        >
+    <article className="group grid h-full min-w-0 grid-rows-[auto_1fr]">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[#dfe7df]">
+        <Link href={item.href} aria-label={`Explore ${item.title}`} className="block h-full">
           <OptimizedImage
             src={item.image.src}
             alt={item.image.alt}
@@ -699,12 +592,14 @@ function JourneyEditorialCard({
           <p className="text-[0.65rem] font-semibold tracking-[0.12em] text-[#5f7567] uppercase">
             {item.durationLabel} · {item.routeLabel}
           </p>
-          <Link href={item.href} onClick={onOpen}>
-            <h3 className="mt-3 max-w-3xl font-serif text-[2rem] leading-[1.02] font-medium text-balance md:text-[2.3rem] lg:text-[2.55rem]">
+          <Link href={item.href}>
+            <h3 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,3.3vw,3.6rem)] leading-[0.96] font-medium text-balance md:min-h-[3.84em]">
               {item.title}
             </h3>
           </Link>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-black/54">{item.hook}</p>
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-black/54 md:min-h-[4.5rem]">
+            {item.hook}
+          </p>
           <div className="mt-4 flex min-h-8 flex-wrap content-start gap-2">
             {item.styleFilters.slice(0, 3).map((style) => (
               <span
@@ -718,75 +613,14 @@ function JourneyEditorialCard({
         </div>
         <Link
           href={item.href}
-          onClick={onOpen}
           className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-semibold text-[#31483a] transition-colors hover:text-black"
         >
           Explore this journey
           <ArrowRight size={16} aria-hidden="true" />
         </Link>
       </div>
-    </motion.article>
+    </article>
   );
-}
-
-function JourneySheetTransition({ item }: { item: JourneyCatalogItem }) {
-  return (
-    <motion.div
-      className="fixed inset-0 z-[120] overflow-hidden bg-[#172019] text-white"
-      initial={{ y: "100%" }}
-      animate={{ y: 0 }}
-      exit={{ y: 0 }}
-      transition={{ duration: 0.52, ease: [0.65, 0, 0.35, 1] }}
-      aria-hidden="true"
-    >
-      <motion.div
-        className="absolute inset-0"
-        initial={{ scale: 1.035 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <OptimizedImage
-          src={item.image.src}
-          alt=""
-          fill
-          sizes="100vw"
-          objectPosition={item.image.objectPosition}
-          frameClassName="h-full w-full bg-[#172019]"
-          className="h-full w-full brightness-[0.7] saturate-[1.06]"
-          showSkeleton={false}
-        />
-      </motion.div>
-      <div className="absolute inset-0 bg-black/24" />
-      <div className="relative flex h-full items-end px-5 py-14 sm:px-8 md:py-20 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-white/64 uppercase">
-            Entering the journey
-          </p>
-          <p className="mt-4 max-w-5xl font-serif text-[2.8rem] leading-[0.94] text-balance md:text-[5rem]">
-            {item.title}
-          </p>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-}
-
-function journeyTheme(item: JourneyCatalogItem) {
-  const destination = item.destinationFilters[0];
-  const themes: Record<string, string> = {
-    Beijing: "#8c684f",
-    Chengdu: "#617d63",
-    Chongqing: "#966653",
-    Jiuzhaigou: "#4f7c82",
-    Shanghai: "#62778a",
-    "Xi'an": "#8b704f",
-    Zhangjiajie: "#506f5c",
-  };
-  return themes[destination] ?? "#607868";
 }
 
 function NoMatches({ onReset }: { onReset: () => void }) {

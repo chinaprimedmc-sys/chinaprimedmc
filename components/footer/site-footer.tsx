@@ -44,7 +44,7 @@ export function SiteFooter({
                   <li key={`${column.title}-${item.label}-${item.href}`}>
                     <Link
                       href={item.href}
-                      className="-mx-2 inline-flex min-h-9 items-center rounded-full px-2 text-sm text-white/72 transition hover:text-white max-[768px]:min-h-11"
+                      className="-mx-2 inline-flex min-h-9 items-center rounded-full px-2 text-sm text-white/72 transition hover:text-white"
                     >
                       {item.label}
                     </Link>
@@ -65,20 +65,20 @@ export function SiteFooter({
             <Link
               key={item.href}
               href={item.href}
-              className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white max-[768px]:min-h-11"
+              className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href="/about"
-            className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white max-[768px]:min-h-11"
+            className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
           >
             About AVIORA
           </Link>
           <Link
             href="/privacy"
-            className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white max-[768px]:min-h-11"
+            className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
           >
             Privacy
           </Link>
