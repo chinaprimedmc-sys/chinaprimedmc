@@ -272,10 +272,12 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
+  const [mobileHintActive, setMobileHintActive] = useState(true);
   const shouldReduceMotion = useReducedMotion();
   const pointerStart = useRef<number | null>(null);
   const didSwipe = useRef(false);
   const resumeTimer = useRef<number | null>(null);
+  const mobileRail = useRef<HTMLDivElement | null>(null);
   const mediaX = useMotionValue(0);
   const mediaY = useMotionValue(0);
   const mediaSpringX = useSpring(mediaX, { stiffness: 75, damping: 24, mass: 0.9 });
@@ -298,6 +300,15 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
     },
     [],
   );
+
+  useEffect(() => {
+    const activeButton = mobileRail.current?.querySelector<HTMLElement>('[aria-pressed="true"]');
+    if (!activeButton || !mobileRail.current) return;
+    mobileRail.current.scrollTo({
+      behavior: shouldReduceMotion ? "auto" : "smooth",
+      left: Math.max(activeButton.offsetLeft - 20, 0),
+    });
+  }, [activeIndex, shouldReduceMotion]);
 
   if (!journeys.length) return null;
 
@@ -324,6 +335,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
       onPointerDown={(event) => {
         pointerStart.current = event.clientX;
         didSwipe.current = false;
+        setMobileHintActive(false);
         pauseAfterInteraction();
       }}
       onPointerUp={(event) => {
@@ -347,8 +359,43 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
           </p>
         </header>
 
+        <div
+          className="home-featured-mobile__explore-cue"
+          data-active={mobileHintActive && !shouldReduceMotion}
+        >
+          <span>Swipe to explore</span>
+          <ArrowLeft size={14} aria-hidden="true" />
+        </div>
+
+        <div
+          ref={mobileRail}
+          className="home-featured-mobile__rail"
+          data-hint-active={mobileHintActive && !shouldReduceMotion}
+          aria-label="Choose a featured journey"
+          onPointerDown={() => setMobileHintActive(false)}
+          onTouchStart={() => setMobileHintActive(false)}
+        >
+          <div className="home-featured-mobile__rail-track">
+            {journeys.map((journey, index) => (
+              <button
+                type="button"
+                key={journey.href}
+                aria-label={`Show ${journey.displayTitle}`}
+                aria-pressed={index === activeIndex}
+                onClick={() => {
+                  setMobileHintActive(false);
+                  showJourney(index);
+                }}
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{getMobileJourneyLabel(journey)}</strong>
+              </button>
+            ))}
+          </div>
+        </div>
+
         <AnimatePresence mode="wait" initial={false}>
-          <motion.article
+          <motion.div
             className="home-featured-mobile__journey"
             key={activeJourney.href}
             initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
@@ -379,42 +426,36 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                 <ArrowUpRight size={15} />
               </span>
             </Link>
-
-            <div className="home-featured-mobile__copy">
-              <p className="home-featured-mobile__route">{activeJourney.routeLine}</p>
-              <h2>{getMobileJourneyTitle(activeJourney)}</h2>
-              <p className="home-featured-mobile__summary">{activeJourney.description}</p>
-              <div className="home-featured-mobile__actions">
-                <Link href={activeJourney.href} className="home-featured-mobile__primary">
-                  Explore the journey
-                  <ArrowUpRight size={17} aria-hidden="true" />
-                </Link>
-                <Link
-                  href={`/start-planning?journey=${encodeURIComponent(activeJourney.href.split("/").pop() ?? "")}`}
-                  className="home-featured-mobile__secondary"
-                >
-                  Request a private proposal
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-          </motion.article>
+          </motion.div>
         </AnimatePresence>
 
-        <div className="home-featured-mobile__rail" aria-label="Choose a featured journey">
-          {journeys.map((journey, index) => (
-            <button
-              type="button"
-              key={journey.href}
-              aria-label={`Show ${journey.displayTitle}`}
-              aria-pressed={index === activeIndex}
-              onClick={() => showJourney(index)}
-            >
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{getMobileJourneyLabel(journey)}</strong>
-            </button>
-          ))}
-        </div>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            className="home-featured-mobile__copy"
+            key={`${activeJourney.href}-copy`}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -5 }}
+            transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="home-featured-mobile__route">{activeJourney.routeLine}</p>
+            <h2>{getMobileJourneyTitle(activeJourney)}</h2>
+            <p className="home-featured-mobile__summary">{activeJourney.description}</p>
+            <div className="home-featured-mobile__actions">
+              <Link href={activeJourney.href} className="home-featured-mobile__primary">
+                Explore the journey
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
+              <Link
+                href={`/start-planning?journey=${encodeURIComponent(activeJourney.href.split("/").pop() ?? "")}`}
+                className="home-featured-mobile__secondary"
+              >
+                Request a private proposal
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <div className="home-featured-cinema__stage">
