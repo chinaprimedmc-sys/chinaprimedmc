@@ -1,7 +1,6 @@
 "use client";
 
-import * as Popover from "@radix-ui/react-popover";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
@@ -23,7 +22,6 @@ export function SocialContactRail({
   const isBackend = pathname.startsWith("/admin");
   const [heroHasPassed, setHeroHasPassed] = useState(false);
   const [featuredJourneyInView, setFeaturedJourneyInView] = useState(false);
-  const [featuredActionsInView, setFeaturedActionsInView] = useState(false);
   const [expertFormInView, setExpertFormInView] = useState(false);
   const [formFieldFocused, setFormFieldFocused] = useState(false);
   const [journalMastheadPassed, setJournalMastheadPassed] = useState(false);
@@ -35,7 +33,6 @@ export function SocialContactRail({
 
     const hero = document.querySelector<HTMLElement>(".home-conversion-hero, .home-hero-split");
     const featuredJourney = document.querySelector<HTMLElement>(".home-featured-cinema");
-    const featuredActions = document.querySelector<HTMLElement>(".home-featured-cinema__actions");
     const expertForm = document.querySelector<HTMLElement>("#find-your-china");
 
     if (!hero) {
@@ -58,14 +55,6 @@ export function SocialContactRail({
       : null;
     if (featuredJourney) featuredObserver?.observe(featuredJourney);
 
-    const featuredActionsObserver = featuredActions
-      ? new IntersectionObserver(
-          ([entry]) => setFeaturedActionsInView(Boolean(entry?.isIntersecting)),
-          { threshold: 0.15 },
-        )
-      : null;
-    if (featuredActions) featuredActionsObserver?.observe(featuredActions);
-
     const expertObserver = expertForm
       ? new IntersectionObserver(([entry]) => setExpertFormInView(Boolean(entry?.isIntersecting)), {
           threshold: 0.04,
@@ -75,7 +64,11 @@ export function SocialContactRail({
 
     const handleFocusIn = (event: FocusEvent) => {
       const target = event.target;
-      if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) {
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement
+      ) {
         setFormFieldFocused(true);
       }
     };
@@ -86,7 +79,6 @@ export function SocialContactRail({
     return () => {
       observer.disconnect();
       featuredObserver?.disconnect();
-      featuredActionsObserver?.disconnect();
       expertObserver?.disconnect();
       document.removeEventListener("focusin", handleFocusIn);
       document.removeEventListener("focusout", handleFocusOut);
@@ -120,106 +112,61 @@ export function SocialContactRail({
   const isVisible = isJournalPage
     ? journalMastheadPassed
     : !isHomePage || (heroHasPassed && !featuredJourneyInView);
-  const mobileHomeBarVisible =
-    isHomePage && heroHasPassed && !featuredActionsInView && !expertFormInView && !formFieldFocused;
+  const hideForForm = isHomePage && (expertFormInView || formFieldFocused);
 
   return (
     <>
-      <Popover.Root>
-        <div className={cn("social-contact-rail", isVisible && "is-visible")}>
-          <Popover.Trigger className="social-contact-rail__trigger" aria-label="Contact us">
-            <span className="social-contact-rail__trigger-label">Contact us</span>
-          </Popover.Trigger>
-          <Popover.Portal>
-            <Popover.Content
-              align="end"
-              side="top"
-              sideOffset={12}
-              collisionPadding={12}
-              className="social-contact-rail__panel"
-            >
-              <div className="social-contact-rail__panel-heading">
-                <p className="social-contact-rail__panel-eyebrow">A direct line</p>
-                <p className="social-contact-rail__panel-title">Speak with a China specialist.</p>
-              </div>
-              <div className="social-contact-rail__options">
-                <ContactOption
-                  href={whatsappHref}
-                  label="WhatsApp us"
-                  detail="Quick questions and route ideas"
-                  external
-                >
-                  <WhatsAppIcon className="social-contact-rail__option-icon social-contact-rail__option-icon--whatsapp" />
-                </ContactOption>
-                <ContactOption
-                  href={`mailto:${email}`}
-                  label="Email us"
-                  detail="Thoughtful trip planning"
-                >
-                  <Mail
-                    className="social-contact-rail__option-icon social-contact-rail__option-icon--email"
-                    aria-hidden="true"
-                  />
-                </ContactOption>
-              </div>
-              <Popover.Close className="social-contact-rail__close">Close</Popover.Close>
-              <Popover.Arrow className="social-contact-rail__arrow" />
-            </Popover.Content>
-          </Popover.Portal>
-        </div>
-      </Popover.Root>
-
-      {isHomePage ? (
-        <div className={cn("home-mobile-contact-bar", mobileHomeBarVisible && "is-visible")}>
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => trackEvent("whatsapp_click", { placement: "home_mobile_bar" })}
-          >
-            <WhatsAppIcon aria-hidden="true" />
-            WhatsApp
-          </a>
-          <a
-            href="#find-your-china"
-            onClick={() => trackEvent("cta_click", { placement: "home_mobile_bar" })}
-          >
-            Start Planning
-            <ArrowUpRight aria-hidden="true" />
-          </a>
-        </div>
-      ) : null}
+      <div className={cn("social-contact-rail", isVisible && !hideForForm && "is-visible")}>
+        <QuickContactLink
+          href={whatsappHref}
+          label="WhatsApp"
+          className="social-contact-rail__quick-link--whatsapp"
+          external
+        >
+          <WhatsAppIcon aria-hidden="true" />
+        </QuickContactLink>
+        <QuickContactLink
+          href={`mailto:${email}`}
+          label="Email"
+          className="social-contact-rail__quick-link--email"
+        >
+          <Mail aria-hidden="true" />
+        </QuickContactLink>
+      </div>
     </>
   );
 }
 
-function ContactOption({
+function QuickContactLink({
   href,
   label,
-  detail,
+  className,
   external = false,
   children,
 }: {
   href: string;
   label: string;
-  detail: string;
+  className: string;
   external?: boolean;
   children: ReactNode;
 }) {
   return (
     <a
       href={href}
-      className="social-contact-rail__option"
-      onClick={() => trackEvent(external ? "whatsapp_click" : "email_click")}
+      className={cn("social-contact-rail__quick-link", className)}
+      aria-label={`${label} AVIORA`}
+      onClick={() =>
+        trackEvent(external ? "whatsapp_click" : "email_click", {
+          placement: "floating_quick_contact",
+        })
+      }
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
     >
-      <span className="social-contact-rail__option-mark">{children}</span>
-      <span className="social-contact-rail__option-copy">
-        <span className="social-contact-rail__option-label">{label}</span>
-        <span className="social-contact-rail__option-detail">{detail}</span>
+      <span className="social-contact-rail__quick-label" aria-hidden="true">
+        {label}
       </span>
-      <ArrowUpRight className="social-contact-rail__option-arrow" aria-hidden="true" />
+      <span className="social-contact-rail__quick-icon">{children}</span>
     </a>
   );
 }

@@ -29,6 +29,8 @@ export function CtaCard({
   className,
 }: CtaCardProps) {
   const isImage = variant === "image";
+  const primaryIsWhatsapp = primary?.href.includes("wa.me") ?? false;
+  const secondaryIsWhatsapp = secondary?.href.includes("wa.me") ?? false;
   return (
     <div
       className={cn(
@@ -73,9 +75,23 @@ export function CtaCard({
         ) : null}
         {primary || secondary ? (
           <div className="mt-7 flex flex-wrap gap-3">
-            {primary ? <CtaButton href={primary.href}>{primary.label}</CtaButton> : null}
+            {primary ? (
+              <CtaButton
+                href={primary.href}
+                variant={primaryIsWhatsapp ? "whatsappFrosted" : isImage ? "light" : "primary"}
+                target={primaryIsWhatsapp ? "_blank" : undefined}
+                rel={primaryIsWhatsapp ? "noreferrer" : undefined}
+              >
+                {primary.label}
+              </CtaButton>
+            ) : null}
             {secondary ? (
-              <CtaButton href={secondary.href} variant={isImage ? "glass" : "outline"}>
+              <CtaButton
+                href={secondary.href}
+                variant={secondaryIsWhatsapp ? "whatsappFrosted" : isImage ? "glass" : "outline"}
+                target={secondaryIsWhatsapp ? "_blank" : undefined}
+                rel={secondaryIsWhatsapp ? "noreferrer" : undefined}
+              >
                 {secondary.label}
               </CtaButton>
             ) : null}

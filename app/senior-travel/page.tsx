@@ -199,7 +199,7 @@ export default function SeniorTravelPage() {
           </CtaButton>
           <CtaButton
             href="https://wa.me/447985052302"
-            variant="outline"
+            variant="whatsappFrosted"
             size="lg"
             className="w-full"
           >

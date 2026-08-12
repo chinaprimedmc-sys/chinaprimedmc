@@ -141,7 +141,7 @@ export function HomeHeroMotion({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.72, delay: copyDelay + 0.16, ease: [0.16, 1, 0.3, 1] }}
           >
-            <CtaButton href={primary.href} size="md">
+            <CtaButton href={primary.href} variant="light" size="md">
               {primary.label}
             </CtaButton>
             <Link href={secondary.href} className="home-conversion-hero__secondary">

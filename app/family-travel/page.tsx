@@ -192,7 +192,11 @@ export default function FamilyTravelPage() {
 
       <Section spacing="compact" className="bg-white">
         <ContentContainer size="md" className="flex flex-col gap-3 md:flex-row">
-          <CtaButton href="https://wa.me/447985052302" className="w-full md:w-auto">
+          <CtaButton
+            href="https://wa.me/447985052302"
+            variant="whatsappFrosted"
+            className="w-full md:w-auto"
+          >
             WhatsApp Family Trip Notes
           </CtaButton>
           <CtaButton

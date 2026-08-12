@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { CtaButton } from "@/components/cta";
 import { WhatsAppIcon } from "@/components/icons";
 import { buttonBaseStyles, buttonVariants, iconButtonStyles } from "@/components/ui/button-styles";
+import { trackEvent } from "@/lib/analytics/events";
 import { cn } from "@/lib/utils/cn";
 import type { NavigationItem } from "@/types/component-library";
 
@@ -233,6 +234,7 @@ function WhatsAppLink({ href, label }: { href: string; label: string }) {
       href={href}
       target="_blank"
       rel="noreferrer"
+      onClick={() => trackEvent("whatsapp_click", { placement: "navigation" })}
       className={cn(
         buttonBaseStyles,
         buttonVariants.whatsappFrosted,

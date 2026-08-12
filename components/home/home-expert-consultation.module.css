@@ -24,7 +24,7 @@
 
 .eyebrow,
 .formEyebrow {
-  color: #8c654e;
+  color: #53666c;
   font-size: 0.65rem;
   font-weight: 750;
   letter-spacing: 0.15em;
@@ -66,7 +66,7 @@
 }
 
 .guidanceList svg {
-  color: #8c654e;
+  color: #53666c;
   flex: 0 0 auto;
 }
 
@@ -220,7 +220,7 @@
 .fieldGrid input:focus,
 .fieldGrid select:focus,
 .fieldGrid textarea:focus {
-  border-color: #8c654e;
+  border-color: #71847e;
 }
 
 .fullField {
@@ -240,8 +240,9 @@
 
 .submitButton {
   align-items: center;
-  background: #222720;
-  border: 1px solid #222720;
+  background: #253330;
+  border: 1px solid #253330;
+  border-radius: 999px;
   color: white;
   cursor: pointer;
   display: flex;
@@ -266,6 +267,7 @@
   align-items: center;
   background: transparent;
   border: 1px solid rgba(28, 30, 27, 0.22);
+  border-radius: 999px;
   color: #1c1e1b;
   cursor: pointer;
   display: none;
@@ -278,7 +280,7 @@
 }
 
 .submitButton:hover {
-  background: #344039;
+  background: #1c2825;
 }
 
 .submitButton:hover svg {
@@ -290,7 +292,7 @@
 }
 
 .submitButton:focus-visible {
-  outline: 2px solid #8c654e;
+  outline: 2px solid #71847e;
   outline-offset: 3px;
 }
 
@@ -346,10 +348,17 @@
 }
 
 .whatsappLink {
-  border-bottom: 1px solid rgba(28, 30, 27, 0.3);
+  background: #25d366;
+  border-radius: 999px;
+  color: white;
   margin-top: 2rem;
   min-height: 2.75rem;
+  padding: 0.65rem 1rem;
   width: fit-content;
+}
+
+.whatsappLink:hover {
+  background: #20bd5a;
 }
 
 @media (max-width: 1024px) {
@@ -430,7 +439,7 @@
   }
 
   .mobileProgress > span[data-active="true"] {
-    background: #8c654e;
+    background: #71847e;
   }
 
   .mobileProgress small {

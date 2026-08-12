@@ -615,7 +615,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                 >
                   <Link
                     href={activeJourney.href}
-                    className="home-featured-cinema__link"
+                    className="home-featured-cinema__link home-featured-cinema__link--explore"
                     onClick={(event) => {
                       if (!didSwipe.current) return;
                       event.preventDefault();

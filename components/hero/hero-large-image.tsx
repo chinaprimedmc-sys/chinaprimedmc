@@ -175,7 +175,7 @@ export function HeroLargeImage({
             {primary ? (
               <CtaButton
                 href={primary.href}
-                variant="primary"
+                variant="light"
                 size="sm"
                 className="min-h-12 px-5 py-3 sm:min-h-14 sm:px-8 sm:py-4"
                 data-cta-placement="hero"

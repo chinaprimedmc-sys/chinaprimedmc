@@ -158,7 +158,7 @@ export default async function HomePage() {
         items={homeNavigation}
         className="home-navigation-entrance"
         cta={{ label: "Start Planning", href: settings.primaryCtaHref }}
-        showWhatsapp={false}
+        whatsapp={{ label: "WhatsApp", href: settings.whatsappHref }}
       />
 
       <HomeHeroMotion
@@ -254,7 +254,7 @@ export default async function HomePage() {
               recommend the first useful route direction.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-5">
-              <CtaButton href={settings.primaryCtaHref} size="md">
+              <CtaButton href={settings.primaryCtaHref} variant="light" size="md">
                 Request My Trip Plan
               </CtaButton>
               <Link

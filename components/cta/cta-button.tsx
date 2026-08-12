@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils/cn";
 
 type CtaVariant =
   | "primary"
+  | "explore"
+  | "light"
   | "secondary"
   | "outline"
   | "glass"

@@ -23,7 +23,7 @@
   .teamStory > p,
   .assurances > p,
   .pressNote > p {
-    color: #8c654e;
+    color: #53666c;
     font-size: 0.62rem;
     font-weight: 750;
     letter-spacing: 0.14em;
@@ -237,7 +237,7 @@
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__header p:first-child) {
-    color: #8c654e;
+    color: #53666c;
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__header p:last-child) {
@@ -290,7 +290,7 @@
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__route) {
-    color: #8c654e;
+    color: #53666c;
     font-size: 0.61rem;
     font-weight: 750;
     letter-spacing: 0.1em;
@@ -337,7 +337,7 @@
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__primary) {
-    background: #8c654e;
+    background: #53666c;
     border-radius: 999px;
     color: #fff;
     min-height: 2.75rem;
@@ -345,20 +345,20 @@
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__secondary) {
-    border: 1px solid rgba(140, 101, 78, 0.28);
+    border: 1px solid rgba(37, 51, 48, 0.22);
     border-radius: 999px;
-    color: #6f4f3e;
+    color: #253330;
     min-height: 2.75rem;
     padding: 0.55rem 0.7rem;
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__primary:active) {
-    background: #795541;
+    background: #42545a;
     transform: scale(0.985);
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__secondary:active) {
-    background: rgba(140, 101, 78, 0.07);
+    background: rgba(37, 51, 48, 0.06);
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__explore-cue) {

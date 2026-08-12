@@ -158,7 +158,7 @@ export function StartPlanningForm({
           </div>
           <CtaButton
             href={whatsappHref}
-            variant="glass"
+            variant="whatsappFrosted"
             icon={<MessageCircle size={16} aria-hidden="true" />}
             target="_blank"
             rel="noreferrer"
