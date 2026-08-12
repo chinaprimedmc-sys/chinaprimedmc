@@ -109,7 +109,11 @@ export function SiteNavigation({
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
           {showWhatsapp ? <WhatsAppLink href={whatsapp.href} label={whatsapp.label} /> : null}
-          <CtaButton href={cta.href} size="sm" className="h-10 min-h-10 px-5 text-sm font-medium">
+          <CtaButton
+            href={cta.href}
+            size="sm"
+            className="h-10 min-h-10 !rounded-none !bg-[#1b1c19] !px-5 text-sm font-medium !text-white !shadow-none hover:!bg-[#30483d]"
+          >
             {cta.label}
           </CtaButton>
         </div>

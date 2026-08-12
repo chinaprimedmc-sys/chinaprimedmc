@@ -1,10 +1,17 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
 
 import type { MediaAsset } from "@/types/component-library";
 
@@ -39,6 +46,13 @@ type PlanningStep = {
   description: string;
 };
 
+type HeroScene = {
+  label: string;
+  location: string;
+  desktopImage: MediaAsset;
+  mobileImage?: MediaAsset;
+};
+
 type HomeEditorialExperienceProps = {
   desktopImage: MediaAsset;
   mobileImage: MediaAsset;
@@ -52,7 +66,7 @@ type HomeEditorialExperienceProps = {
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const mobileTrustTitles = [
-  "Local decisions, made locally.",
+  "Planned and operated locally.",
   "Private travel, without forced shopping.",
   "Hotels and pacing, chosen around you.",
   "Support that stays close.",
@@ -68,14 +82,30 @@ export function HomeEditorialExperience({
   ctaImage,
   primaryHref,
 }: HomeEditorialExperienceProps) {
+  const heroScenes: HeroScene[] = [
+    {
+      label: "Shanghai",
+      location: "Shanghai · Blue hour",
+      desktopImage,
+      mobileImage,
+    },
+    ...intentPaths.slice(0, 3).map((item) => ({
+      label: item.title.includes("Pandas")
+        ? "Chengdu"
+        : item.title.includes("Food")
+          ? "Local life"
+          : "Beijing",
+      location: `${item.title} · China`,
+      desktopImage: item.image,
+      mobileImage: item.image,
+    })),
+  ];
+
   return (
-    <div className={styles.page}>
-      <EditorialHero
-        desktopImage={desktopImage}
-        mobileImage={mobileImage}
-        primaryHref={primaryHref}
-      />
-      <BrandManifesto trustPoints={trustPoints} image={intentPaths[2]?.image ?? desktopImage} />
+    <main className={styles.page}>
+      <EditorialHero scenes={heroScenes} primaryHref={primaryHref} />
+      <TrustPrelude trustPoints={trustPoints} />
+      <BrandDepth trustPoints={trustPoints} image={intentPaths[2]?.image ?? desktopImage} />
       {featuredJourneys.length ? (
         <SelectedJourneys journeys={featuredJourneys.slice(0, 4)} primaryHref={primaryHref} />
       ) : null}
@@ -85,78 +115,63 @@ export function HomeEditorialExperience({
         images={intentPaths.slice(0, 3).map((item) => item.image)}
       />
       <FinalConversation image={ctaImage} primaryHref={primaryHref} />
-    </div>
+    </main>
   );
 }
 
-function EditorialHero({
-  desktopImage,
-  mobileImage,
-  primaryHref,
-}: {
-  desktopImage: MediaAsset;
-  mobileImage: MediaAsset;
-  primaryHref: string;
-}) {
+function EditorialHero({ scenes, primaryHref }: { scenes: HeroScene[]; primaryHref: string }) {
+  const [activeIndex, setActiveIndex] = useState(0);
   const reduceMotion = useReducedMotion();
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const smoothX = useSpring(pointerX, { stiffness: 90, damping: 24, mass: 0.5 });
+  const smoothY = useSpring(pointerY, { stiffness: 90, damping: 24, mass: 0.5 });
+  const imageX = useTransform(smoothX, [-1, 1], [-7, 7]);
+  const imageY = useTransform(smoothY, [-1, 1], [-5, 5]);
+  const frameRotateY = useTransform(smoothX, [-1, 1], [-0.85, 0.85]);
+  const frameRotateX = useTransform(smoothY, [-1, 1], [0.7, -0.7]);
+  const copyX = useTransform(smoothX, [-1, 1], [-3, 3]);
+  const activeScene = scenes[activeIndex] ?? scenes[0];
+
+  const updatePointer = (event: ReactPointerEvent<HTMLElement>) => {
+    if (reduceMotion || event.pointerType === "touch") return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    pointerX.set(((event.clientX - bounds.left) / bounds.width - 0.5) * 2);
+    pointerY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
+  };
+
+  const resetPointer = () => {
+    pointerX.set(0);
+    pointerY.set(0);
+  };
 
   return (
-    <section className={styles.hero} aria-labelledby="home-hero-title">
-      <motion.div
-        className={styles.heroMedia}
-        animate={reduceMotion ? undefined : { scale: [1, 1.038], x: ["0%", "-0.55%"] }}
-        transition={{ duration: 24, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-      >
-        <picture>
-          <source media="(min-width: 769px)" srcSet={desktopImage.src} />
-          <img
-            src={mobileImage.src}
-            alt={desktopImage.alt}
-            width={mobileImage.width}
-            height={mobileImage.height}
-            loading="eager"
-            fetchPriority="high"
-          />
-        </picture>
-      </motion.div>
-      <motion.div
-        className={styles.heroVeil}
-        initial={reduceMotion ? false : { opacity: 0.38 }}
-        animate={{ opacity: 0 }}
-        transition={{ duration: 1.1, delay: 0.35, ease }}
-        aria-hidden="true"
-      />
-
-      <div className={styles.heroCopy}>
+    <section
+      className={styles.hero}
+      aria-labelledby="home-hero-title"
+      onPointerMove={updatePointer}
+      onPointerLeave={resetPointer}
+    >
+      <motion.div className={styles.heroCopy} style={reduceMotion ? undefined : { x: copyX }}>
         <motion.p
           className={styles.eyebrow}
           initial={reduceMotion ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.25, ease }}
+          transition={{ duration: 0.65, delay: 0.18, ease }}
         >
-          AVIORA · Private China travel
+          Private China travel · Operated locally
         </motion.p>
-        <motion.span
-          className={styles.goldRule}
-          initial={reduceMotion ? false : { scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.9, delay: 0.42, ease }}
-          aria-hidden="true"
-        />
 
-        <h1 id="home-hero-title" className={styles.heroTitle} aria-label="Private, designed.">
-          {["Private,", "designed."].map((line, index) => (
-            <span key={line}>
-              <span className={styles.lineMask}>
-                <motion.span
-                  initial={reduceMotion ? false : { y: "105%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.86, delay: 0.52 + index * 0.11, ease }}
-                >
-                  {line}
-                </motion.span>
-              </span>
-              {index === 0 ? " " : null}
+        <h1 id="home-hero-title" className={styles.heroTitle}>
+          {["Private China", "journeys,", "thoughtfully designed."].map((line, index) => (
+            <span className={styles.lineMask} key={line}>
+              <motion.span
+                initial={reduceMotion ? false : { y: "105%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.88, delay: 0.34 + index * 0.11, ease }}
+              >
+                {line}
+              </motion.span>
             </span>
           ))}
         </h1>
@@ -165,66 +180,122 @@ function EditorialHero({
           className={styles.heroDescription}
           initial={reduceMotion ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.68, delay: 0.82, ease }}
+          transition={{ duration: 0.68, delay: 0.7, ease }}
         >
-          Thoughtful routes, carefully chosen hotels and local support throughout your journey.
+          Tailored routes, considered hotels and trusted local support from your first conversation
+          to your return home.
         </motion.p>
 
         <motion.div
           className={styles.heroActions}
           initial={reduceMotion ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.68, delay: 0.94, ease }}
+          transition={{ duration: 0.68, delay: 0.82, ease }}
         >
-          <EditorialLink href={primaryHref}>Start planning</EditorialLink>
+          <PrimaryLink href={primaryHref}>Start planning</PrimaryLink>
           <EditorialLink href="#journeys" muted>
             Explore journeys
           </EditorialLink>
         </motion.div>
-      </div>
 
-      <motion.div
-        className={styles.heroFolio}
-        initial={reduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 1.08 }}
-      >
-        <span>01 / China, seen privately</span>
-        <span>Shanghai · Blue hour</span>
+        <motion.p
+          className={styles.heroSignature}
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.65, delay: 1.02 }}
+        >
+          AVIORA · Private, designed.
+        </motion.p>
       </motion.div>
 
-      <Link href="#why-aviora" className={styles.scrollCue}>
-        <span>Scroll to enter China</span>
-        <i aria-hidden="true" />
-        <ArrowDown size={14} aria-hidden="true" />
-      </Link>
+      <motion.div
+        className={styles.heroVisual}
+        style={reduceMotion ? undefined : { rotateX: frameRotateX, rotateY: frameRotateY }}
+      >
+        <motion.div
+          className={styles.heroFrame}
+          style={reduceMotion ? undefined : { x: imageX, y: imageY }}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.figure
+              key={activeScene.label}
+              initial={reduceMotion ? false : { opacity: 0, scale: 1.015 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={reduceMotion ? undefined : { opacity: 0, scale: 0.992 }}
+              transition={{ duration: 0.9, ease }}
+            >
+              <HeroSceneImage scene={activeScene} priority={activeIndex === 0} />
+              <figcaption>
+                <span>{String(activeIndex + 1).padStart(2, "0")}</span>
+                <span>{activeScene.location}</span>
+              </figcaption>
+            </motion.figure>
+          </AnimatePresence>
+          <span className={styles.heroCoordinate} aria-hidden="true">
+            31.2304° N<br />
+            121.4737° E
+          </span>
+        </motion.div>
+
+        <div className={styles.heroIndex} aria-label="Choose a China perspective">
+          {scenes.map((scene, index) => (
+            <button
+              type="button"
+              key={`${scene.label}-${index}`}
+              aria-pressed={index === activeIndex}
+              onClick={() => setActiveIndex(index)}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{scene.label}</strong>
+            </button>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }
 
-function BrandManifesto({ trustPoints, image }: { trustPoints: TrustPoint[]; image: MediaAsset }) {
+function TrustPrelude({ trustPoints }: { trustPoints: TrustPoint[] }) {
   return (
-    <section id="why-aviora" className={styles.manifesto}>
-      <Reveal className={styles.manifestoStatement}>
-        <p className={styles.darkEyebrow}>Why AVIORA</p>
-        <h2>
-          China is not
-          <br />a checklist.
-          <br />
-          It is a rhythm.
-        </h2>
-      </Reveal>
+    <section className={styles.trustPrelude} aria-label="Why travellers trust AVIORA">
+      {trustPoints.slice(0, 3).map((point, index) => (
+        <Reveal key={point.title} delay={index * 70}>
+          <article>
+            <Check size={15} strokeWidth={1.6} aria-hidden="true" />
+            <div>
+              <strong>{mobileTrustTitles[index]}</strong>
+              <span>{point.description}</span>
+            </div>
+          </article>
+        </Reveal>
+      ))}
+    </section>
+  );
+}
 
-      <div className={styles.manifestoBody}>
+function BrandDepth({ trustPoints, image }: { trustPoints: TrustPoint[]; image: MediaAsset }) {
+  return (
+    <section id="why-aviora" className={styles.brandDepth}>
+      <div className={styles.depthImageColumn}>
+        <Reveal className={styles.depthImageFrame}>
+          <ResponsiveEditorialImage image={image} sizes="(min-width: 769px) 46vw, 100vw" />
+          <span className={styles.depthImageNote}>Local context · Quiet decisions · China</span>
+        </Reveal>
+      </div>
+
+      <div className={styles.depthCopy}>
         <Reveal>
-          <p className={styles.manifestoLead}>
-            A considered journey depends on hundreds of quiet decisions: when to arrive, where to
-            stay, who should guide and when the day needs room to breathe.
+          <p className={styles.darkEyebrow}>01 / Why AVIORA</p>
+          <h2>The difference is in the decisions you never have to manage.</h2>
+          <p className={styles.depthLead}>
+            A private journey depends on timing, hotel location, the right guide and a local team
+            that remains close when plans need to move.
           </p>
         </Reveal>
+
         <div className={styles.trustLedger}>
           {trustPoints.slice(0, 4).map((point, index) => (
-            <Reveal key={point.title} delay={index * 80}>
+            <Reveal key={point.title} delay={index * 75}>
               <article>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <div>
@@ -237,10 +308,6 @@ function BrandManifesto({ trustPoints, image }: { trustPoints: TrustPoint[]; ima
           ))}
         </div>
       </div>
-
-      <Reveal className={styles.manifestoImage}>
-        <ResponsiveEditorialImage image={image} sizes="(min-width: 1024px) 34vw, 86vw" />
-      </Reveal>
     </section>
   );
 }
@@ -255,19 +322,33 @@ function SelectedJourneys({
   const [activeIndex, setActiveIndex] = useState(0);
   const pointerStart = useRef<number | null>(null);
   const reduceMotion = useReducedMotion();
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const smoothTiltX = useSpring(tiltX, { stiffness: 95, damping: 24 });
+  const smoothTiltY = useSpring(tiltY, { stiffness: 95, damping: 24 });
+  const mediaRotateY = useTransform(smoothTiltX, [-1, 1], [-0.7, 0.7]);
+  const mediaRotateX = useTransform(smoothTiltY, [-1, 1], [0.55, -0.55]);
   const activeJourney = journeys[activeIndex];
 
   const show = (nextIndex: number) => {
     setActiveIndex((nextIndex + journeys.length) % journeys.length);
   };
 
+  const updateTilt = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (reduceMotion || event.pointerType === "touch") return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    tiltX.set(((event.clientX - bounds.left) / bounds.width - 0.5) * 2);
+    tiltY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
+  };
+
   return (
     <section id="journeys" className={styles.journeys}>
       <Reveal className={styles.sectionHeading}>
-        <p>02 / Selected journeys</p>
-        <h2>Journeys as cinema.</h2>
+        <p>02 / Selected private journeys</p>
+        <h2>China, composed around the way you want to travel.</h2>
         <span>
-          Considered starting points, each reshaped around your dates, hotels and preferred rhythm.
+          These are considered starting points. Dates, hotels, pacing and private experiences are
+          refined around you.
         </span>
       </Reveal>
 
@@ -292,74 +373,55 @@ function SelectedJourneys({
           pointerStart.current = null;
         }}
       >
-        <div className={styles.journeyMedia}>
+        <motion.div
+          className={styles.journeyMedia}
+          onPointerMove={updateTilt}
+          onPointerLeave={() => {
+            tiltX.set(0);
+            tiltY.set(0);
+          }}
+          style={reduceMotion ? undefined : { rotateX: mediaRotateX, rotateY: mediaRotateY }}
+        >
           <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={activeJourney.href}
               className={styles.journeyScene}
-              initial={reduceMotion ? false : { opacity: 0, scale: 1.025 }}
+              initial={reduceMotion ? false : { opacity: 0, scale: 1.018 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={reduceMotion ? undefined : { opacity: 0, scale: 0.992 }}
               transition={{ duration: 0.95, ease }}
             >
               <ResponsiveEditorialImage
                 image={activeJourney.image}
-                sizes="(min-width: 1024px) 68vw, 100vw"
+                sizes="(min-width: 1024px) 66vw, 100vw"
                 priority={activeIndex === 0}
               />
             </motion.div>
           </AnimatePresence>
-          <div className={styles.journeyShade} aria-hidden="true" />
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={`${activeJourney.href}-title`}
-              className={styles.journeyTitle}
-              initial={reduceMotion ? false : { opacity: 0, y: "102%" }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reduceMotion ? undefined : { opacity: 0, y: "-35%" }}
-              transition={{ duration: 0.78, delay: 0.08, ease }}
-            >
-              <p>{activeJourney.routeLine}</p>
-              <h3 title={activeJourney.title}>{activeJourney.displayTitle}</h3>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={`${activeJourney.href}-mobile-title`}
-            className={styles.mobileJourneyTitle}
-            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.52, ease }}
-          >
-            <p>{activeJourney.routeLine}</p>
-            <h3>{activeJourney.displayTitle}</h3>
-          </motion.div>
-        </AnimatePresence>
+          <span className={styles.journeyFolio}>
+            {String(activeIndex + 1).padStart(2, "0")} / {String(journeys.length).padStart(2, "0")}
+          </span>
+        </motion.div>
 
         <div className={styles.journeyDetails} aria-live="polite">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={`${activeJourney.href}-details`}
-              initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
-              transition={{ duration: 0.58, delay: 0.18, ease }}
+              transition={{ duration: 0.62, delay: 0.12, ease }}
             >
-              <p className={styles.journeyCount}>
-                {String(activeIndex + 1).padStart(2, "0")} /{" "}
-                {String(journeys.length).padStart(2, "0")}
-              </p>
+              <p className={styles.journeyRoute}>{activeJourney.routeLine}</p>
+              <h3>{activeJourney.displayTitle}</h3>
               <p className={styles.journeySummary}>{activeJourney.description}</p>
               <div className={styles.journeyActions}>
-                <EditorialLink href={activeJourney.href}>Explore the journey</EditorialLink>
+                <PrimaryLink href={activeJourney.href}>View journey</PrimaryLink>
                 <EditorialLink
                   href={`${primaryHref}?journey=${encodeURIComponent(activeJourney.href.split("/").pop() ?? "")}`}
                   muted
                 >
-                  Request a proposal
+                  Plan this journey
                 </EditorialLink>
               </div>
             </motion.div>
@@ -388,14 +450,16 @@ function SelectedJourneys({
             aria-pressed={index === activeIndex}
             onClick={() => show(index)}
           >
-            <span className={styles.filmThumb}>
-              <ResponsiveEditorialImage image={{ ...journey.image, alt: "" }} sizes="7rem" />
-            </span>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <strong>{journey.displayTitle}</strong>
+            <small>{journey.duration}</small>
           </button>
         ))}
       </div>
+
+      <Reveal className={styles.allJourneysLink}>
+        <EditorialLink href="/tours">Explore all private journeys</EditorialLink>
+      </Reveal>
     </section>
   );
 }
@@ -405,28 +469,34 @@ function IntentDirectory({ items }: { items: IntentPath[] }) {
     <section className={styles.intents}>
       <Reveal className={styles.intentHeading}>
         <p>03 / Find your China</p>
-        <h2>
-          What do you want
-          <br />
-          China to feel like?
-        </h2>
+        <h2>What would you like China to feel like?</h2>
+        <span>
+          Begin with the feeling you want from the journey. We will shape the route around it.
+        </span>
       </Reveal>
 
       <div className={styles.intentGrid}>
         {items.map((item, index) => (
           <Reveal key={item.title} delay={index * 85} className={styles.intentReveal}>
             <Link href={item.href} className={styles.intentItem} data-layout={index + 1}>
-              <span className={styles.intentMedia}>
+              <motion.span
+                className={styles.intentMedia}
+                whileHover={{ y: -5, rotateY: index % 2 ? -0.45 : 0.45 }}
+                transition={{ duration: 0.55, ease }}
+              >
                 <ResponsiveEditorialImage
                   image={item.image}
-                  sizes={index === 0 ? "32vw" : "52vw"}
+                  sizes="(min-width: 769px) 44vw, 100vw"
                 />
-              </span>
+                <i aria-hidden="true" />
+              </motion.span>
               <span className={styles.intentCopy}>
-                <small>{item.eyebrow}</small>
+                <small>
+                  {String(index + 1).padStart(2, "0")} · {item.eyebrow}
+                </small>
                 <span>
                   <h3>{item.title}</h3>
-                  <ArrowUpRight size={18} aria-hidden="true" />
+                  <ArrowUpRight size={19} aria-hidden="true" />
                 </span>
                 <p>{item.description}</p>
               </span>
@@ -448,11 +518,11 @@ function PlanningLine({ steps, images }: { steps: PlanningStep[]; images: MediaA
   return (
     <section className={styles.planning}>
       <Reveal className={styles.planningHeading}>
-        <p>04 / From a conversation to China</p>
-        <h2>A clear path to a private journey.</h2>
+        <p>04 / How planning works</p>
+        <h2>A considered journey starts with a simple conversation.</h2>
         <span>
-          You share what matters. We turn it into one considered direction, then confirm every
-          important detail in writing.
+          Share the essentials. A China specialist will turn them into a practical first direction,
+          then refine every important detail with you.
         </span>
       </Reveal>
 
@@ -471,7 +541,7 @@ function PlanningLine({ steps, images }: { steps: PlanningStep[]; images: MediaA
               {images[index] ? (
                 <ResponsiveEditorialImage
                   image={images[index]}
-                  sizes="(min-width: 769px) 30vw, calc(100vw - 64px)"
+                  sizes="(min-width: 769px) 28vw, 100vw"
                 />
               ) : null}
             </div>
@@ -489,19 +559,20 @@ function FinalConversation({ image, primaryHref }: { image: MediaAsset; primaryH
   return (
     <section className={styles.finalCta}>
       <Reveal className={styles.finalImage}>
-        <ResponsiveEditorialImage image={image} sizes="(min-width: 768px) 58vw, 100vw" />
+        <ResponsiveEditorialImage image={image} sizes="(min-width: 769px) 52vw, 100vw" />
+        <span>Guilin · China</span>
       </Reveal>
       <Reveal className={styles.finalCopy}>
-        <p>05 / The beginning of a considered journey</p>
-        <h2>
-          Tell us what your ideal
-          <br />
-          China trip looks like.
-        </h2>
-        <EditorialLink href={primaryHref} light>
-          Request my trip plan
-        </EditorialLink>
-        <span>A China specialist will respond with a considered first direction.</span>
+        <p>05 / Start with a real conversation</p>
+        <h2>Tell us what your ideal China trip looks like.</h2>
+        <p className={styles.finalDescription}>
+          A China specialist will review what matters to you and come back with a considered first
+          direction.
+        </p>
+        <PrimaryLink href={primaryHref} light>
+          Start planning your China trip
+        </PrimaryLink>
+        <span>No fixed package. No pressure to book. One clear place to begin.</span>
       </Reveal>
     </section>
   );
@@ -520,9 +591,9 @@ function Reveal({
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18, margin: "0px 0px -8% 0px" }}
+      viewport={{ once: true, amount: 0.16, margin: "0px 0px -7% 0px" }}
       transition={{ duration: 0.72, delay: delay / 1000, ease }}
     >
       {children}
@@ -530,27 +601,61 @@ function Reveal({
   );
 }
 
-function EditorialLink({
+function PrimaryLink({
   href,
   children,
-  muted = false,
   light = false,
 }: {
   href: string;
   children: ReactNode;
-  muted?: boolean;
   light?: boolean;
 }) {
   return (
-    <Link
-      href={href}
-      className={styles.editorialLink}
-      data-muted={muted || undefined}
-      data-light={light || undefined}
-    >
+    <Link href={href} className={styles.primaryLink} data-light={light || undefined}>
       <span>{children}</span>
       <ArrowUpRight size={16} aria-hidden="true" />
     </Link>
+  );
+}
+
+function EditorialLink({
+  href,
+  children,
+  muted = false,
+}: {
+  href: string;
+  children: ReactNode;
+  muted?: boolean;
+}) {
+  return (
+    <Link href={href} className={styles.editorialLink} data-muted={muted || undefined}>
+      <span>{children}</span>
+      <ArrowUpRight size={16} aria-hidden="true" />
+    </Link>
+  );
+}
+
+function HeroSceneImage({ scene, priority = false }: { scene: HeroScene; priority?: boolean }) {
+  const mobile = scene.mobileImage ?? scene.desktopImage;
+  const desktopWidth = scene.desktopImage.width ?? 1600;
+  const desktopHeight = scene.desktopImage.height ?? 1000;
+  const mobileWidth = mobile.width ?? desktopWidth;
+  const mobileHeight = mobile.height ?? desktopHeight;
+
+  return (
+    <picture>
+      <source media="(min-width: 769px)" srcSet={scene.desktopImage.src} />
+      <img
+        src={mobile.src}
+        alt={scene.desktopImage.alt}
+        width={mobileWidth}
+        height={mobileHeight}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
+        data-desktop-width={desktopWidth}
+        data-desktop-height={desktopHeight}
+      />
+    </picture>
   );
 }
 
@@ -576,7 +681,6 @@ function ResponsiveEditorialImage({
         sizes={sizes}
         priority={priority}
         loading={priority ? "eager" : "lazy"}
-        style={{ objectPosition: image.objectPosition }}
       />
     </span>
   );

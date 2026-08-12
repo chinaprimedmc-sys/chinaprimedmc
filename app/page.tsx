@@ -6,7 +6,7 @@ import homeStyles from "@/components/home/home-editorial-experience.module.css";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import { desktopHeroImage, heroImage, mobileHeroImage } from "@/content/home/homepage";
+import { desktopHeroImage, mobileHeroImage } from "@/content/home/homepage";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { getPublicHomePage, getPublicSiteSettings } from "@/lib/cms/public-content";
@@ -99,10 +99,10 @@ function getFeaturedJourneyEditorial(slug: string, title: string, duration: stri
 }
 
 export const metadata: Metadata = createMetadata({
-  title: "Private China Tours, Tailored by Local Experts",
+  title: "Private China Travel & Tailor-Made Journeys",
   description:
-    "Plan a private China tour with carefully selected hotels, exceptional local guides, private transfers and licensed local support.",
-  image: heroImage.src,
+    "Plan a tailor-made China journey with AVIORA, a China-based team creating private routes, considered hotels and trusted local support.",
+  image: desktopHeroImage.src,
 });
 
 export default async function HomePage() {
