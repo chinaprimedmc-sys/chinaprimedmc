@@ -22,6 +22,9 @@ import privateChinaTourCostMarkdown from "@/content/journal/articles/2026-08-10-
 import tenDayChinaItineraryMarkdown from "@/content/journal/articles/2026-08-10-10-day-china-itinerary-first-time-visitors.md";
 import singaporePrivateChinaTourMarkdown from "@/content/journal/articles/2026-08-10-private-china-tour-from-singapore.md";
 import chengduChongqingZhangjiajieMarkdown from "@/content/journal/articles/2026-08-12-chengdu-chongqing-zhangjiajie-itinerary.md";
+import chengduDaysMarkdown from "@/content/journal/articles/2026-08-12-how-many-days-in-chengdu-itinerary.md";
+import chongqingThreeDayMarkdown from "@/content/journal/articles/2026-08-12-3-day-chongqing-itinerary.md";
+import zhangjiajieStayMarkdown from "@/content/journal/articles/2026-08-12-where-to-stay-in-zhangjiajie.md";
 
 const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md":
@@ -55,6 +58,9 @@ const bundledMarkdown: Record<string, string> = {
     singaporePrivateChinaTourMarkdown,
   "content/journal/articles/2026-08-12-chengdu-chongqing-zhangjiajie-itinerary.md":
     chengduChongqingZhangjiajieMarkdown,
+  "content/journal/articles/2026-08-12-how-many-days-in-chengdu-itinerary.md": chengduDaysMarkdown,
+  "content/journal/articles/2026-08-12-3-day-chongqing-itinerary.md": chongqingThreeDayMarkdown,
+  "content/journal/articles/2026-08-12-where-to-stay-in-zhangjiajie.md": zhangjiajieStayMarkdown,
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {

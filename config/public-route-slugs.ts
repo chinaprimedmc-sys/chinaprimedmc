@@ -32,6 +32,9 @@ export const publicRouteSlugs = {
     "urumqi",
   ],
   journal: [
+    "how-many-days-in-chengdu-itinerary",
+    "3-day-chongqing-itinerary",
+    "where-to-stay-in-zhangjiajie",
     "chengdu-chongqing-zhangjiajie-itinerary",
     "private-china-tour-cost-2026",
     "10-day-china-itinerary-first-time-visitors",

@@ -8,6 +8,27 @@ const author = {
 };
 
 const journalImages = {
+  chengduDays: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/chengdu-12.webp",
+    alt: "A giant panda eating bamboo during a morning visit in Chengdu",
+    width: 1600,
+    height: 1067,
+    objectPosition: "50% 48%",
+  },
+  chongqingThreeDay: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/chongqing-01.webp",
+    alt: "Chongqing's layered skyline during the blue hour",
+    width: 1600,
+    height: 1067,
+    objectPosition: "50% 48%",
+  },
+  zhangjiajieStay: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/zhangjiajie-15.webp",
+    alt: "Zhangjiajie's quartz-sandstone pillars emerging from morning mist",
+    width: 1600,
+    height: 1067,
+    objectPosition: "50% 48%",
+  },
   chengduChongqingZhangjiajie: {
     src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/hero-01.webp",
     alt: "International travelers looking across Zhangjiajie's sandstone peaks",
@@ -221,6 +242,156 @@ const journalImages = {
 } as const;
 
 export const publishedJournalArticles: JournalArticle[] = [
+  {
+    slug: "how-many-days-in-chengdu-itinerary",
+    title: "How Many Days in Chengdu? A 3-to-5-Day Planning Guide",
+    dek: "Choose the right Chengdu stay length for pandas, tea houses, Sichuan food, families and a wider private China route.",
+    excerpt:
+      "A practical answer for three, four or five days in Chengdu, with panda timing, hotel logic, food planning and product routes.",
+    category: "Destinations",
+    tags: ["chengdu", "pandas", "food", "family-travel", "slow-travel"],
+    author,
+    publishedAt: "2026-08-12",
+    readingTime: "11 min read",
+    editorPick: true,
+    hero: { eyebrow: "Chengdu stay planning", image: journalImages.chengduDays },
+    gallery: [
+      journalImages.chengduDays,
+      destinationAsset.chengduTeaHouse,
+      destinationAsset.chengduPanda,
+    ],
+    content: [],
+    seo: {
+      title: "How Many Days in Chengdu? 3-to-5-Day Itinerary",
+      description:
+        "Decide how many days to spend in Chengdu with realistic plans for pandas, tea houses, Sichuan food, families and a wider private China route.",
+      keywords: [
+        "how many days in Chengdu",
+        "Chengdu itinerary 3 days",
+        "Chengdu itinerary 5 days",
+        "how long to stay in Chengdu",
+        "Chengdu panda itinerary",
+      ],
+      ogImage: journalImages.chengduDays,
+    },
+    related: {
+      destinations: ["chengdu"],
+      tours: ["chengdu-pandas-sichuan-table", "chengdu-chongqing-zhangjiajie-private-11-day-tour"],
+      experiences: ["pandas", "food", "private-guides"],
+      articles: [
+        "chengdu-panda-base-tickets-foreigners",
+        "chengdu-chongqing-zhangjiajie-itinerary",
+      ],
+    },
+    conversion: {
+      eyebrow: "Choose the right Chengdu pace",
+      title: "Know whether Chengdu needs three or five days.",
+      description:
+        "Share your dates, travelers and wider route. AVIORA will recommend a stay length and explain what fits before preparing the proposal.",
+      label: "Plan My Chengdu Stay",
+      href: "/start-planning?source=journal-chengdu-days",
+    },
+    sourcePath: "content/journal/articles/2026-08-12-how-many-days-in-chengdu-itinerary.md",
+  },
+  {
+    slug: "3-day-chongqing-itinerary",
+    title: "A 3-Day Chongqing Itinerary That Respects the City",
+    dek: "Plan Chongqing by geography, food and city levels, with realistic day and night routes, hotel logic and private transport support.",
+    excerpt:
+      "A three-day Chongqing plan that explains the vertical city without reducing it to a list of viral viewpoints.",
+    category: "Destinations",
+    tags: ["chongqing", "food", "photography", "family-travel", "private-guides"],
+    author,
+    publishedAt: "2026-08-12",
+    readingTime: "10 min read",
+    editorPick: true,
+    hero: { eyebrow: "Chongqing city planning", image: journalImages.chongqingThreeDay },
+    gallery: [
+      journalImages.chongqingThreeDay,
+      journalImages.chengduChongqingZhangjiajieChongqing,
+      journalImages.chengduChongqingZhangjiajieForest,
+    ],
+    content: [],
+    seo: {
+      title: "3-Day Chongqing Itinerary: What to See and Where to Stay",
+      description:
+        "Plan three days in Chongqing with realistic routes for its vertical streets, river views, hotpot, night photography, hotels and private transport.",
+      keywords: [
+        "3 day Chongqing itinerary",
+        "Chongqing itinerary",
+        "how many days in Chongqing",
+        "where to stay in Chongqing",
+        "Chongqing private tour",
+      ],
+      ogImage: journalImages.chongqingThreeDay,
+    },
+    related: {
+      destinations: ["chongqing"],
+      tours: ["chengdu-chongqing-zhangjiajie-private-11-day-tour"],
+      experiences: ["food", "private-guides"],
+      articles: ["chengdu-chongqing-zhangjiajie-itinerary", "private-china-tour-cost-2026"],
+    },
+    conversion: {
+      eyebrow: "Plan the vertical city properly",
+      title: "Build Chongqing around levels, transfers and real interests.",
+      description:
+        "Share your dates, party, food interests and walking comfort. AVIORA will connect the hotel, transport, night route and open day.",
+      label: "Plan My Chongqing Route",
+      href: "/start-planning?source=journal-chongqing-3-day",
+    },
+    sourcePath: "content/journal/articles/2026-08-12-3-day-chongqing-itinerary.md",
+  },
+  {
+    slug: "where-to-stay-in-zhangjiajie",
+    title: "Where to Stay in Zhangjiajie: Wulingyuan or the City?",
+    dek: "Compare Wulingyuan and Zhangjiajie City by park access, Tianmen Mountain, airport transfers, walking load and a realistic mountain route.",
+    excerpt:
+      "A practical accommodation guide that helps you choose the right Zhangjiajie base before booking the hotel.",
+    category: "Destinations",
+    tags: ["zhangjiajie", "nature", "photography", "family-travel", "private-guides"],
+    author,
+    publishedAt: "2026-08-12",
+    readingTime: "11 min read",
+    editorPick: true,
+    hero: { eyebrow: "Zhangjiajie stay planning", image: journalImages.zhangjiajieStay },
+    gallery: [
+      journalImages.zhangjiajieStay,
+      destinationAsset.zhangjiajieForest,
+      destinationAsset.zhangjiajieSpirePortrait,
+    ],
+    content: [],
+    seo: {
+      title: "Where to Stay in Zhangjiajie: Wulingyuan vs City",
+      description:
+        "Compare Wulingyuan and Zhangjiajie City hotels by park access, Tianmen Mountain, airport transfers, walking load and a realistic 3-to-4-night route.",
+      keywords: [
+        "where to stay in Zhangjiajie",
+        "Wulingyuan or Zhangjiajie City",
+        "how many days in Zhangjiajie",
+        "Zhangjiajie itinerary 4 days",
+        "Zhangjiajie hotel near national park",
+      ],
+      ogImage: journalImages.zhangjiajieStay,
+    },
+    related: {
+      destinations: ["zhangjiajie"],
+      tours: [
+        "shanghai-zhangjiajie-floating-peaks",
+        "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      ],
+      experiences: ["private-guides"],
+      articles: ["chengdu-chongqing-zhangjiajie-itinerary", "private-china-tour-cost-2026"],
+    },
+    conversion: {
+      eyebrow: "Choose the right mountain base",
+      title: "Select Wulingyuan or the city before you book the room.",
+      description:
+        "Share your arrival, departure, park priorities and walking preferences. AVIORA will recommend the base and sequence before preparing the proposal.",
+      label: "Plan My Zhangjiajie Stay",
+      href: "/start-planning?source=journal-zhangjiajie-stay",
+    },
+    sourcePath: "content/journal/articles/2026-08-12-where-to-stay-in-zhangjiajie.md",
+  },
   {
     slug: "chengdu-chongqing-zhangjiajie-itinerary",
     title: "11-Day Chengdu, Chongqing & Zhangjiajie Itinerary",
