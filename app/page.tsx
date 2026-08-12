@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -6,6 +6,7 @@ import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { HomeHeroMotion } from "@/components/home/home-hero-motion";
 import { FeaturedJourneyCinema, HomeReveal } from "@/components/home/home-immersive-sections";
+import { HomeTrustIntroduction } from "@/components/home/home-trust-introduction";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
@@ -165,6 +166,8 @@ export default async function HomePage() {
         trustItems={[...home.heroTrustItems, "China-based support"]}
       />
 
+      <HomeTrustIntroduction />
+
       {featuredJourneys.length ? <FeaturedJourneyCinema journeys={featuredJourneys} /> : null}
 
       <Section id="find-your-china" spacing="spacious" className="bg-[var(--bg-primary)]">
@@ -216,7 +219,7 @@ export default async function HomePage() {
         </ContentContainer>
       </Section>
 
-      <Section id="why" spacing="spacious" className="bg-white">
+      <Section id="planning-process" spacing="spacious" className="bg-white">
         <ContentContainer size="xl" className="home-trust-section home-section-safe">
           <HomeReveal className="home-trust-section__media">
             <OptimizedImage
@@ -232,31 +235,25 @@ export default async function HomePage() {
           </HomeReveal>
           <HomeReveal delay={90} className="home-trust-section__copy">
             <p className="text-xs font-semibold tracking-[0.16em] text-[var(--text-tertiary)] uppercase">
-              Why AVIORA
+              From conversation to China
             </p>
             <h2 className="mt-5 font-serif text-5xl leading-[0.95] font-medium text-balance md:text-7xl">
-              Travel with clarity from the first conversation.
+              A considered journey, shaped one decision at a time.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--text-secondary)] md:text-lg">
-              We shape the route around the people traveling, confirm the important details in
-              writing and remain reachable while the trip is underway.
+              Share the essentials first. We then shape the route, hotel direction and private
+              services before confirming every important detail in writing.
             </p>
-            <div className="home-trust-points">
-              {home.trustPoints.map((point) => (
-                <article key={point.title}>
-                  <Check size={17} aria-hidden="true" />
-                  <div>
-                    <h3>{point.title}</h3>
-                    <p>{point.description}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
             <ol className="home-planning-steps" aria-label="How planning works">
               {home.planningSteps.map((step) => (
                 <li key={step.number}>
                   <span>{step.number}</span>
-                  <strong>{step.title}</strong>
+                  <div>
+                    <strong className="block">{step.title}</strong>
+                    <p className="mt-2 max-w-xs text-xs leading-5 text-[var(--text-secondary)]">
+                      {step.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ol>
