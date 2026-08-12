@@ -178,6 +178,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                     { label: "Route", value: tour.route },
                     { label: "Length", value: tour.duration },
                   ]}
+                  href={tour.href}
                   action={{ label: "View journey", href: tour.href }}
                 />
               ))}

@@ -1,5 +1,10 @@
 import { destinationAsset } from "@/content/destinations/assets";
 import { homeEditorialImages } from "@/content/home/homepage";
+import {
+  chengduImages,
+  chongqingImages,
+  zhangjiajieImages,
+} from "@/content/tours/chengdu-chongqing-zhangjiajie-assets";
 import type { JournalArticle } from "@/types/journal";
 
 const author = {
@@ -255,11 +260,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     readingTime: "11 min read",
     editorPick: true,
     hero: { eyebrow: "Chengdu stay planning", image: journalImages.chengduDays },
-    gallery: [
-      journalImages.chengduDays,
-      destinationAsset.chengduTeaHouse,
-      destinationAsset.chengduPanda,
-    ],
+    gallery: [chengduImages[3], chengduImages[15], chengduImages[17]],
     content: [],
     seo: {
       title: "How Many Days in Chengdu? 3-to-5-Day Itinerary",
@@ -306,11 +307,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     readingTime: "10 min read",
     editorPick: true,
     hero: { eyebrow: "Chongqing city planning", image: journalImages.chongqingThreeDay },
-    gallery: [
-      journalImages.chongqingThreeDay,
-      journalImages.chengduChongqingZhangjiajieChongqing,
-      journalImages.chengduChongqingZhangjiajieForest,
-    ],
+    gallery: [chongqingImages[2], chongqingImages[11], chongqingImages[15]],
     content: [],
     seo: {
       title: "3-Day Chongqing Itinerary: What to See and Where to Stay",
@@ -354,11 +351,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     readingTime: "11 min read",
     editorPick: true,
     hero: { eyebrow: "Zhangjiajie stay planning", image: journalImages.zhangjiajieStay },
-    gallery: [
-      journalImages.zhangjiajieStay,
-      destinationAsset.zhangjiajieForest,
-      destinationAsset.zhangjiajieSpirePortrait,
-    ],
+    gallery: [zhangjiajieImages[0], zhangjiajieImages[17], zhangjiajieImages[19]],
     content: [],
     seo: {
       title: "Where to Stay in Zhangjiajie: Wulingyuan vs City",

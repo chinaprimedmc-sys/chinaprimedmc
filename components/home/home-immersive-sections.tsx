@@ -283,6 +283,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
   useEffect(() => {
     if (isPaused || journeys.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(max-width: 767px)").matches) return;
     const timer = window.setInterval(() => {
       setDirection(1);
       setActiveIndex((current) => (current + 1) % journeys.length);
