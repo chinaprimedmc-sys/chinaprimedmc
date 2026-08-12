@@ -6,6 +6,7 @@ import {
   zhangjiajieImages,
 } from "@/content/tours/chengdu-chongqing-zhangjiajie-assets";
 import type { JournalArticle } from "@/types/journal";
+import { commercialJournalArticles } from "@/content/journal/commercial";
 
 const author = {
   name: "AVIORA Travel Team",
@@ -247,6 +248,7 @@ const journalImages = {
 } as const;
 
 export const publishedJournalArticles: JournalArticle[] = [
+  ...commercialJournalArticles,
   {
     slug: "how-many-days-in-chengdu-itinerary",
     title: "How Many Days in Chengdu? A 3-to-5-Day Planning Guide",
