@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
+import { HomeExpertConsultation } from "@/components/home/home-expert-consultation";
 import { HomeHeroMotion } from "@/components/home/home-hero-motion";
 import { FeaturedJourneyCinema, HomeReveal } from "@/components/home/home-immersive-sections";
 import { HomeTrustIntroduction } from "@/components/home/home-trust-introduction";
@@ -170,54 +171,7 @@ export default async function HomePage() {
 
       {featuredJourneys.length ? <FeaturedJourneyCinema journeys={featuredJourneys} /> : null}
 
-      <Section id="find-your-china" spacing="spacious" className="bg-[var(--bg-primary)]">
-        <ContentContainer size="xl" className="home-section-safe grid gap-10">
-          <HomeReveal className="grid gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-end">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.16em] text-[var(--text-tertiary)] uppercase">
-                Find your China
-              </p>
-              <h2 className="mt-5 max-w-3xl font-serif text-5xl leading-[0.95] font-medium text-balance md:text-7xl">
-                Not sure where to begin?
-              </h2>
-            </div>
-            <p className="max-w-2xl text-base leading-8 text-[var(--text-secondary)] md:text-lg">
-              Start with the experience you want. Each path opens a route or destination that makes
-              the choice easier.
-            </p>
-          </HomeReveal>
-          <div className="home-intent-grid">
-            {home.intentPaths.map((item, index) => (
-              <HomeReveal key={item.title} delay={index * 70}>
-                <Link href={item.href} className="home-intent-card group">
-                  <OptimizedImage
-                    src={item.image.src}
-                    alt={item.image.alt}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    objectPosition={item.image.objectPosition}
-                    frameClassName="absolute inset-0 h-full"
-                    className="home-intent-card__image h-full w-full"
-                  />
-                  <div className="home-intent-card__shade" aria-hidden="true" />
-                  <div className="home-intent-card__copy">
-                    <p>{item.eyebrow}</p>
-                    <div>
-                      <h3>{item.title}</h3>
-                      <ArrowUpRight size={20} aria-hidden="true" />
-                    </div>
-                    <span>{item.description}</span>
-                  </div>
-                </Link>
-              </HomeReveal>
-            ))}
-          </div>
-          <Link href="/destinations" className="home-text-link">
-            Explore all destinations
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
-        </ContentContainer>
-      </Section>
+      <HomeExpertConsultation />
 
       <Section id="planning-process" spacing="spacious" className="bg-white">
         <ContentContainer size="xl" className="home-trust-section home-section-safe">
