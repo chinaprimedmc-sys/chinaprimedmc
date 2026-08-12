@@ -1082,4 +1082,381 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
       },
     ],
   ),
+
+  "9-day-beijing-xian-shanghai-itinerary": article(
+    [
+      {
+        title: "Why nine days is a useful first route",
+        paragraphs: [
+          "Nine days gives a first-time visitor three different views of China without pretending that every province can fit into one holiday: imperial Beijing, the archaeological depth of Xi'an and Shanghai's contemporary riverfront. The route is compact, but it works when the city order and transfer days are planned before individual attractions.",
+          "Count eight hotel nights, not nine sightseeing days. Arrival and departure times determine whether the first or last day is usable. A responsible plan leaves room for airport transfers, passport-linked reservations and recovery after an international flight.",
+        ],
+      },
+      {
+        title: "Days 1 to 4: Beijing with one protected Wall day",
+        paragraphs: [
+          "Use four nights in Beijing when the Great Wall matters. Keep arrival day light. On the first full day, pair the Forbidden City with one adjacent imperial or hutong chapter rather than crossing the entire city for a second headline attraction. Give the Wall its own day; the drive, entry process, uneven steps and return traffic make it a poor add-on to a full central-Beijing schedule.",
+          "The [Forbidden City ticket guide](/journal/forbidden-city-tickets-foreigners) explains why passport details and release timing matter. For the Wall, compare [Mutianyu, Badaling and Jinshanling](/journal/mutianyu-badaling-jinshanling-great-wall) by walking level and scenery, not by the shortest transfer alone.",
+        ],
+      },
+      {
+        title: "Days 5 to 6: Xi'an beyond one museum visit",
+        paragraphs: [
+          "Take high-speed rail from Beijing and protect the following morning for the Terracotta Warriors. The site is outside the center and deserves more than a quick photograph: a guide can explain the pits, restoration, Qin imperial ambition and what is known versus assumed. Later, choose the City Wall, a historic neighborhood or a food-focused evening according to your energy.",
+          "The [Terracotta Army visitor guide](/journal/terracotta-army-tickets-foreign-visitors) helps with passport booking and museum layout. Two nights are enough for a focused route; add a third when you want deeper food culture, a slower wall visit or a late arrival.",
+        ],
+      },
+      {
+        title: "Days 7 to 9: Shanghai as a real finale",
+        paragraphs: [
+          "Travel onward after breakfast when the schedule allows, then treat the arrival evening as orientation rather than a mandatory tour. On the first full Shanghai day, connect Bund architecture with one neighborhood whose lanes, food or design reveal how the city is lived in. Keep the final day flexible for a slower breakfast, a museum, a water-town option or a final river view.",
+          "Shanghai works best at the end because it changes the scale and visual language of the trip. The [Shanghai destination guide](/destinations/shanghai) can help you choose a hotel area based on the rhythm you want, not only on a landmark address.",
+        ],
+      },
+      {
+        title: "Who should add time or change the route",
+        paragraphs: [
+          "Add a night if your international flight lands late, if anyone has reduced walking tolerance or if Shanghai's neighborhoods matter as much as the Bund. Families may prefer an extra Beijing or Shanghai night rather than adding a fourth city. Travelers who want pandas should move to the [11-day Beijing, Xi'an, Chengdu and Shanghai route](/journal/11-day-beijing-xian-chengdu-shanghai-itinerary) instead of compressing Chengdu into a transfer window.",
+          "The matching [9-day private journey](/tours/first-china-beautifully-paced) is a framework. Hotels, guide coverage, train class, attraction reservations and independent time are confirmed around your dates and party after inquiry.",
+        ],
+      },
+      {
+        title: "Plan the structure before you request a quote",
+        paragraphs: [
+          "Write down your international arrival and departure airports, the one experience that cannot move, your walking comfort and whether you want guiding every day. Those four details determine whether nine days feels elegant or hurried.",
+          "Send them through our [trip planning form](/start-planning?source=journal-nine-day-bjs-mid). We will show which nights are doing useful work, where a train or transfer buffer belongs and what should be left for a future visit.",
+        ],
+      },
+    ],
+    [
+      {
+        question: "Is nine days enough for Beijing, Xi'an and Shanghai?",
+        answer:
+          "Yes, as a focused first visit with four Beijing nights, two Xi'an nights and two Shanghai nights plus arrival and departure timing. Add a night for slower pacing or late flights.",
+      },
+      {
+        question: "How should I travel from Beijing to Xi'an?",
+        answer:
+          "High-speed rail is often the practical choice because it connects central stations. The exact departure should be matched to hotel checkout and the next day's attraction reservation.",
+      },
+      {
+        question: "Can I add Chengdu to this nine-day itinerary?",
+        answer:
+          "Adding Chengdu usually removes the recovery and neighborhood time that makes the three-city route work. Use an 11-day or longer plan when pandas are a priority.",
+      },
+      {
+        question: "Which Great Wall section is best on a five-day Beijing route?",
+        answer:
+          "Mutianyu is often a balanced first-visit choice, but Badaling or Jinshanling may be better for specific access, scenery or walking preferences.",
+      },
+      {
+        question: "Is this route suitable for older travelers?",
+        answer:
+          "It can be, when the Wall is given its own day, transfers are managed and the walking route and hotel locations are reviewed before confirmation.",
+      },
+    ],
+  ),
+
+  "5-day-chengdu-leshan-itinerary": article(
+    [
+      {
+        title: "What five days can realistically include",
+        paragraphs: [
+          "Five days gives Chengdu enough room to be more than a panda stop and allows one full Leshan excursion without sacrificing every unplanned afternoon. A useful framework is four Chengdu nights, with the Leshan day placed after the panda visit or on a day when your onward connection is not at risk.",
+          "Do not promise a fixed sequence before checking panda entry, Leshan operating conditions and your arrival time. The best order changes with season, weekends, weather and whether you continue to Chongqing, Jiuzhaigou or another city.",
+        ],
+      },
+      {
+        title: "Day 1: Arrive and let Chengdu set the pace",
+        paragraphs: [
+          "Use arrival day for a private transfer, hotel check-in and a short local walk if energy allows. Chengdu is valuable in the spaces between landmarks: covered-bowl tea, parks, neighborhood streets and a meal chosen around your spice tolerance. Forcing a major attraction after a long flight creates a poor first impression and little real cultural value.",
+          "Choose a hotel area that makes the next morning practical. If you are traveling with children or older parents, room configuration, elevator access and a quiet first night matter more than a long list of facilities.",
+        ],
+      },
+      {
+        title: "Day 2: Chengdu Panda Base, early and unhurried",
+        paragraphs: [
+          "Visit a suitable panda facility early, when the animals' usual feeding and activity rhythm gives you a better chance of a meaningful visit. No operator can guarantee what an individual panda will do. The value comes from timing, route design, interpretation and honest expectations about walking, shade and crowds.",
+          "After the base, leave the afternoon light: People's Park, a tea house or a neighborhood chosen around your group. Read the [panda ticket guide for foreign visitors](/journal/chengdu-panda-base-tickets-foreigners) before your date so passport and reservation details are not an afterthought.",
+        ],
+      },
+      {
+        title: "Day 3: Sichuan food and everyday culture",
+        paragraphs: [
+          "Use a full day to understand Chengdu through taste and routine. A guide can explain the difference between a market tasting, a restaurant meal and a hands-on experience, then adjust the route for vegetarian, halal, no-pork, allergy or low-spice requirements. “Sichuan food” is not one heat level, and a good plan does not leave dietary details until arrival.",
+          "Tea-house culture gives the city a slower counterpoint to the kitchen. It also creates a useful rest window for multigenerational parties. The aim is to leave Chengdu understanding how the city feels, not simply having photographed a list of names.",
+        ],
+      },
+      {
+        title: "Day 4: Leshan Giant Buddha without a rushed return",
+        paragraphs: [
+          "Leshan is a substantial day, not a quick photo stop. Decide whether your priority is the cliffside approach, a river perspective, or a balanced combination that respects stairs and queue conditions. Weather, river operations and crowd flow can change the best viewing method, so keep the plan adaptable.",
+          "A private vehicle makes the day easier to manage, but it does not remove walking, uneven surfaces or the time required at the site. Leave enough return margin for your Chengdu hotel and do not place a nonrefundable evening flight immediately afterward.",
+        ],
+      },
+      {
+        title: "Day 5: onward travel or one more Chengdu layer",
+        paragraphs: [
+          "If Chengdu is a standalone stay, use the final morning for tea, a market, a calm park or a direct airport transfer. If you continue to Chongqing, the high-speed rail connection can be coordinated with a lighter Chengdu breakfast rather than another sightseeing obligation.",
+          "The [5-day Chengdu Panda and Sichuan Food private tour](/tours/chengdu-pandas-sichuan-table) provides the right operating framework. Leshan, guiding hours, meals and transport are confirmed according to your actual proposal rather than assumed from the sample route.",
+        ],
+      },
+      {
+        title: "Who should choose a longer Sichuan route",
+        paragraphs: [
+          "Choose seven days when you want Jiuzhaigou, a slower Chengdu stay or a wider nature route. Choose the [Chengdu, Chongqing and Zhangjiajie journey](/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour) when the vertical city and mountain scenery are priorities. Five days is strongest when Chengdu itself is the subject and Leshan is the one carefully chosen extension.",
+          "Tell us your onward city, travelers and walking needs through [start planning](/start-planning?source=journal-chengdu-leshan-mid). We will test whether Leshan fits cleanly or whether it would weaken the rest of the route.",
+        ],
+      },
+    ],
+    [
+      {
+        question: "Is Leshan a day trip from Chengdu?",
+        answer:
+          "Yes, it can be planned as a full day when transport, viewing method and return time are coordinated. It should not be hidden inside a same-evening flight connection.",
+      },
+      {
+        question: "How many days are ideal for Chengdu and Leshan?",
+        answer:
+          "Five days allows pandas, Chengdu culture and one Leshan day with some breathing room. Add time when Jiuzhaigou or a slower food program is also important.",
+      },
+      {
+        question: "Can children visit the Leshan Giant Buddha?",
+        answer:
+          "Many families can, but stairs, uneven paths, queues and heat need an honest assessment. The viewing approach can be discussed before confirmation.",
+      },
+      {
+        question: "What should I eat in Chengdu if I cannot handle spicy food?",
+        answer:
+          "Chengdu has more than one spice level and many non-spicy dishes, but allergies and dietary restrictions should be briefed before the route is quoted.",
+      },
+      {
+        question: "Does the five-day route include Jiuzhaigou?",
+        answer:
+          "No. Jiuzhaigou needs its own multi-night mountain chapter; combine it through a longer Sichuan itinerary rather than compressing it into a transfer day.",
+      },
+    ],
+  ),
+
+  "5-day-beijing-great-wall-itinerary": article(
+    [
+      {
+        title: "Why one Beijing base is the right starting point",
+        paragraphs: [
+          "Five days in Beijing is enough to build a coherent introduction when you keep one hotel base and give the Great Wall its own day. It is not enough to see every imperial garden, museum and neighborhood, so the value comes from choosing a sequence that matches your interests and walking comfort.",
+          "Arrival day is part of the logistics, not a free extra day. A late international arrival should lead to sleep, a clear transfer and a nearby meal rather than a rushed evening monument.",
+        ],
+      },
+      {
+        title: "Days 1 to 2: settle in, then read imperial Beijing",
+        paragraphs: [
+          "After arrival, use the first full day for the Forbidden City and one connected chapter such as Jingshan, hutong streets or the Temple of Heaven. The palace complex is large, exposed in places and capacity-controlled, so a guide should shape the order and explanation around your party instead of racing from gate to gate.",
+          "The [Forbidden City ticket guide](/journal/forbidden-city-tickets-foreigners) covers passport booking and timing. Leave space for lunch, water and a pause; that is what makes the history understandable for children and adults alike.",
+        ],
+      },
+      {
+        title: "Day 3: a dedicated Great Wall choice",
+        paragraphs: [
+          "Select the Wall section by the experience you want. Mutianyu often balances scenery, access and cable-car options. Badaling may suit a shorter or more structured visit, while Jinshanling is better for travelers seeking a longer mountain walk and prepared for greater effort. None is universally “best.”",
+          "The Wall still involves steps, uneven stone and changing weather even when a cable car is available. Our [Great Wall comparison](/journal/mutianyu-badaling-jinshanling-great-wall) explains the trade-offs. A private vehicle and early start protect time, but they cannot change the physical character of the site.",
+        ],
+      },
+      {
+        title: "Day 4: choose depth over another checklist",
+        paragraphs: [
+          "Use the fourth day for the Summer Palace, Temple of Heaven, hutong life, a museum or an interest-led neighborhood. Families may want a shorter cultural visit and more open time; photographers may prefer early light and a second architectural chapter; older travelers may benefit from a lighter garden route.",
+          "Beijing's meaning comes from connecting places: ritual, imperial power, domestic life and the city's modern scale. A specialist guide can make those connections clear without turning the day into a lecture.",
+        ],
+      },
+      {
+        title: "Day 5: finish cleanly or extend the journey",
+        paragraphs: [
+          "Keep the final morning close to your departure plan. If Beijing is the first part of a wider journey, high-speed rail or a private airport transfer can be arranged after breakfast. Do not book a tight same-day connection after a distant Wall excursion or a major timed attraction.",
+          "The [5-day Beijing and Great Wall private tour](/tours/beijing-great-wall-private-5-day-tour) is designed around one base and a dedicated Wall day. Hotel tier, guide coverage, cable-car choices and attraction reservations are confirmed for your dates.",
+        ],
+      },
+      {
+        title: "When five days is not enough",
+        paragraphs: [
+          "Add nights when the Great Wall is a major photography goal, when mobility requires slower movement or when you want both the Summer Palace and a deeper hutong or museum program. If Xi'an is next, compare the [six-day Xi'an and Beijing route](/journal/6-day-xian-beijing-itinerary) rather than forcing the two cities into a four-night stay.",
+          "Share your dates, hotel area and walking preferences through [Beijing trip planning](/start-planning?source=journal-beijing-five-day-mid). We will recommend a route that remains enjoyable after real transfer time is counted.",
+        ],
+      },
+    ],
+    [
+      {
+        question: "Is five days enough for Beijing and the Great Wall?",
+        answer:
+          "Yes, when Beijing remains the only base and the Wall receives a full day. Add time for slower walking, photography or a deeper museum and hutong program.",
+      },
+      {
+        question: "Which Great Wall section should first-time visitors choose?",
+        answer:
+          "Mutianyu is often a balanced starting point, while Badaling and Jinshanling serve different access and walking preferences. The best choice depends on your travelers.",
+      },
+      {
+        question: "Can I visit the Forbidden City without booking ahead?",
+        answer:
+          "Capacity and passport-linked booking rules mean advance planning is prudent. Check the current official process for your date.",
+      },
+      {
+        question: "Is this itinerary suitable for seniors?",
+        answer:
+          "Often, if the Wall section, cable-car option, rest stops, hotel location and daily starts are reviewed honestly before confirmation.",
+      },
+      {
+        question: "Can Beijing be combined with Xi'an in six days?",
+        answer:
+          "Yes, but the route becomes focused. Allow a meaningful buffer around the rail transfer and protect the Terracotta Warriors and Wall as separate visits.",
+      },
+    ],
+  ),
+
+  "6-day-xian-beijing-itinerary": article(
+    [
+      {
+        title: "The six-day idea: archaeology first, imperial Beijing second",
+        paragraphs: [
+          "Six days works for Xi'an and Beijing because the cities tell related but distinct stories. Xi'an begins with the Qin empire, Silk Road exchange and living old-city food culture; Beijing then expands the story into imperial planning, ritual and the Great Wall frontier.",
+          "Plan five hotel nights and treat arrival and departure times honestly. The route is most comfortable when the Terracotta Warriors and Great Wall are never squeezed into the same transfer day.",
+        ],
+      },
+      {
+        title: "Days 1 to 3: Xi'an's history in context",
+        paragraphs: [
+          "Use arrival day for the hotel and a manageable old-city introduction. On the first full day, visit the Terracotta Army with enough time for the main pits and museum context. The following day can combine the City Wall with the Muslim Quarter or another heritage layer chosen around crowds, prayer timing and food interests.",
+          "The [Terracotta Army ticket guide](/journal/terracotta-army-tickets-foreign-visitors) covers passport details and museum planning. The archaeological site is more valuable when your guide distinguishes evidence, restoration and interpretation instead of presenting every story as certain fact.",
+        ],
+      },
+      {
+        title: "Day 4: Xi'an to Beijing by rail",
+        paragraphs: [
+          "High-speed rail is usually the cleanest connection between the cities. Coordinate hotel checkout, station entrance, passport booking and Beijing arrival transfer as one sequence. Keep the Beijing evening light; a meal near the hotel is more useful than adding a distant monument after a travel day.",
+          "If your international flight lands or departs from another city, confirm the wider route first. A six-day plan should not hide a long airport repositioning inside an apparently short city connection.",
+        ],
+      },
+      {
+        title: "Days 5 to 6: Beijing's imperial core and the Wall",
+        paragraphs: [
+          "On the first full Beijing day, connect the Forbidden City with one adjacent imperial or hutong chapter. Give the Great Wall its own day, with the section, start time and cable-car decision matched to your walking ability. The Wall's steps, exposure and weather remain part of the experience even with private transport.",
+          "Use the [Great Wall comparison](/journal/mutianyu-badaling-jinshanling-great-wall) and [Beijing destination guide](/destinations/beijing) to choose deliberately. If departure follows immediately, leave the last evening and morning for the airport plan rather than adding another ticketed sight.",
+        ],
+      },
+      {
+        title: "Who should extend this route",
+        paragraphs: [
+          "Add a Beijing night for a slower Wall day, Summer Palace or deeper hutong program. Add a Xi'an night for food, the City Wall at a measured pace or a later arrival. Travelers who also want Shanghai should use the [9-day Beijing, Xi'an and Shanghai route](/journal/9-day-beijing-xian-shanghai-itinerary) rather than deleting the recovery windows.",
+          "The [6-day Xi'an and Beijing private journey](/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour) can be adapted around flight gateways, room needs and guide coverage. Request the plan before booking nonrefundable connections.",
+        ],
+      },
+      {
+        title: "Build the quote around the difficult days",
+        paragraphs: [
+          "Tell us whether the Terracotta Army, the Wall or food culture is the emotional center of the trip. Then share walking comfort, train preferences and departure constraints. Those details determine where private guidance and station support create value.",
+          "Use [start planning](/start-planning?source=journal-xian-beijing-six-day-mid) to request a route that states what is confirmed, what remains availability-dependent and how the transfer day will work in practice.",
+        ],
+      },
+    ],
+    [
+      {
+        question: "Is six days enough for Xi'an and Beijing?",
+        answer:
+          "Yes for a focused route with separate Terracotta Army and Great Wall days. Add a night when you want more food, museums, slower walking or an additional Beijing garden.",
+      },
+      {
+        question: "Should I start in Xi'an or Beijing?",
+        answer:
+          "Starting in Xi'an makes the archaeological chapter a strong opening, but international flights, seasons and onward connections may make Beijing first more practical.",
+      },
+      {
+        question: "How do I travel from Xi'an to Beijing?",
+        answer:
+          "High-speed rail is often the most practical central-city connection. Match the departure to hotel checkout, station transfers and the first Beijing evening.",
+      },
+      {
+        question: "Can I visit the Terracotta Army and Great Wall on the same day?",
+        answer:
+          "It is technically possible only by creating an unreasonable cross-city plan. Keep them on separate days so both visits have context and usable time.",
+      },
+      {
+        question: "Does the route work for families?",
+        answer:
+          "Yes, with early attraction timing, lighter city afternoons, suitable rooms and private transfers that reduce avoidable friction.",
+      },
+    ],
+  ),
+
+  "leshan-giant-buddha-day-trip-guide": article(
+    [
+      {
+        title: "Decide what you want to understand at Leshan",
+        paragraphs: [
+          "The Leshan Giant Buddha is not only a large statue for a quick photograph. It is a Tang-era river landscape, a religious project and an engineering response to dangerous currents. Your visit feels different depending on whether you prioritize the cliffside scale, the river perspective, the surrounding temples or a quieter explanation of the site.",
+          "That choice should come before transport. The day has limited hours, walking and queue variables, so adding every viewpoint can make the experience less valuable rather than more complete.",
+        ],
+      },
+      {
+        title: "How the day fits from Chengdu",
+        paragraphs: [
+          "A private vehicle is often the simplest option for a tailored day because it keeps departure flexible and avoids splitting the group between station, local transfer and entrance decisions. Rail can be considered when schedules and your hotel location make it genuinely more efficient. Either way, leave a return buffer and avoid a same-evening international flight.",
+          "Most travelers should expect a full day once hotel pickup, road or rail time, the site and Chengdu return are counted. It is not a sensible add-on after a morning panda visit unless your dates and energy clearly support the longer day.",
+        ],
+      },
+      {
+        title: "Viewing options and physical effort",
+        paragraphs: [
+          "The cliffside route brings you close to the Buddha but involves stairs, narrow sections, queues and uneven ground. A river perspective can reveal the complete scale from a different angle and may be preferable for travelers who want less descending and climbing, subject to current operations.",
+          "No route eliminates crowds, heat or weather. Your guide should explain the trade-off on the day, help with the confirmed entry process and keep the group together without promising a guaranteed queue time.",
+        ],
+      },
+      {
+        title: "What to pair with Leshan",
+        paragraphs: [
+          "Keep the surrounding program modest. A riverside viewpoint, a nearby temple or a considered lunch may be enough; adding another major attraction can turn the return into a race. If food and daily life matter more than another monument, reserve your best Chengdu evening for tea-house culture or Sichuan cuisine instead.",
+          "The [Chengdu and Leshan five-day itinerary](/journal/5-day-chengdu-leshan-itinerary) shows how to protect that balance. It gives the panda visit, city culture and Leshan distinct roles instead of treating the Buddha as a checkbox.",
+        ],
+      },
+      {
+        title: "When Leshan belongs in your wider route",
+        paragraphs: [
+          "Leshan is a strong extension for travelers already spending four or five nights in Chengdu. It is less suitable when Chengdu is only an overnight stop before Jiuzhaigou or when an onward flight leaves no practical buffer. In those cases, keep the route honest and postpone the excursion.",
+          "The [Chengdu Panda and Sichuan Food private tour](/tours/chengdu-pandas-sichuan-table) can include Leshan when the confirmed dates, transport and walking plan support it. Share those constraints through [start planning](/start-planning?source=journal-leshan-day-trip-mid) before committing.",
+        ],
+      },
+      {
+        title: "A useful preparation checklist",
+        paragraphs: [
+          "Wear shoes with stable grip, carry water and sun protection, and keep your passport or booking reference available when the attraction requires it. Tell your planner about stairs, heat, allergies and child or senior pacing before the proposal is written.",
+          "The best Leshan day is not the one with the most stops. It is the one where you understand the Buddha's setting, return without stress and still remember Chengdu as a living city.",
+        ],
+      },
+    ],
+    [
+      {
+        question: "Can I visit the Leshan Giant Buddha as a day trip from Chengdu?",
+        answer:
+          "Yes. Plan it as a full day with realistic road or rail time, site walking and a return buffer. Do not attach it to a tight same-evening flight.",
+      },
+      {
+        question: "Is the Leshan cliff route difficult?",
+        answer:
+          "It includes stairs, uneven ground and possible queues. A river-view option may reduce some climbing, but the best approach depends on current operations and your priorities.",
+      },
+      {
+        question: "Should I choose a boat or the cliffside route?",
+        answer:
+          "Choose based on the view you want and the physical effort your group can manage. A specialist can compare the confirmed options for your date.",
+      },
+      {
+        question: "How long should I stay in Chengdu if I add Leshan?",
+        answer:
+          "Four or five Chengdu nights usually gives the panda visit, city culture and one Leshan day enough space. Shorter stays require a sharper choice of priorities.",
+      },
+      {
+        question: "Can children and older travelers visit Leshan?",
+        answer:
+          "Many can with honest pacing, water, rest and a suitable viewing route. Stairs, heat and uneven surfaces cannot be removed completely.",
+      },
+    ],
+  ),
 };
