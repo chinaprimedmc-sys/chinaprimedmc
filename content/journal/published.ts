@@ -447,10 +447,10 @@ export const publishedJournalArticles: JournalArticle[] = [
   },
   {
     slug: "private-china-tour-cost-2026",
-    title: "How Much Does a Private China Tour Cost in 2026?",
-    dek: "Understand the hotel, guide, transport and service decisions behind a private China quotation before comparing the total price.",
+    title: "Private China Tour Pricing: What Your 2026 Quotation Should Include",
+    dek: "A practical guide to comparing private China tour quotations, from hotel standards and guide coverage to transport, tickets and the final inclusions.",
     excerpt:
-      "A transparent guide to private China tour costs, price drivers and the questions that make two quotations genuinely comparable.",
+      "Learn what shapes private China tour pricing, how to compare proposals fairly and which details should be clear before you book.",
     category: "Luxury Travel",
     tags: ["first-time-china", "luxury-travel", "family-travel", "private-guides"],
     author,
@@ -465,15 +465,16 @@ export const publishedJournalArticles: JournalArticle[] = [
     ],
     content: [],
     seo: {
-      title: "Private China Tour Cost in 2026: Price Guide",
+      title: "Private China Tour Pricing: 2026 Quotation Guide",
       description:
-        "Understand private China tour costs in 2026, including hotels, guides, transport, tickets and the questions needed for a comparable quotation.",
+        "Compare private China tour pricing with a practical 2026 guide to hotel standards, guides, transport, tickets, inclusions and quotation questions.",
       keywords: [
+        "private China tour pricing",
         "private China tour cost",
-        "how much does a private China tour cost",
-        "China private tour price",
-        "China tour cost 2026",
-        "luxury China tour cost",
+        "private China tour quotation",
+        "China tour price guide",
+        "China travel budget planning",
+        "luxury China tour pricing",
       ],
       ogImage: journalImages.privateChinaTourCost,
     },
