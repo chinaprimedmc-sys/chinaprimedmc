@@ -71,7 +71,7 @@ export function EditorialDestinationTemplate({
       />
       <section data-hero-layout="true" className="relative min-h-[88svh] overflow-hidden">
         <Image
-          src={destination.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp"}
+          src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
           alt={destination.heroImage?.alt ?? destination.name}
           fill
           priority
@@ -337,7 +337,9 @@ export function EditorialDestinationTemplate({
               <Link key={item.slug} href={`/destinations/${item.slug}`} className="group">
                 <span className="relative block aspect-[3/2] overflow-hidden rounded-[1.4rem]">
                   <Image
-                    src={item.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp"}
+                    src={
+                      item.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"
+                    }
                     alt={item.heroImage?.alt ?? item.name}
                     fill
                     sizes="(min-width:768px) 33vw, 100vw"

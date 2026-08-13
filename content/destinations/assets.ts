@@ -2,18 +2,18 @@ import type { MediaAsset } from "@/types/component-library";
 
 export const destinationAsset = {
   beijingForbiddenCity: {
-    src: "/home/beijing-forbidden-city.jpg",
-    alt: "The Forbidden City in Beijing at soft morning light",
+    src: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp",
+    alt: "The Great Wall crossing the mountains near Beijing in warm evening light",
     width: 1920,
-    height: 1200,
-    objectPosition: "50% 48%",
+    height: 1080,
+    objectPosition: "50% 45%",
   },
   beijingForbiddenCityWide: {
-    src: "/home/beijing-forbidden-city-1400.webp",
-    alt: "Imperial palace roofs inside the Forbidden City in Beijing",
-    width: 1400,
-    height: 875,
-    objectPosition: "50% 48%",
+    src: "/home/editorial/great-wall-private-china-travel.webp",
+    alt: "A traveler looking across the Great Wall near Beijing",
+    width: 1086,
+    height: 1448,
+    objectPosition: "50% 44%",
   },
   shanghaiSkyline: {
     src: "/home/shanghai-pudong-skyline.webp",

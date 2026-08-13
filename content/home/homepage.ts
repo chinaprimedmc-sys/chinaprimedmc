@@ -37,10 +37,10 @@ export const secondaryHeroActions = {
 };
 
 export const heroImage: MediaAsset = {
-  src: "/home/beijing-forbidden-city-1400.webp",
-  alt: "The Forbidden City and Beijing skyline under warm morning light",
-  width: 1400,
-  height: 875,
+  src: "/home/editorial/great-wall-private-china-travel.webp",
+  alt: "A traveler looking across the Great Wall near Beijing",
+  width: 1086,
+  height: 1448,
   priority: true,
   objectPosition: "58% 52%",
 };
@@ -161,11 +161,11 @@ export const planningSteps = [
 
 export const destinationImages = {
   beijing: {
-    src: "/home/beijing-forbidden-city.jpg",
-    alt: "Forbidden City palace roofs and courtyards in Beijing",
+    src: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp",
+    alt: "The Great Wall crossing the mountains near Beijing in warm evening light",
     width: 1920,
-    height: 1200,
-    objectPosition: "50% 48%",
+    height: 1080,
+    objectPosition: "50% 45%",
   },
   shanghai: {
     src: "/home/shanghai-pudong-skyline.jpg",

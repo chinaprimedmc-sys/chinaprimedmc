@@ -183,7 +183,7 @@ function EditorialImage({
       className={`group relative block min-w-0 overflow-hidden bg-[#dfe2dc] ${aspect}`}
     >
       <Image
-        src={destination.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp"}
+        src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
         alt={destination.heroImage?.alt ?? `${destination.name} destination guide`}
         fill
         priority={priority}
@@ -218,7 +218,7 @@ function DestinationFeature({
         className={`relative block overflow-hidden bg-[#e8ebe5] ${portrait ? "aspect-[3/4] md:mx-auto md:w-[78%]" : "aspect-[3/2]"}`}
       >
         <Image
-          src={destination.heroImage?.src ?? "/home/beijing-forbidden-city-1400.webp"}
+          src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
           alt={destination.heroImage?.alt ?? `${destination.name} destination guide`}
           fill
           sizes="(min-width:768px) 43vw, 100vw"

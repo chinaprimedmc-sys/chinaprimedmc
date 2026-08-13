@@ -18,7 +18,7 @@ export const metadata: Metadata = createMetadata({
   description:
     "Explore expert China destination guides with culture, food, best times to visit, recommended stays and private tours planned by local travel specialists.",
   path: "/destinations",
-  image: "/home/beijing-forbidden-city-1400.webp",
+  image: "/home/editorial/great-wall-private-china-travel.webp",
 });
 
 export default async function DestinationsPage() {
