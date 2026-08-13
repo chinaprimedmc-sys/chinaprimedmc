@@ -20,6 +20,12 @@ export const publicRouteSlugs = {
     "zhangjiajie",
   ],
   journal: [
+    "chengdu-to-jiuzhaigou-transport",
+    "jiuzhaigou-altitude-walking-accessibility",
+    "how-difficult-is-zhangjiajie",
+    "jiuzhaigou-or-zhangjiajie",
+    "china-tours-with-pandas",
+    "9-days-or-11-days-in-china",
     "private-china-tour-vs-group-tour",
     "11-day-beijing-xian-chengdu-shanghai-itinerary",
     "chengdu-jiuzhaigou-7-day-itinerary",

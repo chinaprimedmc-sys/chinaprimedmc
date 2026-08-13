@@ -1,4 +1,5 @@
 import type { JournalContentBlock } from "@/types/journal";
+import { tourDecisionArticleContent } from "@/content/journal/tour-decision-content";
 
 type Section = { title: string; paragraphs: string[] };
 type Faq = { question: string; answer: string };
@@ -41,6 +42,7 @@ function slugify(value: string) {
 }
 
 export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
+  ...tourDecisionArticleContent,
   "private-china-tour-vs-group-tour": article(
     [
       {

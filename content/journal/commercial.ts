@@ -9,6 +9,42 @@ const author = {
 };
 
 const commercialHeroImages = {
+  chengduJiuzhaigouTransport: {
+    src: "/tours/chengdu-pandas-jiuzhaigou/day-04.webp",
+    alt: "Mountain road and forest scenery on the route from Chengdu to Jiuzhaigou",
+    width: 1600,
+    height: 1067,
+  },
+  jiuzhaigouAccessibility: {
+    src: "/tours/chengdu-pandas-jiuzhaigou/gallery-08.webp",
+    alt: "Boardwalk and turquoise water in Jiuzhaigou National Park",
+    width: 1200,
+    height: 800,
+  },
+  zhangjiajieDifficulty: {
+    src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/zhangjiajie-24.webp",
+    alt: "Layered sandstone peaks and forest in Zhangjiajie National Forest Park",
+    width: 1600,
+    height: 1067,
+  },
+  natureComparison: {
+    src: "/home/zhangjiajie-national-forest.webp",
+    alt: "Sandstone pillars rising above the forest in Zhangjiajie",
+    width: 1920,
+    height: 1200,
+  },
+  pandaTours: {
+    src: "/tours/chengdu-pandas/chengdu-hero-panda.webp",
+    alt: "A giant panda at a Chengdu conservation base",
+    width: 2000,
+    height: 1335,
+  },
+  nineOrElevenDays: {
+    src: "/tours/first-china-beautifully-paced/beijing-great-wall-wide.webp",
+    alt: "The Great Wall crossing green mountains outside Beijing",
+    width: 1920,
+    height: 1280,
+  },
   privateVsGroup: {
     src: "/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp",
     alt: "International travelers exploring Shanghai together on a private China journey",
@@ -105,6 +141,7 @@ type CommercialArticleInput = {
   conversionTitle: string;
   conversionDescription: string;
   conversionLabel: string;
+  publishedAt?: string;
 };
 
 function commercialArticle(input: CommercialArticleInput): JournalArticle {
@@ -116,7 +153,7 @@ function commercialArticle(input: CommercialArticleInput): JournalArticle {
     category: input.category,
     tags: input.tags,
     author,
-    publishedAt: "2026-08-12",
+    publishedAt: input.publishedAt ?? "2026-08-12",
     readingTime: input.readingTime,
     editorPick: true,
     hero: { eyebrow: input.eyebrow, image: input.hero },
@@ -135,7 +172,7 @@ function commercialArticle(input: CommercialArticleInput): JournalArticle {
       articles: input.articles,
     },
     citations: input.citations,
-    updatedAt: "2026-08-12",
+    updatedAt: input.publishedAt ?? "2026-08-12",
     conversion: {
       eyebrow: "Plan with a China specialist",
       title: input.conversionTitle,
@@ -147,6 +184,375 @@ function commercialArticle(input: CommercialArticleInput): JournalArticle {
 }
 
 export const commercialJournalArticles: JournalArticle[] = [
+  commercialArticle({
+    slug: "chengdu-to-jiuzhaigou-transport",
+    publishedAt: "2026-08-13",
+    title: "Chengdu to Jiuzhaigou: Train, Flight or Private Transfer?",
+    dek: "Compare the complete hotel-to-hotel journey, including stations, airports, luggage, mountain transfers and arrival energy - not only the advertised travel time.",
+    excerpt:
+      "A practical comparison of high-speed rail, flights and private road transfers from Chengdu to Jiuzhaigou for foreign travelers.",
+    category: "Train Travel",
+    tags: ["chengdu", "train-travel", "family-travel", "private-guides"],
+    readingTime: "12 min read",
+    eyebrow: "Jiuzhaigou transport decision",
+    hero: commercialHeroImages.chengduJiuzhaigouTransport,
+    gallery: [
+      {
+        src: "/tours/chengdu-pandas-jiuzhaigou/day-03.webp",
+        alt: "Travelers preparing for the Chengdu to Jiuzhaigou connection",
+        width: 1600,
+        height: 1067,
+      },
+      {
+        src: "/tours/chengdu-pandas-jiuzhaigou/gallery-10.webp",
+        alt: "Forested mountain scenery in the Jiuzhaigou region",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/tours/chengdu-pandas-jiuzhaigou/day-05.webp",
+        alt: "Clear lakes reached after the journey into Jiuzhaigou",
+        width: 1600,
+        height: 1067,
+      },
+    ],
+    seoTitle: "Chengdu to Jiuzhaigou: Train, Flight or Transfer?",
+    seoDescription:
+      "Compare train, flight and private transfer options from Chengdu to Jiuzhaigou, including door-to-door time, luggage, stations and mountain arrival.",
+    keywords: [
+      "Chengdu to Jiuzhaigou",
+      "Chengdu to Jiuzhaigou train",
+      "Chengdu to Jiuzhaigou flight",
+      "Chengdu Jiuzhaigou private transfer",
+    ],
+    destinations: ["chengdu", "jiuzhaigou"],
+    tours: ["chengdu-pandas-jiuzhaigou-private-7-day-tour"],
+    experiences: ["train-travel", "private-guides"],
+    articles: ["chengdu-jiuzhaigou-7-day-itinerary", "china-high-speed-train-foreigners"],
+    citations: [
+      {
+        name: "China Railway 12306 English FAQ",
+        url: "https://www.12306.cn/en/faq.html",
+        publisher: "China State Railway Group",
+        publishedAt: "2026-08-13",
+      },
+    ],
+    conversionTitle: "Choose the connection around your real arrival day.",
+    conversionDescription:
+      "Share your dates, Chengdu hotel, luggage and walking needs. We will compare the live transport options and build the mountain arrival around your party.",
+    conversionLabel: "Plan Chengdu and Jiuzhaigou",
+  }),
+  commercialArticle({
+    slug: "jiuzhaigou-altitude-walking-accessibility",
+    publishedAt: "2026-08-13",
+    title: "Jiuzhaigou Altitude, Walking and Accessibility: Is It Right for You?",
+    dek: "Understand park shuttles, boardwalks, steps, altitude and reduced-mobility limits before deciding whether Jiuzhaigou fits your party.",
+    excerpt:
+      "An honest Jiuzhaigou accessibility guide covering altitude, walking, seniors, wheelchairs, park transport and route adaptation.",
+    category: "Nature",
+    tags: ["family-travel", "slow-travel", "photography", "private-guides"],
+    readingTime: "13 min read",
+    eyebrow: "Know the physical reality",
+    hero: commercialHeroImages.jiuzhaigouAccessibility,
+    gallery: [
+      {
+        src: "/tours/chengdu-pandas-jiuzhaigou/gallery-03.webp",
+        alt: "Jiuzhaigou lake and forest seen from a park walking route",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/tours/chengdu-pandas-jiuzhaigou/gallery-06.webp",
+        alt: "Waterfalls and boardwalk scenery inside Jiuzhaigou",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/tours/chengdu-pandas-jiuzhaigou/gallery-12.webp",
+        alt: "Mountain forest surrounding the lakes of Jiuzhaigou",
+        width: 1200,
+        height: 800,
+      },
+    ],
+    seoTitle: "Jiuzhaigou Altitude, Walking & Accessibility Guide",
+    seoDescription:
+      "Assess Jiuzhaigou altitude, walking, steps, park shuttles and wheelchair limits before choosing a private Chengdu and Jiuzhaigou tour.",
+    keywords: [
+      "Jiuzhaigou altitude",
+      "Jiuzhaigou walking difficulty",
+      "Jiuzhaigou accessibility",
+      "Jiuzhaigou for seniors",
+    ],
+    destinations: ["jiuzhaigou", "chengdu"],
+    tours: ["chengdu-pandas-jiuzhaigou-private-7-day-tour"],
+    experiences: ["private-guides"],
+    articles: ["chengdu-to-jiuzhaigou-transport", "chengdu-jiuzhaigou-7-day-itinerary"],
+    citations: [
+      {
+        name: "Jiuzhaigou Valley Scenic and Historic Interest Area",
+        url: "https://whc.unesco.org/en/list/637/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1992-01-01",
+      },
+    ],
+    conversionTitle: "Design the park day around real mobility, not an age label.",
+    conversionDescription:
+      "Tell us the walking, stair and rest needs of every traveler. We will explain what can be reduced, what remains unavoidable and how the route can adapt.",
+    conversionLabel: "Check My Jiuzhaigou Fit",
+  }),
+  commercialArticle({
+    slug: "how-difficult-is-zhangjiajie",
+    publishedAt: "2026-08-13",
+    title: "How Difficult Is Zhangjiajie? Walking, Stairs, Cable Cars and Park Days",
+    dek: "A realistic guide to the effort behind Zhangjiajie's famous views, including stairs, queues, elevators, cableways, hotel location and weather.",
+    excerpt:
+      "Assess Zhangjiajie walking difficulty and choose a private route that matches your knees, stamina, height comfort and available days.",
+    category: "Nature",
+    tags: ["zhangjiajie", "family-travel", "slow-travel", "photography"],
+    readingTime: "13 min read",
+    eyebrow: "Plan the mountain honestly",
+    hero: commercialHeroImages.zhangjiajieDifficulty,
+    gallery: [
+      {
+        src: "/tours/shanghai-zhangjiajie-floating-peaks/tianmen-cableway.webp",
+        alt: "Cable car traveling toward Tianmen Mountain in Zhangjiajie",
+        width: 1440,
+        height: 1920,
+      },
+      {
+        src: "/tours/shanghai-zhangjiajie-floating-peaks/golden-whip-stream.webp",
+        alt: "Lower forest walking route beside Golden Whip Stream",
+        width: 1920,
+        height: 1440,
+      },
+      {
+        src: "/tours/shanghai-zhangjiajie-floating-peaks/tianmen-mountain-cave.webp",
+        alt: "Tianmen Cave and its long stairway in Zhangjiajie",
+        width: 1179,
+        height: 1609,
+      },
+    ],
+    seoTitle: "How Difficult Is Zhangjiajie? Walking & Stairs Guide",
+    seoDescription:
+      "Understand Zhangjiajie walking, stairs, cable cars, elevators, queues and park days before choosing a private China mountain tour.",
+    keywords: [
+      "how difficult is Zhangjiajie",
+      "Zhangjiajie walking difficulty",
+      "Zhangjiajie stairs",
+      "Zhangjiajie for seniors",
+    ],
+    destinations: ["zhangjiajie", "shanghai"],
+    tours: [
+      "shanghai-zhangjiajie-floating-peaks",
+      "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+    ],
+    experiences: ["private-guides"],
+    articles: ["where-to-stay-in-zhangjiajie", "shanghai-zhangjiajie-8-day-itinerary"],
+    citations: [
+      {
+        name: "Wulingyuan Scenic and Historic Interest Area",
+        url: "https://whc.unesco.org/en/list/640/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1992-01-01",
+      },
+    ],
+    conversionTitle: "Build Zhangjiajie around the hardest traveler in your party.",
+    conversionDescription:
+      "Share walking distance, stair comfort and any fear of heights. We will compare the lift-assisted routes and keep optional effort genuinely optional.",
+    conversionLabel: "Plan My Zhangjiajie Route",
+  }),
+  commercialArticle({
+    slug: "jiuzhaigou-or-zhangjiajie",
+    publishedAt: "2026-08-13",
+    title: "Jiuzhaigou or Zhangjiajie: Which China Nature Destination Should You Choose?",
+    dek: "Compare landscape, walking, altitude, transport, weather and route fit before adding one of China's defining nature destinations.",
+    excerpt:
+      "A decision guide for choosing Jiuzhaigou or Zhangjiajie based on scenery, effort, family fit, photography and private-tour logistics.",
+    category: "Nature",
+    tags: ["zhangjiajie", "photography", "family-travel", "first-time-china"],
+    readingTime: "14 min read",
+    eyebrow: "Choose your nature chapter",
+    hero: commercialHeroImages.natureComparison,
+    gallery: [
+      {
+        src: "/home/jiuzhaigou-five-flower-lake.webp",
+        alt: "Clear turquoise water and forest at Five Flower Lake in Jiuzhaigou",
+        width: 1920,
+        height: 1200,
+      },
+      {
+        src: "/tours/shanghai-zhangjiajie-floating-peaks/wulingyuan-peaks.webp",
+        alt: "Vertical sandstone pillars in Wulingyuan, Zhangjiajie",
+        width: 1440,
+        height: 1920,
+      },
+      {
+        src: "/tours/chengdu-pandas-jiuzhaigou/gallery-01.webp",
+        alt: "A forest-framed lake in Jiuzhaigou National Park",
+        width: 1200,
+        height: 800,
+      },
+    ],
+    seoTitle: "Jiuzhaigou or Zhangjiajie: Which Should You Visit?",
+    seoDescription:
+      "Compare Jiuzhaigou and Zhangjiajie by scenery, walking, altitude, weather, families, photography and private-tour route options.",
+    keywords: [
+      "Jiuzhaigou or Zhangjiajie",
+      "Jiuzhaigou vs Zhangjiajie",
+      "best nature destination China",
+      "China nature private tour",
+    ],
+    destinations: ["jiuzhaigou", "zhangjiajie"],
+    tours: [
+      "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "shanghai-zhangjiajie-floating-peaks",
+      "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+    ],
+    experiences: ["private-guides"],
+    articles: ["jiuzhaigou-altitude-walking-accessibility", "how-difficult-is-zhangjiajie"],
+    citations: [
+      {
+        name: "Jiuzhaigou Valley Scenic and Historic Interest Area",
+        url: "https://whc.unesco.org/en/list/637/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1992-01-01",
+      },
+      {
+        name: "Wulingyuan Scenic and Historic Interest Area",
+        url: "https://whc.unesco.org/en/list/640/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1992-01-01",
+      },
+    ],
+    conversionTitle: "Choose the landscape that belongs in your wider route.",
+    conversionDescription:
+      "Share your month, flights, walking comfort and visual priorities. We will recommend the stronger nature chapter and explain the trade-offs.",
+    conversionLabel: "Compare Nature Routes",
+  }),
+  commercialArticle({
+    slug: "china-tours-with-pandas",
+    publishedAt: "2026-08-13",
+    title: "China Tours with Pandas: Which Route Should You Choose?",
+    dek: "Compare four private panda routes by trip length, destination mix, transport, walking and the kind of China journey you want after Chengdu.",
+    excerpt:
+      "Choose between 5-day, 7-day and two 11-day private China panda tours with a clear view of each route's value and trade-offs.",
+    category: "Family Travel",
+    tags: ["chengdu", "pandas", "family-travel", "first-time-china"],
+    readingTime: "14 min read",
+    eyebrow: "Compare panda tour routes",
+    hero: commercialHeroImages.pandaTours,
+    gallery: [
+      {
+        src: "/journal/2026-08-07/chengdu-panda-close-view.webp",
+        alt: "A giant panda walking through a wooded Chengdu enclosure",
+        width: 1800,
+        height: 1200,
+      },
+      {
+        src: "/tours/chengdu-pandas/day-food.webp",
+        alt: "Sichuan food experience on a private Chengdu journey",
+        width: 2000,
+        height: 2667,
+      },
+      {
+        src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/zhangjiajie-08.webp",
+        alt: "Zhangjiajie sandstone scenery on a longer panda and nature route",
+        width: 1600,
+        height: 1067,
+      },
+    ],
+    seoTitle: "China Tours with Pandas: Compare 4 Private Routes",
+    seoDescription:
+      "Compare four private China panda tours: 5 days in Chengdu, 7 days with Jiuzhaigou, or 11-day classic and southwest routes.",
+    keywords: [
+      "China tours with pandas",
+      "China panda tour",
+      "private panda tour Chengdu",
+      "best China tour with pandas",
+    ],
+    destinations: ["chengdu", "jiuzhaigou"],
+    tours: [
+      "chengdu-pandas-sichuan-table",
+      "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+    ],
+    experiences: ["pandas", "food", "private-guides"],
+    articles: ["chengdu-panda-base-tickets-foreigners", "how-many-days-in-chengdu-itinerary"],
+    citations: [
+      {
+        name: "Chengdu Research Base of Giant Panda Breeding",
+        url: "https://www.panda.org.cn/en/",
+        publisher: "Chengdu Research Base of Giant Panda Breeding",
+        publishedAt: "2026-08-13",
+      },
+    ],
+    conversionTitle: "Make pandas the beginning of a coherent China journey.",
+    conversionDescription:
+      "Tell us your available nights, flights, party and priorities. We will identify which panda route fits and remove the stops that do not add value.",
+    conversionLabel: "Choose My Panda Tour",
+  }),
+  commercialArticle({
+    slug: "9-days-or-11-days-in-china",
+    publishedAt: "2026-08-13",
+    title: "9 Days or 11 Days in China? Compare Two First-Time Private Tour Routes",
+    dek: "Decide whether to keep a focused Beijing-Xi'an-Shanghai route or add Chengdu and pandas, with honest transfer and pacing trade-offs.",
+    excerpt:
+      "A practical 9-day versus 11-day China itinerary comparison for first-time visitors choosing a private route.",
+    category: "Travel Guides",
+    tags: ["beijing", "xian", "chengdu", "shanghai", "first-time-china"],
+    readingTime: "13 min read",
+    eyebrow: "Compare first-China routes",
+    hero: commercialHeroImages.nineOrElevenDays,
+    gallery: [
+      {
+        src: "/tours/first-china-beautifully-paced/xian-terracotta-army-group.webp",
+        alt: "International travelers viewing the Terracotta Army in Xi'an",
+        width: 1920,
+        height: 1440,
+      },
+      {
+        src: "/home/chengdu-panda.webp",
+        alt: "A giant panda representing the Chengdu chapter of an 11-day route",
+        width: 1920,
+        height: 1200,
+      },
+      {
+        src: "/tours/first-china-beautifully-paced/shanghai-huangpu-sunset.webp",
+        alt: "Shanghai skyline at sunset at the end of a first China route",
+        width: 1439,
+        height: 1920,
+      },
+    ],
+    seoTitle: "9 Days or 11 Days in China? Compare 2 Private Tours",
+    seoDescription:
+      "Compare 9-day and 11-day private China routes for first-time visitors, including cities, pandas, pace, transfers and who each itinerary suits.",
+    keywords: [
+      "9 days or 11 days in China",
+      "9 day China itinerary",
+      "11 day China itinerary",
+      "first time China private tour",
+    ],
+    destinations: ["beijing", "xian", "chengdu", "shanghai"],
+    tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+    experiences: ["private-guides", "train-travel", "pandas"],
+    articles: [
+      "9-day-beijing-xian-shanghai-itinerary",
+      "11-day-beijing-xian-chengdu-shanghai-itinerary",
+    ],
+    citations: [
+      {
+        name: "China Railway 12306 English FAQ",
+        url: "https://www.12306.cn/en/faq.html",
+        publisher: "China State Railway Group",
+        publishedAt: "2026-08-13",
+      },
+    ],
+    conversionTitle: "Choose the route that deserves your available nights.",
+    conversionDescription:
+      "Share your flights, priorities and pace. We will show whether Chengdu adds enough value or whether a deeper three-city route is the better trip.",
+    conversionLabel: "Compare My 9- and 11-Day Options",
+  }),
   commercialArticle({
     slug: "private-china-tour-vs-group-tour",
     title: "Private China Tour vs Group Tour: Which Is Right for You?",
