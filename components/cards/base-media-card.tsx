@@ -66,6 +66,7 @@ export function BaseMediaCard({
   const shouldReduceMotion = useReducedMotion();
   const content = (
     <motion.article
+      tabIndex={-1}
       initial="rest"
       whileHover="hover"
       whileTap="tap"

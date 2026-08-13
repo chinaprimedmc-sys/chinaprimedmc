@@ -61,6 +61,7 @@ export type TourExperienceOption = {
   description: string;
   badges: string[];
   image: MediaAsset;
+  href?: string;
 };
 
 export type TourRouteStop = {

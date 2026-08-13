@@ -203,6 +203,12 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                   description={experience.description}
                   image={experience.image}
                   badges={experience.badges}
+                  href={experience.href}
+                  action={
+                    experience.href
+                      ? { label: "Explore this experience", href: experience.href }
+                      : undefined
+                  }
                   variant="medium"
                 />
               ))}

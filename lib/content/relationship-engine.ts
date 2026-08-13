@@ -27,6 +27,7 @@ const experienceCatalog: Record<string, TourExperienceOption> = {
       "A family-friendly panda experience planned at a smarter hour, with guide pacing that keeps the day relaxed.",
     badges: ["Family", "Pandas"],
     image: destinationAsset.chengduPanda,
+    href: "/search?type=experience&q=panda",
   },
   "private-guides": {
     title: "Private guide storytelling",
@@ -34,6 +35,7 @@ const experienceCatalog: Record<string, TourExperienceOption> = {
       "Context-rich guiding that adapts to children, older parents, photographers, food lovers, or first-time visitors.",
     badges: ["Private", "Culture"],
     image: destinationAsset.xianTerracotta,
+    href: "/search?type=experience&q=private%20guide",
   },
   "train-travel": {
     title: "High-speed rail made easy",
@@ -41,6 +43,7 @@ const experienceCatalog: Record<string, TourExperienceOption> = {
       "Station timing, tickets, luggage flow, and transfer support so China by rail feels smooth instead of confusing.",
     badges: ["Train Travel", "Logistics"],
     image: destinationAsset.shanghaiSkyline,
+    href: "/search?type=experience&q=rail",
   },
   food: {
     title: "Food experiences without guesswork",
@@ -48,6 +51,7 @@ const experienceCatalog: Record<string, TourExperienceOption> = {
       "Local flavor shaped around comfort, dietary needs, children, and the right level of adventure.",
     badges: ["Food", "Local Life"],
     image: destinationAsset.chengduTeaHouse,
+    href: "/search?type=experience&q=food",
   },
 };
 
