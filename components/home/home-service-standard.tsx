@@ -20,7 +20,7 @@ type StandardGroup = {
 const standardGroups: StandardGroup[] = [
   {
     image: {
-      src: "/tours/beijing-unhurried/forbidden-city-guide.webp",
+      src: "/home/standard/local-guide-private-walk.png",
       alt: "An AVIORA local guide speaking with international guests in Beijing",
       position: "50% 42%",
     },
