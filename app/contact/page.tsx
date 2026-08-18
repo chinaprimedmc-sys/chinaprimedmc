@@ -23,10 +23,7 @@ export const metadata: Metadata = createMetadata({
 export default function ContactPage() {
   return (
     <PageContainer>
-      <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-      />
+      <SiteNavigation items={homeNavItems} cta={primaryAction} />
       <Section spacing="spacious">
         <ContentContainer size="lg" className="grid gap-10">
           <div className="max-w-4xl">

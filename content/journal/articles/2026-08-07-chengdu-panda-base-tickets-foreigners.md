@@ -24,7 +24,7 @@ suggested_internal_links:
     "/destinations/chengdu",
     "/tours/chengdu-pandas-sichuan-table",
     "/family-travel",
-    "/planning/faq",
+    "/faq",
     "/start-planning",
   ]
 sources_verified_at: "2026-08-07"
@@ -141,7 +141,7 @@ Tell the planner before booking. The base lists stroller, wheelchair and walking
 
 ## Suggested structured data
 
-Use one `Article` object with the title, description, author (`AVIORA Travel Team`), date and canonical URL. Add an `FAQPage` object for the five questions above. Do not mark ticket availability, animal visibility or transport time as guaranteed properties.
+Use one `Article` object with the title, description, author (`AVIORA China Travel Team`), date and canonical URL. Add an `FAQPage` object for the five questions above. Do not mark ticket availability, animal visibility or transport time as guaranteed properties.
 
 ## Plan the Chengdu day around your group
 

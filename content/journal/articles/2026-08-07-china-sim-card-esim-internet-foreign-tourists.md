@@ -20,13 +20,7 @@ secondary_keywords:
   ]
 search_intent: "Choose and prepare a dependable way to use mobile data, maps and local contacts during a China trip."
 suggested_internal_links:
-  [
-    "/planning/faq",
-    "/planning",
-    "/destinations/shanghai",
-    "/destinations/beijing",
-    "/start-planning",
-  ]
+  ["/faq", "/start-planning", "/destinations/shanghai", "/destinations/beijing", "/start-planning"]
 sources_verified_at: "2026-08-07"
 hero_image: "/journal/2026-08-07/china-sim-card-airport-counter-hero.webp"
 hero_image_alt: "China Unicom tourist SIM card counter at Beijing Daxing International Airport"
@@ -104,7 +98,7 @@ _A tourist SIM counter photographed at Beijing Daxing International Airport. Cou
 
 _An on-site plan board photographed at Beijing Daxing International Airport. Prices and allowances shown in the photograph are time-specific examples, not current quotations; verify the live offer before purchase._
 
-AVIORA’s [planning FAQ](/planning/faq) covers connectivity alongside payments, transport and practical arrival questions. The [Shanghai destination guide](/destinations/shanghai) and [Beijing destination guide](/destinations/beijing) then place the data plan inside a city-specific arrival sequence.
+AVIORA’s [planning FAQ](/faq) covers connectivity alongside payments, transport and practical arrival questions. The [Shanghai destination guide](/destinations/shanghai) and [Beijing destination guide](/destinations/beijing) then place the data plan inside a city-specific arrival sequence.
 
 ## FAQ
 
@@ -155,7 +149,7 @@ Tell AVIORA your phone model, unlocked status, arrival airport, trip dates and w
 ## Sources
 
 - “A Guide to Working and Living in China as Business Expatriates (2025 Edition),” Ministry of Commerce / State Council, https://english.www.gov.cn/policies/featured/202505/16/content_WS6827008ec6d0868f4e8f29a0.html — SIM application, mobile payment and transport guidance; verified 2026-08-07.
-- “Planning FAQ,” AVIORA, https://aviora.example/planning/faq — internal planning context; repository path verified 2026-08-07. Replace example host with production canonical host during CMS publication.
+- “Planning FAQ,” AVIORA, https://aviora.example/faq — internal planning context; repository path verified 2026-08-07. Replace example host with production canonical host during CMS publication.
 - “Shanghai destination guide,” AVIORA, https://aviora.example/destinations/shanghai — internal route context; repository path verified 2026-08-07. Replace example host with production canonical host during CMS publication.
 
 ## Review Notes

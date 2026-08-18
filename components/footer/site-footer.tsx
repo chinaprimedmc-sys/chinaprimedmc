@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
-import { CtaButton } from "@/components/cta";
+import { WhatsAppIcon } from "@/components/icons";
+import { CookiePreferencesButton } from "@/components/privacy/cookie-preferences-button";
 import { siteConfig } from "@/config/site";
 import type { NavigationItem } from "@/types/component-library";
+import styles from "./site-footer.module.css";
 
 type SiteFooterProps = {
   brand?: string;
@@ -19,77 +22,100 @@ export function SiteFooter({
   email = siteConfig.email,
   social = [],
 }: SiteFooterProps) {
+  const whatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(
+    "Hello AVIORA, I would like help planning a private trip to China.",
+  )}`;
+
   return (
-    <footer className="bg-neutral-950 px-5 py-12 text-white md:px-8 md:py-16">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_1.4fr]">
-        <div>
-          <p className="brand-wordmark text-xl [--brand-wordmark-color:rgba(255,255,255,0.92)]">
-            {brand}
-          </p>
-          <p className="mt-4 max-w-sm text-sm leading-7 text-white/68">{description}</p>
-          <div className="mt-6">
-            <CtaButton href={`mailto:${email}`} variant="glass">
-              Write to a China Specialist
-            </CtaButton>
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+        <section className={styles.conversion}>
+          <div>
+            <p className={styles.eyebrow}>Private travel, planned in China</p>
+            <h2>Planning a private trip to China?</h2>
+            <p className={styles.conversionCopy}>
+              Share your dates, travel style and priorities. Our China-based team will suggest a
+              clear first direction.
+            </p>
           </div>
-        </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {columns.map((column) => (
-            <div key={column.title}>
-              <p className="text-xs font-semibold tracking-[0.18em] text-white/45 uppercase">
-                {column.title}
-              </p>
-              <ul className="mt-4 grid gap-3">
-                {column.items.map((item) => (
-                  <li key={`${column.title}-${item.label}-${item.href}`}>
-                    <Link
-                      href={item.href}
-                      className="-mx-2 inline-flex min-h-9 items-center rounded-full px-2 text-sm text-white/72 transition hover:text-white"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
-        <p>
-          © {new Date().getFullYear()} AVIORA · Operated in China by{" "}
-          {siteConfig.operator.englishReferenceName}
-        </p>
-        <div className="flex flex-wrap gap-4">
-          {social.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
-            >
-              {item.label}
+          <div className={styles.actions}>
+            <Link className={styles.primaryAction} href="/start-planning?source=site-footer">
+              Start planning <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
-          ))}
-          <Link
-            href="/about"
-            className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
-          >
-            About AVIORA
-          </Link>
-          <Link
-            href="/privacy"
-            className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
-          >
-            Privacy
-          </Link>
-          <Link
-            href="/terms"
-            className="-mx-2 inline-flex min-h-8 items-center rounded-full px-2 hover:text-white"
-          >
-            Booking Terms
-          </Link>
+            <a
+              className={styles.whatsappAction}
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WhatsAppIcon aria-hidden="true" /> Message an Advisor
+            </a>
+          </div>
+        </section>
+
+        <div className={styles.main}>
+          <div>
+            <p
+              className={`brand-wordmark ${styles.brand} [--brand-wordmark-color:rgba(255,255,255,0.92)]`}
+            >
+              {brand}
+            </p>
+            <p className={styles.description}>{description}</p>
+            <div className={styles.trust}>
+              <span>Licensed inbound tour operator</span>
+              <span>China-based local support</span>
+            </div>
+            <a className={styles.email} href={`mailto:${email}`}>
+              {email}
+            </a>
+            {social.length ? (
+              <div className={styles.socialLinks}>
+                {social.map((item) => (
+                  <Link key={item.href} href={item.href}>
+                    {getSocialLabel(item)}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
+          <nav className={styles.columns} aria-label="Footer navigation">
+            {columns.map((column) => (
+              <div className={styles.column} key={column.title}>
+                <p className={styles.columnTitle}>{column.title}</p>
+                <ul>
+                  {column.items.slice(0, 5).map((item) => (
+                    <li key={`${column.title}-${item.label}-${item.href}`}>
+                      <Link href={item.href}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+        </div>
+
+        <div className={styles.legal}>
+          <p>
+            © {new Date().getFullYear()} AVIORA · Operated in China by{" "}
+            {siteConfig.operator.englishReferenceName}
+          </p>
+          <div className={styles.legalLinks}>
+            <Link href="/about">About AVIORA</Link>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/cookies">Cookie Policy</Link>
+            <CookiePreferencesButton className={styles.cookiePreferences} />
+            <Link href="/terms">Booking Terms</Link>
+          </div>
         </div>
       </div>
     </footer>
   );
+}
+
+function getSocialLabel(item: { label: string; href: string }) {
+  const href = item.href.toLowerCase();
+  if (href.includes("instagram.com")) return "Instagram";
+  if (href.includes("facebook.com")) return "Facebook";
+  return item.label === "Social" ? "Follow AVIORA" : item.label;
 }

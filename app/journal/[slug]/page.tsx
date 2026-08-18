@@ -33,12 +33,16 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   const article = await hydrateJournalArticle(articleSummary);
+  const socialImage = article.seo.ogImage ?? article.hero.image;
 
   return createMetadata({
     title: article.seo.title,
     description: article.seo.description,
     path: article.seo.canonicalPath ?? `/journal/${article.slug}`,
-    image: article.seo.ogImage?.src ?? article.hero.image.src,
+    image: socialImage.src,
+    imageWidth: socialImage.width,
+    imageHeight: socialImage.height,
+    imageAlt: socialImage.alt,
     type: "article",
     noIndex: false,
   });
@@ -95,16 +99,55 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 }
 
 function articleSchema(article: JournalArticle) {
+  const socialImage = article.seo.ogImage ?? article.hero.image;
+
   return articleSchemaData({
     headline: article.title,
     description: article.seo.description,
-    image: new URL(article.seo.ogImage?.src ?? article.hero.image.src, siteConfig.url).toString(),
+    image: {
+      url: new URL(socialImage.src, siteConfig.url).toString(),
+      width: socialImage.width,
+      height: socialImage.height,
+    },
     url: new URL(`/journal/${article.slug}`, siteConfig.url).toString(),
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
     authorName: article.author.name,
     authorRole: article.author.role,
+    articleSection: article.category,
+    wordCount: countArticleWords(article),
     keywords: article.seo.keywords,
     citations: article.citations,
   });
+}
+
+function countArticleWords(article: JournalArticle) {
+  const text = article.content
+    .flatMap((block) => {
+      switch (block.type) {
+        case "heading":
+          return [block.title];
+        case "paragraph":
+          return [block.body];
+        case "list":
+          return block.items;
+        case "table":
+          return [...block.headers, ...block.rows.flat()];
+        case "callout":
+          return [block.title ?? "", block.body];
+        case "quote":
+          return [block.quote, block.attribution ?? ""];
+        case "cta":
+          return [block.title, block.description];
+        case "faq":
+          return [block.question, block.answer];
+        case "image":
+          return [block.caption ?? ""];
+      }
+    })
+    .join(" ")
+    .replace(/\[[^\]]+\]\([^)]+\)/g, " ")
+    .trim();
+
+  return text ? text.split(/\s+/).length : undefined;
 }

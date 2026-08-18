@@ -6,10 +6,12 @@ import { siteConfig } from "@/config/site";
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
 import { TourFrameworkTemplate } from "@/features/tours/tour-framework-template";
+import { bookingPolicyFaqs, frameworkTourFaqs } from "@/features/tours/detail/tour-detail-model";
 import { TourTemplate } from "@/features/tours/tour-template";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
+import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
 
 type TourPageProps = {
   params: Promise<{ slug: string }>;
@@ -35,6 +37,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       description: staticTour.seo.description,
       path: `/tours/${staticTour.slug}`,
       image: staticTour.hero.image.src,
+      keywords: staticTour.seo.keywords,
     });
   }
 
@@ -49,6 +52,12 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
     description: journey.summary,
     path: `/tours/${journey.slug}`,
     image: journey.image.src,
+    keywords: [
+      `${journey.routeLabel} private tour`,
+      `${journey.durationLabel} China itinerary`,
+      "private China tour",
+      ...journey.destinations.map((destination) => `${destination.label} private tour`),
+    ],
   });
 }
 
@@ -57,6 +66,8 @@ export default async function TourPage({ params }: TourPageProps) {
   const staticTour = getTourBySlug(slug);
 
   if (staticTour) {
+    const catalogItem = getJourneyCatalogItem(staticTour.slug);
+    const reading = getJourneyReadingArticles(staticTour.slug);
     return (
       <>
         <JsonLd
@@ -67,7 +78,13 @@ export default async function TourPage({ params }: TourPageProps) {
             name: staticTour.title,
             description: staticTour.seo.description,
             url: new URL(`/tours/${staticTour.slug}`, siteConfig.url).toString(),
-            image: new URL(staticTour.hero.image.src, siteConfig.url).toString(),
+            image: Array.from(
+              new Set([
+                staticTour.hero.image.src,
+                ...staticTour.itinerary.map((day) => day.image.src),
+                ...staticTour.gallery.map((image) => image.src),
+              ]),
+            ).map((image) => new URL(image, siteConfig.url).toString()),
             itinerary: {
               "@type": "ItemList",
               numberOfItems: staticTour.itinerary.length,
@@ -79,6 +96,44 @@ export default async function TourPage({ params }: TourPageProps) {
               })),
             },
             touristType: staticTour.styles,
+            duration: `P${staticTour.itinerary.length}D`,
+            areaServed: staticTour.route.split(",").map((destination) => ({
+              "@type": "Place",
+              name: destination.trim(),
+            })),
+            offers: catalogItem
+              ? {
+                  "@type": "Offer",
+                  price: catalogItem.pricing.fromUsd,
+                  priceCurrency: "USD",
+                  url: new URL(`/tours/${staticTour.slug}`, siteConfig.url).toString(),
+                  description: catalogItem.pricing.basis,
+                  priceSpecification: {
+                    "@type": "UnitPriceSpecification",
+                    price: catalogItem.pricing.fromUsd,
+                    priceCurrency: "USD",
+                    unitText: "per person",
+                    description: catalogItem.pricing.basis,
+                  },
+                }
+              : undefined,
+            additionalProperty: [
+              {
+                "@type": "PropertyValue",
+                name: "Accommodation standard",
+                value: "Selected four- and five-star hotels",
+              },
+              {
+                "@type": "PropertyValue",
+                name: "Tour format",
+                value: "Private, tailor-made journey",
+              },
+            ],
+            subjectOf: reading.map((article) => ({
+              "@type": "Article",
+              name: article.title,
+              url: new URL(article.href, siteConfig.url).toString(),
+            })),
             provider: { "@id": `${siteConfig.url}/#organization` },
           }}
         />
@@ -87,7 +142,7 @@ export default async function TourPage({ params }: TourPageProps) {
           data={{
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: staticTour.faqs.map((faq) => ({
+            mainEntity: [...staticTour.faqs, ...bookingPolicyFaqs].map((faq) => ({
               "@type": "Question",
               name: faq.question,
               acceptedAnswer: { "@type": "Answer", text: faq.answer },
@@ -113,6 +168,8 @@ export default async function TourPage({ params }: TourPageProps) {
     notFound();
   }
 
+  const reading = getJourneyReadingArticles(journey.slug);
+
   return (
     <>
       <JsonLd
@@ -125,7 +182,65 @@ export default async function TourPage({ params }: TourPageProps) {
           url: new URL(`/tours/${journey.slug}`, siteConfig.url).toString(),
           image: new URL(journey.image.src, siteConfig.url).toString(),
           touristType: journey.bestForFilters,
+          duration: `P${journey.recommendedDaysMin}D`,
+          itinerary: {
+            "@type": "ItemList",
+            numberOfItems: journey.destinations.length,
+            itemListElement: journey.destinations.map((destination, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: destination.label,
+              url: new URL(destination.href, siteConfig.url).toString(),
+            })),
+          },
+          areaServed: journey.destinations.map((destination) => ({
+            "@type": "Place",
+            name: destination.label,
+          })),
+          offers: {
+            "@type": "Offer",
+            price: journey.pricing.fromUsd,
+            priceCurrency: "USD",
+            url: new URL(`/tours/${journey.slug}`, siteConfig.url).toString(),
+            description: journey.pricing.basis,
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: journey.pricing.fromUsd,
+              priceCurrency: "USD",
+              unitText: "per person",
+              description: journey.pricing.basis,
+            },
+          },
+          additionalProperty: [
+            {
+              "@type": "PropertyValue",
+              name: "Accommodation standard",
+              value: "Selected four- and five-star hotels",
+            },
+            {
+              "@type": "PropertyValue",
+              name: "Tour format",
+              value: "Private, tailor-made journey",
+            },
+          ],
+          subjectOf: reading.map((article) => ({
+            "@type": "Article",
+            name: article.title,
+            url: new URL(article.href, siteConfig.url).toString(),
+          })),
           provider: { "@id": `${siteConfig.url}/#organization` },
+        }}
+      />
+      <JsonLd
+        id={`${journey.slug}-faq-schema`}
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: frameworkTourFaqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
         }}
       />
       <JsonLd

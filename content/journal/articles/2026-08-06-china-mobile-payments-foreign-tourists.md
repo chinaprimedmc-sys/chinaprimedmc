@@ -21,8 +21,8 @@ secondary_keywords:
 search_intent: "Set up a reliable mix of mobile wallets, international cards and RMB cash before traveling in China."
 suggested_internal_links:
   [
-    "/planning",
-    "/planning/faq",
+    "/start-planning",
+    "/faq",
     "/tours/first-china-beautifully-paced",
     "/destinations/shanghai",
     "/start-planning",
@@ -116,7 +116,7 @@ Ask two separate questions: **How can I pay the room balance?** and **How is the
 - Confirm how arranged hotels, tours and transfers will be settled.
 - Recheck product limits and fees inside the live app before travel.
 
-Payment setup is one part of AVIORA’s broader [China travel planning guide](/planning). For a first route, the [nine-day Beijing, Xi’an and Shanghai itinerary](/tours/first-china-beautifully-paced) shows where private transfers and confirmed tickets can remove the most operational pressure.
+Payment setup is one part of AVIORA’s broader [China travel planning guide](/start-planning). For a first route, the [nine-day Beijing, Xi’an and Shanghai itinerary](/tours/first-china-beautifully-paced) shows where private transfers and confirmed tickets can remove the most operational pressure.
 
 ## FAQ
 

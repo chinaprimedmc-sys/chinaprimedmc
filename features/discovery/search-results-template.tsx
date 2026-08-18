@@ -11,6 +11,7 @@ import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
 import { destinationAsset } from "@/content/destinations/assets";
 import { discoveryIndex, popularSearches, searchDiscovery } from "@/content/discovery";
+import { homeNavItems } from "@/content/home/homepage";
 import { DiscoveryCard } from "@/features/discovery/discovery-card";
 import { MyTripPanel } from "@/features/discovery/my-trip-panel";
 import { Section } from "@/design-system/primitives/section";
@@ -21,12 +22,6 @@ type SearchResultsTemplateProps = {
   type?: DiscoveryType;
   filters?: Omit<DiscoveryFilters, "types" | "query">;
 };
-
-const searchNav = [
-  { label: "Results", href: "#results" },
-  { label: "Filters", href: "#filters" },
-  { label: "My Trip", href: "#my-trip" },
-];
 
 export function SearchResultsTemplate({
   query,
@@ -39,7 +34,10 @@ export function SearchResultsTemplate({
 
   return (
     <PageContainer>
-      <SiteNavigation items={searchNav} cta={{ label: "Plan My Trip", href: "#my-trip" }} />
+      <SiteNavigation
+        items={homeNavItems}
+        cta={{ label: "Start Planning", href: "/start-planning" }}
+      />
 
       <SearchHero query={query} />
 
@@ -97,7 +95,14 @@ export function SearchResultsTemplate({
 
       <SiteFooter
         columns={[
-          { title: "Search", items: searchNav },
+          {
+            title: "Search",
+            items: [
+              { label: "Search results", href: "#results" },
+              { label: "Filters", href: "#filters" },
+              { label: "My trip", href: "#my-trip" },
+            ],
+          },
           {
             title: "Popular",
             items: popularSearches.slice(0, 4).map((term) => ({

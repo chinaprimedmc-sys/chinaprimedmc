@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">AVIORA passage symbol</title>
+  <desc id="desc">A black architectural passage with an open perspective path, designed as a symbol-only travel logo.</desc>
+  <rect width="1024" height="1024" fill="#FFFFFF"/>
+  <path fill="#000000" fill-rule="evenodd" d="
+    M 276 790
+    L 276 334
+    C 276 232 358 150 460 150
+    L 564 150
+    C 666 150 748 232 748 334
+    L 748 790
+    L 622 790
+    L 570 350
+    C 566 318 542 296 512 296
+    C 482 296 458 318 454 350
+    L 402 790
+    Z
+  "/>
+</svg>

@@ -21,7 +21,7 @@ secondary_keywords:
 search_intent: "Decide whether to visit China during the 2026 National Day holiday and build a route that accounts for demand, reservations and crowd pressure."
 suggested_internal_links:
   [
-    "/planning",
+    "/start-planning",
     "/destinations",
     "/tours",
     "/journal/china-high-speed-train-foreigners",
@@ -122,7 +122,7 @@ Choose **travel immediately after October 7** when calmer pacing and more accomm
 
 Choose **a split itinerary** when international flights are fixed but the most sensitive attractions can be moved outside the holiday itself.
 
-AVIORA can turn the preferred option into a written route with hotel assumptions, transport alternatives and a reservation calendar. Start with the [China planning hub](/planning), then [request a private proposal](/start-planning) with exact travel dates and passport nationalities.
+AVIORA can turn the preferred option into a written route with hotel assumptions, transport alternatives and a reservation calendar. Start with the [China planning hub](/start-planning), then [request a private proposal](/start-planning) with exact travel dates and passport nationalities.
 
 ## FAQ
 
@@ -148,7 +148,7 @@ No. A guide can improve timing, interpretation and local coordination, but offic
 
 ## Structured Data Recommendation
 
-- **Article schema:** headline, description, datePublished set only at publication, dateModified, author as AVIORA Travel Team, mainEntityOfPage and a licensed hero image.
+- **Article schema:** headline, description, datePublished set only at publication, dateModified, author as AVIORA China Travel Team, mainEntityOfPage and a licensed hero image.
 - **FAQPage schema:** use the five questions above only if the same answers remain visible on the published page.
 - **Entities to name consistently:** State Council of the People’s Republic of China, National Day, Mid-Autumn Festival, China Railway 12306, Beijing, Xi’an and Shanghai.
 

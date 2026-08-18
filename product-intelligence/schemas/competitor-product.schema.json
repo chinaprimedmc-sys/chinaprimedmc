@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AVIORA competitor product",
+  "type": "object",
+  "required": [
+    "id",
+    "competitor",
+    "productName",
+    "url",
+    "observed",
+    "inferred",
+    "scoreInputs",
+    "sources",
+    "lastChecked"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 3 },
+    "competitor": { "type": "string" },
+    "productName": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
+    "observed": { "type": "object" },
+    "inferred": { "type": "object" },
+    "scoreInputs": {
+      "type": "object",
+      "required": [
+        "searchDemand",
+        "competitiveValidation",
+        "productAppeal",
+        "conversionPotential",
+        "differentiationOpportunity",
+        "commercialValue"
+      ],
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 100 }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["url", "sourceType", "checkedAt"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "sourceType": { "type": "string" },
+          "checkedAt": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "lastChecked": { "type": "string", "format": "date" }
+  }
+}

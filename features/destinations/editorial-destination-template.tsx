@@ -8,12 +8,12 @@ import {
   MapPin,
   Route,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
+import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import type { CmsDestinationCard } from "@/components/destinations/destination-explorer";
 import type { NavigationItem } from "@/types/component-library";
@@ -70,12 +70,13 @@ export function EditorialDestinationTemplate({
         }}
       />
       <section data-hero-layout="true" className="relative min-h-[88svh] overflow-hidden">
-        <Image
+        <OptimizedImage
           src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
           alt={destination.heroImage?.alt ?? destination.name}
           fill
           priority
           sizes="100vw"
+          frameClassName="absolute inset-0 h-full w-full"
           className="object-cover motion-safe:animate-[destination-hero-breathe_16s_ease-out_both]"
           style={{ objectPosition: destination.heroImage?.objectPosition }}
         />
@@ -182,11 +183,12 @@ export function EditorialDestinationTemplate({
                 key={image.src}
                 className={`relative overflow-hidden rounded-[1.25rem] ${index === 0 ? "aspect-[3/4]" : "mt-12 aspect-[3/4]"}`}
               >
-                <Image
+                <OptimizedImage
                   src={image.src}
                   alt={image.alt}
                   fill
                   sizes="(min-width:1024px) 22vw, 48vw"
+                  frameClassName="absolute inset-0 h-full w-full"
                   className="object-cover"
                   style={{ objectPosition: image.objectPosition }}
                 />
@@ -336,13 +338,14 @@ export function EditorialDestinationTemplate({
             {related.map((item) => (
               <Link key={item.slug} href={`/destinations/${item.slug}`} className="group">
                 <span className="relative block aspect-[3/2] overflow-hidden rounded-[1.4rem]">
-                  <Image
+                  <OptimizedImage
                     src={
                       item.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"
                     }
                     alt={item.heroImage?.alt ?? item.name}
                     fill
                     sizes="(min-width:768px) 33vw, 100vw"
+                    frameClassName="absolute inset-0 h-full w-full"
                     className="object-cover transition duration-700 group-hover:scale-105"
                     style={{ objectPosition: item.heroImage?.objectPosition }}
                   />
@@ -381,11 +384,12 @@ export function EditorialDestinationTemplate({
                   className="group grid gap-5 sm:grid-cols-[.8fr_1.2fr]"
                 >
                   <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#eceee9]">
-                    <Image
+                    <OptimizedImage
                       src={journey.image.src}
                       alt={journey.image.alt}
                       fill
                       sizes="(min-width:768px) 30vw, 100vw"
+                      frameClassName="absolute inset-0 h-full w-full"
                       className="object-cover transition duration-700 group-hover:scale-105"
                       style={{ objectPosition: journey.image.objectPosition }}
                     />
@@ -497,7 +501,7 @@ export function EditorialDestinationTemplate({
             items: [
               { label: "Private journeys", href: "/tours" },
               { label: "Start planning", href: "/start-planning" },
-              { label: "Travel styles", href: "/styles" },
+              { label: "Travel FAQ", href: "/faq" },
             ],
           },
         ]}
@@ -535,11 +539,12 @@ function EditorialImage({
 }) {
   return (
     <div className="relative min-h-[28rem] overflow-hidden rounded-[1.5rem] md:min-h-[38rem]">
-      <Image
+      <OptimizedImage
         src={image.src}
         alt={image.alt}
         fill
         sizes="(min-width:1024px) 45vw, 100vw"
+        frameClassName="absolute inset-0 h-full w-full"
         className="object-cover"
         style={{ objectPosition: image.objectPosition }}
       />

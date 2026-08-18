@@ -10,11 +10,18 @@ import { Section } from "@/design-system/primitives/section";
 type LegalDocumentProps = {
   eyebrow: string;
   title: string;
+  effectiveDate?: string;
   introduction: ReactNode;
   children: ReactNode;
 };
 
-export function LegalDocument({ eyebrow, title, introduction, children }: LegalDocumentProps) {
+export function LegalDocument({
+  eyebrow,
+  title,
+  effectiveDate = "July 18, 2026",
+  introduction,
+  children,
+}: LegalDocumentProps) {
   return (
     <PageContainer>
       <SiteNavigation
@@ -28,7 +35,7 @@ export function LegalDocument({ eyebrow, title, introduction, children }: LegalD
             <h1 className="mt-4 font-serif text-4xl leading-tight font-medium md:text-6xl">
               {title}
             </h1>
-            <p className="text-muted mt-5 text-sm">Effective July 18, 2026</p>
+            <p className="text-muted mt-5 text-sm">Effective {effectiveDate}</p>
             <div className="text-muted mt-6 text-sm leading-7">{introduction}</div>
           </aside>
           <article className="legal-copy border-border border-t pt-8">{children}</article>

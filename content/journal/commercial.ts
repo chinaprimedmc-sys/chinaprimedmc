@@ -1,14 +1,22 @@
 import { destinationAsset } from "@/content/destinations/assets";
 import { commercialArticleContent } from "@/content/journal/commercial-content";
+import {
+  beijingUnhurriedAsset,
+  firstChinaAsset,
+  shanghaiZhangjiajieAsset,
+} from "@/content/tours/assets";
 import type { MediaAsset } from "@/types/component-library";
 import type { JournalArticle, JournalCategory, JournalCitation } from "@/types/journal";
 
 const author = {
-  name: "AVIORA Travel Team",
+  name: "AVIORA China Travel Team",
   role: "China travel specialists",
 };
 
 const commercialHeroImages = {
+  beijingTerracottaDecision: firstChinaAsset.xianTerracottaPit,
+  mutianyuWalking: firstChinaAsset.beijingGreatWallWide,
+  tianmenVsWulingyuan: destinationAsset.zhangjiajieForest,
   chengduJiuzhaigouTransport: {
     src: "/tours/chengdu-pandas-jiuzhaigou/day-04.webp",
     alt: "Mountain road and forest scenery on the route from Chengdu to Jiuzhaigou",
@@ -141,6 +149,7 @@ type CommercialArticleInput = {
   conversionTitle: string;
   conversionDescription: string;
   conversionLabel: string;
+  conversionImage?: MediaAsset;
   publishedAt?: string;
 };
 
@@ -179,11 +188,197 @@ function commercialArticle(input: CommercialArticleInput): JournalArticle {
       description: input.conversionDescription,
       label: input.conversionLabel,
       href: `/start-planning?source=journal-${input.slug}`,
+      image: input.conversionImage,
     },
   };
 }
 
 export const commercialJournalArticles: JournalArticle[] = [
+  commercialArticle({
+    slug: "terracotta-warriors-day-trip-from-beijing",
+    publishedAt: "2026-08-15",
+    title: "Terracotta Warriors from Beijing: Day Trip or Overnight in Xi'an?",
+    dek: "Compare the real hotel-to-hotel day, high-speed rail logistics and the value of one or two Xi'an nights before committing to a rushed visit.",
+    excerpt:
+      "An honest decision guide for travelers considering the Terracotta Warriors from Beijing in one day.",
+    category: "History",
+    tags: ["beijing", "xian", "terracotta-army", "train-travel", "first-time-china"],
+    readingTime: "14 min read",
+    eyebrow: "Beijing to Xi'an decision guide",
+    hero: commercialHeroImages.beijingTerracottaDecision,
+    gallery: [
+      firstChinaAsset.xianTerracottaGroup,
+      firstChinaAsset.xianTerracottaPortrait,
+      {
+        src: "/tours/xian-beijing-private-journey/day-03.webp",
+        alt: "Datang Everbright City illuminated at night in Xi'an",
+        width: 1600,
+        height: 1067,
+      },
+    ],
+    seoTitle: "Terracotta Warriors from Beijing: Day Trip or Overnight?",
+    seoDescription:
+      "Can you visit the Terracotta Warriors from Beijing in one day? Compare rail, transfers, museum time and one- or two-night Xi'an plans.",
+    keywords: [
+      "Terracotta Warriors day trip from Beijing",
+      "can you visit Terracotta Warriors from Beijing in one day",
+      "Beijing to Xi'an day trip",
+      "Beijing to Terracotta Warriors by high speed train",
+      "how many nights in Xi'an for Terracotta Warriors",
+    ],
+    destinations: ["beijing", "xian"],
+    tours: [
+      "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "first-china-beautifully-paced",
+      "beijing-xian-chengdu-shanghai-private-11-day-tour",
+    ],
+    experiences: ["train-travel", "private-guides"],
+    articles: [
+      "terracotta-army-tickets-foreign-visitors",
+      "beijing-xian-itinerary-how-many-days",
+      "china-high-speed-train-foreigners",
+    ],
+    citations: [
+      {
+        name: "Mausoleum of the First Qin Emperor",
+        url: "https://whc.unesco.org/en/list/441/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1987-01-01",
+      },
+      {
+        name: "China Railway 12306 English FAQ",
+        url: "https://www.12306.cn/en/faq.html",
+        publisher: "China State Railway Group",
+        publishedAt: "2026-08-15",
+      },
+    ],
+    conversionTitle: "Decide whether Xi'an deserves a night before choosing the train.",
+    conversionDescription:
+      "Share your Beijing hotel, travel dates and wider China route. We will explain the realistic sequence and shape a private Xi'an and Beijing proposal around it.",
+    conversionLabel: "Plan Beijing and Xi'an",
+    conversionImage: {
+      src: "/tours/xian-beijing-private-journey/day-01.webp",
+      alt: "Xi'an City Wall and Yongning Gate glowing after rain",
+      width: 1600,
+      height: 1067,
+    },
+  }),
+  commercialArticle({
+    slug: "mutianyu-great-wall-walking-cable-car",
+    publishedAt: "2026-08-15",
+    title: "How Much Walking Is There at Mutianyu Great Wall with the Cable Car?",
+    dek: "Understand what the cable car removes, what walking remains and which Mutianyu route suits children, older travelers and mixed-ability families.",
+    excerpt:
+      "A realistic Mutianyu walking guide built around tower choices, stairs, weather and group energy.",
+    category: "Family Travel",
+    tags: ["beijing", "great-wall", "family-travel", "senior-travel", "private-guides"],
+    readingTime: "14 min read",
+    eyebrow: "Mutianyu walking and cable-car guide",
+    hero: commercialHeroImages.mutianyuWalking,
+    gallery: [
+      firstChinaAsset.beijingGreatWallCouple,
+      firstChinaAsset.beijingGreatWallSolo,
+      beijingUnhurriedAsset.privateService,
+    ],
+    seoTitle: "How Much Walking at Mutianyu Great Wall with Cable Car?",
+    seoDescription:
+      "Compare realistic Mutianyu walking routes after the cable car, including stairs, tower choices and advice for kids, seniors and slower walkers.",
+    keywords: [
+      "how much walking at Mutianyu Great Wall",
+      "Mutianyu Great Wall with cable car",
+      "Mutianyu cable car route for seniors",
+      "Mutianyu Great Wall with kids",
+      "is Mutianyu Great Wall difficult",
+    ],
+    destinations: ["beijing"],
+    tours: [
+      "beijing-great-wall-private-5-day-tour",
+      "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "first-china-beautifully-paced",
+    ],
+    experiences: ["private-guides"],
+    articles: [
+      "mutianyu-badaling-jinshanling-great-wall",
+      "5-day-beijing-great-wall-itinerary",
+      "china-itinerary-older-travelers-10-days",
+    ],
+    citations: [
+      {
+        name: "Mutianyu Great Wall Official English Website",
+        url: "https://en.mutianyugreatwall.com/",
+        publisher: "Beijing Mutianyu Great Wall Tourism Service Co.",
+        publishedAt: "2026-08-15",
+      },
+      {
+        name: "The Great Wall",
+        url: "https://whc.unesco.org/en/list/438/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1987-01-01",
+      },
+    ],
+    conversionTitle: "Build the Great Wall day around the slowest comfortable walker.",
+    conversionDescription:
+      "Tell us the ages, walking comfort and height preferences in your party. We will recommend a private Mutianyu day without pretending the cable car removes every step.",
+    conversionLabel: "Plan My Mutianyu Day",
+    conversionImage: beijingUnhurriedAsset.greatWallSunrise,
+  }),
+  commercialArticle({
+    slug: "tianmen-mountain-vs-zhangjiajie-national-forest-park",
+    publishedAt: "2026-08-15",
+    title: "Tianmen Mountain vs Zhangjiajie National Forest Park: Which Should You Visit?",
+    dek: "Compare two separate Zhangjiajie experiences by scenery, hotel base, walking, heights, weather and the number of usable days in your itinerary.",
+    excerpt:
+      "A clear choice guide for travelers deciding between Tianmen Mountain and Wulingyuan's national-park landscapes.",
+    category: "Nature",
+    tags: ["zhangjiajie", "nature", "family-travel", "senior-travel", "photography"],
+    readingTime: "15 min read",
+    eyebrow: "Zhangjiajie attraction decision guide",
+    hero: commercialHeroImages.tianmenVsWulingyuan,
+    gallery: [
+      shanghaiZhangjiajieAsset.wulingyuan,
+      shanghaiZhangjiajieAsset.tianmenCave,
+      shanghaiZhangjiajieAsset.tianmenCableway,
+    ],
+    seoTitle: "Tianmen Mountain vs Zhangjiajie National Forest Park",
+    seoDescription:
+      "Compare Tianmen Mountain and Zhangjiajie National Forest Park by scenery, time, walking, heights, hotels and fit for a first Zhangjiajie trip.",
+    keywords: [
+      "Tianmen Mountain vs Zhangjiajie National Forest Park",
+      "is Tianmen Mountain in Zhangjiajie National Park",
+      "Tianmen Mountain or Wulingyuan",
+      "is Tianmen Mountain worth it",
+      "how many days in Zhangjiajie",
+    ],
+    destinations: ["zhangjiajie"],
+    tours: [
+      "shanghai-zhangjiajie-floating-peaks",
+      "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+    ],
+    experiences: ["private-guides"],
+    articles: [
+      "how-difficult-is-zhangjiajie",
+      "where-to-stay-in-zhangjiajie",
+      "shanghai-zhangjiajie-8-day-itinerary",
+    ],
+    citations: [
+      {
+        name: "Wulingyuan Scenic and Historic Interest Area",
+        url: "https://whc.unesco.org/en/list/640/",
+        publisher: "UNESCO World Heritage Centre",
+        publishedAt: "1992-01-01",
+      },
+    ],
+    conversionTitle: "Choose the mountain days before fixing the Zhangjiajie hotels.",
+    conversionDescription:
+      "Share your arrival, departure, walking comfort and attitude to heights. We will decide how much time belongs in Wulingyuan and whether Tianmen Mountain improves the route.",
+    conversionLabel: "Plan My Zhangjiajie Route",
+    conversionImage: {
+      src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/zhangjiajie-10.webp",
+      alt: "Clouds moving around the dramatic cliffs of Tianmen Mountain",
+      width: 1600,
+      height: 1067,
+    },
+  }),
   commercialArticle({
     slug: "chengdu-to-jiuzhaigou-transport",
     publishedAt: "2026-08-13",

@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import type { JournalArticle, JournalContentBlock } from "@/types/journal";
+import { toJournalDisplayTitleCase } from "@/content/journal/editorial-upgrades";
 import visaTransitMarkdown from "@/content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md";
 import accommodationMarkdown from "@/content/journal/articles/2026-08-06-china-accommodation-registration-foreigners.md";
 import trainMarkdown from "@/content/journal/articles/2026-08-06-china-high-speed-train-foreigners.md";
@@ -64,33 +65,138 @@ const bundledMarkdown: Record<string, string> = {
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {
-  if (!article.sourcePath) return article;
+  if (!article.sourcePath) {
+    return {
+      ...article,
+      content: polishJournalContent(article.content),
+    };
+  }
 
   const markdown =
     bundledMarkdown[article.sourcePath] ??
     (await readFile(path.join(process.cwd(), article.sourcePath), "utf8"));
 
+  const parsed = parseJournalMarkdown(markdown);
+
   return {
     ...article,
-    content: parseJournalMarkdown(markdown),
+    content: polishJournalContent(parsed.content),
+    citations: article.citations?.length ? article.citations : parsed.citations,
   };
 }
 
-function parseJournalMarkdown(markdown: string): JournalContentBlock[] {
+function polishJournalContent(content: JournalContentBlock[]) {
+  let emphasizeNextParagraph = false;
+
+  return content.map<JournalContentBlock>((block) => {
+    if (block.type === "heading") {
+      emphasizeNextParagraph = block.level !== 3;
+      return { ...block, title: toJournalDisplayTitleCase(block.title) };
+    }
+
+    if (block.type === "paragraph" && emphasizeNextParagraph) {
+      emphasizeNextParagraph = false;
+      return { ...block, body: emphasizeOpeningSentence(block.body) };
+    }
+
+    if (block.type !== "image") emphasizeNextParagraph = false;
+
+    if (block.type === "callout" && block.title) {
+      return { ...block, title: toJournalDisplayTitleCase(block.title) };
+    }
+
+    if (block.type === "cta") {
+      return { ...block, title: toJournalDisplayTitleCase(block.title) };
+    }
+
+    return block;
+  });
+}
+
+function emphasizeOpeningSentence(body: string) {
+  if (body.includes("**")) return body;
+
+  const sentence = body.match(/^(.+?[.!?])(?:\s|$)/)?.[1];
+  if (!sentence || sentence.length < 35 || sentence.length > 240 || sentence.includes("[")) {
+    return body;
+  }
+
+  return `**${sentence}**${body.slice(sentence.length)}`;
+}
+
+function parseJournalMarkdown(markdown: string) {
   const draft = section(markdown, "## Draft", [
     "## Suggested structured data",
     "## Structured Data Recommendation",
     "## SEO & GEO Review",
   ]);
   const sources = section(markdown, "## Sources", "## Review Notes");
-  const blocks = parseBlocks(draft);
+  return {
+    content: parseBlocks(draft),
+    citations: parseSourceCitations(sources),
+  };
+}
 
-  if (sources.trim()) {
-    blocks.push({ type: "heading", id: "sources", title: "Sources and verification" });
-    blocks.push(...parseBlocks(sources, false));
+function parseSourceCitations(markdown: string) {
+  return markdown
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .flatMap((line) => {
+      const url = line.match(/https?:\/\/[^\s—–)]+/)?.[0]?.replace(/[.,;:]$/, "");
+      if (!url || /aviora\.example/i.test(url)) return [];
+
+      const rawName = line
+        .slice(0, line.indexOf(url))
+        .replace(/^[-*]\s+|^\d+\.\s+/, "")
+        .replace(/\*\*/g, "")
+        .replace(/[,:;—–\s]+$/, "")
+        .trim();
+      const publishedAt = extractPublishedDate(line);
+
+      return [
+        {
+          name: rawName || readableSourceName(url),
+          url,
+          publisher: sourcePublisher(url),
+          ...(publishedAt ? { publishedAt } : {}),
+        },
+      ];
+    });
+}
+
+function extractPublishedDate(value: string) {
+  const match = value.match(/published\s+([^;—–]+?)(?:[;—–]|$)/i);
+  if (!match) return undefined;
+  const parsed = new Date(match[1].trim());
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString().slice(0, 10);
+}
+
+function readableSourceName(value: string) {
+  try {
+    return new URL(value).hostname.replace(/^www\./, "");
+  } catch {
+    return "Official source";
   }
+}
 
-  return blocks;
+function sourcePublisher(value: string) {
+  const host = readableSourceName(value);
+  const knownPublishers: Array<[RegExp, string]> = [
+    [/12306\.cn/, "China State Railway Group"],
+    [/whc\.unesco\.org/, "UNESCO World Heritage Centre"],
+    [/panda\.org\.cn/, "Chengdu Research Base of Giant Panda Breeding"],
+    [/caac\.gov\.cn/, "Civil Aviation Administration of China"],
+    [/iata\.org/, "International Air Transport Association"],
+    [/ttgasia\.com/, "TTG Asia"],
+    [/shairport\.com/, "Shanghai Airport Authority"],
+    [/bmy\.com\.cn/, "Qin Shi Huang Mausoleum Museum"],
+    [
+      /gov\.cn|nia\.gov\.cn|beijing\.gov\.cn|shanghai\.gov\.cn|cq\.gov\.cn/,
+      "Official government source",
+    ],
+  ];
+  return knownPublishers.find(([pattern]) => pattern.test(host))?.[1] ?? host;
 }
 
 function section(markdown: string, start: string, end: string | string[]) {
@@ -109,6 +215,8 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
   const blocks: JournalContentBlock[] = [];
   const lines = markdown.split("\n");
   let paragraph: string[] = [];
+  let listStyle: "ordered" | "unordered" | null = null;
+  let listItems: string[] = [];
   let inFaq = false;
   let faqQuestion: string | null = null;
   let pendingImageIndex: number | null = null;
@@ -127,17 +235,45 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
     blocks.push({ type: "paragraph", body: cleanMarkdown(body) });
   };
 
-  for (const rawLine of lines) {
+  const flushList = () => {
+    if (!listStyle || !listItems.length) return;
+    blocks.push({ type: "list", style: listStyle, items: listItems });
+    listStyle = null;
+    listItems = [];
+  };
+
+  const flushText = () => {
+    flushParagraph();
+    flushList();
+  };
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const rawLine = lines[index];
     const line = rawLine.trim();
 
     if (!line) {
-      flushParagraph();
+      flushText();
+      continue;
+    }
+
+    const nextLine = lines[index + 1]?.trim() ?? "";
+    if (line.includes("|") && /^\|?\s*:?-{3,}/.test(nextLine)) {
+      flushText();
+      const headers = parseTableRow(line);
+      const rows: string[][] = [];
+      index += 2;
+      while (index < lines.length && lines[index].trim().includes("|")) {
+        rows.push(parseTableRow(lines[index].trim()));
+        index += 1;
+      }
+      index -= 1;
+      blocks.push({ type: "table", headers, rows });
       continue;
     }
 
     const image = line.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
     if (image) {
-      flushParagraph();
+      flushText();
       blocks.push({
         type: "image",
         image: {
@@ -162,47 +298,73 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
     pendingImageIndex = null;
 
     if (line === "## FAQ" && parseFaq) {
-      flushParagraph();
+      flushText();
       inFaq = true;
       continue;
     }
 
     if (line.startsWith("## ")) {
-      flushParagraph();
+      flushText();
       inFaq = false;
       const title = cleanMarkdown(line.slice(3));
-      blocks.push({ type: "heading", id: slugify(title), title });
+      blocks.push({ type: "heading", id: slugify(title), title, level: 2 });
       continue;
     }
 
     if (line.startsWith("### ")) {
-      flushParagraph();
+      flushText();
       const title = cleanMarkdown(line.slice(4));
       if (inFaq) {
         faqQuestion = title;
       } else {
-        blocks.push({ type: "heading", id: slugify(title), title });
+        blocks.push({ type: "heading", id: slugify(title), title, level: 3 });
       }
       continue;
     }
 
-    if (/^[-*]\s+/.test(line)) {
+    const unorderedItem = line.match(/^[-*]\s+(.+)/);
+    if (unorderedItem) {
       flushParagraph();
-      blocks.push({ type: "paragraph", body: `• ${cleanMarkdown(line.replace(/^[-*]\s+/, ""))}` });
+      if (listStyle && listStyle !== "unordered") flushList();
+      listStyle = "unordered";
+      listItems.push(cleanMarkdown(unorderedItem[1]));
       continue;
     }
 
-    if (/^\d+\.\s+/.test(line)) {
+    const orderedItem = line.match(/^\d+\.\s+(.+)/);
+    if (orderedItem) {
       flushParagraph();
-      blocks.push({ type: "paragraph", body: cleanMarkdown(line) });
+      if (listStyle && listStyle !== "ordered") flushList();
+      listStyle = "ordered";
+      listItems.push(cleanMarkdown(orderedItem[1]));
       continue;
     }
 
+    if (line.startsWith("> ")) {
+      flushText();
+      const body = cleanMarkdown(line.slice(2));
+      blocks.push({
+        type: "callout",
+        tone: /warning|important|do not|must/i.test(body) ? "warning" : "note",
+        body,
+      });
+      continue;
+    }
+
+    flushList();
     paragraph.push(line);
   }
 
-  flushParagraph();
+  flushText();
   return blocks;
+}
+
+function parseTableRow(value: string) {
+  return value
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|")
+    .map((cell) => cleanMarkdown(cell.trim()));
 }
 
 function cleanMarkdown(value: string) {

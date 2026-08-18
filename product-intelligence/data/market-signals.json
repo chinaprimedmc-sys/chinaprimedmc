@@ -1,0 +1,153 @@
+{
+  "checkedAt": "2026-08-11",
+  "methodology": {
+    "actualKeywordVolume": "UNKNOWN",
+    "note": "Autocomplete is used only as a directional intent proxy. It does not provide monthly search volume or ranking difficulty.",
+    "observedVsInferred": "Every signal lists observed evidence separately from AVIORA interpretation."
+  },
+  "categorySignals": [
+    {
+      "category": "First-time classic China",
+      "observed": [
+        "China Highlights states that 80% of first-time visitors choose its core 1-2 week plans.",
+        "China Highlights, Wendy Wu, Original Travel, Scott Dunn and AVIORA all maintain Beijing-Xi'an-Shanghai variants."
+      ],
+      "inferred": "This is the largest mature demand pool, but route-level differentiation is weak.",
+      "sources": ["https://www.chinahighlights.com/china-tours/"]
+    },
+    {
+      "category": "Pandas and family",
+      "observed": [
+        "WildChina, China Highlights, Wendy Wu and Jacada all sell panda-led or family-led China products.",
+        "Wendy Wu displays 86 reviews on In Pursuit of Pandas."
+      ],
+      "inferred": "Pandas are one of the strongest emotional entry points for families and multigenerational groups.",
+      "sources": [
+        "https://www.wendywutours.co.uk/china/tours/in-pursuit-of-pandas.htm",
+        "https://www.jacadatravel.com/asia/trips/a-family-adventure-in-china/"
+      ]
+    },
+    {
+      "category": "Chongqing and contemporary China",
+      "observed": [
+        "WildChina publishes a dedicated Chongqing editorial journey.",
+        "China Highlights publishes an 18-day New China product and an 8-day Chengdu-Jiuzhaigou-Chongqing product.",
+        "Wendy Wu sells New Horizons of China around Chongqing and Zhangjiajie."
+      ],
+      "inferred": "The category is moving from social-media inspiration into bookable products but remains less saturated than the classic triangle.",
+      "sources": [
+        "https://wildchina.com/tour/chongqing-vertical-living-and-historic-hideaways/",
+        "https://www.chinahighlights.com/china-tours/modern-china-tour.htm",
+        "https://www.wendywutours.co.uk/china/tours/new-horizons-of-china.htm"
+      ]
+    },
+    {
+      "category": "Food-led travel",
+      "observed": [
+        "Intrepid operates a dedicated 10-day China Real Food Adventure with displayed reviews and pricing.",
+        "Food experiences are also prominent inside WildChina, Scott Dunn and family itineraries."
+      ],
+      "inferred": "A private premium culinary journey is validated but under-supplied compared with generic sightseeing products.",
+      "sources": ["https://www.intrepidtravel.com/en/china/china-real-food-adventure-174628"]
+    },
+    {
+      "category": "Silk Road and deep China",
+      "observed": [
+        "China Highlights maintains a priced 12-day Xi'an-Kashgar private product.",
+        "Google Autocomplete returns package, itinerary, senior and Australia variants for 'china silk road tour'."
+      ],
+      "inferred": "Long-tail intent is clear and ticket value is high, but operational complexity makes this a second-wave product.",
+      "sources": [
+        "https://www.chinahighlights.com/silk-road/tours/xian-to-kashgar.htm",
+        "https://suggestqueries.google.com/complete/search?client=firefox&q=china%20silk%20road%20tour"
+      ]
+    }
+  ],
+  "googleAutocomplete": [
+    {
+      "query": "private china tour",
+      "observedSuggestions": [
+        "private china tours from australia",
+        "private china tour guide",
+        "china private tour singapore",
+        "china private tour packages",
+        "private tour china price",
+        "china private tour malaysia"
+      ]
+    },
+    {
+      "query": "luxury china tour",
+      "observedSuggestions": [
+        "luxury china tours",
+        "luxury china tours from australia",
+        "luxury china tours from usa",
+        "luxury china tour packages",
+        "luxury china tour companies",
+        "luxury china travel agency"
+      ]
+    },
+    {
+      "query": "china family tour",
+      "observedSuggestions": [
+        "china family tour packages",
+        "china family tours",
+        "china family tours from australia",
+        "china tour family friendly",
+        "china family vacation"
+      ]
+    },
+    {
+      "query": "china food tour",
+      "observedSuggestions": [
+        "china food tour packages",
+        "china food tourism",
+        "china food tour reddit",
+        "china food tour intrepid"
+      ]
+    },
+    {
+      "query": "china tours for seniors",
+      "observedSuggestions": ["china tours for seniors", "china tours for seniors from australia"]
+    },
+    {
+      "query": "muslim friendly china tour",
+      "observedSuggestions": [
+        "muslim friendly china tour",
+        "muslim friendly china trip",
+        "is china muslim friendly"
+      ]
+    },
+    {
+      "query": "zhangjiajie tour",
+      "observedSuggestions": [
+        "zhangjiajie tour package",
+        "zhangjiajie tours from singapore",
+        "zhangjiajie tour guide",
+        "zhangjiajie tour package malaysia",
+        "zhangjiajie tour package from philippines"
+      ]
+    },
+    {
+      "query": "chongqing tour",
+      "observedSuggestions": [
+        "chongqing tourist attractions",
+        "chongqing tour package",
+        "chongqing tour package singapore",
+        "chongqing tour guide",
+        "chongqing tourism"
+      ]
+    },
+    {
+      "query": "china high speed rail tour",
+      "observedSuggestions": [
+        "china high speed rail tour",
+        "china high speed rail trip com",
+        "china high speed train trip com"
+      ]
+    },
+    {
+      "query": "china wellness tour",
+      "observedSuggestions": ["china wellness tours", "china wellness tourism"]
+    }
+  ]
+}

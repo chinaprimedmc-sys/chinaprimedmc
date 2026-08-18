@@ -1,10 +1,10 @@
 "use client";
 
 import { ArrowRight, Clock3 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";
+import { OptimizedImage } from "@/components/media/optimized-image";
 import type { MediaAsset } from "@/types/component-library";
 
 export type CmsDestinationCard = {
@@ -57,16 +57,16 @@ export function DestinationExplorer({
   const shanghai = destinations.find((destination) => destination.slug === "shanghai");
 
   return (
-    <div className="bg-[#f4f3ee] text-[#1b1c19]">
+    <div className="bg-[#f4f6f5] text-[#192421]">
       <section className="mx-auto grid w-full max-w-[90rem] items-center gap-12 overflow-hidden px-5 pt-32 pb-16 sm:px-6 md:pt-40 md:pb-24 lg:min-h-[52rem] lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:px-8">
         <div className="max-w-xl min-w-0">
-          <p className="text-xs font-semibold tracking-[0.2em] text-[#516657] uppercase">
+          <p className="text-xs font-semibold tracking-[0.2em] text-[#687570] uppercase">
             {content.heroEyebrow}
           </p>
           <h1 className="mt-6 max-w-full font-serif text-[2.75rem] leading-[1.02] sm:text-6xl sm:text-balance lg:text-[4.75rem]">
             {content.heroTitle}
           </h1>
-          <p className="mt-7 max-w-lg text-base leading-7 text-[#1b1c19]/65 md:text-lg md:leading-8">
+          <p className="mt-7 max-w-lg text-base leading-7 text-[#192421]/65 md:text-lg md:leading-8">
             {content.heroCopy}
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-5">
@@ -87,26 +87,26 @@ export function DestinationExplorer({
         >
           <EditorialImage destination={beijing} aspect="aspect-video" priority />
           <div className="hidden min-w-0 sm:block">
-            <EditorialImage destination={shanghai} aspect="aspect-[3/4]" priority />
+            <EditorialImage destination={shanghai} aspect="aspect-[3/4]" />
           </div>
         </div>
       </section>
 
       <section
         id="all-destinations"
-        className="border-t border-black/8 bg-[#fbfaf7] py-20 md:py-28"
+        className="border-t border-[#d8dfdc] bg-[#f4f6f5] py-20 md:py-28"
       >
         <div className="mx-auto max-w-[84rem] px-5 sm:px-6 lg:px-8">
           <div className="grid gap-5 border-b border-black/10 pb-10 md:grid-cols-[.75fr_1.25fr] md:items-end">
             <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-[#516657] uppercase">
+              <p className="text-xs font-semibold tracking-[0.2em] text-[#687570] uppercase">
                 {content.interestEyebrow}
               </p>
               <h2 className="mt-4 max-w-lg font-serif text-4xl leading-[1.02] sm:text-5xl">
                 {content.interestTitle}
               </h2>
             </div>
-            <p className="max-w-xl text-base leading-7 text-[#1b1c19]/60 md:justify-self-end">
+            <p className="max-w-xl text-base leading-7 text-[#192421]/60 md:justify-self-end">
               {content.interestCopy}
             </p>
           </div>
@@ -120,11 +120,11 @@ export function DestinationExplorer({
       </section>
 
       {journeys.length > 0 ? (
-        <section className="bg-[#20372c] py-20 text-white md:py-28">
+        <section className="bg-[#192421] py-20 text-white md:py-28">
           <div className="mx-auto max-w-[84rem] px-5 sm:px-6 lg:px-8">
             <div className="grid gap-5 md:grid-cols-[.75fr_1.25fr] md:items-end">
               <div>
-                <p className="text-xs font-semibold tracking-[0.2em] text-[#c4d2c8]/70 uppercase">
+                <p className="text-xs font-semibold tracking-[0.2em] text-[#d8dfdc]/70 uppercase">
                   {content.journeysEyebrow}
                 </p>
                 <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
@@ -144,16 +144,16 @@ export function DestinationExplorer({
         </section>
       ) : null}
 
-      <section className="bg-[#e4e0d5] py-20 md:py-28">
+      <section className="bg-[#e8edeb] py-20 md:py-28">
         <div className="mx-auto grid max-w-[84rem] gap-8 px-5 sm:px-6 md:grid-cols-[1fr_auto] md:items-end lg:px-8">
           <div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-[#516657] uppercase">
+            <p className="text-xs font-semibold tracking-[0.2em] text-[#687570] uppercase">
               {content.ctaEyebrow}
             </p>
             <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight sm:text-5xl">
               {content.ctaTitle}
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[#1b1c19]/62">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-[#192421]/62">
               {content.ctaCopy}
             </p>
           </div>
@@ -175,19 +175,20 @@ function EditorialImage({
   aspect: string;
   priority?: boolean;
 }) {
-  if (!destination) return <div className={`${aspect} bg-[#dfe2dc]`} />;
+  if (!destination) return <div className={`${aspect} bg-[#e8edeb]`} />;
 
   return (
     <Link
       href={`/destinations/${destination.slug}`}
-      className={`group relative block min-w-0 overflow-hidden bg-[#dfe2dc] ${aspect}`}
+      className={`group relative block min-w-0 overflow-hidden bg-[#e8edeb] ${aspect}`}
     >
-      <Image
+      <OptimizedImage
         src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
         alt={destination.heroImage?.alt ?? `${destination.name} destination guide`}
         fill
         priority={priority}
         sizes="(min-width:1024px) 43vw, 65vw"
+        frameClassName="absolute inset-0 h-full w-full"
         className="object-contain transition duration-700 group-hover:scale-[1.015]"
       />
       <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-4 pt-12 text-white sm:p-6 sm:pt-16">
@@ -215,19 +216,20 @@ function DestinationFeature({
       className={`group block ${index % 2 === 1 ? "md:mt-20" : ""}`}
     >
       <span
-        className={`relative block overflow-hidden bg-[#e8ebe5] ${portrait ? "aspect-[3/4] md:mx-auto md:w-[78%]" : "aspect-[3/2]"}`}
+        className={`relative block overflow-hidden bg-[#e8edeb] ${portrait ? "aspect-[3/4] md:mx-auto md:w-[78%]" : "aspect-[3/2]"}`}
       >
-        <Image
+        <OptimizedImage
           src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
           alt={destination.heroImage?.alt ?? `${destination.name} destination guide`}
           fill
           sizes="(min-width:768px) 43vw, 100vw"
+          frameClassName="absolute inset-0 h-full w-full"
           className="object-contain transition duration-700 group-hover:scale-[1.015]"
         />
       </span>
       <span className="mt-5 block border-t border-black/10 pt-5">
         <span className="flex items-center justify-between gap-4">
-          <span className="text-xs font-semibold tracking-[0.16em] text-[#516657] uppercase">
+          <span className="text-xs font-semibold tracking-[0.16em] text-[#687570] uppercase">
             0{index + 1} · {destination.kicker}
           </span>
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1b1c19]/48">
@@ -239,10 +241,10 @@ function DestinationFeature({
           <span className="font-serif text-4xl sm:text-5xl">{destination.name}</span>
           <ArrowRight className="mb-2 size-5 shrink-0 transition group-hover:translate-x-1" />
         </span>
-        <span className="mt-4 block max-w-xl text-base leading-7 text-[#1b1c19]/62">
+        <span className="mt-4 block max-w-xl text-base leading-7 text-[#192421]/62">
           {destination.summary}
         </span>
-        <span className="mt-4 block text-sm font-semibold text-[#516657]">
+        <span className="mt-4 block text-sm font-semibold text-[#53666c]">
           Best for: {destination.bestFor}
         </span>
       </span>
@@ -255,18 +257,19 @@ function JourneyCard({ journey }: { journey: JourneyPanelData }) {
     <Link href={journey.href} className="group block border-t border-white/22 pt-5">
       {journey.image ? (
         <span className="relative block aspect-[16/9] overflow-hidden bg-white/8">
-          <Image
+          <OptimizedImage
             src={journey.image.src}
             alt={journey.image.alt ?? journey.title}
             fill
             sizes="(min-width:768px) 50vw, 100vw"
+            frameClassName="absolute inset-0 h-full w-full"
             className="object-contain transition duration-700 group-hover:scale-[1.015]"
           />
         </span>
       ) : null}
       <span className="mt-5 flex items-start justify-between gap-5">
         <span>
-          <span className="text-xs font-semibold tracking-[0.15em] text-[#c4d2c8]/72 uppercase">
+          <span className="text-xs font-semibold tracking-[0.15em] text-[#d8dfdc]/72 uppercase">
             {journey.duration} · {journey.route}
           </span>
           <span className="mt-3 block max-w-xl text-2xl leading-tight font-semibold sm:text-3xl">

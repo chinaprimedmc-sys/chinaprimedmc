@@ -8,7 +8,6 @@ import {
   useSpring,
 } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
@@ -413,7 +412,7 @@ export function FeaturedJourneyCinema({ journeys }: { journeys: FeaturedJourney[
                 didSwipe.current = false;
               }}
             >
-              <Image
+              <OptimizedImage
                 src={activeJourney.image.src}
                 alt={activeJourney.image.alt}
                 width={activeJourney.image.width ?? 1600}

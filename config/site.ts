@@ -1,12 +1,13 @@
 export const siteConfig = {
   name: "AVIORA",
+  siteName: "AVIORA China Travel",
   url: "https://www.chinaprimedmc.com",
   description:
-    "Tailored private China tours with carefully selected hotels, exceptional local guides and licensed on-the-ground support.",
+    "Tailor-made private China journeys with handpicked 4- and 5-star hotels, private guides, seamless transfers and licensed local support.",
   email: "chinaprimedmc@gmail.com",
   phone: "+44 7985 052302",
   phoneHref: "tel:+447985052302",
-  ogImage: "/og/aviora-private-china-journeys.jpg",
+  ogImage: "/og/aviora-private-china-tours-social-v2.webp",
   logo: "/brand/aviora-logo.jpg",
   operator: {
     legalName: "游友汇（广州）国际旅行社有限公司",

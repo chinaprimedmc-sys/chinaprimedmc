@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { LegalDocument, LegalList, LegalSection } from "@/components/legal";
 import { siteConfig } from "@/config/site";
@@ -117,10 +118,14 @@ export default function PrivacyPage() {
 
       <LegalSection title="6. Cookies and analytics">
         <p>
-          The website may use essential storage required for security, session handling, and form
-          operation. If optional analytics or advertising technology is introduced, we will update
-          this policy and provide consent choices where required. Browser settings can restrict
-          cookies, although doing so may affect parts of the website.
+          The website uses necessary storage for security, forms and your saved privacy choice.
+          Optional analytics and attribution storage remains disabled until you give consent. You
+          can reject it or change your selection at any time through Cookie Preferences in the
+          footer.
+        </p>
+        <p>
+          See our <Link href="/cookies">Cookie Policy</Link> for the current categories, providers
+          and purposes.
         </p>
       </LegalSection>
 

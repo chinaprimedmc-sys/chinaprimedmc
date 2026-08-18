@@ -1,4 +1,5 @@
 import { publishedJournalArticles } from "@/content/journal/published";
+import { applyJournalEditorialUpgrade } from "@/content/journal/editorial-upgrades";
 import type { JournalArticle, JournalCategory, JournalTag } from "@/types/journal";
 
 export const journalCategories: JournalCategory[] = [
@@ -42,7 +43,9 @@ export const journalTags: JournalTag[] = [
   { slug: "singapore", label: "Singapore", type: "theme" },
 ];
 
-export const journalArticles: JournalArticle[] = publishedJournalArticles;
+export const journalArticles: JournalArticle[] = publishedJournalArticles.map(
+  applyJournalEditorialUpgrade,
+);
 
 export function getArticleBySlug(slug: string) {
   return journalArticles.find((article) => article.slug === slug);

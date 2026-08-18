@@ -74,21 +74,23 @@ const initialState: PlanningFormState = {
 };
 
 const steps = [
-  { label: "Travelers", helper: "Who is traveling" },
-  { label: "Timing", helper: "When and how long" },
-  { label: "Style", helper: "What should it feel like" },
-  { label: "Contact", helper: "How we reply" },
+  { label: "Your journey", helper: "When you may travel and who is coming" },
+  { label: "What matters", helper: "Places, pace and the level of comfort you prefer" },
+  { label: "Stay in touch", helper: "Where a China specialist should reply" },
 ];
 
 export function StartPlanningForm({
   savedJourneys = [],
   currentJourney,
+  preference,
 }: {
   savedJourneys?: string[];
   currentJourney?: CurrentJourney;
+  preference?: string;
 }) {
+  const preferenceLabel = getPreferenceLabel(preference);
   const journeyNotes = currentJourney
-    ? `I'd like to request a private proposal for:\n${currentJourney.title}`
+    ? `I'd like to request a private proposal for:\n${currentJourney.title}${preferenceLabel ? `\n\nPlanning preference: ${preferenceLabel}` : ""}`
     : savedJourneys.length
       ? `I'd like to learn more about these saved journeys:\n${savedJourneys
           .map((journey, index) => `${index + 1}. ${journey}`)
@@ -184,7 +186,7 @@ export function StartPlanningForm({
   }
 
   return (
-    <Card className="overflow-hidden p-0">
+    <Card className="start-planning-form-shell overflow-hidden rounded-none border-neutral-950/12 p-0 shadow-none">
       <div className="border-border border-b p-5 md:p-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
@@ -279,20 +281,39 @@ export function StartPlanningForm({
         }}
       >
         {step === 0 ? (
-          <div className="grid gap-5">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {startPlanningOptions.travelerTypes.map((option) => (
-                <RadioField
-                  key={option.value}
-                  name="travelerType"
-                  label={option.label}
-                  helper={option.helper}
-                  value={option.value}
-                  checked={state.travelerType === option.value}
-                  onChange={() => update("travelerType", option.value)}
-                />
-              ))}
+          <div key="planning-step-1" className="planning-form-step grid gap-6">
+            <div className="grid gap-5 md:grid-cols-2">
+              <TextField
+                label="Approximate travel dates"
+                helper="Month, season, exact dates, or school-holiday window."
+                placeholder="e.g. October 2026 or Easter break"
+                value={state.timing}
+                onChange={(event) => update("timing", event.target.value)}
+              />
+              <TextField
+                label="Approximate trip length"
+                helper="A rough number is enough."
+                placeholder="e.g. 10-12 days"
+                value={state.duration}
+                onChange={(event) => update("duration", event.target.value)}
+              />
             </div>
+            <fieldset className="grid gap-3 sm:grid-cols-2">
+              <legend className="mb-2 text-sm font-semibold">Who are you travelling with?</legend>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {startPlanningOptions.travelerTypes.map((option) => (
+                  <RadioField
+                    key={option.value}
+                    name="travelerType"
+                    label={option.label}
+                    helper={option.helper}
+                    value={option.value}
+                    checked={state.travelerType === option.value}
+                    onChange={() => update("travelerType", option.value)}
+                  />
+                ))}
+              </div>
+            </fieldset>
             <div className="grid gap-3 sm:grid-cols-2">
               <TravelerSelector
                 label="Adults"
@@ -316,30 +337,9 @@ export function StartPlanningForm({
         ) : null}
 
         {step === 1 ? (
-          <div className="grid gap-5 md:grid-cols-2">
-            <TextField
-              label="Approximate travel dates"
-              helper="Month, season, exact dates, or school-holiday window."
-              placeholder="e.g. October 2026 or Easter break"
-              value={state.timing}
-              onChange={(event) => update("timing", event.target.value)}
-            />
-            <TextField
-              label="Approximate trip length"
-              helper="A rough number is enough."
-              placeholder="e.g. 10-12 days"
-              value={state.duration}
-              onChange={(event) => update("duration", event.target.value)}
-            />
-            <TextAreaField
-              label="Places and priorities"
-              helper="Share any cities, walking concerns, hotel expectations or fixed dates we should know about."
-              placeholder="What would make this trip work well for you?"
-              value={state.notes}
-              onChange={(event) => update("notes", event.target.value)}
-              className="md:col-span-2"
-            />
-            <div className="grid gap-3 sm:grid-cols-2 md:col-span-2">
+          <div key="planning-step-2" className="planning-form-step grid gap-7">
+            <fieldset className="grid gap-3 sm:grid-cols-2">
+              <legend className="mb-2 text-sm font-semibold">Places you are considering</legend>
               {startPlanningOptions.destinations.map((option) => (
                 <CheckboxField
                   key={option.value}
@@ -348,14 +348,11 @@ export function StartPlanningForm({
                   onChange={() => toggleList("destinations", option.value)}
                 />
               ))}
-            </div>
-          </div>
-        ) : null}
-
-        {step === 2 ? (
-          <div className="grid gap-7">
+            </fieldset>
             <fieldset className="grid gap-3 sm:grid-cols-2">
-              <legend className="mb-3 text-sm font-semibold">Travel style</legend>
+              <legend className="mb-2 text-sm font-semibold">
+                What should the journey feel like?
+              </legend>
               {startPlanningOptions.travelStyles.map((option) => (
                 <CheckboxField
                   key={option.value}
@@ -367,7 +364,7 @@ export function StartPlanningForm({
               ))}
             </fieldset>
             <fieldset className="grid gap-3">
-              <legend className="mb-3 text-sm font-semibold">Comfort level</legend>
+              <legend className="mb-2 text-sm font-semibold">Preferred comfort level</legend>
               {startPlanningOptions.budgetTiers.map((option) => (
                 <RadioField
                   key={option.value}
@@ -382,11 +379,18 @@ export function StartPlanningForm({
                 />
               ))}
             </fieldset>
+            <TextAreaField
+              label="Anything else we should understand?"
+              helper="Walking comfort, hotel expectations, fixed dates or the one experience that matters most."
+              placeholder="What would make this trip work well for you?"
+              value={state.notes}
+              onChange={(event) => update("notes", event.target.value)}
+            />
           </div>
         ) : null}
 
-        {step === 3 ? (
-          <div className="grid gap-5">
+        {step === 2 ? (
+          <div key="planning-step-3" className="planning-form-step grid gap-5">
             <div className="grid gap-5 md:grid-cols-2">
               <TextField
                 label="Name"
@@ -434,11 +438,14 @@ export function StartPlanningForm({
               aria-hidden="true"
               className="hidden"
             />
-            <TurnstileWidget
-              onTokenChange={handleTurnstileToken}
-              resetSignal={turnstileResetSignal}
-            />
           </div>
+        ) : null}
+
+        {step === steps.length - 1 ? (
+          <TurnstileWidget
+            onTokenChange={handleTurnstileToken}
+            resetSignal={turnstileResetSignal}
+          />
         ) : null}
 
         <div className="border-border flex flex-col gap-3 border-t pt-5 sm:flex-row sm:items-center sm:justify-between">
@@ -453,12 +460,17 @@ export function StartPlanningForm({
           </Button>
           <Button
             type="submit"
-            disabled={submitting || (step === steps.length - 1 && !isTurnstileConfigured)}
+            disabled={
+              submitting ||
+              (step === steps.length - 1 && (!isTurnstileConfigured || !turnstileToken))
+            }
           >
             {step === steps.length - 1
               ? submitting
                 ? "Submitting..."
-                : "Send My Enquiry"
+                : turnstileToken
+                  ? "Send My Inquiry"
+                  : "Preparing Secure Form..."
               : "Continue"}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>
@@ -526,6 +538,19 @@ function getSourceContext(): SourceContext {
     journeySlug: params.get("journey") || "",
     viewedJourneys,
   };
+}
+
+function getPreferenceLabel(value?: string) {
+  if (!value) return "";
+  const labels: Record<string, string> = {
+    "slower-pacing": "Choose a slower pace",
+    "fewer-hotels": "Reduce hotel changes",
+    family: "Travel with children",
+    "dietary-needs": "Plan around dietary needs",
+    photography: "Add a photography focus",
+    nature: "Spend more time in nature",
+  };
+  return labels[value] ?? value.replaceAll("-", " ");
 }
 
 function readStoredAttribution() {

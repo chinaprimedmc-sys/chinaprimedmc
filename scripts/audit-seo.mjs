@@ -1,5 +1,6 @@
 const baseUrl = new URL(process.env.SEO_BASE_URL || "https://www.chinaprimedmc.com");
 const configuredCanonicalOrigin = process.env.SEO_SITE_ORIGIN?.replace(/\/$/, "");
+const expectedSiteName = process.env.SEO_SITE_NAME || "AVIORA China Travel";
 
 const issues = [];
 const pages = [];
@@ -24,6 +25,8 @@ for (const canonicalUrl of sitemapUrls) {
 
   const title = html.match(/<title>([^<]*)<\/title>/i)?.[1]?.trim() || "";
   const description = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || "";
+  const siteName =
+    html.match(/<meta\s+property="og:site_name"\s+content="([^"]*)"/i)?.[1]?.trim() || "";
   const imageCount = [...html.matchAll(/<img\b/gi)].length;
   const missingAltCount = [...html.matchAll(/<img\b(?![^>]*\balt=)[^>]*>/gi)].length;
   const bodyText = html
@@ -35,11 +38,14 @@ for (const canonicalUrl of sitemapUrls) {
   const contentText = canonical.pathname.startsWith("/journal/")
     ? bodyText + " " + extractNextFlightText(html)
     : bodyText;
-  pages.push({ canonicalUrl, title, description, imageCount, missingAltCount, contentText });
+  pages.push({ canonicalUrl, title, description, siteName, imageCount, missingAltCount, contentText });
 
   if (response.status !== 200) issues.push(`${canonicalUrl}: HTTP ${response.status}`);
   checkTag(html, /<title>[^<]+<\/title>/i, canonicalUrl, "title");
   checkTag(html, /<meta\s+name="description"\s+content="[^"]+"/i, canonicalUrl, "description");
+  if (siteName !== expectedSiteName) {
+    issues.push(`${canonicalUrl}: Open Graph site name is "${siteName || "missing"}"`);
+  }
   // Next.js may stream the rendered heading inside an RSC payload. Check both
   // the final HTML and the serialized element name to avoid a false negative.
   if (!hasH1(html)) issues.push(`${canonicalUrl}: missing H1`);
@@ -96,12 +102,23 @@ for (const pathname of [
   "/jadmin",
   "/tours/__seo-missing__",
   "/journal/__seo-missing__",
-  "/styles/__seo-missing__",
   "/destinations/__seo-missing__",
 ]) {
   const response = await fetch(new URL(pathname, baseUrl), { redirect: "manual" });
   if (response.status !== 404)
     issues.push(`${pathname}: expected 404, received ${response.status}`);
+}
+
+const legacyStylesResponse = await fetch(new URL("/styles/__seo-missing__", baseUrl), {
+  redirect: "manual",
+});
+if (
+  legacyStylesResponse.status !== 308 ||
+  legacyStylesResponse.headers.get("location") !== "/tours"
+) {
+  issues.push(
+    `/styles/__seo-missing__: expected permanent redirect to /tours, received ${legacyStylesResponse.status} ${legacyStylesResponse.headers.get("location") || "without location"}`,
+  );
 }
 
 const searchResponse = await fetch(new URL("/search?q=china", baseUrl));

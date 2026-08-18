@@ -24,7 +24,7 @@ suggested_internal_links:
     "/destinations/beijing",
     "/tours/beijing-great-wall-private-5-day-tour",
     "/tours/first-china-beautifully-paced",
-    "/planning/faq",
+    "/faq",
     "/start-planning",
   ]
 sources_verified_at: "2026-08-06"

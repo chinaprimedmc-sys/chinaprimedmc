@@ -5,6 +5,7 @@ import { getTourBySlug, tours } from "@/content/tours";
 import type { MediaAsset } from "@/types/component-library";
 import type { DestinationExperience, DestinationTour } from "@/types/destination";
 import type { JournalArticle } from "@/types/journal";
+import { getJournalSearchRole } from "@/content/journal/search-strategy";
 import type { RelatedDestination, RelatedTour, TourExperienceOption } from "@/types/tour";
 
 export type ContentRelationships = {
@@ -87,17 +88,19 @@ export function getRelationshipsForArticle(article: JournalArticle): ContentRela
   ]);
 
   const manualArticleSlugs = article.related?.articles ?? [];
-  const inferredArticleSlugs = journalArticles
+  const inferredArticles = journalArticles
     .filter(
       (candidate) =>
         candidate.slug !== article.slug && candidate.tags.some((tag) => article.tags.includes(tag)),
     )
-    .map((candidate) => candidate.slug);
+    .sort((a, b) => relatedArticleScore(b, article) - relatedArticleScore(a, article));
+  const inferredArticleSlugs = inferredArticles.map((candidate) => candidate.slug);
 
   return {
     destinations: destinationSlugs
       .map((slug) => getDestinationBySlug(slug))
       .filter(isDefined)
+      .slice(0, 2)
       .map((destination) => ({
         name: destination.name,
         description: destination.hero.tagline,
@@ -116,10 +119,15 @@ export function getRelationshipsForArticle(article: JournalArticle): ContentRela
         duration: tour.duration,
         href: `/tours/${tour.slug}`,
       })),
-    experiences: experienceSlugs.map((slug) => experienceCatalog[slug]).filter(isDefined),
+    experiences: experienceSlugs
+      .map((slug) => experienceCatalog[slug])
+      .filter(isDefined)
+      .slice(0, 2),
     articles: unique([...manualArticleSlugs, ...inferredArticleSlugs])
+      .filter((slug) => slug !== article.slug)
       .map((slug) => journalArticles.find((candidate) => candidate.slug === slug))
       .filter(isDefined)
+      .slice(0, 3)
       .map((related) => ({
         title: related.title,
         excerpt: related.excerpt,
@@ -128,6 +136,30 @@ export function getRelationshipsForArticle(article: JournalArticle): ContentRela
         href: `/journal/${related.slug}`,
       })),
   };
+}
+
+function relatedArticleScore(candidate: JournalArticle, source: JournalArticle) {
+  const candidateRole = getJournalSearchRole(candidate.slug);
+  const sourceRole = getJournalSearchRole(source.slug);
+  const sharedTags = candidate.tags.filter((tag) => source.tags.includes(tag));
+  const sharedDestinationTags = sharedTags.filter((tag) =>
+    ["beijing", "xian", "chengdu", "chongqing", "shanghai", "jiuzhaigou", "zhangjiajie"].includes(
+      tag,
+    ),
+  );
+  const sharedTours = candidate.related?.tours?.filter((tour) =>
+    source.related?.tours?.includes(tour),
+  ).length;
+
+  return (
+    (candidate.slug === sourceRole?.hub ? 14 : 0) +
+    (candidateRole?.pillar && candidateRole.pillar === sourceRole?.pillar ? 8 : 0) +
+    (candidateRole?.commercialPriority === 1 ? 2 : 0) +
+    sharedTags.length * 2 +
+    sharedDestinationTags.length * 4 +
+    (sharedTours ?? 0) * 5 +
+    (candidate.category === source.category ? 1 : 0)
+  );
 }
 
 export function getRelationshipsForDestination(slug: string) {

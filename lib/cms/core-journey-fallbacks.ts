@@ -17,6 +17,7 @@ const coreJourneyTitleOverrides: Record<string, string> = {
 };
 
 const coreJourneyOrder = [
+  "chengdu-chongqing-zhangjiajie-private-11-day-tour",
   "beijing-xian-chengdu-shanghai-private-11-day-tour",
   "first-china-beautifully-paced",
   "chengdu-pandas-sichuan-table",

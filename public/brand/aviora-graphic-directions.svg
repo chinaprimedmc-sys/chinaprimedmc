@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1080" viewBox="0 0 1800 1080" role="img" aria-labelledby="title desc">
+  <title id="title">AVIORA graphic directions</title>
+  <desc id="desc">Three travel-oriented logo directions: Folded Map, Route Window, and Quiet Cartography.</desc>
+  <rect width="1800" height="1080" fill="#F5F1E8"/>
+
+  <text x="110" y="92" fill="#30483D" font-family="Helvetica Neue, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="5">AVIORA / GRAPHIC DIRECTIONS</text>
+  <text x="110" y="135" fill="#6F6C66" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" letter-spacing="1.6">THREE TRAVEL-LED SYMBOL SYSTEMS · SOCIAL AVATAR STUDY</text>
+
+  <!-- Cards -->
+  <rect x="90" y="190" width="500" height="800" rx="8" fill="#FAF8F2" stroke="#DDE4DC" stroke-width="2"/>
+  <rect x="650" y="190" width="500" height="800" rx="8" fill="#FAF8F2" stroke="#DDE4DC" stroke-width="2"/>
+  <rect x="1210" y="190" width="500" height="800" rx="8" fill="#FAF8F2" stroke="#DDE4DC" stroke-width="2"/>
+
+  <!-- 01 Folded Map -->
+  <g transform="translate(180 285)" fill="none" stroke="#30483D" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M40 70 L135 30 L225 70 L320 30 L320 245 L225 285 L135 245 L40 285 Z"/>
+    <path d="M135 30 L135 245 M225 70 L225 285"/>
+    <path d="M72 226 C112 197 141 201 170 167 C205 127 246 142 292 91" stroke-width="8"/>
+    <circle cx="72" cy="226" r="11" fill="#30483D" stroke="none"/>
+    <circle cx="292" cy="91" r="14" fill="#A66A4B" stroke="#FAF8F2" stroke-width="5"/>
+  </g>
+  <text x="340" y="655" text-anchor="middle" fill="#30483D" font-family="New York, Baskerville, Palatino, serif" font-size="74" letter-spacing="7">AVIORA</text>
+  <text x="340" y="704" text-anchor="middle" fill="#30483D" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="4">PRIVATE JOURNEYS IN CHINA</text>
+  <text x="340" y="742" text-anchor="middle" fill="#6F6C66" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="3">BY CHINA PRIME DMC</text>
+  <line x1="150" y1="790" x2="530" y2="790" stroke="#DDE4DC" stroke-width="2"/>
+  <text x="150" y="842" fill="#A66A4B" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2">01 / FOLDED MAP</text>
+  <text x="150" y="884" fill="#30483D" font-family="Helvetica Neue, Arial, sans-serif" font-size="18">Most explicit travel signal</text>
+  <text x="150" y="920" fill="#6F6C66" font-family="Helvetica Neue, Arial, sans-serif" font-size="15">Map · tailored route · destination</text>
+
+  <!-- 02 Route Window -->
+  <g transform="translate(770 285)" fill="none" stroke="#30483D" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M75 262 V72 Q75 42 105 42 H285 Q315 42 315 72 V262"/>
+    <path d="M96 261 C129 221 119 170 166 148 C212 126 223 89 283 81" stroke-width="9"/>
+    <circle cx="96" cy="261" r="11" fill="#30483D" stroke="none"/>
+    <circle cx="283" cy="81" r="14" fill="#A66A4B" stroke="#FAF8F2" stroke-width="5"/>
+  </g>
+  <text x="900" y="655" text-anchor="middle" fill="#30483D" font-family="New York, Baskerville, Palatino, serif" font-size="74" letter-spacing="7">AVIORA</text>
+  <text x="900" y="704" text-anchor="middle" fill="#30483D" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="4">PRIVATE JOURNEYS IN CHINA</text>
+  <text x="900" y="742" text-anchor="middle" fill="#6F6C66" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="3">BY CHINA PRIME DMC</text>
+  <line x1="710" y1="790" x2="1090" y2="790" stroke="#DDE4DC" stroke-width="2"/>
+  <text x="710" y="842" fill="#A66A4B" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2">02 / ROUTE WINDOW</text>
+  <text x="710" y="884" fill="#30483D" font-family="Helvetica Neue, Arial, sans-serif" font-size="18">Most modern and distinctive</text>
+  <text x="710" y="920" fill="#6F6C66" font-family="Helvetica Neue, Arial, sans-serif" font-size="15">Entry · direction · considered movement</text>
+
+  <!-- 03 Quiet Cartography -->
+  <g transform="translate(1320 282)" fill="none" stroke="#30483D" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M55 155 C55 79 124 35 203 42 C286 49 337 101 330 176 C322 254 263 291 185 281 C102 271 51 231 55 155 Z" stroke-width="10"/>
+    <path d="M92 157 C90 106 137 77 199 80 C257 83 299 118 293 171 C287 223 245 252 188 244 C127 236 93 208 92 157 Z" stroke-width="8"/>
+    <path d="M132 158 C131 128 158 110 199 111 C237 112 262 135 258 168 C254 199 227 218 190 211 C152 205 133 189 132 158 Z" stroke-width="7"/>
+    <path d="M79 230 C123 198 158 185 202 169 C251 151 279 126 311 89" stroke-width="8"/>
+    <circle cx="79" cy="230" r="11" fill="#30483D" stroke="none"/>
+    <circle cx="311" cy="89" r="14" fill="#A66A4B" stroke="#FAF8F2" stroke-width="5"/>
+  </g>
+  <text x="1460" y="655" text-anchor="middle" fill="#30483D" font-family="New York, Baskerville, Palatino, serif" font-size="74" letter-spacing="7">AVIORA</text>
+  <text x="1460" y="704" text-anchor="middle" fill="#30483D" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="4">PRIVATE JOURNEYS IN CHINA</text>
+  <text x="1460" y="742" text-anchor="middle" fill="#6F6C66" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="3">BY CHINA PRIME DMC</text>
+  <line x1="1270" y1="790" x2="1650" y2="790" stroke="#DDE4DC" stroke-width="2"/>
+  <text x="1270" y="842" fill="#A66A4B" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2">03 / QUIET CARTOGRAPHY</text>
+  <text x="1270" y="884" fill="#30483D" font-family="Helvetica Neue, Arial, sans-serif" font-size="18">Most premium and editorial</text>
+  <text x="1270" y="920" fill="#6F6C66" font-family="Helvetica Neue, Arial, sans-serif" font-size="15">Terrain · depth · a route through China</text>
+</svg>

@@ -20,12 +20,7 @@ secondary_keywords:
   ]
 search_intent: "Choose and navigate the correct Shanghai airport and arrange a realistic transfer to the hotel or onward train."
 suggested_internal_links:
-  [
-    "/destinations/shanghai",
-    "/tours/first-china-beautifully-paced",
-    "/planning/faq",
-    "/start-planning",
-  ]
+  ["/destinations/shanghai", "/tours/first-china-beautifully-paced", "/faq", "/start-planning"]
 sources_verified_at: "2026-08-07"
 hero_image: "/home/shanghai-pudong-skyline.webp"
 hero_image_alt: "Shanghai Pudong skyline seen across the Huangpu River"

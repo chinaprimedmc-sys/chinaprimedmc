@@ -9,17 +9,33 @@ import { iconButtonStyles } from "@/components/ui/button-styles";
 import { cn } from "@/lib/utils/cn";
 import type { MediaAsset } from "@/types/component-library";
 
-export function LightboxGallery({ images }: { images: MediaAsset[] }) {
+export function LightboxGallery({
+  images,
+  layout = "grid",
+}: {
+  images: MediaAsset[];
+  layout?: "grid" | "strip";
+}) {
   const [selected, setSelected] = useState<MediaAsset | null>(null);
+  const isStrip = layout === "strip";
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+      <div
+        className={cn(
+          isStrip
+            ? "-mx-5 flex snap-x snap-mandatory [scrollbar-width:none] gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+            : "grid grid-cols-2 gap-3 md:grid-cols-3",
+        )}
+      >
         {images.map((image, index) => (
           <button
             key={`${image.src}-${index}`}
             type="button"
-            className="text-left"
+            className={cn(
+              "text-left",
+              isStrip && "w-[82vw] max-w-[22rem] shrink-0 snap-start sm:w-auto sm:max-w-none",
+            )}
             onClick={() => setSelected(image)}
           >
             <OptimizedImage
@@ -27,9 +43,13 @@ export function LightboxGallery({ images }: { images: MediaAsset[] }) {
               alt={image.alt}
               width={image.width ?? 900}
               height={image.height ?? 700}
-              sizes="(min-width:1024px) 33vw, 50vw"
-              frameClassName="aspect-[4/3] rounded-[1.25rem]"
-              className="h-full w-full transition hover:scale-[1.035]"
+              sizes={
+                isStrip
+                  ? "(min-width:1024px) 30vw, (min-width:640px) 33vw, 82vw"
+                  : "(min-width:1024px) 33vw, 50vw"
+              }
+              frameClassName={cn("aspect-[4/3]", isStrip ? "rounded-lg" : "rounded-[1.25rem]")}
+              className="h-full w-full object-cover transition duration-300 hover:scale-[1.025]"
             />
           </button>
         ))}

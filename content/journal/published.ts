@@ -9,7 +9,7 @@ import type { JournalArticle } from "@/types/journal";
 import { commercialJournalArticles } from "@/content/journal/commercial";
 
 const author = {
-  name: "AVIORA Travel Team",
+  name: "AVIORA China Travel Team",
   role: "China travel specialists",
 };
 
@@ -126,6 +126,13 @@ const journalImages = {
     height: 1200,
     objectPosition: "50% 48%",
   },
+  chengduPandaBaseSocial: {
+    src: "/journal/2026-08-07/chengdu-panda-base-social-v2.webp",
+    alt: "Two giant pandas resting among bamboo and timber platforms at Chengdu Panda Base",
+    width: 1200,
+    height: 630,
+    objectPosition: "50% 50%",
+  },
   chengduPandasPlatform: {
     src: "/journal/2026-08-07/chengdu-pandas-platform.webp",
     alt: "Two giant pandas resting and feeding on wooden platforms at Chengdu Panda Base",
@@ -146,6 +153,13 @@ const journalImages = {
     width: 1800,
     height: 1200,
     objectPosition: "50% 48%",
+  },
+  simCardSocial: {
+    src: "/journal/2026-08-07/china-sim-card-social-v2.webp",
+    alt: "International traveler receiving mobile connectivity help at a modern China airport",
+    width: 1200,
+    height: 630,
+    objectPosition: "50% 50%",
   },
   simCardCounter: {
     src: "/journal/2026-08-07/china-sim-card-airport-counter.webp",
@@ -229,6 +243,13 @@ const journalImages = {
     alt: "Several medicines kept in their labeled original packaging for travel",
     width: 1800,
     height: 1200,
+    objectPosition: "50% 50%",
+  },
+  medicineSocial: {
+    src: "/journal/2026-08-08/bringing-medicine-to-china-social-v2.webp",
+    alt: "Traveler organizing labeled medicines and a medication list before packing for China",
+    width: 1200,
+    height: 630,
     objectPosition: "50% 50%",
   },
   medicinePackaging: {
@@ -390,14 +411,14 @@ export const publishedJournalArticles: JournalArticle[] = [
   {
     slug: "chengdu-chongqing-zhangjiajie-itinerary",
     title: "11-Day Chengdu, Chongqing & Zhangjiajie Itinerary",
-    dek: "Connect pandas, Sichuan food, Chongqing's vertical cityscape and Zhangjiajie's mountain scenery without turning the trip into a transfer schedule.",
+    dek: "Move from Chengdu's pandas and tea houses to Chongqing after dark and Zhangjiajie's sandstone peaks, with one China team protecting every handover.",
     excerpt:
-      "A practical 11-day route with realistic city stays, weather-aware mountain days, physical-load advice and two flexible days.",
+      "A vivid 11-day southwest China route, plus the operator, contract and support checks that matter before you book.",
     category: "Destinations",
     tags: ["chengdu", "chongqing", "zhangjiajie", "nature", "food", "photography"],
     author,
     publishedAt: "2026-08-12",
-    readingTime: "13 min read",
+    readingTime: "9 min read",
     featured: true,
     editorPick: true,
     hero: {
@@ -413,7 +434,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     seo: {
       title: "11-Day Chengdu, Chongqing & Zhangjiajie Itinerary",
       description:
-        "Plan an 11-day Chengdu, Chongqing and Zhangjiajie trip with pandas, Sichuan food, mountain scenery, open days and private local support.",
+        "Compare an 11-day Chengdu, Chongqing and Zhangjiajie itinerary, daily pacing, walking load and how to choose a reliable China tour operator.",
       keywords: [
         "Chengdu Chongqing Zhangjiajie itinerary",
         "11 day China itinerary Chengdu Chongqing Zhangjiajie",
@@ -438,10 +459,10 @@ export const publishedJournalArticles: JournalArticle[] = [
       ],
     },
     conversion: {
-      eyebrow: "Shape the three-region route",
-      title: "Decide the pace before we price the trip.",
+      eyebrow: "Plan It With One China Team",
+      title: "Arrive With Every Handover Accounted For.",
       description:
-        "Share your dates, party, hotel expectations and walking preferences. We will recommend the transport, open-day use and mountain pacing before preparing the proposal.",
+        "Share your dates, party and walking preferences. We will map the hotels, tickets, guides, transfers and weather options before preparing the written proposal.",
       label: "Request the 11-Day Proposal",
       href: "/start-planning?source=journal-ccz-itinerary",
     },
@@ -498,7 +519,7 @@ export const publishedJournalArticles: JournalArticle[] = [
   },
   {
     slug: "10-day-china-itinerary-first-time-visitors",
-    title: "The Best 10-Day China Itinerary for First-Time Visitors",
+    title: "A Well-Paced 10-Day China Itinerary for First-Time Visitors",
     dek: "Use Beijing, Xi’an and Shanghai to build a first China trip with realistic travel days, three strong city chapters and room to enjoy them.",
     excerpt:
       "A day-by-day Beijing, Xi’an and Shanghai route with practical pacing, transport choices and alternatives for families and older travelers.",
@@ -506,6 +527,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "beijing", "xian", "shanghai", "train-travel"],
     author,
     publishedAt: "2026-08-10",
+    updatedAt: "2026-08-13",
     readingTime: "14 min read",
     editorPick: true,
     hero: { eyebrow: "First China itinerary", image: journalImages.tenDayChinaItinerary },
@@ -516,7 +538,7 @@ export const publishedJournalArticles: JournalArticle[] = [
     ],
     content: [],
     seo: {
-      title: "10-Day China Itinerary for First-Time Visitors",
+      title: "10-Day China Itinerary for First-Time Visitors (2026)",
       description:
         "Plan 10 days in China with Beijing, Xi’an and Shanghai, realistic travel time, a Great Wall day and practical private-tour pacing.",
       keywords: [
@@ -669,14 +691,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "beijing", "shanghai", "private-guides"],
     author,
     publishedAt: "2026-08-06",
+    updatedAt: "2026-08-13",
     readingTime: "10 min read",
     hero: { eyebrow: "Entry planning", image: journalImages.visaFreeTransit },
     gallery: [journalImages.visaFreeTransit, journalImages.greatWallComparison],
     content: [],
     seo: {
-      title: "China 240-Hour Visa-Free Transit Guide 2026",
+      title: "China 240-Hour Visa-Free Transit 2026: Routes & Rules",
       description:
-        "Check China’s 240-hour visa-free transit rules, eligible routes, ports and permitted areas before building a Beijing or Shanghai stopover.",
+        "Check who qualifies for China’s 240-hour visa-free transit in 2026, including third-country routes, eligible ports, permitted areas and entry documents.",
       keywords: [
         "China 240-hour visa-free transit",
         "China transit without visa",
@@ -701,14 +724,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "private-guides"],
     author,
     publishedAt: "2026-08-06",
+    updatedAt: "2026-08-13",
     readingTime: "8 min read",
     hero: { eyebrow: "Arrival essentials", image: journalImages.accommodationRegistration },
     gallery: [journalImages.accommodationRegistration, destinationAsset.shanghaiSkyline],
     content: [],
     seo: {
-      title: "China Accommodation Registration for Foreigners",
+      title: "China Hotel Registration for Foreigners: 2026 Rules",
       description:
-        "Understand China’s 24-hour accommodation registration rule, hotel handling and the 2026 online pilot for private-home stays before you arrive.",
+        "Learn how China’s accommodation registration works for foreign visitors in hotels, apartments and private homes, including the 24-hour rule.",
       keywords: [
         "China accommodation registration for foreigners",
         "China temporary residence registration tourist",
@@ -729,14 +753,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["train-travel", "first-time-china", "family-travel"],
     author,
     publishedAt: "2026-08-06",
+    updatedAt: "2026-08-13",
     readingTime: "9 min read",
     hero: { eyebrow: "Rail planning", image: journalImages.highSpeedTrain },
     gallery: [journalImages.highSpeedTrain, destinationAsset.shanghaiSkyline],
     content: [],
     seo: {
-      title: "China High-Speed Train Guide for Foreigners",
+      title: "China High-Speed Trains for Foreigners: 2026 Guide",
       description:
-        "Book and board China high-speed trains with a passport, understand e-tickets, seat choices, baggage rules and station timing with confidence.",
+        "Learn how foreigners book and board China high-speed trains with a passport, including 12306, e-tickets, seats, luggage and station timing.",
       keywords: [
         "China high-speed train for foreigners",
         "China train passport booking",
@@ -762,14 +787,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "family-travel", "train-travel"],
     author,
     publishedAt: "2026-08-06",
+    updatedAt: "2026-08-13",
     readingTime: "9 min read",
     hero: { eyebrow: "Practical planning", image: journalImages.mobilePayment },
     gallery: [journalImages.mobilePayment, destinationAsset.chengduTeaHouse],
     content: [],
     seo: {
-      title: "China Mobile Payments for Tourists: Setup Guide",
+      title: "Alipay & WeChat Pay for Tourists in China: 2026 Guide",
       description:
-        "Set up Alipay or Weixin Pay with an overseas card, keep reliable backups and know where cash or cards still matter on a China trip.",
+        "Set up Alipay or WeChat Pay in China with a foreign card, understand verification and fees, and keep practical cash and card backups.",
       keywords: [
         "China mobile payment for tourists",
         "Alipay for foreigners",
@@ -790,14 +816,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["beijing", "first-time-china", "private-guides"],
     author,
     publishedAt: "2026-08-06",
+    updatedAt: "2026-08-13",
     readingTime: "8 min read",
     hero: { eyebrow: "Beijing planning", image: journalImages.forbiddenCityEntrance },
     gallery: [journalImages.forbiddenCityEntrance, journalImages.greatWallComparison],
     content: [],
     seo: {
-      title: "Forbidden City Tickets for Foreigners: 2026 Guide",
+      title: "How to Book Forbidden City Tickets as a Foreigner (2026)",
       description:
-        "Reserve Forbidden City tickets with a passport, avoid same-day and Monday mistakes, and plan a well-paced Palace Museum visit before Beijing.",
+        "Book Forbidden City tickets with a foreign passport, understand the advance reservation process, Monday closure and realistic visit timing.",
       keywords: [
         "Forbidden City tickets for foreigners",
         "Palace Museum tickets passport",
@@ -822,15 +849,16 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["chengdu", "pandas", "family-travel", "first-time-china"],
     author,
     publishedAt: "2026-08-08",
+    updatedAt: "2026-08-13",
     readingTime: "9 min read",
     editorPick: true,
     hero: { eyebrow: "Chengdu planning", image: journalImages.chengduPandaBase },
     gallery: [journalImages.chengduPandasPlatform, journalImages.chengduPandaClose],
     content: [],
     seo: {
-      title: "Chengdu Panda Base Tickets: 2026 Visitor Guide",
+      title: "Chengdu Panda Base Tickets & Hours: 2026 Guide",
       description:
-        "Learn how foreign visitors reserve Chengdu Panda Base tickets, choose an entry window and plan a cooler, calmer morning visit.",
+        "Learn how foreign visitors book Chengdu Panda Base tickets in 2026, check opening hours, use passport details and choose the right morning entry.",
       keywords: [
         "Chengdu Panda Base tickets for foreigners",
         "Chengdu Research Base ticket reservation",
@@ -838,7 +866,7 @@ export const publishedJournalArticles: JournalArticle[] = [
         "Chengdu Panda Base opening hours",
         "Chengdu panda visit morning",
       ],
-      ogImage: journalImages.chengduPandaBase,
+      ogImage: journalImages.chengduPandaBaseSocial,
     },
     related: {
       destinations: ["chengdu"],
@@ -857,14 +885,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "beijing", "shanghai", "chengdu"],
     author,
     publishedAt: "2026-08-08",
+    updatedAt: "2026-08-13",
     readingTime: "8 min read",
     hero: { eyebrow: "Connectivity planning", image: journalImages.simCardAirport },
     gallery: [journalImages.simCardCounter, journalImages.simCardPlanBoard],
     content: [],
     seo: {
-      title: "China SIM Card and eSIM Guide for Tourists 2026",
+      title: "China SIM Card vs eSIM for Tourists: 2026 Guide",
       description:
-        "Compare China SIM, roaming and eSIM preparation for foreign visitors, with a practical backup plan for maps, payments and hotel contact.",
+        "Compare China tourist SIM cards, eSIMs and roaming in 2026, including setup, airport purchase, app access and a reliable data backup plan.",
       keywords: [
         "China SIM card for tourists",
         "China eSIM for foreign visitors",
@@ -872,7 +901,7 @@ export const publishedJournalArticles: JournalArticle[] = [
         "China roaming travel",
         "China internet for tourists",
       ],
-      ogImage: journalImages.simCardAirport,
+      ogImage: journalImages.simCardSocial,
     },
     related: {
       destinations: ["beijing", "shanghai", "chengdu"],
@@ -891,14 +920,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["shanghai", "first-time-china", "private-guides"],
     author,
     publishedAt: "2026-08-08",
+    updatedAt: "2026-08-13",
     readingTime: "8 min read",
     hero: { eyebrow: "Shanghai arrival", image: journalImages.shanghaiAirportGuide },
     gallery: [],
     content: [],
     seo: {
-      title: "Pudong or Hongqiao Airport? Shanghai Arrival Guide",
+      title: "Pudong vs Hongqiao Airport: Which Is Better for Shanghai?",
       description:
-        "Understand Shanghai Pudong and Hongqiao airports, transfer choices and hotel details before arranging a first private China arrival.",
+        "Compare Shanghai Pudong and Hongqiao airports by international flights, city transfers, railway access and the most practical hotel location.",
       keywords: [
         "Pudong or Hongqiao airport",
         "Shanghai airports for tourists",
@@ -925,15 +955,16 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["autumn", "first-time-china", "train-travel"],
     author,
     publishedAt: "2026-08-08",
+    updatedAt: "2026-08-13",
     readingTime: "9 min read",
     featured: true,
     hero: { eyebrow: "Seasonal planning", image: journalImages.goldenWeekRail },
     gallery: [journalImages.goldenWeekRailPortrait],
     content: [],
     seo: {
-      title: "China Golden Week 2026: Dates and Travel Strategy",
+      title: "China Golden Week 2026: Dates, Crowds & Travel Advice",
       description:
-        "China’s 2026 National Day holiday runs October 1–7. Decide whether to travel, what to reserve early and how to protect a private itinerary.",
+        "China’s 2026 National Day Golden Week runs October 1–7. Learn what crowds affect, what to reserve early and when to change your route.",
       keywords: [
         "China Golden Week 2026",
         "China National Day holiday 2026",
@@ -995,15 +1026,16 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["xian", "first-time-china", "private-guides"],
     author,
     publishedAt: "2026-08-08",
+    updatedAt: "2026-08-13",
     readingTime: "9 min read",
     editorPick: true,
     hero: { eyebrow: "Xi’an planning", image: journalImages.terracottaArmy },
     gallery: [journalImages.terracottaPortrait],
     content: [],
     seo: {
-      title: "Terracotta Army Tickets for Foreign Visitors 2026",
+      title: "How to Book Terracotta Army Tickets as a Foreigner (2026)",
       description:
-        "Reserve Terracotta Army tickets with a passport, use the correct entrance and allow time for both museum areas on a well-planned Xi’an visit.",
+        "Book Terracotta Army tickets with a foreign passport, understand advance reservations, entrance details and how long to allow from Xi’an.",
       keywords: [
         "Terracotta Army tickets for foreigners",
         "Terracotta Warriors ticket passport",
@@ -1033,14 +1065,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "family-travel"],
     author,
     publishedAt: "2026-08-08",
+    updatedAt: "2026-08-13",
     readingTime: "9 min read",
     hero: { eyebrow: "Domestic flight rules", image: journalImages.powerBank },
     gallery: [journalImages.powerBankCarryOn],
     content: [],
     seo: {
-      title: "China Power Bank Rules for Domestic Flights 2026",
+      title: "China Power Bank Rules 2026: CCC/3C Flight Guide",
       description:
-        "Check China’s CCC-label rule, watt-hour rating, carry-on limits and recalled-model restrictions before taking a mainland domestic flight in 2026.",
+        "Check China’s 2026 power bank rules for domestic flights, including the CCC or 3C mark, 100Wh limit, carry-on storage and recalled models.",
       keywords: [
         "China domestic flight power bank rules",
         "China 3C power bank rule",
@@ -1066,14 +1099,15 @@ export const publishedJournalArticles: JournalArticle[] = [
     tags: ["first-time-china", "family-travel"],
     author,
     publishedAt: "2026-08-08",
+    updatedAt: "2026-08-13",
     readingTime: "10 min read",
     hero: { eyebrow: "Health planning", image: journalImages.medicine },
     gallery: [journalImages.medicinePackaging, journalImages.medicineList],
     content: [],
     seo: {
-      title: "Bringing Prescription Medicine to China: Guide",
+      title: "Can You Bring Prescription Medicine to China? 2026 Guide",
       description:
-        "Prepare prescriptions, original packaging and supporting documents before carrying personal medicine through China Customs as an international visitor.",
+        "Learn how to bring personal prescription medicine into China, including original packaging, doctor letters, active ingredients and customs checks.",
       keywords: [
         "bringing prescription medicine to China",
         "China customs medication rules",
@@ -1081,7 +1115,7 @@ export const publishedJournalArticles: JournalArticle[] = [
         "psychotropic medicine China entry",
         "prescription letter China travel",
       ],
-      ogImage: journalImages.medicine,
+      ogImage: journalImages.medicineSocial,
     },
     related: {
       tours: ["first-china-beautifully-paced"],

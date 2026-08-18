@@ -227,7 +227,7 @@ Not necessarily. Request the route first if you are unsure which city should be 
 
 ## Suggested structured data
 
-- **Article schema:** Use the Singapore-market headline, AVIORA Travel Team author and canonical URL.
+- **Article schema:** Use the Singapore-market headline, AVIORA China Travel Team author and canonical URL.
 - **FAQPage schema:** Use the five visible questions, with entry wording reviewed whenever official rules change.
 
 ## Conversion CTA

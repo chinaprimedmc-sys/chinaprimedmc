@@ -1,10 +1,10 @@
 import { ArrowRight, Check, FileCheck2, MessageCircle, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
+import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { homeEditorialImages, homeNavItems, primaryAction } from "@/content/home/homepage";
@@ -79,7 +79,7 @@ const promises = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-svh overflow-x-clip bg-[#f7f7f3] text-[#1b1c19]">
+    <main className="min-h-svh overflow-x-clip bg-[#f4f6f5] text-[#192421]">
       <JsonLd
         id="about-breadcrumb-schema"
         data={breadcrumbSchema([
@@ -99,31 +99,28 @@ export default function AboutPage() {
           mainEntity: { "@id": `${siteConfig.url}/#organization` },
         }}
       />
-      <SiteNavigation
-        tone="light"
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-      />
+      <SiteNavigation tone="light" items={homeNavItems} cta={primaryAction} />
 
       <section data-hero-layout="true" className="relative min-h-svh overflow-hidden">
-        <Image
+        <OptimizedImage
           src={homeEditorialImages.tradeConsultation.src}
           alt={homeEditorialImages.tradeConsultation.alt}
           fill
           priority
           sizes="100vw"
+          frameClassName="absolute inset-0 h-full w-full"
           className="object-cover object-center motion-safe:animate-[destination-hero-breathe_16s_ease-out_both]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,247,243,.98),rgba(247,247,243,.88)_42%,rgba(247,247,243,.2)_68%,transparent_84%),linear-gradient(0deg,rgba(247,247,243,.55),transparent_46%)] max-md:bg-[linear-gradient(0deg,rgba(247,247,243,.98),rgba(247,247,243,.82)_42%,rgba(247,247,243,.08)_72%)]" />
         <div className="relative mx-auto flex min-h-svh max-w-[92rem] items-end px-5 pb-16 sm:px-6 md:items-center md:pb-0 lg:px-8">
           <div className="max-w-3xl pt-28 motion-safe:animate-[destination-copy-reveal_.9s_var(--motion-ease-out)_both]">
-            <p className="text-xs font-semibold tracking-[0.22em] text-[#607868] uppercase">
+            <p className="text-xs font-semibold tracking-[0.22em] text-[#687570] uppercase">
               About AVIORA
             </p>
             <h1 className="mt-6 max-w-3xl font-serif text-[clamp(3.6rem,7.5vw,7.6rem)] leading-[.88] text-balance">
               Private China, handled by people who know it.
             </h1>
-            <p className="mt-7 max-w-2xl text-base leading-8 text-[#1b1c19]/68 md:text-lg">
+            <p className="mt-7 max-w-2xl text-base leading-8 text-[#192421]/68 md:text-lg">
               Tailored tours, selected local partners and responsive support from a licensed inbound
               operator. Our travel work began in 2012; the Guangzhou company was registered in 2018.
             </p>
@@ -168,9 +165,9 @@ export default function AboutPage() {
           />
         </div>
 
-        <div className="mt-8 grid gap-6 rounded-[1.75rem] border border-[#607868]/16 bg-[#e7ece7] p-7 md:grid-cols-[1fr_1fr] md:p-10">
+        <div className="mt-8 grid gap-6 rounded-[1.75rem] border border-[#71847e]/22 bg-[#e8edeb] p-7 md:grid-cols-[1fr_1fr] md:p-10">
           <div>
-            <div className="flex items-center gap-3 text-[#607868]">
+            <div className="flex items-center gap-3 text-[#71847e]">
               <FileCheck2 className="size-5" />
               <p className="text-xs font-semibold tracking-[.18em] uppercase">
                 Credential verification
@@ -179,7 +176,7 @@ export default function AboutPage() {
             <h2 className="mt-5 font-serif text-3xl md:text-4xl">
               Real credentials, shared responsibly.
             </h2>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-[#1b1c19]/62">
+            <p className="mt-5 max-w-xl text-sm leading-7 text-[#192421]/62">
               We do not publish unredacted licence scans on an open webpage. They may contain seals,
               personal details, full registered-address information or identifiers that do not need
               to be permanently indexed.
@@ -215,11 +212,11 @@ export default function AboutPage() {
                 key={reason.number}
                 className="group grid gap-5 py-9 md:grid-cols-[.22fr_.78fr_1fr] md:items-start md:py-12"
               >
-                <span className="text-xs font-semibold text-[#607868]">{reason.number}</span>
+                <span className="text-xs font-semibold text-[#71847e]">{reason.number}</span>
                 <h3 className="max-w-md font-serif text-3xl leading-tight md:text-4xl">
                   {reason.title}
                 </h3>
-                <p className="max-w-2xl text-base leading-8 text-[#1b1c19]/60">
+                <p className="max-w-2xl text-base leading-8 text-[#192421]/60">
                   {reason.description}
                 </p>
               </article>
@@ -228,7 +225,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="how-we-work" className="overflow-hidden bg-[#e9ede9] py-24 md:py-32">
+      <section id="how-we-work" className="overflow-hidden bg-[#e8edeb] py-24 md:py-32">
         <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
           <SectionIntro
             eyebrow="03 · How we work"
@@ -242,12 +239,12 @@ export default function AboutPage() {
               key={item.step}
               className="flex min-h-[24rem] w-[80vw] max-w-[24rem] shrink-0 snap-center flex-col justify-between rounded-[1.6rem] border border-white/85 bg-white/72 p-7 shadow-[0_18px_52px_rgba(27,28,25,.07)] backdrop-blur-xl md:w-[31vw]"
             >
-              <span className="text-xs font-semibold tracking-[.16em] text-[#607868]">
+              <span className="text-xs font-semibold tracking-[.16em] text-[#71847e]">
                 0{index + 1}
               </span>
               <div>
                 <h3 className="font-serif text-4xl">{item.step}</h3>
-                <p className="mt-4 text-sm leading-7 text-[#1b1c19]/60">{item.text}</p>
+                <p className="mt-4 text-sm leading-7 text-[#192421]/60">{item.text}</p>
               </div>
             </article>
           ))}
@@ -280,13 +277,13 @@ export default function AboutPage() {
             />
           </div>
         </div>
-        <p className="mt-6 max-w-3xl text-sm leading-7 text-[#1b1c19]/55">
+        <p className="mt-6 max-w-3xl text-sm leading-7 text-[#192421]/55">
           These are photographs of real conversations about travel in China. We share them to show
           the people behind AVIORA, without making claims that cannot be independently verified.
         </p>
         <Link
           href="/journal/aviora-ttg-asia-matta-connect-2026"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#405848] underline decoration-[#607868]/35 underline-offset-4 transition hover:text-[#1b1c19]"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#243530] underline decoration-[#71847e]/35 underline-offset-4 transition hover:text-[#192421]"
         >
           Read our MATTA Connect story <ArrowRight className="size-4" />
         </Link>
@@ -295,13 +292,13 @@ export default function AboutPage() {
       <section id="team" className="border-y border-black/8 bg-white py-24 md:py-32">
         <div className="mx-auto grid max-w-[92rem] gap-12 px-5 sm:px-6 lg:grid-cols-[.78fr_1.22fr] lg:px-8">
           <div>
-            <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+            <p className="text-xs font-semibold tracking-[.2em] text-[#71847e] uppercase">
               05 · The team behind the journey
             </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
               Real roles, without invented profiles.
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-8 text-[#1b1c19]/60">
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#192421]/60">
               Until complete team portraits and approved biographies are available, we show the
               functions responsible for your journey rather than stock faces or fictional names.
             </p>
@@ -331,8 +328,8 @@ export default function AboutPage() {
       </section>
 
       <section id="promise" className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8">
-        <div className="rounded-[2rem] border border-[#607868]/16 bg-[#dfe8e0] p-7 shadow-[0_22px_70px_rgba(63,83,68,.1)] md:p-12">
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+        <div className="rounded-[2rem] border border-[#71847e]/22 bg-[#e8edeb] p-7 shadow-[0_22px_70px_rgba(25,36,33,.08)] md:p-12">
+          <p className="text-xs font-semibold tracking-[.2em] text-[#71847e] uppercase">
             06 · Our service promise
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -341,20 +338,20 @@ export default function AboutPage() {
                 key={promise}
                 className="flex min-h-24 items-center gap-3 rounded-[1.25rem] border border-white/75 bg-white/58 p-5 text-sm font-semibold backdrop-blur-xl"
               >
-                <Check className="size-4 text-[#607868]" />
+                <Check className="size-4 text-[#71847e]" />
                 {promise}
               </div>
             ))}
           </div>
-          <div className="mt-12 grid gap-8 border-t border-[#607868]/16 pt-10 md:grid-cols-[1fr_auto] md:items-end">
+          <div className="mt-12 grid gap-8 border-t border-[#71847e]/16 pt-10 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="text-xs font-semibold tracking-[.18em] text-[#607868] uppercase">
+              <p className="text-xs font-semibold tracking-[.18em] text-[#71847e] uppercase">
                 07 · Start a conversation
               </p>
               <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight md:text-6xl">
                 Start a conversation with our China team.
               </h2>
-              <p className="mt-5 max-w-2xl leading-7 text-[#1b1c19]/62">
+              <p className="mt-5 max-w-2xl leading-7 text-[#192421]/62">
                 Share the people, dates and pace behind the trip. We will reply with a clear first
                 direction.
               </p>
@@ -403,9 +400,9 @@ function SectionIntro({
 }) {
   return (
     <div className="max-w-3xl">
-      <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">{eyebrow}</p>
+      <p className="text-xs font-semibold tracking-[.2em] text-[#71847e] uppercase">{eyebrow}</p>
       <h2 className="mt-5 font-serif text-4xl leading-[1.02] md:text-6xl">{title}</h2>
-      <p className="mt-5 max-w-2xl text-base leading-8 text-[#1b1c19]/58 md:text-lg">
+      <p className="mt-5 max-w-2xl text-base leading-8 text-[#192421]/58 md:text-lg">
         {description}
       </p>
     </div>
@@ -455,11 +452,12 @@ function TradeImage({
           : "group relative min-h-[15rem] overflow-hidden rounded-[1.6rem]"
       }
     >
-      <Image
+      <OptimizedImage
         src={image.src}
         alt={image.alt}
         fill
         sizes={featured ? "(min-width:1024px) 58vw, 100vw" : "(min-width:1024px) 42vw, 100vw"}
+        frameClassName="absolute inset-0 h-full w-full"
         className="object-cover transition duration-700 group-hover:scale-[1.025]"
         style={{ objectPosition: image.objectPosition }}
       />
@@ -473,10 +471,10 @@ function TradeImage({
 
 function Role({ title, text }: { title: string; text: string }) {
   return (
-    <article className="rounded-[1.4rem] border border-black/8 bg-[#f7f7f3] p-6">
-      <MessageCircle className="size-5 text-[#607868]" />
+    <article className="rounded-[1.4rem] border border-black/8 bg-[#f4f6f5] p-6">
+      <MessageCircle className="size-5 text-[#71847e]" />
       <h3 className="mt-8 text-xl font-semibold">{title}</h3>
-      <p className="mt-3 text-sm leading-7 text-[#1b1c19]/56">{text}</p>
+      <p className="mt-3 text-sm leading-7 text-[#192421]/56">{text}</p>
     </article>
   );
 }

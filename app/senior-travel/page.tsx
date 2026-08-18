@@ -66,10 +66,7 @@ export default function SeniorTravelPage() {
           { name: "Senior Travel", path: "/senior-travel" },
         ])}
       />
-      <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-      />
+      <SiteNavigation items={homeNavItems} cta={primaryAction} />
 
       <HeroLargeImage
         eyebrow={guide.eyebrow}
@@ -221,8 +218,11 @@ export default function SeniorTravelPage() {
           {
             title: "Senior Planning",
             items: [
-              { label: "Planning FAQ", href: "/planning/faq" },
-              { label: "Visa Notes", href: "/planning/visa" },
+              { label: "Travel FAQ", href: "/faq" },
+              {
+                label: "Visa Guide",
+                href: "/journal/china-240-hour-visa-free-transit-guide",
+              },
               { label: "Contact", href: "/contact" },
             ],
           },

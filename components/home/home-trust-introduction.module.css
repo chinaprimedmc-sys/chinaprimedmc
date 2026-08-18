@@ -1,9 +1,9 @@
 .story {
-  --trust-ink: #1c1d1a;
-  --trust-muted: rgba(28, 29, 26, 0.64);
-  --trust-hairline: rgba(28, 29, 26, 0.16);
-  --trust-accent: #9a684d;
-  background: #f7f4ed;
+  --trust-ink: #192421;
+  --trust-muted: rgba(25, 36, 33, 0.64);
+  --trust-hairline: rgba(25, 36, 33, 0.16);
+  --trust-accent: #53666c;
+  background: #f4f6f5;
   color: var(--trust-ink);
   overflow: clip;
 }
@@ -16,7 +16,7 @@
 }
 
 .peopleSection {
-  background: #faf8f3;
+  background: #f4f6f5;
   padding: clamp(5.5rem, 9vw, 9rem) 0 clamp(5rem, 8vw, 8rem);
 }
 
@@ -174,7 +174,7 @@
 }
 
 .presenceSection {
-  background: #f1eee6;
+  background: #e8edeb;
   border-top: 1px solid rgba(28, 29, 26, 0.08);
   padding: clamp(5.5rem, 9vw, 9rem) 0;
 }
@@ -215,7 +215,7 @@
 }
 
 .operationSection {
-  background: #fbfaf6;
+  background: #ffffff;
   padding: clamp(5.5rem, 10vw, 10rem) 0;
 }
 
@@ -309,7 +309,7 @@
 }
 
 .pressSection {
-  background: #e8ede8;
+  background: #e8edeb;
   padding: clamp(5.5rem, 9vw, 9rem) 0 2rem;
 }
 

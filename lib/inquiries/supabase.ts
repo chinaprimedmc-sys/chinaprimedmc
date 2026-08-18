@@ -2,6 +2,7 @@ import "server-only";
 
 import type { InquiryInput } from "@/lib/inquiries/schema";
 
+import { isMissingAttributionColumnError } from "@/lib/inquiries/supabase-compat";
 import { supabaseRest } from "@/lib/supabase/server";
 
 export async function createInquiry(input: InquiryInput) {
@@ -55,11 +56,4 @@ async function insertInquiry(record: Record<string, unknown>) {
     body: JSON.stringify(record),
     cache: "no-store",
   });
-}
-
-function isMissingAttributionColumnError(error: unknown) {
-  return (
-    error instanceof Error &&
-    /column inquiries\.(landing_page|referrer|utm_|gclid|viewed_journeys)/.test(error.message)
-  );
 }

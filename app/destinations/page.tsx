@@ -14,9 +14,9 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = createMetadata({
-  title: "China Destinations & Private Tour Travel Guides",
+  title: "China Destinations for Private Tours",
   description:
-    "Explore expert China destination guides with culture, food, best times to visit, recommended stays and private tours planned by local travel specialists.",
+    "Choose where to go in China with local guidance on culture, food, seasons and stays, then connect each destination into a private journey built around you.",
   path: "/destinations",
   image: "/home/editorial/great-wall-private-china-travel.webp",
 });
@@ -30,7 +30,7 @@ export default async function DestinationsPage() {
   const pageUrl = new URL("/destinations", siteConfig.url).toString();
 
   return (
-    <main className="min-h-svh overflow-x-clip bg-[#f7f7f3]">
+    <main className="min-h-svh overflow-x-clip bg-[#f4f6f5]">
       <JsonLd
         id="destinations-collection-schema"
         data={{
@@ -98,7 +98,7 @@ export default async function DestinationsPage() {
             title: "Explore",
             items: [
               { label: "Private Journeys", href: "/tours" },
-              { label: "Travel Styles", href: "/styles" },
+              { label: "Destination Guides", href: "/destinations" },
               { label: "Journal", href: "/journal" },
               { label: "Start Planning", href: "/start-planning" },
             ],

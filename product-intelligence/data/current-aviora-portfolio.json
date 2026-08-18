@@ -1,0 +1,44 @@
+[
+  {
+    "productName": "9-Day Beijing, Xi'an & Shanghai Private Tour",
+    "durationDays": 9,
+    "destinations": ["Beijing", "Xi'an", "Shanghai"],
+    "role": "Mature first-time China SEO route"
+  },
+  {
+    "productName": "5-Day Chengdu Panda & Sichuan Food Private Tour",
+    "durationDays": 5,
+    "destinations": ["Chengdu", "Leshan"],
+    "role": "Short panda and food extension"
+  },
+  {
+    "productName": "7-Day Chengdu Panda & Jiuzhaigou Private Journey",
+    "durationDays": 7,
+    "destinations": ["Chengdu", "Jiuzhaigou"],
+    "role": "Nature and family route"
+  },
+  {
+    "productName": "5-Day Beijing & Great Wall Private Tour",
+    "durationDays": 5,
+    "destinations": ["Beijing"],
+    "role": "Short city product and SEO landing page"
+  },
+  {
+    "productName": "8-Day Shanghai & Zhangjiajie Private Tour",
+    "durationDays": 8,
+    "destinations": ["Shanghai", "Zhangjiajie"],
+    "role": "City and nature contrast route"
+  },
+  {
+    "productName": "6-Day Xi'an & Beijing Private Tour",
+    "durationDays": 6,
+    "destinations": ["Xi'an", "Beijing"],
+    "role": "Short heritage route and Muslim-friendly framework"
+  },
+  {
+    "productName": "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
+    "durationDays": 11,
+    "destinations": ["Beijing", "Xi'an", "Chengdu", "Shanghai"],
+    "role": "Current flagship first-time China route"
+  }
+]

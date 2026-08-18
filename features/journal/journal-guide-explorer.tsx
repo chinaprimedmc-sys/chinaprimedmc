@@ -1,11 +1,12 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Search } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { ContentContainer } from "@/components/layout/content-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
+import { journalSearchStrategy } from "@/content/journal/search-strategy";
 import { Section } from "@/design-system/primitives/section";
 import { cn } from "@/lib/utils/cn";
 import type { JournalArticle } from "@/types/journal";
@@ -15,202 +16,260 @@ type JournalGuideExplorerProps = {
   featuredSlug: string;
 };
 
-type GuideFilter = {
-  id: "all" | "first-trip" | "entry" | "practical" | "family" | "destinations";
+type TopicId =
+  | "all"
+  | "first-trip"
+  | "private-tours"
+  | "essentials"
+  | "beijing-xian"
+  | "chengdu-pandas"
+  | "nature"
+  | "life-stage";
+
+type TopicFilter = {
+  id: TopicId;
   label: string;
-  matches: (article: JournalArticle) => boolean;
+  pillar?: string;
 };
 
-const guideFilters: GuideFilter[] = [
-  { id: "all", label: "All Guides", matches: () => true },
-  {
-    id: "first-trip",
-    label: "First Trip",
-    matches: (article) => article.tags.includes("first-time-china"),
-  },
-  {
-    id: "entry",
-    label: "Entry & Visas",
-    matches: (article) =>
-      article.category === "Visa" || article.slug.includes("accommodation-registration"),
-  },
-  {
-    id: "practical",
-    label: "Practical Travel",
-    matches: (article) =>
-      article.category === "Train Travel" ||
-      article.slug.includes("mobile-payments") ||
-      article.slug.includes("accommodation-registration"),
-  },
-  {
-    id: "family",
-    label: "Family Travel",
-    matches: (article) =>
-      article.category === "Family Travel" || article.tags.includes("family-travel"),
-  },
-  {
-    id: "destinations",
-    label: "Destinations",
-    matches: (article) => article.category === "Destinations",
-  },
+const topicFilters: TopicFilter[] = [
+  { id: "all", label: "All Guides" },
+  { id: "first-trip", label: "First China Trip", pillar: "First China trip planning" },
+  { id: "private-tours", label: "Private Tours", pillar: "Private tour decision" },
+  { id: "essentials", label: "Travel Essentials", pillar: "China arrival essentials" },
+  { id: "beijing-xian", label: "Beijing & Xi'an", pillar: "Beijing and Xi'an planning" },
+  { id: "chengdu-pandas", label: "Chengdu & Pandas", pillar: "Chengdu and panda planning" },
+  { id: "nature", label: "Nature Routes", pillar: "Jiuzhaigou and Zhangjiajie" },
+  { id: "life-stage", label: "Families & Couples", pillar: "Travel by life stage" },
 ];
 
-const preferredLeadSlugs: Partial<Record<GuideFilter["id"], string>> = {
-  "first-trip": "china-240-hour-visa-free-transit-guide",
-  entry: "china-240-hour-visa-free-transit-guide",
-  practical: "china-high-speed-train-foreigners",
-  family: "china-mobile-payments-foreign-tourists",
-  destinations: "forbidden-city-tickets-foreigners",
+const preferredLeadSlugs: Partial<Record<TopicId, string>> = {
+  "first-trip": "how-many-days-in-china-7-10-14-day-itineraries",
+  "private-tours": "how-to-choose-private-china-tour-company",
+  essentials: "china-240-hour-visa-free-transit-guide",
+  "beijing-xian": "beijing-xian-itinerary-how-many-days",
+  "chengdu-pandas": "how-many-days-in-chengdu-itinerary",
+  nature: "jiuzhaigou-or-zhangjiajie",
+  "life-stage": "china-family-itinerary-10-to-14-days",
 };
 
 function getPrimaryLabel(article: JournalArticle) {
+  const role = journalSearchStrategy[article.slug];
+  if (role?.pillar) return role.pillar;
   if (article.category === "Industry News") return "AVIORA News";
   if (article.category === "Visa") return "Entry & Visas";
-  if (article.category === "Train Travel" || article.slug.includes("mobile-payments")) {
-    return "Practical Travel";
-  }
-  if (article.category === "Family Travel") return "Family Travel";
-  if (article.category === "Destinations") return "Destinations";
-  if (article.tags.includes("first-time-china")) return "First Trip";
-  return "Travel Guides";
+  return article.category;
+}
+
+function matchesSearch(article: JournalArticle, query: string) {
+  if (!query) return true;
+  const role = journalSearchStrategy[article.slug];
+  const haystack = [
+    article.title,
+    article.dek,
+    article.excerpt,
+    article.category,
+    article.tags.join(" "),
+    role?.pillar,
+    role?.primaryKeyword,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return haystack.includes(query);
 }
 
 export function JournalGuideExplorer({ articles, featuredSlug }: JournalGuideExplorerProps) {
-  const [activeFilter, setActiveFilter] = useState<GuideFilter["id"]>("all");
-  const currentFilter =
-    guideFilters.find((filter) => filter.id === activeFilter) ?? guideFilters[0];
-  const filteredArticles = useMemo(
-    () => articles.filter(currentFilter.matches),
-    [articles, currentFilter],
-  );
-  const preferredLeadSlug = preferredLeadSlugs[activeFilter];
+  const [activeTopic, setActiveTopic] = useState<TopicId>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [visibleCount, setVisibleCount] = useState(12);
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const currentTopic = topicFilters.find((topic) => topic.id === activeTopic) ?? topicFilters[0];
+
+  const filteredArticles = useMemo(() => {
+    return articles
+      .filter((article) => {
+        const role = journalSearchStrategy[article.slug];
+        const matchesTopic = !currentTopic.pillar || role?.pillar === currentTopic.pillar;
+        return matchesTopic && matchesSearch(article, normalizedQuery);
+      })
+      .sort((a, b) => {
+        const priorityA = journalSearchStrategy[a.slug]?.commercialPriority ?? 3;
+        const priorityB = journalSearchStrategy[b.slug]?.commercialPriority ?? 3;
+        return priorityA - priorityB || b.publishedAt.localeCompare(a.publishedAt);
+      });
+  }, [articles, currentTopic.pillar, normalizedQuery]);
+
+  const preferredLeadSlug = preferredLeadSlugs[activeTopic];
   const leadArticle =
     filteredArticles.find((article) => article.slug === preferredLeadSlug) ??
-    (activeFilter === "all"
+    (activeTopic === "all" && !normalizedQuery
       ? (filteredArticles.find((article) => article.slug === featuredSlug) ?? filteredArticles[0])
       : filteredArticles[0]);
   const remainingArticles = filteredArticles.filter(
     (article) => article.slug !== leadArticle?.slug,
   );
+  const visibleArticles = remainingArticles.slice(0, visibleCount);
+
+  const selectTopic = (topic: TopicId) => {
+    setActiveTopic(topic);
+    setVisibleCount(12);
+  };
 
   return (
-    <Section
-      id="guides"
-      spacing="compact"
-      className="border-b border-black/6 bg-[var(--bg-primary)]"
-    >
+    <Section id="guides" spacing="compact" className="border-b border-black/6 bg-white">
       <ContentContainer size="xl">
-        <div className="grid gap-4 border-b border-black/8 pb-6 md:grid-cols-[0.8fr_1.2fr] md:items-end md:pb-7">
+        <div className="grid gap-6 border-b border-black/8 pb-7 lg:grid-cols-[minmax(0,0.8fr)_minmax(22rem,1.2fr)] lg:items-end lg:gap-16">
           <div>
             <p className="text-xs font-semibold tracking-[0.14em] text-neutral-500 uppercase">
-              Find the right guide
+              Find The Right Guide
             </p>
-            <h2 className="mt-2 max-w-xl font-serif text-[2rem] leading-[1.04] font-medium tracking-normal text-neutral-950 md:text-4xl">
-              What do you need help with?
+            <h2 className="mt-2 max-w-xl font-serif text-[1.9rem] leading-[1.05] font-medium tracking-normal text-neutral-950 md:text-[2.35rem]">
+              What Are You Planning?
             </h2>
           </div>
-          <p className="max-w-xl text-sm leading-6 text-neutral-600 md:justify-self-end md:text-[0.95rem] md:leading-6">
-            Choose the question closest to your trip. We will show the most useful answers first.
-          </p>
+          <label className="relative block">
+            <span className="sr-only">Search China travel guides</span>
+            <Search
+              size={18}
+              strokeWidth={1.75}
+              className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-neutral-500"
+              aria-hidden="true"
+            />
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => {
+                setSearchQuery(event.target.value);
+                setVisibleCount(12);
+              }}
+              placeholder="Search Destinations, Trip Length Or Travel Advice"
+              className="min-h-12 w-full rounded-lg border border-black/12 bg-white pr-4 pl-11 text-sm text-neutral-950 transition-[border-color,box-shadow] outline-none placeholder:text-neutral-500 focus:border-black/35 focus:ring-2 focus:ring-black/5"
+            />
+          </label>
         </div>
 
-        <div
-          className="-mx-5 [scrollbar-width:none] overflow-x-auto px-5 py-4 sm:-mx-6 sm:px-6 md:py-5 lg:mx-0 lg:px-0 [&::-webkit-scrollbar]:hidden"
-          aria-label="Filter China travel guides"
-          role="group"
-        >
-          <div className="flex w-max min-w-full gap-2 lg:w-full lg:flex-wrap">
-            {guideFilters.map((filter) => {
-              const active = filter.id === activeFilter;
+        <div className="border-b border-black/8 py-4">
+          <label className="block md:hidden">
+            <span className="mb-2 block text-[0.68rem] font-semibold tracking-[0.12em] text-neutral-500 uppercase">
+              Guide Topic
+            </span>
+            <select
+              value={activeTopic}
+              onChange={(event) => selectTopic(event.target.value as TopicId)}
+              className="min-h-11 w-full rounded-lg border border-black/12 bg-white px-3 text-sm font-semibold text-neutral-900"
+            >
+              {topicFilters.map((topic) => (
+                <option key={topic.id} value={topic.id}>
+                  {topic.label}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <div
+            className="hidden flex-wrap gap-x-7 gap-y-2 md:flex"
+            role="group"
+            aria-label="Filter China travel guides"
+          >
+            {topicFilters.map((topic) => {
+              const active = topic.id === activeTopic;
               return (
                 <button
-                  key={filter.id}
+                  key={topic.id}
                   type="button"
                   aria-pressed={active}
-                  onClick={() => setActiveFilter(filter.id)}
+                  onClick={() => selectTopic(topic.id)}
                   className={cn(
-                    "min-h-10 shrink-0 cursor-pointer rounded-full border px-4 text-[0.82rem] font-semibold transition-[background-color,color,border-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950 active:scale-[0.98]",
+                    "min-h-10 cursor-pointer border-b-2 px-0.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-950",
                     active
-                      ? "border-neutral-950 bg-neutral-950 text-white"
-                      : "border-black/10 bg-white text-neutral-700 hover:border-black/25 hover:text-neutral-950",
+                      ? "border-neutral-950 text-neutral-950"
+                      : "border-transparent text-neutral-500 hover:border-black/20 hover:text-neutral-900",
                   )}
                 >
-                  {filter.label}
+                  {topic.label}
                 </button>
               );
             })}
           </div>
         </div>
 
-        <p className="sr-only" aria-live="polite">
-          {filteredArticles.length} {filteredArticles.length === 1 ? "guide" : "guides"} shown.
-        </p>
-
-        <div
-          key={activeFilter}
-          className="grid gap-7 motion-safe:animate-[journal-results-in_180ms_var(--motion-ease-out)_both]"
-        >
-          {leadArticle ? (
-            <div className="grid gap-3">
-              <div className="flex items-center justify-between gap-4">
-                <p className="text-xs font-semibold tracking-[0.14em] text-neutral-500 uppercase">
-                  {activeFilter === "all" ? "Start here" : `${currentFilter.label} guide`}
-                </p>
-                <p className="text-xs text-neutral-500">
-                  {filteredArticles.length} {filteredArticles.length === 1 ? "guide" : "guides"}
-                </p>
-              </div>
-              <LeadGuide article={leadArticle} eager={activeFilter === "all"} />
-            </div>
-          ) : null}
-
-          {remainingArticles.length ? (
-            <div className="border-y border-black/8">
-              {remainingArticles.map((article) => (
-                <GuideListItem key={article.slug} article={article} />
-              ))}
-            </div>
-          ) : null}
+        <div className="flex items-center justify-between gap-4 py-5">
+          <p className="text-xs font-semibold tracking-[0.12em] text-neutral-500 uppercase">
+            {normalizedQuery ? "Search Results" : currentTopic.label}
+          </p>
+          <p className="text-xs text-neutral-500" aria-live="polite">
+            {filteredArticles.length} {filteredArticles.length === 1 ? "Guide" : "Guides"}
+          </p>
         </div>
+
+        {leadArticle ? (
+          <div className="grid gap-7">
+            <LeadGuide article={leadArticle} />
+            {remainingArticles.length ? (
+              <>
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {visibleArticles.map((article) => (
+                    <GuideCard key={article.slug} article={article} />
+                  ))}
+                </div>
+                {visibleCount < remainingArticles.length ? (
+                  <div className="flex justify-center border-t border-black/8 pt-6">
+                    <button
+                      type="button"
+                      onClick={() => setVisibleCount((count) => count + 12)}
+                      className="min-h-11 rounded-lg border border-black/15 bg-white px-5 text-sm font-semibold text-neutral-800 transition-[border-color,transform] hover:-translate-y-0.5 hover:border-black/35 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950"
+                    >
+                      Show More Guides
+                    </button>
+                  </div>
+                ) : null}
+              </>
+            ) : null}
+          </div>
+        ) : (
+          <div className="border-y border-black/8 py-14 text-center">
+            <h3 className="font-serif text-2xl font-medium text-neutral-950">No Matching Guides</h3>
+            <p className="mt-2 text-sm text-neutral-600">
+              Try a destination, trip length or a broader planning question.
+            </p>
+          </div>
+        )}
       </ContentContainer>
     </Section>
   );
 }
 
-function LeadGuide({ article, eager }: { article: JournalArticle; eager: boolean }) {
+function LeadGuide({ article }: { article: JournalArticle }) {
   return (
     <Link
       href={`/journal/${article.slug}`}
-      className="group grid grid-cols-[7.25rem_minmax(0,1fr)] overflow-hidden rounded-2xl border border-black/8 bg-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_48px_rgba(43,42,37,0.1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:grid-cols-[0.86fr_1.14fr]"
+      className="group grid overflow-hidden rounded-lg border border-black/8 bg-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(43,42,37,0.08)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:grid-cols-[0.9fr_1.1fr]"
     >
-      <div className="relative overflow-hidden">
+      <div className="bg-neutral-100">
         <OptimizedImage
           src={article.hero.image.src}
           alt={article.hero.image.alt}
           width={article.hero.image.width ?? 900}
           height={article.hero.image.height ?? 620}
-          loading={eager ? "eager" : "lazy"}
-          sizes="(min-width: 768px) 42vw, 100vw"
-          frameClassName="h-full aspect-[4/3] md:aspect-auto"
-          className="h-full w-full transition-transform duration-300 ease-[var(--motion-ease-out)] group-hover:scale-[1.02] motion-reduce:transform-none motion-reduce:transition-none"
+          loading="eager"
+          sizes="(min-width: 768px) 45vw, 100vw"
+          frameClassName="w-full md:h-full"
+          className="h-auto w-full object-contain md:h-full md:object-cover"
         />
       </div>
-      <div className="grid gap-3 p-4 md:gap-5 md:p-7">
-        <div>
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.57rem] font-semibold tracking-[0.1em] text-neutral-500 uppercase md:gap-x-3 md:text-[0.65rem] md:tracking-[0.12em]">
-            <span>{getPrimaryLabel(article)}</span>
-            <span aria-hidden="true">·</span>
-            <span>{article.readingTime}</span>
-          </div>
-          <h3 className="mt-2 line-clamp-3 max-w-2xl font-serif text-[1.28rem] leading-[1.04] font-medium tracking-normal text-neutral-950 md:mt-3 md:text-[2.35rem]">
-            {article.title}
-          </h3>
-          <p className="mt-2 line-clamp-2 max-w-2xl text-[0.76rem] leading-5 text-neutral-600 md:mt-3 md:text-base md:leading-7">
-            {article.excerpt}
-          </p>
-        </div>
-        <span className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-950">
-          Read the guide
+      <div className="flex flex-col justify-center p-5 md:p-8">
+        <p className="text-[0.65rem] font-semibold tracking-[0.1em] text-neutral-500 uppercase">
+          Start Here · {article.readingTime}
+        </p>
+        <h3 className="mt-3 max-w-2xl font-serif text-[1.55rem] leading-[1.08] font-medium tracking-normal text-neutral-950 md:text-[2rem]">
+          {article.title}
+        </h3>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-600 md:text-[0.95rem]">
+          {article.excerpt}
+        </p>
+        <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-neutral-950">
+          Read The Guide
           <ArrowUpRight size={16} aria-hidden="true" />
         </span>
       </div>
@@ -218,41 +277,37 @@ function LeadGuide({ article, eager }: { article: JournalArticle; eager: boolean
   );
 }
 
-function GuideListItem({ article }: { article: JournalArticle }) {
+function GuideCard({ article }: { article: JournalArticle }) {
   return (
     <Link
       href={`/journal/${article.slug}`}
-      className="group grid grid-cols-[5.5rem_minmax(0,1fr)] gap-4 border-b border-black/8 py-4 last:border-b-0 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-neutral-950 md:grid-cols-[11.25rem_minmax(0,1fr)_auto] md:items-center md:gap-6 md:py-5"
+      className="group grid content-start overflow-hidden rounded-lg border border-black/8 bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950"
     >
-      <div className="overflow-hidden rounded-xl bg-neutral-100">
+      <div className="overflow-hidden bg-neutral-100">
         <OptimizedImage
           src={article.hero.image.src}
           alt={article.hero.image.alt}
           width={article.hero.image.width ?? 900}
           height={article.hero.image.height ?? 620}
           loading="lazy"
-          sizes="(min-width: 768px) 180px, 88px"
-          frameClassName="aspect-[4/3]"
-          className="h-full w-full transition-transform duration-300 ease-[var(--motion-ease-out)] group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+          sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 100vw"
+          frameClassName="aspect-[16/10]"
+          className="h-full w-full object-cover transition-transform duration-300 ease-[var(--motion-ease-out)] group-hover:scale-[1.02] motion-reduce:transform-none motion-reduce:transition-none"
         />
       </div>
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.62rem] font-semibold tracking-[0.12em] text-neutral-500 uppercase">
-          <span>{getPrimaryLabel(article)}</span>
-          <span aria-hidden="true">·</span>
-          <span>{article.readingTime}</span>
+      <div className="grid gap-2 p-4">
+        <div className="flex items-center justify-between gap-3 text-[0.62rem] font-semibold tracking-[0.08em] text-neutral-500 uppercase">
+          <span className="line-clamp-1">{getPrimaryLabel(article)}</span>
+          <span className="shrink-0">{article.readingTime}</span>
         </div>
-        <h3 className="mt-1.5 line-clamp-2 text-[1.02rem] leading-[1.16] font-semibold tracking-[-0.01em] text-neutral-950 md:text-[1.35rem]">
+        <h3 className="line-clamp-2 text-[1.05rem] leading-[1.2] font-semibold text-neutral-950 md:text-[1.15rem]">
           {article.title}
         </h3>
-        <p className="mt-1.5 line-clamp-2 text-sm leading-5 text-neutral-600 md:max-w-3xl md:text-[0.95rem] md:leading-6">
-          {article.excerpt}
-        </p>
+        <p className="line-clamp-2 text-sm leading-5 text-neutral-600">{article.excerpt}</p>
+        <span className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-800">
+          Read Guide <ArrowUpRight size={14} aria-hidden="true" />
+        </span>
       </div>
-      <span className="hidden size-9 items-center justify-center rounded-full border border-black/10 text-neutral-700 transition-[background-color,color,transform] duration-200 group-hover:-translate-y-0.5 group-hover:bg-neutral-950 group-hover:text-white md:inline-flex">
-        <ArrowUpRight size={15} aria-hidden="true" />
-        <span className="sr-only">Read the guide</span>
-      </span>
     </Link>
   );
 }

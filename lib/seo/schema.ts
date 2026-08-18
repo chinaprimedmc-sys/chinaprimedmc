@@ -7,8 +7,8 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
     "@id": organizationId,
-    name: siteConfig.name,
-    alternateName: ["China Prime DMC", siteConfig.operator.englishReferenceName],
+    name: siteConfig.siteName,
+    alternateName: [siteConfig.name, "China Prime DMC", siteConfig.operator.englishReferenceName],
     legalName: siteConfig.operator.legalName,
     url: siteConfig.url,
     logo: new URL(siteConfig.logo, siteConfig.url).toString(),
@@ -62,8 +62,8 @@ export function websiteSchema() {
     "@type": "WebSite",
     "@id": `${siteConfig.url}/#website`,
     url: siteConfig.url,
-    name: siteConfig.name,
-    alternateName: "China Prime DMC",
+    name: siteConfig.siteName,
+    alternateName: [siteConfig.name, "China Prime DMC"],
     description: siteConfig.description,
     publisher: { "@id": `${siteConfig.url}/#organization` },
     inLanguage: "en-US",
@@ -73,33 +73,54 @@ export function websiteSchema() {
 export function articleSchemaData(input: {
   headline: string;
   description: string;
-  image: string;
+  image: {
+    url: string;
+    width?: number;
+    height?: number;
+  };
   url: string;
   datePublished: string;
   dateModified: string;
   authorName: string;
   authorRole: string;
+  articleSection?: string;
+  wordCount?: number;
   keywords?: string[];
   citations?: Array<{
     name: string;
     url: string;
     publisher: string;
-    publishedAt: string;
+    publishedAt?: string;
   }>;
 }) {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: input.headline,
     description: input.description,
-    image: input.image,
+    image: {
+      "@type": "ImageObject",
+      url: input.image.url,
+      ...(input.image.width ? { width: input.image.width } : {}),
+      ...(input.image.height ? { height: input.image.height } : {}),
+    },
     datePublished: input.datePublished,
     dateModified: input.dateModified,
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    ...(input.articleSection ? { articleSection: input.articleSection } : {}),
+    ...(input.wordCount ? { wordCount: input.wordCount } : {}),
     author: {
       "@type": "Organization",
       name: input.authorName,
       description: input.authorRole,
-      url: siteConfig.url,
+      url: new URL("/about", siteConfig.url).toString(),
+      "@id": `${siteConfig.url}/#organization`,
+    },
+    reviewedBy: {
+      "@type": "Organization",
+      name: "AVIORA China Travel Team",
+      url: new URL("/about", siteConfig.url).toString(),
       "@id": `${siteConfig.url}/#organization`,
     },
     publisher: { "@id": `${siteConfig.url}/#organization` },
@@ -112,7 +133,7 @@ export function articleSchemaData(input: {
             "@type": "NewsArticle",
             headline: citation.name,
             url: citation.url,
-            datePublished: citation.publishedAt,
+            ...(citation.publishedAt ? { datePublished: citation.publishedAt } : {}),
             publisher: {
               "@type": "Organization",
               name: citation.publisher,

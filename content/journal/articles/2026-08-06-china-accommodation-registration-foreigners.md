@@ -20,7 +20,13 @@ secondary_keywords:
   ]
 search_intent: "Understand who must register a foreign visitor’s stay, when it is required and how the March 2026 online pilot works."
 suggested_internal_links:
-  ["/planning", "/planning/visa", "/planning/faq", "/start-planning", "/contact"]
+  [
+    "/start-planning",
+    "/journal/china-240-hour-visa-free-transit-guide",
+    "/faq",
+    "/start-planning",
+    "/contact",
+  ]
 sources_verified_at: "2026-08-06"
 image_status: "approved_owner_supplied"
 cssclasses:
@@ -89,7 +95,7 @@ For a route such as **Beijing hotel → friend’s home in Hangzhou → Chengdu 
 2. The Hangzhou host and visitor confirm the non-hotel registration within 24 hours; Zhejiang is included in the current online pilot.
 3. The Chengdu hotel registers the final hotel stay.
 
-This is an operational reason to keep hotel names, addresses and contact numbers in a single itinerary document. AVIORA’s [China travel planning guide](/planning) treats confirmations as part of route design, not administrative clutter.
+This is an operational reason to keep hotel names, addresses and contact numbers in a single itinerary document. AVIORA’s [China travel planning guide](/start-planning) treats confirmations as part of route design, not administrative clutter.
 
 ## What if registration was missed?
 
@@ -101,7 +107,7 @@ If a private accommodation cannot explain how it handles foreign-guest registrat
 
 For hotels arranged through AVIORA, we can ask the property to confirm its foreign-guest check-in process in writing. For a private-home stay, we can flag the registration step in the itinerary and identify the official channel, but the traveler and host remain responsible for accurate submission. Requirements should be reconfirmed close to arrival.
 
-See the [visa and entry planning guide](/planning/visa) for entry rules and the [planning FAQ](/planning/faq) for related arrival questions. These are separate from accommodation registration.
+See the [visa and entry planning guide](/journal/china-240-hour-visa-free-transit-guide) for entry rules and the [planning FAQ](/faq) for related arrival questions. These are separate from accommodation registration.
 
 ## FAQ
 
@@ -148,7 +154,7 @@ Published hero: `/public/journal/2026-08-06/accommodation-registration-check-in.
 
 - National Immigration Administration, “Announcement…Online Accommodation Registration for Foreigners Residing or Staying in Domiciles Other Than Hotels,” 20 March 2026: https://english.www.gov.cn/services/visitchina/202603/21/content_WS69ce1384c6d00ca5f9a0a36d.html — hotel duty, 24-hour non-hotel duty, seven-region pilot, official channels and offline availability. Verified 2026-08-06.
 - National Immigration Administration, official English site and service hotline reference: https://en.nia.gov.cn/ — authority context. Verified 2026-08-06.
-- AVIORA, “China Visa and Transit Planning”: `/planning/visa` — internal distinction between entry and stay operations. Verified 2026-08-06.
+- AVIORA, “China Visa and Transit Planning”: `/journal/china-240-hour-visa-free-transit-guide` — internal distinction between entry and stay operations. Verified 2026-08-06.
 
 ## Review Notes
 

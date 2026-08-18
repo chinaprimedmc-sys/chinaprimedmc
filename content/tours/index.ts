@@ -1419,7 +1419,7 @@ export const tours: Tour[] = [
       {
         question: "How is the private tour quotation calculated?",
         answer:
-          "The proposal is based on your dates, party size, hotel and room preferences, transport schedule, guide configuration and requested inclusions. No fixed price is shown because every confirmed plan is tailored.",
+          "The displayed starting price is an indicative per-person planning figure based on four guests sharing two rooms outside peak periods. Your written proposal recalculates the final price around dates, party size, hotel and room preferences, transport schedule, guide configuration and requested inclusions.",
       },
     ],
     related: {

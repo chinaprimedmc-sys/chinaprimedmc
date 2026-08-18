@@ -30,6 +30,7 @@ import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
+import { homeNavItems } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
 import { RecordViewed } from "@/features/discovery/record-viewed";
 import type { Destination, DestinationTip } from "@/types/destination";
@@ -37,15 +38,6 @@ import type { Destination, DestinationTip } from "@/types/destination";
 type DestinationTemplateProps = {
   destination: Destination;
 };
-
-const destinationNav = [
-  { label: "Why Visit", href: "#why-visit" },
-  { label: "Highlights", href: "#highlights" },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Tours", href: "#suggested-tours" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "FAQ", href: "#faq" },
-];
 
 export function DestinationTemplate({ destination }: DestinationTemplateProps) {
   const inquiryHref = destination.hero.secondary.href;
@@ -60,7 +52,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           href: `/destinations/${destination.slug}`,
         }}
       />
-      <SiteNavigation items={destinationNav} cta={{ label: "Plan This Trip", href: inquiryHref }} />
+      <SiteNavigation items={homeNavItems} cta={{ label: "Start Planning", href: inquiryHref }} />
 
       <HeroLargeImage
         eyebrow={destination.hero.eyebrow ?? "Destination guide"}
@@ -302,7 +294,15 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
 
       <SiteFooter
         columns={[
-          { title: "Destination", items: destinationNav },
+          {
+            title: "Destination",
+            items: [
+              { label: "Highlights", href: "#highlights" },
+              { label: "Experiences", href: "#experiences" },
+              { label: "Suggested journeys", href: "#suggested-tours" },
+              { label: "FAQ", href: "#faq" },
+            ],
+          },
           {
             title: "Planning",
             items: [
@@ -312,11 +312,11 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
             ],
           },
           {
-            title: "Travel styles",
+            title: "Explore",
             items: [
-              { label: "Family China", href: "/styles/family" },
-              { label: "Luxury China", href: "/styles/luxury" },
-              { label: "Private routes", href: "/tours" },
+              { label: "Private journeys", href: "/tours" },
+              { label: "Family travel", href: "/family-travel" },
+              { label: "Start planning", href: "/start-planning" },
             ],
           },
           {

@@ -142,7 +142,7 @@ export const planningCards: PlanningCard[] = [
     title: "Visa and entry planning",
     description:
       "A practical guide to checking current entry rules, required documents, and pre-trip details.",
-    href: "/planning/visa",
+    href: "/journal/china-240-hour-visa-free-transit-guide",
     image: destinationAsset.shanghaiSkyline,
     badges: ["Entry", "Practical"],
   },
@@ -150,7 +150,7 @@ export const planningCards: PlanningCard[] = [
     title: "Planning FAQ",
     description:
       "Grouped answers for safety, internet, food, seasons, shopping policy, and private route design.",
-    href: "/planning/faq",
+    href: "/faq",
     image: destinationAsset.beijingForbiddenCityWide,
     badges: ["FAQ", "Before you book"],
   },

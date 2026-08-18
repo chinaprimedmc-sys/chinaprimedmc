@@ -11,17 +11,12 @@ export const homeNavItems: NavigationItem[] = [
     label: "Destinations",
     href: "/destinations",
   },
-  {
-    label: "Styles",
-    href: "/styles",
-  },
-  { label: "Planning", href: "/planning" },
   { label: "About AVIORA", href: "/about" },
   { label: "Journal", href: "/journal" },
 ];
 
 export const primaryAction: LinkAction = {
-  label: "Plan My Trip",
+  label: "Start Planning",
   href: "/start-planning",
 };
 
@@ -55,10 +50,10 @@ export const desktopHeroImage: MediaAsset = {
 };
 
 export const mobileHeroImage: MediaAsset = {
-  src: "/home/shanghai-blue-hour-mobile-hero.avif",
+  src: "/home/shanghai-blue-hour-mobile-hero-768.avif",
   alt: "The Oriental Pearl Tower above Shanghai at blue hour",
-  width: 1080,
-  height: 2337,
+  width: 768,
+  height: 1662,
   priority: true,
   objectPosition: "50% 50%",
 };
@@ -131,11 +126,11 @@ export const exploreChina = [
     image: homeEditorialImages.shanghaiWaterfront,
   },
   {
-    eyebrow: "Travel styles",
+    eyebrow: "Private journeys",
     title: "Find your rhythm",
     description:
       "Family time, exceptional comfort, photography, or a slower trip with room to notice more.",
-    href: "/styles",
+    href: "/tours",
     image: homeEditorialImages.guilinLandscape,
   },
 ];
@@ -168,28 +163,28 @@ export const destinationImages = {
     objectPosition: "50% 45%",
   },
   shanghai: {
-    src: "/home/shanghai-pudong-skyline.jpg",
+    src: "/home/shanghai-pudong-skyline.webp",
     alt: "Pudong skyline in Shanghai at dusk above the Huangpu River",
     width: 1920,
     height: 1080,
     objectPosition: "50% 42%",
   },
   chengdu: {
-    src: "/home/chengdu-panda.jpg",
+    src: "/home/chengdu-panda.webp",
     alt: "A giant panda at the Chengdu panda breeding and research center",
     width: 1920,
     height: 1200,
     objectPosition: "54% 42%",
   },
   guilin: {
-    src: "/home/guilin-li-river.jpg",
+    src: "/home/guilin-li-river.webp",
     alt: "Li River karst mountains and calm water near Guilin",
     width: 1920,
     height: 1200,
     objectPosition: "50% 50%",
   },
   zhangjiajie: {
-    src: "/home/zhangjiajie-national-forest.jpg",
+    src: "/home/zhangjiajie-national-forest.webp",
     alt: "Sandstone spire forest rising through Zhangjiajie National Forest Park",
     width: 1920,
     height: 1200,
@@ -206,21 +201,21 @@ export const destinationImages = {
 
 export const storyImages = {
   tea: {
-    src: "/home/xian-terracotta-army.jpg",
+    src: "/home/xian-terracotta-army.webp",
     alt: "Terracotta Army figures representing China's living cultural depth",
     width: 1920,
     height: 1200,
     objectPosition: "50% 52%",
   },
   rail: {
-    src: "/home/shanghai-pudong-skyline.jpg",
+    src: "/home/shanghai-pudong-skyline.webp",
     alt: "Shanghai skyline representing smooth private China logistics",
     width: 1920,
     height: 1080,
     objectPosition: "50% 52%",
   },
   xian: {
-    src: "/home/xian-terracotta-army.jpg",
+    src: "/home/xian-terracotta-army.webp",
     alt: "Terracotta Army figures in Xi'an, China",
     width: 1920,
     height: 1200,

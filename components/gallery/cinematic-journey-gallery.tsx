@@ -3,21 +3,24 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import useEmblaCarousel from "embla-carousel-react";
 import { useReducedMotion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Maximize2, Pause, Play, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { OptimizedImage } from "@/components/media/optimized-image";
+import { trackEvent } from "@/lib/analytics/events";
 import { cn } from "@/lib/utils/cn";
 import type { MediaAsset } from "@/types/component-library";
 
 type CinematicJourneyGalleryProps = {
   images: MediaAsset[];
   title?: string;
+  journeySlug?: string;
 };
 
 export function CinematicJourneyGallery({
   images,
   title = "The journey, seen more closely.",
+  journeySlug,
 }: CinematicJourneyGalleryProps) {
   const shouldReduceMotion = useReducedMotion();
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -27,11 +30,23 @@ export function CinematicJourneyGallery({
     skipSnaps: false,
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [manualPaused, setManualPaused] = useState(false);
-  const [hoverPaused, setHoverPaused] = useState(false);
+  const [interactionPaused, setInteractionPaused] = useState(false);
   const [fullscreenOpen, setFullscreenOpen] = useState(false);
+  const [galleryNearViewport, setGalleryNearViewport] = useState(false);
+  const [galleryVisible, setGalleryVisible] = useState(false);
+  const [autoplayAllowed, setAutoplayAllowed] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const resumeTimerRef = useRef<number | null>(null);
+
+  const pauseAfterInteraction = useCallback(() => {
+    setInteractionPaused(true);
+    if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = window.setTimeout(() => {
+      setInteractionPaused(false);
+      resumeTimerRef.current = null;
+    }, 4000);
+  }, []);
 
   const syncSelection = useCallback(() => {
     if (!emblaApi) return;
@@ -52,9 +67,10 @@ export function CinematicJourneyGallery({
   useEffect(() => {
     if (
       !emblaApi ||
-      manualPaused ||
-      hoverPaused ||
+      interactionPaused ||
       fullscreenOpen ||
+      !galleryVisible ||
+      !autoplayAllowed ||
       shouldReduceMotion ||
       images.length < 2
     ) {
@@ -62,11 +78,51 @@ export function CinematicJourneyGallery({
     }
 
     const interval = window.setInterval(() => {
+      if (document.visibilityState !== "visible") return;
       if (emblaApi.canScrollNext()) emblaApi.scrollNext();
-      else emblaApi.scrollTo(0, true);
-    }, 6500);
+      else emblaApi.scrollTo(0);
+    }, 5000);
     return () => window.clearInterval(interval);
-  }, [emblaApi, fullscreenOpen, hoverPaused, images.length, manualPaused, shouldReduceMotion]);
+  }, [
+    autoplayAllowed,
+    emblaApi,
+    fullscreenOpen,
+    galleryVisible,
+    images.length,
+    interactionPaused,
+    shouldReduceMotion,
+  ]);
+
+  useEffect(() => {
+    const connection = (
+      navigator as Navigator & {
+        connection?: {
+          addEventListener?: (type: "change", listener: () => void) => void;
+          effectiveType?: string;
+          removeEventListener?: (type: "change", listener: () => void) => void;
+          saveData?: boolean;
+        };
+      }
+    ).connection;
+    const update = () => {
+      const constrained =
+        Boolean(connection?.saveData) ||
+        connection?.effectiveType === "slow-2g" ||
+        connection?.effectiveType === "2g";
+      setAutoplayAllowed(!constrained);
+    };
+
+    update();
+    connection?.addEventListener?.("change", update);
+    return () => connection?.removeEventListener?.("change", update);
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+    },
+    [],
+  );
 
   useEffect(() => {
     if (!fullscreenOpen || !emblaApi) return;
@@ -84,19 +140,28 @@ export function CinematicJourneyGallery({
     const section = sectionRef.current;
     if (!section) return;
 
-    const observer = new IntersectionObserver(
+    const preloadObserver = new IntersectionObserver(
       ([entry]) => {
-        document.documentElement.classList.toggle(
-          "journey-gallery-in-view",
-          Boolean(entry?.isIntersecting),
-        );
+        if (!entry?.isIntersecting) return;
+        setGalleryNearViewport(true);
+        preloadObserver.disconnect();
+      },
+      { rootMargin: "700px 0px", threshold: 0 },
+    );
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        const isVisible = Boolean(entry?.isIntersecting);
+        setGalleryVisible(isVisible);
+        document.documentElement.classList.toggle("journey-gallery-in-view", isVisible);
       },
       { rootMargin: "-10% 0px -10%", threshold: 0.12 },
     );
 
-    observer.observe(section);
+    preloadObserver.observe(section);
+    visibilityObserver.observe(section);
     return () => {
-      observer.disconnect();
+      preloadObserver.disconnect();
+      visibilityObserver.disconnect();
       document.documentElement.classList.remove("journey-gallery-in-view");
     };
   }, []);
@@ -106,18 +171,30 @@ export function CinematicJourneyGallery({
   const activeImage = images[selectedIndex] ?? images[0];
   const progress = `${((selectedIndex + 1) / images.length) * 100}%`;
 
+  function trackGalleryAction(action: string, index: number) {
+    if (!journeySlug) return;
+    trackEvent("tour_gallery_interaction", {
+      action,
+      image: index + 1,
+      journey: journeySlug.slice(0, 160),
+    });
+  }
+
   function selectImage(index: number) {
-    setManualPaused(true);
+    pauseAfterInteraction();
     if (index === selectedIndex) {
+      trackGalleryAction("fullscreen_open", index);
       setFullscreenOpen(true);
       return;
     }
+    trackGalleryAction("select", index);
     emblaApi?.scrollTo(index);
   }
 
-  function move(direction: -1 | 1) {
-    setManualPaused(true);
+  function move(direction: -1 | 1, action = "controls") {
+    pauseAfterInteraction();
     if (!emblaApi) return;
+    trackGalleryAction(`${action}_${direction === -1 ? "previous" : "next"}`, selectedIndex);
 
     if (direction === -1) {
       if (emblaApi.canScrollPrev()) emblaApi.scrollPrev();
@@ -133,101 +210,114 @@ export function CinematicJourneyGallery({
     const startX = touchStartX.current;
     touchStartX.current = null;
     if (startX === null || Math.abs(clientX - startX) < 48) return;
-    move(clientX < startX ? 1 : -1);
+    move(clientX < startX ? 1 : -1, "swipe");
   }
 
   return (
-    <Dialog.Root open={fullscreenOpen} onOpenChange={setFullscreenOpen}>
+    <Dialog.Root
+      open={fullscreenOpen}
+      onOpenChange={(open) => {
+        setFullscreenOpen(open);
+        if (!open) pauseAfterInteraction();
+      }}
+    >
       <section
         id="gallery"
         ref={sectionRef}
-        className="scroll-mt-24 overflow-hidden bg-[#f3f5f0] py-10 text-[#171a16] md:py-12"
-        onPointerEnter={() => setHoverPaused(true)}
-        onPointerLeave={() => setHoverPaused(false)}
+        className="scroll-mt-24 overflow-hidden bg-white py-14 text-[#192421] md:py-20"
       >
-        <div className="mx-auto w-full max-w-[90rem] px-5 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[76rem] px-5 sm:px-6 lg:px-0">
           <header className="grid gap-5 border-b border-black/10 pb-5 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-[#617064] uppercase">
+              <p className="text-[0.75rem] font-semibold text-[#687570] uppercase">
                 Journey gallery
               </p>
-              <h2 className="mt-3 max-w-4xl font-serif text-[clamp(2.2rem,3.3vw,3.5rem)] leading-[0.98] font-medium">
+              <h2 className="mt-3 max-w-4xl font-serif text-[1.38rem] leading-[1.08] font-medium whitespace-nowrap sm:text-[1.8rem] md:text-[2.3rem]">
                 {title}
               </h2>
             </div>
             <div className="md:text-right">
-              <p className="text-xs font-semibold tracking-[0.12em] text-black/42 uppercase">
-                Drag or swipe · {images.length} photographs
-              </p>
+              <p className="text-xs font-semibold text-black/48">{images.length} photographs</p>
             </div>
           </header>
         </div>
 
         <div className="mx-auto mt-6 w-full max-w-[90rem] px-5 sm:px-6 lg:px-8">
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex touch-pan-y items-center gap-4 py-3 md:gap-6 md:py-4">
+          <div className="overflow-hidden" ref={emblaRef} onPointerDown={pauseAfterInteraction}>
+            <div className="journey-gallery-track flex touch-pan-y items-center py-6 md:py-8">
               {images.map((image, index) => {
                 const active = index === selectedIndex;
-                const directDistance = Math.abs(index - selectedIndex);
-                const loopDistance = Math.min(directDistance, images.length - directDistance);
-                const shouldLoadImage = loopDistance <= 2;
+                const distance = Math.abs(index - selectedIndex);
+                const shouldLoadImage = active || (galleryVisible && distance <= 1);
                 const format = getImageFormat(image);
                 return (
-                  <button
+                  <div
                     key={`${image.src}-${index}`}
-                    type="button"
-                    onClick={() => selectImage(index)}
-                    aria-label={
-                      active
-                        ? `Open image ${index + 1} full screen: ${image.alt}`
-                        : `Show image ${index + 1}: ${image.alt}`
-                    }
-                    className={cn(
-                      "relative min-w-0 flex-none overflow-hidden rounded-md border bg-[#e4e8e1] text-left transition-[opacity,transform,border-color,box-shadow] duration-700 ease-[cubic-bezier(.16,1,.3,1)] focus-visible:ring-2 focus-visible:ring-[#506457] focus-visible:outline-none",
-                      format === "portrait" &&
-                        "aspect-[3/4] basis-[74%] sm:basis-[19rem] md:basis-[21rem] lg:basis-[22rem]",
-                      format === "landscape" &&
-                        "aspect-[3/2] basis-[88%] sm:basis-[36rem] md:basis-[42rem] lg:basis-[44rem]",
-                      format === "square" &&
-                        "aspect-square basis-[80%] sm:basis-[24rem] md:basis-[28rem] lg:basis-[29rem]",
-                      active
-                        ? "scale-100 border-black/14 opacity-100 shadow-[0_24px_70px_rgba(26,36,28,0.14)]"
-                        : "scale-[0.92] border-black/8 opacity-[0.42] hover:opacity-70",
-                    )}
+                    className="journey-gallery-slide grid min-w-0 flex-[0_0_100%] place-items-center px-2 sm:px-4"
                   >
-                    {shouldLoadImage ? (
-                      <OptimizedImage
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(min-width: 1024px) 72vw, (min-width: 640px) 82vw, 90vw"
-                        objectPosition={image.objectPosition}
-                        loading={active ? "eager" : "lazy"}
-                        showSkeleton
-                        frameClassName="h-full w-full bg-[#e4e8e1]"
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      <span className="grid h-full w-full place-items-center bg-[#e4e8e1] text-xs font-semibold tracking-[0.16em] text-black/18">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    )}
-                    {active ? (
-                      <span className="absolute right-4 bottom-4 grid size-10 place-items-center rounded-full border border-white/72 bg-white/74 text-[#171a16] shadow-sm backdrop-blur-xl md:right-5 md:bottom-5">
-                        <Maximize2 size={18} aria-hidden="true" />
-                      </span>
-                    ) : null}
-                  </button>
+                    <div
+                      className={cn(
+                        "journey-gallery-frame relative max-w-full",
+                        format === "portrait" && "w-[min(76vw,23rem)]",
+                        format === "landscape" && "w-full max-w-[51rem]",
+                        format === "square" && "w-[min(86vw,32rem)]",
+                      )}
+                      data-active={active}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => selectImage(index)}
+                        aria-label={
+                          active
+                            ? `Open image ${index + 1} full screen: ${image.alt}`
+                            : `Show image ${index + 1}: ${image.alt}`
+                        }
+                        data-active={active}
+                        className={cn(
+                          "journey-gallery-card relative z-[1] block h-auto w-full max-w-full overflow-hidden bg-white text-left transition-opacity duration-300 focus-visible:ring-2 focus-visible:ring-[#506457] focus-visible:outline-none",
+                          active ? "opacity-100" : "opacity-75",
+                        )}
+                        style={{ aspectRatio: `${image.width ?? 3} / ${image.height ?? 2}` }}
+                      >
+                        {shouldLoadImage ? (
+                          <OptimizedImage
+                            key={`${image.src}-${galleryNearViewport ? "near" : "deferred"}-${galleryVisible ? "visible" : "hidden"}`}
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            quality={65}
+                            sizes="(min-width: 1024px) 72vw, (min-width: 640px) 82vw, 90vw"
+                            objectPosition={image.objectPosition}
+                            loading={galleryNearViewport ? "eager" : "lazy"}
+                            fetchPriority={active && galleryVisible ? "high" : "low"}
+                            showSkeleton={false}
+                            frameClassName="h-full w-full bg-white"
+                            className="h-full w-full object-contain"
+                            style={{ objectFit: "contain" }}
+                          />
+                        ) : (
+                          <span className="grid h-full w-full place-items-center bg-white text-xs font-semibold text-black/18">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                        )}
+                        {active ? (
+                          <span className="absolute right-4 bottom-4 grid size-10 place-items-center rounded-full border border-black/10 bg-white text-[#171a16] md:right-5 md:bottom-5">
+                            <Maximize2 size={18} aria-hidden="true" />
+                          </span>
+                        ) : null}
+                      </button>
+                    </div>
+                  </div>
                 );
               })}
             </div>
           </div>
         </div>
 
-        <div className="mx-auto mt-4 grid w-full max-w-[90rem] gap-5 px-5 sm:px-6 md:grid-cols-[1fr_auto] md:items-end lg:px-8">
+        <div className="mx-auto mt-4 grid w-full max-w-[76rem] gap-5 px-5 sm:px-6 md:grid-cols-[1fr_auto] md:items-end lg:px-0">
           <div>
             <div className="flex items-center gap-4">
-              <p className="min-w-20 text-xs font-semibold tracking-[0.16em] text-black/46 uppercase">
+              <p className="min-w-20 text-xs font-semibold text-black/52">
                 {String(selectedIndex + 1).padStart(2, "0")} /{" "}
                 {String(images.length).padStart(2, "0")}
               </p>
@@ -250,20 +340,6 @@ export function CinematicJourneyGallery({
             >
               <ChevronLeft size={18} aria-hidden="true" />
             </button>
-            {!shouldReduceMotion ? (
-              <button
-                type="button"
-                onClick={() => setManualPaused((current) => !current)}
-                className="grid size-10 place-items-center rounded-full border border-black/12 bg-white/58 text-[#171a16] transition hover:border-black/24 hover:bg-white"
-                aria-label={manualPaused ? "Resume gallery autoplay" : "Pause gallery autoplay"}
-              >
-                {manualPaused ? (
-                  <Play size={16} aria-hidden="true" />
-                ) : (
-                  <Pause size={16} aria-hidden="true" />
-                )}
-              </button>
-            ) : null}
             <button
               type="button"
               onClick={() => move(1)}
@@ -300,7 +376,7 @@ export function CinematicJourneyGallery({
         >
           <Dialog.Title className="sr-only">Journey photograph {selectedIndex + 1}</Dialog.Title>
           <div className="flex items-center justify-between gap-4">
-            <p className="text-xs font-semibold tracking-[0.16em] text-white/52 uppercase">
+            <p className="text-xs font-semibold text-white/52">
               {String(selectedIndex + 1).padStart(2, "0")} /{" "}
               {String(images.length).padStart(2, "0")}
             </p>
@@ -319,10 +395,12 @@ export function CinematicJourneyGallery({
               fill
               sizes="100vw"
               objectPosition={activeImage.objectPosition}
-              priority
+              loading="eager"
+              fetchPriority="high"
               showSkeleton={false}
               frameClassName="absolute inset-0 h-full bg-transparent"
               className="h-full w-full object-contain"
+              style={{ objectFit: "contain" }}
             />
             <button
               type="button"

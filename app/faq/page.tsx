@@ -56,10 +56,7 @@ export default function FaqPage() {
           })),
         }}
       />
-      <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-      />
+      <SiteNavigation items={homeNavItems} cta={primaryAction} />
       <Section spacing="spacious">
         <ContentContainer size="md" className="grid gap-8">
           <div>

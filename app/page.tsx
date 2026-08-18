@@ -1,297 +1,299 @@
-import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-import { CtaButton } from "@/components/cta";
-import { SiteFooter } from "@/components/footer/site-footer";
 import { HomeExpertConsultation } from "@/components/home/home-expert-consultation";
 import { HomeHeroMotion } from "@/components/home/home-hero-motion";
-import { FeaturedJourneyCinema, HomeReveal } from "@/components/home/home-immersive-sections";
-import {
-  HomeMobileTrustDetails,
-  HomeMobileTrustSummary,
-} from "@/components/home/home-mobile-conversion";
-import mobileStyles from "@/components/home/home-mobile-conversion.module.css";
-import { HomeTrustIntroduction } from "@/components/home/home-trust-introduction";
-import { ContentContainer } from "@/components/layout/content-container";
-import { PageContainer } from "@/components/layout/page-container";
-import { OptimizedImage } from "@/components/media/optimized-image";
+import { HomeServiceStandard } from "@/components/home/home-service-standard";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { CookiePreferencesButton } from "@/components/privacy/cookie-preferences-button";
+import { HomeJourneySelector, HomeSectionReveal } from "@/components/home/home-journey-selector";
+import { HomePhilosophy } from "@/components/home/home-philosophy";
+import { HomeStoryExperience } from "@/components/home/home-story-experience";
+import { HomeSoftSnap } from "@/components/home/home-soft-snap";
+import styles from "@/components/home/home-redesign.module.css";
 import { siteConfig } from "@/config/site";
-import { desktopHeroImage, heroImage, mobileHeroImage } from "@/content/home/homepage";
-import { Section } from "@/design-system/primitives/section";
+import { desktopHeroImage, mobileHeroImage } from "@/content/home/homepage";
+import { cultureStoryImages, foodStoryImages } from "@/content/home/story-media.generated";
+import { journeyCatalog } from "@/content/tours/catalog";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { getPublicHomePage, getPublicSiteSettings } from "@/lib/cms/public-content";
 import { mergeCoreJourneyFallbacks } from "@/lib/cms/core-journey-fallbacks";
 
-const featuredJourneyEditorial: Record<
+const selectedJourneyContent: Record<
   string,
   {
     title: string;
-    routeLine: string;
-    description: string;
-    imageSrc: string;
-    imageAlt: string;
+    meta: string;
+    mobileDuration: string;
+    mobileAudience: string;
+    duration: string;
+    fit: string;
+    summary: string;
+    image?: { src: string; alt: string; width: number; height: number };
   }
 > = {
-  "beijing-xian-chengdu-shanghai-private-11-day-tour": {
-    title: "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
-    routeLine: "11 days · Beijing, Xi'an, Chengdu and Shanghai",
-    description:
-      "The Great Wall, Terracotta Warriors, giant pandas and contemporary Shanghai, privately connected across one balanced journey.",
-    imageSrc: "",
-    imageAlt: "",
-  },
   "first-china-beautifully-paced": {
-    title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
-    routeLine: "9 days · Beijing, Xi'an and Shanghai",
-    description:
-      "China's three defining cities, privately arranged with considered pacing and local support throughout.",
-    imageSrc: "/home/featured-journeys/beijing-xian-shanghai.avif",
-    imageAlt: "The Great Wall crossing mountain ridges near Beijing in warm evening light",
+    title: "Beijing, Xi'an & Shanghai",
+    meta: "9 days · Beijing · Xi'an · Shanghai",
+    mobileDuration: "9 days · 8 nights",
+    mobileAudience: "Best for first-time visitors",
+    duration: "9 days",
+    fit: "Ideal for a first visit to China",
+    summary:
+      "The Great Wall, Terracotta Warriors and Shanghai after dark, privately arranged at your pace.",
+    image: {
+      src: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour/photo-41.webp",
+      alt: "Shanghai and the Huangpu River glowing at dusk",
+      width: 1600,
+      height: 900,
+    },
   },
-  "chengdu-pandas-sichuan-table": {
-    title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
-    routeLine: "5 days · Chengdu and Leshan",
-    description:
-      "Pandas, regional cuisine and Chengdu's everyday life, arranged from one carefully chosen base.",
-    imageSrc: "/home/featured-journeys/chengdu-pandas.avif",
-    imageAlt: "Three giant pandas eating bamboo in Chengdu",
-  },
-  "beijing-great-wall-private-5-day-tour": {
-    title: "5-Day Beijing & Great Wall Private Tour",
-    routeLine: "5 days · Beijing",
-    description:
-      "Beijing's imperial landmarks, neighborhoods and cultural traditions, shaped around your interests and preferred pace.",
-    imageSrc: "/home/featured-journeys/beijing-great-wall.avif",
-    imageAlt: "The Great Wall winding through autumn forest near Beijing",
+  "chengdu-pandas-jiuzhaigou-private-7-day-tour": {
+    title: "Chengdu & Jiuzhaigou",
+    meta: "7 days · Chengdu · Jiuzhaigou",
+    mobileDuration: "7 days · 6 nights",
+    mobileAudience: "Best for food, nature & an easier pace",
+    duration: "7 days",
+    fit: "For nature, food and an easier pace",
+    summary: "Meet the pandas, taste Sichuan and slow down among Jiuzhaigou's clear blue lakes.",
+    image: {
+      src: "/home/jiuzhaigou-five-flower-lake.webp",
+      alt: "Clear turquoise water and autumn forest at Five Flower Lake in Jiuzhaigou",
+      width: 1920,
+      height: 1200,
+    },
   },
   "shanghai-zhangjiajie-floating-peaks": {
-    title: "8-Day Shanghai & Zhangjiajie Private Tour",
-    routeLine: "8 days · Shanghai, Wulingyuan and Zhangjiajie",
-    description:
-      "Contemporary Shanghai and remarkable mountain landscapes, connected through seamless private arrangements.",
-    imageSrc: "/home/featured-journeys/shanghai-zhangjiajie.avif",
-    imageAlt: "Sandstone pillars rising through Zhangjiajie National Forest Park",
+    title: "Shanghai & Zhangjiajie",
+    meta: "8 days · Shanghai · Zhangjiajie",
+    mobileDuration: "8 days · 7 nights",
+    mobileAudience: "Best for landscapes & modern China",
+    duration: "8 days",
+    fit: "For striking landscapes and modern China",
+    summary:
+      "Shanghai's energy and Zhangjiajie's sandstone peaks, seamlessly connected in one private journey.",
+    image: {
+      src: "/tours/shanghai-zhangjiajie-floating-peaks/zhangjiajie-sunny-peaks.webp",
+      alt: "Zhangjiajie's sandstone peaks rising through sunlit green forest",
+      width: 1600,
+      height: 800,
+    },
   },
 };
 
-function getFeaturedJourneyEditorial(slug: string, title: string, duration: string, route: string) {
-  const preferredEditorial = featuredJourneyEditorial[slug];
-  if (preferredEditorial) return preferredEditorial;
+const selectedJourneySlugs = [
+  "first-china-beautifully-paced",
+  "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+  "shanghai-zhangjiajie-floating-peaks",
+];
 
-  const simplifiedTitle = title
-    .replace(/^\s*\d+\s*[-–—]?\s*day\s+/i, "")
-    .replace(/\s*[-–—]\s*a\s+private\s+\d+\s*[-–—]?\s*day\s+journey\s*$/i, "")
-    .replace(/\s+(?:private\s+)?(?:tour|journey)\s*$/i, "")
-    .trim();
+const chinaStoryCatalog = [
+  {
+    id: "culture",
+    label: "Culture",
+    title: "Culture Experience",
+    images: cultureStoryImages,
+  },
+  {
+    id: "food",
+    label: "Food",
+    title: "Food Experience",
+    images: foodStoryImages,
+  },
+  {
+    id: "landscapes",
+    label: "Landscapes",
+    title: "Landscape Experience",
+    images: [
+      {
+        src: "/home/story-optimized/landscape-wulingyuan.avif",
+        alt: "Travelers looking across the sandstone pillars of Wulingyuan in Zhangjiajie",
+        width: 1440,
+        height: 1920,
+        caption: "Zhangjiajie · A wide view across Wulingyuan",
+      },
+      {
+        src: "/home/story-optimized/landscape-tianmen-cableway.avif",
+        alt: "Cable cars crossing the green mountain valley below Tianmen Mountain",
+        width: 1440,
+        height: 1920,
+        caption: "Tianmen · Moving gently through the mountains",
+      },
+      {
+        src: "/home/story-optimized/landscape-temple-interior.avif",
+        alt: "The richly painted interior of the Hall of Prayer for Good Harvests in Beijing",
+        width: 1820,
+        height: 2428,
+        caption: "Beijing · Architecture made to be looked up at",
+      },
+      {
+        src: "/home/story-optimized/landscape-temple-morning.avif",
+        alt: "The Temple of Heaven framed by trees and morning light in Beijing",
+        width: 1440,
+        height: 1920,
+        caption: "Beijing · Morning light through the trees",
+      },
+    ],
+  },
+];
 
-  const displayTitle = simplifiedTitle || title;
-  if (displayTitle.length <= 58) {
-    return {
-      title: displayTitle,
-      routeLine: `${duration} · ${route.replaceAll(" · ", ", ")}`,
-      description: "A private China journey arranged around your interests, comfort and pace.",
-      imageSrc: "",
-      imageAlt: "",
-    };
-  }
-
-  const shortenedTitle = displayTitle
-    .slice(0, 58)
-    .replace(/\s+\S*$/, "")
-    .trim();
-  return {
-    title: `${shortenedTitle || displayTitle.slice(0, 58).trim()}…`,
-    routeLine: `${duration} · ${route.replaceAll(" · ", ", ")}`,
-    description: "A private China journey arranged around your interests, comfort and pace.",
-    imageSrc: "",
-    imageAlt: "",
-  };
-}
+const chinaStories = ["food", "landscapes", "culture"].map((id) =>
+  chinaStoryCatalog.find((story) => story.id === id)!,
+);
 
 export const metadata: Metadata = createMetadata({
-  title: "Private China Tours, Tailored by Local Experts",
+  title: "Tailor-Made Private China Tours",
   description:
-    "Plan a private China tour with carefully selected hotels, exceptional local guides, private transfers and licensed local support.",
-  image: heroImage.src,
+    "Plan a private China journey with AVIORA China Travel. Enjoy handpicked 4- and 5-star hotels, private guides, seamless transfers and no forced shopping.",
+  image: siteConfig.ogImage,
+  imageWidth: 1200,
+  imageHeight: 630,
+  imageAlt: "Private travelers exploring the Great Wall with an AVIORA China travel specialist",
 });
 
 export default async function HomePage() {
   const [home, settings] = await Promise.all([getPublicHomePage(), getPublicSiteSettings()]);
-  const featuredJourneys = mergeCoreJourneyFallbacks(home.featuredJourneys)
-    .filter((journey) => journey.hero_image)
+  const allJourneys = mergeCoreJourneyFallbacks(home.featuredJourneys);
+  const journeys = selectedJourneySlugs
+    .map((slug) => allJourneys.find((journey) => journey.slug === slug))
+    .filter((journey) => Boolean(journey?.hero_image))
     .map((journey) => {
-      const editorial = getFeaturedJourneyEditorial(
-        journey.slug,
-        journey.title,
-        journey.duration_label,
-        journey.route,
-      );
-
+      const editorial = selectedJourneyContent[journey!.slug];
+      const cmsImage = journey!.hero_image!;
+      const pricing = journeyCatalog.find((item) => item.slug === journey!.slug)?.pricing;
       return {
-        title: journey.title,
-        displayTitle: editorial.title,
-        navLabel: editorial.title,
-        routeLine: editorial.routeLine,
-        description: editorial.description,
-        image: {
-          src: editorial.imageSrc || journey.hero_image!.url,
-          alt: editorial.imageAlt || journey.hero_image!.alt_text,
-          objectPosition: editorial.imageSrc ? "50% 50%" : journey.hero_image!.object_position,
+        title: editorial.title,
+        meta: editorial.meta,
+        mobileDuration: editorial.mobileDuration,
+        mobileAudience: editorial.mobileAudience,
+        duration: editorial.duration,
+        fit: editorial.fit,
+        summary: editorial.summary,
+        description: editorial.summary,
+        proofs: [
+          "Private guides",
+          "Private car & driver",
+          "Tailored pace",
+          "Local support",
+          "No shopping stops",
+          "Unique experiences",
+        ],
+        price: pricing
+          ? `US$${pricing.fromUsd.toLocaleString("en-US")} per person`
+          : "Price tailored to your trip",
+        priceBasis: pricing
+          ? "Based on four guests sharing two rooms."
+          : "Your quote reflects your dates, hotels and party size.",
+        href: `/tours/${journey!.slug}`,
+        image: editorial.image ?? {
+          src: cmsImage.url,
+          alt: cmsImage.alt_text,
+          width: cmsImage.width ?? 1600,
+          height: cmsImage.height ?? 1000,
         },
-        href: `/tours/${journey.slug}`,
-        duration: journey.duration_label,
-        route: journey.route,
-        bestFor: journey.best_for,
       };
     });
-  const homeNavigation = settings.navigation.filter((item) =>
+  const navigation = settings.navigation.filter((item) =>
     ["Journeys", "Destinations", "About AVIORA", "Journal"].includes(item.label),
   );
 
   return (
-    <PageContainer className={`${mobileStyles.mobileOptimizedPage} pb-20 md:pb-0`}>
-      <JsonLd id="featured-journeys-schema" data={featuredJourneysSchema(featuredJourneys)} />
+    <main className={`${styles.page} home-immersive-page`}>
+      <JsonLd id="featured-journeys-schema" data={featuredJourneysSchema(journeys)} />
       <SiteNavigation
-        items={homeNavigation}
+        items={navigation}
         className="home-navigation-entrance"
         cta={{ label: "Start Planning", href: settings.primaryCtaHref }}
-        whatsapp={{ label: "WhatsApp", href: settings.whatsappHref }}
+        mobileCta={{ label: "Explore Journeys", href: "/tours" }}
+        tone="adaptive"
+        showWhatsapp={false}
+        variant="default"
       />
 
       <HomeHeroMotion
         desktopImage={desktopHeroImage}
         mobileImage={mobileHeroImage}
-        eyebrow="AVIORA · Private China travel"
-        title={home.heroTitle}
-        copy={home.heroCopy}
-        primary={{ label: "Start Planning", href: settings.primaryCtaHref }}
-        secondary={{ label: "Explore journeys", href: "#journeys" }}
-        trustItems={[...home.heroTrustItems, "China-based support"]}
+        eyebrow="AVIORA TRAVEL"
+        title={"China,\nAt Your Own Pace"}
+        copy="Your trip, planned around you by our team here in China."
+        primary={{ label: "Find your ideal journey", href: "/tours" }}
+        trustItems={["Licensed in China", "Private travel", "No shopping"]}
       />
 
-      <HomeMobileTrustSummary />
+      <HomeSoftSnap />
+      <HomeServiceStandard />
 
-      <HomeTrustIntroduction />
+      <HomeStoryExperience stories={chinaStories} />
 
-      {featuredJourneys.length ? <FeaturedJourneyCinema journeys={featuredJourneys} /> : null}
-
-      <HomeExpertConsultation />
-
-      <HomeMobileTrustDetails />
-
-      <Section id="planning-process" spacing="spacious" className="home-planning-process bg-white">
-        <ContentContainer size="xl" className="home-trust-section home-section-safe">
-          <HomeReveal className="home-trust-section__media">
-            <OptimizedImage
-              src={home.tradeImages[0]?.src ?? home.heroImage.src}
-              alt={home.tradeImages[0]?.alt ?? "A personal conversation about private China travel"}
-              fill
-              sizes="(min-width: 1024px) 48vw, 100vw"
-              objectPosition={home.tradeImages[0]?.objectPosition}
-              frameClassName="absolute inset-0 h-full"
-              className="home-trust-section__image h-full w-full"
-            />
-            <p>Real conversations. Local decisions. Clear support.</p>
-          </HomeReveal>
-          <HomeReveal delay={90} className="home-trust-section__copy">
-            <p className="text-xs font-semibold tracking-[0.16em] text-[var(--text-tertiary)] uppercase">
-              From conversation to China
-            </p>
-            <h2 className="mt-5 font-serif text-5xl leading-[0.95] font-medium text-balance md:text-7xl">
-              A considered journey, shaped one decision at a time.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--text-secondary)] md:text-lg">
-              Share the essentials first. We then shape the route, hotel direction and private
-              services before confirming every important detail in writing.
-            </p>
-            <ol className="home-planning-steps" aria-label="How planning works">
-              {home.planningSteps.map((step) => (
-                <li key={step.number}>
-                  <span>{step.number}</span>
-                  <div>
-                    <strong className="block">{step.title}</strong>
-                    <p className="mt-2 max-w-xs text-xs leading-5 text-[var(--text-secondary)]">
-                      {step.description}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <CtaButton href={settings.primaryCtaHref} size="sm" className="mt-8 w-fit">
-              Start Planning
-            </CtaButton>
-          </HomeReveal>
-        </ContentContainer>
-      </Section>
-
-      <section className="home-final-cta">
-        <OptimizedImage
-          src={home.ctaImage.src}
-          alt={home.ctaImage.alt}
-          fill
-          sizes="100vw"
-          objectPosition={home.ctaImage.objectPosition}
-          frameClassName="absolute inset-0 h-full"
-          className="home-final-cta__image h-full w-full"
-        />
-        <div className="home-final-cta__shade" aria-hidden="true" />
-        <ContentContainer
-          size="xl"
-          className="relative z-20 flex min-h-[36rem] items-end py-16 md:py-20"
-        >
-          <HomeReveal className="max-w-3xl text-white">
-            <p className="text-xs font-semibold tracking-[0.16em] text-white/72 uppercase">
-              Start the conversation
-            </p>
-            <h2 className="mt-5 font-serif text-5xl leading-[0.94] font-medium text-balance md:text-7xl">
-              Tell us what your ideal China trip looks like.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/80 md:text-lg">
-              Share your dates, who is traveling and what matters most. A China specialist will
-              recommend the first useful route direction.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-5">
-              <CtaButton href={settings.primaryCtaHref} variant="light" size="md">
-                Request My Trip Plan
-              </CtaButton>
-              <Link
-                href="/journal/china-240-hour-visa-free-transit-guide"
-                className="home-conversion-hero__secondary"
-              >
-                Read the entry-planning guide
-                <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-            </div>
-          </HomeReveal>
-        </ContentContainer>
+      <section
+        id="selected-journeys"
+        className={`${styles.chapter} ${styles.journeys}`}
+        aria-labelledby="selected-journeys-title"
+      >
+        <div className={styles.container}>
+          <HomeSectionReveal className={styles.journeySectionHeading}>
+            <h2 id="selected-journeys-title">See China Your Way.</h2>
+            <Link href="/tours" className={styles.journeyHeadingAction}>
+              Explore all journeys <ArrowUpRight aria-hidden="true" />
+            </Link>
+          </HomeSectionReveal>
+          <HomeSectionReveal className={styles.journeySelectorReveal} delay={80}>
+            <HomeJourneySelector journeys={journeys} whatsappHref={settings.whatsappHref} />
+          </HomeSectionReveal>
+        </div>
       </section>
 
-      <SiteFooter
-        columns={[
-          { title: "Explore", items: homeNavigation },
-          {
-            title: "Planning",
-            items: [
-              { label: "Start Planning", href: settings.primaryCtaHref },
-              { label: "Planning FAQ", href: "/planning/faq" },
-              { label: "Visa notes", href: "/planning/visa" },
-            ],
-          },
-          {
-            title: "Company",
-            items: [
-              { label: "About AVIORA", href: "/about" },
-              { label: "Privacy", href: "/privacy" },
-              { label: "Terms", href: "/terms" },
-            ],
-          },
-        ]}
-        social={[]}
-      />
-    </PageContainer>
+      <HomePhilosophy />
+
+      <HomeExpertConsultation whatsappHref={settings.whatsappHref} />
+
+      <footer className={styles.footer}>
+        <div className={styles.footerGrid}>
+          <div className={styles.footerBrand}>
+            <Link href="/" className="brand-wordmark">
+              AVIORA
+            </Link>
+            <p>
+              Private China journeys planned and operated locally, with clear support from arrival
+              to departure.
+            </p>
+            <a href={`mailto:${settings.email}`}>{settings.email}</a>
+          </div>
+          <div className={styles.footerNavigation}>
+            <div>
+              <p>Explore</p>
+              {navigation.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <p>Planning</p>
+              <Link href={settings.primaryCtaHref}>Start planning</Link>
+              <Link href="/faq">Travel FAQ</Link>
+              <Link href="/journal/china-240-hour-visa-free-transit-guide">Visa guide</Link>
+            </div>
+            <div>
+              <p>Company</p>
+              <Link href="/about">About AVIORA</Link>
+              <Link href="/privacy">Privacy</Link>
+              <Link href="/cookies">Cookie Policy</Link>
+              <CookiePreferencesButton className={styles.footerCookiePreferences} />
+              <Link href="/terms">Terms</Link>
+            </div>
+          </div>
+        </div>
+        <div className={styles.footerLegal}>
+          <p>
+            © {new Date().getFullYear()} AVIORA · Operated in China by{" "}
+            {siteConfig.operator.englishReferenceName}
+          </p>
+        </div>
+      </footer>
+    </main>
   );
 }
 
@@ -301,19 +303,14 @@ function featuredJourneysSchema(
     description: string;
     href: string;
     image: { src: string };
-    duration: string;
-    route: string;
-    bestFor: string;
+    meta: string;
   }>,
 ) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Featured private China tours",
-    description:
-      "Featured private China journeys designed by AVIORA and delivered by a licensed inbound tourism operator.",
+    name: "Selected private China journeys",
     numberOfItems: journeys.length,
-    itemListOrder: "https://schema.org/ItemListOrderAscending",
     itemListElement: journeys.map((journey, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -323,14 +320,11 @@ function featuredJourneysSchema(
         description: journey.description,
         url: new URL(journey.href, siteConfig.url).toString(),
         image: new URL(journey.image.src, siteConfig.url).toString(),
-        duration: journey.duration,
-        touristType: journey.bestFor,
-        itinerary: journey.route,
+        itinerary: journey.meta,
         provider: {
           "@type": "TravelAgency",
           name: siteConfig.name,
           url: siteConfig.url,
-          email: siteConfig.email,
         },
       },
     })),

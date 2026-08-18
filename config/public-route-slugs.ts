@@ -9,6 +9,12 @@ export const publicRouteSlugs = {
     "shanghai-zhangjiajie-floating-peaks",
     "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
   ],
+  tourDiscovery: [
+    "muslim-friendly-china",
+    "family-china-tours",
+    "china-tours-for-women",
+    "easy-paced-china",
+  ],
   destinations: [
     "beijing",
     "xian",
@@ -20,6 +26,9 @@ export const publicRouteSlugs = {
     "zhangjiajie",
   ],
   journal: [
+    "terracotta-warriors-day-trip-from-beijing",
+    "mutianyu-great-wall-walking-cable-car",
+    "tianmen-mountain-vs-zhangjiajie-national-forest-park",
     "chengdu-to-jiuzhaigou-transport",
     "jiuzhaigou-altitude-walking-accessibility",
     "how-difficult-is-zhangjiajie",
@@ -87,7 +96,14 @@ for (const [kind, slugs] of Object.entries(publicRouteSlugs) as [
 }
 
 export function isKnownPublicDetailPath(pathname: string) {
+  const discoveryPrefix = "/tours/discover/";
+  if (pathname.startsWith(discoveryPrefix)) {
+    const slug = pathname.slice(discoveryPrefix.length);
+    return !slug.includes("/") && publicSlugSets.tourDiscovery.has(slug);
+  }
+
   for (const [kind, slugs] of Object.entries(publicRouteSlugs)) {
+    if (kind === "tourDiscovery") continue;
     const prefix = `/${kind}/`;
     if (!pathname.startsWith(prefix)) continue;
 

@@ -14,8 +14,8 @@
   }
 
   .summary {
-    background: #f5f4ef;
-    color: #1d1f1c;
+    background: #f4f6f5;
+    color: #192421;
     padding: 4.5rem 20px 4rem;
   }
 
@@ -56,7 +56,7 @@
   }
 
   .summary li span {
-    color: #9a6a50;
+    color: #53666c;
     font-size: 0.58rem;
     font-weight: 750;
     letter-spacing: 0.1em;
@@ -85,8 +85,8 @@
   }
 
   .details {
-    background: #f9f8f4;
-    color: #1d1f1c;
+    background: #ffffff;
+    color: #192421;
     padding: 4.75rem 20px;
   }
 
@@ -148,7 +148,7 @@
   }
 
   .assurances summary > span {
-    color: #9a6a50;
+    color: #53666c;
     font-size: 0.58rem;
     font-weight: 750;
   }
@@ -193,7 +193,7 @@
   }
 
   .pressNote {
-    background: #e8ede8;
+    background: #e8edeb;
     margin: 4.25rem -20px -4.75rem;
     padding: 3.75rem 20px 4.25rem;
   }
@@ -207,8 +207,8 @@
   }
 
   .mobileOptimizedPage :global(.home-featured-cinema) {
-    background: #f9f8f4;
-    color: #1d1f1c;
+    background: #ffffff;
+    color: #192421;
     height: auto;
     min-height: 0;
   }
@@ -246,7 +246,7 @@
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__media) {
-    background: #e8ebe5;
+    background: #e8edeb;
     display: block;
     overflow: hidden;
     position: relative;
@@ -274,7 +274,7 @@
     background: rgba(249, 248, 244, 0.94);
     border-radius: 999px 0 0 999px;
     bottom: 0;
-    color: #1d1f1c;
+    color: #192421;
     display: inline-flex;
     font-size: 0.66rem;
     font-weight: 750;
@@ -299,7 +299,7 @@
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__copy h2) {
-    color: #1d1f1c;
+    color: #192421;
     font-family: var(--font-cormorant);
     font-size: clamp(2.05rem, 9.5vw, 2.65rem);
     font-weight: 500;

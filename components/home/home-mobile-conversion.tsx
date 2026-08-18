@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
+import { OptimizedImage } from "@/components/media/optimized-image";
 import styles from "./home-mobile-conversion.module.css";
 
 const trustPoints = [
@@ -62,14 +62,13 @@ export function HomeMobileTrustDetails() {
       aria-labelledby="mobile-trust-details-title"
     >
       <div className={styles.teamStory}>
-        <Image
+        <OptimizedImage
           src="/home/editorial/travel-trade-booth-singapore.webp"
           alt="The AVIORA China operating team at its IC&GTE travel trade booth in Singapore"
           width={1080}
           height={810}
           sizes="100vw"
           className={styles.teamImage}
-          unoptimized
         />
         <p>Real people · Local accountability</p>
         <h2 id="mobile-trust-details-title">The people behind your journey.</h2>

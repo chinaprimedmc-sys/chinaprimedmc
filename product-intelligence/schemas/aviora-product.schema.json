@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AVIORA proposed product",
+  "type": "object",
+  "required": [
+    "id",
+    "productName",
+    "positioning",
+    "targetCustomer",
+    "durationDays",
+    "destinations",
+    "signatureExperiences",
+    "itinerary",
+    "commercial",
+    "seo",
+    "scoreInputs",
+    "status"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "productName": { "type": "string" },
+    "positioning": { "type": "string" },
+    "targetCustomer": { "type": "object" },
+    "durationDays": { "type": "integer", "minimum": 3 },
+    "destinations": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "signatureExperiences": { "type": "array", "minItems": 3, "items": { "type": "string" } },
+    "itinerary": { "type": "array", "minItems": 3 },
+    "commercial": { "type": "object" },
+    "seo": { "type": "object" },
+    "scoreInputs": { "type": "object" },
+    "status": { "enum": ["priority", "concept", "research", "hold"] }
+  }
+}

@@ -49,7 +49,10 @@ export default function TermsPage() {
         <p>A booking becomes binding only when all of the following have occurred:</p>
         <LegalList>
           <li>we issue a written proposal, quotation, invoice, or booking confirmation;</li>
-          <li>the lead traveler or authorized booking party accepts the stated terms;</li>
+          <li>
+            the lead traveler or authorized booking party signs or otherwise formally accepts the
+            written travel contract and stated booking terms;
+          </li>
           <li>the required initial payment is received in cleared funds; and</li>
           <li>we confirm acceptance and the relevant supplier arrangements in writing.</li>
         </LegalList>

@@ -219,11 +219,10 @@ export const firstChinaAsset = {
 
 export const beijingUnhurriedAsset = {
   hero: beijingUnhurriedImage(
-    "hero.webp",
-    "The Mutianyu section of the Great Wall winding through Beijing's autumn mountains",
-    1600,
+    "great-wall-walk.webp",
+    "A cable car passing the Mutianyu Great Wall across Beijing's mountain landscape",
     2400,
-    "50% 52%",
+    1641,
   ),
   privateService: beijingUnhurriedImage(
     "private-service.webp",
@@ -319,106 +318,106 @@ export const beijingUnhurriedAsset = {
 
 export const chengduAsset = {
   heroPanda: chengduImage(
-    "chengdu-hero-panda.png",
+    "chengdu-hero-panda.webp",
     "A giant panda resting among bamboo near Chengdu",
     6016,
     4016,
   ),
   heroCity: chengduImage(
-    "chengdu-hero-city.png",
+    "chengdu-hero-city.webp",
     "A quiet cultural landscape near Chengdu",
     4256,
     2832,
   ),
   pandaMorning: chengduImage(
-    "day-panda-01.png",
+    "day-panda-01.webp",
     "Giant pandas during a quiet morning visit near Chengdu",
     3024,
     4032,
   ),
   pandaDetail: chengduImage(
-    "day-panda-02.png",
+    "day-panda-02.webp",
     "A close view of a giant panda in Chengdu",
     3024,
     4032,
   ),
-  tea: chengduImage("day-tea.png", "Tea being served in Chengdu's People's Park", 1920, 2560),
-  food: chengduImage("day-food.png", "A local food moment with a Chengdu guide", 3024, 4032),
-  leshan: chengduImage("day-leshan.png", "The Leshan Giant Buddha beside the river", 3024, 4032),
+  tea: chengduImage("day-tea.webp", "Tea being served in Chengdu's People's Park", 1920, 2560),
+  food: chengduImage("day-food.webp", "A local food moment with a Chengdu guide", 3024, 4032),
+  leshan: chengduImage("day-leshan.webp", "The Leshan Giant Buddha beside the river", 3024, 4032),
   rail: chengduImage(
-    "day-rail.png",
+    "day-rail.webp",
     "China's high-speed rail ready for an onward journey",
     1536,
     1024,
   ),
   guide: chengduImage(
-    "guide.png",
+    "guide.webp",
     "An English-speaking guide during a Chengdu journey",
     2316,
     3088,
   ),
   spice: chengduImage(
-    "detail-spice.png",
+    "detail-spice.webp",
     "Sichuan pepper and spices for a Chengdu meal",
     1661,
     2560,
   ),
   car: chengduImage(
-    "detail-car.png",
+    "detail-car.webp",
     "A comfortable private vehicle for Chengdu travel",
     3024,
     4032,
   ),
   carInterior: chengduImage(
-    "detail-car-02.png",
+    "detail-car-02.webp",
     "The interior of a comfortable private vehicle for Chengdu travel",
     3024,
     4032,
   ),
   teaDetail: chengduImage(
-    "detail-tea.png",
+    "detail-tea.webp",
     "A traditional covered tea bowl in Chengdu",
     3024,
     4032,
   ),
   routeLeshan: chengduImage(
-    "route-leshan.png",
+    "route-leshan.webp",
     "The Leshan Giant Buddha viewed from below",
     1080,
     1440,
   ),
   cityGalleryOne: chengduImage(
-    "gallery-city-01.png",
+    "gallery-city-01.webp",
     "An atmospheric evening scene during a Chengdu journey",
     2815,
     3755,
   ),
   cityGalleryTwo: chengduImage(
-    "gallery-city-02.png",
+    "gallery-city-02.webp",
     "A local cultural scene in Chengdu",
     3024,
     4032,
   ),
   cityGalleryThree: chengduImage(
-    "gallery-city-03.png",
+    "gallery-city-03.webp",
     "A quiet Chengdu scene after dark",
     3024,
     4032,
   ),
   teaGalleryOne: chengduImage(
-    "gallery-tea-01.png",
+    "gallery-tea-01.webp",
     "A covered tea bowl in Chengdu's People's Park",
     1920,
     2560,
   ),
   teaGalleryTwo: chengduImage(
-    "gallery-tea-02.png",
+    "gallery-tea-02.webp",
     "Tea house life in Chengdu's People's Park",
     1920,
     2560,
   ),
   teaGalleryThree: chengduImage(
-    "gallery-tea-03.png",
+    "gallery-tea-03.webp",
     "A relaxed tea house moment in Chengdu",
     1920,
     2560,
@@ -426,12 +425,12 @@ export const chengduAsset = {
 } satisfies Record<string, MediaAsset>;
 
 export const shanghaiZhangjiajieAsset = {
-  hero: shanghaiZhangjiajieImage(
-    "hero-floating-peaks.webp",
-    "Quartz-sandstone pillars rising above the forest in Zhangjiajie",
-    1280,
-    1920,
-  ),
+  hero: {
+    src: "/tours/shanghai-zhangjiajie-floating-peaks/zhangjiajie-sunny-peaks.webp",
+    alt: "Sunlit sandstone peaks and forested valleys in Zhangjiajie",
+    width: 1600,
+    height: 800,
+  },
   shanghaiDusk: shanghaiZhangjiajieImage(
     "shanghai-skyline-dusk.webp",
     "Shanghai's Pudong skyline glowing beside the Huangpu River at dusk",

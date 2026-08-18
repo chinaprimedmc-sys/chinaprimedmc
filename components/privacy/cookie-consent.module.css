@@ -1,0 +1,421 @@
+.banner {
+  align-items: center;
+  -webkit-backdrop-filter: blur(28px) saturate(145%);
+  backdrop-filter: blur(28px) saturate(145%);
+  background: rgba(247, 249, 248, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.94);
+  border-radius: 8px;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    0 22px 70px rgba(18, 31, 26, 0.18);
+  color: #17211d;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  left: 50%;
+  padding: 1rem;
+  position: fixed;
+  transform: translateX(-50%);
+  width: min(72rem, calc(100vw - 2rem));
+  z-index: 120;
+}
+
+.bannerIcon,
+.dialogIcon {
+  align-items: center;
+  background: rgba(48, 72, 61, 0.1);
+  border: 1px solid rgba(48, 72, 61, 0.16);
+  border-radius: 50%;
+  color: #30483d;
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.bannerIcon svg,
+.dialogIcon svg {
+  height: 1.15rem;
+  width: 1.15rem;
+}
+
+.bannerCopy {
+  min-width: 0;
+}
+
+.eyebrow {
+  color: #66736c;
+  font-size: 0.66rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.bannerCopy h2,
+.dialogTitleGroup h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0.2rem 0 0;
+}
+
+.bannerCopy > p:last-child,
+.description {
+  color: #5d6963;
+  font-size: 0.76rem;
+  line-height: 1.55;
+  margin: 0.35rem 0 0;
+  max-width: 44rem;
+}
+
+.bannerCopy a,
+.dialogFooter > a {
+  color: #243d32;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.bannerActions,
+.dialogActions {
+  align-items: center;
+  display: flex;
+  gap: 0.55rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.preferencesButton {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 650;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.9rem;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+  white-space: nowrap;
+}
+
+.primaryButton {
+  background: #20372d;
+  border: 1px solid #20372d;
+  color: #fff;
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(32, 55, 45, 0.28);
+  color: #20372d;
+}
+
+.preferencesButton {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #4e5e56;
+  gap: 0.4rem;
+}
+
+.preferencesButton svg {
+  height: 0.9rem;
+  width: 0.9rem;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.preferencesButton:hover {
+  transform: translateY(-1px);
+}
+
+.primaryButton:hover {
+  background: #2b493b;
+  box-shadow: 0 8px 22px rgba(32, 55, 45, 0.2);
+}
+
+.secondaryButton:hover {
+  background: #fff;
+  border-color: rgba(32, 55, 45, 0.46);
+}
+
+.preferencesButton:hover {
+  color: #20372d;
+}
+
+.overlay {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background: rgba(13, 24, 19, 0.28);
+  inset: 0;
+  position: fixed;
+  z-index: 130;
+}
+
+.dialog {
+  -webkit-backdrop-filter: blur(32px) saturate(150%);
+  backdrop-filter: blur(32px) saturate(150%);
+  background: rgba(248, 250, 249, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 28px 90px rgba(12, 25, 19, 0.24);
+  color: #17211d;
+  left: 50%;
+  max-height: min(85svh, 44rem);
+  overflow-y: auto;
+  padding: 1.25rem;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(38rem, calc(100vw - 2rem));
+  z-index: 131;
+}
+
+.dialogHeader,
+.dialogTitleGroup,
+.dialogFooter {
+  align-items: center;
+  display: flex;
+}
+
+.dialogHeader,
+.dialogFooter {
+  justify-content: space-between;
+}
+
+.dialogTitleGroup {
+  gap: 0.8rem;
+}
+
+.dialogTitleGroup h2 {
+  font-size: 1.2rem;
+}
+
+.closeButton {
+  align-items: center;
+  border: 1px solid rgba(32, 55, 45, 0.16);
+  border-radius: 50%;
+  color: #4f5d56;
+  display: inline-flex;
+  height: 2.5rem;
+  justify-content: center;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+  width: 2.5rem;
+}
+
+.closeButton:hover {
+  background: rgba(32, 55, 45, 0.08);
+  transform: rotate(4deg);
+}
+
+.closeButton svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.description {
+  margin-top: 1rem;
+}
+
+.categories {
+  border-bottom: 1px solid rgba(32, 55, 45, 0.12);
+  border-top: 1px solid rgba(32, 55, 45, 0.12);
+  margin-top: 1.15rem;
+}
+
+.categoryRow {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 1rem 0;
+}
+
+.categoryRow + .categoryRow {
+  border-top: 1px solid rgba(32, 55, 45, 0.1);
+}
+
+.categoryTitle {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.categoryTitle svg {
+  color: #3d5b4e;
+  height: 0.95rem;
+  width: 0.95rem;
+}
+
+.categoryTitle strong {
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.categoryRow p {
+  color: #66736c;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  margin: 0.3rem 0 0;
+  max-width: 28rem;
+}
+
+.alwaysOn {
+  align-items: center;
+  color: #365747;
+  display: inline-flex;
+  font-size: 0.68rem;
+  font-weight: 650;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.alwaysOn svg {
+  height: 0.8rem;
+  width: 0.8rem;
+}
+
+.switch {
+  background: #ccd4d0;
+  border: 1px solid rgba(32, 55, 45, 0.18);
+  border-radius: 999px;
+  height: 1.7rem;
+  padding: 0.15rem;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
+  width: 3rem;
+}
+
+.switch span {
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 7px rgba(25, 43, 35, 0.22);
+  display: block;
+  height: 1.3rem;
+  transform: translateX(0);
+  transition: transform 200ms ease;
+  width: 1.3rem;
+}
+
+.switch[data-checked="true"] {
+  background: #30483d;
+  border-color: #30483d;
+}
+
+.switch[data-checked="true"] span {
+  transform: translateX(1.25rem);
+}
+
+.dialogFooter {
+  gap: 1rem;
+  margin-top: 1.15rem;
+}
+
+.dialogFooter > a {
+  font-size: 0.7rem;
+}
+
+@media (max-width: 900px) {
+  .banner {
+    align-items: start;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .bannerActions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 640px) {
+  .banner {
+    bottom: max(0.65rem, env(safe-area-inset-bottom));
+    gap: 0.75rem;
+    padding: 0.9rem;
+    width: calc(100vw - 1rem);
+  }
+
+  .bannerIcon {
+    height: 2.35rem;
+    width: 2.35rem;
+  }
+
+  .bannerCopy h2 {
+    font-size: 0.94rem;
+  }
+
+  .bannerCopy > p:last-child,
+  .description {
+    font-size: 0.7rem;
+  }
+
+  .bannerActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .preferencesButton {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .primaryButton,
+  .secondaryButton,
+  .preferencesButton {
+    min-height: 2.65rem;
+    width: 100%;
+  }
+
+  .dialog {
+    bottom: max(0.5rem, env(safe-area-inset-bottom));
+    max-height: calc(100svh - 1rem);
+    padding: 1rem;
+    top: auto;
+    transform: translateX(-50%);
+    width: calc(100vw - 1rem);
+  }
+
+  .dialogTitleGroup {
+    gap: 0.65rem;
+  }
+
+  .dialogIcon {
+    height: 2.35rem;
+    width: 2.35rem;
+  }
+
+  .categoryRow {
+    align-items: start;
+  }
+
+  .dialogFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dialogActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton,
+  .preferencesButton,
+  .closeButton,
+  .switch,
+  .switch span {
+    transition: none;
+  }
+}

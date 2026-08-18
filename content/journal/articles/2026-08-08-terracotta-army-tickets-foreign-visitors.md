@@ -24,7 +24,7 @@ suggested_internal_links:
     "/destinations",
     "/tours/first-china-beautifully-paced",
     "/journal/china-high-speed-train-foreigners",
-    "/planning/faq",
+    "/faq",
     "/start-planning",
   ]
 sources_verified_at: "2026-08-08"

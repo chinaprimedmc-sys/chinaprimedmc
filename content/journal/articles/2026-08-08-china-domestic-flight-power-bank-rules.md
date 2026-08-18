@@ -21,8 +21,8 @@ secondary_keywords:
 search_intent: "Determine whether a power bank can pass security for a domestic flight in China and pack it in the correct baggage."
 suggested_internal_links:
   [
-    "/planning/faq",
-    "/planning",
+    "/faq",
+    "/start-planning",
     "/destinations",
     "/tours/shanghai-zhangjiajie-floating-peaks",
     "/start-planning",
@@ -122,7 +122,7 @@ List every air segment, including domestic connections issued on the same ticket
 
 If the device is non-compliant, the simplest solution is often to travel without it or obtain a compliant product from a reputable authorized seller, keeping the product information and receipt. AVIORA does not select or certify electronics, and airport security retains the final decision.
 
-Power-bank compliance also supports the wider phone plan. Keep maps, driver contacts and hotel addresses offline, and review the [planning FAQ](/planning/faq) for connectivity and arrival preparation. A battery is useful, but it should not be the single point of failure for meeting a guide or driver.
+Power-bank compliance also supports the wider phone plan. Keep maps, driver contacts and hotel addresses offline, and review the [planning FAQ](/faq) for connectivity and arrival preparation. A battery is useful, but it should not be the single point of failure for meeting a guide or driver.
 
 ## Airport-day checklist
 

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">AVIORA stacked social wordmark</title>
+  <desc id="desc">A black and white editorial wordmark arranged as AVI over ORA for social media.</desc>
+  <rect width="1024" height="1024" fill="#FFFFFF"/>
+  <g
+    fill="#000000"
+    font-family="New York, Baskerville, Palatino, Times New Roman, serif"
+    font-size="320"
+    font-weight="400"
+    text-anchor="middle"
+    style="font-kerning: normal; font-feature-settings: 'kern' 1;"
+  >
+    <text x="512" y="474" letter-spacing="12">AVI</text>
+    <text x="512" y="765" letter-spacing="-3">ORA</text>
+  </g>
+</svg>

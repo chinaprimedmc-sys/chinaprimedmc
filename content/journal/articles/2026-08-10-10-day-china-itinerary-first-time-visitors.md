@@ -243,7 +243,7 @@ Yes, but reduce long walking blocks, choose hotels and vehicles carefully, prote
 
 ## Suggested structured data
 
-- **Article schema:** Use the ten-day search-intent title, approved image and AVIORA Travel Team authorship.
+- **Article schema:** Use the ten-day search-intent title, approved image and AVIORA China Travel Team authorship.
 - **FAQPage schema:** Use the five visible planning questions.
 
 ## Conversion CTA

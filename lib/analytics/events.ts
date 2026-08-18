@@ -2,9 +2,12 @@
 
 import { track } from "@vercel/analytics";
 
+import { hasAnalyticsConsent } from "@/lib/privacy/cookie-consent";
+
 type AnalyticsValue = string | number | boolean | null;
 
 export function trackEvent(name: string, properties?: Record<string, AnalyticsValue>) {
+  if (!hasAnalyticsConsent()) return;
   track(name, properties);
 }
 

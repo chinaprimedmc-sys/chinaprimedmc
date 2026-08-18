@@ -2,11 +2,11 @@
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRef, type ReactNode } from "react";
 
 import { ContentContainer } from "@/components/layout/content-container";
+import { OptimizedImage } from "@/components/media/optimized-image";
 
 import styles from "./home-trust-introduction.module.css";
 
@@ -106,7 +106,7 @@ function EditorialImage({
   return (
     <figure className={styles.imageFigure}>
       <div className={styles.imageSurface}>
-        <Image
+        <OptimizedImage
           src={image.src}
           alt={image.alt}
           width={image.width}
@@ -114,7 +114,6 @@ function EditorialImage({
           sizes="(min-width: 1024px) 55vw, 100vw"
           className={styles.editorialImage}
           priority={priority}
-          unoptimized
         />
         <span className={styles.imageLine} aria-hidden="true" />
       </div>
@@ -148,7 +147,6 @@ export function HomeTrustIntroduction() {
 
           <Reveal className={styles.peoplePhoto} delay={0.1}>
             <EditorialImage
-              priority
               image={{
                 src: "/home/editorial/travel-trade-booth-singapore.webp",
                 alt: "The AVIORA China operating team at its IC&GTE travel trade booth in Singapore",

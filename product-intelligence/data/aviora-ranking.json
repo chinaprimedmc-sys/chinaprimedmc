@@ -1,0 +1,1517 @@
+[
+  {
+    "id": "aviora-family-first-china",
+    "productName": "China, Made for Families",
+    "positioning": "A private first-China journey designed around children's curiosity, parents' comfort and enough space for the whole family to enjoy it.",
+    "portfolioRoles": ["Hero", "High-conversion", "High-margin"],
+    "targetCustomer": {
+      "age": "Parents 35-55; children 6-17; multigenerational option",
+      "markets": ["US", "Canada", "UK", "Australia", "Singapore"],
+      "travelMotivation": ["Family connection", "Education", "Pandas", "Culture"],
+      "budget": "Premium private",
+      "travelParty": ["Families", "Multigenerational families"],
+      "painPoints": [
+        "Museum fatigue",
+        "Food anxiety",
+        "Too many transfers",
+        "Different walking abilities",
+        "Needs adjoining-room and child-seat planning"
+      ]
+    },
+    "durationDays": 12,
+    "destinations": ["Beijing", "Xi'an", "Chengdu", "Shanghai"],
+    "signatureExperiences": [
+      "Great Wall morning with route choice by child age, followed by a family picnic or local lunch.",
+      "Hands-on imperial-history activity in Beijing rather than a full day of passive sightseeing.",
+      "Terracotta Warriors visit framed as an archaeology story with a maker or restoration-inspired workshop.",
+      "Early panda morning in Chengdu with a flexible afternoon and family-friendly Sichuan tasting.",
+      "Shanghai neighborhood and skyline finale balancing contemporary China with easy family pacing."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Beijing",
+        "title": "Family arrival",
+        "experience": "Private transfer with child-seat and room-plan checks completed before arrival."
+      },
+      {
+        "day": 2,
+        "destination": "Beijing",
+        "title": "Imperial Beijing, made understandable",
+        "experience": "Shorter Forbidden City route, interactive storytelling and a calm afternoon."
+      },
+      {
+        "day": 3,
+        "destination": "Beijing",
+        "title": "A Great Wall family day",
+        "experience": "Quieter section, age-appropriate walking and a memorable private lunch."
+      },
+      {
+        "day": 4,
+        "destination": "Beijing",
+        "title": "Hutongs and hands-on culture",
+        "experience": "Neighborhood life plus a selected craft, food or movement activity."
+      },
+      {
+        "day": 5,
+        "destination": "Xi'an",
+        "title": "First-class rail to Xi'an",
+        "experience": "Managed station support, comfortable rail and an easy city-wall evening."
+      },
+      {
+        "day": 6,
+        "destination": "Xi'an",
+        "title": "The Terracotta story",
+        "experience": "Focused museum visit and a participatory archaeology or clay experience."
+      },
+      {
+        "day": 7,
+        "destination": "Chengdu",
+        "title": "Travel to Chengdu",
+        "experience": "Private transfer, family room check and relaxed tea-house orientation."
+      },
+      {
+        "day": 8,
+        "destination": "Chengdu",
+        "title": "Panda morning",
+        "experience": "Early visit before a rest block and child-friendly food exploration."
+      },
+      {
+        "day": 9,
+        "destination": "Chengdu",
+        "title": "Choose your family day",
+        "experience": "Cooking, Leshan, archaeology, park life or a slower hotel day."
+      },
+      {
+        "day": 10,
+        "destination": "Shanghai",
+        "title": "Fly to Shanghai",
+        "experience": "Private transfers and an optional easy riverfront evening."
+      },
+      {
+        "day": 11,
+        "destination": "Shanghai",
+        "title": "Old lanes, new skyline",
+        "experience": "Neighborhood exploration, design or food and a skyline moment timed to energy."
+      },
+      {
+        "day": 12,
+        "destination": "Shanghai",
+        "title": "Departure",
+        "experience": "Private airport transfer with luggage and flight-time support."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$2,700-4,300 per person based on a family of four, excluding international flights.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$4,800-7,500 per adult-equivalent traveler.",
+      "grossMarginTarget": "ESTIMATE: 34-40% blended gross margin",
+      "premiumUpgrades": [
+        "Connecting rooms or suites",
+        "First-class rail",
+        "Private family photographer",
+        "Premium airport assistance",
+        "Specialist child-friendly guides"
+      ],
+      "optionalExperiences": [
+        "Great Wall picnic",
+        "Dumpling workshop",
+        "Panda conservation talk subject to availability",
+        "Shanghai acrobatics"
+      ]
+    },
+    "differentiation": [
+      "Age-banded pacing and activity design rather than adding children to an adult itinerary.",
+      "Operational family details are visible: room configuration, child seats, rest blocks and food comfort.",
+      "A real in-China team can change plans when children tire, weather changes or meals do not work."
+    ],
+    "seo": {
+      "primaryKeyword": "private China family tour",
+      "secondaryKeywords": [
+        "luxury China family vacation",
+        "China tour with kids",
+        "China family itinerary",
+        "China panda family tour"
+      ],
+      "seoTitle": "12-Day Private China Family Tour with Pandas",
+      "metaDescription": "A private 12-day China family journey through Beijing, Xi'an, Chengdu and Shanghai with pandas, child-aware pacing and expert local support.",
+      "h1": "12-Day Private China Family Journey",
+      "urlSlug": "private-china-family-tour",
+      "supportingBlogTopics": [
+        "China with children by age",
+        "Family rooms in China",
+        "What children can eat in China",
+        "Best panda experiences for families"
+      ],
+      "internalLinks": [
+        "/family-travel",
+        "/destinations/beijing",
+        "/destinations/chengdu",
+        "/start-planning"
+      ]
+    },
+    "scoreInputs": {
+      "searchDemand": 88,
+      "competitiveValidation": 92,
+      "productAppeal": 97,
+      "conversionPotential": 96,
+      "differentiationOpportunity": 89,
+      "commercialValue": 94
+    },
+    "status": "priority",
+    "priority": 2,
+    "mainRisk": "The product needs dependable family rooms, strong child-friendly guides and clear age-based alternatives.",
+    "opportunityScore": 92.5,
+    "rank": 1
+  },
+  {
+    "id": "aviora-chengdu-chongqing-zhangjiajie",
+    "productName": "China in Motion: Chengdu, Chongqing & Zhangjiajie",
+    "positioning": "Pandas, Sichuan flavor, Chongqing's vertical cityscape and Zhangjiajie's floating peaks in one visually powerful private journey.",
+    "portfolioRoles": ["Hero", "High-conversion", "High-margin", "SEO"],
+    "targetCustomer": {
+      "age": "35-65",
+      "markets": ["US", "Canada", "UK", "Australia", "Singapore", "Malaysia"],
+      "travelMotivation": ["Contemporary China", "Nature", "Photography", "Food"],
+      "budget": "Premium private",
+      "travelParty": ["Couples", "Families with older children", "Small private groups"],
+      "painPoints": [
+        "Does not understand China's geography",
+        "Wants icons without a generic classic tour",
+        "Needs complex rail and park logistics handled"
+      ]
+    },
+    "durationDays": 10,
+    "destinations": ["Chengdu", "Chongqing", "Zhangjiajie"],
+    "signatureExperiences": [
+      "Early private-guided panda visit planned before peak visitor flow, followed by a quiet Sichuan breakfast.",
+      "Chef- or food-expert-led Chengdu tasting route adapted to spice tolerance and dietary needs.",
+      "Chongqing blue-hour photography route through vertical neighborhoods, river crossings and skyline viewpoints.",
+      "Crowd-aware Zhangjiajie peak day with a private guide, weather fallback and walking level selected in advance.",
+      "A slower Tianmen Mountain or canyon day with premium transfers and no forced shopping."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Chengdu",
+        "title": "Arrival and a soft landing",
+        "experience": "Private airport transfer, hotel settling and an optional neighborhood walk."
+      },
+      {
+        "day": 2,
+        "destination": "Chengdu",
+        "title": "Pandas at the right hour",
+        "experience": "Early panda visit, relaxed lunch and afternoon rest or park tea."
+      },
+      {
+        "day": 3,
+        "destination": "Chengdu",
+        "title": "The Sichuan table",
+        "experience": "Market context, hands-on or expert-led food experience and a considered evening tasting route."
+      },
+      {
+        "day": 4,
+        "destination": "Chongqing",
+        "title": "High-speed rail into the mountain city",
+        "experience": "First-class rail option, private transfer and sunset orientation above the rivers."
+      },
+      {
+        "day": 5,
+        "destination": "Chongqing",
+        "title": "Vertical living",
+        "experience": "Hillside neighborhoods, layered transport, historic lanes and a private food-focused evening."
+      },
+      {
+        "day": 6,
+        "destination": "Chongqing",
+        "title": "Beyond the skyline",
+        "experience": "Choose Dazu Rock Carvings, wartime history or a slower architecture and tea day."
+      },
+      {
+        "day": 7,
+        "destination": "Zhangjiajie",
+        "title": "Into Hunan",
+        "experience": "Managed rail or flight connection, premium transfer and an early night near the park."
+      },
+      {
+        "day": 8,
+        "destination": "Zhangjiajie",
+        "title": "Floating peaks",
+        "experience": "Private crowd-aware national park day with cableways and walking calibrated to ability."
+      },
+      {
+        "day": 9,
+        "destination": "Zhangjiajie",
+        "title": "Tianmen Mountain, your way",
+        "experience": "Scenic mountain day with a lower-intensity alternative and weather contingency."
+      },
+      {
+        "day": 10,
+        "destination": "Zhangjiajie",
+        "title": "Departure",
+        "experience": "Private transfer and onward connection, with Shanghai extension offered when useful."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$2,050-3,200 per person for two travelers, excluding international flights.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$3,900-6,200 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 35-42% blended gross margin",
+      "premiumUpgrades": [
+        "Upper House Chengdu or equivalent",
+        "Regent Chongqing or equivalent",
+        "Premium park-view stay",
+        "First-class rail",
+        "Private photographer"
+      ],
+      "optionalExperiences": [
+        "Dazu Rock Carvings",
+        "Sichuan cooking studio",
+        "Private night photography",
+        "Shanghai extension"
+      ]
+    },
+    "differentiation": [
+      "A tighter, more private and more visually coherent version of a category now appearing across multiple competitors.",
+      "Explicit crowd, weather and mobility planning for Zhangjiajie rather than a generic attraction list.",
+      "Contemporary city storytelling and food depth led by local operation, not only landmark transport."
+    ],
+    "seo": {
+      "primaryKeyword": "Chengdu Chongqing Zhangjiajie tour",
+      "secondaryKeywords": [
+        "private Chongqing Zhangjiajie tour",
+        "Chengdu Chongqing itinerary",
+        "luxury Zhangjiajie tour",
+        "10 day China tour"
+      ],
+      "seoTitle": "10-Day Chengdu, Chongqing & Zhangjiajie Private Tour",
+      "metaDescription": "A private 10-day China journey through Chengdu, Chongqing and Zhangjiajie with pandas, Sichuan food, premium guides and crowd-aware mountain days.",
+      "h1": "10-Day Chengdu, Chongqing & Zhangjiajie Private Journey",
+      "urlSlug": "chengdu-chongqing-zhangjiajie-private-tour",
+      "supportingBlogTopics": [
+        "How to combine Chengdu, Chongqing and Zhangjiajie",
+        "Best time for Zhangjiajie",
+        "Chongqing for first-time visitors",
+        "Chengdu to Chongqing by train"
+      ],
+      "internalLinks": [
+        "/destinations/chengdu",
+        "/destinations/chongqing",
+        "/destinations/zhangjiajie",
+        "/journal"
+      ]
+    },
+    "scoreInputs": {
+      "searchDemand": 86,
+      "competitiveValidation": 84,
+      "productAppeal": 98,
+      "conversionPotential": 94,
+      "differentiationOpportunity": 91,
+      "commercialValue": 91
+    },
+    "status": "priority",
+    "priority": 1,
+    "mainRisk": "Weather, park crowding and transport disruption can damage the promise unless alternatives are pre-designed.",
+    "opportunityScore": 90.5,
+    "rank": 2
+  },
+  {
+    "id": "aviora-culinary-china",
+    "productName": "China at the Table",
+    "positioning": "A private culinary journey where each city is understood through markets, family kitchens, regional traditions and contemporary dining.",
+    "portfolioRoles": ["High-conversion", "High-margin", "SEO", "Niche"],
+    "targetCustomer": {
+      "age": "35-65",
+      "markets": ["US", "Canada", "UK", "Australia", "Europe", "Singapore"],
+      "travelMotivation": ["Food", "Culture", "Local life"],
+      "budget": "Premium private",
+      "travelParty": ["Couples", "Friends", "Private small groups"],
+      "painPoints": [
+        "Language and ordering anxiety",
+        "Wants more than restaurant reservations",
+        "Needs dietary needs translated accurately"
+      ]
+    },
+    "durationDays": 10,
+    "destinations": ["Beijing", "Xi'an", "Chengdu", "Shanghai"],
+    "signatureExperiences": [
+      "Beijing breakfast and hutong food narrative with a specialist guide.",
+      "Xi'an Muslim Quarter and Silk Road food history presented respectfully and beyond the busiest stalls.",
+      "Chengdu market-to-table or chef-led Sichuan session adjusted to spice tolerance.",
+      "Shanghai old-new dining contrast, from neighborhood breakfast to a contemporary final dinner.",
+      "A traveler food profile completed before arrival covering allergies, dietary rules, texture and spice."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Beijing",
+        "title": "Arrival",
+        "experience": "Private transfer and a light first meal selected around arrival time."
+      },
+      {
+        "day": 2,
+        "destination": "Beijing",
+        "title": "Imperial city, everyday table",
+        "experience": "Focused landmarks plus hutong breakfast or lunch stories."
+      },
+      {
+        "day": 3,
+        "destination": "Beijing",
+        "title": "Great Wall and northern flavors",
+        "experience": "Quieter Wall section followed by a regional meal away from mass-tour stops."
+      },
+      {
+        "day": 4,
+        "destination": "Xi'an",
+        "title": "Rail to the Silk Road gateway",
+        "experience": "First-class option and a carefully curated halal or Silk Road tasting route."
+      },
+      {
+        "day": 5,
+        "destination": "Xi'an",
+        "title": "Terracotta Warriors and wheat cuisine",
+        "experience": "Focused history with noodle, dumpling or bread traditions."
+      },
+      {
+        "day": 6,
+        "destination": "Chengdu",
+        "title": "Into Sichuan",
+        "experience": "Rail transfer and tea-house orientation."
+      },
+      {
+        "day": 7,
+        "destination": "Chengdu",
+        "title": "Pandas and Sichuan flavor",
+        "experience": "Early pandas and a private spice-profiled food experience."
+      },
+      {
+        "day": 8,
+        "destination": "Chengdu",
+        "title": "Market to table",
+        "experience": "Market sourcing, cooking or chef-led regional exploration."
+      },
+      {
+        "day": 9,
+        "destination": "Shanghai",
+        "title": "Shanghai finale",
+        "experience": "Flight, private transfer and neighborhood-to-skyline dining contrast."
+      },
+      {
+        "day": 10,
+        "destination": "Shanghai",
+        "title": "Departure",
+        "experience": "Private airport transfer or additional design/food night."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$2,300-3,700 per person for two travelers.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$4,300-7,200 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 38-45% blended gross margin",
+      "premiumUpgrades": [
+        "Chef-led private session",
+        "Private dining room",
+        "Luxury hotels",
+        "First-class rail",
+        "Food photographer"
+      ],
+      "optionalExperiences": [
+        "Peking duck specialist dinner",
+        "Tea pairing",
+        "Cocktail or non-alcoholic pairing",
+        "Shanghai chef's table"
+      ]
+    },
+    "differentiation": [
+      "Food is the product architecture, not an add-on between landmarks.",
+      "Pre-trip dietary profiling turns a common China travel anxiety into a trust advantage.",
+      "Private access and premium dining create strong upsell without increasing transfer complexity."
+    ],
+    "seo": {
+      "primaryKeyword": "private China food tour",
+      "secondaryKeywords": [
+        "China culinary tour",
+        "luxury China food tour",
+        "Beijing Xi'an Chengdu food tour",
+        "Chinese food vacation"
+      ],
+      "seoTitle": "10-Day Private China Food Tour",
+      "metaDescription": "Taste Beijing, Xi'an, Chengdu and Shanghai on a private 10-day China food journey with local experts, markets and dietary-aware planning.",
+      "h1": "10-Day Private China Culinary Journey",
+      "urlSlug": "private-china-food-tour",
+      "supportingBlogTopics": [
+        "Regional Chinese food for first-time visitors",
+        "Eating in China with allergies",
+        "Halal food in Xi'an",
+        "How spicy is Sichuan food"
+      ],
+      "internalLinks": [
+        "/destinations/beijing",
+        "/destinations/chengdu",
+        "/journal",
+        "/start-planning"
+      ]
+    },
+    "scoreInputs": {
+      "searchDemand": 78,
+      "competitiveValidation": 83,
+      "productAppeal": 94,
+      "conversionPotential": 91,
+      "differentiationOpportunity": 94,
+      "commercialValue": 94
+    },
+    "status": "priority",
+    "priority": 4,
+    "mainRisk": "Quality depends on specialist guides and consistent food partners, not merely standard restaurants.",
+    "opportunityScore": 88.7,
+    "rank": 3
+  },
+  {
+    "id": "aviora-yunnan-tea-horse-road",
+    "productName": "Along Yunnan's Tea Horse Road",
+    "positioning": "A private highland journey through Dali, Lijiang and Shangri-La, shaped by tea, living traditions and exceptional boutique stays.",
+    "portfolioRoles": ["High-margin", "SEO", "Niche"],
+    "targetCustomer": {
+      "age": "40-70",
+      "markets": ["US", "Canada", "UK", "Australia", "Europe"],
+      "travelMotivation": ["Culture", "Landscape", "Tea", "Photography"],
+      "budget": "Luxury private",
+      "travelParty": ["Couples", "Friends", "Repeat visitors"],
+      "painPoints": [
+        "Wants depth beyond major cities",
+        "Altitude concern",
+        "Needs careful overland logistics"
+      ]
+    },
+    "durationDays": 10,
+    "destinations": ["Dali", "Shaxi", "Lijiang", "Shangri-La"],
+    "signatureExperiences": [
+      "Private tea and trade-route storytelling with a local expert.",
+      "Shaxi stay that allows early and late hours beyond day-trip crowds.",
+      "Village or craft encounter contracted around consent and fair compensation.",
+      "Boutique highland stays chosen for place, comfort and altitude management.",
+      "Flexible Shangri-La plan with a lower-altitude alternative if needed."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Dali",
+        "title": "Arrive in Yunnan",
+        "experience": "Private transfer and rest by the old city or lake."
+      },
+      {
+        "day": 2,
+        "destination": "Dali",
+        "title": "Lake, villages and Bai culture",
+        "experience": "Private day with a cultural expert and unhurried meals."
+      },
+      {
+        "day": 3,
+        "destination": "Dali",
+        "title": "Tea and landscape",
+        "experience": "Tea-focused half-day and flexible afternoon."
+      },
+      {
+        "day": 4,
+        "destination": "Shaxi",
+        "title": "Overland to Shaxi",
+        "experience": "Scenic private drive with a meaningful stop rather than a transfer-only day."
+      },
+      {
+        "day": 5,
+        "destination": "Shaxi",
+        "title": "A market town after the day-trippers",
+        "experience": "Walking, craft or countryside at a slower rhythm."
+      },
+      {
+        "day": 6,
+        "destination": "Lijiang",
+        "title": "To Lijiang",
+        "experience": "Private transfer and an old-town route timed away from peak flow."
+      },
+      {
+        "day": 7,
+        "destination": "Lijiang",
+        "title": "Naxi culture and mountains",
+        "experience": "Choose cultural depth, landscape or a lower-effort day."
+      },
+      {
+        "day": 8,
+        "destination": "Shangri-La",
+        "title": "Climb gently to Shangri-La",
+        "experience": "Private road journey with altitude-aware pacing."
+      },
+      {
+        "day": 9,
+        "destination": "Shangri-La",
+        "title": "Monastery and highland life",
+        "experience": "Private interpretation with a fallback based on health and weather."
+      },
+      {
+        "day": 10,
+        "destination": "Shangri-La",
+        "title": "Departure",
+        "experience": "Private airport transfer or extension."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$2,600-4,400 per person for two travelers.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$5,000-8,500 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 38-45% blended gross margin",
+      "premiumUpgrades": [
+        "Songtsam or equivalent stays",
+        "Private cultural expert",
+        "Photography guide",
+        "Premium vehicle"
+      ],
+      "optionalExperiences": [
+        "Tea master session",
+        "Private picnic",
+        "Meili extension",
+        "Lijiang wellness stay"
+      ]
+    },
+    "differentiation": [
+      "Builds the trip around a coherent trade-and-tea story rather than a list of old towns.",
+      "Uses overnight timing and boutique stays to protect the premium atmosphere.",
+      "Altitude and cultural-ethics planning are explicit."
+    ],
+    "seo": {
+      "primaryKeyword": "luxury Yunnan tour",
+      "secondaryKeywords": [
+        "Yunnan private tour",
+        "Dali Lijiang Shangri-La itinerary",
+        "Tea Horse Road tour",
+        "luxury China cultural journey"
+      ],
+      "seoTitle": "10-Day Luxury Yunnan Private Tour",
+      "metaDescription": "Travel privately through Dali, Shaxi, Lijiang and Shangri-La on a 10-day Yunnan journey shaped by tea, culture and boutique stays.",
+      "h1": "10-Day Private Yunnan Tea Horse Road Journey",
+      "urlSlug": "luxury-yunnan-private-tour",
+      "supportingBlogTopics": [
+        "Dali vs Lijiang",
+        "Altitude in Shangri-La",
+        "Tea Horse Road history",
+        "Best boutique hotels in Yunnan"
+      ],
+      "internalLinks": ["/destinations", "/journal", "/about", "/start-planning"]
+    },
+    "scoreInputs": {
+      "searchDemand": 72,
+      "competitiveValidation": 82,
+      "productAppeal": 96,
+      "conversionPotential": 84,
+      "differentiationOpportunity": 88,
+      "commercialValue": 96
+    },
+    "status": "concept",
+    "mainRisk": "Altitude, long drives and boutique-hotel consistency require careful supplier inspection.",
+    "opportunityScore": 86.1,
+    "rank": 4
+  },
+  {
+    "id": "aviora-silk-road",
+    "productName": "The Silk Road, Privately",
+    "positioning": "A considered journey from Xi'an to Kashgar through cave art, desert landscapes and living Silk Road cultures.",
+    "portfolioRoles": ["High-margin", "SEO", "Niche"],
+    "targetCustomer": {
+      "age": "45-75",
+      "markets": ["US", "Canada", "UK", "Australia", "Europe"],
+      "travelMotivation": ["History", "Archaeology", "Photography", "Deep travel"],
+      "budget": "Premium to luxury private",
+      "travelParty": ["Couples", "Friends", "Private interest groups"],
+      "painPoints": [
+        "Complex logistics",
+        "Long transfers",
+        "Uncertain hotel standards",
+        "Needs expert interpretation"
+      ]
+    },
+    "durationDays": 12,
+    "destinations": ["Xi'an", "Zhangye", "Dunhuang", "Turpan", "Kashgar"],
+    "signatureExperiences": [
+      "Silk Road historian or specialist interpretation at key chapters.",
+      "Zhangye Danxia timed for light and weather rather than a rushed transfer stop.",
+      "Mogao Caves visit with ticket strategy and a separate context session where available.",
+      "Private desert sunset experience avoiding exploitative or crowded staging.",
+      "Kashgar food, craft and neighborhood day led with cultural respect and current local guidance."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Xi'an",
+        "title": "Arrival in the eastern gateway",
+        "experience": "Private transfer and Silk Road orientation."
+      },
+      {
+        "day": 2,
+        "destination": "Xi'an",
+        "title": "Terracotta Warriors and imperial context",
+        "experience": "Focused private historical day."
+      },
+      {
+        "day": 3,
+        "destination": "Zhangye",
+        "title": "Travel west",
+        "experience": "Flight or rail selected by schedule and comfort."
+      },
+      {
+        "day": 4,
+        "destination": "Zhangye",
+        "title": "Danxia landscapes",
+        "experience": "Light-aware private day with weather flexibility."
+      },
+      {
+        "day": 5,
+        "destination": "Dunhuang",
+        "title": "Toward Dunhuang",
+        "experience": "Managed transfer with a meaningful corridor stop."
+      },
+      {
+        "day": 6,
+        "destination": "Dunhuang",
+        "title": "Mogao Caves",
+        "experience": "Timed cave visit and specialist context."
+      },
+      {
+        "day": 7,
+        "destination": "Dunhuang",
+        "title": "Desert and oasis",
+        "experience": "Private low-crowd desert experience and rest."
+      },
+      {
+        "day": 8,
+        "destination": "Turpan",
+        "title": "To Xinjiang",
+        "experience": "Flight or rail based on current operation."
+      },
+      {
+        "day": 9,
+        "destination": "Turpan",
+        "title": "Oasis cultures",
+        "experience": "Architecture, irrigation and food with a private guide."
+      },
+      {
+        "day": 10,
+        "destination": "Kashgar",
+        "title": "Travel to Kashgar",
+        "experience": "Managed connection and an easy evening."
+      },
+      {
+        "day": 11,
+        "destination": "Kashgar",
+        "title": "Living Silk Road",
+        "experience": "Markets, food, craft and neighborhoods with current local guidance."
+      },
+      {
+        "day": 12,
+        "destination": "Kashgar",
+        "title": "Departure",
+        "experience": "Private airport transfer."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$3,000-5,000 per person for two travelers.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$5,800-9,500 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 36-43% blended gross margin",
+      "premiumUpgrades": [
+        "Best-available local hotels",
+        "Specialist historian",
+        "Soft-sleeper private compartment where relevant",
+        "Photography guide"
+      ],
+      "optionalExperiences": [
+        "Private desert dinner",
+        "Extended Kashgar region",
+        "Xi'an premium pre-trip",
+        "Beijing extension"
+      ]
+    },
+    "differentiation": [
+      "Reduces the common 12-day route to its strongest narrative and photographic chapters.",
+      "Sets honest expectations about hotel level and transport rather than applying generic luxury language.",
+      "Specialist interpretation and logistical assurance justify premium pricing."
+    ],
+    "seo": {
+      "primaryKeyword": "private China Silk Road tour",
+      "secondaryKeywords": [
+        "Xi'an to Kashgar tour",
+        "luxury Silk Road China",
+        "China Silk Road itinerary",
+        "Dunhuang private tour"
+      ],
+      "seoTitle": "12-Day Private China Silk Road Tour",
+      "metaDescription": "A private 12-day China Silk Road journey from Xi'an to Kashgar through Zhangye, Dunhuang and Turpan with expert local support.",
+      "h1": "12-Day Private China Silk Road Journey",
+      "urlSlug": "private-china-silk-road-tour",
+      "supportingBlogTopics": [
+        "How to plan China's Silk Road",
+        "Best time for Dunhuang and Kashgar",
+        "What hotels are like on the Silk Road",
+        "Xi'an to Kashgar itinerary"
+      ],
+      "internalLinks": ["/destinations/xian", "/journal", "/faq", "/start-planning"]
+    },
+    "scoreInputs": {
+      "searchDemand": 77,
+      "competitiveValidation": 83,
+      "productAppeal": 94,
+      "conversionPotential": 84,
+      "differentiationOpportunity": 86,
+      "commercialValue": 92
+    },
+    "status": "concept",
+    "mainRisk": "Regional conditions, permits, transport and supplier standards must be rechecked before every sale cycle.",
+    "opportunityScore": 85.9,
+    "rank": 5
+  },
+  {
+    "id": "aviora-contemporary-china",
+    "productName": "China Now: Shanghai, Hangzhou, Chongqing & Shenzhen",
+    "positioning": "A private journey through the design, technology, food and urban life shaping China today.",
+    "portfolioRoles": ["Hero", "High-margin", "Niche", "Brand-defining"],
+    "targetCustomer": {
+      "age": "35-60",
+      "markets": ["US", "Canada", "UK", "Australia", "Europe"],
+      "travelMotivation": ["Contemporary culture", "Architecture", "Technology", "Design", "Food"],
+      "budget": "Premium to luxury private",
+      "travelParty": [
+        "Couples",
+        "Executives",
+        "Families with teenagers",
+        "Private interest groups"
+      ],
+      "painPoints": [
+        "Does not want a heritage-only image of China",
+        "Needs credible access and interpretation",
+        "Wants polished logistics between megacities"
+      ]
+    },
+    "durationDays": 10,
+    "destinations": ["Shanghai", "Hangzhou", "Chongqing", "Shenzhen"],
+    "signatureExperiences": [
+      "Private Shanghai architecture and design route connecting adaptive reuse, local neighborhoods and the skyline.",
+      "Hangzhou tea landscape and digital-economy story presented without turning the trip into a corporate visit.",
+      "Chongqing blue-hour vertical-city route with food and transport choreography.",
+      "Shenzhen design, hardware or innovation experience using only access that can be contractually verified.",
+      "China high-speed rail and cashless urban systems explained through guided everyday use."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Shanghai",
+        "title": "Arrive in China's global city",
+        "experience": "Private arrival and a gentle Bund or neighborhood introduction."
+      },
+      {
+        "day": 2,
+        "destination": "Shanghai",
+        "title": "Architecture and reinvention",
+        "experience": "Private route through historic fabric, contemporary design and riverfront transformation."
+      },
+      {
+        "day": 3,
+        "destination": "Shanghai",
+        "title": "How Shanghai lives now",
+        "experience": "Food, creative districts, transit and an optional specialist meeting."
+      },
+      {
+        "day": 4,
+        "destination": "Hangzhou",
+        "title": "High-speed rail to Hangzhou",
+        "experience": "West Lake, design-led hospitality and a quiet tea landscape."
+      },
+      {
+        "day": 5,
+        "destination": "Hangzhou",
+        "title": "Tea, ecology and digital life",
+        "experience": "Tea culture plus a curated contemporary-economy or craft perspective."
+      },
+      {
+        "day": 6,
+        "destination": "Chongqing",
+        "title": "Fly to Chongqing",
+        "experience": "Premium transfer and a blue-hour introduction to the vertical city."
+      },
+      {
+        "day": 7,
+        "destination": "Chongqing",
+        "title": "Urban layers",
+        "experience": "Historic neighborhoods, layered transit, food and river geography."
+      },
+      {
+        "day": 8,
+        "destination": "Shenzhen",
+        "title": "Travel to Shenzhen",
+        "experience": "Flight or rail plan selected by schedule; evening city orientation."
+      },
+      {
+        "day": 9,
+        "destination": "Shenzhen",
+        "title": "Designing tomorrow",
+        "experience": "Architecture, hardware, design or innovation access verified before sale."
+      },
+      {
+        "day": 10,
+        "destination": "Shenzhen",
+        "title": "Departure or Hong Kong extension",
+        "experience": "Private transfer and optional cross-border extension."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$2,900-4,800 per person for two travelers.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$5,200-8,500 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 38-45% blended gross margin",
+      "premiumUpgrades": [
+        "Capella or equivalent Shanghai stay",
+        "Amanfayun or equivalent Hangzhou stay",
+        "Regent Chongqing",
+        "Design specialist",
+        "Verified private access"
+      ],
+      "optionalExperiences": [
+        "Private architecture photographer",
+        "Chef's table",
+        "Hong Kong extension",
+        "Executive briefing"
+      ]
+    },
+    "differentiation": [
+      "Directly owns AVIORA's Contemporary China positioning rather than competing only on classic landmarks.",
+      "Translates systems, architecture and daily life for Western travelers without becoming a business delegation.",
+      "Uses highly visual cities and premium urban hotels to support higher spend."
+    ],
+    "seo": {
+      "primaryKeyword": "modern China tour",
+      "secondaryKeywords": [
+        "contemporary China travel",
+        "China technology tour",
+        "Shanghai Chongqing Shenzhen itinerary",
+        "luxury modern China tour"
+      ],
+      "seoTitle": "10-Day Modern China Private Tour",
+      "metaDescription": "Explore contemporary China on a private 10-day journey through Shanghai, Hangzhou, Chongqing and Shenzhen, with design, food and local experts.",
+      "h1": "10-Day Contemporary China Private Journey",
+      "urlSlug": "modern-china-private-tour",
+      "supportingBlogTopics": [
+        "What modern China feels like for visitors",
+        "Shanghai architecture guide",
+        "Chongqing beyond social media",
+        "Shenzhen for curious travelers"
+      ],
+      "internalLinks": ["/destinations/shanghai", "/destinations/chongqing", "/journal", "/about"]
+    },
+    "scoreInputs": {
+      "searchDemand": 70,
+      "competitiveValidation": 70,
+      "productAppeal": 95,
+      "conversionPotential": 86,
+      "differentiationOpportunity": 98,
+      "commercialValue": 95
+    },
+    "status": "priority",
+    "priority": 3,
+    "mainRisk": "Any promised specialist or company access must be secured before publication; generic sightseeing would weaken the concept.",
+    "opportunityScore": 85.4,
+    "rank": 6
+  },
+  {
+    "id": "aviora-gentle-china",
+    "productName": "China at an Easier Pace",
+    "positioning": "A private first-China journey for travelers who value comfort, depth and realistic days over a crowded checklist.",
+    "portfolioRoles": ["High-conversion", "SEO", "Niche"],
+    "targetCustomer": {
+      "age": "50-75",
+      "markets": ["US", "Canada", "UK", "Australia"],
+      "travelMotivation": ["First China trip", "Culture", "Comfort"],
+      "budget": "Premium private",
+      "travelParty": ["Couples", "Friends", "Multigenerational adults"],
+      "painPoints": [
+        "Long walking days",
+        "Early starts",
+        "Luggage handling",
+        "Too many hotel changes",
+        "Unclear accessibility"
+      ]
+    },
+    "durationDays": 12,
+    "destinations": ["Beijing", "Xi'an", "Shanghai"],
+    "signatureExperiences": [
+      "Four-night Beijing base with shorter landmark routes and a recovery block after arrival.",
+      "Great Wall section and cableway selected around mobility, not marketing convenience.",
+      "First-class rail with station assistance and luggage handling plan.",
+      "One major cultural focus per half-day, with seating, toilets and walking distance explained.",
+      "Central hotels selected for quiet rooms, elevators and easy vehicle access."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Beijing",
+        "title": "Arrival",
+        "experience": "Private transfer and no scheduled sightseeing."
+      },
+      {
+        "day": 2,
+        "destination": "Beijing",
+        "title": "Temple morning",
+        "experience": "Temple of Heaven at a comfortable pace and an unhurried afternoon."
+      },
+      {
+        "day": 3,
+        "destination": "Beijing",
+        "title": "Forbidden City, shortened well",
+        "experience": "Focused palace route with rest points and vehicle pickup planning."
+      },
+      {
+        "day": 4,
+        "destination": "Beijing",
+        "title": "Great Wall",
+        "experience": "Mobility-matched section, cableway and relaxed lunch."
+      },
+      {
+        "day": 5,
+        "destination": "Beijing",
+        "title": "A flexible Beijing day",
+        "experience": "Hutong, Summer Palace, art or rest chosen around energy."
+      },
+      {
+        "day": 6,
+        "destination": "Xi'an",
+        "title": "First-class rail",
+        "experience": "Station assistance and easy city orientation."
+      },
+      {
+        "day": 7,
+        "destination": "Xi'an",
+        "title": "Terracotta Warriors",
+        "experience": "Focused museum time with seating and crowd timing considered."
+      },
+      {
+        "day": 8,
+        "destination": "Xi'an",
+        "title": "Living Xi'an",
+        "experience": "Great Mosque, city wall views or food culture at an easy pace."
+      },
+      {
+        "day": 9,
+        "destination": "Shanghai",
+        "title": "Travel to Shanghai",
+        "experience": "Flight or rail selected for total effort, not only ticket time."
+      },
+      {
+        "day": 10,
+        "destination": "Shanghai",
+        "title": "The Bund and old Shanghai",
+        "experience": "Architecture and neighborhoods with minimal backtracking."
+      },
+      {
+        "day": 11,
+        "destination": "Shanghai",
+        "title": "Choose your final day",
+        "experience": "Water town, museum, gardens or rest."
+      },
+      {
+        "day": 12,
+        "destination": "Shanghai",
+        "title": "Departure",
+        "experience": "Private transfer and airport support."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$2,400-4,000 per person for two travelers.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$4,400-7,200 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 35-42% blended gross margin",
+      "premiumUpgrades": [
+        "Club rooms",
+        "Executive car",
+        "First-class rail",
+        "Airport assistance",
+        "Mobility equipment rental"
+      ],
+      "optionalExperiences": [
+        "Private museum specialist",
+        "Water town overnight",
+        "Spa afternoon",
+        "Medical concierge contact"
+      ]
+    },
+    "differentiation": [
+      "Sells comfort through specific operational decisions rather than vague 'slow travel' language.",
+      "Targets an autocomplete-validated senior search segment with weak premium landing pages.",
+      "Higher service intensity supports premium pricing without adding distant destinations."
+    ],
+    "seo": {
+      "primaryKeyword": "China tours for seniors",
+      "secondaryKeywords": [
+        "private China tour for older travelers",
+        "slow paced China tour",
+        "accessible China private tour",
+        "China tour for 50 plus"
+      ],
+      "seoTitle": "12-Day Private China Tour for Older Travelers",
+      "metaDescription": "A private 12-day China journey for older travelers with realistic walking, central hotels, first-class rail and flexible local support.",
+      "h1": "12-Day China Journey at an Easier Pace",
+      "urlSlug": "china-tour-for-older-travelers",
+      "supportingBlogTopics": [
+        "How much walking is involved in China",
+        "Great Wall options for older travelers",
+        "China high-speed rail with luggage",
+        "Choosing accessible hotels in China"
+      ],
+      "internalLinks": ["/destinations/beijing", "/faq", "/journal", "/start-planning"]
+    },
+    "scoreInputs": {
+      "searchDemand": 76,
+      "competitiveValidation": 68,
+      "productAppeal": 85,
+      "conversionPotential": 93,
+      "differentiationOpportunity": 96,
+      "commercialValue": 91
+    },
+    "status": "concept",
+    "mainRisk": "Accessibility varies by site and hotel; the page must avoid medical promises and document limitations accurately.",
+    "opportunityScore": 84.7,
+    "rank": 7
+  },
+  {
+    "id": "aviora-muslim-friendly-china",
+    "productName": "A Muslim-Friendly Journey Through China",
+    "positioning": "Beijing, Xi'an and Shanghai with private guiding, carefully checked meals, prayer-aware pacing and China's Islamic heritage treated with respect.",
+    "portfolioRoles": ["High-conversion", "SEO", "Niche"],
+    "targetCustomer": {
+      "age": "30-65",
+      "markets": ["Malaysia", "Singapore", "Indonesia", "UK", "GCC"],
+      "travelMotivation": [
+        "First China trip",
+        "Islamic heritage",
+        "Family comfort",
+        "Food confidence"
+      ],
+      "budget": "Premium private",
+      "travelParty": ["Couples", "Families", "Multigenerational groups"],
+      "painPoints": [
+        "Halal verification",
+        "Prayer timing",
+        "Language barriers",
+        "Concern that a generic operator will not understand requirements"
+      ]
+    },
+    "durationDays": 9,
+    "destinations": ["Beijing", "Xi'an", "Shanghai"],
+    "signatureExperiences": [
+      "A documented meal-planning process distinguishing halal-certified, Muslim-owned and no-pork requests.",
+      "Niujie Mosque and neighborhood food context in Beijing without reducing the city to a religious checklist.",
+      "Xi'an Great Mosque and Silk Road heritage with a knowledgeable private guide and carefully selected halal dining.",
+      "Prayer-aware daily pacing and hotel-location checks based on the traveler's own practice.",
+      "Shanghai's global story with verified meal options and private support."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Beijing",
+        "title": "Arrival with requirements already understood",
+        "experience": "Private transfer and verified first meal plan."
+      },
+      {
+        "day": 2,
+        "destination": "Beijing",
+        "title": "Imperial Beijing",
+        "experience": "Forbidden City route with prayer and meal timing built into the day."
+      },
+      {
+        "day": 3,
+        "destination": "Beijing",
+        "title": "Great Wall",
+        "experience": "Quieter section and pre-verified lunch rather than a tourist-group restaurant."
+      },
+      {
+        "day": 4,
+        "destination": "Beijing",
+        "title": "Niujie and living heritage",
+        "experience": "Mosque, neighborhood history and respectful food exploration."
+      },
+      {
+        "day": 5,
+        "destination": "Xi'an",
+        "title": "First-class rail to Xi'an",
+        "experience": "Managed station journey and an easy Muslim Quarter introduction."
+      },
+      {
+        "day": 6,
+        "destination": "Xi'an",
+        "title": "Terracotta Warriors",
+        "experience": "Private historical day with verified meal arrangements."
+      },
+      {
+        "day": 7,
+        "destination": "Shanghai",
+        "title": "Fly or rail to Shanghai",
+        "experience": "Private transfer and a calm riverfront evening."
+      },
+      {
+        "day": 8,
+        "destination": "Shanghai",
+        "title": "Shanghai old and new",
+        "experience": "Architecture, neighborhoods and verified dining with prayer-aware timing."
+      },
+      {
+        "day": 9,
+        "destination": "Shanghai",
+        "title": "Departure",
+        "experience": "Private airport transfer and final support."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$1,900-3,200 per person for two travelers.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$3,600-5,900 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 34-40% blended gross margin",
+      "premiumUpgrades": [
+        "Mosque-accessible hotel location",
+        "First-class rail",
+        "Private family suite",
+        "Specialist heritage guide"
+      ],
+      "optionalExperiences": [
+        "Halal cooking session",
+        "Calligraphy",
+        "Shanghai extension",
+        "Chengdu halal-planning extension"
+      ]
+    },
+    "differentiation": [
+      "Publicly explains what is and is not verified instead of using vague 'Muslim-friendly' claims.",
+      "Combines first-time-China icons with meaningful Islamic heritage.",
+      "Targets an autocomplete-validated international audience with relatively weak premium-private competition."
+    ],
+    "seo": {
+      "primaryKeyword": "Muslim friendly China tour",
+      "secondaryKeywords": [
+        "halal China tour",
+        "private Muslim China tour",
+        "China Muslim family tour",
+        "halal food China travel"
+      ],
+      "seoTitle": "9-Day Muslim-Friendly Private China Tour",
+      "metaDescription": "A private Muslim-friendly China journey through Beijing, Xi'an and Shanghai with carefully checked meals, prayer-aware pacing and local support.",
+      "h1": "9-Day Muslim-Friendly Private China Journey",
+      "urlSlug": "muslim-friendly-private-china-tour",
+      "supportingBlogTopics": [
+        "How halal verification works in China",
+        "Mosques in Beijing and Xi'an",
+        "Muslim family travel in China",
+        "What to ask a China tour operator about halal meals"
+      ],
+      "internalLinks": ["/destinations/beijing", "/destinations/xian", "/faq", "/start-planning"]
+    },
+    "scoreInputs": {
+      "searchDemand": 73,
+      "competitiveValidation": 62,
+      "productAppeal": 88,
+      "conversionPotential": 92,
+      "differentiationOpportunity": 98,
+      "commercialValue": 88
+    },
+    "status": "priority",
+    "priority": 5,
+    "mainRisk": "Incorrect halal claims would create serious trust and reputational harm; every supplier statement needs verification and clear wording.",
+    "opportunityScore": 83.2,
+    "rank": 8
+  },
+  {
+    "id": "aviora-china-by-rail",
+    "productName": "China by First-Class Rail",
+    "positioning": "Beijing, Xi'an, Chengdu and Shanghai connected by China's high-speed rail, with private local teams at every stop.",
+    "portfolioRoles": ["SEO", "High-conversion", "Upsell"],
+    "targetCustomer": {
+      "age": "35-70",
+      "markets": ["US", "Canada", "UK", "Australia", "Europe"],
+      "travelMotivation": [
+        "Rail",
+        "Lower-flight travel",
+        "First China trip",
+        "Contemporary infrastructure"
+      ],
+      "budget": "Premium private",
+      "travelParty": ["Couples", "Families", "Rail enthusiasts", "Older travelers"],
+      "painPoints": [
+        "Train booking complexity",
+        "Luggage at stations",
+        "Seat-class confusion",
+        "Wants to see China between cities"
+      ]
+    },
+    "durationDays": 12,
+    "destinations": ["Beijing", "Xi'an", "Chengdu", "Shanghai"],
+    "signatureExperiences": [
+      "First-class rail seats booked as soon as inventory opens, with honest fallback rules.",
+      "Station meeting, luggage and platform guidance explained city by city.",
+      "Rail journeys treated as part of understanding contemporary China, not dead transfer time.",
+      "Private local guide and driver in each city with no forced shopping.",
+      "Optional premium waiting lounge or business-class rail where route inventory supports it."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Beijing",
+        "title": "Arrival",
+        "experience": "Private transfer and rest."
+      },
+      {
+        "day": 2,
+        "destination": "Beijing",
+        "title": "Imperial Beijing",
+        "experience": "Forbidden City and a selected quieter cultural chapter."
+      },
+      {
+        "day": 3,
+        "destination": "Beijing",
+        "title": "Great Wall",
+        "experience": "Private wall day with route calibrated to ability."
+      },
+      {
+        "day": 4,
+        "destination": "Beijing",
+        "title": "Local Beijing",
+        "experience": "Hutongs, food or contemporary architecture."
+      },
+      {
+        "day": 5,
+        "destination": "Xi'an",
+        "title": "First-class rail to Xi'an",
+        "experience": "Station support and evening city orientation."
+      },
+      {
+        "day": 6,
+        "destination": "Xi'an",
+        "title": "Terracotta Warriors",
+        "experience": "Private historical day."
+      },
+      {
+        "day": 7,
+        "destination": "Chengdu",
+        "title": "Rail to Chengdu",
+        "experience": "First-class rail and tea-house arrival."
+      },
+      {
+        "day": 8,
+        "destination": "Chengdu",
+        "title": "Panda morning",
+        "experience": "Early panda visit and flexible afternoon."
+      },
+      {
+        "day": 9,
+        "destination": "Chengdu",
+        "title": "Sichuan life",
+        "experience": "Food, parks or culture chosen to interest."
+      },
+      {
+        "day": 10,
+        "destination": "Shanghai",
+        "title": "Long-distance rail to Shanghai",
+        "experience": "Business class upgrade option or flight fallback if total journey is unsuitable."
+      },
+      {
+        "day": 11,
+        "destination": "Shanghai",
+        "title": "Shanghai old and new",
+        "experience": "Neighborhood and skyline finale."
+      },
+      {
+        "day": 12,
+        "destination": "Shanghai",
+        "title": "Departure",
+        "experience": "Private airport transfer."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$2,300-3,900 per person for two travelers.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$4,200-7,000 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 34-40% blended gross margin",
+      "premiumUpgrades": [
+        "Business-class rail where available",
+        "First-class rail",
+        "Station porter support",
+        "Luxury hotels",
+        "Rail-view storytelling guide"
+      ],
+      "optionalExperiences": [
+        "Rail museum or infrastructure perspective",
+        "Additional Hangzhou stop",
+        "Luggage forwarding",
+        "Private sleeper-train cabin on selected routes"
+      ]
+    },
+    "differentiation": [
+      "Turns a common logistics concern into the central reassurance and story.",
+      "Strong relevance to modern China and lower domestic-flight preference.",
+      "Supports multiple audience variants without changing the core supplier network."
+    ],
+    "seo": {
+      "primaryKeyword": "China high speed rail tour",
+      "secondaryKeywords": [
+        "China train tour",
+        "private China rail journey",
+        "Beijing Xi'an Chengdu Shanghai train",
+        "first class train China tour"
+      ],
+      "seoTitle": "12-Day Private China High-Speed Rail Tour",
+      "metaDescription": "Travel from Beijing to Xi'an, Chengdu and Shanghai on a private 12-day China rail journey with first-class train options and local guides.",
+      "h1": "12-Day Private China High-Speed Rail Journey",
+      "urlSlug": "china-high-speed-rail-private-tour",
+      "supportingBlogTopics": [
+        "First class vs business class China trains",
+        "China train travel with luggage",
+        "How far ahead train tickets open",
+        "Best China itinerary by high-speed rail"
+      ],
+      "internalLinks": ["/tours", "/journal", "/faq", "/start-planning"]
+    },
+    "scoreInputs": {
+      "searchDemand": 74,
+      "competitiveValidation": 70,
+      "productAppeal": 86,
+      "conversionPotential": 89,
+      "differentiationOpportunity": 91,
+      "commercialValue": 87
+    },
+    "status": "concept",
+    "mainRisk": "Seat inventory is not guaranteed until ticket release; the product must state fallback classes and routes clearly.",
+    "opportunityScore": 82.6,
+    "rank": 9
+  },
+  {
+    "id": "aviora-tea-wellness",
+    "productName": "Tea, Stillness & the Chinese Landscape",
+    "positioning": "A private restorative journey through Hangzhou, Wuyishan and Xiamen, connecting tea, landscape, movement and contemporary Chinese wellbeing.",
+    "portfolioRoles": ["High-margin", "Niche", "Brand-defining"],
+    "targetCustomer": {
+      "age": "35-70",
+      "markets": ["US", "Canada", "UK", "Australia", "Europe", "Singapore"],
+      "travelMotivation": ["Wellness", "Tea", "Nature", "Slower travel"],
+      "budget": "Luxury private",
+      "travelParty": ["Couples", "Friends", "Solo travelers"],
+      "painPoints": [
+        "Wants restoration without a generic spa retreat",
+        "Needs credible cultural context",
+        "Does not want over-scheduled sightseeing"
+      ]
+    },
+    "durationDays": 9,
+    "destinations": ["Hangzhou", "Wuyishan", "Xiamen"],
+    "signatureExperiences": [
+      "Private tea landscape walk and tasting with provenance explained clearly.",
+      "Morning tai chi, qigong or movement session led by a verified practitioner.",
+      "Wuyishan tea and river landscape with time for rest, not only attractions.",
+      "Design-led wellness stays selected for quiet, food quality and sense of place.",
+      "Xiamen coastal finale balancing architecture, gentle movement and modern dining."
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "destination": "Hangzhou",
+        "title": "Arrival",
+        "experience": "Private transfer and a quiet evening near West Lake or tea country."
+      },
+      {
+        "day": 2,
+        "destination": "Hangzhou",
+        "title": "West Lake at a gentler hour",
+        "experience": "Walking, boat or garden route with a long rest block."
+      },
+      {
+        "day": 3,
+        "destination": "Hangzhou",
+        "title": "Tea and movement",
+        "experience": "Private tea session and optional qigong or tai chi."
+      },
+      {
+        "day": 4,
+        "destination": "Wuyishan",
+        "title": "Travel to Wuyishan",
+        "experience": "First-class rail and resort settling."
+      },
+      {
+        "day": 5,
+        "destination": "Wuyishan",
+        "title": "Mountain and river",
+        "experience": "Low-intensity landscape day with private interpretation."
+      },
+      {
+        "day": 6,
+        "destination": "Wuyishan",
+        "title": "Rock tea",
+        "experience": "Tea garden, maker or tasting experience verified with suppliers."
+      },
+      {
+        "day": 7,
+        "destination": "Xiamen",
+        "title": "Rail to the coast",
+        "experience": "Private transfer and easy waterfront evening."
+      },
+      {
+        "day": 8,
+        "destination": "Xiamen",
+        "title": "Architecture and sea air",
+        "experience": "Gulangyu or a quieter design route plus a considered final dinner."
+      },
+      {
+        "day": 9,
+        "destination": "Xiamen",
+        "title": "Departure",
+        "experience": "Private airport transfer."
+      }
+    ],
+    "commercial": {
+      "estimatedCost": "ESTIMATE — VERIFY WITH SUPPLIERS: US$2,400-4,200 per person for two travelers.",
+      "recommendedSellingPrice": "ESTIMATE — VERIFY WITH SUPPLIERS: US$4,900-8,200 per person for two travelers.",
+      "grossMarginTarget": "ESTIMATE: 40-48% blended gross margin",
+      "premiumUpgrades": [
+        "Amanfayun or equivalent",
+        "Private tea master",
+        "Wellness practitioner",
+        "Premium rail",
+        "Spa treatments"
+      ],
+      "optionalExperiences": [
+        "Tea purchase consultation",
+        "Private vegetarian dining",
+        "Calligraphy",
+        "Additional resort nights"
+      ]
+    },
+    "differentiation": [
+      "Avoids unsupported medical claims and frames wellness through place, pace, movement and hospitality.",
+      "Combines a new competitor-tested category with AVIORA's premium visual direction.",
+      "High-margin expert and hotel upgrades with fewer complex attraction days."
+    ],
+    "seo": {
+      "primaryKeyword": "China wellness tour",
+      "secondaryKeywords": [
+        "China tea tour",
+        "luxury wellness China",
+        "Hangzhou tea tour",
+        "Wuyishan private tour"
+      ],
+      "seoTitle": "9-Day Private China Tea & Wellness Journey",
+      "metaDescription": "A private 9-day China wellness journey through Hangzhou, Wuyishan and Xiamen with tea, gentle movement, landscape and premium stays.",
+      "h1": "9-Day Private China Tea & Wellness Journey",
+      "urlSlug": "china-tea-wellness-private-tour",
+      "supportingBlogTopics": [
+        "Tea regions of China",
+        "Wellness travel without medical claims",
+        "Hangzhou beyond West Lake",
+        "Wuyishan tea guide"
+      ],
+      "internalLinks": ["/destinations", "/journal", "/about", "/start-planning"]
+    },
+    "scoreInputs": {
+      "searchDemand": 61,
+      "competitiveValidation": 58,
+      "productAppeal": 92,
+      "conversionPotential": 78,
+      "differentiationOpportunity": 97,
+      "commercialValue": 94
+    },
+    "status": "research",
+    "mainRisk": "Demand is less mature and wellness claims require conservative language; supplier quality must be inspected.",
+    "opportunityScore": 79.7,
+    "rank": 10
+  }
+]

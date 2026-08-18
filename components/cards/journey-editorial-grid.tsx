@@ -1,856 +1,798 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowRight, Bookmark, Check, ChevronDown, Mail, SlidersHorizontal, X } from "lucide-react";
+import * as Select from "@radix-ui/react-select";
+import { ArrowUpRight, Check, ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
-import { WhatsAppIcon } from "@/components/icons";
 import { OptimizedImage } from "@/components/media/optimized-image";
-import { buttonBaseStyles, buttonSizes, buttonVariants } from "@/components/ui/button-styles";
-import { destinationAsset } from "@/content/destinations/assets";
-import { firstChinaAsset } from "@/content/tours/assets";
 import type {
   JourneyCatalogItem,
+  JourneyFocusId,
   JourneyPlanningNeedId,
   JourneyTravelerId,
 } from "@/content/tours/catalog";
-import { trackEvent } from "@/lib/analytics/events";
-import { cn } from "@/lib/utils/cn";
-import type { MediaAsset } from "@/types/component-library";
+import styles from "./journey-discovery.module.css";
 
-type JourneyEditorialGridProps = {
-  items: JourneyCatalogItem[];
-};
-
-type InterestId =
-  "first-visit" | "culture" | "landscapes" | "food-local-life" | "family" | "gentler-pace";
-
-type DurationId = "5-7" | "8-10" | "11-14" | "15-plus";
-
-type FilterState = {
-  interest: InterestId | null;
-  duration: DurationId | null;
-  traveler: JourneyTravelerId | null;
+type SortId = "recommended" | "shortest" | "longest" | "relaxed" | "active";
+type Filters = {
+  focus: JourneyFocusId[];
+  duration: string[];
+  destinations: string[];
+  pace: string[];
+  walking: string[];
+  altitude: string[];
+  transport: string[];
+  travellers: JourneyTravelerId[];
   needs: JourneyPlanningNeedId[];
+  seasons: string[];
 };
 
-type InterestOption = {
-  id: InterestId;
-  label: string;
-  description: string;
-  image: MediaAsset;
-};
-
-const savedStorageKey = "aviora-saved-journeys";
-
-const emptyFilters: FilterState = {
-  interest: null,
-  duration: null,
-  traveler: null,
+const emptyFilters: Filters = {
+  focus: [],
+  duration: [],
+  destinations: [],
+  pace: [],
+  walking: [],
+  altitude: [],
+  transport: [],
+  travellers: [],
   needs: [],
+  seasons: [],
 };
-
-const interestOptions: InterestOption[] = [
-  {
-    id: "first-visit",
-    label: "First visit",
-    description: "A clear introduction to China's defining places.",
-    image: firstChinaAsset.beijingGreatWallWide,
-  },
-  {
-    id: "culture",
-    label: "History & culture",
-    description: "Imperial capitals, heritage and living traditions.",
-    image: destinationAsset.xianTerracotta,
-  },
-  {
-    id: "landscapes",
-    label: "Nature & scenery",
-    description: "Mountains, valleys, lakes and quieter horizons.",
-    image: destinationAsset.jiuzhaigouLake,
-  },
-  {
-    id: "food-local-life",
-    label: "Food & local life",
-    description: "Regional flavours, markets and everyday culture.",
-    image: destinationAsset.chengduTeaHouse,
-  },
-  {
-    id: "family",
-    label: "Family journeys",
-    description: "Private days shaped around different generations.",
-    image: destinationAsset.chengduPanda,
-  },
-  {
-    id: "gentler-pace",
-    label: "A gentler pace",
-    description: "More room to rest, notice and stay longer.",
-    image: destinationAsset.guilinRiver,
-  },
+const focusOptions: Array<[JourneyFocusId, string]> = [
+  ["first-trip", "First trip to China"],
+  ["culture", "History & culture"],
+  ["food", "Food & local life"],
+  ["nature", "Nature & scenery"],
+  ["wildlife", "Wildlife & pandas"],
+  ["family", "Family time"],
+  ["photography", "Photography"],
+  ["slow-travel", "Slow travel"],
+];
+const durationOptions = [
+  ["3-5", "3–5 days"],
+  ["6-8", "6–8 days"],
+  ["9-11", "9–11 days"],
+  ["12-14", "12–14 days"],
+  ["15+", "15+ days"],
+] as const;
+const paceOptions = [
+  ["easy", "Easy-going"],
+  ["balanced", "Balanced"],
+  ["active", "More active"],
+] as const;
+const walkingOptions = [
+  ["minimal", "Minimal walking"],
+  ["moderate", "Moderate walking"],
+  ["active", "Active walking"],
+] as const;
+const altitudeOptions = [
+  ["none", "No high-altitude stays"],
+  ["some", "Some altitude"],
+  ["high", "High-altitude travel"],
+] as const;
+const transportOptions = [
+  ["fewer", "Prefer fewer transfers"],
+  ["high-speed-rail", "High-speed rail included"],
+  ["domestic-flight", "Domestic flights included"],
+] as const;
+const travellerOptions: Array<[JourneyTravelerId, string]> = [
+  ["couples", "Couples"],
+  ["families", "Families"],
+  ["multigenerational", "Multi-generational groups"],
+  ["solo-travelers", "Solo travellers"],
+];
+const planningNeedOptions: Array<[JourneyPlanningNeedId, string]> = [
+  ["muslim-friendly", "Muslim-friendly planning"],
+  ["women-traveler-support", "Support for women travelers"],
+  ["slower-pacing", "A slower, easier pace"],
+  ["child-friendly", "Child-friendly planning"],
+  ["mobility-aware", "Mobility-aware planning"],
+  ["vegetarian-friendly", "Vegetarian-friendly planning"],
+];
+const seasonOptions = [
+  ["spring", "Spring"],
+  ["summer", "Summer"],
+  ["autumn", "Autumn"],
+  ["winter", "Winter"],
+] as const;
+const sortOptions: Array<[SortId, string]> = [
+  ["recommended", "Recommended"],
+  ["shortest", "Shortest first"],
+  ["longest", "Longest first"],
+  ["relaxed", "More relaxed first"],
+  ["active", "More active first"],
 ];
 
-const durationOptions: Array<{ id: DurationId; label: string; min: number; max: number }> = [
-  { id: "5-7", label: "5–7 days", min: 5, max: 7 },
-  { id: "8-10", label: "8–10 days", min: 8, max: 10 },
-  { id: "11-14", label: "11–14 days", min: 11, max: 14 },
-  { id: "15-plus", label: "15+ days", min: 15, max: 365 },
-];
-
-const travelerOptions: Array<{ id: JourneyTravelerId; label: string }> = [
-  { id: "couples", label: "Couples" },
-  { id: "families", label: "Families with children" },
-  { id: "multigenerational", label: "Multi-generational" },
-  { id: "older-travelers", label: "Older travelers" },
-  { id: "private-groups", label: "Small private groups" },
-];
-
-const needOptions: Array<{ id: JourneyPlanningNeedId; label: string }> = [
-  { id: "muslim-friendly", label: "Muslim-friendly planning" },
-  { id: "vegetarian-friendly", label: "Vegetarian-friendly" },
-  { id: "child-friendly", label: "Child-friendly days" },
-  { id: "mobility-aware", label: "Mobility-aware planning" },
-];
-
-export function JourneyEditorialGrid({ items }: JourneyEditorialGridProps) {
-  const [filters, setFilters] = useState<FilterState>(emptyFilters);
-  const [refineOpen, setRefineOpen] = useState(false);
-  const [savedSlugs, setSavedSlugs] = useState<string[]>([]);
-  const [savedReady, setSavedReady] = useState(false);
-
-  const filteredItems = useMemo(
-    () => items.filter((item) => matchesFilters(item, filters)),
-    [filters, items],
+export function JourneyEditorialGrid({
+  items,
+  initialQueryString = "",
+  hero,
+}: {
+  items: JourneyCatalogItem[];
+  initialQueryString?: string;
+  hero?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    service?: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      items: Array<{
+        title: string;
+        detail: string;
+      }>;
+      confirmation: string;
+      planningHref: string;
+    };
+  };
+}) {
+  const heroContent = hero ?? {
+    eyebrow: "AVIORA · Private China Tours 2026–2027",
+    title: "Private China Tours, Made for You.",
+    description:
+      "Tailor-made journeys with private guides, flexible pacing and local support across China.",
+    service: undefined,
+  };
+  const initialUrlState = getInitialUrlState(initialQueryString);
+  const [query, setQuery] = useState(initialUrlState.query);
+  const deferredQuery = useDeferredValue(query);
+  const [filters, setFilters] = useState<Filters>(initialUrlState.filters);
+  const [sort, setSort] = useState<SortId>(initialUrlState.sort);
+  const [limit, setLimit] = useState(12);
+  const destinations = useMemo(
+    () => Array.from(new Set(items.flatMap((item) => item.destinationFilters))).sort(),
+    [items],
   );
-  const savedItems = items.filter((item) => savedSlugs.includes(item.slug));
-  const activeFilterCount =
-    (filters.interest ? 1 : 0) +
-    (filters.duration ? 1 : 0) +
-    (filters.traveler ? 1 : 0) +
-    filters.needs.length;
-  const heroJourney = items[0];
+  const results = useMemo(
+    () =>
+      sortItems(
+        items.filter((item) => matches(item, filters, deferredQuery)),
+        sort,
+      ),
+    [items, filters, deferredQuery, sort],
+  );
+  const active = Object.values(filters).flat().length;
+  const summary = getSummary(filters, query);
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      try {
-        const parsed = JSON.parse(window.localStorage.getItem(savedStorageKey) ?? "[]");
-        const validSlugs = Array.isArray(parsed)
-          ? parsed.filter(
-              (value): value is string =>
-                typeof value === "string" && items.some((item) => item.slug === value),
-            )
-          : [];
-        setSavedSlugs(validSlugs);
-      } catch {
-        setSavedSlugs([]);
-      }
-      setSavedReady(true);
+    const params = new URLSearchParams();
+    if (query.trim()) params.set("q", query.trim());
+    Object.entries(filters).forEach(([key, values]) => {
+      if (values.length) params.set(key, values.join(","));
     });
+    if (sort !== "recommended") params.set("sort", sort);
+    history.replaceState(null, "", `${location.pathname}${params.size ? `?${params}` : ""}`);
+  }, [filters, query, sort]);
 
-    return () => window.cancelAnimationFrame(frame);
-  }, [items]);
-
-  useEffect(() => {
-    if (!savedReady) return;
-    window.localStorage.setItem(savedStorageKey, JSON.stringify(savedSlugs));
-  }, [savedReady, savedSlugs]);
-
-  function toggleSaved(slug: string) {
-    const saved = savedSlugs.includes(slug);
-    trackEvent(saved ? "journey_unsave" : "save_journey", { journey: slug });
-    setSavedSlugs((current) =>
-      saved ? current.filter((currentSlug) => currentSlug !== slug) : [...current, slug],
-    );
-  }
-
-  function toggleNeed(id: JourneyPlanningNeedId) {
+  const toggle = <K extends keyof Filters>(key: K, value: Filters[K][number]) =>
     setFilters((current) => ({
       ...current,
-      needs: current.needs.includes(id)
-        ? current.needs.filter((need) => need !== id)
-        : [...current.needs, id],
+      [key]: current[key].includes(value as never)
+        ? current[key].filter((item) => item !== value)
+        : [...current[key], value],
     }));
-  }
-
-  function showResults() {
-    document.querySelector<HTMLElement>("#all-private-journeys")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-
+  const reset = () => {
+    setFilters(emptyFilters);
+    setQuery("");
+    setLimit(12);
+  };
   return (
-    <main className="bg-[#f7f8f4] text-[#171914]">
-      <section className="relative isolate flex min-h-[66svh] items-end overflow-hidden border-b border-black/8">
-        {heroJourney ? (
-          <OptimizedImage
-            src={heroJourney.image.src}
-            alt={heroJourney.image.alt}
-            fill
-            sizes="100vw"
-            objectPosition={heroJourney.image.objectPosition}
-            priority
-            showSkeleton={false}
-            frameClassName="absolute inset-0 -z-20 h-full bg-[#dfe7df]"
-            className="h-full w-full brightness-[0.88] saturate-[1.08]"
-          />
-        ) : null}
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(16,20,16,0.78)_0%,rgba(16,20,16,0.58)_48%,rgba(16,20,16,0.18)_100%)] max-md:bg-[linear-gradient(180deg,rgba(16,20,16,0.35),rgba(16,20,16,0.82))]" />
-        <div className="mx-auto w-full max-w-[92rem] px-5 pt-32 pb-14 text-white sm:px-6 md:pb-18 lg:px-8">
-          <p className="text-[0.68rem] font-semibold tracking-[0.2em] text-white/62 uppercase">
-            AVIORA private journeys
-          </p>
-          <h1 className="mt-5 max-w-5xl font-serif text-[clamp(3.5rem,8vw,7.75rem)] leading-[0.86] font-medium text-balance">
-            Private journeys through China.
-          </h1>
-          <div className="mt-7 grid max-w-5xl gap-6 border-t border-white/24 pt-6 md:grid-cols-[1fr_auto] md:items-end">
-            <p className="max-w-2xl text-base leading-7 text-white/76 md:text-lg md:leading-8">
-              Explore thoughtfully designed routes, then shape the hotels, daily rhythm and private
-              support around your dates and the people travelling with you.
-            </p>
-            <button
-              type="button"
-              onClick={() =>
-                document.querySelector<HTMLElement>("#journey-browser")?.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className={cn(
-                buttonBaseStyles,
-                buttonVariants.lightFrosted,
-                buttonSizes.lg,
-                "w-full md:w-auto",
-              )}
-            >
-              Browse all journeys
-              <ArrowRight size={17} aria-hidden="true" />
-            </button>
-          </div>
+    <main className={styles.page}>
+      <section className={styles.hero}>
+        <OptimizedImage
+          src="/home/jiuzhaigou-five-flower-lake.webp"
+          alt="Autumn forest reflected in the turquoise lakes of Jiuzhaigou Valley"
+          fill
+          sizes="100vw"
+          priority
+          frameClassName="absolute inset-0 h-full w-full bg-[#151816]"
+          className="object-cover"
+        />
+        <div className={styles.heroShade} />
+        <div className={styles.heroCopy}>
+          <p>{heroContent.eyebrow}</p>
+          <h1>{heroContent.title}</h1>
+          <span>{heroContent.description}</span>
         </div>
       </section>
-
-      <section
-        id="journey-browser"
-        className="scroll-mt-24 border-b border-black/8 bg-white py-14 md:py-20"
-      >
-        <div className="mx-auto w-full max-w-[92rem] px-5 sm:px-6 lg:px-8">
-          <header className="grid gap-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
-            <div>
-              <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-[#5f7567] uppercase">
-                Find your starting point
-              </p>
-              <h2 className="mt-4 max-w-4xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.92] font-medium">
-                What draws you to China?
-              </h2>
+      {heroContent.service ? (
+        <section className={styles.profileService} aria-labelledby="journey-profile-service-title">
+          <div className={styles.profileServiceInner}>
+            <div className={styles.profileServiceHeader}>
+              <div>
+                <p>{heroContent.service.eyebrow}</p>
+                <h2 id="journey-profile-service-title">{heroContent.service.title}</h2>
+              </div>
+              <div className={styles.profileServiceIntroduction}>
+                <p>{heroContent.service.description}</p>
+                <Link href={heroContent.service.planningHref}>
+                  Plan Around My Needs
+                  <ArrowUpRight aria-hidden="true" />
+                </Link>
+              </div>
             </div>
-            <p className="max-w-xl text-sm leading-7 text-black/56 md:text-base">
-              Begin with the kind of experience you want. Practical preferences are optional, and
-              every published journey remains visible until you choose otherwise.
+
+            <ul className={styles.profileServiceList}>
+              {heroContent.service.items.map((item) => (
+                <li key={item.title}>
+                  <Check aria-hidden="true" />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.detail}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <p className={styles.profileServiceConfirmation}>
+              <Check aria-hidden="true" />
+              <span>{heroContent.service.confirmation}</span>
             </p>
-          </header>
-
-          <div className="mt-10 grid gap-2 md:grid-cols-2 lg:grid-cols-3">
-            {interestOptions.map((option) => {
-              const active = filters.interest === option.id;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() =>
-                    setFilters((current) => ({
-                      ...current,
-                      interest: active ? null : option.id,
-                    }))
-                  }
-                  className={cn(
-                    "group grid min-h-24 grid-cols-[5.5rem_1fr_auto] items-center gap-4 rounded-lg border p-2 text-left transition-[border-color,background-color,box-shadow,transform] focus-visible:ring-2 focus-visible:ring-[#5f7567] focus-visible:outline-none",
-                    active
-                      ? "border-[#26352b] bg-[#f0f4ef] shadow-[0_12px_34px_rgba(43,61,49,0.12)]"
-                      : "border-black/9 bg-[#fafbf8] hover:-translate-y-0.5 hover:border-[#5f7567]/34 hover:bg-white hover:shadow-[0_12px_32px_rgba(43,61,49,0.08)]",
-                  )}
-                >
-                  <span className="relative h-full min-h-20 overflow-hidden rounded-md">
-                    <OptimizedImage
-                      src={option.image.src}
-                      alt=""
-                      fill
-                      sizes="88px"
-                      objectPosition={option.image.objectPosition}
-                      frameClassName="h-full bg-[#dfe7df]"
-                      className="h-full w-full transition-transform duration-500 group-hover:scale-[1.04]"
-                    />
-                  </span>
-                  <span className="min-w-0 py-2">
-                    <span className="block text-base font-semibold">{option.label}</span>
-                    <span className="mt-1 block text-xs leading-5 text-black/48">
-                      {option.description}
-                    </span>
-                  </span>
-                  <span
-                    className={cn(
-                      "mr-2 grid size-8 place-items-center rounded-full border",
-                      active
-                        ? "border-[#26352b] bg-[#26352b] text-white"
-                        : "border-black/12 bg-white text-transparent",
-                    )}
-                  >
-                    <Check size={14} aria-hidden="true" />
-                  </span>
-                </button>
-              );
-            })}
           </div>
-
-          <div className="mt-5 rounded-lg border border-black/9 bg-[#f7f9f5]">
-            <button
-              type="button"
-              aria-expanded={refineOpen}
-              onClick={() => setRefineOpen((current) => !current)}
-              className="flex min-h-16 w-full items-center justify-between gap-4 px-5 text-left md:px-6"
-            >
-              <span className="flex items-center gap-3">
-                <SlidersHorizontal size={17} className="text-[#5f7567]" aria-hidden="true" />
-                <span>
-                  <span className="text-sm font-semibold">Refine your journey</span>
-                  <span className="ml-2 text-xs text-black/42">Optional</span>
-                </span>
-              </span>
-              <span className="flex items-center gap-3 text-xs font-semibold text-black/48">
-                {activeFilterCount ? `${activeFilterCount} selected` : "Duration and travel needs"}
-                <ChevronDown
-                  size={17}
-                  aria-hidden="true"
-                  className={cn("transition-transform", refineOpen && "rotate-180")}
-                />
-              </span>
+        </section>
+      ) : null}
+      <section className={styles.discovery} id="journey-discovery">
+        <div className={styles.discoveryHead}>
+          <div>
+            <p className={styles.eyebrow}>Journey discovery</p>
+            <h2>Find Your Ideal China Journey.</h2>
+          </div>
+          <p>
+            Search by destination, trip length or travel style. Every route is private and can be
+            tailored around you.
+          </p>
+        </div>
+        <label className={styles.search}>
+          <Search size={17} strokeWidth={1.7} aria-hidden="true" />
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search by city, experience or journey name"
+            aria-label="Search journeys"
+          />
+          {query ? (
+            <button onClick={() => setQuery("")} aria-label="Clear search">
+              <X size={18} />
             </button>
-
-            {refineOpen ? (
-              <div className="grid gap-8 border-t border-black/8 px-5 py-6 md:px-6 lg:grid-cols-3">
-                <FilterGroup title="Duration">
-                  {durationOptions.map((option) => {
-                    const active = filters.duration === option.id;
-                    return (
-                      <FilterChip
-                        key={option.id}
-                        active={active}
-                        label={option.label}
-                        onClick={() =>
-                          setFilters((current) => ({
-                            ...current,
-                            duration: active ? null : option.id,
-                          }))
-                        }
-                      />
-                    );
-                  })}
-                </FilterGroup>
-
-                <FilterGroup title="Who is travelling?">
-                  {travelerOptions.map((option) => {
-                    const active = filters.traveler === option.id;
-                    return (
-                      <FilterChip
-                        key={option.id}
-                        active={active}
-                        label={option.label}
-                        onClick={() =>
-                          setFilters((current) => ({
-                            ...current,
-                            traveler: active ? null : option.id,
-                          }))
-                        }
-                      />
-                    );
-                  })}
-                </FilterGroup>
-
-                <FilterGroup title="Travel needs">
-                  {needOptions.map((option) => (
-                    <FilterChip
-                      key={option.id}
-                      active={filters.needs.includes(option.id)}
-                      label={option.label}
-                      onClick={() => toggleNeed(option.id)}
+          ) : null}
+        </label>
+        <MobileTools
+          resultCount={results.length}
+          active={active}
+          filters={filters}
+          destinations={destinations}
+          toggle={toggle}
+          reset={reset}
+          items={items}
+        />
+        <MobileJourneySearch query={query} setQuery={setQuery} resultCount={results.length} />
+        {summary ? (
+          <div className={styles.summary}>
+            <span>{summary}</span>
+            <button onClick={reset}>Clear filters</button>
+          </div>
+        ) : null}
+        <div className={styles.layout}>
+          <aside className={styles.filterRail} aria-label="Journey filters">
+            <div className={styles.filterTitle}>
+              <span>Filters</span>
+              {active ? <button onClick={reset}>Clear all</button> : null}
+            </div>
+            <FilterSections
+              filters={filters}
+              destinations={destinations}
+              toggle={toggle}
+              items={items}
+            />
+          </aside>
+          <div className={styles.results}>
+            <div className={styles.resultBar}>
+              <p aria-live="polite">
+                <strong>{results.length}</strong> {results.length === 1 ? "journey" : "journeys"}
+              </p>
+              <div className={styles.sortControl}>
+                <span>Sort by</span>
+                <Select.Root value={sort} onValueChange={(value) => setSort(value as SortId)}>
+                  <Select.Trigger className={styles.sortTrigger} aria-label="Sort journeys">
+                    <Select.Value />
+                    <Select.Icon>
+                      <ChevronDown size={14} strokeWidth={1.7} aria-hidden="true" />
+                    </Select.Icon>
+                  </Select.Trigger>
+                  <Select.Portal>
+                    <Select.Content
+                      className={styles.sortMenu}
+                      position="popper"
+                      sideOffset={7}
+                      align="end"
+                    >
+                      <Select.Viewport>
+                        {sortOptions.map(([value, label]) => (
+                          <Select.Item className={styles.sortOption} key={value} value={value}>
+                            <Select.ItemText>{label}</Select.ItemText>
+                            <Select.ItemIndicator className={styles.sortIndicator}>
+                              <Check size={13} strokeWidth={2} aria-hidden="true" />
+                            </Select.ItemIndicator>
+                          </Select.Item>
+                        ))}
+                      </Select.Viewport>
+                    </Select.Content>
+                  </Select.Portal>
+                </Select.Root>
+              </div>
+            </div>
+            {results.length ? (
+              <>
+                <div className={styles.grid}>
+                  {results.slice(0, limit).map((item) => (
+                    <JourneyResult
+                      key={item.slug}
+                      item={item}
+                      reason={matchReason(item, filters, deferredQuery)}
                     />
                   ))}
-                  <p className="mt-2 w-full text-xs leading-5 text-black/44">
-                    Specific dietary, prayer and mobility arrangements are confirmed for your dates,
-                    not assumed from a label.
-                  </p>
-                </FilterGroup>
-              </div>
-            ) : null}
-          </div>
-
-          <div className="mt-5 flex flex-col gap-4 border-t border-black/8 pt-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-black/52" aria-live="polite">
-              <span className="font-semibold text-[#171914]">{filteredItems.length}</span>{" "}
-              {filteredItems.length === 1 ? "private journey" : "private journeys"} shown
-            </p>
-            <div className="flex flex-wrap items-center gap-2">
-              {activeFilterCount ? (
-                <button
-                  type="button"
-                  onClick={() => setFilters(emptyFilters)}
-                  className="min-h-11 rounded-full px-4 text-sm font-semibold text-black/52 transition hover:text-black"
-                >
-                  Clear filters
-                </button>
-              ) : null}
-              <button
-                type="button"
-                onClick={showResults}
-                className={cn(buttonBaseStyles, buttonVariants.primary, buttonSizes.md)}
-              >
-                View {filteredItems.length || "custom"} journeys
-                <ArrowRight size={16} aria-hidden="true" />
-              </button>
-            </div>
+                </div>
+                {limit < results.length ? (
+                  <button
+                    className={styles.loadMore}
+                    onClick={() => setLimit((value) => value + 12)}
+                  >
+                    Load more journeys <span>{Math.min(12, results.length - limit)} more</span>
+                  </button>
+                ) : null}
+              </>
+            ) : (
+              <NoResults reset={reset} />
+            )}
           </div>
         </div>
       </section>
-
-      <section id="all-private-journeys" className="scroll-mt-24 bg-[#f7f8f4] py-14 md:py-20">
-        <div className="mx-auto w-full max-w-[92rem] px-5 sm:px-6 lg:px-8">
-          <header className="grid gap-5 border-b border-black/10 pb-7 md:grid-cols-[1fr_auto] md:items-end">
-            <div>
-              <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-[#5f7567] uppercase">
-                All private journeys
-              </p>
-              <h2 className="mt-3 font-serif text-[clamp(2.7rem,5vw,5.25rem)] leading-[0.92] font-medium">
-                A starting point, made private.
-              </h2>
-            </div>
-            <p className="max-w-md text-sm leading-6 text-black/52">
-              No fixed departures and no displayed package price. Every route is adjusted around
-              your dates, comfort level and preferred rhythm.
-            </p>
-          </header>
-
-          {filteredItems.length ? (
-            <div className="mt-10 grid gap-x-6 gap-y-12 md:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
-              {filteredItems.map((item, index) => (
-                <JourneyEditorialCard
-                  key={item.slug}
-                  item={item}
-                  index={index}
-                  saved={savedSlugs.includes(item.slug)}
-                  onSave={() => toggleSaved(item.slug)}
-                />
-              ))}
-            </div>
-          ) : (
-            <NoMatches onReset={() => setFilters(emptyFilters)} />
-          )}
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-[#182019] py-16 text-white md:py-24">
-        <div className="mx-auto grid w-full max-w-[92rem] gap-10 px-5 sm:px-6 lg:grid-cols-[1fr_0.72fr] lg:items-end lg:px-8">
-          <div>
-            <p className="text-[0.68rem] font-semibold tracking-[0.18em] text-white/52 uppercase">
-              Designed and operated in China
-            </p>
-            <h2 className="mt-4 max-w-4xl font-serif text-[clamp(3rem,6vw,6rem)] leading-[0.9] font-medium">
-              Start with a route. Make it entirely yours.
-            </h2>
-          </div>
-          <div>
-            <p className="text-base leading-7 text-white/66">
-              Share your dates, travelers and priorities. A China journey specialist will shape the
-              right hotels, transport, guiding and daily pace into one clear private proposal.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/start-planning?source=journeys"
-                className={cn(
-                  buttonBaseStyles,
-                  buttonVariants.lightFrosted,
-                  buttonSizes.lg,
-                  "w-full sm:w-auto",
-                )}
-              >
-                Request a Private Proposal
-                <ArrowRight size={17} aria-hidden="true" />
-              </Link>
-              <a
-                href="https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20help%20choosing%20a%20private%20China%20journey."
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonBaseStyles,
-                  buttonVariants.whatsappFrosted,
-                  buttonSizes.lg,
-                  "w-full gap-2 sm:w-auto",
-                )}
-              >
-                <WhatsAppIcon className="size-[18px]" />
-                WhatsApp a Specialist
-              </a>
-            </div>
-            <div className="mt-7 grid grid-cols-3 gap-3 border-t border-white/14 pt-5 text-xs leading-5 text-white/48">
-              <p>Private local support</p>
-              <p>No forced shopping</p>
-              <p>Licensed China operator</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SavedJourneys items={savedItems} onRemove={(slug) => toggleSaved(slug)} ready={savedReady} />
     </main>
   );
 }
 
-function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <fieldset>
-      <legend className="text-[0.66rem] font-semibold tracking-[0.14em] text-black/46 uppercase">
-        {title}
-      </legend>
-      <div className="mt-3 flex flex-wrap gap-2">{children}</div>
-    </fieldset>
-  );
-}
-
-function FilterChip({
-  label,
-  active,
-  onClick,
+function FilterSections({
+  filters,
+  destinations,
+  toggle,
+  items,
 }: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
+  filters: Filters;
+  destinations: string[];
+  toggle: <K extends keyof Filters>(key: K, value: Filters[K][number]) => void;
+  items: JourneyCatalogItem[];
 }) {
   return (
-    <button
-      type="button"
-      aria-pressed={active}
-      onClick={onClick}
-      className={cn(
-        "min-h-10 rounded-full border px-4 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#5f7567] focus-visible:outline-none",
-        active
-          ? "border-[#26352b] bg-[#26352b] text-white"
-          : "border-black/10 bg-white text-black/58 hover:border-[#5f7567]/40 hover:text-black",
-      )}
-    >
-      {label}
-    </button>
-  );
-}
-
-function JourneyEditorialCard({
-  item,
-  index,
-  saved,
-  onSave,
-}: {
-  item: JourneyCatalogItem;
-  index: number;
-  saved: boolean;
-  onSave: () => void;
-}) {
-  return (
-    <article className="group grid h-full min-w-0 grid-rows-[auto_1fr]">
-      <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[#dfe7df]">
-        <Link href={item.href} aria-label={`Explore ${item.title}`} className="block h-full">
-          <OptimizedImage
-            src={item.image.src}
-            alt={item.image.alt}
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            objectPosition={item.image.objectPosition}
-            priority={index < 2}
-            frameClassName="h-full"
-            className="h-full w-full brightness-[1.03] saturate-[1.08] transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.025]"
-          />
-        </Link>
-        <button
-          type="button"
-          onClick={onSave}
-          aria-pressed={saved}
-          aria-label={saved ? `Remove ${item.title} from saved journeys` : `Save ${item.title}`}
-          className={cn(
-            "absolute top-4 right-4 z-20 grid size-11 place-items-center rounded-full border backdrop-blur-xl transition-colors focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none",
-            saved
-              ? "border-[#26352b] bg-[#26352b] text-white"
-              : "border-white/78 bg-white/76 text-black/68 shadow-sm hover:bg-white",
-          )}
-        >
-          {saved ? (
-            <Check size={16} aria-hidden="true" />
-          ) : (
-            <Bookmark size={16} aria-hidden="true" />
-          )}
-        </button>
-      </div>
-
-      <div className="grid h-full gap-5 border-b border-black/10 py-6 md:grid-cols-[1fr_auto] md:items-end">
-        <div className="flex min-w-0 flex-col">
-          <p className="text-[0.65rem] font-semibold tracking-[0.12em] text-[#5f7567] uppercase">
-            {item.durationLabel} · {item.routeLabel}
-          </p>
-          <Link href={item.href}>
-            <h3 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,3.3vw,3.6rem)] leading-[0.96] font-medium text-balance md:min-h-[3.84em]">
-              {item.title}
-            </h3>
-          </Link>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-black/54 md:min-h-[4.5rem]">
-            {item.hook}
-          </p>
-          <div className="mt-4 flex min-h-8 flex-wrap content-start gap-2">
-            {item.styleFilters.slice(0, 3).map((style) => (
-              <span
-                key={style}
-                className="rounded-full border border-black/9 bg-white px-3 py-1.5 text-[0.65rem] font-semibold text-black/46"
-              >
-                {style}
-              </span>
-            ))}
-          </div>
-        </div>
-        <Link
-          href={item.href}
-          className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-semibold text-[#31483a] transition-colors hover:text-black"
-        >
-          Explore this journey
-          <ArrowRight size={16} aria-hidden="true" />
-        </Link>
-      </div>
-    </article>
-  );
-}
-
-function NoMatches({ onReset }: { onReset: () => void }) {
-  return (
-    <div className="mt-10 border-y border-black/10 py-16 text-center md:py-24">
-      <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-[#5f7567] uppercase">
-        A private route may fit better
-      </p>
-      <h3 className="mx-auto mt-4 max-w-4xl font-serif text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.92]">
-        We do not have an exact published match.
-      </h3>
-      <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-black/52">
-        Clear one preference to see nearby routes, or ask our team to design around the complete
-        brief.
-      </p>
-      <div className="mt-7 flex flex-wrap justify-center gap-3">
-        <button
-          type="button"
-          onClick={onReset}
-          className={cn(buttonBaseStyles, buttonVariants.primary, buttonSizes.md)}
-        >
-          Show every journey
-        </button>
-        <Link
-          href="/start-planning?source=journey-filter"
-          className={cn(buttonBaseStyles, buttonVariants.lightFrosted, buttonSizes.md)}
-        >
-          Plan around my brief
-        </Link>
-      </div>
+    <div className={styles.filterSections}>
+      <FilterGroup
+        title="Travel focus"
+        options={focusOptions}
+        selected={filters.focus}
+        onToggle={(v) => toggle("focus", v as JourneyFocusId)}
+        count={(v) => items.filter((i) => i.discovery.focus.includes(v as JourneyFocusId)).length}
+      />
+      <FilterGroup
+        title="Duration"
+        options={durationOptions}
+        selected={filters.duration}
+        onToggle={(v) => toggle("duration", v)}
+        count={(v) => items.filter((i) => durationMatch(i, v)).length}
+      />
+      <FilterGroup
+        title="Destinations"
+        options={destinations.map((value) => [value, value])}
+        selected={filters.destinations}
+        onToggle={(v) => toggle("destinations", v)}
+        count={(v) => items.filter((i) => i.destinationFilters.includes(v)).length}
+      />
+      <FilterGroup
+        title="Travel pace"
+        options={paceOptions}
+        selected={filters.pace}
+        onToggle={(v) => toggle("pace", v)}
+        count={(v) => items.filter((i) => i.discovery.pace === v).length}
+      />
+      <details>
+        <summary>
+          Travel details <ChevronDown size={16} />
+        </summary>
+        <FilterGroup
+          title="Walking level"
+          options={walkingOptions}
+          selected={filters.walking}
+          onToggle={(v) => toggle("walking", v)}
+        />
+        <FilterGroup
+          title="Altitude"
+          options={altitudeOptions}
+          selected={filters.altitude}
+          onToggle={(v) => toggle("altitude", v)}
+        />
+        <FilterGroup
+          title="Intercity travel"
+          options={transportOptions}
+          selected={filters.transport}
+          onToggle={(v) => toggle("transport", v)}
+        />
+        <FilterGroup
+          title="Who is travelling?"
+          options={travellerOptions}
+          selected={filters.travellers}
+          onToggle={(v) => toggle("travellers", v as JourneyTravelerId)}
+        />
+        <FilterGroup
+          title="Planning preferences"
+          options={planningNeedOptions}
+          selected={filters.needs}
+          onToggle={(v) => toggle("needs", v as JourneyPlanningNeedId)}
+          count={(v) =>
+            items.filter((i) => i.planningNeedFilters.includes(v as JourneyPlanningNeedId)).length
+          }
+        />
+        <FilterGroup
+          title="Best time to travel"
+          options={seasonOptions}
+          selected={filters.seasons}
+          onToggle={(v) => toggle("seasons", v)}
+        />
+      </details>
     </div>
   );
 }
 
-function SavedJourneys({
-  items,
-  onRemove,
-  ready,
+function FilterGroup({
+  title,
+  options,
+  selected,
+  onToggle,
+  count,
 }: {
-  items: JourneyCatalogItem[];
-  onRemove: (slug: string) => void;
-  ready: boolean;
+  title: string;
+  options: readonly (readonly [string, string])[];
+  selected: readonly string[];
+  onToggle: (value: string) => void;
+  count?: (value: string) => number;
 }) {
-  const count = ready ? items.length : 0;
-  const savedTitles = items.map((item) => item.title);
-  const numberedJourneys = savedTitles.map((title, index) => `${index + 1}. ${title}`).join("\n");
-  const contactMessage = `Hello AVIORA, I would like to learn more about these saved journeys:\n${numberedJourneys}\n\nCould a China journey specialist explain the differences and help us choose the right starting point?`;
-  const whatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(contactMessage)}`;
-  const emailHref = `mailto:chinaprimedmc@gmail.com?subject=${encodeURIComponent(
-    "My saved AVIORA journeys",
-  )}&body=${encodeURIComponent(contactMessage)}`;
-  const planningHref = `/start-planning?source=saved-journeys&journeys=${encodeURIComponent(
-    JSON.stringify(savedTitles),
-  )}`;
+  return (
+    <fieldset className={styles.filterGroup}>
+      <legend>{title}</legend>
+      {options.map(([value, label]) => {
+        const total = count?.(value);
+        return (
+          <label key={value} data-disabled={total === 0}>
+            <input
+              type="checkbox"
+              checked={selected.includes(value)}
+              disabled={total === 0}
+              onChange={() => onToggle(value)}
+            />
+            <span>{label}</span>
+            {typeof total === "number" ? <small>{total}</small> : null}
+          </label>
+        );
+      })}
+    </fieldset>
+  );
+}
+
+function MobileTools(props: {
+  resultCount: number;
+  active: number;
+  filters: Filters;
+  destinations: string[];
+  toggle: <K extends keyof Filters>(key: K, value: Filters[K][number]) => void;
+  reset: () => void;
+  items: JourneyCatalogItem[];
+}) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const openFilters = () => setOpen(true);
+    window.addEventListener("aviora:open-journey-filters", openFilters);
+    return () => window.removeEventListener("aviora:open-journey-filters", openFilters);
+  }, []);
 
   return (
-    <Dialog.Root>
-      {count ? (
+    <div className={styles.mobileTools}>
+      <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Trigger asChild>
-          <button
-            type="button"
-            className="fixed right-4 bottom-[calc(env(safe-area-inset-bottom)+5.75rem)] z-50 inline-flex min-h-12 items-center gap-2 rounded-full border border-white/82 bg-white/82 px-4 text-sm font-semibold text-[#171914] shadow-[0_16px_48px_rgba(42,57,47,0.18)] backdrop-blur-2xl transition hover:-translate-y-0.5 hover:bg-white focus-visible:ring-2 focus-visible:ring-[#5f7567] focus-visible:outline-none sm:right-6 sm:bottom-6"
-            aria-label={`Open saved journeys, ${count} saved`}
-          >
-            <Bookmark size={16} aria-hidden="true" />
-            <span className="hidden sm:inline">Saved</span>
-            <span className="grid min-w-6 place-items-center rounded-full bg-[#26352b] px-1.5 py-0.5 text-xs text-white">
-              {count}
+          <button type="button">
+            <span>
+              <SlidersHorizontal size={17} />
+              Filter journeys {props.active ? `(${props.active})` : ""}
             </span>
+            <strong>{props.resultCount} matches</strong>
           </button>
         </Dialog.Trigger>
-      ) : null}
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[90] bg-[#172019]/34 backdrop-blur-sm" />
-        <Dialog.Content className="fixed top-0 right-0 bottom-0 z-[91] flex w-[min(94vw,30rem)] flex-col border-l border-black/8 bg-[#f7f8f4] p-5 text-[#171914] shadow-[-24px_0_90px_rgba(36,51,41,0.2)] outline-none md:p-7">
-          <div className="flex items-start justify-between gap-4 border-b border-black/9 pb-6">
-            <div>
-              <p className="text-[0.66rem] font-semibold tracking-[0.16em] text-[#5f7567] uppercase">
-                Your shortlist
-              </p>
-              <Dialog.Title className="mt-3 font-serif text-4xl leading-none">
-                Saved journeys
-              </Dialog.Title>
-              <Dialog.Description className="mt-3 text-sm leading-6 text-black/52">
-                Open a journey for details or send the complete shortlist to a China specialist.
-              </Dialog.Description>
+        <Dialog.Portal>
+          <Dialog.Overlay className={styles.sheetOverlay} />
+          <Dialog.Content className={styles.sheet}>
+            <div className={styles.sheetHead}>
+              <Dialog.Title>Filter journeys</Dialog.Title>
+              <button onClick={props.reset}>Reset</button>
+              <Dialog.Close aria-label="Close filters">
+                <X size={20} />
+              </Dialog.Close>
             </div>
-            <Dialog.Close
-              className="grid size-11 shrink-0 place-items-center rounded-full border border-black/10 bg-white hover:bg-[#edf2ec]"
-              aria-label="Close saved journeys"
-            >
+            <div className={styles.sheetBody}>
+              <FilterSections
+                filters={props.filters}
+                destinations={props.destinations}
+                toggle={props.toggle}
+                items={props.items}
+              />
+            </div>
+            <div className={styles.sheetFoot}>
+              <p>{props.resultCount} journeys match your selection</p>
+              <Dialog.Close>View {props.resultCount} journeys</Dialog.Close>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </div>
+  );
+}
+
+function MobileJourneySearch({
+  query,
+  setQuery,
+  resultCount,
+}: {
+  query: string;
+  setQuery: (value: string) => void;
+  resultCount: number;
+}) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const openSearch = () => setOpen(true);
+    window.addEventListener("aviora:open-journey-search", openSearch);
+    return () => window.removeEventListener("aviora:open-journey-search", openSearch);
+  }, []);
+
+  return (
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Portal>
+        <Dialog.Overlay className={styles.mobileSearchOverlay} />
+        <Dialog.Content className={styles.mobileSearchSheet}>
+          <div className={styles.mobileSearchHead}>
+            <Dialog.Title>Find a journey</Dialog.Title>
+            <Dialog.Close aria-label="Close journey search">
               <X size={18} aria-hidden="true" />
             </Dialog.Close>
           </div>
-
-          <div className="flex-1 overflow-y-auto py-6">
-            {items.length ? (
-              <div className="grid gap-3">
-                {items.map((item) => (
-                  <article
-                    key={item.slug}
-                    className="grid grid-cols-[5rem_1fr_auto] gap-3 border-b border-black/9 pb-4"
-                  >
-                    <Link href={item.href} className="group contents">
-                      <span className="relative min-h-20 overflow-hidden rounded-md">
-                        <OptimizedImage
-                          src={item.image.src}
-                          alt=""
-                          fill
-                          sizes="80px"
-                          objectPosition={item.image.objectPosition}
-                          frameClassName="h-full bg-[#dfe7df]"
-                          className="h-full w-full transition-transform duration-500 group-hover:scale-[1.04]"
-                        />
-                      </span>
-                      <span className="min-w-0 self-center">
-                        <span className="block font-serif text-xl leading-none">{item.title}</span>
-                        <span className="mt-2 block text-xs text-black/44">
-                          {item.durationLabel}
-                        </span>
-                      </span>
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => onRemove(item.slug)}
-                      className="grid size-9 place-items-center rounded-full text-black/38 hover:bg-white hover:text-black"
-                      aria-label={`Remove ${item.title} from saved journeys`}
-                    >
-                      <X size={15} aria-hidden="true" />
-                    </button>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <div className="grid min-h-64 place-items-center border-y border-dashed border-black/12 text-center">
-                <div className="max-w-xs px-5">
-                  <Bookmark className="mx-auto text-[#5f7567]" aria-hidden="true" />
-                  <p className="mt-4 font-serif text-3xl">Nothing saved yet.</p>
-                  <p className="mt-3 text-sm leading-6 text-black/46">
-                    Use the bookmark on any journey and it will appear here.
-                  </p>
-                </div>
-              </div>
-            )}
+          <label className={styles.mobileSearchField}>
+            <Search size={16} strokeWidth={1.7} aria-hidden="true" />
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="City, experience or journey"
+              aria-label="Search journeys on mobile"
+              autoFocus
+            />
+            {query ? (
+              <button type="button" onClick={() => setQuery("")} aria-label="Clear search">
+                <X size={16} aria-hidden="true" />
+              </button>
+            ) : null}
+          </label>
+          <div className={styles.mobileSearchFoot}>
+            <span>
+              {resultCount} {resultCount === 1 ? "journey" : "journeys"}
+            </span>
+            <Dialog.Close>View results</Dialog.Close>
           </div>
-
-          {items.length ? (
-            <div className="grid gap-3 border-t border-black/9 pt-5">
-              <Link
-                href={planningHref}
-                className={cn(buttonBaseStyles, buttonVariants.primary, buttonSizes.md, "w-full")}
-              >
-                Request details for these journeys
-                <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-              <div className="grid grid-cols-2 gap-3">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(
-                    buttonBaseStyles,
-                    buttonVariants.whatsappFrosted,
-                    buttonSizes.sm,
-                    "w-full gap-2",
-                  )}
-                >
-                  <WhatsAppIcon className="size-[17px]" />
-                  WhatsApp
-                </a>
-                <a
-                  href={emailHref}
-                  className={cn(
-                    buttonBaseStyles,
-                    buttonVariants.lightFrosted,
-                    buttonSizes.sm,
-                    "w-full gap-2",
-                  )}
-                >
-                  <Mail size={16} aria-hidden="true" />
-                  Email
-                </a>
-              </div>
-            </div>
-          ) : null}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
   );
 }
 
-function matchesFilters(item: JourneyCatalogItem, filters: FilterState) {
-  if (filters.interest && !matchesInterest(item, filters.interest)) return false;
+function JourneyResult({ item, reason }: { item: JourneyCatalogItem; reason: string }) {
+  const displayTitle = getDisplayTitle(item.title);
 
-  if (filters.duration) {
-    const duration = durationOptions.find((option) => option.id === filters.duration);
-    if (
-      duration &&
-      (item.recommendedDaysMin > duration.max || item.recommendedDaysMax < duration.min)
-    ) {
-      return false;
-    }
-  }
-
-  if (filters.traveler && !item.travelerFilters.includes(filters.traveler)) return false;
-  if (filters.needs.some((need) => !item.planningNeedFilters.includes(need))) return false;
-  return true;
+  return (
+    <article className={styles.card}>
+      <div className={styles.photoStage}>
+        <Link href={item.href}>
+          <OptimizedImage
+            src={item.image.src}
+            alt={item.image.alt}
+            fill
+            sizes="(min-width: 1000px) 38vw, 100vw"
+            frameClassName="absolute inset-0 h-full w-full"
+            className="object-cover"
+          />
+        </Link>
+      </div>
+      <div className={styles.cardBody}>
+        <p>{item.durationLabel}</p>
+        <Link href={item.href}>
+          <h3>{displayTitle}</h3>
+        </Link>
+        <span>{item.hook}</span>
+        <div className={styles.price}>
+          <strong>From US${item.pricing.fromUsd.toLocaleString("en-US")}</strong>
+          <span>per person · 4 guests sharing 2 rooms</span>
+        </div>
+        {reason ? (
+          <div className={styles.match}>
+            <strong>Why it matches</strong>
+            {reason}
+          </div>
+        ) : null}
+        <dl>
+          <div>
+            <dt>Best for</dt>
+            <dd>{item.bestForSummary}</dd>
+          </div>
+          <div>
+            <dt>Walking</dt>
+            <dd>{capitalize(item.discovery.walkingLevel)}</dd>
+          </div>
+        </dl>
+        <Link className={styles.view} href={item.href}>
+          <span>View itinerary</span>
+          <ArrowUpRight size={15} strokeWidth={1.8} aria-hidden="true" />
+        </Link>
+      </div>
+    </article>
+  );
 }
 
-function matchesInterest(item: JourneyCatalogItem, interest: InterestId) {
-  switch (interest) {
-    case "first-visit":
-      return item.travelerFilters.includes("first-time");
-    case "culture":
-      return item.experienceFilters.some((experience) =>
-        ["great-wall", "ancient-china", "silk-road"].includes(experience),
-      );
-    case "landscapes":
-      return item.experienceFilters.includes("scenery");
-    case "food-local-life":
-      return item.experienceFilters.some((experience) =>
-        ["food", "local-life"].includes(experience),
-      );
-    case "family":
-      return item.travelerFilters.some((traveler) =>
-        ["families", "multigenerational"].includes(traveler),
-      );
-    case "gentler-pace":
-      return item.planningNeedFilters.some((need) =>
-        ["slower-pacing", "mobility-aware"].includes(need),
-      );
+function NoResults({ reset }: { reset: () => void }) {
+  return (
+    <div className={styles.noResults}>
+      <p className={styles.eyebrow}>No exact match</p>
+      <h3>No journeys match all of these choices.</h3>
+      <p>
+        Remove one practical condition to see nearby routes, or let a specialist design around the
+        complete brief.
+      </p>
+      <div>
+        <button onClick={reset}>Clear all filters</button>
+        <Link href="/start-planning?source=journey-filter-empty">
+          Speak with a China specialist →
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function matches(item: JourneyCatalogItem, filters: Filters, query: string) {
+  const q = query.trim().toLowerCase();
+  if (q && !item.discovery.searchableText.includes(q) && !daysQuery(item, q)) return false;
+  if (filters.focus.length && !filters.focus.some((v) => item.discovery.focus.includes(v)))
+    return false;
+  if (filters.duration.length && !filters.duration.some((v) => durationMatch(item, v)))
+    return false;
+  if (
+    filters.destinations.length &&
+    !filters.destinations.every((v) => item.destinationFilters.includes(v))
+  )
+    return false;
+  if (filters.pace.length && !filters.pace.includes(item.discovery.pace)) return false;
+  if (filters.walking.length && !filters.walking.includes(item.discovery.walkingLevel))
+    return false;
+  if (filters.altitude.length && !filters.altitude.includes(item.discovery.altitude)) return false;
+  if (
+    filters.transport.length &&
+    !filters.transport.every((v) =>
+      v === "fewer"
+        ? item.discovery.hotelChanges <= 1
+        : item.discovery.transport.includes(v as never),
+    )
+  )
+    return false;
+  if (
+    filters.travellers.length &&
+    !filters.travellers.some((v) => item.travelerFilters.includes(v))
+  )
+    return false;
+  if (filters.needs.length && !filters.needs.some((v) => item.planningNeedFilters.includes(v)))
+    return false;
+  if (
+    filters.seasons.length &&
+    !filters.seasons.some((v) => item.discovery.seasons.includes(v as never))
+  )
+    return false;
+  return true;
+}
+function durationMatch(item: JourneyCatalogItem, value: string) {
+  const [min, max] = value === "15+" ? [15, 365] : value.split("-").map(Number);
+  return item.recommendedDaysMin <= max && item.recommendedDaysMax >= min;
+}
+function daysQuery(item: JourneyCatalogItem, q: string) {
+  const days = Number(q.match(/\d+/)?.[0]);
+  return Boolean(days && item.recommendedDaysMin <= days && item.recommendedDaysMax >= days);
+}
+function sortItems(items: JourneyCatalogItem[], sort: SortId) {
+  return [...items].sort((a, b) =>
+    sort === "shortest"
+      ? a.recommendedDaysMin - b.recommendedDaysMin
+      : sort === "longest"
+        ? b.recommendedDaysMax - a.recommendedDaysMax
+        : sort === "relaxed"
+          ? paceScore(a) - paceScore(b)
+          : sort === "active"
+            ? paceScore(b) - paceScore(a)
+            : b.discovery.featuredRank - a.discovery.featuredRank,
+  );
+}
+function paceScore(item: JourneyCatalogItem) {
+  return item.discovery.pace === "easy" ? 0 : item.discovery.pace === "balanced" ? 1 : 2;
+}
+function matchReason(item: JourneyCatalogItem, filters: Filters, query: string) {
+  const reasons: string[] = [];
+  if (query.trim()) reasons.push(`Matches “${query.trim()}”`);
+  if (filters.duration.some((v) => durationMatch(item, v))) reasons.push(item.durationLabel);
+  if (filters.focus.length) {
+    const focus = focusOptions.find(
+      ([id]) => item.discovery.focus.includes(id) && filters.focus.includes(id),
+    );
+    if (focus) reasons.push(focus[1]);
   }
+  if (filters.pace.includes(item.discovery.pace))
+    reasons.push(`${capitalize(item.discovery.pace)} pace`);
+  if (filters.altitude.includes("none") && item.discovery.altitude === "none")
+    reasons.push("No high-altitude stays");
+  if (filters.needs.length) {
+    const need = planningNeedOptions.find(
+      ([id]) => item.planningNeedFilters.includes(id) && filters.needs.includes(id),
+    );
+    if (need) reasons.push(need[1]);
+  }
+  return reasons.slice(0, 3).join(" · ");
+}
+function getSummary(filters: Filters, query: string) {
+  const values = [
+    query.trim() ? `Search: ${query.trim()}` : "",
+    ...filters.focus.map((v) => focusOptions.find(([id]) => id === v)?.[1] ?? v),
+    ...filters.duration.map((v) => durationOptions.find(([id]) => id === v)?.[1] ?? v),
+    ...filters.destinations,
+    ...filters.pace.map(capitalize),
+    ...filters.needs.map((v) => planningNeedOptions.find(([id]) => id === v)?.[1] ?? v),
+  ].filter(Boolean);
+  return values.slice(0, 4).join(" · ") + (values.length > 4 ? ` · +${values.length - 4}` : "");
+}
+function capitalize(value: string) {
+  return value.charAt(0).toUpperCase() + value.slice(1).replaceAll("-", " ");
+}
+
+function getDisplayTitle(title: string) {
+  return title
+    .replace(/^\d+-Day\s+/i, "")
+    .replace(/\s+Private\s+(Tour|Journey)$/i, "")
+    .trim();
+}
+function getInitialUrlState(queryString: string): {
+  query: string;
+  filters: Filters;
+  sort: SortId;
+} {
+  const params = new URLSearchParams(queryString);
+  const read = (key: keyof Filters) => params.get(key)?.split(",").filter(Boolean) ?? [];
+  const sort = params.get("sort");
+  return {
+    query: params.get("q") ?? "",
+    filters: {
+      focus: read("focus") as JourneyFocusId[],
+      duration: read("duration"),
+      destinations: read("destinations"),
+      pace: read("pace"),
+      walking: read("walking"),
+      altitude: read("altitude"),
+      transport: read("transport"),
+      travellers: read("travellers") as JourneyTravelerId[],
+      needs: read("needs") as JourneyPlanningNeedId[],
+      seasons: read("seasons"),
+    },
+    sort: ["shortest", "longest", "relaxed", "active"].includes(sort ?? "")
+      ? (sort as SortId)
+      : "recommended",
+  };
 }

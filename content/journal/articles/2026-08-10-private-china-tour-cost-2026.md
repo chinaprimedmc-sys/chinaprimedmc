@@ -24,7 +24,7 @@ suggested_internal_links:
     "/tours",
     "/tours/first-china-beautifully-paced",
     "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
-    "/styles/luxury",
+    "/tours",
     "/start-planning",
   ]
 sources_verified_at: "2026-08-10"
@@ -217,7 +217,7 @@ Yes. Approximate dates and arrival cities are enough for a first route and plann
 
 ## Suggested structured data
 
-- **Article schema:** Use the commercial-intent title, publication date, AVIORA Travel Team author and canonical URL.
+- **Article schema:** Use the commercial-intent title, publication date, AVIORA China Travel Team author and canonical URL.
 - **FAQPage schema:** Use the five visible questions without adding unsupported price claims.
 
 ## Conversion CTA

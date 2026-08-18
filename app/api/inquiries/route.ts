@@ -36,21 +36,6 @@ export async function POST(request: Request) {
   try {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
     const contact = parsed.data.email || parsed.data.whatsapp || parsed.data.phone;
-    stage = "rate-limit-ip";
-    const ipAllowed = await consumeRateLimit("inquiry-ip", await hashRateLimitKey(ip), 6, 3600);
-    stage = "rate-limit-contact";
-    const contactAllowed = await consumeRateLimit(
-      "inquiry-contact",
-      await hashRateLimitKey(contact),
-      3,
-      86400,
-    );
-    if (!ipAllowed || !contactAllowed) {
-      return NextResponse.json(
-        { error: "Too many submissions. Please contact us on WhatsApp if you need help." },
-        { status: 429 },
-      );
-    }
     stage = "turnstile";
     if (
       !(await verifyTurnstileToken(parsed.data.turnstileToken, ip, new URL(request.url).hostname))
@@ -58,6 +43,35 @@ export async function POST(request: Request) {
       return NextResponse.json(
         { error: "Security check failed. Please try again." },
         { status: 400 },
+      );
+    }
+
+    stage = "rate-limit-ip";
+    const ipAllowed = await consumeRateLimit("inquiry-ip-v2", await hashRateLimitKey(ip), 20, 3600);
+    if (!ipAllowed) {
+      return NextResponse.json(
+        {
+          error:
+            "We have received several requests from this connection. Please wait a little and try again.",
+        },
+        { status: 429, headers: { "Retry-After": "3600" } },
+      );
+    }
+
+    stage = "rate-limit-contact";
+    const contactAllowed = await consumeRateLimit(
+      "inquiry-contact-v2",
+      await hashRateLimitKey(contact),
+      5,
+      86400,
+    );
+    if (!contactAllowed) {
+      return NextResponse.json(
+        {
+          error:
+            "We already have several requests for these contact details. Please contact us on WhatsApp if you need anything else today.",
+        },
+        { status: 429, headers: { "Retry-After": "86400" } },
       );
     }
     stage = "database-write";

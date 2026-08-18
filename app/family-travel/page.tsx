@@ -64,10 +64,7 @@ export default function FamilyTravelPage() {
           { name: "Family Travel", path: "/family-travel" },
         ])}
       />
-      <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-      />
+      <SiteNavigation items={homeNavItems} cta={primaryAction} />
 
       <HeroLargeImage
         eyebrow={guide.eyebrow}
@@ -185,7 +182,7 @@ export default function FamilyTravelPage() {
             title={guide.ctaTitle}
             description={guide.ctaDescription}
             primary={{ label: "Email a Family Inquiry", href: primaryAction.href }}
-            secondary={{ label: "Planning FAQ", href: "/planning/faq" }}
+            secondary={{ label: "Travel FAQ", href: "/faq" }}
           />
         </ContentContainer>
       </Section>
@@ -218,8 +215,11 @@ export default function FamilyTravelPage() {
                 label: "Beijing, Xi'an & Shanghai Private Tour",
                 href: "/tours/first-china-beautifully-paced",
               },
-              { label: "Planning FAQ", href: "/planning/faq" },
-              { label: "Visa Notes", href: "/planning/visa" },
+              { label: "Travel FAQ", href: "/faq" },
+              {
+                label: "Visa Guide",
+                href: "/journal/china-240-hour-visa-free-transit-guide",
+              },
             ],
           },
           { title: "Explore", items: homeNavItems },

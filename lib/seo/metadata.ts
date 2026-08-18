@@ -7,36 +7,60 @@ type CreateMetadataInput = {
   description?: string;
   path?: string;
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAlt?: string;
+  keywords?: string[];
   noIndex?: boolean;
   noFollow?: boolean;
   type?: "website" | "article";
 };
 
 export function createMetadata({
-  title = siteConfig.name,
+  title = siteConfig.siteName,
   description = siteConfig.description,
   path = "/",
   image = siteConfig.ogImage,
+  imageWidth,
+  imageHeight,
+  imageAlt,
+  keywords,
   noIndex = false,
   noFollow = false,
   type = "website",
 }: CreateMetadataInput = {}): Metadata {
   const url = new URL(path, siteConfig.url).toString();
-  const includesBrandSuffix = title.toLowerCase().endsWith(`| ${siteConfig.name.toLowerCase()}`);
-  const fullTitle =
-    title === siteConfig.name || includesBrandSuffix ? title : `${title} | ${siteConfig.name}`;
-  const openGraphImage =
-    image === siteConfig.ogImage
-      ? { url: image, width: 1200, height: 630, alt: `${title} — ${siteConfig.name}` }
-      : { url: image, alt: `${title} — ${siteConfig.name}` };
+  const normalizedTitle = title.toLowerCase();
+  const includesBrandName = [siteConfig.siteName, siteConfig.name].some((brandName) =>
+    normalizedTitle.includes(brandName.toLowerCase()),
+  );
+  const fullBrandTitle = `${title} | ${siteConfig.siteName}`;
+  const shortBrandTitle = `${title} | ${siteConfig.name}`;
+  const fullTitle = includesBrandName
+    ? title
+    : fullBrandTitle.length <= 64
+      ? fullBrandTitle
+      : shortBrandTitle.length <= 64
+        ? shortBrandTitle
+        : title;
+  const defaultImageDimensions = image === siteConfig.ogImage ? { width: 1200, height: 630 } : {};
+  const suppliedImageDimensions =
+    imageWidth && imageHeight ? { width: imageWidth, height: imageHeight } : {};
+  const openGraphImage = {
+    url: image,
+    ...defaultImageDimensions,
+    ...suppliedImageDimensions,
+    alt: imageAlt ?? `${title} — ${siteConfig.siteName}`,
+  };
 
   const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
 
   return {
     title: fullTitle,
     description,
-    applicationName: siteConfig.name,
-    creator: siteConfig.name,
+    keywords,
+    applicationName: siteConfig.siteName,
+    creator: siteConfig.siteName,
     publisher: siteConfig.operator.legalName,
     metadataBase: new URL(siteConfig.url),
     alternates: { canonical: url },
@@ -61,7 +85,7 @@ export function createMetadata({
       title: fullTitle,
       description,
       url,
-      siteName: siteConfig.name,
+      siteName: siteConfig.siteName,
       images: [openGraphImage],
       locale: "en_US",
       type,

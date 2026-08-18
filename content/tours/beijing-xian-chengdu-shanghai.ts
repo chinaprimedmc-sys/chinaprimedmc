@@ -565,7 +565,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
     {
       question: "How is the final price calculated?",
       answer:
-        "Your proposal is based on travel dates, party size, room configuration, hotel preference, guide service, transport and selected experiences. We do not display a fixed price because those details materially change the final arrangement.",
+        "The displayed starting price is an indicative per-person planning figure based on four guests sharing two rooms outside peak periods. Your written proposal recalculates the final price around travel dates, party size, room configuration, hotel preference, guide service, transport and selected experiences.",
     },
     {
       question: "Is this a good first trip to China?",

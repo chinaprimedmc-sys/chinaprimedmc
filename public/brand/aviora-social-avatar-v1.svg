@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">AVIORA social media avatar</title>
+  <desc id="desc">A restrained AV monogram in rice paper on a pine shadow background.</desc>
+  <rect width="1024" height="1024" fill="#30483D"/>
+  <text
+    x="512"
+    y="673"
+    fill="#F5F1E8"
+    font-family="New York, Baskerville, Palatino, Times New Roman, serif"
+    font-size="500"
+    font-weight="400"
+    letter-spacing="-58"
+    text-anchor="middle"
+  >AV</text>
+</svg>

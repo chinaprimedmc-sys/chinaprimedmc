@@ -1,0 +1,261 @@
+.footer {
+  background: #101714;
+  color: #f7f8f7;
+  padding: 0 1.5rem;
+}
+
+.inner {
+  width: min(100%, 82rem);
+  margin: 0 auto;
+}
+
+.conversion {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.eyebrow,
+.columnTitle {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.conversion h2 {
+  margin-top: 0.45rem;
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  font-weight: 600;
+  line-height: 1.12;
+}
+
+.conversionCopy {
+  max-width: 42rem;
+  margin-top: 0.55rem;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.primaryAction,
+.whatsappAction {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.primaryAction {
+  border: 1px solid #fff;
+  background: #fff;
+  color: #192421;
+}
+
+.whatsappAction {
+  border: 1px solid rgba(83, 229, 138, 0.62);
+  background: rgba(37, 211, 102, 0.1);
+  color: #75eea1;
+}
+
+.whatsappAction svg {
+  width: 16px;
+  height: 16px;
+}
+
+.primaryAction:hover,
+.whatsappAction:hover {
+  transform: translateY(-2px);
+}
+
+.whatsappAction:hover {
+  border-color: #75eea1;
+  background: rgba(37, 211, 102, 0.18);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(18rem, 1.1fr) minmax(0, 1.5fr);
+  gap: clamp(3rem, 8vw, 7rem);
+  padding: 2.75rem 0 2.5rem;
+}
+
+.brand {
+  font-size: 1.25rem;
+}
+
+.description {
+  max-width: 31rem;
+  margin-top: 0.9rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.68rem;
+}
+
+.email {
+  display: inline-flex;
+  margin-top: 1.15rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.74rem;
+}
+
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-top: 0.8rem;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.7rem;
+}
+
+.socialLinks a:hover {
+  color: #fff;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.column ul {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+
+.column a {
+  display: inline-flex;
+  max-width: 17rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.76rem;
+  line-height: 1.35;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.column a:hover {
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.legal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.15rem 0 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.64rem;
+  line-height: 1.5;
+}
+
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem 1rem;
+}
+
+.legalLinks a:hover {
+  color: #fff;
+}
+
+.cookiePreferences {
+  color: inherit;
+  font: inherit;
+  transition: color 160ms ease;
+}
+
+.cookiePreferences:hover {
+  color: #fff;
+}
+
+@media (max-width: 800px) {
+  .conversion,
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .conversion {
+    gap: 1.25rem;
+    padding: 2.25rem 0;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .primaryAction,
+  .whatsappAction {
+    flex: 1;
+  }
+
+  .main {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer {
+    padding: 0 1.15rem;
+  }
+
+  .conversion h2 {
+    font-size: 1.35rem;
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem 1.25rem;
+  }
+
+  .column:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .legal {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .legalLinks {
+    justify-content: flex-start;
+  }
+}

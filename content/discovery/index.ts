@@ -3,7 +3,6 @@ import { destinationAsset } from "@/content/destinations/assets";
 import { journalArticles } from "@/content/journal";
 import { audienceGuides, planningCards, planningFaqCategories } from "@/content/planning";
 import { tours } from "@/content/tours";
-import { travelStyles } from "@/content/travel-styles";
 import type { DiscoveryFilters, DiscoveryItem, DiscoveryType } from "@/types/discovery";
 
 const destinationItems: DiscoveryItem[] = destinations.map((destination) => {
@@ -130,28 +129,9 @@ const articleItems: DiscoveryItem[] = journalArticles.map((article) => ({
   familyFriendly: article.tags.includes("family-travel"),
 }));
 
-const travelStyleItems: DiscoveryItem[] = travelStyles.map((style) => ({
-  id: `style:${style.slug}`,
-  type: "experience",
-  title: style.title,
-  description: style.summary,
-  href: `/styles/${style.slug}`,
-  image: style.image,
-  category: "Travel Style",
-  tags: [
-    style.slug,
-    ...style.idealFor.map((item) => item.toLowerCase().replaceAll(" ", "-")),
-    ...style.designNotes.map((item) => item.toLowerCase().replaceAll(" ", "-")),
-  ],
-  travelStyle: [style.title],
-  interests: style.designNotes,
-  familyFriendly: style.slug === "family",
-  privateTour: true,
-}));
-
 const planningItems: DiscoveryItem[] = planningCards.map((card) => ({
   id: `planning:${card.href}`,
-  type: card.href === "/planning/faq" ? "faq" : "experience",
+  type: card.href === "/faq" ? "faq" : "experience",
   title: card.title,
   description: card.description,
   href: card.href,
@@ -202,7 +182,7 @@ const planningFaqItems: DiscoveryItem[] = planningFaqCategories.flatMap((categor
     type: "faq" as const,
     title: item.question,
     description: item.answer,
-    href: "/planning/faq",
+    href: "/faq",
     category: "Planning FAQ",
     tags: [
       category.category.toLowerCase().replaceAll(" ", "-"),
@@ -217,7 +197,6 @@ export const discoveryIndex: DiscoveryItem[] = [
   ...destinationItems,
   ...tourItems,
   ...experienceItems,
-  ...travelStyleItems,
   startPlanningItem,
   ...planningItems,
   ...audienceGuideItems,

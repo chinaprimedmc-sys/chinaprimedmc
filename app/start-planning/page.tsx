@@ -6,7 +6,6 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { Card } from "@/components/ui/card";
 import { siteConfig } from "@/config/site";
 import { heroImage, homeNavItems, primaryAction } from "@/content/home/homepage";
 import { getTourBySlug } from "@/content/tours";
@@ -27,7 +26,7 @@ export const metadata: Metadata = createMetadata({
 export default async function StartPlanningPage({
   searchParams,
 }: {
-  searchParams: Promise<{ journeys?: string; journey?: string }>;
+  searchParams: Promise<{ journeys?: string; journey?: string; preference?: string }>;
 }) {
   const params = await searchParams;
   const savedJourneys = parseSavedJourneys(params.journeys);
@@ -58,13 +57,10 @@ export default async function StartPlanningPage({
           serviceType: "Private inbound China travel planning",
         }}
       />
-      <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Request a Private Proposal", href: primaryAction.href }}
-      />
+      <SiteNavigation items={homeNavItems} cta={primaryAction} />
 
-      <Section spacing="spacious">
-        <ContentContainer size="xl" className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+      <Section spacing="spacious" className="start-planning-experience">
+        <ContentContainer size="xl" className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">
               Start planning
@@ -76,22 +72,33 @@ export default async function StartPlanningPage({
               Share the essentials first. We will use your answers to shape the route, hotels and
               services before preparing a clear private proposal.
             </p>
-            <Card className="mt-8 p-5">
-              <p className="text-sm font-semibold">Prefer direct contact?</p>
-              <div className="text-muted mt-3 grid gap-2 text-sm leading-6">
-                <a href={siteConfig.phoneHref} className="hover:text-foreground">
-                  Call {siteConfig.phone}
-                </a>
-                <a href="https://wa.me/447985052302" className="hover:text-foreground">
-                  WhatsApp +44 7985 052302
-                </a>
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-foreground">
-                  {siteConfig.email}
-                </a>
-              </div>
-            </Card>
+            <p className="text-muted mt-8 max-w-sm border-t border-[var(--border)] pt-5 text-sm leading-6">
+              A China specialist will use these details to prepare a useful first direction. This
+              does not confirm a booking.
+            </p>
           </div>
-          <StartPlanningForm savedJourneys={savedJourneys} currentJourney={currentJourney} />
+          <div className="grid gap-6">
+            <StartPlanningForm
+              savedJourneys={savedJourneys}
+              currentJourney={currentJourney}
+              preference={params.preference}
+            />
+            <div className="text-muted flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--border)] pt-5 text-sm">
+              <span>Prefer direct contact?</span>
+              <a
+                href="https://wa.me/447985052302"
+                className="min-h-11 font-semibold text-[var(--text-primary)]"
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="min-h-11 font-semibold text-[var(--text-primary)]"
+              >
+                Email
+              </a>
+            </div>
+          </div>
         </ContentContainer>
       </Section>
 
@@ -102,7 +109,7 @@ export default async function StartPlanningPage({
             title="This starts a conversation. It does not confirm a booking."
             description="A China specialist will review your answers, suggest a sensible direction and ask any questions needed before preparing your quotation."
           />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-0 border-y border-[var(--border)] md:grid-cols-3">
             {[
               {
                 title: "1. We review your priorities",
@@ -117,10 +124,13 @@ export default async function StartPlanningPage({
                 body: "Once the direction is clear, we confirm hotels, services, inclusions and pricing in writing.",
               },
             ].map((item) => (
-              <Card key={item.title} className="p-5 md:p-6">
+              <article
+                key={item.title}
+                className="border-b border-[var(--border)] p-5 last:border-b-0 md:border-r md:border-b-0 md:p-6 md:last:border-r-0"
+              >
                 <h2 className="text-xl font-semibold tracking-[-0.02em]">{item.title}</h2>
                 <p className="text-muted mt-3 text-sm leading-7">{item.body}</p>
-              </Card>
+              </article>
             ))}
           </div>
         </ContentContainer>
@@ -131,9 +141,12 @@ export default async function StartPlanningPage({
           {
             title: "Planning",
             items: [
-              { label: "Planning Hub", href: "/planning" },
-              { label: "Visa", href: "/planning/visa" },
-              { label: "FAQ", href: "/planning/faq" },
+              { label: "Private Journeys", href: "/tours" },
+              {
+                label: "Visa Guide",
+                href: "/journal/china-240-hour-visa-free-transit-guide",
+              },
+              { label: "FAQ", href: "/faq" },
               { label: "Senior Travel", href: "/senior-travel" },
             ],
           },

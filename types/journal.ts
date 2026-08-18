@@ -38,6 +38,7 @@ export type JournalContentBlock =
       type: "heading";
       id: string;
       title: string;
+      level?: 2 | 3;
     }
   | {
       type: "paragraph";
@@ -52,6 +53,22 @@ export type JournalContentBlock =
       type: "quote";
       quote: string;
       attribution?: string;
+    }
+  | {
+      type: "list";
+      style: "ordered" | "unordered";
+      items: string[];
+    }
+  | {
+      type: "table";
+      headers: string[];
+      rows: string[][];
+    }
+  | {
+      type: "callout";
+      tone: "note" | "warning";
+      title?: string;
+      body: string;
     }
   | {
       type: "cta";
@@ -79,7 +96,7 @@ export type JournalCitation = {
   name: string;
   url: string;
   publisher: string;
-  publishedAt: string;
+  publishedAt?: string;
 };
 
 export type JournalArticle = {
@@ -116,6 +133,7 @@ export type JournalArticle = {
     description: string;
     label: string;
     href?: string;
+    image?: MediaAsset;
   };
   sourcePath?: string;
 };

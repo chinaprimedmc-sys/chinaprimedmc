@@ -21,7 +21,7 @@ secondary_keywords:
 search_intent: "Determine whether a specific nationality and third-country itinerary qualifies for China’s 240-hour visa-free transit policy."
 suggested_internal_links:
   [
-    "/planning/visa",
+    "/faq",
     "/destinations/beijing",
     "/destinations/shanghai",
     "/tours/first-china-beautifully-paced",
@@ -110,7 +110,7 @@ Since November 2025, foreign arrivals can complete arrival-card information onli
 
 Apply for the appropriate visa instead when the route returns to the same country or region, includes locations outside the permitted area, lacks a firm onward ticket, exceeds the time limit, or involves work, study or journalism. A regular visa may also be the calmer choice when weather-sensitive separate tickets leave little recovery time.
 
-AVIORA can help shape a route around confirmed ports, realistic transfer times and suitable hotel locations, but final eligibility and entry remain decisions of the relevant authorities. Start with the [visa and entry planning guide](/planning/visa), then send the complete flight sequence—not a screenshot of a single segment—when requesting itinerary advice.
+AVIORA can help shape a route around confirmed ports, realistic transfer times and suitable hotel locations, but final eligibility and entry remain decisions of the relevant authorities. Review the [travel FAQ](/faq), then send the complete flight sequence—not a screenshot of a single segment—when requesting itinerary advice.
 
 ## FAQ
 
@@ -132,7 +132,7 @@ No travel company can guarantee a border decision. AVIORA can review itinerary l
 
 ## Suggested structured data
 
-- **Article schema:** `headline`, `description`, `datePublished` as draft date only when eventually published, `dateModified`, `author` as AVIORA Travel Team, `publisher`, canonical URL and approved hero image.
+- **Article schema:** `headline`, `description`, `datePublished` as draft date only when eventually published, `dateModified`, `author` as AVIORA China Travel Team, `publisher`, canonical URL and approved hero image.
 - **FAQPage schema:** Use the four FAQs above only if they remain visible on the published page; re-verify all policy facts immediately before publication.
 
 ## Conversion CTA
@@ -157,7 +157,7 @@ Published hero: `/public/journal/2026-08-06/visa-free-transit-shanghai.webp`, su
 
 - National Immigration Administration, “Announcement on Implementing 10 New Measures to Support the Expansion of Opening-up and Serve High-quality Development,” 3 November 2025: https://en.nia.gov.cn/n147413/c187308/content.html — 55 eligible countries, 65 ports, permitted areas, document and onward-ticket conditions, start-time calculation, arrival-card channels. Verified 2026-08-06.
 - State Council, “China’s 240-hour visa-free transit policy,” updated 6 November 2025: https://english.www.gov.cn/policies/featured/202511/06/content_WS676548cbc6d0868f4e8ee28f.html — official policy hub and route context. Verified 2026-08-06.
-- AVIORA, “China Visa and Transit Planning”: `/planning/visa` — internal planning context. Verified 2026-08-06.
+- AVIORA, “China Travel FAQ”: `/faq` — internal planning context. Verified 2026-08-06.
 
 ## Review Notes
 
