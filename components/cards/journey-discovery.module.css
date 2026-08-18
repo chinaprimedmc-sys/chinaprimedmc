@@ -4,7 +4,7 @@
   --journey-line: rgba(25, 36, 33, 0.14);
   background: #fff;
   color: var(--journey-ink);
-  font-family: var(--font-primary);
+  font-family: var(--font-body);
   margin-top: calc(0px - var(--site-nav-offset));
 }
 .hero {
@@ -44,7 +44,7 @@
   color: #d0d6d2;
 }
 .heroCopy h1 {
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   font-size: clamp(3rem, 4vw, 4.25rem);
   font-weight: 500;
   line-height: 1.01;
@@ -105,7 +105,7 @@
   color: #fff;
   display: inline-flex;
   font-size: 0.76rem;
-  font-weight: 650;
+  font-weight: 600;
   gap: 0.5rem;
   margin-top: 1.25rem;
   min-height: 2.8rem;
@@ -162,7 +162,7 @@
 .profileServiceList h3 {
   color: #1c2822;
   font-size: 0.88rem;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.35;
   margin: 0;
 }
@@ -195,7 +195,7 @@
   align-items: start;
 }
 .discoveryHead h2 {
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   font-size: clamp(2.25rem, 3.35vw, 3.45rem);
   font-weight: 500;
   line-height: 1.07;
@@ -809,7 +809,7 @@
   background: rgba(255, 255, 255, 0.88);
 }
 .sheetHead h2 {
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
 }
@@ -1055,7 +1055,7 @@
   }
   .sheetHead > span,
   .sheetHead h2 {
-    font-family: var(--font-primary);
+    font-family: var(--font-display);
     font-size: 1.18rem;
     font-weight: 600;
   }

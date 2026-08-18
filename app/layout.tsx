@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Lora } from "next/font/google";
+import { Inter, Lora } from "next/font/google";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
@@ -19,6 +19,13 @@ const lora = Lora({
   weight: ["400", "500", "600", "700"],
 });
 
+const inter = Inter({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-inter-loaded",
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = createMetadata();
 export const dynamic = "force-dynamic";
 export const viewport: Viewport = {
@@ -32,7 +39,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const requestHeaders = await headers();
   const nonce = requestHeaders.get("x-nonce") ?? "";
   return (
-    <html lang="en-US" className={lora.variable} suppressHydrationWarning>
+    <html lang="en-US" className={`${lora.variable} ${inter.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <CspNonceProvider nonce={nonce}>
           <PageTransition>{children}</PageTransition>

@@ -149,7 +149,7 @@
 .imageFigure figcaption {
   color: rgba(28, 29, 26, 0.5);
   font-size: 0.58rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.1em;
   line-height: 1.55;
   margin-top: 0.75rem;
@@ -168,7 +168,7 @@
 .credentials span {
   color: rgba(28, 29, 26, 0.52);
   font-size: 0.6rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
@@ -278,7 +278,7 @@
 .assuranceNumber {
   color: var(--trust-accent);
   font-size: 0.64rem;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0.12em;
   padding-top: 0.35rem;
 }

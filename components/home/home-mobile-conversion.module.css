@@ -25,7 +25,7 @@
   .pressNote > p {
     color: #53666c;
     font-size: 0.62rem;
-    font-weight: 750;
+    font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
@@ -58,7 +58,7 @@
   .summary li span {
     color: #53666c;
     font-size: 0.58rem;
-    font-weight: 750;
+    font-weight: 700;
     letter-spacing: 0.1em;
   }
 
@@ -150,7 +150,7 @@
   .assurances summary > span {
     color: #53666c;
     font-size: 0.58rem;
-    font-weight: 750;
+    font-weight: 700;
   }
 
   .assurances summary strong {
@@ -229,7 +229,7 @@
     align-items: center;
     display: flex;
     font-size: 0.62rem;
-    font-weight: 750;
+    font-weight: 700;
     justify-content: space-between;
     letter-spacing: 0.12em;
     margin-bottom: 1rem;
@@ -277,7 +277,7 @@
     color: #192421;
     display: inline-flex;
     font-size: 0.66rem;
-    font-weight: 750;
+    font-weight: 700;
     gap: 0.45rem;
     min-height: 2.55rem;
     padding: 0.65rem 0.85rem;
@@ -292,7 +292,7 @@
   .mobileOptimizedPage :global(.home-featured-mobile__route) {
     color: #53666c;
     font-size: 0.61rem;
-    font-weight: 750;
+    font-weight: 700;
     letter-spacing: 0.1em;
     line-height: 1.55;
     text-transform: uppercase;
@@ -331,7 +331,7 @@
     align-items: center;
     display: flex;
     font-size: 0.72rem;
-    font-weight: 750;
+    font-weight: 700;
     gap: 0.55rem;
     justify-content: space-between;
   }
@@ -437,13 +437,13 @@
 
   .mobileOptimizedPage :global(.home-featured-mobile__rail-track button span) {
     font-size: 0.56rem;
-    font-weight: 750;
+    font-weight: 700;
     letter-spacing: 0.08em;
   }
 
   .mobileOptimizedPage :global(.home-featured-mobile__rail-track button strong) {
     font-size: 0.66rem;
-    font-weight: 650;
+    font-weight: 600;
     line-height: 1.25;
   }
 
