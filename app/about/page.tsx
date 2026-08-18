@@ -1,9 +1,20 @@
-import { ArrowRight, Check, FileCheck2, MessageCircle, ShieldCheck } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  CircleCheck,
+  FileText,
+  HeartHandshake,
+  Languages,
+  MapPin,
+  ShieldCheck,
+  TrainFront,
+  WalletCards,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
+import { WhatsAppIcon } from "@/components/icons";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
@@ -11,75 +22,164 @@ import { homeEditorialImages, homeNavItems, primaryAction } from "@/content/home
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
+import styles from "./about.module.css";
 
 export const metadata: Metadata = createMetadata({
-  title: "About AVIORA and Our Licensed China Team",
+  title: "About AVIORA | Your China Journey, Personally Handled",
   description:
-    "Meet the licensed China team behind AVIORA's tailored private tours, hotel selection, local guides and on-trip support.",
+    "Meet AVIORA, a licensed China travel operator designing private journeys with clear planning, trusted local partners and on-trip support from arrival to departure.",
   path: "/about",
-  image: homeEditorialImages.tradeConsultation.src,
+  image: homeEditorialImages.greatWall.src,
 });
 
-const reasons = [
+const travelConcerns = [
   {
-    number: "01",
-    title: "A team based in China",
-    description:
-      "Our local team coordinates guides, vehicles, tickets and support with current knowledge on the ground.",
+    icon: Languages,
+    title: "Language",
+    text: "A local team, English-speaking guides and clear communication before you arrive.",
   },
   {
-    number: "02",
-    title: "Private, flexible and no forced shopping",
-    description:
-      "Your time remains yours. Shopping is included only when requested, never hidden inside the itinerary.",
+    icon: WalletCards,
+    title: "Payments",
+    text: "Practical preparation for local payment methods, tickets and everyday travel needs.",
   },
   {
-    number: "03",
-    title: "Travel designed around real people",
-    description:
-      "Pacing, meals and access are adapted for families, older parents, Muslim travelers and specific needs.",
+    icon: TrainFront,
+    title: "Transport",
+    text: "Flights, trains, private vehicles and station handovers planned as one connected journey.",
   },
   {
-    number: "04",
-    title: "Human support from inquiry to travel",
-    description:
-      "One specialist helps shape your trip while our local team manages the details and stays reachable as you travel.",
+    icon: HeartHandshake,
+    title: "Changes",
+    text: "A reachable China team that responds when timing, weather or personal needs change.",
+  },
+];
+
+const travelerNeeds = [
+  {
+    title: "Families",
+    text: "Age-aware pacing, room logic, shorter transfer days and experiences children can enjoy.",
+  },
+  {
+    title: "Women Travelers",
+    text: "Thoughtful hotel locations, reliable transfers and clear local support throughout the trip.",
+  },
+  {
+    title: "Older Travelers",
+    text: "Gentler walking, sensible rest time, accessible transport and realistic daily schedules.",
+  },
+  {
+    title: "Muslim Travelers",
+    text: "Meal planning, prayer considerations and honest advice tailored to each destination.",
+  },
+  {
+    title: "First-Time Visitors",
+    text: "A clear route, practical arrival guidance and fewer unknowns in an unfamiliar country.",
+  },
+  {
+    title: "Special Interests",
+    text: "Food, photography, culture, nature or heritage shaped into a journey with depth and focus.",
+  },
+];
+
+const trustProof = [
+  {
+    icon: ShieldCheck,
+    title: "Licensed in China",
+    text: "Inbound travel services are operated by our registered Guangzhou travel company.",
+  },
+  {
+    icon: FileText,
+    title: "Important Details in Writing",
+    text: "Hotels, services, inclusions, payment terms and cancellation conditions are confirmed clearly.",
+  },
+  {
+    icon: CircleCheck,
+    title: "No Forced Shopping",
+    text: "Your itinerary is built around travel, not compulsory retail stops or hidden commissions.",
+  },
+  {
+    icon: MapPin,
+    title: "Local Support",
+    text: "The team operating your journey is here in China and reachable while you travel.",
   },
 ];
 
 const process = [
   {
-    step: "Listen",
-    text: "You share the people, dates, interests, pace and concerns behind the trip.",
+    number: "01",
+    title: "Listen",
+    text: "We learn who is traveling, what matters and what could make the trip difficult.",
   },
   {
-    step: "Design",
-    text: "We connect destinations, transfer time and daily rhythm into a first route direction.",
+    number: "02",
+    title: "Design",
+    text: "We shape the route, pace, hotels and experiences around your priorities.",
   },
   {
-    step: "Confirm",
-    text: "You receive a written quotation with hotels, services, inclusions and payment terms before you book.",
+    number: "03",
+    title: "Confirm",
+    text: "You review the important details and a clear written quotation before booking.",
   },
   {
-    step: "Operate",
-    text: "The China team coordinates the guides, vehicles, tickets, stays and live timing.",
+    number: "04",
+    title: "Operate",
+    text: "Our China team coordinates guides, transport, tickets, stays and handovers.",
   },
   {
-    step: "Support",
-    text: "A real person stays reachable when weather, energy or circumstances change.",
+    number: "05",
+    title: "Support",
+    text: "We stay reachable and act locally when your needs or circumstances change.",
   },
 ];
 
-const promises = [
-  "Clear written quotations",
-  "No forced shopping",
-  "Private pacing",
-  "Clear local support",
+const teamRoles = [
+  {
+    title: "Journey Specialist",
+    text: "Your planning contact, responsible for understanding the people behind the trip.",
+  },
+  {
+    title: "Route Designer",
+    text: "Balances geography, travel time, hotel logic and the rhythm of each day.",
+  },
+  {
+    title: "China Operations",
+    text: "Checks bookings and coordinates the local services that make the route work.",
+  },
+  {
+    title: "On-Trip Support",
+    text: "Responds when a flight moves, the weather turns or the plan needs to adapt.",
+  },
 ];
+
+const chinaStories = [
+  {
+    title: "A quieter Great Wall",
+    label: "Beijing",
+    href: "/destinations/beijing",
+    image: homeEditorialImages.greatWall,
+  },
+  {
+    title: "Culture you can take part in",
+    label: "Local Experiences",
+    href: "/tours",
+    image: homeEditorialImages.paintingExperience,
+  },
+  {
+    title: "Landscapes worth slowing down for",
+    label: "Guilin",
+    href: "/destinations/guilin",
+    image: homeEditorialImages.guilinLandscape,
+  },
+];
+
+const whatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(
+  "Hello AVIORA, I am considering a private trip to China. We are [number] travelers and hope to travel around [dates/month].",
+)}`;
 
 export default function AboutPage() {
   return (
-    <main className="min-h-svh overflow-x-clip bg-[#f4f6f5] text-[#192421]">
+    <main className={styles.page}>
       <JsonLd
         id="about-breadcrumb-schema"
         data={breadcrumbSchema([
@@ -92,273 +192,294 @@ export default function AboutPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
-          name: "About AVIORA and China Prime DMC",
+          name: "About AVIORA China Travel",
           url: new URL("/about", siteConfig.url).toString(),
           description:
-            "The licensed China team, company and service standards behind AVIORA private tours.",
-          mainEntity: { "@id": `${siteConfig.url}/#organization` },
+            "How AVIORA designs and operates tailored private journeys in China, from planning through on-trip support.",
+          mainEntity: {
+            "@type": "TravelAgency",
+            "@id": `${siteConfig.url}/#organization`,
+            name: siteConfig.siteName,
+            legalName: siteConfig.operator.legalName,
+            foundingDate: siteConfig.operator.founded,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: siteConfig.operator.locality,
+              addressCountry: siteConfig.operator.country,
+            },
+            email: siteConfig.email,
+            telephone: siteConfig.phone,
+          },
         }}
       />
-      <SiteNavigation tone="light" items={homeNavItems} cta={primaryAction} />
 
-      <section data-hero-layout="true" className="relative min-h-svh overflow-hidden">
+      <SiteNavigation
+        tone="adaptive"
+        variant="default"
+        items={homeNavItems}
+        cta={primaryAction}
+        showWhatsapp={false}
+      />
+
+      <section className={styles.hero} aria-labelledby="about-title" data-hero-layout="true">
         <OptimizedImage
-          src={homeEditorialImages.tradeConsultation.src}
-          alt={homeEditorialImages.tradeConsultation.alt}
+          src="/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp"
+          alt="The Great Wall crossing mountain ridges in warm early light"
           fill
           priority
           sizes="100vw"
-          frameClassName="absolute inset-0 h-full w-full"
-          className="object-cover object-center motion-safe:animate-[destination-hero-breathe_16s_ease-out_both]"
+          frameClassName={styles.heroImage}
+          className={styles.heroImageElement}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,247,243,.98),rgba(247,247,243,.88)_42%,rgba(247,247,243,.2)_68%,transparent_84%),linear-gradient(0deg,rgba(247,247,243,.55),transparent_46%)] max-md:bg-[linear-gradient(0deg,rgba(247,247,243,.98),rgba(247,247,243,.82)_42%,rgba(247,247,243,.08)_72%)]" />
-        <div className="relative mx-auto flex min-h-svh max-w-[92rem] items-end px-5 pb-16 sm:px-6 md:items-center md:pb-0 lg:px-8">
-          <div className="max-w-3xl pt-28 motion-safe:animate-[destination-copy-reveal_.9s_var(--motion-ease-out)_both]">
-            <p className="text-xs font-semibold tracking-[0.22em] text-[#687570] uppercase">
-              About AVIORA
+        <div className={styles.heroShade} aria-hidden="true" />
+        <div className={styles.heroInner}>
+          <div className={styles.heroCopy}>
+            <p className={styles.heroEyebrow}>ABOUT AVIORA</p>
+            <h1 id="about-title">China, Seen Differently.</h1>
+            <p>
+              Private journeys designed around you, then handled in China by one accountable local
+              team.
             </p>
-            <h1 className="mt-6 max-w-3xl font-serif text-[clamp(3.6rem,7.5vw,7.6rem)] leading-[.88] text-balance">
-              Private China, handled by people who know it.
-            </h1>
-            <p className="mt-7 max-w-2xl text-base leading-8 text-[#192421]/68 md:text-lg">
-              Tailored tours, selected local partners and responsive support from a licensed inbound
-              operator. Our travel work began in 2012; the Guangzhou company was registered in 2018.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {["Private journeys", "No forced shopping", "Licensed China operator"].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/85 bg-white/72 px-4 py-2.5 text-sm font-semibold shadow-sm backdrop-blur-xl"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+            <Link className={styles.heroLink} href="#understood">
+              How We Look After Your Journey <ArrowUpRight aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section
-        id="who-we-are"
-        className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8"
-      >
-        <SectionIntro
-          eyebrow="01 · Who we are"
-          title="One travel brand. One accountable team in China."
-          description="AVIORA is the name you travel with. The licensed Guangzhou company is responsible for your services in China."
-        />
-        <div className="mt-14 grid gap-4 lg:grid-cols-3">
-          <IdentityBlock
-            label="International brand"
-            title="AVIORA"
-            body="The name you see throughout planning, booking and travel: one consistent point of contact for your trip."
+      <section id="understood" className={`${styles.section} ${styles.understood}`}>
+        <div className={styles.container}>
+          <SectionHeading
+            eyebrow="YOU WILL NOT FACE IT ALONE"
+            title="China Can Feel Complex. Your Journey Does Not Have To."
+            copy="Language, payments, fast-moving transport and unfamiliar systems can make a first trip feel uncertain. Our role is to remove that uncertainty before it reaches you."
           />
-          <IdentityBlock
-            label="China travel services"
-            title="China Prime DMC"
-            body="The team coordinating your route, guides, private transport, tickets, hotels and local support."
-          />
-          <IdentityBlock
-            label="Licensed company in China"
-            title={siteConfig.operator.englishReferenceName}
-            body={`${siteConfig.operator.legalName}. Registered in Guangzhou on March 28, 2018 and ${siteConfig.operator.tourismLicense.statement}.`}
-          />
-        </div>
-
-        <div className="mt-8 grid gap-6 rounded-[1.75rem] border border-[#71847e]/22 bg-[#e8edeb] p-7 md:grid-cols-[1fr_1fr] md:p-10">
-          <div>
-            <div className="flex items-center gap-3 text-[#71847e]">
-              <FileCheck2 className="size-5" />
-              <p className="text-xs font-semibold tracking-[.18em] uppercase">
-                Credential verification
-              </p>
-            </div>
-            <h2 className="mt-5 font-serif text-3xl md:text-4xl">
-              Real credentials, shared responsibly.
-            </h2>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-[#192421]/62">
-              We do not publish unredacted licence scans on an open webpage. They may contain seals,
-              personal details, full registered-address information or identifiers that do not need
-              to be permanently indexed.
-            </p>
+          <div className={styles.concernGrid}>
+            {travelConcerns.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article className={styles.concern} key={item.title}>
+                  <Icon aria-hidden="true" />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-          <div className="grid gap-3 self-end">
-            <CredentialLine
-              title="Inbound tourism business licence"
-              text="The China operating company is licensed to conduct inbound tourism business."
-            />
-            <CredentialLine
-              title="Business registration"
-              text="The legal company name, registration location and incorporation date are stated openly on this site."
-            />
-            <CredentialLine
-              title="Document check"
-              text="Relevant licence and contracting documents can be verified before you make a booking."
-            />
-          </div>
+          <p className={styles.reassurance}>
+            You should be free to experience China, not spend the trip solving it.
+          </p>
         </div>
       </section>
 
-      <section id="why-travel-with-us" className="border-y border-black/8 bg-white py-24 md:py-32">
-        <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
-          <SectionIntro
-            eyebrow="02 · Why travel with us"
-            title="Good travel design is practical before it is impressive."
-            description="Our value is not a longer checklist. It is making China feel clearer, more personal and easier to move through."
-          />
-          <div className="mt-14 divide-y divide-black/10 border-y border-black/10">
-            {reasons.map((reason) => (
-              <article
-                key={reason.number}
-                className="group grid gap-5 py-9 md:grid-cols-[.22fr_.78fr_1fr] md:items-start md:py-12"
-              >
-                <span className="text-xs font-semibold text-[#71847e]">{reason.number}</span>
-                <h3 className="max-w-md font-serif text-3xl leading-tight md:text-4xl">
-                  {reason.title}
-                </h3>
-                <p className="max-w-2xl text-base leading-8 text-[#192421]/60">
-                  {reason.description}
-                </p>
+      <section id="designed-around-you" className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.splitHeading}>
+            <SectionHeading
+              eyebrow="DESIGNED AROUND REAL PEOPLE"
+              title="Your Journey, Designed Around You."
+              copy="A private journey should reflect the people taking it. We adapt the pace, access, meals, hotels and daily rhythm to your needs rather than asking you to fit a fixed tour."
+            />
+            <Link className={styles.textLink} href="/tours">
+              Explore Private Journeys <ArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
+          <div className={styles.needsGrid}>
+            {travelerNeeds.map((item, index) => (
+              <article className={styles.need} key={item.title}>
+                <span aria-hidden="true">0{index + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
               </article>
             ))}
           </div>
+          <div className={styles.softCta}>
+            <div>
+              <p className={styles.softCtaLabel}>A USEFUL FIRST CONVERSATION</p>
+              <p>Tell us who is traveling and what would make China feel right for you.</p>
+            </div>
+            <Link href="/start-planning?source=about-capability">
+              Share Your Priorities <ArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section id="how-we-work" className="overflow-hidden bg-[#e8edeb] py-24 md:py-32">
-        <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
-          <SectionIntro
-            eyebrow="03 · How we work"
-            title="Five stages. One continuous line of responsibility."
-            description="At every stage, you know what happens next and which details will be confirmed in writing."
-          />
-        </div>
-        <div className="mt-14 flex snap-x snap-mandatory [scrollbar-width:none] gap-4 overflow-x-auto px-[max(1.25rem,calc((100vw-92rem)/2+2rem))] pb-8">
-          {process.map((item, index) => (
-            <article
-              key={item.step}
-              className="flex min-h-[24rem] w-[80vw] max-w-[24rem] shrink-0 snap-center flex-col justify-between rounded-[1.6rem] border border-white/85 bg-white/72 p-7 shadow-[0_18px_52px_rgba(27,28,25,.07)] backdrop-blur-xl md:w-[31vw]"
-            >
-              <span className="text-xs font-semibold tracking-[.16em] text-[#71847e]">
-                0{index + 1}
-              </span>
-              <div>
-                <h3 className="font-serif text-4xl">{item.step}</h3>
-                <p className="mt-4 text-sm leading-7 text-[#192421]/60">{item.text}</p>
+      <section id="the-standard" className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.standardLayout}>
+            <div className={styles.standardLead}>
+              <SectionHeading
+                eyebrow="THE AVIORA STANDARD"
+                title="Trust Should Be Built Into the Journey."
+                copy="Reassurance is not a slogan. It comes from clear commitments, responsible local operation and knowing what has been agreed before you travel."
+              />
+              <div className={styles.legalIdentity}>
+                <ShieldCheck aria-hidden="true" />
+                <div>
+                  <p>Licensed China Operator</p>
+                  <strong>{siteConfig.operator.englishReferenceName}</strong>
+                  <span>
+                    Registered in Guangzhou on March 28, 2018 and licensed to conduct inbound
+                    tourism business in China.
+                  </span>
+                </div>
               </div>
-            </article>
-          ))}
+            </div>
+            <div className={styles.proofList}>
+              {trustProof.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <article className={styles.proof} key={item.title}>
+                    <Icon aria-hidden="true" />
+                    <div>
+                      <h3>{item.title}</h3>
+                      <p>{item.text}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section
-        id="international-conversations"
-        className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8"
-      >
-        <SectionIntro
-          eyebrow="04 · International conversations"
-          title="We listen to how different guests want to experience China."
-          description="Our conversations in Kuala Lumpur covered the questions international guests ask most, from family comfort to Muslim-friendly planning and local support."
-        />
-        <div className="mt-14 grid gap-4 lg:grid-cols-[1.15fr_.85fr]">
-          <TradeImage
-            image={homeEditorialImages.tradeBuyerMeeting}
-            label="China travel conversation · Kuala Lumpur"
-            featured
+      <section id="how-it-works" className={styles.section}>
+        <div className={styles.container}>
+          <SectionHeading
+            eyebrow="FROM FIRST CONVERSATION TO WELCOME HOME"
+            title="One Clear Process. One Continuous Responsibility."
+            copy="You always know what happens next. The same travel brief carries from the first conversation into the day-to-day operation of your trip."
           />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <TradeImage
-              image={homeEditorialImages.tradeMuslimBuyers}
-              label="Muslim-friendly travel discussion · Kuala Lumpur"
-            />
-            <TradeImage
-              image={homeEditorialImages.tradeConsultation}
-              label="China travel consultation · Kuala Lumpur"
-            />
-          </div>
-        </div>
-        <p className="mt-6 max-w-3xl text-sm leading-7 text-[#192421]/55">
-          These are photographs of real conversations about travel in China. We share them to show
-          the people behind AVIORA, without making claims that cannot be independently verified.
-        </p>
-        <Link
-          href="/journal/aviora-ttg-asia-matta-connect-2026"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#243530] underline decoration-[#71847e]/35 underline-offset-4 transition hover:text-[#192421]"
-        >
-          Read our MATTA Connect story <ArrowRight className="size-4" />
-        </Link>
-      </section>
-
-      <section id="team" className="border-y border-black/8 bg-white py-24 md:py-32">
-        <div className="mx-auto grid max-w-[92rem] gap-12 px-5 sm:px-6 lg:grid-cols-[.78fr_1.22fr] lg:px-8">
-          <div>
-            <p className="text-xs font-semibold tracking-[.2em] text-[#71847e] uppercase">
-              05 · The team behind the journey
-            </p>
-            <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
-              Real roles, without invented profiles.
-            </h2>
-            <p className="mt-6 max-w-xl text-base leading-8 text-[#192421]/60">
-              Until complete team portraits and approved biographies are available, we show the
-              functions responsible for your journey rather than stock faces or fictional names.
-            </p>
-            <CtaButton href="/contact" className="mt-8" size="sm">
-              Speak with a China journey specialist
-            </CtaButton>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <Role
-              title="Journey specialist"
-              text="Listens to the traveler and keeps the route aligned with the brief."
-            />
-            <Role
-              title="Route designer"
-              text="Balances destinations, transfers, pacing and accommodation logic."
-            />
-            <Role
-              title="China operations"
-              text="Coordinates bookings, local suppliers and day-to-day execution."
-            />
-            <Role
-              title="On-trip support"
-              text="Responds when timing, weather or traveler needs change."
-            />
-          </div>
+          <ol className={styles.processList}>
+            {process.map((item) => (
+              <li key={item.number}>
+                <span>{item.number}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section id="promise" className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8">
-        <div className="rounded-[2rem] border border-[#71847e]/22 bg-[#e8edeb] p-7 shadow-[0_22px_70px_rgba(25,36,33,.08)] md:p-12">
-          <p className="text-xs font-semibold tracking-[.2em] text-[#71847e] uppercase">
-            06 · Our service promise
-          </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {promises.map((promise) => (
-              <div
-                key={promise}
-                className="flex min-h-24 items-center gap-3 rounded-[1.25rem] border border-white/75 bg-white/58 p-5 text-sm font-semibold backdrop-blur-xl"
+      <section id="people" className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.peopleLayout}>
+            <figure className={styles.peoplePhoto}>
+              <OptimizedImage
+                src={homeEditorialImages.tradeBuyerMeeting.src}
+                alt={homeEditorialImages.tradeBuyerMeeting.alt}
+                fill
+                sizes="(max-width: 767px) calc(100vw - 48px), 48vw"
+                frameClassName={styles.peopleImageFrame}
+                className={styles.coverImage}
+                style={{ objectPosition: homeEditorialImages.tradeBuyerMeeting.objectPosition }}
+              />
+              <figcaption>AVIORA in conversation with international travel partners.</figcaption>
+            </figure>
+            <div className={styles.peopleCopy}>
+              <SectionHeading
+                eyebrow="THE PEOPLE RESPONSIBLE"
+                title="Your Journey Is Handled by People, Not Passed Between Platforms."
+                copy="Different specialists contribute their expertise, but the responsibility stays connected. Your requirements do not disappear when planning becomes operation."
+              />
+              <div className={styles.roles}>
+                {teamRoles.map((role) => (
+                  <article key={role.title}>
+                    <h3>{role.title}</h3>
+                    <p>{role.text}</p>
+                  </article>
+                ))}
+              </div>
+              <Link
+                className={styles.textLink}
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
               >
-                <Check className="size-4 text-[#71847e]" />
-                {promise}
-              </div>
+                Speak With Our China Team <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="china-through-our-eyes" className={`${styles.section} ${styles.chinaSection}`}>
+        <div className={styles.container}>
+          <div className={styles.splitHeading}>
+            <SectionHeading
+              eyebrow="CHINA, THROUGH OUR EYES"
+              title="The China We Want You to Meet."
+              copy="Not a checklist seen through a coach window, but a country with time for landscapes, people, food and small moments that become part of your story."
+            />
+            <Link className={styles.textLink} href="/destinations">
+              Explore China <ArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
+          <div className={styles.storyGrid}>
+            {chinaStories.map((story) => (
+              <Link className={styles.story} href={story.href} key={story.title}>
+                <OptimizedImage
+                  src={story.image.src}
+                  alt={story.image.alt}
+                  fill
+                  sizes="(max-width: 767px) calc(100vw - 48px), 33vw"
+                  frameClassName={styles.storyImage}
+                  className={styles.coverImage}
+                  style={{ objectPosition: story.image.objectPosition }}
+                />
+                <div className={styles.storyCaption}>
+                  <span>{story.label}</span>
+                  <h3>{story.title}</h3>
+                  <ArrowUpRight aria-hidden="true" />
+                </div>
+              </Link>
             ))}
           </div>
-          <div className="mt-12 grid gap-8 border-t border-[#71847e]/16 pt-10 md:grid-cols-[1fr_auto] md:items-end">
+        </div>
+      </section>
+
+      <section id="start" className={styles.finalCta}>
+        <div className={styles.container}>
+          <div className={styles.finalCtaGrid}>
             <div>
-              <p className="text-xs font-semibold tracking-[.18em] text-[#71847e] uppercase">
-                07 · Start a conversation
-              </p>
-              <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight md:text-6xl">
-                Start a conversation with our China team.
-              </h2>
-              <p className="mt-5 max-w-2xl leading-7 text-[#192421]/62">
-                Share the people, dates and pace behind the trip. We will reply with a clear first
+              <p className={styles.eyebrow}>YOUR CHINA STORY STARTS HERE</p>
+              <h2>You Reach China. We Take Care of What Comes Next.</h2>
+            </div>
+            <div className={styles.finalCtaCopy}>
+              <p>
+                Share your approximate dates, number of travelers and travel style. We will reply
+                personally within 24 hours with the right next questions and a considered first
                 direction.
               </p>
+              <div className={styles.finalActions}>
+                <Link className={styles.primaryAction} href="/start-planning?source=about-final">
+                  Plan My Private Journey <ArrowUpRight aria-hidden="true" />
+                </Link>
+                <Link
+                  className={styles.whatsappAction}
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <WhatsAppIcon aria-hidden="true" /> WhatsApp Our Team
+                </Link>
+              </div>
+              <div className={styles.finalTrust}>
+                <span>
+                  <Check aria-hidden="true" /> No Obligation
+                </span>
+                <span>
+                  <Check aria-hidden="true" /> Personal Reply
+                </span>
+                <span>
+                  <Check aria-hidden="true" /> Clear Next Step
+                </span>
+              </div>
             </div>
-            <CtaButton href="/start-planning?source=about-aviora" size="lg">
-              Start planning <ArrowRight className="size-4" />
-            </CtaButton>
           </div>
         </div>
       </section>
@@ -368,113 +489,44 @@ export default function AboutPage() {
           {
             title: "About AVIORA",
             items: [
-              { label: "Who we are", href: "#who-we-are" },
-              { label: "Why travel with us", href: "#why-travel-with-us" },
-              { label: "How we work", href: "#how-we-work" },
-              { label: "International conversations", href: "#international-conversations" },
+              { label: "How We Help", href: "#understood" },
+              { label: "Who We Design For", href: "#designed-around-you" },
+              { label: "The AVIORA Standard", href: "#the-standard" },
+              { label: "Our Process", href: "#how-it-works" },
+              { label: "The People", href: "#people" },
             ],
           },
           {
-            title: "Plan",
+            title: "Explore",
             items: [
-              { label: "Private journeys", href: "/tours" },
+              { label: "Private Journeys", href: "/tours" },
               { label: "Destinations", href: "/destinations" },
-              { label: "Start planning", href: "/start-planning" },
+              { label: "China Journal", href: "/journal" },
+              { label: "Start Planning", href: "/start-planning" },
             ],
           },
         ]}
-        social={[]}
+        social={siteConfig.socials.map((href) => ({ label: "Social", href }))}
       />
     </main>
   );
 }
 
-function SectionIntro({
+function SectionHeading({
   eyebrow,
   title,
-  description,
+  copy,
 }: {
   eyebrow: string;
   title: string;
-  description: string;
+  copy: string;
 }) {
   return (
-    <div className="max-w-3xl">
-      <p className="text-xs font-semibold tracking-[.2em] text-[#71847e] uppercase">{eyebrow}</p>
-      <h2 className="mt-5 font-serif text-4xl leading-[1.02] md:text-6xl">{title}</h2>
-      <p className="mt-5 max-w-2xl text-base leading-8 text-[#192421]/58 md:text-lg">
-        {description}
-      </p>
-    </div>
-  );
-}
-
-function IdentityBlock({ label, title, body }: { label: string; title: string; body: string }) {
-  return (
-    <article className="flex min-h-[19rem] flex-col justify-between rounded-[1.5rem] border border-black/8 bg-white p-7 shadow-[0_16px_46px_rgba(27,28,25,.05)]">
-      <p className="text-xs font-semibold tracking-[.17em] text-[#607868] uppercase">{label}</p>
-      <div>
-        <h3 className="font-serif text-3xl leading-tight">{title}</h3>
-        <p className="mt-4 text-sm leading-7 text-[#1b1c19]/58">{body}</p>
-      </div>
-    </article>
-  );
-}
-
-function CredentialLine({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="rounded-[1.1rem] border border-white/80 bg-white/55 p-5">
-      <div className="flex gap-3">
-        <ShieldCheck className="mt-0.5 size-4 shrink-0 text-[#607868]" />
-        <div>
-          <h3 className="text-sm font-semibold">{title}</h3>
-          <p className="mt-1 text-xs leading-6 text-[#1b1c19]/55">{text}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TradeImage({
-  image,
-  label,
-  featured = false,
-}: {
-  image: { src: string; alt: string; objectPosition?: string };
-  label: string;
-  featured?: boolean;
-}) {
-  return (
-    <figure
-      className={
-        featured
-          ? "group relative min-h-[32rem] overflow-hidden rounded-[1.6rem]"
-          : "group relative min-h-[15rem] overflow-hidden rounded-[1.6rem]"
-      }
-    >
-      <OptimizedImage
-        src={image.src}
-        alt={image.alt}
-        fill
-        sizes={featured ? "(min-width:1024px) 58vw, 100vw" : "(min-width:1024px) 42vw, 100vw"}
-        frameClassName="absolute inset-0 h-full w-full"
-        className="object-cover transition duration-700 group-hover:scale-[1.025]"
-        style={{ objectPosition: image.objectPosition }}
-      />
-      <span className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-      <figcaption className="absolute right-5 bottom-5 left-5 text-sm font-semibold text-white">
-        {label}
-      </figcaption>
-    </figure>
-  );
-}
-
-function Role({ title, text }: { title: string; text: string }) {
-  return (
-    <article className="rounded-[1.4rem] border border-black/8 bg-[#f4f6f5] p-6">
-      <MessageCircle className="size-5 text-[#71847e]" />
-      <h3 className="mt-8 text-xl font-semibold">{title}</h3>
-      <p className="mt-3 text-sm leading-7 text-[#192421]/56">{text}</p>
-    </article>
+    <header className={styles.sectionHeading}>
+      <p className={styles.eyebrow}>{eyebrow}</p>
+      <h2>{title}</h2>
+      <span className={styles.breathingLine} aria-hidden="true" />
+      <p className={styles.sectionCopy}>{copy}</p>
+    </header>
   );
 }
