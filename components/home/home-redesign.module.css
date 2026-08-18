@@ -1659,7 +1659,7 @@
 }
 
 .storyExperience {
-  background: #fff;
+  background: var(--home-bg);
   border-block: 0;
   height: 100svh;
   min-height: 680px;
@@ -2191,7 +2191,7 @@
 
 @media (min-width: 1024px) {
   .storyExperience {
-    background: #fff;
+    background: var(--home-bg);
     height: 100svh;
     min-height: 680px;
     scroll-margin-top: 0;

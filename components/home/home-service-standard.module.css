@@ -1,7 +1,7 @@
 .standard {
   background: transparent;
   color: var(--text-primary);
-  padding: clamp(96px, 9vw, 144px) 0 clamp(112px, 10vw, 160px);
+  padding: 64px 0 48px;
 }
 
 .container {
@@ -12,13 +12,13 @@
 }
 
 .intro {
-  margin: 0 auto clamp(112px, 10vw, 152px);
-  max-width: 1200px;
-  text-align: center;
+  margin: 0 0 64px;
+  max-width: 100%;
+  text-align: left;
 }
 
 .eyebrow {
-  color: var(--text-secondary);
+  color: var(--home-muted);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -28,14 +28,14 @@
 }
 
 .intro h2 {
-  color: var(--text-primary);
-  font-family: var(--font-primary);
-  font-size: clamp(48px, 4.55vw, 66px);
+  color: var(--home-ink);
+  font-family: var(--font-cormorant);
+  font-size: var(--type-section);
   font-weight: 500;
-  letter-spacing: -0.018em;
+  letter-spacing: 0;
   line-height: 1.08;
-  margin: 32px auto 0;
-  max-width: 1180px;
+  margin: 24px 0 0;
+  max-width: 34ch;
 }
 
 .intro h2 span {
@@ -125,39 +125,30 @@
 }
 
 .closing {
-  align-items: center;
   background: transparent;
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(128px, 12vw, 184px);
-  min-height: clamp(180px, 18vw, 240px);
-  padding: 48px 0;
-  text-align: center;
+  margin-top: 64px;
+  padding: 0;
+  text-align: left;
 }
 
 .closing p {
-  color: var(--accent);
-  font-family: var(--font-primary);
-  font-size: clamp(32px, 3.2vw, 44px);
+  color: var(--home-ink);
+  font-family: var(--font-cormorant);
+  font-size: var(--type-section);
   font-weight: 500;
-  letter-spacing: -0.012em;
-  line-height: 1.22;
+  letter-spacing: 0;
+  line-height: 1.08;
   margin: 0;
-  max-width: 920px;
+  max-width: 34ch;
 }
 
 @media (max-width: 900px) {
   .standard {
-    padding-top: 96px;
+    padding-top: 64px;
   }
 
   .intro {
-    margin-bottom: 104px;
-  }
-
-  .intro h2 {
-    font-size: clamp(46px, 7vw, 58px);
-    max-width: 720px;
+    margin-bottom: 72px;
   }
 
   .groups {
@@ -189,7 +180,7 @@
 
 @media (max-width: 767px) {
   .standard {
-    padding: 72px 0 96px;
+    padding: 48px 0;
   }
 
   .container {
@@ -197,8 +188,7 @@
   }
 
   .intro {
-    margin-bottom: 88px;
-    text-align: left;
+    margin-bottom: 64px;
   }
 
   .eyebrow {
@@ -206,14 +196,14 @@
   }
 
   .intro h2 {
-    font-size: clamp(39px, 10.8vw, 46px);
-    letter-spacing: -0.016em;
+    font-size: var(--type-section);
+    letter-spacing: 0;
     line-height: 1.1;
     margin-top: 24px;
   }
 
   .intro h2 span + span {
-    margin-top: 16px;
+    margin-top: 8px;
   }
 
   .groups {
@@ -253,12 +243,11 @@
   }
 
   .closing {
-    margin-top: 112px;
-    min-height: 180px;
-    padding: 40px 0;
+    margin-top: 64px;
   }
 
   .closing p {
-    font-size: clamp(30px, 8vw, 36px);
+    font-size: var(--type-section);
+    line-height: 1.1;
   }
 }
