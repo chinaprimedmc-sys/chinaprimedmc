@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { CtaButton } from "@/components/cta";
 import {
@@ -89,6 +89,7 @@ export function StartPlanningForm({
   preference?: string;
 }) {
   const preferenceLabel = getPreferenceLabel(preference);
+  const preferenceDefaults = getPreferenceDefaults(preference);
   const journeyNotes = currentJourney
     ? `I'd like to request a private proposal for:\n${currentJourney.title}${preferenceLabel ? `\n\nPlanning preference: ${preferenceLabel}` : ""}`
     : savedJourneys.length
@@ -99,6 +100,7 @@ export function StartPlanningForm({
   const [step, setStep] = useState(0);
   const [state, setState] = useState<PlanningFormState>({
     ...initialState,
+    ...preferenceDefaults,
     notes: journeyNotes,
   });
   const [submitted, setSubmitted] = useState(false);
@@ -106,24 +108,34 @@ export function StartPlanningForm({
   const [submitError, setSubmitError] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+  const formStarted = useRef(false);
   const handleTurnstileToken = useCallback((token: string) => setTurnstileToken(token), []);
-
-  useEffect(() => {
-    trackEvent("form_start", { saved_journeys: savedJourneys.length });
-  }, [savedJourneys.length, currentJourney?.slug]);
 
   const progress = ((step + 1) / steps.length) * 100;
 
+  function recordFormStart() {
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackEvent("form_start", {
+      saved_journeys: savedJourneys.length,
+      journey: currentJourney?.slug ?? "",
+      preference: preference ?? "",
+    });
+  }
+
   function advanceStep() {
+    recordFormStart();
     trackEvent("form_step_complete", { step: step + 1, label: steps[step].label });
     setStep((current) => current + 1);
   }
 
   function update<K extends keyof PlanningFormState>(key: K, value: PlanningFormState[K]) {
+    recordFormStart();
     setState((current) => ({ ...current, [key]: value }));
   }
 
   function toggleList(key: "destinations" | "styles" | "contactMethods", value: string) {
+    recordFormStart();
     setState((current) => {
       const set = new Set(current[key]);
       if (set.has(value)) {
@@ -246,7 +258,10 @@ export function StartPlanningForm({
 
           try {
             const sourceContext = getSourceContext();
-            trackEvent("form_submit", { source: sourceContext.utmSource || "direct" });
+            trackEvent("form_submit", {
+              source: sourceContext.sourcePage.slice(0, 160),
+              journey: sourceContext.journeySlug,
+            });
             const response = await fetch("/api/inquiries", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -264,7 +279,10 @@ export function StartPlanningForm({
             }
 
             setSubmitted(true);
-            trackEvent("form_success", { source: sourceContext.utmSource || "direct" });
+            trackEvent("form_success", {
+              source: sourceContext.sourcePage.slice(0, 160),
+              journey: sourceContext.journeySlug,
+            });
           } catch (error) {
             setTurnstileResetSignal((current) => current + 1);
             setSubmitError(
@@ -544,6 +562,9 @@ function getPreferenceLabel(value?: string) {
   if (!value) return "";
   const labels: Record<string, string> = {
     "slower-pacing": "Choose a slower pace",
+    "walking-comfort": "Review the route around our walking comfort",
+    "trip-length-comparison": "Help us decide between 10 and 12 days",
+    "route-reality-check": "Review our dates, flights and proposed China route",
     "fewer-hotels": "Reduce hotel changes",
     family: "Travel with children",
     "dietary-needs": "Plan around dietary needs",
@@ -551,6 +572,25 @@ function getPreferenceLabel(value?: string) {
     nature: "Spend more time in nature",
   };
   return labels[value] ?? value.replaceAll("-", " ");
+}
+
+function getPreferenceDefaults(value?: string): Partial<PlanningFormState> {
+  if (
+    value !== "walking-comfort" &&
+    value !== "trip-length-comparison" &&
+    value !== "route-reality-check"
+  ) {
+    return {};
+  }
+
+  return {
+    travelerType: "couple",
+    adults: 2,
+    children: 0,
+    duration: value === "walking-comfort" ? "12 days" : "10-12 days",
+    destinations: ["beijing", "xian", "shanghai"],
+    styles: ["slow-travel"],
+  };
 }
 
 function readStoredAttribution() {

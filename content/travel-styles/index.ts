@@ -62,7 +62,7 @@ export const travelStyles: TravelStyle[] = [
       "Guide quality and timing matter as much as the visible itinerary",
     ],
     image: destinationAsset.shanghaiSkyline,
-    relatedTourSlugs: ["first-china-beautifully-paced"],
+    relatedTourSlugs: ["china-at-an-easier-pace-12-day-private-tour"],
     relatedDestinationSlugs: ["beijing", "shanghai"],
     seo: {
       title: "Luxury Private China Travel",
@@ -88,7 +88,7 @@ export const travelStyles: TravelStyle[] = [
       "Neighborhood time balanced with major cultural sites",
     ],
     image: destinationAsset.chengduTeaHouse,
-    relatedTourSlugs: ["first-china-beautifully-paced"],
+    relatedTourSlugs: ["china-at-an-easier-pace-12-day-private-tour"],
     relatedDestinationSlugs: ["chengdu", "shanghai"],
     seo: {
       title: "Slow Travel China Private Journeys",

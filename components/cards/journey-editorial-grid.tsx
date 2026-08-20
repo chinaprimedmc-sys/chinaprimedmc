@@ -9,6 +9,7 @@ import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import type {
   JourneyCatalogItem,
+  JourneyCommercialRoleId,
   JourneyFocusId,
   JourneyPlanningNeedId,
   JourneyTravelerId,
@@ -17,6 +18,7 @@ import styles from "./journey-discovery.module.css";
 
 type SortId = "recommended" | "shortest" | "longest" | "relaxed" | "active";
 type Filters = {
+  commercialRoles: JourneyCommercialRoleId[];
   focus: JourneyFocusId[];
   duration: string[];
   destinations: string[];
@@ -30,6 +32,7 @@ type Filters = {
 };
 
 const emptyFilters: Filters = {
+  commercialRoles: [],
   focus: [],
   duration: [],
   destinations: [],
@@ -41,6 +44,16 @@ const emptyFilters: Filters = {
   needs: [],
   seasons: [],
 };
+const commercialRoleOptions: Array<[JourneyCommercialRoleId, string, string]> = [
+  ["signature", "Signature journeys", "Our most distinctive, experience-rich private journeys"],
+  ["essential", "First trip to China", "The clearest routes for seeing China's defining contrasts"],
+  ["nature", "Nature and scenery", "Pandas, mountain landscapes and regional food culture"],
+  [
+    "extension",
+    "Private extensions",
+    "Focused city and regional journeys to combine with a longer trip",
+  ],
+];
 const focusOptions: Array<[JourneyFocusId, string]> = [
   ["first-trip", "First trip to China"],
   ["culture", "History & culture"],
@@ -132,9 +145,9 @@ export function JourneyEditorialGrid({
 }) {
   const heroContent = hero ?? {
     eyebrow: "AVIORA · Private China Tours 2026–2027",
-    title: "Private China Tours, Made for You.",
+    title: "Choose the China Journey That Fits You.",
     description:
-      "Tailor-made journeys with private guides, flexible pacing and local support across China.",
+      "Compare signature journeys, first-trip routes, nature journeys and private extensions. Published prices are shown per guest for a private party of four.",
     service: undefined,
   };
   const initialUrlState = getInitialUrlState(initialQueryString);
@@ -199,6 +212,24 @@ export function JourneyEditorialGrid({
           <span>{heroContent.description}</span>
         </div>
       </section>
+      {!heroContent.service ? (
+        <section className={styles.catalogAssurance} aria-label="AVIORA service assurance">
+          <div>
+            <span>
+              <Check aria-hidden="true" /> Licensed inbound tourism operator in China
+            </span>
+            <span>
+              <Check aria-hidden="true" /> Private guides and vehicles for your party
+            </span>
+            <span>
+              <Check aria-hidden="true" /> No compulsory shopping stops
+            </span>
+            <Link href="/about">
+              Verify the China operator <ArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+      ) : null}
       {heroContent.service ? (
         <section className={styles.profileService} aria-labelledby="journey-profile-service-title">
           <div className={styles.profileServiceInner}>
@@ -245,6 +276,30 @@ export function JourneyEditorialGrid({
             Search by destination, trip length or travel style. Every route is private and can be
             tailored around you.
           </p>
+        </div>
+        <div className={styles.journeyPaths} aria-label="Choose a journey collection">
+          <p>Choose a starting point</p>
+          <div>
+            {commercialRoleOptions.map(([value, label, description]) => {
+              const selected = filters.commercialRoles.includes(value);
+              return (
+                <button
+                  key={value}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() =>
+                    setFilters((current) => ({
+                      ...current,
+                      commercialRoles: selected ? [] : [value],
+                    }))
+                  }
+                >
+                  <strong>{label}</strong>
+                  <span>{description}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
         <label className={styles.search}>
           <Search size={17} strokeWidth={1.7} aria-hidden="true" />
@@ -368,6 +423,13 @@ function FilterSections({
 }) {
   return (
     <div className={styles.filterSections}>
+      <FilterGroup
+        title="Journey collection"
+        options={commercialRoleOptions.map(([value, label]) => [value, label])}
+        selected={filters.commercialRoles}
+        onToggle={(v) => toggle("commercialRoles", v as JourneyCommercialRoleId)}
+        count={(v) => items.filter((i) => i.commercialRole === v).length}
+      />
       <FilterGroup
         title="Travel focus"
         options={focusOptions}
@@ -610,11 +672,22 @@ function JourneyResult({ item, reason }: { item: JourneyCatalogItem; reason: str
         </Link>
       </div>
       <div className={styles.cardBody}>
-        <p>{item.durationLabel}</p>
+        <div className={styles.cardMeta}>
+          <p>{item.durationLabel}</p>
+          <span>{item.commercialRoleLabel}</span>
+        </div>
         <Link href={item.href}>
           <h3>{displayTitle}</h3>
         </Link>
         <span>{item.hook}</span>
+        <ul className={styles.moments} aria-label="Signature moments">
+          {item.highlights.slice(0, 3).map((highlight) => (
+            <li key={highlight}>
+              <Check size={13} aria-hidden="true" />
+              <span>{highlight}</span>
+            </li>
+          ))}
+        </ul>
         <div className={styles.price}>
           <strong>From US${item.pricing.fromUsd.toLocaleString("en-US")}</strong>
           <span>per person · 4 guests sharing 2 rooms</span>
@@ -635,10 +708,18 @@ function JourneyResult({ item, reason }: { item: JourneyCatalogItem; reason: str
             <dd>{capitalize(item.discovery.walkingLevel)}</dd>
           </div>
         </dl>
-        <Link className={styles.view} href={item.href}>
-          <span>View itinerary</span>
-          <ArrowUpRight size={15} strokeWidth={1.8} aria-hidden="true" />
-        </Link>
+        <div className={styles.cardActions}>
+          <Link className={styles.view} href={item.href}>
+            <span>View itinerary</span>
+            <ArrowUpRight size={15} strokeWidth={1.8} aria-hidden="true" />
+          </Link>
+          <Link
+            className={styles.quote}
+            href={`/start-planning?source=journey-catalog&journey=${item.slug}`}
+          >
+            Request private proposal
+          </Link>
+        </div>
       </div>
     </article>
   );
@@ -666,6 +747,8 @@ function NoResults({ reset }: { reset: () => void }) {
 function matches(item: JourneyCatalogItem, filters: Filters, query: string) {
   const q = query.trim().toLowerCase();
   if (q && !item.discovery.searchableText.includes(q) && !daysQuery(item, q)) return false;
+  if (filters.commercialRoles.length && !filters.commercialRoles.includes(item.commercialRole))
+    return false;
   if (filters.focus.length && !filters.focus.some((v) => item.discovery.focus.includes(v)))
     return false;
   if (filters.duration.length && !filters.duration.some((v) => durationMatch(item, v)))
@@ -730,6 +813,7 @@ function matchReason(item: JourneyCatalogItem, filters: Filters, query: string) 
   const reasons: string[] = [];
   if (query.trim()) reasons.push(`Matches “${query.trim()}”`);
   if (filters.duration.some((v) => durationMatch(item, v))) reasons.push(item.durationLabel);
+  if (filters.commercialRoles.includes(item.commercialRole)) reasons.push(item.commercialRoleLabel);
   if (filters.focus.length) {
     const focus = focusOptions.find(
       ([id]) => item.discovery.focus.includes(id) && filters.focus.includes(id),
@@ -751,6 +835,7 @@ function matchReason(item: JourneyCatalogItem, filters: Filters, query: string) 
 function getSummary(filters: Filters, query: string) {
   const values = [
     query.trim() ? `Search: ${query.trim()}` : "",
+    ...filters.commercialRoles.map((v) => commercialRoleOptions.find(([id]) => id === v)?.[1] ?? v),
     ...filters.focus.map((v) => focusOptions.find(([id]) => id === v)?.[1] ?? v),
     ...filters.duration.map((v) => durationOptions.find(([id]) => id === v)?.[1] ?? v),
     ...filters.destinations,
@@ -780,6 +865,7 @@ function getInitialUrlState(queryString: string): {
   return {
     query: params.get("q") ?? "",
     filters: {
+      commercialRoles: read("commercialRoles") as JourneyCommercialRoleId[],
       focus: read("focus") as JourneyFocusId[],
       duration: read("duration"),
       destinations: read("destinations"),

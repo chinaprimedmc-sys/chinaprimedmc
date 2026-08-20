@@ -158,7 +158,7 @@ export const planningCards: PlanningCard[] = [
     title: "Family travel",
     description:
       "How private China trips can be paced around children, parents, hotels, food, and flexible days.",
-    href: "/family-travel",
+    href: "/tours?travellers=families",
     image: destinationAsset.chengduPanda,
     badges: ["Families", "Kids"],
   },
@@ -166,7 +166,7 @@ export const planningCards: PlanningCard[] = [
     title: "Senior-friendly travel",
     description:
       "Comfort-led planning for older travelers, with clearer daily rhythm, fewer hard transitions, and phone-first contact.",
-    href: "/senior-travel",
+    href: "/tours/china-at-an-easier-pace-12-day-private-tour",
     image: destinationAsset.chengduTeaHouse,
     badges: ["Seniors", "Comfort"],
   },

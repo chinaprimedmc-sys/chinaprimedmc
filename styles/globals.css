@@ -1602,6 +1602,10 @@ a {
     padding-inline: 0.2rem;
   }
 
+  .site-navigation-shell--light:not(.is-scrolled) .site-navigation__mobile-help {
+    color: #172129;
+  }
+
   .site-navigation-shell.is-scrolled .site-navigation__mobile-help {
     border-radius: 50%;
     justify-self: center;

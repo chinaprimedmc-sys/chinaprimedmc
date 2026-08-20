@@ -177,6 +177,53 @@
   white-space: nowrap;
 }
 
+.tradeEntry {
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--text-primary) 14%, transparent);
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  margin-top: 48px;
+  padding-top: 24px;
+}
+
+.tradeEntry > span {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.tradeEntry a {
+  align-items: center;
+  background: var(--action-primary);
+  border-radius: 999px;
+  color: var(--text-on-dark-primary);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 650;
+  gap: 8px;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  transition:
+    background-color var(--motion-base) var(--motion-ease-out),
+    transform var(--motion-fast) var(--motion-ease-out);
+}
+
+.tradeEntry a:hover {
+  background: var(--action-primary-hover);
+  transform: translateY(-1px);
+}
+
+.tradeEntry a:focus-visible {
+  outline: 2px solid var(--action-focus);
+  outline-offset: 3px;
+}
+
 @media (max-width: 900px) {
   .standard {
     padding-top: 64px;
@@ -214,6 +261,11 @@
 
   .closing p {
     white-space: normal;
+  }
+
+  .tradeEntry {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
@@ -295,6 +347,16 @@
     line-height: 1.22;
     white-space: normal;
   }
+
+  .tradeEntry {
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 20px;
+  }
+
+  .tradeEntry a {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -303,5 +365,9 @@
     animation: none;
     opacity: 0.72;
     transform: scaleX(1);
+  }
+
+  .tradeEntry a {
+    transition: none;
   }
 }

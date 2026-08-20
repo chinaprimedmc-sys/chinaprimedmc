@@ -46,7 +46,7 @@ export function SiteNavigation({
   className,
   cta = { label: "Start Planning", href: "/start-planning" },
   mobileCta = cta,
-  whatsapp = { label: "WhatsApp", href: "https://wa.me/447985052302" },
+  whatsapp = { label: "Message an Advisor", href: "https://wa.me/447985052302" },
   tone = "light",
   variant = "minimal",
   mobileScrolledTools,
@@ -121,6 +121,7 @@ export function SiteNavigation({
     <header
       className={cn(
         "site-navigation-shell fixed inset-x-0 top-0 z-50 transition-[border-color,box-shadow,padding,background-color] duration-300 ease-[var(--ease-apple)]",
+        tone === "light" && "site-navigation-shell--light",
         scrolled && "is-scrolled",
         variant === "minimal"
           ? "border-b border-neutral-950/8 bg-[var(--bg-primary)]"
@@ -235,7 +236,7 @@ export function SiteNavigation({
               <span>{journeyDetailTools.journeysLabel}</span>
             </Link>
           ) : (
-            <NavigationHelpLink href={whatsapp.href} />
+            <NavigationHelpLink href={whatsapp.href} label={whatsapp.label} />
           )}
           <Link
             href={scrolled && journeyDetailTools ? journeyDetailTools.planHref : cta.href}
@@ -246,12 +247,13 @@ export function SiteNavigation({
                 : "site-navigation__planning-cta--light",
             )}
             onClick={() => {
-              if (!scrolled || !journeyDetailTools) return;
               trackCtaClick(
-                journeyDetailTools.planLabel,
-                journeyDetailTools.planHref,
-                "tour-detail-nav-plan-desktop",
-                journeyDetailTools.journeySlug,
+                scrolled && journeyDetailTools ? journeyDetailTools.planLabel : cta.label,
+                scrolled && journeyDetailTools ? journeyDetailTools.planHref : cta.href,
+                scrolled && journeyDetailTools
+                  ? "tour-detail-nav-plan-desktop"
+                  : "site-nav-plan-desktop",
+                journeyDetailTools?.journeySlug,
               );
             }}
           >
@@ -344,7 +346,7 @@ export function SiteNavigation({
                 onClick={() =>
                   trackEvent("whatsapp_click", { placement: "mobile_journeys_toolbar" })
                 }
-                aria-label="Message an AVIORA travel advisor on WhatsApp"
+                aria-label={`${whatsapp.label} on WhatsApp`}
               >
                 <span className="site-navigation__mobile-help-icon" aria-hidden="true">
                   <WhatsAppIcon />
@@ -361,6 +363,9 @@ export function SiteNavigation({
                     ? "site-navigation__mobile-planning--dark"
                     : "site-navigation__mobile-planning--light",
                 )}
+                onClick={() =>
+                  trackCtaClick(mobileCta.label, mobileCta.href, "site-nav-plan-mobile")
+                }
               >
                 {mobileCta.label}
               </Link>
@@ -374,12 +379,12 @@ export function SiteNavigation({
                     placement: scrolled ? "mobile_navigation_bar" : "mobile_navigation_hero",
                   })
                 }
-                aria-label="Message an AVIORA travel advisor on WhatsApp"
+                aria-label={`${whatsapp.label} on WhatsApp`}
               >
                 <span className="site-navigation__mobile-help-icon" aria-hidden="true">
                   <WhatsAppIcon />
                 </span>
-                <span className="site-navigation__mobile-help-label">Message an Advisor</span>
+                <span className="site-navigation__mobile-help-label">{whatsapp.label}</span>
               </a>
               <MobileNavigation
                 brand={brand}
@@ -536,7 +541,7 @@ function MobileNavigation({
               className="mobile-navigation-whatsapp"
               onClick={() => trackEvent("whatsapp_click", { placement: "mobile_navigation" })}
             >
-              <span>Message an Advisor</span>
+              <span>{whatsapp.label}</span>
             </a>
             <Link href={cta.href} className="mobile-navigation-planning">
               <span>{cta.label}</span>
@@ -551,7 +556,15 @@ function MobileNavigation({
   );
 }
 
-function NavigationHelpLink({ href, compact = false }: { href: string; compact?: boolean }) {
+function NavigationHelpLink({
+  href,
+  label,
+  compact = false,
+}: {
+  href: string;
+  label: string;
+  compact?: boolean;
+}) {
   const helpHref = buildWhatsAppHelpHref(href);
 
   return (
@@ -561,12 +574,12 @@ function NavigationHelpLink({ href, compact = false }: { href: string; compact?:
       rel="noreferrer"
       onClick={() => trackEvent("whatsapp_click", { placement: "navigation_help" })}
       className={cn("site-navigation__help-link", compact && "site-navigation__help-link--compact")}
-      aria-label="Message an AVIORA travel advisor on WhatsApp"
+      aria-label={`${label} on WhatsApp`}
     >
       <span className="site-navigation__help-icon">
         <WhatsAppIcon aria-hidden="true" />
       </span>
-      {!compact ? <span>Message an Advisor</span> : null}
+      {!compact ? <span>{label}</span> : null}
     </a>
   );
 }

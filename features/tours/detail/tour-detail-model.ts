@@ -12,6 +12,7 @@ export type TourDetailDay = {
   transport: string;
   meals: string;
   stay: string;
+  experiences: Array<{ title: string; description: string }>;
 };
 
 export type TourDetailModel = {
@@ -20,6 +21,9 @@ export type TourDetailModel = {
   subtitle: string;
   duration: string;
   route: string;
+  journeyRoleLabel: string;
+  decisionSummary: string;
+  signatureMoments: string[];
   heroImage: MediaAsset;
   price?: {
     fromUsd: number;
@@ -32,11 +36,15 @@ export type TourDetailModel = {
   days: TourDetailDay[];
   gallery: MediaAsset[];
   hotelDestinations: string[];
+  hotelStandard: string;
   included: string[];
   excluded: string[];
   faqs: Array<{ question: string; answer: string }>;
   planningHref: string;
   whatsappHref: string;
+  primaryActionLabel: string;
+  whatsappActionLabel: string;
+  lastReviewedLabel?: string;
 };
 
 export const bookingPolicyFaqs = [
@@ -69,12 +77,21 @@ export const frameworkTourFaqs = [
 export function createTourDetailModel(tour: Tour): TourDetailModel {
   const dossier = getDossierData(tour);
   const catalog = getJourneyCatalogItem(tour.slug);
+  const hotelStandard =
+    tour.overview.facts.find((fact) => fact.label.toLowerCase() === "hotels")?.value ??
+    "Selected 4- and 5-star hotels";
+  const isFlagshipFamily = tour.slug === "china-family-tour-with-pandas-12-day-private-tour";
   return {
     slug: tour.slug,
     title: cleanDisplayTitle(tour.title),
     subtitle: tour.subtitle,
     duration: tour.duration,
     route: tour.route,
+    journeyRoleLabel: catalog?.commercialRoleLabel ?? "Private China journey",
+    decisionSummary: catalog?.hook ?? tour.overview.pitch,
+    signatureMoments:
+      catalog?.highlights.slice(0, 3) ??
+      tour.highlights.slice(0, 3).map((highlight) => highlight.title),
     heroImage: tour.hero.image,
     price: catalog
       ? {
@@ -88,7 +105,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       { label: "Ideal for", value: dossier.bestFor },
       { label: "Pace", value: dossier.pace },
       { label: "Travel style", value: "Private guides · private transfers" },
-      { label: "Hotels", value: "Selected 4- and 5-star hotels" },
+      { label: "Hotels", value: hotelStandard },
     ],
     routeStops: dossier.stops.map((stop) => ({ name: stop.name, days: stop.days })),
     days: tour.itinerary.map((day) => ({
@@ -99,8 +116,10 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       transport: day.transport ?? "Private timing confirmed with your dates",
       meals: day.meals?.join(", ") || "Confirmed in your written proposal",
       stay: compactDailyStay(day.hotel, day.destination),
+      experiences: day.activities,
     })),
     gallery: collectTourImages(tour),
+    hotelStandard,
     hotelDestinations: uniqueStrings(
       tour.accommodations.length
         ? tour.accommodations.map((hotel) => hotel.destination)
@@ -111,6 +130,9 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     faqs: [...tour.faqs, ...bookingPolicyFaqs],
     planningHref: planningHref(tour.slug, "detail-template"),
     whatsappHref: tourWhatsAppHref(tour.title, tour.duration),
+    primaryActionLabel: isFlagshipFamily ? "Design Our Family Journey" : "Plan My Trip",
+    whatsappActionLabel: isFlagshipFamily ? "Tell Us Your Children's Ages" : "Message an Advisor",
+    lastReviewedLabel: tour.updatedAt ? formatReviewDate(tour.updatedAt) : undefined,
   };
 }
 
@@ -121,6 +143,9 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     subtitle: item.summary,
     duration: item.durationLabel,
     route: item.routeLabel,
+    journeyRoleLabel: item.commercialRoleLabel,
+    decisionSummary: item.hook,
+    signatureMoments: item.highlights.slice(0, 3),
     heroImage: item.image,
     price: {
       fromUsd: item.pricing.fromUsd,
@@ -146,14 +171,18 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
       transport: item.transportSummary,
       meals: "As confirmed in your written proposal",
       stay: `Selected 4- or 5-star hotel in ${destination.label}`,
+      experiences: [],
     })),
     gallery: [item.image],
+    hotelStandard: "Selected 4- and 5-star hotels",
     hotelDestinations: item.destinations.map((destination) => destination.label),
     included: [item.pricing.inclusionSummary],
     excluded: ["International flights", "Items not listed in your written proposal"],
     faqs: [...frameworkTourFaqs],
     planningHref: planningHref(item.slug, "detail-template"),
     whatsappHref: tourWhatsAppHref(item.title, item.durationLabel),
+    primaryActionLabel: "Plan My Trip",
+    whatsappActionLabel: "Message an Advisor",
   };
 }
 
@@ -204,4 +233,13 @@ function compactDailyStay(stay: string | undefined, destination: string) {
 
 function cleanDisplayTitle(title: string) {
   return title.replace(/^\d+-Day\s+/i, "");
+}
+
+function formatReviewDate(value: string) {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${value}T00:00:00Z`));
 }

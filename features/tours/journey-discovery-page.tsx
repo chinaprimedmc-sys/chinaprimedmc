@@ -1,31 +1,24 @@
 import { JourneyEditorialGrid } from "@/components/cards/journey-editorial-grid";
 import { SiteFooter } from "@/components/footer/site-footer";
+import { PageClosing } from "@/components/footer/page-closing";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import type { JourneyDiscoveryProfile } from "@/content/tours/discovery-profiles";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/seo/schema";
-import { getPublicDestinations, getPublicSiteSettings } from "@/lib/cms/public-content";
+import { getPublicSiteSettings } from "@/lib/cms/public-content";
 
 export async function JourneyDiscoveryPage({
   initialQueryString = "",
-  profile,
 }: {
   initialQueryString?: string;
-  profile?: JourneyDiscoveryProfile;
 }) {
-  const [destinations, settings] = await Promise.all([
-    getPublicDestinations(),
-    getPublicSiteSettings(),
-  ]);
+  const settings = await getPublicSiteSettings();
   const catalog = journeyCatalog;
-  const schemaCatalog = profile ? catalog.filter(profile.matches) : catalog;
-  const path = profile?.path ?? "/tours";
-  const name = profile?.name ?? "Private China Tours, Tailor-Made Around You";
+  const path = "/tours";
+  const name = "Private China Tours, Tailor-Made Around You";
   const description =
-    profile?.metadataDescription ??
     "Tailor-made private China tours for 2026 and 2027 with private guides, transfers and China-based support.";
 
   return (
@@ -38,19 +31,10 @@ export async function JourneyDiscoveryPage({
           name,
           description,
           url: new URL(path, siteConfig.url).toString(),
-          ...(profile
-            ? {
-                about: profile.name,
-                audience: {
-                  "@type": "Audience",
-                  audienceType: profile.name,
-                },
-              }
-            : {}),
           mainEntity: {
             "@type": "ItemList",
-            numberOfItems: schemaCatalog.length,
-            itemListElement: schemaCatalog.map((tour, index) => ({
+            numberOfItems: catalog.length,
+            itemListElement: catalog.map((tour, index) => ({
               "@type": "ListItem",
               position: index + 1,
               url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
@@ -71,7 +55,6 @@ export async function JourneyDiscoveryPage({
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
           { name: "Journeys", path: "/tours" },
-          ...(profile ? [{ name: profile.name, path: profile.path }] : []),
         ])}
       />
       <SiteNavigation
@@ -92,49 +75,11 @@ export async function JourneyDiscoveryPage({
         variant="default"
       />
 
-      <JourneyEditorialGrid
-        items={catalog}
-        initialQueryString={profile?.queryString ?? initialQueryString}
-        hero={profile ? { ...profile.hero, service: profile.service } : undefined}
-      />
+      <JourneyEditorialGrid items={catalog} initialQueryString={initialQueryString} />
 
-      <SiteFooter
-        columns={[
-          {
-            title: "Journeys",
-            items: [
-              { label: "All private journeys", href: "/tours" },
-              {
-                label: "Muslim-friendly travel",
-                href: "/tours/discover/muslim-friendly-china",
-              },
-              { label: "Family journeys", href: "/tours/discover/family-china-tours" },
-              {
-                label: "Journeys for women",
-                href: "/tours/discover/china-tours-for-women",
-              },
-              { label: "Easy-paced journeys", href: "/tours/discover/easy-paced-china" },
-            ],
-          },
-          {
-            title: "Destinations",
-            items: destinations.slice(0, 5).map((destination) => ({
-              label: destination.name,
-              href: `/destinations/${destination.slug}`,
-            })),
-          },
-          {
-            title: "Planning",
-            items: [
-              { label: "Start planning", href: "/start-planning" },
-              { label: "Journal", href: "/journal" },
-              { label: "FAQ", href: "/faq" },
-              { label: "Contact", href: "/contact" },
-            ],
-          },
-        ]}
-        social={settings.socialLinks}
-      />
+      <PageClosing intent="tours" />
+
+      <SiteFooter />
     </PageContainer>
   );
 }

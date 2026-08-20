@@ -103,7 +103,7 @@ China Railway’s English FAQ states a free carry-on limit of 20 kg for most pas
 
 This rule is not an invitation to bring the maximum. Large suitcases must still be moved through security, station concourses and carriage storage. A mid-to-high-end rail plan works better with manageable luggage, a vehicle sized for it and porter expectations confirmed rather than assumed.
 
-Some large stations provide priority and wheelchair services, but the FAQ advises consulting the station for details. Request mobility support before the journey and design transfers around walking distance, not only train duration. AVIORA’s [senior-friendly planning page](/senior-travel) explains why these loads must be designed.
+Some large stations provide priority and wheelchair services, but the FAQ advises consulting the station for details. Request mobility support before the journey and design transfers around walking distance, not only train duration. AVIORA’s [easy-paced private China journey](/tours/china-at-an-easier-pace-12-day-private-tour) explains why these loads must be designed.
 
 ## Changes, missed trains and operational risk
 

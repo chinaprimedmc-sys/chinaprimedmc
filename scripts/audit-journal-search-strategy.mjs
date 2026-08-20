@@ -1,6 +1,10 @@
 import { readFile } from "node:fs/promises";
 
-const files = ["content/journal/commercial.ts", "content/journal/published.ts"];
+const files = [
+  "content/journal/commercial.ts",
+  "content/journal/senior-cluster.ts",
+  "content/journal/published.ts",
+];
 const source = (await Promise.all(files.map((file) => readFile(file, "utf8")))).join("\n");
 const strategy = await readFile("content/journal/search-strategy.ts", "utf8");
 const articleSlugs = unique([...source.matchAll(/\bslug:\s*"([^"]+)"/g)].map((match) => match[1]));

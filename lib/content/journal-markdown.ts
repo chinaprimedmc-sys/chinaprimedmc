@@ -3,7 +3,6 @@ import "server-only";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-import type { JournalArticle, JournalContentBlock } from "@/types/journal";
 import { toJournalDisplayTitleCase } from "@/content/journal/editorial-upgrades";
 import visaTransitMarkdown from "@/content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md";
 import accommodationMarkdown from "@/content/journal/articles/2026-08-06-china-accommodation-registration-foreigners.md";
@@ -26,6 +25,74 @@ import chengduChongqingZhangjiajieMarkdown from "@/content/journal/articles/2026
 import chengduDaysMarkdown from "@/content/journal/articles/2026-08-12-how-many-days-in-chengdu-itinerary.md";
 import chongqingThreeDayMarkdown from "@/content/journal/articles/2026-08-12-3-day-chongqing-itinerary.md";
 import zhangjiajieStayMarkdown from "@/content/journal/articles/2026-08-12-where-to-stay-in-zhangjiajie.md";
+import olderTravelersItineraryMarkdown from "@/content/journal/articles/2026-08-18-china-itinerary-older-travelers-12-days.md";
+import beijingXianShanghaiDaysMarkdown from "@/content/journal/articles/2026-08-19-how-many-days-beijing-xian-shanghai.md";
+import chinaTourWalkingMarkdown from "@/content/journal/articles/2026-08-19-how-much-walking-china-tour.md";
+import firstTripPlanningMarkdown from "@/content/journal/articles/2026-08-19-first-trip-to-china-planning-guide.md";
+import seniorToursMarkdown from "@/content/journal/articles/2026-08-20-china-tours-for-seniors.md";
+import seniorTravelMarkdown from "@/content/journal/articles/2026-08-20-china-travel-for-seniors.md";
+import olderParentsMarkdown from "@/content/journal/articles/2026-08-20-china-trip-with-older-parents.md";
+import limitedMobilityMarkdown from "@/content/journal/articles/2026-08-20-china-tours-seniors-limited-mobility.md";
+import seniorDestinationsMarkdown from "@/content/journal/articles/2026-08-20-best-places-china-senior-travelers.md";
+import seniorGroupToursMarkdown from "@/content/journal/articles/2026-08-20-are-china-group-tours-too-fast-for-seniors.md";
+import seniorSeasonMarkdown from "@/content/journal/articles/2026-08-20-best-time-to-visit-china-for-seniors.md";
+import seniorCostMarkdown from "@/content/journal/articles/2026-08-20-china-tour-cost-for-seniors.md";
+import seniorUsaMarkdown from "@/content/journal/articles/2026-08-20-china-tours-for-seniors-from-usa.md";
+import chinaSeventiesMarkdown from "@/content/journal/articles/2026-08-20-china-travel-in-your-70s.md";
+import type { JournalArticle, JournalContentBlock } from "@/types/journal";
+
+const fullFrameImageMetadata: Record<string, { width: number; height: number; fit: "contain" }> = {
+  "/journal/2026-08-06/china-high-speed-train-boarding.webp": {
+    width: 2400,
+    height: 3200,
+    fit: "contain",
+  },
+  "/tours/first-china-beautifully-paced/xian-terracotta-army-group.webp": {
+    width: 1920,
+    height: 1440,
+    fit: "contain",
+  },
+  "/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp": {
+    width: 1920,
+    height: 1440,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/temple-of-heaven-travelers-full.webp": {
+    width: 1200,
+    height: 1600,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/forbidden-city-walking-surfaces-full.webp": {
+    width: 768,
+    height: 1024,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/mutianyu-chairlift-access-full.webp": {
+    width: 1067,
+    height: 1600,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/terracotta-army-viewing-platform-full.webp": {
+    width: 1200,
+    height: 1600,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/shanghai-yu-garden-easier-pace-full.webp": {
+    width: 1600,
+    height: 1200,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/older-travelers-chinese-cultural-experience-full.webp": {
+    width: 1200,
+    height: 1600,
+    fit: "contain",
+  },
+  "/home/editorial/travel-trade-team-singapore.webp": {
+    width: 1080,
+    height: 810,
+    fit: "contain",
+  },
+};
 
 const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md":
@@ -62,6 +129,27 @@ const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-12-how-many-days-in-chengdu-itinerary.md": chengduDaysMarkdown,
   "content/journal/articles/2026-08-12-3-day-chongqing-itinerary.md": chongqingThreeDayMarkdown,
   "content/journal/articles/2026-08-12-where-to-stay-in-zhangjiajie.md": zhangjiajieStayMarkdown,
+  "content/journal/articles/2026-08-18-china-itinerary-older-travelers-12-days.md":
+    olderTravelersItineraryMarkdown,
+  "content/journal/articles/2026-08-19-how-many-days-beijing-xian-shanghai.md":
+    beijingXianShanghaiDaysMarkdown,
+  "content/journal/articles/2026-08-19-how-much-walking-china-tour.md": chinaTourWalkingMarkdown,
+  "content/journal/articles/2026-08-19-first-trip-to-china-planning-guide.md":
+    firstTripPlanningMarkdown,
+  "content/journal/articles/2026-08-20-china-tours-for-seniors.md": seniorToursMarkdown,
+  "content/journal/articles/2026-08-20-china-travel-for-seniors.md": seniorTravelMarkdown,
+  "content/journal/articles/2026-08-20-china-trip-with-older-parents.md": olderParentsMarkdown,
+  "content/journal/articles/2026-08-20-china-tours-seniors-limited-mobility.md":
+    limitedMobilityMarkdown,
+  "content/journal/articles/2026-08-20-best-places-china-senior-travelers.md":
+    seniorDestinationsMarkdown,
+  "content/journal/articles/2026-08-20-are-china-group-tours-too-fast-for-seniors.md":
+    seniorGroupToursMarkdown,
+  "content/journal/articles/2026-08-20-best-time-to-visit-china-for-seniors.md":
+    seniorSeasonMarkdown,
+  "content/journal/articles/2026-08-20-china-tour-cost-for-seniors.md": seniorCostMarkdown,
+  "content/journal/articles/2026-08-20-china-tours-for-seniors-from-usa.md": seniorUsaMarkdown,
+  "content/journal/articles/2026-08-20-china-travel-in-your-70s.md": chinaSeventiesMarkdown,
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {
@@ -91,7 +179,13 @@ function polishJournalContent(content: JournalContentBlock[]) {
   return content.map<JournalContentBlock>((block) => {
     if (block.type === "heading") {
       emphasizeNextParagraph = block.level !== 3;
-      return { ...block, title: toJournalDisplayTitleCase(block.title) };
+      return {
+        ...block,
+        title:
+          block.title === "A Fuller Season, Not a Smaller One"
+            ? block.title
+            : toJournalDisplayTitleCase(block.title),
+      };
     }
 
     if (block.type === "paragraph" && emphasizeNextParagraph) {
@@ -129,6 +223,8 @@ function parseJournalMarkdown(markdown: string) {
     "## Suggested structured data",
     "## Structured Data Recommendation",
     "## SEO & GEO Review",
+    "## Sources",
+    "## Review Notes",
   ]);
   const sources = section(markdown, "## Sources", "## Review Notes");
   return {
@@ -279,6 +375,7 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
         image: {
           src: image[2],
           alt: image[1],
+          ...fullFrameImageMetadata[image[2]],
         },
       });
       pendingImageIndex = blocks.length - 1;
@@ -343,6 +440,15 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
     if (line.startsWith("> ")) {
       flushText();
       const body = cleanMarkdown(line.slice(2));
+      const testimonial = body.match(/^[“"](.+?)[”"]\s+[—-]\s+(.+)$/);
+      if (testimonial) {
+        blocks.push({
+          type: "quote",
+          quote: testimonial[1],
+          attribution: testimonial[2],
+        });
+        continue;
+      }
       blocks.push({
         type: "callout",
         tone: /warning|important|do not|must/i.test(body) ? "warning" : "note",

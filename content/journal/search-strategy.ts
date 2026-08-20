@@ -13,8 +13,9 @@ const strategyGroups: Array<{
 }> = [
   {
     pillar: "First China trip planning",
-    hub: "how-many-days-in-china-7-10-14-day-itineraries",
+    hub: "first-trip-to-china-planning-guide",
     articles: [
+      ["first-trip-to-china-planning-guide", "plan", "how to plan a trip to China", 1],
       ["how-many-days-in-china-7-10-14-day-itineraries", "plan", "how many days in China", 1],
       ["10-day-china-itinerary-first-time-visitors", "plan", "10 day China itinerary", 1],
       ["9-days-or-11-days-in-china", "compare", "9 days or 11 days in China", 1],
@@ -154,8 +155,36 @@ const strategyGroups: Array<{
     hub: "china-family-itinerary-10-to-14-days",
     articles: [
       ["china-family-itinerary-10-to-14-days", "plan", "China family itinerary", 1],
-      ["china-itinerary-older-travelers-10-days", "plan", "China itinerary older travelers", 1],
       ["china-honeymoon-itinerary-10-to-14-days", "plan", "China honeymoon itinerary", 1],
+    ],
+  },
+  {
+    pillar: "Easier-paced China travel",
+    hub: "china-itinerary-older-travelers-10-days",
+    articles: [
+      ["china-itinerary-older-travelers-10-days", "plan", "China itinerary for seniors", 1],
+      ["how-many-days-beijing-xian-shanghai", "compare", "how many days Beijing Xian Shanghai", 1],
+      ["how-much-walking-china-tour", "answer", "how much walking on a China tour", 1],
+      ["china-tours-for-seniors", "evaluate", "China tours for seniors", 1],
+      ["china-travel-for-seniors", "answer", "China travel for seniors", 1],
+      ["china-trip-with-older-parents", "plan", "China trip with older parents", 1],
+      [
+        "china-tours-seniors-limited-mobility",
+        "evaluate",
+        "China tours for seniors with limited mobility",
+        1,
+      ],
+      [
+        "best-places-china-senior-travelers",
+        "compare",
+        "best places to visit in China for seniors",
+        1,
+      ],
+      ["are-china-group-tours-too-fast-for-seniors", "compare", "China group tours for seniors", 1],
+      ["best-time-to-visit-china-for-seniors", "plan", "best time to visit China for seniors", 1],
+      ["china-tour-cost-for-seniors", "evaluate", "China tour cost for seniors", 1],
+      ["china-tours-for-seniors-from-usa", "plan", "China tours for seniors from USA", 1],
+      ["china-travel-in-your-70s", "answer", "China travel in your 70s", 1],
     ],
   },
 ];

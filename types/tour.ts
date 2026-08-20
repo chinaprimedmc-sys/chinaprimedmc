@@ -113,6 +113,8 @@ export type TourInquiry = {
 
 export type Tour = {
   slug: string;
+  publishedAt?: string;
+  updatedAt?: string;
   title: string;
   subtitle: string;
   duration: string;

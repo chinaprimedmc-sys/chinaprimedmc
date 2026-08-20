@@ -217,6 +217,16 @@ export const firstChinaAsset = {
   ),
 } satisfies Record<string, MediaAsset>;
 
+export const chinaFamilyAsset = {
+  hero: {
+    src: "/home/editorial/philosophy-family-friendly.avif",
+    alt: "Parents, children and local hosts making dumplings together in a Beijing courtyard",
+    width: 1536,
+    height: 1024,
+    objectPosition: "center",
+  },
+} satisfies Record<string, MediaAsset>;
+
 export const beijingUnhurriedAsset = {
   hero: beijingUnhurriedImage(
     "great-wall-walk.webp",

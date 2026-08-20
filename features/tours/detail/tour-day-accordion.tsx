@@ -1,7 +1,7 @@
 "use client";
 
 import * as Accordion from "@radix-ui/react-accordion";
-import { BedDouble, CarFront, ChevronDown, Utensils } from "lucide-react";
+import { BedDouble, CarFront, ChevronDown, Sparkles, Utensils } from "lucide-react";
 
 import type { TourDetailDay } from "@/features/tours/detail/tour-detail-model";
 import styles from "@/features/tours/detail/tour-detail.module.css";
@@ -49,6 +49,22 @@ export function TourDayAccordion({
           <Accordion.Content className={styles.dayContent}>
             <div className={styles.dayContentInner}>
               <p>{day.summary}</p>
+              {day.experiences.length ? (
+                <div className={styles.dayExperiences}>
+                  <p>
+                    <Sparkles size={15} aria-hidden="true" />
+                    Signature moments
+                  </p>
+                  <ul>
+                    {day.experiences.map((experience) => (
+                      <li key={experience.title}>
+                        <strong>{experience.title}</strong>
+                        <span>{experience.description}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
               <dl className={styles.dayFacts}>
                 <div>
                   <CarFront size={17} aria-hidden="true" />

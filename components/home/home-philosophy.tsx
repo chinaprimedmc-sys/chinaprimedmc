@@ -14,7 +14,7 @@ const philosophyCards = [
   {
     title: "Muslim-Friendly",
     ariaLabel: "Learn how AVIORA plans Muslim-friendly private China journeys",
-    href: "/tours/discover/muslim-friendly-china",
+    href: "/tours?needs=muslim-friendly",
     planningHref: "/start-planning?source=homepage-philosophy&need=muslim-friendly",
     image: "/home/editorial/philosophy-muslim-friendly.avif",
     imageAlt: "A Muslim family sharing a halal Chinese meal with a local travel specialist",
@@ -32,7 +32,7 @@ const philosophyCards = [
   {
     title: "Family-Friendly",
     ariaLabel: "Learn how AVIORA plans family-friendly private China journeys",
-    href: "/tours/discover/family-china-tours",
+    href: "/tours?travellers=families",
     planningHref: "/start-planning?source=homepage-philosophy&need=family-friendly",
     image: "/home/editorial/philosophy-family-friendly.avif",
     imageAlt: "A multigenerational family making dumplings together in a Beijing courtyard",
@@ -50,7 +50,7 @@ const philosophyCards = [
   {
     title: "Women-Friendly",
     ariaLabel: "Learn how AVIORA supports women traveling in China",
-    href: "/tours/discover/china-tours-for-women",
+    href: "/tours?needs=women-traveler-support",
     planningHref: "/start-planning?source=homepage-philosophy&need=women-friendly",
     image: "/home/editorial/philosophy-women-friendly.avif",
     imageAlt: "Women travelers exploring a historic Shanghai neighborhood with a local guide",
@@ -68,7 +68,7 @@ const philosophyCards = [
   {
     title: "Easy-Paced",
     ariaLabel: "Learn how AVIORA plans senior-friendly, easy-paced private China journeys",
-    href: "/tours/discover/easy-paced-china",
+    href: "/tours?needs=slower-pacing&pace=easy&sort=relaxed",
     planningHref: "/start-planning?source=homepage-philosophy&need=easy-paced",
     image: "/home/editorial/philosophy-easy-paced.avif",
     imageAlt: "A couple enjoying an easy-paced Great Wall visit with a private local guide",

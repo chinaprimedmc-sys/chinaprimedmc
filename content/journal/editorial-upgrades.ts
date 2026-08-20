@@ -3,9 +3,59 @@ import type { JournalArticle } from "@/types/journal";
 type JournalEditorialUpgrade = {
   title: string;
   seoTitle: string;
+  preserveTitleCase?: boolean;
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "china-tours-for-seniors": {
+    title: "China Tours for Seniors: What a Good Tour Should Actually Change",
+    seoTitle: "China Tours for Seniors: What Good Tours Change",
+  },
+  "china-travel-for-seniors": {
+    title: "China Travel for Seniors: A Practical Guide to Planning the Trip Well",
+    seoTitle: "China Travel for Seniors: Practical Planning Guide",
+  },
+  "china-trip-with-older-parents": {
+    title: "Planning a China Trip With Older Parents: 12 Questions Before Booking",
+    seoTitle: "China Trip With Older Parents: 12 Booking Questions",
+  },
+  "china-tours-seniors-limited-mobility": {
+    title: "China Tours for Seniors With Limited Mobility: What Can and Cannot Be Adapted",
+    seoTitle: "China Tours for Seniors With Limited Mobility",
+  },
+  "best-places-china-senior-travelers": {
+    title: "Best Places to Visit in China for Senior Travelers: An Honest Comparison",
+    seoTitle: "Best Places in China for Senior Travelers Compared",
+  },
+  "are-china-group-tours-too-fast-for-seniors": {
+    title: "Are China Group Tours Too Fast for Seniors? Private vs Small-Group Travel",
+    seoTitle: "China Group Tours for Seniors: Are They Too Fast?",
+  },
+  "best-time-to-visit-china-for-seniors": {
+    title: "Best Time to Visit China for Seniors: Weather, Crowds and Better-Paced Days",
+    seoTitle: "Best Time to Visit China for Seniors",
+  },
+  "china-tour-cost-for-seniors": {
+    title: "How Much Does a China Tour for Seniors Cost? What Changes the Quote",
+    seoTitle: "China Tour Cost for Seniors: Quote Guide",
+  },
+  "china-tours-for-seniors-from-usa": {
+    title: "China Tours for Seniors From the USA: Flights, First Days and Private Support",
+    seoTitle: "China Tours for Seniors From USA: Planning Guide",
+  },
+  "china-travel-in-your-70s": {
+    title: "Can You Travel to China in Your 70s? A Realistic First-Trip Guide",
+    seoTitle: "China Travel in Your 70s: A Realistic Guide",
+  },
+  "first-trip-to-china-planning-guide": {
+    title: "How AVIORA Plans a First Trip to China Before You Book",
+    seoTitle: "How to Plan a Trip to China: 12 Decisions Before Booking",
+    preserveTitleCase: true,
+  },
+  "how-much-walking-china-tour": {
+    title: "How Much Walking Is There on a China Tour?",
+    seoTitle: "How Much Walking Is There on a China Tour?",
+  },
   "terracotta-warriors-day-trip-from-beijing": {
     title: "Can You Visit the Terracotta Warriors from Beijing in One Day?",
     seoTitle: "Terracotta Warriors Day Trip from Beijing: Is It Worth It?",
@@ -41,6 +91,10 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
   "9-days-or-11-days-in-china": {
     title: "9 or 11 Days in China? Choose the Better First-Trip Route",
     seoTitle: "9 or 11 Days in China? Compare 2 First-Trip Routes",
+  },
+  "how-many-days-beijing-xian-shanghai": {
+    title: "How Many Days Do You Need for Beijing, Xi'an and Shanghai? 8, 10 or 12 Days Compared",
+    seoTitle: "Beijing, Xi'an & Shanghai: 8, 10 or 12 Days?",
   },
   "private-china-tour-vs-group-tour": {
     title: "Private China Tour vs Group Tour: Cost, Pace and Support Compared",
@@ -79,8 +133,9 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     seoTitle: "China Family Itinerary: 10, 12 and 14 Days",
   },
   "china-itinerary-older-travelers-10-days": {
-    title: "China Itinerary for Older Travelers: A Comfortable 10-Day Plan",
-    seoTitle: "China Itinerary for Older Travelers: 10 Days",
+    title: "A 12-Day China Itinerary at an Easier Pace",
+    seoTitle: "China Itinerary for Seniors: 12 Days at an Easier Pace",
+    preserveTitleCase: true,
   },
   "how-many-days-in-china-7-10-14-day-itineraries": {
     title: "How Many Days Do You Need in China? 7, 10 and 14-Day Plans",
@@ -214,7 +269,7 @@ export function applyJournalEditorialUpgrade(article: JournalArticle): JournalAr
 
   return {
     ...article,
-    title: toJournalDisplayTitleCase(upgrade.title),
+    title: upgrade.preserveTitleCase ? upgrade.title : toJournalDisplayTitleCase(upgrade.title),
     seo: {
       ...article.seo,
       title: upgrade.seoTitle,

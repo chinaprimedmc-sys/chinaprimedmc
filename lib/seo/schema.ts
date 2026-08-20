@@ -30,6 +30,8 @@ export function organizationSchema() {
       "Private China tours",
       "Inbound tourism in China",
       "Custom China itineraries",
+      "China destination management services",
+      "China ground handling for travel trade partners",
       "Family travel in China",
       "Luxury travel in China",
     ],
@@ -86,6 +88,17 @@ export function articleSchemaData(input: {
   articleSection?: string;
   wordCount?: number;
   keywords?: string[];
+  about?: Array<{
+    name: string;
+    url?: string;
+    type: "Place" | "Thing";
+  }>;
+  mentions?: Array<{
+    name: string;
+    url: string;
+    id?: string;
+    type: "TouristTrip" | "Thing";
+  }>;
   citations?: Array<{
     name: string;
     url: string;
@@ -96,6 +109,7 @@ export function articleSchemaData(input: {
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${input.url}#article`,
     headline: input.headline,
     description: input.description,
     image: {
@@ -112,26 +126,46 @@ export function articleSchemaData(input: {
     ...(input.wordCount ? { wordCount: input.wordCount } : {}),
     author: {
       "@type": "Organization",
+      "@id": `${siteConfig.url}/about#editorial-team`,
       name: input.authorName,
       description: input.authorRole,
       url: new URL("/about", siteConfig.url).toString(),
-      "@id": `${siteConfig.url}/#organization`,
+      parentOrganization: { "@id": `${siteConfig.url}/#organization` },
     },
     reviewedBy: {
       "@type": "Organization",
-      name: "AVIORA China Travel Team",
-      url: new URL("/about", siteConfig.url).toString(),
       "@id": `${siteConfig.url}/#organization`,
     },
     publisher: { "@id": `${siteConfig.url}/#organization` },
+    copyrightHolder: { "@id": `${siteConfig.url}/#organization` },
+    copyrightYear: new Date(input.datePublished).getUTCFullYear(),
     mainEntityOfPage: { "@type": "WebPage", "@id": input.url },
     isPartOf: { "@id": `${siteConfig.url}/#website` },
     ...(input.keywords?.length ? { keywords: input.keywords } : {}),
+    ...(input.about?.length
+      ? {
+          about: input.about.map((entity) => ({
+            "@type": entity.type,
+            name: entity.name,
+            ...(entity.url ? { "@id": entity.url, url: entity.url } : {}),
+          })),
+        }
+      : {}),
+    ...(input.mentions?.length
+      ? {
+          mentions: input.mentions.map((entity) => ({
+            "@type": entity.type,
+            "@id": entity.id ?? entity.url,
+            name: entity.name,
+            url: entity.url,
+          })),
+        }
+      : {}),
     ...(input.citations?.length
       ? {
           citation: input.citations.map((citation) => ({
-            "@type": "NewsArticle",
-            headline: citation.name,
+            "@type": "CreativeWork",
+            name: citation.name,
             url: citation.url,
             ...(citation.publishedAt ? { datePublished: citation.publishedAt } : {}),
             publisher: {

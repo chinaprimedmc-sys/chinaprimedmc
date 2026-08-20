@@ -20,7 +20,7 @@ secondary_keywords:
   ]
 search_intent: "Prepare a lawful, documented personal supply of prescription medicine for entry into China and know when customs declaration or specialist advice is needed."
 suggested_internal_links:
-  ["/faq", "/start-planning", "/senior-travel", "/family-travel", "/start-planning"]
+  ["/faq", "/start-planning", "/tours?needs=slower-pacing&pace=easy", "/tours?travellers=families", "/start-planning"]
 sources_verified_at: "2026-08-08"
 hero_image: "/journal/2026-08-08/bringing-medicine-to-china-hero.webp"
 hero_image_alt: "Several medicines kept in their labeled original packaging for travel"
@@ -134,7 +134,7 @@ Remain concise and allow time for inspection. Do not schedule a tight domestic c
 
 AVIORA can record medical logistics in the route brief, request hotel refrigerator details, protect transfer time and keep local contact information clear. It cannot diagnose, prescribe, classify a drug, guarantee customs clearance or certify a hotel refrigerator.
 
-Travelers with mobility or long-term treatment needs can review the [senior-friendly travel page](/senior-travel), while parents can use the [family travel planning page](/family-travel). The [planning FAQ](/faq) covers insurance, emergency contacts and practical preparation. For a tailored route, [start planning](/start-planning) with non-sensitive operational needs first; detailed medical records should only be shared through an agreed secure channel when genuinely necessary.
+Travelers with mobility or long-term treatment needs can browse [easy-paced journeys](/tours?needs=slower-pacing&pace=easy), while parents can browse [family journeys](/tours?travellers=families). The [planning FAQ](/faq) covers insurance, emergency contacts and practical preparation. For a tailored route, [start planning](/start-planning) with non-sensitive operational needs first; detailed medical records should only be shared through an agreed secure channel when genuinely necessary.
 
 ## Final pre-departure checklist
 

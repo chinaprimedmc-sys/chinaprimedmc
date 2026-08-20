@@ -147,7 +147,10 @@ export default async function StartPlanningPage({
                 href: "/journal/china-240-hour-visa-free-transit-guide",
               },
               { label: "FAQ", href: "/faq" },
-              { label: "Senior Travel", href: "/senior-travel" },
+              {
+                label: "China At An Easier Pace",
+                href: "/tours/china-at-an-easier-pace-12-day-private-tour",
+              },
             ],
           },
           { title: "Explore", items: homeNavItems },

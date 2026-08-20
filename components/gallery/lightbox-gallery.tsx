@@ -18,6 +18,16 @@ export function LightboxGallery({
 }) {
   const [selected, setSelected] = useState<MediaAsset | null>(null);
   const isStrip = layout === "strip";
+  const isFullFrameStrip = isStrip && images.every((image) => image.fit === "contain");
+  const stripGridTemplate = isFullFrameStrip
+    ? images
+        .map((image) => {
+          const width = image.width ?? 4;
+          const height = image.height ?? 3;
+          return `minmax(0, ${width / height}fr)`;
+        })
+        .join(" ")
+    : undefined;
 
   return (
     <>
@@ -27,6 +37,7 @@ export function LightboxGallery({
             ? "-mx-5 flex snap-x snap-mandatory [scrollbar-width:none] gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
             : "grid grid-cols-2 gap-3 md:grid-cols-3",
         )}
+        style={stripGridTemplate ? { gridTemplateColumns: stripGridTemplate } : undefined}
       >
         {images.map((image, index) => (
           <button
@@ -48,8 +59,20 @@ export function LightboxGallery({
                   ? "(min-width:1024px) 30vw, (min-width:640px) 33vw, 82vw"
                   : "(min-width:1024px) 33vw, 50vw"
               }
-              frameClassName={cn("aspect-[4/3]", isStrip ? "rounded-lg" : "rounded-[1.25rem]")}
-              className="h-full w-full object-cover transition duration-300 hover:scale-[1.025]"
+              loading={isStrip ? "eager" : undefined}
+              fetchPriority={isStrip && index === 0 ? "high" : undefined}
+              showSkeleton={!isFullFrameStrip}
+              fadeIn={!isFullFrameStrip}
+              frameClassName={cn(
+                isFullFrameStrip ? "w-full bg-transparent" : "aspect-[4/3]",
+                image.fit === "contain" && !isFullFrameStrip && "bg-neutral-100",
+                isStrip ? "rounded-lg" : "rounded-[1.25rem]",
+              )}
+              className={cn(
+                "w-full transition duration-300 hover:scale-[1.025]",
+                isFullFrameStrip ? "h-auto object-contain" : "h-full",
+                !isFullFrameStrip && (image.fit === "contain" ? "object-contain" : "object-cover"),
+              )}
             />
           </button>
         ))}

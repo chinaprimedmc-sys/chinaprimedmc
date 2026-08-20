@@ -141,7 +141,7 @@ const planningItems: DiscoveryItem[] = planningCards.map((card) => ({
     card.title.toLowerCase().replaceAll(" ", "-"),
     ...card.badges.map((badge) => badge.toLowerCase().replaceAll(" ", "-")),
   ],
-  familyFriendly: card.href === "/family-travel",
+  familyFriendly: card.href.includes("travellers=families"),
   privateTour: true,
 }));
 
@@ -162,7 +162,10 @@ const audienceGuideItems: DiscoveryItem[] = audienceGuides.map((guide) => ({
   type: "experience",
   title: guide.slug === "family-travel" ? "Family Travel" : "Senior Travel",
   description: guide.summary,
-  href: `/${guide.slug}`,
+  href:
+    guide.slug === "family-travel"
+      ? "/tours?travellers=families"
+      : "/tours?needs=slower-pacing&pace=easy&sort=relaxed",
   image: guide.image,
   category: "Audience",
   tags: [

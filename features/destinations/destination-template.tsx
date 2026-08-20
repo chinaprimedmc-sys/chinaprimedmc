@@ -315,7 +315,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
             title: "Explore",
             items: [
               { label: "Private journeys", href: "/tours" },
-              { label: "Family travel", href: "/family-travel" },
+              { label: "Family journeys", href: "/tours?travellers=families" },
               { label: "Start planning", href: "/start-planning" },
             ],
           },

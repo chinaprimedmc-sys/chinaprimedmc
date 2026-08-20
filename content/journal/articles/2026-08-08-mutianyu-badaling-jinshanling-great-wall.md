@@ -24,7 +24,7 @@ suggested_internal_links:
     "/destinations/beijing",
     "/tours/beijing-great-wall-private-5-day-tour",
     "/tours/first-china-beautifully-paced",
-    "/senior-travel",
+    "/tours/china-at-an-easier-pace-12-day-private-tour",
     "/start-planning",
   ]
 sources_verified_at: "2026-08-08"
@@ -120,7 +120,7 @@ Choose Jinshanling when:
 
 ### Start with the slowest traveler
 
-Build the route around the person with the lowest comfortable walking tolerance. Ask about stairs, steep descents, vertigo, heat sensitivity and the recovery time needed after a climb. AVIORA’s [senior-friendly China guidance](/senior-travel) explains why a nominal attraction list is not enough.
+Build the route around the person with the lowest comfortable walking tolerance. Ask about stairs, steep descents, vertigo, heat sensitivity and the recovery time needed after a climb. AVIORA’s [easy-paced private China journey](/tours/china-at-an-easier-pace-12-day-private-tour) explains why a nominal attraction list is not enough.
 
 ### Separate admission from transport products
 

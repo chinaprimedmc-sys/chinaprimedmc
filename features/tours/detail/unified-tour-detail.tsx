@@ -16,6 +16,7 @@ import {
 import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/footer/site-footer";
+import { PageClosing } from "@/components/footer/page-closing";
 import { CinematicJourneyGallery } from "@/components/gallery/cinematic-journey-gallery";
 import { PageContainer } from "@/components/layout/page-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
@@ -34,12 +35,9 @@ import styles from "@/features/tours/detail/tour-detail.module.css";
 import { JourneyReading } from "@/features/tours/journey-reading";
 
 export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
-  const firstStop = model.routeStops.at(0)?.name;
-  const lastStop = model.routeStops.at(-1)?.name;
-  const overviewTitle =
-    firstStop && lastStop && firstStop !== lastStop
-      ? `${firstStop} to ${lastStop}, privately.`
-      : `A private ${model.duration.toLowerCase()} journey.`;
+  const overviewTitle = model.route
+    ? `${model.route.replace(/, ([^,]+)$/, " & $1")}, privately.`
+    : `A private ${model.duration.toLowerCase()} journey.`;
 
   return (
     <PageContainer className={styles.page} tone="white" data-unified-tour-detail="true">
@@ -84,10 +82,13 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           <div className={styles.heroShade} aria-hidden="true" />
         </div>
         <div className={`${styles.shell} ${styles.heroContent}`}>
-          <p className={styles.eyebrow}>{model.duration} · Private China tour</p>
+          <p className={styles.eyebrow}>
+            {model.journeyRoleLabel} · {model.duration}
+          </p>
           <h1 className={model.title.length <= 36 ? styles.singleLineMobileTitle : undefined}>
             {model.title}
           </h1>
+          <p className={styles.heroSubtitle}>{model.subtitle}</p>
           <div className={styles.heroDecisionRow}>
             {model.price ? (
               <div className={styles.heroPrice}>
@@ -101,22 +102,22 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 className={styles.primaryAction}
                 href={model.planningHref}
                 journeySlug={model.slug}
-                label="Plan My Trip"
+                label={model.primaryActionLabel}
                 placement="tour-hero-plan"
               >
-                Plan My Trip <ArrowUpRight size={16} aria-hidden="true" />
+                {model.primaryActionLabel} <ArrowUpRight size={16} aria-hidden="true" />
               </TrackedTourLink>
               <TrackedTourLink
                 className={styles.secondaryAction}
                 href={model.whatsappHref}
                 journeySlug={model.slug}
-                label="Message an Advisor"
+                label={model.whatsappActionLabel}
                 placement="tour-hero-whatsapp"
                 target="_blank"
                 rel="noreferrer"
               >
                 <MessageCircle size={16} aria-hidden="true" />
-                Message an Advisor
+                {model.whatsappActionLabel}
               </TrackedTourLink>
             </div>
           </div>
@@ -124,6 +125,23 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
       </header>
 
       <main>
+        <section className={styles.decisionGuide} aria-labelledby="journey-difference-title">
+          <div className={`${styles.shell} ${styles.decisionGuideInner}`}>
+            <div className={styles.decisionGuideCopy}>
+              <p className={styles.eyebrow}>Why choose this journey</p>
+              <h2 id="journey-difference-title">A clear reason to travel this way.</h2>
+              <p>{model.decisionSummary}</p>
+            </div>
+            <ol className={styles.signatureMoments} aria-label="Signature journey moments">
+              {model.signatureMoments.map((moment, index) => (
+                <li key={moment}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{moment}</strong>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
         <section
           className={`${styles.section} ${styles.overview}`}
           aria-labelledby="tour-overview-title"
@@ -135,8 +153,8 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <p className={styles.eyebrow}>Journey overview</p>
                   <h2 id="tour-overview-title">{overviewTitle}</h2>
                   <p>
-                    {model.duration} with private guiding, considered pacing and selected four- and
-                    five-star hotels.
+                    {model.duration} with private guiding, considered pacing and{" "}
+                    {model.hotelStandard.toLowerCase()}.
                   </p>
                 </div>
               </div>
@@ -219,7 +237,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <BedDouble size={22} aria-hidden="true" />
                   <div>
                     <p className={styles.subheading}>Your hotels</p>
-                    <h3>Selected 4- and 5-star stays</h3>
+                    <h3>{model.hotelStandard}</h3>
                     <p>{model.hotelDestinations.join(" · ")}</p>
                   </div>
                 </div>
@@ -265,14 +283,14 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       className={styles.priceAction}
                       href={model.whatsappHref}
                       journeySlug={model.slug}
-                      label="Message An Advisor"
+                      label={model.whatsappActionLabel}
                       placement="tour-price-whatsapp"
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`Message an advisor about ${model.title} on WhatsApp`}
                     >
                       <MessageCircle size={15} aria-hidden="true" />
-                      Message An Advisor
+                      {model.whatsappActionLabel}
                     </TrackedTourLink>
                     <TrackedTourLink
                       className={styles.priceFormAction}
@@ -289,6 +307,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                     Share your dates and group size. Personal reply normally within 24 hours; no
                     booking or payment obligation.
                   </p>
+                  {model.lastReviewedLabel ? (
+                    <p className={styles.priceReviewDate}>
+                      Itinerary and published price basis reviewed {model.lastReviewedLabel}.
+                    </p>
+                  ) : null}
                 </div>
               ) : null}
             </div>
@@ -380,6 +403,8 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           <JourneyReading journeySlug={model.slug} />
         </div>
       </main>
+
+      <PageClosing intent="tour" primaryHref={model.planningHref} journeySlug={model.slug} />
 
       <SiteFooter
         columns={[

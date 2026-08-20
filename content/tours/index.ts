@@ -1,6 +1,8 @@
 import { destinationAsset } from "@/content/destinations/assets";
 import { beijingXianChengduShanghaiTour } from "@/content/tours/beijing-xian-chengdu-shanghai";
 import { chengduChongqingZhangjiajieTour } from "@/content/tours/chengdu-chongqing-zhangjiajie";
+import { chinaConsidered12DayTour } from "@/content/tours/china-considered-12-day";
+import { chinaFamily12DayTour } from "@/content/tours/china-family-12-day";
 import {
   beijingUnhurriedAsset,
   chengduAsset,
@@ -124,6 +126,8 @@ const chengduJiuzhaigouAsset = {
 };
 
 export const tours: Tour[] = [
+  chinaConsidered12DayTour,
+  chinaFamily12DayTour,
   chengduChongqingZhangjiajieTour,
   beijingXianChengduShanghaiTour,
   {

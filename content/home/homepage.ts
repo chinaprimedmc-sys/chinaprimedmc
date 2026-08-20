@@ -13,6 +13,7 @@ export const homeNavItems: NavigationItem[] = [
   },
   { label: "About AVIORA", href: "/about" },
   { label: "Journal", href: "/journal" },
+  { label: "Travel Trade", href: "/china-dmc" },
 ];
 
 export const primaryAction: LinkAction = {

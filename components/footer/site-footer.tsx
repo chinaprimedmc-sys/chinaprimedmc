@@ -1,109 +1,129 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { Facebook, Instagram, Mail } from "lucide-react";
 
-import { WhatsAppIcon } from "@/components/icons";
 import { CookiePreferencesButton } from "@/components/privacy/cookie-preferences-button";
 import { siteConfig } from "@/config/site";
 import type { NavigationItem } from "@/types/component-library";
 import styles from "./site-footer.module.css";
 
-type SiteFooterProps = {
+type LegacyFooterProps = {
   brand?: string;
   description?: string;
-  columns: Array<{ title: string; items: NavigationItem[] }>;
+  columns?: Array<{ title: string; items: NavigationItem[] }>;
   email?: string;
   social?: Array<{ label: string; href: string }>;
 };
 
-export function SiteFooter({
-  brand = "AVIORA",
-  description = `Tailored private China tours with local guides, carefully chosen hotels and clear support from arrival to departure.`,
-  columns,
-  email = siteConfig.email,
-  social = [],
-}: SiteFooterProps) {
-  const whatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(
-    "Hello AVIORA, I would like help planning a private trip to China.",
-  )}`;
+const footerGroups = [
+  {
+    title: "Explore",
+    items: [
+      { label: "Private Journeys", href: "/tours" },
+      { label: "Destinations", href: "/destinations" },
+      { label: "China Travel Journal", href: "/journal" },
+    ],
+  },
+  {
+    title: "Plan With Us",
+    items: [
+      { label: "Start Planning", href: "/start-planning" },
+      { label: "Travel FAQ", href: "/faq" },
+      { label: "Contact Our China Team", href: "/contact" },
+    ],
+  },
+  {
+    title: "Company",
+    items: [
+      { label: "About AVIORA", href: "/about" },
+      { label: "The AVIORA Standard", href: "/#aviora-standard" },
+      { label: "For Travel Trade", href: "/china-dmc" },
+    ],
+  },
+] as const;
 
+export function SiteFooter({ email = siteConfig.email }: LegacyFooterProps = {}) {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <section className={styles.conversion}>
-          <div>
-            <p className={styles.eyebrow}>Private travel, planned in China</p>
-            <h2>Planning a private trip to China?</h2>
-            <p className={styles.conversionCopy}>
-              Share your dates, travel style and priorities. Our China-based team will suggest a
-              clear first direction.
-            </p>
-          </div>
-          <div className={styles.actions}>
-            <Link className={styles.primaryAction} href="/start-planning?source=site-footer">
-              Start planning <ArrowUpRight size={15} aria-hidden="true" />
-            </Link>
-            <a
-              className={styles.whatsappAction}
-              href={whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <WhatsAppIcon aria-hidden="true" /> Message an Advisor
-            </a>
-          </div>
-        </section>
-
+        <div className={styles.rule} aria-hidden="true" />
         <div className={styles.main}>
-          <div>
-            <p
-              className={`brand-wordmark ${styles.brand} [--brand-wordmark-color:rgba(255,255,255,0.92)]`}
-            >
-              {brand}
+          <section className={styles.brandPanel} aria-labelledby="footer-brand">
+            <Link id="footer-brand" href="/" className={`brand-wordmark ${styles.brand}`}>
+              AVIORA
+            </Link>
+            <p className={styles.positioning}>One China-based team, responsible throughout.</p>
+            <p className={styles.relationship}>
+              Private journeys designed around your dates, pace and priorities, with local support
+              from arrival to departure.
             </p>
-            <p className={styles.description}>{description}</p>
-            <div className={styles.trust}>
-              <span>Licensed inbound tour operator</span>
-              <span>China-based local support</span>
+            <div className={styles.trustLine}>
+              <span>Licensed In China</span>
+              <span>Established 2018</span>
+              <span>No Forced Shopping</span>
             </div>
-            <a className={styles.email} href={`mailto:${email}`}>
-              {email}
-            </a>
-            {social.length ? (
-              <div className={styles.socialLinks}>
-                {social.map((item) => (
-                  <Link key={item.href} href={item.href}>
-                    {getSocialLabel(item)}
-                  </Link>
-                ))}
+            <div className={styles.contactRow}>
+              <a href={`mailto:${email}`} className={styles.contactLink}>
+                <Mail size={16} aria-hidden="true" /> {email}
+              </a>
+              <div className={styles.socials} aria-label="AVIORA social media">
+                <a
+                  href={siteConfig.socials[1]}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="AVIORA on Instagram"
+                  title="Instagram"
+                >
+                  <Instagram size={17} aria-hidden="true" />
+                </a>
+                <a
+                  href={siteConfig.socials[0]}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="AVIORA on Facebook"
+                  title="Facebook"
+                >
+                  <Facebook size={17} aria-hidden="true" />
+                </a>
               </div>
-            ) : null}
-          </div>
+            </div>
+          </section>
 
-          <nav className={styles.columns} aria-label="Footer navigation">
-            {columns.map((column) => (
-              <div className={styles.column} key={column.title}>
-                <p className={styles.columnTitle}>{column.title}</p>
+          <nav className={styles.navigation} aria-label="Footer navigation">
+            {footerGroups.map((group) => (
+              <div className={styles.desktopGroup} key={`desktop-${group.title}`}>
+                <p>{group.title}</p>
                 <ul>
-                  {column.items.slice(0, 5).map((item) => (
-                    <li key={`${column.title}-${item.label}-${item.href}`}>
+                  {group.items.map((item) => (
+                    <li key={item.href}>
                       <Link href={item.href}>{item.label}</Link>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
+            {footerGroups.map((group) => (
+              <details className={styles.mobileGroup} key={`mobile-${group.title}`}>
+                <summary>{group.title}</summary>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))}
           </nav>
         </div>
 
         <div className={styles.legal}>
           <p>
-            © {new Date().getFullYear()} AVIORA · Operated in China by{" "}
+            © {new Date().getFullYear()} AVIORA · Operated by{" "}
             {siteConfig.operator.englishReferenceName}
           </p>
           <div className={styles.legalLinks}>
-            <Link href="/about">About AVIORA</Link>
             <Link href="/privacy">Privacy</Link>
-            <Link href="/cookies">Cookie Policy</Link>
+            <Link href="/cookies">Cookies</Link>
             <CookiePreferencesButton className={styles.cookiePreferences} />
             <Link href="/terms">Booking Terms</Link>
           </div>
@@ -111,11 +131,4 @@ export function SiteFooter({
       </div>
     </footer>
   );
-}
-
-function getSocialLabel(item: { label: string; href: string }) {
-  const href = item.href.toLowerCase();
-  if (href.includes("instagram.com")) return "Instagram";
-  if (href.includes("facebook.com")) return "Facebook";
-  return item.label === "Social" ? "Follow AVIORA" : item.label;
 }

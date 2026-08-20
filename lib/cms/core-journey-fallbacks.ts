@@ -4,6 +4,10 @@ import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
 const coreJourneyTitleOverrides: Record<string, string> = {
+  "china-family-tour-with-pandas-12-day-private-tour":
+    "China, Made for Families: Great Wall, Warriors & Pandas",
+  "china-at-an-easier-pace-12-day-private-tour":
+    "China, Considered: 12-Day Beijing, Xi'an & Shanghai Private Journey",
   "beijing-xian-chengdu-shanghai-private-11-day-tour":
     "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
   "first-china-beautifully-paced": "9-Day Beijing, Xi'an & Shanghai Private Tour",
@@ -17,6 +21,8 @@ const coreJourneyTitleOverrides: Record<string, string> = {
 };
 
 const coreJourneyOrder = [
+  "china-family-tour-with-pandas-12-day-private-tour",
+  "china-at-an-easier-pace-12-day-private-tour",
   "chengdu-chongqing-zhangjiajie-private-11-day-tour",
   "beijing-xian-chengdu-shanghai-private-11-day-tour",
   "first-china-beautifully-paced",

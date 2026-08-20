@@ -1,5 +1,6 @@
 import { destinationAsset } from "@/content/destinations/assets";
 import { commercialArticleContent } from "@/content/journal/commercial-content";
+import { seniorClusterArticles } from "@/content/journal/senior-cluster";
 import {
   beijingUnhurriedAsset,
   firstChinaAsset,
@@ -14,6 +15,21 @@ const author = {
 };
 
 const commercialHeroImages = {
+  firstTripPlanning: {
+    ...firstChinaAsset.beijingGreatWallGroup,
+    fit: "contain",
+  },
+  beijingXianShanghaiDays: {
+    ...firstChinaAsset.beijingGreatWallCouple,
+    fit: "contain",
+  },
+  chinaTourWalking: {
+    src: "/journal/2026-08-19/china-tour-walking-hero-great-wall-couple-full.webp",
+    alt: "Older couple sharing a kiss on the Great Wall at Mutianyu near Beijing",
+    width: 1200,
+    height: 1600,
+    fit: "contain",
+  },
   beijingTerracottaDecision: firstChinaAsset.xianTerracottaPit,
   mutianyuWalking: firstChinaAsset.beijingGreatWallWide,
   tianmenVsWulingyuan: destinationAsset.zhangjiajieForest,
@@ -149,8 +165,10 @@ type CommercialArticleInput = {
   conversionTitle: string;
   conversionDescription: string;
   conversionLabel: string;
+  conversionHref?: string;
   conversionImage?: MediaAsset;
   publishedAt?: string;
+  sourcePath?: string;
 };
 
 function commercialArticle(input: CommercialArticleInput): JournalArticle {
@@ -182,18 +200,215 @@ function commercialArticle(input: CommercialArticleInput): JournalArticle {
     },
     citations: input.citations,
     updatedAt: input.publishedAt ?? "2026-08-12",
+    sourcePath: input.sourcePath,
     conversion: {
       eyebrow: "Plan with a China specialist",
       title: input.conversionTitle,
       description: input.conversionDescription,
       label: input.conversionLabel,
-      href: `/start-planning?source=journal-${input.slug}`,
+      href: input.conversionHref ?? `/start-planning?source=journal-${input.slug}`,
       image: input.conversionImage,
     },
   };
 }
 
 export const commercialJournalArticles: JournalArticle[] = [
+  commercialArticle({
+    slug: "first-trip-to-china-planning-guide",
+    publishedAt: "2026-08-19",
+    title: "How AVIORA Plans a First Trip to China Before You Book",
+    dek: "Use the decision sequence our China-based team applies to gateways, usable days, city order, reservations, hotels, walking and backup plans before a journey is ready to book.",
+    excerpt:
+      "The first-party Route Reality Check AVIORA uses to test whether a first-China itinerary will work beyond the page.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "beijing", "xian", "shanghai", "private-guides", "train-travel"],
+    readingTime: "22 min read",
+    eyebrow: "First China trip planning",
+    hero: commercialHeroImages.firstTripPlanning,
+    gallery: [
+      {
+        src: "/journal/2026-08-06/china-high-speed-train-boarding.webp",
+        alt: "An international traveler boarding a high-speed train in China",
+        width: 2400,
+        height: 3200,
+        fit: "contain",
+      },
+      {
+        ...firstChinaAsset.xianTerracottaGroup,
+        fit: "contain",
+      },
+      {
+        ...firstChinaAsset.shanghaiWaterfrontGroup,
+        fit: "contain",
+      },
+    ],
+    seoTitle: "How to Plan a Trip to China: 12 Decisions Before Booking",
+    seoDescription:
+      "Plan a first trip to China in the right order. See the 12 route, flight, hotel, ticket and pacing decisions AVIORA checks before booking.",
+    keywords: [
+      "how to plan a trip to China",
+      "first trip to China",
+      "China trip planning",
+      "China travel tips for first time visitors",
+      "things to know before visiting China",
+      "best itinerary for first trip to China",
+      "China travel checklist",
+    ],
+    destinations: ["beijing", "xian", "shanghai"],
+    tours: ["china-at-an-easier-pace-12-day-private-tour"],
+    experiences: ["private-guides", "train-travel"],
+    articles: [
+      "how-many-days-beijing-xian-shanghai",
+      "china-itinerary-older-travelers-10-days",
+      "how-much-walking-china-tour",
+      "china-240-hour-visa-free-transit-guide",
+    ],
+    conversionTitle: "Let our China team test the route before you book it.",
+    conversionDescription:
+      "Share your dates, proposed flights, travelers and city list. We will identify what works, what needs evidence and what should change before avoidable bookings make the route harder.",
+    conversionLabel: "Request a Route Reality Check",
+    conversionHref:
+      "/start-planning?source=journal-first-trip-to-china-planning-guide&journey=china-at-an-easier-pace-12-day-private-tour&placement=journal-final-cta&preference=route-reality-check",
+    conversionImage: {
+      ...firstChinaAsset.shanghaiWaterfrontGroup,
+      fit: "contain",
+    },
+    sourcePath: "content/journal/articles/2026-08-19-first-trip-to-china-planning-guide.md",
+  }),
+  commercialArticle({
+    slug: "how-many-days-beijing-xian-shanghai",
+    publishedAt: "2026-08-19",
+    title: "How Many Days Do You Need for Beijing, Xi'an and Shanghai? 8, 10 or 12 Days Compared",
+    dek: "Compare the real usable time inside eight, ten and twelve-day routes after arrival, departure and two hotel-to-hotel transitions are counted honestly.",
+    excerpt:
+      "A first-party comparison of eight, ten and twelve days in Beijing, Xi'an and Shanghai, including the time most itinerary headlines leave unexplained.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "beijing", "xian", "shanghai", "senior-travel", "private-guides"],
+    readingTime: "17 min read",
+    eyebrow: "Beijing, Xi'an and Shanghai trip length",
+    hero: commercialHeroImages.beijingXianShanghaiDays,
+    gallery: [
+      {
+        src: "/journal/2026-08-06/china-high-speed-train-boarding.webp",
+        alt: "An international traveler boarding a high-speed train in China",
+        width: 2400,
+        height: 3200,
+        fit: "contain",
+      },
+      {
+        ...firstChinaAsset.xianTerracottaGroup,
+        fit: "contain",
+      },
+      {
+        ...firstChinaAsset.shanghaiWaterfrontGroup,
+        fit: "contain",
+      },
+    ],
+    seoTitle: "Beijing, Xi'an & Shanghai: 8, 10 or 12 Days?",
+    seoDescription:
+      "Compare 8, 10 and 12 days in Beijing, Xi'an and Shanghai using real arrival, transfer, sightseeing and recovery time to choose the right pace.",
+    keywords: [
+      "how many days Beijing Xian Shanghai",
+      "Beijing Xian Shanghai itinerary",
+      "8 day Beijing Xian Shanghai itinerary",
+      "10 day Beijing Xian Shanghai itinerary",
+      "12 day Beijing Xian Shanghai itinerary",
+      "how long to spend in Beijing Xian Shanghai",
+    ],
+    destinations: ["beijing", "xian", "shanghai"],
+    tours: ["china-at-an-easier-pace-12-day-private-tour"],
+    experiences: ["private-guides", "train-travel"],
+    articles: [
+      "first-trip-to-china-planning-guide",
+      "china-itinerary-older-travelers-10-days",
+      "how-much-walking-china-tour",
+      "china-high-speed-train-foreigners",
+      "private-china-tour-cost-2026",
+    ],
+    conversionTitle: "Choose the shortest route that still feels like your trip.",
+    conversionDescription:
+      "Share your available dates, flights and preferred rhythm. We will show what changes between ten and twelve days before preparing a private proposal.",
+    conversionLabel: "Compare 10 and 12 Days",
+    conversionHref:
+      "/start-planning?source=journal-how-many-days-beijing-xian-shanghai&journey=china-at-an-easier-pace-12-day-private-tour&placement=journal-final-cta&preference=trip-length-comparison",
+    conversionImage: {
+      ...firstChinaAsset.shanghaiWaterfrontGroup,
+      fit: "contain",
+    },
+    sourcePath: "content/journal/articles/2026-08-19-how-many-days-beijing-xian-shanghai.md",
+  }),
+  commercialArticle({
+    slug: "how-much-walking-china-tour",
+    publishedAt: "2026-08-19",
+    title: "How Much Walking Is There on a China Tour?",
+    dek: "Realistic walking ranges for Beijing, Xi'an and Shanghai, including the Great Wall, Forbidden City, Terracotta Army and the parts private planning can change.",
+    excerpt:
+      "A practical site-by-site guide to distance, stairs, standing, station transfers and recovery on a first China tour.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "first-time-china", "beijing", "xian", "shanghai", "private-guides"],
+    readingTime: "18 min read",
+    eyebrow: "China tour walking guide",
+    hero: commercialHeroImages.chinaTourWalking,
+    gallery: [
+      {
+        src: "/journal/2026-08-19/shanghai-museum-travelers-full.webp",
+        alt: "Older travelers exploring a museum gallery in Shanghai with a private guide",
+        width: 1600,
+        height: 1200,
+        fit: "contain",
+      },
+      {
+        src: "/journal/2026-08-19/terracotta-army-exhibition-full.webp",
+        alt: "Terracotta warriors displayed inside the museum complex near Xi'an",
+        width: 1200,
+        height: 1600,
+        fit: "contain",
+      },
+      {
+        src: "/journal/2026-08-19/forbidden-city-walking-surfaces-full.webp",
+        alt: "Stone courtyards and palace roofs inside the Forbidden City in Beijing",
+        width: 768,
+        height: 1024,
+        fit: "contain",
+      },
+    ],
+    seoTitle: "How Much Walking Is There on a China Tour?",
+    seoDescription:
+      "Expect 3-6 km of walking on a typical China tour. Compare steps, stairs and standing in Beijing, Xi'an and Shanghai, plus easier-paced options.",
+    keywords: [
+      "how much walking on a China tour",
+      "China tour walking difficulty",
+      "China itinerary with less walking",
+      "how many steps on a China tour",
+      "China tour for slower walkers",
+      "Beijing Xi'an Shanghai walking difficulty",
+    ],
+    destinations: ["beijing", "xian", "shanghai"],
+    tours: ["china-at-an-easier-pace-12-day-private-tour"],
+    experiences: ["private-guides", "train-travel"],
+    articles: [
+      "first-trip-to-china-planning-guide",
+      "how-many-days-beijing-xian-shanghai",
+      "china-itinerary-older-travelers-10-days",
+      "mutianyu-great-wall-walking-cable-car",
+      "china-high-speed-train-foreigners",
+      "terracotta-army-tickets-foreign-visitors",
+    ],
+    conversionTitle: "Tell us what a comfortable walking day feels like.",
+    conversionDescription:
+      "Share your comfortable continuous walking time, stair preferences and recovery pattern. We will show where the harder days sit before shaping the route.",
+    conversionLabel: "Review My Walking Comfort",
+    conversionHref:
+      "/start-planning?source=journal-how-much-walking-china-tour&journey=china-at-an-easier-pace-12-day-private-tour&preference=walking-comfort",
+    conversionImage: {
+      src: "/journal/2026-08-19/older-travelers-chinese-cultural-experience-full.webp",
+      alt: "Older travelers enjoying a traditional Chinese cultural experience together",
+      width: 1200,
+      height: 1600,
+      fit: "contain",
+    },
+    sourcePath: "content/journal/articles/2026-08-19-how-much-walking-china-tour.md",
+  }),
   commercialArticle({
     slug: "terracotta-warriors-day-trip-from-beijing",
     publishedAt: "2026-08-15",
@@ -1067,40 +1282,48 @@ export const commercialJournalArticles: JournalArticle[] = [
   }),
   commercialArticle({
     slug: "china-itinerary-older-travelers-10-days",
-    title: "China Itinerary for Older Travelers: A Comfortable 10-Day Route",
-    dek: "See Beijing, Xi'an and Shanghai with fewer hotel changes, realistic walking, reliable transfers and time to recover between major sights.",
+    publishedAt: "2026-08-18",
+    title: "A 12-Day China Itinerary at an Easier Pace",
+    dek: "See Beijing, Xi'an and Shanghai through a measured 12-day route designed for more freedom, meaningful days and private support shaped around you.",
     excerpt:
-      "A comfortable ten-day China itinerary for older and multigenerational travelers who want depth without exhausting days.",
+      "A considered 12-day route for a new season of travel, with cultural depth, recovery time and a measured daily rhythm, including families planning with parents.",
     category: "Travel Guides",
-    tags: ["first-time-china", "beijing", "xian", "shanghai", "private-guides"],
-    readingTime: "14 min read",
-    eyebrow: "Comfortable China travel",
-    hero: commercialHeroImages.olderTravelers,
+    tags: ["senior-travel", "first-time-china", "beijing", "xian", "shanghai", "private-guides"],
+    readingTime: "24 min read",
+    eyebrow: "China at an easier pace",
+    hero: firstChinaAsset.beijingGreatWallCouple,
     gallery: [
-      destinationAsset.xianTerracotta,
-      destinationAsset.shanghaiSkyline,
-      destinationAsset.chengduTeaHouse,
+      firstChinaAsset.xianTerracottaGroup,
+      firstChinaAsset.shanghaiWaterfrontGroup,
+      beijingUnhurriedAsset.privateService,
     ],
-    seoTitle: "China Itinerary for Older Travelers: 10 Days",
+    seoTitle: "China Itinerary for Seniors: 12 Days at an Easier Pace",
     seoDescription:
-      "Plan a comfortable 10-day China itinerary for older travelers with fewer hotel changes, manageable walking, private transfers and flexible sightseeing.",
+      "Plan a 12-day China itinerary for seniors through Beijing, Xi'an and Shanghai, with realistic walking, recovery time and private support.",
     keywords: [
-      "China tour for seniors",
-      "China itinerary older travelers",
-      "comfortable China tour",
-      "China travel for elderly parents",
+      "China itinerary for seniors",
+      "China itinerary for older travelers",
+      "12 day China itinerary for seniors",
+      "multigenerational China travel",
+      "easy paced China itinerary",
+      "senior friendly China travel",
     ],
     destinations: ["beijing", "xian", "shanghai"],
-    tours: [
-      "first-china-beautifully-paced",
-      "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
-    ],
+    tours: ["china-at-an-easier-pace-12-day-private-tour"],
     experiences: ["private-guides", "train-travel"],
-    articles: ["10-day-china-itinerary-first-time-visitors", "china-high-speed-train-foreigners"],
-    conversionTitle: "Design the route around comfort, not an age label.",
+    articles: [
+      "first-trip-to-china-planning-guide",
+      "how-many-days-beijing-xian-shanghai",
+      "mutianyu-great-wall-walking-cable-car",
+      "china-high-speed-train-foreigners",
+      "terracotta-army-tickets-foreign-visitors",
+    ],
+    conversionTitle: "Travel with more freedom, on your own terms.",
     conversionDescription:
-      "Tell us about walking comfort, stairs, room preferences and medical considerations that affect logistics. We will adapt the daily rhythm discreetly.",
-    conversionLabel: "Plan a Comfortable Journey",
+      "Share your dates, travelers, preferred pace, hotels and practical support needs. An AVIORA China specialist will shape the journey around what you want this next chapter to feel like.",
+    conversionLabel: "Shape This Journey Around Your Pace",
+    conversionHref: "/start-planning?source=journal-china-easier-pace",
+    sourcePath: "content/journal/articles/2026-08-18-china-itinerary-older-travelers-12-days.md",
   }),
   commercialArticle({
     slug: "how-many-days-in-china-7-10-14-day-itineraries",
@@ -1720,4 +1943,5 @@ export const commercialJournalArticles: JournalArticle[] = [
       "Tell us your Chengdu dates, mobility needs and interest in river or cliff views. We will recommend the most realistic Leshan day and transfer plan.",
     conversionLabel: "Plan a Leshan Day",
   }),
+  ...seniorClusterArticles,
 ];

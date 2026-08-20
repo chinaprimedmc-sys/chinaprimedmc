@@ -102,6 +102,71 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      {
+        source: "/senior-travel",
+        destination: "/tours/china-at-an-easier-pace-12-day-private-tour",
+        permanent: true,
+      },
+      {
+        source: "/family-travel",
+        destination: "/tours?travellers=families",
+        permanent: true,
+      },
+      {
+        source: "/tours/discover/muslim-friendly-china",
+        destination: "/tours?needs=muslim-friendly",
+        permanent: true,
+      },
+      {
+        source: "/tours/discover/family-china-tours",
+        destination: "/tours?travellers=families",
+        permanent: true,
+      },
+      {
+        source: "/tours/discover/china-tours-for-women",
+        destination: "/tours?needs=women-traveler-support",
+        permanent: true,
+      },
+      {
+        source: "/tours/discover/easy-paced-china",
+        destination: "/tours?needs=slower-pacing&pace=easy&sort=relaxed",
+        permanent: true,
+      },
+      {
+        source: "/journal/9-days-or-11-days-in-china",
+        destination: "/journal/how-many-days-in-china-7-10-14-day-itineraries",
+        permanent: true,
+      },
+      {
+        source: "/journal/is-private-china-tour-worth-it",
+        destination: "/journal/private-china-tour-vs-group-tour",
+        permanent: true,
+      },
+      {
+        source: "/journal/china-honeymoon-itinerary-10-to-14-days",
+        destination: "/tours",
+        permanent: true,
+      },
+      {
+        source: "/journal/china-travel-safety-for-foreign-visitors",
+        destination: "/journal/first-trip-to-china-planning-guide",
+        permanent: true,
+      },
+      {
+        source: "/b2b",
+        destination: "/china-dmc",
+        permanent: true,
+      },
+      {
+        source: "/trade-shows",
+        destination: "/china-dmc",
+        permanent: true,
+      },
+      {
+        source: "/travel-trade",
+        destination: "/china-dmc",
+        permanent: true,
+      },
       // Preserve equity from legacy commercial and planning URLs that are still
       // discoverable in search results and external bookmarks.
       {
@@ -117,6 +182,46 @@ const nextConfig: NextConfig = {
       {
         source: "/journeys",
         destination: "/tours",
+        permanent: true,
+      },
+      {
+        source: "/china-travel-guide",
+        destination: "/journal",
+        permanent: true,
+      },
+      {
+        source: "/blog",
+        destination: "/journal",
+        permanent: true,
+      },
+      {
+        source: "/blog/best-time-visit-china",
+        destination: "/journal/best-time-to-visit-china",
+        permanent: true,
+      },
+      {
+        source: "/blog/shanghai-travel-guide",
+        destination: "/destinations/shanghai",
+        permanent: true,
+      },
+      {
+        source: "/blog/shanghai-bund-guide",
+        destination: "/destinations/shanghai",
+        permanent: true,
+      },
+      {
+        source: "/blog/beijing-travel-guide",
+        destination: "/destinations/beijing",
+        permanent: true,
+      },
+      {
+        source: "/blog/yunnan-hidden-villages",
+        destination: "/destinations",
+        permanent: true,
+      },
+      {
+        source: "/blog/regional-chinese-food",
+        destination: "/journal",
         permanent: true,
       },
       {
@@ -202,6 +307,76 @@ const nextConfig: NextConfig = {
       {
         source: "/china-travel-guide/muslim-friendly-travel-in-china",
         destination: "/journal/private-china-tour-from-singapore",
+        permanent: true,
+      },
+      {
+        source: "/china-travel-guide/is-china-safe-for-families-with-kids",
+        destination: "/family-travel",
+        permanent: true,
+      },
+      {
+        source: "/experience/panda-morning-chengdu",
+        destination: "/tours/chengdu-pandas-sichuan-table",
+        permanent: true,
+      },
+      {
+        source: "/journey/classic-china-icons-12-days",
+        destination: "/tours/china-at-an-easier-pace-12-day-private-tour",
+        permanent: true,
+      },
+      {
+        source: "/journey/beijing-xian-shanghai-essential-8-days",
+        destination: "/tours/first-china-beautifully-paced",
+        permanent: true,
+      },
+      {
+        source: "/journey/senior-friendly-china-icons",
+        destination: "/tours/china-at-an-easier-pace-12-day-private-tour",
+        permanent: true,
+      },
+      {
+        source: "/journey/china-by-high-speed-rail",
+        destination: "/tours/first-china-beautifully-paced",
+        permanent: true,
+      },
+      {
+        source: "/journey/private-china-for-couples",
+        destination: "/tours/china-at-an-easier-pace-12-day-private-tour",
+        permanent: true,
+      },
+      {
+        source: "/journey/luxury-china-slow-rhythm",
+        destination: "/tours/china-at-an-easier-pace-12-day-private-tour",
+        permanent: true,
+      },
+      {
+        source: "/journey/shanghai-suzhou-hangzhou-elegant-east",
+        destination: "/destinations/shanghai",
+        permanent: true,
+      },
+      {
+        source: "/journey/guilin-yangshuo-soft-adventure",
+        destination: "/tours",
+        permanent: true,
+      },
+      {
+        source: "/journey/yunnan-slow-luxury",
+        destination: "/destinations",
+        permanent: true,
+      },
+      {
+        source: "/journeys/family-china-14d",
+        destination: "/tours/china-family-tour-with-pandas-12-day-private-tour",
+        permanent: true,
+      },
+      {
+        source: "/journeys/female-friendly-cultural-china-10-day",
+        destination: "/tours/discover/china-tours-for-women",
+        permanent: true,
+      },
+      {
+        source: "/journeys/women-beijing-zhangjiajie-shanghai-11-day",
+        destination: "/tours/discover/china-tours-for-women",
         permanent: true,
       },
       {

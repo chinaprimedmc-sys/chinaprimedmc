@@ -26,6 +26,7 @@ export function getJourneyBridgeForArticle(article: JournalArticle) {
     journey: journey.slug,
     placement: "journal-journey-bridge",
   });
+  if (rule?.planningPreference) params.set("preference", rule.planningPreference);
   const advisorMessage = [
     "Hello AVIORA, I found this journey through your China travel guide:",
     article.title,
