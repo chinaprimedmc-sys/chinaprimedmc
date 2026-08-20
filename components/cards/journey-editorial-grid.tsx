@@ -659,17 +659,26 @@ function JourneyResult({ item, reason }: { item: JourneyCatalogItem; reason: str
 
   return (
     <article className={styles.card}>
-      <div className={styles.photoStage}>
-        <Link href={item.href}>
-          <OptimizedImage
-            src={item.image.src}
-            alt={item.image.alt}
-            fill
-            sizes="(min-width: 1000px) 38vw, 100vw"
-            frameClassName="absolute inset-0 h-full w-full"
-            className="object-cover"
-          />
-        </Link>
+      <div
+        className={`${styles.photoStage} ${item.visualStatus === "pending" ? styles.photoStagePending : ""}`}
+      >
+        {item.visualStatus === "pending" ? (
+          <Link href={item.href} className={styles.pendingPhotoLink}>
+            <span>Photography being prepared</span>
+            <small>Route and service details are ready to plan</small>
+          </Link>
+        ) : (
+          <Link href={item.href}>
+            <OptimizedImage
+              src={item.image.src}
+              alt={item.image.alt}
+              fill
+              sizes="(min-width: 1000px) 38vw, 100vw"
+              frameClassName="absolute inset-0 h-full w-full"
+              className="object-cover"
+            />
+          </Link>
+        )}
       </div>
       <div className={styles.cardBody}>
         <div className={styles.cardMeta}>

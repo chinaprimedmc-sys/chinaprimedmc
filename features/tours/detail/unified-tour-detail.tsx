@@ -11,6 +11,7 @@ import {
   RefreshCcw,
   ShieldCheck,
   UsersRound,
+  UtensilsCrossed,
   X,
 } from "lucide-react";
 import type { ReactNode } from "react";
@@ -68,17 +69,29 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
 
       <header className={styles.hero}>
         <div className={styles.heroMedia}>
-          <OptimizedImage
-            src={model.heroImage.src}
-            alt={model.heroImage.alt}
-            fill
-            sizes="100vw"
-            quality={70}
-            priority
-            frameClassName="absolute inset-0 h-full w-full"
-            className={styles.heroImage}
-            style={{ objectPosition: model.heroImage.objectPosition ?? "center" }}
-          />
+          {model.hasPhotography ? (
+            <OptimizedImage
+              src={model.heroImage.src}
+              alt={model.heroImage.alt}
+              fill
+              sizes="100vw"
+              quality={70}
+              priority
+              frameClassName="absolute inset-0 h-full w-full"
+              className={styles.heroImage}
+              style={{ objectPosition: model.heroImage.objectPosition ?? "center" }}
+            />
+          ) : (
+            <div className={styles.heroWithoutPhotography} aria-hidden="true">
+              <span>BEIJING</span>
+              <i />
+              <span>XI&apos;AN</span>
+              <i />
+              <span>NINGXIA</span>
+              <i />
+              <span>SHANGHAI</span>
+            </div>
+          )}
           <div className={styles.heroShade} aria-hidden="true" />
         </div>
         <div className={`${styles.shell} ${styles.heroContent}`}>
@@ -94,7 +107,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               <div className={styles.heroPrice}>
                 <span>From</span>
                 <strong>US${model.price.fromUsd.toLocaleString("en-US")}</strong>
-                <small>per person · 4 guests · 2 rooms</small>
+                <small>per person · based on 4 guests sharing 2 rooms</small>
               </div>
             ) : null}
             <div className={styles.heroActions}>
@@ -129,7 +142,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           <div className={`${styles.shell} ${styles.decisionGuideInner}`}>
             <div className={styles.decisionGuideCopy}>
               <p className={styles.eyebrow}>Why choose this journey</p>
-              <h2 id="journey-difference-title">A clear reason to travel this way.</h2>
+              <h2 id="journey-difference-title">What makes this journey different.</h2>
               <p>{model.decisionSummary}</p>
             </div>
             <ol className={styles.signatureMoments} aria-label="Signature journey moments">
@@ -142,6 +155,76 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
             </ol>
           </div>
         </section>
+        {model.experienceChapters?.length ? (
+          <section className={styles.experiencePreview} aria-labelledby="experience-preview-title">
+            <div className={styles.shell}>
+              <div className={styles.experiencePreviewIntro}>
+                <p className={styles.eyebrow}>What you will actually experience</p>
+                <h2 id="experience-preview-title">Five chapters you can already picture.</h2>
+                <p>
+                  This is not simply a list of places. Here is what will be in front of you, what
+                  you will take part in and why each chapter earns its place in the journey.
+                </p>
+              </div>
+              <ol className={styles.experienceChapterList}>
+                {model.experienceChapters.map((chapter, index) => (
+                  <li key={`${chapter.location}-${chapter.days}`}>
+                    <div className={styles.experienceChapterLabel}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <p>{chapter.location}</p>
+                      <small>{chapter.days}</small>
+                    </div>
+                    <div className={styles.experienceChapterStory}>
+                      <h3>{chapter.title}</h3>
+                      <p>{chapter.description}</p>
+                    </div>
+                    <dl className={styles.experienceChapterDetails}>
+                      <div>
+                        <dt>See</dt>
+                        <dd>{chapter.see}</dd>
+                      </div>
+                      <div>
+                        <dt>Do</dt>
+                        <dd>{chapter.do}</dd>
+                      </div>
+                      <div>
+                        <dt>Feel</dt>
+                        <dd>{chapter.feel}</dd>
+                      </div>
+                    </dl>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        ) : null}
+        {model.planningSupport ? (
+          <section className={styles.serviceStandard} aria-labelledby="service-standard-title">
+            <div className={styles.shell}>
+              <div className={styles.serviceStandardIntro}>
+                <p className={styles.eyebrow}>{model.planningSupport.eyebrow}</p>
+                <h2 id="service-standard-title">{model.planningSupport.title}</h2>
+                <p>{model.planningSupport.description}</p>
+              </div>
+              <div className={styles.serviceStandardGrid}>
+                {model.planningSupport.items.map((item, index) => (
+                  <article key={item.label}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <div>
+                      <h3>{item.label}</h3>
+                      <strong>{item.value}</strong>
+                      {item.helper ? <p>{item.helper}</p> : null}
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <p className={styles.serviceStandardNote}>
+                <UtensilsCrossed size={17} aria-hidden="true" />
+                <span>{model.planningSupport.note}</span>
+              </p>
+            </div>
+          </section>
+        ) : null}
         <section
           className={`${styles.section} ${styles.overview}`}
           aria-labelledby="tour-overview-title"
@@ -296,11 +379,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       className={styles.priceFormAction}
                       href={model.planningHref}
                       journeySlug={model.slug}
-                      label="Get My Tailored Quote"
+                      label="Plan My Trip"
                       placement="tour-price-form"
                     >
                       <FileCheck2 size={15} aria-hidden="true" />
-                      Get My Tailored Quote
+                      Plan My Trip
                     </TrackedTourLink>
                   </div>
                   <p className={styles.priceReassurance}>

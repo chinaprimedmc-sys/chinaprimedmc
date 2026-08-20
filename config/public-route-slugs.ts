@@ -1,5 +1,6 @@
 export const publicRouteSlugs = {
   tours: [
+    "muslim-friendly-china-tour-great-wall-desert-stars",
     "china-at-an-easier-pace-12-day-private-tour",
     "china-family-tour-with-pandas-12-day-private-tour",
     "chengdu-chongqing-zhangjiajie-private-11-day-tour",

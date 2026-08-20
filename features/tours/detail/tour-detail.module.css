@@ -47,6 +47,28 @@
   position: absolute;
 }
 
+.heroWithoutPhotography {
+  align-items: center;
+  background: #25352f;
+  color: rgba(255, 255, 255, 0.25);
+  display: flex;
+  font-size: 0.66rem;
+  font-style: normal;
+  font-weight: 600;
+  gap: 0.9rem;
+  inset: 0;
+  justify-content: flex-end;
+  padding: 7rem max(1.5rem, calc((100vw - 76rem) / 2)) 3.5rem;
+  position: absolute;
+}
+
+.heroWithoutPhotography i {
+  background: currentColor;
+  display: block;
+  height: 1px;
+  width: 2rem;
+}
+
 .heroImage {
   object-fit: cover;
   object-position: center;
@@ -171,6 +193,203 @@
 .decisionGuide {
   background: #f3f5f3;
   border-bottom: 1px solid var(--tour-line);
+}
+
+.experiencePreview {
+  background: #fff;
+  padding-block: 4.75rem;
+}
+
+.experiencePreviewIntro {
+  display: grid;
+  gap: 0.7rem;
+  max-width: 48rem;
+}
+
+.experiencePreviewIntro .eyebrow {
+  color: var(--tour-muted);
+}
+
+.experiencePreviewIntro h2 {
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.experiencePreviewIntro > p:last-child {
+  color: var(--tour-muted);
+  font-size: 0.94rem;
+  line-height: 1.62;
+  max-width: 44rem;
+}
+
+.experienceChapterList {
+  border-top: 1px solid var(--tour-line);
+  list-style: none;
+  margin: 2.4rem 0 0;
+  padding: 0;
+}
+
+.experienceChapterList > li {
+  align-items: start;
+  border-bottom: 1px solid var(--tour-line);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3.5rem);
+  grid-template-columns: minmax(7rem, 0.46fr) minmax(15rem, 1.05fr) minmax(22rem, 1.65fr);
+  padding-block: 2rem;
+}
+
+.experienceChapterLabel > span {
+  color: var(--tour-green);
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.experienceChapterLabel > p {
+  font-size: 0.84rem;
+  font-weight: 700;
+  margin-top: 0.7rem !important;
+  text-transform: uppercase;
+}
+
+.experienceChapterLabel > small {
+  color: var(--tour-muted);
+  display: block;
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+}
+
+.experienceChapterStory h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.28;
+}
+
+.experienceChapterStory p {
+  color: var(--tour-muted);
+  font-size: 0.82rem;
+  line-height: 1.58;
+  margin-top: 0.65rem !important;
+}
+
+.experienceChapterDetails {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.experienceChapterDetails > div {
+  border-left: 1px solid var(--tour-line);
+  padding-left: 1rem;
+}
+
+.experienceChapterDetails dt {
+  color: var(--tour-green);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.experienceChapterDetails dd {
+  color: var(--tour-ink);
+  font-size: 0.76rem;
+  line-height: 1.55;
+  margin-top: 0.5rem;
+}
+
+.serviceStandard {
+  background: #eef1ef;
+  border-bottom: 1px solid var(--tour-line);
+  padding-block: 4rem;
+}
+
+.serviceStandardIntro {
+  display: grid;
+  gap: 0.7rem;
+  max-width: 52rem;
+}
+
+.serviceStandardIntro .eyebrow {
+  color: var(--tour-muted);
+}
+
+.serviceStandardIntro h2 {
+  font-size: clamp(1.8rem, 2.6vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.serviceStandardIntro > p:last-child {
+  color: var(--tour-muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.serviceStandardGrid {
+  border-block: 1px solid var(--tour-line);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
+.serviceStandardGrid article {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  padding: 1.4rem 1.2rem;
+}
+
+.serviceStandardGrid article:not(:nth-child(3n + 1)) {
+  border-left: 1px solid var(--tour-line);
+}
+
+.serviceStandardGrid article:nth-child(n + 4) {
+  border-top: 1px solid var(--tour-line);
+}
+
+.serviceStandardGrid article > span {
+  color: var(--tour-green);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding-top: 0.2rem;
+}
+
+.serviceStandardGrid h3 {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.serviceStandardGrid strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 0.35rem;
+}
+
+.serviceStandardGrid p {
+  color: var(--tour-muted);
+  font-size: 0.76rem;
+  line-height: 1.55;
+  margin-top: 0.4rem !important;
+}
+
+.serviceStandardNote {
+  align-items: flex-start;
+  color: var(--tour-muted);
+  display: flex;
+  font-size: 0.78rem;
+  gap: 0.6rem;
+  line-height: 1.55;
+  margin-top: 1.1rem !important;
+  max-width: 58rem;
+}
+
+.serviceStandardNote svg {
+  flex: 0 0 auto;
+  margin-top: 0.08rem;
 }
 
 .decisionGuideInner {
@@ -1124,6 +1343,31 @@
 }
 
 @media (max-width: 900px) {
+  .experienceChapterList > li {
+    grid-template-columns: 8rem minmax(0, 1fr);
+  }
+
+  .experienceChapterDetails {
+    grid-column: 2;
+  }
+
+  .serviceStandardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .serviceStandardGrid article:nth-child(3n + 1),
+  .serviceStandardGrid article:nth-child(2n + 1) {
+    border-left: 0;
+  }
+
+  .serviceStandardGrid article:nth-child(2n) {
+    border-left: 1px solid var(--tour-line);
+  }
+
+  .serviceStandardGrid article:nth-child(n + 3) {
+    border-top: 1px solid var(--tour-line);
+  }
+
   .heroDecisionRow {
     align-items: flex-start;
     flex-direction: column;
@@ -1170,6 +1414,79 @@
 }
 
 @media (max-width: 640px) {
+  .experiencePreview {
+    padding-block: 3.25rem;
+  }
+
+  .experiencePreviewIntro h2 {
+    font-size: 1.8rem;
+  }
+
+  .experienceChapterList > li {
+    gap: 0.9rem;
+    grid-template-columns: 1fr;
+    padding-block: 1.5rem;
+  }
+
+  .experienceChapterLabel {
+    align-items: baseline;
+    display: flex;
+    gap: 0.7rem;
+  }
+
+  .experienceChapterLabel > p,
+  .experienceChapterLabel > small {
+    margin-top: 0 !important;
+  }
+
+  .experienceChapterDetails {
+    gap: 0.75rem;
+    grid-column: auto;
+    grid-template-columns: 1fr;
+    margin-top: 0.25rem;
+  }
+
+  .experienceChapterDetails > div {
+    border-left: 0;
+    border-top: 1px solid var(--tour-line);
+    padding-left: 0;
+    padding-top: 0.75rem;
+  }
+
+  .heroWithoutPhotography {
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    justify-content: flex-start;
+    padding: 7rem 1.5rem 2rem;
+  }
+
+  .heroWithoutPhotography span {
+    font-size: 0.58rem;
+  }
+
+  .heroWithoutPhotography i {
+    width: 1rem;
+  }
+
+  .serviceStandard {
+    padding-block: 3rem;
+  }
+
+  .serviceStandardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceStandardGrid article,
+  .serviceStandardGrid article:nth-child(2n),
+  .serviceStandardGrid article:nth-child(3n + 1) {
+    border-left: 0;
+  }
+
+  .serviceStandardGrid article:nth-child(n + 2) {
+    border-top: 1px solid var(--tour-line);
+  }
+
   .shell,
   .readingShell {
     width: calc(100% - 2.25rem);

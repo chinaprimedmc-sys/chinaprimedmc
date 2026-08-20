@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       title: staticTour.seo.title,
       description: staticTour.seo.description,
       path: `/tours/${staticTour.slug}`,
-      image: staticTour.hero.image.src,
+      image: staticTour.visualStatus === "pending" ? undefined : staticTour.hero.image.src,
       keywords: staticTour.seo.keywords,
     });
   }
@@ -71,43 +71,93 @@ export default async function TourPage({ params }: TourPageProps) {
     const tourUrl = new URL(`/tours/${staticTour.slug}`, siteConfig.url).toString();
     const isChinaConsidered = staticTour.slug === "china-at-an-easier-pace-12-day-private-tour";
     const isChinaFamily = staticTour.slug === "china-family-tour-with-pandas-12-day-private-tour";
-    const tourProperties = isChinaFamily
+    const isYunnan = staticTour.slug === "luxury-yunnan-private-tour";
+    const isMuslimFriendly =
+      staticTour.slug === "muslim-friendly-china-tour-great-wall-desert-stars";
+    const tourProperties = isMuslimFriendly
       ? [
-          ["Duration", "12 days / 11 nights"],
-          ["Accommodation standard", "Premium five-star family hotels"],
-          ["Accommodation duration", "11 nights"],
-          ["Published price basis", "Two adults and two children aged 6–11 sharing two rooms"],
-          ["Family pacing", "Age-aware private pacing with protected family downtime"],
-          ["Age bands", "6–9, 10–13 and 14–17"],
-          ["Beijing to Xi'an", "First-class high-speed rail"],
-          ["Xi'an to Chengdu", "First-class high-speed rail"],
-          ["Chengdu to Shanghai", "Nonstop economy-class domestic flight"],
+          ["Duration", "13 days / 12 nights"],
+          ["Route", "Beijing, Xi'an, Yinchuan, Zhongwei and Shanghai"],
+          [
+            "Accommodation standard",
+            "Premium city hotels plus best-available Ningxia and desert accommodation",
+          ],
+          [
+            "Published price basis",
+            "Four guests sharing two rooms outside peak periods; US$30,720 group total from",
+          ],
+          [
+            "Muslim-friendly service",
+            "AVIORA Muslim Journey Standard: dietary profile, meal verification, prayer-aware timing and China-based backup support",
+          ],
           [
             "Signature experiences",
-            "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
+            "Great Wall private halal picnic, Xi'an Silk Road and halal kitchen chapter, Ningxia Hui table, desert sunset dinner and stargazing",
           ],
-          ["Touring service", "Private family-ready English-speaking guides and private vehicles"],
+          [
+            "Transport",
+            "Private vehicles, first-class Beijing–Xi'an rail and date-specific domestic connections",
+          ],
           ["Shopping policy", "No compulsory shopping stops"],
           ["International flights", "Not included"],
         ]
-      : isChinaConsidered
+      : isChinaFamily
         ? [
             ["Duration", "12 days / 11 nights"],
-            ["Accommodation standard", "Premium five-star hotels"],
+            ["Accommodation standard", "Premium five-star family hotels"],
             ["Accommodation duration", "11 nights"],
-            ["Published price basis", "Four guests sharing two rooms outside peak periods"],
-            ["Pace", "Easy to moderate, with protected recovery time"],
-            ["Hotel changes", "Two"],
+            ["Published price basis", "Two adults and two children aged 6–11 sharing two rooms"],
+            ["Family pacing", "Age-aware private pacing with protected family downtime"],
+            ["Age bands", "6–9, 10–13 and 14–17"],
             ["Beijing to Xi'an", "First-class high-speed rail"],
-            ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
-            ["Touring service", "Private English-speaking guides and private vehicles"],
+            ["Xi'an to Chengdu", "First-class high-speed rail"],
+            ["Chengdu to Shanghai", "Nonstop economy-class domestic flight"],
+            [
+              "Signature experiences",
+              "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
+            ],
+            [
+              "Touring service",
+              "Private family-ready English-speaking guides and private vehicles",
+            ],
             ["Shopping policy", "No compulsory shopping stops"],
             ["International flights", "Not included"],
           ]
-        : [
-            ["Accommodation standard", "Selected four- and five-star hotels"],
-            ["Tour format", "Private, tailor-made journey"],
-          ];
+        : isYunnan
+          ? [
+              ["Duration", "10 days / 9 nights"],
+              ["Route", "Dali, Shaxi, Lijiang and Shangri-La"],
+              ["Accommodation standard", "Luxury boutique, heritage and highland hotels"],
+              ["Accommodation duration", "9 nights"],
+              ["Published price basis", "Four guests sharing two rooms outside peak periods"],
+              ["Pace", "Balanced, private and altitude-aware"],
+              ["Altitude progression", "Dali about 1,970 m to Shangri-La about 3,200 m"],
+              ["Intercity transport", "Dedicated premium private vehicle"],
+              [
+                "Signature experiences",
+                "Bai three-course tea, tie-dye artisan session, Tea Horse Road salon, Dongba culture, Tiger Leaping Gorge and Songzanlin Monastery",
+              ],
+              ["Shopping policy", "No compulsory shopping stops"],
+              ["International and domestic flights", "Not included"],
+            ]
+          : isChinaConsidered
+            ? [
+                ["Duration", "12 days / 11 nights"],
+                ["Accommodation standard", "Premium five-star hotels"],
+                ["Accommodation duration", "11 nights"],
+                ["Published price basis", "Four guests sharing two rooms outside peak periods"],
+                ["Pace", "Easy to moderate, with protected recovery time"],
+                ["Hotel changes", "Two"],
+                ["Beijing to Xi'an", "First-class high-speed rail"],
+                ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
+                ["Touring service", "Private English-speaking guides and private vehicles"],
+                ["Shopping policy", "No compulsory shopping stops"],
+                ["International flights", "Not included"],
+              ]
+            : [
+                ["Accommodation standard", "Selected four- and five-star hotels"],
+                ["Tour format", "Private, tailor-made journey"],
+              ];
     return (
       <>
         <JsonLd
@@ -128,26 +178,42 @@ export default async function TourPage({ params }: TourPageProps) {
               "@type": "Brand",
               name: siteConfig.name,
             },
-            audience: isChinaFamily
+            audience: isMuslimFriendly
               ? {
                   "@type": "PeopleAudience",
                   audienceType:
-                    "Families with children aged 6 to 17, first-time China visitors and multigenerational families",
+                    "Muslim families, Muslim couples, multigenerational groups and private travelers seeking verified dining and prayer-aware China travel",
                 }
-              : isChinaConsidered
+              : isChinaFamily
                 ? {
                     "@type": "PeopleAudience",
                     audienceType:
-                      "Couples, mature travelers, families planning for parents and first-time China visitors",
+                      "Families with children aged 6 to 17, first-time China visitors and multigenerational families",
                   }
-                : undefined,
-            image: Array.from(
-              new Set([
-                staticTour.hero.image.src,
-                ...staticTour.itinerary.map((day) => day.image.src),
-                ...staticTour.gallery.map((image) => image.src),
-              ]),
-            ).map((image) => new URL(image, siteConfig.url).toString()),
+                : isChinaConsidered
+                  ? {
+                      "@type": "PeopleAudience",
+                      audienceType:
+                        "Couples, mature travelers, families planning for parents and first-time China visitors",
+                    }
+                  : isYunnan
+                    ? {
+                        "@type": "PeopleAudience",
+                        audienceType:
+                          "Couples, friends, private groups and repeat China visitors interested in culture, tea, landscapes and boutique stays",
+                      }
+                    : undefined,
+            ...(staticTour.visualStatus === "pending"
+              ? {}
+              : {
+                  image: Array.from(
+                    new Set([
+                      staticTour.hero.image.src,
+                      ...staticTour.itinerary.map((day) => day.image.src),
+                      ...staticTour.gallery.map((image) => image.src),
+                    ]),
+                  ).map((image) => new URL(image, siteConfig.url).toString()),
+                }),
             itinerary: {
               "@type": "ItemList",
               numberOfItems: staticTour.itinerary.length,

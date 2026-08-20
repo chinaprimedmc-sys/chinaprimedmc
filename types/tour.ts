@@ -104,6 +104,16 @@ export type TourPlanningSupport = {
   note: string;
 };
 
+export type TourExperienceChapter = {
+  location: string;
+  days: string;
+  title: string;
+  description: string;
+  see: string;
+  do: string;
+  feel: string;
+};
+
 export type TourInquiry = {
   emailHref: string;
   whatsappHref?: string;
@@ -113,6 +123,7 @@ export type TourInquiry = {
 
 export type Tour = {
   slug: string;
+  visualStatus?: "ready" | "pending";
   publishedAt?: string;
   updatedAt?: string;
   title: string;
@@ -135,6 +146,7 @@ export type Tour = {
     pitch: string;
     facts: TourOverviewFact[];
   };
+  experienceChapters?: TourExperienceChapter[];
   planningSupport?: TourPlanningSupport;
   highlights: TourHighlight[];
   itinerary: TourItineraryDay[];

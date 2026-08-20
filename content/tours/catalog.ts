@@ -9,6 +9,7 @@ export type JourneyCatalogItem = {
   summary: string;
   hook: string;
   image: MediaAsset;
+  visualStatus?: "ready" | "pending";
   href: string;
   kind: "featured" | "framework";
   commercialRole: JourneyCommercialRoleId;
@@ -118,6 +119,9 @@ const chinaConsidered = tours.find(
 const chinaFamily = tours.find(
   (tour) => tour.slug === "china-family-tour-with-pandas-12-day-private-tour",
 );
+const muslimFriendlyChina = tours.find(
+  (tour) => tour.slug === "muslim-friendly-china-tour-great-wall-desert-stars",
+);
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
 );
@@ -148,6 +152,12 @@ if (!chinaConsidered) {
 
 if (!chinaFamily) {
   throw new Error("The 12-day China family journey is required.");
+}
+
+if (!muslimFriendlyChina) {
+  throw new Error(
+    "The Muslim-friendly China and Ningxia journey is required for the journeys catalog.",
+  );
 }
 
 if (!beijingXianChengduShanghai) {
@@ -326,6 +336,60 @@ const chinaFamilyJourney: JourneyCatalogBase = {
     { label: "Chengdu", href: "/destinations/chengdu" },
     { label: "Shanghai", href: "/destinations/shanghai" },
   ],
+};
+
+const muslimFriendlyChinaJourney: JourneyCatalogBase = {
+  slug: muslimFriendlyChina.slug,
+  title: muslimFriendlyChina.title,
+  eyebrow: "AVIORA signature Muslim-friendly journey",
+  summary: muslimFriendlyChina.subtitle,
+  hook: "See imperial Beijing and the Terracotta Warriors, then make halal noodles in Xi'an, meet Ningxia's Hui food culture and dine beneath the desert sky.",
+  image: muslimFriendlyChina.hero.image,
+  visualStatus: "pending",
+  href: `/tours/${muslimFriendlyChina.slug}`,
+  kind: "featured",
+  routeLabel: muslimFriendlyChina.route,
+  durationLabel: "13 days / 12 nights",
+  styleFilters: ["Muslim-friendly", "Luxury", "Culture", "Food", "Family"],
+  destinationFilters: ["Beijing", "Xi'an", "Yinchuan", "Zhongwei", "Shanghai"],
+  bestForFilters: [
+    "Muslim travelers",
+    "Muslim families",
+    "Couples",
+    "Multigenerational families",
+    "Private groups",
+  ],
+  experienceFilters: [
+    "great-wall",
+    "ancient-china",
+    "food",
+    "scenery",
+    "local-life",
+    "photography",
+    "silk-road",
+  ],
+  travelerFilters: ["first-time", "couples", "families", "multigenerational", "private-groups"],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "women-traveler-support",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "quiet-luxury",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 13,
+  recommendedDaysMax: 14,
+  destinations: [
+    { label: "Beijing", href: "/destinations/beijing" },
+    { label: "Xi'an", href: "/destinations/xian" },
+    { label: "Yinchuan", href: `/tours/${muslimFriendlyChina.slug}#itinerary` },
+    { label: "Zhongwei", href: `/tours/${muslimFriendlyChina.slug}#itinerary` },
+    { label: "Shanghai", href: "/destinations/shanghai" },
+  ],
+  planningNote:
+    "The published design includes a 14-day Shanghai extension option. Ningxia and desert accommodation are assessed honestly against the actual date-specific supply.",
 };
 
 const chengduChongqingZhangjiajieJourney: JourneyCatalogBase = {
@@ -642,6 +706,7 @@ const xianBeijingJourney: JourneyCatalogBase = {
 const journeyCatalogBase: JourneyCatalogBase[] = [
   chinaConsideredJourney,
   chinaFamilyJourney,
+  muslimFriendlyChinaJourney,
   chengduChongqingZhangjiajieJourney,
   beijingXianChengduShanghaiJourney,
   firstChina,
@@ -656,6 +721,11 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
 > = {
+  "muslim-friendly-china-tour-great-wall-desert-stars": {
+    commercialRole: "signature",
+    commercialRoleLabel: "Signature Muslim family journey",
+    commercialPriority: 94,
+  },
   "china-family-tour-with-pandas-12-day-private-tour": {
     commercialRole: "signature",
     commercialRoleLabel: "Signature family journey",
@@ -712,6 +782,20 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "muslim-friendly-china-tour-great-wall-desert-stars": {
+    paceLabel: "Balanced, prayer-aware and privately adjustable",
+    transportSummary:
+      "Private vehicles, first-class high-speed rail and domestic flights selected for your dates",
+    highlights: [
+      "Eat a private halal picnic beside the Great Wall",
+      "Make noodles in Xi'an after its Great Mosque courtyards",
+      "Watch the desert darken over an alcohol-free dinner",
+      "Share Ningxia food traditions with a Hui host or cook",
+      "AVIORA Muslim Journey Standard throughout",
+    ],
+    bestForSummary:
+      "Muslim families, couples and private groups who want iconic China plus living Muslim heritage and a desert finale",
+  },
   "china-at-an-easier-pace-12-day-private-tour": {
     paceLabel: "Easy to moderate, with protected recovery",
     transportSummary:
@@ -836,6 +920,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, JourneyPricing> = {
+  "muslim-friendly-china-tour-great-wall-desert-stars": {
+    fromUsd: 7680,
+    basis:
+      "Indicative starting price per person, based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$30,720.",
+    inclusionSummary:
+      "Includes 12 nights in selected premium city hotels plus the best suitable Ningxia and desert accommodation available for your dates, two rooms, private guides and vehicles, first-class Beijing–Xi'an rail, domestic transport named before booking, planned verified meals, listed private experiences and AVIORA Muslim Journey Standard support.",
+    finalPriceNote:
+      "Most fully tailored versions fall between US$8,300 and US$10,800 per person, depending on dates, city hotels, Ningxia and desert room categories, transport class, meal research and confirmed hosts.",
+    additionalNote:
+      "Premium suites, business-class rail, full photographer coverage, signature desert lodges and a 14-day Shanghai extension are quoted separately. International flights are not included.",
+  },
   "china-at-an-easier-pace-12-day-private-tour": {
     fromUsd: 6480,
     basis:

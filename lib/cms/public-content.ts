@@ -91,7 +91,11 @@ export async function getPublicDestinations() {
         `${destination.description} Plan the right stay, season and route with local China specialists.`,
       heroImage: destination.image,
       relatedJourneys: journeyCatalog
-        .filter((journey) => journey.destinationFilters.includes(destination.name))
+        .filter(
+          (journey) =>
+            journey.visualStatus !== "pending" &&
+            journey.destinationFilters.includes(destination.name),
+        )
         .map((journey) => ({
           title: journey.title,
           route: journey.routeLabel,

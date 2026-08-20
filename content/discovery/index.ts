@@ -43,7 +43,7 @@ const tourItems: DiscoveryItem[] = tours.map((tour) => ({
   title: tour.title,
   description: tour.subtitle,
   href: `/tours/${tour.slug}`,
-  image: tour.hero.image,
+  image: tour.visualStatus === "pending" ? undefined : tour.hero.image,
   category: "Private Tour",
   tags: [
     tour.slug,

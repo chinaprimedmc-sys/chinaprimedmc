@@ -25,6 +25,9 @@ export type TourDetailModel = {
   decisionSummary: string;
   signatureMoments: string[];
   heroImage: MediaAsset;
+  hasPhotography: boolean;
+  planningSupport?: Tour["planningSupport"];
+  experienceChapters?: Tour["experienceChapters"];
   price?: {
     fromUsd: number;
     basis: string;
@@ -80,7 +83,6 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
   const hotelStandard =
     tour.overview.facts.find((fact) => fact.label.toLowerCase() === "hotels")?.value ??
     "Selected 4- and 5-star hotels";
-  const isFlagshipFamily = tour.slug === "china-family-tour-with-pandas-12-day-private-tour";
   return {
     slug: tour.slug,
     title: cleanDisplayTitle(tour.title),
@@ -93,6 +95,9 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       catalog?.highlights.slice(0, 3) ??
       tour.highlights.slice(0, 3).map((highlight) => highlight.title),
     heroImage: tour.hero.image,
+    hasPhotography: tour.visualStatus !== "pending",
+    planningSupport: tour.planningSupport,
+    experienceChapters: tour.experienceChapters,
     price: catalog
       ? {
           fromUsd: catalog.pricing.fromUsd,
@@ -118,7 +123,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       stay: compactDailyStay(day.hotel, day.destination),
       experiences: day.activities,
     })),
-    gallery: collectTourImages(tour),
+    gallery: tour.visualStatus === "pending" ? [] : collectTourImages(tour),
     hotelStandard,
     hotelDestinations: uniqueStrings(
       tour.accommodations.length
@@ -130,8 +135,8 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     faqs: [...tour.faqs, ...bookingPolicyFaqs],
     planningHref: planningHref(tour.slug, "detail-template"),
     whatsappHref: tourWhatsAppHref(tour.title, tour.duration),
-    primaryActionLabel: isFlagshipFamily ? "Design Our Family Journey" : "Plan My Trip",
-    whatsappActionLabel: isFlagshipFamily ? "Tell Us Your Children's Ages" : "Message an Advisor",
+    primaryActionLabel: "Plan My Trip",
+    whatsappActionLabel: "Message Our China Team",
     lastReviewedLabel: tour.updatedAt ? formatReviewDate(tour.updatedAt) : undefined,
   };
 }
@@ -147,6 +152,7 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     decisionSummary: item.hook,
     signatureMoments: item.highlights.slice(0, 3),
     heroImage: item.image,
+    hasPhotography: item.visualStatus !== "pending",
     price: {
       fromUsd: item.pricing.fromUsd,
       basis: item.pricing.basis,
@@ -173,7 +179,7 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
       stay: `Selected 4- or 5-star hotel in ${destination.label}`,
       experiences: [],
     })),
-    gallery: [item.image],
+    gallery: item.visualStatus === "pending" ? [] : [item.image],
     hotelStandard: "Selected 4- and 5-star hotels",
     hotelDestinations: item.destinations.map((destination) => destination.label),
     included: [item.pricing.inclusionSummary],
@@ -182,7 +188,7 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     planningHref: planningHref(item.slug, "detail-template"),
     whatsappHref: tourWhatsAppHref(item.title, item.durationLabel),
     primaryActionLabel: "Plan My Trip",
-    whatsappActionLabel: "Message an Advisor",
+    whatsappActionLabel: "Message Our China Team",
   };
 }
 

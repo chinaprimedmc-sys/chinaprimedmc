@@ -51,6 +51,23 @@ const journeyProfiles = [
       ],
     ],
   },
+  {
+    slug: "muslim-friendly-china-tour-great-wall-desert-stars",
+    audience:
+      "Muslim families, Muslim couples, multigenerational groups and private travelers seeking verified dining, prayer-aware timing and a less conventional China route",
+    pace: "Balanced, prayer-aware and privately adjustable, with protected recovery around the Great Wall, desert and intercity transitions",
+    evidence: [
+      [
+        "Muslim-friendly China product page",
+        "/tours/muslim-friendly-china-tour-great-wall-desert-stars",
+      ],
+      ["Private-tour cost guide", "/journal/private-china-tour-cost-2026"],
+      [
+        "High-speed train guidance for foreign visitors",
+        "/journal/china-high-speed-train-foreigners",
+      ],
+    ],
+  },
 ] as const;
 
 export function GET() {
