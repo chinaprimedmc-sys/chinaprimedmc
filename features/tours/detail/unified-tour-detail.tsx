@@ -14,7 +14,7 @@ import {
   UtensilsCrossed,
   X,
 } from "lucide-react";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 
 import { SiteFooter } from "@/components/footer/site-footer";
 import { PageClosing } from "@/components/footer/page-closing";
@@ -39,6 +39,10 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
   const overviewTitle = model.route
     ? `${model.route.replace(/, ([^,]+)$/, " & $1")}, privately.`
     : `A private ${model.duration.toLowerCase()} journey.`;
+  const heroRouteLabels =
+    model.routeStops.length > 4
+      ? [...model.routeStops.slice(0, 3), model.routeStops.at(-1)!].map((stop) => stop.name)
+      : model.routeStops.map((stop) => stop.name);
 
   return (
     <PageContainer className={styles.page} tone="white" data-unified-tour-detail="true">
@@ -83,13 +87,12 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
             />
           ) : (
             <div className={styles.heroWithoutPhotography} aria-hidden="true">
-              <span>BEIJING</span>
-              <i />
-              <span>XI&apos;AN</span>
-              <i />
-              <span>NINGXIA</span>
-              <i />
-              <span>SHANGHAI</span>
+              {heroRouteLabels.map((label, index) => (
+                <Fragment key={label}>
+                  {index ? <i /> : null}
+                  <span>{label}</span>
+                </Fragment>
+              ))}
             </div>
           )}
           <div className={styles.heroShade} aria-hidden="true" />

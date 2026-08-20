@@ -1,5 +1,6 @@
 export const publicRouteSlugs = {
   tours: [
+    "qingcheng-mountain-private-wellness-retreat-10-day",
     "muslim-friendly-china-tour-great-wall-desert-stars",
     "china-at-an-easier-pace-12-day-private-tour",
     "china-family-tour-with-pandas-12-day-private-tour",

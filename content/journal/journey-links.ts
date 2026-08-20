@@ -19,8 +19,14 @@ const SHANGHAI_ZHANGJIAJIE = "shanghai-zhangjiajie-floating-peaks";
 const BEIJING = "beijing-great-wall-private-5-day-tour";
 const XIAN_BEIJING = "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour";
 const MUSLIM_CHINA = "muslim-friendly-china-tour-great-wall-desert-stars";
+const QINGCHENG_WELLNESS = "qingcheng-mountain-private-wellness-retreat-10-day";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  [QINGCHENG_WELLNESS]: [
+    "how-many-days-in-chengdu-itinerary",
+    "best-time-to-visit-china",
+    "private-china-tour-cost-2026",
+  ],
   [MUSLIM_CHINA]: [
     "china-high-speed-train-foreigners",
     "best-time-to-visit-china",

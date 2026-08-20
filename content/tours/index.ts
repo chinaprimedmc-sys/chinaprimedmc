@@ -4,6 +4,7 @@ import { chengduChongqingZhangjiajieTour } from "@/content/tours/chengdu-chongqi
 import { chinaConsidered12DayTour } from "@/content/tours/china-considered-12-day";
 import { chinaFamily12DayTour } from "@/content/tours/china-family-12-day";
 import { muslimFriendlyChinaDesert13DayTour } from "@/content/tours/muslim-friendly-china-desert-13-day";
+import { qingchengMountainWellness10DayTour } from "@/content/tours/qingcheng-mountain-wellness-10-day";
 import {
   beijingUnhurriedAsset,
   chengduAsset,
@@ -130,6 +131,7 @@ export const tours: Tour[] = [
   chinaConsidered12DayTour,
   chinaFamily12DayTour,
   muslimFriendlyChinaDesert13DayTour,
+  qingchengMountainWellness10DayTour,
   chengduChongqingZhangjiajieTour,
   beijingXianChengduShanghaiTour,
   {

@@ -7,6 +7,7 @@ export type TourStyle =
   | "Culture"
   | "Nature"
   | "Food"
+  | "Wellness"
   | "Photography"
   | "Muslim-friendly"
   | "Senior-friendly";

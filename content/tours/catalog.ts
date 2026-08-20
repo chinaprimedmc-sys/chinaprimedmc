@@ -63,6 +63,7 @@ export type JourneyFocusId =
   | "nature"
   | "wildlife"
   | "family"
+  | "wellness"
   | "photography"
   | "slow-travel";
 
@@ -89,6 +90,7 @@ export type JourneyExperienceId =
   | "scenery"
   | "modern-cities"
   | "local-life"
+  | "wellness"
   | "photography"
   | "silk-road";
 
@@ -121,6 +123,9 @@ const chinaFamily = tours.find(
 );
 const muslimFriendlyChina = tours.find(
   (tour) => tour.slug === "muslim-friendly-china-tour-great-wall-desert-stars",
+);
+const qingchengWellness = tours.find(
+  (tour) => tour.slug === "qingcheng-mountain-private-wellness-retreat-10-day",
 );
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
@@ -158,6 +163,10 @@ if (!muslimFriendlyChina) {
   throw new Error(
     "The Muslim-friendly China and Ningxia journey is required for the journeys catalog.",
   );
+}
+
+if (!qingchengWellness) {
+  throw new Error("The 10-day Qingcheng Mountain wellness retreat is required.");
 }
 
 if (!beijingXianChengduShanghai) {
@@ -390,6 +399,41 @@ const muslimFriendlyChinaJourney: JourneyCatalogBase = {
   ],
   planningNote:
     "The published design includes a 14-day Shanghai extension option. Ningxia and desert accommodation are assessed honestly against the actual date-specific supply.",
+};
+
+const qingchengWellnessJourney: JourneyCatalogBase = {
+  slug: qingchengWellness.slug,
+  title: qingchengWellness.title,
+  eyebrow: "AVIORA private Daoist-inspired retreat",
+  summary: qingchengWellness.subtitle,
+  hook: "Stay seven uninterrupted nights beneath Qingcheng Mountain, with private tai chi, tea, Daoist cultural context, two treatments and a full day that asks nothing of you.",
+  image: qingchengWellness.hero.image,
+  visualStatus: "pending",
+  href: `/tours/${qingchengWellness.slug}`,
+  kind: "featured",
+  routeLabel: qingchengWellness.route,
+  durationLabel: "10 days / 9 nights",
+  styleFilters: ["Wellness", "Quiet Luxury", "Nature", "Culture", "Slow Travel"],
+  destinationFilters: ["Chengdu", "Qingcheng Mountain"],
+  bestForFilters: ["Executives", "Women travelers", "Couples", "Solo travelers", "Private groups"],
+  experienceFilters: ["wellness", "scenery", "ancient-china", "food", "local-life"],
+  travelerFilters: ["couples", "older-travelers", "solo-travelers", "private-groups"],
+  planningNeedFilters: [
+    "women-traveler-support",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "mobility-aware",
+    "quiet-luxury",
+    "food-focused",
+  ],
+  recommendedDaysMin: 10,
+  recommendedDaysMax: 13,
+  destinations: [
+    { label: "Chengdu", href: "/destinations/chengdu" },
+    { label: "Qingcheng Mountain", href: `/tours/${qingchengWellness.slug}#itinerary` },
+  ],
+  planningNote:
+    "The core product protects seven consecutive Qingcheng nights. Hangzhou, pandas or another China chapter is added before or after the retreat, never through its middle.",
 };
 
 const chengduChongqingZhangjiajieJourney: JourneyCatalogBase = {
@@ -704,6 +748,7 @@ const xianBeijingJourney: JourneyCatalogBase = {
 };
 
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  qingchengWellnessJourney,
   chinaConsideredJourney,
   chinaFamilyJourney,
   muslimFriendlyChinaJourney,
@@ -721,6 +766,11 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
 > = {
+  "qingcheng-mountain-private-wellness-retreat-10-day": {
+    commercialRole: "signature",
+    commercialRoleLabel: "Signature private wellness retreat",
+    commercialPriority: 98,
+  },
   "muslim-friendly-china-tour-great-wall-desert-stars": {
     commercialRole: "signature",
     commercialRoleLabel: "Signature Muslim family journey",
@@ -782,6 +832,19 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "qingcheng-mountain-private-wellness-retreat-10-day": {
+    paceLabel: "Unhurried, privately adjustable and built around protected blank space",
+    transportSummary: "Private transfers with one hotel change and no domestic flight",
+    highlights: [
+      "Stay seven uninterrupted nights beneath Qingcheng Mountain",
+      "Move privately with a tai chi teacher and clear cultural interpretation",
+      "Keep a complete day free of touring or guide obligations",
+      "Receive two individually selected resort treatments per guest",
+      "Take one realistic tea, movement or breathing rhythm home",
+    ],
+    bestForSummary:
+      "Executives, women, couples and private travelers who value cultural depth, privacy and time that is genuinely their own",
+  },
   "muslim-friendly-china-tour-great-wall-desert-stars": {
     paceLabel: "Balanced, prayer-aware and privately adjustable",
     transportSummary:
@@ -920,6 +983,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, JourneyPricing> = {
+  "qingcheng-mountain-private-wellness-retreat-10-day": {
+    fromUsd: 11800,
+    basis:
+      "Indicative starting price per person, based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$47,200.",
+    inclusionSummary:
+      "Includes 9 nights across a luxury Chengdu hotel and seven-night Qingcheng Mountain retreat, two rooms, private transfers, confirmed private guiding and cultural sessions, seven listed lunches or dinners, two resort treatments per guest, entrance arrangements and AVIORA Quiet Journey Standard support.",
+    finalPriceNote:
+      "Most fully tailored versions fall between US$13,800 and US$18,800 per person, depending on dates, exact retreat, room category, practitioner program, spa inclusions and private dining.",
+    additionalNote:
+      "Signature versions above US$20,000 per person may include larger villas or suites, deeper private practitioner programs and a separate Hangzhou extension. International flights and any unconfirmed medical or clinical service are excluded.",
+  },
   "muslim-friendly-china-tour-great-wall-desert-stars": {
     fromUsd: 7680,
     basis:
@@ -1044,6 +1118,7 @@ function buildDiscoveryData(
   if (journey.experienceFilters.includes("scenery")) focus.add("nature");
   if (journey.experienceFilters.includes("pandas")) focus.add("wildlife");
   if (journey.travelerFilters.includes("families")) focus.add("family");
+  if (journey.experienceFilters.includes("wellness")) focus.add("wellness");
   if (journey.experienceFilters.includes("photography")) focus.add("photography");
   if (journey.styleFilters.some((style) => style.toLowerCase().includes("slow")) || slow)
     focus.add("slow-travel");

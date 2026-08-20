@@ -68,6 +68,21 @@ const journeyProfiles = [
       ],
     ],
   },
+  {
+    slug: "qingcheng-mountain-private-wellness-retreat-10-day",
+    audience:
+      "Executives, women, couples, solo travelers and private groups seeking privacy, cultural substance and protected time rather than a multi-city sightseeing schedule",
+    pace: "Unhurried and privately adjustable, with one hotel change, seven continuous mountain nights, one principal experience per day and a fully unscheduled retreat day",
+    evidence: [
+      [
+        "Qingcheng Mountain private wellness retreat product page",
+        "/tours/qingcheng-mountain-private-wellness-retreat-10-day",
+      ],
+      ["Private-tour cost guide", "/journal/private-china-tour-cost-2026"],
+      ["Best time to visit China", "/journal/best-time-to-visit-china"],
+      ["Chengdu itinerary planning", "/journal/how-many-days-in-chengdu-itinerary"],
+    ],
+  },
 ] as const;
 
 export function GET() {

@@ -61,6 +61,7 @@ const focusOptions: Array<[JourneyFocusId, string]> = [
   ["nature", "Nature & scenery"],
   ["wildlife", "Wildlife & pandas"],
   ["family", "Family time"],
+  ["wellness", "Wellness & retreat"],
   ["photography", "Photography"],
   ["slow-travel", "Slow travel"],
 ];

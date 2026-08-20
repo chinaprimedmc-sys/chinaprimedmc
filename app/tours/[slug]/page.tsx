@@ -74,90 +74,114 @@ export default async function TourPage({ params }: TourPageProps) {
     const isYunnan = staticTour.slug === "luxury-yunnan-private-tour";
     const isMuslimFriendly =
       staticTour.slug === "muslim-friendly-china-tour-great-wall-desert-stars";
-    const tourProperties = isMuslimFriendly
+    const isQingchengWellness =
+      staticTour.slug === "qingcheng-mountain-private-wellness-retreat-10-day";
+    const tourProperties = isQingchengWellness
       ? [
-          ["Duration", "13 days / 12 nights"],
-          ["Route", "Beijing, Xi'an, Yinchuan, Zhongwei and Shanghai"],
-          [
-            "Accommodation standard",
-            "Premium city hotels plus best-available Ningxia and desert accommodation",
-          ],
+          ["Duration", "10 days / 9 nights"],
+          ["Route", "Chengdu and Qingcheng Mountain"],
+          ["Accommodation duration", "2 Chengdu nights and 7 Qingcheng Mountain nights"],
+          ["Hotel changes", "One"],
           [
             "Published price basis",
-            "Four guests sharing two rooms outside peak periods; US$30,720 group total from",
+            "Four guests sharing two rooms outside peak periods; US$47,200 group total from",
           ],
           [
-            "Muslim-friendly service",
-            "AVIORA Muslim Journey Standard: dietary profile, meal verification, prayer-aware timing and China-based backup support",
+            "Private service standard",
+            "AVIORA Quiet Journey Standard with a pre-trip rhythm profile and protected unscheduled time",
           ],
           [
             "Signature experiences",
-            "Great Wall private halal picnic, Xi'an Silk Road and halal kitchen chapter, Ningxia Hui table, desert sunset dinner and stargazing",
+            "Private tai chi, Daoist cultural interpretation, tea, Dujiangyan, Qingcheng Mountain and two resort treatments per guest",
           ],
-          [
-            "Transport",
-            "Private vehicles, first-class Beijing–Xi'an rail and date-specific domestic connections",
-          ],
-          ["Shopping policy", "No compulsory shopping stops"],
-          ["International flights", "Not included"],
+          ["Protected retreat time", "One full day without scheduled touring or guide obligations"],
+          ["Medical boundary", "Cultural and wellbeing journey; no medical outcome promised"],
+          ["International and domestic flights", "Not included"],
         ]
-      : isChinaFamily
+      : isMuslimFriendly
         ? [
-            ["Duration", "12 days / 11 nights"],
-            ["Accommodation standard", "Premium five-star family hotels"],
-            ["Accommodation duration", "11 nights"],
-            ["Published price basis", "Two adults and two children aged 6–11 sharing two rooms"],
-            ["Family pacing", "Age-aware private pacing with protected family downtime"],
-            ["Age bands", "6–9, 10–13 and 14–17"],
-            ["Beijing to Xi'an", "First-class high-speed rail"],
-            ["Xi'an to Chengdu", "First-class high-speed rail"],
-            ["Chengdu to Shanghai", "Nonstop economy-class domestic flight"],
+            ["Duration", "13 days / 12 nights"],
+            ["Route", "Beijing, Xi'an, Yinchuan, Zhongwei and Shanghai"],
             [
-              "Signature experiences",
-              "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
+              "Accommodation standard",
+              "Premium city hotels plus best-available Ningxia and desert accommodation",
             ],
             [
-              "Touring service",
-              "Private family-ready English-speaking guides and private vehicles",
+              "Published price basis",
+              "Four guests sharing two rooms outside peak periods; US$30,720 group total from",
+            ],
+            [
+              "Muslim-friendly service",
+              "AVIORA Muslim Journey Standard: dietary profile, meal verification, prayer-aware timing and China-based backup support",
+            ],
+            [
+              "Signature experiences",
+              "Great Wall private halal picnic, Xi'an Silk Road and halal kitchen chapter, Ningxia Hui table, desert sunset dinner and stargazing",
+            ],
+            [
+              "Transport",
+              "Private vehicles, first-class Beijing–Xi'an rail and date-specific domestic connections",
             ],
             ["Shopping policy", "No compulsory shopping stops"],
             ["International flights", "Not included"],
           ]
-        : isYunnan
+        : isChinaFamily
           ? [
-              ["Duration", "10 days / 9 nights"],
-              ["Route", "Dali, Shaxi, Lijiang and Shangri-La"],
-              ["Accommodation standard", "Luxury boutique, heritage and highland hotels"],
-              ["Accommodation duration", "9 nights"],
-              ["Published price basis", "Four guests sharing two rooms outside peak periods"],
-              ["Pace", "Balanced, private and altitude-aware"],
-              ["Altitude progression", "Dali about 1,970 m to Shangri-La about 3,200 m"],
-              ["Intercity transport", "Dedicated premium private vehicle"],
+              ["Duration", "12 days / 11 nights"],
+              ["Accommodation standard", "Premium five-star family hotels"],
+              ["Accommodation duration", "11 nights"],
+              ["Published price basis", "Two adults and two children aged 6–11 sharing two rooms"],
+              ["Family pacing", "Age-aware private pacing with protected family downtime"],
+              ["Age bands", "6–9, 10–13 and 14–17"],
+              ["Beijing to Xi'an", "First-class high-speed rail"],
+              ["Xi'an to Chengdu", "First-class high-speed rail"],
+              ["Chengdu to Shanghai", "Nonstop economy-class domestic flight"],
               [
                 "Signature experiences",
-                "Bai three-course tea, tie-dye artisan session, Tea Horse Road salon, Dongba culture, Tiger Leaping Gorge and Songzanlin Monastery",
+                "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
+              ],
+              [
+                "Touring service",
+                "Private family-ready English-speaking guides and private vehicles",
               ],
               ["Shopping policy", "No compulsory shopping stops"],
-              ["International and domestic flights", "Not included"],
+              ["International flights", "Not included"],
             ]
-          : isChinaConsidered
+          : isYunnan
             ? [
-                ["Duration", "12 days / 11 nights"],
-                ["Accommodation standard", "Premium five-star hotels"],
-                ["Accommodation duration", "11 nights"],
+                ["Duration", "10 days / 9 nights"],
+                ["Route", "Dali, Shaxi, Lijiang and Shangri-La"],
+                ["Accommodation standard", "Luxury boutique, heritage and highland hotels"],
+                ["Accommodation duration", "9 nights"],
                 ["Published price basis", "Four guests sharing two rooms outside peak periods"],
-                ["Pace", "Easy to moderate, with protected recovery time"],
-                ["Hotel changes", "Two"],
-                ["Beijing to Xi'an", "First-class high-speed rail"],
-                ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
-                ["Touring service", "Private English-speaking guides and private vehicles"],
+                ["Pace", "Balanced, private and altitude-aware"],
+                ["Altitude progression", "Dali about 1,970 m to Shangri-La about 3,200 m"],
+                ["Intercity transport", "Dedicated premium private vehicle"],
+                [
+                  "Signature experiences",
+                  "Bai three-course tea, tie-dye artisan session, Tea Horse Road salon, Dongba culture, Tiger Leaping Gorge and Songzanlin Monastery",
+                ],
                 ["Shopping policy", "No compulsory shopping stops"],
-                ["International flights", "Not included"],
+                ["International and domestic flights", "Not included"],
               ]
-            : [
-                ["Accommodation standard", "Selected four- and five-star hotels"],
-                ["Tour format", "Private, tailor-made journey"],
-              ];
+            : isChinaConsidered
+              ? [
+                  ["Duration", "12 days / 11 nights"],
+                  ["Accommodation standard", "Premium five-star hotels"],
+                  ["Accommodation duration", "11 nights"],
+                  ["Published price basis", "Four guests sharing two rooms outside peak periods"],
+                  ["Pace", "Easy to moderate, with protected recovery time"],
+                  ["Hotel changes", "Two"],
+                  ["Beijing to Xi'an", "First-class high-speed rail"],
+                  ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
+                  ["Touring service", "Private English-speaking guides and private vehicles"],
+                  ["Shopping policy", "No compulsory shopping stops"],
+                  ["International flights", "Not included"],
+                ]
+              : [
+                  ["Accommodation standard", "Selected four- and five-star hotels"],
+                  ["Tour format", "Private, tailor-made journey"],
+                ];
     return (
       <>
         <JsonLd
@@ -178,31 +202,37 @@ export default async function TourPage({ params }: TourPageProps) {
               "@type": "Brand",
               name: siteConfig.name,
             },
-            audience: isMuslimFriendly
+            audience: isQingchengWellness
               ? {
                   "@type": "PeopleAudience",
                   audienceType:
-                    "Muslim families, Muslim couples, multigenerational groups and private travelers seeking verified dining and prayer-aware China travel",
+                    "Executives, women, couples, solo travelers and private groups seeking a private luxury wellness retreat with cultural depth and protected unscheduled time",
                 }
-              : isChinaFamily
+              : isMuslimFriendly
                 ? {
                     "@type": "PeopleAudience",
                     audienceType:
-                      "Families with children aged 6 to 17, first-time China visitors and multigenerational families",
+                      "Muslim families, Muslim couples, multigenerational groups and private travelers seeking verified dining and prayer-aware China travel",
                   }
-                : isChinaConsidered
+                : isChinaFamily
                   ? {
                       "@type": "PeopleAudience",
                       audienceType:
-                        "Couples, mature travelers, families planning for parents and first-time China visitors",
+                        "Families with children aged 6 to 17, first-time China visitors and multigenerational families",
                     }
-                  : isYunnan
+                  : isChinaConsidered
                     ? {
                         "@type": "PeopleAudience",
                         audienceType:
-                          "Couples, friends, private groups and repeat China visitors interested in culture, tea, landscapes and boutique stays",
+                          "Couples, mature travelers, families planning for parents and first-time China visitors",
                       }
-                    : undefined,
+                    : isYunnan
+                      ? {
+                          "@type": "PeopleAudience",
+                          audienceType:
+                            "Couples, friends, private groups and repeat China visitors interested in culture, tea, landscapes and boutique stays",
+                        }
+                      : undefined,
             ...(staticTour.visualStatus === "pending"
               ? {}
               : {
