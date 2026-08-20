@@ -1564,6 +1564,18 @@
     font-size: 1.38rem;
   }
 
+  .heroPrice {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    row-gap: 0.15rem;
+    white-space: normal;
+  }
+
+  .heroPrice small {
+    grid-column: 1 / -1;
+    line-height: 1.35;
+  }
+
   .heroActions {
     display: grid;
     grid-template-columns: 1fr 1fr;
