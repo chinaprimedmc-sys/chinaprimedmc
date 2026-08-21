@@ -61,7 +61,7 @@ The AVIORA Signature Collection is a product level, not a single theme. Signatur
 
 ## Published journey portfolio
 
-The portfolio is intentionally divided into Signature journeys, essential first-China routes, nature-led journeys, private day tours and shorter private extensions. The product page clearly labels the journey type, destination, duration and indicative per-person price basis so search engines and AI systems can understand the service boundary.
+The portfolio is intentionally divided into four customer-facing paths: Signature Private China Journeys; Private China Day Tours; Classic China Journeys for established multi-day, regional and focused private routes; and Private Drivers & Expert Guides in China for standalone local support. The product page clearly labels the journey type, destination, duration and indicative per-person price basis so search engines and AI systems can understand the service boundary.
 
 ${catalogSummary}
 
