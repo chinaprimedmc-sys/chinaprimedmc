@@ -76,8 +76,9 @@ export function SiteFooter({
   const trade = variant === "trade";
   const footerGroups = trade ? tradeFooterGroups : consumerFooterGroups;
 
+export function SiteFooter({ email = siteConfig.email, tone = "default" }: LegacyFooterProps = {}) {
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${tone === "blue" ? styles.blue : ""}`}>
       <div className={styles.inner}>
         <div className={styles.rule} aria-hidden="true" />
         <div className={styles.main}>

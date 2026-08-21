@@ -59,6 +59,40 @@
   --motion-image: 480ms;
 }
 
+/* AVIORA Journeys: WhatsApp remains available, but its visual treatment is neutral glass. */
+.site-navigation__help-icon,
+.site-navigation__mobile-help,
+.mobile-navigation-whatsapp,
+.social-contact-rail__concierge-icon {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(210, 216, 220, 0.85) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 8px 22px rgba(32, 35, 38, 0.1) !important;
+  color: #202326 !important;
+  backdrop-filter: blur(18px) saturate(115%);
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+}
+
+.site-navigation__help-icon svg,
+.site-navigation__mobile-help-icon svg,
+.social-contact-rail__concierge-icon svg {
+  color: #202326 !important;
+  filter: grayscale(1) contrast(1.1);
+}
+
+.mobile-navigation-whatsapp:hover,
+.mobile-navigation-whatsapp:focus-visible,
+.site-navigation__mobile-help:hover,
+.site-navigation__mobile-help:focus-visible,
+.site-navigation__help-link:hover .site-navigation__help-icon,
+.site-navigation__help-link:focus-visible .site-navigation__help-icon,
+.social-contact-rail__concierge:hover .social-contact-rail__concierge-icon,
+.social-contact-rail__concierge:focus-visible .social-contact-rail__concierge-icon {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(170, 178, 184, 0.9) !important;
+  box-shadow: inset 0 1px 0 #fff, 0 10px 26px rgba(32, 35, 38, 0.14) !important;
+  color: #202326 !important;
+}
+
 @media (max-width: 767px) {
   html {
     font-size: 15px;
@@ -68,6 +102,46 @@
   textarea,
   select {
     font-size: 16px;
+  }
+}
+
+/* Journeys mobile hero navigation: keep the advisor action compact and rounded. */
+@media (max-width: 1023px) {
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-planning {
+    display: none;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-actions {
+    display: grid;
+    flex: 0 0 auto;
+    grid-template-columns: max-content 2.35rem;
+    margin-left: auto;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-help {
+    align-self: center;
+    background: rgba(255, 255, 255, 0.78) !important;
+    border: 1px solid rgba(255, 255, 255, 0.88) !important;
+    border-radius: 999px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.98),
+      0 6px 16px rgba(23, 33, 41, 0.1) !important;
+    color: #202326 !important;
+    font-size: 0.68rem;
+    font-weight: 700;
+    height: 2.35rem;
+    justify-self: end;
+    min-height: 2.35rem;
+    padding: 0 0.78rem !important;
+    white-space: nowrap;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-trigger--dark {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.58);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      0 6px 16px rgba(4, 15, 23, 0.14);
   }
 }
 
@@ -4294,4 +4368,149 @@ svg {
 .brand-wordmark {
   font-family: var(--font-display);
   font-weight: 500 !important;
+}
+
+/* Final mobile hero-nav correction: no square advisor block or wasted invisible track. */
+@media (max-width: 1023px) {
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-planning {
+    display: none !important;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-actions {
+    flex: 0 0 auto !important;
+    grid-template-columns: max-content 2.35rem !important;
+    margin-left: auto !important;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-help {
+    background: rgba(255, 255, 255, 0.82) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    border-radius: 999px !important;
+    color: #202326 !important;
+    font-size: 0.68rem !important;
+    height: 2.35rem !important;
+    min-height: 2.35rem !important;
+    padding: 0 0.78rem !important;
+    width: auto !important;
+  }
+}
+
+/* Keep the scrolled mobile toolbar legible without covering the section beneath it. */
+@media (max-width: 1023px) {
+  .site-navigation-shell.is-scrolled {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding-top: max(0.7rem, env(safe-area-inset-top)) !important;
+    pointer-events: none;
+  }
+
+  .site-navigation-shell.is-scrolled > div {
+    width: calc(100% - 1.5rem);
+    height: 2.7rem !important;
+    margin-inline: auto;
+    padding-inline: 0.4rem !important;
+    border: 1px solid rgba(210, 216, 220, 0.88);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.98),
+      0 8px 22px rgba(32, 35, 38, 0.12);
+    -webkit-backdrop-filter: blur(18px) saturate(115%);
+    backdrop-filter: blur(18px) saturate(115%);
+    pointer-events: auto;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__mobile-actions {
+    gap: 0.25rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__journey-filter,
+  .site-navigation-shell.is-scrolled .site-navigation__journey-search,
+  .site-navigation-shell.is-scrolled .site-navigation__journey-plan {
+    font-size: 0.62rem;
+    height: 2.15rem;
+    min-height: 2.15rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__journey-filter,
+  .site-navigation-shell.is-scrolled .site-navigation__journey-search {
+    gap: 0.25rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__journey-plan {
+    padding-inline: 0.7rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__mobile-help,
+  .site-navigation-shell.is-scrolled .site-navigation__mobile-trigger {
+    height: 2.15rem;
+    min-height: 2.15rem;
+    width: 2.15rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__mobile-trigger {
+    background: rgba(255, 255, 255, 0.86);
+    border-color: rgba(32, 35, 38, 0.14);
+    color: #202326;
+  }
+}
+
+/* The toolbar controls are independent glass buttons; never place them on a white slab. */
+@media (max-width: 1023px) {
+  .site-navigation-shell.is-scrolled > div {
+    width: calc(100% - 1.5rem);
+    padding-inline: 0 !important;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .site-navigation__mobile-actions--journeys .site-navigation__mobile-help {
+    display: none !important;
+  }
+
+  .site-navigation__mobile-actions--journeys {
+    grid-template-columns: minmax(4.35rem, 0.78fr) minmax(4.5rem, 0.82fr) minmax(6.5rem, 1.1fr) !important;
+  }
+
+  /* Journeys keeps the scrolled controls as three independent liquid-glass buttons.
+     The outer toolbar remains transparent; each control carries its own glass surface. */
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-filter,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-search,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-plan {
+    -webkit-backdrop-filter: blur(16px) saturate(135%) !important;
+    backdrop-filter: blur(16px) saturate(135%) !important;
+    background: rgba(255, 255, 255, 0.62) !important;
+    border-color: rgba(255, 255, 255, 0.82) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.92),
+      0 6px 16px rgba(23, 33, 41, 0.08) !important;
+    color: #172129 !important;
+    padding-inline: 0.35rem !important;
+  }
+
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-filter:focus-visible,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-search:focus-visible,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-plan:focus-visible {
+    outline: 2px solid rgba(23, 33, 41, 0.42);
+    outline-offset: 2px;
+  }
+
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-filter:active,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-search:active,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-plan:active {
+    background: rgba(255, 255, 255, 0.78) !important;
+    color: #172129 !important;
+    opacity: 0.92;
+    transform: translateY(1px) scale(0.98);
+  }
+
+  /* Keep scrolled Journeys content below the floating toolbar. */
+  body:has(.site-navigation-shell.is-scrolled) main[class*="journey-discovery_page"] {
+    padding-top: 3.45rem;
+  }
 }

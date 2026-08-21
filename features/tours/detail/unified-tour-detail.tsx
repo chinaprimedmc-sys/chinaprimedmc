@@ -14,7 +14,7 @@ import {
   UtensilsCrossed,
   X,
 } from "lucide-react";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 
 import { SiteFooter } from "@/components/footer/site-footer";
 import { PageClosing } from "@/components/footer/page-closing";
@@ -34,6 +34,7 @@ import type { TourDetailModel } from "@/features/tours/detail/tour-detail-model"
 import { TourFaqAccordion } from "@/features/tours/detail/tour-faq-accordion";
 import styles from "@/features/tours/detail/tour-detail.module.css";
 import { JourneyReading } from "@/features/tours/journey-reading";
+import type { MediaAsset } from "@/types/component-library";
 
 export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
   const overviewTitle = model.route
@@ -54,12 +55,24 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
       <SiteNavigation
         items={homeNavItems}
         className="home-navigation-entrance tour-detail-navigation"
-        cta={{ label: "Plan My Trip", href: model.planningHref }}
-        mobileCta={{ label: "Plan My Trip", href: model.planningHref }}
+        cta={{ label: model.primaryActionLabel, href: model.planningHref }}
+        mobileCta={{ label: model.primaryActionLabel, href: model.planningHref }}
         journeyDetailTools={{
           journeysLabel: "Journeys",
           journeysHref: "/tours",
-          planLabel: "Plan This Journey",
+          planLabel: isAgendaFirstBusinessJourney
+            ? "Build My Business Journey"
+            : isMutianyuPrivateDayTour
+              ? "Check My Date"
+              : isPrivateShanghaiDayTour
+                ? "Check My Date"
+                : isPrivateXianTerracottaDayTour
+                  ? "Check My Date"
+                  : isPrivateChengduPandaDayTour
+                    ? "Check My Date"
+                    : isGuilinLiRiverDayTour
+                      ? "Check My Cruise Date"
+                      : "Plan This Journey",
           planHref: model.planningHref,
           journeySlug: model.slug,
         }}
@@ -233,7 +246,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
             <div className={styles.overviewLayout}>
               <div className={styles.overviewLead}>
                 <div className={styles.sectionHeading}>
-                  <p className={styles.eyebrow}>Journey overview</p>
+                  <p className={styles.eyebrow}>Journey at a glance</p>
                   <h2 id="tour-overview-title">{overviewTitle}</h2>
                   <p>
                     {model.duration} with private guiding, considered pacing and{" "}
@@ -283,13 +296,97 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
         <section className={styles.section} id="itinerary" aria-labelledby="itinerary-title">
           <div className={styles.readingShell}>
             <div className={styles.sectionHeading}>
-              <p className={styles.eyebrow}>Day by day</p>
-              <h2 id="itinerary-title">Your day-by-day itinerary.</h2>
-              <p>Open a day to see the experience, transfers, meals and hotel plan.</p>
+              <p className={styles.eyebrow}>
+                {isAgendaFirstBusinessJourney
+                  ? "Sample 4-day framework"
+                  : isMutianyuPrivateDayTour
+                    ? "Your day, from hotel pickup to return"
+                    : isGuilinLiRiverDayTour
+                      ? "Your day, from Guilin pickup to your chosen finish"
+                      : "Day by day"}
+              </p>
+              <h2 id="itinerary-title">
+                {isAgendaFirstBusinessJourney
+                  ? "A sample framework, rebuilt around you."
+                  : "Your day-by-day itinerary."}
+              </h2>
+              <p>
+                {isAgendaFirstBusinessJourney
+                  ? "Open a day to see one workable starting version. Choose 4, 5, 6 or 7 days—or another duration—and we rebuild it around your fixed meetings and flights."
+                  : isMutianyuPrivateDayTour
+                    ? "Open the day to see what is already included, what remains optional and how the route is adapted to your group."
+                    : isGuilinLiRiverDayTour
+                      ? "Open the day to see how the port, public cruise, luggage, Yangshuo chapter and two finish choices connect."
+                      : "Open a day to see the experience, transfers, meals and hotel plan."}
+              </p>
             </div>
             <TourDayAccordion days={model.days} journeySlug={model.slug} />
           </div>
         </section>
+
+        {isPrivateDayTour && model.optionalExperiences?.length ? (
+          <section
+            className={`${styles.section} ${styles.optionalChoices}`}
+            aria-labelledby="optional-choices-title"
+          >
+            <div className={styles.shell}>
+              <div className={styles.sectionHeading}>
+                <p className={styles.eyebrow}>Transparent optional choices</p>
+                <h2 id="optional-choices-title">
+                  {isPrivateShanghaiDayTour
+                    ? "Add only the Shanghai experiences you want."
+                    : isPrivateXianTerracottaDayTour
+                      ? "Add only the Xi'an experiences that matter to you."
+                      : isPrivateChengduPandaDayTour
+                        ? "Add only the Chengdu experiences that improve your day."
+                        : isGuilinLiRiverDayTour
+                          ? "Choose your finish, then add only what fits."
+                          : "Choose your way up and down."}
+                </h2>
+                <p>
+                  {isPrivateShanghaiDayTour
+                    ? "Yu Garden admission and the ordinary Huangpu ferry are already included. Each upgrade states whether its price covers admission, an experience, additional private service time or a combination of them."
+                    : isPrivateXianTerracottaDayTour
+                      ? "Terracotta Warriors admission and the private museum day are already included. Each upgrade states whether its price covers admission, an experience, added private service time or a combination of them."
+                      : isPrivateChengduPandaDayTour
+                        ? "Standard Panda Base admission, private transport, guide and the People's Park chapter are already included. Each upgrade states whether it covers food, tea, an experience or additional private service time."
+                        : isGuilinLiRiverDayTour
+                          ? "The four-star public cruise ticket, private Guilin pickup, guide, Yangshuo vehicle and Yangshuo-finish luggage plan are already included. The Guilin return and other additions are priced separately."
+                          : "Admission and the scenic-area shuttle are already included. These are optional operator services, shown separately so you only pay for the route that suits your group."}
+                </p>
+              </div>
+              <div className={styles.optionalChoiceGrid}>
+                {model.optionalExperiences.map((experience) => (
+                  <details className={styles.optionalChoiceCard} key={experience.title}>
+                    <summary>
+                      <div className={styles.optionalChoiceBadges}>
+                        {experience.badges.slice(0, 2).map((badge) => (
+                          <span key={badge}>{badge}</span>
+                        ))}
+                      </div>
+                      <h3>{experience.title}</h3>
+                      <span className={styles.optionalChoicePrompt}>
+                        View details <ChevronDown size={15} aria-hidden="true" />
+                      </span>
+                    </summary>
+                    <p>{experience.description}</p>
+                  </details>
+                ))}
+              </div>
+              <p className={styles.optionalChoiceNote}>
+                {isPrivateShanghaiDayTour
+                  ? "Optional experiences are subject to date-specific availability. The exact timing, tickets, added service hours and total are confirmed in writing before you pay."
+                  : isPrivateXianTerracottaDayTour
+                    ? "Optional experiences are subject to date-specific availability. The exact host, admission, added service hours and total are confirmed in writing before you pay."
+                    : isPrivateChengduPandaDayTour
+                      ? "Optional experiences are subject to date-specific availability. The exact menu, host, tickets, added service hours and total are confirmed in writing before you pay."
+                      : isGuilinLiRiverDayTour
+                        ? "Cruise tickets and optional experiences are date-specific. The assigned port, sailing, chosen finish, luggage plan, eligibility rules, added service time and exact total are confirmed in writing before you pay."
+                        : "Final mountain-transport prices follow the scenic-area operator's confirmed rate for your date. Toboggan, chairlift and cable-car operation remain subject to live weather, maintenance and safety decisions."}
+              </p>
+            </div>
+          </section>
+        ) : null}
 
         {model.gallery.length > 1 ? (
           <CinematicJourneyGallery
@@ -309,15 +406,28 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               <p className={styles.eyebrow}>Private service and price</p>
               <h2 id="price-title">What you are paying for.</h2>
               <p>
-                A privately managed journey, selected stays and one China-based team responsible for
-                the details from arrival to departure.
+                {isMutianyuPrivateDayTour
+                  ? "A fully private Great Wall day with the address, tickets, vehicle, route and return plan handled by one China-based team."
+                  : isPrivateShanghaiDayTour
+                    ? "A fully private Shanghai day with the hotel pickup, guide, vehicle, Yu Garden admission, river crossing and return plan handled by one China-based team."
+                    : isPrivateXianTerracottaDayTour
+                      ? "A fully private Xi'an day with hotel pickup, passport-linked museum admission, guide, vehicle, Old City chapter and return handled by one China-based team."
+                      : isPrivateChengduPandaDayTour
+                        ? "A fully private Chengdu day with early hotel pickup, Panda Base admission, guide, vehicle, People's Park chapter and return handled by one China-based team."
+                        : isGuilinLiRiverDayTour
+                          ? "A shared four-star Li River cruise with the private hotel pickup, port transfer, guide, luggage, Yangshuo land chapter and chosen finish handled by one China-based team."
+                          : "A privately managed journey, selected stays and one China-based team responsible for the details from arrival to departure."}
               </p>
             </div>
 
             <div className={styles.hotelPriceGrid}>
               <div className={styles.hotelSummary}>
                 <div className={styles.hotelIdentity}>
-                  <BedDouble size={22} aria-hidden="true" />
+                  {isPrivateDayTour ? (
+                    <CarFront size={22} aria-hidden="true" />
+                  ) : (
+                    <BedDouble size={22} aria-hidden="true" />
+                  )}
                   <div>
                     <p className={styles.subheading}>Your hotels</p>
                     <h3>{model.hotelStandard}</h3>
@@ -328,15 +438,33 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <li>
                     <Check size={15} aria-hidden="true" />
                     <span>
-                      <strong>Private throughout.</strong> Guides and transfers are arranged for
-                      your party.
+                      <strong>
+                        {isGuilinLiRiverDayTour
+                          ? "Private handling around the public cruise."
+                          : "Private throughout."}
+                      </strong>{" "}
+                      {isGuilinLiRiverDayTour
+                        ? "Your guide and road transport are private; the scheduled four-star vessel is shared with other passengers."
+                        : "Guides and transfers are arranged for your party."}
                     </span>
                   </li>
                   <li>
                     <Check size={15} aria-hidden="true" />
                     <span>
-                      <strong>Named before booking.</strong> Every hotel and room category is listed
-                      in your written proposal before you confirm.
+                      <strong>
+                        {isPrivateDayTour ? "Clear before the day." : "Named before booking."}
+                      </strong>{" "}
+                      {isPrivateDayTour
+                        ? isGuilinLiRiverDayTour
+                          ? "Your pickup, cruise category, known port, luggage plan, finish, service window and selected upgrades are stated before you confirm."
+                          : isPrivateChengduPandaDayTour
+                            ? "Your early pickup, admission basis, Panda Base plan, service window and selected upgrades are stated before you confirm."
+                            : isPrivateXianTerracottaDayTour
+                              ? "Your pickup, passport-linked admission, museum plan, service window and selected upgrades are stated before you confirm."
+                              : isPrivateShanghaiDayTour
+                                ? "Your pickup, Yu Garden admission, ferry plan, service window and selected upgrades are stated before you confirm."
+                                : "Your pickup, ticket plan, service window and selected mountain transport are stated before you confirm."
+                        : "Every hotel and room category is listed in your written proposal before you confirm."}
                     </span>
                   </li>
                   <li>
@@ -350,17 +478,13 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               </div>
               {model.price ? (
                 <div className={styles.priceSummary}>
-                  <p className={styles.subheading}>Private journey from</p>
+                  <p className={styles.subheading}>{pricePresentation?.eyebrow}</p>
                   <p className={styles.priceAmount}>
-                    US${model.price.fromUsd.toLocaleString("en-US")}
-                    <span>per person</span>
+                    US${pricePresentation?.amount.toLocaleString("en-US")}
+                    <span>{pricePresentation?.unit}</span>
                   </p>
-                  <p>{compactPriceBasis(model.price.basis)}</p>
+                  <p className={styles.priceBasisHighlight}>{pricePresentation?.basis}</p>
                   <p className={styles.priceCustomNote}>{model.price.note}</p>
-                  <p className={styles.priceStartingPoint}>
-                    This is a planning starting point, not a fixed package price. Your written
-                    proposal confirms the exact services and total before you book.
-                  </p>
                   <div className={styles.priceActions}>
                     <TrackedTourLink
                       className={styles.priceAction}
@@ -423,17 +547,17 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               <BookingPoint
                 icon={<FileCheck2 size={20} aria-hidden="true" />}
                 title="Written confirmation"
-                text="Your booking is binding only after the written contract and terms are accepted, the required initial payment clears, and AVIORA confirms the booking in writing."
+                text="Your hotels, services, total and booking terms are confirmed before payment."
               />
               <BookingPoint
                 icon={<CreditCard size={20} aria-hidden="true" />}
                 title="Payment schedule"
-                text="Your proposal states the currency, initial payment, balance date and accepted payment method before you commit."
+                text="Currency, initial payment and balance date are shown in your proposal."
               />
               <BookingPoint
                 icon={<RefreshCcw size={20} aria-hidden="true" />}
                 title="Changes and cancellation"
-                text="The schedule in your accepted proposal or booking confirmation applies, including any supplier costs that become non-refundable."
+                text="The applicable change and cancellation schedule is provided in writing."
               />
             </div>
             <div className={styles.bookingFooter}>
@@ -470,14 +594,14 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           </div>
         </section>
 
-        {model.faqs.length ? (
+        {visibleFaqs.length ? (
           <section className={styles.section} id="faq" aria-labelledby="faq-title">
             <div className={styles.readingShell}>
               <div className={styles.sectionHeading}>
                 <p className={styles.eyebrow}>Questions</p>
                 <h2 id="faq-title">Before you plan.</h2>
               </div>
-              <TourFaqAccordion faqs={model.faqs} journeySlug={model.slug} />
+              <TourFaqAccordion faqs={visibleFaqs} journeySlug={model.slug} />
             </div>
           </section>
         ) : null}
@@ -490,6 +614,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
       <PageClosing intent="tour" primaryHref={model.planningHref} journeySlug={model.slug} />
 
       <SiteFooter
+        tone="blue"
         columns={[
           {
             title: "Journey",
@@ -517,6 +642,38 @@ function QuickFactIcon({ label }: { label: string }) {
           ? BedDouble
           : CarFront;
   return <Icon className={styles.factIcon} size={19} strokeWidth={1.7} aria-hidden="true" />;
+}
+
+function ExperienceMedia({
+  image,
+  label,
+  index,
+}: {
+  image?: MediaAsset;
+  label: string;
+  index: number;
+}) {
+  return image ? (
+    <div className={styles.experienceCardMedia}>
+      <OptimizedImage
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes="(max-width: 640px) 100vw, 33vw"
+        quality={68}
+        frameClassName="absolute inset-0 h-full w-full"
+        className={styles.experienceCardImage}
+      />
+    </div>
+  ) : (
+    <div
+      className={styles.experienceCardPlaceholder}
+      aria-label={`Photography placeholder for ${label}`}
+    >
+      <span>{String(index + 1).padStart(2, "0")}</span>
+      <small>Image coming soon</small>
+    </div>
+  );
 }
 
 function BookingPoint({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
@@ -563,7 +720,45 @@ function CompactDisclosure({
   );
 }
 
-function compactPriceBasis(basis: string) {
-  const firstSentence = basis.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim();
-  return firstSentence ?? basis;
+function getPricePresentation(slug: string, fromUsd: number) {
+  const privateGroupPrices: Record<string, { amount: number; basis: string; heroBasis: string }> = {
+    "private-shanghai-day-tour-guide-driver": {
+      amount: 168,
+      basis: "Price shown per person · based on a private group of four",
+      heroBasis: "per person · based on 4 guests travelling privately",
+    },
+    "private-xian-terracotta-warriors-day-tour": {
+      amount: 157,
+      basis: "Price shown per person · based on a private group of four",
+      heroBasis: "per person · based on 4 guests travelling privately",
+    },
+    "private-chengdu-panda-day-tour-early-morning": {
+      amount: 150,
+      basis: "Approximate price per person · based on a private group of four",
+      heroBasis: "per person · based on 4 guests travelling privately",
+    },
+    "guilin-yangshuo-li-river-cruise-private-day-tour": {
+      amount: 172,
+      basis: "Price shown per person · based on four guests · Yangshuo finish",
+      heroBasis: "per person · based on 4 guests · Yangshuo finish",
+    },
+  };
+  const privateGroup = privateGroupPrices[slug];
+  if (privateGroup) {
+    return {
+      amount: privateGroup.amount,
+      eyebrow: "Starting price per guest",
+      unit: "per person",
+      basis: privateGroup.basis,
+      heroBasis: privateGroup.heroBasis,
+    };
+  }
+
+  return {
+    amount: fromUsd,
+    eyebrow: "Private journey from",
+    unit: "per person",
+    basis: "Price shown per person · based on four guests travelling privately",
+    heroBasis: "per person · based on 4 guests travelling privately",
+  };
 }

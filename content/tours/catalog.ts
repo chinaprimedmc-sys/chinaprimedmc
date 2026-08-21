@@ -59,11 +59,13 @@ export type JourneyDiscoveryData = {
 
 export type JourneyFocusId =
   | "first-trip"
+  | "business"
   | "culture"
   | "food"
   | "nature"
   | "wildlife"
   | "family"
+  | "wellness"
   | "photography"
   | "slow-travel";
 
@@ -90,6 +92,7 @@ export type JourneyExperienceId =
   | "scenery"
   | "modern-cities"
   | "local-life"
+  | "wellness"
   | "photography"
   | "silk-road";
 
@@ -1110,6 +1113,7 @@ function buildDiscoveryData(
   const transportText = commercial.transportSummary.toLowerCase();
   const focus = new Set<JourneyFocusId>();
   if (journey.travelerFilters.includes("first-time")) focus.add("first-trip");
+  if (journey.styleFilters.includes("Business")) focus.add("business");
   if (
     journey.experienceFilters.some((id) =>
       ["great-wall", "ancient-china", "silk-road"].includes(id),
@@ -1120,6 +1124,7 @@ function buildDiscoveryData(
   if (journey.experienceFilters.includes("scenery")) focus.add("nature");
   if (journey.experienceFilters.includes("pandas")) focus.add("wildlife");
   if (journey.travelerFilters.includes("families")) focus.add("family");
+  if (journey.experienceFilters.includes("wellness")) focus.add("wellness");
   if (journey.experienceFilters.includes("photography")) focus.add("photography");
   if (journey.styleFilters.some((style) => style.toLowerCase().includes("slow")) || slow)
     focus.add("slow-travel");

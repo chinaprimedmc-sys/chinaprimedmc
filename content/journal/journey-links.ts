@@ -208,7 +208,7 @@ const groupedRules: Array<{
   },
   {
     journey: BEIJING,
-    alternatives: [XIAN_BEIJING, FIRST_CHINA],
+    alternatives: [MUTIANYU_DAY_TOUR, XIAN_BEIJING, FIRST_CHINA],
     articles: [
       "forbidden-city-tickets-foreigners",
       "mutianyu-badaling-jinshanling-great-wall",
@@ -216,6 +216,15 @@ const groupedRules: Array<{
       "5-day-beijing-great-wall-itinerary",
       "beijing-itinerary-4-days",
       "where-to-stay-in-beijing-first-time",
+    ],
+  },
+  {
+    journey: MUTIANYU_DAY_TOUR,
+    alternatives: [BEIJING, FIRST_CHINA],
+    articles: [
+      "mutianyu-great-wall-walking-cable-car",
+      "mutianyu-badaling-jinshanling-great-wall",
+      "how-much-walking-china-tour",
     ],
   },
   {
@@ -399,6 +408,10 @@ Object.assign(journeyJournalLinks, {
   },
   "private-china-tour-cost-2026": {
     ...journeyJournalLinks["private-china-tour-cost-2026"],
+    alternativeJourneys: [
+      ...(journeyJournalLinks["private-china-tour-cost-2026"]?.alternativeJourneys ?? []),
+      GUILIN_LI_RIVER_DAY_TOUR,
+    ],
     title: "See what a considered private route includes",
     description:
       "Use a real multi-city journey to understand how pacing, hotels, private guiding and rail arrangements come together before a written quotation.",

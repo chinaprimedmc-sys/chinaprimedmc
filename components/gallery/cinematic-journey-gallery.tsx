@@ -224,7 +224,7 @@ export function CinematicJourneyGallery({
       <section
         id="gallery"
         ref={sectionRef}
-        className="scroll-mt-24 overflow-hidden bg-white py-14 text-[#192421] md:py-20"
+        className="scroll-mt-24 overflow-hidden bg-white py-14 text-[#122b43] md:py-20"
       >
         <div className="mx-auto w-full max-w-[76rem] px-5 sm:px-6 lg:px-0">
           <header className="grid gap-5 border-b border-black/10 pb-5 md:grid-cols-[1fr_auto] md:items-end">
@@ -274,7 +274,7 @@ export function CinematicJourneyGallery({
                         }
                         data-active={active}
                         className={cn(
-                          "journey-gallery-card relative z-[1] block h-auto w-full max-w-full overflow-hidden bg-white text-left transition-opacity duration-300 focus-visible:ring-2 focus-visible:ring-[#506457] focus-visible:outline-none",
+                          "journey-gallery-card relative z-[1] block h-auto w-full max-w-full overflow-hidden bg-white text-left transition-opacity duration-300 focus-visible:ring-2 focus-visible:ring-[#1b3a5c] focus-visible:outline-none",
                           active ? "opacity-100" : "opacity-75",
                         )}
                         style={{ aspectRatio: `${image.width ?? 3} / ${image.height ?? 2}` }}
@@ -301,7 +301,7 @@ export function CinematicJourneyGallery({
                           </span>
                         )}
                         {active ? (
-                          <span className="absolute right-4 bottom-4 grid size-10 place-items-center rounded-full border border-black/10 bg-white text-[#171a16] md:right-5 md:bottom-5">
+                          <span className="absolute right-4 bottom-4 grid size-10 place-items-center rounded-full border border-[#1b3a5c]/15 bg-white text-[#122b43] md:right-5 md:bottom-5">
                             <Maximize2 size={18} aria-hidden="true" />
                           </span>
                         ) : null}
@@ -335,7 +335,7 @@ export function CinematicJourneyGallery({
             <button
               type="button"
               onClick={() => move(-1)}
-              className="grid size-10 place-items-center rounded-full border border-black/12 bg-white/58 text-[#171a16] transition hover:border-black/24 hover:bg-white"
+              className="grid size-10 place-items-center rounded-full border border-[#1b3a5c]/18 bg-white/58 text-[#122b43] transition hover:border-[#1b3a5c]/36 hover:bg-white"
               aria-label="Previous image"
             >
               <ChevronLeft size={18} aria-hidden="true" />
@@ -343,7 +343,7 @@ export function CinematicJourneyGallery({
             <button
               type="button"
               onClick={() => move(1)}
-              className="grid size-10 place-items-center rounded-full border border-black/12 bg-white/58 text-[#171a16] transition hover:border-black/24 hover:bg-white"
+              className="grid size-10 place-items-center rounded-full border border-[#1b3a5c]/18 bg-white/58 text-[#122b43] transition hover:border-[#1b3a5c]/36 hover:bg-white"
               aria-label="Next image"
             >
               <ChevronRight size={18} aria-hidden="true" />

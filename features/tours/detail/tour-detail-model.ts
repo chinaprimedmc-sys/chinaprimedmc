@@ -203,6 +203,24 @@ function collectTourImages(tour: Tour) {
   ]);
 }
 
+function createExperienceCards(tour: Tour): TourExperienceCard[] {
+  if (tour.experienceChapters?.length) {
+    return tour.experienceChapters.slice(0, 3).map((chapter, index) => ({
+      label: `${chapter.location} · ${chapter.days}`,
+      title: chapter.title,
+      description: chapter.description,
+      image: tour.visualStatus === "pending" ? undefined : tour.highlights[index]?.image,
+    }));
+  }
+
+  return tour.highlights.slice(0, 3).map((highlight) => ({
+    label: highlight.category,
+    title: highlight.title,
+    description: highlight.description,
+    image: tour.visualStatus === "pending" ? undefined : highlight.image,
+  }));
+}
+
 function uniqueMedia(images: MediaAsset[]) {
   const seen = new Set<string>();
   return images.filter((image) => {

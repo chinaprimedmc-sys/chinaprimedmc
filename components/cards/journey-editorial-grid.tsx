@@ -28,6 +28,7 @@ import { trackEvent } from "@/lib/analytics/events";
 import styles from "./journey-discovery.module.css";
 
 type SortId = "recommended" | "shortest" | "longest" | "relaxed" | "active";
+type ServiceCategory = "complete-private-journeys" | "private-day-tours";
 type Filters = {
   commercialRoles: JourneyCommercialRoleId[];
   focus: JourneyFocusId[];
@@ -67,11 +68,13 @@ const commercialRoleOptions: Array<[JourneyCommercialRoleId, string, string]> = 
 ];
 const focusOptions: Array<[JourneyFocusId, string]> = [
   ["first-trip", "First trip to China"],
+  ["business", "Business travel"],
   ["culture", "History & culture"],
   ["food", "Food & local life"],
   ["nature", "Nature & scenery"],
   ["wildlife", "Wildlife & pandas"],
   ["family", "Family time"],
+  ["wellness", "Wellness & retreat"],
   ["photography", "Photography"],
   ["slow-travel", "Slow travel"],
 ];
@@ -234,6 +237,9 @@ export function JourneyEditorialGrid({
   const [query, setQuery] = useState(initialUrlState.query);
   const deferredQuery = useDeferredValue(query);
   const [filters, setFilters] = useState<Filters>(initialUrlState.filters);
+  const [serviceCategory, setServiceCategory] = useState<ServiceCategory | null>(
+    initialUrlState.category,
+  );
   const [sort, setSort] = useState<SortId>(initialUrlState.sort);
   const [limit, setLimit] = useState(12);
   const destinations = useMemo(
@@ -243,10 +249,10 @@ export function JourneyEditorialGrid({
   const results = useMemo(
     () =>
       sortItems(
-        items.filter((item) => matches(item, filters, deferredQuery)),
+        items.filter((item) => matches(item, filters, deferredQuery, serviceCategory)),
         sort,
       ),
-    [items, filters, deferredQuery, sort],
+    [items, filters, deferredQuery, serviceCategory, sort],
   );
   const active = Object.values(filters).flat().length;
   const summary = getSummary(filters, query);
@@ -257,9 +263,10 @@ export function JourneyEditorialGrid({
     Object.entries(filters).forEach(([key, values]) => {
       if (values.length) params.set(key, values.join(","));
     });
+    if (serviceCategory) params.set("category", serviceCategory);
     if (sort !== "recommended") params.set("sort", sort);
     history.replaceState(null, "", `${location.pathname}${params.size ? `?${params}` : ""}`);
-  }, [filters, query, sort]);
+  }, [filters, query, serviceCategory, sort]);
 
   useEffect(() => {
     const normalized = deferredQuery.trim();
@@ -290,8 +297,20 @@ export function JourneyEditorialGrid({
   const reset = () => {
     setFilters(emptyFilters);
     setQuery("");
+    setServiceCategory(null);
     setLimit(12);
     trackEvent("journey_filters_reset");
+  };
+  const exploreService = (category: ServiceCategory) => {
+    setFilters(emptyFilters);
+    setQuery("");
+    setServiceCategory(category);
+    setLimit(12);
+    window.requestAnimationFrame(() => {
+      document
+        .getElementById("journey-discovery")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
   return (
     <main className={styles.page}>
@@ -594,11 +613,7 @@ export function JourneyEditorialGrid({
               <>
                 <div className={styles.grid}>
                   {results.slice(0, limit).map((item) => (
-                    <JourneyResult
-                      key={item.slug}
-                      item={item}
-                      reason={matchReason(item, filters, deferredQuery)}
-                    />
+                    <JourneyResult key={item.slug} item={item} />
                   ))}
                 </div>
                 {limit < results.length ? (
@@ -845,6 +860,354 @@ function FilterGroup({
   );
 }
 
+function ServiceChoiceDialog({
+  service,
+  onExplore,
+}: {
+  service: (typeof serviceCards)[number];
+  onExplore: (category: ServiceCategory) => void;
+}) {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <button type="button" className={styles.serviceChoice}>
+          <span className={styles.serviceChoiceEyebrow}>{service.eyebrow}</span>
+          <span className={styles.serviceChoiceTitle}>{service.title}</span>
+          <span className={styles.serviceChoiceDescription}>{service.description}</span>
+          <span className={styles.serviceChoicePrompt}>
+            View our standard <ArrowUpRight size={15} aria-hidden="true" />
+          </span>
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className={styles.serviceDialogOverlay} />
+        <Dialog.Content
+          className={styles.serviceDialog}
+          aria-describedby={`${service.eyebrow}-description`}
+        >
+          <div className={styles.serviceDialogTopline}>
+            <span>{service.eyebrow}</span>
+            <Dialog.Close className={styles.serviceDialogClose} aria-label="Close service details">
+              <X size={18} aria-hidden="true" />
+            </Dialog.Close>
+          </div>
+          <Dialog.Title className={styles.serviceDialogTitle}>{service.title}</Dialog.Title>
+          <Dialog.Description
+            id={`${service.eyebrow}-description`}
+            className={styles.serviceDialogDescription}
+          >
+            {service.description}
+          </Dialog.Description>
+          <div className={styles.serviceDialogColumns}>
+            <div>
+              <h3>What we can arrange</h3>
+              <ul>
+                {service.includes.map((item) => (
+                  <li key={item}>
+                    <Check size={15} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3>Our standard</h3>
+              <ul>
+                {service.standards.map((item) => (
+                  <li key={item}>
+                    <Check size={15} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className={styles.serviceDialogProcess}>{service.process}</p>
+          <div className={styles.serviceDialogActions}>
+            {service.category ? (
+              <Dialog.Close asChild>
+                <button
+                  type="button"
+                  className={styles.serviceDialogAction}
+                  onClick={() => onExplore(service.category!)}
+                >
+                  {service.label} <ArrowUpRight size={15} aria-hidden="true" />
+                </button>
+              </Dialog.Close>
+            ) : (
+              <Link
+                className={styles.serviceDialogAction}
+                href={service.href!}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {service.label} <MessageCircle size={15} aria-hidden="true" />
+              </Link>
+            )}
+            <Dialog.Close className={styles.serviceDialogSecondary}>
+              Continue exploring
+            </Dialog.Close>
+          </div>
+          <p className={styles.serviceDialogTrust}>
+            Private service · Clear communication · No obligation
+          </p>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+
+function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
+  const signatureItems = items
+    .filter((item) => item.commercialRole === "signature")
+    .sort((a, b) => b.commercialPriority - a.commercialPriority)
+    .slice(0, 4);
+  if (!signatureItems.length) return null;
+
+  return (
+    <section
+      className={styles.signatureShowcase}
+      id="multi-city-journeys"
+      aria-labelledby="signature-collection-title"
+    >
+      <div className={styles.signatureIntro}>
+        <div>
+          <p className={styles.eyebrow}>SIGNATURE ROUTES</p>
+          <h2 id="signature-collection-title">Signature Private China Journeys</h2>
+        </div>
+        <div className={styles.railIntroAside}>
+          <p>
+            Longer, fully managed routes for travelers who want China&apos;s defining places
+            connected with more depth, better pacing and one accountable local team.
+          </p>
+          <Link href="#journey-discovery" className={styles.railViewAll}>
+            View all journeys <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+      <div className={styles.railFrame}>
+        <RailControls railId="signature-journeys-rail" label="Signature private China journeys" />
+        <div
+          className={`${styles.signatureGrid} ${styles.railTrack}`}
+          id="signature-journeys-rail"
+          aria-label="Signature private China journeys"
+        >
+          {signatureItems.map((item, index) => (
+            <Link
+              className={`${styles.signatureCard} ${index === 0 ? styles.signatureCardLead : ""}`}
+              href={item.href}
+              key={item.slug}
+            >
+              <div className={styles.signatureCardImage}>
+                {item.visualStatus === "pending" ? (
+                  <span>Signature photography being prepared</span>
+                ) : (
+                  <OptimizedImage
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes={
+                      index === 0
+                        ? "(min-width: 900px) 50vw, 100vw"
+                        : "(min-width: 900px) 25vw, 50vw"
+                    }
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <div className={styles.signatureCardBody}>
+                <p>{item.commercialRoleLabel}</p>
+                <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
+                <strong>{item.title}</strong>
+                <span>{item.hook}</span>
+                <small className={styles.railCardTrust}>
+                  Private throughout · China-based team
+                </small>
+                <span className={styles.railCardAction}>
+                  View this journey <ArrowUpRight size={14} aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DayTourShowcase({ items }: { items: JourneyCatalogItem[] }) {
+  const dayTours = items.filter((item) => dayTourSlugs.has(item.slug)).slice(0, 5);
+  if (!dayTours.length) return null;
+
+  return (
+    <section
+      className={styles.dayTourShowcase}
+      id="private-day-tours"
+      aria-labelledby="day-tour-title"
+    >
+      <div className={styles.dayTourHead}>
+        <div>
+          <p className={styles.eyebrow}>PRIVATE DAYS</p>
+          <h2 id="day-tour-title">Private China Day Tours</h2>
+        </div>
+        <div>
+          <p>
+            One meaningful day, professionally handled from hotel pickup to return, with a private
+            guide and clear local coordination.
+          </p>
+          <Link href="#journey-discovery" className={styles.railViewAll}>
+            View all day tours <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+      <div className={styles.railFrame}>
+        <RailControls railId="day-tours-rail" label="Private China day tours" />
+        <div
+          className={`${styles.dayTourGrid} ${styles.railTrack}`}
+          id="day-tours-rail"
+          aria-label="Private China day tours"
+        >
+          {dayTours.map((item) => (
+            <Link className={styles.dayTourCard} href={item.href} key={item.slug}>
+              <div className={styles.dayTourCardImage}>
+                {item.visualStatus === "pending" ? (
+                  <span>Photography being prepared</span>
+                ) : (
+                  <OptimizedImage
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes="(min-width: 900px) 20vw, 80vw"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <div>
+                <p>{item.commercialRoleLabel}</p>
+                <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
+                <span className={styles.railCardFormalTitle}>{item.title}</span>
+                <span>{item.durationLabel}</span>
+                <strong>
+                  Indicative starting price: US${getPerPersonPrice(item).toLocaleString("en-US")}{" "}
+                  per person
+                </strong>
+                <small>Based on 4 guests travelling privately</small>
+                <small className={styles.railCardTrust}>
+                  Private guide · Private vehicle · No compulsory shopping
+                </small>
+                <span className={styles.railCardAction}>
+                  Explore this private day <ArrowUpRight size={14} aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ClassicJourneyShowcase({ items }: { items: JourneyCatalogItem[] }) {
+  const classicJourneys = items
+    .filter((item) => item.commercialRole !== "signature" && !dayTourSlugs.has(item.slug))
+    .sort((a, b) => b.commercialPriority - a.commercialPriority);
+  if (!classicJourneys.length) return null;
+
+  return (
+    <section
+      className={styles.classicShowcase}
+      id="classic-china-journeys"
+      aria-labelledby="classic-journeys-title"
+    >
+      <div className={styles.classicShowcaseHead}>
+        <div>
+          <p className={styles.eyebrow}>CLASSIC CHINA ROUTES</p>
+          <h2 id="classic-journeys-title">Classic China Journeys</h2>
+        </div>
+        <div>
+          <p>
+            Well-loved China routes and focused regional journeys, privately operated with the same
+            clear planning and China-based support.
+          </p>
+          <Link href="#journey-discovery" className={styles.railViewAll}>
+            Compare every journey <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+      <div className={styles.railFrame}>
+        <RailControls railId="classic-china-journeys-rail" label="Classic China journeys" />
+        <div
+          className={`${styles.classicJourneyGrid} ${styles.railTrack}`}
+          id="classic-china-journeys-rail"
+          aria-label="Classic China journeys"
+        >
+          {classicJourneys.map((item) => (
+            <Link className={styles.classicJourneyCard} href={item.href} key={item.slug}>
+              <div className={styles.classicJourneyCardImage}>
+                {item.visualStatus === "pending" ? (
+                  <span>Photography being prepared</span>
+                ) : (
+                  <OptimizedImage
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes="(min-width: 900px) 20vw, 82vw"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <div className={styles.classicJourneyCardBody}>
+                <p>{item.commercialRoleLabel}</p>
+                <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
+                <span className={styles.railCardFormalTitle}>{item.title}</span>
+                <span className={styles.classicJourneyRoute}>{item.routeLabel}</span>
+                <span>{item.durationLabel}</span>
+                <strong>
+                  Indicative starting price: US${getPerPersonPrice(item).toLocaleString("en-US")}{" "}
+                  per person
+                </strong>
+                <small>Based on 4 guests travelling privately</small>
+                <small className={styles.railCardTrust}>
+                  Private throughout · China-based team
+                </small>
+                <span className={styles.railCardAction}>
+                  Explore this China journey <ArrowUpRight size={14} aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RailControls({ railId, label }: { railId: string; label: string }) {
+  return (
+    <div className={styles.railControls} aria-label={`${label} controls`}>
+      <span>Swipe to explore</span>
+      <div>
+        <button
+          type="button"
+          aria-label={`Previous ${label}`}
+          onClick={() => scrollRail(railId, -1)}
+        >
+          <ChevronLeft size={17} aria-hidden="true" />
+        </button>
+        <button type="button" aria-label={`Next ${label}`} onClick={() => scrollRail(railId, 1)}>
+          <ChevronRight size={17} aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function scrollRail(id: string, direction: number) {
+  const rail = document.getElementById(id);
+  if (!rail) return;
+  rail.scrollBy({ left: direction * Math.max(rail.clientWidth * 0.82, 280), behavior: "smooth" });
+}
+
 function MobileTools(props: {
   resultCount: number;
   active: number;
@@ -1058,7 +1421,14 @@ function NoResults({ reset }: { reset: () => void }) {
   );
 }
 
-function matches(item: JourneyCatalogItem, filters: Filters, query: string) {
+function matches(
+  item: JourneyCatalogItem,
+  filters: Filters,
+  query: string,
+  serviceCategory: ServiceCategory | null = null,
+) {
+  if (serviceCategory === "private-day-tours" && !dayTourSlugs.has(item.slug)) return false;
+  if (serviceCategory === "complete-private-journeys" && item.recommendedDaysMax < 3) return false;
   const q = query.trim().toLowerCase();
   if (q && !item.discovery.searchableText.includes(q) && !daysQuery(item, q)) return false;
   if (filters.commercialRoles.length && !filters.commercialRoles.includes(item.commercialRole))
@@ -1162,6 +1532,17 @@ function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1).replaceAll("-", " ");
 }
 
+function getPerPersonPrice(item: JourneyCatalogItem) {
+  const dayTourPrices: Record<string, number> = {
+    "private-mutianyu-great-wall-day-tour": 198,
+    "private-chengdu-panda-day-tour-early-morning": 150,
+    "private-xian-terracotta-warriors-day-tour": 157,
+    "private-shanghai-day-tour-guide-driver": 168,
+    "guilin-yangshuo-li-river-cruise-private-day-tour": 172,
+  };
+  return dayTourPrices[item.slug] ?? item.pricing.fromUsd;
+}
+
 function getDisplayTitle(title: string) {
   return title
     .replace(/^\d+-Day\s+/i, "")
@@ -1182,13 +1563,19 @@ function getPerPersonPrice(item: JourneyCatalogItem) {
 function getInitialUrlState(queryString: string): {
   query: string;
   filters: Filters;
+  category: ServiceCategory | null;
   sort: SortId;
 } {
   const params = new URLSearchParams(queryString);
   const read = (key: keyof Filters) => params.get(key)?.split(",").filter(Boolean) ?? [];
   const sort = params.get("sort");
+  const category = params.get("category");
   return {
     query: params.get("q") ?? "",
+    category:
+      category === "private-day-tours" || category === "complete-private-journeys"
+        ? category
+        : null,
     filters: {
       commercialRoles: read("commercialRoles") as JourneyCommercialRoleId[],
       focus: read("focus") as JourneyFocusId[],

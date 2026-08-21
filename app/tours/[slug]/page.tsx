@@ -271,7 +271,13 @@ export default async function TourPage({ params }: TourPageProps) {
                     "@type": "UnitPriceSpecification",
                     price: catalogItem.pricing.fromUsd,
                     priceCurrency: "USD",
-                    unitText: "per person",
+                    unitText:
+                      isPrivateShanghaiDayTour ||
+                      isPrivateXianTerracottaDayTour ||
+                      isPrivateChengduPandaDayTour ||
+                      isGuilinLiRiverDayTour
+                        ? "per private group of four guests"
+                        : "per person",
                     description: catalogItem.pricing.basis,
                   },
                 }
