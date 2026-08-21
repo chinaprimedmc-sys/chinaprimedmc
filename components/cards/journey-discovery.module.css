@@ -2871,3 +2871,126 @@
 .cardBody > a { min-width: 0; }
 .cardBody h3 { max-width: 100%; overflow-wrap: anywhere; }
 .photoStagePending { background: #f7f7f7 !important; }
+
+/* Final information hierarchy: the catalogue is a preview, not the detail page. */
+.cardBody .formalTitle {
+  display: -webkit-box;
+  max-height: 1.1rem;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.cardBody .moments {
+  max-height: 1.35rem;
+  overflow: hidden;
+}
+
+.cardBody .moments li {
+  display: none;
+}
+
+.cardBody .moments li:first-child {
+  display: grid;
+}
+
+.cardBody .cardProposal {
+  font-size: 0.66rem;
+  margin-top: 0.65rem;
+}
+
+.photoStagePending .pendingPhotoLink {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.photoStagePending .pendingPhotoLink span,
+.photoStagePending .pendingPhotoLink small {
+  display: block;
+  max-width: 90%;
+}
+
+@media (max-width: 640px) {
+  /* Mobile card: image, one clear promise, and one action. */
+  .card {
+    border-radius: 22px;
+  }
+
+  .photoStage {
+    aspect-ratio: 16 / 9;
+    margin: 8px 8px 0;
+    border-radius: 17px;
+  }
+
+  .photoStage img {
+    border-radius: 17px;
+  }
+
+  .photoDuration {
+    top: 8px;
+    left: 8px;
+  }
+
+  .cardBody {
+    padding: 0.82rem 0.9rem 0.88rem;
+  }
+
+  .cardMeta {
+    justify-content: flex-start;
+    gap: 0.35rem 0.6rem;
+  }
+
+  .cardMeta p,
+  .cardMeta > span {
+    font-size: 0.58rem;
+    line-height: 1.25;
+  }
+
+  .cardBody h3 {
+    font-size: 1.05rem;
+    line-height: 1.18;
+    margin-top: 0.38rem;
+    min-height: 0;
+  }
+
+  .cardBody .formalTitle,
+  .cardBody .moments,
+  .cardBody .cardProposal {
+    display: none;
+  }
+
+  .cardBody > span {
+    -webkit-line-clamp: 2;
+    font-size: 0.68rem;
+    line-height: 1.45;
+    margin-top: 0.42rem;
+  }
+
+  .cardFooter {
+    gap: 0.55rem;
+    margin-top: 0.7rem;
+    padding-top: 0.62rem;
+  }
+
+  .cardFooterPrice {
+    min-width: 0;
+  }
+
+  .cardFooterPrice span,
+  .cardFooterPrice small {
+    font-size: 0.55rem;
+  }
+
+  .cardFooterPrice strong {
+    font-size: 1.02rem;
+  }
+
+  .cardArrow {
+    width: 31px;
+    height: 31px;
+  }
+}

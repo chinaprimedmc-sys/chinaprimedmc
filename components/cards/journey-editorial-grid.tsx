@@ -493,7 +493,6 @@ export function JourneyEditorialGrid({
                     <JourneyResult
                       key={item.slug}
                       item={item}
-                      reason={matchReason(item, filters, deferredQuery)}
                     />
                   ))}
                 </div>
@@ -831,7 +830,7 @@ function MobileJourneySearch({
   );
 }
 
-function JourneyResult({ item, reason }: { item: JourneyCatalogItem; reason: string }) {
+function JourneyResult({ item }: { item: JourneyCatalogItem }) {
   const displayTitle = marketingTitles[item.slug] ?? getDisplayTitle(item.title);
 
   return (
@@ -869,33 +868,13 @@ function JourneyResult({ item, reason }: { item: JourneyCatalogItem; reason: str
         <p className={styles.formalTitle}>{item.title}</p>
         <span>{item.hook}</span>
         <ul className={styles.moments} aria-label="Signature moments">
-          {item.highlights.slice(0, 3).map((highlight) => (
+          {item.highlights.slice(0, 1).map((highlight) => (
             <li key={highlight}>
               <Check size={13} aria-hidden="true" />
               <span>{highlight}</span>
             </li>
           ))}
         </ul>
-        <div className={styles.price}>
-          <strong>From US${getPerPersonPrice(item).toLocaleString("en-US")} per person</strong>
-          <span>Based on 4 guests travelling privately</span>
-        </div>
-        {reason ? (
-          <div className={styles.match}>
-            <strong>Why it matches</strong>
-            {reason}
-          </div>
-        ) : null}
-        <dl>
-          <div>
-            <dt>Best for</dt>
-            <dd>{item.bestForSummary}</dd>
-          </div>
-          <div>
-            <dt>Walking</dt>
-            <dd>{capitalize(item.discovery.walkingLevel)}</dd>
-          </div>
-        </dl>
         <div className={styles.cardFooter}>
           <div className={styles.cardFooterPrice}>
             <span>From per person</span>
@@ -1000,29 +979,6 @@ function sortItems(items: JourneyCatalogItem[], sort: SortId) {
 }
 function paceScore(item: JourneyCatalogItem) {
   return item.discovery.pace === "easy" ? 0 : item.discovery.pace === "balanced" ? 1 : 2;
-}
-function matchReason(item: JourneyCatalogItem, filters: Filters, query: string) {
-  const reasons: string[] = [];
-  if (query.trim()) reasons.push(`Matches “${query.trim()}”`);
-  if (filters.duration.some((v) => durationMatch(item, v))) reasons.push(item.durationLabel);
-  if (filters.commercialRoles.includes(item.commercialRole)) reasons.push(item.commercialRoleLabel);
-  if (filters.focus.length) {
-    const focus = focusOptions.find(
-      ([id]) => item.discovery.focus.includes(id) && filters.focus.includes(id),
-    );
-    if (focus) reasons.push(focus[1]);
-  }
-  if (filters.pace.includes(item.discovery.pace))
-    reasons.push(`${capitalize(item.discovery.pace)} pace`);
-  if (filters.altitude.includes("none") && item.discovery.altitude === "none")
-    reasons.push("No high-altitude stays");
-  if (filters.needs.length) {
-    const need = planningNeedOptions.find(
-      ([id]) => item.planningNeedFilters.includes(id) && filters.needs.includes(id),
-    );
-    if (need) reasons.push(need[1]);
-  }
-  return reasons.slice(0, 3).join(" · ");
 }
 function getSummary(filters: Filters, query: string) {
   const values = [
