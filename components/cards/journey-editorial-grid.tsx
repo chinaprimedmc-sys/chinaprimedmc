@@ -675,7 +675,6 @@ function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
               <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
               <strong>{item.title}</strong>
               <span>{item.hook}</span>
-              <span className={styles.signatureCardLink}>Explore the journey <ArrowUpRight size={15} aria-hidden="true" /></span>
             </div>
           </Link>
         ))}
@@ -885,12 +884,6 @@ function JourneyResult({ item }: { item: JourneyCatalogItem }) {
             <ArrowUpRight size={17} strokeWidth={1.8} aria-hidden="true" />
           </Link>
         </div>
-        <Link
-          className={styles.cardProposal}
-          href={`/start-planning?source=journey-catalog&journey=${item.slug}`}
-        >
-          Request a private proposal <ArrowUpRight size={13} strokeWidth={1.8} aria-hidden="true" />
-        </Link>
       </div>
     </article>
   );

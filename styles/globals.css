@@ -105,6 +105,46 @@
   }
 }
 
+/* Journeys mobile hero navigation: keep the advisor action compact and rounded. */
+@media (max-width: 1023px) {
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-planning {
+    display: none;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-actions {
+    display: grid;
+    flex: 0 0 auto;
+    grid-template-columns: max-content 2.35rem;
+    margin-left: auto;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-help {
+    align-self: center;
+    background: rgba(255, 255, 255, 0.78) !important;
+    border: 1px solid rgba(255, 255, 255, 0.88) !important;
+    border-radius: 999px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.98),
+      0 6px 16px rgba(23, 33, 41, 0.1) !important;
+    color: #202326 !important;
+    font-size: 0.68rem;
+    font-weight: 700;
+    height: 2.35rem;
+    justify-self: end;
+    min-height: 2.35rem;
+    padding: 0 0.78rem !important;
+    white-space: nowrap;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-trigger--dark {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.58);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      0 6px 16px rgba(4, 15, 23, 0.14);
+  }
+}
+
 @keyframes planning-form-step-in {
   from {
     opacity: 0;
@@ -4318,4 +4358,74 @@ svg {
 .brand-wordmark {
   font-family: var(--font-display);
   font-weight: 500 !important;
+}
+
+/* Final mobile hero-nav correction: no square advisor block or wasted invisible track. */
+@media (max-width: 1023px) {
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-planning {
+    display: none !important;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-actions {
+    flex: 0 0 auto !important;
+    grid-template-columns: max-content 2.35rem !important;
+    margin-left: auto !important;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-help {
+    background: rgba(255, 255, 255, 0.82) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    border-radius: 999px !important;
+    color: #202326 !important;
+    font-size: 0.68rem !important;
+    height: 2.35rem !important;
+    min-height: 2.35rem !important;
+    padding: 0 0.78rem !important;
+    width: auto !important;
+  }
+}
+
+/* Keep the scrolled mobile toolbar legible without covering the section beneath it. */
+@media (max-width: 1023px) {
+  .site-navigation-shell.is-scrolled {
+    background: rgba(255, 255, 255, 0.97) !important;
+    border-bottom: 1px solid rgba(32, 35, 38, 0.1) !important;
+    box-shadow: 0 8px 20px rgba(32, 35, 38, 0.08) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(115%);
+    backdrop-filter: blur(18px) saturate(115%);
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__mobile-actions {
+    gap: 0.25rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__journey-filter,
+  .site-navigation-shell.is-scrolled .site-navigation__journey-search,
+  .site-navigation-shell.is-scrolled .site-navigation__journey-plan {
+    font-size: 0.62rem;
+    height: 2.15rem;
+    min-height: 2.15rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__journey-filter,
+  .site-navigation-shell.is-scrolled .site-navigation__journey-search {
+    gap: 0.25rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__journey-plan {
+    padding-inline: 0.7rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__mobile-help,
+  .site-navigation-shell.is-scrolled .site-navigation__mobile-trigger {
+    height: 2.15rem;
+    min-height: 2.15rem;
+    width: 2.15rem;
+  }
+
+  .site-navigation-shell.is-scrolled .site-navigation__mobile-trigger {
+    background: rgba(255, 255, 255, 0.86);
+    border-color: rgba(32, 35, 38, 0.14);
+    color: #202326;
+  }
 }
