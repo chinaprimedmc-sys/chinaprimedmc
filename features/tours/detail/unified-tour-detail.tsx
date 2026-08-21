@@ -36,6 +36,8 @@ import styles from "@/features/tours/detail/tour-detail.module.css";
 import { JourneyReading } from "@/features/tours/journey-reading";
 
 export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
+  const isAgendaFirstBusinessJourney =
+    model.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day";
   const overviewTitle = model.route
     ? `${model.route.replace(/, ([^,]+)$/, " & $1")}, privately.`
     : `A private ${model.duration.toLowerCase()} journey.`;
@@ -58,12 +60,14 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
       <SiteNavigation
         items={homeNavItems}
         className="home-navigation-entrance tour-detail-navigation"
-        cta={{ label: "Plan My Trip", href: model.planningHref }}
-        mobileCta={{ label: "Plan My Trip", href: model.planningHref }}
+        cta={{ label: model.primaryActionLabel, href: model.planningHref }}
+        mobileCta={{ label: model.primaryActionLabel, href: model.planningHref }}
         journeyDetailTools={{
           journeysLabel: "Journeys",
           journeysHref: "/tours",
-          planLabel: "Plan This Journey",
+          planLabel: isAgendaFirstBusinessJourney
+            ? "Build Around My Schedule"
+            : "Plan This Journey",
           planHref: model.planningHref,
           journeySlug: model.slug,
         }}
@@ -163,10 +167,15 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
             <div className={styles.shell}>
               <div className={styles.experiencePreviewIntro}>
                 <p className={styles.eyebrow}>What you will actually experience</p>
-                <h2 id="experience-preview-title">Five chapters you can already picture.</h2>
+                <h2 id="experience-preview-title">
+                  {isAgendaFirstBusinessJourney
+                    ? "Five parts you can move around your agenda."
+                    : "Five chapters you can already picture."}
+                </h2>
                 <p>
-                  This is not simply a list of places. Here is what will be in front of you, what
-                  you will take part in and why each chapter earns its place in the journey.
+                  {isAgendaFirstBusinessJourney
+                    ? "These are planning modules, not fixed appointments. Keep, move, shorten or replace them after your flights and business commitments are placed."
+                    : "This is not simply a list of places. Here is what will be in front of you, what you will take part in and why each chapter earns its place in the journey."}
                 </p>
               </div>
               <ol className={styles.experienceChapterList}>
@@ -287,8 +296,16 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           <div className={styles.readingShell}>
             <div className={styles.sectionHeading}>
               <p className={styles.eyebrow}>Day by day</p>
-              <h2 id="itinerary-title">Your day-by-day itinerary.</h2>
-              <p>Open a day to see the experience, transfers, meals and hotel plan.</p>
+              <h2 id="itinerary-title">
+                {isAgendaFirstBusinessJourney
+                  ? "A sample framework, rebuilt around you."
+                  : "Your day-by-day itinerary."}
+              </h2>
+              <p>
+                {isAgendaFirstBusinessJourney
+                  ? "Open a day to see one workable version. Your fixed meetings and flights always take priority."
+                  : "Open a day to see the experience, transfers, meals and hotel plan."}
+              </p>
             </div>
             <TourDayAccordion days={model.days} journeySlug={model.slug} />
           </div>
@@ -382,11 +399,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       className={styles.priceFormAction}
                       href={model.planningHref}
                       journeySlug={model.slug}
-                      label="Plan My Trip"
+                      label={model.primaryActionLabel}
                       placement="tour-price-form"
                     >
                       <FileCheck2 size={15} aria-hidden="true" />
-                      Plan My Trip
+                      {model.primaryActionLabel}
                     </TrackedTourLink>
                   </div>
                   <p className={styles.priceReassurance}>

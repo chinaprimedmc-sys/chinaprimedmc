@@ -20,8 +20,14 @@ const BEIJING = "beijing-great-wall-private-5-day-tour";
 const XIAN_BEIJING = "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour";
 const MUSLIM_CHINA = "muslim-friendly-china-tour-great-wall-desert-stars";
 const QINGCHENG_WELLNESS = "qingcheng-mountain-private-wellness-retreat-10-day";
+const GREATER_BAY_BUSINESS = "guangzhou-shenzhen-tailor-made-business-tour-4-day";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  [GREATER_BAY_BUSINESS]: [
+    "china-mobile-payments-foreign-tourists",
+    "china-sim-card-esim-internet-foreign-tourists",
+    "china-accommodation-registration-foreigners",
+  ],
   [QINGCHENG_WELLNESS]: [
     "how-many-days-in-chengdu-itinerary",
     "best-time-to-visit-china",
@@ -224,6 +230,18 @@ export const journeyJournalLinks: Record<string, JourneyJournalLinkRule> = Objec
 );
 
 Object.assign(journeyJournalLinks, {
+  "china-mobile-payments-foreign-tourists": {
+    ...journeyJournalLinks["china-mobile-payments-foreign-tourists"],
+    alternativeJourneys: [FOUR_CITY, GREATER_BAY_BUSINESS],
+  },
+  "china-sim-card-esim-internet-foreign-tourists": {
+    ...journeyJournalLinks["china-sim-card-esim-internet-foreign-tourists"],
+    alternativeJourneys: [FOUR_CITY, GREATER_BAY_BUSINESS],
+  },
+  "china-accommodation-registration-foreigners": {
+    ...journeyJournalLinks["china-accommodation-registration-foreigners"],
+    alternativeJourneys: [FOUR_CITY, GREATER_BAY_BUSINESS],
+  },
   "first-trip-to-china-planning-guide": {
     primaryJourney: CHINA_CONSIDERED,
     title: "See the Route Reality Check become a complete journey",

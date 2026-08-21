@@ -10,6 +10,27 @@ import type { Tour } from "@/types/tour";
 
 const journeyProfiles = [
   {
+    slug: "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+    audience:
+      "Executives, founders, buyers and small business teams with flights, meetings, exhibitions or supplier commitments in Guangzhou and Shenzhen",
+    pace: "Agenda-first and privately adjustable; fixed business commitments are placed before hotels, transport, bilingual support and optional cultural or technology modules",
+    evidence: [
+      [
+        "Guangzhou and Shenzhen tailor-made business product page",
+        "/tours/guangzhou-shenzhen-tailor-made-business-tour-4-day",
+      ],
+      [
+        "Official Canton Fair overseas buyer registration system",
+        "https://buyer.cantonfair.org.cn/",
+      ],
+      ["Pony.ai official business information", "https://pony.ai/business?lang=en"],
+      [
+        "Mobile payments guidance for foreign visitors",
+        "/journal/china-mobile-payments-foreign-tourists",
+      ],
+    ],
+  },
+  {
     slug: "china-at-an-easier-pace-12-day-private-tour",
     audience:
       "Couples, mature travelers, families planning for parents and first-time China visitors",

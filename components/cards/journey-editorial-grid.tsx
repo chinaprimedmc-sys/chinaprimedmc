@@ -56,6 +56,7 @@ const commercialRoleOptions: Array<[JourneyCommercialRoleId, string, string]> = 
 ];
 const focusOptions: Array<[JourneyFocusId, string]> = [
   ["first-trip", "First trip to China"],
+  ["business", "Business travel"],
   ["culture", "History & culture"],
   ["food", "Food & local life"],
   ["nature", "Nature & scenery"],

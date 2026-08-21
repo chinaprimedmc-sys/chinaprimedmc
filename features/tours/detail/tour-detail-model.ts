@@ -80,6 +80,8 @@ export const frameworkTourFaqs = [
 export function createTourDetailModel(tour: Tour): TourDetailModel {
   const dossier = getDossierData(tour);
   const catalog = getJourneyCatalogItem(tour.slug);
+  const isAgendaFirstBusinessJourney =
+    tour.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day";
   const hotelStandard =
     tour.overview.facts.find((fact) => fact.label.toLowerCase() === "hotels")?.value ??
     "Selected 4- and 5-star hotels";
@@ -134,9 +136,14 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     excluded: tour.excluded,
     faqs: [...tour.faqs, ...bookingPolicyFaqs],
     planningHref: planningHref(tour.slug, "detail-template"),
-    whatsappHref: tourWhatsAppHref(tour.title, tour.duration),
-    primaryActionLabel: "Plan My Trip",
-    whatsappActionLabel: "Message Our China Team",
+    whatsappHref:
+      isAgendaFirstBusinessJourney && tour.inquiry.whatsappHref
+        ? tour.inquiry.whatsappHref
+        : tourWhatsAppHref(tour.title, tour.duration),
+    primaryActionLabel: isAgendaFirstBusinessJourney ? "Build Around My Schedule" : "Plan My Trip",
+    whatsappActionLabel: isAgendaFirstBusinessJourney
+      ? "Send Us My Business Plans"
+      : "Message Our China Team",
     lastReviewedLabel: tour.updatedAt ? formatReviewDate(tour.updatedAt) : undefined,
   };
 }

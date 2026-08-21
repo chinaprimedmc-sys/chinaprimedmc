@@ -58,6 +58,7 @@ export type JourneyDiscoveryData = {
 
 export type JourneyFocusId =
   | "first-trip"
+  | "business"
   | "culture"
   | "food"
   | "nature"
@@ -127,6 +128,9 @@ const muslimFriendlyChina = tours.find(
 const qingchengWellness = tours.find(
   (tour) => tour.slug === "qingcheng-mountain-private-wellness-retreat-10-day",
 );
+const greaterBayBusiness = tours.find(
+  (tour) => tour.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+);
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
 );
@@ -167,6 +171,10 @@ if (!muslimFriendlyChina) {
 
 if (!qingchengWellness) {
   throw new Error("The 10-day Qingcheng Mountain wellness retreat is required.");
+}
+
+if (!greaterBayBusiness) {
+  throw new Error("The 4-day Guangzhou and Shenzhen business journey is required.");
 }
 
 if (!beijingXianChengduShanghai) {
@@ -399,6 +407,39 @@ const muslimFriendlyChinaJourney: JourneyCatalogBase = {
   ],
   planningNote:
     "The published design includes a 14-day Shanghai extension option. Ningxia and desert accommodation are assessed honestly against the actual date-specific supply.",
+};
+
+const greaterBayBusinessJourney: JourneyCatalogBase = {
+  slug: greaterBayBusiness.slug,
+  title: greaterBayBusiness.title,
+  eyebrow: "Tailor-made Greater Bay business gateway",
+  summary: greaterBayBusiness.subtitle,
+  hook: "Your flights, meetings and exhibition hours come first; hotels, private transport, bilingual support and flexible cultural or technology modules are built around them.",
+  image: greaterBayBusiness.hero.image,
+  visualStatus: "pending",
+  href: `/tours/${greaterBayBusiness.slug}`,
+  kind: "featured",
+  routeLabel: greaterBayBusiness.route,
+  durationLabel: "4 days / 3 nights",
+  styleFilters: ["Business", "Luxury", "Food", "Culture", "Modern China"],
+  destinationFilters: ["Guangzhou", "Shenzhen"],
+  bestForFilters: ["Executives", "Founders", "Buyers", "Small business teams"],
+  experienceFilters: ["modern-cities", "food", "local-life"],
+  travelerFilters: ["couples", "solo-travelers", "private-groups"],
+  planningNeedFilters: [
+    "women-traveler-support",
+    "vegetarian-friendly",
+    "mobility-aware",
+    "food-focused",
+  ],
+  recommendedDaysMin: 2,
+  recommendedDaysMax: 6,
+  destinations: [
+    { label: "Guangzhou", href: `/tours/${greaterBayBusiness.slug}#itinerary` },
+    { label: "Shenzhen", href: `/tours/${greaterBayBusiness.slug}#itinerary` },
+  ],
+  planningNote:
+    "The four-day page is a sample operating framework. Confirmed flights, meetings, fairs and supplier addresses are placed first; either city may be reversed, removed or extended.",
 };
 
 const qingchengWellnessJourney: JourneyCatalogBase = {
@@ -748,6 +789,7 @@ const xianBeijingJourney: JourneyCatalogBase = {
 };
 
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  greaterBayBusinessJourney,
   qingchengWellnessJourney,
   chinaConsideredJourney,
   chinaFamilyJourney,
@@ -766,6 +808,11 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
 > = {
+  "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
+    commercialRole: "extension",
+    commercialRoleLabel: "Tailor-made Greater Bay business gateway",
+    commercialPriority: 91,
+  },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     commercialRole: "signature",
     commercialRoleLabel: "Signature private wellness retreat",
@@ -832,6 +879,20 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
+    paceLabel: "Agenda-first, efficient and completely adjustable",
+    transportSummary:
+      "Private MPV during confirmed service windows, with Guangzhou, Shenzhen or Hong Kong gateway transfers as quoted",
+    highlights: [
+      "Build every service around fixed flights, meetings and fair hours",
+      "Shop, cook and explore Guangzhou family culture with a local host",
+      "Add a contextual traditional Chinese medicine introduction",
+      "Select one date-confirmed Shenzhen innovation chapter",
+      "Keep one China-based team responsible for the operating plan",
+    ],
+    bestForSummary:
+      "Executives, founders, buyers and small teams who already have part of their South China schedule and want everything else to work around it",
+  },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     paceLabel: "Unhurried, privately adjustable and built around protected blank space",
     transportSummary: "Private transfers with one hotel change and no domestic flight",
@@ -983,6 +1044,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, JourneyPricing> = {
+  "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
+    fromUsd: 2280,
+    basis:
+      "Indicative starting price per person, based on four guests sharing two rooms outside major exhibition and peak periods, equivalent to a group total from US$9,120.",
+    inclusionSummary:
+      "Includes 3 nights in selected premium business hotels, two rooms, the confirmed private transfers and vehicle windows, bilingual guide, interpreter or business-assistant support as stated, agenda planning, the selected Guangzhou market-to-kitchen culture module, one Shenzhen innovation chapter and China-based operating support.",
+    finalPriceNote:
+      "Most fully tailored four-day versions fall between US$2,600 and US$3,600 per person. A typical two-guest version starts from approximately US$2,880 per person outside major exhibition periods.",
+    additionalNote:
+      "Major fair dates, extended vehicle or interpreter hours, named vehicle models, professional interpretation, supplier sourcing, factory audits, confirmed company access and Hong Kong cross-boundary services are quoted separately.",
+  },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     fromUsd: 11800,
     basis:
@@ -1108,6 +1180,7 @@ function buildDiscoveryData(
   const transportText = commercial.transportSummary.toLowerCase();
   const focus = new Set<JourneyFocusId>();
   if (journey.travelerFilters.includes("first-time")) focus.add("first-trip");
+  if (journey.styleFilters.includes("Business")) focus.add("business");
   if (
     journey.experienceFilters.some((id) =>
       ["great-wall", "ancient-china", "silk-road"].includes(id),
