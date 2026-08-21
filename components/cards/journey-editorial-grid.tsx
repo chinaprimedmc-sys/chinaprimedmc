@@ -5,7 +5,9 @@ import * as Select from "@radix-ui/react-select";
 import {
   ArrowUpRight,
   Check,
+  ChevronLeft,
   ChevronDown,
+  ChevronRight,
   MessageCircle,
   Search,
   ShieldCheck,
@@ -56,7 +58,11 @@ const emptyFilters: Filters = {
 };
 const commercialRoleOptions: Array<[JourneyCommercialRoleId, string, string]> = [
   ["signature", "AVIORA Signature", "Our most distinctive, story-led private journeys"],
-  ["essential", "Multi-city essentials", "Clear, considered routes across China's defining contrasts"],
+  [
+    "essential",
+    "Multi-city essentials",
+    "Clear, considered routes across China's defining contrasts",
+  ],
   ["nature", "Nature & local life", "Pandas, mountain landscapes and regional food culture"],
   [
     "extension",
@@ -143,8 +149,13 @@ const serviceCards = [
     href: "",
     category: "complete-private-journeys" as ServiceCategory,
     includes: ["Multi-city routing", "Private guides and vehicles", "Hotels, rail and experiences"],
-    standards: ["One coordinated point of contact", "Clear inclusions before confirmation", "Private service throughout"],
-    process: "Tell us where you want to go and how you want to travel. We shape the route around you.",
+    standards: [
+      "One coordinated point of contact",
+      "Clear inclusions before confirmation",
+      "Private service throughout",
+    ],
+    process:
+      "Tell us where you want to go and how you want to travel. We shape the route around you.",
     label: "Explore complete journeys",
   },
   {
@@ -156,7 +167,11 @@ const serviceCards = [
     href: "",
     category: "private-day-tours" as ServiceCategory,
     includes: ["Private guide and vehicle", "Timed attraction visits", "Flexible start and finish"],
-    standards: ["No rushed group-tour schedule", "Practical coordination throughout", "Clear arrangements before travel"],
+    standards: [
+      "No rushed group-tour schedule",
+      "Practical coordination throughout",
+      "Clear arrangements before travel",
+    ],
     process: "Choose a place or experience. We coordinate the day and leave you to enjoy it.",
     label: "Explore private day tours",
   },
@@ -164,13 +179,19 @@ const serviceCards = [
     eyebrow: "Private vehicle & driver",
     title: "Move with quiet confidence.",
     formalName: "Private vehicle and driver service in China",
-    description:
-      "Reliable private transport arranged around your route, schedule and luggage.",
+    description: "Reliable private transport arranged around your route, schedule and luggage.",
     category: undefined,
     includes: ["Airport and city transfers", "Intercity driving", "Vehicle matched to your party"],
-    standards: ["Professional local coordination", "Route and timing confirmed", "Flexible support when plans change"],
-    process: "Share your route, dates, party size and luggage. We recommend the most suitable arrangement.",
-    href: whatsappHref("Hello AVIORA, I need a private vehicle in China. My city or route is __, travel date is __, there are __ passengers and __ pieces of luggage."),
+    standards: [
+      "Professional local coordination",
+      "Route and timing confirmed",
+      "Flexible support when plans change",
+    ],
+    process:
+      "Share your route, dates, party size and luggage. We recommend the most suitable arrangement.",
+    href: whatsappHref(
+      "Hello AVIORA, I need a private vehicle in China. My city or route is __, travel date is __, there are __ passengers and __ pieces of luggage.",
+    ),
     label: "Recommend my private vehicle",
   },
   {
@@ -180,11 +201,46 @@ const serviceCards = [
     description:
       "An English-speaking guide matched to your destination, interests and preferred pace.",
     category: undefined,
-    includes: ["English-speaking private guide", "History, culture and local-life context", "Flexible pace and interests"],
-    standards: ["Guide matched to your priorities", "Clear communication in advance", "Private attention throughout"],
-    process: "Tell us the destination, interests and pace you prefer. We match the right local expertise.",
-    href: whatsappHref("Hello AVIORA, I need a private guide in __ on __. There are __ guests. Our main interests are __ and our preferred language is __."),
+    includes: [
+      "English-speaking private guide",
+      "History, culture and local-life context",
+      "Flexible pace and interests",
+    ],
+    standards: [
+      "Guide matched to your priorities",
+      "Clear communication in advance",
+      "Private attention throughout",
+    ],
+    process:
+      "Tell us the destination, interests and pace you prefer. We match the right local expertise.",
+    href: whatsappHref(
+      "Hello AVIORA, I need a private guide in __ on __. There are __ guests. Our main interests are __ and our preferred language is __.",
+    ),
     label: "Match me with a private guide",
+  },
+  {
+    eyebrow: "Airport & intercity transfers",
+    title: "Every handover, accounted for.",
+    formalName: "Private airport and intercity transfer service in China",
+    description:
+      "Airport pickup, rail-station connection and intercity transfer planning handled around your route and luggage.",
+    category: undefined,
+    includes: [
+      "Airport meet-and-transfer",
+      "Rail-station connections",
+      "Intercity vehicle planning",
+    ],
+    standards: [
+      "Pickup timing confirmed",
+      "Luggage and hotel handover planned",
+      "China-based response when plans change",
+    ],
+    process:
+      "Share your arrival, departure or intercity plan. We coordinate the handover and confirm the practical details before travel.",
+    href: whatsappHref(
+      "Hello AVIORA, I need airport or intercity transfer support in China. My route is __, travel date is __, there are __ passengers and __ pieces of luggage.",
+    ),
+    label: "Plan my transfers",
   },
 ] as const;
 
@@ -195,8 +251,7 @@ const marketingTitles: Record<string, string> = {
   "private-chengdu-panda-day-tour-early-morning": "Pandas at Their Most Active",
   "guilin-yangshuo-li-river-cruise-private-day-tour": "Let the Li River Carry You to Yangshuo",
   "qingcheng-mountain-private-wellness-retreat-10-day": "Ten Days to Feel Like Yourself Again",
-  "china-family-tour-with-pandas-12-day-private-tour":
-    "The China Story Your Family Will Keep",
+  "china-family-tour-with-pandas-12-day-private-tour": "The China Story Your Family Will Keep",
   "muslim-friendly-china-tour-great-wall-desert-stars":
     "A China Journey Where Faith Is Never an Afterthought",
   "china-at-an-easier-pace-12-day-private-tour": "See China Without Racing Through It",
@@ -251,7 +306,9 @@ export function JourneyEditorialGrid({
   const [query, setQuery] = useState(initialUrlState.query);
   const deferredQuery = useDeferredValue(query);
   const [filters, setFilters] = useState<Filters>(initialUrlState.filters);
-  const [serviceCategory, setServiceCategory] = useState<ServiceCategory | null>(initialUrlState.category);
+  const [serviceCategory, setServiceCategory] = useState<ServiceCategory | null>(
+    initialUrlState.category,
+  );
   const [sort, setSort] = useState<SortId>(initialUrlState.sort);
   const [limit, setLimit] = useState(12);
   const destinations = useMemo(
@@ -299,7 +356,9 @@ export function JourneyEditorialGrid({
     setServiceCategory(category);
     setLimit(12);
     window.requestAnimationFrame(() => {
-      document.getElementById("journey-discovery")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document
+        .getElementById("journey-discovery")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   };
   return (
@@ -321,7 +380,10 @@ export function JourneyEditorialGrid({
           <span>{heroContent.description}</span>
         </div>
       </section>
-      <section className={styles.serviceAssurance} aria-label="AVIORA private China travel standards">
+      <section
+        className={styles.serviceAssurance}
+        aria-label="AVIORA private China travel standards"
+      >
         <div className={styles.serviceAssuranceInner}>
           <div className={styles.serviceAssuranceBrand}>
             <span className={styles.serviceAssuranceBrandMark} aria-hidden="true">
@@ -403,41 +465,63 @@ export function JourneyEditorialGrid({
           </div>
         </section>
       ) : null}
+      <SignatureShowcase items={items} />
+      <DayTourShowcase items={items} />
+      <ClassicJourneyShowcase items={items} />
       <section className={styles.serviceChoices} aria-labelledby="support-level-title">
         <div className={styles.serviceChoicesHead}>
           <div>
-            <p className={styles.eyebrow}>Begin where you are</p>
-            <h2 id="support-level-title">Choose your support.</h2>
+            <p className={styles.eyebrow}>LOCAL SERVICES</p>
+            <h2 id="support-level-title">Private Drivers &amp; Expert Guides in China.</h2>
           </div>
           <p>
-            Some travelers ask us to design every day. Others already have flights or hotels and
-            simply need the right vehicle, guide or private experience.
+            Already have your route, flights or hotels? Choose the local support you need and let
+            one China-based team handle the details around it.
           </p>
         </div>
-        <div className={styles.serviceChoiceGrid}>
-          {serviceCards.map((service) => (
-            <ServiceChoiceDialog key={service.eyebrow} service={service} onExplore={exploreService} />
-          ))}
+        <div className={styles.railFrame}>
+          <RailControls railId="local-services-rail" label="Local services" />
+          <div
+            className={`${styles.serviceChoiceGrid} ${styles.railTrack}`}
+            id="local-services-rail"
+            aria-label="Private drivers and expert guides"
+          >
+            {serviceCards
+              .filter((service) => !service.category)
+              .map((service) => (
+                <ServiceChoiceDialog
+                  key={service.eyebrow}
+                  service={service}
+                  onExplore={exploreService}
+                />
+              ))}
+          </div>
         </div>
         <div className={styles.existingPlans}>
           <span>Already arranged part of your trip?</span>
-          <strong>We can work around your confirmed flights, hotels, meetings and personal plans.</strong>
-          <Link href={whatsappHref("Hello AVIORA, I already have part of my China trip arranged and would like you to build around my existing plans.")} target="_blank" rel="noreferrer">
+          <strong>
+            We can work around your confirmed flights, hotels, meetings and personal plans.
+          </strong>
+          <Link
+            href={whatsappHref(
+              "Hello AVIORA, I already have part of my China trip arranged and would like you to build around my existing plans.",
+            )}
+            target="_blank"
+            rel="noreferrer"
+          >
             Build around my existing plans <MessageCircle size={15} aria-hidden="true" />
           </Link>
         </div>
       </section>
-      <SignatureShowcase items={items} />
-      <DayTourShowcase items={items} />
       <section className={styles.discovery} id="journey-discovery">
         <div className={styles.discoveryHead}>
           <div>
-            <p className={styles.eyebrow}>All private journeys & services</p>
-            <h2>Find the journey that feels like yours.</h2>
+            <p className={styles.eyebrow}>EXPLORE THE FULL CATALOGUE</p>
+            <h2>Find the China journey that feels like yours.</h2>
           </div>
           <p>
-            Search by destination, duration or travel style. Every published route is private and
-            can be tailored around you.
+            Use the filters when you already know your destination, timeframe or travel style. Every
+            published route is private and can be tailored around you.
           </p>
         </div>
         <div className={styles.journeyPaths} aria-label="Choose a journey collection">
@@ -547,10 +631,7 @@ export function JourneyEditorialGrid({
               <>
                 <div className={styles.grid}>
                   {results.slice(0, limit).map((item) => (
-                    <JourneyResult
-                      key={item.slug}
-                      item={item}
-                    />
+                    <JourneyResult key={item.slug} item={item} />
                   ))}
                 </div>
                 {limit < results.length ? (
@@ -724,7 +805,10 @@ function ServiceChoiceDialog({
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.serviceDialogOverlay} />
-        <Dialog.Content className={styles.serviceDialog} aria-describedby={`${service.eyebrow}-description`}>
+        <Dialog.Content
+          className={styles.serviceDialog}
+          aria-describedby={`${service.eyebrow}-description`}
+        >
           <div className={styles.serviceDialogTopline}>
             <span>{service.eyebrow}</span>
             <Dialog.Close className={styles.serviceDialogClose} aria-label="Close service details">
@@ -732,20 +816,33 @@ function ServiceChoiceDialog({
             </Dialog.Close>
           </div>
           <Dialog.Title className={styles.serviceDialogTitle}>{service.title}</Dialog.Title>
-          <Dialog.Description id={`${service.eyebrow}-description`} className={styles.serviceDialogDescription}>
+          <Dialog.Description
+            id={`${service.eyebrow}-description`}
+            className={styles.serviceDialogDescription}
+          >
             {service.description}
           </Dialog.Description>
           <div className={styles.serviceDialogColumns}>
             <div>
               <h3>What we can arrange</h3>
               <ul>
-                {service.includes.map((item) => <li key={item}><Check size={15} aria-hidden="true" />{item}</li>)}
+                {service.includes.map((item) => (
+                  <li key={item}>
+                    <Check size={15} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
               <h3>Our standard</h3>
               <ul>
-                {service.standards.map((item) => <li key={item}><Check size={15} aria-hidden="true" />{item}</li>)}
+                {service.standards.map((item) => (
+                  <li key={item}>
+                    <Check size={15} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -753,18 +850,31 @@ function ServiceChoiceDialog({
           <div className={styles.serviceDialogActions}>
             {service.category ? (
               <Dialog.Close asChild>
-                <button type="button" className={styles.serviceDialogAction} onClick={() => onExplore(service.category!)}>
+                <button
+                  type="button"
+                  className={styles.serviceDialogAction}
+                  onClick={() => onExplore(service.category!)}
+                >
                   {service.label} <ArrowUpRight size={15} aria-hidden="true" />
                 </button>
               </Dialog.Close>
             ) : (
-              <Link className={styles.serviceDialogAction} href={service.href!} target="_blank" rel="noreferrer">
+              <Link
+                className={styles.serviceDialogAction}
+                href={service.href!}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {service.label} <MessageCircle size={15} aria-hidden="true" />
               </Link>
             )}
-            <Dialog.Close className={styles.serviceDialogSecondary}>Continue exploring</Dialog.Close>
+            <Dialog.Close className={styles.serviceDialogSecondary}>
+              Continue exploring
+            </Dialog.Close>
           </div>
-          <p className={styles.serviceDialogTrust}>Private service · Clear communication · No obligation</p>
+          <p className={styles.serviceDialogTrust}>
+            Private service · Clear communication · No obligation
+          </p>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
@@ -779,30 +889,71 @@ function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
   if (!signatureItems.length) return null;
 
   return (
-    <section className={styles.signatureShowcase} id="multi-city-journeys" aria-labelledby="signature-collection-title">
+    <section
+      className={styles.signatureShowcase}
+      id="multi-city-journeys"
+      aria-labelledby="signature-collection-title"
+    >
       <div className={styles.signatureIntro}>
-        <p className={styles.eyebrow}>The AVIORA Signature Collection</p>
-        <h2 id="signature-collection-title">Journeys with a story.</h2>
-        <p>
-          Not simply longer or more expensive itineraries. These journeys are selected for the
-          strength of their story, the rarity of their private moments and the care required to
-          bring every chapter together.
-        </p>
-      </div>
-      <div className={styles.signatureGrid}>
-        {signatureItems.map((item, index) => (
-          <Link className={`${styles.signatureCard} ${index === 0 ? styles.signatureCardLead : ""}`} href={item.href} key={item.slug}>
-            <div className={styles.signatureCardImage}>
-              {item.visualStatus === "pending" ? <span>Signature photography being prepared</span> : <OptimizedImage src={item.image.src} alt={item.image.alt} fill sizes={index === 0 ? "(min-width: 900px) 50vw, 100vw" : "(min-width: 900px) 25vw, 50vw"} className="object-cover" />}
-            </div>
-            <div className={styles.signatureCardBody}>
-              <p>{item.commercialRoleLabel}</p>
-              <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
-              <strong>{item.title}</strong>
-              <span>{item.hook}</span>
-            </div>
+        <div>
+          <p className={styles.eyebrow}>SIGNATURE ROUTES</p>
+          <h2 id="signature-collection-title">Signature Private China Journeys</h2>
+        </div>
+        <div className={styles.railIntroAside}>
+          <p>
+            Longer, fully managed routes for travelers who want China&apos;s defining places
+            connected with more depth, better pacing and one accountable local team.
+          </p>
+          <Link href="#journey-discovery" className={styles.railViewAll}>
+            View all journeys <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
-        ))}
+        </div>
+      </div>
+      <div className={styles.railFrame}>
+        <RailControls railId="signature-journeys-rail" label="Signature private China journeys" />
+        <div
+          className={`${styles.signatureGrid} ${styles.railTrack}`}
+          id="signature-journeys-rail"
+          aria-label="Signature private China journeys"
+        >
+          {signatureItems.map((item, index) => (
+            <Link
+              className={`${styles.signatureCard} ${index === 0 ? styles.signatureCardLead : ""}`}
+              href={item.href}
+              key={item.slug}
+            >
+              <div className={styles.signatureCardImage}>
+                {item.visualStatus === "pending" ? (
+                  <span>Signature photography being prepared</span>
+                ) : (
+                  <OptimizedImage
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes={
+                      index === 0
+                        ? "(min-width: 900px) 50vw, 100vw"
+                        : "(min-width: 900px) 25vw, 50vw"
+                    }
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <div className={styles.signatureCardBody}>
+                <p>{item.commercialRoleLabel}</p>
+                <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
+                <strong>{item.title}</strong>
+                <span>{item.hook}</span>
+                <small className={styles.railCardTrust}>
+                  Private throughout · China-based team
+                </small>
+                <span className={styles.railCardAction}>
+                  View this journey <ArrowUpRight size={14} aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -813,32 +964,172 @@ function DayTourShowcase({ items }: { items: JourneyCatalogItem[] }) {
   if (!dayTours.length) return null;
 
   return (
-    <section className={styles.dayTourShowcase} id="private-day-tours" aria-labelledby="day-tour-title">
+    <section
+      className={styles.dayTourShowcase}
+      id="private-day-tours"
+      aria-labelledby="day-tour-title"
+    >
       <div className={styles.dayTourHead}>
         <div>
-          <p className={styles.eyebrow}>Private day tours</p>
-          <h2 id="day-tour-title">Private days, beautifully handled.</h2>
+          <p className={styles.eyebrow}>PRIVATE DAYS</p>
+          <h2 id="day-tour-title">Private China Day Tours</h2>
         </div>
-        <p>Clear, professionally operated private days for travelers who want one meaningful experience without managing every detail themselves.</p>
-      </div>
-      <div className={styles.dayTourGrid}>
-        {dayTours.map((item) => (
-          <Link className={styles.dayTourCard} href={item.href} key={item.slug}>
-            <div className={styles.dayTourCardImage}>
-              {item.visualStatus === "pending" ? <span>Photography being prepared</span> : <OptimizedImage src={item.image.src} alt={item.image.alt} fill sizes="(min-width: 900px) 20vw, 80vw" className="object-cover" />}
-            </div>
-            <div>
-              <p>{item.commercialRoleLabel}</p>
-              <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
-              <span>{item.durationLabel}</span>
-              <strong>From US${getPerPersonPrice(item).toLocaleString("en-US")} per person</strong>
-              <small>Based on 4 guests travelling privately</small>
-            </div>
+        <div>
+          <p>
+            One meaningful day, professionally handled from hotel pickup to return, with a private
+            guide and clear local coordination.
+          </p>
+          <Link href="#journey-discovery" className={styles.railViewAll}>
+            View all day tours <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
-        ))}
+        </div>
+      </div>
+      <div className={styles.railFrame}>
+        <RailControls railId="day-tours-rail" label="Private China day tours" />
+        <div
+          className={`${styles.dayTourGrid} ${styles.railTrack}`}
+          id="day-tours-rail"
+          aria-label="Private China day tours"
+        >
+          {dayTours.map((item) => (
+            <Link className={styles.dayTourCard} href={item.href} key={item.slug}>
+              <div className={styles.dayTourCardImage}>
+                {item.visualStatus === "pending" ? (
+                  <span>Photography being prepared</span>
+                ) : (
+                  <OptimizedImage
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes="(min-width: 900px) 20vw, 80vw"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <div>
+                <p>{item.commercialRoleLabel}</p>
+                <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
+                <span className={styles.railCardFormalTitle}>{item.title}</span>
+                <span>{item.durationLabel}</span>
+                <strong>
+                  Indicative starting price: US${getPerPersonPrice(item).toLocaleString("en-US")}{" "}
+                  per person
+                </strong>
+                <small>Based on 4 guests travelling privately</small>
+                <small className={styles.railCardTrust}>
+                  Private guide · Private vehicle · No compulsory shopping
+                </small>
+                <span className={styles.railCardAction}>
+                  Explore this private day <ArrowUpRight size={14} aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
+}
+
+function ClassicJourneyShowcase({ items }: { items: JourneyCatalogItem[] }) {
+  const classicJourneys = items
+    .filter((item) => item.commercialRole !== "signature" && !dayTourSlugs.has(item.slug))
+    .sort((a, b) => b.commercialPriority - a.commercialPriority);
+  if (!classicJourneys.length) return null;
+
+  return (
+    <section
+      className={styles.classicShowcase}
+      id="classic-china-journeys"
+      aria-labelledby="classic-journeys-title"
+    >
+      <div className={styles.classicShowcaseHead}>
+        <div>
+          <p className={styles.eyebrow}>CLASSIC CHINA ROUTES</p>
+          <h2 id="classic-journeys-title">Classic China Journeys</h2>
+        </div>
+        <div>
+          <p>
+            Well-loved China routes and focused regional journeys, privately operated with the same
+            clear planning and China-based support.
+          </p>
+          <Link href="#journey-discovery" className={styles.railViewAll}>
+            Compare every journey <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+      <div className={styles.railFrame}>
+        <RailControls railId="classic-china-journeys-rail" label="Classic China journeys" />
+        <div
+          className={`${styles.classicJourneyGrid} ${styles.railTrack}`}
+          id="classic-china-journeys-rail"
+          aria-label="Classic China journeys"
+        >
+          {classicJourneys.map((item) => (
+            <Link className={styles.classicJourneyCard} href={item.href} key={item.slug}>
+              <div className={styles.classicJourneyCardImage}>
+                {item.visualStatus === "pending" ? (
+                  <span>Photography being prepared</span>
+                ) : (
+                  <OptimizedImage
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes="(min-width: 900px) 20vw, 82vw"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <div className={styles.classicJourneyCardBody}>
+                <p>{item.commercialRoleLabel}</p>
+                <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
+                <span className={styles.railCardFormalTitle}>{item.title}</span>
+                <span className={styles.classicJourneyRoute}>{item.routeLabel}</span>
+                <span>{item.durationLabel}</span>
+                <strong>
+                  Indicative starting price: US${getPerPersonPrice(item).toLocaleString("en-US")}{" "}
+                  per person
+                </strong>
+                <small>Based on 4 guests travelling privately</small>
+                <small className={styles.railCardTrust}>
+                  Private throughout · China-based team
+                </small>
+                <span className={styles.railCardAction}>
+                  Explore this China journey <ArrowUpRight size={14} aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RailControls({ railId, label }: { railId: string; label: string }) {
+  return (
+    <div className={styles.railControls} aria-label={`${label} controls`}>
+      <span>Swipe to explore</span>
+      <div>
+        <button
+          type="button"
+          aria-label={`Previous ${label}`}
+          onClick={() => scrollRail(railId, -1)}
+        >
+          <ChevronLeft size={17} aria-hidden="true" />
+        </button>
+        <button type="button" aria-label={`Next ${label}`} onClick={() => scrollRail(railId, 1)}>
+          <ChevronRight size={17} aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function scrollRail(id: string, direction: number) {
+  const rail = document.getElementById(id);
+  if (!rail) return;
+  rail.scrollBy({ left: direction * Math.max(rail.clientWidth * 0.82, 280), behavior: "smooth" });
 }
 
 function MobileTools(props: {
@@ -1005,7 +1296,11 @@ function JourneyResult({ item }: { item: JourneyCatalogItem }) {
             <strong>US${getPerPersonPrice(item).toLocaleString("en-US")}</strong>
             <small>Based on 4 guests travelling privately</small>
           </div>
-          <Link className={styles.cardArrow} href={item.href} aria-label={`Explore ${displayTitle}`}>
+          <Link
+            className={styles.cardArrow}
+            href={item.href}
+            aria-label={`Explore ${displayTitle}`}
+          >
             <ArrowUpRight size={17} strokeWidth={1.8} aria-hidden="true" />
           </Link>
         </div>
@@ -1150,7 +1445,10 @@ function getInitialUrlState(queryString: string): {
   const category = params.get("category");
   return {
     query: params.get("q") ?? "",
-    category: category === "private-day-tours" || category === "complete-private-journeys" ? category : null,
+    category:
+      category === "private-day-tours" || category === "complete-private-journeys"
+        ? category
+        : null,
     filters: {
       commercialRoles: read("commercialRoles") as JourneyCommercialRoleId[],
       focus: read("focus") as JourneyFocusId[],

@@ -19,7 +19,7 @@ export async function JourneyDiscoveryPage({
   const path = "/tours";
   const name = "Private China Tours, Drivers & Expert Guides";
   const description =
-    "AVIORA provides complete private China journeys, private day tours, vehicle-and-driver service and expert private guides, all tailored around the way you want to travel.";
+    "AVIORA provides Signature private China journeys, classic China routes, private day tours, vehicle-and-driver service and expert private guides, all tailored around the way you want to travel.";
 
   return (
     <PageContainer>
@@ -58,6 +58,26 @@ export async function JourneyDiscoveryPage({
                   "@type": "Service",
                   name: "Complete private China journeys",
                   serviceType: "Tailor-made multi-city private travel",
+                  areaServed: "China",
+                  url: new URL("/tours", siteConfig.url).toString(),
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Classic China journeys",
+                  serviceType: "Private multi-day China routes and regional journeys",
+                  areaServed: "China",
+                  url: new URL("/tours#classic-china-journeys", siteConfig.url).toString(),
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Private China day tours",
+                  serviceType: "Professionally handled private day tours in China",
                   areaServed: "China",
                   url: new URL("/tours", siteConfig.url).toString(),
                 },
