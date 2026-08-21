@@ -7,6 +7,325 @@
   font-family: var(--font-body);
   margin-top: calc(0px - var(--site-nav-offset));
 }
+
+/* Editorial service and collection layers: restrained white canvas, dark type, fine rules. */
+.page {
+  --journey-ink: #202326;
+  --journey-muted: #6b7075;
+  --journey-line: #e4e7ea;
+  background: #fff;
+  color: var(--journey-ink);
+}
+
+.serviceAssurance {
+  background: #fff;
+  border-bottom: 1px solid var(--journey-line);
+}
+
+.serviceAssurance > div {
+  align-items: center;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  margin: 0 auto;
+  min-height: 3.9rem;
+  width: min(100% - 4rem, 82rem);
+}
+
+.serviceAssurance span,
+.serviceAssurance a {
+  align-items: center;
+  color: #34383c;
+  display: inline-flex;
+  font-size: 0.68rem;
+  font-weight: 650;
+  gap: 0.5rem;
+  line-height: 1.4;
+  padding: 0 1rem;
+}
+
+.serviceAssurance span + span,
+.serviceAssurance a {
+  border-left: 1px solid var(--journey-line);
+}
+
+.serviceAssurance span:first-child {
+  padding-left: 0;
+}
+
+.serviceAssurance a {
+  color: #202326;
+  justify-content: flex-end;
+  padding-right: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.serviceChoices,
+.signatureShowcase,
+.dayTourShowcase {
+  margin-inline: auto;
+  width: min(100% - 4rem, 82rem);
+}
+
+.serviceChoices {
+  padding: 3.75rem 0 3.5rem;
+}
+
+.serviceChoicesHead,
+.signatureIntro,
+.dayTourHead {
+  align-items: end;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr);
+}
+
+.serviceChoicesHead h2,
+.signatureIntro h2,
+.dayTourHead h2 {
+  color: #202326;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 2.8vw, 2.85rem);
+  font-weight: 500;
+  line-height: 1.06;
+  margin-top: 0.55rem;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.serviceChoicesHead > p,
+.signatureIntro > p:last-child,
+.dayTourHead > p {
+  color: #6b7075;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  max-width: 34rem;
+}
+
+.serviceChoiceGrid {
+  border-block: 1px solid var(--journey-line);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 2.25rem;
+}
+
+.serviceChoice {
+  display: flex;
+  flex-direction: column;
+  min-height: 17rem;
+  padding: 1.25rem 1.1rem 1.15rem;
+}
+
+.serviceChoice:first-child { padding-left: 0; }
+.serviceChoice:last-child { padding-right: 0; }
+.serviceChoice + .serviceChoice { border-left: 1px solid var(--journey-line); }
+.serviceChoice > p,
+.serviceChoice > strong,
+.serviceChoice > span { display: block; }
+
+.serviceChoice > p {
+  color: #6b7075;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.serviceChoice h3 {
+  color: #202326;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.45vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.12;
+  margin-top: 0.65rem;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.serviceChoice > strong {
+  color: #34383c;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin-top: 0.7rem;
+}
+
+.serviceChoice > span {
+  color: #6b7075;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  margin-top: 0.4rem;
+}
+
+.serviceChoice > a,
+.existingPlans > a,
+.signatureCardLink {
+  align-items: center;
+  color: #202326;
+  display: inline-flex;
+  font-size: 0.7rem;
+  font-weight: 700;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
+.existingPlans {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--journey-line);
+  display: grid;
+  gap: 0.25rem 1rem;
+  grid-template-columns: auto 1fr auto;
+  margin-top: 1.1rem;
+  padding: 0.85rem 1rem;
+}
+
+.existingPlans span,
+.existingPlans strong {
+  color: #263b4d;
+  font-size: 0.7rem;
+}
+
+.existingPlans span { color: #6b7075; }
+.existingPlans a { margin-top: 0; padding-top: 0; }
+
+.signatureShowcase {
+  background: #fff;
+  border-block: 1px solid var(--journey-line);
+  color: #202326;
+  padding: 3.25rem 0 3.5rem;
+}
+
+.signatureIntro h2,
+.signatureIntro > p:last-child,
+.signatureIntro .eyebrow { color: #202326; }
+.signatureIntro > p:last-child { color: #6b7075; }
+
+.signatureGrid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
+.signatureCard {
+  background: #fff;
+  border: 1px solid var(--journey-line);
+  color: #202326;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.signatureCard:hover { border-color: #202326; transform: translateY(-2px); }
+.signatureCardLead { grid-column: span 2; }
+
+.signatureCardImage {
+  aspect-ratio: 4 / 2.55;
+  background: #f7f7f7;
+  overflow: hidden;
+  position: relative;
+}
+
+.signatureCardImage span,
+.dayTourCardImage span {
+  align-items: center;
+  color: #89949d;
+  display: flex;
+  font-size: 0.66rem;
+  height: 100%;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.signatureCardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0.95rem 1rem 1rem;
+}
+
+.signatureCardBody p,
+.signatureCardBody strong,
+.signatureCardBody span { display: block; }
+.signatureCardBody p { color: #6b7075; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.signatureCardBody h3 {
+  color: #202326;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.45vw, 1.48rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 0.45rem;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+.signatureCardBody strong { color: #6b7075; font-size: 0.65rem; line-height: 1.35; margin-top: 0.55rem; }
+.signatureCardBody > span:not(.signatureCardLink) { color: #6b7075; font-size: 0.7rem; line-height: 1.45; margin-top: 0.35rem; }
+.signatureCardLink { color: #202326; padding-top: 0.85rem; }
+
+.dayTourShowcase { padding: 3.75rem 0 1rem; }
+.dayTourGrid { display: grid; gap: 0.9rem; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 2rem; }
+.dayTourCard { border: 1px solid var(--journey-line); color: #202326; display: flex; flex-direction: column; min-width: 0; transition: border-color 180ms ease, transform 180ms ease; }
+.dayTourCard:hover { border-color: #202326; transform: translateY(-2px); }
+.dayTourCardImage { aspect-ratio: 1 / 0.7; background: #f7f7f7; overflow: hidden; position: relative; }
+.dayTourCard > div:last-child { display: flex; flex: 1; flex-direction: column; padding: 0.85rem; }
+.dayTourCard p { color: #6b7075; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.dayTourCard h3 { color: #202326; font-family: var(--font-display); font-size: 1.18rem; font-weight: 500; line-height: 1.1; margin-top: 0.45rem; text-wrap: balance; }
+.dayTourCard span, .dayTourCard strong, .dayTourCard small { display: block; }
+.dayTourCard span { color: #6b7075; font-size: 0.64rem; margin-top: 0.55rem; }
+.dayTourCard strong { font-size: 0.72rem; margin-top: auto; padding-top: 0.9rem; }
+.dayTourCard small { color: #6b7075; font-size: 0.6rem; margin-top: 0.2rem; }
+
+.formalTitle { color: #6b7075; font-size: 0.66rem; line-height: 1.35; margin-top: 0.25rem; }
+.cardBody h3, .discoveryHead h2 { overflow-wrap: anywhere; white-space: normal; }
+.cardBody h3 { min-height: 2.35rem; }
+.price { background: #fff; border: 1px solid var(--journey-line); border-left: 2px solid #202326; border-radius: 12px; }
+.price strong { color: #202326; font-family: var(--font-body); font-size: 0.96rem; font-weight: 700; }
+.price span { color: #6b7075; }
+.view, .quote, .cardActions .view { background: #202326; border: 1px solid #202326; border-radius: 999px; color: #fff; }
+.view:hover, .quote:hover { background: #34383c; border-color: #34383c; }
+
+@media (max-width: 1000px) {
+  .serviceChoiceGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .serviceChoice:nth-child(3) { border-left: 0; border-top: 1px solid var(--journey-line); }
+  .serviceChoice:nth-child(4) { border-top: 1px solid var(--journey-line); }
+  .signatureGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dayTourGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .serviceAssurance > div { grid-template-columns: 1fr 1fr; min-height: 0; padding: 0.6rem 0; width: calc(100% - 2.25rem); }
+  .serviceAssurance span, .serviceAssurance a { border-left: 0; font-size: 0.6rem; min-height: 1.9rem; padding: 0; }
+  .serviceAssurance a { grid-column: 1 / -1; justify-content: flex-start; }
+  .serviceChoices, .signatureShowcase, .dayTourShowcase { width: calc(100% - 2.25rem); }
+  .serviceChoices { padding: 2.7rem 0 2.6rem; }
+  .serviceChoicesHead, .signatureIntro, .dayTourHead { display: block; }
+  .serviceChoicesHead h2, .signatureIntro h2, .dayTourHead h2 { font-size: 1.9rem; max-width: none; }
+  .serviceChoicesHead > p, .dayTourHead > p, .signatureIntro > p:last-child { margin-top: 0.8rem; }
+  .serviceChoiceGrid { display: block; margin-top: 1.4rem; }
+  .serviceChoice, .serviceChoice:first-child, .serviceChoice:last-child { min-height: 0; padding: 1.1rem 0; }
+  .serviceChoice + .serviceChoice, .serviceChoice:nth-child(3), .serviceChoice:nth-child(4) { border-left: 0; border-top: 1px solid var(--journey-line); }
+  .existingPlans { align-items: start; display: flex; flex-direction: column; padding: 0.9rem; }
+  .existingPlans a { margin-top: 0.55rem; }
+  .signatureShowcase { padding: 2.3rem 0 2.6rem; }
+  .signatureGrid, .dayTourGrid { display: grid; grid-template-columns: 1fr; }
+  .signatureCardLead { grid-column: auto; }
+  .signatureCardImage { aspect-ratio: 16 / 9; }
+  .dayTourGrid { margin-top: 1.5rem; }
+  .dayTourCard { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); }
+  .dayTourCardImage { aspect-ratio: auto; min-height: 100%; }
+  .dayTourCard > div:last-child { padding: 0.75rem; }
+  .dayTourCard h3 { font-size: 1.08rem; }
+  .formalTitle { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .cardBody h3 { min-height: 0; }
+}
 .hero {
   position: relative;
   min-height: clamp(32rem, 60svh, 42rem);
@@ -612,6 +931,31 @@
     opacity: 1;
     transform: translateX(-50%) scaleX(1);
   }
+}
+
+.photoStagePending {
+  background: #f7f7f7 !important;
+}
+
+.photoStagePending .pendingPhotoLink {
+  align-items: center;
+  justify-content: center;
+  padding: 2.25rem 1rem 1rem;
+  text-align: center;
+}
+
+.photoStagePending .pendingPhotoLink::before {
+  display: none;
+}
+
+.photoStagePending .pendingPhotoLink span {
+  color: #737a80;
+  font-size: 0.64rem;
+}
+
+.photoStagePending .pendingPhotoLink small {
+  color: #9aa0a5;
+  font-size: 0.58rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1694,3 +2038,836 @@
     line-height: 1.5;
   }
 }
+
+/* Final visual overrides keep the collection quiet and white after responsive base rules. */
+.page { --journey-ink: #202326; --journey-muted: #6b7075; --journey-line: #e4e7ea; background: #fff; color: #202326; }
+.serviceChoices, .signatureShowcase, .dayTourShowcase { background: #fff; color: #202326; }
+.signatureShowcase { border-block: 1px solid #e4e7ea; padding: 3.25rem 0 3.5rem; }
+.signatureShowcase h2, .serviceChoices h2, .dayTourShowcase h2 { font-size: clamp(2rem, 2.8vw, 2.85rem); max-width: 20ch; }
+.signatureGrid { margin-top: 2rem; }
+.signatureCard { background: #fff; border: 1px solid #e4e7ea; color: #202326; }
+.signatureCard:hover, .dayTourCard:hover { border-color: #202326; }
+.signatureCardImage, .dayTourCardImage { background: #f7f7f7; }
+.signatureCardBody h3, .dayTourCard h3 { color: #202326; font-size: clamp(1.15rem, 1.45vw, 1.48rem); max-width: 18ch; }
+.signatureCardBody p, .signatureCardBody strong, .signatureCardBody > span:not(.signatureCardLink), .signatureCardLink,
+.dayTourCard p, .dayTourCard span, .dayTourCard small { color: #6b7075; }
+.signatureCardLink { color: #202326; }
+.serviceChoiceGrid { margin-top: 2.25rem; }
+.serviceChoice { min-height: 17rem; }
+.serviceChoice h3 { color: #202326; font-size: clamp(1.25rem, 1.45vw, 1.55rem); max-width: 16ch; }
+.serviceChoice > p, .serviceChoice > strong { color: #34383c; }
+.serviceChoice > span, .serviceChoicesHead > p, .dayTourHead > p, .signatureIntro > p:last-child { color: #6b7075; }
+.existingPlans { background: #fff; border-color: #e4e7ea; }
+.price { background: #fff; border-color: #e4e7ea; border-left-color: #202326; }
+.view, .quote, .cardActions .view { background: #202326; border-color: #202326; }
+.view:hover, .quote:hover { background: #34383c; border-color: #34383c; }
+
+@media (max-width: 640px) {
+  .signatureShowcase { padding: 2.3rem 0 2.6rem; }
+  .signatureShowcase h2, .serviceChoices h2, .dayTourShowcase h2 { font-size: 1.9rem; max-width: none; }
+  .serviceChoice { min-height: 0; }
+}
+
+/* Glass states: selection and motion use translucent white only. */
+.journeyPaths button[aria-pressed="true"],
+.filterGroup label:has(input:checked),
+.luxuryEntry,
+.decisionAssist,
+.search,
+.mobileTools > button,
+.sortMenu,
+.sortOption[data-highlighted],
+.noResults button,
+.loadMore {
+  background: rgba(255, 255, 255, 0.68);
+  border-color: rgba(210, 216, 220, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 12px 30px rgba(32, 35, 38, 0.08);
+  backdrop-filter: blur(18px) saturate(115%);
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+}
+
+.journeyPaths button[aria-pressed="true"] {
+  color: #202326;
+}
+
+.filterGroup label:has(input:checked) {
+  color: #202326;
+}
+
+.filterGroup input:checked {
+  background: #202326;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+.profileService,
+.profileServiceIntroduction > a,
+.existingPlans,
+.decisionAssist > a,
+.sheet,
+.sheetHead,
+.sheetFoot,
+.mobileSearchSheet,
+.mobileSearchField,
+.mobileSearchFoot button {
+  background: #fff;
+  color: #202326;
+}
+
+.profileServiceIntroduction > a,
+.sheetFoot button,
+.mobileSearchFoot button {
+  background: #202326;
+  border-color: #202326;
+  color: #fff;
+}
+
+.profileServiceList svg,
+.profileServiceConfirmation svg,
+.catalogAssurance svg,
+.journeyPaths button span,
+.luxuryEntry span,
+.decisionAssist span,
+.cardMeta p,
+.cardMeta > span,
+.card dt,
+.card dl div:last-child {
+  color: #6b7075;
+}
+
+.cardMeta > span,
+.card dl div:first-child dt {
+  color: #34383c;
+}
+
+.serviceAssurance {
+  background: #fff;
+}
+
+/* Keep editorial cards content-led; links must not be pushed to the bottom of a tall row. */
+.signatureCardBody {
+  flex: none;
+}
+
+.signatureCardLink {
+  margin-top: 0.85rem;
+  padding-top: 0;
+}
+
+/* Liquid Glass itinerary cards — neutral AVIORA palette. */
+.discovery {
+  position: relative;
+  isolation: isolate;
+}
+
+.discovery::before {
+  position: absolute;
+  z-index: -1;
+  inset: 8rem -10rem auto;
+  height: 34rem;
+  background:
+    radial-gradient(circle at 16% 34%, rgba(228, 231, 233, 0.48), transparent 32%),
+    radial-gradient(circle at 78% 18%, rgba(242, 242, 240, 0.68), transparent 30%),
+    radial-gradient(circle at 52% 86%, rgba(220, 224, 226, 0.34), transparent 34%);
+  content: "";
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 20px 40px -12px rgba(0, 0, 0, 0.14);
+  -webkit-backdrop-filter: blur(24px) saturate(1.25);
+  backdrop-filter: blur(24px) saturate(1.25);
+  transition: transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 450ms ease, background 300ms ease;
+}
+
+.card::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 12%;
+  left: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  border-radius: 999px;
+  content: "";
+  pointer-events: none;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 26px 50px -14px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+}
+
+.photoStage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 10px 10px 0;
+  border-radius: 20px;
+  background: #f5f6f6;
+}
+
+.photoStage img {
+  border-radius: 20px;
+  transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover .photoStage img {
+  transform: scale(1.06);
+}
+
+.photoDuration {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  color: #202326;
+  font-size: 0.62rem;
+  font-weight: 700;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.cardBody {
+  padding: 1.1rem 1.1rem 1.15rem;
+}
+
+.cardMeta > span,
+.cardMeta p {
+  color: #555b60;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.cardBody h3 {
+  color: #1d1d1f;
+  font-family: var(--font-body);
+  font-size: 1.06rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.22;
+  min-height: 2.6rem;
+  margin-top: 0.5rem;
+}
+
+.formalTitle {
+  color: rgba(29, 29, 31, 0.58);
+  font-size: 0.65rem;
+  line-height: 1.35;
+  margin-top: 0.35rem;
+}
+
+.cardBody > span {
+  color: rgba(29, 29, 31, 0.72);
+  font-size: 0.72rem;
+  line-height: 1.55;
+  margin-top: 0.6rem;
+}
+
+.moments {
+  margin-top: 0.7rem;
+}
+
+.moments li {
+  color: rgba(29, 29, 31, 0.62);
+  font-size: 0.65rem;
+}
+
+.moments svg {
+  color: #555b60;
+}
+
+.price,
+.cardActions {
+  display: none;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cardFooterPrice {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.cardFooterPrice span,
+.cardFooterPrice small {
+  color: rgba(29, 29, 31, 0.56);
+  font-size: 0.58rem;
+  line-height: 1.3;
+}
+
+.cardFooterPrice strong {
+  color: #1d1d1f;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.cardArrow {
+  display: grid;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 5px 12px rgba(0, 0, 0, 0.08);
+  color: #1d1d1f;
+  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1), background 250ms ease, color 250ms ease;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.cardArrow:hover,
+.card:hover .cardArrow {
+  background: #1d1d1f;
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+.cardProposal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0 1.1rem 1.1rem;
+  color: #4f555a;
+  font-size: 0.64rem;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
+.cardProposal:hover {
+  color: #1d1d1f;
+}
+
+/* Apply the same liquid-glass language to curated Signature and day-tour cards. */
+.signatureGrid,
+.dayTourGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.signatureCardLead {
+  grid-column: auto;
+}
+
+.signatureCard,
+.dayTourCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 20px 40px -12px rgba(0, 0, 0, 0.14);
+  -webkit-backdrop-filter: blur(24px) saturate(1.25);
+  backdrop-filter: blur(24px) saturate(1.25);
+  transition: transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 450ms ease, background 300ms ease;
+}
+
+.signatureCard::before,
+.dayTourCard::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 12%;
+  left: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.signatureCard:hover,
+.dayTourCard:hover {
+  border-color: rgba(210, 216, 220, 0.95);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 26px 50px -14px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+}
+
+.signatureCardImage,
+.dayTourCardImage {
+  aspect-ratio: 4 / 3;
+  margin: 10px 10px 0;
+  border-radius: 20px;
+  background: #f5f6f6;
+}
+
+.signatureCardImage img,
+.dayTourCardImage img {
+  border-radius: 20px;
+  transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.signatureCard:hover .signatureCardImage img,
+.dayTourCard:hover .dayTourCardImage img {
+  transform: scale(1.06);
+}
+
+.signatureCardBody,
+.dayTourCard > div:last-child {
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.signatureCardBody h3,
+.dayTourCard h3 {
+  color: #1d1d1f;
+  font-family: var(--font-body);
+  font-size: 1.06rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.22;
+  max-width: none;
+  min-height: 2.6rem;
+}
+
+.signatureCardBody strong,
+.signatureCardBody > span:not(.signatureCardLink),
+.dayTourCard span,
+.dayTourCard small {
+  color: rgba(29, 29, 31, 0.62);
+}
+
+.signatureCardLink {
+  color: #4f555a;
+  margin-top: 0.8rem;
+  padding-top: 0;
+}
+
+@media (max-width: 1100px) {
+  .signatureGrid,
+  .dayTourGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .signatureGrid,
+  .dayTourGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .signatureCard,
+  .dayTourCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
+  }
+  .signatureCardImage,
+  .dayTourCardImage {
+    margin: 8px 8px 0;
+    border-radius: 17px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1100px) {
+  .card { border-radius: 24px; }
+}
+
+@media (max-width: 640px) {
+  .card { border-radius: 22px; }
+  .photoStage { margin: 8px 8px 0; border-radius: 17px; }
+  .photoStage img { border-radius: 17px; }
+  .photoDuration { top: 8px; left: 8px; }
+  .cardBody { padding: 0.95rem 0.95rem 1rem; }
+  .cardProposal { margin: 0 0.95rem 0.95rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .cardArrow, .photoStage img { transition: none; }
+}
+
+/* Final catalogue fit: three comfortable columns, no duplicate legacy price panel. */
+@media (min-width: 901px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    min-width: 0;
+  }
+
+  .photoStage {
+    aspect-ratio: 16 / 9;
+  }
+
+  .cardBody,
+  .cardBody > a {
+    min-width: 0;
+  }
+
+  .cardBody > a {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .cardBody h3 {
+    display: -webkit-box;
+    max-width: 100%;
+    min-height: 2.55rem;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .formalTitle {
+    display: -webkit-box;
+    max-width: 100%;
+    max-height: 1.2rem;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .cardBody > span {
+    display: -webkit-box;
+    max-width: 100%;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .moments li:nth-child(n + 2) {
+    display: none;
+  }
+
+  .price,
+  .cardActions {
+    display: none !important;
+  }
+}
+
+.signatureGrid,
+.dayTourGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  .grid,
+  .signatureGrid,
+  .dayTourGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid,
+  .signatureGrid,
+  .dayTourGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .price,
+  .cardActions {
+    display: none !important;
+  }
+
+  .cardBody > a {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .cardBody h3 {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Product catalogue cards: four-column editorial grid on desktop. */
+@media (min-width: 1101px) {
+  .results {
+    max-width: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.35rem;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    min-height: 100%;
+    overflow: hidden;
+    border: 1px solid #e4e7ea;
+    border-radius: 18px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 10px 28px rgba(32, 35, 38, 0.055);
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 320ms ease, border-color 220ms ease;
+  }
+
+  .card::after {
+    display: none;
+  }
+
+  .card:hover {
+    border-color: rgba(32, 35, 38, 0.32);
+    box-shadow: 0 18px 42px rgba(32, 35, 38, 0.12);
+    transform: translateY(-5px);
+  }
+
+  .photoStage {
+    aspect-ratio: 4 / 2.75;
+    border-radius: 0;
+    isolation: isolate;
+  }
+
+  .photoStage::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 32%, rgba(255, 255, 255, 0.28) 50%, transparent 68%);
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-110%);
+    transition: opacity 200ms ease, transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1;
+  }
+
+  .card:hover .photoStage::after {
+    opacity: 1;
+    transform: translateX(110%);
+  }
+
+  .photoStage img {
+    transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 350ms ease;
+  }
+
+  .card:hover .photoStage img {
+    filter: saturate(0.92) contrast(1.02);
+    transform: scale(1.045);
+  }
+
+  .photoStagePending {
+    background: #f7f7f7;
+  }
+
+  .pendingPhotoLink {
+    color: #6b7075;
+    justify-content: center;
+    padding: 1.1rem;
+  }
+
+  .pendingPhotoLink::before {
+    background: #c9ced2;
+    margin: 0 auto 0.6rem;
+  }
+
+  .pendingPhotoLink small {
+    color: #8b9297;
+  }
+
+  .cardBody {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    padding: 1rem 1rem 1.05rem;
+  }
+
+  .cardMeta {
+    gap: 0.35rem;
+  }
+
+  .cardMeta p {
+    border: 0;
+    color: #6b7075;
+    font-size: 0.6rem;
+    padding: 0;
+  }
+
+  .cardMeta > span {
+    color: #34383c;
+    font-size: 0.58rem;
+  }
+
+  .cardBody h3 {
+    color: #202326;
+    display: -webkit-box;
+    font-size: 1.34rem;
+    line-height: 1.1;
+    margin-top: 0.52rem;
+    min-height: 2.95rem;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .formalTitle {
+    display: -webkit-box;
+    max-height: 2.2rem;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .cardBody > span {
+    -webkit-line-clamp: 2;
+    font-size: 0.72rem;
+    line-height: 1.48;
+    margin-top: 0.58rem;
+  }
+
+  .moments {
+    gap: 0.25rem;
+    margin-top: 0.7rem;
+  }
+
+  .moments li {
+    color: #4f565b;
+    font-size: 0.66rem;
+    line-height: 1.35;
+  }
+
+  .moments li:nth-child(n + 3) {
+    display: none;
+  }
+
+  .moments svg {
+    color: #6b7075;
+    height: 0.75rem;
+    width: 0.75rem;
+  }
+
+  .price {
+    align-items: start;
+    display: grid;
+    gap: 0.2rem;
+    margin-top: 0.8rem;
+    padding: 0.72rem 0.75rem;
+  }
+
+  .price strong {
+    font-size: 0.88rem;
+    line-height: 1.2;
+  }
+
+  .price span {
+    font-size: 0.61rem;
+    line-height: 1.35;
+  }
+
+  .match,
+  .card dl {
+    display: none;
+  }
+
+  .cardActions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.9rem;
+  }
+
+  .view,
+  .quote {
+    justify-content: center;
+    min-height: 2.25rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.68rem;
+  }
+
+  .view {
+    background: #202326;
+    border-color: #202326;
+    color: #fff;
+  }
+
+  .quote {
+    background: rgba(255, 255, 255, 0.62);
+    border-color: #d8dde0;
+    box-shadow: inset 0 1px 0 #fff, 0 5px 15px rgba(32, 35, 38, 0.06);
+    color: #202326;
+  }
+
+  .view:hover,
+  .quote:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #202326;
+    color: #202326;
+    transform: translateY(-1px);
+  }
+
+  .view:hover {
+    background: #34383c;
+    color: #fff;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid #e4e7ea;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .photoStage {
+    border-radius: 0;
+  }
+
+  .cardBody {
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .photoStage::after,
+  .photoStage img {
+    transition: none;
+  }
+}
+
+/* Final contract: three cards per desktop row. */
+@media (min-width: 1101px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 22px; }
+  .signatureGrid, .dayTourGrid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 22px; }
+  .card { border-radius: 28px; }
+  .photoStage { aspect-ratio: 16 / 9; border-radius: 20px; margin: 10px 10px 0; }
+  .photoStage img { border-radius: 20px; }
+  .cardBody h3 { max-width: 100%; overflow: hidden; overflow-wrap: anywhere; text-overflow: ellipsis; }
+  .price, .cardActions { display: none !important; }
+}
+
+.cardBody > a { min-width: 0; }
+.cardBody h3 { max-width: 100%; overflow-wrap: anywhere; }
+.photoStagePending { background: #f7f7f7 !important; }

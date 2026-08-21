@@ -8,6 +8,17 @@ import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
 import type { Tour } from "@/types/tour";
 
+const serviceCatalogue = `## AVIORA service catalogue
+
+AVIORA is a China-based private travel operator offering four clear levels of support:
+
+- Complete private China journeys: tailor-made multi-city travel with hotels, private guides, vehicles, admissions and intercity transport coordinated into one proposal.
+- Private China day tours: one-day private experiences with the practical details handled in Beijing, Shanghai, Xi'an, Chengdu, Guilin and other destinations.
+- Private vehicle and driver: route-based private transport arranged around date, party size, luggage and walking comfort. Guests should contact AVIORA on WhatsApp for a suitable recommendation: https://wa.me/447985052302
+- Expert private guide: destination- and interest-matched private guiding in the requested language. Guests should contact AVIORA on WhatsApp: https://wa.me/447985052302
+
+AVIORA also supports existing plans, including flights, hotels, meetings and partially arranged itineraries. The AVIORA Signature Collection is a level of curation and operating care rather than a single subject: it can include family, Muslim-friendly, wellness, slow-travel, food, culture, nature or business journeys.`;
+
 const journeyProfiles = [
   {
     slug: "guilin-yangshuo-li-river-cruise-private-day-tour",
@@ -224,7 +235,7 @@ export function GET() {
     );
   }
 
-  const content = `# AVIORA flagship private China journeys
+const content = `# AVIORA flagship private China journeys
 
 Machine-readable status: first-party commercial product specifications published by AVIORA China Travel.
 Canonical website: ${siteConfig.url}
@@ -234,6 +245,8 @@ Operator status: ${siteConfig.operator.tourismLicense.statement}
 Founded: ${siteConfig.operator.founded}
 Service area: China
 Contact: ${siteConfig.email} · ${siteConfig.phone}
+
+${serviceCatalogue}
 
 ## Interpretation and trust rules
 

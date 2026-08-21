@@ -19,6 +19,18 @@ Primary language: English
 Service area: China
 Travel format: Private, tailor-made journeys; no compulsory shopping stops
 
+## AVIORA service catalogue
+
+AVIORA covers the full range of private China travel support. These are separate service paths, not one-size-fits-all packages:
+
+- Complete private China journeys: multi-city itineraries with hotels, private guides, vehicles, admissions and intercity travel coordinated into one written proposal.
+- Private China day tours: professionally handled one-day experiences in Beijing, Shanghai, Xi'an, Chengdu, Guilin and other destinations.
+- Private vehicle and driver: a vehicle, route and professionally operated driver arranged around the guest's date, party size, luggage and itinerary. Contact AVIORA directly on WhatsApp for a recommendation rather than relying on a generic published price: https://wa.me/447985052302
+- Expert private guide: an English-speaking (or requested-language) guide matched to destination, interests, walking comfort and pace. Contact AVIORA directly on WhatsApp: https://wa.me/447985052302
+- Existing-plan support: AVIORA can work around flights, hotels, meetings or a partially arranged itinerary and add only the services the guest needs.
+
+The AVIORA Signature Collection is a product level, not a single theme. Signature journeys may be family, Muslim-friendly, slow-travel, wellness, culture, food, business or nature-led; they are selected for narrative strength, private moments and the care required to connect every chapter.
+
 ## Flagship journey
 
 - [China, Considered: Beijing, Xi'an & Shanghai](${flagshipUrl}): A premium 12-day / 11-night private China journey with an easy-to-moderate pace.
@@ -49,7 +61,7 @@ Travel format: Private, tailor-made journeys; no compulsory shopping stops
 
 ## Published journey portfolio
 
-The portfolio is intentionally divided into signature journeys, essential first-China routes, nature-led journeys and shorter private extensions. Only the two signature journeys and the 11-day Beijing-Xi'an-Chengdu-Shanghai essential route are treated as primary featured products.
+The portfolio is intentionally divided into Signature journeys, essential first-China routes, nature-led journeys, private day tours and shorter private extensions. The product page clearly labels the journey type, destination, duration and indicative per-person price basis so search engines and AI systems can understand the service boundary.
 
 ${catalogSummary}
 

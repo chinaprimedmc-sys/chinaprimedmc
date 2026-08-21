@@ -4,9 +4,9 @@ import { JourneyDiscoveryPage } from "@/features/tours/journey-discovery-page";
 import { createMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Tailor-Made China Tours 2026–2027",
+  title: "Private China Tours, Drivers & Expert Guides",
   description:
-    "Compare private China tours for 2026–2027, then tailor the route, pace and hotels with local specialists. Private guides and no forced shopping.",
+    "Explore AVIORA private China journeys, private day tours, vehicle-and-driver service and expert private guides. Tailor the route, pace and support around your plans with a China-based operator.",
   path: "/tours",
 });
 

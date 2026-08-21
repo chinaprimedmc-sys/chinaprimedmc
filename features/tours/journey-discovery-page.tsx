@@ -17,9 +17,9 @@ export async function JourneyDiscoveryPage({
   const settings = await getPublicSiteSettings();
   const catalog = journeyCatalog;
   const path = "/tours";
-  const name = "Private China Tours, Tailor-Made Around You";
+  const name = "Private China Tours, Drivers & Expert Guides";
   const description =
-    "Tailor-made private China tours for 2026 and 2027 with private guides, transfers and China-based support.";
+    "AVIORA provides complete private China journeys, private day tours, vehicle-and-driver service and expert private guides, all tailored around the way you want to travel.";
 
   return (
     <PageContainer>
@@ -47,6 +47,42 @@ export async function JourneyDiscoveryPage({
                 url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
               },
             })),
+          },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "AVIORA private China travel services",
+            itemListElement: [
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Complete private China journeys",
+                  serviceType: "Tailor-made multi-city private travel",
+                  areaServed: "China",
+                  url: new URL("/tours", siteConfig.url).toString(),
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Private vehicle and driver service in China",
+                  serviceType: "Private vehicle with professional driver",
+                  areaServed: "China",
+                  url: new URL("/tours", siteConfig.url).toString(),
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Expert private guide service in China",
+                  serviceType: "English-speaking private guide",
+                  areaServed: "China",
+                  url: new URL("/tours", siteConfig.url).toString(),
+                },
+              },
+            ],
           },
         }}
       />

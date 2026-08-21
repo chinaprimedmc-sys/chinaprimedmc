@@ -59,6 +59,40 @@
   --motion-image: 480ms;
 }
 
+/* AVIORA Journeys: WhatsApp remains available, but its visual treatment is neutral glass. */
+.site-navigation__help-icon,
+.site-navigation__mobile-help,
+.mobile-navigation-whatsapp,
+.social-contact-rail__concierge-icon {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(210, 216, 220, 0.85) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 8px 22px rgba(32, 35, 38, 0.1) !important;
+  color: #202326 !important;
+  backdrop-filter: blur(18px) saturate(115%);
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+}
+
+.site-navigation__help-icon svg,
+.site-navigation__mobile-help-icon svg,
+.social-contact-rail__concierge-icon svg {
+  color: #202326 !important;
+  filter: grayscale(1) contrast(1.1);
+}
+
+.mobile-navigation-whatsapp:hover,
+.mobile-navigation-whatsapp:focus-visible,
+.site-navigation__mobile-help:hover,
+.site-navigation__mobile-help:focus-visible,
+.site-navigation__help-link:hover .site-navigation__help-icon,
+.site-navigation__help-link:focus-visible .site-navigation__help-icon,
+.social-contact-rail__concierge:hover .social-contact-rail__concierge-icon,
+.social-contact-rail__concierge:focus-visible .social-contact-rail__concierge-icon {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(170, 178, 184, 0.9) !important;
+  box-shadow: inset 0 1px 0 #fff, 0 10px 26px rgba(32, 35, 38, 0.14) !important;
+  color: #202326 !important;
+}
+
 @media (max-width: 767px) {
   html {
     font-size: 15px;
