@@ -3100,17 +3100,28 @@
 /* Premium mobile composition: shorter type scale, tighter rhythm, quieter CTAs. */
 @media (max-width: 640px) {
   .serviceAssurance > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     min-height: 0;
     padding: 0.45rem 0;
   }
 
   .serviceAssurance span,
   .serviceAssurance a {
+    align-items: center;
     font-size: 0.54rem;
     line-height: 1.25;
+    min-height: 2.2rem;
+    padding: 0.42rem 0.55rem;
+  }
+
+  .serviceAssurance span:nth-child(3),
+  .serviceAssurance a {
+    border-top: 1px solid var(--journey-line);
   }
 
   .serviceAssurance a {
+    grid-column: auto;
+    justify-content: flex-start;
     font-size: 0.58rem;
   }
 
