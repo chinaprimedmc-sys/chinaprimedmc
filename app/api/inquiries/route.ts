@@ -35,7 +35,7 @@ export async function POST(request: Request) {
 
   try {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-    const contact = parsed.data.email || parsed.data.whatsapp || parsed.data.phone;
+    const contact = parsed.data.email || parsed.data.whatsapp;
     stage = "turnstile";
     if (
       !(await verifyTurnstileToken(parsed.data.turnstileToken, ip, new URL(request.url).hostname))

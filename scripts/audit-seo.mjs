@@ -23,6 +23,11 @@ for (const canonicalUrl of sitemapUrls) {
   const response = await fetch(new URL(canonical.pathname, baseUrl), { redirect: "manual" });
   const html = await response.text();
 
+  if (!response.headers.get("content-type")?.includes("text/html")) {
+    if (response.status !== 200) issues.push(`${canonicalUrl}: HTTP ${response.status}`);
+    continue;
+  }
+
   const title = html.match(/<title>([^<]*)<\/title>/i)?.[1]?.trim() || "";
   const description = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || "";
   const siteName =
@@ -38,7 +43,15 @@ for (const canonicalUrl of sitemapUrls) {
   const contentText = canonical.pathname.startsWith("/journal/")
     ? bodyText + " " + extractNextFlightText(html)
     : bodyText;
-  pages.push({ canonicalUrl, title, description, siteName, imageCount, missingAltCount, contentText });
+  pages.push({
+    canonicalUrl,
+    title,
+    description,
+    siteName,
+    imageCount,
+    missingAltCount,
+    contentText,
+  });
 
   if (response.status !== 200) issues.push(`${canonicalUrl}: HTTP ${response.status}`);
   checkTag(html, /<title>[^<]+<\/title>/i, canonicalUrl, "title");

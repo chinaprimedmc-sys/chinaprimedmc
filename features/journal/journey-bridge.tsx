@@ -1,9 +1,8 @@
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { OptimizedImage } from "@/components/media/optimized-image";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
-import { CtaButton } from "@/components/cta";
+import { CtaButton, TrackedLink } from "@/components/cta";
 import styles from "./journey-bridge.module.css";
 
 type JourneyBridgeData = {
@@ -23,12 +22,19 @@ export function JournalJourneyPrompt() {
     <aside className={styles.prompt} aria-label="Private journey planning">
       <span className={styles.promptLine} aria-hidden="true" />
       <div>
-        <p>Planning this as a private journey?</p>
-        <span>See how AVIORA arranges the route, pacing and local support around this advice.</span>
+        <p>Want to see how this pacing works across a complete journey?</p>
+        <span>
+          The 12-day route separates the heavier days and protects the time that makes China
+          enjoyable.
+        </span>
       </div>
-      <Link href="#related-tours">
-        See the route <ArrowUpRight size={15} aria-hidden="true" />
-      </Link>
+      <TrackedLink
+        href="#related-tours"
+        trackingLabel="Explore the 12-day journey"
+        trackingPlacement="journal-testimonial-prompt"
+      >
+        Explore the 12-day journey <ArrowUpRight size={15} aria-hidden="true" />
+      </TrackedLink>
     </aside>
   );
 }
@@ -94,19 +100,20 @@ export function JournalJourneyBridge({ bridge }: { bridge: JourneyBridgeData }) 
               data-cta-placement="journal-primary-journey"
               data-journey-slug={journey.slug}
             >
-              View Journey
+              {bridge.journeyLabel}
             </CtaButton>
-            <Link
-              href={bridge.advisorHref}
-              target="_blank"
-              rel="noreferrer"
+            <TrackedLink
+              href={bridge.planningHref}
               className={styles.planningLink}
+              trackingLabel={bridge.planningLabel}
+              trackingPlacement="journal-plan-journey"
+              journeySlug={journey.slug}
               data-cta-placement="journal-plan-journey"
               data-journey-slug={journey.slug}
             >
-              Ask AVIORA
+              {bridge.planningLabel}
               <ArrowUpRight size={15} aria-hidden="true" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </div>

@@ -70,7 +70,7 @@ export function DestinationExplorer({
             {content.heroCopy}
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-5">
-            <CtaButton href="/start-planning?source=destinations">Start planning</CtaButton>
+            <CtaButton href="/start-planning?source=destinations">Plan My Trip</CtaButton>
             <a
               href="#all-destinations"
               className="group inline-flex items-center gap-2 text-sm font-semibold"

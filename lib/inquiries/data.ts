@@ -17,21 +17,20 @@ export type InquiryRecord = {
   gclid: string | null;
   viewed_journeys: string[];
   journey_slug: string | null;
-  traveler_type: string;
-  adults: number;
-  children: number;
-  traveling_with_seniors: boolean;
-  travel_timing: string | null;
-  trip_duration: string | null;
+  traveler_type: string | null;
+  adults: number | null;
+  children: number | null;
+  includes_older_travelers: boolean;
+  travel_window: string | null;
+  trip_length: string | null;
   destinations: string[];
-  budget_tier: string;
-  travel_styles: string[];
-  preferred_contact_methods: string[];
+  comfort_level: string | null;
+  journey_styles: string[];
   name: string;
   email: string | null;
   whatsapp: string | null;
-  phone: string | null;
   notes: string | null;
+  updated_at: string;
 };
 
 export function getAdminInquiries() {

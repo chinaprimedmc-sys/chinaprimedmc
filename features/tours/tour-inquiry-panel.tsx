@@ -31,7 +31,7 @@ export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) 
             data-cta-placement="inquiry-panel"
             data-journey-slug={tour.slug}
           >
-            Request a Private Proposal
+            Plan My Trip
           </CtaButton>
           <div className="grid gap-3 sm:grid-cols-2">
             <CtaButton
@@ -44,7 +44,7 @@ export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) 
               data-journey-slug={tour.slug}
             >
               <WhatsAppIcon className="size-[19px] shrink-0" />
-              <span>Chat on WhatsApp</span>
+              <span>Message Our China Team</span>
             </CtaButton>
             <CtaButton
               href={tour.inquiry.emailHref}
@@ -54,7 +54,7 @@ export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) 
               data-cta-placement="inquiry-email"
               data-journey-slug={tour.slug}
             >
-              Email a Specialist
+              Email Our China Team
             </CtaButton>
           </div>
         </div>

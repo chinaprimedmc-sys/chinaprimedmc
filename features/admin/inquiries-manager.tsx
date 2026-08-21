@@ -20,7 +20,7 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
     const normalized = query.trim().toLowerCase();
     if (!normalized) return items;
     return items.filter((item) =>
-      [item.name, item.email, item.whatsapp, item.phone, item.journey_slug]
+      [item.name, item.email, item.whatsapp, item.journey_slug]
         .filter(Boolean)
         .some((value) => value!.toLowerCase().includes(normalized)),
     );
@@ -52,16 +52,25 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
         />
       </div>
       <div className="border-border overflow-x-auto rounded-xl border bg-white">
-        <table className="w-full min-w-[1100px] text-left text-sm">
+        <table className="w-full min-w-[1480px] text-left text-sm">
           <thead className="border-border bg-background text-muted border-b text-xs tracking-[0.1em] uppercase">
             <tr>
-              {["提交时间", "客户", "联系方式", "出行", "预算", "来源", "备注", "状态"].map(
-                (label) => (
-                  <th key={label} className="px-4 py-3">
-                    {label}
-                  </th>
-                ),
-              )}
+              {[
+                "提交时间",
+                "客户",
+                "联系方式",
+                "同行者",
+                "时间与天数",
+                "目的地与风格",
+                "舒适级别",
+                "来源",
+                "备注",
+                "状态",
+              ].map((label) => (
+                <th key={label} className="px-4 py-3">
+                  {label}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -72,12 +81,28 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
                 </td>
                 <td className="px-4 py-4 font-semibold">{item.name}</td>
                 <td className="text-muted px-4 py-4">
-                  {[item.email, item.whatsapp, item.phone].filter(Boolean).join(" / ")}
+                  {[item.email, item.whatsapp].filter(Boolean).join(" / ")}
                 </td>
                 <td className="px-4 py-4">
-                  {item.adults} 成人 · {item.children} 儿童
+                  {travelerCountLabel(item.adults, item.children)}
                   <br />
-                  <span className="text-muted">{item.destinations.join(", ") || "未指定"}</span>
+                  <span className="text-muted">{travelerTypeLabel(item.traveler_type)}</span>
+                  {item.includes_older_travelers ? (
+                    <>
+                      <br />
+                      <span className="text-muted">包含年长旅客</span>
+                    </>
+                  ) : null}
+                </td>
+                <td className="px-4 py-4">
+                  <span>{item.travel_window || "未确定"}</span>
+                  <br />
+                  <span className="text-muted">{item.trip_length || "天数未确定"}</span>
+                </td>
+                <td className="px-4 py-4">
+                  <span>{item.destinations.join(", ") || "目的地未定"}</span>
+                  <br />
+                  <span className="text-muted">{item.journey_styles.join(", ") || "风格未定"}</span>
                   {item.viewed_journeys?.length ? (
                     <>
                       <br />
@@ -87,7 +112,7 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
                     </>
                   ) : null}
                 </td>
-                <td className="px-4 py-4">{item.budget_tier}</td>
+                <td className="px-4 py-4">{comfortLevelLabel(item.comfort_level)}</td>
                 <td className="text-muted max-w-xs px-4 py-4">
                   <span className="font-medium text-[var(--text-primary)]">
                     {item.utm_source || sourceLabel(item.referrer, item.source_page)}
@@ -124,6 +149,35 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
       </div>
     </div>
   );
+}
+
+function travelerCountLabel(adults: number | null, children: number | null) {
+  const counts = [
+    adults === null ? null : `${adults} 成人`,
+    children === null ? null : `${children} 儿童`,
+  ].filter(Boolean);
+
+  return counts.length ? counts.join(" · ") : "人数未提供";
+}
+
+function travelerTypeLabel(value: string | null) {
+  const labels: Record<string, string> = {
+    family: "家庭",
+    couple: "伴侣",
+    solo: "独自出行",
+    "small-group": "小团体",
+    undecided: "尚未确定",
+  };
+  return value ? (labels[value] ?? value) : "类型未提供";
+}
+
+function comfortLevelLabel(value: string | null) {
+  const labels: Record<string, string> = {
+    comfortable: "舒适型",
+    luxury: "高端型",
+    "ultra-bespoke": "顶级定制",
+  };
+  return value ? (labels[value] ?? value) : "未提供";
 }
 
 function sourceLabel(referrer: string | null, sourcePage: string) {

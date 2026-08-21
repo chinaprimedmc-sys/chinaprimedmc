@@ -160,6 +160,7 @@ export function HomeJourneySelector({
                       width={selectedJourney.image.width}
                       height={selectedJourney.image.height}
                       sizes="(min-width: 1024px) 58vw, 100vw"
+                      frameClassName={styles.journeyNaturalImageFrame}
                       className={styles.journeyNaturalImage}
                     />
                   </motion.div>
@@ -217,7 +218,7 @@ export function HomeJourneySelector({
                     rel="noreferrer"
                     className={styles.journeyWhatsappCta}
                   >
-                    <WhatsAppIcon /> Message your travel advisor
+                    <WhatsAppIcon /> Message Our China Team
                   </a>
                 </div>
               </motion.div>

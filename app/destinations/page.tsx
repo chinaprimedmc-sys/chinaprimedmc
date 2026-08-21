@@ -66,7 +66,7 @@ export default async function DestinationsPage() {
       <SiteNavigation
         tone="light"
         items={settings.navigation}
-        cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
+        cta={{ label: "Plan My Trip", href: settings.primaryCtaHref }}
       />
       <DestinationExplorer
         content={hub}
@@ -100,7 +100,7 @@ export default async function DestinationsPage() {
               { label: "Private Journeys", href: "/tours" },
               { label: "Destination Guides", href: "/destinations" },
               { label: "Journal", href: "/journal" },
-              { label: "Start Planning", href: "/start-planning" },
+              { label: "Plan My Trip", href: "/start-planning" },
             ],
           },
         ]}

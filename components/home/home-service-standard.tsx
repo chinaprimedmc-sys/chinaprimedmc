@@ -1,4 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from "@/components/home/home-service-standard.module.css";
 
@@ -125,6 +127,13 @@ export function HomeServiceStandard() {
 
         <footer className={styles.closing}>
           <p>One Journey. One Local Team. Accountable Throughout.</p>
+          <div className={styles.tradeEntry}>
+            <span>For travel advisors and tour operators</span>
+            <Link href="/china-dmc">
+              Work With China Prime DMC
+              <ArrowUpRight size={16} strokeWidth={1.7} aria-hidden="true" />
+            </Link>
+          </div>
         </footer>
       </div>
     </section>

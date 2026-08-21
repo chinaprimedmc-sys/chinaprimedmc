@@ -13,8 +13,9 @@ const strategyGroups: Array<{
 }> = [
   {
     pillar: "First China trip planning",
-    hub: "how-many-days-in-china-7-10-14-day-itineraries",
+    hub: "first-trip-to-china-planning-guide",
     articles: [
+      ["first-trip-to-china-planning-guide", "plan", "how to plan a trip to China", 1],
       ["how-many-days-in-china-7-10-14-day-itineraries", "plan", "how many days in China", 1],
       ["10-day-china-itinerary-first-time-visitors", "plan", "10 day China itinerary", 1],
       ["9-days-or-11-days-in-china", "compare", "9 days or 11 days in China", 1],
@@ -64,6 +65,14 @@ const strategyGroups: Array<{
       ],
       ["china-domestic-flight-power-bank-rules", "answer", "China power bank rules 2026", 2],
       ["china-high-speed-train-foreigners", "answer", "China high speed train for foreigners", 2],
+      ["best-apps-for-china-travel-2026", "answer", "best apps for China travel 2026", 1],
+      ["china-packing-list-2026", "answer", "China packing list 2026", 1],
+      [
+        "china-visa-requirements-us-citizens-2026",
+        "answer",
+        "China visa requirements for US citizens 2026",
+        1,
+      ],
       ["shanghai-pudong-hongqiao-airport-guide", "compare", "Pudong vs Hongqiao airport", 2],
       [
         "how-to-travel-between-beijing-xian-chengdu-shanghai",
@@ -79,7 +88,10 @@ const strategyGroups: Array<{
     articles: [
       ["beijing-xian-itinerary-how-many-days", "plan", "Beijing Xian itinerary", 1],
       ["5-day-beijing-great-wall-itinerary", "plan", "5 day Beijing itinerary", 1],
+      ["beijing-itinerary-4-days", "plan", "Beijing itinerary 4 days", 1],
+      ["where-to-stay-in-beijing-first-time", "compare", "where to stay in Beijing first time", 1],
       ["6-day-xian-beijing-itinerary", "plan", "6 day Xian Beijing itinerary", 1],
+      ["xian-itinerary-3-days", "plan", "Xi'an itinerary 3 days", 1],
       [
         "terracotta-warriors-day-trip-from-beijing",
         "compare",
@@ -106,6 +118,29 @@ const strategyGroups: Array<{
         2,
       ],
     ],
+  },
+  {
+    pillar: "Shanghai first-visit planning",
+    hub: "shanghai-itinerary-4-days",
+    articles: [
+      ["shanghai-itinerary-4-days", "plan", "Shanghai itinerary 4 days", 1],
+      [
+        "where-to-stay-in-shanghai-first-time",
+        "compare",
+        "where to stay in Shanghai first time",
+        1,
+      ],
+    ],
+  },
+  {
+    pillar: "Guilin and Yangshuo planning",
+    hub: "guilin-yangshuo-itinerary-5-days",
+    articles: [["guilin-yangshuo-itinerary-5-days", "plan", "Guilin Yangshuo itinerary 5 days", 1]],
+  },
+  {
+    pillar: "Yunnan private journey planning",
+    hub: "yunnan-itinerary-10-days",
+    articles: [["yunnan-itinerary-10-days", "plan", "Yunnan itinerary 10 days", 1]],
   },
   {
     pillar: "Chengdu and panda planning",
@@ -154,8 +189,42 @@ const strategyGroups: Array<{
     hub: "china-family-itinerary-10-to-14-days",
     articles: [
       ["china-family-itinerary-10-to-14-days", "plan", "China family itinerary", 1],
-      ["china-itinerary-older-travelers-10-days", "plan", "China itinerary older travelers", 1],
       ["china-honeymoon-itinerary-10-to-14-days", "plan", "China honeymoon itinerary", 1],
+    ],
+  },
+  {
+    pillar: "Easier-paced China travel",
+    hub: "china-itinerary-older-travelers-10-days",
+    articles: [
+      ["china-itinerary-older-travelers-10-days", "plan", "China itinerary for seniors", 1],
+      ["how-many-days-beijing-xian-shanghai", "compare", "how many days Beijing Xian Shanghai", 1],
+      ["how-much-walking-china-tour", "answer", "how much walking on a China tour", 1],
+      ["china-tours-for-seniors", "evaluate", "China tours for seniors", 1],
+      ["china-trip-with-older-parents", "plan", "China trip with older parents", 1],
+      [
+        "china-tours-seniors-limited-mobility",
+        "evaluate",
+        "China tours for seniors with limited mobility",
+        1,
+      ],
+    ],
+  },
+  {
+    pillar: "High-intent first China trip decisions",
+    hub: "first-trip-to-china-planning-guide",
+    articles: [
+      [
+        "best-places-to-visit-china-first-time",
+        "compare",
+        "best places to visit in China for first time",
+        1,
+      ],
+      ["how-much-does-a-trip-to-china-cost", "evaluate", "how much does a trip to China cost", 1],
+      ["private-china-tour-vs-self-guided", "compare", "private China tour vs self guided", 1],
+      ["china-tours-from-usa", "plan", "China tours from USA", 1],
+      ["luxury-china-tour-planning-guide", "evaluate", "luxury China tours", 1],
+      ["beijing-or-shanghai-first-time", "compare", "Beijing or Shanghai first time", 1],
+      ["two-week-china-itinerary-first-time", "plan", "two weeks in China itinerary", 1],
     ],
   },
 ];

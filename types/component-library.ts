@@ -11,6 +11,7 @@ export type MediaAsset = {
   height?: number;
   priority?: boolean;
   objectPosition?: string;
+  fit?: "cover" | "contain";
 };
 
 export type LinkAction = {

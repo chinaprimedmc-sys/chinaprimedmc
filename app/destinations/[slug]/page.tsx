@@ -96,7 +96,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
           journey.destinationFilters.includes(destination.name),
         )}
         navigation={settings.navigation}
-        cta={{ label: settings.primaryCtaLabel, href: settings.primaryCtaHref }}
+        cta={{ label: "Plan My Trip", href: settings.primaryCtaHref }}
       />
     </>
   );

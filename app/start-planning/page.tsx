@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Check } from "lucide-react";
 
 import { SectionHeader } from "@/components/content";
+import { TrackedLink } from "@/components/cta/tracked-link";
 import { StartPlanningForm } from "@/components/forms";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { ContentContainer } from "@/components/layout/content-container";
@@ -38,7 +40,7 @@ export default async function StartPlanningPage({
         id="start-planning-breadcrumb-schema"
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "Start Planning", path: "/start-planning" },
+          { name: "Plan My Trip", path: "/start-planning" },
         ])}
       />
       <JsonLd
@@ -63,7 +65,7 @@ export default async function StartPlanningPage({
         <ContentContainer size="xl" className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">
-              Start planning
+              Plan My Trip
             </p>
             <h1 className="mt-5 text-4xl leading-tight font-semibold tracking-[-0.04em] md:text-6xl">
               Tell us what would make your China journey feel right.
@@ -76,6 +78,22 @@ export default async function StartPlanningPage({
               A China specialist will use these details to prepare a useful first direction. This
               does not confirm a booking.
             </p>
+            <ul className="mt-5 grid max-w-sm gap-2 border-b border-[var(--border)] pb-5 text-sm leading-6">
+              {[
+                "Personal reply normally within 24 hours",
+                "A route direction before a written quotation",
+                "No booking or payment obligation",
+              ].map((item) => (
+                <li key={item} className="grid grid-cols-[1rem_1fr] items-start gap-2.5">
+                  <Check
+                    className="mt-1 text-[var(--text-secondary)]"
+                    size={14}
+                    aria-hidden="true"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="grid gap-6">
             <StartPlanningForm
@@ -85,18 +103,22 @@ export default async function StartPlanningPage({
             />
             <div className="text-muted flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--border)] pt-5 text-sm">
               <span>Prefer direct contact?</span>
-              <a
+              <TrackedLink
                 href="https://wa.me/447985052302"
                 className="min-h-11 font-semibold text-[var(--text-primary)]"
+                trackingLabel="Message Our China Team"
+                trackingPlacement="planning-direct-whatsapp"
               >
-                WhatsApp
-              </a>
-              <a
+                Message Our China Team
+              </TrackedLink>
+              <TrackedLink
                 href={`mailto:${siteConfig.email}`}
                 className="min-h-11 font-semibold text-[var(--text-primary)]"
+                trackingLabel="Email Our China Team"
+                trackingPlacement="planning-direct-email"
               >
-                Email
-              </a>
+                Email Our China Team
+              </TrackedLink>
             </div>
           </div>
         </ContentContainer>
@@ -147,7 +169,10 @@ export default async function StartPlanningPage({
                 href: "/journal/china-240-hour-visa-free-transit-guide",
               },
               { label: "FAQ", href: "/faq" },
-              { label: "Senior Travel", href: "/senior-travel" },
+              {
+                label: "China At An Easier Pace",
+                href: "/tours/china-at-an-easier-pace-12-day-private-tour",
+              },
             ],
           },
           { title: "Explore", items: homeNavItems },

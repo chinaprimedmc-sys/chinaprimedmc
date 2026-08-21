@@ -143,7 +143,7 @@ Not necessarily. One tested wallet plus a different card and some cash is more v
 
 ## Conversion CTA
 
-**Want the arrival details confirmed before you fly?** AVIORA can combine airport transfer, rail tickets, hotel payment notes and a written contact path within one tailored itinerary. [Start planning](/start-planning).
+**Want the arrival details confirmed before you fly?** AVIORA can combine airport transfer, rail tickets, hotel payment notes and a written contact path within one tailored itinerary. [Plan my trip](/start-planning).
 
 ## SEO & GEO Review
 

@@ -36,7 +36,7 @@ export function SearchResultsTemplate({
     <PageContainer>
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Start Planning", href: "/start-planning" }}
+        cta={{ label: "Plan My Trip", href: "/start-planning" }}
       />
 
       <SearchHero query={query} />
@@ -84,7 +84,7 @@ export function SearchResultsTemplate({
             eyebrow="Private planning"
             title="Not sure what to search for?"
             description="Share your dates and interests, and a China specialist will suggest a sensible starting route."
-            primary={{ label: "Start Planning", href: "/start-planning" }}
+            primary={{ label: "Plan My Trip", href: "/start-planning" }}
             secondary={{
               label: "Read Entry Guide",
               href: "/journal/china-240-hour-visa-free-transit-guide",

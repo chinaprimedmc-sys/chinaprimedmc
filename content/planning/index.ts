@@ -57,6 +57,14 @@ export type StartPlanningOption = {
 };
 
 export const startPlanningOptions = {
+  tripLengths: [
+    { label: "5-7 days", value: "5-7 days" },
+    { label: "8-10 days", value: "8-10 days" },
+    { label: "11-14 days", value: "11-14 days" },
+    { label: "15-21 days", value: "15-21 days" },
+    { label: "More than 21 days", value: "More than 21 days" },
+    { label: "Not sure yet", value: "Not sure yet" },
+  ],
   travelerTypes: [
     {
       label: "Family",
@@ -77,6 +85,11 @@ export const startPlanningOptions = {
       label: "Small group",
       value: "small-group",
       helper: "Friends, relatives or a small group traveling together.",
+    },
+    {
+      label: "Not sure yet",
+      value: "undecided",
+      helper: "That is fine. We can begin with the details you already know.",
     },
   ],
   travelStyles: [
@@ -158,7 +171,7 @@ export const planningCards: PlanningCard[] = [
     title: "Family travel",
     description:
       "How private China trips can be paced around children, parents, hotels, food, and flexible days.",
-    href: "/family-travel",
+    href: "/tours?travellers=families",
     image: destinationAsset.chengduPanda,
     badges: ["Families", "Kids"],
   },
@@ -166,7 +179,7 @@ export const planningCards: PlanningCard[] = [
     title: "Senior-friendly travel",
     description:
       "Comfort-led planning for older travelers, with clearer daily rhythm, fewer hard transitions, and phone-first contact.",
-    href: "/senior-travel",
+    href: "/tours/china-at-an-easier-pace-12-day-private-tour",
     image: destinationAsset.chengduTeaHouse,
     badges: ["Seniors", "Comfort"],
   },

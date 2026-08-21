@@ -11,7 +11,7 @@ type FieldShellProps = {
 
 export function FieldShell({ label, helper, error, children }: FieldShellProps) {
   return (
-    <label className="grid gap-2">
+    <label className="grid content-start gap-2">
       <span className="text-sm font-semibold">{label}</span>
       {children}
       {helper ? <span className="text-muted text-xs leading-5">{helper}</span> : null}

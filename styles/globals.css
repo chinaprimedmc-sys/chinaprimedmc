@@ -1354,10 +1354,20 @@ a {
       margin-left 460ms var(--motion-ease-out);
   }
 
+  .site-navigation__mobile-actions--without-help {
+    grid-template-columns: minmax(0, 1fr) 2.35rem;
+  }
+
   .site-navigation-shell:not(.is-scrolled) .site-navigation__brand {
     font-size: 1.05rem;
     font-weight: 500;
     letter-spacing: 0.14em;
+  }
+
+  .site-navigation-shell:not(.is-scrolled) .site-navigation__brand--wide {
+    max-width: 7.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
   }
 
   .site-navigation-shell:not(.is-scrolled) .site-navigation__mobile-trigger--dark {
@@ -1600,6 +1610,10 @@ a {
     font-weight: 500;
     justify-self: end;
     padding-inline: 0.2rem;
+  }
+
+  .site-navigation-shell--light:not(.is-scrolled) .site-navigation__mobile-help {
+    color: #172129;
   }
 
   .site-navigation-shell.is-scrolled .site-navigation__mobile-help {

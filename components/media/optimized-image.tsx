@@ -10,6 +10,7 @@ type OptimizedImageProps = ImageProps & {
   frameClassName?: string;
   objectPosition?: string;
   showSkeleton?: boolean;
+  fadeIn?: boolean;
 };
 
 export function OptimizedImage({
@@ -19,6 +20,7 @@ export function OptimizedImage({
   objectPosition,
   style,
   showSkeleton = true,
+  fadeIn = true,
   fetchPriority,
   loading,
   priority,
@@ -118,8 +120,9 @@ export function OptimizedImage({
         key={`${sourceKey}-${attempt}`}
         ref={imageRef}
         className={cn(
-          "relative z-10 object-cover transition-opacity duration-500 ease-out",
-          status === "loaded" ? "opacity-100" : "opacity-0",
+          "relative z-10 object-cover",
+          fadeIn && "transition-opacity duration-500 ease-out",
+          fadeIn ? (status === "loaded" ? "opacity-100" : "opacity-0") : "opacity-100",
           className,
         )}
         alt={alt}

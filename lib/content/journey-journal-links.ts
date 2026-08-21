@@ -26,6 +26,7 @@ export function getJourneyBridgeForArticle(article: JournalArticle) {
     journey: journey.slug,
     placement: "journal-journey-bridge",
   });
+  if (rule?.planningPreference) params.set("preference", rule.planningPreference);
   const advisorMessage = [
     "Hello AVIORA, I found this journey through your China travel guide:",
     article.title,
@@ -81,6 +82,7 @@ export function getJourneyReadingArticles(journeySlug: string, limit = 3) {
 function articleJourneyScore(article: JournalArticle, journeySlug: string) {
   const rule = journeyJournalLinks[article.slug];
   let score = 0;
+  if (journeyReadingPriority[journeySlug]?.includes(article.slug)) score += 40;
   if (rule?.primaryJourney === journeySlug) score += 100;
   if (article.related?.tours?.includes(journeySlug)) score += 60;
   if (rule?.alternativeJourneys?.includes(journeySlug)) score += 20;

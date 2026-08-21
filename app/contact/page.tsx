@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Mail, MessageCircle } from "lucide-react";
 
 import { FeatureCard } from "@/components/cards/feature-card";
 import { CtaButton } from "@/components/cta";
@@ -44,10 +45,30 @@ export default function ContactPage() {
                 specialist will review them and reply within 24 hours.
               </p>
             </div>
-            <CtaButton href="/start-planning?source=/contact">Start Planning</CtaButton>
+            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-1">
+              <CtaButton href="/start-planning?source=/contact">Plan My Trip</CtaButton>
+              <CtaButton
+                href="https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%20would%20like%20help%20planning%20a%20private%20journey%20in%20China."
+                variant="outline"
+                icon={<MessageCircle size={16} aria-hidden="true" />}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Message Our China Team
+              </CtaButton>
+            </div>
           </Card>
           <GridSystem columns={3}>
-            <FeatureCard title="Email" description={siteConfig.email} />
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="focus-visible:ring-action-focus block focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <FeatureCard
+                icon={<Mail size={18} aria-hidden="true" />}
+                title="Email Our China Team"
+                description={siteConfig.email}
+              />
+            </a>
             <FeatureCard
               title="Best for"
               description="Couples, families, solo travelers, older guests and private groups."

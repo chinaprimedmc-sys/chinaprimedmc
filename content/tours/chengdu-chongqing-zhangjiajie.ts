@@ -24,7 +24,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
     eyebrow: "Private nature and city journey",
     image: asset.hero,
     primary: { label: "Explore the 11 Days", href: "#itinerary" },
-    secondary: { label: "Request a Private Proposal", href: "#proposal" },
+    secondary: { label: "Plan My Trip", href: "#proposal" },
   },
   seo: {
     title: "11-Day Chengdu Chongqing Zhangjiajie Private Tour",

@@ -23,7 +23,7 @@ suggested_internal_links:
   [
     "/destinations/chengdu",
     "/tours/chengdu-pandas-sichuan-table",
-    "/family-travel",
+    "/tours?travellers=families",
     "/faq",
     "/start-planning",
   ]

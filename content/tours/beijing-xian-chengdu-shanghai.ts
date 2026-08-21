@@ -20,7 +20,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
     eyebrow: "Signature first-time China journey",
     image: fourCityAsset.hero,
     primary: { label: "Explore Itinerary", href: "#itinerary" },
-    secondary: { label: "Request a Private Proposal", href: "#proposal" },
+    secondary: { label: "Plan My Trip", href: "#proposal" },
   },
   seo: {
     title: "11-Day Beijing Xi'an Chengdu Shanghai Private Tour",

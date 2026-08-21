@@ -52,7 +52,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           href: `/destinations/${destination.slug}`,
         }}
       />
-      <SiteNavigation items={homeNavItems} cta={{ label: "Start Planning", href: inquiryHref }} />
+      <SiteNavigation items={homeNavItems} cta={{ label: "Plan My Trip", href: inquiryHref }} />
 
       <HeroLargeImage
         eyebrow={destination.hero.eyebrow ?? "Destination guide"}
@@ -125,7 +125,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           <SectionHeader
             eyebrow="Top highlights"
             title={`What makes ${destination.name} worth the journey?`}
-            description="A destination page should help travelers picture the trip quickly, then invite them deeper."
+            description={`See the places and experiences that make ${destination.name} worth including, then decide how they fit into the wider route.`}
           />
           <GridSystem columns={3}>
             {destination.highlights.map((highlight) => (
@@ -207,7 +207,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
                   { label: "Route", value: tour.route },
                   { label: "Length", value: tour.duration },
                 ]}
-                action={{ label: "Ask for this route", href: tour.href }}
+                action={{ label: "View Journey", href: tour.href }}
               />
             ))}
           </GridSystem>
@@ -315,8 +315,8 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
             title: "Explore",
             items: [
               { label: "Private journeys", href: "/tours" },
-              { label: "Family travel", href: "/family-travel" },
-              { label: "Start planning", href: "/start-planning" },
+              { label: "Family journeys", href: "/tours?travellers=families" },
+              { label: "Plan My Trip", href: "/start-planning" },
             ],
           },
           {
@@ -332,7 +332,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           { label: "Instagram", href: "https://www.instagram.com/chinaprimedmc" },
         ]}
       />
-      <FloatingCta label="Plan This Trip" href={inquiryHref} />
+      <FloatingCta label="Plan My Trip" href={inquiryHref} />
       <StickyMobileCta label="Plan" href={inquiryHref} showAfter={1200} />
     </PageContainer>
   );

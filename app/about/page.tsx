@@ -502,7 +502,7 @@ export default function AboutPage() {
               { label: "Private Journeys", href: "/tours" },
               { label: "Destinations", href: "/destinations" },
               { label: "China Journal", href: "/journal" },
-              { label: "Start Planning", href: "/start-planning" },
+              { label: "Plan My Trip", href: "/start-planning" },
             ],
           },
         ]}

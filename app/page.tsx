@@ -3,10 +3,11 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { HomeExpertConsultation } from "@/components/home/home-expert-consultation";
+import { SiteFooter } from "@/components/footer/site-footer";
 import { HomeHeroMotion } from "@/components/home/home-hero-motion";
 import { HomeServiceStandard } from "@/components/home/home-service-standard";
+import { HomeServiceAchievements } from "@/components/home/home-service-achievements";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { CookiePreferencesButton } from "@/components/privacy/cookie-preferences-button";
 import { HomeJourneySelector, HomeSectionReveal } from "@/components/home/home-journey-selector";
 import { HomePhilosophy } from "@/components/home/home-philosophy";
 import { HomeStoryExperience } from "@/components/home/home-story-experience";
@@ -31,9 +32,70 @@ const selectedJourneyContent: Record<
     duration: string;
     fit: string;
     summary: string;
+    proofs?: string[];
     image?: { src: string; alt: string; width: number; height: number };
   }
 > = {
+  "china-at-an-easier-pace-12-day-private-tour": {
+    title: "China, Considered",
+    meta: "12 days · Beijing · Xi'an · Shanghai",
+    mobileDuration: "12 days · 11 nights",
+    mobileAudience: "Best for mature travellers & couples",
+    duration: "12 days",
+    fit: "A premium first journey at an easier pace",
+    summary:
+      "Five-star stays, private guides and only two hotel changes, with recovery protected after the Great Wall and Terracotta Army.",
+    proofs: [
+      "Five-star hotels",
+      "Private courtyard table",
+      "Local cultural specialists",
+      "First-class rail",
+      "Only two hotel changes",
+      "Protected recovery time",
+    ],
+    image: {
+      src: "/tours/first-china-beautifully-paced/beijing-great-wall-couple.webp",
+      alt: "Two mature travellers enjoying a measured visit to the Great Wall near Beijing",
+      width: 1280,
+      height: 1920,
+    },
+  },
+  "china-family-tour-with-pandas-12-day-private-tour": {
+    title: "China With Your Children",
+    meta: "12 days · Beijing · Xi'an · Chengdu · Shanghai",
+    mobileDuration: "12 days · 11 nights",
+    mobileAudience: "Best for families with children aged 6–17",
+    duration: "12 days",
+    fit: "Our signature private journey for families",
+    summary:
+      "The Great Wall, Terracotta Warriors and pandas become a family story through private challenges, hands-on encounters and protected downtime.",
+    proofs: [
+      "Age-aware private guides",
+      "Great Wall photographer",
+      "Private clay studio",
+      "Panda interpretation",
+      "Room setup reviewed",
+      "Protected family downtime",
+    ],
+  },
+  "beijing-xian-chengdu-shanghai-private-11-day-tour": {
+    title: "China's Essential Contrasts",
+    meta: "11 days · Beijing · Xi'an · Chengdu · Shanghai",
+    mobileDuration: "11 days · 10 nights",
+    mobileAudience: "Best for a comprehensive first journey",
+    duration: "11 days",
+    fit: "The strongest all-round first journey",
+    summary:
+      "Imperial Beijing, the Terracotta Warriors, giant pandas and Shanghai, privately connected across eleven balanced days.",
+    proofs: [
+      "Quieter Great Wall timing",
+      "Terracotta Army context",
+      "Pandas at a better hour",
+      "Private city guides",
+      "Managed rail and flight",
+      "China-based support",
+    ],
+  },
   "first-china-beautifully-paced": {
     title: "Beijing, Xi'an & Shanghai",
     meta: "9 days · Beijing · Xi'an · Shanghai",
@@ -84,9 +146,9 @@ const selectedJourneyContent: Record<
 };
 
 const selectedJourneySlugs = [
-  "first-china-beautifully-paced",
-  "chengdu-pandas-jiuzhaigou-private-7-day-tour",
-  "shanghai-zhangjiajie-floating-peaks",
+  "china-family-tour-with-pandas-12-day-private-tour",
+  "china-at-an-easier-pace-12-day-private-tour",
+  "beijing-xian-chengdu-shanghai-private-11-day-tour",
 ];
 
 const chinaStoryCatalog = [
@@ -172,13 +234,13 @@ export default async function HomePage() {
         fit: editorial.fit,
         summary: editorial.summary,
         description: editorial.summary,
-        proofs: [
+        proofs: editorial.proofs ?? [
           "Private guides",
           "Private car & driver",
           "Tailored pace",
           "Local support",
           "No shopping stops",
-          "Unique experiences",
+          "Experiences arranged around you",
         ],
         price: pricing
           ? `US$${pricing.fromUsd.toLocaleString("en-US")} per person`
@@ -196,7 +258,7 @@ export default async function HomePage() {
       };
     });
   const navigation = settings.navigation.filter((item) =>
-    ["Journeys", "Destinations", "About AVIORA", "Journal"].includes(item.label),
+    ["Journeys", "Destinations", "About AVIORA", "Journal", "Travel Trade"].includes(item.label),
   );
 
   return (
@@ -205,7 +267,7 @@ export default async function HomePage() {
       <SiteNavigation
         items={navigation}
         className="home-navigation-entrance"
-        cta={{ label: "Start Planning", href: settings.primaryCtaHref }}
+        cta={{ label: "Plan My Trip", href: settings.primaryCtaHref }}
         mobileCta={{ label: "Explore Journeys", href: "/tours" }}
         tone="adaptive"
         showWhatsapp={false}
@@ -222,6 +284,7 @@ export default async function HomePage() {
         trustItems={["Licensed in China", "Private travel", "No shopping"]}
       />
 
+      <HomeServiceAchievements />
       <HomeSoftSnap />
       <HomeServiceStandard />
 
@@ -247,52 +310,8 @@ export default async function HomePage() {
 
       <HomePhilosophy />
 
-      <HomeExpertConsultation whatsappHref={settings.whatsappHref} />
-
-      <footer className={styles.footer}>
-        <div className={styles.footerGrid}>
-          <div className={styles.footerBrand}>
-            <Link href="/" className="brand-wordmark">
-              AVIORA
-            </Link>
-            <p>
-              Private China journeys planned and operated locally, with clear support from arrival
-              to departure.
-            </p>
-            <a href={`mailto:${settings.email}`}>{settings.email}</a>
-          </div>
-          <div className={styles.footerNavigation}>
-            <div>
-              <p>Explore</p>
-              {navigation.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-            <div>
-              <p>Planning</p>
-              <Link href={settings.primaryCtaHref}>Start planning</Link>
-              <Link href="/faq">Travel FAQ</Link>
-              <Link href="/journal/china-240-hour-visa-free-transit-guide">Visa guide</Link>
-            </div>
-            <div>
-              <p>Company</p>
-              <Link href="/about">About AVIORA</Link>
-              <Link href="/privacy">Privacy</Link>
-              <Link href="/cookies">Cookie Policy</Link>
-              <CookiePreferencesButton className={styles.footerCookiePreferences} />
-              <Link href="/terms">Terms</Link>
-            </div>
-          </div>
-        </div>
-        <div className={styles.footerLegal}>
-          <p>
-            © {new Date().getFullYear()} AVIORA · Operated in China by{" "}
-            {siteConfig.operator.englishReferenceName}
-          </p>
-        </div>
-      </footer>
+      <HomeExpertConsultation />
+      <SiteFooter />
     </main>
   );
 }

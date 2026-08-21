@@ -13,20 +13,21 @@ export const homeNavItems: NavigationItem[] = [
   },
   { label: "About AVIORA", href: "/about" },
   { label: "Journal", href: "/journal" },
+  { label: "Travel Trade", href: "/china-dmc" },
 ];
 
 export const primaryAction: LinkAction = {
-  label: "Start Planning",
+  label: "Plan My Trip",
   href: "/start-planning",
 };
 
 export const secondaryHeroActions = {
   whatsapp: {
-    label: "WhatsApp Us",
+    label: "Message Our China Team",
     href: "https://wa.me/447985052302",
   },
   email: {
-    label: "Email a Specialist",
+    label: "Email Our China Team",
     href: "mailto:chinaprimedmc@gmail.com?subject=Question%20for%20a%20China%20Specialist",
   },
 };

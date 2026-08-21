@@ -3,7 +3,6 @@ import "server-only";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-import type { JournalArticle, JournalContentBlock } from "@/types/journal";
 import { toJournalDisplayTitleCase } from "@/content/journal/editorial-upgrades";
 import visaTransitMarkdown from "@/content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md";
 import accommodationMarkdown from "@/content/journal/articles/2026-08-06-china-accommodation-registration-foreigners.md";
@@ -26,6 +25,84 @@ import chengduChongqingZhangjiajieMarkdown from "@/content/journal/articles/2026
 import chengduDaysMarkdown from "@/content/journal/articles/2026-08-12-how-many-days-in-chengdu-itinerary.md";
 import chongqingThreeDayMarkdown from "@/content/journal/articles/2026-08-12-3-day-chongqing-itinerary.md";
 import zhangjiajieStayMarkdown from "@/content/journal/articles/2026-08-12-where-to-stay-in-zhangjiajie.md";
+import olderTravelersItineraryMarkdown from "@/content/journal/articles/2026-08-18-china-itinerary-older-travelers-12-days.md";
+import beijingXianShanghaiDaysMarkdown from "@/content/journal/articles/2026-08-19-how-many-days-beijing-xian-shanghai.md";
+import chinaTourWalkingMarkdown from "@/content/journal/articles/2026-08-19-how-much-walking-china-tour.md";
+import firstTripPlanningMarkdown from "@/content/journal/articles/2026-08-19-first-trip-to-china-planning-guide.md";
+import seniorToursMarkdown from "@/content/journal/articles/2026-08-20-china-tours-for-seniors.md";
+import firstTripDestinationsMarkdown from "@/content/journal/articles/2026-08-20-best-places-to-visit-china-first-time.md";
+import olderParentsMarkdown from "@/content/journal/articles/2026-08-20-china-trip-with-older-parents.md";
+import limitedMobilityMarkdown from "@/content/journal/articles/2026-08-20-china-tours-seniors-limited-mobility.md";
+import chinaTripCostMarkdown from "@/content/journal/articles/2026-08-20-how-much-does-a-trip-to-china-cost.md";
+import privateVsSelfGuidedMarkdown from "@/content/journal/articles/2026-08-20-private-china-tour-vs-self-guided.md";
+import chinaToursUsaMarkdown from "@/content/journal/articles/2026-08-20-china-tours-from-usa.md";
+import luxuryChinaTourMarkdown from "@/content/journal/articles/2026-08-20-luxury-china-tour-planning-guide.md";
+import beijingShanghaiMarkdown from "@/content/journal/articles/2026-08-20-beijing-or-shanghai-first-time.md";
+import twoWeekChinaMarkdown from "@/content/journal/articles/2026-08-20-two-week-china-itinerary-first-time.md";
+import beijingFourDayMarkdown from "@/content/journal/articles/2026-08-21-beijing-itinerary-4-days.md";
+import chinaAppsMarkdown from "@/content/journal/articles/2026-08-21-best-apps-for-china-travel-2026.md";
+import chinaPackingMarkdown from "@/content/journal/articles/2026-08-21-china-packing-list-2026.md";
+import usChinaVisaMarkdown from "@/content/journal/articles/2026-08-21-china-visa-requirements-us-citizens-2026.md";
+import guilinYangshuoMarkdown from "@/content/journal/articles/2026-08-21-guilin-yangshuo-itinerary-5-days.md";
+import shanghaiFourDayMarkdown from "@/content/journal/articles/2026-08-21-shanghai-itinerary-4-days.md";
+import beijingStayMarkdown from "@/content/journal/articles/2026-08-21-where-to-stay-in-beijing-first-time.md";
+import shanghaiStayMarkdown from "@/content/journal/articles/2026-08-21-where-to-stay-in-shanghai-first-time.md";
+import xianThreeDayMarkdown from "@/content/journal/articles/2026-08-21-xian-itinerary-3-days.md";
+import yunnanTenDayMarkdown from "@/content/journal/articles/2026-08-21-yunnan-itinerary-10-days.md";
+import type { JournalArticle, JournalContentBlock } from "@/types/journal";
+
+const fullFrameImageMetadata: Record<string, { width: number; height: number; fit: "contain" }> = {
+  "/journal/2026-08-06/china-high-speed-train-boarding.webp": {
+    width: 2400,
+    height: 3200,
+    fit: "contain",
+  },
+  "/tours/first-china-beautifully-paced/xian-terracotta-army-group.webp": {
+    width: 1920,
+    height: 1440,
+    fit: "contain",
+  },
+  "/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp": {
+    width: 1920,
+    height: 1440,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/temple-of-heaven-travelers-full.webp": {
+    width: 1200,
+    height: 1600,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/forbidden-city-walking-surfaces-full.webp": {
+    width: 768,
+    height: 1024,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/mutianyu-chairlift-access-full.webp": {
+    width: 1067,
+    height: 1600,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/terracotta-army-viewing-platform-full.webp": {
+    width: 1200,
+    height: 1600,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/shanghai-yu-garden-easier-pace-full.webp": {
+    width: 1600,
+    height: 1200,
+    fit: "contain",
+  },
+  "/journal/2026-08-19/older-travelers-chinese-cultural-experience-full.webp": {
+    width: 1200,
+    height: 1600,
+    fit: "contain",
+  },
+  "/home/editorial/travel-trade-team-singapore.webp": {
+    width: 1080,
+    height: 810,
+    fit: "contain",
+  },
+};
 
 const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md":
@@ -62,6 +139,41 @@ const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-08-12-how-many-days-in-chengdu-itinerary.md": chengduDaysMarkdown,
   "content/journal/articles/2026-08-12-3-day-chongqing-itinerary.md": chongqingThreeDayMarkdown,
   "content/journal/articles/2026-08-12-where-to-stay-in-zhangjiajie.md": zhangjiajieStayMarkdown,
+  "content/journal/articles/2026-08-18-china-itinerary-older-travelers-12-days.md":
+    olderTravelersItineraryMarkdown,
+  "content/journal/articles/2026-08-19-how-many-days-beijing-xian-shanghai.md":
+    beijingXianShanghaiDaysMarkdown,
+  "content/journal/articles/2026-08-19-how-much-walking-china-tour.md": chinaTourWalkingMarkdown,
+  "content/journal/articles/2026-08-19-first-trip-to-china-planning-guide.md":
+    firstTripPlanningMarkdown,
+  "content/journal/articles/2026-08-20-china-tours-for-seniors.md": seniorToursMarkdown,
+  "content/journal/articles/2026-08-20-best-places-to-visit-china-first-time.md":
+    firstTripDestinationsMarkdown,
+  "content/journal/articles/2026-08-20-china-trip-with-older-parents.md": olderParentsMarkdown,
+  "content/journal/articles/2026-08-20-china-tours-seniors-limited-mobility.md":
+    limitedMobilityMarkdown,
+  "content/journal/articles/2026-08-20-how-much-does-a-trip-to-china-cost.md":
+    chinaTripCostMarkdown,
+  "content/journal/articles/2026-08-20-private-china-tour-vs-self-guided.md":
+    privateVsSelfGuidedMarkdown,
+  "content/journal/articles/2026-08-20-china-tours-from-usa.md": chinaToursUsaMarkdown,
+  "content/journal/articles/2026-08-20-luxury-china-tour-planning-guide.md":
+    luxuryChinaTourMarkdown,
+  "content/journal/articles/2026-08-20-beijing-or-shanghai-first-time.md": beijingShanghaiMarkdown,
+  "content/journal/articles/2026-08-20-two-week-china-itinerary-first-time.md":
+    twoWeekChinaMarkdown,
+  "content/journal/articles/2026-08-21-beijing-itinerary-4-days.md": beijingFourDayMarkdown,
+  "content/journal/articles/2026-08-21-best-apps-for-china-travel-2026.md": chinaAppsMarkdown,
+  "content/journal/articles/2026-08-21-china-packing-list-2026.md": chinaPackingMarkdown,
+  "content/journal/articles/2026-08-21-china-visa-requirements-us-citizens-2026.md":
+    usChinaVisaMarkdown,
+  "content/journal/articles/2026-08-21-guilin-yangshuo-itinerary-5-days.md": guilinYangshuoMarkdown,
+  "content/journal/articles/2026-08-21-shanghai-itinerary-4-days.md": shanghaiFourDayMarkdown,
+  "content/journal/articles/2026-08-21-where-to-stay-in-beijing-first-time.md": beijingStayMarkdown,
+  "content/journal/articles/2026-08-21-where-to-stay-in-shanghai-first-time.md":
+    shanghaiStayMarkdown,
+  "content/journal/articles/2026-08-21-xian-itinerary-3-days.md": xianThreeDayMarkdown,
+  "content/journal/articles/2026-08-21-yunnan-itinerary-10-days.md": yunnanTenDayMarkdown,
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {
@@ -91,7 +203,13 @@ function polishJournalContent(content: JournalContentBlock[]) {
   return content.map<JournalContentBlock>((block) => {
     if (block.type === "heading") {
       emphasizeNextParagraph = block.level !== 3;
-      return { ...block, title: toJournalDisplayTitleCase(block.title) };
+      return {
+        ...block,
+        title:
+          block.title === "A Fuller Season, Not a Smaller One"
+            ? block.title
+            : toJournalDisplayTitleCase(block.title),
+      };
     }
 
     if (block.type === "paragraph" && emphasizeNextParagraph) {
@@ -129,6 +247,8 @@ function parseJournalMarkdown(markdown: string) {
     "## Suggested structured data",
     "## Structured Data Recommendation",
     "## SEO & GEO Review",
+    "## Sources",
+    "## Review Notes",
   ]);
   const sources = section(markdown, "## Sources", "## Review Notes");
   return {
@@ -279,6 +399,7 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
         image: {
           src: image[2],
           alt: image[1],
+          ...fullFrameImageMetadata[image[2]],
         },
       });
       pendingImageIndex = blocks.length - 1;
@@ -343,6 +464,15 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
     if (line.startsWith("> ")) {
       flushText();
       const body = cleanMarkdown(line.slice(2));
+      const testimonial = body.match(/^[“"](.+?)[”"]\s+[—-]\s+(.+)$/);
+      if (testimonial) {
+        blocks.push({
+          type: "quote",
+          quote: testimonial[1],
+          attribution: testimonial[2],
+        });
+        continue;
+      }
       blocks.push({
         type: "callout",
         tone: /warning|important|do not|must/i.test(body) ? "warning" : "note",

@@ -3,9 +3,59 @@ import type { JournalArticle } from "@/types/journal";
 type JournalEditorialUpgrade = {
   title: string;
   seoTitle: string;
+  preserveTitleCase?: boolean;
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "china-tours-for-seniors": {
+    title: "China Tours for Seniors: What a Good Tour Should Actually Change",
+    seoTitle: "China Tours for Seniors: What Good Tours Change",
+  },
+  "best-places-to-visit-china-first-time": {
+    title: "Best Places to Visit in China for a First Trip: Choose by Experience, Not Fame",
+    seoTitle: "Best Places to Visit in China for First-Time Visitors",
+  },
+  "china-trip-with-older-parents": {
+    title: "Planning a China Trip With Older Parents: 12 Questions Before Booking",
+    seoTitle: "China Trip With Older Parents: 12 Booking Questions",
+  },
+  "china-tours-seniors-limited-mobility": {
+    title: "China Tours for Seniors With Limited Mobility: What Can and Cannot Be Adapted",
+    seoTitle: "China Tours for Seniors With Limited Mobility",
+  },
+  "how-much-does-a-trip-to-china-cost": {
+    title: "How Much Does a Trip to China Cost? Build a Budget That Matches the Journey",
+    seoTitle: "How Much Does a Trip to China Cost? Budget Guide",
+  },
+  "private-china-tour-vs-self-guided": {
+    title: "Private China Tour or Self-Guided Trip? Decide by the Work You Want to Own",
+    seoTitle: "Private China Tour vs Self-Guided Trip: Compare",
+  },
+  "china-tours-from-usa": {
+    title: "China Tours From the USA: Plan the Land Trip Around the Long-Haul Flights",
+    seoTitle: "China Tours From USA: Flights, Routes & Local Support",
+  },
+  "luxury-china-tour-planning-guide": {
+    title: "Luxury China Tours: What Should Be Better Beyond the Hotel Name?",
+    seoTitle: "Luxury China Tours: A Private Journey Buyer's Guide",
+  },
+  "beijing-or-shanghai-first-time": {
+    title: "Beijing or Shanghai for a First Trip? Start With the Experience You Want",
+    seoTitle: "Beijing or Shanghai for First-Time Visitors? Compare",
+  },
+  "two-week-china-itinerary-first-time": {
+    title: "Two Weeks in China: A First-Time Itinerary With Four Different Chapters",
+    seoTitle: "Two Weeks in China: First-Time 14-Day Itinerary",
+  },
+  "first-trip-to-china-planning-guide": {
+    title: "How AVIORA Plans a First Trip to China Before You Book",
+    seoTitle: "How to Plan a Trip to China: 12 Decisions Before Booking",
+    preserveTitleCase: true,
+  },
+  "how-much-walking-china-tour": {
+    title: "How Much Walking Is There on a China Tour?",
+    seoTitle: "How Much Walking Is There on a China Tour?",
+  },
   "terracotta-warriors-day-trip-from-beijing": {
     title: "Can You Visit the Terracotta Warriors from Beijing in One Day?",
     seoTitle: "Terracotta Warriors Day Trip from Beijing: Is It Worth It?",
@@ -41,6 +91,10 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
   "9-days-or-11-days-in-china": {
     title: "9 or 11 Days in China? Choose the Better First-Trip Route",
     seoTitle: "9 or 11 Days in China? Compare 2 First-Trip Routes",
+  },
+  "how-many-days-beijing-xian-shanghai": {
+    title: "How Many Days Do You Need for Beijing, Xi'an and Shanghai? 8, 10 or 12 Days Compared",
+    seoTitle: "Beijing, Xi'an & Shanghai: 8, 10 or 12 Days?",
   },
   "private-china-tour-vs-group-tour": {
     title: "Private China Tour vs Group Tour: Cost, Pace and Support Compared",
@@ -79,8 +133,9 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     seoTitle: "China Family Itinerary: 10, 12 and 14 Days",
   },
   "china-itinerary-older-travelers-10-days": {
-    title: "China Itinerary for Older Travelers: A Comfortable 10-Day Plan",
-    seoTitle: "China Itinerary for Older Travelers: 10 Days",
+    title: "A 12-Day China Itinerary at an Easier Pace",
+    seoTitle: "China Itinerary for Seniors: 12 Days at an Easier Pace",
+    preserveTitleCase: true,
   },
   "how-many-days-in-china-7-10-14-day-itineraries": {
     title: "How Many Days Do You Need in China? 7, 10 and 14-Day Plans",
@@ -206,6 +261,46 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     title: "Bringing Prescription Medicine to China: Documents and Customs Checklist",
     seoTitle: "Bringing Prescription Medicine to China: 2026 Guide",
   },
+  "where-to-stay-in-beijing-first-time": {
+    title: "Where to Stay in Beijing for a First Visit: Five Areas Compared",
+    seoTitle: "Where to Stay in Beijing First Time: 5 Best Areas",
+  },
+  "shanghai-itinerary-4-days": {
+    title: "Four Days in Shanghai: A First-Time Itinerary That Leaves Room to Look",
+    seoTitle: "Shanghai Itinerary: 4 Days for First-Time Visitors",
+  },
+  "beijing-itinerary-4-days": {
+    title: "Four Days in Beijing: A First-Time Itinerary With a Proper Great Wall Day",
+    seoTitle: "Beijing Itinerary: 4 Days With the Great Wall",
+  },
+  "where-to-stay-in-shanghai-first-time": {
+    title: "Where to Stay in Shanghai for a First Visit: Five Areas Compared",
+    seoTitle: "Where to Stay in Shanghai First Time: 5 Best Areas",
+  },
+  "xian-itinerary-3-days": {
+    title: "Three Days in Xi'an: A First-Time Itinerary Beyond the Terracotta Army",
+    seoTitle: "Xi'an Itinerary: 3 Days for First-Time Visitors",
+  },
+  "guilin-yangshuo-itinerary-5-days": {
+    title: "Five Days in Guilin and Yangshuo: River, Karst and Countryside",
+    seoTitle: "Guilin and Yangshuo Itinerary: 5 Days",
+  },
+  "best-apps-for-china-travel-2026": {
+    title: "Best Apps for China Travel in 2026: What to Set Up Before You Fly",
+    seoTitle: "Best Apps for China Travel in 2026: Setup Guide",
+  },
+  "yunnan-itinerary-10-days": {
+    title: "10-Day Yunnan Itinerary: Two Routes Through Dali, Lijiang and Shangri-La",
+    seoTitle: "10-Day Yunnan Itinerary: Two Routes Compared",
+  },
+  "china-packing-list-2026": {
+    title: "China Packing List for 2026: What Foreign Visitors Actually Need",
+    seoTitle: "China Packing List 2026: What You Actually Need",
+  },
+  "china-visa-requirements-us-citizens-2026": {
+    title: "China Visa Requirements for US Citizens in 2026: Tourist Visa vs 240-Hour Transit",
+    seoTitle: "China Visa for US Citizens 2026: Visa vs Transit",
+  },
 };
 
 export function applyJournalEditorialUpgrade(article: JournalArticle): JournalArticle {
@@ -214,7 +309,7 @@ export function applyJournalEditorialUpgrade(article: JournalArticle): JournalAr
 
   return {
     ...article,
-    title: toJournalDisplayTitleCase(upgrade.title),
+    title: upgrade.preserveTitleCase ? upgrade.title : toJournalDisplayTitleCase(upgrade.title),
     seo: {
       ...article.seo,
       title: upgrade.seoTitle,

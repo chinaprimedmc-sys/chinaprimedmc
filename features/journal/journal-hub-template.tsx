@@ -21,7 +21,7 @@ export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps
     <PageContainer tone="white" className="journal-page">
       <SiteNavigation
         items={homeNavItems}
-        cta={{ label: "Start Planning", href: "/start-planning" }}
+        cta={{ label: "Plan My Trip", href: "/start-planning" }}
         className="home-navigation-entrance journal-navigation"
         tone="light"
         showWhatsapp={false}
@@ -75,7 +75,7 @@ export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps
               size="sm"
               icon={<ArrowRight size={16} aria-hidden="true" />}
             >
-              Start Planning
+              Plan My Trip
             </CtaButton>
             <a
               href="https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%20would%20like%20help%20choosing%20the%20right%20China%20journey."
@@ -83,7 +83,7 @@ export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps
               rel="noreferrer"
               className="inline-flex min-h-11 items-center border-b border-black/25 px-1 text-sm font-semibold text-neutral-800 transition-colors hover:border-black hover:text-black"
             >
-              Message An Advisor
+              Message Our China Team
             </a>
           </div>
         </ContentContainer>
@@ -103,7 +103,7 @@ export function JournalHubTemplate({ featured, latest }: JournalHubTemplateProps
             title: "Planning",
             items: [
               { label: "Private China tours", href: "/tours" },
-              { label: "Start planning", href: "/start-planning" },
+              { label: "Plan My Trip", href: "/start-planning" },
               { label: "Email us", href: "mailto:chinaprimedmc@gmail.com" },
             ],
           },

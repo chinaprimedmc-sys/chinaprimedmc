@@ -1,15 +1,15 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { CtaButton } from "@/components/cta";
 import {
   CheckboxField,
   RadioField,
+  SelectField,
   TextAreaField,
   TextField,
-  TravelerSelector,
 } from "@/components/forms";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -19,20 +19,18 @@ import { isTurnstileConfigured, TurnstileWidget } from "@/components/security/tu
 import { trackEvent } from "@/lib/analytics/events";
 
 type PlanningFormState = {
-  travelerType: string;
-  adults: number;
-  children: number;
+  travelerType: "family" | "couple" | "solo" | "small-group" | "undecided" | null;
+  adults: number | null;
+  children: number | null;
   travelingWithSeniors: boolean;
   timing: string;
   duration: string;
   destinations: string[];
-  budgetTier: "comfortable" | "luxury" | "ultra-bespoke";
+  budgetTier: "comfortable" | "luxury" | "ultra-bespoke" | null;
   styles: string[];
   name: string;
   email: string;
   whatsapp: string;
-  phone: string;
-  contactMethods: string[];
   notes: string;
 };
 
@@ -56,20 +54,18 @@ type CurrentJourney = {
 };
 
 const initialState: PlanningFormState = {
-  travelerType: "family",
-  adults: 2,
-  children: 0,
+  travelerType: null,
+  adults: null,
+  children: null,
   travelingWithSeniors: false,
   timing: "",
   duration: "",
   destinations: [],
-  budgetTier: "comfortable",
-  styles: ["family"],
+  budgetTier: null,
+  styles: [],
   name: "",
   email: "",
   whatsapp: "",
-  phone: "",
-  contactMethods: ["email"],
   notes: "",
 };
 
@@ -83,12 +79,15 @@ export function StartPlanningForm({
   savedJourneys = [],
   currentJourney,
   preference,
+  placement = "start_planning_page",
 }: {
   savedJourneys?: string[];
   currentJourney?: CurrentJourney;
   preference?: string;
+  placement?: string;
 }) {
   const preferenceLabel = getPreferenceLabel(preference);
+  const preferenceDefaults = getPreferenceDefaults(preference);
   const journeyNotes = currentJourney
     ? `I'd like to request a private proposal for:\n${currentJourney.title}${preferenceLabel ? `\n\nPlanning preference: ${preferenceLabel}` : ""}`
     : savedJourneys.length
@@ -99,6 +98,7 @@ export function StartPlanningForm({
   const [step, setStep] = useState(0);
   const [state, setState] = useState<PlanningFormState>({
     ...initialState,
+    ...preferenceDefaults,
     notes: journeyNotes,
   });
   const [submitted, setSubmitted] = useState(false);
@@ -106,24 +106,72 @@ export function StartPlanningForm({
   const [submitError, setSubmitError] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+  const formStarted = useRef(false);
+  const submittedRef = useRef(false);
+  const abandonTracked = useRef(false);
+  const currentStep = useRef(step);
   const handleTurnstileToken = useCallback((token: string) => setTurnstileToken(token), []);
 
-  useEffect(() => {
-    trackEvent("form_start", { saved_journeys: savedJourneys.length });
-  }, [savedJourneys.length, currentJourney?.slug]);
-
   const progress = ((step + 1) / steps.length) * 100;
+  const directWhatsAppHref = currentJourney
+    ? `https://wa.me/447985052302?text=${encodeURIComponent(`Hello AVIORA, I would like help planning a private journey based on ${currentJourney.title}.`)}`
+    : "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%20would%20like%20help%20planning%20a%20private%20journey%20in%20China.";
+
+  useEffect(() => {
+    trackEvent("form_view", { placement });
+  }, [placement]);
+
+  useEffect(() => {
+    currentStep.current = step;
+  }, [step]);
+
+  useEffect(() => {
+    const recordAbandonment = () => {
+      if (!formStarted.current || submittedRef.current || abandonTracked.current) return;
+      abandonTracked.current = true;
+      trackEvent("form_abandon", {
+        placement,
+        step: currentStep.current + 1,
+      });
+    };
+
+    window.addEventListener("pagehide", recordAbandonment);
+    return () => {
+      window.removeEventListener("pagehide", recordAbandonment);
+      recordAbandonment();
+    };
+  }, [placement]);
+
+  function recordFormStart() {
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackEvent("form_start", {
+      saved_journeys: savedJourneys.length,
+      journey: currentJourney?.slug ?? "",
+      preference: preference ?? "",
+      placement,
+    });
+  }
 
   function advanceStep() {
+    recordFormStart();
+    const validationError = validateStep(step, state);
+    if (validationError) {
+      setSubmitError(validationError);
+      return;
+    }
+    setSubmitError("");
     trackEvent("form_step_complete", { step: step + 1, label: steps[step].label });
     setStep((current) => current + 1);
   }
 
   function update<K extends keyof PlanningFormState>(key: K, value: PlanningFormState[K]) {
+    recordFormStart();
     setState((current) => ({ ...current, [key]: value }));
   }
 
-  function toggleList(key: "destinations" | "styles" | "contactMethods", value: string) {
+  function toggleList(key: "destinations" | "styles", value: string) {
+    recordFormStart();
     setState((current) => {
       const set = new Set(current[key]);
       if (set.has(value)) {
@@ -136,50 +184,60 @@ export function StartPlanningForm({
   }
 
   if (submitted) {
-    const whatsappHref = currentJourney
-      ? `https://wa.me/447985052302?text=${encodeURIComponent(`Hello AVIORA, I have just submitted an enquiry about ${currentJourney.title}.`)}`
-      : "https://wa.me/447985052302";
-
     return (
-      <Card className="p-6 md:p-8">
-        <div className="grid gap-6">
-          <div className="bg-foreground text-background grid size-14 place-items-center rounded-full">
+      <Card className="rounded-none border-neutral-950/12 p-6 shadow-none md:p-8">
+        <div className="grid gap-7">
+          <div className="bg-foreground text-background grid size-12 place-items-center rounded-full">
             <CheckCircle2 size={24} aria-hidden="true" />
           </div>
           <div>
             <p className="text-muted text-xs font-semibold tracking-[0.18em] uppercase">
-              Enquiry received
+              Request received
             </p>
-            <h2 className="mt-4 text-3xl leading-tight font-semibold tracking-[-0.03em] md:text-5xl">
-              Your enquiry is with our China team.
+            <h2 className="mt-3 text-3xl leading-tight font-semibold tracking-[-0.03em] md:text-4xl">
+              We have your travel brief.
             </h2>
             <p className="text-muted mt-4 max-w-2xl text-sm leading-7 md:text-base">
-              A China specialist will review your route direction, dates and traveler needs, then
-              reply personally within 24 hours.
+              A China specialist will review it personally and reply through the contact detail you
+              provided, normally within 24 hours.
             </p>
           </div>
-          <CtaButton
-            href={whatsappHref}
-            variant="whatsappFrosted"
-            icon={<MessageCircle size={16} aria-hidden="true" />}
-            target="_blank"
-            rel="noreferrer"
-            data-cta-placement="form-success-whatsapp"
-            data-journey-slug={currentJourney?.slug}
-          >
-            Continue on WhatsApp
-          </CtaButton>
-          <button
-            type="button"
-            className="rounded-full border border-white/75 bg-white/52 px-4 py-2.5 text-sm font-semibold text-[var(--text-primary)] shadow-[var(--button-glass-shadow-subtle)] backdrop-blur-xl transition hover:border-white hover:bg-white/82 hover:shadow-[var(--button-glass-shadow)]"
-            onClick={() => {
-              setSubmitted(false);
-              setStep(0);
-              setSubmitError("");
-            }}
-          >
-            Review answers
-          </button>
+          <ol className="grid gap-0 border-y border-[var(--border)]">
+            {[
+              ["01", "We review the route, pace and practical needs in your brief."],
+              ["02", "We reply with the most useful next questions or a clear first direction."],
+              ["03", "Once the route is agreed, you receive services and pricing in writing."],
+            ].map(([number, copy]) => (
+              <li
+                key={number}
+                className="grid grid-cols-[2.25rem_1fr] gap-3 border-b border-[var(--border)] py-3.5 text-sm leading-6 last:border-b-0"
+              >
+                <span className="text-muted font-semibold">{number}</span>
+                <span>{copy}</span>
+              </li>
+            ))}
+          </ol>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <CtaButton
+              href={directWhatsAppHref}
+              variant="whatsappFrosted"
+              icon={<MessageCircle size={16} aria-hidden="true" />}
+              target="_blank"
+              rel="noreferrer"
+              data-cta-placement="form-success-whatsapp"
+              data-journey-slug={currentJourney?.slug}
+            >
+              Message Our China Team
+            </CtaButton>
+            <CtaButton
+              href="/tours"
+              variant="outline"
+              icon={<ArrowRight size={16} aria-hidden="true" />}
+              data-cta-placement="form-success-journeys"
+            >
+              Explore Journeys
+            </CtaButton>
+          </div>
         </div>
       </Card>
     );
@@ -231,7 +289,7 @@ export function StartPlanningForm({
             return;
           }
 
-          const validationError = validateContactStep(state);
+          const validationError = validateStep(step, state);
           if (validationError) {
             setSubmitError(validationError);
             return;
@@ -246,7 +304,10 @@ export function StartPlanningForm({
 
           try {
             const sourceContext = getSourceContext();
-            trackEvent("form_submit", { source: sourceContext.utmSource || "direct" });
+            trackEvent("form_submit", {
+              source: sourceContext.sourcePage.slice(0, 160),
+              journey: sourceContext.journeySlug,
+            });
             const response = await fetch("/api/inquiries", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -263,8 +324,12 @@ export function StartPlanningForm({
               throw new Error(result.error || "We could not save your inquiry.");
             }
 
+            submittedRef.current = true;
             setSubmitted(true);
-            trackEvent("form_success", { source: sourceContext.utmSource || "direct" });
+            trackEvent("form_success", {
+              source: sourceContext.sourcePage.slice(0, 160),
+              journey: sourceContext.journeySlug,
+            });
           } catch (error) {
             setTurnstileResetSignal((current) => current + 1);
             setSubmitError(
@@ -284,21 +349,23 @@ export function StartPlanningForm({
           <div key="planning-step-1" className="planning-form-step grid gap-6">
             <div className="grid gap-5 md:grid-cols-2">
               <TextField
-                label="Approximate travel dates"
-                helper="Month, season, exact dates, or school-holiday window."
-                placeholder="e.g. October 2026 or Easter break"
+                label="When might you travel?"
+                helper="A month, season, exact dates, or 'not sure yet' is enough."
+                placeholder="October 2026 or not sure yet"
+                required
                 value={state.timing}
                 onChange={(event) => update("timing", event.target.value)}
               />
-              <TextField
+              <SelectField
                 label="Approximate trip length"
-                helper="A rough number is enough."
-                placeholder="e.g. 10-12 days"
+                helper="Choose the closest range. You can change it later."
+                placeholder="Select a trip length"
+                options={startPlanningOptions.tripLengths}
                 value={state.duration}
-                onChange={(event) => update("duration", event.target.value)}
+                onValueChange={(value) => update("duration", value)}
               />
             </div>
-            <fieldset className="grid gap-3 sm:grid-cols-2">
+            <fieldset className="grid gap-3">
               <legend className="mb-2 text-sm font-semibold">Who are you travelling with?</legend>
               <div className="grid gap-3 sm:grid-cols-2">
                 {startPlanningOptions.travelerTypes.map((option) => (
@@ -306,25 +373,39 @@ export function StartPlanningForm({
                     key={option.value}
                     name="travelerType"
                     label={option.label}
-                    helper={option.helper}
                     value={option.value}
                     checked={state.travelerType === option.value}
-                    onChange={() => update("travelerType", option.value)}
+                    onChange={() =>
+                      update("travelerType", option.value as PlanningFormState["travelerType"])
+                    }
                   />
                 ))}
               </div>
             </fieldset>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <TravelerSelector
-                label="Adults"
-                value={state.adults}
+            <div className="grid gap-5 sm:grid-cols-2">
+              <TextField
+                label="Adults travelling"
+                type="number"
                 min={1}
-                onChange={(value) => update("adults", value)}
+                max={20}
+                inputMode="numeric"
+                required
+                value={state.adults ?? ""}
+                onChange={(event) =>
+                  update("adults", event.target.value ? Number(event.target.value) : null)
+                }
               />
-              <TravelerSelector
-                label="Children"
-                value={state.children}
-                onChange={(value) => update("children", value)}
+              <TextField
+                label="Children travelling"
+                helper="Leave blank if no children are travelling."
+                type="number"
+                min={0}
+                max={20}
+                inputMode="numeric"
+                value={state.children ?? ""}
+                onChange={(event) =>
+                  update("children", event.target.value ? Number(event.target.value) : null)
+                }
               />
             </div>
             <CheckboxField
@@ -364,7 +445,9 @@ export function StartPlanningForm({
               ))}
             </fieldset>
             <fieldset className="grid gap-3">
-              <legend className="mb-2 text-sm font-semibold">Preferred comfort level</legend>
+              <legend className="mb-2 text-sm font-semibold">
+                Preferred comfort level <span className="text-muted font-normal">(optional)</span>
+              </legend>
               {startPlanningOptions.budgetTiers.map((option) => (
                 <RadioField
                   key={option.value}
@@ -391,6 +474,9 @@ export function StartPlanningForm({
 
         {step === 2 ? (
           <div key="planning-step-3" className="planning-form-step grid gap-5">
+            <p className="text-muted text-sm leading-6">
+              Enter either an email address or WhatsApp number. You do not need to provide both.
+            </p>
             <div className="grid gap-5 md:grid-cols-2">
               <TextField
                 label="Name"
@@ -412,23 +498,6 @@ export function StartPlanningForm({
                 value={state.whatsapp}
                 onChange={(event) => update("whatsapp", event.target.value)}
               />
-              <TextField
-                label="Phone"
-                placeholder="+44 ..."
-                value={state.phone}
-                onChange={(event) => update("phone", event.target.value)}
-              />
-            </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {startPlanningOptions.contactMethods.map((option) => (
-                <CheckboxField
-                  key={option.value}
-                  label={option.label}
-                  helper={option.helper}
-                  checked={state.contactMethods.includes(option.value)}
-                  onChange={() => toggleList("contactMethods", option.value)}
-                />
-              ))}
             </div>
             <input
               type="text"
@@ -469,7 +538,7 @@ export function StartPlanningForm({
               ? submitting
                 ? "Submitting..."
                 : turnstileToken
-                  ? "Send My Inquiry"
+                  ? "Plan My Trip"
                   : "Preparing Secure Form..."
               : "Continue"}
             <ArrowRight size={16} aria-hidden="true" />
@@ -480,24 +549,34 @@ export function StartPlanningForm({
             {submitError}
           </p>
         ) : null}
+        {step === steps.length - 1 ? (
+          <p className="text-muted text-center text-sm leading-6">
+            Prefer a direct conversation?{" "}
+            <a
+              href={directWhatsAppHref}
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-[var(--text-primary)] underline decoration-black/25 underline-offset-4"
+            >
+              Message Our China Team
+            </a>
+          </p>
+        ) : null}
       </form>
     </Card>
   );
 }
 
-function validateContactStep(state: PlanningFormState) {
+function validateStep(step: number, state: PlanningFormState) {
+  if (step === 0) {
+    if (!state.timing.trim()) return "Please share a travel month, dates, or enter 'not sure yet'.";
+    if (!state.travelerType) return "Please tell us who you expect to travel with.";
+    if (!state.adults || state.adults < 1) return "Please enter the number of adults travelling.";
+  }
+  if (step < 2) return "";
   if (!state.name.trim()) return "Please enter your name.";
-  if (!state.email.trim() && !state.whatsapp.trim() && !state.phone.trim()) {
-    return "Please provide an email address, WhatsApp number, or phone number.";
-  }
-  if (state.contactMethods.includes("email") && !state.email.trim()) {
-    return "Please enter your email address or choose another contact method.";
-  }
-  if (state.contactMethods.includes("whatsapp") && !state.whatsapp.trim()) {
-    return "Please enter your WhatsApp number or choose another contact method.";
-  }
-  if (state.contactMethods.includes("phone") && !state.phone.trim()) {
-    return "Please enter your phone number or choose another contact method.";
+  if (!state.email.trim() && !state.whatsapp.trim()) {
+    return "Please provide either an email address or WhatsApp number.";
   }
   return "";
 }
@@ -544,6 +623,9 @@ function getPreferenceLabel(value?: string) {
   if (!value) return "";
   const labels: Record<string, string> = {
     "slower-pacing": "Choose a slower pace",
+    "walking-comfort": "Review the route around our walking comfort",
+    "trip-length-comparison": "Help us decide between 10 and 12 days",
+    "route-reality-check": "Review our dates, flights and proposed China route",
     "fewer-hotels": "Reduce hotel changes",
     family: "Travel with children",
     "dietary-needs": "Plan around dietary needs",
@@ -551,6 +633,22 @@ function getPreferenceLabel(value?: string) {
     nature: "Spend more time in nature",
   };
   return labels[value] ?? value.replaceAll("-", " ");
+}
+
+function getPreferenceDefaults(value?: string): Partial<PlanningFormState> {
+  if (
+    value !== "walking-comfort" &&
+    value !== "trip-length-comparison" &&
+    value !== "route-reality-check"
+  ) {
+    return {};
+  }
+
+  return {
+    duration: "11-14 days",
+    destinations: ["beijing", "xian", "shanghai"],
+    styles: ["slow-travel"],
+  };
 }
 
 function readStoredAttribution() {

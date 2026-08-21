@@ -383,16 +383,26 @@ export function EditorialDestinationTemplate({
                   href={journey.href}
                   className="group grid gap-5 sm:grid-cols-[.8fr_1.2fr]"
                 >
-                  <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#eceee9]">
-                    <OptimizedImage
-                      src={journey.image.src}
-                      alt={journey.image.alt}
-                      fill
-                      sizes="(min-width:768px) 30vw, 100vw"
-                      frameClassName="absolute inset-0 h-full w-full"
-                      className="object-cover transition duration-700 group-hover:scale-105"
-                      style={{ objectPosition: journey.image.objectPosition }}
-                    />
+                  <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#25352f]">
+                    {journey.visualStatus === "pending" ? (
+                      <span className="absolute inset-0 flex flex-col justify-end gap-2 p-5 text-white/75">
+                        <span className="mb-auto block h-px w-12 bg-white/45" />
+                        <span className="text-xs font-semibold">Photography being prepared</span>
+                        <span className="text-[11px] leading-5 text-white/55">
+                          Route and service details are ready to plan
+                        </span>
+                      </span>
+                    ) : (
+                      <OptimizedImage
+                        src={journey.image.src}
+                        alt={journey.image.alt}
+                        fill
+                        sizes="(min-width:768px) 30vw, 100vw"
+                        frameClassName="absolute inset-0 h-full w-full"
+                        className="object-cover transition duration-700 group-hover:scale-105"
+                        style={{ objectPosition: journey.image.objectPosition }}
+                      />
+                    )}
                   </span>
                   <span className="self-center">
                     <span className="text-xs font-semibold tracking-[.15em] text-[#607868] uppercase">
@@ -500,7 +510,7 @@ export function EditorialDestinationTemplate({
             title: "Planning",
             items: [
               { label: "Private journeys", href: "/tours" },
-              { label: "Start planning", href: "/start-planning" },
+              { label: "Plan My Trip", href: "/start-planning" },
               { label: "Travel FAQ", href: "/faq" },
             ],
           },

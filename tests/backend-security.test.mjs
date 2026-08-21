@@ -54,8 +54,6 @@ test("inquiry validation requires selected contact details", () => {
     name: "Test Traveler",
     email: "",
     whatsapp: "",
-    phone: "",
-    contactMethods: ["email"],
     turnstileToken: "test-token",
   };
   assert.equal(inquirySchema.safeParse(base).success, false);
@@ -79,8 +77,6 @@ test("honeypot values are rejected", () => {
     name: "Test Traveler",
     email: "traveler@example.com",
     whatsapp: "",
-    phone: "",
-    contactMethods: ["email"],
     website: "spam.example",
     turnstileToken: "test-token",
   });

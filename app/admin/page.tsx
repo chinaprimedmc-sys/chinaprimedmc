@@ -63,7 +63,7 @@ export default async function AdminDashboardPage() {
             >
               <div>
                 <p className="font-semibold">{item.name}</p>
-                <p className="text-muted text-sm">{item.email || item.whatsapp || item.phone}</p>
+                <p className="text-muted text-sm">{item.email || item.whatsapp}</p>
               </div>
               <p className="text-muted text-sm">
                 {new Date(item.created_at).toLocaleString("zh-CN")}

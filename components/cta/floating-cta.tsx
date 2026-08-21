@@ -4,7 +4,7 @@ import { CtaButton } from "@/components/cta/cta-button";
 import { cn } from "@/lib/utils/cn";
 
 export function FloatingCta({
-  label = "Start Planning",
+  label = "Plan My Trip",
   href = "/contact",
   className,
   placement,

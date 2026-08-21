@@ -137,7 +137,7 @@ No travel company can guarantee a border decision. AVIORA can review itinerary l
 
 ## Conversion CTA
 
-**Planning a visa-free China stopover?** Send AVIORA the travelers’ passport nationalities, complete inbound and outbound flight sequence, dates and preferred pace. We will suggest a route shape and identify the policy points that still need official confirmation. [Start planning](/start-planning).
+**Planning a visa-free China stopover?** Send AVIORA the travelers’ passport nationalities, complete inbound and outbound flight sequence, dates and preferred pace. We will suggest a route shape and identify the policy points that still need official confirmation. [Plan my trip](/start-planning).
 
 ## SEO & GEO Review
 

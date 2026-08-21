@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { isKnownPublicDetailPath } from "@/config/public-route-slugs";
 import { getAdminSessionCookieName, verifyAdminSession } from "@/lib/admin/session";
 
-const protectedPrefixes = ["/admin", "/api/admin", "/component-showcase", "/component-playground"];
+const protectedPrefixes = ["/admin", "/api/admin"];
 const publicAdminPaths = new Set(["/admin/login", "/api/admin/session"]);
 const retiredAdminPaths = new Set([
   "/admin/analytics",

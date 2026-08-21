@@ -88,8 +88,8 @@ export default function FaqPage() {
             title="Your own dates and priorities deserve a personal answer."
             description="Tell us who is going, when you hope to travel and what you want from China."
             primary={{
-              label: "Email a Specialist",
-              href: "mailto:chinaprimedmc@gmail.com?subject=Question%20for%20a%20China%20Specialist",
+              label: "Plan My Trip",
+              href: "/start-planning?source=faq",
             }}
             secondary={{
               label: "Browse Tours",

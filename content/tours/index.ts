@@ -1,6 +1,10 @@
 import { destinationAsset } from "@/content/destinations/assets";
 import { beijingXianChengduShanghaiTour } from "@/content/tours/beijing-xian-chengdu-shanghai";
 import { chengduChongqingZhangjiajieTour } from "@/content/tours/chengdu-chongqing-zhangjiajie";
+import { chinaConsidered12DayTour } from "@/content/tours/china-considered-12-day";
+import { chinaFamily12DayTour } from "@/content/tours/china-family-12-day";
+import { yunnanTeaHorseRoad10DayTour } from "@/content/tours/yunnan-tea-horse-road-10-day";
+import { muslimFriendlyChinaDesert13DayTour } from "@/content/tours/muslim-friendly-china-desert-13-day";
 import {
   beijingUnhurriedAsset,
   chengduAsset,
@@ -124,6 +128,10 @@ const chengduJiuzhaigouAsset = {
 };
 
 export const tours: Tour[] = [
+  chinaConsidered12DayTour,
+  chinaFamily12DayTour,
+  yunnanTeaHorseRoad10DayTour,
+  muslimFriendlyChinaDesert13DayTour,
   chengduChongqingZhangjiajieTour,
   beijingXianChengduShanghaiTour,
   {

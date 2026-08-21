@@ -1,6 +1,7 @@
 import { ArrowUpRight, CalendarDays, ChevronDown, Clock3 } from "lucide-react";
+import { Fragment } from "react";
 
-import { CtaButton } from "@/components/cta";
+import { CtaButton, TrackedLink } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { LightboxGallery } from "@/components/gallery/lightbox-gallery";
 import { ContentContainer } from "@/components/layout/content-container";
@@ -10,9 +11,10 @@ import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { homeNavItems } from "@/content/home/homepage";
 import { journalCategories } from "@/content/journal";
 import { getJournalSearchRole } from "@/content/journal/search-strategy";
+import { siteConfig } from "@/config/site";
 import { Section } from "@/design-system/primitives/section";
 import { RecordViewed } from "@/features/discovery/record-viewed";
-import { JournalJourneyBridge } from "@/features/journal/journey-bridge";
+import { JournalJourneyBridge, JournalJourneyPrompt } from "@/features/journal/journey-bridge";
 import { getJourneyBridgeForArticle } from "@/lib/content/journey-journal-links";
 import type { ContentRelationships } from "@/lib/content/relationship-engine";
 import type { JournalArticle, JournalContentBlock } from "@/types/journal";
@@ -39,7 +41,8 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
     `/start-planning?source=journal&content=${encodeURIComponent(article.slug)}`;
   const contextualPlanningHref = journeyBridge?.planningHref ?? planningHref;
   const advisorHref = getAdvisorHref(article);
-  const actionLabel = getArticleActionLabel(article);
+  const actionLabel = getArticleActionLabel();
+  const commercialCollection = getCommercialCollection(article.slug);
 
   return (
     <PageContainer tone="white" className="journal-page">
@@ -54,7 +57,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
       <SiteNavigation
         items={homeNavItems}
         className="home-navigation-entrance journal-navigation"
-        cta={{ label: "Start Planning", href: planningHref }}
+        cta={{ label: "Plan My Trip", href: planningHref }}
         tone="light"
         showWhatsapp={false}
         variant="default"
@@ -71,6 +74,30 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             <ArticleTrust article={article} />
             {leadAnswer ? <ArticleLeadAnswer answer={leadAnswer} /> : null}
             {planningLens ? <ArticlePlanningLens lens={planningLens} /> : null}
+            {commercialCollection ? (
+              <aside
+                className="mt-8 grid gap-4 border-y border-black/10 py-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-10"
+                aria-label={commercialCollection.label}
+              >
+                <div>
+                  <p className="text-[0.66rem] font-semibold text-neutral-500 uppercase">
+                    Compare Private Land Journeys
+                  </p>
+                  <p className="mt-1 max-w-2xl text-[0.9rem] leading-6 text-neutral-700">
+                    {commercialCollection.description}
+                  </p>
+                </div>
+                <TrackedLink
+                  href={commercialCollection.href}
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-neutral-950 md:justify-self-end"
+                  trackingLabel={commercialCollection.label}
+                  trackingPlacement="journal-commercial-collection"
+                >
+                  {commercialCollection.label}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </TrackedLink>
+              </aside>
+            ) : null}
             <div className="mt-8">
               {primaryArticleSections.map((section, index) => (
                 <ArticleContentSection
@@ -78,6 +105,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                   section={section}
                   index={index}
                   collapsible={collapseArticleSections}
+                  showJourneyPromptAfterQuote={article.slug === "how-much-walking-china-tour"}
                 />
               ))}
             </div>
@@ -100,6 +128,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                   section={section}
                   index={journeyInsertionIndex + index}
                   collapsible={collapseArticleSections}
+                  showJourneyPromptAfterQuote={article.slug === "how-much-walking-china-tour"}
                 />
               ))}
             </div>
@@ -255,15 +284,18 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                 rel="noreferrer"
                 size="sm"
                 icon={<ArrowUpRight size={16} aria-hidden="true" />}
+                data-cta-placement="journal-final-advisor"
               >
                 {actionLabel}
               </CtaButton>
-              <a
+              <TrackedLink
                 href={contextualPlanningHref}
                 className="border-b border-black/25 pb-1 text-sm font-semibold text-neutral-700 transition-colors hover:border-black hover:text-black"
+                trackingLabel="Plan My Trip"
+                trackingPlacement="journal-final-planning"
               >
-                Start Planning
-              </a>
+                Plan My Trip
+              </TrackedLink>
             </div>
           </div>
         </ContentContainer>
@@ -313,6 +345,8 @@ function JournalArticleHero({
   advisorHref: string;
   actionLabel: string;
 }) {
+  const preserveEditorialTitleCase = article.slug === "china-itinerary-older-travelers-10-days";
+
   return (
     <header className="journal-breathing-divider--bottom bg-white pt-5 pb-7 md:pt-7 md:pb-10">
       <ContentContainer size="xl">
@@ -320,10 +354,13 @@ function JournalArticleHero({
           <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-neutral-500 uppercase">
             {article.hero.eyebrow ?? article.category}
           </p>
-          <h1 className="mt-3 font-serif text-[2rem] leading-[1.03] font-medium tracking-normal text-balance text-neutral-950 sm:text-[2.5rem] md:text-[2.75rem] xl:whitespace-nowrap">
+          <h1
+            className="mt-3 max-w-[74rem] font-serif text-[2rem] leading-[1.03] font-medium tracking-normal text-balance text-neutral-950 sm:text-[2.5rem] md:text-[2.75rem]"
+            style={preserveEditorialTitleCase ? { textTransform: "none" } : undefined}
+          >
             {article.title}
           </h1>
-          <p className="mt-3 max-w-none text-[0.92rem] leading-6 text-neutral-800 md:text-[0.98rem] md:leading-7 xl:whitespace-nowrap">
+          <p className="mt-3 max-w-[72rem] text-[0.92rem] leading-6 text-neutral-800 md:text-[0.98rem] md:leading-7">
             {article.dek}
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 border-y border-black/10 py-3 text-xs font-medium text-neutral-700">
@@ -342,14 +379,16 @@ function JournalArticleHero({
             <a href="#article" className="border-b border-black pb-1 text-neutral-950">
               Read The Guide
             </a>
-            <a
+            <TrackedLink
               href={advisorHref}
               target="_blank"
               rel="noreferrer"
               className="border-b border-black/20 pb-1 text-neutral-600 transition-colors hover:border-black hover:text-neutral-950"
+              trackingLabel={actionLabel}
+              trackingPlacement="journal-hero-advisor"
             >
               {actionLabel}
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </ContentContainer>
@@ -366,15 +405,11 @@ function splitLeadAnswer(content: JournalContentBlock[]) {
   if (!content.length) return { leadAnswer: null, remainingContent: content };
 
   if (content[0]?.type === "paragraph") {
-    const firstHeadingIndex = content.findIndex((block) => block.type === "heading");
-    const endIndex = firstHeadingIndex === -1 ? Math.min(2, content.length) : firstHeadingIndex;
+    let endIndex = 0;
+    while (content[endIndex]?.type === "paragraph") endIndex += 1;
     const paragraphs = content
       .slice(0, endIndex)
-      .filter(
-        (block): block is Extract<JournalContentBlock, { type: "paragraph" }> =>
-          block.type === "paragraph",
-      )
-      .map((block) => block.body);
+      .map((block) => (block.type === "paragraph" ? block.body : ""));
 
     return {
       leadAnswer: paragraphs.length ? { title: "The Answer, Briefly", paragraphs } : null,
@@ -383,17 +418,11 @@ function splitLeadAnswer(content: JournalContentBlock[]) {
   }
 
   if (content[0]?.type === "heading") {
-    const nextHeadingIndex = content.findIndex(
-      (block, index) => index > 0 && block.type === "heading",
-    );
-    const endIndex = nextHeadingIndex === -1 ? content.length : nextHeadingIndex;
+    let endIndex = 1;
+    while (content[endIndex]?.type === "paragraph") endIndex += 1;
     const paragraphs = content
       .slice(1, endIndex)
-      .filter(
-        (block): block is Extract<JournalContentBlock, { type: "paragraph" }> =>
-          block.type === "paragraph",
-      )
-      .map((block) => block.body);
+      .map((block) => (block.type === "paragraph" ? block.body : ""));
 
     return {
       leadAnswer: paragraphs.length ? { title: "The Answer, Briefly", paragraphs } : null,
@@ -454,8 +483,19 @@ function ArticleTrust({ article }: { article: JournalArticle }) {
           </a>
         </div>
         <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-700">
-          Written from real private-tour operations in China. Before payment, date-sensitive rules,
-          ticket status, named services and binding contract terms are confirmed in writing.
+          Written from real private-tour operations in China by{" "}
+          {siteConfig.operator.englishReferenceName}, established in 2018. Before payment,
+          date-sensitive rules, ticket status, named services and binding terms are confirmed in
+          writing. Our travel-trade work has been independently covered by{" "}
+          <a
+            href="https://www.ttgasia.com/2026/07/30/matta-connect-gains-traction-as-b2b-platform/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-neutral-950 underline decoration-black/25 underline-offset-4"
+          >
+            TTG Asia
+          </a>
+          .
         </p>
       </div>
     </div>
@@ -515,7 +555,7 @@ function groupArticleSections(content: JournalContentBlock[]): ArticleContentSec
 
 function getJourneyInsertionIndex(sections: ArticleContentSectionData[]) {
   const semanticTransition = sections.findIndex((section) =>
-    /how (?:the )?route connects to (?:the )?product|how this becomes a journey|from advice to journey|what a trustworthy proposal should confirm/i.test(
+    /how (?:the )?route connects to (?:the )?product|how this becomes a journey|from advice to journey|what a trustworthy proposal should confirm|what you receive when AVIORA reviews the route/i.test(
       section.heading?.title ?? "",
     ),
   );
@@ -529,10 +569,12 @@ function ArticleContentSection({
   section,
   index,
   collapsible = false,
+  showJourneyPromptAfterQuote = false,
 }: {
   section: ArticleContentSectionData;
   index: number;
   collapsible?: boolean;
+  showJourneyPromptAfterQuote?: boolean;
 }) {
   if (collapsible && section.heading) {
     return (
@@ -557,6 +599,7 @@ function ArticleContentSection({
             <h2
               id={section.heading.id}
               className="scroll-mt-28 font-serif text-[1.55rem] leading-[1.14] font-medium text-neutral-950 md:text-[1.8rem]"
+              style={preserveHeadingCase(section.heading.title)}
             >
               {section.heading.title}
             </h2>
@@ -564,7 +607,12 @@ function ArticleContentSection({
         ) : null}
         <div className={cnList("grid gap-4", section.heading && "mt-4")}>
           {section.blocks.map((block, blockIndex) => (
-            <ArticleBlock key={`${block.type}-${blockIndex}`} block={block} />
+            <Fragment key={`${block.type}-${blockIndex}`}>
+              <ArticleBlock block={block} />
+              {showJourneyPromptAfterQuote && block.type === "quote" ? (
+                <JournalJourneyPrompt />
+              ) : null}
+            </Fragment>
           ))}
         </div>
       </div>
@@ -591,6 +639,7 @@ function CollapsibleArticleSection({
           <h2
             id={heading.id}
             className="scroll-mt-28 font-serif text-[1.35rem] leading-[1.15] font-medium text-neutral-950 md:text-[1.65rem]"
+            style={preserveHeadingCase(heading.title)}
           >
             {heading.title}
           </h2>
@@ -611,6 +660,12 @@ function CollapsibleArticleSection({
       </details>
     </section>
   );
+}
+
+function preserveHeadingCase(title: string) {
+  return title === "A Fuller Season, Not a Smaller One"
+    ? { textTransform: "none" as const }
+    : undefined;
 }
 
 function isItineraryArticle(article: JournalArticle) {
@@ -711,6 +766,11 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
         </aside>
       );
     case "image":
+      const showFullFrame = block.image.fit === "contain";
+      const isPortrait =
+        Boolean(block.image.width) &&
+        Boolean(block.image.height) &&
+        Number(block.image.height) > Number(block.image.width);
       return (
         <figure className="min-w-0">
           <OptimizedImage
@@ -720,11 +780,17 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
             height={block.image.height ?? 800}
             sizes="(min-width:1024px) 688px, 100vw"
             objectPosition={block.image.objectPosition}
-            frameClassName="aspect-[16/10] w-full rounded-lg bg-neutral-100 md:aspect-[16/9] md:max-h-[26rem]"
-            className="h-full w-full object-cover"
+            frameClassName={
+              showFullFrame
+                ? cnList("w-full rounded-lg bg-neutral-100", isPortrait && "mx-auto max-w-[34rem]")
+                : "aspect-[16/10] w-full rounded-lg bg-neutral-100 md:aspect-[16/9] md:max-h-[26rem]"
+            }
+            className={
+              showFullFrame ? "h-auto w-full object-contain" : "h-full w-full object-cover"
+            }
           />
           {block.caption ? (
-            <figcaption className="mt-2 text-xs leading-5 text-neutral-500">
+            <figcaption className="mt-2 px-2 text-center text-xs leading-5 text-neutral-500">
               {block.caption}
             </figcaption>
           ) : null}
@@ -864,27 +930,117 @@ function getArticlePlanningLens(article: JournalArticle): ArticlePlanningLensDat
         "Confirm local support and contingency plans for the moments when the published itinerary changes.",
       ],
     },
+    "Easier-paced China travel": {
+      title: "Place The Effort Before Choosing What Else Fits",
+      points: [
+        "Separate distance, stairs, standing, weather exposure and station movement instead of relying on a daily step target.",
+        "Protect recovery after the Great Wall, Forbidden City and Terracotta Army before adding optional sightseeing.",
+        "Confirm which assistance is arranged, which is only requested and what the historic site still requires.",
+      ],
+    },
+    "High-intent first China trip decisions": {
+      title: "Use Evidence To Make The Decision Before You Buy",
+      points: [
+        "Compare nights, complete transfers and published price assumptions instead of brochure day counts.",
+        "Choose the page type that matches the decision: guide for research, journey page for price and service scope.",
+        "Ask what is confirmed, what remains a request and who in China owns the response when an arranged service changes.",
+      ],
+    },
   };
 
   return lenses[role.pillar] ?? null;
 }
 
-function getArticleActionLabel(article: JournalArticle) {
-  const role = getJournalSearchRole(article.slug);
-  if (role?.intent === "compare") return "Help Me Choose";
-  if (role?.intent === "plan") return "Plan This Route";
-  if (role?.intent === "evaluate") return "Discuss My Trip";
-  if (role?.intent === "trust") return "Speak With Our China Team";
-  return "Check This For My Trip";
+function getArticleActionLabel() {
+  return "Message Our China Team";
+}
+
+function getCommercialCollection(slug: string) {
+  if (slug !== "china-tours-from-usa") return null;
+
+  return {
+    href: "/china-tours-from-usa",
+    label: "View China Tours From The USA",
+    description:
+      "See three published private routes, usable-night comparisons and land-price assumptions before matching the journey to your international flights.",
+  };
 }
 
 function getAdvisorHref(article: JournalArticle) {
+  const articlePrompts: Record<string, string[]> = {
+    "first-trip-to-china-planning-guide": [
+      "Proposed arrival and departure flights:",
+      "Cities we are considering:",
+      "Hotels or flights already booked:",
+      "What matters most to us:",
+    ],
+    "how-much-walking-china-tour": [
+      "Comfortable continuous walking time:",
+      "Stairs or standing concerns:",
+      "Preferred recovery pattern:",
+    ],
+    "how-many-days-beijing-xian-shanghai": [
+      "Length we are considering (8, 10 or 12 days):",
+      "International arrival and departure cities:",
+      "Preferred daily rhythm:",
+    ],
+    "best-places-to-visit-china-first-time": [
+      "Experiences that matter most:",
+      "Cities already under consideration:",
+      "Arrival and departure gateways:",
+    ],
+    "how-much-does-a-trip-to-china-cost": [
+      "Comfortable land budget per person:",
+      "Hotel and room expectations:",
+      "Cities and private support required:",
+    ],
+    "private-china-tour-vs-self-guided": [
+      "What we enjoy arranging ourselves:",
+      "Where we want local support:",
+      "Hotels or transport already booked:",
+    ],
+    "china-tours-from-usa": [
+      "US departure airport:",
+      "International flights being considered:",
+      "Usable nights wanted in China:",
+    ],
+    "luxury-china-tour-planning-guide": [
+      "Preferred hotels, rooms or suites:",
+      "Experiences that justify the journey:",
+      "Where privacy or specialist access matters:",
+    ],
+    "beijing-or-shanghai-first-time": [
+      "International flight options:",
+      "History, food, design or shopping priorities:",
+      "Other cities being considered:",
+    ],
+    "two-week-china-itinerary-first-time": [
+      "Preferred four-city or slower three-city version:",
+      "Pandas, food, landscape or extra time priorities:",
+      "Arrival and departure gateways:",
+    ],
+    "china-tours-for-seniors": [
+      "Comfortable continuous walking and standing time:",
+      "Room, meal or transfer requirements:",
+      "Tour or quotation being compared:",
+    ],
+    "china-trip-with-older-parents": [
+      "What each family member values:",
+      "Walking, room or meal considerations:",
+      "What the adult children do not want to manage:",
+    ],
+    "china-tours-seniors-limited-mobility": [
+      "Comfortable movement and standing pattern:",
+      "Steps, equipment or bathroom requirements:",
+      "Essential experiences we should test:",
+    ],
+  };
   const message = [
     "Hello AVIORA, I would like advice about this guide:",
     article.title,
     "Travel dates:",
     "Number of travelers:",
-    "What matters most to us:",
+    ...(articlePrompts[article.slug] ?? ["What matters most to us:"]),
   ].join("\n");
   return `https://wa.me/447985052302?text=${encodeURIComponent(message)}`;
 }
@@ -910,14 +1066,16 @@ function renderInlineContent(value: string, keyPrefix = "inline") {
 
     if (href) {
       return (
-        <a
+        <TrackedLink
           key={`${keyPrefix}-${href}-${index}`}
           href={href}
           className="font-medium text-neutral-950 underline decoration-black/25 underline-offset-4 hover:decoration-black"
+          trackingLabel={markdownLink?.[1] ?? token}
+          trackingPlacement="journal-inline-link"
           {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
         >
           {markdownLink ? renderInlineContent(markdownLink[1], `${keyPrefix}-${index}`) : token}
-        </a>
+        </TrackedLink>
       );
     }
 

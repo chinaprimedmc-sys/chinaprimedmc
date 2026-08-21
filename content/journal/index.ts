@@ -30,6 +30,7 @@ export const journalTags: JournalTag[] = [
   { slug: "shanghai", label: "Shanghai", type: "city" },
   { slug: "first-time-china", label: "First-time China", type: "travel-style" },
   { slug: "family-travel", label: "Family Travel", type: "audience" },
+  { slug: "senior-travel", label: "Easier-paced Travel", type: "audience" },
   { slug: "luxury-travel", label: "Luxury Travel", type: "travel-style" },
   { slug: "private-guides", label: "Private Guides", type: "theme" },
   { slug: "train-travel", label: "Train Travel", type: "experience" },
@@ -43,9 +44,16 @@ export const journalTags: JournalTag[] = [
   { slug: "singapore", label: "Singapore", type: "theme" },
 ];
 
-export const journalArticles: JournalArticle[] = publishedJournalArticles.map(
-  applyJournalEditorialUpgrade,
-);
+const removedJournalSlugs = new Set([
+  "9-days-or-11-days-in-china",
+  "is-private-china-tour-worth-it",
+  "china-honeymoon-itinerary-10-to-14-days",
+  "china-travel-safety-for-foreign-visitors",
+]);
+
+export const journalArticles: JournalArticle[] = publishedJournalArticles
+  .filter((article) => !removedJournalSlugs.has(article.slug))
+  .map(applyJournalEditorialUpgrade);
 
 export function getArticleBySlug(slug: string) {
   return journalArticles.find((article) => article.slug === slug);

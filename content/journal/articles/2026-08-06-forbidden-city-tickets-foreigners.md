@@ -139,7 +139,7 @@ The official visitor page states a daily limit of 40,000. That figure and all bo
 
 ## Conversion CTA
 
-**Want a Beijing day with the ticket, guide and walking pace aligned?** Tell AVIORA who is traveling, your preferred dates and mobility needs. We will design the day around confirmed access rather than a checklist. [Start planning](/start-planning).
+**Want a Beijing day with the ticket, guide and walking pace aligned?** Tell AVIORA who is traveling, your preferred dates and mobility needs. We will design the day around confirmed access rather than a checklist. [Plan my trip](/start-planning).
 
 ## SEO & GEO Review
 

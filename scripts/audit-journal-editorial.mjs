@@ -2,9 +2,11 @@ import { readFile } from "node:fs/promises";
 
 const articleSource = (
   await Promise.all(
-    ["content/journal/commercial.ts", "content/journal/published.ts"].map((file) =>
-      readFile(file, "utf8"),
-    ),
+    [
+      "content/journal/commercial.ts",
+      "content/journal/senior-cluster.ts",
+      "content/journal/published.ts",
+    ].map((file) => readFile(file, "utf8")),
   )
 ).join("\n");
 const editorialSource = await readFile("content/journal/editorial-upgrades.ts", "utf8");

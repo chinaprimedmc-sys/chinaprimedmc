@@ -43,7 +43,7 @@ const tourItems: DiscoveryItem[] = tours.map((tour) => ({
   title: tour.title,
   description: tour.subtitle,
   href: `/tours/${tour.slug}`,
-  image: tour.hero.image,
+  image: tour.visualStatus === "pending" ? undefined : tour.hero.image,
   category: "Private Tour",
   tags: [
     tour.slug,
@@ -141,14 +141,14 @@ const planningItems: DiscoveryItem[] = planningCards.map((card) => ({
     card.title.toLowerCase().replaceAll(" ", "-"),
     ...card.badges.map((badge) => badge.toLowerCase().replaceAll(" ", "-")),
   ],
-  familyFriendly: card.href === "/family-travel",
+  familyFriendly: card.href.includes("travellers=families"),
   privateTour: true,
 }));
 
 const startPlanningItem: DiscoveryItem = {
   id: "planning:start-planning",
   type: "experience",
-  title: "Start Planning",
+  title: "Plan My Trip",
   description:
     "A short multi-step inquiry for private China travelers covering who is traveling, dates, style, and contact preferences.",
   href: "/start-planning",
@@ -162,7 +162,10 @@ const audienceGuideItems: DiscoveryItem[] = audienceGuides.map((guide) => ({
   type: "experience",
   title: guide.slug === "family-travel" ? "Family Travel" : "Senior Travel",
   description: guide.summary,
-  href: `/${guide.slug}`,
+  href:
+    guide.slug === "family-travel"
+      ? "/tours?travellers=families"
+      : "/tours?needs=slower-pacing&pace=easy&sort=relaxed",
   image: guide.image,
   category: "Audience",
   tags: [
