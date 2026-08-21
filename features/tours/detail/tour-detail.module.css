@@ -1566,14 +1566,22 @@
 
   .heroPrice {
     display: grid;
-    grid-template-columns: max-content max-content;
+    grid-template-columns: max-content minmax(0, 1fr);
+    max-width: 100%;
     row-gap: 0.15rem;
     white-space: normal;
+    width: 100%;
+  }
+
+  .heroPrice strong {
+    justify-self: end;
   }
 
   .heroPrice small {
     grid-column: 1 / -1;
     line-height: 1.35;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .heroActions {
