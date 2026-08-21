@@ -12,8 +12,8 @@ const journeyProfiles = [
   {
     slug: "guangzhou-shenzhen-tailor-made-business-tour-4-day",
     audience:
-      "Executives, founders, buyers and small business teams with flights, meetings, exhibitions or supplier commitments in Guangzhou and Shenzhen",
-    pace: "Agenda-first and privately adjustable; fixed business commitments are placed before hotels, transport, bilingual support and optional cultural or technology modules",
+      "Executives, founders, buyers and small business teams seeking a private Guangzhou and Shenzhen business tour built around flights, meetings, exhibitions or supplier commitments",
+    pace: "A fully tailor-made 4–7 day business tour in the usual planning range, with the exact duration determined by the agenda; fixed business commitments are placed before hotels, transport, bilingual support and optional cultural or technology modules",
     evidence: [
       [
         "Guangzhou and Shenzhen tailor-made business product page",

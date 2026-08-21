@@ -140,7 +140,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       isAgendaFirstBusinessJourney && tour.inquiry.whatsappHref
         ? tour.inquiry.whatsappHref
         : tourWhatsAppHref(tour.title, tour.duration),
-    primaryActionLabel: isAgendaFirstBusinessJourney ? "Build Around My Schedule" : "Plan My Trip",
+    primaryActionLabel: isAgendaFirstBusinessJourney ? "Build My Business Journey" : "Plan My Trip",
     whatsappActionLabel: isAgendaFirstBusinessJourney
       ? "Send Us My Business Plans"
       : "Message Our China Team",

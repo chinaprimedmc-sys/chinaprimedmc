@@ -20,41 +20,44 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
   visualStatus: "pending",
   publishedAt: "2026-08-21",
   updatedAt: "2026-08-21",
-  title: "Four Days, Built Around Your Business",
+  title: "Your Greater Bay Business Tour, Built Around You",
   subtitle:
-    "Send us the flights, meetings and exhibition hours that are already fixed. We arrange Guangzhou, Shenzhen, hotels, private transport, bilingual support and meaningful time between them around your agenda.",
-  duration: "4 Days / 3 Nights",
+    "A private Guangzhou and Shenzhen business tour usually takes 4–7 days, but the length is never fixed. Send us your flights, meetings, exhibitions and supplier visits; we build the cities, hotels, transport, bilingual support and meaningful time around them.",
+  duration: "4–7 Days / Fully Tailor-Made",
   route: "Guangzhou, Shenzhen",
   styles: ["Business", "Luxury", "Culture", "Food"],
   hero: {
-    eyebrow: "AVIORA tailor-made Greater Bay business journey",
+    eyebrow: "Tailor-made Guangzhou & Shenzhen business tour",
     image: pendingImage,
-    primary: { label: "Build Around My Schedule", href: "#inquiry" },
+    primary: { label: "Build My Business Journey", href: "#inquiry" },
     secondary: { label: "See the Flexible Framework", href: "#itinerary" },
   },
   seo: {
-    title: "4-Day Guangzhou & Shenzhen Tailor-Made Business Tour",
+    title: "4–7 Day Guangzhou & Shenzhen Business Tour",
     description:
-      "A private 4-day Guangzhou and Shenzhen business tour built around your meetings, flights and exhibition dates, with premium hotels, private transport, bilingual support and flexible cultural or technology experiences.",
+      "A private 4–7 day Guangzhou and Shenzhen business journey—or a completely custom duration—built around your meetings, flights, exhibitions and supplier visits.",
     keywords: [
       "Guangzhou Shenzhen business tour",
-      "4 day Greater Bay Area itinerary",
+      "4 to 7 day Greater Bay Area itinerary",
       "Canton Fair private tour",
       "Guangzhou business travel support",
       "Shenzhen technology tour",
       "tailor made China business trip",
       "bilingual business assistant Guangzhou",
       "private business tour China",
+      "Guangzhou Shenzhen corporate travel",
+      "Greater Bay Area business travel itinerary",
     ],
   },
   overview: {
     pitch:
-      "This is not a fixed sightseeing package. Share what cannot move: flights, meetings, exhibition hours, supplier visits and preferred cities. AVIORA then builds the rooms, vehicles, bilingual support, meals and optional Guangzhou or Shenzhen experiences around those commitments. The four-day plan below is a useful starting framework, and every block can move, shorten or disappear.",
+      "This private business tour is not a fixed sightseeing package, and 4–7 days is a planning range rather than a choice between only four days and seven. Share what cannot move: flights, meetings, exhibition hours, supplier visits and preferred cities. AVIORA then determines the right number of nights and builds the rooms, vehicles, bilingual support, meals and optional Guangzhou or Shenzhen experiences around those commitments. The four-day plan below is simply a starting framework; every block can move, shorten, expand, disappear or be replaced.",
     facts: [
       {
         label: "Duration",
-        value: "4 days / 3 nights",
-        helper: "Extendable to two, five or six days without changing the planning method.",
+        value: "Usually 4–7 days; exact length is yours",
+        helper:
+          "Choose 4, 5, 6 or 7 days—or request a shorter or longer journey when your agenda requires it.",
       },
       {
         label: "Best For",
@@ -441,14 +444,19 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
   gallery: [],
   faqs: [
     {
-      question: "Is this a fixed four-day itinerary?",
+      question: "Is this limited to either four days or seven days?",
       answer:
-        "No. It is a private operating framework. Send us your flights, meetings, exhibition hours, supplier addresses and priorities. We place those fixed commitments first, then propose hotels, transfers, bilingual support, meals and optional cultural or technology modules around them. Every sample day can move, change or be removed before confirmation.",
+        "No. Most guests need somewhere between four and seven days, which can mean four, five, six or seven days. The duration is not selected from a fixed package menu. Send us your flights, meetings, exhibition hours, supplier addresses and priorities; we determine the useful number of nights and build the route, hotels, transfers, bilingual support, meals and optional experiences around them. Shorter or longer journeys can also be designed when the agenda calls for them.",
+    },
+    {
+      question: "Is this a business tour or a leisure sightseeing tour?",
+      answer:
+        "It is a private Guangzhou and Shenzhen business tour designed for executives, founders, buyers and small teams. Meetings, trade fairs, supplier visits, flights and working locations form the fixed spine of the trip. Hotels, private transport, bilingual support and optional cultural, dining or technology experiences are then arranged around the business agenda rather than competing with it.",
     },
     {
       question: "What does the US$2,280 starting price include?",
       answer:
-        "It is an indicative per-person starting price based on four guests sharing two rooms outside major exhibition and peak periods, equivalent to a group total from US$9,120. It assumes three premium hotel nights, the named private transfers and vehicle windows, confirmed bilingual support, breakfast, the selected Guangzhou culture module, one Shenzhen innovation chapter and China-based operating support as detailed in the written proposal.",
+        "It is the indicative per-person starting price for the sample four-day, three-night framework, based on four guests sharing two rooms outside major exhibition and peak periods, equivalent to a group total from US$9,120. It assumes three premium hotel nights, the named private transfers and vehicle windows, confirmed bilingual support, breakfast, the selected Guangzhou culture module, one Shenzhen innovation chapter and China-based operating support. Five-, six- and seven-day journeys are quoted according to the additional nights, service hours and experiences selected.",
     },
     {
       question: "Can two executives book this journey?",
@@ -478,7 +486,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
     {
       question: "Can the journey start in Shenzhen or end in Hong Kong?",
       answer:
-        "Yes. The four-day sequence can be reversed, kept in one city or extended into Hong Kong. Cross-boundary vehicles, immigration requirements, luggage and airport timing are different from mainland transfers, so the exact service and price are confirmed after the flights and passports are reviewed.",
+        "Yes. The sample sequence can be reversed, kept in one city or extended into Hong Kong. Cross-boundary vehicles, immigration requirements, luggage and airport timing are different from mainland transfers, so the exact service and price are confirmed after the flights and passports are reviewed.",
     },
     {
       question: "What level of bilingual business support is included?",
@@ -486,9 +494,9 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
         "The written proposal distinguishes a guide, interpreter and business assistant, and states service hours and meeting involvement. Sector specialization, simultaneous interpretation, negotiation, due diligence, factory audits and professional reports are not assumed; they can be scoped and quoted separately.",
     },
     {
-      question: "Can we extend the journey beyond four days?",
+      question: "Can you make the journey five, six or seven days—or another length?",
       answer:
-        "Yes. Additional fair days, supplier visits, factories, Hong Kong or leisure time can extend the framework to five or six days. AVIORA will show the added hotels, vehicle hours, bilingual support and confirmed visits as separate services before you commit.",
+        "Yes. Four to seven days is the most useful range for this Guangzhou and Shenzhen journey, but it is not a restriction. Additional fair days, supplier visits, factories, Hong Kong, recovery time or cultural experiences can determine the exact duration. AVIORA will show the additional hotels, vehicle hours, bilingual support and confirmed visits clearly before you commit.",
     },
   ],
   related: {

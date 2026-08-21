@@ -66,7 +66,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           journeysLabel: "Journeys",
           journeysHref: "/tours",
           planLabel: isAgendaFirstBusinessJourney
-            ? "Build Around My Schedule"
+            ? "Build My Business Journey"
             : "Plan This Journey",
           planHref: model.planningHref,
           journeySlug: model.slug,
@@ -114,7 +114,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               <div className={styles.heroPrice}>
                 <span>From</span>
                 <strong>US${model.price.fromUsd.toLocaleString("en-US")}</strong>
-                <small>per person · based on 4 guests sharing 2 rooms</small>
+                <small>
+                  {isAgendaFirstBusinessJourney
+                    ? "per person · 4-day starting framework · based on 4 guests sharing 2 rooms"
+                    : "per person · based on 4 guests sharing 2 rooms"}
+                </small>
               </div>
             ) : null}
             <div className={styles.heroActions}>
@@ -248,8 +252,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <p className={styles.eyebrow}>Journey overview</p>
                   <h2 id="tour-overview-title">{overviewTitle}</h2>
                   <p>
-                    {model.duration} with private guiding, considered pacing and{" "}
-                    {model.hotelStandard.toLowerCase()}.
+                    {isAgendaFirstBusinessJourney
+                      ? "Usually 4–7 days, with the exact length, cities and services shaped around your fixed business agenda."
+                      : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
                   </p>
                 </div>
               </div>
@@ -295,7 +300,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
         <section className={styles.section} id="itinerary" aria-labelledby="itinerary-title">
           <div className={styles.readingShell}>
             <div className={styles.sectionHeading}>
-              <p className={styles.eyebrow}>Day by day</p>
+              <p className={styles.eyebrow}>
+                {isAgendaFirstBusinessJourney ? "Sample 4-day framework" : "Day by day"}
+              </p>
               <h2 id="itinerary-title">
                 {isAgendaFirstBusinessJourney
                   ? "A sample framework, rebuilt around you."
@@ -303,7 +310,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               </h2>
               <p>
                 {isAgendaFirstBusinessJourney
-                  ? "Open a day to see one workable version. Your fixed meetings and flights always take priority."
+                  ? "Open a day to see one workable starting version. Choose 4, 5, 6 or 7 days—or another duration—and we rebuild it around your fixed meetings and flights."
                   : "Open a day to see the experience, transfers, meals and hotel plan."}
               </p>
             </div>

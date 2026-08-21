@@ -412,7 +412,7 @@ const muslimFriendlyChinaJourney: JourneyCatalogBase = {
 const greaterBayBusinessJourney: JourneyCatalogBase = {
   slug: greaterBayBusiness.slug,
   title: greaterBayBusiness.title,
-  eyebrow: "Tailor-made Greater Bay business gateway",
+  eyebrow: "Tailor-made Guangzhou & Shenzhen business tour",
   summary: greaterBayBusiness.subtitle,
   hook: "Your flights, meetings and exhibition hours come first; hotels, private transport, bilingual support and flexible cultural or technology modules are built around them.",
   image: greaterBayBusiness.hero.image,
@@ -420,7 +420,7 @@ const greaterBayBusinessJourney: JourneyCatalogBase = {
   href: `/tours/${greaterBayBusiness.slug}`,
   kind: "featured",
   routeLabel: greaterBayBusiness.route,
-  durationLabel: "4 days / 3 nights",
+  durationLabel: "4–7 days / fully tailor-made",
   styleFilters: ["Business", "Luxury", "Food", "Culture", "Modern China"],
   destinationFilters: ["Guangzhou", "Shenzhen"],
   bestForFilters: ["Executives", "Founders", "Buyers", "Small business teams"],
@@ -432,14 +432,14 @@ const greaterBayBusinessJourney: JourneyCatalogBase = {
     "mobility-aware",
     "food-focused",
   ],
-  recommendedDaysMin: 2,
-  recommendedDaysMax: 6,
+  recommendedDaysMin: 4,
+  recommendedDaysMax: 7,
   destinations: [
     { label: "Guangzhou", href: `/tours/${greaterBayBusiness.slug}#itinerary` },
     { label: "Shenzhen", href: `/tours/${greaterBayBusiness.slug}#itinerary` },
   ],
   planningNote:
-    "The four-day page is a sample operating framework. Confirmed flights, meetings, fairs and supplier addresses are placed first; either city may be reversed, removed or extended.",
+    "Four to seven days is the usual planning range, not a fixed package length. Confirmed flights, meetings, fairs and supplier addresses are placed first; the cities, nights and experiences are then built around them.",
 };
 
 const qingchengWellnessJourney: JourneyCatalogBase = {
@@ -810,7 +810,7 @@ const commercialPortfolio: Record<
 > = {
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
     commercialRole: "extension",
-    commercialRoleLabel: "Tailor-made Greater Bay business gateway",
+    commercialRoleLabel: "Tailor-made Guangzhou & Shenzhen business tour",
     commercialPriority: 91,
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
@@ -1049,9 +1049,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside major exhibition and peak periods, equivalent to a group total from US$9,120.",
     inclusionSummary:
-      "Includes 3 nights in selected premium business hotels, two rooms, the confirmed private transfers and vehicle windows, bilingual guide, interpreter or business-assistant support as stated, agenda planning, the selected Guangzhou market-to-kitchen culture module, one Shenzhen innovation chapter and China-based operating support.",
+      "The published starting price covers the sample 4-day, 3-night framework: selected premium business hotels, two rooms, confirmed private transfers and vehicle windows, bilingual support as stated, agenda planning, the selected Guangzhou market-to-kitchen culture module, one Shenzhen innovation chapter and China-based operating support.",
     finalPriceNote:
-      "Most fully tailored four-day versions fall between US$2,600 and US$3,600 per person. A typical two-guest version starts from approximately US$2,880 per person outside major exhibition periods.",
+      "Most journeys run for 4–7 days and are priced after the fixed agenda is reviewed. Fully tailored 4-day versions commonly fall between US$2,600 and US$3,600 per person; additional days, nights and service hours are quoted transparently. A typical two-guest 4-day version starts from approximately US$2,880 per person outside major exhibition periods.",
     additionalNote:
       "Major fair dates, extended vehicle or interpreter hours, named vehicle models, professional interpretation, supplier sourcing, factory audits, confirmed company access and Hong Kong cross-boundary services are quoted separately.",
   },
