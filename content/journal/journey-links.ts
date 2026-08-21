@@ -23,8 +23,14 @@ const QINGCHENG_WELLNESS = "qingcheng-mountain-private-wellness-retreat-10-day";
 const GREATER_BAY_BUSINESS = "guangzhou-shenzhen-tailor-made-business-tour-4-day";
 const MUTIANYU_DAY_TOUR = "private-mutianyu-great-wall-day-tour";
 const SHANGHAI_DAY_TOUR = "private-shanghai-day-tour-guide-driver";
+const XIAN_TERRACOTTA_DAY_TOUR = "private-xian-terracotta-warriors-day-tour";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  [XIAN_TERRACOTTA_DAY_TOUR]: [
+    "terracotta-army-tickets-foreign-visitors",
+    "beijing-xian-itinerary-how-many-days",
+    "china-mobile-payments-foreign-tourists",
+  ],
   [SHANGHAI_DAY_TOUR]: [
     "how-many-days-beijing-xian-shanghai",
     "shanghai-pudong-hongqiao-airport-guide",

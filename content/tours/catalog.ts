@@ -137,6 +137,9 @@ const mutianyuPrivateDayTour = tours.find(
 const privateShanghaiDayTour = tours.find(
   (tour) => tour.slug === "private-shanghai-day-tour-guide-driver",
 );
+const privateXianTerracottaDayTour = tours.find(
+  (tour) => tour.slug === "private-xian-terracotta-warriors-day-tour",
+);
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
 );
@@ -189,6 +192,10 @@ if (!mutianyuPrivateDayTour) {
 
 if (!privateShanghaiDayTour) {
   throw new Error("The private Shanghai day tour is required.");
+}
+
+if (!privateXianTerracottaDayTour) {
+  throw new Error("The private Xi'an Terracotta Warriors day tour is required.");
 }
 
 if (!beijingXianChengduShanghai) {
@@ -535,6 +542,53 @@ const privateShanghaiDayJourney: JourneyCatalogBase = {
   destinations: [{ label: "Shanghai", href: "/destinations/shanghai" }],
   planningNote:
     "The base tour begins and ends at a central Shanghai hotel. Airports, railway stations, cruise ports, evening extensions and additional private service hours are confirmed and priced separately before booking.",
+};
+
+const privateXianTerracottaDayJourney: JourneyCatalogBase = {
+  slug: privateXianTerracottaDayTour.slug,
+  title: privateXianTerracottaDayTour.title,
+  eyebrow: "Private Xi'an Terracotta Warriors day tour",
+  summary: privateXianTerracottaDayTour.subtitle,
+  hook: "See the Terracotta Warriors with passport-linked admission, a private guide and vehicle, then return to Xi'an's Old City without shopping stops, jade factories or uncertain logistics.",
+  image: privateXianTerracottaDayTour.hero.image,
+  visualStatus: "pending",
+  href: `/tours/${privateXianTerracottaDayTour.slug}`,
+  kind: "featured",
+  routeLabel: privateXianTerracottaDayTour.route,
+  durationLabel: "1 private day · about 8 hours",
+  styleFilters: ["Culture", "Family", "Senior-friendly", "Photography", "History"],
+  destinationFilters: ["Xi'an"],
+  bestForFilters: [
+    "First-time visitors",
+    "Couples",
+    "Families",
+    "Older travelers",
+    "Small private groups",
+  ],
+  experienceFilters: ["ancient-china", "local-life", "food", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "solo-travelers",
+  ],
+  planningNeedFilters: [
+    "muslim-friendly",
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 1,
+  recommendedDaysMax: 1,
+  destinations: [{ label: "Xi'an", href: "/destinations/xian" }],
+  planningNote:
+    "The base tour begins and ends at a central Xi'an hotel. Passport-linked admission, airport or railway-station connections, City Wall access, meals and hands-on clay making are confirmed and priced separately before booking.",
 };
 
 const qingchengWellnessJourney: JourneyCatalogBase = {
@@ -884,6 +938,7 @@ const xianBeijingJourney: JourneyCatalogBase = {
 };
 
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  privateXianTerracottaDayJourney,
   privateShanghaiDayJourney,
   mutianyuPrivateDayJourney,
   greaterBayBusinessJourney,
@@ -905,6 +960,11 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
 > = {
+  "private-xian-terracotta-warriors-day-tour": {
+    commercialRole: "essential",
+    commercialRoleLabel: "Private Terracotta Warriors day tour",
+    commercialPriority: 108,
+  },
   "private-shanghai-day-tour-guide-driver": {
     commercialRole: "essential",
     commercialRoleLabel: "Private Shanghai day tour",
@@ -986,6 +1046,20 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "private-xian-terracotta-warriors-day-tour": {
+    paceLabel: "Easy to moderate, privately adjusted around the group",
+    transportSummary:
+      "Private central-hotel pickup and return, private vehicle and driver for the museum and Old City route",
+    highlights: [
+      "See Pit 1 with military scale and formation explained",
+      "Use Pits 2 and 3 to understand cavalry, command and archaeology",
+      "Enter with passport-linked admission already arranged",
+      "Return to Xi'an's Old City without jade-factory detours",
+      "Add a hands-on clay-warrior session only when you choose it",
+    ],
+    bestForSummary:
+      "First-time Xi'an visitors, couples, families, older travelers and small private groups who want the Terracotta Army properly explained and professionally handled",
+  },
   "private-shanghai-day-tour-guide-driver": {
     paceLabel: "Easy to moderate, privately adjusted around the group",
     transportSummary:
@@ -1179,6 +1253,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, JourneyPricing> = {
+  "private-xian-terracotta-warriors-day-tour": {
+    fromUsd: 628,
+    basis:
+      "Indicative starting price per private group of four guests, equivalent to US$157 per guest. A two-guest private tour starts from US$498 total. Optional experiences, airports and railway-station transfers are separate.",
+    inclusionSummary:
+      "Includes central Xi'an hotel pickup and return, private vehicle and driver for the confirmed service window, private English-speaking guide, Terracotta Warriors museum admission, a flexible Xi'an Old City walk, bottled water and no compulsory shopping stops.",
+    finalPriceNote:
+      "Indicative private-group totals outside major holidays are: one guest US$438; two guests US$498; three guests US$568; four guests US$628; five guests US$745; and six guests US$870. The exact vehicle, hotel address, date and service window are checked before confirmation.",
+    additionalNote:
+      "Published upgrades include clay-warrior making from US$58 per guest, a selected Xi'an noodle lunch from US$28 per guest, City Wall admission from US$15 per guest and bicycle rental from US$18 per guest after admission.",
+  },
   "private-shanghai-day-tour-guide-driver": {
     fromUsd: 672,
     basis:

@@ -702,11 +702,13 @@ function JourneyResult({ item, reason }: { item: JourneyCatalogItem; reason: str
         <div className={styles.price}>
           <strong>From US${item.pricing.fromUsd.toLocaleString("en-US")}</strong>
           <span>
-            {item.slug === "private-shanghai-day-tour-guide-driver"
-              ? "per private group of 4 · US$168 per guest"
-              : item.slug === "private-mutianyu-great-wall-day-tour"
-                ? "per person · based on 4 private guests"
-                : "per person · 4 guests sharing 2 rooms"}
+            {item.slug === "private-xian-terracotta-warriors-day-tour"
+              ? "per private group of 4 · US$157 per guest"
+              : item.slug === "private-shanghai-day-tour-guide-driver"
+                ? "per private group of 4 · US$168 per guest"
+                : item.slug === "private-mutianyu-great-wall-day-tour"
+                  ? "per person · based on 4 private guests"
+                  : "per person · 4 guests sharing 2 rooms"}
           </span>
         </div>
         {reason ? (
