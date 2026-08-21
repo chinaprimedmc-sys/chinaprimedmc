@@ -143,6 +143,9 @@ const privateXianTerracottaDayTour = tours.find(
 const privateChengduPandaDayTour = tours.find(
   (tour) => tour.slug === "private-chengdu-panda-day-tour-early-morning",
 );
+const guilinYangshuoLiRiverDayTour = tours.find(
+  (tour) => tour.slug === "guilin-yangshuo-li-river-cruise-private-day-tour",
+);
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
 );
@@ -203,6 +206,10 @@ if (!privateXianTerracottaDayTour) {
 
 if (!privateChengduPandaDayTour) {
   throw new Error("The private Chengdu panda day tour is required.");
+}
+
+if (!guilinYangshuoLiRiverDayTour) {
+  throw new Error("The Guilin to Yangshuo Li River cruise day tour is required.");
 }
 
 if (!beijingXianChengduShanghai) {
@@ -644,6 +651,55 @@ const privateChengduPandaDayJourney: JourneyCatalogBase = {
     "The base product includes standard public Panda Base admission, an early central-hotel pickup and a flexible People's Park chapter. Specific pandas, cubs, behaviors, animal contact and behind-the-scenes access are never guaranteed.",
 };
 
+const guilinYangshuoLiRiverDayJourney: JourneyCatalogBase = {
+  slug: guilinYangshuoLiRiverDayTour.slug,
+  title: guilinYangshuoLiRiverDayTour.title,
+  eyebrow: "Guilin to Yangshuo Li River cruise day",
+  summary: guilinYangshuoLiRiverDayTour.subtitle,
+  hook: "Take the four-star public Li River cruise with private Guilin hotel pickup, English-speaking guide, luggage continuity and a finish chosen in advance: Yangshuo hotel or private return to Guilin.",
+  image: guilinYangshuoLiRiverDayTour.hero.image,
+  visualStatus: "pending",
+  href: `/tours/${guilinYangshuoLiRiverDayTour.slug}`,
+  kind: "featured",
+  routeLabel: guilinYangshuoLiRiverDayTour.route,
+  durationLabel: "1 private day · usually 9–11 hours",
+  styleFilters: ["Nature", "Culture", "Family", "Photography", "Senior-friendly"],
+  destinationFilters: ["Guilin", "Yangshuo"],
+  bestForFilters: [
+    "Couples",
+    "Families",
+    "First-time visitors",
+    "Older travelers",
+    "Photographers",
+    "Small private groups",
+  ],
+  experienceFilters: ["scenery", "photography", "local-life"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "solo-travelers",
+  ],
+  planningNeedFilters: [
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "photography-led",
+  ],
+  recommendedDaysMin: 1,
+  recommendedDaysMax: 1,
+  destinations: [
+    { label: "Guilin", href: `/tours/${guilinYangshuoLiRiverDayTour.slug}#itinerary` },
+    { label: "Yangshuo", href: `/tours/${guilinYangshuoLiRiverDayTour.slug}#itinerary` },
+  ],
+  planningNote:
+    "The included cruise is a scheduled four-star public passenger sailing, not a private charter. The base price finishes in Yangshuo; a private Guilin return is selected and priced before booking.",
+};
+
 const qingchengWellnessJourney: JourneyCatalogBase = {
   slug: qingchengWellness.slug,
   title: qingchengWellness.title,
@@ -991,6 +1047,7 @@ const xianBeijingJourney: JourneyCatalogBase = {
 };
 
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  guilinYangshuoLiRiverDayJourney,
   privateChengduPandaDayJourney,
   privateXianTerracottaDayJourney,
   privateShanghaiDayJourney,
@@ -1014,6 +1071,11 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
 > = {
+  "guilin-yangshuo-li-river-cruise-private-day-tour": {
+    commercialRole: "nature",
+    commercialRoleLabel: "Private Guilin & Yangshuo cruise day",
+    commercialPriority: 106,
+  },
   "private-chengdu-panda-day-tour-early-morning": {
     commercialRole: "essential",
     commercialRoleLabel: "Private Chengdu panda day tour",
@@ -1105,6 +1167,20 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "guilin-yangshuo-li-river-cruise-private-day-tour": {
+    paceLabel: "Easy to moderate, with a long scenic sailing and a privately managed finish",
+    transportSummary:
+      "Private central-Guilin hotel pickup and port transfer, shared four-star public cruise, private Yangshuo vehicle and optional private return to Guilin",
+    highlights: [
+      "Leave your Guilin hotel with the port and cruise plan confirmed",
+      "Travel through the Li River karst landscape on a four-star public cruise",
+      "Keep normal luggage moving privately to your Yangshuo hotel",
+      "Continue with a restrained private Yangshuo countryside chapter",
+      "Choose a Yangshuo finish or private Guilin return before payment",
+    ],
+    bestForSummary:
+      "Couples, families, first-time Guilin visitors, photographers, older travelers and small private groups who want the Li River cruise without the transfer and luggage uncertainty",
+  },
   "private-chengdu-panda-day-tour-early-morning": {
     paceLabel: "Early start, moderate walking and a slower central-Chengdu afternoon",
     transportSummary:
@@ -1326,6 +1402,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, JourneyPricing> = {
+  "guilin-yangshuo-li-river-cruise-private-day-tour": {
+    fromUsd: 688,
+    basis:
+      "Indicative starting price per private group of four guests for the version ending in Yangshuo, equivalent to US$172 per guest. A two-guest Yangshuo-finish tour starts from US$528 total. The four-guest central-Guilin return version starts from US$758 total.",
+    inclusionSummary:
+      "Includes central-Guilin hotel pickup, private vehicle and driver for the confirmed road-service window, private English-speaking guide, standard four-star public Li River cruise tickets, the standard onboard meal only when attached to the confirmed tickets, a short private Yangshuo countryside chapter, normal pre-confirmed luggage transfer to a Yangshuo hotel, bottled water and no compulsory shopping stops.",
+    finalPriceNote:
+      "Indicative Yangshuo-finish private-group totals outside major holidays are: one guest US$438; two guests US$528; three guests US$608; four guests US$688; five guests US$830; and six guests US$972. A central-Guilin return starts from an additional US$70 per group of up to four and is quoted for larger parties.",
+    additionalNote:
+      "Published upgrades include a Guilin return from US$70 per group of up to four, eligible Yulong River bamboo rafting from US$45 per guest, an extended private countryside route from US$128 per group and an evening performance from US$88 per guest before any added transport.",
+  },
   "private-chengdu-panda-day-tour-early-morning": {
     fromUsd: 598,
     basis:

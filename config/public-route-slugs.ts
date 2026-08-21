@@ -1,5 +1,6 @@
 export const publicRouteSlugs = {
   tours: [
+    "guilin-yangshuo-li-river-cruise-private-day-tour",
     "private-chengdu-panda-day-tour-early-morning",
     "private-xian-terracotta-warriors-day-tour",
     "private-shanghai-day-tour-guide-driver",

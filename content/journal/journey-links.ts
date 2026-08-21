@@ -25,8 +25,14 @@ const MUTIANYU_DAY_TOUR = "private-mutianyu-great-wall-day-tour";
 const SHANGHAI_DAY_TOUR = "private-shanghai-day-tour-guide-driver";
 const XIAN_TERRACOTTA_DAY_TOUR = "private-xian-terracotta-warriors-day-tour";
 const CHENGDU_PANDA_DAY_TOUR = "private-chengdu-panda-day-tour-early-morning";
+const GUILIN_LI_RIVER_DAY_TOUR = "guilin-yangshuo-li-river-cruise-private-day-tour";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  [GUILIN_LI_RIVER_DAY_TOUR]: [
+    "china-mobile-payments-foreign-tourists",
+    "best-time-to-visit-china",
+    "private-china-tour-cost-2026",
+  ],
   [CHENGDU_PANDA_DAY_TOUR]: [
     "chengdu-panda-base-tickets-foreigners",
     "how-many-days-in-chengdu-itinerary",
@@ -265,7 +271,7 @@ export const journeyJournalLinks: Record<string, JourneyJournalLinkRule> = Objec
 Object.assign(journeyJournalLinks, {
   "china-mobile-payments-foreign-tourists": {
     ...journeyJournalLinks["china-mobile-payments-foreign-tourists"],
-    alternativeJourneys: [FOUR_CITY, GREATER_BAY_BUSINESS],
+    alternativeJourneys: [FOUR_CITY, GREATER_BAY_BUSINESS, GUILIN_LI_RIVER_DAY_TOUR],
   },
   "china-sim-card-esim-internet-foreign-tourists": {
     ...journeyJournalLinks["china-sim-card-esim-internet-foreign-tourists"],
@@ -274,6 +280,13 @@ Object.assign(journeyJournalLinks, {
   "china-accommodation-registration-foreigners": {
     ...journeyJournalLinks["china-accommodation-registration-foreigners"],
     alternativeJourneys: [FOUR_CITY, GREATER_BAY_BUSINESS],
+  },
+  "best-time-to-visit-china": {
+    ...journeyJournalLinks["best-time-to-visit-china"],
+    alternativeJourneys: [
+      ...(journeyJournalLinks["best-time-to-visit-china"]?.alternativeJourneys ?? []),
+      GUILIN_LI_RIVER_DAY_TOUR,
+    ],
   },
   "first-trip-to-china-planning-guide": {
     primaryJourney: CHINA_CONSIDERED,
@@ -418,6 +431,10 @@ Object.assign(journeyJournalLinks, {
   },
   "private-china-tour-cost-2026": {
     ...journeyJournalLinks["private-china-tour-cost-2026"],
+    alternativeJourneys: [
+      ...(journeyJournalLinks["private-china-tour-cost-2026"]?.alternativeJourneys ?? []),
+      GUILIN_LI_RIVER_DAY_TOUR,
+    ],
     title: "See what a considered private route includes",
     description:
       "Use a real multi-city journey to understand how pacing, hotels, private guiding and rail arrangements come together before a written quotation.",

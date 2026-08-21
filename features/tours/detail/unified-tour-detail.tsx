@@ -43,11 +43,13 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
   const isPrivateXianTerracottaDayTour = model.slug === "private-xian-terracotta-warriors-day-tour";
   const isPrivateChengduPandaDayTour =
     model.slug === "private-chengdu-panda-day-tour-early-morning";
+  const isGuilinLiRiverDayTour = model.slug === "guilin-yangshuo-li-river-cruise-private-day-tour";
   const isPrivateDayTour =
     isMutianyuPrivateDayTour ||
     isPrivateShanghaiDayTour ||
     isPrivateXianTerracottaDayTour ||
-    isPrivateChengduPandaDayTour;
+    isPrivateChengduPandaDayTour ||
+    isGuilinLiRiverDayTour;
   const overviewTitle = model.route
     ? `${model.route.replace(/, ([^,]+)$/, " & $1")}, privately.`
     : `A private ${model.duration.toLowerCase()} journey.`;
@@ -85,7 +87,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   ? "Check My Date"
                   : isPrivateChengduPandaDayTour
                     ? "Check My Date"
-                    : "Plan This Journey",
+                    : isGuilinLiRiverDayTour
+                      ? "Check My Cruise Date"
+                      : "Plan This Journey",
           planHref: model.planningHref,
           journeySlug: model.slug,
         }}
@@ -141,9 +145,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                         ? "per private group of 4 · equivalent to US$157 per guest"
                         : isPrivateChengduPandaDayTour
                           ? "per private group of 4 · approximately US$150 per guest"
-                          : isMutianyuPrivateDayTour
-                            ? "per person · based on 4 guests traveling privately"
-                            : "per person · based on 4 guests sharing 2 rooms"}
+                          : isGuilinLiRiverDayTour
+                            ? "per private group of 4 · Yangshuo finish · US$172 per guest"
+                            : isMutianyuPrivateDayTour
+                              ? "per person · based on 4 guests traveling privately"
+                              : "per person · based on 4 guests sharing 2 rooms"}
                 </small>
               </div>
             ) : null}
@@ -206,9 +212,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                         ? "Four Xi'an chapters that make the army make sense."
                         : isPrivateChengduPandaDayTour
                           ? "Four Chengdu chapters built around a better panda morning."
-                          : isMutianyuPrivateDayTour
-                            ? "A Great Wall day with the loose ends handled."
-                            : "Five chapters you can already picture."}
+                          : isGuilinLiRiverDayTour
+                            ? "Four chapters from Guilin pickup to your chosen finish."
+                            : isMutianyuPrivateDayTour
+                              ? "A Great Wall day with the loose ends handled."
+                              : "Five chapters you can already picture."}
                 </h2>
                 <p>
                   {isAgendaFirstBusinessJourney
@@ -219,7 +227,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                         ? "Your hotel, passport-linked admission, museum route, private vehicle and return are checked in advance, so you can focus on what the army actually reveals."
                         : isPrivateChengduPandaDayTour
                           ? "Your early pickup, public admission, private vehicle and guide are confirmed in advance, then the panda-base route adapts to live openings, crowds, weather and visible animal activity."
-                          : "This is not simply a list of places. Here is what will be in front of you, what you will take part in and why each chapter earns its place in the journey."}
+                          : isGuilinLiRiverDayTour
+                            ? "Your hotel pickup, public cruise ticket, port, luggage plan and finish are connected in advance, so the one-way river journey does not leave you solving transport after arrival."
+                            : "This is not simply a list of places. Here is what will be in front of you, what you will take part in and why each chapter earns its place in the journey."}
                 </p>
               </div>
               <ol className={styles.experienceChapterList}>
@@ -300,9 +310,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                           ? "A private, professionally prepared Terracotta Warriors day from your central Xi'an hotel, with no overnight stay required."
                           : isPrivateChengduPandaDayTour
                             ? "A private, responsibly prepared panda and Chengdu culture day from your central hotel, with no overnight stay required."
-                            : isPrivateShanghaiDayTour
-                              ? "A private, professionally prepared Shanghai city day from your central hotel, with no overnight stay required."
-                              : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
+                            : isGuilinLiRiverDayTour
+                              ? "A four-star public Li River cruise connected by private hotel pickup, guide, road vehicle, luggage handling and the finish your itinerary actually needs."
+                              : isPrivateShanghaiDayTour
+                                ? "A private, professionally prepared Shanghai city day from your central hotel, with no overnight stay required."
+                                : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
                   </p>
                 </div>
               </div>
@@ -353,7 +365,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   ? "Sample 4-day framework"
                   : isMutianyuPrivateDayTour
                     ? "Your day, from hotel pickup to return"
-                    : "Day by day"}
+                    : isGuilinLiRiverDayTour
+                      ? "Your day, from Guilin pickup to your chosen finish"
+                      : "Day by day"}
               </p>
               <h2 id="itinerary-title">
                 {isAgendaFirstBusinessJourney
@@ -365,7 +379,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   ? "Open a day to see one workable starting version. Choose 4, 5, 6 or 7 days—or another duration—and we rebuild it around your fixed meetings and flights."
                   : isMutianyuPrivateDayTour
                     ? "Open the day to see what is already included, what remains optional and how the route is adapted to your group."
-                    : "Open a day to see the experience, transfers, meals and hotel plan."}
+                    : isGuilinLiRiverDayTour
+                      ? "Open the day to see how the port, public cruise, luggage, Yangshuo chapter and two finish choices connect."
+                      : "Open a day to see the experience, transfers, meals and hotel plan."}
               </p>
             </div>
             <TourDayAccordion days={model.days} journeySlug={model.slug} />
@@ -387,7 +403,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       ? "Add only the Xi'an experiences that matter to you."
                       : isPrivateChengduPandaDayTour
                         ? "Add only the Chengdu experiences that improve your day."
-                        : "Choose your way up and down."}
+                        : isGuilinLiRiverDayTour
+                          ? "Choose your finish, then add only what fits."
+                          : "Choose your way up and down."}
                 </h2>
                 <p>
                   {isPrivateShanghaiDayTour
@@ -396,7 +414,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       ? "Terracotta Warriors admission and the private museum day are already included. Each upgrade states whether its price covers admission, an experience, added private service time or a combination of them."
                       : isPrivateChengduPandaDayTour
                         ? "Standard Panda Base admission, private transport, guide and the People's Park chapter are already included. Each upgrade states whether it covers food, tea, an experience or additional private service time."
-                        : "Admission and the scenic-area shuttle are already included. These are optional operator services, shown separately so you only pay for the route that suits your group."}
+                        : isGuilinLiRiverDayTour
+                          ? "The four-star public cruise ticket, private Guilin pickup, guide, Yangshuo vehicle and Yangshuo-finish luggage plan are already included. The Guilin return and other additions are priced separately."
+                          : "Admission and the scenic-area shuttle are already included. These are optional operator services, shown separately so you only pay for the route that suits your group."}
                 </p>
               </div>
               <div className={styles.optionalChoiceGrid}>
@@ -419,7 +439,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                     ? "Optional experiences are subject to date-specific availability. The exact host, admission, added service hours and total are confirmed in writing before you pay."
                     : isPrivateChengduPandaDayTour
                       ? "Optional experiences are subject to date-specific availability. The exact menu, host, tickets, added service hours and total are confirmed in writing before you pay."
-                      : "Final mountain-transport prices follow the scenic-area operator's confirmed rate for your date. Toboggan, chairlift and cable-car operation remain subject to live weather, maintenance and safety decisions."}
+                      : isGuilinLiRiverDayTour
+                        ? "Cruise tickets and optional experiences are date-specific. The assigned port, sailing, chosen finish, luggage plan, eligibility rules, added service time and exact total are confirmed in writing before you pay."
+                        : "Final mountain-transport prices follow the scenic-area operator's confirmed rate for your date. Toboggan, chairlift and cable-car operation remain subject to live weather, maintenance and safety decisions."}
               </p>
             </div>
           </section>
@@ -451,7 +473,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       ? "A fully private Xi'an day with hotel pickup, passport-linked museum admission, guide, vehicle, Old City chapter and return handled by one China-based team."
                       : isPrivateChengduPandaDayTour
                         ? "A fully private Chengdu day with early hotel pickup, Panda Base admission, guide, vehicle, People's Park chapter and return handled by one China-based team."
-                        : "A privately managed journey, selected stays and one China-based team responsible for the details from arrival to departure."}
+                        : isGuilinLiRiverDayTour
+                          ? "A shared four-star Li River cruise with the private hotel pickup, port transfer, guide, luggage, Yangshuo land chapter and chosen finish handled by one China-based team."
+                          : "A privately managed journey, selected stays and one China-based team responsible for the details from arrival to departure."}
               </p>
             </div>
 
@@ -465,28 +489,36 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   )}
                   <div>
                     <p className={styles.subheading}>
-                      {isPrivateDayTour ? "Your pickup and return" : "Your hotels"}
+                      {isPrivateDayTour
+                        ? isGuilinLiRiverDayTour
+                          ? "Your pickup and chosen finish"
+                          : "Your pickup and return"
+                        : "Your hotels"}
                     </p>
                     <h3>
                       {isPrivateDayTour
-                        ? isPrivateChengduPandaDayTour
-                          ? "Door-to-door central Chengdu service"
-                          : isPrivateXianTerracottaDayTour
-                            ? "Door-to-door central Xi'an service"
-                            : isPrivateShanghaiDayTour
-                              ? "Door-to-door central Shanghai service"
-                              : "Door-to-door Beijing service"
+                        ? isGuilinLiRiverDayTour
+                          ? "Guilin pickup · Yangshuo finish or Guilin return"
+                          : isPrivateChengduPandaDayTour
+                            ? "Door-to-door central Chengdu service"
+                            : isPrivateXianTerracottaDayTour
+                              ? "Door-to-door central Xi'an service"
+                              : isPrivateShanghaiDayTour
+                                ? "Door-to-door central Shanghai service"
+                                : "Door-to-door Beijing service"
                         : model.hotelStandard}
                     </h3>
                     <p>
                       {isPrivateDayTour
-                        ? isPrivateChengduPandaDayTour
-                          ? "Your central Chengdu hotel or confirmed central address"
-                          : isPrivateXianTerracottaDayTour
-                            ? "Your central Xi'an hotel or confirmed central address"
-                            : isPrivateShanghaiDayTour
-                              ? "Your central Shanghai hotel or confirmed central address"
-                              : "Your Beijing hotel or confirmed central address"
+                        ? isGuilinLiRiverDayTour
+                          ? "Your central Guilin hotel to the final address confirmed in writing"
+                          : isPrivateChengduPandaDayTour
+                            ? "Your central Chengdu hotel or confirmed central address"
+                            : isPrivateXianTerracottaDayTour
+                              ? "Your central Xi'an hotel or confirmed central address"
+                              : isPrivateShanghaiDayTour
+                                ? "Your central Shanghai hotel or confirmed central address"
+                                : "Your Beijing hotel or confirmed central address"
                         : model.hotelDestinations.join(" · ")}
                     </p>
                   </div>
@@ -495,8 +527,14 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <li>
                     <Check size={15} aria-hidden="true" />
                     <span>
-                      <strong>Private throughout.</strong> Guides and transfers are arranged for
-                      your party.
+                      <strong>
+                        {isGuilinLiRiverDayTour
+                          ? "Private handling around the public cruise."
+                          : "Private throughout."}
+                      </strong>{" "}
+                      {isGuilinLiRiverDayTour
+                        ? "Your guide and road transport are private; the scheduled four-star vessel is shared with other passengers."
+                        : "Guides and transfers are arranged for your party."}
                     </span>
                   </li>
                   <li>
@@ -506,13 +544,15 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                         {isPrivateDayTour ? "Clear before the day." : "Named before booking."}
                       </strong>{" "}
                       {isPrivateDayTour
-                        ? isPrivateChengduPandaDayTour
-                          ? "Your early pickup, admission basis, Panda Base plan, service window and selected upgrades are stated before you confirm."
-                          : isPrivateXianTerracottaDayTour
-                            ? "Your pickup, passport-linked admission, museum plan, service window and selected upgrades are stated before you confirm."
-                            : isPrivateShanghaiDayTour
-                              ? "Your pickup, Yu Garden admission, ferry plan, service window and selected upgrades are stated before you confirm."
-                              : "Your pickup, ticket plan, service window and selected mountain transport are stated before you confirm."
+                        ? isGuilinLiRiverDayTour
+                          ? "Your pickup, cruise category, known port, luggage plan, finish, service window and selected upgrades are stated before you confirm."
+                          : isPrivateChengduPandaDayTour
+                            ? "Your early pickup, admission basis, Panda Base plan, service window and selected upgrades are stated before you confirm."
+                            : isPrivateXianTerracottaDayTour
+                              ? "Your pickup, passport-linked admission, museum plan, service window and selected upgrades are stated before you confirm."
+                              : isPrivateShanghaiDayTour
+                                ? "Your pickup, Yu Garden admission, ferry plan, service window and selected upgrades are stated before you confirm."
+                                : "Your pickup, ticket plan, service window and selected mountain transport are stated before you confirm."
                         : "Every hotel and room category is listed in your written proposal before you confirm."}
                     </span>
                   </li>
@@ -533,7 +573,8 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                     <span>
                       {isPrivateShanghaiDayTour ||
                       isPrivateXianTerracottaDayTour ||
-                      isPrivateChengduPandaDayTour
+                      isPrivateChengduPandaDayTour ||
+                      isGuilinLiRiverDayTour
                         ? "per private group of 4"
                         : "per person"}
                     </span>

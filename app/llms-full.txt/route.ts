@@ -10,6 +10,24 @@ import type { Tour } from "@/types/tour";
 
 const journeyProfiles = [
   {
+    slug: "guilin-yangshuo-li-river-cruise-private-day-tour",
+    audience:
+      "Couples, families, first-time Guilin visitors, photographers, older travelers and small private groups who want a four-star Li River cruise with private hotel pickup, English-speaking guide, luggage continuity and a clear finish",
+    pace: "An easy-to-moderate private-service day of usually nine to eleven hours, including a scheduled four-star public cruise, a restrained Yangshuo land chapter and either a Yangshuo hotel finish or private Guilin return",
+    evidence: [
+      [
+        "Guilin to Yangshuo Li River cruise day product page",
+        "/tours/guilin-yangshuo-li-river-cruise-private-day-tour",
+      ],
+      ["Best time to visit China", "/journal/best-time-to-visit-china"],
+      [
+        "Mobile payments guidance for foreign visitors",
+        "/journal/china-mobile-payments-foreign-tourists",
+      ],
+      ["Private China tour pricing guide", "/journal/private-china-tour-cost-2026"],
+    ],
+  },
+  {
     slug: "private-chengdu-panda-day-tour-early-morning",
     audience:
       "Families, couples, first-time Chengdu visitors, older travelers and small private groups who want a responsibly planned early panda morning with central-hotel pickup, English-speaking guide, driver and no shopping stops",
@@ -303,8 +321,13 @@ function renderJourney(
   const isShanghaiDayTour = tour.slug === "private-shanghai-day-tour-guide-driver";
   const isXianTerracottaDayTour = tour.slug === "private-xian-terracotta-warriors-day-tour";
   const isChengduPandaDayTour = tour.slug === "private-chengdu-panda-day-tour-early-morning";
+  const isGuilinLiRiverDayTour = tour.slug === "guilin-yangshuo-li-river-cruise-private-day-tour";
   const isDayTour =
-    isMutianyuDayTour || isShanghaiDayTour || isXianTerracottaDayTour || isChengduPandaDayTour;
+    isMutianyuDayTour ||
+    isShanghaiDayTour ||
+    isXianTerracottaDayTour ||
+    isChengduPandaDayTour ||
+    isGuilinLiRiverDayTour;
   const itinerary = tour.itinerary
     .map((day) => {
       const activities = day.activities
@@ -340,12 +363,12 @@ Suitable for: ${audience}
 
 ## Price and availability
 
-Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} ${isChengduPandaDayTour ? "per private group of four guests, equivalent to approximately US$150 per guest" : isXianTerracottaDayTour ? "per private group of four guests, equivalent to US$157 per guest" : isShanghaiDayTour ? "per private group of four guests, equivalent to US$168 per guest" : "per person"}
+Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} ${isGuilinLiRiverDayTour ? "per private group of four guests for the Yangshuo-finish version, equivalent to US$172 per guest; the four-guest central-Guilin return version starts from US$758 total" : isChengduPandaDayTour ? "per private group of four guests, equivalent to approximately US$150 per guest" : isXianTerracottaDayTour ? "per private group of four guests, equivalent to US$157 per guest" : isShanghaiDayTour ? "per private group of four guests, equivalent to US$168 per guest" : "per person"}
 Price basis: ${pricing.basis}
 Typical tailored range: ${pricing.finalPriceNote}
 Additional pricing note: ${pricing.additionalNote ?? "No additional published pricing note."}
 Availability status: Limited and date-specific; subject to written supplier confirmation
-Price status: ${isChengduPandaDayTour ? "Indicative until the date, Chengdu pickup address, group size, vehicle, guide, Panda Base admission, public operating conditions and selected upgrades are confirmed in writing" : isXianTerracottaDayTour ? "Indicative until the date, Xi'an pickup address, group size, vehicle, guide, passport-linked museum admission and selected upgrades are confirmed in writing" : isShanghaiDayTour ? "Indicative until the date, Shanghai pickup address, group size, vehicle, guide, Yu Garden admission, ferry operation and selected upgrades are confirmed in writing" : isMutianyuDayTour ? "Indicative until the date, Beijing pickup address, group size, vehicle, guide, tickets and selected mountain transport are confirmed in writing" : "Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal"}
+Price status: ${isGuilinLiRiverDayTour ? "Indicative until the date, Guilin pickup address, group size, cruise ticket, assigned port, vehicle, guide, luggage plan, chosen finish, public sailing conditions and selected upgrades are confirmed in writing" : isChengduPandaDayTour ? "Indicative until the date, Chengdu pickup address, group size, vehicle, guide, Panda Base admission, public operating conditions and selected upgrades are confirmed in writing" : isXianTerracottaDayTour ? "Indicative until the date, Xi'an pickup address, group size, vehicle, guide, passport-linked museum admission and selected upgrades are confirmed in writing" : isShanghaiDayTour ? "Indicative until the date, Shanghai pickup address, group size, vehicle, guide, Yu Garden admission, ferry operation and selected upgrades are confirmed in writing" : isMutianyuDayTour ? "Indicative until the date, Beijing pickup address, group size, vehicle, guide, tickets and selected mountain transport are confirmed in writing" : "Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal"}
 
 ## Included in the published design
 
