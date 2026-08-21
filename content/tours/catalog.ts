@@ -134,6 +134,9 @@ const greaterBayBusiness = tours.find(
 const mutianyuPrivateDayTour = tours.find(
   (tour) => tour.slug === "private-mutianyu-great-wall-day-tour",
 );
+const privateShanghaiDayTour = tours.find(
+  (tour) => tour.slug === "private-shanghai-day-tour-guide-driver",
+);
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
 );
@@ -182,6 +185,10 @@ if (!greaterBayBusiness) {
 
 if (!mutianyuPrivateDayTour) {
   throw new Error("The private Mutianyu Great Wall day tour is required.");
+}
+
+if (!privateShanghaiDayTour) {
+  throw new Error("The private Shanghai day tour is required.");
 }
 
 if (!beijingXianChengduShanghai) {
@@ -482,6 +489,52 @@ const mutianyuPrivateDayJourney: JourneyCatalogBase = {
   ],
   planningNote:
     "Your hotel address, ticket plan, walking comfort and preferred mountain transport are confirmed before the day, so the Great Wall visit follows your group rather than a coach-tour timetable.",
+};
+
+const privateShanghaiDayJourney: JourneyCatalogBase = {
+  slug: privateShanghaiDayTour.slug,
+  title: privateShanghaiDayTour.title,
+  eyebrow: "Private Shanghai day tour with guide and driver",
+  summary: privateShanghaiDayTour.subtitle,
+  hook: "See Yu Garden, the Old City, the Bund, a Huangpu ferry crossing and the former French Concession with one private guide, vehicle and clear hotel-to-hotel plan.",
+  image: privateShanghaiDayTour.hero.image,
+  visualStatus: "pending",
+  href: `/tours/${privateShanghaiDayTour.slug}`,
+  kind: "featured",
+  routeLabel: privateShanghaiDayTour.route,
+  durationLabel: "1 private day · about 8 hours",
+  styleFilters: ["Culture", "Food", "Family", "Photography", "Modern China"],
+  destinationFilters: ["Shanghai"],
+  bestForFilters: [
+    "First-time visitors",
+    "Couples",
+    "Families",
+    "Older travelers",
+    "Small private groups",
+  ],
+  experienceFilters: ["modern-cities", "ancient-china", "local-life", "food", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "solo-travelers",
+  ],
+  planningNeedFilters: [
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 1,
+  recommendedDaysMax: 1,
+  destinations: [{ label: "Shanghai", href: "/destinations/shanghai" }],
+  planningNote:
+    "The base tour begins and ends at a central Shanghai hotel. Airports, railway stations, cruise ports, evening extensions and additional private service hours are confirmed and priced separately before booking.",
 };
 
 const qingchengWellnessJourney: JourneyCatalogBase = {
@@ -831,6 +884,7 @@ const xianBeijingJourney: JourneyCatalogBase = {
 };
 
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  privateShanghaiDayJourney,
   mutianyuPrivateDayJourney,
   greaterBayBusinessJourney,
   qingchengWellnessJourney,
@@ -851,6 +905,11 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
 > = {
+  "private-shanghai-day-tour-guide-driver": {
+    commercialRole: "essential",
+    commercialRoleLabel: "Private Shanghai day tour",
+    commercialPriority: 109,
+  },
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
     commercialRole: "extension",
     commercialRoleLabel: "Tailor-made Guangzhou & Shenzhen business tour",
@@ -927,6 +986,20 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "private-shanghai-day-tour-guide-driver": {
+    paceLabel: "Easy to moderate, privately adjusted around the group",
+    transportSummary:
+      "Private central-hotel pickup and return, private vehicle and one included Huangpu public-ferry crossing",
+    highlights: [
+      "Enter Yu Garden with admission arranged",
+      "Understand the Old City before reaching the skyline",
+      "Cross the Huangpu by public ferry with your guide",
+      "Read the Bund and Pudong as two sides of one city",
+      "Finish among former French Concession lanes and local life",
+    ],
+    bestForSummary:
+      "First-time Shanghai visitors, couples, families, older travelers and small private groups who want one clear, professionally handled city day",
+  },
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
     paceLabel: "Agenda-first, efficient and completely adjustable",
     transportSummary:
@@ -1106,6 +1179,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, JourneyPricing> = {
+  "private-shanghai-day-tour-guide-driver": {
+    fromUsd: 672,
+    basis:
+      "Indicative starting price per private group of four guests, equivalent to US$168 per guest. A two-guest private tour starts from US$558 total. Optional experiences, airports and cruise-port transfers are separate.",
+    inclusionSummary:
+      "Includes central Shanghai hotel pickup and return, private vehicle and driver for the confirmed service window, private English-speaking guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops.",
+    finalPriceNote:
+      "Indicative private-group totals outside major holidays are: one guest US$468; two guests US$558; three guests US$628; four guests US$672; five guests US$795; and six guests US$930. The exact vehicle, hotel address, date and service window are checked before confirmation.",
+    additionalNote:
+      "Published upgrades include Shanghai Tower from US$35 per guest, a curated Shanghainese lunch from US$38 per guest, snack making from US$88 per guest and a Huangpu night-cruise extension from US$328 per group of up to four.",
+  },
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
     fromUsd: 2280,
     basis:

@@ -39,6 +39,8 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
   const isAgendaFirstBusinessJourney =
     model.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day";
   const isMutianyuPrivateDayTour = model.slug === "private-mutianyu-great-wall-day-tour";
+  const isPrivateShanghaiDayTour = model.slug === "private-shanghai-day-tour-guide-driver";
+  const isPrivateDayTour = isMutianyuPrivateDayTour || isPrivateShanghaiDayTour;
   const overviewTitle = model.route
     ? `${model.route.replace(/, ([^,]+)$/, " & $1")}, privately.`
     : `A private ${model.duration.toLowerCase()} journey.`;
@@ -70,7 +72,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
             ? "Build My Business Journey"
             : isMutianyuPrivateDayTour
               ? "Check My Date"
-              : "Plan This Journey",
+              : isPrivateShanghaiDayTour
+                ? "Check My Date"
+                : "Plan This Journey",
           planHref: model.planningHref,
           journeySlug: model.slug,
         }}
@@ -120,9 +124,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 <small>
                   {isAgendaFirstBusinessJourney
                     ? "per person · 4-day starting framework · based on 4 guests sharing 2 rooms"
-                    : isMutianyuPrivateDayTour
-                      ? "per person · based on 4 guests traveling privately"
-                      : "per person · based on 4 guests sharing 2 rooms"}
+                    : isPrivateShanghaiDayTour
+                      ? "per private group of 4 · equivalent to US$168 per guest"
+                      : isMutianyuPrivateDayTour
+                        ? "per person · based on 4 guests traveling privately"
+                        : "per person · based on 4 guests sharing 2 rooms"}
                 </small>
               </div>
             ) : null}
@@ -179,9 +185,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 <h2 id="experience-preview-title">
                   {isAgendaFirstBusinessJourney
                     ? "Five parts you can move around your agenda."
-                    : isMutianyuPrivateDayTour
-                      ? "A Great Wall day with the loose ends handled."
-                      : "Five chapters you can already picture."}
+                    : isPrivateShanghaiDayTour
+                      ? "Four Shanghai chapters you can already picture."
+                      : isMutianyuPrivateDayTour
+                        ? "A Great Wall day with the loose ends handled."
+                        : "Five chapters you can already picture."}
                 </h2>
                 <p>
                   {isAgendaFirstBusinessJourney
@@ -265,7 +273,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       ? "Usually 4–7 days, with the exact length, cities and services shaped around your fixed business agenda."
                       : isMutianyuPrivateDayTour
                         ? "A private, professionally prepared Great Wall day from your Beijing hotel, with no overnight stay required."
-                        : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
+                        : isPrivateShanghaiDayTour
+                          ? "A private, professionally prepared Shanghai city day from your central hotel, with no overnight stay required."
+                          : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
                   </p>
                 </div>
               </div>
@@ -335,7 +345,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           </div>
         </section>
 
-        {isMutianyuPrivateDayTour && model.optionalExperiences?.length ? (
+        {isPrivateDayTour && model.optionalExperiences?.length ? (
           <section
             className={`${styles.section} ${styles.optionalChoices}`}
             aria-labelledby="optional-choices-title"
@@ -343,11 +353,15 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
             <div className={styles.shell}>
               <div className={styles.sectionHeading}>
                 <p className={styles.eyebrow}>Transparent optional choices</p>
-                <h2 id="optional-choices-title">Choose your way up and down.</h2>
+                <h2 id="optional-choices-title">
+                  {isPrivateShanghaiDayTour
+                    ? "Add only the Shanghai experiences you want."
+                    : "Choose your way up and down."}
+                </h2>
                 <p>
-                  Admission and the scenic-area shuttle are already included. These are optional
-                  operator services, shown separately so you only pay for the route that suits your
-                  group.
+                  {isPrivateShanghaiDayTour
+                    ? "Yu Garden admission and the ordinary Huangpu ferry are already included. Each upgrade states whether its price covers admission, an experience, additional private service time or a combination of them."
+                    : "Admission and the scenic-area shuttle are already included. These are optional operator services, shown separately so you only pay for the route that suits your group."}
                 </p>
               </div>
               <div className={styles.optionalChoiceGrid}>
@@ -364,9 +378,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 ))}
               </div>
               <p className={styles.optionalChoiceNote}>
-                Final mountain-transport prices follow the scenic-area operator&apos;s confirmed
-                rate for your date. Toboggan, chairlift and cable-car operation remain subject to
-                live weather, maintenance and safety decisions.
+                {isPrivateShanghaiDayTour
+                  ? "Optional experiences are subject to date-specific availability. The exact timing, tickets, added service hours and total are confirmed in writing before you pay."
+                  : "Final mountain-transport prices follow the scenic-area operator's confirmed rate for your date. Toboggan, chairlift and cable-car operation remain subject to live weather, maintenance and safety decisions."}
               </p>
             </div>
           </section>
@@ -392,30 +406,36 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               <p>
                 {isMutianyuPrivateDayTour
                   ? "A fully private Great Wall day with the address, tickets, vehicle, route and return plan handled by one China-based team."
-                  : "A privately managed journey, selected stays and one China-based team responsible for the details from arrival to departure."}
+                  : isPrivateShanghaiDayTour
+                    ? "A fully private Shanghai day with the hotel pickup, guide, vehicle, Yu Garden admission, river crossing and return plan handled by one China-based team."
+                    : "A privately managed journey, selected stays and one China-based team responsible for the details from arrival to departure."}
               </p>
             </div>
 
             <div className={styles.hotelPriceGrid}>
               <div className={styles.hotelSummary}>
                 <div className={styles.hotelIdentity}>
-                  {isMutianyuPrivateDayTour ? (
+                  {isPrivateDayTour ? (
                     <CarFront size={22} aria-hidden="true" />
                   ) : (
                     <BedDouble size={22} aria-hidden="true" />
                   )}
                   <div>
                     <p className={styles.subheading}>
-                      {isMutianyuPrivateDayTour ? "Your pickup and return" : "Your hotels"}
+                      {isPrivateDayTour ? "Your pickup and return" : "Your hotels"}
                     </p>
                     <h3>
-                      {isMutianyuPrivateDayTour
-                        ? "Door-to-door Beijing service"
+                      {isPrivateDayTour
+                        ? isPrivateShanghaiDayTour
+                          ? "Door-to-door central Shanghai service"
+                          : "Door-to-door Beijing service"
                         : model.hotelStandard}
                     </h3>
                     <p>
-                      {isMutianyuPrivateDayTour
-                        ? "Your Beijing hotel or confirmed central address"
+                      {isPrivateDayTour
+                        ? isPrivateShanghaiDayTour
+                          ? "Your central Shanghai hotel or confirmed central address"
+                          : "Your Beijing hotel or confirmed central address"
                         : model.hotelDestinations.join(" · ")}
                     </p>
                   </div>
@@ -432,12 +452,12 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                     <Check size={15} aria-hidden="true" />
                     <span>
                       <strong>
-                        {isMutianyuPrivateDayTour
-                          ? "Clear before the day."
-                          : "Named before booking."}
+                        {isPrivateDayTour ? "Clear before the day." : "Named before booking."}
                       </strong>{" "}
-                      {isMutianyuPrivateDayTour
-                        ? "Your pickup, ticket plan, service window and selected mountain transport are stated before you confirm."
+                      {isPrivateDayTour
+                        ? isPrivateShanghaiDayTour
+                          ? "Your pickup, Yu Garden admission, ferry plan, service window and selected upgrades are stated before you confirm."
+                          : "Your pickup, ticket plan, service window and selected mountain transport are stated before you confirm."
                         : "Every hotel and room category is listed in your written proposal before you confirm."}
                     </span>
                   </li>
@@ -455,7 +475,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <p className={styles.subheading}>Private journey from</p>
                   <p className={styles.priceAmount}>
                     US${model.price.fromUsd.toLocaleString("en-US")}
-                    <span>per person</span>
+                    <span>
+                      {isPrivateShanghaiDayTour ? "per private group of 4" : "per person"}
+                    </span>
                   </p>
                   <p>{compactPriceBasis(model.price.basis)}</p>
                   <p className={styles.priceCustomNote}>{model.price.note}</p>

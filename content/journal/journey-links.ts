@@ -22,8 +22,14 @@ const MUSLIM_CHINA = "muslim-friendly-china-tour-great-wall-desert-stars";
 const QINGCHENG_WELLNESS = "qingcheng-mountain-private-wellness-retreat-10-day";
 const GREATER_BAY_BUSINESS = "guangzhou-shenzhen-tailor-made-business-tour-4-day";
 const MUTIANYU_DAY_TOUR = "private-mutianyu-great-wall-day-tour";
+const SHANGHAI_DAY_TOUR = "private-shanghai-day-tour-guide-driver";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  [SHANGHAI_DAY_TOUR]: [
+    "how-many-days-beijing-xian-shanghai",
+    "shanghai-pudong-hongqiao-airport-guide",
+    "china-mobile-payments-foreign-tourists",
+  ],
   [MUTIANYU_DAY_TOUR]: [
     "mutianyu-great-wall-walking-cable-car",
     "mutianyu-badaling-jinshanling-great-wall",

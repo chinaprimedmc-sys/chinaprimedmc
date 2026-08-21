@@ -10,6 +10,24 @@ import type { Tour } from "@/types/tour";
 
 const journeyProfiles = [
   {
+    slug: "private-shanghai-day-tour-guide-driver",
+    audience:
+      "First-time Shanghai visitors, couples, families, older travelers and small private groups who want a private city day with central-hotel pickup, an English-speaking guide and driver",
+    pace: "An easy-to-moderate private day of about eight hours, connecting Yu Garden, the Old City, the Bund, a Huangpu public-ferry crossing and the former French Concession without compulsory shopping stops",
+    evidence: [
+      ["Private Shanghai day tour product page", "/tours/private-shanghai-day-tour-guide-driver"],
+      [
+        "Shanghai airport and city gateway guide",
+        "/journal/shanghai-pudong-hongqiao-airport-guide",
+      ],
+      [
+        "Mobile payments guidance for foreign visitors",
+        "/journal/china-mobile-payments-foreign-tourists",
+      ],
+      ["Shanghai Municipal Government English website", "https://english.shanghai.gov.cn/"],
+    ],
+  },
+  {
     slug: "private-mutianyu-great-wall-day-tour",
     audience:
       "First-time Beijing visitors, families, couples, older travelers and small private groups who want a private Mutianyu Great Wall day tour from their Beijing hotel",
@@ -239,7 +257,9 @@ function renderJourney(
   evidence: readonly (readonly [string, string])[],
 ) {
   const tourUrl = `${siteConfig.url}/tours/${tour.slug}`;
-  const isDayTour = tour.slug === "private-mutianyu-great-wall-day-tour";
+  const isMutianyuDayTour = tour.slug === "private-mutianyu-great-wall-day-tour";
+  const isShanghaiDayTour = tour.slug === "private-shanghai-day-tour-guide-driver";
+  const isDayTour = isMutianyuDayTour || isShanghaiDayTour;
   const itinerary = tour.itinerary
     .map((day) => {
       const activities = day.activities
@@ -275,12 +295,12 @@ Suitable for: ${audience}
 
 ## Price and availability
 
-Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} per person
+Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} ${isShanghaiDayTour ? "per private group of four guests, equivalent to US$168 per guest" : "per person"}
 Price basis: ${pricing.basis}
 Typical tailored range: ${pricing.finalPriceNote}
 Additional pricing note: ${pricing.additionalNote ?? "No additional published pricing note."}
 Availability status: Limited and date-specific; subject to written supplier confirmation
-Price status: ${isDayTour ? "Indicative until the date, Beijing pickup address, group size, vehicle, guide, tickets and selected mountain transport are confirmed in writing" : "Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal"}
+Price status: ${isShanghaiDayTour ? "Indicative until the date, Shanghai pickup address, group size, vehicle, guide, Yu Garden admission, ferry operation and selected upgrades are confirmed in writing" : isMutianyuDayTour ? "Indicative until the date, Beijing pickup address, group size, vehicle, guide, tickets and selected mountain transport are confirmed in writing" : "Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal"}
 
 ## Included in the published design
 

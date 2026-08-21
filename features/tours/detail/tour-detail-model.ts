@@ -84,6 +84,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
   const isAgendaFirstBusinessJourney =
     tour.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day";
   const isMutianyuPrivateDayTour = tour.slug === "private-mutianyu-great-wall-day-tour";
+  const isPrivateShanghaiDayTour = tour.slug === "private-shanghai-day-tour-guide-driver";
   const hotelStandard =
     tour.overview.facts.find((fact) => fact.label.toLowerCase() === "hotels")?.value ??
     "Selected 4- and 5-star hotels";
@@ -115,8 +116,13 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       { label: "Ideal for", value: dossier.bestFor },
       { label: "Pace", value: dossier.pace },
       { label: "Travel style", value: "Private guides · private transfers" },
-      isMutianyuPrivateDayTour
-        ? { label: "Pickup", value: "Beijing hotel or confirmed central address" }
+      isMutianyuPrivateDayTour || isPrivateShanghaiDayTour
+        ? {
+            label: "Pickup",
+            value: isPrivateShanghaiDayTour
+              ? "Central Shanghai hotel or confirmed central address"
+              : "Beijing hotel or confirmed central address",
+          }
         : { label: "Hotels", value: hotelStandard },
     ],
     routeStops: dossier.stops.map((stop) => ({ name: stop.name, days: stop.days })),
@@ -142,19 +148,24 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     faqs: [...tour.faqs, ...bookingPolicyFaqs],
     planningHref: planningHref(tour.slug, "detail-template"),
     whatsappHref:
-      (isAgendaFirstBusinessJourney || isMutianyuPrivateDayTour) && tour.inquiry.whatsappHref
+      (isAgendaFirstBusinessJourney || isMutianyuPrivateDayTour || isPrivateShanghaiDayTour) &&
+      tour.inquiry.whatsappHref
         ? tour.inquiry.whatsappHref
         : tourWhatsAppHref(tour.title, tour.duration),
     primaryActionLabel: isAgendaFirstBusinessJourney
       ? "Build My Business Journey"
       : isMutianyuPrivateDayTour
         ? "Check My Date"
-        : "Plan My Trip",
+        : isPrivateShanghaiDayTour
+          ? "Check My Date"
+          : "Plan My Trip",
     whatsappActionLabel: isAgendaFirstBusinessJourney
       ? "Send Us My Business Plans"
       : isMutianyuPrivateDayTour
         ? "Check My Date on WhatsApp"
-        : "Message Our China Team",
+        : isPrivateShanghaiDayTour
+          ? "Check My Date on WhatsApp"
+          : "Message Our China Team",
     lastReviewedLabel: tour.updatedAt ? formatReviewDate(tour.updatedAt) : undefined,
   };
 }

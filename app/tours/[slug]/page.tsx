@@ -77,138 +77,168 @@ export default async function TourPage({ params }: TourPageProps) {
     const isQingchengWellness =
       staticTour.slug === "qingcheng-mountain-private-wellness-retreat-10-day";
     const isMutianyuPrivateDayTour = staticTour.slug === "private-mutianyu-great-wall-day-tour";
-    const tourProperties = isMutianyuPrivateDayTour
+    const isPrivateShanghaiDayTour = staticTour.slug === "private-shanghai-day-tour-guide-driver";
+    const tourProperties = isPrivateShanghaiDayTour
       ? [
-          ["Duration", "One private day, usually 7–9 hours door to door"],
-          ["Route", "Beijing hotel, Mutianyu Great Wall and Beijing return"],
-          ["Overnight accommodation", "Not included or required"],
-          ["Published price basis", "Four guests traveling privately; US$792 group total from"],
+          ["Duration", "One private day, about eight hours door to door"],
           [
-            "Included private service",
-            "Beijing hotel pickup and return in main urban districts, private vehicle, English-speaking guide, Mutianyu admission and scenic-area shuttle",
+            "Route",
+            "Central Shanghai hotel, Yu Garden and Old City, the Bund, Huangpu ferry, former French Concession and hotel return",
+          ],
+          ["Overnight accommodation", "Not included or required"],
+          [
+            "Published price basis",
+            "US$672 per private group of four, equivalent to US$168 per guest; two guests from US$558 total",
           ],
           [
-            "Optional mountain transport",
-            "Round-trip cable car or chairlift-up and toboggan-down from approximately US$22 per person; one-way option from approximately US$15 per person, subject to live operator rates and operation",
+            "Included private service",
+            "Central Shanghai hotel pickup and return, private vehicle, English-speaking guide, Yu Garden admission and one ordinary Huangpu public-ferry crossing",
+          ],
+          [
+            "Optional upgrades",
+            "Shanghai Tower from US$35 per guest, curated Shanghainese lunch from US$38 per guest, snack making from US$88 per guest and a night-cruise service extension from US$328 per group of up to four",
           ],
           ["Shopping policy", "No compulsory shopping stops"],
           [
             "Operating boundary",
-            "Historic steps and slopes remain; mountain transport and site access follow live weather, maintenance, safety and scenic-area rules",
+            "Yu Garden, ferries, observation decks and cruises remain subject to live operating, reservation, weather, capacity and safety conditions",
           ],
         ]
-      : isQingchengWellness
+      : isMutianyuPrivateDayTour
         ? [
-            ["Duration", "10 days / 9 nights"],
-            ["Route", "Chengdu and Qingcheng Mountain"],
-            ["Accommodation duration", "2 Chengdu nights and 7 Qingcheng Mountain nights"],
-            ["Hotel changes", "One"],
+            ["Duration", "One private day, usually 7–9 hours door to door"],
+            ["Route", "Beijing hotel, Mutianyu Great Wall and Beijing return"],
+            ["Overnight accommodation", "Not included or required"],
+            ["Published price basis", "Four guests traveling privately; US$792 group total from"],
             [
-              "Published price basis",
-              "Four guests sharing two rooms outside peak periods; US$47,200 group total from",
+              "Included private service",
+              "Beijing hotel pickup and return in main urban districts, private vehicle, English-speaking guide, Mutianyu admission and scenic-area shuttle",
             ],
             [
-              "Private service standard",
-              "AVIORA Quiet Journey Standard with a pre-trip rhythm profile and protected unscheduled time",
+              "Optional mountain transport",
+              "Round-trip cable car or chairlift-up and toboggan-down from approximately US$22 per person; one-way option from approximately US$15 per person, subject to live operator rates and operation",
             ],
+            ["Shopping policy", "No compulsory shopping stops"],
             [
-              "Signature experiences",
-              "Private tai chi, Daoist cultural interpretation, tea, Dujiangyan, Qingcheng Mountain and two resort treatments per guest",
+              "Operating boundary",
+              "Historic steps and slopes remain; mountain transport and site access follow live weather, maintenance, safety and scenic-area rules",
             ],
-            [
-              "Protected retreat time",
-              "One full day without scheduled touring or guide obligations",
-            ],
-            ["Medical boundary", "Cultural and wellbeing journey; no medical outcome promised"],
-            ["International and domestic flights", "Not included"],
           ]
-        : isMuslimFriendly
+        : isQingchengWellness
           ? [
-              ["Duration", "13 days / 12 nights"],
-              ["Route", "Beijing, Xi'an, Yinchuan, Zhongwei and Shanghai"],
-              [
-                "Accommodation standard",
-                "Premium city hotels plus best-available Ningxia and desert accommodation",
-              ],
+              ["Duration", "10 days / 9 nights"],
+              ["Route", "Chengdu and Qingcheng Mountain"],
+              ["Accommodation duration", "2 Chengdu nights and 7 Qingcheng Mountain nights"],
+              ["Hotel changes", "One"],
               [
                 "Published price basis",
-                "Four guests sharing two rooms outside peak periods; US$30,720 group total from",
+                "Four guests sharing two rooms outside peak periods; US$47,200 group total from",
               ],
               [
-                "Muslim-friendly service",
-                "AVIORA Muslim Journey Standard: dietary profile, meal verification, prayer-aware timing and China-based backup support",
+                "Private service standard",
+                "AVIORA Quiet Journey Standard with a pre-trip rhythm profile and protected unscheduled time",
               ],
               [
                 "Signature experiences",
-                "Great Wall private halal picnic, Xi'an Silk Road and halal kitchen chapter, Ningxia Hui table, desert sunset dinner and stargazing",
+                "Private tai chi, Daoist cultural interpretation, tea, Dujiangyan, Qingcheng Mountain and two resort treatments per guest",
               ],
               [
-                "Transport",
-                "Private vehicles, first-class Beijing–Xi'an rail and date-specific domestic connections",
+                "Protected retreat time",
+                "One full day without scheduled touring or guide obligations",
               ],
-              ["Shopping policy", "No compulsory shopping stops"],
-              ["International flights", "Not included"],
+              ["Medical boundary", "Cultural and wellbeing journey; no medical outcome promised"],
+              ["International and domestic flights", "Not included"],
             ]
-          : isChinaFamily
+          : isMuslimFriendly
             ? [
-                ["Duration", "12 days / 11 nights"],
-                ["Accommodation standard", "Premium five-star family hotels"],
-                ["Accommodation duration", "11 nights"],
+                ["Duration", "13 days / 12 nights"],
+                ["Route", "Beijing, Xi'an, Yinchuan, Zhongwei and Shanghai"],
+                [
+                  "Accommodation standard",
+                  "Premium city hotels plus best-available Ningxia and desert accommodation",
+                ],
                 [
                   "Published price basis",
-                  "Two adults and two children aged 6–11 sharing two rooms",
+                  "Four guests sharing two rooms outside peak periods; US$30,720 group total from",
                 ],
-                ["Family pacing", "Age-aware private pacing with protected family downtime"],
-                ["Age bands", "6–9, 10–13 and 14–17"],
-                ["Beijing to Xi'an", "First-class high-speed rail"],
-                ["Xi'an to Chengdu", "First-class high-speed rail"],
-                ["Chengdu to Shanghai", "Nonstop economy-class domestic flight"],
+                [
+                  "Muslim-friendly service",
+                  "AVIORA Muslim Journey Standard: dietary profile, meal verification, prayer-aware timing and China-based backup support",
+                ],
                 [
                   "Signature experiences",
-                  "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
+                  "Great Wall private halal picnic, Xi'an Silk Road and halal kitchen chapter, Ningxia Hui table, desert sunset dinner and stargazing",
                 ],
                 [
-                  "Touring service",
-                  "Private family-ready English-speaking guides and private vehicles",
+                  "Transport",
+                  "Private vehicles, first-class Beijing–Xi'an rail and date-specific domestic connections",
                 ],
                 ["Shopping policy", "No compulsory shopping stops"],
                 ["International flights", "Not included"],
               ]
-            : isYunnan
+            : isChinaFamily
               ? [
-                  ["Duration", "10 days / 9 nights"],
-                  ["Route", "Dali, Shaxi, Lijiang and Shangri-La"],
-                  ["Accommodation standard", "Luxury boutique, heritage and highland hotels"],
-                  ["Accommodation duration", "9 nights"],
-                  ["Published price basis", "Four guests sharing two rooms outside peak periods"],
-                  ["Pace", "Balanced, private and altitude-aware"],
-                  ["Altitude progression", "Dali about 1,970 m to Shangri-La about 3,200 m"],
-                  ["Intercity transport", "Dedicated premium private vehicle"],
+                  ["Duration", "12 days / 11 nights"],
+                  ["Accommodation standard", "Premium five-star family hotels"],
+                  ["Accommodation duration", "11 nights"],
+                  [
+                    "Published price basis",
+                    "Two adults and two children aged 6–11 sharing two rooms",
+                  ],
+                  ["Family pacing", "Age-aware private pacing with protected family downtime"],
+                  ["Age bands", "6–9, 10–13 and 14–17"],
+                  ["Beijing to Xi'an", "First-class high-speed rail"],
+                  ["Xi'an to Chengdu", "First-class high-speed rail"],
+                  ["Chengdu to Shanghai", "Nonstop economy-class domestic flight"],
                   [
                     "Signature experiences",
-                    "Bai three-course tea, tie-dye artisan session, Tea Horse Road salon, Dongba culture, Tiger Leaping Gorge and Songzanlin Monastery",
+                    "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
+                  ],
+                  [
+                    "Touring service",
+                    "Private family-ready English-speaking guides and private vehicles",
                   ],
                   ["Shopping policy", "No compulsory shopping stops"],
-                  ["International and domestic flights", "Not included"],
+                  ["International flights", "Not included"],
                 ]
-              : isChinaConsidered
+              : isYunnan
                 ? [
-                    ["Duration", "12 days / 11 nights"],
-                    ["Accommodation standard", "Premium five-star hotels"],
-                    ["Accommodation duration", "11 nights"],
+                    ["Duration", "10 days / 9 nights"],
+                    ["Route", "Dali, Shaxi, Lijiang and Shangri-La"],
+                    ["Accommodation standard", "Luxury boutique, heritage and highland hotels"],
+                    ["Accommodation duration", "9 nights"],
                     ["Published price basis", "Four guests sharing two rooms outside peak periods"],
-                    ["Pace", "Easy to moderate, with protected recovery time"],
-                    ["Hotel changes", "Two"],
-                    ["Beijing to Xi'an", "First-class high-speed rail"],
-                    ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
-                    ["Touring service", "Private English-speaking guides and private vehicles"],
+                    ["Pace", "Balanced, private and altitude-aware"],
+                    ["Altitude progression", "Dali about 1,970 m to Shangri-La about 3,200 m"],
+                    ["Intercity transport", "Dedicated premium private vehicle"],
+                    [
+                      "Signature experiences",
+                      "Bai three-course tea, tie-dye artisan session, Tea Horse Road salon, Dongba culture, Tiger Leaping Gorge and Songzanlin Monastery",
+                    ],
                     ["Shopping policy", "No compulsory shopping stops"],
-                    ["International flights", "Not included"],
+                    ["International and domestic flights", "Not included"],
                   ]
-                : [
-                    ["Accommodation standard", "Selected four- and five-star hotels"],
-                    ["Tour format", "Private, tailor-made journey"],
-                  ];
+                : isChinaConsidered
+                  ? [
+                      ["Duration", "12 days / 11 nights"],
+                      ["Accommodation standard", "Premium five-star hotels"],
+                      ["Accommodation duration", "11 nights"],
+                      [
+                        "Published price basis",
+                        "Four guests sharing two rooms outside peak periods",
+                      ],
+                      ["Pace", "Easy to moderate, with protected recovery time"],
+                      ["Hotel changes", "Two"],
+                      ["Beijing to Xi'an", "First-class high-speed rail"],
+                      ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
+                      ["Touring service", "Private English-speaking guides and private vehicles"],
+                      ["Shopping policy", "No compulsory shopping stops"],
+                      ["International flights", "Not included"],
+                    ]
+                  : [
+                      ["Accommodation standard", "Selected four- and five-star hotels"],
+                      ["Tour format", "Private, tailor-made journey"],
+                    ];
     return (
       <>
         <JsonLd
@@ -329,14 +359,18 @@ export default async function TourPage({ params }: TourPageProps) {
                   availability: "https://schema.org/LimitedAvailability",
                   category: isMutianyuPrivateDayTour
                     ? "Private Mutianyu Great Wall day tour"
-                    : "Private premium China tour",
+                    : isPrivateShanghaiDayTour
+                      ? "Private Shanghai day tour with guide and driver"
+                      : "Private premium China tour",
                   description: catalogItem.pricing.basis,
                   seller: { "@id": `${siteConfig.url}/#organization` },
                   priceSpecification: {
                     "@type": "UnitPriceSpecification",
                     price: catalogItem.pricing.fromUsd,
                     priceCurrency: "USD",
-                    unitText: "per person",
+                    unitText: isPrivateShanghaiDayTour
+                      ? "per private group of four guests"
+                      : "per person",
                     description: catalogItem.pricing.basis,
                   },
                 }
