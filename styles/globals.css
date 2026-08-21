@@ -4467,14 +4467,18 @@ svg {
     grid-template-columns: minmax(4.35rem, 0.78fr) minmax(4.5rem, 0.82fr) minmax(6.5rem, 1.1fr) !important;
   }
 
-  /* Journeys keeps the scrolled controls as three independent text buttons.
-     There is no white slab, coloured fill, or pill background behind them. */
+  /* Journeys keeps the scrolled controls as three independent liquid-glass buttons.
+     The outer toolbar remains transparent; each control carries its own glass surface. */
   .site-navigation__mobile-actions--journeys .site-navigation__journey-filter,
   .site-navigation__mobile-actions--journeys .site-navigation__journey-search,
   .site-navigation__mobile-actions--journeys .site-navigation__journey-plan {
-    background: transparent !important;
-    border-color: transparent !important;
-    box-shadow: none !important;
+    -webkit-backdrop-filter: blur(16px) saturate(135%) !important;
+    backdrop-filter: blur(16px) saturate(135%) !important;
+    background: rgba(255, 255, 255, 0.62) !important;
+    border-color: rgba(255, 255, 255, 0.82) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.92),
+      0 6px 16px rgba(23, 33, 41, 0.08) !important;
     color: #172129 !important;
     padding-inline: 0.35rem !important;
   }
@@ -4489,9 +4493,10 @@ svg {
   .site-navigation__mobile-actions--journeys .site-navigation__journey-filter:active,
   .site-navigation__mobile-actions--journeys .site-navigation__journey-search:active,
   .site-navigation__mobile-actions--journeys .site-navigation__journey-plan:active {
-    background: transparent !important;
+    background: rgba(255, 255, 255, 0.78) !important;
     color: #172129 !important;
-    opacity: 0.64;
+    opacity: 0.92;
+    transform: translateY(1px) scale(0.98);
   }
 
   /* Keep scrolled Journeys content below the floating toolbar. */
