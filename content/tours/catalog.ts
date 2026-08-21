@@ -140,6 +140,9 @@ const privateShanghaiDayTour = tours.find(
 const privateXianTerracottaDayTour = tours.find(
   (tour) => tour.slug === "private-xian-terracotta-warriors-day-tour",
 );
+const privateChengduPandaDayTour = tours.find(
+  (tour) => tour.slug === "private-chengdu-panda-day-tour-early-morning",
+);
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
 );
@@ -196,6 +199,10 @@ if (!privateShanghaiDayTour) {
 
 if (!privateXianTerracottaDayTour) {
   throw new Error("The private Xi'an Terracotta Warriors day tour is required.");
+}
+
+if (!privateChengduPandaDayTour) {
+  throw new Error("The private Chengdu panda day tour is required.");
 }
 
 if (!beijingXianChengduShanghai) {
@@ -591,6 +598,52 @@ const privateXianTerracottaDayJourney: JourneyCatalogBase = {
     "The base tour begins and ends at a central Xi'an hotel. Passport-linked admission, airport or railway-station connections, City Wall access, meals and hands-on clay making are confirmed and priced separately before booking.",
 };
 
+const privateChengduPandaDayJourney: JourneyCatalogBase = {
+  slug: privateChengduPandaDayTour.slug,
+  title: privateChengduPandaDayTour.title,
+  eyebrow: "Private early-morning Chengdu panda day tour",
+  summary: privateChengduPandaDayTour.subtitle,
+  hook: "Start earlier from your Chengdu hotel, enter with admission arranged and follow a private guide who adapts the public panda-base route to live conditions before a slower People's Park afternoon.",
+  image: privateChengduPandaDayTour.hero.image,
+  visualStatus: "pending",
+  href: `/tours/${privateChengduPandaDayTour.slug}`,
+  kind: "featured",
+  routeLabel: privateChengduPandaDayTour.route,
+  durationLabel: "1 private day · usually 7–9 hours",
+  styleFilters: ["Family", "Nature", "Culture", "Photography", "Wildlife"],
+  destinationFilters: ["Chengdu"],
+  bestForFilters: [
+    "Families",
+    "Couples",
+    "First-time visitors",
+    "Older travelers",
+    "Small private groups",
+  ],
+  experienceFilters: ["pandas", "local-life", "food", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "solo-travelers",
+  ],
+  planningNeedFilters: [
+    "vegetarian-friendly",
+    "slower-pacing",
+    "child-friendly",
+    "mobility-aware",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 1,
+  recommendedDaysMax: 1,
+  destinations: [{ label: "Chengdu", href: "/destinations/chengdu" }],
+  planningNote:
+    "The base product includes standard public Panda Base admission, an early central-hotel pickup and a flexible People's Park chapter. Specific pandas, cubs, behaviors, animal contact and behind-the-scenes access are never guaranteed.",
+};
+
 const qingchengWellnessJourney: JourneyCatalogBase = {
   slug: qingchengWellness.slug,
   title: qingchengWellness.title,
@@ -938,6 +991,7 @@ const xianBeijingJourney: JourneyCatalogBase = {
 };
 
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  privateChengduPandaDayJourney,
   privateXianTerracottaDayJourney,
   privateShanghaiDayJourney,
   mutianyuPrivateDayJourney,
@@ -960,6 +1014,11 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
 > = {
+  "private-chengdu-panda-day-tour-early-morning": {
+    commercialRole: "essential",
+    commercialRoleLabel: "Private Chengdu panda day tour",
+    commercialPriority: 107,
+  },
   "private-xian-terracotta-warriors-day-tour": {
     commercialRole: "essential",
     commercialRoleLabel: "Private Terracotta Warriors day tour",
@@ -1046,6 +1105,20 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "private-chengdu-panda-day-tour-early-morning": {
+    paceLabel: "Early start, moderate walking and a slower central-Chengdu afternoon",
+    transportSummary:
+      "Private central-hotel pickup and return, private vehicle to the Panda Base and People's Park",
+    highlights: [
+      "Leave your Chengdu hotel at a more useful early hour",
+      "Enter with standard Panda Base admission arranged",
+      "Adapt the public route to live openings, crowds and animal activity",
+      "Learn panda behavior and conservation without invented access",
+      "Finish with People's Park and Chengdu tea culture",
+    ],
+    bestForSummary:
+      "Families, couples, first-time Chengdu visitors, older travelers and small private groups who want a responsibly planned panda morning and an easy city afternoon",
+  },
   "private-xian-terracotta-warriors-day-tour": {
     paceLabel: "Easy to moderate, privately adjusted around the group",
     transportSummary:
@@ -1253,6 +1326,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, JourneyPricing> = {
+  "private-chengdu-panda-day-tour-early-morning": {
+    fromUsd: 598,
+    basis:
+      "Indicative starting price per private group of four guests, equivalent to approximately US$150 per guest. A two-guest private tour starts from US$478 total. Optional experiences and airport transfers are separate.",
+    inclusionSummary:
+      "Includes early central-Chengdu hotel pickup and return, private vehicle and driver for the confirmed service window, private English-speaking guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops.",
+    finalPriceNote:
+      "Indicative private-group totals outside major holidays are: one guest US$398; two guests US$478; three guests US$538; four guests US$598; five guests US$710; and six guests US$828. The exact vehicle, hotel address, date and service window are checked before confirmation.",
+    additionalNote:
+      "Published upgrades include a selected Sichuan lunch from US$28 per guest, a hosted People's Park tea table from US$38 per guest, Sichuan cooking from US$78 per guest and an opera evening extension from US$328 per group of up to four.",
+  },
   "private-xian-terracotta-warriors-day-tour": {
     fromUsd: 628,
     basis:

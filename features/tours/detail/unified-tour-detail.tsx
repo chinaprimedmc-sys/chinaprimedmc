@@ -41,8 +41,13 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
   const isMutianyuPrivateDayTour = model.slug === "private-mutianyu-great-wall-day-tour";
   const isPrivateShanghaiDayTour = model.slug === "private-shanghai-day-tour-guide-driver";
   const isPrivateXianTerracottaDayTour = model.slug === "private-xian-terracotta-warriors-day-tour";
+  const isPrivateChengduPandaDayTour =
+    model.slug === "private-chengdu-panda-day-tour-early-morning";
   const isPrivateDayTour =
-    isMutianyuPrivateDayTour || isPrivateShanghaiDayTour || isPrivateXianTerracottaDayTour;
+    isMutianyuPrivateDayTour ||
+    isPrivateShanghaiDayTour ||
+    isPrivateXianTerracottaDayTour ||
+    isPrivateChengduPandaDayTour;
   const overviewTitle = model.route
     ? `${model.route.replace(/, ([^,]+)$/, " & $1")}, privately.`
     : `A private ${model.duration.toLowerCase()} journey.`;
@@ -78,7 +83,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 ? "Check My Date"
                 : isPrivateXianTerracottaDayTour
                   ? "Check My Date"
-                  : "Plan This Journey",
+                  : isPrivateChengduPandaDayTour
+                    ? "Check My Date"
+                    : "Plan This Journey",
           planHref: model.planningHref,
           journeySlug: model.slug,
         }}
@@ -132,9 +139,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       ? "per private group of 4 · equivalent to US$168 per guest"
                       : isPrivateXianTerracottaDayTour
                         ? "per private group of 4 · equivalent to US$157 per guest"
-                        : isMutianyuPrivateDayTour
-                          ? "per person · based on 4 guests traveling privately"
-                          : "per person · based on 4 guests sharing 2 rooms"}
+                        : isPrivateChengduPandaDayTour
+                          ? "per private group of 4 · approximately US$150 per guest"
+                          : isMutianyuPrivateDayTour
+                            ? "per person · based on 4 guests traveling privately"
+                            : "per person · based on 4 guests sharing 2 rooms"}
                 </small>
               </div>
             ) : null}
@@ -195,9 +204,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       ? "Four Shanghai chapters you can already picture."
                       : isPrivateXianTerracottaDayTour
                         ? "Four Xi'an chapters that make the army make sense."
-                        : isMutianyuPrivateDayTour
-                          ? "A Great Wall day with the loose ends handled."
-                          : "Five chapters you can already picture."}
+                        : isPrivateChengduPandaDayTour
+                          ? "Four Chengdu chapters built around a better panda morning."
+                          : isMutianyuPrivateDayTour
+                            ? "A Great Wall day with the loose ends handled."
+                            : "Five chapters you can already picture."}
                 </h2>
                 <p>
                   {isAgendaFirstBusinessJourney
@@ -206,7 +217,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       ? "Your hotel, tickets, route, optional mountain transport and return are checked in advance, then the Wall is explored at a pace that fits the people traveling."
                       : isPrivateXianTerracottaDayTour
                         ? "Your hotel, passport-linked admission, museum route, private vehicle and return are checked in advance, so you can focus on what the army actually reveals."
-                        : "This is not simply a list of places. Here is what will be in front of you, what you will take part in and why each chapter earns its place in the journey."}
+                        : isPrivateChengduPandaDayTour
+                          ? "Your early pickup, public admission, private vehicle and guide are confirmed in advance, then the panda-base route adapts to live openings, crowds, weather and visible animal activity."
+                          : "This is not simply a list of places. Here is what will be in front of you, what you will take part in and why each chapter earns its place in the journey."}
                 </p>
               </div>
               <ol className={styles.experienceChapterList}>
@@ -285,9 +298,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                         ? "A private, professionally prepared Great Wall day from your Beijing hotel, with no overnight stay required."
                         : isPrivateXianTerracottaDayTour
                           ? "A private, professionally prepared Terracotta Warriors day from your central Xi'an hotel, with no overnight stay required."
-                          : isPrivateShanghaiDayTour
-                            ? "A private, professionally prepared Shanghai city day from your central hotel, with no overnight stay required."
-                            : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
+                          : isPrivateChengduPandaDayTour
+                            ? "A private, responsibly prepared panda and Chengdu culture day from your central hotel, with no overnight stay required."
+                            : isPrivateShanghaiDayTour
+                              ? "A private, professionally prepared Shanghai city day from your central hotel, with no overnight stay required."
+                              : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
                   </p>
                 </div>
               </div>
@@ -370,14 +385,18 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                     ? "Add only the Shanghai experiences you want."
                     : isPrivateXianTerracottaDayTour
                       ? "Add only the Xi'an experiences that matter to you."
-                      : "Choose your way up and down."}
+                      : isPrivateChengduPandaDayTour
+                        ? "Add only the Chengdu experiences that improve your day."
+                        : "Choose your way up and down."}
                 </h2>
                 <p>
                   {isPrivateShanghaiDayTour
                     ? "Yu Garden admission and the ordinary Huangpu ferry are already included. Each upgrade states whether its price covers admission, an experience, additional private service time or a combination of them."
                     : isPrivateXianTerracottaDayTour
                       ? "Terracotta Warriors admission and the private museum day are already included. Each upgrade states whether its price covers admission, an experience, added private service time or a combination of them."
-                      : "Admission and the scenic-area shuttle are already included. These are optional operator services, shown separately so you only pay for the route that suits your group."}
+                      : isPrivateChengduPandaDayTour
+                        ? "Standard Panda Base admission, private transport, guide and the People's Park chapter are already included. Each upgrade states whether it covers food, tea, an experience or additional private service time."
+                        : "Admission and the scenic-area shuttle are already included. These are optional operator services, shown separately so you only pay for the route that suits your group."}
                 </p>
               </div>
               <div className={styles.optionalChoiceGrid}>
@@ -398,7 +417,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   ? "Optional experiences are subject to date-specific availability. The exact timing, tickets, added service hours and total are confirmed in writing before you pay."
                   : isPrivateXianTerracottaDayTour
                     ? "Optional experiences are subject to date-specific availability. The exact host, admission, added service hours and total are confirmed in writing before you pay."
-                    : "Final mountain-transport prices follow the scenic-area operator's confirmed rate for your date. Toboggan, chairlift and cable-car operation remain subject to live weather, maintenance and safety decisions."}
+                    : isPrivateChengduPandaDayTour
+                      ? "Optional experiences are subject to date-specific availability. The exact menu, host, tickets, added service hours and total are confirmed in writing before you pay."
+                      : "Final mountain-transport prices follow the scenic-area operator's confirmed rate for your date. Toboggan, chairlift and cable-car operation remain subject to live weather, maintenance and safety decisions."}
               </p>
             </div>
           </section>
@@ -428,7 +449,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                     ? "A fully private Shanghai day with the hotel pickup, guide, vehicle, Yu Garden admission, river crossing and return plan handled by one China-based team."
                     : isPrivateXianTerracottaDayTour
                       ? "A fully private Xi'an day with hotel pickup, passport-linked museum admission, guide, vehicle, Old City chapter and return handled by one China-based team."
-                      : "A privately managed journey, selected stays and one China-based team responsible for the details from arrival to departure."}
+                      : isPrivateChengduPandaDayTour
+                        ? "A fully private Chengdu day with early hotel pickup, Panda Base admission, guide, vehicle, People's Park chapter and return handled by one China-based team."
+                        : "A privately managed journey, selected stays and one China-based team responsible for the details from arrival to departure."}
               </p>
             </div>
 
@@ -446,20 +469,24 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                     </p>
                     <h3>
                       {isPrivateDayTour
-                        ? isPrivateXianTerracottaDayTour
-                          ? "Door-to-door central Xi'an service"
-                          : isPrivateShanghaiDayTour
-                            ? "Door-to-door central Shanghai service"
-                            : "Door-to-door Beijing service"
+                        ? isPrivateChengduPandaDayTour
+                          ? "Door-to-door central Chengdu service"
+                          : isPrivateXianTerracottaDayTour
+                            ? "Door-to-door central Xi'an service"
+                            : isPrivateShanghaiDayTour
+                              ? "Door-to-door central Shanghai service"
+                              : "Door-to-door Beijing service"
                         : model.hotelStandard}
                     </h3>
                     <p>
                       {isPrivateDayTour
-                        ? isPrivateXianTerracottaDayTour
-                          ? "Your central Xi'an hotel or confirmed central address"
-                          : isPrivateShanghaiDayTour
-                            ? "Your central Shanghai hotel or confirmed central address"
-                            : "Your Beijing hotel or confirmed central address"
+                        ? isPrivateChengduPandaDayTour
+                          ? "Your central Chengdu hotel or confirmed central address"
+                          : isPrivateXianTerracottaDayTour
+                            ? "Your central Xi'an hotel or confirmed central address"
+                            : isPrivateShanghaiDayTour
+                              ? "Your central Shanghai hotel or confirmed central address"
+                              : "Your Beijing hotel or confirmed central address"
                         : model.hotelDestinations.join(" · ")}
                     </p>
                   </div>
@@ -479,11 +506,13 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                         {isPrivateDayTour ? "Clear before the day." : "Named before booking."}
                       </strong>{" "}
                       {isPrivateDayTour
-                        ? isPrivateXianTerracottaDayTour
-                          ? "Your pickup, passport-linked admission, museum plan, service window and selected upgrades are stated before you confirm."
-                          : isPrivateShanghaiDayTour
-                            ? "Your pickup, Yu Garden admission, ferry plan, service window and selected upgrades are stated before you confirm."
-                            : "Your pickup, ticket plan, service window and selected mountain transport are stated before you confirm."
+                        ? isPrivateChengduPandaDayTour
+                          ? "Your early pickup, admission basis, Panda Base plan, service window and selected upgrades are stated before you confirm."
+                          : isPrivateXianTerracottaDayTour
+                            ? "Your pickup, passport-linked admission, museum plan, service window and selected upgrades are stated before you confirm."
+                            : isPrivateShanghaiDayTour
+                              ? "Your pickup, Yu Garden admission, ferry plan, service window and selected upgrades are stated before you confirm."
+                              : "Your pickup, ticket plan, service window and selected mountain transport are stated before you confirm."
                         : "Every hotel and room category is listed in your written proposal before you confirm."}
                     </span>
                   </li>
@@ -502,7 +531,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <p className={styles.priceAmount}>
                     US${model.price.fromUsd.toLocaleString("en-US")}
                     <span>
-                      {isPrivateShanghaiDayTour || isPrivateXianTerracottaDayTour
+                      {isPrivateShanghaiDayTour ||
+                      isPrivateXianTerracottaDayTour ||
+                      isPrivateChengduPandaDayTour
                         ? "per private group of 4"
                         : "per person"}
                     </span>

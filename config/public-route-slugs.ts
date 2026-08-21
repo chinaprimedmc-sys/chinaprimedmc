@@ -1,5 +1,6 @@
 export const publicRouteSlugs = {
   tours: [
+    "private-chengdu-panda-day-tour-early-morning",
     "private-xian-terracotta-warriors-day-tour",
     "private-shanghai-day-tour-guide-driver",
     "guangzhou-shenzhen-tailor-made-business-tour-4-day",

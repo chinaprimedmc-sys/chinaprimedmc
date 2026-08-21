@@ -3,6 +3,7 @@ import { beijingXianChengduShanghaiTour } from "@/content/tours/beijing-xian-che
 import { chengduChongqingZhangjiajieTour } from "@/content/tours/chengdu-chongqing-zhangjiajie";
 import { chinaConsidered12DayTour } from "@/content/tours/china-considered-12-day";
 import { chinaFamily12DayTour } from "@/content/tours/china-family-12-day";
+import { privateChengduPandaDayTour } from "@/content/tours/private-chengdu-panda-day-tour";
 import { guangzhouShenzhenBusiness4DayTour } from "@/content/tours/guangzhou-shenzhen-business-4-day";
 import { muslimFriendlyChinaDesert13DayTour } from "@/content/tours/muslim-friendly-china-desert-13-day";
 import { mutianyuPrivateDayTour } from "@/content/tours/mutianyu-private-day-tour";
@@ -132,6 +133,7 @@ const chengduJiuzhaigouAsset = {
 };
 
 export const tours: Tour[] = [
+  privateChengduPandaDayTour,
   privateXianTerracottaDayTour,
   privateShanghaiDayTour,
   guangzhouShenzhenBusiness4DayTour,

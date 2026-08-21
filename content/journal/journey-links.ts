@@ -24,8 +24,14 @@ const GREATER_BAY_BUSINESS = "guangzhou-shenzhen-tailor-made-business-tour-4-day
 const MUTIANYU_DAY_TOUR = "private-mutianyu-great-wall-day-tour";
 const SHANGHAI_DAY_TOUR = "private-shanghai-day-tour-guide-driver";
 const XIAN_TERRACOTTA_DAY_TOUR = "private-xian-terracotta-warriors-day-tour";
+const CHENGDU_PANDA_DAY_TOUR = "private-chengdu-panda-day-tour-early-morning";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  [CHENGDU_PANDA_DAY_TOUR]: [
+    "chengdu-panda-base-tickets-foreigners",
+    "how-many-days-in-chengdu-itinerary",
+    "china-mobile-payments-foreign-tourists",
+  ],
   [XIAN_TERRACOTTA_DAY_TOUR]: [
     "terracotta-army-tickets-foreign-visitors",
     "beijing-xian-itinerary-how-many-days",

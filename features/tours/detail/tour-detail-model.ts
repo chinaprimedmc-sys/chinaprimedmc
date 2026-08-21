@@ -86,6 +86,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
   const isMutianyuPrivateDayTour = tour.slug === "private-mutianyu-great-wall-day-tour";
   const isPrivateShanghaiDayTour = tour.slug === "private-shanghai-day-tour-guide-driver";
   const isPrivateXianTerracottaDayTour = tour.slug === "private-xian-terracotta-warriors-day-tour";
+  const isPrivateChengduPandaDayTour = tour.slug === "private-chengdu-panda-day-tour-early-morning";
   const hotelStandard =
     tour.overview.facts.find((fact) => fact.label.toLowerCase() === "hotels")?.value ??
     "Selected 4- and 5-star hotels";
@@ -117,14 +118,19 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       { label: "Ideal for", value: dossier.bestFor },
       { label: "Pace", value: dossier.pace },
       { label: "Travel style", value: "Private guides · private transfers" },
-      isMutianyuPrivateDayTour || isPrivateShanghaiDayTour || isPrivateXianTerracottaDayTour
+      isMutianyuPrivateDayTour ||
+      isPrivateShanghaiDayTour ||
+      isPrivateXianTerracottaDayTour ||
+      isPrivateChengduPandaDayTour
         ? {
             label: "Pickup",
-            value: isPrivateXianTerracottaDayTour
-              ? "Central Xi'an hotel or confirmed central address"
-              : isPrivateShanghaiDayTour
-                ? "Central Shanghai hotel or confirmed central address"
-                : "Beijing hotel or confirmed central address",
+            value: isPrivateChengduPandaDayTour
+              ? "Central Chengdu hotel or confirmed central address"
+              : isPrivateXianTerracottaDayTour
+                ? "Central Xi'an hotel or confirmed central address"
+                : isPrivateShanghaiDayTour
+                  ? "Central Shanghai hotel or confirmed central address"
+                  : "Beijing hotel or confirmed central address",
           }
         : { label: "Hotels", value: hotelStandard },
     ],
@@ -154,7 +160,8 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       (isAgendaFirstBusinessJourney ||
         isMutianyuPrivateDayTour ||
         isPrivateShanghaiDayTour ||
-        isPrivateXianTerracottaDayTour) &&
+        isPrivateXianTerracottaDayTour ||
+        isPrivateChengduPandaDayTour) &&
       tour.inquiry.whatsappHref
         ? tour.inquiry.whatsappHref
         : tourWhatsAppHref(tour.title, tour.duration),
@@ -166,7 +173,9 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
           ? "Check My Date"
           : isPrivateXianTerracottaDayTour
             ? "Check My Date"
-            : "Plan My Trip",
+            : isPrivateChengduPandaDayTour
+              ? "Check My Date"
+              : "Plan My Trip",
     whatsappActionLabel: isAgendaFirstBusinessJourney
       ? "Send Us My Business Plans"
       : isMutianyuPrivateDayTour
@@ -175,7 +184,9 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
           ? "Check My Date on WhatsApp"
           : isPrivateXianTerracottaDayTour
             ? "Check My Date on WhatsApp"
-            : "Message Our China Team",
+            : isPrivateChengduPandaDayTour
+              ? "Check My Date on WhatsApp"
+              : "Message Our China Team",
     lastReviewedLabel: tour.updatedAt ? formatReviewDate(tour.updatedAt) : undefined,
   };
 }

@@ -10,6 +10,27 @@ import type { Tour } from "@/types/tour";
 
 const journeyProfiles = [
   {
+    slug: "private-chengdu-panda-day-tour-early-morning",
+    audience:
+      "Families, couples, first-time Chengdu visitors, older travelers and small private groups who want a responsibly planned early panda morning with central-hotel pickup, English-speaking guide, driver and no shopping stops",
+    pace: "An early-start private day of usually seven to nine hours, with standard Chengdu Panda Base admission, a live-condition route and a slower People's Park culture chapter",
+    evidence: [
+      [
+        "Private early-morning Chengdu panda day tour product page",
+        "/tours/private-chengdu-panda-day-tour-early-morning",
+      ],
+      [
+        "Chengdu Panda Base tickets and visitor guide",
+        "/journal/chengdu-panda-base-tickets-foreigners",
+      ],
+      ["Chengdu itinerary planning", "/journal/how-many-days-in-chengdu-itinerary"],
+      [
+        "Mobile payments guidance for foreign visitors",
+        "/journal/china-mobile-payments-foreign-tourists",
+      ],
+    ],
+  },
+  {
     slug: "private-xian-terracotta-warriors-day-tour",
     audience:
       "First-time Xi'an visitors, couples, families, older travelers and small private groups who want the Terracotta Warriors properly explained with central-hotel pickup, English-speaking guide, driver and no shopping stops",
@@ -281,7 +302,9 @@ function renderJourney(
   const isMutianyuDayTour = tour.slug === "private-mutianyu-great-wall-day-tour";
   const isShanghaiDayTour = tour.slug === "private-shanghai-day-tour-guide-driver";
   const isXianTerracottaDayTour = tour.slug === "private-xian-terracotta-warriors-day-tour";
-  const isDayTour = isMutianyuDayTour || isShanghaiDayTour || isXianTerracottaDayTour;
+  const isChengduPandaDayTour = tour.slug === "private-chengdu-panda-day-tour-early-morning";
+  const isDayTour =
+    isMutianyuDayTour || isShanghaiDayTour || isXianTerracottaDayTour || isChengduPandaDayTour;
   const itinerary = tour.itinerary
     .map((day) => {
       const activities = day.activities
@@ -317,12 +340,12 @@ Suitable for: ${audience}
 
 ## Price and availability
 
-Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} ${isXianTerracottaDayTour ? "per private group of four guests, equivalent to US$157 per guest" : isShanghaiDayTour ? "per private group of four guests, equivalent to US$168 per guest" : "per person"}
+Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} ${isChengduPandaDayTour ? "per private group of four guests, equivalent to approximately US$150 per guest" : isXianTerracottaDayTour ? "per private group of four guests, equivalent to US$157 per guest" : isShanghaiDayTour ? "per private group of four guests, equivalent to US$168 per guest" : "per person"}
 Price basis: ${pricing.basis}
 Typical tailored range: ${pricing.finalPriceNote}
 Additional pricing note: ${pricing.additionalNote ?? "No additional published pricing note."}
 Availability status: Limited and date-specific; subject to written supplier confirmation
-Price status: ${isXianTerracottaDayTour ? "Indicative until the date, Xi'an pickup address, group size, vehicle, guide, passport-linked museum admission and selected upgrades are confirmed in writing" : isShanghaiDayTour ? "Indicative until the date, Shanghai pickup address, group size, vehicle, guide, Yu Garden admission, ferry operation and selected upgrades are confirmed in writing" : isMutianyuDayTour ? "Indicative until the date, Beijing pickup address, group size, vehicle, guide, tickets and selected mountain transport are confirmed in writing" : "Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal"}
+Price status: ${isChengduPandaDayTour ? "Indicative until the date, Chengdu pickup address, group size, vehicle, guide, Panda Base admission, public operating conditions and selected upgrades are confirmed in writing" : isXianTerracottaDayTour ? "Indicative until the date, Xi'an pickup address, group size, vehicle, guide, passport-linked museum admission and selected upgrades are confirmed in writing" : isShanghaiDayTour ? "Indicative until the date, Shanghai pickup address, group size, vehicle, guide, Yu Garden admission, ferry operation and selected upgrades are confirmed in writing" : isMutianyuDayTour ? "Indicative until the date, Beijing pickup address, group size, vehicle, guide, tickets and selected mountain transport are confirmed in writing" : "Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal"}
 
 ## Included in the published design
 
