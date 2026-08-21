@@ -3558,24 +3558,25 @@
   border-radius: 24px !important;
   display: flex !important;
   flex-direction: column !important;
-  min-height: 10.6rem !important;
-  padding: 1rem 1rem .88rem !important;
+  min-height: 9.65rem !important;
+  padding: 1rem 1.05rem !important;
+  justify-content: center !important;
   text-align: left !important;
   width: 100% !important;
 }
 
-.serviceChoice > span { margin-top: 0 !important; }
+.serviceChoice > .serviceChoiceEyebrow { margin-top: 0 !important; }
 .serviceChoiceEyebrow {
   color: #30383b !important;
   font-size: .58rem !important;
-  line-height: 1.3 !important;
+  line-height: 1.55 !important;
 }
 .serviceChoiceTitle {
   color: #202326 !important;
   display: block !important;
   font-size: clamp(.98rem, 1.1vw, 1.14rem) !important;
-  line-height: 1.12 !important;
-  margin-top: .52rem !important;
+  line-height: 1.24 !important;
+  margin-top: .56rem !important;
   max-width: none !important;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3587,8 +3588,8 @@
   color: #30383b !important;
   display: -webkit-box !important;
   font-size: .69rem !important;
-  line-height: 1.42 !important;
-  margin-top: .48rem !important;
+  line-height: 1.65 !important;
+  margin-top: .5rem !important;
   max-width: none !important;
   overflow: hidden;
 }
@@ -3598,9 +3599,9 @@
   display: inline-flex !important;
   font-size: .65rem !important;
   gap: .3rem !important;
-  line-height: 1.3 !important;
-  margin-top: auto !important;
-  padding-top: .7rem !important;
+  line-height: 1.42 !important;
+  margin-top: .78rem !important;
+  padding-top: 0 !important;
 }
 
 .serviceDialogDescription,
@@ -3620,10 +3621,10 @@
   .serviceChoice,
   .serviceChoice:first-child,
   .serviceChoice:last-child {
-    min-height: 7.9rem !important;
-    padding: .82rem .9rem .72rem !important;
+    min-height: 8.1rem !important;
+    padding: .82rem .92rem !important;
   }
-  .serviceChoiceTitle { font-size: 1rem !important; margin-top: .36rem !important; }
-  .serviceChoiceDescription { font-size: .66rem !important; margin-top: .32rem !important; }
-  .serviceChoicePrompt { font-size: .62rem !important; padding-top: .48rem !important; }
+  .serviceChoiceTitle { font-size: 1rem !important; line-height: 1.22 !important; margin-top: .42rem !important; }
+  .serviceChoiceDescription { font-size: .66rem !important; line-height: 1.58 !important; margin-top: .36rem !important; }
+  .serviceChoicePrompt { font-size: .62rem !important; margin-top: .62rem !important; }
 }
