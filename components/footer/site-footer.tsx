@@ -12,6 +12,7 @@ type LegacyFooterProps = {
   columns?: Array<{ title: string; items: NavigationItem[] }>;
   email?: string;
   social?: Array<{ label: string; href: string }>;
+  tone?: "default" | "blue";
 };
 
 const footerGroups = [
@@ -41,9 +42,9 @@ const footerGroups = [
   },
 ] as const;
 
-export function SiteFooter({ email = siteConfig.email }: LegacyFooterProps = {}) {
+export function SiteFooter({ email = siteConfig.email, tone = "default" }: LegacyFooterProps = {}) {
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${tone === "blue" ? styles.blue : ""}`}>
       <div className={styles.inner}>
         <div className={styles.rule} aria-hidden="true" />
         <div className={styles.main}>

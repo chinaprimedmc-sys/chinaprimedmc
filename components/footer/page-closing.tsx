@@ -72,16 +72,21 @@ export function PageClosing({
   intent,
   primaryHref,
   journeySlug,
+  tone = "default",
 }: {
   intent: PageClosingIntent;
   primaryHref?: string;
   journeySlug?: string;
+  tone?: "default" | "blue";
 }) {
   const copy = content[intent];
   const href = primaryHref ?? `/start-planning?source=closing-${intent}`;
   const whatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(intent === "trade" ? "Hello China Prime DMC, I would like to discuss a travel-trade brief." : "Hello AVIORA, I would like help planning a private journey in China.")}`;
   return (
-    <section className={styles.closing} aria-labelledby={`closing-${intent}-title`}>
+    <section
+      className={`${styles.closing} ${tone === "blue" ? styles.blue : ""}`}
+      aria-labelledby={`closing-${intent}-title`}
+    >
       <div className={styles.inner}>
         <div className={styles.copy}>
           <p>{copy.eyebrow}</p>

@@ -15,6 +15,13 @@ export type TourDetailDay = {
   experiences: Array<{ title: string; description: string }>;
 };
 
+export type TourExperienceCard = {
+  label: string;
+  title: string;
+  description: string;
+  image?: MediaAsset;
+};
+
 export type TourDetailModel = {
   slug: string;
   title: string;
@@ -27,7 +34,7 @@ export type TourDetailModel = {
   heroImage: MediaAsset;
   hasPhotography: boolean;
   planningSupport?: Tour["planningSupport"];
-  experienceChapters?: Tour["experienceChapters"];
+  experienceCards: TourExperienceCard[];
   optionalExperiences?: Tour["optionalExperiences"];
   price?: {
     fromUsd: number;
@@ -99,13 +106,14 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     route: tour.route,
     journeyRoleLabel: catalog?.commercialRoleLabel ?? "Private China journey",
     decisionSummary: catalog?.hook ?? tour.overview.pitch,
-    signatureMoments:
-      catalog?.highlights.slice(0, 3) ??
-      tour.highlights.slice(0, 3).map((highlight) => highlight.title),
+    signatureMoments: uniqueStrings([
+      ...(catalog?.highlights ?? []),
+      ...tour.highlights.map((highlight) => highlight.title),
+    ]).slice(0, 3),
     heroImage: tour.hero.image,
     hasPhotography: tour.visualStatus !== "pending",
     planningSupport: tour.planningSupport,
-    experienceChapters: tour.experienceChapters,
+    experienceCards: createExperienceCards(tour),
     optionalExperiences: tour.optionalExperiences,
     price: catalog
       ? {
@@ -212,6 +220,12 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     signatureMoments: item.highlights.slice(0, 3),
     heroImage: item.image,
     hasPhotography: item.visualStatus !== "pending",
+    experienceCards: item.highlights.slice(0, 3).map((highlight, index) => ({
+      label: item.destinations[index]?.label ?? item.durationLabel,
+      title: highlight,
+      description: item.summary,
+      image: item.visualStatus === "pending" ? undefined : index === 0 ? item.image : undefined,
+    })),
     price: {
       fromUsd: item.pricing.fromUsd,
       basis: item.pricing.basis,
@@ -260,6 +274,24 @@ function collectTourImages(tour: Tour) {
     ...tour.optionalExperiences.map((experience) => experience.image),
     ...tour.gallery,
   ]);
+}
+
+function createExperienceCards(tour: Tour): TourExperienceCard[] {
+  if (tour.experienceChapters?.length) {
+    return tour.experienceChapters.slice(0, 3).map((chapter, index) => ({
+      label: `${chapter.location} · ${chapter.days}`,
+      title: chapter.title,
+      description: chapter.description,
+      image: tour.visualStatus === "pending" ? undefined : tour.highlights[index]?.image,
+    }));
+  }
+
+  return tour.highlights.slice(0, 3).map((highlight) => ({
+    label: highlight.category,
+    title: highlight.title,
+    description: highlight.description,
+    image: tour.visualStatus === "pending" ? undefined : highlight.image,
+  }));
 }
 
 function uniqueMedia(images: MediaAsset[]) {

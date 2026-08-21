@@ -1,6 +1,6 @@
 .section {
-  border-top: 1px solid rgba(23, 27, 24, 0.14);
-  color: #171b18;
+  border-top: 1px solid rgba(27, 58, 92, 0.14);
+  color: #122b43;
   font-family: var(--font-primary);
   padding-block: 4rem;
 }
@@ -10,7 +10,7 @@
 }
 
 .eyebrow {
-  color: #626b66;
+  color: #5e6b78;
   font-size: 0.75rem;
   font-weight: 600;
   margin: 0;
@@ -25,13 +25,13 @@
 }
 
 .list {
-  border-top: 1px solid rgba(23, 27, 24, 0.14);
+  border-top: 1px solid rgba(27, 58, 92, 0.14);
   margin-top: 2rem;
 }
 
 .item {
   align-items: center;
-  border-bottom: 1px solid rgba(23, 27, 24, 0.14);
+  border-bottom: 1px solid rgba(27, 58, 92, 0.14);
   display: grid;
   gap: 1rem;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -39,7 +39,7 @@
 }
 
 .copy > p {
-  color: #626b66;
+  color: #5e6b78;
   font-size: 0.7rem;
   font-weight: 600;
   margin: 0;
@@ -54,7 +54,7 @@
 }
 
 .arrow {
-  color: #536158;
+  color: #1b3a5c;
   transition: transform 220ms ease;
 }
 
@@ -65,7 +65,7 @@
 
 .all {
   align-items: center;
-  color: #536158;
+  color: #1b3a5c;
   display: inline-flex;
   font-size: 0.82rem;
   font-weight: 600;
