@@ -3628,3 +3628,403 @@
   .serviceChoiceDescription { font-size: .66rem !important; line-height: 1.58 !important; margin-top: .36rem !important; }
   .serviceChoicePrompt { font-size: .62rem !important; margin-top: .62rem !important; }
 }
+
+@media (max-width: 640px) {
+  /* Four separate glass choices: clear tap targets with a quiet, rounded rhythm. */
+  .serviceChoiceGrid {
+    display: grid;
+    gap: 0.72rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 1.15rem;
+    padding: 0 0.1rem;
+  }
+
+  .serviceChoice,
+  .serviceChoice:first-child,
+  .serviceChoice:last-child {
+    -webkit-backdrop-filter: blur(24px) saturate(126%);
+    backdrop-filter: blur(24px) saturate(126%);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(247, 249, 248, 0.62)),
+      rgba(255, 255, 255, 0.68) !important;
+    border: 1px solid rgba(255, 255, 255, 0.96) !important;
+    border-radius: 1.45rem !important;
+    box-shadow:
+      0 16px 34px rgba(25, 36, 33, 0.1),
+      0 3px 10px rgba(25, 36, 33, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.98),
+      inset 0 -1px 0 rgba(216, 223, 220, 0.34);
+    min-height: 12.2rem !important;
+    overflow: hidden;
+    padding: 0.95rem 0.82rem 0.82rem !important;
+    position: relative;
+  }
+
+  .serviceChoice::before {
+    background: linear-gradient(104deg, rgba(255, 255, 255, 0.92), transparent 62%);
+    height: 100%;
+    inset: 0;
+    opacity: 0.65;
+    right: auto;
+    top: 0;
+    width: 52%;
+  }
+
+  .serviceChoice > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .serviceChoiceEyebrow {
+    font-size: 0.55rem !important;
+    letter-spacing: 0.075em;
+    line-height: 1.42 !important;
+    min-height: 1.58rem;
+  }
+
+  .serviceChoiceTitle {
+    display: -webkit-box;
+    font-size: 0.98rem !important;
+    line-height: 1.16 !important;
+    margin-top: 0.42rem !important;
+    min-height: 2.28rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    white-space: normal;
+  }
+
+  .serviceChoiceDescription {
+    display: -webkit-box;
+    font-size: 0.64rem !important;
+    line-height: 1.45 !important;
+    margin-top: 0.42rem !important;
+    max-width: none;
+    min-height: 2.8rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .serviceChoicePrompt {
+    font-size: 0.64rem !important;
+    gap: 0.28rem !important;
+    margin-top: auto !important;
+    padding-top: 0.58rem !important;
+  }
+
+  .serviceChoicePrompt svg {
+    border: 0 !important;
+    height: 0.9rem !important;
+    padding: 0 !important;
+    width: 0.9rem !important;
+  }
+
+  .serviceChoice:hover,
+  .serviceChoice:focus-visible {
+    box-shadow:
+      0 20px 40px rgba(25, 36, 33, 0.14),
+      0 4px 12px rgba(25, 36, 33, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 0 rgba(216, 223, 220, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+/* Production trust glass: a rounded assurance panel that anchors the hero. */
+.serviceAssurance {
+  background: transparent;
+  border: 0;
+  color: var(--journey-ink);
+  margin: -2.25rem auto 0;
+  padding: 0 2rem;
+  position: relative;
+  width: min(100%, 86rem);
+  z-index: 4;
+}
+
+.serviceAssurance > .serviceAssuranceInner {
+  align-items: center;
+  -webkit-backdrop-filter: blur(26px) saturate(132%);
+  backdrop-filter: blur(26px) saturate(132%);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(244, 248, 246, 0.74)),
+    rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  border-radius: 1.75rem;
+  box-shadow:
+    0 22px 54px rgba(25, 36, 33, 0.12),
+    0 4px 14px rgba(25, 36, 33, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 0 rgba(216, 223, 220, 0.36);
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 2.75rem);
+  grid-template-columns: minmax(12rem, 1.05fr) minmax(0, 2.65fr) auto;
+  margin: 0 auto;
+  min-height: 7.75rem;
+  overflow: hidden;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  position: relative;
+  width: 100%;
+}
+
+.serviceAssurance > .serviceAssuranceInner::before {
+  background: linear-gradient(105deg, rgba(255, 255, 255, 0.82), transparent 38%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.serviceAssurance .serviceAssuranceBrand,
+.serviceAssurance .serviceAssuranceProofs,
+.serviceAssurance a.serviceAssuranceLink {
+  position: relative;
+  z-index: 1;
+}
+
+.serviceAssurance .serviceAssuranceBrand {
+  align-items: center;
+  display: flex;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.serviceAssurance span.serviceAssuranceBrandMark {
+  align-items: center;
+  background: rgba(36, 53, 48, 0.08);
+  border: 1px solid rgba(36, 53, 48, 0.14);
+  border-radius: 999px;
+  color: #243530;
+  display: inline-flex;
+  flex: 0 0 2.9rem;
+  height: 2.9rem;
+  justify-content: center;
+  padding: 0;
+  width: 2.9rem;
+}
+
+.serviceAssuranceBrandMark svg {
+  height: 1.35rem;
+  stroke-width: 1.7;
+  width: 1.35rem;
+}
+
+.serviceAssurance span.serviceAssuranceBrandCopy {
+  color: inherit;
+  display: grid;
+  gap: 0.27rem;
+  min-width: 0;
+  padding: 0;
+}
+
+.serviceAssuranceBrandCopy strong {
+  color: #243530;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.serviceAssuranceBrandCopy small {
+  color: #687570;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.serviceAssurance .serviceAssuranceProofs {
+  align-items: stretch;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-width: 0;
+}
+
+.serviceAssurance .serviceAssuranceProof {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0 1rem;
+}
+
+.serviceAssurance .serviceAssuranceProof + .serviceAssuranceProof {
+  border-left: 1px solid rgba(36, 53, 48, 0.13);
+}
+
+.serviceAssurance .serviceAssuranceProof:first-child {
+  padding-left: 0;
+}
+
+.serviceAssurance .serviceAssuranceProof:last-child {
+  padding-right: 0;
+}
+
+.serviceAssurance span.serviceAssuranceProofIcon {
+  align-items: center;
+  background: rgba(36, 53, 48, 0.09);
+  border: 1px solid rgba(36, 53, 48, 0.14);
+  border-radius: 999px;
+  color: #365247;
+  display: inline-flex;
+  flex: 0 0 1.8rem;
+  font-size: 0;
+  height: 1.8rem;
+  justify-content: center;
+  margin-top: 0.05rem;
+  padding: 0;
+  width: 1.8rem;
+}
+
+.serviceAssuranceProofIcon svg {
+  height: 0.95rem;
+  stroke-width: 2.2;
+  width: 0.95rem;
+}
+
+.serviceAssurance span.serviceAssuranceProofCopy {
+  color: inherit;
+  display: grid;
+  gap: 0.3rem;
+  min-width: 0;
+  padding: 0;
+}
+
+.serviceAssuranceProofCopy strong {
+  color: #243530;
+  font-size: clamp(0.78rem, 0.9vw, 0.9rem);
+  font-weight: 700;
+  line-height: 1.28;
+}
+
+.serviceAssuranceProofCopy small {
+  color: #687570;
+  font-size: clamp(0.68rem, 0.78vw, 0.76rem);
+  line-height: 1.42;
+}
+
+.serviceAssurance a.serviceAssuranceLink {
+  align-items: center;
+  background: #243530;
+  border: 1px solid #243530;
+  border-left: 1px solid #243530;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(36, 53, 48, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.13);
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 700;
+  gap: 0.5rem;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.1rem;
+  text-decoration: none;
+  transition: background-color 180ms var(--motion-ease-out), box-shadow 180ms var(--motion-ease-out), transform 180ms var(--motion-ease-out);
+  white-space: nowrap;
+}
+
+.serviceAssurance a.serviceAssuranceLink > span {
+  color: #fff;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+.serviceAssuranceLink svg {
+  height: 1rem;
+  stroke-width: 1.8;
+  width: 1rem;
+}
+
+.serviceAssurance a.serviceAssuranceLink:hover {
+  background: #192421;
+  box-shadow: 0 12px 24px rgba(36, 53, 48, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.serviceAssurance a.serviceAssuranceLink:focus-visible {
+  outline: 3px solid rgba(113, 132, 126, 0.62);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .serviceAssuranceInner {
+    animation: service-assurance-enter 620ms var(--motion-ease-out) both;
+  }
+}
+
+@keyframes service-assurance-enter {
+  from { opacity: 0.86; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .serviceAssurance > .serviceAssuranceInner {
+    gap: 1rem 1.5rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 0;
+    padding: 1.15rem 1.25rem;
+  }
+
+  .serviceAssurance .serviceAssuranceProofs {
+    border-top: 1px solid rgba(36, 53, 48, 0.12);
+    grid-column: 1 / -1;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .serviceAssurance {
+    margin-top: -1.25rem;
+    padding: 0 1rem;
+    width: 100%;
+  }
+
+  .serviceAssurance > .serviceAssuranceInner {
+    gap: 1rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 1.1rem;
+  }
+
+  .serviceAssurance span.serviceAssuranceBrandMark {
+    flex-basis: 2.45rem;
+    height: 2.45rem;
+    width: 2.45rem;
+  }
+
+  .serviceAssuranceBrandMark svg { height: 1.15rem; width: 1.15rem; }
+  .serviceAssuranceBrandCopy strong { font-size: 0.61rem; letter-spacing: 0.1em; }
+  .serviceAssuranceBrandCopy small { font-size: 0.74rem; }
+
+  .serviceAssurance a.serviceAssuranceLink {
+    font-size: 0.77rem;
+    min-height: 2.8rem;
+    padding: 0 0.85rem;
+  }
+
+  .serviceAssurance .serviceAssuranceProofs {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+    padding-top: 0.35rem;
+  }
+
+  .serviceAssurance .serviceAssuranceProof,
+  .serviceAssurance .serviceAssuranceProof:first-child,
+  .serviceAssurance .serviceAssuranceProof:last-child {
+    min-height: 3.2rem;
+    padding: 0.72rem 0;
+  }
+
+  .serviceAssurance .serviceAssuranceProof + .serviceAssuranceProof {
+    border-left: 0;
+    border-top: 1px solid rgba(36, 53, 48, 0.12);
+  }
+
+  .serviceAssuranceProofCopy strong { font-size: 0.82rem; }
+  .serviceAssuranceProofCopy small { font-size: 0.7rem; }
+}

@@ -8,6 +8,7 @@ import {
   ChevronDown,
   MessageCircle,
   Search,
+  ShieldCheck,
   SlidersHorizontal,
   X,
 } from "lucide-react";
@@ -321,11 +322,49 @@ export function JourneyEditorialGrid({
         </div>
       </section>
       <section className={styles.serviceAssurance} aria-label="AVIORA private China travel standards">
-        <div>
-          <span>Licensed China-based operator</span>
-          <span>Private service throughout</span>
-          <span>No compulsory shopping</span>
-          <Link href="/about">Verify AVIORA <ArrowUpRight aria-hidden="true" /></Link>
+        <div className={styles.serviceAssuranceInner}>
+          <div className={styles.serviceAssuranceBrand}>
+            <span className={styles.serviceAssuranceBrandMark} aria-hidden="true">
+              <ShieldCheck />
+            </span>
+            <span className={styles.serviceAssuranceBrandCopy}>
+              <strong>THE AVIORA STANDARD</strong>
+              <small>Assured in China</small>
+            </span>
+          </div>
+          <div className={styles.serviceAssuranceProofs}>
+            <div className={styles.serviceAssuranceProof}>
+              <span className={styles.serviceAssuranceProofIcon} aria-hidden="true">
+                <Check />
+              </span>
+              <span className={styles.serviceAssuranceProofCopy}>
+                <strong>Licensed China-based operator</strong>
+                <small>China-based operational responsibility</small>
+              </span>
+            </div>
+            <div className={styles.serviceAssuranceProof}>
+              <span className={styles.serviceAssuranceProofIcon} aria-hidden="true">
+                <Check />
+              </span>
+              <span className={styles.serviceAssuranceProofCopy}>
+                <strong>Private service throughout</strong>
+                <small>One local team throughout your journey</small>
+              </span>
+            </div>
+            <div className={styles.serviceAssuranceProof}>
+              <span className={styles.serviceAssuranceProofIcon} aria-hidden="true">
+                <Check />
+              </span>
+              <span className={styles.serviceAssuranceProofCopy}>
+                <strong>No compulsory shopping</strong>
+                <small>Your time remains your own</small>
+              </span>
+            </div>
+          </div>
+          <Link className={styles.serviceAssuranceLink} href="/about">
+            <span>Verify AVIORA</span>
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
         </div>
       </section>
       {heroContent.service ? (
