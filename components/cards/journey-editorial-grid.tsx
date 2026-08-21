@@ -25,6 +25,7 @@ import type {
 import styles from "./journey-discovery.module.css";
 
 type SortId = "recommended" | "shortest" | "longest" | "relaxed" | "active";
+type ServiceCategory = "complete-private-journeys" | "private-day-tours";
 type Filters = {
   commercialRoles: JourneyCommercialRoleId[];
   focus: JourneyFocusId[];
@@ -134,20 +135,28 @@ const whatsappNumber = "447985052302";
 const serviceCards = [
   {
     eyebrow: "Complete private journeys",
-    title: "A journey shaped around you.",
+    title: "China, fully arranged.",
     formalName: "Tailor-made multi-city China travel",
     description:
-      "Hotels, private guides, vehicles, admissions and domestic travel brought together into one carefully paced journey.",
-    href: "#multi-city-journeys",
-    label: "Explore multi-city journeys",
+      "Hotels, guides, vehicles and experiences brought together around your pace and plans.",
+    href: "",
+    category: "complete-private-journeys" as ServiceCategory,
+    includes: ["Multi-city routing", "Private guides and vehicles", "Hotels, rail and experiences"],
+    standards: ["One coordinated point of contact", "Clear inclusions before confirmation", "Private service throughout"],
+    process: "Tell us where you want to go and how you want to travel. We shape the route around you.",
+    label: "Explore complete journeys",
   },
   {
     eyebrow: "Private day tours",
     title: "One day, beautifully handled.",
     formalName: "Professionally handled private China day tours",
     description:
-      "Experience the Great Wall, pandas, Shanghai, Xi'an or the Li River with the practical details already coordinated.",
-    href: "#private-day-tours",
+      "A private guide, vehicle and well-paced experience for the places you want to see.",
+    href: "",
+    category: "private-day-tours" as ServiceCategory,
+    includes: ["Private guide and vehicle", "Timed attraction visits", "Flexible start and finish"],
+    standards: ["No rushed group-tour schedule", "Practical coordination throughout", "Clear arrangements before travel"],
+    process: "Choose a place or experience. We coordinate the day and leave you to enjoy it.",
     label: "Explore private day tours",
   },
   {
@@ -155,17 +164,25 @@ const serviceCards = [
     title: "Move with quiet confidence.",
     formalName: "Private vehicle and driver service in China",
     description:
-      "Tell us your route, date, party size and luggage. We will recommend the most suitable professionally operated arrangement.",
-    href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello AVIORA, I need a private vehicle in China. My city or route is __, travel date is __, there are __ passengers and __ pieces of luggage.")}`,
+      "Reliable private transport arranged around your route, schedule and luggage.",
+    category: undefined,
+    includes: ["Airport and city transfers", "Intercity driving", "Vehicle matched to your party"],
+    standards: ["Professional local coordination", "Route and timing confirmed", "Flexible support when plans change"],
+    process: "Share your route, dates, party size and luggage. We recommend the most suitable arrangement.",
+    href: whatsappHref("Hello AVIORA, I need a private vehicle in China. My city or route is __, travel date is __, there are __ passengers and __ pieces of luggage."),
     label: "Recommend my private vehicle",
   },
   {
     eyebrow: "Expert private guide",
-    title: "See China with expert context.",
+    title: "See China with context.",
     formalName: "English-speaking private guide service in China",
     description:
-      "Share your destination, interests and preferred pace. We will recommend a guide suited to the place and the way you want to travel.",
-    href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello AVIORA, I need a private guide in __ on __. There are __ guests. Our main interests are __ and our preferred language is __.")}`,
+      "An English-speaking guide matched to your destination, interests and preferred pace.",
+    category: undefined,
+    includes: ["English-speaking private guide", "History, culture and local-life context", "Flexible pace and interests"],
+    standards: ["Guide matched to your priorities", "Clear communication in advance", "Private attention throughout"],
+    process: "Tell us the destination, interests and pace you prefer. We match the right local expertise.",
+    href: whatsappHref("Hello AVIORA, I need a private guide in __ on __. There are __ guests. Our main interests are __ and our preferred language is __."),
     label: "Match me with a private guide",
   },
 ] as const;
@@ -233,6 +250,7 @@ export function JourneyEditorialGrid({
   const [query, setQuery] = useState(initialUrlState.query);
   const deferredQuery = useDeferredValue(query);
   const [filters, setFilters] = useState<Filters>(initialUrlState.filters);
+  const [serviceCategory, setServiceCategory] = useState<ServiceCategory | null>(initialUrlState.category);
   const [sort, setSort] = useState<SortId>(initialUrlState.sort);
   const [limit, setLimit] = useState(12);
   const destinations = useMemo(
@@ -242,10 +260,10 @@ export function JourneyEditorialGrid({
   const results = useMemo(
     () =>
       sortItems(
-        items.filter((item) => matches(item, filters, deferredQuery)),
+        items.filter((item) => matches(item, filters, deferredQuery, serviceCategory)),
         sort,
       ),
-    [items, filters, deferredQuery, sort],
+    [items, filters, deferredQuery, serviceCategory, sort],
   );
   const active = Object.values(filters).flat().length;
   const summary = getSummary(filters, query);
@@ -256,9 +274,10 @@ export function JourneyEditorialGrid({
     Object.entries(filters).forEach(([key, values]) => {
       if (values.length) params.set(key, values.join(","));
     });
+    if (serviceCategory) params.set("category", serviceCategory);
     if (sort !== "recommended") params.set("sort", sort);
     history.replaceState(null, "", `${location.pathname}${params.size ? `?${params}` : ""}`);
-  }, [filters, query, sort]);
+  }, [filters, query, serviceCategory, sort]);
 
   const toggle = <K extends keyof Filters>(key: K, value: Filters[K][number]) =>
     setFilters((current) => ({
@@ -270,7 +289,17 @@ export function JourneyEditorialGrid({
   const reset = () => {
     setFilters(emptyFilters);
     setQuery("");
+    setServiceCategory(null);
     setLimit(12);
+  };
+  const exploreService = (category: ServiceCategory) => {
+    setFilters(emptyFilters);
+    setQuery("");
+    setServiceCategory(category);
+    setLimit(12);
+    window.requestAnimationFrame(() => {
+      document.getElementById("journey-discovery")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
   return (
     <main className={styles.page}>
@@ -347,20 +376,9 @@ export function JourneyEditorialGrid({
           </p>
         </div>
         <div className={styles.serviceChoiceGrid}>
-          {serviceCards.map((service) => {
-            const external = service.href.startsWith("https://");
-            return (
-              <article className={styles.serviceChoice} key={service.eyebrow}>
-                <p>{service.eyebrow}</p>
-                <h3>{service.title}</h3>
-                <strong>{service.formalName}</strong>
-                <span>{service.description}</span>
-                <Link href={service.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
-                  {service.label} <ArrowUpRight size={15} aria-hidden="true" />
-                </Link>
-              </article>
-            );
-          })}
+          {serviceCards.map((service) => (
+            <ServiceChoiceDialog key={service.eyebrow} service={service} onExplore={exploreService} />
+          ))}
         </div>
         <div className={styles.existingPlans}>
           <span>Already arranged part of your trip?</span>
@@ -646,6 +664,74 @@ function FilterGroup({
   );
 }
 
+function ServiceChoiceDialog({
+  service,
+  onExplore,
+}: {
+  service: (typeof serviceCards)[number];
+  onExplore: (category: ServiceCategory) => void;
+}) {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <button type="button" className={styles.serviceChoice}>
+          <span className={styles.serviceChoiceEyebrow}>{service.eyebrow}</span>
+          <span className={styles.serviceChoiceTitle}>{service.title}</span>
+          <span className={styles.serviceChoiceDescription}>{service.description}</span>
+          <span className={styles.serviceChoicePrompt}>
+            View our standard <ArrowUpRight size={15} aria-hidden="true" />
+          </span>
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className={styles.serviceDialogOverlay} />
+        <Dialog.Content className={styles.serviceDialog} aria-describedby={`${service.eyebrow}-description`}>
+          <div className={styles.serviceDialogTopline}>
+            <span>{service.eyebrow}</span>
+            <Dialog.Close className={styles.serviceDialogClose} aria-label="Close service details">
+              <X size={18} aria-hidden="true" />
+            </Dialog.Close>
+          </div>
+          <Dialog.Title className={styles.serviceDialogTitle}>{service.title}</Dialog.Title>
+          <Dialog.Description id={`${service.eyebrow}-description`} className={styles.serviceDialogDescription}>
+            {service.description}
+          </Dialog.Description>
+          <div className={styles.serviceDialogColumns}>
+            <div>
+              <h3>What we can arrange</h3>
+              <ul>
+                {service.includes.map((item) => <li key={item}><Check size={15} aria-hidden="true" />{item}</li>)}
+              </ul>
+            </div>
+            <div>
+              <h3>Our standard</h3>
+              <ul>
+                {service.standards.map((item) => <li key={item}><Check size={15} aria-hidden="true" />{item}</li>)}
+              </ul>
+            </div>
+          </div>
+          <p className={styles.serviceDialogProcess}>{service.process}</p>
+          <div className={styles.serviceDialogActions}>
+            {service.category ? (
+              <Dialog.Close asChild>
+                <button type="button" className={styles.serviceDialogAction} onClick={() => onExplore(service.category!)}>
+                  {service.label} <ArrowUpRight size={15} aria-hidden="true" />
+                </button>
+              </Dialog.Close>
+            ) : (
+              <Link className={styles.serviceDialogAction} href={service.href!} target="_blank" rel="noreferrer">
+                {service.label} <MessageCircle size={15} aria-hidden="true" />
+              </Link>
+            )}
+            <Dialog.Close className={styles.serviceDialogSecondary}>Continue exploring</Dialog.Close>
+          </div>
+          <p className={styles.serviceDialogTrust}>Private service · Clear communication · No obligation</p>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+
 function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
   const signatureItems = items
     .filter((item) => item.commercialRole === "signature")
@@ -908,7 +994,14 @@ function NoResults({ reset }: { reset: () => void }) {
   );
 }
 
-function matches(item: JourneyCatalogItem, filters: Filters, query: string) {
+function matches(
+  item: JourneyCatalogItem,
+  filters: Filters,
+  query: string,
+  serviceCategory: ServiceCategory | null = null,
+) {
+  if (serviceCategory === "private-day-tours" && !dayTourSlugs.has(item.slug)) return false;
+  if (serviceCategory === "complete-private-journeys" && item.recommendedDaysMax < 3) return false;
   const q = query.trim().toLowerCase();
   if (q && !item.discovery.searchableText.includes(q) && !daysQuery(item, q)) return false;
   if (filters.commercialRoles.length && !filters.commercialRoles.includes(item.commercialRole))
@@ -1009,13 +1102,16 @@ function getDisplayTitle(title: string) {
 function getInitialUrlState(queryString: string): {
   query: string;
   filters: Filters;
+  category: ServiceCategory | null;
   sort: SortId;
 } {
   const params = new URLSearchParams(queryString);
   const read = (key: keyof Filters) => params.get(key)?.split(",").filter(Boolean) ?? [];
   const sort = params.get("sort");
+  const category = params.get("category");
   return {
     query: params.get("q") ?? "",
+    category: category === "private-day-tours" || category === "complete-private-journeys" ? category : null,
     filters: {
       commercialRoles: read("commercialRoles") as JourneyCommercialRoleId[],
       focus: read("focus") as JourneyFocusId[],

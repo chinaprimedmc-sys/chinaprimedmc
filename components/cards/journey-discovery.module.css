@@ -2068,6 +2068,343 @@
   .serviceChoice { min-height: 0; }
 }
 
+/* Compact service entry cards: the card invites; the dialog explains. */
+.serviceChoices {
+  background: transparent;
+}
+
+.serviceChoiceGrid {
+  border: 0;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 1.65rem;
+}
+
+.serviceChoice,
+.serviceChoice:first-child,
+.serviceChoice:last-child {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(20, 24, 28, 0.035), 0 14px 30px rgba(20, 24, 28, 0.065);
+  color: var(--journey-ink);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  min-height: 14.6rem;
+  overflow: hidden;
+  padding: 1.15rem 1.1rem 1rem;
+  position: relative;
+  text-align: left;
+  transition: transform 360ms cubic-bezier(.2,.8,.2,1), background-color 360ms ease, box-shadow 360ms ease;
+  width: 100%;
+  -webkit-backdrop-filter: blur(20px) saturate(115%);
+  backdrop-filter: blur(20px) saturate(115%);
+}
+
+.serviceChoice::before {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.78), transparent);
+  content: "";
+  height: 1px;
+  left: 14%;
+  opacity: .58;
+  position: absolute;
+  right: 14%;
+  top: 0;
+}
+
+.serviceChoice:hover,
+.serviceChoice:focus-visible {
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 2px 4px rgba(20, 24, 28, 0.04), 0 18px 34px rgba(20, 24, 28, 0.09);
+  transform: translateY(-3px);
+}
+
+.serviceChoice:focus-visible {
+  outline: 2px solid rgba(25, 36, 33, .34);
+  outline-offset: 3px;
+}
+
+.serviceChoice:active {
+  transform: translateY(-1px) scale(.988);
+}
+
+.serviceChoiceEyebrow,
+.serviceChoiceTitle,
+.serviceChoiceDescription,
+.serviceChoicePrompt {
+  display: block;
+}
+
+.serviceChoiceEyebrow {
+  color: var(--journey-muted);
+  font-size: .58rem;
+  font-weight: 720;
+  letter-spacing: .085em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.serviceChoiceTitle {
+  color: var(--journey-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 1.35vw, 1.38rem);
+  font-weight: 520;
+  letter-spacing: -.015em;
+  line-height: 1.08;
+  margin-top: .62rem;
+  max-width: 15ch;
+}
+
+.serviceChoiceDescription {
+  color: var(--journey-muted);
+  font-size: .7rem;
+  line-height: 1.45;
+  margin-top: .55rem;
+  max-width: 30ch;
+}
+
+.serviceChoicePrompt {
+  align-items: center;
+  color: var(--journey-ink);
+  display: inline-flex;
+  font-size: .66rem;
+  font-weight: 680;
+  gap: .3rem;
+  margin-top: auto;
+  padding-top: .85rem;
+}
+
+.serviceChoicePrompt svg {
+  transition: transform 300ms cubic-bezier(.2,.8,.2,1);
+}
+
+.serviceChoice:hover .serviceChoicePrompt svg,
+.serviceChoice:focus-visible .serviceChoicePrompt svg {
+  transform: translate(2px, -2px) rotate(10deg);
+}
+
+.serviceDialogOverlay {
+  animation: serviceDialogFadeIn 300ms ease both;
+  background: rgba(25, 31, 29, 0.16);
+  inset: 0;
+  position: fixed;
+  z-index: 80;
+}
+
+.serviceDialog {
+  animation: serviceDialogIn 360ms cubic-bezier(.2,.8,.2,1) both;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 28px;
+  box-shadow: 0 20px 70px rgba(18, 24, 22, 0.16), inset 0 1px 0 rgba(255,255,255,.92);
+  color: var(--journey-ink);
+  left: 50%;
+  max-height: min(690px, calc(100vh - 3rem));
+  max-width: 780px;
+  overflow-y: auto;
+  padding: 1.45rem 1.55rem 1.2rem;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 2rem);
+  z-index: 81;
+  -webkit-backdrop-filter: blur(26px) saturate(125%);
+  backdrop-filter: blur(26px) saturate(125%);
+}
+
+.serviceDialogTopline {
+  align-items: center;
+  color: var(--journey-muted);
+  display: flex;
+  font-size: .6rem;
+  font-weight: 720;
+  justify-content: space-between;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+}
+
+.serviceDialogClose {
+  align-items: center;
+  background: rgba(255,255,255,.44);
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 50%;
+  color: var(--journey-ink);
+  cursor: pointer;
+  display: inline-flex;
+  height: 2rem;
+  justify-content: center;
+  width: 2rem;
+}
+
+.serviceDialogTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-weight: 520;
+  letter-spacing: -.025em;
+  line-height: 1.04;
+  margin-top: 1rem;
+  max-width: 18ch;
+}
+
+.serviceDialogDescription {
+  color: var(--journey-muted);
+  font-size: .86rem;
+  line-height: 1.55;
+  margin-top: .65rem;
+  max-width: 52ch;
+}
+
+.serviceDialogColumns {
+  border-block: 1px solid rgba(25, 36, 33, .11);
+  display: grid;
+  gap: 1.3rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.35rem;
+  padding: 1rem 0;
+}
+
+.serviceDialogColumns h3 {
+  color: var(--journey-ink);
+  font-size: .68rem;
+  font-weight: 720;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.serviceDialogColumns ul {
+  display: grid;
+  gap: .48rem;
+  list-style: none;
+  margin: .65rem 0 0;
+  padding: 0;
+}
+
+.serviceDialogColumns li {
+  align-items: flex-start;
+  color: var(--journey-muted);
+  display: flex;
+  font-size: .72rem;
+  gap: .45rem;
+  line-height: 1.38;
+}
+
+.serviceDialogColumns li svg {
+  color: var(--journey-ink);
+  flex: 0 0 auto;
+  margin-top: .05rem;
+}
+
+.serviceDialogProcess {
+  color: var(--journey-ink);
+  font-size: .78rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+  max-width: 62ch;
+}
+
+.serviceDialogActions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin-top: 1.15rem;
+}
+
+.serviceDialogAction,
+.serviceDialogSecondary {
+  align-items: center;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: .7rem;
+  font-weight: 700;
+  gap: .35rem;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: .45rem .82rem;
+  text-decoration: none;
+}
+
+.serviceDialogAction {
+  background: rgba(255,255,255,.48);
+  border: 1px solid rgba(255,255,255,.8);
+  box-shadow: 0 7px 18px rgba(20,24,28,.065);
+  color: var(--journey-ink);
+}
+
+.serviceDialogSecondary {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--journey-muted);
+}
+
+.serviceDialogAction:hover,
+.serviceDialogAction:focus-visible,
+.serviceDialogSecondary:hover,
+.serviceDialogSecondary:focus-visible {
+  outline: 2px solid rgba(25, 36, 33, .22);
+  outline-offset: 2px;
+}
+
+.serviceDialogTrust {
+  color: var(--journey-muted);
+  font-size: .61rem;
+  line-height: 1.35;
+  margin-top: .9rem;
+}
+
+@keyframes serviceDialogFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes serviceDialogIn {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(.985); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@media (max-width: 1023px) {
+  .serviceChoiceGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .serviceChoiceGrid { display: grid; gap: .65rem; grid-template-columns: 1fr; }
+  .serviceChoice,
+  .serviceChoice:first-child,
+  .serviceChoice:last-child {
+    min-height: 8.7rem;
+    padding: .9rem .95rem .78rem;
+  }
+  .serviceChoiceTitle { font-size: 1.08rem; margin-top: .4rem; }
+  .serviceChoiceDescription { font-size: .66rem; margin-top: .35rem; max-width: 44ch; }
+  .serviceChoicePrompt { font-size: .62rem; padding-top: .55rem; }
+  .serviceDialog {
+    border-radius: 26px 26px 0 0;
+    bottom: 0;
+    left: 0;
+    max-height: min(760px, calc(100vh - 1rem));
+    padding: 1.1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+    top: auto;
+    transform: none;
+    width: 100%;
+  }
+  .serviceDialogTitle { font-size: 1.85rem; margin-top: .8rem; }
+  .serviceDialogDescription { font-size: .75rem; margin-top: .45rem; }
+  .serviceDialogColumns { gap: .8rem; margin-top: 1rem; padding: .85rem 0; }
+  .serviceDialogColumns h3 { font-size: .59rem; }
+  .serviceDialogColumns li { font-size: .64rem; gap: .3rem; }
+  .serviceDialogProcess { font-size: .7rem; margin-top: .8rem; }
+  .serviceDialogActions { gap: .45rem; margin-top: .9rem; }
+  .serviceDialogAction,
+  .serviceDialogSecondary { font-size: .64rem; min-height: 2.05rem; padding-inline: .7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serviceChoice,
+  .serviceChoicePrompt svg,
+  .serviceDialog,
+  .serviceDialogOverlay { animation: none; transition: none; }
+}
+
 /* Glass states: selection and motion use translucent white only. */
 .journeyPaths button[aria-pressed="true"],
 .filterGroup label:has(input:checked),
@@ -3210,4 +3547,50 @@
   .existingPlans a {
     font-size: 0.62rem;
   }
+}
+
+/* Final service-card contract: these are compact clickable glass cards, not editorial columns. */
+.serviceChoice,
+.serviceChoice:first-child,
+.serviceChoice:last-child {
+  background: rgba(255, 255, 255, 0.48) !important;
+  border: 1px solid rgba(255, 255, 255, 0.78) !important;
+  border-radius: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 14.6rem !important;
+  padding: 1.15rem 1.1rem 1rem !important;
+  text-align: left !important;
+  width: 100% !important;
+}
+
+.serviceChoice > span { margin-top: 0 !important; }
+.serviceChoiceEyebrow { color: #4a5356 !important; font-size: .58rem !important; line-height: 1.3 !important; }
+.serviceChoiceTitle { font-size: clamp(1.12rem, 1.35vw, 1.38rem) !important; line-height: 1.08 !important; margin-top: .62rem !important; }
+.serviceChoiceDescription { color: #465054 !important; font-size: .7rem !important; line-height: 1.45 !important; margin-top: .55rem !important; }
+.serviceChoicePrompt { color: #202b2d !important; font-size: .66rem !important; line-height: 1.3 !important; margin-top: auto !important; padding-top: .85rem !important; }
+
+.serviceDialogDescription,
+.serviceDialogProcess,
+.serviceDialogTrust,
+.serviceDialogColumns li,
+.serviceDialogSecondary {
+  color: #465054 !important;
+}
+
+.serviceDialogTopline,
+.serviceDialogColumns h3 {
+  color: #3d484b !important;
+}
+
+@media (max-width: 640px) {
+  .serviceChoice,
+  .serviceChoice:first-child,
+  .serviceChoice:last-child {
+    min-height: 8.7rem !important;
+    padding: .9rem .95rem .78rem !important;
+  }
+  .serviceChoiceTitle { font-size: 1.08rem !important; margin-top: .4rem !important; }
+  .serviceChoiceDescription { font-size: .66rem !important; margin-top: .35rem !important; }
+  .serviceChoicePrompt { font-size: .62rem !important; padding-top: .55rem !important; }
 }
