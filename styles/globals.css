@@ -4458,4 +4458,44 @@ svg {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
+
+  .site-navigation__mobile-actions--journeys .site-navigation__mobile-help {
+    display: none !important;
+  }
+
+  .site-navigation__mobile-actions--journeys {
+    grid-template-columns: minmax(4.35rem, 0.78fr) minmax(4.5rem, 0.82fr) minmax(6.5rem, 1.1fr) !important;
+  }
+
+  /* Journeys keeps the scrolled controls as three independent text buttons.
+     There is no white slab, coloured fill, or pill background behind them. */
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-filter,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-search,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-plan {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    color: #172129 !important;
+    padding-inline: 0.35rem !important;
+  }
+
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-filter:focus-visible,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-search:focus-visible,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-plan:focus-visible {
+    outline: 2px solid rgba(23, 33, 41, 0.42);
+    outline-offset: 2px;
+  }
+
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-filter:active,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-search:active,
+  .site-navigation__mobile-actions--journeys .site-navigation__journey-plan:active {
+    background: transparent !important;
+    color: #172129 !important;
+    opacity: 0.64;
+  }
+
+  /* Keep scrolled Journeys content below the floating toolbar. */
+  body:has(.site-navigation-shell.is-scrolled) main[class*="journey-discovery_page"] {
+    padding-top: 3.45rem;
+  }
 }
