@@ -131,6 +131,9 @@ const qingchengWellness = tours.find(
 const greaterBayBusiness = tours.find(
   (tour) => tour.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day",
 );
+const mutianyuPrivateDayTour = tours.find(
+  (tour) => tour.slug === "private-mutianyu-great-wall-day-tour",
+);
 const beijingXianChengduShanghai = tours.find(
   (tour) => tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour",
 );
@@ -175,6 +178,10 @@ if (!qingchengWellness) {
 
 if (!greaterBayBusiness) {
   throw new Error("The 4-day Guangzhou and Shenzhen business journey is required.");
+}
+
+if (!mutianyuPrivateDayTour) {
+  throw new Error("The private Mutianyu Great Wall day tour is required.");
 }
 
 if (!beijingXianChengduShanghai) {
@@ -440,6 +447,41 @@ const greaterBayBusinessJourney: JourneyCatalogBase = {
   ],
   planningNote:
     "Four to seven days is the usual planning range, not a fixed package length. Confirmed flights, meetings, fairs and supplier addresses are placed first; the cities, nights and experiences are then built around them.",
+};
+
+const mutianyuPrivateDayJourney: JourneyCatalogBase = {
+  slug: mutianyuPrivateDayTour.slug,
+  title: mutianyuPrivateDayTour.title,
+  eyebrow: "Private Mutianyu Great Wall day tour",
+  summary: mutianyuPrivateDayTour.subtitle,
+  hook: "A private Beijing hotel pickup, English-speaking guide, admission and a Wall route chosen around your group, with no shopping stops and transparent mountain-transport options.",
+  image: mutianyuPrivateDayTour.hero.image,
+  visualStatus: "pending",
+  href: `/tours/${mutianyuPrivateDayTour.slug}`,
+  kind: "featured",
+  routeLabel: mutianyuPrivateDayTour.route,
+  durationLabel: "1 private day · 7–9 hours",
+  styleFilters: ["Culture", "Family", "Senior-friendly", "Photography"],
+  destinationFilters: ["Beijing"],
+  bestForFilters: ["First-time visitors", "Families", "Couples", "Older travelers"],
+  experienceFilters: ["great-wall", "scenery", "photography"],
+  travelerFilters: [
+    "first-time",
+    "couples",
+    "families",
+    "multigenerational",
+    "older-travelers",
+    "private-groups",
+    "solo-travelers",
+  ],
+  planningNeedFilters: ["child-friendly", "mobility-aware", "photography-led"],
+  recommendedDaysMin: 1,
+  recommendedDaysMax: 1,
+  destinations: [
+    { label: "Mutianyu Great Wall", href: `/tours/${mutianyuPrivateDayTour.slug}#itinerary` },
+  ],
+  planningNote:
+    "Your hotel address, ticket plan, walking comfort and preferred mountain transport are confirmed before the day, so the Great Wall visit follows your group rather than a coach-tour timetable.",
 };
 
 const qingchengWellnessJourney: JourneyCatalogBase = {
@@ -789,6 +831,7 @@ const xianBeijingJourney: JourneyCatalogBase = {
 };
 
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  mutianyuPrivateDayJourney,
   greaterBayBusinessJourney,
   qingchengWellnessJourney,
   chinaConsideredJourney,
@@ -812,6 +855,11 @@ const commercialPortfolio: Record<
     commercialRole: "extension",
     commercialRoleLabel: "Tailor-made Guangzhou & Shenzhen business tour",
     commercialPriority: 91,
+  },
+  "private-mutianyu-great-wall-day-tour": {
+    commercialRole: "essential",
+    commercialRoleLabel: "Private Great Wall day tour",
+    commercialPriority: 110,
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     commercialRole: "signature",
@@ -892,6 +940,20 @@ const commercialDetails: Record<
     ],
     bestForSummary:
       "Executives, founders, buyers and small teams who already have part of their South China schedule and want everything else to work around it",
+  },
+  "private-mutianyu-great-wall-day-tour": {
+    paceLabel: "Private, flexible and professionally paced around your group",
+    transportSummary:
+      "Private Beijing hotel pickup and return, plus the included Mutianyu scenic-area shuttle",
+    highlights: [
+      "Private hotel pickup, guide, admission and return in one confirmed plan",
+      "A walking route chosen around your group rather than a fixed tower count",
+      "No shopping stops, shared coach logistics or hidden mountain-transport charges",
+      "Cable car, chairlift and toboggan shown as transparent optional choices",
+      "Live conditions and practical alternatives explained before the day starts",
+    ],
+    bestForSummary:
+      "First-time Beijing visitors, families, couples, older travelers and small private groups who want the Great Wall handled clearly from hotel pickup to return",
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     paceLabel: "Unhurried, privately adjustable and built around protected blank space",
@@ -1054,6 +1116,17 @@ const journeyPricing: Record<string, JourneyPricing> = {
       "Most journeys run for 4–7 days and are priced after the fixed agenda is reviewed. Fully tailored 4-day versions commonly fall between US$2,600 and US$3,600 per person; additional days, nights and service hours are quoted transparently. A typical two-guest 4-day version starts from approximately US$2,880 per person outside major exhibition periods.",
     additionalNote:
       "Major fair dates, extended vehicle or interpreter hours, named vehicle models, professional interpretation, supplier sourcing, factory audits, confirmed company access and Hong Kong cross-boundary services are quoted separately.",
+  },
+  "private-mutianyu-great-wall-day-tour": {
+    fromUsd: 198,
+    basis:
+      "Indicative starting price per person, based on four guests traveling privately, equivalent to a private-group total from US$792. Optional mountain transport and lunch are separate.",
+    inclusionSummary:
+      "Includes private Beijing hotel pickup and return within main urban districts, private vehicle and driver, private English-speaking guide, Mutianyu admission, scenic-area shuttle, bottled water and no compulsory shopping stops.",
+    finalPriceNote:
+      "Smaller parties have a higher per-person price because private guide and vehicle costs are shared by fewer guests. Your exact hotel address, date, group and selected mountain transport are confirmed before you book.",
+    additionalNote:
+      "Round-trip cable car and chairlift-up/toboggan-down options are approximately US$22 per person; one-way mountain transport is approximately US$15 per person, subject to the operator's current rate and live operation.",
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     fromUsd: 11800,

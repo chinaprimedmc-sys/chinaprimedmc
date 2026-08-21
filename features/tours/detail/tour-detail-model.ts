@@ -28,6 +28,7 @@ export type TourDetailModel = {
   hasPhotography: boolean;
   planningSupport?: Tour["planningSupport"];
   experienceChapters?: Tour["experienceChapters"];
+  optionalExperiences?: Tour["optionalExperiences"];
   price?: {
     fromUsd: number;
     basis: string;
@@ -82,6 +83,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
   const catalog = getJourneyCatalogItem(tour.slug);
   const isAgendaFirstBusinessJourney =
     tour.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day";
+  const isMutianyuPrivateDayTour = tour.slug === "private-mutianyu-great-wall-day-tour";
   const hotelStandard =
     tour.overview.facts.find((fact) => fact.label.toLowerCase() === "hotels")?.value ??
     "Selected 4- and 5-star hotels";
@@ -100,6 +102,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     hasPhotography: tour.visualStatus !== "pending",
     planningSupport: tour.planningSupport,
     experienceChapters: tour.experienceChapters,
+    optionalExperiences: tour.optionalExperiences,
     price: catalog
       ? {
           fromUsd: catalog.pricing.fromUsd,
@@ -112,7 +115,9 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       { label: "Ideal for", value: dossier.bestFor },
       { label: "Pace", value: dossier.pace },
       { label: "Travel style", value: "Private guides · private transfers" },
-      { label: "Hotels", value: hotelStandard },
+      isMutianyuPrivateDayTour
+        ? { label: "Pickup", value: "Beijing hotel or confirmed central address" }
+        : { label: "Hotels", value: hotelStandard },
     ],
     routeStops: dossier.stops.map((stop) => ({ name: stop.name, days: stop.days })),
     days: tour.itinerary.map((day) => ({
@@ -137,13 +142,19 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     faqs: [...tour.faqs, ...bookingPolicyFaqs],
     planningHref: planningHref(tour.slug, "detail-template"),
     whatsappHref:
-      isAgendaFirstBusinessJourney && tour.inquiry.whatsappHref
+      (isAgendaFirstBusinessJourney || isMutianyuPrivateDayTour) && tour.inquiry.whatsappHref
         ? tour.inquiry.whatsappHref
         : tourWhatsAppHref(tour.title, tour.duration),
-    primaryActionLabel: isAgendaFirstBusinessJourney ? "Build My Business Journey" : "Plan My Trip",
+    primaryActionLabel: isAgendaFirstBusinessJourney
+      ? "Build My Business Journey"
+      : isMutianyuPrivateDayTour
+        ? "Check My Date"
+        : "Plan My Trip",
     whatsappActionLabel: isAgendaFirstBusinessJourney
       ? "Send Us My Business Plans"
-      : "Message Our China Team",
+      : isMutianyuPrivateDayTour
+        ? "Check My Date on WhatsApp"
+        : "Message Our China Team",
     lastReviewedLabel: tour.updatedAt ? formatReviewDate(tour.updatedAt) : undefined,
   };
 }

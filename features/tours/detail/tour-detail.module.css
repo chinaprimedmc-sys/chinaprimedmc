@@ -387,6 +387,63 @@
   max-width: 58rem;
 }
 
+.optionalChoices {
+  background: #f2f4f2;
+}
+
+.optionalChoiceGrid {
+  border-top: 1px solid var(--tour-line);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
+.optionalChoiceGrid article {
+  border-bottom: 1px solid var(--tour-line);
+  min-width: 0;
+  padding: 1.6rem 1.4rem;
+}
+
+.optionalChoiceGrid article:nth-child(2n) {
+  border-left: 1px solid var(--tour-line);
+}
+
+.optionalChoiceBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.optionalChoiceBadges span {
+  border: 1px solid rgba(24, 55, 42, 0.22);
+  border-radius: 999px;
+  color: var(--tour-green);
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 0.3rem 0.55rem;
+  text-transform: uppercase;
+}
+
+.optionalChoiceGrid h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.optionalChoiceGrid p {
+  color: var(--tour-muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-top: 0.6rem !important;
+}
+
+.optionalChoiceNote {
+  color: var(--tour-muted);
+  font-size: 0.76rem;
+  line-height: 1.55;
+  margin-top: 1rem !important;
+}
+
 .serviceStandardNote svg {
   flex: 0 0 auto;
   margin-top: 0.08rem;
@@ -1451,6 +1508,14 @@
     border-top: 1px solid var(--tour-line);
     padding-left: 0;
     padding-top: 0.75rem;
+  }
+
+  .optionalChoiceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .optionalChoiceGrid article:nth-child(2n) {
+    border-left: 0;
   }
 
   .heroWithoutPhotography {

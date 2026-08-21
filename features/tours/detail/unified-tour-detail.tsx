@@ -38,6 +38,7 @@ import { JourneyReading } from "@/features/tours/journey-reading";
 export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
   const isAgendaFirstBusinessJourney =
     model.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day";
+  const isMutianyuPrivateDayTour = model.slug === "private-mutianyu-great-wall-day-tour";
   const overviewTitle = model.route
     ? `${model.route.replace(/, ([^,]+)$/, " & $1")}, privately.`
     : `A private ${model.duration.toLowerCase()} journey.`;
@@ -67,7 +68,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           journeysHref: "/tours",
           planLabel: isAgendaFirstBusinessJourney
             ? "Build My Business Journey"
-            : "Plan This Journey",
+            : isMutianyuPrivateDayTour
+              ? "Check My Date"
+              : "Plan This Journey",
           planHref: model.planningHref,
           journeySlug: model.slug,
         }}
@@ -117,7 +120,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 <small>
                   {isAgendaFirstBusinessJourney
                     ? "per person · 4-day starting framework · based on 4 guests sharing 2 rooms"
-                    : "per person · based on 4 guests sharing 2 rooms"}
+                    : isMutianyuPrivateDayTour
+                      ? "per person · based on 4 guests traveling privately"
+                      : "per person · based on 4 guests sharing 2 rooms"}
                 </small>
               </div>
             ) : null}
@@ -174,12 +179,16 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 <h2 id="experience-preview-title">
                   {isAgendaFirstBusinessJourney
                     ? "Five parts you can move around your agenda."
-                    : "Five chapters you can already picture."}
+                    : isMutianyuPrivateDayTour
+                      ? "A Great Wall day with the loose ends handled."
+                      : "Five chapters you can already picture."}
                 </h2>
                 <p>
                   {isAgendaFirstBusinessJourney
                     ? "These are planning modules, not fixed appointments. Keep, move, shorten or replace them after your flights and business commitments are placed."
-                    : "This is not simply a list of places. Here is what will be in front of you, what you will take part in and why each chapter earns its place in the journey."}
+                    : isMutianyuPrivateDayTour
+                      ? "Your hotel, tickets, route, optional mountain transport and return are checked in advance, then the Wall is explored at a pace that fits the people traveling."
+                      : "This is not simply a list of places. Here is what will be in front of you, what you will take part in and why each chapter earns its place in the journey."}
                 </p>
               </div>
               <ol className={styles.experienceChapterList}>
@@ -254,7 +263,9 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <p>
                     {isAgendaFirstBusinessJourney
                       ? "Usually 4–7 days, with the exact length, cities and services shaped around your fixed business agenda."
-                      : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
+                      : isMutianyuPrivateDayTour
+                        ? "A private, professionally prepared Great Wall day from your Beijing hotel, with no overnight stay required."
+                        : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
                   </p>
                 </div>
               </div>
@@ -301,7 +312,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           <div className={styles.readingShell}>
             <div className={styles.sectionHeading}>
               <p className={styles.eyebrow}>
-                {isAgendaFirstBusinessJourney ? "Sample 4-day framework" : "Day by day"}
+                {isAgendaFirstBusinessJourney
+                  ? "Sample 4-day framework"
+                  : isMutianyuPrivateDayTour
+                    ? "Your day, from hotel pickup to return"
+                    : "Day by day"}
               </p>
               <h2 id="itinerary-title">
                 {isAgendaFirstBusinessJourney
@@ -311,12 +326,51 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               <p>
                 {isAgendaFirstBusinessJourney
                   ? "Open a day to see one workable starting version. Choose 4, 5, 6 or 7 days—or another duration—and we rebuild it around your fixed meetings and flights."
-                  : "Open a day to see the experience, transfers, meals and hotel plan."}
+                  : isMutianyuPrivateDayTour
+                    ? "Open the day to see what is already included, what remains optional and how the route is adapted to your group."
+                    : "Open a day to see the experience, transfers, meals and hotel plan."}
               </p>
             </div>
             <TourDayAccordion days={model.days} journeySlug={model.slug} />
           </div>
         </section>
+
+        {isMutianyuPrivateDayTour && model.optionalExperiences?.length ? (
+          <section
+            className={`${styles.section} ${styles.optionalChoices}`}
+            aria-labelledby="optional-choices-title"
+          >
+            <div className={styles.shell}>
+              <div className={styles.sectionHeading}>
+                <p className={styles.eyebrow}>Transparent optional choices</p>
+                <h2 id="optional-choices-title">Choose your way up and down.</h2>
+                <p>
+                  Admission and the scenic-area shuttle are already included. These are optional
+                  operator services, shown separately so you only pay for the route that suits your
+                  group.
+                </p>
+              </div>
+              <div className={styles.optionalChoiceGrid}>
+                {model.optionalExperiences.map((experience) => (
+                  <article key={experience.title}>
+                    <div className={styles.optionalChoiceBadges}>
+                      {experience.badges.map((badge) => (
+                        <span key={badge}>{badge}</span>
+                      ))}
+                    </div>
+                    <h3>{experience.title}</h3>
+                    <p>{experience.description}</p>
+                  </article>
+                ))}
+              </div>
+              <p className={styles.optionalChoiceNote}>
+                Final mountain-transport prices follow the scenic-area operator&apos;s confirmed
+                rate for your date. Toboggan, chairlift and cable-car operation remain subject to
+                live weather, maintenance and safety decisions.
+              </p>
+            </div>
+          </section>
+        ) : null}
 
         {model.gallery.length > 1 ? (
           <CinematicJourneyGallery
@@ -336,19 +390,34 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
               <p className={styles.eyebrow}>Private service and price</p>
               <h2 id="price-title">What you are paying for.</h2>
               <p>
-                A privately managed journey, selected stays and one China-based team responsible for
-                the details from arrival to departure.
+                {isMutianyuPrivateDayTour
+                  ? "A fully private Great Wall day with the address, tickets, vehicle, route and return plan handled by one China-based team."
+                  : "A privately managed journey, selected stays and one China-based team responsible for the details from arrival to departure."}
               </p>
             </div>
 
             <div className={styles.hotelPriceGrid}>
               <div className={styles.hotelSummary}>
                 <div className={styles.hotelIdentity}>
-                  <BedDouble size={22} aria-hidden="true" />
+                  {isMutianyuPrivateDayTour ? (
+                    <CarFront size={22} aria-hidden="true" />
+                  ) : (
+                    <BedDouble size={22} aria-hidden="true" />
+                  )}
                   <div>
-                    <p className={styles.subheading}>Your hotels</p>
-                    <h3>{model.hotelStandard}</h3>
-                    <p>{model.hotelDestinations.join(" · ")}</p>
+                    <p className={styles.subheading}>
+                      {isMutianyuPrivateDayTour ? "Your pickup and return" : "Your hotels"}
+                    </p>
+                    <h3>
+                      {isMutianyuPrivateDayTour
+                        ? "Door-to-door Beijing service"
+                        : model.hotelStandard}
+                    </h3>
+                    <p>
+                      {isMutianyuPrivateDayTour
+                        ? "Your Beijing hotel or confirmed central address"
+                        : model.hotelDestinations.join(" · ")}
+                    </p>
                   </div>
                 </div>
                 <ul className={styles.valueList} aria-label="What this private journey provides">
@@ -362,8 +431,14 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <li>
                     <Check size={15} aria-hidden="true" />
                     <span>
-                      <strong>Named before booking.</strong> Every hotel and room category is listed
-                      in your written proposal before you confirm.
+                      <strong>
+                        {isMutianyuPrivateDayTour
+                          ? "Clear before the day."
+                          : "Named before booking."}
+                      </strong>{" "}
+                      {isMutianyuPrivateDayTour
+                        ? "Your pickup, ticket plan, service window and selected mountain transport are stated before you confirm."
+                        : "Every hotel and room category is listed in your written proposal before you confirm."}
                     </span>
                   </li>
                   <li>

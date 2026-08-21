@@ -10,6 +10,30 @@ import type { Tour } from "@/types/tour";
 
 const journeyProfiles = [
   {
+    slug: "private-mutianyu-great-wall-day-tour",
+    audience:
+      "First-time Beijing visitors, families, couples, older travelers and small private groups who want a private Mutianyu Great Wall day tour from their Beijing hotel",
+    pace: "A private, professionally paced 7–9 hour day with hotel pickup, guide, admission and scenic-area shuttle included; mountain transport is optional and selected transparently around walking comfort and live operation",
+    evidence: [
+      [
+        "Private Mutianyu Great Wall day tour product page",
+        "/tours/private-mutianyu-great-wall-day-tour",
+      ],
+      [
+        "Mutianyu walking, cable-car and route guide",
+        "/journal/mutianyu-great-wall-walking-cable-car",
+      ],
+      [
+        "Mutianyu, Badaling and Jinshanling comparison",
+        "/journal/mutianyu-badaling-jinshanling-great-wall",
+      ],
+      [
+        "Mutianyu Great Wall official English visitor and booking website",
+        "https://en.mutianyugreatwall.com/",
+      ],
+    ],
+  },
+  {
     slug: "guangzhou-shenzhen-tailor-made-business-tour-4-day",
     audience:
       "Executives, founders, buyers and small business teams seeking a private Guangzhou and Shenzhen business tour built around flights, meetings, exhibitions or supplier commitments",
@@ -215,6 +239,7 @@ function renderJourney(
   evidence: readonly (readonly [string, string])[],
 ) {
   const tourUrl = `${siteConfig.url}/tours/${tour.slug}`;
+  const isDayTour = tour.slug === "private-mutianyu-great-wall-day-tour";
   const itinerary = tour.itinerary
     .map((day) => {
       const activities = day.activities
@@ -244,7 +269,7 @@ Brand: ${siteConfig.name}
 Provider and seller: ${siteConfig.operator.englishReferenceName}
 Duration: ${tour.duration}
 Route: ${tour.route}
-Journey format: Private, tailor-made, no compulsory shopping stops
+Journey format: ${isDayTour ? "Private day tour, no overnight stay, no compulsory shopping stops" : "Private, tailor-made, no compulsory shopping stops"}
 Pace: ${pace}
 Suitable for: ${audience}
 
@@ -255,7 +280,7 @@ Price basis: ${pricing.basis}
 Typical tailored range: ${pricing.finalPriceNote}
 Additional pricing note: ${pricing.additionalNote ?? "No additional published pricing note."}
 Availability status: Limited and date-specific; subject to written supplier confirmation
-Price status: Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal
+Price status: ${isDayTour ? "Indicative until the date, Beijing pickup address, group size, vehicle, guide, tickets and selected mountain transport are confirmed in writing" : "Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal"}
 
 ## Included in the published design
 

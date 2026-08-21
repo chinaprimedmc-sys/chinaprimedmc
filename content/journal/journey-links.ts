@@ -21,8 +21,14 @@ const XIAN_BEIJING = "xian-beijing-terracotta-warriors-great-wall-private-6-day-
 const MUSLIM_CHINA = "muslim-friendly-china-tour-great-wall-desert-stars";
 const QINGCHENG_WELLNESS = "qingcheng-mountain-private-wellness-retreat-10-day";
 const GREATER_BAY_BUSINESS = "guangzhou-shenzhen-tailor-made-business-tour-4-day";
+const MUTIANYU_DAY_TOUR = "private-mutianyu-great-wall-day-tour";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  [MUTIANYU_DAY_TOUR]: [
+    "mutianyu-great-wall-walking-cable-car",
+    "mutianyu-badaling-jinshanling-great-wall",
+    "how-much-walking-china-tour",
+  ],
   [GREATER_BAY_BUSINESS]: [
     "china-mobile-payments-foreign-tourists",
     "china-sim-card-esim-internet-foreign-tourists",
@@ -197,12 +203,21 @@ const groupedRules: Array<{
   },
   {
     journey: BEIJING,
-    alternatives: [XIAN_BEIJING, FIRST_CHINA],
+    alternatives: [MUTIANYU_DAY_TOUR, XIAN_BEIJING, FIRST_CHINA],
     articles: [
       "forbidden-city-tickets-foreigners",
       "mutianyu-badaling-jinshanling-great-wall",
       "mutianyu-great-wall-walking-cable-car",
       "5-day-beijing-great-wall-itinerary",
+    ],
+  },
+  {
+    journey: MUTIANYU_DAY_TOUR,
+    alternatives: [BEIJING, FIRST_CHINA],
+    articles: [
+      "mutianyu-great-wall-walking-cable-car",
+      "mutianyu-badaling-jinshanling-great-wall",
+      "how-much-walking-china-tour",
     ],
   },
   {
