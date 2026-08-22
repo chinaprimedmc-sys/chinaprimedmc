@@ -15,6 +15,13 @@ export type TourDetailDay = {
   experiences: Array<{ title: string; description: string }>;
 };
 
+export type TourExperienceCard = {
+  label: string;
+  title: string;
+  description: string;
+  image?: MediaAsset;
+};
+
 export type TourDetailModel = {
   slug: string;
   title: string;
@@ -27,7 +34,8 @@ export type TourDetailModel = {
   heroImage: MediaAsset;
   hasPhotography: boolean;
   planningSupport?: Tour["planningSupport"];
-  experienceChapters?: Tour["experienceChapters"];
+  experienceCards: TourExperienceCard[];
+  optionalExperiences?: Tour["optionalExperiences"];
   price?: {
     fromUsd: number;
     basis: string;
@@ -80,6 +88,13 @@ export const frameworkTourFaqs = [
 export function createTourDetailModel(tour: Tour): TourDetailModel {
   const dossier = getDossierData(tour);
   const catalog = getJourneyCatalogItem(tour.slug);
+  const isAgendaFirstBusinessJourney =
+    tour.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day";
+  const isMutianyuPrivateDayTour = tour.slug === "private-mutianyu-great-wall-day-tour";
+  const isPrivateShanghaiDayTour = tour.slug === "private-shanghai-day-tour-guide-driver";
+  const isPrivateXianTerracottaDayTour = tour.slug === "private-xian-terracotta-warriors-day-tour";
+  const isPrivateChengduPandaDayTour = tour.slug === "private-chengdu-panda-day-tour-early-morning";
+  const isGuilinLiRiverDayTour = tour.slug === "guilin-yangshuo-li-river-cruise-private-day-tour";
   const hotelStandard =
     tour.overview.facts.find((fact) => fact.label.toLowerCase() === "hotels")?.value ??
     "Selected 4- and 5-star hotels";
@@ -91,13 +106,15 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     route: tour.route,
     journeyRoleLabel: catalog?.commercialRoleLabel ?? "Private China journey",
     decisionSummary: catalog?.hook ?? tour.overview.pitch,
-    signatureMoments:
-      catalog?.highlights.slice(0, 3) ??
-      tour.highlights.slice(0, 3).map((highlight) => highlight.title),
+    signatureMoments: uniqueStrings([
+      ...(catalog?.highlights ?? []),
+      ...tour.highlights.map((highlight) => highlight.title),
+    ]).slice(0, 3),
     heroImage: tour.hero.image,
     hasPhotography: tour.visualStatus !== "pending",
     planningSupport: tour.planningSupport,
-    experienceChapters: tour.experienceChapters,
+    experienceCards: createExperienceCards(tour),
+    optionalExperiences: tour.optionalExperiences,
     price: catalog
       ? {
           fromUsd: catalog.pricing.fromUsd,
@@ -110,7 +127,24 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       { label: "Ideal for", value: dossier.bestFor },
       { label: "Pace", value: dossier.pace },
       { label: "Travel style", value: "Private guides · private transfers" },
-      { label: "Hotels", value: hotelStandard },
+      isMutianyuPrivateDayTour ||
+      isPrivateShanghaiDayTour ||
+      isPrivateXianTerracottaDayTour ||
+      isPrivateChengduPandaDayTour ||
+      isGuilinLiRiverDayTour
+        ? {
+            label: "Pickup",
+            value: isGuilinLiRiverDayTour
+              ? "Central Guilin hotel; finish in Yangshuo or return to Guilin"
+              : isPrivateChengduPandaDayTour
+                ? "Central Chengdu hotel or confirmed central address"
+                : isPrivateXianTerracottaDayTour
+                  ? "Central Xi'an hotel or confirmed central address"
+                  : isPrivateShanghaiDayTour
+                    ? "Central Shanghai hotel or confirmed central address"
+                    : "Beijing hotel or confirmed central address",
+          }
+        : { label: "Hotels", value: hotelStandard },
     ],
     routeStops: dossier.stops.map((stop) => ({ name: stop.name, days: stop.days })),
     days: tour.itinerary.map((day) => ({
@@ -134,9 +168,42 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     excluded: tour.excluded,
     faqs: [...tour.faqs, ...bookingPolicyFaqs],
     planningHref: planningHref(tour.slug, "detail-template"),
-    whatsappHref: tourWhatsAppHref(tour.title, tour.duration),
-    primaryActionLabel: "Plan My Trip",
-    whatsappActionLabel: "Message Our China Team",
+    whatsappHref:
+      (isAgendaFirstBusinessJourney ||
+        isMutianyuPrivateDayTour ||
+        isPrivateShanghaiDayTour ||
+        isPrivateXianTerracottaDayTour ||
+        isPrivateChengduPandaDayTour ||
+        isGuilinLiRiverDayTour) &&
+      tour.inquiry.whatsappHref
+        ? tour.inquiry.whatsappHref
+        : tourWhatsAppHref(tour.title, tour.duration),
+    primaryActionLabel: isAgendaFirstBusinessJourney
+      ? "Build My Business Journey"
+      : isMutianyuPrivateDayTour
+        ? "Check My Date"
+        : isPrivateShanghaiDayTour
+          ? "Check My Date"
+          : isPrivateXianTerracottaDayTour
+            ? "Check My Date"
+            : isPrivateChengduPandaDayTour
+              ? "Check My Date"
+              : isGuilinLiRiverDayTour
+                ? "Check My Cruise Date"
+                : "Plan My Trip",
+    whatsappActionLabel: isAgendaFirstBusinessJourney
+      ? "Send Us My Business Plans"
+      : isMutianyuPrivateDayTour
+        ? "Check My Date on WhatsApp"
+        : isPrivateShanghaiDayTour
+          ? "Check My Date on WhatsApp"
+          : isPrivateXianTerracottaDayTour
+            ? "Check My Date on WhatsApp"
+            : isPrivateChengduPandaDayTour
+              ? "Check My Date on WhatsApp"
+              : isGuilinLiRiverDayTour
+                ? "Check My Cruise Date on WhatsApp"
+                : "Message Our China Team",
     lastReviewedLabel: tour.updatedAt ? formatReviewDate(tour.updatedAt) : undefined,
   };
 }
@@ -153,6 +220,12 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     signatureMoments: item.highlights.slice(0, 3),
     heroImage: item.image,
     hasPhotography: item.visualStatus !== "pending",
+    experienceCards: item.highlights.slice(0, 3).map((highlight, index) => ({
+      label: item.destinations[index]?.label ?? item.durationLabel,
+      title: highlight,
+      description: item.summary,
+      image: item.visualStatus === "pending" ? undefined : index === 0 ? item.image : undefined,
+    })),
     price: {
       fromUsd: item.pricing.fromUsd,
       basis: item.pricing.basis,

@@ -12,6 +12,7 @@ type LegacyFooterProps = {
   columns?: Array<{ title: string; items: NavigationItem[] }>;
   email?: string;
   social?: Array<{ label: string; href: string }>;
+  tone?: "default" | "blue";
   variant?: "consumer" | "trade";
 };
 
@@ -71,12 +72,12 @@ const tradeFooterGroups = [
 
 export function SiteFooter({
   email = siteConfig.email,
+  tone = "default",
   variant = "consumer",
 }: LegacyFooterProps = {}) {
   const trade = variant === "trade";
   const footerGroups = trade ? tradeFooterGroups : consumerFooterGroups;
 
-export function SiteFooter({ email = siteConfig.email, tone = "default" }: LegacyFooterProps = {}) {
   return (
     <footer className={`${styles.footer} ${tone === "blue" ? styles.blue : ""}`}>
       <div className={styles.inner}>

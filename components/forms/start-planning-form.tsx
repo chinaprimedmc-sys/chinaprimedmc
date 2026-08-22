@@ -153,16 +153,6 @@ export function StartPlanningForm({
     });
   }
 
-  function recordFormStart() {
-    if (formStarted.current) return;
-    formStarted.current = true;
-    trackEvent("form_start", {
-      saved_journeys: savedJourneys.length,
-      journey: currentJourney?.slug ?? "",
-      preference: preference ?? "",
-    });
-  }
-
   function advanceStep() {
     recordFormStart();
     const validationError = validateStep(step, state);

@@ -19,42 +19,42 @@ const content: Record<PageClosingIntent, { eyebrow: string; title: string; prima
   home: {
     eyebrow: "Plan With A Local Team",
     title: "Let China feel considered before you arrive.",
-    primary: "Plan My Trip",
+    primary: "Plan My Private Journey",
   },
   tours: {
     eyebrow: "A Clearer Starting Point",
     title: "Not sure which journey fits you best?",
-    primary: "Plan My Trip",
+    primary: "Help Me Choose",
   },
   tour: {
     eyebrow: "Make It Yours",
     title: "Shape this journey around your dates and pace.",
-    primary: "Plan My Trip",
+    primary: "Tailor This Journey",
   },
   journal: {
     eyebrow: "From Research To A Real Route",
     title: "Turn what you have learned into your journey.",
-    primary: "Plan My Trip",
+    primary: "Plan From This Guide",
   },
   destination: {
     eyebrow: "Plan The Details",
     title: "Build this destination into a journey that flows.",
-    primary: "Plan My Trip",
+    primary: "Plan This Destination",
   },
   family: {
     eyebrow: "Designed Around Your Family",
     title: "Let us plan around your children, pace and priorities.",
-    primary: "Plan My Trip",
+    primary: "Plan Around My Family",
   },
   senior: {
     eyebrow: "Travel At Your Pace",
     title: "Protect comfort without missing what matters.",
-    primary: "Plan My Trip",
+    primary: "Plan Around My Pace",
   },
   about: {
     eyebrow: "A China Team You Can Reach",
     title: "Tell us what would make this trip feel right.",
-    primary: "Plan My Trip",
+    primary: "Speak With Our China Team",
   },
   trade: {
     eyebrow: "For Tour Operators And Advisors",
@@ -72,16 +72,21 @@ export function PageClosing({
   intent,
   primaryHref,
   journeySlug,
+  tone = "default",
 }: {
   intent: PageClosingIntent;
   primaryHref?: string;
   journeySlug?: string;
+  tone?: "default" | "blue";
 }) {
   const copy = content[intent];
   const href = primaryHref ?? `/start-planning?source=closing-${intent}`;
   const whatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(intent === "trade" ? "Hello China Prime DMC, I would like to discuss a travel-trade brief." : "Hello AVIORA, I would like help planning a private journey in China.")}`;
   return (
-    <section className={styles.closing} aria-labelledby={`closing-${intent}-title`}>
+    <section
+      className={`${styles.closing} ${tone === "blue" ? styles.blue : ""}`}
+      aria-labelledby={`closing-${intent}-title`}
+    >
       <div className={styles.inner}>
         <div className={styles.copy}>
           <p>{copy.eyebrow}</p>
@@ -107,16 +112,14 @@ export function PageClosing({
             className={styles.whatsapp}
             target="_blank"
             rel="noreferrer"
-            trackingLabel={intent === "trade" ? "Trade WhatsApp" : "Message Our China Team"}
+            trackingLabel="WhatsApp Our China Team"
             trackingPlacement="closing-whatsapp"
             journeySlug={journeySlug}
           >
-            <WhatsAppIcon aria-hidden="true" />
-            {intent === "trade" ? "Trade WhatsApp" : "Message Our China Team"}
+            <WhatsAppIcon aria-hidden="true" /> WhatsApp Our China Team
           </TrackedLink>
           <a className={styles.email} href={`mailto:${siteConfig.email}`}>
-            <Mail size={15} aria-hidden="true" />
-            {intent === "trade" ? "Email the Trade Desk" : "Email Our China Team"}
+            <Mail size={15} aria-hidden="true" /> Email Our Team
           </a>
         </div>
       </div>

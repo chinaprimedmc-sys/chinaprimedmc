@@ -96,6 +96,36 @@
   outline: 2px solid #253330;
   outline-offset: 4px;
 }
+.blue .copy > p {
+  color: #1b3a5c;
+}
+.blue {
+  color: #122b43;
+}
+.blue .copy > span,
+.blue .email {
+  color: #5e6b78;
+}
+.blue .inner {
+  border-top-color: rgba(27, 58, 92, 0.14);
+}
+.blue .primary {
+  border-color: #1b3a5c;
+  background: #1b3a5c;
+}
+.blue .primary:hover {
+  background: #142f4c;
+}
+.blue .whatsapp {
+  border-color: rgba(27, 58, 92, 0.32);
+  color: #1b3a5c;
+}
+.blue .whatsapp:hover {
+  border-color: #1b3a5c;
+}
+.blue a:focus-visible {
+  outline-color: #1b3a5c;
+}
 @media (max-width: 800px) {
   .inner {
     grid-template-columns: 1fr;

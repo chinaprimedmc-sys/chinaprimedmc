@@ -72,6 +72,13 @@ export default async function TourPage({ params }: TourPageProps) {
     const isChinaConsidered = staticTour.slug === "china-at-an-easier-pace-12-day-private-tour";
     const isChinaFamily = staticTour.slug === "china-family-tour-with-pandas-12-day-private-tour";
     const isYunnan = staticTour.slug === "luxury-yunnan-private-tour";
+    const isPrivateShanghaiDayTour = staticTour.slug === "private-shanghai-day-tour-guide-driver";
+    const isPrivateXianTerracottaDayTour =
+      staticTour.slug === "private-xian-terracotta-warriors-day-tour";
+    const isPrivateChengduPandaDayTour =
+      staticTour.slug === "private-chengdu-panda-day-tour-early-morning";
+    const isGuilinLiRiverDayTour =
+      staticTour.slug === "guilin-yangshuo-li-river-cruise-private-day-tour";
     const isMuslimFriendly =
       staticTour.slug === "muslim-friendly-china-tour-great-wall-desert-stars";
     const tourProperties = isMuslimFriendly

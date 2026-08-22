@@ -11,7 +11,6 @@ import {
   RefreshCcw,
   ShieldCheck,
   UsersRound,
-  UtensilsCrossed,
   X,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
@@ -37,9 +36,31 @@ import { JourneyReading } from "@/features/tours/journey-reading";
 import type { MediaAsset } from "@/types/component-library";
 
 export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
+  const isAgendaFirstBusinessJourney =
+    model.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day";
+  const isMutianyuPrivateDayTour = model.slug === "private-mutianyu-great-wall-day-tour";
+  const isPrivateShanghaiDayTour = model.slug === "private-shanghai-day-tour-guide-driver";
+  const isPrivateXianTerracottaDayTour = model.slug === "private-xian-terracotta-warriors-day-tour";
+  const isPrivateChengduPandaDayTour =
+    model.slug === "private-chengdu-panda-day-tour-early-morning";
+  const isGuilinLiRiverDayTour = model.slug === "guilin-yangshuo-li-river-cruise-private-day-tour";
+  const isPrivateDayTour =
+    isMutianyuPrivateDayTour ||
+    isPrivateShanghaiDayTour ||
+    isPrivateXianTerracottaDayTour ||
+    isPrivateChengduPandaDayTour ||
+    isGuilinLiRiverDayTour;
   const overviewTitle = model.route
     ? `${model.route.replace(/, ([^,]+)$/, " & $1")}, privately.`
     : `A private ${model.duration.toLowerCase()} journey.`;
+  const heroRouteLabels =
+    model.routeStops.length > 4
+      ? [...model.routeStops.slice(0, 3), model.routeStops.at(-1)!].map((stop) => stop.name)
+      : model.routeStops.map((stop) => stop.name);
+  const visibleFaqs = model.faqs.slice(0, 8);
+  const pricePresentation = model.price
+    ? getPricePresentation(model.slug, model.price.fromUsd)
+    : undefined;
 
   return (
     <PageContainer className={styles.page} tone="white" data-unified-tour-detail="true">
@@ -96,13 +117,12 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
             />
           ) : (
             <div className={styles.heroWithoutPhotography} aria-hidden="true">
-              <span>BEIJING</span>
-              <i />
-              <span>XI&apos;AN</span>
-              <i />
-              <span>NINGXIA</span>
-              <i />
-              <span>SHANGHAI</span>
+              {heroRouteLabels.map((label, index) => (
+                <Fragment key={label}>
+                  {index ? <i /> : null}
+                  <span>{label}</span>
+                </Fragment>
+              ))}
             </div>
           )}
           <div className={styles.heroShade} aria-hidden="true" />
@@ -111,16 +131,14 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           <p className={styles.eyebrow}>
             {model.journeyRoleLabel} · {model.duration}
           </p>
-          <h1 className={model.title.length <= 36 ? styles.singleLineMobileTitle : undefined}>
-            {model.title}
-          </h1>
+          <h1>{model.title}</h1>
           <p className={styles.heroSubtitle}>{model.subtitle}</p>
           <div className={styles.heroDecisionRow}>
             {model.price ? (
               <div className={styles.heroPrice}>
                 <span>From</span>
-                <strong>US${model.price.fromUsd.toLocaleString("en-US")}</strong>
-                <small>per person · based on 4 guests sharing 2 rooms</small>
+                <strong>US${pricePresentation?.amount.toLocaleString("en-US")}</strong>
+                <small>{pricePresentation?.heroBasis}</small>
               </div>
             ) : null}
             <div className={styles.heroActions}>
@@ -131,7 +149,8 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 label={model.primaryActionLabel}
                 placement="tour-hero-plan"
               >
-                {model.primaryActionLabel} <ArrowUpRight size={16} aria-hidden="true" />
+                {isAgendaFirstBusinessJourney ? "Build My Journey" : "Check Availability"}{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
               </TrackedTourLink>
               <TrackedTourLink
                 className={styles.secondaryAction}
@@ -143,7 +162,7 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                 rel="noreferrer"
               >
                 <MessageCircle size={16} aria-hidden="true" />
-                {model.whatsappActionLabel}
+                WhatsApp an Advisor
               </TrackedTourLink>
             </div>
           </div>
@@ -168,43 +187,27 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
             </ol>
           </div>
         </section>
-        {model.experienceChapters?.length ? (
+        {model.experienceCards.length ? (
           <section className={styles.experiencePreview} aria-labelledby="experience-preview-title">
             <div className={styles.shell}>
               <div className={styles.experiencePreviewIntro}>
                 <p className={styles.eyebrow}>What you will actually experience</p>
-                <h2 id="experience-preview-title">Five chapters you can already picture.</h2>
-                <p>
-                  This is not simply a list of places. Here is what will be in front of you, what
-                  you will take part in and why each chapter earns its place in the journey.
-                </p>
+                <h2 id="experience-preview-title">The moments that make the journey yours.</h2>
+                <p>Three concrete chapters, designed around the way you want to travel.</p>
               </div>
-              <ol className={styles.experienceChapterList}>
-                {model.experienceChapters.map((chapter, index) => (
-                  <li key={`${chapter.location}-${chapter.days}`}>
-                    <div className={styles.experienceChapterLabel}>
-                      <span>{String(index + 1).padStart(2, "0")}</span>
-                      <p>{chapter.location}</p>
-                      <small>{chapter.days}</small>
+              <ol className={styles.experienceCardGrid}>
+                {model.experienceCards.map((experience, index) => (
+                  <li key={`${experience.label}-${experience.title}`}>
+                    <ExperienceMedia
+                      image={experience.image}
+                      label={experience.label}
+                      index={index}
+                    />
+                    <div className={styles.experienceCardCopy}>
+                      <p>{experience.label}</p>
+                      <h3>{experience.title}</h3>
+                      <span>{experience.description}</span>
                     </div>
-                    <div className={styles.experienceChapterStory}>
-                      <h3>{chapter.title}</h3>
-                      <p>{chapter.description}</p>
-                    </div>
-                    <dl className={styles.experienceChapterDetails}>
-                      <div>
-                        <dt>See</dt>
-                        <dd>{chapter.see}</dd>
-                      </div>
-                      <div>
-                        <dt>Do</dt>
-                        <dd>{chapter.do}</dd>
-                      </div>
-                      <div>
-                        <dt>Feel</dt>
-                        <dd>{chapter.feel}</dd>
-                      </div>
-                    </dl>
                   </li>
                 ))}
               </ol>
@@ -215,12 +218,11 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
           <section className={styles.serviceStandard} aria-labelledby="service-standard-title">
             <div className={styles.shell}>
               <div className={styles.serviceStandardIntro}>
-                <p className={styles.eyebrow}>{model.planningSupport.eyebrow}</p>
-                <h2 id="service-standard-title">{model.planningSupport.title}</h2>
-                <p>{model.planningSupport.description}</p>
+                <p className={styles.eyebrow}>How we handle the details</p>
+                <h2 id="service-standard-title">Clear planning. Accountable delivery.</h2>
               </div>
               <div className={styles.serviceStandardGrid}>
-                {model.planningSupport.items.map((item, index) => (
+                {model.planningSupport.items.slice(0, 3).map((item, index) => (
                   <article key={item.label}>
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <div>
@@ -231,10 +233,18 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   </article>
                 ))}
               </div>
-              <p className={styles.serviceStandardNote}>
-                <UtensilsCrossed size={17} aria-hidden="true" />
-                <span>{model.planningSupport.note}</span>
-              </p>
+              <details className={styles.serviceDisclosure}>
+                <summary>See the service details</summary>
+                <p>{model.planningSupport.description}</p>
+                {model.planningSupport.items.slice(3).map((item) => (
+                  <p key={item.label}>
+                    <strong>{item.label}: </strong>
+                    {item.value}
+                    {item.helper ? ` — ${item.helper}` : ""}
+                  </p>
+                ))}
+                <p>{model.planningSupport.note}</p>
+              </details>
             </div>
           </section>
         ) : null}
@@ -249,8 +259,19 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                   <p className={styles.eyebrow}>Journey at a glance</p>
                   <h2 id="tour-overview-title">{overviewTitle}</h2>
                   <p>
-                    {model.duration} with private guiding, considered pacing and{" "}
-                    {model.hotelStandard.toLowerCase()}.
+                    {isAgendaFirstBusinessJourney
+                      ? "Usually 4–7 days, with the exact length, cities and services shaped around your fixed business agenda."
+                      : isMutianyuPrivateDayTour
+                        ? "A private, professionally prepared Great Wall day from your Beijing hotel, with no overnight stay required."
+                        : isPrivateXianTerracottaDayTour
+                          ? "A private, professionally prepared Terracotta Warriors day from your central Xi'an hotel, with no overnight stay required."
+                          : isPrivateChengduPandaDayTour
+                            ? "A private, responsibly prepared panda and Chengdu culture day from your central hotel, with no overnight stay required."
+                            : isGuilinLiRiverDayTour
+                              ? "A four-star public Li River cruise connected by private hotel pickup, guide, road vehicle, luggage handling and the finish your itinerary actually needs."
+                              : isPrivateShanghaiDayTour
+                                ? "A private, professionally prepared Shanghai city day from your central hotel, with no overnight stay required."
+                                : `${model.duration} with private guiding, considered pacing and ${model.hotelStandard.toLowerCase()}.`}
                   </p>
                 </div>
               </div>
@@ -429,9 +450,39 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                     <BedDouble size={22} aria-hidden="true" />
                   )}
                   <div>
-                    <p className={styles.subheading}>Your hotels</p>
-                    <h3>{model.hotelStandard}</h3>
-                    <p>{model.hotelDestinations.join(" · ")}</p>
+                    <p className={styles.subheading}>
+                      {isPrivateDayTour
+                        ? isGuilinLiRiverDayTour
+                          ? "Your pickup and chosen finish"
+                          : "Your pickup and return"
+                        : "Your hotels"}
+                    </p>
+                    <h3>
+                      {isPrivateDayTour
+                        ? isGuilinLiRiverDayTour
+                          ? "Guilin pickup · Yangshuo finish or Guilin return"
+                          : isPrivateChengduPandaDayTour
+                            ? "Door-to-door central Chengdu service"
+                            : isPrivateXianTerracottaDayTour
+                              ? "Door-to-door central Xi'an service"
+                              : isPrivateShanghaiDayTour
+                                ? "Door-to-door central Shanghai service"
+                                : "Door-to-door Beijing service"
+                        : model.hotelStandard}
+                    </h3>
+                    <p>
+                      {isPrivateDayTour
+                        ? isGuilinLiRiverDayTour
+                          ? "Your central Guilin hotel to the final address confirmed in writing"
+                          : isPrivateChengduPandaDayTour
+                            ? "Your central Chengdu hotel or confirmed central address"
+                            : isPrivateXianTerracottaDayTour
+                              ? "Your central Xi'an hotel or confirmed central address"
+                              : isPrivateShanghaiDayTour
+                                ? "Your central Shanghai hotel or confirmed central address"
+                                : "Your Beijing hotel or confirmed central address"
+                        : model.hotelDestinations.join(" · ")}
+                    </p>
                   </div>
                 </div>
                 <ul className={styles.valueList} aria-label="What this private journey provides">
@@ -497,17 +548,17 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       aria-label={`Message an advisor about ${model.title} on WhatsApp`}
                     >
                       <MessageCircle size={15} aria-hidden="true" />
-                      {model.whatsappActionLabel}
+                      WhatsApp an Advisor
                     </TrackedTourLink>
                     <TrackedTourLink
                       className={styles.priceFormAction}
                       href={model.planningHref}
                       journeySlug={model.slug}
-                      label="Plan My Trip"
+                      label={model.primaryActionLabel}
                       placement="tour-price-form"
                     >
                       <FileCheck2 size={15} aria-hidden="true" />
-                      Plan My Trip
+                      Request My Quote
                     </TrackedTourLink>
                   </div>
                   <p className={styles.priceReassurance}>
@@ -519,6 +570,14 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
                       Itinerary and published price basis reviewed {model.lastReviewedLabel}.
                     </p>
                   ) : null}
+                  <details className={styles.priceDetailDisclosure}>
+                    <summary>Price basis and included services</summary>
+                    <p>{model.price.basis}</p>
+                    <p>{model.price.detail}</p>
+                    <p>
+                      Your written proposal confirms the exact services and total before you book.
+                    </p>
+                  </details>
                 </div>
               ) : null}
             </div>
@@ -611,7 +670,12 @@ export function UnifiedTourDetail({ model }: { model: TourDetailModel }) {
         </div>
       </main>
 
-      <PageClosing intent="tour" primaryHref={model.planningHref} journeySlug={model.slug} />
+      <PageClosing
+        intent="tour"
+        primaryHref={model.planningHref}
+        journeySlug={model.slug}
+        tone="blue"
+      />
 
       <SiteFooter
         tone="blue"

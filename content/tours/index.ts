@@ -3,8 +3,15 @@ import { beijingXianChengduShanghaiTour } from "@/content/tours/beijing-xian-che
 import { chengduChongqingZhangjiajieTour } from "@/content/tours/chengdu-chongqing-zhangjiajie";
 import { chinaConsidered12DayTour } from "@/content/tours/china-considered-12-day";
 import { chinaFamily12DayTour } from "@/content/tours/china-family-12-day";
+import { guilinYangshuoLiRiverDayTour } from "@/content/tours/guilin-yangshuo-li-river-day-tour";
+import { privateChengduPandaDayTour } from "@/content/tours/private-chengdu-panda-day-tour";
+import { guangzhouShenzhenBusiness4DayTour } from "@/content/tours/guangzhou-shenzhen-business-4-day";
 import { yunnanTeaHorseRoad10DayTour } from "@/content/tours/yunnan-tea-horse-road-10-day";
 import { muslimFriendlyChinaDesert13DayTour } from "@/content/tours/muslim-friendly-china-desert-13-day";
+import { mutianyuPrivateDayTour } from "@/content/tours/mutianyu-private-day-tour";
+import { privateShanghaiDayTour } from "@/content/tours/private-shanghai-day-tour";
+import { privateXianTerracottaDayTour } from "@/content/tours/private-xian-terracotta-day-tour";
+import { qingchengMountainWellness10DayTour } from "@/content/tours/qingcheng-mountain-wellness-10-day";
 import {
   beijingUnhurriedAsset,
   chengduAsset,
@@ -128,10 +135,16 @@ const chengduJiuzhaigouAsset = {
 };
 
 export const tours: Tour[] = [
+  guilinYangshuoLiRiverDayTour,
+  privateChengduPandaDayTour,
+  privateXianTerracottaDayTour,
+  privateShanghaiDayTour,
+  guangzhouShenzhenBusiness4DayTour,
+  mutianyuPrivateDayTour,
   chinaConsidered12DayTour,
   chinaFamily12DayTour,
-  yunnanTeaHorseRoad10DayTour,
   muslimFriendlyChinaDesert13DayTour,
+  qingchengMountainWellness10DayTour,
   chengduChongqingZhangjiajieTour,
   beijingXianChengduShanghaiTour,
   {

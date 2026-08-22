@@ -6,6 +6,8 @@ import {
   ArrowUpRight,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   MessageCircle,
   Search,
   ShieldCheck,
@@ -58,7 +60,11 @@ const emptyFilters: Filters = {
 };
 const commercialRoleOptions: Array<[JourneyCommercialRoleId, string, string]> = [
   ["signature", "AVIORA Signature", "Our most distinctive, story-led private journeys"],
-  ["essential", "Multi-city essentials", "Clear, considered routes across China's defining contrasts"],
+  [
+    "essential",
+    "Multi-city essentials",
+    "Clear, considered routes across China's defining contrasts",
+  ],
   ["nature", "Nature & local life", "Pandas, mountain landscapes and regional food culture"],
   [
     "extension",
@@ -181,8 +187,7 @@ const marketingTitles: Record<string, string> = {
   "private-chengdu-panda-day-tour-early-morning": "Pandas at Their Most Active",
   "guilin-yangshuo-li-river-cruise-private-day-tour": "Let the Li River Carry You to Yangshuo",
   "qingcheng-mountain-private-wellness-retreat-10-day": "Ten Days to Feel Like Yourself Again",
-  "china-family-tour-with-pandas-12-day-private-tour":
-    "The China Story Your Family Will Keep",
+  "china-family-tour-with-pandas-12-day-private-tour": "The China Story Your Family Will Keep",
   "muslim-friendly-china-tour-great-wall-desert-stars":
     "A China Journey Where Faith Is Never an Afterthought",
   "china-at-an-easier-pace-12-day-private-tour": "See China Without Racing Through It",
@@ -331,7 +336,10 @@ export function JourneyEditorialGrid({
           <span>{heroContent.description}</span>
         </div>
       </section>
-      <section className={styles.serviceAssurance} aria-label="AVIORA private China travel standards">
+      <section
+        className={styles.serviceAssurance}
+        aria-label="AVIORA private China travel standards"
+      >
         <div className={styles.serviceAssuranceInner}>
           <div className={styles.serviceAssuranceBrand}>
             <span className={styles.serviceAssuranceBrandMark} aria-hidden="true">
@@ -433,7 +441,11 @@ export function JourneyEditorialGrid({
                 <h3>{service.title}</h3>
                 <strong>{service.formalName}</strong>
                 <span>{service.description}</span>
-                <Link href={service.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
+                <Link
+                  href={service.href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noreferrer" : undefined}
+                >
                   {service.label} <ArrowUpRight size={15} aria-hidden="true" />
                 </Link>
               </article>
@@ -442,8 +454,16 @@ export function JourneyEditorialGrid({
         </div>
         <div className={styles.existingPlans}>
           <span>Already arranged part of your trip?</span>
-          <strong>We can work around your confirmed flights, hotels, meetings and personal plans.</strong>
-          <Link href={whatsappHref("Hello AVIORA, I already have part of my China trip arranged and would like you to build around my existing plans.")} target="_blank" rel="noreferrer">
+          <strong>
+            We can work around your confirmed flights, hotels, meetings and personal plans.
+          </strong>
+          <Link
+            href={whatsappHref(
+              "Hello AVIORA, I already have part of my China trip arranged and would like you to build around my existing plans.",
+            )}
+            target="_blank"
+            rel="noreferrer"
+          >
             Build around my existing plans <MessageCircle size={15} aria-hidden="true" />
           </Link>
         </div>
@@ -731,7 +751,7 @@ function FilterSections({
   );
 }
 
-function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
+function LegacySignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
   const signatureItems = items
     .filter((item) => item.commercialRole === "signature")
     .sort((a, b) => b.commercialPriority - a.commercialPriority)
@@ -740,7 +760,11 @@ function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
   if (!signatureItems.length) return null;
 
   return (
-    <section className={styles.signatureShowcase} id="multi-city-journeys" aria-labelledby="signature-collection-title">
+    <section
+      className={styles.signatureShowcase}
+      id="multi-city-journeys"
+      aria-labelledby="signature-collection-title"
+    >
       <div className={styles.signatureIntro}>
         <p className={styles.eyebrow}>The AVIORA Signature Collection</p>
         <h2 id="signature-collection-title">Journeys with a story worth travelling for.</h2>
@@ -765,7 +789,9 @@ function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
                   src={item.image.src}
                   alt={item.image.alt}
                   fill
-                  sizes={index === 0 ? "(min-width: 900px) 50vw, 100vw" : "(min-width: 900px) 25vw, 50vw"}
+                  sizes={
+                    index === 0 ? "(min-width: 900px) 50vw, 100vw" : "(min-width: 900px) 25vw, 50vw"
+                  }
                   className="object-cover"
                 />
               )}
@@ -775,7 +801,9 @@ function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
               <h3>{marketingTitles[item.slug] ?? getDisplayTitle(item.title)}</h3>
               <strong>{item.title}</strong>
               <span>{item.hook}</span>
-              <span className={styles.signatureCardLink}>Explore the journey <ArrowUpRight size={15} aria-hidden="true" /></span>
+              <span className={styles.signatureCardLink}>
+                Explore the journey <ArrowUpRight size={15} aria-hidden="true" />
+              </span>
             </div>
           </Link>
         ))}
@@ -784,13 +812,17 @@ function SignatureShowcase({ items }: { items: JourneyCatalogItem[] }) {
   );
 }
 
-function DayTourShowcase({ items }: { items: JourneyCatalogItem[] }) {
+function LegacyDayTourShowcase({ items }: { items: JourneyCatalogItem[] }) {
   const dayTours = items.filter((item) => dayTourSlugs.has(item.slug)).slice(0, 5);
 
   if (!dayTours.length) return null;
 
   return (
-    <section className={styles.dayTourShowcase} id="private-day-tours" aria-labelledby="day-tour-title">
+    <section
+      className={styles.dayTourShowcase}
+      id="private-day-tours"
+      aria-labelledby="day-tour-title"
+    >
       <div className={styles.dayTourHead}>
         <div>
           <p className={styles.eyebrow}>Private day tours</p>
@@ -808,7 +840,13 @@ function DayTourShowcase({ items }: { items: JourneyCatalogItem[] }) {
               {item.visualStatus === "pending" ? (
                 <span>Photography being prepared</span>
               ) : (
-                <OptimizedImage src={item.image.src} alt={item.image.alt} fill sizes="(min-width: 900px) 20vw, 80vw" className="object-cover" />
+                <OptimizedImage
+                  src={item.image.src}
+                  alt={item.image.alt}
+                  fill
+                  sizes="(min-width: 900px) 20vw, 80vw"
+                  className="object-cover"
+                />
               )}
             </div>
             <div>
@@ -860,11 +898,18 @@ function FilterGroup({
   );
 }
 
-function ServiceChoiceDialog({
+function LegacyServiceChoiceDialog({
   service,
   onExplore,
 }: {
-  service: (typeof serviceCards)[number];
+  service: (typeof serviceCards)[number] & {
+    includes: readonly string[];
+    standards: readonly string[];
+    process: string;
+    category?: ServiceCategory;
+    href?: string;
+    label: string;
+  };
   onExplore: (category: ServiceCategory) => void;
 }) {
   return (
@@ -1321,7 +1366,7 @@ function MobileJourneySearch({
   );
 }
 
-function JourneyResult({ item, reason }: { item: JourneyCatalogItem; reason: string }) {
+function JourneyResult({ item, reason = "" }: { item: JourneyCatalogItem; reason?: string }) {
   const displayTitle = marketingTitles[item.slug] ?? getDisplayTitle(item.title);
 
   return (
@@ -1550,16 +1595,6 @@ function getDisplayTitle(title: string) {
     .trim();
 }
 
-function getPerPersonPrice(item: JourneyCatalogItem) {
-  const dayTourPrices: Record<string, number> = {
-    "private-mutianyu-great-wall-day-tour": 198,
-    "private-chengdu-panda-day-tour-early-morning": 150,
-    "private-xian-terracotta-warriors-day-tour": 157,
-    "private-shanghai-day-tour-guide-driver": 168,
-    "guilin-yangshuo-li-river-cruise-private-day-tour": 172,
-  };
-  return dayTourPrices[item.slug] ?? item.pricing.fromUsd;
-}
 function getInitialUrlState(queryString: string): {
   query: string;
   filters: Filters;
