@@ -5,15 +5,17 @@ import { cn } from "@/lib/utils/cn";
 type ContainerProps<T extends ElementType = "div"> = {
   as?: T;
   children: ReactNode;
-  size?: "sm" | "md" | "lg" | "xl" | "full";
+  size?: "xs" | "sm" | "md" | "lg" | "xl" | "full" | "bleed";
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "children">;
 
 const sizes = {
-  sm: "max-w-3xl",
-  md: "max-w-5xl",
-  lg: "max-w-7xl",
-  xl: "max-w-[92rem]",
+  xs: "max-w-[var(--container-narrow)]",
+  sm: "max-w-[var(--container-narrow)]",
+  md: "max-w-[var(--container-editorial)]",
+  lg: "max-w-[var(--container-content)]",
+  xl: "max-w-[var(--container-page)]",
   full: "max-w-none",
+  bleed: "max-w-none px-0",
 };
 
 export function Container<T extends ElementType = "div">({
@@ -25,7 +27,10 @@ export function Container<T extends ElementType = "div">({
 }: ContainerProps<T>) {
   const Component = as ?? "div";
   return (
-    <Component className={cn("mx-auto w-full px-5 md:px-8", sizes[size], className)} {...props}>
+    <Component
+      className={cn("mx-auto w-full px-[var(--page-gutter)]", sizes[size], className)}
+      {...props}
+    >
       {children}
     </Component>
   );

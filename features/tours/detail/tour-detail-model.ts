@@ -1,5 +1,6 @@
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
+import { getJourneyCardDescription, getJourneyCardTitle } from "@/content/tours/card-copy";
 import { getDossierData, planningHref } from "@/features/tours/dossier/dossier-data";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
@@ -12,7 +13,15 @@ export type TourDetailDay = {
   transport: string;
   meals: string;
   stay: string;
-  experiences: Array<{ title: string; description: string }>;
+  guideInsight?: string;
+  experiences: Array<{ title: string; description: string; time?: string }>;
+};
+
+export type TourRoutePoint = {
+  name: string;
+  days?: string;
+  description?: string;
+  coordinates?: { latitude: number; longitude: number };
 };
 
 export type TourExperienceCard = {
@@ -25,6 +34,8 @@ export type TourExperienceCard = {
 export type TourDetailModel = {
   slug: string;
   title: string;
+  displayTitle: string;
+  isFramework: boolean;
   subtitle: string;
   duration: string;
   route: string;
@@ -38,14 +49,22 @@ export type TourDetailModel = {
   optionalExperiences?: Tour["optionalExperiences"];
   price?: {
     fromUsd: number;
+    pricingUnit: "per-person" | "private-group";
     basis: string;
     detail: string;
     note: string;
   };
   quickFacts: Array<{ label: string; value: string }>;
   routeStops: Array<{ name: string; days?: string }>;
+  routeMap: {
+    title: string;
+    description: string;
+    stops: TourRoutePoint[];
+  };
   days: TourDetailDay[];
   gallery: MediaAsset[];
+  privateServiceImage?: MediaAsset;
+  hotelImage?: MediaAsset;
   hotelDestinations: string[];
   hotelStandard: string;
   included: string[];
@@ -95,17 +114,20 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
   const isPrivateXianTerracottaDayTour = tour.slug === "private-xian-terracotta-warriors-day-tour";
   const isPrivateChengduPandaDayTour = tour.slug === "private-chengdu-panda-day-tour-early-morning";
   const isGuilinLiRiverDayTour = tour.slug === "guilin-yangshuo-li-river-cruise-private-day-tour";
+  const isFourCityJourney = tour.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour";
   const hotelStandard =
     tour.overview.facts.find((fact) => fact.label.toLowerCase() === "hotels")?.value ??
     "Selected 4- and 5-star hotels";
   return {
     slug: tour.slug,
     title: cleanDisplayTitle(tour.title),
+    displayTitle: catalog ? getJourneyCardTitle(catalog) : cleanDisplayTitle(tour.title),
+    isFramework: false,
     subtitle: tour.subtitle,
     duration: tour.duration,
     route: tour.route,
     journeyRoleLabel: catalog?.commercialRoleLabel ?? "Private China journey",
-    decisionSummary: catalog?.hook ?? tour.overview.pitch,
+    decisionSummary: catalog ? getJourneyCardDescription(catalog) : tour.overview.pitch,
     signatureMoments: uniqueStrings([
       ...(catalog?.highlights ?? []),
       ...tour.highlights.map((highlight) => highlight.title),
@@ -118,6 +140,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     price: catalog
       ? {
           fromUsd: catalog.pricing.fromUsd,
+          pricingUnit: catalog.pricing.pricingUnit,
           basis: catalog.pricing.basis,
           detail: catalog.pricing.inclusionSummary,
           note: catalog.pricing.finalPriceNote,
@@ -152,12 +175,30 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       title: day.title,
       destination: day.destination,
       summary: day.summary,
-      transport: day.transport ?? "Private timing confirmed with your dates",
-      meals: day.meals?.join(", ") || "Confirmed in your written proposal",
-      stay: compactDailyStay(day.hotel, day.destination),
-      experiences: day.activities,
+      transport: compactDailyTransport(day.transport),
+      meals: isFourCityJourney
+        ? describeIncludedMeals(day.day)
+        : day.meals?.join(", ") || "Confirmed in your written proposal",
+      stay:
+        tour.slug === "first-china-beautifully-paced" && day.day === 9
+          ? "Departure day"
+          : compactDailyStay(day.hotel, day.destination),
+      guideInsight: day.guideNote,
+      experiences: day.activities.map((activity) => ({
+        title: activity.title,
+        description: activity.description,
+        time: "time" in activity && typeof activity.time === "string" ? activity.time : undefined,
+      })),
     })),
+    routeMap: {
+      title: tour.routeMap.title,
+      description: tour.routeMap.description,
+      stops: tour.routeMap.stops,
+    },
     gallery: tour.visualStatus === "pending" ? [] : collectTourImages(tour),
+    privateServiceImage:
+      tour.visualStatus === "pending" ? undefined : findPrivateServiceImage(tour),
+    hotelImage: tour.visualStatus === "pending" ? undefined : tour.accommodations.at(0)?.image,
     hotelStandard,
     hotelDestinations: uniqueStrings(
       tour.accommodations.length
@@ -208,15 +249,24 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
   };
 }
 
+function describeIncludedMeals(dayNumber: number) {
+  if (dayNumber === 2) {
+    return "Hotel breakfast + welcome dinner";
+  }
+  return "Hotel breakfast";
+}
+
 export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDetailModel {
   return {
     slug: item.slug,
     title: cleanDisplayTitle(item.title),
+    displayTitle: getJourneyCardTitle(item),
+    isFramework: true,
     subtitle: item.summary,
     duration: item.durationLabel,
     route: item.routeLabel,
     journeyRoleLabel: item.commercialRoleLabel,
-    decisionSummary: item.hook,
+    decisionSummary: getJourneyCardDescription(item),
     signatureMoments: item.highlights.slice(0, 3),
     heroImage: item.image,
     hasPhotography: item.visualStatus !== "pending",
@@ -228,6 +278,7 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     })),
     price: {
       fromUsd: item.pricing.fromUsd,
+      pricingUnit: item.pricing.pricingUnit,
       basis: item.pricing.basis,
       detail: item.pricing.inclusionSummary,
       note: item.pricing.finalPriceNote,
@@ -252,7 +303,16 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
       stay: `Selected 4- or 5-star hotel in ${destination.label}`,
       experiences: [],
     })),
+    routeMap: {
+      title: `${item.routeLabel}, planned as one private journey.`,
+      description:
+        item.planningNote ??
+        "The exact route, connections and daily timing are confirmed around your dates.",
+      stops: item.destinations.map((destination) => ({ name: destination.label })),
+    },
     gallery: item.visualStatus === "pending" ? [] : [item.image],
+    privateServiceImage: item.visualStatus === "pending" ? undefined : item.image,
+    hotelImage: item.visualStatus === "pending" ? undefined : item.image,
     hotelStandard: "Selected 4- and 5-star hotels",
     hotelDestinations: item.destinations.map((destination) => destination.label),
     included: [item.pricing.inclusionSummary],
@@ -274,6 +334,19 @@ function collectTourImages(tour: Tour) {
     ...tour.optionalExperiences.map((experience) => experience.image),
     ...tour.gallery,
   ]);
+}
+
+function findPrivateServiceImage(tour: Tour) {
+  const images = collectTourImages(tour);
+  return (
+    images.find(
+      (image) =>
+        /guide|host|explain|travell?er|people/i.test(image.alt) &&
+        !/hotel|room|bed|suite/i.test(image.alt),
+    ) ??
+    tour.highlights.at(0)?.image ??
+    images.at(0)
+  );
 }
 
 function createExperienceCards(tour: Tour): TourExperienceCard[] {
@@ -325,7 +398,23 @@ function tourWhatsAppHref(title: string, duration: string) {
 function compactDailyStay(stay: string | undefined, destination: string) {
   if (stay && !/confirm|proposal|room category|selected hotel/i.test(stay)) return stay;
   const overnightDestination = destination.split(/\s+to\s+/i).at(-1) ?? destination;
-  return `Selected 4- or 5-star hotel in ${overnightDestination}`;
+  return `4- or 5-star hotel in ${overnightDestination}`;
+}
+
+function compactDailyTransport(transport: string | undefined) {
+  if (!transport) return "Private transfers";
+  if (/public transport.*walking|metro, bus and walking/i.test(transport)) {
+    return "Public transport + walking with a local guide";
+  }
+  if (/station transfers|high-speed rail/i.test(transport))
+    return "Private station transfers + rail";
+  if (/airport transfers|domestic flight/i.test(transport))
+    return "Private airport transfers + flight";
+  if (/return transfer/i.test(transport)) return "Private return transfer";
+  if (/private vehicle.*guide|guide.*private vehicle/i.test(transport)) {
+    return "Private car + local guide";
+  }
+  return transport.replace(/ and English-speaking guide(?: as confirmed)?/i, " + local guide");
 }
 
 function cleanDisplayTitle(title: string) {

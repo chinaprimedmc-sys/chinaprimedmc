@@ -72,11 +72,11 @@ export function HeroLargeImage({
                   {eyebrow}
                 </p>
               ) : null}
-              <h1 className="home-hero-split__title max-w-full font-serif text-[clamp(3rem,13vw,4rem)] leading-[0.95] font-medium tracking-[-0.01em] text-balance break-words text-[var(--text-primary)] md:text-[clamp(4.4rem,5.6vw,6.5rem)] md:leading-[0.92] md:tracking-[-0.015em]">
+              <h1 className="type-hero home-hero-split__title max-w-full break-words text-[var(--text-primary)]">
                 {rotatingTitle ? <RotatingHeroTitle {...rotatingTitle} /> : title}
               </h1>
               {subtitle ? (
-                <p className="mx-auto mt-7 max-w-[31rem] text-base leading-7 text-[var(--text-secondary)] md:mx-0 md:mt-9 md:text-lg md:leading-8">
+                <p className="type-body mx-auto mt-7 max-w-[31rem] text-[var(--text-secondary)] md:mx-0 md:mt-9">
                   {subtitle}
                 </p>
               ) : null}
@@ -157,13 +157,11 @@ export function HeroLargeImage({
     >
       <div className="hero-copy-contrast relative z-20 w-full max-w-5xl min-w-0 text-white">
         {eyebrow ? <p className="hero-eyebrow mb-5 text-xs text-white/80">{eyebrow}</p> : null}
-        <h1 className="max-w-full font-serif text-[clamp(2.6rem,12vw,4rem)] leading-[0.98] font-medium tracking-[-0.01em] text-balance break-words md:text-7xl md:tracking-[-0.015em] lg:text-8xl">
+        <h1 className="type-hero max-w-full break-words">
           {rotatingTitle ? <RotatingHeroTitle {...rotatingTitle} /> : title}
         </h1>
         {subtitle ? (
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/88 md:text-xl md:leading-8">
-            {subtitle}
-          </p>
+          <p className="type-body mx-auto mt-6 max-w-2xl text-white/88">{subtitle}</p>
         ) : null}
         {primary || secondary ? (
           <div

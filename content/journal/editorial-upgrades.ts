@@ -301,6 +301,50 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     title: "China Visa Requirements for US Citizens in 2026: Tourist Visa vs 240-Hour Transit",
     seoTitle: "China Visa for US Citizens 2026: Visa vs Transit",
   },
+  "how-far-in-advance-book-private-china-tour": {
+    title: "How Far in Advance Should You Book a Private China Trip?",
+    seoTitle: "How Far Ahead to Book a Private China Tour",
+  },
+  "private-china-tour-proposal-checklist": {
+    title: "Private China Tour Proposal Checklist: What to Confirm Before You Pay",
+    seoTitle: "Private China Tour Proposal Checklist Before Paying",
+  },
+  "private-china-tour-arrival-handoff-checklist": {
+    title: "Your First 24 Hours in China: A Private Tour Arrival Handoff Checklist",
+    seoTitle: "First 24 Hours in China: Arrival Handoff Checklist",
+  },
+  "beijing-xian-shanghai-private-tour-9-days": {
+    title: "Beijing, Xi'an and Shanghai in 9 Days: A Private First-China Route",
+    seoTitle: "Beijing, Xi'an and Shanghai Private Tour: 9 Days",
+  },
+  "what-private-support-changes-first-china-trip": {
+    title: "What Private Support Changes on a First Trip to China",
+    seoTitle: "What Private Support Changes on a First China Trip",
+  },
+  "china-family-tour-with-pandas-12-days": {
+    title: "A 12-Day China Family Tour With Pandas: How the Route Works",
+    seoTitle: "12-Day China Family Tour With Pandas: Route Guide",
+  },
+  "best-age-for-china-family-tour": {
+    title: "What Is the Best Age for a Family Trip to China?",
+    seoTitle: "Best Age for a Family Trip to China: Honest Guide",
+  },
+  "china-family-tour-cost-four": {
+    title: "How Much Does a Private China Family Tour Cost for Four?",
+    seoTitle: "Private China Family Tour Cost for Four: Price Guide",
+  },
+  "luxury-yunnan-private-tour-10-days": {
+    title: "A 10-Day Luxury Yunnan Private Tour: Dali to Shangri-La",
+    seoTitle: "10-Day Luxury Yunnan Private Tour: Route Guide",
+  },
+  "yunnan-altitude-private-tour": {
+    title: "Yunnan Altitude: Planning Dali, Lijiang and Shangri-La",
+    seoTitle: "Yunnan Altitude: Dali to Shangri-La Planning Guide",
+  },
+  "where-to-stay-yunnan-private-tour": {
+    title: "Where to Stay in Yunnan: Dali, Shaxi, Lijiang and Shangri-La",
+    seoTitle: "Where to Stay in Yunnan: Four Stops Compared",
+  },
 };
 
 export function applyJournalEditorialUpgrade(article: JournalArticle): JournalArticle {

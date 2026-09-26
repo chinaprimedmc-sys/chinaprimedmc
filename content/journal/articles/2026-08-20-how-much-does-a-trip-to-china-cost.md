@@ -32,7 +32,7 @@ The figures below are current planning benchmarks from AVIORA's published privat
 | ------------------------------------------------------------------------------------------------ | ------- | ------------------: | ---------------------------------------------------------------------------------------------- |
 | [Beijing and Great Wall](/tours/beijing-great-wall-private-5-day-tour)                           | 5 days  | US$1,690 per person | One hotel base, private airport/city transfers and core Beijing guiding                        |
 | [Beijing, Xi'an and Shanghai](/tours/first-china-beautifully-paced)                              | 9 days  | US$3,190 per person | Three cities, two handovers and the classic first-trip route                                   |
-| [Beijing, Xi'an, Chengdu and Shanghai](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) | 11 days | US$4,290 per person | A fourth city, pandas and another intercity sector                                             |
+| [Beijing, Xi'an, Chengdu and Shanghai](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) | 12 days | US$2,680 per person | A fourth city, pandas and another intercity sector                                             |
 | [China at an easier pace](/tours/china-at-an-easier-pace-12-day-private-tour)                    | 12 days | US$6,480 per person | Premium five-star hotels, first-class rail, a domestic flight and private cultural experiences |
 
 The 12-day easier-paced journey has a narrower published planning range: most privately designed versions fall between **US$6,800 and US$8,500 per person**, depending on dates, hotel and room selection, party size and personal interests. Luxury versions using Peninsula-level hotels, larger rooms or transport upgrades are quoted separately.
@@ -166,7 +166,7 @@ China can support a wide range of budgets. International flights, premium city h
 
 ### How much money should I budget for a two-week China trip?
 
-Build the total from international flights, 13 hotel nights, three intercity sectors for a four-city route, guide and vehicle coverage, tickets, meals, insurance and personal spending. As a transparent land-only reference, AVIORA's privately guided 11-day four-city journey starts from US$4,290 per person for four guests sharing two rooms outside peak periods. A 14-day version requires exact dates, party size and hotel expectations before it can be quoted responsibly.
+Build the total from international flights, 11 hotel nights for the Essential Pace, three intercity sectors for a four-city route, guide and vehicle coverage, tickets, meals, insurance and personal spending. As a transparent land-only reference, AVIORA's privately guided 12-day four-city journey starts from US$2,680 per person for four guests sharing two rooms outside peak periods. A longer Considered Pace requires exact dates, party size and hotel expectations before it can be quoted responsibly.
 
 ### Are China tour packages cheaper than booking separately?
 

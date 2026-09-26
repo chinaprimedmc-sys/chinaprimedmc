@@ -18,7 +18,8 @@ import { WhatsAppIcon } from "@/components/icons";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import { homeEditorialImages, homeNavItems, primaryAction } from "@/content/home/homepage";
+import { verifiedCredentials } from "@/content/trust";
+import { homeEditorialImages } from "@/content/home/homepage";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -196,6 +197,9 @@ export default function AboutPage() {
           url: new URL("/about", siteConfig.url).toString(),
           description:
             "How AVIORA designs and operates tailored private journeys in China, from planning through on-trip support.",
+          inLanguage: "en-US",
+          isPartOf: { "@id": `${siteConfig.url}/#website` },
+          publisher: { "@id": `${siteConfig.url}/#organization` },
           mainEntity: {
             "@type": "TravelAgency",
             "@id": `${siteConfig.url}/#organization`,
@@ -213,13 +217,7 @@ export default function AboutPage() {
         }}
       />
 
-      <SiteNavigation
-        tone="adaptive"
-        variant="default"
-        items={homeNavItems}
-        cta={primaryAction}
-        showWhatsapp={false}
-      />
+      <SiteNavigation />
 
       <section className={styles.hero} aria-labelledby="about-title" data-hero-layout="true">
         <OptimizedImage
@@ -247,6 +245,22 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className={styles.section} aria-label="Company and operating facts">
+        <div className={styles.container}>
+          <div className="grid gap-6 md:grid-cols-3">
+            {verifiedCredentials.map((fact) => (
+              <div key={fact.title}>
+                <h2 className="text-lg font-semibold">{fact.title}</h2>
+                <p className="text-muted mt-3 text-base leading-7">{fact.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted mt-6 text-base">
+            Planning, route coordination and on-trip support are handled by our China team.
+            Enquiries normally receive a personal reply within 24 hours.
+          </p>
+        </div>
+      </section>
       <section id="understood" className={`${styles.section} ${styles.understood}`}>
         <div className={styles.container}>
           <SectionHeading

@@ -86,7 +86,7 @@ export function BaseMediaCard({
             }
       }
       className={cn(
-        "group relative flex overflow-hidden rounded-[1.75rem] bg-[var(--bg-secondary)] text-white shadow-sm transition-shadow duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] hover:shadow-[0_28px_80px_rgba(43,42,37,0.18)] active:shadow-[0_18px_48px_rgba(43,42,37,0.14)] motion-reduce:transition-none",
+        "group relative flex overflow-hidden rounded-[var(--radius-card)] border border-white/54 bg-[var(--bg-secondary)] text-white shadow-[var(--shadow-glass)] transition-shadow duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] hover:shadow-[var(--shadow-large)] active:shadow-[var(--shadow-medium)] motion-reduce:transition-none",
         variants[variant],
         className,
       )}
@@ -136,15 +136,13 @@ export function BaseMediaCard({
           ))}
         </div>
         <div>
-          <h3 className="text-2xl leading-tight font-semibold tracking-[-0.02em] md:text-3xl">
-            {title}
-          </h3>
+          <h3 className="type-card-title">{title}</h3>
           {description ? (
             <p className="mt-2 text-sm leading-6 text-white/86">{description}</p>
           ) : null}
         </div>
         {meta?.length ? (
-          <dl className="grid grid-cols-2 gap-2 rounded-3xl border border-white/18 bg-white/12 p-3 text-xs backdrop-blur-xl">
+          <dl className="grid grid-cols-2 gap-2 rounded-[var(--radius-surface)] border border-white/28 bg-white/16 p-3 text-xs shadow-[var(--button-glass-shadow-subtle)] backdrop-blur-2xl">
             {meta.map((item) => (
               <div key={item.label}>
                 <dt className="text-white/60">{item.label}</dt>

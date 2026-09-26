@@ -21,7 +21,7 @@ export function TravelerSelector({
 }: TravelerSelectorProps) {
   return (
     <div className="border-border flex items-center justify-between gap-4 rounded-2xl border bg-white p-4">
-      <span className="text-sm font-semibold">{label}</span>
+      <span className="text-base font-semibold">{label}</span>
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -32,7 +32,7 @@ export function TravelerSelector({
         >
           <Minus size={15} aria-hidden="true" />
         </button>
-        <span className="w-6 text-center text-sm font-semibold">{value}</span>
+        <span className="w-6 text-center text-base font-semibold">{value}</span>
         <button
           type="button"
           className={iconButtonStyles}

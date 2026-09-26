@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = createMetadata({
   title: "China Tours From USA: Private Routes & 2026 Prices",
   description:
-    "Compare private China tours from the USA by usable nights, gateway, route and published land price. Plan Beijing, Xi'an, Chengdu and Shanghai with local support.",
+    "Compare private China tours from the USA by route, nights and land price. Plan Beijing, Xi'an, Chengdu and Shanghai with one China-based team.",
   path: "/china-tours-from-usa",
   image: "/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp",
 });

@@ -1,0 +1,195 @@
+:root {
+  /* AVIORA uses a white canvas and a single cool-neutral ink scale. */
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f5f6f6;
+  --color-ink: #17191b;
+  --color-copy: #3f4448;
+  --color-muted: #475650;
+  --color-forest: #23646d;
+  --color-forest-hover: #194c53;
+  --color-line: #e2e4e5;
+  --color-line-strong: #c9cdcf;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #d9dcde;
+  --color-focus: #25292c;
+
+  /* 兼容现有变量；新组件只使用上面的语义色。 */
+  --bg-primary: var(--color-surface);
+  --bg-secondary: var(--color-surface-muted);
+  --text-primary: var(--color-ink);
+  --text-secondary: var(--color-muted);
+  --accent: var(--color-forest);
+  --accent-hover: var(--color-forest-hover);
+  --border: var(--color-line);
+  --shadow: rgba(23, 25, 27, 0.06);
+  --bg-dark-primary: var(--color-ink);
+  --bg-dark-secondary: var(--color-forest);
+  --text-on-dark-primary: var(--color-on-dark);
+  --text-on-dark-secondary: var(--color-on-dark-muted);
+  --accent-on-dark: var(--color-focus);
+  --action-primary: #23646d;
+  --action-primary-hover: #194c53;
+  --action-explore: #ffffff;
+  --action-explore-hover: #f5f6f6;
+  --action-focus: var(--color-focus);
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+  --muted: var(--text-secondary);
+  --brand-forest: var(--accent);
+  --brand-red: var(--accent);
+  --brand-gold: var(--color-focus);
+
+  /* One family prevents metric shifts and inconsistent heading rhythm. */
+  --font-body:
+    var(--font-inter-loaded), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-body);
+  --font-brand:
+    var(--font-lora-loaded), "Lora", "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  --font-primary: var(--font-body);
+  --font-inter: var(--font-body);
+  --font-cormorant: var(--font-display);
+
+  /* 六级语义字体。移动端为默认值，桌面端在下方明确覆盖。 */
+  --type-hero-size: 2.375rem;
+  --type-hero-line: 2.625rem;
+  --type-hero-weight: 600;
+  --type-hero-tracking: 0;
+  --type-page-title-size: 2.375rem;
+  --type-page-title-line: 2.625rem;
+  --type-page-title-weight: 600;
+  --type-page-title-tracking: 0;
+  --type-section-title-size: 1.875rem;
+  --type-section-title-line: 2.25rem;
+  --type-section-title-weight: 600;
+  --type-section-title-tracking: 0;
+  --type-card-title-size: 1.375rem;
+  --type-card-title-line: 1.75rem;
+  --type-card-title-weight: 600;
+  --type-card-title-tracking: 0;
+  --type-body-size: 1rem;
+  --type-body-line: 1.5625rem;
+  --type-body-weight: 400;
+  --type-body-tracking: 0;
+  --type-body-large-size: 1.0625rem;
+  --type-body-large-line: 1.6875rem;
+  --type-caption-size: 0.75rem;
+  --type-caption-line: 1rem;
+  --type-caption-weight: 600;
+  --type-caption-tracking: 0;
+  --type-nav-size: 0.875rem;
+  --type-nav-line: 1.25rem;
+
+  /* 页面容器：统一宽度和边距，bleed 由组件显式选择。 */
+  --container-page: 85rem;
+  --container-content: 85rem;
+  --container-editorial: 68rem;
+  --container-narrow: 48rem;
+  --page-gutter: 1rem;
+  --space-section-compact: 2rem;
+  --space-section-default: 3rem;
+  --space-section-spacious: 3.5rem;
+
+  /* 形状与材质：卡片只使用有限层级，交互按钮可使用胶囊形。 */
+  --radius-control: 1rem;
+  --radius-surface: 0.75rem;
+  --radius-feature: 1rem;
+  --radius-pill: 9999px;
+  --radius-card: var(--radius-feature);
+  --border-subtle: 1px solid var(--color-line);
+  --border-strong: 1px solid var(--color-line-strong);
+  --shadow-small: 0 6px 20px rgba(25, 31, 35, 0.06);
+  --shadow-medium: 0 18px 50px rgba(25, 31, 35, 0.1);
+  --shadow-large: 0 30px 80px rgba(25, 31, 35, 0.13);
+  --glass-surface: rgba(255, 255, 255, 0.62);
+  --glass-surface-strong: rgba(255, 255, 255, 0.8);
+  --glass-surface-subtle: rgba(255, 255, 255, 0.42);
+  --glass-border: rgba(255, 255, 255, 0.78);
+  --glass-line: rgba(121, 132, 140, 0.2);
+  --glass-blur: 24px;
+  --shadow-glass:
+    0 20px 54px rgba(31, 42, 49, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.94),
+    inset 0 -1px 0 rgba(93, 109, 119, 0.08);
+  --button-glass-shadow:
+    0 8px 24px rgba(31, 42, 49, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(93, 109, 119, 0.08);
+  --button-glass-shadow-subtle:
+    0 5px 16px rgba(31, 42, 49, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  --button-glass-shadow-hover:
+    0 12px 30px rgba(31, 42, 49, 0.14), inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(93, 109, 119, 0.08);
+
+  /* 动效仅服务状态反馈与内容进入，不使用持续发光。 */
+  --motion-duration-micro: 180ms;
+  --motion-duration-enter: 420ms;
+  --motion-duration-transition: 520ms;
+  --motion-duration-shimmer: 1600ms;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --motion-offset-enter: 12px;
+  --ease-apple: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out-expo: var(--motion-ease-out);
+  --motion-press: 100ms;
+  --motion-fast: var(--motion-duration-micro);
+  --motion-base: 240ms;
+  --motion-content: 360ms;
+  --motion-image: 480ms;
+
+  --site-nav-offset: 5rem;
+  --mobile-sticky-cta-height: 0px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --type-hero-size: 3rem;
+    --type-hero-line: 3.375rem;
+    --type-page-title-size: 3rem;
+    --type-page-title-line: 3.375rem;
+    --type-section-title-size: 2.375rem;
+    --type-section-title-line: 2.75rem;
+    --type-card-title-size: 1.5rem;
+    --type-card-title-line: 1.875rem;
+    --type-body-line: 1.625rem;
+    --page-gutter: 1.875rem;
+    --space-section-compact: 2.5rem;
+    --space-section-default: 3.5rem;
+    --space-section-spacious: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: 2.75rem;
+  }
+}
+
+@media (min-width: 1180px) {
+  :root {
+    --type-hero-size: 3.75rem;
+    --type-hero-line: 4.125rem;
+    --type-page-title-size: 2.75rem;
+    --type-page-title-line: 3.125rem;
+    --type-section-title-size: 2rem;
+    --type-section-title-line: 2.5rem;
+    --type-card-title-size: 1.75rem;
+    --type-card-title-line: 2.125rem;
+    --type-body-size: 1.0625rem;
+    --type-body-line: 1.6875rem;
+    --type-body-large-size: 1.125rem;
+    --type-body-large-line: 1.8125rem;
+    --type-caption-size: 0.8125rem;
+    --type-caption-line: 1.125rem;
+    --type-nav-size: 0.9375rem;
+    --type-nav-line: 1.375rem;
+    --space-section-compact: 3rem;
+    --space-section-default: 4rem;
+    --space-section-spacious: 4.5rem;
+    --site-nav-offset: 5.75rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --page-gutter: 3rem;
+  }
+}

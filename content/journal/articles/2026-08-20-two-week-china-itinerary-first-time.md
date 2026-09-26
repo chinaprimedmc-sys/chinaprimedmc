@@ -150,7 +150,7 @@ Read the [best first-trip destination comparison](/journal/best-places-to-visit-
 
 ## What this route costs - and what the published price does not prove
 
-Our published [11-day Beijing, Xi'an, Chengdu and Shanghai private journey](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) starts from **US$4,290 per person**. That starting price assumes four guests sharing two rooms outside peak holiday periods and includes selected four- or five-star hotels, private guiding and vehicles on scheduled touring days, listed entrance tickets and confirmed domestic transport.
+Our published [12-day Essential Pace Beijing, Xi'an, Chengdu and Shanghai private journey](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) starts from **US$2,680 per person**. That starting price assumes four guests sharing two rooms outside peak holiday periods and includes selected four- or five-star hotels, private guiding and vehicles on scheduled touring days, listed entrance tickets and confirmed domestic transport.
 
 It is a useful benchmark for the same four-city geography, not a quote for this 14-day article. Adding three days changes the hotel nights, guide and vehicle coverage, meals, tickets and possibly the domestic transport schedule. A proposal should show those additions instead of multiplying an average daily price. Two extra free days and one transfer day do not cost the same as three privately guided touring days.
 

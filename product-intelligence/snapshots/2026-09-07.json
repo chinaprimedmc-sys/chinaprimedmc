@@ -1,0 +1,283 @@
+{
+  "checkedAt": "2026-09-07T01:21:31.941Z",
+  "products": [
+    {
+      "id": "wildchina-avatar-mountains",
+      "url": "https://wildchina.com/tour/chinas-avatar-mountains/",
+      "status": 200,
+      "finalUrl": "https://wildchina.com/tour/chinas-avatar-mountains/",
+      "title": "China's Avatar Mountains Zhangjiajie | WildChina",
+      "h1": "China&#8217;s Avatar Mountains Zhangjiajie",
+      "contentHash": "7318704f630c491c36fbaf61eab24723fb869b55973dc1f016609c618505240f",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "wildchina-chongqing-vertical-living",
+      "url": "https://wildchina.com/tour/chongqing-vertical-living-and-historic-hideaways/",
+      "status": 200,
+      "finalUrl": "https://wildchina.com/tour/chongqing-vertical-living-and-historic-hideaways/",
+      "title": "Chongqing: Vertical Living and Historic Hideaways | WildChina",
+      "h1": "Chongqing: Vertical Living and Historic Hideaways",
+      "contentHash": "09ffa55e2b00d44a1952aad10e73a6d127a8d3fb4b12cc001cf190bd26b25f5c",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "wildchina-family-fun",
+      "url": "https://wildchina.com/tour/family-fun/",
+      "status": 200,
+      "finalUrl": "https://wildchina.com/tour/family-fun/",
+      "title": "Family Fun | WildChina",
+      "h1": "Family Fun",
+      "contentHash": "50eda61978ee9030e5ed46ed196eaffc30bf805dc40c7ef7f90e178601661eb4",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "wildchina-high-tech",
+      "url": "https://wildchina.com/tour/innovation-in-china-a-high-tech-tour/",
+      "status": 200,
+      "finalUrl": "https://wildchina.com/tour/innovation-in-china-a-high-tech-tour/",
+      "title": "Innovation in China: A High-Tech Tour | WildChina",
+      "h1": "Innovation in China: A High-Tech Tour",
+      "contentHash": "c54d6aeb27e0c249ba00480be108445a02e2516c8958d17c7c88ad3c3f7faa30",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "wildchina-yangtze-explorer",
+      "url": "https://wildchina.com/tour/luxury-yangtze-river-cruise-from-chongqing-to-yichang/",
+      "status": 200,
+      "finalUrl": "https://wildchina.com/tour/luxury-yangtze-river-cruise-from-chongqing-to-yichang/",
+      "title": "Luxury Yangtze River Cruise: From Chongqing to Yichang | WildChina",
+      "h1": "Luxury Yangtze River Cruise: From Chongqing to Yichang",
+      "contentHash": "1f5acfa7ea29f9ab6a76f24f14685216d6ad5cc9a5237e6ea827aba95add200c",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "china-highlights-golden-triangle",
+      "url": "https://www.chinahighlights.com/china-tours/golden-triangle-tour.htm",
+      "status": 200,
+      "finalUrl": "https://www.chinahighlights.com/china-tours/golden-triangle-tour.htm",
+      "title": "8-Day China Golden Triangle Tour - Ideal for First-Timers",
+      "h1": "8-Day Beijing, Xi'an, and Shanghai Private Tour",
+      "contentHash": "3e12f131c5093600377c3ecca61525a888fc0935e2cb95c1ee72afc64a22b095",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "china-highlights-natural-wonders",
+      "url": "https://www.chinahighlights.com/china-tours/natural-wonders-discovery.htm",
+      "status": 200,
+      "finalUrl": "https://www.chinahighlights.com/china-tours/natural-wonders-discovery.htm",
+      "title": "14-Day Beijing - Xi'an - Zhangjiajie - Guilin - Shanghai Tour",
+      "h1": "14-Day China Natural Wonders Discovery",
+      "contentHash": "0ffbd8d3fe6c217374f1e86b48f15fa7cc0e8c042f92fbee94fa07b90a92656a",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "china-highlights-essence-panda",
+      "url": "https://www.chinahighlights.com/china-tours/china-essence-panda-tour.htm",
+      "status": 200,
+      "finalUrl": "https://www.chinahighlights.com/china-tours/china-essence-panda-tour.htm",
+      "title": "2-Week China Essence and Panda Tour - Be a Panda Keeper",
+      "h1": "2-Week China Essence and Panda Tour",
+      "contentHash": "7923e14e55a8539604bdf60d6e5221eed9787822654e28adbaf73286c58b1591",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "china-highlights-chengdu-jiuzhaigou-chongqing",
+      "url": "https://www.chinahighlights.com/china-tours/chengdu-jiuzhaigou-chongqing.htm",
+      "status": 200,
+      "finalUrl": "https://www.chinahighlights.com/china-tours/chengdu-jiuzhaigou-chongqing.htm",
+      "title": "8-Day Chengdu, Jiuzhaigou and Chongqing Tour",
+      "h1": "8-Day Chengdu, Jiuzhaigou and Chongqing Tour",
+      "contentHash": "0f8202ec112f64173460bb23f3ecdfc3be326c7a47ee56b433d796a60e9c4349",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "china-highlights-new-china",
+      "url": "https://www.chinahighlights.com/china-tours/modern-china-tour.htm",
+      "status": 200,
+      "finalUrl": "https://www.chinahighlights.com/china-tours/modern-china-tour.htm",
+      "title": "18-Day New China Discovery: Hangzhou, Chongqing, Shenzhen, and More...",
+      "h1": "18-Day New China Discovery: Hangzhou, Chongqing, Shenzhen, and More...",
+      "contentHash": "dd3a94cbdd40499a2527300385c36298abdfa92037b2739efcdc7ee2b600b09f",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "china-highlights-silk-road",
+      "url": "https://www.chinahighlights.com/silk-road/tours/xian-to-kashgar.htm",
+      "status": 200,
+      "finalUrl": "https://www.chinahighlights.com/silk-road/tours/xian-to-kashgar.htm",
+      "title": "12-Day Silk Road Private Tour from Xian to Kashgar",
+      "h1": "12-Day China Silk Road Tour from Xi'an to Kashgar",
+      "contentHash": "2941d0ce372242e998426b0501872bae01cee5e18b65083bf43371cd77ae94a7",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "wendy-wu-wonders-china",
+      "url": "https://www.wendywutours.co.uk/china/tours/wonders-of-china.htm",
+      "status": 200,
+      "finalUrl": "https://www.wendywutours.co.uk/china/tours/wonders-of-china.htm",
+      "title": "Wonders of China | Wendy Wu Tours UK",
+      "h1": "Wonders of China",
+      "contentHash": "185e0c45f18c98111f3b7ee54bd61a01e75e8aaeb49689ec308a2e4c6f48749d",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "wendy-wu-pandas",
+      "url": "https://www.wendywutours.co.uk/china/tours/in-pursuit-of-pandas.htm",
+      "status": 200,
+      "finalUrl": "https://www.wendywutours.co.uk/china/tours/in-pursuit-of-pandas.htm",
+      "title": "In Pursuit of Pandas | Wendy Wu Tours UK",
+      "h1": "In Pursuit of Pandas",
+      "contentHash": "fe8bcd8b30b83a8532da98c19587733311ad99177ebe78aa0cb6d5e05a6e770f",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "wendy-wu-new-horizons",
+      "url": "https://www.wendywutours.co.uk/china/tours/new-horizons-of-china.htm",
+      "status": 200,
+      "finalUrl": "https://www.wendywutours.co.uk/china/tours/new-horizons-of-china.htm",
+      "title": "New Horizons of China | Wendy Wu Tours UK",
+      "h1": "New Horizons of China",
+      "contentHash": "0100124dd9001785cfd40da41201c4fe11fb2b0e0abc1d5c241340fd7b9400f1",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "original-travel-highlights",
+      "url": "https://www.originaltravel.co.uk/itinerary/china-beijing-xi-an-chengdu-yangshuo-shanghai/highlights-of-china-itinerary/pot195672",
+      "status": 200,
+      "finalUrl": "https://www.originaltravel.co.uk/itinerary/china-beijing-xi-an-chengdu-yangshuo-shanghai/highlights-of-china-itinerary/pot195672",
+      "title": "Highlights of China Itinerary - Original Travel",
+      "h1": "Highlights of China History, Culture & Scenery",
+      "contentHash": "e98ef9fd3607530804ebb6cac4b4b81355c3a7889bde4e362960a4a1e1e12d7c",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "original-travel-ultimate-adventure",
+      "url": "https://www.originaltravel.co.uk/itinerary/china-beijing-zhangjiajie-xi-an-lijiang-city-tacheng-zhongdian-shanghai/the-ultimate-china-adventure/pot195697",
+      "status": 200,
+      "finalUrl": "https://www.originaltravel.co.uk/itinerary/china-beijing-zhangjiajie-xi-an-lijiang-city-tacheng-zhongdian-shanghai/the-ultimate-china-adventure/pot195697",
+      "title": "The Ultimate China Adventure - Original Travel",
+      "h1": "The Ultimate China Adventure Iconic Sites & Yunnan in Depth",
+      "contentHash": "9c1c8daff566ea6d232f361c8981376919442ae0ff4bbd9911278cf0e3065d52",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "intrepid-premium-china",
+      "url": "https://www.intrepidtravel.com/en/china/premium-china-174860",
+      "status": 200,
+      "finalUrl": "https://www.intrepidtravel.com/en/china/premium-china-174860",
+      "title": "Premium China | Intrepid Travel EN",
+      "h1": "Premium China",
+      "contentHash": "18367ea40700d3d3c7a9709ad1d09a2ca55fc90f771d2e045e11d7c6dcd36c9d",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "intrepid-real-food",
+      "url": "https://www.intrepidtravel.com/en/china/china-real-food-adventure-174628",
+      "status": 200,
+      "finalUrl": "https://www.intrepidtravel.com/en/china/china-real-food-adventure-174628",
+      "title": "China Real Food Adventure | Intrepid Travel EN",
+      "h1": "China Real Food Adventure",
+      "contentHash": "19b2b8f02d269374adb1dcff8f6d1ddb29d9b25fda6e8d49732f524c13ed9337",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "jacada-family-adventure",
+      "url": "https://www.jacadatravel.com/asia/trips/a-family-adventure-in-china/",
+      "status": 200,
+      "finalUrl": "https://www.jacadatravel.com/asia/trips/a-family-adventure-in-china/",
+      "title": "A Family Adventure in China | Jacada Travel",
+      "h1": "A Family Adventure in China",
+      "contentHash": "ae29fa3d311eb1d33a9d1d0f8cc30a873dbfc9bf4420c0b190df7c1976b3be92",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    },
+    {
+      "id": "scott-dunn-ultimate-china",
+      "url": "https://www.scottdunn.com/china/tours/ultimate-china",
+      "status": 200,
+      "finalUrl": "https://www.scottdunn.com/china/tours/ultimate-china",
+      "title": "Ultimate China | Tailor-made Tours to China | Scott Dunn UK",
+      "h1": "Ultimate China",
+      "contentHash": "d033a162422dc51cd0a57863a7bf7685640c4c79727262f0fba4fe65fb37f393",
+      "checkedAt": "2026-09-07T01:21:31.941Z"
+    }
+  ],
+  "changes": [
+    {
+      "id": "wildchina-avatar-mountains",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "wildchina-chongqing-vertical-living",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "wildchina-family-fun",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "wildchina-high-tech",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "wildchina-yangtze-explorer",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "china-highlights-golden-triangle",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "china-highlights-natural-wonders",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "china-highlights-chengdu-jiuzhaigou-chongqing",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "china-highlights-new-china",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "china-highlights-silk-road",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "wendy-wu-wonders-china",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "wendy-wu-pandas",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "wendy-wu-new-horizons",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "original-travel-highlights",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "original-travel-ultimate-adventure",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "intrepid-premium-china",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "intrepid-real-food",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "jacada-family-adventure",
+      "fields": ["contentHash"]
+    },
+    {
+      "id": "scott-dunn-ultimate-china",
+      "fields": ["contentHash"]
+    }
+  ]
+}

@@ -22,6 +22,12 @@ const strategyGroups: Array<{
       ["9-day-beijing-xian-shanghai-itinerary", "plan", "9 day China itinerary", 1],
       ["11-day-beijing-xian-chengdu-shanghai-itinerary", "plan", "11 day China itinerary", 1],
       ["best-time-to-visit-china", "plan", "best time to visit China", 2],
+      [
+        "how-far-in-advance-book-private-china-tour",
+        "plan",
+        "how far in advance to book China trip",
+        1,
+      ],
       ["china-golden-week-travel-2026", "answer", "China Golden Week 2026", 2],
       ["china-travel-safety-for-foreign-visitors", "answer", "is China safe for tourists", 2],
     ],
@@ -42,6 +48,12 @@ const strategyGroups: Array<{
       ],
       ["aviora-ttg-asia-matta-connect-2026", "trust", "AVIORA China travel company", 2],
       ["private-china-tour-from-singapore", "plan", "private China tour from Singapore", 1],
+      [
+        "private-china-tour-proposal-checklist",
+        "evaluate",
+        "private China tour proposal checklist",
+        1,
+      ],
     ],
   },
   {
@@ -66,6 +78,7 @@ const strategyGroups: Array<{
       ["china-domestic-flight-power-bank-rules", "answer", "China power bank rules 2026", 2],
       ["china-high-speed-train-foreigners", "answer", "China high speed train for foreigners", 2],
       ["best-apps-for-china-travel-2026", "answer", "best apps for China travel 2026", 1],
+      ["private-china-tour-arrival-handoff-checklist", "answer", "first 24 hours in China", 1],
       ["china-packing-list-2026", "answer", "China packing list 2026", 1],
       [
         "china-visa-requirements-us-citizens-2026",
@@ -78,6 +91,24 @@ const strategyGroups: Array<{
         "how-to-travel-between-beijing-xian-chengdu-shanghai",
         "plan",
         "travel between Beijing Xian Chengdu Shanghai",
+        1,
+      ],
+    ],
+  },
+  {
+    pillar: "Published first-China private journey",
+    hub: "beijing-xian-shanghai-private-tour-9-days",
+    articles: [
+      [
+        "beijing-xian-shanghai-private-tour-9-days",
+        "plan",
+        "Beijing Xi'an Shanghai private tour",
+        1,
+      ],
+      [
+        "what-private-support-changes-first-china-trip",
+        "evaluate",
+        "private China tour support",
         1,
       ],
     ],
@@ -190,6 +221,18 @@ const strategyGroups: Array<{
     articles: [
       ["china-family-itinerary-10-to-14-days", "plan", "China family itinerary", 1],
       ["china-honeymoon-itinerary-10-to-14-days", "plan", "China honeymoon itinerary", 1],
+      ["china-family-tour-with-pandas-12-days", "plan", "China family tour with pandas", 1],
+      ["best-age-for-china-family-tour", "evaluate", "best age for China family trip", 1],
+      ["china-family-tour-cost-four", "evaluate", "China family tour cost for four", 1],
+    ],
+  },
+  {
+    pillar: "Published luxury Yunnan journey",
+    hub: "luxury-yunnan-private-tour-10-days",
+    articles: [
+      ["luxury-yunnan-private-tour-10-days", "plan", "luxury Yunnan private tour", 1],
+      ["yunnan-altitude-private-tour", "answer", "Yunnan altitude itinerary", 1],
+      ["where-to-stay-yunnan-private-tour", "compare", "where to stay in Yunnan", 1],
     ],
   },
   {

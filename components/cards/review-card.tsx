@@ -14,7 +14,7 @@ export function ReviewCard({ review, variant = "medium", className }: ReviewCard
   return (
     <article
       className={cn(
-        "rounded-[1.75rem] border border-white/70 bg-white/66 p-5 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:p-6",
+        "rounded-[var(--radius-card)] border border-white/78 bg-white/62 p-5 shadow-[var(--shadow-glass)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(var(--glass-blur))_saturate(130%)] md:p-6",
         variant === "featured" && "md:p-8",
         className,
       )}

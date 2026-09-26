@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import { Mail, MessageCircle } from "lucide-react";
 
-import { FeatureCard } from "@/components/cards/feature-card";
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { ContentContainer } from "@/components/layout/content-container";
-import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Card } from "@/components/ui/card";
 import { siteConfig } from "@/config/site";
-import { homeNavItems, primaryAction } from "@/content/home/homepage";
+import { homeNavItems } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
 import { createMetadata } from "@/lib/seo/metadata";
 
@@ -24,32 +22,31 @@ export const metadata: Metadata = createMetadata({
 export default function ContactPage() {
   return (
     <PageContainer>
-      <SiteNavigation items={homeNavItems} cta={primaryAction} />
+      <SiteNavigation />
       <Section spacing="spacious">
         <ContentContainer size="lg" className="grid gap-10">
           <div className="max-w-4xl">
-            <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">Contact</p>
-            <h1 className="mt-5 text-4xl leading-tight font-semibold tracking-[-0.04em] md:text-6xl">
-              Tell us what would make China feel right for you.
-            </h1>
+            <p className="type-caption text-muted font-semibold">Contact</p>
+            <h1 className="type-page-title mt-5">Talk to a China specialist.</h1>
             <p className="text-muted mt-5 max-w-2xl text-base leading-7 md:text-lg">
-              Share your dates, who is traveling and what matters most. We will reply with clear,
-              personal recommendations for your trip.
+              Have a route in mind, a booking question or a specific request? Contact our China team
+              directly. Still exploring? Start with our short planning form.
             </p>
           </div>
           <Card className="grid gap-6 p-6 md:grid-cols-[1fr_auto] md:items-center">
             <div>
-              <h2 className="text-2xl font-semibold tracking-[-0.03em]">Plan your private trip</h2>
-              <p className="text-muted mt-2 text-sm leading-6">
+              <h2 className="type-card-title">Plan your private trip</h2>
+              <p className="text-muted mt-2 text-base leading-7">
                 Share the essential trip details through our secure planning form. A China
                 specialist will review them and reply within 24 hours.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-1">
-              <CtaButton href="/start-planning?source=/contact">Plan My Trip</CtaButton>
+              <CtaButton variant="outline" href="/start-planning?source=/contact">
+                Start planning
+              </CtaButton>
               <CtaButton
                 href="https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%20would%20like%20help%20planning%20a%20private%20journey%20in%20China."
-                variant="outline"
                 icon={<MessageCircle size={16} aria-hidden="true" />}
                 target="_blank"
                 rel="noreferrer"
@@ -58,26 +55,12 @@ export default function ContactPage() {
               </CtaButton>
             </div>
           </Card>
-          <GridSystem columns={3}>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="focus-visible:ring-action-focus block focus-visible:ring-2 focus-visible:outline-none"
-            >
-              <FeatureCard
-                icon={<Mail size={18} aria-hidden="true" />}
-                title="Email Our China Team"
-                description={siteConfig.email}
-              />
-            </a>
-            <FeatureCard
-              title="Best for"
-              description="Couples, families, solo travelers, older guests and private groups."
-            />
-            <FeatureCard
-              title="Response focus"
-              description="Route, hotels, daily pace, private services and the next useful step."
-            />
-          </GridSystem>
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="inline-flex min-h-11 items-center gap-3 self-start font-semibold text-[var(--color-forest)] underline underline-offset-4"
+          >
+            <Mail size={18} aria-hidden="true" /> Email our China team
+          </a>
         </ContentContainer>
       </Section>
       <SiteFooter

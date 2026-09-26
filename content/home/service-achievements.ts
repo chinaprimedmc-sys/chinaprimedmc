@@ -5,7 +5,7 @@ export const serviceAchievements = [
     display: "30+",
     suffix: "+",
     englishLabel: "Countries Served",
-    description: "Countries from which AVIORA has welcomed guests to China.",
+    description: "Travelers from 30+ countries.",
     delay: 0,
   },
   {
@@ -14,7 +14,7 @@ export const serviceAchievements = [
     display: "12,000+",
     suffix: "+",
     englishLabel: "Guests Hosted",
-    description: "Guests hosted across AVIORA private China journeys.",
+    description: "Private journeys across China.",
     delay: 120,
   },
   {
@@ -22,8 +22,8 @@ export const serviceAchievements = [
     target: 48,
     display: "48",
     suffix: "",
-    englishLabel: "Overseas Companies Served",
-    description: "Overseas companies supported with China travel services.",
+    englishLabel: "Companies Supported",
+    description: "Travel programs delivered in China.",
     delay: 240,
   },
 ] as const;

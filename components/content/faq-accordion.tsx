@@ -26,13 +26,11 @@ export function FaqAccordion({ categories }: FaqAccordionProps) {
               <Accordion.Item
                 key={item.question}
                 value={`${category.category}-${index}`}
-                className="border-border overflow-hidden rounded-[1.35rem] border bg-white"
+                className="border-border overflow-hidden rounded-xl border bg-white"
               >
                 <Accordion.Header>
                   <Accordion.Trigger className="group flex min-h-14 w-full items-center justify-between gap-5 p-5 text-left">
-                    <span className="text-base font-semibold tracking-[-0.015em]">
-                      {item.question}
-                    </span>
+                    <span className="text-base font-semibold">{item.question}</span>
                     <ChevronDown
                       size={18}
                       aria-hidden="true"

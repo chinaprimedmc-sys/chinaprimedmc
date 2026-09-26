@@ -31,9 +31,7 @@ export function HeroVideo({
             className="h-full w-full object-cover"
             src={videoSrc}
             poster={poster}
-            autoPlay
             muted
-            loop
             playsInline
             preload="metadata"
           />
@@ -42,13 +40,9 @@ export function HeroVideo({
       }
     >
       <div className="max-w-5xl text-center text-white">
-        <h1 className="text-5xl leading-[0.94] font-semibold tracking-[-0.04em] md:text-7xl lg:text-8xl">
-          {title}
-        </h1>
+        <h1 className="type-hero">{title}</h1>
         {subtitle ? (
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/84 md:text-xl md:leading-8">
-            {subtitle}
-          </p>
+          <p className="type-body mx-auto mt-6 max-w-2xl text-white/84">{subtitle}</p>
         ) : null}
         {primary || secondary ? (
           <div className="mt-8 flex flex-wrap justify-center gap-3">

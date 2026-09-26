@@ -10,10 +10,13 @@ const articleSource = (
   )
 ).join("\n");
 const editorialSource = await readFile("content/journal/editorial-upgrades.ts", "utf8");
+const manifest = await readFile("content/journal/public-manifest.ts", "utf8");
+const publicSlugs = unique([...manifest.matchAll(/^\s{2}"([^"]+)",$/gm)].map((match) => match[1]));
 
-const articleSlugs = unique(
+const sourceSlugs = unique(
   [...articleSource.matchAll(/\bslug:\s*"([^"]+)"/g)].map((match) => match[1]),
 );
+const articleSlugs = publicSlugs.filter((slug) => sourceSlugs.includes(slug));
 const upgrades = [
   ...editorialSource.matchAll(
     /^\s{2}"([^"]+)": \{\n\s{4}title: "([^"]+)",\n\s{4}seoTitle: "([^"]+)",/gm,
@@ -22,13 +25,17 @@ const upgrades = [
 const upgradeSlugs = upgrades.map(({ slug }) => slug);
 
 const missing = articleSlugs.filter((slug) => !upgradeSlugs.includes(slug));
-const unknown = upgradeSlugs.filter((slug) => !articleSlugs.includes(slug));
+const unknown = publicSlugs.filter((slug) => !sourceSlugs.includes(slug));
 const duplicateTitles = upgrades
   .map(({ title }) => title.toLowerCase())
   .filter((title, index, titles) => titles.indexOf(title) !== index);
-const invalidDisplayTitles = upgrades.filter(({ title }) => title.length < 28 || title.length > 88);
+const publicUpgrades = upgrades.filter(({ slug }) => publicSlugs.includes(slug));
+const invalidDisplayTitles = publicUpgrades.filter(
+  ({ title }) => title.length < 28 || title.length > 88,
+);
 const invalidSeoTitles = upgrades.filter(
-  ({ seoTitle }) => seoTitle.length < 28 || seoTitle.length > 65,
+  ({ slug, seoTitle }) =>
+    publicSlugs.includes(slug) && (seoTitle.length < 28 || seoTitle.length > 65),
 );
 
 if (
@@ -61,7 +68,7 @@ if (
 }
 
 console.log(
-  `Journal editorial audit passed: ${upgrades.length} distinct high-value titles with complete coverage.`,
+  `Journal editorial audit passed: ${publicUpgrades.length} public articles with complete editorial coverage.`,
 );
 
 function unique(items) {

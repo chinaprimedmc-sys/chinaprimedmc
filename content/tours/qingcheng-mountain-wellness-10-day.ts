@@ -35,7 +35,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
   seo: {
     title: "10-Day Private Wellness Retreat in China",
     description:
-      "A 10-day private luxury wellness retreat in Chengdu and Qingcheng Mountain with tai chi, Daoist culture, tea, forest walks, spa treatments and protected unscheduled time.",
+      "A private 10-day luxury wellness retreat in Chengdu and Qingcheng Mountain with tai chi, Daoist culture, tea, forest walks and spa treatments.",
     keywords: [
       "China wellness retreat",
       "luxury wellness retreat China",

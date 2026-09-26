@@ -34,7 +34,7 @@ export function LightboxGallery({
       <div
         className={cn(
           isStrip
-            ? "-mx-5 flex snap-x snap-mandatory [scrollbar-width:none] gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+            ? "-mx-4 flex snap-x snap-mandatory [scrollbar-width:none] gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
             : "grid grid-cols-2 gap-3 md:grid-cols-3",
         )}
         style={stripGridTemplate ? { gridTemplateColumns: stripGridTemplate } : undefined}

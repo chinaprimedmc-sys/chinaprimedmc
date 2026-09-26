@@ -1,0 +1,11 @@
+.codex-deploy
+.next
+.next-*-cache-stale-*
+.vercel/output
+.codex-screenshots
+node_modules
+.git
+coverage
+artifacts
+outputs
+product-intelligence/data/product-intelligence.sqlite

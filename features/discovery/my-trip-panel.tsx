@@ -12,21 +12,16 @@ export function MyTripPanel() {
   const removeTripItem = useAppStore((state) => state.removeTripItem);
   const clearTrip = useAppStore((state) => state.clearTrip);
 
-  const mailBody = encodeURIComponent(
-    `Hello AVIORA,\n\nI'd like help planning a private China trip based on these saved ideas:\n\n${tripItems
-      .map((item) => `- ${item.title} (${item.type})`)
-      .join("\n")}\n\nTravelers:\nDates:\nComfort level:\nKey concerns:\n`,
-  );
+  const planningHref =
+    "/start-planning?" +
+    new URLSearchParams({ journeys: JSON.stringify(tripItems.map((item) => item.title)) });
 
   return (
-    <aside
-      id="my-trip"
-      className="border-border rounded-[2rem] border bg-white/78 p-5 shadow-[var(--shadow-glass)] backdrop-blur-2xl"
-    >
+    <aside id="my-trip" className="border-border rounded-2xl border bg-white p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
           <Badge>My China Journey</Badge>
-          <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em]">Saved ideas</h2>
+          <h2 className="mt-4 text-2xl font-semibold">Saved ideas</h2>
         </div>
         {tripItems.length ? (
           <button
@@ -68,12 +63,15 @@ export function MyTripPanel() {
         )}
       </div>
 
+      <p className="text-muted mt-4 text-sm">
+        Saved on this device. Send a planning request to share these ideas with our team.
+      </p>
       <CtaButton
-        href={`mailto:chinaprimedmc@gmail.com?subject=Request%20My%20Customized%20China%20Journey&body=${mailBody}`}
+        href={planningHref}
         className="mt-5 w-full"
         icon={<ArrowUpRight size={16} aria-hidden="true" />}
       >
-        Request My Customized Journey
+        Start planning
       </CtaButton>
     </aside>
   );

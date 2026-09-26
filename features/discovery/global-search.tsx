@@ -48,7 +48,7 @@ export function GlobalSearch({
         <Dialog.Overlay className="fixed inset-0 z-[70] bg-black/28 backdrop-blur-sm" />
         <Dialog.Content className="fixed top-4 left-1/2 z-[71] grid max-h-[calc(100svh-2rem)] w-[min(94vw,56rem)] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-white/70 bg-white/82 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:top-20">
           <div className="border-border flex items-center justify-between gap-4 border-b p-4 md:p-5">
-            <Dialog.Title className="text-muted text-sm font-semibold tracking-[0.18em] uppercase">
+            <Dialog.Title className="text-muted text-sm font-semibold uppercase">
               Search China
             </Dialog.Title>
             <Dialog.Close
@@ -86,9 +86,7 @@ export function GlobalSearch({
             </form>
 
             <div className="grid gap-3">
-              <p className="text-xs font-bold tracking-[0.16em] uppercase opacity-60">
-                Smart suggestions
-              </p>
+              <p className="text-xs font-bold uppercase opacity-60">Smart suggestions</p>
               <div className="grid gap-2">
                 {suggestions.map((item) => (
                   <Dialog.Close asChild key={item.id}>
@@ -111,9 +109,7 @@ export function GlobalSearch({
 
             <div className="grid gap-3 md:grid-cols-2">
               <div>
-                <p className="text-xs font-bold tracking-[0.16em] uppercase opacity-60">
-                  Popular searches
-                </p>
+                <p className="text-xs font-bold uppercase opacity-60">Popular searches</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {popularSearches.map((term) => (
                     <Dialog.Close asChild key={term}>
@@ -126,9 +122,7 @@ export function GlobalSearch({
               </div>
 
               <div>
-                <p className="text-xs font-bold tracking-[0.16em] uppercase opacity-60">
-                  Recently viewed
-                </p>
+                <p className="text-xs font-bold uppercase opacity-60">Recently viewed</p>
                 <div className="mt-3 grid gap-2">
                   {recentlyViewed.length ? (
                     recentlyViewed.slice(0, 3).map((item) => (

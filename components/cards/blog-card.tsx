@@ -34,7 +34,7 @@ export function BlogCard({
     <Link
       href={href}
       className={cn(
-        "group ring-border grid overflow-hidden rounded-[1.75rem] bg-white shadow-sm ring-1 transition-[transform,box-shadow] duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] hover:-translate-y-1.5 hover:shadow-[0_28px_80px_rgba(43,42,37,0.14)] active:-translate-y-0.5 active:shadow-[0_18px_48px_rgba(43,42,37,0.1)] motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+        "group grid overflow-hidden rounded-[var(--radius-card)] border border-white/78 bg-white/62 shadow-[var(--shadow-glass)] backdrop-blur-2xl transition-[transform,box-shadow,background-color] duration-[var(--motion-duration-enter)] ease-[var(--motion-ease-out)] hover:-translate-y-1 hover:bg-white/74 hover:shadow-[var(--shadow-large)] active:-translate-y-0.5 active:shadow-[var(--shadow-medium)] motion-reduce:transition-none motion-reduce:hover:translate-y-0",
         variant === "featured" && "md:grid-cols-2",
         className,
       )}
@@ -63,7 +63,7 @@ export function BlogCard({
             {category ? <Badge>{category}</Badge> : null}
             {date ? <Badge className="bg-foreground/4 text-muted">{date}</Badge> : null}
           </div>
-          <h3 className="text-2xl leading-tight font-semibold tracking-[-0.02em]">{title}</h3>
+          <h3 className="type-card-title">{title}</h3>
           <p className="text-muted mt-3 text-sm leading-6">{excerpt}</p>
         </div>
         <span className="text-sm font-semibold">Read the guide</span>

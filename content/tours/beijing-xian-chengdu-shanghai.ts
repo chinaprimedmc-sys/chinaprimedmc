@@ -10,10 +10,10 @@ const slug = "beijing-xian-chengdu-shanghai-private-11-day-tour";
 
 export const beijingXianChengduShanghaiTour: Tour = {
   slug,
-  title: "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
+  title: "China, Considered: Beijing, Xi'an, Chengdu & Shanghai",
   subtitle:
-    "A privately guided first journey through imperial Beijing, historic Xi'an, Chengdu's pandas and contemporary Shanghai.",
-  duration: "11 Days / 10 Nights",
+    "A private first journey from Beijing's imperial scale to Xi'an's living history, Chengdu's everyday rhythm and Shanghai after dark.",
+  duration: "12–13 Days / 11–12 Nights",
   route: "Beijing, Xi'an, Chengdu, Shanghai",
   styles: ["First-time China", "Family", "Culture", "Food"],
   hero: {
@@ -23,9 +23,9 @@ export const beijingXianChengduShanghaiTour: Tour = {
     secondary: { label: "Plan My Trip", href: "#proposal" },
   },
   seo: {
-    title: "11-Day Beijing Xi'an Chengdu Shanghai Private Tour",
+    title: "Beijing, Xi'an, Chengdu & Shanghai Private Tour",
     description:
-      "Explore Beijing, Xi'an, Chengdu and Shanghai on an 11-day private China tour with expert guides, pandas, the Great Wall and flexible daily pacing.",
+      "A 12- or 13-day private China journey through Beijing, Xi'an, Chengdu and Shanghai, with local support, landmark visits, pandas and a protected free day.",
     keywords: [
       "Beijing Xi'an Chengdu Shanghai private tour",
       "11 day China private tour",
@@ -36,12 +36,12 @@ export const beijingXianChengduShanghaiTour: Tour = {
     ],
   },
   overview: {
-    pitch: "Four defining sides of China, connected through one privately supported journey.",
+    pitch: "One clear first journey through four distinct ways of experiencing China.",
     facts: [
       {
         label: "Duration",
-        value: "11 days / 10 nights",
-        helper: "Beijing 3 nights, Xi'an 2, Chengdu 2 and Shanghai 3.",
+        value: "12–13 days / 11–12 nights",
+        helper: "The considered version gives each city three nights and protects a full Free Day.",
       },
       {
         label: "Route",
@@ -72,9 +72,9 @@ export const beijingXianChengduShanghaiTour: Tour = {
   },
   planningSupport: {
     eyebrow: "Why this route works",
-    title: "Recognizable highlights without making every day feel the same.",
+    title: "The landmarks matter. So does the space between them.",
     description:
-      "Each city has a clear role in the journey. Beijing establishes imperial scale, Xi'an gives history depth, Chengdu changes the rhythm through pandas and food, and Shanghai brings the route into the present.",
+      "Beijing establishes imperial scale, Xi'an gives history depth, Chengdu changes the rhythm through pandas, tea and food, and Shanghai brings the route into the present. Choose the efficient 12-day rhythm or give the journey one more day to breathe.",
     items: [
       {
         label: "For first visits",
@@ -92,7 +92,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         helper: "Station, airport, luggage and local arrival details are planned together.",
       },
     ],
-    note: "This is a starting framework, not a fixed group departure. We adjust the route when your international flights, mobility, dietary needs or preferred pace require it.",
+    note: "This is a private journey framework, not a fixed group departure. Choose the 12-day essential rhythm or the 13-day considered rhythm, then shape the Free Day around your party.",
   },
   highlights: [
     {
@@ -133,7 +133,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Meet your driver for a private airport transfer, settle into your hotel and keep the first evening light after the flight.",
       image: fourCityAsset.arrival,
       hotel: "Beijing stay: hotel and room category confirmed in your private proposal",
-      meals: ["As confirmed in the written proposal"],
+      meals: ["Hotel breakfast"],
       transport: "Private airport transfer",
       activities: [
         {
@@ -159,7 +159,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Explore the Forbidden City and Beijing's historic axis with private storytelling, sensible walking blocks and time to understand what you are seeing.",
       image: fourCityAsset.beijingImperial,
       hotel: "Beijing stay: confirmed in your private proposal",
-      meals: ["Breakfast when included with the confirmed hotel"],
+      meals: ["Hotel breakfast; special welcome dinner"],
       transport: "Private vehicle and English-speaking guide",
       activities: [
         {
@@ -187,7 +187,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Spend an unhurried day at Mutianyu, with the Wall section and access method matched to your group's energy and the season.",
       image: fourCityAsset.greatWall,
       hotel: "Beijing stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
+      meals: ["Hotel breakfast"],
       transport: "Private return transfer to Mutianyu",
       activities: [
         {
@@ -215,7 +215,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Move from Beijing to Xi'an with private station transfers and rail details coordinated as one journey rather than separate bookings.",
       image: fourCityAsset.rail,
       hotel: "Xi'an stay: hotel and room category confirmed in your private proposal",
-      meals: ["Breakfast when included", "Meals during travel as confirmed"],
+      meals: ["Hotel breakfast"],
       transport: "Private station transfers and high-speed rail",
       activities: [
         {
@@ -238,27 +238,27 @@ export const beijingXianChengduShanghaiTour: Tour = {
       title: "Terracotta Warriors and Xi'an",
       destination: "Xi'an",
       summary:
-        "Give the Terracotta Warriors a focused private visit, then return to the city for its walls, food culture or an earlier finish.",
+        "See the Terracotta Warriors with the story brought to life, then return to Xi'an by public transport and walking for a closer look at the city beyond its headline sights.",
       image: fourCityAsset.xianTerracotta,
       hotel: "Xi'an stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
-      transport: "Private vehicle and English-speaking guide",
+      meals: ["Hotel breakfast"],
+      transport: "Public transport + walking with a local guide",
       activities: [
         {
           time: "Morning",
           title: "Terracotta Warriors",
           description:
-            "Explore the principal excavation pits with context on the Qin dynasty, conservation and the individual details of the figures.",
+            "Your guide helps you read the excavation pits in context, from the ambition of the Qin dynasty to the quiet details that make each figure feel individual.",
         },
         {
           time: "Afternoon",
-          title: "Choose the right Xi'an conclusion",
+          title: "See Xi'an as it is lived",
           description:
-            "Continue to the City Wall, a historic neighborhood or a food-focused experience according to interest and energy.",
+            "Ride with local residents, walk through the historic lanes and follow the city toward its food streets. Your guide takes care of the routes and small translations, leaving you free to notice the everyday Xi'an around you.",
         },
       ],
       guideNote:
-        "The museum can be busy. Timing, walking expectations and current ticket rules are reviewed for your date.",
+        "The public-transport journey is part of the experience, not a compromise. It brings you closer to how Xi'an actually moves, while your local guide makes every connection comfortable, clear and worthwhile.",
       coordinates: { latitude: 34.3841, longitude: 109.2785 },
     },
     {
@@ -269,14 +269,14 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Use the morning for one final layer of Xi'an before a managed high-speed rail journey to Chengdu.",
       image: fourCityAsset.xianSunset,
       hotel: "Chengdu stay: hotel and room category confirmed in your private proposal",
-      meals: ["Breakfast when included", "Meals as confirmed"],
+      meals: ["Hotel breakfast"],
       transport: "Private station transfers and high-speed rail",
       activities: [
         {
           time: "Morning",
           title: "A final Xi'an chapter",
           description:
-            "Choose the Giant Wild Goose Pagoda area, City Wall, Muslim food culture or a slower hotel departure.",
+            "Choose the Giant Wild Goose Pagoda area, City Wall or Muslim food culture, moving by metro, bus and on foot with a local guide who can open up the history, flavours and everyday stories along the way.",
         },
         {
           time: "Afternoon",
@@ -286,7 +286,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         },
       ],
       guideNote:
-        "Dietary and halal requirements should be shared before the proposal so restaurant research can be specific.",
+        "We keep the morning local and unhurried. When it is time for Chengdu, your station transfer is arranged separately, so you can enjoy the public-transport experience without worrying about the onward journey.",
       coordinates: { latitude: 30.5728, longitude: 104.0668 },
     },
     {
@@ -297,7 +297,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Visit the pandas during the more favorable morning window, then slow the day down through tea-house life and Sichuan food.",
       image: fourCityAsset.chengduPandas,
       hotel: "Chengdu stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
+      meals: ["Hotel breakfast"],
       transport: "Private vehicle and English-speaking guide",
       activities: [
         {
@@ -325,7 +325,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Take a domestic flight to Shanghai with private airport transfers and a relaxed first look at the city after arrival.",
       image: fourCityAsset.shanghaiArrival,
       hotel: "Shanghai stay: hotel and room category confirmed in your private proposal",
-      meals: ["Breakfast when included", "Meals during travel as confirmed"],
+      meals: ["Hotel breakfast"],
       transport: "Private airport transfers and domestic flight",
       activities: [
         {
@@ -351,7 +351,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Read the city across both banks of the Huangpu, then move into neighborhoods where Shanghai feels more personal.",
       image: fourCityAsset.shanghaiBund,
       hotel: "Shanghai stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
+      meals: ["Hotel breakfast"],
       transport: "Private vehicle and English-speaking guide as confirmed",
       activities: [
         {
@@ -378,7 +378,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Keep the final full day genuinely flexible: deepen Shanghai, visit a water town or travel privately to Suzhou.",
       image: fourCityAsset.waterTown,
       hotel: "Shanghai stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
+      meals: ["Hotel breakfast"],
       transport: "Private touring or rail plan according to the selected option",
       activities: [
         {
@@ -403,7 +403,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       summary:
         "Your driver collects you for a private airport transfer planned around the correct terminal, traffic and check-in time.",
       image: fourCityAsset.shanghaiDeparture,
-      meals: ["Breakfast when included with the confirmed hotel"],
+      meals: ["Hotel breakfast"],
       transport: "Private departure transfer",
       activities: [
         {
@@ -457,7 +457,8 @@ export const beijingXianChengduShanghaiTour: Tour = {
   ],
   included: [
     "Private itinerary design around your dates, travelers and preferred pace",
-    "Hotels and daily breakfasts listed in the final written proposal",
+    "Selected hotels with daily hotel breakfasts",
+    "One special welcome dinner on Day 2",
     "Private airport, station and sightseeing transfers listed in the final proposal",
     "English-speaking local guide service as confirmed for each destination",
     "High-speed rail and domestic flight arrangements listed in the final proposal",
@@ -531,7 +532,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
     stops: [
       {
         name: "Beijing",
-        days: "Days 1-4",
+        days: "Days 1-3",
         description: "Arrival, imperial Beijing and a privately paced Great Wall day.",
         coordinates: { latitude: 39.9042, longitude: 116.4074 },
       },
@@ -543,13 +544,13 @@ export const beijingXianChengduShanghaiTour: Tour = {
       },
       {
         name: "Chengdu",
-        days: "Days 6-8",
+        days: "Days 7-9",
         description: "Giant pandas, tea-house life and Sichuan flavors.",
         coordinates: { latitude: 30.5728, longitude: 104.0668 },
       },
       {
         name: "Shanghai",
-        days: "Days 8-11",
+        days: "Days 10-13",
         description: "Historic waterfront, contemporary city life and a flexible final day.",
         coordinates: { latitude: 31.2304, longitude: 121.4737 },
       },
@@ -570,7 +571,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
     {
       question: "Is this a good first trip to China?",
       answer:
-        "Yes. Beijing, Xi'an, Chengdu and Shanghai provide a clear introduction to imperial history, ancient heritage, pandas, regional food and contemporary China without requiring travelers to understand many lesser-known destinations first.",
+        "Yes. Beijing, Xi'an, Chengdu and Shanghai provide a clear first introduction to imperial history, ancient heritage, regional food, pandas and contemporary China. The 13-day version adds more recovery and local-life space between the major landmarks.",
     },
     {
       question: "Can this journey work for children or older parents?",
@@ -590,7 +591,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
     {
       question: "Can we replace the final Shanghai day with Suzhou or a water town?",
       answer:
-        "Yes. Day 10 can remain in Shanghai or become a private visit to Suzhou or a suitable water town. We recommend the option after considering the season, weekday and your preferred pace.",
+        "Yes. The 12-day version keeps one Free Day in Xi'an; the 13-day version protects a full Free Day in Chengdu. Shanghai can remain local or become a private visit to Suzhou or a suitable water town after we consider the season, weekday and your preferred pace.",
     },
     {
       question: "Are there compulsory shopping stops?",
@@ -650,12 +651,12 @@ export const beijingXianChengduShanghaiTour: Tour = {
   },
   inquiry: {
     emailHref:
-      "mailto:chinaprimedmc@gmail.com?subject=11-Day%20Beijing%20Xi%27an%20Chengdu%20Shanghai%20Private%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20tailored%20proposal%20for%20the%2011-day%20Beijing%2C%20Xi%27an%2C%20Chengdu%20and%20Shanghai%20private%20tour.%0A%0ATravelers%3A%0ADates%3A%0AHotel%20preference%3A%0ADietary%20or%20mobility%20needs%3A%0AQuestions%3A%0A",
+      "mailto:chinaprimedmc@gmail.com?subject=China%20Considered%20Private%20Journey&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20proposal%20for%20the%2012-%20or%2013-day%20Beijing%2C%20Xi%27an%2C%20Chengdu%20and%20Shanghai%20private%20journey.%0A%0ATravelers%3A%0ADates%3A%0APace%20preference%3A%0AFree%20Day%20service%3A%0AHotel%20preference%3A%0AQuestions%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20tailored%20proposal%20for%20the%2011-day%20Beijing%2C%20Xi%27an%2C%20Chengdu%20and%20Shanghai%20private%20tour.",
+      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20proposal%20for%20the%2012-%20or%2013-day%20Beijing%2C%20Xi%27an%2C%20Chengdu%20and%20Shanghai%20private%20journey.",
     scheduleCallHref: "tel:+447985052302",
     defaultMessage:
-      "I am interested in the 11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour. Please recommend the right hotels, transport and daily pace for my group.",
+      "I am interested in the 12- or 13-day China Considered journey. Please recommend the right hotels, transport, pace and Free Day service for my group.",
   },
 };
 

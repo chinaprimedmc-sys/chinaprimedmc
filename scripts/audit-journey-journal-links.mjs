@@ -4,12 +4,21 @@ const linkSource = fs.readFileSync("content/journal/journey-links.ts", "utf8");
 const catalogSource = fs.readFileSync("content/tours/catalog.ts", "utf8");
 const publishedSource = fs.readFileSync("content/journal/published.ts", "utf8");
 const commercialSource = fs.readFileSync("content/journal/commercial.ts", "utf8");
+const seniorSource = fs.readFileSync("content/journal/senior-cluster.ts", "utf8");
+const manifestSource = fs.readFileSync("content/journal/public-manifest.ts", "utf8");
 
-const articleSlugs = unique([
+const sourceSlugs = new Set([
   ...matches(publishedSource, /slug:\s*"([^"]+)"/g),
   ...matches(commercialSource, /slug:\s*"([^"]+)"/g),
-]).filter((slug) => !["string"].includes(slug));
-const linkedArticles = new Set(matches(linkSource, /^\s+"([^"]+)",?$/gm));
+  ...matches(seniorSource, /slug:\s*"([^"]+)"/g),
+]);
+const articleSlugs = matches(manifestSource, /^\s{2}"([^"]+)",$/gm).filter((slug) =>
+  sourceSlugs.has(slug),
+);
+const linkedArticles = new Set([
+  ...matches(linkSource, /^\s+"([^"]+)",?$/gm),
+  ...matches(linkSource, /^\s+"([^"]+)":\s*\{/gm),
+]);
 const journeyReferences = unique([...matches(linkSource, /const\s+[A-Z_]+\s*=\s*"([^"]+)"/g)]);
 const catalogSlugs = new Set([...matches(catalogSource, /tour\.slug\s*===\s*"([^"]+)"/g)]);
 

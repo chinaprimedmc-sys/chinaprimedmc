@@ -1,7 +1,7 @@
 .closing {
   background: #fff;
   color: var(--text-primary);
-  padding-inline: clamp(1.5rem, 5vw, 5rem);
+  padding-inline: var(--page-gutter);
 }
 .inner {
   display: grid;
@@ -9,8 +9,8 @@
   margin-inline: auto;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  gap: clamp(2.5rem, 7vw, 7rem);
-  padding-block: clamp(4rem, 7vw, 6.5rem);
+  gap: 4rem;
+  padding-block: var(--space-section-default);
   border-top: 1px solid rgba(25, 36, 33, 0.14);
 }
 .copy > p {
@@ -24,11 +24,19 @@
   max-width: 48rem;
   margin-top: 0.85rem;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.4vw, 3.25rem);
-  font-weight: 500;
+  font-size: var(--type-section-title-size);
+  font-weight: var(--type-section-title-weight);
   line-height: 1.14;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   text-wrap: balance;
+}
+.closing[data-intent="tours"] .copy h2 {
+  font-family: var(--font-body);
+  font-size: var(--type-section-title-size);
+  font-weight: var(--type-section-title-weight);
+  letter-spacing: 0;
+  line-height: 1.12;
+  text-transform: none;
 }
 .copy > span {
   display: block;
@@ -60,9 +68,11 @@
     border-color 180ms ease;
 }
 .primary {
-  border: 1px solid #253330;
-  background: #253330;
-  color: #fff;
+  border: 1px solid var(--color-line-strong);
+  background: var(--glass-surface);
+  box-shadow: var(--button-glass-shadow);
+  color: var(--color-ink);
+  backdrop-filter: blur(16px) saturate(112%);
 }
 .whatsapp {
   border: 1px solid #b9c5c0;
@@ -77,7 +87,8 @@
   transform: translateY(-2px);
 }
 .primary:hover {
-  background: #17231f;
+  background: #fff;
+  box-shadow: var(--button-glass-shadow-hover);
 }
 .whatsapp:hover {
   border-color: #65736d;
@@ -97,34 +108,34 @@
   outline-offset: 4px;
 }
 .blue .copy > p {
-  color: #1b3a5c;
+  color: var(--color-muted);
 }
 .blue {
-  color: #122b43;
+  color: var(--color-ink);
 }
 .blue .copy > span,
 .blue .email {
-  color: #5e6b78;
+  color: var(--color-muted);
 }
 .blue .inner {
-  border-top-color: rgba(27, 58, 92, 0.14);
+  border-top-color: var(--color-line);
 }
 .blue .primary {
-  border-color: #1b3a5c;
-  background: #1b3a5c;
+  border-color: var(--color-line-strong);
+  background: var(--glass-surface);
 }
 .blue .primary:hover {
-  background: #142f4c;
+  background: #fff;
 }
 .blue .whatsapp {
-  border-color: rgba(27, 58, 92, 0.32);
-  color: #1b3a5c;
+  border-color: var(--color-line);
+  color: var(--color-ink);
 }
 .blue .whatsapp:hover {
-  border-color: #1b3a5c;
+  border-color: var(--color-line-strong);
 }
 .blue a:focus-visible {
-  outline-color: #1b3a5c;
+  outline-color: var(--color-focus);
 }
 @media (max-width: 800px) {
   .inner {

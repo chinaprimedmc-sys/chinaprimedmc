@@ -3,12 +3,12 @@ import { JournalHubTemplate } from "@/features/journal/journal-hub-template";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
-import { journalArticles as localJournalArticles } from "@/content/journal";
+import { journalArticles as localJournalArticles, journalSummaries } from "@/content/journal";
 
 export const metadata = createMetadata({
-  title: "China Travel Guides and Planning Journal",
+  title: "China Travel Planning Guides | AVIORA Journal",
   description:
-    "Practical China travel guides covering routes, seasons, family trips, food, culture, hotels and private touring.",
+    "China travel planning guides from AVIORA's China-based private journey team, covering routes, timing, entry, transport, payments and traveler fit.",
   path: "/journal",
 });
 
@@ -45,12 +45,10 @@ export default async function JournalPage() {
           "@type": "Blog",
           name: "AVIORA China Travel Journal",
           description:
-            "Practical China travel guides covering routes, seasons, family trips, food, culture, hotels and private touring.",
+            "China travel planning guidance from AVIORA's China-based private journey team, covering route design, timing, entry, transport, payments and traveler fit.",
           url: new URL("/journal", siteConfig.url).toString(),
           publisher: {
-            "@type": "TravelAgency",
-            name: siteConfig.name,
-            url: siteConfig.url,
+            "@id": `${siteConfig.url}/#organization`,
           },
           blogPost: latest.map((article) => ({
             "@type": "BlogPosting",
@@ -66,13 +64,44 @@ export default async function JournalPage() {
         }}
       />
       <JsonLd
+        id="journal-collection-schema"
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "AVIORA China Travel Journal",
+          description:
+            "A China travel decision resource for international travelers planning private journeys, with guidance on route design, destination fit and practical preparation.",
+          url: new URL("/journal", siteConfig.url).toString(),
+          about: [
+            { "@type": "Thing", name: "Private travel in China" },
+            { "@type": "Thing", name: "China itinerary planning" },
+            { "@type": "Thing", name: "China travel preparation" },
+          ],
+          audience: {
+            "@type": "Audience",
+            audienceType: "International travelers planning private journeys in China",
+          },
+          publisher: { "@id": `${siteConfig.url}/#organization` },
+          mainEntity: {
+            "@type": "ItemList",
+            numberOfItems: latest.length,
+            itemListElement: latest.map((article, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              url: new URL(`/journal/${article.slug}`, siteConfig.url).toString(),
+              name: article.title,
+            })),
+          },
+        }}
+      />
+      <JsonLd
         id="journal-breadcrumb-schema"
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
           { name: "Travel Journal", path: "/journal" },
         ])}
       />
-      <JournalHubTemplate featured={featured} latest={latest} />
+      <JournalHubTemplate featured={featured} articles={journalSummaries} />
     </>
   );
 }

@@ -2,10 +2,10 @@ import { ArrowUpRight } from "lucide-react";
 
 import { OptimizedImage } from "@/components/media/optimized-image";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
-import { CtaButton, TrackedLink } from "@/components/cta";
+import { TrackedLink } from "@/components/cta";
 import styles from "./journey-bridge.module.css";
 
-type JourneyBridgeData = {
+export type JourneyBridgeData = {
   journey: JourneyCatalogItem;
   alternatives: JourneyCatalogItem[];
   eyebrow: string;
@@ -46,11 +46,7 @@ export function JournalJourneyBridge({ bridge }: { bridge: JourneyBridgeData }) 
     (journey.image.height ?? 0) > (journey.image.width ?? 0);
 
   return (
-    <section
-      className={`${styles.section} journal-breathing-divider journal-breathing-divider--bottom`}
-      id="related-tours"
-      data-journey-slug={journey.slug}
-    >
+    <section className={styles.section} id="related-tours" data-journey-slug={journey.slug}>
       <div className={styles.inner}>
         <div
           className={`${styles.media} ${imageIsPortrait ? styles.mediaPortrait : styles.mediaLandscape}`}
@@ -60,58 +56,63 @@ export function JournalJourneyBridge({ bridge }: { bridge: JourneyBridgeData }) 
             alt={journey.image.alt}
             width={journey.image.width ?? 1600}
             height={journey.image.height ?? 1067}
-            sizes="(min-width: 1024px) 52vw, 100vw"
+            sizes="(min-width: 1024px) 50vw, 100vw"
             objectPosition={journey.image.objectPosition}
           />
         </div>
         <div className={styles.copy}>
-          <p className={styles.eyebrow}>{bridge.eyebrow}</p>
+          <p className={styles.eyebrow}>Journey In Context</p>
           <h2>{bridge.title}</h2>
+          <p className={styles.route}>{journey.title}</p>
           <p className={styles.description}>{bridge.description}</p>
-          <div className={styles.promise}>
-            <strong>Arrive in China. We handle the journey.</strong>
-            <span>
-              From airport pickup to departure day, the confirmed itinerary is coordinated by our
-              China-based team.
-            </span>
-          </div>
-          <dl className={styles.facts}>
+          <dl className={styles.context}>
             <div>
-              <dt>Route</dt>
-              <dd>{journey.routeLabel}</dd>
+              <dt>Why It Works</dt>
+              <dd>{journey.hook}</dd>
             </div>
             <div>
-              <dt>Suggested length</dt>
-              <dd>{journey.durationLabel}</dd>
+              <dt>Who It Suits</dt>
+              <dd>{journey.bestForSummary}</dd>
+            </div>
+            <div>
+              <dt>The Trade-Off</dt>
+              <dd>
+                {journey.planningNote ??
+                  `${journey.paceLabel} pacing with ${journey.transportSummary.toLowerCase()}.`}
+              </dd>
+            </div>
+            <div>
+              <dt>We Would Change This When</dt>
+              <dd>
+                Your available nights, walking comfort or preferred hotel rhythm call for fewer
+                stops and more time in each place.
+              </dd>
             </div>
           </dl>
-          <ul className={styles.valueList} aria-label="Why travelers choose this journey">
-            <li>Airport pickup + transfers</li>
-            <li>4/5-star hotels + private guides</li>
-            <li>Tickets + China-based support</li>
-          </ul>
           <div className={styles.actions}>
-            <CtaButton
+            <TrackedLink
               href={journey.href}
-              size="sm"
-              icon={<ArrowUpRight size={16} aria-hidden="true" />}
               className={styles.primaryAction}
-              aria-label={bridge.journeyLabel}
-              data-cta-placement="journal-primary-journey"
+              trackingLabel="See This Journey"
+              trackingPlacement="journal-primary-journey"
+              journeySlug={journey.slug}
+              data-journal-event="related_journey_open"
+              data-placement="journey-in-context"
               data-journey-slug={journey.slug}
             >
-              {bridge.journeyLabel}
-            </CtaButton>
+              See This Journey <ArrowUpRight size={15} aria-hidden="true" />
+            </TrackedLink>
             <TrackedLink
               href={bridge.planningHref}
               className={styles.planningLink}
-              trackingLabel={bridge.planningLabel}
+              trackingLabel="Ask Us To Adapt It"
               trackingPlacement="journal-plan-journey"
               journeySlug={journey.slug}
-              data-cta-placement="journal-plan-journey"
+              data-journal-event="planning_start"
+              data-placement="journey-in-context"
               data-journey-slug={journey.slug}
             >
-              {bridge.planningLabel}
+              Ask Us To Adapt It
               <ArrowUpRight size={15} aria-hidden="true" />
             </TrackedLink>
           </div>

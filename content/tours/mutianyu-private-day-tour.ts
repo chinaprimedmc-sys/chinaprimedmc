@@ -30,7 +30,7 @@ export const mutianyuPrivateDayTour: Tour = {
   seo: {
     title: "Private Mutianyu Great Wall Day Tour from Beijing",
     description:
-      "A private Mutianyu Great Wall day tour from your Beijing hotel with an English-speaking guide, private vehicle, tickets, no shopping and clear optional cable-car or toboggan choices.",
+      "Private Mutianyu Great Wall day tour from Beijing with hotel pickup, English-speaking guide, private driver, tickets and no shopping stops.",
     keywords: [
       "private Mutianyu Great Wall tour",
       "Mutianyu Great Wall private day tour",

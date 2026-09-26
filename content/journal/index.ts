@@ -1,6 +1,7 @@
 import { publishedJournalArticles } from "@/content/journal/published";
 import { applyJournalEditorialUpgrade } from "@/content/journal/editorial-upgrades";
-import type { JournalArticle, JournalCategory, JournalTag } from "@/types/journal";
+import { PUBLIC_JOURNAL_SLUGS } from "@/content/journal/public-manifest";
+import type { JournalArticle, JournalCategory, JournalSummary, JournalTag } from "@/types/journal";
 
 export const journalCategories: JournalCategory[] = [
   "Destinations",
@@ -44,16 +45,32 @@ export const journalTags: JournalTag[] = [
   { slug: "singapore", label: "Singapore", type: "theme" },
 ];
 
-const removedJournalSlugs = new Set([
-  "9-days-or-11-days-in-china",
-  "is-private-china-tour-worth-it",
-  "china-honeymoon-itinerary-10-to-14-days",
-  "china-travel-safety-for-foreign-visitors",
-]);
+const publicJournalSlugs = new Set<string>(PUBLIC_JOURNAL_SLUGS);
 
 export const journalArticles: JournalArticle[] = publishedJournalArticles
-  .filter((article) => !removedJournalSlugs.has(article.slug))
+  .filter((article) => publicJournalSlugs.has(article.slug))
   .map(applyJournalEditorialUpgrade);
+
+if (journalArticles.length !== PUBLIC_JOURNAL_SLUGS.length) {
+  throw new Error(
+    `Journal manifest mismatch: expected ${PUBLIC_JOURNAL_SLUGS.length} public articles, found ${journalArticles.length}.`,
+  );
+}
+
+/** 首页只使用摘要，避免把每篇文章的完整正文发送到客户端。 */
+export const journalSummaries: JournalSummary[] = journalArticles.map((article) => ({
+  slug: article.slug,
+  title: article.title,
+  excerpt: article.excerpt,
+  category: article.category,
+  tags: article.tags,
+  image: article.hero.mode === "text" ? undefined : article.hero.image,
+  publishedAt: article.publishedAt,
+  updatedAt: article.updatedAt,
+  readingTime: article.readingTime,
+  featured: article.featured,
+  editorPick: article.editorPick,
+}));
 
 export function getArticleBySlug(slug: string) {
   return journalArticles.find((article) => article.slug === slug);

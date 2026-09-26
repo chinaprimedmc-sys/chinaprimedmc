@@ -13,6 +13,15 @@ type SearchPageProps = {
     family?: string;
     private?: string;
     q?: string;
+    query?: string;
+    format?: string;
+    scope?: string;
+    destination?: string;
+    duration?: string;
+    travelStyle?: string;
+    need?: string;
+    focus?: string;
+    sort?: string;
     region?: string;
     style?: string;
     type?: string;
@@ -33,15 +42,13 @@ export function generateMetadata(): Metadata {
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const params = await searchParams;
-  const query = normalizeSearchParam(params.q);
+  const query = normalizeSearchParam(params.query ?? params.q);
   const type = normalizeType(params.type);
-  const filters = {
-    ...(params.region ? { region: [params.region] } : {}),
-    ...(params.style ? { travelStyle: [params.style] } : {}),
-    ...(params.days ? { days: [params.days] } : {}),
-    ...(params.family === "true" ? { familyFriendly: true } : {}),
-    ...(params.private === "true" ? { privateTour: true } : {}),
-  };
+  const initialQueryString = new URLSearchParams(
+    Object.entries(params).filter(
+      (entry): entry is [string, string] => typeof entry[1] === "string",
+    ),
+  ).toString();
 
   return (
     <>
@@ -68,7 +75,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           { name: "Search", path: "/search" },
         ])}
       />
-      <SearchResultsTemplate query={query} type={type} filters={filters} />
+      <SearchResultsTemplate query={query} type={type} initialQueryString={initialQueryString} />
     </>
   );
 }

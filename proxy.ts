@@ -14,13 +14,18 @@ const retiredAdminPaths = new Set([
   "/admin/settings",
 ]);
 
+// 兼容外部分享过的短链接，统一导向唯一的规范行程 URL。
+const legacyPublicRedirects = new Map([
+  ["/tours/private-shanghai-day-tour", "/tours/private-shanghai-day-tour-guide-driver"],
+]);
+
 function isProtectedPath(pathname: string) {
   return protectedPrefixes.some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   );
 }
 
-function buildContentSecurityPolicy(nonce = "") {
+function buildContentSecurityPolicy(nonce = "", upgradeInsecureRequests = true) {
   const r2Source = getR2Source();
   const development = process.env.NODE_ENV !== "production";
   return [
@@ -36,25 +41,27 @@ function buildContentSecurityPolicy(nonce = "") {
     `connect-src 'self' mailto: https://*.r2.cloudflarestorage.com https://challenges.cloudflare.com${development ? " ws: wss:" : ""}`,
     "frame-src 'self' https://challenges.cloudflare.com",
     "worker-src 'self' blob:",
-    "upgrade-insecure-requests",
+    ...(upgradeInsecureRequests ? ["upgrade-insecure-requests"] : []),
   ].join("; ");
 }
 
-function applySecurityHeaders(response: NextResponse, csp: string) {
+function applySecurityHeaders(response: NextResponse, csp: string, secureRequest = true) {
   response.headers.set("Content-Security-Policy", csp);
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set("X-Content-Type-Options", "nosniff");
   response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
   response.headers.set("X-DNS-Prefetch-Control", "on");
-  response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  if (secureRequest) {
+    response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  }
   response.headers.set("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
   response.headers.set("Origin-Agent-Cluster", "?1");
 
   return response;
 }
 
-function unauthorizedAdminResponse(request: NextRequest, csp: string) {
+function unauthorizedAdminResponse(request: NextRequest, csp: string, secureRequest: boolean) {
   const isApi = request.nextUrl.pathname.startsWith("/api/");
   const denied = isApi
     ? NextResponse.json({ error: "Admin access required." }, { status: 401 })
@@ -62,16 +69,25 @@ function unauthorizedAdminResponse(request: NextRequest, csp: string) {
         new URL(`/admin/login?next=${encodeURIComponent(request.nextUrl.pathname)}`, request.url),
       );
   denied.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
-  return applySecurityHeaders(denied, csp);
+  return applySecurityHeaders(denied, csp, secureRequest);
 }
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const nonce = createNonce();
-  const csp = buildContentSecurityPolicy(nonce);
+  // 本地生产预览仍使用 HTTP，不能把同源图片强制升级成不存在的 HTTPS。
+  const secureRequest = getRequestProtocol(request) === "https";
+  const csp = buildContentSecurityPolicy(nonce, secureRequest);
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("Content-Security-Policy", csp);
   requestHeaders.set("x-nonce", nonce);
+
+  const canonicalPath = legacyPublicRedirects.get(pathname);
+  if (canonicalPath) {
+    const redirect = NextResponse.redirect(new URL(canonicalPath, request.url), 308);
+    redirect.headers.set("Cache-Control", "public, max-age=3600");
+    return applySecurityHeaders(redirect, csp, secureRequest);
+  }
 
   if (!isKnownPublicDetailPath(pathname)) {
     const notFoundResponse = NextResponse.rewrite(
@@ -82,7 +98,7 @@ export async function proxy(request: NextRequest) {
       },
     );
     notFoundResponse.headers.set("X-Robots-Tag", "noindex, follow");
-    return applySecurityHeaders(notFoundResponse, csp);
+    return applySecurityHeaders(notFoundResponse, csp, secureRequest);
   }
 
   const response = NextResponse.next({ request: { headers: requestHeaders } });
@@ -93,7 +109,11 @@ export async function proxy(request: NextRequest) {
   }
 
   if (retiredAdminPaths.has(pathname)) {
-    return applySecurityHeaders(NextResponse.redirect(new URL("/admin", request.url)), csp);
+    return applySecurityHeaders(
+      NextResponse.redirect(new URL("/admin", request.url)),
+      csp,
+      secureRequest,
+    );
   }
 
   if (isProtectedPath(pathname) && !publicAdminPaths.has(pathname)) {
@@ -102,7 +122,7 @@ export async function proxy(request: NextRequest) {
     );
 
     if (!session) {
-      return unauthorizedAdminResponse(request, csp);
+      return unauthorizedAdminResponse(request, csp, secureRequest);
     }
     if (
       pathname.startsWith("/api/admin") &&
@@ -112,11 +132,19 @@ export async function proxy(request: NextRequest) {
       return applySecurityHeaders(
         NextResponse.json({ error: "Invalid request origin." }, { status: 403 }),
         csp,
+        secureRequest,
       );
     }
   }
 
-  return applySecurityHeaders(response, csp);
+  return applySecurityHeaders(response, csp, secureRequest);
+}
+
+function getRequestProtocol(request: NextRequest) {
+  return (
+    request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim() ??
+    request.nextUrl.protocol.slice(0, -1)
+  );
 }
 
 function createNonce() {

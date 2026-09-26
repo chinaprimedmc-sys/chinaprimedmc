@@ -12,7 +12,7 @@ type LegacyFooterProps = {
   columns?: Array<{ title: string; items: NavigationItem[] }>;
   email?: string;
   social?: Array<{ label: string; href: string }>;
-  tone?: "default" | "blue";
+  tone?: "default" | "blue" | "white";
   variant?: "consumer" | "trade";
 };
 
@@ -79,7 +79,7 @@ export function SiteFooter({
   const footerGroups = trade ? tradeFooterGroups : consumerFooterGroups;
 
   return (
-    <footer className={`${styles.footer} ${tone === "blue" ? styles.blue : ""}`}>
+    <footer className={styles.footer} data-footer-tone={tone}>
       <div className={styles.inner}>
         <div className={styles.rule} aria-hidden="true" />
         <div className={styles.main}>

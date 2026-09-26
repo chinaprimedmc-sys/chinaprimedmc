@@ -16,7 +16,9 @@ import { BlogCard } from "@/components/cards/blog-card";
 import { DestinationCard } from "@/components/cards/destination-card";
 import { ExperienceCard } from "@/components/cards/experience-card";
 import { FeatureCard } from "@/components/cards/feature-card";
-import { TourCard } from "@/components/cards/tour-card";
+import { JourneyCard } from "@/components/tours/journey-card";
+import { journeyCatalog } from "@/content/tours/catalog";
+import Link from "next/link";
 import { HeroTrustPills, QuickFactCard, SectionHeader } from "@/components/content";
 import { CtaCard } from "@/components/cta/cta-card";
 import { FloatingCta } from "@/components/cta/floating-cta";
@@ -30,7 +32,6 @@ import { GridSystem } from "@/components/layout/grid-system";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { Badge } from "@/components/ui/badge";
-import { homeNavItems } from "@/content/home/homepage";
 import { Section } from "@/design-system/primitives/section";
 import { RecordViewed } from "@/features/discovery/record-viewed";
 import type { Destination, DestinationTip } from "@/types/destination";
@@ -52,7 +53,7 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           href: `/destinations/${destination.slug}`,
         }}
       />
-      <SiteNavigation items={homeNavItems} cta={{ label: "Plan My Trip", href: inquiryHref }} />
+      <SiteNavigation />
 
       <HeroLargeImage
         eyebrow={destination.hero.eyebrow ?? "Destination guide"}
@@ -100,6 +101,14 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
         </ContentContainer>
       </Section>
 
+      <div className="mx-auto max-w-6xl px-6">
+        <Link
+          href={"/tours?query=" + encodeURIComponent(destination.name) + "#journey-catalog"}
+          className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4"
+        >
+          Explore journeys through {destination.name}
+        </Link>
+      </div>
       <Section id="best-time" spacing="default" className="bg-white">
         <ContentContainer size="xl" className="grid gap-8">
           <SectionHeader
@@ -196,20 +205,17 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
             description="See private route ideas that include this destination, with the pace and details shaped around your travelers."
           />
           <GridSystem columns={3}>
-            {destination.related.journeys.map((tour) => (
-              <TourCard
-                key={tour.title}
-                title={tour.title}
-                description={tour.description}
-                image={tour.image}
-                badges={tour.tags}
-                meta={[
-                  { label: "Route", value: tour.route },
-                  { label: "Length", value: tour.duration },
-                ]}
-                action={{ label: "View Journey", href: tour.href }}
-              />
-            ))}
+            {journeyCatalog
+              .filter((journey) =>
+                journey.destinationFilters.some(
+                  (city) =>
+                    city.toLowerCase().replaceAll("'", "") ===
+                    destination.name.toLowerCase().replaceAll("'", ""),
+                ),
+              )
+              .map((journey) => (
+                <JourneyCard key={journey.slug} item={journey} />
+              ))}
           </GridSystem>
         </ContentContainer>
       </Section>

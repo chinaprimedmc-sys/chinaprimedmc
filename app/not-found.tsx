@@ -16,7 +16,7 @@ export default function NotFound() {
       <Section spacing="screen" className="grid place-items-center">
         <Container size="sm" className="grid gap-4 text-center">
           <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">404</p>
-          <Typography as="h1" variant="heading">
+          <Typography as="h1" variant="pageTitle">
             This route has moved on.
           </Typography>
           <Typography>

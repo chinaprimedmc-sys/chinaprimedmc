@@ -59,10 +59,9 @@ export function CookieConsent() {
           </div>
           <div className={styles.bannerCopy}>
             <p className={styles.eyebrow}>Your Privacy</p>
-            <h2>Choose How This Site Uses Data</h2>
+            <h2>Privacy choices</h2>
             <p>
-              Necessary storage keeps forms and security working. With your permission, anonymous
-              analytics helps us improve the website. Read our{" "}
+              Essential storage keeps this site working. Analytics is optional.{" "}
               <Link href="/cookies">Cookie Policy</Link>.
             </p>
           </div>
@@ -77,10 +76,11 @@ export function CookieConsent() {
             <button
               type="button"
               className={styles.preferencesButton}
+              aria-label="Manage cookie preferences"
               onClick={() => setPreferencesOpen(true)}
             >
               <Settings2 aria-hidden="true" />
-              Manage Preferences
+              Settings
             </button>
             <button
               type="button"

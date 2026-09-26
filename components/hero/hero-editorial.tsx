@@ -29,12 +29,8 @@ export function HeroEditorial({
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="text-5xl leading-[0.94] font-semibold tracking-[-0.04em] md:text-7xl">
-            {title}
-          </h1>
-          {subtitle ? (
-            <p className="text-muted mt-6 max-w-xl text-base leading-7 md:text-lg">{subtitle}</p>
-          ) : null}
+          <h1 className="type-hero">{title}</h1>
+          {subtitle ? <p className="type-body text-muted mt-6 max-w-xl">{subtitle}</p> : null}
           {primary || secondary ? (
             <div className="mt-8 flex flex-wrap gap-3">
               {primary ? <CtaButton href={primary.href}>{primary.label}</CtaButton> : null}

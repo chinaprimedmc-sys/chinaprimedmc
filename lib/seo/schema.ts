@@ -44,24 +44,30 @@ export function organizationSchema() {
       availableLanguage: ["English", "Chinese"],
     },
     sameAs: siteConfig.socials,
+    brand: {
+      "@type": "Brand",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "AVIORA private China travel services",
+      itemListElement: [
+        "Tailor-made private multi-city journeys",
+        "Private day tours",
+        "Private guide and driver coordination",
+        "Existing-plan support",
+      ].map((name) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name },
+      })),
+    },
     additionalProperty: serviceAchievements.map((achievement) => ({
       "@type": "PropertyValue",
       name: achievement.englishLabel,
       value: achievement.display,
       description: achievement.description,
     })),
-    subjectOf: {
-      "@type": "NewsArticle",
-      headline: "MATTA Connect gains traction as B2B platform",
-      url: "https://www.ttgasia.com/2026/07/30/matta-connect-gains-traction-as-b2b-platform/",
-      datePublished: "2026-07-30",
-      publisher: {
-        "@type": "Organization",
-        name: "TTG Asia",
-        url: "https://www.ttgasia.com/",
-      },
-      about: { "@id": organizationId },
-    },
   };
 }
 
@@ -76,6 +82,37 @@ export function websiteSchema() {
     description: siteConfig.description,
     publisher: { "@id": `${siteConfig.url}/#organization` },
     inLanguage: "en-US",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteConfig.url}/search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+export function webPageSchema(input: {
+  url: string;
+  name: string;
+  description: string;
+  type?: "WebPage" | "CollectionPage";
+  about?: Record<string, unknown>;
+  mainEntity?: Record<string, unknown>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": input.type ?? "WebPage",
+    "@id": `${input.url}#webpage`,
+    url: input.url,
+    name: input.name,
+    description: input.description,
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+    ...(input.about ? { about: input.about } : {}),
+    ...(input.mainEntity ? { mainEntity: input.mainEntity } : {}),
   };
 }
 

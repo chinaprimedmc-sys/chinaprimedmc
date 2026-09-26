@@ -2,7 +2,9 @@ import { destinations, getDestinationBySlug } from "@/content/destinations";
 import { destinationAsset } from "@/content/destinations/assets";
 import { journalArticles } from "@/content/journal";
 import { audienceGuides, planningCards, planningFaqCategories } from "@/content/planning";
-import { tours } from "@/content/tours";
+import { getTourBySlug } from "@/content/tours";
+import { journeyCatalog } from "@/content/tours/catalog";
+import { getJourneyCardTitle } from "@/content/tours/card-copy";
 import type { DiscoveryFilters, DiscoveryItem, DiscoveryType } from "@/types/discovery";
 
 const destinationItems: DiscoveryItem[] = destinations.map((destination) => {
@@ -37,28 +39,32 @@ const destinationItems: DiscoveryItem[] = destinations.map((destination) => {
   };
 });
 
-const tourItems: DiscoveryItem[] = tours.map((tour) => ({
-  id: `tour:${tour.slug}`,
-  type: "tour",
-  title: tour.title,
-  description: tour.subtitle,
-  href: `/tours/${tour.slug}`,
-  image: tour.visualStatus === "pending" ? undefined : tour.hero.image,
-  category: "Private Tour",
-  tags: [
-    tour.slug,
-    ...tour.styles.map((style) => style.toLowerCase().replaceAll(" ", "-")),
-    ...tour.route.toLowerCase().split(", "),
-  ],
-  region: "Multi-region",
-  season: ["Spring", "Autumn", "Summer"],
-  travelStyle: tour.styles,
-  interests: ["Culture", "Family", "Food", "Photography", "Train Travel"],
-  days: Number.parseInt(tour.duration, 10),
-  luxuryLevel: "Luxury",
-  familyFriendly: tour.styles.includes("Family"),
-  privateTour: true,
-}));
+const tourItems: DiscoveryItem[] = journeyCatalog.flatMap((catalogItem) => {
+  const tour = getTourBySlug(catalogItem.slug);
+  if (!tour) return [];
+  return {
+    id: `tour:${tour.slug}`,
+    type: "tour",
+    title: catalogItem ? getJourneyCardTitle(catalogItem) : tour.title,
+    description: tour.subtitle,
+    href: `/tours/${tour.slug}`,
+    image: tour.visualStatus === "pending" ? undefined : tour.hero.image,
+    category: "Private Tour",
+    tags: [
+      tour.slug,
+      ...tour.styles.map((style) => style.toLowerCase().replaceAll(" ", "-")),
+      ...tour.route.toLowerCase().split(", "),
+    ],
+    region: "Multi-region",
+    season: ["Spring", "Autumn", "Summer"],
+    travelStyle: tour.styles,
+    interests: ["Culture", "Family", "Food", "Photography", "Train Travel"],
+    days: Number.parseInt(tour.duration, 10),
+    luxuryLevel: "Luxury",
+    familyFriendly: tour.styles.includes("Family"),
+    privateTour: true,
+  };
+});
 
 const experienceItems: DiscoveryItem[] = [
   {

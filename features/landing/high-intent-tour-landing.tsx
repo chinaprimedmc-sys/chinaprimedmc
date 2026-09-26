@@ -6,7 +6,7 @@ import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { homeNavItems } from "@/content/home/homepage";
+import { JourneyCard } from "@/components/tours/journey-card";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import styles from "./high-intent-tour-landing.module.css";
 
@@ -41,13 +41,7 @@ type Props = {
 export function HighIntentTourLanding({ content, journeys }: Props) {
   return (
     <PageContainer tone="white" className={styles.page}>
-      <SiteNavigation
-        tone="adaptive"
-        variant="default"
-        items={homeNavItems}
-        cta={{ label: content.planningLabel, href: content.planningHref }}
-        showWhatsapp={false}
-      />
+      <SiteNavigation />
 
       <section className={styles.hero} aria-labelledby="high-intent-title" data-hero-layout="true">
         <OptimizedImage
@@ -119,28 +113,7 @@ export function HighIntentTourLanding({ content, journeys }: Props) {
           </header>
           <div className={styles.journeyGrid}>
             {journeys.map((journey) => (
-              <article className={styles.journeyCard} key={journey.slug}>
-                <OptimizedImage
-                  src={journey.image.src}
-                  alt={journey.image.alt}
-                  fill
-                  sizes="(max-width: 860px) 100vw, 33vw"
-                  frameClassName={styles.journeyImageWrap}
-                  className={styles.journeyImage}
-                />
-                <div className={styles.journeyBody}>
-                  <div className={styles.journeyMeta}>
-                    <span>{journey.durationLabel}</span>
-                    <span>From US${journey.pricing.fromUsd.toLocaleString()} pp</span>
-                  </div>
-                  <h3>{journey.title}</h3>
-                  <p>{journey.routeLabel}</p>
-                  <p className={styles.bestFor}>{journey.bestForSummary}</p>
-                  <Link href={journey.href}>
-                    View journey and price basis <ArrowRight size={16} aria-hidden="true" />
-                  </Link>
-                </div>
-              </article>
+              <JourneyCard key={journey.slug} item={journey} />
             ))}
           </div>
           <p className={styles.priceNote}>

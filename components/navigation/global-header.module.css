@@ -1,0 +1,701 @@
+.header {
+  --nav-ink: #17201d;
+  --nav-muted: rgba(23, 32, 29, 0.62);
+  inset: 0 0 auto;
+  pointer-events: none;
+  position: fixed;
+  z-index: 120;
+  width: 100%;
+}
+
+/* Fixed navigation never participates in document flow; anchor targets need this clearance. */
+.header ~ * {
+  scroll-margin-top: var(--site-nav-offset);
+}
+
+.desktopShell,
+.mobileShell {
+  align-items: center;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.desktopWhatsapp summary {
+  list-style: none;
+}
+
+.desktopWhatsapp summary::-webkit-details-marker {
+  display: none;
+}
+
+.desktopShell {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: max(16px, env(safe-area-inset-top)) auto 0;
+  max-width: calc(100% - 32px);
+  min-height: 46px;
+  width: max-content;
+}
+
+.mobileShell {
+  display: none;
+}
+
+.brandIsland,
+.navIsland,
+.toolsIsland,
+.desktopWhatsapp,
+.actionIsland,
+.mobileBrand,
+.mobileToolGroup,
+.iconIsland {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--nav-ink);
+  display: flex;
+  pointer-events: auto;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.brandIsland,
+.navIsland,
+.toolsIsland,
+.desktopWhatsapp,
+.actionIsland {
+  height: 46px;
+}
+
+.brandIsland {
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.navIsland {
+  gap: 24px;
+  justify-content: center;
+  padding: 0 22px;
+}
+
+.toolsIsland {
+  gap: 2px;
+  padding: 0 3px;
+}
+
+.desktopWhatsapp {
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.actionIsland {
+  gap: 7px;
+  justify-content: center;
+  padding: 0 17px;
+}
+
+.wordmark {
+  color: inherit;
+  display: inline-block;
+  font-family: var(--font-brand);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.navLink,
+.actionIsland {
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.navLink {
+  align-items: center;
+  color: inherit;
+  display: inline-flex;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  height: 100%;
+  opacity: 0.78;
+  position: relative;
+}
+
+.navLink::after {
+  background: currentColor;
+  bottom: 7px;
+  content: "";
+  height: 1px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  transform: translateX(-50%);
+  transition:
+    opacity 160ms ease,
+    width 160ms ease;
+  width: 16px;
+}
+
+.navLink:hover,
+.navLink:focus-visible,
+.navLink[data-active="true"] {
+  opacity: 1;
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after,
+.navLink[data-active="true"]::after {
+  opacity: 0.7;
+  width: 24px;
+}
+
+.actionIsland {
+  color: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.actionIsland svg {
+  height: 14px;
+  width: 14px;
+}
+
+.iconIsland {
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  flex: 0 0 auto;
+  height: 36px;
+  justify-content: center;
+  padding: 0;
+  width: 36px;
+}
+
+.iconIsland svg {
+  height: 16px;
+  width: 16px;
+}
+
+.whatsappIsland {
+  color: #25d366;
+}
+
+.navLink:focus-visible,
+.actionIsland:focus-visible,
+.brandIsland:focus-visible,
+.mobileBrand:focus-visible,
+.iconIsland:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.brandIsland:hover,
+.actionIsland:hover,
+.iconIsland:hover {
+  transform: translateY(-1px);
+}
+
+.iconIsland:active,
+.actionIsland:active {
+  transform: scale(0.97);
+}
+
+.header[data-tone="on-light"] {
+  --nav-ink: #17201d;
+  --nav-muted: rgba(23, 32, 29, 0.62);
+}
+
+.header[data-tone="on-light"]
+  :is(
+    .brandIsland,
+    .navIsland,
+    .toolsIsland,
+    .desktopWhatsapp,
+    .actionIsland,
+    .mobileBrand,
+    .mobileToolGroup,
+    .iconIsland
+  ) {
+  -webkit-backdrop-filter: blur(20px) saturate(135%);
+  backdrop-filter: blur(20px) saturate(135%);
+  background: rgba(248, 250, 249, 0.78);
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 8px 22px rgba(17, 25, 22, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.header[data-tone="over-image"] {
+  --nav-ink: #fff;
+  --nav-muted: rgba(255, 255, 255, 0.72);
+}
+
+.header[data-tone="over-image"]
+  :is(
+    .brandIsland,
+    .navIsland,
+    .toolsIsland,
+    .desktopWhatsapp,
+    .actionIsland,
+    .mobileBrand,
+    .mobileToolGroup,
+    .iconIsland
+  ) {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: #fff;
+}
+
+.header[data-tone="over-image"] .whatsappIsland {
+  color: #25d366;
+}
+
+.header[data-tone="over-image"] .wordmark,
+.header[data-tone="over-image"] .navLink,
+.header[data-tone="over-image"] .actionIsland {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  text-shadow: 0 1px 8px rgba(4, 12, 17, 0.32);
+}
+
+.header[data-tone="over-image"] .wordmark {
+  text-shadow: none;
+}
+
+.header[data-tone="over-image"] .iconIsland svg {
+  color: currentColor;
+  stroke: currentColor;
+}
+
+.header[data-tone="over-image"][data-scrolled="true"]
+  :is(
+    .brandIsland,
+    .navIsland,
+    .toolsIsland,
+    .desktopWhatsapp,
+    .actionIsland,
+    .mobileBrand,
+    .mobileToolGroup,
+    .iconIsland
+  ) {
+  -webkit-backdrop-filter: blur(20px) saturate(135%);
+  backdrop-filter: blur(20px) saturate(135%);
+  background-color: rgba(248, 250, 249, 0.78);
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 8px 22px rgba(17, 25, 22, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  color: #17201d;
+}
+
+.header[data-tone="over-image"][data-scrolled="true"] :is(.wordmark, .navLink, .actionIsland) {
+  color: #17201d;
+  -webkit-text-fill-color: #17201d;
+  text-shadow: none;
+}
+
+.header[data-tone="over-image"][data-scrolled="true"] .whatsappIsland {
+  color: #25d366;
+}
+
+.header[data-tone="over-image"][data-scrolled="true"] .iconIsland svg {
+  color: currentColor;
+  stroke: currentColor;
+}
+
+@media (min-width: 1024px) {
+  .header[data-journeys-navigation="true"]
+    :is(.brandIsland, .navIsland, .toolsIsland, .desktopWhatsapp, .actionIsland) {
+    -webkit-backdrop-filter: blur(20px) saturate(135%);
+    backdrop-filter: blur(20px) saturate(135%);
+    background-color: rgba(248, 250, 249, 0.78);
+    border-color: rgba(255, 255, 255, 0.72);
+    box-shadow:
+      0 8px 22px rgba(17, 25, 22, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.78);
+    color: #17201d;
+  }
+
+  .header[data-journeys-navigation="true"] :is(.wordmark, .navLink, .actionIsland) {
+    color: #17201d;
+    -webkit-text-fill-color: #17201d;
+    text-shadow: none;
+  }
+
+  .header[data-journeys-navigation="true"] .whatsappIsland {
+    color: #25d366;
+  }
+
+  .header[data-tone="over-image"][data-scrolled="true"]
+    :is(.brandIsland, .navIsland, .toolsIsland, .desktopWhatsapp, .actionIsland) {
+    -webkit-backdrop-filter: blur(20px) saturate(135%);
+    backdrop-filter: blur(20px) saturate(135%);
+    background-color: rgba(248, 250, 249, 0.78);
+    border-color: rgba(255, 255, 255, 0.72);
+    box-shadow:
+      0 8px 22px rgba(17, 25, 22, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.78);
+    color: #17201d;
+  }
+
+  .header[data-tone="over-image"][data-scrolled="true"] :is(.wordmark, .navLink, .actionIsland) {
+    color: #17201d;
+    -webkit-text-fill-color: #17201d;
+    text-shadow: none;
+  }
+
+  .header[data-tone="over-image"][data-scrolled="true"] .whatsappIsland {
+    color: #25d366;
+  }
+}
+
+.whatsappPopover {
+  -webkit-backdrop-filter: blur(24px) saturate(135%);
+  backdrop-filter: blur(24px) saturate(135%);
+  background: rgba(248, 250, 249, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 22px;
+  box-shadow: 0 18px 44px rgba(17, 25, 22, 0.14);
+  color: #17201d;
+  padding: 12px;
+  width: 226px;
+  z-index: 160;
+}
+
+.desktopWhatsapp {
+  position: relative;
+}
+
+.desktopWhatsapp[open] .whatsappPopover {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+}
+
+.whatsappPopover > p {
+  color: var(--nav-muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin: 3px 8px 8px;
+  text-transform: uppercase;
+}
+
+.whatsappPopover > a {
+  border-radius: 14px;
+  color: #17201d;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 10px;
+}
+
+.whatsappPopover > a:hover,
+.whatsappPopover > a:focus-visible {
+  background: rgba(23, 32, 29, 0.06);
+}
+
+.whatsappPopover span {
+  color: var(--nav-muted);
+  font-size: 0.67rem;
+}
+
+.whatsappPopover strong {
+  font-size: 0.84rem;
+  font-weight: 650;
+}
+
+.mobileMenu,
+.mobileOverlay {
+  display: none;
+}
+
+.mobileMenuInner {
+  --nav-ink: #17201d;
+  --nav-muted: #475650;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.visuallyHidden {
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .desktopShell {
+    gap: 6px;
+  }
+
+  .navIsland {
+    gap: 14px;
+    padding-inline: 14px;
+  }
+
+  .navLink {
+    font-size: 0.72rem;
+  }
+
+  .actionIsland {
+    font-size: 0.67rem;
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .desktopShell {
+    display: none;
+  }
+
+  .mobileShell {
+    display: flex;
+    justify-content: space-between;
+    margin: max(10px, env(safe-area-inset-top)) var(--page-gutter) 0;
+  }
+
+  .header[data-journeys-navigation="true"]:not([data-scrolled="true"]) .mobileShell {
+    animation: journeys-nav-in 760ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+  }
+
+  .mobileBrand {
+    height: 40px;
+    padding-inline: 13px;
+  }
+
+  .mobileActions {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+    pointer-events: auto;
+  }
+
+  .mobileToolGroup {
+    display: flex;
+    gap: 4px;
+  }
+
+  .mobileActions > .iconIsland {
+    height: 40px;
+    width: 40px;
+  }
+
+  .mobileActions > .iconIsland svg,
+  .mobileToolGroup .iconIsland svg {
+    height: 17px;
+    width: 17px;
+  }
+
+  .mobileMenu {
+    background: #fff;
+    color: #17201d;
+    display: flex;
+    flex-direction: column;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: auto;
+    position: fixed;
+    z-index: 141;
+  }
+
+  .mobileOverlay {
+    background: rgba(8, 15, 12, 0.34);
+    border: 0;
+    cursor: pointer;
+    display: block;
+    inset: 0;
+    padding: 0;
+    pointer-events: auto;
+    position: fixed;
+    z-index: 140;
+  }
+
+  .mobileMenuHeader {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    padding: max(18px, env(safe-area-inset-top)) 20px 18px;
+  }
+
+  .mobileMenuBrand {
+    display: inline-flex;
+  }
+
+  .mobileMenu .mobileMenuBrand .wordmark {
+    color: #17201d;
+    -webkit-text-fill-color: #17201d;
+    text-shadow: none;
+  }
+
+  .mobileMenuHeader .iconIsland {
+    border-color: rgba(23, 32, 29, 0.14);
+    color: #17201d;
+  }
+
+  .mobileMenuHeader .iconIsland:hover,
+  .mobileMenuHeader .iconIsland:focus-visible {
+    background: rgba(23, 32, 29, 0.08);
+  }
+
+  .mobileMenuBody {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 8px 24px 30px;
+  }
+
+  .mobileGroup {
+    border-top: 1px solid rgba(23, 32, 29, 0.12);
+    padding: 18px 0 17px;
+  }
+
+  .mobileGroup:last-of-type {
+    border-bottom: 1px solid rgba(23, 32, 29, 0.12);
+  }
+
+  .mobileGroupLink {
+    align-items: center;
+    color: #17201d;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 650;
+    justify-content: space-between;
+  }
+
+  .mobileGroupLink[data-active="true"] {
+    color: #138c4a;
+  }
+
+  .mobileGroupLink svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  .mobileSubLinks {
+    display: grid;
+    gap: 10px;
+    margin-top: 13px;
+    padding-left: 2px;
+  }
+
+  .mobileSubLinks a {
+    color: rgba(23, 32, 29, 0.6);
+    font-size: 0.8rem;
+  }
+
+  .mobilePrimaryAction {
+    align-items: center;
+    background: #17201d;
+    border-radius: 999px;
+    color: #fff;
+    display: flex;
+    font-size: 0.78rem;
+    font-weight: 700;
+    gap: 7px;
+    justify-content: center;
+    margin-top: 24px;
+    min-height: 46px;
+  }
+
+  .mobilePrimaryAction svg {
+    height: 14px;
+    width: 14px;
+  }
+
+  .mobileContact {
+    align-items: center;
+    color: #138c4a;
+    display: flex;
+    font-size: 0.76rem;
+    gap: 9px;
+    margin-top: 22px;
+  }
+
+  .mobileContact svg {
+    height: 18px;
+    width: 18px;
+  }
+}
+
+@media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+  @keyframes journeys-nav-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -18px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .mobileShell {
+    margin-inline: 16px;
+  }
+
+  .mobileActions {
+    gap: 4px;
+  }
+
+  .mobileBrand {
+    padding-inline: 11px;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .header[data-tone="on-light"]
+    :is(
+      .brandIsland,
+      .navIsland,
+      .toolsIsland,
+      .desktopWhatsapp,
+      .actionIsland,
+      .mobileBrand,
+      .mobileToolGroup,
+      .iconIsland
+    ),
+  .header[data-tone="over-image"][data-scrolled="true"]
+    :is(
+      .brandIsland,
+      .navIsland,
+      .toolsIsland,
+      .desktopWhatsapp,
+      .actionIsland,
+      .mobileBrand,
+      .mobileToolGroup,
+      .iconIsland
+    ),
+  .whatsappPopover {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(248, 250, 249, 0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brandIsland,
+  .navLink::after,
+  .actionIsland,
+  .iconIsland {
+    transition: none;
+  }
+}

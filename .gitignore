@@ -12,3 +12,10 @@ coverage
 .vercel
 .pnpm-store/
 .codex-screenshots/
+
+# Local deployment snapshots, stale Next.js caches, and generated review outputs.
+.codex-deploy/
+.next-*-cache-stale-*/
+artifacts/
+outputs/
+supabase/.temp/

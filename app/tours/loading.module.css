@@ -1,0 +1,166 @@
+.loading {
+  background: #fff;
+  min-height: 100dvh;
+  padding: 96px 60px;
+}
+
+.hero,
+.catalog {
+  margin: 0 auto;
+  max-width: 1320px;
+}
+
+.hero,
+.featured {
+  align-items: center;
+  display: grid;
+  gap: 70px;
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.copy,
+.featured article,
+.grid article {
+  display: grid;
+  gap: 16px;
+}
+
+.copy span,
+.catalog header span,
+.featured article span {
+  background: #eef0f1;
+  border-radius: 999px;
+  height: 12px;
+  width: 120px;
+}
+
+.copy strong,
+.catalog header strong,
+.featured article strong,
+.grid strong {
+  background: #e7e9ea;
+  border-radius: 14px;
+  display: block;
+  height: 78px;
+  width: 86%;
+}
+
+.copy p,
+.featured article p,
+.grid p {
+  background: #eef0f1;
+  border-radius: 10px;
+  height: 52px;
+  width: 100%;
+}
+
+.copy i,
+.featured article i,
+.grid i {
+  background: #eceeef;
+  border-radius: 999px;
+  height: 50px;
+  width: 170px;
+}
+
+.heroImage,
+.featured > div,
+.grid article > div {
+  aspect-ratio: 16 / 11;
+  background: #eceeef;
+  border-radius: 36px;
+}
+
+.catalog {
+  padding-top: 110px;
+}
+
+.catalog header {
+  display: grid;
+  gap: 18px;
+  max-width: 700px;
+}
+
+.catalog header strong {
+  height: 58px;
+}
+
+.filter {
+  background: #eceeef;
+  border-radius: 999px;
+  height: 72px;
+  margin-top: 42px;
+}
+
+.featured {
+  margin-top: 54px;
+}
+
+.grid {
+  display: grid;
+  gap: 60px 36px;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 70px;
+}
+
+.grid article > div {
+  aspect-ratio: 4 / 3;
+  border-radius: 28px;
+}
+
+.grid strong {
+  height: 52px;
+}
+
+@media (max-width: 700px) {
+  .loading {
+    padding: 84px 20px;
+  }
+
+  .hero,
+  .featured,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    gap: 30px;
+  }
+
+  .copy strong {
+    height: 90px;
+  }
+
+  .heroImage,
+  .featured > div,
+  .grid article > div {
+    border-radius: 24px;
+  }
+
+  .catalog {
+    padding-top: 72px;
+  }
+
+  .filter {
+    height: 50px;
+    width: 180px;
+  }
+
+  .featured,
+  .grid {
+    gap: 44px;
+    margin-top: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loading * {
+    animation: pulse 1.5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes pulse {
+  to {
+    opacity: 0.55;
+  }
+}

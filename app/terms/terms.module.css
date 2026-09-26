@@ -1,7 +1,7 @@
 .termsPage {
-  --type-hero: 3.375rem;
-  --type-section: 2.25rem;
-  --type-panel: 1.5rem;
+  --type-hero: var(--type-hero-size);
+  --type-section: var(--type-section-title-size);
+  --type-panel: var(--type-card-title-size);
   --bg-primary: #fff;
   --bg-secondary: #fff;
   --border: #d9dfdc;
@@ -24,7 +24,7 @@
 .heroInner {
   align-items: end;
   display: grid;
-  gap: clamp(3rem, 6vw, 6rem);
+  gap: 4rem;
   grid-template-columns: minmax(35rem, 1.18fr) minmax(24rem, 0.82fr);
 }
 
@@ -32,7 +32,7 @@
   color: var(--text-secondary);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0;
   line-height: 1.5;
   margin: 0;
 }
@@ -48,13 +48,10 @@
 }
 
 .heroTitle h1 {
-  font-family: var(--font-cormorant);
-  font-feature-settings:
-    "kern" 1,
-    "liga" 1;
+  font-family: var(--font-display);
   font-size: var(--type-hero);
   font-synthesis: none;
-  line-height: 1.02;
+  line-height: var(--type-hero-line);
   margin-top: 1.25rem;
   max-width: 17ch;
   text-rendering: optimizeLegibility;
@@ -79,7 +76,7 @@
 .introLead {
   color: var(--text-primary);
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: var(--type-card-title-size);
   line-height: 1.3;
   margin-bottom: 1.25rem;
 }
@@ -95,15 +92,15 @@
 
 .documentMeta dt {
   color: var(--text-secondary);
-  font-size: 0.62rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .documentMeta dd {
   color: var(--text-primary);
-  font-size: 0.78rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   margin-top: 0.25rem;
 }
@@ -111,7 +108,7 @@
 .summarySection,
 .scheduleSection,
 .fullTerms {
-  padding-block: clamp(4rem, 6.5vw, 6rem);
+  padding-block: var(--space-section-default);
 }
 
 .sectionIntro {
@@ -152,7 +149,7 @@
   font-size: 0.66rem;
   font-weight: 700;
   justify-content: space-between;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
 }
 
 .summaryMarker svg {
@@ -183,7 +180,7 @@
 .scheduleLayout {
   align-items: start;
   display: grid;
-  gap: clamp(3rem, 8vw, 8rem);
+  gap: 4rem;
   grid-template-columns: minmax(20rem, 0.82fr) minmax(32rem, 1.18fr);
 }
 
@@ -219,9 +216,9 @@
 
 .scheduleHeader {
   color: var(--text-secondary);
-  font-size: 0.62rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   padding-block: 1rem;
   text-transform: uppercase;
 }
@@ -247,20 +244,20 @@
   background: #fff;
   border-block: 1px solid var(--border);
   color: var(--text-primary);
-  padding-block: clamp(4rem, 7vw, 6rem);
+  padding-block: var(--space-section-default);
 }
 
 .refundInner {
   align-items: center;
   display: grid;
-  gap: clamp(2rem, 6vw, 6rem);
+  gap: 3rem;
   grid-template-columns: auto minmax(0, 1fr);
 }
 
 .refundNumber {
   color: var(--text-primary);
   font-family: var(--font-display);
-  font-size: clamp(7rem, 14vw, 13rem);
+  font-size: 8rem;
   font-weight: 500;
   line-height: 0.7;
 }
@@ -284,7 +281,7 @@
 .fullTermsLayout {
   align-items: start;
   display: grid;
-  gap: clamp(3rem, 8vw, 8rem);
+  gap: 4rem;
   grid-template-columns: minmax(18rem, 0.72fr) minmax(34rem, 1.28fr);
 }
 
@@ -309,7 +306,7 @@
   align-items: center;
   border-bottom: 1px solid color-mix(in srgb, var(--text-primary) 36%, transparent);
   display: inline-flex;
-  font-size: 0.78rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   gap: 0.5rem;
   margin-top: 2rem;
@@ -338,9 +335,9 @@
 
 .policyGroupHeader p {
   color: var(--text-secondary);
-  font-size: 0.64rem;
+  font-size: 0.8125rem;
   font-weight: 750;
-  letter-spacing: 0.13em;
+  letter-spacing: 0;
 }
 
 .policyGroupHeader h3 {
@@ -376,9 +373,9 @@
 
 .policySection summary > span {
   color: var(--text-secondary);
-  font-size: 0.66rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
 }
 
 .policySection summary strong {
@@ -446,7 +443,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1179px) {
   .heroInner,
   .scheduleLayout,
   .fullTermsLayout {
@@ -471,12 +468,6 @@
 }
 
 @media (max-width: 767px) {
-  .termsPage {
-    --type-hero: 2.125rem;
-    --type-section: 1.5rem;
-    --type-panel: 1.3125rem;
-  }
-
   .hero {
     padding-block: calc(var(--site-nav-offset) + 2.25rem) 3.5rem;
   }
@@ -487,7 +478,7 @@
 
   .heroTitle h1 {
     font-size: var(--type-hero);
-    line-height: 1.02;
+    line-height: var(--type-hero-line);
     max-width: 18ch;
   }
 
@@ -527,11 +518,11 @@
   .scheduleHeader,
   .scheduleRow {
     gap: 1rem;
-    grid-template-columns: minmax(0, 1fr) 5.25rem;
+    grid-template-columns: minmax(0, 1fr) minmax(6.75rem, auto);
   }
 
   .scheduleHeader {
-    font-size: 0.55rem;
+    font-size: 0.75rem;
   }
 
   .scheduleRow {
@@ -549,7 +540,7 @@
   }
 
   .refundNumber {
-    font-size: 7rem;
+    font-size: 5.5rem;
   }
 
   .policySection summary {

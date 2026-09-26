@@ -12,10 +12,10 @@ type FieldShellProps = {
 export function FieldShell({ label, helper, error, children }: FieldShellProps) {
   return (
     <label className="grid content-start gap-2">
-      <span className="text-sm font-semibold">{label}</span>
+      <span className="text-base leading-6 font-semibold">{label}</span>
       {children}
-      {helper ? <span className="text-muted text-xs leading-5">{helper}</span> : null}
-      {error ? <span className="text-brand-red text-xs font-medium">{error}</span> : null}
+      {helper ? <span className="text-muted text-base leading-6">{helper}</span> : null}
+      {error ? <span className="text-base font-medium text-[#a52828]">{error}</span> : null}
     </label>
   );
 }
@@ -31,7 +31,7 @@ export function TextField({
     <FieldShell label={label} helper={helper} error={error}>
       <input
         className={cn(
-          "border-border placeholder:text-muted/70 focus:border-foreground/35 focus:ring-foreground/5 h-12 rounded-2xl border bg-white px-4 text-sm transition outline-none focus:ring-4",
+          "border-border placeholder:text-muted/75 focus:border-foreground/35 focus:ring-foreground/5 h-12 rounded-2xl border bg-white px-4 text-base transition outline-none focus:ring-4",
           error && "border-brand-red/55",
           className,
         )}
@@ -57,7 +57,7 @@ export function TextAreaField({
     <FieldShell label={label} helper={helper} error={error}>
       <textarea
         className={cn(
-          "border-border placeholder:text-muted/70 focus:border-foreground/35 focus:ring-foreground/5 min-h-32 rounded-2xl border bg-white px-4 py-3 text-sm leading-6 transition outline-none focus:ring-4",
+          "border-border placeholder:text-muted/75 focus:border-foreground/35 focus:ring-foreground/5 min-h-32 rounded-2xl border bg-white px-4 py-3 text-base leading-6 transition outline-none focus:ring-4",
           error && "border-brand-red/55",
           className,
         )}

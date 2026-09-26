@@ -38,6 +38,9 @@ export type JourneyCatalogItem = {
 
 export type JourneyPricing = {
   fromUsd: number;
+  pricingUnit: "per-person" | "private-group";
+  basePartySize: number;
+  cardBasis: string;
   basis: string;
   inclusionSummary: string;
   finalPriceNote: string;
@@ -128,6 +131,7 @@ const muslimFriendlyChina = tours.find(
 const qingchengWellness = tours.find(
   (tour) => tour.slug === "qingcheng-mountain-private-wellness-retreat-10-day",
 );
+const yunnanTeaHorseRoad = tours.find((tour) => tour.slug === "luxury-yunnan-private-tour");
 const greaterBayBusiness = tours.find(
   (tour) => tour.slug === "guangzhou-shenzhen-tailor-made-business-tour-4-day",
 );
@@ -188,6 +192,10 @@ if (!qingchengWellness) {
   throw new Error("The 10-day Qingcheng Mountain wellness retreat is required.");
 }
 
+if (!yunnanTeaHorseRoad) {
+  throw new Error("The 10-day private Yunnan Tea Horse Road journey is required.");
+}
+
 if (!greaterBayBusiness) {
   throw new Error("The 4-day Guangzhou and Shenzhen business journey is required.");
 }
@@ -245,8 +253,8 @@ const firstChina: JourneyCatalogBase = {
   title: flagship.title,
   eyebrow: "First-China essential",
   summary: flagship.subtitle,
-  hook: "Three defining cities with expert private guides, considered hotels and well-managed rail travel.",
-  image: firstChinaAsset.shanghaiWaterfrontGroup,
+  hook: "Three defining cities with expert private guides, carefully chosen hotels and the key travel handovers handled for you.",
+  image: firstChinaAsset.beijingGreatWallSunriseHero,
   href: `/tours/${flagship.slug}`,
   kind: "framework",
   routeLabel: flagship.route,
@@ -735,6 +743,41 @@ const qingchengWellnessJourney: JourneyCatalogBase = {
     "The core product protects seven consecutive Qingcheng nights. Hangzhou, pandas or another China chapter is added before or after the retreat, never through its middle.",
 };
 
+const yunnanTeaHorseRoadJourney: JourneyCatalogBase = {
+  slug: yunnanTeaHorseRoad.slug,
+  title: yunnanTeaHorseRoad.title,
+  eyebrow: "AVIORA Private Reserve journey",
+  summary: yunnanTeaHorseRoad.subtitle,
+  hook: "Follow the Tea Horse Road through Dali, Shaxi, Lijiang and Shangri-La with boutique stays, private guiding and a route shaped around altitude, weather and curiosity.",
+  image: yunnanTeaHorseRoad.hero.image,
+  href: `/tours/${yunnanTeaHorseRoad.slug}`,
+  kind: "featured",
+  routeLabel: yunnanTeaHorseRoad.route,
+  durationLabel: "10 days / 9 nights",
+  styleFilters: ["Private Reserve", "Luxury", "Culture", "Nature", "Slow Travel"],
+  destinationFilters: ["Dali", "Shaxi", "Lijiang", "Shangri-La"],
+  bestForFilters: ["Couples", "Friends", "Repeat visitors", "Private groups"],
+  experienceFilters: ["scenery", "food", "local-life", "photography", "wellness"],
+  travelerFilters: ["couples", "older-travelers", "private-groups"],
+  planningNeedFilters: [
+    "slower-pacing",
+    "mobility-aware",
+    "quiet-luxury",
+    "food-focused",
+    "photography-led",
+  ],
+  recommendedDaysMin: 10,
+  recommendedDaysMax: 10,
+  destinations: [
+    { label: "Dali", href: `/tours/${yunnanTeaHorseRoad.slug}#itinerary` },
+    { label: "Shaxi", href: `/tours/${yunnanTeaHorseRoad.slug}#itinerary` },
+    { label: "Lijiang", href: `/tours/${yunnanTeaHorseRoad.slug}#itinerary` },
+    { label: "Shangri-La", href: `/tours/${yunnanTeaHorseRoad.slug}#itinerary` },
+  ],
+  planningNote:
+    "Every departure is reviewed around the actual month, altitude comfort, room preferences and private cultural access before the final proposal is confirmed.",
+};
+
 const chengduChongqingZhangjiajieJourney: JourneyCatalogBase = {
   slug: chengduChongqingZhangjiajie.slug,
   title: chengduChongqingZhangjiajie.title,
@@ -791,12 +834,12 @@ const beijingXianChengduShanghaiJourney: JourneyCatalogBase = {
   title: beijingXianChengduShanghai.title,
   eyebrow: "Signature first-time China journey",
   summary: beijingXianChengduShanghai.subtitle,
-  hook: "The Great Wall, Terracotta Warriors, giant pandas and Shanghai, connected with private support across eleven balanced days.",
+  hook: "The Great Wall, Terracotta Warriors, giant pandas and Shanghai, connected through one private journey with two considered rhythms.",
   image: beijingXianChengduShanghai.hero.image,
   href: `/tours/${beijingXianChengduShanghai.slug}`,
   kind: "featured",
   routeLabel: beijingXianChengduShanghai.route,
-  durationLabel: "11 days / 10 nights",
+  durationLabel: "12–13 days / 11–12 nights",
   styleFilters: ["First-time China", "Family", "Culture", "Food"],
   destinationFilters: ["Beijing", "Xi'an", "Chengdu", "Shanghai"],
   bestForFilters: ["First-time visitors", "Families", "Couples", "Multigenerational travelers"],
@@ -825,8 +868,8 @@ const beijingXianChengduShanghaiJourney: JourneyCatalogBase = {
     "mobility-aware",
     "food-focused",
   ],
-  recommendedDaysMin: 11,
-  recommendedDaysMax: 12,
+  recommendedDaysMin: 12,
+  recommendedDaysMax: 13,
   destinations: [
     { label: "Beijing", href: "/destinations/beijing" },
     { label: "Xi'an", href: "/destinations/xian" },
@@ -834,7 +877,7 @@ const beijingXianChengduShanghaiJourney: JourneyCatalogBase = {
     { label: "Shanghai", href: "/destinations/shanghai" },
   ],
   planningNote:
-    "The framework uses high-speed rail between Beijing, Xi'an and Chengdu, then a domestic flight to Shanghai; final services depend on your dates.",
+    "Choose the 12-day essential rhythm or the 13-day considered rhythm. Both use high-speed rail between Beijing, Xi'an and Chengdu, then a domestic flight to Shanghai; Free Day services are selected around your party.",
 };
 
 const chengduJourney: JourneyCatalogBase = {
@@ -965,11 +1008,11 @@ const beijingUnhurriedJourney: JourneyCatalogBase = {
   title: beijingUnhurried.title,
   eyebrow: "Private Beijing extension",
   summary: beijingUnhurried.subtitle,
-  hook: "One well-located hotel, expert private support and Beijing's essential landmarks across five considered days.",
+  hook: "Stay in one well-located Beijing base while the Forbidden City, hutongs, Temple of Heaven and Mutianyu Great Wall unfold at a comfortable pace.",
   image: firstChinaAsset.beijingGreatWallSunriseHero,
   href: `/tours/${beijingUnhurried.slug}`,
   kind: "framework",
-  routeLabel: beijingUnhurried.route,
+  routeLabel: "Beijing · Forbidden City · Hutongs · Mutianyu Great Wall",
   durationLabel: "5 days / 4 nights",
   styleFilters: ["Culture", "Slow Travel"],
   destinationFilters: ["Beijing"],
@@ -1053,6 +1096,7 @@ const journeyCatalogBase: JourneyCatalogBase[] = [
   privateShanghaiDayJourney,
   mutianyuPrivateDayJourney,
   greaterBayBusinessJourney,
+  yunnanTeaHorseRoadJourney,
   qingchengWellnessJourney,
   chinaConsideredJourney,
   chinaFamilyJourney,
@@ -1067,99 +1111,130 @@ const journeyCatalogBase: JourneyCatalogBase[] = [
   xianBeijingJourney,
 ];
 
+/**
+ * Public product set. This is the single inventory boundary used by the
+ * catalogue, search index, generated routes, sitemap and journey matcher.
+ */
+export const publicJourneySlugs = [
+  "first-china-beautifully-paced",
+  "luxury-yunnan-private-tour",
+  "private-mutianyu-great-wall-day-tour",
+  "private-shanghai-day-tour-guide-driver",
+  "private-xian-terracotta-warriors-day-tour",
+  "private-chengdu-panda-day-tour-early-morning",
+  "guilin-yangshuo-li-river-cruise-private-day-tour",
+  "china-family-tour-with-pandas-12-day-private-tour",
+  "qingcheng-mountain-private-wellness-retreat-10-day",
+  "china-at-an-easier-pace-12-day-private-tour",
+  "muslim-friendly-china-tour-great-wall-desert-stars",
+  "beijing-xian-chengdu-shanghai-private-11-day-tour",
+  "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+  "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+  "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+  "shanghai-zhangjiajie-floating-peaks",
+  "chengdu-pandas-sichuan-table",
+  "beijing-great-wall-private-5-day-tour",
+  "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+] as const;
+
 const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
 > = {
+  "luxury-yunnan-private-tour": {
+    commercialRole: "signature",
+    commercialRoleLabel: "Private Reserve Yunnan journey",
+    commercialPriority: 170,
+  },
   "guilin-yangshuo-li-river-cruise-private-day-tour": {
     commercialRole: "nature",
     commercialRoleLabel: "Private Guilin & Yangshuo cruise day",
-    commercialPriority: 106,
+    commercialPriority: 51,
   },
   "private-chengdu-panda-day-tour-early-morning": {
     commercialRole: "essential",
     commercialRoleLabel: "Private Chengdu panda day tour",
-    commercialPriority: 107,
+    commercialPriority: 52,
   },
   "private-xian-terracotta-warriors-day-tour": {
     commercialRole: "essential",
     commercialRoleLabel: "Private Terracotta Warriors day tour",
-    commercialPriority: 108,
+    commercialPriority: 53,
   },
   "private-shanghai-day-tour-guide-driver": {
     commercialRole: "essential",
     commercialRoleLabel: "Private Shanghai day tour",
-    commercialPriority: 109,
+    commercialPriority: 54,
   },
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
     commercialRole: "extension",
     commercialRoleLabel: "Tailor-made Guangzhou & Shenzhen business tour",
-    commercialPriority: 91,
+    commercialPriority: 70,
   },
   "private-mutianyu-great-wall-day-tour": {
     commercialRole: "essential",
     commercialRoleLabel: "Private Great Wall day tour",
-    commercialPriority: 110,
+    commercialPriority: 55,
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     commercialRole: "signature",
     commercialRoleLabel: "Signature private wellness retreat",
-    commercialPriority: 98,
+    commercialPriority: 130,
   },
   "muslim-friendly-china-tour-great-wall-desert-stars": {
     commercialRole: "signature",
     commercialRoleLabel: "Signature Muslim family journey",
-    commercialPriority: 94,
+    commercialPriority: 140,
   },
   "china-family-tour-with-pandas-12-day-private-tour": {
     commercialRole: "signature",
     commercialRoleLabel: "Signature family journey",
-    commercialPriority: 100,
+    commercialPriority: 180,
   },
   "china-at-an-easier-pace-12-day-private-tour": {
     commercialRole: "signature",
     commercialRoleLabel: "Signature slow journey",
-    commercialPriority: 96,
+    commercialPriority: 160,
   },
   "beijing-xian-chengdu-shanghai-private-11-day-tour": {
     commercialRole: "essential",
     commercialRoleLabel: "First-China essential",
-    commercialPriority: 92,
+    commercialPriority: 150,
   },
   "first-china-beautifully-paced": {
     commercialRole: "essential",
-    commercialRoleLabel: "Classic first journey",
-    commercialPriority: 84,
+    commercialRoleLabel: "Signature first journey",
+    commercialPriority: 190,
   },
   "chengdu-chongqing-zhangjiajie-private-11-day-tour": {
     commercialRole: "nature",
     commercialRoleLabel: "Nature and food journey",
-    commercialPriority: 80,
+    commercialPriority: 120,
   },
   "chengdu-pandas-jiuzhaigou-private-7-day-tour": {
     commercialRole: "nature",
     commercialRoleLabel: "Sichuan nature journey",
-    commercialPriority: 76,
+    commercialPriority: 100,
   },
   "shanghai-zhangjiajie-floating-peaks": {
     commercialRole: "nature",
     commercialRoleLabel: "City and nature journey",
-    commercialPriority: 72,
+    commercialPriority: 110,
   },
   "chengdu-pandas-sichuan-table": {
     commercialRole: "extension",
     commercialRoleLabel: "Private Chengdu extension",
-    commercialPriority: 64,
+    commercialPriority: 80,
   },
   "beijing-great-wall-private-5-day-tour": {
     commercialRole: "extension",
     commercialRoleLabel: "Private Beijing extension",
-    commercialPriority: 60,
+    commercialPriority: 90,
   },
   "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour": {
     commercialRole: "extension",
     commercialRoleLabel: "Imperial cities extension",
-    commercialPriority: 56,
+    commercialPriority: 95,
   },
 };
 
@@ -1167,6 +1242,20 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "luxury-yunnan-private-tour": {
+    paceLabel: "Balanced private pacing with gradual altitude gain and protected quiet time",
+    transportSummary:
+      "Dedicated private vehicle between Dali, Shaxi, Lijiang and Shangri-La, with gateway transfers quoted around the wider trip",
+    highlights: [
+      "Begin beside Erhai with private time in Dali",
+      "Stay within Shaxi's living Tea Horse Road history",
+      "Cross the highland landscape toward Lijiang and Shangri-La",
+      "Meet local culture through carefully confirmed private hosts",
+      "Adjust each day around weather, altitude and personal energy",
+    ],
+    bestForSummary:
+      "Couples, friends, repeat China visitors and private groups seeking a highly personal highland journey with boutique stays and no fixed-template feel",
+  },
   "guilin-yangshuo-li-river-cruise-private-day-tour": {
     paceLabel: "Easy to moderate, with a long scenic sailing and a privately managed finish",
     transportSummary:
@@ -1316,7 +1405,7 @@ const commercialDetails: Record<
     bestForSummary: "Food, wildlife and dramatic scenery in one regional journey",
   },
   "beijing-xian-chengdu-shanghai-private-11-day-tour": {
-    paceLabel: "Balanced first-time route",
+    paceLabel: "Essential or considered pace",
     transportSummary: "Private transfers, high-speed rail and a domestic flight",
     highlights: [
       "A quieter Great Wall section with private timing",
@@ -1328,7 +1417,8 @@ const commercialDetails: Record<
   },
   "first-china-beautifully-paced": {
     paceLabel: "Comfortable, unhurried",
-    transportSummary: "Private transfers and high-speed rail between three cities",
+    transportSummary:
+      "Private transfers, Beijing–Xi'an high-speed rail, and a connection to Shanghai selected for your dates",
     highlights: [
       "A full Great Wall day",
       "Imperial Beijing with room for context",
@@ -1394,6 +1484,9 @@ const commercialDetails: Record<
 };
 
 const sharedPricingDetails = {
+  pricingUnit: "per-person" as const,
+  basePartySize: 4,
+  cardBasis: "Based on four guests sharing two rooms",
   basis:
     "Indicative starting price per person, based on four guests sharing two rooms outside peak holiday periods. Smaller parties may have a higher per-person price because private guide and vehicle costs are shared across fewer travelers.",
   inclusionSummary:
@@ -1402,8 +1495,25 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, JourneyPricing> = {
+  "luxury-yunnan-private-tour": {
+    fromUsd: 6680,
+    pricingUnit: "per-person",
+    basePartySize: 4,
+    cardBasis: "Based on four guests sharing two rooms",
+    basis:
+      "Indicative starting price per person, based on four guests sharing two rooms outside peak holiday periods, equivalent to a group total from US$26,720.",
+    inclusionSummary:
+      "Includes nine nights in selected boutique or luxury stays, a dedicated private vehicle, private guiding, confirmed cultural encounters, selected meals and China-based operating support.",
+    finalPriceNote:
+      "The final price is determined by the travel dates, exact hotels and rooms, guide and host availability, transport and selected upgrades.",
+    additionalNote:
+      "Gateway flights, premium room categories and date-specific private access are quoted transparently after the journey brief is reviewed.",
+  },
   "guilin-yangshuo-li-river-cruise-private-day-tour": {
     fromUsd: 688,
+    pricingUnit: "private-group",
+    basePartySize: 4,
+    cardBasis: "Private group of four · Yangshuo finish",
     basis:
       "Indicative starting price per private group of four guests for the version ending in Yangshuo, equivalent to US$172 per guest. A two-guest Yangshuo-finish tour starts from US$528 total. The four-guest central-Guilin return version starts from US$758 total.",
     inclusionSummary:
@@ -1415,6 +1525,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "private-chengdu-panda-day-tour-early-morning": {
     fromUsd: 598,
+    pricingUnit: "private-group",
+    basePartySize: 4,
+    cardBasis: "Private group of four",
     basis:
       "Indicative starting price per private group of four guests, equivalent to approximately US$150 per guest. A two-guest private tour starts from US$478 total. Optional experiences and airport transfers are separate.",
     inclusionSummary:
@@ -1426,6 +1539,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "private-xian-terracotta-warriors-day-tour": {
     fromUsd: 628,
+    pricingUnit: "private-group",
+    basePartySize: 4,
+    cardBasis: "Private group of four",
     basis:
       "Indicative starting price per private group of four guests, equivalent to US$157 per guest. A two-guest private tour starts from US$498 total. Optional experiences, airports and railway-station transfers are separate.",
     inclusionSummary:
@@ -1437,6 +1553,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "private-shanghai-day-tour-guide-driver": {
     fromUsd: 672,
+    pricingUnit: "private-group",
+    basePartySize: 4,
+    cardBasis: "Private group of four",
     basis:
       "Indicative starting price per private group of four guests, equivalent to US$168 per guest. A two-guest private tour starts from US$558 total. Optional experiences, airports and cruise-port transfers are separate.",
     inclusionSummary:
@@ -1448,6 +1567,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
     fromUsd: 2280,
+    pricingUnit: "per-person",
+    basePartySize: 4,
+    cardBasis: "Based on four guests sharing two rooms",
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside major exhibition and peak periods, equivalent to a group total from US$9,120.",
     inclusionSummary:
@@ -1459,6 +1581,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "private-mutianyu-great-wall-day-tour": {
     fromUsd: 198,
+    pricingUnit: "per-person",
+    basePartySize: 4,
+    cardBasis: "Based on four guests travelling privately",
     basis:
       "Indicative starting price per person, based on four guests traveling privately, equivalent to a private-group total from US$792. Optional mountain transport and lunch are separate.",
     inclusionSummary:
@@ -1470,6 +1595,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     fromUsd: 11800,
+    pricingUnit: "per-person",
+    basePartySize: 4,
+    cardBasis: "Based on four guests sharing two rooms",
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$47,200.",
     inclusionSummary:
@@ -1481,6 +1609,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "muslim-friendly-china-tour-great-wall-desert-stars": {
     fromUsd: 7680,
+    pricingUnit: "per-person",
+    basePartySize: 4,
+    cardBasis: "Based on four guests sharing two rooms",
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$30,720.",
     inclusionSummary:
@@ -1492,6 +1623,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "china-at-an-easier-pace-12-day-private-tour": {
     fromUsd: 6480,
+    pricingUnit: "per-person",
+    basePartySize: 4,
+    cardBasis: "Based on four guests sharing two rooms",
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside peak holiday periods.",
     inclusionSummary:
@@ -1503,6 +1637,9 @@ const journeyPricing: Record<string, JourneyPricing> = {
   },
   "china-family-tour-with-pandas-12-day-private-tour": {
     fromUsd: 6880,
+    pricingUnit: "per-person",
+    basePartySize: 4,
+    cardBasis: "Based on a family of four sharing two rooms",
     basis:
       "Indicative starting price per person, based on a family of four: two adults and two children aged 6–11 sharing two rooms outside Chinese public holidays, school-holiday pressure dates and other peak periods, equivalent to a family total from US$27,520.",
     inclusionSummary:
@@ -1535,6 +1672,10 @@ const journeyPricing: Record<string, JourneyPricing> = {
   "first-china-beautifully-paced": {
     fromUsd: 3190,
     ...sharedPricingDetails,
+    inclusionSummary:
+      "Includes selected hotels, private guiding on listed sightseeing days, private airport and city transfers where stated, Beijing–Xi'an high-speed rail, listed admissions, hotel breakfasts and the Day 2 welcome dinner.",
+    finalPriceNote:
+      "The final price depends on your travel dates, room setup, hotel selection, rail class and the services your group chooses. Lunches and dinners beyond the Day 2 welcome dinner are not included unless listed in your proposal.",
   },
   "chengdu-chongqing-zhangjiajie-private-11-day-tour": {
     fromUsd: 3990,
@@ -1543,12 +1684,14 @@ const journeyPricing: Record<string, JourneyPricing> = {
       "Two open days are intentionally unprogrammed. Optional private experiences are quoted separately.",
   },
   "beijing-xian-chengdu-shanghai-private-11-day-tour": {
-    fromUsd: 4290,
+    fromUsd: 2680,
     ...sharedPricingDetails,
+    basis:
+      "Indicative starting price per person for the 12-day Essential Pace, based on four guests sharing two rooms outside peak periods, equivalent to a private group total from US$10,720. The 13-day Considered Pace starts from US$2,980 per person, or US$11,920 for four guests.",
   },
 };
 
-export const journeyCatalog: JourneyCatalogItem[] = journeyCatalogBase.map((journey) => {
+const completeJourneyCatalog: JourneyCatalogItem[] = journeyCatalogBase.map((journey) => {
   const enrichedJourney: JourneyCatalogBase = {
     ...journey,
     planningNeedFilters: journey.travelerFilters.includes("solo-travelers")
@@ -1563,6 +1706,12 @@ export const journeyCatalog: JourneyCatalogItem[] = journeyCatalogBase.map((jour
     pricing: journeyPricing[journey.slug],
     discovery: buildDiscoveryData(enrichedJourney, commercialDetails[journey.slug]),
   };
+});
+
+export const journeyCatalog: JourneyCatalogItem[] = publicJourneySlugs.map((slug) => {
+  const journey = completeJourneyCatalog.find((item) => item.slug === slug);
+  if (!journey) throw new Error(`Public journey is missing from the catalog: ${slug}`);
+  return journey;
 });
 
 function buildDiscoveryData(

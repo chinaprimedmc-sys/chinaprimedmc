@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  allowedDevOrigins: ["localhost", "127.0.0.1"],
   outputFileTracingIncludes: {
     "/journal/[slug]": ["./content/journal/articles/**/*.md"],
   },
@@ -95,11 +96,6 @@ const nextConfig: NextConfig = {
       {
         source: "/why-us",
         destination: "/about",
-        permanent: true,
-      },
-      {
-        source: "/reviews",
-        destination: "/contact",
         permanent: true,
       },
       {

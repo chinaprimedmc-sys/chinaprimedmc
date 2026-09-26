@@ -19,20 +19,15 @@ export function SectionHeader({
   titleClassName,
 }: SectionHeaderProps) {
   return (
-    <div className={cn("grid gap-4 md:grid-cols-[0.9fr_1.1fr] md:items-end", className)}>
+    <div className={cn("grid max-w-3xl gap-4", className)}>
       <div>
         <Badge>{eyebrow}</Badge>
-        <Title
-          className={cn(
-            "mt-4 max-w-3xl text-[2rem] leading-[1.05] font-semibold tracking-[-0.035em] sm:text-4xl md:mt-5 md:text-5xl lg:text-6xl",
-            titleClassName,
-          )}
-        >
+        <Title className={cn("type-section-title mt-4 max-w-[22ch]", titleClassName)}>
           {title}
         </Title>
       </div>
       {description ? (
-        <p className="max-w-2xl text-base leading-7 text-black md:text-lg">{description}</p>
+        <p className="type-body max-w-[64ch] text-[var(--color-copy)]">{description}</p>
       ) : null}
     </div>
   );

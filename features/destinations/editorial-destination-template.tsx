@@ -16,7 +16,6 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import type { CmsDestinationCard } from "@/components/destinations/destination-explorer";
-import type { NavigationItem } from "@/types/component-library";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import { journalArticles } from "@/content/journal";
 
@@ -24,7 +23,6 @@ export function EditorialDestinationTemplate({
   destination,
   destinations,
   journeys,
-  navigation,
   cta,
 }: {
   destination: CmsDestinationCard & {
@@ -44,7 +42,6 @@ export function EditorialDestinationTemplate({
   };
   destinations: CmsDestinationCard[];
   journeys: JourneyCatalogItem[];
-  navigation: NavigationItem[];
   cta: { label: string; href: string };
 }) {
   const planningHref = `${cta.href}?destination=${encodeURIComponent(destination.name)}&source=destination-guide`;
@@ -60,16 +57,9 @@ export function EditorialDestinationTemplate({
     .slice(0, 3);
 
   return (
-    <main className="min-h-svh overflow-x-clip bg-[#f7f7f3] text-[#1b1c19]">
-      <SiteNavigation
-        tone="light"
-        items={navigation}
-        cta={{
-          label: cta.label,
-          href: planningHref,
-        }}
-      />
-      <section data-hero-layout="true" className="relative min-h-[88svh] overflow-hidden">
+    <main className="min-h-svh bg-white text-[var(--color-ink)]">
+      <SiteNavigation />
+      <section data-hero-layout="true" className="relative min-h-[78svh] overflow-hidden">
         <OptimizedImage
           src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
           alt={destination.heroImage?.alt ?? destination.name}
@@ -77,25 +67,23 @@ export function EditorialDestinationTemplate({
           priority
           sizes="100vw"
           frameClassName="absolute inset-0 h-full w-full"
-          className="object-cover motion-safe:animate-[destination-hero-breathe_16s_ease-out_both]"
+          className="object-cover"
           style={{ objectPosition: destination.heroImage?.objectPosition }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,247,243,.96)_0%,rgba(247,247,243,.82)_31%,rgba(247,247,243,.18)_55%,transparent_74%),linear-gradient(0deg,rgba(247,247,243,.32),transparent_42%)] max-md:bg-[linear-gradient(0deg,rgba(247,247,243,.98)_0%,rgba(247,247,243,.88)_35%,rgba(247,247,243,.08)_62%,transparent_78%)]" />
-        <div className="relative mx-auto flex min-h-[88svh] max-w-[92rem] items-end px-5 pb-16 sm:px-6 md:items-center md:pb-0 lg:px-8">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.98)_0%,rgba(255,255,255,.91)_38%,rgba(255,255,255,.3)_65%,transparent_85%)] max-md:bg-[linear-gradient(0deg,rgba(255,255,255,.99)_0%,rgba(255,255,255,.97)_43%,rgba(255,255,255,.16)_82%)]" />
+        <div className="relative mx-auto flex min-h-[78svh] max-w-[85rem] items-end px-[var(--page-gutter)] pb-10 md:items-center md:pb-0">
           <div className="max-w-3xl pt-28">
             <Link
               href="/destinations"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#607868]"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-muted)]"
             >
               <ArrowLeft className="size-4" /> All destinations
             </Link>
-            <p className="mt-8 text-xs font-semibold tracking-[0.2em] text-[#607868] uppercase">
+            <p className="mt-8 text-xs font-semibold text-[var(--color-muted)] uppercase">
               {destination.kicker} · {destination.region}
             </p>
-            <h1 className="mt-5 font-serif text-[clamp(4rem,9vw,8rem)] leading-[.9]">
-              {destination.name}
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#1b1c19]/68">
+            <h1 className="type-hero mt-5">{destination.name}</h1>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-copy)]">
               {destination.summary}
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
@@ -116,16 +104,14 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="border-y border-black/8 bg-white py-24 md:py-32">
-        <div className="mx-auto grid max-w-[92rem] gap-12 px-5 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
+        <div className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_.95fr]">
           <div className="self-center">
-            <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
               Culture and historical context
             </p>
-            <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
-              {destination.culturalStory.title}
-            </h2>
-            <div className="mt-7 grid gap-5 text-base leading-8 text-[#1b1c19]/68 md:text-lg">
+            <h2 className="type-section-title mt-5">{destination.culturalStory.title}</h2>
+            <div className="mt-7 grid gap-5 text-base leading-8 text-[var(--color-copy)] md:text-lg">
               {destination.culturalStory.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -135,37 +121,14 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      {journeys[0] ? (
-        <section className="bg-[#dfe8e0] py-16">
-          <div className="mx-auto grid max-w-[92rem] gap-8 px-5 sm:px-6 md:grid-cols-[1fr_auto] md:items-center lg:px-8">
-            <div>
-              <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
-                A real route including {destination.name}
-              </p>
-              <h2 className="mt-3 max-w-3xl font-serif text-3xl md:text-4xl">
-                {journeys[0].title}
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-[#1b1c19]/64">
-                {journeys[0].durationLabel} · {journeys[0].routeLabel}
-              </p>
-            </div>
-            <CtaButton href={journeys[0].href} size="lg">
-              View this itinerary
-            </CtaButton>
-          </div>
-        </section>
-      ) : null}
-
-      <section className="mx-auto grid max-w-[92rem] gap-12 px-5 py-24 sm:px-6 md:grid-cols-[.72fr_1.28fr] md:py-32 lg:px-8">
+      <section className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] py-[var(--space-section-compact)] md:grid-cols-[.72fr_1.28fr] md:py-[var(--space-section-default)]">
         <div>
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Why this destination
           </p>
-          <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
-            Why {destination.name} belongs in the route.
-          </h2>
+          <h2 className="type-section-title mt-5">Why {destination.name} belongs in the route.</h2>
         </div>
-        <div className="grid gap-6 text-base leading-8 text-[#1b1c19]/66 md:text-lg">
+        <div className="grid gap-6 text-base leading-8 text-[var(--color-copy)] md:text-lg">
           <p>{destination.orientation}</p>
           <p>
             We recommend {destination.recommendedStay.toLowerCase()} here. The right onward
@@ -175,8 +138,8 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="border-y border-black/8 bg-white py-24 md:py-32">
-        <div className="mx-auto grid max-w-[92rem] gap-12 px-5 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
+        <div className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] lg:grid-cols-[.9fr_1.1fr]">
           <div className="grid grid-cols-2 gap-4">
             {destination.gallery.slice(1, 3).map((image, index) => (
               <div
@@ -196,13 +159,11 @@ export function EditorialDestinationTemplate({
             ))}
           </div>
           <div className="self-center">
-            <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
               Food and social life
             </p>
-            <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
-              {destination.foodStory.title}
-            </h2>
-            <div className="mt-7 grid gap-5 text-base leading-8 text-[#1b1c19]/68 md:text-lg">
+            <h2 className="type-section-title mt-5">{destination.foodStory.title}</h2>
+            <div className="mt-7 grid gap-5 text-base leading-8 text-[var(--color-copy)] md:text-lg">
               {destination.foodStory.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -211,34 +172,33 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="border-y border-black/8 bg-white py-24">
-        <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)]">
+        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Signature experiences
           </p>
-          <h2 className="mt-5 max-w-3xl font-serif text-4xl md:text-6xl">
+          <h2 className="type-section-title mt-5 max-w-3xl">
             What gives {destination.name} its character.
           </h2>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {destination.highlights.map((experience, index) => (
-              <article
-                key={experience}
-                className="rounded-[1.5rem] border border-black/8 bg-[#f7f7f3] p-7"
-              >
-                <span className="text-xs font-semibold text-[#607868]">0{index + 1}</span>
-                <h3 className="mt-8 text-xl leading-8 font-semibold">{experience}</h3>
+              <article key={experience} className="border-t border-black/10 py-5">
+                <span className="text-xs font-semibold text-[var(--color-muted)]">
+                  0{index + 1}
+                </span>
+                <h3 className="mt-4 text-xl leading-8 font-semibold">{experience}</h3>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-black/8 bg-[#e9ede9] py-24 md:py-32">
-        <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
+        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Suggested {destination.name} itinerary
           </p>
-          <h2 className="mt-5 max-w-4xl font-serif text-4xl md:text-6xl">
+          <h2 className="type-section-title mt-5 max-w-4xl">
             A realistic way to use {destination.recommendedStay.toLowerCase()}.
           </h2>
           <div className="mt-12 divide-y divide-black/10 border-y border-black/10">
@@ -247,11 +207,11 @@ export function EditorialDestinationTemplate({
                 key={`${item.day}-${item.title}`}
                 className="grid gap-3 py-6 md:grid-cols-[8rem_18rem_1fr] md:items-baseline"
               >
-                <p className="text-xs font-semibold tracking-[.16em] text-[#607868] uppercase">
+                <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
                   {item.day}
                 </p>
                 <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="leading-7 text-[#1b1c19]/64">{item.description}</p>
+                <p className="leading-7 text-[var(--color-copy)]">{item.description}</p>
               </article>
             ))}
           </div>
@@ -268,22 +228,22 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[92rem] gap-12 px-5 py-24 sm:px-6 md:grid-cols-2 md:py-32 lg:px-8">
+      <section className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] py-[var(--space-section-compact)] md:grid-cols-2 md:py-[var(--space-section-default)]">
         <div>
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
-            When to go
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">When to go</p>
+          <h2 className="type-section-title mt-5">Season changes the feeling.</h2>
+          <p className="mt-6 text-base leading-8 text-[var(--color-copy)]">
+            {destination.bestTime}
           </p>
-          <h2 className="mt-5 font-serif text-4xl md:text-5xl">Season changes the feeling.</h2>
-          <p className="mt-6 text-base leading-8 text-[#1b1c19]/64">{destination.bestTime}</p>
         </div>
         <div>
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Planning notes
           </p>
           <ul className="mt-5 divide-y divide-black/8 border-y border-black/8">
             {destination.planningNotes.map((note) => (
               <li key={note} className="flex gap-4 py-5 text-base leading-7">
-                <MapPin className="mt-1 size-4 shrink-0 text-[#607868]" />
+                <MapPin className="mt-1 size-4 shrink-0 text-[var(--color-muted)]" />
                 {note}
               </li>
             ))}
@@ -291,12 +251,12 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="border-y border-black/8 bg-[#e9ede9] py-24">
-        <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)]">
+        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Practical orientation for international visitors
           </p>
-          <h2 className="mt-5 max-w-4xl font-serif text-4xl md:text-6xl">
+          <h2 className="type-section-title mt-5 max-w-4xl">
             How {destination.name} works on the ground.
           </h2>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -316,24 +276,27 @@ export function EditorialDestinationTemplate({
               text={destination.stayStrategy}
             />
           </div>
-          <div className="mt-5 flex gap-4 rounded-[1.25rem] border border-[#607868]/20 bg-white p-6">
-            <Lightbulb className="mt-1 size-5 shrink-0 text-[#607868]" aria-hidden="true" />
+          <div className="mt-5 flex gap-4 rounded-[1.25rem] border border-[var(--color-line)] bg-white p-6">
+            <Lightbulb
+              className="mt-1 size-5 shrink-0 text-[var(--color-muted)]"
+              aria-hidden="true"
+            />
             <div>
               <h3 className="font-semibold">What first-time visitors often underestimate</h3>
-              <p className="mt-2 leading-7 text-[#1b1c19]/64">{destination.firstTimerNote}</p>
+              <p className="mt-2 leading-7 text-[var(--color-copy)]">
+                {destination.firstTimerNote}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+      <section className="py-[var(--space-section-compact)]">
+        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Nearby chapters
           </p>
-          <h2 className="mt-5 font-serif text-4xl md:text-6xl">
-            Continue through {destination.region}.
-          </h2>
+          <h2 className="type-section-title mt-5">Continue through {destination.region}.</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {related.map((item) => (
               <Link key={item.slug} href={`/destinations/${item.slug}`} className="group">
@@ -354,7 +317,7 @@ export function EditorialDestinationTemplate({
                   {item.name}
                   <ArrowRight className="size-4 transition group-hover:translate-x-1" />
                 </span>
-                <span className="mt-2 block text-sm text-[#1b1c19]/55">
+                <span className="mt-2 block text-sm text-[var(--color-copy)]">
                   {item.kicker} · {item.recommendedStay}
                 </span>
               </Link>
@@ -364,15 +327,18 @@ export function EditorialDestinationTemplate({
       </section>
 
       {journeys.length ? (
-        <section id="private-journeys" className="border-y border-black/8 bg-white py-24">
-          <div className="mx-auto max-w-[92rem] px-5 sm:px-6 lg:px-8">
-            <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+        <section
+          id="private-journeys"
+          className="border-y border-black/8 bg-white py-[var(--space-section-compact)]"
+        >
+          <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
               Private journeys including {destination.name}
             </p>
-            <h2 className="mt-5 max-w-3xl font-serif text-4xl md:text-6xl">
+            <h2 className="type-section-title mt-5 max-w-3xl">
               See how {destination.name} fits into a considered route.
             </h2>
-            <p className="mt-5 max-w-3xl leading-7 text-[#1b1c19]/62">
+            <p className="mt-5 max-w-3xl leading-7 text-[var(--color-copy)]">
               These are published AVIORA products, not generic route suggestions. Open any journey
               to review its day-by-day structure, included private services and planning options.
             </p>
@@ -383,12 +349,12 @@ export function EditorialDestinationTemplate({
                   href={journey.href}
                   className="group grid gap-5 sm:grid-cols-[.8fr_1.2fr]"
                 >
-                  <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#25352f]">
+                  <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#f3f4f4]">
                     {journey.visualStatus === "pending" ? (
-                      <span className="absolute inset-0 flex flex-col justify-end gap-2 p-5 text-white/75">
-                        <span className="mb-auto block h-px w-12 bg-white/45" />
+                      <span className="absolute inset-0 flex flex-col justify-end gap-2 p-5 text-[var(--color-muted)]">
+                        <span className="mb-auto block h-px w-12 bg-black/20" />
                         <span className="text-xs font-semibold">Photography being prepared</span>
-                        <span className="text-[11px] leading-5 text-white/55">
+                        <span className="text-xs leading-5 text-[var(--color-muted)]">
                           Route and service details are ready to plan
                         </span>
                       </span>
@@ -405,11 +371,11 @@ export function EditorialDestinationTemplate({
                     )}
                   </span>
                   <span className="self-center">
-                    <span className="text-xs font-semibold tracking-[.15em] text-[#607868] uppercase">
+                    <span className="text-xs font-semibold text-[var(--color-muted)] uppercase">
                       {journey.durationLabel}
                     </span>
                     <span className="mt-2 block text-xl font-semibold">{journey.title}</span>
-                    <span className="mt-2 block text-sm leading-6 text-[#1b1c19]/58">
+                    <span className="mt-2 block text-base leading-6 text-[var(--color-copy)]">
                       {journey.routeLabel}
                     </span>
                     <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold">
@@ -424,22 +390,22 @@ export function EditorialDestinationTemplate({
         </section>
       ) : null}
 
-      <section className="border-y border-black/8 bg-white py-24">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)]">
+        <div className="mx-auto max-w-4xl px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             {destination.name} travel FAQ
           </p>
-          <h2 className="mt-5 font-serif text-4xl md:text-6xl">
-            Clear answers before you choose the route.
-          </h2>
+          <h2 className="type-section-title mt-5">Clear answers before you choose the route.</h2>
           <div className="mt-10 divide-y divide-black/10 border-y border-black/10">
             {destination.faqs.map((faq) => (
               <details key={faq.question} className="group py-6">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-lg font-semibold">
                   {faq.question}
-                  <span className="text-[#607868] transition group-open:rotate-45">+</span>
+                  <span className="text-[var(--color-muted)] transition group-open:rotate-45">
+                    +
+                  </span>
                 </summary>
-                <p className="mt-4 max-w-3xl leading-7 text-[#1b1c19]/64">{faq.answer}</p>
+                <p className="mt-4 max-w-3xl leading-7 text-[var(--color-copy)]">{faq.answer}</p>
               </details>
             ))}
           </div>
@@ -447,11 +413,11 @@ export function EditorialDestinationTemplate({
       </section>
 
       {relatedGuides.length ? (
-        <section className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8">
-          <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+        <section className="mx-auto max-w-[85rem] px-[var(--page-gutter)] py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Practical planning guides
           </p>
-          <h2 className="mt-5 max-w-3xl font-serif text-4xl md:text-6xl">
+          <h2 className="type-section-title mt-5 max-w-3xl">
             Prepare for {destination.name} with clearer answers.
           </h2>
           <div className="mt-12 grid gap-8 border-y border-black/8">
@@ -462,11 +428,11 @@ export function EditorialDestinationTemplate({
                 className="group grid gap-4 border-b border-black/8 py-6 last:border-0 sm:grid-cols-[1fr_auto] sm:items-center"
               >
                 <span>
-                  <span className="text-xs font-semibold tracking-[.15em] text-[#607868] uppercase">
+                  <span className="text-xs font-semibold text-[var(--color-muted)] uppercase">
                     {article.category} · {article.readingTime}
                   </span>
                   <span className="mt-2 block text-xl font-semibold">{article.title}</span>
-                  <span className="mt-2 block max-w-2xl text-sm leading-6 text-[#1b1c19]/58">
+                  <span className="mt-2 block max-w-2xl text-base leading-6 text-[var(--color-copy)]">
                     {article.excerpt}
                   </span>
                 </span>
@@ -477,16 +443,16 @@ export function EditorialDestinationTemplate({
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-[92rem] px-5 py-24 sm:px-6 md:py-32 lg:px-8">
-        <div className="grid gap-10 rounded-[2rem] bg-[#dfe8e0] p-7 md:grid-cols-[1fr_auto] md:items-end md:p-12">
+      <section className="mx-auto max-w-[85rem] px-[var(--page-gutter)] py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
+        <div className="grid gap-10 border-t border-black/10 pt-8 md:grid-cols-[1fr_auto] md:items-end">
           <div>
-            <p className="text-xs font-semibold tracking-[.2em] text-[#607868] uppercase">
+            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
               Private China planning
             </p>
-            <h2 className="mt-5 max-w-3xl font-serif text-4xl md:text-6xl">
+            <h2 className="type-section-title mt-5 max-w-3xl">
               Build {destination.name} into the right private tour.
             </h2>
-            <p className="mt-5 max-w-2xl leading-7 text-[#1b1c19]/62">
+            <p className="mt-5 max-w-2xl leading-7 text-[var(--color-copy)]">
               Share your dates, travelers and hotel expectations. We will recommend the right stay,
               onward connection and private service plan.
             </p>
@@ -533,11 +499,11 @@ function Fact({ icon, text }: { icon: ReactNode; text: string }) {
 function PlanningCard({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
   return (
     <article className="rounded-[1.25rem] border border-black/8 bg-white p-6">
-      <span className="grid size-10 place-items-center rounded-full bg-[#dfe8e0] text-[#607868]">
+      <span className="grid size-10 place-items-center rounded-full border border-[var(--color-line)] bg-white text-[var(--color-muted)]">
         {icon}
       </span>
       <h3 className="mt-5 text-xl font-semibold">{title}</h3>
-      <p className="mt-3 text-sm leading-7 text-[#1b1c19]/64">{text}</p>
+      <p className="mt-3 text-base leading-7 text-[var(--color-copy)]">{text}</p>
     </article>
   );
 }

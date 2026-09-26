@@ -40,7 +40,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
   seo: {
     title: "13-Day Muslim-Friendly Private China Tour",
     description:
-      "A 13-day private Muslim-friendly China tour from Beijing to Xi'an, Ningxia and Shanghai, with verified dining, Silk Road heritage, a premium desert lodge and stargazing.",
+      "A private 13-day Muslim-friendly China tour through Beijing, Xi'an, Ningxia and Shanghai with verified dining, Silk Road culture and desert stars.",
     keywords: [
       "Muslim friendly China tour",
       "halal China tour",

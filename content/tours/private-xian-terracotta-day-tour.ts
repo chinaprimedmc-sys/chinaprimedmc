@@ -30,7 +30,7 @@ export const privateXianTerracottaDayTour: Tour = {
   seo: {
     title: "Private Xi'an Terracotta Warriors Day Tour",
     description:
-      "An 8-hour private Xi'an Terracotta Warriors day tour with hotel pickup, English-speaking guide, private vehicle, admission, Old City walk and no shopping. From US$628 for four guests.",
+      "Private Xi'an Terracotta Warriors day tour with hotel pickup, English-speaking guide, private driver, admission and a flexible Old City walk.",
     keywords: [
       "private Terracotta Warriors tour",
       "Xi'an Terracotta Warriors private day tour",

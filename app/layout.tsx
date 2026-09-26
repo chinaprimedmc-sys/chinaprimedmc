@@ -12,18 +12,18 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
 import "@/styles/globals.css";
 
-const lora = Lora({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-lora-loaded",
-  weight: ["400", "500", "600", "700"],
-});
-
 const inter = Inter({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-inter-loaded",
   weight: ["400", "500", "600", "700"],
+});
+
+const lora = Lora({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-lora-loaded",
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = createMetadata();
@@ -32,14 +32,19 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#f4f6f5",
+  themeColor: "#ffffff",
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const requestHeaders = await headers();
   const nonce = requestHeaders.get("x-nonce") ?? "";
   return (
-    <html lang="en-US" className={`${lora.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html
+      lang="en-US"
+      className={`${inter.variable} ${lora.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body className="font-sans antialiased">
         <CspNonceProvider nonce={nonce}>
           <PageTransition>{children}</PageTransition>

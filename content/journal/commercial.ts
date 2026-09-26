@@ -3,6 +3,7 @@ import { commercialArticleContent } from "@/content/journal/commercial-content";
 import { growthLaunchArticles } from "@/content/journal/senior-cluster";
 import {
   beijingUnhurriedAsset,
+  chinaFamilyAsset,
   firstChinaAsset,
   shanghaiZhangjiajieAsset,
 } from "@/content/tours/assets";
@@ -172,6 +173,7 @@ type CommercialArticleInput = {
   readingTime: string;
   eyebrow: string;
   hero: MediaAsset;
+  heroMode?: "image" | "text";
   gallery: MediaAsset[];
   seoTitle: string;
   seoDescription: string;
@@ -202,7 +204,7 @@ function commercialArticle(input: CommercialArticleInput): JournalArticle {
     publishedAt: input.publishedAt ?? "2026-08-12",
     readingTime: input.readingTime,
     editorPick: true,
-    hero: { eyebrow: input.eyebrow, image: input.hero },
+    hero: { eyebrow: input.eyebrow, image: input.hero, mode: input.heroMode },
     gallery: input.gallery,
     content: commercialArticleContent[input.slug] ?? [],
     seo: {
@@ -2355,6 +2357,411 @@ export const commercialJournalArticles: JournalArticle[] = [
     conversionDescription:
       "Tell us your Chengdu dates, mobility needs and interest in river or cliff views. We will recommend the most realistic Leshan day and transfer plan.",
     conversionLabel: "Plan a Leshan Day",
+  }),
+  commercialArticle({
+    slug: "how-far-in-advance-book-private-china-tour",
+    publishedAt: "2026-09-25",
+    title: "How Far in Advance Should You Book a Private China Trip?",
+    dek: "A practical booking timeline for flights, hotels, passport-linked tickets, trains and private services, including what can wait and what should not.",
+    excerpt:
+      "Work backward from your travel dates to protect the route, hotel choices and reservations that matter without paying for every detail too early.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "private-guides", "train-travel", "planning"],
+    readingTime: "13 min read",
+    eyebrow: "China trip booking timeline",
+    hero: commercialHeroImages.inclusions,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "How Far Ahead to Book a Private China Tour",
+    seoDescription:
+      "When should you book a private China trip? Use this timeline for route design, hotels, flights, attraction tickets, trains and final checks.",
+    keywords: [
+      "how far in advance to book China trip",
+      "when to book private China tour",
+      "China trip booking timeline",
+      "how early to plan China vacation",
+      "book China tour in advance",
+    ],
+    destinations: ["beijing", "xian", "shanghai"],
+    tours: ["first-china-beautifully-paced"],
+    experiences: ["private-guides", "train-travel"],
+    articles: [
+      "first-trip-to-china-planning-guide",
+      "best-time-to-visit-china",
+      "china-golden-week-travel-2026",
+      "china-high-speed-train-foreigners",
+    ],
+    conversionTitle: "Put the decisions in the right order before availability narrows.",
+    conversionDescription:
+      "Share your dates, gateways and travelers. Our China-based team will identify what needs to be held now, what can wait and where the route still needs testing.",
+    conversionLabel: "Review My Booking Timeline",
+    conversionHref:
+      "/start-planning?source=journal-how-far-in-advance-book-private-china-tour&journey=first-china-beautifully-paced&preference=booking-timeline",
+    sourcePath: "content/journal/articles/2026-09-25-how-far-in-advance-book-private-china-tour.md",
+  }),
+  commercialArticle({
+    slug: "private-china-tour-proposal-checklist",
+    publishedAt: "2026-09-25",
+    title: "Private China Tour Proposal Checklist: What to Confirm Before You Pay",
+    dek: "A line-by-line test for comparing private China tour proposals by responsibility, service standard, exclusions, payment terms and what happens when plans change.",
+    excerpt:
+      "Use one checklist to find the operational gaps hidden behind polished itineraries and compare proposals on responsibility, not adjectives.",
+    category: "Luxury Travel",
+    tags: ["first-time-china", "luxury-travel", "private-guides", "planning"],
+    readingTime: "15 min read",
+    eyebrow: "Before you pay a deposit",
+    hero: commercialHeroImages.chooseCompany,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "Private China Tour Proposal Checklist Before Paying",
+    seoDescription:
+      "Compare private China tour proposals with a checklist for licenses, hotels, guides, vehicles, tickets, exclusions, payment and cancellation terms.",
+    keywords: [
+      "private China tour proposal checklist",
+      "China tour contract checklist",
+      "what to check before booking China tour",
+      "compare private China tour companies",
+      "China tour deposit questions",
+    ],
+    destinations: ["beijing", "xian", "shanghai"],
+    tours: ["first-china-beautifully-paced"],
+    experiences: ["private-guides"],
+    articles: [
+      "how-to-choose-private-china-tour-company",
+      "what-is-included-private-china-tour",
+      "private-china-tour-cost-2026",
+      "private-china-tour-vs-self-guided",
+    ],
+    conversionTitle: "Ask for a proposal that can be understood without a sales call.",
+    conversionDescription:
+      "Send us your dates and priorities. We will prepare a written scope that separates confirmed services, assumptions, exclusions and items still subject to availability.",
+    conversionLabel: "Request a Clear Proposal",
+    conversionHref:
+      "/start-planning?source=journal-private-china-tour-proposal-checklist&journey=first-china-beautifully-paced&preference=clear-proposal",
+    sourcePath: "content/journal/articles/2026-09-25-private-china-tour-proposal-checklist.md",
+  }),
+  commercialArticle({
+    slug: "private-china-tour-arrival-handoff-checklist",
+    publishedAt: "2026-09-25",
+    title: "Your First 24 Hours in China: A Private Tour Arrival Handoff Checklist",
+    dek: "What a well-run arrival should cover from the arrival card and airport meeting point to hotel registration, payment backup, the first briefing and next-day readiness.",
+    excerpt:
+      "A calm first day is designed before landing. Use this handoff checklist to see what your China operator should confirm and what you should keep with you.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "private-guides", "train-travel", "planning"],
+    readingTime: "14 min read",
+    eyebrow: "The first 24 hours on the ground",
+    hero: commercialHeroImages.inclusions,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "First 24 Hours in China: Arrival Handoff Checklist",
+    seoDescription:
+      "Use this China arrival checklist for the arrival card, airport pickup, hotel registration, payments, passports, rail tickets and first-day briefing.",
+    keywords: [
+      "first 24 hours in China",
+      "China airport arrival checklist",
+      "private China tour airport pickup",
+      "China arrival handoff",
+      "what happens when you arrive in China",
+    ],
+    destinations: ["beijing", "shanghai"],
+    tours: ["first-china-beautifully-paced"],
+    experiences: ["private-guides", "train-travel"],
+    articles: [
+      "china-accommodation-registration-foreigners",
+      "china-mobile-payments-foreign-tourists",
+      "best-apps-for-china-travel-2026",
+      "china-high-speed-train-foreigners",
+    ],
+    conversionTitle: "Make the first day feel like an arrival, not a troubleshooting session.",
+    conversionDescription:
+      "Tell us your flight, party and first hotel. We will build the meeting, transfer, check-in and next-day briefing into one accountable arrival plan.",
+    conversionLabel: "Plan My Arrival",
+    conversionHref:
+      "/start-planning?source=journal-private-china-tour-arrival-handoff-checklist&journey=first-china-beautifully-paced&preference=arrival-handoff",
+    sourcePath:
+      "content/journal/articles/2026-09-25-private-china-tour-arrival-handoff-checklist.md",
+  }),
+  commercialArticle({
+    slug: "beijing-xian-shanghai-private-tour-9-days",
+    publishedAt: "2026-09-25",
+    title: "Beijing, Xi'an and Shanghai in 9 Days: A Private First-China Route",
+    dek: "The operating logic behind a focused first journey: four Beijing nights, two in Xi'an and two in Shanghai, connected by two managed handovers.",
+    excerpt:
+      "See what a nine-day private Beijing, Xi'an and Shanghai route can hold, what it should leave out and who it suits.",
+    category: "Travel Guides",
+    tags: ["beijing", "xian", "shanghai", "first-time-china", "private-guides"],
+    readingTime: "11 min read",
+    eyebrow: "The essential first route",
+    hero: firstChinaAsset.beijingGreatWallWide,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "Beijing, Xi'an and Shanghai Private Tour: 9 Days",
+    seoDescription:
+      "See how a 9-day private Beijing, Xi'an and Shanghai route works, including nights, rail, walking, hotels, pacing and who it suits.",
+    keywords: [
+      "Beijing Xi'an Shanghai private tour",
+      "9 day China private tour",
+      "Beijing Xi'an Shanghai itinerary",
+      "first China private journey",
+    ],
+    destinations: ["beijing", "xian", "shanghai"],
+    tours: ["first-china-beautifully-paced"],
+    experiences: ["private-guides", "train-travel"],
+    articles: ["china-high-speed-train-foreigners", "how-many-days-beijing-xian-shanghai"],
+    conversionTitle: "See the complete nine-day journey behind the route logic.",
+    conversionDescription:
+      "Review the published nights, private service, starting-price basis and day-by-day structure, then adapt it around your flights and pace.",
+    conversionLabel: "Explore the 9-Day Journey",
+    conversionHref:
+      "/start-planning?source=journal-beijing-xian-shanghai-private-tour-9-days&journey=first-china-beautifully-paced&preference=first-china-route",
+    sourcePath: "content/journal/articles/2026-09-25-beijing-xian-shanghai-private-tour-9-days.md",
+  }),
+  commercialArticle({
+    slug: "what-private-support-changes-first-china-trip",
+    publishedAt: "2026-09-25",
+    title: "What Private Support Changes on a First Trip to China",
+    dek: "A practical account of where a China-based private team changes the journey: arrival, reservations, rail handoffs, pacing and on-trip decisions.",
+    excerpt:
+      "Understand the work private support should remove from the traveler and the promises it should not make.",
+    category: "Luxury Travel",
+    tags: ["first-time-china", "private-guides", "beijing", "xian", "shanghai"],
+    readingTime: "10 min read",
+    eyebrow: "Private support, made specific",
+    hero: firstChinaAsset.shanghaiWaterfrontGroup,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "What Private Support Changes on a First China Trip",
+    seoDescription:
+      "Understand where a private China tour adds real value: arrival, passport-linked tickets, rail handoffs, pacing, guides and on-trip decisions.",
+    keywords: [
+      "private China tour support",
+      "private guide China first trip",
+      "China tour local support",
+      "is private China travel worth it",
+    ],
+    destinations: ["beijing", "xian", "shanghai"],
+    tours: ["first-china-beautifully-paced"],
+    experiences: ["private-guides", "train-travel"],
+    articles: ["private-china-tour-vs-self-guided", "private-china-tour-arrival-handoff-checklist"],
+    conversionTitle: "Put one accountable China team behind the whole first journey.",
+    conversionDescription:
+      "Share your flights, travelers and priorities. We will show the exact private-service scope before you book.",
+    conversionLabel: "Plan With China-Based Support",
+    conversionHref:
+      "/start-planning?source=journal-what-private-support-changes-first-china-trip&journey=first-china-beautifully-paced&preference=private-support",
+    sourcePath:
+      "content/journal/articles/2026-09-25-what-private-support-changes-first-china-trip.md",
+  }),
+  commercialArticle({
+    slug: "china-family-tour-with-pandas-12-days",
+    publishedAt: "2026-09-25",
+    title: "A 12-Day China Family Tour With Pandas: How the Route Works",
+    dek: "Beijing, Xi'an, Chengdu and Shanghai arranged around family energy, hands-on history, better-timed pandas and protected downtime.",
+    excerpt:
+      "See why twelve days protects four distinct family chapters instead of compressing the same city changes into a harder trip.",
+    category: "Family Travel",
+    tags: ["family-travel", "pandas", "beijing", "xian", "chengdu", "shanghai"],
+    readingTime: "12 min read",
+    eyebrow: "Four family chapters",
+    hero: chinaFamilyAsset.hero,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "12-Day China Family Tour With Pandas: Route Guide",
+    seoDescription:
+      "Plan a 12-day private China family tour with Beijing, Xi'an, Chengdu pandas and Shanghai, including pacing, trains, hotels and age fit.",
+    keywords: [
+      "China family tour with pandas",
+      "12 day China family itinerary",
+      "private China tour with children",
+      "Beijing Xian Chengdu Shanghai family tour",
+    ],
+    destinations: ["beijing", "xian", "chengdu", "shanghai"],
+    tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+    experiences: ["pandas", "private-guides", "train-travel"],
+    articles: ["china-tours-with-pandas", "chengdu-panda-base-tickets-foreigners"],
+    conversionTitle: "See the published family journey day by day.",
+    conversionDescription:
+      "Review the family pacing, rooms, panda boundaries, transport and starting-price assumptions before tailoring it to your children.",
+    conversionLabel: "Explore the Family Journey",
+    conversionHref:
+      "/start-planning?source=journal-china-family-tour-with-pandas-12-days&journey=china-family-tour-with-pandas-12-day-private-tour&preference=family-panda-route",
+    sourcePath: "content/journal/articles/2026-09-25-china-family-tour-with-pandas-12-days.md",
+  }),
+  commercialArticle({
+    slug: "best-age-for-china-family-tour",
+    publishedAt: "2026-09-25",
+    title: "What Is the Best Age for a Family Trip to China?",
+    dek: "Ages 6–9, 10–13 and 14–17 need different interpretation, downtime and independence even when they travel the same route.",
+    excerpt:
+      "Compare the stamina, room, Great Wall, panda and engagement questions that matter more than a child's age alone.",
+    category: "Family Travel",
+    tags: ["family-travel", "pandas", "first-time-china", "beijing", "chengdu"],
+    readingTime: "10 min read",
+    eyebrow: "Design around the actual children",
+    hero: chinaFamilyAsset.hero,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "Best Age for a Family Trip to China: Honest Guide",
+    seoDescription:
+      "Compare China family travel for ages 6-9, 10-13 and 14-17, including pacing, Great Wall walking, pandas, food, rooms and rail days.",
+    keywords: [
+      "best age for China family trip",
+      "China trip with kids",
+      "China family tour age",
+      "China itinerary for children",
+    ],
+    destinations: ["beijing", "chengdu"],
+    tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+    experiences: ["pandas", "private-guides"],
+    articles: ["china-family-itinerary-10-to-14-days", "how-much-walking-china-tour"],
+    conversionTitle: "Build the journey around your children's real ages and rhythm.",
+    conversionDescription:
+      "Tell us the children's ages, interests, sleep needs and walking comfort so the route can be adapted before hotels are chosen.",
+    conversionLabel: "Plan for Our Family",
+    conversionHref:
+      "/start-planning?source=journal-best-age-for-china-family-tour&journey=china-family-tour-with-pandas-12-day-private-tour&preference=family-age-fit",
+    sourcePath: "content/journal/articles/2026-09-25-best-age-for-china-family-tour.md",
+  }),
+  commercialArticle({
+    slug: "china-family-tour-cost-four",
+    publishedAt: "2026-09-25",
+    title: "How Much Does a Private China Family Tour Cost for Four?",
+    dek: "A transparent reading of the published family-of-four price basis and the rooms, ages, dates, private service and transport that change it.",
+    excerpt:
+      "Understand what a US$27,520 published family starting total includes and what the final proposal still needs to confirm.",
+    category: "Family Travel",
+    tags: ["family-travel", "luxury-travel", "pandas", "private-guides"],
+    readingTime: "11 min read",
+    eyebrow: "Read the family price basis",
+    hero: chinaFamilyAsset.hero,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "Private China Family Tour Cost for Four: Price Guide",
+    seoDescription:
+      "Understand the cost of a private China family tour for four, including rooms, guides, vehicles, trains, flights, tickets and peak dates.",
+    keywords: [
+      "China family tour cost for four",
+      "private China family tour price",
+      "China trip cost family of four",
+      "luxury China family vacation cost",
+    ],
+    destinations: ["beijing", "xian", "chengdu", "shanghai"],
+    tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+    experiences: ["pandas", "private-guides", "train-travel"],
+    articles: ["private-china-tour-cost-2026", "private-china-tour-proposal-checklist"],
+    conversionTitle: "Turn the published basis into a family-specific written quote.",
+    conversionDescription:
+      "Share the children's ages, travel dates and room requirements. We will separate confirmed services, assumptions and optional upgrades.",
+    conversionLabel: "Request a Family Quote",
+    conversionHref:
+      "/start-planning?source=journal-china-family-tour-cost-four&journey=china-family-tour-with-pandas-12-day-private-tour&preference=family-price",
+    sourcePath: "content/journal/articles/2026-09-25-china-family-tour-cost-four.md",
+  }),
+  commercialArticle({
+    slug: "luxury-yunnan-private-tour-10-days",
+    publishedAt: "2026-09-25",
+    title: "A 10-Day Luxury Yunnan Private Tour: Dali to Shangri-La",
+    dek: "A continuous private road journey through Dali, Shaxi, Lijiang and Shangri-La, with boutique stays and gradual altitude gain.",
+    excerpt:
+      "Understand why the south-to-north route, two nights in Shaxi and a protected first highland evening make this Yunnan journey work.",
+    category: "Luxury Travel",
+    tags: ["luxury-travel", "culture", "nature", "food", "photography"],
+    readingTime: "12 min read",
+    eyebrow: "Yunnan along the old road",
+    hero: yunnanTeaHorseRoadAsset.hero,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "10-Day Luxury Yunnan Private Tour: Route Guide",
+    seoDescription:
+      "Explore a 10-day private Yunnan route through Dali, Shaxi, Lijiang and Shangri-La, with boutique stays, altitude-aware pacing and road travel.",
+    keywords: [
+      "luxury Yunnan private tour",
+      "10 day Yunnan private tour",
+      "Dali Shaxi Lijiang Shangri-La itinerary",
+      "Tea Horse Road luxury tour",
+    ],
+    destinations: ["dali", "shaxi", "lijiang", "shangri-la"],
+    tours: ["luxury-yunnan-private-tour"],
+    experiences: ["private-guides", "food", "photography"],
+    articles: ["yunnan-itinerary-10-days", "luxury-china-tour-planning-guide"],
+    conversionTitle: "See the complete private Yunnan journey.",
+    conversionDescription:
+      "Review the route, boutique-stay standard, private vehicle, altitude boundaries and published price basis before tailoring the hosts and rooms.",
+    conversionLabel: "Explore the Yunnan Journey",
+    conversionHref:
+      "/start-planning?source=journal-luxury-yunnan-private-tour-10-days&journey=luxury-yunnan-private-tour&preference=yunnan-route",
+    sourcePath: "content/journal/articles/2026-09-25-luxury-yunnan-private-tour-10-days.md",
+  }),
+  commercialArticle({
+    slug: "yunnan-altitude-private-tour",
+    publishedAt: "2026-09-25",
+    title: "Yunnan Altitude: Planning Dali, Lijiang and Shangri-La",
+    dek: "Approximate elevations, gradual route order and the limits of what private pacing can change on a highland Yunnan journey.",
+    excerpt:
+      "Compare the altitude profile from Dali to Shangri-La and identify when the route, hotel or high-access activities should change.",
+    category: "Travel Guides",
+    tags: ["nature", "luxury-travel", "culture", "photography"],
+    readingTime: "10 min read",
+    eyebrow: "Plan the highlands honestly",
+    hero: yunnanTeaHorseRoadAsset.jadeDragon,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "Yunnan Altitude: Dali to Shangri-La Planning Guide",
+    seoDescription:
+      "Compare approximate elevations in Dali, Lijiang and Shangri-La and learn how route order, pacing, hotels and private transport support a Yunnan trip.",
+    keywords: [
+      "Yunnan altitude itinerary",
+      "Shangri-La altitude travel",
+      "Dali Lijiang altitude",
+      "Yunnan private tour altitude",
+    ],
+    destinations: ["dali", "lijiang", "shangri-la"],
+    tours: ["luxury-yunnan-private-tour"],
+    experiences: ["private-guides", "nature"],
+    articles: ["yunnan-itinerary-10-days"],
+    conversionTitle: "Test the Yunnan route against your energy and comfort.",
+    conversionDescription:
+      "Tell us about route interests, road comfort and any altitude concerns. We can shorten, slow or redesign the journey before confirmation.",
+    conversionLabel: "Review My Yunnan Route",
+    conversionHref:
+      "/start-planning?source=journal-yunnan-altitude-private-tour&journey=luxury-yunnan-private-tour&preference=yunnan-altitude",
+    sourcePath: "content/journal/articles/2026-09-25-yunnan-altitude-private-tour.md",
+  }),
+  commercialArticle({
+    slug: "where-to-stay-yunnan-private-tour",
+    publishedAt: "2026-09-25",
+    title: "Where to Stay in Yunnan: Dali, Shaxi, Lijiang and Shangri-La",
+    dek: "Choose each stay by route function, room comfort, atmosphere, vehicle access and the practical realities of heritage towns and altitude.",
+    excerpt:
+      "Compare lakeside Dali, Shaxi courtyards, Lijiang heritage access and Shangri-La highland comfort before selecting hotels.",
+    category: "Luxury Hotels",
+    tags: ["luxury-travel", "culture", "nature", "photography"],
+    readingTime: "11 min read",
+    eyebrow: "Four stays with four different jobs",
+    hero: yunnanTeaHorseRoadAsset.shaxiNight,
+    heroMode: "text",
+    gallery: [],
+    seoTitle: "Where to Stay in Yunnan: Four Stops Compared",
+    seoDescription:
+      "Choose where to stay in Dali, Shaxi, Lijiang and Shangri-La by location, room comfort, atmosphere, vehicle access and route function.",
+    keywords: [
+      "where to stay in Yunnan",
+      "Dali luxury hotel area",
+      "where to stay Shaxi",
+      "Lijiang Shangri-La boutique hotels",
+    ],
+    destinations: ["dali", "shaxi", "lijiang", "shangri-la"],
+    tours: ["luxury-yunnan-private-tour"],
+    experiences: ["private-guides", "photography"],
+    articles: ["yunnan-itinerary-10-days", "luxury-china-tour-planning-guide"],
+    conversionTitle: "Choose Yunnan rooms for the route, not the lobby photograph.",
+    conversionDescription:
+      "Share your room, access, atmosphere and location priorities. We will name the exact properties and room categories in the written proposal.",
+    conversionLabel: "Plan My Yunnan Stays",
+    conversionHref:
+      "/start-planning?source=journal-where-to-stay-yunnan-private-tour&journey=luxury-yunnan-private-tour&preference=yunnan-hotels",
+    sourcePath: "content/journal/articles/2026-09-25-where-to-stay-yunnan-private-tour.md",
   }),
   ...growthLaunchArticles,
 ];

@@ -4,11 +4,7 @@ import { DestinationExplorer } from "@/components/destinations/destination-explo
 import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import {
-  getPublicDestinationHub,
-  getPublicDestinations,
-  getPublicSiteSettings,
-} from "@/lib/cms/public-content";
+import { getPublicDestinationHub, getPublicDestinations } from "@/lib/cms/public-content";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -22,15 +18,14 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default async function DestinationsPage() {
-  const [hub, destinations, settings] = await Promise.all([
+  const [hub, destinations] = await Promise.all([
     getPublicDestinationHub(),
     getPublicDestinations(),
-    getPublicSiteSettings(),
   ]);
   const pageUrl = new URL("/destinations", siteConfig.url).toString();
 
   return (
-    <main className="min-h-svh overflow-x-clip bg-[#f4f6f5]">
+    <main className="min-h-svh bg-white">
       <JsonLd
         id="destinations-collection-schema"
         data={{
@@ -63,11 +58,7 @@ export default async function DestinationsPage() {
           { name: "Destinations", path: "/destinations" },
         ])}
       />
-      <SiteNavigation
-        tone="light"
-        items={settings.navigation}
-        cta={{ label: "Plan My Trip", href: settings.primaryCtaHref }}
-      />
+      <SiteNavigation />
       <DestinationExplorer
         content={hub}
         destinations={destinations}

@@ -1,0 +1,111 @@
+.form {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+  color: #172924;
+}
+.intro,
+.help {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475650;
+}
+.summary {
+  margin: 0;
+  white-space: pre-line;
+  border-left: 3px solid #23646d;
+  padding-left: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 18px;
+}
+.field {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.field small {
+  font-weight: 400;
+}
+.field :is(input, select, textarea) {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #bac9c4;
+  border-radius: 12px;
+  background: #fff;
+  color: #172924;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 12px;
+  min-height: 48px;
+}
+.field textarea {
+  resize: vertical;
+}
+.field [aria-invalid="true"] {
+  border: 2px solid #654b13;
+}
+.field :is(input, select, textarea):focus-visible {
+  outline: 3px solid #23646d;
+  outline-offset: 2px;
+}
+.error {
+  color: #654b13;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  background: #23646d;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 650;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.help a,
+.success a {
+  color: #23646d;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.success {
+  display: grid;
+  gap: 16px;
+  color: #172924;
+}
+.success h3 {
+  font-size: 24px;
+  margin: 0;
+}
+.success p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}

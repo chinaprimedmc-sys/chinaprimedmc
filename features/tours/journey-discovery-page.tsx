@@ -1,28 +1,54 @@
-import { JourneyEditorialGrid } from "@/components/cards/journey-editorial-grid";
+/**
+ * 本模块职责：组装 Journeys 路由的导航、权威结构化数据、页面正文与全站页尾。
+ * 输入：URL 查询参数。
+ * 输出：服务端可索引的完整 Journeys 页面。
+ * 不负责：客户端筛选状态、卡片视觉或产品价格计算。
+ * 关键规则：JSON-LD 与可见目录必须共享同一份公开行程数据。
+ */
+
 import { SiteFooter } from "@/components/footer/site-footer";
-import { PageClosing } from "@/components/footer/page-closing";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { JourneysPage } from "@/components/tours/journeys-page";
 import { siteConfig } from "@/config/site";
 import { journeyCatalog } from "@/content/tours/catalog";
+import { getJourneyCardDescription, getJourneyCardTitle } from "@/content/tours/card-copy";
+import { journeyFaqs, journeysDefinition } from "@/content/tours/journeys-page-content";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/seo/schema";
-import { getPublicSiteSettings } from "@/lib/cms/public-content";
 
 export async function JourneyDiscoveryPage({
   initialQueryString = "",
 }: {
   initialQueryString?: string;
 }) {
-  const settings = await getPublicSiteSettings();
   const catalog = journeyCatalog;
   const path = "/tours";
-  const name = "Private China Tours, Drivers & Expert Guides | AVIORA";
-  const description =
-    "A China-based private travel operator providing tailor-made multi-city journeys, private day tours, expert guides, professionally arranged vehicles and driver services.";
+  const pageUrl = new URL(path, siteConfig.url).toString();
+  const name = "Private China Tours & Tailor-Made Journeys | AVIORA";
+
+  const services = [
+    {
+      id: "multi-city-private-journeys",
+      name: "Tailor-made multi-city private journeys in China",
+      serviceType: "Privately operated multi-city China journeys",
+      description:
+        "Private China itineraries connecting several destinations with accommodation, guides, vehicles, domestic transport and local coordination.",
+      url: `${pageUrl}?type=multi-city#journey-catalog`,
+    },
+    {
+      id: "private-guide-driver-services",
+      name: "Private guide and driver services in China",
+      serviceType: "Private guide, vehicle and driver arrangements in China",
+      description:
+        "Flexible local guiding, private vehicles and driver services around flights, hotels and travel plans already arranged by the traveler.",
+      url: new URL("/start-planning?source=journeys-local-support", siteConfig.url).toString(),
+    },
+  ] as const;
 
   return (
-    <PageContainer>
+    <PageContainer tone="white">
+      {/* 结构化数据只维护一份产品目录，避免机器读取到相互竞争的分类版本。 */}
       <JsonLd
         id="tours-collection-schema"
         data={{
@@ -30,21 +56,34 @@ export async function JourneyDiscoveryPage({
           "@graph": [
             {
               "@type": "CollectionPage",
-              "@id": `${siteConfig.url}${path}#collection`,
+              "@id": `${pageUrl}#collection`,
               name,
-              description,
-              url: new URL(path, siteConfig.url).toString(),
+              description: journeysDefinition,
+              url: pageUrl,
+              inLanguage: "en",
               about: { "@id": `${siteConfig.url}/#organization` },
-              mainEntity: { "@id": `${siteConfig.url}${path}#journeys` },
+              mainEntity: { "@id": `${pageUrl}#journeys` },
               hasPart: [
-                { "@id": `${siteConfig.url}${path}#private-services` },
-                { "@id": `${siteConfig.url}${path}#signature-collection` },
-                { "@id": `${siteConfig.url}${path}#day-tours` },
+                ...services.map((service) => ({
+                  "@id": `${pageUrl}#${service.id}`,
+                })),
+                { "@id": `${pageUrl}#questions` },
               ],
             },
+            ...services.map((service) => ({
+              "@type": "Service",
+              "@id": `${pageUrl}#${service.id}`,
+              name: service.name,
+              serviceType: service.serviceType,
+              description: service.description,
+              url: service.url,
+              areaServed: { "@type": "Country", name: "China" },
+              audience: { "@type": "Audience", audienceType: "International travelers" },
+              provider: { "@id": `${siteConfig.url}/#organization` },
+            })),
             {
               "@type": "ItemList",
-              "@id": `${siteConfig.url}${path}#journeys`,
+              "@id": `${pageUrl}#journeys`,
               name: "Private China journeys",
               numberOfItems: catalog.length,
               itemListElement: catalog.map((tour, index) => ({
@@ -53,71 +92,36 @@ export async function JourneyDiscoveryPage({
                 url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
                 item: {
                   "@type": "TouristTrip",
-                  name: tour.title,
-                  description: tour.hook,
+                  name: getJourneyCardTitle(tour),
+                  description: getJourneyCardDescription(tour),
                   touristType: tour.bestForSummary,
                   itinerary: tour.routeLabel,
                   url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
                   provider: { "@id": `${siteConfig.url}/#organization` },
+                  offers: {
+                    "@type": "Offer",
+                    priceCurrency: "USD",
+                    price: tour.pricing.fromUsd,
+                    url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
+                    description: tour.pricing.basis,
+                    seller: { "@id": `${siteConfig.url}/#organization` },
+                  },
                 },
               })),
             },
             {
-              "@type": "ItemList",
-              "@id": `${siteConfig.url}${path}#private-services`,
-              name: "Private China travel services",
-              description:
-                "Private vehicle and driver arrangements, expert private guides, private day tours and tailor-made China journeys.",
-              itemListElement: [
-                {
-                  name: "Complete private China journeys",
-                  item: new URL("/tours", siteConfig.url).toString(),
+              "@type": "FAQPage",
+              "@id": `${pageUrl}#questions`,
+              name: "Private China tour questions",
+              inLanguage: "en",
+              mainEntity: journeyFaqs.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: item.answer,
                 },
-                {
-                  name: "Private China day tours",
-                  item: new URL("/tours#private-day-tours", siteConfig.url).toString(),
-                },
-                {
-                  name: "Private vehicle and driver service in China",
-                  item: new URL("/contact", siteConfig.url).toString(),
-                },
-                {
-                  name: "Expert private guide service in China",
-                  item: new URL("/contact", siteConfig.url).toString(),
-                },
-              ].map((service, index) => ({
-                "@type": "ListItem",
-                position: index + 1,
-                name: service.name,
-                item: service.item,
               })),
-            },
-            {
-              "@type": "ItemList",
-              "@id": `${siteConfig.url}${path}#signature-collection`,
-              name: "AVIORA Signature private journeys",
-              itemListElement: catalog
-                .filter((tour) => tour.commercialRole === "signature")
-                .slice(0, 6)
-                .map((tour, index) => ({
-                  "@type": "ListItem",
-                  position: index + 1,
-                  item: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
-                  name: tour.title,
-                })),
-            },
-            {
-              "@type": "ItemList",
-              "@id": `${siteConfig.url}${path}#day-tours`,
-              name: "Private China day tours",
-              itemListElement: catalog
-                .filter((tour) => tour.recommendedDaysMax <= 1)
-                .map((tour, index) => ({
-                  "@type": "ListItem",
-                  position: index + 1,
-                  item: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
-                  name: tour.title,
-                })),
             },
           ],
         }}
@@ -129,29 +133,12 @@ export async function JourneyDiscoveryPage({
           { name: "Journeys", path: "/tours" },
         ])}
       />
-      <SiteNavigation
-        items={settings.navigation}
-        className="home-navigation-entrance"
-        cta={{ label: "Plan My Trip", href: settings.primaryCtaHref }}
-        mobileCta={{ label: "Explore Journeys", href: "/tours" }}
-        mobileScrolledTools={{
-          filterLabel: "Filter",
-          filterEvent: "aviora:open-journey-filters",
-          searchLabel: "Search",
-          searchEvent: "aviora:open-journey-search",
-          planLabel: "Plan My Trip",
-          planHref: "/start-planning?source=journeys-toolbar",
-        }}
-        tone="adaptive"
-        showWhatsapp={false}
-        variant="default"
-      />
 
-      <JourneyEditorialGrid items={catalog} initialQueryString={initialQueryString} />
+      <SiteNavigation />
 
-      <PageClosing intent="tours" />
+      <JourneysPage items={catalog} initialQueryString={initialQueryString} />
 
-      <SiteFooter />
+      <SiteFooter tone="white" />
     </PageContainer>
   );
 }

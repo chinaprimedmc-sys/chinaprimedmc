@@ -34,9 +34,9 @@ export function CtaCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[2rem] p-6 md:p-10",
+        "relative overflow-hidden rounded-[var(--radius-card)] p-6 md:p-10",
         variant === "glass" &&
-          "border border-white/65 bg-white/58 shadow-[var(--shadow-glass)] backdrop-blur-2xl",
+          "border border-white/78 bg-white/62 shadow-[var(--shadow-glass)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(var(--glass-blur))_saturate(130%)]",
         variant === "solid" && "bg-foreground text-background",
         isImage && "min-h-96 text-white",
         className,
@@ -67,9 +67,7 @@ export function CtaCard({
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="text-3xl leading-tight font-semibold tracking-[-0.02em] md:text-5xl">
-          {title}
-        </h2>
+        <h2 className="type-section-title">{title}</h2>
         {description ? (
           <p className="mt-4 max-w-xl text-base leading-7 opacity-78 md:text-lg">{description}</p>
         ) : null}

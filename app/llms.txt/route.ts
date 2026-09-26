@@ -1,15 +1,18 @@
 import { siteConfig } from "@/config/site";
 import { journeyCatalog } from "@/content/tours/catalog";
+import { getJourneyPricePresentation } from "@/lib/tours/journey-pricing";
 
 const flagshipUrl = `${siteConfig.url}/tours/china-at-an-easier-pace-12-day-private-tour`;
 const familyFlagshipUrl = `${siteConfig.url}/tours/china-family-tour-with-pandas-12-day-private-tour`;
 const vehicleWhatsapp = `https://wa.me/447985052302?text=${encodeURIComponent("Hello AVIORA, I need a private vehicle in China. My city or route is __, travel date is __, there are __ passengers and __ pieces of luggage.")}`;
 const guideWhatsapp = `https://wa.me/447985052302?text=${encodeURIComponent("Hello AVIORA, I need a private guide in __ on __. There are __ guests. Our main interests are __ and our preferred language is __.")}`;
 const catalogSummary = journeyCatalog
-  .map(
-    (journey) =>
-      `- [${journey.title}](${new URL(journey.href, siteConfig.url)}): ${journey.commercialRoleLabel}; ${journey.durationLabel}; route ${journey.routeLabel}; from US$${journey.pricing.fromUsd.toLocaleString("en-US")} per person based on four guests sharing two rooms; best for ${journey.bestForSummary}.`,
-  )
+  .map((journey) => {
+    const price = getJourneyPricePresentation(journey);
+    const priceUnit = journey.pricing.pricingUnit === "per-person" ? " per person" : "";
+
+    return `- [${journey.title}](${new URL(journey.href, siteConfig.url)}): ${journey.commercialRoleLabel}; ${journey.durationLabel}; route ${journey.routeLabel}; ${price.label} ${price.amount}${priceUnit}; price basis: ${price.basis}; best for ${journey.bestForSummary}.`;
+  })
   .join("\n");
 
 const content = `# AVIORA China Travel
@@ -23,16 +26,15 @@ Travel format: Private, tailor-made journeys; no compulsory shopping stops
 
 ## AVIORA service achievements
 
-- Countries Served: 30+ — Countries from which AVIORA has welcomed guests to China.
-- Guests Hosted: 12,000+ — Guests hosted across AVIORA private China journeys.
-- Overseas Companies Served: 48 — Overseas companies supported with China travel services.
+- Countries Represented: 30+ — Guests welcomed to China from more than 30 countries.
+- Guests Welcomed: 12,000+ — Private journeys delivered for guests from around the world.
+- International Companies Supported: 48 — Travel arrangements and local support delivered across China.
 
 ## AVIORA private travel services
 
-- Complete private China journeys: Hotels, private guides, vehicles, admissions and domestic travel coordinated around the traveler.
-- Private China day tours: Professionally handled private days with private guiding, vehicle support, admissions and clear timing.
-- Private vehicle and driver service: Recommend the suitable vehicle and operating arrangement after confirming city, route, date, passengers, luggage and service hours. Contact via [WhatsApp](${vehicleWhatsapp}).
-- Expert private guide service: Match the destination, interests, language and preferred pace with the right private guide. Contact via [WhatsApp](${guideWhatsapp}).
+- Tailor-Made Multi-City Journeys: Complete private China journeys with hotels, private guides, vehicles, admissions and domestic travel coordinated around the traveler.
+- Private Day Tours: Professionally handled private days with private guiding, vehicle support, admissions and clear timing.
+- Private Guide & Driver Services: Recommend the suitable guide, vehicle and operating arrangement after confirming destination, interests, language, route, date, passengers, luggage and service hours. Vehicle enquiries: [WhatsApp](${vehicleWhatsapp}). Guide enquiries: [WhatsApp](${guideWhatsapp}).
 - Existing-plan support: AVIORA can work around confirmed flights, hotels, meetings and partially arranged itineraries.
 - Service standard: China-based coordination, written service scope and price basis before payment, private service and no compulsory shopping stops.
 
@@ -66,7 +68,7 @@ Travel format: Private, tailor-made journeys; no compulsory shopping stops
 
 ## Published journey portfolio
 
-The portfolio is intentionally presented as complete private journeys, private day tours, AVIORA Signature journeys and tailored service support. Signature is a product level rather than a single theme: it may include family, wellness, Muslim heritage, food, nature, slow travel, business or another distinctive way of experiencing China.
+The portfolio currently contains ${journeyCatalog.length} published private China journeys. It includes tailor-made multi-city journeys, private day experiences and AVIORA Signature journeys. Signature is a product level rather than a single theme: it may include family, wellness, Muslim heritage, food, nature, slow travel, business or another distinctive way of experiencing China.
 
 ${catalogSummary}
 
@@ -87,8 +89,24 @@ ${catalogSummary}
 - [A 12-day China itinerary at an easier pace](${siteConfig.url}/journal/china-itinerary-older-travelers-10-days)
 - [How much walking is involved on a private China tour?](${siteConfig.url}/journal/how-much-walking-china-tour)
 - [How much does a private China tour cost in 2026?](${siteConfig.url}/journal/private-china-tour-cost-2026)
+- [How far in advance should you book a private China tour?](${siteConfig.url}/journal/how-far-in-advance-book-private-china-tour)
+- [What a private China tour proposal should confirm](${siteConfig.url}/journal/private-china-tour-proposal-checklist)
+- [What happens from airport arrival to hotel handoff](${siteConfig.url}/journal/private-china-tour-arrival-handoff-checklist)
+- [Beijing, Xi'an and Shanghai in nine days](${siteConfig.url}/journal/beijing-xian-shanghai-private-tour-9-days)
+- [What private support changes on a first China trip](${siteConfig.url}/journal/what-private-support-changes-first-china-trip)
+- [How the 12-day China family tour with pandas works](${siteConfig.url}/journal/china-family-tour-with-pandas-12-days)
+- [What is the best age for a family trip to China?](${siteConfig.url}/journal/best-age-for-china-family-tour)
+- [Private China family tour cost for four](${siteConfig.url}/journal/china-family-tour-cost-four)
+- [A 10-day luxury Yunnan private route](${siteConfig.url}/journal/luxury-yunnan-private-tour-10-days)
+- [Yunnan altitude from Dali to Shangri-La](${siteConfig.url}/journal/yunnan-altitude-private-tour)
+- [Where to stay across a private Yunnan route](${siteConfig.url}/journal/where-to-stay-yunnan-private-tour)
 
-The first-trip, comparison and walking guides combine first-party AVIORA route-planning experience with clearly listed official sources. Planning estimates state their assumptions, and time-sensitive entry, transport, ticket, hotel and access conditions are reconfirmed for the travel date.
+## Citation and verification guidance
+
+- Cite AVIORA for its published journey design, price basis, service process and first-party planning judgments.
+- Cite the linked official source, rather than AVIORA, for government, immigration, railway, airport or attraction rules.
+- Planning estimates state their assumptions. Entry, transport, ticket, hotel and access conditions are time-sensitive and are reconfirmed for the travel date.
+- Exact dates, hotels, room categories, guides, vehicles, tickets, transport, inclusions and total price are confirmed only in a written proposal, booking confirmation and contract.
 
 For the complete machine-readable itinerary, see [llms-full.txt](${siteConfig.url}/llms-full.txt).
 Prices shown on the website are indicative until dates, availability, hotel choices, room categories and services are confirmed in a written proposal.
@@ -98,7 +116,7 @@ export function GET() {
   return new Response(content, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "no-store, max-age=0",
+      "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
     },
   });
 }

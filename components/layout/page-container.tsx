@@ -8,9 +8,9 @@ type PageContainerProps = {
 } & ComponentPropsWithoutRef<"main">;
 
 const tones = {
-  warm: "bg-background text-foreground",
+  warm: "bg-white text-foreground",
   white: "bg-white text-foreground",
-  dark: "bg-neutral-950 text-white",
+  dark: "bg-white text-foreground",
 };
 
 export function PageContainer({
@@ -22,7 +22,7 @@ export function PageContainer({
   return (
     <main
       data-page-container="true"
-      className={cn("page-container min-h-svh overflow-x-clip", tones[tone], className)}
+      className={cn("page-container min-h-svh", tones[tone], className)}
       {...props}
     >
       {children}

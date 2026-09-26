@@ -49,6 +49,17 @@ import beijingStayMarkdown from "@/content/journal/articles/2026-08-21-where-to-
 import shanghaiStayMarkdown from "@/content/journal/articles/2026-08-21-where-to-stay-in-shanghai-first-time.md";
 import xianThreeDayMarkdown from "@/content/journal/articles/2026-08-21-xian-itinerary-3-days.md";
 import yunnanTenDayMarkdown from "@/content/journal/articles/2026-08-21-yunnan-itinerary-10-days.md";
+import bookingTimelineMarkdown from "@/content/journal/articles/2026-09-25-how-far-in-advance-book-private-china-tour.md";
+import proposalChecklistMarkdown from "@/content/journal/articles/2026-09-25-private-china-tour-proposal-checklist.md";
+import arrivalHandoffMarkdown from "@/content/journal/articles/2026-09-25-private-china-tour-arrival-handoff-checklist.md";
+import firstChinaNineDayMarkdown from "@/content/journal/articles/2026-09-25-beijing-xian-shanghai-private-tour-9-days.md";
+import privateSupportMarkdown from "@/content/journal/articles/2026-09-25-what-private-support-changes-first-china-trip.md";
+import familyPandasMarkdown from "@/content/journal/articles/2026-09-25-china-family-tour-with-pandas-12-days.md";
+import familyAgeMarkdown from "@/content/journal/articles/2026-09-25-best-age-for-china-family-tour.md";
+import familyCostMarkdown from "@/content/journal/articles/2026-09-25-china-family-tour-cost-four.md";
+import luxuryYunnanMarkdown from "@/content/journal/articles/2026-09-25-luxury-yunnan-private-tour-10-days.md";
+import yunnanAltitudeMarkdown from "@/content/journal/articles/2026-09-25-yunnan-altitude-private-tour.md";
+import yunnanStaysMarkdown from "@/content/journal/articles/2026-09-25-where-to-stay-yunnan-private-tour.md";
 import type { JournalArticle, JournalContentBlock } from "@/types/journal";
 
 const fullFrameImageMetadata: Record<string, { width: number; height: number; fit: "contain" }> = {
@@ -174,6 +185,23 @@ const bundledMarkdown: Record<string, string> = {
     shanghaiStayMarkdown,
   "content/journal/articles/2026-08-21-xian-itinerary-3-days.md": xianThreeDayMarkdown,
   "content/journal/articles/2026-08-21-yunnan-itinerary-10-days.md": yunnanTenDayMarkdown,
+  "content/journal/articles/2026-09-25-how-far-in-advance-book-private-china-tour.md":
+    bookingTimelineMarkdown,
+  "content/journal/articles/2026-09-25-private-china-tour-proposal-checklist.md":
+    proposalChecklistMarkdown,
+  "content/journal/articles/2026-09-25-private-china-tour-arrival-handoff-checklist.md":
+    arrivalHandoffMarkdown,
+  "content/journal/articles/2026-09-25-beijing-xian-shanghai-private-tour-9-days.md":
+    firstChinaNineDayMarkdown,
+  "content/journal/articles/2026-09-25-what-private-support-changes-first-china-trip.md":
+    privateSupportMarkdown,
+  "content/journal/articles/2026-09-25-china-family-tour-with-pandas-12-days.md":
+    familyPandasMarkdown,
+  "content/journal/articles/2026-09-25-best-age-for-china-family-tour.md": familyAgeMarkdown,
+  "content/journal/articles/2026-09-25-china-family-tour-cost-four.md": familyCostMarkdown,
+  "content/journal/articles/2026-09-25-luxury-yunnan-private-tour-10-days.md": luxuryYunnanMarkdown,
+  "content/journal/articles/2026-09-25-yunnan-altitude-private-tour.md": yunnanAltitudeMarkdown,
+  "content/journal/articles/2026-09-25-where-to-stay-yunnan-private-tour.md": yunnanStaysMarkdown,
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {
@@ -194,6 +222,7 @@ export async function hydrateJournalArticle(article: JournalArticle): Promise<Jo
     ...article,
     content: polishJournalContent(parsed.content),
     citations: article.citations?.length ? article.citations : parsed.citations,
+    lastFactCheckedAt: article.lastFactCheckedAt ?? parsed.lastFactCheckedAt,
   };
 }
 
@@ -254,6 +283,7 @@ function parseJournalMarkdown(markdown: string) {
   return {
     content: parseBlocks(draft),
     citations: parseSourceCitations(sources),
+    lastFactCheckedAt: markdown.match(/^sources_verified_at:\s*["']?([^"'\n]+)["']?\s*$/m)?.[1],
   };
 }
 

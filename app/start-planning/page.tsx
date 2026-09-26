@@ -9,11 +9,13 @@ import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import { heroImage, homeNavItems, primaryAction } from "@/content/home/homepage";
+import { heroImage, homeNavItems } from "@/content/home/homepage";
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
 import { Section } from "@/design-system/primitives/section";
+import { planningReassurance } from "@/content/planning";
 import { JsonLd } from "@/lib/seo/json-ld";
+import { describeMatchAnswers, readMatchAnswers } from "@/lib/tours/journey-match";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
@@ -28,11 +30,17 @@ export const metadata: Metadata = createMetadata({
 export default async function StartPlanningPage({
   searchParams,
 }: {
-  searchParams: Promise<{ journeys?: string; journey?: string; preference?: string }>;
+  searchParams: Promise<{
+    journeys?: string;
+    journey?: string;
+    preference?: string;
+    match?: string;
+  }>;
 }) {
   const params = await searchParams;
   const savedJourneys = parseSavedJourneys(params.journeys);
   const currentJourney = getCurrentJourney(params.journey);
+  const match = readMatchAnswers(params.match ?? null);
 
   return (
     <PageContainer>
@@ -59,31 +67,27 @@ export default async function StartPlanningPage({
           serviceType: "Private inbound China travel planning",
         }}
       />
-      <SiteNavigation items={homeNavItems} cta={primaryAction} />
+      <SiteNavigation />
 
-      <Section spacing="spacious" className="start-planning-experience">
-        <ContentContainer size="xl" className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+      <Section
+        spacing="spacious"
+        className="start-planning-experience py-8 md:py-[var(--space-section-spacious)]"
+      >
+        <ContentContainer size="xl" className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-muted text-xs font-semibold tracking-[0.2em] uppercase">
-              Plan My Trip
-            </p>
-            <h1 className="mt-5 text-4xl leading-tight font-semibold tracking-[-0.04em] md:text-6xl">
+            <p className="type-caption text-muted hidden uppercase lg:block">Plan My Trip</p>
+            <h1 className="type-page-title max-w-2xl lg:mt-5">
               Tell us what would make your China journey feel right.
             </h1>
-            <p className="text-muted mt-5 max-w-2xl text-base leading-7 md:text-lg">
-              Share the essentials first. We will use your answers to shape the route, hotels and
-              services before preparing a clear private proposal.
+            <p className="type-body text-muted mt-4 max-w-2xl lg:mt-5">
+              Share the essentials so our China team can shape a clear private proposal around you.
             </p>
-            <p className="text-muted mt-8 max-w-sm border-t border-[var(--border)] pt-5 text-sm leading-6">
+            <p className="text-muted mt-8 hidden max-w-sm border-t border-[var(--border)] pt-5 text-base leading-7 lg:block">
               A China specialist will use these details to prepare a useful first direction. This
               does not confirm a booking.
             </p>
-            <ul className="mt-5 grid max-w-sm gap-2 border-b border-[var(--border)] pb-5 text-sm leading-6">
-              {[
-                "Personal reply normally within 24 hours",
-                "A route direction before a written quotation",
-                "No booking or payment obligation",
-              ].map((item) => (
+            <ul className="mt-5 hidden max-w-sm gap-2 border-b border-[var(--border)] pb-5 text-base leading-7 lg:grid">
+              {planningReassurance.map((item) => (
                 <li key={item} className="grid grid-cols-[1rem_1fr] items-start gap-2.5">
                   <Check
                     className="mt-1 text-[var(--text-secondary)]"
@@ -100,6 +104,7 @@ export default async function StartPlanningPage({
               savedJourneys={savedJourneys}
               currentJourney={currentJourney}
               preference={params.preference}
+              matchSummary={match ? describeMatchAnswers(match) : undefined}
             />
             <div className="text-muted flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--border)] pt-5 text-sm">
               <span>Prefer direct contact?</span>
@@ -150,8 +155,8 @@ export default async function StartPlanningPage({
                 key={item.title}
                 className="border-b border-[var(--border)] p-5 last:border-b-0 md:border-r md:border-b-0 md:p-6 md:last:border-r-0"
               >
-                <h2 className="text-xl font-semibold tracking-[-0.02em]">{item.title}</h2>
-                <p className="text-muted mt-3 text-sm leading-7">{item.body}</p>
+                <h2 className="text-xl font-semibold">{item.title}</h2>
+                <p className="text-muted mt-3 text-base leading-7">{item.body}</p>
               </article>
             ))}
           </div>

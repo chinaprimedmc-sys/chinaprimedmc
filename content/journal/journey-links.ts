@@ -20,6 +20,7 @@ const BEIJING = "beijing-great-wall-private-5-day-tour";
 const XIAN_BEIJING = "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour";
 const MUSLIM_CHINA = "muslim-friendly-china-tour-great-wall-desert-stars";
 const QINGCHENG_WELLNESS = "qingcheng-mountain-private-wellness-retreat-10-day";
+const YUNNAN_PRIVATE_RESERVE = "luxury-yunnan-private-tour";
 const GREATER_BAY_BUSINESS = "guangzhou-shenzhen-tailor-made-business-tour-4-day";
 const MUTIANYU_DAY_TOUR = "private-mutianyu-great-wall-day-tour";
 const SHANGHAI_DAY_TOUR = "private-shanghai-day-tour-guide-driver";
@@ -28,6 +29,14 @@ const CHENGDU_PANDA_DAY_TOUR = "private-chengdu-panda-day-tour-early-morning";
 const GUILIN_LI_RIVER_DAY_TOUR = "guilin-yangshuo-li-river-cruise-private-day-tour";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  [YUNNAN_PRIVATE_RESERVE]: [
+    "luxury-yunnan-private-tour-10-days",
+    "yunnan-altitude-private-tour",
+    "where-to-stay-yunnan-private-tour",
+    "yunnan-itinerary-10-days",
+    "best-time-to-visit-china",
+    "private-china-tour-cost-2026",
+  ],
   [GUILIN_LI_RIVER_DAY_TOUR]: [
     "china-mobile-payments-foreign-tourists",
     "best-time-to-visit-china",
@@ -69,6 +78,9 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "private-china-tour-cost-2026",
   ],
   [CHINA_FAMILY]: [
+    "china-family-tour-with-pandas-12-days",
+    "best-age-for-china-family-tour",
+    "china-family-tour-cost-four",
     "china-family-itinerary-10-to-14-days",
     "china-tours-with-pandas",
     "chengdu-panda-base-tickets-foreigners",
@@ -95,6 +107,11 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "terracotta-army-tickets-foreign-visitors",
   ],
   [FIRST_CHINA]: [
+    "beijing-xian-shanghai-private-tour-9-days",
+    "what-private-support-changes-first-china-trip",
+    "how-far-in-advance-book-private-china-tour",
+    "private-china-tour-proposal-checklist",
+    "private-china-tour-arrival-handoff-checklist",
     "10-day-china-itinerary-first-time-visitors",
     "9-day-beijing-xian-shanghai-itinerary",
     "china-high-speed-train-foreigners",
@@ -171,10 +188,19 @@ const groupedRules: Array<{
       "xian-itinerary-3-days",
       "guilin-yangshuo-itinerary-5-days",
       "best-apps-for-china-travel-2026",
-      "yunnan-itinerary-10-days",
       "china-packing-list-2026",
       "china-visa-requirements-us-citizens-2026",
+      "beijing-or-shanghai-first-time",
+      "best-places-to-visit-china-first-time",
+      "china-tours-from-usa",
+      "how-much-does-a-trip-to-china-cost",
+      "private-china-tour-vs-self-guided",
     ],
+  },
+  {
+    journey: YUNNAN_PRIVATE_RESERVE,
+    alternatives: [QINGCHENG_WELLNESS],
+    articles: ["yunnan-itinerary-10-days", "luxury-china-tour-planning-guide"],
   },
   {
     journey: FOUR_CITY,
@@ -184,6 +210,7 @@ const groupedRules: Array<{
       "how-to-travel-between-beijing-xian-chengdu-shanghai",
       "china-high-speed-train-foreigners",
       "private-china-tour-from-singapore",
+      "two-week-china-itinerary-first-time",
     ],
   },
   {
@@ -279,6 +306,115 @@ export const journeyJournalLinks: Record<string, JourneyJournalLinkRule> = Objec
 );
 
 Object.assign(journeyJournalLinks, {
+  "luxury-china-tour-planning-guide": {
+    primaryJourney: YUNNAN_PRIVATE_RESERVE,
+    alternativeJourneys: [QINGCHENG_WELLNESS, CHINA_CONSIDERED],
+    title: "See premium planning decisions inside a real private journey",
+    description:
+      "Review how route restraint, boutique stays, private road travel, cultural hosts and altitude-aware pacing work together across Yunnan.",
+    journeyLabel: "Explore the Yunnan journey",
+    planningLabel: "Discuss my premium journey",
+    planningPreference: "premium-journey-planning",
+  },
+  "beijing-xian-shanghai-private-tour-9-days": {
+    primaryJourney: FIRST_CHINA,
+    title: "See the published nine-day journey behind this route",
+    description:
+      "Review the exact nights, daily structure, private-service scope and starting-price assumptions for Beijing, Xi'an and Shanghai.",
+    journeyLabel: "Explore the 9-day journey",
+    planningLabel: "Adapt this route",
+    planningPreference: "first-china-route",
+  },
+  "what-private-support-changes-first-china-trip": {
+    primaryJourney: FIRST_CHINA,
+    title: "See private support connected across one complete journey",
+    description:
+      "The published route shows how arrival, guiding, rail handoffs, daily pacing and China-based support work together.",
+    journeyLabel: "Review the private journey",
+    planningLabel: "Define my support",
+    planningPreference: "private-support",
+  },
+  "china-family-tour-with-pandas-12-days": {
+    primaryJourney: CHINA_FAMILY,
+    title: "See the family route day by day",
+    description:
+      "Review the Great Wall, Terracotta Army, panda and Shanghai chapters with age-aware pacing and protected family downtime.",
+    journeyLabel: "Explore the family journey",
+    planningLabel: "Adapt it for our children",
+    planningPreference: "family-panda-route",
+  },
+  "best-age-for-china-family-tour": {
+    primaryJourney: CHINA_FAMILY,
+    title: "See how one route adapts across ages 6 to 17",
+    description:
+      "The published family journey changes interpretation, choices and downtime around the children who are actually traveling.",
+    journeyLabel: "Review the age-aware journey",
+    planningLabel: "Plan for our ages",
+    planningPreference: "family-age-fit",
+  },
+  "china-family-tour-cost-four": {
+    primaryJourney: CHINA_FAMILY,
+    title: "Review the published family-of-four price basis",
+    description:
+      "See the two-room assumption, private service, rail, domestic flight, experiences and date-specific confirmation boundaries.",
+    journeyLabel: "See price and inclusions",
+    planningLabel: "Request our family quote",
+    planningPreference: "family-price",
+  },
+  "luxury-yunnan-private-tour-10-days": {
+    primaryJourney: YUNNAN_PRIVATE_RESERVE,
+    title: "See the complete Dali-to-Shangri-La journey",
+    description:
+      "Review the continuous private road route, boutique stays, cultural hosts, altitude-aware pacing and published price basis.",
+    journeyLabel: "Explore the Yunnan journey",
+    planningLabel: "Tailor this route",
+    planningPreference: "yunnan-route",
+  },
+  "yunnan-altitude-private-tour": {
+    primaryJourney: YUNNAN_PRIVATE_RESERVE,
+    title: "See how the route gains altitude gradually",
+    description:
+      "The ten-day journey moves from Dali through Shaxi and Lijiang before a protected Shangri-La arrival.",
+    journeyLabel: "Review the highland route",
+    planningLabel: "Discuss altitude and pace",
+    planningPreference: "yunnan-altitude",
+  },
+  "where-to-stay-yunnan-private-tour": {
+    primaryJourney: YUNNAN_PRIVATE_RESERVE,
+    title: "See how four different stays support the route",
+    description:
+      "The journey uses luxury, boutique, heritage and highland properties for different operational and experiential reasons.",
+    journeyLabel: "Review the Yunnan stays",
+    planningLabel: "Choose our rooms",
+    planningPreference: "yunnan-hotels",
+  },
+  "how-far-in-advance-book-private-china-tour": {
+    primaryJourney: FIRST_CHINA,
+    title: "See the planning sequence become a bookable journey",
+    description:
+      "This nine-day Beijing, Xi'an and Shanghai journey shows how gateways, hotel nights, rail and private support fit together before date-specific inventory is confirmed.",
+    journeyLabel: "Explore the 9-day journey",
+    planningLabel: "Review my booking timeline",
+    planningPreference: "booking-timeline",
+  },
+  "private-china-tour-proposal-checklist": {
+    primaryJourney: FIRST_CHINA,
+    title: "Review a real journey with the checklist beside it",
+    description:
+      "Compare the route, price basis, included private services and planning boundaries in one published Beijing, Xi'an and Shanghai journey.",
+    journeyLabel: "Review the journey",
+    planningLabel: "Request a clear proposal",
+    planningPreference: "clear-proposal",
+  },
+  "private-china-tour-arrival-handoff-checklist": {
+    primaryJourney: FIRST_CHINA,
+    title: "See how the arrival handoff connects to the whole journey",
+    description:
+      "This private first-China route connects airport pickup, hotel arrival, rail handoffs and on-trip support under one China-based operating team.",
+    journeyLabel: "Explore the 9-day journey",
+    planningLabel: "Plan my arrival",
+    planningPreference: "arrival-handoff",
+  },
   "china-mobile-payments-foreign-tourists": {
     ...journeyJournalLinks["china-mobile-payments-foreign-tourists"],
     alternativeJourneys: [FOUR_CITY, GREATER_BAY_BUSINESS, GUILIN_LI_RIVER_DAY_TOUR],

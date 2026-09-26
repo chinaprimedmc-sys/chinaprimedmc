@@ -31,7 +31,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
   seo: {
     title: "Guilin to Yangshuo Li River Cruise Private Day Tour",
     description:
-      "A Guilin to Yangshuo Li River cruise day with central-hotel pickup, four-star public cruise ticket, private English-speaking guide, luggage handling and a choice to end in Yangshuo or return to Guilin. From US$688 for four guests.",
+      "Private Guilin to Yangshuo Li River cruise with hotel pickup, four-star ticket, English guide, luggage transfer and your choice of finish.",
     keywords: [
       "Guilin to Yangshuo Li River cruise",
       "private Guilin Yangshuo day tour",

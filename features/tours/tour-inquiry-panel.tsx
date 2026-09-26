@@ -13,7 +13,7 @@ type TourInquiryPanelProps = {
 export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) {
   return (
     <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
-      <div className="rounded-[2rem] border border-white/70 bg-white/62 p-6 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:p-8 lg:p-10">
+      <div className="rounded-[var(--radius-card)] border border-white/78 bg-white/62 p-6 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:p-8 lg:p-10">
         <Badge>Quick consultation</Badge>
         <h2 className="mt-5 text-3xl leading-tight font-semibold tracking-[-0.035em] md:text-5xl">
           Start with the route, then make it yours.
@@ -60,7 +60,7 @@ export function TourInquiryPanel({ tour, planningHref }: TourInquiryPanelProps) 
         </div>
       </div>
 
-      <div className="border-border rounded-[2rem] border bg-white p-6 shadow-sm md:p-8">
+      <div className="rounded-[var(--radius-card)] border border-white/78 bg-white/62 p-6 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:p-8">
         <p className="text-muted text-xs font-semibold tracking-[0.16em] uppercase">
           One clear process
         </p>

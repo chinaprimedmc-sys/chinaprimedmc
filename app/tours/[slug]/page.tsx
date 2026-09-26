@@ -5,16 +5,21 @@ import { assertPublicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
-import { TourFrameworkTemplate } from "@/features/tours/tour-framework-template";
+import {
+  createFrameworkTourDetailModel,
+  createTourDetailModel,
+} from "@/features/tours/detail/tour-detail-model";
+import { TourDetailLanding } from "@/features/tours/detail/tour-detail-landing";
 import { bookingPolicyFaqs, frameworkTourFaqs } from "@/features/tours/detail/tour-detail-model";
-import { TourTemplate } from "@/features/tours/tour-template";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
+import { calculateJourneyPrice, readJourneyConfiguration } from "@/lib/tours/journey-price";
 
 type TourPageProps = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export const dynamicParams = false;
@@ -61,12 +66,26 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   });
 }
 
-export default async function TourPage({ params }: TourPageProps) {
+export default async function TourPage({ params, searchParams }: TourPageProps) {
   const { slug } = await params;
+  const search = await searchParams;
+  const initialSelection = readJourneyConfiguration(
+    new URLSearchParams(
+      Object.entries(search).filter(
+        (entry): entry is [string, string] => typeof entry[1] === "string",
+      ),
+    ),
+  );
   const staticTour = getTourBySlug(slug);
 
   if (staticTour) {
     const catalogItem = getJourneyCatalogItem(staticTour.slug);
+    const configurable = slug === "beijing-xian-chengdu-shanghai-private-11-day-tour";
+    const selectedPrice = configurable
+      ? calculateJourneyPrice(catalogItem?.pricing.fromUsd, initialSelection)
+      : initialSelection.guests === "4"
+        ? catalogItem?.pricing.fromUsd
+        : undefined;
     const reading = getJourneyReadingArticles(staticTour.slug);
     const tourUrl = new URL(`/tours/${staticTour.slug}`, siteConfig.url).toString();
     const isChinaConsidered = staticTour.slug === "china-at-an-easier-pace-12-day-private-tour";
@@ -180,7 +199,11 @@ export default async function TourPage({ params }: TourPageProps) {
             url: tourUrl,
             mainEntityOfPage: { "@id": `${tourUrl}#webpage` },
             category: catalogItem?.commercialRoleLabel ?? "Premium private China tour",
-            duration: `P${staticTour.itinerary.length}D`,
+            duration: configurable
+              ? initialSelection.pace === "considered"
+                ? "P13D"
+                : "P12D"
+              : `P${staticTour.itinerary.length}D`,
             brand: {
               "@type": "Brand",
               name: siteConfig.name,
@@ -264,31 +287,32 @@ export default async function TourPage({ params }: TourPageProps) {
               })),
             },
             touristType: catalogItem?.bestForFilters ?? staticTour.styles,
-            offers: catalogItem
-              ? {
-                  "@type": "Offer",
-                  price: catalogItem.pricing.fromUsd,
-                  priceCurrency: "USD",
-                  url: tourUrl,
-                  availability: "https://schema.org/LimitedAvailability",
-                  category: "Private premium China tour",
-                  description: catalogItem.pricing.basis,
-                  seller: { "@id": `${siteConfig.url}/#organization` },
-                  priceSpecification: {
-                    "@type": "UnitPriceSpecification",
-                    price: catalogItem.pricing.fromUsd,
+            offers:
+              catalogItem && selectedPrice !== undefined
+                ? {
+                    "@type": "Offer",
+                    price: selectedPrice,
                     priceCurrency: "USD",
-                    unitText:
-                      isPrivateShanghaiDayTour ||
-                      isPrivateXianTerracottaDayTour ||
-                      isPrivateChengduPandaDayTour ||
-                      isGuilinLiRiverDayTour
-                        ? "per private group of four guests"
-                        : "per person",
+                    url: tourUrl,
+                    availability: "https://schema.org/LimitedAvailability",
+                    category: "Private premium China tour",
                     description: catalogItem.pricing.basis,
-                  },
-                }
-              : undefined,
+                    seller: { "@id": `${siteConfig.url}/#organization` },
+                    priceSpecification: {
+                      "@type": "UnitPriceSpecification",
+                      price: selectedPrice,
+                      priceCurrency: "USD",
+                      unitText:
+                        isPrivateShanghaiDayTour ||
+                        isPrivateXianTerracottaDayTour ||
+                        isPrivateChengduPandaDayTour ||
+                        isGuilinLiRiverDayTour
+                          ? "per private group of four guests"
+                          : "per person",
+                      description: catalogItem.pricing.basis,
+                    },
+                  }
+                : undefined,
             additionalProperty: [
               ...(catalogItem
                 ? [
@@ -349,7 +373,10 @@ export default async function TourPage({ params }: TourPageProps) {
             { name: staticTour.title, path: `/tours/${staticTour.slug}` },
           ])}
         />
-        <TourTemplate tour={staticTour} />
+        <TourDetailLanding
+          model={createTourDetailModel(staticTour)}
+          initialSelection={initialSelection}
+        />
       </>
     );
   }
@@ -389,20 +416,23 @@ export default async function TourPage({ params }: TourPageProps) {
             "@type": "Place",
             name: destination.label,
           })),
-          offers: {
-            "@type": "Offer",
-            price: journey.pricing.fromUsd,
-            priceCurrency: "USD",
-            url: new URL(`/tours/${journey.slug}`, siteConfig.url).toString(),
-            description: journey.pricing.basis,
-            priceSpecification: {
-              "@type": "UnitPriceSpecification",
-              price: journey.pricing.fromUsd,
-              priceCurrency: "USD",
-              unitText: "per person",
-              description: journey.pricing.basis,
-            },
-          },
+          offers:
+            initialSelection.guests === "4"
+              ? {
+                  "@type": "Offer",
+                  price: journey.pricing.fromUsd,
+                  priceCurrency: "USD",
+                  url: new URL(`/tours/${journey.slug}`, siteConfig.url).toString(),
+                  description: journey.pricing.basis,
+                  priceSpecification: {
+                    "@type": "UnitPriceSpecification",
+                    price: journey.pricing.fromUsd,
+                    priceCurrency: "USD",
+                    unitText: "per person",
+                    description: journey.pricing.basis,
+                  },
+                }
+              : undefined,
           additionalProperty: [
             {
               "@type": "PropertyValue",
@@ -443,7 +473,10 @@ export default async function TourPage({ params }: TourPageProps) {
           { name: journey.title, path: `/tours/${journey.slug}` },
         ])}
       />
-      <TourFrameworkTemplate item={journey} />
+      <TourDetailLanding
+        model={createFrameworkTourDetailModel(journey)}
+        initialSelection={initialSelection}
+      />
     </>
   );
 }

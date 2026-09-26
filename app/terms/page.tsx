@@ -8,7 +8,7 @@ import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
-import { homeNavItems, primaryAction } from "@/content/home/homepage";
+import { homeNavItems } from "@/content/home/homepage";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -96,10 +96,7 @@ export default function TermsPage() {
         ])}
       />
 
-      <SiteNavigation
-        items={homeNavItems}
-        cta={{ label: "Plan My Trip", href: primaryAction.href }}
-      />
+      <SiteNavigation />
 
       <header className={styles.hero}>
         <ContentContainer size="xl" className={styles.heroInner}>

@@ -22,9 +22,9 @@ const content: Record<PageClosingIntent, { eyebrow: string; title: string; prima
     primary: "Plan My Private Journey",
   },
   tours: {
-    eyebrow: "A Clearer Starting Point",
-    title: "Not sure which journey fits you best?",
-    primary: "Help Me Choose",
+    eyebrow: "Start Planning",
+    title: "Let's plan your China journey.",
+    primary: "Start Planning",
   },
   tour: {
     eyebrow: "Make It Yours",
@@ -85,6 +85,7 @@ export function PageClosing({
   return (
     <section
       className={`${styles.closing} ${tone === "blue" ? styles.blue : ""}`}
+      data-intent={intent}
       aria-labelledby={`closing-${intent}-title`}
     >
       <div className={styles.inner}>

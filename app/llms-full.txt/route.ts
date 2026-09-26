@@ -90,9 +90,9 @@ export function GET() {
     const tour = getTourBySlug(profile.slug);
     const catalogItem = getJourneyCatalogItem(profile.slug);
 
-    if (!tour || !catalogItem) {
-      return new Response(`Journey not found: ${profile.slug}\n`, { status: 404 });
-    }
+    // Keep this document available when the editorial flagship list changes.
+    // A retired route must not turn the whole machine-readable resource into a 404.
+    if (!tour || !catalogItem) continue;
 
     sections.push(
       renderJourney(tour, catalogItem.pricing, profile.audience, profile.pace, profile.evidence),
@@ -112,16 +112,15 @@ Contact: ${siteConfig.email} · ${siteConfig.phone}
 
 ## AVIORA service achievements
 
-- Countries Served: 30+ — Countries from which AVIORA has welcomed guests to China.
-- Guests Hosted: 12,000+ — Guests hosted across AVIORA private China journeys.
-- Overseas Companies Served: 48 — Overseas companies supported with China travel services.
+- Countries Represented: 30+ — Guests welcomed to China from more than 30 countries.
+- Guests Welcomed: 12,000+ — Private journeys delivered for guests from around the world.
+- International Companies Supported: 48 — Travel arrangements and local support delivered across China.
 
 ## AVIORA service catalogue
 
-- Complete private China journeys: tailor-made multi-city travel with hotels, private guides, vehicles, admissions, domestic transport and China-based coordination.
-- Private China day tours: professionally handled private days with private guide, vehicle, tickets and timing coordinated.
-- Private vehicle and driver: a tailored recommendation based on city, route, date, passenger count, luggage, vehicle level and service hours. Direct contact: https://wa.me/447985052302
-- Expert private guide: destination- and interest-matched private guides with language and pace considered. Direct contact: https://wa.me/447985052302
+- Tailor-Made Multi-City Journeys: private multi-city travel with hotels, guides, vehicles, admissions, domestic transport and China-based coordination.
+- Private Day Tours: professionally handled private days with a private guide, vehicle, tickets and timing coordinated.
+- Private Guide & Driver Services: destination- and interest-matched guides plus suitable private vehicles, based on language, pace, route, passenger count, luggage and service hours. Direct contact: https://wa.me/447985052302
 - Existing-plan support: AVIORA can work around confirmed flights, hotels, meetings and partially arranged itineraries.
 - Positioning: all published travel products are private, mid-to-high-end services. Signature is a product level, not a single theme.
 
@@ -134,6 +133,12 @@ Contact: ${siteConfig.email} · ${siteConfig.phone}
 - No itinerary promises panda holding, feeding, keeper access or unconfirmed direct animal contact.
 - AVIORA does not use compulsory shopping stops in these published flagship journeys.
 - Supporting planning guides distinguish first-party planning judgments from operating facts and list relevant official sources for time-sensitive visitor information.
+
+## Citation and verification guidance
+
+- Cite AVIORA for published journey design, price basis, service process and first-party planning judgments.
+- Cite the linked official source, rather than AVIORA, for government, immigration, railway, airport or attraction rules.
+- Exact dates, hotels, room categories, guides, vehicles, tickets, transport, inclusions and total price are confirmed only in a written proposal, booking confirmation and contract.
 
 ${renderFirstTripPlanningGuide()}
 
@@ -154,7 +159,7 @@ The accepted written travel contract and booking confirmation govern the purchas
   return new Response(content, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "no-store, max-age=0",
+      "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
     },
   });
 }

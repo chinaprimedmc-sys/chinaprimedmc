@@ -11,7 +11,7 @@ import {
 } from "@/lib/cms/public-content";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema } from "@/lib/seo/schema";
+import { breadcrumbSchema, webPageSchema } from "@/lib/seo/schema";
 import { journeyCatalog } from "@/content/tours/catalog";
 
 type DestinationPageProps = { params: Promise<{ slug: string }> };
@@ -48,17 +48,32 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
     getPublicSiteSettings(),
   ]);
   if (!destination) notFound();
+  const url = new URL(`/destinations/${slug}`, siteConfig.url).toString();
 
   return (
     <>
+      <JsonLd
+        id={`${slug}-webpage-schema`}
+        data={webPageSchema({
+          url,
+          name: `${destination.name} Private Travel | AVIORA`,
+          description: destination.seoDescription,
+          about: { "@id": `${url}#destination` },
+        })}
+      />
       <JsonLd
         id={`${slug}-destination-schema`}
         data={{
           "@context": "https://schema.org",
           "@type": "TouristDestination",
+          "@id": `${url}#destination`,
           name: destination.name,
           description: destination.seoDescription,
-          url: new URL(`/destinations/${slug}`, siteConfig.url).toString(),
+          url,
+          inLanguage: "en-US",
+          isPartOf: { "@id": `${siteConfig.url}/#website` },
+          provider: { "@id": `${siteConfig.url}/#organization` },
+          mainEntityOfPage: { "@id": `${url}#webpage` },
           image: destination.heroImage
             ? new URL(destination.heroImage.src, siteConfig.url).toString()
             : undefined,
@@ -95,7 +110,6 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
         journeys={journeyCatalog.filter((journey) =>
           journey.destinationFilters.includes(destination.name),
         )}
-        navigation={settings.navigation}
         cta={{ label: "Plan My Trip", href: settings.primaryCtaHref }}
       />
     </>

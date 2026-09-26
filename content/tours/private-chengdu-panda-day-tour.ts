@@ -29,7 +29,7 @@ export const privateChengduPandaDayTour: Tour = {
   seo: {
     title: "Private Chengdu Panda Day Tour with Guide & Driver",
     description:
-      "A private early-morning Chengdu panda day tour with hotel pickup, English-speaking guide, private vehicle, Panda Base admission, People's Park and no shopping. From US$598 for four guests.",
+      "Private Chengdu panda day tour with early hotel pickup, an English-speaking guide, private driver, Panda Base admission and no shopping stops.",
     keywords: [
       "private Chengdu panda tour",
       "Chengdu Panda Base private day tour",

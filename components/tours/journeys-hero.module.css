@@ -1,0 +1,57 @@
+.hero {
+  background: #fff;
+  color: #172924;
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px 24px 8px;
+}
+.eyebrow {
+  color: #23646d;
+  font-size: 14px;
+  font-weight: 650;
+  margin: 0 0 12px;
+}
+.hero h1 {
+  font-family: var(--font-body);
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0;
+}
+.description {
+  color: #475650;
+  max-width: 65ch;
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 16px 0 0;
+}
+.mobileDescription {
+  display: none;
+}
+@media (max-width: 639px) {
+  .hero {
+    padding: 28px 20px 0;
+  }
+  .hero h1 {
+    font-size: 30px;
+  }
+  .description {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .hero {
+    display: none;
+  }
+  .mobileDescription {
+    display: block;
+    color: #475650;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 13px 0 0;
+  }
+  .description {
+    display: none;
+  }
+}

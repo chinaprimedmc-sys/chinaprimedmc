@@ -2,28 +2,20 @@
 
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
 
-import { buttonBaseStyles, buttonSizes, buttonVariants } from "@/components/ui/button-styles";
+import {
+  buttonBaseStyles,
+  buttonSizes,
+  buttonVariants,
+  type ButtonSize,
+  type ButtonVariant,
+} from "@/components/ui/button-styles";
 import { trackCtaClick } from "@/lib/analytics/events";
 import { cn } from "@/lib/utils/cn";
 
-type CtaVariant =
-  | "primary"
-  | "explore"
-  | "light"
-  | "secondary"
-  | "outline"
-  | "glass"
-  | "frosted"
-  | "frostedSubtle"
-  | "lightFrosted"
-  | "lightFrostedSubtle"
-  | "whatsappFrosted";
-type CtaSize = "sm" | "md" | "lg";
-
 type CtaButtonProps = {
   children: ReactNode;
-  variant?: CtaVariant;
-  size?: CtaSize;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   icon?: ReactNode;
   "data-cta-placement"?: string;
   "data-journey-slug"?: string;

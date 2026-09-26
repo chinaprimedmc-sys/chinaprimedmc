@@ -56,6 +56,12 @@ export type StartPlanningOption = {
   helper?: string;
 };
 
+export const planningReassurance = [
+  "Personal reply normally within 24 hours",
+  "A route direction before a written quotation",
+  "No booking or payment obligation",
+] as const;
+
 export const startPlanningOptions = {
   tripLengths: [
     { label: "5-7 days", value: "5-7 days" },

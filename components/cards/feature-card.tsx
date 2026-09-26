@@ -13,7 +13,7 @@ export function FeatureCard({ icon, title, description, className }: FeatureCard
   return (
     <article
       className={cn(
-        "border-border rounded-[1.75rem] border bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl md:p-6",
+        "rounded-[var(--radius-card)] border border-white/78 bg-white/62 p-5 shadow-[var(--shadow-glass)] backdrop-blur-2xl transition-[transform,box-shadow,background-color] hover:-translate-y-1 hover:bg-white/76 hover:shadow-[var(--shadow-large)] md:p-6",
         className,
       )}
     >
@@ -22,7 +22,7 @@ export function FeatureCard({ icon, title, description, className }: FeatureCard
           {icon}
         </div>
       ) : null}
-      <h3 className="text-xl font-semibold tracking-[-0.02em]">{title}</h3>
+      <h3 className="type-card-title">{title}</h3>
       <p className="text-muted mt-3 text-sm leading-6">{description}</p>
     </article>
   );

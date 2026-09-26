@@ -8,10 +8,10 @@ type SectionProps = {
 } & ComponentPropsWithoutRef<"section">;
 
 const spacing = {
-  compact: "py-12 md:py-16",
-  default: "py-16 md:py-24",
-  spacious: "py-18 md:py-28",
-  screen: "min-h-svh py-24 md:py-32",
+  compact: "py-[var(--space-section-compact)]",
+  default: "py-[var(--space-section-default)]",
+  spacious: "py-[var(--space-section-spacious)]",
+  screen: "min-h-svh py-[var(--space-section-spacious)]",
 };
 
 export function Section({

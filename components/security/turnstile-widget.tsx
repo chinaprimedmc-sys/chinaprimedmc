@@ -138,7 +138,7 @@ export function TurnstileWidget({
       },
       "timeout-callback": () => {
         onTokenChange("");
-        setStatus("loading");
+        setStatus("error");
       },
       "error-callback": () => {
         onTokenChange("");

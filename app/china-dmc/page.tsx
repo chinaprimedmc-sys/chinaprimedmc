@@ -108,13 +108,6 @@ const tradeWhatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(
   "Hello China Prime DMC, I am contacting you about a travel trade partnership. Our company/market is [company and country], and we need support for [brief].",
 )}`;
 
-const tradeNavigation = [
-  { label: "Services", href: "/china-dmc#capabilities" },
-  { label: "Standards", href: "/china-dmc#standards" },
-  { label: "Process", href: "/china-dmc#process" },
-  { label: "Trade Evidence", href: "/journal/aviora-ttg-asia-matta-connect-2026" },
-];
-
 export default function ChinaDmcPage() {
   return (
     <main className={styles.page}>
@@ -143,24 +136,13 @@ export default function ChinaDmcPage() {
         }}
       />
 
-      <SiteNavigation
-        brand="CHINA PRIME DMC"
-        items={tradeNavigation}
-        cta={{ label: "Send a Trade Brief", href: tradeEmailHref }}
-        mobileCta={{ label: "Send a Trade Brief", href: tradeEmailHref }}
-        whatsapp={{ label: "Trade WhatsApp", href: tradeWhatsappHref }}
-        showWhatsapp={false}
-        tone="light"
-      />
+      <SiteNavigation />
 
       <section className={styles.hero} aria-labelledby="china-dmc-title" data-hero-layout="true">
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>CHINA PRIME DMC · FOR THE TRAVEL TRADE</p>
-            <h1 id="china-dmc-title">
-              <span className={styles.headingLine}>Your China DMC. Your Client</span>
-              <span className={styles.headingLine}>Relationship Protected.</span>
-            </h1>
+            <h1 id="china-dmc-title">Your China DMC. Your clients stay yours.</h1>
             <p className={styles.lead}>
               China Prime DMC designs and operates tailor-made China travel for tour operators and
               advisors. You keep the client relationship; one China-based team handles the

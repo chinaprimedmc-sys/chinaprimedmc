@@ -109,12 +109,15 @@ export type JournalArticle = {
   author: JournalAuthor;
   publishedAt: string;
   updatedAt?: string;
+  /** 仅在原始文章明确提供 sources_verified_at 时存在。 */
+  lastFactCheckedAt?: string;
   readingTime: string;
   featured?: boolean;
   editorPick?: boolean;
   hero: {
     image: MediaAsset;
     eyebrow?: string;
+    mode?: "image" | "text";
   };
   gallery: MediaAsset[];
   content: JournalContentBlock[];
@@ -136,6 +139,18 @@ export type JournalArticle = {
     image?: MediaAsset;
   };
   sourcePath?: string;
+  editorial?: {
+    contentType?: "inspiration" | "route" | "practical" | "comparison" | "operator";
+    decisionStage?: "discover" | "evaluate" | "prepare" | "decide";
+    keyAnswer?: string;
+    operatorRead?: string;
+    watchFor?: string;
+    changeWhen?: string;
+    appliesTo?: string[];
+    relatedJourneyReason?: string;
+    tradeOff?: string;
+    travelerFit?: string;
+  };
 };
 
 export type JournalCardArticle = {
@@ -144,9 +159,14 @@ export type JournalCardArticle = {
   excerpt: string;
   category: JournalCategory;
   tags: string[];
-  image: MediaAsset;
+  image?: MediaAsset;
   publishedAt: string;
   readingTime: string;
   featured?: boolean;
   editorPick?: boolean;
+};
+
+/** Journal 首页可安全序列化的轻量数据，不包含正文、图库或引用。 */
+export type JournalSummary = JournalCardArticle & {
+  updatedAt?: string;
 };

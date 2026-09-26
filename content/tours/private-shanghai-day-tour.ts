@@ -29,7 +29,7 @@ export const privateShanghaiDayTour: Tour = {
   seo: {
     title: "Private Shanghai Day Tour with Guide & Driver",
     description:
-      "An 8-hour private Shanghai day tour with hotel pickup, English-speaking guide, private vehicle, Yu Garden admission, Huangpu ferry and no shopping stops. From US$672 for four guests.",
+      "Private Shanghai day tour with hotel pickup, English-speaking guide and driver, Yu Garden, the Bund, Huangpu ferry and no shopping stops.",
     keywords: [
       "private Shanghai day tour",
       "Shanghai private tour with guide and driver",
