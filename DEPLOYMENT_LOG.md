@@ -1,14 +1,19 @@
 # China Prime DMC Deployment Log
 
+## 2026-10-25
+
+- Canonical host enforcement: all non-canonical hosts (including `*.vercel.app`
+  deployment aliases) now 308-redirect to `https://www.chinaprimedmc.com` at the
+  proxy middleware layer when `VERCEL_ENV=production`, with `X-Robots-Tag: noindex`
+  on the redirect. Preview deployments and local previews are unaffected.
+
 ## 2026-06-30
 
 - Platform: Vercel
 - Scope: `chinaprimedmc`
 - Project: `chinaprimedmc`
 - Production domain: `https://www.chinaprimedmc.com`
-- Deployment URL: `https://chinaprimedmc-1mv17yp74-chinaprimedmc.vercel.app`
-- Deployment ID: `dpl_5bQodiCRnXU2M6wir84T4uTGe6H4`
-- Inspector: `https://vercel.com/chinaprimedmc/chinaprimedmc/5bQodiCRnXU2M6wir84T4uTGe6H4`
+- Deployment URL: retired (superseded deployments return 404; see canonical host enforcement above)
 
 ### Changes
 

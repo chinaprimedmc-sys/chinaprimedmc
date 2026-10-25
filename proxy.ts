@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { isKnownPublicDetailPath } from "@/config/public-route-slugs";
+import { siteConfig } from "@/config/site";
 import { getAdminSessionCookieName, verifyAdminSession } from "@/lib/admin/session";
+
+// 生产环境唯一对外域名。*.vercel.app 等非规范主机一律 308 到这里。
+const canonicalHost = new URL(siteConfig.url).host;
 
 const protectedPrefixes = ["/admin", "/api/admin"];
 const publicAdminPaths = new Set(["/admin/login", "/api/admin/session"]);
@@ -78,6 +82,18 @@ export async function proxy(request: NextRequest) {
   // 本地生产预览仍使用 HTTP，不能把同源图片强制升级成不存在的 HTTPS。
   const secureRequest = getRequestProtocol(request) === "https";
   const csp = buildContentSecurityPolicy(nonce, secureRequest);
+
+  // 只在 Vercel 生产部署上做主机名规范化：vercel.app 生产别名等非规范域名
+  // 一律 308 到正式域名，避免重复内容被收录。预览部署和本地预览不受影响。
+  const requestHost = request.headers.get("host") ?? "";
+  if (process.env.VERCEL_ENV === "production" && requestHost !== canonicalHost) {
+    const canonicalUrl = new URL(request.nextUrl.pathname + request.nextUrl.search, siteConfig.url);
+    const redirect = NextResponse.redirect(canonicalUrl, 308);
+    redirect.headers.set("X-Robots-Tag", "noindex");
+    redirect.headers.set("Cache-Control", "public, max-age=3600");
+    return applySecurityHeaders(redirect, csp, secureRequest);
+  }
+
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("Content-Security-Policy", csp);
   requestHeaders.set("x-nonce", nonce);
