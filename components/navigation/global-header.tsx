@@ -15,7 +15,6 @@ import styles from "./global-header.module.css";
 export function GlobalHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isTourDetail = pathname.startsWith("/tours/");
   const isJourneysPage = pathname === "/tours";
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,10 +53,8 @@ export function GlobalHeader() {
       <header
         className={styles.header}
         data-global-navigation="true"
-        data-tone={isHome || isTourDetail || isJourneysPage ? "over-image" : "on-light"}
-        data-scrolled={
-          isScrolled || (!isHome && !isTourDetail && !isJourneysPage) ? "true" : undefined
-        }
+        data-tone={isHome || isJourneysPage ? "over-image" : "on-light"}
+        data-scrolled={isScrolled || (!isHome && !isJourneysPage) ? "true" : undefined}
         data-journeys-navigation={isJourneysPage || undefined}
         data-menu-open={isMenuOpen || undefined}
       >

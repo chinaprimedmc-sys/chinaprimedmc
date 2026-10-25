@@ -1,7 +1,58 @@
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
-// Route-specific photography will be added after rights and subject accuracy are confirmed.
+const yangshuoImage = (file: string, alt: string, width: number, height: number): MediaAsset => ({
+  src: `/tours/guilin-yangshuo-li-river-day-tour/${file}`,
+  alt,
+  width,
+  height,
+});
+
+const yangshuoKarst = yangshuoImage(
+  "01-yangshuo-karst-countryside.webp",
+  "Karst peaks and a quiet countryside retreat in Yangshuo",
+  1600,
+  2133,
+);
+const rainyLiRiver = yangshuoImage(
+  "02-li-river-cruise-rainy-karst.webp",
+  "Karst mountains and river boats on the Li River in misty weather",
+  1600,
+  2044,
+);
+const yulongBambooRaft = yangshuoImage(
+  "03-yulong-river-bamboo-raft.webp",
+  "A traditional bamboo raft drifting beneath a leafy canopy on the Yulong River",
+  1600,
+  2133,
+);
+const cruiseLounge = yangshuoImage(
+  "04-li-river-cruise-lounge.webp",
+  "Seating lounge aboard a Li River cruise vessel",
+  1600,
+  2133,
+);
+const cruiseWindowSeat = yangshuoImage(
+  "05-li-river-cruise-window-seat.webp",
+  "Window-side seating aboard a Li River cruise with karst scenery outside",
+  1600,
+  2133,
+);
+const privateVehicle: MediaAsset = {
+  src: "/tours/mutianyu-private-day-tour/05-private-luxury-vehicle.webp",
+  alt: "Private vehicle interior used for Guilin hotel and port transfers",
+  width: 1440,
+  height: 1920,
+};
+const yangshuoGallery = [
+  yangshuoKarst,
+  rainyLiRiver,
+  yulongBambooRaft,
+  cruiseLounge,
+  cruiseWindowSeat,
+  privateVehicle,
+];
+
 const pendingImage: MediaAsset = {
   src: "/home/editorial/great-wall-private-china-travel.webp",
   alt: "Photography for the Guilin to Yangshuo Li River cruise day is being prepared",
@@ -11,7 +62,7 @@ const pendingImage: MediaAsset = {
 
 export const guilinYangshuoLiRiverDayTour: Tour = {
   slug: "guilin-yangshuo-li-river-cruise-private-day-tour",
-  visualStatus: "pending",
+  visualStatus: "ready",
   publishedAt: "2026-08-21",
   updatedAt: "2026-08-21",
   title: "Guilin to Yangshuo Li River Cruise Day with Private Guide & Transfers",
@@ -24,7 +75,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
   hero: {
     eyebrow:
       "Guilin hotel pickup · four-star public cruise · private guide and transfers · two clear finish choices",
-    image: pendingImage,
+    image: yangshuoKarst,
     primary: { label: "Check My Cruise Date", href: "#inquiry" },
     secondary: { label: "Compare Finish Options", href: "#price" },
   },
@@ -173,21 +224,21 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
       description:
         "The public cruise ticket, hotel pickup, port transfer and private English-speaking guide are connected under one operating plan.",
       category: "Nature",
-      image: pendingImage,
+      image: rainyLiRiver,
     },
     {
       title: "A real choice between Yangshuo and Guilin",
       description:
         "Stay in Yangshuo with your luggage delivered, or return privately to Guilin—both options are explained before payment.",
       category: "Family",
-      image: pendingImage,
+      image: privateVehicle,
     },
     {
       title: "A restrained Yangshuo chapter after the cruise",
       description:
         "Use the remaining time for countryside perspective and a calm finish instead of pretending every Yangshuo attraction fits into one afternoon.",
       category: "Photography",
-      image: pendingImage,
+      image: yangshuoKarst,
     },
   ],
   itinerary: [
@@ -197,7 +248,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
       destination: "Guilin · Li River · Yangshuo",
       summary:
         "Meet your private English-speaking guide and vehicle at the confirmed central Guilin hotel. Transfer to the port assigned for the booked sailing and board the included standard four-star public Li River cruise. Travel downstream through the karst landscape to Yangshuo, then reunite with the private vehicle for a short countryside-oriented land chapter. Finish at a confirmed Yangshuo hotel with normal luggage transferred by road, or select the longer private return to your Guilin hotel. Exact port, sailing, vessel, timing, ticket inclusions and river conditions remain date-specific.",
-      image: pendingImage,
+      image: rainyLiRiver,
       hotel:
         "No overnight stay included · finish at a confirmed Yangshuo hotel or return to your central Guilin hotel",
       meals: [
@@ -250,7 +301,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
         "Two finish choices",
         "No hotel change forced by the product",
       ],
-      image: pendingImage,
+      image: yangshuoKarst,
     },
   ],
   included: [
@@ -278,35 +329,35 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
       description:
         "Choose the Guilin-return finish from US$70 per group of up to four, making the four-guest day US$758 total from. The private vehicle, guide service window and central Guilin drop-off are confirmed for the date.",
       badges: ["From US$70 per group", "4 guests: US$758 total from"],
-      image: pendingImage,
+      image: privateVehicle,
     },
     {
       title: "Yulong River bamboo-raft chapter",
       description:
         "Add a date- and traveler-eligible Yulong River bamboo-raft experience from US$45 per guest. Age, height, passenger pairing, water, safety and operator rules are checked before payment; operation is never guaranteed.",
       badges: ["From US$45 pp", "Eligibility and operation checked"],
-      image: pendingImage,
+      image: yulongBambooRaft,
     },
     {
       title: "Extended private Yangshuo countryside route",
       description:
         "Add up to two hours of private countryside touring from US$128 per group of up to four. The route may use the private vehicle and short walks; cycling or e-bikes are not included unless separately confirmed.",
       badges: ["From US$128 per group", "Up to 2 hours"],
-      image: pendingImage,
+      image: yangshuoKarst,
     },
     {
       title: "Ruyi Peak cableway and mountain-view extension",
       description:
         "Add the date-confirmed Ruyi Peak experience from US$58 per guest, including standard admission and the required private-service extension when workable. Walking, glass surfaces, weather and cableway operation are reviewed first.",
       badges: ["From US$58 pp", "Weather and walking reviewed"],
-      image: pendingImage,
+      image: yangshuoKarst,
     },
     {
       title: "Yangshuo evening performance",
       description:
         "Add a confirmed evening performance from US$88 per guest for standard seating and booking coordination. Venue, program, seat category, weather policy and any additional private transport or Guilin return are priced in writing.",
       badges: ["From US$88 pp", "Transport quoted to your finish"],
-      image: pendingImage,
+      image: yangshuoKarst,
     },
   ],
   transportation: {
@@ -377,7 +428,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
       },
     ],
   },
-  gallery: [],
+  gallery: yangshuoGallery.slice(1),
   faqs: [
     {
       question: "What does the US$688 starting price include?",
@@ -459,8 +510,8 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Guilin%20to%20Yangshuo%20Li%20River%20Cruise%20Day&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20check%20the%20Guilin%20to%20Yangshuo%20Li%20River%20cruise%20day.%0A%0ADate%3A%0ANumber%20of%20guests%20and%20child%20ages%3A%0AGuilin%20hotel%3A%0APreferred%20finish%20%28Yangshuo%20hotel%20or%20return%20to%20Guilin%29%3A%0AYangshuo%20hotel%20if%20applicable%3A%0ALuggage%20quantity%3A%0AOptional%20experiences%20of%20interest%3A%0AAny%20mobility%2C%20dietary%20or%20other%20considerations%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20the%20Guilin%20to%20Yangshuo%20Li%20River%20cruise%20day.%20My%20date%2C%20group%20size%2C%20Guilin%20hotel%2C%20luggage%20and%20preferred%20finish%20are%3A",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20the%20Guilin%20to%20Yangshuo%20Li%20River%20cruise%20day.%20My%20date%2C%20group%20size%2C%20Guilin%20hotel%2C%20luggage%20and%20preferred%20finish%20are%3A",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I would like to check a Guilin to Yangshuo Li River cruise day and choose whether to finish in Yangshuo or return to Guilin.",
   },

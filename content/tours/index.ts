@@ -85,7 +85,7 @@ const firstChinaEmail =
   "mailto:chinaprimedmc@gmail.com?subject=9-Day%20Beijing%20Xi%27an%20Shanghai%20Private%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.%0A%0ATravelers%3A%0ADates%3A%0AHotel%20preference%3A%0AQuestions%3A%0A";
 
 const firstChinaWhatsApp =
-  "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.";
+  "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.";
 
 const chengduJiuzhaigouImage = (src: string, alt: string, width = 1600, height = 1067) => ({
   src: `/tours/chengdu-pandas-jiuzhaigou/${src}`,
@@ -666,7 +666,7 @@ export const tours: Tour[] = [
     inquiry: {
       emailHref: firstChinaEmail,
       whatsappHref: firstChinaWhatsApp,
-      scheduleCallHref: "tel:+447985052302",
+      scheduleCallHref: "tel:+8618027438191",
       defaultMessage:
         "Hello AVIORA, I am interested in the 9-day Beijing, Xi'an and Shanghai private journey. We are considering travel in [month/year] for [number] travelers. Please advise on hotel options, walking pace, and the best way to shape the route for us.",
     },
@@ -1006,8 +1006,8 @@ export const tours: Tour[] = [
       emailHref:
         "mailto:chinaprimedmc@gmail.com?subject=Customize%20Chengdu%2C%20Pandas%20%26%20Sichuan%20Table",
       whatsappHref:
-        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%205-day%20Chengdu%20panda%20and%20Sichuan%20food%20private%20tour.",
-      scheduleCallHref: "tel:+447985052302",
+        "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%205-day%20Chengdu%20panda%20and%20Sichuan%20food%20private%20tour.",
+      scheduleCallHref: "tel:+8618027438191",
       defaultMessage:
         "I am interested in Chengdu, Pandas & Sichuan Table. Please suggest the best pacing for my travelers.",
     },
@@ -1507,8 +1507,8 @@ export const tours: Tour[] = [
       emailHref:
         "mailto:chinaprimedmc@gmail.com?subject=7-Day%20Chengdu%20Panda%20%26%20Jiuzhaigou%20Private%20Journey",
       whatsappHref:
-        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20tailored%20proposal%20for%20the%207-day%20Chengdu%20Panda%20and%20Jiuzhaigou%20private%20journey.",
-      scheduleCallHref: "tel:+447985052302",
+        "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20tailored%20proposal%20for%20the%207-day%20Chengdu%20Panda%20and%20Jiuzhaigou%20private%20journey.",
+      scheduleCallHref: "tel:+8618027438191",
       defaultMessage:
         "I am interested in the 7-Day Chengdu Panda & Jiuzhaigou Private Journey. Please recommend the right hotels, transport plan and daily pace for my group.",
     },
@@ -1943,8 +1943,8 @@ export const tours: Tour[] = [
       emailHref:
         "mailto:chinaprimedmc@gmail.com?subject=5-Day%20Beijing%20%26%20Great%20Wall%20Private%20Tour%20Quotation",
       whatsappHref:
-        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20quotation%20for%20the%205-day%20private%20Beijing%20tour.%0A%0AMuslim-friendly%20planning%20needs%3A%20",
-      scheduleCallHref: "tel:+447985052302",
+        "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20quotation%20for%20the%205-day%20private%20Beijing%20tour.%0A%0AMuslim-friendly%20planning%20needs%3A%20",
+      scheduleCallHref: "tel:+8618027438191",
       defaultMessage:
         "I am interested in the 5-Day Beijing & Great Wall Private Tour. Please help me plan dining preferences, prayer timing and a suitable pace for my travelers.",
     },
@@ -2450,8 +2450,8 @@ export const tours: Tour[] = [
       emailHref:
         "mailto:chinaprimedmc@gmail.com?subject=8-Day%20Shanghai%20%26%20Zhangjiajie%20Private%20Tour%20Quotation",
       whatsappHref:
-        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20quotation%20for%20the%208-day%20Shanghai%20and%20Zhangjiajie%20private%20tour.",
-      scheduleCallHref: "tel:+447985052302",
+        "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20quotation%20for%20the%208-day%20Shanghai%20and%20Zhangjiajie%20private%20tour.",
+      scheduleCallHref: "tel:+8618027438191",
       defaultMessage:
         "I am interested in the 8-Day Shanghai & Zhangjiajie Private Tour. Please prepare a quotation for my party.",
     },
@@ -2888,8 +2888,8 @@ export const tours: Tour[] = [
       emailHref:
         "mailto:chinaprimedmc@gmail.com?subject=6-Day%20Xi%27an%20%26%20Beijing%20Private%20Tour%20Quotation&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%206-day%20Xi%27an%20and%20Beijing%20private%20tour.%0A%0ATravelers%3A%0ADates%3A%0AHotel%20preference%3A%0ADietary%20or%20prayer%20requirements%3A%0AQuestions%3A%0A",
       whatsappHref:
-        "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20tailored%20proposal%20for%20the%206-day%20Xi%27an%20and%20Beijing%20private%20tour.%20I%27m%20interested%20in%20the%20Terracotta%20Warriors%2C%20the%20Great%20Wall%20and%20Muslim-friendly%20planning.",
-      scheduleCallHref: "tel:+447985052302",
+        "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20tailored%20proposal%20for%20the%206-day%20Xi%27an%20and%20Beijing%20private%20tour.%20I%27m%20interested%20in%20the%20Terracotta%20Warriors%2C%20the%20Great%20Wall%20and%20Muslim-friendly%20planning.",
+      scheduleCallHref: "tel:+8618027438191",
       defaultMessage:
         "I am interested in the 6-Day Xi'an & Beijing Private Tour. Please recommend the right hotels, rail plan, daily pace and dining arrangements for my group.",
     },

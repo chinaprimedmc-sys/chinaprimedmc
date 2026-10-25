@@ -14,6 +14,7 @@ import {
   writeMatchAnswers,
   type MatchAnswers,
 } from "@/lib/tours/journey-match";
+import { JOURNEY_MATCH_EVENT } from "@/lib/tours/journey-tools";
 
 import styles from "./mobile-journey-match.module.css";
 
@@ -88,10 +89,12 @@ export function MobileJourneyMatch({
   items,
   onBrowse,
   browsing,
+  showEntry = true,
 }: {
   items: JourneyCatalogItem[];
   onBrowse: () => void;
   browsing: boolean;
+  showEntry?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
@@ -99,6 +102,7 @@ export function MobileJourneyMatch({
   const [answers, setAnswers] = useState<Partial<MatchAnswers>>(initial);
   const [advancing, setAdvancing] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const externalTriggerRef = useRef<HTMLElement | null>(null);
   const advanceTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -127,6 +131,20 @@ export function MobileJourneyMatch({
       window.removeEventListener("popstate", onHistoryChange);
       media.removeEventListener("change", onViewportChange);
     };
+  }, []);
+
+  useEffect(() => {
+    const onOpen = () => {
+      externalTriggerRef.current = document.activeElement as HTMLElement | null;
+      if (advanceTimerRef.current) window.clearTimeout(advanceTimerRef.current);
+      setAnswers({ interests: [] });
+      setStep(0);
+      setRevealed(false);
+      setAdvancing(false);
+      setOpen(true);
+    };
+    window.addEventListener(JOURNEY_MATCH_EVENT, onOpen);
+    return () => window.removeEventListener(JOURNEY_MATCH_EVENT, onOpen);
   }, []);
 
   function close() {
@@ -236,51 +254,53 @@ export function MobileJourneyMatch({
 
   return (
     <>
-      <div className={browsing ? styles.returnEntry : styles.entry}>
-        <>
-          <Image
-            src={scenes[0].src}
-            alt=""
-            fill
-            sizes="100vw"
-            className={styles.entryImage}
-            priority
-            fetchPriority="high"
-          />
-          <div className={styles.entryShade} aria-hidden="true" />
-        </>
-        <div className={styles.entryContent}>
-          {!browsing ? (
-            <>
-              <div className={styles.entryEyebrow}>
-                <span aria-hidden="true" /> Privately planned. Locally supported.
-              </div>
-              <p className={styles.entryCount}>A private journey in four choices</p>
-              <h1>
-                <span>Find your way</span>
-                <span>through China.</span>
-              </h1>
-            </>
-          ) : (
-            <>
-              <div className={styles.returnEyebrow}>Journey Match</div>
-              <h2>Still deciding?</h2>
-              <p className={styles.returnCopy}>Four quick choices. One clearer place to begin.</p>
-            </>
-          )}
-          <button ref={triggerRef} type="button" className={styles.entryButton} onClick={start}>
-            <span>
-              <small>01 / 04</small> {browsing ? "Match my journey" : "Find my journey"}
-            </span>
-            <ArrowRight size={19} aria-hidden="true" />
-          </button>
-          {!browsing && (
-            <button type="button" className={styles.browseButton} onClick={onBrowse}>
-              Browse all {items.length} journeys
+      {showEntry ? (
+        <div className={browsing ? styles.returnEntry : styles.entry}>
+          <>
+            <Image
+              src={scenes[0].src}
+              alt=""
+              fill
+              sizes="100vw"
+              className={styles.entryImage}
+              priority
+              fetchPriority="high"
+            />
+            <div className={styles.entryShade} aria-hidden="true" />
+          </>
+          <div className={styles.entryContent}>
+            {!browsing ? (
+              <>
+                <div className={styles.entryEyebrow}>
+                  <span aria-hidden="true" /> Privately planned. Locally supported.
+                </div>
+                <p className={styles.entryCount}>A private journey in four choices</p>
+                <h1>
+                  <span>Find your way</span>
+                  <span>through China.</span>
+                </h1>
+              </>
+            ) : (
+              <>
+                <div className={styles.returnEyebrow}>Journey Match</div>
+                <h2>Still deciding?</h2>
+                <p className={styles.returnCopy}>Four quick choices. One clearer place to begin.</p>
+              </>
+            )}
+            <button ref={triggerRef} type="button" className={styles.entryButton} onClick={start}>
+              <span>
+                <small>01 / 04</small> {browsing ? "Match my journey" : "Find my journey"}
+              </span>
+              <ArrowRight size={19} aria-hidden="true" />
             </button>
-          )}
+            {!browsing && (
+              <button type="button" className={styles.browseButton} onClick={onBrowse}>
+                Browse all {items.length} journeys
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      ) : null}
       <Dialog.Root
         open={open}
         onOpenChange={(next) => {
@@ -294,7 +314,7 @@ export function MobileJourneyMatch({
             aria-describedby={undefined}
             onCloseAutoFocus={(event) => {
               event.preventDefault();
-              triggerRef.current?.focus();
+              (triggerRef.current ?? externalTriggerRef.current)?.focus();
             }}
           >
             {!revealed ? (
@@ -463,7 +483,14 @@ export function MobileJourneyMatch({
                   )}
                   <div className={styles.priceRow}>
                     <span>
-                      From <strong>US${top.item.pricing.fromUsd.toLocaleString("en-US")}</strong>{" "}
+                      {top.item.pricing.fromUsd ? (
+                        <>
+                          From{" "}
+                          <strong>US${top.item.pricing.fromUsd.toLocaleString("en-US")}</strong>
+                        </>
+                      ) : (
+                        <strong>Price on request</strong>
+                      )}{" "}
                       <small>
                         {top.item.pricing.pricingUnit === "private-group"
                           ? "per private group of four"
@@ -509,7 +536,9 @@ export function MobileJourneyMatch({
                           <strong>{getJourneyCardTitle(item)}</strong>
                           <small>{differences[0] ?? item.bestForSummary}</small>
                           <em>
-                            From US${item.pricing.fromUsd.toLocaleString("en-US")}{" "}
+                            {item.pricing.fromUsd
+                              ? `From US$${item.pricing.fromUsd.toLocaleString("en-US")}`
+                              : "Price on request"}{" "}
                             {item.pricing.pricingUnit === "private-group"
                               ? "per private group of four"
                               : "per person · four guests"}

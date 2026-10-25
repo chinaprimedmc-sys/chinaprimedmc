@@ -15,7 +15,7 @@ import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
-import { calculateJourneyPrice, readJourneyConfiguration } from "@/lib/tours/journey-price";
+import { readJourneyConfiguration } from "@/lib/tours/journey-price";
 
 type TourPageProps = {
   params: Promise<{ slug: string }>;
@@ -80,9 +80,9 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
 
   if (staticTour) {
     const catalogItem = getJourneyCatalogItem(staticTour.slug);
-    const configurable = slug === "beijing-xian-chengdu-shanghai-private-11-day-tour";
-    const selectedPrice = configurable
-      ? calculateJourneyPrice(catalogItem?.pricing.fromUsd, initialSelection)
+    const isFixedFourCityRoute = slug === "beijing-xian-chengdu-shanghai-private-11-day-tour";
+    const selectedPrice = isFixedFourCityRoute
+      ? undefined
       : initialSelection.guests === "4"
         ? catalogItem?.pricing.fromUsd
         : undefined;
@@ -199,11 +199,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
             url: tourUrl,
             mainEntityOfPage: { "@id": `${tourUrl}#webpage` },
             category: catalogItem?.commercialRoleLabel ?? "Premium private China tour",
-            duration: configurable
-              ? initialSelection.pace === "considered"
-                ? "P13D"
-                : "P12D"
-              : `P${staticTour.itinerary.length}D`,
+            duration: `P${staticTour.itinerary.length}D`,
             brand: {
               "@type": "Brand",
               name: siteConfig.name,
@@ -417,7 +413,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
             name: destination.label,
           })),
           offers:
-            initialSelection.guests === "4"
+            initialSelection.guests === "4" && journey.pricing.fromUsd !== undefined
               ? {
                   "@type": "Offer",
                   price: journey.pricing.fromUsd,

@@ -81,7 +81,7 @@ export function PageClosing({
 }) {
   const copy = content[intent];
   const href = primaryHref ?? `/start-planning?source=closing-${intent}`;
-  const whatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(intent === "trade" ? "Hello China Prime DMC, I would like to discuss a travel-trade brief." : "Hello AVIORA, I would like help planning a private journey in China.")}`;
+  const whatsappHref = `https://wa.me/8618027438191?text=${encodeURIComponent(intent === "trade" ? "Hello China Prime DMC, I would like to discuss a travel-trade brief." : "Hello AVIORA, I would like help planning a private journey in China.")}`;
   return (
     <section
       className={`${styles.closing} ${tone === "blue" ? styles.blue : ""}`}

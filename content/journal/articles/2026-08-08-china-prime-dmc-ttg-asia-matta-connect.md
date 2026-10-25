@@ -31,10 +31,6 @@ MATTA Connect brought the regional travel trade together in Ipoh, Malaysia. TTG 
 
 For AVIORA, those conversations were a practical part of product design. Guohui attended to strengthen relationships with Malaysian outbound travel agents and to understand Malaysian travelers more clearly: what makes China feel exciting, what makes it feel difficult, and what details determine whether a private journey feels genuinely comfortable.
 
-![The AVIORA China team speaking with international travel buyers in Malaysia](/home/editorial/travel-trade-buyer-meeting-kuala-lumpur.webp)
-
-_Face-to-face discussion about private travel in China during an international travel trade event in Malaysia._
-
 ## China is familiar and unfamiliar at the same time
 
 Many international travelers recognize the images of China before they understand its geography. They know the Great Wall, giant pandas, Shanghai's skyline, the Terracotta Warriors, Sichuan food and mountain landscapes. They may not yet know which cities connect naturally, how much time a route needs, or how different the travel experience feels from one region to another.
@@ -61,10 +57,6 @@ Growing demand does not mean every traveler wants the same China trip. Conversat
 
 • First-time visitors need simple explanations of why each city belongs in the route.
 
-![A discussion about Muslim-friendly private China travel in Malaysia](/home/editorial/muslim-travel-buyers-kuala-lumpur.webp)
-
-_Discussing Muslim-friendly planning, family comfort and local support with travel buyers._
-
 These are not decorative service promises. They influence the route, hotel location, transport sequence, guide brief, restaurant checks and the amount of unplanned space protected inside each day.
 
 ## Better journeys begin with better questions
@@ -84,10 +76,6 @@ AVIORA is our brand and the name private travelers see throughout planning and t
 For the traveler, this is one connected service: a conversation with AVIORA from the beginning, backed by people on the ground who are responsible for making the journey work in China.
 
 That is why MATTA Connect mattered to us. It was not a stage for claiming that we already knew every market. It was an opportunity to ask better questions, hear different priorities and bring those lessons back into the way we design China travel.
-
-![A personal China travel consultation during the Malaysia travel trade event](/home/editorial/travel-trade-consultation-kuala-lumpur.webp)
-
-_A direct conversation about how an international traveler may want to experience China._
 
 ## What the TTG Asia coverage means
 

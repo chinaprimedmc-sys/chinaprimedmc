@@ -21,7 +21,7 @@ export default function ToursError({ reset }: { reset: () => void }) {
           Tailor My Journey
           <ArrowRight aria-hidden="true" />
         </Link>
-        <a href="https://wa.me/447985052302">
+        <a href="https://wa.me/8618027438191">
           <WhatsAppIcon />
           WhatsApp A Specialist
         </a>

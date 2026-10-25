@@ -174,7 +174,7 @@ const chinaStories = [
   },
 ];
 
-const whatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(
+const whatsappHref = `https://wa.me/8618027438191?text=${encodeURIComponent(
   "Hello AVIORA, I am considering a private trip to China. We are [number] travelers and hope to travel around [dates/month].",
 )}`;
 
@@ -208,7 +208,9 @@ export default function AboutPage() {
             foundingDate: siteConfig.operator.founded,
             address: {
               "@type": "PostalAddress",
-              addressLocality: siteConfig.operator.locality,
+              streetAddress: siteConfig.operator.address.streetAddress,
+              addressLocality: siteConfig.operator.address.addressLocality,
+              addressRegion: siteConfig.operator.address.addressRegion,
               addressCountry: siteConfig.operator.country,
             },
             email: siteConfig.email,
@@ -336,9 +338,15 @@ export default function AboutPage() {
                   <p>Licensed China Operator</p>
                   <strong>{siteConfig.operator.englishReferenceName}</strong>
                   <span>
-                    Registered in Guangzhou on March 28, 2018 and licensed to conduct inbound
-                    tourism business in China.
+                    AVIORA China Travel (also known as AVIORA Travel) is the guest-facing brand;
+                    China Prime DMC serves travel-trade partners. Both operate through this
+                    Guangzhou-registered company, licensed for inbound tourism business. AVIORA also
+                    has offices in Beijing, Shanghai and Xi&apos;an.
                   </span>
+                  <Link href="/company">
+                    Company details, offices and registration record{" "}
+                    <ArrowUpRight aria-hidden="true" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -506,6 +514,7 @@ export default function AboutPage() {
               { label: "How We Help", href: "#understood" },
               { label: "Who We Design For", href: "#designed-around-you" },
               { label: "The AVIORA Standard", href: "#the-standard" },
+              { label: "Company & Licensing", href: "/company" },
               { label: "Our Process", href: "#how-it-works" },
               { label: "The People", href: "#people" },
             ],

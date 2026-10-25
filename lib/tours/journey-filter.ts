@@ -237,8 +237,10 @@ export function matchesJourneyFilters(
 
 export function filterJourneys(items: JourneyCatalogItem[], filters: JourneyFilterState) {
   const perPerson = (item: JourneyCatalogItem) =>
-    item.pricing.fromUsd /
-    (item.pricing.pricingUnit === "private-group" ? item.pricing.basePartySize : 1);
+    item.pricing.fromUsd === undefined
+      ? Number.POSITIVE_INFINITY
+      : item.pricing.fromUsd /
+        (item.pricing.pricingUnit === "private-group" ? item.pricing.basePartySize : 1);
   return items
     .filter((item) => matchesJourneyFilters(item, filters))
     .sort((a, b) => {

@@ -72,3 +72,25 @@ export function formatJournalTitle(title: string) {
     offset === 0 ? word : word.toLowerCase(),
   );
 }
+
+/** Keep full editorial and SEO titles while making mobile headers decision-first. */
+export function formatJournalMobileTitle(title: string) {
+  const formatted = formatJournalTitle(title);
+  if (formatted.length <= 58) return formatted;
+
+  const mobileOverrides: Record<string, string> = {
+    "Can You Visit the Terracotta Warriors from Beijing in One Day?":
+      "Terracotta Warriors from Beijing in One Day?",
+    "How Many Days Do You Need for Beijing, Xi'an and Shanghai? 8, 10 or 12 Days Compared":
+      "How Many Days for Beijing, Xi'an and Shanghai?",
+  };
+  if (mobileOverrides[formatted]) return mobileOverrides[formatted];
+
+  const questionEnd = formatted.indexOf("?");
+  if (questionEnd >= 16 && questionEnd <= 55) return formatted.slice(0, questionEnd + 1);
+
+  const colon = formatted.indexOf(":");
+  if (colon >= 16 && colon <= 68) return formatted.slice(0, colon);
+
+  return formatted;
+}

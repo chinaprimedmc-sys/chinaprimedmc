@@ -90,14 +90,6 @@ Maps and transport apps can also need location permission and data. Before leavi
 
 At an airport, prioritize the first connection that gets you to your confirmed driver or hotel. If the chosen eSIM does not activate, connect to airport Wi-Fi where available and use the written contact sheet. If you buy a local SIM, use an official operator counter or a clearly identified service office, keep the receipt and check that the line can make the calls your itinerary requires.
 
-![China Unicom tourist SIM card counter at Beijing Daxing International Airport](/journal/2026-08-07/china-sim-card-airport-counter.webp)
-
-_A tourist SIM counter photographed at Beijing Daxing International Airport. Counter hours, stock and package terms can change; this is not a Shanghai airport service listing._
-
-![Printed China Unicom tourist SIM plan board at Beijing Daxing International Airport](/journal/2026-08-07/china-unicom-tourist-sim-plan-board.webp)
-
-_An on-site plan board photographed at Beijing Daxing International Airport. Prices and allowances shown in the photograph are time-specific examples, not current quotations; verify the live offer before purchase._
-
 AVIORA’s [planning FAQ](/faq) covers connectivity alongside payments, transport and practical arrival questions. The [Shanghai destination guide](/destinations/shanghai) and [Beijing destination guide](/destinations/beijing) then place the data plan inside a city-specific arrival sequence.
 
 ## FAQ

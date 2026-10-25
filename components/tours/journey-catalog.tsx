@@ -118,14 +118,21 @@ export function JourneyCatalog({
   const { filters, update } = useJourneyFilters(initialQueryString);
   const id = useId();
   const rail = useRef<HTMLDivElement>(null);
-  const [mobileBrowsing, setMobileBrowsing] = useState(false);
+  const [mobileBrowsing, setMobileBrowsing] = useState(
+    () => variant === "catalog" && hasActiveFilters(filters),
+  );
   const results = filterJourneys(items, filters);
   const activeFilters = hasActiveFilters(filters);
-  const showCollections = variant === "catalog" && !activeFilters;
-  const signatureJourneys = results.filter((item) => signatureJourneySlugs.has(item.slug));
+  const showingBrowse = mobileBrowsing || (variant === "catalog" && activeFilters);
+  const showCollections = (variant === "catalog" || variant === "home") && !activeFilters;
+  const signatureJourneys = results.filter(
+    (item) => signatureJourneySlugs.has(item.slug) && item.visualStatus !== "pending",
+  );
   const dayTours = results.filter(isDayTour);
+  // Pending signature journeys fall back to this rail so every journey stays discoverable.
   const beyondTheIcons = results.filter(
-    (item) => !isDayTour(item) && !signatureJourneySlugs.has(item.slug),
+    (item) =>
+      !isDayTour(item) && !signatureJourneys.some((signature) => signature.slug === item.slug),
   );
   const set = (patch: Partial<JourneyFilterState>, mode: "push" | "replace" = "push") =>
     update({ ...filters, ...patch }, mode);
@@ -137,22 +144,25 @@ export function JourneyCatalog({
       aria-labelledby={variant === "search" ? undefined : id + "-title"}
       aria-label={variant === "search" ? "Journey search results" : undefined}
       data-finder={variant}
-      data-mobile-browse={mobileBrowsing || variant === "search" ? "true" : "false"}
+      data-mobile-browse={
+        showingBrowse || variant === "home" || variant === "search" ? "true" : "false"
+      }
     >
       {variant !== "search" && (
         <MobileJourneyMatch
           items={items}
-          browsing={mobileBrowsing}
+          browsing={showingBrowse}
           onBrowse={() => setMobileBrowsing(true)}
+          showEntry={variant === "catalog"}
         />
       )}
       {variant !== "search" && (
         <header className={styles.header}>
           <div>
             <h2 id={id + "-title"}>
-              {mobileBrowsing ? "Browse the collections" : "Find your China journey"}
+              {showingBrowse ? "Browse the collections" : "Journeys worth making your own"}
             </h2>
-            <p>Choose a day, a city or a longer route. Compare what matters to you.</p>
+            <p>Start with a route, then make the days, pace and details yours.</p>
           </div>
           {variant === "home" && (
             <Link href={"/tours?" + writeJourneyFilters(filters) + "#journey-catalog"}>
@@ -160,6 +170,22 @@ export function JourneyCatalog({
             </Link>
           )}
         </header>
+      )}
+      {showCollections && variant === "catalog" && (
+        <div className={styles.featured}>
+          <JourneyCollectionRail
+            eyebrow="A place to begin"
+            title="Signature Journeys"
+            description="Our most considered starting points for a private trip through China."
+            items={signatureJourneys}
+          />
+        </div>
+      )}
+      {variant === "catalog" && !activeFilters && (
+        <div className={styles.browseHeading}>
+          <h2>Explore every possibility</h2>
+          <p>Browse by type or refine the routes around your plans.</p>
+        </div>
       )}
       {variant !== "search" && (
         <div className={styles.types} role="group" aria-label="Journey type">
@@ -326,22 +352,24 @@ export function JourneyCatalog({
       </div>
       {showCollections ? (
         <div className={styles.collections}>
+          {variant !== "catalog" && (
+            <JourneyCollectionRail
+              eyebrow="A place to begin"
+              title="Signature Journeys"
+              description="Our most considered starting points for a private trip through China."
+              items={signatureJourneys}
+            />
+          )}
           <JourneyCollectionRail
-            eyebrow="AVIORA selected"
-            title="Signature Journeys"
-            description="The clearest starting points for a thoughtfully planned private journey through China."
-            items={signatureJourneys}
-          />
-          <JourneyCollectionRail
-            eyebrow="Go deeper"
-            title="China Beyond the Icons"
-            description="Regional stories, landscapes and specialist routes for travelers looking beyond the classic first trip."
+            eyebrow="Go further"
+            title="Beyond the Familiar"
+            description="Different landscapes, regional stories and a more personal way into China."
             items={beyondTheIcons}
           />
           <JourneyCollectionRail
-            eyebrow="Add a private day"
+            eyebrow="A day of its own"
             title="Private Day Tours"
-            description="Focused local days with private support, designed to fit around a wider China itinerary."
+            description="A focused day with a private guide and a route designed around your time."
             items={dayTours}
           />
         </div>

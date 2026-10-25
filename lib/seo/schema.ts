@@ -9,7 +9,7 @@ export function organizationSchema() {
     "@type": "TravelAgency",
     "@id": organizationId,
     name: siteConfig.siteName,
-    alternateName: [siteConfig.name, "China Prime DMC", siteConfig.operator.englishReferenceName],
+    alternateName: ["AVIORA Travel", siteConfig.name, "China Prime DMC"],
     legalName: siteConfig.operator.legalName,
     url: siteConfig.url,
     logo: new URL(siteConfig.logo, siteConfig.url).toString(),
@@ -20,13 +20,24 @@ export function organizationSchema() {
     telephone: siteConfig.phone,
     address: {
       "@type": "PostalAddress",
-      addressLocality: siteConfig.operator.locality,
+      streetAddress: siteConfig.operator.address.streetAddress,
+      addressLocality: siteConfig.operator.address.addressLocality,
+      addressRegion: siteConfig.operator.address.addressRegion,
       addressCountry: siteConfig.operator.country,
     },
     areaServed: {
       "@type": "Country",
       name: "China",
     },
+    location: siteConfig.operator.officeCities.map((city) => ({
+      "@type": "Place",
+      name: `AVIORA ${city} office`,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: city,
+        addressCountry: siteConfig.operator.country,
+      },
+    })),
     knowsAbout: [
       "Private China tours",
       "Inbound tourism in China",
@@ -78,7 +89,7 @@ export function websiteSchema() {
     "@id": `${siteConfig.url}/#website`,
     url: siteConfig.url,
     name: siteConfig.siteName,
-    alternateName: [siteConfig.name, "China Prime DMC"],
+    alternateName: ["AVIORA Travel", siteConfig.name, "China Prime DMC"],
     description: siteConfig.description,
     publisher: { "@id": `${siteConfig.url}/#organization` },
     inLanguage: "en-US",
@@ -119,7 +130,7 @@ export function webPageSchema(input: {
 export function articleSchemaData(input: {
   headline: string;
   description: string;
-  image: {
+  image?: {
     url: string;
     width?: number;
     height?: number;
@@ -149,6 +160,7 @@ export function articleSchemaData(input: {
     publisher: string;
     publishedAt?: string;
   }>;
+  factChecked?: boolean;
 }) {
   return {
     "@context": "https://schema.org",
@@ -156,12 +168,16 @@ export function articleSchemaData(input: {
     "@id": `${input.url}#article`,
     headline: input.headline,
     description: input.description,
-    image: {
-      "@type": "ImageObject",
-      url: input.image.url,
-      ...(input.image.width ? { width: input.image.width } : {}),
-      ...(input.image.height ? { height: input.image.height } : {}),
-    },
+    ...(input.image
+      ? {
+          image: {
+            "@type": "ImageObject",
+            url: input.image.url,
+            ...(input.image.width ? { width: input.image.width } : {}),
+            ...(input.image.height ? { height: input.image.height } : {}),
+          },
+        }
+      : {}),
     datePublished: input.datePublished,
     dateModified: input.dateModified,
     inLanguage: "en-US",
@@ -170,16 +186,20 @@ export function articleSchemaData(input: {
     ...(input.wordCount ? { wordCount: input.wordCount } : {}),
     author: {
       "@type": "Organization",
-      "@id": `${siteConfig.url}/about#editorial-team`,
+      "@id": `${siteConfig.url}/editorial-policy#editorial-team`,
       name: input.authorName,
       description: input.authorRole,
-      url: new URL("/about", siteConfig.url).toString(),
+      url: new URL("/editorial-policy", siteConfig.url).toString(),
       parentOrganization: { "@id": `${siteConfig.url}/#organization` },
     },
-    reviewedBy: {
-      "@type": "Organization",
-      "@id": `${siteConfig.url}/#organization`,
-    },
+    ...(input.factChecked
+      ? {
+          reviewedBy: {
+            "@type": "Organization",
+            "@id": `${siteConfig.url}/#organization`,
+          },
+        }
+      : {}),
     publisher: { "@id": `${siteConfig.url}/#organization` },
     copyrightHolder: { "@id": `${siteConfig.url}/#organization` },
     copyrightYear: new Date(input.datePublished).getUTCFullYear(),

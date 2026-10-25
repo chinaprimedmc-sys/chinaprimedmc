@@ -165,7 +165,7 @@ Ask what happens if the named hotel, train or attraction slot is unavailable. A 
 
 Consider a first journey through Beijing, Xi’an and Shanghai. The major cost areas are not only the headline attractions. They include three hotel stays, airport arrival support, private sightseeing vehicles, licensed local guides, Great Wall transport, intercity rail, station transfers, passport-linked attraction reservations and the operating support that keeps those services connected.
 
-The [9-day Beijing, Xi’an and Shanghai private tour](/tours/first-china-beautifully-paced) is the simpler version. Adding Chengdu and the pandas creates a richer first trip but also introduces another city, hotel, guide team and intercity sector; see the [11-day Beijing, Xi’an, Chengdu and Shanghai route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour).
+The [9-day Beijing, Xi’an and Shanghai private tour](/tours/first-china-beautifully-paced) is the simpler version. Adding Chengdu and the pandas creates a richer first trip but also introduces another city, hotel, guide team and intercity connection; see the [12-day Shanghai, Chengdu, Xi’an and Beijing route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour).
 
 ## How to receive a useful first proposal
 

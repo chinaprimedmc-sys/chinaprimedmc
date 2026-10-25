@@ -48,7 +48,7 @@ export function getJourneyBridgeForArticle(article: JournalArticle) {
     journeyLabel: rule?.journeyLabel ?? "See this private journey",
     planningLabel: rule?.planningLabel ?? "Ask about this journey",
     planningHref: `/start-planning?${params.toString()}`,
-    advisorHref: `https://wa.me/447985052302?text=${encodeURIComponent(advisorMessage)}`,
+    advisorHref: `https://wa.me/8618027438191?text=${encodeURIComponent(advisorMessage)}`,
   };
 }
 

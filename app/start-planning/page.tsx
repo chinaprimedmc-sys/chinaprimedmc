@@ -22,7 +22,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = createMetadata({
   title: "Request a Private China Travel Proposal",
   description:
-    "Tell AVIORA about your dates, travelers and priorities. Receive a considered private China travel proposal with no obligation to book.",
+    "Leave your first name and WhatsApp number. An AVIORA China specialist will ask about your travel plans and next steps, with no obligation to book.",
   path: "/start-planning",
   image: heroImage.src,
 });
@@ -77,14 +77,15 @@ export default async function StartPlanningPage({
           <div className="lg:sticky lg:top-28 lg:self-start">
             <p className="type-caption text-muted hidden uppercase lg:block">Plan My Trip</p>
             <h1 className="type-page-title max-w-2xl lg:mt-5">
-              Tell us what would make your China journey feel right.
+              Start a conversation about your China journey.
             </h1>
             <p className="type-body text-muted mt-4 max-w-2xl lg:mt-5">
-              Share the essentials so our China team can shape a clear private proposal around you.
+              Leave your first name and WhatsApp number. We will ask about your dates and priorities
+              when we reply.
             </p>
             <p className="text-muted mt-8 hidden max-w-sm border-t border-[var(--border)] pt-5 text-base leading-7 lg:block">
-              A China specialist will use these details to prepare a useful first direction. This
-              does not confirm a booking.
+              A China specialist will learn what matters to you before suggesting a route. This does
+              not confirm a booking.
             </p>
             <ul className="mt-5 hidden max-w-sm gap-2 border-b border-[var(--border)] pb-5 text-base leading-7 lg:grid">
               {planningReassurance.map((item) => (
@@ -109,7 +110,7 @@ export default async function StartPlanningPage({
             <div className="text-muted flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--border)] pt-5 text-sm">
               <span>Prefer direct contact?</span>
               <TrackedLink
-                href="https://wa.me/447985052302"
+                href="https://wa.me/8618027438191"
                 className="min-h-11 font-semibold text-[var(--text-primary)]"
                 trackingLabel="Message Our China Team"
                 trackingPlacement="planning-direct-whatsapp"
@@ -134,7 +135,7 @@ export default async function StartPlanningPage({
           <SectionHeader
             eyebrow="What happens next"
             title="This starts a conversation. It does not confirm a booking."
-            description="A China specialist will review your answers, suggest a sensible direction and ask any questions needed before preparing your quotation."
+            description="A China specialist will reach out on WhatsApp to understand your dates and priorities before preparing a quotation."
           />
           <div className="grid gap-0 border-y border-[var(--border)] md:grid-cols-3">
             {[

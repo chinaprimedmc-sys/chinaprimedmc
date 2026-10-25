@@ -96,14 +96,6 @@ AVIORA’s [Chengdu destination guide](/destinations/chengdu) and [five-day pand
 
 Panda viewing is not a guaranteed performance. The base explains that animals or areas may be unavailable because of severe weather, conservation work, maintenance or management needs. Its visitor notice also says the Bamboo Tower can close in adverse weather and that one high-traffic villa is closed on Mondays as part of a rotational rest system, except on statutory holidays.
 
-![Two giant pandas resting and feeding on wooden platforms at Chengdu Panda Base](/journal/2026-08-07/chengdu-pandas-platform.webp)
-
-_Giant pandas on wooden platforms during a morning visit. Their location, visibility and activity cannot be guaranteed for a future date._
-
-![A giant panda walking through a wooded enclosure at Chengdu Panda Base](/journal/2026-08-07/chengdu-panda-close-view.webp)
-
-_A giant panda in a wooded enclosure. Keep the route flexible because animal access and viewing conditions change with welfare needs, weather and site operations._
-
 Bring water, sun protection and shoes suitable for walking. In summer, ask the guide to check heat and rainfall before departure; in cooler seasons, keep a layer for shaded paths. If an outdoor enclosure is quiet, use the indoor viewing areas and the interpretation rather than rushing the group from one enclosure to the next.
 
 ## A sensible first-visit rhythm

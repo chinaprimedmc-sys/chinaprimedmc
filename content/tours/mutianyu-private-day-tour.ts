@@ -1,18 +1,48 @@
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
-// Photography is intentionally pending. The product should never imply that a
-// generic Great Wall image depicts the date-specific Mutianyu operating route.
-const pendingImage: MediaAsset = {
-  src: "/home/editorial/great-wall-private-china-travel.webp",
-  alt: "Photography for the private Mutianyu Great Wall day tour is being prepared",
-  width: 1920,
-  height: 1080,
-};
+const mutianyuImage = (file: string, alt: string, width: number, height: number): MediaAsset => ({
+  src: `/tours/mutianyu-private-day-tour/${file}`,
+  alt,
+  width,
+  height,
+});
+
+const panorama = mutianyuImage(
+  "01-mutianyu-great-wall-autumn-panorama.webp",
+  "Mutianyu Great Wall winding through autumn-colored mountains near Beijing",
+  2160,
+  3240,
+);
+const cableCar = mutianyuImage(
+  "02-mutianyu-cable-car-autumn-view.webp",
+  "Cable cars rising over the autumn mountains at Mutianyu",
+  1920,
+  2560,
+);
+const chairlift = mutianyuImage(
+  "03-mutianyu-chairlift.webp",
+  "Chairlift carrying visitors above the forest at Mutianyu Great Wall",
+  2304,
+  3838,
+);
+const watchtower = mutianyuImage(
+  "04-mutianyu-great-wall-through-watchtower.webp",
+  "Mutianyu Great Wall viewed through a watchtower opening",
+  2304,
+  3838,
+);
+const privateVehicle = mutianyuImage(
+  "05-private-luxury-vehicle.webp",
+  "Spacious premium vehicle interior for a private Beijing day tour",
+  1440,
+  1920,
+);
+const mutianyuGallery = [panorama, cableCar, chairlift, watchtower, privateVehicle];
 
 export const mutianyuPrivateDayTour: Tour = {
   slug: "private-mutianyu-great-wall-day-tour",
-  visualStatus: "pending",
+  visualStatus: "ready",
   publishedAt: "2026-08-21",
   updatedAt: "2026-08-21",
   title: "Private Mutianyu Great Wall Tour, Seamlessly Handled",
@@ -23,7 +53,7 @@ export const mutianyuPrivateDayTour: Tour = {
   styles: ["Culture", "Family", "Senior-friendly", "Photography"],
   hero: {
     eyebrow: "Private Beijing day tour · no shopping · 7–9 hours",
-    image: pendingImage,
+    image: panorama,
     primary: { label: "Check My Date", href: "#inquiry" },
     secondary: { label: "See What Is Included", href: "#price" },
   },
@@ -160,21 +190,21 @@ export const mutianyuPrivateDayTour: Tour = {
       description:
         "Your guide and vehicle work from one confirmed hotel address, pickup window and return plan, so the day does not begin with a station, coach group or ticket-office puzzle.",
       category: "Culture",
-      image: pendingImage,
+      image: privateVehicle,
     },
     {
       title: "A Wall route chosen for the people actually traveling",
       description:
         "The ascent, tower range and turnaround point are adjusted to your group, live conditions and selected mountain transport instead of a fixed fitness test.",
       category: "Senior-friendly",
-      image: pendingImage,
+      image: cableCar,
     },
     {
       title: "Transparent mountain transport, only if you want it",
       description:
         "Choose cable car, chairlift or toboggan only after the current operation and your comfort level are checked. The cost is shown before you commit.",
       category: "Family",
-      image: pendingImage,
+      image: chairlift,
     },
   ],
   itinerary: [
@@ -184,7 +214,7 @@ export const mutianyuPrivateDayTour: Tour = {
       destination: "Beijing · Mutianyu Great Wall · Beijing",
       summary:
         "Meet your private vehicle and English-speaking guide at the confirmed Beijing hotel. Travel to Mutianyu, use the included admission and scenic-area shuttle, then choose the practical ascent, walking section and descent for the day. The return vehicle remains with the group through the agreed service window and brings you back to your Beijing hotel or a confirmed central address.",
-      image: pendingImage,
+      image: watchtower,
       hotel: "No overnight stay required · pickup and return at your Beijing hotel",
       meals: ["Independent lunch time; meal reservation available when requested"],
       transport:
@@ -229,7 +259,7 @@ export const mutianyuPrivateDayTour: Tour = {
         "Private return",
         "No hotel change",
       ],
-      image: pendingImage,
+      image: cableCar,
     },
   ],
   included: [
@@ -254,28 +284,28 @@ export const mutianyuPrivateDayTour: Tour = {
       description:
         "Add a round-trip cable-car plan from approximately US$22 per person when the operator's current route and your group's preferred Wall section make it the right choice. Final price follows the confirmed scenic-area rate for your date.",
       badges: ["Approx. US$22 pp", "Subject to operation"],
-      image: pendingImage,
+      image: chairlift,
     },
     {
       title: "Chairlift up and toboggan down",
       description:
         "A popular option for confident guests who want a playful descent: approximately US$22 per person, subject to weather, safety conditions, height or age rules and the operator's live decision.",
       badges: ["Approx. US$22 pp", "Weather dependent"],
-      image: pendingImage,
+      image: panorama,
     },
     {
       title: "One-way mountain transport",
       description:
         "Add a single cable-car, chairlift or toboggan sector from approximately US$15 per person when the confirmed route makes a one-way choice more sensible than a return ticket.",
       badges: ["Approx. US$15 pp", "Route dependent"],
-      image: pendingImage,
+      image: panorama,
     },
     {
       title: "Reserved Beijing lunch",
       description:
         "Add a clean, reliable restaurant reservation aligned with the return route and your dietary preferences. The restaurant and price are confirmed before booking rather than treated as a mandatory tourist stop.",
       badges: ["Optional", "Dietary needs checked"],
-      image: pendingImage,
+      image: panorama,
     },
   ],
   transportation: {
@@ -336,7 +366,7 @@ export const mutianyuPrivateDayTour: Tour = {
       },
     ],
   },
-  gallery: [],
+  gallery: mutianyuGallery.slice(1),
   faqs: [
     {
       question: "What does the US$198 starting price include?",
@@ -396,7 +426,7 @@ export const mutianyuPrivateDayTour: Tour = {
         description:
           "A privately paced Beijing journey for travelers who want the Great Wall, imperial sites and neighborhoods without compressing everything into one stay.",
         tags: ["Private", "Beijing", "Culture"],
-        image: pendingImage,
+        image: panorama,
         route: "Beijing · Mutianyu Great Wall",
         duration: "5 days / 4 nights",
         href: "/tours/beijing-great-wall-private-5-day-tour",
@@ -406,7 +436,7 @@ export const mutianyuPrivateDayTour: Tour = {
         description:
           "A longer premium private China journey that protects a full Great Wall day within a well-paced first visit.",
         tags: ["Private", "First-time China", "Easy pace"],
-        image: pendingImage,
+        image: panorama,
         route: "Beijing · Xi'an · Shanghai",
         duration: "12 days / 11 nights",
         href: "/tours/china-at-an-easier-pace-12-day-private-tour",
@@ -418,8 +448,8 @@ export const mutianyuPrivateDayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Private%20Mutianyu%20Great%20Wall%20Day%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20check%20a%20private%20Mutianyu%20Great%20Wall%20day%20tour.%0A%0ADate%3A%0ANumber%20of%20guests%20and%20ages%20if%20children%3A%0ABeijing%20hotel%20or%20pickup%20address%3A%0AWalking%20or%20mountain-transport%20preference%3A%0AAny%20mobility%2C%20height%20or%20dietary%20considerations%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Mutianyu%20Great%20Wall%20day%20tour.%20My%20date%2C%20group%20size%20and%20Beijing%20hotel%20are%3A",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Mutianyu%20Great%20Wall%20day%20tour.%20My%20date%2C%20group%20size%20and%20Beijing%20hotel%20are%3A",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I would like to check a private Mutianyu Great Wall day tour from my Beijing hotel.",
   },

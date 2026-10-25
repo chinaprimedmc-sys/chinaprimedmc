@@ -104,7 +104,7 @@ const tradeEmailHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
   "Hello China Prime DMC team,\\n\\nCompany / market:\\nTravel dates:\\nNumber of travelers:\\nRoute or destinations:\\nHotel level / budget direction:\\nSupport needed from your China DMC partner:\\n",
 )}`;
 
-const tradeWhatsappHref = `https://wa.me/447985052302?text=${encodeURIComponent(
+const tradeWhatsappHref = `https://wa.me/8618027438191?text=${encodeURIComponent(
   "Hello China Prime DMC, I am contacting you about a travel trade partnership. Our company/market is [company and country], and we need support for [brief].",
 )}`;
 

@@ -1,7 +1,50 @@
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
-// Route-specific photography will be added after rights and subject accuracy are confirmed.
+const chengduImage = (file: string, alt: string, width: number, height: number): MediaAsset => ({
+  src: `/tours/private-chengdu-panda-day-tour/${file}`,
+  alt,
+  width,
+  height,
+});
+
+const pandaBase = chengduImage(
+  "01-chengdu-panda-base-morning.webp",
+  "A giant panda resting among trees at Chengdu Research Base of Giant Panda Breeding",
+  1600,
+  2133,
+);
+const peoplesParkTeahouse = chengduImage(
+  "02-chengdu-peoples-park-teahouse.webp",
+  "Locals sharing tea and conversation at a traditional teahouse in Chengdu People's Park",
+  1179,
+  1500,
+);
+const peoplesParkTeaTable = chengduImage(
+  "03-chengdu-peoples-park-tea-table.webp",
+  "A Sichuan-style tea table beside the lake in Chengdu People's Park",
+  1179,
+  1500,
+);
+const sichuanHotpot = chengduImage(
+  "04-chengdu-sichuan-hotpot.webp",
+  "A spread of Sichuan hotpot ingredients and broth in Chengdu",
+  1600,
+  2133,
+);
+const privateVehicle: MediaAsset = {
+  src: "/tours/mutianyu-private-day-tour/05-private-luxury-vehicle.webp",
+  alt: "Spacious premium vehicle interior for a private Chengdu day tour",
+  width: 1440,
+  height: 1920,
+};
+const chengduGallery = [
+  pandaBase,
+  peoplesParkTeahouse,
+  peoplesParkTeaTable,
+  sichuanHotpot,
+  privateVehicle,
+];
 const pendingImage: MediaAsset = {
   src: "/home/editorial/great-wall-private-china-travel.webp",
   alt: "Photography for the private Chengdu panda day tour is being prepared",
@@ -11,7 +54,7 @@ const pendingImage: MediaAsset = {
 
 export const privateChengduPandaDayTour: Tour = {
   slug: "private-chengdu-panda-day-tour-early-morning",
-  visualStatus: "pending",
+  visualStatus: "ready",
   publishedAt: "2026-08-21",
   updatedAt: "2026-08-21",
   title: "Private Chengdu Panda Day Tour, Early Morning & Seamlessly Handled",
@@ -22,7 +65,7 @@ export const privateChengduPandaDayTour: Tour = {
   styles: ["Family", "Nature", "Culture", "Photography"],
   hero: {
     eyebrow: "Private Chengdu panda tour · early start · guide, driver and admission · no shopping",
-    image: pendingImage,
+    image: pandaBase,
     primary: { label: "Check My Date", href: "#inquiry" },
     secondary: { label: "See What Is Included", href: "#price" },
   },
@@ -170,21 +213,21 @@ export const privateChengduPandaDayTour: Tour = {
       description:
         "Leave central Chengdu before the weakest part of the day, with tickets, private transport and the practical entrance plan arranged in advance.",
       category: "Family",
-      image: pendingImage,
+      image: pandaBase,
     },
     {
       title: "A route shaped around live panda-base conditions",
       description:
         "Your guide responds to public openings, crowd flow, weather and visible animal activity rather than promising a fixed sequence or a specific panda performance.",
       category: "Nature",
-      image: pendingImage,
+      image: pandaBase,
     },
     {
       title: "A slower Chengdu afternoon beyond the panda image",
       description:
         "People's Park, tea-house culture and everyday city life give the day a relaxed second chapter without forcing another major attraction.",
       category: "Culture",
-      image: pendingImage,
+      image: peoplesParkTeahouse,
     },
   ],
   itinerary: [
@@ -194,7 +237,7 @@ export const privateChengduPandaDayTour: Tour = {
       destination: "Chengdu",
       summary:
         "Meet your private English-speaking guide and vehicle at the confirmed Chengdu hotel for an early departure. Enter Chengdu Research Base of Giant Panda Breeding with the included standard admission and follow a public route adapted to current openings, crowd flow, weather and animal activity. After independent lunch time or a selected Sichuan meal, return to central Chengdu for a flexible People's Park and tea-culture walk before a private hotel return. Exact timing and visible animals remain date- and condition-specific.",
-      image: pendingImage,
+      image: pandaBase,
       hotel: "No overnight stay required · pickup and return at your Chengdu hotel",
       meals: ["Independent lunch time; selected Sichuan lunch available as an upgrade"],
       transport:
@@ -244,7 +287,7 @@ export const privateChengduPandaDayTour: Tour = {
         "Private return",
         "No hotel change",
       ],
-      image: pendingImage,
+      image: privateVehicle,
     },
   ],
   included: [
@@ -270,35 +313,35 @@ export const privateChengduPandaDayTour: Tour = {
       description:
         "Add a pre-arranged Sichuan lunch from US$28 per guest, with spice level, allergies and dietary preferences reviewed before booking. Drinks and dishes beyond the agreed menu remain separate.",
       badges: ["From US$28 pp", "Spice level checked"],
-      image: pendingImage,
+      image: sichuanHotpot,
     },
     {
       title: "Hosted People's Park tea table",
       description:
         "Add a hosted tea-house experience from US$38 per guest with reserved timing, selected tea and cultural interpretation. It takes place in a public tea-house setting and is not advertised as a private venue unless specifically confirmed.",
       badges: ["From US$38 pp", "Public tea-house setting"],
-      image: pendingImage,
+      image: peoplesParkTeaTable,
     },
     {
       title: "Hands-on Sichuan cooking experience",
       description:
         "Add a date-confirmed cooking session from US$78 per guest. The host, dishes, group format, dietary fit, transfers and any added service time are stated before payment.",
       badges: ["From US$78 pp", "Host availability"],
-      image: pendingImage,
+      image: sichuanHotpot,
     },
     {
       title: "Sichuan opera evening extension",
       description:
         "Extend the day from US$328 per group of up to four with standard performance tickets, private vehicle, guide assistance and up to 2.5 additional service hours. Exact venue, seats and program are confirmed for the date.",
       badges: ["From US$328 per group", "Up to 4 guests", "Evening extension"],
-      image: pendingImage,
+      image: sichuanHotpot,
     },
     {
       title: "Additional private touring time",
       description:
         "Add guide, driver and vehicle time at US$58 per private group for each additional hour, subject to date-specific availability. This can support a slower base visit, longer tea stop or confirmed evening plan.",
       badges: ["US$58 per group/hour", "Subject to availability"],
-      image: pendingImage,
+      image: privateVehicle,
     },
   ],
   transportation: {
@@ -364,7 +407,7 @@ export const privateChengduPandaDayTour: Tour = {
       },
     ],
   },
-  gallery: [],
+  gallery: chengduGallery.slice(1),
   faqs: [
     {
       question: "What does the US$598 starting price include?",
@@ -446,8 +489,8 @@ export const privateChengduPandaDayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Private%20Chengdu%20Panda%20Day%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20check%20a%20private%20Chengdu%20panda%20day%20tour.%0A%0ADate%3A%0ANumber%20of%20guests%20and%20ages%20if%20children%3A%0AChengdu%20hotel%20or%20pickup%20address%3A%0AAny%20airport%20or%20railway%20connection%3A%0AOptional%20experiences%20of%20interest%3A%0AAny%20mobility%2C%20dietary%20or%20other%20considerations%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Chengdu%20panda%20day%20tour.%20My%20date%2C%20group%20size%20and%20Chengdu%20hotel%20are%3A",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Chengdu%20panda%20day%20tour.%20My%20date%2C%20group%20size%20and%20Chengdu%20hotel%20are%3A",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I would like to check a private early-morning Chengdu panda day tour from my Chengdu hotel.",
   },

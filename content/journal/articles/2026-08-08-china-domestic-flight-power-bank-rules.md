@@ -71,10 +71,6 @@ Do not add a homemade sticker or printed logo. Airport security decides whether 
 
 The label should also show capacity. Airlines and security staff need a readable watt-hour value or enough electrical information to determine it. If a label lists milliamp-hours and voltage, the calculation is:
 
-![Power bank and charging cable inside a passenger's carry-on bag](/journal/2026-08-08/power-bank-in-carry-on-bag.webp)
-
-_A power bank packed in a passenger’s carry-on bag. A display or stated capacity does not prove CCC compliance or airport acceptance; do not use or charge a power bank during the flight, and follow crew instructions._
-
 **watt-hours (Wh) = milliamp-hours (mAh) × voltage (V) ÷ 1,000**
 
 For example, 20,000 mAh at 3.7 V equals 74 Wh. The arithmetic helps a traveler understand the label; it does not cure a missing CCC mark or guarantee carriage.

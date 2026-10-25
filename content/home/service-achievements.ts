@@ -4,8 +4,9 @@ export const serviceAchievements = [
     target: 30,
     display: "30+",
     suffix: "+",
-    englishLabel: "Countries Served",
-    description: "Travelers from 30+ countries.",
+    shortLabel: "countries represented",
+    englishLabel: "Countries represented among guests",
+    description: "AVIORA has welcomed travelers to China from more than 30 countries.",
     delay: 0,
   },
   {
@@ -13,8 +14,9 @@ export const serviceAchievements = [
     target: 12000,
     display: "12,000+",
     suffix: "+",
-    englishLabel: "Guests Hosted",
-    description: "Private journeys across China.",
+    shortLabel: "travelers welcomed",
+    englishLabel: "Travelers welcomed to China",
+    description: "More than 12,000 travelers have experienced China with AVIORA.",
     delay: 120,
   },
   {
@@ -22,8 +24,16 @@ export const serviceAchievements = [
     target: 48,
     display: "48",
     suffix: "",
-    englishLabel: "Companies Supported",
-    description: "Travel programs delivered in China.",
+    shortLabel: "companies supported",
+    englishLabel: "International travel companies supported",
+    description:
+      "AVIORA has supported 48 international companies with travel arrangements in China.",
     delay: 240,
   },
 ] as const;
+
+export function serviceAchievementsText() {
+  return serviceAchievements
+    .map(({ display, englishLabel, description }) => `- ${display} ${englishLabel}: ${description}`)
+    .join("\n");
+}

@@ -334,8 +334,8 @@ export function DestinationTemplate({ destination }: DestinationTemplateProps) {
           },
         ]}
         social={[
-          { label: "Facebook", href: "https://www.facebook.com/share/1CqXTAXD1e/?mibextid=wwXIfr" },
-          { label: "Instagram", href: "https://www.instagram.com/chinaprimedmc" },
+          { label: "Facebook", href: "https://www.facebook.com/p/Aviora-Travel-61593357154006/" },
+          { label: "Instagram", href: "https://www.instagram.com/chinaprimedmc/" },
         ]}
       />
       <FloatingCta label="Plan My Trip" href={inquiryHref} />

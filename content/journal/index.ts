@@ -1,5 +1,6 @@
 import { publishedJournalArticles } from "@/content/journal/published";
 import { applyJournalEditorialUpgrade } from "@/content/journal/editorial-upgrades";
+import { assertJournalGovernance, getJournalGovernance } from "@/content/journal/governance";
 import { PUBLIC_JOURNAL_SLUGS } from "@/content/journal/public-manifest";
 import type { JournalArticle, JournalCategory, JournalSummary, JournalTag } from "@/types/journal";
 
@@ -49,13 +50,16 @@ const publicJournalSlugs = new Set<string>(PUBLIC_JOURNAL_SLUGS);
 
 export const journalArticles: JournalArticle[] = publishedJournalArticles
   .filter((article) => publicJournalSlugs.has(article.slug))
-  .map(applyJournalEditorialUpgrade);
+  .map(applyJournalEditorialUpgrade)
+  .map((article) => ({ ...article, governance: getJournalGovernance(article.slug) }));
 
 if (journalArticles.length !== PUBLIC_JOURNAL_SLUGS.length) {
   throw new Error(
     `Journal manifest mismatch: expected ${PUBLIC_JOURNAL_SLUGS.length} public articles, found ${journalArticles.length}.`,
   );
 }
+
+assertJournalGovernance();
 
 /** 首页只使用摘要，避免把每篇文章的完整正文发送到客户端。 */
 export const journalSummaries: JournalSummary[] = journalArticles.map((article) => ({
@@ -64,7 +68,7 @@ export const journalSummaries: JournalSummary[] = journalArticles.map((article) 
   excerpt: article.excerpt,
   category: article.category,
   tags: article.tags,
-  image: article.hero.mode === "text" ? undefined : article.hero.image,
+  image: undefined,
   publishedAt: article.publishedAt,
   updatedAt: article.updatedAt,
   readingTime: article.readingTime,

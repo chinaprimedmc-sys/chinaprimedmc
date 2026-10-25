@@ -16,7 +16,9 @@ export type JourneyPricePresentation = {
 };
 
 export function getJourneyPricePresentation(item: JourneyCatalogItem): JourneyPricePresentation {
-  const amount = `US$${item.pricing.fromUsd.toLocaleString("en-US")}`;
+  const amount = item.pricing.fromUsd
+    ? `US$${item.pricing.fromUsd.toLocaleString("en-US")}`
+    : "Price on request";
   const label = item.pricing.pricingUnit === "private-group" ? "Private group from" : "From";
   const unit = item.pricing.pricingUnit === "per-person" ? " per person" : "";
 
@@ -24,6 +26,8 @@ export function getJourneyPricePresentation(item: JourneyCatalogItem): JourneyPr
     amount,
     label,
     basis: item.pricing.cardBasis,
-    accessibleText: `${label} ${amount}${unit}. ${item.pricing.cardBasis}.`,
+    accessibleText: item.pricing.fromUsd
+      ? `${label} ${amount}${unit}. ${item.pricing.cardBasis}.`
+      : `${amount}. ${item.pricing.cardBasis}.`,
   };
 }

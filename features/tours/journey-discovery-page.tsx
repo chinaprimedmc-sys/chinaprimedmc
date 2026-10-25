@@ -98,14 +98,17 @@ export async function JourneyDiscoveryPage({
                   itinerary: tour.routeLabel,
                   url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
                   provider: { "@id": `${siteConfig.url}/#organization` },
-                  offers: {
-                    "@type": "Offer",
-                    priceCurrency: "USD",
-                    price: tour.pricing.fromUsd,
-                    url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
-                    description: tour.pricing.basis,
-                    seller: { "@id": `${siteConfig.url}/#organization` },
-                  },
+                  offers:
+                    tour.pricing.fromUsd === undefined
+                      ? undefined
+                      : {
+                          "@type": "Offer",
+                          priceCurrency: "USD",
+                          price: tour.pricing.fromUsd,
+                          url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
+                          description: tour.pricing.basis,
+                          seller: { "@id": `${siteConfig.url}/#organization` },
+                        },
                 },
               })),
             },

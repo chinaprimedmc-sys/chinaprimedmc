@@ -4,17 +4,17 @@ import Link from "next/link";
 
 import { TrackedLink } from "@/components/cta/tracked-link";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { HomeInquiryForm } from "@/components/forms/home-inquiry-form";
+import { InquiryForm } from "@/components/forms/inquiry-form";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import {
-  homeEditorialStories,
-  homeFaqs,
-  homePlanningGuides,
-  homeTravelerNeeds,
-} from "@/content/home/redesign";
+import { TravelerReviewRail } from "@/components/reviews/traveler-review-rail";
+import { getInterleavedTravelerReviews, travelerReviews } from "@/content/home/traveler-reviews";
+import { serviceAchievements } from "@/content/home/service-achievements";
+import { siteConfig } from "@/config/site";
+import { homeFaqs, homePlanningGuides, homeTravelerNeeds } from "@/content/home/redesign";
 
 import { HomeStandardPanel } from "./home-standard-panel";
 import { HomeJourneyFinder as HomeJourneyFinderTool } from "./home-journey-finder";
+import { HomeMobileApp, HomeMobileHeroActions, HomeMobilePlanningCard } from "./home-mobile-app";
 import styles from "./home-redesign.module.css";
 
 type HomeRedesignProps = {
@@ -25,30 +25,28 @@ export function HomeRedesign({ planningHref }: HomeRedesignProps) {
   return (
     <main className={styles.page}>
       <SiteNavigation />
+      <HomeMobileApp />
       {/* 01 首屏与产品入口：先让访客理解品牌，再快速进入可比较的路线。 */}
       <div className={styles.openingComposition}>
         <HomeHero planningHref={planningHref} />
-        <HomeProof />
+        <TravelerReviewRail
+          reviews={getInterleavedTravelerReviews()}
+          reviewCount={travelerReviews.length}
+        />
         <HomeJourneyFinderTool />
+        <HomeProof />
       </div>
 
-      {/* 03 体验叙事：在产品选择之后补充 AVIORA 的旅行视角。 */}
-      <HomeExperienceStory />
-
-      {/* 04 服务与预订保障：用服务影像与清晰条款降低预订风险。 */}
+      {/* 04 服务标准：说明私人导游、交通与预订流程如何落实。 */}
       <HomeOperatingStandard />
 
-      {/* 05 个人适配：用真实旅行影像说明 AVIORA 如何照顾不同旅客的需求。 */}
+      {/* 05 个人适配：把旅客需求直接连接到相关行程。 */}
       <HomeTravelerNeeds />
 
-      {/* 07 快速询盘：产品发现与个人适配之后，承接未被现有行程满足的需求。 */}
-      <HomePlanning />
-
-      {/* 08 决策支持：使用静态 FAQ 和 Journal 内链回答高意向搜索问题。 */}
+      {/* 06 决策支持先回答关键问题，再承接询盘。 */}
       <HomePlanningIntelligence />
 
-      {/* 09 收束行动：用一句价值承诺和两个清晰出口完成转化闭环。 */}
-      <HomeClosing planningHref={planningHref} />
+      <HomePlanning />
 
       <SiteFooter />
     </main>
@@ -57,11 +55,11 @@ export function HomeRedesign({ planningHref }: HomeRedesignProps) {
 
 function HomeHero({ planningHref }: { planningHref: string }) {
   return (
-    <section className={styles.hero} aria-labelledby="home-hero-title">
+    <section className={styles.hero} aria-labelledby="home-hero-title" data-home-hero>
       <picture className={styles.heroMedia}>
         <source
           media="(min-width: 768px)"
-          srcSet="/home/shanghai-blue-hour-desktop-hero-1280.avif 1280w, /home/shanghai-blue-hour-desktop-hero-1600.avif 1600w, /home/shanghai-blue-hour-desktop-hero-1920.avif 1920w, /home/shanghai-blue-hour-desktop-hero.avif 2400w"
+          srcSet="/home/shanghai-blue-hour-desktop-hero-1600.avif 1600w, /home/shanghai-blue-hour-desktop-hero-1920.avif 1920w, /home/shanghai-blue-hour-desktop-hero.avif 2400w"
           sizes="100vw"
           type="image/avif"
         />
@@ -122,6 +120,7 @@ function HomeHero({ planningHref }: { planningHref: string }) {
                 <ArrowUpRight aria-hidden="true" />
               </TrackedLink>
             </div>
+            <HomeMobileHeroActions />
           </div>
           <ul className={styles.heroTrust} aria-label="Why travelers choose AVIORA">
             <li>
@@ -147,50 +146,46 @@ function HomeHero({ planningHref }: { planningHref: string }) {
 }
 
 function HomeProof() {
-  const serviceFlow = [
+  const operatorFacts = [
     {
-      title: "Planned around you",
-      detail: "Your route, pace and hotels are shaped around the way you want to travel.",
+      title: "A named China operator",
+      detail: `${siteConfig.operator.legalName} (${siteConfig.operator.englishReferenceName}) is registered in Guangzhou, Guangdong.`,
     },
     {
-      title: "Connected across China",
-      detail: "Guides, drivers, tickets and city-to-city handovers stay coordinated.",
+      title: "Offices in three cities",
+      detail: `AVIORA has offices in ${siteConfig.operator.officeCities.join(", ")}.`,
     },
     {
-      title: "Supported when plans change",
-      detail: "A China-based team responds while you travel, not from another time zone.",
+      title: "Licensed for inbound tourism",
+      detail: `The operating company is ${siteConfig.operator.tourismLicense.statement}.`,
     },
-  ] as const;
-
-  const trustPoints = [
-    { value: "12,000+", label: "travelers hosted in China" },
-    { value: "30+", label: "countries represented" },
-    { value: "No", label: "compulsory shopping stops" },
   ] as const;
 
   return (
     <section className={styles.proof} aria-labelledby="home-proof-title">
       <div className={`${styles.container} ${styles.proofInner}`}>
         <header className={styles.proofStory}>
-          <h2 id="home-proof-title">One team in China. Every detail connected.</h2>
+          <p className={styles.eyebrow}>Who operates your journey</p>
+          <h2 id="home-proof-title">A China-based operator, with people on the ground.</h2>
           <p className={styles.proofLead}>
-            From your first route idea to your final transfer, one local team keeps the journey
-            moving around you.
+            AVIORA China Travel is the guest-facing brand of China Prime DMC. The local operating
+            company and office network are clearly identified before you enquire.
           </p>
         </header>
 
         <div className={styles.proofJourney}>
           <figure className={styles.proofMedia}>
             <Image
-              src="/home/standard/local-guide-private-walk.png"
-              alt="A local guide introducing historic China to international travelers"
+              src="/home/editorial/travel-trade-buyer-meeting-kuala-lumpur.webp"
+              alt="AVIORA team member meeting an international travel partner at the ICGETE travel trade event in Kuala Lumpur"
               fill
               sizes="(max-width: 767px) 100vw, 58vw"
+              style={{ objectPosition: "50% 50%" }}
             />
           </figure>
 
-          <ol className={styles.proofStandards} aria-label="How AVIORA looks after your journey">
-            {serviceFlow.map((point, index) => (
+          <ol className={styles.proofStandards} aria-label="AVIORA operating details">
+            {operatorFacts.map((point, index) => (
               <li key={point.title}>
                 <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <div>
@@ -203,49 +198,18 @@ function HomeProof() {
         </div>
 
         <ul className={styles.proofStats} aria-label="Why travelers trust AVIORA">
-          {trustPoints.map((point) => (
-            <li key={point.label}>
-              <strong>{point.value}</strong>
-              <span>{point.label}</span>
+          {serviceAchievements.map((achievement) => (
+            <li key={achievement.id}>
+              <strong>{achievement.display}</strong>
+              <span>{achievement.shortLabel}</span>
             </li>
           ))}
         </ul>
-      </div>
-    </section>
-  );
-}
 
-function HomeExperienceStory() {
-  return (
-    <section className={styles.experienceStory} aria-labelledby="home-experience-title">
-      <div className={styles.experienceStoryStage}>
-        <header className={`${styles.container} ${styles.experienceStoryHeader}`}>
-          <h2 id="home-experience-title">Go beyond the expected.</h2>
-          <p>Stay longer. Look closer. Meet the people behind the places.</p>
-        </header>
-
-        <div className={styles.experienceStoryViewport}>
-          <div className={styles.experienceStoryTrack}>
-            {homeEditorialStories.map((story, index) => (
-              <article key={story.title} className={styles.experienceStoryItem}>
-                <div className={styles.experienceStoryImage}>
-                  <Image
-                    src={story.image.src}
-                    alt={story.image.alt}
-                    fill
-                    sizes="(max-width: 700px) 82vw, (max-width: 1024px) 68vw, 21vw"
-                    style={{ objectPosition: story.image.objectPosition }}
-                  />
-                </div>
-                <div className={styles.experienceStoryCopy}>
-                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{story.title}</h3>
-                  <p>{story.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
+        <Link className={styles.proofCompanyLink} href="/company">
+          Company, offices and registration
+          <ArrowUpRight aria-hidden="true" />
+        </Link>
       </div>
     </section>
   );
@@ -257,10 +221,10 @@ function HomeOperatingStandard() {
       <div className={`${styles.container} ${styles.standardInner}`}>
         <header className={styles.standardHeader}>
           <div>
-            <p className={styles.eyebrow}>The AVIORA Standard</p>
-            <h2 id="home-standard-title">The details are already handled.</h2>
+            <p className={styles.eyebrow}>How the service works</p>
+            <h2 id="home-standard-title">Private services, coordinated around your trip.</h2>
           </div>
-          <p>Guides, vehicles and local support, coordinated by one China-based team.</p>
+          <p>See what is arranged, what is confirmed in writing and what remains your choice.</p>
         </header>
 
         <HomeStandardPanel />
@@ -356,17 +320,20 @@ function HomeTravelerNeeds() {
 function HomePlanning() {
   return (
     <section className={styles.planning} id="start-planning" aria-labelledby="home-planning-title">
+      <div className={`${styles.container} ${styles.mobilePlanningCardWrap}`}>
+        <HomeMobilePlanningCard />
+      </div>
       <div className={`${styles.container} ${styles.planningInner}`}>
         <div className={styles.planningStory}>
           <header className={`${styles.sectionIntro} ${styles.planningIntro}`}>
             <p className={styles.eyebrow}>Private China Travel, Personally Planned</p>
             <h2 id="home-planning-title">
-              <span className={styles.heroDesktopCopy}>Tell us the China you want to see.</span>
-              <span className={styles.heroMobileCopy}>The China you want to see.</span>
+              <span className={styles.heroDesktopCopy}>Tell us what matters on your trip.</span>
+              <span className={styles.heroMobileCopy}>What matters on your trip?</span>
             </h2>
             <p>
-              Share your dates and priorities. We will propose a route, pace and private services in
-              writing.
+              Share your dates and priorities. A China-based specialist will follow up with a route
+              and clear price basis.
             </p>
           </header>
 
@@ -388,17 +355,11 @@ function HomePlanning() {
               <span aria-hidden="true">01</span> Personal reply within 24 hours
             </li>
             <li>
-              <span aria-hidden="true">02</span> No booking obligation
+              <span aria-hidden="true">02</span> No payment to make an enquiry
             </li>
             <li>
-              <span aria-hidden="true">03</span> One China-based team before and during your trip
-            </li>
-            <li>
-              <span aria-hidden="true">04</span> Fully licensed local guides and private
-              arrangements
-            </li>
-            <li>
-              <span aria-hidden="true">05</span> No compulsory shopping stops
+              <span aria-hidden="true">03</span>
+              <Link href="/company">Meet the operator before you book</Link>
             </li>
           </ul>
         </div>
@@ -406,33 +367,9 @@ function HomePlanning() {
         <div className={styles.planningForm}>
           <header className={styles.planningFormHeader}>
             <h3>Tell us about your trip.</h3>
-            <p>Five quick details are enough to get started.</p>
+            <p>Just your first name and WhatsApp number to get started.</p>
           </header>
-          <HomeInquiryForm />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function HomeClosing({ planningHref }: { planningHref: string }) {
-  return (
-    <section className={styles.closing} aria-labelledby="home-closing-title">
-      <div className={`${styles.container} ${styles.closingInner}`}>
-        <div>
-          <h2 id="home-closing-title">Ready to plan your journey?</h2>
-        </div>
-        <div className={styles.closingAction}>
-          <p>Tell us what matters. Our China-based team will help.</p>
-          <TrackedLink
-            href={planningHref}
-            className={styles.closingPrimary}
-            trackingLabel="Start planning"
-            trackingPlacement="homepage-closing-primary"
-          >
-            Start planning
-            <ArrowUpRight aria-hidden="true" />
-          </TrackedLink>
+          <InquiryForm placement="homepage-quick-brief" />
         </div>
       </div>
     </section>

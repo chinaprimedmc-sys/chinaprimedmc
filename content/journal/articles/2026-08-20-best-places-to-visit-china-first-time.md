@@ -112,7 +112,7 @@ Five nights in Beijing, three in Xi'an and three in Shanghai allow the major sig
 
 Four cities work when the fourth has a clear job. Chengdu adds pandas, food and a different regional culture. The route needs disciplined transport choices and should not hide sightseeing inside both transfer days.
 
-Our published [12-day four-city journey](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) starts from **US$2,680 per person** on the same four-guest, two-room, outside-peak basis. It proves that we operate the geography and publish a baseline; it is not a 14-day quote. The extra nights, private-service days and room choices must be costed rather than inferred.
+Our [12-day Shanghai, Chengdu, Xi'an and Beijing private journey](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) has one defined route and 11 hotel nights. Its written quote is prepared around your dates, party size, room setup and confirmed services rather than an unverified headline price.
 
 Our [two-week China itinerary](/journal/two-week-china-itinerary-first-time) shows that version day by day. If you are deciding between lengths, compare the [7, 10 and 14-day structures](/journal/how-many-days-in-china-7-10-14-day-itineraries).
 

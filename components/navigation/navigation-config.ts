@@ -162,14 +162,9 @@ export const navigationConfig = {
     href: "/start-planning",
     whatsapp: [
       {
-        label: "UK / International",
-        number: "+44 7985 052302",
-        href: "https://wa.me/447985052302",
-      },
-      {
-        label: "China",
-        number: "+86 177 8872 1361",
-        href: "https://wa.me/8617788721361",
+        label: "China WhatsApp",
+        number: "+86 180 2743 8191",
+        href: "https://wa.me/8618027438191",
       },
     ],
   },

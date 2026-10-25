@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Search, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Search, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
@@ -23,6 +23,18 @@ type JournalGuideExplorerProps = {
 
 const validDecisions = new Set<JournalDecisionId>(journalDecisions.map(({ id }) => id));
 const initialGuideCount = 3;
+const defaultGuideOrder = [
+  "first-trip-to-china-planning-guide",
+  "how-many-days-in-china-7-10-14-day-itineraries",
+  "best-apps-for-china-travel-2026",
+];
+const mobileDecisionLabels: Record<JournalDecisionId, string> = {
+  "first-trip": "My first trip",
+  route: "Choose a route",
+  prepare: "Prepare to go",
+  pace: "Travel comfortably",
+  private: "Compare private travel",
+};
 
 export function JournalGuideExplorer({ articles }: JournalGuideExplorerProps) {
   const [activeDecision, setActiveDecision] = useState<ActiveDecision>("all");
@@ -92,11 +104,29 @@ export function JournalGuideExplorer({ articles }: JournalGuideExplorerProps) {
   return (
     <div className={styles.finder}>
       <div className={styles.finderIntro}>
-        <p className={styles.sectionLabel}>Decision Finder</p>
-        <h2>Start with the decision in front of you</h2>
-        <p>
-          Choose the question closest to your trip. We will surface the most useful guides first.
-        </p>
+        <p className={styles.sectionLabel}>Find a clear answer</p>
+        <h2>What are you working out?</h2>
+        <p>Choose one question. We will show the most useful place to start.</p>
+      </div>
+
+      <div
+        className={styles.mobileDecisionGrid}
+        role="group"
+        aria-label="Choose what you need help with"
+      >
+        {journalDecisions.map((decision, index) => (
+          <button
+            key={decision.id}
+            type="button"
+            className={styles.mobileDecisionCard}
+            aria-pressed={activeDecision === decision.id}
+            onClick={() => updateDecision(activeDecision === decision.id ? "all" : decision.id)}
+          >
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{mobileDecisionLabels[decision.id]}</strong>
+            <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+          </button>
+        ))}
       </div>
 
       <div className={styles.finderLayout}>
@@ -119,21 +149,6 @@ export function JournalGuideExplorer({ articles }: JournalGuideExplorerProps) {
             </span>
           </label>
 
-          <label className={styles.mobileDecisionSelect}>
-            <span className={styles.controlLabel}>Choose a planning question</span>
-            <select
-              value={activeDecision}
-              onChange={(event) => updateDecision(event.target.value as ActiveDecision)}
-            >
-              <option value="all">All planning questions</option>
-              {journalDecisions.map((decision) => (
-                <option key={decision.id} value={decision.id}>
-                  {decision.label}
-                </option>
-              ))}
-            </select>
-          </label>
-
           <div className={styles.decisionList} role="group" aria-label="Journal planning questions">
             {journalDecisions.map((decision) => (
               <button
@@ -153,7 +168,7 @@ export function JournalGuideExplorer({ articles }: JournalGuideExplorerProps) {
         <div id="journal-finder-results" className={styles.finderResults} aria-live="polite">
           <div className={styles.resultsHeader}>
             <div>
-              <p>{hasFilters ? `${matches.length} matching guides` : "Editor recommended"}</p>
+              <p>{hasFilters ? `${matches.length} useful guides` : "Best places to start"}</p>
               <h3>{activeLabel}</h3>
             </div>
             {hasFilters ? (
@@ -165,7 +180,7 @@ export function JournalGuideExplorer({ articles }: JournalGuideExplorerProps) {
 
           {visibleMatches.length ? (
             <div className={styles.resultList}>
-              {visibleMatches.map((article) => (
+              {visibleMatches.map((article, index) => (
                 <Link
                   key={article.slug}
                   href={`/journal/${article.slug}`}
@@ -174,11 +189,14 @@ export function JournalGuideExplorer({ articles }: JournalGuideExplorerProps) {
                   data-article-slug={article.slug}
                   data-placement="decision-finder"
                 >
-                  <span className={styles.resultMeta}>
-                    {article.category} <span aria-hidden="true">|</span> {article.readingTime}
+                  <span className={styles.resultNumber}>{String(index + 1).padStart(2, "0")}</span>
+                  <span className={styles.resultContent}>
+                    <span className={styles.resultMeta}>
+                      {article.category} <span aria-hidden="true">|</span> {article.readingTime}
+                    </span>
+                    <strong>{formatJournalTitle(article.title)}</strong>
+                    <span className={styles.resultExcerpt}>{article.excerpt}</span>
                   </span>
-                  <strong>{formatJournalTitle(article.title)}</strong>
-                  <span className={styles.resultExcerpt}>{article.excerpt}</span>
                   <ArrowUpRight size={17} strokeWidth={1.6} aria-hidden="true" />
                 </Link>
               ))}
@@ -226,6 +244,15 @@ function findMatches(articles: JournalSummary[], decision: ActiveDecision, query
       return matchesDecision && matchesQuery;
     })
     .sort((left, right) => {
+      if (!normalizedQuery) {
+        const leftIndex = defaultGuideOrder.indexOf(left.slug);
+        const rightIndex = defaultGuideOrder.indexOf(right.slug);
+        if (leftIndex !== -1 || rightIndex !== -1) {
+          if (leftIndex === -1) return 1;
+          if (rightIndex === -1) return -1;
+          return leftIndex - rightIndex;
+        }
+      }
       const editorialPriority =
         Number(Boolean(right.editorPick)) - Number(Boolean(left.editorPick));
       if (editorialPriority) return editorialPriority;

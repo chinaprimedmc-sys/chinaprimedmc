@@ -56,10 +56,6 @@ export default async function JournalPage() {
             url: new URL(`/journal/${article.slug}`, siteConfig.url).toString(),
             datePublished: article.publishedAt,
             dateModified: article.updatedAt ?? article.publishedAt,
-            image: new URL(
-              article.seo.ogImage?.src ?? article.hero.image.src,
-              siteConfig.url,
-            ).toString(),
           })),
         }}
       />

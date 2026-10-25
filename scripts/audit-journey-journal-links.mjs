@@ -5,12 +5,16 @@ const catalogSource = fs.readFileSync("content/tours/catalog.ts", "utf8");
 const publishedSource = fs.readFileSync("content/journal/published.ts", "utf8");
 const commercialSource = fs.readFileSync("content/journal/commercial.ts", "utf8");
 const seniorSource = fs.readFileSync("content/journal/senior-cluster.ts", "utf8");
+const dayTourSources = ["mutianyu", "shanghai", "xian", "chengdu", "guilin"]
+  .map((city) => fs.readFileSync(`content/journal/day-tours/${city}.ts`, "utf8"))
+  .join("\n");
 const manifestSource = fs.readFileSync("content/journal/public-manifest.ts", "utf8");
 
 const sourceSlugs = new Set([
   ...matches(publishedSource, /slug:\s*"([^"]+)"/g),
   ...matches(commercialSource, /slug:\s*"([^"]+)"/g),
   ...matches(seniorSource, /slug:\s*"([^"]+)"/g),
+  ...matches(dayTourSources, /slug:\s*"([^"]+)"/g),
 ]);
 const articleSlugs = matches(manifestSource, /^\s{2}"([^"]+)",$/gm).filter((slug) =>
   sourceSlugs.has(slug),

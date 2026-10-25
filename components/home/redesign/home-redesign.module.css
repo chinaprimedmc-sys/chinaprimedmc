@@ -24,6 +24,15 @@
   transition: none !important;
 }
 
+.mobileHeroActions,
+.mobileDock,
+.mobilePlanningOverlay,
+.mobilePlanningSheet,
+.mobilePlanningCardWrap,
+.mobileBookingDetails {
+  display: none;
+}
+
 .page :where(h1, h2, h3, h4, p, ol, ul, figure) {
   margin: 0;
 }
@@ -568,6 +577,24 @@
   font-size: 0.76rem;
   font-weight: 650;
   line-height: 1.1rem;
+}
+
+.proofCompanyLink {
+  align-items: center;
+  color: var(--home-copy);
+  display: inline-flex;
+  font-size: 0.875rem;
+  font-weight: 600;
+  gap: 0.4rem;
+  justify-self: start;
+  text-decoration: underline;
+  text-decoration-color: var(--home-line);
+  text-underline-offset: 0.25rem;
+}
+
+.proofCompanyLink svg {
+  height: 1rem;
+  width: 1rem;
 }
 
 .experienceStoryStage {
@@ -1235,6 +1262,12 @@
   font-weight: 700;
 }
 
+.planningTrust li a {
+  color: inherit;
+  text-decoration-color: var(--home-line);
+  text-underline-offset: 3px;
+}
+
 .planningForm {
   display: grid;
   align-content: start;
@@ -1256,6 +1289,23 @@
   color: var(--home-copy);
   font-size: 0.875rem;
   line-height: 1.4rem;
+}
+
+.planningCta {
+  align-items: center;
+  background: #151816;
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 9px;
+  justify-content: center;
+  margin-top: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  text-decoration: none;
+  width: fit-content;
 }
 
 .intelligenceGrid {
@@ -1431,9 +1481,9 @@
   }
 
   .hero h1 {
-    font-size: clamp(3.35rem, 7.4vw, 4.5rem);
-    line-height: 1.02;
-    max-width: 16ch;
+    font-size: clamp(2.75rem, 5.3vw, 3.25rem);
+    line-height: 1.1;
+    max-width: 17ch;
   }
 
   .heroLead {
@@ -1448,7 +1498,24 @@
   }
 
   .proofMedia {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2 / 1;
+  }
+
+  .proofInner {
+    gap: 16px;
+  }
+
+  .proofJourney {
+    gap: 10px;
+  }
+
+  .proofStandards li {
+    padding-block: 8px;
+  }
+
+  .proofStats {
+    margin-top: 2px;
+    padding-top: 12px;
   }
 
   .proofStandards {
@@ -2169,5 +2236,404 @@
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     background: #fff;
+  }
+}
+
+/* Mobile app layer. The desktop composition above remains unchanged. */
+@media (max-width: 767px) {
+  .page {
+    padding-bottom: calc(78px + env(safe-area-inset-bottom));
+  }
+
+  .page :is(a, button, summary) {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hero {
+    min-height: min(88dvh, 740px);
+  }
+
+  .heroActions {
+    display: none;
+  }
+
+  .mobileHeroActions {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+    max-width: 22rem;
+  }
+
+  .mobileHeroActions button {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 16px 36px rgba(5, 13, 11, 0.22);
+    color: #173e33;
+    display: flex;
+    font: inherit;
+    font-size: 0.94rem;
+    font-weight: 750;
+    justify-content: space-between;
+    min-height: 56px;
+    padding: 0 18px;
+    width: 100%;
+  }
+
+  .mobileHeroActions button svg {
+    height: 18px;
+    width: 18px;
+  }
+
+  .mobileHeroActions > a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8rem;
+    font-weight: 650;
+    justify-self: center;
+    min-height: 36px;
+    padding: 8px 10px;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.42);
+    text-underline-offset: 5px;
+  }
+
+  .proofMedia {
+    aspect-ratio: 16 / 9;
+  }
+
+  .proofStandards li p {
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.2rem;
+    max-width: 38ch;
+  }
+
+  .standardCarouselTrack {
+    grid-auto-columns: 56vw;
+  }
+
+  .standardImagePlaceholder {
+    aspect-ratio: 3 / 2;
+  }
+
+  .standardSlideCopy {
+    height: 4.5rem;
+    min-height: 4.5rem;
+    padding-top: 10px;
+  }
+
+  .standardSlideCopy p,
+  .bookingPolicyHeader > a,
+  .bookingPolicyGrid {
+    display: none;
+  }
+
+  .mobileBookingDetails {
+    border-top: 1px solid var(--home-line);
+    display: grid;
+    margin-top: 16px;
+  }
+
+  .mobileBookingDetails details {
+    border-bottom: 1px solid var(--home-line);
+  }
+
+  .mobileBookingDetails summary {
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    list-style: none;
+    min-height: 52px;
+    padding: 16px 28px 16px 0;
+    position: relative;
+  }
+
+  .mobileBookingDetails summary::after {
+    content: "+";
+    position: absolute;
+    right: 2px;
+  }
+
+  .mobileBookingDetails details[open] summary::after {
+    content: "−";
+  }
+
+  .mobileBookingDetails details p {
+    color: var(--home-copy);
+    font-size: 0.84rem;
+    line-height: 1.45rem;
+    padding: 0 24px 16px 0;
+  }
+
+  .mobileBookingDetails > a {
+    align-items: center;
+    color: var(--home-accent);
+    display: inline-flex;
+    font-size: 0.84rem;
+    font-weight: 700;
+    gap: 6px;
+    min-height: 44px;
+    width: max-content;
+  }
+
+  .mobileBookingDetails > a svg {
+    height: 15px;
+    width: 15px;
+  }
+
+  .needsGrid {
+    display: grid;
+    gap: 0;
+    grid-auto-columns: auto;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .needsGrid a {
+    align-items: center;
+    border: 0;
+    border-bottom: 1px solid var(--home-line);
+    border-radius: 0;
+    display: grid;
+    grid-template-columns: 66px minmax(0, 1fr) 36px;
+    grid-template-rows: none;
+    min-height: 82px;
+    padding: 10px 0;
+  }
+
+  .needsImageFrame {
+    aspect-ratio: 1;
+    border-radius: 10px;
+  }
+
+  .needsCardCopy {
+    min-height: 0;
+    padding: 0 12px;
+  }
+
+  .needsArrow {
+    bottom: auto;
+    height: 32px;
+    position: static;
+    right: auto;
+    width: 32px;
+  }
+
+  .planningInner {
+    display: none;
+  }
+
+  .mobilePlanningCardWrap {
+    display: block;
+  }
+
+  .mobilePlanningCard {
+    background: #173e33;
+    border-radius: 18px;
+    color: #fff;
+    display: grid;
+    gap: 10px;
+    padding: 24px;
+  }
+
+  .mobilePlanningCard > p {
+    color: #a9dfc5;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobilePlanningCard h3 {
+    font-family: var(--font-brand);
+    font-size: 1.45rem;
+    font-weight: 550;
+    line-height: 1.2;
+  }
+
+  .mobilePlanningCard > span {
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.88rem;
+    line-height: 1.45rem;
+  }
+
+  .mobilePlanningCard button {
+    align-items: center;
+    background: #fff;
+    border: 0;
+    border-radius: 12px;
+    color: #173e33;
+    display: flex;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 750;
+    justify-content: space-between;
+    margin-top: 6px;
+    min-height: 50px;
+    padding: 0 16px;
+  }
+
+  .closing {
+    display: none;
+  }
+
+  .guideList a:nth-child(n + 3),
+  .faqList details:nth-child(n + 4) {
+    display: none;
+  }
+
+  .experienceStoryTrack {
+    grid-auto-columns: 68vw;
+  }
+
+  .experienceStoryImage {
+    aspect-ratio: 4 / 3;
+  }
+
+  .experienceStoryCopy {
+    min-height: 6.9rem;
+  }
+
+  .mobileDock {
+    align-items: center;
+    -webkit-backdrop-filter: blur(22px) saturate(145%);
+    backdrop-filter: blur(22px) saturate(145%);
+    background: rgba(250, 252, 251, 0.9);
+    border: 1px solid rgba(190, 204, 198, 0.82);
+    border-radius: 18px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    box-shadow: 0 16px 38px rgba(14, 36, 29, 0.16);
+    display: grid;
+    grid-template-columns: 1fr 1.08fr 1fr;
+    left: 14px;
+    opacity: 0;
+    padding: 5px;
+    pointer-events: none;
+    position: fixed;
+    right: 14px;
+    transform: translate3d(0, 24px, 0) scale(0.97);
+    z-index: 110;
+  }
+
+  .mobileDock[data-visible="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .mobileDock :is(a, button) {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 13px;
+    color: #52615b;
+    display: flex;
+    flex-direction: column;
+    font: inherit;
+    font-size: 0.66rem;
+    font-weight: 700;
+    gap: 3px;
+    justify-content: center;
+    min-height: 48px;
+    padding: 4px 8px;
+    text-decoration: none;
+  }
+
+  .mobileDock :is(a, button) svg {
+    height: 17px;
+    width: 17px;
+  }
+
+  .mobileDock .mobileDockMatch {
+    background: #173e33;
+    color: #fff;
+  }
+
+  .mobilePlanningOverlay {
+    background: rgba(7, 18, 14, 0.5);
+    display: block;
+    inset: 0;
+    position: fixed;
+    z-index: 500;
+  }
+
+  .mobilePlanningSheet {
+    background: #fff;
+    border-radius: 22px 22px 0 0;
+    bottom: 0;
+    color: #172924;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    left: 0;
+    max-height: min(92dvh, 820px);
+    padding: 8px 20px calc(20px + env(safe-area-inset-bottom));
+    position: fixed;
+    right: 0;
+    z-index: 501;
+  }
+
+  .mobilePlanningHandle {
+    background: #cbd5d0;
+    border-radius: 999px;
+    height: 4px;
+    justify-self: center;
+    margin-bottom: 12px;
+    width: 38px;
+  }
+
+  .mobilePlanningSheet > header {
+    align-items: start;
+    border-bottom: 1px solid var(--home-line);
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .mobilePlanningSheet > header p:first-child {
+    color: var(--home-accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobilePlanningSheet > header h2 {
+    font-family: var(--font-brand);
+    font-size: 1.45rem;
+    line-height: 1.2;
+    margin-top: 4px;
+  }
+
+  .mobilePlanningSheet > header p:last-child {
+    color: var(--home-copy);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.35rem;
+    margin-top: 5px;
+    text-transform: none;
+  }
+
+  .mobilePlanningSheet > header button {
+    background: #f2f5f3;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    flex: 0 0 40px;
+    height: 40px;
+    place-items: center;
+  }
+
+  .mobilePlanningBody {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 20px 2px 4px;
   }
 }

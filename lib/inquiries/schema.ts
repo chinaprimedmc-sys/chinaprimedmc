@@ -14,6 +14,7 @@ export const inquirySchema = z
     utmTerm: z.string().trim().max(160).optional().default(""),
     gclid: z.string().trim().max(240).optional().default(""),
     journeySlug: z.string().trim().max(160).optional().default(""),
+    campaignId: z.string().trim().max(100).optional().default(""),
     viewedJourneys: z.array(z.string().trim().min(1).max(160)).max(40).optional().default([]),
     travelerType: z
       .enum(["family", "couple", "solo", "small-group", "undecided"])

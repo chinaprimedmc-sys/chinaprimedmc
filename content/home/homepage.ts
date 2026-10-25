@@ -24,7 +24,7 @@ export const primaryAction: LinkAction = {
 export const secondaryHeroActions = {
   whatsapp: {
     label: "Message Our China Team",
-    href: "https://wa.me/447985052302",
+    href: "https://wa.me/8618027438191",
   },
   email: {
     label: "Email Our China Team",

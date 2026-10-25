@@ -215,8 +215,8 @@ export const seoItems = [
 export const siteSettings = {
   brand: "China Prime DMC",
   email: "chinaprimedmc@gmail.com",
-  whatsapp: "预留",
-  facebook: "https://www.facebook.com/share/1CqXTAXD1e/?mibextid=wwXIfr",
-  instagram: "https://www.instagram.com/chinaprimedmc",
+  whatsapp: "+86 180 2743 8191",
+  facebook: "https://www.facebook.com/p/Aviora-Travel-61593357154006/",
+  instagram: "https://www.instagram.com/chinaprimedmc/",
   copyright: "China Prime DMC. All rights reserved.",
 };

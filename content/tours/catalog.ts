@@ -37,7 +37,7 @@ export type JourneyCatalogItem = {
 };
 
 export type JourneyPricing = {
-  fromUsd: number;
+  fromUsd?: number;
   pricingUnit: "per-person" | "private-group";
   basePartySize: number;
   cardBasis: string;
@@ -221,7 +221,7 @@ if (!guilinYangshuoLiRiverDayTour) {
 }
 
 if (!beijingXianChengduShanghai) {
-  throw new Error("The 11-day Beijing, Xi'an, Chengdu and Shanghai journey is required.");
+  throw new Error("The Shanghai, Chengdu, Xi'an and Beijing journey is required.");
 }
 
 if (!chengduChongqingZhangjiajie) {
@@ -492,7 +492,7 @@ const mutianyuPrivateDayJourney: JourneyCatalogBase = {
   summary: mutianyuPrivateDayTour.subtitle,
   hook: "A private Beijing hotel pickup, English-speaking guide, admission and a Wall route chosen around your group, with no shopping stops and transparent mountain-transport options.",
   image: mutianyuPrivateDayTour.hero.image,
-  visualStatus: "pending",
+  visualStatus: "ready",
   href: `/tours/${mutianyuPrivateDayTour.slug}`,
   kind: "featured",
   routeLabel: mutianyuPrivateDayTour.route,
@@ -527,7 +527,7 @@ const privateShanghaiDayJourney: JourneyCatalogBase = {
   summary: privateShanghaiDayTour.subtitle,
   hook: "See Yu Garden, the Old City, the Bund, a Huangpu ferry crossing and the former French Concession with one private guide, vehicle and clear hotel-to-hotel plan.",
   image: privateShanghaiDayTour.hero.image,
-  visualStatus: "pending",
+  visualStatus: "ready",
   href: `/tours/${privateShanghaiDayTour.slug}`,
   kind: "featured",
   routeLabel: privateShanghaiDayTour.route,
@@ -573,7 +573,7 @@ const privateXianTerracottaDayJourney: JourneyCatalogBase = {
   summary: privateXianTerracottaDayTour.subtitle,
   hook: "See the Terracotta Warriors with passport-linked admission, a private guide and vehicle, then return to Xi'an's Old City without shopping stops, jade factories or uncertain logistics.",
   image: privateXianTerracottaDayTour.hero.image,
-  visualStatus: "pending",
+  visualStatus: "ready",
   href: `/tours/${privateXianTerracottaDayTour.slug}`,
   kind: "featured",
   routeLabel: privateXianTerracottaDayTour.route,
@@ -620,7 +620,7 @@ const privateChengduPandaDayJourney: JourneyCatalogBase = {
   summary: privateChengduPandaDayTour.subtitle,
   hook: "Start earlier from your Chengdu hotel, enter with admission arranged and follow a private guide who adapts the public panda-base route to live conditions before a slower People's Park afternoon.",
   image: privateChengduPandaDayTour.hero.image,
-  visualStatus: "pending",
+  visualStatus: "ready",
   href: `/tours/${privateChengduPandaDayTour.slug}`,
   kind: "featured",
   routeLabel: privateChengduPandaDayTour.route,
@@ -666,7 +666,7 @@ const guilinYangshuoLiRiverDayJourney: JourneyCatalogBase = {
   summary: guilinYangshuoLiRiverDayTour.subtitle,
   hook: "Take the four-star public Li River cruise with private Guilin hotel pickup, English-speaking guide, luggage continuity and a finish chosen in advance: Yangshuo hotel or private return to Guilin.",
   image: guilinYangshuoLiRiverDayTour.hero.image,
-  visualStatus: "pending",
+  visualStatus: "ready",
   href: `/tours/${guilinYangshuoLiRiverDayTour.slug}`,
   kind: "featured",
   routeLabel: guilinYangshuoLiRiverDayTour.route,
@@ -832,16 +832,16 @@ const chengduChongqingZhangjiajieJourney: JourneyCatalogBase = {
 const beijingXianChengduShanghaiJourney: JourneyCatalogBase = {
   slug: beijingXianChengduShanghai.slug,
   title: beijingXianChengduShanghai.title,
-  eyebrow: "Signature first-time China journey",
+  eyebrow: "A private first journey through China",
   summary: beijingXianChengduShanghai.subtitle,
-  hook: "The Great Wall, Terracotta Warriors, giant pandas and Shanghai, connected through one private journey with two considered rhythms.",
+  hook: "Shanghai, Chengdu's pandas and food culture, Xi'an's Terracotta Warriors, and Beijing's Great Wall, connected by one local team.",
   image: beijingXianChengduShanghai.hero.image,
   href: `/tours/${beijingXianChengduShanghai.slug}`,
   kind: "featured",
   routeLabel: beijingXianChengduShanghai.route,
-  durationLabel: "12–13 days / 11–12 nights",
+  durationLabel: "12 days / 11 nights",
   styleFilters: ["First-time China", "Family", "Culture", "Food"],
-  destinationFilters: ["Beijing", "Xi'an", "Chengdu", "Shanghai"],
+  destinationFilters: ["Shanghai", "Chengdu", "Xi'an", "Beijing"],
   bestForFilters: ["First-time visitors", "Families", "Couples", "Multigenerational travelers"],
   experienceFilters: [
     "pandas",
@@ -869,15 +869,15 @@ const beijingXianChengduShanghaiJourney: JourneyCatalogBase = {
     "food-focused",
   ],
   recommendedDaysMin: 12,
-  recommendedDaysMax: 13,
+  recommendedDaysMax: 12,
   destinations: [
-    { label: "Beijing", href: "/destinations/beijing" },
-    { label: "Xi'an", href: "/destinations/xian" },
-    { label: "Chengdu", href: "/destinations/chengdu" },
     { label: "Shanghai", href: "/destinations/shanghai" },
+    { label: "Chengdu", href: "/destinations/chengdu" },
+    { label: "Xi'an", href: "/destinations/xian" },
+    { label: "Beijing", href: "/destinations/beijing" },
   ],
   planningNote:
-    "Choose the 12-day essential rhythm or the 13-day considered rhythm. Both use high-speed rail between Beijing, Xi'an and Chengdu, then a domestic flight to Shanghai; Free Day services are selected around your party.",
+    "One defined 12-day route with 11 nights: Shanghai (3), Chengdu (3), Xi'an (2) and Beijing (3). Date-specific intercity services, hotels and final pricing are confirmed in a written proposal.",
 };
 
 const chengduJourney: JourneyCatalogBase = {
@@ -1405,15 +1405,16 @@ const commercialDetails: Record<
     bestForSummary: "Food, wildlife and dramatic scenery in one regional journey",
   },
   "beijing-xian-chengdu-shanghai-private-11-day-tour": {
-    paceLabel: "Essential or considered pace",
-    transportSummary: "Private transfers, high-speed rail and a domestic flight",
+    paceLabel: "One defined 12-day route",
+    transportSummary: "Three intercity connections with coordinated private transfers",
     highlights: [
-      "A quieter Great Wall section with private timing",
-      "Terracotta Warriors with historical interpretation",
-      "Pandas when they are most active",
-      "A Shanghai neighborhood and riverfront finale",
+      "Shanghai's historic lanes and riverfront",
+      "Panda conservation and Sichuan food culture",
+      "The Terracotta Warriors and Beijing's imperial landmarks",
+      "A guided walk on the Jinshanling Great Wall",
     ],
-    bestForSummary: "First-time visitors who want China's essential contrasts",
+    bestForSummary:
+      "First-time visitors who want four distinct cities without planning every handoff themselves",
   },
   "first-china-beautifully-paced": {
     paceLabel: "Comfortable, unhurried",
@@ -1684,10 +1685,12 @@ const journeyPricing: Record<string, JourneyPricing> = {
       "Two open days are intentionally unprogrammed. Optional private experiences are quoted separately.",
   },
   "beijing-xian-chengdu-shanghai-private-11-day-tour": {
-    fromUsd: 2680,
     ...sharedPricingDetails,
     basis:
-      "Indicative starting price per person for the 12-day Essential Pace, based on four guests sharing two rooms outside peak periods, equivalent to a private group total from US$10,720. The 13-day Considered Pace starts from US$2,980 per person, or US$11,920 for four guests.",
+      "A written price is prepared for your travel dates, party size, room setup, hotel selection and confirmed services.",
+    cardBasis: "Written quote for your dates and group",
+    finalPriceNote:
+      "Request a date-specific proposal for the complete 12-day route. No unverified starting price is published.",
   },
 };
 

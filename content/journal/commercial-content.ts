@@ -144,7 +144,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         title: "Days 9 to 11: Shanghai",
         paragraphs: [
           "A domestic flight is normally more practical than rail for Chengdu to Shanghai. Protect the arrival evening from ambitious sightseeing. The following day can connect the Bund's architecture with a neighborhood walk, while the last full day remains flexible for modern design, a water town or a slower finale.",
-          "The complete [11-day Beijing, Xi'an, Chengdu and Shanghai private tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) shows how guide teams, rail, flight and transfers connect. It is a framework, not a requirement to use the same intensity every day.",
+          "The complete [12-day Shanghai, Chengdu, Xi'an and Beijing private tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) shows how guides, intercity connections and transfers fit together. It is one defined route, with date-specific transport confirmed in writing.",
         ],
       },
       {
@@ -1075,7 +1075,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
       {
         title: "Who should add time or change the route",
         paragraphs: [
-          "Add a night if your international flight lands late, if anyone has reduced walking tolerance or if Shanghai's neighborhoods matter as much as the Bund. Families may prefer an extra Beijing or Shanghai night rather than adding a fourth city. Travelers who want pandas should move to the [11-day Beijing, Xi'an, Chengdu and Shanghai route](/journal/11-day-beijing-xian-chengdu-shanghai-itinerary) instead of compressing Chengdu into a transfer window.",
+          "Add a night if your international flight lands late, if anyone has reduced walking tolerance or if Shanghai's neighborhoods matter as much as the Bund. Families may prefer an extra Beijing or Shanghai night rather than adding a fourth city. Travelers who want pandas can consider the [12-day Shanghai, Chengdu, Xi'an and Beijing route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour), which gives Chengdu three nights rather than compressing it into a transfer window.",
           "The matching [9-day private journey](/tours/first-china-beautifully-paced) is a framework. Hotels, guide coverage, train class, attraction reservations and independent time are confirmed around your dates and party after inquiry.",
         ],
       },

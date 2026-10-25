@@ -17,7 +17,7 @@ Write for international mid-to-high-end travelers who value expert judgment, rel
 - Use concise, restrained and specific English.
 - Prefer concrete nouns and decisions: hotel location, room category, guide, vehicle, transfer, ticket, timing and local support.
 - Avoid excessive use of `luxury`, `private`, `journey`, `seamless`, `curated`, `beautifully paced` and similar abstract language.
-- Never publish unverifiable superlatives, customer numbers or awards.
+- Publish customer, country and partner totals only from the owner-approved service record. Keep approved figures and their plain-language definitions consistent across the homepage, machine-readable resources and structured data; never invent a metric, denominator, date range, superlative or award.
 - State dietary, mobility and Muslim-friendly support as planning capabilities, not guarantees, until suppliers are confirmed in writing.
 
 ## Search Metadata

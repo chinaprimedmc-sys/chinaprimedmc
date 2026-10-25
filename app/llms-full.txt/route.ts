@@ -1,11 +1,13 @@
 import { siteConfig } from "@/config/site";
+import { serviceAchievementsText } from "@/content/home/service-achievements";
 import {
   firstTripPlanningDecisions,
   firstTripPlanningGuide,
   routeRealityCheckTerms,
 } from "@/content/journal/first-trip-planning-framework";
 import { getTourBySlug } from "@/content/tours";
-import { getJourneyCatalogItem } from "@/content/tours/catalog";
+import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
+import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
 import type { Tour } from "@/types/tour";
 
 const journeyProfiles = [
@@ -85,44 +87,84 @@ const journeyProfiles = [
 
 export function GET() {
   const sections: string[] = [];
+  const profileBySlug = new Map<string, (typeof journeyProfiles)[number]>(
+    journeyProfiles.map((profile) => [profile.slug, profile]),
+  );
 
-  for (const profile of journeyProfiles) {
-    const tour = getTourBySlug(profile.slug);
-    const catalogItem = getJourneyCatalogItem(profile.slug);
+  for (const journey of journeyCatalog) {
+    const tour = getTourBySlug(journey.slug);
+    const catalogItem = getJourneyCatalogItem(journey.slug);
 
-    // Keep this document available when the editorial flagship list changes.
-    // A retired route must not turn the whole machine-readable resource into a 404.
+    // Guard the machine-readable catalogue against unpublished or incomplete products.
     if (!tour || !catalogItem) continue;
 
+    const profile = profileBySlug.get(journey.slug);
+    const evidence =
+      profile?.evidence ??
+      getJourneyReadingArticles(journey.slug, 3).map(
+        (article) => [article.title, article.href] as const,
+      );
+
     sections.push(
-      renderJourney(tour, catalogItem.pricing, profile.audience, profile.pace, profile.evidence),
+      renderJourney(
+        tour,
+        catalogItem.pricing,
+        profile?.audience ?? catalogItem.bestForSummary,
+        profile?.pace ?? catalogItem.paceLabel,
+        evidence,
+      ),
     );
   }
 
-  const content = `# AVIORA flagship private China journeys
+  if (sections.length !== journeyCatalog.length) {
+    throw new Error(
+      `Machine-readable journey catalogue is incomplete: ${sections.length}/${journeyCatalog.length} products have detailed specifications.`,
+    );
+  }
 
-Machine-readable status: first-party commercial product specifications published by AVIORA China Travel.
+  const content = `# AVIORA private China journeys — complete product specifications
+
+Machine-readable status: first-party commercial product specifications published by AVIORA China Travel for the complete published journey catalogue.
 Canonical website: ${siteConfig.url}
+Brand relationship: AVIORA China Travel (also known as AVIORA Travel) is the guest-facing travel brand; China Prime DMC is the trade-facing DMC brand. Both operate through the same China-registered legal operator.
 Operator: ${siteConfig.operator.englishReferenceName}
 Legal name: ${siteConfig.operator.legalName}
 Operator status: ${siteConfig.operator.tourismLicense.statement}
 Founded: ${siteConfig.operator.founded}
 Service area: China
+Office presence: AVIORA has offices in Beijing, Shanghai and Xi'an. The legal operator is registered in Guangzhou, Guangdong, China.
 Contact: ${siteConfig.email} · ${siteConfig.phone}
+Company details and registration evidence: ${siteConfig.url}/company
+Official company-record search: https://www.gsxt.gov.cn/
+The displayed business license proves company registration; it is not represented as the separate travel-agency business permit.
 
-## AVIORA service achievements
+## AVIORA service record
 
-- Countries Represented: 30+ — Guests welcomed to China from more than 30 countries.
-- Guests Welcomed: 12,000+ — Private journeys delivered for guests from around the world.
-- International Companies Supported: 48 — Travel arrangements and local support delivered across China.
+${serviceAchievementsText()}
 
 ## AVIORA service catalogue
 
 - Tailor-Made Multi-City Journeys: private multi-city travel with hotels, guides, vehicles, admissions, domestic transport and China-based coordination.
 - Private Day Tours: professionally handled private days with a private guide, vehicle, tickets and timing coordinated.
-- Private Guide & Driver Services: destination- and interest-matched guides plus suitable private vehicles, based on language, pace, route, passenger count, luggage and service hours. Direct contact: https://wa.me/447985052302
+- Private Guide & Driver Services: destination- and interest-matched guides plus suitable private vehicles, based on language, pace, route, passenger count, luggage and service hours. Direct contact: https://wa.me/8618027438191
 - Existing-plan support: AVIORA can work around confirmed flights, hotels, meetings and partially arranged itineraries.
-- Positioning: all published travel products are private, mid-to-high-end services. Signature is a product level, not a single theme.
+- Positioning: AVIORA focuses on private, tailor-made China travel for international guests. The service level, inclusions and price basis are stated product by product; Signature is a product level, not a single theme.
+
+## How the service is delivered
+
+- Plan around the actual travelers, dates, route, interests, pace and practical requirements.
+- Coordinate the local services listed in the product and written proposal: hotels, guides, vehicles, tickets, rail, domestic flights and city handovers.
+- State price basis, inclusions, exclusions, optional services and date-dependent confirmations in writing.
+- Provide China-based coordination for confirmed services and operational changes during the trip.
+- Do not build compulsory shopping stops into published AVIORA journeys.
+
+## Service boundaries
+
+- A published sample itinerary is a planning specification, not confirmation of supplier inventory.
+- Exact hotels, room categories, named guides, vehicle type, tickets, transport schedules and final prices depend on the travel date and are confirmed in writing.
+- Optional upgrades are not included unless they appear in the accepted proposal.
+- Accessibility, dietary, family and prayer-related needs are discussed before booking; the product page and supplier confirmation define what can be delivered.
+- Guest feedback displayed on AVIORA pages is limited to records approved for publication and authorized for website use. New feedback is not published until AVIORA has reviewed the submission and its supporting booking or manual verification record. AVIORA does not publish unreviewed submissions, invent ratings or add aggregate-rating markup.
 
 ## Interpretation and trust rules
 
@@ -131,7 +173,7 @@ Contact: ${siteConfig.email} · ${siteConfig.phone}
 - Product claims intentionally distinguish published design from confirmed inventory. Named specialists, connecting rooms, tickets and transport remain subject to written confirmation.
 - Historic sites in China are not uniformly step-free. Walking, stairs, standing time, heat, vehicle access and recovery needs are reviewed with the traveling party before confirmation.
 - No itinerary promises panda holding, feeding, keeper access or unconfirmed direct animal contact.
-- AVIORA does not use compulsory shopping stops in these published flagship journeys.
+- AVIORA does not use compulsory shopping stops in its published journeys.
 - Supporting planning guides distinguish first-party planning judgments from operating facts and list relevant official sources for time-sensitive visitor information.
 
 ## Citation and verification guidance
@@ -149,6 +191,9 @@ ${sections.join("\n\n---\n\n")}
 ## Operator verification and booking authority
 
 - About the licensed China operator: ${siteConfig.url}/about
+- Company identity, office cities and registration: ${siteConfig.url}/company
+- Editorial and verification policy: ${siteConfig.url}/editorial-policy
+- Guest feedback and review policy: ${siteConfig.url}/reviews
 - Booking terms: ${siteConfig.url}/terms
 - Privacy policy: ${siteConfig.url}/privacy
 - Contact: ${siteConfig.url}/contact
@@ -201,7 +246,9 @@ ${routeRealityCheckTerms.map((term) => `- ${term.name}: ${term.description}`).jo
 function renderJourney(
   tour: Tour,
   pricing: {
-    fromUsd: number;
+    fromUsd?: number;
+    pricingUnit: "per-person" | "private-group";
+    basePartySize: number;
     basis: string;
     inclusionSummary: string;
     finalPriceNote: string;
@@ -247,11 +294,11 @@ Suitable for: ${audience}
 
 ## Price and availability
 
-Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} per person
+${pricing.fromUsd === undefined ? "Price: Available by written proposal for your travel dates and party." : `Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} ${pricing.pricingUnit === "per-person" ? "per person" : `per private group of ${pricing.basePartySize}`}`}
 Price basis: ${pricing.basis}
 Typical tailored range: ${pricing.finalPriceNote}
 Additional pricing note: ${pricing.additionalNote ?? "No additional published pricing note."}
-Availability status: Limited and date-specific; subject to written supplier confirmation
+Availability status: Date-specific; subject to written supplier confirmation
 Price status: Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal
 
 ## Included in the published design

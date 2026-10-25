@@ -11,7 +11,7 @@ export function HomeStandardPanel() {
   return (
     <div className={styles.standardPanel}>
       <div className={styles.standardServiceCarousel}>
-        <p className={styles.standardColumnLabel}>What Every Journey Includes</p>
+        <p className={styles.standardColumnLabel}>How a private journey is supported</p>
 
         <div className={styles.standardCarouselTrack} aria-label="AVIORA service standards">
           {homeOperatingStandards.map((standard) => (
@@ -71,6 +71,19 @@ export function HomeStandardPanel() {
             <h4>Refunds Made Clear</h4>
             <p>Approved refunds go back to the original payment method.</p>
           </article>
+        </div>
+        <div className={styles.mobileBookingDetails}>
+          <details>
+            <summary>Before you pay</summary>
+            <p>Your written proposal confirms the price, services and inclusions.</p>
+          </details>
+          <details>
+            <summary>If plans change</summary>
+            <p>Cancellation terms and any approved refund route are clear before booking.</p>
+          </details>
+          <a href="/terms">
+            Read the full terms <ArrowUpRight aria-hidden="true" />
+          </a>
         </div>
       </div>
     </div>

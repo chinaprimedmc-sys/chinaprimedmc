@@ -131,7 +131,7 @@ For four cities across two weeks, see the [14-day Beijing, Xi'an, Chengdu and Sh
 
 ## What the published land prices do - and do not include
 
-AVIORA's current private land examples start from **US$3,190 per person** for the 9-day Beijing, Xi'an and Shanghai journey, **US$2,680 per person** for the 12-day Essential Pace adding Chengdu, and **US$6,480 per person** for the premium 12-day easier-paced journey. The stated starting basis is four guests sharing two rooms outside peak periods.
+AVIORA publishes starting prices for selected journeys where the underlying price basis is confirmed. The 12-day Shanghai, Chengdu, Xi'an and Beijing route is quoted by travel date, party size, room setup and confirmed services rather than assigned an unverified starting figure.
 
 Those figures do not include the US-China flights. They are not package averages. Each journey page states its hotels or hotel level, guiding, vehicles, tickets and domestic transport assumptions. A couple will usually have a higher per-person private-service share than four travelers. Exact dates, rooms and supplier availability still require a written proposal.
 

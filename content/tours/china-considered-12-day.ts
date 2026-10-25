@@ -639,8 +639,8 @@ export const chinaConsidered12DayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=China%20at%20an%20Easier%20Pace%20Private%20Proposal&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20private%20proposal%20for%20the%2012-day%20China%20at%20an%20Easier%20Pace%20journey.%0A%0ATravel%20month%20or%20dates%3A%0ATravellers%3A%0ARooms%3A%0AWalking%20or%20mobility%20considerations%3A%0AHotel%20preference%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20China%20at%20an%20Easier%20Pace%20%2812%20days%2C%20Beijing%2C%20Xi%27an%20and%20Shanghai%29.%20Please%20advise%20on%20dates%2C%20hotels%20and%20the%20right%20pace%20for%20our%20travellers.",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20China%20at%20an%20Easier%20Pace%20%2812%20days%2C%20Beijing%2C%20Xi%27an%20and%20Shanghai%29.%20Please%20advise%20on%20dates%2C%20hotels%20and%20the%20right%20pace%20for%20our%20travellers.",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in China at an Easier Pace. Please recommend the right hotel level, room setup and daily walking plan for our group.",
   },

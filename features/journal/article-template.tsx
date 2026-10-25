@@ -1,17 +1,17 @@
 import { ArrowUpRight } from "lucide-react";
 import { Fragment } from "react";
+import Link from "next/link";
 
 import { CtaButton, TrackedLink } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { LightboxGallery } from "@/components/gallery/lightbox-gallery";
-import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { journalCategories } from "@/content/journal";
 import { getJournalSearchRole } from "@/content/journal/search-strategy";
-import { formatJournalTitle } from "@/content/journal/presentation";
+import { formatJournalMobileTitle, formatJournalTitle } from "@/content/journal/presentation";
 import { RecordViewed } from "@/features/discovery/record-viewed";
 import { JournalAnalytics } from "@/features/journal/journal-analytics";
+import { ArticleMobileReader } from "@/features/journal/article-mobile-reader";
 import { JournalJourneyBridge, JournalJourneyPrompt } from "@/features/journal/journey-bridge";
 import { getJourneyBridgeForArticle } from "@/lib/content/journey-journal-links";
 import type { ContentRelationships } from "@/lib/content/relationship-engine";
@@ -60,8 +60,15 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
 
       <ArticleHero article={article} />
       <EditorialRecord article={article} />
+      <EvidenceNote article={article} />
 
       <section id="article" className={styles.reading}>
+        <ArticleMobileReader
+          headings={sections
+            .map((section) => section.heading)
+            .filter(isDefined)
+            .map((heading) => ({ id: heading.id, title: heading.title }))}
+        />
         <div className={`${styles.container} ${styles.readingGrid}`}>
           {leadAnswer ? <AnswerBrief answer={leadAnswer} /> : null}
           <ArticleContents sections={sections} />
@@ -79,38 +86,25 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             </aside>
           ) : null}
           {sections.map((section, index) => (
-            <div
-              key={section.heading?.id ?? `article-section-${index}`}
-              className={styles.articleRow}
-            >
-              <ArticleContentSection
-                section={section}
-                showJourneyPromptAfterQuote={article.slug === "how-much-walking-china-tour"}
-              />
-              {index === Math.min(1, sections.length - 1) ? (
-                <DecisionMargin margin={decisionMargin} />
+            <Fragment key={section.heading?.id ?? `article-section-${index}`}>
+              <div className={styles.articleRow}>
+                <ArticleContentSection section={section} />
+                {index === Math.min(1, sections.length - 1) ? (
+                  <DecisionMargin margin={decisionMargin} />
+                ) : null}
+              </div>
+              {journeyBridge && index === Math.min(1, sections.length - 1) ? (
+                <div className={styles.midJourneyPrompt}>
+                  <JournalJourneyPrompt bridge={journeyBridge} />
+                </div>
               ) : null}
-            </div>
+            </Fragment>
           ))}
+          <span id="article-content-end" aria-hidden="true" />
         </div>
       </section>
 
       {journeyBridge ? <JournalJourneyBridge bridge={journeyBridge} /> : null}
-
-      {article.gallery.length ? (
-        <section className={styles.supportSection} aria-labelledby="article-gallery-title">
-          <div className={styles.container}>
-            <SupportHeader
-              label="Along The Route"
-              title="Places Connected To This Guide"
-              id="article-gallery-title"
-            />
-            <div className="mt-10">
-              <LightboxGallery images={article.gallery} layout="strip" />
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       {relationships.articles.length ? (
         <section className={styles.supportSection} aria-labelledby="related-guides-title">
@@ -243,8 +237,8 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
           },
         ]}
         social={[
-          { label: "Facebook", href: "https://www.facebook.com/share/1CqXTAXD1e/?mibextid=wwXIfr" },
-          { label: "Instagram", href: "https://www.instagram.com/chinaprimedmc" },
+          { label: "Facebook", href: "https://www.facebook.com/p/Aviora-Travel-61593357154006/" },
+          { label: "Instagram", href: "https://www.instagram.com/chinaprimedmc/" },
         ]}
       />
     </main>
@@ -252,14 +246,17 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
 }
 
 function ArticleHero({ article }: { article: JournalArticle }) {
-  const mode = getJournalSearchRole(article.slug)?.intent === "answer" ? "answer" : "image";
-  const hasImage = article.hero.mode !== "text";
   return (
-    <header className={styles.hero} data-hero-mode={hasImage ? mode : "text"}>
+    <header className={styles.hero} data-hero-mode="text">
       <div className={`${styles.container} ${styles.heroGrid}`}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>{article.hero.eyebrow ?? article.category}</p>
-          <h1>{formatJournalTitle(article.title)}</h1>
+          <h1 aria-label={formatJournalTitle(article.title)}>
+            <span className={styles.fullTitle}>{formatJournalTitle(article.title)}</span>
+            <span className={styles.mobileTitle} aria-hidden="true">
+              {formatJournalMobileTitle(article.title)}
+            </span>
+          </h1>
           <p className={styles.dek}>{article.dek}</p>
           <div className={styles.heroMeta}>
             <span>{article.category}</span>
@@ -270,19 +267,6 @@ function ArticleHero({ article }: { article: JournalArticle }) {
             </span>
           </div>
         </div>
-        {hasImage ? (
-          <OptimizedImage
-            src={article.hero.image.src}
-            alt={article.hero.image.alt}
-            width={article.hero.image.width ?? 1200}
-            height={article.hero.image.height ?? 900}
-            priority
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            frameClassName={styles.heroMedia}
-            className="h-full w-full object-cover"
-            objectPosition={article.hero.image.objectPosition}
-          />
-        ) : null}
       </div>
     </header>
   );
@@ -308,6 +292,36 @@ function EditorialRecord({ article }: { article: JournalArticle }) {
         />
       </div>
     </section>
+  );
+}
+
+function EvidenceNote({ article }: { article: JournalArticle }) {
+  const governance = article.governance;
+  if (!governance) return null;
+
+  const copy =
+    governance.sourceClass === "official-required"
+      ? "This guide addresses a time-sensitive visitor rule. Read the listed primary sources and confirm the rule for your passport, route and travel date."
+      : governance.sourceClass === "operator"
+        ? "This guide explains AVIORA's published operating approach and planning judgment. It is not presented as an outside rule or a promise of date-specific supplier availability."
+        : "This guide combines AVIORA planning analysis with the listed sources. External rules remain subject to the responsible authority and travel-date confirmation.";
+
+  return (
+    <aside className={styles.evidenceNote} aria-label="Guide source and review policy">
+      <div className={styles.container}>
+        <p>
+          <strong>
+            {governance.sourceClass === "official-required"
+              ? "Official rules reviewed."
+              : governance.sourceClass === "operator"
+                ? "AVIORA operating guidance."
+                : "AVIORA analysis with primary sources."}
+          </strong>{" "}
+          {copy} Reviewed {formatDate(article.lastFactCheckedAt ?? governance.contentReviewedAt)}.
+          <Link href="/editorial-policy">How we verify guidance</Link>
+        </p>
+      </div>
+    </aside>
   );
 }
 
@@ -345,12 +359,6 @@ function ArticleContents({ sections }: { sections: ArticleSection[] }) {
         <h2>In This Guide</h2>
         <ContentsList headings={headings} />
       </nav>
-      <details className={styles.mobileContents}>
-        <summary>In This Guide</summary>
-        <nav aria-label="Article contents on mobile">
-          <ContentsList headings={headings} />
-        </nav>
-      </details>
     </>
   );
 }
@@ -367,24 +375,13 @@ function ContentsList({ headings }: { headings: NonNullable<ArticleSection["head
   );
 }
 
-function ArticleContentSection({
-  section,
-  showJourneyPromptAfterQuote = false,
-}: {
-  section: ArticleSection;
-  showJourneyPromptAfterQuote?: boolean;
-}) {
+function ArticleContentSection({ section }: { section: ArticleSection }) {
   return (
     <section className={styles.contentSection} aria-labelledby={section.heading?.id}>
       {section.heading ? <h2 id={section.heading.id}>{section.heading.title}</h2> : null}
       <div className={styles.blocks}>
         {section.blocks.map((block, index) => (
-          <Fragment key={`${block.type}-${index}`}>
-            <ArticleBlock block={block} />
-            {showJourneyPromptAfterQuote && block.type === "quote" ? (
-              <JournalJourneyPrompt />
-            ) : null}
-          </Fragment>
+          <ArticleBlock key={`${block.type}-${index}`} block={block} />
         ))}
       </div>
     </section>
@@ -404,7 +401,7 @@ function DecisionMargin({ margin }: { margin: ReturnType<typeof getDecisionMargi
           <dd>{margin.watchFor}</dd>
         </div>
         <div>
-          <dt className={styles.marginLabel}>We Would Change This When</dt>
+          <dt className={styles.marginLabel}>Change The Plan When</dt>
           <dd>{margin.changeWhen}</dd>
         </div>
       </dl>
@@ -420,8 +417,21 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
       ) : (
         <h2 id={block.id}>{block.title}</h2>
       );
-    case "paragraph":
-      return <p>{renderInlineContent(block.body)}</p>;
+    case "paragraph": {
+      const paragraphs = splitLongParagraph(block.body);
+      return (
+        <p>
+          {paragraphs.map((paragraph, index) => (
+            <Fragment key={`paragraph-${index}`}>
+              {renderInlineContent(paragraph, `paragraph-${index}`)}
+              {index < paragraphs.length - 1 ? (
+                <span className={styles.mobileParagraphBreak} aria-hidden="true" />
+              ) : null}
+            </Fragment>
+          ))}
+        </p>
+      );
+    }
     case "list": {
       const List = block.style === "ordered" ? "ol" : "ul";
       return (
@@ -435,6 +445,9 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
     case "table":
       return (
         <div className={styles.tableWrap}>
+          <span className={styles.tableHint} aria-hidden="true">
+            Swipe to compare
+          </span>
           <table>
             <thead>
               <tr>
@@ -464,24 +477,8 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
           <p>{renderInlineContent(block.body)}</p>
         </aside>
       );
-    case "image": {
-      const contain = block.image.fit === "contain";
-      return (
-        <figure className={styles.figure}>
-          <OptimizedImage
-            src={block.image.src}
-            alt={block.image.alt}
-            width={block.image.width ?? 1200}
-            height={block.image.height ?? 800}
-            sizes="(min-width: 1024px) 720px, 100vw"
-            objectPosition={block.image.objectPosition}
-            frameClassName={`${styles.figureFrame} ${contain ? styles.figureContain : ""}`}
-            className={contain ? "h-auto w-full object-contain" : "h-full w-full object-cover"}
-          />
-          {block.caption ? <figcaption>{block.caption}</figcaption> : null}
-        </figure>
-      );
-    }
+    case "image":
+      return null;
     case "quote":
       return (
         <blockquote className={styles.quote}>
@@ -521,20 +518,24 @@ function SupportHeader({ label, title, id }: { label: string; title: string; id:
 }
 
 function splitLeadAnswer(content: JournalContentBlock[]) {
-  if (!content.length) return { leadAnswer: null, remainingContent: content };
+  const textContent = content.filter((block) => block.type !== "image");
+  if (!textContent.length) return { leadAnswer: null, remainingContent: textContent };
 
-  const startIndex = content[0]?.type === "heading" ? 1 : 0;
+  const startIndex = textContent[0]?.type === "heading" ? 1 : 0;
   let endIndex = startIndex;
-  while (content[endIndex]?.type === "paragraph") endIndex += 1;
-  const paragraphs = content
-    .slice(startIndex, endIndex)
+  while (textContent[endIndex]?.type === "paragraph") endIndex += 1;
+  const leadEndIndex = Math.min(endIndex, startIndex + 2);
+  const paragraphs = textContent
+    .slice(startIndex, leadEndIndex)
     .map((block) => (block.type === "paragraph" ? block.body : ""));
 
   return {
     leadAnswer: paragraphs.length
       ? ({ title: "The Answer, Briefly", paragraphs } satisfies LeadAnswer)
       : null,
-    remainingContent: paragraphs.length ? content.slice(endIndex) : content,
+    remainingContent: paragraphs.length
+      ? [...textContent.slice(leadEndIndex, endIndex), ...textContent.slice(endIndex)]
+      : textContent,
   };
 }
 
@@ -649,6 +650,27 @@ function renderInlineContent(value: string, keyPrefix = "inline") {
     if (italic) return <em key={`${keyPrefix}-italic-${index}`}>{italic[1]}</em>;
     return token;
   });
+}
+
+function splitLongParagraph(value: string) {
+  if (value.length < 480) return [value];
+
+  const sentences = value.split(/(?<=[.!?])\s+(?=[A-Z0-9])/);
+  if (sentences.length < 2) return [value];
+
+  const paragraphs: string[] = [];
+  let current = "";
+  for (const sentence of sentences) {
+    const candidate = current ? `${current} ${sentence}` : sentence;
+    if (current && candidate.length > 300) {
+      paragraphs.push(current);
+      current = sentence;
+    } else {
+      current = candidate;
+    }
+  }
+  if (current) paragraphs.push(current);
+  return paragraphs;
 }
 
 function isDefined<T>(value: T | undefined): value is T {

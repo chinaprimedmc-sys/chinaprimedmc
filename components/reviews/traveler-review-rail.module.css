@@ -1,0 +1,197 @@
+.section {
+  background: #fff;
+  color: #202522;
+  padding-block: 30px 34px;
+}
+
+.inner {
+  margin-inline: auto;
+  max-width: var(--container-page);
+  width: 100%;
+}
+
+.header {
+  align-items: end;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  padding-inline: var(--page-gutter);
+}
+
+.headingCopy {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.eyebrow {
+  color: #23646d;
+  font-size: 0.68rem;
+  font-weight: 750;
+  line-height: 1.1rem;
+  text-transform: uppercase;
+}
+
+.headingCopy h2 {
+  font-family: var(--font-brand);
+  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.18;
+  max-width: 34ch;
+  text-wrap: balance;
+}
+
+.headingCopy > p:last-child {
+  color: #606963;
+  font-size: 0.88rem;
+  line-height: 1.35rem;
+}
+
+.archiveLink {
+  align-items: center;
+  color: #245d63;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  font-weight: 700;
+  gap: 5px;
+  min-height: 40px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.archiveLink svg {
+  height: 15px;
+  width: 15px;
+}
+
+.carousel {
+  margin: 18px auto 0;
+  max-width: 1480px;
+  padding-inline: var(--page-gutter);
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  animation: review-marquee var(--review-duration, 2400s) linear infinite;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.section .track {
+  animation: review-marquee var(--review-duration, 2400s) linear infinite !important;
+}
+
+.reviewSet {
+  align-items: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 14px;
+  padding-right: 14px;
+  width: max-content;
+}
+
+.reviewTile {
+  flex: 0 0 clamp(280px, 30vw, 440px);
+  height: 190px;
+}
+
+.paused .track,
+.carousel:hover .track,
+.carousel:focus-within .track {
+  animation-play-state: paused;
+}
+
+.archiveLink:focus-visible {
+  outline: 2px solid #23646d;
+  outline-offset: 3px;
+}
+
+@keyframes review-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-block: 24px 26px;
+  }
+
+  .header {
+    align-items: start;
+    gap: 12px;
+  }
+
+  .headingCopy {
+    gap: 4px;
+  }
+
+  .eyebrow {
+    font-size: 0.62rem;
+    line-height: 1rem;
+  }
+
+  .headingCopy h2 {
+    font-size: 1.16rem;
+    line-height: 1.35rem;
+    max-width: 25ch;
+  }
+
+  .headingCopy > p:last-child {
+    font-size: 0.76rem;
+    line-height: 1.15rem;
+    max-width: 34ch;
+  }
+
+  .archiveLink {
+    align-self: end;
+    font-size: 0.68rem;
+    line-height: 1rem;
+    min-height: 32px;
+  }
+
+  .archiveLink svg {
+    height: 13px;
+    width: 13px;
+  }
+
+  .carousel {
+    margin-top: 14px;
+  }
+
+  .reviewSet {
+    gap: 10px;
+    padding-right: 10px;
+  }
+
+  .reviewTile {
+    flex-basis: min(82vw, 360px);
+    height: 198px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section .track {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .viewport {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .viewport::-webkit-scrollbar {
+    display: none;
+  }
+}

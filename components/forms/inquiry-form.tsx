@@ -7,14 +7,15 @@ import { navigationConfig } from "@/components/navigation/navigation-config";
 import { getInquirySourceContext } from "@/lib/inquiries/client-context";
 import {
   briefPayload,
-  guestOptions,
-  timingOptions,
   validateBrief,
   type BriefErrors,
   type InquiryBrief,
 } from "@/lib/inquiries/brief";
 import { trackEvent } from "@/lib/analytics/events";
 import styles from "./inquiry-form.module.css";
+import type { JourneyOfferClaim } from "@/lib/tours/journey-offer";
+
+type InquirySuccess = { ok: true; offer?: JourneyOfferClaim };
 
 export function InquiryForm({
   placement,
@@ -22,25 +23,30 @@ export function InquiryForm({
   summary = "",
   duration,
   guests,
-  onGuestsChange,
-  initialNotes = "",
+  timing,
+  submitLabel = "Start planning",
+  showSummary = true,
+  campaignId,
+  introText = "Just your first name and WhatsApp number. No payment required.",
+  onSuccess,
 }: {
   placement: string;
   journeySlug?: string;
   summary?: string;
   duration?: string;
   guests?: string;
-  onGuestsChange?: (guests: string) => void;
-  initialNotes?: string;
+  timing?: string;
+  submitLabel?: string;
+  showSummary?: boolean;
+  campaignId?: string;
+  introText?: string;
+  onSuccess?: (result: InquirySuccess) => void;
 }) {
   const id = useId();
   const form = useRef<HTMLFormElement>(null);
   const [brief, setBrief] = useState<InquiryBrief>({
     name: "",
     whatsapp: "",
-    timing: "",
-    guests: "",
-    notes: initialNotes,
   });
   const [errors, setErrors] = useState<BriefErrors>({});
   const [error, setError] = useState("");
@@ -50,11 +56,9 @@ export function InquiryForm({
   const [reset, setReset] = useState(0);
   const handleToken = useCallback((value: string) => setToken(value), []);
   const whatsapp = navigationConfig.action.whatsapp[0].href;
-  const selected = { ...brief, guests: guests ?? brief.guests };
   function change(key: keyof InquiryBrief, value: string) {
     setBrief((current) => ({ ...current, [key]: value }));
     setErrors((current) => ({ ...current, [key]: undefined }));
-    if (key === "guests") onGuestsChange?.(value);
   }
   function report(fields: BriefErrors) {
     setErrors(fields);
@@ -86,7 +90,7 @@ export function InquiryForm({
       onSubmit={async (event) => {
         event.preventDefault();
         if (submitting) return;
-        const validation = validateBrief(selected);
+        const validation = validateBrief(brief);
         if (Object.keys(validation).length) {
           report(validation);
           return;
@@ -102,10 +106,12 @@ export function InquiryForm({
         setErrors({});
         try {
           const source = getInquirySourceContext();
-          const payload = briefPayload(selected, {
+          const payload = briefPayload(brief, {
             journeySlug: journeySlug || source.journeySlug,
             summary,
             duration,
+            guests,
+            timing,
           });
           const response = await fetch("/api/inquiries", {
             method: "POST",
@@ -113,6 +119,7 @@ export function InquiryForm({
             body: JSON.stringify({
               ...source,
               ...payload,
+              campaignId,
               website: new FormData(event.currentTarget).get("website") || "",
               turnstileToken: token,
             }),
@@ -121,10 +128,12 @@ export function InquiryForm({
           const data = (await response.json().catch(() => ({}))) as {
             error?: string;
             fields?: Record<string, string[]>;
+            ok?: boolean;
+            offer?: JourneyOfferClaim;
           };
           if (!response.ok) {
             const fields: BriefErrors = {};
-            for (const key of ["name", "whatsapp", "timing", "notes"] as const)
+            for (const key of ["name", "whatsapp"] as const)
               if (data.fields?.[key]?.[0]) fields[key] = data.fields[key][0];
             if (data.fields?.contact?.[0]) fields.whatsapp = data.fields.contact[0];
             report(fields);
@@ -133,7 +142,13 @@ export function InquiryForm({
                 "Your request could not be sent. Your answers are still here; please try again.",
             );
           }
+          if (data.ok !== true || (campaignId && !data.offer)) {
+            throw new Error(
+              "We could not confirm your request. Please retry or contact us on WhatsApp.",
+            );
+          }
           setSubmitted(true);
+          onSuccess?.({ ok: true, offer: data.offer });
           trackEvent("form_success", { placement });
         } catch (reason) {
           setError(
@@ -148,53 +163,25 @@ export function InquiryForm({
         }
       }}
     >
-      <p className={styles.intro}>One short step. Around 1 minute. No payment required.</p>
-      {summary && <p className={styles.summary}>{summary}</p>}
+      {introText && <p className={styles.intro}>{introText}</p>}
+      {showSummary && summary && <p className={styles.summary}>{summary}</p>}
       <div className={styles.grid}>
-        {(["name", "whatsapp", "timing", "guests"] as const).map((key) => (
+        {(["name", "whatsapp"] as const).map((key) => (
           <label key={key} className={styles.field} htmlFor={`${id}-${key}`}>
-            <span>
-              {
-                {
-                  name: "Name",
-                  whatsapp: "WhatsApp",
-                  timing: "When are you travelling?",
-                  guests: "How many travellers?",
-                }[key]
-              }
-            </span>
-            {key === "name" || key === "whatsapp" ? (
-              <input
-                id={`${id}-${key}`}
-                name={key}
-                autoComplete={key === "name" ? "name" : "tel"}
-                type={key === "name" ? "text" : "tel"}
-                maxLength={key === "name" ? 120 : 30}
-                placeholder={key === "whatsapp" ? "+44 7700 900000" : "Your name"}
-                value={selected[key]}
-                onChange={(event) => change(key, event.target.value)}
-                aria-invalid={Boolean(errors[key])}
-                aria-describedby={errors[key] ? `${id}-${key}-error` : undefined}
-                required
-              />
-            ) : (
-              <select
-                id={`${id}-${key}`}
-                name={key}
-                value={selected[key]}
-                onChange={(event) => change(key, event.target.value)}
-                aria-invalid={Boolean(errors[key])}
-                aria-describedby={errors[key] ? `${id}-${key}-error` : undefined}
-                required
-              >
-                <option value="">Please select</option>
-                {(key === "timing" ? timingOptions : guestOptions).map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            )}
+            <span>{key === "name" ? "First name" : "WhatsApp number"}</span>
+            <input
+              id={`${id}-${key}`}
+              name={key}
+              autoComplete={key === "name" ? "given-name" : "tel"}
+              type={key === "name" ? "text" : "tel"}
+              maxLength={key === "name" ? 120 : 30}
+              placeholder={key === "whatsapp" ? "Include country code" : "Your first name"}
+              value={brief[key]}
+              onChange={(event) => change(key, event.target.value)}
+              aria-invalid={Boolean(errors[key])}
+              aria-describedby={errors[key] ? `${id}-${key}-error` : undefined}
+              required
+            />
             {errors[key] && (
               <small id={`${id}-${key}-error`} className={styles.error}>
                 {errors[key]}
@@ -203,22 +190,6 @@ export function InquiryForm({
           </label>
         ))}
       </div>
-      <label className={styles.field} htmlFor={`${id}-notes`}>
-        <span>
-          What would make this trip special? <small>(optional)</small>
-        </span>
-        <textarea
-          id={`${id}-notes`}
-          name="notes"
-          rows={4}
-          maxLength={2000}
-          placeholder="Places, interests, pace, dietary needs or questions for our team."
-          value={brief.notes}
-          onChange={(event) => change("notes", event.target.value)}
-          aria-invalid={Boolean(errors.notes)}
-        />
-        {errors.notes && <small className={styles.error}>{errors.notes}</small>}
-      </label>
       <input name="website" type="text" hidden tabIndex={-1} autoComplete="off" />
       <TurnstileWidget onTokenChange={handleToken} resetSignal={reset} />
       {error && (
@@ -230,8 +201,8 @@ export function InquiryForm({
         {submitting
           ? "Sending your request..."
           : token
-            ? "Start planning"
-            : "Start planning · verification pending"}
+            ? submitLabel
+            : `${submitLabel} · verification pending`}
         <ArrowRight size={18} aria-hidden="true" />
       </button>
       <p className={styles.help}>

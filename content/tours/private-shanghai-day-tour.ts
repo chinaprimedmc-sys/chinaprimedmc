@@ -1,17 +1,48 @@
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
-// Product photography will be added only when it depicts this actual city route.
-const pendingImage: MediaAsset = {
-  src: "/home/editorial/great-wall-private-china-travel.webp",
-  alt: "Photography for the private Shanghai day tour is being prepared",
-  width: 1920,
-  height: 1080,
+const shanghaiImage = (file: string, alt: string, width: number, height: number): MediaAsset => ({
+  src: `/tours/private-shanghai-day-tour/${file}`,
+  alt,
+  width,
+  height,
+});
+
+const lujiazui = shanghaiImage(
+  "01-shanghai-lujiazui-at-dusk.webp",
+  "Lujiazui skyline at dusk, with the Oriental Pearl Tower and Shanghai Tower",
+  4649,
+  6000,
+);
+const yuGarden = shanghaiImage(
+  "02-yu-garden-traditional-architecture.webp",
+  "Traditional Chinese architecture illuminated at Yu Garden in Shanghai",
+  3072,
+  4096,
+);
+const bundClockTower = shanghaiImage(
+  "03-shanghai-bund-clock-tower-at-night.webp",
+  "The historic Bund clock tower and waterfront buildings at night",
+  3024,
+  4032,
+);
+const bundWaterfront = shanghaiImage(
+  "04-shanghai-bund-historic-waterfront-at-night.webp",
+  "Historic Bund architecture glowing beside Shanghai's evening streets",
+  2268,
+  3024,
+);
+const privateVehicle: MediaAsset = {
+  src: "/tours/mutianyu-private-day-tour/05-private-luxury-vehicle.webp",
+  alt: "Spacious premium vehicle interior for a private Shanghai day tour",
+  width: 1440,
+  height: 1920,
 };
+const shanghaiGallery = [lujiazui, yuGarden, bundClockTower, bundWaterfront, privateVehicle];
 
 export const privateShanghaiDayTour: Tour = {
   slug: "private-shanghai-day-tour-guide-driver",
-  visualStatus: "pending",
+  visualStatus: "ready",
   publishedAt: "2026-08-21",
   updatedAt: "2026-08-21",
   title: "Private Shanghai in One Day, Seamlessly Handled",
@@ -22,7 +53,7 @@ export const privateShanghaiDayTour: Tour = {
   styles: ["Culture", "Food", "Family", "Photography"],
   hero: {
     eyebrow: "Private Shanghai day tour · guide, driver and Yu Garden admission · no shopping",
-    image: pendingImage,
+    image: lujiazui,
     primary: { label: "Check My Date", href: "#inquiry" },
     secondary: { label: "See What Is Included", href: "#price" },
   },
@@ -170,21 +201,21 @@ export const privateShanghaiDayTour: Tour = {
       description:
         "Enter Yu Garden with admission arranged, then understand the Old City's streets, food and human scale before the day reaches the famous riverfront.",
       category: "Culture",
-      image: pendingImage,
+      image: yuGarden,
     },
     {
       title: "A river crossing that makes the city legible",
       description:
         "Take the public Huangpu ferry with your guide to see the Bund and Pudong as two sides of the same city, not as disconnected attractions.",
       category: "Photography",
-      image: pendingImage,
+      image: bundWaterfront,
     },
     {
       title: "A real afternoon in the former French Concession",
       description:
         "Finish in leafy lane-house streets where Shanghai's residential rhythm, cafes and architecture offer a quieter perspective than a landmark checklist.",
       category: "Food",
-      image: pendingImage,
+      image: bundClockTower,
     },
   ],
   itinerary: [
@@ -194,7 +225,7 @@ export const privateShanghaiDayTour: Tour = {
       destination: "Shanghai",
       summary:
         "Meet your private English-speaking guide and vehicle at the confirmed Shanghai hotel. Begin in Yu Garden and the Old City, then move to the Bund and cross the Huangpu by public ferry for the river perspective. After independent lunch time or a pre-booked dining upgrade, continue through a walkable former French Concession neighborhood before a private return to the hotel. The exact sequence is adjusted around weather, traffic, opening hours and the group, while keeping these core Shanghai chapters intact.",
-      image: pendingImage,
+      image: lujiazui,
       hotel: "No overnight stay required · pickup and return at your Shanghai hotel",
       meals: ["Independent lunch time; curated Shanghainese lunch available as an upgrade"],
       transport:
@@ -239,7 +270,7 @@ export const privateShanghaiDayTour: Tour = {
         "This is a private day tour, so no overnight stay is included. Service begins and ends at a central Shanghai hotel or another confirmed central location. Airport, cruise-port and non-standard pickup requirements are priced clearly before booking.",
       roomStyle: "No overnight stay required",
       highlights: ["Hotel-first planning", "Confirmed pickup", "Private return", "No hotel change"],
-      image: pendingImage,
+      image: privateVehicle,
     },
   ],
   included: [
@@ -264,35 +295,35 @@ export const privateShanghaiDayTour: Tour = {
       description:
         "Add advance-arranged Shanghai Tower observation-deck admission from US$35 per guest. The price includes the ticket arrangement and itinerary coordination; it does not turn the day into an unlimited-hours extension.",
       badges: ["From US$35 pp", "Advance arrangement"],
-      image: pendingImage,
+      image: lujiazui,
     },
     {
       title: "Curated Shanghainese lunch",
       description:
         "Add a pre-arranged local lunch from US$38 per guest, with an approachable fixed menu and dietary review before booking. Drinks and dishes beyond the agreed menu are separate.",
       badges: ["From US$38 pp", "Dietary needs checked"],
-      image: pendingImage,
+      image: bundClockTower,
     },
     {
       title: "Huangpu River night-cruise extension",
       description:
         "Extend the private day into the evening from US$328 per group of up to four. This includes standard cruise tickets, private vehicle, guide assistance and up to 2.5 additional service hours; it is not only a boat-ticket markup.",
       badges: ["From US$328 per group", "Up to 4 guests", "Evening extension"],
-      image: pendingImage,
+      image: bundWaterfront,
     },
     {
       title: "Hands-on Shanghai snack-making experience",
       description:
         "Add a small-group or private-arrangement workshop from US$88 per guest to learn a Shanghai-style snack, subject to the host's schedule and your final route. The exact format is confirmed before payment.",
       badges: ["From US$88 pp", "Host availability"],
-      image: pendingImage,
+      image: yuGarden,
     },
     {
       title: "Additional private touring time",
       description:
         "Add time only when your date and guide, driver and vehicle availability support it: US$58 per private group for each additional hour. This is useful for an evening plan, a slower pace or a confirmed late departure.",
       badges: ["US$58 per group/hour", "Subject to availability"],
-      image: pendingImage,
+      image: privateVehicle,
     },
   ],
   transportation: {
@@ -362,7 +393,7 @@ export const privateShanghaiDayTour: Tour = {
       },
     ],
   },
-  gallery: [],
+  gallery: shanghaiGallery.slice(1),
   faqs: [
     {
       question: "What does the US$672 starting price include?",
@@ -417,7 +448,7 @@ export const privateShanghaiDayTour: Tour = {
         description:
           "A 12-day premium private China journey that gives Shanghai multiple unhurried chapters after Beijing and Xi'an.",
         tags: ["Private", "First-time China", "Easy pace"],
-        image: pendingImage,
+        image: lujiazui,
         route: "Beijing · Xi'an · Shanghai",
         duration: "12 days / 11 nights",
         href: "/tours/china-at-an-easier-pace-12-day-private-tour",
@@ -427,7 +458,7 @@ export const privateShanghaiDayTour: Tour = {
         description:
           "A longer private route linking Shanghai's city life with major sandstone mountain scenery.",
         tags: ["Private", "Shanghai", "Nature"],
-        image: pendingImage,
+        image: lujiazui,
         route: "Shanghai · Zhangjiajie",
         duration: "8 days / 7 nights",
         href: "/tours/shanghai-zhangjiajie-floating-peaks",
@@ -439,8 +470,8 @@ export const privateShanghaiDayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Private%20Shanghai%20Day%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20check%20a%20private%20Shanghai%20day%20tour.%0A%0ADate%3A%0ANumber%20of%20guests%20and%20ages%20if%20children%3A%0AShanghai%20hotel%20or%20pickup%20address%3A%0AAny%20airport%2C%20cruise-port%20or%20evening%20connection%3A%0AOptional%20experiences%20of%20interest%3A%0AAny%20mobility%2C%20dietary%20or%20other%20considerations%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Shanghai%20day%20tour.%20My%20date%2C%20group%20size%20and%20Shanghai%20hotel%20are%3A",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Shanghai%20day%20tour.%20My%20date%2C%20group%20size%20and%20Shanghai%20hotel%20are%3A",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage: "I would like to check a private Shanghai day tour from my Shanghai hotel.",
   },
 };

@@ -21,7 +21,7 @@ const journeyLocations: Record<string, string> = {
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": "Guangzhou · Shenzhen",
   "luxury-yunnan-private-tour": "Yunnan",
   "chengdu-chongqing-zhangjiajie-private-11-day-tour": "Chengdu · Chongqing · Zhangjiajie",
-  "beijing-xian-chengdu-shanghai-private-11-day-tour": "Beijing to Shanghai",
+  "beijing-xian-chengdu-shanghai-private-11-day-tour": "Shanghai · Chengdu · Xi'an · Beijing",
   "first-china-beautifully-paced": "Beijing · Xi'an · Shanghai",
   "chengdu-pandas-sichuan-table": "Chengdu · Leshan",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour": "Chengdu · Jiuzhaigou",
@@ -56,7 +56,7 @@ const sensoryDescriptions: Record<string, string> = {
   "chengdu-chongqing-zhangjiajie-private-11-day-tour":
     "Taste Sichuan after dark, meet pandas early and rise into Zhangjiajie's sandstone landscape.",
   "beijing-xian-chengdu-shanghai-private-11-day-tour":
-    "Travel from the Great Wall to warriors, pandas and Shanghai with every handover already connected.",
+    "One clear 12-day route through four distinct cities, with the connections planned around your dates.",
   "first-china-beautifully-paced":
     "A thoughtful first China journey with private context, key logistics handled, and fewer rushed departures.",
   "chengdu-pandas-sichuan-table":

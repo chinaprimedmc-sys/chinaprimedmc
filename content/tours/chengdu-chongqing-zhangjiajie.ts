@@ -661,8 +661,8 @@ export const chengduChongqingZhangjiajieTour: Tour = {
     emailHref: `mailto:chinaprimedmc@gmail.com?subject=${encodeURIComponent(
       "11-Day Chengdu Chongqing Zhangjiajie Private Tour",
     )}&body=${encodeURIComponent(`${inquiryMessage}\n\nTravelers:\nDates:\nHotel preference:\nDietary or mobility needs:\nQuestions:\n`)}`,
-    whatsappHref: `https://wa.me/447985052302?text=${encodeURIComponent(inquiryMessage)}`,
-    scheduleCallHref: "tel:+447985052302",
+    whatsappHref: `https://wa.me/8618027438191?text=${encodeURIComponent(inquiryMessage)}`,
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage: inquiryMessage,
   },
 };

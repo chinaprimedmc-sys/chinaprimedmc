@@ -87,10 +87,6 @@ Choose the order of cities before selecting individual attractions. During Golde
 
 Rail and airline inventory is released and managed on the operator’s timetable. China Railway’s official 12306 service is the authority for train availability, not a screenshot from an old blog. Create the passenger profile with the same passport that will be carried, identify acceptable train alternatives and note the correct station names before the sales window opens.
 
-![Fuxing high-speed trains lined up at Shenzhen North Railway Station](/journal/2026-08-08/shenzhen-north-high-speed-trains.webp)
-
-_Fuxing high-speed trains at Shenzhen North Railway Station. The photograph illustrates network scale, not ticket availability for any particular Golden Week service._
-
 The existing [China high-speed train guide](/journal/china-high-speed-train-foreigners) explains the passport-to-platform process. For Golden Week, the additional decision is whether the route still works if the preferred departure is unavailable.
 
 ### 4. Reserve capacity-controlled attractions

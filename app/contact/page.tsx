@@ -46,7 +46,7 @@ export default function ContactPage() {
                 Start planning
               </CtaButton>
               <CtaButton
-                href="https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%20would%20like%20help%20planning%20a%20private%20journey%20in%20China."
+                href="https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%20would%20like%20help%20planning%20a%20private%20journey%20in%20China."
                 icon={<MessageCircle size={16} aria-hidden="true" />}
                 target="_blank"
                 rel="noreferrer"

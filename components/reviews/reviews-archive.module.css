@@ -1,0 +1,91 @@
+.archive {
+  color: #222824;
+  margin-inline: auto;
+  max-width: 76rem;
+  padding: 0 var(--page-gutter) 72px;
+}
+
+.intro {
+  border-bottom: 1px solid #dfe5e1;
+  padding: 28px 0 20px;
+}
+
+.eyebrow {
+  color: #23646d;
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  line-height: 1.1rem;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  font-family: var(--font-brand);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 10px;
+  max-width: 18ch;
+}
+
+.intro > p:last-child {
+  color: #5b645e;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-top: 12px;
+  max-width: 60ch;
+}
+
+.intro > .reviewCount {
+  color: #68716b;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.25rem;
+  margin-top: 8px;
+}
+
+.reviewList {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 18px 0 0;
+}
+
+.reviewList > li {
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .archive {
+    padding-bottom: 48px;
+  }
+
+  .intro {
+    padding-top: 20px;
+  }
+
+  .intro h1 {
+    font-size: 1.9rem;
+    line-height: 1.12;
+    max-width: 19ch;
+  }
+
+  .intro > p:last-child {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .reviewList {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding-top: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1050px) {
+  .reviewList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

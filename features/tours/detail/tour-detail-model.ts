@@ -48,11 +48,13 @@ export type TourDetailModel = {
   experienceCards: TourExperienceCard[];
   optionalExperiences?: Tour["optionalExperiences"];
   price?: {
-    fromUsd: number;
+    fromUsd?: number;
     pricingUnit: "per-person" | "private-group";
+    cardBasis: string;
     basis: string;
     detail: string;
     note: string;
+    additionalNote?: string;
   };
   quickFacts: Array<{ label: string; value: string }>;
   routeStops: Array<{ name: string; days?: string }>;
@@ -141,9 +143,11 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       ? {
           fromUsd: catalog.pricing.fromUsd,
           pricingUnit: catalog.pricing.pricingUnit,
+          cardBasis: catalog.pricing.cardBasis,
           basis: catalog.pricing.basis,
           detail: catalog.pricing.inclusionSummary,
           note: catalog.pricing.finalPriceNote,
+          additionalNote: catalog.pricing.additionalNote,
         }
       : undefined,
     quickFacts: [
@@ -250,9 +254,8 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
 }
 
 function describeIncludedMeals(dayNumber: number) {
-  if (dayNumber === 2) {
-    return "Hotel breakfast + welcome dinner";
-  }
+  if (dayNumber === 1) return "";
+  if (dayNumber === 2) return "Hotel breakfast + hosted welcome dinner";
   return "Hotel breakfast";
 }
 
@@ -279,9 +282,11 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     price: {
       fromUsd: item.pricing.fromUsd,
       pricingUnit: item.pricing.pricingUnit,
+      cardBasis: item.pricing.cardBasis,
       basis: item.pricing.basis,
       detail: item.pricing.inclusionSummary,
       note: item.pricing.finalPriceNote,
+      additionalNote: item.pricing.additionalNote,
     },
     quickFacts: [
       { label: "Ideal for", value: item.bestForSummary },
@@ -392,7 +397,7 @@ function tourWhatsAppHref(title: string, duration: string) {
     "",
     "Could you advise on availability and a private quote?",
   ].join("\n");
-  return `https://wa.me/447985052302?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/8618027438191?text=${encodeURIComponent(message)}`;
 }
 
 function compactDailyStay(stay: string | undefined, destination: string) {

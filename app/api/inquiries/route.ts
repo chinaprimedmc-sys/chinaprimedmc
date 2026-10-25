@@ -4,6 +4,13 @@ import { inquirySchema } from "@/lib/inquiries/schema";
 import { createInquiry } from "@/lib/inquiries/supabase";
 import { consumeRateLimit, hashRateLimitKey } from "@/lib/security/rate-limit";
 import { verifyTurnstileToken } from "@/lib/security/turnstile";
+import { journeyCatalog } from "@/content/tours/catalog";
+import { getJourneyCardTitle } from "@/content/tours/card-copy";
+import {
+  createJourneyOfferClaim,
+  journeyOfferSummary,
+  privateJourneyOffer,
+} from "@/lib/tours/journey-offer";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -30,6 +37,40 @@ export async function POST(request: Request) {
   if (parsed.data.website) {
     return NextResponse.json({ ok: true });
   }
+
+  const offerJourney = parsed.data.campaignId
+    ? journeyCatalog.find((item) => item.slug === parsed.data.journeySlug)
+    : undefined;
+  if (
+    parsed.data.campaignId &&
+    (parsed.data.campaignId !== privateJourneyOffer.id ||
+      !privateJourneyOffer.active ||
+      !offerJourney)
+  ) {
+    return NextResponse.json(
+      { error: "This offer is not available for this journey. Please contact us on WhatsApp." },
+      { status: 400 },
+    );
+  }
+  const offer = offerJourney
+    ? createJourneyOfferClaim({
+        slug: offerJourney.slug,
+        title: getJourneyCardTitle(offerJourney),
+        href: offerJourney.href,
+        fromUsd: offerJourney.pricing.fromUsd,
+        pricingUnit: offerJourney.pricing.pricingUnit,
+        basePartySize: offerJourney.pricing.basePartySize,
+        cardBasis: offerJourney.pricing.cardBasis,
+      })
+    : undefined;
+  // Store the server-calculated price, never a client-supplied reference price or discount.
+  // Append the offer summary so client-supplied context in notes is preserved.
+  const inquiry = offer
+    ? {
+        ...parsed.data,
+        notes: [parsed.data.notes, journeyOfferSummary(offer)].filter(Boolean).join("\n\n"),
+      }
+    : parsed.data;
 
   let stage = "request-setup";
 
@@ -75,12 +116,12 @@ export async function POST(request: Request) {
       );
     }
     stage = "database-write";
-    await createInquiry(parsed.data);
+    await createInquiry(inquiry);
     stage = "notification";
-    await notifyInquiry(parsed.data).catch((error) =>
+    await notifyInquiry(inquiry).catch((error) =>
       console.error("Inquiry notification failed", error),
     );
-    return NextResponse.json({ ok: true }, { status: 201 });
+    return NextResponse.json({ ok: true, ...(offer ? { offer } : {}) }, { status: 201 });
   } catch (error) {
     console.error("Inquiry submission failed", {
       stage,

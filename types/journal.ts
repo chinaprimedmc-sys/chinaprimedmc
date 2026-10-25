@@ -111,6 +111,16 @@ export type JournalArticle = {
   updatedAt?: string;
   /** 仅在原始文章明确提供 sources_verified_at 时存在。 */
   lastFactCheckedAt?: string;
+  /** Governance metadata applied from the public journal registry. */
+  governance?: {
+    primaryIntent: string;
+    canonicalOwner: string;
+    sourceClass: "operator" | "mixed" | "official-required";
+    contentStatus: "published";
+    contentReviewedAt: string;
+    nextReviewAt: string;
+    primaryJourney: string;
+  };
   readingTime: string;
   featured?: boolean;
   editorPick?: boolean;

@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
 
-import { OptimizedImage } from "@/components/media/optimized-image";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import { TrackedLink } from "@/components/cta";
 import styles from "./journey-bridge.module.css";
@@ -17,23 +16,24 @@ export type JourneyBridgeData = {
   advisorHref: string;
 };
 
-export function JournalJourneyPrompt() {
+export function JournalJourneyPrompt({ bridge }: { bridge: JourneyBridgeData }) {
+  const { journey } = bridge;
   return (
     <aside className={styles.prompt} aria-label="Private journey planning">
       <span className={styles.promptLine} aria-hidden="true" />
       <div>
-        <p>Want to see how this pacing works across a complete journey?</p>
+        <p>See how this advice works in a real private journey</p>
         <span>
-          The 12-day route separates the heavier days and protects the time that makes China
-          enjoyable.
+          {journey.title}: {bridge.description}
         </span>
       </div>
       <TrackedLink
-        href="#related-tours"
-        trackingLabel="Explore the 12-day journey"
-        trackingPlacement="journal-testimonial-prompt"
+        href={journey.href}
+        trackingLabel={`View ${journey.title}`}
+        trackingPlacement="journal-mid-journey-prompt"
+        journeySlug={journey.slug}
       >
-        Explore the 12-day journey <ArrowUpRight size={15} aria-hidden="true" />
+        View the journey <ArrowUpRight size={15} aria-hidden="true" />
       </TrackedLink>
     </aside>
   );
@@ -41,33 +41,21 @@ export function JournalJourneyPrompt() {
 
 export function JournalJourneyBridge({ bridge }: { bridge: JourneyBridgeData }) {
   const { journey } = bridge;
-  const imageIsPortrait =
-    Boolean(journey.image.width && journey.image.height) &&
-    (journey.image.height ?? 0) > (journey.image.width ?? 0);
 
   return (
     <section className={styles.section} id="related-tours" data-journey-slug={journey.slug}>
       <div className={styles.inner}>
-        <div
-          className={`${styles.media} ${imageIsPortrait ? styles.mediaPortrait : styles.mediaLandscape}`}
-        >
-          <OptimizedImage
-            src={journey.image.src}
-            alt={journey.image.alt}
-            width={journey.image.width ?? 1600}
-            height={journey.image.height ?? 1067}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            objectPosition={journey.image.objectPosition}
-          />
-        </div>
         <div className={styles.copy}>
-          <p className={styles.eyebrow}>Journey In Context</p>
+          <p className={styles.eyebrow}>Recommended Journey</p>
           <h2>{bridge.title}</h2>
           <p className={styles.route}>{journey.title}</p>
-          <p className={styles.description}>{bridge.description}</p>
           <dl className={styles.context}>
             <div>
-              <dt>Why It Works</dt>
+              <dt>Why It Connects</dt>
+              <dd>{bridge.description}</dd>
+            </div>
+            <div>
+              <dt>Why The Journey Works</dt>
               <dd>{journey.hook}</dd>
             </div>
             <div>
@@ -82,7 +70,7 @@ export function JournalJourneyBridge({ bridge }: { bridge: JourneyBridgeData }) 
               </dd>
             </div>
             <div>
-              <dt>We Would Change This When</dt>
+              <dt>Change The Plan When</dt>
               <dd>
                 Your available nights, walking comfort or preferred hotel rhythm call for fewer
                 stops and more time in each place.

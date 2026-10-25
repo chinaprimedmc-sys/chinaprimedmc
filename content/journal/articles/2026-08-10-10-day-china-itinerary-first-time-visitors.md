@@ -168,7 +168,7 @@ The [Pudong or Hongqiao airport guide](/journal/shanghai-pudong-hongqiao-airport
 
 Add Chengdu when pandas, Sichuan food and local life are more important than keeping the route to three cities—and when you can extend the trip to roughly eleven or twelve days. Trying to insert Chengdu into the ten-day structure usually removes the breathing room that makes the first route work.
 
-AVIORA’s [11-day Beijing, Xi’an, Chengdu and Shanghai tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) shows how the additional city can be connected more responsibly.
+AVIORA’s [12-day Shanghai, Chengdu, Xi’an and Beijing tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) shows how the additional city can be connected more responsibly.
 
 ## When to change this itinerary
 

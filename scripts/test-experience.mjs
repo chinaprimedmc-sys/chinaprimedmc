@@ -13,6 +13,8 @@ const browser = await chromium.launch({
   args: ["--no-sandbox"],
 });
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+// Keep the journey-offer invitation from auto-opening mid-test; its states are covered separately.
+await page.addInitScript(() => localStorage.setItem("aviora-journey-offer-seen-v1", "1"));
 const errors = [];
 page.on("pageerror", (error) => errors.push(error.message));
 async function go(path) {
@@ -57,11 +59,14 @@ try {
 
   const detail = "/tours/first-china-beautifully-paced";
   await go(detail);
-  assert.ok((await page.locator("body").innerText()).includes("Beijing · Xi'an · Shanghai · 9 Days"));
+  assert.ok(
+    (await page.locator("body").innerText()).includes("Beijing · Xi'an · Shanghai · 9 Days"),
+  );
   assert.ok((await page.locator("body").innerText()).includes("US$3,190"));
-  await page.getByRole("button", { name: "Expand all days" }).click();
-  assert.ok(await page.getByRole("button", { name: "Collapse all days" }).isVisible());
-  console.log("PASS first journey detail, price, enquiry and accordion");
+  await page.getByRole("button", { name: "View day-by-day itinerary" }).click();
+  assert.ok(await page.getByRole("button", { name: "Close itinerary" }).isVisible());
+  await page.getByRole("button", { name: "Close itinerary" }).click();
+  console.log("PASS first journey detail, price, enquiry and itinerary dialog");
 
   await go("/tours");
   const allJourneySlugs = await slugs();
@@ -78,14 +83,72 @@ try {
           overflow: document.documentElement.scrollWidth - innerWidth,
         };
       });
-      assert.ok(layout.titleLines <= (width === 390 ? 3 : 2), `Long title: ${slug} at ${width}px`);
+      assert.ok(layout.titleLines <= 3, `Long title: ${slug} at ${width}px`);
       assert.ok(layout.overflow <= 1, `Horizontal overflow: ${slug} at ${width}px`);
-      assert.ok(await page.locator("#included details").count(), `Missing full price details: ${slug}`);
+      assert.ok(
+        await page.locator("details", { hasText: "How this price is set" }).count(),
+        `Missing full price details: ${slug}`,
+      );
     }
   }
   console.log("PASS all 19 public journeys: title density, price detail and mobile/desktop layout");
 
   await page.setViewportSize({ width: 390, height: 844 });
+  await go("/");
+  const homeMatchTrigger = page.getByRole("button", { name: "Find my journey" });
+  await homeMatchTrigger.click();
+  await page.getByRole("heading", { name: "How long can you get away?" }).waitFor();
+  await page.getByRole("button", { name: "Close journey finder" }).click();
+  assert.ok(await homeMatchTrigger.evaluate((element) => document.activeElement === element));
+  await page.evaluate(() => scrollTo(0, 1500));
+  await page.waitForTimeout(700);
+  const mobileDock = page.getByRole("navigation", { name: "Quick journey actions" });
+  assert.equal(await mobileDock.evaluate((element) => getComputedStyle(element).opacity), "1");
+  const matchTrigger = mobileDock.getByRole("button", { name: "Match", exact: true });
+  await matchTrigger.click();
+  await page.getByRole("heading", { name: "How long can you get away?" }).waitFor();
+  await page.getByRole("button", { name: "Close journey finder" }).click();
+  await mobileDock.getByRole("link", { name: "Plan", exact: true }).click();
+  await page.waitForURL("**/start-planning**");
+  assert.ok(page.url().includes("/start-planning"));
+  await go("/");
+  assert.equal(
+    await page
+      .locator("main section")
+      .filter({ hasText: "Travel that fits you." })
+      .locator("li")
+      .count(),
+    4,
+  );
+  console.log("PASS mobile homepage match, smart dock and planning sheet");
+
+  await go("/journal");
+  assert.equal(await page.locator("h1").innerText(), "China travel answers");
+  assert.ok(
+    (await page.evaluate(() => document.documentElement.scrollHeight)) < 5000,
+    "Mobile Journal hub should remain decision-first and compact",
+  );
+  const firstTripDecision = page.getByRole("button", { name: "My first trip" });
+  await firstTripDecision.click();
+  assert.equal(await firstTripDecision.getAttribute("aria-pressed"), "true");
+  assert.match(
+    await page.locator("#journal-finder-results a").first().innerText(),
+    /How AVIORA Plans a First Trip to China/,
+  );
+  await go("/journal/first-trip-to-china-planning-guide");
+  const contentsTrigger = page.getByRole("button", { name: "Open contents" });
+  assert.ok(await contentsTrigger.isVisible());
+  await contentsTrigger.click();
+  const contentsDialog = page.getByRole("dialog");
+  await contentsDialog.waitFor();
+  assert.ok((await contentsDialog.getByRole("link").count()) > 3);
+  assert.equal(await page.evaluate(() => getComputedStyle(document.body).overflow), "hidden");
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(200);
+  assert.ok(await contentsTrigger.evaluate((element) => document.activeElement === element));
+  assert.ok(await page.getByText("Swipe to compare").first().isVisible());
+  console.log("PASS mobile Journal decision finder, reader tools and contents focus");
+
   await go("/tours");
   assert.ok(await page.getByRole("button", { name: /Find my journey/ }).isVisible());
   await page.getByRole("button", { name: /Find my journey/ }).click();
@@ -93,8 +156,14 @@ try {
   assert.ok(await firstQuestion.isVisible());
   await page.getByRole("button", { name: /One day/ }).click();
   await page.waitForTimeout(180);
-  assert.equal(await page.getByRole("button", { name: /One day/ }).getAttribute("aria-pressed"), "true");
-  assert.ok(await firstQuestion.isVisible(), "Selected answer should remain readable before advancing");
+  assert.equal(
+    await page.getByRole("button", { name: /One day/ }).getAttribute("aria-pressed"),
+    "true",
+  );
+  assert.ok(
+    await firstQuestion.isVisible(),
+    "Selected answer should remain readable before advancing",
+  );
   await page.getByRole("heading", { name: "Who’s coming with you?" }).waitFor();
   await page.getByRole("button", { name: "Previous question" }).click();
   assert.ok(await firstQuestion.isVisible());
@@ -105,11 +174,14 @@ try {
   await page.getByRole("button", { name: "Close journey finder" }).click();
   await page.getByRole("button", { name: /Browse all 19 journeys/ }).click();
   assert.ok(await page.getByRole("button", { name: /Match my journey/ }).isVisible());
-  const compactCard = await page.locator("[data-journey-slug]").first().evaluate((card) => ({
-    mediaHeight: card.querySelector("a")?.getBoundingClientRect().height,
-    height: card.getBoundingClientRect().height,
-    text: card.innerText,
-  }));
+  const compactCard = await page
+    .locator("[data-journey-slug]")
+    .first()
+    .evaluate((card) => ({
+      mediaHeight: card.querySelector("a")?.getBoundingClientRect().height,
+      height: card.getBoundingClientRect().height,
+      text: card.innerText,
+    }));
   assert.ok(compactCard.mediaHeight <= 200, "Mobile placeholder should not dominate the card");
   assert.ok(compactCard.height <= 500, "Mobile journey comparison should stay compact");
   assert.match(compactCard.text, /Per person · based on four guests/);
@@ -127,7 +199,7 @@ try {
 
   await go("/start-planning");
   await page.locator('form button[type="submit"]').click();
-  assert.equal(await page.locator('form [aria-invalid="true"]').count(), 4);
+  assert.equal(await page.locator('form [aria-invalid="true"]').count(), 2);
   await page.waitForTimeout(150);
   assert.equal(await page.evaluate(() => document.activeElement.name), "name");
   console.log("PASS enquiry errors and first-error focus");

@@ -100,7 +100,6 @@ The Temple of Heaven is broad, mostly open and easier to shape than many major B
 
 For an easier-paced first day, use the visit to understand imperial ritual and morning park life, then finish around lunch. Adding Tiananmen Square, a hutong and an evening show because the afternoon appears "free" defeats the purpose of the route.
 
-![International travelers in traditional dress at the Temple of Heaven in Beijing](/journal/2026-08-19/temple-of-heaven-travelers-full.webp)
 _The Temple of Heaven is broad, but a deliberate gate-to-gate route can keep the visit focused without losing its sense of scale._
 
 ### Forbidden City: a long linear commitment
@@ -109,7 +108,6 @@ The Forbidden City is not technically difficult in the same way as a mountain pa
 
 A focused route can prioritize the central political spaces and selected domestic quarters. It can omit Jingshan Park, whose climb and steps change the physical character of the day. It cannot remove official entry procedures or turn the palace into a short indoor museum. Read the [Forbidden City ticket guide](/journal/forbidden-city-tickets-foreigners) before treating the visit as flexible.
 
-![Stone courtyards and palace roofs inside the Forbidden City in Beijing](/journal/2026-08-19/forbidden-city-walking-surfaces-full.webp)
 _The Forbidden City's long stone courtyards are mostly level, yet the hard surfaces and one-way progression make distance accumulate._
 
 ### Mutianyu: less distance, more vertical effort
@@ -118,7 +116,6 @@ Mutianyu may produce fewer kilometres than a city day and still feel harder. The
 
 Our detailed [Mutianyu walking and cable-car guide](/journal/mutianyu-great-wall-walking-cable-car) compares three realistic route patterns. A good guide agrees on the turnaround point before fatigue makes the decision. A private vehicle protects the transfer and the open evening; it does not flatten Ming-dynasty mountain architecture.
 
-![Travelers riding the open chairlift at Mutianyu Great Wall near Beijing](/journal/2026-08-19/mutianyu-chairlift-access-full.webp)
 _A chairlift or cable car removes the mountain approach, not the historic steps and slopes on the Wall itself._
 
 ## Xi'an is more about standing and transitions
@@ -129,7 +126,6 @@ The Terracotta Army is not a steep visit. Its load comes from the hotel-to-museu
 
 A private guide can choose where the archaeological explanation matters most, find available seating when practical and stop before attention fades. The [Terracotta Army ticket guide](/journal/terracotta-army-tickets-foreign-visitors) explains the passport and reservation side of the visit. None of this removes the museum's public entry controls or busy viewing areas.
 
-![Visitors viewing the Terracotta Army from the public platform in Xi'an](/journal/2026-08-19/terracotta-army-viewing-platform-full.webp)
 _The viewing platforms are level, but time spent standing above the excavation pits is part of the day's real physical load._
 
 ### The railway station is part of the walking day
@@ -144,7 +140,6 @@ Shanghai is generally easier to edit because a museum, cafe, vehicle transfer or
 
 A better day connects the Bund with one coherent neighborhood or indoor interest. Use the vehicle between districts, not for a series of short crossings that leave more time in traffic than on the street. If an evening river view matters, protect the afternoon rather than using every available hour before sunset.
 
-![Older couple walking beside Yu Garden in Shanghai](/journal/2026-08-19/shanghai-yu-garden-easier-pace-full.webp)
 _Shanghai works best when one neighborhood is allowed to become the experience, rather than a transfer between landmarks._
 
 ## What private planning can genuinely change
@@ -163,7 +158,6 @@ The more important advantage is psychological: changing the day should feel like
 
 Humour belongs in that planning equation too. An expert guide is not only there to recite history or count entrances. The guide reads the travellers, keeps explanations alive, notices when attention is fading and helps a substantial day feel human. Felix's message captures the combination we aim for: operational detail stays quiet while expertise and personality remain visible.
 
-![Older travelers enjoying a traditional Chinese cultural experience together](/journal/2026-08-19/older-travelers-chinese-cultural-experience-full.webp)
 _An easier pace is not a smaller trip. It leaves more attention for the encounters that made the journey worth taking._
 
 ## What no responsible operator should promise

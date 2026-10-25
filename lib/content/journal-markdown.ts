@@ -60,6 +60,18 @@ import familyCostMarkdown from "@/content/journal/articles/2026-09-25-china-fami
 import luxuryYunnanMarkdown from "@/content/journal/articles/2026-09-25-luxury-yunnan-private-tour-10-days.md";
 import yunnanAltitudeMarkdown from "@/content/journal/articles/2026-09-25-yunnan-altitude-private-tour.md";
 import yunnanStaysMarkdown from "@/content/journal/articles/2026-09-25-where-to-stay-yunnan-private-tour.md";
+import familyHotelRoomsMarkdown from "@/content/journal/articles/2026-09-26-china-family-hotel-rooms-connecting-rooms-extra-beds.md";
+import foodAllergiesMarkdown from "@/content/journal/articles/2026-09-26-food-allergies-dietary-restrictions-china-travel.md";
+import familyTrainMarkdown from "@/content/journal/articles/2026-09-26-china-high-speed-trains-with-children.md";
+import guideDriverMarkdown from "@/content/journal/articles/2026-09-26-private-guide-vs-driver-china.md";
+import multiCityLuggageMarkdown from "@/content/journal/articles/2026-09-26-luggage-multi-city-china-trip.md";
+import muslimFriendlyMarkdown from "@/content/journal/articles/2026-09-26-muslim-friendly-travel-china-halal-prayer-guide.md";
+import weatherBackupMarkdown from "@/content/journal/articles/2026-09-26-china-weather-disruption-backup-planning.md";
+import emergencySupportMarkdown from "@/content/journal/articles/2026-09-26-china-travel-emergency-support-what-to-do.md";
+import muslimAudienceMarkdown from "@/content/journal/articles/2026-10-04-muslim-friendly-private-china-travel.md";
+import womenAudienceMarkdown from "@/content/journal/articles/2026-10-04-women-private-china-travel.md";
+import seniorAudienceMarkdown from "@/content/journal/articles/2026-10-04-slow-paced-china-tour-for-seniors.md";
+import familyAudienceMarkdown from "@/content/journal/articles/2026-10-04-private-china-family-tour-planning.md";
 import type { JournalArticle, JournalContentBlock } from "@/types/journal";
 
 const fullFrameImageMetadata: Record<string, { width: number; height: number; fit: "contain" }> = {
@@ -116,6 +128,13 @@ const fullFrameImageMetadata: Record<string, { width: number; height: number; fi
 };
 
 const bundledMarkdown: Record<string, string> = {
+  "content/journal/articles/2026-10-04-muslim-friendly-private-china-travel.md":
+    muslimAudienceMarkdown,
+  "content/journal/articles/2026-10-04-women-private-china-travel.md": womenAudienceMarkdown,
+  "content/journal/articles/2026-10-04-slow-paced-china-tour-for-seniors.md":
+    seniorAudienceMarkdown,
+  "content/journal/articles/2026-10-04-private-china-family-tour-planning.md":
+    familyAudienceMarkdown,
   "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md":
     visaTransitMarkdown,
   "content/journal/articles/2026-08-06-china-accommodation-registration-foreigners.md":
@@ -202,6 +221,20 @@ const bundledMarkdown: Record<string, string> = {
   "content/journal/articles/2026-09-25-luxury-yunnan-private-tour-10-days.md": luxuryYunnanMarkdown,
   "content/journal/articles/2026-09-25-yunnan-altitude-private-tour.md": yunnanAltitudeMarkdown,
   "content/journal/articles/2026-09-25-where-to-stay-yunnan-private-tour.md": yunnanStaysMarkdown,
+  "content/journal/articles/2026-09-26-china-family-hotel-rooms-connecting-rooms-extra-beds.md":
+    familyHotelRoomsMarkdown,
+  "content/journal/articles/2026-09-26-food-allergies-dietary-restrictions-china-travel.md":
+    foodAllergiesMarkdown,
+  "content/journal/articles/2026-09-26-china-high-speed-trains-with-children.md":
+    familyTrainMarkdown,
+  "content/journal/articles/2026-09-26-private-guide-vs-driver-china.md": guideDriverMarkdown,
+  "content/journal/articles/2026-09-26-luggage-multi-city-china-trip.md": multiCityLuggageMarkdown,
+  "content/journal/articles/2026-09-26-muslim-friendly-travel-china-halal-prayer-guide.md":
+    muslimFriendlyMarkdown,
+  "content/journal/articles/2026-09-26-china-weather-disruption-backup-planning.md":
+    weatherBackupMarkdown,
+  "content/journal/articles/2026-09-26-china-travel-emergency-support-what-to-do.md":
+    emergencySupportMarkdown,
 };
 
 export async function hydrateJournalArticle(article: JournalArticle): Promise<JournalArticle> {
@@ -338,6 +371,13 @@ function sourcePublisher(value: string) {
     [/panda\.org\.cn/, "Chengdu Research Base of Giant Panda Breeding"],
     [/caac\.gov\.cn/, "Civil Aviation Administration of China"],
     [/iata\.org/, "International Air Transport Association"],
+    [/cdc\.gov/, "US Centers for Disease Control and Prevention"],
+    [/travel\.state\.gov/, "US Department of State"],
+    [/gov\.uk/, "UK Government"],
+    [/cma\.gov\.cn/, "China Meteorological Administration"],
+    [/12379\.cn/, "National Early Warning Information Release Center"],
+    [/hilton\.com/, "Hilton"],
+    [/marriott\.com/, "Marriott International"],
     [/ttgasia\.com/, "TTG Asia"],
     [/shairport\.com/, "Shanghai Airport Authority"],
     [/bmy\.com\.cn/, "Qin Shi Huang Mausoleum Museum"],

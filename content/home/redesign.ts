@@ -144,7 +144,7 @@ export const homeTravelerNeeds = [
   {
     title: "Muslim-Friendly Travel",
     description: "Halal dining, prayer-aware timing and thoughtful local support.",
-    href: "/tours?experience=food#journey-catalog",
+    href: "/journal/muslim-friendly-private-china-travel",
     image: "/home/traveler-needs/muslim-friendly-travel.jpg",
     imageWidth: 1350,
     imageHeight: 1800,
@@ -153,7 +153,7 @@ export const homeTravelerNeeds = [
   {
     title: "Women’s China Travel",
     description: "Private guiding, well-located stays and support throughout.",
-    href: "/tours?need=women-traveler-support#journey-catalog",
+    href: "/journal/women-private-china-travel",
     image: "/home/traveler-needs/women-friendly-travel.jpg",
     imageWidth: 1200,
     imageHeight: 1800,
@@ -162,7 +162,7 @@ export const homeTravelerNeeds = [
   {
     title: "Slower-paced China Travel",
     description: "A gentler pace, fewer hotel changes and private transfers.",
-    href: "/tours?need=slower-pacing#journey-catalog",
+    href: "/journal/slow-paced-china-tour-for-seniors",
     image: "/home/traveler-needs/senior-friendly-travel.jpg",
     imageWidth: 1350,
     imageHeight: 1800,
@@ -171,7 +171,7 @@ export const homeTravelerNeeds = [
   {
     title: "Family China Travel",
     description: "Family-ready stays, easy pacing and experiences for all ages.",
-    href: "/tours?need=child-friendly#journey-catalog",
+    href: "/journal/private-china-family-tour-planning",
     image: "/home/traveler-needs/family-friendly-travel.jpg",
     imageWidth: 1350,
     imageHeight: 1800,
@@ -281,7 +281,7 @@ export const homeFaqs = [
   {
     question: "Who operates the journey in China?",
     answer:
-      "AVIORA is the international-facing brand of Youyouhui (Guangzhou) International Travel Service Co., Ltd., a China-registered operator licensed for inbound tourism business.",
+      "AVIORA China Travel, also known as AVIORA Travel, is the guest-facing brand of China Prime DMC. Both are operated through Youyouhui (Guangzhou) International Travel Service Co., Ltd. (游友汇（广州）国际旅行社有限公司), the Guangzhou-registered China operator licensed for inbound tourism business. AVIORA has offices in Beijing, Shanghai and Xi'an; the registered operating company is based in Guangzhou.",
   },
 ] as const;
 
@@ -311,9 +311,10 @@ export const featuredHomeJourneyCopy: Record<
   "beijing-xian-chengdu-shanghai-private-11-day-tour": {
     title: "China's Essential Cities, Connected",
     format: "Multi-City Journey",
-    location: "Beijing · Xi'an · Chengdu · Shanghai",
+    location: "Shanghai · Chengdu · Xi'an · Beijing",
     label: "Best For A First Journey Across China",
-    summary: "Beijing, Xi'an, Chengdu and Shanghai in one considered private route.",
+    summary:
+      "One 12-day private route from Shanghai to Beijing, with Chengdu and Xi'an along the way.",
   },
   "china-family-tour-with-pandas-12-day-private-tour": {
     title: "China With Pandas, Made Easy",

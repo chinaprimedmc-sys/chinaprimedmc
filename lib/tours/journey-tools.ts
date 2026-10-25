@@ -7,3 +7,4 @@
 
 export const JOURNEY_SEARCH_EVENT = "aviora:journeys:open-search";
 export const JOURNEY_FILTER_EVENT = "aviora:journeys:open-filter";
+export const JOURNEY_MATCH_EVENT = "aviora:journeys:open-match";

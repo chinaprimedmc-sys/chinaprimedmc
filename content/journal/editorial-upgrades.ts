@@ -7,6 +7,54 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "muslim-friendly-private-china-travel": {
+    title: "Muslim-Friendly Private China Travel: Meals, Prayer and Planning",
+    seoTitle: "Muslim-Friendly China Tours: Halal and Prayer Planning",
+  },
+  "women-private-china-travel": {
+    title: "Women Traveling in China: What Thoughtful Private Support Looks Like",
+    seoTitle: "Women Traveling in China: Private Tours and Support",
+  },
+  "slow-paced-china-tour-for-seniors": {
+    title: "A Slower-Paced China Tour: Design for Comfort, Not Fewer Photos",
+    seoTitle: "Slow-Paced China Tours for Seniors: Comfort and Planning",
+  },
+  "private-china-family-tour-planning": {
+    title: "Private China Family Tours: Plan the Trip Around Every Age",
+    seoTitle: "Private China Family Tours: Rooms, Pace and Planning",
+  },
+  "china-family-hotel-rooms-connecting-rooms-extra-beds": {
+    title: "China Hotel Rooms for Families: What to Confirm Before Booking",
+    seoTitle: "China Hotel Rooms for Families: Room Guide",
+  },
+  "food-allergies-dietary-restrictions-china-travel": {
+    title: "Food Allergies in China: A Practical Travel and Dining Plan",
+    seoTitle: "Food Allergies in China: Travel & Dining Guide",
+  },
+  "china-high-speed-trains-with-children": {
+    title: "China High-Speed Trains With Children: A Parent's Guide",
+    seoTitle: "China High-Speed Trains With Children: 2026 Guide",
+  },
+  "private-guide-vs-driver-china": {
+    title: "Private Guide or Driver in China? Understand the Service",
+    seoTitle: "Private Guide vs Driver in China: Roles Explained",
+  },
+  "luggage-multi-city-china-trip": {
+    title: "Luggage on a Multi-City China Trip: A Practical Transfer Guide",
+    seoTitle: "Luggage on a Multi-City China Trip: Practical Guide",
+  },
+  "muslim-friendly-travel-china-halal-prayer-guide": {
+    title: "Muslim-Friendly Travel in China: Meals, Prayer and Route Planning",
+    seoTitle: "Muslim-Friendly China Travel: Halal & Prayer Guide",
+  },
+  "china-weather-disruption-backup-planning": {
+    title: "China Weather Disruptions: Build a Better Travel Backup Plan",
+    seoTitle: "China Weather Disruptions: Travel Backup Planning",
+  },
+  "china-travel-emergency-support-what-to-do": {
+    title: "What If Something Goes Wrong in China? A Traveler's Action Plan",
+    seoTitle: "China Travel Emergency Plan: What to Do & Who to Call",
+  },
   "china-tours-for-seniors": {
     title: "China Tours for Seniors: What a Good Tour Should Actually Change",
     seoTitle: "China Tours for Seniors: What Good Tours Change",
@@ -344,6 +392,26 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
   "where-to-stay-yunnan-private-tour": {
     title: "Where to Stay in Yunnan: Dali, Shaxi, Lijiang and Shangri-La",
     seoTitle: "Where to Stay in Yunnan: Four Stops Compared",
+  },
+  "how-to-plan-private-china-trip": {
+    title: "How to Plan a Private China Trip: From Conversation to Itinerary",
+    seoTitle: "How to Plan a Private China Trip: AVIORA Guide",
+  },
+  "private-china-tour-transfers-handoffs-support": {
+    title: "Private China Tour Transfers: Handoffs and Local Support",
+    seoTitle: "Private China Tour Transfers and Handoffs Explained",
+  },
+  "china-tour-no-forced-shopping": {
+    title: "No Forced Shopping on a China Tour: What to Ask",
+    seoTitle: "China Tours With No Forced Shopping: Questions",
+  },
+  "how-to-choose-hotels-china-itinerary": {
+    title: "How to Choose Hotels for a China Itinerary",
+    seoTitle: "How to Choose Hotels for a China Itinerary",
+  },
+  "china-private-tour-weather-delay-support": {
+    title: "China Private Tour Support for Weather and Delays",
+    seoTitle: "China Private Tour Support for Weather and Delays",
   },
 };
 

@@ -18,12 +18,14 @@ export function CookieConsent() {
   const [bannerState, setBannerState] = useState<BannerState>("loading");
   const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
+  const [marketingEnabled, setMarketingEnabled] = useState(false);
 
   useEffect(() => {
     const initializeTimer = window.setTimeout(() => {
       const stored = readCookieConsent();
       if (stored) {
         setAnalyticsEnabled(stored.analytics);
+        setMarketingEnabled(stored.marketing);
         setBannerState("saved");
         return;
       }
@@ -36,16 +38,19 @@ export function CookieConsent() {
 
   useEffect(() => {
     const openPreferences = () => {
-      setAnalyticsEnabled(readCookieConsent()?.analytics ?? false);
+      const stored = readCookieConsent();
+      setAnalyticsEnabled(stored?.analytics ?? false);
+      setMarketingEnabled(stored?.marketing ?? false);
       setPreferencesOpen(true);
     };
     window.addEventListener(COOKIE_PREFERENCES_OPEN_EVENT, openPreferences);
     return () => window.removeEventListener(COOKIE_PREFERENCES_OPEN_EVENT, openPreferences);
   }, []);
 
-  const storeChoice = (analytics: boolean) => {
+  const storeChoice = (analytics: boolean, marketing: boolean) => {
     setAnalyticsEnabled(analytics);
-    saveCookieConsent(analytics);
+    setMarketingEnabled(marketing);
+    saveCookieConsent(analytics, marketing);
     setBannerState("saved");
     setPreferencesOpen(false);
   };
@@ -61,7 +66,7 @@ export function CookieConsent() {
             <p className={styles.eyebrow}>Your Privacy</p>
             <h2>Privacy choices</h2>
             <p>
-              Essential storage keeps this site working. Analytics is optional.{" "}
+              Essential storage keeps this site working. Analytics and marketing are optional.{" "}
               <Link href="/cookies">Cookie Policy</Link>.
             </p>
           </div>
@@ -69,7 +74,7 @@ export function CookieConsent() {
             <button
               type="button"
               className={styles.secondaryButton}
-              onClick={() => storeChoice(false)}
+              onClick={() => storeChoice(false, false)}
             >
               Reject All
             </button>
@@ -85,7 +90,7 @@ export function CookieConsent() {
             <button
               type="button"
               className={styles.primaryButton}
-              onClick={() => storeChoice(true)}
+              onClick={() => storeChoice(true, true)}
             >
               Accept All
             </button>
@@ -116,8 +121,9 @@ export function CookieConsent() {
             </div>
 
             <Dialog.Description id="cookie-preferences-description" className={styles.description}>
-              Choose whether optional analytics may run. Necessary storage cannot be disabled
-              because it supports security, forms and your saved privacy choice.
+              Choose whether optional analytics and advertising measurement may run. Necessary
+              storage cannot be disabled because it supports security, forms and your saved privacy
+              choice.
             </Dialog.Description>
 
             <div className={styles.categories}>
@@ -132,6 +138,30 @@ export function CookieConsent() {
                 <span className={styles.alwaysOn}>
                   <Check aria-hidden="true" /> Always On
                 </span>
+              </div>
+
+              <div className={styles.categoryRow}>
+                <div>
+                  <div className={styles.categoryTitle}>
+                    <Cookie aria-hidden="true" />
+                    <strong>Marketing</strong>
+                  </div>
+                  <p>
+                    Meta Pixel page views help measure advertising. It stays off unless you allow
+                    marketing.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={marketingEnabled}
+                  aria-label="Allow marketing and advertising measurement"
+                  className={styles.switch}
+                  data-checked={marketingEnabled || undefined}
+                  onClick={() => setMarketingEnabled((enabled) => !enabled)}
+                >
+                  <span />
+                </button>
               </div>
 
               <div className={styles.categoryRow}>
@@ -162,14 +192,14 @@ export function CookieConsent() {
                 <button
                   type="button"
                   className={styles.secondaryButton}
-                  onClick={() => storeChoice(false)}
+                  onClick={() => storeChoice(false, false)}
                 >
                   Reject All
                 </button>
                 <button
                   type="button"
                   className={styles.primaryButton}
-                  onClick={() => storeChoice(analyticsEnabled)}
+                  onClick={() => storeChoice(analyticsEnabled, marketingEnabled)}
                 >
                   Save Preferences
                 </button>

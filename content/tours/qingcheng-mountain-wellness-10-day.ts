@@ -674,8 +674,8 @@ export const qingchengMountainWellness10DayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Ten%20Days%20at%20Qingcheng%20Mountain&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20private%20proposal%20for%20Ten%20Days%20at%20Qingcheng%20Mountain.%0A%0ATravel%20dates%20or%20month%3A%0ATravellers%3A%0ARooms%20and%20bed%20setup%3A%0APreferred%20daily%20rhythm%3A%0AMovement%2C%20spa%20or%20dietary%20considerations%3A%0AAnything%20you%20should%20plan%20around%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20plan%20Ten%20Days%20at%20Qingcheng%20Mountain.%20Please%20advise%20on%20dates%2C%20the%20seven-night%20retreat%2C%20room%20options%20and%20a%20private%20quote%20for%20four%20guests.",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20plan%20Ten%20Days%20at%20Qingcheng%20Mountain.%20Please%20advise%20on%20dates%2C%20the%20seven-night%20retreat%2C%20room%20options%20and%20a%20private%20quote%20for%20four%20guests.",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in Ten Days at Qingcheng Mountain. Please advise on retreat availability, room options, daily rhythm and a private quote for four guests.",
   },

@@ -4,6 +4,12 @@ const files = [
   "content/journal/commercial.ts",
   "content/journal/senior-cluster.ts",
   "content/journal/published.ts",
+  "content/journal/audience-experience.ts",
+  "content/journal/day-tours/mutianyu.ts",
+  "content/journal/day-tours/shanghai.ts",
+  "content/journal/day-tours/xian.ts",
+  "content/journal/day-tours/chengdu.ts",
+  "content/journal/day-tours/guilin.ts",
 ];
 const source = (await Promise.all(files.map((file) => readFile(file, "utf8")))).join("\n");
 const strategy = await readFile("content/journal/search-strategy.ts", "utf8");

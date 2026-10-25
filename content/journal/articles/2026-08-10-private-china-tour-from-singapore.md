@@ -76,7 +76,7 @@ See the [10-day first-China itinerary](/journal/10-day-china-itinerary-first-tim
 
 Add Chengdu for giant pandas, Sichuan food, tea-house culture and a softer contrast to the three major historical and commercial cities. The extra city needs more than one rushed night.
 
-AVIORA’s [11-day Beijing, Xi’an, Chengdu and Shanghai private tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) uses rail and domestic air selectively to protect sightseeing time.
+AVIORA’s [12-day Shanghai, Chengdu, Xi’an and Beijing private tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) sequences three intercity connections around full city visits.
 
 ### 13 days or more: travel beyond the icons
 

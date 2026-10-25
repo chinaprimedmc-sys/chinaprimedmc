@@ -141,7 +141,6 @@ The Forbidden City is not a single room or viewpoint; it is a large palace compl
 
 **AVIORA note:** Read the [Forbidden City ticket guide for foreign visitors](/journal/forbidden-city-tickets-foreigners) before fixing the date. Private guiding improves interpretation and pacing; it does not remove official security, timed-entry conditions, walking between halls or possible crowd pressure.
 
-![A private guide introducing a historic neighborhood to travelers in China](/journal/2026-08-18/older-travelers-private-guide.webp)
 _A private guide can adjust the explanation, walking rhythm and route around the travelers._
 
 ## Day 4: Give Mutianyu Great Wall the whole day
@@ -168,7 +167,6 @@ Check out, transfer to the correct Beijing station, pass security and passport v
 
 **AVIORA note:** AVIORA can arrange porter or luggage help, wheelchair coordination, station assistance requests, private transfers and a guide or local representative according to the confirmed service plan. Availability and procedures vary by station and must be requested in advance. The [China high-speed train guide for foreign visitors](/journal/china-high-speed-train-foreigners) covers passports, stations, seating and boarding.
 
-![An international traveler boarding a high-speed train in China](/journal/2026-08-06/china-high-speed-train-boarding.webp)
 _The train is only one part of the hotel-to-hotel journey._
 
 ## Day 7: Make the Terracotta Army the only major objective

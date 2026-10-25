@@ -39,16 +39,10 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   const article = await hydrateJournalArticle(articleSummary);
-  const socialImage = article.seo.ogImage ?? article.hero.image;
-
   return createMetadata({
     title: article.seo.title,
     description: article.seo.description,
     path: article.seo.canonicalPath ?? `/journal/${article.slug}`,
-    image: socialImage.src,
-    imageWidth: socialImage.width,
-    imageHeight: socialImage.height,
-    imageAlt: socialImage.alt,
     type: "article",
     noIndex: false,
   });
@@ -109,18 +103,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 }
 
 function articleSchema(article: JournalArticle) {
-  const socialImage = article.seo.ogImage ?? article.hero.image;
   const isFirstTripPlanningGuide = article.slug === firstTripPlanningGuide.slug;
   const articleUrl = new URL(`/journal/${article.slug}`, siteConfig.url).toString();
 
   const schema = articleSchemaData({
     headline: article.title,
     description: article.seo.description,
-    image: {
-      url: new URL(socialImage.src, siteConfig.url).toString(),
-      width: socialImage.width,
-      height: socialImage.height,
-    },
     url: articleUrl,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
@@ -153,17 +141,50 @@ function articleSchema(article: JournalArticle) {
         : [];
     }),
     citations: article.citations,
+    factChecked: Boolean(article.lastFactCheckedAt),
   });
 
-  return isFirstTripPlanningGuide
-    ? {
-        ...schema,
-        hasPart: [
-          { "@id": `${articleUrl}#planning-decisions` },
-          { "@id": `${articleUrl}#route-reality-check` },
-        ],
-      }
-    : schema;
+  return {
+    ...schema,
+    ...(article.governance
+      ? {
+          additionalProperty: [
+            {
+              "@type": "PropertyValue",
+              name: "Primary search intent",
+              value: article.governance.primaryIntent,
+            },
+            {
+              "@type": "PropertyValue",
+              name: "Content source class",
+              value: article.governance.sourceClass,
+            },
+          ],
+          about: [
+            ...(Array.isArray(schema.about) ? schema.about : []),
+            {
+              "@type": "TouristTrip",
+              "@id": new URL(
+                `/tours/${article.governance.primaryJourney}#tour`,
+                siteConfig.url,
+              ).toString(),
+              url: new URL(
+                `/tours/${article.governance.primaryJourney}`,
+                siteConfig.url,
+              ).toString(),
+            },
+          ],
+        }
+      : {}),
+    ...(isFirstTripPlanningGuide
+      ? {
+          hasPart: [
+            { "@id": `${articleUrl}#planning-decisions` },
+            { "@id": `${articleUrl}#route-reality-check` },
+          ],
+        }
+      : {}),
+  };
 }
 
 function firstTripPlanningSchemas(article: JournalArticle) {

@@ -1430,7 +1430,7 @@ export const commercialJournalArticles: JournalArticle[] = [
     ],
     seoTitle: "11-Day Beijing Xi'an Chengdu Shanghai Itinerary",
     seoDescription:
-      "Plan an 11-day Beijing, Xi'an, Chengdu and Shanghai itinerary with realistic city stays, high-speed rail, pandas and private tour options.",
+      "Plan a 12-day Shanghai, Chengdu, Xi'an and Beijing itinerary with realistic city stays, intercity connections, pandas and private tour services.",
     keywords: [
       "11 day China itinerary",
       "Beijing Xi'an Chengdu Shanghai itinerary",

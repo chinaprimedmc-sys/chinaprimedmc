@@ -19,7 +19,7 @@ for (const canonicalUrl of urls) {
   );
   const hasBridge = /data-journey-slug="[^"]+"/.test(html);
   const journeySlug = html.match(/data-journey-slug="([^"]+)"/)?.[1] || "";
-  const hasMidPrompt = links.some((link) => link.href === "#related-tours");
+  const hasMidPrompt = /journal-mid-journey-prompt/.test(html);
   const planningLinks = links.filter((link) => link.href.startsWith("/start-planning"));
   const contextualPlanningLink = planningLinks.find(
     (link) => link.href.includes("journey=") && link.href.includes("placement="),

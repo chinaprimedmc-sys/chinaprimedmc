@@ -1216,23 +1216,28 @@
 }
 
 .dayList {
-  border-top: 1px solid var(--detail-line);
+  display: grid;
+  gap: 10px;
 }
 
 .dayItem {
-  border-bottom: 1px solid var(--detail-line);
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid var(--detail-line);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(29, 52, 44, 0.04);
+  overflow: hidden;
 }
 
 .dayTrigger {
   border-radius: 0 !important;
-  gap: 20px;
-  min-height: 92px;
-  padding: 17px 0;
+  gap: 22px;
+  min-height: 96px;
+  padding: 18px 20px;
 }
 
 .dayTrigger[data-state="open"] {
   background: var(--detail-soft);
-  padding-inline: 16px;
+  padding-inline: 20px;
 }
 
 .dayLabel {
@@ -1240,9 +1245,9 @@
   border-right: 1px solid var(--detail-line);
   display: grid;
   gap: 2px;
-  grid-template-columns: 28px 34px;
-  min-width: 84px;
-  padding-right: 14px;
+  grid-template-columns: 32px 42px;
+  min-width: 104px;
+  padding-right: 18px;
 }
 
 .dayLabel small {
@@ -1293,7 +1298,7 @@
   display: grid;
   gap: 20px;
   max-width: 820px;
-  padding: 0 56px 28px 104px;
+  padding: 0 56px 28px 146px;
 }
 
 .daySummary {
@@ -1752,7 +1757,8 @@
   .dayTrigger {
     border-radius: 0 !important;
     gap: 10px;
-    padding-inline: 0;
+    min-height: 82px;
+    padding-inline: 12px;
   }
 
   .dayTrigger[data-state="open"] {
@@ -1779,7 +1785,7 @@
 
   .dayContentInner {
     max-width: none;
-    padding: 0 0 24px;
+    padding: 0 14px 24px 90px;
   }
 
   .dayNarrative li {

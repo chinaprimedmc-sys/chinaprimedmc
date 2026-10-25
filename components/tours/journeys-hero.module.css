@@ -1,57 +1,107 @@
 .hero {
-  background: #fff;
-  color: #172924;
-  max-width: 1200px;
-  margin: auto;
-  padding: 32px 24px 8px;
+  position: relative;
+  display: flex;
+  align-items: end;
+  margin-top: calc(-1 * var(--site-nav-offset));
+  min-height: min(660px, 78svh);
+  overflow: hidden;
+  color: #fff;
+  background: #32443c;
 }
+
+.image {
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(9, 19, 18, 0.69) 0%,
+      rgba(9, 19, 18, 0.36) 48%,
+      rgba(9, 19, 18, 0.07) 100%
+    ),
+    linear-gradient(0deg, rgba(9, 19, 18, 0.43), transparent 50%);
+}
+
+.content {
+  position: relative;
+  width: min(100% - 48px, 1180px);
+  margin: 0 auto;
+  padding: 144px 0 76px;
+}
+
 .eyebrow {
-  color: #23646d;
-  font-size: 14px;
-  font-weight: 650;
-  margin: 0 0 12px;
-}
-.hero h1 {
-  font-family: var(--font-body);
-  font-size: 40px;
-  line-height: 1.15;
+  margin: 0 0 17px;
+  font-size: 12px;
   font-weight: 700;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 740px;
   margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(46px, 5.2vw, 76px);
+  font-weight: 600;
+  line-height: 1.08;
   letter-spacing: 0;
 }
+
 .description {
-  color: #475650;
-  max-width: 65ch;
-  font-size: 17px;
-  line-height: 1.65;
-  margin: 16px 0 0;
+  max-width: 570px;
+  margin: 19px 0 0;
+  font-size: 18px;
+  line-height: 1.55;
 }
-.mobileDescription {
-  display: none;
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
 }
-@media (max-width: 639px) {
-  .hero {
-    padding: 28px 20px 0;
-  }
-  .hero h1 {
-    font-size: 30px;
-  }
-  .description {
-    display: none;
-  }
+
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
 }
+
+.actions a:first-child {
+  color: #192d29;
+  background: #fff;
+}
+
+.actions a:last-child {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.73);
+  background: rgba(0, 0, 0, 0.13);
+}
+
+.actions svg {
+  width: 17px;
+  height: 17px;
+}
+
+.actions a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
 @media (max-width: 767px) {
   .hero {
-    display: none;
-  }
-  .mobileDescription {
-    display: block;
-    color: #475650;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 13px 0 0;
-  }
-  .description {
     display: none;
   }
 }

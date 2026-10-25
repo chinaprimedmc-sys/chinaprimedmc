@@ -45,9 +45,9 @@ export async function getPublicSiteSettings() {
     footerDescription:
       "Private China journeys operated in China by a licensed inbound tourism operator.",
     email: siteConfig.email,
-    whatsapp: "+447985052302",
+    whatsapp: "+8618027438191",
     whatsappLabel: "WhatsApp",
-    whatsappHref: "https://wa.me/447985052302",
+    whatsappHref: "https://wa.me/8618027438191",
     primaryCtaLabel: primaryAction.label,
     primaryCtaHref: primaryAction.href,
     navigation: homeNavItems,

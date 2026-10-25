@@ -87,7 +87,7 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
                   {travelerCountLabel(item.adults, item.children)}
                   <br />
                   <span className="text-muted">{travelerTypeLabel(item.traveler_type)}</span>
-                  {item.includes_older_travelers ? (
+                  {item.traveling_with_seniors ? (
                     <>
                       <br />
                       <span className="text-muted">包含年长旅客</span>
@@ -95,14 +95,14 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
                   ) : null}
                 </td>
                 <td className="px-4 py-4">
-                  <span>{item.travel_window || "未确定"}</span>
+                  <span>{item.travel_timing || "未确定"}</span>
                   <br />
-                  <span className="text-muted">{item.trip_length || "天数未确定"}</span>
+                  <span className="text-muted">{item.trip_duration || "天数未确定"}</span>
                 </td>
                 <td className="px-4 py-4">
                   <span>{item.destinations.join(", ") || "目的地未定"}</span>
                   <br />
-                  <span className="text-muted">{item.journey_styles.join(", ") || "风格未定"}</span>
+                  <span className="text-muted">{item.travel_styles.join(", ") || "风格未定"}</span>
                   {item.viewed_journeys?.length ? (
                     <>
                       <br />
@@ -112,10 +112,10 @@ export function InquiriesManager({ initialItems }: { initialItems: InquiryRecord
                     </>
                   ) : null}
                 </td>
-                <td className="px-4 py-4">{comfortLevelLabel(item.comfort_level)}</td>
+                <td className="px-4 py-4">{comfortLevelLabel(item.budget_tier)}</td>
                 <td className="text-muted max-w-xs px-4 py-4">
                   <span className="font-medium text-[var(--text-primary)]">
-                    {item.utm_source || sourceLabel(item.referrer, item.source_page)}
+                    {item.utm_source || sourceLabel(item.referrer ?? null, item.source_page)}
                   </span>
                   <br />
                   <span>{item.landing_page || item.source_page}</span>

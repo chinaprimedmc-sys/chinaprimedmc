@@ -812,8 +812,8 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Muslim-friendly%20China%20Desert%20Stars%20Proposal&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20private%20proposal%20for%20China%2C%20From%20the%20Great%20Wall%20to%20Desert%20Stars.%0A%0ATravel%20dates%20or%20month%3A%0ATravellers%20(adults%20%2F%20children)%3A%0ARooms%20and%20bed%20setup%3A%0ADietary%20and%20halal%20requirements%3A%0APrayer%20or%20Friday%20planning%3A%0AOther%20needs%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20China%2C%20From%20the%20Great%20Wall%20to%20Desert%20Stars.%20We%20are%20considering%20four%20guests%20and%20two%20rooms.%20Please%20advise%20on%20verified%20meals%2C%20prayer-aware%20timing%2C%20Ningxia%20and%20desert%20accommodation.",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20China%2C%20From%20the%20Great%20Wall%20to%20Desert%20Stars.%20We%20are%20considering%20four%20guests%20and%20two%20rooms.%20Please%20advise%20on%20verified%20meals%2C%20prayer-aware%20timing%2C%20Ningxia%20and%20desert%20accommodation.",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in the 13-day Muslim-friendly China journey from the Great Wall to desert stars. Please advise on verified meals, prayer-aware planning, hotels and a private quote for four guests.",
   },

@@ -710,8 +710,8 @@ export const chinaFamily12DayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=12-Day%20China%20Family%20Journey%20Private%20Proposal&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20private%20proposal%20for%20China%2C%20Made%20for%20Families.%0A%0ATravel%20month%20or%20dates%3A%0AAdults%3A%0AChildren%27s%20ages%3A%0ARooms%20or%20connecting-room%20preference%3A%0AFamily%20interests%3A%0ADietary%20needs%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20China%2C%20Made%20for%20Families%20%2812%20days%29.%20Our%20children%27s%20ages%20are%3A%20",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20China%2C%20Made%20for%20Families%20%2812%20days%29.%20Our%20children%27s%20ages%20are%3A%20",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in China, Made for Families. Our children's ages are: __. Please recommend the right dates, two-room setup and age-aware experiences for us.",
   },

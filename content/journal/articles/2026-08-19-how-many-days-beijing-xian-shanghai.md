@@ -90,7 +90,6 @@ Rail and air can both make sense. Rail keeps the journey continuous but occupies
 
 The final day belongs first to the international flight. Airport, terminal, traffic and check-in margin determine whether anything else is sensible. A late departure can create useful time, but it should not be sold as a guaranteed final sightseeing day before those conditions are known.
 
-![An international traveler boarding a high-speed train in China](/journal/2026-08-06/china-high-speed-train-boarding.webp)
 _The rail journey is only one part of the hotel-to-hotel transition between cities._
 
 ## What an 8-day Beijing, Xi'an and Shanghai itinerary really asks of you
@@ -154,7 +153,6 @@ The Terracotta Army deserves the alert part of a day. The road journey, security
 
 Shanghai is deliberately last because it is easier to edit. A museum can replace outdoor heat or rain. One neighborhood can expand when a conversation, shop or lunch proves more interesting than expected. A hotel break can protect an evening view. The final full day does not need to be empty; it needs to remain useful even when the best decision changes.
 
-![Travelers posing beside Terracotta Army figures in Xi'an](/tours/first-china-beautifully-paced/xian-terracotta-army-group.webp)
 _A second Xi'an day allows the archaeology to stand on its own instead of turning the city into a hurried transfer point._
 
 The corresponding [China, Considered private journey](/tours/china-at-an-easier-pace-12-day-private-tour) turns this logic into a date-specific proposal with premium five-star hotels, private guides and vehicles, first-class rail, named experiences and China-based support. The final route is reviewed around the people traveling before confirmation.
@@ -179,7 +177,6 @@ Three nights also prevent the Xi'an-to-Shanghai transition from beginning immedi
 
 Adding a water town is not automatic. Bridges, uneven surfaces, road time and crowd conditions may make an architecture walk, museum, food experience or unhurried city day the better ending.
 
-![Travelers gathered beside the Shanghai waterfront with the Pudong skyline behind them](/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp)
 _Two complete Shanghai days leave room for one coherent city story and a final choice shaped during the journey._
 
 ## What twelve days buys, and what it does not

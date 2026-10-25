@@ -42,7 +42,7 @@
 | 注册地与时间 | 中国广州；2018-03-28 注册                                    |
 | 资质表述     | licensed to conduct inbound tourism business in China        |
 | 网站         | `https://www.chinaprimedmc.com`                              |
-| 联系方式     | `chinaprimedmc@gmail.com` · WhatsApp `+44 7985 052302`       |
+| 联系方式     | `chinaprimedmc@gmail.com` · WhatsApp `+86 180 2743 8191`     |
 | 现有核心产品 | 私人中国路线、目的地规划、向导、车辆、酒店、门票和在地支持   |
 | 已有服务立场 | private、no forced shopping、China-based support、合理节奏   |
 
@@ -50,6 +50,7 @@
 
 - AVIORA 是客户体验中的品牌名；合同、发票、付款和法律责任应清晰显示中国注册主体。
 - “licensed”“registered”“no forced shopping”等为可证明的服务/资质陈述；不要扩写成未验证的奖项、客户数量或“全国第一”。
+- 公司确认的服务数据为：接待来自 30+ 个国家的旅客、累计服务 12,000+ 位旅客、支持 48 家国际旅行公司在华安排。公开时使用 `content/home/service-achievements.ts` 中的统一数字与语义，不添加未经确认的统计口径或时间范围。
 - “luxury”不是默认标签。只有在酒店、交通、向导、餐饮和响应标准全部达到并被确认时，才可在具体产品中使用。
 
 ## 2. 战略定位

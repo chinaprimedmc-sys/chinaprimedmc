@@ -16,18 +16,20 @@ export default function CookiePolicyPage() {
     <LegalDocument
       eyebrow="Privacy"
       title="Cookie Policy"
-      effectiveDate="August 17, 2026"
+      effectiveDate="October 4, 2026"
       introduction={
         <p>
           This policy explains how {siteConfig.siteName} uses cookies and similar browser storage,
-          what each category does, and how you can change your choice.
+          including optional analytics and advertising measurement, and how you can change your
+          choice.
         </p>
       }
     >
       <LegalSection title="1. What We Use">
         <p>
           Cookies and similar technologies can remember information in your browser. We use only the
-          storage needed to operate the website and optional analytics that you choose to allow.
+          storage needed to operate the website and optional analytics or marketing technologies
+          that you choose to allow.
         </p>
       </LegalSection>
 
@@ -53,30 +55,32 @@ export default function CookiePolicyPage() {
         </p>
         <p>
           Optional analytics remains disabled until you select “Accept All” or enable Analytics in
-          Cookie Preferences.
+          Cookie Preferences. Marketing measurement has its own separate consent switch.
         </p>
       </LegalSection>
 
       <LegalSection title="4. Advertising and Profiling">
         <p>
-          We do not currently load advertising pixels or cross-site behavioral profiling through
-          this consent manager. If that changes, we will add a separate category and request consent
-          before those technologies run.
+          If you enable Marketing in Cookie Preferences or choose “Accept All,” we load the Meta
+          Pixel from Meta Platforms, Inc. to measure page views and advertising performance. Meta
+          may receive the page URL, referring page, and browser or device signals under its own
+          privacy terms. We do not enable advanced matching through this pixel. The pixel remains
+          disabled unless you give marketing consent.
         </p>
       </LegalSection>
 
       <LegalSection title="5. Changing Your Choice">
         <p>
-          You can reopen Cookie Preferences from the footer on any page. Rejecting optional
-          analytics does not affect access to journeys, destination guides or inquiry forms.
+          You can reopen Cookie Preferences from the footer on any page. Rejecting analytics or
+          marketing does not affect access to journeys, destination guides or inquiry forms.
         </p>
       </LegalSection>
 
       <LegalSection title="6. Retention and Updates">
         <p>
           Your consent choice remains in your browser until you clear site data or we replace the
-          consent version. Analytics providers may retain aggregated technical information under
-          their own documented retention and security practices.
+          consent version. Analytics and advertising providers may retain technical information
+          under their own documented retention and security practices.
         </p>
         <p>
           We will update this policy when categories, providers or purposes materially change.

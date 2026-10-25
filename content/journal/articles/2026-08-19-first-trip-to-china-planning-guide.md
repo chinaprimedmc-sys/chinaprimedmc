@@ -154,7 +154,6 @@ For rail, our operations team checks hotel departure time, the correct station, 
 
 First class may improve the hours aboard. A private vehicle may improve both ends. Neither removes station or airport procedures. Read the [passport-to-platform China high-speed train guide](/journal/china-high-speed-train-foreigners) before treating the ticket time as the transfer time.
 
-![An international traveler boarding a high-speed train in China](/journal/2026-08-06/china-high-speed-train-boarding.webp)
 _AVIORA plans the hotel-to-hotel chain. The train is only its middle._
 
 ## Decision 8: choose a hotel for the route and the room
@@ -193,7 +192,6 @@ Several people check an AVIORA journey from different operating angles:
 - The **driver** manages the vehicle sequence, luggage and practical approach points.
 - The **China-based support team** remains the contact path when the confirmed plan needs attention.
 
-![AVIORA China travel specialists meeting international travel partners](/home/editorial/travel-trade-team-singapore.webp)
 _A smooth private journey is checked by more than one person before the traveler arrives._
 
 The proposal should say which of those services are included and where third-party conditions remain. Professional support is clearest when its boundaries are written down, not when every uncertainty is hidden behind the word "seamless."

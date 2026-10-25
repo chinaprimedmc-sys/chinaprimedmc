@@ -528,8 +528,8 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Guangzhou%20and%20Shenzhen%20Business%20Journey&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20you%20to%20build%20a%20Guangzhou%20and%20Shenzhen%20journey%20around%20my%20business%20schedule.%0A%0AFixed%20flights%20or%20arrival%3A%0AFixed%20meetings%20or%20exhibition%20hours%3A%0ATravellers%20and%20rooms%3A%0ABilingual%20support%20needed%3A%0AOptional%20culture%20or%20technology%20interests%3A%0ADeparture%20gateway%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%20have%20flights%2C%20meetings%20or%20exhibition%20plans%20for%20Guangzhou%20and%20Shenzhen.%20Please%20build%20the%20hotels%2C%20private%20transport%2C%20bilingual%20support%20and%20optional%20experiences%20around%20my%20schedule.",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%20have%20flights%2C%20meetings%20or%20exhibition%20plans%20for%20Guangzhou%20and%20Shenzhen.%20Please%20build%20the%20hotels%2C%20private%20transport%2C%20bilingual%20support%20and%20optional%20experiences%20around%20my%20schedule.",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I would like AVIORA to build a Guangzhou and Shenzhen journey around my confirmed flights, meetings and exhibition plans.",
   },

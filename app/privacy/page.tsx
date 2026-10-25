@@ -90,6 +90,10 @@ export default function PrivacyPage() {
             security, and payment processing under appropriate contractual or security controls.
           </li>
           <li>
+            Meta Platforms, Inc. may receive page-view and browser or device signals for advertising
+            measurement only when you enable Marketing in Cookie Preferences or select “Accept All.”
+          </li>
+          <li>
             Professional advisers, regulators, law-enforcement bodies, or courts where disclosure is
             required or reasonably necessary to protect legal rights and safety.
           </li>
@@ -119,9 +123,9 @@ export default function PrivacyPage() {
       <LegalSection title="6. Cookies and analytics">
         <p>
           The website uses necessary storage for security, forms and your saved privacy choice.
-          Optional analytics and attribution storage remains disabled until you give consent. You
-          can reject it or change your selection at any time through Cookie Preferences in the
-          footer.
+          Optional analytics and marketing measurement remain disabled until you give consent. You
+          can reject either category or change your selection at any time through Cookie Preferences
+          in the footer.
         </p>
         <p>
           See our <Link href="/cookies">Cookie Policy</Link> for the current categories, providers

@@ -37,6 +37,9 @@ const consumerFooterGroups = [
     title: "Company",
     items: [
       { label: "About AVIORA", href: "/about" },
+      { label: "Company & Licensing", href: "/company" },
+      { label: "Editorial & Verification Policy", href: "/editorial-policy" },
+      { label: "Guest feedback & review policy", href: "/reviews" },
       { label: "The AVIORA Standard", href: "/#aviora-standard" },
       { label: "For Travel Trade", href: "/china-dmc" },
     ],
@@ -176,6 +179,7 @@ export function SiteFooter({
             <Link href="/terms">Booking Terms</Link>
           </div>
         </div>
+        <address className={styles.address}>{siteConfig.operator.address.full}</address>
       </div>
     </footer>
   );

@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import {
   findJournalSummary,
@@ -111,7 +110,11 @@ export function JournalHubTemplate({ featured, articles }: JournalHubTemplatePro
         </div>
       </section>
 
-      {journeyBridge ? <JournalJourneyBridge bridge={journeyBridge} /> : null}
+      {journeyBridge ? (
+        <div className={styles.secondaryJourneyBridge}>
+          <JournalJourneyBridge bridge={journeyBridge} />
+        </div>
+      ) : null}
 
       <section
         id="complete-journal"
@@ -203,8 +206,8 @@ export function JournalHubTemplate({ featured, articles }: JournalHubTemplatePro
           },
         ]}
         social={[
-          { label: "Facebook", href: "https://www.facebook.com/share/1CqXTAXD1e/?mibextid=wwXIfr" },
-          { label: "Instagram", href: "https://www.instagram.com/chinaprimedmc" },
+          { label: "Facebook", href: "https://www.facebook.com/p/Aviora-Travel-61593357154006/" },
+          { label: "Instagram", href: "https://www.instagram.com/chinaprimedmc/" },
         ]}
       />
     </main>
@@ -217,10 +220,18 @@ function JournalOpening({ article }: { article: JournalSummary }) {
       <div className={`${styles.container} ${styles.openingGrid}`}>
         <div className={styles.openingCopy}>
           <p className={styles.brandLine}>China, Clearly</p>
-          <h1>The AVIORA Journal</h1>
+          <h1>
+            <span className={styles.desktopOpeningTitle}>The AVIORA Journal</span>
+            <span className={styles.mobileOpeningTitle}>China travel answers</span>
+          </h1>
           <p className={styles.openingDek}>
-            China travel guidance for choosing a route, preparing well and knowing where local
-            expertise changes the journey.
+            <span className={styles.desktopOpeningDek}>
+              China travel guidance for choosing a route, preparing well and knowing where local
+              expertise changes the journey.
+            </span>
+            <span className={styles.mobileOpeningDek}>
+              Choose what you are working out. We will show you the clearest place to start.
+            </span>
           </p>
           <div className={styles.openingActions}>
             <CtaButton
@@ -240,26 +251,6 @@ function JournalOpening({ article }: { article: JournalSummary }) {
             </Link>
           </div>
         </div>
-        <Link
-          href={`/journal/${article.slug}`}
-          className={styles.openingMedia}
-          aria-label={`Read ${article.title}`}
-          data-journal-event="article_open"
-          data-article-slug={article.slug}
-          data-placement="journal-opening-image"
-        >
-          <OptimizedImage
-            src="/journal/2026-08-25/aviora-great-wall-team-hero.png"
-            alt="AVIORA travelers holding an AVIORA China Travel banner on the Great Wall"
-            width={1448}
-            height={1086}
-            priority
-            sizes="(min-width: 1024px) 48vw, 100vw"
-            frameClassName="h-full w-full"
-            className="h-full w-full object-cover"
-            objectPosition={article.image?.objectPosition}
-          />
-        </Link>
       </div>
     </header>
   );
@@ -296,23 +287,11 @@ function EditorialSelection({ articles }: { articles: JournalSummary[] }) {
     <div className={styles.selectionGrid}>
       <Link
         href={`/journal/${lead.slug}`}
-        className={`${styles.leadStory} ${lead.image ? "" : styles.textStory}`}
+        className={`${styles.leadStory} ${styles.textStory}`}
         data-journal-event="article_open"
         data-article-slug={lead.slug}
         data-placement="editorial-selection"
       >
-        {lead.image ? (
-          <OptimizedImage
-            src={lead.image.src}
-            alt={lead.image.alt}
-            width={lead.image.width ?? 1000}
-            height={lead.image.height ?? 750}
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            frameClassName={styles.leadImage}
-            className="h-full w-full object-cover"
-            objectPosition={lead.image.objectPosition}
-          />
-        ) : null}
         <div className={styles.storyCopy}>
           <p className={styles.meta}>{lead.readingTime}</p>
           <h3>{formatJournalTitle(lead.title)}</h3>
@@ -325,23 +304,11 @@ function EditorialSelection({ articles }: { articles: JournalSummary[] }) {
           <Link
             key={article.slug}
             href={`/journal/${article.slug}`}
-            className={`${styles.supportStory} ${article.image ? "" : styles.textStory}`}
+            className={`${styles.supportStory} ${styles.textStory}`}
             data-journal-event="article_open"
             data-article-slug={article.slug}
             data-placement="editorial-selection"
           >
-            {article.image ? (
-              <OptimizedImage
-                src={article.image.src}
-                alt={article.image.alt}
-                width={article.image.width ?? 500}
-                height={article.image.height ?? 650}
-                sizes="112px"
-                frameClassName={styles.storyImage}
-                className="h-full w-full object-cover"
-                objectPosition={article.image.objectPosition}
-              />
-            ) : null}
             <div>
               <p className={styles.meta}>{article.readingTime}</p>
               <h3>{formatJournalTitle(article.title)}</h3>
@@ -378,23 +345,11 @@ function DestinationStory({
   return (
     <Link
       href={`/journal/${article.slug}`}
-      className={`${styles.destinationStory} ${primary ? styles.destinationPrimary : ""} ${article.image ? "" : styles.textStory}`}
+      className={`${styles.destinationStory} ${primary ? styles.destinationPrimary : ""} ${styles.textStory}`}
       data-journal-event="article_open"
       data-article-slug={article.slug}
       data-placement="destination-perspective"
     >
-      {article.image ? (
-        <OptimizedImage
-          src={article.image.src}
-          alt={article.image.alt}
-          width={article.image.width ?? 1000}
-          height={article.image.height ?? 700}
-          sizes={primary ? "(min-width: 1024px) 55vw, 100vw" : "152px"}
-          frameClassName={styles.destinationMedia}
-          className="h-full w-full object-cover"
-          objectPosition={article.image.objectPosition}
-        />
-      ) : null}
       <div className={styles.destinationCopy}>
         <p className={styles.meta}>{article.category}</p>
         <h3>{formatJournalTitle(article.title)}</h3>

@@ -64,12 +64,18 @@ export function JourneyCard({ item }: { item: JourneyCatalogItem }) {
         ) : null}
         <div className={styles.cardFooter}>
           <div className={styles.price}>
-            <span>From</span>
-            <strong>US${item.pricing.fromUsd.toLocaleString("en-US")}</strong>
+            <span>{item.pricing.fromUsd ? "From" : "Pricing"}</span>
+            <strong>
+              {item.pricing.fromUsd
+                ? `US$${item.pricing.fromUsd.toLocaleString("en-US")}`
+                : "On request"}
+            </strong>
             <small>
-              {item.pricing.pricingUnit === "private-group"
-                ? "Per private group of four"
-                : "Per person · based on four guests"}
+              {item.pricing.fromUsd
+                ? item.pricing.pricingUnit === "private-group"
+                  ? "Per private group of four"
+                  : "Per person · based on four guests"
+                : item.pricing.cardBasis}
             </small>
           </div>
           <Link className={styles.cta} href={item.href}>

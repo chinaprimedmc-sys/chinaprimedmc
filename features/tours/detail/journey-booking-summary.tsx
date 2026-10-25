@@ -1,7 +1,9 @@
 "use client";
 
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
+import { useClaimedJourneyOffer } from "@/components/offers/use-claimed-journey-offer";
+import { calculateOfferPrice, formatOfferUsd } from "@/lib/tours/journey-offer";
 
 import { useOptionalJourneyConfiguration } from "@/features/tours/detail/journey-configuration";
 import { TrackedTourLink } from "@/features/tours/detail/tour-detail-interactions";
@@ -12,23 +14,41 @@ export function JourneyPrice({ fallback, journeySlug }: { fallback: string; jour
   const amount = configuration
     ? configuration.priceFromUsd
       ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}`
-      : "Personal quote"
+      : "Price on request"
     : fallback;
   const pricing = getJourneyCatalogItem(journeySlug)?.pricing;
+  const claim = useClaimedJourneyOffer();
+  const basePrice = configuration?.priceFromUsd ?? pricing?.fromUsd;
+  const offer = claim && basePrice ? calculateOfferPrice(basePrice, claim.discountPercent) : null;
 
   return (
     <>
-      <strong>{amount}</strong>
-      <small>
-        {configuration?.priceFromUsd
-          ? `${pricing?.pricingUnit === "private-group" ? "Per private group of four" : "Per person · based on four guests"}`
-          : configuration
-            ? configuration.guests === "Not sure yet"
-              ? "Group size to be confirmed"
-              : `Quote prepared for ${configuration.guests} guests`
-            : (getJourneyCatalogItem(journeySlug)?.pricing.cardBasis ??
-              "Price confirmed in your proposal")}
-      </small>
+      {offer ? (
+        <>
+          <del className={styles.offerOriginalPrice}>{formatOfferUsd(offer.regularFromUsd)}</del>
+          <strong className={styles.offerCurrentPrice}>
+            {formatOfferUsd(offer.discountedFromUsd)}
+          </strong>
+          <small>
+            Your {claim?.discountPercent}% offer ·{" "}
+            {pricing?.pricingUnit === "private-group" ? "per private group" : "per person"}
+          </small>
+        </>
+      ) : (
+        <>
+          <strong>{amount}</strong>
+          <small>
+            {configuration?.priceFromUsd
+              ? `${pricing?.pricingUnit === "private-group" ? "Per private group of four" : "Per person · based on four guests"}`
+              : configuration
+                ? configuration.guests === "Not sure yet"
+                  ? "Group size to be confirmed"
+                  : `Quote prepared for ${configuration.guests} guests`
+                : (getJourneyCatalogItem(journeySlug)?.pricing.cardBasis ??
+                  "Price confirmed in your proposal")}
+          </small>
+        </>
+      )}
     </>
   );
 }
@@ -38,32 +58,35 @@ export function JourneyDuration({ fallback }: { fallback: string }) {
   return <>{configuration?.duration ?? fallback}</>;
 }
 
-export function JourneyEnquiryWhatsApp({
+export function JourneyWhatsAppAction({
   baseHref,
   journeySlug,
   journeyTitle,
+  className,
+  placement,
 }: {
   baseHref: string;
   journeySlug: string;
   journeyTitle: string;
+  className: string;
+  placement: string;
 }) {
   const configuration = useOptionalJourneyConfiguration();
   const href = configuration
     ? configuredWhatsAppHref(baseHref, journeyTitle, configuration)
     : baseHref;
-
   return (
     <TrackedTourLink
-      className={styles.whatsappLink}
+      className={className}
       href={href}
       journeySlug={journeySlug}
-      label="WHATSAPP A SPECIALIST"
-      placement="detail-enquiry"
+      label="CONTACT ON WHATSAPP"
+      placement={placement}
       target="_blank"
       rel="noreferrer"
     >
-      <MessageCircle size={16} aria-hidden="true" />
-      Prefer WhatsApp? Send this selection
+      <MessageCircle size={17} aria-hidden="true" />
+      Contact us on WhatsApp
     </TrackedTourLink>
   );
 }
@@ -71,24 +94,38 @@ export function JourneyEnquiryWhatsApp({
 export function JourneyMobileCta({
   fallbackPrice,
   journeySlug,
+  baseHref,
+  journeyTitle,
 }: {
   fallbackPrice: string;
   journeySlug: string;
+  baseHref: string;
+  journeyTitle: string;
 }) {
   const configuration = useOptionalJourneyConfiguration();
   const price = configuration
     ? configuration.priceFromUsd
       ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}`
-      : "Personal quote"
+      : "Price on request"
     : fallbackPrice;
   const pricing = getJourneyCatalogItem(journeySlug)?.pricing;
+  const claim = useClaimedJourneyOffer();
+  const basePrice = configuration?.priceFromUsd ?? pricing?.fromUsd;
+  const offer = claim && basePrice ? calculateOfferPrice(basePrice, claim.discountPercent) : null;
+  const offeredPrice = offer ? formatOfferUsd(offer.discountedFromUsd) : price;
 
   return (
     <div className={styles.mobileCta}>
       <span>
-        <small>{configuration?.hasPaceOptions ? configuration.paceLabel : "From"}</small>
+        <small>
+          {offer
+            ? `Your ${claim?.discountPercent}% offer · was ${formatOfferUsd(offer.regularFromUsd)}`
+            : pricing?.fromUsd
+              ? "From"
+              : "Pricing"}
+        </small>
         <strong>
-          {price}{" "}
+          {offeredPrice}{" "}
           <em>
             {configuration
               ? configuration.priceFromUsd
@@ -104,12 +141,16 @@ export function JourneyMobileCta({
       </span>
       <TrackedTourLink
         className={styles.mobileCtaAction}
-        href="#enquiry"
+        href={
+          configuration ? configuredWhatsAppHref(baseHref, journeyTitle, configuration) : baseHref
+        }
         journeySlug={journeySlug}
-        label="CHECK AVAILABILITY"
+        label="CONTACT ON WHATSAPP"
         placement="detail-mobile"
+        target="_blank"
+        rel="noreferrer"
       >
-        Enquire <ArrowRight size={15} aria-hidden="true" />
+        WhatsApp <MessageCircle size={15} aria-hidden="true" />
       </TrackedTourLink>
     </div>
   );
@@ -119,12 +160,8 @@ function configuredWhatsAppHref(
   baseHref: string,
   journeyTitle: string,
   configuration: {
-    hasPaceOptions: boolean;
     priceBasis: string;
-    paceLabel: string;
     duration: string;
-    freeDayLocation: string;
-    freeDayLabel: string;
     guests: string;
     priceFromUsd?: number;
   },
@@ -136,12 +173,7 @@ function configuredWhatsAppHref(
   const message = [
     `Hello AVIORA, I am interested in ${journeyTitle}.`,
     "",
-    configuration.hasPaceOptions
-      ? `Selected pace: ${configuration.paceLabel} (${configuration.duration})`
-      : `Duration: ${configuration.duration}`,
-    configuration.hasPaceOptions
-      ? `Free day: ${configuration.freeDayLocation}, ${configuration.freeDayLabel}`
-      : "",
+    `Duration: ${configuration.duration}`,
     `Travellers: ${configuration.guests} guests`,
     `Displayed price: ${price}`,
     "",

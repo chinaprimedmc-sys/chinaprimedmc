@@ -718,8 +718,8 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Private%20Yunnan%20Tea%20Horse%20Road%20Proposal&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20private%20proposal%20for%20the%2010-day%20Yunnan%20Tea%20Horse%20Road%20journey.%0A%0ATravel%20month%20or%20dates%3A%0ATravellers%3A%0ARooms%3A%0AHotel%20preference%3A%0AAltitude%20or%20walking%20considerations%3A%0ASpecial%20interests%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20Yunnan%2C%20Along%20the%20Tea%20Horse%20Road%20%2810%20days%3A%20Dali%2C%20Shaxi%2C%20Lijiang%20and%20Shangri-La%29.%20We%20are%20considering%20four%20guests%20and%20two%20rooms.%20Please%20advise%20on%20dates%2C%20hotels%20and%20altitude-aware%20pacing.",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20Yunnan%2C%20Along%20the%20Tea%20Horse%20Road%20%2810%20days%3A%20Dali%2C%20Shaxi%2C%20Lijiang%20and%20Shangri-La%29.%20We%20are%20considering%20four%20guests%20and%20two%20rooms.%20Please%20advise%20on%20dates%2C%20hotels%20and%20altitude-aware%20pacing.",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in the 10-day private Yunnan Tea Horse Road journey. Please recommend the right hotel level, room setup and altitude-aware plan for our group.",
   },

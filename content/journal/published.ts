@@ -7,6 +7,13 @@ import {
 } from "@/content/tours/chengdu-chongqing-zhangjiajie-assets";
 import type { JournalArticle } from "@/types/journal";
 import { commercialJournalArticles } from "@/content/journal/commercial";
+import { buildDayTourArticles } from "@/content/journal/day-tours/article";
+import { chengduCluster } from "@/content/journal/day-tours/chengdu";
+import { guilinCluster } from "@/content/journal/day-tours/guilin";
+import { mutianyuCluster } from "@/content/journal/day-tours/mutianyu";
+import { shanghaiCluster } from "@/content/journal/day-tours/shanghai";
+import { xianCluster } from "@/content/journal/day-tours/xian";
+import { audienceExperienceArticles } from "@/content/journal/audience-experience";
 
 const author = {
   name: "AVIORA China Travel Team",
@@ -268,7 +275,7 @@ const journalImages = {
   },
 } as const;
 
-export const publishedJournalArticles: JournalArticle[] = [
+const basePublishedJournalArticles: JournalArticle[] = [
   ...commercialJournalArticles,
   {
     slug: "how-many-days-in-chengdu-itinerary",
@@ -1123,4 +1130,793 @@ export const publishedJournalArticles: JournalArticle[] = [
     },
     sourcePath: "content/journal/articles/2026-08-08-bringing-prescription-medicine-to-china.md",
   },
+];
+
+const textHeroImage = journalImages.tenDayChinaItinerary;
+
+const operationalJournalArticles: JournalArticle[] = [
+  {
+    slug: "china-family-hotel-rooms-connecting-rooms-extra-beds",
+    title: "China Hotel Rooms for Families: Connecting Rooms, Extra Beds and What to Confirm",
+    dek: "Choose family rooms in China by the confirmed sleeping plan, not a room label that may mean something different at each hotel.",
+    excerpt:
+      "A practical guide to connecting rooms, adjoining rooms, extra beds, occupancy, breakfast and written room confirmation for families visiting China.",
+    category: "Family Travel",
+    tags: ["family-travel", "first-time-china", "private-guides"],
+    author,
+    publishedAt: "2026-09-26",
+    updatedAt: "2026-09-26",
+    lastFactCheckedAt: "2026-09-26",
+    readingTime: "11 min read",
+    editorPick: true,
+    hero: { eyebrow: "Family room planning", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China Hotel Rooms for Families: Room Guide",
+      description:
+        "Plan China hotel rooms for a family. Compare connecting and adjoining rooms, extra beds, occupancy, breakfast and written confirmation before booking.",
+      keywords: [
+        "China hotel rooms for families",
+        "connecting rooms China hotels",
+        "extra bed China hotel",
+        "family room China",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour", "first-china-beautifully-paced"],
+      articles: [
+        "best-age-for-china-family-tour",
+        "china-family-tour-cost-four",
+        "where-to-stay-in-beijing-first-time",
+      ],
+    },
+    conversion: {
+      eyebrow: "Confirm the room before the trip",
+      title: "Build the family route around the rooms you actually need.",
+      description:
+        "Share the children's ages, preferred bedding and whether an internal connecting door is essential. We will identify what needs written hotel confirmation before quoting.",
+      label: "Plan Our Family Journey",
+      href: "/start-planning?source=journal-family-hotel-rooms",
+    },
+    editorial: {
+      contentType: "practical",
+      decisionStage: "prepare",
+      keyAnswer:
+        "A family room label is not enough: confirm occupancy, beds, internal doors, breakfast and the exact room category in writing.",
+      appliesTo: [
+        "Families",
+        "Multigenerational groups",
+        "Travelers needing separate sleeping spaces",
+      ],
+      relatedJourneyReason:
+        "The 12-day family journey uses several hotels, so room continuity matters at every stop.",
+    },
+    sourcePath:
+      "content/journal/articles/2026-09-26-china-family-hotel-rooms-connecting-rooms-extra-beds.md",
+  },
+  {
+    slug: "food-allergies-dietary-restrictions-china-travel",
+    title: "Food Allergies and Dietary Restrictions in China: A Safer Planning Guide",
+    dek: "Turn a dietary requirement into a restaurant, translation and backup plan instead of relying on one translated sentence at the table.",
+    excerpt:
+      "How to communicate allergies, reduce cross-contact risk, choose restaurants and design a China itinerary around real dietary needs.",
+    category: "Food",
+    tags: ["food", "family-travel", "first-time-china", "private-guides"],
+    author,
+    publishedAt: "2026-09-26",
+    updatedAt: "2026-09-26",
+    lastFactCheckedAt: "2026-09-26",
+    readingTime: "12 min read",
+    editorPick: true,
+    hero: { eyebrow: "Dietary planning", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Food Allergies in China: Travel & Dining Guide",
+      description:
+        "Travel in China with food allergies or dietary restrictions. Plan translations, restaurants, cross-contact questions, breakfasts and emergency backups.",
+      keywords: [
+        "food allergies China travel",
+        "dietary restrictions China",
+        "gluten free China travel",
+        "vegetarian China tour",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour", "first-china-beautifully-paced"],
+      articles: [
+        "first-trip-to-china-planning-guide",
+        "bringing-prescription-medicine-to-china",
+        "best-apps-for-china-travel-2026",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan food before arrival",
+      title: "Make the dietary plan part of the route, not a daily surprise.",
+      description:
+        "Tell us the exact allergen, severity, acceptable kitchens and foods you can reliably eat. We will explain what can be requested and what cannot be guaranteed.",
+      label: "Discuss Dietary Needs",
+      href: "/start-planning?source=journal-food-allergies",
+    },
+    editorial: {
+      contentType: "practical",
+      decisionStage: "prepare",
+      keyAnswer:
+        "Translate the exact restriction, select suitable kitchens in advance and carry a backup; a guide can communicate but cannot guarantee an allergen-free kitchen.",
+      appliesTo: [
+        "Travelers with allergies",
+        "Vegetarians and vegans",
+        "Families with selective eaters",
+      ],
+      relatedJourneyReason:
+        "A private route can pre-screen meals and protect flexible food choices across multiple cities.",
+    },
+    sourcePath:
+      "content/journal/articles/2026-09-26-food-allergies-dietary-restrictions-china-travel.md",
+  },
+  {
+    slug: "china-high-speed-trains-with-children",
+    title: "China High-Speed Trains With Children: Tickets, Stations, Seats and Luggage",
+    dek: "Plan the whole hotel-to-hotel family transfer, including passport tickets, station time, food, luggage and the arrival handoff.",
+    excerpt:
+      "A parent-focused China rail guide covering child fares, passports, seats, boarding, strollers, luggage and realistic transfer timing.",
+    category: "Train Travel",
+    tags: ["train-travel", "family-travel", "first-time-china"],
+    author,
+    publishedAt: "2026-09-26",
+    updatedAt: "2026-09-26",
+    lastFactCheckedAt: "2026-09-26",
+    readingTime: "12 min read",
+    editorPick: true,
+    hero: { eyebrow: "Family rail planning", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China High-Speed Trains With Children: 2026 Guide",
+      description:
+        "Take China high-speed trains with children. Understand child tickets, passport booking, seats, station timing, strollers, food and luggage.",
+      keywords: [
+        "China high speed train with children",
+        "China train child ticket",
+        "family train travel China",
+        "China train stroller",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: [
+        "china-family-tour-with-pandas-12-day-private-tour",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      ],
+      articles: [
+        "china-high-speed-train-foreigners",
+        "china-family-tour-with-pandas-12-days",
+        "china-packing-list-2026",
+      ],
+    },
+    conversion: {
+      eyebrow: "Make the transfer part of the trip",
+      title: "Connect the train, children, luggage and both hotels.",
+      description:
+        "Share the children's ages, passport names, stroller and luggage plan. We will test the complete station day before recommending the train.",
+      label: "Plan Our Family Transfers",
+      href: "/start-planning?source=journal-family-train",
+    },
+    editorial: {
+      contentType: "practical",
+      decisionStage: "prepare",
+      keyAnswer:
+        "Use each child's valid passport details, choose whether every child needs a seat, and plan the transfer from one hotel room to the next.",
+      appliesTo: [
+        "Families with children",
+        "Families carrying a stroller",
+        "Multigenerational groups",
+      ],
+      relatedJourneyReason:
+        "The family panda journey uses rail between major city chapters and protects both station handoffs.",
+    },
+    sourcePath: "content/journal/articles/2026-09-26-china-high-speed-trains-with-children.md",
+  },
+  {
+    slug: "private-guide-vs-driver-china",
+    title: "Private Guide vs Driver in China: Who Does What on a Private Tour?",
+    dek: "Understand the different responsibilities of a licensed guide, professional driver, journey designer and operations team before comparing quotations.",
+    excerpt:
+      "A clear explanation of guide and driver roles in China, including airport meetings, station handoffs, attraction visits and on-trip changes.",
+    category: "Travel Guides",
+    tags: ["private-guides", "first-time-china", "luxury-travel"],
+    author,
+    publishedAt: "2026-09-26",
+    updatedAt: "2026-09-26",
+    lastFactCheckedAt: "2026-09-26",
+    readingTime: "10 min read",
+    editorPick: true,
+    hero: { eyebrow: "Private service explained", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Private Guide vs Driver in China: Roles Explained",
+      description:
+        "Compare a private guide and driver in China. Learn who handles interpretation, vehicles, luggage, airport meetings, station transfers and itinerary changes.",
+      keywords: [
+        "private guide vs driver China",
+        "China tour guide and driver",
+        "private driver China tour",
+        "English speaking guide China",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["first-china-beautifully-paced", "china-at-an-easier-pace-12-day-private-tour"],
+      articles: [
+        "what-is-included-private-china-tour",
+        "private-china-tour-proposal-checklist",
+        "what-private-support-changes-first-china-trip",
+      ],
+    },
+    conversion: {
+      eyebrow: "Compare service, not labels",
+      title: "See who is responsible at every handoff.",
+      description:
+        "Send us a proposal or route. We will show where guiding, driving, station assistance and China-based operations are included or still unclear.",
+      label: "Review My Service Plan",
+      href: "/start-planning?source=journal-guide-driver",
+    },
+    editorial: {
+      contentType: "comparison",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "The guide leads interpretation and the day's guest experience; the driver controls the vehicle. A reliable private journey states where each service begins and ends.",
+      appliesTo: [
+        "First-time visitors",
+        "Travelers comparing quotations",
+        "Families and older travelers",
+      ],
+      relatedJourneyReason:
+        "The first-China journey shows separate guide, driver and operations responsibilities across a complete route.",
+    },
+    sourcePath: "content/journal/articles/2026-09-26-private-guide-vs-driver-china.md",
+  },
+  {
+    slug: "luggage-multi-city-china-trip",
+    title: "Luggage on a Multi-City China Trip: Trains, Flights and Hotel Handoffs",
+    dek: "Pack for the transfer chain, not only the airline, and decide who handles each bag between checkout, security, boarding and the next hotel.",
+    excerpt:
+      "A practical luggage strategy for China high-speed trains, domestic flights, station security, hotel changes and family travel.",
+    category: "Travel Guides",
+    tags: ["train-travel", "first-time-china", "family-travel"],
+    author,
+    publishedAt: "2026-09-26",
+    updatedAt: "2026-09-26",
+    lastFactCheckedAt: "2026-09-26",
+    readingTime: "11 min read",
+    hero: { eyebrow: "Multi-city packing", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Luggage on a Multi-City China Trip: Practical Guide",
+      description:
+        "Manage luggage on a multi-city China trip. Plan train storage, flight limits, hotel transfers, station security and a lighter packing system.",
+      keywords: [
+        "luggage multi city China trip",
+        "China train luggage",
+        "China tour packing luggage",
+        "China domestic flight baggage",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      articles: [
+        "china-high-speed-train-foreigners",
+        "china-packing-list-2026",
+        "how-to-travel-between-beijing-xian-chengdu-shanghai",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan every handoff",
+      title: "Make the route work with the luggage you will really carry.",
+      description:
+        "Tell us the number and size of bags, mobility needs and shopping plans. We will compare rail, air and transfer days with the full luggage chain included.",
+      label: "Plan My Multi-City Route",
+      href: "/start-planning?source=journal-luggage",
+    },
+    editorial: {
+      contentType: "practical",
+      decisionStage: "prepare",
+      keyAnswer:
+        "Keep each traveler able to move one main case through security and boarding, then write down who handles the bags at every hotel, station and airport handoff.",
+      appliesTo: [
+        "Multi-city travelers",
+        "Families",
+        "Older travelers",
+        "Travelers using high-speed rail",
+      ],
+      relatedJourneyReason:
+        "The four-city route includes several hotel-to-hotel transfers where luggage design affects the entire day.",
+    },
+    sourcePath: "content/journal/articles/2026-09-26-luggage-multi-city-china-trip.md",
+  },
+  {
+    slug: "muslim-friendly-travel-china-halal-prayer-guide",
+    title: "Muslim-Friendly Travel in China: Halal Meals, Prayer and Route Planning",
+    dek: "Plan halal food and prayer as part of the route while distinguishing confirmed arrangements from assumptions about a restaurant or hotel.",
+    excerpt:
+      "A practical Muslim-friendly China travel guide covering halal meals, breakfast, prayer timing, mosques, ingredient checks and private route design.",
+    category: "Travel Guides",
+    tags: ["muslim-friendly", "food", "family-travel", "private-guides"],
+    author,
+    publishedAt: "2026-09-26",
+    updatedAt: "2026-09-26",
+    lastFactCheckedAt: "2026-09-26",
+    readingTime: "12 min read",
+    editorPick: true,
+    hero: { eyebrow: "Muslim-friendly planning", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Muslim-Friendly China Travel: Halal & Prayer Guide",
+      description:
+        "Plan Muslim-friendly travel in China with halal meals, prayer timing, mosque stops, hotel breakfast checks and clear restaurant confirmation.",
+      keywords: [
+        "Muslim friendly China travel",
+        "halal food China tour",
+        "Muslim China itinerary",
+        "prayer facilities China travel",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["muslim-friendly-china-tour-great-wall-desert-stars"],
+      articles: [
+        "private-china-tour-from-singapore",
+        "food-allergies-dietary-restrictions-china-travel",
+        "first-trip-to-china-planning-guide",
+      ],
+    },
+    conversion: {
+      eyebrow: "Design the route around real needs",
+      title: "Confirm meals and prayer space before the day begins.",
+      description:
+        "Share your halal standard, prayer priorities, Ramadan dates and family needs. We will state what is confirmed, what needs checking and where the route should remain flexible.",
+      label: "Plan a Muslim-Friendly Journey",
+      href: "/start-planning?source=journal-muslim-friendly",
+    },
+    editorial: {
+      contentType: "practical",
+      decisionStage: "prepare",
+      keyAnswer:
+        "A Muslim-friendly route needs named meal arrangements, ingredient questions, prayer timing and realistic travel buffers; the label alone is not confirmation.",
+      appliesTo: ["Muslim travelers", "Families", "Travelers visiting during Ramadan"],
+      relatedJourneyReason:
+        "The Great Wall to desert route is designed around Muslim travelers rather than adding a generic dietary note later.",
+    },
+    sourcePath:
+      "content/journal/articles/2026-09-26-muslim-friendly-travel-china-halal-prayer-guide.md",
+  },
+  {
+    slug: "china-weather-disruption-backup-planning",
+    title: "China Weather Disruptions: How to Build a Better Backup Plan",
+    dek: "Protect the experience by deciding which days can move, which reservations cannot and what a genuinely useful alternative looks like.",
+    excerpt:
+      "Plan for rain, heat, snow, typhoons, attraction closures and transport disruption without pretending any operator can control the weather.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "family-travel", "private-guides", "nature"],
+    author,
+    publishedAt: "2026-09-26",
+    updatedAt: "2026-09-26",
+    lastFactCheckedAt: "2026-09-26",
+    readingTime: "11 min read",
+    editorPick: true,
+    hero: { eyebrow: "Contingency planning", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China Weather Disruptions: Travel Backup Planning",
+      description:
+        "Prepare a China itinerary for rain, heat, snow, typhoons and closures. Learn how to protect fixed bookings and create useful backup days.",
+      keywords: [
+        "China weather travel disruption",
+        "China trip backup plan",
+        "China typhoon travel",
+        "China rain itinerary",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "chengdu", "zhangjiajie", "shanghai"],
+      tours: [
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+        "shanghai-zhangjiajie-floating-peaks",
+      ],
+      articles: [
+        "best-time-to-visit-china",
+        "china-golden-week-travel-2026",
+        "how-difficult-is-zhangjiajie",
+      ],
+    },
+    conversion: {
+      eyebrow: "Prepare a second good decision",
+      title: "Build a route that can change without losing its purpose.",
+      description:
+        "Share your dates and non-negotiable experiences. We will identify weather-sensitive days, fixed reservations and realistic alternatives before travel.",
+      label: "Review My Travel Window",
+      href: "/start-planning?source=journal-weather-backup",
+    },
+    editorial: {
+      contentType: "practical",
+      decisionStage: "prepare",
+      keyAnswer:
+        "Protect fixed reservations, monitor official warnings and prepare alternatives with comparable value instead of a generic indoor stop.",
+      appliesTo: [
+        "Multi-city travelers",
+        "Mountain routes",
+        "Summer and winter visitors",
+        "Families",
+      ],
+      relatedJourneyReason:
+        "Private multi-city journeys can keep flexible days and local teams ready to resequence services when conditions change.",
+    },
+    sourcePath: "content/journal/articles/2026-09-26-china-weather-disruption-backup-planning.md",
+  },
+  {
+    slug: "china-travel-emergency-support-what-to-do",
+    title: "What If Something Goes Wrong in China? A Traveler's Action Plan",
+    dek: "Know the first call, the documents to protect and the difference between emergency services, consular help, insurance and tour-operator support.",
+    excerpt:
+      "A calm action plan for a lost passport or phone, illness, missed train, supplier change and other disruptions during a China trip.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "private-guides", "family-travel"],
+    author,
+    publishedAt: "2026-09-26",
+    updatedAt: "2026-09-26",
+    lastFactCheckedAt: "2026-09-26",
+    readingTime: "12 min read",
+    editorPick: true,
+    hero: { eyebrow: "On-trip support", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China Travel Emergency Plan: What to Do & Who to Call",
+      description:
+        "Know what to do if you lose a passport or phone, become ill, miss a train or face a supplier change during a China trip.",
+      keywords: [
+        "China travel emergency",
+        "lost passport China tourist",
+        "missed train China",
+        "China tourist emergency numbers",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["first-china-beautifully-paced", "china-at-an-easier-pace-12-day-private-tour"],
+      articles: [
+        "private-china-tour-arrival-handoff-checklist",
+        "what-private-support-changes-first-china-trip",
+        "china-sim-card-esim-internet-foreign-tourists",
+      ],
+    },
+    conversion: {
+      eyebrow: "Know the support path",
+      title: "Travel with responsibilities and escalation steps written down.",
+      description:
+        "Ask us who answers during the trip, what the local team can change and where insurance, authorities or your embassy must take over.",
+      label: "Review On-Trip Support",
+      href: "/start-planning?source=journal-emergency-support",
+    },
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Use emergency services for immediate danger, your embassy for passport and consular issues, insurance for covered costs, and the operator for itinerary coordination.",
+      appliesTo: [
+        "All international visitors",
+        "First-time visitors",
+        "Families",
+        "Travelers with fixed onward bookings",
+      ],
+      relatedJourneyReason:
+        "A privately operated journey makes the local escalation path explicit before the traveler needs it.",
+    },
+    sourcePath: "content/journal/articles/2026-09-26-china-travel-emergency-support-what-to-do.md",
+  },
+  {
+    slug: "how-to-plan-private-china-trip",
+    title: "How to Plan a Private China Trip: From First Conversation to Final Itinerary",
+    dek: "A practical planning framework for turning your travel priorities, pace and logistics into a private China journey you can actually evaluate.",
+    excerpt:
+      "Learn what to share, what a good proposal should show and how AVIORA connects route design, hotels, transport, guiding and local support.",
+    category: "Travel Guides",
+    tags: ["private-guides", "first-time-china", "luxury-travel"],
+    author,
+    publishedAt: "2026-09-27",
+    updatedAt: "2026-09-27",
+    lastFactCheckedAt: "2026-09-27",
+    readingTime: "9 min read",
+    editorPick: true,
+    hero: { eyebrow: "Private trip planning", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "How to Plan a Private China Trip | AVIORA",
+      description:
+        "Plan a private China trip with a clear route, realistic pace, hotels, transport, guides and local support. A practical AVIORA planning guide.",
+      keywords: [
+        "how to plan a private China trip",
+        "private China itinerary planning",
+        "tailor made China travel",
+        "China travel specialist",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["first-china-beautifully-paced", "china-at-an-easier-pace-12-day-private-tour"],
+      articles: [
+        "first-trip-to-china-planning-guide",
+        "private-china-tour-proposal-checklist",
+        "what-is-included-private-china-tour",
+      ],
+    },
+    conversion: {
+      eyebrow: "Start with the right questions",
+      title: "Tell us what a good China trip needs to feel like.",
+      description:
+        "Share your dates, travelers, priorities and pace. We will turn the conversation into a route you can review line by line.",
+      label: "Start Planning My Trip",
+      href: "/start-planning?source=journal-private-trip-planning",
+    },
+    editorial: {
+      contentType: "operator",
+      decisionStage: "decide",
+      keyAnswer:
+        "A private China trip should begin with traveler priorities and operating constraints, then turn into a written route with clear service responsibility and confirmation status.",
+      appliesTo: ["First-time visitors", "Couples", "Families", "Small private groups"],
+      relatedJourneyReason:
+        "The first-China journey shows how a conversation becomes a paced Beijing, Xi'an and Shanghai route.",
+    },
+    sourcePath: "content/journal/articles/2026-09-27-how-to-plan-private-china-trip.md",
+  },
+  {
+    slug: "private-china-tour-transfers-handoffs-support",
+    title: "Private China Tour Transfers: Handoffs, Luggage and Local Support",
+    dek: "The quality of a multi-city private trip is often decided between the attractions: at the hotel door, railway station, airport and next-city arrival.",
+    excerpt:
+      "Understand how private China tour transfers should be planned, including luggage, guide changes, railway stations, airports and the support path between cities.",
+    category: "Travel Guides",
+    tags: ["train-travel", "private-guides", "first-time-china", "luxury-travel"],
+    author,
+    publishedAt: "2026-09-27",
+    updatedAt: "2026-09-27",
+    lastFactCheckedAt: "2026-09-27",
+    readingTime: "9 min read",
+    hero: { eyebrow: "Multi-city operations", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Private China Tour Transfers and Handoffs Explained",
+      description:
+        "Learn how private China tour transfers should cover luggage, hotels, high-speed rail, airports, guide changes and local support.",
+      keywords: [
+        "private China tour transfers",
+        "China tour airport transfer",
+        "China train station transfer",
+        "multi city China tour support",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      articles: [
+        "luggage-multi-city-china-trip",
+        "china-high-speed-train-foreigners",
+        "private-guide-vs-driver-china",
+      ],
+    },
+    conversion: {
+      eyebrow: "Make the in-between moments clear",
+      title: "Plan the route from hotel door to hotel door.",
+      description:
+        "Tell us your luggage, mobility and city sequence. We will identify each meeting point, transfer owner and next contact before travel.",
+      label: "Plan My Transfers",
+      href: "/start-planning?source=journal-transfer-support",
+    },
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "A transfer is not complete until the traveler knows where the handoff begins, who is responsible, how luggage moves and who answers if timing changes.",
+      appliesTo: ["Multi-city travelers", "Families", "Older travelers", "First-time visitors"],
+      relatedJourneyReason:
+        "The first-China route connects airport arrival, high-speed rail and hotel changes under one local operating plan.",
+    },
+    sourcePath:
+      "content/journal/articles/2026-09-27-private-china-tour-transfers-handoffs-support.md",
+  },
+  {
+    slug: "china-tour-no-forced-shopping",
+    title: "No Forced Shopping on a China Tour: What to Ask Before Booking",
+    dek: "A clear shopping policy is simple to state: sightseeing and cultural experiences should not depend on visiting a required store or buying something.",
+    excerpt:
+      "Learn how to ask about shopping stops, guide incentives, free time and route priorities before booking a private China tour.",
+    category: "Travel Guides",
+    tags: ["private-guides", "first-time-china", "luxury-travel"],
+    author,
+    publishedAt: "2026-09-27",
+    updatedAt: "2026-09-27",
+    lastFactCheckedAt: "2026-09-27",
+    readingTime: "7 min read",
+    hero: { eyebrow: "A clear service promise", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China Tours With No Forced Shopping: Questions to Ask",
+      description:
+        "Understand what a no-forced-shopping China tour should mean, what to confirm in writing and how AVIORA keeps the route focused on your priorities.",
+      keywords: [
+        "China tour no forced shopping",
+        "China private tour shopping policy",
+        "China tour shopping stops",
+        "private China travel",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["first-china-beautifully-paced", "china-at-an-easier-pace-12-day-private-tour"],
+      articles: [
+        "how-to-choose-private-china-tour-company",
+        "what-is-included-private-china-tour",
+        "private-china-tour-proposal-checklist",
+      ],
+    },
+    conversion: {
+      eyebrow: "Keep the journey yours",
+      title: "Tell us what you want to spend your time doing.",
+      description:
+        "We can build the route around history, food, neighborhoods, nature or family time, and confirm what is and is not part of the plan.",
+      label: "Plan a Shopping-Free Journey",
+      href: "/start-planning?source=journal-no-forced-shopping",
+    },
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Ask for a written statement that shopping is optional, that required sightseeing does not depend on a purchase, and that the day remains aligned with the agreed route.",
+      appliesTo: ["First-time visitors", "Families", "Couples", "Travelers comparing operators"],
+      relatedJourneyReason:
+        "AVIORA's private first-China journeys are built around confirmed sightseeing, local interpretation and traveler priorities rather than required shopping stops.",
+    },
+    sourcePath: "content/journal/articles/2026-09-27-china-tour-no-forced-shopping.md",
+  },
+  {
+    slug: "how-to-choose-hotels-china-itinerary",
+    title: "How to Choose Hotels for a China Itinerary: Location, Rooms and Route Logic",
+    dek: "The right hotel is not simply the highest star rating. It should make the next morning, room arrangement and transfer day work better.",
+    excerpt:
+      "Use a practical hotel framework for China travel: location, room setup, breakfast, service level, neighborhood fit and the effect on the route.",
+    category: "Luxury Hotels",
+    tags: ["luxury-travel", "first-time-china", "family-travel"],
+    author,
+    publishedAt: "2026-09-27",
+    updatedAt: "2026-09-27",
+    lastFactCheckedAt: "2026-09-27",
+    readingTime: "8 min read",
+    hero: { eyebrow: "Hotels as part of the route", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "How to Choose Hotels for a China Itinerary",
+      description:
+        "Choose China hotels by location, room setup, breakfast, service level and route logic. A practical guide for private journey planning.",
+      keywords: [
+        "how to choose hotels in China itinerary",
+        "best hotel location China itinerary",
+        "China family hotel rooms",
+        "China luxury hotel planning",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai", "yunnan"],
+      tours: ["first-china-beautifully-paced", "luxury-yunnan-private-tour"],
+      articles: [
+        "where-to-stay-in-beijing-first-time",
+        "where-to-stay-in-shanghai-first-time",
+        "china-family-hotel-rooms-connecting-rooms-extra-beds",
+      ],
+    },
+    conversion: {
+      eyebrow: "Choose the stay around the traveler",
+      title: "Tell us what makes a hotel feel right for your trip.",
+      description:
+        "Share room needs, preferred atmosphere, breakfast expectations and walking comfort. We will assess hotels as part of the route, not in isolation.",
+      label: "Discuss Our Hotel Needs",
+      href: "/start-planning?source=journal-hotel-planning",
+    },
+    editorial: {
+      contentType: "comparison",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Choose hotels by the job they perform in the itinerary: a useful location, a workable room plan, reliable service and a clear relationship to the next movement.",
+      appliesTo: ["Couples", "Families", "Older travelers", "Premium private travelers"],
+      relatedJourneyReason:
+        "The first-China route uses hotel location and room basis to protect sightseeing time and make multi-city movement easier.",
+    },
+    sourcePath: "content/journal/articles/2026-09-27-how-to-choose-hotels-china-itinerary.md",
+  },
+  {
+    slug: "china-private-tour-weather-delay-support",
+    title: "China Private Tour Support: What Happens When Weather or Delays Change the Plan?",
+    dek: "Good support is not a promise that nothing will change. It is a clear process for deciding what can move, what is fixed and who acts next.",
+    excerpt:
+      "Understand how a China-based private operator can respond to rain, storms, transport delays, closures and traveler needs without making promises no one can control.",
+    category: "Travel Guides",
+    tags: ["private-guides", "first-time-china", "nature", "luxury-travel"],
+    author,
+    publishedAt: "2026-09-27",
+    updatedAt: "2026-09-27",
+    lastFactCheckedAt: "2026-09-27",
+    readingTime: "8 min read",
+    hero: { eyebrow: "Support when plans move", image: textHeroImage, mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China Private Tour Support for Weather and Delays",
+      description:
+        "Learn how a private China tour operator should handle weather, delays, closures and traveler changes with clear decisions and local support.",
+      keywords: [
+        "China private tour support",
+        "China tour weather delay",
+        "China itinerary changes",
+        "China travel operator support",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      articles: [
+        "china-weather-disruption-backup-planning",
+        "china-travel-emergency-support-what-to-do",
+        "what-private-support-changes-first-china-trip",
+      ],
+    },
+    conversion: {
+      eyebrow: "Know the response before you need it",
+      title: "Build flexibility around the experiences that matter most.",
+      description:
+        "Share your fixed dates and non-negotiables. We will identify weather-sensitive days, supplier limits and the local contact path before travel.",
+      label: "Review My Support Plan",
+      href: "/start-planning?source=journal-weather-delay-support",
+    },
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "A responsible operator separates what it can coordinate from what it cannot control, then gives the traveler a named contact, realistic alternatives and clear cost or reservation implications.",
+      appliesTo: [
+        "Multi-city travelers",
+        "Families",
+        "Mountain routes",
+        "Travelers with fixed onward plans",
+      ],
+      relatedJourneyReason:
+        "The first-China journey demonstrates how a China-based team can coordinate guides, transport, hotels and next-day decisions across several cities.",
+    },
+    sourcePath: "content/journal/articles/2026-09-27-china-private-tour-weather-delay-support.md",
+  },
+];
+
+const dayTourJournalArticles = buildDayTourArticles([
+  mutianyuCluster,
+  shanghaiCluster,
+  xianCluster,
+  chengduCluster,
+  guilinCluster,
+]);
+
+export const publishedJournalArticles: JournalArticle[] = [
+  ...basePublishedJournalArticles,
+  ...operationalJournalArticles,
+  ...audienceExperienceArticles,
+  ...dayTourJournalArticles,
 ];

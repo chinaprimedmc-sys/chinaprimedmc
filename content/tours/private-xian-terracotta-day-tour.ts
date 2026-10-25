@@ -1,19 +1,49 @@
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
-// Photography remains pending until route-specific, rights-cleared images are supplied.
-const pendingImage: MediaAsset = {
-  src: "/home/editorial/great-wall-private-china-travel.webp",
-  alt: "Photography for the private Xi'an Terracotta Warriors day tour is being prepared",
-  width: 1920,
-  height: 1080,
-};
+const xianImage = (file: string, alt: string, width: number, height: number): MediaAsset => ({
+  src: `/tours/private-xian-terracotta-warriors-day-tour/${file}`,
+  alt,
+  width,
+  height,
+});
+
+const terracottaWarriors = xianImage(
+  "01-xian-terracotta-warriors.webp",
+  "Rows of life-sized Terracotta Warriors inside the Qin emperor's mausoleum pits in Xi'an",
+  1600,
+  2400,
+);
+const bellTowerEvening = xianImage(
+  "02-xian-bell-tower-evening.webp",
+  "Xi'an Bell Tower illuminated at dusk above the surrounding city",
+  1086,
+  1448,
+);
+const bellTowerNight = xianImage(
+  "03-xian-bell-tower-night.webp",
+  "Xi'an Bell Tower glowing against the deep blue evening sky",
+  1086,
+  1448,
+);
+const tangDynastyNightscape = xianImage(
+  "04-xian-tang-dynasty-nightscape.webp",
+  "Traditional Tang-style architecture illuminated in Xi'an at night",
+  1077,
+  1446,
+);
+const clayWarriorWorkshop = xianImage(
+  "05-xian-clay-warrior-workshop.webp",
+  "A visitor shaping a small clay figure by hand at a Xi'an pottery workshop",
+  1440,
+  1920,
+);
 
 export const privateXianTerracottaDayTour: Tour = {
   slug: "private-xian-terracotta-warriors-day-tour",
-  visualStatus: "pending",
+  visualStatus: "ready",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-08-21",
+  updatedAt: "2026-10-04",
   title: "Private Terracotta Warriors Day Tour, Seamlessly Handled",
   subtitle:
     "From your Xi'an hotel to passport-linked admission, the excavation pits, expert interpretation and a private return, one English-speaking guide and vehicle handle the day without shopping stops or jade-factory detours.",
@@ -23,7 +53,7 @@ export const privateXianTerracottaDayTour: Tour = {
   hero: {
     eyebrow:
       "Private Xi'an day tour · guide, driver and Terracotta Warriors admission · no shopping",
-    image: pendingImage,
+    image: terracottaWarriors,
     primary: { label: "Check My Date", href: "#inquiry" },
     secondary: { label: "See What Is Included", href: "#price" },
   },
@@ -171,21 +201,21 @@ export const privateXianTerracottaDayTour: Tour = {
       description:
         "See the famous formation with a guide who explains military order, individual details, excavation and restoration instead of leaving you to decode an immense hall alone.",
       category: "Culture",
-      image: pendingImage,
+      image: terracottaWarriors,
     },
     {
       title: "The quieter pits where the army becomes readable",
       description:
         "Use Pits 2 and 3 to understand cavalry, command, rank and archaeological evidence beyond the best-known panoramic view.",
       category: "Senior-friendly",
-      image: pendingImage,
+      image: terracottaWarriors,
     },
     {
       title: "Xi'an as a living old city, not only a museum transfer",
       description:
         "Finish with a flexible Old City walk around walls, towers, market lanes and food culture, without turning the afternoon into compulsory shopping.",
       category: "Photography",
-      image: pendingImage,
+      image: bellTowerEvening,
     },
   ],
   itinerary: [
@@ -195,7 +225,7 @@ export const privateXianTerracottaDayTour: Tour = {
       destination: "Xi'an · Lintong · Xi'an",
       summary:
         "Meet your private English-speaking guide and vehicle at the confirmed Xi'an hotel. Travel to the Emperor Qinshihuang's Mausoleum Site Museum, use the included passport-linked admission and explore the principal Terracotta Warriors pits with structured interpretation. After independent lunch time or a selected meal, return toward Xi'an for a flexible Old City walk near the Bell and Drum Towers, Muslim Quarter food lanes or City Wall exterior before a private hotel return. Exact sequencing follows ticket timing, traffic, crowds, weather and the group.",
-      image: pendingImage,
+      image: terracottaWarriors,
       hotel: "No overnight stay required · pickup and return at your Xi'an hotel",
       meals: ["Independent lunch time; selected Xi'an noodle lunch available as an upgrade"],
       transport:
@@ -245,7 +275,7 @@ export const privateXianTerracottaDayTour: Tour = {
         "Private return",
         "No hotel change",
       ],
-      image: pendingImage,
+      image: bellTowerEvening,
     },
   ],
   included: [
@@ -270,35 +300,35 @@ export const privateXianTerracottaDayTour: Tour = {
       description:
         "After seeing the original army, add a practical clay-warrior session from US$58 per guest with a date-confirmed local host or artisan setting. This is an optional hands-on experience, not a disguised shopping stop; the format and take-home item are confirmed before payment.",
       badges: ["From US$58 pp", "Hands-on", "Host availability"],
-      image: pendingImage,
+      image: clayWarriorWorkshop,
     },
     {
       title: "Selected Xi'an noodle lunch",
       description:
         "Add a pre-arranged local lunch from US$28 per guest, with an approachable fixed menu and dietary review. Drinks and dishes beyond the agreed menu remain separate.",
       badges: ["From US$28 pp", "Dietary needs checked"],
-      image: pendingImage,
+      image: tangDynastyNightscape,
     },
     {
       title: "Xi'an City Wall admission",
       description:
         "Add City Wall admission from US$15 per guest when the day's timing, weather and walking level make an elevated old-city view worthwhile. The route and available gate are confirmed with the final plan.",
       badges: ["From US$15 pp", "Weather considered"],
-      image: pendingImage,
+      image: bellTowerNight,
     },
     {
       title: "City Wall bicycle rental",
       description:
         "Add bicycle rental from US$18 per guest after City Wall admission, subject to the operator's current age, height, deposit, weather and safety rules. It is not recommended automatically for every traveler.",
       badges: ["From US$18 pp", "Admission separate", "Rules apply"],
-      image: pendingImage,
+      image: terracottaWarriors,
     },
     {
       title: "Additional private touring time",
       description:
         "Add private guide, driver and vehicle time at US$58 per group for each additional hour, subject to date-specific availability. Use it for a slower museum visit, a longer Old City chapter or a confirmed evening plan.",
       badges: ["US$58 per group/hour", "Subject to availability"],
-      image: pendingImage,
+      image: terracottaWarriors,
     },
   ],
   transportation: {
@@ -364,7 +394,13 @@ export const privateXianTerracottaDayTour: Tour = {
       },
     ],
   },
-  gallery: [],
+  gallery: [
+    terracottaWarriors,
+    bellTowerEvening,
+    bellTowerNight,
+    tangDynastyNightscape,
+    clayWarriorWorkshop,
+  ],
   faqs: [
     {
       question: "What does the US$628 starting price include?",
@@ -419,7 +455,7 @@ export const privateXianTerracottaDayTour: Tour = {
         description:
           "A six-day private journey linking the Terracotta Army, Xi'an's living heritage, high-speed rail, imperial Beijing and the Great Wall.",
         tags: ["Private", "History", "High-speed rail"],
-        image: pendingImage,
+        image: terracottaWarriors,
         route: "Xi'an · Beijing",
         duration: "6 days / 5 nights",
         href: "/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
@@ -429,7 +465,7 @@ export const privateXianTerracottaDayTour: Tour = {
         description:
           "A premium 12-day private China journey with three full Xi'an nights and time to understand the Terracotta Army without a rushed connection.",
         tags: ["Private", "First-time China", "Easy pace"],
-        image: pendingImage,
+        image: terracottaWarriors,
         route: "Beijing · Xi'an · Shanghai",
         duration: "12 days / 11 nights",
         href: "/tours/china-at-an-easier-pace-12-day-private-tour",
@@ -441,8 +477,8 @@ export const privateXianTerracottaDayTour: Tour = {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Private%20Xi%27an%20Terracotta%20Warriors%20Day%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20check%20a%20private%20Xi%27an%20Terracotta%20Warriors%20day%20tour.%0A%0ADate%3A%0ANumber%20of%20guests%20and%20ages%20if%20children%3A%0AXi%27an%20hotel%20or%20pickup%20address%3A%0AAny%20airport%20or%20railway%20connection%3A%0AOptional%20experiences%20of%20interest%3A%0AAny%20mobility%2C%20hearing%2C%20dietary%20or%20other%20considerations%3A%0A",
     whatsappHref:
-      "https://wa.me/447985052302?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Xi%27an%20Terracotta%20Warriors%20day%20tour.%20My%20date%2C%20group%20size%20and%20Xi%27an%20hotel%20are%3A",
-    scheduleCallHref: "tel:+447985052302",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Xi%27an%20Terracotta%20Warriors%20day%20tour.%20My%20date%2C%20group%20size%20and%20Xi%27an%20hotel%20are%3A",
+    scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I would like to check a private Xi'an Terracotta Warriors day tour from my Xi'an hotel.",
   },

@@ -4,6 +4,9 @@ import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
 import { ConsentAwareServices } from "@/components/privacy/consent-aware-services";
+import { JourneyOfferInvitation } from "@/components/offers/journey-offer-invitation";
+import { journeyCatalog } from "@/content/tours/catalog";
+import { getJourneyCardTitle } from "@/content/tours/card-copy";
 import { CookieConsent } from "@/components/privacy/cookie-consent";
 import { CspNonceProvider } from "@/components/security/csp-nonce-provider";
 import { JsonLd } from "@/lib/seo/json-ld";
@@ -48,6 +51,17 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body className="font-sans antialiased">
         <CspNonceProvider nonce={nonce}>
           <PageTransition>{children}</PageTransition>
+          <JourneyOfferInvitation
+            journeys={journeyCatalog.map((journey) => ({
+              slug: journey.slug,
+              title: getJourneyCardTitle(journey),
+              href: journey.href,
+              fromUsd: journey.pricing.fromUsd,
+              pricingUnit: journey.pricing.pricingUnit,
+              basePartySize: journey.pricing.basePartySize,
+              cardBasis: journey.pricing.cardBasis,
+            }))}
+          />
         </CspNonceProvider>
         <CookieConsent />
         <ConsentAwareServices />

@@ -64,6 +64,27 @@ test("inquiry validation requires selected contact details", () => {
   );
 });
 
+test("offer claims can pass through the existing inquiry record", () => {
+  const base = {
+    sourcePage: "/",
+    travelingWithSeniors: false,
+    destinations: [],
+    styles: [],
+    name: "Test Traveler",
+    email: "",
+    whatsapp: "+447700900000",
+    turnstileToken: "test-token",
+  };
+  const result = inquirySchema.safeParse({
+    ...base,
+    journeySlug: "first-china-beautifully-paced",
+    campaignId: "private-china-25",
+    notes: "Offer claimed: AVIORA25 (25% off)",
+  });
+  assert.equal(result.success, true);
+  assert.equal(result.data.campaignId, "private-china-25");
+});
+
 test("honeypot values are rejected", () => {
   const result = inquirySchema.safeParse({
     sourcePage: "/start-planning",

@@ -91,10 +91,6 @@ Prepare one paper set and one offline digital set:
 6. airline approval for medical equipment, sharps, batteries or excess liquid where required; and
 7. travel-insurance assistance details.
 
-![Example bilingual personal medicine declaration list](/journal/2026-08-08/personal-medicine-declaration-list.webp)
-
-_An example bilingual personal medicine list. A self-prepared list can support identification, but it is not a prescription, doctor’s letter, Customs decision or permission to import a medicine._
-
 Do not store the only copy in a cloud service that may be unavailable at the airport. Keep sensitive health information secure and show it only when needed.
 
 ## Packing medicine for the journey
@@ -106,10 +102,6 @@ Keep essential medicine and documents in hand baggage so a delayed checked bag d
 ### Keep original packaging readable
 
 The label should show the patient, medicine, strength and dispensing pharmacy where possible. Protect glass vials and separate needles or lancets in a suitable case. Never conceal medicine in food, cosmetics or another unmarked container.
-
-![Several medicines in their labeled original packaging](/journal/2026-08-08/medicine-in-original-packaging.webp)
-
-_Labeled original packages make medicines easier to identify. Products pictured are examples only and are not recommendations; travelers must verify each active ingredient, prescription status and China entry rule._
 
 ### Plan temperature control conservatively
 

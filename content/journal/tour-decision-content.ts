@@ -410,7 +410,7 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
       {
         title: "Option 3: eleven days across Beijing, Xi'an, Chengdu and Shanghai",
         paragraphs: [
-          "The [11-day Beijing, Xi'an, Chengdu and Shanghai private tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) is the broad first-time route. The Great Wall, imperial Beijing, Terracotta Army, pandas and Shanghai each have a distinct role. It suits travelers who may visit China once and want a representative cultural journey with managed rail or air connections.",
+          "The [12-day Shanghai, Chengdu, Xi'an and Beijing private tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) is a broad first-time route. The Great Wall, imperial Beijing, Terracotta Army, pandas and Shanghai each have a distinct role, with date-specific connections coordinated in one written proposal.",
           "The cost of breadth is pace: four major cities mean more packing and transfer days. Eleven days makes the sequence workable, but travelers who want slow mornings or deeper food exploration should add nights rather than compress the same route.",
         ],
       },
@@ -460,7 +460,7 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
       {
         question: "Which panda route is best for a first visit to China?",
         answer:
-          "For broad first-time coverage, the 11-day Beijing, Xi'an, Chengdu and Shanghai route is usually strongest. Choose a Sichuan-focused route when nature or food matters more than national breadth.",
+          "For broad first-time coverage, the 12-day Shanghai, Chengdu, Xi'an and Beijing route brings city life, Sichuan food culture, ancient heritage and the Great Wall into one journey. Choose a Sichuan-focused route when nature or food matters more than national breadth.",
       },
     ],
   ),
@@ -484,7 +484,7 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
       {
         title: "What the eleven-day route adds",
         paragraphs: [
-          "The [11-day Beijing, Xi'an, Chengdu and Shanghai tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) adds a different China chapter, not just pandas. Chengdu introduces Sichuan food, tea-house rhythms and a softer urban pace between the archaeological intensity of Xi'an and Shanghai's global skyline.",
+          "The [12-day Shanghai, Chengdu, Xi'an and Beijing tour](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) adds a different China chapter, not just pandas. Chengdu introduces Sichuan food and local traditions between Shanghai's layered city life, Xi'an's archaeological heritage and Beijing's imperial landmarks.",
           "The extra city also adds a transfer, another check-in and more decisions about rail versus air. Two additional calendar days do not create two full free days. Part of that time is the cost of reaching and leaving Chengdu, so travelers must genuinely value the city for the eleven-day route to be better.",
         ],
       },
