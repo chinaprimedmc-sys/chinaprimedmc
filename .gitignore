@@ -14,6 +14,7 @@ coverage
 .codex-screenshots/
 
 # Local deployment snapshots, stale Next.js caches, and generated review outputs.
+# These can silently grow to many GB — safe to delete at any time, they are all regenerable.
 .codex-deploy/
 .next-*-cache-stale-*/
 artifacts/

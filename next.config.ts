@@ -432,7 +432,7 @@ const nextConfig: NextConfig = {
     imageSizes: [64, 96, 128, 256, 384],
   },
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizePackageImports: ["lucide-react"],
   },
 };
 
