@@ -2,14 +2,16 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { heroPhoto, journeysCopy } from "@/content/tours/journeys-curation";
+
 import styles from "./journeys-hero.module.css";
 
 export function JourneysHero() {
   return (
     <section className={styles.hero} aria-labelledby="journeys-title">
       <Image
-        src="/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp"
-        alt="The Great Wall winding across the mountains near Beijing"
+        src={heroPhoto.src}
+        alt={heroPhoto.alt}
         fill
         priority
         fetchPriority="high"
@@ -18,17 +20,17 @@ export function JourneysHero() {
       />
       <div className={styles.shade} aria-hidden="true" />
       <div className={styles.content}>
-        <p className={styles.eyebrow}>AVIORA / Private China travel</p>
-        <h1 id="journeys-title">China, at your own pace.</h1>
-        <p className={styles.description}>
-          Distinctive routes, privately planned around the places and people that matter to you.
-        </p>
+        <p className={styles.eyebrow}>{journeysCopy.heroEyebrow}</p>
+        <h1 id="journeys-title">
+          {journeysCopy.heroLead} <em>{journeysCopy.heroEm}</em>
+        </h1>
+        <p className={styles.sub}>{journeysCopy.heroSub}</p>
         <div className={styles.actions}>
-          <Link href="#journey-catalog">
-            Explore journeys <ArrowRight aria-hidden="true" />
+          <Link className={styles.button} href="/start-planning?source=journeys-hero">
+            Plan my journey
           </Link>
-          <Link href="/start-planning?source=journeys-hero">
-            Start planning <ArrowRight aria-hidden="true" />
+          <Link className={styles.link} href="#finder">
+            Find a journey <ArrowRight aria-hidden="true" size={14} />
           </Link>
         </div>
       </div>

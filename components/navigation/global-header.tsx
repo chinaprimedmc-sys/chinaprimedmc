@@ -1,7 +1,7 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowUpRight, Menu, Search, SlidersHorizontal, X } from "lucide-react";
+import { ArrowUpRight, Menu, Search, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -120,13 +120,6 @@ function JourneyTools({ className }: { className: string }) {
     <div className={className} aria-label="Journey tools">
       <Link href="/search" className={styles.iconIsland} aria-label="Search journeys">
         <Search aria-hidden="true" />
-      </Link>
-      <Link
-        href="/tours#journey-catalog"
-        className={styles.iconIsland}
-        aria-label="Jump to journey filters"
-      >
-        <SlidersHorizontal aria-hidden="true" />
       </Link>
     </div>
   );

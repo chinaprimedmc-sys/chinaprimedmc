@@ -12,7 +12,11 @@ import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { JourneysPage } from "@/components/tours/journeys-page";
 import { siteConfig } from "@/config/site";
 import { journeyCatalog } from "@/content/tours/catalog";
-import { getJourneyCardDescription, getJourneyCardTitle } from "@/content/tours/card-copy";
+import {
+  getJourneyCardDescription,
+  getJourneyCardTitle,
+  getJourneyHeadline,
+} from "@/content/tours/card-copy";
 import { journeyFaqs, journeysDefinition } from "@/content/tours/journeys-page-content";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -25,7 +29,7 @@ export async function JourneyDiscoveryPage({
   const catalog = journeyCatalog;
   const path = "/tours";
   const pageUrl = new URL(path, siteConfig.url).toString();
-  const name = "Private China Tours & Tailor-Made Journeys | AVIORA";
+  const name = "Private China Tours, 1 to 13 Days: Tailor-Made Itineraries | AVIORA";
 
   const services = [
     {
@@ -92,7 +96,8 @@ export async function JourneyDiscoveryPage({
                 url: new URL(`/tours/${tour.slug}`, siteConfig.url).toString(),
                 item: {
                   "@type": "TouristTrip",
-                  name: getJourneyCardTitle(tour),
+                  name: getJourneyHeadline(tour) ?? getJourneyCardTitle(tour),
+                  alternateName: getJourneyCardTitle(tour),
                   description: getJourneyCardDescription(tour),
                   touristType: tour.bestForSummary,
                   itinerary: tour.routeLabel,

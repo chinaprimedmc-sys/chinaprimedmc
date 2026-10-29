@@ -311,52 +311,6 @@
   stroke: currentColor;
 }
 
-@media (min-width: 1024px) {
-  .header[data-journeys-navigation="true"]
-    :is(.brandIsland, .navIsland, .toolsIsland, .desktopWhatsapp, .actionIsland) {
-    -webkit-backdrop-filter: blur(20px) saturate(135%);
-    backdrop-filter: blur(20px) saturate(135%);
-    background-color: rgba(248, 250, 249, 0.78);
-    border-color: rgba(255, 255, 255, 0.72);
-    box-shadow:
-      0 8px 22px rgba(17, 25, 22, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.78);
-    color: #17201d;
-  }
-
-  .header[data-journeys-navigation="true"] :is(.wordmark, .navLink, .actionIsland) {
-    color: #17201d;
-    -webkit-text-fill-color: #17201d;
-    text-shadow: none;
-  }
-
-  .header[data-journeys-navigation="true"] .whatsappIsland {
-    color: #25d366;
-  }
-
-  .header[data-tone="over-image"][data-scrolled="true"]
-    :is(.brandIsland, .navIsland, .toolsIsland, .desktopWhatsapp, .actionIsland) {
-    -webkit-backdrop-filter: blur(20px) saturate(135%);
-    backdrop-filter: blur(20px) saturate(135%);
-    background-color: rgba(248, 250, 249, 0.78);
-    border-color: rgba(255, 255, 255, 0.72);
-    box-shadow:
-      0 8px 22px rgba(17, 25, 22, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.78);
-    color: #17201d;
-  }
-
-  .header[data-tone="over-image"][data-scrolled="true"] :is(.wordmark, .navLink, .actionIsland) {
-    color: #17201d;
-    -webkit-text-fill-color: #17201d;
-    text-shadow: none;
-  }
-
-  .header[data-tone="over-image"][data-scrolled="true"] .whatsappIsland {
-    color: #25d366;
-  }
-}
-
 .whatsappPopover {
   -webkit-backdrop-filter: blur(24px) saturate(135%);
   backdrop-filter: blur(24px) saturate(135%);

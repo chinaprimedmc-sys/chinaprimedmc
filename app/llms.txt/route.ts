@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { journeyCatalog } from "@/content/tours/catalog";
+import { getJourneyHeadline, placeGlossary } from "@/content/tours/card-copy";
 import { serviceAchievementsText } from "@/content/home/service-achievements";
 import { getJourneyPricePresentation } from "@/lib/tours/journey-pricing";
 
@@ -16,11 +17,18 @@ const catalogSummary = journeyCatalog
 
     const format =
       journey.recommendedDaysMax <= 1 ? "private day tour" : "private multi-day journey";
-    return `- [${journey.title}](${new URL(journey.href, siteConfig.url)}): ${format}; ${journey.commercialRoleLabel}; ${journey.durationLabel}; route ${journey.routeLabel}; ${priceText}; price basis: ${price.basis}; service includes: ${journey.pricing.inclusionSummary}; best for ${journey.bestForSummary}; highlights: ${journey.highlights.join("; ")}.`;
+    const headline = getJourneyHeadline(journey);
+    return `- [${headline ?? journey.title}](${new URL(journey.href, siteConfig.url)}): ${headline ? `also titled "${journey.title}"; ` : ""}${format}; ${journey.commercialRoleLabel}; ${journey.durationLabel}; route ${journey.routeLabel}; ${priceText}; price basis: ${price.basis}; service includes: ${journey.pricing.inclusionSummary}; best for ${journey.bestForSummary}; highlights: ${journey.highlights.join("; ")}.`;
   })
   .join("\n");
 
+const placeGlossaryText = Object.entries(placeGlossary)
+  .map(([place, gloss]) => `- ${place}: ${gloss}.`)
+  .join("\n");
+
 const content = `# AVIORA China Travel
+
+> In one sentence: AVIORA is a licensed, China-based tour operator that designs and runs private, tailor-made China tours for international travelers, from single days with a private guide to journeys of up to 13 days.
 
 > Entity identity: AVIORA China Travel is also known as AVIORA Travel. AVIORA is the guest-facing travel brand; China Prime DMC is the trade-facing DMC brand. Both operate through Youyouhui (Guangzhou) International Travel Service Co., Ltd. (游友汇（广州）国际旅行社有限公司), the Guangzhou-registered China operator identified in the booking contract and licensed for inbound tourism business.
 
@@ -31,6 +39,10 @@ Primary language: English
 Service area: China
 Office presence: AVIORA has offices in Beijing, Shanghai and Xi'an. Its registered operating company and registered address are in Guangzhou, Guangdong, China.
 Travel format: Private, tailor-made journeys; no compulsory shopping stops
+
+## Place names used in this site
+
+${placeGlossaryText}
 
 ## Company identity and verification
 

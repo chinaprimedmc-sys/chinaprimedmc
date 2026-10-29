@@ -1,17 +1,29 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { WhatsAppIcon } from "@/components/icons";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
-import {
-  journeyFaqs,
-  journeyPlanningSteps,
-  journeyTrustProofs,
-} from "@/content/tours/journeys-page-content";
+import { getPublicTravelerReviews } from "@/content/home/traveler-reviews";
+import { closingPhoto, journeysCopy } from "@/content/tours/journeys-curation";
+import { journeyFaqs } from "@/content/tours/journeys-page-content";
+import { siteConfig } from "@/config/site";
 
-import { JourneyExplorer } from "./journey-explorer";
+import { JourneyFinder } from "./journey-finder";
 import { JourneysHero } from "./journeys-hero";
+import { jost, newsreader } from "./journeys-fonts";
 import styles from "./journeys-page.module.css";
+
+const whatsapp = "https://wa.me/8618027438191";
+const reviewIds = [1, 3, 2];
+
+/** 取评价的开头，在句末截断，保证读起来完整。 */
+function excerpt(text: string, max = 250) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const end = cut.lastIndexOf(". ");
+  return end > 90 ? cut.slice(0, end + 1) : `${cut.trimEnd()}…`;
+}
 
 export function JourneysPage({
   items,
@@ -20,101 +32,139 @@ export function JourneysPage({
   items: JourneyCatalogItem[];
   initialQueryString?: string;
 }) {
+  const allReviews = getPublicTravelerReviews();
+  const quoted = reviewIds
+    .map((id) => allReviews.find((review) => review.id === id && review.language === "en"))
+    .filter((review): review is NonNullable<typeof review> => Boolean(review));
+  const since = new Date(siteConfig.operator.founded).getFullYear();
+
   return (
-    <div className={styles.page} data-journeys-page="true">
+    <div
+      className={`${styles.page} ${newsreader.variable} ${jost.variable}`}
+      data-journeys-page="true"
+    >
       <JourneysHero />
 
-      <ul className={styles.trust} aria-label="How AVIORA works">
-        {journeyTrustProofs.map((proof) => (
-          <li key={proof.value}>
-            <strong>{proof.value}</strong>
-            <span>{proof.detail}</span>
-          </li>
-        ))}
-      </ul>
+      <div className={styles.wrap}>
+        <section className={styles.statement} aria-label="About AVIORA">
+          <p className={styles.definition}>{journeysCopy.definition}</p>
+          <p className={styles.big}>{journeysCopy.statement}</p>
+          <dl className={styles.proof}>
+            <div>
+              <dt>Since {since}</dt>
+              <dd>A licensed China operator, based in Guangzhou</dd>
+            </div>
+            <div>
+              <dt>{allReviews.length} reviews</dt>
+              <dd>Written by travelers after they came home</dd>
+            </div>
+            <div>
+              <dt>Within a day</dt>
+              <dd>A specialist replies to you on WhatsApp</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
 
-      <JourneyExplorer items={items} initialQueryString={initialQueryString} />
+      <JourneyFinder items={items} initialQueryString={initialQueryString} />
 
-      <section
-        className={styles.service}
-        id="traveling-with-aviora"
-        aria-labelledby="service-title"
-      >
-        <div className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>How it works</p>
-          <h2 id="service-title">From first message to written proposal.</h2>
-          <p>
-            Choose a route that inspires you. We then work through the practical details together,
-            from the pace of the days to the people who meet you along the way.
-          </p>
-        </div>
-        <ol className={styles.steps}>
-          {journeyPlanningSteps.map((step) => (
-            <li key={step.number}>
-              <span>{step.number}</span>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className={styles.proof} aria-labelledby="proof-title">
-        <div>
-          <p className={styles.eyebrow}>Before you decide</p>
-          <h2 id="proof-title">Know who is planning your journey.</h2>
-          <p>
-            See the company behind AVIORA, read travelers&apos; accounts, and review what a written
-            proposal will confirm before you book.
-          </p>
-        </div>
-        <nav aria-label="About AVIORA and traveler reviews">
-          <Link href="/company">
-            Our company <ArrowRight aria-hidden="true" />
-          </Link>
-          <Link href="/reviews">
-            Traveler reviews <ArrowRight aria-hidden="true" />
-          </Link>
-        </nav>
-      </section>
-
-      <section className={styles.enquiry} id="tailor-your-journey" aria-labelledby="enquiry-title">
-        <div>
-          <p className={styles.eyebrow}>Your next step</p>
-          <h2 id="enquiry-title">Let&apos;s make it yours.</h2>
-          <p>
-            Tell us where you would like to go. We&apos;ll help shape the route and confirm the
-            services and final price in a written proposal.
-          </p>
-        </div>
-        <div className={styles.enquiryActions}>
-          <Link className={styles.primaryAction} href="/start-planning">
-            Start planning <ArrowRight aria-hidden="true" />
-          </Link>
-          <a className={styles.whatsappAction} href="https://wa.me/8618027438191">
-            <WhatsAppIcon aria-hidden="true" /> WhatsApp our team
-          </a>
+      <section className={styles.band} aria-labelledby="reviews-title">
+        <div className={styles.wrap}>
+          <header className={styles.head}>
+            <h2 id="reviews-title">{journeysCopy.reviewsTitle}</h2>
+            <Link className={styles.link} href="/reviews">
+              Read all {allReviews.length} reviews
+            </Link>
+          </header>
+          <div className={styles.reviews}>
+            {quoted.map((review) => (
+              <figure key={review.id}>
+                <blockquote>“{excerpt(review.paragraphs[0])}”</blockquote>
+                <figcaption>
+                  {review.author}, {review.location}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className={styles.faq} aria-labelledby="journey-faq-title">
-        <div className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>Good to know</p>
-          <h2 id="journey-faq-title">Questions before you go</h2>
-        </div>
-        <div className={styles.faqList}>
-          {journeyFaqs.map((item) => (
-            <details key={item.question}>
-              <summary>{item.question}</summary>
-              <p>{item.answer}</p>
-            </details>
-          ))}
+      <div className={styles.wrap}>
+        <section aria-labelledby="steps-title">
+          <header className={styles.head}>
+            <h2 id="steps-title">{journeysCopy.stepsTitle}</h2>
+          </header>
+          <ol className={styles.steps}>
+            {journeysCopy.steps.map((step, index) => (
+              <li key={step.title}>
+                <span aria-hidden="true">{["i", "ii", "iii", "iv"][index]}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section aria-labelledby="guides-title">
+          <header className={styles.head}>
+            <h2 id="guides-title">{journeysCopy.guidesTitle}</h2>
+            <Link className={styles.link} href="/journal">
+              Read the journal
+            </Link>
+          </header>
+          <div className={styles.guides}>
+            {journeysCopy.guides.map((guide) => (
+              <Link href={guide.href} key={guide.href}>
+                <span className={styles.kicker}>{guide.kicker}</span>
+                <h3>{guide.title}</h3>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.faq} aria-labelledby="journey-faq-title">
+          <h2 id="journey-faq-title">{journeysCopy.faqTitle}</h2>
+          <div className={styles.faqList}>
+            {journeyFaqs.map((item) => (
+              <details key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <section className={styles.closing} aria-labelledby="closing-title">
+        <Image
+          src={closingPhoto.src}
+          alt={closingPhoto.alt}
+          fill
+          sizes="100vw"
+          className={styles.closingImage}
+        />
+        <div className={styles.closingShade} aria-hidden="true" />
+        <div className={styles.closingBody}>
+          <h2 id="closing-title">{journeysCopy.closingTitle}</h2>
+          <p>
+            A specialist in China replies on WhatsApp, normally within a day. No payment, no
+            obligation.
+          </p>
+          <div className={styles.closingActions}>
+            <Link className={styles.buttonLight} href="/start-planning?source=journeys-closing">
+              Plan my journey
+            </Link>
+            <a className={styles.linkLight} href={whatsapp}>
+              <WhatsAppIcon aria-hidden="true" /> WhatsApp our team{" "}
+              <ArrowRight size={14} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
 
       <div className={styles.mobileActionBar} aria-label="Journey enquiry actions">
-        <Link href="/start-planning">Start planning</Link>
-        <a href="https://wa.me/8618027438191" aria-label="WhatsApp our team">
+        <Link href="/start-planning?source=journeys-mobile">Plan my journey</Link>
+        <a href={whatsapp} aria-label="WhatsApp our team">
           <WhatsAppIcon aria-hidden="true" />
         </a>
       </div>

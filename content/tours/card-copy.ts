@@ -71,6 +71,63 @@ const sensoryDescriptions: Record<string, string> = {
     "Cross between two imperial capitals, from silent clay ranks to watchtowers over the mountains.",
 };
 
+/**
+ * 面向海外读者的"看点优先"标题：先说看什么，再说去哪。
+ * 城市名只作为副标题出现，避免读者与搜索引擎自行推断路线含义。
+ */
+const journeyHeadlines: Record<string, string> = {
+  "first-china-beautifully-paced": "The Great Wall, Terracotta Army & Shanghai",
+  "china-family-tour-with-pandas-12-day-private-tour":
+    "Pandas, Warriors & the Great Wall, Made for Families",
+  "luxury-yunnan-private-tour": "Yunnan's Tea Horse Road: Snow Mountains & Old Towns",
+  "china-at-an-easier-pace-12-day-private-tour": "Imperial China at an Unhurried Pace",
+  "beijing-xian-chengdu-shanghai-private-11-day-tour": "Four Cities, One Clear Route Through China",
+  "chengdu-chongqing-zhangjiajie-private-11-day-tour":
+    "Pandas, Sichuan Food & Zhangjiajie's Floating Mountains",
+  "shanghai-zhangjiajie-floating-peaks": "Shanghai's Skyline & Zhangjiajie's Floating Mountains",
+  "chengdu-pandas-jiuzhaigou-private-7-day-tour": "Pandas & the Turquoise Lakes of Jiuzhaigou",
+  "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour":
+    "Terracotta Warriors & the Great Wall",
+  "beijing-great-wall-private-5-day-tour": "Beijing's Forbidden City & the Great Wall",
+  "chengdu-pandas-sichuan-table": "Pandas, Tea Houses & the Sichuan Table",
+  "muslim-friendly-china-tour-great-wall-desert-stars":
+    "Muslim-Friendly China: Great Wall to Ningxia Desert",
+  "qingcheng-mountain-private-wellness-retreat-10-day":
+    "A Private Wellness Retreat at Mount Qingcheng",
+  "guangzhou-shenzhen-tailor-made-business-tour-4-day":
+    "A Tailor-Made Business Trip to Guangzhou & Shenzhen",
+  "private-mutianyu-great-wall-day-tour": "Private Great Wall Day Tour at Mutianyu, from Beijing",
+  "private-shanghai-day-tour-guide-driver": "Private Shanghai Day Tour: Old City, Bund & Skyline",
+  "private-xian-terracotta-warriors-day-tour": "Private Terracotta Warriors Day Tour in Xi'an",
+  "private-chengdu-panda-day-tour-early-morning": "Private Giant Panda Day Tour in Chengdu",
+  "guilin-yangshuo-li-river-cruise-private-day-tour":
+    "Private Li River Cruise Day: Guilin to Yangshuo",
+};
+
+/** 每个城市第一次出现时的一句话定位，供摘要、llms.txt 与目的地页共用。 */
+export const placeGlossary: Record<string, string> = {
+  Beijing: "China's capital, home to the Forbidden City and the Great Wall",
+  "Xi'an": "the ancient capital, home to the Terracotta Army",
+  Shanghai: "China's largest and most modern city",
+  Chengdu: "the home of giant pandas and Sichuan cuisine",
+  Chongqing: "a hill city of river views and hotpot",
+  Zhangjiajie: "the national park of sandstone pillars that look like floating mountains",
+  Jiuzhaigou: "a valley of turquoise lakes in northern Sichuan",
+  Yunnan: "a mountain province of old towns and tea-trading history",
+  Ningxia: "a region of Hui Muslim culture and desert landscapes",
+  Guilin: "the river-and-limestone landscape of southern China",
+  Guangzhou: "the southern trade capital known for Cantonese food",
+  Shenzhen: "China's technology and innovation hub",
+};
+
+export function getJourneyRouteLabel(item: JourneyCatalogItem) {
+  return journeyLocations[item.slug] ?? item.destinationFilters.join(" · ");
+}
+
+export function getJourneyHeadline(item: JourneyCatalogItem) {
+  return journeyHeadlines[item.slug];
+}
+
 export function getJourneyCardTitle(item: JourneyCatalogItem) {
   const location = journeyLocations[item.slug] ?? item.destinationFilters.join(" · ");
   const days = item.durationLabel.match(/^(\d+)(?:[–-](\d+))?\s*(?:private\s+)?day/i);
