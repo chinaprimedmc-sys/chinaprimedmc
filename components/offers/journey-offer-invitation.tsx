@@ -120,6 +120,7 @@ export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOpt
 
   return (
     <Dialog.Root
+      modal={false}
       open={open}
       onOpenChange={(value) => {
         setOpen(value);
@@ -127,10 +128,12 @@ export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOpt
       }}
     >
       <Dialog.Portal>
-        <Dialog.Overlay className={styles.overlay} />
         <Dialog.Content
           className={styles.dialog}
           aria-describedby="journey-offer-description"
+          // A corner card must not take focus or close while the visitor keeps browsing.
+          onOpenAutoFocus={(event) => event.preventDefault()}
+          onInteractOutside={(event) => event.preventDefault()}
           onCloseAutoFocus={(event) => {
             event.preventDefault();
             if (previousFocus.current?.isConnected)

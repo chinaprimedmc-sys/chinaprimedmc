@@ -198,11 +198,7 @@ export function InquiryForm({
         </p>
       )}
       <button className={styles.submit} type="submit" disabled={submitting} aria-busy={submitting}>
-        {submitting
-          ? "Sending your request..."
-          : token
-            ? submitLabel
-            : `${submitLabel} · verification pending`}
+        {submitting ? "Sending your request..." : submitLabel}
         <ArrowRight size={18} aria-hidden="true" />
       </button>
       <p className={styles.help}>

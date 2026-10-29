@@ -34,6 +34,7 @@ export function JourneyCard({ item }: { item: JourneyCatalogItem }) {
             style={{ objectPosition: item.image.objectPosition ?? "center" }}
           />
         )}
+        <span className={styles.duration}>{item.durationLabel}</span>
       </Link>
 
       <div className={styles.body}>
@@ -45,16 +46,6 @@ export function JourneyCard({ item }: { item: JourneyCatalogItem }) {
           <Link href={item.href}>{cardTitle}</Link>
         </h3>
         <p className={styles.description}>{getJourneyCardDescription(item)}</p>
-        <dl className={styles.details}>
-          <div>
-            <dt>Duration</dt>
-            <dd>{item.durationLabel}</dd>
-          </div>
-          <div>
-            <dt>Best for</dt>
-            <dd>{item.bestForSummary}</dd>
-          </div>
-        </dl>
         {item.highlights.length ? (
           <ul className={styles.highlights}>
             {item.highlights.slice(0, 3).map((highlight) => (

@@ -1,31 +1,35 @@
 .overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 210;
-  background: rgba(21, 28, 29, 0.38);
-  backdrop-filter: blur(6px);
+  display: none;
 }
 .dialog {
   position: fixed;
   z-index: 211;
-  inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
-  width: min(500px, calc(100% - 32px));
-  max-height: min(90dvh, 820px);
+  inset: auto 24px 24px auto;
+  width: min(400px, calc(100% - 32px));
+  max-height: min(86dvh, 720px);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-surface);
   background: #fff;
-  box-shadow:
-    0 24px 80px rgba(25, 39, 42, 0.18),
-    inset 0 1px 0 #fff;
-  color: #172924;
+  box-shadow: var(--shadow-large);
+  color: var(--color-ink);
 }
 .content {
-  max-height: min(90dvh, 820px);
+  max-height: min(86dvh, 720px);
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 32px;
+  padding: 26px;
+}
+@media (max-width: 639px) {
+  .dialog {
+    inset: auto 16px calc(88px + env(safe-area-inset-bottom)) 16px;
+    width: auto;
+    max-height: 72dvh;
+  }
+  .content {
+    max-height: 72dvh;
+    padding: 22px;
+  }
 }
 .close {
   position: absolute;
@@ -53,17 +57,17 @@
   min-height: 30px;
   padding: 4px 10px;
   border-radius: 20px;
-  background: #edf5f5;
-  color: #23646d;
+  background: var(--color-brass-soft);
+  color: var(--color-brass);
   font-size: 13px;
   font-weight: 650;
 }
 .heading h2 {
   max-width: 340px;
   margin: 16px 0 12px;
-  font-family: var(--font-inter-loaded), sans-serif;
-  font-size: 29px;
-  font-weight: 600;
+  font-family: var(--font-brand);
+  font-size: 26px;
+  font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0;
 }
