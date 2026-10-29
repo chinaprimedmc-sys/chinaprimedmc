@@ -193,3 +193,49 @@ export const journeysCopy = {
   faqTitle: "Questions before you go",
   closingTitle: "Tell us when you would like to go.",
 } as const;
+
+/** 详情页首屏需要横构图大图；只在列表照片不适合全屏时覆盖。 */
+export const detailHeroPhotos: Record<string, CuratedPhoto> = {
+  "first-china-beautifully-paced": heroPhoto,
+  "beijing-great-wall-private-5-day-tour": {
+    src: "/tours/beijing-unhurried/great-wall-sunrise.webp",
+    alt: "The Great Wall above a sea of cloud at sunrise",
+    position: "center 40%",
+  },
+};
+
+export const detailCopy = {
+  summaryLead: "At a glance",
+  routeTitle: "The route",
+  daysTitle: "Day by day",
+  daysNote:
+    "A considered starting point. Every day can be reshaped around your dates, pace and interests.",
+  includedTitle: "What is and isn't included",
+  includedNote: "Know what the journey covers before you decide.",
+  whyTitle: "How a private journey with AVIORA works",
+  reviewsTitle: "From travelers who have been",
+  relatedTitle: "You might also like",
+  guidesTitle: "Before you decide",
+  faqTitle: "Questions travelers ask",
+  bookingTitle: "Plan this journey",
+  bookingNote:
+    "A specialist in China replies on WhatsApp, normally within a day. No payment, no obligation.",
+  why: [
+    {
+      title: "Private from start to finish",
+      body: "Your own guide and driver. No fixed departures and no shared coach.",
+    },
+    {
+      title: "No obligatory shopping stops",
+      body: "Shopping is added only when you ask for it.",
+    },
+    {
+      title: "One accountable China team",
+      body: "The people who design your route are the people who answer when plans change.",
+    },
+    {
+      title: "Confirmed in writing",
+      body: "Hotels, transport, inclusions and price are set out before you commit.",
+    },
+  ],
+} as const;

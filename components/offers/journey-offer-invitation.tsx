@@ -143,9 +143,14 @@ export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOpt
           onClick={() => window.dispatchEvent(new CustomEvent("aviora:claim-offer"))}
         >
           {claim ? <Check size={16} aria-hidden="true" /> : <Tag size={16} aria-hidden="true" />}
-          {claim
-            ? "Your offer"
-            : `${privateJourneyOffer.discountPercent}% off your private journey`}
+          <span className={styles.teaserLong}>
+            {claim
+              ? "Your offer"
+              : `${privateJourneyOffer.discountPercent}% off your private journey`}
+          </span>
+          <span className={styles.teaserShort}>
+            {claim ? "Your offer" : `${privateJourneyOffer.discountPercent}% off`}
+          </span>
           <ArrowUpRight size={15} aria-hidden="true" />
         </button>
       ) : null}

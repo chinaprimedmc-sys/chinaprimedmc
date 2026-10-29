@@ -5,6 +5,7 @@ import { assertPublicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
+import { getJourneyHeadline, getJourneySeoTitle } from "@/content/tours/card-copy";
 import {
   createFrameworkTourDetailModel,
   createTourDetailModel,
@@ -37,8 +38,9 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   const staticTour = getTourBySlug(slug);
 
   if (staticTour) {
+    const seoItem = getJourneyCatalogItem(staticTour.slug);
     return createMetadata({
-      title: staticTour.seo.title,
+      title: seoItem ? getJourneySeoTitle(seoItem) : staticTour.seo.title,
       description: staticTour.seo.description,
       path: `/tours/${staticTour.slug}`,
       image: staticTour.visualStatus === "pending" ? undefined : staticTour.hero.image.src,
@@ -194,7 +196,8 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
             "@id": `${tourUrl}#tour`,
             identifier: staticTour.slug,
             sku: staticTour.slug,
-            name: staticTour.title,
+            name: (catalogItem && getJourneyHeadline(catalogItem)) || staticTour.title,
+            alternateName: staticTour.title,
             description: staticTour.seo.description,
             url: tourUrl,
             mainEntityOfPage: { "@id": `${tourUrl}#webpage` },
@@ -338,7 +341,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
             "@type": "WebPage",
             "@id": `${tourUrl}#webpage`,
             url: tourUrl,
-            name: staticTour.seo.title,
+            name: catalogItem ? getJourneySeoTitle(catalogItem) : staticTour.seo.title,
             description: staticTour.seo.description,
             inLanguage: "en-US",
             datePublished: staticTour.publishedAt,
@@ -366,7 +369,10 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
           data={breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Journeys", path: "/tours" },
-            { name: staticTour.title, path: `/tours/${staticTour.slug}` },
+            {
+              name: (catalogItem && getJourneyHeadline(catalogItem)) || staticTour.title,
+              path: `/tours/${staticTour.slug}`,
+            },
           ])}
         />
         <TourDetailLanding

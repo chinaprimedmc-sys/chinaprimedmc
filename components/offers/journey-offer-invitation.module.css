@@ -22,6 +22,9 @@
   cursor: pointer;
   transition: border-color var(--motion-fast) ease;
 }
+.teaserShort {
+  display: none;
+}
 .teaser:hover {
   border-color: var(--color-forest);
 }
@@ -52,7 +55,15 @@
   padding: 26px;
 }
 @media (max-width: 639px) {
+  .teaserLong {
+    display: none;
+  }
+  .teaserShort {
+    display: inline;
+  }
   .teaser {
+    min-height: 40px;
+    padding: 8px 14px;
     right: 16px;
     bottom: calc(88px + env(safe-area-inset-bottom));
   }

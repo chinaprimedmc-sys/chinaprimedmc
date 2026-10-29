@@ -128,6 +128,16 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
   return journeyHeadlines[item.slug];
 }
 
+/** 搜索结果标题：看点 + 天数 + 产品类型。一日游天数已在看点里，不重复。 */
+export function getJourneySeoTitle(item: JourneyCatalogItem) {
+  const headline = journeyHeadlines[item.slug] ?? getJourneyCardTitle(item);
+  if (item.recommendedDaysMax <= 1) return headline;
+  // 天数必须读行程自己的时长标签（如 "11 days / 10 nights"），推荐天数区间会写错。
+  const days = item.durationLabel.match(/^(\d+)(?:[–-](\d+))?\s*days?/i);
+  if (!days) return `${headline} | Private China Tour`;
+  return `${headline} | ${days[1]}${days[2] ? `–${days[2]}` : ""}-Day Private China Tour`;
+}
+
 export function getJourneyCardTitle(item: JourneyCatalogItem) {
   const location = journeyLocations[item.slug] ?? item.destinationFilters.join(" · ");
   const days = item.durationLabel.match(/^(\d+)(?:[–-](\d+))?\s*(?:private\s+)?day/i);

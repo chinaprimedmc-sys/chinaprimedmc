@@ -1,6 +1,11 @@
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
-import { getJourneyCardDescription, getJourneyCardTitle } from "@/content/tours/card-copy";
+import {
+  getJourneyCardDescription,
+  getJourneyCardTitle,
+  getJourneyHeadline,
+  getJourneyRouteLabel,
+} from "@/content/tours/card-copy";
 import { getDossierData, planningHref } from "@/features/tours/dossier/dossier-data";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
@@ -14,6 +19,7 @@ export type TourDetailDay = {
   meals: string;
   stay: string;
   guideInsight?: string;
+  image?: MediaAsset;
   experiences: Array<{ title: string; description: string; time?: string }>;
 };
 
@@ -35,6 +41,10 @@ export type TourDetailModel = {
   slug: string;
   title: string;
   displayTitle: string;
+  /** 面向海外读者的"看点"标题，用作 H1 与 SEO；缺省时回退到 displayTitle。 */
+  headline: string;
+  /** 城市路线，用作副标题，例如 "Beijing · Xi'an · Shanghai"。 */
+  routeLabel: string;
   isFramework: boolean;
   subtitle: string;
   duration: string;
@@ -124,6 +134,10 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     slug: tour.slug,
     title: cleanDisplayTitle(tour.title),
     displayTitle: catalog ? getJourneyCardTitle(catalog) : cleanDisplayTitle(tour.title),
+    headline:
+      (catalog && getJourneyHeadline(catalog)) ||
+      (catalog ? getJourneyCardTitle(catalog) : cleanDisplayTitle(tour.title)),
+    routeLabel: catalog ? getJourneyRouteLabel(catalog) : tour.route,
     isFramework: false,
     subtitle: tour.subtitle,
     duration: tour.duration,
@@ -188,6 +202,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
           ? "Departure day"
           : compactDailyStay(day.hotel, day.destination),
       guideInsight: day.guideNote,
+      image: tour.visualStatus === "pending" ? undefined : day.image,
       experiences: day.activities.map((activity) => ({
         title: activity.title,
         description: activity.description,
@@ -264,6 +279,8 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     slug: item.slug,
     title: cleanDisplayTitle(item.title),
     displayTitle: getJourneyCardTitle(item),
+    headline: getJourneyHeadline(item) ?? getJourneyCardTitle(item),
+    routeLabel: getJourneyRouteLabel(item),
     isFramework: true,
     subtitle: item.summary,
     duration: item.durationLabel,

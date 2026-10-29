@@ -8,6 +8,7 @@ import { getPublicTravelerReviews } from "@/content/home/traveler-reviews";
 import { closingPhoto, journeysCopy } from "@/content/tours/journeys-curation";
 import { journeyFaqs } from "@/content/tours/journeys-page-content";
 import { siteConfig } from "@/config/site";
+import { excerpt } from "@/lib/text/excerpt";
 
 import { JourneyFinder } from "./journey-finder";
 import { JourneysHero } from "./journeys-hero";
@@ -16,14 +17,6 @@ import styles from "./journeys-page.module.css";
 
 const whatsapp = "https://wa.me/8618027438191";
 const reviewIds = [1, 3, 2];
-
-/** 取评价的开头，在句末截断，保证读起来完整。 */
-function excerpt(text: string, max = 250) {
-  if (text.length <= max) return text;
-  const cut = text.slice(0, max);
-  const end = cut.lastIndexOf(". ");
-  return end > 90 ? cut.slice(0, end + 1) : `${cut.trimEnd()}…`;
-}
 
 export function JourneysPage({
   items,
