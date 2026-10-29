@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,9 +27,9 @@ export function JourneysHero() {
           <Link href="#journey-catalog">
             Explore journeys <ArrowRight aria-hidden="true" />
           </Link>
-          <a href="#traveling-with-aviora">
-            The AVIORA approach <ArrowDown aria-hidden="true" />
-          </a>
+          <Link href="/start-planning?source=journeys-hero">
+            Start planning <ArrowRight aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </section>

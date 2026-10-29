@@ -3,7 +3,7 @@
   --home-copy: #3f4541;
   --home-muted: #5f6762;
   --home-line: #d9deda;
-  --home-accent: #23646d;
+  --home-accent: var(--color-forest);
   --home-accent-soft: #eef6f6;
   --home-accent-line: #b7d2d4;
   --home-control-height: 44px;

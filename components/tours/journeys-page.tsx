@@ -1,31 +1,17 @@
-import { ArrowRight, Compass, MapPinned, Route } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { WhatsAppIcon } from "@/components/icons";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
-import { journeyFaqs } from "@/content/tours/journeys-page-content";
+import {
+  journeyFaqs,
+  journeyPlanningSteps,
+  journeyTrustProofs,
+} from "@/content/tours/journeys-page-content";
 
-import { JourneyCatalog } from "./journey-catalog";
+import { JourneyExplorer } from "./journey-explorer";
 import { JourneysHero } from "./journeys-hero";
 import styles from "./journeys-page.module.css";
-
-const serviceDetails = [
-  {
-    icon: Compass,
-    title: "A route with room to breathe",
-    description: "Your dates, interests and preferred pace shape the order of each day.",
-  },
-  {
-    icon: Route,
-    title: "The connections are considered",
-    description: "Guides, private vehicles and travel between cities are planned as one journey.",
-  },
-  {
-    icon: MapPinned,
-    title: "People on the ground",
-    description: "A China-based team coordinates the details before you travel and along the way.",
-  },
-] as const;
 
 export function JourneysPage({
   items,
@@ -37,7 +23,17 @@ export function JourneysPage({
   return (
     <div className={styles.page} data-journeys-page="true">
       <JourneysHero />
-      <JourneyCatalog items={items} initialQueryString={initialQueryString} />
+
+      <ul className={styles.trust} aria-label="How AVIORA works">
+        {journeyTrustProofs.map((proof) => (
+          <li key={proof.value}>
+            <strong>{proof.value}</strong>
+            <span>{proof.detail}</span>
+          </li>
+        ))}
+      </ul>
+
+      <JourneyExplorer items={items} initialQueryString={initialQueryString} />
 
       <section
         className={styles.service}
@@ -45,22 +41,22 @@ export function JourneysPage({
         aria-labelledby="service-title"
       >
         <div className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>Traveling with AVIORA</p>
-          <h2 id="service-title">A private journey, carefully connected.</h2>
+          <p className={styles.eyebrow}>How it works</p>
+          <h2 id="service-title">From first message to written proposal.</h2>
           <p>
             Choose a route that inspires you. We then work through the practical details together,
             from the pace of the days to the people who meet you along the way.
           </p>
         </div>
-        <div className={styles.serviceGrid}>
-          {serviceDetails.map(({ icon: Icon, title, description }) => (
-            <div className={styles.serviceItem} key={title}>
-              <Icon aria-hidden="true" size={22} strokeWidth={1.6} />
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </div>
+        <ol className={styles.steps}>
+          {journeyPlanningSteps.map((step) => (
+            <li key={step.number}>
+              <span>{step.number}</span>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       <section className={styles.proof} aria-labelledby="proof-title">

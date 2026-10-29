@@ -28,6 +28,7 @@ const offerDelayMs = 7000;
 
 export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOption[] }) {
   const [open, setOpen] = useState(false);
+  const [teaser, setTeaser] = useState(false);
   const [journey, setJourney] = useState<JourneyOfferOption | null>(null);
   const [claim, setClaim] = useState<JourneyOfferClaim | null>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
@@ -39,30 +40,46 @@ export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOpt
 
   useEffect(() => {
     if (!privateJourneyOffer.active || !journeys.length) return;
+    const pick = (requestedSlug?: string) => {
+      const options = journeyRef.current;
+      const pageSlug = window.location.pathname.split("/")[2];
+      return (
+        options.find((item) => item.slug === requestedSlug) ??
+        options.find((item) => item.slug === pageSlug) ??
+        options.find((item) => item.slug === defaultJourneySlug) ??
+        options[0]
+      );
+    };
     const show = (event: Event) => {
       if (document.querySelector('[role="dialog"]')) return;
       previousFocus.current =
         document.activeElement instanceof HTMLElement ? document.activeElement : null;
-      const options = journeyRef.current;
-      const requestedSlug = (event as CustomEvent<{ slug?: string }>).detail?.slug;
-      const pageSlug = window.location.pathname.split("/")[2];
-      const selected =
-        options.find((item) => item.slug === requestedSlug) ??
-        options.find((item) => item.slug === pageSlug) ??
-        options.find((item) => item.slug === defaultJourneySlug) ??
-        options[0];
-      setJourney(selected);
+      setJourney(pick((event as CustomEvent<{ slug?: string }>).detail?.slug));
       setClaim(readClaimedJourneyOffer());
       setOpen(true);
       // Mark seen only once the invitation actually renders.
       markOfferSeen();
     };
+    // The teaser is a quiet corner tag; the full invitation opens only when the visitor asks.
+    const showTeaser = () => {
+      setJourney((current) => current ?? pick());
+      setClaim(readClaimedJourneyOffer());
+      setTeaser(true);
+    };
     window.addEventListener("aviora:claim-offer", show);
-    return () => window.removeEventListener("aviora:claim-offer", show);
+    window.addEventListener("aviora:offer-teaser", showTeaser);
+    return () => {
+      window.removeEventListener("aviora:claim-offer", show);
+      window.removeEventListener("aviora:offer-teaser", showTeaser);
+    };
   }, [journeys]);
 
   useEffect(() => {
-    if (!privateJourneyOffer.active || !journeys.length || readOfferSeen()) return;
+    if (!privateJourneyOffer.active || !journeys.length) return;
+    if (readOfferSeen()) {
+      queueMicrotask(() => window.dispatchEvent(new CustomEvent("aviora:offer-teaser")));
+      return;
+    }
     let elapsed = readOfferVisibleMs();
     let lastTick = document.hidden ? null : Date.now();
     let lastSaved = elapsed;
@@ -93,11 +110,10 @@ export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOpt
         writeOfferVisibleMs(elapsed);
         lastSaved = elapsed;
       }
-      // Retry on the next tick while another dialog is open; the show handler marks the offer seen.
-      if (elapsed < offerDelayMs || document.querySelector('[role="dialog"]')) return;
+      if (elapsed < offerDelayMs) return;
       writeOfferVisibleMs(elapsed);
       window.clearInterval(timer);
-      window.dispatchEvent(new CustomEvent("aviora:claim-offer"));
+      window.dispatchEvent(new CustomEvent("aviora:offer-teaser"));
     }, 250);
     return () => {
       window.clearInterval(timer);
@@ -119,91 +135,106 @@ export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOpt
   );
 
   return (
-    <Dialog.Root
-      modal={false}
-      open={open}
-      onOpenChange={(value) => {
-        setOpen(value);
-        if (!value) markOfferSeen();
-      }}
-    >
-      <Dialog.Portal>
-        <Dialog.Content
-          className={styles.dialog}
-          aria-describedby="journey-offer-description"
-          // A corner card must not take focus or close while the visitor keeps browsing.
-          onOpenAutoFocus={(event) => event.preventDefault()}
-          onInteractOutside={(event) => event.preventDefault()}
-          onCloseAutoFocus={(event) => {
-            event.preventDefault();
-            if (previousFocus.current?.isConnected)
-              previousFocus.current.focus({ preventScroll: true });
-          }}
+    <>
+      {teaser && !open ? (
+        <button
+          type="button"
+          className={styles.teaser}
+          onClick={() => window.dispatchEvent(new CustomEvent("aviora:claim-offer"))}
         >
-          <Dialog.Close className={styles.close} aria-label="Close offer">
-            <X size={20} aria-hidden="true" />
-          </Dialog.Close>
-          <div className={styles.content}>
-            <div className={styles.heading}>
-              <span className={styles.badge}>
-                {claim ? (
-                  <Check size={16} aria-hidden="true" />
-                ) : (
-                  <Tag size={16} aria-hidden="true" />
-                )}
-                {privateJourneyOffer.discountPercent}% off
-              </span>
-              <Dialog.Title>
-                {claim
-                  ? `Your ${privateJourneyOffer.discountPercent}% offer is ready.`
-                  : `${privateJourneyOffer.discountPercent}% off your private China journey.`}
-              </Dialog.Title>
-              <Dialog.Description id="journey-offer-description">
-                {claim
-                  ? "Your offer request is saved. A China specialist will follow up on WhatsApp, normally within 24 hours."
-                  : "Leave your first name and WhatsApp number to claim your offer and meet your one-to-one China specialist."}
-              </Dialog.Description>
-            </div>
-            {!claim ? (
-              <>
-                <InquiryForm
-                  placement="journey-offer-invitation"
-                  journeySlug={journey.slug}
-                  campaignId={privateJourneyOffer.id}
-                  submitLabel={`Claim my ${privateJourneyOffer.discountPercent}% off`}
-                  introText=""
-                  showSummary={false}
-                  onSuccess={(result) => {
-                    if (result.offer) {
-                      setClaim(result.offer);
-                      saveClaimedJourneyOffer(result.offer);
-                    }
-                  }}
+          {claim ? <Check size={16} aria-hidden="true" /> : <Tag size={16} aria-hidden="true" />}
+          {claim
+            ? "Your offer"
+            : `${privateJourneyOffer.discountPercent}% off your private journey`}
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </button>
+      ) : null}
+      <Dialog.Root
+        modal={false}
+        open={open}
+        onOpenChange={(value) => {
+          setOpen(value);
+          if (!value) markOfferSeen();
+        }}
+      >
+        <Dialog.Portal>
+          <Dialog.Content
+            className={styles.dialog}
+            aria-describedby="journey-offer-description"
+            // A corner card must not take focus or close while the visitor keeps browsing.
+            onOpenAutoFocus={(event) => event.preventDefault()}
+            onInteractOutside={(event) => event.preventDefault()}
+            onCloseAutoFocus={(event) => {
+              event.preventDefault();
+              if (previousFocus.current?.isConnected)
+                previousFocus.current.focus({ preventScroll: true });
+            }}
+          >
+            <Dialog.Close className={styles.close} aria-label="Close offer">
+              <X size={20} aria-hidden="true" />
+            </Dialog.Close>
+            <div className={styles.content}>
+              <div className={styles.heading}>
+                <span className={styles.badge}>
+                  {claim ? (
+                    <Check size={16} aria-hidden="true" />
+                  ) : (
+                    <Tag size={16} aria-hidden="true" />
+                  )}
+                  {privateJourneyOffer.discountPercent}% off
+                </span>
+                <Dialog.Title>
+                  {claim
+                    ? `Your ${privateJourneyOffer.discountPercent}% offer is ready.`
+                    : `${privateJourneyOffer.discountPercent}% off your private China journey.`}
+                </Dialog.Title>
+                <Dialog.Description id="journey-offer-description">
+                  {claim
+                    ? "Your offer request is saved. A China specialist will follow up on WhatsApp, normally within 24 hours."
+                    : "Leave your first name and WhatsApp number to claim your offer and meet your one-to-one China specialist."}
+                </Dialog.Description>
+              </div>
+              {!claim ? (
+                <>
+                  <InquiryForm
+                    placement="journey-offer-invitation"
+                    journeySlug={journey.slug}
+                    campaignId={privateJourneyOffer.id}
+                    submitLabel={`Claim my ${privateJourneyOffer.discountPercent}% off`}
+                    introText=""
+                    showSummary={false}
+                    onSuccess={(result) => {
+                      if (result.offer) {
+                        setClaim(result.offer);
+                        saveClaimedJourneyOffer(result.offer);
+                      }
+                    }}
+                  />
+                  <p className={styles.privacy}>
+                    No payment required. By submitting, you agree that AVIORA may contact you on
+                    WhatsApp about your trip.{" "}
+                    <Link href="/privacy" onClick={() => setOpen(false)}>
+                      Privacy policy
+                    </Link>
+                  </p>
+                </>
+              ) : (
+                <OfferReceipt
+                  claim={claim}
+                  journey={journey}
+                  whatsapp={whatsapp.toString()}
+                  onViewJourney={() => setOpen(false)}
                 />
-                <p className={styles.privacy}>
-                  No payment required. By submitting, you agree that AVIORA may contact you on
-                  WhatsApp about your trip.{" "}
-                  <Link href="/privacy" onClick={() => setOpen(false)}>
-                    Privacy policy
-                  </Link>
-                </p>
-              </>
-            ) : (
-              <OfferReceipt
-                claim={claim}
-                journey={journey}
-                whatsapp={whatsapp.toString()}
-                onViewJourney={() => setOpen(false)}
-              />
-            )}
-            <details className={styles.terms}>
-              <summary>Offer details</summary>
-              <p>{privateJourneyOffer.terms}</p>
-            </details>
-          </div>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+              )}
+              <details className={styles.terms}>
+                <summary>Offer details</summary>
+                <p>{privateJourneyOffer.terms}</p>
+              </details>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </>
   );
 }
 

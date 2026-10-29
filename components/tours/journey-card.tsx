@@ -8,7 +8,13 @@ import { isDayTour, matchesJourneyScope } from "@/lib/tours/journey-groups";
 
 import styles from "./journey-card.module.css";
 
-export function JourneyCard({ item }: { item: JourneyCatalogItem }) {
+export function JourneyCard({
+  item,
+  featured = false,
+}: {
+  item: JourneyCatalogItem;
+  featured?: boolean;
+}) {
   const productType = isDayTour(item)
     ? "Private day tour"
     : matchesJourneyScope(item, "single-city")
@@ -17,7 +23,11 @@ export function JourneyCard({ item }: { item: JourneyCatalogItem }) {
   const cardTitle = getJourneyCardTitle(item);
 
   return (
-    <article className={styles.card} data-journey-slug={item.slug}>
+    <article
+      className={styles.card}
+      data-journey-slug={item.slug}
+      data-featured={featured ? "true" : undefined}
+    >
       <Link className={styles.mediaLink} href={item.href} aria-label={`Explore ${cardTitle}`}>
         {item.visualStatus === "pending" ? (
           <span className={`${styles.media} ${styles.placeholder}`} aria-hidden="true">
@@ -30,10 +40,15 @@ export function JourneyCard({ item }: { item: JourneyCatalogItem }) {
             src={item.image.src}
             alt={item.image.alt}
             fill
-            sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) 50vw, 380px"
+            sizes={
+              featured
+                ? "(max-width: 1023px) calc(100vw - 40px), 640px"
+                : "(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) 50vw, 380px"
+            }
             style={{ objectPosition: item.image.objectPosition ?? "center" }}
           />
         )}
+        {featured ? <span className={styles.badge}>{item.commercialRoleLabel}</span> : null}
         <span className={styles.duration}>{item.durationLabel}</span>
       </Link>
 
@@ -46,6 +61,9 @@ export function JourneyCard({ item }: { item: JourneyCatalogItem }) {
           <Link href={item.href}>{cardTitle}</Link>
         </h3>
         <p className={styles.description}>{getJourneyCardDescription(item)}</p>
+        <p className={styles.bestFor}>
+          <span>Best for</span> {item.bestForSummary}
+        </p>
         {item.highlights.length ? (
           <ul className={styles.highlights}>
             {item.highlights.slice(0, 3).map((highlight) => (

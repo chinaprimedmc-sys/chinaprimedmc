@@ -132,7 +132,7 @@
   border: 0;
   background: none;
   min-height: 36px;
-  color: #23646d;
+  color: var(--color-forest);
   text-decoration: underline;
   text-underline-offset: 4px;
   cursor: pointer;
@@ -295,7 +295,7 @@
 .empty a,
 .empty button {
   margin-right: 20px;
-  color: #23646d;
+  color: var(--color-forest);
 }
 .overlay {
   position: fixed;
@@ -366,7 +366,7 @@
 .choices input {
   width: 18px;
   height: 18px;
-  accent-color: #23646d;
+  accent-color: var(--color-forest);
 }
 .choices small {
   margin-left: auto;
@@ -395,13 +395,13 @@
   cursor: pointer;
 }
 .dialogFooter button:last-child {
-  background: #23646d;
+  background: var(--color-forest);
   color: #fff;
-  border-color: #23646d;
+  border-color: var(--color-forest);
 }
 .catalog :is(button, input, select, a):focus-visible,
 .dialog :is(button, input, select):focus-visible {
-  outline: 3px solid #23646d;
+  outline: 3px solid var(--color-forest);
   outline-offset: 3px;
 }
 @media (max-width: 1023px) {
@@ -498,9 +498,9 @@
     padding: 7px 12px;
   }
   .dialogCities button[aria-pressed="true"] {
-    background: #23646d;
+    background: var(--color-forest);
     color: #fff;
-    border-color: #23646d;
+    border-color: var(--color-forest);
   }
   .grid {
     grid-template-columns: 1fr;
