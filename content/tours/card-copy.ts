@@ -128,14 +128,24 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
   return journeyHeadlines[item.slug];
 }
 
-/** 搜索结果标题：看点 + 天数 + 产品类型。一日游天数已在看点里，不重复。 */
+/**
+ * 搜索结果标题：看点 + 天数。站点审计要求最终标题 30–70 字符（含品牌后缀），
+ * 因此按"信息量从多到少"依次尝试，取第一个不超过 64 字符的写法（留出品牌后缀空间）。
+ */
 export function getJourneySeoTitle(item: JourneyCatalogItem) {
   const headline = journeyHeadlines[item.slug] ?? getJourneyCardTitle(item);
   if (item.recommendedDaysMax <= 1) return headline;
   // 天数必须读行程自己的时长标签（如 "11 days / 10 nights"），推荐天数区间会写错。
-  const days = item.durationLabel.match(/^(\d+)(?:[–-](\d+))?\s*days?/i);
-  if (!days) return `${headline} | Private China Tour`;
-  return `${headline} | ${days[1]}${days[2] ? `–${days[2]}` : ""}-Day Private China Tour`;
+  const match = item.durationLabel.match(/^(\d+)(?:[–-](\d+))?\s*days?/i);
+  if (!match) return headline;
+  const days = `${match[1]}${match[2] ? `–${match[2]}` : ""}`;
+  const candidates = [
+    `${headline}: ${days}-Day Private China Tour`,
+    `${headline} | ${days}-Day China Tour`,
+    `${headline} | ${days} Days`,
+    headline,
+  ];
+  return candidates.find((title) => title.length <= 64) ?? candidates.at(-1)!;
 }
 
 export function getJourneyCardTitle(item: JourneyCatalogItem) {
