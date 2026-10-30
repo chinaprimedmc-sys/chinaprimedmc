@@ -1,9 +1,9 @@
 /**
  * 本模块职责：首页——一句话、一个动作、一路走到询盘。
  * 输入：primary CTA 链接（来自站点设置）。
- * 输出：首屏、证据条、品牌宣言、找行程、精选行程、评价、目的地、流程、文章、FAQ、询盘。
+ * 输出：首屏、证据条、品牌主张、找行程、精选行程、评价、目的地、流程、运营方、文章、FAQ、询盘。
  * 不负责：行程价格与天数（读取 catalog）、评价正文（读取 traveler-reviews）、结构化数据（在路由层）。
- * 关键规则：不展示任何无法核实的奖项、媒体或人物；没有真人资料时不放头像。
+ * 关键规则：不展示任何无法核实的奖项、媒体或人物；评价引文必须是原文中的真实句子。
  */
 
 import { ArrowRight } from "lucide-react";
@@ -17,9 +17,15 @@ import { WhatsAppIcon } from "@/components/icons";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { homeFaqs } from "@/content/home/redesign";
+import { serviceAchievements } from "@/content/home/service-achievements";
 import { getPublicTravelerReviews } from "@/content/home/traveler-reviews";
 import { journeyCatalog } from "@/content/tours/catalog";
-import { getJourneyHeadline, getJourneyRouteLabel, placeGlossary } from "@/content/tours/card-copy";
+import {
+  getJourneyCardDescription,
+  getJourneyHeadline,
+  getJourneyRouteLabel,
+  placeGlossary,
+} from "@/content/tours/card-copy";
 import { journeyPhotos, journeysCopy } from "@/content/tours/journeys-curation";
 import { excerpt } from "@/lib/text/excerpt";
 
@@ -32,30 +38,68 @@ const featuredSlugs = [
   "luxury-yunnan-private-tour",
 ] as const;
 
+const promises = [
+  {
+    title: "One team, start to finish",
+    body: "The people who design your route are the people who answer the phone when a flight changes.",
+  },
+  {
+    title: "Nothing sold on the side",
+    body: "No compulsory shopping stops and no commission detours. Anything optional is listed separately, and it is your call.",
+  },
+  {
+    title: "Every detail in writing",
+    body: "Hotels, transport, inclusions, exclusions and price are set out in your proposal before you pay.",
+  },
+] as const;
+
+const steps = [
+  {
+    title: "Tell us about your trip",
+    body: "Your dates, who is traveling, the pace you like and anything we should plan around. A few lines on WhatsApp is enough.",
+  },
+  {
+    title: "Receive a private proposal",
+    body: "A route built for your party, with hotels, transport and price laid out. Never a seat on a fixed departure.",
+  },
+  {
+    title: "Adjust until it is right",
+    body: "Change the days, the hotels or the pace as often as you need. Nothing is booked until you confirm in writing.",
+  },
+  {
+    title: "Travel with one local team",
+    body: "Your guide, your driver and the China team behind them are briefed on your plan and within reach throughout.",
+  },
+] as const;
+
 const destinations = [
   {
     name: "Beijing",
     href: "/destinations/beijing",
-    image: "/home/beijing-forbidden-city-1400.webp",
-    alt: "The Forbidden City in Beijing seen from above",
+    image: "/tours/beijing-unhurried/forbidden-city.webp",
+    alt: "The Forbidden City in Beijing seen from above in autumn light",
+    position: "center 40%",
   },
   {
     name: "Xi'an",
     href: "/destinations/xian",
-    image: "/home/xian-terracotta-army.webp",
-    alt: "Ranks of Terracotta Warriors in an excavation pit near Xi'an",
+    image: "/tours/xian-beijing-private-journey/day-01.webp",
+    alt: "Xi'an's Bell Tower against a pink evening sky",
+    position: "center",
   },
   {
     name: "Chengdu",
     href: "/destinations/chengdu",
-    image: "/home/chengdu-panda.webp",
-    alt: "A giant panda resting in a Chengdu sanctuary",
+    image: "/tours/chengdu-pandas/chengdu-hero-panda.webp",
+    alt: "Giant pandas eating bamboo at a Chengdu sanctuary",
+    position: "center",
   },
   {
     name: "Shanghai",
     href: "/destinations/shanghai",
-    image: "/home/shanghai-pudong-skyline.webp",
-    alt: "Shanghai's Pudong skyline across the Huangpu River",
+    image: "/tours/first-china-beautifully-paced/shanghai-huangpu-sunset.webp",
+    alt: "Shanghai's skyline glowing at sunset above the Huangpu River",
+    position: "center 45%",
   },
 ] as const;
 
@@ -66,18 +110,55 @@ const moreDestinations = [
   ["Leshan", "/destinations/leshan"],
 ] as const;
 
+const guides = [
+  {
+    kicker: "Planning",
+    title: "What a private China tour costs in 2026",
+    note: "What drives the price, and what a quotation should list.",
+    href: "/journal/private-china-tour-cost-2026",
+  },
+  {
+    kicker: "Entry",
+    title: "China visa requirements for US citizens",
+    note: "The current entry rules, with the official sources behind them.",
+    href: "/journal/china-visa-requirements-us-citizens-2026",
+  },
+  {
+    kicker: "Timing",
+    title: "The best time to visit China",
+    note: "Which season suits which region, and when the crowds arrive.",
+    href: "/journal/best-time-to-visit-china",
+  },
+] as const;
+
 const whatsapp = "https://wa.me/8618027438191";
+/** 首页大图卡片的照片覆盖：雪山照片偏曝光，首页改用更清晰的洱海。 */
+const tilePhotoOverrides: Record<string, { src: string; alt: string; position?: string }> = {
+  "luxury-yunnan-private-tour": {
+    src: "/tours/luxury-yunnan-private-tour/erhai-landscape.jpg",
+    alt: "Erhai Lake under a bright blue sky in Dali, Yunnan",
+    position: "center 55%",
+  },
+};
+/** 评价中的原句，用于大字引文；若原文被改动则退回到自动摘录。 */
+const quotedSentence =
+  "The value wasn't simply in the hotels, although the hotels were excellent. It was in all the friction we didn't have to deal with.";
+
+const capitalise = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
 
 export function HomePage({ planningHref }: { planningHref: string }) {
   const reviews = getPublicTravelerReviews();
-  const featuredReview =
-    reviews.find((review) => review.language === "en" && review.id === 3) ??
-    reviews.find((review) => review.language === "en");
+  const quoted =
+    reviews.find((review) => review.paragraphs.join(" ").includes(quotedSentence)) ?? null;
+  const fallback = reviews.find((review) => review.language === "en") ?? reviews[0];
+  const quoteReview = quoted ?? fallback;
+  const quoteText = quoted ? quotedSentence : excerpt(fallback.paragraphs[0], 220);
   const since = new Date(siteConfig.operator.founded).getFullYear();
+  const travelers = serviceAchievements.find((item) => item.id === "guests-hosted");
+  const countries = serviceAchievements.find((item) => item.id === "countries-served");
   const featured = featuredSlugs
     .map((slug) => journeyCatalog.find((item) => item.slug === slug))
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
-  const [lead, ...rest] = featured;
 
   return (
     <main className={styles.page}>
@@ -115,13 +196,13 @@ export function HomePage({ planningHref }: { planningHref: string }) {
         </picture>
         <div className={styles.heroShade} aria-hidden="true" />
         <div className={styles.heroBody}>
-          <p className={styles.eyebrow}>Designed and operated in China</p>
+          <p className={styles.eyebrow}>Private China tours, since {since}</p>
           <h1 id="home-title">
-            Private China tours, <em>designed and run by people who live here.</em>
+            China, arranged by <em>people who live here.</em>
           </h1>
           <p className={styles.heroSub}>
-            Your own guide and driver, a pace that suits you, and every detail confirmed in writing
-            before you commit.
+            Your own guide and driver, a pace you set, and every detail confirmed in writing before
+            you pay.
           </p>
           <div className={styles.heroActions}>
             <TrackedLink
@@ -133,7 +214,7 @@ export function HomePage({ planningHref }: { planningHref: string }) {
               Plan my journey
             </TrackedLink>
             <Link className={styles.textLinkLight} href="/tours">
-              Browse the journeys <ArrowRight size={14} aria-hidden="true" />
+              See the journeys <ArrowRight size={14} aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -142,100 +223,122 @@ export function HomePage({ planningHref }: { planningHref: string }) {
       <ul className={styles.evidence} aria-label="Why travelers trust AVIORA">
         <li>
           <strong>Since {since}</strong>
-          <span>Licensed inbound operator in China</span>
+          <span>A licensed inbound operator, based in Guangzhou</span>
         </li>
         <li>
           <strong>{reviews.length} reviews</strong>
-          <span>From travelers after they came home</span>
+          <span>Written by travelers after they came home</span>
+        </li>
+        <li>
+          <strong>{travelers?.display ?? "12,000+"} travelers</strong>
+          <span>From more than {countries?.display.replace("+", "") ?? "30"} countries</span>
         </li>
         <li>
           <strong>Within a day</strong>
-          <span>A specialist replies on WhatsApp</span>
-        </li>
-        <li>
-          <strong>No forced shopping</strong>
-          <span>Stated in every proposal</span>
+          <span>A China-based specialist replies on WhatsApp</span>
         </li>
       </ul>
 
-      <section className={styles.statement} aria-label="About AVIORA">
+      <section className={styles.manifesto} aria-labelledby="manifesto-title">
+        <p className={styles.kicker}>Why private</p>
+        <h2 id="manifesto-title" className={styles.big}>
+          Most trips to China go wrong in the gaps: the transfer nobody met, the ticket nobody
+          booked, the hour lost between two cities. <em>We plan the gaps out.</em>
+        </h2>
+        <ul className={styles.promises}>
+          {promises.map((promise) => (
+            <li key={promise.title}>
+              <h3>{promise.title}</h3>
+              <p>{promise.body}</p>
+            </li>
+          ))}
+        </ul>
         <p className={styles.definition}>{journeysCopy.definition}</p>
-        <p className={styles.big}>
-          We design, run and look after every journey ourselves, from the first message to the last
-          transfer. <em>One team in China</em> that plans the route, checks every detail and picks
-          up when you call.
-        </p>
       </section>
 
       <section className={styles.begin} aria-labelledby="begin-title">
-        <p className={styles.kicker} id="begin-title">
-          Begin here
-        </p>
-        <HomeSentence />
+        <div className={styles.beginInner}>
+          <p className={styles.kicker} id="begin-title">
+            Not sure where to start?
+          </p>
+          <HomeSentence />
+        </div>
       </section>
 
-      {lead && (
-        <section className={styles.featured} aria-labelledby="featured-title">
-          <header className={styles.head}>
-            <h2 id="featured-title">Where to begin.</h2>
-            <Link className={styles.textLink} href="/tours">
-              See all {journeyCatalog.length} journeys
-            </Link>
-          </header>
-          <div className={styles.featuredGrid}>
-            <Link href={lead.href} className={`${styles.card} ${styles.cardLead}`}>
-              <div className={styles.cardPhoto}>
-                <Image
-                  src={journeyPhotos[lead.slug].src}
-                  alt={journeyPhotos[lead.slug].alt}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 60vw"
-                />
-              </div>
-              <p className={styles.kicker}>
-                {getJourneyRouteLabel(lead)} · {lead.durationLabel.replace(" / ", " · ")}
-              </p>
-              <h3>{getJourneyHeadline(lead)}</h3>
-              <p className={styles.cardText}>{lead.summary}</p>
-              <span className={styles.textLink}>View the journey</span>
-            </Link>
-            {rest.map((item) => (
-              <Link href={item.href} className={styles.card} key={item.slug}>
-                <div className={styles.cardPhoto}>
-                  <Image
-                    src={journeyPhotos[item.slug].src}
-                    alt={journeyPhotos[item.slug].alt}
-                    fill
-                    sizes="(max-width: 900px) 100vw, 32vw"
-                    style={{ objectPosition: journeyPhotos[item.slug].position ?? "center" }}
-                  />
-                </div>
-                <p className={styles.kicker}>
-                  {getJourneyRouteLabel(item)} · {item.durationLabel.replace(" / ", " · ")}
-                </p>
-                <h3>{getJourneyHeadline(item)}</h3>
-                <span className={styles.textLink}>View the journey</span>
-              </Link>
-            ))}
+      <section className={styles.featured} aria-labelledby="featured-title">
+        <header className={styles.head}>
+          <div>
+            <h2 id="featured-title">Three ways to see China.</h2>
+            <p className={styles.headNote}>
+              Each is a starting point. Change the days, the pace or the hotels and we rework the
+              whole route around you.
+            </p>
           </div>
-        </section>
-      )}
+          <Link className={styles.textLink} href="/tours">
+            All {journeyCatalog.length} journeys
+          </Link>
+        </header>
+        <div className={styles.featuredGrid}>
+          {featured.map((item, index) => {
+            const photo = tilePhotoOverrides[item.slug] ?? journeyPhotos[item.slug];
+            return (
+              <Link
+                href={item.href}
+                className={`${styles.tile} ${index === 0 ? styles.tileLead : ""}`}
+                key={item.slug}
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes={
+                    index === 0
+                      ? "(max-width: 900px) 100vw, 44vw"
+                      : "(max-width: 900px) 100vw, 28vw"
+                  }
+                  style={{ objectPosition: photo.position ?? "center" }}
+                />
+                <span className={styles.tileShade} aria-hidden="true" />
+                <span className={styles.tileText}>
+                  <span className={styles.tileKicker}>
+                    {getJourneyRouteLabel(item)} · {item.durationLabel.replace(" / ", " · ")}
+                  </span>
+                  <strong>{getJourneyHeadline(item)}</strong>
+                  <span className={styles.tileNote}>{getJourneyCardDescription(item)}</span>
+                  <span className={styles.tileLink}>
+                    View the journey <ArrowRight size={14} aria-hidden="true" />
+                  </span>
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
 
-      {featuredReview && (
-        <section className={styles.quote} aria-label="A traveler's words">
-          <blockquote>“{excerpt(featuredReview.paragraphs[0], 330)}”</blockquote>
+      <section className={styles.quote} aria-label="A traveler's words">
+        <div className={styles.quotePhoto}>
+          <Image
+            src={journeyPhotos["china-at-an-easier-pace-12-day-private-tour"].src}
+            alt={journeyPhotos["china-at-an-easier-pace-12-day-private-tour"].alt}
+            fill
+            sizes="(max-width: 900px) 100vw, 40vw"
+          />
+        </div>
+        <div className={styles.quoteText}>
+          <p className={styles.kicker}>In a traveler&apos;s words</p>
+          <blockquote>“{quoteText}”</blockquote>
           <p className={styles.attribution}>
-            {featuredReview.author}, {featuredReview.location}
+            {quoteReview.author}, {quoteReview.location}
           </p>
           <Link className={styles.textLink} href="/reviews">
             Read all {reviews.length} reviews
           </Link>
-        </section>
-      )}
+        </div>
+      </section>
 
       <section className={styles.places} aria-labelledby="places-title">
         <header className={styles.head}>
-          <h2 id="places-title">Four places most journeys begin.</h2>
+          <h2 id="places-title">Where most journeys begin.</h2>
           <Link className={styles.textLink} href="/destinations">
             All destinations
           </Link>
@@ -250,10 +353,11 @@ export function HomePage({ planningHref }: { planningHref: string }) {
                     alt={place.alt}
                     fill
                     sizes="(max-width: 900px) 50vw, 25vw"
+                    style={{ objectPosition: place.position }}
                   />
                 </div>
                 <h3>{place.name}</h3>
-                <p>{placeGlossary[place.name] ?? ""}</p>
+                <p>{capitalise(placeGlossary[place.name] ?? "")}.</p>
               </Link>
             </li>
           ))}
@@ -271,10 +375,10 @@ export function HomePage({ planningHref }: { planningHref: string }) {
 
       <section className={styles.steps} aria-labelledby="steps-title">
         <header className={styles.head}>
-          <h2 id="steps-title">{journeysCopy.stepsTitle}</h2>
+          <h2 id="steps-title">How it works.</h2>
         </header>
         <ol>
-          {journeysCopy.steps.map((step, index) => (
+          {steps.map((step, index) => (
             <li key={step.title}>
               <span aria-hidden="true">{["i", "ii", "iii", "iv"][index]}</span>
               <h3>{step.title}</h3>
@@ -286,15 +390,18 @@ export function HomePage({ planningHref }: { planningHref: string }) {
 
       <section className={styles.operator} aria-labelledby="operator-title">
         <div>
-          <p className={styles.kicker}>Who operates your journey</p>
-          <h2 id="operator-title">A named company, with offices in three Chinese cities.</h2>
+          <p className={styles.kicker}>The company behind the journeys</p>
+          <h2 id="operator-title">
+            A licensed China company, with offices in Beijing, Shanghai and Xi&apos;an.
+          </h2>
         </div>
         <div>
           <p>
-            AVIORA journeys are designed and operated through{" "}
-            {siteConfig.operator.englishReferenceName}, registered in {siteConfig.operator.locality}{" "}
-            and {siteConfig.operator.tourismLicense.statement}. We have offices in{" "}
-            {siteConfig.operator.officeCities.join(", ")}.
+            Every AVIORA journey is designed and operated by{" "}
+            {siteConfig.operator.englishReferenceName}, a registered company in{" "}
+            {siteConfig.operator.locality} that is {siteConfig.operator.tourismLicense.statement}.
+            You can see who we are, where we are registered and how we are licensed before you send
+            a single message.
           </p>
           <Link className={styles.textLink} href="/company">
             Company, offices and registration
@@ -304,23 +411,24 @@ export function HomePage({ planningHref }: { planningHref: string }) {
 
       <section className={styles.guides} aria-labelledby="guides-title">
         <header className={styles.head}>
-          <h2 id="guides-title">{journeysCopy.guidesTitle}</h2>
+          <h2 id="guides-title">Read before you decide.</h2>
           <Link className={styles.textLink} href="/journal">
-            Read the journal
+            The journal
           </Link>
         </header>
         <div className={styles.guideGrid}>
-          {journeysCopy.guides.map((guide) => (
+          {guides.map((guide) => (
             <Link href={guide.href} key={guide.href}>
               <span className={styles.kicker}>{guide.kicker}</span>
               <h3>{guide.title}</h3>
+              <p>{guide.note}</p>
             </Link>
           ))}
         </div>
       </section>
 
       <section className={styles.faq} aria-labelledby="faq-title">
-        <h2 id="faq-title">Questions before you go</h2>
+        <h2 id="faq-title">Good questions to ask us.</h2>
         <div>
           {homeFaqs.map((faq) => (
             <details key={faq.question}>
@@ -334,13 +442,13 @@ export function HomePage({ planningHref }: { planningHref: string }) {
       <section className={styles.closing} id="start-planning" aria-labelledby="closing-title">
         <div className={styles.closingText}>
           <p className={styles.eyebrowLight}>Plan my journey</p>
-          <h2 id="closing-title">{journeysCopy.closingTitle}</h2>
+          <h2 id="closing-title">Tell us when you would like to go.</h2>
           <p>
-            Share your first name and WhatsApp number. A specialist in China replies, normally
-            within a day. No payment, no obligation.
+            Leave your first name and WhatsApp number. A China-based specialist replies, normally
+            within a day, with a first idea of the route. No payment, no obligation.
           </p>
           <a className={styles.whatsappLink} href={whatsapp}>
-            <WhatsAppIcon aria-hidden="true" /> Prefer WhatsApp? Message our team
+            <WhatsAppIcon aria-hidden="true" /> Prefer to write? Message us on WhatsApp
           </a>
         </div>
         <div className={styles.formPanel}>

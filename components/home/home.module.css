@@ -174,8 +174,8 @@
   line-height: 1.5;
 }
 
-/* Statement */
-.statement,
+/* Manifesto */
+.manifesto,
 .begin,
 .featured,
 .quote,
@@ -188,32 +188,65 @@
   margin: 0 auto;
   padding-inline: var(--gutter);
 }
-.statement {
-  padding-block: clamp(80px, 11vw, 160px) clamp(50px, 6vw, 90px);
+.manifesto {
+  padding-block: clamp(80px, 11vw, 160px) clamp(60px, 8vw, 110px);
 }
-.definition {
-  max-width: 54ch;
-  margin-bottom: 34px;
-  color: var(--color-muted);
-  font-size: 1.0625rem;
+.manifesto .kicker {
+  margin-bottom: 22px;
 }
 .big {
-  max-width: 27em;
-  font-size: clamp(1.625rem, 3.3vw, 2.9rem);
-  line-height: 1.22;
-  letter-spacing: -0.01em !important;
+  max-width: 26em;
+  font-size: clamp(1.75rem, 3.5vw, 3.1rem);
+  line-height: 1.2;
+  letter-spacing: -0.012em !important;
 }
 .big em {
   font-style: italic;
   color: var(--color-forest);
 }
-
-/* Begin here */
-.begin {
-  padding-block: clamp(30px, 5vw, 70px) clamp(70px, 9vw, 130px);
+.promises {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3.4vw, 56px);
+  margin-top: clamp(48px, 6vw, 84px);
 }
-.begin .kicker {
+.promises li {
+  padding-top: 22px;
+  border-top: 1px solid var(--color-ink);
+}
+.promises h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.promises p {
+  max-width: 34ch;
+  color: var(--color-muted);
+  font-size: 1.0625rem;
+}
+.definition {
+  max-width: 62ch;
+  margin-top: clamp(40px, 5vw, 64px);
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+}
+
+/* Begin here: a tinted full-bleed band */
+.begin {
+  max-width: none;
+  padding-inline: 0;
+  background: var(--color-surface-muted);
+}
+.beginInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(60px, 8vw, 110px) var(--gutter);
+}
+.beginInner .kicker {
   margin-bottom: 22px;
+}
+.sentenceBlock {
+  display: block;
 }
 .sentence {
   max-width: 24em;
@@ -276,73 +309,111 @@
   line-height: 1.1;
   letter-spacing: -0.012em !important;
 }
+.headNote {
+  max-width: 50ch;
+  margin-top: 14px;
+  color: var(--color-muted);
+  font-size: 1.0625rem;
+}
 
-/* Featured */
+/* Featured: full-image tiles */
 .featured {
-  padding-bottom: clamp(70px, 9vw, 130px);
+  padding-block: clamp(80px, 10vw, 150px) 0;
 }
 .featuredGrid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  gap: clamp(20px, 2.6vw, 40px);
-  align-items: start;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  gap: clamp(12px, 1.6vw, 24px);
 }
-.card {
+.tile {
+  position: relative;
+  display: block;
+  min-height: clamp(460px, 56vw, 720px);
+  overflow: hidden;
+  background: var(--color-night);
+  color: #fff !important;
+}
+.tile img {
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tile:hover img {
+  transform: scale(1.04);
+}
+.tileShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 16, 13, 0) 38%, rgba(18, 16, 13, 0.82) 100%);
+}
+.tileText {
+  position: absolute;
+  inset: auto 0 0;
   display: grid;
   gap: 10px;
-  align-content: start;
+  padding: clamp(20px, 2.2vw, 34px);
 }
-.cardPhoto {
+.tileKicker {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+  opacity: 0.88;
+}
+.tileText strong {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.3vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+.tileNote {
+  max-width: 38ch;
+  color: #ece6da;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.tileLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: start;
+  margin-top: 6px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid currentColor;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+}
+
+/* Quote: a photo beside the words */
+.quote {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 100px);
+  align-items: center;
+  padding-block: clamp(80px, 10vw, 150px) 0;
+}
+.quotePhoto {
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--color-line);
 }
-.cardLead .cardPhoto {
-  aspect-ratio: 4 / 4.6;
-}
-.cardPhoto img {
+.quotePhoto img {
   object-fit: cover;
-  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.card:hover .cardPhoto img {
-  transform: scale(1.04);
-}
-.card .kicker {
-  margin-top: 12px;
-}
-.card h3 {
-  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-  line-height: 1.15;
-}
-.card:hover h3 {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 6px;
-}
-.cardText {
-  max-width: 40ch;
-  color: var(--color-muted);
-  font-size: 1rem;
-}
-.card .textLink {
-  justify-self: start;
-  margin-top: 6px;
-}
-
-/* Quote */
-.quote {
-  padding-block: clamp(60px, 8vw, 110px);
-  border-block: 1px solid var(--color-line);
+.quoteText {
   display: grid;
   gap: 22px;
   justify-items: start;
 }
 .quote blockquote {
-  max-width: 28em;
-  font-size: clamp(1.5rem, 2.9vw, 2.5rem);
+  max-width: 22em;
+  font-size: clamp(1.625rem, 3vw, 2.6rem);
   font-style: italic;
-  line-height: 1.28;
+  line-height: 1.25;
   letter-spacing: -0.01em !important;
 }
 .attribution {
@@ -353,7 +424,7 @@
 
 /* Places */
 .places {
-  padding-block: clamp(70px, 9vw, 130px) 0;
+  padding-block: clamp(80px, 10vw, 150px) 0;
 }
 .placeGrid {
   display: grid;
@@ -366,7 +437,7 @@
 }
 .placePhoto {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--color-line);
 }
@@ -462,6 +533,11 @@
   margin-top: 12px;
   font-size: 1.5rem;
   line-height: 1.2;
+}
+.guideGrid p {
+  margin-top: 10px;
+  color: var(--color-muted);
+  font-size: 1rem;
 }
 .guideGrid a:hover h3 {
   text-decoration: underline;
@@ -578,11 +654,19 @@
   .featuredGrid {
     grid-template-columns: 1fr 1fr;
   }
-  .cardLead {
+  .tileLead {
     grid-column: 1 / -1;
+    min-height: 480px;
   }
-  .cardLead .cardPhoto {
-    aspect-ratio: 16 / 9;
+  .promises {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .quote {
+    grid-template-columns: 1fr;
+  }
+  .quotePhoto {
+    aspect-ratio: 16 / 10;
   }
   .placeGrid,
   .steps ol {
@@ -612,8 +696,9 @@
   .featuredGrid {
     grid-template-columns: 1fr;
   }
-  .cardPhoto {
-    aspect-ratio: 4 / 3;
+  .tile,
+  .tileLead {
+    min-height: 440px;
   }
   .page {
     padding-bottom: 76px;

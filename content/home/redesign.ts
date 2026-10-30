@@ -264,24 +264,29 @@ export const homePlanningGuides = [
 
 export const homeFaqs = [
   {
-    question: "Are AVIORA journeys private or group tours?",
+    question: "Are your journeys private or group tours?",
     answer:
-      "AVIORA designs private journeys for your own party. Your guides, road transport and daily planning are arranged around you; public flights, trains, cruises and ticketed venues remain shared services where applicable.",
+      "Private. Your guide, vehicle and daily plan are arranged for your party alone. Flights, trains and ticketed sites such as museums remain shared public services, but your guide meets you and handles the logistics around them.",
   },
   {
-    question: "Can the published itineraries be changed?",
+    question: "Can I change a published itinerary?",
     answer:
-      "Yes. Published tours are starting points. Dates, pace, hotels, room needs, experiences and route details can be adjusted before the proposal is confirmed.",
+      "Yes. Every published itinerary is a starting point. Dates, pace, hotels, rooms, experiences and the route itself can be adjusted before you confirm anything.",
   },
   {
-    question: "What do the published starting prices mean?",
+    question: "What does a starting price include?",
     answer:
-      "Each tour states its pricing unit and basis. Most multi-city prices are per person based on four guests sharing two rooms. Your written proposal reflects your actual dates, party size, hotels and inclusions.",
+      "Each journey states its pricing unit and basis, for example per person with four guests sharing two rooms. Your written proposal reflects your actual dates, party size, hotels and inclusions. International flights are not included.",
   },
   {
-    question: "Who operates the journey in China?",
+    question: "Who runs the trip in China?",
     answer:
-      "AVIORA China Travel, also known as AVIORA Travel, is the guest-facing brand of China Prime DMC. Both are operated through Youyouhui (Guangzhou) International Travel Service Co., Ltd. (游友汇（广州）国际旅行社有限公司), the Guangzhou-registered China operator licensed for inbound tourism business. AVIORA has offices in Beijing, Shanghai and Xi'an; the registered operating company is based in Guangzhou.",
+      "AVIORA is operated by Youyouhui (Guangzhou) International Travel Service Co., Ltd. (游友汇（广州）国际旅行社有限公司), a registered China company licensed for inbound tourism. AVIORA China Travel is the traveler-facing brand of China Prime DMC. We have offices in Beijing, Shanghai and Xi'an, and the registered company is based in Guangzhou.",
+  },
+  {
+    question: "What if I need to cancel?",
+    answer:
+      "Our standard cancellation schedule is published on the booking terms page. Charges rise from 10% when you cancel more than 60 days before departure to 100% within 14 days. Your proposal states any stricter supplier conditions before you pay.",
   },
 ] as const;
 
