@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { HomeRedesign } from "@/components/home/redesign/home-redesign";
+import { HomePage as HomeView } from "@/components/home/home-page";
 import { homeFaqs } from "@/content/home/redesign";
 import { siteConfig } from "@/config/site";
 import { getPublicSiteSettings } from "@/lib/cms/public-content";
@@ -9,9 +9,9 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { webPageSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = createMetadata({
-  title: "AVIORA China Travel | Private China Tours & Local Experts",
+  title: "Private China Tours, Designed and Run in China | AVIORA",
   description:
-    "AVIORA China Travel plans private China tours with local offices in Beijing, Shanghai and Xi'an, licensed operations, private guides and no compulsory shopping.",
+    "Private China tours with your own guide and driver, designed and run by a licensed team in Beijing, Shanghai and Xi'an. Every detail confirmed in writing. No compulsory shopping.",
   image: siteConfig.ogImage,
   imageWidth: 1200,
   imageHeight: 630,
@@ -35,7 +35,7 @@ export default async function HomePage() {
         })}
       />
       <JsonLd id="homepage-faq-schema" data={homepageFaqSchema()} />
-      <HomeRedesign planningHref={settings.primaryCtaHref} />
+      <HomeView planningHref={settings.primaryCtaHref} />
     </>
   );
 }
