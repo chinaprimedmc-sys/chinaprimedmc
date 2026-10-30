@@ -413,6 +413,36 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     title: "China Private Tour Support for Weather and Delays",
     seoTitle: "China Private Tour Support for Weather and Delays",
   },
+  "china-tipping-guide-guides-drivers-hotels": {
+    title: "Tipping in China: What to Give Guides, Drivers and Hotel Staff",
+    seoTitle: "Tipping in China: Guides, Drivers and Hotels",
+    preserveTitleCase: true,
+  },
+  "how-to-check-china-tour-guide-is-licensed": {
+    title: "How to Check a China Tour Guide Is Licensed (and Why It Matters)",
+    seoTitle: "How to Check a China Tour Guide Is Licensed",
+    preserveTitleCase: true,
+  },
+  "china-travel-insurance-for-private-tours": {
+    title: "China Travel Insurance: What a Private Tour Traveler Should Cover",
+    seoTitle: "China Travel Insurance: What to Cover Before You Go",
+    preserveTitleCase: true,
+  },
+  "best-time-to-visit-jiuzhaigou": {
+    title: "Best Time to Visit Jiuzhaigou: Autumn Color, Crowds and Seasons",
+    seoTitle: "Best Time to Visit Jiuzhaigou: Season-by-Season Guide",
+    preserveTitleCase: true,
+  },
+  "second-trip-to-china-where-to-go-next": {
+    title: "Second Trip to China: Where to Go After the Classics",
+    seoTitle: "Second Trip to China: Where to Go After Beijing",
+    preserveTitleCase: true,
+  },
+  "how-to-pay-china-tour-operator-safely": {
+    title: "How to Pay a China Tour Operator Safely: Deposits, Contracts, Refunds",
+    seoTitle: "How to Pay a China Tour Operator Safely",
+    preserveTitleCase: true,
+  },
 };
 
 export function applyJournalEditorialUpgrade(article: JournalArticle): JournalArticle {

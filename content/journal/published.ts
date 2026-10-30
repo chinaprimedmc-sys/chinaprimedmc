@@ -14,6 +14,7 @@ import { mutianyuCluster } from "@/content/journal/day-tours/mutianyu";
 import { shanghaiCluster } from "@/content/journal/day-tours/shanghai";
 import { xianCluster } from "@/content/journal/day-tours/xian";
 import { audienceExperienceArticles } from "@/content/journal/audience-experience";
+import { moreGuideArticles } from "@/content/journal/practical-guides-more";
 
 const author = {
   name: "AVIORA China Travel Team",
@@ -1918,5 +1919,6 @@ export const publishedJournalArticles: JournalArticle[] = [
   ...basePublishedJournalArticles,
   ...operationalJournalArticles,
   ...audienceExperienceArticles,
+  ...moreGuideArticles,
   ...dayTourJournalArticles,
 ];

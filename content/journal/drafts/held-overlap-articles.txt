@@ -1,0 +1,504 @@
+HELD, NOT PUBLISHED: these slugs are permanently redirected in next.config.ts to existing articles.
+Source kept for review. To publish one, remove its redirect first and decide the canonical owner.
+
+  /* 1 ─────────────────────────────────────────────────────────── */
+  {
+    slug: "is-private-china-tour-worth-it",
+    title: "Is a Private China Tour Worth It? An Honest Cost and Value Test",
+    dek: "A private tour costs more per person than a group tour. Here is how to tell whether the difference buys you something you will actually use.",
+    excerpt:
+      "Work out whether a private China tour is worth the price for your party, your route and your tolerance for logistics, including the cases where it is not.",
+    category: "Luxury Travel",
+    tags: ["first-time-china", "luxury-travel", "private-guides"],
+    readingTime: "8 min read",
+    hero: photos.temple,
+    heroEyebrow: "Decide with a clear test",
+    seoTitle: "Is a Private China Tour Worth It? Honest Value Test",
+    seoDescription:
+      "Is a private China tour worth the price? A plain value test covering cost per day, logistics, pace and the situations where a group or self-guided trip is smarter.",
+    keywords: [
+      "is a private China tour worth it",
+      "private China tour vs group",
+      "private China tour value",
+      "China tour guide and driver cost",
+    ],
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["first-china-beautifully-paced"],
+      articles: [
+        "private-china-tour-cost-2026",
+        "private-china-tour-vs-group-tour",
+        "private-china-tour-vs-self-guided",
+        "what-is-included-private-china-tour",
+      ],
+    },
+    conversion: {
+      eyebrow: "See what it would cost for your party",
+      title: "Get a written proposal and judge the value yourself.",
+      description:
+        "Tell us your month, party size and cities. A China-based specialist replies with a scoped proposal, not a sales call.",
+      label: "Request a proposal",
+      href: "/start-planning?source=journal-private-worth-it",
+    },
+    contentType: "comparison",
+    decisionStage: "evaluate",
+    keyAnswer:
+      "A private China tour is usually worth it when your trip has several cities, limited days, children or older travelers, or specific needs, because it buys time and removes logistics. It is usually not worth it for a single easy city, a very tight budget, or travelers who enjoy figuring things out.",
+    appliesTo: ["First-time visitors", "Couples", "Families", "Older travelers"],
+    relatedJourneyReason:
+      "The nine-day first journey shows what a private route includes at a published starting price, so you can test the value argument against real numbers.",
+    watchFor:
+      "Compare identical inclusions. A cheap private quotation that leaves out hotels, tickets or rail is not the same product.",
+    content: [
+      h("The short answer"),
+      p(
+        "A private China tour is worth it when what you are really short of is time, energy or confidence with logistics. It is not worth it when you have plenty of all three and a tight budget. The honest test is not whether private is better in the abstract. It is whether the extra cost per person buys something your trip will otherwise lack.",
+      ),
+      p(
+        "China rewards good sequencing. Major sites use timed or passport-linked entry, cities are large, and one badly timed transfer can consume half a day. A private guide and driver mainly exist to remove that friction, and to let you change the day when you are tired, the weather turns or something unexpected is worth more of your time.",
+      ),
+      h("What you are actually paying for"),
+      ul(
+        "**Your own time.** No fixed coach schedule, no waiting for other travelers, and the order of the day set around your energy.",
+        "**Logistics handled.** Airport and station meet-and-assist, tickets arranged, luggage moved, and someone who answers the phone when plans change.",
+        "**Context.** A guide who explains what you are looking at, rather than a person who points to where to queue.",
+        "**Fit.** Walking load, meals, hotel standard and room setup shaped around your party.",
+      ),
+      p(
+        "What you are not paying for is a guarantee of a perfect trip. Weather, closures and holiday crowds still happen. The difference is who absorbs the problem: you, or a team that works there every day.",
+      ),
+      h("Private, group and self-guided compared"),
+      table(
+        ["", "Private tour", "Small-group tour", "Self-guided"],
+        ["Cost per person", "Highest, lower for families and groups of four", "Mid", "Lowest cash cost"],
+        ["Control of the day", "High", "Low, fixed schedule", "Total"],
+        ["Logistics risk", "Carried by the operator", "Carried by the operator", "Carried by you"],
+        ["Pace", "Set by your party", "Set by the group", "Set by you"],
+        ["Best for", "Several cities, families, older travelers, specific needs", "Solo travelers who enjoy company", "Experienced, confident, flexible travelers"],
+      ),
+      p(
+        "For a deeper side-by-side, see our guides to [private versus group tours](/journal/private-china-tour-vs-group-tour) and [private versus self-guided travel](/journal/private-china-tour-vs-self-guided).",
+      ),
+      h("Run the cost-per-day check"),
+      p(
+        "Divide the total by the number of days and the number of people, then ask what is inside. Our published nine-day first journey starts at US$3,190 per person, based on four guests sharing two rooms, which works out to roughly US$355 per person per day for hotels, a private guide on touring days, private transfers, listed admissions and high-speed rail within China. International flights are not included, and two travelers usually pay more per person because the guide and vehicle are shared across fewer people.",
+      ),
+      p(
+        "That arithmetic is the whole test. If you would spend about that much per day anyway on hotels, taxis, tickets and guides, the private premium is small. If you would travel on a fraction of it, a private tour may simply be the wrong product, and that is fine. Our [private China tour pricing guide](/journal/private-china-tour-cost-2026) explains what changes the number.",
+      ),
+      h("When a private tour is not worth it"),
+      ul(
+        "You are visiting one easy city for a few days and are comfortable with apps, taxis and a translation tool.",
+        "Budget is the main constraint and you are happy to trade comfort and time for savings.",
+        "You prefer meeting other travelers and following a shared schedule.",
+        "You enjoy planning and troubleshooting, and a missed train would be an anecdote, not a crisis.",
+      ),
+      p(
+        "A useful middle path is to book private service only where it earns its price: arrival, one or two complex days such as the Great Wall or the Terracotta Army, and any intercity transfers. Our [private day tours](/tours) exist for exactly that.",
+      ),
+      h("A five-question value test"),
+      ol(
+        "Do you have fewer than two weeks and more than two cities?",
+        "Are children, older parents or mobility limits part of the party?",
+        "Do you have dietary, prayer or accessibility needs that must be confirmed rather than hoped for?",
+        "Would one lost half-day, a missed train or a closed site seriously hurt the trip?",
+        "Would you rather spend your energy on the destination than on arranging it?",
+      ),
+      p(
+        "Three or more yeses usually mean private is worth the premium. One or none means a group or self-guided trip will probably serve you better.",
+      ),
+      cta(
+        "Test the value on your own dates",
+        "Share your month, party size and cities. We will send a written proposal you can compare line by line.",
+        "/start-planning?source=journal-private-worth-it-mid",
+        "Request a proposal",
+      ),
+      h("What you should demand in return"),
+      p(
+        "A private price is only worth paying if it is specific. Ask for the hotels and room basis, guide and vehicle coverage by day, intercity transport class, included tickets and meals, and the exclusions, all in writing. Our [proposal checklist](/journal/private-china-tour-proposal-checklist) and [inclusions guide](/journal/what-is-included-private-china-tour) show what a complete proposal looks like, and [how to choose a company](/journal/how-to-choose-private-china-tour-company) explains what to verify first.",
+      ),
+      faq(
+        "Is a private tour safer than a group tour?",
+        "Neither format is inherently safer. A private tour gives you a dedicated person and the ability to change plans quickly, which helps with weather, health and fatigue. Safety still depends on the operator's standards, which is why we recommend checking the legal entity, guide credentials and emergency support before paying.",
+      ),
+      faq(
+        "How many travelers make a private tour cost-effective?",
+        "Guide and vehicle costs are shared across the party, so the per-person price usually falls as the group grows to around four. Couples and solo travelers pay more per person, which is why published starting prices state their party-size basis.",
+      ),
+      faq(
+        "Can I book private service for only part of my trip?",
+        "Yes. Many travelers book private arrival transfers and one or two complex days, then travel independently. This is often the best value if you are confident in simpler cities.",
+      ),
+      faq(
+        "Do I need a private guide in every city?",
+        "Not necessarily. Guides add the most value at sites that need context or tricky logistics, such as the Great Wall, the Terracotta Army and the Forbidden City. Free evenings and simple city days can stay unguided.",
+      ),
+    ],
+  },
+
+  /* 2 ─────────────────────────────────────────────────────────── */
+  {
+    slug: "9-days-or-11-days-in-china",
+    title: "9 Days or 11 Days in China? What Two Extra Days Really Buy",
+    dek: "Two days sound small. In China they can mean a whole extra city or a calmer trip. Here is how to decide, and why \"11 days\" often means 11 nights.",
+    excerpt:
+      "Compare a nine-day and an 11-day China itinerary by cities, transfers and pace, and learn how day and night counts differ between operators.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "beijing", "xian", "shanghai", "chengdu"],
+    readingTime: "7 min read",
+    hero: photos.shanghai,
+    heroEyebrow: "Choose the right length",
+    seoTitle: "9 Days or 11 Days in China? What Two Days Add",
+    seoDescription:
+      "Compare 9 and 11 days in China: what each length fits, how transfers eat time, and why an '11-day' trip may be 11 nights. Includes route examples.",
+    keywords: [
+      "9 days or 11 days in China",
+      "9 day China itinerary",
+      "11 day China itinerary",
+      "how many days in China first time",
+    ],
+    related: {
+      destinations: ["beijing", "xian", "shanghai", "chengdu"],
+      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      articles: [
+        "9-day-beijing-xian-shanghai-itinerary",
+        "11-day-beijing-xian-chengdu-shanghai-itinerary",
+        "how-many-days-in-china-7-10-14-day-itineraries",
+        "two-week-china-itinerary-first-time",
+      ],
+    },
+    conversion: {
+      eyebrow: "Not sure which length fits?",
+      title: "Tell us your dates and we will suggest the right route.",
+      description:
+        "Share how many days you have, including travel time, and a China specialist will recommend a route that does not feel like a checklist.",
+      label: "Get a recommendation",
+      href: "/start-planning?source=journal-nine-or-eleven",
+    },
+    contentType: "comparison",
+    decisionStage: "decide",
+    keyAnswer:
+      "Nine days fit three bases well: Beijing, Xi'an and Shanghai. Eleven days either add a fourth city such as Chengdu for pandas, or keep three cities and slow the pace. Check whether a quoted '11 days' means 11 days or 11 nights, because the difference is one full day.",
+    appliesTo: ["First-time visitors", "Couples", "Families"],
+    relatedJourneyReason:
+      "The nine-day journey is the focused three-city route; the four-city journey shows what the extra length adds.",
+    watchFor:
+      "Operators count days and nights differently. Confirm arrival and departure days before comparing routes.",
+    content: [
+      h("The short answer"),
+      p(
+        "With nine days, build around three bases: Beijing, Xi'an and Shanghai. With 11, either add a fourth city, usually Chengdu for giant pandas and Sichuan food, or keep the same three and let the trip breathe. The wrong move is to add cities without adding days, which leaves you with more hotel changes and less actual time in each place.",
+      ),
+      h("First, how days and nights are counted"),
+      p(
+        "Operators count differently, and it changes what you are comparing. A nine-day trip, as we publish it, is nine days and eight nights: you land on day one and fly home on day nine. A trip called \"11 days\" elsewhere may mean 11 nights, which is 12 days including arrival and departure. Our own four-city route is listed as 12 days and 11 nights for that reason, and some older pages and links still use the shorter name.",
+      ),
+      note(
+        "Check this before you compare",
+        "Ask every operator for the arrival day, the departure day and the number of hotel nights. Two trips with the same name can differ by a full day.",
+      ),
+      h("What nine days fits"),
+      p(
+        "Our nine-day first journey spends four days in Beijing, two in Xi'an and three in Shanghai. That is enough for the Forbidden City with context, a full Great Wall day, the Terracotta Army without a rushed connection, and Shanghai after dark. It travels between cities by high-speed rail from Beijing to Xi'an and a flight from Xi'an to Shanghai.",
+      ),
+      p(
+        "It works because three bases keep transfers to two. Each intercity move costs roughly half a day once you count checking out, transport and settling in, so every city you add takes more from the rest of the trip than its own days suggest.",
+      ),
+      h("What 11 days adds"),
+      ul(
+        "**A fourth city.** Chengdu is the usual choice: pandas are most active in the morning, and Sichuan food and teahouse culture give a very different China from the imperial and modern cities.",
+        "**Or more room.** Keep three cities and add rest days, an extra Great Wall or Shanghai day, or a slower Xi'an.",
+        "**One more hotel change.** More variety, but also more packing and more transfers.",
+      ),
+      table(
+        ["", "9 days (8 nights)", "11 days (11 nights, 12 days)"],
+        ["Typical cities", "Beijing, Xi'an, Shanghai", "Beijing, Xi'an, Chengdu, Shanghai"],
+        ["Intercity moves", "2", "3"],
+        ["Best for", "A focused first look at China's icons", "Travelers who want pandas and Sichuan food too"],
+        ["Pace", "Full but manageable", "Balanced if each city keeps at least two nights"],
+        ["Main risk", "Feels packed if you add a fourth city", "More transfers if days are tight"],
+      ),
+      h("A simple rule: two nights minimum per base"),
+      p(
+        "Use two nights as the floor for any city and three for the large ones like Beijing and Shanghai. Less than that and you spend your time moving rather than seeing. If your total days do not allow this for every city you want, remove a city rather than shorten the rest.",
+      ),
+      h("Which length for which traveler"),
+      ul(
+        "**First visit, wants the icons:** nine days, three cities.",
+        "**Wants pandas and food too:** 11 nights across four cities, or nine days with a Chengdu extension if you can add a day.",
+        "**Traveling with children or older parents:** keep three cities and take the longer length for rest, not for more sights.",
+        "**Jet lag sensitive:** protect the first evening and day two; both trips are kinder with a quiet arrival.",
+      ),
+      p(
+        "For detailed day-by-day plans, read our [9-day Beijing, Xi'an and Shanghai itinerary](/journal/9-day-beijing-xian-shanghai-itinerary) and the [11-day four-city itinerary](/journal/11-day-beijing-xian-chengdu-shanghai-itinerary). If you have even more time, see [how many days to spend in China](/journal/how-many-days-in-china-7-10-14-day-itineraries).",
+      ),
+      cta(
+        "Fit the route to your real days",
+        "Tell us your flights or dates and we will recommend a route that fits them, including arrival and departure days.",
+        "/start-planning?source=journal-nine-or-eleven-mid",
+        "Get a recommendation",
+      ),
+      faq(
+        "Is nine days enough for a first trip to China?",
+        "Yes, for three cities. It is enough to see Beijing, Xi'an and Shanghai well if the days are sequenced carefully. It is not enough to add a fourth city without feeling rushed.",
+      ),
+      faq(
+        "Should I add Chengdu to a nine-day trip?",
+        "We would not, unless you drop a day elsewhere or extend the trip. Chengdu works best with at least three nights, which a nine-day route does not have spare.",
+      ),
+      faq(
+        "Does jet lag change which length I should choose?",
+        "It can. If you are flying from the Americas or Europe, a longer trip gives you recovery time. A calm arrival evening and a lighter day two are more useful than squeezing in another site.",
+      ),
+    ],
+  },
+
+  /* 3 ─────────────────────────────────────────────────────────── */
+  {
+    slug: "china-honeymoon-itinerary-10-to-14-days",
+    title: "China Honeymoon Itinerary: 10 to 14 Days of Romantic, Unrushed Travel",
+    dek: "Three honeymoon routes for different kinds of couples, and the practical points that decide whether a romantic trip feels romantic.",
+    excerpt:
+      "Plan a 10 to 14 day China honeymoon with three route blueprints, advice on pace, rooms, seasons and what a couple should confirm before booking.",
+    category: "Luxury Travel",
+    tags: ["luxury-travel", "first-time-china", "private-guides"],
+    readingTime: "9 min read",
+    hero: photos.yunnan,
+    heroEyebrow: "A trip for two",
+    seoTitle: "China Honeymoon Itinerary: 10–14 Days Planned Well",
+    seoDescription:
+      "Plan a China honeymoon in 10 to 14 days: three routes through classic cities, Yunnan's old towns or a mountain retreat, plus pace, rooms and seasons.",
+    keywords: [
+      "China honeymoon itinerary",
+      "honeymoon in China 2 weeks",
+      "romantic China itinerary",
+      "private China honeymoon tour",
+    ],
+    related: {
+      destinations: ["shanghai", "beijing", "xian"],
+      tours: [
+        "luxury-yunnan-private-tour",
+        "china-at-an-easier-pace-12-day-private-tour",
+        "qingcheng-mountain-private-wellness-retreat-10-day",
+      ],
+      articles: [
+        "yunnan-itinerary-10-days",
+        "yunnan-altitude-private-tour",
+        "where-to-stay-yunnan-private-tour",
+        "how-to-choose-hotels-china-itinerary",
+      ],
+    },
+    conversion: {
+      eyebrow: "Shape it around the two of you",
+      title: "Tell us how you want the trip to feel.",
+      description:
+        "Share your dates, the pace you like and anything you want us to plan around. We will propose a route for a couple, not a group.",
+      label: "Plan our honeymoon",
+      href: "/start-planning?source=journal-china-honeymoon",
+    },
+    contentType: "route",
+    decisionStage: "prepare",
+    keyAnswer:
+      "A good China honeymoon uses fewer bases, protects quiet evenings and chooses one of three styles: classic cities at an easy pace, Yunnan's highland old towns, or a mountain retreat finish. Request a quotation for two, because published starting prices assume four guests.",
+    appliesTo: ["Honeymooners", "Couples", "Anniversary travelers"],
+    relatedJourneyReason:
+      "The Yunnan journey is the most couple-oriented of our routes, with boutique stays and private cultural encounters.",
+    watchFor:
+      "Starting prices on our journey pages are based on four guests sharing two rooms. A couple should expect a different per-person figure and ask for a quotation for two.",
+    content: [
+      h("The short answer"),
+      p(
+        "The most romantic China trips are not the ones with the most sights. They have fewer hotels, long unhurried mornings, and a few days with nothing scheduled. For 10 to 14 days, choose one of three styles and build from there: classic cities at an easy pace, Yunnan's old towns and mountains, or a quiet retreat to finish.",
+      ),
+      h("Principles that make a honeymoon work"),
+      ul(
+        "**Three bases or fewer.** Every hotel change costs half a day and some of the mood.",
+        "**Protect the first night.** Long-haul arrival is not the time for a dinner reservation.",
+        "**Leave genuine empty days.** A day with no guide is not wasted; it is often the one you remember.",
+        "**Choose hotels for the room, not only the star rating.** Location, bed setup and quiet matter more than a brand.",
+        "**Avoid public-holiday weeks.** Golden Week at the start of October compresses availability and crowds sites.",
+      ),
+      h("Route A: classic cities at an easy pace (12 days)"),
+      p(
+        "Beijing, Xi'an and Shanghai with time to rest between landmark days. This is the right choice if China's famous sights are the reason you came and you want them without a rush. Our easier-paced 12-day journey uses five-star hotels, private guiding and vehicles on confirmed touring days, first-class rail between Beijing and Xi'an and a flight to Shanghai, with a tai chi session and a private Beijing courtyard table among its planned experiences. It starts at US$6,480 per person on a four-guest basis.",
+      ),
+      h("Route B: Yunnan's old towns and mountains (10 days)"),
+      p(
+        "Dali, Shaxi, Lijiang and Shangri-La follow the old Tea Horse Road through lakeside towns and highland landscapes, with boutique and heritage stays throughout. It is the most couple-friendly of our routes: slower, more personal and less crowded with famous sights. The route climbs from about 1,970 metres in Dali to about 3,200 metres in Shangri-La, so it suits couples who are comfortable with altitude, and we plan it with that in mind. Read our [altitude guide](/journal/yunnan-altitude-private-tour) and [where to stay in Yunnan](/journal/where-to-stay-yunnan-private-tour). It starts at US$6,680 per person on a four-guest basis.",
+      ),
+      h("Route C: a mountain retreat to finish (10 days)"),
+      p(
+        "Some couples want the opposite of sightseeing. Our Qingcheng Mountain retreat is built around seven uninterrupted nights beneath the mountain, with tai chi, a day free of any touring and two resort treatments per guest, after a few nights in Chengdu. It starts at US$11,800 per person on a four-guest basis and suits couples who want quiet over variety.",
+      ),
+      table(
+        ["", "Classic cities", "Yunnan highlands", "Mountain retreat"],
+        ["Length", "12 days", "10 days", "10 days"],
+        ["Feel", "Landmarks, unhurried", "Old towns, landscapes", "Quiet, restorative"],
+        ["Hotel changes", "Few", "Several, all boutique", "Two bases"],
+        ["Altitude", "Low", "Up to about 3,200 m", "Low"],
+        ["Best for", "First visit to China", "Couples who like nature and culture", "Rest after a busy year"],
+      ),
+      h("When to go"),
+      p(
+        "Spring and autumn are the safest broad windows for the classic cities, while highland Yunnan and sandstone mountains depend more on local weather. Avoid the first week of October if you can. Our [best time to visit China guide](/journal/best-time-to-visit-china) breaks it down by region.",
+      ),
+      h("Practical points for couples"),
+      ul(
+        "**Ask for a quotation for two.** Our published starting prices assume four guests sharing two rooms; smaller parties may have a higher per-person price because the guide and vehicle are shared across fewer travelers.",
+        "**Tell us it is a honeymoon or anniversary.** Hotels sometimes arrange small touches, but we will say what is confirmed rather than promise.",
+        "**State your bed preference.** King, twin and connecting setups vary by hotel and city.",
+        "**Add buffer around flights.** International flights are not included in our land prices, so plan them with a quiet first and last day.",
+      ),
+      cta(
+        "Tell us how you want the trip to feel",
+        "Share your dates and the pace you like. We will propose a route for two and confirm the details in writing.",
+        "/start-planning?source=journal-china-honeymoon-mid",
+        "Plan our honeymoon",
+      ),
+      faq(
+        "How long should a honeymoon in China be?",
+        "Ten to fourteen days is the sweet spot. It is long enough for two or three bases at a relaxed pace, and short enough to stay a single trip rather than a tour.",
+      ),
+      faq(
+        "Is China a good honeymoon destination?",
+        "Yes, if you choose the style carefully. China offers imperial history, food, mountains and very comfortable hotels, but its best sights are spread far apart, so fewer bases and some rest days matter more than ticking off places.",
+      ),
+      faq(
+        "Do we need a private guide on a honeymoon?",
+        "It is not required, but a private guide and driver keep days flexible and remove logistics, which is what most couples want to avoid thinking about. You can keep evenings and some days unguided.",
+      ),
+    ],
+  },
+
+  /* 4 ─────────────────────────────────────────────────────────── */
+  {
+    slug: "china-travel-safety-for-foreign-visitors",
+    title: "Is China Safe for Tourists? What Foreign Visitors Should Know",
+    dek: "A practical look at crime, scams, health, traffic and getting help, written for visitors who want realistic expectations rather than reassurance.",
+    excerpt:
+      "Understand the real risks of traveling in China as a foreign visitor, the emergency numbers to know, common scams and how to prepare.",
+    category: "Travel Guides",
+    tags: ["first-time-china", "private-guides"],
+    readingTime: "8 min read",
+    hero: photos.forbiddenCity,
+    heroEyebrow: "Know before you go",
+    seoTitle: "Is China Safe for Tourists? A Practical 2026 Guide",
+    seoDescription:
+      "Is China safe for tourists? A practical guide to petty crime, common scams, health, traffic, emergency numbers and how to prepare before you travel.",
+    keywords: [
+      "is China safe for tourists",
+      "China travel safety",
+      "China emergency numbers",
+      "China tourist scams",
+    ],
+    related: {
+      destinations: ["beijing", "shanghai", "chengdu"],
+      tours: ["first-china-beautifully-paced"],
+      articles: [
+        "china-travel-emergency-support-what-to-do",
+        "women-private-china-travel",
+        "bringing-prescription-medicine-to-china",
+        "china-accommodation-registration-foreigners",
+      ],
+    },
+    conversion: {
+      eyebrow: "Travel with local backup",
+      title: "Ask how our team supports you on the ground.",
+      description:
+        "Tell us your route and any concerns. We will explain how guides, drivers and our China team handle problems in each city.",
+      label: "Ask about support",
+      href: "/start-planning?source=journal-china-safety",
+    },
+    contentType: "practical",
+    decisionStage: "prepare",
+    keyAnswer:
+      "For most visitors China is a low-risk destination for violent crime, and the realistic risks are petty theft, tourist scams, traffic, health and everyday friction such as payments and language. Know the emergency numbers (110 police, 120 ambulance, 119 fire), keep your passport secure and check your government's current travel advice.",
+    appliesTo: ["First-time visitors", "Families", "Solo travelers", "Older travelers"],
+    relatedJourneyReason:
+      "A private first journey shows how a guide, driver and local team reduce the everyday friction that makes a first trip feel risky.",
+    watchFor:
+      "Check your own government's current travel advice before booking. It reflects conditions after this article was written.",
+    citations: [
+      {
+        name: "China travel advice",
+        url: "https://www.gov.uk/foreign-travel-advice/china",
+        publisher: "UK Foreign, Commonwealth & Development Office",
+      },
+    ],
+    content: [
+      h("The short answer"),
+      p(
+        "For most visitors, China is a low-risk place for violent crime, and the problems travelers actually report are smaller: pickpocketing in crowds, a handful of well-known scams, traffic, health and the friction of working without the apps and payment methods locals use. Preparation matters more than fear. This guide covers what to expect and what to do, and it does not replace your own government's current advice.",
+      ),
+      h("Emergency numbers worth saving"),
+      p(
+        "China does not have a single all-purpose emergency number like 911 or 112. Save these before you arrive. Calls from mobiles and landlines are generally reported as free.",
+      ),
+      table(
+        ["Number", "Use it for"],
+        ["110", "Police: theft, scams, personal safety"],
+        ["120", "Ambulance and medical emergencies"],
+        ["119", "Fire"],
+        ["122", "Traffic accidents"],
+      ),
+      p(
+        "If you have a private guide, call them first for anything that is not life-threatening; they can speak to police and hospitals in Chinese. For a serious medical emergency, do not delay for any reason, including cost or paperwork.",
+      ),
+      h("Petty theft and crowds"),
+      p(
+        "Pickpocketing is the most common crime foreign visitors encounter, concentrated at major sites, stations and crowded markets. Keep your phone and wallet in front pockets or a zipped bag, and be alert at ticket queues and metro platforms. Keep your passport in the hotel safe when you do not need it, and carry a photo copy, but remember you will need the original for train tickets, many attractions and hotel check-in.",
+      ),
+      h("Common scams and how to sidestep them"),
+      ul(
+        "**Tea house or bar invitations.** A friendly stranger invites you for tea or a drink, and you receive a very large bill. Decline invitations from people you have just met.",
+        "**Unofficial cars and unmetered taxis** at airports and stations. Use the official taxi line, a booked car or your driver.",
+        "**\"The attraction is closed\" redirects.** Someone says the site is closed and offers an alternative. Check at the actual entrance.",
+        "**Photo-and-pay requests** at tourist sites. You can simply decline.",
+      ),
+      p(
+        "Disputes under about RMB 500 can often be raised with tourist police near major sites, while larger losses should go to 110. Keep receipts and take photos; some insurers require a police report for theft claims.",
+      ),
+      h("Health, food and air"),
+      ul(
+        "**Water:** drink bottled or boiled water, and use the hot-water kettles most hotels provide.",
+        "**Food:** busy restaurants with high turnover are usually the safest. If you have allergies, read our [food allergy guide](/journal/food-allergies-dietary-restrictions-china-travel).",
+        "**Medication:** carry prescriptions in original packaging and read our [prescription medicine rules](/journal/bringing-prescription-medicine-to-china).",
+        "**Air quality** varies by season and city; check an app on the day if you have a respiratory condition.",
+        "**Altitude:** destinations such as Jiuzhaigou and Shangri-La are high enough to matter. See our [altitude guide for Jiuzhaigou](/journal/jiuzhaigou-altitude-walking-accessibility).",
+      ),
+      h("Traffic and getting around"),
+      p(
+        "Electric scooters are nearly silent and often ignore pedestrian crossings, so look both ways even on one-way streets. High-speed trains and the metro are efficient, but stations are large and security checks mean you should arrive early. Our [high-speed rail guide](/journal/china-high-speed-train-foreigners) covers tickets and boarding.",
+      ),
+      h("Rules and registration"),
+      p(
+        "Hotels register foreign guests with the police, which is why they scan your passport; our [accommodation registration guide](/journal/china-accommodation-registration-foreigners) explains it. Travel insurance is strongly advised, and the UK government's travel advice states that insurance should cover your itinerary, planned activities and expenses in an emergency. Read more in our [travel insurance guide](/journal/china-travel-insurance-for-private-tours).",
+      ),
+      h("Staying connected and paying"),
+      p(
+        "Safety is easier when you are online. Many Western apps and sites are restricted without a roaming eSIM or similar setup, and most local shops expect mobile payments. Sort both before you land with our [eSIM guide](/journal/china-sim-card-esim-internet-foreign-tourists) and [mobile payments guide](/journal/china-mobile-payments-foreign-tourists).",
+      ),
+      h("What a private tour changes"),
+      p(
+        "A private tour does not remove risk, but it changes who is dealing with it. A guide handles tickets and translation, a driver removes the taxi question, and a China-based team answers the phone if a flight is cancelled or you feel unwell. Read [what to do in a travel emergency](/journal/china-travel-emergency-support-what-to-do) for how that works in practice.",
+      ),
+      warn(
+        "Check current advice",
+        "Travel conditions change. Review your own government's current travel advice for China before booking and again before you leave.",
+      ),
+      faq(
+        "Is China safe for solo female travelers?",
+        "Many women travel in China without problems, and violent crime against visitors is uncommon. The practical issues are the same as anywhere: late-night caution, trusted transport and sensible accommodation. Our [guide for women traveling in China](/journal/women-private-china-travel) covers it in detail.",
+      ),
+      faq(
+        "Do I need to carry my passport all the time?",
+        "You need the original passport for hotel check-in, train tickets and many attractions. Between those, many travelers keep it in the hotel safe and carry a photo copy, but follow your hotel's and guide's advice for your itinerary.",
+      ),
+      faq(
+        "What should I do if something is stolen?",
+        "Report it to the police on 110 or to tourist police near the site, ask for a written report if you want to claim on insurance, and contact your bank or card issuer. If you are on a private tour, tell your guide or our China team straight away.",
+      ),
+    ],
+  },
+];
+

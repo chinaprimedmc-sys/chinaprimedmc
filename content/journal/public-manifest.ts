@@ -127,6 +127,12 @@ export const PUBLIC_JOURNAL_SLUGS = [
   "li-river-cruise-with-children-seniors-accessibility",
   "four-star-li-river-cruise-vs-private-boat",
   "li-river-cruise-weather-water-level-visibility",
+  "china-tipping-guide-guides-drivers-hotels",
+  "how-to-check-china-tour-guide-is-licensed",
+  "china-travel-insurance-for-private-tours",
+  "best-time-to-visit-jiuzhaigou",
+  "second-trip-to-china-where-to-go-next",
+  "how-to-pay-china-tour-operator-safely",
 ] as const;
 
 export type PublicJournalSlug = (typeof PUBLIC_JOURNAL_SLUGS)[number];

@@ -7,6 +7,8 @@ const articleSource = (
       "content/journal/senior-cluster.ts",
       "content/journal/published.ts",
       "content/journal/audience-experience.ts",
+      "content/journal/practical-guides.ts",
+      "content/journal/practical-guides-more.ts",
     ].map((file) => readFile(file, "utf8")),
   )
 ).join("\n");

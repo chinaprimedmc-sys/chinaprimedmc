@@ -493,6 +493,34 @@ const strategyGroups: Array<{
       ],
     ],
   },
+  {
+    pillar: "Trust and practical planning",
+    hub: "how-to-choose-private-china-tour-company",
+    articles: [
+      ["china-tipping-guide-guides-drivers-hotels", "answer", "tipping in China", 2],
+      [
+        "how-to-check-china-tour-guide-is-licensed",
+        "trust",
+        "how to check China tour guide license",
+        2,
+      ],
+      ["china-travel-insurance-for-private-tours", "answer", "China travel insurance", 2],
+      [
+        "how-to-pay-china-tour-operator-safely",
+        "trust",
+        "how to pay a China tour operator safely",
+        1,
+      ],
+    ],
+  },
+  {
+    pillar: "Seasons and second trips",
+    hub: "chengdu-chongqing-zhangjiajie-itinerary",
+    articles: [
+      ["best-time-to-visit-jiuzhaigou", "plan", "best time to visit Jiuzhaigou", 2],
+      ["second-trip-to-china-where-to-go-next", "plan", "second trip to China", 1],
+    ],
+  },
 ];
 
 export const journalSearchStrategy: Record<string, JournalSearchRole> = Object.fromEntries(

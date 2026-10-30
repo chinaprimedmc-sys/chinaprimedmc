@@ -781,4 +781,28 @@ Object.assign(journeyJournalLinks, {
     planningLabel: "Discuss our backup needs",
     planningPreference: "weather-delay-support",
   },
+  "china-tipping-guide-guides-drivers-hotels": {
+    primaryJourney: FIRST_CHINA,
+    alternativeJourneys: [CHINA_CONSIDERED],
+  },
+  "how-to-check-china-tour-guide-is-licensed": {
+    primaryJourney: FIRST_CHINA,
+    alternativeJourneys: [XIAN_BEIJING],
+  },
+  "china-travel-insurance-for-private-tours": {
+    primaryJourney: CHENGDU_JIUZHAIGOU,
+    alternativeJourneys: [YUNNAN_PRIVATE_RESERVE],
+  },
+  "best-time-to-visit-jiuzhaigou": {
+    primaryJourney: CHENGDU_JIUZHAIGOU,
+    alternativeJourneys: [CHENGDU_CHONGQING_ZHANGJIAJIE],
+  },
+  "second-trip-to-china-where-to-go-next": {
+    primaryJourney: CHENGDU_CHONGQING_ZHANGJIAJIE,
+    alternativeJourneys: [YUNNAN_PRIVATE_RESERVE, MUSLIM_CHINA],
+  },
+  "how-to-pay-china-tour-operator-safely": {
+    primaryJourney: FIRST_CHINA,
+    alternativeJourneys: [FOUR_CITY],
+  },
 });
