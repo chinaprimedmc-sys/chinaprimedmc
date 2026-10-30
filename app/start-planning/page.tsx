@@ -22,7 +22,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = createMetadata({
   title: "Request a Private China Travel Proposal",
   description:
-    "Leave your first name and WhatsApp number. An AVIORA China specialist will ask about your travel plans and next steps, with no obligation to book.",
+    "Tell us a little about yourself and your trip. An AVIORA China specialist will ask about your travel plans and next steps, with no obligation to book.",
   path: "/start-planning",
   image: heroImage.src,
 });
@@ -80,8 +80,8 @@ export default async function StartPlanningPage({
               Start a conversation about your China journey.
             </h1>
             <p className="type-body text-muted mt-4 max-w-2xl lg:mt-5">
-              Leave your first name and WhatsApp number. We will ask about your dates and priorities
-              when we reply.
+              Share a few details about yourself and your trip. We will ask about your dates and
+              priorities when we reply.
             </p>
             <p className="text-muted mt-8 hidden max-w-sm border-t border-[var(--border)] pt-5 text-base leading-7 lg:block">
               A China specialist will learn what matters to you before suggesting a route. This does

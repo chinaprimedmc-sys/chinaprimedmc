@@ -1,11 +1,13 @@
 "use client";
-import { InquiryForm } from "./inquiry-form";
+
+import { HubSpotForm } from "./hubspot-form";
+
+/**
+ * 本模块职责：开始规划页的询盘表单入口。
+ * 当前使用 HubSpot 表单；行程上下文只能作为说明文字展示，HubSpot 表单本身不接收它。
+ */
 export function StartPlanningForm({
-  savedJourneys = [],
   currentJourney,
-  preference,
-  matchSummary,
-  placement = "start_planning_page",
 }: {
   savedJourneys?: string[];
   currentJourney?: { slug: string; title: string };
@@ -13,13 +15,15 @@ export function StartPlanningForm({
   matchSummary?: string;
   placement?: string;
 }) {
-  const summary = [
-    currentJourney?.title,
-    savedJourneys.length ? "Saved journeys: " + savedJourneys.join(", ") : "",
-    preference ? "Planning preference: " + preference.replaceAll("-", " ") : "",
-    matchSummary ? "Journey finder: " + matchSummary : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
-  return <InquiryForm placement={placement} journeySlug={currentJourney?.slug} summary={summary} />;
+  return (
+    <div>
+      {currentJourney ? (
+        <p style={{ marginBottom: 16, fontSize: "0.9375rem" }}>
+          You are asking about <strong>{currentJourney.title}</strong>. Mention it in your message
+          and we will take it from there.
+        </p>
+      ) : null}
+      <HubSpotForm />
+    </div>
+  );
 }

@@ -1,0 +1,12 @@
+.wrap {
+  min-height: 320px;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+.wrap :global(.hs-form-frame) {
+  width: 100%;
+}
+.wrap :global(.hs-form-frame) iframe {
+  width: 100% !important;
+  border: 0;
+}

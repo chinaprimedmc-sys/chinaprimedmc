@@ -12,7 +12,7 @@ import Link from "next/link";
 
 import { TrackedLink } from "@/components/cta/tracked-link";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { InquiryForm } from "@/components/forms/inquiry-form";
+import { HubSpotForm } from "@/components/forms/hubspot-form";
 import { WhatsAppIcon } from "@/components/icons";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
@@ -444,15 +444,15 @@ export function HomePage({ planningHref }: { planningHref: string }) {
           <p className={styles.eyebrowLight}>Plan my journey</p>
           <h2 id="closing-title">Tell us when you would like to go.</h2>
           <p>
-            Leave your first name and WhatsApp number. A China-based specialist replies, normally
-            within a day, with a first idea of the route. No payment, no obligation.
+            Share a few details about your trip. A China-based specialist replies, normally within a
+            day, with a first idea of the route. No payment, no obligation.
           </p>
           <a className={styles.whatsappLink} href={whatsapp}>
             <WhatsAppIcon aria-hidden="true" /> Prefer to write? Message us on WhatsApp
           </a>
         </div>
         <div className={styles.formPanel}>
-          <InquiryForm placement="homepage-quick-brief" />
+          <HubSpotForm />
         </div>
       </section>
 
