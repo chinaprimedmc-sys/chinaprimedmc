@@ -14,7 +14,6 @@ import { getPublicTravelerReviews } from "@/content/home/traveler-reviews";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { jost, newsreader } from "@/components/tours/journeys-fonts";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { getJourneyHeadline, getJourneyRouteLabel, placeGlossary } from "@/content/tours/card-copy";
 import { detailCopy, detailHeroPhotos, journeyPhotos } from "@/content/tours/journeys-curation";
@@ -101,11 +100,7 @@ export function TourDetailLanding({
       priceBasis={model.price?.basis ?? "Final price confirmed in writing"}
       pricingUnit={model.price?.pricingUnit ?? "per-person"}
     >
-      <PageContainer
-        className={`${styles.page} ${newsreader.variable} ${jost.variable}`}
-        tone="white"
-        data-new-tour-detail="true"
-      >
+      <PageContainer className={`${styles.page}`} tone="white" data-new-tour-detail="true">
         <RecordViewed
           item={{
             id: `tour:${model.slug}`,

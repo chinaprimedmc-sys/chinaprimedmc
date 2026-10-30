@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 import { WhatsAppIcon } from "@/components/icons";
 import { trackCtaClick, trackEvent } from "@/lib/analytics/events";
+import { privateJourneyOffer } from "@/lib/tours/journey-offer";
 
 import { navigationConfig, type NavigationGroup } from "./navigation-config";
 import styles from "./global-header.module.css";
@@ -16,6 +17,8 @@ export function GlobalHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isJourneysPage = pathname === "/tours";
+  // Pages that open with a full-bleed photo get a transparent bar until the visitor scrolls.
+  const overImage = isHome || pathname.startsWith("/tours");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -53,8 +56,8 @@ export function GlobalHeader() {
       <header
         className={styles.header}
         data-global-navigation="true"
-        data-tone={isHome || isJourneysPage ? "over-image" : "on-light"}
-        data-scrolled={isScrolled || (!isHome && !isJourneysPage) ? "true" : undefined}
+        data-tone={overImage ? "over-image" : "on-light"}
+        data-scrolled={isScrolled || !overImage ? "true" : undefined}
         data-journeys-navigation={isJourneysPage || undefined}
         data-menu-open={isMenuOpen || undefined}
       >
@@ -76,9 +79,11 @@ export function GlobalHeader() {
               );
             })}
           </nav>
-          {isJourneysPage ? <JourneyTools className={styles.toolsIsland} /> : null}
-          <WhatsAppMenu />
-          <PlanLink className={styles.actionIsland} placement="global_header_desktop" />
+          <div className={styles.rightGroup}>
+            {isJourneysPage ? <JourneyTools className={styles.toolsIsland} /> : null}
+            <WhatsAppMenu />
+            <PlanLink className={styles.actionIsland} placement="global_header_desktop" />
+          </div>
         </div>
 
         <div className={styles.mobileShell}>
@@ -226,6 +231,19 @@ function MobileMenu({ pathname, onClose }: { pathname: string; onClose: () => vo
           );
         })}
         <PlanLink className={styles.mobilePrimaryAction} placement="global_header_mobile_menu" />
+        {privateJourneyOffer.active ? (
+          <button
+            type="button"
+            className={styles.mobileOffer}
+            onClick={() => {
+              onClose();
+              window.dispatchEvent(new CustomEvent("aviora:claim-offer"));
+            }}
+          >
+            {privateJourneyOffer.discountPercent}% off your private journey
+            <ArrowUpRight aria-hidden="true" />
+          </button>
+        ) : null}
         <a
           className={styles.mobileContact}
           href={navigationConfig.action.whatsapp[0].href}

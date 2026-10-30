@@ -11,7 +11,7 @@ export function QuickFactCard({ className, helper, label, value }: QuickFactCard
   return (
     <article
       className={cn(
-        "rounded-[var(--radius-card)] border border-white/78 bg-white/62 p-4 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:p-5",
+        "rounded-[var(--radius-surface)] border border-white/78 bg-white/62 p-4 shadow-[var(--shadow-glass)] backdrop-blur-2xl md:p-5",
         className,
       )}
     >

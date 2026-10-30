@@ -1,9 +1,11 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { getArticlePhoto } from "@/content/journal/article-photos";
 import {
   findJournalSummary,
   formatJournalTitle,
@@ -56,7 +58,7 @@ export function JournalHubTemplate({ featured, articles }: JournalHubTemplatePro
   const journeyBridge = getJourneyBridgeForArticle(featured);
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page}`}>
       <JournalAnalytics />
       <SiteNavigation />
 
@@ -252,6 +254,17 @@ function JournalOpening({ article }: { article: JournalSummary }) {
           </div>
         </div>
       </div>
+      <div className={styles.hubHeroPhoto}>
+        <Image
+          src={getArticlePhoto("great-wall").src}
+          alt={getArticlePhoto("great-wall").alt}
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          style={{ objectPosition: getArticlePhoto("great-wall").objectPosition }}
+        />
+      </div>
     </header>
   );
 }
@@ -292,6 +305,15 @@ function EditorialSelection({ articles }: { articles: JournalSummary[] }) {
         data-article-slug={lead.slug}
         data-placement="editorial-selection"
       >
+        <span className={styles.hubThumb}>
+          <Image
+            src={getArticlePhoto(lead.slug).src}
+            alt=""
+            fill
+            sizes="(max-width: 900px) 100vw, 55vw"
+            style={{ objectPosition: getArticlePhoto(lead.slug).objectPosition }}
+          />
+        </span>
         <div className={styles.storyCopy}>
           <p className={styles.meta}>{lead.readingTime}</p>
           <h3>{formatJournalTitle(lead.title)}</h3>
@@ -350,6 +372,15 @@ function DestinationStory({
       data-article-slug={article.slug}
       data-placement="destination-perspective"
     >
+      <span className={styles.hubThumb}>
+        <Image
+          src={getArticlePhoto(article.slug).src}
+          alt=""
+          fill
+          sizes="(max-width: 900px) 100vw, 40vw"
+          style={{ objectPosition: getArticlePhoto(article.slug).objectPosition }}
+        />
+      </span>
       <div className={styles.destinationCopy}>
         <p className={styles.meta}>{article.category}</p>
         <h3>{formatJournalTitle(article.title)}</h3>

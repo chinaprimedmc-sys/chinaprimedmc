@@ -12,7 +12,7 @@ export function CheckboxField({ label, helper, className, children, ...props }: 
   return (
     <label
       className={cn(
-        "border-border flex min-h-12 cursor-pointer gap-3 rounded-2xl border bg-white p-4 transition-colors duration-200 has-checked:border-neutral-950 has-checked:bg-[var(--bg-secondary)] has-focus-visible:ring-2 has-focus-visible:ring-[var(--action-focus)]",
+        "border-border flex min-h-12 cursor-pointer gap-3 rounded-[var(--radius-surface)] border bg-white p-4 transition-colors duration-200 has-checked:border-neutral-950 has-checked:bg-[var(--bg-secondary)] has-focus-visible:ring-2 has-focus-visible:ring-[var(--action-focus)]",
         className,
       )}
     >
@@ -32,7 +32,7 @@ export function RadioField({ label, helper, className, children, ...props }: Cho
   return (
     <label
       className={cn(
-        "border-border flex min-h-12 cursor-pointer gap-3 rounded-2xl border bg-white p-4 transition-colors duration-200 has-checked:border-neutral-950 has-checked:bg-[var(--bg-secondary)] has-focus-visible:ring-2 has-focus-visible:ring-[var(--action-focus)]",
+        "border-border flex min-h-12 cursor-pointer gap-3 rounded-[var(--radius-surface)] border bg-white p-4 transition-colors duration-200 has-checked:border-neutral-950 has-checked:bg-[var(--bg-secondary)] has-focus-visible:ring-2 has-focus-visible:ring-[var(--action-focus)]",
         className,
       )}
     >

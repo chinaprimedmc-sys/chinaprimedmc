@@ -9,7 +9,7 @@ type SkeletonProps = ComponentPropsWithoutRef<"div"> & {
 };
 
 const skeletonVariants = {
-  block: "rounded-2xl",
+  block: "rounded-[var(--radius-surface)]",
   text: "h-4 rounded-full",
   media: "rounded-none",
 };

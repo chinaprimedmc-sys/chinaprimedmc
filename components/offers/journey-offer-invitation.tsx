@@ -29,6 +29,8 @@ const offerDelayMs = 7000;
 export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOption[] }) {
   const [open, setOpen] = useState(false);
   const [teaser, setTeaser] = useState(false);
+  // On phones the corner tag covers body text; the offer lives in the menu there instead.
+  const hideOnPhone = true;
   const [journey, setJourney] = useState<JourneyOfferOption | null>(null);
   const [claim, setClaim] = useState<JourneyOfferClaim | null>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
@@ -139,7 +141,7 @@ export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOpt
       {teaser && !open ? (
         <button
           type="button"
-          className={styles.teaser}
+          className={`${styles.teaser} ${hideOnPhone ? styles.teaserHidePhone : ""}`}
           onClick={() => window.dispatchEvent(new CustomEvent("aviora:claim-offer"))}
         >
           {claim ? <Check size={16} aria-hidden="true" /> : <Tag size={16} aria-hidden="true" />}

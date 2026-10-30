@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Lora } from "next/font/google";
+import { Inter, Newsreader } from "next/font/google";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
@@ -22,11 +22,12 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const lora = Lora({
+const newsreader = Newsreader({
   display: "swap",
   subsets: ["latin"],
-  variable: "--font-lora-loaded",
-  weight: ["400", "500", "600"],
+  variable: "--font-newsreader-loaded",
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = createMetadata();
@@ -44,7 +45,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html
       lang="en-US"
-      className={`${inter.variable} ${lora.variable}`}
+      className={`${inter.variable} ${newsreader.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

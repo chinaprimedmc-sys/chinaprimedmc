@@ -20,7 +20,7 @@ export function TravelerSelector({
   onChange,
 }: TravelerSelectorProps) {
   return (
-    <div className="border-border flex items-center justify-between gap-4 rounded-2xl border bg-white p-4">
+    <div className="border-border flex items-center justify-between gap-4 rounded-[var(--radius-surface)] border bg-white p-4">
       <span className="text-base font-semibold">{label}</span>
       <div className="flex items-center gap-3">
         <button

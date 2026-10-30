@@ -28,7 +28,7 @@ export function SelectField({
     <FieldShell label={label} helper={helper} error={error}>
       <Select.Root value={value} onValueChange={onValueChange}>
         <Select.Trigger
-          className="border-border focus:ring-foreground/5 flex h-12 items-center justify-between rounded-2xl border bg-white px-4 text-base transition outline-none focus:ring-4"
+          className="border-border focus:ring-foreground/5 flex h-12 items-center justify-between rounded-[var(--radius-surface)] border bg-white px-4 text-base transition outline-none focus:ring-4"
           aria-invalid={Boolean(error)}
         >
           <Select.Value placeholder={placeholder} />
@@ -37,13 +37,13 @@ export function SelectField({
           </Select.Icon>
         </Select.Trigger>
         <Select.Portal>
-          <Select.Content className="border-border z-[90] overflow-hidden rounded-2xl border bg-white p-1 shadow-xl">
+          <Select.Content className="border-border z-[90] overflow-hidden rounded-[var(--radius-surface)] border bg-white p-1 shadow-xl">
             <Select.Viewport>
               {options.map((option) => (
                 <Select.Item
                   key={option.value}
                   value={option.value}
-                  className="data-[highlighted]:bg-foreground/5 relative flex min-h-11 cursor-pointer items-center rounded-xl py-2 pr-3 pl-9 text-base outline-none select-none"
+                  className="data-[highlighted]:bg-foreground/5 relative flex min-h-11 cursor-pointer items-center rounded-[var(--radius-surface)] py-2 pr-3 pl-9 text-base outline-none select-none"
                 >
                   <Select.ItemIndicator className="absolute left-3">
                     <Check size={15} aria-hidden="true" />

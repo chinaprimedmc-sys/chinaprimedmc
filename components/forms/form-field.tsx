@@ -31,7 +31,7 @@ export function TextField({
     <FieldShell label={label} helper={helper} error={error}>
       <input
         className={cn(
-          "border-border placeholder:text-muted/75 focus:border-foreground/35 focus:ring-foreground/5 h-12 rounded-2xl border bg-white px-4 text-base transition outline-none focus:ring-4",
+          "border-border placeholder:text-muted/75 focus:border-foreground/35 focus:ring-foreground/5 h-12 rounded-[var(--radius-surface)] border bg-white px-4 text-base transition outline-none focus:ring-4",
           error && "border-brand-red/55",
           className,
         )}
@@ -57,7 +57,7 @@ export function TextAreaField({
     <FieldShell label={label} helper={helper} error={error}>
       <textarea
         className={cn(
-          "border-border placeholder:text-muted/75 focus:border-foreground/35 focus:ring-foreground/5 min-h-32 rounded-2xl border bg-white px-4 py-3 text-base leading-6 transition outline-none focus:ring-4",
+          "border-border placeholder:text-muted/75 focus:border-foreground/35 focus:ring-foreground/5 min-h-32 rounded-[var(--radius-surface)] border bg-white px-4 py-3 text-base leading-6 transition outline-none focus:ring-4",
           error && "border-brand-red/55",
           className,
         )}

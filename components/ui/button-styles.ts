@@ -3,21 +3,21 @@
  * 页面不得新增视觉变体；需要不同语义时应先扩展此处的设计契约。
  */
 const primary =
-  "border border-white/80 bg-white/76 text-[var(--color-ink)] shadow-[var(--button-glass-shadow)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(var(--glass-blur))_saturate(135%)] hover:border-white hover:bg-white/90 hover:shadow-[var(--button-glass-shadow-hover)]";
+  "border border-[var(--color-ink)] bg-[var(--color-ink)] text-white hover:border-[var(--color-forest)] hover:bg-[var(--color-forest)]";
 
 const secondary =
-  "border border-white/72 bg-white/46 text-[var(--color-ink)] shadow-[var(--button-glass-shadow-subtle)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(var(--glass-blur))_saturate(130%)] hover:border-white/92 hover:bg-white/68 hover:shadow-[var(--button-glass-shadow)]";
+  "border border-[var(--color-ink)] bg-transparent text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-white";
 
 const text =
-  "rounded-[var(--radius-pill)] border border-transparent bg-transparent px-0 text-[var(--color-ink)] shadow-none underline decoration-[var(--color-line-strong)] underline-offset-4 hover:decoration-[var(--color-forest)]";
+  "rounded-none border border-transparent bg-transparent px-0 text-[var(--color-ink)] shadow-none underline decoration-[var(--color-line-strong)] underline-offset-4 hover:decoration-[var(--color-forest)]";
 
 const darkOnLight = primary;
 
 const lightOnImage =
-  "border border-white/82 bg-white/72 text-[var(--color-ink)] shadow-[var(--button-glass-shadow)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(var(--glass-blur))_saturate(135%)] hover:border-white hover:bg-white/88 hover:shadow-[var(--button-glass-shadow-hover)]";
+  "border border-white bg-white text-[var(--color-ink)] hover:bg-transparent hover:text-white";
 
 const whatsappFrosted =
-  "border border-[#71ee9e] bg-[#25d366]/94 text-white shadow-[0_10px_28px_rgba(37,211,102,0.26),inset_0_1px_0_rgba(255,255,255,0.42)] backdrop-blur-xl hover:border-[#8bf4b1] hover:bg-[#20c85e] hover:shadow-[0_14px_34px_rgba(37,211,102,0.32),inset_0_1px_0_rgba(255,255,255,0.5)]";
+  "border border-[var(--color-forest)] bg-[var(--color-forest)] text-white hover:border-[var(--color-forest-hover)] hover:bg-[var(--color-forest-hover)]";
 
 export const buttonVariants = {
   primary,
@@ -50,7 +50,7 @@ export const buttonSizes = {
 export type ButtonSize = keyof typeof buttonSizes;
 
 export const buttonBaseStyles =
-  "inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius-pill)] font-semibold tracking-normal transition-[background-color,border-color,box-shadow,color,transform] duration-[var(--motion-duration-micro)] ease-[var(--motion-ease-out)] hover:-translate-y-px active:translate-y-0 active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)] disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none motion-reduce:hover:transform-none";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius-pill)] font-semibold tracking-normal transition-[background-color,border-color,color] duration-[var(--motion-duration-micro)] ease-[var(--motion-ease-out)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)] disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none";
 
 export const iconButtonStyles =
-  "grid size-11 shrink-0 place-items-center rounded-[var(--radius-pill)] border border-white/78 bg-white/62 text-[var(--color-ink)] shadow-[var(--button-glass-shadow)] backdrop-blur-2xl transition-[background-color,border-color,box-shadow,transform] duration-[var(--motion-duration-micro)] ease-[var(--motion-ease-out)] hover:-translate-y-px hover:border-white hover:bg-white/82 hover:shadow-[var(--button-glass-shadow-hover)] active:translate-y-0 active:scale-[0.94] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)] disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none motion-reduce:hover:transform-none";
+  "grid size-11 shrink-0 place-items-center rounded-[var(--radius-pill)] border border-[var(--color-line-strong)] bg-white text-[var(--color-ink)] transition-[background-color,border-color,color] duration-[var(--motion-duration-micro)] hover:border-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)] disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none";

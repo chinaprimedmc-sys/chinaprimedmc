@@ -34,7 +34,7 @@ export function CtaCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[var(--radius-card)] p-6 md:p-10",
+        "relative overflow-hidden rounded-[var(--radius-surface)] p-6 md:p-10",
         variant === "glass" &&
           "border border-white/78 bg-white/62 shadow-[var(--shadow-glass)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(var(--glass-blur))_saturate(130%)]",
         variant === "solid" && "bg-foreground text-background",

@@ -12,7 +12,6 @@ import { excerpt } from "@/lib/text/excerpt";
 
 import { JourneyFinder } from "./journey-finder";
 import { JourneysHero } from "./journeys-hero";
-import { jost, newsreader } from "./journeys-fonts";
 import styles from "./journeys-page.module.css";
 
 const whatsapp = "https://wa.me/8618027438191";
@@ -32,10 +31,7 @@ export function JourneysPage({
   const since = new Date(siteConfig.operator.founded).getFullYear();
 
   return (
-    <div
-      className={`${styles.page} ${newsreader.variable} ${jost.variable}`}
-      data-journeys-page="true"
-    >
+    <div className={styles.page} data-journeys-page="true">
       <JourneysHero />
 
       <div className={styles.wrap}>

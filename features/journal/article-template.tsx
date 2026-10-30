@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Fragment } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { CtaButton, TrackedLink } from "@/components/cta";
@@ -7,6 +8,7 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { journalCategories } from "@/content/journal";
+import { getArticlePhoto } from "@/content/journal/article-photos";
 import { getJournalSearchRole } from "@/content/journal/search-strategy";
 import { formatJournalMobileTitle, formatJournalTitle } from "@/content/journal/presentation";
 import { RecordViewed } from "@/features/discovery/record-viewed";
@@ -46,7 +48,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
   const decisionMargin = getDecisionMargin(article);
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page}`}>
       <RecordViewed
         item={{
           id: `article:${article.slug}`,
@@ -59,8 +61,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
       <SiteNavigation />
 
       <ArticleHero article={article} />
-      <EditorialRecord article={article} />
-      <EvidenceNote article={article} />
+      <CompactTrust article={article} />
 
       <section id="article" className={styles.reading}>
         <ArticleMobileReader
@@ -124,6 +125,14 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
                   data-article-slug={related.href.split("/").pop()}
                   data-placement="related-guides"
                 >
+                  <span className={styles.relatedThumb}>
+                    <Image
+                      src={getArticlePhoto(related.href.split("/").pop() ?? "").src}
+                      alt=""
+                      fill
+                      sizes="(max-width: 767px) 90vw, 30vw"
+                    />
+                  </span>
                   <span>{related.category}</span>
                   <strong>{formatJournalTitle(related.title)}</strong>
                 </a>
@@ -268,69 +277,68 @@ function ArticleHero({ article }: { article: JournalArticle }) {
           </div>
         </div>
       </div>
+      <ArticleHeroPhoto slug={article.slug} />
     </header>
   );
 }
 
-function EditorialRecord({ article }: { article: JournalArticle }) {
+function ArticleHeroPhoto({ slug }: { slug: string }) {
+  const photo = getArticlePhoto(slug);
   return (
-    <section className={styles.record} aria-label="Editorial record">
-      <div className={`${styles.container} ${styles.recordInner}`}>
-        <RecordItem label="Written By" value={article.author.name} />
-        <RecordItem label="Editorial Basis" value="China-based journey planning and operations" />
-        <RecordItem
-          label={article.lastFactCheckedAt ? "Sources Checked" : "Published Record"}
-          value={
-            article.lastFactCheckedAt
-              ? formatDate(article.lastFactCheckedAt)
-              : formatDate(article.updatedAt ?? article.publishedAt)
-          }
-        />
-        <RecordItem
-          label="Operator"
-          value={`${siteConfig.operator.englishReferenceName}, licensed in China since 2018`}
-        />
-      </div>
-    </section>
+    <div className={styles.heroPhoto}>
+      <Image
+        src={photo.src}
+        alt={photo.alt}
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        style={{ objectPosition: photo.objectPosition ?? "center" }}
+      />
+    </div>
   );
 }
 
-function EvidenceNote({ article }: { article: JournalArticle }) {
+function CompactTrust({ article }: { article: JournalArticle }) {
   const governance = article.governance;
-  if (!governance) return null;
-
-  const copy =
-    governance.sourceClass === "official-required"
-      ? "This guide addresses a time-sensitive visitor rule. Read the listed primary sources and confirm the rule for your passport, route and travel date."
-      : governance.sourceClass === "operator"
-        ? "This guide explains AVIORA's published operating approach and planning judgment. It is not presented as an outside rule or a promise of date-specific supplier availability."
-        : "This guide combines AVIORA planning analysis with the listed sources. External rules remain subject to the responsible authority and travel-date confirmation.";
-
+  const checkedAt = article.lastFactCheckedAt ?? governance?.contentReviewedAt;
+  const label = article.lastFactCheckedAt ? "Sources Checked" : "Published Record";
+  const date = formatDate(checkedAt ?? article.updatedAt ?? article.publishedAt);
+  const basis =
+    governance?.sourceClass === "official-required"
+      ? "Official rules reviewed. This guide addresses a time-sensitive visitor rule. Read the listed primary sources and confirm the rule for your passport, route and travel date."
+      : governance?.sourceClass === "operator"
+        ? "AVIORA operating guidance. This guide explains AVIORA's published operating approach and planning judgment. It is not presented as an outside rule or a promise of date-specific supplier availability."
+        : "AVIORA analysis with primary sources. This guide combines AVIORA planning analysis with the listed sources. External rules remain subject to the responsible authority and travel-date confirmation.";
   return (
-    <aside className={styles.evidenceNote} aria-label="Guide source and review policy">
-      <div className={styles.container}>
+    <section className={styles.trust} aria-label="Editorial record">
+      <div className={`${styles.container} ${styles.trustInner}`}>
         <p>
-          <strong>
-            {governance.sourceClass === "official-required"
-              ? "Official rules reviewed."
-              : governance.sourceClass === "operator"
-                ? "AVIORA operating guidance."
-                : "AVIORA analysis with primary sources."}
-          </strong>{" "}
-          {copy} Reviewed {formatDate(article.lastFactCheckedAt ?? governance.contentReviewedAt)}.
+          By {article.author.name} <span aria-hidden="true">·</span> {label} {date}{" "}
+          <span aria-hidden="true">·</span>{" "}
           <Link href="/editorial-policy">How we verify guidance</Link>
         </p>
+        <details className={styles.trustDetails}>
+          <summary>About this guide</summary>
+          <dl>
+            <div>
+              <dt>Editorial basis</dt>
+              <dd>China-based journey planning and operations</dd>
+            </div>
+            <div>
+              <dt>Operator</dt>
+              <dd>{`${siteConfig.operator.englishReferenceName}, licensed in China since 2018`}</dd>
+            </div>
+            <div>
+              <dt>Source standard</dt>
+              <dd>
+                {basis} Reviewed {date}.
+              </dd>
+            </div>
+          </dl>
+        </details>
       </div>
-    </aside>
-  );
-}
-
-function RecordItem({ label, value }: { label: string; value: string }) {
-  return (
-    <div className={styles.recordItem}>
-      <span className={styles.recordLabel}>{label}</span>
-      <span className={styles.recordValue}>{value}</span>
-    </div>
+    </section>
   );
 }
 

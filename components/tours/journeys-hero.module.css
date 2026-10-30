@@ -41,7 +41,7 @@
   max-width: 14em;
   margin: 0;
   font-size: clamp(40px, 6.2vw, 92px);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 1.02;
 }
@@ -112,11 +112,11 @@
 
 /* Restore label tracking against the site-wide letter-spacing reset (Journeys page only). */
 .eyebrow {
-  letter-spacing: 0.22em !important;
+  letter-spacing: 0.12em !important;
 }
 .button,
 .link {
-  letter-spacing: 0.16em !important;
+  letter-spacing: 0.1em !important;
 }
 .hero h1 {
   letter-spacing: -0.015em !important;

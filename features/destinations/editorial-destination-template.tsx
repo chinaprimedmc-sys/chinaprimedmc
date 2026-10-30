@@ -489,7 +489,7 @@ export function EditorialDestinationTemplate({
 
 function Fact({ icon, text }: { icon: ReactNode; text: string }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/72 px-4 py-2.5 text-sm font-semibold shadow-sm backdrop-blur-xl">
+    <span className="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-white/80 bg-white/72 px-4 py-2.5 text-sm font-semibold shadow-sm backdrop-blur-xl">
       {icon}
       {text}
     </span>
@@ -499,7 +499,7 @@ function Fact({ icon, text }: { icon: ReactNode; text: string }) {
 function PlanningCard({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
   return (
     <article className="rounded-[1.25rem] border border-black/8 bg-white p-6">
-      <span className="grid size-10 place-items-center rounded-full border border-[var(--color-line)] bg-white text-[var(--color-muted)]">
+      <span className="grid size-10 place-items-center rounded-[var(--radius-pill)] border border-[var(--color-line)] bg-white text-[var(--color-muted)]">
         {icon}
       </span>
       <h3 className="mt-5 text-xl font-semibold">{title}</h3>

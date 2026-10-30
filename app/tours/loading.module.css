@@ -29,7 +29,7 @@
 .catalog header span,
 .featured article span {
   background: #eef0f1;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   height: 12px;
   width: 120px;
 }
@@ -39,7 +39,7 @@
 .featured article strong,
 .grid strong {
   background: #e7e9ea;
-  border-radius: 14px;
+  border-radius: var(--radius-surface);
   display: block;
   height: 78px;
   width: 86%;
@@ -49,7 +49,7 @@
 .featured article p,
 .grid p {
   background: #eef0f1;
-  border-radius: 10px;
+  border-radius: var(--radius-surface);
   height: 52px;
   width: 100%;
 }
@@ -58,7 +58,7 @@
 .featured article i,
 .grid i {
   background: #eceeef;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   height: 50px;
   width: 170px;
 }
@@ -68,7 +68,7 @@
 .grid article > div {
   aspect-ratio: 16 / 11;
   background: #eceeef;
-  border-radius: 36px;
+  border-radius: var(--radius-surface);
 }
 
 .catalog {
@@ -87,7 +87,7 @@
 
 .filter {
   background: #eceeef;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   height: 72px;
   margin-top: 42px;
 }
@@ -105,7 +105,7 @@
 
 .grid article > div {
   aspect-ratio: 4 / 3;
-  border-radius: 28px;
+  border-radius: var(--radius-surface);
 }
 
 .grid strong {
@@ -134,7 +134,7 @@
   .heroImage,
   .featured > div,
   .grid article > div {
-    border-radius: 24px;
+    border-radius: var(--radius-surface);
   }
 
   .catalog {

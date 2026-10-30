@@ -168,7 +168,7 @@ function EditorialImage({
   return (
     <Link
       href={`/destinations/${destination.slug}`}
-      className={`group relative block min-w-0 overflow-hidden rounded-3xl bg-[#f3f4f4] ${aspect}`}
+      className={`group relative block min-w-0 overflow-hidden rounded-[var(--radius-surface)] bg-[#f3f4f4] ${aspect}`}
     >
       <OptimizedImage
         src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
@@ -181,7 +181,9 @@ function EditorialImage({
       />
       <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-4 pt-12 text-white sm:p-6 sm:pt-16">
         <span className="block text-xs font-semibold text-white/80">{destination.kicker}</span>
-        <span className="mt-1 block text-2xl font-semibold sm:text-3xl">{destination.name}</span>
+        <span className="mt-1 block font-[family-name:var(--font-display)] text-2xl font-medium sm:text-3xl">
+          {destination.name}
+        </span>
       </span>
     </Link>
   );
@@ -202,7 +204,7 @@ function DestinationFeature({
       className={`group block ${index % 2 === 1 ? "md:mt-20" : ""}`}
     >
       <span
-        className={`relative block overflow-hidden rounded-3xl bg-[#f3f4f4] ${portrait ? "aspect-[3/4] md:mx-auto md:w-[78%]" : "aspect-[3/2]"}`}
+        className={`relative block overflow-hidden rounded-[var(--radius-surface)] bg-[#f3f4f4] ${portrait ? "aspect-[3/4] md:mx-auto md:w-[78%]" : "aspect-[3/2]"}`}
       >
         <OptimizedImage
           src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
@@ -224,7 +226,9 @@ function DestinationFeature({
           </span>
         </span>
         <span className="mt-3 flex items-end justify-between gap-4">
-          <span className="text-4xl font-semibold sm:text-5xl">{destination.name}</span>
+          <span className="font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+            {destination.name}
+          </span>
           <ArrowRight className="mb-2 size-5 shrink-0 transition group-hover:translate-x-1" />
         </span>
         <span className="mt-4 block max-w-xl text-base leading-[25px] text-[var(--color-copy)]">
@@ -242,7 +246,7 @@ function JourneyCard({ journey }: { journey: JourneyPanelData }) {
   return (
     <Link href={journey.href} className="group block border-t border-black/10 pt-5">
       {journey.image ? (
-        <span className="relative block aspect-[4/3] overflow-hidden rounded-3xl bg-[#f3f4f4]">
+        <span className="relative block aspect-[4/3] overflow-hidden rounded-[var(--radius-surface)] bg-[#f3f4f4]">
           <OptimizedImage
             src={journey.image.src}
             alt={journey.image.alt ?? journey.title}
@@ -258,7 +262,7 @@ function JourneyCard({ journey }: { journey: JourneyPanelData }) {
           <span className="text-xs font-semibold text-[var(--color-muted)]">
             {journey.duration} · {journey.route}
           </span>
-          <span className="mt-3 block max-w-xl text-2xl leading-tight font-semibold sm:text-3xl">
+          <span className="mt-3 block max-w-xl font-[family-name:var(--font-display)] text-2xl leading-tight font-medium sm:text-3xl">
             {journey.title}
           </span>
         </span>

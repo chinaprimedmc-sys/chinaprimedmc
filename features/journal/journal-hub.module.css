@@ -897,7 +897,7 @@
 
   .searchField {
     min-height: 3.1rem;
-    border-radius: 0.9rem;
+    border-radius: var(--radius-surface);
     background: #f5f6f6;
     box-shadow: none;
     backdrop-filter: none;
@@ -1092,4 +1092,298 @@
     background: #fff;
     backdrop-filter: none;
   }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Editorial skin: matches /tours (ivory, Newsreader, Jost).
+   ─────────────────────────────────────────────────────────────── */
+.page {
+  --ivory: var(--color-canvas);
+  --paper: var(--color-surface-muted);
+  --ink: var(--color-ink);
+  --stone: var(--color-muted);
+  --rule: var(--color-line);
+  --accent: var(--color-forest);
+  --night: var(--color-night);
+  --serif: var(--font-brand);
+  --label: var(--font-body);
+  --journal-ink: var(--ink);
+  --journal-muted: var(--stone);
+  --journal-line: var(--rule);
+  background: var(--ivory);
+}
+
+.openingComposition {
+  border-bottom: 0;
+}
+.opening {
+  padding: calc(var(--site-nav-offset) + 2.5rem) 0 2.25rem;
+}
+.openingGrid {
+  grid-template-columns: minmax(0, 1fr);
+  justify-content: start;
+}
+.openingCopy {
+  max-width: 56rem;
+}
+.brandLine,
+.sectionLabel,
+.meta,
+.controlLabel,
+.resultsHeader p {
+  color: var(--stone);
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em !important;
+}
+.opening h1 {
+  max-width: 16ch;
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.015em !important;
+}
+.openingDek {
+  max-width: 44ch;
+  color: #3b3731;
+  font-family: var(--serif);
+  font-size: clamp(1.125rem, 1.7vw, 1.4rem);
+  line-height: 1.5;
+}
+.hubHeroPhoto {
+  position: relative;
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--container-page));
+  margin: 0 auto;
+  aspect-ratio: 21 / 9;
+  max-height: 46vh;
+  overflow: hidden;
+  background: var(--rule);
+}
+.hubHeroPhoto img {
+  object-fit: cover;
+}
+.openingPrimary {
+  border-radius: 0 !important;
+  background: var(--ink) !important;
+  color: var(--ivory) !important;
+  font-family: var(--label);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+}
+.textLink,
+.secondaryTextLink,
+.quietLink,
+.completeIndexLink {
+  font-family: var(--label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+}
+
+.editorialStandard {
+  background: transparent;
+  border-bottom: 1px solid var(--rule);
+}
+.standardInner > p {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+.standardInner dt {
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+}
+.standardInner dd {
+  font-family: var(--serif);
+  font-size: 1rem;
+}
+
+.sectionIntro h2,
+.finderIntro h2,
+.intelligenceIntro h2,
+.archiveTitle,
+.invitation h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.012em !important;
+}
+.sectionIntro > p:not(.sectionLabel),
+.finderIntro > p:not(.sectionLabel) {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  color: var(--stone);
+}
+
+.leadStory.textStory,
+.destinationPrimary.textStory {
+  border-block: 0;
+  padding: 0;
+  gap: 1.1rem;
+}
+.hubThumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--rule);
+}
+.hubThumb img {
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.textStory:hover .hubThumb img {
+  transform: scale(1.04);
+}
+.storyCopy h3,
+.destinationCopy h3,
+.leadStory.textStory .storyCopy h3 {
+  max-width: 24ch;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em !important;
+}
+.storyCopy > p:not(.meta),
+.destinationCopy > p:not(.meta) {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+}
+.supportStory h3 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+.destinationSecondary .destinationStory {
+  display: grid;
+  gap: 0.8rem;
+}
+.destinationSecondary .destinationCopy h3 {
+  font-size: 1.35rem;
+}
+
+.indexLink strong,
+.archiveEntry strong,
+.archiveGroup summary strong,
+.resultLink strong {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+.indexLink small,
+.archiveGroup summary small,
+.resultExcerpt {
+  font-family: var(--serif);
+}
+.decisionButton,
+.searchField {
+  font-family: var(--serif);
+}
+
+.invitation {
+  background: var(--night);
+  color: var(--ivory);
+}
+.invitation p {
+  color: #e6dfd2;
+  font-family: var(--serif);
+  font-size: 1.125rem;
+}
+.invitationAction {
+  border-radius: 0 !important;
+  background: var(--ivory) !important;
+  color: var(--ink) !important;
+  font-family: var(--label);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+}
+
+@media (max-width: 767px) {
+  .opening {
+    padding: calc(var(--site-nav-offset) + 1.25rem) 0 1.5rem;
+  }
+  .opening h1 {
+    font-size: clamp(2.25rem, 10vw, 3rem);
+  }
+  .hubHeroPhoto {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: none;
+  }
+}
+
+/* Specificity fixes for the editorial skin. */
+.finderIntro .sectionLabel,
+.sectionIntro .sectionLabel,
+.intelligenceIntro .sectionLabel,
+.finderIntro p.sectionLabel {
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.12em !important;
+}
+.groundSection,
+.destinationTitle,
+.editorialStandard,
+.directory,
+.section,
+.archive {
+  background: transparent;
+}
+.hubHeroPhoto {
+  margin-top: 2.5rem;
+}
+@media (max-width: 767px) {
+  .hubHeroPhoto {
+    margin-top: 1.5rem;
+  }
+}
+
+.resultsHeader h2,
+.resultsHeader h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.01em !important;
+}
+.resultContent,
+.resultContent p,
+.resultMeta,
+.resultExcerpt,
+.intelligenceIntro > p,
+.archiveHeader p,
+.finderIntro p {
+  font-family: var(--serif);
+}
+.resultContent strong,
+.resultContent h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+.resultMeta {
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+}
+.decisionButton {
+  border-radius: 0;
+  background: var(--paper);
 }

@@ -18,7 +18,7 @@ export function HeroTrustPills({ items, className, tone = "dark" }: HeroTrustPil
       {items.map((item) => (
         <li
           key={item}
-          className="rounded-full border border-current/30 px-3 py-2 text-sm font-medium"
+          className="rounded-[var(--radius-pill)] border border-current/30 px-3 py-2 text-sm font-medium"
         >
           {item}
         </li>

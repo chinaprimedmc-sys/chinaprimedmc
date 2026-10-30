@@ -36,11 +36,14 @@ export function SearchResultsTemplate({
               name="query"
               type="search"
               defaultValue={query}
-              className="border-border w-full rounded-xl border bg-white p-3 text-base"
+              className="border-border w-full rounded-[var(--radius-surface)] border bg-white p-3 text-base"
               placeholder="Where would you like to go?"
             />
           </label>
-          <button className="bg-foreground rounded-xl px-5 text-white" type="submit">
+          <button
+            className="bg-foreground rounded-[var(--radius-surface)] px-5 text-white"
+            type="submit"
+          >
             Search
           </button>
         </form>

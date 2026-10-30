@@ -1,11 +1,28 @@
+/*
+ * Global header: a thin full-width bar, not floating pills.
+ * Over a photo it is transparent with white text; elsewhere, or once scrolled, it is white with a hairline.
+ */
 .header {
-  --nav-ink: #17201d;
-  --nav-muted: rgba(23, 32, 29, 0.62);
+  --nav-ink: var(--color-ink);
+  --nav-muted: rgba(26, 24, 22, 0.62);
   inset: 0 0 auto;
-  pointer-events: none;
   position: fixed;
   z-index: 120;
   width: 100%;
+  background: #fff;
+  border-bottom: 1px solid var(--color-line);
+  pointer-events: auto;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease;
+}
+
+.header[data-tone="over-image"]:not([data-scrolled="true"]):not([data-menu-open="true"]) {
+  --nav-ink: #fff;
+  --nav-muted: rgba(255, 255, 255, 0.78);
+  background: linear-gradient(180deg, rgba(18, 16, 13, 0.46), rgba(18, 16, 13, 0));
+  border-bottom-color: transparent;
 }
 
 /* Fixed navigation never participates in document flow; anchor targets need this clearance. */
@@ -17,130 +34,76 @@
 .mobileShell {
   align-items: center;
   box-sizing: border-box;
-  pointer-events: none;
-}
-
-.desktopWhatsapp summary {
-  list-style: none;
-}
-
-.desktopWhatsapp summary::-webkit-details-marker {
-  display: none;
+  color: var(--nav-ink);
 }
 
 .desktopShell {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin: max(16px, env(safe-area-inset-top)) auto 0;
-  max-width: calc(100% - 32px);
-  min-height: 46px;
-  width: max-content;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  height: 64px;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding-inline: var(--page-gutter);
 }
 
 .mobileShell {
   display: none;
 }
 
-.brandIsland,
-.navIsland,
-.toolsIsland,
-.desktopWhatsapp,
-.actionIsland,
-.mobileBrand,
-.mobileToolGroup,
-.iconIsland {
-  align-items: center;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: var(--nav-ink);
-  display: flex;
-  pointer-events: auto;
-  transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
-}
-
-.brandIsland,
-.navIsland,
-.toolsIsland,
-.desktopWhatsapp,
-.actionIsland {
-  height: 46px;
-}
-
 .brandIsland {
-  justify-content: center;
-  padding: 0 15px;
-}
-
-.navIsland {
-  gap: 24px;
-  justify-content: center;
-  padding: 0 22px;
-}
-
-.toolsIsland {
-  gap: 2px;
-  padding: 0 3px;
-}
-
-.desktopWhatsapp {
-  justify-content: center;
-  padding: 0 3px;
-}
-
-.actionIsland {
-  gap: 7px;
-  justify-content: center;
-  padding: 0 17px;
+  align-items: center;
+  color: inherit;
+  display: flex;
+  justify-self: start;
 }
 
 .wordmark {
   color: inherit;
   display: inline-block;
   font-family: var(--font-brand);
-  font-size: 1.0625rem;
+  font-size: 1.375rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em !important;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-.navLink,
-.actionIsland {
-  font-family: var(--font-body);
-  white-space: nowrap;
+.navIsland {
+  align-items: center;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }
 
 .navLink {
   align-items: center;
   color: inherit;
   display: inline-flex;
+  font-family: var(--font-body);
   font-size: 0.8125rem;
-  font-weight: 600;
-  height: 100%;
-  opacity: 0.78;
+  font-weight: 500;
+  height: 64px;
+  letter-spacing: 0.01em !important;
+  opacity: 0.82;
   position: relative;
+  white-space: nowrap;
 }
 
 .navLink::after {
   background: currentColor;
-  bottom: 7px;
+  bottom: 18px;
   content: "";
   height: 1px;
-  left: 50%;
+  left: 0;
   opacity: 0;
   position: absolute;
-  transform: translateX(-50%);
+  right: 0;
+  transform: scaleX(0.4);
   transition:
-    opacity 160ms ease,
-    width 160ms ease;
-  width: 16px;
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
 .navLink:hover,
@@ -152,14 +115,64 @@
 .navLink:hover::after,
 .navLink:focus-visible::after,
 .navLink[data-active="true"]::after {
-  opacity: 0.7;
-  width: 24px;
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.rightGroup {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  justify-self: end;
+}
+
+.toolsIsland {
+  align-items: center;
+  color: inherit;
+  display: flex;
+}
+
+.desktopWhatsapp {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  position: relative;
+}
+
+.desktopWhatsapp summary {
+  list-style: none;
+}
+
+.desktopWhatsapp summary::-webkit-details-marker {
+  display: none;
 }
 
 .actionIsland {
+  align-items: center;
+  border: 1px solid currentColor;
   color: inherit;
+  display: inline-flex;
+  font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
+  gap: 7px;
+  letter-spacing: 0.04em !important;
+  min-height: 40px;
+  padding: 0 18px;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+  white-space: nowrap;
+}
+
+.actionIsland:hover {
+  background: var(--nav-ink);
+  color: var(--color-canvas);
+}
+
+.header[data-tone="over-image"]:not([data-scrolled="true"]) .actionIsland:hover {
+  background: #fff;
+  color: var(--color-ink);
 }
 
 .actionIsland svg {
@@ -168,23 +181,27 @@
 }
 
 .iconIsland {
+  align-items: center;
   appearance: none;
   background: transparent;
+  border: 0;
+  color: inherit;
   cursor: pointer;
+  display: inline-flex;
   flex: 0 0 auto;
-  height: 36px;
+  height: 40px;
   justify-content: center;
   padding: 0;
-  width: 36px;
+  width: 40px;
 }
 
 .iconIsland svg {
-  height: 16px;
-  width: 16px;
+  height: 18px;
+  width: 18px;
 }
 
-.whatsappIsland {
-  color: #25d366;
+.whatsappIsland svg {
+  color: inherit;
 }
 
 .navLink:focus-visible,
@@ -196,155 +213,33 @@
   outline-offset: 3px;
 }
 
-.brandIsland:hover,
-.actionIsland:hover,
-.iconIsland:hover {
-  transform: translateY(-1px);
-}
-
-.iconIsland:active,
-.actionIsland:active {
-  transform: scale(0.97);
-}
-
-.header[data-tone="on-light"] {
-  --nav-ink: #17201d;
-  --nav-muted: rgba(23, 32, 29, 0.62);
-}
-
-.header[data-tone="on-light"]
-  :is(
-    .brandIsland,
-    .navIsland,
-    .toolsIsland,
-    .desktopWhatsapp,
-    .actionIsland,
-    .mobileBrand,
-    .mobileToolGroup,
-    .iconIsland
-  ) {
-  -webkit-backdrop-filter: blur(20px) saturate(135%);
-  backdrop-filter: blur(20px) saturate(135%);
-  background: rgba(248, 250, 249, 0.78);
-  border-color: rgba(255, 255, 255, 0.72);
-  box-shadow:
-    0 8px 22px rgba(17, 25, 22, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.78);
-}
-
-.header[data-tone="over-image"] {
-  --nav-ink: #fff;
-  --nav-muted: rgba(255, 255, 255, 0.72);
-}
-
-.header[data-tone="over-image"]
-  :is(
-    .brandIsland,
-    .navIsland,
-    .toolsIsland,
-    .desktopWhatsapp,
-    .actionIsland,
-    .mobileBrand,
-    .mobileToolGroup,
-    .iconIsland
-  ) {
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-  color: #fff;
-}
-
-.header[data-tone="over-image"] .whatsappIsland {
-  color: #25d366;
-}
-
-.header[data-tone="over-image"] .wordmark,
-.header[data-tone="over-image"] .navLink,
-.header[data-tone="over-image"] .actionIsland {
-  color: #fff;
-  -webkit-text-fill-color: #fff;
-  text-shadow: 0 1px 8px rgba(4, 12, 17, 0.32);
-}
-
-.header[data-tone="over-image"] .wordmark {
-  text-shadow: none;
-}
-
-.header[data-tone="over-image"] .iconIsland svg {
-  color: currentColor;
-  stroke: currentColor;
-}
-
-.header[data-tone="over-image"][data-scrolled="true"]
-  :is(
-    .brandIsland,
-    .navIsland,
-    .toolsIsland,
-    .desktopWhatsapp,
-    .actionIsland,
-    .mobileBrand,
-    .mobileToolGroup,
-    .iconIsland
-  ) {
-  -webkit-backdrop-filter: blur(20px) saturate(135%);
-  backdrop-filter: blur(20px) saturate(135%);
-  background-color: rgba(248, 250, 249, 0.78);
-  border-color: rgba(255, 255, 255, 0.72);
-  box-shadow:
-    0 8px 22px rgba(17, 25, 22, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.78);
-  color: #17201d;
-}
-
-.header[data-tone="over-image"][data-scrolled="true"] :is(.wordmark, .navLink, .actionIsland) {
-  color: #17201d;
-  -webkit-text-fill-color: #17201d;
-  text-shadow: none;
-}
-
-.header[data-tone="over-image"][data-scrolled="true"] .whatsappIsland {
-  color: #25d366;
-}
-
-.header[data-tone="over-image"][data-scrolled="true"] .iconIsland svg {
-  color: currentColor;
-  stroke: currentColor;
-}
-
 .whatsappPopover {
-  -webkit-backdrop-filter: blur(24px) saturate(135%);
-  backdrop-filter: blur(24px) saturate(135%);
-  background: rgba(248, 250, 249, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: 22px;
-  box-shadow: 0 18px 44px rgba(17, 25, 22, 0.14);
-  color: #17201d;
-  padding: 12px;
-  width: 226px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 18px 44px rgba(26, 24, 22, 0.12);
+  color: var(--color-ink);
+  padding: 10px;
+  width: 232px;
   z-index: 160;
-}
-
-.desktopWhatsapp {
-  position: relative;
 }
 
 .desktopWhatsapp[open] .whatsappPopover {
   position: absolute;
   right: 0;
-  top: calc(100% + 10px);
+  top: calc(100% + 8px);
 }
 
 .whatsappPopover > p {
-  color: var(--nav-muted);
-  font-size: 0.65rem;
-  font-weight: 700;
-  margin: 3px 8px 8px;
+  color: var(--color-muted);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em !important;
+  margin: 4px 8px 8px;
   text-transform: uppercase;
 }
 
 .whatsappPopover > a {
-  border-radius: 14px;
-  color: #17201d;
+  color: var(--color-ink);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -353,17 +248,17 @@
 
 .whatsappPopover > a:hover,
 .whatsappPopover > a:focus-visible {
-  background: rgba(23, 32, 29, 0.06);
+  background: var(--color-surface-muted);
 }
 
 .whatsappPopover span {
-  color: var(--nav-muted);
-  font-size: 0.67rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
 }
 
 .whatsappPopover strong {
-  font-size: 0.84rem;
-  font-weight: 650;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .mobileMenu,
@@ -372,12 +267,12 @@
 }
 
 .mobileMenuInner {
-  --nav-ink: #17201d;
-  --nav-muted: #475650;
+  --nav-ink: var(--color-ink);
+  --nav-muted: var(--color-muted);
   display: flex;
   flex-direction: column;
-  min-height: 0;
   height: 100%;
+  min-height: 0;
 }
 
 .visuallyHidden {
@@ -393,20 +288,18 @@
 
 @media (max-width: 1199px) and (min-width: 1024px) {
   .desktopShell {
-    gap: 6px;
+    gap: 14px;
   }
 
   .navIsland {
-    gap: 14px;
-    padding-inline: 14px;
+    gap: 20px;
   }
 
   .navLink {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
   }
 
   .actionIsland {
-    font-size: 0.67rem;
     padding-inline: 12px;
   }
 }
@@ -418,92 +311,70 @@
 
   .mobileShell {
     display: flex;
+    height: 56px;
     justify-content: space-between;
-    margin: max(10px, env(safe-area-inset-top)) var(--page-gutter) 0;
-  }
-
-  .header[data-journeys-navigation="true"]:not([data-scrolled="true"]) .mobileShell {
-    animation: journeys-nav-in 760ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+    padding-inline: 16px;
   }
 
   .mobileBrand {
-    height: 40px;
-    padding-inline: 13px;
+    align-items: center;
+    color: inherit;
+    display: flex;
+  }
+
+  .mobileBrand .wordmark {
+    font-size: 1.1875rem;
   }
 
   .mobileActions {
     align-items: center;
     display: flex;
-    gap: 6px;
-    pointer-events: auto;
+    gap: 2px;
   }
 
   .mobileToolGroup {
     display: flex;
-    gap: 4px;
-  }
-
-  .mobileActions > .iconIsland {
-    height: 40px;
-    width: 40px;
-  }
-
-  .mobileActions > .iconIsland svg,
-  .mobileToolGroup .iconIsland svg {
-    height: 17px;
-    width: 17px;
   }
 
   .mobileMenu {
     background: #fff;
-    color: #17201d;
+    color: var(--color-ink);
     display: flex;
     flex-direction: column;
     inset: 0;
     overflow: hidden;
-    pointer-events: auto;
     position: fixed;
     z-index: 141;
   }
 
   .mobileOverlay {
-    background: rgba(8, 15, 12, 0.34);
+    background: rgba(18, 16, 13, 0.34);
     border: 0;
     cursor: pointer;
     display: block;
     inset: 0;
     padding: 0;
-    pointer-events: auto;
     position: fixed;
     z-index: 140;
   }
 
   .mobileMenuHeader {
     align-items: center;
+    border-bottom: 1px solid var(--color-line);
     display: flex;
     flex: 0 0 auto;
+    height: 56px;
     justify-content: space-between;
-    padding: max(18px, env(safe-area-inset-top)) 20px 18px;
+    padding-inline: 16px;
   }
 
   .mobileMenuBrand {
+    color: var(--color-ink);
     display: inline-flex;
   }
 
-  .mobileMenu .mobileMenuBrand .wordmark {
-    color: #17201d;
-    -webkit-text-fill-color: #17201d;
-    text-shadow: none;
-  }
-
   .mobileMenuHeader .iconIsland {
-    border-color: rgba(23, 32, 29, 0.14);
-    color: #17201d;
-  }
-
-  .mobileMenuHeader .iconIsland:hover,
-  .mobileMenuHeader .iconIsland:focus-visible {
-    background: rgba(23, 32, 29, 0.08);
+    color: var(--color-ink);
   }
 
   .mobileMenuBody {
@@ -516,25 +387,27 @@
   }
 
   .mobileGroup {
-    border-top: 1px solid rgba(23, 32, 29, 0.12);
-    padding: 18px 0 17px;
+    border-top: 1px solid var(--color-line);
+    padding: 20px 0 18px;
   }
 
   .mobileGroup:last-of-type {
-    border-bottom: 1px solid rgba(23, 32, 29, 0.12);
+    border-bottom: 1px solid var(--color-line);
   }
 
   .mobileGroupLink {
     align-items: center;
-    color: #17201d;
+    color: var(--color-ink);
     display: flex;
-    font-size: 1rem;
-    font-weight: 650;
+    font-family: var(--font-brand);
+    font-size: 1.5rem;
+    font-weight: 400;
     justify-content: space-between;
+    line-height: 1.2;
   }
 
   .mobileGroupLink[data-active="true"] {
-    color: #138c4a;
+    color: var(--color-forest);
   }
 
   .mobileGroupLink svg {
@@ -545,27 +418,25 @@
   .mobileSubLinks {
     display: grid;
     gap: 10px;
-    margin-top: 13px;
-    padding-left: 2px;
+    margin-top: 14px;
   }
 
   .mobileSubLinks a {
-    color: rgba(23, 32, 29, 0.6);
-    font-size: 0.8rem;
+    color: var(--color-muted);
+    font-size: 0.875rem;
   }
 
   .mobilePrimaryAction {
     align-items: center;
-    background: #17201d;
-    border-radius: 999px;
+    background: var(--color-ink);
     color: #fff;
     display: flex;
-    font-size: 0.78rem;
-    font-weight: 700;
+    font-size: 0.8125rem;
+    font-weight: 600;
     gap: 7px;
     justify-content: center;
-    margin-top: 24px;
-    min-height: 46px;
+    margin-top: 26px;
+    min-height: 50px;
   }
 
   .mobilePrimaryAction svg {
@@ -573,11 +444,32 @@
     width: 14px;
   }
 
+  .mobileOffer {
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--color-line-strong);
+    color: var(--color-ink);
+    cursor: pointer;
+    display: flex;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    gap: 7px;
+    justify-content: center;
+    margin-top: 12px;
+    min-height: 48px;
+  }
+
+  .mobileOffer svg {
+    height: 14px;
+    width: 14px;
+  }
+
   .mobileContact {
     align-items: center;
-    color: #138c4a;
+    color: var(--color-forest);
     display: flex;
-    font-size: 0.76rem;
+    font-size: 0.875rem;
     gap: 9px;
     margin-top: 22px;
   }
@@ -588,68 +480,10 @@
   }
 }
 
-@media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
-  @keyframes journeys-nav-in {
-    from {
-      opacity: 0;
-      transform: translate3d(0, -18px, 0);
-    }
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
-}
-
-@media (max-width: 520px) {
-  .mobileShell {
-    margin-inline: 16px;
-  }
-
-  .mobileActions {
-    gap: 4px;
-  }
-
-  .mobileBrand {
-    padding-inline: 11px;
-  }
-}
-
-@media (prefers-reduced-transparency: reduce) {
-  .header[data-tone="on-light"]
-    :is(
-      .brandIsland,
-      .navIsland,
-      .toolsIsland,
-      .desktopWhatsapp,
-      .actionIsland,
-      .mobileBrand,
-      .mobileToolGroup,
-      .iconIsland
-    ),
-  .header[data-tone="over-image"][data-scrolled="true"]
-    :is(
-      .brandIsland,
-      .navIsland,
-      .toolsIsland,
-      .desktopWhatsapp,
-      .actionIsland,
-      .mobileBrand,
-      .mobileToolGroup,
-      .iconIsland
-    ),
-  .whatsappPopover {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    background: rgba(248, 250, 249, 0.96);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .brandIsland,
+  .header,
   .navLink::after,
-  .actionIsland,
-  .iconIsland {
+  .actionIsland {
     transition: none;
   }
 }

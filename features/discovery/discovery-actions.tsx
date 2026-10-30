@@ -16,7 +16,7 @@ export function FavoriteButton({ item }: { item: DiscoveryItem }) {
       onClick={() =>
         toggleFavorite({ id: item.id, type: item.type, title: item.title, href: item.href })
       }
-      className="border-border inline-flex h-10 items-center gap-2 rounded-full border bg-white/78 px-4 text-sm font-semibold shadow-sm backdrop-blur-xl transition hover:bg-white"
+      className="border-border inline-flex h-10 items-center gap-2 rounded-[var(--radius-pill)] border bg-white/78 px-4 text-sm font-semibold shadow-sm backdrop-blur-xl transition hover:bg-white"
       aria-pressed={isFavorite}
     >
       <Heart size={16} aria-hidden="true" fill={isFavorite ? "currentColor" : "none"} />

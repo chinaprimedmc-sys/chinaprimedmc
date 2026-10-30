@@ -88,7 +88,7 @@
 .secondaryButton,
 .preferencesButton {
   align-items: center;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -287,7 +287,7 @@
 .switch {
   background: var(--color-line-strong);
   border: 1px solid var(--color-line-strong);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   height: 1.7rem;
   padding: 0.15rem;
   transition:

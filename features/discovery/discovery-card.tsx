@@ -9,7 +9,7 @@ export function DiscoveryCard({ item }: { item: DiscoveryItem }) {
   const categoryIsDuplicate = item.category?.toLowerCase() === item.type;
 
   return (
-    <article className="border-border flex min-w-0 flex-col overflow-hidden rounded-2xl border bg-white">
+    <article className="border-border flex min-w-0 flex-col overflow-hidden rounded-[var(--radius-surface)] border bg-white">
       {item.image ? (
         <Link href={item.href}>
           <OptimizedImage

@@ -17,7 +17,10 @@ export function MyTripPanel() {
     new URLSearchParams({ journeys: JSON.stringify(tripItems.map((item) => item.title)) });
 
   return (
-    <aside id="my-trip" className="border-border rounded-2xl border bg-white p-5">
+    <aside
+      id="my-trip"
+      className="border-border rounded-[var(--radius-surface)] border bg-white p-5"
+    >
       <div className="flex items-start justify-between gap-4">
         <div>
           <Badge>My China Journey</Badge>
