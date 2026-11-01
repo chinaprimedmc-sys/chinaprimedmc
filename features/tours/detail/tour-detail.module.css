@@ -52,7 +52,7 @@
 
 .eyebrow {
   color: var(--detail-accent);
-  font-size: 10px;
+  font-size: 0.75rem;
   font-weight: 760;
   letter-spacing: 0.16em;
   line-height: 1.4;
@@ -156,7 +156,7 @@
 .summaryPrice > span,
 .summaryPrice > small {
   color: var(--detail-quiet);
-  font-size: 11px;
+  font-size: 0.75rem;
 }
 
 .heroPrice > strong {
@@ -181,7 +181,7 @@
 
 .priceTerms span {
   color: rgba(255, 255, 255, 0.78);
-  font-size: 11px;
+  font-size: 0.75rem;
 }
 
 .priceOnRequest {
@@ -203,7 +203,7 @@
 .formFooter button {
   align-items: center;
   display: inline-flex;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 760;
   gap: 8px;
   justify-content: center;
@@ -369,7 +369,7 @@
 
 .heroCarouselControls > span {
   color: var(--detail-body);
-  font-size: 10px;
+  font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
   min-width: 46px;
   text-align: center;
@@ -479,7 +479,7 @@
 
 .fact dt {
   color: var(--detail-quiet);
-  font-size: 10px;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -546,13 +546,13 @@
 .reviewScore div > span:last-child {
   color: var(--detail-quiet);
   display: block;
-  font-size: 11px;
+  font-size: 0.75rem;
   margin-top: 5px;
 }
 
 .reviewNote {
   color: var(--detail-quiet);
-  font-size: 11px;
+  font-size: 0.75rem;
   line-height: 1.5;
   margin-top: 17px;
 }
@@ -570,7 +570,7 @@
 
 .reviewControls span {
   color: var(--detail-quiet);
-  font-size: 11px;
+  font-size: 0.75rem;
   margin-inline: 5px;
 }
 
@@ -605,7 +605,7 @@
 .reviewLanguage,
 .reviewRating {
   color: var(--detail-quiet);
-  font-size: 10px;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -645,7 +645,7 @@
 
 .reviewItem footer span {
   color: var(--detail-quiet);
-  font-size: 11px;
+  font-size: 0.75rem;
 }
 
 .routeGrid,
@@ -701,7 +701,7 @@
 .routePoint b {
   color: var(--detail-ink);
   display: flex;
-  font-size: 11px;
+  font-size: 0.75rem;
   gap: 7px;
   left: var(--label-x, 8px);
   position: absolute;
@@ -712,7 +712,7 @@
 
 .routePoint small {
   color: var(--detail-accent);
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 
 .routeMap > ol {
@@ -743,7 +743,7 @@
 
 .routeMap > ol > li > span {
   color: var(--detail-accent);
-  font-size: 11px;
+  font-size: 0.75rem;
 }
 
 .routeMap > ol strong {
@@ -788,12 +788,12 @@
 
 .signatureList article > div:last-child > span {
   color: var(--detail-accent);
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 
 .signatureList article p {
   color: var(--detail-quiet);
-  font-size: 10px;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   margin-top: 8px;
   text-transform: uppercase;
@@ -903,7 +903,7 @@
 
 .hotelComparison article > p {
   color: var(--detail-accent);
-  font-size: 10px;
+  font-size: 0.75rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -970,7 +970,7 @@
 
 .disclosureGroup summary strong {
   color: var(--detail-accent);
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
@@ -1058,7 +1058,7 @@
 
 .selectionSummary > span {
   color: var(--detail-accent);
-  font-size: 9px;
+  font-size: 0.75rem;
   font-weight: 800;
   grid-column: 1;
   letter-spacing: 0.08em;
@@ -1073,7 +1073,7 @@
 
 .selectionSummary > small {
   color: var(--detail-body);
-  font-size: 11px;
+  font-size: 0.75rem;
   grid-column: 1;
   line-height: 1.45;
 }
@@ -1092,7 +1092,7 @@
 
 .selectionSummary > b em {
   color: var(--detail-quiet);
-  font-size: 9px;
+  font-size: 0.75rem;
   font-style: normal;
   font-weight: 600;
 }
@@ -1199,7 +1199,7 @@
   align-items: center;
   color: var(--detail-ink);
   display: inline-flex;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 760;
   gap: 8px;
   letter-spacing: 0.08em;
@@ -1252,7 +1252,7 @@
 
 .dayLabel small {
   color: var(--detail-quiet);
-  font-size: 10px;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 
@@ -1272,7 +1272,7 @@
 
 .dayTitle > span {
   color: var(--detail-accent);
-  font-size: 10px;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1368,7 +1368,7 @@
 
 .practicalLabel {
   color: var(--detail-ink);
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   margin: 2px 0 -2px;
@@ -1400,7 +1400,7 @@
 
 .dayFacts dt {
   color: var(--detail-ink);
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1446,7 +1446,7 @@
 .phoneNumbers,
 .actionPriceNote {
   color: var(--detail-quiet);
-  font-size: 11px;
+  font-size: 0.75rem;
   line-height: 1.5;
   margin-top: 8px;
 }
@@ -1483,7 +1483,7 @@
 .actionButton {
   align-items: center;
   display: inline-flex;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 760;
   gap: 8px;
   justify-content: center;
@@ -1514,7 +1514,7 @@
 .mobileActionBar p span,
 .mobileActionBar p small {
   color: var(--detail-quiet);
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 
 .mobileActionBar p strong {
@@ -1539,7 +1539,7 @@
 .mobilePlan {
   background: var(--detail-ink);
   color: #fff;
-  font-size: 10px;
+  font-size: 0.75rem;
   font-weight: 760;
   letter-spacing: 0.06em;
   padding: 0 14px;
@@ -1619,7 +1619,7 @@
   }
 
   .heroMeta {
-    font-size: 11px;
+    font-size: 0.75rem;
     margin-top: 15px;
   }
 

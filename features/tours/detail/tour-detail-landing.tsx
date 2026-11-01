@@ -283,6 +283,27 @@ export function TourDetailLanding({
                 </p>
               </section>
 
+              {model.guideProfile && (
+                <section aria-labelledby="guides-profile-title">
+                  <h2 id="guides-profile-title" className={styles.h2}>
+                    {model.guideProfile.title}
+                  </h2>
+                  <p>{model.guideProfile.description}</p>
+                  <ul className={styles.why}>
+                    {model.guideProfile.specialists.map((guide) => (
+                      <li key={guide.city}>
+                        <b>{guide.city}</b>
+                        <span>{guide.profile}</span>
+                      </li>
+                    ))}
+                    <li>
+                      <b>{model.guideProfile.languagesLabel}</b>
+                      <span>{model.guideProfile.languages.join(", ")}</span>
+                    </li>
+                  </ul>
+                </section>
+              )}
+
               <section aria-labelledby="why-title">
                 <h2 id="why-title" className={styles.h2}>
                   {detailCopy.whyTitle}
@@ -399,7 +420,10 @@ export function TourDetailLanding({
             <h2 id="faq-title" className={styles.h2}>
               {detailCopy.faqTitle}
             </h2>
-            <TourFaqAccordion faqs={model.faqs.slice(0, 6)} journeySlug={model.slug} />
+            <TourFaqAccordion
+              faqs={model.faqs.slice(0, model.faqLimit ?? 6)}
+              journeySlug={model.slug}
+            />
           </section>
         </div>
 

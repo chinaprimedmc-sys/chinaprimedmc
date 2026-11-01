@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { AttributionCapture } from "@/components/analytics/attribution-capture";
+import { SalesmartlyChat } from "@/components/analytics/salesmartly-chat";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import {
   COOKIE_CONSENT_CHANGE_EVENT,
@@ -36,6 +37,7 @@ export function ConsentAwareServices() {
 
   return (
     <>
+      <SalesmartlyChat />
       {analyticsEnabled ? (
         <>
           <AttributionCapture />

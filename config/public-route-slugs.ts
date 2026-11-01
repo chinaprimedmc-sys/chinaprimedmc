@@ -1,6 +1,6 @@
 export const publicRouteSlugs = {
   tours: [
-    "first-china-beautifully-paced",
+    "beijing-xian-shanghai-private-9-day-tour",
     "luxury-yunnan-private-tour",
     "private-mutianyu-great-wall-day-tour",
     "private-shanghai-day-tour-guide-driver",

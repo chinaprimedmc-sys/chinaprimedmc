@@ -321,8 +321,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/tours/first-china-beautifully-paced",
+        destination: "/tours/beijing-xian-shanghai-private-9-day-tour",
+        permanent: true,
+      },
+      {
         source: "/journey/beijing-xian-shanghai-essential-8-days",
-        destination: "/tours/first-china-beautifully-paced",
+        destination: "/tours/beijing-xian-shanghai-private-9-day-tour",
         permanent: true,
       },
       {
@@ -332,7 +337,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/journey/china-by-high-speed-rail",
-        destination: "/tours/first-china-beautifully-paced",
+        destination: "/tours/beijing-xian-shanghai-private-9-day-tour",
         permanent: true,
       },
       {

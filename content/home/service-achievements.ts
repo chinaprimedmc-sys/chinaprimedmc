@@ -33,7 +33,9 @@ export const serviceAchievements = [
 ] as const;
 
 export function serviceAchievementsText() {
+  // 面向游客的机器可读摘要只放游客相关数据；企业客户数据不在此列。
   return serviceAchievements
+    .filter(({ id }) => id !== "overseas-companies-served")
     .map(({ display, englishLabel, description }) => `- ${display} ${englishLabel}: ${description}`)
     .join("\n");
 }

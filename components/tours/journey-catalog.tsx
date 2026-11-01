@@ -26,7 +26,7 @@ const formats = [
 ] as const;
 
 const signatureJourneySlugs = new Set([
-  "first-china-beautifully-paced",
+  "beijing-xian-shanghai-private-9-day-tour",
   "china-family-tour-with-pandas-12-day-private-tour",
   "luxury-yunnan-private-tour",
   "china-at-an-easier-pace-12-day-private-tour",

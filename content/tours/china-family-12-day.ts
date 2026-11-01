@@ -524,7 +524,7 @@ export const chinaFamily12DayTour: Tour = {
   included: [
     "11 nights in selected premium five-star hotels, based on two adults and two children aged 6–11 sharing two rooms",
     "Daily hotel breakfast, selected lunches and the farewell dinner stated in the final proposal",
-    "Private English-speaking, family-ready guides and private vehicles on confirmed touring days",
+    "Private multilingual, family-ready guides and private vehicles on confirmed touring days",
     "Private airport and railway-station transfers with luggage and handover support",
     "Beijing–Xi'an and Xi'an–Chengdu first-class high-speed rail tickets",
     "Chengdu–Shanghai nonstop economy-class domestic flight",

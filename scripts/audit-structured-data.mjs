@@ -9,7 +9,7 @@ const pages = [
   { path: "/", required: ["TravelAgency", "WebSite", "WebPage", "FAQPage"] },
   { path: "/tours", required: ["CollectionPage", "BreadcrumbList"] },
   {
-    path: "/tours/first-china-beautifully-paced",
+    path: "/tours/beijing-xian-shanghai-private-9-day-tour",
     required: ["TouristTrip", "Offer", "BreadcrumbList"],
   },
   {

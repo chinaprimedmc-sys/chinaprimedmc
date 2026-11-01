@@ -102,7 +102,7 @@ The fourth answer is where most itineraries become honest. A new city is not add
 
 Use four nights in Beijing, two in Xi'an and three in Shanghai, with the remaining day accounted for by arrival and the two intercity movements. This is the classic route at its firmest workable pace.
 
-For a commercial reference, our published [nine-day private version](/tours/first-china-beautifully-paced) starts from **US$3,190 per person**, based on four guests sharing two rooms outside peak periods. A ten-day version needs the additional night and whichever service is attached to it quoted explicitly.
+For a commercial reference, our published [nine-day private version](/tours/beijing-xian-shanghai-private-9-day-tour) starts from **US$3,190 per person**, based on four guests sharing two rooms outside peak periods. A ten-day version needs the additional night and whichever service is attached to it quoted explicitly.
 
 ### 12 days: Beijing, Xi'an and Shanghai with room to choose
 

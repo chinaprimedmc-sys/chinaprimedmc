@@ -144,10 +144,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
               "Signature experiences",
               "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
             ],
-            [
-              "Touring service",
-              "Private family-ready English-speaking guides and private vehicles",
-            ],
+            ["Touring service", "Private family-ready multilingual guides and private vehicles"],
             ["Shopping policy", "No compulsory shopping stops"],
             ["International flights", "Not included"],
           ]
@@ -178,7 +175,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
                 ["Hotel changes", "Two"],
                 ["Beijing to Xi'an", "First-class high-speed rail"],
                 ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
-                ["Touring service", "Private English-speaking guides and private vehicles"],
+                ["Touring service", "Private multilingual guides and private vehicles"],
                 ["Shopping policy", "No compulsory shopping stops"],
                 ["International flights", "Not included"],
               ]

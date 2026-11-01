@@ -18,6 +18,7 @@ import { WhatsAppIcon } from "@/components/icons";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
+import { founder } from "@/content/founder";
 import { verifiedCredentials } from "@/content/trust";
 import { homeEditorialImages } from "@/content/home/homepage";
 import { JsonLd } from "@/lib/seo/json-ld";
@@ -37,7 +38,7 @@ const travelConcerns = [
   {
     icon: Languages,
     title: "Language",
-    text: "A local team, English-speaking guides and clear communication before you arrive.",
+    text: "A local team, multilingual guides and clear communication before you arrive.",
   },
   {
     icon: WalletCards,
@@ -338,10 +339,10 @@ export default function AboutPage() {
                   <p>Licensed China Operator</p>
                   <strong>{siteConfig.operator.englishReferenceName}</strong>
                   <span>
-                    AVIORA China Travel (also known as AVIORA Travel) is the guest-facing brand;
-                    China Prime DMC serves travel-trade partners. Both operate through this
-                    Guangzhou-registered company, licensed for inbound tourism business. AVIORA also
-                    has offices in Beijing, Shanghai and Xi&apos;an.
+                    AVIORA China Travel (also known as AVIORA Travel) is a travel brand for
+                    individual international travelers. It is operated by this Guangzhou-registered
+                    company, licensed for inbound tourism business. AVIORA also has offices in
+                    Beijing, Shanghai and Xi&apos;an.
                   </span>
                   <Link href="/company">
                     Company details, offices and registration record{" "}
@@ -384,6 +385,19 @@ export default function AboutPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section id="founder" className={styles.section}>
+        <div className={styles.container}>
+          <SectionHeading
+            eyebrow="THE PERSON BEHIND THE JOURNEY"
+            title={founder.pullQuote}
+            copy={`${founder.name}, ${founder.jobTitle}, ${founder.organization}`}
+          />
+          <Link className={styles.textLink} href={founder.path}>
+            Read the founder&apos;s story <ArrowUpRight aria-hidden="true" />
+          </Link>
         </div>
       </section>
 

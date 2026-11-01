@@ -23,7 +23,7 @@ export const chengduImages = collection("chengdu", [
   "Traditional Chengdu streets decorated for a seasonal celebration",
   "A historic courtyard tea house in central Chengdu",
   "Chengdu's modern skyline beneath a warm evening sky",
-  "International visitors sharing covered-bowl tea with a local English-speaking guide",
+  "International visitors sharing covered-bowl tea with a local multilingual guide",
   "A relaxed tea-house moment during a privately guided Chengdu journey",
   "Lakeside paths and everyday life inside Chengdu People's Park",
   "Traditional park architecture surrounded by greenery in Chengdu",

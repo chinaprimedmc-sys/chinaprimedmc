@@ -69,7 +69,7 @@ The [guide versus driver guide](/journal/private-guide-vs-driver-china) explains
 
 AVIORA coordinates private guides, vehicles, hotels, rail or flight movements and local support from its China-based team. The goal is not to make every minute feel managed. It is to make responsibility visible at the moments where an international visitor could otherwise be left to solve a local problem alone.
 
-The exact meeting points, hours, vehicle and included assistance depend on the published journey and confirmed dates. A route such as [First China, Beautifully Paced](/tours/first-china-beautifully-paced) shows how airport arrival, city touring, rail movement and hotel changes fit into one itinerary.
+The exact meeting points, hours, vehicle and included assistance depend on the published journey and confirmed dates. A route such as [First China, Beautifully Paced](/tours/beijing-xian-shanghai-private-9-day-tour) shows how airport arrival, city touring, rail movement and hotel changes fit into one itinerary.
 
 ## A transfer checklist before booking
 
@@ -103,7 +103,7 @@ Yes. Bag count, size, strollers and mobility equipment can change vehicle and st
 
 ## Sources
 
-- AVIORA [First China, Beautifully Paced](/tours/first-china-beautifully-paced)
+- AVIORA [First China, Beautifully Paced](/tours/beijing-xian-shanghai-private-9-day-tour)
 - China Railway 12306 English FAQ — https://www.12306.cn/en/faq.html
 - Civil Aviation Administration of China — https://www.caac.gov.cn/en/
 

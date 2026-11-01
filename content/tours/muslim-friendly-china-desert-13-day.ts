@@ -238,7 +238,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       image: pendingImage,
       hotel: hotelByPlace.beijing,
       meals: ["Breakfast", "Verified meal according to your profile"],
-      transport: "Private vehicle and English-speaking guide",
+      transport: "Private vehicle and multilingual guide",
       activities: [
         {
           time: "Morning",
@@ -616,7 +616,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
   included: [
     "12 nights in selected premium city hotels plus the strongest date-specific Ningxia and desert accommodation, based on four guests sharing two rooms",
     "Daily hotel breakfast and the private or hosted meals specifically stated in the written proposal",
-    "Private English-speaking guides, private vehicles and airport or station handovers on confirmed touring days",
+    "Private multilingual guides, private vehicles and airport or station handovers on confirmed touring days",
     "First-class Beijing–Xi'an high-speed rail, an economy flight from Xi'an to Yinchuan when practical, and the best available flight routing from Zhongwei to Shanghai",
     "Confirmed entrance tickets and listed site transport arrangements",
     "AVIORA Muslim Journey Standard: dietary and prayer profile, meal verification, Friday planning where relevant, room requirements and China-based backup support",

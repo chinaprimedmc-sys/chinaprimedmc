@@ -24,7 +24,7 @@ Source kept for review. To publish one, remove its redirect first and decide the
     ],
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       articles: [
         "private-china-tour-cost-2026",
         "private-china-tour-vs-group-tour",
@@ -159,7 +159,7 @@ Source kept for review. To publish one, remove its redirect first and decide the
     ],
     related: {
       destinations: ["beijing", "xian", "shanghai", "chengdu"],
-      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
       articles: [
         "9-day-beijing-xian-shanghai-itinerary",
         "11-day-beijing-xian-chengdu-shanghai-itinerary",
@@ -393,7 +393,7 @@ Source kept for review. To publish one, remove its redirect first and decide the
     ],
     related: {
       destinations: ["beijing", "shanghai", "chengdu"],
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       articles: [
         "china-travel-emergency-support-what-to-do",
         "women-private-china-travel",

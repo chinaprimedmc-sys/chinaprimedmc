@@ -9,9 +9,9 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { webPageSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = createMetadata({
-  title: "Private China Tours, Designed and Run in China | AVIORA",
+  title: "Private China Tours, Tailor-Made and Unhurried | AVIORA",
   description:
-    "Private China tours with your own guide and driver, designed and run by a licensed team in Beijing, Shanghai and Xi'an. Every detail confirmed in writing. No compulsory shopping.",
+    "Tailor-made private China tours of 1 to 13 days from a licensed operator with offices in Beijing, Shanghai and Xi'an. Own guide and driver, no forced shopping.",
   image: siteConfig.ogImage,
   imageWidth: 1200,
   imageHeight: 630,
@@ -19,7 +19,7 @@ export const metadata: Metadata = createMetadata({
 });
 
 const homeDescription =
-  "AVIORA China Travel plans private China tours with local offices in Beijing, Shanghai and Xi'an, a Guangzhou-registered licensed operator, private guides and no compulsory shopping.";
+  "Tailor-made private China tours of 1 to 13 days, with a private multilingual guide and driver, hotels, trains and tickets arranged by a licensed operator with offices in Beijing, Shanghai and Xi'an, serving all of China. No compulsory shopping.";
 
 export default async function HomePage() {
   const settings = await getPublicSiteSettings();
@@ -29,7 +29,7 @@ export default async function HomePage() {
         id="homepage-webpage-schema"
         data={webPageSchema({
           url: siteConfig.url,
-          name: "AVIORA Private China Travel",
+          name: "Private China Tours, Tailor-Made and Unhurried | AVIORA",
           description: homeDescription,
           about: { "@id": `${siteConfig.url}/#organization` },
         })}

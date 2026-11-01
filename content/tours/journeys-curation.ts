@@ -12,7 +12,7 @@ export type CuratedPhoto = { src: string; alt: string; position?: string };
 
 /** 精选照片：避开合影与 AI 感画面，只用构图完整、光线好的风景与场景。 */
 export const journeyPhotos: Record<string, CuratedPhoto> = {
-  "first-china-beautifully-paced": {
+  "beijing-xian-shanghai-private-9-day-tour": {
     src: "/tours/first-china-beautifully-paced/beijing-temple-of-heaven-reflection.webp",
     alt: "The Temple of Heaven mirrored in still water at dawn",
   },
@@ -196,7 +196,7 @@ export const journeysCopy = {
 
 /** 详情页首屏需要横构图大图；只在列表照片不适合全屏时覆盖。 */
 export const detailHeroPhotos: Record<string, CuratedPhoto> = {
-  "first-china-beautifully-paced": heroPhoto,
+  "beijing-xian-shanghai-private-9-day-tour": heroPhoto,
   "beijing-great-wall-private-5-day-tour": {
     src: "/tours/beijing-unhurried/great-wall-sunrise.webp",
     alt: "The Great Wall above a sea of cloud at sunrise",

@@ -45,9 +45,9 @@ export const mutianyuPrivateDayTour: Tour = {
   visualStatus: "ready",
   publishedAt: "2026-08-21",
   updatedAt: "2026-08-21",
-  title: "Private Mutianyu Great Wall Tour, Seamlessly Handled",
+  title: "Private Mutianyu Great Wall Tour, Hotel Pickup to Return",
   subtitle:
-    "From your Beijing hotel to the right gate, tickets, walking route, mountain transport and return, one English-speaking guide and private vehicle manage the day around your group.",
+    "From your Beijing hotel to the right gate, tickets, walking route, mountain transport and return, one multilingual guide and private vehicle manage the day around your group.",
   duration: "1 Day · Private",
   route: "Beijing · Mutianyu Great Wall · Beijing",
   styles: ["Culture", "Family", "Senior-friendly", "Photography"],
@@ -60,7 +60,7 @@ export const mutianyuPrivateDayTour: Tour = {
   seo: {
     title: "Private Mutianyu Great Wall Day Tour from Beijing",
     description:
-      "Private Mutianyu Great Wall day tour from Beijing with hotel pickup, English-speaking guide, private driver, tickets and no shopping stops.",
+      "Private Mutianyu Great Wall day tour from Beijing with hotel pickup, multilingual guide, private driver, tickets and no shopping stops.",
     keywords: [
       "private Mutianyu Great Wall tour",
       "Mutianyu Great Wall private day tour",
@@ -84,7 +84,7 @@ export const mutianyuPrivateDayTour: Tour = {
       },
       {
         label: "Included",
-        value: "Private vehicle, English-speaking guide, admission and shuttle",
+        value: "Private vehicle, multilingual guide, admission and shuttle",
         helper:
           "Hotel pickup and return are included within Beijing's main urban districts; other locations are quoted before you book.",
       },
@@ -213,7 +213,7 @@ export const mutianyuPrivateDayTour: Tour = {
       title: "Hotel pickup, Mutianyu at your pace, and a protected return",
       destination: "Beijing · Mutianyu Great Wall · Beijing",
       summary:
-        "Meet your private vehicle and English-speaking guide at the confirmed Beijing hotel. Travel to Mutianyu, use the included admission and scenic-area shuttle, then choose the practical ascent, walking section and descent for the day. The return vehicle remains with the group through the agreed service window and brings you back to your Beijing hotel or a confirmed central address.",
+        "Meet your private vehicle and multilingual guide at the confirmed Beijing hotel. Travel to Mutianyu, use the included admission and scenic-area shuttle, then choose the practical ascent, walking section and descent for the day. The return vehicle remains with the group through the agreed service window and brings you back to your Beijing hotel or a confirmed central address.",
       image: watchtower,
       hotel: "No overnight stay required · pickup and return at your Beijing hotel",
       meals: ["Independent lunch time; meal reservation available when requested"],
@@ -265,7 +265,7 @@ export const mutianyuPrivateDayTour: Tour = {
   included: [
     "Private pickup and return within Beijing's main urban hotel districts; non-central hotels, airports and locations outside the confirmed service area are quoted before booking",
     "Private air-conditioned vehicle with professional driver for the confirmed service window",
-    "Private English-speaking guide for the confirmed Mutianyu visit and return",
+    "Private multilingual guide for the confirmed Mutianyu visit and return",
     "Mutianyu Great Wall admission and the scenic-area shuttle bus",
     "Pre-trip review of your hotel address, group details, ticket requirements and preferred walking or mountain-transport approach",
     "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
@@ -371,12 +371,12 @@ export const mutianyuPrivateDayTour: Tour = {
     {
       question: "What does the US$198 starting price include?",
       answer:
-        "It is an indicative per-person starting price based on four guests traveling privately, equivalent to a group total from US$792. It includes pickup and return within Beijing's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private English-speaking guide, Mutianyu admission, the scenic-area shuttle, bottled water and no compulsory shopping stops. Optional mountain transport and lunch are not included.",
+        "It is an indicative per-person starting price based on four guests traveling privately, equivalent to a group total from US$792. It includes pickup and return within Beijing's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Mutianyu admission, the scenic-area shuttle, bottled water and no compulsory shopping stops. Optional mountain transport and lunch are not included.",
     },
     {
       question: "Is this a private tour or a shared coach tour?",
       answer:
-        "It is private for your booking party. You have your own vehicle, driver and English-speaking guide during the confirmed service window. Mutianyu itself is a public scenic area, so other visitors will be present and scenic-area services follow the operator's own rules.",
+        "It is private for your booking party. You have your own vehicle, driver and multilingual guide during the confirmed service window. Mutianyu itself is a public scenic area, so other visitors will be present and scenic-area services follow the operator's own rules.",
     },
     {
       question: "What is the indicative price for a different group size?",

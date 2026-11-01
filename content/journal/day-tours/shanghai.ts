@@ -5,7 +5,7 @@ export const shanghaiCluster: DayTourCluster = {
   destination: "shanghai",
   label: "private Shanghai day tour",
   service:
-    "The published AVIORA day connects a central Shanghai hotel pickup, private vehicle and driver, English-speaking guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing and hotel return during the confirmed service window. There are no compulsory shopping stops. The actual order is adjusted to the date's operating conditions and your priorities.",
+    "The published AVIORA day connects a central Shanghai hotel pickup, private vehicle and driver, multilingual guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing and hotel return during the confirmed service window. There are no compulsory shopping stops. The actual order is adjusted to the date's operating conditions and your priorities.",
   boundary:
     "The ferry is public, not a private river cruise. Lunch, Shanghai Tower, an evening cruise and other upgrades are separate unless stated in the written confirmation. Airport, cruise-port, railway-station and non-central pickups require a quote. Traffic, venue operation and reservation conditions can change the sequence; check current inclusions on the product page.",
   citations: [
@@ -183,7 +183,7 @@ export const shanghaiCluster: DayTourCluster = {
         {
           title: "What a guide adds beyond a car",
           paragraphs: [
-            "A qualified English-speaking guide can explain why a garden, street or waterfront looks as it does and help connect the city across different periods. A driver handles the vehicle; the guide handles the agreed interpretation and guest coordination. The two roles should not be confused in a quote.",
+            "A qualified multilingual guide can explain why a garden, street or waterfront looks as it does and help connect the city across different periods. A driver handles the vehicle; the guide handles the agreed interpretation and guest coordination. The two roles should not be confused in a quote.",
             "A car can reduce repeated station access, stairs and vehicle changes, but Shanghai traffic may make it slower than rail at certain times. A good operator chooses transport by route and conditions rather than claiming that a private car beats every mode everywhere.",
           ],
         },

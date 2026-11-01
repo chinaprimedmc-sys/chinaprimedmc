@@ -167,7 +167,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
       image: asset.pandaMorning,
       hotel: "Chengdu stay: confirmed in your private proposal",
       meals: ["Breakfast when included with the confirmed hotel", "Other meals as confirmed"],
-      transport: "Private vehicle and English-speaking guide",
+      transport: "Private vehicle and multilingual guide",
       activities: [
         {
           time: "Early morning",
@@ -463,7 +463,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
   ],
   included: [
     "Private arrival and departure transfers listed in the final proposal",
-    "Private sightseeing vehicle and English-speaking guide on confirmed guided days",
+    "Private sightseeing vehicle and multilingual guide on confirmed guided days",
     "Accommodation and daily hotel breakfast when stated in the final proposal",
     "Intercity rail or domestic flight services specifically listed in writing",
     "Entrance tickets and mandatory scenic transport specifically listed in writing",

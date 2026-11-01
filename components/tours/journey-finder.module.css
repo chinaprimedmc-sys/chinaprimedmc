@@ -2,7 +2,7 @@
   margin: 0 0 22px;
   color: var(--stone);
   font-family: var(--label);
-  font-size: 11.5px;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -201,7 +201,7 @@
 .meta {
   color: var(--stone) !important;
   font-family: var(--label);
-  font-size: 11.5px;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -295,7 +295,7 @@
   margin: 20px 0 8px;
   color: var(--stone);
   font-family: var(--label);
-  font-size: 11.5px;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;

@@ -511,7 +511,10 @@ const basePublishedJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      ],
       experiences: ["private-guides", "train-travel"],
       articles: ["10-day-china-itinerary-first-time-visitors", "private-china-tour-from-singapore"],
     },
@@ -560,7 +563,10 @@ const basePublishedJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      ],
       experiences: ["private-guides", "train-travel"],
       articles: [
         "private-china-tour-cost-2026",
@@ -616,7 +622,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     related: {
       destinations: ["beijing", "xian", "chengdu", "shanghai"],
       tours: [
-        "first-china-beautifully-paced",
+        "beijing-xian-shanghai-private-9-day-tour",
         "beijing-xian-chengdu-shanghai-private-11-day-tour",
         "chengdu-pandas-sichuan-table",
       ],
@@ -673,7 +679,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     },
     related: {
       tours: [
-        "first-china-beautifully-paced",
+        "beijing-xian-shanghai-private-9-day-tour",
         "chengdu-pandas-jiuzhaigou-private-7-day-tour",
         "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
       ],
@@ -718,7 +724,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "shanghai"],
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
     },
     sourcePath: "content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md",
   },
@@ -780,7 +786,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "shanghai"],
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       experiences: ["train-travel"],
     },
     sourcePath: "content/journal/articles/2026-08-06-china-high-speed-train-foreigners.md",
@@ -843,7 +849,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing"],
-      tours: ["beijing-great-wall-private-5-day-tour", "first-china-beautifully-paced"],
+      tours: ["beijing-great-wall-private-5-day-tour", "beijing-xian-shanghai-private-9-day-tour"],
     },
     sourcePath: "content/journal/articles/2026-08-06-forbidden-city-tickets-foreigners.md",
   },
@@ -948,7 +954,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["shanghai"],
-      tours: ["first-china-beautifully-paced", "shanghai-zhangjiajie-floating-peaks"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour", "shanghai-zhangjiajie-floating-peaks"],
       articles: ["china-sim-card-esim-internet-foreign-tourists"],
     },
     sourcePath: "content/journal/articles/2026-08-07-shanghai-pudong-hongqiao-airport-guide.md",
@@ -983,7 +989,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
       ogImage: journalImages.goldenWeekRail,
     },
     related: {
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       articles: ["china-high-speed-train-foreigners"],
       experiences: ["train-travel"],
     },
@@ -1019,7 +1025,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing"],
-      tours: ["beijing-great-wall-private-5-day-tour", "first-china-beautifully-paced"],
+      tours: ["beijing-great-wall-private-5-day-tour", "beijing-xian-shanghai-private-9-day-tour"],
       articles: ["forbidden-city-tickets-foreigners"],
     },
     sourcePath: "content/journal/articles/2026-08-08-mutianyu-badaling-jinshanling-great-wall.md",
@@ -1056,7 +1062,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     related: {
       destinations: ["xian"],
       tours: [
-        "first-china-beautifully-paced",
+        "beijing-xian-shanghai-private-9-day-tour",
         "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
       ],
       articles: ["china-high-speed-train-foreigners"],
@@ -1126,7 +1132,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
       ogImage: journalImages.medicineSocial,
     },
     related: {
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       articles: ["china-accommodation-registration-foreigners"],
     },
     sourcePath: "content/journal/articles/2026-08-08-bringing-prescription-medicine-to-china.md",
@@ -1166,7 +1172,10 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "chengdu", "shanghai"],
-      tours: ["china-family-tour-with-pandas-12-day-private-tour", "first-china-beautifully-paced"],
+      tours: [
+        "china-family-tour-with-pandas-12-day-private-tour",
+        "beijing-xian-shanghai-private-9-day-tour",
+      ],
       articles: [
         "best-age-for-china-family-tour",
         "china-family-tour-cost-four",
@@ -1227,7 +1236,10 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "chengdu", "shanghai"],
-      tours: ["china-family-tour-with-pandas-12-day-private-tour", "first-china-beautifully-paced"],
+      tours: [
+        "china-family-tour-with-pandas-12-day-private-tour",
+        "beijing-xian-shanghai-private-9-day-tour",
+      ],
       articles: [
         "first-trip-to-china-planning-guide",
         "bringing-prescription-medicine-to-china",
@@ -1346,12 +1358,15 @@ const operationalJournalArticles: JournalArticle[] = [
         "private guide vs driver China",
         "China tour guide and driver",
         "private driver China tour",
-        "English speaking guide China",
+        "multilingual guide China",
       ],
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["first-china-beautifully-paced", "china-at-an-easier-pace-12-day-private-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "china-at-an-easier-pace-12-day-private-tour",
+      ],
       articles: [
         "what-is-included-private-china-tour",
         "private-china-tour-proposal-checklist",
@@ -1410,7 +1425,10 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "chengdu", "shanghai"],
-      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      ],
       articles: [
         "china-high-speed-train-foreigners",
         "china-packing-list-2026",
@@ -1592,7 +1610,10 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "chengdu", "shanghai"],
-      tours: ["first-china-beautifully-paced", "china-at-an-easier-pace-12-day-private-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "china-at-an-easier-pace-12-day-private-tour",
+      ],
       articles: [
         "private-china-tour-arrival-handoff-checklist",
         "what-private-support-changes-first-china-trip",
@@ -1653,7 +1674,10 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["first-china-beautifully-paced", "china-at-an-easier-pace-12-day-private-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "china-at-an-easier-pace-12-day-private-tour",
+      ],
       articles: [
         "first-trip-to-china-planning-guide",
         "private-china-tour-proposal-checklist",
@@ -1708,7 +1732,10 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "chengdu", "shanghai"],
-      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      ],
       articles: [
         "luggage-multi-city-china-trip",
         "china-high-speed-train-foreigners",
@@ -1764,7 +1791,10 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["first-china-beautifully-paced", "china-at-an-easier-pace-12-day-private-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "china-at-an-easier-pace-12-day-private-tour",
+      ],
       articles: [
         "how-to-choose-private-china-tour-company",
         "what-is-included-private-china-tour",
@@ -1819,7 +1849,7 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai", "yunnan"],
-      tours: ["first-china-beautifully-paced", "luxury-yunnan-private-tour"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour", "luxury-yunnan-private-tour"],
       articles: [
         "where-to-stay-in-beijing-first-time",
         "where-to-stay-in-shanghai-first-time",
@@ -1874,7 +1904,10 @@ const operationalJournalArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "chengdu", "shanghai"],
-      tours: ["first-china-beautifully-paced", "beijing-xian-chengdu-shanghai-private-11-day-tour"],
+      tours: [
+        "beijing-xian-shanghai-private-9-day-tour",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      ],
       articles: [
         "china-weather-disruption-backup-planning",
         "china-travel-emergency-support-what-to-do",

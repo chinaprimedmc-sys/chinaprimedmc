@@ -296,7 +296,7 @@
 .productNoPressure {
   color: var(--quiet);
   display: block;
-  font-size: 11px;
+  font-size: 0.75rem;
   line-height: 1.5;
   margin-top: 10px;
 }
@@ -378,7 +378,7 @@
 .eyebrow,
 .barLabel {
   color: var(--accent);
-  font-size: 10px;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   line-height: 1.4;
@@ -443,7 +443,7 @@
   align-items: center;
   border-radius: var(--radius-pill);
   display: inline-flex;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 800;
   gap: 8px;
   justify-content: center;
@@ -510,7 +510,7 @@
 
 .barLabel {
   color: var(--quiet);
-  font-size: 11px;
+  font-size: 0.75rem;
 }
 
 .sectionHeading {
@@ -582,7 +582,7 @@
 .routeNumber,
 .routeDays {
   color: var(--accent);
-  font-size: 10px;
+  font-size: 0.75rem;
   font-weight: 800;
 }
 .routeDays {
@@ -651,7 +651,7 @@
   background: #e7ece9;
   color: var(--quiet);
   display: flex;
-  font-size: 11px;
+  font-size: 0.75rem;
   justify-content: center;
 }
 .experienceBody {
@@ -659,7 +659,7 @@
 }
 .experienceBody > span {
   color: var(--accent);
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 750;
   text-transform: uppercase;
 }
@@ -1076,14 +1076,14 @@
 
 .noPayment {
   color: var(--quiet) !important;
-  font-size: 11px !important;
+  font-size: 0.75rem !important;
   margin-top: 12px !important;
 }
 .whatsappLink {
   align-items: center;
   color: var(--ink);
   display: inline-flex;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 760;
   gap: 7px;
   margin-top: 15px;
@@ -1245,10 +1245,10 @@
   }
   .heroDecisionBar > div:first-child small {
     display: inline;
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .barLabel {
-    font-size: 10px;
+    font-size: 0.75rem;
     letter-spacing: 0.06em;
   }
   .routeSection,
@@ -1405,7 +1405,7 @@
   .mobileCta em {
     color: var(--body);
     display: block;
-    font-size: 11px;
+    font-size: 0.75rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.35;

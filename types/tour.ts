@@ -106,6 +106,14 @@ export type TourPlanningSupport = {
   note: string;
 };
 
+export type TourGuideProfile = {
+  title: string;
+  description: string;
+  languagesLabel: string;
+  languages: string[];
+  specialists: Array<{ city: string; profile: string }>;
+};
+
 export type TourExperienceChapter = {
   location: string;
   days: string;
@@ -150,6 +158,8 @@ export type Tour = {
   };
   experienceChapters?: TourExperienceChapter[];
   planningSupport?: TourPlanningSupport;
+  guideProfile?: TourGuideProfile;
+  faqLimit?: number;
   highlights: TourHighlight[];
   itinerary: TourItineraryDay[];
   accommodations: TourAccommodation[];

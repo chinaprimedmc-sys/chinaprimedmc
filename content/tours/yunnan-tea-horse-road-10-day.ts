@@ -540,7 +540,7 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
   included: [
     "9 nights in selected luxury boutique, heritage and highland hotels, based on four guests sharing two rooms",
     "Daily hotel breakfast, selected lunches, private picnic or countryside table, Shaxi courtyard dinner and Shangri-La farewell dinner as confirmed in the proposal",
-    "Private English-speaking guides and private premium vehicle on confirmed touring and transfer days",
+    "Private multilingual guides and private premium vehicle on confirmed touring and transfer days",
     "Private Dali arrival transfer and Shangri-La departure transfer",
     "Confirmed entrance tickets and listed site transport arrangements",
     "Private Bai three-course tea, tie-dye artisan session, Yunnan tea specialist session, Tea Horse Road salon and Dongba culture session, or a written equivalent when a named practitioner is unavailable",

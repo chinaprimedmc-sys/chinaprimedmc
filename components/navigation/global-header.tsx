@@ -1,7 +1,8 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowUpRight, Menu, Search, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, Search, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -13,17 +14,32 @@ import { privateJourneyOffer } from "@/lib/tours/journey-offer";
 import { navigationConfig, type NavigationGroup } from "./navigation-config";
 import styles from "./global-header.module.css";
 
+const fullBleedHeroPrefixes = ["/china-destinations"];
+
+const fullBleedHeroPaths = [
+  "/tailor-made-china-tours",
+  "/fixed-itinerary-china-tours",
+  "/private-china-day-tours",
+  "/private-guide-and-driver-china",
+];
+
 export function GlobalHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isJourneysPage = pathname === "/tours";
   // Pages that open with a full-bleed photo get a transparent bar until the visitor scrolls.
-  const overImage = isHome || pathname.startsWith("/tours");
+  const overImage =
+    isHome ||
+    pathname.startsWith("/tours") ||
+    fullBleedHeroPaths.includes(pathname) ||
+    fullBleedHeroPrefixes.some((prefix) => pathname.startsWith(prefix));
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     let frameId = 0;
+    let lastY = window.scrollY;
 
     const updateScrollState = () => {
       frameId = 0;
@@ -33,6 +49,14 @@ export function GlobalHeader() {
         const next = scrollTop > 24;
         return current === next ? current : next;
       });
+      // 手机上向下滚动时收起顶栏，上滑或回到顶部时再出现，把空间还给内容。
+      const delta = scrollTop - lastY;
+      if (Math.abs(delta) > 8) {
+        setIsHidden(scrollTop > 160 && delta > 0);
+        lastY = scrollTop;
+      } else if (scrollTop <= 24) {
+        setIsHidden(false);
+      }
     };
 
     const scheduleScrollState = () => {
@@ -60,6 +84,7 @@ export function GlobalHeader() {
         data-scrolled={isScrolled || !overImage ? "true" : undefined}
         data-journeys-navigation={isJourneysPage || undefined}
         data-menu-open={isMenuOpen || undefined}
+        data-hidden={(isHidden && !isMenuOpen) || undefined}
       >
         <div className={styles.desktopShell}>
           <BrandLink className={styles.brandIsland} />
@@ -67,21 +92,22 @@ export function GlobalHeader() {
             {navigationConfig.groups.map((group) => {
               const active = isGroupActive(group, pathname);
               return (
-                <Link
-                  key={group.id}
-                  href={group.href}
-                  className={styles.navLink}
-                  data-active={active || undefined}
-                  aria-current={active ? "page" : undefined}
-                >
-                  {desktopLabel(group.id, group.label)}
-                </Link>
+                <div key={group.id} className={styles.navItem}>
+                  <Link
+                    href={group.href}
+                    className={styles.navLink}
+                    data-active={active || undefined}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {desktopLabel(group.id, group.label)}
+                  </Link>
+                  <NavPanel group={group} />
+                </div>
               );
             })}
           </nav>
           <div className={styles.rightGroup}>
-            {isJourneysPage ? <JourneyTools className={styles.toolsIsland} /> : null}
-            <WhatsAppMenu />
+            <JourneyTools className={styles.toolsIsland} />
             <PlanLink className={styles.actionIsland} placement="global_header_desktop" />
           </div>
         </div>
@@ -89,7 +115,7 @@ export function GlobalHeader() {
         <div className={styles.mobileShell}>
           <BrandLink className={styles.mobileBrand} />
           <div className={styles.mobileActions}>
-            <WhatsAppLink />
+            <PlanLink className={styles.mobilePlan} placement="global_header_mobile" compact />
             <Dialog.Trigger
               type="button"
               className={styles.iconIsland}
@@ -130,50 +156,48 @@ function JourneyTools({ className }: { className: string }) {
   );
 }
 
-function WhatsAppLink() {
+function NavPanel({ group }: { group: NavigationGroup }) {
+  const featured = "featured" in group ? group.featured : undefined;
   return (
-    <a
-      href={navigationConfig.action.whatsapp[0].href}
-      target="_blank"
-      rel="noreferrer"
-      className={`${styles.iconIsland} ${styles.whatsappIsland}`}
-      aria-label="WhatsApp AVIORA China"
-      onClick={() => trackEvent("whatsapp_click", { placement: "mobile_global_header" })}
-    >
-      <WhatsAppIcon aria-hidden="true" />
-    </a>
-  );
-}
-
-function WhatsAppMenu() {
-  return (
-    <details className={styles.desktopWhatsapp}>
-      <summary
-        className={`${styles.iconIsland} ${styles.whatsappIsland}`}
-        aria-label="Choose WhatsApp number"
-      >
-        <WhatsAppIcon aria-hidden="true" />
-      </summary>
-      <div className={styles.whatsappPopover}>
-        <p>WhatsApp our China team</p>
-        {navigationConfig.action.whatsapp.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => trackEvent("whatsapp_click", { placement: "global_header_whatsapp" })}
-          >
-            <span>{item.label}</span>
-            <strong>{item.number}</strong>
-          </a>
-        ))}
+    <div className={styles.panel}>
+      <div className={styles.panelInner}>
+        <div className={styles.panelColumns}>
+          {group.columns.map((column, index) => (
+            <ul key={`${group.id}-${index}`}>
+              {column.links.map((link) => (
+                <li key={link.href + link.label}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+        {featured ? (
+          <Link href={featured.href} className={styles.panelFeatured}>
+            <span className={styles.panelPhoto}>
+              <Image src={featured.image} alt={featured.imageAlt} fill sizes="260px" />
+            </span>
+            <span className={styles.panelMeta}>{featured.meta}</span>
+            <strong>{featured.title}</strong>
+            <span className={styles.panelCta}>
+              {featured.label} <ArrowUpRight aria-hidden="true" />
+            </span>
+          </Link>
+        ) : null}
       </div>
-    </details>
+    </div>
   );
 }
 
-function PlanLink({ className, placement }: { className: string; placement: string }) {
+function PlanLink({
+  className,
+  placement,
+  compact = false,
+}: {
+  className: string;
+  placement: string;
+  compact?: boolean;
+}) {
   return (
     <Link
       href={navigationConfig.action.href}
@@ -182,8 +206,8 @@ function PlanLink({ className, placement }: { className: string; placement: stri
         trackCtaClick(navigationConfig.action.label, navigationConfig.action.href, placement)
       }
     >
-      <span>{navigationConfig.action.label}</span>
-      <ArrowUpRight aria-hidden="true" />
+      <span>{compact ? "Plan" : navigationConfig.action.label}</span>
+      {compact ? null : <ArrowUpRight aria-hidden="true" />}
     </Link>
   );
 }
@@ -205,29 +229,35 @@ function MobileMenu({ pathname, onClose }: { pathname: string; onClose: () => vo
       <nav className={styles.mobileMenuBody} aria-label="Mobile navigation">
         {navigationConfig.groups.map((group) => {
           const active = isGroupActive(group, pathname);
+          const links = group.columns.flatMap((column) => column.links);
           return (
-            <div className={styles.mobileGroup} key={group.id}>
-              <Link
-                href={group.href}
-                className={styles.mobileGroupLink}
-                data-active={active || undefined}
-                aria-current={active ? "page" : undefined}
-                onClick={onClose}
-              >
-                {group.label}
-                <ArrowUpRight aria-hidden="true" />
-              </Link>
+            <details
+              className={styles.mobileGroup}
+              key={group.id}
+              name="mobile-nav"
+              open={active || undefined}
+            >
+              <summary data-active={active || undefined}>
+                {desktopLabel(group.id, group.label)}
+                <ChevronDown aria-hidden="true" />
+              </summary>
               <div className={styles.mobileSubLinks}>
-                {group.columns
-                  .flatMap((column) => column.links)
-                  .slice(0, 4)
+                <Link href={group.href} onClick={onClose}>
+                  View all
+                </Link>
+                {links
+                  .filter((link) => link.href !== group.href)
                   .map((link) => (
-                    <Link key={`${group.id}-${link.href}`} href={link.href} onClick={onClose}>
+                    <Link
+                      key={`${group.id}-${link.href}-${link.label}`}
+                      href={link.href}
+                      onClick={onClose}
+                    >
                       {link.label}
                     </Link>
                   ))}
               </div>
-            </div>
+            </details>
           );
         })}
         <PlanLink className={styles.mobilePrimaryAction} placement="global_header_mobile_menu" />
@@ -249,7 +279,10 @@ function MobileMenu({ pathname, onClose }: { pathname: string; onClose: () => vo
           href={navigationConfig.action.whatsapp[0].href}
           target="_blank"
           rel="noreferrer"
-          onClick={onClose}
+          onClick={() => {
+            trackEvent("whatsapp_click", { placement: "mobile_menu" });
+            onClose();
+          }}
         >
           <WhatsAppIcon aria-hidden="true" />
           <span>WhatsApp our China team</span>

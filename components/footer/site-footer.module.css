@@ -181,7 +181,7 @@
 .legalLinks {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 20px;
+  gap: 0 20px;
   justify-content: flex-end;
 }
 
@@ -189,6 +189,9 @@
 .cookiePreferences {
   color: var(--color-muted);
   font: inherit;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: color 160ms ease;
 }
 
@@ -358,7 +361,7 @@
   }
 
   .legalLinks {
-    gap: 10px 18px;
+    gap: 0 18px;
     justify-content: flex-start;
   }
 }

@@ -97,7 +97,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       articles: [
         "private-china-tour-arrival-handoff-checklist",
         "private-guide-vs-driver-china",
@@ -152,7 +152,10 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["china-at-an-easier-pace-12-day-private-tour", "first-china-beautifully-paced"],
+      tours: [
+        "china-at-an-easier-pace-12-day-private-tour",
+        "beijing-xian-shanghai-private-9-day-tour",
+      ],
       articles: [
         "how-much-walking-china-tour",
         "china-trip-with-older-parents",

@@ -57,7 +57,7 @@ export const privateChengduPandaDayTour: Tour = {
   visualStatus: "ready",
   publishedAt: "2026-08-21",
   updatedAt: "2026-08-21",
-  title: "Private Chengdu Panda Day Tour, Early Morning & Seamlessly Handled",
+  title: "Private Chengdu Panda Day Tour, Early Start, Tickets Arranged",
   subtitle:
     "Start from your Chengdu hotel at a sensible early hour, enter with admission arranged and follow a private guide who adapts the panda-base route around live openings, crowds, weather and animal activity before a slower Chengdu afternoon.",
   duration: "1 Day · Private · Usually 7–9 hours",
@@ -72,7 +72,7 @@ export const privateChengduPandaDayTour: Tour = {
   seo: {
     title: "Private Chengdu Panda Day Tour with Guide & Driver",
     description:
-      "Private Chengdu panda day tour with early hotel pickup, an English-speaking guide, private driver, Panda Base admission and no shopping stops.",
+      "Private Chengdu panda day tour with early hotel pickup, a multilingual guide, private driver, Panda Base admission and no shopping stops.",
     keywords: [
       "private Chengdu panda tour",
       "Chengdu Panda Base private day tour",
@@ -86,7 +86,7 @@ export const privateChengduPandaDayTour: Tour = {
   },
   overview: {
     pitch:
-      "A panda day is shaped as much by timing as by the ticket. Giant pandas choose their own rhythm, public areas can become crowded and the base may change which enclosures or nurseries are open. This private tour begins early from your Chengdu hotel, with admission, vehicle and English-speaking guide arranged in advance. Your guide checks the practical conditions and chooses a sensible route through the public base rather than promising a fixed animal performance. After the morning visit, return to central Chengdu for an unhurried People's Park and tea-culture chapter. There are no compulsory shopping stops, panda-souvenir factories or claims of private animal access.",
+      "A panda day is shaped as much by timing as by the ticket. Giant pandas choose their own rhythm, public areas can become crowded and the base may change which enclosures or nurseries are open. This private tour begins early from your Chengdu hotel, with admission, vehicle and multilingual guide arranged in advance. Your guide checks the practical conditions and chooses a sensible route through the public base rather than promising a fixed animal performance. After the morning visit, return to central Chengdu for an unhurried People's Park and tea-culture chapter. There are no compulsory shopping stops, panda-souvenir factories or claims of private animal access.",
     facts: [
       {
         label: "Time",
@@ -96,7 +96,7 @@ export const privateChengduPandaDayTour: Tour = {
       },
       {
         label: "Included",
-        value: "Private vehicle, English-speaking guide and Chengdu Panda Base admission",
+        value: "Private vehicle, multilingual guide and Chengdu Panda Base admission",
         helper:
           "Pickup and return are included at hotels in Chengdu's main urban districts. Airports, distant hotels and non-standard locations are quoted first.",
       },
@@ -236,7 +236,7 @@ export const privateChengduPandaDayTour: Tour = {
       title: "Pandas at a better hour, then Chengdu at its own pace",
       destination: "Chengdu",
       summary:
-        "Meet your private English-speaking guide and vehicle at the confirmed Chengdu hotel for an early departure. Enter Chengdu Research Base of Giant Panda Breeding with the included standard admission and follow a public route adapted to current openings, crowd flow, weather and animal activity. After independent lunch time or a selected Sichuan meal, return to central Chengdu for a flexible People's Park and tea-culture walk before a private hotel return. Exact timing and visible animals remain date- and condition-specific.",
+        "Meet your private multilingual guide and vehicle at the confirmed Chengdu hotel for an early departure. Enter Chengdu Research Base of Giant Panda Breeding with the included standard admission and follow a public route adapted to current openings, crowd flow, weather and animal activity. After independent lunch time or a selected Sichuan meal, return to central Chengdu for a flexible People's Park and tea-culture walk before a private hotel return. Exact timing and visible animals remain date- and condition-specific.",
       image: pandaBase,
       hotel: "No overnight stay required · pickup and return at your Chengdu hotel",
       meals: ["Independent lunch time; selected Sichuan lunch available as an upgrade"],
@@ -293,7 +293,7 @@ export const privateChengduPandaDayTour: Tour = {
   included: [
     "Private pickup and return at a hotel in Chengdu's main urban districts; airports, out-of-area hotels and non-standard locations are quoted before booking",
     "Private air-conditioned vehicle with professional driver for the confirmed service window",
-    "Private English-speaking guide for the confirmed Panda Base and central Chengdu day",
+    "Private multilingual guide for the confirmed Panda Base and central Chengdu day",
     "Standard admission to Chengdu Research Base of Giant Panda Breeding for the confirmed travelers",
     "Pre-trip review of hotel address, date, group details, ticket information, walking preferences and child or mobility considerations",
     "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
@@ -412,7 +412,7 @@ export const privateChengduPandaDayTour: Tour = {
     {
       question: "What does the US$598 starting price include?",
       answer:
-        "It is an indicative private-group starting price for four guests, equivalent to approximately US$150 per guest. It includes early pickup and return within Chengdu's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private English-speaking guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops. Lunch, tea, internal carts and other upgrades are not included.",
+        "It is an indicative private-group starting price for four guests, equivalent to approximately US$150 per guest. It includes early pickup and return within Chengdu's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops. Lunch, tea, internal carts and other upgrades are not included.",
     },
     {
       question: "What is the published price for a smaller or larger group?",

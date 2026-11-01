@@ -230,10 +230,9 @@ export default function TermsPage() {
               >
                 <PolicySection number="01" title="Brand and Contracting Entity" open>
                   <p>
-                    AVIORA is the travel brand used on this website. “China Prime DMC” is a service
-                    name for our work in China. Unless your booking confirmation states otherwise,
-                    travel services in China are contracted and provided by{" "}
-                    <strong>{siteConfig.operator.englishReferenceName}</strong> (
+                    AVIORA is the travel brand used on this website. Unless your booking
+                    confirmation states otherwise, travel services in China are contracted and
+                    provided by <strong>{siteConfig.operator.englishReferenceName}</strong> (
                     {siteConfig.operator.legalName}; English translation for reference), registered
                     in Guangzhou on March 28, 2018 and{" "}
                     {siteConfig.operator.tourismLicense.statement}.

@@ -20,7 +20,12 @@ secondary_keywords:
   ]
 search_intent: "Choose and navigate the correct Shanghai airport and arrange a realistic transfer to the hotel or onward train."
 suggested_internal_links:
-  ["/destinations/shanghai", "/tours/first-china-beautifully-paced", "/faq", "/start-planning"]
+  [
+    "/destinations/shanghai",
+    "/tours/beijing-xian-shanghai-private-9-day-tour",
+    "/faq",
+    "/start-planning",
+  ]
 sources_verified_at: "2026-08-07"
 hero_image: "/home/shanghai-pudong-skyline.webp"
 hero_image_alt: "Shanghai Pudong skyline seen across the Huangpu River"
@@ -79,7 +84,7 @@ If the next leg is a high-speed train, put the exact station name—usually Hong
 
 A hotel near the Bund, French Concession or another central district may be ideal for city touring but not necessarily for a pre-dawn train. Conversely, a station-adjacent hotel can reduce a transfer while giving up some neighborhood atmosphere. Decide the airport, hotel and next movement together.
 
-AVIORA’s [Shanghai destination guide](/destinations/shanghai) and [first-China route](/tours/first-china-beautifully-paced) use hotel location as part of route design. For a late PVG arrival, a confirmed vehicle and a simple first evening may be more valuable than adding another restaurant reservation. For an early SHA departure, a shorter morning transfer can protect the day’s energy.
+AVIORA’s [Shanghai destination guide](/destinations/shanghai) and [first-China route](/tours/beijing-xian-shanghai-private-9-day-tour) use hotel location as part of route design. For a late PVG arrival, a confirmed vehicle and a simple first evening may be more valuable than adding another restaurant reservation. For an early SHA departure, a shorter morning transfer can protect the day’s energy.
 
 ## Families, older travelers and heavy luggage
 

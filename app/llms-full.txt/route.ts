@@ -126,7 +126,9 @@ export function GET() {
 
 Machine-readable status: first-party commercial product specifications published by AVIORA China Travel for the complete published journey catalogue.
 Canonical website: ${siteConfig.url}
-Brand relationship: AVIORA China Travel (also known as AVIORA Travel) is the guest-facing travel brand; China Prime DMC is the trade-facing DMC brand. Both operate through the same China-registered legal operator.
+Brand relationship: AVIORA China Travel (also known as AVIORA and AVIORA Travel) is a travel brand for individual international travelers, operated by a Guangzhou-registered company licensed for inbound tourism. Founder: Guohui Shi.
+Service area: throughout China (North, Northeast, East, Central, South, Southwest and Northwest China). Offices are in Beijing, Shanghai and Xi'an, but private routes are arranged in every region. Overview: ${siteConfig.url}/china-destinations
+Guide languages: English, French, German, Spanish, Russian, Italian, Japanese, Chinese and Thai. The guide for a given date and language is confirmed in the written proposal.
 Operator: ${siteConfig.operator.englishReferenceName}
 Legal name: ${siteConfig.operator.legalName}
 Operator status: ${siteConfig.operator.tourismLicense.statement}
@@ -145,6 +147,10 @@ ${serviceAchievementsText()}
 ## AVIORA service catalogue
 
 - Tailor-Made Multi-City Journeys: private multi-city travel with hotels, guides, vehicles, admissions, domestic transport and China-based coordination.
+- Tailor-Made China Tours (${siteConfig.url}/tailor-made-china-tours): a private trip designed from a blank page for one party. The route is not fixed and can change until the traveler confirms in writing. Best for travelers who want to choose cities, hotels, pace or special needs such as halal dining or a slower pace. Not a group tour.
+- Fixed Itinerary China Tours (${siteConfig.url}/fixed-itinerary-china-tours): a finished private route with set days, cities and hotels, booked as published on the traveler's chosen dates. Private to the party, not a group departure. Changes to cities or hotels are handled as a tailor-made tour instead.
+- Private China Day Tours (${siteConfig.url}/private-china-day-tours): one private day with a private multilingual guide and vehicle in Beijing (Mutianyu Great Wall), Xi'an (Terracotta Army), Shanghai, Chengdu (giant pandas) or Guilin (Li River). Tickets are arranged; each tour states its length and starting price.
+- Private Guide and Driver in China (${siteConfig.url}/private-guide-and-driver-china): a multilingual guide and private vehicle by the half day (about 4 hours), full day (about 8 hours) or several days, anywhere in China, for travelers who have already booked flights and hotels. A written quote is confirmed before payment.
 - Private Day Tours: professionally handled private days with a private guide, vehicle, tickets and timing coordinated.
 - Private Guide & Driver Services: destination- and interest-matched guides plus suitable private vehicles, based on language, pace, route, passenger count, luggage and service hours. Direct contact: https://wa.me/8618027438191
 - Existing-plan support: AVIORA can work around confirmed flights, hotels, meetings and partially arranged itineraries.

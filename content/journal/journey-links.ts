@@ -8,7 +8,7 @@ export type JourneyJournalLinkRule = {
   planningPreference?: string;
 };
 
-const FIRST_CHINA = "first-china-beautifully-paced";
+const FIRST_CHINA = "beijing-xian-shanghai-private-9-day-tour";
 const CHINA_CONSIDERED = "china-at-an-easier-pace-12-day-private-tour";
 const CHINA_FAMILY = "china-family-tour-with-pandas-12-day-private-tour";
 const FOUR_CITY = "beijing-xian-chengdu-shanghai-private-11-day-tour";
@@ -549,6 +549,7 @@ Object.assign(journeyJournalLinks, {
   },
   "how-many-days-beijing-xian-shanghai": {
     primaryJourney: CHINA_CONSIDERED,
+    alternativeJourneys: [FIRST_CHINA],
     title: "See what the extra two days make possible",
     description:
       "China, Considered uses twelve days to protect complete sightseeing days in Beijing, Xi'an and Shanghai instead of disguising arrivals and hotel changes as destination time.",

@@ -23,7 +23,7 @@ import {
 } from "@/lib/tours/journey-offer";
 import styles from "./journey-offer-invitation.module.css";
 
-const defaultJourneySlug = "first-china-beautifully-paced";
+const defaultJourneySlug = "beijing-xian-shanghai-private-9-day-tour";
 const offerDelayMs = 7000;
 
 export function JourneyOfferInvitation({ journeys }: { journeys: JourneyOfferOption[] }) {

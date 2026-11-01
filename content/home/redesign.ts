@@ -105,7 +105,7 @@ export const homeOperatingStandards = [
   {
     number: "01",
     title: "Your Own Local Guide",
-    description: "A dedicated English-speaking guide for every privately guided day.",
+    description: "A dedicated multilingual guide for every privately guided day.",
     imageBrief: "A private guide in conversation with AVIORA guests",
     image: "/home/standard/private-local-guide.png",
     imageAlt: "An AVIORA private local guide speaking with international guests",
@@ -279,9 +279,14 @@ export const homeFaqs = [
       "Each journey states its pricing unit and basis, for example per person with four guests sharing two rooms. Your written proposal reflects your actual dates, party size, hotels and inclusions. International flights are not included.",
   },
   {
+    question: "Do your guides speak my language?",
+    answer:
+      "Our guides work in English, French, German, Spanish, Russian, Italian, Japanese, Chinese and Thai. Tell us your language when you plan your trip, and your written proposal names the guide arranged for your dates.",
+  },
+  {
     question: "Who runs the trip in China?",
     answer:
-      "AVIORA is operated by Youyouhui (Guangzhou) International Travel Service Co., Ltd. (游友汇（广州）国际旅行社有限公司), a registered China company licensed for inbound tourism. AVIORA China Travel is the traveler-facing brand of China Prime DMC. We have offices in Beijing, Shanghai and Xi'an, and the registered company is based in Guangzhou.",
+      "AVIORA is operated by Youyouhui (Guangzhou) International Travel Service Co., Ltd. (游友汇（广州）国际旅行社有限公司), a registered China company licensed for inbound tourism. AVIORA China Travel is the travel brand for individual travelers. We have offices in Beijing, Shanghai and Xi'an, and the registered company is based in Guangzhou.",
   },
   {
     question: "What if I need to cancel?",

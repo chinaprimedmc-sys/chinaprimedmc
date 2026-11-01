@@ -236,7 +236,7 @@ export const beijingUnhurriedAsset = {
   ),
   privateService: beijingUnhurriedImage(
     "private-service.webp",
-    "Travelers with their English-speaking guide on the Great Wall near Beijing",
+    "Travelers with their multilingual guide on the Great Wall near Beijing",
     1800,
     2400,
   ),
@@ -272,7 +272,7 @@ export const beijingUnhurriedAsset = {
   ),
   forbiddenCityGuide: beijingUnhurriedImage(
     "forbidden-city-guide.webp",
-    "An English-speaking guide explaining details inside the Forbidden City",
+    "A multilingual guide explaining details inside the Forbidden City",
     1280,
     1742,
   ),
@@ -360,12 +360,7 @@ export const chengduAsset = {
     1536,
     1024,
   ),
-  guide: chengduImage(
-    "guide.webp",
-    "An English-speaking guide during a Chengdu journey",
-    2316,
-    3088,
-  ),
+  guide: chengduImage("guide.webp", "A multilingual guide during a Chengdu journey", 2316, 3088),
   spice: chengduImage(
     "detail-spice.webp",
     "Sichuan pepper and spices for a Chengdu meal",

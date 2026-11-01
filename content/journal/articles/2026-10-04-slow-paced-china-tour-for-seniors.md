@@ -47,7 +47,7 @@ Ask the planner to state the expected hotel, room type or standard, walking cont
 
 A considered day has a main experience and a sensible stopping point. The guide can explain the key rooms or courtyards, then offer an optional extension if energy and timing allow. That is more humane than promising that every landmark, performance and evening walk will fit.
 
-For a first China visit, the [Beijing, Xi’an and Shanghai private journey](/tours/first-china-beautifully-paced) can be discussed at a gentler pace, with city stays and travel days reviewed together. The [12-day China, Considered route](/tours/china-at-an-easier-pace-12-day-private-tour) is another starting point for travelers who want more breathing room. The final fit depends on dates, mobility, interests, hotel availability and the group’s comfortable walking range.
+For a first China visit, the [Beijing, Xi’an and Shanghai private journey](/tours/beijing-xian-shanghai-private-9-day-tour) can be discussed at a gentler pace, with city stays and travel days reviewed together. The [12-day China, Considered route](/tours/china-at-an-easier-pace-12-day-private-tour) is another starting point for travelers who want more breathing room. The final fit depends on dates, mobility, interests, hotel availability and the group’s comfortable walking range.
 
 ## What to tell a planner
 
@@ -88,7 +88,7 @@ Only after the hotel or venue confirms the specific feature for the date. Reques
 
 ## Plan around your comfortable day
 
-Tell us what a good day feels like, what movement is difficult and which experiences matter most. AVIORA can review the route and identify confirmed arrangements, open questions and realistic trade-offs before preparing a proposal. Compare the [slower-paced China, Considered journey](/tours/china-at-an-easier-pace-12-day-private-tour) or [plan a first visit with more time built in](/tours/first-china-beautifully-paced).
+Tell us what a good day feels like, what movement is difficult and which experiences matter most. AVIORA can review the route and identify confirmed arrangements, open questions and realistic trade-offs before preparing a proposal. Compare the [slower-paced China, Considered journey](/tours/china-at-an-easier-pace-12-day-private-tour) or [plan a first visit with more time built in](/tours/beijing-xian-shanghai-private-9-day-tour).
 
 ## Sources
 

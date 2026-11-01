@@ -118,7 +118,7 @@ export type JourneyPlanningNeedId =
   | "food-focused"
   | "photography-led";
 
-const flagship = tours.find((tour) => tour.slug === "first-china-beautifully-paced");
+const flagship = tours.find((tour) => tour.slug === "beijing-xian-shanghai-private-9-day-tour");
 const chinaConsidered = tours.find(
   (tour) => tour.slug === "china-at-an-easier-pace-12-day-private-tour",
 );
@@ -490,7 +490,7 @@ const mutianyuPrivateDayJourney: JourneyCatalogBase = {
   title: mutianyuPrivateDayTour.title,
   eyebrow: "Private Mutianyu Great Wall day tour",
   summary: mutianyuPrivateDayTour.subtitle,
-  hook: "A private Beijing hotel pickup, English-speaking guide, admission and a Wall route chosen around your group, with no shopping stops and transparent mountain-transport options.",
+  hook: "A private Beijing hotel pickup, multilingual guide, admission and a Wall route chosen around your group, with no shopping stops and transparent mountain-transport options.",
   image: mutianyuPrivateDayTour.hero.image,
   visualStatus: "ready",
   href: `/tours/${mutianyuPrivateDayTour.slug}`,
@@ -664,7 +664,7 @@ const guilinYangshuoLiRiverDayJourney: JourneyCatalogBase = {
   title: guilinYangshuoLiRiverDayTour.title,
   eyebrow: "Guilin to Yangshuo Li River cruise day",
   summary: guilinYangshuoLiRiverDayTour.subtitle,
-  hook: "Take the four-star public Li River cruise with private Guilin hotel pickup, English-speaking guide, luggage continuity and a finish chosen in advance: Yangshuo hotel or private return to Guilin.",
+  hook: "Take the four-star public Li River cruise with private Guilin hotel pickup, multilingual guide, luggage continuity and a finish chosen in advance: Yangshuo hotel or private return to Guilin.",
   image: guilinYangshuoLiRiverDayTour.hero.image,
   visualStatus: "ready",
   href: `/tours/${guilinYangshuoLiRiverDayTour.slug}`,
@@ -1116,7 +1116,7 @@ const journeyCatalogBase: JourneyCatalogBase[] = [
  * catalogue, search index, generated routes, sitemap and journey matcher.
  */
 export const publicJourneySlugs = [
-  "first-china-beautifully-paced",
+  "beijing-xian-shanghai-private-9-day-tour",
   "luxury-yunnan-private-tour",
   "private-mutianyu-great-wall-day-tour",
   "private-shanghai-day-tour-guide-driver",
@@ -1201,7 +1201,7 @@ const commercialPortfolio: Record<
     commercialRoleLabel: "First-China essential",
     commercialPriority: 150,
   },
-  "first-china-beautifully-paced": {
+  "beijing-xian-shanghai-private-9-day-tour": {
     commercialRole: "essential",
     commercialRoleLabel: "Signature first journey",
     commercialPriority: 190,
@@ -1416,7 +1416,7 @@ const commercialDetails: Record<
     bestForSummary:
       "First-time visitors who want four distinct cities without planning every handoff themselves",
   },
-  "first-china-beautifully-paced": {
+  "beijing-xian-shanghai-private-9-day-tour": {
     paceLabel: "Comfortable, unhurried",
     transportSummary:
       "Private transfers, Beijing–Xi'an high-speed rail, and a connection to Shanghai selected for your dates",
@@ -1518,7 +1518,7 @@ const journeyPricing: Record<string, JourneyPricing> = {
     basis:
       "Indicative starting price per private group of four guests for the version ending in Yangshuo, equivalent to US$172 per guest. A two-guest Yangshuo-finish tour starts from US$528 total. The four-guest central-Guilin return version starts from US$758 total.",
     inclusionSummary:
-      "Includes central-Guilin hotel pickup, private vehicle and driver for the confirmed road-service window, private English-speaking guide, standard four-star public Li River cruise tickets, the standard onboard meal only when attached to the confirmed tickets, a short private Yangshuo countryside chapter, normal pre-confirmed luggage transfer to a Yangshuo hotel, bottled water and no compulsory shopping stops.",
+      "Includes central-Guilin hotel pickup, private vehicle and driver for the confirmed road-service window, private multilingual guide, standard four-star public Li River cruise tickets, the standard onboard meal only when attached to the confirmed tickets, a short private Yangshuo countryside chapter, normal pre-confirmed luggage transfer to a Yangshuo hotel, bottled water and no compulsory shopping stops.",
     finalPriceNote:
       "Indicative Yangshuo-finish private-group totals outside major holidays are: one guest US$438; two guests US$528; three guests US$608; four guests US$688; five guests US$830; and six guests US$972. A central-Guilin return starts from an additional US$70 per group of up to four and is quoted for larger parties.",
     additionalNote:
@@ -1532,7 +1532,7 @@ const journeyPricing: Record<string, JourneyPricing> = {
     basis:
       "Indicative starting price per private group of four guests, equivalent to approximately US$150 per guest. A two-guest private tour starts from US$478 total. Optional experiences and airport transfers are separate.",
     inclusionSummary:
-      "Includes early central-Chengdu hotel pickup and return, private vehicle and driver for the confirmed service window, private English-speaking guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops.",
+      "Includes early central-Chengdu hotel pickup and return, private vehicle and driver for the confirmed service window, private multilingual guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops.",
     finalPriceNote:
       "Indicative private-group totals outside major holidays are: one guest US$398; two guests US$478; three guests US$538; four guests US$598; five guests US$710; and six guests US$828. The exact vehicle, hotel address, date and service window are checked before confirmation.",
     additionalNote:
@@ -1546,7 +1546,7 @@ const journeyPricing: Record<string, JourneyPricing> = {
     basis:
       "Indicative starting price per private group of four guests, equivalent to US$157 per guest. A two-guest private tour starts from US$498 total. Optional experiences, airports and railway-station transfers are separate.",
     inclusionSummary:
-      "Includes central Xi'an hotel pickup and return, private vehicle and driver for the confirmed service window, private English-speaking guide, Terracotta Warriors museum admission, a flexible Xi'an Old City walk, bottled water and no compulsory shopping stops.",
+      "Includes central Xi'an hotel pickup and return, private vehicle and driver for the confirmed service window, private multilingual guide, Terracotta Warriors museum admission, a flexible Xi'an Old City walk, bottled water and no compulsory shopping stops.",
     finalPriceNote:
       "Indicative private-group totals outside major holidays are: one guest US$438; two guests US$498; three guests US$568; four guests US$628; five guests US$745; and six guests US$870. The exact vehicle, hotel address, date and service window are checked before confirmation.",
     additionalNote:
@@ -1560,7 +1560,7 @@ const journeyPricing: Record<string, JourneyPricing> = {
     basis:
       "Indicative starting price per private group of four guests, equivalent to US$168 per guest. A two-guest private tour starts from US$558 total. Optional experiences, airports and cruise-port transfers are separate.",
     inclusionSummary:
-      "Includes central Shanghai hotel pickup and return, private vehicle and driver for the confirmed service window, private English-speaking guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops.",
+      "Includes central Shanghai hotel pickup and return, private vehicle and driver for the confirmed service window, private multilingual guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops.",
     finalPriceNote:
       "Indicative private-group totals outside major holidays are: one guest US$468; two guests US$558; three guests US$628; four guests US$672; five guests US$795; and six guests US$930. The exact vehicle, hotel address, date and service window are checked before confirmation.",
     additionalNote:
@@ -1588,7 +1588,7 @@ const journeyPricing: Record<string, JourneyPricing> = {
     basis:
       "Indicative starting price per person, based on four guests traveling privately, equivalent to a private-group total from US$792. Optional mountain transport and lunch are separate.",
     inclusionSummary:
-      "Includes private Beijing hotel pickup and return within main urban districts, private vehicle and driver, private English-speaking guide, Mutianyu admission, scenic-area shuttle, bottled water and no compulsory shopping stops.",
+      "Includes private Beijing hotel pickup and return within main urban districts, private vehicle and driver, private multilingual guide, Mutianyu admission, scenic-area shuttle, bottled water and no compulsory shopping stops.",
     finalPriceNote:
       "Smaller parties have a higher per-person price because private guide and vehicle costs are shared by fewer guests. Your exact hotel address, date, group and selected mountain transport are confirmed before you book.",
     additionalNote:
@@ -1670,7 +1670,7 @@ const journeyPricing: Record<string, JourneyPricing> = {
     fromUsd: 2990,
     ...sharedPricingDetails,
   },
-  "first-china-beautifully-paced": {
+  "beijing-xian-shanghai-private-9-day-tour": {
     fromUsd: 3190,
     ...sharedPricingDetails,
     inclusionSummary:

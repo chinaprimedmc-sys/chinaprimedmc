@@ -55,6 +55,8 @@ export type TourDetailModel = {
   heroImage: MediaAsset;
   hasPhotography: boolean;
   planningSupport?: Tour["planningSupport"];
+  guideProfile?: Tour["guideProfile"];
+  faqLimit?: number;
   experienceCards: TourExperienceCard[];
   optionalExperiences?: Tour["optionalExperiences"];
   price?: {
@@ -151,6 +153,8 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     heroImage: tour.hero.image,
     hasPhotography: tour.visualStatus !== "pending",
     planningSupport: tour.planningSupport,
+    guideProfile: tour.guideProfile,
+    faqLimit: tour.faqLimit,
     experienceCards: createExperienceCards(tour),
     optionalExperiences: tour.optionalExperiences,
     price: catalog
@@ -198,7 +202,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
         ? describeIncludedMeals(day.day)
         : day.meals?.join(", ") || "Confirmed in your written proposal",
       stay:
-        tour.slug === "first-china-beautifully-paced" && day.day === 9
+        tour.slug === "beijing-xian-shanghai-private-9-day-tour" && day.day === 9
           ? "Departure day"
           : compactDailyStay(day.hotel, day.destination),
       guideInsight: day.guideNote,
@@ -436,7 +440,7 @@ function compactDailyTransport(transport: string | undefined) {
   if (/private vehicle.*guide|guide.*private vehicle/i.test(transport)) {
     return "Private car + local guide";
   }
-  return transport.replace(/ and English-speaking guide(?: as confirmed)?/i, " + local guide");
+  return transport.replace(/ and multilingual guide(?: as confirmed)?/i, " + local guide");
 }
 
 function cleanDisplayTitle(title: string) {

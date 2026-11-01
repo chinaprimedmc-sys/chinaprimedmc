@@ -23,7 +23,7 @@ suggested_internal_links:
   [
     "/destinations/beijing",
     "/tours/beijing-great-wall-private-5-day-tour",
-    "/tours/first-china-beautifully-paced",
+    "/tours/beijing-xian-shanghai-private-9-day-tour",
     "/tours/china-at-an-easier-pace-12-day-private-tour",
     "/start-planning",
   ]
@@ -138,7 +138,7 @@ Do not place a fixed evening event immediately after an ambitious Wall day. Traf
 
 Select **Mutianyu** for the strongest all-round first visit, **Badaling** when established public access and major-site infrastructure lead the decision, and **Jinshanling** when photography and hiking justify a longer, harder day.
 
-Review AVIORA’s [Beijing destination guide](/destinations/beijing) and [first-China route](/tours/first-china-beautifully-paced), then [start planning](/start-planning) with ages, mobility notes and the desired photography window.
+Review AVIORA’s [Beijing destination guide](/destinations/beijing) and [first-China route](/tours/beijing-xian-shanghai-private-9-day-tour), then [start planning](/start-planning) with ages, mobility notes and the desired photography window.
 
 ## FAQ
 

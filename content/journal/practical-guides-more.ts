@@ -46,7 +46,7 @@ const specs: Spec[] = [
     ],
     related: {
       destinations: ["beijing", "shanghai"],
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       articles: [
         "private-guide-vs-driver-china",
         "what-is-included-private-china-tour",
@@ -174,7 +174,7 @@ const specs: Spec[] = [
     ],
     related: {
       destinations: ["beijing", "xian"],
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       articles: [
         "how-to-choose-private-china-tour-company",
         "private-guide-vs-driver-china",
@@ -705,7 +705,7 @@ const specs: Spec[] = [
     ],
     related: {
       destinations: ["beijing", "shanghai"],
-      tours: ["first-china-beautifully-paced"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
       articles: [
         "how-to-choose-private-china-tour-company",
         "private-china-tour-proposal-checklist",

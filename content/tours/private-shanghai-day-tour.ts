@@ -45,7 +45,7 @@ export const privateShanghaiDayTour: Tour = {
   visualStatus: "ready",
   publishedAt: "2026-08-21",
   updatedAt: "2026-08-21",
-  title: "Private Shanghai in One Day, Seamlessly Handled",
+  title: "Private Shanghai in One Day, Guide and Driver Included",
   subtitle:
     "A private guide and vehicle connect Yu Garden, the Old City, a Huangpu ferry, the Bund and the former French Concession from your Shanghai hotel, without shopping stops or transport guesswork.",
   duration: "1 Day · Private · About 8 hours",
@@ -60,7 +60,7 @@ export const privateShanghaiDayTour: Tour = {
   seo: {
     title: "Private Shanghai Day Tour with Guide & Driver",
     description:
-      "Private Shanghai day tour with hotel pickup, English-speaking guide and driver, Yu Garden, the Bund, Huangpu ferry and no shopping stops.",
+      "Private Shanghai day tour with hotel pickup, multilingual guide and driver, Yu Garden, the Bund, Huangpu ferry and no shopping stops.",
     keywords: [
       "private Shanghai day tour",
       "Shanghai private tour with guide and driver",
@@ -74,7 +74,7 @@ export const privateShanghaiDayTour: Tour = {
   },
   overview: {
     pitch:
-      "Shanghai is easy to underestimate from a map: Yu Garden's lanes, the Bund, the river crossing and the former French Concession are each simple alone, but inefficient when a first-time visitor has to solve tickets, traffic, meeting points and what is actually worth seeing between them. This private day begins at your central Shanghai hotel. Your English-speaking guide, private vehicle and Yu Garden admission are arranged before you leave. You will move from the older, intimate side of the city to the riverfront and then into leafy former-concession streets, using the public Huangpu ferry for the perspective it gives rather than treating it as a transfer problem. There are no compulsory shopping stops.",
+      "Shanghai is easy to underestimate from a map: Yu Garden's lanes, the Bund, the river crossing and the former French Concession are each simple alone, but inefficient when a first-time visitor has to solve tickets, traffic, meeting points and what is actually worth seeing between them. This private day begins at your central Shanghai hotel. Your multilingual guide, private vehicle and Yu Garden admission are arranged before you leave. You will move from the older, intimate side of the city to the riverfront and then into leafy former-concession streets, using the public Huangpu ferry for the perspective it gives rather than treating it as a transfer problem. There are no compulsory shopping stops.",
     facts: [
       {
         label: "Time",
@@ -84,7 +84,7 @@ export const privateShanghaiDayTour: Tour = {
       },
       {
         label: "Included",
-        value: "Private vehicle, English-speaking guide, Yu Garden admission and Huangpu ferry",
+        value: "Private vehicle, multilingual guide, Yu Garden admission and Huangpu ferry",
         helper:
           "Pickup and return are included at hotels in Shanghai's main central districts. Airport, cruise-port and distant locations are priced before booking.",
       },
@@ -176,7 +176,7 @@ export const privateShanghaiDayTour: Tour = {
       },
       {
         label: "04 · A guide for the whole day",
-        value: "One private English-speaking guide stays responsible for the route",
+        value: "One private multilingual guide stays responsible for the route",
         helper:
           "The guide explains the city and manages the practical transitions; this is not a driver-only transfer service.",
       },
@@ -224,7 +224,7 @@ export const privateShanghaiDayTour: Tour = {
       title: "Old Shanghai, riverfront contrast and a leafy final chapter",
       destination: "Shanghai",
       summary:
-        "Meet your private English-speaking guide and vehicle at the confirmed Shanghai hotel. Begin in Yu Garden and the Old City, then move to the Bund and cross the Huangpu by public ferry for the river perspective. After independent lunch time or a pre-booked dining upgrade, continue through a walkable former French Concession neighborhood before a private return to the hotel. The exact sequence is adjusted around weather, traffic, opening hours and the group, while keeping these core Shanghai chapters intact.",
+        "Meet your private multilingual guide and vehicle at the confirmed Shanghai hotel. Begin in Yu Garden and the Old City, then move to the Bund and cross the Huangpu by public ferry for the river perspective. After independent lunch time or a pre-booked dining upgrade, continue through a walkable former French Concession neighborhood before a private return to the hotel. The exact sequence is adjusted around weather, traffic, opening hours and the group, while keeping these core Shanghai chapters intact.",
       image: lujiazui,
       hotel: "No overnight stay required · pickup and return at your Shanghai hotel",
       meals: ["Independent lunch time; curated Shanghainese lunch available as an upgrade"],
@@ -276,7 +276,7 @@ export const privateShanghaiDayTour: Tour = {
   included: [
     "Private pickup and return at a Shanghai hotel in the main central districts; airport, cruise-port, out-of-area and non-standard locations are quoted before booking",
     "Private air-conditioned vehicle with professional driver for the confirmed service window",
-    "Private English-speaking guide for the full confirmed sightseeing day",
+    "Private multilingual guide for the full confirmed sightseeing day",
     "Yu Garden admission and one ordinary Huangpu public-ferry crossing",
     "Pre-trip review of your hotel address, date, group details, walking preferences and route priorities",
     "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
@@ -398,7 +398,7 @@ export const privateShanghaiDayTour: Tour = {
     {
       question: "What does the US$672 starting price include?",
       answer:
-        "It is an indicative private-group starting price for four guests, equivalent to US$168 per guest. It includes pickup and return within Shanghai's main central hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private English-speaking guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops. Lunch, Shanghai Tower, evening cruises and other upgrades are not included.",
+        "It is an indicative private-group starting price for four guests, equivalent to US$168 per guest. It includes pickup and return within Shanghai's main central hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops. Lunch, Shanghai Tower, evening cruises and other upgrades are not included.",
     },
     {
       question: "What is the published price for a smaller or larger group?",
@@ -408,7 +408,7 @@ export const privateShanghaiDayTour: Tour = {
     {
       question: "Is this a private tour or a shared group tour?",
       answer:
-        "It is private for your booking party. You have your own vehicle, driver and English-speaking guide during the confirmed service window. Yu Garden, the Bund, the ferry and public streets remain shared public places, so other visitors will be present.",
+        "It is private for your booking party. You have your own vehicle, driver and multilingual guide during the confirmed service window. Yu Garden, the Bund, the ferry and public streets remain shared public places, so other visitors will be present.",
     },
     {
       question: "Can you collect us from the airport, cruise port or railway station?",

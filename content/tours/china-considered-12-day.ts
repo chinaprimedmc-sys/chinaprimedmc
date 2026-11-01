@@ -478,7 +478,7 @@ export const chinaConsidered12DayTour: Tour = {
   included: [
     "11 nights in selected premium five-star hotels, based on four guests sharing two rooms",
     "Daily hotel breakfast and the selected lunches and farewell dinner stated in the final proposal",
-    "Private English-speaking guides and private vehicles on confirmed touring days",
+    "Private multilingual guides and private vehicles on confirmed touring days",
     "Private airport and railway-station transfers with managed handovers",
     "Beijing–Xi'an first-class high-speed rail tickets",
     "Xi'an–Shanghai nonstop economy-class domestic flight",
@@ -630,7 +630,7 @@ export const chinaConsidered12DayTour: Tour = {
         image: firstChinaAsset.shanghaiWaterfrontGroup,
         route: "Beijing · Xi'an · Shanghai",
         duration: "9 days / 8 nights",
-        href: "/tours/first-china-beautifully-paced",
+        href: "/tours/beijing-xian-shanghai-private-9-day-tour",
       },
     ],
     destinations: [],

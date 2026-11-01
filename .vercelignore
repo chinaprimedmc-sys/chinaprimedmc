@@ -5,7 +5,7 @@
 .codex-screenshots
 node_modules
 .git
-coverage
+/coverage
 artifacts
 outputs
 product-intelligence/data/product-intelligence.sqlite

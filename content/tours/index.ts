@@ -149,28 +149,29 @@ export const tours: Tour[] = [
   chengduChongqingZhangjiajieTour,
   beijingXianChengduShanghaiTour,
   {
-    slug: "first-china-beautifully-paced",
+    slug: "beijing-xian-shanghai-private-9-day-tour",
     title: "Beijing, Xi'an & Shanghai: A Private First Journey",
     subtitle:
-      "A 9-day private introduction to China through Beijing, Xi'an, and Shanghai, with thoughtful pacing and one China-based team coordinating the important details.",
+      "Nine days through Beijing, Xi'an and Shanghai with an expert guide in every city, Hilton-category hotels in central locations, and signature local moments: dumplings in a family courtyard, calligraphy in Xi'an, a dumpling banquet, a Huangpu River evening.",
     duration: "9 Days / 8 Nights",
     route: "Beijing, Xi'an, Shanghai",
     styles: ["First-time China", "Family", "Culture", "Luxury"],
     hero: {
-      eyebrow: "China's essential first journey",
+      eyebrow: "Expert-led private first journey",
       image: firstChinaAsset.beijingGreatWallSunriseHero,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
       secondary: { label: "Plan This Tour", href: "#inquiry" },
     },
     seo: {
-      title: "Beijing, Xi'an & Shanghai Private Tour - 9 Days",
+      title: "9-Day Private China Tour: Beijing, Xi'an & Shanghai",
       description:
-        "A 9-day private introduction to China through Beijing, Xi'an, and Shanghai, with thoughtful pacing and one China-based team coordinating the important details.",
+        "Private 9-day Beijing, Xi'an & Shanghai tour with the Great Wall, Terracotta Army and high-speed rail. From US$3,190 per person, run by a licensed China team.",
       keywords: [
         "private Beijing Xi'an Shanghai tour",
         "9 day China itinerary",
+        "9 day private China tour",
         "private China tour",
-        "luxury Beijing Xi'an Shanghai travel",
+        "Beijing Xi'an Shanghai itinerary",
         "Beijing Xi'an Shanghai family tour",
       ],
     },
@@ -190,8 +191,9 @@ export const tours: Tour[] = [
         },
         {
           label: "Travel Style",
-          value: "Private, personally paced",
-          helper: "Your own guides, planned transfers, and a route refined around your group.",
+          value: "Expert-led, privately paced",
+          helper:
+            "An expert local guide in every city, Hilton-category hotels in central locations, and signature local experiences.",
         },
         {
           label: "Pacing",
@@ -206,29 +208,76 @@ export const tours: Tour[] = [
         },
       ],
     },
+    faqLimit: 24,
+    guideProfile: {
+      title: "Your guides: an expert in every city, in your language",
+      description:
+        "Expertise is local, so each city is led by its own licensed specialist, not one generalist who covers the whole route. We match guide and language to your group before you pay, and your written proposal names both for every city.",
+      languagesLabel: "Languages",
+      languages: [
+        "English",
+        "French",
+        "German",
+        "Spanish",
+        "Russian",
+        "Italian",
+        "Japanese",
+        "Chinese",
+        "Thai",
+      ],
+      specialists: [
+        {
+          city: "Beijing",
+          profile:
+            "A guide steeped in imperial history and architecture, who can read the Forbidden City's axis, the Temple of Heaven's rituals and the Wall's military purpose, and who knows how to pace a first-time visitor through all three.",
+        },
+        {
+          city: "Xi'an",
+          profile:
+            "A specialist in Qin and Tang archaeology who explains the Terracotta Army as evidence rather than spectacle, and who also knows where Xi'an eats.",
+        },
+        {
+          city: "Shanghai",
+          profile:
+            "A guide who can explain a century of trade, architecture and change, from the Bund's colonial banks to Pudong's towers, and who leads you through the lanes and the food as comfortably as the landmarks.",
+        },
+      ],
+    },
     planningSupport: {
       eyebrow: "Why this route",
-      title: "The first China journey that does not feel like a checklist.",
+      title: "Three cities, each led by an expert, each with one thing you will remember.",
       description:
-        "This route gives the country a clear narrative: Beijing explains the scale, Xi'an brings its early history into focus, and Shanghai shows where China is now. The private format protects the time between those moments.",
+        "Beijing explains the scale of imperial power, Xi'an takes you to the roots of Chinese civilization, and Shanghai shows where China is now. An expert local guide leads each city in depth, you sleep in Hilton-category hotels in the most convenient central areas, and every city includes a hands-on moment you will not find in a standard itinerary.",
       items: [
         {
-          label: "See the icons properly",
-          value: "Time where it matters",
+          label: "An expert guide in every city",
+          value: "A local specialist in each city",
           helper:
-            "The Forbidden City, Great Wall, and Terracotta Warriors are not stacked into the same rushed day.",
+            "Beijing is led by a guide steeped in imperial history and architecture, Xi'an by one who knows Qin and Tang archaeology, and Shanghai by one who can explain a century of trade, design and change. All are licensed, and matched to what you care about: history, food, photography or traveling with children and parents.",
+        },
+        {
+          label: "Guides in your language",
+          value: "9 languages",
+          helper:
+            "English, French, German, Spanish, Russian, Italian, Japanese, Chinese and Thai. Your guide leads in your language at a professional level, so a Spanish-speaking or French-speaking group is not handed an English-only tour at the Terracotta Army. Guide and language for each city are named in your written proposal.",
+        },
+        {
+          label: "Hotels that save your energy",
+          value: "Hilton or equivalent",
+          helper:
+            "Every night is in the most convenient central area, so mornings start easily, transfers stay short, and you can walk out for an evening on your own.",
+        },
+        {
+          label: "Built for how you really travel",
+          value: "Jet-lag aware pacing",
+          helper:
+            "The first day is left open after a long flight, the Great Wall gets its own day, and travel days are lighter. Designed for couples, first-time visitors, and families traveling with parents or teenagers.",
         },
         {
           label: "Travel with less friction",
           value: "Two managed city moves",
           helper:
-            "Station transfers, luggage planning, and local arrivals are coordinated as part of one route.",
-        },
-        {
-          label: "Keep it personal",
-          value: "Private by design",
-          helper:
-            "We review hotel location, room needs, walking comfort, food, and timing before the plan is confirmed.",
+            "Station transfers, luggage planning, and local arrivals are coordinated as part of one route, with one China-based team you can reach while you travel.",
         },
       ],
       note: "This is a private journey, not a fixed-departure group tour. We use this route as the starting point, then confirm the hotels, transport, guides, and inclusions around your dates and travelers.",
@@ -237,21 +286,21 @@ export const tours: Tour[] = [
       {
         title: "A full day at the Great Wall",
         description:
-          "The Wall gets its own day. Your guide helps choose a section and walking pace that suit your group.",
+          "The Wall gets its own day, with a village lunch beneath it. We usually begin with Mutianyu, and tell you plainly how much walking remains after the cable car.",
         category: "Culture",
         image: firstChinaAsset.beijingGreatWallSunriseHero,
       },
       {
         title: "The story behind the warriors",
         description:
-          "Explore the Terracotta Army with a guide who puts the figures and their discovery in context.",
+          "Explore the Terracotta Army with an expert guide, then end the day at a Xi'an dumpling banquet and on the Ming-dynasty city wall at dusk.",
         category: "First-time China",
         image: firstChinaAsset.xianTerracottaPit,
       },
       {
         title: "Shanghai beyond the skyline",
         description:
-          "Follow the riverfront into local neighborhoods. The final day stays open to your interests, with no required shopping stops.",
+          "See the Bund from the water on a Huangpu River evening cruise, walk the former French Concession, and learn what makes a good xiaolongbao. No required shopping stops.",
         category: "Culture",
         image: firstChinaAsset.shanghaiPudongSkyline,
       },
@@ -262,9 +311,9 @@ export const tours: Tour[] = [
         title: "Arrive in Beijing",
         destination: "Beijing",
         summary:
-          "Arrive in Beijing, meet your local team, and settle in without forcing sightseeing into your first evening.",
+          "Arrive in Beijing after your long flight, meet your local team, and rest. Nothing is scheduled today, so jet lag does not cost you a sightseeing day.",
         image: firstChinaAsset.beijingTempleOfHeavenCorridor,
-        hotel: "Stay in Beijing",
+        hotel: "Hilton or equivalent, central Beijing",
         meals: ["No scheduled meal on arrival day"],
         transport: "Private airport transfer",
         activities: [
@@ -276,7 +325,7 @@ export const tours: Tour[] = [
           {
             title: "A soft first evening",
             description:
-              "The first evening stays open for rest, a simple meal, or a short neighborhood walk if your arrival time allows.",
+              "The evening stays open for rest, an easy dinner near the hotel, or a short walk if you feel awake. Your guide briefs you on tomorrow and on the small things that make China easier: payments, phones and getting a taxi.",
           },
         ],
         guideNote:
@@ -288,27 +337,27 @@ export const tours: Tour[] = [
         title: "Imperial Beijing",
         destination: "Beijing",
         summary:
-          "Step into the Forbidden City with the historical context to make its scale and symbolism meaningful.",
+          "The Forbidden City admits visitors on a reservation tied to each traveler's passport and is closed on Mondays, so we fix this day first and build the rest of Beijing around it.",
         image: firstChinaAsset.beijingForbiddenCityLion,
-        hotel: "Stay in Beijing",
-        meals: ["Hotel breakfast", "Welcome dinner"],
+        hotel: "Hilton or equivalent, central Beijing",
+        meals: ["Hotel breakfast", "Peking duck welcome dinner"],
         transport: "Private vehicle + local guide",
         activities: [
           {
             time: "Morning",
             title: "Forbidden City context",
             description:
-              "Follow the palace axis with a private guide who connects the buildings, rituals, and people who once shaped imperial China.",
+              "Enter by the Meridian Gate and follow the central axis through the great halls to the Imperial Garden, with a private guide who explains who stood where, and why the palace is laid out to make an emperor feel unreachable.",
           },
           {
             time: "Afternoon",
-            title: "A second layer of Beijing",
+            title: "The view back over the roofs",
             description:
-              "Use the afternoon for a quieter cultural layer, a hutong walk, or an earlier finish based on your energy.",
+              "Climb Jingshan Park, directly north of the palace, for the view back across the yellow roofs, or choose a hutong walk or an earlier finish if the morning has been enough.",
           },
         ],
         guideNote:
-          "Your guide sets the day in a sensible order and adjusts the walking rhythm around your group.",
+          "We reserve the tickets against your passport details before you arrive, never plan this day on a Monday, and start a little later on your first sightseeing morning to allow for jet lag.",
         coordinates: { latitude: 39.9163, longitude: 116.3972 },
       },
       {
@@ -318,21 +367,21 @@ export const tours: Tour[] = [
         summary:
           "See the Temple of Heaven, then move beyond the monuments to the everyday rhythm of Beijing.",
         image: firstChinaAsset.beijingTempleOfHeavenReflection,
-        hotel: "Stay in Beijing",
-        meals: ["Hotel breakfast"],
+        hotel: "Hilton or equivalent, central Beijing",
+        meals: ["Hotel breakfast", "Family-courtyard lunch with dumpling-making"],
         transport: "Private vehicle + local guide",
         activities: [
           {
             time: "Morning",
             title: "Temple of Heaven",
             description:
-              "Read the complex through its proportions, colors, rituals, and the morning life of the surrounding park.",
+              "Read the complex through its proportions, colors and rituals: the Hall of Prayer for Good Harvests, the Circular Mound Altar, and the morning life of the surrounding park, with a guide who explains what the emperor was actually doing here.",
           },
           {
             time: "Afternoon",
-            title: "Flexible Beijing afternoon",
+            title: "Hutongs by pedicab, and dumplings in a family courtyard",
             description:
-              "Choose a neighborhood walk, a hands-on cultural moment, or time to rest before the Great Wall.",
+              "Ride through the old hutong lanes, then step into a family courtyard home to make and eat dumplings with the household, a hands-on way to meet everyday Beijing before the Wall day. Prefer a quieter afternoon? We swap it for rest.",
           },
         ],
         guideNote:
@@ -344,16 +393,16 @@ export const tours: Tour[] = [
         title: "The Great Wall, at your pace",
         destination: "Beijing",
         summary:
-          "Give the Great Wall a full day instead of fitting it into a rushed city schedule.",
+          "A full day on the Wall, with the section chosen for the people walking it. We normally begin with Mutianyu, then change the answer after reviewing your group and your date.",
         image: firstChinaAsset.beijingGreatWallSolo,
-        hotel: "Stay in Beijing",
-        meals: ["Hotel breakfast"],
+        hotel: "Hilton or equivalent, central Beijing",
+        meals: ["Hotel breakfast", "Village lunch beneath the Wall"],
         transport: "Private vehicle + local guide",
         activities: [
           {
             title: "A dedicated Wall day",
             description:
-              "Choose the most suitable section and start time around the season, weather, fitness, and crowd levels.",
+              "Mutianyu is our usual first choice: restored ramparts, mountain scenery and a cable car for the ascent. The cable car removes part of the climb, not the stairs between towers, so we tell you honestly how much walking remains. Parents or travelers who prefer less climbing can stay on the first few towers and enjoy the view; fit walkers who want a longer, more demanding day can be sent to Jinshanling instead, and Badaling suits those who need the broadest visitor infrastructure.",
           },
           {
             title: "A measured return",
@@ -362,7 +411,7 @@ export const tours: Tour[] = [
           },
         ],
         guideNote:
-          "We recommend the Great Wall section after reviewing your walking comfort, interests, and travel dates.",
+          "We compare Mutianyu, Badaling and Jinshanling by walking level and scenery, not by the shortest transfer alone, and confirm the section before you book.",
         coordinates: { latitude: 40.4319, longitude: 116.5704 },
       },
       {
@@ -370,9 +419,9 @@ export const tours: Tour[] = [
         title: "High-speed rail to Xi'an",
         destination: "Xi'an",
         summary:
-          "Take the high-speed train to Xi'an, with the station handover and arrival kept simple.",
+          "A daytime high-speed train carries you from Beijing to Xi'an in about five hours. Tickets are bought against your passports, and your local team handles the station handover at both ends.",
         image: firstChinaAsset.xianTerracottaPit,
-        hotel: "Stay in Xi'an",
+        hotel: "Hilton or equivalent, central Xi'an",
         meals: ["Hotel breakfast"],
         transport: "Private station transfer + high-speed rail",
         activities: [
@@ -382,9 +431,9 @@ export const tours: Tour[] = [
               "Your local team coordinates station timing, tickets, luggage guidance, and the arrival transfer.",
           },
           {
-            title: "Xi'an orientation",
+            title: "Stele Forest and a calligraphy lesson",
             description:
-              "Take a gentle first look at Xi'an if you feel ready, or keep the afternoon restorative after the rail journey.",
+              "Visit Xi'an's Forest of Stone Steles with an expert guide, then sit down with a local calligrapher for a short hands-on lesson in writing Chinese characters. Feeling tired from the train? Keep the afternoon restorative.",
           },
         ],
         guideNote:
@@ -396,21 +445,21 @@ export const tours: Tour[] = [
         title: "The Terracotta Army and Xi'an",
         destination: "Xi'an",
         summary:
-          "Meet the Terracotta Army with the historical context that turns a remarkable visit into a memorable one.",
+          "The Terracotta Army sits outside the city, so this is a planned half day rather than a quick stop. Tickets are reserved against passport details in advance, and the visit is paced around what each pit actually shows, with seating and rest stops planned for older travelers, since this visit involves a lot of standing.",
         image: firstChinaAsset.xianTerracottaPortrait,
-        hotel: "Stay in Xi'an",
-        meals: ["Hotel breakfast"],
+        hotel: "Hilton or equivalent, central Xi'an",
+        meals: ["Hotel breakfast", "Xi'an dumpling banquet"],
         transport: "Private vehicle + local guide",
         activities: [
           {
             title: "Terracotta Army",
             description:
-              "Move through the excavation halls with time to ask questions, notice the detail, and understand what the site reveals about Qin China.",
+              "Walk the excavation halls with a guide who explains how the figures were found, how the army was organized, and how the figures differ in rank and face, with time to stop and ask questions instead of following a flag.",
           },
           {
-            title: "A flexible Xi'an evening",
+            title: "Dumpling banquet and the old city wall",
             description:
-              "Use the evening for Xi'an's food culture, the old city, or a quiet dinner close to your hotel.",
+              "Sit down to a Xi'an dumpling banquet, a meal of many differently shaped and filled dumplings served course by course, then ride or walk the Ming-dynasty city wall at dusk. Prefer to wander the Muslim Quarter food streets instead? Your guide will take you.",
           },
         ],
         guideNote:
@@ -424,19 +473,19 @@ export const tours: Tour[] = [
         summary:
           "Continue to Shanghai and let the final city arrive gently through its riverfront and skyline.",
         image: firstChinaAsset.shanghaiHuangpuSunset,
-        hotel: "Stay in Shanghai",
+        hotel: "Hilton or equivalent, central Shanghai",
         meals: ["Hotel breakfast"],
         transport: "Planned domestic connection + private transfers",
         activities: [
           {
             title: "A gentle Shanghai arrival",
             description:
-              "Settle in, read the skyline, and let Shanghai make its first impression without another packed sightseeing list.",
+              "Settle into your central hotel and let Shanghai make its first impression without another packed sightseeing list.",
           },
           {
-            title: "Waterfront evening",
+            title: "Huangpu River evening",
             description:
-              "If energy and weather cooperate, take an easy evening walk for the city's first lights.",
+              "Walk the Bund as the lights come on, then see the Pudong skyline from the water on a Huangpu River evening cruise. If energy is low, we keep it to the walk.",
           },
         ],
         guideNote:
@@ -450,19 +499,19 @@ export const tours: Tour[] = [
         summary:
           "See how old Shanghai and new Shanghai sit together through architecture, neighborhoods, food, and the river.",
         image: firstChinaAsset.shanghaiBicycleRide,
-        hotel: "Stay in Shanghai",
-        meals: ["Hotel breakfast"],
+        hotel: "Hilton or equivalent, central Shanghai",
+        meals: ["Hotel breakfast", "Xiaolongbao lunch"],
         transport: "Private vehicle + local guide",
         activities: [
           {
             title: "Neighborhood perspective",
             description:
-              "Your guide connects riverfront history, local streets, design, and contemporary city life in one coherent day.",
+              "With an expert guide, walk the tree-lined lanes of the former French Concession and the old-town streets around Yu Garden, then see how the Bund's colonial-era banks face Pudong's towers across the river.",
           },
           {
-            title: "A lived-in layer",
+            title: "Xiaolongbao and a local market",
             description:
-              "Add a market or food stop when it matches your interests, appetite, and comfort.",
+              "Learn what makes a good xiaolongbao over lunch, then browse a neighborhood food market with your guide. Skip it if you would rather rest.",
           },
         ],
         guideNote:
@@ -474,7 +523,7 @@ export const tours: Tour[] = [
         title: "A measured Shanghai farewell",
         destination: "Shanghai",
         summary:
-          "Enjoy a calm final morning, then leave Shanghai with a clear plan for your airport transfer.",
+          "Pudong or Hongqiao decides how early the morning starts. We confirm which airport your flight uses and time the transfer so you are not choosing between one last walk and the check-in queue.",
         image: firstChinaAsset.shanghaiBundNight,
         meals: ["Hotel breakfast"],
         transport: "Private airport transfer",
@@ -497,28 +546,28 @@ export const tours: Tour[] = [
     ],
     accommodations: [
       {
-        name: "Beijing | a well-placed base",
+        name: "Beijing | Hilton or equivalent, central location",
         destination: "Beijing",
         description:
-          "We recommend the right hotel area and room setup around your dates, walking comfort, and the way your group likes to travel.",
+          "A Hilton-category or equivalent hotel in the most convenient central area of Beijing, chosen for easy mornings and short transfers to the main sights.",
         roomStyle: "Room setup planned around your group",
         highlights: ["Useful location", "Quiet rest", "Room fit"],
         image: firstChinaAsset.beijingTempleOfHeavenMorning,
       },
       {
-        name: "Xi'an | a restful base",
+        name: "Xi'an | Hilton or equivalent, central location",
         destination: "Xi'an",
         description:
-          "A comfortable base keeps the Terracotta Army day and the city's evening life easy to manage.",
+          "A Hilton-category or equivalent hotel in the most convenient central area of Xi'an, so evenings in the old city are easy to enjoy.",
         roomStyle: "Room setup planned around your group",
         highlights: ["Easy access", "Good recovery", "Group fit"],
         image: destinationAsset.xianTerracotta,
       },
       {
-        name: "Shanghai | a polished finale",
+        name: "Shanghai | Hilton or equivalent, central location",
         destination: "Shanghai",
         description:
-          "We match the neighborhood and room setup to your preferred atmosphere, city time, and departure plans.",
+          "A Hilton-category or equivalent hotel in the most convenient central area of Shanghai, with easy access to the river and the city's best walking streets.",
         roomStyle: "Room setup planned around your group",
         highlights: ["Neighborhood fit", "Easy city time", "Departure ease"],
         image: firstChinaAsset.shanghaiPudongSkyline,
@@ -526,10 +575,12 @@ export const tours: Tour[] = [
     ],
     included: [
       "Private itinerary planning around your dates and travelers",
-      "English-speaking private guides for the sightseeing days listed in your proposal",
+      "An expert local guide in each city, leading in-depth guided touring on every sightseeing day",
+      "Eight nights in Hilton-category or equivalent hotels in central locations: four in Beijing, two in Xi'an, two in Shanghai",
+      "Signature experiences: Peking duck welcome dinner, hutong pedicab ride and a family-courtyard dumpling lesson, village lunch beneath the Great Wall, Stele Forest visit and calligraphy lesson, Xi'an dumpling banquet, Huangpu River evening cruise, and a xiaolongbao lunch",
       "Private airport, station, and city transfers where listed in your proposal",
       "High-speed rail between Beijing and Xi'an, with tickets and class confirmed before travel",
-      "Hotel breakfasts each morning and a welcome dinner on Day 2",
+      "Hotel breakfasts each morning, plus the meals listed in the daily itinerary",
       "The sightseeing, admissions, hotels, and other services stated in your written proposal",
       "A China-based team available to coordinate the journey while you are traveling",
     ],
@@ -624,24 +675,79 @@ export const tours: Tour[] = [
     ],
     faqs: [
       {
-        question: "Is this a fixed package?",
+        question: "How much does a 9-day private China tour of Beijing, Xi'an and Shanghai cost?",
         answer:
-          "No. This is a private route with a clear structure, not a fixed group departure. We confirm the hotel options, daily timing, transport details, and any accessibility needs around your dates and group.",
+          "From US$3,190 per person, based on four guests sharing two rooms outside peak holiday periods. That covers Hilton-category or equivalent hotels, an expert private guide in each city, private transfers, high-speed rail, the signature experiences in the itinerary, and the meals listed. Parties of two pay more per person, because the private guide and vehicle are shared across fewer travelers, and peak holidays such as Golden Week raise hotel and travel costs. International flights, visas and travel insurance are not included. Your written proposal sets out the exact price for your party before you commit.",
       },
       {
-        question: "Can the route work for children or older parents?",
+        question: "Who is this journey designed for?",
         answer:
-          "Yes. Private guiding lets us adjust walking blocks, rest windows, vehicle support, and meal timing around the people traveling. Tell us about mobility, ages, or dietary needs before we finalize the plan.",
+          "It is designed for travelers visiting China for the first time who want expert guidance, comfortable central hotels, and a calm rhythm: couples, friends, and families traveling with parents or older teenagers, mostly from the United States, the United Kingdom, Canada and Australia. It is a poor fit for travelers on a tight budget, for those who want a fixed group departure with new friends, or for experienced hikers who want remote, off-the-path walking.",
+      },
+      {
+        question: "Who will guide us, and what languages do your guides speak?",
+        answer:
+          "A licensed local specialist leads each city, because expertise is local: in Beijing, a guide steeped in imperial history and architecture; in Xi'an, one who knows Qin and Tang archaeology and the city's food; in Shanghai, one who can explain a century of trade, design and change. Guides lead in English, French, German, Spanish, Russian, Italian, Japanese, Chinese or Thai, at a professional level, so you are not relying on someone's holiday English or a translation app. Tell us your language and interests when you enquire, and your written proposal names the guide and language for each city before you pay.",
+      },
+      {
+        question: "Will we have the same guide throughout?",
+        answer:
+          "You will have a different local expert in each city, because the best Beijing guide is not the best Xi'an guide, plus one China-based coordinator who plans your route and whom you can reach while you travel. A driver and vehicle are with you on every sightseeing day. Your guide and driver at the next city meet you at the station or airport, so there is never a gap in the handover.",
+      },
+      {
+        question: "Is 9 days enough for Beijing, Xi'an and Shanghai?",
+        answer:
+          "Yes, for a first visit. The route uses four nights in Beijing, two in Xi'an and two in Shanghai, gives the Great Wall a full day, leaves your arrival day free for jet lag, and keeps the travel days lighter. It does not add Chengdu or pandas; for that, the 12-day four-city route gives more room. If you have extra days, we can add them at either end.",
+      },
+      {
+        question: "When is the best time to go?",
+        answer:
+          "Spring (April to May) and autumn (September to October) are generally the most comfortable for all three cities. Summers are hot and humid, especially in Xi'an and Shanghai, and Beijing is cold in winter. The Golden Week holiday in early October and the Lunar New Year period are the busiest and most expensive times, with crowded sights and harder hotel and train availability, so we recommend booking early if you travel then.",
+      },
+      {
+        question: "Do I need a visa for China?",
+        answer:
+          "Entry rules depend on your passport and can change, so we do not guess. When you enquire we confirm what applies to your nationality, send you a clear checklist, and tell you the documents to prepare. Visa fees are not included in the price.",
+      },
+      {
+        question: "How do I pay, use my phone and stay connected in China?",
+        answer:
+          "Your guide shows you how to do all of this on day one. Foreign credit cards can be linked to China's main mobile payment apps, and your guide helps you set that up; many hotels and larger restaurants also accept foreign cards, and small amounts of cash are still useful. Google, WhatsApp and some other apps are blocked on local networks, so most travelers install an international eSIM or ask their home carrier about roaming before departure. We send a short pre-trip guide with exactly what to do.",
+      },
+      {
+        question: "Is China safe for tourists, and what about health?",
+        answer:
+          "Violent crime against tourists is rare; the practical risks are petty theft in crowds, taxi touts and busy traffic, and your guide and driver keep you clear of the usual ones. Drink bottled water, and tell us about allergies, medications or mobility needs so that we can plan around them. We recommend travel insurance that covers medical care and cancellation. Air quality varies by season, and your guide adjusts outdoor time on poor days.",
+      },
+      {
+        question: "Can this route work for older parents or children?",
+        answer:
+          "Yes. Private guiding lets us adjust walking blocks, rest windows, vehicle support and meal timing around the people traveling. At the Great Wall we choose Mutianyu and its cable car and keep the climb as short as you like; at the Forbidden City and the Terracotta Army we plan seating and rest stops, since both involve a lot of standing. Tell us about mobility, ages or dietary needs before we finalize the plan.",
+      },
+      {
+        question: "What about food, allergies and dietary needs?",
+        answer:
+          "Tell us before you travel about vegetarian, gluten-free, halal or allergy needs, and your guide briefs each restaurant and orders with you. Meals are chosen for flavor and comfort, not for tour groups: Peking duck in Beijing, a dumpling banquet in Xi'an, xiaolongbao in Shanghai. We always give you a safe plain option.",
       },
       {
         question: "How are the hotels selected?",
         answer:
-          "We start with location, room setup, rest, and transfer convenience, then recommend suitable hotel options for your dates. The actual properties and room categories appear in your written proposal before you book.",
+          "Every night is in a Hilton-category or equivalent hotel in the most convenient central area for that city, chosen for short transfers and easy mornings. The actual properties and room categories appear in your written proposal before you book.",
       },
       {
         question: "Is shopping required?",
         answer:
-          "No. The route is designed around history, local life, food, architecture, and personal pace. Shopping is never a condition of the tour.",
+          "No. The route is designed around history, local life, food, architecture and personal pace. Shopping is never a condition of the tour, and your guide will not steer you to commission stops.",
+      },
+      {
+        question: "Is this a fixed package?",
+        answer:
+          "No. This is a private route with a clear structure, not a fixed group departure. We confirm the hotels, daily timing, transport details and accessibility needs around your dates and group, and your proposal can swap experiences to suit your group.",
+      },
+      {
+        question: "Can I add Chengdu pandas, Guilin or another city?",
+        answer:
+          "Yes. Popular additions are Chengdu for giant pandas, Guilin for the Li River, and Zhangjiajie. We build them in around your dates, and the 12-day four-city route already adds Chengdu.",
       },
     ],
     related: {
@@ -885,7 +991,7 @@ export const tours: Tour[] = [
     included: [
       "Private itinerary planning around your dates and travelers",
       "Private car and driver on the days listed in your written quotation",
-      "English-speaking, personally vetted guide support",
+      "Multilingual, personally vetted guide support",
       "Sightseeing and reservations listed in your written quotation",
       "WhatsApp support while traveling",
     ],
@@ -1160,7 +1266,7 @@ export const tours: Tour[] = [
         image: chengduJiuzhaigouAsset.day02,
         hotel: "Chengdu stay: hotel and room category selected after inquiry",
         meals: ["Breakfast; other meals as confirmed"],
-        transport: "Private vehicle and English-speaking guide",
+        transport: "Private vehicle and multilingual guide",
         activities: [
           {
             time: "Morning",
@@ -1188,7 +1294,7 @@ export const tours: Tour[] = [
         image: chengduJiuzhaigouAsset.day03,
         hotel: "Chengdu stay: hotel and room category selected after inquiry",
         meals: ["Breakfast; food experience as confirmed"],
-        transport: "Private vehicle and English-speaking guide",
+        transport: "Private vehicle and multilingual guide",
         activities: [
           {
             title: "Market and neighbourhood context",
@@ -1333,7 +1439,7 @@ export const tours: Tour[] = [
       "Private itinerary planning around your dates and travelers",
       "Hotels and breakfasts listed in the final written proposal",
       "Private airport, station and road transfers listed in the final proposal",
-      "English-speaking guide service as confirmed for each destination",
+      "multilingual guide service as confirmed for each destination",
       "Domestic rail or flight segment when stated in the final proposal",
       "National park transport and attraction tickets listed in the final proposal",
       "Local support before arrival and while traveling",
@@ -1611,7 +1717,7 @@ export const tours: Tour[] = [
       {
         title: "Imperial Beijing, without the checklist",
         description:
-          "Give the Forbidden City time for context, architecture and photography, then let your English-speaking host or guide adjust the route around walking comfort and interest.",
+          "Give the Forbidden City time for context, architecture and photography, then let your multilingual host or guide adjust the route around walking comfort and interest.",
         category: "Culture",
         image: beijingUnhurriedAsset.forbiddenCityOverview,
       },
@@ -1663,11 +1769,11 @@ export const tours: Tour[] = [
         title: "The Forbidden City and hutong life",
         destination: "Beijing",
         summary:
-          "Follow the imperial axis with English-speaking local support, then move into the quieter scale of Beijing's hutongs and courtyard life.",
+          "Follow the imperial axis with multilingual local support, then move into the quieter scale of Beijing's hutongs and courtyard life.",
         image: beijingUnhurriedAsset.forbiddenCity,
         hotel: "Beijing hotel",
         meals: ["Breakfast"],
-        transport: "Private vehicle, English-speaking support and walking",
+        transport: "Private vehicle, multilingual support and walking",
         activities: [
           {
             time: "Morning",
@@ -1695,8 +1801,7 @@ export const tours: Tour[] = [
         image: beijingUnhurriedAsset.greatWallSunrise,
         hotel: "Beijing hotel",
         meals: ["Breakfast"],
-        transport:
-          "Private vehicle and English-speaking support; scenic-area transport as required",
+        transport: "Private vehicle and multilingual support; scenic-area transport as required",
         activities: [
           {
             time: "Morning",
@@ -1724,7 +1829,7 @@ export const tours: Tour[] = [
         image: beijingUnhurriedAsset.summerPalace,
         hotel: "Beijing hotel",
         meals: ["Breakfast"],
-        transport: "Private vehicle, English-speaking support and walking",
+        transport: "Private vehicle, multilingual support and walking",
         activities: [
           {
             time: "Morning",
@@ -1785,7 +1890,7 @@ export const tours: Tour[] = [
       "Hotel breakfast on Days 2-5",
       "Private airport or railway-station arrival and departure transfers",
       "Air-conditioned private touring vehicle",
-      "English-speaking driver-host for parties of 2 or 4, or a private driver and English-speaking guide for parties of 6 or 8",
+      "English-speaking driver-host for parties of 2 or 4, or a private driver and multilingual guide for parties of 6 or 8",
       "Standard admission and scenic-area transport required by the confirmed itinerary",
       "Mutianyu cable-car option only when listed in the final confirmation",
       "No compulsory shopping stops",
@@ -1992,7 +2097,7 @@ export const tours: Tour[] = [
         {
           label: "Travel Style",
           value: "Private and unhurried",
-          helper: "Private transfers and English-speaking local guides.",
+          helper: "Private transfers and multilingual local guides.",
         },
         {
           label: "Pacing",
@@ -2302,7 +2407,7 @@ export const tours: Tour[] = [
       "Hotel breakfast on Days 2-8",
       "Private airport transfers in Shanghai and Zhangjiajie",
       "Air-conditioned private touring vehicle outside restricted scenic areas",
-      "Professional English-speaking local guides on sightseeing days",
+      "Professional multilingual local guides on sightseeing days",
       "Economy-class domestic flights between Shanghai and Zhangjiajie when listed in the final confirmation",
       "Standard admission, park shuttles, elevators, and cableways required by the confirmed itinerary",
       "Huangpu River cruise and Glass Bridge only when listed in the final confirmation",
@@ -2502,7 +2607,7 @@ export const tours: Tour[] = [
         {
           label: "Travel Style",
           value: "Private and considered",
-          helper: "Private touring, English-speaking support and high-speed rail between cities.",
+          helper: "Private touring, multilingual support and high-speed rail between cities.",
         },
         {
           label: "Pacing",
@@ -2738,7 +2843,7 @@ export const tours: Tour[] = [
       "Private itinerary planning around your dates and travelers",
       "Hotels and breakfasts listed in the final written proposal",
       "Private airport, station and sightseeing transfers listed in the final proposal",
-      "English-speaking guide service as confirmed for each destination",
+      "multilingual guide service as confirmed for each destination",
       "High-speed rail between Xi'an and Beijing when stated in the final proposal",
       "Attraction tickets and required scenic-area transport listed in the final proposal",
       "Halal, vegetarian, allergy and prayer-timing planning when shared before confirmation",

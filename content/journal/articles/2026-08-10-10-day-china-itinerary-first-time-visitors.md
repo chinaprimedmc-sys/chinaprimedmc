@@ -22,7 +22,7 @@ secondary_keywords:
 search_intent: "Choose a realistic ten-day first-China route, understand how many nights each city needs and avoid overloading the itinerary."
 suggested_internal_links:
   [
-    "/tours/first-china-beautifully-paced",
+    "/tours/beijing-xian-shanghai-private-9-day-tour",
     "/destinations/beijing",
     "/destinations/xian",
     "/destinations/shanghai",
@@ -265,7 +265,7 @@ Published hero: `/public/tours/first-china-beautifully-paced/shanghai-waterfront
 
 ## Sources
 
-- AVIORA, “9-Day Beijing, Xi’an & Shanghai Private Tour”: `/tours/first-china-beautifully-paced` — route order, pacing and transport relationship. Verified 2026-08-10.
+- AVIORA, “9-Day Beijing, Xi’an & Shanghai Private Tour”: `/tours/beijing-xian-shanghai-private-9-day-tour` — route order, pacing and transport relationship. Verified 2026-08-10.
 - AVIORA, “China High-Speed Trains: A Passport-to-Platform Guide”: `/journal/china-high-speed-train-foreigners` — rail-planning principles. Verified 2026-08-10.
 - UNESCO World Heritage Centre, “Imperial Palaces of the Ming and Qing Dynasties”: https://whc.unesco.org/en/list/439/ — Forbidden City context. Verified 2026-08-10.
 - UNESCO World Heritage Centre, “Mausoleum of the First Qin Emperor”: https://whc.unesco.org/en/list/441/ — Terracotta Army context. Verified 2026-08-10.

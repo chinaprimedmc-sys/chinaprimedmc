@@ -162,7 +162,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       image: fourCityAsset.shanghaiBund,
       hotel: "Shanghai stay: confirmed in your private proposal",
       meals: ["Hotel breakfast; hosted welcome dinner"],
-      transport: "Private vehicle and English-speaking guide",
+      transport: "Private vehicle and multilingual guide",
       activities: [
         {
           time: "Morning",
@@ -365,7 +365,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       image: fourCityAsset.beijingImperial,
       hotel: "Beijing stay: confirmed in your private proposal",
       meals: ["Hotel breakfast"],
-      transport: "Private vehicle and English-speaking guide as confirmed",
+      transport: "Private vehicle and multilingual guide as confirmed",
       activities: [
         {
           title: "The Forbidden City",
@@ -606,7 +606,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         image: firstChinaAsset.shanghaiWaterfrontGroup,
         route: "Beijing, Xi'an, Shanghai",
         duration: "9 days / 8 nights",
-        href: "/tours/first-china-beautifully-paced",
+        href: "/tours/beijing-xian-shanghai-private-9-day-tour",
       },
       {
         title: "7-Day Chengdu Panda & Jiuzhaigou Private Journey",

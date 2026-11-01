@@ -55,7 +55,7 @@ Compare hotels by the functions that matter to your party:
 
 Hotel changes consume time. A proposal should not treat checkout, luggage loading, station security, train travel and arrival check-in as a full sightseeing day. If the party is moving between cities, ask how luggage reaches the station, who meets the traveler on arrival and whether the next hotel can store bags before check-in.
 
-AVIORA plans handpicked four- and five-star hotels as part of tailor-made journeys. Property names and room categories depend on the dates and written confirmation. The [First China, Beautifully Paced journey](/tours/first-china-beautifully-paced) offers a real route to evaluate, while the [Yunnan private journey](/tours/luxury-yunnan-private-tour) uses different stay styles along a longer overland route.
+AVIORA plans handpicked four- and five-star hotels as part of tailor-made journeys. Property names and room categories depend on the dates and written confirmation. The [First China, Beautifully Paced journey](/tours/beijing-xian-shanghai-private-9-day-tour) offers a real route to evaluate, while the [Yunnan private journey](/tours/luxury-yunnan-private-tour) uses different stay styles along a longer overland route.
 
 ## 6. Compare substitutions by function
 
@@ -95,7 +95,7 @@ Not necessarily. It depends on the rate, dietary needs and departure schedule. C
 
 ## Sources
 
-- AVIORA [First China, Beautifully Paced](/tours/first-china-beautifully-paced)
+- AVIORA [First China, Beautifully Paced](/tours/beijing-xian-shanghai-private-9-day-tour)
 - AVIORA [China Hotel Rooms for Families](/journal/china-family-hotel-rooms-connecting-rooms-extra-beds)
 - AVIORA [10-Day Luxury Yunnan Private Tour](/tours/luxury-yunnan-private-tour)
 - AVIORA [Where to Stay in Beijing on a First Visit](/journal/where-to-stay-in-beijing-first-time)

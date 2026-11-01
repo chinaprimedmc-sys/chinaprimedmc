@@ -22,7 +22,7 @@ const journeyLocations: Record<string, string> = {
   "luxury-yunnan-private-tour": "Yunnan",
   "chengdu-chongqing-zhangjiajie-private-11-day-tour": "Chengdu · Chongqing · Zhangjiajie",
   "beijing-xian-chengdu-shanghai-private-11-day-tour": "Shanghai · Chengdu · Xi'an · Beijing",
-  "first-china-beautifully-paced": "Beijing · Xi'an · Shanghai",
+  "beijing-xian-shanghai-private-9-day-tour": "Beijing · Xi'an · Shanghai",
   "chengdu-pandas-sichuan-table": "Chengdu · Leshan",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour": "Chengdu · Jiuzhaigou",
   "shanghai-zhangjiajie-floating-peaks": "Shanghai · Zhangjiajie",
@@ -57,7 +57,7 @@ const sensoryDescriptions: Record<string, string> = {
     "Taste Sichuan after dark, meet pandas early and rise into Zhangjiajie's sandstone landscape.",
   "beijing-xian-chengdu-shanghai-private-11-day-tour":
     "One clear 12-day route through four distinct cities, with the connections planned around your dates.",
-  "first-china-beautifully-paced":
+  "beijing-xian-shanghai-private-9-day-tour":
     "A thoughtful first China journey with private context, key logistics handled, and fewer rushed departures.",
   "chengdu-pandas-sichuan-table":
     "Begin with pandas, linger over tea and understand Chengdu one generous meal at a time.",
@@ -76,7 +76,7 @@ const sensoryDescriptions: Record<string, string> = {
  * 城市名只作为副标题出现，避免读者与搜索引擎自行推断路线含义。
  */
 const journeyHeadlines: Record<string, string> = {
-  "first-china-beautifully-paced": "The Great Wall, Terracotta Army & Shanghai",
+  "beijing-xian-shanghai-private-9-day-tour": "The Great Wall, Terracotta Army & Shanghai",
   "china-family-tour-with-pandas-12-day-private-tour":
     "Pandas, Warriors & the Great Wall, Made for Families",
   "luxury-yunnan-private-tour": "Yunnan's Tea Horse Road: Snow Mountains & Old Towns",
@@ -118,6 +118,32 @@ export const placeGlossary: Record<string, string> = {
   Guilin: "the river-and-limestone landscape of southern China",
   Guangzhou: "the southern trade capital known for Cantonese food",
   Shenzhen: "China's technology and innovation hub",
+  Leshan: "home of the Giant Buddha carved into a cliff above the river",
+  Tianjin: "a port city of European-style architecture near Beijing",
+  Chengde: "the Qing emperors' summer mountain retreat, a UNESCO World Heritage site",
+  Pingyao: "a walled Ming-dynasty town in Shanxi, a UNESCO World Heritage site",
+  Datong: "home of the Yungang Grottoes and the Hanging Temple",
+  Harbin: "the city of winter ice festivals and Russian-influenced architecture",
+  Shenyang: "the former Qing capital, with an imperial palace complex",
+  Dalian: "a relaxed coastal city in the northeast",
+  Hangzhou: "the city of West Lake and tea villages",
+  Suzhou: "the city of classical gardens and canals",
+  Nanjing: "a former capital with a Ming-dynasty city wall",
+  Huangshan: "the Yellow Mountains of granite peaks and sea-of-cloud views",
+  Luoyang: "an ancient capital and home of the Longmen Grottoes",
+  Wuhan: "a major Yangtze river city with a renowned food culture",
+  Xiamen: "a coastal city beside the car-free island of Gulangyu",
+  Hainan: "China's tropical island province of beaches and resorts",
+  Dali: "an old town beside Erhai Lake in Yunnan",
+  Lijiang: "an old town beneath Jade Dragon Snow Mountain in Yunnan",
+  "Shangri-La": "a Tibetan-culture town at high altitude in northwest Yunnan",
+  Kunming: "the mild-climate capital of Yunnan",
+  Lhasa: "the Tibetan capital and home of the Potala Palace",
+  Dunhuang: "the oasis town beside the Mogao Caves on the Silk Road",
+  Zhangye: "the Gansu city beside the colored Danxia landforms",
+  Yinchuan: "the capital of Ningxia, with desert landscapes and Hui Muslim culture",
+  Kashgar: "a Silk Road oasis city in western Xinjiang",
+  Turpan: "an oasis town in Xinjiang's desert basin",
 };
 
 export function getJourneyRouteLabel(item: JourneyCatalogItem) {
@@ -132,7 +158,17 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
  * 搜索结果标题：看点 + 天数。站点审计要求最终标题 30–70 字符（含品牌后缀），
  * 因此按"信息量从多到少"依次尝试，取第一个不超过 64 字符的写法（留出品牌后缀空间）。
  */
+/**
+ * 搜索主词页：标题必须直接包含目标搜索词（Private / 城市名 / 天数），
+ * 不能再用"看点优先"的写法，否则与"private Beijing Xi'an Shanghai tour"类查询失去匹配。
+ */
+const journeySeoTitleOverrides: Record<string, string> = {
+  "beijing-xian-shanghai-private-9-day-tour": "9-Day Private China Tour: Beijing, Xi'an & Shanghai",
+};
+
 export function getJourneySeoTitle(item: JourneyCatalogItem) {
+  const override = journeySeoTitleOverrides[item.slug];
+  if (override) return override;
   const headline = journeyHeadlines[item.slug] ?? getJourneyCardTitle(item);
   if (item.recommendedDaysMax <= 1) return headline;
   // 天数必须读行程自己的时长标签（如 "11 days / 10 nights"），推荐天数区间会写错。

@@ -31,7 +31,7 @@ The figures below are current planning benchmarks from AVIORA's published privat
 | Published private journey                                                                        | Length  |       Starting from | What the figure helps you compare                                                              |
 | ------------------------------------------------------------------------------------------------ | ------- | ------------------: | ---------------------------------------------------------------------------------------------- |
 | [Beijing and Great Wall](/tours/beijing-great-wall-private-5-day-tour)                           | 5 days  | US$1,690 per person | One hotel base, private airport/city transfers and core Beijing guiding                        |
-| [Beijing, Xi'an and Shanghai](/tours/first-china-beautifully-paced)                              | 9 days  | US$3,190 per person | Three cities, two handovers and the classic first-trip route                                   |
+| [Beijing, Xi'an and Shanghai](/tours/beijing-xian-shanghai-private-9-day-tour)                   | 9 days  | US$3,190 per person | Three cities, two handovers and the classic first-trip route                                   |
 | [Shanghai, Chengdu, Xi'an and Beijing](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) | 12 days |       Quote by date | A fourth city, pandas and three intercity connections                                          |
 | [China at an easier pace](/tours/china-at-an-easier-pace-12-day-private-tour)                    | 12 days | US$6,480 per person | Premium five-star hotels, first-class rail, a domestic flight and private cultural experiences |
 

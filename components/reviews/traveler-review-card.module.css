@@ -78,7 +78,7 @@
 
 .author span {
   color: #68716b;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   line-height: 0.9rem;
   white-space: nowrap;
 }
@@ -92,11 +92,11 @@
   display: inline-flex;
   flex: 0 0 auto;
   font: inherit;
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 720;
   gap: 3px;
   justify-content: center;
-  min-height: 26px;
+  min-height: 44px;
   padding: 2px 0 2px 3px;
   white-space: nowrap;
 }
@@ -152,7 +152,7 @@
 
 .dialogEyebrow {
   color: var(--color-forest);
-  font-size: 0.67rem;
+  font-size: 0.75rem;
   font-weight: 750;
   letter-spacing: 0.06em;
   line-height: 1rem;
@@ -220,7 +220,7 @@
   }
 
   .excerpt {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     line-height: 1.15rem;
     margin-block: 6px 7px;
     -webkit-line-clamp: 3;
@@ -239,16 +239,16 @@
   }
 
   .author strong {
-    font-size: 0.62rem;
+    font-size: 0.75rem;
   }
 
   .author span {
-    font-size: 0.57rem;
+    font-size: 0.75rem;
   }
 
   .cardFooter button {
-    font-size: 0.58rem;
-    min-height: 20px;
+    font-size: 0.75rem;
+    min-height: 44px;
   }
 
   .dialogContent {

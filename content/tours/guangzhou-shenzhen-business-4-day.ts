@@ -350,7 +350,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
   included: [
     "3 nights in selected premium business hotels based on four guests sharing two rooms: 2 nights in Guangzhou and 1 night in Shenzhen in the sample framework",
     "Private arrival, Guangzhou-to-Shenzhen and departure transfers, plus private vehicle service during the day-by-day windows named in the written proposal",
-    "English-speaking guide, interpreter or bilingual business assistant during the confirmed service periods, with the exact role and hours stated before booking",
+    "multilingual guide, interpreter or bilingual business assistant during the confirmed service periods, with the exact role and hours stated before booking",
     "Pre-trip agenda review covering flights, meetings, exhibition sessions, supplier addresses, hotel geography and transfer feasibility",
     "Market-to-kitchen Cantonese cultural experience with ingredients and hosted meal when selected in the confirmed itinerary",
     "Traditional Chinese medicine cultural introduction at a suitable confirmed institution when selected; educational scope only unless a licensed medical service is separately contracted",

@@ -1,7 +1,7 @@
 export const privateJourneyOffer = {
   id: "private-china-25",
   code: "AVIORA25",
-  active: true,
+  active: false,
   discountPercent: 25,
   terms:
     "25% off the published base journey price. The same group size, rooms and included services apply. Optional upgrades and separately quoted extras are excluded. Cannot be combined with other offers. Your specialist will confirm dates, availability and the final price in writing before booking.",

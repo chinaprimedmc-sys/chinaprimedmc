@@ -44,9 +44,9 @@ export const privateXianTerracottaDayTour: Tour = {
   visualStatus: "ready",
   publishedAt: "2026-08-21",
   updatedAt: "2026-10-04",
-  title: "Private Terracotta Warriors Day Tour, Seamlessly Handled",
+  title: "Private Terracotta Warriors Day Tour, Hotel to Hotel",
   subtitle:
-    "From your Xi'an hotel to passport-linked admission, the excavation pits, expert interpretation and a private return, one English-speaking guide and vehicle handle the day without shopping stops or jade-factory detours.",
+    "From your Xi'an hotel to passport-linked admission, the excavation pits, expert interpretation and a private return, one multilingual guide and vehicle handle the day without shopping stops or jade-factory detours.",
   duration: "1 Day · Private · About 8 hours",
   route: "Xi'an hotel · Terracotta Warriors · Xi'an Old City · Xi'an hotel",
   styles: ["Culture", "Family", "Senior-friendly", "Photography"],
@@ -60,7 +60,7 @@ export const privateXianTerracottaDayTour: Tour = {
   seo: {
     title: "Private Xi'an Terracotta Warriors Day Tour",
     description:
-      "Private Xi'an Terracotta Warriors day tour with hotel pickup, English-speaking guide, private driver, admission and a flexible Old City walk.",
+      "Private Xi'an Terracotta Warriors day tour with hotel pickup, multilingual guide, private driver, admission and a flexible Old City walk.",
     keywords: [
       "private Terracotta Warriors tour",
       "Xi'an Terracotta Warriors private day tour",
@@ -84,7 +84,7 @@ export const privateXianTerracottaDayTour: Tour = {
       },
       {
         label: "Included",
-        value: "Private vehicle, English-speaking guide and Terracotta Warriors admission",
+        value: "Private vehicle, multilingual guide and Terracotta Warriors admission",
         helper:
           "Pickup and return are included at hotels in Xi'an's main urban districts. Airport, railway-station and distant locations are priced before booking.",
       },
@@ -224,7 +224,7 @@ export const privateXianTerracottaDayTour: Tour = {
       title: "Terracotta Army in depth, then Xi'an's living Old City",
       destination: "Xi'an · Lintong · Xi'an",
       summary:
-        "Meet your private English-speaking guide and vehicle at the confirmed Xi'an hotel. Travel to the Emperor Qinshihuang's Mausoleum Site Museum, use the included passport-linked admission and explore the principal Terracotta Warriors pits with structured interpretation. After independent lunch time or a selected meal, return toward Xi'an for a flexible Old City walk near the Bell and Drum Towers, Muslim Quarter food lanes or City Wall exterior before a private hotel return. Exact sequencing follows ticket timing, traffic, crowds, weather and the group.",
+        "Meet your private multilingual guide and vehicle at the confirmed Xi'an hotel. Travel to the Emperor Qinshihuang's Mausoleum Site Museum, use the included passport-linked admission and explore the principal Terracotta Warriors pits with structured interpretation. After independent lunch time or a selected meal, return toward Xi'an for a flexible Old City walk near the Bell and Drum Towers, Muslim Quarter food lanes or City Wall exterior before a private hotel return. Exact sequencing follows ticket timing, traffic, crowds, weather and the group.",
       image: terracottaWarriors,
       hotel: "No overnight stay required · pickup and return at your Xi'an hotel",
       meals: ["Independent lunch time; selected Xi'an noodle lunch available as an upgrade"],
@@ -281,7 +281,7 @@ export const privateXianTerracottaDayTour: Tour = {
   included: [
     "Private pickup and return at a hotel in Xi'an's main urban districts; airport, railway-station, out-of-area and non-standard locations are quoted before booking",
     "Private air-conditioned vehicle with professional driver for the confirmed service window",
-    "Private English-speaking guide for the confirmed Terracotta Warriors and Old City day",
+    "Private multilingual guide for the confirmed Terracotta Warriors and Old City day",
     "Terracotta Warriors museum admission for the confirmed travelers",
     "Pre-trip review of hotel address, date, group details, passport-linked ticket information, walking preferences and route priorities",
     "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
@@ -405,7 +405,7 @@ export const privateXianTerracottaDayTour: Tour = {
     {
       question: "What does the US$628 starting price include?",
       answer:
-        "It is an indicative private-group starting price for four guests, equivalent to US$157 per guest. It includes pickup and return within Xi'an's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private English-speaking guide, Terracotta Warriors museum admission, a flexible central Xi'an Old City walk, bottled water and no compulsory shopping stops. Lunch, City Wall admission, clay making and other upgrades are not included.",
+        "It is an indicative private-group starting price for four guests, equivalent to US$157 per guest. It includes pickup and return within Xi'an's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Terracotta Warriors museum admission, a flexible central Xi'an Old City walk, bottled water and no compulsory shopping stops. Lunch, City Wall admission, clay making and other upgrades are not included.",
     },
     {
       question: "What is the published price for a smaller or larger group?",
@@ -415,7 +415,7 @@ export const privateXianTerracottaDayTour: Tour = {
     {
       question: "Is this a private tour or a shared group tour?",
       answer:
-        "It is private for your booking party, with your own vehicle, driver and English-speaking guide during the confirmed service window. The Terracotta Warriors museum and Xi'an's Old City remain public places, so other visitors will be present.",
+        "It is private for your booking party, with your own vehicle, driver and multilingual guide during the confirmed service window. The Terracotta Warriors museum and Xi'an's Old City remain public places, so other visitors will be present.",
     },
     {
       question: "Are Terracotta Warriors tickets included?",

@@ -5,7 +5,7 @@ export const xianCluster: DayTourCluster = {
   destination: "xian",
   label: "private Xi'an Terracotta Warriors day tour",
   service:
-    "The AVIORA day includes central Xi'an hotel pickup and return, a private vehicle and driver, an English-speaking guide, admission to the Terracotta Warriors museum, bottled water and a flexible central Xi'an Old City walk. The museum is public and shared with other visitors; the private element is your confirmed guide, vehicle and operating plan. No compulsory shopping stops are included.",
+    "The AVIORA day includes central Xi'an hotel pickup and return, a private vehicle and driver, a multilingual guide, admission to the Terracotta Warriors museum, bottled water and a flexible central Xi'an Old City walk. The museum is public and shared with other visitors; the private element is your confirmed guide, vehicle and operating plan. No compulsory shopping stops are included.",
   boundary:
     "Lunch, City Wall admission, bicycle rental, clay-making and additional service hours are separate unless confirmed in writing. Museum entry follows live identity, reservation, capacity and security rules. The Old City sequence changes with traffic, crowding and the group's pace. Check the linked product for the current price basis and inclusions.",
   citations: [
@@ -43,7 +43,7 @@ export const xianCluster: DayTourCluster = {
           title: "Why a guide changes what you notice",
           paragraphs: [
             "Many figures appear similar from a distance, but details and formation make more sense when someone explains what is known and what remains uncertain. A good interpretation separates excavated evidence, scholarly understanding and popular legend. It should not present every reconstruction or story as a settled fact.",
-            "A private English-speaking guide can adjust the depth to your interest, pause for questions and connect the museum with Qin-era history. Guiding does not mean private access to the pits. Other visitors, museum controls and permitted routes remain part of the visit.",
+            "A private multilingual guide can adjust the depth to your interest, pause for questions and connect the museum with Qin-era history. Guiding does not mean private access to the pits. Other visitors, museum controls and permitted routes remain part of the visit.",
           ],
         },
         {
@@ -203,7 +203,7 @@ export const xianCluster: DayTourCluster = {
         {
           title: "Confirm assistance boundaries",
           paragraphs: [
-            "An English-speaking guide can explain the route and coordinate ordinary transitions. Guiding does not include lifting, transfers from a wheelchair, medication management or personal care. If those are required, arrange a qualified companion and confirm that the venue and vehicle can support the equipment.",
+            "A multilingual guide can explain the route and coordinate ordinary transitions. Guiding does not include lifting, transfers from a wheelchair, medication management or personal care. If those are required, arrange a qualified companion and confirm that the venue and vehicle can support the equipment.",
           ],
           items: [
             "Museum access facilities verified for the travel date.",
@@ -252,14 +252,14 @@ export const xianCluster: DayTourCluster = {
         {
           title: "Separate core service from optional experiences",
           paragraphs: [
-            "The published base includes the Terracotta Warriors admission, private vehicle and driver, an English-speaking guide, central hotel pickup and return, bottled water and the central Old City walk. This is the scope to compare first, after checking the date-specific ticket confirmation.",
+            "The published base includes the Terracotta Warriors admission, private vehicle and driver, a multilingual guide, central hotel pickup and return, bottled water and the central Old City walk. This is the scope to compare first, after checking the date-specific ticket confirmation.",
             "Lunch, City Wall admission, bicycle rental, clay making and additional hours are separate unless selected. A culinary stop or workshop may be a worthwhile choice, but should be presented as an option with its own price and time impact rather than quietly folded into an unclear headline.",
           ],
         },
         {
           title: "Why transfer and guide roles both matter",
           paragraphs: [
-            "The museum is outside central Xi'an. A driver handles the road journey; the English-speaking guide handles interpretation and the agreed visit. A driver-only service may not include museum accompaniment or historical explanation, so confirm roles rather than treating every private vehicle as a guided tour.",
+            "The museum is outside central Xi'an. A driver handles the road journey; the multilingual guide handles interpretation and the agreed visit. A driver-only service may not include museum accompaniment or historical explanation, so confirm roles rather than treating every private vehicle as a guided tour.",
             "The base vehicle operates for a confirmed service window. Traffic, extended museum time or a late meal can affect return and overtime. Ask how additional hours are calculated before booking, especially if you have an evening train or performance reservation.",
           ],
         },

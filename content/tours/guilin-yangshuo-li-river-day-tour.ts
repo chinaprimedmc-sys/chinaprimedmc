@@ -96,7 +96,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
   },
   overview: {
     pitch:
-      "The cruise is the famous part; the difficult part is everything around it. Different ports, ticket categories, morning pickup times, luggage, the one-way arrival in Yangshuo and the question of how to get back to Guilin can turn a simple-looking day into several separate bookings. AVIORA connects those decisions in one private operating plan. Your vehicle and English-speaking guide collect you from a confirmed central Guilin hotel, the standard four-star public cruise ticket is arranged, and your finish is selected before payment: arrive at a Yangshuo hotel with your luggage, or continue by private vehicle back to Guilin. The cruise vessel itself is shared with other passengers; the guide, road transport, coordination and Yangshuo chapter are private for your party.",
+      "The cruise is the famous part; the difficult part is everything around it. Different ports, ticket categories, morning pickup times, luggage, the one-way arrival in Yangshuo and the question of how to get back to Guilin can turn a simple-looking day into several separate bookings. AVIORA connects those decisions in one private operating plan. Your vehicle and multilingual guide collect you from a confirmed central Guilin hotel, the standard four-star public cruise ticket is arranged, and your finish is selected before payment: arrive at a Yangshuo hotel with your luggage, or continue by private vehicle back to Guilin. The cruise vessel itself is shared with other passengers; the guide, road transport, coordination and Yangshuo chapter are private for your party.",
     facts: [
       {
         label: "Time",
@@ -138,7 +138,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
       description:
         "Your final operating message states the pickup time, guide contact, confirmed cruise category, expected port, luggage plan and selected finish. The exact morning is built backwards from the live sailing rather than a generic brochure time.",
       see: "A private vehicle at your confirmed Guilin hotel and a practical route to the port selected for the booked sailing.",
-      do: "Meet your private English-speaking guide, keep passports available and hand over any confirmed transfer luggage before departure.",
+      do: "Meet your private multilingual guide, keep passports available and hand over any confirmed transfer luggage before departure.",
       feel: "That a one-way river journey has been turned into one connected day rather than a chain of uncertain transfers.",
     },
     {
@@ -222,7 +222,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     {
       title: "A four-star Li River cruise without the booking maze",
       description:
-        "The public cruise ticket, hotel pickup, port transfer and private English-speaking guide are connected under one operating plan.",
+        "The public cruise ticket, hotel pickup, port transfer and private multilingual guide are connected under one operating plan.",
       category: "Nature",
       image: rainyLiRiver,
     },
@@ -247,7 +247,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
       title: "Guilin hotel to the Li River, then finish the day your way",
       destination: "Guilin · Li River · Yangshuo",
       summary:
-        "Meet your private English-speaking guide and vehicle at the confirmed central Guilin hotel. Transfer to the port assigned for the booked sailing and board the included standard four-star public Li River cruise. Travel downstream through the karst landscape to Yangshuo, then reunite with the private vehicle for a short countryside-oriented land chapter. Finish at a confirmed Yangshuo hotel with normal luggage transferred by road, or select the longer private return to your Guilin hotel. Exact port, sailing, vessel, timing, ticket inclusions and river conditions remain date-specific.",
+        "Meet your private multilingual guide and vehicle at the confirmed central Guilin hotel. Transfer to the port assigned for the booked sailing and board the included standard four-star public Li River cruise. Travel downstream through the karst landscape to Yangshuo, then reunite with the private vehicle for a short countryside-oriented land chapter. Finish at a confirmed Yangshuo hotel with normal luggage transferred by road, or select the longer private return to your Guilin hotel. Exact port, sailing, vessel, timing, ticket inclusions and river conditions remain date-specific.",
       image: rainyLiRiver,
       hotel:
         "No overnight stay included · finish at a confirmed Yangshuo hotel or return to your central Guilin hotel",
@@ -307,7 +307,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
   included: [
     "Private pickup at a hotel in Guilin's main urban area; airports, railway stations, distant hotels and non-standard addresses are quoted before booking",
     "Private air-conditioned vehicle and professional driver for the confirmed road-service window",
-    "Private English-speaking guide for the confirmed hotel, port, cruise and Yangshuo service window",
+    "Private multilingual guide for the confirmed hotel, port, cruise and Yangshuo service window",
     "Standard adult four-star public Li River cruise ticket for the confirmed travelers",
     "The standard onboard meal only when it is part of the confirmed cruise ticket; exact format is stated before the day",
     "A short private Yangshuo countryside-oriented land chapter, adjusted to the actual arrival, weather and selected finish",
@@ -433,7 +433,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     {
       question: "What does the US$688 starting price include?",
       answer:
-        "It is an indicative private-group starting price for four guests, equivalent to US$172 per guest, for the version that starts at a central Guilin hotel and ends at a confirmed Yangshuo hotel. It includes private pickup and port transfer, a private English-speaking guide, standard four-star public Li River cruise tickets, the standard onboard meal only when attached to the confirmed tickets, a short private Yangshuo countryside chapter, normal pre-confirmed luggage transfer to the Yangshuo hotel, bottled water and no compulsory shopping stops.",
+        "It is an indicative private-group starting price for four guests, equivalent to US$172 per guest, for the version that starts at a central Guilin hotel and ends at a confirmed Yangshuo hotel. It includes private pickup and port transfer, a private multilingual guide, standard four-star public Li River cruise tickets, the standard onboard meal only when attached to the confirmed tickets, a short private Yangshuo countryside chapter, normal pre-confirmed luggage transfer to the Yangshuo hotel, bottled water and no compulsory shopping stops.",
     },
     {
       question: "How much is the version that returns to Guilin?",
@@ -448,7 +448,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     {
       question: "Is the Li River cruise private?",
       answer:
-        "No. The included four-star cruise is a scheduled public passenger cruise shared with other travelers. Your English-speaking guide, road vehicle, port coordination, luggage plan and Yangshuo land arrangements are private for your booking party. A private boat charter is not included or implied.",
+        "No. The included four-star cruise is a scheduled public passenger cruise shared with other travelers. Your multilingual guide, road vehicle, port coordination, luggage plan and Yangshuo land arrangements are private for your booking party. A private boat charter is not included or implied.",
     },
     {
       question: "Can we take our luggage from Guilin to Yangshuo?",

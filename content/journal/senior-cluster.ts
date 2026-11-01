@@ -295,7 +295,7 @@ export const growthLaunchArticles: JournalArticle[] = [
       "Share your dates, travelers, hotel expectations and preferred route. We will separate the fixed costs, the choices and the upgrades before quoting.",
     conversionLabel: "Scope My China Budget",
     preference: "china-trip-budget",
-    journey: "first-china-beautifully-paced",
+    journey: "beijing-xian-shanghai-private-9-day-tour",
   }),
   article({
     slug: "private-china-tour-vs-self-guided",
@@ -423,7 +423,7 @@ export const growthLaunchArticles: JournalArticle[] = [
       "Send your flight options and must-see experiences. We will test Beijing-first, Shanghai-first and open-jaw versions before you book.",
     conversionLabel: "Compare My Gateway Options",
     preference: "beijing-shanghai-gateway",
-    journey: "first-china-beautifully-paced",
+    journey: "beijing-xian-shanghai-private-9-day-tour",
     destinations: ["beijing", "shanghai"],
   }),
   article({

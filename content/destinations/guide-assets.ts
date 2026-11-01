@@ -4,7 +4,7 @@ function image(src: string, alt: string, width = 1600, height = 1067): MediaAsse
   return { src, alt, width, height };
 }
 
-const firstChina = "/tours/first-china-beautifully-paced";
+const firstChina = "/tours/beijing-xian-shanghai-private-9-day-tour";
 const xianBeijing = "/tours/xian-beijing-private-journey";
 const southwest = "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour";
 const chengdu = "/tours/chengdu-pandas";

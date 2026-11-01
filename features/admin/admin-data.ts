@@ -147,7 +147,7 @@ export const inquiries = [
     name: "Sarah Miller",
     country: "United States",
     email: "sarah@example.com",
-    source: "/tours/first-china-beautifully-paced",
+    source: "/tours/beijing-xian-shanghai-private-9-day-tour",
     interest: "11 天首次访华家庭行程",
     submittedAt: "今天 09:42",
     status: "新询盘",

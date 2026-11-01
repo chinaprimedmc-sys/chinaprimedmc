@@ -34,7 +34,7 @@ The current published basis includes:
 
 - Eleven nights in selected premium five-star family hotels
 - Two rooms for the family on the stated occupancy basis
-- Private family-ready English-speaking guides on confirmed touring days
+- Private family-ready multilingual guides on confirmed touring days
 - Private vehicles sized for the family and normal luggage
 - Listed entrance tickets
 - Beijing-to-Xi'an and Xi'an-to-Chengdu first-class high-speed rail

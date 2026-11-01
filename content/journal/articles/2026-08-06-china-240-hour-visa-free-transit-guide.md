@@ -24,7 +24,7 @@ suggested_internal_links:
     "/faq",
     "/destinations/beijing",
     "/destinations/shanghai",
-    "/tours/first-china-beautifully-paced",
+    "/tours/beijing-xian-shanghai-private-9-day-tour",
     "/start-planning",
   ]
 sources_verified_at: "2026-08-06"

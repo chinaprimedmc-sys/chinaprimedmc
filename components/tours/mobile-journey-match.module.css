@@ -110,7 +110,7 @@
   }
   .entryButton small {
     color: #53816e;
-    font-size: 10px;
+    font-size: 0.75rem;
     font-weight: 800;
   }
   .browseButton {
@@ -167,7 +167,7 @@
   }
   .returnEyebrow {
     color: #b8f0d1;
-    font-size: 11px;
+    font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -383,7 +383,7 @@
   }
   .optionIndex {
     color: rgba(220, 239, 230, 0.72);
-    font-size: 11px;
+    font-size: 0.75rem;
     font-weight: 800;
   }
   .options button[aria-pressed="true"] .optionIndex {
@@ -513,7 +513,7 @@
     background: linear-gradient(145deg, #eef3f0, #e1eae5);
   }
   .resultPlaceholder small {
-    font-size: 11px;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -635,7 +635,7 @@
     place-content: center;
     text-align: center;
     color: #48645a;
-    font-size: 10px;
+    font-size: 0.75rem;
     font-weight: 700;
     line-height: 1.25;
     letter-spacing: 0.04em;

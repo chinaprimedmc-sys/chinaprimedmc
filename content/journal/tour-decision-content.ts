@@ -477,7 +477,7 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
       {
         title: "What nine days can do well",
         paragraphs: [
-          "The [9-day Beijing, Xi'an and Shanghai private tour](/tours/first-china-beautifully-paced) creates a clean historical arc: Beijing for imperial sites and the Great Wall, Xi'an for the first emperor and city-wall heritage, then Shanghai for the modern waterfront and neighborhood life. High-speed rail connects the city centers without adding a fourth hotel.",
+          "The [9-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-9-day-tour) creates a clean historical arc: Beijing for imperial sites and the Great Wall, Xi'an for the first emperor and city-wall heritage, then Shanghai for the modern waterfront and neighborhood life. High-speed rail connects the city centers without adding a fourth hotel.",
           "Nine days is enough when flights are sensible and priorities are disciplined. It is not enough for every Beijing museum, a deep Xi'an food program and multiple Shanghai day trips. The route works because each city has a clear role and optional experiences remain genuinely optional.",
         ],
       },
@@ -593,7 +593,7 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
         title: "Why two nights is usually the better value",
         paragraphs: [
           "Two nights let Xi'an function as a destination. Arrive, settle into the city, give the Terracotta Warriors a dedicated morning and protect another half-day for the city wall, Great Mosque and Muslim Quarter context, a museum or a slower local experience. The additional night reduces the chance that one delay removes the reason you traveled there.",
-          "The [six-day Xi'an and Beijing private journey](/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour) begins in Xi'an and finishes in Beijing, avoiding unnecessary backtracking. The [nine-day first-China route](/tours/first-china-beautifully-paced) connects Beijing, Xi'an and Shanghai in a forward-moving sequence. Both are stronger than using Beijing as the base for a long out-and-back day.",
+          "The [six-day Xi'an and Beijing private journey](/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour) begins in Xi'an and finishes in Beijing, avoiding unnecessary backtracking. The [nine-day first-China route](/tours/beijing-xian-shanghai-private-9-day-tour) connects Beijing, Xi'an and Shanghai in a forward-moving sequence. Both are stronger than using Beijing as the base for a long out-and-back day.",
         ],
       },
       {

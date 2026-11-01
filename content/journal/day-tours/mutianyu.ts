@@ -5,7 +5,7 @@ export const mutianyuCluster: DayTourCluster = {
   destination: "beijing",
   label: "private Mutianyu Great Wall day tour",
   service:
-    "AVIORA's Mutianyu day includes a private English-speaking guide, a private vehicle and driver, confirmed central Beijing hotel pickup and return, Great Wall admission and the scenic-area shuttle. The planning conversation covers your hotel, ticket details and walking preferences before the operating message is issued. There are no compulsory shopping stops.",
+    "AVIORA's Mutianyu day includes a private multilingual guide, a private vehicle and driver, confirmed central Beijing hotel pickup and return, Great Wall admission and the scenic-area shuttle. The planning conversation covers your hotel, ticket details and walking preferences before the operating message is issued. There are no compulsory shopping stops.",
   boundary:
     "Cable cars, chairlifts, the toboggan and lunch are not automatically included. Airports, distant hotels and additional service hours require a separate quote. Private guiding does not make the Wall private, guarantee a quiet visit or override weather and safety decisions. Review the product's current inclusions rather than treating a photograph as a promise of access.",
   citations: [

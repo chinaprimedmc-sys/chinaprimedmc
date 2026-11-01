@@ -1,0 +1,120 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+import { SiteFooter } from "@/components/footer/site-footer";
+import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { siteConfig } from "@/config/site";
+import { founder } from "@/content/founder";
+import { JsonLd } from "@/lib/seo/json-ld";
+import { createMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema } from "@/lib/seo/schema";
+
+import styles from "./founder.module.css";
+
+const description =
+  "A message from Guohui Shi, founder of AVIORA China, on why private, tailor-made travel and real hospitality shape every journey in China.";
+
+export const metadata: Metadata = createMetadata({
+  title: "Founder's Story: Guohui Shi on Travel in China",
+  description,
+  path: founder.path,
+  type: "article",
+});
+
+export default function FounderPage() {
+  const url = new URL(founder.path, siteConfig.url).toString();
+  const personId = `${siteConfig.url}/#founder`;
+
+  return (
+    <main className={styles.page}>
+      <JsonLd
+        id="founder-breadcrumb-schema"
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About AVIORA", path: "/about" },
+          { name: "Founder's story", path: founder.path },
+        ])}
+      />
+      <JsonLd
+        id="founder-profile-schema"
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          "@id": `${url}#profilepage`,
+          url,
+          name: "Founder's Story: Guohui Shi",
+          description,
+          inLanguage: "en-US",
+          isPartOf: { "@id": `${siteConfig.url}/#website` },
+          publisher: { "@id": `${siteConfig.url}/#organization` },
+          mainEntity: {
+            "@type": "Person",
+            "@id": personId,
+            name: founder.name,
+            jobTitle: founder.jobTitle,
+            worksFor: { "@id": `${siteConfig.url}/#organization` },
+            description:
+              "Founder of AVIORA China, a licensed China-based operator of private, tailor-made journeys for international travelers.",
+          },
+        }}
+      />
+
+      <SiteNavigation />
+
+      <header className={styles.hero}>
+        <p className={styles.eyebrow}>The person behind the journey</p>
+        <h1>
+          A message from <em>our founder.</em>
+        </h1>
+        <p className={styles.byline}>
+          <strong>{founder.name}</strong>
+          {founder.jobTitle}, {founder.organization}
+        </p>
+      </header>
+
+      <article className={styles.letter}>
+        <section className={`${styles.body} ${styles.lead}`} aria-label="Introduction">
+          <span aria-hidden="true" />
+          <div className={styles.text}>
+            {founder.intro.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+
+        {founder.sections.map((section) => (
+          <section key={section.title} className={styles.body}>
+            <h2>{section.title}</h2>
+            <div className={styles.text}>
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+              ))}
+            </div>
+          </section>
+        ))}
+      </article>
+
+      <section className={styles.closing} aria-label="Closing">
+        <blockquote>{founder.closingLine}</blockquote>
+        <p className={styles.signoff}>
+          {founder.welcome}
+          <strong>{founder.name}</strong>
+          <span>
+            {founder.jobTitle}, {founder.organization}
+          </span>
+          <span>{founder.tagline}</span>
+        </p>
+        <div className={styles.actions}>
+          <Link className={styles.button} href="/start-planning?source=founder-story">
+            Plan my journey
+          </Link>
+          <Link className={styles.textLink} href="/about">
+            About AVIORA
+          </Link>
+        </div>
+      </section>
+
+      <SiteFooter />
+    </main>
+  );
+}

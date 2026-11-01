@@ -18,7 +18,7 @@ export const metadata: Metadata = createMetadata({
 });
 
 const journeySlugs = [
-  "first-china-beautifully-paced",
+  "beijing-xian-shanghai-private-9-day-tour",
   "beijing-xian-chengdu-shanghai-private-11-day-tour",
   "china-at-an-easier-pace-12-day-private-tour",
 ] as const;

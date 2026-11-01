@@ -48,8 +48,8 @@ export default function CompanyPage() {
           <p className={styles.eyebrow}>Company &amp; Licensing</p>
           <h1>Know who is behind your China journey.</h1>
           <p className={styles.lead}>
-            AVIORA China Travel, also known as AVIORA Travel, is the guest-facing travel brand of
-            China Prime DMC. Both operate through {siteConfig.operator.legalName} (
+            AVIORA China Travel, also known as AVIORA Travel, is a travel brand for individual
+            international travelers. It is operated by {siteConfig.operator.legalName} (
             {siteConfig.operator.englishReferenceName}), the China-registered operating company.
           </p>
           <p className={styles.summary}>

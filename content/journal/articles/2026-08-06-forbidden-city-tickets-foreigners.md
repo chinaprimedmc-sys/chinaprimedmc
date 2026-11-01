@@ -23,7 +23,7 @@ suggested_internal_links:
   [
     "/destinations/beijing",
     "/tours/beijing-great-wall-private-5-day-tour",
-    "/tours/first-china-beautifully-paced",
+    "/tours/beijing-xian-shanghai-private-9-day-tour",
     "/faq",
     "/start-planning",
   ]
@@ -96,7 +96,7 @@ Families may need a shorter narrative and a definite lunch; photographers may pr
 
 Do not pair the Forbidden City with the Great Wall. Each deserves its own day and has different transport demands. Temple of Heaven can work on another imperial-city day, while a hutong or quieter neighborhood experience can provide a useful change in scale.
 
-The [five-day Beijing and Great Wall itinerary](/tours/beijing-great-wall-private-5-day-tour) separates the Forbidden City, Mutianyu Great Wall and other imperial sites into a clearer rhythm. The [nine-day first-China route](/tours/first-china-beautifully-paced) shows how Beijing can lead into Xi’an and Shanghai without compressing the capital.
+The [five-day Beijing and Great Wall itinerary](/tours/beijing-great-wall-private-5-day-tour) separates the Forbidden City, Mutianyu Great Wall and other imperial sites into a clearer rhythm. The [nine-day first-China route](/tours/beijing-xian-shanghai-private-9-day-tour) shows how Beijing can lead into Xi’an and Shanghai without compressing the capital.
 
 ## Common booking mistakes
 

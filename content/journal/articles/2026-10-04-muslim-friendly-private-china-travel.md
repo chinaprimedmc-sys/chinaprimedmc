@@ -53,7 +53,7 @@ A private guide and vehicle make timing easier to adapt, but they cannot change 
 
 ## What AVIORA’s private service changes
 
-The service is designed around one agreed operating brief: traveler count, hotel addresses, meal standard, prayer priorities, guide and driver coverage, attraction timing, transfer boundaries and optional experiences. A private English-speaking guide interprets the day and helps with local communication; a professional driver handles road transport. A China-based team coordinates the itinerary and confirms the practical details that need a supplier response.
+The service is designed around one agreed operating brief: traveler count, hotel addresses, meal standard, prayer priorities, guide and driver coverage, attraction timing, transfer boundaries and optional experiences. A private multilingual guide interprets the day and helps with local communication; a professional driver handles road transport. A China-based team coordinates the itinerary and confirms the practical details that need a supplier response.
 
 This is different from putting “Muslim-friendly” on a standard group departure and leaving each guest to find meals and prayer space independently. It is also more specific than simply hiring a car. For example, the published [Great Wall to Desert Stars private journey](/tours/muslim-friendly-china-tour-great-wall-desert-stars) is built around Muslim travelers and can be discussed against your actual food, prayer and family requirements. The route still needs date-specific confirmation; the label alone does not certify every restaurant or guarantee a particular prayer facility.
 

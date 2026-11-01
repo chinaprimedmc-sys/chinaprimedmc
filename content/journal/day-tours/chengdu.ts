@@ -5,7 +5,7 @@ export const chengduCluster: DayTourCluster = {
   destination: "chengdu",
   label: "private Chengdu Panda Base day tour",
   service:
-    "AVIORA's published service includes central Chengdu hotel pickup and return, private vehicle and driver, an English-speaking guide, standard admission for confirmed travelers, bottled water and a final operating message. The plan reviews the entry record, walking preferences and family or mobility needs. No compulsory shopping stops and no animal-contact promises are part of the service.",
+    "AVIORA's published service includes central Chengdu hotel pickup and return, private vehicle and driver, a multilingual guide, standard admission for confirmed travelers, bottled water and a final operating message. The plan reviews the entry record, walking preferences and family or mobility needs. No compulsory shopping stops and no animal-contact promises are part of the service.",
   boundary:
     "Panda visibility and outdoor activity are not guaranteed. Internal electric cart, lunch, tea, cooking class and performance are optional; airport transfers and additional hours require a separate quote. The base controls animal welfare and public access. Use its live visitor notices for entry, seasonal hours and closures, and review the product for the current price basis.",
   citations: [

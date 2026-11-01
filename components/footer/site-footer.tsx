@@ -21,7 +21,12 @@ const consumerFooterGroups = [
     title: "Explore",
     items: [
       { label: "Private Journeys", href: "/tours" },
+      { label: "Tailor-Made Tours", href: "/tailor-made-china-tours" },
+      { label: "Fixed Itineraries", href: "/fixed-itinerary-china-tours" },
+      { label: "Private Day Tours", href: "/private-china-day-tours" },
+      { label: "Guide & Driver", href: "/private-guide-and-driver-china" },
       { label: "Destinations", href: "/destinations" },
+      { label: "All of China", href: "/china-destinations" },
       { label: "China Travel Journal", href: "/journal" },
     ],
   },
@@ -41,7 +46,6 @@ const consumerFooterGroups = [
       { label: "Editorial & Verification Policy", href: "/editorial-policy" },
       { label: "Guest feedback & review policy", href: "/reviews" },
       { label: "The AVIORA Standard", href: "/#aviora-standard" },
-      { label: "For Travel Trade", href: "/china-dmc" },
     ],
   },
 ] as const;
@@ -177,6 +181,7 @@ export function SiteFooter({
             <Link href="/cookies">Cookies</Link>
             <CookiePreferencesButton className={styles.cookiePreferences} />
             <Link href="/terms">Booking Terms</Link>
+            {trade ? null : <Link href="/china-dmc">For travel trade</Link>}
           </div>
         </div>
         <address className={styles.address}>{siteConfig.operator.address.full}</address>

@@ -166,7 +166,7 @@ export async function getPublicHomePage() {
         eyebrow: "A defining first route",
         title: "First trip to China",
         description: "Beijing, Xi'an and Shanghai with private support and a comfortable pace.",
-        href: "/tours/first-china-beautifully-paced",
+        href: "/tours/beijing-xian-shanghai-private-9-day-tour",
         image: destinationImages.beijing,
       },
       {

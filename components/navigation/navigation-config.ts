@@ -39,19 +39,32 @@ export const navigationConfig = {
       id: "journeys",
       label: "JOURNEYS",
       href: "/tours",
-      activePrefixes: ["/tours"],
+      activePrefixes: [
+        "/tours",
+        "/tailor-made-china-tours",
+        "/fixed-itinerary-china-tours",
+        "/private-china-day-tours",
+        "/private-guide-and-driver-china",
+      ],
       columns: [
         {
           links: [
             { label: "All Journeys", href: "/tours" },
-            { label: "Beijing Journeys", href: "/tours?q=Beijing#journey-catalog" },
-            { label: "Classic China", href: "/tours?style=first-trip#journey-catalog" },
+            { label: "Tailor-Made Tours", href: "/tailor-made-china-tours" },
+            { label: "Fixed Itineraries", href: "/fixed-itinerary-china-tours" },
+          ],
+        },
+        {
+          links: [
+            { label: "Private Day Tours", href: "/private-china-day-tours" },
+            { label: "Guide & Driver", href: "/private-guide-and-driver-china" },
+            { label: "Family Journeys", href: "/tours?style=family#journey-catalog" },
           ],
         },
         {
           links: [
             { label: "Multi-City Journeys", href: "/tours?scope=multi-city#journey-catalog" },
-            { label: "Family Journeys", href: "/tours?style=family#journey-catalog" },
+            { label: "Classic China", href: "/tours?style=first-trip#journey-catalog" },
             { label: "Cultural Journeys", href: "/tours?style=culture#journey-catalog" },
           ],
         },
@@ -68,23 +81,32 @@ export const navigationConfig = {
     {
       id: "destinations",
       label: "DESTINATIONS",
-      href: "/destinations",
-      activePrefixes: ["/destinations"],
+      href: "/china-destinations",
+      activePrefixes: ["/destinations", "/china-destinations"],
       columns: [
+        {
+          links: [
+            { label: "All of China", href: "/china-destinations" },
+            { label: "North China", href: "/china-destinations/north-china" },
+            { label: "East China", href: "/china-destinations/east-china" },
+            { label: "Central China", href: "/china-destinations/central-china" },
+          ],
+        },
+        {
+          links: [
+            { label: "South China", href: "/china-destinations/south-china" },
+            { label: "Southwest China", href: "/china-destinations/southwest-china" },
+            { label: "Northwest China", href: "/china-destinations/northwest-china" },
+            { label: "Northeast China", href: "/china-destinations/northeast-china" },
+          ],
+        },
         {
           links: [
             { label: "Beijing", href: "/destinations/beijing" },
             { label: "Xi'an", href: "/destinations/xian" },
-          ],
-        },
-        {
-          links: [
             { label: "Shanghai", href: "/destinations/shanghai" },
             { label: "Chengdu", href: "/destinations/chengdu" },
           ],
-        },
-        {
-          links: [{ label: "All Destinations", href: "/destinations" }],
         },
       ],
     },
@@ -105,6 +127,7 @@ export const navigationConfig = {
           links: [
             { label: "Private Transportation", href: "/about#the-standard" },
             { label: "Hotels & Dining", href: "/about#the-standard" },
+            { label: "Founder's Story", href: "/about/founder" },
             { label: "About AVIORA China", href: "/about" },
           ],
         },
@@ -136,22 +159,6 @@ export const navigationConfig = {
               href: "/journal/china-high-speed-train-foreigners",
             },
             { label: "Journal", href: "/journal" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "travel-trade",
-      label: "TRAVEL TRADE",
-      href: "/china-dmc",
-      activePrefixes: ["/china-dmc"],
-      secondary: true,
-      columns: [
-        {
-          links: [
-            { label: "For Travel Advisors", href: "/china-dmc" },
-            { label: "China DMC Services", href: "/china-dmc#capabilities" },
-            { label: "Partner With Us", href: "/china-dmc#trade-brief" },
           ],
         },
       ],

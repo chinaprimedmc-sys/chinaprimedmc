@@ -10,7 +10,7 @@ Dynamic route:
 
 Example:
 
-`/tours/first-china-beautifully-paced`
+`/tours/beijing-xian-shanghai-private-9-day-tour`
 
 Template order:
 

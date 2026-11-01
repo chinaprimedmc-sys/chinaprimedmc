@@ -77,7 +77,7 @@ test("offer claims can pass through the existing inquiry record", () => {
   };
   const result = inquirySchema.safeParse({
     ...base,
-    journeySlug: "first-china-beautifully-paced",
+    journeySlug: "beijing-xian-shanghai-private-9-day-tour",
     campaignId: "private-china-25",
     notes: "Offer claimed: AVIORA25 (25% off)",
   });

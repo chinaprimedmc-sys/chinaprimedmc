@@ -497,7 +497,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
   included: [
     "9 nights based on four guests sharing two rooms: 2 nights in a selected luxury Chengdu hotel and 7 nights in a selected Qingcheng Mountain luxury retreat",
     "Daily hotel breakfast plus the seven private, hosted or resort lunches and dinners identified in the confirmed proposal",
-    "Private English-speaking guide or interpreter, private vehicle and airport support on the confirmed service days",
+    "Private multilingual guide or interpreter, private vehicle and airport support on the confirmed service days",
     "Private Chengdu-to-Qingcheng transfer and private Qingcheng-to-Chengdu airport transfer",
     "AVIORA Quiet Journey Standard: pre-trip rhythm profile, one hotel change, protected unscheduled hours, room and meal requirements, and China-based support",
     "Private tea-house chapter in Chengdu, private tai chi sessions, Daoist cultural interpretation, private tea session, Dujiangyan half-day and privately guided Qingcheng Mountain day as confirmed",

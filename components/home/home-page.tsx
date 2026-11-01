@@ -33,9 +33,118 @@ import { HomeSentence } from "./home-sentence";
 import styles from "./home.module.css";
 
 const featuredSlugs = [
-  "first-china-beautifully-paced",
+  "beijing-xian-shanghai-private-9-day-tour",
   "chengdu-chongqing-zhangjiajie-private-11-day-tour",
   "luxury-yunnan-private-tour",
+] as const;
+
+const waysToTravel = [
+  {
+    label: "Tailor-made",
+    title: "Your China, designed for you.",
+    body: "Tell us what you love. We build the route, the hotels and the pace, from the great sights to the China most visitors never see.",
+    cta: "Design my trip",
+    href: "/tailor-made-china-tours",
+    image: "/tours/luxury-yunnan-private-tour/erhai-landscape.jpg",
+    alt: "Erhai Lake under a bright blue sky in Dali, Yunnan",
+  },
+  {
+    label: "Fixed itineraries",
+    title: "Short on time? It is already planned.",
+    body: "Choose a route we have already refined. Hotels, guides and transfers are set, so there is nothing left to work out.",
+    cta: "See ready routes",
+    href: "/fixed-itinerary-china-tours",
+    image: "/tours/first-china-beautifully-paced/beijing-temple-of-heaven-reflection.webp",
+    alt: "The Temple of Heaven reflected in still water in Beijing",
+  },
+  {
+    label: "Private day tours",
+    title: "One day, handled properly.",
+    body: "A private guide takes care of the tickets, the queues and the language, so you simply enjoy the Great Wall, the Terracotta Army or the pandas.",
+    cta: "Plan a day",
+    href: "/private-china-day-tours",
+    image: "/tours/mutianyu-private-day-tour/01-mutianyu-great-wall-autumn-panorama.webp",
+    alt: "The Mutianyu section of the Great Wall in autumn",
+  },
+  {
+    label: "Guide and driver",
+    title: "Booked it yourself? Add a local.",
+    body: "Already have your flights and hotels? Bring in a guide who speaks your language and a driver who knows the road.",
+    cta: "See the service",
+    href: "/private-guide-and-driver-china",
+    image: "/tours/private-chengdu-panda-day-tour/02-chengdu-peoples-park-teahouse.webp",
+    alt: "A teahouse courtyard in Chengdu's People's Park",
+  },
+] as const;
+
+const services = [
+  {
+    title: "Tailor-made private journeys",
+    body: (
+      <>
+        Whether you want to explore one destination in depth or travel across China, we design your
+        itinerary around your <strong>interests, travel dates and preferred pace</strong>. Every
+        journey is <strong>planned exclusively for your party</strong>, with the flexibility to make
+        the most of your time in China.
+      </>
+    ),
+  },
+  {
+    title: "Private guides and drivers",
+    body: (
+      <>
+        Explore with a <strong>local guide in your language</strong>, in English, French, German,
+        Spanish, Russian, Italian, Japanese, Chinese or Thai, and a{" "}
+        <strong>dedicated private driver</strong>. Your sightseeing arrangements and ground
+        transportation are organized around your party, with{" "}
+        <strong>private airport and train station transfers</strong> to make getting around easier.
+      </>
+    ),
+  },
+  {
+    title: "Hotels, transport and tickets",
+    body: (
+      <>
+        We arrange <strong>hotel stays, domestic flights and train tickets</strong>, as well as
+        admission tickets for the sights and experiences on your itinerary. All arrangements and
+        inclusions are <strong>clearly outlined before you confirm</strong> your trip. International
+        flights are not included.
+      </>
+    ),
+  },
+  {
+    title: "Day tours and local experiences",
+    body: (
+      <>
+        Discover iconic sights such as the <strong>Great Wall</strong>, the{" "}
+        <strong>Terracotta Army</strong> and Chengdu&apos;s <strong>giant pandas</strong>. Go beyond
+        the usual sightseeing with experiences that bring you closer to local life, from regional
+        cooking and tea to traditional crafts.
+      </>
+    ),
+  },
+  {
+    title: "Travel planned around your needs",
+    body: (
+      <>
+        From family travel and a more relaxed pace for older travelers to{" "}
+        <strong>halal dining options</strong> and <strong>time for daily prayers</strong>, we take
+        your group&apos;s needs into account from the very beginning. These arrangements are{" "}
+        <strong>built into your itinerary</strong>, not added as an afterthought.
+      </>
+    ),
+  },
+  {
+    title: "Support throughout your trip",
+    body: (
+      <>
+        Our <strong>China-based team</strong> is available on{" "}
+        <strong>WhatsApp throughout your journey</strong>. From flight delays and transfer changes
+        to unexpected adjustments along the way, we&apos;re here to help coordinate things and keep
+        your trip on track.
+      </>
+    ),
+  },
 ] as const;
 
 const promises = [
@@ -196,14 +305,20 @@ export function HomePage({ planningHref }: { planningHref: string }) {
         </picture>
         <div className={styles.heroShade} aria-hidden="true" />
         <div className={styles.heroBody}>
-          <p className={styles.eyebrow}>Private China tours, since {since}</p>
+          <p className={styles.eyebrow}>Private China journeys · Est. {since}</p>
           <h1 id="home-title">
-            China, arranged by <em>people who live here.</em>
+            A more personal way to <em>experience China.</em>
           </h1>
           <p className={styles.heroSub}>
-            Your own guide and driver, a pace you set, and every detail confirmed in writing before
-            you pay.
+            Every journey begins with what matters to you. Your interests, your pace, the places you
+            want to discover — all come together in a thoughtfully planned itinerary, with your own
+            knowledgeable local guide and private driver.
           </p>
+          <ul className={styles.heroTags}>
+            <li>Private guide</li>
+            <li>Private driver</li>
+            <li>No shopping stops</li>
+          </ul>
           <div className={styles.heroActions}>
             <TrackedLink
               href={planningHref}
@@ -238,6 +353,57 @@ export function HomePage({ planningHref }: { planningHref: string }) {
           <span>A China-based specialist replies on WhatsApp</span>
         </li>
       </ul>
+
+      <section className={styles.ways} aria-labelledby="ways-title">
+        <p className={styles.kicker}>Four ways to travel</p>
+        <h2 id="ways-title" className={styles.big}>
+          However you like to plan, <em>China is taken care of.</em>
+        </h2>
+        <ul className={styles.wayGrid}>
+          {waysToTravel.map((way, index) => (
+            <li key={way.title}>
+              <span className={styles.wayIndex} aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <Link href={way.href}>
+                <div className={styles.wayPhoto}>
+                  <span className={styles.wayLabel}>{way.label}</span>
+                  <Image src={way.image} alt={way.alt} fill sizes="(max-width: 767px) 50vw, 25vw" />
+                </div>
+                <h3>{way.title}</h3>
+                <p>{way.body}</p>
+                <span className={styles.tileLink}>
+                  {way.cta} <ArrowRight size={14} aria-hidden="true" />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.services} aria-labelledby="services-title">
+        <div className={styles.servicesIntro}>
+          <p className={styles.kicker}>What we do</p>
+          <h2 id="services-title" className={styles.big}>
+            From the first conversation to your journey home,{" "}
+            <em>one team is there every step of the way.</em>
+          </h2>
+        </div>
+        <div className={styles.serviceList}>
+          {services.map((service, index) => (
+            <details key={service.title} name="services" open={index === 0}>
+              <summary>
+                <span className={styles.serviceNumber} aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{service.title}</h3>
+                <span className={styles.serviceIcon} aria-hidden="true" />
+              </summary>
+              <p>{service.body}</p>
+            </details>
+          ))}
+        </div>
+      </section>
 
       <section className={styles.manifesto} aria-labelledby="manifesto-title">
         <p className={styles.kicker}>Why private</p>
@@ -371,6 +537,10 @@ export function HomePage({ planningHref }: { planningHref: string }) {
             </span>
           ))}
         </p>
+        <p className={styles.moreLine}>
+          We plan private tours throughout China, not only in these cities.{" "}
+          <Link href="/china-destinations">See every region</Link>
+        </p>
       </section>
 
       <section className={styles.steps} aria-labelledby="steps-title">
@@ -457,13 +627,6 @@ export function HomePage({ planningHref }: { planningHref: string }) {
       </section>
 
       <SiteFooter />
-
-      <div className={styles.mobileBar} aria-label="Plan my journey">
-        <Link href="/start-planning?source=homepage-mobile">Plan my journey</Link>
-        <a href={whatsapp} aria-label="WhatsApp our team">
-          <WhatsAppIcon aria-hidden="true" />
-        </a>
-      </div>
     </main>
   );
 }

@@ -26,7 +26,7 @@ The guide may also assist with station entry, hotel communication and restaurant
 
 The driver prepares and operates the vehicle, follows the route, manages legal stopping and parking locations, and coordinates pickup timing with the guide. The driver may help load ordinary luggage into the vehicle, but travelers should disclose unusually heavy, numerous or specialized items in advance.
 
-The driver is not automatically an English-speaking guide. A driver who can exchange simple messages may not be licensed, briefed or contracted to provide historical interpretation, restaurant communication, ticket handling or support inside an attraction. At many heritage sites the driver parks away from the entrance while the guide remains with the guests.
+The driver is not automatically a multilingual guide. A driver who can exchange simple messages may not be licensed, briefed or contracted to provide historical interpretation, restaurant communication, ticket handling or support inside an attraction. At many heritage sites the driver parks away from the entrance while the guide remains with the guests.
 
 ## Why one person should not be assumed to do both jobs
 
@@ -54,7 +54,7 @@ A full private day with a guide, vehicle and driver costs more than a driver-onl
 
 Beware of a low headline price that excludes the guide on important days or provides a vehicle only for point-to-point transport. Also avoid assuming that the highest price is automatically better. Value comes from having the right service at the moments where it changes the trip.
 
-Use the [private China tour inclusions checklist](/journal/what-is-included-private-china-tour) and the [proposal checklist](/journal/private-china-tour-proposal-checklist) to compare written scope. The [first-China private journey](/tours/first-china-beautifully-paced) shows how guide, driver, rail and operations support connect across Beijing, Xi'an and Shanghai.
+Use the [private China tour inclusions checklist](/journal/what-is-included-private-china-tour) and the [proposal checklist](/journal/private-china-tour-proposal-checklist) to compare written scope. The [first-China private journey](/tours/beijing-xian-shanghai-private-9-day-tour) shows how guide, driver, rail and operations support connect across Beijing, Xi'an and Shanghai.
 
 ## What good service looks like during the day
 

@@ -13,7 +13,6 @@ export const homeNavItems: NavigationItem[] = [
   },
   { label: "About AVIORA", href: "/about" },
   { label: "Journal", href: "/journal" },
-  { label: "Travel Trade", href: "/china-dmc" },
 ];
 
 export const primaryAction: LinkAction = {
@@ -283,7 +282,7 @@ export const journeys = [
     poeticTitle: "Three defining cities, planned at a comfortable pace.",
     description: "Imperial Beijing, historic Xi'an, and modern Shanghai without the rush.",
     image: firstChinaAsset.beijingGreatWallSunriseHero,
-    href: "/tours/first-china-beautifully-paced",
+    href: "/tours/beijing-xian-shanghai-private-9-day-tour",
     duration: "9 days / 8 nights",
     route: "Beijing · Xi'an · Shanghai",
     bestFor: "First-time visitors",

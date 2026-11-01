@@ -22,7 +22,7 @@ search_intent: "Estimate the cost of a private China trip, understand the main p
 suggested_internal_links:
   [
     "/tours",
-    "/tours/first-china-beautifully-paced",
+    "/tours/beijing-xian-shanghai-private-9-day-tour",
     "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
     "/tours",
     "/start-planning",
@@ -94,7 +94,7 @@ The [China high-speed train guide](/journal/china-high-speed-train-foreigners) e
 
 ### 5. Guide and private vehicle coverage
 
-“Private tour” can mean very different things. One quote may include a licensed English-speaking guide and private vehicle for full sightseeing days. Another may include only transfers, a guide for selected attractions, or a driver who does not provide guiding.
+“Private tour” can mean very different things. One quote may include a licensed multilingual guide and private vehicle for full sightseeing days. Another may include only transfers, a guide for selected attractions, or a driver who does not provide guiding.
 
 Confirm the daily service window, guide language, vehicle type, airport or station assistance, overtime rules and what happens on free evenings. Families, older travelers and first-time visitors often benefit from stronger arrival and transfer support, while experienced travelers may prefer some independent time.
 
@@ -165,7 +165,7 @@ Ask what happens if the named hotel, train or attraction slot is unavailable. A 
 
 Consider a first journey through Beijing, Xi’an and Shanghai. The major cost areas are not only the headline attractions. They include three hotel stays, airport arrival support, private sightseeing vehicles, licensed local guides, Great Wall transport, intercity rail, station transfers, passport-linked attraction reservations and the operating support that keeps those services connected.
 
-The [9-day Beijing, Xi’an and Shanghai private tour](/tours/first-china-beautifully-paced) is the simpler version. Adding Chengdu and the pandas creates a richer first trip but also introduces another city, hotel, guide team and intercity connection; see the [12-day Shanghai, Chengdu, Xi’an and Beijing route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour).
+The [9-day Beijing, Xi’an and Shanghai private tour](/tours/beijing-xian-shanghai-private-9-day-tour) is the simpler version. Adding Chengdu and the pandas creates a richer first trip but also introduces another city, hotel, guide team and intercity connection; see the [12-day Shanghai, Chengdu, Xi’an and Beijing route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour).
 
 ## How to receive a useful first proposal
 
@@ -240,7 +240,7 @@ Published hero: `/public/home/editorial/great-wall-private-china-travel.webp`. A
 ## Sources
 
 - AVIORA, “Private China Tour Packages and Tailored Journeys”: `/tours` — current route and service structure. Verified 2026-08-10.
-- AVIORA, “9-Day Beijing, Xi’an & Shanghai Private Tour”: `/tours/first-china-beautifully-paced` — first-time route assumptions. Verified 2026-08-10.
+- AVIORA, “9-Day Beijing, Xi’an & Shanghai Private Tour”: `/tours/beijing-xian-shanghai-private-9-day-tour` — first-time route assumptions. Verified 2026-08-10.
 - AVIORA, “11-Day Beijing, Xi’an, Chengdu & Shanghai Private Tour”: `/tours/beijing-xian-chengdu-shanghai-private-11-day-tour` — four-city route assumptions. Verified 2026-08-10.
 
 ## Review Notes

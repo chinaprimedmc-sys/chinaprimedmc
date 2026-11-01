@@ -6,15 +6,15 @@ import {
   journeyOfferClaimedEvent,
   readClaimedJourneyOffer,
 } from "@/lib/tours/journey-offer-client";
-import type { JourneyOfferClaim } from "@/lib/tours/journey-offer";
+import { privateJourneyOffer, type JourneyOfferClaim } from "@/lib/tours/journey-offer";
 
 export function useClaimedJourneyOffer() {
   const [claim, setClaim] = useState<JourneyOfferClaim | null>(null);
 
   useEffect(() => {
     const sync = () => {
-      const stored = readClaimedJourneyOffer();
-      setClaim(stored);
+      // 活动关闭后，访客浏览器里遗留的领取记录不再改变展示价格。
+      setClaim(privateJourneyOffer.active ? readClaimedJourneyOffer() : null);
     };
     const onStorage = (event: StorageEvent) => {
       if (isJourneyOfferClaimStorageKey(event.key)) sync();
