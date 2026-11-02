@@ -2571,7 +2571,7 @@ const submittedTravelerReviews: SubmittedTravelerReview[] = [
 
 /**
  * Only approved feedback with website-use authorization may reach public UI.
- * Future Supabase-backed submissions should be mapped through this same shape.
+ * Future review submissions should be mapped through this same shape.
  */
 export const travelerReviews: TravelerReview[] = submittedTravelerReviews.map((review) => ({
   ...review,

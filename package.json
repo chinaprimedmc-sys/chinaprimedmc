@@ -11,9 +11,8 @@
     "preview:fresh": "pnpm build && pnpm preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:backend": "node --test tests/backend-security.test.mjs tests/supabase-rest.test.mjs",
     "test:journey": "node --test tests/journey-brief.test.mjs tests/journey-filter.test.mjs tests/journey-match.test.mjs",
-    "test:experience": "node scripts/test-experience.mjs && node scripts/test-inquiry-states.mjs",
+    "test:experience": "node scripts/test-experience.mjs",
     "audit:seo": "node scripts/audit-seo.mjs",
     "audit:structured-data": "node scripts/audit-structured-data.mjs",
     "audit:images": "node scripts/audit-images.mjs",
@@ -36,7 +35,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1090.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-select": "^2.2.6",

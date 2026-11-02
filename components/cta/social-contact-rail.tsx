@@ -11,7 +11,6 @@ export function SocialContactRail({ whatsappHref }: { whatsappHref: string; emai
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const isStartPlanningPage = pathname === "/start-planning";
-  const isBackend = pathname.startsWith("/admin");
   const [heroHasPassed, setHeroHasPassed] = useState(false);
   const [expertFormInView, setExpertFormInView] = useState(false);
   const [homeFinalCtaInView, setHomeFinalCtaInView] = useState(false);
@@ -87,8 +86,6 @@ export function SocialContactRail({ whatsappHref }: { whatsappHref: string; emai
       window.clearTimeout(hideTimer);
     };
   }, []);
-
-  if (isBackend) return null;
 
   const hideForForm =
     isStartPlanningPage ||

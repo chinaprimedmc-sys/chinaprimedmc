@@ -9,6 +9,7 @@ type AnalyticsValue = string | number | boolean | null;
 export function trackEvent(name: string, properties?: Record<string, AnalyticsValue>) {
   if (!hasAnalyticsConsent()) return;
   track(name, properties);
+  window.gtag?.("event", name, properties);
 }
 
 export function trackCtaClick(

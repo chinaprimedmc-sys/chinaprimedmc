@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { AttributionCapture } from "@/components/analytics/attribution-capture";
 import { SalesmartlyChat } from "@/components/analytics/salesmartly-chat";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import {
   COOKIE_CONSENT_CHANGE_EVENT,
@@ -41,6 +42,7 @@ export function ConsentAwareServices() {
       {analyticsEnabled ? (
         <>
           <AttributionCapture />
+          <GoogleAnalytics measurementId="G-FKP9HN9CF8" />
           <Analytics />
           <SpeedInsights />
         </>

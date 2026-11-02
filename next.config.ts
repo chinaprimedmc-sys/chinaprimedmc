@@ -1,8 +1,5 @@
 import type { NextConfig } from "next";
 
-const r2PublicUrl = process.env.NEXT_PUBLIC_CLOUDFLARE_R2_PUBLIC_URL;
-const r2PublicHost = r2PublicUrl ? new URL(r2PublicUrl).hostname : null;
-
 const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -415,23 +412,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "upload.wikimedia.org",
       },
-      {
-        protocol: "https",
-        hostname: "nuffatfbaydrzigihman.supabase.co",
-        pathname: "/storage/v1/object/public/cms-media/**",
-      },
-      {
-        protocol: "https",
-        hostname: "**.r2.dev",
-      },
-      ...(r2PublicHost
-        ? [
-            {
-              protocol: "https" as const,
-              hostname: r2PublicHost,
-            },
-          ]
-        : []),
     ],
     deviceSizes: [360, 414, 640, 720, 768, 1024, 1280, 1536, 1920],
     imageSizes: [64, 96, 128, 256, 384],

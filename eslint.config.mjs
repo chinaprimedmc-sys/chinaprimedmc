@@ -10,7 +10,6 @@ const eslintConfig = [
     ".next-*-cache-stale-*/**",
     "artifacts/**",
     "outputs/**",
-    "supabase/.temp/**",
   ]),
   ...nextVitals,
   ...nextTs,
