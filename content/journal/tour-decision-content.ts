@@ -1,6 +1,10 @@
 import type { JournalContentBlock } from "@/types/journal";
 
-type Section = { title: string; paragraphs: string[] };
+type Section = {
+  title: string;
+  paragraphs: string[];
+  table?: { headers: string[]; rows: string[][] };
+};
 type Faq = { question: string; answer: string };
 
 function slugify(value: string) {
@@ -15,6 +19,7 @@ function decisionArticle(sections: Section[], faqs: Faq[]): JournalContentBlock[
     ...sections.flatMap<JournalContentBlock>((section) => [
       { type: "heading", id: slugify(section.title), title: section.title },
       ...section.paragraphs.map<JournalContentBlock>((body) => ({ type: "paragraph", body })),
+      ...(section.table ? [{ type: "table" as const, ...section.table }] : []),
     ]),
     ...faqs.map<JournalContentBlock>(({ question, answer }) => ({
       type: "faq",
@@ -647,6 +652,44 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
           "**Using the enclosed cable car at Mutianyu can remove the long uphill approach, but it does not create a step-free Great Wall visit.** After reaching the ramparts, travelers still meet stone slopes, uneven paving, tower thresholds and sections of stairs. The amount of walking depends on which towers you choose, whether you return to the same lift and how much time you spend at viewpoints.",
           "For a mixed-ability family, the most dependable plan is usually a round-trip enclosed cable car with a short out-and-back walk from its upper station. Stronger walkers can extend toward higher towers or cross toward the chairlift and toboggan area. Current lift operations, weather and crowd controls must be confirmed before the day.",
         ],
+      },
+      {
+        title: "Three routes at a glance",
+        paragraphs: [
+          "Times are for walking on the Wall only. They exclude queues, photo stops and the lower scenic-area movement, and Routes 1 and 2 assume a return by the same cable car.",
+        ],
+        table: {
+          headers: [
+            "Route",
+            "Walking on the Wall",
+            "What it is like",
+            "Best for",
+            "Plan B needed?",
+          ],
+          rows: [
+            [
+              "Route 1: Short cable-car out-and-back",
+              "Roughly 30 to 60 minutes",
+              "Easiest. Nearby ramparts and one or two manageable towers, then back to the same cable car",
+              "Older parents, young children, hot weather, or anyone unsure about knees or balance",
+              "No. Return by the same cable car",
+            ],
+            [
+              "Route 2: Moderate walk toward higher towers",
+              "Roughly 60 to 90 minutes",
+              "Moderate. Repeated gradients, and the return can feel harder than the outward walk",
+              "Travelers with ordinary sightseeing fitness",
+              "No. Turn back early if someone slows down",
+            ],
+            [
+              "Route 3: Tower 14 toward Tower 6 and the toboggan area",
+              "Around two hours or more",
+              "Active. Repeated steps, and a one-way plan that depends on a different descent",
+              "Confident walkers and older children who are comfortable with heights and instructions",
+              "Yes. Rain, maintenance or crowd control can stop the toboggan, so keep a return alternative",
+            ],
+          ],
+        },
       },
       {
         title: "There are four layers before the famous walk",

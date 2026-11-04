@@ -165,6 +165,7 @@ const xianJournalGallery = [
 
 type CommercialArticleInput = {
   slug: string;
+  updatedAt?: string;
   title: string;
   dek: string;
   excerpt: string;
@@ -220,7 +221,7 @@ function commercialArticle(input: CommercialArticleInput): JournalArticle {
       articles: input.articles,
     },
     citations: input.citations,
-    updatedAt: input.publishedAt ?? "2026-08-12",
+    updatedAt: input.updatedAt ?? input.publishedAt ?? "2026-08-12",
     sourcePath: input.sourcePath,
     conversion: {
       eyebrow: "Plan with a China specialist",
@@ -896,6 +897,7 @@ export const commercialJournalArticles: JournalArticle[] = [
   commercialArticle({
     slug: "mutianyu-great-wall-walking-cable-car",
     publishedAt: "2026-08-15",
+    updatedAt: "2026-11-03",
     title: "How Much Walking Is There at Mutianyu Great Wall with the Cable Car?",
     dek: "Understand what the cable car removes, what walking remains and which Mutianyu route suits children, older travelers and mixed-ability families.",
     excerpt:

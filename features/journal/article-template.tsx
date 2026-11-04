@@ -563,6 +563,20 @@ function groupArticleSections(content: JournalContentBlock[]) {
   return sections;
 }
 
+const slugDecisionMargins: Record<
+  string,
+  { operatorRead: string; watchFor: string; changeWhen: string }
+> = {
+  "mutianyu-great-wall-walking-cable-car": {
+    operatorRead:
+      "Plan around the slowest walker, not the strongest. For a mixed-ability family, a round-trip cable car with a short out-and-back walk is the most dependable default.",
+    watchFor:
+      "The cable car removes the long approach, not the stairs between towers. Queues, steps and weather can add more effort than the map suggests.",
+    changeWhen:
+      "Anyone has knee, balance or height concerns, or the day turns hot, wet or icy: shorten the route or choose a different descent.",
+  },
+};
+
 function getDecisionMargin(article: JournalArticle) {
   if (
     article.editorial?.operatorRead &&
@@ -578,7 +592,11 @@ function getDecisionMargin(article: JournalArticle) {
 
   const role = getJournalSearchRole(article.slug);
   const pillar = role?.pillar ?? "";
-  if (/arrival essentials/i.test(pillar) || role?.intent === "answer") {
+  const slugMargin = slugDecisionMargins[article.slug];
+  if (slugMargin) return slugMargin;
+  // Passport and transit wording only fits rule-type guides. "answer" intent covers any Q&A
+  // article, so it must not select this block on its own.
+  if (/arrival essentials/i.test(pillar)) {
     return {
       operatorRead:
         "Use this guide to prepare, then reconfirm the date-sensitive rule for your passport, route and travel date before relying on it.",
@@ -596,6 +614,16 @@ function getDecisionMargin(article: JournalArticle) {
         "Transfers, standing, stairs and recovery time can matter more than the headline number of sights in a day.",
       changeWhen:
         "Any traveler needs a different walking rhythm, room setup, meal pattern or level of assistance.",
+    };
+  }
+  if (/day tour planning/i.test(pillar)) {
+    return {
+      operatorRead:
+        "A day tour works when the vehicle, guide hours and what is included are fixed before the date, and the plan can still flex on the day.",
+      watchFor:
+        "Lunch, lift or local transport priced separately, and a start time that does not suit the group's energy.",
+      changeWhen:
+        "Walking comfort, weather or the site's operating conditions change what is realistic for the group.",
     };
   }
   if (/private tour decision/i.test(pillar) || role?.intent === "evaluate") {
