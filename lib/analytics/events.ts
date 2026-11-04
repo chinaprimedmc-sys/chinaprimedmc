@@ -9,6 +9,7 @@ type AnalyticsValue = string | number | boolean | null;
 export function trackEvent(name: string, properties?: Record<string, AnalyticsValue>) {
   if (!hasAnalyticsConsent()) return;
   track(name, properties);
+  if (name === "whatsapp_click") window.__avioraLastWhatsappEvent = Date.now();
   window.gtag?.("event", name, properties);
 }
 
