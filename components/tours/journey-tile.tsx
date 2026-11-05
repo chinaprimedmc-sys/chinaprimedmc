@@ -3,8 +3,8 @@
 /**
  * 本模块职责：行程卡片——Journeys 页与三个层级页（Day / Signature / Tailor-Made）共用的唯一卡片。
  * 输入：整理好的行程条目、可选的搜索词（用于高亮）和位置（用于埋点）。
- * 输出：整张可点击的卡片：图片、时长、层级与城市、标题、一句话、最多 3 个标签。
- * 不负责：价格（未核实前不显示）、筛选或网格布局。
+ * 输出：整张可点击的卡片：图片、时长、层级与城市、标题、一句话、最多 3 个标签、3 条亮点、价格行与查看按钮。
+ * 不负责：价格计算（只显示已核实的起价）、筛选或网格布局。
  * 关键规则：整张卡片只有一个链接目标；标签最多 3 个，属性标签（Easier pace / Muslim-friendly）优先。
  */
 
@@ -61,6 +61,11 @@ export function JourneyTile({
         <span className={styles.chip}>{item.duration}</span>
       </div>
       <div className={styles.cardBody}>
+        <div className={styles.chips}>
+          {chips.map((chip) => (
+            <span key={chip}>{chip}</span>
+          ))}
+        </div>
         <p className={styles.cardEyebrow}>
           {item.tierLabel} · {item.destinations}
         </p>
@@ -68,14 +73,22 @@ export function JourneyTile({
           <HighlightText text={item.title} query={query} />
         </h3>
         <p className={styles.cardLine}>{item.summary}</p>
-        <div className={styles.chips}>
-          {chips.map((chip) => (
-            <span key={chip}>{chip}</span>
-          ))}
+        {item.highlights.length > 0 ? (
+          <ul className={styles.highlights}>
+            {item.highlights.map((highlight) => (
+              <li key={highlight}>{highlight}</li>
+            ))}
+          </ul>
+        ) : null}
+        <div className={styles.cardFoot}>
+          <span className={styles.cardPrice}>
+            {item.priceNote ? <small>{item.priceNote}</small> : null}
+            <strong>{item.priceLabel}</strong>
+          </span>
+          <span className={styles.cardGo}>
+            View itinerary <i aria-hidden="true">→</i>
+          </span>
         </div>
-        <span className={styles.cardGo}>
-          View journey <i aria-hidden="true">→</i>
-        </span>
       </div>
     </Link>
   );

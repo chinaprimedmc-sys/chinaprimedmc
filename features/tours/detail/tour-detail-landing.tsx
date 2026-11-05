@@ -31,6 +31,7 @@ import { JourneyConfigurationProvider } from "@/features/tours/detail/journey-co
 import { TourDetailAnalytics } from "@/features/tours/detail/tour-detail-interactions";
 import { TourFaqAccordion } from "@/features/tours/detail/tour-faq-accordion";
 import type { TourDetailModel } from "@/features/tours/detail/tour-detail-model";
+import { TourDayItinerary } from "@/features/tours/detail/tour-day-itinerary";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
 import type { JourneyPriceSelection } from "@/lib/tours/journey-price";
 
@@ -251,70 +252,7 @@ export function TourDetailLanding({
                     {isDayTour ? "The day" : detailCopy.daysTitle}
                   </h2>
                   <p className={styles.note}>{detailCopy.daysNote}</p>
-                  <ol className={styles.days}>
-                    {days.map((day, index) => (
-                      <li key={day.label} className={styles.day}>
-                        {day.image && index !== days.length - 1 && (
-                          <div className={styles.dayPhoto}>
-                            <Image
-                              src={day.image.src}
-                              alt={day.image.alt}
-                              fill
-                              sizes="(max-width: 900px) 100vw, 60vw"
-                            />
-                          </div>
-                        )}
-                        <p className={styles.dayLabel}>
-                          {day.label} · {day.destination}
-                        </p>
-                        <h3>{day.title}</h3>
-                        <p>{day.summary}</p>
-                        {day.experiences.length > 0 && (
-                          <ul className={styles.experiences}>
-                            {day.experiences.map((experience) => (
-                              <li key={experience.title}>
-                                <b>{experience.title}</b>
-                                {experience.description && <span>{experience.description}</span>}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {day.guideInsight && (
-                          <blockquote className={styles.insight}>{day.guideInsight}</blockquote>
-                        )}
-                        {(day.transit || day.steps) && (
-                          <dl className={styles.dayMetrics}>
-                            {day.transit && (
-                              <div>
-                                <dt>Transit</dt>
-                                <dd>{day.transit}</dd>
-                              </div>
-                            )}
-                            {day.steps && (
-                              <div>
-                                <dt>Daily step budget</dt>
-                                <dd>{day.steps}</dd>
-                              </div>
-                            )}
-                          </dl>
-                        )}
-                        <dl className={styles.dayMeta}>
-                          <div>
-                            <dt>Stay</dt>
-                            <dd>{day.stay}</dd>
-                          </div>
-                          <div>
-                            <dt>Meals</dt>
-                            <dd>{day.meals}</dd>
-                          </div>
-                          <div>
-                            <dt>Travel</dt>
-                            <dd>{day.transport}</dd>
-                          </div>
-                        </dl>
-                      </li>
-                    ))}
-                  </ol>
+                  <TourDayItinerary days={days} />
                 </section>
               )}
 
@@ -545,12 +483,7 @@ export function TourDetailLanding({
         </p>
 
         <SiteFooter tone="white" />
-        <JourneyMobileCta
-          fallbackPrice={price}
-          journeySlug={model.slug}
-          baseHref={model.whatsappHref}
-          journeyTitle={model.displayTitle}
-        />
+        <JourneyMobileCta fallbackPrice={price} journeySlug={model.slug} />
       </PageContainer>
     </JourneyConfigurationProvider>
   );

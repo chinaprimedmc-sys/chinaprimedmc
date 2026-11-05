@@ -74,7 +74,10 @@
   gap: 8px;
   min-width: 0;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 .pills::-webkit-scrollbar {
   display: none;
@@ -85,6 +88,7 @@
   align-items: center;
   gap: 8px;
   min-height: 44px;
+  scroll-snap-align: start;
   padding: 0 18px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
@@ -122,8 +126,18 @@
   font-size: 16px;
 }
 @media (max-width: 700px) {
+  .controls {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .pills {
+    flex: none;
+  }
   .search {
-    flex-basis: 100%;
+    flex: none;
+    width: 100%;
   }
 }
 
@@ -370,6 +384,29 @@
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
+}
+@media (max-width: 700px) {
+  .bannerActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .bannerButton {
+    justify-content: center;
+    min-height: 52px;
+  }
+  .bannerActions span {
+    text-align: center;
+  }
+  .heroLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+  }
+  .invite a {
+    justify-content: center;
+    width: 100%;
+    min-height: 52px;
+  }
 }
 @media (hover: hover) {
   .bannerButton:hover {

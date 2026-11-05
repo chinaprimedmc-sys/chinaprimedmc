@@ -995,3 +995,114 @@
     overscroll-behavior: contain;
   }
 }
+
+/* Day accordion and quick-jump bar */
+.dayJump {
+  position: sticky;
+  top: var(--site-nav-offset);
+  z-index: 15;
+  margin-top: 24px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+}
+.dayJumpTrack {
+  display: flex;
+  gap: 8px;
+  padding: 10px 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.dayJumpTrack::-webkit-scrollbar {
+  display: none;
+}
+.dayJumpChip {
+  flex: none;
+  min-width: 64px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.dayJumpChip[aria-current="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+.days {
+  scroll-margin-top: calc(var(--site-nav-offset) + 64px);
+}
+.day {
+  scroll-margin-top: calc(var(--site-nav-offset) + 72px);
+}
+.dayDetails > summary {
+  list-style: none;
+}
+.dayDetails > summary::-webkit-details-marker {
+  display: none;
+}
+.daySummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  cursor: pointer;
+}
+.daySummary > span {
+  display: block;
+}
+.daySummary .dayLabel {
+  display: block;
+}
+.daySummary svg {
+  flex: none;
+  transition: rotate 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.dayDetails[open] .daySummary svg {
+  rotate: 180deg;
+}
+.dayBody {
+  display: grid;
+  padding-top: 20px;
+}
+.dayBody > p {
+  max-width: 46em;
+  margin-top: 4px;
+  color: #3b3731;
+}
+.dayBody .dayPhoto {
+  margin-bottom: 20px;
+}
+@media (max-width: 700px) {
+  .days {
+    gap: 0;
+    margin-top: 16px;
+  }
+  .day {
+    padding-top: 0;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .daySummary {
+    padding: 16px 0;
+  }
+  .day h3 {
+    font-size: 22px;
+  }
+  .dayBody {
+    padding-bottom: 24px;
+  }
+  .dayMeta {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

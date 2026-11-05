@@ -32,6 +32,11 @@ export type ExplorerItem = SearchableJourney & {
   interest: readonly InterestTag[];
   easierPace: boolean;
   muslimFriendly: boolean;
+  /** 卡片上展示的前三个亮点。 */
+  highlights: string[];
+  /** 卡片底部价格行：只有已核实的起价才写金额，其余写“按日期和人数报价”。 */
+  priceLabel: string;
+  priceNote: string;
 };
 
 export type ExplorerState = {

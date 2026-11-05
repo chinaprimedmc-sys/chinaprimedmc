@@ -2,6 +2,7 @@
 
 import { MessageCircle } from "lucide-react";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
+import { pricingBlock, slowPacedSlug } from "@/content/tours/slow-paced-golden-triangle";
 import { useClaimedJourneyOffer } from "@/components/offers/use-claimed-journey-offer";
 import { calculateOfferPrice, formatOfferUsd } from "@/lib/tours/journey-offer";
 
@@ -94,20 +95,20 @@ export function JourneyWhatsAppAction({
 export function JourneyMobileCta({
   fallbackPrice,
   journeySlug,
-  baseHref,
-  journeyTitle,
 }: {
   fallbackPrice: string;
   journeySlug: string;
-  baseHref: string;
-  journeyTitle: string;
 }) {
   const configuration = useOptionalJourneyConfiguration();
-  const price = configuration
-    ? configuration.priceFromUsd
-      ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}`
-      : "Individually priced"
-    : fallbackPrice;
+  // 旗舰 10 天行程的起价来自行程自己的价格说明，目录里没有数字价格。
+  const flagship = journeySlug === slowPacedSlug;
+  const price = flagship
+    ? pricingBlock.from
+    : configuration
+      ? configuration.priceFromUsd
+        ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}`
+        : "Individually priced"
+      : fallbackPrice;
   const pricing = getJourneyCatalogItem(journeySlug)?.pricing;
   const claim = useClaimedJourneyOffer();
   const basePrice = configuration?.priceFromUsd ?? pricing?.fromUsd;
@@ -120,37 +121,35 @@ export function JourneyMobileCta({
         <small>
           {offer
             ? `Your ${claim?.discountPercent}% offer · was ${formatOfferUsd(offer.regularFromUsd)}`
-            : pricing?.fromUsd
+            : pricing?.fromUsd || flagship
               ? "From"
               : "Pricing"}
         </small>
         <strong>
           {offeredPrice}{" "}
           <em>
-            {configuration
-              ? configuration.priceFromUsd
-                ? pricing?.pricingUnit === "private-group"
+            {flagship
+              ? "per person · USD"
+              : configuration
+                ? configuration.priceFromUsd
+                  ? pricing?.pricingUnit === "private-group"
+                    ? "per private group of four"
+                    : "per person · four guests"
+                  : "quote for selected party"
+                : pricing?.pricingUnit === "private-group"
                   ? "per private group of four"
-                  : "per person · four guests"
-                : "quote for selected party"
-              : pricing?.pricingUnit === "private-group"
-                ? "per private group of four"
-                : "per person · four guests"}
+                  : "per person · four guests"}
           </em>
         </strong>
       </span>
       <TrackedTourLink
         className={styles.mobileCtaAction}
-        href={
-          configuration ? configuredWhatsAppHref(baseHref, journeyTitle, configuration) : baseHref
-        }
+        href={`/start-planning?source=tour-mobile-bar&journey=${encodeURIComponent(journeySlug)}`}
         journeySlug={journeySlug}
-        label="CONTACT ON WHATSAPP"
+        label="TAILOR MY TRIP"
         placement="detail-mobile"
-        target="_blank"
-        rel="noreferrer"
       >
-        WhatsApp <MessageCircle size={15} aria-hidden="true" />
+        Tailor my trip
       </TrackedTourLink>
     </div>
   );

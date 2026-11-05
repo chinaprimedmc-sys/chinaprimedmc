@@ -99,8 +99,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: auto;
-  padding-top: 6px;
 }
 .chips span {
   padding: 3px 10px;
@@ -109,13 +107,71 @@
   color: var(--copy);
   font-size: 12px;
 }
-.cardGo {
+.highlights {
+  display: grid;
+  gap: 6px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.highlights li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--copy);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.highlights li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 6px;
+  height: 1px;
+  background: var(--ink);
+}
+.cardFoot {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.cardPrice {
+  display: grid;
+  min-width: 0;
+  line-height: 1.25;
+}
+.cardPrice small {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cardPrice strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+.cardGo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
   gap: 6px;
-  margin-top: 6px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
   font-size: 13px;
   font-weight: 600;
+}
+@media (max-width: 699px) {
+  .cardLine {
+    display: none;
+  }
 }
 .cardGo i {
   font-style: normal;

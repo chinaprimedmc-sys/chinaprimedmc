@@ -1439,8 +1439,8 @@
     line-height: 1.35;
   }
   .mobileCtaAction {
-    background: #173f33;
-    border-color: #173f33;
+    background: var(--ink);
+    border-color: var(--ink);
     color: #fff;
     font-size: 13px;
     min-height: 44px;
