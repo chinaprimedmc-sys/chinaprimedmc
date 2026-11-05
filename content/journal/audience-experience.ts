@@ -421,4 +421,59 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "The 10-day senior-friendly tour includes the 24/7 medical channel and the care standards described here.",
     },
   },
+  {
+    slug: "are-china-group-tours-too-fast-for-seniors",
+    title: "Are China Group Tours Too Fast for Seniors? An Honest Pacing & Logistics Guide",
+    dek: "Step counts, wake-up calls, bus parking and luggage: how a fixed group tour can strain older travelers, and what a private, low-step journey changes.",
+    excerpt:
+      "An honest look at group-tour pacing for seniors, with a side-by-side comparison and the questions to ask any operator.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "first-time-china", "private-guides"],
+    author,
+    publishedAt: "2026-11-05",
+    updatedAt: "2026-11-05",
+    lastFactCheckedAt: "2026-11-05",
+    readingTime: "7 min read",
+    hero: { image: textHeroImage, eyebrow: "Judge the pace before you book", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Are China Group Tours Too Fast for Seniors? A Pacing Guide",
+      description:
+        "Are standard China group tours too fast for senior parents? Compare daily walking loads, 6 AM wake-up calls, low-step logistics, and private tour care standards.",
+      keywords: [
+        "china group tours for seniors",
+        "are china group tours too fast for seniors",
+        "private vs group tour china seniors",
+        "china tour pacing elderly parents",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      articles: ["slow-paced-china-tour-for-seniors", "china-travel-for-seniors"],
+    },
+    conversion: {
+      eyebrow: "Plan it around your parents",
+      title: "Compare private and group travel for your family",
+      description:
+        "Share your dates, who is traveling and how much walking is comfortable. We will review the route and confirm the pacing in writing.",
+      label: "Compare private and group travel",
+      href: "/start-planning?source=audience-group-tours-seniors",
+    },
+    sourcePath: "content/journal/articles/2026-08-20-are-china-group-tours-too-fast-for-seniors.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Many commercial group tours demand long walking days and early starts; a private, low-step journey with a 3:30 PM hotel return, porters and a stated step budget is gentler for older travelers.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Travelers comparing group and private tours",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour applies these pacing rules to Beijing, Xi'an and Shanghai.",
+    },
+  },
 ];

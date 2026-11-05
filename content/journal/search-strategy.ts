@@ -267,6 +267,12 @@ const strategyGroups: Array<{
       ["women-private-china-travel", "evaluate", "women traveling in China private support", 1],
       ["slow-paced-china-tour-for-seniors", "evaluate", "slow paced China tour for seniors", 1],
       [
+        "are-china-group-tours-too-fast-for-seniors",
+        "evaluate",
+        "China group tours for seniors",
+        1,
+      ],
+      [
         "how-to-visit-great-wall-without-climbing-stairs",
         "evaluate",
         "how to visit Great Wall without stairs",

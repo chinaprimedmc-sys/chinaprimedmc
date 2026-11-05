@@ -7,6 +7,10 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "are-china-group-tours-too-fast-for-seniors": {
+    title: "Are China Group Tours Too Fast for Seniors? An Honest Pacing & Logistics Guide",
+    seoTitle: "Are China Group Tours Too Fast for Seniors? A Pacing Guide",
+  },
   "how-to-visit-great-wall-without-climbing-stairs": {
     title: "How to Visit the Great Wall of China Without Climbing Stairs: A Senior-Friendly Guide",
     seoTitle: "How to Visit the Great Wall Without Climbing Stairs | Seniors",

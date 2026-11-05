@@ -8,6 +8,7 @@ export const PUBLIC_JOURNAL_SLUGS = [
   "muslim-friendly-private-china-travel",
   "women-private-china-travel",
   "slow-paced-china-tour-for-seniors",
+  "are-china-group-tours-too-fast-for-seniors",
   "how-to-visit-great-wall-without-climbing-stairs",
   "slow-paced-china-tour-for-seniors-itinerary-guide",
   "is-china-safe-for-elderly-travelers-senior-care-guide",
