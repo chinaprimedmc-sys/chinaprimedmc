@@ -36,6 +36,9 @@ import type { JourneyPriceSelection } from "@/lib/tours/journey-price";
 
 import styles from "./tour-journey.module.css";
 
+/** 旗舰行程：专家指南区使用 2027 规划标题，并优先链接三篇长者专项文章。 */
+const FLAGSHIP_SLUG = "beijing-xian-shanghai-private-10-day-tour";
+
 export function TourDetailLanding({
   model,
   initialSelection,
@@ -511,7 +514,9 @@ export function TourDetailLanding({
           {guides.length > 0 && (
             <section aria-labelledby="guides-title">
               <h2 id="guides-title" className={styles.h2}>
-                {detailCopy.guidesTitle}
+                {model.slug === FLAGSHIP_SLUG
+                  ? "Expert Guides & 2027 Planning Advice"
+                  : detailCopy.guidesTitle}
               </h2>
               <div className={styles.guides}>
                 {guides.map((article) => (

@@ -228,3 +228,4 @@ The tour is 10 days, so `/tours/beijing-xian-shanghai-private-9-day-tour` became
 - Journal index redesigned as a luxury magazine layout: topic pills with counts, featured hero, 3:2 uniform grid with reading time and tags, in-feed 10-day tour banner (US$3,800), URL-shared filters. Replaced journal-guide-explorer.
 - Published article #28 best-places-china-senior-travelers: replaced draft with the supplied text; dropped ASCII code blocks, softened unverified figures (95%, 80%, 100%, VIP claims), linked to the 10-day tour.
 - Published article #30 best-time-to-visit-china-for-seniors: removed ASCII code blocks and invented 10-point ratings, softened holiday/trip figures, fixed typo and 10-day tour link, shortened display title to meet the 88-character audit.
+- Flagship tour: guides section retitled "Expert Guides & 2027 Planning Advice" and the three senior articles (#26, #28, #30) put first; verified blog<->tour links and all 191 sitemap URLs return 200.
