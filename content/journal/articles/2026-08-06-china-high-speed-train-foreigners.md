@@ -113,7 +113,7 @@ A missed train can consume the day’s availability during busy periods. Protect
 
 ## Where rail fits AVIORA routes
 
-The [nine-day Beijing, Xi’an and Shanghai journey](/tours/beijing-xian-shanghai-private-9-day-tour) uses rail to turn a transfer into part of the route rather than an airport repeat. For Chengdu, the [panda and Sichuan itinerary](/tours/chengdu-pandas-sichuan-table) can connect by rail to a wider China plan. The decision is made sector by sector: hotel location, station, train timing, party needs and destination sequence all matter.
+The [ten-day Beijing, Xi’an and Shanghai journey](/tours/beijing-xian-shanghai-private-9-day-tour) uses rail to turn a transfer into part of the route rather than an airport repeat. For Chengdu, the [panda and Sichuan itinerary](/tours/chengdu-pandas-sichuan-table) can connect by rail to a wider China plan. The decision is made sector by sector: hotel location, station, train timing, party needs and destination sequence all matter.
 
 ## FAQ
 
@@ -160,7 +160,7 @@ Published hero: `/public/journal/2026-08-06/china-high-speed-train-boarding.webp
 
 - China Railway, 12306 English FAQ: https://www.12306.cn/en/faq.html — real-name ticketing, official channel, passport acceptance, e-ticket credentials, services, station process, security, baggage and accessibility. Verified 2026-08-06.
 - State Council, “A Guide to Working and Living in China as Business Expatriates (2025 Edition)”: https://english.www.gov.cn/policies/featured/202505/16/content_WS6827008ec6d0868f4e8f29a0.html — rail purchasing and payment channels for foreign travelers. Verified 2026-08-06.
-- AVIORA, “9-Day Beijing, Xi’an & Shanghai Private Tour”: `/tours/beijing-xian-shanghai-private-9-day-tour` — internal route relationship. Verified 2026-08-06.
+- AVIORA, “10-Day Beijing, Xi’an & Shanghai Private Tour”: `/tours/beijing-xian-shanghai-private-9-day-tour` — internal route relationship. Verified 2026-08-06.
 
 ## Review Notes
 

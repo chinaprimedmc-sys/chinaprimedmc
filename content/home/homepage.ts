@@ -272,18 +272,18 @@ export const experiences = [
 
 export const journeys = [
   {
-    title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
+    title: "10-Day Beijing, Xi'an & Shanghai Private Tour",
     titleLocation: "Beijing, Xi'an & Shanghai",
     titleExperience: "",
     titleSuffix: "Private Tour",
-    durationBadge: "9 DAYS · 8 NIGHTS",
-    isoDuration: "P9D",
+    durationBadge: "10 DAYS · 9 NIGHTS",
+    isoDuration: "P10D",
     accent: "gold" as const,
     poeticTitle: "Three defining cities, planned at a comfortable pace.",
     description: "Imperial Beijing, historic Xi'an, and modern Shanghai without the rush.",
     image: firstChinaAsset.beijingGreatWallSunriseHero,
     href: "/tours/beijing-xian-shanghai-private-9-day-tour",
-    duration: "9 days / 8 nights",
+    duration: "10 days / 9 nights",
     route: "Beijing · Xi'an · Shanghai",
     bestFor: "First-time visitors",
   },

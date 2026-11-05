@@ -128,7 +128,7 @@ const regions: Region[] = [
           "Winter is the signature season for ice and snow, and temperatures are very low. Summer and early autumn are better for mountains, forests and the coast. Tell us what you want to see and we advise on timing.",
       },
       {
-        question: "Do you offer fixed itineraries here?",
+        question: "Do you offer Signature Journeys here?",
         answer:
           "Not currently. We plan Northeast China as a tailor-made private trip, designed around your dates and interests, with your own guide and driver.",
       },
@@ -452,7 +452,7 @@ function buildRegionPage(region: Region): ServicePageContent {
     facts: [
       { value: String(region.places.length), label: "Destinations we plan here" },
       { value: "Private", label: "Your own guide and driver" },
-      { value: "Tailor-made", label: "Or a ready-made route where one exists" },
+      { value: "Tailor-made", label: "Or a Signature Journey where one exists" },
       { value: "In writing", label: "Quote confirmed before you pay" },
     ],
     answer: {
@@ -476,10 +476,10 @@ function buildRegionPage(region: Region): ServicePageContent {
       ? {
           id: "journeys",
           kicker: "Published journeys",
-          title: `Ready-made routes that include ${region.name}.`,
+          title: `Signature Journeys that include ${region.name}.`,
           intro:
             "Each of these is private to your party. Open one to see the day-by-day plan, or use it as a starting point for a tailor-made trip.",
-          note: "Every starting price states its pricing unit and basis. Your written proposal reflects your actual dates, party size, hotels and inclusions.",
+          note: "Every journey is priced individually. Your written proposal reflects your actual dates, party size, hotels and inclusions.",
         }
       : undefined,
     faqs: [
@@ -502,9 +502,9 @@ function buildRegionPage(region: Region): ServicePageContent {
         note: "Designed around you across any region",
       },
       {
-        label: "Fixed itineraries",
+        label: "Signature journeys",
         href: "/fixed-itinerary-china-tours",
-        note: "Finished private routes you book as published",
+        note: "Proven private routes, adjusted to your party",
       },
       {
         label: "Private guide and driver",
@@ -553,7 +553,7 @@ const hub: ServicePageContent = {
     title: "Private tours in every region of China.",
     paragraphs: [
       "AVIORA plans and operates private tours throughout China. Our offices are in Beijing, Shanghai and Xi'an, but our routes are not limited to those cities: we arrange hotels, a private guide, a private vehicle and domestic transport in every region listed below.",
-      "Some places have a published, ready-made route, and others we design from a blank page. Either way you receive a written proposal with the route, the hotels and the price basis before you pay.",
+      "Some places have a published Signature Journey, and others we design from a blank page. Either way you receive a written proposal with the route, the hotels and the price basis before you pay.",
     ],
   },
   places: regions.map((region) => ({
@@ -610,9 +610,9 @@ const hub: ServicePageContent = {
       note: "Designed around you across any region",
     },
     {
-      label: "Fixed itineraries",
+      label: "Signature journeys",
       href: "/fixed-itinerary-china-tours",
-      note: "Finished private routes you book as published",
+      note: "Proven private routes, adjusted to your party",
     },
     {
       label: "Private day tours",

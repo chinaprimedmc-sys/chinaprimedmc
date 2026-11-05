@@ -12,7 +12,7 @@ When comparing China tours from the USA, begin with **nights in China**, not the
 
 For a first trip, the most efficient flight pattern is often an open-jaw route: arrive in Beijing and depart from Shanghai, or reverse it. That lets the land journey move in one direction instead of returning to the first city only to fly home.
 
-Travelers ready to compare actual services can use the [private China tours from the USA collection](/china-tours-from-usa). It shows three published land routes, current starting prices and the assumptions behind them. This guide explains how to decide which route belongs behind the international flights.
+Travelers ready to compare actual services can use the [private China tours from the USA collection](/china-tours-from-usa). It shows three published land routes and what each one includes. This guide explains how to decide which route belongs behind the international flights.
 
 | Compare this                   | Why it matters                                            |
 | ------------------------------ | --------------------------------------------------------- |
@@ -131,7 +131,7 @@ For four cities across two weeks, see the [14-day Beijing, Xi'an, Chengdu and Sh
 
 ## What the published land prices do - and do not include
 
-AVIORA publishes starting prices for selected journeys where the underlying price basis is confirmed. The 12-day Shanghai, Chengdu, Xi'an and Beijing route is quoted by travel date, party size, room setup and confirmed services rather than assigned an unverified starting figure.
+AVIORA quotes every journey in writing by travel date, party size, room setup and confirmed services, rather than publishing a single headline figure.
 
 Those figures do not include the US-China flights. They are not package averages. Each journey page states its hotels or hotel level, guiding, vehicles, tickets and domestic transport assumptions. A couple will usually have a higher per-person private-service share than four travelers. Exact dates, rooms and supplier availability still require a written proposal.
 

@@ -1,5 +1,6 @@
 import { tours } from "@/content/tours";
 import { chinaFamilyAsset, firstChinaAsset } from "@/content/tours/assets";
+import { resolveJourneyPricing, type PriceStatus } from "@/content/tours/price-visibility";
 import type { MediaAsset } from "@/types/component-library";
 
 export type JourneyCatalogItem = {
@@ -37,7 +38,9 @@ export type JourneyCatalogItem = {
 };
 
 export type JourneyPricing = {
+  /** 只有价格状态为 verified-from 时才会有值，见 price-visibility.ts。 */
   fromUsd?: number;
+  status: PriceStatus;
   pricingUnit: "per-person" | "private-group";
   basePartySize: number;
   cardBasis: string;
@@ -258,7 +261,7 @@ const firstChina: JourneyCatalogBase = {
   href: `/tours/${flagship.slug}`,
   kind: "framework",
   routeLabel: flagship.route,
-  durationLabel: "9 days / 8 nights",
+  durationLabel: "10 days / 9 nights",
   styleFilters: ["First-time China", "Culture"],
   destinationFilters: ["Beijing", "Xi'an", "Shanghai"],
   bestForFilters: ["First-time visitors", "Families", "Couples", "Luxury travelers"],
@@ -289,8 +292,8 @@ const firstChina: JourneyCatalogBase = {
     "food-focused",
     "photography-led",
   ],
-  recommendedDaysMin: 9,
-  recommendedDaysMax: 9,
+  recommendedDaysMin: 10,
+  recommendedDaysMax: 10,
   destinations: [
     { label: "Beijing", href: "/destinations/beijing" },
     { label: "Xi'an", href: `/tours/${flagship.slug}#itinerary` },
@@ -1417,16 +1420,17 @@ const commercialDetails: Record<
       "First-time visitors who want four distinct cities without planning every handoff themselves",
   },
   "beijing-xian-shanghai-private-9-day-tour": {
-    paceLabel: "Comfortable, unhurried",
+    paceLabel: "Slow-paced, with a 3:30 PM hotel return",
     transportSummary:
-      "Private transfers, Beijing–Xi'an high-speed rail, and a connection to Shanghai selected for your dates",
+      "Door-to-door Mercedes vans, luggage-free bullet trains to Xi\'an and Shanghai, and porters at every station",
     highlights: [
-      "A full Great Wall day",
-      "Imperial Beijing with room for context",
-      "Terracotta Warriors without a rushed connection",
-      "Shanghai after dark",
+      "Zero-stair Great Wall access",
+      "Luggage-free bullet trains",
+      "3:30 PM hotel return every day",
+      "24/7 international medical channel",
     ],
-    bestForSummary: "First-time visitors who prefer fewer hotel changes",
+    bestForSummary:
+      "Active retirees, senior travelers and multi-generational families who want China without physical strain",
   },
   "chengdu-pandas-sichuan-table": {
     paceLabel: "Easy one-base stay",
@@ -1495,7 +1499,7 @@ const sharedPricingDetails = {
   finalPriceNote: "Your dates, hotel preferences and travel style shape the final price.",
 };
 
-const journeyPricing: Record<string, JourneyPricing> = {
+const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
   "luxury-yunnan-private-tour": {
     fromUsd: 6680,
     pricingUnit: "per-person",
@@ -1706,7 +1710,7 @@ const completeJourneyCatalog: JourneyCatalogItem[] = journeyCatalogBase.map((jou
     ...enrichedJourney,
     ...commercialDetails[journey.slug],
     ...commercialPortfolio[journey.slug],
-    pricing: journeyPricing[journey.slug],
+    pricing: resolveJourneyPricing(journey.slug, journeyPricing[journey.slug]),
     discovery: buildDiscoveryData(enrichedJourney, commercialDetails[journey.slug]),
   };
 });

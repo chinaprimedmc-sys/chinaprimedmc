@@ -12,7 +12,8 @@ import { HubSpotForm } from "@/components/forms/hubspot-form";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { WhatsAppIcon } from "@/components/icons";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { JourneyCard } from "@/components/tours/journey-card";
+import { JourneyTile } from "@/components/tours/journey-tile";
+import { buildExplorerItem } from "@/lib/tours/journey-explorer-items";
 import { siteConfig } from "@/config/site";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import type { ServicePageContent } from "@/content/services";
@@ -118,7 +119,11 @@ export function ServicePage({
           </header>
           <div className={styles.cards}>
             {journeys.map((journey) => (
-              <JourneyCard key={journey.slug} item={journey} />
+              <JourneyTile
+                key={journey.slug}
+                item={buildExplorerItem(journey)}
+                position={journeys.indexOf(journey)}
+              />
             ))}
           </div>
           {content.listing.note ? <p className={styles.note}>{content.listing.note}</p> : null}

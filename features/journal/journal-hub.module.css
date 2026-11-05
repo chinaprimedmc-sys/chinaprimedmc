@@ -99,11 +99,13 @@
   color: var(--journal-muted);
 }
 
-.textLink:hover,
-.secondaryTextLink:hover,
-.quietLink:hover,
-.completeIndexLink:hover {
-  text-decoration-color: currentColor;
+@media (hover: hover) {
+  .textLink:hover,
+  .secondaryTextLink:hover,
+  .quietLink:hover,
+  .completeIndexLink:hover {
+    text-decoration-color: currentColor;
+  }
 }
 
 .editorialStandard {
@@ -257,8 +259,10 @@
   border-radius: 50%;
 }
 
-.searchField button:hover {
-  background: rgba(23, 25, 27, 0.05);
+@media (hover: hover) {
+  .searchField button:hover {
+    background: rgba(23, 25, 27, 0.05);
+  }
 }
 
 .mobileDecisionSelect {
@@ -295,9 +299,14 @@
   line-height: 1.45;
 }
 
-.decisionButton:hover,
 .decisionButton[aria-pressed="true"] {
   background: var(--color-surface-muted);
+}
+
+@media (hover: hover) {
+  .decisionButton:hover {
+    background: var(--color-surface-muted);
+  }
 }
 
 .decisionButton[aria-pressed="true"] {
@@ -357,9 +366,11 @@
   transform: translateY(-50%);
 }
 
-.resultLink:hover {
-  color: #000;
-  background: var(--color-surface-muted);
+@media (hover: hover) {
+  .resultLink:hover {
+    color: #000;
+    background: var(--color-surface-muted);
+  }
 }
 
 .resultMeta {
@@ -1244,8 +1255,10 @@
   object-fit: cover;
   transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.textStory:hover .hubThumb img {
-  transform: scale(1.04);
+@media (hover: hover) {
+  .textStory:hover .hubThumb img {
+    transform: scale(1.04);
+  }
 }
 .storyCopy h3,
 .destinationCopy h3,

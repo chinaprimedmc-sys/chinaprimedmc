@@ -3,22 +3,22 @@ type: journal-draft
 status: published
 review_status: approved
 date: "2026-09-25"
-title: "Beijing, Xi'an and Shanghai in 9 Days: A Private First-China Route"
+title: "Beijing, Xi'an and Shanghai in 10 Days: A Private First-China Route"
 slug: "beijing-xian-shanghai-private-tour-9-days"
 category: "Travel Guides"
 tags: ["beijing", "xian", "shanghai", "first-time-china", "private-guides"]
-seo_title: "Beijing, Xi'an and Shanghai Private Tour: 9 Days"
-seo_description: "See how a 9-day private Beijing, Xi'an and Shanghai route works, including nights, rail, walking, hotels, pacing and who it suits."
+seo_title: "Beijing, Xi'an and Shanghai Private Tour: 10 Days"
+seo_description: "See how a 10-day private Beijing, Xi'an and Shanghai route works, including nights, rail, walking, hotels, pacing and who it suits."
 primary_keyword: "Beijing Xi'an Shanghai private tour"
 secondary_keywords:
   ["9 day China private tour", "Beijing Xi'an Shanghai itinerary", "first China private journey"]
-search_intent: "Evaluate a nine-day private Beijing, Xi'an and Shanghai itinerary before requesting a proposal."
+search_intent: "Evaluate a ten-day private Beijing, Xi'an and Shanghai itinerary before requesting a proposal."
 sources_verified_at: "2026-09-25"
 ---
 
 ## Draft
 
-A nine-day Beijing, Xi'an and Shanghai journey works when it is treated as **three complete chapters connected by two carefully managed handovers**, not as a race through a list of famous sights. Four Beijing nights protect the Great Wall and imperial city, two Xi'an nights give the Terracotta Army a real day, and two Shanghai nights create a coherent finish before departure.
+A ten-day Beijing, Xi'an and Shanghai journey works when it is treated as **three complete chapters connected by two carefully managed handovers**, not as a race through a list of famous sights. Four Beijing nights protect the Great Wall and imperial city, two Xi'an nights give the Terracotta Army a real day, and two Shanghai nights create a coherent finish before departure.
 
 This is the operating logic behind AVIORA's [Beijing, Xi'an and Shanghai private first journey](/tours/beijing-xian-shanghai-private-9-day-tour). It is designed for travelers who want China's essential historical arc without adding a fourth city simply to make the route look larger.
 
@@ -34,11 +34,11 @@ Beijing, Xi'an and Shanghai do different jobs. Beijing explains the imperial sta
 
 The route is strongest when each city is allowed to be different. Trying to make every day contain a monument, food tour, performance and shopping stop weakens the contrast. A good private itinerary edits.
 
-## What nine days can and cannot hold
+## What ten days can and cannot hold
 
 Nine calendar days normally provide eight hotel nights. Arrival and departure days are not full sightseeing days. The Beijing-to-Xi'an rail day and the Xi'an-to-Shanghai movement also consume real time, even when every transfer is well handled.
 
-A realistic nine-day design can protect:
+A realistic ten-day design can protect:
 
 - One calm arrival and local briefing
 - The Forbidden City with historical context
@@ -65,9 +65,9 @@ This route is a strong starting point for first-time visitors, couples, families
 
 It is less suitable when Chengdu's pandas are a non-negotiable priority, when the party wants an extremely slow pace, or when mobility needs require shorter daily walking blocks and more recovery. Those cases should change the route or the number of nights rather than rely on a guide to make an overloaded plan comfortable.
 
-## What the published price means
+## How this journey is priced
 
-The journey currently shows an indicative starting price of **US$3,190 per person**, based on four guests sharing two rooms outside peak holiday periods. It includes the published hotel, private-service, admission and transport assumptions described on the product page. It is not a universal price for every date or party size.
+The journey is priced individually in a written proposal for your dates and party. It reflects the published hotel, private-service, admission and transport assumptions described on the product page. It is not a universal price for every date or party size.
 
 The written proposal should identify the exact hotels or promised standard, room arrangement, rail class, included meals, guide and vehicle days, admissions, exclusions and confirmation status. Smaller parties may pay more per person because private guide and vehicle costs are divided among fewer travelers.
 
@@ -77,7 +77,7 @@ Choose whether the route's job is to provide a confident first view of China or 
 
 ## FAQ
 
-### Is nine days enough for Beijing, Xi'an and Shanghai?
+### Is ten days enough for Beijing, Xi'an and Shanghai?
 
 Yes, for a focused private introduction with four Beijing nights, two Xi'an nights and two Shanghai nights. It is not enough for exhaustive sightseeing or a deliberately slow journey.
 

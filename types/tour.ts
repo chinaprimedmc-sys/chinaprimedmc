@@ -43,10 +43,26 @@ export type TourItineraryDay = {
   transport?: string;
   activities: TourDayActivity[];
   guideNote?: string;
+  /** 当天的交通时长与路况说明。 */
+  transit?: string;
+  /** 当天的步数预算上限。 */
+  steps?: string;
   coordinates?: {
     latitude: number;
     longitude: number;
   };
+};
+
+export type TourSeniorStandard = {
+  h1: string;
+  lead: string;
+  highlights: Array<{ title: string; body: string }>;
+  difference: { painTitle: string; pain: string; solutionTitle: string; solution: string };
+  careTitle: string;
+  care: Array<{ title: string; body: string }>;
+  diningTitle: string;
+  diningIntro: string;
+  dining: Array<{ title: string; body: string }>;
 };
 
 export type TourAccommodation = {
@@ -160,6 +176,7 @@ export type Tour = {
   planningSupport?: TourPlanningSupport;
   guideProfile?: TourGuideProfile;
   faqLimit?: number;
+  seniorStandard?: TourSeniorStandard;
   highlights: TourHighlight[];
   itinerary: TourItineraryDay[];
   accommodations: TourAccommodation[];

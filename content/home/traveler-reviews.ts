@@ -11,6 +11,12 @@ export type TravelerReview = {
   authorizationStatus: "authorized" | "withheld";
   sourceType: "guest-submitted" | "manual-verification";
   publishedAt: string;
+  /** 以下字段用于行程结束后收集的新评价；既有评价没有这些记录，所以全部可选。 */
+  journey?: string;
+  travelMonth?: string;
+  travellers?: string;
+  /** 只有真的核对过来源记录后才填；评论页据此才显示“Verified”。 */
+  verifiedOn?: string;
 };
 
 type SubmittedTravelerReview = Omit<

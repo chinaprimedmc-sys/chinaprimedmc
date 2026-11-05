@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = createMetadata({
   title: "China Tours From USA: Private Routes & 2026 Prices",
   description:
-    "Compare private China tours from the USA by route, nights and land price. Plan Beijing, Xi'an, Chengdu and Shanghai with one China-based team.",
+    "Compare private China tours from the USA by route, nights and what is included. Plan Beijing, Xi'an, Chengdu and Shanghai with one China-based team.",
   path: "/china-tours-from-usa",
   image: "/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp",
 });
@@ -31,17 +31,17 @@ const content: HighIntentLandingContent = {
   eyebrow: "PRIVATE CHINA TOURS FROM THE USA",
   title: "Count The Nights In China Before You Compare The Tour.",
   intro:
-    "Private land journeys designed around your actual US flights, with published price assumptions and one China-based team coordinating the route from arrival to departure.",
+    "Private land journeys designed around your actual US flights, with a written, individually priced proposal and one China-based team coordinating the route from arrival to departure.",
   heroImage: "/tours/first-china-beautifully-paced/shanghai-waterfront-group.webp",
   heroAlt: "Travelers together on Shanghai's waterfront during a private China journey",
   answerTitle: "The best US-China itinerary usually moves in one direction.",
   answer: [
     "For many first-time travelers, Beijing in and Shanghai out removes unnecessary backtracking. Beijing and the Great Wall open the historical story, Xi'an adds the Terracotta Army, and Shanghai creates a natural international departure point. Chengdu belongs when pandas and Sichuan food justify a fourth city.",
-    "International airfare is not included in the published land prices below. We first compare your US departure airport, arrival time, connection pattern and usable nights in China. The land route is then designed around those flights rather than forcing a purchased ticket into a generic package.",
+    "International airfare is not included in the land prices we quote. We first compare your US departure airport, arrival time, connection pattern and usable nights in China. The land route is then designed around those flights rather than forcing a purchased ticket into a generic package.",
   ],
   journeysTitle: "Three published starting points - not one package for everyone",
   journeysIntro:
-    "Each route has a different job. Compare the nights, city changes and published price basis before deciding which journey is closest to your trip.",
+    "Each route has a different job. Compare the nights, city changes and included services before deciding which journey is closest to your trip.",
   decisionTitle: "Which China route fits the time you actually have?",
   decisionIntro:
     "The advertised calendar length can include long-haul travel and date-line effects. Use hotel nights in China and full sightseeing days to choose the route.",
@@ -95,7 +95,7 @@ const content: HighIntentLandingContent = {
     },
     {
       title: "Price and exclusions",
-      body: "The land price, party-size assumption, international-flight exclusion and date-sensitive supplier conditions are visible before comparison.",
+      body: "The party-size assumption, international-flight exclusion and date-sensitive supplier conditions are stated in your written proposal before you decide.",
     },
   ],
   finalTitle: "Send the flights before they decide the wrong route.",

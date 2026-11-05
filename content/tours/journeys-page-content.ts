@@ -20,7 +20,7 @@ export const journeyTrustProofs = [
   },
   {
     value: "Transparent Price Basis",
-    detail: "Each starting price states its unit and party size.",
+    detail: "Every journey is priced individually for your dates and party.",
   },
   {
     value: "Everything Confirmed In Writing",
@@ -93,9 +93,9 @@ export const journeyFaqs = [
       "Yes. Each itinerary is a considered starting point. Dates, pace, hotels, room categories, experiences and transport can be adjusted before the written proposal is confirmed.",
   },
   {
-    question: "What do the published starting prices mean?",
+    question: "How are the journeys priced?",
     answer:
-      "Each card states whether its price is per person or for a private group, together with the party-size basis. Your exact price is confirmed only after dates, availability, rooms and services are documented in a proposal.",
+      "Prices are not published because they depend on dates, party size, rooms and services. Your exact price is confirmed only after dates, availability, rooms and services are documented in a written proposal.",
   },
   {
     question: "Who operates the journey in China?",

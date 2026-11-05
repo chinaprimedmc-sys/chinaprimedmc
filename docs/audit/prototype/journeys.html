@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AVIORA Journeys — design prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Palette = the site's existing neutrals only: ink, night, warm stone, white. No green. */
+:root{
+  --ink:#1a1816; --night:#12100d; --copy:#38342f; --muted:#5f5a52;
+  --canvas:#fff; --stone:#f6f5f2; --line:#e4e1da; --line-strong:#cdc9bf;
+  --radius:6px; --pill:999px;
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:Inter,system-ui,sans-serif;
+  --gutter:20px; --header:60px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:calc(var(--header) + 80px)}
+body{font-family:var(--sans);color:var(--ink);background:var(--canvas);line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:72px}
+@media(min-width:1024px){body{padding-bottom:0}}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--gutter)}
+.hdr{position:sticky;top:0;z-index:40;height:var(--header);display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr b{font-family:var(--serif);font-size:24px;letter-spacing:.14em;font-weight:500}
+.hdr nav{display:none;gap:28px;font-size:14px}
+.hdr .plan{font-size:13px;padding:9px 16px;border:1px solid var(--ink);border-radius:var(--pill)}
+@media(min-width:900px){.hdr nav{display:flex}}
+
+/* hero with the search */
+.hero{position:relative;color:#fff;background:#2a2826 center/cover no-repeat;display:flex;align-items:flex-end}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,16,13,.25),rgba(18,16,13,.78))}
+.hero .wrap{position:relative;width:100%;padding-top:48px;padding-bottom:26px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.4vw,58px);line-height:1.04;letter-spacing:-.01em}
+.hero h1 em{font-style:italic}
+.hero p.s{margin:10px 0 20px;max-width:34em;font-size:15px;opacity:.93}
+.sbox{position:relative;max-width:620px}
+.sfield{display:flex;align-items:center;gap:10px;height:56px;padding:0 8px 0 18px;background:#fff;color:var(--ink);border-radius:var(--pill);box-shadow:0 8px 28px rgba(0,0,0,.22)}
+.sfield svg{flex:none;width:20px;height:20px;color:var(--muted)}
+.sfield input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;font:inherit;font-size:16px;color:var(--ink)} /* 16px stops iOS zoom */
+.sfield input::placeholder{color:#7b766d}
+.sfield input::-webkit-search-cancel-button{display:none}
+.sfield:focus-within{box-shadow:0 8px 28px rgba(0,0,0,.22),0 0 0 2px var(--ink)}
+.sclear{flex:none;width:40px;height:40px;border:0;border-radius:50%;background:none;font-size:22px;line-height:1;color:var(--muted)}
+.sclear[hidden]{display:none}
+.sclear:hover{background:var(--stone)}
+.sgo{flex:none;height:40px;padding:0 18px;border:0;border-radius:var(--pill);background:var(--ink);color:#fff;font-size:14px;font-weight:600}
+.kbd{flex:none;display:none;padding:2px 7px;border:1px solid var(--line-strong);border-radius:5px;font-size:12px;color:var(--muted)}
+@media(min-width:1024px){.kbd{display:block}}
+.sfield input:focus ~ .kbd,.sfield input:not(:placeholder-shown) ~ .kbd{display:none}
+.popular{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px;font-size:13px}
+.popular span{opacity:.85}
+.popular button{padding:6px 13px;border:1px solid rgba(255,255,255,.55);border-radius:var(--pill);background:rgba(255,255,255,.08);color:#fff;font-size:13px}
+.popular button:hover{background:#fff;color:var(--ink)}
+@media(max-width:700px){.popular{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(var(--gutter)*-1)}.popular::-webkit-scrollbar{display:none}.popular button,.popular span{flex:none}}
+
+/* suggestions panel (ARIA combobox) */
+.panel{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:60;max-height:min(70svh,520px);overflow:auto;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 48px rgba(18,16,13,.2);padding:8px 0;text-align:left}
+.panel[hidden]{display:none}
+.panel h4{padding:10px 18px 4px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.opt{display:flex;align-items:center;gap:12px;padding:9px 18px;cursor:pointer;font-size:15px}
+.opt[aria-selected=true],.opt:hover{background:var(--stone)}
+.opt img,.opt .th{flex:none;width:48px;height:36px;border-radius:4px;object-fit:cover;background:var(--line)}
+.opt .ic{flex:none;width:48px;display:grid;place-items:center;color:var(--muted)}
+.opt .ic svg{width:18px;height:18px}
+.opt .tx{min-width:0}
+.opt .tx b{display:block;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.opt .tx small{display:block;font-size:12px;color:var(--muted)}
+.opt .n{margin-left:auto;font-size:12px;color:var(--muted);flex:none}
+.opt mark{background:none;color:inherit;font-weight:700}
+.rchips{display:flex;flex-wrap:wrap;gap:8px;padding:6px 18px 10px}
+.rchips button{padding:7px 14px;border:1px solid var(--line-strong);border-radius:var(--pill);background:#fff;font-size:14px}
+.rchips button:hover{border-color:var(--ink)}
+.plink{display:block;padding:8px 18px;font-size:13px;color:var(--muted);background:none;border:0;text-decoration:underline}
+
+/* sticky bar */
+.controls{position:sticky;top:var(--header);z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.controls .wrap{display:flex;align-items:center;gap:12px;min-height:60px}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0;padding:10px 24px 10px 0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid transparent;border-radius:var(--pill);background:none;font-size:14px;font-weight:500;color:var(--muted);white-space:nowrap}
+.tab small{font-size:12px;opacity:.7;font-weight:400}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected=true]{background:var(--ink);color:#fff}
+.tab[data-zero=true]{opacity:.45}
+.compact{display:none;flex:none;width:250px;position:relative}
+.compact .sfield{height:42px;box-shadow:none;border:1px solid var(--line-strong);padding-left:14px}
+.compact .sfield svg{width:17px;height:17px}
+.compact .sfield input{font-size:14px}
+.compact.on{display:block}
+.compact .panel{left:0;right:auto;width:420px}
+.filters{display:none;align-items:center;gap:8px;flex:none}
+.fwrap{position:relative}
+.fbtn{display:flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--line-strong);border-radius:var(--pill);background:#fff;font-size:14px;white-space:nowrap}
+.fbtn[data-on=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.fbtn svg{width:12px;height:12px;opacity:.6}
+.pop{position:absolute;top:calc(100% + 8px);right:0;min-width:240px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 40px rgba(18,16,13,.14);display:none;z-index:5}
+.fwrap[data-open=true] .pop{display:block}
+.copt{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:6px;font-size:14px;cursor:pointer}
+.copt:hover{background:var(--stone)}
+.copt input{width:16px;height:16px;accent-color:var(--ink)}
+.copt small{margin-left:auto;color:var(--muted)}
+.mtools{display:flex;gap:8px;flex:none}
+.mbtn{display:flex;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;padding:0 14px;border:1px solid var(--ink);border-radius:var(--pill);background:#fff;font-size:14px;font-weight:500}
+.mbtn.icon{padding:0;width:44px;border-color:var(--line-strong);display:none}
+.mbtn.icon.on{display:flex}
+.mbtn svg{width:18px;height:18px}
+.mbtn b{display:inline-grid;place-items:center;min-width:18px;height:18px;border-radius:9px;background:var(--ink);color:#fff;font-size:11px}
+.mbtn b:empty{display:none}
+@media(min-width:1180px){.filters{display:flex}.mtools{display:none}.tabs{-webkit-mask-image:none;mask-image:none}}
+@media(max-width:1179px){.compact{display:none!important}}
+
+.explain{padding:22px 0 4px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
+.explain p{font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);line-height:1.25;max-width:36em}
+.explain a{font-size:13px;border-bottom:1px solid var(--ink);padding-bottom:1px}
+.rh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 0 18px;font-size:14px;color:var(--muted)}
+.rh strong{color:var(--ink);font-weight:600}
+.rh .lk{background:none;border:0;text-decoration:underline;font-size:14px;color:var(--ink);padding:0}
+.rh .right{margin-left:auto;display:flex;align-items:center;gap:16px}
+.sort{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink)}
+.sort select{height:38px;padding:0 30px 0 12px;border:1px solid var(--line-strong);border-radius:var(--pill);background:#fff;font:inherit;font-size:14px}
+.pnote{width:100%;font-size:13px}
+@media(max-width:700px){.rh .right{margin-left:0;width:100%;justify-content:space-between}}
+.others{margin:0 0 18px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--stone);font-size:14px}
+.others button{background:none;border:0;text-decoration:underline;padding:0 4px 0 0;font-size:14px}
+
+.grid{display:grid;gap:28px 24px;grid-template-columns:1fr;padding-bottom:64px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr);gap:40px 28px}}
+.card{display:flex;flex-direction:column;border-radius:var(--radius);overflow:hidden;background:#fff;border:1px solid var(--line);transition:box-shadow .3s var(--ease),transform .3s var(--ease)}
+.card:hover{box-shadow:0 14px 36px rgba(18,16,13,.12);transform:translateY(-2px)}
+.card .ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#e9e6df,#d3cfc4)}
+@media(min-width:1024px){.card .ph{aspect-ratio:4/3}}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.card:hover .ph img{transform:scale(1.04)}
+.card .ph .soon{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7b766d}
+.chip{position:absolute;left:12px;bottom:12px;padding:5px 11px;border-radius:var(--pill);background:rgba(18,16,13,.76);backdrop-filter:blur(6px);color:#fff;font-size:12px;font-weight:500}
+.card .b{display:flex;flex-direction:column;gap:8px;padding:16px 18px 18px;flex:1}
+.card .t{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.card h3{font-family:var(--serif);font-weight:500;font-size:clamp(23px,2vw,27px);line-height:1.14}
+.card .d{font-size:14px;color:var(--copy);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.tags span{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:var(--pill);color:var(--copy)}
+.card .go{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;margin-top:6px}
+.card .go i{font-style:normal;transition:transform .25s var(--ease)}
+.card:hover .go i{transform:translateX(4px)}
+mark.hl{background:none;color:inherit;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.diy{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:28px;border-radius:var(--radius);background:var(--night);color:#fff;min-height:260px}
+.diy h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.6vw,34px);line-height:1.1}
+.diy p{font-size:14px;opacity:.9}
+.diy a{align-self:flex-start;padding:12px 20px;background:#fff;color:var(--ink);border-radius:var(--pill);font-size:14px;font-weight:600}
+.empty{grid-column:1/-1;padding:40px 0}
+.empty h3{font-family:var(--serif);font-weight:400;font-size:30px;margin-bottom:8px}
+.empty p{color:var(--copy);margin-bottom:14px}
+.empty .rchips{padding:0 0 14px}
+.empty .dym{margin-bottom:14px}
+.empty .lk{background:none;border:0;text-decoration:underline;font-size:14px;color:var(--ink);padding:0}
+.empty .dym button{background:none;border:0;font-weight:600;text-decoration:underline;font-size:inherit;padding:0}
+
+.band{border-top:1px solid var(--line);padding:56px 0}
+.band h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,40px);margin-bottom:28px}
+.steps{display:grid;gap:24px;grid-template-columns:1fr}
+@media(min-width:700px){.steps{grid-template-columns:repeat(4,1fr)}}
+.steps li{list-style:none;border-top:1px solid var(--ink);padding-top:12px}
+.steps b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--muted)}
+.steps h3{font-size:16px;margin:6px 0}
+.steps p{font-size:14px;color:var(--copy)}
+.faq details{border-top:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-size:17px;list-style:none;display:flex;justify-content:space-between}
+.faq summary::after{content:"+";font-size:20px}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;font-size:15px;color:var(--copy);max-width:46em}
+.close{background:var(--night);color:#fff;padding:64px 0;text-align:center}
+.close h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,46px);margin-bottom:12px}
+.close p{opacity:.9;margin-bottom:22px}
+.close a{display:inline-block;padding:14px 26px;background:#fff;color:var(--ink);border-radius:var(--pill);font-weight:600;font-size:14px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:35;display:flex;gap:10px;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.bar a{flex:1;text-align:center;padding:13px;border-radius:var(--pill);background:var(--ink);color:#fff;font-size:14px;font-weight:600}
+.bar a.w{flex:none;padding:13px 18px;background:#fff;color:var(--ink);border:1px solid var(--ink)}
+@media(min-width:1024px){.bar{display:none}}
+dialog{border:0;padding:0;width:100%;max-width:none;margin:auto 0 0;border-radius:18px 18px 0 0;max-height:86svh;background:#fff;color:var(--ink)}
+dialog::backdrop{background:rgba(18,16,13,.5)}
+.sheet{display:flex;flex-direction:column;max-height:86svh}
+.sheet header{display:flex;justify-content:space-between;align-items:center;padding:16px var(--gutter);border-bottom:1px solid var(--line)}
+.sheet header h2{font-family:var(--serif);font-weight:500;font-size:24px}
+.sheet header button{background:none;border:0;font-size:14px;text-decoration:underline}
+.sheet .body{overflow:auto;padding:8px var(--gutter) 16px}
+.sheet fieldset{border:0;padding:14px 0;border-bottom:1px solid var(--line)}
+.sheet legend{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 0 8px}
+.sheet .chips{display:flex;flex-wrap:wrap;gap:8px}
+.sheet .chips label{position:relative}
+.sheet .chips input{position:absolute;opacity:0}
+.sheet .chips span{display:block;padding:11px 16px;border:1px solid var(--line-strong);border-radius:var(--pill);font-size:14px;background:#fff}
+.sheet .chips input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.sheet .chips input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.sheet footer{padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.sheet footer button{width:100%;padding:15px;border-radius:var(--pill);border:0;background:var(--ink);color:#fff;font-weight:600;font-size:15px}
+@media(min-width:1180px){dialog{display:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.proto{position:fixed;top:68px;right:10px;z-index:80;background:#fff7d6;border:1px solid #e2c75a;font-size:11px;padding:5px 9px;border-radius:6px;max-width:210px}
+@media(max-width:700px){.proto{display:none}}
+</style>
+</head>
+<body>
+<div class="proto">Design prototype · illustrative data · not the live site</div>
+<header class="hdr"><b>AVIORA</b><nav><a href="#">Journeys</a><a href="#">Destinations</a><a href="#">About AVIORA</a><a href="#">Travel Journal</a></nav><a class="plan" href="#">Start planning</a></header>
+
+<section class="hero" style="background-image:url('../../../public/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp')">
+  <div class="wrap">
+    <h1>Private journeys <em>across China.</em></h1>
+    <p class="s">Every journey is private and priced for your dates and group. Search a place or a sight, or browse by type of trip.</p>
+    <div class="sbox" id="heroSearch"></div>
+    <div class="popular" id="popular"></div>
+  </div>
+</section>
+
+<div class="controls" id="controls">
+  <div class="wrap">
+    <div class="compact" id="compact"></div>
+    <div class="tabs" role="tablist" aria-label="Type of journey" id="tabs"></div>
+    <div class="filters" id="filters" aria-label="Filters"></div>
+    <div class="mtools">
+      <button class="mbtn icon" id="mSearch" type="button" aria-label="Search journeys"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg></button>
+      <button class="mbtn" id="openSheet" type="button">Filters <b id="mcount"></b></button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="main">
+  <div class="explain"><p id="explain"></p><a id="tierLink" href="#"></a></div>
+  <div class="rh">
+    <span role="status" aria-live="polite"><strong id="count"></strong> <span id="countLabel"></span><span id="forQ"></span></span>
+    <button type="button" class="lk" id="clear" hidden>Clear all</button>
+    <span class="right"><label class="sort">Sort <select id="sort"><option value="rec">Recommended</option><option value="short">Shortest first</option><option value="long">Longest first</option></select></label></span>
+    <span class="pnote">Every journey is individually priced for your dates and group.</span>
+  </div>
+  <div id="others"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="band"><div class="wrap">
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><b>i</b><h3>Tell us about your trip</h3><p>Dates, who is travelling and what matters most. A few lines is enough.</p></li>
+    <li><b>ii</b><h3>Receive a written proposal</h3><p>Route, hotels, inclusions and price, in writing, normally within a day.</p></li>
+    <li><b>iii</b><h3>Adjust until it is right</h3><p>Change the days, the pace or a hotel. Nothing is booked until you confirm.</p></li>
+    <li><b>iv</b><h3>Travel with your own team</h3><p>A private guide and driver, and our China team on WhatsApp throughout.</p></li>
+  </ol>
+</div></section>
+<section class="band faq"><div class="wrap">
+  <h2>Good questions to ask</h2>
+  <details><summary>Are your journeys private or group tours?</summary><p>Private. Your guide, driver and vehicle are for your party alone.</p></details>
+  <details><summary>Can I change a published journey?</summary><p>Yes. Each is a starting point. Dates, pace, hotels and days can be adjusted before you confirm.</p></details>
+  <details><summary>How are journeys priced?</summary><p>Individually, for your dates and group, in a written proposal before you pay.</p></details>
+  <details><summary>What if nothing here fits?</summary><p>Tell us what you have in mind and we will design it from a blank page.</p></details>
+</div></section>
+<section class="close"><div class="wrap"><h2>Tell us when, and who is coming.</h2><p>A China-based specialist replies on WhatsApp, normally within a day. No payment, no obligation.</p><a href="#">Plan my journey</a></div></section>
+<div class="bar"><a href="#">Plan my journey</a><a class="w" href="#">WhatsApp</a></div>
+
+<dialog id="sheet" aria-labelledby="sheetTitle"><form method="dialog" class="sheet">
+  <header><h2 id="sheetTitle">Filters</h2><button type="button" id="sheetClear">Clear all</button></header>
+  <div class="body" id="sheetBody"></div>
+  <footer><button type="button" id="sheetShow">Show journeys</button></footer>
+</form></dialog>
+
+<script>
+const ITEMS=[{"slug": "private-mutianyu-great-wall-day-tour", "tier": "day", "tierLabel": "Day Experience", "title": "Private Great Wall Day Tour at Mutianyu, from Beijing", "desc": "Private pickup, guiding and pre-arranged tickets leave more time to walk the Wall at your pace.", "dest": "Beijing", "extraPlaces": "Beijing · Mutianyu Great Wall · Beijing", "keywords": "day trip one day kids children child Private hotel pickup, guide, admission and return in one confirmed plan A walking route chosen around your group rather than a fixed tower count No shopping stops, shared coach logistics or hidden mountain-transport charges Cable car, chairlift and toboggan shown as transparent optional choices Live conditions and practical alternatives explained before the day starts", "dur": "7–9 hours", "days": 1, "img": "../../../public/tours/mutianyu-private-day-tour/01-mutianyu-great-wall-autumn-panorama.webp", "who": ["First-time", "Family"], "interest": ["History", "Nature & landscapes"], "easy": false, "halal": false, "pending": false, "href": "/tours/private-mutianyu-great-wall-day-tour"}, {"slug": "private-shanghai-day-tour-guide-driver", "tier": "day", "tierLabel": "Day Experience", "title": "Private Shanghai Day Tour: Old City, Bund & Skyline", "desc": "Yu Garden, the Bund and leafy lanes, connected by your private guide and a local ferry crossing.", "dest": "Shanghai", "extraPlaces": "Shanghai hotel · Old City · Bund · Former French Concession · Shanghai hotel", "keywords": "day trip one day senior seniors elderly older retired gentle relaxed honeymoon romantic Enter Yu Garden with admission arranged Understand the Old City before reaching the skyline Cross the Huangpu by public ferry with your guide Read the Bund and Pudong as two sides of one city Finish among former French Concession lanes and local life", "dur": "~8 hours", "days": 1, "img": "../../../public/tours/private-shanghai-day-tour/01-shanghai-lujiazui-at-dusk.webp", "who": ["First-time", "Couples"], "interest": ["Architecture", "Food & local life"], "easy": true, "halal": false, "pending": false, "href": "/tours/private-shanghai-day-tour-guide-driver"}, {"slug": "private-xian-terracotta-warriors-day-tour", "tier": "day", "tierLabel": "Day Experience", "title": "Private Terracotta Warriors Day Tour in Xi'an", "desc": "See the Terracotta Army with context, then explore Xi'an's old city at your pace.", "dest": "Xi'an", "extraPlaces": "Xi'an hotel · Terracotta Warriors · Xi'an Old City · Xi'an hotel", "keywords": "day trip one day senior seniors elderly older retired gentle relaxed kids children child See Pit 1 with military scale and formation explained Use Pits 2 and 3 to understand cavalry, command and archaeology Enter with passport-linked admission already arranged Return to Xi'an's Old City without jade-factory detours Add a hands-on clay-warrior session only when you choose it", "dur": "~8 hours", "days": 1, "img": "../../../public/tours/private-xian-terracotta-warriors-day-tour/01-xian-terracotta-warriors.webp", "who": ["First-time", "Family"], "interest": ["History"], "easy": true, "halal": false, "pending": false, "href": "/tours/private-xian-terracotta-warriors-day-tour"}, {"slug": "private-chengdu-panda-day-tour-early-morning", "tier": "day", "tierLabel": "Day Experience", "title": "Private Giant Panda Day Tour in Chengdu", "desc": "See pandas early, then slow down over tea in People's Park with private transfers handled.", "dest": "Chengdu", "extraPlaces": "Chengdu hotel · Chengdu Panda Base · People's Park · Chengdu hotel", "keywords": "day trip one day kids children child honeymoon romantic Leave your Chengdu hotel at a more useful early hour Enter with standard Panda Base admission arranged Adapt the public route to live openings, crowds and animal activity Learn panda behavior and conservation without invented access Finish with People's Park and Chengdu tea culture", "dur": "~7–9 hours", "days": 1, "img": "../../../public/tours/private-chengdu-panda-day-tour/01-chengdu-panda-base-morning.webp", "who": ["Family", "Couples"], "interest": ["Pandas & wildlife", "Food & local life"], "easy": false, "halal": false, "pending": false, "href": "/tours/private-chengdu-panda-day-tour-early-morning"}, {"slug": "guilin-yangshuo-li-river-cruise-private-day-tour", "tier": "day", "tierLabel": "Day Experience", "title": "Private Li River Cruise Day: Guilin to Yangshuo", "desc": "A shared Li River cruise with private pickup, luggage coordination and your chosen finish.", "dest": "Guilin · Yangshuo", "extraPlaces": "Guilin hotel · Li River four-star public cruise · Yangshuo · Yangshuo finish or Guilin return", "keywords": "day trip one day kids children child honeymoon romantic Leave your Guilin hotel with the port and cruise plan confirmed Travel through the Li River karst landscape on a four-star public cruise Keep normal luggage moving privately to your Yangshuo hotel Continue with a restrained private Yangshuo countryside chapter Choose a Yangshuo finish or private Guilin return before payment", "dur": "~9–11 hours", "days": 1, "img": "../../../public/tours/guilin-yangshuo-li-river-day-tour/01-yangshuo-karst-countryside.webp", "who": ["Couples", "Family"], "interest": ["Nature & landscapes", "Photography"], "easy": false, "halal": false, "pending": false, "href": "/tours/guilin-yangshuo-li-river-cruise-private-day-tour"}, {"slug": "chengdu-pandas-sichuan-table", "tier": "signature", "tierLabel": "Signature Journey", "title": "Pandas, Tea Houses & the Sichuan Table", "desc": "Begin with pandas, linger over tea and understand Chengdu one generous meal at a time.", "dest": "Chengdu · Leshan", "extraPlaces": "Chengdu and Leshan", "keywords": "senior seniors elderly older retired gentle relaxed kids children child Pandas at the right hour A guided Sichuan table Tea-house culture with local context An optional private Leshan day", "dur": "5 days", "days": 5, "img": "../../../public/tours/chengdu-pandas/detail-tea.webp", "who": ["Family"], "interest": ["Food & local life", "Pandas & wildlife"], "easy": true, "halal": false, "pending": false, "href": "/tours/chengdu-pandas-sichuan-table"}, {"slug": "beijing-great-wall-private-5-day-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "Beijing's Forbidden City & the Great Wall", "desc": "Stay in one city base while imperial Beijing and a mountain Wall day unfold around your pace.", "dest": "Beijing", "extraPlaces": "Beijing · Forbidden City · Hutongs · Mutianyu Great Wall", "keywords": "senior seniors elderly older retired gentle relaxed A Great Wall section selected around your pace Forbidden City with historical context Temple of Heaven in the morning One hotel base throughout", "dur": "5 days", "days": 5, "img": "../../../public/tours/beijing-unhurried/forbidden-city.webp", "who": ["First-time"], "interest": ["History", "Culture & heritage"], "easy": true, "halal": false, "pending": false, "href": "/tours/beijing-great-wall-private-5-day-tour"}, {"slug": "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "Terracotta Warriors & the Great Wall", "desc": "Cross between two imperial capitals, from silent clay ranks to watchtowers over the mountains.", "dest": "Xi'an · Beijing", "extraPlaces": "Xi'an, Beijing", "keywords": "Terracotta Warriors with historical interpretation Xi'an's Muslim Quarter and halal food heritage High-speed rail between the imperial capitals A privately paced Great Wall day", "dur": "6 days", "days": 7, "img": "../../../public/tours/xian-beijing-private-journey/day-01.webp", "who": [], "interest": ["History", "Food & local life"], "easy": false, "halal": false, "pending": false, "href": "/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour"}, {"slug": "chengdu-pandas-jiuzhaigou-private-7-day-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "Pandas & the Turquoise Lakes of Jiuzhaigou", "desc": "Pair Chengdu's gentle local rhythm with the clear lakes and forest paths of Jiuzhaigou.", "dest": "Chengdu · Jiuzhaigou", "extraPlaces": "Chengdu, Jiuzhaigou", "keywords": "Pandas at their most active time A full day among Jiuzhaigou's lakes and waterfalls Plateau landscapes with altitude-aware planning", "dur": "7 days", "days": 8, "img": "../../../public/tours/chengdu-pandas-jiuzhaigou/hero.webp", "who": [], "interest": ["Nature & landscapes", "Pandas & wildlife"], "easy": false, "halal": false, "pending": false, "href": "/tours/chengdu-pandas-jiuzhaigou-private-7-day-tour"}, {"slug": "shanghai-zhangjiajie-floating-peaks", "tier": "signature", "tierLabel": "Signature Journey", "title": "Shanghai's Skyline & Zhangjiajie's Floating Mountains", "desc": "Leave the riverfront glow behind and wake among pillars of stone, cloud and mountain light.", "dest": "Shanghai · Zhangjiajie", "extraPlaces": "Shanghai, Wulingyuan, Zhangjiajie", "keywords": "Shanghai's riverfront and lived-in neighborhoods A managed flight into the mountain region Wulingyuan's sandstone peaks A separate Tianmen Mountain day", "dur": "8 days", "days": 8, "img": "../../../public/tours/shanghai-zhangjiajie-floating-peaks/hero-floating-peaks.webp", "who": [], "interest": ["Nature & landscapes", "Photography"], "easy": false, "halal": false, "pending": false, "href": "/tours/shanghai-zhangjiajie-floating-peaks"}, {"slug": "beijing-xian-shanghai-private-9-day-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "The Great Wall, Terracotta Army & Shanghai", "desc": "A thoughtful first China journey with private context, key logistics handled, and fewer rushed departures.", "dest": "Beijing · Xi'an · Shanghai", "extraPlaces": "Beijing, Xi'an, Shanghai", "keywords": "senior seniors elderly older retired gentle relaxed A full Great Wall day Imperial Beijing with room for context Terracotta Warriors without a rushed connection Shanghai after dark", "dur": "9 days", "days": 9, "img": "../../../public/tours/first-china-beautifully-paced/beijing-temple-of-heaven-reflection.webp", "who": ["First-time"], "interest": ["Culture & heritage", "History"], "easy": true, "halal": false, "pending": false, "href": "/tours/beijing-xian-shanghai-private-9-day-tour"}, {"slug": "luxury-yunnan-private-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "Yunnan's Tea Horse Road: Snow Mountains & Old Towns", "desc": "Follow old trading paths through Dali, Shaxi, Lijiang and Shangri-La with every day designed only for you.", "dest": "Dali · Shaxi · Lijiang · Shangri-La", "extraPlaces": "Dali, Shaxi, Lijiang, Shangri-La", "keywords": "honeymoon romantic Begin beside Erhai with private time in Dali Stay within Shaxi's living Tea Horse Road history Cross the highland landscape toward Lijiang and Shangri-La Meet local culture through carefully confirmed private hosts Adjust each day around weather, altitude and personal energy", "dur": "10 days", "days": 10, "img": "../../../public/tours/luxury-yunnan-private-tour/jade-dragon.jpg", "who": ["Couples"], "interest": ["Nature & landscapes", "Slow travel"], "easy": false, "halal": false, "pending": false, "href": "/tours/luxury-yunnan-private-tour"}, {"slug": "china-family-tour-with-pandas-12-day-private-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "Pandas, Warriors & the Great Wall, Made for Families", "desc": "The Wall, warriors and pandas with child-aware days and room to rest.", "dest": "Beijing · Xi'an · Chengdu · Shanghai", "extraPlaces": "Beijing, Xi'an, Chengdu, Shanghai", "keywords": "kids children child Junior Curator Mission in the Forbidden City Great Wall family challenge and photographer Terracotta Army and private clay studio Pandas with conservation-focused interpretation Shanghai market-to-private-kitchen finale", "dur": "12 days", "days": 12, "img": "../../../public/tours/chengdu-pandas/chengdu-hero-panda.webp", "who": ["Family"], "interest": ["Pandas & wildlife", "Culture & heritage"], "easy": false, "halal": false, "pending": false, "href": "/tours/china-family-tour-with-pandas-12-day-private-tour"}, {"slug": "china-at-an-easier-pace-12-day-private-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "Imperial China at an Unhurried Pace", "desc": "Beijing, Xi'an and Shanghai with time to rest between landmark days.", "dest": "Beijing · Xi'an · Shanghai", "extraPlaces": "Beijing, Xi'an, Shanghai", "keywords": "senior seniors elderly older retired gentle relaxed honeymoon romantic Tai chi with a local teacher A private Beijing courtyard table Terracotta Army and clay artisan encounter Shanghai with an architecture specialist", "dur": "12 days", "days": 12, "img": "../../../public/tours/beijing-unhurried/summer-palace.webp", "who": ["Couples"], "interest": ["Slow travel", "Culture & heritage"], "easy": true, "halal": false, "pending": false, "href": "/tours/china-at-an-easier-pace-12-day-private-tour"}, {"slug": "beijing-xian-chengdu-shanghai-private-11-day-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "Four Cities, One Clear Route Through China", "desc": "One clear 12-day route through four distinct cities, with the connections planned around your dates.", "dest": "Shanghai · Chengdu · Xi'an · Beijing", "extraPlaces": "Shanghai, Chengdu, Xi'an, Beijing", "keywords": "Shanghai's historic lanes and riverfront Panda conservation and Sichuan food culture The Terracotta Warriors and Beijing's imperial landmarks A guided walk on the Jinshanling Great Wall", "dur": "12 days", "days": 12, "img": "../../../public/tours/first-china-beautifully-paced/shanghai-huangpu-sunset.webp", "who": ["First-time"], "interest": ["Culture & heritage", "Pandas & wildlife"], "easy": false, "halal": false, "pending": false, "href": "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour"}, {"slug": "chengdu-chongqing-zhangjiajie-private-11-day-tour", "tier": "signature", "tierLabel": "Signature Journey", "title": "Pandas, Sichuan Food & Zhangjiajie's Floating Mountains", "desc": "Taste Sichuan after dark, meet pandas early and rise into Zhangjiajie's sandstone landscape.", "dest": "Chengdu · Chongqing · Zhangjiajie", "extraPlaces": "Chengdu, Chongqing, Zhangjiajie", "keywords": "Pandas at their most active time of day Chongqing's layered nightscape with a local host Two distinct Zhangjiajie mountain days", "dur": "11 days", "days": 12, "img": "../../../public/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/chongqing-07.webp", "who": [], "interest": ["Nature & landscapes", "Food & local life"], "easy": false, "halal": false, "pending": false, "href": "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour"}, {"slug": "guangzhou-shenzhen-tailor-made-business-tour-4-day", "tier": "tailor-made-example", "tierLabel": "Tailor-Made example", "title": "A Tailor-Made Business Trip to Guangzhou & Shenzhen", "desc": "Let the fixed agenda lead, then discover South China's food and city life in the hours between.", "dest": "Guangzhou · Shenzhen", "extraPlaces": "Guangzhou, Shenzhen", "keywords": "Build every service around fixed flights, meetings and fair hours Shop, cook and explore Guangzhou family culture with a local host Add a contextual traditional Chinese medicine introduction Select one date-confirmed Shenzhen innovation chapter Keep one China-based team responsible for the operating plan", "dur": "4–7 days", "days": 7, "img": null, "who": [], "interest": ["Food & local life"], "easy": false, "halal": false, "pending": true, "href": "/tours/guangzhou-shenzhen-tailor-made-business-tour-4-day"}, {"slug": "qingcheng-mountain-private-wellness-retreat-10-day", "tier": "tailor-made-example", "tierLabel": "Tailor-Made example", "title": "A Private Wellness Retreat at Mount Qingcheng", "desc": "Wake beneath forested peaks to tea, quiet movement and days with enough room to feel like your own.", "dest": "Chengdu · Qingcheng Mountain", "extraPlaces": "Chengdu, Qingcheng Mountain", "keywords": "senior seniors elderly older retired gentle relaxed honeymoon romantic Stay seven uninterrupted nights beneath Qingcheng Mountain Move privately with a tai chi teacher and clear cultural interpretation Keep a complete day free of touring or guide obligations Receive two individually selected resort treatments per guest Take one realistic tea, movement or breathing rhythm home", "dur": "10 days", "days": 13, "img": null, "who": ["Couples"], "interest": ["Slow travel"], "easy": true, "halal": false, "pending": true, "href": "/tours/qingcheng-mountain-private-wellness-retreat-10-day"}, {"slug": "muslim-friendly-china-tour-great-wall-desert-stars", "tier": "tailor-made-example", "tierLabel": "Tailor-Made example", "title": "Muslim-Friendly China: Great Wall to Ningxia Desert", "desc": "From imperial courtyards to Hui kitchens and desert dusk, faith-aware details travel with you.", "dest": "Beijing · Xi'an · Yinchuan · Zhongwei · Shanghai", "extraPlaces": "Beijing, Xi'an, Yinchuan, Zhongwei, Shanghai", "keywords": "kids children child honeymoon romantic halal muslim prayer Eat a private halal picnic beside the Great Wall Make noodles in Xi'an after its Great Mosque courtyards Watch the desert darken over an alcohol-free dinner Share Ningxia food traditions with a Hui host or cook AVIORA Muslim Journey Standard throughout", "dur": "13 days", "days": 14, "img": null, "who": ["Family", "Couples"], "interest": ["Culture & heritage", "Food & local life"], "easy": false, "halal": true, "pending": true, "href": "/tours/muslim-friendly-china-tour-great-wall-desert-stars"}];
+const TIERS=[
+ {id:"all",label:"All",explain:"Nineteen private journeys across China, from a single day to nearly two weeks.",link:null},
+ {id:"day",label:"Day Experiences",explain:"One day with your own guide and driver. A low-commitment way to meet China, and easy to add to a longer trip.",link:["See all Day Experiences","/private-china-day-tours"]},
+ {id:"signature",label:"Signature Journeys",explain:"Defined multi-day routes, adjusted to your dates, party and pace.",link:["See all Signature Journeys","/fixed-itinerary-china-tours"]},
+ {id:"tailor-made-example",label:"Tailor-Made",explain:"Designed from a blank page. These three show the kind of journey we build around a specific need.",link:["How tailor-made works","/tailor-made-china-tours"]},
+];
+const LENGTH=[["1","1 day",d=>d<=1],["3–7","3–7 days",d=>d>=3&&d<=7],["8–12","8–12 days",d=>d>=8&&d<=12],["13+","13+ days",d=>d>=13]];
+const WHO=["First-time","Family","Couples","Friends","Multi-generational"];
+const INTEREST=["Culture & heritage","History","Nature & landscapes","Food & local life","Pandas & wildlife","Photography","Slow travel","Architecture"];
+const TOPICS=[ // places & topics shown in suggestions, with the words that trigger them
+ ["Beijing","beijing peking"],["Shanghai","shanghai"],["Xi'an","xian sian"],["Chengdu","chengdu"],["Chongqing","chongqing"],["Zhangjiajie","zhangjiajie avatar"],["Guilin & Yangshuo","guilin yangshuo li river"],["Yunnan","yunnan dali lijiang shaxi shangri"],
+ ["Great Wall","great wall mutianyu badaling jinshanling"],["Terracotta Army","terracotta army warriors qin"],["Pandas","panda pandas"],["Forbidden City","forbidden city"],["Sichuan food","sichuan food hotpot"],["Tea houses","tea house tea"],
+];
+const STOP=new Set("a an the in on of for to and or with from at by my our me we i trip trips tour tours travel vacation holiday itinerary itineraries private china chinese journey journeys".split(" "));
+const SYN={kids:"family",kid:"family",children:"family",child:"family",toddlers:"family",teens:"family",honeymoon:"couples",romantic:"couples",anniversary:"couples",
+  senior:"easier",seniors:"easier",elderly:"easier",older:"easier",retired:"easier",grandparents:"easier",gentle:"easier",relaxed:"easier",halal:"muslim",traveller:"",traveler:"",
+  vegetarian:"food",foodie:"food",eat:"food",hike:"nature",hiking:"nature",scenery:"nature",landscape:"nature",landscapes:"nature",peking:"beijing",sian:"xian",avatar:"zhangjiajie",parent:"easier",parents:"easier",grandparent:"easier",grandma:"easier",grandpa:"easier",bamboo:"panda",wall:"wall"};
+const st={tier:"all",length:new Set(),who:new Set(),interest:new Set(),easy:false,halal:false,q:"",sort:"rec"};
+const q0=new URLSearchParams(location.search);
+if(TIERS.some(t=>t.id===q0.get("tier")))st.tier=q0.get("tier"); st.q=(q0.get("q")||"").slice(0,80);
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---------- search engine (client-side; same idea works server-side) ---------- */
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[’']/g,"").replace(/xi an/g,"xian").replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim();
+const stem=w=>w.length>3&&w.endsWith("s")&&!w.endsWith("ss")?w.slice(0,-1):w;
+ITEMS.forEach(it=>{
+  it.nTitle=norm(it.title);it.nPlace=norm(it.route+" "+it.dest+" "+it.extraPlaces);
+  it.nTags=norm([...it.who,...it.interest,it.easy?"easier pace":"",it.halal?"muslim friendly halal":""].join(" "));
+  it.nDesc=norm(it.desc);it.nKey=norm(it.keywords);
+  it.words=new Set([it.nTitle,it.nPlace,it.nTags,it.nDesc,it.nKey].join(" ").split(" ").map(stem).filter(Boolean));
+});
+const VOCAB=[...new Set(ITEMS.flatMap(i=>[...i.words]).concat(TOPICS.flatMap(t=>norm(t[1]).split(" ").map(stem))))].filter(w=>w.length>3);
+function lev(a,b){if(Math.abs(a.length-b.length)>2)return 9;const m=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=m[0];m[0]=i;for(let j=1;j<=b.length;j++){const t=m[j];m[j]=Math.min(m[j]+1,m[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return m[b.length];}
+const WORDNUM={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12};
+function parse(raw){
+  let s=norm(raw),days=null,asDay=false;
+  s=s.replace(/\b(a|one)\s+day\b|\bday\s*trips?\b|\bday\s*tours?\b|\b1\s*day\b/g,()=>{asDay=true;return " ";});
+  s=s.replace(/\b(\d{1,2}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s*(day|days|d|night|nights|week|weeks|wk|wks)\b/g,(m,n,u)=>{let v=WORDNUM[n]||+n;if(/^w/.test(u))v*=7;days=v;return " ";});
+  const raws=s.split(" ").filter(Boolean).filter(w=>!STOP.has(w));
+  const toks=raws.map(w=>{if(SYN[w]!==undefined)return SYN[w];const x=stem(w);return SYN[x]!==undefined?SYN[x]:x;}).filter(Boolean);
+  return{toks,days,asDay};
+}
+function tokenScore(it,t){
+  if(t.length<4){const re=new RegExp('(^| )'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));return re.test(it.nTitle)?6:re.test(it.nPlace)?5:re.test(it.nTags)?4:re.test(it.nDesc)||re.test(it.nKey)?2:0;}
+  if(it.nTitle.includes(t))return 6; if(it.nPlace.includes(t))return 5; if(it.nTags.includes(t))return 4; if(it.nDesc.includes(t))return 2; if(it.nKey.includes(t))return 2;
+  if(t.length>=4){for(const w of it.words){if(w.startsWith(t))return 1.5;} const tol=t.length>=7?2:1;for(const w of it.words){if(w.length>=4&&lev(t,w)<=tol)return 1;}}
+  return 0;
+}
+function score(it,p){
+  if(p.asDay&&it.tier!=="day")return 0;
+  let total=0;
+  if(p.days!==null){ if(p.days===1){if(it.tier!=="day")return 0;} else { if(it.days<p.days-2||it.days>p.days+2)return 0; total+=3-Math.abs(it.days-p.days)*.5; } }
+  if(p.asDay)total+=3;
+  for(const t of p.toks){const s=tokenScore(it,t);if(!s)return 0;total+=s;}
+  return total||(p.toks.length||p.days!==null||p.asDay?0:1);
+}
+function didYouMean(raw){
+  const {toks}=parse(raw);let changed=false;
+  const fixed=toks.map(t=>{if(t.length<4||VOCAB.includes(t)||VOCAB.some(w=>w.startsWith(t)))return t;let best=null,bd=9;for(const w of VOCAB){const d=lev(t,w);if(d<bd){bd=d;best=w;}}if(best&&bd<=2){changed=true;return best;}return t;});
+  return changed?fixed.join(" "):null;
+}
+const hl=(text,q)=>{const ws=norm(q).split(" ").filter(w=>w.length>1&&!STOP.has(w));if(!ws.length)return esc(text);let out=esc(text);ws.forEach(w=>{out=out.replace(new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark class=\"hl\">$1</mark>");});return out;};
+
+/* ---------- filtering ---------- */
+function match(it,opts={}){
+  if(!opts.anyTier&&st.tier!=="all"&&it.tier!==st.tier)return false;
+  if(st.length.size&&![...st.length].some(k=>LENGTH.find(l=>l[0]===k)[2](it.days)))return false;
+  if(st.who.size&&![...st.who].some(w=>it.who.includes(w)))return false;
+  if(st.interest.size&&![...st.interest].some(w=>it.interest.includes(w)))return false;
+  if(st.easy&&!it.easy)return false; if(st.halal&&!it.halal)return false;
+  return true;
+}
+const P=()=>parse(st.q);
+function results(opts){const p=P();return ITEMS.map(it=>({it,s:match(it,opts)?score(it,p):0})).filter(x=>x.s>0);}
+function sorted(list){
+  if(st.sort==="short")return list.sort((a,b)=>a.it.days-b.it.days);
+  if(st.sort==="long")return list.sort((a,b)=>b.it.days-a.it.days);
+  return st.q.trim()?list.sort((a,b)=>b.s-a.s):list;
+}
+const tierCount=id=>{const keep=st.tier;st.tier=id;const n=results().length;st.tier=keep;return n;};
+const activeCount=()=>st.length.size+st.who.size+st.interest.size+(st.easy?1:0)+(st.halal?1:0);
+function countFor(group,val){const keep=st[group];st[group]=new Set([val]);const n=results().length;st[group]=keep;return n;}
+function groupDefs(){return[["length","Length",LENGTH.map(l=>[l[0],l[1]])],["who","Who is travelling",WHO.map(w=>[w,w])],["interest","Interest",INTEREST.map(w=>[w,w])]];}
+
+/* ---------- search box (WAI-ARIA combobox) ---------- */
+let recent=[];try{recent=JSON.parse(localStorage.getItem("av-recent")||"[]")}catch(e){}
+const saveRecent=q=>{q=q.trim();if(!q)return;recent=[q,...recent.filter(x=>x.toLowerCase()!==q.toLowerCase())].slice(0,5);try{localStorage.setItem("av-recent",JSON.stringify(recent))}catch(e){}};
+const SEARCHES=[];
+const ICON='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>';
+function makeSearch(root,id,placeholder,compact){
+  root.innerHTML=`<div class="sfield" role="search">${ICON}<input id="${id}" type="search" role="combobox" aria-expanded="false" aria-controls="${id}-list" aria-autocomplete="list" aria-label="Search journeys" placeholder="${placeholder}" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" inputmode="search"><button class="sclear" type="button" aria-label="Clear search" hidden>×</button>${compact?"":'<kbd class="kbd">/</kbd><button class="sgo" type="button">Search</button>'}</div><div class="panel" id="${id}-list" role="listbox" hidden></div>`;
+  const input=root.querySelector("input"),panel=root.querySelector(".panel"),clear=root.querySelector(".sclear");
+  let rows=[],active=-1;
+  const open=()=>{panel.hidden=false;input.setAttribute("aria-expanded","true");},close=()=>{panel.hidden=true;input.setAttribute("aria-expanded","false");active=-1;input.removeAttribute("aria-activedescendant");};
+  function build(){
+    const q=input.value.trim();rows=[];let h="";
+    const add=(r,html)=>{rows.push(r);h+=html.replace("<div class=\"opt\"",`<div class="opt" id="${id}-o${rows.length-1}" role="option" aria-selected="false" data-i="${rows.length-1}"`);};
+    if(!q){
+      h+='<h4>Popular searches</h4><div class="rchips">'+["Great Wall","Pandas","Xi'an","Family","10 days","Easier pace"].map(x=>`<button type="button" data-q="${esc(x)}">${esc(x)}</button>`).join("")+"</div>";
+      if(recent.length){h+='<h4>Recent</h4>';recent.forEach(r=>add({type:"q",q:r},`<div class="opt"><span class="ic">↺</span><span class="tx"><b>${esc(r)}</b></span></div>`));h+='<button class="plink" type="button" data-clear-recent>Clear recent searches</button>';}
+    }else{
+      const p=parse(q),list=ITEMS.map(it=>({it,s:score(it,p)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s);
+      const tq=norm(q),topics=TOPICS.map(([label,words])=>{const n=norm(words);const hit=tq.length>=2&&(n.split(" ").some(w=>w.startsWith(tq)||(tq.length>=4&&lev(tq,w)<=1))||norm(label).startsWith(tq));return hit?{label,n:ITEMS.filter(i=>score(i,parse(label))>0).length}:null;}).filter(Boolean).slice(0,4);
+      if(topics.length){h+="<h4>Places & topics</h4>";topics.forEach(t=>add({type:"q",q:t.label},`<div class="opt"><span class="ic">${ICON}</span><span class="tx"><b>${hl(t.label,q)}</b></span><span class="n">${t.n} ${t.n===1?"journey":"journeys"}</span></div>`));}
+      if(list.length){h+="<h4>Journeys</h4>";list.slice(0,4).forEach(({it})=>add({type:"go",href:it.href},`<div class="opt">${it.img?`<img src="${it.img}" alt="">`:'<span class="th"></span>'}<span class="tx"><b>${hl(it.title,q)}</b><small>${it.tierLabel} · ${esc(it.dur)}</small></span></div>`));}
+      if(!topics.length&&!list.length){const d=didYouMean(q);h+=`<div class="opt" style="cursor:default"><span class="tx"><b>No matches for “${esc(q)}”</b><small>${d?`Did you mean “${esc(d)}”?`:"Try a place, a sight or a trip length"}</small></span></div>`;if(d)add({type:"q",q:d},`<div class="opt"><span class="ic">${ICON}</span><span class="tx"><b>Search “${esc(d)}”</b></span></div>`);}
+      add({type:"q",q},`<div class="opt"><span class="ic">${ICON}</span><span class="tx"><b>See all results for “${esc(q)}”</b></span></div>`);
+    }
+    panel.innerHTML=h;panel.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>commit(b.dataset.q));
+    panel.querySelectorAll(".opt[data-i]").forEach(o=>{o.onmousedown=e=>e.preventDefault();o.onclick=()=>choose(+o.dataset.i);});
+    const rc=panel.querySelector("[data-clear-recent]");if(rc)rc.onclick=()=>{recent=[];try{localStorage.removeItem("av-recent")}catch(e){}build();};
+    panel.querySelectorAll(".rchips button").forEach(b=>b.onmousedown=e=>e.preventDefault());
+  }
+  function setActive(i){panel.querySelectorAll(".opt[aria-selected=true]").forEach(o=>o.setAttribute("aria-selected","false"));active=i;if(i>=0){const o=panel.querySelector(`.opt[data-i="${i}"]`);if(o){o.setAttribute("aria-selected","true");o.scrollIntoView({block:"nearest"});input.setAttribute("aria-activedescendant",o.id);}}else input.removeAttribute("aria-activedescendant");}
+  function choose(i){const r=rows[i];if(!r)return;if(r.type==="go"){location.href=r.href;return;}commit(r.q);}
+  function commit(q){input.value=q;st.q=q;saveRecent(q);close();render();syncInputs(input);}
+  input.addEventListener("focus",()=>{build();open();});
+  input.addEventListener("input",()=>{st.q=input.value;clear.hidden=!input.value;build();open();render(true);syncInputs(input);});
+  input.addEventListener("keydown",e=>{
+    if(e.key==="ArrowDown"){e.preventDefault();if(panel.hidden){build();open();}setActive(Math.min(active+1,rows.length-1));}
+    else if(e.key==="ArrowUp"){e.preventDefault();setActive(Math.max(active-1,-1));}
+    else if(e.key==="Enter"){e.preventDefault();active>=0?choose(active):commit(input.value);}
+    else if(e.key==="Escape"){if(!panel.hidden)close();else if(input.value){input.value="";st.q="";clear.hidden=true;render();syncInputs(input);}}
+  });
+  input.addEventListener("blur",()=>setTimeout(close,120));
+  clear.onclick=()=>{input.value="";st.q="";clear.hidden=true;render();syncInputs(input);input.focus();};
+  const go=root.querySelector(".sgo");if(go)go.onclick=()=>commit(input.value);
+  const api={input,clear,sync(v){if(input!==document.activeElement||true)input.value=v;clear.hidden=!v;}};
+  SEARCHES.push(api);return api;
+}
+function syncInputs(src){SEARCHES.forEach(s=>{if(s.input!==src)s.sync(st.q);else s.clear.hidden=!st.q;});}
+const hero=makeSearch($("#heroSearch"),"qHero","Search “Great Wall”, “pandas”, “Xi’an”, “10 days”…",false);
+const comp=makeSearch($("#compact"),"qBar","Search journeys",true);
+hero.sync(st.q);comp.sync(st.q);
+document.addEventListener("keydown",e=>{if(e.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();(document.querySelector("#compact").classList.contains("on")?comp:hero).input.focus();}});
+$("#popular").innerHTML='<span>Popular:</span>'+["Great Wall","Pandas","Xi’an","Family","10 days","Easier pace"].map(x=>`<button type="button" data-q="${x}">${x}</button>`).join("");
+$("#popular").querySelectorAll("button").forEach(b=>b.onclick=()=>{st.q=b.dataset.q;saveRecent(st.q);hero.sync(st.q);comp.sync(st.q);render();$("#controls").scrollIntoView({behavior:"smooth"});});
+// compact search + mobile search icon appear when the hero search leaves the screen
+new IntersectionObserver(([e])=>{const gone=!e.isIntersecting;$("#compact").classList.toggle("on",gone);$("#mSearch").classList.toggle("on",gone);},{rootMargin:`-${60}px 0px 0px 0px`}).observe($("#heroSearch"));
+$("#mSearch").onclick=()=>{scrollTo({top:0,behavior:"smooth"});setTimeout(()=>hero.input.focus(),350);};
+
+/* ---------- controls ---------- */
+function renderTabs(){
+  $("#tabs").innerHTML=TIERS.map(t=>{const n=tierCount(t.id);return `<button class="tab" role="tab" aria-selected="${t.id===st.tier}" aria-controls="grid" data-tier="${t.id}" data-zero="${n===0}">${t.label} <small>${n}</small></button>`;}).join("");
+  $("#tabs").querySelectorAll(".tab").forEach(b=>b.onclick=()=>{st.tier=b.dataset.tier;url();render();});
+}
+function url(){const u=new URL(location);const set=(k,v)=>v?u.searchParams.set(k,v):u.searchParams.delete(k);set("tier",st.tier==="all"?"":st.tier);set("q",st.q.trim());history.replaceState(null,"",u);}
+function renderFilters(){
+  const el=$("#filters");
+  const defs=groupDefs().map(([k,label,opts])=>{const n=st[k].size;return `<div class="fwrap" data-k="${k}"><button class="fbtn" type="button" aria-expanded="false" data-on="${n>0}">${label}${n?` · ${n}`:""}<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4.5 6 8l4-3.5"/></svg></button><div class="pop" role="group" aria-label="${label}">${opts.map(([v,l])=>`<label class="copt"><input type="checkbox" value="${esc(v)}" ${st[k].has(v)?"checked":""}> ${l}<small>${countFor(k,v)}</small></label>`).join("")}</div></div>`;}).join("");
+  const gn=(st.easy?1:0)+(st.halal?1:0);
+  const good=`<div class="fwrap" data-k="good"><button class="fbtn" type="button" aria-expanded="false" data-on="${gn>0}">Good to know${gn?` · ${gn}`:""}<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4.5 6 8l4-3.5"/></svg></button><div class="pop" role="group" aria-label="Good to know"><label class="copt"><input type="checkbox" data-t="easy" ${st.easy?"checked":""}> Easier pace<small>${ITEMS.filter(i=>i.easy).length}</small></label><label class="copt"><input type="checkbox" data-t="halal" ${st.halal?"checked":""}> Muslim-friendly<small>${ITEMS.filter(i=>i.halal).length}</small></label></div></div>`;
+  el.innerHTML=defs+good;
+  el.querySelectorAll(".fwrap").forEach(w=>{
+    const b=w.querySelector(".fbtn");
+    b.onclick=e=>{e.stopPropagation();const o=w.dataset.open!=="true";el.querySelectorAll(".fwrap").forEach(x=>{x.dataset.open="false";x.querySelector(".fbtn").setAttribute("aria-expanded","false")});w.dataset.open=o;b.setAttribute("aria-expanded",o);};
+    w.querySelectorAll("input").forEach(i=>i.onchange=()=>{if(i.dataset.t)st[i.dataset.t]=i.checked;else{const s=st[w.dataset.k];i.checked?s.add(i.value):s.delete(i.value);}render(w.dataset.k);});
+  });
+}
+document.addEventListener("click",e=>{if(!e.target.closest(".fwrap"))document.querySelectorAll(".fwrap").forEach(x=>{x.dataset.open="false";x.querySelector(".fbtn").setAttribute("aria-expanded","false")});});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".fwrap").forEach(x=>x.dataset.open="false");});
+
+function renderSheet(){
+  $("#sheetBody").innerHTML=groupDefs().map(([k,label,opts])=>`<fieldset><legend>${label}</legend><div class="chips">${opts.map(([v,l])=>`<label><input type="checkbox" data-k="${k}" value="${esc(v)}" ${st[k].has(v)?"checked":""}><span>${l}</span></label>`).join("")}</div></fieldset>`).join("")+
+  `<fieldset><legend>Good to know</legend><div class="chips"><label><input type="checkbox" data-t="easy" ${st.easy?"checked":""}><span>Easier pace</span></label><label><input type="checkbox" data-t="halal" ${st.halal?"checked":""}><span>Muslim-friendly</span></label></div></fieldset>`;
+  $("#sheetBody").querySelectorAll("input").forEach(i=>i.onchange=()=>{if(i.dataset.t)st[i.dataset.t]=i.checked;else{const s=st[i.dataset.k];i.checked?s.add(i.value):s.delete(i.value);}renderResults();$("#mcount").textContent=activeCount()||"";syncSheetBtn();});
+  syncSheetBtn();
+}
+function syncSheetBtn(){const n=results().length;const b=$("#sheetShow");b.textContent=n?`Show ${n} journey${n===1?"":"s"}`:"No journeys match";b.disabled=!n;}
+$("#openSheet").onclick=()=>{renderSheet();$("#sheet").showModal();};
+$("#sheetShow").onclick=()=>{$("#sheet").close();render();};
+$("#sheetClear").onclick=()=>{clearFilters();renderSheet();};
+$("#sheet").addEventListener("click",e=>{if(e.target===$("#sheet"))$("#sheet").close();});
+function clearFilters(){st.length.clear();st.who.clear();st.interest.clear();st.easy=st.halal=false;render();}
+function clearAll(){st.q="";hero.sync("");comp.sync("");clearFilters();url();}
+$("#clear").onclick=clearAll;
+$("#sort").onchange=e=>{st.sort=e.target.value;renderResults();};
+
+/* ---------- results ---------- */
+function card(it){
+  const img=it.img?`<img src="${it.img}" alt="" decoding="async">`:`<span class="soon">Photography to follow</span>`;
+  const attrs=[it.easy?"Easier pace":"",it.halal?"Muslim-friendly":""].filter(Boolean);
+  const tags=[...attrs,it.who[0],it.interest[0],it.interest[1],it.who[1]].filter(Boolean).slice(0,3);
+  return `<a class="card" href="${it.href}" data-slug="${it.slug}"><div class="ph">${img}<span class="chip">${esc(it.dur)}</span></div><div class="b"><p class="t">${it.tierLabel} · ${esc(it.dest)}</p><h3>${hl(it.title,st.q)}</h3><p class="d">${esc(it.desc)}</p><div class="tags">${tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div><span class="go">View journey <i>→</i></span></div></a>`;
+}
+const DIY=`<aside class="diy"><h3>Don’t see it? We’ll design it.</h3><p>Tell us your dates, who is travelling and what you love. We design the route from a blank page.</p><a href="#">Design my journey</a></aside>`;
+const chips=arr=>`<div class="rchips">${arr.map(x=>`<button type="button" data-q="${esc(x)}">${esc(x)}</button>`).join("")}</div>`;
+function renderResults(){
+  const list=sorted(results());
+  const html=list.map(x=>card(x.it));
+  if(st.tier!=="day"&&list.length>3)html.splice(Math.min(6,html.length),0,DIY);
+  let empty="";
+  if(!list.length){
+    const d=st.q.trim()?didYouMean(st.q):null;
+    empty=`<div class="empty"><h3>${st.q.trim()?`No journeys for “${esc(st.q.trim())}”.`:"No journey matches all of that."}</h3>${d?`<p class="dym">Did you mean <button type="button" data-q="${esc(d)}">${esc(d)}</button>?</p>`:"<p>Try a place, a sight or a trip length, or remove a filter. For accessibility or medical needs, tell us and we will plan it with you.</p>"}${chips(["Great Wall","Pandas","Xi'an","Family","10 days"])}<button type="button" class="lk" onclick="clearAll()">Clear search and filters</button></div>`;
+    html.push(empty,DIY);
+  }
+  $("#grid").innerHTML=html.join("");
+  $("#grid").querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{st.q=b.dataset.q;hero.sync(st.q);comp.sync(st.q);saveRecent(st.q);render();});
+  $("#count").textContent=list.length;$("#countLabel").textContent=list.length===1?"journey":"journeys";
+  $("#forQ").innerHTML=st.q.trim()?` for “${esc(st.q.trim())}”`:"";
+  $("#clear").hidden=!(activeCount()||st.q.trim());
+  $("#mcount").textContent=activeCount()||"";
+  // results exist in other tiers? say so instead of showing an unexplained empty tab
+  const others=st.tier!=="all"&&(st.q.trim()||activeCount())?TIERS.filter(t=>t.id!=="all"&&t.id!==st.tier).map(t=>[t,tierCount(t.id)]).filter(x=>x[1]>0):[];
+  $("#others").innerHTML=others.length&&list.length<3?`<div class="others">${list.length?"Also":"No matches here, but there are"} matches in: ${others.map(([t,n])=>`<button type="button" data-tier="${t.id}">${t.label} (${n})</button>`).join(" ")}</div>`:"";
+  $("#others").querySelectorAll("button").forEach(b=>b.onclick=()=>{st.tier=b.dataset.tier;url();render();});
+}
+function render(keep){
+  const t=TIERS.find(x=>x.id===st.tier);
+  renderTabs();
+  const open=keep?document.querySelector(".fwrap[data-open=true]")?.dataset.k:null;
+  renderFilters();
+  if(open){const w=document.querySelector(`.fwrap[data-k="${open}"]`);if(w){w.dataset.open="true";w.querySelector(".fbtn").setAttribute("aria-expanded","true");}}
+  $("#explain").textContent=t.explain;
+  const a=$("#tierLink");t.link?(a.textContent=t.link[0]+" →",a.href=t.link[1],a.hidden=false):a.hidden=true;
+  url();renderResults();
+}
+render();
+{const d=q0.get("suggest"),f=q0.get("focus");if(d!==null||f){hero.input.focus();if(d){hero.input.value=d;hero.input.dispatchEvent(new Event("input"));}}}
+</script>
+</body>
+</html>

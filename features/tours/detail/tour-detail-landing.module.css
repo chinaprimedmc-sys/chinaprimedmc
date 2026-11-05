@@ -287,10 +287,16 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
-.productAction:hover,
 .productAction:focus-visible {
   background: #345449;
   border-color: #345449;
+}
+
+@media (hover: hover) {
+  .productAction:hover {
+    background: #345449;
+    border-color: #345449;
+  }
 }
 
 .productNoPressure {
@@ -458,22 +464,32 @@
   border: 1px solid #fff;
   color: #17211c;
 }
-.primaryAction:hover,
 .primaryAction:focus-visible,
-.mobileCtaAction:hover,
 .mobileCtaAction:focus-visible {
   background: #eef3f0;
   border-color: #eef3f0;
+}
+@media (hover: hover) {
+  .primaryAction:hover,
+  .mobileCtaAction:hover {
+    background: #eef3f0;
+    border-color: #eef3f0;
+  }
 }
 .secondaryAction {
   background: rgba(10, 18, 14, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.66);
   color: #fff;
 }
-.secondaryAction:hover,
 .secondaryAction:focus-visible {
   background: rgba(255, 255, 255, 0.14);
   border-color: #fff;
+}
+@media (hover: hover) {
+  .secondaryAction:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: #fff;
+  }
 }
 
 .heroDecisionBar {
@@ -776,10 +792,16 @@
   text-decoration: none;
 }
 
-.asideAction:hover,
 .asideAction:focus-visible {
   background: #345449;
   border-color: #345449;
+}
+
+@media (hover: hover) {
+  .asideAction:hover {
+    background: #345449;
+    border-color: #345449;
+  }
 }
 
 .fitSection {
@@ -1068,10 +1090,16 @@
   text-decoration: none;
 }
 
-.detailPlanningLink:hover,
 .detailPlanningLink:focus-visible {
   background: var(--soft);
   border-color: #b8c9bf;
+}
+
+@media (hover: hover) {
+  .detailPlanningLink:hover {
+    background: var(--soft);
+    border-color: #b8c9bf;
+  }
 }
 
 .noPayment {

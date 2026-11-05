@@ -81,9 +81,11 @@
     background-color var(--motion-fast) ease,
     border-color var(--motion-fast) ease;
 }
-.types button:hover:not([aria-pressed="true"]),
-.filterButton:hover {
-  background: var(--color-surface-muted);
+@media (hover: hover) {
+  .types button:hover:not([aria-pressed="true"]),
+  .filterButton:hover {
+    background: var(--color-surface-muted);
+  }
 }
 .types button[aria-pressed="true"] {
   background: var(--color-forest);
@@ -238,9 +240,11 @@
   color: var(--color-ink);
   cursor: pointer;
 }
-.collectionArrows button:hover {
-  border-color: var(--color-forest);
-  background: var(--color-surface-muted);
+@media (hover: hover) {
+  .collectionArrows button:hover {
+    border-color: var(--color-forest);
+    background: var(--color-surface-muted);
+  }
 }
 /* On the Journeys page every card is visible at once; only the home finder keeps a swipe rail. */
 @media (min-width: 640px) {

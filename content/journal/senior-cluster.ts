@@ -152,7 +152,7 @@ export const growthLaunchArticles: JournalArticle[] = [
     gallery: [images.guide, images.terracotta, images.shanghai],
     seoTitle: "China Tours for Seniors: What Good Tours Change",
     seoDescription:
-      "Compare China tours for seniors by route, hard days, rooms and transfers, with a published 12-day private benchmark from US$6,480 per person.",
+      "Compare China tours for seniors by route, hard days, rooms and transfers, with a published 12-day private route as a reference.",
     keywords: [
       "China tours for seniors",
       "senior China tours",
@@ -278,7 +278,7 @@ export const growthLaunchArticles: JournalArticle[] = [
     gallery: [images.team, images.shanghai, images.guide],
     seoTitle: "How Much Does a Trip to China Cost? Budget Guide",
     seoDescription:
-      "Plan a realistic China trip cost with published 2026 private land examples from US$1,690, plus flights, hotels, trains, guides, meals and city changes.",
+      "Plan a realistic China trip cost with the published private land routes, plus flights, hotels, trains, guides, meals and city changes.",
     keywords: [
       "how much does a trip to China cost",
       "China trip cost",
@@ -310,7 +310,7 @@ export const growthLaunchArticles: JournalArticle[] = [
     gallery: [images.guide, images.train, images.couple],
     seoTitle: "Private China Tour vs Self-Guided Trip: Compare",
     seoDescription:
-      "Compare a private China tour with self-guided travel by task, risk and cost, including a real nine-day private benchmark from US$3,190 per person.",
+      "Compare a private China tour with self-guided travel by task, risk and cost, including a real ten-day private route as a reference.",
     keywords: [
       "private China tour vs self guided",
       "China self guided tour",
@@ -439,7 +439,7 @@ export const growthLaunchArticles: JournalArticle[] = [
     gallery: [images.wall, images.terracotta, images.shanghai],
     seoTitle: "Two Weeks in China: First-Time 14-Day Itinerary",
     seoDescription:
-      "Plan two weeks in China with a 14-day Beijing, Xi'an, Chengdu and Shanghai route, slower alternatives and a real four-city price benchmark.",
+      "Plan two weeks in China with a 14-day Beijing, Xi'an, Chengdu and Shanghai route, slower alternatives and a real four-city route as a reference.",
     keywords: [
       "two weeks in China itinerary",
       "14 day China itinerary",

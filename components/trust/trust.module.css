@@ -1,0 +1,104 @@
+/* Trust components. Neutral palette only (ink, stone, white, line). No green, no gold. */
+.stars {
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 2px;
+  color: var(--star-off, rgba(128, 124, 116, 0.5));
+  white-space: nowrap;
+}
+.stars::before {
+  content: "★★★★★";
+}
+.stars::after {
+  content: "★★★★★";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--fill);
+  overflow: hidden;
+  color: var(--star-on, currentColor);
+}
+
+/* ---- rating line ---- */
+.line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  --star-on: #fff;
+  --star-off: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-decoration: none;
+}
+.line b {
+  font-weight: 600;
+}
+.line > span:last-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 0.92;
+}
+.lineLight {
+  --star-on: var(--color-ink);
+  --star-off: rgba(128, 124, 116, 0.4);
+  color: var(--color-ink);
+}
+
+/* ---- in-context guest voice ---- */
+.voice {
+  margin: 40px 0 48px;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink);
+}
+.voiceTitle {
+  margin: 0 0 16px;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.voiceGrid {
+  display: grid;
+  gap: 28px;
+}
+@media (min-width: 760px) {
+  .voiceGrid {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 40px;
+  }
+}
+.voice figure {
+  margin: 0;
+}
+.voice blockquote {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: clamp(18px, 1.6vw, 21px);
+  line-height: 1.45;
+}
+.voice figcaption {
+  margin-top: 12px;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+.voice figcaption a,
+.voiceMore {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.voiceMore {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-ink);
+}

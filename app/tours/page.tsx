@@ -15,12 +15,12 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = createMetadata({
   title: "Private China Tours, 1 to 13 Days: Tailor-Made Itineraries | AVIORA",
   description:
-    "Private China tours from 1 to 13 days, run by a licensed China-based team: Great Wall, Terracotta Army, pandas, Zhangjiajie. Multi-day journeys from US$1,590.",
+    "Private China tours from 1 to 13 days, run by a licensed China-based team: Great Wall, Terracotta Army, pandas, Zhangjiajie. Priced individually for your dates.",
   path: "/tours",
 });
 
 const toursDescription =
-  "Private China tours from 1 to 13 days, run by a licensed China-based team: Great Wall, Terracotta Army, pandas, Zhangjiajie. Multi-day journeys from US$1,590.";
+  "Private China tours from 1 to 13 days, run by a licensed China-based team: Great Wall, Terracotta Army, pandas, Zhangjiajie. Priced individually for your dates.";
 
 export default async function ToursPage({
   searchParams,

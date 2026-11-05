@@ -140,13 +140,13 @@ export const destinations: Destination[] = [
     hotels: [],
     tours: [
       {
-        title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
+        title: "10-Day Beijing, Xi'an & Shanghai Private Tour",
         description:
           "Beijing, Xi'an, and Shanghai with private guides, stronger pacing, and the big icons handled calmly.",
         tags: ["First-time", "Private"],
         image: destinationAsset.beijingForbiddenCity,
         route: "Beijing, Xi'an, Shanghai",
-        duration: "9 days",
+        duration: "10 days",
         style: "Private classic",
         href: inquiryHref,
       },
@@ -349,13 +349,13 @@ export const destinations: Destination[] = [
     hotels: [],
     tours: [
       {
-        title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
+        title: "10-Day Beijing, Xi'an & Shanghai Private Tour",
         description:
           "A calm first China route ending with Shanghai's skyline, food, and international ease.",
         tags: ["First-time", "Private"],
         image: destinationAsset.shanghaiSkyline,
         route: "Beijing, Xi'an, Shanghai",
-        duration: "9 days",
+        duration: "10 days",
         style: "Private classic",
         href: "/tours/beijing-xian-shanghai-private-9-day-tour",
       },

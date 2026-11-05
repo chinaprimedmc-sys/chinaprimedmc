@@ -11,7 +11,7 @@
     "preview:fresh": "pnpm build && pnpm preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:journey": "node --test tests/journey-brief.test.mjs tests/journey-filter.test.mjs tests/journey-match.test.mjs",
+    "test:journey": "node --test tests/journey-brief.test.mjs tests/journey-filter.test.mjs tests/journey-match.test.mjs tests/journey-explorer.test.mjs tests/review-board.test.mjs",
     "test:experience": "node scripts/test-experience.mjs",
     "audit:seo": "node scripts/audit-seo.mjs",
     "audit:structured-data": "node scripts/audit-structured-data.mjs",

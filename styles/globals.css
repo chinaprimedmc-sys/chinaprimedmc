@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../design-system/tokens/foundation.css";
+@import "./motion.css";
 
 .social-contact-rail__concierge-icon {
   background: rgba(255, 255, 255, 0.72) !important;
@@ -17,7 +18,6 @@
   filter: grayscale(1) contrast(1.1);
 }
 
-.social-contact-rail__concierge:hover .social-contact-rail__concierge-icon,
 .social-contact-rail__concierge:focus-visible .social-contact-rail__concierge-icon {
   background: rgba(255, 255, 255, 0.9) !important;
   border-color: rgba(170, 178, 184, 0.9) !important;
@@ -25,6 +25,17 @@
     inset 0 1px 0 #fff,
     0 10px 26px rgba(32, 35, 38, 0.14) !important;
   color: #202326 !important;
+}
+
+@media (hover: hover) {
+  .social-contact-rail__concierge:hover .social-contact-rail__concierge-icon {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(170, 178, 184, 0.9) !important;
+    box-shadow:
+      inset 0 1px 0 #fff,
+      0 10px 26px rgba(32, 35, 38, 0.14) !important;
+    color: #202326 !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -397,13 +408,22 @@ select {
     box-shadow 360ms ease;
 }
 
-.social-contact-rail__concierge:hover,
 .social-contact-rail__concierge:focus-visible {
   border-color: #fff;
   box-shadow:
     inset 0 1px 0 #fff,
     0 12px 32px rgba(13, 24, 31, 0.17),
     0 0 30px rgba(37, 211, 102, 0.2);
+}
+
+@media (hover: hover) {
+  .social-contact-rail__concierge:hover {
+    border-color: #fff;
+    box-shadow:
+      inset 0 1px 0 #fff,
+      0 12px 32px rgba(13, 24, 31, 0.17),
+      0 0 30px rgba(37, 211, 102, 0.2);
+  }
 }
 
 .social-contact-rail__concierge:focus-visible {
@@ -714,8 +734,10 @@ select {
   transition: color var(--motion-duration-micro) var(--motion-ease-out);
 }
 
-.home-conversion-hero__secondary:hover {
-  color: rgba(255, 255, 255, 0.72);
+@media (hover: hover) {
+  .home-conversion-hero__secondary:hover {
+    color: rgba(255, 255, 255, 0.72);
+  }
 }
 
 .home-conversion-hero__trust {
@@ -1004,10 +1026,12 @@ select {
   box-shadow: 0 10px 26px rgba(83, 102, 108, 0.18);
 }
 
-.home-featured-cinema__link--explore:hover {
-  background: var(--action-explore-hover);
-  border-color: var(--action-explore-hover);
-  box-shadow: 0 14px 32px rgba(83, 102, 108, 0.25);
+@media (hover: hover) {
+  .home-featured-cinema__link--explore:hover {
+    background: var(--action-explore-hover);
+    border-color: var(--action-explore-hover);
+    box-shadow: 0 14px 32px rgba(83, 102, 108, 0.25);
+  }
 }
 
 .home-featured-cinema__link--secondary {
@@ -1021,8 +1045,10 @@ select {
   text-underline-offset: 0.42rem;
 }
 
-.home-featured-cinema__link:hover {
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .home-featured-cinema__link:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .home-featured-cinema__navigation {
@@ -1114,9 +1140,11 @@ select {
   width: 2.65rem;
 }
 
-.home-featured-cinema__arrows button:hover {
-  background: var(--text-primary);
-  color: white;
+@media (hover: hover) {
+  .home-featured-cinema__arrows button:hover {
+    background: var(--text-primary);
+    color: white;
+  }
 }
 
 .home-featured-cinema__arrows svg {
@@ -1173,8 +1201,10 @@ select {
   transition: transform 1000ms var(--motion-ease-out);
 }
 
-.home-intent-card:hover .home-intent-card__image {
-  transform: scale(1.055);
+@media (hover: hover) {
+  .home-intent-card:hover .home-intent-card__image {
+    transform: scale(1.055);
+  }
 }
 
 .home-intent-card__shade {
@@ -1345,8 +1375,10 @@ select {
   transition: transform 1400ms var(--motion-ease-out);
 }
 
-.home-final-cta:hover .home-final-cta__image {
-  transform: scale(1.025);
+@media (hover: hover) {
+  .home-final-cta:hover .home-final-cta__image {
+    transform: scale(1.025);
+  }
 }
 
 .home-final-cta__shade {
@@ -1392,8 +1424,10 @@ select {
   transition: transform 1400ms var(--motion-ease-out);
 }
 
-.home-featured-visual:hover .home-featured-visual__image {
-  transform: scale(1.055);
+@media (hover: hover) {
+  .home-featured-visual:hover .home-featured-visual__image {
+    transform: scale(1.055);
+  }
 }
 
 .home-featured-visual__route {
@@ -1422,8 +1456,10 @@ select {
   transition: transform var(--motion-duration-micro) var(--motion-ease-out);
 }
 
-.home-featured-visual:hover .home-featured-visual__route svg {
-  transform: translate(3px, -3px);
+@media (hover: hover) {
+  .home-featured-visual:hover .home-featured-visual__route svg {
+    transform: translate(3px, -3px);
+  }
 }
 
 .home-destination-gallery {
@@ -1628,10 +1664,12 @@ select {
   width: 2.75rem;
 }
 
-.home-destination-gallery__arrows button:hover {
-  background: white;
-  border-color: white;
-  color: var(--text-primary);
+@media (hover: hover) {
+  .home-destination-gallery__arrows button:hover {
+    background: white;
+    border-color: white;
+    color: var(--text-primary);
+  }
 }
 
 .home-destination-gallery__arrows svg {
@@ -1658,8 +1696,10 @@ select {
   transition: transform 1500ms var(--motion-ease-out);
 }
 
-.home-planning-story:hover .home-planning-story__image {
-  transform: scale(1.055);
+@media (hover: hover) {
+  .home-planning-story:hover .home-planning-story__image {
+    transform: scale(1.055);
+  }
 }
 
 .home-planning-story__caption {
@@ -1774,17 +1814,21 @@ select {
     transform 700ms var(--motion-ease-out);
 }
 
-.home-trade-gallery__image:hover {
-  box-shadow: 0 30px 80px rgba(22, 21, 18, 0.16);
-  transform: translateY(-0.35rem);
+@media (hover: hover) {
+  .home-trade-gallery__image:hover {
+    box-shadow: 0 30px 80px rgba(22, 21, 18, 0.16);
+    transform: translateY(-0.35rem);
+  }
 }
 
 .home-trade-gallery__image img {
   transition: transform 1200ms var(--motion-ease-out);
 }
 
-.home-trade-gallery__image:hover img {
-  transform: scale(1.035);
+@media (hover: hover) {
+  .home-trade-gallery__image:hover img {
+    transform: scale(1.035);
+  }
 }
 
 @keyframes home-hero-camera {
@@ -2309,8 +2353,10 @@ select {
     top: 2.7rem;
   }
 
-  .home-trade-gallery__image:hover {
-    transform: none;
+  @media (hover: hover) {
+    .home-trade-gallery__image:hover {
+      transform: none;
+    }
   }
 }
 
@@ -2640,7 +2686,6 @@ svg {
   filter: none !important;
 }
 
-.social-contact-rail__concierge:hover .social-contact-rail__concierge-icon,
 .social-contact-rail__concierge:focus-visible .social-contact-rail__concierge-icon {
   background: #1fc45d !important;
   border-color: #73ef9f !important;
@@ -2648,4 +2693,15 @@ svg {
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
     0 0.45rem 1.2rem rgba(37, 211, 102, 0.34) !important;
   color: #fff !important;
+}
+
+@media (hover: hover) {
+  .social-contact-rail__concierge:hover .social-contact-rail__concierge-icon {
+    background: #1fc45d !important;
+    border-color: #73ef9f !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 0.45rem 1.2rem rgba(37, 211, 102, 0.34) !important;
+    color: #fff !important;
+  }
 }

@@ -144,7 +144,7 @@ export async function JourneyDiscoveryPage({
 
       <SiteNavigation />
 
-      <JourneysPage items={catalog} initialQueryString={initialQueryString} />
+      <JourneysPage initialQueryString={initialQueryString} />
 
       <SiteFooter tone="white" />
     </PageContainer>

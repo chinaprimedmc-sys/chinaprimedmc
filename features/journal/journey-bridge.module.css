@@ -145,14 +145,18 @@
   text-underline-offset: 0.3rem;
 }
 
-.primaryAction:hover {
-  background: #fff;
-  box-shadow: var(--button-glass-shadow-hover);
+@media (hover: hover) {
+  .primaryAction:hover {
+    background: #fff;
+    box-shadow: var(--button-glass-shadow-hover);
+  }
 }
 
-.planningLink:hover,
-.prompt a:hover {
-  text-decoration-color: currentColor;
+@media (hover: hover) {
+  .planningLink:hover,
+  .prompt a:hover {
+    text-decoration-color: currentColor;
+  }
 }
 
 @media (max-width: 767px) {

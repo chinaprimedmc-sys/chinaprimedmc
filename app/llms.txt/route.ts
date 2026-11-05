@@ -72,7 +72,7 @@ ${serviceAchievementsText()}
 
 - Tailor-Made Multi-City Journeys: Complete private China journeys with hotels, private guides, vehicles, admissions and domestic travel coordinated around the traveler.
 - [Tailor-made China tours](${siteConfig.url}/tailor-made-china-tours): private trips designed from a blank page for one party; the route is not fixed and can change until the traveler confirms in writing.
-- [Fixed itinerary China tours](${siteConfig.url}/fixed-itinerary-china-tours): finished private routes with set days, cities and hotels, booked as published on the traveler's chosen dates. They are private to the party, not group departures.
+- [Signature Journeys](${siteConfig.url}/fixed-itinerary-china-tours): defined multi-day private routes (5 to 12 days) used as a starting point and adjusted to the traveler's dates, party and pace. They are private to the party, not group departures.
 - [Private China day tours](${siteConfig.url}/private-china-day-tours): single private days in Beijing, Xi'an, Shanghai, Chengdu and Guilin with a private guide, vehicle and arranged tickets.
 - [Private guide and driver in China](${siteConfig.url}/private-guide-and-driver-china): a guide and vehicle by the half day, day or several days for travelers who booked their own flights and hotels, quoted in writing before payment.
 - Private Day Tours: Professionally handled private days with private guiding, vehicle support, admissions and clear timing.
@@ -94,7 +94,7 @@ Private guides are available in English, French, German, Spanish, Russian, Itali
 
 ## Who AVIORA serves
 
-- Individual international travelers: private tailor-made journeys, fixed itineraries, private day tours, and guide and driver service in China, for families, couples, older travelers and Muslim-friendly trips.
+- Individual international travelers: private tailor-made journeys, Signature Journeys, private day tours, and guide and driver service in China, for families, couples, older travelers and Muslim-friendly trips.
 
 ## Published journey portfolio
 
@@ -124,7 +124,7 @@ ${catalogSummary}
 - [How far in advance should you book a private China tour?](${siteConfig.url}/journal/how-far-in-advance-book-private-china-tour)
 - [What a private China tour proposal should confirm](${siteConfig.url}/journal/private-china-tour-proposal-checklist)
 - [What happens from airport arrival to hotel handoff](${siteConfig.url}/journal/private-china-tour-arrival-handoff-checklist)
-- [Beijing, Xi'an and Shanghai in nine days](${siteConfig.url}/journal/beijing-xian-shanghai-private-tour-9-days)
+- [Beijing, Xi'an and Shanghai in ten days](${siteConfig.url}/journal/beijing-xian-shanghai-private-tour-9-days)
 - [What private support changes on a first China trip](${siteConfig.url}/journal/what-private-support-changes-first-china-trip)
 - [How the 12-day China family tour with pandas works](${siteConfig.url}/journal/china-family-tour-with-pandas-12-days)
 - [What is the best age for a family trip to China?](${siteConfig.url}/journal/best-age-for-china-family-tour)

@@ -65,7 +65,7 @@ Families who only have ten days should usually remove a city. Families who want 
 
 ## What is included in the published design
 
-The published starting price is **US$6,880 per person**, based on two adults and two children aged 6–11 sharing two rooms outside peak periods. The stated inclusion basis covers eleven hotel nights, private family-ready guides and vehicles, listed admissions, two first-class rail sectors, a Chengdu-to-Shanghai economy flight, selected meals and listed hands-on experiences.
+The journey is priced individually for your family, and the published design assumes two adults and two children aged 6–11 sharing two rooms. The stated inclusion basis covers eleven hotel nights, private family-ready guides and vehicles, listed admissions, two first-class rail sectors, a Chengdu-to-Shanghai economy flight, selected meals and listed hands-on experiences.
 
 Exact hotels, connecting-room arrangements, specialists, tickets and transport remain subject to date-specific confirmation. Connecting rooms should never be treated as guaranteed until the named hotel confirms them in writing.
 
@@ -81,7 +81,7 @@ Not when the route includes downtime and different activity types. The more impo
 
 ### Do families need two hotel rooms?
 
-That depends on ages, hotel occupancy rules and family preference. The published price assumes two rooms. Connecting or adjoining rooms require written hotel confirmation.
+That depends on ages, hotel occupancy rules and family preference. The published route assumes two rooms. Connecting or adjoining rooms require written hotel confirmation.
 
 ### Can grandparents join this route?
 

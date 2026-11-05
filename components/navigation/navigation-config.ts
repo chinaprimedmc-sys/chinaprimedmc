@@ -49,23 +49,23 @@ export const navigationConfig = {
       columns: [
         {
           links: [
+            { label: "Day Experiences", href: "/private-china-day-tours" },
+            { label: "Signature Journeys", href: "/fixed-itinerary-china-tours" },
+            { label: "Tailor-Made Journeys", href: "/tailor-made-china-tours" },
+          ],
+        },
+        {
+          links: [
             { label: "All Journeys", href: "/tours" },
-            { label: "Tailor-Made Tours", href: "/tailor-made-china-tours" },
-            { label: "Fixed Itineraries", href: "/fixed-itinerary-china-tours" },
-          ],
-        },
-        {
-          links: [
-            { label: "Private Day Tours", href: "/private-china-day-tours" },
-            { label: "Guide & Driver", href: "/private-guide-and-driver-china" },
             { label: "Family Journeys", href: "/tours?style=family#journey-catalog" },
+            { label: "First-Time Visitors", href: "/tours?style=first-trip#journey-catalog" },
           ],
         },
         {
           links: [
+            { label: "Culture & Heritage", href: "/tours?style=culture#journey-catalog" },
             { label: "Multi-City Journeys", href: "/tours?scope=multi-city#journey-catalog" },
-            { label: "Classic China", href: "/tours?style=first-trip#journey-catalog" },
-            { label: "Cultural Journeys", href: "/tours?style=culture#journey-catalog" },
+            { label: "Guide & Driver Only", href: "/private-guide-and-driver-china" },
           ],
         },
       ],
@@ -112,13 +112,13 @@ export const navigationConfig = {
     },
     {
       id: "why-aviora",
-      label: "WHY AVIORA",
-      href: "/why-us",
-      activePrefixes: ["/why-us", "/about"],
+      label: "ABOUT AVIORA",
+      href: "/about",
+      activePrefixes: ["/why-us", "/about", "/company", "/reviews"],
       columns: [
         {
           links: [
-            { label: "Our Approach", href: "/why-us" },
+            { label: "Our Approach", href: "/about" },
             { label: "Fully Private Travel", href: "/about#designed-around-you" },
             { label: "Private Guides", href: "/about#people" },
           ],
@@ -135,13 +135,13 @@ export const navigationConfig = {
     },
     {
       id: "travel-guide",
-      label: "TRAVEL GUIDE",
+      label: "TRAVEL JOURNAL",
       href: "/journal",
       activePrefixes: ["/journal"],
       columns: [
         {
           links: [
-            { label: "China Travel Guide", href: "/journal" },
+            { label: "All Travel Journal Articles", href: "/journal" },
             {
               label: "Visa & Entry",
               href: "/journal/china-240-hour-visa-free-transit-guide",
@@ -158,7 +158,6 @@ export const navigationConfig = {
               label: "Getting Around China",
               href: "/journal/china-high-speed-train-foreigners",
             },
-            { label: "Journal", href: "/journal" },
           ],
         },
       ],

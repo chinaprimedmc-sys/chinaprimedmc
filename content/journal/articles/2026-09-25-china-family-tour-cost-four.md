@@ -22,13 +22,13 @@ sources_verified_at: "2026-09-25"
 
 ## Draft
 
-AVIORA's published 12-day family journey currently starts from **US$6,880 per person**, or **US$27,520 for a family of four** on the stated basis: two adults and two children aged 6–11 sharing two rooms, outside Chinese public holidays, school-holiday pressure dates and other peak periods.
+AVIORA prices its 12-day family journey individually. The published route assumes two adults and two children aged 6–11 sharing two rooms, and it costs more during Chinese public holidays, school-holiday pressure dates and other peak periods.
 
-That number is useful only with its assumptions attached. A private family journey is not priced like four identical seats on a group departure. Rooms, child ages, vehicle and luggage capacity, guide allocation, domestic transport and private experiences all shape the total.
+A price is useful only with its assumptions attached. A private family journey is not priced like four identical seats on a group departure. Rooms, child ages, vehicle and luggage capacity, guide allocation, domestic transport and private experiences all shape the total.
 
 The relevant product is AVIORA's [12-day private China family tour with pandas](/tours/china-family-tour-with-pandas-12-day-private-tour), covering Beijing, Xi'an, Chengdu and Shanghai.
 
-## What the published starting price includes
+## What the published basis includes
 
 The current published basis includes:
 
@@ -99,9 +99,9 @@ A high price does not prove quality. A low price does not prove value. The usefu
 
 ## FAQ
 
-### Is US$27,520 the final price for every family of four?
+### Is there one price for every family of four?
 
-No. It is the published starting total on the stated basis. Dates, children's ages, exact rooms, hotels, transport and selected experiences determine the final written quote.
+No. Every family is quoted in writing. Dates, children's ages, exact rooms, hotels, transport and selected experiences determine the final written quote.
 
 ### Are international flights included?
 

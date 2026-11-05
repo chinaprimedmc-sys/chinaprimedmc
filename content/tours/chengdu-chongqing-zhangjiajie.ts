@@ -580,7 +580,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
     {
       question: "How is the final price calculated?",
       answer:
-        "The displayed starting price is an indicative per-person planning figure based on four guests sharing two rooms outside peak periods. Your written proposal recalculates the final price around travel dates, party size, room configuration, hotel preference, transport and selected open-day experiences.",
+        "Your written proposal prices the journey around travel dates, party size, room configuration, hotel preference, transport and selected open-day experiences.",
     },
     {
       question: "How physically demanding is Zhangjiajie?",

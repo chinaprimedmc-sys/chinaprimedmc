@@ -1,3 +1,4 @@
+import { applySlowPaced, slowPacedSlug } from "@/content/tours/slow-paced-golden-triangle";
 import { destinationAsset } from "@/content/destinations/assets";
 import { beijingXianChengduShanghaiTour } from "@/content/tours/beijing-xian-chengdu-shanghai";
 import { chengduChongqingZhangjiajieTour } from "@/content/tours/chengdu-chongqing-zhangjiajie";
@@ -82,10 +83,10 @@ const xianBeijingAsset = {
 } satisfies Record<string, MediaAsset | MediaAsset[]>;
 
 const firstChinaEmail =
-  "mailto:chinaprimedmc@gmail.com?subject=9-Day%20Beijing%20Xi%27an%20Shanghai%20Private%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.%0A%0ATravelers%3A%0ADates%3A%0AHotel%20preference%3A%0AQuestions%3A%0A";
+  "mailto:chinaprimedmc@gmail.com?subject=10-Day%20Beijing%20Xi%27an%20Shanghai%20Private%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%2010-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.%0A%0ATravelers%3A%0ADates%3A%0AHotel%20preference%3A%0AQuestions%3A%0A";
 
 const firstChinaWhatsApp =
-  "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%209-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.";
+  "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20learn%20more%20about%20the%2010-day%20Beijing%2C%20Xi%27an%20and%20Shanghai%20private%20tour.";
 
 const chengduJiuzhaigouImage = (src: string, alt: string, width = 1600, height = 1067) => ({
   src: `/tours/chengdu-pandas-jiuzhaigou/${src}`,
@@ -134,7 +135,7 @@ const chengduJiuzhaigouAsset = {
   ),
 };
 
-export const tours: Tour[] = [
+const baseTours: Tour[] = [
   guilinYangshuoLiRiverDayTour,
   privateChengduPandaDayTour,
   privateXianTerracottaDayTour,
@@ -152,8 +153,8 @@ export const tours: Tour[] = [
     slug: "beijing-xian-shanghai-private-9-day-tour",
     title: "Beijing, Xi'an & Shanghai: A Private First Journey",
     subtitle:
-      "Nine days through Beijing, Xi'an and Shanghai with an expert guide in every city, Hilton-category hotels in central locations, and signature local moments: dumplings in a family courtyard, calligraphy in Xi'an, a dumpling banquet, a Huangpu River evening.",
-    duration: "9 Days / 8 Nights",
+      "Ten days through Beijing, Xi'an and Shanghai at a slow pace, with an expert guide in every city, central hotels, door-to-door Mercedes vans and a 3:30 PM return to the hotel.",
+    duration: "10 Days / 9 Nights",
     route: "Beijing, Xi'an, Shanghai",
     styles: ["First-time China", "Family", "Culture", "Luxury"],
     hero: {
@@ -163,13 +164,13 @@ export const tours: Tour[] = [
       secondary: { label: "Plan This Tour", href: "#inquiry" },
     },
     seo: {
-      title: "9-Day Private China Tour: Beijing, Xi'an & Shanghai",
+      title: "Slow-Paced Beijing Xi'an Shanghai 10-Day Private Tour",
       description:
-        "Private 9-day Beijing, Xi'an & Shanghai tour with the Great Wall, Terracotta Army and high-speed rail. From US$3,190 per person, run by a licensed China team.",
+        "10-day senior-friendly private tour of Beijing, Xi'an & Shanghai: zero-stair Great Wall access, Mercedes vans, a 3:30 PM hotel return and 24/7 care.",
       keywords: [
         "private Beijing Xi'an Shanghai tour",
-        "9 day China itinerary",
-        "9 day private China tour",
+        "10 day China itinerary",
+        "10 day private China tour",
         "private China tour",
         "Beijing Xi'an Shanghai itinerary",
         "Beijing Xi'an Shanghai family tour",
@@ -181,8 +182,8 @@ export const tours: Tour[] = [
       facts: [
         {
           label: "Duration",
-          value: "9 days / 8 nights",
-          helper: "Four nights in Beijing, two in Xi'an, and two in Shanghai.",
+          value: "10 days / 9 nights",
+          helper: "Three nights in Beijing, three in Xi'an, and three in Shanghai.",
         },
         {
           label: "Destinations",
@@ -576,7 +577,7 @@ export const tours: Tour[] = [
     included: [
       "Private itinerary planning around your dates and travelers",
       "An expert local guide in each city, leading in-depth guided touring on every sightseeing day",
-      "Eight nights in Hilton-category or equivalent hotels in central locations: four in Beijing, two in Xi'an, two in Shanghai",
+      "Nine nights in central hotels: three in Beijing, three in Xi'an, three in Shanghai",
       "Signature experiences: Peking duck welcome dinner, hutong pedicab ride and a family-courtyard dumpling lesson, village lunch beneath the Great Wall, Stele Forest visit and calligraphy lesson, Xi'an dumpling banquet, Huangpu River evening cruise, and a xiaolongbao lunch",
       "Private airport, station, and city transfers where listed in your proposal",
       "High-speed rail between Beijing and Xi'an, with tickets and class confirmed before travel",
@@ -639,23 +640,23 @@ export const tours: Tour[] = [
     routeMap: {
       title: "A focused first-China arc.",
       description:
-        "Four nights in Beijing, two in Xi'an, and two in Shanghai create a focused first-China route without adding a fourth hotel change.",
+        "Three nights in Beijing, three in Xi'an, and three in Shanghai give each city the time to be enjoyed slowly, with only two hotel changes.",
       stops: [
         {
           name: "Beijing",
-          days: "Days 1-4",
+          days: "Days 1-3",
           description: "Forbidden City, Temple of Heaven, hutong texture, and the Great Wall.",
           coordinates: { latitude: 39.9042, longitude: 116.4074 },
         },
         {
           name: "Xi'an",
-          days: "Days 5-6",
+          days: "Days 4-6",
           description: "Terracotta Army and one focused chapter of historic city life.",
           coordinates: { latitude: 34.3416, longitude: 108.9398 },
         },
         {
           name: "Shanghai",
-          days: "Days 7-9",
+          days: "Days 7-10",
           description: "Riverfront architecture, neighborhood life, food, and a modern finale.",
           coordinates: { latitude: 31.2304, longitude: 121.4737 },
         },
@@ -675,9 +676,9 @@ export const tours: Tour[] = [
     ],
     faqs: [
       {
-        question: "How much does a 9-day private China tour of Beijing, Xi'an and Shanghai cost?",
+        question: "How much does a 10-day private China tour of Beijing, Xi'an and Shanghai cost?",
         answer:
-          "From US$3,190 per person, based on four guests sharing two rooms outside peak holiday periods. That covers Hilton-category or equivalent hotels, an expert private guide in each city, private transfers, high-speed rail, the signature experiences in the itinerary, and the meals listed. Parties of two pay more per person, because the private guide and vehicle are shared across fewer travelers, and peak holidays such as Golden Week raise hotel and travel costs. International flights, visas and travel insurance are not included. Your written proposal sets out the exact price for your party before you commit.",
+          "Your written proposal is priced for your dates and party. It covers Hilton-category or equivalent hotels, an expert private guide in each city, private transfers, high-speed rail, the signature experiences in the itinerary, and the meals listed. Smaller parties pay more per person, because the private guide and vehicle are shared across fewer travelers, and peak holidays such as Golden Week raise hotel and travel costs. International flights, visas and travel insurance are not included. Your written proposal sets out the exact price for your party before you commit.",
       },
       {
         question: "Who is this journey designed for?",
@@ -695,9 +696,9 @@ export const tours: Tour[] = [
           "You will have a different local expert in each city, because the best Beijing guide is not the best Xi'an guide, plus one China-based coordinator who plans your route and whom you can reach while you travel. A driver and vehicle are with you on every sightseeing day. Your guide and driver at the next city meet you at the station or airport, so there is never a gap in the handover.",
       },
       {
-        question: "Is 9 days enough for Beijing, Xi'an and Shanghai?",
+        question: "Is 10 days enough for Beijing, Xi'an and Shanghai?",
         answer:
-          "Yes, for a first visit. The route uses four nights in Beijing, two in Xi'an and two in Shanghai, gives the Great Wall a full day, leaves your arrival day free for jet lag, and keeps the travel days lighter. It does not add Chengdu or pandas; for that, the 12-day four-city route gives more room. If you have extra days, we can add them at either end.",
+          "Yes, at a slow pace. The route uses three nights in each city, gives the Great Wall its own morning, leaves your arrival day free for jet lag, and keeps the travel days light with a 3:30 PM hotel return on most days. It does not add Chengdu or pandas; for that, the 12-day four-city route gives more room. If you have extra days, we can add them at either end.",
       },
       {
         question: "When is the best time to go?",
@@ -774,7 +775,7 @@ export const tours: Tour[] = [
       whatsappHref: firstChinaWhatsApp,
       scheduleCallHref: "tel:+8618027438191",
       defaultMessage:
-        "Hello AVIORA, I am interested in the 9-day Beijing, Xi'an and Shanghai private journey. We are considering travel in [month/year] for [number] travelers. Please advise on hotel options, walking pace, and the best way to shape the route for us.",
+        "Hello AVIORA, I am interested in the 10-day Beijing, Xi'an and Shanghai private journey. We are considering travel in [month/year] for [number] travelers. Please advise on hotel options, walking pace, and the best way to shape the route for us.",
     },
   },
   {
@@ -1577,7 +1578,7 @@ export const tours: Tour[] = [
       {
         question: "How is the private tour quotation calculated?",
         answer:
-          "The displayed starting price is an indicative per-person planning figure based on four guests sharing two rooms outside peak periods. Your written proposal recalculates the final price around dates, party size, hotel and room preferences, transport schedule, guide configuration and requested inclusions.",
+          "Your written proposal prices the journey around dates, party size, hotel and room preferences, transport schedule, guide configuration and requested inclusions.",
       },
     ],
     related: {
@@ -3000,6 +3001,10 @@ export const tours: Tour[] = [
     },
   },
 ];
+
+export const tours: Tour[] = baseTours.map((tour) =>
+  tour.slug === slowPacedSlug ? applySlowPaced(tour) : tour,
+);
 
 export function getTourBySlug(slug: string) {
   return tours.find((tour) => tour.slug === slug);

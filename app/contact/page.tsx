@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mail, MessageCircle } from "lucide-react";
 
 import { CtaButton } from "@/components/cta";
+import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
@@ -63,6 +64,8 @@ export default function ContactPage() {
           </a>
         </ContentContainer>
       </Section>
+      <EnquirySection placement="contact" tone="stone" />
+
       <SiteFooter
         columns={[{ title: "Explore", items: homeNavItems }]}
         social={[]}

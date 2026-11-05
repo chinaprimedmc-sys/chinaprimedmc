@@ -13,6 +13,7 @@ import {
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { WhatsAppIcon } from "@/components/icons";
 import { OptimizedImage } from "@/components/media/optimized-image";
@@ -519,6 +520,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <EnquirySection placement="about" />
 
       <SiteFooter
         columns={[

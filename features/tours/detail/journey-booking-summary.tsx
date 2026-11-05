@@ -14,7 +14,7 @@ export function JourneyPrice({ fallback, journeySlug }: { fallback: string; jour
   const amount = configuration
     ? configuration.priceFromUsd
       ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}`
-      : "Price on request"
+      : "Individually priced"
     : fallback;
   const pricing = getJourneyCatalogItem(journeySlug)?.pricing;
   const claim = useClaimedJourneyOffer();
@@ -106,7 +106,7 @@ export function JourneyMobileCta({
   const price = configuration
     ? configuration.priceFromUsd
       ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}`
-      : "Price on request"
+      : "Individually priced"
     : fallbackPrice;
   const pricing = getJourneyCatalogItem(journeySlug)?.pricing;
   const claim = useClaimedJourneyOffer();
@@ -169,7 +169,7 @@ function configuredWhatsAppHref(
   const url = new URL(baseHref);
   const price = configuration.priceFromUsd
     ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}. ${configuration.priceBasis}`
-    : "Price on request";
+    : "Individually priced";
   const message = [
     `Hello AVIORA, I am interested in ${journeyTitle}.`,
     "",

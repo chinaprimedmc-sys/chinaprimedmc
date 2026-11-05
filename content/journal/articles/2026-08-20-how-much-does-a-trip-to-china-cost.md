@@ -24,20 +24,20 @@ We do not publish a universal daily price because it would either be too vague t
 | Meals                     | Per traveler or table   | Restaurant level, included meals and dietary planning           |
 | Operating support         | Per journey             | Complexity, handovers and assistance required                   |
 
-## Published AVIORA land-price examples for 2026
+## How AVIORA prices its private journeys
 
-The figures below are current planning benchmarks from AVIORA's published private journeys. They exclude international flights and remain subject to availability. Except where stated otherwise, the starting basis is **per person for four guests sharing two rooms outside peak holiday periods**. Smaller parties usually pay more per person because the private guide and vehicle are shared across fewer travelers.
+AVIORA prices every journey individually, so there is no single starting figure to quote here. The table shows what each published route is built from, which is what you need to compare any two proposals. Prices exclude international flights and remain subject to availability. Smaller parties usually pay more per person because the private guide and vehicle are shared across fewer travelers.
 
-| Published private journey                                                                        | Length  |       Starting from | What the figure helps you compare                                                              |
-| ------------------------------------------------------------------------------------------------ | ------- | ------------------: | ---------------------------------------------------------------------------------------------- |
-| [Beijing and Great Wall](/tours/beijing-great-wall-private-5-day-tour)                           | 5 days  | US$1,690 per person | One hotel base, private airport/city transfers and core Beijing guiding                        |
-| [Beijing, Xi'an and Shanghai](/tours/beijing-xian-shanghai-private-9-day-tour)                   | 9 days  | US$3,190 per person | Three cities, two handovers and the classic first-trip route                                   |
-| [Shanghai, Chengdu, Xi'an and Beijing](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) | 12 days |       Quote by date | A fourth city, pandas and three intercity connections                                          |
-| [China at an easier pace](/tours/china-at-an-easier-pace-12-day-private-tour)                    | 12 days | US$6,480 per person | Premium five-star hotels, first-class rail, a domestic flight and private cultural experiences |
+| Published private journey                                                                        | Length  | What the route helps you compare                                                               |
+| ------------------------------------------------------------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------- |
+| [Beijing and Great Wall](/tours/beijing-great-wall-private-5-day-tour)                           | 5 days  | One hotel base, private airport/city transfers and core Beijing guiding                        |
+| [Beijing, Xi'an and Shanghai](/tours/beijing-xian-shanghai-private-9-day-tour)                   | 10 days | Three cities, two handovers and the classic first-trip route                                   |
+| [Shanghai, Chengdu, Xi'an and Beijing](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) | 12 days | A fourth city, pandas and three intercity connections                                          |
+| [China at an easier pace](/tours/china-at-an-easier-pace-12-day-private-tour)                    | 12 days | Premium five-star hotels, first-class rail, a domestic flight and private cultural experiences |
 
-The 12-day easier-paced journey has a narrower published planning range: most privately designed versions fall between **US$6,800 and US$8,500 per person**, depending on dates, hotel and room selection, party size and personal interests. Luxury versions using Peninsula-level hotels, larger rooms or transport upgrades are quoted separately.
+Your written proposal sets out the total for your dates and party. For the easier-paced 12-day route, luxury versions using Peninsula-level hotels, larger rooms or transport upgrades are quoted separately.
 
-These numbers are not an average cost of visiting China. They are transparent examples of what AVIORA currently sells under stated assumptions. An independent trip using public transport and self-booked hotels can cost substantially less. A couple using suites, specialist guides and premium transport can cost more.
+These are examples of what AVIORA sells, not an average cost of visiting China. An independent trip using public transport and self-booked hotels can cost substantially less. A couple using suites, specialist guides and premium transport can cost more.
 
 ## Start with nights in China, not package days
 
@@ -140,11 +140,11 @@ Send the following instead of asking only for a per-person price:
 
 A credible first response should explain the route and assumptions before presenting a total. If the provider cannot say which hotels, room categories, transport classes and guide services the price assumes, the number is not ready to compare.
 
-### A worked comparison: what changes between US$3,190 and US$6,480
+### A worked comparison: what changes between a 10-day and a 12-day route
 
-The difference between AVIORA's published 9-day and 12-day starting figures is not simply three extra hotel nights. The 12-day journey assumes premium five-star hotels, a first-class Beijing-Xi'an rail sector, a nonstop Xi'an-Shanghai flight, selected meals, private cultural encounters and more protected time around the major heritage days. The 9-day route is a shorter first-China framework using the shared published starting-price basis.
+The difference between AVIORA's published 10-day and 12-day journeys is not simply three extra hotel nights. The 12-day journey assumes premium five-star hotels, a first-class Beijing-Xi'an rail sector, a nonstop Xi'an-Shanghai flight, selected meals, private cultural encounters and more protected time around the major heritage days. The 10-day route is a shorter first-China framework with a more standard hotel and service basis.
 
-That comparison is useful because the service scope is visible. It does not tell a couple what their final price will be. Their per-person guide and vehicle share, exact room, travel dates and preferred inclusions still need to be recalculated.
+That comparison is useful because the service scope is visible. It does not tell a couple what their final price will be. Their per-person guide and vehicle share, exact room, travel dates and preferred inclusions still need to be calculated in a written proposal.
 
 ## Where we would cut - and where we would not
 
@@ -181,7 +181,7 @@ International flights, visas where required, travel insurance, some meals, gratu
 - China Railway 12306 official English service: https://www.12306.cn/en/ - rail ticketing, passenger and baggage context; reviewed 2026-08-20.
 - Palace Museum official English visitor information: https://intl.dpm.org.cn/visit.html - reservation and visitor context; reviewed 2026-08-20.
 - AVIORA private China tour pricing guide: /journal/private-china-tour-cost-2026 - quotation structure and operating assumptions; reviewed 2026-08-20.
-- AVIORA published journey catalog: /tours - current starting prices and service assumptions; reviewed 2026-08-20.
+- AVIORA published journey catalog: /tours - published routes and service assumptions; reviewed 2026-08-20.
 
 ## Review Notes
 

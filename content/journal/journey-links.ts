@@ -422,10 +422,10 @@ Object.assign(journeyJournalLinks, {
   },
   "beijing-xian-shanghai-private-tour-9-days": {
     primaryJourney: FIRST_CHINA,
-    title: "See the published nine-day journey behind this route",
+    title: "See the published ten-day journey behind this route",
     description:
       "Review the exact nights, daily structure, private-service scope and starting-price assumptions for Beijing, Xi'an and Shanghai.",
-    journeyLabel: "Explore the 9-day journey",
+    journeyLabel: "Explore the 10-day journey",
     planningLabel: "Adapt this route",
     planningPreference: "first-china-route",
   },
@@ -496,8 +496,8 @@ Object.assign(journeyJournalLinks, {
     primaryJourney: FIRST_CHINA,
     title: "See the planning sequence become a bookable journey",
     description:
-      "This nine-day Beijing, Xi'an and Shanghai journey shows how gateways, hotel nights, rail and private support fit together before date-specific inventory is confirmed.",
-    journeyLabel: "Explore the 9-day journey",
+      "This ten-day Beijing, Xi'an and Shanghai journey shows how gateways, hotel nights, rail and private support fit together before date-specific inventory is confirmed.",
+    journeyLabel: "Explore the 10-day journey",
     planningLabel: "Review my booking timeline",
     planningPreference: "booking-timeline",
   },
@@ -515,7 +515,7 @@ Object.assign(journeyJournalLinks, {
     title: "See how the arrival handoff connects to the whole journey",
     description:
       "This private first-China route connects airport pickup, hotel arrival, rail handoffs and on-trip support under one China-based operating team.",
-    journeyLabel: "Explore the 9-day journey",
+    journeyLabel: "Explore the 10-day journey",
     planningLabel: "Plan my arrival",
     planningPreference: "arrival-handoff",
   },
@@ -669,7 +669,7 @@ Object.assign(journeyJournalLinks, {
     title: "See this first China route take shape",
     description:
       "Beijing, Xi'an and Shanghai are connected across nine privately supported days, with the Great Wall given its own time and rail travel arranged around the journey.",
-    journeyLabel: "Explore the 9-day journey",
+    journeyLabel: "Explore the 10-day journey",
     planningLabel: "Shape it around my dates",
   },
   "chengdu-chongqing-zhangjiajie-itinerary": {

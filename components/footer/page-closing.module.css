@@ -82,16 +82,22 @@
   width: 17px;
   height: 17px;
 }
-.primary:hover,
-.whatsapp:hover {
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .primary:hover,
+  .whatsapp:hover {
+    transform: translateY(-2px);
+  }
 }
-.primary:hover {
-  background: #fff;
-  box-shadow: var(--button-glass-shadow-hover);
+@media (hover: hover) {
+  .primary:hover {
+    background: #fff;
+    box-shadow: var(--button-glass-shadow-hover);
+  }
 }
-.whatsapp:hover {
-  border-color: #65736d;
+@media (hover: hover) {
+  .whatsapp:hover {
+    border-color: #65736d;
+  }
 }
 .email {
   display: inline-flex;
@@ -124,15 +130,19 @@
   border-color: var(--color-line-strong);
   background: var(--glass-surface);
 }
-.blue .primary:hover {
-  background: #fff;
+@media (hover: hover) {
+  .blue .primary:hover {
+    background: #fff;
+  }
 }
 .blue .whatsapp {
   border-color: var(--color-line);
   color: var(--color-ink);
 }
-.blue .whatsapp:hover {
-  border-color: var(--color-line-strong);
+@media (hover: hover) {
+  .blue .whatsapp:hover {
+    border-color: var(--color-line-strong);
+  }
 }
 .blue a:focus-visible {
   outline-color: var(--color-focus);

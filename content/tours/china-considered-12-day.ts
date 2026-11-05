@@ -595,9 +595,9 @@ export const chinaConsidered12DayTour: Tour = {
         "It is designed with mature travellers in mind, but historic sites still involve uneven ground, steps and standing. We review mobility, balance, heat tolerance and preferred walking time before confirming the daily route.",
     },
     {
-      question: "What does the starting price assume?",
+      question: "What does the price assume?",
       answer:
-        "The published starting price assumes four guests sharing two rooms, non-peak dates, premium five-star hotels and the listed private services. Final pricing changes with dates, hotel and room selection, party size and optional upgrades.",
+        "The published route assumes premium five-star hotels and the listed private services. Pricing changes with dates, hotel and room selection, party size and optional upgrades.",
     },
     {
       question: "Can we choose a rest day after arrival?",
@@ -623,13 +623,13 @@ export const chinaConsidered12DayTour: Tour = {
   related: {
     tours: [
       {
-        title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
+        title: "10-Day Beijing, Xi'an & Shanghai Private Tour",
         description:
           "A shorter expression of the same first-China route for travellers with less time.",
         tags: ["First-time China", "Private"],
         image: firstChinaAsset.shanghaiWaterfrontGroup,
         route: "Beijing · Xi'an · Shanghai",
-        duration: "9 days / 8 nights",
+        duration: "10 days / 9 nights",
         href: "/tours/beijing-xian-shanghai-private-9-day-tour",
       },
     ],

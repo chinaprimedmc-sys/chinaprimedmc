@@ -102,7 +102,7 @@ The fourth answer is where most itineraries become honest. A new city is not add
 
 Use four nights in Beijing, two in Xi'an and three in Shanghai, with the remaining day accounted for by arrival and the two intercity movements. This is the classic route at its firmest workable pace.
 
-For a commercial reference, our published [nine-day private version](/tours/beijing-xian-shanghai-private-9-day-tour) starts from **US$3,190 per person**, based on four guests sharing two rooms outside peak periods. A ten-day version needs the additional night and whichever service is attached to it quoted explicitly.
+For a commercial reference, our published [ten-day private version](/tours/beijing-xian-shanghai-private-9-day-tour) is priced individually for your dates and party. A ten-day version needs the additional night and whichever service is attached to it quoted explicitly.
 
 ### 12 days: Beijing, Xi'an and Shanghai with room to choose
 
@@ -116,7 +116,7 @@ Our [12-day Shanghai, Chengdu, Xi'an and Beijing private journey](/tours/beijing
 
 Our [two-week China itinerary](/journal/two-week-china-itinerary-first-time) shows that version day by day. If you are deciding between lengths, compare the [7, 10 and 14-day structures](/journal/how-many-days-in-china-7-10-14-day-itineraries).
 
-Both published starting prices include selected four- or five-star hotels, private guiding and vehicles on scheduled touring days, listed entrance tickets and confirmed domestic transport. International flights are separate unless a proposal says otherwise. Those assumptions matter more than the apparent precision of the number.
+Both published routes include selected four- or five-star hotels, private guiding and vehicles on scheduled touring days, listed entrance tickets and confirmed domestic transport. International flights are separate unless a proposal says otherwise. Those assumptions matter more than any headline number.
 
 ## FAQ
 

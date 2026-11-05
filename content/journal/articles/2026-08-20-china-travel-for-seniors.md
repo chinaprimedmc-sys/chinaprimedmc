@@ -121,6 +121,8 @@ An easier pace is not evidence that less is possible. It is the freedom to decid
 
 The [12-day China itinerary at an easier pace](/journal/china-itinerary-older-travelers-10-days) shows one possible route. [China, Considered](/tours/china-at-an-easier-pace-12-day-private-tour) is AVIORA's private version, with the final hotels, transport and daily plan confirmed only after we understand the travelers.
 
+For a route built around these needs, see [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-9-day-tour) through Beijing, Xi'an and Shanghai.
+
 ## FAQ
 
 ### Is China safe for senior travelers?

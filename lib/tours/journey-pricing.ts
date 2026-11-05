@@ -18,7 +18,7 @@ export type JourneyPricePresentation = {
 export function getJourneyPricePresentation(item: JourneyCatalogItem): JourneyPricePresentation {
   const amount = item.pricing.fromUsd
     ? `US$${item.pricing.fromUsd.toLocaleString("en-US")}`
-    : "Price on request";
+    : "Individually priced";
   const label = item.pricing.pricingUnit === "private-group" ? "Private group from" : "From";
   const unit = item.pricing.pricingUnit === "per-person" ? " per person" : "";
 

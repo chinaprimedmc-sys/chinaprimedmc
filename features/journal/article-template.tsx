@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { CtaButton, TrackedLink } from "@/components/cta";
+import { GuestVoice } from "@/components/trust/trust";
+import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
@@ -218,6 +220,19 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
           </CtaButton>
         </div>
       </section>
+
+      <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+        <GuestVoice
+          topic={articleTopic(article.slug, article.title)}
+          count={2}
+          seed={article.slug}
+        />
+      </div>
+      <EnquirySection
+        placement="article"
+        title="Plan this trip with a China specialist"
+        intro="Send your dates, travellers and priorities. We will tell you what applies, what needs reconfirming and where we would adapt the route."
+      />
 
       <SiteFooter
         columns={[
@@ -711,4 +726,15 @@ function splitLongParagraph(value: string) {
 
 function isDefined<T>(value: T | undefined): value is T {
   return value !== undefined;
+}
+
+/** 文章主题 → 最相关的评价主题；只用于挑选展示哪一类客人的话。 */
+function articleTopic(slug: string, title: string) {
+  const text = `${slug} ${title}`.toLowerCase();
+  if (/hotel|stay|where-to-stay|accommodation/.test(text)) return "hotels" as const;
+  if (/cost|price|pay|worth|value|budget/.test(text)) return "value" as const;
+  if (/senior|older|easier|slow|pace|walking|family|kids|children|parents/.test(text))
+    return "pace" as const;
+  if (/driver|transfer|train|transport|airport|car\b/.test(text)) return "transport" as const;
+  return "guides" as const;
 }

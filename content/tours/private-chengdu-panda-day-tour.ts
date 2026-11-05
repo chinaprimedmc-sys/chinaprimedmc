@@ -311,36 +311,36 @@ export const privateChengduPandaDayTour: Tour = {
     {
       title: "Selected Sichuan lunch",
       description:
-        "Add a pre-arranged Sichuan lunch from US$28 per guest, with spice level, allergies and dietary preferences reviewed before booking. Drinks and dishes beyond the agreed menu remain separate.",
-      badges: ["From US$28 pp", "Spice level checked"],
+        "Add a pre-arranged Sichuan lunch, with spice level, allergies and dietary preferences reviewed before booking. Drinks and dishes beyond the agreed menu remain separate.",
+      badges: ["Spice level checked"],
       image: sichuanHotpot,
     },
     {
       title: "Hosted People's Park tea table",
       description:
-        "Add a hosted tea-house experience from US$38 per guest with reserved timing, selected tea and cultural interpretation. It takes place in a public tea-house setting and is not advertised as a private venue unless specifically confirmed.",
-      badges: ["From US$38 pp", "Public tea-house setting"],
+        "Add a hosted tea-house experience with reserved timing, selected tea and cultural interpretation. It takes place in a public tea-house setting and is not advertised as a private venue unless specifically confirmed.",
+      badges: ["Public tea-house setting"],
       image: peoplesParkTeaTable,
     },
     {
       title: "Hands-on Sichuan cooking experience",
       description:
-        "Add a date-confirmed cooking session from US$78 per guest. The host, dishes, group format, dietary fit, transfers and any added service time are stated before payment.",
-      badges: ["From US$78 pp", "Host availability"],
+        "Add a date-confirmed cooking session. The host, dishes, group format, dietary fit, transfers and any added service time are stated before payment.",
+      badges: ["Host availability"],
       image: sichuanHotpot,
     },
     {
       title: "Sichuan opera evening extension",
       description:
-        "Extend the day from US$328 per group of up to four with standard performance tickets, private vehicle, guide assistance and up to 2.5 additional service hours. Exact venue, seats and program are confirmed for the date.",
-      badges: ["From US$328 per group", "Up to 4 guests", "Evening extension"],
+        "Extend the day with standard performance tickets, private vehicle, guide assistance and up to 2.5 additional service hours. Exact venue, seats and program are confirmed for the date.",
+      badges: ["Up to 4 guests", "Evening extension"],
       image: sichuanHotpot,
     },
     {
       title: "Additional private touring time",
       description:
-        "Add guide, driver and vehicle time at US$58 per private group for each additional hour, subject to date-specific availability. This can support a slower base visit, longer tea stop or confirmed evening plan.",
-      badges: ["US$58 per group/hour", "Subject to availability"],
+        "Add guide, driver and vehicle time by the hour, subject to date-specific availability. This can support a slower base visit, longer tea stop or confirmed evening plan.",
+      badges: ["Subject to availability"],
       image: privateVehicle,
     },
   ],
@@ -410,14 +410,14 @@ export const privateChengduPandaDayTour: Tour = {
   gallery: chengduGallery.slice(1),
   faqs: [
     {
-      question: "What does the US$598 starting price include?",
+      question: "What does the private-tour price include?",
       answer:
-        "It is an indicative private-group starting price for four guests, equivalent to approximately US$150 per guest. It includes early pickup and return within Chengdu's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops. Lunch, tea, internal carts and other upgrades are not included.",
+        "Your written quote is for a private group and includes early pickup and return within Chengdu's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops. Lunch, tea, internal carts and other upgrades are not included.",
     },
     {
-      question: "What is the published price for a smaller or larger group?",
+      question: "How does group size affect the price?",
       answer:
-        "Outside major public holidays and unusual pickup requirements, the indicative private-group prices are: one guest from US$398; two guests from US$478 total; three guests from US$538 total; four guests from US$598 total; five guests from US$710 total; and six guests from US$828 total. Six guests may require a larger vehicle, which is checked before confirmation. Optional experiences remain separate.",
+        "Private-group pricing follows the size of your group and your pickup point, so the cost per guest usually falls as more people share the vehicle and guide. Your written quote shows the exact total for your date, group size, vehicle and hotel address. Optional experiences remain separate. Six guests may require a larger vehicle.",
     },
     {
       question: "Why does the tour start early?",
@@ -442,12 +442,12 @@ export const privateChengduPandaDayTour: Tour = {
     {
       question: "Is lunch or tea included?",
       answer:
-        "No. Independent lunch time keeps the base price clear. You may add the selected Sichuan lunch from US$28 per guest or a hosted People's Park tea table from US$38 per guest. Menus, spice levels, dietary needs and the tea-house format are confirmed before booking.",
+        "No. Independent lunch time keeps the base price clear. You may add the selected Sichuan lunch or a hosted People's Park tea table. Menus, spice levels, dietary needs and the tea-house format are confirmed before booking.",
     },
     {
       question: "Can you collect us from Chengdu airport?",
       answer:
-        "Yes when the timing is workable, but airports are not included in the central-hotel price. Chengdu Shuangliu International Airport is quoted from US$68 per group each way and Chengdu Tianfu International Airport from US$118 per group each way, subject to the date, flight time, luggage, waiting requirements and final route.",
+        "Yes when the timing is workable, but airports are not included in the central-hotel price. Chengdu Shuangliu and Chengdu Tianfu airport transfers are quoted separately, subject to the date, flight time, luggage, waiting requirements and final route.",
     },
     {
       question: "Can children or older travelers take this tour?",

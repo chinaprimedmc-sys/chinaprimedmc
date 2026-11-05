@@ -206,8 +206,8 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     seoTitle: "Is China Safe for Tourists? Practical Travel Guide",
   },
   "9-day-beijing-xian-shanghai-itinerary": {
-    title: "9-Day Beijing, Xi'an and Shanghai Itinerary: Better Paced",
-    seoTitle: "9-Day Beijing, Xi'an and Shanghai Itinerary",
+    title: "10-Day Beijing, Xi'an and Shanghai Itinerary: Better Paced",
+    seoTitle: "10-Day Beijing, Xi'an and Shanghai Itinerary",
   },
   "5-day-chengdu-leshan-itinerary": {
     title: "5-Day Chengdu and Leshan Itinerary: Pandas, Food and the Giant Buddha",
@@ -362,8 +362,8 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     seoTitle: "First 24 Hours in China: Arrival Handoff Checklist",
   },
   "beijing-xian-shanghai-private-tour-9-days": {
-    title: "Beijing, Xi'an and Shanghai in 9 Days: A Private First-China Route",
-    seoTitle: "Beijing, Xi'an and Shanghai Private Tour: 9 Days",
+    title: "Beijing, Xi'an and Shanghai in 10 Days: A Private First-China Route",
+    seoTitle: "Beijing, Xi'an and Shanghai Private Tour: 10 Days",
   },
   "what-private-support-changes-first-china-trip": {
     title: "What Private Support Changes on a First Trip to China",

@@ -298,36 +298,36 @@ export const privateXianTerracottaDayTour: Tour = {
     {
       title: "Make your own miniature clay warrior",
       description:
-        "After seeing the original army, add a practical clay-warrior session from US$58 per guest with a date-confirmed local host or artisan setting. This is an optional hands-on experience, not a disguised shopping stop; the format and take-home item are confirmed before payment.",
-      badges: ["From US$58 pp", "Hands-on", "Host availability"],
+        "After seeing the original army, add a practical clay-warrior session with a date-confirmed local host or artisan setting. This is an optional hands-on experience, not a disguised shopping stop; the format and take-home item are confirmed before payment.",
+      badges: ["Hands-on", "Host availability"],
       image: clayWarriorWorkshop,
     },
     {
       title: "Selected Xi'an noodle lunch",
       description:
-        "Add a pre-arranged local lunch from US$28 per guest, with an approachable fixed menu and dietary review. Drinks and dishes beyond the agreed menu remain separate.",
-      badges: ["From US$28 pp", "Dietary needs checked"],
+        "Add a pre-arranged local lunch, with an approachable fixed menu and dietary review. Drinks and dishes beyond the agreed menu remain separate.",
+      badges: ["Dietary needs checked"],
       image: tangDynastyNightscape,
     },
     {
       title: "Xi'an City Wall admission",
       description:
-        "Add City Wall admission from US$15 per guest when the day's timing, weather and walking level make an elevated old-city view worthwhile. The route and available gate are confirmed with the final plan.",
-      badges: ["From US$15 pp", "Weather considered"],
+        "Add City Wall admission when the day's timing, weather and walking level make an elevated old-city view worthwhile. The route and available gate are confirmed with the final plan.",
+      badges: ["Weather considered"],
       image: bellTowerNight,
     },
     {
       title: "City Wall bicycle rental",
       description:
-        "Add bicycle rental from US$18 per guest after City Wall admission, subject to the operator's current age, height, deposit, weather and safety rules. It is not recommended automatically for every traveler.",
-      badges: ["From US$18 pp", "Admission separate", "Rules apply"],
+        "Add bicycle rental after City Wall admission, subject to the operator's current age, height, deposit, weather and safety rules. It is not recommended automatically for every traveler.",
+      badges: ["Admission separate", "Rules apply"],
       image: terracottaWarriors,
     },
     {
       title: "Additional private touring time",
       description:
-        "Add private guide, driver and vehicle time at US$58 per group for each additional hour, subject to date-specific availability. Use it for a slower museum visit, a longer Old City chapter or a confirmed evening plan.",
-      badges: ["US$58 per group/hour", "Subject to availability"],
+        "Add private guide, driver and vehicle time by the hour, subject to date-specific availability. Use it for a slower museum visit, a longer Old City chapter or a confirmed evening plan.",
+      badges: ["Subject to availability"],
       image: terracottaWarriors,
     },
   ],
@@ -403,14 +403,14 @@ export const privateXianTerracottaDayTour: Tour = {
   ],
   faqs: [
     {
-      question: "What does the US$628 starting price include?",
+      question: "What does the private-tour price include?",
       answer:
-        "It is an indicative private-group starting price for four guests, equivalent to US$157 per guest. It includes pickup and return within Xi'an's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Terracotta Warriors museum admission, a flexible central Xi'an Old City walk, bottled water and no compulsory shopping stops. Lunch, City Wall admission, clay making and other upgrades are not included.",
+        "Your written quote is for a private group and includes pickup and return within Xi'an's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Terracotta Warriors museum admission, a flexible central Xi'an Old City walk, bottled water and no compulsory shopping stops. Lunch, City Wall admission, clay making and other upgrades are not included.",
     },
     {
-      question: "What is the published price for a smaller or larger group?",
+      question: "How does group size affect the price?",
       answer:
-        "Outside major public holidays and unusual pickup requirements, the indicative private-group prices are: one guest from US$438; two guests from US$498 total; three guests from US$568 total; four guests from US$628 total; five guests from US$745 total; and six guests from US$870 total. Six guests may require a larger vehicle, which is checked before confirmation. Optional experiences remain separate.",
+        "Private-group pricing follows the size of your group and your pickup point, so the cost per guest usually falls as more people share the vehicle and guide. Your written quote shows the exact total for your date, group size, vehicle and hotel address. Optional experiences remain separate. Six guests may require a larger vehicle.",
     },
     {
       question: "Is this a private tour or a shared group tour?",
@@ -430,12 +430,12 @@ export const privateXianTerracottaDayTour: Tour = {
     {
       question: "Is lunch included?",
       answer:
-        "No. Independent lunch time keeps the base product clear. You can ask the guide for a practical suggestion or add the pre-arranged Xi'an noodle lunch from US$28 per guest. The fixed menu and dietary considerations are checked before booking; extra dishes and drinks remain separate.",
+        "No. Independent lunch time keeps the base product clear. You can ask the guide for a practical suggestion or add the pre-arranged Xi'an noodle lunch. The fixed menu and dietary considerations are checked before booking; extra dishes and drinks remain separate.",
     },
     {
       question: "Can you collect us from Xi'an airport or Xi'an North Railway Station?",
       answer:
-        "Yes when the arrival or departure timing is workable, but these locations are not included in the central-hotel price. Xi'an North Railway Station is quoted from US$48 per group each way and Xi'an Xianyang International Airport from US$88 per group each way, subject to the date, time, luggage, waiting requirements and final route.",
+        "Yes when the arrival or departure timing is workable, but these locations are not included in the central-hotel price. Xi'an North Railway Station and Xi'an Xianyang International Airport transfers are quoted separately, subject to the date, time, luggage, waiting requirements and final route.",
     },
     {
       question: "Can children or older travelers take this tour?",

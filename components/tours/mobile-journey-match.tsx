@@ -489,7 +489,7 @@ export function MobileJourneyMatch({
                           <strong>US${top.item.pricing.fromUsd.toLocaleString("en-US")}</strong>
                         </>
                       ) : (
-                        <strong>Price on request</strong>
+                        <strong>Individually priced</strong>
                       )}{" "}
                       <small>
                         {top.item.pricing.pricingUnit === "private-group"
@@ -538,7 +538,7 @@ export function MobileJourneyMatch({
                           <em>
                             {item.pricing.fromUsd
                               ? `From US$${item.pricing.fromUsd.toLocaleString("en-US")}`
-                              : "Price on request"}{" "}
+                              : "Individually priced"}{" "}
                             {item.pricing.pricingUnit === "private-group"
                               ? "per private group of four"
                               : "per person · four guests"}

@@ -225,12 +225,18 @@
   color: #fff;
 }
 
-.primaryAction:hover,
 .primaryAction:focus-visible,
-.formFooter button:hover:not(:disabled),
 .formFooter button:focus-visible:not(:disabled) {
   background: #34424a;
   border-color: #34424a;
+}
+
+@media (hover: hover) {
+  .primaryAction:hover,
+  .formFooter button:hover:not(:disabled) {
+    background: #34424a;
+    border-color: #34424a;
+  }
 }
 
 .secondaryAction {
@@ -239,10 +245,16 @@
   color: var(--detail-ink);
 }
 
-.secondaryAction:hover,
 .secondaryAction:focus-visible {
   background: var(--detail-soft);
   border-color: #b8c2c5;
+}
+
+@media (hover: hover) {
+  .secondaryAction:hover {
+    background: var(--detail-soft);
+    border-color: #b8c2c5;
+  }
 }
 
 .heroCarousel {
@@ -319,9 +331,14 @@
   z-index: 2;
 }
 
-.heroCarouselZoomButton:hover,
 .heroCarouselZoomButton:focus-visible {
   background: #fff;
+}
+
+@media (hover: hover) {
+  .heroCarouselZoomButton:hover {
+    background: #fff;
+  }
 }
 
 .heroCarouselControls {
@@ -358,13 +375,18 @@
   width: 34px;
 }
 
-.heroCarouselControls button:hover,
 .heroCarouselControls button:focus-visible,
-.reviewControls button:hover,
 .reviewControls button:focus-visible,
-.heroLightboxClose:hover,
 .heroLightboxClose:focus-visible {
   background: var(--detail-soft);
+}
+
+@media (hover: hover) {
+  .heroCarouselControls button:hover,
+  .reviewControls button:hover,
+  .heroLightboxClose:hover {
+    background: var(--detail-soft);
+  }
 }
 
 .heroCarouselControls > span {

@@ -1,0 +1,201 @@
+/*
+ * AVIORA motion system.
+ *
+ * Principles
+ *  - Only opacity, translate and scale are animated (compositor-friendly: no layout, no repaint, no CLS).
+ *    The individual `translate` / `scale` properties are used on purpose: they never collide with a
+ *    component's own `transform` (card hover lifts, centred icons).
+ *  - One slow, soft deceleration curve everywhere. Nothing bounces.
+ *  - Everything that moves is behind prefers-reduced-motion: no-preference.
+ *  - Content is always in the HTML and visible without JavaScript. The scroll reveal only hides things
+ *    that are below the fold, after JavaScript has run (see components/motion/motion-controller.tsx).
+ *  - Touch devices get press feedback instead of hover.
+ */
+
+:root {
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  --reveal-distance: 28px;
+  --reveal-duration: 900ms;
+}
+@media (max-width: 700px) {
+  :root {
+    --reveal-distance: 20px;
+    --reveal-duration: 760ms;
+  }
+}
+
+/* ---------- touch basics (mobile) ---------- */
+a,
+button,
+[role="button"],
+summary,
+label,
+select {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* no 300ms delay, no double-tap zoom on controls */
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+dialog {
+  overscroll-behavior: contain;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* ---------- tactile press feedback: every button, on every device ---------- */
+  :where(button, [role="button"], summary):not(:disabled) {
+    transition-property: scale;
+    transition-duration: 180ms;
+    transition-timing-function: var(--ease-soft);
+  }
+  :where(button, [role="button"]):not(:disabled):active {
+    scale: 0.965;
+  }
+  /* Cards and links that behave like cards sink slightly under the finger. */
+  a[data-journey-slug]:active {
+    scale: 0.985;
+  }
+  a[data-journey-slug] {
+    transition-property: scale, box-shadow, transform;
+    transition-duration: 220ms, 300ms, 300ms;
+    transition-timing-function: var(--ease-soft);
+  }
+
+  /* ---------- scroll reveal (driven by MotionController) ---------- */
+  html[data-motion="full"] [data-reveal="pending"] {
+    opacity: 0;
+    translate: 0 var(--reveal-distance);
+  }
+  html[data-motion="full"] [data-reveal="in"] {
+    animation: motion-reveal var(--reveal-duration) var(--ease-soft) var(--reveal-delay, 0ms)
+      backwards;
+  }
+  @keyframes motion-reveal {
+    from {
+      opacity: 0;
+      translate: 0 var(--reveal-distance);
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  /* ---------- hero entrance: text rises in a quiet stagger, the photo settles ---------- */
+  .motion-rise {
+    animation: motion-rise 1100ms var(--ease-soft) backwards;
+    animation-delay: calc(var(--i, 0) * 110ms + 120ms);
+  }
+  @keyframes motion-rise {
+    from {
+      opacity: 0;
+      translate: 0 34px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+  .motion-settle {
+    animation: motion-settle 2400ms var(--ease-soft) backwards;
+  }
+  @keyframes motion-settle {
+    from {
+      scale: 1.09;
+    }
+    to {
+      scale: 1;
+    }
+  }
+
+  /* Desktop only, and only where the browser can do it off the main thread:
+     the hero copy drifts up and fades as you scroll past it. */
+  @media (min-width: 1024px) and (hover: hover) {
+    @supports (animation-timeline: scroll()) {
+      .motion-drift {
+        animation: motion-drift linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 0 62vh;
+      }
+      @keyframes motion-drift {
+        to {
+          opacity: 0;
+          translate: 0 -48px;
+        }
+      }
+    }
+  }
+
+  /* ---------- route change: a soft fade, only for in-site navigation ---------- */
+  html[data-soft-nav] .page-enter {
+    animation: motion-page 460ms var(--ease-soft) backwards;
+  }
+  @keyframes motion-page {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* ---------- results that appear after a filter or search ---------- */
+  [data-stagger-in] > * {
+    animation: motion-rise 640ms var(--ease-soft) backwards;
+  }
+  [data-stagger-in] > :nth-child(2) {
+    animation-delay: 45ms;
+  }
+  [data-stagger-in] > :nth-child(3) {
+    animation-delay: 90ms;
+  }
+  [data-stagger-in] > :nth-child(4) {
+    animation-delay: 135ms;
+  }
+  [data-stagger-in] > :nth-child(5) {
+    animation-delay: 180ms;
+  }
+  [data-stagger-in] > :nth-child(6) {
+    animation-delay: 225ms;
+  }
+  [data-stagger-in] > :nth-child(n + 7) {
+    animation-delay: 270ms;
+  }
+
+  /* ---------- dialogs and bottom sheets: ease in, ease out ---------- */
+  dialog {
+    opacity: 0;
+    translate: 0 24px;
+    transition:
+      opacity 300ms var(--ease-soft),
+      translate 420ms var(--ease-soft),
+      overlay 420ms allow-discrete,
+      display 420ms allow-discrete;
+  }
+  dialog[open] {
+    opacity: 1;
+    translate: 0 0;
+  }
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+      translate: 0 24px;
+    }
+  }
+  dialog::backdrop {
+    transition:
+      background-color 420ms var(--ease-soft),
+      overlay 420ms allow-discrete,
+      display 420ms allow-discrete;
+  }
+}
+
+/* Anything that is only visible because of motion must be visible when printing. */
+@media print {
+  [data-reveal] {
+    opacity: 1 !important;
+    translate: none !important;
+    animation: none !important;
+  }
+}

@@ -274,9 +274,9 @@ export const homeFaqs = [
       "Yes. Every published itinerary is a starting point. Dates, pace, hotels, rooms, experiences and the route itself can be adjusted before you confirm anything.",
   },
   {
-    question: "What does a starting price include?",
+    question: "How are AVIORA journeys priced?",
     answer:
-      "Each journey states its pricing unit and basis, for example per person with four guests sharing two rooms. Your written proposal reflects your actual dates, party size, hotels and inclusions. International flights are not included.",
+      "Every journey is priced individually. Your written proposal reflects your actual dates, party size, hotels and inclusions, so the total is clear before you decide. International flights are not included.",
   },
   {
     question: "Do your guides speak my language?",

@@ -10,12 +10,16 @@ import { ArrowRight, Check, Minus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getPublicTravelerReviews } from "@/content/home/traveler-reviews";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { journeyCatalog } from "@/content/tours/catalog";
-import { getJourneyHeadline, getJourneyRouteLabel, placeGlossary } from "@/content/tours/card-copy";
+import { journeyTiers } from "@/content/tours/tiers";
+import { EnquirySection } from "@/components/forms/enquiry-section";
+import { GuestVoice, TrustLine } from "@/components/trust/trust";
+import { JourneyTile } from "@/components/tours/journey-tile";
+import { buildExplorerItem } from "@/lib/tours/journey-explorer-items";
+import { placeGlossary } from "@/content/tours/card-copy";
 import { detailCopy, detailHeroPhotos, journeyPhotos } from "@/content/tours/journeys-curation";
 import { RecordViewed } from "@/features/discovery/record-viewed";
 import {
@@ -29,11 +33,8 @@ import { TourFaqAccordion } from "@/features/tours/detail/tour-faq-accordion";
 import type { TourDetailModel } from "@/features/tours/detail/tour-detail-model";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
 import type { JourneyPriceSelection } from "@/lib/tours/journey-price";
-import { excerpt } from "@/lib/text/excerpt";
 
 import styles from "./tour-journey.module.css";
-
-const reviewFallbackIds = [1, 3, 2];
 
 export function TourDetailLanding({
   model,
@@ -49,29 +50,20 @@ export function TourDetailLanding({
     };
   const price = model.price?.fromUsd
     ? `US$${model.price.fromUsd.toLocaleString("en-US")}`
-    : "Price on request";
+    : "Individually priced";
   const catalogItem = journeyCatalog.find((item) => item.slug === model.slug);
+  const tier = journeyTiers[model.slug as keyof typeof journeyTiers];
+  const adjustableNote =
+    tier === "signature"
+      ? "A starting point, not a fixed package: dates, party size, interests, hotels and pace can all be adjusted."
+      : tier === "tailor-made-example"
+        ? "An example of a tailored journey. We design the final route around your needs."
+        : null;
   const placeNames = model.routeLabel.split(/\s·\s|\sto\s/).filter((name) => placeGlossary[name]);
   const glossary = placeNames.slice(0, 3).map((name) => `${name}: ${placeGlossary[name]}`);
   const fact = (label: string) => model.quickFacts.find((item) => item.label === label)?.value;
   const days = model.days.filter((day) => day.summary);
   const isDayTour = (catalogItem?.recommendedDaysMax ?? 2) <= 1;
-
-  const allReviews = getPublicTravelerReviews();
-  const englishReviews = allReviews.filter((review) => review.language === "en");
-  const keywords = model.routeStops.map((stop) => stop.name.split(/[\s,]/)[0].toLowerCase());
-  const related = englishReviews.filter((review) =>
-    keywords.some(
-      (word) => word.length > 3 && review.paragraphs.join(" ").toLowerCase().includes(word),
-    ),
-  );
-  const quoted = (
-    related.length >= 3
-      ? related
-      : reviewFallbackIds
-          .map((id) => englishReviews.find((review) => review.id === id))
-          .filter((review): review is NonNullable<typeof review> => Boolean(review))
-  ).slice(0, 3);
 
   const others = journeyCatalog
     .filter((item) => item.slug !== model.slug && item.recommendedDaysMax <= 1 === isDayTour)
@@ -120,16 +112,23 @@ export function TourDetailLanding({
             priority
             fetchPriority="high"
             sizes="100vw"
-            className={styles.heroImage}
+            className={`${styles.heroImage} motion-settle`}
             style={{ objectPosition: ("position" in hero && hero.position) || "center 45%" }}
           />
           <div className={styles.heroShade} aria-hidden="true" />
-          <div className={styles.heroBody}>
-            <p className={styles.eyebrow}>{model.journeyRoleLabel}</p>
-            <h1 id="journey-title">{model.headline}</h1>
-            <p className={styles.route}>
+          <div className={`${styles.heroBody} motion-drift`}>
+            <p className={`${styles.eyebrow} motion-rise`} style={{ ["--i" as string]: 0 }}>
+              {model.journeyRoleLabel}
+            </p>
+            <h1 id="journey-title" className="motion-rise" style={{ ["--i" as string]: 1 }}>
+              {model.headline}
+            </h1>
+            <p className={`${styles.route} motion-rise`} style={{ ["--i" as string]: 2 }}>
               {model.routeLabel} · {model.duration}
             </p>
+            <div className="motion-rise" style={{ ["--i" as string]: 3 }}>
+              <TrustLine />
+            </div>
           </div>
         </section>
 
@@ -173,6 +172,56 @@ export function TourDetailLanding({
                   </ul>
                 )}
               </section>
+
+              {model.seniorStandard && (
+                <>
+                  <section className={styles.senior} aria-labelledby="senior-lead-title">
+                    <h2 id="senior-lead-title" className={styles.h2}>
+                      Reclaim the joy of discovery, without the strain
+                    </h2>
+                    <p className={styles.seniorLead}>{model.seniorStandard.lead}</p>
+                    <ul className={styles.seniorHighlights}>
+                      {model.seniorStandard.highlights.map((item) => (
+                        <li key={item.title}>
+                          <b>{item.title}</b>
+                          <span>{item.body}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+
+                  <section className={styles.difference} aria-labelledby="difference-title">
+                    <h2 id="difference-title" className={styles.h2}>
+                      The AVIORA difference
+                    </h2>
+                    <div className={styles.differenceGrid}>
+                      <div>
+                        <h3>{model.seniorStandard.difference.painTitle}</h3>
+                        <p>{model.seniorStandard.difference.pain}</p>
+                      </div>
+                      <div data-solution>
+                        <h3>{model.seniorStandard.difference.solutionTitle}</h3>
+                        <p>{model.seniorStandard.difference.solution}</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section id="care-standard" aria-labelledby="care-title">
+                    <h2 id="care-title" className={styles.h2}>
+                      {model.seniorStandard.careTitle}
+                    </h2>
+                    <ol className={styles.careGrid}>
+                      {model.seniorStandard.care.map((item, index) => (
+                        <li key={item.title}>
+                          <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                          <b>{item.title}</b>
+                          <p>{item.body}</p>
+                        </li>
+                      ))}
+                    </ol>
+                  </section>
+                </>
+              )}
 
               {model.routeStops.length > 1 && (
                 <section aria-labelledby="route-title">
@@ -228,6 +277,22 @@ export function TourDetailLanding({
                         {day.guideInsight && (
                           <blockquote className={styles.insight}>{day.guideInsight}</blockquote>
                         )}
+                        {(day.transit || day.steps) && (
+                          <dl className={styles.dayMetrics}>
+                            {day.transit && (
+                              <div>
+                                <dt>Transit</dt>
+                                <dd>{day.transit}</dd>
+                              </div>
+                            )}
+                            {day.steps && (
+                              <div>
+                                <dt>Daily step budget</dt>
+                                <dd>{day.steps}</dd>
+                              </div>
+                            )}
+                          </dl>
+                        )}
                         <dl className={styles.dayMeta}>
                           <div>
                             <dt>Stay</dt>
@@ -245,6 +310,23 @@ export function TourDetailLanding({
                       </li>
                     ))}
                   </ol>
+                </section>
+              )}
+
+              {model.seniorStandard && (
+                <section id="accessibility" aria-labelledby="dining-title">
+                  <h2 id="dining-title" className={styles.h2}>
+                    {model.seniorStandard.diningTitle}
+                  </h2>
+                  <p className={styles.note}>{model.seniorStandard.diningIntro}</p>
+                  <dl className={styles.standards}>
+                    {model.seniorStandard.dining.map((item) => (
+                      <div key={item.title}>
+                        <dt>{item.title}</dt>
+                        <dd>{item.body}</dd>
+                      </div>
+                    ))}
+                  </dl>
                 </section>
               )}
 
@@ -283,6 +365,8 @@ export function TourDetailLanding({
                 </p>
               </section>
 
+              <GuestVoice topic={isDayTour ? "transport" : "hotels"} count={2} seed={model.slug} />
+
               {model.guideProfile && (
                 <section aria-labelledby="guides-profile-title">
                   <h2 id="guides-profile-title" className={styles.h2}>
@@ -304,6 +388,8 @@ export function TourDetailLanding({
                 </section>
               )}
 
+              <GuestVoice topic="guides" count={2} seed={model.slug} />
+
               <section aria-labelledby="why-title">
                 <h2 id="why-title" className={styles.h2}>
                   {detailCopy.whyTitle}
@@ -321,13 +407,15 @@ export function TourDetailLanding({
 
             <aside className={styles.booking} id="enquiry" aria-label="Plan this journey">
               <p className={styles.bookingFrom}>
-                {model.price?.fromUsd ? "From" : "Pricing"} ·{" "}
-                {model.price?.pricingUnit === "private-group" ? "per private group" : "per person"}
+                {model.price?.fromUsd
+                  ? `From · ${model.price.pricingUnit === "private-group" ? "per private group" : "per person"}`
+                  : "Pricing"}
               </p>
               <div className={styles.price}>
                 <JourneyPrice fallback={price} journeySlug={model.slug} />
               </div>
               <p className={styles.basis}>{model.price?.basis ?? "Prepared around your dates"}</p>
+              {adjustableNote ? <p className={styles.basis}>{adjustableNote}</p> : null}
               <details className={styles.priceDetails}>
                 <summary>How this price is set</summary>
                 <p>{model.price?.detail ?? "The final proposal confirms the exact services."}</p>
@@ -354,48 +442,22 @@ export function TourDetailLanding({
             </aside>
           </div>
 
-          {quoted.length > 0 && (
-            <section aria-labelledby="reviews-title" className={styles.reviewsSection}>
-              <header className={styles.sectionHead}>
-                <h2 id="reviews-title" className={styles.h2}>
-                  {detailCopy.reviewsTitle}
-                </h2>
-                <Link className={styles.link} href="/reviews">
-                  Read all {allReviews.length} reviews
-                </Link>
-              </header>
-              <div className={styles.reviews}>
-                {quoted.map((review) => (
-                  <figure key={review.id}>
-                    <blockquote>“{excerpt(review.paragraphs[0])}”</blockquote>
-                    <figcaption>
-                      {review.author}, {review.location}
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
-            </section>
-          )}
+          <GuestVoice
+            topic="pace"
+            count={3}
+            seed={model.slug}
+            title="Guests on the pace and comfort"
+          />
 
           {others.length > 0 && (
             <section aria-labelledby="related-title">
               <h2 id="related-title" className={styles.h2}>
                 {detailCopy.relatedTitle}
               </h2>
-              <div className={styles.related}>
-                {others.map((item) => {
-                  const photo = journeyPhotos[item.slug]?.src ?? item.image.src;
-                  return (
-                    <Link href={item.href} key={item.slug}>
-                      <div className={styles.relatedPhoto}>
-                        <Image src={photo} alt="" fill sizes="(max-width: 900px) 100vw, 30vw" />
-                      </div>
-                      <span className={styles.kicker}>{item.durationLabel}</span>
-                      <b>{getJourneyHeadline(item) ?? item.title}</b>
-                      <small>{getJourneyRouteLabel(item)}</small>
-                    </Link>
-                  );
-                })}
+              <div className={styles.relatedTiles}>
+                {others.map((item, position) => (
+                  <JourneyTile key={item.slug} item={buildExplorerItem(item)} position={position} />
+                ))}
               </div>
             </section>
           )}
@@ -427,21 +489,16 @@ export function TourDetailLanding({
           </section>
         </div>
 
-        <section className={styles.closing} aria-labelledby="closing-title">
-          <h2 id="closing-title">{detailCopy.bookingTitle}</h2>
-          <p>{detailCopy.bookingNote}</p>
-          <div className={styles.closingActions}>
-            <Link
-              className={styles.buttonLight}
-              href={`/start-planning?journey=${encodeURIComponent(model.slug)}`}
-            >
-              Plan this journey
-            </Link>
-            <Link className={styles.linkLight} href="/tours">
-              See every journey
-            </Link>
-          </div>
-        </section>
+        <EnquirySection
+          placement="tour-detail"
+          tone="stone"
+          title={detailCopy.bookingTitle}
+          intro={detailCopy.bookingNote}
+          journeyTitle={model.displayTitle}
+        />
+        <p className={styles.seeAll}>
+          <Link href="/tours">See every journey</Link>
+        </p>
 
         <SiteFooter tone="white" />
         <JourneyMobileCta

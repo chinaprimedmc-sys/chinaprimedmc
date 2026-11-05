@@ -1,12 +1,14 @@
 import { ArrowRight, Check, CircleDollarSign, MapPin, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
+import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { JourneyCard } from "@/components/tours/journey-card";
+import { JourneyTile } from "@/components/tours/journey-tile";
+import { buildExplorerItem } from "@/lib/tours/journey-explorer-items";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import styles from "./high-intent-tour-landing.module.css";
 
@@ -113,13 +115,17 @@ export function HighIntentTourLanding({ content, journeys }: Props) {
           </header>
           <div className={styles.journeyGrid}>
             {journeys.map((journey) => (
-              <JourneyCard key={journey.slug} item={journey} />
+              <JourneyTile
+                key={journey.slug}
+                item={buildExplorerItem(journey)}
+                position={journeys.indexOf(journey)}
+              />
             ))}
           </div>
           <p className={styles.priceNote}>
-            Published prices are land-only indicative starting figures. Each journey page states its
-            party-size, room and date assumptions. International flights are not included unless a
-            written proposal says otherwise.
+            Every journey is priced individually for your dates and party, and prices cover land
+            services only. Each journey page lists what is included. International flights are not
+            included unless a written proposal says otherwise.
           </p>
         </ContentContainer>
       </section>
@@ -173,6 +179,8 @@ export function HighIntentTourLanding({ content, journeys }: Props) {
           </Link>
         </ContentContainer>
       </section>
+
+      <EnquirySection placement="landing" tone="stone" />
 
       <SiteFooter />
     </PageContainer>

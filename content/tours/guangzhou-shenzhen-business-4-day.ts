@@ -454,14 +454,14 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
         "It is a private Guangzhou and Shenzhen business tour designed for executives, founders, buyers and small teams. Meetings, trade fairs, supplier visits, flights and working locations form the fixed spine of the trip. Hotels, private transport, bilingual support and optional cultural, dining or technology experiences are then arranged around the business agenda rather than competing with it.",
     },
     {
-      question: "What does the US$2,280 starting price include?",
+      question: "What does the price include?",
       answer:
-        "It is the indicative per-person starting price for the sample four-day, three-night framework, based on four guests sharing two rooms outside major exhibition and peak periods, equivalent to a group total from US$9,120. It assumes three premium hotel nights, the named private transfers and vehicle windows, confirmed bilingual support, breakfast, the selected Guangzhou culture module, one Shenzhen innovation chapter and China-based operating support. Five-, six- and seven-day journeys are quoted according to the additional nights, service hours and experiences selected.",
+        "Your written proposal is priced for your own party and fixed schedule. The sample four-day, three-night framework assumes three premium hotel nights, the named private transfers and vehicle windows, confirmed bilingual support, breakfast, the selected Guangzhou culture module, one Shenzhen innovation chapter and China-based operating support. Five-, six- and seven-day journeys are quoted according to the additional nights, service hours and experiences selected.",
     },
     {
       question: "Can two executives book this journey?",
       answer:
-        "Yes. A typical two-person version starts from approximately US$2,880 per person outside major exhibition periods, depending on rooms, vehicle hours, bilingual support and the experiences selected. The exact total is quoted after the fixed schedule is reviewed.",
+        "Yes. Smaller parties pay more per person because the guide and vehicle are shared by fewer people, and major exhibition periods raise hotel costs, depending on rooms, vehicle hours, bilingual support and the experiences selected. The exact total is quoted after the fixed schedule is reviewed.",
     },
     {
       question: "Can you guarantee Canton Fair VIP access or fast-track entry?",

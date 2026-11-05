@@ -11,9 +11,11 @@
     box-shadow var(--motion-base) var(--motion-ease-out),
     border-color var(--motion-base) var(--motion-ease-out);
 }
-.card:hover {
-  border-color: var(--color-line-strong);
-  box-shadow: var(--shadow-medium);
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--color-line-strong);
+    box-shadow: var(--shadow-medium);
+  }
 }
 .mediaLink {
   display: block;
@@ -27,8 +29,10 @@
   object-fit: cover;
   transition: transform var(--motion-image) var(--motion-ease-out);
 }
-.card:hover .photo {
-  transform: scale(1.035);
+@media (hover: hover) {
+  .card:hover .photo {
+    transform: scale(1.035);
+  }
 }
 .duration {
   position: absolute;
@@ -235,9 +239,11 @@
   height: 16px;
   width: 16px;
 }
-.cta:hover {
-  background: var(--color-forest);
-  color: #fff;
+@media (hover: hover) {
+  .cta:hover {
+    background: var(--color-forest);
+    color: #fff;
+  }
 }
 .card a:focus-visible {
   outline: 3px solid var(--color-forest);

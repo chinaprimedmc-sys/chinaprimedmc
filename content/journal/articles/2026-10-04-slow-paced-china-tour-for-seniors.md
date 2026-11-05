@@ -86,6 +86,8 @@ Sometimes. Fewer hotel changes can protect rest, but a longer stay in one city i
 
 Only after the hotel or venue confirms the specific feature for the date. Requests should be recorded in writing and reconfirmed before travel.
 
+The clearest example is [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-9-day-tour), which sets a daily step budget and a 3:30 PM hotel return.
+
 ## Plan around your comfortable day
 
 Tell us what a good day feels like, what movement is difficult and which experiences matter most. AVIORA can review the route and identify confirmed arrangements, open questions and realistic trade-offs before preparing a proposal. Compare the [slower-paced China, Considered journey](/tours/china-at-an-easier-pace-12-day-private-tour) or [plan a first visit with more time built in](/tours/beijing-xian-shanghai-private-9-day-tour).

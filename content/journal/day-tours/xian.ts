@@ -240,7 +240,7 @@ export const xianCluster: DayTourCluster = {
       keyword: "Xi'an Terracotta Warriors private tour cost inclusions",
       intent: "evaluate",
       answer:
-        "Compare a private Terracotta Warriors quote by its total party basis and named inclusions: museum admission, guide, vehicle, pickup area and service hours. AVIORA's published starting figure assumes four guests; lunch, City Wall, bicycles and craft activities are additional unless written into the proposal.",
+        "Compare a private Terracotta Warriors quote by its total party basis and named inclusions: museum admission, guide, vehicle, pickup area and service hours. Your written quote states the party size it assumes; lunch, City Wall, bicycles and craft activities are additional unless written into the proposal.",
       sections: [
         {
           title: "Read the price basis before the headline",
@@ -285,13 +285,13 @@ export const xianCluster: DayTourCluster = {
       ],
       faqs: [
         {
-          question: "Is lunch included in the AVIORA starting price?",
+          question: "Is lunch included in the AVIORA price?",
           answer: "No. Lunch is separate unless your written proposal names the meal and price.",
         },
         {
-          question: "Does the starting price apply to one person?",
+          question: "Is the price per person or per group?",
           answer:
-            "The product page gives a private-group starting basis and a four-guest equivalent. Request the current total for your party and date.",
+            "The day is priced as a private group, so the cost per guest falls as more people share the vehicle and guide. Request the current total for your party and date.",
         },
         {
           question: "Are City Wall tickets included?",

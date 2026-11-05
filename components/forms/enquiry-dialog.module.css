@@ -1,0 +1,103 @@
+/* Site-wide enquiry dialog. Neutral palette only. Bottom sheet on phones, centred panel on desktop. */
+.dialog {
+  width: min(100%, 640px);
+  max-width: 100%;
+  max-height: 92svh;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  box-shadow: 0 24px 80px rgba(18, 16, 13, 0.35);
+}
+.dialog::backdrop {
+  background: rgba(18, 16, 13, 0.55);
+}
+@media (max-width: 700px) {
+  .dialog {
+    width: 100%;
+    margin: auto 0 0;
+    max-height: 94svh;
+    border-radius: 18px 18px 0 0;
+  }
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
+}
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--color-line);
+}
+.kicker {
+  margin: 0 0 6px;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.head h2 {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+.close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--color-ink);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .close:hover {
+    background: var(--color-surface-muted);
+  }
+}
+.body {
+  overflow: auto;
+  padding: 16px 24px calc(24px + env(safe-area-inset-bottom));
+}
+.intro {
+  margin: 0 0 16px;
+  color: var(--color-copy);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.alt {
+  margin: 16px 0 0;
+  color: var(--color-muted);
+  font-size: 14px;
+}
+.alt a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 700px) and (prefers-reduced-motion: no-preference) {
+  .dialog {
+    translate: 0 100%;
+  }
+  .dialog[open] {
+    translate: 0 0;
+  }
+  @starting-style {
+    .dialog[open] {
+      translate: 0 100%;
+    }
+  }
+}

@@ -649,9 +649,9 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
   ],
   faqs: [
     {
-      question: "What does the US$6,680 starting price assume?",
+      question: "What does the price depend on?",
       answer:
-        "It is an indicative per-person starting price based on four guests sharing two rooms, traveling outside peak holiday periods. The corresponding group starting total is US$26,720. Final pricing depends on dates, exact hotels and room categories, guide and host availability, transport and selected upgrades.",
+        "Your written proposal is priced for your own party and dates, and peak holiday periods cost more. Final pricing depends on dates, exact hotels and room categories, guide and host availability, transport and selected upgrades.",
     },
     {
       question: "Is this a luxury Yunnan tour or a standard sightseeing package?",
@@ -686,7 +686,7 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
     {
       question: "Are flights included?",
       answer:
-        "Flights to Dali and from Shangri-La are not included in the published starting price because the correct sectors depend on the international itinerary. AVIORA can quote and coordinate them with the private transfers once the gateway plan is known.",
+        "Flights to Dali and from Shangri-La are not included in the land price because the correct sectors depend on the international itinerary. AVIORA can quote and coordinate them with the private transfers once the gateway plan is known.",
     },
   ],
   related: {

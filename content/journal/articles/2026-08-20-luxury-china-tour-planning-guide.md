@@ -143,9 +143,9 @@ We would question a costly upgrade that exists mainly for the proposal: another 
 
 ## A published premium price with visible assumptions
 
-AVIORA's 12-day easier-paced journey currently starts from **US$6,480 per person**, based on four guests sharing two rooms outside peak holiday periods. It includes 11 nights in selected premium five-star hotels, private guiding and vehicles on confirmed touring days, listed entrance tickets, Beijing-Xi'an first-class rail, a nonstop Xi'an-Shanghai economy flight, selected meals, listed private cultural encounters and China-based journey support.
+AVIORA's 12-day easier-paced journey is priced individually for your dates and party. The published design includes 11 nights in selected premium five-star hotels, private guiding and vehicles on confirmed touring days, listed entrance tickets, Beijing-Xi'an first-class rail, a nonstop Xi'an-Shanghai economy flight, selected meals, listed private cultural encounters and China-based journey support.
 
-Most privately designed versions of that route fall between **US$6,800 and US$8,500 per person**. Peninsula-level hotels, larger rooms and transport upgrades are quoted separately. These are land-only planning figures, not a universal price for luxury travel in China. Their value is that the service basis is public enough to compare.
+Peninsula-level hotels, larger rooms and transport upgrades are quoted separately. Because the service basis is published, you can compare what a written proposal includes before you compare totals.
 
 ## FAQ
 
@@ -170,7 +170,7 @@ Earlier planning is useful for specific suites, connecting rooms, specialist gui
 - Palace Museum official English visitor information: https://intl.dpm.org.cn/visit.html - opening and visitor conditions affecting route design; reviewed 2026-08-20.
 - China Railway 12306 official English service: https://www.12306.cn/en/ - passenger, ticket and rail context; reviewed 2026-08-20.
 - AVIORA China Travel Team operating standards: /journal/how-to-choose-private-china-tour-company - proposal and support checks; reviewed 2026-08-20.
-- AVIORA luxury China tours: /luxury-china-tours - published routes, starting prices and price assumptions; reviewed 2026-08-20.
+- AVIORA luxury China tours: /luxury-china-tours - published routes and service assumptions; reviewed 2026-08-20.
 
 ## Review Notes
 

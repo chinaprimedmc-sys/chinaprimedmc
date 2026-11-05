@@ -58,7 +58,7 @@ const sensoryDescriptions: Record<string, string> = {
   "beijing-xian-chengdu-shanghai-private-11-day-tour":
     "One clear 12-day route through four distinct cities, with the connections planned around your dates.",
   "beijing-xian-shanghai-private-9-day-tour":
-    "A thoughtful first China journey with private context, key logistics handled, and fewer rushed departures.",
+    "A slow-paced first China journey: zero-stair Great Wall access, luggage-free bullet trains and a 3:30 PM hotel return.",
   "chengdu-pandas-sichuan-table":
     "Begin with pandas, linger over tea and understand Chengdu one generous meal at a time.",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour":
@@ -76,7 +76,8 @@ const sensoryDescriptions: Record<string, string> = {
  * 城市名只作为副标题出现，避免读者与搜索引擎自行推断路线含义。
  */
 const journeyHeadlines: Record<string, string> = {
-  "beijing-xian-shanghai-private-9-day-tour": "The Great Wall, Terracotta Army & Shanghai",
+  "beijing-xian-shanghai-private-9-day-tour":
+    "The Slow-Paced Golden Triangle: Beijing, Xi'an & Shanghai",
   "china-family-tour-with-pandas-12-day-private-tour":
     "Pandas, Warriors & the Great Wall, Made for Families",
   "luxury-yunnan-private-tour": "Yunnan's Tea Horse Road: Snow Mountains & Old Towns",
@@ -163,7 +164,8 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
  * 不能再用"看点优先"的写法，否则与"private Beijing Xi'an Shanghai tour"类查询失去匹配。
  */
 const journeySeoTitleOverrides: Record<string, string> = {
-  "beijing-xian-shanghai-private-9-day-tour": "9-Day Private China Tour: Beijing, Xi'an & Shanghai",
+  "beijing-xian-shanghai-private-9-day-tour":
+    "Slow-Paced Beijing Xi'an Shanghai 10-Day Private Tour",
 };
 
 export function getJourneySeoTitle(item: JourneyCatalogItem) {

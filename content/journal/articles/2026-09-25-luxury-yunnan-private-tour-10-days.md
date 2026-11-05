@@ -74,7 +74,7 @@ The final hosted table should be respectfully scoped. It is not an exotic perfor
 
 ## Published price basis
 
-The journey currently starts from **US$6,680 per person**, based on four guests sharing two rooms outside peak holiday periods, equivalent to a group total from US$26,720. The published basis includes nine nights, dedicated private vehicle, private guiding, confirmed cultural encounters, selected meals and China-based operating support.
+The journey is priced individually for your dates, party size and room setup. The published basis includes nine nights, dedicated private vehicle, private guiding, confirmed cultural encounters, selected meals and China-based operating support.
 
 Gateway flights or trains into Dali and out of Shangri-La are quoted around the wider trip. Exact hotels, rooms, hosts and upgrades depend on dates and written confirmation.
 

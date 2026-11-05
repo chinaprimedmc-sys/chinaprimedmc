@@ -109,10 +109,12 @@
   width: 44px;
 }
 
-.socials a:hover {
-  background: var(--color-surface-muted);
-  border-color: var(--color-line-strong);
-  color: var(--color-ink);
+@media (hover: hover) {
+  .socials a:hover {
+    background: var(--color-surface-muted);
+    border-color: var(--color-line-strong);
+    color: var(--color-ink);
+  }
 }
 
 .navigation {
@@ -148,10 +150,12 @@
   transition: color 160ms ease;
 }
 
-.desktopGroup a:hover,
-.mobileGroup a:hover,
-.contactLink:hover {
-  color: var(--color-ink);
+@media (hover: hover) {
+  .desktopGroup a:hover,
+  .mobileGroup a:hover,
+  .contactLink:hover {
+    color: var(--color-ink);
+  }
 }
 
 .mobileGroup {
@@ -195,9 +199,11 @@
   transition: color 160ms ease;
 }
 
-.legalLinks a:hover,
-.cookiePreferences:hover {
-  color: var(--color-ink);
+@media (hover: hover) {
+  .legalLinks a:hover,
+  .cookiePreferences:hover {
+    color: var(--color-ink);
+  }
 }
 
 .address {

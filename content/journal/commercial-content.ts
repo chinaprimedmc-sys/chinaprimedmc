@@ -28,7 +28,7 @@ function emphasizeDecision(body: string) {
   if (!sentence || sentence.length < 45 || sentence.length > 260) return body;
 
   const decisionLead =
-    /^(Choose|Do not|Don't|Keep|Use|Start|Share|Tell|Compare|Select|Add|Avoid|Most |No |Yes |The best|A responsible|A practical|High-speed|Five days|Six days|Nine days|Leshan is|Private service)/i;
+    /^(Choose|Do not|Don't|Keep|Use|Start|Share|Tell|Compare|Select|Add|Avoid|Most |No |Yes |The best|A responsible|A practical|High-speed|Five days|Six days|Ten days|Leshan is|Private service)/i;
   if (!decisionLead.test(sentence)) return body;
 
   return `**${sentence}**${body.slice(sentence.length)}`;
@@ -70,7 +70,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         title: "Who gains the most from private travel",
         paragraphs: [
           "Families benefit from earlier panda visits, age-appropriate storytelling, suitable vehicles and flexible meal timing. Older or multigenerational travelers benefit from managed station transfers, realistic walking and hotel locations chosen to reduce repeated journeys. Travelers with allergies, halal requirements or strong cultural interests gain from advance research and a guide briefed on the details.",
-          "Confident independent travelers may need private support only on complex days. A hybrid plan can combine a private Great Wall day, managed rail transfers and guided heritage visits with free evenings or independent Shanghai time. The [9-day Beijing, Xi'an and Shanghai journey](/tours/beijing-xian-shanghai-private-9-day-tour) is a useful framework for this balance.",
+          "Confident independent travelers may need private support only on complex days. A hybrid plan can combine a private Great Wall day, managed rail transfers and guided heritage visits with free evenings or independent Shanghai time. The [10-day Beijing, Xi'an and Shanghai journey](/tours/beijing-xian-shanghai-private-9-day-tour) is a useful framework for this balance.",
         ],
       },
       {
@@ -1040,14 +1040,14 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
       {
         title: "Quick decision: who should choose this route",
         paragraphs: [
-          "Choose this nine-day route when you want China's clearest first contrast—imperial Beijing, archaeological Xi'an and modern Shanghai—and you are comfortable with two intercity transitions. It is a strong fit for first-time couples, families with school-holiday limits and travelers who want a well-supported introduction without adding pandas or mountain scenery.",
+          "Choose this ten-day route when you want China's clearest first contrast—imperial Beijing, archaeological Xi'an and modern Shanghai—and you are comfortable with two intercity transitions. It is a strong fit for first-time couples, families with school-holiday limits and travelers who want a well-supported introduction without adding pandas or mountain scenery.",
           "Do not choose it unchanged if your arrival is late, anyone needs a slow walking pace, or Chengdu is a non-negotiable priority. In those cases, add a night or use the longer four-city route. This is the key decision, because removing recovery time usually creates a worse trip than seeing one fewer landmark.",
         ],
       },
       {
-        title: "Why nine days is a useful first route",
+        title: "Why ten days is a useful first route",
         paragraphs: [
-          "Nine days gives a first-time visitor three different views of China without pretending that every province can fit into one holiday: imperial Beijing, the archaeological depth of Xi'an and Shanghai's contemporary riverfront. The route is compact, but it works when the city order and transfer days are planned before individual attractions.",
+          "Ten days gives a first-time visitor three different views of China without pretending that every province can fit into one holiday: imperial Beijing, the archaeological depth of Xi'an and Shanghai's contemporary riverfront. The route is compact, but it works when the city order and transfer days are planned before individual attractions.",
           "Count eight hotel nights, not nine sightseeing days. Arrival and departure times determine whether the first or last day is usable. A responsible plan leaves room for airport transfers, passport-linked reservations and recovery after an international flight.",
         ],
       },
@@ -1076,13 +1076,13 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         title: "Who should add time or change the route",
         paragraphs: [
           "Add a night if your international flight lands late, if anyone has reduced walking tolerance or if Shanghai's neighborhoods matter as much as the Bund. Families may prefer an extra Beijing or Shanghai night rather than adding a fourth city. Travelers who want pandas can consider the [12-day Shanghai, Chengdu, Xi'an and Beijing route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour), which gives Chengdu three nights rather than compressing it into a transfer window.",
-          "The matching [9-day private journey](/tours/beijing-xian-shanghai-private-9-day-tour) is a framework. Hotels, guide coverage, train class, attraction reservations and independent time are confirmed around your dates and party after inquiry.",
+          "The matching [10-day private journey](/tours/beijing-xian-shanghai-private-9-day-tour) is a framework. Hotels, guide coverage, train class, attraction reservations and independent time are confirmed around your dates and party after inquiry.",
         ],
       },
       {
         title: "Plan the structure before you request a quote",
         paragraphs: [
-          "Write down your international arrival and departure airports, the one experience that cannot move, your walking comfort and whether you want guiding every day. Those four details determine whether nine days feels elegant or hurried.",
+          "Write down your international arrival and departure airports, the one experience that cannot move, your walking comfort and whether you want guiding every day. Those four details determine whether ten days feels elegant or hurried.",
           "Send them through our [trip planning form](/start-planning?source=journal-nine-day-bjs-mid). We will show which nights are doing useful work, where a train or transfer buffer belongs and what should be left for a future visit.",
           "At the time of writing, heritage-site access, train schedules and attraction release rules remain date-sensitive. Recheck the official ticket channel before payment; a published itinerary is a planning framework, not a guarantee of capacity.",
         ],
@@ -1090,7 +1090,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
     ],
     [
       {
-        question: "Is nine days enough for Beijing, Xi'an and Shanghai?",
+        question: "Is ten days enough for Beijing, Xi'an and Shanghai?",
         answer:
           "Yes, as a focused first visit with four Beijing nights, two Xi'an nights and two Shanghai nights plus arrival and departure timing. Add a night for slower pacing or late flights.",
       },
@@ -1100,7 +1100,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
           "High-speed rail is often the practical choice because it connects central stations. The exact departure should be matched to hotel checkout and the next day's attraction reservation.",
       },
       {
-        question: "Can I add Chengdu to this nine-day itinerary?",
+        question: "Can I add Chengdu to this ten-day itinerary?",
         answer:
           "Adding Chengdu usually removes the recovery and neighborhood time that makes the three-city route work. Use an 11-day or longer plan when pandas are a priority.",
       },
@@ -1328,7 +1328,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
       {
         title: "Who should extend this route",
         paragraphs: [
-          "Add a Beijing night for a slower Wall day, Summer Palace or deeper hutong program. Add a Xi'an night for food, the City Wall at a measured pace or a later arrival. Travelers who also want Shanghai should use the [9-day Beijing, Xi'an and Shanghai route](/journal/9-day-beijing-xian-shanghai-itinerary) rather than deleting the recovery windows.",
+          "Add a Beijing night for a slower Wall day, Summer Palace or deeper hutong program. Add a Xi'an night for food, the City Wall at a measured pace or a later arrival. Travelers who also want Shanghai should use the [10-day Beijing, Xi'an and Shanghai route](/journal/9-day-beijing-xian-shanghai-itinerary) rather than deleting the recovery windows.",
           "The [6-day Xi'an and Beijing private journey](/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour) can be adapted around flight gateways, room needs and guide coverage. Request the plan before booking nonrefundable connections.",
         ],
       },

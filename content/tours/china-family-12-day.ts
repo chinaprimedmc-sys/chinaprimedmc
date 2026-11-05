@@ -641,9 +641,9 @@ export const chinaFamily12DayTour: Tour = {
   ],
   faqs: [
     {
-      question: "What does the US$6,880 starting price assume?",
+      question: "What does the price depend on?",
       answer:
-        "It is an indicative per-person starting price based on a family of four: two adults and two children aged 6–11 sharing two rooms, traveling outside Chinese public holidays, school-holiday pressure dates and other peak periods. The corresponding family starting total is US$27,520. Final pricing depends on exact dates, children's ages, hotels, room configuration and confirmed experiences.",
+        "Your written proposal is priced for your own family and dates, and the published route is designed around two adults and two children aged 6–11 sharing two rooms. Chinese public holidays and school-holiday pressure dates cost more. Final pricing depends on exact dates, children's ages, hotels, room configuration and confirmed experiences.",
     },
     {
       question: "Will this itinerary work for teenagers as well as younger children?",

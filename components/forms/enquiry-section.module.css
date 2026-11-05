@@ -1,0 +1,120 @@
+/* Page-level enquiry block. Neutral palette only (ink, stone, white): no green. */
+.section {
+  --ink: var(--color-ink);
+  --muted: var(--color-muted);
+  --line: var(--color-line);
+
+  scroll-margin-top: calc(var(--site-nav-offset) + 16px);
+  border-top: 1px solid var(--line);
+  background: var(--color-canvas);
+  color: var(--ink);
+}
+.stone {
+  background: var(--color-surface-muted);
+}
+.inner {
+  display: grid;
+  gap: 32px;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 96px) clamp(20px, 3.4vw, 56px);
+}
+@media (min-width: 960px) {
+  .inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+  .copy {
+    position: sticky;
+    top: calc(var(--site-nav-offset) + 24px);
+  }
+}
+.kicker {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.copy h2 {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: clamp(30px, 3.6vw, 46px);
+  font-weight: 400;
+  line-height: 1.08;
+}
+.intro {
+  margin: 16px 0 0;
+  max-width: 34em;
+  color: var(--color-copy);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.context {
+  margin: 14px 0 0;
+  font-size: 15px;
+}
+.promises {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.promises li {
+  position: relative;
+  padding-left: 22px;
+}
+.promises li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.rating {
+  display: inline-block;
+  margin: 24px 0 0;
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.quote {
+  margin: 14px 0 0;
+  padding: 0 0 0 16px;
+  border-left: 2px solid var(--ink);
+}
+.quote blockquote {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.4;
+}
+.quote figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.alt {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.alt a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.form {
+  min-width: 0;
+}

@@ -62,8 +62,12 @@ for (const page of pages) {
       if (node.provider?.["@id"] !== `${canonicalOrigin}/#organization`) {
         issues.push(`${page.path}: TouristTrip provider does not reference the organization`);
       }
-      if (!node.offers && !node.offeredBy) {
-        issues.push(`${page.path}: TouristTrip is missing published offer information`);
+      // 价格未核实的行程不公开 offer（见 content/tours/price-visibility.ts），
+      // 所以不再要求必须有 offer；一旦出现 offer，价格必须是正数。
+      for (const offer of toArray(node.offers)) {
+        if (!(Number(offer.price) > 0)) {
+          issues.push(`${page.path}: TouristTrip offer has no valid price`);
+        }
       }
     }
     if (type.includes("BlogPosting")) {

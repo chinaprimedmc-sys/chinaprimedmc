@@ -32,33 +32,29 @@ import { excerpt } from "@/lib/text/excerpt";
 import { HomeSentence } from "./home-sentence";
 import styles from "./home.module.css";
 
+/** 首页精选：均为 Signature 层级、图片就绪、内容完整的行程；依据是完整度，不是销量。 */
 const featuredSlugs = [
   "beijing-xian-shanghai-private-9-day-tour",
-  "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+  "beijing-xian-chengdu-shanghai-private-11-day-tour",
+  "china-family-tour-with-pandas-12-day-private-tour",
+  "china-at-an-easier-pace-12-day-private-tour",
   "luxury-yunnan-private-tour",
+  "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+] as const;
+
+/** 按旅行风格进入目录；参数与 /tours 的筛选一致。 */
+const travelStyleLinks = [
+  { label: "First-time visitors", href: "/tours?style=first-trip#journey-catalog" },
+  { label: "Family", href: "/tours?style=family#journey-catalog" },
+  { label: "Culture & heritage", href: "/tours?style=culture#journey-catalog" },
+  { label: "Nature & landscapes", href: "/tours?style=nature#journey-catalog" },
+  { label: "Food & local life", href: "/tours?style=food#journey-catalog" },
+  { label: "Slow travel", href: "/tours?style=slow-travel#journey-catalog" },
 ] as const;
 
 const waysToTravel = [
   {
-    label: "Tailor-made",
-    title: "Your China, designed for you.",
-    body: "Tell us what you love. We build the route, the hotels and the pace, from the great sights to the China most visitors never see.",
-    cta: "Design my trip",
-    href: "/tailor-made-china-tours",
-    image: "/tours/luxury-yunnan-private-tour/erhai-landscape.jpg",
-    alt: "Erhai Lake under a bright blue sky in Dali, Yunnan",
-  },
-  {
-    label: "Fixed itineraries",
-    title: "Short on time? It is already planned.",
-    body: "Choose a route we have already refined. Hotels, guides and transfers are set, so there is nothing left to work out.",
-    cta: "See ready routes",
-    href: "/fixed-itinerary-china-tours",
-    image: "/tours/first-china-beautifully-paced/beijing-temple-of-heaven-reflection.webp",
-    alt: "The Temple of Heaven reflected in still water in Beijing",
-  },
-  {
-    label: "Private day tours",
+    label: "Day experiences",
     title: "One day, handled properly.",
     body: "A private guide takes care of the tickets, the queues and the language, so you simply enjoy the Great Wall, the Terracotta Army or the pandas.",
     cta: "Plan a day",
@@ -67,13 +63,22 @@ const waysToTravel = [
     alt: "The Mutianyu section of the Great Wall in autumn",
   },
   {
-    label: "Guide and driver",
-    title: "Booked it yourself? Add a local.",
-    body: "Already have your flights and hotels? Bring in a guide who speaks your language and a driver who knows the road.",
-    cta: "See the service",
-    href: "/private-guide-and-driver-china",
-    image: "/tours/private-chengdu-panda-day-tour/02-chengdu-peoples-park-teahouse.webp",
-    alt: "A teahouse courtyard in Chengdu's People's Park",
+    label: "Signature journeys",
+    title: "A proven route, shaped around you.",
+    body: "Start from a private journey we have already refined, then adjust the dates, pace and hotels to your party.",
+    cta: "See signature journeys",
+    href: "/fixed-itinerary-china-tours",
+    image: "/tours/first-china-beautifully-paced/beijing-temple-of-heaven-reflection.webp",
+    alt: "The Temple of Heaven reflected in still water in Beijing",
+  },
+  {
+    label: "Tailor-made",
+    title: "Your China, designed for you.",
+    body: "Tell us what you love. We build the route, the hotels and the pace, from the great sights to the China most visitors never see.",
+    cta: "Design my trip",
+    href: "/tailor-made-china-tours",
+    image: "/tours/luxury-yunnan-private-tour/erhai-landscape.jpg",
+    alt: "Erhai Lake under a bright blue sky in Dali, Yunnan",
   },
 ] as const;
 
@@ -341,8 +346,10 @@ export function HomePage({ planningHref }: { planningHref: string }) {
           <span>A licensed inbound operator, based in Guangzhou</span>
         </li>
         <li>
-          <strong>{reviews.length} reviews</strong>
-          <span>Written by travelers after they came home</span>
+          <strong>No hidden costs</strong>
+          <span>
+            What is included, what is not, and every optional extra, in writing before you pay
+          </span>
         </li>
         <li>
           <strong>{travelers?.display ?? "12,000+"} travelers</strong>
@@ -355,7 +362,7 @@ export function HomePage({ planningHref }: { planningHref: string }) {
       </ul>
 
       <section className={styles.ways} aria-labelledby="ways-title">
-        <p className={styles.kicker}>Four ways to travel</p>
+        <p className={styles.kicker}>Three ways to explore China</p>
         <h2 id="ways-title" className={styles.big}>
           However you like to plan, <em>China is taken care of.</em>
         </h2>
@@ -434,10 +441,10 @@ export function HomePage({ planningHref }: { planningHref: string }) {
       <section className={styles.featured} aria-labelledby="featured-title">
         <header className={styles.head}>
           <div>
-            <h2 id="featured-title">Three ways to see China.</h2>
+            <h2 id="featured-title">Selected journeys.</h2>
             <p className={styles.headNote}>
-              Each is a starting point. Change the days, the pace or the hotels and we rework the
-              whole route around you.
+              Each is a starting point, not a fixed package. Change the dates, the pace or the
+              hotels and we rework the route around you.
             </p>
           </div>
           <Link className={styles.textLink} href="/tours">
@@ -450,7 +457,7 @@ export function HomePage({ planningHref }: { planningHref: string }) {
             return (
               <Link
                 href={item.href}
-                className={`${styles.tile} ${index === 0 ? styles.tileLead : ""}`}
+                className={`${styles.tile} ${index === 0 ? styles.tileLead : ""} ${index >= 3 ? styles.tileSecondary : ""}`}
                 key={item.slug}
               >
                 <Image
@@ -479,6 +486,16 @@ export function HomePage({ planningHref }: { planningHref: string }) {
             );
           })}
         </div>
+        <nav className={styles.styleLinks} aria-label="Explore journeys by travel style">
+          <span>Explore by travel style</span>
+          <ul>
+            {travelStyleLinks.map((link) => (
+              <li key={link.label}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </section>
 
       <section className={styles.quote} aria-label="A traveler's words">
@@ -497,7 +514,7 @@ export function HomePage({ planningHref }: { planningHref: string }) {
             {quoteReview.author}, {quoteReview.location}
           </p>
           <Link className={styles.textLink} href="/reviews">
-            Read all {reviews.length} reviews
+            Read what our guests say
           </Link>
         </div>
       </section>

@@ -39,7 +39,7 @@ const content: HighIntentLandingContent = {
     "A five-star logo does not identify the room, view, bathroom, guide, transfer or response when a confirmed service changes. A high-quality proposal should name those decisions and separate confirmed arrangements from requests before asking for a deposit.",
     "AVIORA begins with route restraint. We protect the Great Wall, Forbidden City and Terracotta Army before adding another city, then choose hotels, transport and private experiences around the people traveling. Free time remains part of the product when another inclusion would weaken the day.",
   ],
-  journeysTitle: "Published journeys with a visible price basis",
+  journeysTitle: "Published journeys with a visible service basis",
   journeysIntro:
     "Use these routes as commercial starting points. Exact suites, specialist guides, private access and premium transport are confirmed against your dates in a written proposal.",
   decisionTitle: "Where should the luxury budget change the trip?",

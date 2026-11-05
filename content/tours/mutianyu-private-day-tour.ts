@@ -282,22 +282,22 @@ export const mutianyuPrivateDayTour: Tour = {
     {
       title: "Round-trip cable car",
       description:
-        "Add a round-trip cable-car plan from approximately US$22 per person when the operator's current route and your group's preferred Wall section make it the right choice. Final price follows the confirmed scenic-area rate for your date.",
-      badges: ["Approx. US$22 pp", "Subject to operation"],
+        "Add a round-trip cable-car plan when the operator's current route and your group's preferred Wall section make it the right choice. The price follows the confirmed scenic-area rate for your date.",
+      badges: ["Subject to operation"],
       image: chairlift,
     },
     {
       title: "Chairlift up and toboggan down",
       description:
-        "A popular option for confident guests who want a playful descent: approximately US$22 per person, subject to weather, safety conditions, height or age rules and the operator's live decision.",
-      badges: ["Approx. US$22 pp", "Weather dependent"],
+        "A popular option for confident guests who want a playful descent, subject to weather, safety conditions, height or age rules and the operator's live decision.",
+      badges: ["Weather dependent"],
       image: panorama,
     },
     {
       title: "One-way mountain transport",
       description:
-        "Add a single cable-car, chairlift or toboggan sector from approximately US$15 per person when the confirmed route makes a one-way choice more sensible than a return ticket.",
-      badges: ["Approx. US$15 pp", "Route dependent"],
+        "Add a single cable-car, chairlift or toboggan sector when the confirmed route makes a one-way choice more sensible than a return ticket.",
+      badges: ["Route dependent"],
       image: panorama,
     },
     {
@@ -369,9 +369,9 @@ export const mutianyuPrivateDayTour: Tour = {
   gallery: mutianyuGallery.slice(1),
   faqs: [
     {
-      question: "What does the US$198 starting price include?",
+      question: "What does the private-tour price include?",
       answer:
-        "It is an indicative per-person starting price based on four guests traveling privately, equivalent to a group total from US$792. It includes pickup and return within Beijing's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Mutianyu admission, the scenic-area shuttle, bottled water and no compulsory shopping stops. Optional mountain transport and lunch are not included.",
+        "Your written quote is for a private group and includes pickup and return within Beijing's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Mutianyu admission, the scenic-area shuttle, bottled water and no compulsory shopping stops. Optional mountain transport and lunch are not included.",
     },
     {
       question: "Is this a private tour or a shared coach tour?",
@@ -381,7 +381,7 @@ export const mutianyuPrivateDayTour: Tour = {
     {
       question: "What is the indicative price for a different group size?",
       answer:
-        "Outside major public holidays and unusual pickup requirements, the indicative Essentials private-group prices are: one guest from US$498; two guests from US$598 total; three guests from US$698 total; four guests from US$792 total; five guests from US$940 total; and six guests from US$1,080 total. The exact vehicle, hotel address, date and service window are checked before confirmation. Optional mountain transport and lunch remain separate.",
+        "Private-group pricing follows the size of your group, so the cost per guest usually falls as more people share the vehicle and guide. Your written quote shows the exact total for your date, group size, hotel address and service window. Optional mountain transport and lunch remain separate.",
     },
     {
       question: "Can you pick us up from our Beijing hotel?",
@@ -396,7 +396,7 @@ export const mutianyuPrivateDayTour: Tour = {
     {
       question: "What are the cable car, chairlift and toboggan options?",
       answer:
-        "They are optional scenic-area products, not hidden charges. A round-trip cable car is approximately US$22 per person; a chairlift-up and toboggan-down combination is approximately US$22 per person; a one-way option is approximately US$15 per person. We confirm the current operator rate and suitable route before booking. Operations can change because of weather, safety, maintenance, capacity or scenic-area rules.",
+        "They are optional scenic-area products, not hidden charges. Options include a round-trip cable car, a chairlift-up and toboggan-down combination, or a one-way sector. We confirm the current operator rate and suitable route before booking. Operations can change because of weather, safety, maintenance, capacity or scenic-area rules.",
     },
     {
       question: "Can children or older travelers take this tour?",

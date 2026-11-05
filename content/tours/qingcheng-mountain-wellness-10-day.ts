@@ -595,9 +595,9 @@ export const qingchengMountainWellness10DayTour: Tour = {
         "Chengdu is the capital of Sichuan Province in southwest China and the international gateway for this journey. Qingcheng Mountain lies near Dujiangyan, roughly 70 kilometers northwest of central Chengdu. The private road transfer usually takes around ninety minutes depending on traffic and the confirmed hotels. The journey starts and ends in Chengdu, so no domestic flight is required inside the core itinerary.",
     },
     {
-      question: "What does the US$11,800 starting price include?",
+      question: "What does the price include?",
       answer:
-        "It is an indicative per-person starting price based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$47,200. It includes nine nights, private transfers, confirmed guiding and cultural sessions, seven listed lunches or dinners, two resort treatments per guest, entrance arrangements and AVIORA Quiet Journey Standard support as detailed in the written proposal.",
+        "Your written proposal is priced for your own party and dates, and includes nine nights, private transfers, confirmed guiding and cultural sessions, seven listed lunches or dinners, two resort treatments per guest, entrance arrangements and AVIORA Quiet Journey Standard support as detailed in the written proposal.",
     },
     {
       question: "Is Six Senses Qing Cheng Mountain guaranteed?",

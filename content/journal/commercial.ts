@@ -2023,10 +2023,10 @@ export const commercialJournalArticles: JournalArticle[] = [
   }),
   commercialArticle({
     slug: "9-day-beijing-xian-shanghai-itinerary",
-    title: "9-Day Beijing, Xi'an and Shanghai Itinerary: A Better First China Route",
-    dek: "Move from imperial Beijing to Xi'an's archaeological depth and Shanghai's contemporary energy with a realistic nine-day rhythm.",
+    title: "10-Day Beijing, Xi'an and Shanghai Itinerary: A Better First China Route",
+    dek: "Move from imperial Beijing to Xi'an's archaeological depth and Shanghai's contemporary energy with a realistic ten-day rhythm.",
     excerpt:
-      "A practical 9-day Beijing, Xi'an and Shanghai itinerary with city-night logic, rail planning and private support where it matters.",
+      "A practical 10-day Beijing, Xi'an and Shanghai itinerary with city-night logic, rail planning and private support where it matters.",
     category: "Travel Guides",
     tags: ["beijing", "xian", "shanghai", "first-time-china", "train-travel"],
     readingTime: "13 min read",
@@ -2061,13 +2061,13 @@ export const commercialJournalArticles: JournalArticle[] = [
         objectPosition: "50% 48%",
       },
     ],
-    seoTitle: "9-Day Beijing, Xi'an and Shanghai Itinerary",
+    seoTitle: "10-Day Beijing, Xi'an and Shanghai Itinerary",
     seoDescription:
-      "Plan a realistic 9-day Beijing, Xi'an and Shanghai itinerary with the Great Wall, Terracotta Warriors, high-speed rail, hotels and private tour support.",
+      "Plan a realistic 10-day Beijing, Xi'an and Shanghai itinerary with the Great Wall, Terracotta Warriors, high-speed rail, hotels and private tour support.",
     keywords: [
       "9 day Beijing Xi'an Shanghai itinerary",
-      "Beijing Xi'an Shanghai tour 9 days",
-      "first China itinerary 9 days",
+      "Beijing Xi'an Shanghai tour 10 days",
+      "first China itinerary 10 days",
       "private Beijing Xi'an Shanghai tour",
     ],
     destinations: ["beijing", "xian", "shanghai"],
@@ -2096,8 +2096,8 @@ export const commercialJournalArticles: JournalArticle[] = [
     ],
     conversionTitle: "Make the classic route fit your flight times and energy.",
     conversionDescription:
-      "Tell us your arrival city, dates, hotel expectations and walking comfort. We will adjust the nine-day framework before preparing a date-specific proposal.",
-    conversionLabel: "Plan This 9-Day Route",
+      "Tell us your arrival city, dates, hotel expectations and walking comfort. We will adjust the ten-day framework before preparing a date-specific proposal.",
+    conversionLabel: "Plan This 10-Day Route",
   }),
   commercialArticle({
     slug: "5-day-chengdu-leshan-itinerary",
@@ -2511,10 +2511,10 @@ export const commercialJournalArticles: JournalArticle[] = [
   commercialArticle({
     slug: "beijing-xian-shanghai-private-tour-9-days",
     publishedAt: "2026-09-25",
-    title: "Beijing, Xi'an and Shanghai in 9 Days: A Private First-China Route",
+    title: "Beijing, Xi'an and Shanghai in 10 Days: A Private First-China Route",
     dek: "The operating logic behind a focused first journey: four Beijing nights, two in Xi'an and two in Shanghai, connected by two managed handovers.",
     excerpt:
-      "See what a nine-day private Beijing, Xi'an and Shanghai route can hold, what it should leave out and who it suits.",
+      "See what a ten-day private Beijing, Xi'an and Shanghai route can hold, what it should leave out and who it suits.",
     category: "Travel Guides",
     tags: ["beijing", "xian", "shanghai", "first-time-china", "private-guides"],
     readingTime: "11 min read",
@@ -2522,9 +2522,9 @@ export const commercialJournalArticles: JournalArticle[] = [
     hero: firstChinaAsset.beijingGreatWallWide,
     heroMode: "text",
     gallery: [],
-    seoTitle: "Beijing, Xi'an and Shanghai Private Tour: 9 Days",
+    seoTitle: "Beijing, Xi'an and Shanghai Private Tour: 10 Days",
     seoDescription:
-      "See how a 9-day private Beijing, Xi'an and Shanghai route works, including nights, rail, walking, hotels, pacing and who it suits.",
+      "See how a 10-day private Beijing, Xi'an and Shanghai route works, including nights, rail, walking, hotels, pacing and who it suits.",
     keywords: [
       "Beijing Xi'an Shanghai private tour",
       "9 day China private tour",
@@ -2535,10 +2535,10 @@ export const commercialJournalArticles: JournalArticle[] = [
     tours: ["beijing-xian-shanghai-private-9-day-tour"],
     experiences: ["private-guides", "train-travel"],
     articles: ["china-high-speed-train-foreigners", "how-many-days-beijing-xian-shanghai"],
-    conversionTitle: "See the complete nine-day journey behind the route logic.",
+    conversionTitle: "See the complete ten-day journey behind the route logic.",
     conversionDescription:
-      "Review the published nights, private service, starting-price basis and day-by-day structure, then adapt it around your flights and pace.",
-    conversionLabel: "Explore the 9-Day Journey",
+      "Review the published nights, private service, pricing approach and day-by-day structure, then adapt it around your flights and pace.",
+    conversionLabel: "Explore the 10-Day Journey",
     conversionHref:
       "/start-planning?source=journal-beijing-xian-shanghai-private-tour-9-days&journey=beijing-xian-shanghai-private-9-day-tour&preference=first-china-route",
     sourcePath: "content/journal/articles/2026-09-25-beijing-xian-shanghai-private-tour-9-days.md",
@@ -2655,7 +2655,7 @@ export const commercialJournalArticles: JournalArticle[] = [
     title: "How Much Does a Private China Family Tour Cost for Four?",
     dek: "A transparent reading of the published family-of-four price basis and the rooms, ages, dates, private service and transport that change it.",
     excerpt:
-      "Understand what a US$27,520 published family starting total includes and what the final proposal still needs to confirm.",
+      "Understand what a private China family tour for four includes and what the final written proposal still needs to confirm.",
     category: "Family Travel",
     tags: ["family-travel", "luxury-travel", "pandas", "private-guides"],
     readingTime: "11 min read",

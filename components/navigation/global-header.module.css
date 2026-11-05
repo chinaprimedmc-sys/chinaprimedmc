@@ -20,15 +20,17 @@
 }
 
 /* A hovered menu panel needs a solid bar behind it, even over a photo. */
-.header:has(.navItem:hover .panel, .navItem:focus-within .panel),
-.header[data-tone="over-image"]:not([data-scrolled="true"]):not([data-menu-open="true"]):has(
-    .navItem:hover .panel,
-    .navItem:focus-within .panel
-  ) {
-  --nav-ink: var(--color-ink);
-  --nav-muted: rgba(26, 24, 22, 0.62);
-  background: #fff;
-  border-bottom-color: var(--color-line);
+@media (hover: hover) {
+  .header:has(.navItem:hover .panel, .navItem:focus-within .panel),
+  .header[data-tone="over-image"]:not([data-scrolled="true"]):not([data-menu-open="true"]):has(
+      .navItem:hover .panel,
+      .navItem:focus-within .panel
+    ) {
+    --nav-ink: var(--color-ink);
+    --nav-muted: rgba(26, 24, 22, 0.62);
+    background: #fff;
+    border-bottom-color: var(--color-line);
+  }
 }
 
 .header[data-tone="over-image"]:not([data-scrolled="true"]):not([data-menu-open="true"]) {
@@ -120,17 +122,28 @@
     transform 180ms ease;
 }
 
-.navLink:hover,
 .navLink:focus-visible,
 .navLink[data-active="true"] {
   opacity: 1;
 }
 
-.navLink:hover::after,
+@media (hover: hover) {
+  .navLink:hover {
+    opacity: 1;
+  }
+}
+
 .navLink:focus-visible::after,
 .navLink[data-active="true"]::after {
   opacity: 1;
   transform: scaleX(1);
+}
+
+@media (hover: hover) {
+  .navLink:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 .navItem {
@@ -156,13 +169,22 @@
   visibility: hidden;
 }
 
-.navItem:hover .panel,
 .navItem:focus-within .panel {
   opacity: 1;
   pointer-events: auto;
   transform: none;
   transition-delay: 60ms, 60ms, 0s;
   visibility: visible;
+}
+
+@media (hover: hover) {
+  .navItem:hover .panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    transition-delay: 60ms, 60ms, 0s;
+    visibility: visible;
+  }
 }
 
 .panelInner {
@@ -194,9 +216,14 @@
   padding: 9px 0;
 }
 
-.panelColumns a:hover,
 .panelColumns a:focus-visible {
   color: var(--color-forest);
+}
+
+@media (hover: hover) {
+  .panelColumns a:hover {
+    color: var(--color-forest);
+  }
 }
 
 .panelFeatured {
@@ -218,8 +245,10 @@
   transition: transform 0.6s ease;
 }
 
-.panelFeatured:hover .panelPhoto img {
-  transform: scale(1.04);
+@media (hover: hover) {
+  .panelFeatured:hover .panelPhoto img {
+    transform: scale(1.04);
+  }
 }
 
 .panelMeta {
@@ -296,14 +325,18 @@
   white-space: nowrap;
 }
 
-.actionIsland:hover {
-  background: var(--nav-ink);
-  color: var(--color-canvas);
+@media (hover: hover) {
+  .actionIsland:hover {
+    background: var(--nav-ink);
+    color: var(--color-canvas);
+  }
 }
 
-.header[data-tone="over-image"]:not([data-scrolled="true"]) .actionIsland:hover {
-  background: #fff;
-  color: var(--color-ink);
+@media (hover: hover) {
+  .header[data-tone="over-image"]:not([data-scrolled="true"]) .actionIsland:hover {
+    background: #fff;
+    color: var(--color-ink);
+  }
 }
 
 .actionIsland svg {

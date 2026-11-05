@@ -29,8 +29,10 @@
   white-space: nowrap;
   transition: padding 0.2s ease;
 }
-.item:hover {
-  padding-right: 20px;
+@media (hover: hover) {
+  .item:hover {
+    padding-right: 20px;
+  }
 }
 .item svg {
   flex: none;

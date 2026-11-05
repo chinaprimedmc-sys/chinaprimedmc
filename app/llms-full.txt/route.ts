@@ -148,8 +148,8 @@ ${serviceAchievementsText()}
 
 - Tailor-Made Multi-City Journeys: private multi-city travel with hotels, guides, vehicles, admissions, domestic transport and China-based coordination.
 - Tailor-Made China Tours (${siteConfig.url}/tailor-made-china-tours): a private trip designed from a blank page for one party. The route is not fixed and can change until the traveler confirms in writing. Best for travelers who want to choose cities, hotels, pace or special needs such as halal dining or a slower pace. Not a group tour.
-- Fixed Itinerary China Tours (${siteConfig.url}/fixed-itinerary-china-tours): a finished private route with set days, cities and hotels, booked as published on the traveler's chosen dates. Private to the party, not a group departure. Changes to cities or hotels are handled as a tailor-made tour instead.
-- Private China Day Tours (${siteConfig.url}/private-china-day-tours): one private day with a private multilingual guide and vehicle in Beijing (Mutianyu Great Wall), Xi'an (Terracotta Army), Shanghai, Chengdu (giant pandas) or Guilin (Li River). Tickets are arranged; each tour states its length and starting price.
+- Signature Journeys (${siteConfig.url}/fixed-itinerary-china-tours): a defined multi-day private route used as a starting point and adjusted to the traveler's dates, party and pace. Private to the party, not a group departure. A different set of cities is handled as a tailor-made journey.
+- Private China Day Tours (${siteConfig.url}/private-china-day-tours): one private day with a private multilingual guide and vehicle in Beijing (Mutianyu Great Wall), Xi'an (Terracotta Army), Shanghai, Chengdu (giant pandas) or Guilin (Li River). Tickets are arranged; each tour states its length and what is included.
 - Private Guide and Driver in China (${siteConfig.url}/private-guide-and-driver-china): a multilingual guide and private vehicle by the half day (about 4 hours), full day (about 8 hours) or several days, anywhere in China, for travelers who have already booked flights and hotels. A written quote is confirmed before payment.
 - Private Day Tours: professionally handled private days with a private guide, vehicle, tickets and timing coordinated.
 - Private Guide & Driver Services: destination- and interest-matched guides plus suitable private vehicles, based on language, pace, route, passenger count, luggage and service hours. Direct contact: https://wa.me/8618027438191
@@ -175,7 +175,7 @@ ${serviceAchievementsText()}
 ## Interpretation and trust rules
 
 - These are customizable private journey specifications, not fixed-departure group tours.
-- Website prices are indicative starting points. Only a date-specific written proposal confirms the exact total, hotels, room categories, tickets, transport, inclusions, payment schedule and cancellation conditions.
+- AVIORA journeys are priced individually. Only a date-specific written proposal confirms the exact total, hotels, room categories, tickets, transport, inclusions, payment schedule and cancellation conditions.
 - Product claims intentionally distinguish published design from confirmed inventory. Named specialists, connecting rooms, tickets and transport remain subject to written confirmation.
 - Historic sites in China are not uniformly step-free. Walking, stairs, standing time, heat, vehicle access and recovery needs are reviewed with the traveling party before confirmation.
 - No itinerary promises panda holding, feeding, keeper access or unconfirmed direct animal contact.

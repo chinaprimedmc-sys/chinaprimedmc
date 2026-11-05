@@ -731,7 +731,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       question:
         "How should we arrange international flights from Europe, the USA or Southeast Asia?",
       answer:
-        "Book an open-jaw journey arriving in Beijing and departing from Shanghai; you do not need to return to Beijing. International flights are not included in the published price. Share your preferred gateway flights before ticketing and AVIORA will shape the first and final days around the actual arrival, departure and terminal, including private airport pickup and drop-off. One-stop options are common from many European and US cities, while many Southeast Asian hubs have direct links to Beijing and Shanghai; schedules depend on your city and travel date.",
+        "Book an open-jaw journey arriving in Beijing and departing from Shanghai; you do not need to return to Beijing. International flights are not included in the price. Share your preferred gateway flights before ticketing and AVIORA will shape the first and final days around the actual arrival, departure and terminal, including private airport pickup and drop-off. One-stop options are common from many European and US cities, while many Southeast Asian hubs have direct links to Beijing and Shanghai; schedules depend on your city and travel date.",
     },
     {
       question: "Is this suitable for a first trip to China?",
@@ -739,9 +739,9 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
         "Yes. Beijing, the Great Wall, Xi'an's Terracotta Warriors and Shanghai give first-time visitors China's essential contrasts. Ningxia and the desert add the part most standard first trips miss: living Hui Muslim food culture, northwest landscapes and a night beneath open sky. Private guides and managed transfers mean you do not need previous China travel experience or Chinese-language skills.",
     },
     {
-      question: "What does the US$7,680 starting price include?",
+      question: "What does the price include?",
       answer:
-        "It is an indicative per-person starting price based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$30,720. It includes the 12 nights, private guides and vehicles, first-class Beijing–Xi'an rail, domestic flights and transfers named in your proposal, planned verified meals and the listed private experiences as confirmed in writing.",
+        "Your written proposal is priced for your own party and dates, and includes the 12 nights, private guides and vehicles, first-class Beijing–Xi'an rail, domestic flights and transfers named in your proposal, planned verified meals and the listed private experiences as confirmed in writing.",
     },
     {
       question: "What exactly do you mean by Muslim-friendly?",

@@ -244,7 +244,13 @@ export function filterJourneys(items: JourneyCatalogItem[], filters: JourneyFilt
   return items
     .filter((item) => matchesJourneyFilters(item, filters))
     .sort((a, b) => {
-      if (filters.sort === "price-low") return perPerson(a) - perPerson(b);
+      if (filters.sort === "price-low") {
+        const diff = perPerson(a) - perPerson(b);
+        // 两个都没有公开价格时 Infinity - Infinity 是 NaN，退回推荐顺序。
+        if (Number.isFinite(diff) && diff !== 0) return diff;
+        if (Number.isNaN(diff))
+          return b.commercialPriority - a.commercialPriority || a.title.localeCompare(b.title);
+      }
       if (filters.sort === "duration-low") return a.recommendedDaysMin - b.recommendedDaysMin;
       if (filters.sort === "duration-high") return b.recommendedDaysMax - a.recommendedDaysMax;
       return b.commercialPriority - a.commercialPriority || a.title.localeCompare(b.title);

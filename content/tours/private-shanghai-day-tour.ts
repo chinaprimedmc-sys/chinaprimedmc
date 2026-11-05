@@ -293,36 +293,36 @@ export const privateShanghaiDayTour: Tour = {
     {
       title: "Shanghai Tower, 118th-floor observation deck",
       description:
-        "Add advance-arranged Shanghai Tower observation-deck admission from US$35 per guest. The price includes the ticket arrangement and itinerary coordination; it does not turn the day into an unlimited-hours extension.",
-      badges: ["From US$35 pp", "Advance arrangement"],
+        "Add advance-arranged Shanghai Tower observation-deck admission. The arrangement includes the ticket booking and itinerary coordination; it does not turn the day into an unlimited-hours extension.",
+      badges: ["Advance arrangement"],
       image: lujiazui,
     },
     {
       title: "Curated Shanghainese lunch",
       description:
-        "Add a pre-arranged local lunch from US$38 per guest, with an approachable fixed menu and dietary review before booking. Drinks and dishes beyond the agreed menu are separate.",
-      badges: ["From US$38 pp", "Dietary needs checked"],
+        "Add a pre-arranged local lunch, with an approachable fixed menu and dietary review before booking. Drinks and dishes beyond the agreed menu are separate.",
+      badges: ["Dietary needs checked"],
       image: bundClockTower,
     },
     {
       title: "Huangpu River night-cruise extension",
       description:
-        "Extend the private day into the evening from US$328 per group of up to four. This includes standard cruise tickets, private vehicle, guide assistance and up to 2.5 additional service hours; it is not only a boat-ticket markup.",
-      badges: ["From US$328 per group", "Up to 4 guests", "Evening extension"],
+        "Extend the private day into the evening. This includes standard cruise tickets, private vehicle, guide assistance and up to 2.5 additional service hours; it is not only a boat-ticket markup.",
+      badges: ["Up to 4 guests", "Evening extension"],
       image: bundWaterfront,
     },
     {
       title: "Hands-on Shanghai snack-making experience",
       description:
-        "Add a small-group or private-arrangement workshop from US$88 per guest to learn a Shanghai-style snack, subject to the host's schedule and your final route. The exact format is confirmed before payment.",
-      badges: ["From US$88 pp", "Host availability"],
+        "Add a small-group or private-arrangement workshop to learn a Shanghai-style snack, subject to the host's schedule and your final route. The exact format is confirmed before payment.",
+      badges: ["Host availability"],
       image: yuGarden,
     },
     {
       title: "Additional private touring time",
       description:
-        "Add time only when your date and guide, driver and vehicle availability support it: US$58 per private group for each additional hour. This is useful for an evening plan, a slower pace or a confirmed late departure.",
-      badges: ["US$58 per group/hour", "Subject to availability"],
+        "Add time only when your date and guide, driver and vehicle availability support it, charged by the hour. This is useful for an evening plan, a slower pace or a confirmed late departure.",
+      badges: ["Subject to availability"],
       image: privateVehicle,
     },
   ],
@@ -396,14 +396,14 @@ export const privateShanghaiDayTour: Tour = {
   gallery: shanghaiGallery.slice(1),
   faqs: [
     {
-      question: "What does the US$672 starting price include?",
+      question: "What does the private-tour price include?",
       answer:
-        "It is an indicative private-group starting price for four guests, equivalent to US$168 per guest. It includes pickup and return within Shanghai's main central hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops. Lunch, Shanghai Tower, evening cruises and other upgrades are not included.",
+        "Your written quote is for a private group and includes pickup and return within Shanghai's main central hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops. Lunch, Shanghai Tower, evening cruises and other upgrades are not included.",
     },
     {
-      question: "What is the published price for a smaller or larger group?",
+      question: "How does group size affect the price?",
       answer:
-        "Outside major public holidays and unusual pickup requirements, the indicative private-group prices are: one guest from US$468; two guests from US$558 total; three guests from US$628 total; four guests from US$672 total; five guests from US$795 total; and six guests from US$930 total. Six guests may require a larger vehicle, which is checked before confirmation. Optional experiences remain separate.",
+        "Private-group pricing follows the size of your group and your pickup point, so the cost per guest usually falls as more people share the vehicle and guide. Your written quote shows the exact total for your date, group size, vehicle and hotel address. Optional experiences remain separate. Six guests may require a larger vehicle.",
     },
     {
       question: "Is this a private tour or a shared group tour?",
@@ -413,15 +413,15 @@ export const privateShanghaiDayTour: Tour = {
     {
       question: "Can you collect us from the airport, cruise port or railway station?",
       answer:
-        "Yes, where the timing and route are workable, but these are not priced the same as a central-hotel day because flight, train or ship timing, luggage, traffic and terminal or port access can change the service hours. Hongqiao airport or railway station is quoted from US$68 per group each way, Pudong airport from US$128 per group each way and Wusongkou cruise port from US$138 per group each way, subject to the actual date and timing.",
+        "Yes, where the timing and route are workable, but these are not priced the same as a central-hotel day because flight, train or ship timing, luggage, traffic and terminal or port access can change the service hours. Hongqiao, Pudong airport, railway-station and Wusongkou cruise-port transfers are quoted separately, subject to the actual date and timing.",
     },
     {
       question: "Is lunch included?",
       answer:
-        "No. The base price stays clear and does not force every guest into a tourist lunch. You can keep independent lunch time, ask your guide for a practical suggestion, or add the pre-arranged curated Shanghainese lunch from US$38 per guest. Drinks are separate unless the written menu says otherwise.",
+        "No. The base price stays clear and does not force every guest into a tourist lunch. You can keep independent lunch time, ask your guide for a practical suggestion, or add the pre-arranged curated Shanghainese lunch. Drinks are separate unless the written menu says otherwise.",
     },
     {
-      question: "Why does the Huangpu night-cruise upgrade cost US$328 for up to four guests?",
+      question: "How is the Huangpu night-cruise upgrade priced?",
       answer:
         "The price is for an evening service extension, not just public cruise tickets. It includes standard cruise tickets for up to four guests, private vehicle, guide assistance and up to 2.5 additional service hours. The exact sailing, operator price and timing are confirmed before booking; premium cabin, dinner or private-charter products are not included unless quoted.",
     },

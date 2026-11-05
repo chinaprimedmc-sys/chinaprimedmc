@@ -22,7 +22,7 @@ const consumerFooterGroups = [
     items: [
       { label: "Private Journeys", href: "/tours" },
       { label: "Tailor-Made Tours", href: "/tailor-made-china-tours" },
-      { label: "Fixed Itineraries", href: "/fixed-itinerary-china-tours" },
+      { label: "Signature Journeys", href: "/fixed-itinerary-china-tours" },
       { label: "Private Day Tours", href: "/private-china-day-tours" },
       { label: "Guide & Driver", href: "/private-guide-and-driver-china" },
       { label: "Destinations", href: "/destinations" },

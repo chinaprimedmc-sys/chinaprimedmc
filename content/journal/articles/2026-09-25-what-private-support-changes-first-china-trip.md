@@ -20,7 +20,7 @@ sources_verified_at: "2026-09-25"
 
 Private support is valuable when it removes a responsibility the traveler would otherwise have to own. A private car by itself is not a complete service. The meaningful difference is a chain of accountable decisions: the airport meeting, hotel arrival, reservation data, guide briefing, station handover, daily pace and response when a confirmed arrangement changes.
 
-AVIORA's [nine-day Beijing, Xi'an and Shanghai journey](/tours/beijing-xian-shanghai-private-9-day-tour) uses private operation to connect those moments. The product is not sold as unrestricted access or freedom from every queue. It is sold as a clearly scoped journey handled by one China-based team.
+AVIORA's [ten-day Beijing, Xi'an and Shanghai journey](/tours/beijing-xian-shanghai-private-9-day-tour) uses private operation to connect those moments. The product is not sold as unrestricted access or freedom from every queue. It is sold as a clearly scoped journey handled by one China-based team.
 
 ## Before arrival: one version of the trip
 

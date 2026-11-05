@@ -209,8 +209,10 @@
   line-height: 1.45;
 }
 
-.contents a:hover {
-  color: var(--article-ink);
+@media (hover: hover) {
+  .contents a:hover {
+    color: var(--article-ink);
+  }
 }
 
 .answer,
@@ -311,9 +313,11 @@
   text-underline-offset: 0.25rem;
 }
 
-.blocks a:hover,
-.textLink:hover {
-  text-decoration-color: currentColor;
+@media (hover: hover) {
+  .blocks a:hover,
+  .textLink:hover {
+    text-decoration-color: currentColor;
+  }
 }
 
 .decisionMargin {
@@ -1584,8 +1588,10 @@
   object-fit: cover;
   transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.relatedLink:hover .relatedThumb img {
-  transform: scale(1.04);
+@media (hover: hover) {
+  .relatedLink:hover .relatedThumb img {
+    transform: scale(1.04);
+  }
 }
 .relatedLink span:not(.relatedThumb) {
   color: var(--stone);
@@ -1601,10 +1607,12 @@
   font-weight: 400;
   line-height: 1.25;
 }
-.relatedLink:hover strong {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.3rem;
+@media (hover: hover) {
+  .relatedLink:hover strong {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3rem;
+  }
 }
 
 .faqList summary {

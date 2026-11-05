@@ -1,91 +1,30 @@
+/* Reviews page header. Neutral palette only. */
 .archive {
-  color: #222824;
-  margin-inline: auto;
-  max-width: 76rem;
-  padding: 0 var(--page-gutter) 72px;
+  color: var(--color-ink);
 }
-
 .intro {
-  border-bottom: 1px solid #dfe5e1;
-  padding: 28px 0 20px;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 56px) clamp(20px, 3.4vw, 56px) clamp(20px, 3vw, 32px);
 }
-
 .eyebrow {
-  color: var(--color-forest);
-  font-size: 0.75rem;
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  line-height: 1.1rem;
+  margin: 0;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-
 .intro h1 {
-  font-family: var(--font-brand);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  line-height: 1.1;
-  margin-top: 10px;
+  margin: 12px 0 0;
   max-width: 18ch;
+  font-family: var(--font-brand);
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.06;
 }
-
-.intro > p:last-child {
-  color: #5b645e;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  margin-top: 12px;
-  max-width: 60ch;
-}
-
-.intro > .reviewCount {
-  color: #68716b;
-  font-size: 0.82rem;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.25rem;
-  margin-top: 8px;
-}
-
-.reviewList {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  list-style: none;
-  margin: 0;
-  padding: 18px 0 0;
-}
-
-.reviewList > li {
-  min-width: 0;
-}
-
-@media (max-width: 767px) {
-  .archive {
-    padding-bottom: 48px;
-  }
-
-  .intro {
-    padding-top: 20px;
-  }
-
-  .intro h1 {
-    font-size: 1.9rem;
-    line-height: 1.12;
-    max-width: 19ch;
-  }
-
-  .intro > p:last-child {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  .reviewList {
-    grid-template-columns: 1fr;
-    gap: 7px;
-    padding-top: 12px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1050px) {
-  .reviewList {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.reviewCount {
+  margin: 14px 0 0;
+  color: var(--color-muted);
+  font-size: 15px;
 }

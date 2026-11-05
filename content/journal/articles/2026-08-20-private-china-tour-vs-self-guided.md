@@ -99,7 +99,7 @@ But compare like with like. Include the transport used to reach an inconvenient 
 
 Private service also prices differently by party size. A couple bears the fixed guide and vehicle cost across two people; a family or group of friends shares it across more travelers.
 
-Here is a real benchmark rather than a percentage claim. Our published nine-day Beijing, Xi'an and Shanghai private journey starts from **US$3,190 per person**, based on four guests sharing two rooms outside peak holiday periods. It includes selected four- or five-star hotels, private guiding and vehicles on scheduled touring days, listed entrance tickets and confirmed domestic transport. International flights are not included unless stated in the proposal.
+Here is a concrete reference rather than a percentage claim. Our published ten-day Beijing, Xi'an and Shanghai private journey is priced individually for your dates and party, and its published design includes selected four- or five-star hotels, private guiding and vehicles on scheduled touring days, listed entrance tickets and confirmed domestic transport. International flights are not included unless stated in the proposal.
 
 That figure should not be compared with a self-booked hotel total. Use the same service column on both sides:
 

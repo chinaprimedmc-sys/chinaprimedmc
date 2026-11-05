@@ -128,24 +128,32 @@
   width: 0.9rem;
 }
 
-.primaryButton:hover,
-.secondaryButton:hover,
-.preferencesButton:hover {
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .primaryButton:hover,
+  .secondaryButton:hover,
+  .preferencesButton:hover {
+    transform: translateY(-1px);
+  }
 }
 
-.primaryButton:hover {
-  background: #fff;
-  box-shadow: var(--button-glass-shadow-hover);
+@media (hover: hover) {
+  .primaryButton:hover {
+    background: #fff;
+    box-shadow: var(--button-glass-shadow-hover);
+  }
 }
 
-.secondaryButton:hover {
-  background: #fff;
-  border-color: rgba(32, 55, 45, 0.46);
+@media (hover: hover) {
+  .secondaryButton:hover {
+    background: #fff;
+    border-color: rgba(32, 55, 45, 0.46);
+  }
 }
 
-.preferencesButton:hover {
-  color: var(--color-ink);
+@media (hover: hover) {
+  .preferencesButton:hover {
+    color: var(--color-ink);
+  }
 }
 
 .overlay {
@@ -212,9 +220,11 @@
   width: 2.5rem;
 }
 
-.closeButton:hover {
-  background: rgba(23, 25, 27, 0.05);
-  transform: rotate(4deg);
+@media (hover: hover) {
+  .closeButton:hover {
+    background: rgba(23, 25, 27, 0.05);
+    transform: rotate(4deg);
+  }
 }
 
 .closeButton svg {

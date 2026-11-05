@@ -113,7 +113,7 @@ const specs: Spec[] = [
       ),
       h("A worked example"),
       p(
-        "On a nine-day journey with seven guided days, using the commonly quoted range, a group might give roughly RMB 700–1,400 to the guide and RMB 350–700 to the driver across the trip. That is a total for the whole party, so a family of four divides it. If your guide changes between cities, divide the amount by the days each person worked with you.",
+        "On a ten-day journey with seven guided days, using the commonly quoted range, a group might give roughly RMB 700–1,400 to the guide and RMB 350–700 to the driver across the trip. That is a total for the whole party, so a family of four divides it. If your guide changes between cities, divide the amount by the days each person worked with you.",
       ),
       h("How to give it"),
       ul(

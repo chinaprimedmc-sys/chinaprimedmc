@@ -19,6 +19,8 @@ export type TourDetailDay = {
   meals: string;
   stay: string;
   guideInsight?: string;
+  transit?: string;
+  steps?: string;
   image?: MediaAsset;
   experiences: Array<{ title: string; description: string; time?: string }>;
 };
@@ -56,6 +58,7 @@ export type TourDetailModel = {
   hasPhotography: boolean;
   planningSupport?: Tour["planningSupport"];
   guideProfile?: Tour["guideProfile"];
+  seniorStandard?: Tour["seniorStandard"];
   faqLimit?: number;
   experienceCards: TourExperienceCard[];
   optionalExperiences?: Tour["optionalExperiences"];
@@ -137,6 +140,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     title: cleanDisplayTitle(tour.title),
     displayTitle: catalog ? getJourneyCardTitle(catalog) : cleanDisplayTitle(tour.title),
     headline:
+      tour.seniorStandard?.h1 ||
       (catalog && getJourneyHeadline(catalog)) ||
       (catalog ? getJourneyCardTitle(catalog) : cleanDisplayTitle(tour.title)),
     routeLabel: catalog ? getJourneyRouteLabel(catalog) : tour.route,
@@ -154,6 +158,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     hasPhotography: tour.visualStatus !== "pending",
     planningSupport: tour.planningSupport,
     guideProfile: tour.guideProfile,
+    seniorStandard: tour.seniorStandard,
     faqLimit: tour.faqLimit,
     experienceCards: createExperienceCards(tour),
     optionalExperiences: tour.optionalExperiences,
@@ -202,10 +207,12 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
         ? describeIncludedMeals(day.day)
         : day.meals?.join(", ") || "Confirmed in your written proposal",
       stay:
-        tour.slug === "beijing-xian-shanghai-private-9-day-tour" && day.day === 9
+        tour.slug === "beijing-xian-shanghai-private-9-day-tour" && day.day === 10
           ? "Departure day"
           : compactDailyStay(day.hotel, day.destination),
       guideInsight: day.guideNote,
+      transit: day.transit,
+      steps: day.steps,
       image: tour.visualStatus === "pending" ? undefined : day.image,
       experiences: day.activities.map((activity) => ({
         title: activity.title,

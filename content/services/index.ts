@@ -5,6 +5,12 @@
  * 关键规则：不写没有依据的价格或承诺；价格与包含项一律引用 catalog 或写明"以书面确认为准"。
  */
 
+import {
+  dayExperienceSlugs,
+  signatureJourneySlugs,
+  tailorMadeExampleSlugs,
+} from "@/content/tours/tiers";
+
 export type ServicePageSlug =
   | "tailor-made-china-tours"
   | "fixed-itinerary-china-tours"
@@ -57,32 +63,10 @@ export type ServicePageContent = {
 
 const whatsapp = "https://wa.me/8618027438191";
 
-/** 固定行程：路线、酒店和景点按发布内容固定，日期与人数可选。以后重新分类只需改这里。 */
-export const fixedItinerarySlugs = [
-  "beijing-great-wall-private-5-day-tour",
-  "chengdu-pandas-sichuan-table",
-  "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
-  "chengdu-pandas-jiuzhaigou-private-7-day-tour",
-  "shanghai-zhangjiajie-floating-peaks",
-  "beijing-xian-shanghai-private-9-day-tour",
-  "chengdu-chongqing-zhangjiajie-private-11-day-tour",
-] as const;
-
-/** 定制行程页的参考起点：这些路线都可以作为起点，再调整天数、酒店和节奏。 */
-export const tailorMadeStartingPointSlugs = [
-  "china-at-an-easier-pace-12-day-private-tour",
-  "china-family-tour-with-pandas-12-day-private-tour",
-  "luxury-yunnan-private-tour",
-  "muslim-friendly-china-tour-great-wall-desert-stars",
-] as const;
-
-export const dayTourSlugs = [
-  "private-mutianyu-great-wall-day-tour",
-  "private-xian-terracotta-warriors-day-tour",
-  "private-shanghai-day-tour-guide-driver",
-  "private-chengdu-panda-day-tour-early-morning",
-  "guilin-yangshuo-li-river-cruise-private-day-tour",
-] as const;
+/** 三个层级的行程列表由 content/tours/tiers.ts 派生；重新分类只需改那里。 */
+export const fixedItinerarySlugs = signatureJourneySlugs;
+export const tailorMadeStartingPointSlugs = tailorMadeExampleSlugs;
+export const dayTourSlugs = dayExperienceSlugs;
 
 const tailorMade: ServicePageContent = {
   slug: "tailor-made-china-tours",
@@ -99,7 +83,7 @@ const tailorMade: ServicePageContent = {
     image: "/tours/first-china-beautifully-paced/beijing-great-wall-couple.webp",
     alt: "A couple on the Great Wall near Beijing on a private journey",
     primaryLabel: "Design my trip",
-    secondary: { label: "See ready-made routes", href: "/fixed-itinerary-china-tours" },
+    secondary: { label: "See Signature Journeys", href: "/fixed-itinerary-china-tours" },
   },
   facts: [
     { value: "Private", label: "Planned for your party alone" },
@@ -112,7 +96,7 @@ const tailorMade: ServicePageContent = {
     title: "A private trip designed from a blank page.",
     paragraphs: [
       "A tailor-made China tour is a private trip designed from a blank page for your party. You share your dates, who is traveling, your interests and the pace you like. Our China-based team proposes the route, hotels, private guide, driver and transport, and you change it as often as you need before confirming.",
-      "It differs from a ready-made itinerary in one way: the route is not fixed. If you want one city in depth, a food-led trip, a slower pace for older parents, or halal dining and prayer-aware timing, we build that in from the start rather than adding it later.",
+      "It differs from a Signature Journey in one way: it does not start from a published route. If you want one city in depth, a food-led trip, a slower pace for older parents, or halal dining and prayer-aware timing, we build that in from the start rather than adding it later.",
     ],
   },
   fit: {
@@ -127,9 +111,9 @@ const tailorMade: ServicePageContent = {
     notTitle: "Another option may suit you better when",
     not: [
       {
-        text: "You want a finished route to book as published.",
+        text: "You want to start from a proven, published route.",
         href: "/fixed-itinerary-china-tours",
-        linkLabel: "Browse fixed itineraries",
+        linkLabel: "Browse Signature Journeys",
       },
       {
         text: "You only need a guide or driver for a day or two.",
@@ -182,13 +166,13 @@ const tailorMade: ServicePageContent = {
     title: "Start from a journey you like, then make it yours.",
     intro:
       "Each of these is a published journey that guests often use as a starting point. Change the days, the hotels or the pace and we rework the whole route around you.",
-    note: "Every starting price states its pricing unit and basis. Your written proposal reflects your actual dates, party size, hotels and inclusions.",
+    note: "Every journey is priced individually. Your written proposal reflects your actual dates, party size, hotels and inclusions.",
   },
   faqs: [
     {
-      question: "What is the difference between a tailor-made tour and a fixed itinerary?",
+      question: "What is the difference between a tailor-made journey and a Signature Journey?",
       answer:
-        "A tailor-made tour is designed around you and can change at every stage. A fixed itinerary is a finished private route that you book as published, with set days, cities and hotels. Both are private to your party. Choose tailor-made when you want to change the route, and fixed when you want a ready-made plan.",
+        "A tailor-made journey is designed from a blank page around you and can change at every stage. A Signature Journey starts from a defined, published route that we then adjust to your dates, party and pace. Both are private to your party. Choose tailor-made when you want a different set of cities, and a Signature Journey when you want a proven plan to start from.",
     },
     {
       question: "How long does planning take?",
@@ -198,7 +182,7 @@ const tailorMade: ServicePageContent = {
     {
       question: "What does a tailor-made China tour cost?",
       answer:
-        "The price depends on your dates, party size, hotels, route and pace. Each published journey shows a starting price with its pricing unit and basis, for example per person with four guests sharing two rooms. Your written proposal reflects your actual choices, and international flights are not included. Our guide to private China tour costs explains what drives the price.",
+        "The price depends on your dates, party size, hotels, route and pace. Each published journey is priced individually, and your written proposal states exactly what it covers. It reflects your actual choices, and international flights are not included. Our guide to private China tour costs explains what drives the price.",
     },
     {
       question: "Is a tailor-made tour a group tour?",
@@ -218,9 +202,9 @@ const tailorMade: ServicePageContent = {
   ],
   related: [
     {
-      label: "Fixed itineraries",
+      label: "Signature journeys",
       href: "/fixed-itinerary-china-tours",
-      note: "Finished private routes you book as published",
+      note: "Proven private routes, adjusted to your party",
     },
     {
       label: "Private day tours",
@@ -258,41 +242,41 @@ const tailorMade: ServicePageContent = {
 const fixedItineraries: ServicePageContent = {
   slug: "fixed-itinerary-china-tours",
   path: "/fixed-itinerary-china-tours",
-  metaTitle: "Fixed Itinerary China Tours: Ready-Made Private Routes",
+  metaTitle: "Signature Journeys: Private China Routes, Adjusted to You",
   metaDescription:
-    "Ready-made private China tours with set routes, hotels and sightseeing. Choose your dates and book as published, run by a licensed team in China.",
-  breadcrumbName: "Fixed itinerary China tours",
+    "Private multi-day China journeys with a proven route, from 5 to 12 days. Choose a starting point and we adjust dates, pace and hotels to your party.",
+  breadcrumbName: "Signature journeys",
   hero: {
-    eyebrow: "Fixed itineraries",
-    title: "Short on time?",
-    emphasis: "It is already planned.",
-    lede: "Choose a finished private route with set days, cities and hotels. Pick your dates, and your own guide and driver run it exactly as published.",
+    eyebrow: "Signature journeys",
+    title: "A proven route,",
+    emphasis: "shaped around you.",
+    lede: "Start from a private route we have already refined. Tell us your dates, who is travelling and what matters to you, and we adjust it before anything is booked.",
     image: "/tours/first-china-beautifully-paced/shanghai-huangpu-sunset.webp",
     alt: "The Shanghai skyline glowing at sunset above the Huangpu River",
-    primaryLabel: "See the routes",
+    primaryLabel: "See the journeys",
     secondary: {
-      label: "Prefer to change things? Design my trip",
+      label: "Want something fully custom? Design my trip",
       href: "/tailor-made-china-tours",
     },
   },
   facts: [
     { value: "Private", label: "Your guide, driver and vehicle" },
-    { value: "Set", label: "Days, cities and hotels as published" },
-    { value: "Your dates", label: "You choose when to go" },
-    { value: "In writing", label: "Availability and final price confirmed" },
+    { value: "Defined", label: "A clear route, days and pace to start from" },
+    { value: "Adjustable", label: "Dates, party size, interests and hotels" },
+    { value: "In writing", label: "Hotels, price and inclusions before you pay" },
   ],
   answer: {
     kicker: "What it is",
-    title: "A finished private route, booked as published.",
+    title: "A defined private route, adjusted to your party.",
     paragraphs: [
-      "A fixed itinerary is a finished private China tour. The days, cities, hotels and sightseeing are set and published, with a starting price and its basis. You choose your dates and party size, we confirm availability and the final price in writing, and a private guide and driver run the route as published. It is private to your party, not a group departure.",
-      "Because the route is already designed, there is nothing to plan from scratch. You can compare routes side by side, see what each day contains and book with fewer decisions to make. If you want to change the cities, hotels or pace, tailor-made is the better fit.",
+      "A Signature Journey is a defined private China route: the cities, days and pace have been worked out and published, so you can see exactly what you would be doing. It is a starting point, not a group departure. You choose your dates and party size, tell us what to change, and we confirm the hotels, availability and final price in writing.",
+      "Because the route is already designed, there is nothing to plan from scratch. You can compare journeys side by side and see what each day contains. If you want to change the hotels, the pace or a day, we do that with you. If you want a different set of cities altogether, a tailor-made journey is the better fit.",
     ],
   },
   fit: {
-    goodTitle: "A fixed itinerary is right when",
+    goodTitle: "A Signature Journey is right when",
     good: [
-      "You want a clear plan and fewer decisions to make",
+      "You want a clear plan to react to, rather than a blank page",
       "It is your first trip to China and you want a route that is already worked out",
       "You have a set number of days and want to see exactly how they are used",
       "You are comparing options before you commit",
@@ -300,7 +284,7 @@ const fixedItineraries: ServicePageContent = {
     notTitle: "Another option may suit you better when",
     not: [
       {
-        text: "You want to add or remove cities, change hotels or slow the pace.",
+        text: "You want a different mix of cities or a route built from a blank page.",
         href: "/tailor-made-china-tours",
         linkLabel: "Design a tailor-made tour",
       },
@@ -312,10 +296,10 @@ const fixedItineraries: ServicePageContent = {
     ],
   },
   scope: {
-    title: "What a fixed itinerary includes",
+    title: "What a Signature Journey includes",
     included: [
-      "The route, days and cities exactly as published",
-      "Hotels as named on each route page",
+      "The published route, days and cities as your starting point",
+      "Hotels to the standard named on each journey page",
       "Private guiding and a private vehicle on scheduled touring days",
       "Listed entrance tickets and confirmed domestic transport",
       "A China-based team on WhatsApp throughout your trip",
@@ -330,36 +314,36 @@ const fixedItineraries: ServicePageContent = {
     title: "How booking works",
     items: [
       {
-        title: "Choose a route",
-        body: "Compare the published routes by length, cities and pace, and open any of them to see the day-by-day plan.",
+        title: "Choose a journey",
+        body: "Compare the published journeys by length, cities and pace, and open any of them to see the day-by-day plan.",
       },
       {
         title: "Tell us your dates and party",
-        body: "Share when you want to travel and who is coming. A few lines on WhatsApp or the form below is enough.",
+        body: "Share when you want to travel, who is coming and anything you would change. A few lines on WhatsApp or the form below is enough.",
       },
       {
-        title: "Receive written confirmation",
-        body: "We confirm availability, the hotels, what is included and the final price in writing. Nothing is booked before you agree.",
+        title: "Receive a written proposal",
+        body: "We confirm availability, the hotels, what is included and the final price in writing, with your adjustments. Nothing is booked before you agree.",
       },
       {
         title: "Travel with your guide and driver",
-        body: "Your guide and driver run the route as published, with our China team within reach throughout.",
+        body: "Your guide and driver run the route as agreed, with our China team within reach throughout.",
       },
     ],
   },
   listing: {
     id: "routes",
-    kicker: "The routes",
-    title: "Choose a route.",
+    kicker: "The journeys",
+    title: "Choose a journey.",
     intro:
-      "Each route is private to your party. Open one to see the day-by-day plan, the hotels and what is included.",
-    note: "Each route states its pricing unit and basis, for example per person with four guests sharing two rooms outside peak holiday periods. Smaller parties may pay more per person, and your written confirmation states the final price.",
+      "Each journey is private to your party. Open one to see the day-by-day plan, the hotels and what is included, then tell us what you would adjust.",
+    note: "Every journey is priced individually. Smaller parties usually pay more per person because the guide and vehicle are shared by fewer people, and your written proposal states the final price.",
   },
   faqs: [
     {
-      question: "Is a fixed itinerary a group tour?",
+      question: "Is a Signature Journey a group tour?",
       answer:
-        "No. A fixed itinerary is a private tour. The route is set, but your guide, vehicle and daily schedule are arranged for your party alone. Flights, trains and ticketed sites remain shared public services, and your guide handles the logistics around them.",
+        "No. A Signature Journey is a private tour. The route is a proven starting point, and your guide, vehicle and daily schedule are arranged for your party alone. Flights, trains and ticketed sites remain shared public services, and your guide handles the logistics around them.",
     },
     {
       question: "Can I choose my own start date?",
@@ -367,19 +351,19 @@ const fixedItineraries: ServicePageContent = {
         "Yes. These are private journeys, so you choose your dates. We confirm hotel and service availability in writing before you pay. Peak periods such as Golden Week need earlier booking.",
     },
     {
-      question: "Can I change the hotels or add a city?",
+      question: "Can I change the hotels, pace or days?",
       answer:
-        "Not on a fixed itinerary: the route is booked as published. If you want changes, we can design the same route as a tailor-made tour, with your own cities, hotels and pace.",
+        "Yes. Hotels, pace and free time can be adjusted to your party before you confirm. If you want to add or swap cities, we rework the route with you as a tailor-made journey.",
     },
     {
-      question: "What does the starting price include?",
+      question: "What does the price include?",
       answer:
-        "Each route states its pricing unit and basis. As a rule it covers the hotels named on the route page, private guiding and vehicles on scheduled touring days, listed entrance tickets and confirmed domestic transport. International flights are not included. Your written confirmation reflects your actual dates and party size.",
+        "As a rule each journey covers the hotels named on the route page, private guiding and vehicles on scheduled touring days, listed entrance tickets and confirmed domestic transport. International flights are not included. Your written confirmation reflects your actual dates and party size.",
     },
     {
-      question: "How is this different from a tailor-made tour?",
+      question: "How is this different from a tailor-made journey?",
       answer:
-        "A fixed itinerary is a finished plan that you book as published. A tailor-made tour is designed around you and can change at every stage. Both are private to your party.",
+        "A Signature Journey starts from a defined route and adjusts it. A tailor-made journey starts from a blank page and is designed entirely around you. Both are private to your party.",
     },
     {
       question: "What if I need to cancel?",
@@ -414,22 +398,22 @@ const fixedItineraries: ServicePageContent = {
     },
   ],
   enquiry: {
-    kicker: "Book a route",
-    title: "Tell us which route and when.",
-    body: "Share the route you like and your dates. A China-based specialist replies, normally within a day, to confirm availability. No payment, no obligation.",
-    whatsappHref: `${whatsapp}?text=${encodeURIComponent("Hello AVIORA, I would like to book a fixed itinerary. The route is __ and our dates are __ for __ travelers.")}`,
+    kicker: "Request a quote",
+    title: "Tell us which journey and when.",
+    body: "Share the journey you like, your dates and anything you would change. A China-based specialist replies, normally within a day, to confirm availability. No payment, no obligation.",
+    whatsappHref: `${whatsapp}?text=${encodeURIComponent("Hello AVIORA, I would like a quote for a Signature Journey. The journey is __ and our dates are __ for __ travelers.")}`,
   },
 };
 
 const dayTours: ServicePageContent = {
   slug: "private-china-day-tours",
   path: "/private-china-day-tours",
-  metaTitle: "Private China Day Tours with Your Own Guide and Driver",
+  metaTitle: "Day Experiences: Private China Day Tours with Your Own Guide",
   metaDescription:
     "Private day tours in Beijing, Xi'an, Shanghai, Chengdu and Guilin. Your own multilingual guide, private vehicle and tickets arranged for one day.",
-  breadcrumbName: "Private China day tours",
+  breadcrumbName: "Day experiences",
   hero: {
-    eyebrow: "Private day tours",
+    eyebrow: "Day experiences",
     title: "One day,",
     emphasis: "handled properly.",
     lede: "A private guide takes care of the tickets, the timing and the language, so you simply enjoy the Great Wall, the Terracotta Army, the pandas or the Li River.",
@@ -437,8 +421,8 @@ const dayTours: ServicePageContent = {
     alt: "The Mutianyu section of the Great Wall in autumn",
     primaryLabel: "See the day tours",
     secondary: {
-      label: "Need more than one day? Design my trip",
-      href: "/tailor-made-china-tours",
+      label: "Add this to a longer journey",
+      href: "/fixed-itinerary-china-tours",
     },
   },
   facts: [
@@ -451,7 +435,7 @@ const dayTours: ServicePageContent = {
     kicker: "What it is",
     title: "One day with your own guide and driver.",
     paragraphs: [
-      "A private China day tour is a single day with your own multilingual guide and a private vehicle. Your guide and driver collect you from your hotel, tickets and timing are arranged in advance, and the day is paced for your party alone. Each tour below is published with its length, route and starting price.",
+      "A private China day tour is a single day with your own multilingual guide and a private vehicle. Your guide and driver collect you from your hotel, tickets and timing are arranged in advance, and the day is paced for your party alone. Each tour below is published with its length, route and inclusions.",
       "Day tours suit travelers who are already in a city, have one day to fill, or want to add a famous sight to a trip they have planned themselves. If you want several days or cities connected, a tailor-made tour is the better fit. If you only need a guide and driver without a fixed sightseeing plan, see our guide and driver service.",
     ],
   },
@@ -536,7 +520,7 @@ const dayTours: ServicePageContent = {
     items: [
       {
         title: "Choose your day",
-        body: "Open the tour you like to see the route, the length and the starting price.",
+        body: "Open the tour you like to see the route, the length and what is included.",
       },
       {
         title: "Tell us your date, hotel and party",
@@ -556,8 +540,7 @@ const dayTours: ServicePageContent = {
     id: "tours",
     kicker: "The day tours",
     title: "Five private days, ready to book.",
-    intro:
-      "Every day tour is private to your party and published with its length and starting price.",
+    intro: "Every day tour is private to your party and published with its length and inclusions.",
     note: "Each tour states its pricing unit and basis. Your written confirmation states the final price for your date and party size.",
   },
   faqs: [
@@ -599,9 +582,9 @@ const dayTours: ServicePageContent = {
       note: "Several days or cities, designed around you",
     },
     {
-      label: "Fixed itineraries",
+      label: "Signature journeys",
       href: "/fixed-itinerary-china-tours",
-      note: "Finished private routes you book as published",
+      note: "Proven private routes, adjusted to your party",
     },
     {
       label: "Guide and driver",
@@ -833,9 +816,9 @@ const guideAndDriver: ServicePageContent = {
       note: "One famous sight with everything arranged",
     },
     {
-      label: "Fixed itineraries",
+      label: "Signature journeys",
       href: "/fixed-itinerary-china-tours",
-      note: "Finished private routes you book as published",
+      note: "Proven private routes, adjusted to your party",
     },
     {
       label: "Private China tour versus self-guided",

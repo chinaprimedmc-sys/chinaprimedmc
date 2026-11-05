@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { FaqAccordion } from "@/components/content";
 import { CtaCard } from "@/components/cta/cta-card";
+import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { ContentContainer } from "@/components/layout/content-container";
 import { PageContainer } from "@/components/layout/page-container";
@@ -80,6 +81,12 @@ export default function FaqPage() {
           />
         </ContentContainer>
       </Section>
+      <EnquirySection
+        placement="faq"
+        title="Still have a question? Ask us."
+        intro="Tell us what you are wondering about and when you hope to travel. A China-based specialist replies, normally within a day."
+      />
+
       <SiteFooter columns={[{ title: "Explore", items: homeNavItems }]} social={[]} />
     </PageContainer>
   );

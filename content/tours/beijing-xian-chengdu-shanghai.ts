@@ -600,12 +600,12 @@ export const beijingXianChengduShanghaiTour: Tour = {
   related: {
     tours: [
       {
-        title: "9-Day Beijing, Xi'an & Shanghai Private Tour",
+        title: "10-Day Beijing, Xi'an & Shanghai Private Tour",
         description: "See Beijing, Xi'an and Shanghai in less time, without the Chengdu chapter.",
-        tags: ["9 days", "First-time China"],
+        tags: ["10 days", "Senior-friendly"],
         image: firstChinaAsset.shanghaiWaterfrontGroup,
         route: "Beijing, Xi'an, Shanghai",
-        duration: "9 days / 8 nights",
+        duration: "10 days / 9 nights",
         href: "/tours/beijing-xian-shanghai-private-9-day-tour",
       },
       {

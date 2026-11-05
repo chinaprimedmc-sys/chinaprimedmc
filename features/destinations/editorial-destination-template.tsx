@@ -12,6 +12,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { CtaButton } from "@/components/cta";
+import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
@@ -462,6 +463,12 @@ export function EditorialDestinationTemplate({
           </CtaButton>
         </div>
       </section>
+
+      <EnquirySection
+        placement="destination"
+        title={`Plan ${destination.name} as a private trip`}
+        intro="Share your dates, travellers and hotel expectations. We will recommend the right stay, onward connection and private service plan."
+      />
 
       <SiteFooter
         columns={[

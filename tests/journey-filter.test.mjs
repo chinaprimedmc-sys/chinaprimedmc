@@ -61,7 +61,11 @@ test("URL migration preserves attribution and search result category", () => {
 
 test("price sorting compares consistent per-person units", () => {
   const results = filterJourneys(journeyCatalog, readJourneyFilters(new URLSearchParams("sort=price-low")));
-  const prices = results.map((item) => item.pricing.fromUsd / (item.pricing.pricingUnit === "private-group" ? item.pricing.basePartySize : 1));
+  // 价格未核实时目录不公开数字，此时排序必须稳定且不丢失任何行程。
+  assert.equal(results.length, journeyCatalog.length);
+  const prices = results
+    .filter((item) => item.pricing.fromUsd !== undefined)
+    .map((item) => item.pricing.fromUsd / (item.pricing.pricingUnit === "private-group" ? item.pricing.basePartySize : 1));
   assert.deepEqual(prices, [...prices].sort((a, b) => a - b));
 });
 
@@ -73,7 +77,7 @@ test("every journey display title is location plus its published day count", () 
     const duration = `${match[1]}${match[2] ? `–${match[2]}` : ""} ${match[1] === "1" && !match[2] ? "Day" : "Days"}`;
     assert.ok(getJourneyCardTitle(item).endsWith(` · ${duration}`), item.slug);
   }
-  assert.equal(getJourneyCardTitle(journeyCatalog[0]), "Beijing · Xi'an · Shanghai · 9 Days");
+  assert.equal(getJourneyCardTitle(journeyCatalog[0]), "Beijing · Xi'an · Shanghai · 10 Days");
 });
 
 test("recommended ordering follows commercial priority", () => {

@@ -43,7 +43,7 @@ Our own easier-paced route uses five nights in Beijing, three in Xi'an and three
 
 That is a commercial sacrifice: one fewer city to advertise. It is also the reason the route can respond when a traveler wakes after the Great Wall and wants a different kind of day.
 
-The published [China, Considered 12-day private journey](/tours/china-at-an-easier-pace-12-day-private-tour) starts from **US$6,480 per person**, based on four guests sharing two rooms outside peak holiday periods. It includes 11 nights in selected premium five-star hotels, private guiding and vehicles on confirmed touring days, listed admissions, Beijing-Xi'an first-class rail, a nonstop Xi'an-Shanghai economy flight, selected meals, private cultural encounters and China-based support. Most privately designed versions fall between **US$6,800 and US$8,500 per person** as dates, rooms, party size and interests change. International flights are separate unless stated.
+The published [China, Considered 12-day private journey](/tours/china-at-an-easier-pace-12-day-private-tour) is priced individually for your dates and party. The published design includes 11 nights in selected premium five-star hotels, private guiding and vehicles on confirmed touring days, listed admissions, Beijing-Xi'an first-class rail, a nonstop Xi'an-Shanghai economy flight, selected meals, private cultural encounters and China-based support. The price moves with dates, rooms, party size and interests. International flights are separate unless stated.
 
 The price is not evidence that the route suits a particular traveler. The visible inclusions and the planning conversation are. A couple should also expect a different per-person figure because private guide and vehicle costs are shared across two travelers rather than four.
 
@@ -103,6 +103,8 @@ Connecting rooms, nearby rooms and walk-in showers are different requests. We do
 We will not call every ancient site step-free. We will not say a cable car makes the Great Wall accessible. We will not guarantee a named guide, specialist, train, room or assistance service before it is confirmed. We will not tell a traveler that twelve days can comfortably hold every famous city.
 
 Those boundaries are not disclaimers added by lawyers. They are part of making the right sale.
+
+If you want a concrete example of a slow-paced route, see [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-9-day-tour): zero-stair Great Wall access, luggage-free bullet trains and a 3:30 PM hotel return each day.
 
 ## How to Compare Two China Tour Quotes
 

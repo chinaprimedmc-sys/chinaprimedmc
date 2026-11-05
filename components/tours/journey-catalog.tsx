@@ -122,6 +122,7 @@ export function JourneyCatalog({
     () => variant === "catalog" && hasActiveFilters(filters),
   );
   const results = filterJourneys(items, filters);
+  const hasPublishedPrices = items.some((item) => item.pricing.fromUsd !== undefined);
   const activeFilters = hasActiveFilters(filters);
   const showingBrowse = mobileBrowsing || (variant === "catalog" && activeFilters);
   const showCollections = (variant === "catalog" || variant === "home") && !activeFilters;
@@ -270,7 +271,9 @@ export function JourneyCatalog({
                     }
                   >
                     <option value="recommended">Recommended</option>
-                    <option value="price-low">Price per person</option>
+                    {hasPublishedPrices ? (
+                      <option value="price-low">Price per person</option>
+                    ) : null}
                     <option value="duration-low">Shortest first</option>
                     <option value="duration-high">Longest first</option>
                   </select>
@@ -294,7 +297,7 @@ export function JourneyCatalog({
               }
             >
               <option value="recommended">Recommended</option>
-              <option value="price-low">Price per person</option>
+              {hasPublishedPrices ? <option value="price-low">Price per person</option> : null}
               <option value="duration-low">Shortest first</option>
               <option value="duration-high">Longest first</option>
             </select>

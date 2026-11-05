@@ -114,7 +114,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
         label: "Finish choice",
         value: "End in Yangshuo or return privately to Guilin",
         helper:
-          "The US$688 four-guest starting price ends in Yangshuo. The four-guest Guilin-return version starts from US$758 total.",
+          "The base day ends in Yangshuo. A private return to central Guilin is available and quoted with your plan.",
       },
       {
         label: "Luggage",
@@ -327,36 +327,36 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     {
       title: "Private return to your Guilin hotel",
       description:
-        "Choose the Guilin-return finish from US$70 per group of up to four, making the four-guest day US$758 total from. The private vehicle, guide service window and central Guilin drop-off are confirmed for the date.",
-      badges: ["From US$70 per group", "4 guests: US$758 total from"],
+        "Choose a private Guilin-return finish instead of staying in Yangshuo. The private vehicle, guide service window and central Guilin drop-off are confirmed for the date.",
+      badges: ["Priced with your plan"],
       image: privateVehicle,
     },
     {
       title: "Yulong River bamboo-raft chapter",
       description:
-        "Add a date- and traveler-eligible Yulong River bamboo-raft experience from US$45 per guest. Age, height, passenger pairing, water, safety and operator rules are checked before payment; operation is never guaranteed.",
-      badges: ["From US$45 pp", "Eligibility and operation checked"],
+        "Add a date- and traveler-eligible Yulong River bamboo-raft experience. Age, height, passenger pairing, water, safety and operator rules are checked before payment; operation is never guaranteed.",
+      badges: ["Eligibility and operation checked"],
       image: yulongBambooRaft,
     },
     {
       title: "Extended private Yangshuo countryside route",
       description:
-        "Add up to two hours of private countryside touring from US$128 per group of up to four. The route may use the private vehicle and short walks; cycling or e-bikes are not included unless separately confirmed.",
-      badges: ["From US$128 per group", "Up to 2 hours"],
+        "Add up to two hours of private countryside touring. The route may use the private vehicle and short walks; cycling or e-bikes are not included unless separately confirmed.",
+      badges: ["Up to 2 hours"],
       image: yangshuoKarst,
     },
     {
       title: "Ruyi Peak cableway and mountain-view extension",
       description:
-        "Add the date-confirmed Ruyi Peak experience from US$58 per guest, including standard admission and the required private-service extension when workable. Walking, glass surfaces, weather and cableway operation are reviewed first.",
-      badges: ["From US$58 pp", "Weather and walking reviewed"],
+        "Add the date-confirmed Ruyi Peak experience, including standard admission and the required private-service extension when workable. Walking, glass surfaces, weather and cableway operation are reviewed first.",
+      badges: ["Weather and walking reviewed"],
       image: yangshuoKarst,
     },
     {
       title: "Yangshuo evening performance",
       description:
-        "Add a confirmed evening performance from US$88 per guest for standard seating and booking coordination. Venue, program, seat category, weather policy and any additional private transport or Guilin return are priced in writing.",
-      badges: ["From US$88 pp", "Transport quoted to your finish"],
+        "Add a confirmed evening performance with standard seating and booking coordination. Venue, program, seat category, weather policy and any additional private transport or Guilin return are priced in writing.",
+      badges: ["Transport quoted to your finish"],
       image: yangshuoKarst,
     },
   ],
@@ -431,19 +431,19 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
   gallery: yangshuoGallery.slice(1),
   faqs: [
     {
-      question: "What does the US$688 starting price include?",
+      question: "What does the private-tour price include?",
       answer:
-        "It is an indicative private-group starting price for four guests, equivalent to US$172 per guest, for the version that starts at a central Guilin hotel and ends at a confirmed Yangshuo hotel. It includes private pickup and port transfer, a private multilingual guide, standard four-star public Li River cruise tickets, the standard onboard meal only when attached to the confirmed tickets, a short private Yangshuo countryside chapter, normal pre-confirmed luggage transfer to the Yangshuo hotel, bottled water and no compulsory shopping stops.",
+        "Your written quote is for a private group and covers the version that starts at a central Guilin hotel and ends at a confirmed Yangshuo hotel. It includes private pickup and port transfer, a private multilingual guide, standard four-star public Li River cruise tickets, the standard onboard meal only when attached to the confirmed tickets, a short private Yangshuo countryside chapter, normal pre-confirmed luggage transfer to the Yangshuo hotel, bottled water and no compulsory shopping stops.",
     },
     {
       question: "How much is the version that returns to Guilin?",
       answer:
-        "For four guests, the central-Guilin return version starts from US$758 total, equivalent to approximately US$190 per guest. The indicative two-guest return version starts from US$598 total. The written proposal confirms the final Guilin address, service window, vehicle and any seasonal or out-of-area supplement.",
+        "The central-Guilin return is priced as a small addition for the extra private vehicle time. The written proposal confirms the final Guilin address, service window, vehicle and any seasonal or out-of-area supplement.",
     },
     {
-      question: "What are the published prices for different group sizes?",
+      question: "How does group size affect the price?",
       answer:
-        "Outside major public holidays and unusual pickup requirements, the Yangshuo-finish private-group prices start from: one guest US$438; two guests US$528 total; three guests US$608 total; four guests US$688 total; five guests US$830 total; and six guests US$972 total. A central-Guilin return starts from an additional US$70 per group of up to four and is quoted for larger parties. Cruise ticket category, vehicle and service time are checked before confirmation.",
+        "Private-group pricing follows the size of your group, so the cost per guest usually falls as more people share the vehicle and guide. Your written quote shows the exact total for your date, group size and finish point. Cruise ticket category, vehicle and service time are checked before confirmation.",
     },
     {
       question: "Is the Li River cruise private?",
@@ -468,7 +468,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     {
       question: "Can we add Yulong River bamboo rafting after the cruise?",
       answer:
-        "Sometimes. It starts from US$45 per eligible guest and must be checked against the actual cruise arrival, season, water conditions, age, height, passenger-pairing and operator safety rules. It is deliberately optional because it is not suitable or available for every traveler and date.",
+        "Sometimes. It must be checked against the actual cruise arrival, season, water conditions, age, height, passenger-pairing and operator safety rules. It is deliberately optional because it is not suitable or available for every traveler and date.",
     },
     {
       question: "What happens if weather or water conditions change the sailing?",
