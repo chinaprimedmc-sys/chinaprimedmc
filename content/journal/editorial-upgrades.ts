@@ -7,6 +7,10 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "best-places-china-senior-travelers": {
+    title: "Best Places to Visit in China for Senior Travelers: An Honest Comparison",
+    seoTitle: "Best Places to Visit in China for Senior Travelers",
+  },
   "are-china-group-tours-too-fast-for-seniors": {
     title: "Are China Group Tours Too Fast for Seniors? An Honest Pacing & Logistics Guide",
     seoTitle: "Are China Group Tours Too Fast for Seniors? A Pacing Guide",

@@ -36,6 +36,7 @@ export const publicRouteSlugs = {
     "women-private-china-travel",
     "slow-paced-china-tour-for-seniors",
     "are-china-group-tours-too-fast-for-seniors",
+    "best-places-china-senior-travelers",
     "how-to-visit-great-wall-without-climbing-stairs",
     "slow-paced-china-tour-for-seniors-itinerary-guide",
     "is-china-safe-for-elderly-travelers-senior-care-guide",

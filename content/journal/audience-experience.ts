@@ -476,4 +476,59 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "The 10-day senior-friendly tour applies these pacing rules to Beijing, Xi'an and Shanghai.",
     },
   },
+  {
+    slug: "best-places-china-senior-travelers",
+    title: "Best Places to Visit in China for Senior Travelers: An Honest Comparison",
+    dek: "A four-point mobility and safety comparison of China's main destinations for older travelers, including the places we would approach with caution.",
+    excerpt:
+      "Where to go, and where to be careful, for parents in their 60s, 70s and 80s: a plain destination comparison for the 2027 season.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "destinations", "private-guides"],
+    author,
+    publishedAt: "2026-11-05",
+    updatedAt: "2026-11-05",
+    lastFactCheckedAt: "2026-11-05",
+    readingTime: "8 min read",
+    hero: { image: textHeroImage, eyebrow: "Choose the place before the pace", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Best Places to Visit in China for Senior Travelers",
+      description:
+        "An honest comparison of China's top destinations for senior travelers: pavement, stairs, step-free options, medical access and where to take extra care in 2027.",
+      keywords: [
+        "best places to visit in china for seniors",
+        "china destinations for older travelers",
+        "best cities in china for elderly parents",
+        "china travel seniors mobility",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      articles: ["slow-paced-china-tour-for-seniors", "china-travel-for-seniors"],
+    },
+    conversion: {
+      eyebrow: "Plan it around your parents",
+      title: "Compare destinations for your family",
+      description:
+        "Share your dates, who is traveling and how much walking is comfortable. We will review the route and confirm the pacing in writing.",
+      label: "Compare my destination options",
+      href: "/start-planning?source=audience-best-places-seniors",
+    },
+    sourcePath: "content/journal/articles/2026-08-20-best-places-china-senior-travelers.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "For most first-time senior travelers, Beijing, Xi'an and Shanghai are the most manageable starting point; Zhangjiajie, Huangshan, Tibet and high-altitude Yunnan carry real physical risk and need careful review.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Travelers choosing destinations for a first China trip",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour covers the three lowest-strain cities with the pacing rules described here.",
+    },
+  },
 ];

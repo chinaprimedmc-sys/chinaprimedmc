@@ -267,6 +267,12 @@ const strategyGroups: Array<{
       ["women-private-china-travel", "evaluate", "women traveling in China private support", 1],
       ["slow-paced-china-tour-for-seniors", "evaluate", "slow paced China tour for seniors", 1],
       [
+        "best-places-china-senior-travelers",
+        "evaluate",
+        "best places to visit in China for seniors",
+        1,
+      ],
+      [
         "are-china-group-tours-too-fast-for-seniors",
         "evaluate",
         "China group tours for seniors",
