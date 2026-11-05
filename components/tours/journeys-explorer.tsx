@@ -32,7 +32,7 @@ import {
   type TierFilter,
 } from "@/lib/tours/journey-explorer";
 
-import { JourneySearchBox, SearchIcon } from "./journey-search-box";
+import { JourneySearchBox } from "./journey-search-box";
 import { JourneyTile } from "./journey-tile";
 import styles from "./journeys-explorer.module.css";
 
@@ -87,6 +87,22 @@ const groups: ReadonlyArray<{
     options: interestTags.map((t) => ({ value: t, label: t })),
   },
 ];
+
+const SlidersIcon = () => (
+  <svg
+    viewBox="0 0 20 20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    aria-hidden="true"
+    width="18"
+    height="18"
+  >
+    <path d="M3 6h9M16 6h1M3 14h1M8 14h9" />
+    <circle cx="14" cy="6" r="2" />
+    <circle cx="6" cy="14" r="2" />
+  </svg>
+);
 
 const Chevron = () => (
   <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
@@ -194,6 +210,27 @@ export function JourneysExplorer({
   };
 
   const clearAll = () => setState({ ...emptyState });
+  const activeChips = [
+    ...groups.flatMap((group) =>
+      (state[group.key] as string[]).map((value) => ({
+        id: `${group.key}-${value}`,
+        label: group.options.find((option) => option.value === value)?.label ?? value,
+        remove: () => toggle(group.key, value),
+      })),
+    ),
+    ...(state.easierPace
+      ? [{ id: "easier", label: "Easier pace", remove: () => update({ easierPace: false }) }]
+      : []),
+    ...(state.muslimFriendly
+      ? [
+          {
+            id: "muslim",
+            label: "Muslim-friendly",
+            remove: () => update({ muslimFriendly: false }),
+          },
+        ]
+      : []),
+  ];
   const selectTier = (tier: TierFilter) => {
     trackEvent("tours_tier_tab_click", { tier });
     update({ tier });
@@ -382,28 +419,6 @@ export function JourneysExplorer({
               ) : null}
             </div>
           </div>
-          <div className={styles.mobileTools}>
-            {!heroSearchVisible ? (
-              <button
-                type="button"
-                className={styles.iconButton}
-                aria-label="Search journeys"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                  window.setTimeout(() => heroInput.current?.focus(), 350);
-                }}
-              >
-                <SearchIcon />
-              </button>
-            ) : null}
-            <button
-              type="button"
-              className={styles.sheetButton}
-              onClick={() => sheet.current?.showModal()}
-            >
-              Filters {filterCount ? <b>{filterCount}</b> : null}
-            </button>
-          </div>
         </div>
       </div>
 
@@ -418,6 +433,40 @@ export function JourneysExplorer({
             <Link href={currentTier.link.href}>{currentTier.link.label} →</Link>
           ) : null}
         </div>
+
+        <div className={styles.mobileBar}>
+          <button
+            type="button"
+            className={styles.sheetButton}
+            onClick={() => sheet.current?.showModal()}
+          >
+            <SlidersIcon /> Filters {filterCount ? <b>{filterCount}</b> : null}
+          </button>
+          <label className={styles.mobileSort}>
+            <span>Sort</span>
+            <select value={state.sort} onChange={(e) => update({ sort: e.target.value as SortId })}>
+              {sortOptions.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.id === "rec" && hasQuery ? "Best match" : option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        {activeChips.length ? (
+          <div className={styles.activeChips} aria-label="Active filters">
+            {activeChips.map((chip) => (
+              <button
+                key={chip.id}
+                type="button"
+                onClick={chip.remove}
+                aria-label={`Remove filter ${chip.label}`}
+              >
+                {chip.label} <span aria-hidden="true">×</span>
+              </button>
+            ))}
+          </div>
+        ) : null}
 
         <div className={styles.resultsHead}>
           <span role="status" aria-live="polite">
@@ -513,6 +562,7 @@ export function JourneysExplorer({
         }}
       >
         <div className={styles.sheetInner}>
+          <span className={styles.sheetHandle} aria-hidden="true" />
           <header>
             <h2 id="filters-title">Filters</h2>
             <button
@@ -523,6 +573,14 @@ export function JourneysExplorer({
               }
             >
               Clear all
+            </button>
+            <button
+              type="button"
+              className={styles.sheetClose}
+              aria-label="Close filters"
+              onClick={() => sheet.current?.close()}
+            >
+              ×
             </button>
           </header>
           <div className={styles.sheetBody}>

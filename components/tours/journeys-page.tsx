@@ -1,6 +1,3 @@
-import Link from "next/link";
-
-import { WhatsAppIcon } from "@/components/icons";
 import { journeysCopy } from "@/content/tours/journeys-curation";
 import { journeyFaqs } from "@/content/tours/journeys-page-content";
 import { siteConfig } from "@/config/site";
@@ -11,8 +8,6 @@ import { GuestVoice } from "@/components/trust/trust";
 import { EnquirySection } from "@/components/forms/enquiry-section";
 import { JourneysExplorer } from "./journeys-explorer";
 import styles from "./journeys-page.module.css";
-
-const whatsapp = "https://wa.me/8618027438191";
 
 export function JourneysPage({ initialQueryString = "" }: { initialQueryString?: string }) {
   const since = new Date(siteConfig.operator.founded).getFullYear();
@@ -86,13 +81,6 @@ export function JourneysPage({ initialQueryString = "" }: { initialQueryString?:
         title={journeysCopy.closingTitle}
         intro="Tell us when you would like to travel and who is coming. We will suggest a route from this page, or design one from scratch."
       />
-
-      <div className={styles.mobileActionBar} aria-label="Journey enquiry actions">
-        <Link href="/start-planning?source=journeys-mobile">Plan my journey</Link>
-        <a href={whatsapp} aria-label="WhatsApp our team">
-          <WhatsAppIcon aria-hidden="true" />
-        </a>
-      </div>
     </div>
   );
 }
