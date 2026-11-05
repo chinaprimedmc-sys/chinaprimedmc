@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { JournalHubTemplate } from "@/features/journal/journal-hub-template";
+import { buildMagazineItems } from "@/lib/journal/magazine-items";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
@@ -12,7 +13,18 @@ export const metadata = createMetadata({
   path: "/journal",
 });
 
-export default async function JournalPage() {
+/** 首屏精选：最新、最深度优化的行程关联文章；找不到时退回最新一篇。 */
+const FEATURED_SLUG = "slow-paced-china-tour-for-seniors-itinerary-guide";
+
+export default async function JournalPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(params))
+    if (typeof value === "string") query.set(key, value);
   const latest = [...localJournalArticles].sort((a, b) =>
     b.publishedAt.localeCompare(a.publishedAt),
   );
@@ -97,7 +109,13 @@ export default async function JournalPage() {
           { name: "Travel Journal", path: "/journal" },
         ])}
       />
-      <JournalHubTemplate featured={featured} articles={journalSummaries} />
+      <JournalHubTemplate
+        items={buildMagazineItems(journalSummaries)}
+        featuredSlug={
+          latest.some((article) => article.slug === FEATURED_SLUG) ? FEATURED_SLUG : featured.slug
+        }
+        initialQueryString={query.toString()}
+      />
     </>
   );
 }
