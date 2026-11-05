@@ -208,3 +208,11 @@ Per `claude_code_optimization_spec (1).md` / `(2).md` (identical): the tour is *
 - The "9 days or 11 days in China" article keeps its framework; its product anchor is now "Our 10-day senior-friendly private tour" pointing at the 10-day page.
 - The two over-long SEO titles are fixed by overrides (the audit counts HTML-escaped length, so `&` costs 5 characters). `audit:seo` now passes for all 185 URLs.
 - Tour detail pages: the aside booking card now holds the HubSpot form (replaces the Plan button); the bottom enquiry section was removed from detail pages so each page has one form; the 10-day price is labelled US$ everywhere (US$3,800, US$3,800–US$6,500, 'All prices are in US dollars (USD)'). Not deployed.
+
+---
+
+# Three senior-care articles (2026-11-05, not committed, not deployed)
+
+Added from the owner's spec as journal articles (the site's blog lives at `/journal/`; `/blog/<slug>` now 308-redirects to `/journal/<slug>`): `how-to-visit-great-wall-without-climbing-stairs`, `slow-paced-china-tour-for-seniors-itinerary-guide`, `is-china-safe-for-elderly-travelers-senior-care-guide`. Each carries the anchor "our 10-day senior-friendly private tour" linking to the 10-day page, is registered in the manifest, route slugs, search strategy, journey links, editorial upgrades, audience-experience data and the markdown loader.
+Edits to the supplied copy: removed claims not in the confirmed service list (VIP vehicle pass and "1,500 meters saved", "queue-free", executive lounge and spa, 180 mph, hotel brand names, allergy cards, grab bars, sanitation kits, hydration, "ultra-low crime", competitor schedule figures stated as fact); absolute competitor table reworded as "varies by operator"; ASCII box turned into a list; added a short "Questions travelers ask" section to each (the site's audit requires 650+ words); SEO title of article 1 shortened to 61 characters (limit 65).
+Verified: tsc, eslint, 41 tests, five journal audits, SEO audit (188 URLs), structured-data audit, build; all sitemap URLs 200.

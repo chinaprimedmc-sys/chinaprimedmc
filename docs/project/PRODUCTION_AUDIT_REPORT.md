@@ -27,7 +27,7 @@ Date: 2026-06-30
 6. Removed build-time dependency on Google Fonts so production builds do not require network access.
 7. Replaced deprecated `middleware.ts` convention with Next 16 `proxy.ts`.
 8. Fixed semantic H1 coverage on newly added public pages.
-9. Added `PRODUCTION_READINESS.md` with deployment, environment, rollback, backup, and admin-access instructions.
+9. Added `docs/project/PRODUCTION_READINESS.md` with deployment, environment, rollback, backup, and admin-access instructions.
 10. Fixed homepage Travel Journal card and footer links so the three editorial entries route to their matching article detail pages.
 
 ## Performance Report

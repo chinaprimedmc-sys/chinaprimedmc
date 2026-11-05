@@ -7,6 +7,18 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "how-to-visit-great-wall-without-climbing-stairs": {
+    title: "How to Visit the Great Wall of China Without Climbing Stairs: A Senior-Friendly Guide",
+    seoTitle: "How to Visit the Great Wall Without Climbing Stairs | Seniors",
+  },
+  "slow-paced-china-tour-for-seniors-itinerary-guide": {
+    title: "Slow-Paced China Travel for Seniors: How to Plan a Fatigue-Free Itinerary",
+    seoTitle: "Slow-Paced China Travel for Seniors: Pacing & Itinerary Tips",
+  },
+  "is-china-safe-for-elderly-travelers-senior-care-guide": {
+    title: "Is China Safe for Elderly Travelers? A Complete Health, Safety and Logistics Guide",
+    seoTitle: "Is China Safe for Elderly Travelers? Senior Care & Health Guide",
+  },
   "muslim-friendly-private-china-travel": {
     title: "Muslim-Friendly Private China Travel: Meals, Prayer and Planning",
     seoTitle: "Muslim-Friendly China Tours: Halal and Prayer Planning",

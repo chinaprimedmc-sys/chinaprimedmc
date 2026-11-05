@@ -140,6 +140,9 @@ export const journeyReadingPriority: Record<string, string[]> = {
   ],
   [FIRST_CHINA]: [
     "women-private-china-travel",
+    "how-to-visit-great-wall-without-climbing-stairs",
+    "slow-paced-china-tour-for-seniors-itinerary-guide",
+    "is-china-safe-for-elderly-travelers-senior-care-guide",
     "private-guide-vs-driver-china",
     "luggage-multi-city-china-trip",
     "china-weather-disruption-backup-planning",
@@ -374,6 +377,18 @@ Object.assign(journeyJournalLinks, {
   "slow-paced-china-tour-for-seniors": {
     primaryJourney: CHINA_CONSIDERED,
     alternativeJourneys: [FIRST_CHINA],
+  },
+  "how-to-visit-great-wall-without-climbing-stairs": {
+    primaryJourney: FIRST_CHINA,
+    alternativeJourneys: [CHINA_CONSIDERED],
+  },
+  "slow-paced-china-tour-for-seniors-itinerary-guide": {
+    primaryJourney: FIRST_CHINA,
+    alternativeJourneys: [CHINA_CONSIDERED],
+  },
+  "is-china-safe-for-elderly-travelers-senior-care-guide": {
+    primaryJourney: FIRST_CHINA,
+    alternativeJourneys: [CHINA_CONSIDERED],
   },
   "private-china-family-tour-planning": {
     primaryJourney: CHINA_FAMILY,

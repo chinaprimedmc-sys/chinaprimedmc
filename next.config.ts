@@ -41,6 +41,21 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/blog/how-to-visit-great-wall-without-climbing-stairs",
+        destination: "/journal/how-to-visit-great-wall-without-climbing-stairs",
+        permanent: true,
+      },
+      {
+        source: "/blog/slow-paced-china-tour-for-seniors-itinerary-guide",
+        destination: "/journal/slow-paced-china-tour-for-seniors-itinerary-guide",
+        permanent: true,
+      },
+      {
+        source: "/blog/is-china-safe-for-elderly-travelers-senior-care-guide",
+        destination: "/journal/is-china-safe-for-elderly-travelers-senior-care-guide",
+        permanent: true,
+      },
+      {
         source: "/styles",
         destination: "/tours",
         permanent: true,

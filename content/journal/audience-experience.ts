@@ -247,4 +247,178 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "The linked 12-day family route includes Chengdu pandas and provides a concrete itinerary to assess against the ages, interests and room needs of a specific family.",
     },
   },
+  {
+    slug: "how-to-visit-great-wall-without-climbing-stairs",
+    title: "How to Visit the Great Wall of China Without Climbing Stairs: A Senior-Friendly Guide",
+    dek: "How to see Mutianyu with an enclosed gondola, a flat platform at Watchtower 14, a portable seat and a realistic step budget.",
+    excerpt:
+      "A practical guide to a step-free Great Wall visit: why Mutianyu suits seniors, how the gondola works and what to check before you go.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "beijing", "private-guides"],
+    author,
+    publishedAt: "2026-11-05",
+    updatedAt: "2026-11-05",
+    lastFactCheckedAt: "2026-11-05",
+    readingTime: "6 min read",
+    hero: { image: textHeroImage, eyebrow: "Plan a comfortable Great Wall day", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "How to Visit the Great Wall Without Climbing Stairs | Seniors",
+      description:
+        "Discover how to experience the Great Wall of China with zero stairs. Complete guide to Mutianyu cable cars, VIP step-free access, and slow-paced senior travel.",
+      keywords: [
+        "how to visit great wall without stairs",
+        "senior friendly great wall tour",
+        "mutianyu cable car for elderly",
+        "great wall without climbing",
+      ],
+    },
+    related: {
+      destinations: ["beijing"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
+      articles: ["slow-paced-china-tour-for-seniors", "mutianyu-older-travelers-short-walk"],
+    },
+    conversion: {
+      eyebrow: "Plan it around you",
+      title: "Plan a Great Wall day around your pace",
+      description:
+        "Tell us about comfortable walking time, rest needs and your dates. We will confirm the Mutianyu plan in writing.",
+      label: "Plan My Great Wall Day",
+      href: "/start-planning?source=audience-great-wall-stairs",
+    },
+    sourcePath:
+      "content/journal/articles/2026-11-05-how-to-visit-great-wall-without-climbing-stairs.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Mutianyu is the usual choice for a step-free Great Wall visit: an enclosed gondola glides to a flat brick platform at Watchtower 14, and a guide-carried seat and a step budget keep the day comfortable.",
+      appliesTo: [
+        "Older travelers",
+        "Travelers with limited mobility",
+        "Multi-generational families",
+        "Beijing first-timers",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour builds the Mutianyu gondola day into a slow-paced Beijing, Xi'an and Shanghai route.",
+    },
+  },
+  {
+    slug: "slow-paced-china-tour-for-seniors-itinerary-guide",
+    title: "Slow-Paced China Travel for Seniors: How to Plan a Fatigue-Free Itinerary",
+    dek: "The 3:30 PM hotel return, a daily step budget, luggage-free bullet trains and the three-night rhythm that make a Golden Triangle trip easy.",
+    excerpt:
+      "How slow pacing works in practice for older travelers: return times, step budgets, bullet-train logistics and a three-city route.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "first-time-china", "private-guides"],
+    author,
+    publishedAt: "2026-11-05",
+    updatedAt: "2026-11-05",
+    lastFactCheckedAt: "2026-11-05",
+    readingTime: "6 min read",
+    hero: { image: textHeroImage, eyebrow: "Pace the journey around your energy", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Slow-Paced China Travel for Seniors: Pacing & Itinerary Tips",
+      description:
+        "Planning a trip to China for elderly parents? Learn how slow-paced itineraries, early hotel returns, and bullet train transfers prevent fatigue.",
+      keywords: [
+        "slow paced china tour for seniors",
+        "senior travel china pacing",
+        "china private tour multi generational family",
+        "china trip elderly parents",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
+      articles: ["slow-paced-china-tour-for-seniors", "china-travel-for-seniors"],
+    },
+    conversion: {
+      eyebrow: "Plan it around you",
+      title: "Plan a slower route for your family",
+      description:
+        "Share your dates, who is traveling and how much walking is comfortable. We will review the route and confirm the pacing in writing.",
+      label: "Plan a Slower Journey",
+      href: "/start-planning?source=audience-slow-paced-guide",
+    },
+    sourcePath:
+      "content/journal/articles/2026-11-05-slow-paced-china-tour-for-seniors-itinerary-guide.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "prepare",
+      keyAnswer:
+        "A slow-paced China itinerary returns you to the hotel by 3:30 PM, sets a daily step budget under 4,000 steps, handles luggage on bullet trains and gives each city three nights.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Multi-generational families",
+        "Active retirees",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour applies these pacing rules to Beijing, Xi'an and Shanghai with three nights in each city.",
+    },
+  },
+  {
+    slug: "is-china-safe-for-elderly-travelers-senior-care-guide",
+    title: "Is China Safe for Elderly Travelers? A Complete Health, Safety and Logistics Guide",
+    dek: "Medical access, dietary planning, restrooms and vehicle comfort: what to arrange before an older traveler flies to China.",
+    excerpt:
+      "A clear look at health and logistics for senior travel in China: the 24/7 medical channel, dietary coordination, pre-vetted restrooms and comfortable transfers.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "food", "private-guides"],
+    author,
+    publishedAt: "2026-11-05",
+    updatedAt: "2026-11-05",
+    lastFactCheckedAt: "2026-11-05",
+    readingTime: "6 min read",
+    hero: { image: textHeroImage, eyebrow: "Answer the safety questions first", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Is China Safe for Elderly Travelers? Senior Care & Health Guide",
+      description:
+        "Is traveling to China safe for seniors? Read our complete guide on medical green channels, dietary allergen safety, accessibility, and private care.",
+      keywords: [
+        "is china safe for elderly travelers",
+        "china travel seniors medical",
+        "senior care travel china",
+        "china tour dietary needs seniors",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-9-day-tour"],
+      articles: [
+        "food-allergies-dietary-restrictions-china-travel",
+        "china-travel-emergency-support-what-to-do",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan it around you",
+      title: "Talk through your family's needs",
+      description:
+        "Tell us about medical, dietary and mobility needs. We will confirm in writing how each is handled before you decide.",
+      label: "Plan With Confidence",
+      href: "/start-planning?source=audience-elderly-safety",
+    },
+    sourcePath:
+      "content/journal/articles/2026-11-05-is-china-safe-for-elderly-travelers-senior-care-guide.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Beijing, Shanghai and Xi'an have international clinics and large hospitals; a private tour adds a 24/7 medical channel, chef coordination for dietary needs, pre-vetted restrooms and a pre-conditioned vehicle.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Travelers with dietary needs",
+        "Families with medical concerns",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour includes the 24/7 medical channel and the care standards described here.",
+    },
+  },
 ];

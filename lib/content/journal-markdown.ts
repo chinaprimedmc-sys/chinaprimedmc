@@ -70,6 +70,9 @@ import weatherBackupMarkdown from "@/content/journal/articles/2026-09-26-china-w
 import emergencySupportMarkdown from "@/content/journal/articles/2026-09-26-china-travel-emergency-support-what-to-do.md";
 import muslimAudienceMarkdown from "@/content/journal/articles/2026-10-04-muslim-friendly-private-china-travel.md";
 import womenAudienceMarkdown from "@/content/journal/articles/2026-10-04-women-private-china-travel.md";
+import greatWallStairsMarkdown from "@/content/journal/articles/2026-11-05-how-to-visit-great-wall-without-climbing-stairs.md";
+import slowPacedGuideMarkdown from "@/content/journal/articles/2026-11-05-slow-paced-china-tour-for-seniors-itinerary-guide.md";
+import elderlySafetyMarkdown from "@/content/journal/articles/2026-11-05-is-china-safe-for-elderly-travelers-senior-care-guide.md";
 import seniorAudienceMarkdown from "@/content/journal/articles/2026-10-04-slow-paced-china-tour-for-seniors.md";
 import familyAudienceMarkdown from "@/content/journal/articles/2026-10-04-private-china-family-tour-planning.md";
 import type { JournalArticle, JournalContentBlock } from "@/types/journal";
@@ -128,6 +131,12 @@ const fullFrameImageMetadata: Record<string, { width: number; height: number; fi
 };
 
 const bundledMarkdown: Record<string, string> = {
+  "content/journal/articles/2026-11-05-how-to-visit-great-wall-without-climbing-stairs.md":
+    greatWallStairsMarkdown,
+  "content/journal/articles/2026-11-05-slow-paced-china-tour-for-seniors-itinerary-guide.md":
+    slowPacedGuideMarkdown,
+  "content/journal/articles/2026-11-05-is-china-safe-for-elderly-travelers-senior-care-guide.md":
+    elderlySafetyMarkdown,
   "content/journal/articles/2026-10-04-muslim-friendly-private-china-travel.md":
     muslimAudienceMarkdown,
   "content/journal/articles/2026-10-04-women-private-china-travel.md": womenAudienceMarkdown,
