@@ -97,7 +97,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-9-day-tour"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
       articles: [
         "private-china-tour-arrival-handoff-checklist",
         "private-guide-vs-driver-china",
@@ -154,7 +154,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
       destinations: ["beijing", "xian", "shanghai"],
       tours: [
         "china-at-an-easier-pace-12-day-private-tour",
-        "beijing-xian-shanghai-private-9-day-tour",
+        "beijing-xian-shanghai-private-10-day-tour",
       ],
       articles: [
         "how-much-walking-china-tour",
@@ -276,7 +276,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing"],
-      tours: ["beijing-xian-shanghai-private-9-day-tour"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "mutianyu-older-travelers-short-walk"],
     },
     conversion: {
@@ -333,7 +333,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-9-day-tour"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "china-travel-for-seniors"],
     },
     conversion: {
@@ -390,7 +390,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-9-day-tour"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
       articles: [
         "food-allergies-dietary-restrictions-china-travel",
         "china-travel-emergency-support-what-to-do",

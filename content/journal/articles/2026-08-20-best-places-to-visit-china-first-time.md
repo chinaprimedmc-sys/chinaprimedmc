@@ -102,7 +102,7 @@ The fourth answer is where most itineraries become honest. A new city is not add
 
 Use four nights in Beijing, two in Xi'an and three in Shanghai, with the remaining day accounted for by arrival and the two intercity movements. This is the classic route at its firmest workable pace.
 
-For a commercial reference, our published [ten-day private version](/tours/beijing-xian-shanghai-private-9-day-tour) is priced individually for your dates and party. A ten-day version needs the additional night and whichever service is attached to it quoted explicitly.
+For a commercial reference, our published [ten-day private version](/tours/beijing-xian-shanghai-private-10-day-tour) is priced individually for your dates and party. A ten-day version needs the additional night and whichever service is attached to it quoted explicitly.
 
 ### 12 days: Beijing, Xi'an and Shanghai with room to choose
 

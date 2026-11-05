@@ -36,7 +36,7 @@ This is not administrative detail. A family with a stroller, a couple interested
 
 China is large. A route can look impressive on a map and still feel exhausting when station transfers, security, hotel check-in and luggage are counted. A useful proposal separates full sightseeing days from arrival, departure and intercity movement days.
 
-For a first visit, Beijing, Xi'an and Shanghai make a coherent introduction: imperial history, the Terracotta Army and a modern commercial city. The [first-China private journey](/tours/beijing-xian-shanghai-private-9-day-tour) uses that logic while leaving room to adjust pace and support. Travelers who want more recovery can compare [China, Considered](/tours/china-at-an-easier-pace-12-day-private-tour). Travelers who want Chengdu can review the [four-city route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour), understanding that one more city also means another movement day.
+For a first visit, Beijing, Xi'an and Shanghai make a coherent introduction: imperial history, the Terracotta Army and a modern commercial city. The [first-China private journey](/tours/beijing-xian-shanghai-private-10-day-tour) uses that logic while leaving room to adjust pace and support. Travelers who want more recovery can compare [China, Considered](/tours/china-at-an-easier-pace-12-day-private-tour). Travelers who want Chengdu can review the [four-city route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour), understanding that one more city also means another movement day.
 
 ## 3. Design the rhythm before adding special experiences
 
@@ -94,7 +94,7 @@ Send dates, travelers, gateways, priorities, pace and any practical requirements
 
 ## Sources
 
-- AVIORA [First China, Beautifully Paced](/tours/beijing-xian-shanghai-private-9-day-tour)
+- AVIORA [First China, Beautifully Paced](/tours/beijing-xian-shanghai-private-10-day-tour)
 - AVIORA [Private China Tour Proposal Checklist](/journal/private-china-tour-proposal-checklist)
 - China Railway 12306 English FAQ — https://www.12306.cn/en/faq.html
 

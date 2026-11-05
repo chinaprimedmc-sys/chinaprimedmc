@@ -9,7 +9,7 @@
 
 import type { Tour, TourFaq, TourItineraryDay } from "@/types/tour";
 
-export const slowPacedSlug = "beijing-xian-shanghai-private-9-day-tour";
+export const slowPacedSlug = "beijing-xian-shanghai-private-10-day-tour";
 
 type DayOverride = Pick<
   TourItineraryDay,

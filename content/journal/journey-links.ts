@@ -8,7 +8,7 @@ export type JourneyJournalLinkRule = {
   planningPreference?: string;
 };
 
-const FIRST_CHINA = "beijing-xian-shanghai-private-9-day-tour";
+const FIRST_CHINA = "beijing-xian-shanghai-private-10-day-tour";
 const CHINA_CONSIDERED = "china-at-an-easier-pace-12-day-private-tour";
 const CHINA_FAMILY = "china-family-tour-with-pandas-12-day-private-tour";
 const FOUR_CITY = "beijing-xian-chengdu-shanghai-private-11-day-tour";

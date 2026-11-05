@@ -70,7 +70,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         title: "Who gains the most from private travel",
         paragraphs: [
           "Families benefit from earlier panda visits, age-appropriate storytelling, suitable vehicles and flexible meal timing. Older or multigenerational travelers benefit from managed station transfers, realistic walking and hotel locations chosen to reduce repeated journeys. Travelers with allergies, halal requirements or strong cultural interests gain from advance research and a guide briefed on the details.",
-          "Confident independent travelers may need private support only on complex days. A hybrid plan can combine a private Great Wall day, managed rail transfers and guided heritage visits with free evenings or independent Shanghai time. The [10-day Beijing, Xi'an and Shanghai journey](/tours/beijing-xian-shanghai-private-9-day-tour) is a useful framework for this balance.",
+          "Confident independent travelers may need private support only on complex days. A hybrid plan can combine a private Great Wall day, managed rail transfers and guided heritage visits with free evenings or independent Shanghai time. The [10-day Beijing, Xi'an and Shanghai journey](/tours/beijing-xian-shanghai-private-10-day-tour) is a useful framework for this balance.",
         ],
       },
       {
@@ -398,7 +398,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         title: "Spring: March to May",
         paragraphs: [
           "Spring can suit cultural routes as northern cities warm and days lengthen. Early March may still feel cool; late spring can become warm and busy. Air quality, rain and blossoms vary by year and place, so avoid promising one exact landscape condition.",
-          "Spring is a useful time for the [Beijing, Xi'an and Shanghai journey](/tours/beijing-xian-shanghai-private-9-day-tour), especially for travelers who prefer moderate walking temperatures. Check the Qingming and May Day holiday periods before fixing trains and hotels.",
+          "Spring is a useful time for the [Beijing, Xi'an and Shanghai journey](/tours/beijing-xian-shanghai-private-10-day-tour), especially for travelers who prefer moderate walking temperatures. Check the Qingming and May Day holiday periods before fixing trains and hotels.",
         ],
       },
       {
@@ -840,7 +840,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         title: "Build in private moments, not just private vehicles",
         paragraphs: [
           "Ask for the moments that make the route personal: a Great Wall section matched to your walking comfort, a guide who can explain imperial symbolism without rushing, a food experience that respects allergies, or a hotel area where you can step out for an evening walk.",
-          "Private service should also protect your energy. Schedule the major attraction early, leave the afternoon open when possible and keep arrival nights light. Our [first China journey](/tours/beijing-xian-shanghai-private-9-day-tour) can be adapted with private guiding and independent time rather than treated as a fixed package.",
+          "Private service should also protect your energy. Schedule the major attraction early, leave the afternoon open when possible and keep arrival nights light. Our [first China journey](/tours/beijing-xian-shanghai-private-10-day-tour) can be adapted with private guiding and independent time rather than treated as a fixed package.",
         ],
       },
       {
@@ -1002,7 +1002,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         title: "Make support part of the itinerary",
         paragraphs: [
           "The most useful support is specific: an airport meeting plan, station assistance, passport-ticket checks, a local contact and a clear procedure for delays. It should reduce uncertainty without making you feel escorted every minute.",
-          "Our [private China journeys](/tours/beijing-xian-shanghai-private-9-day-tour) can include that practical layer alongside independent time. Share your party, arrival details and concerns through [start planning](/start-planning?source=journal-safety-mid), and we will state what support is included in the proposal.",
+          "Our [private China journeys](/tours/beijing-xian-shanghai-private-10-day-tour) can include that practical layer alongside independent time. Share your party, arrival details and concerns through [start planning](/start-planning?source=journal-safety-mid), and we will state what support is included in the proposal.",
         ],
       },
     ],
@@ -1076,7 +1076,7 @@ export const commercialArticleContent: Record<string, JournalContentBlock[]> = {
         title: "Who should add time or change the route",
         paragraphs: [
           "Add a night if your international flight lands late, if anyone has reduced walking tolerance or if Shanghai's neighborhoods matter as much as the Bund. Families may prefer an extra Beijing or Shanghai night rather than adding a fourth city. Travelers who want pandas can consider the [12-day Shanghai, Chengdu, Xi'an and Beijing route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour), which gives Chengdu three nights rather than compressing it into a transfer window.",
-          "The matching [10-day private journey](/tours/beijing-xian-shanghai-private-9-day-tour) is a framework. Hotels, guide coverage, train class, attraction reservations and independent time are confirmed around your dates and party after inquiry.",
+          "The matching [10-day private journey](/tours/beijing-xian-shanghai-private-10-day-tour) is a framework. Hotels, guide coverage, train class, attraction reservations and independent time are confirmed around your dates and party after inquiry.",
         ],
       },
       {

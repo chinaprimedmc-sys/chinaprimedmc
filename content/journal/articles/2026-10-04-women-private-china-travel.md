@@ -51,7 +51,7 @@ On a guided day, the guide explains the destination, helps the visit make sense 
 
 Before departure, ask who your contact is during touring hours and after them, which number or messaging channel is monitored, and what kind of issue that person can resolve. A local team can coordinate a replacement transfer or communicate with a hotel when an arrangement changes; it cannot control public transport, attraction security, weather or every third-party decision. Good support says what it can do and what it cannot.
 
-For a first visit across Beijing, Xi’an and Shanghai, the [private first-China journey](/tours/beijing-xian-shanghai-private-9-day-tour) combines city touring, guide-and-driver days and intercity planning. It can be discussed with more independent time, a particular room preference or a guide request. Those changes need a date-specific proposal; the published itinerary should not be mistaken for a guarantee that every preference is automatically included.
+For a first visit across Beijing, Xi’an and Shanghai, the [private first-China journey](/tours/beijing-xian-shanghai-private-10-day-tour) combines city touring, guide-and-driver days and intercity planning. It can be discussed with more independent time, a particular room preference or a guide request. Those changes need a date-specific proposal; the published itinerary should not be mistaken for a guarantee that every preference is automatically included.
 
 ## Questions worth asking before you pay
 
@@ -91,7 +91,7 @@ Your confirmation should provide the meeting point, contact details and an escal
 
 ## Plan the kind of support you want
 
-Share your route, dates, room preference, arrival details and any guide request. AVIORA will check what can be provided and put the confirmed scope in writing. Explore the [Beijing, Xi’an and Shanghai private journey](/tours/beijing-xian-shanghai-private-9-day-tour) or [start a tailored planning conversation](/start-planning?source=audience-women-travel).
+Share your route, dates, room preference, arrival details and any guide request. AVIORA will check what can be provided and put the confirmed scope in writing. Explore the [Beijing, Xi’an and Shanghai private journey](/tours/beijing-xian-shanghai-private-10-day-tour) or [start a tailored planning conversation](/start-planning?source=audience-women-travel).
 
 ## Sources
 

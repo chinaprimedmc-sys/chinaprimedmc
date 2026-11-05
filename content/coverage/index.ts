@@ -176,7 +176,7 @@ const regions: Region[] = [
     journeys: [
       "private-shanghai-day-tour-guide-driver",
       "beijing-xian-chengdu-shanghai-private-11-day-tour",
-      "beijing-xian-shanghai-private-9-day-tour",
+      "beijing-xian-shanghai-private-10-day-tour",
     ],
     faqs: [
       {

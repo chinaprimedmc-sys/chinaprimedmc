@@ -72,7 +72,7 @@ Your guide is with you on touring days, and the 24/7 medical channel gives you d
 
 A trip to China with elderly parents can be inspiring and easy. With a 24/7 medical channel, careful meal planning and attention to mobility, you can travel with confidence.
 
-To learn more about how we look after senior guests, see the full itinerary of [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-9-day-tour) or contact us for a private consultation.
+To learn more about how we look after senior guests, see the full itinerary of [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour) or contact us for a private consultation.
 
 ## Sources
 

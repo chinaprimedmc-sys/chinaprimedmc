@@ -10,7 +10,7 @@ const coreJourneyTitleOverrides: Record<string, string> = {
     "China, Considered: 12-Day Beijing, Xi'an & Shanghai Private Journey",
   "beijing-xian-chengdu-shanghai-private-11-day-tour":
     "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
-  "beijing-xian-shanghai-private-9-day-tour": "10-Day Beijing, Xi'an & Shanghai Private Tour",
+  "beijing-xian-shanghai-private-10-day-tour": "10-Day Beijing, Xi'an & Shanghai Private Tour",
   "chengdu-pandas-sichuan-table": "5-Day Chengdu Panda & Sichuan Food Private Tour",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour":
     "7-Day Chengdu Panda & Jiuzhaigou Private Journey",
@@ -25,7 +25,7 @@ const coreJourneyOrder = [
   "china-at-an-easier-pace-12-day-private-tour",
   "chengdu-chongqing-zhangjiajie-private-11-day-tour",
   "beijing-xian-chengdu-shanghai-private-11-day-tour",
-  "beijing-xian-shanghai-private-9-day-tour",
+  "beijing-xian-shanghai-private-10-day-tour",
   "chengdu-pandas-sichuan-table",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour",
   "beijing-great-wall-private-5-day-tour",

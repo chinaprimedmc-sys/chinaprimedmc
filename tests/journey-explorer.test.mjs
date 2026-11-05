@@ -128,6 +128,6 @@ test("every offered 'who' tag is backed by at least one journey", () => {
 });
 
 test("medical support is searchable only where the operator confirmed it (the slow-paced 9-day journey)", () => {
-  assert.deepEqual(find("medical"), ["beijing-xian-shanghai-private-9-day-tour"]);
-  assert.deepEqual(find("seniors").includes("beijing-xian-shanghai-private-9-day-tour"), true);
+  assert.deepEqual(find("medical"), ["beijing-xian-shanghai-private-10-day-tour"]);
+  assert.deepEqual(find("seniors").includes("beijing-xian-shanghai-private-10-day-tour"), true);
 });

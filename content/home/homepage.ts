@@ -282,7 +282,7 @@ export const journeys = [
     poeticTitle: "Three defining cities, planned at a comfortable pace.",
     description: "Imperial Beijing, historic Xi'an, and modern Shanghai without the rush.",
     image: firstChinaAsset.beijingGreatWallSunriseHero,
-    href: "/tours/beijing-xian-shanghai-private-9-day-tour",
+    href: "/tours/beijing-xian-shanghai-private-10-day-tour",
     duration: "10 days / 9 nights",
     route: "Beijing · Xi'an · Shanghai",
     bestFor: "First-time visitors",

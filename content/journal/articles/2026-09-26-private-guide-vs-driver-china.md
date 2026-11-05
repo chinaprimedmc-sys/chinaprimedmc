@@ -54,7 +54,7 @@ A full private day with a guide, vehicle and driver costs more than a driver-onl
 
 Beware of a low headline price that excludes the guide on important days or provides a vehicle only for point-to-point transport. Also avoid assuming that the highest price is automatically better. Value comes from having the right service at the moments where it changes the trip.
 
-Use the [private China tour inclusions checklist](/journal/what-is-included-private-china-tour) and the [proposal checklist](/journal/private-china-tour-proposal-checklist) to compare written scope. The [first-China private journey](/tours/beijing-xian-shanghai-private-9-day-tour) shows how guide, driver, rail and operations support connect across Beijing, Xi'an and Shanghai.
+Use the [private China tour inclusions checklist](/journal/what-is-included-private-china-tour) and the [proposal checklist](/journal/private-china-tour-proposal-checklist) to compare written scope. The [first-China private journey](/tours/beijing-xian-shanghai-private-10-day-tour) shows how guide, driver, rail and operations support connect across Beijing, Xi'an and Shanghai.
 
 ## What good service looks like during the day
 

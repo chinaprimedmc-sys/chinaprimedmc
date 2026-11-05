@@ -23,7 +23,7 @@ search_intent: "Plan and compare a private China journey from Singapore, includi
 suggested_internal_links:
   [
     "/tours",
-    "/tours/beijing-xian-shanghai-private-9-day-tour",
+    "/tours/beijing-xian-shanghai-private-10-day-tour",
     "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
     "/journal/china-mobile-payments-foreign-tourists",
     "/journal/china-sim-card-esim-internet-foreign-tourists",

@@ -20,7 +20,7 @@ sources_verified_at: "2026-09-25"
 
 A ten-day Beijing, Xi'an and Shanghai journey works when it is treated as **three complete chapters connected by two carefully managed handovers**, not as a race through a list of famous sights. Four Beijing nights protect the Great Wall and imperial city, two Xi'an nights give the Terracotta Army a real day, and two Shanghai nights create a coherent finish before departure.
 
-This is the operating logic behind AVIORA's [Beijing, Xi'an and Shanghai private first journey](/tours/beijing-xian-shanghai-private-9-day-tour). It is designed for travelers who want China's essential historical arc without adding a fourth city simply to make the route look larger.
+This is the operating logic behind AVIORA's [Beijing, Xi'an and Shanghai private first journey](/tours/beijing-xian-shanghai-private-10-day-tour). It is designed for travelers who want China's essential historical arc without adding a fourth city simply to make the route look larger.
 
 | Route chapter | Nights | Main purpose                                                 | Pressure point to protect                                    |
 | ------------- | -----: | ------------------------------------------------------------ | ------------------------------------------------------------ |

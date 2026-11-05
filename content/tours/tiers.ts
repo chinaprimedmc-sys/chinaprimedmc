@@ -26,7 +26,7 @@ export const journeyTiers: Record<PublicSlug, JourneyTier> = {
   "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour": "signature",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour": "signature",
   "shanghai-zhangjiajie-floating-peaks": "signature",
-  "beijing-xian-shanghai-private-9-day-tour": "signature",
+  "beijing-xian-shanghai-private-10-day-tour": "signature",
   "luxury-yunnan-private-tour": "signature",
   "chengdu-chongqing-zhangjiajie-private-11-day-tour": "signature",
   "beijing-xian-chengdu-shanghai-private-11-day-tour": "signature",

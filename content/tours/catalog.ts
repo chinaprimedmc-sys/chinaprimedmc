@@ -121,7 +121,7 @@ export type JourneyPlanningNeedId =
   | "food-focused"
   | "photography-led";
 
-const flagship = tours.find((tour) => tour.slug === "beijing-xian-shanghai-private-9-day-tour");
+const flagship = tours.find((tour) => tour.slug === "beijing-xian-shanghai-private-10-day-tour");
 const chinaConsidered = tours.find(
   (tour) => tour.slug === "china-at-an-easier-pace-12-day-private-tour",
 );
@@ -1119,7 +1119,7 @@ const journeyCatalogBase: JourneyCatalogBase[] = [
  * catalogue, search index, generated routes, sitemap and journey matcher.
  */
 export const publicJourneySlugs = [
-  "beijing-xian-shanghai-private-9-day-tour",
+  "beijing-xian-shanghai-private-10-day-tour",
   "luxury-yunnan-private-tour",
   "private-mutianyu-great-wall-day-tour",
   "private-shanghai-day-tour-guide-driver",
@@ -1204,7 +1204,7 @@ const commercialPortfolio: Record<
     commercialRoleLabel: "First-China essential",
     commercialPriority: 150,
   },
-  "beijing-xian-shanghai-private-9-day-tour": {
+  "beijing-xian-shanghai-private-10-day-tour": {
     commercialRole: "essential",
     commercialRoleLabel: "Signature first journey",
     commercialPriority: 190,
@@ -1419,7 +1419,7 @@ const commercialDetails: Record<
     bestForSummary:
       "First-time visitors who want four distinct cities without planning every handoff themselves",
   },
-  "beijing-xian-shanghai-private-9-day-tour": {
+  "beijing-xian-shanghai-private-10-day-tour": {
     paceLabel: "Slow-paced, with a 3:30 PM hotel return",
     transportSummary:
       "Door-to-door Mercedes vans, luggage-free bullet trains to Xi\'an and Shanghai, and porters at every station",
@@ -1674,7 +1674,7 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
     fromUsd: 2990,
     ...sharedPricingDetails,
   },
-  "beijing-xian-shanghai-private-9-day-tour": {
+  "beijing-xian-shanghai-private-10-day-tour": {
     fromUsd: 3190,
     ...sharedPricingDetails,
     inclusionSummary:

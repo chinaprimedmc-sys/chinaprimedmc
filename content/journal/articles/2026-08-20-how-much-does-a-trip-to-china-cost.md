@@ -31,7 +31,7 @@ AVIORA prices every journey individually, so there is no single starting figure 
 | Published private journey                                                                        | Length  | What the route helps you compare                                                               |
 | ------------------------------------------------------------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------- |
 | [Beijing and Great Wall](/tours/beijing-great-wall-private-5-day-tour)                           | 5 days  | One hotel base, private airport/city transfers and core Beijing guiding                        |
-| [Beijing, Xi'an and Shanghai](/tours/beijing-xian-shanghai-private-9-day-tour)                   | 10 days | Three cities, two handovers and the classic first-trip route                                   |
+| [Beijing, Xi'an and Shanghai](/tours/beijing-xian-shanghai-private-10-day-tour)                  | 10 days | Three cities, two handovers and the classic first-trip route                                   |
 | [Shanghai, Chengdu, Xi'an and Beijing](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) | 12 days | A fourth city, pandas and three intercity connections                                          |
 | [China at an easier pace](/tours/china-at-an-easier-pace-12-day-private-tour)                    | 12 days | Premium five-star hotels, first-class rail, a domestic flight and private cultural experiences |
 

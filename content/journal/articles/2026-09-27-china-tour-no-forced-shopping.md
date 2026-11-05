@@ -78,7 +78,7 @@ Tell the operator before travel so the preference can be shared with the local t
 
 ## Sources
 
-- AVIORA [First China, Beautifully Paced](/tours/beijing-xian-shanghai-private-9-day-tour)
+- AVIORA [First China, Beautifully Paced](/tours/beijing-xian-shanghai-private-10-day-tour)
 - AVIORA [What Is Included in a Private China Tour?](/journal/what-is-included-private-china-tour)
 - AVIORA [Private China Tour Proposal Checklist](/journal/private-china-tour-proposal-checklist)
 - AVIORA [How to Choose a Private China Tour Company](/journal/how-to-choose-private-china-tour-company)

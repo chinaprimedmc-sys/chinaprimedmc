@@ -87,7 +87,7 @@ AVIORA's China-based team can communicate with local suppliers, explain options,
 
 We cannot replace emergency services, authorities, embassies, medical professionals or insurers. Trust comes from saying that before the trip, then coordinating responsibly when those parties need to work together.
 
-The [arrival handoff checklist](/journal/private-china-tour-arrival-handoff-checklist) shows what should be established in the first 24 hours. The [first-China private journey](/tours/beijing-xian-shanghai-private-9-day-tour) shows how one operations path connects several destinations.
+The [arrival handoff checklist](/journal/private-china-tour-arrival-handoff-checklist) shows what should be established in the first 24 hours. The [first-China private journey](/tours/beijing-xian-shanghai-private-10-day-tour) shows how one operations path connects several destinations.
 
 ## Questions travelers ask
 

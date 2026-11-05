@@ -22,7 +22,7 @@ search_intent: "Estimate the cost of a private China trip, understand the main p
 suggested_internal_links:
   [
     "/tours",
-    "/tours/beijing-xian-shanghai-private-9-day-tour",
+    "/tours/beijing-xian-shanghai-private-10-day-tour",
     "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
     "/tours",
     "/start-planning",
@@ -165,7 +165,7 @@ Ask what happens if the named hotel, train or attraction slot is unavailable. A 
 
 Consider a first journey through Beijing, Xi’an and Shanghai. The major cost areas are not only the headline attractions. They include three hotel stays, airport arrival support, private sightseeing vehicles, licensed local guides, Great Wall transport, intercity rail, station transfers, passport-linked attraction reservations and the operating support that keeps those services connected.
 
-The [10-day Beijing, Xi’an and Shanghai private tour](/tours/beijing-xian-shanghai-private-9-day-tour) is the simpler version. Adding Chengdu and the pandas creates a richer first trip but also introduces another city, hotel, guide team and intercity connection; see the [12-day Shanghai, Chengdu, Xi’an and Beijing route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour).
+The [10-day Beijing, Xi’an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour) is the simpler version. Adding Chengdu and the pandas creates a richer first trip but also introduces another city, hotel, guide team and intercity connection; see the [12-day Shanghai, Chengdu, Xi’an and Beijing route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour).
 
 ## How to receive a useful first proposal
 
@@ -240,7 +240,7 @@ Published hero: `/public/home/editorial/great-wall-private-china-travel.webp`. A
 ## Sources
 
 - AVIORA, “Private China Tour Packages and Tailored Journeys”: `/tours` — current route and service structure. Verified 2026-08-10.
-- AVIORA, “10-Day Beijing, Xi’an & Shanghai Private Tour”: `/tours/beijing-xian-shanghai-private-9-day-tour` — first-time route assumptions. Verified 2026-08-10.
+- AVIORA, “10-Day Beijing, Xi’an & Shanghai Private Tour”: `/tours/beijing-xian-shanghai-private-10-day-tour` — first-time route assumptions. Verified 2026-08-10.
 - AVIORA, “11-Day Beijing, Xi’an, Chengdu & Shanghai Private Tour”: `/tours/beijing-xian-chengdu-shanghai-private-11-day-tour` — four-city route assumptions. Verified 2026-08-10.
 
 ## Review Notes

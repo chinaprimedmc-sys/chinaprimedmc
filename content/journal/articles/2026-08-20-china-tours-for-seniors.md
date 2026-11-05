@@ -104,7 +104,7 @@ We will not call every ancient site step-free. We will not say a cable car makes
 
 Those boundaries are not disclaimers added by lawyers. They are part of making the right sale.
 
-If you want a concrete example of a slow-paced route, see [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-9-day-tour): zero-stair Great Wall access, luggage-free bullet trains and a 3:30 PM hotel return each day.
+If you want a concrete example of a slow-paced route, see [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour): zero-stair Great Wall access, luggage-free bullet trains and a 3:30 PM hotel return each day.
 
 ## How to Compare Two China Tour Quotes
 

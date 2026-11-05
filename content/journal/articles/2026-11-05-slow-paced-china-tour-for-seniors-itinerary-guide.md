@@ -75,7 +75,7 @@ It works well for families because the pace is set by the slowest traveler, not 
 
 Travel in your later years should be about wonder, not strain. With the right pace, private logistics and personal attention, China can be relaxing as well as rewarding.
 
-To see these principles in a complete itinerary, explore [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-9-day-tour), designed for senior travelers and multi-generational families.
+To see these principles in a complete itinerary, explore [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour), designed for senior travelers and multi-generational families.
 
 ## Sources
 

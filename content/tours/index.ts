@@ -150,7 +150,7 @@ const baseTours: Tour[] = [
   chengduChongqingZhangjiajieTour,
   beijingXianChengduShanghaiTour,
   {
-    slug: "beijing-xian-shanghai-private-9-day-tour",
+    slug: "beijing-xian-shanghai-private-10-day-tour",
     title: "Beijing, Xi'an & Shanghai: A Private First Journey",
     subtitle:
       "Ten days through Beijing, Xi'an and Shanghai at a slow pace, with an expert guide in every city, central hotels, door-to-door Mercedes vans and a 3:30 PM return to the hotel.",

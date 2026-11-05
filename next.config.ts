@@ -41,6 +41,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // 行程由 9 天改为 10 天后更名；旧网址永久跳转，保住外链与排名。
+        source: "/tours/beijing-xian-shanghai-private-9-day-tour",
+        destination: "/tours/beijing-xian-shanghai-private-10-day-tour",
+        permanent: true,
+      },
+      {
         source: "/blog/how-to-visit-great-wall-without-climbing-stairs",
         destination: "/journal/how-to-visit-great-wall-without-climbing-stairs",
         permanent: true,
@@ -334,12 +340,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tours/first-china-beautifully-paced",
-        destination: "/tours/beijing-xian-shanghai-private-9-day-tour",
+        destination: "/tours/beijing-xian-shanghai-private-10-day-tour",
         permanent: true,
       },
       {
         source: "/journey/beijing-xian-shanghai-essential-8-days",
-        destination: "/tours/beijing-xian-shanghai-private-9-day-tour",
+        destination: "/tours/beijing-xian-shanghai-private-10-day-tour",
         permanent: true,
       },
       {
@@ -349,7 +355,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/journey/china-by-high-speed-rail",
-        destination: "/tours/beijing-xian-shanghai-private-9-day-tour",
+        destination: "/tours/beijing-xian-shanghai-private-10-day-tour",
         permanent: true,
       },
       {

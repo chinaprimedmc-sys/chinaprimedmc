@@ -73,7 +73,7 @@ The [China travel emergency action plan](/journal/china-travel-emergency-support
 
 AVIORA coordinates guides, transfers, accommodation and itinerary decisions through a China-based team. The scope depends on the booked journey and confirmed services. Travelers should receive the relevant contact and understand which decisions can be made locally, what requires their approval and what remains subject to supplier rules.
 
-The [First China, Beautifully Paced journey](/tours/beijing-xian-shanghai-private-9-day-tour) shows one multi-city route where the team coordinates services across Beijing, Xi'an and Shanghai. Travelers considering additional cities can review the [four-city route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour), where extra transitions make handoff planning especially important.
+The [First China, Beautifully Paced journey](/tours/beijing-xian-shanghai-private-10-day-tour) shows one multi-city route where the team coordinates services across Beijing, Xi'an and Shanghai. Travelers considering additional cities can review the [four-city route](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour), where extra transitions make handoff planning especially important.
 
 ## A practical pre-trip readiness check
 

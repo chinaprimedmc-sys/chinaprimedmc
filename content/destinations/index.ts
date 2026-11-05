@@ -357,7 +357,7 @@ export const destinations: Destination[] = [
         route: "Beijing, Xi'an, Shanghai",
         duration: "10 days",
         style: "Private classic",
-        href: "/tours/beijing-xian-shanghai-private-9-day-tour",
+        href: "/tours/beijing-xian-shanghai-private-10-day-tour",
       },
     ],
     gallery: [destinationAsset.shanghaiSkyline],

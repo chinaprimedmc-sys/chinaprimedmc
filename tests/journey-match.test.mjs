@@ -27,7 +27,7 @@ const { describeMatchAnswers, matchJourneys, readMatchAnswers, writeMatchAnswers
 
 test("matching favors a first journey for an eight-to-twelve-day couple trip", () => {
   const results = matchJourneys(journeyCatalog, { time: "eight-twelve", company: "couple", interests: ["icons"], pace: "easy" });
-  assert.equal(results[0].item.slug, "beijing-xian-shanghai-private-9-day-tour");
+  assert.equal(results[0].item.slug, "beijing-xian-shanghai-private-10-day-tour");
   assert.equal(results[0].exact, true);
 });
 
@@ -49,7 +49,7 @@ test("Yunnan scenery with flexible dates surfaces the appropriate published jour
 
 test("a different pace or interest is not presented as an exact match", () => {
   const results = matchJourneys(journeyCatalog, { time: "eight-twelve", company: "couple", interests: ["icons", "nature"], pace: "active" });
-  const first = results.find((result) => result.item.slug === "beijing-xian-shanghai-private-9-day-tour");
+  const first = results.find((result) => result.item.slug === "beijing-xian-shanghai-private-10-day-tour");
   assert.equal(first.exact, false);
   assert.ok(first.differences.some((line) => line.includes("pace")));
   assert.ok(first.differences.some((line) => line.includes("Landscapes")));

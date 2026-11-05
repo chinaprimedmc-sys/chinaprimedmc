@@ -41,7 +41,7 @@ export type JourneyTagSet = {
 type PublicSlug = (typeof publicJourneySlugs)[number];
 
 export const journeyTags: Record<PublicSlug, JourneyTagSet> = {
-  "beijing-xian-shanghai-private-9-day-tour": {
+  "beijing-xian-shanghai-private-10-day-tour": {
     who: ["Multi-generational", "First-time"],
     interest: ["Culture & heritage", "History"],
     easierPace: true,

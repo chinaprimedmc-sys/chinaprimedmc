@@ -34,7 +34,7 @@ import styles from "./home.module.css";
 
 /** 首页精选：均为 Signature 层级、图片就绪、内容完整的行程；依据是完整度，不是销量。 */
 const featuredSlugs = [
-  "beijing-xian-shanghai-private-9-day-tour",
+  "beijing-xian-shanghai-private-10-day-tour",
   "beijing-xian-chengdu-shanghai-private-11-day-tour",
   "china-family-tour-with-pandas-12-day-private-tour",
   "china-at-an-easier-pace-12-day-private-tour",

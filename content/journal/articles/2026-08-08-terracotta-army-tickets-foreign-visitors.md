@@ -22,7 +22,7 @@ search_intent: "Book and use a real-name Terracotta Army ticket correctly, then 
 suggested_internal_links:
   [
     "/destinations",
-    "/tours/beijing-xian-shanghai-private-9-day-tour",
+    "/tours/beijing-xian-shanghai-private-10-day-tour",
     "/journal/china-high-speed-train-foreigners",
     "/faq",
     "/start-planning",
@@ -88,7 +88,7 @@ The museum currently instructs time-slot visitors to arrive about 30 minutes bef
 
 ### 1. Decide the Xi’an date before buying the ticket
 
-The museum day should not compete with a same-day long-distance train or international flight. Confirm the Xi’an hotel nights and intercity transport first. AVIORA’s [ten-day Beijing, Xi’an and Shanghai route](/tours/beijing-xian-shanghai-private-9-day-tour) gives the Terracotta Army its own day rather than treating it as a transfer stop.
+The museum day should not compete with a same-day long-distance train or international flight. Confirm the Xi’an hotel nights and intercity transport first. AVIORA’s [ten-day Beijing, Xi’an and Shanghai route](/tours/beijing-xian-shanghai-private-10-day-tour) gives the Terracotta Army its own day rather than treating it as a transfer stop.
 
 ### 2. Use the museum’s current official instructions
 

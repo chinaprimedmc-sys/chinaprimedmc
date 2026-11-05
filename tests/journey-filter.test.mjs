@@ -85,7 +85,7 @@ test("recommended ordering follows commercial priority", () => {
   assert.deepEqual(
     results.map((item) => item.slug),
     [
-      "beijing-xian-shanghai-private-9-day-tour",
+      "beijing-xian-shanghai-private-10-day-tour",
       "china-family-tour-with-pandas-12-day-private-tour",
       "luxury-yunnan-private-tour",
       "china-at-an-easier-pace-12-day-private-tour",

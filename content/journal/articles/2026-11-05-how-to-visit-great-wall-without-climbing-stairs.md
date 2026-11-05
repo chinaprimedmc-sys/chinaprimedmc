@@ -77,7 +77,7 @@ Allow the full morning for the drive, the gondola and the platform, and plan to 
 
 The Great Wall should never feel like an endurance test. With private door-to-door transport, a gondola to the Wall and a realistic step budget, you can enjoy it in comfort.
 
-If you are planning a journey through Beijing, Xi'an and Shanghai, take a look at [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-9-day-tour), designed around zero-stair logistics, private transfers and a relaxed daily pace.
+If you are planning a journey through Beijing, Xi'an and Shanghai, take a look at [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour), designed around zero-stair logistics, private transfers and a relaxed daily pace.
 
 ## Sources
 

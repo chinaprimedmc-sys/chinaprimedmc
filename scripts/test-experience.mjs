@@ -57,7 +57,7 @@ try {
     filteredUrl,
   );
 
-  const detail = "/tours/beijing-xian-shanghai-private-9-day-tour";
+  const detail = "/tours/beijing-xian-shanghai-private-10-day-tour";
   await go(detail);
   assert.ok(
     (await page.locator("body").innerText()).includes("Beijing · Xi'an · Shanghai · 9 Days"),

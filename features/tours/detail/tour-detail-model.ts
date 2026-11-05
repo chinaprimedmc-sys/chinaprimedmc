@@ -209,7 +209,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
         ? describeIncludedMeals(day.day)
         : day.meals?.join(", ") || "Confirmed in your written proposal",
       stay:
-        tour.slug === "beijing-xian-shanghai-private-9-day-tour" && day.day === 10
+        tour.slug === "beijing-xian-shanghai-private-10-day-tour" && day.day === 10
           ? "Departure day"
           : compactDailyStay(day.hotel, day.destination),
       guideInsight: day.guideNote,

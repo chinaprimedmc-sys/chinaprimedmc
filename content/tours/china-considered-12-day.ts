@@ -630,7 +630,7 @@ export const chinaConsidered12DayTour: Tour = {
         image: firstChinaAsset.shanghaiWaterfrontGroup,
         route: "Beijing · Xi'an · Shanghai",
         duration: "10 days / 9 nights",
-        href: "/tours/beijing-xian-shanghai-private-9-day-tour",
+        href: "/tours/beijing-xian-shanghai-private-10-day-tour",
       },
     ],
     destinations: [],
