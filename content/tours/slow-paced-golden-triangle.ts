@@ -362,7 +362,34 @@ export const seniorStandard = {
   ],
 } satisfies NonNullable<Tour["seniorStandard"]>;
 
+export const pricingBlock = {
+  eyebrow: "Pricing transparency",
+  from: "$3,800",
+  unit: "per person",
+  range: "$3,800–$6,500 per person",
+  note: "Pricing varies with your hotel selection, the season you travel and your party size, for example a couple compared with a multi-generational family. Your written proposal sets the exact price for your dates before you pay.",
+  factors: [
+    {
+      title: "Hotel selection",
+      body: "The hotel category you choose in each city is the largest single factor.",
+    },
+    {
+      title: "Seasonal timing",
+      body: "Public holidays and peak months cost more than quieter periods.",
+    },
+    {
+      title: "Party size",
+      body: "The private van and guide are shared, so a couple and a multi-generational family are priced differently.",
+    },
+  ],
+} satisfies NonNullable<Tour["pricingBlock"]>;
+
 export const slowPacedFaqs: TourFaq[] = [
+  {
+    question: "How much does this 10-Day Private Golden Triangle Tour cost?",
+    answer:
+      "Pricing ranges from $3,800 to $6,500 per person, and the tour starts from $3,800 per person. Where you land in that range depends on your hotel selection, the season you travel and your party size, for example a couple compared with a multi-generational family. The price includes nine nights in central hotels (three in Beijing, three in Xi'an, three in Shanghai), private guiding in every city, door-to-door Mercedes vans, First Class bullet trains with luggage-free station transfers, the VIP airport welcome and departure escort, the gondola, electric carts, cruises and private boats listed in the itinerary, and the 24/7 international medical channel. International flights, visa fees, travel insurance, meals not listed in your proposal and personal expenses are not included. Your written proposal sets the exact price for your dates before you pay.",
+  },
   {
     question: "Is this Beijing, Xi'an and Shanghai tour suitable for seniors?",
     answer:
@@ -532,6 +559,10 @@ export function applySlowPaced(tour: Tour): Tour {
         },
       ],
     },
-    faqs: [...slowPacedFaqs, ...tour.faqs],
+    pricingBlock,
+    faqs: [
+      ...slowPacedFaqs,
+      ...tour.faqs.filter((faq) => !faq.question.startsWith("How much does a 10-day")),
+    ],
   };
 }

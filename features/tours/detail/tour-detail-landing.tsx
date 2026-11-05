@@ -365,6 +365,29 @@ export function TourDetailLanding({
                 </p>
               </section>
 
+              {model.pricingBlock && (
+                <section id="pricing" className={styles.priceBlock} aria-labelledby="pricing-title">
+                  <p className={styles.priceEyebrow}>{model.pricingBlock.eyebrow}</p>
+                  <h2 id="pricing-title" className={styles.priceHeadline}>
+                    <span>Starting from</span>
+                    <b>{model.pricingBlock.from}</b>
+                    <span>/ {model.pricingBlock.unit.replace("per ", "")}</span>
+                  </h2>
+                  <p className={styles.priceNote}>{model.pricingBlock.note}</p>
+                  <dl className={styles.priceFactors}>
+                    {model.pricingBlock.factors.map((factor) => (
+                      <div key={factor.title}>
+                        <dt>{factor.title}</dt>
+                        <dd>{factor.body}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className={styles.priceRange}>
+                    Typical range: <b>{model.pricingBlock.range}</b>
+                  </p>
+                </section>
+              )}
+
               <GuestVoice topic={isDayTour ? "transport" : "hotels"} count={2} seed={model.slug} />
 
               {model.guideProfile && (

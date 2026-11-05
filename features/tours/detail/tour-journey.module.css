@@ -880,3 +880,87 @@
     gap: 32px;
   }
 }
+
+/* Pricing transparency block. Black, white and gray only. */
+.priceBlock {
+  display: grid;
+  gap: 18px;
+  padding: clamp(28px, 4vw, 44px);
+  border: 1px solid var(--color-ink);
+  background: #fff;
+}
+.priceEyebrow {
+  margin: 0;
+  color: var(--stone);
+  font-family: var(--label);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.priceHeadline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 14px;
+  margin: 0;
+  font-weight: 400;
+}
+.priceHeadline span {
+  color: var(--stone);
+  font-size: 1.125rem;
+}
+.priceHeadline b {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.priceNote {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--color-copy);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.priceFactors {
+  display: grid;
+  gap: 0;
+  margin: 6px 0 0;
+  border-top: 1px solid var(--line);
+}
+.priceFactors > div {
+  display: grid;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.priceFactors dt {
+  font-size: 1.0625rem;
+  font-weight: 500;
+}
+.priceFactors dd {
+  margin: 0;
+  color: var(--stone);
+  line-height: 1.5;
+}
+@media (min-width: 900px) {
+  .priceFactors {
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 0;
+    gap: 32px;
+  }
+  .priceFactors > div {
+    border-top: 1px solid var(--color-ink);
+    border-bottom: 0;
+  }
+}
+.priceRange {
+  margin: 0;
+  color: var(--stone);
+  font-size: 0.9375rem;
+}
+.priceRange b {
+  color: var(--color-ink);
+  font-weight: 500;
+}

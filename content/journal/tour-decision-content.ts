@@ -482,7 +482,7 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
       {
         title: "What nine days can do well",
         paragraphs: [
-          "The [9-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-9-day-tour) creates a clean historical arc: Beijing for imperial sites and the Great Wall, Xi'an for the first emperor and city-wall heritage, then Shanghai for the modern waterfront and neighborhood life. High-speed rail connects the city centers without adding a fourth hotel.",
+          "[Our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-9-day-tour) creates a clean historical arc: Beijing for imperial sites and the Great Wall, Xi'an for the first emperor and city-wall heritage, then Shanghai for the modern waterfront and neighborhood life. High-speed rail connects the city centers without adding a fourth hotel.",
           "Nine days is enough when flights are sensible and priorities are disciplined. It is not enough for every Beijing museum, a deep Xi'an food program and multiple Shanghai day trips. The route works because each city has a clear role and optional experiences remain genuinely optional.",
         ],
       },

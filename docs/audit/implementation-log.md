@@ -199,3 +199,11 @@ Per `claude_code_optimization_spec (1).md` / `(2).md` (identical): the tour is *
 - Updated everywhere it appears: catalog (10 days / 9 nights, recommended days 10), home and destination cards (including ISO duration), cross-sell cards on other tours, FAQ (cost, "Is 10 days enough"), inquiry texts, mailto/WhatsApp, llms.txt, journal prose (about 60 lines), the three senior-article anchors now read "our 10-day senior-friendly private tour". Slugs and URLs were protected and not changed.
 - Test expectation updated from "9 Days" to "10 Days". tsc, eslint, 41 tests, journal audits, structured-data audit, build; 185 URLs return 200 with no prices and no remaining 9-day wording for this tour.
 - Not touched: the article comparing "9 days or 11 days in China" keeps its own 9-vs-11 framing (and the 11-day product is now 12 days); the spec's long meta title and description were shortened.
+
+---
+
+# Follow-up (2026-11-05)
+
+- Owner supplied verified pricing for the 10-day tour: **Starting from $3,800 per person**, range **$3,800–$6,500 per person**, varying by hotel selection, season and party size. Shown only on `/tours/beijing-xian-shanghai-private-9-day-tour` (new "Pricing transparency" block, black/white/gray) and in a new first FAQ "How much does this 10-Day Private Golden Triangle Tour cost?" (in the FAQPage schema; the old generic cost FAQ was removed). All other journeys remain "Individually priced"; no Offer schema was added.
+- The "9 days or 11 days in China" article keeps its framework; its product anchor is now "Our 10-day senior-friendly private tour" pointing at the 10-day page.
+- The two over-long SEO titles are fixed by overrides (the audit counts HTML-escaped length, so `&` costs 5 characters). `audit:seo` now passes for all 185 URLs.

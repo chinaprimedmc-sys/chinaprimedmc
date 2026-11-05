@@ -166,6 +166,10 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
 const journeySeoTitleOverrides: Record<string, string> = {
   "beijing-xian-shanghai-private-9-day-tour":
     "Slow-Paced Beijing Xi'an Shanghai 10-Day Private Tour",
+  // 站点审计按 HTML 转义后的长度计数（& 会变成 &amp;），含 & 的标题要留出余量。
+  "chengdu-chongqing-zhangjiajie-private-11-day-tour":
+    "Chengdu, Chongqing & Zhangjiajie 11-Day Private Tour",
+  "shanghai-zhangjiajie-floating-peaks": "Shanghai & Zhangjiajie Floating Mountains 8-Day Tour",
 };
 
 export function getJourneySeoTitle(item: JourneyCatalogItem) {

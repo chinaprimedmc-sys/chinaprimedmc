@@ -59,6 +59,7 @@ export type TourDetailModel = {
   planningSupport?: Tour["planningSupport"];
   guideProfile?: Tour["guideProfile"];
   seniorStandard?: Tour["seniorStandard"];
+  pricingBlock?: Tour["pricingBlock"];
   faqLimit?: number;
   experienceCards: TourExperienceCard[];
   optionalExperiences?: Tour["optionalExperiences"];
@@ -159,6 +160,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     planningSupport: tour.planningSupport,
     guideProfile: tour.guideProfile,
     seniorStandard: tour.seniorStandard,
+    pricingBlock: tour.pricingBlock,
     faqLimit: tour.faqLimit,
     experienceCards: createExperienceCards(tour),
     optionalExperiences: tour.optionalExperiences,

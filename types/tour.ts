@@ -65,6 +65,15 @@ export type TourSeniorStandard = {
   dining: Array<{ title: string; body: string }>;
 };
 
+export type TourPricingBlock = {
+  eyebrow: string;
+  from: string;
+  unit: string;
+  range: string;
+  note: string;
+  factors: Array<{ title: string; body: string }>;
+};
+
 export type TourAccommodation = {
   name: string;
   destination: string;
@@ -177,6 +186,7 @@ export type Tour = {
   guideProfile?: TourGuideProfile;
   faqLimit?: number;
   seniorStandard?: TourSeniorStandard;
+  pricingBlock?: TourPricingBlock;
   highlights: TourHighlight[];
   itinerary: TourItineraryDay[];
   accommodations: TourAccommodation[];
