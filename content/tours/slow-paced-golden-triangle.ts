@@ -364,9 +364,10 @@ export const seniorStandard = {
 
 export const pricingBlock = {
   eyebrow: "Pricing transparency",
-  from: "$3,800",
+  from: "US$3,800",
   unit: "per person",
-  range: "$3,800–$6,500 per person",
+  range: "US$3,800–US$6,500 per person",
+  currencyNote: "All prices are in US dollars (USD)",
   note: "Pricing varies with your hotel selection, the season you travel and your party size, for example a couple compared with a multi-generational family. Your written proposal sets the exact price for your dates before you pay.",
   factors: [
     {
@@ -388,7 +389,7 @@ export const slowPacedFaqs: TourFaq[] = [
   {
     question: "How much does this 10-Day Private Golden Triangle Tour cost?",
     answer:
-      "Pricing ranges from $3,800 to $6,500 per person, and the tour starts from $3,800 per person. Where you land in that range depends on your hotel selection, the season you travel and your party size, for example a couple compared with a multi-generational family. The price includes nine nights in central hotels (three in Beijing, three in Xi'an, three in Shanghai), private guiding in every city, door-to-door Mercedes vans, First Class bullet trains with luggage-free station transfers, the VIP airport welcome and departure escort, the gondola, electric carts, cruises and private boats listed in the itinerary, and the 24/7 international medical channel. International flights, visa fees, travel insurance, meals not listed in your proposal and personal expenses are not included. Your written proposal sets the exact price for your dates before you pay.",
+      "Pricing ranges from US$3,800 to US$6,500 per person (all prices are in US dollars), and the tour starts from US$3,800 per person. Where you land in that range depends on your hotel selection, the season you travel and your party size, for example a couple compared with a multi-generational family. The price includes nine nights in central hotels (three in Beijing, three in Xi'an, three in Shanghai), private guiding in every city, door-to-door Mercedes vans, First Class bullet trains with luggage-free station transfers, the VIP airport welcome and departure escort, the gondola, electric carts, cruises and private boats listed in the itinerary, and the 24/7 international medical channel. International flights, visa fees, travel insurance, meals not listed in your proposal and personal expenses are not included. Your written proposal sets the exact price for your dates before you pay.",
   },
   {
     question: "Is this Beijing, Xi'an and Shanghai tour suitable for seniors?",

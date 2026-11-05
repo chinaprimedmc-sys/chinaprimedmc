@@ -70,6 +70,7 @@ export type TourPricingBlock = {
   from: string;
   unit: string;
   range: string;
+  currencyNote: string;
   note: string;
   factors: Array<{ title: string; body: string }>;
 };

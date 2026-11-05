@@ -15,7 +15,7 @@ import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { journeyTiers } from "@/content/tours/tiers";
-import { EnquirySection } from "@/components/forms/enquiry-section";
+import { InlineEnquiryForm } from "@/components/forms/inline-enquiry-form";
 import { GuestVoice, TrustLine } from "@/components/trust/trust";
 import { JourneyTile } from "@/components/tours/journey-tile";
 import { buildExplorerItem } from "@/lib/tours/journey-explorer-items";
@@ -48,9 +48,11 @@ export function TourDetailLanding({
       src: model.heroImage.src,
       alt: model.heroImage.alt,
     };
-  const price = model.price?.fromUsd
-    ? `US$${model.price.fromUsd.toLocaleString("en-US")}`
-    : "Individually priced";
+  const price = model.pricingBlock
+    ? `From ${model.pricingBlock.from}`
+    : model.price?.fromUsd
+      ? `US$${model.price.fromUsd.toLocaleString("en-US")}`
+      : "Individually priced";
   const catalogItem = journeyCatalog.find((item) => item.slug === model.slug);
   const tier = journeyTiers[model.slug as keyof typeof journeyTiers];
   const adjustableNote =
@@ -373,6 +375,7 @@ export function TourDetailLanding({
                     <b>{model.pricingBlock.from}</b>
                     <span>/ {model.pricingBlock.unit.replace("per ", "")}</span>
                   </h2>
+                  <p className={styles.priceCurrency}>{model.pricingBlock.currencyNote}</p>
                   <p className={styles.priceNote}>{model.pricingBlock.note}</p>
                   <dl className={styles.priceFactors}>
                     {model.pricingBlock.factors.map((factor) => (
@@ -429,28 +432,48 @@ export function TourDetailLanding({
             </div>
 
             <aside className={styles.booking} id="enquiry" aria-label="Plan this journey">
-              <p className={styles.bookingFrom}>
-                {model.price?.fromUsd
-                  ? `From · ${model.price.pricingUnit === "private-group" ? "per private group" : "per person"}`
-                  : "Pricing"}
-              </p>
-              <div className={styles.price}>
-                <JourneyPrice fallback={price} journeySlug={model.slug} />
+              {model.pricingBlock ? (
+                <>
+                  <p className={styles.bookingFrom}>Starting from</p>
+                  <div className={styles.price}>
+                    <strong>{model.pricingBlock.from}</strong>
+                    <small>
+                      {model.pricingBlock.unit} · {model.pricingBlock.currencyNote}
+                    </small>
+                  </div>
+                  <p className={styles.basis}>{model.pricingBlock.note}</p>
+                  <a className={styles.priceLink} href="#pricing">
+                    See what moves the price
+                  </a>
+                </>
+              ) : (
+                <>
+                  <p className={styles.bookingFrom}>
+                    {model.price?.fromUsd
+                      ? `From · ${model.price.pricingUnit === "private-group" ? "per private group" : "per person"}`
+                      : "Pricing"}
+                  </p>
+                  <div className={styles.price}>
+                    <JourneyPrice fallback={price} journeySlug={model.slug} />
+                  </div>
+                  <p className={styles.basis}>
+                    {model.price?.basis ?? "Prepared around your dates"}
+                  </p>
+                  {adjustableNote ? <p className={styles.basis}>{adjustableNote}</p> : null}
+                  <details className={styles.priceDetails}>
+                    <summary>How this price is set</summary>
+                    <p>
+                      {model.price?.detail ?? "The final proposal confirms the exact services."}
+                    </p>
+                    <p>{model.price?.note ?? "No payment is required to send an enquiry."}</p>
+                    {model.price?.additionalNote ? <p>{model.price.additionalNote}</p> : null}
+                  </details>
+                </>
+              )}
+              <div className={styles.bookingForm}>
+                <p className={styles.bookingFormTitle}>Tell us about your trip</p>
+                <InlineEnquiryForm placement="tour-detail-aside" />
               </div>
-              <p className={styles.basis}>{model.price?.basis ?? "Prepared around your dates"}</p>
-              {adjustableNote ? <p className={styles.basis}>{adjustableNote}</p> : null}
-              <details className={styles.priceDetails}>
-                <summary>How this price is set</summary>
-                <p>{model.price?.detail ?? "The final proposal confirms the exact services."}</p>
-                <p>{model.price?.note ?? "No payment is required to send an enquiry."}</p>
-                {model.price?.additionalNote ? <p>{model.price.additionalNote}</p> : null}
-              </details>
-              <Link
-                className={styles.button}
-                href={`/start-planning?journey=${encodeURIComponent(model.slug)}`}
-              >
-                Plan this journey
-              </Link>
               <JourneyWhatsAppAction
                 baseHref={model.whatsappHref}
                 journeySlug={model.slug}
@@ -512,13 +535,6 @@ export function TourDetailLanding({
           </section>
         </div>
 
-        <EnquirySection
-          placement="tour-detail"
-          tone="stone"
-          title={detailCopy.bookingTitle}
-          intro={detailCopy.bookingNote}
-          journeyTitle={model.displayTitle}
-        />
         <p className={styles.seeAll}>
           <Link href="/tours">See every journey</Link>
         </p>
