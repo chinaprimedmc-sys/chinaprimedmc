@@ -7,6 +7,10 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "best-time-to-visit-china-for-seniors": {
+    title: "Best Time to Visit China for Seniors: Avoid Crowds, Heat and Peak Seasons",
+    seoTitle: "Best Time to Visit China for Senior Travelers",
+  },
   "best-places-china-senior-travelers": {
     title: "Best Places to Visit in China for Senior Travelers: An Honest Comparison",
     seoTitle: "Best Places to Visit in China for Senior Travelers",

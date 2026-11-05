@@ -531,4 +531,59 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "The 10-day senior-friendly tour covers the three lowest-strain cities with the pacing rules described here.",
     },
   },
+  {
+    slug: "best-time-to-visit-china-for-seniors",
+    title: "Best Time to Visit China for Seniors: Avoid Crowds, Heat and Peak Seasons",
+    dek: "Spring and autumn windows, the holiday dates to avoid and how the season changes the daily plan for older travelers.",
+    excerpt:
+      "When to go, and when not to, for comfortable weather and manageable crowds on a senior-friendly trip to China in 2027.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "best-time", "private-guides"],
+    author,
+    publishedAt: "2026-11-05",
+    updatedAt: "2026-11-05",
+    lastFactCheckedAt: "2026-11-05",
+    readingTime: "6 min read",
+    hero: { image: textHeroImage, eyebrow: "Choose the season first", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Best Time to Visit China for Senior Travelers",
+      description:
+        "The best time to visit China for seniors: spring and autumn windows, holiday crowds and summer heat to avoid, and how to plan comfortable days in 2027.",
+      keywords: [
+        "best time to visit china for seniors",
+        "best time to visit china elderly",
+        "china weather for older travelers",
+        "avoid golden week china seniors",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      articles: ["slow-paced-china-tour-for-seniors", "best-places-china-senior-travelers"],
+    },
+    conversion: {
+      eyebrow: "Plan it around your parents",
+      title: "Choose dates that suit your family",
+      description:
+        "Share your preferred months, who is traveling and how much walking is comfortable. We will review the timing and confirm the pacing in writing.",
+      label: "Check my travel dates",
+      href: "/start-planning?source=audience-best-time-seniors",
+    },
+    sourcePath: "content/journal/articles/2026-08-20-best-time-to-visit-china-for-seniors.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Spring (April to May) and autumn (September to November, especially after Golden Week) are usually the most comfortable for senior travelers; avoid national holidays and the July and August heat.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Travelers choosing dates for a first China trip",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour can be scheduled in the spring and autumn windows described here.",
+    },
+  },
 ];
