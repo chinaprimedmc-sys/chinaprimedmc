@@ -278,6 +278,12 @@ const strategyGroups: Array<{
         "China travel accessibility for seniors",
         1,
       ],
+      [
+        "china-senior-travel-dining-hotels-comfort-guide",
+        "plan",
+        "senior friendly China travel",
+        1,
+      ],
       ["china-tour-cost-for-seniors", "evaluate", "China tour cost for seniors", 1],
       [
         "best-time-to-visit-china-for-seniors",

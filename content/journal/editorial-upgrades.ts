@@ -7,6 +7,10 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "china-senior-travel-dining-hotels-comfort-guide": {
+    title: "Senior-Friendly China Travel: Dining, Hotel Selection & Comfort Rules",
+    seoTitle: "Senior-Friendly China Travel: Dining & Hotel Comfort",
+  },
   "china-travel-accessibility-senior-health-guide": {
     title: "China Travel Accessibility & Health: Wheelchairs, Mobility & Medical Peace of Mind",
     seoTitle: "China Travel Accessibility & Health for Seniors",

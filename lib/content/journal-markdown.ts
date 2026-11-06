@@ -76,6 +76,7 @@ import bestTimeSeniorsMarkdown from "@/content/journal/articles/2026-08-20-best-
 import tourCostSeniorsMarkdown from "@/content/journal/articles/2026-08-20-china-tour-cost-for-seniors.md";
 import elderlyParentsPacingMarkdown from "@/content/journal/articles/2026-11-06-china-travel-with-elderly-parents-pacing-guide.md";
 import accessibilityHealthMarkdown from "@/content/journal/articles/2026-11-06-china-travel-accessibility-senior-health-guide.md";
+import diningHotelsComfortMarkdown from "@/content/journal/articles/2026-11-06-china-senior-travel-dining-hotels-comfort-guide.md";
 import greatWallStairsMarkdown from "@/content/journal/articles/2026-11-05-how-to-visit-great-wall-without-climbing-stairs.md";
 import slowPacedGuideMarkdown from "@/content/journal/articles/2026-11-05-slow-paced-china-tour-for-seniors-itinerary-guide.md";
 import elderlySafetyMarkdown from "@/content/journal/articles/2026-11-05-is-china-safe-for-elderly-travelers-senior-care-guide.md";
@@ -137,6 +138,8 @@ const fullFrameImageMetadata: Record<string, { width: number; height: number; fi
 };
 
 const bundledMarkdown: Record<string, string> = {
+  "content/journal/articles/2026-11-06-china-senior-travel-dining-hotels-comfort-guide.md":
+    diningHotelsComfortMarkdown,
   "content/journal/articles/2026-11-06-china-travel-accessibility-senior-health-guide.md":
     accessibilityHealthMarkdown,
   "content/journal/articles/2026-11-06-china-travel-with-elderly-parents-pacing-guide.md":

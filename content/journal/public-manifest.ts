@@ -14,6 +14,7 @@ export const PUBLIC_JOURNAL_SLUGS = [
   "china-tour-cost-for-seniors",
   "china-travel-with-elderly-parents-pacing-guide",
   "china-travel-accessibility-senior-health-guide",
+  "china-senior-travel-dining-hotels-comfort-guide",
   "how-to-visit-great-wall-without-climbing-stairs",
   "slow-paced-china-tour-for-seniors-itinerary-guide",
   "is-china-safe-for-elderly-travelers-senior-care-guide",

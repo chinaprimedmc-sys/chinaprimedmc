@@ -756,4 +756,60 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "The 10-day senior-friendly tour is paced around low-step transfers and a 3:30 PM hotel return.",
     },
   },
+  {
+    slug: "china-senior-travel-dining-hotels-comfort-guide",
+    title: "Senior-Friendly China Travel: Dining, Hotel Selection & Comfort Rules",
+    dek: "How to plan food, hotel rooms, water and daily support so a China trip with aging parents stays comfortable.",
+    excerpt:
+      "Practical comfort rules for older travelers in China: regional food, dietary briefings, hotel room features and what a private guide adds.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "dining", "hotels"],
+    author,
+    publishedAt: "2026-11-06",
+    updatedAt: "2026-11-06",
+    lastFactCheckedAt: "2026-11-06",
+    readingTime: "6 min read",
+    hero: { image: textHeroImage, eyebrow: "Plan the small comforts first", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Senior-Friendly China Travel: Dining & Hotel Comfort",
+      description:
+        "How to manage dietary needs, choose hotel rooms for older travelers, keep water and restrooms covered, and plan a comfortable China trip for aging parents.",
+      keywords: [
+        "senior friendly china travel",
+        "china food for seniors",
+        "accessible hotels china seniors",
+        "china trip comfort elderly parents",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      articles: ["china-travel-accessibility-senior-health-guide", "china-trip-with-older-parents"],
+    },
+    conversion: {
+      eyebrow: "Plan it around your parents",
+      title: "Share your dietary and comfort needs",
+      description:
+        "Tell us about meals, room needs and pacing. We will confirm in writing how each is handled on every day of the trip.",
+      label: "Share our comfort needs",
+      href: "/start-planning?source=audience-dining-hotels-comfort",
+    },
+    sourcePath:
+      "content/journal/articles/2026-11-06-china-senior-travel-dining-hotels-comfort-guide.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "prepare",
+      keyAnswer:
+        "Give dietary needs to your planner in writing, ask for the exact hotel room type (walk-in shower, grab bars, quiet room) and plan water, restrooms and rest into every day; confirm each in writing.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Travelers with dietary needs",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour includes a culinary concierge, checked restrooms and a 3:30 PM hotel return.",
+    },
+  },
 ];
