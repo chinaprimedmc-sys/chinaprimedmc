@@ -901,3 +901,42 @@
     min-height: 44px;
   }
 }
+
+/* ---------- mobile polish: tab bar, spacing ---------- */
+@media (max-width: 1179px) {
+  .controls {
+    z-index: 45;
+  }
+  .controls .wrap {
+    min-height: 0;
+    padding-block: 12px 10px;
+  }
+  .tabs {
+    position: relative;
+    gap: 8px;
+    padding: 0 28px 0 0;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent);
+  }
+  .tab {
+    min-height: 44px;
+    padding: 0 18px;
+    border-color: var(--line-strong);
+    scroll-snap-align: start;
+  }
+  .tab[aria-selected="true"] {
+    border-color: var(--ink);
+  }
+}
+
+/* The phone header is 56px tall, 8px shorter than the shared offset; close the gap so images never show above the bar. */
+@media (max-width: 767px) {
+  .controls {
+    top: calc(var(--site-nav-offset) - 0.5rem);
+    background: #fff;
+    /* Paint white above the bar so no photo shows through when the header slides away. */
+    box-shadow: 0 -64px 0 #fff;
+  }
+}

@@ -195,3 +195,50 @@
     transition: none !important;
   }
 }
+
+/* ---------- mobile card polish ---------- */
+@media (max-width: 699px) {
+  .card {
+    border-radius: 10px;
+  }
+  .cardMedia {
+    aspect-ratio: 4 / 3;
+  }
+  .chip {
+    top: 12px;
+    bottom: auto;
+    left: 12px;
+    padding: 6px 12px;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+  .cardBody {
+    gap: 10px;
+    padding: 18px 18px 18px;
+  }
+  .cardBody h3 {
+    font-size: 25px;
+    line-height: 1.22;
+  }
+  .highlights {
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .highlights li {
+    line-height: 1.5;
+  }
+  .cardFoot {
+    min-height: 48px;
+    padding-top: 16px;
+  }
+  .cardPrice strong {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  .cardGo {
+    min-height: 48px;
+    padding: 0 22px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}
