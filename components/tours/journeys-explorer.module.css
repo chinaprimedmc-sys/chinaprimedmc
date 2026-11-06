@@ -931,12 +931,19 @@
   }
 }
 
-/* The phone header is 56px tall, 8px shorter than the shared offset; close the gap so images never show above the bar. */
+/* Phone: the header is 56px and slides away on scroll-down. The filter bar sits right under it and slides up with it, so they never overlap or leave a gap. */
 @media (max-width: 767px) {
   .controls {
-    top: calc(var(--site-nav-offset) - 0.5rem);
+    top: 56px;
     background: #fff;
-    /* Paint white above the bar so no photo shows through when the header slides away. */
-    box-shadow: 0 -64px 0 #fff;
+    transition: top 260ms ease;
+  }
+  :global(html[data-nav-hidden="true"]) .controls {
+    top: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .controls {
+    transition: none;
   }
 }

@@ -37,6 +37,16 @@ export function GlobalHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
 
+  // 让页面里的吸顶工具条（如 Journeys 筛选）知道顶栏是否收起，跟着上移或下移，避免互相遮挡。
+  useEffect(() => {
+    const hidden = isHidden && !isMenuOpen;
+    if (hidden) document.documentElement.dataset.navHidden = "true";
+    else delete document.documentElement.dataset.navHidden;
+    return () => {
+      delete document.documentElement.dataset.navHidden;
+    };
+  }, [isHidden, isMenuOpen]);
+
   useEffect(() => {
     let frameId = 0;
     let lastY = window.scrollY;
