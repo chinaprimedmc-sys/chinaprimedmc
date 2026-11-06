@@ -12,7 +12,7 @@ import {
   getJourneyCardTitle,
   getJourneyHeadline,
 } from "@/content/tours/card-copy";
-import { journeyCatalog, type JourneyCatalogItem } from "@/content/tours/catalog";
+import { journeyCatalogByPriority, type JourneyCatalogItem } from "@/content/tours/catalog";
 import { journeyPhotos } from "@/content/tours/journeys-curation";
 import { journeyTags } from "@/content/tours/journey-tags";
 import { journeyTiers } from "@/content/tours/tiers";
@@ -23,8 +23,6 @@ const tierLabels: Record<JourneyTier, string> = {
   signature: "Signature Journey",
   "tailor-made-example": "Tailor-Made example",
 };
-const tierOrder: Record<JourneyTier, number> = { day: 0, signature: 1, "tailor-made-example": 2 };
-
 export function shortDuration(label: string) {
   const hours = label.match(/(\d+(?:[–-]\d+)?)\s*hours?/i);
   if (hours) return `${/about/i.test(label) ? "~" : ""}${hours[1]} hours`;
@@ -98,7 +96,5 @@ export function buildExplorerItem(item: JourneyCatalogItem): ExplorerItem {
 }
 
 export function buildExplorerItems(): ExplorerItem[] {
-  return journeyCatalog
-    .map(buildExplorerItem)
-    .sort((a, b) => tierOrder[a.tier] - tierOrder[b.tier] || a.days - b.days);
+  return journeyCatalogByPriority.map(buildExplorerItem);
 }

@@ -11,7 +11,7 @@ import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { JourneysPage } from "@/components/tours/journeys-page";
 import { siteConfig } from "@/config/site";
-import { journeyCatalog } from "@/content/tours/catalog";
+import { journeyCatalogByPriority } from "@/content/tours/catalog";
 import {
   getJourneyCardDescription,
   getJourneyCardTitle,
@@ -26,7 +26,7 @@ export async function JourneyDiscoveryPage({
 }: {
   initialQueryString?: string;
 }) {
-  const catalog = journeyCatalog;
+  const catalog = journeyCatalogByPriority;
   const path = "/tours";
   const pageUrl = new URL(path, siteConfig.url).toString();
   const name = "Private China Tours, 1 to 13 Days: Tailor-Made Itineraries | AVIORA";

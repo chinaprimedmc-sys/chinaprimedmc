@@ -1721,6 +1721,11 @@ export const journeyCatalog: JourneyCatalogItem[] = publicJourneySlugs.map((slug
   return journey;
 });
 
+export const journeyCatalogByPriority = [...journeyCatalog].sort(
+  (a, b) =>
+    b.commercialPriority - a.commercialPriority || a.recommendedDaysMax - b.recommendedDaysMax,
+);
+
 function buildDiscoveryData(
   journey: JourneyCatalogBase,
   commercial: (typeof commercialDetails)[string],

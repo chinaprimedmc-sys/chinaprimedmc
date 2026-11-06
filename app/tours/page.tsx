@@ -5,7 +5,7 @@
 
 import type { Metadata } from "next";
 
-import { journeyCatalog } from "@/content/tours/catalog";
+import { journeyCatalogByPriority } from "@/content/tours/catalog";
 import { JourneyDiscoveryPage } from "@/features/tours/journey-discovery-page";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -41,7 +41,7 @@ export default async function ToursPage({
           about: { "@id": `${siteConfig.url}/#organization` },
           mainEntity: {
             "@type": "ItemList",
-            itemListElement: journeyCatalog.map((journey, index) => ({
+            itemListElement: journeyCatalogByPriority.map((journey, index) => ({
               "@type": "ListItem",
               position: index + 1,
               name: journey.title,
