@@ -154,6 +154,18 @@ export function TourDetailLanding({
                 <dd>{fact("Pace")}</dd>
               </div>
             )}
+            {catalogItem?.styleFilters.includes("Senior-friendly") && (
+              <div>
+                <dt>Suitability</dt>
+                <dd>Senior-friendly</dd>
+              </div>
+            )}
+            {catalogItem?.planningNeedFilters.includes("mobility-aware") && (
+              <div>
+                <dt>Mobility</dt>
+                <dd>Mobility-aware</dd>
+              </div>
+            )}
             <div>
               <dt>{isDayTour ? "Pickup" : "Hotels"}</dt>
               <dd>

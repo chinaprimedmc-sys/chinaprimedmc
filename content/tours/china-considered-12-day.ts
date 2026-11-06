@@ -120,6 +120,9 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.beijing,
       meals: ["Hotel breakfast begins the following morning", "Optional light dinner"],
       transport: "Private airport transfer with arrival support",
+      transit: "Private airport-to-hotel transfer; duration depends on airport, hotel and traffic.",
+      steps: "Estimated 500–1,500 steps, depending on terminal and optional walk.",
+      rest: "Hotel rest after check-in; no scheduled sightseeing.",
       activities: [
         {
           title: "A protected arrival",
@@ -144,6 +147,10 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.beijing,
       meals: ["Breakfast", "Selected lunch"],
       transport: "Private vehicle and private guide",
+      transit:
+        "Private hotel-to-Temple of Heaven transfers; drive time depends on hotel and traffic.",
+      steps: "Estimated 3,000–6,000 steps; park route can be shortened.",
+      rest: "Return to the hotel after the morning visit; afternoon left free.",
       activities: [
         {
           title: "Morning tai chi with a local teacher",
@@ -169,6 +176,8 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.beijing,
       meals: ["Breakfast", "Selected lunch"],
       transport: "Private vehicle, timed entry and private guide",
+      transit: "Private hotel transfers; palace visit is on foot with a selected route.",
+      steps: "Estimated 5,000–8,000 steps; actual distance depends on the open route and access.",
       activities: [
         {
           title: "A specialist-led palace narrative",
@@ -195,6 +204,10 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.beijing,
       meals: ["Breakfast", "Selected lunch near Mutianyu"],
       transport: "Private vehicle, private guide and suitable cable-car plan",
+      transit:
+        "Private road transfer between Beijing and Mutianyu; allow roughly 1.5–2 hours each way, subject to hotel location and traffic.",
+      steps:
+        "Estimated 3,000–6,000 steps; Wall terrain and chosen cable-car access affect distance.",
       activities: [
         {
           title: "Mutianyu Great Wall",
@@ -209,6 +222,7 @@ export const chinaConsidered12DayTour: Tour = {
       ],
       guideNote:
         "Uneven paving and steps remain; cable-car access reduces effort but does not remove it.",
+      rest: "No second major visit is scheduled after returning to Beijing; return time depends on the chosen Wall route and traffic.",
       coordinates: { latitude: 40.4319, longitude: 116.5704 },
     },
     {
@@ -221,6 +235,11 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.beijing,
       meals: ["Breakfast", "Meals arranged around the selected option"],
       transport: "Private vehicle available for the confirmed option",
+      transit:
+        "Private city transfers only for the selected outing; no transfer on a full rest day.",
+      steps:
+        "Estimated 0–5,000 steps depending on whether you rest, visit a courtyard or take a short garden route.",
+      rest: "Full hotel-rest option available; outing return time set with the selected plan.",
       activities: [
         {
           title: "Option A: Summer Palace by water and garden",
@@ -251,6 +270,10 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.xian,
       meals: ["Breakfast", "Meals at leisure during the transition"],
       transport: "Private transfers plus Beijing–Xi'an first-class high-speed rail",
+      transit:
+        "Private hotel/station transfers plus first-class high-speed rail; train schedule and drive times confirmed for travel date.",
+      steps: "Estimated 1,500–3,500 steps across hotel, stations and transfers.",
+      rest: "Evening free after hotel check-in; no sightseeing scheduled.",
       activities: [
         {
           title: "A managed transition",
@@ -275,6 +298,10 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.xian,
       meals: ["Breakfast", "Curated Xi'an lunch"],
       transport: "Private vehicle and private guide",
+      transit:
+        "Private transfers between the hotel, selected City Wall access, studio and dining stop; timing depends on final sequence.",
+      steps:
+        "Estimated 3,500–6,500 steps; City Wall section and food-street visit can be shortened.",
       activities: [
         {
           title: "City Wall at the gentler hour",
@@ -306,6 +333,11 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.xian,
       meals: ["Breakfast", "Selected lunch"],
       transport: "Private vehicle and private guide",
+      transit:
+        "Xi'an hotel to Terracotta Army by private vehicle; allow about 1 hour each way, subject to traffic, plus site transfers.",
+      steps:
+        "Estimated 5,000–8,000 steps; museum route and standing time vary by crowding and selected pits.",
+      rest: "Return to the Xi'an hotel after the museum and workshop; arrival time depends on site conditions and traffic.",
       activities: [
         {
           title: "Terracotta Army",
@@ -332,6 +364,11 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.shanghai,
       meals: ["Breakfast", "Meals at leisure during the transition"],
       transport: "Private airport transfers plus nonstop Xi'an–Shanghai economy flight",
+      transit:
+        "Private airport transfers and nonstop flight; flight schedule and road times confirmed for travel date.",
+      steps:
+        "Estimated 1,500–3,500 steps across hotels, airports and transfers; optional Bund walk adds distance.",
+      rest: "Hotel rest after check-in; Bund visit remains optional.",
       activities: [
         {
           title: "Daytime flight strategy",
@@ -358,6 +395,9 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.shanghai,
       meals: ["Breakfast", "Selected lunch"],
       transport: "Private vehicle and private guide",
+      transit:
+        "Private vehicle between selected Bund and neighborhood stops; walking route adjusted to the group.",
+      steps: "Estimated 3,000–6,000 steps depending on the Bund and neighborhood route.",
       activities: [
         {
           title: "The Bund with an architecture specialist",
@@ -384,6 +424,10 @@ export const chinaConsidered12DayTour: Tour = {
       hotel: hotelByCity.shanghai,
       meals: ["Breakfast", "Farewell dinner"],
       transport: "Private service matched to the chosen option",
+      transit:
+        "Private transfers only for the selected outing; exact routing depends on the confirmed option.",
+      steps: "Estimated 0–5,000 steps depending on rest, market visit or cultural option.",
+      rest: "Full hotel-rest option available; outing return time set with the selected plan.",
       activities: [
         {
           title: "Option A: Art and architecture",
@@ -419,6 +463,9 @@ export const chinaConsidered12DayTour: Tour = {
       image: firstChinaAsset.shanghaiHuangpuSunset,
       meals: ["Breakfast"],
       transport: "Private airport transfer with departure support",
+      transit:
+        "Private hotel-to-airport transfer; pickup time is set from terminal, flight and traffic conditions.",
+      steps: "Estimated 500–1,500 steps, depending on hotel and airport terminal.",
       activities: [
         {
           title: "Protected departure",

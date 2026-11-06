@@ -124,7 +124,7 @@ export function TourDayItinerary({ days }: { days: TourDetailDay[] }) {
                 {day.guideInsight && (
                   <blockquote className={styles.insight}>{day.guideInsight}</blockquote>
                 )}
-                {(day.transit || day.steps) && (
+                {(day.transit || day.steps || day.rest) && (
                   <dl className={styles.dayMetrics}>
                     {day.transit && (
                       <div>
@@ -134,8 +134,14 @@ export function TourDayItinerary({ days }: { days: TourDetailDay[] }) {
                     )}
                     {day.steps && (
                       <div>
-                        <dt>Daily step budget</dt>
+                        <dt>Estimated walking</dt>
                         <dd>{day.steps}</dd>
+                      </div>
+                    )}
+                    {day.rest && (
+                      <div>
+                        <dt>Rest / hotel return</dt>
+                        <dd>{day.rest}</dd>
                       </div>
                     )}
                   </dl>

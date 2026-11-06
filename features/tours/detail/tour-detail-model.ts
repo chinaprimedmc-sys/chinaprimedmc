@@ -21,6 +21,7 @@ export type TourDetailDay = {
   guideInsight?: string;
   transit?: string;
   steps?: string;
+  rest?: string;
   image?: MediaAsset;
   experiences: Array<{ title: string; description: string; time?: string }>;
 };
@@ -215,6 +216,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
       guideInsight: day.guideNote,
       transit: day.transit,
       steps: day.steps,
+      rest: day.rest,
       image: tour.visualStatus === "pending" ? undefined : day.image,
       experiences: day.activities.map((activity) => ({
         title: activity.title,

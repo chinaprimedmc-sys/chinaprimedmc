@@ -47,6 +47,8 @@ export type TourItineraryDay = {
   transit?: string;
   /** 当天的步数预算上限。 */
   steps?: string;
+  /** Rest interval or planned hotel return, when confirmed for the itinerary. */
+  rest?: string;
   coordinates?: {
     latitude: number;
     longitude: number;
