@@ -12,6 +12,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { HubSpotForm } from "./hubspot-form";
+import { FormContactFallback } from "./form-contact-fallback";
 
 export function LazyHubSpotForm({
   onVisible,
@@ -53,9 +54,10 @@ export function LazyHubSpotForm({
       {show ? (
         <HubSpotForm />
       ) : (
-        <p aria-live="polite" style={{ opacity: 0.6 }}>
-          Loading form…
-        </p>
+        <div aria-live="polite">
+          <p style={{ opacity: 0.6 }}>The enquiry form will load here.</p>
+          <FormContactFallback />
+        </div>
       )}
     </div>
   );

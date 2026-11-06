@@ -54,15 +54,6 @@ const travelStyleLinks = [
 
 const waysToTravel = [
   {
-    label: "Day experiences",
-    title: "One day, handled properly.",
-    body: "A private guide takes care of the tickets, the queues and the language, so you simply enjoy the Great Wall, the Terracotta Army or the pandas.",
-    cta: "Plan a day",
-    href: "/private-china-day-tours",
-    image: "/tours/mutianyu-private-day-tour/01-mutianyu-great-wall-autumn-panorama.webp",
-    alt: "The Mutianyu section of the Great Wall in autumn",
-  },
-  {
     label: "Signature journeys",
     title: "A proven route, shaped around you.",
     body: "Start from a private journey we have already refined, then adjust the dates, pace and hotels to your party.",
@@ -79,6 +70,15 @@ const waysToTravel = [
     href: "/tailor-made-china-tours",
     image: "/tours/luxury-yunnan-private-tour/erhai-landscape.jpg",
     alt: "Erhai Lake under a bright blue sky in Dali, Yunnan",
+  },
+  {
+    label: "Day extensions",
+    title: "Add a well-planned day locally.",
+    body: "Add a private Great Wall, Terracotta Army or panda day to a longer China itinerary, with a local guide, driver and confirmed tickets.",
+    cta: "Explore day tours",
+    href: "/private-china-day-tours",
+    image: "/tours/mutianyu-private-day-tour/01-mutianyu-great-wall-autumn-panorama.webp",
+    alt: "The Mutianyu section of the Great Wall in autumn",
   },
 ] as const;
 

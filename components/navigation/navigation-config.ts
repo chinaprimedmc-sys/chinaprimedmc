@@ -49,9 +49,9 @@ export const navigationConfig = {
       columns: [
         {
           links: [
-            { label: "Day Experiences", href: "/private-china-day-tours" },
             { label: "Signature Journeys", href: "/fixed-itinerary-china-tours" },
             { label: "Tailor-Made Journeys", href: "/tailor-made-china-tours" },
+            { label: "Day Extensions", href: "/private-china-day-tours" },
           ],
         },
         {
@@ -70,12 +70,12 @@ export const navigationConfig = {
         },
       ],
       featured: {
-        title: "Beijing in Five Days",
-        meta: "5 Days | Fully Private",
+        title: "Beijing, Xi'an & Shanghai",
+        meta: "10 Days | Signature Private Journey",
         label: "Explore Journey",
-        href: "/tours/beijing-great-wall-private-5-day-tour",
-        image: "/tours/beijing-unhurried/hero.webp",
-        imageAlt: "The Great Wall outside Beijing on a clear morning",
+        href: "/tours/beijing-xian-shanghai-private-10-day-tour",
+        image: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp",
+        imageAlt: "The Great Wall at sunrise on AVIORA's Beijing, Xi'an and Shanghai journey",
       },
     },
     {
