@@ -142,6 +142,7 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "are-china-group-tours-too-fast-for-seniors",
     "best-places-china-senior-travelers",
     "best-time-to-visit-china-for-seniors",
+    "china-tour-cost-for-seniors",
     "women-private-china-travel",
     "how-to-visit-great-wall-without-climbing-stairs",
     "slow-paced-china-tour-for-seniors-itinerary-guide",

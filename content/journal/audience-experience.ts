@@ -586,4 +586,59 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "The 10-day senior-friendly tour can be scheduled in the spring and autumn windows described here.",
     },
   },
+  {
+    slug: "china-tour-cost-for-seniors",
+    title: "China Tour Cost for Seniors (2027): Transparent Budget & Price Breakdown",
+    dek: "What drives the price of a senior-friendly private tour in China, where the money goes and what to check in cheaper offers.",
+    excerpt:
+      "A plain look at private tour costs for older travelers, with the verified 10-day starting price and the questions to ask any operator.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "tour-cost", "private-guides"],
+    author,
+    publishedAt: "2026-11-06",
+    updatedAt: "2026-11-06",
+    lastFactCheckedAt: "2026-11-06",
+    readingTime: "7 min read",
+    hero: { image: textHeroImage, eyebrow: "Know what you are paying for", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China Tour Cost for Seniors: Budget & Price Breakdown",
+      description:
+        "What a private China tour costs for senior travelers in 2027: what the price covers, what changes your quote and how to avoid hidden fees. 10-day tour from US$3,800.",
+      keywords: [
+        "china tour cost for seniors",
+        "private china tour cost elderly",
+        "china tour price for older travelers",
+        "china senior travel budget",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      articles: ["slow-paced-china-tour-for-seniors", "best-time-to-visit-china-for-seniors"],
+    },
+    conversion: {
+      eyebrow: "Plan it around your parents",
+      title: "Get a written price for your dates",
+      description:
+        "Share your dates, who is traveling and your preferred hotel level. We will send a written proposal with the full price before you pay.",
+      label: "Request a written quote",
+      href: "/start-planning?source=audience-cost-seniors",
+    },
+    sourcePath: "content/journal/articles/2026-08-20-china-tour-cost-for-seniors.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Our 10-day private Golden Triangle tour starts from US$3,800 per person and generally runs to US$6,500, depending on hotel, season and party size; the written proposal sets the exact price.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Travelers comparing private and group tour costs",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour shows its starting price and range openly.",
+    },
+  },
 ];

@@ -266,6 +266,7 @@ const strategyGroups: Array<{
       ],
       ["women-private-china-travel", "evaluate", "women traveling in China private support", 1],
       ["slow-paced-china-tour-for-seniors", "evaluate", "slow paced China tour for seniors", 1],
+      ["china-tour-cost-for-seniors", "evaluate", "China tour cost for seniors", 1],
       [
         "best-time-to-visit-china-for-seniors",
         "evaluate",
