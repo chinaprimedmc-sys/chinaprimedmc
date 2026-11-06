@@ -81,6 +81,27 @@
   font-weight: 500;
   text-transform: uppercase;
 }
+.suitabilityBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 14px var(--gutter) 0;
+}
+.suitabilityBar span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--label);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
 
 /* Facts */
 .facts {
@@ -688,17 +709,132 @@
 }
 
 @media (max-width: 640px) {
-  .hero {
-    min-height: min(620px, 84svh);
-  }
   .heroBody {
-    padding: 130px var(--gutter) 44px;
+    padding: 112px var(--gutter) 28px;
+  }
+  .hero {
+    min-height: min(560px, 76svh);
+  }
+  .hero h1 {
+    max-width: 13ch;
+    font-size: clamp(34px, 9vw, 48px);
+    line-height: 1.08;
+  }
+  .route {
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+  .suitabilityBar {
+    gap: 6px;
+    padding-top: 12px;
+  }
+  .suitabilityBar span {
+    min-height: 36px;
+    padding-inline: 10px;
+    font-size: 12px;
+  }
+  .facts {
+    gap: 14px 12px;
+    padding: 18px 0;
+  }
+  .facts div,
+  .facts div + div {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+  }
+  .facts dt {
+    font-size: 10px;
+  }
+  .facts dd {
+    margin-top: 3px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .layout {
+    gap: 32px;
+    padding-top: 30px;
+  }
+  .main > section + section,
+  .reviewsSection,
+  .wrap > section {
+    margin-top: 48px;
+  }
+  .h2 {
+    font-size: 27px;
+    line-height: 1.15;
+  }
+  .note {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .dayMetrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 14px;
+  }
+  .dayMetrics > div {
+    min-width: 0;
+    padding: 11px 12px;
+  }
+  .dayMetrics > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .dayMetrics dt {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+  .dayMetrics dd {
+    font-size: 14px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+  .dayMeta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .dayMeta > div:last-child {
+    grid-column: 1 / -1;
+  }
+  .dayMeta dd {
+    font-size: 14px;
+  }
+  .dayBody {
+    padding-top: 12px;
+    padding-bottom: 18px;
+  }
+  .dayBody > p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .dayPhoto {
+    margin-bottom: 14px;
+  }
+  .daySummary {
+    min-height: 64px;
+    gap: 12px;
+    padding: 13px 0;
+  }
+  .day h3 {
+    max-width: 30ch;
+    margin-top: 5px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .dayLabel {
+    font-size: 10px;
+  }
+  .days {
+    scroll-margin-top: calc(var(--site-nav-offset) + 60px);
+  }
+  .day {
+    scroll-margin-top: calc(var(--site-nav-offset) + 60px);
   }
   .booking {
-    padding: 24px;
+    padding: 18px;
   }
   .page {
-    padding-bottom: 76px;
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
   }
 }
 
@@ -1102,7 +1238,16 @@
     padding-bottom: 24px;
   }
   .dayMeta {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+  .dayMeta > div:last-child {
+    grid-column: 1 / -1;
+  }
+  .dayMetrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .dayMetrics > div:first-child {
+    grid-column: 1 / -1;
   }
 }

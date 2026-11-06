@@ -138,6 +138,16 @@ export function TourDetailLanding({
           </div>
         </section>
 
+        {(catalogItem?.styleFilters.includes("Senior-friendly") ||
+          catalogItem?.planningNeedFilters.includes("mobility-aware")) && (
+          <div className={styles.suitabilityBar} aria-label="Journey suitability">
+            {catalogItem?.styleFilters.includes("Senior-friendly") && <span>Senior-friendly</span>}
+            {catalogItem?.planningNeedFilters.includes("mobility-aware") && (
+              <span>Mobility-aware</span>
+            )}
+          </div>
+        )}
+
         <div className={styles.wrap}>
           <dl className={styles.facts}>
             <div>
@@ -152,18 +162,6 @@ export function TourDetailLanding({
               <div>
                 <dt>Pace</dt>
                 <dd>{fact("Pace")}</dd>
-              </div>
-            )}
-            {catalogItem?.styleFilters.includes("Senior-friendly") && (
-              <div>
-                <dt>Suitability</dt>
-                <dd>Senior-friendly</dd>
-              </div>
-            )}
-            {catalogItem?.planningNeedFilters.includes("mobility-aware") && (
-              <div>
-                <dt>Mobility</dt>
-                <dd>Mobility-aware</dd>
               </div>
             )}
             <div>

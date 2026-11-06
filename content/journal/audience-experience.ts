@@ -716,7 +716,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     seo: {
       title: "China Travel Accessibility & Health for Seniors",
       description:
-        "Planning China for aging parents with mobility limits? What accessibility is really like, wheelchair and medicine planning, and how medical care works on a private tour.",
+        "Planning China for aging parents with mobility needs? Get practical guidance on wheelchair access, medicines and medical care on a private tour.",
       keywords: [
         "china travel accessibility seniors",
         "wheelchair china travel",
