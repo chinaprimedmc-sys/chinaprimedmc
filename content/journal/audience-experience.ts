@@ -641,4 +641,60 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "The 10-day senior-friendly tour shows its starting price and range openly.",
     },
   },
+  {
+    slug: "china-travel-with-elderly-parents-pacing-guide",
+    title: "China Travel with Elderly Parents: Pacing, Transport & Route Design",
+    dek: "How to pace a China trip for aging parents: route shape, bullet trains versus flights, private transport and family route design.",
+    excerpt:
+      "A practical guide to pacing, transport and route design for elderly parents, with the 3-2-1 rule of thumb and a real 10-day example.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "family-travel", "itinerary-pacing"],
+    author,
+    publishedAt: "2026-11-06",
+    updatedAt: "2026-11-06",
+    lastFactCheckedAt: "2026-11-06",
+    readingTime: "7 min read",
+    hero: { image: textHeroImage, eyebrow: "Pace the trip before you plan it", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China Travel with Elderly Parents: Pacing & Route Guide",
+      description:
+        "Planning China for aging parents? How to pace the itinerary, choose bullet trains or flights, cut daily walking and design a comfortable family route for 2027.",
+      keywords: [
+        "china travel with elderly parents",
+        "china trip elderly parents pacing",
+        "bullet train vs flight china seniors",
+        "multi generational china tour",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      articles: ["slow-paced-china-tour-for-seniors", "china-trip-with-older-parents"],
+    },
+    conversion: {
+      eyebrow: "Plan it around your parents",
+      title: "Review the pacing for your family",
+      description:
+        "Share your dates, who is traveling and how much walking is comfortable. We will review the route and confirm the pacing in writing.",
+      label: "Review pacing for my parents",
+      href: "/start-planning?source=audience-elderly-parents-pacing",
+    },
+    sourcePath:
+      "content/journal/articles/2026-11-06-china-travel-with-elderly-parents-pacing-guide.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "For elderly parents, keep to about three cities, two main sights a day and a rest window every few days, travel between cities by bullet train and use a private vehicle to cut walking.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Multi-generational families",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour applies these pacing rules to Beijing, Xi'an and Shanghai.",
+    },
+  },
 ];

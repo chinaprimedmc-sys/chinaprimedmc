@@ -7,6 +7,10 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "china-travel-with-elderly-parents-pacing-guide": {
+    title: "China Travel with Elderly Parents: Pacing, Transport & Route Design",
+    seoTitle: "China Travel with Elderly Parents: Pacing & Route Guide",
+  },
   "china-tour-cost-for-seniors": {
     title: "China Tour Cost for Seniors: Transparent Budget and Price Breakdown",
     seoTitle: "China Tour Cost for Seniors: Budget & Price Breakdown",

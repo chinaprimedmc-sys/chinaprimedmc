@@ -234,3 +234,4 @@ The tour is 10 days, so `/tours/beijing-xian-shanghai-private-9-day-tour` became
 - Mobile /tours polish: tab bar padding, right fade cue, sticky bar gap closed; cards 4:3 with top-left duration badge, roomier title/highlights, 48px price row + View itinerary pill.
 - Mobile /tours: filter bar now follows the global header (data-nav-hidden on <html>): sits directly under it when shown, slides to top:0 when it hides on scroll-down; no overlap or gap.
 - Published article #31 china-tour-cost-for-seniors with verified pricing only (US$3,800 start, US$3,800-6,500 range); removed invented day rates, budget percentages, hotel brands and vehicle models; flagship tour now lists four guides (#26, #28, #30, #31).
+- Published article #32 china-travel-with-elderly-parents-pacing-guide: replaced the invented day-by-day table (flight, step counts) with the real 10-day tour pacing; removed comfort percentages, vehicle models and 100% claims; flagship tour now lists five guides.

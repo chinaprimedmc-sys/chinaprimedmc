@@ -143,6 +143,7 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "best-places-china-senior-travelers",
     "best-time-to-visit-china-for-seniors",
     "china-tour-cost-for-seniors",
+    "china-travel-with-elderly-parents-pacing-guide",
     "women-private-china-travel",
     "how-to-visit-great-wall-without-climbing-stairs",
     "slow-paced-china-tour-for-seniors-itinerary-guide",
@@ -655,6 +656,15 @@ Object.assign(journeyJournalLinks, {
     journeyLabel: "Explore the seasonal journey",
     planningLabel: "Compare my date windows",
     planningPreference: "senior-date-review",
+  },
+  "china-travel-with-elderly-parents-pacing-guide": {
+    primaryJourney: CHINA_CONSIDERED,
+    title: "See how pacing rules shape a real route",
+    description:
+      "Three cities, bullet trains with luggage handled for you, a rest-day arrival and a 3:30 PM hotel return, set out day by day with a step budget.",
+    journeyLabel: "See the day-by-day pacing",
+    planningLabel: "Review pacing for my parents",
+    planningPreference: "senior-pacing-review",
   },
   "china-tour-cost-for-seniors": {
     primaryJourney: CHINA_CONSIDERED,
