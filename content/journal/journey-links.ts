@@ -144,6 +144,7 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "best-time-to-visit-china-for-seniors",
     "china-tour-cost-for-seniors",
     "china-travel-with-elderly-parents-pacing-guide",
+    "china-travel-accessibility-senior-health-guide",
     "women-private-china-travel",
     "how-to-visit-great-wall-without-climbing-stairs",
     "slow-paced-china-tour-for-seniors-itinerary-guide",
@@ -656,6 +657,15 @@ Object.assign(journeyJournalLinks, {
     journeyLabel: "Explore the seasonal journey",
     planningLabel: "Compare my date windows",
     planningPreference: "senior-date-review",
+  },
+  "china-travel-accessibility-senior-health-guide": {
+    primaryJourney: CHINA_CONSIDERED,
+    title: "Tell us about mobility before the route is set",
+    description:
+      "The 10-day journey is planned around low-step transfers and a 3:30 PM hotel return. Share any mobility or health needs and we will review each stop with you in writing.",
+    journeyLabel: "See how the journey is paced",
+    planningLabel: "Request a mobility route review",
+    planningPreference: "mobility-route-review",
   },
   "china-travel-with-elderly-parents-pacing-guide": {
     primaryJourney: CHINA_CONSIDERED,

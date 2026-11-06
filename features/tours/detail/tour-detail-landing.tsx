@@ -80,7 +80,7 @@ export function TourDetailLanding({
     .sort((a, b) => b.score - a.score || b.item.commercialPriority - a.item.commercialPriority)
     .slice(0, 3)
     .map(({ item }) => item);
-  const guides = getJourneyReadingArticles(model.slug, model.slug === FLAGSHIP_SLUG ? 5 : 3);
+  const guides = getJourneyReadingArticles(model.slug, model.slug === FLAGSHIP_SLUG ? 6 : 3);
 
   const answer = [
     `${model.headline} is a private ${isDayTour ? "day tour" : `${model.duration} China journey`}`,

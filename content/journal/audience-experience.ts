@@ -697,4 +697,63 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "The 10-day senior-friendly tour applies these pacing rules to Beijing, Xi'an and Shanghai.",
     },
   },
+  {
+    slug: "china-travel-accessibility-senior-health-guide",
+    title: "China Travel Accessibility & Health: Wheelchairs, Mobility & Medical Peace of Mind",
+    dek: "What accessibility in China is really like, how to plan wheelchairs and medicines, and what to ask about medical care before you travel.",
+    excerpt:
+      "An honest guide to mobility, wheelchairs, medicines and medical care for older travelers in China, with questions to ask any operator.",
+    category: "Travel Guides",
+    tags: ["senior-travel", "accessibility", "health"],
+    author,
+    publishedAt: "2026-11-06",
+    updatedAt: "2026-11-06",
+    lastFactCheckedAt: "2026-11-06",
+    readingTime: "8 min read",
+    hero: { image: textHeroImage, eyebrow: "Plan access before you book", mode: "text" },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China Travel Accessibility & Health for Seniors",
+      description:
+        "Planning China for aging parents with mobility limits? What accessibility is really like, wheelchair and medicine planning, and how medical care works on a private tour.",
+      keywords: [
+        "china travel accessibility seniors",
+        "wheelchair china travel",
+        "china travel elderly health",
+        "medical care china tourists",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "shanghai"],
+      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      articles: [
+        "is-china-safe-for-elderly-travelers-senior-care-guide",
+        "china-tours-seniors-limited-mobility",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan it around your parents",
+      title: "Request a mobility route review",
+      description:
+        "Share your dates, who is traveling and any mobility or health needs. We will review each stop and confirm what is and is not suitable in writing.",
+      label: "Request a mobility route review",
+      href: "/start-planning?source=audience-accessibility-health",
+    },
+    sourcePath:
+      "content/journal/articles/2026-11-06-china-travel-accessibility-senior-health-guide.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "prepare",
+      keyAnswer:
+        "Modern transport in China is generally accessible but historic sites have steps and thresholds; tell your operator about mobility and health needs early so each stop can be reviewed, and carry travel insurance with medical cover.",
+      appliesTo: [
+        "Older travelers",
+        "Adult children planning for parents",
+        "Travelers with limited mobility",
+      ],
+      relatedJourneyReason:
+        "The 10-day senior-friendly tour is paced around low-step transfers and a 3:30 PM hotel return.",
+    },
+  },
 ];

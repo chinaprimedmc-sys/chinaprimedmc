@@ -272,6 +272,12 @@ const strategyGroups: Array<{
         "China travel with elderly parents",
         1,
       ],
+      [
+        "china-travel-accessibility-senior-health-guide",
+        "answer",
+        "China travel accessibility for seniors",
+        1,
+      ],
       ["china-tour-cost-for-seniors", "evaluate", "China tour cost for seniors", 1],
       [
         "best-time-to-visit-china-for-seniors",
