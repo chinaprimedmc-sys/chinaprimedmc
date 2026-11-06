@@ -9,6 +9,8 @@
   --serif: var(--font-brand);
   --label: var(--font-body);
   --gutter: clamp(20px, 3.4vw, 56px);
+  --tour-nav-visible-height: 64px;
+  --day-jump-height: 65px;
 
   background: var(--ivory);
   color: var(--ink);
@@ -825,10 +827,13 @@
     font-size: 10px;
   }
   .days {
-    scroll-margin-top: calc(var(--site-nav-offset) + 60px);
+    scroll-margin-top: calc(var(--tour-nav-visible-height) + 10px);
   }
   .day {
-    scroll-margin-top: calc(var(--site-nav-offset) + 60px);
+    scroll-margin-top: calc(var(--tour-nav-visible-height) + 10px);
+  }
+  .dayJump + .days .day {
+    scroll-margin-top: calc(var(--tour-nav-visible-height) + var(--day-jump-height) + 10px);
   }
   .booking {
     padding: 18px;
@@ -1135,12 +1140,13 @@
 /* Day accordion and quick-jump bar */
 .dayJump {
   position: sticky;
-  top: var(--site-nav-offset);
+  top: var(--tour-nav-visible-height);
   z-index: 15;
   margin-top: 24px;
   border-bottom: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(10px);
+  transition: top 180ms ease-out;
 }
 .dayJumpTrack {
   display: flex;
@@ -1174,10 +1180,21 @@
   color: #fff;
 }
 .days {
-  scroll-margin-top: calc(var(--site-nav-offset) + 64px);
+  scroll-margin-top: calc(var(--tour-nav-visible-height) + 12px);
 }
 .day {
-  scroll-margin-top: calc(var(--site-nav-offset) + 72px);
+  scroll-margin-top: calc(var(--tour-nav-visible-height) + 12px);
+}
+.dayJump + .days .day {
+  scroll-margin-top: calc(var(--tour-nav-visible-height) + var(--day-jump-height) + 12px);
+}
+@media (max-width: 1023px) {
+  .page {
+    --tour-nav-visible-height: 56px;
+  }
+  :global(html[data-nav-hidden="true"]) .page {
+    --tour-nav-visible-height: 0px;
+  }
 }
 .dayDetails > summary {
   list-style: none;
