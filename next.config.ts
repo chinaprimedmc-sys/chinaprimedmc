@@ -92,6 +92,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/zero-shopping-policy-luxury-china-inbound-dmc",
+        destination: "/journal/zero-shopping-policy-luxury-china-inbound-dmc",
+        permanent: true,
+      },
+      {
         source: "/styles",
         destination: "/tours",
         permanent: true,

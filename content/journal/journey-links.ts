@@ -110,6 +110,7 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "multigenerational-china-travel-blueprint",
     "bringing-history-to-life-forbidden-city-terracotta-warriors",
     "shanghai-chengdu-modern-china-tech-family-guide",
+    "zero-shopping-policy-luxury-china-inbound-dmc",
     "the-ultimate-guide-to-traveling-in-china-with-kids",
     "private-china-family-tour-planning",
     "china-family-hotel-rooms-connecting-rooms-extra-beds",
@@ -528,6 +529,15 @@ Object.assign(journeyJournalLinks, {
       "Review the city experiences, pacing and confirmed rail and flight segments in the 12-day family itinerary.",
     journeyLabel: "Explore the family journey",
     planningLabel: "Plan our modern China days",
+    planningPreference: "family-panda-route",
+  },
+  "zero-shopping-policy-luxury-china-inbound-dmc": {
+    primaryJourney: CHINA_FAMILY,
+    title: "Review the family tour's route and written service basis",
+    description:
+      "Check the published itinerary, starting-price assumptions and included services before requesting written details for your dates.",
+    journeyLabel: "Review the family journey",
+    planningLabel: "Request a clear proposal",
     planningPreference: "family-panda-route",
   },
   "best-age-for-china-family-tour": {

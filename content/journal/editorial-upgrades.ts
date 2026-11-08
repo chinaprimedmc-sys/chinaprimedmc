@@ -7,6 +7,12 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "zero-shopping-policy-luxury-china-inbound-dmc": {
+    title:
+      "The Zero-Shopping Guarantee: Why True Luxury Travel in China Means Absolute Operational Transparency",
+    seoTitle: "Zero-Shopping China Tours: What Families Should Confirm",
+    preserveTitleCase: true,
+  },
   "chengdu-panda-base-family-guide": {
     title:
       "The Insider’s Guide to Chengdu Panda Bases: Ethics, Timing, and Beating the Crowds with Children",

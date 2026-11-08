@@ -25,6 +25,7 @@ export const PUBLIC_JOURNAL_SLUGS = [
   "multigenerational-china-travel-blueprint",
   "bringing-history-to-life-forbidden-city-terracotta-warriors",
   "shanghai-chengdu-modern-china-tech-family-guide",
+  "zero-shopping-policy-luxury-china-inbound-dmc",
   "china-family-hotel-rooms-connecting-rooms-extra-beds",
   "food-allergies-dietary-restrictions-china-travel",
   "china-high-speed-trains-with-children",

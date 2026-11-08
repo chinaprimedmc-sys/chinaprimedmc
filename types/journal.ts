@@ -20,6 +20,7 @@ export type JournalCategory =
   | "Wildlife & Nature"
   | "History"
   | "Shopping"
+  | "Trust & Industry Standards"
   | "Industry News";
 
 export type JournalTagType =

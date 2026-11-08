@@ -63,6 +63,7 @@ const invalidDisplayTitles = publicUpgrades.filter(
       ([
         "chengdu-panda-base-family-guide",
         "bringing-history-to-life-forbidden-city-terracotta-warriors",
+        "zero-shopping-policy-luxury-china-inbound-dmc",
       ].includes(slug)
         ? 100
         : slug === "shanghai-chengdu-modern-china-tech-family-guide"

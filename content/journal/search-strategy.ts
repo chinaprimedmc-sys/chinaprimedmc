@@ -524,6 +524,12 @@ const strategyGroups: Array<{
         1,
       ],
       [
+        "zero-shopping-policy-luxury-china-inbound-dmc",
+        "trust",
+        "luxury China travel zero shopping policy",
+        1,
+      ],
+      [
         "chengdu-panda-base-heat-rain-accessibility",
         "answer",
         "Chengdu Panda Base heat rain visit plan",

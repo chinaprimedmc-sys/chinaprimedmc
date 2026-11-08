@@ -24,6 +24,7 @@ export const journalCategories: JournalCategory[] = [
   "Wildlife & Nature",
   "History",
   "Shopping",
+  "Trust & Industry Standards",
   "Industry News",
 ];
 
@@ -123,6 +124,18 @@ export const journalTags: JournalTag[] = [
     slug: "china-tech-experience-for-kids",
     label: "China tech experience for kids",
     type: "theme",
+  },
+  {
+    slug: "luxury-china-travel-zero-shopping",
+    label: "luxury China travel zero shopping",
+    type: "theme",
+  },
+  { slug: "private-tour-china-dmc", label: "private tour China DMC", type: "theme" },
+  { slug: "honest-china-family-itinerary", label: "honest China family itinerary", type: "theme" },
+  {
+    slug: "transparent-luxury-travel-china",
+    label: "transparent luxury travel China",
+    type: "travel-style",
   },
   { slug: "food", label: "Food", type: "theme" },
   { slug: "spring", label: "Spring", type: "season" },

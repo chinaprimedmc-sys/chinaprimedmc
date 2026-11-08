@@ -15,6 +15,79 @@ const textHeroImage = {
 
 export const audienceExperienceArticles: JournalArticle[] = [
   {
+    slug: "zero-shopping-policy-luxury-china-inbound-dmc",
+    title:
+      "The Zero-Shopping Guarantee: Why True Luxury Travel in China Means Absolute Operational Transparency",
+    dek: "How to confirm a private tour's no-forced-shopping policy, written inclusions and price basis before booking.",
+    excerpt:
+      "A practical checklist for reviewing shopping policies, itinerary scope and price assumptions on a private China family tour.",
+    category: "Trust & Industry Standards",
+    tags: [
+      "luxury-china-travel-zero-shopping",
+      "private-tour-china-dmc",
+      "honest-china-family-itinerary",
+      "transparent-luxury-travel-china",
+    ],
+    author: { name: "AVIORA Editorial Team", role: "China travel specialists" },
+    publishedAt: "2026-11-08",
+    updatedAt: "2026-11-08",
+    readingTime: "5 min read",
+    hero: {
+      image: firstChinaAsset.beijingGreatWallCouple,
+      eyebrow: "Know what is included before you book",
+      mode: "image",
+    },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Zero-Shopping China Tours: What Families Should Confirm",
+      description:
+        "Check a private China tour's no-forced-shopping policy, written inclusions, room basis and price assumptions before booking.",
+      keywords: [
+        "luxury China travel zero shopping",
+        "private tour China DMC",
+        "honest China family itinerary",
+        "transparent luxury travel China",
+      ],
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+      articles: ["china-family-tour-with-pandas-12-days", "private-china-tour-proposal-checklist"],
+    },
+    conversion: {
+      eyebrow: "Review the published service basis",
+      title: "See the route, starting estimate and listed inclusions",
+      description:
+        "Check the 12-day family itinerary and request written confirmation for your dates, rooms and optional experiences.",
+      label: "Review the 12-Day Family Journey",
+      href: "/tours/china-family-tour-with-pandas-12-day-private-tour",
+    },
+    sourcePath: "content/blog/zero-shopping-policy-luxury-china-inbound-dmc.md",
+    schemaType: "TechArticle",
+    aiTargetAudience:
+      "Luxury family travelers, multigenerational families, and private China tour planners",
+    keyTakeaways: [
+      "A no-forced-shopping policy means required sightseeing does not depend on visiting a shop or making a purchase.",
+      "AVIORA's published private-tour policy excludes compulsory retail stops; optional markets or craft visits should be agreed as experiences.",
+      "The family tour's published starting basis is US$5,850 per person for two adults and two children aged 6-11 sharing two hotel-confirmed rooms outside peak periods.",
+      "Ask for the route, inclusions, exclusions, room basis, and any optional paid activity to be stated in the written proposal.",
+    ],
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "AVIORA's published private-tour standard excludes compulsory shopping stops; families can request optional market or craft visits, and should confirm the itinerary and service scope in writing.",
+      appliesTo: [
+        "Luxury family travelers",
+        "Multigenerational families",
+        "Private China tour planners",
+      ],
+      relatedJourneyReason:
+        "The linked 12-day family tour publishes its itinerary, US$5,850 per-person starting basis, and two-room assumptions for review.",
+    },
+  },
+  {
     slug: "shanghai-chengdu-modern-china-tech-family-guide",
     title:
       "The Dual-Pulse of Modern China: Navigating Shanghai’s Skyline and Chengdu’s Slow Life with Tech-Native Kids",

@@ -62,6 +62,7 @@ import mutianyuFamilyGuideMarkdown from "@/content/blog/mutianyu-great-wall-mult
 import multigenerationalChinaBlueprintMarkdown from "@/content/blog/multigenerational-china-travel-blueprint.md";
 import forbiddenCityTerracottaFamilyMarkdown from "@/content/blog/bringing-history-to-life-forbidden-city-terracotta-warriors.md";
 import shanghaiChengduModernFamilyMarkdown from "@/content/blog/shanghai-chengdu-modern-china-tech-family-guide.md";
+import zeroShoppingPolicyMarkdown from "@/content/blog/zero-shopping-policy-luxury-china-inbound-dmc.md";
 import familyAgeMarkdown from "@/content/journal/articles/2026-09-25-best-age-for-china-family-tour.md";
 import familyCostMarkdown from "@/content/journal/articles/2026-09-25-china-family-tour-cost-four.md";
 import luxuryYunnanMarkdown from "@/content/journal/articles/2026-09-25-luxury-yunnan-private-tour-10-days.md";
@@ -153,6 +154,7 @@ const bundledMarkdown: Record<string, string> = {
     forbiddenCityTerracottaFamilyMarkdown,
   "content/blog/shanghai-chengdu-modern-china-tech-family-guide.md":
     shanghaiChengduModernFamilyMarkdown,
+  "content/blog/zero-shopping-policy-luxury-china-inbound-dmc.md": zeroShoppingPolicyMarkdown,
   "content/blog/the-ultimate-guide-to-traveling-in-china-with-kids.md": familyKidsGuideMarkdown,
   "content/journal/articles/2026-11-06-china-senior-travel-dining-hotels-comfort-guide.md":
     diningHotelsComfortMarkdown,
