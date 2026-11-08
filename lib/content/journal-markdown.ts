@@ -58,6 +58,7 @@ import familyPandasMarkdown from "@/content/journal/articles/2026-09-25-china-fa
 import familyKidsGuideMarkdown from "@/content/blog/the-ultimate-guide-to-traveling-in-china-with-kids.md";
 import pandaFamilyGuideMarkdown from "@/content/blog/chengdu-panda-base-family-guide.md";
 import mutianyuFamilyGuideMarkdown from "@/content/blog/mutianyu-great-wall-multigenerational-guide.md";
+import multigenerationalChinaBlueprintMarkdown from "@/content/blog/multigenerational-china-travel-blueprint.md";
 import familyAgeMarkdown from "@/content/journal/articles/2026-09-25-best-age-for-china-family-tour.md";
 import familyCostMarkdown from "@/content/journal/articles/2026-09-25-china-family-tour-cost-four.md";
 import luxuryYunnanMarkdown from "@/content/journal/articles/2026-09-25-luxury-yunnan-private-tour-10-days.md";
@@ -143,6 +144,8 @@ const fullFrameImageMetadata: Record<string, { width: number; height: number; fi
 const bundledMarkdown: Record<string, string> = {
   "content/blog/chengdu-panda-base-family-guide.md": pandaFamilyGuideMarkdown,
   "content/blog/mutianyu-great-wall-multigenerational-guide.md": mutianyuFamilyGuideMarkdown,
+  "content/blog/multigenerational-china-travel-blueprint.md":
+    multigenerationalChinaBlueprintMarkdown,
   "content/blog/the-ultimate-guide-to-traveling-in-china-with-kids.md": familyKidsGuideMarkdown,
   "content/journal/articles/2026-11-06-china-senior-travel-dining-hotels-comfort-guide.md":
     diningHotelsComfortMarkdown,
@@ -482,6 +485,23 @@ function parseBlocks(markdown: string, parseFaq = true): JournalContentBlock[] {
     }
 
     const nextLine = lines[index + 1]?.trim() ?? "";
+    const codeFence = line.match(/^```([\w+-]*)\s*$/);
+    if (codeFence) {
+      flushText();
+      const codeLines: string[] = [];
+      index += 1;
+      while (index < lines.length && !/^\s*```+\s*$/.test(lines[index])) {
+        codeLines.push(lines[index]);
+        index += 1;
+      }
+      blocks.push({
+        type: "code",
+        ...(codeFence[1] ? { language: codeFence[1] } : {}),
+        body: codeLines.join("\n").replace(/\n+$/, ""),
+      });
+      continue;
+    }
+
     if (line.includes("|") && /^\|?\s*:?-{3,}/.test(nextLine)) {
       flushText();
       const headers = parseTableRow(line);

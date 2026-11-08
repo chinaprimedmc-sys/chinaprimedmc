@@ -17,6 +17,11 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     seoTitle: "Mutianyu Great Wall With Three Generations",
     preserveTitleCase: true,
   },
+  "multigenerational-china-travel-blueprint": {
+    title: "Bringing Aging Parents and Kids to China: A Multigenerational Travel Blueprint",
+    seoTitle: "China With Aging Parents and Kids: Trip Blueprint",
+    preserveTitleCase: true,
+  },
   "the-ultimate-guide-to-traveling-in-china-with-kids": {
     title: "Traveling in China with Kids: Pacing, Logistics and Real Expectations",
     seoTitle: "China with Kids: Family Pacing and Travel Logistics",

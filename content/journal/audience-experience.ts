@@ -15,6 +15,74 @@ const textHeroImage = {
 
 export const audienceExperienceArticles: JournalArticle[] = [
   {
+    slug: "multigenerational-china-travel-blueprint",
+    title: "Bringing Aging Parents and Kids to China: A Multigenerational Travel Blueprint",
+    dek: "Plan a China family trip around different walking limits, written room confirmations, transport capacity and time to rest.",
+    excerpt:
+      "A practical blueprint for traveling in China with aging parents and children, from mobility and hotel rooms to meals and shared pacing.",
+    category: "Family Travel & Heritage",
+    tags: [
+      "multigenerational-china-tour",
+      "traveling-to-china-with-elderly-parents",
+      "senior-friendly-china-travel",
+      "luxury-family-holiday-china",
+    ],
+    author: { name: "AVIORA Editorial Team", role: "China travel specialists" },
+    publishedAt: "2026-11-08",
+    updatedAt: "2026-11-08",
+    readingTime: "8 min read",
+    hero: {
+      image: chinaFamilyAsset.hero,
+      eyebrow: "Plan China for three generations",
+      mode: "image",
+    },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "China With Aging Parents and Kids: A Trip Blueprint",
+      description:
+        "Plan China with aging parents and children using realistic mobility pacing, written room confirmations, flexible days and clear transport arrangements.",
+      keywords: [
+        "Multigenerational China tour",
+        "traveling to China with elderly parents",
+        "senior-friendly China travel",
+        "luxury family holiday China",
+      ],
+      ogImage: chinaFamilyAsset.hero,
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+      articles: [
+        "china-travel-with-elderly-parents-pacing-guide",
+        "china-family-hotel-rooms-connecting-rooms-extra-beds",
+        "china-travel-accessibility-senior-health-guide",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan for every generation",
+      title: "See how the 12-day family route works",
+      description:
+        "Review the route, then shape walking pace, room arrangements and transport around your family.",
+      label: "Explore the 12-Day Family Journey",
+      href: "/tours/china-family-tour-with-pandas-12-day-private-tour#inquiry",
+    },
+    sourcePath: "content/blog/multigenerational-china-travel-blueprint.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "prepare",
+      keyAnswer:
+        "A multigenerational China itinerary should be built around each traveler's walking and access needs, vehicle and luggage capacity, written hotel room confirmation and protected recovery time.",
+      appliesTo: [
+        "Families traveling with children and aging parents",
+        "Multigenerational China trip planners",
+        "Travelers comparing private itineraries",
+      ],
+      relatedJourneyReason:
+        "The linked 12-day private family journey offers a concrete route reference for planning Beijing, Xi'an, Chengdu and Shanghai around a multigenerational party.",
+    },
+  },
+  {
     slug: "mutianyu-great-wall-multigenerational-guide",
     title: "The Great Wall in Whispers: How to Experience Mutianyu with Three Generations",
     dek: "Plan Mutianyu for children, parents and grandparents with realistic walking, lift choices, rest points and date-specific operating checks.",

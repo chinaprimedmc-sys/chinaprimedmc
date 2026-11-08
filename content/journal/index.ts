@@ -74,6 +74,22 @@ export const journalTags: JournalTag[] = [
     label: "luxury multi-generational travel China",
     type: "travel-style",
   },
+  { slug: "multigenerational-china-tour", label: "Multigenerational China tour", type: "theme" },
+  {
+    slug: "traveling-to-china-with-elderly-parents",
+    label: "traveling to China with elderly parents",
+    type: "audience",
+  },
+  {
+    slug: "senior-friendly-china-travel",
+    label: "senior-friendly China travel",
+    type: "audience",
+  },
+  {
+    slug: "luxury-family-holiday-china",
+    label: "luxury family holiday China",
+    type: "travel-style",
+  },
   { slug: "food", label: "Food", type: "theme" },
   { slug: "spring", label: "Spring", type: "season" },
   { slug: "autumn", label: "Autumn", type: "season" },

@@ -279,6 +279,8 @@ function countArticleWords(article: JournalArticle) {
           return [block.title];
         case "paragraph":
           return [block.body];
+        case "code":
+          return [block.body];
         case "list":
           return block.items;
         case "table":

@@ -278,6 +278,23 @@
   margin-top: 1.5rem;
 }
 
+.codeBlock {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+  border-left: 3px solid #1d5c4d;
+  background: #f3f6f4;
+  color: var(--article-ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: pre;
+}
+
+.codeBlock code {
+  font: inherit;
+}
+
 .blocks > p,
 .blocks li {
   color: var(--article-ink);

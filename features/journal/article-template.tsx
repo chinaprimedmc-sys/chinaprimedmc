@@ -457,6 +457,12 @@ function ArticleBlock({ block }: { block: JournalContentBlock }) {
         </p>
       );
     }
+    case "code":
+      return (
+        <pre className={styles.codeBlock}>
+          <code>{block.body}</code>
+        </pre>
+      );
     case "list": {
       const List = block.style === "ordered" ? "ol" : "ul";
       return (

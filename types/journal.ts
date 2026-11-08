@@ -47,6 +47,11 @@ export type JournalContentBlock =
       body: string;
     }
   | {
+      type: "code";
+      language?: string;
+      body: string;
+    }
+  | {
       type: "image";
       image: MediaAsset;
       caption?: string;

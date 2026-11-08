@@ -22,6 +22,7 @@ export const PUBLIC_JOURNAL_SLUGS = [
   "the-ultimate-guide-to-traveling-in-china-with-kids",
   "chengdu-panda-base-family-guide",
   "mutianyu-great-wall-multigenerational-guide",
+  "multigenerational-china-travel-blueprint",
   "china-family-hotel-rooms-connecting-rooms-extra-beds",
   "food-allergies-dietary-restrictions-china-travel",
   "china-high-speed-trains-with-children",

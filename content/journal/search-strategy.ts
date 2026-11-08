@@ -506,6 +506,12 @@ const strategyGroups: Array<{
         1,
       ],
       [
+        "multigenerational-china-travel-blueprint",
+        "plan",
+        "multigenerational travel in China with elderly parents and kids",
+        1,
+      ],
+      [
         "chengdu-panda-base-heat-rain-accessibility",
         "answer",
         "Chengdu Panda Base heat rain visit plan",

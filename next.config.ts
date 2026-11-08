@@ -77,6 +77,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/multigenerational-china-travel-blueprint",
+        destination: "/journal/multigenerational-china-travel-blueprint",
+        permanent: true,
+      },
+      {
         source: "/styles",
         destination: "/tours",
         permanent: true,
