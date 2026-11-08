@@ -15,6 +15,75 @@ const textHeroImage = {
 
 export const audienceExperienceArticles: JournalArticle[] = [
   {
+    slug: "bringing-history-to-life-forbidden-city-terracotta-warriors",
+    title:
+      "Bringing History to Life: Decoding the Forbidden City and Terracotta Army with Kids and Teens",
+    dek: "Make Beijing and Xi'an's historic sites engaging for children and teens with realistic walking estimates, age-aware prompts and a private clay studio.",
+    excerpt:
+      "Plan the Forbidden City and Terracotta Army with children and teens using route-specific walking estimates, rest pauses and a hands-on studio.",
+    category: "Culture & History",
+    tags: [
+      "forbidden-city-family-tour",
+      "terracotta-warriors-with-kids",
+      "china-history-tour-for-teenagers",
+      "private-china-travel-kids",
+    ],
+    author: { name: "AVIORA Editorial Team", role: "China travel specialists" },
+    publishedAt: "2026-11-08",
+    updatedAt: "2026-11-08",
+    readingTime: "8 min read",
+    hero: {
+      image: firstChinaAsset.beijingForbiddenCityLion,
+      eyebrow: "Turn history into a family conversation",
+      mode: "image",
+    },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Forbidden City and Terracotta Army With Kids",
+      description:
+        "Plan Beijing and Xi'an history for children and teens with age-aware interpretation, realistic walking, rest pauses and a private clay studio.",
+      keywords: [
+        "Forbidden City family tour",
+        "Terracotta Warriors with kids",
+        "China history tour for teenagers",
+        "private China travel kids",
+      ],
+      ogImage: firstChinaAsset.beijingForbiddenCityLion,
+    },
+    related: {
+      destinations: ["beijing", "xian"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+      articles: [
+        "forbidden-city-tickets-foreigners",
+        "terracotta-army-tickets-foreign-visitors",
+        "best-age-for-china-family-tour",
+      ],
+    },
+    conversion: {
+      eyebrow: "Bring history to life for your family",
+      title: "See both heritage days in the 12-day route",
+      description:
+        "Review the Forbidden City and Terracotta Army days, then tailor the walking pace and activities to your children.",
+      label: "Explore the 12-Day Family Journey",
+      href: "/tours/china-family-tour-with-pandas-12-day-private-tour#itinerary",
+    },
+    sourcePath: "content/blog/bringing-history-to-life-forbidden-city-terracotta-warriors.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "prepare",
+      keyAnswer:
+        "Make the Forbidden City and Terracotta Army manageable for children by using a route-specific walking estimate, age-aware interpretation, permitted rest pauses and a focused Pit 1–3 sequence; actual access and timing depend on venue operations.",
+      appliesTo: [
+        "Families with children aged 6–17",
+        "Parents planning Beijing and Xi'an visits",
+        "Multigenerational China travelers",
+      ],
+      relatedJourneyReason:
+        "The linked 12-day family journey includes a selected Forbidden City route, age-aware Junior Curator Mission, focused Terracotta Army visit and private clay-warrior studio.",
+    },
+  },
+  {
     slug: "multigenerational-china-travel-blueprint",
     title: "Bringing Aging Parents and Kids to China: A Multigenerational Travel Blueprint",
     dek: "Plan a China family trip around different walking limits, written room confirmations, transport capacity and time to rest.",

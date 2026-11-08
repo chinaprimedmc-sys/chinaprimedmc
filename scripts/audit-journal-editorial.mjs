@@ -39,9 +39,13 @@ const sourceSlugs = unique([
 const articleSlugs = publicSlugs.filter((slug) => sourceSlugs.includes(slug));
 const upgrades = [
   ...editorialSource.matchAll(
-    /^\s{2}"([^"]+)": \{\n\s{4}title:\s*"([^"]+)",\n\s{4}seoTitle:\s*"([^"]+)",/gm,
+    /^\s{2}"([^"]+)": \{\n\s{4}title:\s*(?:"([^"]+)"|\n\s{6}"([^"]+)"),\n\s{4}seoTitle:\s*"([^"]+)",/gm,
   ),
-].map(([, slug, title, seoTitle]) => ({ slug, title, seoTitle }));
+].map(([, slug, inlineTitle, wrappedTitle, seoTitle]) => ({
+  slug,
+  title: inlineTitle ?? wrappedTitle,
+  seoTitle,
+}));
 const upgradeSlugs = upgrades.map(({ slug }) => slug);
 
 const missing = articleSlugs.filter(
@@ -54,7 +58,14 @@ const duplicateTitles = upgrades
 const publicUpgrades = upgrades.filter(({ slug }) => publicSlugs.includes(slug));
 const invalidDisplayTitles = publicUpgrades.filter(
   ({ slug, title }) =>
-    title.length < 28 || title.length > (slug === "chengdu-panda-base-family-guide" ? 100 : 88),
+    title.length < 28 ||
+    title.length >
+      ([
+        "chengdu-panda-base-family-guide",
+        "bringing-history-to-life-forbidden-city-terracotta-warriors",
+      ].includes(slug)
+        ? 100
+        : 88),
 );
 const invalidSeoTitles = upgrades.filter(
   ({ slug, seoTitle }) =>

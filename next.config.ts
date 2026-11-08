@@ -82,6 +82,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/bringing-history-to-life-forbidden-city-terracotta-warriors",
+        destination: "/journal/bringing-history-to-life-forbidden-city-terracotta-warriors",
+        permanent: true,
+      },
+      {
         source: "/styles",
         destination: "/tours",
         permanent: true,

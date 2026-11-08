@@ -6,6 +6,7 @@ export type JournalCategory =
   | "Visa"
   | "Food"
   | "Culture"
+  | "Culture & History"
   | "Luxury Hotels"
   | "Festivals"
   | "Adventure"

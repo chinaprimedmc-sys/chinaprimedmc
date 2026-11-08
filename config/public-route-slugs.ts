@@ -50,6 +50,7 @@ export const publicRouteSlugs = {
     "chengdu-panda-base-family-guide",
     "mutianyu-great-wall-multigenerational-guide",
     "multigenerational-china-travel-blueprint",
+    "bringing-history-to-life-forbidden-city-terracotta-warriors",
     "china-family-hotel-rooms-connecting-rooms-extra-beds",
     "food-allergies-dietary-restrictions-china-travel",
     "china-high-speed-trains-with-children",

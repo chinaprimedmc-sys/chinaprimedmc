@@ -512,6 +512,12 @@ const strategyGroups: Array<{
         1,
       ],
       [
+        "bringing-history-to-life-forbidden-city-terracotta-warriors",
+        "plan",
+        "Forbidden City and Terracotta Army with kids",
+        1,
+      ],
+      [
         "chengdu-panda-base-heat-rain-accessibility",
         "answer",
         "Chengdu Panda Base heat rain visit plan",

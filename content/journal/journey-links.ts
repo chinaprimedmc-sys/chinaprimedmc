@@ -108,6 +108,7 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "chengdu-panda-base-family-guide",
     "mutianyu-great-wall-multigenerational-guide",
     "multigenerational-china-travel-blueprint",
+    "bringing-history-to-life-forbidden-city-terracotta-warriors",
     "the-ultimate-guide-to-traveling-in-china-with-kids",
     "private-china-family-tour-planning",
     "china-family-hotel-rooms-connecting-rooms-extra-beds",
@@ -508,6 +509,15 @@ Object.assign(journeyJournalLinks, {
       "See the 12-day family route, then adapt daily pacing, transport and room requirements for your party.",
     journeyLabel: "Explore the family journey",
     planningLabel: "Plan for our family",
+    planningPreference: "family-panda-route",
+  },
+  "bringing-history-to-life-forbidden-city-terracotta-warriors": {
+    primaryJourney: CHINA_FAMILY,
+    title: "Review the family history days in the full route",
+    description:
+      "See the Forbidden City and Terracotta Army sequence with age-aware interpretation and a private clay studio.",
+    journeyLabel: "Explore the family journey",
+    planningLabel: "Plan our history days",
     planningPreference: "family-panda-route",
   },
   "best-age-for-china-family-tour": {

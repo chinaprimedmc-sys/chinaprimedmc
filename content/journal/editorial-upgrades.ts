@@ -22,6 +22,12 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     seoTitle: "China With Aging Parents and Kids: Trip Blueprint",
     preserveTitleCase: true,
   },
+  "bringing-history-to-life-forbidden-city-terracotta-warriors": {
+    title:
+      "Bringing History to Life: Decoding the Forbidden City and Terracotta Army with Kids and Teens",
+    seoTitle: "Forbidden City and Terracotta Army With Kids",
+    preserveTitleCase: true,
+  },
   "the-ultimate-guide-to-traveling-in-china-with-kids": {
     title: "Traveling in China with Kids: Pacing, Logistics and Real Expectations",
     seoTitle: "China with Kids: Family Pacing and Travel Logistics",
