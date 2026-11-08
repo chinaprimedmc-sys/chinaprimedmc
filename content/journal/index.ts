@@ -32,6 +32,13 @@ export const journalTags: JournalTag[] = [
   { slug: "shanghai", label: "Shanghai", type: "city" },
   { slug: "first-time-china", label: "First-time China", type: "travel-style" },
   { slug: "family-travel", label: "Family Travel", type: "audience" },
+  { slug: "12-day-china-family-tour", label: "12 day China family tour", type: "theme" },
+  { slug: "private-china-tour-with-kids", label: "private China tour with kids", type: "theme" },
+  {
+    slug: "multigenerational-travel-china",
+    label: "multigenerational travel China",
+    type: "audience",
+  },
   { slug: "senior-travel", label: "Easier-paced Travel", type: "audience" },
   { slug: "luxury-travel", label: "Luxury Travel", type: "travel-style" },
   { slug: "private-guides", label: "Private Guides", type: "theme" },

@@ -1641,12 +1641,12 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
       "Luxury and Signature versions with Peninsula-level hotels, larger rooms and transport upgrades are quoted separately.",
   },
   "china-family-tour-with-pandas-12-day-private-tour": {
-    fromUsd: 6880,
+    fromUsd: 5850,
     pricingUnit: "per-person",
     basePartySize: 4,
     cardBasis: "Based on a family of four sharing two rooms",
     basis:
-      "Indicative starting price per person, based on a family of four: two adults and two children aged 6–11 sharing two rooms outside Chinese public holidays, school-holiday pressure dates and other peak periods, equivalent to a family total from US$27,520.",
+      "Indicative starting price per person, based on a family of four: two adults and two children aged 6–11 sharing two rooms outside Chinese public holidays, school-holiday pressure dates and other peak periods, equivalent to a family total from US$23,400.",
     inclusionSummary:
       "Includes 11 nights in selected premium five-star hotels, two rooms, private family-ready guides and vehicles, listed entrance tickets, two first-class rail sectors, a nonstop Chengdu–Shanghai economy flight, selected meals, the listed hands-on private experiences and China-based family journey support.",
     finalPriceNote:

@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   compress: true,
   allowedDevOrigins: ["localhost", "127.0.0.1"],
   outputFileTracingIncludes: {
-    "/journal/[slug]": ["./content/journal/articles/**/*.md"],
+    "/journal/[slug]": ["./content/journal/articles/**/*.md", "./content/blog/**/*.md"],
   },
   webpack(config) {
     config.module.rules.push({
@@ -59,6 +59,11 @@ const nextConfig: NextConfig = {
       {
         source: "/blog/is-china-safe-for-elderly-travelers-senior-care-guide",
         destination: "/journal/is-china-safe-for-elderly-travelers-senior-care-guide",
+        permanent: true,
+      },
+      {
+        source: "/blog/the-ultimate-guide-to-traveling-in-china-with-kids",
+        destination: "/journal/the-ultimate-guide-to-traveling-in-china-with-kids",
         permanent: true,
       },
       {

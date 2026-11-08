@@ -1,4 +1,5 @@
 import type { JournalArticle } from "@/types/journal";
+import { chinaFamilyAsset } from "@/content/tours/assets";
 
 const author = {
   name: "AVIORA China Travel Team",
@@ -13,6 +14,78 @@ const textHeroImage = {
 };
 
 export const audienceExperienceArticles: JournalArticle[] = [
+  {
+    slug: "the-ultimate-guide-to-traveling-in-china-with-kids",
+    title:
+      "The Ultimate Guide to Traveling in China with Kids: Pacing, Logistics & Real Expectations",
+    dek: "A practical guide to walking, rail handoffs, room confirmation and age-aware touring for families travelling with children and grandparents.",
+    excerpt:
+      "Plan a private China family journey around realistic walking, hotel room confirmation, private transport and different energy levels across three generations.",
+    category: "Family Travel",
+    tags: [
+      "12-day-china-family-tour",
+      "private-china-tour-with-kids",
+      "multigenerational-travel-china",
+      "family-travel",
+      "luxury-travel",
+    ],
+    author: { name: "AVIORA Editorial Team", role: "China travel specialists" },
+    publishedAt: "2026-11-08",
+    updatedAt: "2026-11-08",
+    readingTime: "8 min read",
+    hero: {
+      image: chinaFamilyAsset.hero,
+      eyebrow: "A practical family travel guide",
+      mode: "image",
+    },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "The Ultimate Guide to China with Kids: Pacing and Logistics",
+      description:
+        "Plan China with children and grandparents using realistic walking estimates, room confirmation, private transport, age-aware activities and protected rest.",
+      keywords: [
+        "12 day China family tour",
+        "private China tour with kids",
+        "multigenerational travel China",
+        "traveling in China with kids",
+      ],
+      ogImage: chinaFamilyAsset.hero,
+    },
+    related: {
+      destinations: ["beijing", "xian", "chengdu", "shanghai"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+      articles: [
+        "private-china-family-tour-planning",
+        "china-family-hotel-rooms-connecting-rooms-extra-beds",
+        "best-age-for-china-family-tour",
+        "china-family-tour-cost-four",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan for every generation",
+      title: "Review the 12-day family journey",
+      description:
+        "See the Beijing, Xi'an, Chengdu and Shanghai route, then request a proposal around your dates, ages and room requirements.",
+      label: "Explore the Family Journey",
+      href: "/tours/china-family-tour-with-pandas-12-day-private-tour#inquiry",
+    },
+    sourcePath: "content/blog/the-ultimate-guide-to-traveling-in-china-with-kids.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "prepare",
+      keyAnswer:
+        "A family trip to China works best when walking, room setup, rail handoffs and rest are planned for the actual ages and mobility needs in the party, with supplier-dependent details confirmed in writing.",
+      appliesTo: [
+        "Families with children aged 6–17",
+        "Multigenerational families",
+        "First-time China visitors",
+        "Families considering a private tour",
+      ],
+      relatedJourneyReason:
+        "The linked 12-day private family tour provides a concrete Beijing, Xi'an, Chengdu and Shanghai itinerary with age-aware activities and date-specific room confirmation.",
+    },
+  },
   {
     slug: "muslim-friendly-private-china-travel",
     title: "Muslim-Friendly Private China Travel: Meals, Prayer and Honest Planning",

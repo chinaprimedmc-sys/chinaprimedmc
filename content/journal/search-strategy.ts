@@ -225,6 +225,12 @@ const strategyGroups: Array<{
     articles: [
       ["china-family-itinerary-10-to-14-days", "plan", "China family itinerary", 1],
       ["china-honeymoon-itinerary-10-to-14-days", "plan", "China honeymoon itinerary", 1],
+      [
+        "the-ultimate-guide-to-traveling-in-china-with-kids",
+        "plan",
+        "traveling in China with kids",
+        1,
+      ],
       ["china-family-tour-with-pandas-12-days", "plan", "China family tour with pandas", 1],
       ["best-age-for-china-family-tour", "evaluate", "best age for China family trip", 1],
       ["china-family-tour-cost-four", "evaluate", "China family tour cost for four", 1],

@@ -46,6 +46,7 @@ export const publicRouteSlugs = {
     "slow-paced-china-tour-for-seniors-itinerary-guide",
     "is-china-safe-for-elderly-travelers-senior-care-guide",
     "private-china-family-tour-planning",
+    "the-ultimate-guide-to-traveling-in-china-with-kids",
     "china-family-hotel-rooms-connecting-rooms-extra-beds",
     "food-allergies-dietary-restrictions-china-travel",
     "china-high-speed-trains-with-children",

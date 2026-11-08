@@ -6,6 +6,8 @@
  * 关键规则：只用已核对过的照片；实用类文章（签证、带药）用克制的氛围图，不硬配不贴题的景点。
  */
 
+import { chinaFamilyAsset } from "@/content/tours/assets";
+
 export type ArticlePhoto = {
   src: string;
   alt: string;
@@ -101,9 +103,11 @@ const photos = {
     width: 1600,
     height: 1067,
   },
+  family: chinaFamilyAsset.hero,
 } satisfies Record<string, ArticlePhoto>;
 
 const rules: Array<[RegExp, ArticlePhoto]> = [
+  [/family|kids|children/, photos.family],
   [/great-wall|mutianyu|badaling|jinshanling/, photos.greatWall],
   [/terracotta|xian/, photos.xian],
   [/forbidden-city|beijing/, photos.forbiddenCity],

@@ -1,12 +1,20 @@
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
-const articleDirectory = "content/journal/articles";
-const articleFiles = (await readdir(articleDirectory)).filter((file) => file.endsWith(".md"));
+const articleDirectories = ["content/journal/articles", "content/blog"];
+const articleFiles = (
+  await Promise.all(
+    articleDirectories.map(async (directory) =>
+      (await readdir(directory))
+        .filter((file) => file.endsWith(".md"))
+        .map((file) => path.join(directory, file)),
+    ),
+  )
+).flat();
 const rows = [];
 
 for (const file of articleFiles) {
-  const source = await readFile(path.join(articleDirectory, file), "utf8");
+  const source = await readFile(file, "utf8");
   const draft = section(source, "## Draft", [
     "## Suggested structured data",
     "## Structured Data Recommendation",
@@ -34,7 +42,10 @@ for (const file of articleFiles) {
     .trim();
 
   rows.push({
-    slug: file.replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/\.md$/, ""),
+    slug: path
+      .basename(file)
+      .replace(/^\d{4}-\d{2}-\d{2}-/, "")
+      .replace(/\.md$/, ""),
     words: text ? text.split(/\s+/).length : 0,
     headings: (draft.match(/^#{2,3}\s+/gm) ?? []).length,
     questions: (draft.match(/^#{2,3}\s+.*\?/gm) ?? []).length,

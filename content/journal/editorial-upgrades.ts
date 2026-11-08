@@ -7,6 +7,10 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "the-ultimate-guide-to-traveling-in-china-with-kids": {
+    title: "Traveling in China with Kids: Pacing, Logistics and Real Expectations",
+    seoTitle: "China with Kids: Family Pacing and Travel Logistics",
+  },
   "china-senior-travel-dining-hotels-comfort-guide": {
     title: "Senior-Friendly China Travel: Dining, Hotel Selection & Comfort Rules",
     seoTitle: "Senior-Friendly China Travel: Dining & Hotel Comfort",

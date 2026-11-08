@@ -105,6 +105,7 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "private-china-tour-cost-2026",
   ],
   [CHINA_FAMILY]: [
+    "the-ultimate-guide-to-traveling-in-china-with-kids",
     "private-china-family-tour-planning",
     "china-family-hotel-rooms-connecting-rooms-extra-beds",
     "food-allergies-dietary-restrictions-china-travel",
@@ -467,6 +468,15 @@ Object.assign(journeyJournalLinks, {
       "Review the Great Wall, Terracotta Army, panda and Shanghai chapters with age-aware pacing and protected family downtime.",
     journeyLabel: "Explore the family journey",
     planningLabel: "Adapt it for our children",
+    planningPreference: "family-panda-route",
+  },
+  "the-ultimate-guide-to-traveling-in-china-with-kids": {
+    primaryJourney: CHINA_FAMILY,
+    title: "Review the 12-day private family journey",
+    description:
+      "See the route, listed family experiences, room basis and date-specific confirmation details for Beijing, Xi'an, Chengdu and Shanghai.",
+    journeyLabel: "Explore the family journey",
+    planningLabel: "Plan for our family",
     planningPreference: "family-panda-route",
   },
   "best-age-for-china-family-tour": {

@@ -60,7 +60,14 @@ export const chinaFamily12DayTour: Tour = {
       {
         label: "Published Basis",
         value: "Four guests · two rooms",
-        helper: "Based on two adults and two children aged 6–11 outside peak periods.",
+        helper:
+          "Starting from US$5,850 per person (estimated investment for two adults and two children aged 6–11, sharing two hotel-confirmed rooms during non-peak seasons).",
+      },
+      {
+        label: "Custom Pricing",
+        value: "Priced for your dates & group",
+        helper:
+          "The written proposal reflects your dates, children's ages, confirmed room setup and selected options. Peak-period rates and room availability vary.",
       },
       {
         label: "Hotels",
@@ -78,7 +85,7 @@ export const chinaFamily12DayTour: Tour = {
         label: "Private Service",
         value: "100% private · zero shopping traps",
         helper:
-          "No group-tour timetable or compulsory shopping stops; guides, private transfers and handovers are coordinated around your party.",
+          "Private family touring with no group timetables, compulsory retail stops or hidden vendor commissions.",
       },
     ],
   },
@@ -649,9 +656,19 @@ export const chinaFamily12DayTour: Tour = {
         "Before confirming the route, we ask about comfortable walking time, stairs, balance, heat tolerance, seating and any mobility aids. We size private vehicles for the party and luggage, request suitable legroom and child seats where needed, plan shorter routes with rest buffers, and check whether site electric carts or other assistance can be booked for the specific date. Site carts are subject to local availability and access rules, so they are confirmed in the written plan rather than assumed. A family member can pause or return to the vehicle while others continue when the site layout allows.",
     },
     {
-      question: "What does the price depend on?",
+      question: "How is this 12-day family journey priced?",
       answer:
-        "Your written proposal is priced for your own family and dates, and the published route is designed around two adults and two children aged 6–11 sharing two rooms. Chinese public holidays and school-holiday pressure dates cost more. Final pricing depends on exact dates, children's ages, hotels, room configuration and confirmed experiences.",
+        "The published baseline starts from approximately US$5,850 per person, calculated for a party of four (two adults and two children aged 6–11) sharing two hotel-confirmed five-star rooms outside peak periods. The family total starts from US$23,400. Final pricing is custom-quoted for your precise travel dates, group size, and room setup, including confirmed connecting rooms or luxury family suites.",
+    },
+    {
+      question: "What is included in the estimated investment?",
+      answer:
+        "The published basis covers 11 nights in selected premium five-star hotels and two rooms, daily breakfasts, the meals and culinary experiences listed in the itinerary, two first-class high-speed rail sectors, the nonstop Chengdu–Shanghai economy flight, private family-friendly guides and vehicles on confirmed touring days, listed site admissions and transport, and the private experiences named in the itinerary: hutong cooking, a half-day Great Wall photographer, the clay-warrior studio and the Shanghai kitchen session. China-based journey planning and support are included as specified in the written proposal. International flights, insurance, visas, unlisted meals, gratuities and optional upgrades are excluded. Express or VIP access is not guaranteed and is included only when available and explicitly confirmed in writing.",
+    },
+    {
+      question: "Why does AVIORA price the journey for your dates instead of using a flat rate?",
+      answer:
+        "Luxury multigenerational travel is non-standard. Hotel and transport rates vary between shoulder seasons and peak holidays, and families have different room requirements, from confirmed connecting king/twin configurations to executive suites. We provide an itemized written proposal within 24 hours of your inquiry, subject to confirming availability and rates for the requested hotels and services.",
     },
     {
       question: "Will this itinerary work for teenagers as well as younger children?",

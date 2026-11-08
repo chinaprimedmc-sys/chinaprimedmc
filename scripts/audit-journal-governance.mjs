@@ -11,7 +11,10 @@ const catalog = await readFile("content/tours/catalog.ts", "utf8");
 const journalFiles = await listFiles(journalDirectory, ".ts");
 const journalSources = await Promise.all(journalFiles.map((file) => readFile(file, "utf8")));
 const source = journalSources.join("\n");
-const markdownFiles = await listFiles(`${journalDirectory}/articles`, ".md");
+const markdownFiles = [
+  ...(await listFiles(`${journalDirectory}/articles`, ".md")),
+  ...(await listFiles("content/blog", ".md")),
+];
 const markdown = new Map(
   await Promise.all(
     markdownFiles.map(async (file) => [file, await readFile(file, "utf8")]),
