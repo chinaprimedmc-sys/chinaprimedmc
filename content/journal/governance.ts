@@ -22,6 +22,7 @@ const officialRuleSlugs = new Set([
 ]);
 
 const operatorJudgmentSlugs = new Set([
+  "chengdu-panda-base-family-guide",
   "the-ultimate-guide-to-traveling-in-china-with-kids",
   "china-tour-no-forced-shopping",
   "how-to-choose-hotels-china-itinerary",

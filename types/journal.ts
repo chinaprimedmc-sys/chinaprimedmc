@@ -14,6 +14,7 @@ export type JournalCategory =
   | "Luxury Travel"
   | "Train Travel"
   | "Nature"
+  | "Wildlife & Nature"
   | "History"
   | "Shopping"
   | "Industry News";

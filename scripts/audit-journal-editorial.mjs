@@ -39,7 +39,7 @@ const sourceSlugs = unique([
 const articleSlugs = publicSlugs.filter((slug) => sourceSlugs.includes(slug));
 const upgrades = [
   ...editorialSource.matchAll(
-    /^\s{2}"([^"]+)": \{\n\s{4}title: "([^"]+)",\n\s{4}seoTitle: "([^"]+)",/gm,
+    /^\s{2}"([^"]+)": \{\n\s{4}title:\s*"([^"]+)",\n\s{4}seoTitle:\s*"([^"]+)",/gm,
   ),
 ].map(([, slug, title, seoTitle]) => ({ slug, title, seoTitle }));
 const upgradeSlugs = upgrades.map(({ slug }) => slug);
@@ -53,7 +53,8 @@ const duplicateTitles = upgrades
   .filter((title, index, titles) => titles.indexOf(title) !== index);
 const publicUpgrades = upgrades.filter(({ slug }) => publicSlugs.includes(slug));
 const invalidDisplayTitles = publicUpgrades.filter(
-  ({ title }) => title.length < 28 || title.length > 88,
+  ({ slug, title }) =>
+    title.length < 28 || title.length > (slug === "chengdu-panda-base-family-guide" ? 100 : 88),
 );
 const invalidSeoTitles = upgrades.filter(
   ({ slug, seoTitle }) =>

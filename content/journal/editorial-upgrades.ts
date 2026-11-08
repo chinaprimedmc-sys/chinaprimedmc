@@ -7,6 +7,11 @@ type JournalEditorialUpgrade = {
 };
 
 const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
+  "chengdu-panda-base-family-guide": {
+    title:
+      "The Insider’s Guide to Chengdu Panda Bases: Ethics, Timing, and Beating the Crowds with Children",
+    seoTitle: "Chengdu Panda Bases With Kids: Ethical Visit Guide",
+  },
   "the-ultimate-guide-to-traveling-in-china-with-kids": {
     title: "Traveling in China with Kids: Pacing, Logistics and Real Expectations",
     seoTitle: "China with Kids: Family Pacing and Travel Logistics",

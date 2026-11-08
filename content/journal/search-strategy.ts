@@ -498,6 +498,7 @@ const strategyGroups: Array<{
         "Chengdu Panda Base family visit with kids",
         1,
       ],
+      ["chengdu-panda-base-family-guide", "evaluate", "ethical Chengdu panda visit with kids", 1],
       [
         "chengdu-panda-base-heat-rain-accessibility",
         "answer",

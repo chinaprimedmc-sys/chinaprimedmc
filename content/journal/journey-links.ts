@@ -105,6 +105,7 @@ export const journeyReadingPriority: Record<string, string[]> = {
     "private-china-tour-cost-2026",
   ],
   [CHINA_FAMILY]: [
+    "chengdu-panda-base-family-guide",
     "the-ultimate-guide-to-traveling-in-china-with-kids",
     "private-china-family-tour-planning",
     "china-family-hotel-rooms-connecting-rooms-extra-beds",
@@ -477,6 +478,16 @@ Object.assign(journeyJournalLinks, {
       "See the route, listed family experiences, room basis and date-specific confirmation details for Beijing, Xi'an, Chengdu and Shanghai.",
     journeyLabel: "Explore the family journey",
     planningLabel: "Plan for our family",
+    planningPreference: "family-panda-route",
+  },
+  "chengdu-panda-base-family-guide": {
+    primaryJourney: CHINA_FAMILY,
+    alternativeJourneys: [CHENGDU_PANDA_DAY_TOUR],
+    title: "Review the panda visit in the 12-day family route",
+    description:
+      "See the early Chengdu panda-base visit, protected afternoon and family pacing in the published flagship itinerary.",
+    journeyLabel: "Explore the family journey",
+    planningLabel: "Plan our panda visit",
     planningPreference: "family-panda-route",
   },
   "best-age-for-china-family-tour": {

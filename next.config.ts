@@ -67,6 +67,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/chengdu-panda-base-family-guide",
+        destination: "/journal/chengdu-panda-base-family-guide",
+        permanent: true,
+      },
+      {
         source: "/styles",
         destination: "/tours",
         permanent: true,

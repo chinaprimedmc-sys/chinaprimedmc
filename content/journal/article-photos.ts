@@ -107,6 +107,7 @@ const photos = {
 } satisfies Record<string, ArticlePhoto>;
 
 const rules: Array<[RegExp, ArticlePhoto]> = [
+  [/chengdu-panda-base-family/, photos.panda],
   [/family|kids|children/, photos.family],
   [/great-wall|mutianyu|badaling|jinshanling/, photos.greatWall],
   [/terracotta|xian/, photos.xian],

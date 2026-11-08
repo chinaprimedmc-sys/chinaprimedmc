@@ -1,5 +1,5 @@
 import type { JournalArticle } from "@/types/journal";
-import { chinaFamilyAsset } from "@/content/tours/assets";
+import { chengduAsset, chinaFamilyAsset } from "@/content/tours/assets";
 
 const author = {
   name: "AVIORA China Travel Team",
@@ -14,6 +14,77 @@ const textHeroImage = {
 };
 
 export const audienceExperienceArticles: JournalArticle[] = [
+  {
+    slug: "chengdu-panda-base-family-guide",
+    title:
+      "The Insider’s Guide to Chengdu Panda Bases: Ethics, Timing, and Beating the Crowds with Children",
+    dek: "Compare Chengdu-area panda facilities and plan a family visit around live entry rules, animal welfare, realistic walking and a protected afternoon.",
+    excerpt:
+      "A practical family guide to ethical panda viewing, early entry, facility choice, walking limits and what no private operator can guarantee.",
+    category: "Wildlife & Nature",
+    tags: [
+      "chengdu-panda-base-tour-with-kids",
+      "ethical-panda-visit-china",
+      "family-panda-trip-chengdu-private-tour",
+      "luxury-family-holiday",
+    ],
+    author: { name: "AVIORA Editorial Team", role: "China travel specialists" },
+    publishedAt: "2026-11-08",
+    updatedAt: "2026-11-08",
+    readingTime: "8 min read",
+    hero: {
+      image: chengduAsset.heroPanda,
+      eyebrow: "Plan a responsible family panda visit",
+      mode: "image",
+    },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Chengdu Panda Bases With Kids: Ethics and Visit Planning",
+      description:
+        "Plan an ethical Chengdu panda visit with children: compare nearby bases, choose a realistic morning entry, manage walking and protect family rest.",
+      keywords: [
+        "Chengdu panda base tour with kids",
+        "ethical panda visit China",
+        "family panda trip Chengdu private tour",
+        "luxury family holiday",
+      ],
+      ogImage: chengduAsset.heroPanda,
+    },
+    related: {
+      destinations: ["chengdu"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+      articles: [
+        "chengdu-panda-base-tickets-foreigners",
+        "chengdu-panda-base-family-visit-with-kids",
+        "chengdu-panda-base-morning-visit-itinerary",
+        "china-family-tour-with-pandas-12-days",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan the panda visit around your family",
+      title: "See how the flagship family route handles Chengdu",
+      description:
+        "Review the early panda-base visit, protected afternoon and date-specific family logistics in the 12-day route.",
+      label: "Explore the 12-Day Family Journey",
+      href: "/tours/china-family-tour-with-pandas-12-day-private-tour#itinerary",
+    },
+    sourcePath: "content/blog/chengdu-panda-base-family-guide.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "Plan a family panda visit around the facility's current entry rules, an early available time, focused walking and rest; animal behavior, quiet conditions and special access cannot be guaranteed.",
+      appliesTo: [
+        "Families with children",
+        "Multigenerational parties",
+        "First-time visitors to Chengdu",
+        "Travelers comparing Chengdu-area panda facilities",
+      ],
+      relatedJourneyReason:
+        "The linked 12-day private family tour includes a date-specific early panda-base visit, paved visitor routes and a protected Chengdu afternoon.",
+    },
+  },
   {
     slug: "the-ultimate-guide-to-traveling-in-china-with-kids",
     title:
