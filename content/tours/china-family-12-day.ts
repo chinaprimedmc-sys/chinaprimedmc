@@ -44,7 +44,7 @@ export const chinaFamily12DayTour: Tour = {
   },
   overview: {
     pitch:
-      "Four defining cities, designed around the way a family actually travels: one emotional high point each day, hands-on encounters that make history tangible, and invisible support for rooms, meals, luggage, tickets and changing energy.",
+      "A private four-city journey engineered for parents, children aged 6–17 and grandparents: one clear daily highlight, hands-on cultural encounters and active coordination of room configuration, private transport, mobility pace and changing family energy. Rest buffers and practical handovers are built into the route so parents can travel with their family rather than manage it.",
     facts: [
       {
         label: "Duration",
@@ -64,18 +64,21 @@ export const chinaFamily12DayTour: Tour = {
       },
       {
         label: "Hotels",
-        value: "Premium five-star family hotels",
-        helper: "The exact two-room or connecting-room setup is verified before booking.",
+        value: "Premium five-star hotels",
+        helper:
+          "Connecting rooms or a family suite are confirmed with the hotel and recorded in writing before booking; unconfirmed room requests are not sold as guarantees.",
       },
       {
         label: "Pacing",
-        value: "Age-aware and private",
-        helper: "High-energy experiences are followed by protected family downtime.",
+        value: "Multigenerational pacing with rest buffers",
+        helper:
+          "Daily starts, walking routes and optional stops can shift with grandparents' mobility and the children's energy.",
       },
       {
         label: "Private Service",
-        value: "Family-ready guides, vehicles and support",
-        helper: "No group-tour timetable, compulsory shopping or parent-managed logistics.",
+        value: "100% private · zero shopping traps",
+        helper:
+          "No group-tour timetable or compulsory shopping stops; guides, private transfers and handovers are coordinated around your party.",
       },
     ],
   },
@@ -192,7 +195,7 @@ export const chinaFamily12DayTour: Tour = {
       title: "The Forbidden City becomes a family mystery",
       destination: "Beijing",
       summary:
-        "Follow a selected palace route rather than every courtyard. Your guide leads an age-aware Junior Curator Mission through animals, roof figures, court rituals and hidden meanings. A private seated tea-and-object session gives the family space to compare discoveries. Family energy: Medium to high.",
+        "Allow about 2.5 hours inside the Forbidden City for a selected route of approximately 3.5 km on foot, with several shaded pauses. An age-aware Junior Curator Mission turns roof figures, animals and court rituals into an active search; a seated tea-and-object session follows. Family energy: Medium to high.",
       image: firstChinaAsset.beijingForbiddenCityLion,
       hotel: hotelByCity.beijing,
       meals: ["Breakfast", "Selected lunch"],
@@ -210,7 +213,7 @@ export const chinaFamily12DayTour: Tour = {
         },
       ],
       guideNote:
-        "The Forbidden City involves extensive walking and standing; the route and exit point are tailored before travel.",
+        "The walking estimate is approximate and varies with access, crowd controls and the route open on the day. The guide plans shaded pauses and confirms the route and exit point before travel; this is not a step-free visit.",
       coordinates: { latitude: 39.9163, longitude: 116.3972 },
     },
     {
@@ -218,7 +221,7 @@ export const chinaFamily12DayTour: Tour = {
       title: "Your family's Great Wall chapter",
       destination: "Beijing",
       summary:
-        "Reach Mutianyu with private transport, use the suitable cable-car route and take on a family challenge between selected watchtowers. A professional photographer joins for half the day, then a mountain-view lunch and free evening protect the feeling of achievement. Family energy: High.",
+        "Travel to Mutianyu by private vehicle and use the scenic area's private-booked cable-car arrangement selected for the family and live operations. Plan 1.5–2 hours of gentle, guide-supported walking between selected watchtowers, with turnaround points set by the youngest and least-mobile guest. A professional photographer joins for a half-day session; a relaxed lunch and free evening follow. Family energy: High.",
       image: firstChinaAsset.beijingGreatWallWide,
       hotel: hotelByCity.beijing,
       meals: ["Breakfast", "Mountain-view family lunch"],
@@ -241,7 +244,7 @@ export const chinaFamily12DayTour: Tour = {
         },
       ],
       guideNote:
-        "Cable cars reduce but do not remove steps and uneven paving. Toboggan descent is considered only when age, weather, operation and family preference make it appropriate.",
+        "The cable-car model and boarding point are confirmed against current scenic-area operations for the travel date. The Wall still has slopes, steps and uneven paving; the walking estimate is a planning range, not a step-free guarantee. Toboggan descent is considered only when age, weather, operation and family preference make it appropriate.",
       coordinates: { latitude: 40.4319, longitude: 116.5704 },
     },
     {
@@ -274,16 +277,16 @@ export const chinaFamily12DayTour: Tour = {
       title: "Meet an ancient army, then make one of your own",
       destination: "Xi'an",
       summary:
-        "Visit the Terracotta Army through a focused story of discovery, individuality and the first emperor. After lunch, enter a local artisan studio where each child and parent shapes and details a small clay warrior. Return for downtime before the evening. Family energy: High.",
+        "Use a strategically timed entry to reduce avoidable queueing and standing, then follow a focused Pit 1–3 sequence with seated or shaded pauses where the site permits. After lunch, meet a local artisan in a private clay-warrior studio, then return to the hotel for protected downtime. Family energy: High.",
       image: firstChinaAsset.xianTerracottaPit,
       hotel: hotelByCity.xian,
       meals: ["Breakfast", "Selected lunch"],
       transport: "Private vehicle and private family guide",
       activities: [
         {
-          title: "The Terracotta Army, edited for attention",
+          title: "Priority-timed Terracotta Army visit",
           description:
-            "Your guide sequences the pits around the strongest visual reveals, rest points and each child's questions rather than trying to cover every display case.",
+            "Entry timing is arranged for the confirmed date to reduce unnecessary standing where ticketing and crowd conditions allow. The guide focuses on Pits 1–3 in a clear sequence, building in pauses and time for questions rather than attempting every display case.",
         },
         {
           title: "Private clay-warrior studio",
@@ -292,7 +295,7 @@ export const chinaFamily12DayTour: Tour = {
         },
       ],
       guideNote:
-        "The museum has crowds, standing and hard surfaces; an early or strategically timed start is selected for the confirmed travel date.",
+        "Priority timing means a planned entry slot, not a queue-free or skip-the-line guarantee. The museum has crowds, standing and hard surfaces; final entry time depends on the ticket inventory and operating rules for the confirmed date.",
       coordinates: { latitude: 34.3841, longitude: 109.2785 },
     },
     {
@@ -325,7 +328,7 @@ export const chinaFamily12DayTour: Tour = {
       title: "Pandas at their best hour, rest at yours",
       destination: "Chengdu",
       summary:
-        "Leave early for the most suitable Chengdu panda facility and a route planned around seasonal behavior, walking and crowds. An age-aware conservation conversation helps children understand what responsible panda care involves. Return after lunch for a completely protected afternoon. Family energy: Medium.",
+        "Enter early in the pandas' usual morning activity window, subject to the facility's opening time and the confirmed date. Follow comfortable paved visitor routes at an unhurried pace, then return after lunch. The afternoon is protected for hotel rest, with no sightseeing scheduled. Family energy: Medium.",
       image: chengduAsset.pandaMorning,
       hotel: hotelByCity.chengdu,
       meals: ["Breakfast", "Selected lunch"],
@@ -334,7 +337,7 @@ export const chinaFamily12DayTour: Tour = {
         {
           title: "A better-timed panda visit",
           description:
-            "The facility and entry time are chosen around the date, current conditions and the pandas' usual morning rhythm, with a route that avoids unnecessary backtracking.",
+            "The facility and entry time are chosen around the date, opening hours and the pandas' usual morning activity window. The guide uses comfortable paved visitor routes and avoids unnecessary backtracking; animal activity can never be guaranteed.",
         },
         {
           title: "Conservation through children's questions",
@@ -348,7 +351,7 @@ export const chinaFamily12DayTour: Tour = {
         },
       ],
       guideNote:
-        "This itinerary does not promise panda holding, keeper access or direct animal contact. Any specialist is subject to availability and may be replaced by a mutually agreed equivalent.",
+        "The afternoon remains free of scheduled touring. This itinerary does not promise panda holding, keeper access or direct animal contact. Any specialist is subject to availability and may be replaced by a mutually agreed equivalent.",
       coordinates: { latitude: 30.7381, longitude: 104.1414 },
     },
     {
@@ -641,6 +644,11 @@ export const chinaFamily12DayTour: Tour = {
   ],
   faqs: [
     {
+      question: "How does AVIORA support a family travelling with aging parents?",
+      answer:
+        "Before confirming the route, we ask about comfortable walking time, stairs, balance, heat tolerance, seating and any mobility aids. We size private vehicles for the party and luggage, request suitable legroom and child seats where needed, plan shorter routes with rest buffers, and check whether site electric carts or other assistance can be booked for the specific date. Site carts are subject to local availability and access rules, so they are confirmed in the written plan rather than assumed. A family member can pause or return to the vehicle while others continue when the site layout allows.",
+    },
+    {
       question: "What does the price depend on?",
       answer:
         "Your written proposal is priced for your own family and dates, and the published route is designed around two adults and two children aged 6–11 sharing two rooms. Chinese public holidays and school-holiday pressure dates cost more. Final pricing depends on exact dates, children's ages, hotels, room configuration and confirmed experiences.",
@@ -653,7 +661,17 @@ export const chinaFamily12DayTour: Tour = {
     {
       question: "Are connecting rooms guaranteed?",
       answer:
-        "Connecting rooms are not guaranteed by a generic hotel label. AVIORA checks the exact property, room categories and connecting configuration for your dates and states the confirmed setup in the written proposal before booking.",
+        "We do not treat a request as a guarantee. Before you book, AVIORA checks the exact hotel, dates, room categories, occupancy and connecting door or family-suite configuration with the property. The confirmed arrangement must be stated in writing in the final proposal or booking documents before payment; if it cannot be confirmed, we present the available alternatives and you decide whether to proceed.",
+    },
+    {
+      question: "Does AVIORA include shopping stops or receive commission for shopping?",
+      answer:
+        "No. This is a 100% private journey with a strict zero-shopping-trap policy: no compulsory factory, showroom or retail stops are inserted into sightseeing, and guides do not redirect the family to a shop as a condition of the tour. A market visit appears only where it is a stated cultural or culinary activity, such as choosing ingredients for the planned cooking session; purchases are optional.",
+    },
+    {
+      question: "How are activities adapted for ages 6–9, 10–13 and 14–17?",
+      answer:
+        "For ages 6–9, guides use short visual missions, movement and making, with frequent changes of focus. Ages 10–13 get clues, team challenges and choices that reward observation. Ages 14–17 can go deeper into architecture, archaeology, photography, food systems and contemporary China, with room to question the guide rather than follow a children's script. Families travelling across age bands share the same visit while each child receives a different prompt; the exact activity is agreed during planning.",
     },
     {
       question: "Does the tour include holding or feeding a panda?",
@@ -673,7 +691,7 @@ export const chinaFamily12DayTour: Tour = {
     {
       question: "Can grandparents travel on this family journey?",
       answer:
-        "Yes. We can adapt vehicles, walking routes, room setup and daily options for a multigenerational party. Historic sites still include steps, uneven ground and standing, so mobility details should be shared before booking.",
+        "Yes. The itinerary is designed for multigenerational parties, with private transport, flexible starts, shorter walking options and rest buffers. We can request more legroom in the vehicle, arrange an electric cart where a site offers one and it is available, and let grandparents skip a section without forcing the whole family to abandon the day. Historic sites still include steps, uneven ground and standing; share mobility details before booking so we can confirm what each venue can support.",
     },
     {
       question: "Can we upgrade the journey further?",
