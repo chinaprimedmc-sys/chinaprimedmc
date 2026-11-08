@@ -51,6 +51,7 @@ export const publicRouteSlugs = {
     "mutianyu-great-wall-multigenerational-guide",
     "multigenerational-china-travel-blueprint",
     "bringing-history-to-life-forbidden-city-terracotta-warriors",
+    "shanghai-chengdu-modern-china-tech-family-guide",
     "china-family-hotel-rooms-connecting-rooms-extra-beds",
     "food-allergies-dietary-restrictions-china-travel",
     "china-high-speed-trains-with-children",

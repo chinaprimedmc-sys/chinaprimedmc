@@ -15,6 +15,75 @@ const textHeroImage = {
 
 export const audienceExperienceArticles: JournalArticle[] = [
   {
+    slug: "shanghai-chengdu-modern-china-tech-family-guide",
+    title:
+      "The Dual-Pulse of Modern China: Navigating Shanghai’s Skyline and Chengdu’s Slow Life with Tech-Native Kids",
+    dek: "Pair Shanghai's skyline and Chengdu's contemporary streets with family-friendly pacing and the correct rail and flight sequence.",
+    excerpt:
+      "Plan Shanghai and Chengdu with tech-native children using realistic skyline and teahouse stops, protected rest and accurate transport details.",
+    category: "Modern China & Innovation",
+    tags: [
+      "shanghai-luxury-travel-with-teenagers",
+      "chengdu-modern-family-tour",
+      "high-speed-train-luxury-china",
+      "china-tech-experience-for-kids",
+    ],
+    author: { name: "AVIORA Editorial Team", role: "China travel specialists" },
+    publishedAt: "2026-11-08",
+    updatedAt: "2026-11-08",
+    readingTime: "8 min read",
+    hero: {
+      image: firstChinaAsset.shanghaiPudongSkyline,
+      eyebrow: "Explore the modern city through family eyes",
+      mode: "image",
+    },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Shanghai and Chengdu With Tech-Native Kids",
+      description:
+        "Plan a family visit to Shanghai and Chengdu with a skyline day, a slower teahouse rhythm and clear rail and flight logistics.",
+      keywords: [
+        "Shanghai luxury travel with teenagers",
+        "Chengdu modern family tour",
+        "high speed train luxury China",
+        "China tech experience for kids",
+      ],
+      ogImage: firstChinaAsset.shanghaiPudongSkyline,
+    },
+    related: {
+      destinations: ["shanghai", "chengdu"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+      articles: [
+        "china-high-speed-trains-with-children",
+        "chengdu-panda-base-family-guide",
+        "china-family-tour-with-pandas-12-days",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan for your family's interests and energy",
+      title: "See how Chengdu and Shanghai fit the full route",
+      description:
+        "Review the panda visit, Chengdu choice day, Shanghai skyline and actual transport between cities.",
+      label: "Explore the 12-Day Family Journey",
+      href: "/tours/china-family-tour-with-pandas-12-day-private-tour#itinerary",
+    },
+    sourcePath: "content/blog/shanghai-chengdu-modern-china-tech-family-guide.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "The flagship family route combines Shanghai's Bund and Pudong skyline with Chengdu's teahouse and contemporary city life; it uses first-class high-speed rail to Xi'an and Chengdu, then a nonstop economy flight to Shanghai.",
+      appliesTo: [
+        "Families with tech-native children and teenagers",
+        "Multigenerational travelers considering Shanghai and Chengdu",
+        "Families planning a private China route",
+      ],
+      relatedJourneyReason:
+        "The linked 12-day family itinerary provides the actual city sequence, transport classes and optional activities for Chengdu and Shanghai.",
+    },
+  },
+  {
     slug: "bringing-history-to-life-forbidden-city-terracotta-warriors",
     title:
       "Bringing History to Life: Decoding the Forbidden City and Terracotta Army with Kids and Teens",

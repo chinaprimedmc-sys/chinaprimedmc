@@ -66,6 +66,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
       <ArticleStickyCta articleSlug={article.slug} />
       <ArticleHero article={article} />
       <CompactTrust article={article} />
+      {article.keyTakeaways?.length ? <KeyTakeaways items={article.keyTakeaways} /> : null}
 
       <section id="article" className={styles.reading}>
         <ArticleMobileReader
@@ -408,6 +409,21 @@ function ArticleContentSection({ section }: { section: ArticleSection }) {
         {section.blocks.map((block, index) => (
           <ArticleBlock key={`${block.type}-${index}`} block={block} />
         ))}
+      </div>
+    </section>
+  );
+}
+
+function KeyTakeaways({ items }: { items: string[] }) {
+  return (
+    <section className={styles.takeaways} aria-labelledby="key-takeaways-title">
+      <div className={`${styles.container} ${styles.takeawaysInner}`}>
+        <h2 id="key-takeaways-title">Key Takeaways</h2>
+        <ul>
+          {items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
       </div>
     </section>
   );

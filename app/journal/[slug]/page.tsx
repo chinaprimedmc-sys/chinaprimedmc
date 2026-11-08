@@ -106,7 +106,7 @@ function articleSchema(article: JournalArticle) {
   const isFirstTripPlanningGuide = article.slug === firstTripPlanningGuide.slug;
   const articleUrl = new URL(`/journal/${article.slug}`, siteConfig.url).toString();
 
-  const schema = articleSchemaData({
+  const schema: Record<string, unknown> = articleSchemaData({
     headline: article.title,
     description: article.seo.description,
     url: articleUrl,
@@ -143,6 +143,30 @@ function articleSchema(article: JournalArticle) {
     citations: article.citations,
     factChecked: Boolean(article.lastFactCheckedAt),
   });
+
+  if (article.schemaType === "TechArticle") {
+    schema["@type"] = ["BlogPosting", "TechArticle"];
+  }
+  if (article.aiTargetAudience) {
+    schema.audience = {
+      "@type": "Audience",
+      audienceType: article.aiTargetAudience,
+    };
+  }
+  if (article.keyTakeaways?.length) {
+    schema.hasPart = [
+      {
+        "@type": "ItemList",
+        name: "Key takeaways",
+        numberOfItems: article.keyTakeaways.length,
+        itemListElement: article.keyTakeaways.map((name, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name,
+        })),
+      },
+    ];
+  }
 
   return {
     ...schema,
@@ -272,8 +296,9 @@ function destinationName(slug: string) {
 }
 
 function countArticleWords(article: JournalArticle) {
-  const text = article.content
-    .flatMap((block) => {
+  const text = [
+    ...(article.keyTakeaways ?? []),
+    ...article.content.flatMap((block) => {
       switch (block.type) {
         case "heading":
           return [block.title];
@@ -296,7 +321,8 @@ function countArticleWords(article: JournalArticle) {
         case "image":
           return [block.caption ?? ""];
       }
-    })
+    }),
+  ]
     .join(" ")
     .replace(/\[[^\]]+\]\([^)]+\)/g, " ")
     .trim();

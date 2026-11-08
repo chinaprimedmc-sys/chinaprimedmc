@@ -2,6 +2,7 @@ import "server-only";
 
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { parse as parseYaml } from "yaml";
 
 import { toJournalDisplayTitleCase } from "@/content/journal/editorial-upgrades";
 import visaTransitMarkdown from "@/content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md";
@@ -60,6 +61,7 @@ import pandaFamilyGuideMarkdown from "@/content/blog/chengdu-panda-base-family-g
 import mutianyuFamilyGuideMarkdown from "@/content/blog/mutianyu-great-wall-multigenerational-guide.md";
 import multigenerationalChinaBlueprintMarkdown from "@/content/blog/multigenerational-china-travel-blueprint.md";
 import forbiddenCityTerracottaFamilyMarkdown from "@/content/blog/bringing-history-to-life-forbidden-city-terracotta-warriors.md";
+import shanghaiChengduModernFamilyMarkdown from "@/content/blog/shanghai-chengdu-modern-china-tech-family-guide.md";
 import familyAgeMarkdown from "@/content/journal/articles/2026-09-25-best-age-for-china-family-tour.md";
 import familyCostMarkdown from "@/content/journal/articles/2026-09-25-china-family-tour-cost-four.md";
 import luxuryYunnanMarkdown from "@/content/journal/articles/2026-09-25-luxury-yunnan-private-tour-10-days.md";
@@ -87,7 +89,7 @@ import slowPacedGuideMarkdown from "@/content/journal/articles/2026-11-05-slow-p
 import elderlySafetyMarkdown from "@/content/journal/articles/2026-11-05-is-china-safe-for-elderly-travelers-senior-care-guide.md";
 import seniorAudienceMarkdown from "@/content/journal/articles/2026-10-04-slow-paced-china-tour-for-seniors.md";
 import familyAudienceMarkdown from "@/content/journal/articles/2026-10-04-private-china-family-tour-planning.md";
-import type { JournalArticle, JournalContentBlock } from "@/types/journal";
+import type { JournalArticle, JournalContentBlock, JournalSchemaType } from "@/types/journal";
 
 const fullFrameImageMetadata: Record<string, { width: number; height: number; fit: "contain" }> = {
   "/journal/2026-08-06/china-high-speed-train-boarding.webp": {
@@ -149,6 +151,8 @@ const bundledMarkdown: Record<string, string> = {
     multigenerationalChinaBlueprintMarkdown,
   "content/blog/bringing-history-to-life-forbidden-city-terracotta-warriors.md":
     forbiddenCityTerracottaFamilyMarkdown,
+  "content/blog/shanghai-chengdu-modern-china-tech-family-guide.md":
+    shanghaiChengduModernFamilyMarkdown,
   "content/blog/the-ultimate-guide-to-traveling-in-china-with-kids.md": familyKidsGuideMarkdown,
   "content/journal/articles/2026-11-06-china-senior-travel-dining-hotels-comfort-guide.md":
     diningHotelsComfortMarkdown,
@@ -297,6 +301,9 @@ export async function hydrateJournalArticle(article: JournalArticle): Promise<Jo
     content: polishJournalContent(parsed.content),
     citations: article.citations?.length ? article.citations : parsed.citations,
     lastFactCheckedAt: article.lastFactCheckedAt ?? parsed.lastFactCheckedAt,
+    schemaType: article.schemaType ?? parsed.schemaType,
+    aiTargetAudience: article.aiTargetAudience ?? parsed.aiTargetAudience,
+    keyTakeaways: article.keyTakeaways ?? parsed.keyTakeaways,
   };
 }
 
@@ -358,6 +365,34 @@ function parseJournalMarkdown(markdown: string) {
     content: parseBlocks(draft),
     citations: parseSourceCitations(sources),
     lastFactCheckedAt: markdown.match(/^sources_verified_at:\s*["']?([^"'\n]+)["']?\s*$/m)?.[1],
+    ...parseAiFrontmatter(markdown),
+  };
+}
+
+function parseAiFrontmatter(markdown: string) {
+  const frontmatter = markdown.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\s*\r?\n|$)/)?.[1];
+  if (!frontmatter || !/^\s*(?:keyTakeaways|schemaType|aiTargetAudience):/m.test(frontmatter)) {
+    return {};
+  }
+
+  const metadata = parseYaml(frontmatter);
+  if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) return {};
+
+  const record = metadata as Record<string, unknown>;
+  const keyTakeaways = Array.isArray(record.keyTakeaways)
+    ? record.keyTakeaways.filter((item): item is string => typeof item === "string")
+    : undefined;
+  const schemaType: JournalSchemaType | undefined =
+    record.schemaType === "TechArticle" || record.schemaType === "BlogPosting"
+      ? record.schemaType
+      : undefined;
+  const aiTargetAudience =
+    typeof record.aiTargetAudience === "string" ? record.aiTargetAudience : undefined;
+
+  return {
+    ...(keyTakeaways?.length ? { keyTakeaways } : {}),
+    ...(schemaType ? { schemaType } : {}),
+    ...(aiTargetAudience ? { aiTargetAudience } : {}),
   };
 }
 

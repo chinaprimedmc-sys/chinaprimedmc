@@ -7,6 +7,7 @@ export type JournalCategory =
   | "Food"
   | "Culture"
   | "Culture & History"
+  | "Modern China & Innovation"
   | "Luxury Hotels"
   | "Festivals"
   | "Adventure"
@@ -93,6 +94,8 @@ export type JournalContentBlock =
       answer: string;
     };
 
+export type JournalSchemaType = "BlogPosting" | "TechArticle";
+
 export type JournalRelatedManual = {
   destinations?: string[];
   tours?: string[];
@@ -117,6 +120,9 @@ export type JournalArticle = {
   author: JournalAuthor;
   publishedAt: string;
   updatedAt?: string;
+  schemaType?: JournalSchemaType;
+  aiTargetAudience?: string;
+  keyTakeaways?: string[];
   /** 仅在原始文章明确提供 sources_verified_at 时存在。 */
   lastFactCheckedAt?: string;
   /** Governance metadata applied from the public journal registry. */

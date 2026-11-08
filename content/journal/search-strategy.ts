@@ -518,6 +518,12 @@ const strategyGroups: Array<{
         1,
       ],
       [
+        "shanghai-chengdu-modern-china-tech-family-guide",
+        "plan",
+        "Shanghai and Chengdu family tour with teenagers",
+        1,
+      ],
+      [
         "chengdu-panda-base-heat-rain-accessibility",
         "answer",
         "Chengdu Panda Base heat rain visit plan",

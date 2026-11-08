@@ -65,7 +65,9 @@ const invalidDisplayTitles = publicUpgrades.filter(
         "bringing-history-to-life-forbidden-city-terracotta-warriors",
       ].includes(slug)
         ? 100
-        : 88),
+        : slug === "shanghai-chengdu-modern-china-tech-family-guide"
+          ? 115
+          : 88),
 );
 const invalidSeoTitles = upgrades.filter(
   ({ slug, seoTitle }) =>

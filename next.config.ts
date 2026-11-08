@@ -87,6 +87,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/shanghai-chengdu-modern-china-tech-family-guide",
+        destination: "/journal/shanghai-chengdu-modern-china-tech-family-guide",
+        permanent: true,
+      },
+      {
         source: "/styles",
         destination: "/tours",
         permanent: true,

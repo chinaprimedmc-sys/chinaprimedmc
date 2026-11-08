@@ -113,6 +113,50 @@
   border-bottom: 1px solid var(--article-line);
 }
 
+.takeaways {
+  border-bottom: 1px solid var(--article-line);
+  background: #f6f8f6;
+}
+
+.takeawaysInner {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+}
+
+.takeawaysInner h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.takeawaysInner ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.takeawaysInner li {
+  color: var(--article-ink);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 767px) {
+  .takeawaysInner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+    padding-block: 1.25rem;
+  }
+
+  .takeawaysInner ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .evidenceNote {
   border-bottom: 1px solid var(--article-line);
   background: #fbfcfb;

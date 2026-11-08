@@ -28,6 +28,12 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     seoTitle: "Forbidden City and Terracotta Army With Kids",
     preserveTitleCase: true,
   },
+  "shanghai-chengdu-modern-china-tech-family-guide": {
+    title:
+      "The Dual-Pulse of Modern China: Navigating Shanghai’s Skyline and Chengdu’s Slow Life with Tech-Native Kids",
+    seoTitle: "Shanghai and Chengdu With Tech-Native Kids",
+    preserveTitleCase: true,
+  },
   "the-ultimate-guide-to-traveling-in-china-with-kids": {
     title: "Traveling in China with Kids: Pacing, Logistics and Real Expectations",
     seoTitle: "China with Kids: Family Pacing and Travel Logistics",
