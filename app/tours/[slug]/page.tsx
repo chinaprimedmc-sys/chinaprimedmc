@@ -6,6 +6,9 @@ import { siteConfig } from "@/config/site";
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
 import { getJourneyHeadline, getJourneySeoTitle } from "@/content/tours/card-copy";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
+import { FAQSchema } from "@/components/seo/faq-schema";
+import { ItineraryProductSchema } from "@/components/seo/itinerary-product-schema";
 import {
   createFrameworkTourDetailModel,
   createTourDetailModel,
@@ -14,7 +17,6 @@ import { TourDetailLanding } from "@/features/tours/detail/tour-detail-landing";
 import { bookingPolicyFaqs, frameworkTourFaqs } from "@/features/tours/detail/tour-detail-model";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema } from "@/lib/seo/schema";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
 import { readJourneyConfiguration } from "@/lib/tours/journey-price";
 
@@ -45,6 +47,8 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       path: `/tours/${staticTour.slug}`,
       image: staticTour.visualStatus === "pending" ? undefined : staticTour.hero.image.src,
       keywords: staticTour.seo.keywords,
+      titleYear: Number((staticTour.updatedAt ?? staticTour.publishedAt)?.slice(0, 4)),
+      callToAction: "View the itinerary and request a tailored proposal",
     });
   }
 
@@ -59,6 +63,8 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
     description: journey.summary,
     path: `/tours/${journey.slug}`,
     image: journey.image.src,
+    titleYear: new Date().getUTCFullYear(),
+    callToAction: "Review the itinerary and request a tailored proposal",
     keywords: [
       `${journey.routeLabel} private tour`,
       `${journey.durationLabel} China itinerary`,
@@ -182,131 +188,72 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
               ];
     return (
       <>
-        <JsonLd
+        <ItineraryProductSchema
           id={`${staticTour.slug}-tour-schema`}
-          data={{
-            "@context": "https://schema.org",
-            "@type": "TouristTrip",
-            "@id": `${tourUrl}#tour`,
+          itinerary={{
+            id: `${tourUrl}#tour`,
             identifier: staticTour.slug,
-            sku: staticTour.slug,
             name: (catalogItem && getJourneyHeadline(catalogItem)) || staticTour.title,
             alternateName: staticTour.title,
             description: staticTour.seo.description,
             url: tourUrl,
-            mainEntityOfPage: { "@id": `${tourUrl}#webpage` },
+            mainEntityOfPage: `${tourUrl}#webpage`,
             category: catalogItem?.commercialRoleLabel ?? "Premium private China tour",
             duration: `P${staticTour.itinerary.length}D`,
-            brand: {
-              "@type": "Brand",
-              name: siteConfig.name,
-            },
-            audience: isMuslimFriendly
-              ? {
-                  "@type": "PeopleAudience",
-                  audienceType:
-                    "Muslim families, Muslim couples, multigenerational groups and private travelers seeking verified dining and prayer-aware China travel",
-                }
+            brandName: siteConfig.name,
+            audienceType: isMuslimFriendly
+              ? "Muslim families, Muslim couples, multigenerational groups and private travelers seeking verified dining and prayer-aware China travel"
               : isChinaFamily
-                ? {
-                    "@type": "PeopleAudience",
-                    audienceType:
-                      "Families with children aged 6 to 17, first-time China visitors and multigenerational families",
-                  }
+                ? "Families with children aged 6 to 17, first-time China visitors and multigenerational families"
                 : isChinaConsidered
-                  ? {
-                      "@type": "PeopleAudience",
-                      audienceType:
-                        "Couples, mature travelers, families planning for parents and first-time China visitors",
-                    }
+                  ? "Couples, mature travelers, families planning for parents and first-time China visitors"
                   : isYunnan
-                    ? {
-                        "@type": "PeopleAudience",
-                        audienceType:
-                          "Couples, friends, private groups and repeat China visitors interested in culture, tea, landscapes and boutique stays",
-                      }
+                    ? "Couples, friends, private groups and repeat China visitors interested in culture, tea, landscapes and boutique stays"
                     : undefined,
-            ...(staticTour.visualStatus === "pending"
-              ? {}
-              : {
-                  image: Array.from(
+            image:
+              staticTour.visualStatus === "pending"
+                ? undefined
+                : Array.from(
                     new Set([
                       staticTour.hero.image.src,
                       ...staticTour.itinerary.map((day) => day.image.src),
                       ...staticTour.gallery.map((image) => image.src),
                     ]),
                   ).map((image) => new URL(image, siteConfig.url).toString()),
-                }),
-            itinerary: {
-              "@type": "ItemList",
-              numberOfItems: staticTour.itinerary.length,
-              itemListElement: staticTour.itinerary.map((day) => ({
-                "@type": "ListItem",
-                position: day.day,
-                name: `Day ${day.day}: ${day.title}`,
-                description: day.summary,
-                item: {
-                  "@type": "TouristTrip",
-                  name: `Day ${day.day}: ${day.title}`,
-                  description: day.summary,
-                  itinerary: [
-                    {
-                      "@type": "Place",
-                      name: day.destination,
-                      geo: day.coordinates
-                        ? {
-                            "@type": "GeoCoordinates",
-                            latitude: day.coordinates.latitude,
-                            longitude: day.coordinates.longitude,
-                          }
-                        : undefined,
-                    },
-                    {
-                      "@type": "ItemList",
-                      name: `Day ${day.day} experiences`,
-                      numberOfItems: day.activities.length,
-                      itemListElement: day.activities.map((activity, index) => ({
-                        "@type": "ListItem",
-                        position: index + 1,
-                        item: {
-                          "@type": "Thing",
-                          name: activity.title,
-                          description: activity.description,
-                        },
-                      })),
-                    },
-                  ],
-                },
+            itinerary: staticTour.itinerary.map((day) => ({
+              position: day.day,
+              name: `Day ${day.day}: ${day.title}`,
+              description: day.summary,
+              destination: {
+                name: day.destination,
+                latitude: day.coordinates?.latitude,
+                longitude: day.coordinates?.longitude,
+              },
+              activities: day.activities.map((activity) => ({
+                name: activity.title,
+                description: activity.description,
               })),
-            },
+            })),
             touristType: catalogItem?.bestForFilters ?? staticTour.styles,
-            offers:
+            offer:
               catalogItem && selectedPrice !== undefined
                 ? {
-                    "@type": "Offer",
                     price: selectedPrice,
                     priceCurrency: "USD",
                     url: tourUrl,
                     availability: "https://schema.org/LimitedAvailability",
                     category: "Private premium China tour",
                     description: catalogItem.pricing.basis,
-                    seller: { "@id": `${siteConfig.url}/#organization` },
-                    priceSpecification: {
-                      "@type": "UnitPriceSpecification",
-                      price: selectedPrice,
-                      priceCurrency: "USD",
-                      unitText:
-                        isPrivateShanghaiDayTour ||
-                        isPrivateXianTerracottaDayTour ||
-                        isPrivateChengduPandaDayTour ||
-                        isGuilinLiRiverDayTour
-                          ? "per private group of four guests"
-                          : "per person",
-                      description: catalogItem.pricing.basis,
-                    },
+                    unitText:
+                      isPrivateShanghaiDayTour ||
+                      isPrivateXianTerracottaDayTour ||
+                      isPrivateChengduPandaDayTour ||
+                      isGuilinLiRiverDayTour
+                        ? "per private group of four guests"
+                        : "per person",
                   }
                 : undefined,
-            additionalProperty: [
+            additionalProperties: [
               ...(catalogItem
                 ? [
                     ["Journey collection", catalogItem.commercialRoleLabel],
@@ -316,16 +263,13 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
                 : []),
               ...tourProperties,
             ].map(([name, value]) => ({
-              "@type": "PropertyValue",
               name,
               value,
             })),
             subjectOf: reading.map((article) => ({
-              "@type": "Article",
               name: article.title,
               url: new URL(article.href, siteConfig.url).toString(),
             })),
-            provider: { "@id": `${siteConfig.url}/#organization` },
           }}
         />
         <JsonLd
@@ -346,28 +290,21 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
             isPartOf: { "@id": `${siteConfig.url}/#website` },
           }}
         />
-        <JsonLd
+        <FAQSchema
           id={`${staticTour.slug}-faq-schema`}
-          data={{
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [...staticTour.faqs, ...bookingPolicyFaqs].map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: { "@type": "Answer", text: faq.answer },
-            })),
-          }}
+          items={[...staticTour.faqs, ...bookingPolicyFaqs]}
+          url={tourUrl}
         />
-        <JsonLd
+        <BreadcrumbSchema
           id={`${staticTour.slug}-breadcrumb-schema`}
-          data={breadcrumbSchema([
-            { name: "Home", path: "/" },
-            { name: "Journeys", path: "/tours" },
+          items={[
+            { name: "Home", item: "/" },
+            { name: "Journeys", item: "/tours" },
             {
               name: (catalogItem && getJourneyHeadline(catalogItem)) || staticTour.title,
-              path: `/tours/${staticTour.slug}`,
+              item: `/tours/${staticTour.slug}`,
             },
-          ])}
+          ]}
         />
         <TourDetailLanding
           model={createTourDetailModel(staticTour)}
@@ -387,87 +324,59 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
 
   return (
     <>
-      <JsonLd
+      <ItineraryProductSchema
         id={`${journey.slug}-tour-schema`}
-        data={{
-          "@context": "https://schema.org",
-          "@type": "TouristTrip",
+        itinerary={{
           name: journey.title,
           description: journey.summary,
           url: new URL(`/tours/${journey.slug}`, siteConfig.url).toString(),
           image: new URL(journey.image.src, siteConfig.url).toString(),
           touristType: journey.bestForFilters,
           duration: `P${journey.recommendedDaysMin}D`,
-          itinerary: {
-            "@type": "ItemList",
-            numberOfItems: journey.destinations.length,
-            itemListElement: journey.destinations.map((destination, index) => ({
-              "@type": "ListItem",
-              position: index + 1,
-              name: destination.label,
-              url: new URL(destination.href, siteConfig.url).toString(),
-            })),
-          },
-          areaServed: journey.destinations.map((destination) => ({
-            "@type": "Place",
+          itinerary: journey.destinations.map((destination, index) => ({
+            position: index + 1,
             name: destination.label,
+            url: new URL(destination.href, siteConfig.url).toString(),
           })),
-          offers:
+          areaServed: journey.destinations.map((destination) => destination.label),
+          offer:
             initialSelection.guests === "4" && journey.pricing.fromUsd !== undefined
               ? {
-                  "@type": "Offer",
                   price: journey.pricing.fromUsd,
                   priceCurrency: "USD",
                   url: new URL(`/tours/${journey.slug}`, siteConfig.url).toString(),
                   description: journey.pricing.basis,
-                  priceSpecification: {
-                    "@type": "UnitPriceSpecification",
-                    price: journey.pricing.fromUsd,
-                    priceCurrency: "USD",
-                    unitText: "per person",
-                    description: journey.pricing.basis,
-                  },
+                  unitText: "per person",
                 }
               : undefined,
-          additionalProperty: [
+          additionalProperties: [
             {
-              "@type": "PropertyValue",
               name: "Accommodation standard",
               value: "Selected four- and five-star hotels",
             },
             {
-              "@type": "PropertyValue",
               name: "Tour format",
               value: "Private, tailor-made journey",
             },
           ],
           subjectOf: reading.map((article) => ({
-            "@type": "Article",
             name: article.title,
             url: new URL(article.href, siteConfig.url).toString(),
           })),
-          provider: { "@id": `${siteConfig.url}/#organization` },
         }}
       />
-      <JsonLd
+      <FAQSchema
         id={`${journey.slug}-faq-schema`}
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: frameworkTourFaqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: { "@type": "Answer", text: faq.answer },
-          })),
-        }}
+        items={frameworkTourFaqs}
+        url={new URL(`/tours/${journey.slug}`, siteConfig.url).toString()}
       />
-      <JsonLd
+      <BreadcrumbSchema
         id={`${journey.slug}-breadcrumb-schema`}
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Journeys", path: "/tours" },
-          { name: journey.title, path: `/tours/${journey.slug}` },
-        ])}
+        items={[
+          { name: "Home", item: "/" },
+          { name: "Journeys", item: "/tours" },
+          { name: journey.title, item: `/tours/${journey.slug}` },
+        ]}
       />
       <TourDetailLanding
         model={createFrameworkTourDetailModel(journey)}

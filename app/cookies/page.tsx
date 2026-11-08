@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Cookie Policy",
+  title: "Cookies and Website Privacy Choices",
   description:
     "How AVIORA China Travel uses necessary storage, optional analytics and privacy preferences across this website.",
   path: "/cookies",

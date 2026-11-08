@@ -10,7 +10,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 import styles from "@/components/reviews/reviews-archive.module.css";
 
 export const metadata: Metadata = createMetadata({
-  title: "Traveler Reviews | AVIORA China Travel",
+  title: "China Tour Reviews and Guest Feedback",
   description:
     "Read traveler feedback about private China journeys planned and supported by AVIORA. Filter by rating, language or topic.",
   path: "/reviews",

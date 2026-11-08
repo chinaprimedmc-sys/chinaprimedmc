@@ -14,6 +14,9 @@ type CreateMetadataInput = {
   noIndex?: boolean;
   noFollow?: boolean;
   type?: "website" | "article";
+  languages?: Record<string, string>;
+  titleYear?: number;
+  callToAction?: string;
 };
 
 export function createMetadata({
@@ -28,21 +31,29 @@ export function createMetadata({
   noIndex = false,
   noFollow = false,
   type = "website",
+  languages,
+  titleYear,
+  callToAction,
 }: CreateMetadataInput = {}): Metadata {
   const url = new URL(path, siteConfig.url).toString();
-  const normalizedTitle = title.toLowerCase();
-  const includesBrandName = [siteConfig.siteName, siteConfig.name].some((brandName) =>
-    normalizedTitle.includes(brandName.toLowerCase()),
-  );
-  const fullBrandTitle = `${title} | ${siteConfig.siteName}`;
-  const shortBrandTitle = `${title} | ${siteConfig.name}`;
-  const fullTitle = includesBrandName
-    ? title
-    : fullBrandTitle.length <= 64
-      ? fullBrandTitle
-      : shortBrandTitle.length <= 64
-        ? shortBrandTitle
-        : title;
+  const cleanTitle = title
+    .trim()
+    .replace(
+      new RegExp(
+        `\\s*\\|\\s*(?:${escapeRegExp(siteConfig.siteName)}|${escapeRegExp(siteConfig.name)})$`,
+        "i",
+      ),
+      "",
+    );
+  const titleLimit = 60 - siteConfig.name.length - 3;
+  const datedTitle = titleYear
+    ? `${limitTitleLength(cleanTitle, titleLimit - String(titleYear).length - 3)} (${titleYear})`
+    : cleanTitle;
+  const titleCore = limitTitleLength(datedTitle, titleLimit);
+  const brandedTitle = `${titleCore} | ${siteConfig.name}`;
+  const pageDescription = callToAction
+    ? composeDescription(description, callToAction, 150)
+    : description;
   const defaultImageDimensions = image === siteConfig.ogImage ? { width: 1200, height: 630 } : {};
   const suppliedImageDimensions =
     imageWidth && imageHeight ? { width: imageWidth, height: imageHeight } : {};
@@ -56,14 +67,22 @@ export function createMetadata({
   const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
 
   return {
-    title: fullTitle,
-    description,
-    keywords,
+    title: titleCore,
+    description: pageDescription,
+    keywords: keywords ?? [
+      "private China tours",
+      "tailor-made China travel",
+      "China inbound DMC",
+      "private China itinerary",
+    ],
     applicationName: siteConfig.siteName,
     creator: siteConfig.siteName,
     publisher: siteConfig.operator.legalName,
     metadataBase: new URL(siteConfig.url),
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      ...(languages ? { languages } : {}),
+    },
     robots: noIndex
       ? {
           index: false,
@@ -82,8 +101,8 @@ export function createMetadata({
           },
         },
     openGraph: {
-      title: fullTitle,
-      description,
+      title: brandedTitle,
+      description: pageDescription,
       url,
       siteName: siteConfig.siteName,
       images: [openGraphImage],
@@ -92,10 +111,38 @@ export function createMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
-      description,
+      title: brandedTitle,
+      description: pageDescription,
       images: [image],
     },
     verification: googleVerification ? { google: googleVerification } : undefined,
   };
+}
+
+function limitTitleLength(title: string, maxLength: number) {
+  if (title.length <= maxLength) return title;
+  const shortened = title.slice(0, maxLength + 1);
+  const wordBoundary = shortened.lastIndexOf(" ");
+  return shortened.slice(0, wordBoundary > 20 ? wordBoundary : maxLength).trim();
+}
+
+function composeDescription(description: string, callToAction: string, maxLength: number) {
+  const base = description.trim().replace(/[.!?\s]+$/, "");
+  const action = callToAction.trim().replace(/^[.!?\s]+|[.!?\s]+$/g, "");
+  const availableLength = maxLength - action.length - 2;
+  if (availableLength < 40) return description;
+  if (base.length <= availableLength) return `${base}. ${action}.`;
+
+  let excerpt = base.slice(0, availableLength + 1);
+  const wordBoundary = excerpt.lastIndexOf(" ");
+  if (wordBoundary > 40) excerpt = excerpt.slice(0, wordBoundary);
+  excerpt = excerpt
+    .replace(/[\s,;:]+$/, "")
+    .replace(/\b(?:and|or|with|for|to|of|by|in|on|at)$/i, "")
+    .trim();
+  return `${excerpt}… ${action}.`;
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

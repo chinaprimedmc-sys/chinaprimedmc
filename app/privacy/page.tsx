@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Privacy Policy",
+  title: "Privacy and Personal Data Policy",
   description:
     "How AVIORA and its licensed China company collect, use, secure, retain and share information when you plan or book a trip.",
   path: "/privacy",

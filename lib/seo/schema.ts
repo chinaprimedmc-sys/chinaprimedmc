@@ -1,6 +1,62 @@
 import { siteConfig } from "@/config/site";
 import { serviceAchievements } from "@/content/home/service-achievements";
 
+export type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+export type BreadcrumbItem = {
+  name: string;
+  item: string;
+};
+
+export type ItineraryStep = {
+  position: number;
+  name: string;
+  description?: string;
+  url?: string;
+  destination?: {
+    name: string;
+    latitude?: number;
+    longitude?: number;
+  };
+  activities?: Array<{ name: string; description: string }>;
+};
+
+export type ItineraryOffer = {
+  price: number;
+  priceCurrency?: string;
+  url: string;
+  description: string;
+  unitText?: string;
+  category?: string;
+  availability?: string;
+};
+
+export type ItineraryProductInput = {
+  schemaType?: "TouristTrip" | "Product";
+  id?: string;
+  identifier?: string;
+  name: string;
+  alternateName?: string;
+  description: string;
+  url: string;
+  mainEntityOfPage?: string;
+  image?: string | string[];
+  category?: string;
+  duration?: string;
+  brandName?: string;
+  audienceType?: string;
+  touristType?: string[];
+  areaServed?: string[];
+  itinerary?: ItineraryStep[];
+  offer?: ItineraryOffer;
+  additionalProperties?: Array<{ name: string; value: string }>;
+  subjectOf?: Array<{ name: string; url: string }>;
+  providerId?: string;
+};
+
 export function organizationSchema() {
   const organizationId = `${siteConfig.url}/#organization`;
 
@@ -269,5 +325,159 @@ export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
       name: item.name,
       item: new URL(item.path, siteConfig.url).toString(),
     })),
+  };
+}
+
+export function faqPageSchema(items: readonly FAQItem[], url?: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    ...(url ? { "@id": `${url}#faq` } : {}),
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function itineraryProductSchema(input: ItineraryProductInput) {
+  const schemaType = input.schemaType ?? "TouristTrip";
+  const tripId = input.id ?? `${input.url}#${schemaType === "Product" ? "product" : "tour"}`;
+  const offer = input.offer;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": schemaType,
+    "@id": tripId,
+    ...(input.identifier ? { identifier: input.identifier, sku: input.identifier } : {}),
+    name: input.name,
+    ...(input.alternateName ? { alternateName: input.alternateName } : {}),
+    description: input.description,
+    url: input.url,
+    ...(input.mainEntityOfPage ? { mainEntityOfPage: { "@id": input.mainEntityOfPage } } : {}),
+    ...(input.category ? { category: input.category } : {}),
+    ...(input.duration ? { duration: input.duration } : {}),
+    ...(input.brandName ? { brand: { "@type": "Brand", name: input.brandName } } : {}),
+    ...(input.audienceType
+      ? { audience: { "@type": "PeopleAudience", audienceType: input.audienceType } }
+      : {}),
+    ...(input.image
+      ? { image: (Array.isArray(input.image) ? input.image : [input.image]).filter(Boolean) }
+      : {}),
+    ...(input.touristType?.length ? { touristType: input.touristType } : {}),
+    ...(input.areaServed?.length
+      ? { areaServed: input.areaServed.map((name) => ({ "@type": "Place", name })) }
+      : {}),
+    ...(schemaType === "TouristTrip" && input.itinerary?.length
+      ? {
+          itinerary: {
+            "@type": "ItemList",
+            numberOfItems: input.itinerary.length,
+            itemListElement: input.itinerary.map((step) => ({
+              "@type": "ListItem",
+              position: step.position,
+              name: step.name,
+              ...(step.description ? { description: step.description } : {}),
+              ...(step.url ? { url: step.url } : {}),
+              ...(step.destination || step.activities?.length
+                ? {
+                    item: {
+                      "@type": "TouristTrip",
+                      name: step.name,
+                      ...(step.description ? { description: step.description } : {}),
+                      ...(step.destination || step.activities?.length
+                        ? {
+                            itinerary: [
+                              ...(step.destination
+                                ? [
+                                    {
+                                      "@type": "Place",
+                                      name: step.destination.name,
+                                      ...(step.destination.latitude !== undefined &&
+                                      step.destination.longitude !== undefined
+                                        ? {
+                                            geo: {
+                                              "@type": "GeoCoordinates",
+                                              latitude: step.destination.latitude,
+                                              longitude: step.destination.longitude,
+                                            },
+                                          }
+                                        : {}),
+                                    },
+                                  ]
+                                : []),
+                              ...(step.activities?.length
+                                ? [
+                                    {
+                                      "@type": "ItemList",
+                                      name: `${step.name} experiences`,
+                                      numberOfItems: step.activities.length,
+                                      itemListElement: step.activities.map((activity, index) => ({
+                                        "@type": "ListItem",
+                                        position: index + 1,
+                                        item: {
+                                          "@type": "Thing",
+                                          name: activity.name,
+                                          description: activity.description,
+                                        },
+                                      })),
+                                    },
+                                  ]
+                                : []),
+                            ],
+                          }
+                        : {}),
+                    },
+                  }
+                : {}),
+            })),
+          },
+        }
+      : {}),
+    ...(offer
+      ? {
+          offers: {
+            "@type": "Offer",
+            "@id": `${tripId}#offer`,
+            price: offer.price,
+            priceCurrency: offer.priceCurrency ?? "USD",
+            url: offer.url,
+            description: offer.description,
+            ...(offer.category ? { category: offer.category } : {}),
+            ...(offer.availability ? { availability: offer.availability } : {}),
+            seller: { "@id": input.providerId ?? `${siteConfig.url}/#organization` },
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: offer.price,
+              priceCurrency: offer.priceCurrency ?? "USD",
+              ...(offer.unitText ? { unitText: offer.unitText } : {}),
+              description: offer.description,
+            },
+          },
+        }
+      : {}),
+    ...(input.additionalProperties?.length
+      ? {
+          additionalProperty: input.additionalProperties.map(({ name, value }) => ({
+            "@type": "PropertyValue",
+            name,
+            value,
+          })),
+        }
+      : {}),
+    ...(input.subjectOf?.length
+      ? {
+          subjectOf: input.subjectOf.map(({ name, url }) => ({
+            "@type": "Article",
+            name,
+            url,
+          })),
+        }
+      : {}),
+    provider: { "@id": input.providerId ?? `${siteConfig.url}/#organization` },
   };
 }

@@ -4,16 +4,17 @@ import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
 import { EnquiryDialog } from "@/components/forms/enquiry-dialog";
+import { OrganizationSchema } from "@/components/seo/organization-schema";
+import { WebSiteSchema } from "@/components/seo/website-schema";
 import { MotionController } from "@/components/motion/motion-controller";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { getJourneyHeadline } from "@/content/tours/card-copy";
 import { ConsentAwareServices } from "@/components/privacy/consent-aware-services";
 import { CookieConsent } from "@/components/privacy/cookie-consent";
 import { CspNonceProvider } from "@/components/security/csp-nonce-provider";
-import { JsonLd } from "@/lib/seo/json-ld";
 import { PageTransition } from "@/components/loading/page-transition";
 import { createMetadata } from "@/lib/seo/metadata";
-import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
+import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -31,7 +32,14 @@ const newsreader = Newsreader({
   style: ["normal", "italic"],
 });
 
-export const metadata: Metadata = createMetadata();
+const rootMetadata = createMetadata();
+export const metadata: Metadata = {
+  ...rootMetadata,
+  title: {
+    default: siteConfig.siteName,
+    template: `%s | ${siteConfig.name}`,
+  },
+};
 export const dynamic = "force-dynamic";
 export const viewport: Viewport = {
   width: "device-width",
@@ -63,8 +71,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         </CspNonceProvider>
         <CookieConsent />
         <ConsentAwareServices />
-        <JsonLd id="organization-schema" data={organizationSchema()} />
-        <JsonLd id="website-schema" data={websiteSchema()} />
+        <OrganizationSchema />
+        <WebSiteSchema />
       </body>
     </html>
   );

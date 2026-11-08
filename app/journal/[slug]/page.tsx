@@ -12,9 +12,11 @@ import {
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
 import type { JournalArticle } from "@/types/journal";
 import { ArticleTemplate } from "@/features/journal/article-template";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
+import { FAQSchema } from "@/components/seo/faq-schema";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
-import { articleSchemaData, breadcrumbSchema } from "@/lib/seo/schema";
+import { articleSchemaData } from "@/lib/seo/schema";
 import { hydrateJournalArticle } from "@/lib/content/journal-markdown";
 import { getRelationshipsForArticle } from "@/lib/content/relationship-engine";
 
@@ -45,6 +47,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     path: article.seo.canonicalPath ?? `/journal/${article.slug}`,
     type: "article",
     noIndex: false,
+    titleYear: Number((article.updatedAt ?? article.publishedAt).slice(0, 4)),
+    callToAction: "Read the guide and plan your China journey",
   });
 }
 
@@ -65,34 +69,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <>
       <JsonLd id={`${article.slug}-article-schema`} data={articleSchema(article)} />
-      {faqs.length ? (
-        <JsonLd
-          id={`${article.slug}-faq-schema`}
-          data={{
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((faq) =>
-              faq.type === "faq"
-                ? {
-                    "@type": "Question",
-                    name: faq.question,
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: faq.answer,
-                    },
-                  }
-                : null,
-            ),
-          }}
-        />
-      ) : null}
-      <JsonLd
+      {faqs.length ? <FAQSchema id={`${article.slug}-faq-schema`} items={faqs} /> : null}
+      <BreadcrumbSchema
         id={`${article.slug}-breadcrumb-schema`}
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Journal", path: "/journal" },
-          { name: article.title, path: `/journal/${article.slug}` },
-        ])}
+        items={[
+          { name: "Home", item: "/" },
+          { name: "Journal", item: "/journal" },
+          { name: article.title, item: `/journal/${article.slug}` },
+        ]}
       />
       {planningSchemas.map((schema) => (
         <JsonLd key={schema.id} id={schema.id} data={schema.data} />

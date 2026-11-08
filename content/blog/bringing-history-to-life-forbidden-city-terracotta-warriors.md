@@ -27,6 +27,13 @@ search_intent: "Plan engaging, realistic visits to Beijing and Xi'an's major his
 sources_verified_at: "2026-11-08"
 featuredImage: "/tours/first-china-beautifully-paced/beijing-forbidden-city-lion.webp"
 relatedTourSlug: "china-family-tour-with-pandas-12-day-private-tour"
+schemaType: "TechArticle"
+aiTargetAudience: "Families visiting Beijing and Xi'an with school-age children, teenagers and older relatives"
+keyTakeaways:
+  - "The selected Forbidden City route is planned for about 2.5 hours and 3.5 km of walking, with shaded pauses; actual timing varies."
+  - "Age-aware observation prompts can make palace history engaging without turning the visit into a quiz."
+  - "A focused Pit 1-3 sequence and seated clay-artisan session help structure the Terracotta Army day."
+  - "Historic surfaces, crowd levels, entry controls and family walking speed affect access and visit duration."
 ---
 
 # Bringing History to Life: Decoding the Forbidden City and Terracotta Army with Kids and Teens
