@@ -500,6 +500,12 @@ const strategyGroups: Array<{
       ],
       ["chengdu-panda-base-family-guide", "evaluate", "ethical Chengdu panda visit with kids", 1],
       [
+        "mutianyu-great-wall-multigenerational-guide",
+        "evaluate",
+        "Mutianyu Great Wall with three generations",
+        1,
+      ],
+      [
         "chengdu-panda-base-heat-rain-accessibility",
         "answer",
         "Chengdu Panda Base heat rain visit plan",

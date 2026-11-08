@@ -10,6 +10,7 @@ export type JournalCategory =
   | "Festivals"
   | "Adventure"
   | "Family Travel"
+  | "Family Travel & Heritage"
   | "Photography"
   | "Luxury Travel"
   | "Train Travel"

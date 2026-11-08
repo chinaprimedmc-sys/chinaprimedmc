@@ -72,6 +72,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/mutianyu-great-wall-multigenerational-guide",
+        destination: "/journal/mutianyu-great-wall-multigenerational-guide",
+        permanent: true,
+      },
+      {
         source: "/styles",
         destination: "/tours",
         permanent: true,

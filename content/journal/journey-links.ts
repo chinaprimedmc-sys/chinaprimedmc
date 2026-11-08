@@ -106,6 +106,7 @@ export const journeyReadingPriority: Record<string, string[]> = {
   ],
   [CHINA_FAMILY]: [
     "chengdu-panda-base-family-guide",
+    "mutianyu-great-wall-multigenerational-guide",
     "the-ultimate-guide-to-traveling-in-china-with-kids",
     "private-china-family-tour-planning",
     "china-family-hotel-rooms-connecting-rooms-extra-beds",
@@ -488,6 +489,15 @@ Object.assign(journeyJournalLinks, {
       "See the early Chengdu panda-base visit, protected afternoon and family pacing in the published flagship itinerary.",
     journeyLabel: "Explore the family journey",
     planningLabel: "Plan our panda visit",
+    planningPreference: "family-panda-route",
+  },
+  "mutianyu-great-wall-multigenerational-guide": {
+    primaryJourney: CHINA_FAMILY,
+    title: "Review Mutianyu in the 12-day family route",
+    description:
+      "See how the flagship private family journey includes Mutianyu with date-specific lift and walking plans.",
+    journeyLabel: "Explore the family journey",
+    planningLabel: "Plan our Great Wall day",
     planningPreference: "family-panda-route",
   },
   "best-age-for-china-family-tour": {

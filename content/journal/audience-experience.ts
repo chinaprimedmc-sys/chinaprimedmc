@@ -1,5 +1,5 @@
 import type { JournalArticle } from "@/types/journal";
-import { chengduAsset, chinaFamilyAsset } from "@/content/tours/assets";
+import { chengduAsset, chinaFamilyAsset, firstChinaAsset } from "@/content/tours/assets";
 
 const author = {
   name: "AVIORA China Travel Team",
@@ -14,6 +14,74 @@ const textHeroImage = {
 };
 
 export const audienceExperienceArticles: JournalArticle[] = [
+  {
+    slug: "mutianyu-great-wall-multigenerational-guide",
+    title: "The Great Wall in Whispers: How to Experience Mutianyu with Three Generations",
+    dek: "Plan Mutianyu for children, parents and grandparents with realistic walking, lift choices, rest points and date-specific operating checks.",
+    excerpt:
+      "A practical Mutianyu guide for three generations: agree on a comfortable route, confirm lift operations and build in time to rest.",
+    category: "Family Travel & Heritage",
+    tags: [
+      "great-wall-with-kids-guide",
+      "mutianyu-great-wall-family-cable-car",
+      "great-wall-private-tour-for-seniors",
+      "luxury-multi-generational-travel-china",
+    ],
+    author: { name: "AVIORA Editorial Team", role: "China travel specialists" },
+    publishedAt: "2026-11-08",
+    updatedAt: "2026-11-08",
+    readingTime: "8 min read",
+    hero: {
+      image: firstChinaAsset.beijingGreatWallWide,
+      eyebrow: "Plan a Great Wall day for every generation",
+      mode: "image",
+    },
+    gallery: [],
+    content: [],
+    seo: {
+      title: "Mutianyu Great Wall With Three Generations",
+      description:
+        "Plan Mutianyu with children and grandparents: compare lift choices, set a realistic walking route, schedule rests and check current operations.",
+      keywords: [
+        "Great Wall with kids guide",
+        "Mutianyu Great Wall family cable car",
+        "Great Wall private tour for seniors",
+        "luxury multi-generational travel China",
+      ],
+      ogImage: firstChinaAsset.beijingGreatWallWide,
+    },
+    related: {
+      destinations: ["beijing"],
+      tours: ["china-family-tour-with-pandas-12-day-private-tour"],
+      articles: [
+        "mutianyu-great-wall-walking-cable-car",
+        "how-to-visit-great-wall-without-climbing-stairs",
+        "mutianyu-badaling-jinshanling-great-wall",
+      ],
+    },
+    conversion: {
+      eyebrow: "Plan the Great Wall around your family",
+      title: "Review Mutianyu in the 12-day family route",
+      description:
+        "See how the flagship family itinerary places the Great Wall within a date-specific, multigenerational journey.",
+      label: "Explore the 12-Day Family Journey",
+      href: "/tours/china-family-tour-with-pandas-12-day-private-tour#itinerary",
+    },
+    sourcePath: "content/blog/mutianyu-great-wall-multigenerational-guide.md",
+    editorial: {
+      contentType: "operator",
+      decisionStage: "evaluate",
+      keyAnswer:
+        "A Mutianyu visit for three generations should be planned around the least mobile traveler, a route-specific walking estimate, lift services confirmed for the date and protected time to rest; lift access does not make the wall step-free.",
+      appliesTo: [
+        "Families traveling with children and grandparents",
+        "Travelers comparing Mutianyu lift options",
+        "Private China tour planners",
+      ],
+      relatedJourneyReason:
+        "The linked 12-day private family journey includes a Mutianyu day within a Beijing, Xi'an, Chengdu and Shanghai route.",
+    },
+  },
   {
     slug: "chengdu-panda-base-family-guide",
     title:

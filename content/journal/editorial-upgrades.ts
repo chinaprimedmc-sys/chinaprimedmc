@@ -12,6 +12,11 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
       "The Insider’s Guide to Chengdu Panda Bases: Ethics, Timing, and Beating the Crowds with Children",
     seoTitle: "Chengdu Panda Bases With Kids: Ethical Visit Guide",
   },
+  "mutianyu-great-wall-multigenerational-guide": {
+    title: "The Great Wall in Whispers: How to Experience Mutianyu with Three Generations",
+    seoTitle: "Mutianyu Great Wall With Three Generations",
+    preserveTitleCase: true,
+  },
   "the-ultimate-guide-to-traveling-in-china-with-kids": {
     title: "Traveling in China with Kids: Pacing, Logistics and Real Expectations",
     seoTitle: "China with Kids: Family Pacing and Travel Logistics",
