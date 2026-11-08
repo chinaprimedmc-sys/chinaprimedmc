@@ -39,6 +39,16 @@ const staticRoutes = [
   ["/terms", "yearly", 0.35],
 ] as const;
 
+const familyPillarArticles = new Set([
+  "the-ultimate-guide-to-traveling-in-china-with-kids",
+  "chengdu-panda-base-family-guide",
+  "mutianyu-great-wall-multigenerational-guide",
+  "multigenerational-china-travel-blueprint",
+  "bringing-history-to-life-forbidden-city-terracotta-warriors",
+  "shanghai-chengdu-modern-china-tech-family-guide",
+  "zero-shopping-policy-luxury-china-inbound-dmc",
+]);
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map(
     ([path, changeFrequency, priority]) => ({
@@ -71,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: new URL(`/journal/${article.slug}`, siteConfig.url).toString(),
     lastModified: article.updatedAt ?? article.publishedAt,
     changeFrequency: "monthly",
-    priority: 0.72,
+    priority: familyPillarArticles.has(article.slug) ? 0.85 : 0.72,
   }));
 
   return deduplicate([

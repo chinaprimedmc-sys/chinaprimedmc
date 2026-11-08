@@ -3,6 +3,7 @@ import "server-only";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { parse as parseYaml } from "yaml";
+import { z } from "zod";
 
 import { toJournalDisplayTitleCase } from "@/content/journal/editorial-upgrades";
 import visaTransitMarkdown from "@/content/journal/articles/2026-08-06-china-240-hour-visa-free-transit-guide.md";
@@ -144,6 +145,20 @@ const fullFrameImageMetadata: Record<string, { width: number; height: number; fi
     fit: "contain",
   },
 };
+
+const blogFrontmatterSchema = z.object({
+  slug: z.string().min(1),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  publishedAt: z.string().date(),
+  updatedAt: z.string().date(),
+  author: z.string().min(1),
+  tags: z.array(z.string().min(1)).min(1),
+  relatedTourSlug: z.string().min(1),
+  keyTakeaways: z.array(z.string().min(1)).min(1),
+  schemaType: z.enum(["BlogPosting", "TechArticle"]),
+  aiTargetAudience: z.string().min(1),
+});
 
 const bundledMarkdown: Record<string, string> = {
   "content/blog/chengdu-panda-base-family-guide.md": pandaFamilyGuideMarkdown,
@@ -296,7 +311,7 @@ export async function hydrateJournalArticle(article: JournalArticle): Promise<Jo
     bundledMarkdown[article.sourcePath] ??
     (await readFile(path.join(process.cwd(), article.sourcePath), "utf8"));
 
-  const parsed = parseJournalMarkdown(markdown);
+  const parsed = parseJournalMarkdown(markdown, article.sourcePath);
 
   return {
     ...article,
@@ -354,7 +369,7 @@ function emphasizeOpeningSentence(body: string) {
   return `**${sentence}**${body.slice(sentence.length)}`;
 }
 
-function parseJournalMarkdown(markdown: string) {
+function parseJournalMarkdown(markdown: string, sourcePath?: string) {
   const draft = section(markdown, "## Draft", [
     "## Suggested structured data",
     "## Structured Data Recommendation",
@@ -367,7 +382,25 @@ function parseJournalMarkdown(markdown: string) {
     content: parseBlocks(draft),
     citations: parseSourceCitations(sources),
     lastFactCheckedAt: markdown.match(/^sources_verified_at:\s*["']?([^"'\n]+)["']?\s*$/m)?.[1],
-    ...parseAiFrontmatter(markdown),
+    ...(sourcePath?.startsWith("content/blog/")
+      ? parseBlogFrontmatter(markdown, sourcePath)
+      : parseAiFrontmatter(markdown)),
+  };
+}
+
+function parseBlogFrontmatter(markdown: string, sourcePath: string) {
+  const frontmatter = markdown.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\s*\r?\n|$)/)?.[1];
+  if (!frontmatter) throw new Error(`Blog article is missing YAML frontmatter: ${sourcePath}`);
+
+  const parsed = blogFrontmatterSchema.safeParse(parseYaml(frontmatter));
+  if (!parsed.success) {
+    throw new Error(`Invalid blog frontmatter in ${sourcePath}: ${z.prettifyError(parsed.error)}`);
+  }
+
+  return {
+    schemaType: parsed.data.schemaType,
+    aiTargetAudience: parsed.data.aiTargetAudience,
+    keyTakeaways: parsed.data.keyTakeaways,
   };
 }
 
