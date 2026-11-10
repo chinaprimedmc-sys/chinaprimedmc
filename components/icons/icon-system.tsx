@@ -1,9 +1,9 @@
-import type { LucideIcon } from "lucide-react";
+import type { SiteIcon } from "@/components/icons/symbols";
 
 import { cn } from "@/lib/utils/cn";
 
 type IconSystemProps = {
-  icon: LucideIcon;
+  icon: SiteIcon;
   size?: "sm" | "md" | "lg";
   tone?: "default" | "muted" | "inverse";
   className?: string;
@@ -27,12 +27,5 @@ export function IconSystem({
   tone = "default",
   className,
 }: IconSystemProps) {
-  return (
-    <Icon
-      size={sizes[size]}
-      strokeWidth={1.8}
-      className={cn(tones[tone], className)}
-      aria-hidden="true"
-    />
-  );
+  return <Icon size={sizes[size]} className={cn(tones[tone], className)} aria-hidden="true" />;
 }

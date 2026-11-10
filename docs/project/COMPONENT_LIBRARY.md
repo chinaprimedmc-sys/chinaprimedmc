@@ -10,7 +10,7 @@ Sprint 2 builds the official component and interaction system only. No business 
 - Cards: `DestinationCard`, `TourCard`, `ExperienceCard`, `BlogCard`, `ReviewCard`, `HotelCard`, `GalleryCard`, `FeatureCard`, `StatisticCard`, `CtaCard`.
 - Gallery: `GridGallery`, `CarouselGallery`, `LightboxGallery`, `FullscreenGallery`.
 - Timeline: `TravelTimeline`.
-- CTA: `CtaButton`, `FloatingCta`, `StickyMobileCta`, `CtaCard`.
+- CTA: `CtaButton`, `FloatingCta`, `CtaCard`.
 - Forms: `TextField`, `TextAreaField`, `SelectField`, `CheckboxField`, `RadioField`, `TravelerSelector`, form loading/success/error states.
 - Reviews: `LuxuryReview`, `EditorialReview`, `GoogleStyleReview`.
 - Footer: `SiteFooter`, `NewsletterSignup`.
@@ -49,7 +49,7 @@ Pages must import animation presets instead of declaring custom page-level varia
 - Cards collapse to one column unless a component explicitly supports horizontal scrolling.
 - Navigation becomes Dialog-based mobile menu.
 - Hero media uses `sizes` and cropped framing through `Next Image`.
-- Sticky mobile CTA is available but must be used sparingly.
+- Mobile inquiry actions stay in page flow; only the compact contact control may float above content.
 
 ## Props Summary
 
@@ -95,4 +95,3 @@ Ready for homepage composition:
 - `CtaCard`
 - `SiteFooter`
 - `FloatingCta`
-- `StickyMobileCta`

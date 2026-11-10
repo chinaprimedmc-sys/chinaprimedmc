@@ -305,7 +305,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/destination/guilin",
-        destination: "/destinations",
+        destination: "/destinations/guilin",
         permanent: true,
       },
       {
@@ -315,11 +315,6 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/destinations/dunhuang",
-        destination: "/destinations",
-        permanent: true,
-      },
-      {
-        source: "/destinations/guilin",
         destination: "/destinations",
         permanent: true,
       },
@@ -473,7 +468,7 @@ const nextConfig: NextConfig = {
     imageSizes: [64, 96, 128, 256, 384],
   },
   experimental: {
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: ["@phosphor-icons/react", "@phosphor-icons/react/ssr"],
   },
 };
 

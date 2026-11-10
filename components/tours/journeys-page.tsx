@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { buildExplorerItems } from "@/lib/tours/journey-explorer-items";
 
 import { GuestVoice } from "@/components/trust/trust";
+import { FaqList } from "@/components/content/faq-list";
 import { EnquirySection } from "@/components/forms/enquiry-section";
 import { JourneysExplorer } from "./journeys-explorer";
 import styles from "./journeys-page.module.css";
@@ -65,12 +66,7 @@ export function JourneysPage({ initialQueryString = "" }: { initialQueryString?:
         <section className={styles.faq} aria-labelledby="journey-faq-title">
           <h2 id="journey-faq-title">{journeysCopy.faqTitle}</h2>
           <div className={styles.faqList}>
-            {journeyFaqs.slice(0, 4).map((item) => (
-              <details key={item.question}>
-                <summary>{item.question}</summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
+            <FaqList items={journeyFaqs.slice(0, 4)} />
           </div>
         </section>
       </div>

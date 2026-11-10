@@ -38,17 +38,17 @@ export function CtaCard({
         variant === "glass" &&
           "border border-white/78 bg-white/62 shadow-[var(--shadow-glass)] backdrop-blur-2xl [-webkit-backdrop-filter:blur(var(--glass-blur))_saturate(130%)]",
         variant === "solid" && "bg-foreground text-background",
-        isImage && "min-h-96 text-white",
+        isImage && "bg-foreground grid items-center gap-6 text-white md:grid-cols-2 md:gap-10",
         className,
       )}
     >
       {isImage && image ? (
-        <div className="absolute inset-0 z-0">
+        <div className="aspect-portrait relative overflow-hidden rounded-[var(--radius-surface)]">
           <OptimizedImage
             src={image.src}
             alt={image.alt}
             fill
-            sizes="(min-width:1024px) 1200px, 100vw"
+            sizes="(min-width:1024px) 560px, 100vw"
             objectPosition={image.objectPosition}
             frameClassName="h-full"
             className="h-full w-full"
@@ -56,11 +56,10 @@ export function CtaCard({
         </div>
       ) : null}
       {isImage && !image && media ? (
-        <div className="absolute inset-0 z-0 [&_article]:h-full [&_article]:rounded-none [&_img]:h-full [&_img]:w-full">
+        <div className="aspect-portrait relative overflow-hidden [&_article]:h-full [&_img]:h-full [&_img]:w-full [&_img]:object-cover">
           {media}
         </div>
       ) : null}
-      {isImage ? <div className="absolute inset-0 z-10 bg-black/42" /> : null}
       <div className="relative z-20 max-w-2xl">
         {eyebrow ? (
           <p className="mb-4 text-xs font-semibold tracking-[0.2em] uppercase opacity-75">

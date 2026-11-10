@@ -1,8 +1,8 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import { configuredWhatsAppHref } from "@/lib/tours/journey-whatsapp";
+import { MessageCircle } from "@/components/icons/symbols";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
-import { pricingBlock, slowPacedSlug } from "@/content/tours/slow-paced-golden-triangle";
 import { useClaimedJourneyOffer } from "@/components/offers/use-claimed-journey-offer";
 import { calculateOfferPrice, formatOfferUsd } from "@/lib/tours/journey-offer";
 
@@ -90,95 +90,4 @@ export function JourneyWhatsAppAction({
       Contact us on WhatsApp
     </TrackedTourLink>
   );
-}
-
-export function JourneyMobileCta({
-  fallbackPrice,
-  journeySlug,
-}: {
-  fallbackPrice: string;
-  journeySlug: string;
-}) {
-  const configuration = useOptionalJourneyConfiguration();
-  // 旗舰 10 天行程的起价来自行程自己的价格说明，目录里没有数字价格。
-  const flagship = journeySlug === slowPacedSlug;
-  const price = flagship
-    ? pricingBlock.from
-    : configuration
-      ? configuration.priceFromUsd
-        ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}`
-        : "Individually priced"
-      : fallbackPrice;
-  const pricing = getJourneyCatalogItem(journeySlug)?.pricing;
-  const claim = useClaimedJourneyOffer();
-  const basePrice = configuration?.priceFromUsd ?? pricing?.fromUsd;
-  const offer = claim && basePrice ? calculateOfferPrice(basePrice, claim.discountPercent) : null;
-  const offeredPrice = offer ? formatOfferUsd(offer.discountedFromUsd) : price;
-
-  return (
-    <div className={styles.mobileCta}>
-      <span>
-        <small>
-          {offer
-            ? `Your ${claim?.discountPercent}% offer · was ${formatOfferUsd(offer.regularFromUsd)}`
-            : pricing?.fromUsd || flagship
-              ? "From"
-              : "Pricing"}
-        </small>
-        <strong>
-          {offeredPrice}{" "}
-          <em>
-            {flagship
-              ? "per person · USD"
-              : configuration
-                ? configuration.priceFromUsd
-                  ? pricing?.pricingUnit === "private-group"
-                    ? "per private group of four"
-                    : "per person · four guests"
-                  : "quote for selected party"
-                : pricing?.pricingUnit === "private-group"
-                  ? "per private group of four"
-                  : "per person · four guests"}
-          </em>
-        </strong>
-      </span>
-      <TrackedTourLink
-        className={styles.mobileCtaAction}
-        href={`/start-planning?source=tour-mobile-bar&journey=${encodeURIComponent(journeySlug)}`}
-        journeySlug={journeySlug}
-        label="TAILOR MY TRIP"
-        placement="detail-mobile"
-      >
-        Tailor my trip
-      </TrackedTourLink>
-    </div>
-  );
-}
-
-function configuredWhatsAppHref(
-  baseHref: string,
-  journeyTitle: string,
-  configuration: {
-    priceBasis: string;
-    duration: string;
-    guests: string;
-    priceFromUsd?: number;
-  },
-) {
-  const url = new URL(baseHref);
-  const price = configuration.priceFromUsd
-    ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}. ${configuration.priceBasis}`
-    : "Individually priced";
-  const message = [
-    `Hello AVIORA, I am interested in ${journeyTitle}.`,
-    "",
-    `Duration: ${configuration.duration}`,
-    `Travellers: ${configuration.guests} guests`,
-    `Displayed price: ${price}`,
-    "",
-    "Travel month:",
-    "Could you confirm availability and prepare a private proposal?",
-  ].join("\n");
-  url.searchParams.set("text", message);
-  return url.toString();
 }

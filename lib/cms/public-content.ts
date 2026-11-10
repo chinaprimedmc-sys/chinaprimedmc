@@ -1,7 +1,12 @@
 import "server-only";
 
+import { destinationPlanningGuides } from "@/content/destinations/planning-guides";
 import { siteConfig } from "@/config/site";
-import { explorerDestinations } from "@/content/destinations/explorer";
+import {
+  explorerDestinations,
+  getDestinationRegionLabel,
+  journeyIncludesDestination,
+} from "@/content/destinations/explorer";
 import { getDestinationEditorial } from "@/content/destinations/editorial";
 import { destinationGuideAssets } from "@/content/destinations/guide-assets";
 import { journalArticles } from "@/content/journal";
@@ -33,6 +38,8 @@ const destinationSeoDescriptions: Record<string, string> = {
     "Plan a private Leshan Giant Buddha day from Chengdu with the right river or walking view, realistic transfers, mobility guidance and a real Sichuan itinerary.",
   jiuzhaigou:
     "Visit Jiuzhaigou for clear lakes, forests and highland scenery, with altitude, seasonal access, transfers and walking comfort planned in advance.",
+  guilin:
+    "Plan private travel in Guilin and Yangshuo with the Li River, karst countryside, practical hotel bases and coordinated transfers. Compare a three- to four-night stay.",
   zhangjiajie:
     "Explore Zhangjiajie's sandstone peaks with private guides, crowd-aware timing, cableways and a walking plan matched to your comfort and the weather.",
 };
@@ -63,7 +70,9 @@ export async function getPublicDestinations() {
       id: destination.id,
       name: destination.name,
       slug: destination.id,
-      region: destination.region,
+      region: getDestinationRegionLabel(destination.region),
+      regionId: destination.region,
+      relatedDestinationIds: destination.relatedDestinationIds,
       headline: `Private travel in ${destination.name}`,
       summary: destination.description,
       kicker: destination.kicker,
@@ -85,16 +94,18 @@ export async function getPublicDestinations() {
       gallery: destinationGuideAssets[destination.id].gallery,
       featured: Boolean(destination.guideHref),
       sortOrder: 100,
-      seoTitle: `Private ${destination.name} Tours and Travel Guide`,
+      seoTitle:
+        destinationPlanningGuides[destination.id]?.seoTitle ??
+        `Private ${destination.name} Tours and Travel Guide`,
       seoDescription:
+        destinationPlanningGuides[destination.id]?.seoDescription ??
         destinationSeoDescriptions[destination.id] ??
         `${destination.description} Plan the right stay, season and route with local China specialists.`,
       heroImage: destination.image,
       relatedJourneys: journeyCatalog
         .filter(
           (journey) =>
-            journey.visualStatus !== "pending" &&
-            journey.destinationFilters.includes(destination.name),
+            journey.visualStatus !== "pending" && journeyIncludesDestination(destination, journey),
         )
         .map((journey) => ({
           title: journey.title,

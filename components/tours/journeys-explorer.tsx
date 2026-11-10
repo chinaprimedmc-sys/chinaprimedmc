@@ -8,12 +8,17 @@
  * 关键规则：服务端渲染全部卡片，筛选只在浏览器里隐藏；不显示价格；URL 是唯一状态来源，写回时保留 utm 等无关参数。
  */
 
+import {
+  ChevronDown as Chevron,
+  SlidersHorizontal as SlidersIcon,
+} from "@/components/icons/symbols";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 
 import { heroPhoto } from "@/content/tours/journeys-curation";
 import { interestTags, whoTags } from "@/content/tours/journey-tags";
+import { journeyCategories } from "@/content/tours/classification";
 import { trackEvent } from "@/lib/analytics/events";
 import {
   activeFilterCount,
@@ -41,6 +46,7 @@ const popularInHero = ["Great Wall", "Pandas", "Xi'an", "Family", "10 days", "Ea
 /** 写回地址栏时需要清掉的参数（新参数与旧版参数）；其余如 utm 保持不变。 */
 const managedKeys = [
   "tier",
+  "category",
   "length",
   "who",
   "interest",
@@ -68,13 +74,21 @@ const managedKeys = [
   "experience",
 ];
 
-type GroupKey = "length" | "who" | "interest";
+type GroupKey = "category" | "length" | "who" | "interest";
 
 const groups: ReadonlyArray<{
   key: GroupKey;
   label: string;
   options: ReadonlyArray<{ value: string; label: string }>;
 }> = [
+  {
+    key: "category",
+    label: "Journey focus",
+    options: Object.entries(journeyCategories).map(([value, category]) => ({
+      value,
+      label: category.label,
+    })),
+  },
   {
     key: "length",
     label: "Length",
@@ -87,28 +101,6 @@ const groups: ReadonlyArray<{
     options: interestTags.map((t) => ({ value: t, label: t })),
   },
 ];
-
-const SlidersIcon = () => (
-  <svg
-    viewBox="0 0 20 20"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    aria-hidden="true"
-    width="18"
-    height="18"
-  >
-    <path d="M3 6h9M16 6h1M3 14h1M8 14h9" />
-    <circle cx="14" cy="6" r="2" />
-    <circle cx="6" cy="14" r="2" />
-  </svg>
-);
-
-const Chevron = () => (
-  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-    <path d="M2 4.5 6 8l4-3.5" />
-  </svg>
-);
 
 export function JourneysExplorer({
   items,
@@ -364,24 +356,29 @@ export function JourneysExplorer({
               />
             </div>
           ) : null}
-          <div className={styles.tabs} role="tablist" aria-label="Type of journey">
-            {tierOptions.map((option) => {
-              const count = tierCount(option.id);
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={state.tier === option.id}
-                  aria-controls="journey-results"
-                  data-zero={count === 0}
-                  className={styles.tab}
-                  onClick={() => selectTier(option.id)}
-                >
-                  {option.label} <small>{count}</small>
-                </button>
-              );
-            })}
+          <div className={styles.tabs} role="group" aria-label="Type of journey">
+            {[...tierOptions]
+              .sort(
+                (a, b) =>
+                  ["all", "signature", "tailor-made-example", "day"].indexOf(a.id) -
+                  ["all", "signature", "tailor-made-example", "day"].indexOf(b.id),
+              )
+              .map((option) => {
+                const count = tierCount(option.id);
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    aria-pressed={state.tier === option.id}
+                    aria-controls="journey-results"
+                    data-zero={count === 0}
+                    className={styles.tab}
+                    onClick={() => selectTier(option.id)}
+                  >
+                    {option.label} <small>{count}</small>
+                  </button>
+                );
+              })}
           </div>
           <div className={styles.filters} ref={filtersRef} aria-label="Filters">
             {groups.map((group) => filterButton(group.key, group.label, group.options))}
@@ -422,7 +419,7 @@ export function JourneysExplorer({
         </div>
       </div>
 
-      <main className={styles.wrap} id="journey-results" role="tabpanel">
+      <main className={styles.wrap} id="journey-results">
         <div className={styles.explain}>
           <p>
             {state.tier === "all"

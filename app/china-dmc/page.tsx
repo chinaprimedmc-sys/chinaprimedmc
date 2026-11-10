@@ -7,7 +7,7 @@ import {
   MessageCircle,
   Route,
   UsersRound,
-} from "lucide-react";
+} from "@/components/icons/symbols";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -327,7 +327,7 @@ export default function ChinaDmcPage() {
           src="/home/editorial/travel-trade-team-singapore.webp"
           alt="The China Prime DMC team at an international travel trade event in Singapore"
           fill
-          sizes="100vw"
+          sizes="(max-width: 767px) 100vw, 50vw"
           frameClassName={styles.finalCtaMedia}
           className={styles.finalCtaImage}
         />

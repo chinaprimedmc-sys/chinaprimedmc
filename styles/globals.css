@@ -2,6 +2,12 @@
 @import "../design-system/tokens/foundation.css";
 @import "./motion.css";
 
+.site-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
 .social-contact-rail__concierge-icon {
   background: rgba(255, 255, 255, 0.72) !important;
   border: 1px solid rgba(210, 216, 220, 0.85) !important;
@@ -47,6 +53,7 @@
 }
 
 @theme inline {
+  --aspect-portrait: var(--aspect-content-photo);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
@@ -224,20 +231,6 @@ html {
   body:has([data-unified-tour-detail="true"]) .social-contact-rail {
     display: none !important;
   }
-
-  body:has([data-tour-dossier="true"]) .social-contact-rail {
-    bottom: calc(5.25rem + env(safe-area-inset-bottom));
-  }
-}
-
-@media (max-width: 767px) {
-  body:has(.sticky-mobile-cta) {
-    --mobile-sticky-cta-height: 4.25rem;
-  }
-
-  body:has([data-journeys-page="true"]) {
-    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
-  }
 }
 
 .page-container {
@@ -331,6 +324,11 @@ select {
   font: inherit;
 }
 
+/* Native controls share the same silhouette as Button and CtaButton. */
+:where(button, [role="button"], input[type="button"], input[type="submit"]) {
+  border-radius: var(--radius-pill);
+}
+
 /* 链接重置属于基础层，避免覆盖按钮组件的语义颜色。 */
 @layer base {
   a {
@@ -352,6 +350,26 @@ select {
   text-transform: uppercase;
 }
 
+.glass-action {
+  border-radius: var(--radius-glass-control);
+  box-shadow: var(--button-glass-shadow);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .glass-action {
+    -webkit-backdrop-filter: var(--glass-filter);
+    backdrop-filter: var(--glass-filter);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-action {
+    background: var(--color-surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 /* 首页手机导航：三个独立浮岛，避免品牌与操作被包在一条过宽的白色胶囊里。 */
 
 @media (max-width: 1023px) {
@@ -361,7 +379,7 @@ select {
 }
 
 .social-contact-rail {
-  bottom: calc(var(--mobile-sticky-cta-height) + env(safe-area-inset-bottom) + 1.25rem);
+  bottom: calc(env(safe-area-inset-bottom) + 1.25rem);
   opacity: 0;
   position: fixed;
   right: 1.5rem;
@@ -480,40 +498,10 @@ select {
   z-index: 39;
 }
 
-.sticky-mobile-cta {
-  align-items: center;
-  background: rgba(250, 250, 247, 0.86);
-  border-top: 1px solid rgba(226, 224, 217, 0.82);
-  bottom: 0;
-  display: none;
-  justify-content: center;
-  left: 0;
-  padding: 0.65rem 1rem max(0.65rem, env(safe-area-inset-bottom));
-  position: fixed;
-  right: 0;
-  transform: translateY(100%);
-  transition: transform var(--motion-duration-transition) var(--motion-ease-out);
-  z-index: 45;
-}
-
-.sticky-mobile-cta.is-visible {
-  transform: translateY(0);
-}
-
-.sticky-mobile-cta > a {
-  width: min(100%, 24rem);
-}
-
 .social-contact-rail.is-visible {
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
-}
-
-@media (min-width: 768px) {
-  .social-contact-rail {
-    bottom: calc(1.5rem + env(safe-area-inset-bottom));
-  }
 }
 
 @media (max-width: 767px) {
@@ -557,7 +545,7 @@ select {
   }
 
   .social-contact-rail {
-    bottom: calc(var(--mobile-sticky-cta-height) + env(safe-area-inset-bottom) + 1rem);
+    bottom: calc(env(safe-area-inset-bottom) + 1rem);
     right: 1rem;
   }
 
@@ -632,10 +620,6 @@ select {
 
   .floating-cta {
     display: none;
-  }
-
-  .sticky-mobile-cta {
-    display: flex;
   }
 }
 

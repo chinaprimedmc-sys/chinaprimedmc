@@ -32,13 +32,13 @@ const journeyLocations: Record<string, string> = {
 
 const sensoryDescriptions: Record<string, string> = {
   "private-mutianyu-great-wall-day-tour":
-    "Private pickup, guiding and pre-arranged tickets leave more time to walk the Wall at your pace.",
+    "Your own guide and driver, hotel pickup and admission, with a cable-car or walking route agreed before the day.",
   "private-shanghai-day-tour-guide-driver":
-    "Yu Garden, the Bund and leafy lanes, connected by your private guide and a local ferry crossing.",
+    "Yu Garden, the Bund and the former French Concession, with your own guide, driver and central-hotel pickup.",
   "private-xian-terracotta-warriors-day-tour":
-    "See the Terracotta Army with context, then explore Xi'an's old city at your pace.",
+    "The Terracotta Army with your own guide, driver, museum tickets and hotel pickup, followed by one Old City walk.",
   "private-chengdu-panda-day-tour-early-morning":
-    "See pandas early, then slow down over tea in People's Park with private transfers handled.",
+    "An early Panda Base visit with your own guide, driver, admission and hotel pickup, followed by a People's Park walk. Tea is optional.",
   "guilin-yangshuo-li-river-cruise-private-day-tour":
     "A shared Li River cruise with private pickup, luggage coordination and your chosen finish.",
   "qingcheng-mountain-private-wellness-retreat-10-day":
@@ -98,11 +98,11 @@ const journeyHeadlines: Record<string, string> = {
   "guangzhou-shenzhen-tailor-made-business-tour-4-day":
     "A Tailor-Made Business Trip to Guangzhou & Shenzhen",
   "private-mutianyu-great-wall-day-tour": "Private Great Wall Day Tour at Mutianyu, from Beijing",
-  "private-shanghai-day-tour-guide-driver": "Private Shanghai Day Tour: Old City, Bund & Skyline",
-  "private-xian-terracotta-warriors-day-tour": "Private Terracotta Warriors Day Tour in Xi'an",
-  "private-chengdu-panda-day-tour-early-morning": "Private Giant Panda Day Tour in Chengdu",
+  "private-shanghai-day-tour-guide-driver": "Private Shanghai Day Tour with Guide and Driver",
+  "private-xian-terracotta-warriors-day-tour": "Private Terracotta Warriors Tour from Xi'an",
+  "private-chengdu-panda-day-tour-early-morning": "Private Chengdu Panda Tour with Hotel Pickup",
   "guilin-yangshuo-li-river-cruise-private-day-tour":
-    "Private Li River Cruise Day: Guilin to Yangshuo",
+    "Guilin to Yangshuo Li River Cruise with Guide",
 };
 
 /** 每个城市第一次出现时的一句话定位，供摘要、llms.txt 与目的地页共用。 */
@@ -164,6 +164,8 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
  * 不能再用"看点优先"的写法，否则与"private Beijing Xi'an Shanghai tour"类查询失去匹配。
  */
 const journeySeoTitleOverrides: Record<string, string> = {
+  "private-xian-terracotta-warriors-day-tour": "Private Terracotta Warriors Tour from Xi'an",
+  "private-shanghai-day-tour-guide-driver": "Private Shanghai Day Tour with Guide and Driver",
   "beijing-xian-shanghai-private-10-day-tour":
     "Slow-Paced Beijing Xi'an Shanghai 10-Day Private Tour",
   // 站点审计按 HTML 转义后的长度计数（& 会变成 &amp;），含 & 的标题要留出余量。

@@ -6,13 +6,14 @@
  * 关键规则：核心内容（逐日行程）直接展开在页面中，不藏在弹窗里，保证读者与爬虫都能读到。
  */
 
-import { ArrowRight, Check, Minus } from "lucide-react";
+import { ArrowRight, Check, Minus } from "@/components/icons/symbols";
 import Image from "next/image";
 import Link from "next/link";
 
 import { SiteFooter } from "@/components/footer/site-footer";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
+import { JourneyGallery } from "@/components/media/journey-gallery";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { journeyTiers } from "@/content/tours/tiers";
 import { InlineEnquiryForm } from "@/components/forms/inline-enquiry-form";
@@ -23,7 +24,6 @@ import { placeGlossary } from "@/content/tours/card-copy";
 import { detailCopy, detailHeroPhotos, journeyPhotos } from "@/content/tours/journeys-curation";
 import { RecordViewed } from "@/features/discovery/record-viewed";
 import {
-  JourneyMobileCta,
   JourneyPrice,
   JourneyWhatsAppAction,
 } from "@/features/tours/detail/journey-booking-summary";
@@ -71,7 +71,7 @@ export function TourDetailLanding({
   const days = model.days.filter((day) => day.summary);
   const isDayTour = (catalogItem?.recommendedDaysMax ?? 2) <= 1;
 
-  const others = journeyCatalog
+  const automaticOthers = journeyCatalog
     .filter((item) => item.slug !== model.slug && item.recommendedDaysMax <= 1 === isDayTour)
     .map((item) => ({
       item,
@@ -80,14 +80,21 @@ export function TourDetailLanding({
     .sort((a, b) => b.score - a.score || b.item.commercialPriority - a.item.commercialPriority)
     .slice(0, 3)
     .map(({ item }) => item);
+  const others = model.relatedTourHrefs
+    ? model.relatedTourHrefs.flatMap((href) =>
+        journeyCatalog.filter((item) => item.href === href && item.slug !== model.slug),
+      )
+    : automaticOthers;
   const guides = getJourneyReadingArticles(model.slug, model.slug === FLAGSHIP_SLUG ? 7 : 3);
 
-  const answer = [
-    `${model.headline} is a private ${isDayTour ? "day tour" : `${model.duration} China journey`}`,
-    model.routeLabel ? ` through ${model.routeLabel}` : "",
-    ", designed and operated by AVIORA, a licensed China-based tour operator.",
-    fact("Ideal for") ? ` Best for ${lowerFirst(fact("Ideal for") ?? "")}.` : "",
-  ].join("");
+  const answer =
+    model.answerSummary ??
+    [
+      `${model.headline} is a private ${isDayTour ? "day tour" : `${model.duration} China journey`}`,
+      model.routeLabel ? ` through ${model.routeLabel}` : "",
+      ", designed and operated by AVIORA, a licensed China-based tour operator.",
+      fact("Ideal for") ? ` Best for ${lowerFirst(fact("Ideal for") ?? "")}.` : "",
+    ].join("");
 
   return (
     <JourneyConfigurationProvider
@@ -179,6 +186,12 @@ export function TourDetailLanding({
               <section className={styles.summary} aria-label={detailCopy.summaryLead}>
                 <p className={styles.answer}>{answer}</p>
                 <p className={styles.lede}>{model.decisionSummary}</p>
+                {model.answerSummary && model.lastReviewedLabel && (
+                  <p className={styles.footnote}>
+                    Product information updated: {model.lastReviewedLabel}. Date-specific services
+                    are confirmed before booking.
+                  </p>
+                )}
                 {glossary.length > 0 && <p className={styles.gloss}>{glossary.join(" · ")}</p>}
                 {model.signatureMoments.length > 0 && (
                   <ul className={styles.moments}>
@@ -188,6 +201,50 @@ export function TourDetailLanding({
                   </ul>
                 )}
               </section>
+
+              {model.practicalities && (
+                <section id="tour-details" aria-labelledby="tour-details-title">
+                  <h2 id="tour-details-title" className={styles.h2}>
+                    What this private day tour includes
+                  </h2>
+                  <dl className={styles.standards}>
+                    {model.practicalities.map(({ label, value }) => (
+                      <div key={label}>
+                        <dt>{label}</dt>
+                        <dd>{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </section>
+              )}
+
+              {model.visitOptions && (
+                <section id="visit-options" aria-labelledby="visit-options-title">
+                  <h2 id="visit-options-title" className={styles.h2}>
+                    {model.visitOptions.title}
+                  </h2>
+                  <p className={styles.note}>{model.visitOptions.intro}</p>
+                  <dl className={styles.standards}>
+                    {model.visitOptions.options.map((option) => (
+                      <div key={option.title}>
+                        <dt>{option.title}</dt>
+                        <dd>
+                          <p>{option.description}</p>
+                          <p>
+                            <strong>Walking: </strong>
+                            {option.walking}
+                          </p>
+                          <p>
+                            <strong>Quote: </strong>
+                            {option.priceNote}
+                          </p>
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className={styles.footnote}>{model.visitOptions.note}</p>
+                </section>
+              )}
 
               {model.seniorStandard && (
                 <>
@@ -432,7 +489,22 @@ export function TourDetailLanding({
                 className={styles.whatsapp}
                 placement="detail-booking-card"
               />
-              <p className={styles.bookingNote}>{detailCopy.bookingNote}</p>
+              {model.inquiryChecklist ? (
+                <>
+                  <p className={styles.bookingNote}>For a useful availability check, send:</p>
+                  <ul className={styles.experiences}>
+                    {model.inquiryChecklist.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <p className={styles.bookingNote}>
+                    We check your pickup and chosen route, then confirm the private-group total in
+                    writing.
+                  </p>
+                </>
+              ) : (
+                <p className={styles.bookingNote}>{detailCopy.bookingNote}</p>
+              )}
               <Link className={styles.operator} href="/company">
                 Meet the China-based operator
               </Link>
@@ -445,6 +517,12 @@ export function TourDetailLanding({
             seed={model.slug}
             title="Guests on the pace and comfort"
           />
+
+          {model.gallery.length > 2 && (
+            <JourneyGallery
+              images={model.gallery.filter((image) => image.src !== hero.src).slice(0, 8)}
+            />
+          )}
 
           {others.length > 0 && (
             <section aria-labelledby="related-title">
@@ -477,14 +555,29 @@ export function TourDetailLanding({
             </section>
           )}
 
+          {model.planningResources && (
+            <section aria-labelledby="planning-resources-title">
+              <h2 id="planning-resources-title" className={styles.h2}>
+                More planning information
+              </h2>
+              <ul className={styles.why}>
+                {model.planningResources.map((resource) => (
+                  <li key={resource.href}>
+                    <b>
+                      <a href={resource.href}>{resource.label}</a>
+                    </b>
+                    <span>{resource.description}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section id="faq" aria-labelledby="faq-title" className={styles.faq}>
             <h2 id="faq-title" className={styles.h2}>
               {detailCopy.faqTitle}
             </h2>
-            <TourFaqAccordion
-              faqs={model.faqs.slice(0, model.faqLimit ?? 6)}
-              journeySlug={model.slug}
-            />
+            <TourFaqAccordion faqs={model.faqs} journeySlug={model.slug} />
           </section>
         </div>
 
@@ -493,7 +586,6 @@ export function TourDetailLanding({
         </p>
 
         <SiteFooter tone="white" />
-        <JourneyMobileCta fallbackPrice={price} journeySlug={model.slug} />
       </PageContainer>
     </JourneyConfigurationProvider>
   );

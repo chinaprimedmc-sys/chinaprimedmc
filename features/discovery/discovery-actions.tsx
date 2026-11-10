@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Heart, Plus } from "lucide-react";
+import { Check, Heart, Plus } from "@/components/icons/symbols";
 
 import { CtaButton } from "@/components/cta";
 import { useAppStore } from "@/stores/app-store";

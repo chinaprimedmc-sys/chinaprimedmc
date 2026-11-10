@@ -10,36 +10,60 @@ registerHooks({
   resolve(specifier, context, next) {
     let path;
     if (specifier.startsWith("@/")) path = resolve(root, specifier.slice(2));
-    else if (specifier.startsWith(".") && context.parentURL?.startsWith("file:")) path = fileURLToPath(new URL(specifier, context.parentURL));
+    else if (specifier.startsWith(".") && context.parentURL?.startsWith("file:"))
+      path = fileURLToPath(new URL(specifier, context.parentURL));
     if (path) {
       for (const candidate of [path + ".ts", path + "/index.ts"]) {
-        if (existsSync(candidate)) return { url: pathToFileURL(candidate).href, shortCircuit: true };
+        if (existsSync(candidate))
+          return { url: pathToFileURL(candidate).href, shortCircuit: true };
       }
     }
     return next(specifier, context);
   },
   load(url, context, next) {
-    if (url.endsWith(".ts")) return { format: "module", source: stripTypeScriptTypes(readFileSync(fileURLToPath(url), "utf8")), shortCircuit: true };
+    if (url.endsWith(".ts"))
+      return {
+        format: "module",
+        source: stripTypeScriptTypes(readFileSync(fileURLToPath(url), "utf8")),
+        shortCircuit: true,
+      };
     return next(url, context);
   },
 });
 
 const { buildExplorerItems } = await import("../lib/tours/journey-explorer-items.ts");
-const { itemsToIndex, readExplorerState, writeExplorerState, runExplorer, emptyState } = await import("../lib/tours/journey-explorer.ts");
+const { itemsToIndex, readExplorerState, writeExplorerState, runExplorer, emptyState } =
+  await import("../lib/tours/journey-explorer.ts");
 const { journeyTags } = await import("../content/tours/journey-tags.ts");
 const { journeyCatalog } = await import("../content/tours/catalog.ts");
+const { slowPacedSlug, pricingBlock } =
+  await import("../content/tours/slow-paced-golden-triangle.ts");
 
 const items = buildExplorerItems();
 const index = itemsToIndex(items);
-const find = (q, extra = {}) => runExplorer(index, { ...emptyState, q, ...extra }).map((r) => r.item.slug);
+const find = (q, extra = {}) =>
+  runExplorer(index, { ...emptyState, q, ...extra }).map((r) => r.item.slug);
 const state = (query) => readExplorerState(new URLSearchParams(query));
 
-test("every public journey has tags, a tier and no price in the browser payload", () => {
+test("every public journey has tags and a tier; only the published flagship exception shows a price", () => {
   assert.equal(items.length, journeyCatalog.length);
   assert.equal(Object.keys(journeyTags).length, journeyCatalog.length);
-  assert.ok(!JSON.stringify(items).match(/US\$|fromUsd/));
+  assert.ok(!JSON.stringify(items).includes('"fromUsd"'), "Do not expose raw catalog prices");
+  const priced = items.filter((item) => /US\$|\$\s?\d/.test(item.priceLabel));
+  assert.deepEqual(
+    priced.map((item) => item.slug),
+    [slowPacedSlug],
+  );
+  assert.equal(priced[0].priceLabel, `From ${pricingBlock.from} ${pricingBlock.unit}`);
+  for (const item of items.filter((item) => item.slug !== slowPacedSlug)) {
+    assert.equal(item.priceLabel, "Priced for your dates");
+    assert.ok(!/US\$|\$\s?\d/.test(item.priceNote));
+  }
   for (const item of items) {
-    assert.ok(item.who.length <= 2 && item.interest.length <= 2 && item.interest.length >= 1, item.slug);
+    assert.ok(
+      item.who.length <= 2 && item.interest.length <= 2 && item.interest.length >= 1,
+      item.slug,
+    );
   }
 });
 
@@ -56,15 +80,34 @@ test("Western search habits: spelling, synonyms, typos", () => {
   assert.ok(find("terracota").length > 0);
   assert.ok(find("great wal").length > 0);
   assert.ok(find("avatar mountains").some((slug) => /zhangjiajie/.test(slug)));
-  assert.deepEqual(find("kids").sort(), items.filter((i) => i.who.includes("Family")).map((i) => i.slug).sort());
-  assert.ok(find("honeymoon").every((slug) => items.find((i) => i.slug === slug).who.includes("Couples")));
-  assert.deepEqual(find("grandparents").sort(), items.filter((i) => i.easierPace).map((i) => i.slug).sort());
+  assert.deepEqual(
+    find("kids").sort(),
+    items
+      .filter((i) => i.who.includes("Family"))
+      .map((i) => i.slug)
+      .sort(),
+  );
+  assert.ok(
+    find("honeymoon").every((slug) => items.find((i) => i.slug === slug).who.includes("Couples")),
+  );
+  assert.deepEqual(
+    find("grandparents").sort(),
+    items
+      .filter((i) => i.easierPace)
+      .map((i) => i.slug)
+      .sort(),
+  );
 });
 
 test("trip length and day trips", () => {
   const tenDay = find("10 days").map((slug) => items.find((i) => i.slug === slug).days);
   assert.ok(tenDay.length > 0 && tenDay.every((d) => d >= 8 && d <= 12));
-  assert.deepEqual(find("two weeks").map((slug) => items.find((i) => i.slug === slug).days).every((d) => d >= 12 && d <= 16), true);
+  assert.deepEqual(
+    find("two weeks")
+      .map((slug) => items.find((i) => i.slug === slug).days)
+      .every((d) => d >= 12 && d <= 16),
+    true,
+  );
   assert.ok(find("day trip").every((slug) => items.find((i) => i.slug === slug).tier === "day"));
   assert.equal(find("day trip").length, 5);
 });
@@ -84,7 +127,16 @@ test("suggests a correction, never matches nonsense", () => {
 
 test("short fragments only match the start of words", () => {
   const results = find("xi");
-  assert.ok(!results.includes("muslim-friendly-china-tour-great-wall-desert-stars") || /xi/.test(JSON.stringify(items.find((i) => i.slug === "muslim-friendly-china-tour-great-wall-desert-stars")).toLowerCase().replace(/ningxia/g, "")));
+  assert.ok(
+    !results.includes("muslim-friendly-china-tour-great-wall-desert-stars") ||
+      /xi/.test(
+        JSON.stringify(
+          items.find((i) => i.slug === "muslim-friendly-china-tour-great-wall-desert-stars"),
+        )
+          .toLowerCase()
+          .replace(/ningxia/g, ""),
+      ),
+  );
 });
 
 test("tier tabs, filters and sorting", () => {
@@ -92,7 +144,10 @@ test("tier tabs, filters and sorting", () => {
   assert.equal(find("", { tier: "signature" }).length, 11);
   assert.equal(find("", { tier: "tailor-made-example" }).length, 3);
   const short = find("", { sort: "short" }).map((slug) => items.find((i) => i.slug === slug).days);
-  assert.deepEqual(short, [...short].sort((a, b) => a - b));
+  assert.deepEqual(
+    short,
+    [...short].sort((a, b) => a - b),
+  );
   assert.equal(find("", { muslimFriendly: true }).length, 1);
   assert.equal(find("", { easierPace: true }).length, items.filter((i) => i.easierPace).length);
 });
@@ -111,7 +166,16 @@ test("legacy links and redirect targets still select sensible journeys", () => {
 });
 
 test("state round-trips through the URL and rejects junk", () => {
-  const original = { ...emptyState, tier: "signature", length: ["8-12"], who: ["Family"], interest: ["Slow travel"], easierPace: true, q: "xian", sort: "short" };
+  const original = {
+    ...emptyState,
+    tier: "signature",
+    length: ["8-12"],
+    who: ["Family"],
+    interest: ["Slow travel"],
+    easierPace: true,
+    q: "xian",
+    sort: "short",
+  };
   assert.deepEqual(readExplorerState(writeExplorerState(original)), original);
   const junk = state("tier=nope&length=99&who=<script>&interest=x&sort=hack&q=" + "a".repeat(200));
   assert.equal(junk.tier, "all");
@@ -123,7 +187,10 @@ test("state round-trips through the URL and rejects junk", () => {
 
 test("every offered 'who' tag is backed by at least one journey", () => {
   for (const tag of ["First-time", "Family", "Couples"]) {
-    assert.ok(items.some((item) => item.who.includes(tag)), tag);
+    assert.ok(
+      items.some((item) => item.who.includes(tag)),
+      tag,
+    );
   }
 });
 

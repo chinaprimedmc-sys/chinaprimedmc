@@ -8,6 +8,8 @@
  */
 
 import type { InterestTag, WhoTag } from "@/content/tours/journey-tags";
+import type { JourneyCategoryId } from "@/content/tours/classification";
+import { journeyCategories } from "@/content/tours/classification";
 import { interestTags, whoTags } from "@/content/tours/journey-tags";
 import { JourneySearchIndex, parseQuery, type SearchableJourney } from "@/lib/tours/journey-search";
 
@@ -20,6 +22,8 @@ export type ExplorerItem = SearchableJourney & {
   slug: string;
   tier: JourneyTier;
   tierLabel: string;
+  category: JourneyCategoryId;
+  categoryLabel: string;
   href: string;
   /** 卡片上显示的一句话（desc 另含亮点，仅供搜索）。 */
   summary: string;
@@ -41,6 +45,7 @@ export type ExplorerItem = SearchableJourney & {
 
 export type ExplorerState = {
   tier: TierFilter;
+  category: JourneyCategoryId[];
   length: LengthId[];
   who: WhoTag[];
   interest: InterestTag[];
@@ -102,6 +107,7 @@ export const sortOptions: ReadonlyArray<{ id: SortId; label: string }> = [
 
 export const emptyState: ExplorerState = {
   tier: "all",
+  category: [],
   length: [],
   who: [],
   interest: [],
@@ -157,6 +163,10 @@ export function readExplorerState(params: URLSearchParams): ExplorerState {
   };
 
   state.tier = oneOf(params.get("tier"), tierIds) ?? "all";
+  state.category = listOf(
+    params.get("category"),
+    Object.keys(journeyCategories) as JourneyCategoryId[],
+  );
   state.length = listOf(params.get("length"), lengthIds);
   state.who = listOf(params.get("who"), whoTags);
   state.interest = listOf(params.get("interest"), interestTags);
@@ -204,6 +214,7 @@ export function readExplorerState(params: URLSearchParams): ExplorerState {
 export function writeExplorerState(state: ExplorerState) {
   const params = new URLSearchParams();
   if (state.tier !== "all") params.set("tier", state.tier);
+  if (state.category.length) params.set("category", state.category.join(","));
   if (state.length.length) params.set("length", state.length.join(","));
   if (state.who.length) params.set("who", state.who.join(","));
   if (state.interest.length) params.set("interest", state.interest.join(","));
@@ -216,6 +227,7 @@ export function writeExplorerState(state: ExplorerState) {
 
 export function activeFilterCount(state: ExplorerState) {
   return (
+    state.category.length +
     state.length.length +
     state.who.length +
     state.interest.length +
@@ -228,6 +240,7 @@ type MatchOptions = { anyTier?: boolean };
 
 function matchesFilters(item: ExplorerItem, state: ExplorerState, options: MatchOptions) {
   if (!options.anyTier && state.tier !== "all" && item.tier !== state.tier) return false;
+  if (state.category.length && !state.category.includes(item.category)) return false;
   if (
     state.length.length &&
     !state.length.some((id) => lengthOptions.find((option) => option.id === id)?.test(item.days))

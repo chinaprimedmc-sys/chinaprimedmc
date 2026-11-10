@@ -1,7 +1,7 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowLeft, ArrowRight, SlidersHorizontal, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, SlidersHorizontal, X } from "@/components/icons/symbols";
 import Link from "next/link";
 import { useId, useRef, useState } from "react";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
@@ -98,8 +98,8 @@ function JourneyCollectionRail({
         tabIndex={0}
         aria-label={`${title} journeys`}
       >
-        {items.map((item) => (
-          <JourneyCard item={item} key={item.slug} />
+        {items.map((item, position) => (
+          <JourneyCard item={item} key={item.slug} position={position} />
         ))}
       </div>
     </section>
@@ -383,8 +383,8 @@ export function JourneyCatalog({
           tabIndex={variant === "home" ? 0 : undefined}
           aria-label="Journey results"
         >
-          {results.map((item) => (
-            <JourneyCard item={item} key={item.slug} />
+          {results.map((item, position) => (
+            <JourneyCard item={item} key={item.slug} position={position} />
           ))}
         </div>
       )}

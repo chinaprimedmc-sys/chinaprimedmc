@@ -1,7 +1,7 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { Check, Cookie, Settings2, ShieldCheck, X } from "lucide-react";
+import { Check, Cookie, Settings2, ShieldCheck, X } from "@/components/icons/symbols";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 

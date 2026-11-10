@@ -4,7 +4,7 @@
  * 输出：完整页面，含导航和页脚。
  * 不负责：metadata 与结构化数据（在各页面的 page.tsx 里）。
  */
-import { ArrowRight, Check, Minus } from "lucide-react";
+import { ArrowRight, Check, Minus } from "@/components/icons/symbols";
 import Image from "next/image";
 import Link from "next/link";
 

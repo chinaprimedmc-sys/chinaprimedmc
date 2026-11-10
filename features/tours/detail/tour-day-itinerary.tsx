@@ -9,7 +9,7 @@
  * 少于 4 天的行程不显示跳转条；滚动遵守“减少动态效果”偏好。
  */
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "@/components/icons/symbols";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -106,24 +106,26 @@ export function TourDayItinerary({ days }: { days: TourDetailDay[] }) {
                       src={day.image.src}
                       alt={day.image.alt}
                       fill
-                      sizes="(max-width: 900px) 100vw, 60vw"
+                      sizes="(max-width: 899px) 100vw, 26vw"
                     />
                   </div>
                 )}
-                <p>{day.summary}</p>
-                {day.experiences.length > 0 && (
-                  <ul className={styles.experiences}>
-                    {day.experiences.map((experience) => (
-                      <li key={experience.title}>
-                        <b>{experience.title}</b>
-                        {experience.description && <span>{experience.description}</span>}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {day.guideInsight && (
-                  <blockquote className={styles.insight}>{day.guideInsight}</blockquote>
-                )}
+                <div className={styles.dayNarrative}>
+                  <p>{day.summary}</p>
+                  {day.experiences.length > 0 && (
+                    <ul className={styles.experiences}>
+                      {day.experiences.map((experience) => (
+                        <li key={experience.title}>
+                          <b>{experience.title}</b>
+                          {experience.description && <span>{experience.description}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {day.guideInsight && (
+                    <blockquote className={styles.insight}>{day.guideInsight}</blockquote>
+                  )}
+                </div>
                 {(day.transit || day.steps || day.rest) && (
                   <dl className={styles.dayMetrics}>
                     {day.transit && (

@@ -1,7 +1,7 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowLeft, List, X } from "lucide-react";
+import { ArrowLeft, List, X } from "@/components/icons/symbols";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -15,15 +15,6 @@ type ReaderHeading = {
 export function ArticleMobileReader({ headings }: { headings: ReaderHeading[] }) {
   const [progress, setProgress] = useState(0);
   const [activeHeading, setActiveHeading] = useState(headings[0]?.title ?? "Article overview");
-  const [docked, setDocked] = useState(false);
-
-  useEffect(() => {
-    if (docked) document.documentElement.dataset.journalReaderActive = "true";
-    else delete document.documentElement.dataset.journalReaderActive;
-    return () => {
-      delete document.documentElement.dataset.journalReaderActive;
-    };
-  }, [docked]);
 
   useEffect(() => {
     const article = document.getElementById("article");
@@ -36,11 +27,6 @@ export function ArticleMobileReader({ headings }: { headings: ReaderHeading[] })
       const total = Math.max(article.offsetHeight - window.innerHeight * 0.55, 1);
       const consumed = Math.min(Math.max(-rect.top + window.innerHeight * 0.18, 0), total);
       setProgress(Math.round((consumed / total) * 100));
-      const navOffset = Number.parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue("--site-nav-offset"),
-      );
-      setDocked(rect.top <= (Number.isFinite(navOffset) ? navOffset : 64));
-
       const readingLine = window.innerHeight * 0.3;
       let current = headings[0];
       for (const heading of headings) {
@@ -70,7 +56,6 @@ export function ArticleMobileReader({ headings }: { headings: ReaderHeading[] })
     <div
       className={styles.mobileReader}
       data-scrolled={progress > 0 ? "true" : undefined}
-      data-docked={docked ? "true" : undefined}
       aria-label="Article reading tools"
     >
       <div className={styles.mobileReaderShell}>

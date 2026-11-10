@@ -1,7 +1,8 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowUpRight, ChevronDown, Menu, Search, X } from "lucide-react";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { ArrowUpRight, ChevronDown, Menu, Search, X } from "@/components/icons/symbols";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,38 +36,17 @@ export function GlobalHeader() {
     fullBleedHeroPrefixes.some((prefix) => pathname.startsWith(prefix));
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-
-  // 让页面里的吸顶工具条（如 Journeys 筛选）知道顶栏是否收起，跟着上移或下移，避免互相遮挡。
-  useEffect(() => {
-    const hidden = isHidden && !isMenuOpen;
-    if (hidden) document.documentElement.dataset.navHidden = "true";
-    else delete document.documentElement.dataset.navHidden;
-    return () => {
-      delete document.documentElement.dataset.navHidden;
-    };
-  }, [isHidden, isMenuOpen]);
+  const [desktopMenu, setDesktopMenu] = useState("");
 
   useEffect(() => {
     let frameId = 0;
-    let lastY = window.scrollY;
 
     const updateScrollState = () => {
       frameId = 0;
       const scrollTop =
         window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      setIsScrolled((current) => {
-        const next = scrollTop > 24;
-        return current === next ? current : next;
-      });
-      // 手机上向下滚动时收起顶栏，上滑或回到顶部时再出现，把空间还给内容。
-      const delta = scrollTop - lastY;
-      if (Math.abs(delta) > 8) {
-        setIsHidden(scrollTop > 160 && delta > 0);
-        lastY = scrollTop;
-      } else if (scrollTop <= 24) {
-        setIsHidden(false);
-      }
+      setIsScrolled(scrollTop > 24);
+      setDesktopMenu("");
     };
 
     const scheduleScrollState = () => {
@@ -75,12 +55,8 @@ export function GlobalHeader() {
 
     scheduleScrollState();
     window.addEventListener("scroll", scheduleScrollState, { passive: true });
-    document.addEventListener("scroll", scheduleScrollState, { passive: true, capture: true });
-    window.visualViewport?.addEventListener("scroll", scheduleScrollState, { passive: true });
     return () => {
       window.removeEventListener("scroll", scheduleScrollState);
-      document.removeEventListener("scroll", scheduleScrollState, true);
-      window.visualViewport?.removeEventListener("scroll", scheduleScrollState);
       if (frameId !== 0) window.cancelAnimationFrame(frameId);
     };
   }, []);
@@ -94,28 +70,44 @@ export function GlobalHeader() {
         data-scrolled={isScrolled || !overImage ? "true" : undefined}
         data-journeys-navigation={isJourneysPage || undefined}
         data-menu-open={isMenuOpen || undefined}
-        data-hidden={(isHidden && !isMenuOpen) || undefined}
+        data-submenu-open={Boolean(desktopMenu) || undefined}
       >
         <div className={styles.desktopShell}>
           <BrandLink className={styles.brandIsland} />
-          <nav className={styles.navIsland} aria-label="Primary navigation">
-            {navigationConfig.groups.map((group) => {
-              const active = isGroupActive(group, pathname);
-              return (
-                <div key={group.id} className={styles.navItem}>
-                  <Link
-                    href={group.href}
-                    className={styles.navLink}
-                    data-active={active || undefined}
-                    aria-current={active ? "page" : undefined}
-                  >
-                    {desktopLabel(group.id, group.label)}
-                  </Link>
-                  <NavPanel group={group} />
-                </div>
-              );
-            })}
-          </nav>
+          <NavigationMenu.Root
+            className={styles.navIsland}
+            aria-label="Primary navigation"
+            value={desktopMenu}
+            onValueChange={setDesktopMenu}
+            activationMode="manual"
+          >
+            <NavigationMenu.List className={styles.navList}>
+              {navigationConfig.groups.map((group) => {
+                const active = isGroupActive(group, pathname);
+                return (
+                  <NavigationMenu.Item key={group.id} value={group.id} className={styles.navItem}>
+                    <NavigationMenu.Link asChild active={active}>
+                      <Link
+                        href={group.href}
+                        className={styles.navLink}
+                        data-active={active || undefined}
+                        aria-current={active ? "page" : undefined}
+                      >
+                        {desktopLabel(group.id, group.label)}
+                      </Link>
+                    </NavigationMenu.Link>
+                    <NavigationMenu.Trigger
+                      className={styles.navToggle}
+                      aria-label={`Open ${desktopLabel(group.id, group.label)} menu`}
+                    >
+                      <ChevronDown size={14} aria-hidden="true" />
+                    </NavigationMenu.Trigger>
+                    <NavPanel group={group} />
+                  </NavigationMenu.Item>
+                );
+              })}
+            </NavigationMenu.List>
+          </NavigationMenu.Root>
           <div className={styles.rightGroup}>
             <JourneyTools className={styles.toolsIsland} />
             <PlanLink className={styles.actionIsland} placement="global_header_desktop" />
@@ -138,7 +130,11 @@ export function GlobalHeader() {
         </div>
         <Dialog.Portal>
           <Dialog.Overlay className={styles.mobileOverlay} />
-          <Dialog.Content className={styles.mobileMenu} aria-describedby={undefined}>
+          <Dialog.Content
+            id="site-mobile-navigation"
+            className={styles.mobileMenu}
+            aria-describedby={undefined}
+          >
             <Dialog.Title className="sr-only">Site navigation</Dialog.Title>
             <MobileMenu pathname={pathname} onClose={() => setIsMenuOpen(false)} />
           </Dialog.Content>
@@ -169,33 +165,37 @@ function JourneyTools({ className }: { className: string }) {
 function NavPanel({ group }: { group: NavigationGroup }) {
   const featured = "featured" in group ? group.featured : undefined;
   return (
-    <div className={styles.panel}>
+    <NavigationMenu.Content className={styles.panel}>
       <div className={styles.panelInner}>
         <div className={styles.panelColumns}>
           {group.columns.map((column, index) => (
             <ul key={`${group.id}-${index}`}>
               {column.links.map((link) => (
                 <li key={link.href + link.label}>
-                  <Link href={link.href}>{link.label}</Link>
+                  <NavigationMenu.Link asChild>
+                    <Link href={link.href}>{link.label}</Link>
+                  </NavigationMenu.Link>
                 </li>
               ))}
             </ul>
           ))}
         </div>
         {featured ? (
-          <Link href={featured.href} className={styles.panelFeatured}>
-            <span className={styles.panelPhoto}>
-              <Image src={featured.image} alt={featured.imageAlt} fill sizes="260px" />
-            </span>
-            <span className={styles.panelMeta}>{featured.meta}</span>
-            <strong>{featured.title}</strong>
-            <span className={styles.panelCta}>
-              {featured.label} <ArrowUpRight aria-hidden="true" />
-            </span>
-          </Link>
+          <NavigationMenu.Link asChild>
+            <Link href={featured.href} className={styles.panelFeatured}>
+              <span className={styles.panelPhoto}>
+                <Image src={featured.image} alt={featured.imageAlt} fill sizes="260px" />
+              </span>
+              <span className={styles.panelMeta}>{featured.meta}</span>
+              <strong>{featured.title}</strong>
+              <span className={styles.panelCta}>
+                {featured.label} <ArrowUpRight aria-hidden="true" />
+              </span>
+            </Link>
+          </NavigationMenu.Link>
         ) : null}
       </div>
-    </div>
+    </NavigationMenu.Content>
   );
 }
 

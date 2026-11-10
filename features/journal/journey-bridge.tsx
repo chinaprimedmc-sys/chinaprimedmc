@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@/components/icons/symbols";
 
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import { TrackedLink } from "@/components/cta";

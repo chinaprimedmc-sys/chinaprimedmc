@@ -45,34 +45,29 @@ const chengduGallery = [
   sichuanHotpot,
   privateVehicle,
 ];
-const pendingImage: MediaAsset = {
-  src: "/home/editorial/great-wall-private-china-travel.webp",
-  alt: "Photography for the private Chengdu panda day tour is being prepared",
-  width: 1920,
-  height: 1080,
-};
-
 export const privateChengduPandaDayTour: Tour = {
   slug: "private-chengdu-panda-day-tour-early-morning",
   visualStatus: "ready",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-08-21",
-  title: "Private Chengdu Panda Day Tour, Early Start, Tickets Arranged",
+  updatedAt: "2026-11-10",
+  title: "Private Chengdu Panda Tour with Hotel Pickup",
   subtitle:
     "Start from your Chengdu hotel at a sensible early hour, enter with admission arranged and follow a private guide who adapts the panda-base route around live openings, crowds, weather and animal activity before a slower Chengdu afternoon.",
-  duration: "1 Day · Private · Usually 7–9 hours",
+  duration: "1 Day · Private · About 8 hours",
+  durationIso: "PT8H",
   route: "Chengdu hotel · Chengdu Panda Base · People's Park · Chengdu hotel",
   styles: ["Family", "Nature", "Culture", "Photography"],
   hero: {
     eyebrow: "Private Chengdu panda tour · early start · guide, driver and admission · no shopping",
     image: pandaBase,
-    primary: { label: "Check My Date", href: "#inquiry" },
-    secondary: { label: "See What Is Included", href: "#price" },
+    primary: { label: "Check My Date", href: "#enquiry" },
+    secondary: { label: "See What Is Included", href: "#included" },
   },
   seo: {
-    title: "Private Chengdu Panda Day Tour with Guide & Driver",
+    title: "Private Chengdu Panda Tour with Hotel Pickup",
     description:
-      "Private Chengdu panda day tour with early hotel pickup, a multilingual guide, private driver, Panda Base admission and no shopping stops.",
+      "Visit Chengdu Panda Base with a private guide, driver, hotel pickup and admission, then walk in People's Park. Early start; lunch and tea are optional.",
+    preserveCopy: true,
     keywords: [
       "private Chengdu panda tour",
       "Chengdu Panda Base private day tour",
@@ -87,10 +82,72 @@ export const privateChengduPandaDayTour: Tour = {
   overview: {
     pitch:
       "A panda day is shaped as much by timing as by the ticket. Giant pandas choose their own rhythm, public areas can become crowded and the base may change which enclosures or nurseries are open. This private tour begins early from your Chengdu hotel, with admission, vehicle and multilingual guide arranged in advance. Your guide checks the practical conditions and chooses a sensible route through the public base rather than promising a fixed animal performance. After the morning visit, return to central Chengdu for an unhurried People's Park and tea-culture chapter. There are no compulsory shopping stops, panda-souvenir factories or claims of private animal access.",
+    answer:
+      "This private Chengdu panda tour is an approximately eight-hour day, usually 7\u20139 hours, from a central Chengdu hotel to Chengdu Research Base of Giant Panda Breeding and People's Park. Your party has its own guide, separate driver and vehicle, with standard Panda Base admission and hotel return included. Panda habitats and entry facilities are public; early timing does not guarantee active pandas, cubs or queue-free entry. Lunch, tea, internal carts and airport or railway-station transfers are separate. This is an observation visit with no touching, feeding, volunteering or keeper access.",
+    practicalities: [
+      {
+        label: "Duration",
+        value:
+          "Plan around 8 hours, usually 7–9 hours door to door. The written service window and confirmed pickup govern the day.",
+      },
+      {
+        label: "Which panda base",
+        value:
+          "Chengdu Research Base of Giant Panda Breeding, also called Chengdu Panda Base. Dujiangyan, Wolong and Bifengxia are different sites and are not included.",
+      },
+      {
+        label: "Private service",
+        value:
+          "Your own guide, a separate driver and an air-conditioned vehicle. Public entry, animal habitats and internal transport are shared with other visitors.",
+      },
+      {
+        label: "Guide language",
+        value:
+          "Request an English-speaking guide or another available language; language and date-specific availability are confirmed before booking. A keeper or research specialist is not promised.",
+      },
+      {
+        label: "Admission",
+        value:
+          "Standard Chengdu Panda Base admission is included, subject to reservation confirmation. This provides no VIP entrance, early access before public opening or queue bypass.",
+      },
+      {
+        label: "Panda viewing",
+        value:
+          "A public observation visit. Specific pandas, active behavior, cubs, nurseries and red pandas cannot be guaranteed; no holding, touching, feeding or backstage access.",
+      },
+      {
+        label: "Walking and internal carts",
+        value:
+          "Expect walking, slopes, queues and standing across a large site. Internal electric carts are optional, separately paid and subject to public operation; they do not remove all walking.",
+      },
+      {
+        label: "Afternoon and meals",
+        value:
+          "A People's Park walk is included. Lunch, tea, drinks, hosted tea and cooking sessions are separate; a cooking session may replace the park or require extra hours.",
+      },
+      {
+        label: "Pickup and return",
+        value:
+          "Central Chengdu hotels. Chengdu Tianfu Airport (TFU), Shuangliu Airport (CTU), railway stations and non-central addresses require a separate transfer quote and timing review.",
+      },
+      {
+        label: "Price and accommodation",
+        value:
+          "One written total for your private party, based on date, guests, guide language, addresses and service window. No overnight accommodation is included.",
+      },
+    ],
     facts: [
       {
+        label: "Suitable for",
+        value: "Chengdu visitors who want a guided panda morning with private hotel transfers",
+      },
+      {
+        label: "Pacing",
+        value: "Early start, substantial base walking and a flexible park afternoon",
+      },
+      {
         label: "Time",
-        value: "Usually 7–9 hours door to door",
+        value: "About 8 hours; usually 7–9 hours door to door",
         helper:
           "Pickup is commonly around 07:00–07:30, then adjusted for your hotel, season, ticket window, current base hours and selected afternoon plan.",
       },
@@ -128,7 +185,7 @@ export const privateChengduPandaDayTour: Tour = {
       description:
         "Send your hotel, date, group details and any child or mobility needs. We confirm the pickup, ticket basis, guide contact and current public-base plan before the vehicle arrives.",
       see: "A clear operating message showing when to meet, what is included and which conditions may change the route.",
-      do: "Bring your passport, comfortable shoes and honest expectations about live animals rather than a staged performance.",
+      do: "Bring the entry documents confirmed for your date and comfortable shoes; expect live animals with their own daily rhythms.",
       feel: "That the most important logistical decision—the start—has already been made sensibly.",
     },
     {
@@ -172,7 +229,7 @@ export const privateChengduPandaDayTour: Tour = {
         label: "01 · Early hotel pickup",
         value: "The start is planned around your address and the live public opening window",
         helper:
-          "We do not advertise a fictional universal 'early access' before the public base opens unless a specific program is confirmed in writing.",
+          "The early start is a hotel departure plan, not admission before public opening. Public queues and security still apply.",
       },
       {
         label: "02 · Admission clarity",
@@ -209,9 +266,9 @@ export const privateChengduPandaDayTour: Tour = {
   },
   highlights: [
     {
-      title: "A genuinely earlier start from your own hotel",
+      title: "An early start from your own hotel",
       description:
-        "Leave central Chengdu before the weakest part of the day, with tickets, private transport and the practical entrance plan arranged in advance.",
+        "Leave central Chengdu at a time planned around public opening, with tickets, private transport and the practical entrance plan arranged in advance.",
       category: "Family",
       image: pandaBase,
     },
@@ -244,33 +301,38 @@ export const privateChengduPandaDayTour: Tour = {
         "Private central-Chengdu hotel pickup and return, with private vehicle and professional driver during the confirmed service window",
       activities: [
         {
+          time: "07:00\u201307:30 \u00b7 indicative pickup",
           title: "An early, confirmed hotel pickup",
           description:
             "Meet in your hotel lobby with the pickup time, guide contact, admission basis and return arrangement already stated in the final operating message.",
         },
         {
+          time: "Morning \u00b7 public opening and entry",
           title: "Included Chengdu Panda Base admission",
           description:
             "Enter through the confirmed public process. Your guide manages the practical arrival and chooses the first area around current conditions rather than a rigid brochure route.",
         },
         {
+          time: "Morning \u00b7 main public habitats",
           title: "Giant pandas with behavior and biology explained",
           description:
             "Observe available public habitats and learn how age, diet, temperature, personality and daily rhythm affect what visitors can see.",
         },
         {
+          time: "Late morning \u00b7 interpretation and city transfer",
           title: "Conservation without invented access",
           description:
             "Understand the public conservation and breeding context while keeping a clear boundary between visitor observation and restricted professional animal care.",
         },
         {
+          time: "Lunch break, then afternoon park walk and hotel return",
           title: "People's Park and Chengdu's slower social rhythm",
           description:
             "Return to the city for a flexible park and tea-culture walk, with optional hosted tea, lunch or cooking experiences added only when selected.",
         },
       ],
       guideNote:
-        "Tell us about child ages, stroller or wheelchair use, walking limitations, heat sensitivity, dietary needs and any airport or rail connection. Live animals determine their own visibility and behavior; the guide can adapt the public route but cannot guarantee a specific panda or encounter.",
+        "Tell us about child ages, stroller or wheelchair use, walking limitations, heat sensitivity, dietary needs and any airport or rail connection with a fixed return deadline, preferred guide language, luggage and standing concerns. Live animals determine their own visibility and behavior; the guide can adapt the public route but cannot guarantee a specific panda or encounter.",
       coordinates: { latitude: 30.7345, longitude: 104.1456 },
     },
   ],
@@ -279,7 +341,7 @@ export const privateChengduPandaDayTour: Tour = {
       name: "Your Chengdu hotel or confirmed central address",
       destination: "Chengdu",
       description:
-        "This is a private day tour, so no overnight stay is included. Service begins and ends at a hotel in Chengdu's main urban districts or another confirmed central location. Airport and non-standard pickup requirements are priced before booking.",
+        "This is a private day tour, so no overnight stay is included. Service begins and ends at a hotel in Chengdu's main urban districts or another confirmed central location. Airport, railway-station and non-standard pickup requirements are priced before booking.",
       roomStyle: "No overnight stay required",
       highlights: [
         "Early hotel pickup",
@@ -291,9 +353,10 @@ export const privateChengduPandaDayTour: Tour = {
     },
   ],
   included: [
-    "Private pickup and return at a hotel in Chengdu's main urban districts; airports, out-of-area hotels and non-standard locations are quoted before booking",
+    "Private pickup and return at a hotel in Chengdu's main urban districts; airports, railway stations, out-of-area hotels and non-standard locations are quoted before booking",
     "Private air-conditioned vehicle with professional driver for the confirmed service window",
-    "Private multilingual guide for the confirmed Panda Base and central Chengdu day",
+    "Private guide in the language confirmed before booking for the Panda Base and central Chengdu day",
+    "A flexible guided People's Park walk; tea and drinks are separate",
     "Standard admission to Chengdu Research Base of Giant Panda Breeding for the confirmed travelers",
     "Pre-trip review of hotel address, date, group details, ticket information, walking preferences and child or mobility considerations",
     "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
@@ -302,7 +365,7 @@ export const privateChengduPandaDayTour: Tour = {
   excluded: [
     "Lunch, tea, drinks, personal purchases, gratuities, travel insurance and items not expressly listed as included",
     "Internal electric cart, hosted tea, cooking class, evening performance and other upgrades unless selected in the written confirmation",
-    "Airport pickup or drop-off, out-of-area hotels, late-night return or additional vehicle and guide hours unless quoted",
+    "Airport or railway-station pickup or drop-off, out-of-area hotels, late-night return or additional vehicle and guide hours unless quoted",
     "Panda holding, touching, feeding, keeper access, a specific panda, cub, behavior, nursery, red-panda area or behind-the-scenes access",
     "Guaranteed operation of any public habitat, internal transport or visitor facility affected by animal welfare, weather, maintenance, capacity, safety or base decisions",
     "Wheelchair, porter, medical care or accessibility equipment unless separately requested and confirmed",
@@ -325,15 +388,15 @@ export const privateChengduPandaDayTour: Tour = {
     {
       title: "Hands-on Sichuan cooking experience",
       description:
-        "Add a date-confirmed cooking session. The host, dishes, group format, dietary fit, transfers and any added service time are stated before payment.",
+        "A cooking session may replace the People's Park walk or require separately quoted extra hours. The host, dishes, group format, dietary fit, transfers and any added service time are stated before payment.",
       badges: ["Host availability"],
       image: sichuanHotpot,
     },
     {
       title: "Sichuan opera evening extension",
       description:
-        "Extend the day with standard performance tickets, private vehicle, guide assistance and up to 2.5 additional service hours. Exact venue, seats and program are confirmed for the date.",
-      badges: ["Up to 4 guests", "Evening extension"],
+        "Request a separately quoted evening extension. Venue, seats, program, ticket coverage, guide assistance, vehicle hours and hotel return must be agreed before payment; these are not included in the day-tour price.",
+      badges: ["Separately quoted", "Evening extension"],
       image: sichuanHotpot,
     },
     {
@@ -353,7 +416,7 @@ export const privateChengduPandaDayTour: Tour = {
         label: "Pickup",
         value: "Chengdu hotel lobby or confirmed central address",
         helper:
-          "Main urban hotel districts are included; Tianfu airport, Shuangliu airport and distant addresses are checked first.",
+          "Main urban hotel districts are included; Tianfu Airport (TFU), Shuangliu Airport (CTU), railway stations and distant addresses are checked first.",
       },
       {
         label: "Vehicle",
@@ -408,88 +471,153 @@ export const privateChengduPandaDayTour: Tour = {
     ],
   },
   gallery: chengduGallery.slice(1),
+  faqLimit: 18,
   faqs: [
     {
-      question: "What does the private-tour price include?",
+      question: "Which panda base does this Chengdu private tour visit?",
       answer:
-        "Your written quote is for a private group and includes early pickup and return within Chengdu's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops. Lunch, tea, internal carts and other upgrades are not included.",
+        "The tour visits Chengdu Research Base of Giant Panda Breeding, commonly called Chengdu Panda Base. It does not visit Dujiangyan, Wolong or Bifengxia. Those are different sites requiring a different route and quote; this is not a two-base tour.",
     },
     {
-      question: "How does group size affect the price?",
+      question:
+        "What is included, and how much does a private panda tour cost for two people or a family?",
       answer:
-        "Private-group pricing follows the size of your group and your pickup point, so the cost per guest usually falls as more people share the vehicle and guide. Your written quote shows the exact total for your date, group size, vehicle and hotel address. Optional experiences remain separate. Six guests may require a larger vehicle.",
+        "Request one total for your party rather than multiplying a published per-person price. The quote includes central-hotel pickup and return, private guide in the confirmed language, separate driver and vehicle, standard Panda Base admission, a People's Park walk and bottled water. Date, adult and child numbers, guide language and addresses affect the quote. Lunch, tea, carts, transfers beyond the agreed area and extra hours are separate. No compulsory shopping stops.",
     },
     {
-      question: "Why does the tour start early?",
+      question: "How early is pickup, and is this a VIP or skip-the-line panda tour?",
       answer:
-        "Pandas often show more visible activity during cooler earlier periods, and an earlier arrival can reduce some crowd pressure. This improves the planning logic but is not a guarantee: weather, animal rest, husbandry needs, public openings and visitor numbers still determine the actual experience.",
+        "Pickup is commonly planned around 07:00–07:30, subject to hotel address, season, current opening hours and ticket window. This is not VIP entry, access before public opening or a skip-the-line service. Standard reservation arrangements do not bypass security, capacity controls or public queues. The written pickup and service window are confirmed for your date.",
     },
     {
-      question: "Can you guarantee we will see panda cubs or active pandas?",
+      question: "Can you guarantee active pandas, panda cubs or red pandas?",
       answer:
-        "No responsible operator can guarantee a specific panda, cub, nursery, feeding time or behavior. The guide adapts the public route around current openings and visible activity, but animal welfare and base decisions always come first. The tour sells good timing and professional handling, not control over live animals.",
+        "No. Earlier, cooler periods can offer a useful chance of visible activity, but feeding, climbing, rest and indoor or outdoor visibility depend on the animals and base decisions. Specific pandas, cubs, nurseries and red-panda areas are not guaranteed. Your guide adapts to the public areas open on the day.",
     },
     {
-      question: "Can we hold, feed or touch a panda?",
+      question: "Can we hold, touch or feed a panda?",
       answer:
-        "No. Panda holding, feeding, touching, keeper access and behind-the-scenes interaction are not included or implied. If an officially authorized public program ever exists for your date, it would require separate verification and written confirmation; this product makes no such promise.",
+        "No. This product is a public observation visit with no panda holding, touching, feeding, keeper access or backstage interaction. The private element is your guide and transport; the animal habitats are shared with other visitors.",
     },
     {
-      question: "Is this a private tour or a private panda-base visit?",
+      question: "Is a panda volunteer program included at Dujiangyan or Wolong?",
       answer:
-        "The guide, vehicle and operating plan are private for your booking party. Chengdu Panda Base is a public attraction, so other visitors will be present and entry, habitats, routes and facilities remain under the base's control.",
+        "No. Volunteering is not part of this tour, and no volunteer place is promised. A request for another base or an official program needs separate checks of the site, date, age and participation rules, availability, transport and price. Do not assume a volunteer request includes touching or feeding pandas.",
     },
     {
-      question: "Is lunch or tea included?",
+      question: "Can we book an English-speaking guide and a separate driver?",
       answer:
-        "No. Independent lunch time keeps the base price clear. You may add the selected Sichuan lunch or a hosted People's Park tea table. Menus, spice levels, dietary needs and the tea-house format are confirmed before booking.",
+        "Yes, request an English-speaking guide or another available language. The guide language, availability and a separate driver are confirmed before booking. Your guide interprets the public visit; a panda keeper, researcher or specialist scientist is not promised.",
     },
     {
-      question: "Can you collect us from Chengdu airport?",
+      question: "Are Panda Base tickets included, and do foreign visitors need a passport?",
       answer:
-        "Yes when the timing is workable, but airports are not included in the central-hotel price. Chengdu Shuangliu and Chengdu Tianfu airport transfers are quoted separately, subject to the date, flight time, luggage, waiting requirements and final route.",
+        "Standard admission is included, subject to reservation confirmation. We check the current identity, child-ticket and entry-document requirements for your date and explain what originals to bring. You do not need to send passport numbers in an initial inquiry; any necessary ticket-booking information is collected later through the agreed booking channel.",
     },
     {
-      question: "Can children or older travelers take this tour?",
+      question: "How much walking is involved, and is the internal electric cart included?",
       answer:
-        "Often yes. Private transport and a private guide improve flexibility, but the base is large and may involve slopes, considerable walking, standing and queues. Share child ages, stroller, wheelchair, mobility and heat concerns before booking so the route, internal transport options and realistic limitations can be discussed.",
+        "The base is large and involves walking, slopes, standing and queues. The internal electric cart is not included; any separately paid use depends on public routes, availability and queues. It is not a private shuttle or a way to bypass entry controls, and some walking remains. Share wheelchair, stroller, walking-distance and standing needs before confirmation.",
     },
     {
-      question: "How quickly can you confirm my date?",
+      question: "Is this panda tour suitable for children or older travelers?",
       answer:
-        "Send your date, group size and Chengdu hotel through the form or WhatsApp. During China business hours, we aim to reply within one hour with an availability check, early pickup plan and any relevant supplement. A booking is confirmed only after the written proposal, required payment, tickets and supplier arrangements are confirmed in writing.",
+        "It can work for families and older travelers when the route matches their needs. An early start and a large public site can be tiring. Tell us child ages, stroller or wheelchair use, heat sensitivity and comfortable walking and standing limits. We review a shorter route and rest opportunities before accepting the plan; step-free access throughout is not promised.",
+    },
+    {
+      question: "Are lunch and People's Park tea included?",
+      answer:
+        "The People's Park walk is included; lunch, tea and other drinks are not. Choose independent lunch time or request a separately quoted Sichuan meal or hosted tea table. Tell us about allergies, dietary needs and spice preferences. A park walk is not a reserved tea-house seat, private venue or included tea service.",
+    },
+    {
+      question: "Can we add Sichuan cooking or an evening opera performance?",
+      answer:
+        "Yes, subject to availability and a separate quote. Cooking may replace the People's Park walk or require extra hours. An opera evening extends beyond the standard day: venue, seats, program, ticket coverage, transfers, guide assistance, service hours and hotel return must be stated before payment.",
+    },
+    {
+      question: "Can pickup be at Tianfu Airport, Shuangliu Airport or a railway station?",
+      answer:
+        "These transfers are separately quoted. State Chengdu Tianfu Airport (TFU) or Shuangliu Airport (CTU), or the exact railway station, flight or train time, luggage and required return deadline. Arrival procedures and transfer time can make an early panda-base visit impractical; a same-day arrival or layover needs a separate timing review before booking.",
+    },
+    {
+      question: "What happens in summer heat, rain, crowds or a closure?",
+      answer:
+        "Weather can change animal visibility, walking comfort and open facilities. Earlier timing does not guarantee cool conditions or low crowds, including on public holidays. The guide can adapt open public routes and breaks; a major closure or unsafe conditions require a review of alternatives and the applicable written change or cancellation terms. No particular habitat or cart operation is guaranteed.",
+    },
+    {
+      question: "How long is the day, and can we book only a panda-base morning?",
+      answer:
+        "The standard day is planned around eight hours, usually 7–9 hours from central-hotel pickup to return, including the Panda Base, lunch break and People's Park. Traffic, entry and the chosen route affect the schedule. A panda-only morning is a different service window and quote; skipping the park does not automatically change the confirmed price. Share any fixed train or flight deadline.",
+    },
+    {
+      question: "How do we check availability and confirm the booking?",
+      answer:
+        "Send your preferred date, adult and child numbers, hotel address, guide language, access needs and any fixed return deadline. We check admission and service availability, then provide the scope, total, optional costs and booking terms. A booking is confirmed only when the required payment, tickets and supplier arrangements have been confirmed in writing; submitting an inquiry does not reserve entry.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
         title: "Chengdu, Pandas & the Sichuan Table",
         description:
           "A five-day private Chengdu stay with better-timed pandas, Sichuan food, tea-house culture and an optional Leshan chapter.",
         tags: ["Private", "Pandas", "Food"],
-        image: pendingImage,
+        image: pandaBase,
         route: "Chengdu · optional Leshan",
         duration: "5 days / 4 nights",
         href: "/tours/chengdu-pandas-sichuan-table",
       },
       {
-        title: "Beijing, Xi'an, Chengdu & Shanghai",
+        title: "China Through the Ages: Shanghai, Chengdu, Xi'an & Beijing",
         description:
-          "An eleven-day first-China route connecting the Great Wall, Terracotta Warriors, pandas and Shanghai with private support.",
+          "A twelve-day private route from Shanghai through Chengdu and Xi'an to Beijing, connecting pandas, the Terracotta Army and the Great Wall.",
         tags: ["Private", "First-time China", "Pandas"],
-        image: pendingImage,
-        route: "Beijing · Xi'an · Chengdu · Shanghai",
-        duration: "11 days / 10 nights",
+        image: pandaBase,
+        route: "Shanghai · Chengdu · Xi'an · Beijing",
+        duration: "12 days / 11 nights",
         href: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
       },
     ],
     destinations: [],
   },
+  inquiryChecklist: [
+    "Preferred date; number of adults and child ages",
+    "Chengdu hotel / pickup address and return address",
+    "Preferred guide language",
+    "Walking, standing, stroller, wheelchair and heat considerations",
+    "Any flight / train, exact airport or station, luggage and fixed return deadline",
+    "Optional meal, tea, cooking or opera request and dietary needs",
+  ],
+  planningResources: [
+    {
+      label: "Plan a Chengdu stay",
+      href: "/destinations/chengdu",
+      description: "Decide whether a single panda day or a longer Chengdu stay fits your route.",
+    },
+    {
+      label: "Panda Base tickets for foreign visitors",
+      href: "/journal/chengdu-panda-base-tickets-foreigners",
+      description: "Prepare for identity, reservation and entry questions before choosing a tour.",
+    },
+    {
+      label: "Official Panda Base visitor notices",
+      href: "https://www.panda.org.cn/en/service/notice",
+      description:
+        "Consult the attraction's notices; current access and visitor rules need date-specific checking.",
+    },
+    {
+      label: "Official Panda Base opening information",
+      href: "https://www.panda.org.cn/en/service/opentime",
+      description:
+        "Check published opening information; a hotel departure time is not a promise of early admission.",
+    },
+  ],
   inquiry: {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Private%20Chengdu%20Panda%20Day%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20check%20a%20private%20Chengdu%20panda%20day%20tour.%0A%0ADate%3A%0ANumber%20of%20guests%20and%20ages%20if%20children%3A%0AChengdu%20hotel%20or%20pickup%20address%3A%0AAny%20airport%20or%20railway%20connection%3A%0AOptional%20experiences%20of%20interest%3A%0AAny%20mobility%2C%20dietary%20or%20other%20considerations%3A%0A",
     whatsappHref:
-      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Chengdu%20panda%20day%20tour.%20My%20date%2C%20group%20size%20and%20Chengdu%20hotel%20are%3A",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%20would%20like%20to%20check%20a%20private%20Chengdu%20panda%20tour.%0A%0APreferred%20date%3B%20number%20of%20adults%20and%20child%20ages%3A%0AChengdu%20hotel%20/%20pickup%20address%20and%20return%20address%3A%0APreferred%20guide%20language%3A%0AWalking%2C%20standing%2C%20stroller%2C%20wheelchair%20and%20heat%20considerations%3A%0AAny%20flight%20/%20train%2C%20exact%20airport%20or%20station%2C%20luggage%20and%20fixed%20return%20deadline%3A%0AOptional%20meal%2C%20tea%2C%20cooking%20or%20opera%20request%20and%20dietary%20needs%3A%0APlease%20explain%20any%20ticket-booking%20documents%20after%20checking%20availability.",
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I would like to check a private early-morning Chengdu panda day tour from my Chengdu hotel.",

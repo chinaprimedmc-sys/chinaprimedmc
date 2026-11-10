@@ -70,14 +70,15 @@ function Card({ item, position }: { item: MagazineItem; position: number }) {
 function Banner() {
   return (
     <aside className={styles.banner} aria-label="Featured journey">
-      <Image
-        src={bannerPhoto.src}
-        alt={bannerPhoto.alt}
-        fill
-        sizes="(max-width: 1023px) 100vw, 1200px"
-        className={styles.bannerImage}
-      />
-      <span className={styles.bannerShade} aria-hidden="true" />
+      <span className={styles.bannerMedia}>
+        <Image
+          src={bannerPhoto.src}
+          alt={bannerPhoto.alt}
+          fill
+          sizes="(max-width: 700px) 100vw, 40vw"
+          className={styles.bannerImage}
+        />
+      </span>
       <div className={styles.bannerBody}>
         <p className={styles.bannerKicker}>The journey behind these guides</p>
         <h3>The 10-Day Slow-Paced Golden Triangle</h3>

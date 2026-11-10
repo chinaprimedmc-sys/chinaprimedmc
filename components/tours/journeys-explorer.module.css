@@ -295,8 +295,8 @@
 }
 .optionThumb {
   flex: none;
-  width: 48px;
-  height: 36px;
+  width: 36px;
+  height: 48px;
   border-radius: 4px;
   background: var(--line);
   object-fit: cover;
@@ -348,7 +348,14 @@
   z-index: 30;
   border-bottom: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .controls {
+    -webkit-backdrop-filter: var(--glass-filter);
+    backdrop-filter: var(--glass-filter);
+    background: var(--glass-surface-strong);
+  }
 }
 .controls .wrap {
   display: flex;
@@ -401,7 +408,7 @@
     color: var(--ink);
   }
 }
-.tab[aria-selected="true"] {
+.tab[aria-pressed="true"] {
   background: var(--ink);
   color: #fff;
 }
@@ -926,20 +933,40 @@
     border-color: var(--line-strong);
     scroll-snap-align: start;
   }
-  .tab[aria-selected="true"] {
+  .tab[aria-pressed="true"] {
     border-color: var(--ink);
   }
 }
 
-/* Phone: the header is 56px and slides away on scroll-down. The filter bar sits right under it and slides up with it, so they never overlap or leave a gap. */
-@media (max-width: 767px) {
-  .controls {
-    top: 56px;
-    background: #fff;
-    transition: top 260ms ease;
+/* Keep every collection label visible rather than squeezing four filters beside it. */
+@media (min-width: 1180px) {
+  .controls .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem 1.5rem;
+    padding-block: 0.5rem;
   }
-  :global(html[data-nav-hidden="true"]) .controls {
-    top: 0;
+  .tabs {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding: 0;
+  }
+  .compact {
+    grid-column: 1;
+    grid-row: 2;
+    width: min(100%, 22rem);
+  }
+  .filters {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .controls {
+    background: var(--color-surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

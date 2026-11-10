@@ -167,6 +167,8 @@ export type Tour = {
   title: string;
   subtitle: string;
   duration: string;
+  /** ISO 8601 planned duration; the written service window remains authoritative. */
+  durationIso?: string;
   route: string;
   styles: TourStyle[];
   hero: {
@@ -179,17 +181,37 @@ export type Tour = {
     title: string;
     description: string;
     keywords: string[];
+    /** Publish the authored title and description without automatic year or CTA additions. */
+    preserveCopy?: boolean;
   };
   overview: {
     pitch: string;
+    /** Self-contained, visible answer shared with machine-readable product summaries. */
+    answer?: string;
+    practicalities?: TourOverviewFact[];
     facts: TourOverviewFact[];
   };
+  inquiryChecklist?: string[];
+  planningResources?: Array<{ label: string; href: string; description: string }>;
   experienceChapters?: TourExperienceChapter[];
   planningSupport?: TourPlanningSupport;
   guideProfile?: TourGuideProfile;
   faqLimit?: number;
   seniorStandard?: TourSeniorStandard;
   pricingBlock?: TourPricingBlock;
+  /** Compare ways to visit a site before requesting a date-specific quote. */
+  visitOptions?: {
+    title: string;
+    intro: string;
+    options: Array<{
+      title: string;
+      description: string;
+      walking: string;
+      priceNote: string;
+    }>;
+    note: string;
+    inquiryChecklist: string[];
+  };
   highlights: TourHighlight[];
   itinerary: TourItineraryDay[];
   accommodations: TourAccommodation[];
@@ -209,6 +231,8 @@ export type Tour = {
   gallery: MediaAsset[];
   faqs: TourFaq[];
   related: {
+    /** Use the curated product links instead of automatic same-format suggestions. */
+    useListedTours?: boolean;
     tours: RelatedTour[];
     destinations: RelatedDestination[];
   };

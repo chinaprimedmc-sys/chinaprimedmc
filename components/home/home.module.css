@@ -98,6 +98,7 @@
   text-decoration: none;
 }
 .buttonLight {
+  border-radius: var(--radius-pill);
   padding: 0.875rem 1.5rem;
   background: var(--color-on-dark);
   color: var(--color-ink) !important;
@@ -151,12 +152,14 @@
 .journeyPhoto {
   position: relative;
   display: block;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: var(--aspect-content-photo);
   overflow: hidden;
+  border-radius: var(--radius-editorial);
   background: var(--color-surface-muted);
 }
 .journeyPhoto img {
   object-fit: cover;
+  transition: transform var(--motion-image) var(--motion-ease-out);
 }
 .journeyBody {
   display: flex;
@@ -185,16 +188,10 @@
   line-height: 1.65;
 }
 .journeyDescription {
-  margin-top: 1rem !important;
+  margin-block: 1rem 1.5rem !important;
   color: var(--color-copy);
   font-size: var(--type-body-size);
   line-height: var(--type-body-line);
-}
-.journeyDetail {
-  margin-block: 0.75rem 1.5rem !important;
-  color: var(--color-muted);
-  font-size: var(--type-caption-size);
-  line-height: 1.65;
 }
 .journeyPrice {
   margin-top: auto;
@@ -213,6 +210,12 @@
 }
 .journeyBody > .textLink {
   margin-top: 1rem;
+  padding: 0.625rem 1.25rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-pill);
+  transition:
+    background-color var(--motion-fast) ease,
+    color var(--motion-fast) ease;
 }
 .browseLinks {
   display: flex;
@@ -239,13 +242,13 @@
 }
 .planningPhoto {
   position: relative;
-  min-height: 30rem;
-  height: 100%;
+  aspect-ratio: var(--aspect-content-photo);
+  overflow: hidden;
   background: var(--color-surface-muted);
 }
 .planningPhoto img {
   object-fit: cover;
-  object-position: center 50%;
+  object-position: right center;
 }
 .planningCopy > p {
   margin-top: 1rem;
@@ -441,38 +444,6 @@
 .about .textLink {
   margin-top: 1.5rem;
 }
-.faq details {
-  border-bottom: 1px solid var(--color-line);
-}
-.faq summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-block: 1.25rem;
-  list-style: none;
-  cursor: pointer;
-  font-size: var(--type-nav-size);
-  font-weight: 600;
-  line-height: 1.6;
-}
-.faq summary::-webkit-details-marker {
-  display: none;
-}
-.faq summary::after {
-  content: "+";
-  flex-shrink: 0;
-  font-weight: 400;
-}
-.faq details[open] summary::after {
-  content: "−";
-}
-.faq details p {
-  padding-bottom: 1.5rem;
-  color: var(--color-copy);
-  font-size: var(--type-nav-size);
-  line-height: 1.8;
-}
 .guides {
   display: flex;
   align-items: center;
@@ -511,12 +482,12 @@
 @media (min-width: 768px) {
   .journeyCard {
     display: grid;
-    grid-row: span 8;
+    grid-row: span 7;
     grid-template-rows: subgrid;
   }
   .journeyBody {
     display: grid;
-    grid-row: span 7;
+    grid-row: span 6;
     grid-template-rows: subgrid;
   }
   .journeyPrice {
@@ -591,7 +562,7 @@
   }
   .planningPhoto {
     min-height: 0;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: var(--aspect-content-photo);
   }
   .familyPlanning {
     gap: 1.5rem;
@@ -633,5 +604,22 @@
   .standardList > div {
     grid-template-columns: 1fr;
     gap: 0.5rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .journeyCard:hover .journeyPhoto img {
+    transform: scale(1.025);
+  }
+  .journeyBody > .textLink:hover {
+    background: var(--color-forest);
+    border-color: var(--color-forest);
+    color: var(--color-on-dark);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journeyPhoto img,
+  .journeyBody > .textLink {
+    transition: none;
   }
 }

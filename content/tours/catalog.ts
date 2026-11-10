@@ -1,3 +1,4 @@
+import { getJourneyClassification, type PublicJourneySlug } from "@/content/tours/classification";
 import { tours } from "@/content/tours";
 import { chinaFamilyAsset, firstChinaAsset } from "@/content/tours/assets";
 import { resolveJourneyPricing, type PriceStatus } from "@/content/tours/price-visibility";
@@ -74,6 +75,7 @@ export type JourneyFocusId =
   | "photography"
   | "slow-travel";
 
+/** Legacy merchandising groups; product ownership is defined in classification.ts. */
 export type JourneyCommercialRoleId = "signature" | "essential" | "nature" | "extension";
 
 type JourneyCatalogBase = Omit<
@@ -500,7 +502,7 @@ const mutianyuPrivateDayJourney: JourneyCatalogBase = {
   kind: "featured",
   routeLabel: mutianyuPrivateDayTour.route,
   durationLabel: "1 private day · 7–9 hours",
-  styleFilters: ["Culture", "Family", "Senior-friendly", "Photography"],
+  styleFilters: ["Culture", "Family", "Photography"],
   destinationFilters: ["Beijing"],
   bestForFilters: ["First-time visitors", "Families", "Couples", "Older travelers"],
   experienceFilters: ["great-wall", "scenery", "photography"],
@@ -513,7 +515,7 @@ const mutianyuPrivateDayJourney: JourneyCatalogBase = {
     "private-groups",
     "solo-travelers",
   ],
-  planningNeedFilters: ["child-friendly", "mobility-aware", "photography-led"],
+  planningNeedFilters: ["child-friendly", "photography-led"],
   recommendedDaysMin: 1,
   recommendedDaysMax: 1,
   destinations: [
@@ -581,7 +583,7 @@ const privateXianTerracottaDayJourney: JourneyCatalogBase = {
   kind: "featured",
   routeLabel: privateXianTerracottaDayTour.route,
   durationLabel: "1 private day · about 8 hours",
-  styleFilters: ["Culture", "Family", "Senior-friendly", "Photography", "History"],
+  styleFilters: ["Culture", "Family", "Photography", "History"],
   destinationFilters: ["Xi'an"],
   bestForFilters: [
     "First-time visitors",
@@ -601,11 +603,9 @@ const privateXianTerracottaDayJourney: JourneyCatalogBase = {
     "solo-travelers",
   ],
   planningNeedFilters: [
-    "muslim-friendly",
     "vegetarian-friendly",
     "slower-pacing",
     "child-friendly",
-    "mobility-aware",
     "food-focused",
     "photography-led",
   ],
@@ -613,7 +613,7 @@ const privateXianTerracottaDayJourney: JourneyCatalogBase = {
   recommendedDaysMax: 1,
   destinations: [{ label: "Xi'an", href: "/destinations/xian" }],
   planningNote:
-    "The base tour begins and ends at a central Xi'an hotel. Passport-linked admission, airport or railway-station connections, City Wall access, meals and hands-on clay making are confirmed and priced separately before booking.",
+    "The core tour includes central-hotel pickup and return, standard museum admission and one selected Old City walk. Ticket identity requirements are checked for your date; terminal transfers, City Wall entry, meals and clay making are separately quoted.",
 };
 
 const privateChengduPandaDayJourney: JourneyCatalogBase = {
@@ -627,7 +627,7 @@ const privateChengduPandaDayJourney: JourneyCatalogBase = {
   href: `/tours/${privateChengduPandaDayTour.slug}`,
   kind: "featured",
   routeLabel: privateChengduPandaDayTour.route,
-  durationLabel: "1 private day · usually 7–9 hours",
+  durationLabel: "1 private day · about 8 hours",
   styleFilters: ["Family", "Nature", "Culture", "Photography", "Wildlife"],
   destinationFilters: ["Chengdu"],
   bestForFilters: [
@@ -647,19 +647,12 @@ const privateChengduPandaDayJourney: JourneyCatalogBase = {
     "private-groups",
     "solo-travelers",
   ],
-  planningNeedFilters: [
-    "vegetarian-friendly",
-    "slower-pacing",
-    "child-friendly",
-    "mobility-aware",
-    "food-focused",
-    "photography-led",
-  ],
+  planningNeedFilters: ["vegetarian-friendly", "child-friendly", "food-focused", "photography-led"],
   recommendedDaysMin: 1,
   recommendedDaysMax: 1,
   destinations: [{ label: "Chengdu", href: "/destinations/chengdu" }],
   planningNote:
-    "The base product includes standard public Panda Base admission, an early central-hotel pickup and a flexible People's Park chapter. Specific pandas, cubs, behaviors, animal contact and behind-the-scenes access are never guaranteed.",
+    "The base product includes standard public Panda Base admission, an early central-hotel pickup and a flexible People's Park chapter. Tea, lunch and internal carts are separate. Specific animals and behaviors are not guaranteed; animal contact and behind-the-scenes access are not offered.",
 };
 
 const guilinYangshuoLiRiverDayJourney: JourneyCatalogBase = {
@@ -674,7 +667,7 @@ const guilinYangshuoLiRiverDayJourney: JourneyCatalogBase = {
   kind: "featured",
   routeLabel: guilinYangshuoLiRiverDayTour.route,
   durationLabel: "1 private day · usually 9–11 hours",
-  styleFilters: ["Nature", "Culture", "Family", "Photography", "Senior-friendly"],
+  styleFilters: ["Nature", "Culture", "Family", "Photography"],
   destinationFilters: ["Guilin", "Yangshuo"],
   bestForFilters: [
     "Couples",
@@ -694,19 +687,10 @@ const guilinYangshuoLiRiverDayJourney: JourneyCatalogBase = {
     "private-groups",
     "solo-travelers",
   ],
-  planningNeedFilters: [
-    "vegetarian-friendly",
-    "slower-pacing",
-    "child-friendly",
-    "mobility-aware",
-    "photography-led",
-  ],
+  planningNeedFilters: ["vegetarian-friendly", "child-friendly", "photography-led"],
   recommendedDaysMin: 1,
   recommendedDaysMax: 1,
-  destinations: [
-    { label: "Guilin", href: `/tours/${guilinYangshuoLiRiverDayTour.slug}#itinerary` },
-    { label: "Yangshuo", href: `/tours/${guilinYangshuoLiRiverDayTour.slug}#itinerary` },
-  ],
+  destinations: [{ label: "Guilin & Yangshuo", href: "/destinations/guilin" }],
   planningNote:
     "The included cruise is a scheduled four-star public passenger sailing, not a private charter. The base price finishes in Yangshuo; a private Guilin return is selected and priced before booking.",
 };
@@ -1142,101 +1126,82 @@ export const publicJourneySlugs = [
 
 const commercialPortfolio: Record<
   string,
-  Pick<JourneyCatalogItem, "commercialRole" | "commercialRoleLabel" | "commercialPriority">
+  Pick<JourneyCatalogItem, "commercialRole" | "commercialPriority">
 > = {
   "luxury-yunnan-private-tour": {
     commercialRole: "signature",
-    commercialRoleLabel: "Private Reserve Yunnan journey",
     commercialPriority: 170,
   },
   "guilin-yangshuo-li-river-cruise-private-day-tour": {
     commercialRole: "nature",
-    commercialRoleLabel: "Private Guilin & Yangshuo cruise day",
     commercialPriority: 51,
   },
   "private-chengdu-panda-day-tour-early-morning": {
     commercialRole: "essential",
-    commercialRoleLabel: "Private Chengdu panda day tour",
     commercialPriority: 52,
   },
   "private-xian-terracotta-warriors-day-tour": {
     commercialRole: "essential",
-    commercialRoleLabel: "Private Terracotta Warriors day tour",
     commercialPriority: 53,
   },
   "private-shanghai-day-tour-guide-driver": {
     commercialRole: "essential",
-    commercialRoleLabel: "Private Shanghai day tour",
     commercialPriority: 54,
   },
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
     commercialRole: "extension",
-    commercialRoleLabel: "Tailor-made Guangzhou & Shenzhen business tour",
     commercialPriority: 70,
   },
   "private-mutianyu-great-wall-day-tour": {
     commercialRole: "essential",
-    commercialRoleLabel: "Private Great Wall day tour",
     commercialPriority: 55,
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     commercialRole: "signature",
-    commercialRoleLabel: "Signature private wellness retreat",
     commercialPriority: 130,
   },
   "muslim-friendly-china-tour-great-wall-desert-stars": {
     commercialRole: "signature",
-    commercialRoleLabel: "Signature Muslim family journey",
     commercialPriority: 140,
   },
   "china-family-tour-with-pandas-12-day-private-tour": {
     commercialRole: "signature",
-    commercialRoleLabel: "Signature family journey",
     commercialPriority: 180,
   },
   "china-at-an-easier-pace-12-day-private-tour": {
     commercialRole: "signature",
-    commercialRoleLabel: "Signature slow journey",
     commercialPriority: 160,
   },
   "beijing-xian-chengdu-shanghai-private-11-day-tour": {
     commercialRole: "essential",
-    commercialRoleLabel: "First-China essential",
     commercialPriority: 150,
   },
   "beijing-xian-shanghai-private-10-day-tour": {
     commercialRole: "essential",
-    commercialRoleLabel: "Signature first journey",
     commercialPriority: 190,
   },
   "chengdu-chongqing-zhangjiajie-private-11-day-tour": {
     commercialRole: "nature",
-    commercialRoleLabel: "Nature and food journey",
     commercialPriority: 120,
   },
   "chengdu-pandas-jiuzhaigou-private-7-day-tour": {
     commercialRole: "nature",
-    commercialRoleLabel: "Sichuan nature journey",
     commercialPriority: 100,
   },
   "shanghai-zhangjiajie-floating-peaks": {
     commercialRole: "nature",
-    commercialRoleLabel: "City and nature journey",
     commercialPriority: 110,
   },
   "chengdu-pandas-sichuan-table": {
     commercialRole: "extension",
-    commercialRoleLabel: "Private Chengdu extension",
     commercialPriority: 80,
   },
   "beijing-great-wall-private-5-day-tour": {
     commercialRole: "extension",
-    commercialRoleLabel: "Private Beijing extension",
     commercialPriority: 90,
   },
   "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour": {
     commercialRole: "extension",
-    commercialRoleLabel: "Imperial cities extension",
     commercialPriority: 95,
   },
 };
@@ -1294,8 +1259,8 @@ const commercialDetails: Record<
     highlights: [
       "See Pit 1 with military scale and formation explained",
       "Use Pits 2 and 3 to understand cavalry, command and archaeology",
-      "Enter with passport-linked admission already arranged",
-      "Return to Xi'an's Old City without jade-factory detours",
+      "Standard admission arranged, with current identity requirements confirmed",
+      "Choose one Old City walk without compulsory jade-factory stops",
       "Add a hands-on clay-warrior session only when you choose it",
     ],
     bestForSummary:
@@ -1515,60 +1480,60 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
       "Gateway flights, premium room categories and date-specific private access are quoted transparently after the journey brief is reviewed.",
   },
   "guilin-yangshuo-li-river-cruise-private-day-tour": {
-    fromUsd: 688,
     pricingUnit: "private-group",
+    // Shared catalog compatibility only; no public amount is calculated from this party size.
     basePartySize: 4,
-    cardBasis: "Private group of four · Yangshuo finish",
+    cardBasis: "One total for your party · Yangshuo finish",
     basis:
-      "Indicative starting price per private group of four guests for the version ending in Yangshuo, equivalent to US$172 per guest. A two-guest Yangshuo-finish tour starts from US$528 total. The four-guest central-Guilin return version starts from US$758 total.",
+      "A private-group quote for the actual date, adults and children, cruise tickets, guide language, luggage, addresses and selected finish. The base version ends in Yangshuo; private road return to Guilin costs extra.",
     inclusionSummary:
-      "Includes central-Guilin hotel pickup, private vehicle and driver for the confirmed road-service window, private multilingual guide, standard four-star public Li River cruise tickets, the standard onboard meal only when attached to the confirmed tickets, a short private Yangshuo countryside chapter, normal pre-confirmed luggage transfer to a Yangshuo hotel, bottled water and no compulsory shopping stops.",
+      "Includes central Guilin hotel pickup, private guide in the confirmed language, separate driver and road vehicle, standard shared four-star Li River cruise tickets, an onboard meal only if attached to those tickets, a short Yangshuo countryside route, pre-confirmed normal luggage delivery to the Yangshuo hotel and bottled water. No compulsory shopping stops.",
     finalPriceNote:
-      "Indicative Yangshuo-finish private-group totals outside major holidays are: one guest US$438; two guests US$528; three guests US$608; four guests US$688; five guests US$830; and six guests US$972. A central-Guilin return starts from an additional US$70 per group of up to four and is quoted for larger parties.",
+      "One written total is quoted for your actual party and confirmed services. No public numerical starting price is published; child fares and seat arrangements are checked separately.",
     additionalNote:
-      "Published upgrades include a Guilin return from US$70 per group of up to four, eligible Yulong River bamboo rafting from US$45 per guest, an extended private countryside route from US$128 per group and an evening performance from US$88 per guest before any added transport.",
+      "Private road return to Guilin, bamboo rafting, Ruyi Peak, cycling, shows, extra hours and airport or railway-station transfers are separate unless expressly included in the written quote.",
   },
   "private-chengdu-panda-day-tour-early-morning": {
-    fromUsd: 598,
     pricingUnit: "private-group",
+    // Shared catalog compatibility only; no public amount is calculated from this party size.
     basePartySize: 4,
-    cardBasis: "Private group of four",
+    cardBasis: "One total for your private party",
     basis:
-      "Indicative starting price per private group of four guests, equivalent to approximately US$150 per guest. A two-guest private tour starts from US$478 total. Optional experiences and airport transfers are separate.",
+      "A private-group quote for your date, adults and child ages, guide language, central Chengdu hotel and confirmed service window.",
     inclusionSummary:
-      "Includes early central-Chengdu hotel pickup and return, private vehicle and driver for the confirmed service window, private multilingual guide, standard Chengdu Panda Base admission, a flexible People's Park culture walk, bottled water and no compulsory shopping stops.",
+      "Includes central Chengdu hotel pickup and return, private guide in the confirmed language, separate driver and vehicle, standard Chengdu Panda Base admission, a People's Park walk and bottled water. No compulsory shopping stops.",
     finalPriceNote:
-      "Indicative private-group totals outside major holidays are: one guest US$398; two guests US$478; three guests US$538; four guests US$598; five guests US$710; and six guests US$828. The exact vehicle, hotel address, date and service window are checked before confirmation.",
+      "The written quote states one total for your actual party and confirmed services. No public numerical starting price is published.",
     additionalNote:
-      "Published upgrades include a selected Sichuan lunch from US$28 per guest, a hosted People's Park tea table from US$38 per guest, Sichuan cooking from US$78 per guest and an opera evening extension from US$328 per group of up to four.",
+      "Lunch, tea, internal electric carts, cooking, opera, extra hours and airport or railway-station transfers are separate unless expressly included in the written quote.",
   },
   "private-xian-terracotta-warriors-day-tour": {
-    fromUsd: 628,
     pricingUnit: "private-group",
+    // Shared catalog compatibility only; no public amount is calculated from this party size.
     basePartySize: 4,
-    cardBasis: "Private group of four",
+    cardBasis: "One total for your private party",
     basis:
-      "Indicative starting price per private group of four guests, equivalent to US$157 per guest. A two-guest private tour starts from US$498 total. Optional experiences, airports and railway-station transfers are separate.",
+      "A private-group quote for your date, adult and child numbers, guide language, central Xi'an hotel, return address and confirmed service window.",
     inclusionSummary:
-      "Includes central Xi'an hotel pickup and return, private vehicle and driver for the confirmed service window, private multilingual guide, Terracotta Warriors museum admission, a flexible Xi'an Old City walk, bottled water and no compulsory shopping stops.",
+      "Includes central Xi'an hotel pickup and return, a private guide in the confirmed language, separate driver and vehicle, standard Terracotta Warriors museum admission, one selected Old City walk and bottled water. No compulsory shopping stops.",
     finalPriceNote:
-      "Indicative private-group totals outside major holidays are: one guest US$438; two guests US$498; three guests US$568; four guests US$628; five guests US$745; and six guests US$870. The exact vehicle, hotel address, date and service window are checked before confirmation.",
+      "Your written total is confirmed before payment. Lunch, City Wall or tower tickets, clay-warrior making, extra service hours and airport or railway-station transfers are separate unless expressly listed.",
     additionalNote:
-      "Published upgrades include clay-warrior making from US$58 per guest, a selected Xi'an noodle lunch from US$28 per guest, City Wall admission from US$15 per guest and bicycle rental from US$18 per guest after admission.",
+      "Optional activities may replace the Old City walk or need extra time. The quote states the admission, host or transport and service window; private guiding does not promise priority or exclusive museum access.",
   },
   "private-shanghai-day-tour-guide-driver": {
-    fromUsd: 672,
     pricingUnit: "private-group",
+    // Shared catalog compatibility only; this quote-only product has no calculated base price.
     basePartySize: 4,
-    cardBasis: "Private group of four",
+    cardBasis: "One total for your private party",
     basis:
-      "Indicative starting price per private group of four guests, equivalent to US$168 per guest. A two-guest private tour starts from US$558 total. Optional experiences, airports and cruise-port transfers are separate.",
+      "A private-group quote for your date, adult and child numbers, guide language, central Shanghai hotel, return address and agreed service window.",
     inclusionSummary:
-      "Includes central Shanghai hotel pickup and return, private vehicle and driver for the confirmed service window, private multilingual guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops.",
+      "Includes central Shanghai hotel pickup and return, a private vehicle and separate driver, private guide in the confirmed language, Yu Garden interior admission, one ordinary public Huangpu ferry crossing and bottled water. No compulsory shopping stops.",
     finalPriceNote:
-      "Indicative private-group totals outside major holidays are: one guest US$468; two guests US$558; three guests US$628; four guests US$672; five guests US$795; and six guests US$930. The exact vehicle, hotel address, date and service window are checked before confirmation.",
+      "The written total is confirmed before payment. Lunch, Shanghai Tower and an evening cruise are optional; airport, station and cruise-port transfers and extra service hours are separately quoted.",
     additionalNote:
-      "Published upgrades include Shanghai Tower from US$35 per guest, a curated Shanghainese lunch from US$38 per guest, snack making from US$88 per guest and a Huangpu night-cruise extension from US$328 per group of up to four.",
+      "Any selected upgrade lists the ticket type, extra service time and return arrangement. A public ferry, shared sightseeing cruise and private boat charter are different products.",
   },
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
     fromUsd: 2280,
@@ -1585,18 +1550,18 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
       "Major fair dates, extended vehicle or interpreter hours, named vehicle models, professional interpretation, supplier sourcing, factory audits, confirmed company access and Hong Kong cross-boundary services are quoted separately.",
   },
   "private-mutianyu-great-wall-day-tour": {
-    fromUsd: 198,
-    pricingUnit: "per-person",
+    pricingUnit: "private-group",
+    // Shared catalog compatibility; no amount is published or calculated from this party size.
     basePartySize: 4,
-    cardBasis: "Based on four guests travelling privately",
+    cardBasis: "One total for your private party",
     basis:
-      "Indicative starting price per person, based on four guests traveling privately, equivalent to a private-group total from US$792. Optional mountain transport and lunch are separate.",
+      "A private-group quote for your date, party size, Beijing pickup address, guide language and chosen Wall route.",
     inclusionSummary:
-      "Includes private Beijing hotel pickup and return within main urban districts, private vehicle and driver, private multilingual guide, Mutianyu admission, scenic-area shuttle, bottled water and no compulsory shopping stops.",
+      "Core package: private hotel pickup and return within the confirmed central Beijing area, vehicle and driver, private guide in the confirmed language, Mutianyu admission, scenic-area shuttle and bottled water. No compulsory shopping stops.",
     finalPriceNote:
-      "Smaller parties have a higher per-person price because private guide and vehicle costs are shared by fewer guests. Your exact hotel address, date, group and selected mountain transport are confirmed before you book.",
+      "Your written proposal states the full group total, service window and any selected lift tickets or pickup supplements before payment. Lunch is separate unless specifically added.",
     additionalNote:
-      "Round-trip cable car and chairlift-up/toboggan-down options are approximately US$22 per person; one-way mountain transport is approximately US$15 per person, subject to the operator's current rate and live operation.",
+      "Round-trip cable car or chairlift-up/toboggan-down tickets are optional and itemized at the confirmed rate for your date. Any mixed route and fallback descent require confirmation.",
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
     fromUsd: 11800,
@@ -1710,6 +1675,7 @@ const completeJourneyCatalog: JourneyCatalogItem[] = journeyCatalogBase.map((jou
     ...enrichedJourney,
     ...commercialDetails[journey.slug],
     ...commercialPortfolio[journey.slug],
+    commercialRoleLabel: getJourneyClassification(journey.slug as PublicJourneySlug).categoryLabel,
     pricing: resolveJourneyPricing(journey.slug, journeyPricing[journey.slug]),
     discovery: buildDiscoveryData(enrichedJourney, commercialDetails[journey.slug]),
   };

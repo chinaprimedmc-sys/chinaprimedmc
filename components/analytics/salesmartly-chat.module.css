@@ -1,164 +1,201 @@
-/* 贴右边缘的小号联系入口：不可拖动，带文字说明。 */
+/* Web glass approximation for the persistent contact control. */
 .dock {
   position: fixed;
-  right: 0;
-  bottom: calc(24px + env(safe-area-inset-bottom));
+  right: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
   z-index: 40;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
-  animation: dock-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  gap: 0.5rem;
+  animation: dock-in 320ms var(--motion-ease-out) both;
 }
+
 .dock[data-suppressed="true"] {
   display: none;
 }
+
+:global(body:has([aria-label="Cookie consent"])) .dock,
+:global(body:has([role="dialog"][data-state="open"])) .dock,
+:global(body:has(dialog[open])) .dock {
+  visibility: hidden;
+}
+
+.item,
+.toggle,
+.closeChat {
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: var(--shadow-glass-chrome);
+  color: var(--color-ink);
+}
+
 .item {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 14px 0 14px;
-  border: 0;
-  border-radius: 22px 0 0 22px;
-  box-shadow: 0 6px 20px rgba(26, 24, 22, 0.18);
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0 1rem;
+  border-radius: var(--radius-glass-control);
   cursor: pointer;
   font-family: var(--font-body), sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.02em !important;
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
-  transition: padding 0.2s ease;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 100ms ease;
 }
-@media (hover: hover) {
-  .item:hover {
-    padding-right: 20px;
-  }
-}
+
 .item svg {
   flex: none;
   width: 20px;
   height: 20px;
 }
-.chat {
-  background: var(--color-ink, #1a1816);
-  color: #fff;
+
+.chat svg {
+  color: var(--color-forest);
 }
-.whatsapp {
-  background: #fff;
-  color: var(--color-ink, #1a1816);
-  border: 1px solid var(--color-line-strong, #d9d4c7);
-  border-right: 0;
-}
+
 .whatsapp svg {
-  color: #25a244;
+  color: #16883a;
 }
-.item:focus-visible {
-  outline: 2px solid var(--color-ink, #1a1816);
-  outline-offset: 2px;
+
+@media (hover: hover) {
+  .item:hover {
+    border-color: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--button-glass-shadow-hover);
+    transform: translateY(-1px);
+  }
 }
-/* 桌面端聊天窗口上方的关闭按钮。 */
+
+.item:active,
+.toggle:active,
+.closeChat:active {
+  transform: scale(0.98);
+}
+
+.item:focus-visible,
+.toggle:focus-visible,
+.closeChat:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
 .closeChat {
   position: fixed;
   z-index: 40;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  min-height: 40px;
-  padding: 0 16px 0 12px;
-  border: 0;
-  border-radius: 20px;
-  background: var(--color-ink, #1a1816);
-  box-shadow: 0 6px 20px rgba(26, 24, 22, 0.2);
-  color: #fff;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0 1rem;
+  border-radius: var(--radius-glass-control);
   cursor: pointer;
   font-family: var(--font-body), sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
+  transition:
+    box-shadow 180ms ease,
+    transform 100ms ease;
 }
+
 .closeChat svg {
   width: 16px;
   height: 16px;
 }
-.closeChat:focus-visible {
-  outline: 2px solid var(--color-ink, #1a1816);
-  outline-offset: 2px;
+
+.toggle {
+  display: none;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .item,
+  .toggle,
+  .closeChat {
+    -webkit-backdrop-filter: var(--glass-filter);
+    backdrop-filter: var(--glass-filter);
+    background: var(--glass-surface-strong);
+  }
 }
 
 @keyframes dock-in {
   from {
     opacity: 0;
-    transform: translateX(24px);
+    transform: translateY(0.4rem);
   }
 }
-.toggle {
-  display: none;
-}
-.options {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
+
 @media (max-width: 767px) {
-  /* 手机端：收成一个小圆按钮，点开才显示两个入口，向下滚动时自动隐藏。 */
   .dock {
-    right: 12px;
-    bottom: calc(16px + env(safe-area-inset-bottom));
-    gap: 10px;
-    transition:
-      opacity 0.25s ease,
-      translate 0.25s ease;
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    gap: 0.625rem;
   }
-  .dock[data-lifted="true"] {
-    bottom: calc(100px + env(safe-area-inset-bottom));
-  }
-  .dock[data-hidden="true"] {
-    opacity: 0;
-    pointer-events: none;
-    translate: 0 16px;
-  }
+
   .toggle {
     display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     padding: 0;
-    border: 0;
     border-radius: 50%;
-    background: var(--color-ink, #1a1816);
-    box-shadow: 0 6px 20px rgba(26, 24, 22, 0.25);
-    color: #fff;
+    place-items: center;
     cursor: pointer;
+    transition:
+      box-shadow 180ms ease,
+      transform 100ms ease;
   }
+
   .toggle svg {
-    width: 22px;
-    height: 22px;
+    width: 21px;
+    height: 21px;
   }
+
   .options {
     display: none;
     order: -1;
   }
+
   .dock[data-open="true"] .options {
     display: flex;
   }
+
   .item {
-    border-radius: 22px;
-    padding: 0 16px;
-  }
-  .whatsapp {
-    border-right: 1px solid var(--color-line-strong, #d9d4c7);
+    min-height: 48px;
+    padding-inline: 1rem;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .dock {
-    transition: none;
+
+@media (prefers-reduced-transparency: reduce) {
+  .item,
+  .toggle,
+  .closeChat {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #fff;
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .dock {
     animation: none;
+  }
+
+  .item,
+  .toggle,
+  .closeChat {
+    transition: none;
   }
 }

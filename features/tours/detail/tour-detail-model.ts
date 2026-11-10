@@ -54,6 +54,11 @@ export type TourDetailModel = {
   route: string;
   journeyRoleLabel: string;
   decisionSummary: string;
+  answerSummary?: string;
+  practicalities?: Tour["overview"]["practicalities"];
+  planningResources?: Tour["planningResources"];
+  inquiryChecklist?: string[];
+  relatedTourHrefs?: string[];
   signatureMoments: string[];
   heroImage: MediaAsset;
   hasPhotography: boolean;
@@ -61,6 +66,7 @@ export type TourDetailModel = {
   guideProfile?: Tour["guideProfile"];
   seniorStandard?: Tour["seniorStandard"];
   pricingBlock?: Tour["pricingBlock"];
+  visitOptions?: Tour["visitOptions"];
   faqLimit?: number;
   experienceCards: TourExperienceCard[];
   optionalExperiences?: Tour["optionalExperiences"];
@@ -123,6 +129,11 @@ export const frameworkTourFaqs = [
   ...bookingPolicyFaqs,
 ] as const;
 
+/** The same FAQ subset must be visible in HTML and described by FAQPage JSON-LD. */
+export function getVisibleTourFaqs(tour: Tour) {
+  return [...tour.faqs, ...bookingPolicyFaqs].slice(0, tour.faqLimit ?? 6);
+}
+
 export function createTourDetailModel(tour: Tour): TourDetailModel {
   const dossier = getDossierData(tour);
   const catalog = getJourneyCatalogItem(tour.slug);
@@ -151,7 +162,18 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     duration: tour.duration,
     route: tour.route,
     journeyRoleLabel: catalog?.commercialRoleLabel ?? "Private China journey",
-    decisionSummary: catalog ? getJourneyCardDescription(catalog) : tour.overview.pitch,
+    decisionSummary: tour.overview.answer
+      ? tour.overview.pitch
+      : catalog
+        ? getJourneyCardDescription(catalog)
+        : tour.overview.pitch,
+    answerSummary: tour.overview.answer,
+    practicalities: tour.overview.practicalities,
+    planningResources: tour.planningResources,
+    inquiryChecklist: tour.inquiryChecklist ?? tour.visitOptions?.inquiryChecklist,
+    relatedTourHrefs: tour.related.useListedTours
+      ? tour.related.tours.map((item) => item.href)
+      : undefined,
     signatureMoments: uniqueStrings([
       ...(catalog?.highlights ?? []),
       ...tour.highlights.map((highlight) => highlight.title),
@@ -162,6 +184,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     guideProfile: tour.guideProfile,
     seniorStandard: tour.seniorStandard,
     pricingBlock: tour.pricingBlock,
+    visitOptions: tour.visitOptions,
     faqLimit: tour.faqLimit,
     experienceCards: createExperienceCards(tour),
     optionalExperiences: tour.optionalExperiences,
@@ -241,7 +264,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     ),
     included: tour.included,
     excluded: tour.excluded,
-    faqs: [...tour.faqs, ...bookingPolicyFaqs],
+    faqs: getVisibleTourFaqs(tour),
     planningHref: planningHref(tour.slug, "detail-template"),
     whatsappHref:
       (isAgendaFirstBusinessJourney ||

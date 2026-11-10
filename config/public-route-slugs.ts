@@ -30,6 +30,7 @@ export const publicRouteSlugs = {
     "leshan",
     "jiuzhaigou",
     "zhangjiajie",
+    "guilin",
   ],
   journal: [
     "muslim-friendly-private-china-travel",

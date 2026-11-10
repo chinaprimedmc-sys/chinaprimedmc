@@ -190,7 +190,7 @@
 .introPhoto,
 .proofImageWrap {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: var(--aspect-content-photo);
   margin: 0;
 }
 
@@ -271,7 +271,7 @@
 }
 
 .proofImageWrap {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: var(--aspect-content-photo);
 }
 
 .commitmentGrid {
@@ -366,26 +366,29 @@
 .finalCta {
   position: relative;
   display: grid;
-  min-height: 38rem;
-  place-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  background: var(--color-night);
   overflow: hidden;
 }
 
 .finalCtaMedia {
+  position: relative !important;
+  aspect-ratio: var(--aspect-content-photo);
   border-radius: 0;
 }
 
 .finalCtaShade {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.54);
+  display: none;
 }
 
 .finalCtaInner {
   position: relative;
   z-index: 2;
-  width: min(calc(100% - (var(--page-gutter) * 2)), 54rem);
+  min-width: 0;
+  padding: var(--space-section-default) var(--page-gutter);
   color: #fff;
 }
 
@@ -409,6 +412,12 @@
 .finalCta .primaryAction,
 .finalCta .secondaryAction {
   border-color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 767px) {
+  .finalCta {
+    grid-template-columns: 1fr;
+  }
 }
 
 .finalCta .secondaryAction {
@@ -495,7 +504,7 @@
   .introPhoto {
     grid-column: auto;
     grid-row: auto;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: var(--aspect-content-photo);
   }
 
   .capability + .capability,

@@ -7,7 +7,7 @@ import {
   Lightbulb,
   MapPin,
   Route,
-} from "lucide-react";
+} from "@/components/icons/symbols";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -18,6 +18,8 @@ import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import type { CmsDestinationCard } from "@/components/destinations/destination-explorer";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
+import { destinationPlanningGuides } from "@/content/destinations/planning-guides";
+import { TrackedLink } from "@/components/cta/tracked-link";
 import { journalArticles } from "@/content/journal";
 
 export function EditorialDestinationTemplate({
@@ -45,11 +47,24 @@ export function EditorialDestinationTemplate({
   journeys: JourneyCatalogItem[];
   cta: { label: string; href: string };
 }) {
+  const guide = destinationPlanningGuides[destination.slug];
+  const selectedJourneys = guide
+    ? guide.products.flatMap(
+        (product) => journeys.find((journey) => journey.slug === product.slug) ?? [],
+      )
+    : journeys;
+  const primaryJourney = selectedJourneys[0];
   const planningHref = `${cta.href}?destination=${encodeURIComponent(destination.name)}&source=destination-guide`;
-  const related = destinations
-    .filter((item) => item.region === destination.region && item.slug !== destination.slug)
+  const related = (destination.relatedDestinationIds ?? [])
+    .flatMap((slug) => destinations.find((item) => item.slug === slug) ?? [])
     .slice(0, 3);
-  const relatedGuides = journalArticles
+  const relatedGuides = (
+    guide
+      ? guide.articles.flatMap(
+          (item) => journalArticles.find((article) => article.slug === item.slug) ?? [],
+        )
+      : journalArticles
+  )
     .filter(
       (article) =>
         article.tags.includes(destination.slug) ||
@@ -83,7 +98,7 @@ export function EditorialDestinationTemplate({
             <p className="mt-8 text-xs font-semibold text-[var(--color-muted)] uppercase">
               {destination.kicker} · {destination.region}
             </p>
-            <h1 className="type-hero mt-5">{destination.name}</h1>
+            <h1 className="type-hero mt-5">{guide?.title ?? destination.name}</h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-copy)]">
               {destination.summary}
             </p>
@@ -95,15 +110,69 @@ export function EditorialDestinationTemplate({
               <CtaButton href={planningHref} size="lg">
                 Plan my {destination.name} trip
               </CtaButton>
-              {journeys[0] ? (
-                <CtaButton href={journeys[0].href} variant="secondary" size="lg">
-                  View a real itinerary
+              {primaryJourney ? (
+                <CtaButton
+                  href={primaryJourney.href}
+                  data-cta-placement={`destination-${destination.slug}-hero`}
+                  size="lg"
+                  variant="secondary"
+                >
+                  {guide?.products[0].label ?? "View a real itinerary"}
                 </CtaButton>
               ) : null}
             </div>
           </div>
         </div>
       </section>
+
+      <nav aria-label="In this destination guide" className="border-y border-black/8">
+        <div className="mx-auto flex max-w-[85rem] flex-wrap gap-x-7 gap-y-3 px-[var(--page-gutter)] py-5 text-sm font-semibold">
+          <a href="#destination-experiences">What to see</a>
+          <a href="#destination-itinerary">Suggested stay</a>
+          <a href="#destination-practical">Travel planning</a>
+          <a href="#private-journeys">Private journeys</a>
+          <a href="#destination-faq">FAQ</a>
+        </div>
+      </nav>
+
+      {guide ? (
+        <section
+          aria-labelledby="destination-decision-title"
+          className="mx-auto max-w-[85rem] px-[var(--page-gutter)] py-[var(--space-section-default)]"
+        >
+          <h2 id="destination-decision-title" className="type-section-title">
+            Is {destination.name} right for your trip?
+          </h2>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-copy)]">
+            {guide.answer}
+          </p>
+          <p className="mt-5 max-w-3xl leading-7 text-[var(--color-copy)]">{guide.serviceScope}</p>
+          {primaryJourney ? (
+            <div className="mt-7 max-w-3xl border-t border-black/10 pt-6">
+              <p className="leading-7 text-[var(--color-copy)]">{guide.products[0].reason}</p>
+              <TrackedLink
+                href={primaryJourney.href}
+                trackingLabel={guide.products[0].label}
+                trackingPlacement={`destination-${destination.slug}-decision`}
+                className="mt-4 inline-flex min-h-11 items-center font-semibold underline underline-offset-4"
+              >
+                {guide.products[0].label}
+              </TrackedLink>
+            </div>
+          ) : null}
+          <h2 className="type-section-title mt-12">
+            {guide.stayHeading ?? `How many nights do you need in ${destination.name}?`}
+          </h2>
+          <div className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
+            {guide.stays.map((stay) => (
+              <article key={stay.label}>
+                <h3 className="text-xl font-semibold">{stay.label}</h3>
+                <p className="mt-3 leading-7 text-[var(--color-copy)]">{stay.advice}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
         <div className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_.95fr]">
@@ -127,7 +196,7 @@ export function EditorialDestinationTemplate({
           <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Why this destination
           </p>
-          <h2 className="type-section-title mt-5">Why {destination.name} belongs in the route.</h2>
+          <h2 className="type-section-title mt-5">What to plan around in {destination.name}</h2>
         </div>
         <div className="grid gap-6 text-base leading-8 text-[var(--color-copy)] md:text-lg">
           <p>{destination.orientation}</p>
@@ -145,7 +214,7 @@ export function EditorialDestinationTemplate({
             {destination.gallery.slice(1, 3).map((image, index) => (
               <div
                 key={image.src}
-                className={`relative overflow-hidden rounded-[1.25rem] ${index === 0 ? "aspect-[3/4]" : "mt-12 aspect-[3/4]"}`}
+                className={`relative overflow-hidden rounded-[1.25rem] ${index === 0 ? "aspect-portrait" : "aspect-portrait mt-12"}`}
               >
                 <OptimizedImage
                   src={image.src}
@@ -173,13 +242,16 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)]">
+      <section
+        id="destination-experiences"
+        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
+      >
         <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
           <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Signature experiences
           </p>
           <h2 className="type-section-title mt-5 max-w-3xl">
-            What gives {destination.name} its character.
+            What to see and experience in {destination.name}
           </h2>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {destination.highlights.map((experience, index) => (
@@ -194,7 +266,10 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
+      <section
+        id="destination-itinerary"
+        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]"
+      >
         <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
           <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Suggested {destination.name} itinerary
@@ -217,9 +292,13 @@ export function EditorialDestinationTemplate({
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            {journeys[0] ? (
-              <CtaButton href={journeys[0].href} size="lg">
-                See the complete journey
+            {primaryJourney ? (
+              <CtaButton
+                href={primaryJourney.href}
+                data-cta-placement={`destination-${destination.slug}-stay`}
+                size="lg"
+              >
+                {guide?.products[0].label ?? "See the complete journey"}
               </CtaButton>
             ) : null}
             <CtaButton href={planningHref} variant="secondary" size="lg">
@@ -232,7 +311,7 @@ export function EditorialDestinationTemplate({
       <section className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] py-[var(--space-section-compact)] md:grid-cols-2 md:py-[var(--space-section-default)]">
         <div>
           <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">When to go</p>
-          <h2 className="type-section-title mt-5">Season changes the feeling.</h2>
+          <h2 className="type-section-title mt-5">When to visit {destination.name}</h2>
           <p className="mt-6 text-base leading-8 text-[var(--color-copy)]">
             {destination.bestTime}
           </p>
@@ -252,7 +331,10 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)]">
+      <section
+        id="destination-practical"
+        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
+      >
         <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
           <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             Practical orientation for international visitors
@@ -292,16 +374,54 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
+      {guide ? (
+        <section
+          aria-labelledby="destination-hotel-title"
+          className="mx-auto max-w-[85rem] px-[var(--page-gutter)] py-[var(--space-section-default)]"
+        >
+          <h2 id="destination-hotel-title" className="type-section-title">
+            {guide.hotelHeading ?? `Where to stay in ${destination.name}`}
+          </h2>
+          <div className="mt-8 grid gap-8">
+            {guide.hotelAreas.map((area) => (
+              <article key={area.name} className="grid gap-3 md:grid-cols-[1fr_2fr]">
+                <h3 className="text-xl font-semibold">{area.name}</h3>
+                <p className="leading-7 text-[var(--color-copy)]">{area.advice}</p>
+              </article>
+            ))}
+          </div>
+          <h2 className="type-section-title mt-12">How to plan sightseeing, walking and breaks</h2>
+          <div className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
+            {guide.tradeoffs.map((item) => (
+              <article key={item.title}>
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+                <p className="mt-3 leading-7 text-[var(--color-copy)]">{item.advice}</p>
+                {item.articleSlug && item.articleLabel ? (
+                  <Link
+                    href={`/journal/${item.articleSlug}`}
+                    className="mt-3 inline-flex min-h-11 items-center font-semibold underline underline-offset-4"
+                  >
+                    {item.articleLabel}
+                  </Link>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="py-[var(--space-section-compact)]">
         <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
           <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-            Nearby chapters
+            Route combinations
           </p>
-          <h2 className="type-section-title mt-5">Continue through {destination.region}.</h2>
+          <h2 className="type-section-title mt-5">
+            Where to go before or after {destination.name}.
+          </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {related.map((item) => (
               <Link key={item.slug} href={`/destinations/${item.slug}`} className="group">
-                <span className="relative block aspect-[3/2] overflow-hidden rounded-[1.4rem]">
+                <span className="aspect-portrait relative block overflow-hidden rounded-[1.4rem]">
                   <OptimizedImage
                     src={
                       item.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"
@@ -321,6 +441,11 @@ export function EditorialDestinationTemplate({
                 <span className="mt-2 block text-sm text-[var(--color-copy)]">
                   {item.kicker} · {item.recommendedStay}
                 </span>
+                {guide?.connections.find((connection) => connection.slug === item.slug) ? (
+                  <span className="mt-3 block leading-7 text-[var(--color-copy)]">
+                    {guide.connections.find((connection) => connection.slug === item.slug)!.advice}
+                  </span>
+                ) : null}
               </Link>
             ))}
           </div>
@@ -344,13 +469,18 @@ export function EditorialDestinationTemplate({
               to review its day-by-day structure, included private services and planning options.
             </p>
             <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {journeys.map((journey) => (
-                <Link
+              {selectedJourneys.map((journey) => (
+                <TrackedLink
                   key={journey.slug}
                   href={journey.href}
+                  trackingLabel={
+                    guide?.products.find((product) => product.slug === journey.slug)?.label ??
+                    journey.title
+                  }
+                  trackingPlacement={`destination-${destination.slug}-products`}
                   className="group grid gap-5 sm:grid-cols-[.8fr_1.2fr]"
                 >
-                  <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-[#f3f4f4]">
+                  <span className="aspect-portrait relative block overflow-hidden rounded-[1.25rem] bg-[#f3f4f4]">
                     {journey.visualStatus === "pending" ? (
                       <span className="absolute inset-0 flex flex-col justify-end gap-2 p-5 text-[var(--color-muted)]">
                         <span className="mb-auto block h-px w-12 bg-black/20" />
@@ -379,19 +509,28 @@ export function EditorialDestinationTemplate({
                     <span className="mt-2 block text-base leading-6 text-[var(--color-copy)]">
                       {journey.routeLabel}
                     </span>
+                    {guide?.products.find((product) => product.slug === journey.slug) ? (
+                      <span className="mt-3 block leading-7 text-[var(--color-copy)]">
+                        {guide.products.find((product) => product.slug === journey.slug)!.reason}
+                      </span>
+                    ) : null}
                     <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold">
-                      View journey{" "}
+                      {guide?.products.find((product) => product.slug === journey.slug)?.label ??
+                        "View journey"}{" "}
                       <ArrowRight className="size-4 transition group-hover:translate-x-1" />
                     </span>
                   </span>
-                </Link>
+                </TrackedLink>
               ))}
             </div>
           </div>
         </section>
       ) : null}
 
-      <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)]">
+      <section
+        id="destination-faq"
+        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
+      >
         <div className="mx-auto max-w-4xl px-[var(--page-gutter)]">
           <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             {destination.name} travel FAQ
@@ -419,7 +558,7 @@ export function EditorialDestinationTemplate({
             Practical planning guides
           </p>
           <h2 className="type-section-title mt-5 max-w-3xl">
-            Prepare for {destination.name} with clearer answers.
+            Practical guides for your {destination.name} trip
           </h2>
           <div className="mt-12 grid gap-8 border-y border-black/8">
             {relatedGuides.map((article) => (
@@ -432,7 +571,10 @@ export function EditorialDestinationTemplate({
                   <span className="text-xs font-semibold text-[var(--color-muted)] uppercase">
                     {article.category} · {article.readingTime}
                   </span>
-                  <span className="mt-2 block text-xl font-semibold">{article.title}</span>
+                  <span className="mt-2 block text-xl font-semibold">
+                    {guide?.articles.find((item) => item.slug === article.slug)?.label ??
+                      article.title}
+                  </span>
                   <span className="mt-2 block max-w-2xl text-base leading-6 text-[var(--color-copy)]">
                     {article.excerpt}
                   </span>
@@ -466,6 +608,7 @@ export function EditorialDestinationTemplate({
 
       <EnquirySection
         placement="destination"
+        journeyTitle={destination.name}
         title={`Plan ${destination.name} as a private trip`}
         intro="Share your dates, travellers and hotel expectations. We will recommend the right stay, onward connection and private service plan."
       />
@@ -521,7 +664,7 @@ function EditorialImage({
   image: { src: string; alt: string; objectPosition?: string };
 }) {
   return (
-    <div className="relative min-h-[28rem] overflow-hidden rounded-[1.5rem] md:min-h-[38rem]">
+    <div className="aspect-portrait relative self-start overflow-hidden rounded-[1.5rem]">
       <OptimizedImage
         src={image.src}
         alt={image.alt}

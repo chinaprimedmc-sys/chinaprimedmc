@@ -1,9 +1,10 @@
 /** Homepage: private journeys first, operating evidence, then a usable enquiry path. */
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/icons/symbols";
 import Image from "next/image";
 import Link from "next/link";
 
 import { TrackedLink } from "@/components/cta/tracked-link";
+import { FaqList } from "@/components/content/faq-list";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { HubSpotForm } from "@/components/forms/hubspot-form";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
@@ -20,7 +21,7 @@ import { getPublicTravelerReviews } from "@/content/home/traveler-reviews";
 import { getTourBySlug } from "@/content/tours";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { getJourneyRouteLabel } from "@/content/tours/card-copy";
-import { journeyPhotos } from "@/content/tours/journeys-curation";
+import { getJourneyCardPhoto } from "@/lib/tours/journey-card-media";
 import { excerpt } from "@/lib/text/excerpt";
 import { getJourneyPricePresentation } from "@/lib/tours/journey-pricing";
 
@@ -159,7 +160,7 @@ export function HomePage({ planningHref }: { planningHref: string }) {
             {homeFeaturedJourneys.map((selection) => {
               const item = journeyCatalog.find((journey) => journey.slug === selection.slug);
               if (!item) return null;
-              const photo = journeyPhotos[item.slug];
+              const photo = getJourneyCardPhoto(item.slug) ?? item.image;
               const price = getJourneyPricePresentation(item);
               const publishedFamilyPrice = item.slug === familyTour?.slug ? familyAmount : null;
               return (
@@ -195,7 +196,6 @@ export function HomePage({ planningHref }: { planningHref: string }) {
                       {item.durationLabel} · {getJourneyRouteLabel(item)}
                     </p>
                     <p className={styles.journeyDescription}>{selection.description}</p>
-                    <p className={styles.journeyDetail}>{selection.detail}</p>
                     <div className={styles.journeyPrice}>
                       <strong>
                         {publishedFamilyPrice
@@ -251,8 +251,8 @@ export function HomePage({ planningHref }: { planningHref: string }) {
         >
           <div className={styles.planningPhoto}>
             <Image
-              src="/home/editorial/chinese-painting-cultural-experience.webp"
-              alt="A traveler trying traditional Chinese brush painting with a local host"
+              src="/home/editorial/family-dumpling-courtyard-portrait.webp"
+              alt="Children, a parent and a grandparent making dumplings with a local host in a Beijing courtyard"
               fill
               sizes="(max-width: 767px) 100vw, 45vw"
             />
@@ -426,14 +426,7 @@ export function HomePage({ planningHref }: { planningHref: string }) {
           aria-labelledby="faq-title"
         >
           <h2 id="faq-title">Before you enquire.</h2>
-          <div>
-            {homeFaqs.map((faq, index) => (
-              <details key={faq.question} id={`home-faq-${index + 1}`}>
-                <summary>{faq.question}</summary>
-                <p>{faq.answer}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList items={homeFaqs} idPrefix="home-faq" />
         </section>
         <nav className={`${styles.section} ${styles.guides}`} aria-label="China planning guides">
           <p>Still researching?</p>

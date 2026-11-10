@@ -8,15 +8,23 @@ import { HubSpotForm } from "./hubspot-form";
  */
 export function StartPlanningForm({
   currentJourney,
+  destinationName,
 }: {
   savedJourneys?: string[];
   currentJourney?: { slug: string; title: string };
+  destinationName?: string;
   preference?: string;
   matchSummary?: string;
   placement?: string;
 }) {
   return (
     <div>
+      {destinationName && !currentJourney ? (
+        <p className="mb-4 text-base leading-7">
+          You are planning a trip to <strong>{destinationName}</strong>. We will help you choose the
+          right stay and onward route.
+        </p>
+      ) : null}
       {currentJourney ? (
         <p style={{ marginBottom: 16, fontSize: "0.9375rem" }}>
           You are asking about <strong>{currentJourney.title}</strong>. Mention it in your message

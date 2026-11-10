@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle } from "@/components/icons/symbols";
 
 import { CtaButton } from "@/components/cta";
 import { EnquirySection } from "@/components/forms/enquiry-section";

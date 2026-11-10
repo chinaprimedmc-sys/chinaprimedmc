@@ -8,6 +8,7 @@
  * 关键规则：最近搜索只保存在访客自己的浏览器；输入框字号不小于 16px，避免 iOS 自动放大。
  */
 
+import { ArrowCounterClockwise, Search } from "@/components/icons/symbols";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useId, useRef, useState, type ReactNode, type RefObject } from "react";
@@ -42,12 +43,7 @@ function writeRecent(list: string[]) {
 }
 
 export function SearchIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-      <circle cx="9" cy="9" r="6" />
-      <path d="m14 14 4 4" />
-    </svg>
-  );
+  return <Search aria-hidden="true" />;
 }
 
 type Row = { kind: "query"; query: string } | { kind: "journey"; href: string };
@@ -148,7 +144,7 @@ export function JourneySearchBox({
                   onClick={() => commit(term)}
                 >
                   <span className={styles.optionIcon} aria-hidden="true">
-                    ↺
+                    <ArrowCounterClockwise size={18} />
                   </span>
                   <span className={styles.optionText}>
                     <b>{term}</b>
@@ -237,8 +233,8 @@ export function JourneySearchBox({
                     <Image
                       src={item.image.src}
                       alt=""
-                      width={48}
-                      height={36}
+                      width={36}
+                      height={48}
                       className={styles.optionThumb}
                     />
                   ) : (

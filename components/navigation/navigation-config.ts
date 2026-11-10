@@ -87,6 +87,7 @@ export const navigationConfig = {
         {
           links: [
             { label: "All of China", href: "/china-destinations" },
+            { label: "Destination guides", href: "/destinations" },
             { label: "North China", href: "/china-destinations/north-china" },
             { label: "East China", href: "/china-destinations/east-china" },
             { label: "Central China", href: "/china-destinations/central-china" },
@@ -106,6 +107,7 @@ export const navigationConfig = {
             { label: "Xi'an", href: "/destinations/xian" },
             { label: "Shanghai", href: "/destinations/shanghai" },
             { label: "Chengdu", href: "/destinations/chengdu" },
+            { label: "Guilin & Yangshuo", href: "/destinations/guilin" },
           ],
         },
       ],

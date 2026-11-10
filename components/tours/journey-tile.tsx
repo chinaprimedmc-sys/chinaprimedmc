@@ -3,14 +3,15 @@
 /**
  * 本模块职责：行程卡片——Journeys 页与三个层级页（Day / Signature / Tailor-Made）共用的唯一卡片。
  * 输入：整理好的行程条目、可选的搜索词（用于高亮）和位置（用于埋点）。
- * 输出：整张可点击的卡片：图片、时长、层级与城市、标题、一句话、最多 3 个标签、3 条亮点、价格行与查看按钮。
+ * 输出：单链接的编辑式卡片：竖图、路线与时长、标题、一个差异点、适用性和透明报价依据。
  * 不负责：价格计算（只显示已核实的起价）、筛选或网格布局。
- * 关键规则：整张卡片只有一个链接目标；标签最多 3 个，属性标签（Easier pace / Muslim-friendly）优先。
+ * 关键规则：整张卡片只有一个链接目标；关键信息不依赖悬停，也不叠在照片上。
  */
 
 import Image from "next/image";
 import Link from "next/link";
 
+import { ArrowRight } from "@/components/icons/symbols";
 import { trackEvent } from "@/lib/analytics/events";
 import type { ExplorerItem } from "@/lib/tours/journey-explorer";
 import { highlightParts } from "@/lib/tours/journey-search";
@@ -21,23 +22,23 @@ export function JourneyTile({
   item,
   query = "",
   position = 0,
+  featured = false,
 }: {
   item: ExplorerItem;
   query?: string;
   position?: number;
+  featured?: boolean;
 }) {
   const attributes = [
     item.easierPace ? "Easier pace" : "",
     item.muslimFriendly ? "Muslim-friendly" : "",
   ].filter(Boolean);
-  const chips = [...attributes, item.who[0], item.interest[0], item.interest[1], item.who[1]]
-    .filter(Boolean)
-    .slice(0, 3) as string[];
   return (
     <Link
       className={styles.card}
       href={item.href}
       data-journey-slug={item.slug}
+      data-featured={featured || undefined}
       onClick={() =>
         trackEvent("tours_card_click", {
           journey: item.slug,
@@ -58,35 +59,25 @@ export function JourneyTile({
         ) : (
           <span className={styles.cardSoon}>Photography to follow</span>
         )}
-        <span className={styles.chip}>{item.duration}</span>
       </div>
       <div className={styles.cardBody}>
-        <div className={styles.chips}>
-          {chips.map((chip) => (
-            <span key={chip}>{chip}</span>
-          ))}
-        </div>
-        <p className={styles.cardEyebrow}>
-          {item.tierLabel} · {item.destinations}
+        <p className={styles.cardMeta}>
+          {item.categoryLabel} · {item.duration} · {item.destinations}
         </p>
         <h3>
           <HighlightText text={item.title} query={query} />
         </h3>
         <p className={styles.cardLine}>{item.summary}</p>
-        {item.highlights.length > 0 ? (
-          <ul className={styles.highlights}>
-            {item.highlights.map((highlight) => (
-              <li key={highlight}>{highlight}</li>
-            ))}
-          </ul>
+        {attributes.length > 0 ? (
+          <p className={styles.suitability}>{attributes.join(" · ")}</p>
         ) : null}
         <div className={styles.cardFoot}>
           <span className={styles.cardPrice}>
-            {item.priceNote ? <small>{item.priceNote}</small> : null}
             <strong>{item.priceLabel}</strong>
+            {item.priceNote ? <small>{item.priceNote}</small> : null}
           </span>
           <span className={styles.cardGo}>
-            View itinerary <i aria-hidden="true">→</i>
+            View itinerary <ArrowRight size={18} />
           </span>
         </div>
       </div>

@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { ArrowUpRight, CalendarClock, FileCheck2, ReceiptText, RefreshCw } from "lucide-react";
+import {
+  ArrowUpRight,
+  CalendarClock,
+  FileCheck2,
+  ReceiptText,
+  RefreshCw,
+} from "@/components/icons/symbols";
 
 import { SiteFooter } from "@/components/footer/site-footer";
 import { PageClosing } from "@/components/footer/page-closing";

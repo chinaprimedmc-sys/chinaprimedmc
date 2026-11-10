@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
+import { Check } from "@/components/icons/symbols";
 
 import { SectionHeader } from "@/components/content";
 import { TrackedLink } from "@/components/cta/tracked-link";
@@ -10,6 +10,7 @@ import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { heroImage, homeNavItems } from "@/content/home/homepage";
+import { explorerDestinations } from "@/content/destinations/explorer";
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
 import { Section } from "@/design-system/primitives/section";
@@ -34,12 +35,17 @@ export default async function StartPlanningPage({
     journeys?: string;
     journey?: string;
     preference?: string;
+    destination?: string;
     match?: string;
   }>;
 }) {
   const params = await searchParams;
   const savedJourneys = parseSavedJourneys(params.journeys);
   const currentJourney = getCurrentJourney(params.journey);
+  const currentDestination = explorerDestinations.find(
+    (destination) =>
+      destination.id === params.destination || destination.name === params.destination,
+  );
   const match = readMatchAnswers(params.match ?? null);
 
   return (
@@ -104,6 +110,7 @@ export default async function StartPlanningPage({
             <StartPlanningForm
               savedJourneys={savedJourneys}
               currentJourney={currentJourney}
+              destinationName={currentDestination?.name}
               preference={params.preference}
               matchSummary={match ? describeMatchAnswers(match) : undefined}
             />

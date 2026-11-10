@@ -4,13 +4,47 @@ function image(src: string, alt: string, width = 1600, height = 1067): MediaAsse
   return { src, alt, width, height };
 }
 
-const firstChina = "/tours/beijing-xian-shanghai-private-10-day-tour";
+const firstChina = "/tours/first-china-beautifully-paced";
 const xianBeijing = "/tours/xian-beijing-private-journey";
 const southwest = "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour";
 const chengdu = "/tours/chengdu-pandas";
 const jiuzhaigou = "/tours/chengdu-pandas-jiuzhaigou";
 
 export const destinationGuideAssets: Record<string, { hero: MediaAsset; gallery: MediaAsset[] }> = {
+  guilin: {
+    hero: image(
+      "/home/editorial/guilin-li-river-karst-landscape.webp",
+      "Karst peaks rising above the Li River near Guilin",
+      1800,
+      1200,
+    ),
+    gallery: [
+      image(
+        "/tours/guilin-yangshuo-li-river-day-tour/02-li-river-cruise-rainy-karst.webp",
+        "Li River cruise passing through misty karst scenery",
+        1600,
+        2044,
+      ),
+      image(
+        "/tours/guilin-yangshuo-li-river-day-tour/01-yangshuo-karst-countryside.webp",
+        "Karst peaks and countryside outside Yangshuo",
+        1600,
+        2133,
+      ),
+      image(
+        "/tours/guilin-yangshuo-li-river-day-tour/03-yulong-river-bamboo-raft.webp",
+        "Bamboo raft on the Yulong River near Yangshuo",
+        1600,
+        2133,
+      ),
+      image(
+        "/tours/guilin-yangshuo-li-river-day-tour/05-li-river-cruise-window-seat.webp",
+        "View from a Li River cruise toward the karst hills",
+        1600,
+        2133,
+      ),
+    ],
+  },
   beijing: {
     hero: image(
       `${firstChina}/beijing-great-wall-sunrise-hero.webp`,

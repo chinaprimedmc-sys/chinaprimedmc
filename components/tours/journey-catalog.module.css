@@ -394,7 +394,7 @@
   padding: 12px 20px;
   min-height: 44px;
   border: 1px solid #cad5d1;
-  border-radius: var(--radius-surface);
+  border-radius: var(--radius-pill);
   background: #fff;
   cursor: pointer;
 }

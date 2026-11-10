@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@/components/icons/symbols";
 
 import { CtaButton } from "@/components/cta/cta-button";
 import { cn } from "@/lib/utils/cn";

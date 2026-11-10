@@ -12,10 +12,13 @@ import { ItineraryProductSchema } from "@/components/seo/itinerary-product-schem
 import {
   createFrameworkTourDetailModel,
   createTourDetailModel,
+  getVisibleTourFaqs,
 } from "@/features/tours/detail/tour-detail-model";
 import { TourDetailLanding } from "@/features/tours/detail/tour-detail-landing";
-import { bookingPolicyFaqs, frameworkTourFaqs } from "@/features/tours/detail/tour-detail-model";
+import { frameworkTourFaqs } from "@/features/tours/detail/tour-detail-model";
 import { JsonLd } from "@/lib/seo/json-ld";
+import { tourSearchSpecification } from "@/lib/seo/tour-specification";
+import { createTourMetadata } from "@/lib/seo/tour-metadata";
 import { createMetadata } from "@/lib/seo/metadata";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
 import { readJourneyConfiguration } from "@/lib/tours/journey-price";
@@ -40,16 +43,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   const staticTour = getTourBySlug(slug);
 
   if (staticTour) {
-    const seoItem = getJourneyCatalogItem(staticTour.slug);
-    return createMetadata({
-      title: seoItem ? getJourneySeoTitle(seoItem) : staticTour.seo.title,
-      description: staticTour.seo.description,
-      path: `/tours/${staticTour.slug}`,
-      image: staticTour.visualStatus === "pending" ? undefined : staticTour.hero.image.src,
-      keywords: staticTour.seo.keywords,
-      titleYear: Number((staticTour.updatedAt ?? staticTour.publishedAt)?.slice(0, 4)),
-      callToAction: "View the itinerary and request a tailored proposal",
-    });
+    return createTourMetadata(staticTour);
   }
 
   const journey = getJourneyCatalogItem(slug);
@@ -88,6 +82,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
 
   if (staticTour) {
     const catalogItem = getJourneyCatalogItem(staticTour.slug);
+    const searchSpecification = tourSearchSpecification(staticTour);
     const isFixedFourCityRoute = slug === "beijing-xian-chengdu-shanghai-private-11-day-tour";
     const selectedPrice = isFixedFourCityRoute
       ? undefined
@@ -99,93 +94,112 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
     const isChinaConsidered = staticTour.slug === "china-at-an-easier-pace-12-day-private-tour";
     const isChinaFamily = staticTour.slug === "china-family-tour-with-pandas-12-day-private-tour";
     const isYunnan = staticTour.slug === "luxury-yunnan-private-tour";
-    const isPrivateShanghaiDayTour = staticTour.slug === "private-shanghai-day-tour-guide-driver";
-    const isPrivateXianTerracottaDayTour =
-      staticTour.slug === "private-xian-terracotta-warriors-day-tour";
-    const isPrivateChengduPandaDayTour =
-      staticTour.slug === "private-chengdu-panda-day-tour-early-morning";
-    const isGuilinLiRiverDayTour =
-      staticTour.slug === "guilin-yangshuo-li-river-cruise-private-day-tour";
+    const isMutianyuDayTour = staticTour.slug === "private-mutianyu-great-wall-day-tour";
     const isMuslimFriendly =
       staticTour.slug === "muslim-friendly-china-tour-great-wall-desert-stars";
-    const tourProperties = isMuslimFriendly
-      ? [
-          ["Duration", "13 days / 12 nights"],
-          ["Route", "Beijing, Xi'an, Yinchuan, Zhongwei and Shanghai"],
-          [
-            "Accommodation standard",
-            "Premium city hotels plus best-available Ningxia and desert accommodation",
-          ],
-          ["Pricing", "Priced individually for your dates, group size, hotel standard and pace"],
-          [
-            "Muslim-friendly service",
-            "AVIORA Muslim Journey Standard: dietary profile, meal verification, prayer-aware timing and China-based backup support",
-          ],
-          [
-            "Signature experiences",
-            "Great Wall private halal picnic, Xi'an Silk Road and halal kitchen chapter, Ningxia Hui table, desert sunset dinner and stargazing",
-          ],
-          [
-            "Transport",
-            "Private vehicles, first-class Beijing–Xi'an rail and date-specific domestic connections",
-          ],
-          ["Shopping policy", "No compulsory shopping stops"],
-          ["International flights", "Not included"],
-        ]
-      : isChinaFamily
+    const tourProperties =
+      searchSpecification.additionalProperties?.map(({ name, value }) => [name, value]) ??
+      (isMutianyuDayTour
         ? [
-            ["Duration", "12 days / 11 nights"],
-            ["Accommodation standard", "Premium five-star family hotels"],
-            ["Accommodation duration", "11 nights"],
-            ["Planning basis", "Two adults and two children aged 6–11 sharing two rooms"],
-            ["Family pacing", "Age-aware private pacing with protected family downtime"],
-            ["Age bands", "6–9, 10–13 and 14–17"],
-            ["Beijing to Xi'an", "First-class high-speed rail"],
-            ["Xi'an to Chengdu", "First-class high-speed rail"],
-            ["Chengdu to Shanghai", "Nonstop economy-class domestic flight"],
+            ["Duration", "One private day; usually 7–9 hours door to door"],
+            ["Route", "Beijing hotel, Mutianyu Great Wall, Beijing return"],
             [
-              "Signature experiences",
-              "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
+              "Touring service",
+              "Private guide and driver; admission and scenic-area shuttle included",
             ],
-            ["Touring service", "Private family-ready multilingual guides and private vehicles"],
+            [
+              "Mountain transport",
+              "Optional; chosen ascent and descent confirmed in the written quote",
+            ],
+            ["Pricing", "One written total for the private party"],
+            ["Walking", "Steps and slopes remain even with cable-car access"],
             ["Shopping policy", "No compulsory shopping stops"],
-            ["International flights", "Not included"],
+            ["Accommodation", "No overnight stay included"],
           ]
-        : isYunnan
+        : isMuslimFriendly
           ? [
-              ["Duration", "10 days / 9 nights"],
-              ["Route", "Dali, Shaxi, Lijiang and Shangri-La"],
-              ["Accommodation standard", "Luxury boutique, heritage and highland hotels"],
-              ["Accommodation duration", "9 nights"],
-              ["Planning basis", "Four guests sharing two rooms outside peak periods"],
-              ["Pace", "Balanced, private and altitude-aware"],
-              ["Altitude progression", "Dali about 1,970 m to Shangri-La about 3,200 m"],
-              ["Intercity transport", "Dedicated premium private vehicle"],
+              ["Duration", "13 days / 12 nights"],
+              ["Route", "Beijing, Xi'an, Yinchuan, Zhongwei and Shanghai"],
+              [
+                "Accommodation standard",
+                "Premium city hotels plus best-available Ningxia and desert accommodation",
+              ],
+              [
+                "Pricing",
+                "Priced individually for your dates, group size, hotel standard and pace",
+              ],
+              [
+                "Muslim-friendly service",
+                "AVIORA Muslim Journey Standard: dietary profile, meal verification, prayer-aware timing and China-based backup support",
+              ],
               [
                 "Signature experiences",
-                "Bai three-course tea, tie-dye artisan session, Tea Horse Road salon, Dongba culture, Tiger Leaping Gorge and Songzanlin Monastery",
+                "Great Wall private halal picnic, Xi'an Silk Road and halal kitchen chapter, Ningxia Hui table, desert sunset dinner and stargazing",
+              ],
+              [
+                "Transport",
+                "Private vehicles, first-class Beijing–Xi'an rail and date-specific domestic connections",
               ],
               ["Shopping policy", "No compulsory shopping stops"],
-              ["International and domestic flights", "Not included"],
+              ["International flights", "Not included"],
             ]
-          : isChinaConsidered
+          : isChinaFamily
             ? [
                 ["Duration", "12 days / 11 nights"],
-                ["Accommodation standard", "Premium five-star hotels"],
+                ["Accommodation standard", "Premium five-star family hotels"],
                 ["Accommodation duration", "11 nights"],
-                ["Planning basis", "Four guests sharing two rooms outside peak periods"],
-                ["Pace", "Easy to moderate, with protected recovery time"],
-                ["Hotel changes", "Two"],
+                ["Planning basis", "Two adults and two children aged 6–11 sharing two rooms"],
+                ["Family pacing", "Age-aware private pacing with protected family downtime"],
+                ["Age bands", "6–9, 10–13 and 14–17"],
                 ["Beijing to Xi'an", "First-class high-speed rail"],
-                ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
-                ["Touring service", "Private multilingual guides and private vehicles"],
+                ["Xi'an to Chengdu", "First-class high-speed rail"],
+                ["Chengdu to Shanghai", "Nonstop economy-class domestic flight"],
+                [
+                  "Signature experiences",
+                  "Private tai chi, Junior Curator Mission, Great Wall family challenge, clay-warrior studio, giant pandas and private Shanghai kitchen",
+                ],
+                [
+                  "Touring service",
+                  "Private family-ready multilingual guides and private vehicles",
+                ],
                 ["Shopping policy", "No compulsory shopping stops"],
                 ["International flights", "Not included"],
               ]
-            : [
-                ["Accommodation standard", "Selected four- and five-star hotels"],
-                ["Tour format", "Private, tailor-made journey"],
-              ];
+            : isYunnan
+              ? [
+                  ["Duration", "10 days / 9 nights"],
+                  ["Route", "Dali, Shaxi, Lijiang and Shangri-La"],
+                  ["Accommodation standard", "Luxury boutique, heritage and highland hotels"],
+                  ["Accommodation duration", "9 nights"],
+                  ["Planning basis", "Four guests sharing two rooms outside peak periods"],
+                  ["Pace", "Balanced, private and altitude-aware"],
+                  ["Altitude progression", "Dali about 1,970 m to Shangri-La about 3,200 m"],
+                  ["Intercity transport", "Dedicated premium private vehicle"],
+                  [
+                    "Signature experiences",
+                    "Bai three-course tea, tie-dye artisan session, Tea Horse Road salon, Dongba culture, Tiger Leaping Gorge and Songzanlin Monastery",
+                  ],
+                  ["Shopping policy", "No compulsory shopping stops"],
+                  ["International and domestic flights", "Not included"],
+                ]
+              : isChinaConsidered
+                ? [
+                    ["Duration", "12 days / 11 nights"],
+                    ["Accommodation standard", "Premium five-star hotels"],
+                    ["Accommodation duration", "11 nights"],
+                    ["Planning basis", "Four guests sharing two rooms outside peak periods"],
+                    ["Pace", "Easy to moderate, with protected recovery time"],
+                    ["Hotel changes", "Two"],
+                    ["Beijing to Xi'an", "First-class high-speed rail"],
+                    ["Xi'an to Shanghai", "Nonstop economy-class domestic flight"],
+                    ["Touring service", "Private multilingual guides and private vehicles"],
+                    ["Shopping policy", "No compulsory shopping stops"],
+                    ["International flights", "Not included"],
+                  ]
+                : [
+                    ["Accommodation standard", "Selected four- and five-star hotels"],
+                    ["Tour format", "Private, tailor-made journey"],
+                  ]);
     return (
       <>
         <ItineraryProductSchema
@@ -195,11 +209,11 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
             identifier: staticTour.slug,
             name: (catalogItem && getJourneyHeadline(catalogItem)) || staticTour.title,
             alternateName: staticTour.title,
-            description: staticTour.seo.description,
+            description: searchSpecification.description,
             url: tourUrl,
             mainEntityOfPage: `${tourUrl}#webpage`,
             category: catalogItem?.commercialRoleLabel ?? "Premium private China tour",
-            duration: `P${staticTour.itinerary.length}D`,
+            duration: searchSpecification.duration,
             brandName: siteConfig.name,
             audienceType: isMuslimFriendly
               ? "Muslim families, Muslim couples, multigenerational groups and private travelers seeking verified dining and prayer-aware China travel"
@@ -245,10 +259,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
                     category: "Private premium China tour",
                     description: catalogItem.pricing.basis,
                     unitText:
-                      isPrivateShanghaiDayTour ||
-                      isPrivateXianTerracottaDayTour ||
-                      isPrivateChengduPandaDayTour ||
-                      isGuilinLiRiverDayTour
+                      catalogItem.pricing.pricingUnit === "private-group"
                         ? "per private group of four guests"
                         : "per person",
                   }
@@ -292,7 +303,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
         />
         <FAQSchema
           id={`${staticTour.slug}-faq-schema`}
-          items={[...staticTour.faqs, ...bookingPolicyFaqs]}
+          items={getVisibleTourFaqs(staticTour)}
           url={tourUrl}
         />
         <BreadcrumbSchema

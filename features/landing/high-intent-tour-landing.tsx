@@ -1,4 +1,10 @@
-import { ArrowRight, Check, CircleDollarSign, MapPin, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  CircleDollarSign,
+  MapPin,
+  ShieldCheck,
+} from "@/components/icons/symbols";
 import Link from "next/link";
 
 import { EnquirySection } from "@/components/forms/enquiry-section";

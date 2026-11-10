@@ -1,5 +1,9 @@
 # China Prime DMC V2 Tour System
 
+Current product ownership, customer needs and category boundaries are documented in [PRODUCT_CLASSIFICATION.md](./PRODUCT_CLASSIFICATION.md). The classification source is `content/tours/classification.ts`; `tiers.ts` derives its three top-level types from that source. Theme and traveller tags are auxiliary filters.
+
+Search content and implementation standards: [TOUR_SEO_GEO_STANDARD.md](./TOUR_SEO_GEO_STANDARD.md). The Shanghai day tour is the first complete SEO/GEO example; shared FAQ visibility now matches its structured data.
+
 Sprint 6 establishes the reusable Tour System. It is a template and content architecture for future CMS-generated private journeys, not a one-off tour page.
 
 ## 1. Tour Template
@@ -49,7 +53,6 @@ The page is designed as a luxury travel proposal. It should make a traveler want
   - `GridGallery`
   - `CtaCard`
   - `FloatingCta`
-  - `StickyMobileCta`
   - `SiteFooter`
 
 No separate page visual language is introduced.

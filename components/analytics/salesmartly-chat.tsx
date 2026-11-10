@@ -1,8 +1,8 @@
 "use client";
 
-import { MessageCircle, X } from "lucide-react";
+import { MessageCircle, X } from "@/components/icons/symbols";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { WhatsAppIcon } from "@/components/icons";
 import { useCspNonce } from "@/components/security/csp-nonce-provider";
@@ -52,9 +52,9 @@ export function SalesmartlyChat() {
   const [chatOpen, setChatOpen] = useState(false);
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [enquiryInViewOnPath, setEnquiryInViewOnPath] = useState<string | null>(null);
   const [closeSpot, setCloseSpot] = useState<{ top: number; right: number } | null>(null);
+  const dockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (document.querySelector("script[data-aviora-salesmartly]")) return;
@@ -110,22 +110,27 @@ export function SalesmartlyChat() {
     return () => observer.disconnect();
   }, [pathname]);
 
-  // 手机端：向下滚动时收起入口，向上滚动或停下时再出现，不长期遮挡内容。
   useEffect(() => {
-    let last = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (Math.abs(y - last) < 8) return;
-      setHidden(y > last && y > 240);
-      if (y > last) setMenuOpen(false);
-      last = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    if (!menuOpen) return;
 
-  // 详情页和文章页底部已有自己的行动条，入口要抬高避开。
-  const liftedForBar = /^\/(tours|journal)\/[^/]+/.test(pathname ?? "");
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setMenuOpen(false);
+      dockRef.current?.querySelector("button")?.focus();
+    };
+    const closeOnOutsidePress = (event: PointerEvent) => {
+      if (event.target instanceof Node && !dockRef.current?.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOnOutsidePress);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOnOutsidePress);
+    };
+  }, [menuOpen]);
 
   // 聊天窗口打开时让位，避免盖住窗口；桌面端改显示关闭按钮。
   if (chatOpen) {
@@ -143,22 +148,28 @@ export function SalesmartlyChat() {
 
   return (
     <div
+      ref={dockRef}
       className={styles.dock}
       data-suppressed={enquiryInViewOnPath === pathname ? "true" : undefined}
-      data-hidden={hidden && !menuOpen ? "true" : undefined}
-      data-lifted={liftedForBar ? "true" : undefined}
       data-open={menuOpen ? "true" : undefined}
     >
       <button
         type="button"
+        id="aviora-contact-toggle"
         className={styles.toggle}
         aria-expanded={menuOpen}
+        aria-controls="aviora-contact-options"
         aria-label={menuOpen ? "Close contact options" : "Talk to us"}
         onClick={() => setMenuOpen((open) => !open)}
       >
         {menuOpen ? <X aria-hidden="true" /> : <MessageCircle aria-hidden="true" />}
       </button>
-      <div className={styles.options}>
+      <div
+        id="aviora-contact-options"
+        className={styles.options}
+        role="group"
+        aria-label="Contact AVIORA"
+      >
         {chatReady ? (
           <button
             type="button"

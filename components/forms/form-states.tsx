@@ -1,4 +1,4 @@
-import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { AlertCircle, CheckCircle2, Loader2 } from "@/components/icons/symbols";
 
 import { cn } from "@/lib/utils/cn";
 

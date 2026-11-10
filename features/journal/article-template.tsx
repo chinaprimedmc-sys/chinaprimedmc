@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@/components/icons/symbols";
 import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +15,6 @@ import { getJournalSearchRole } from "@/content/journal/search-strategy";
 import { formatJournalMobileTitle, formatJournalTitle } from "@/content/journal/presentation";
 import { RecordViewed } from "@/features/discovery/record-viewed";
 import { JournalAnalytics } from "@/features/journal/journal-analytics";
-import { ArticleStickyCta } from "@/features/journal/article-sticky-cta";
 import { ArticleMobileReader } from "@/features/journal/article-mobile-reader";
 import { JournalJourneyBridge, JournalJourneyPrompt } from "@/features/journal/journey-bridge";
 import { getJourneyBridgeForArticle } from "@/lib/content/journey-journal-links";
@@ -63,7 +62,6 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
       <JournalAnalytics />
       <SiteNavigation />
 
-      <ArticleStickyCta articleSlug={article.slug} />
       <ArticleHero article={article} />
       <CompactTrust article={article} />
       {article.keyTakeaways?.length ? <KeyTakeaways items={article.keyTakeaways} /> : null}

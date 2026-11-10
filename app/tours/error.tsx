@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/icons/symbols";
 import Link from "next/link";
 
 import { WhatsAppIcon } from "@/components/icons";

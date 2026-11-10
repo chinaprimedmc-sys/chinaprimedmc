@@ -201,10 +201,10 @@ export const destinationImages = {
 
 export const storyImages = {
   tea: {
-    src: "/home/xian-terracotta-army.webp",
+    src: "/tours/first-china-beautifully-paced/xian-terracotta-army-portrait.webp",
     alt: "Terracotta Army figures representing China's living cultural depth",
-    width: 1920,
-    height: 1200,
+    width: 1440,
+    height: 1920,
     objectPosition: "50% 52%",
   },
   rail: {

@@ -1,6 +1,5 @@
 import {
   ArrowUpRight,
-  Check,
   CircleCheck,
   FileText,
   HeartHandshake,
@@ -9,18 +8,24 @@ import {
   ShieldCheck,
   TrainFront,
   WalletCards,
-} from "lucide-react";
+} from "@/components/icons/symbols";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { AboutNavigation } from "@/components/about/about-navigation";
 import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
-import { WhatsAppIcon } from "@/components/icons";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { founder } from "@/content/founder";
-import { verifiedCredentials } from "@/content/trust";
+import {
+  aboutQuestions,
+  brandStory,
+  travelDecisions,
+  hospitalityPrinciples,
+} from "@/content/about";
+import { serviceAchievements } from "@/content/home/service-achievements";
 import { homeEditorialImages } from "@/content/home/homepage";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -28,7 +33,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = createMetadata({
-  title: "About AVIORA | Your China Journey, Personally Handled",
+  title: "About AVIORA | Meet Your Local China Travel Team",
   description:
     "Meet AVIORA, a licensed China travel operator designing private journeys with clear planning, trusted local partners and on-trip support from arrival to departure.",
   path: "/about",
@@ -61,7 +66,7 @@ const travelConcerns = [
 const travelerNeeds = [
   {
     title: "Families",
-    text: "Age-aware pacing, room logic, shorter transfer days and experiences children can enjoy.",
+    text: "Room arrangements, rest time and travel days planned around children’s ages and your family’s pace.",
   },
   {
     title: "Women Travelers",
@@ -69,7 +74,7 @@ const travelerNeeds = [
   },
   {
     title: "Older Travelers",
-    text: "Gentler walking, sensible rest time, accessible transport and realistic daily schedules.",
+    text: "Walking distances, stairs, rest time and vehicle access checked against your needs before confirmation.",
   },
   {
     title: "Muslim Travelers",
@@ -99,7 +104,7 @@ const trustProof = [
   {
     icon: CircleCheck,
     title: "No Forced Shopping",
-    text: "Your itinerary is built around travel, not compulsory retail stops or hidden commissions.",
+    text: "No compulsory retail stops. Shopping is included only when you ask for it.",
   },
   {
     icon: MapPin,
@@ -133,25 +138,6 @@ const process = [
     number: "05",
     title: "Support",
     text: "We stay reachable and act locally when your needs or circumstances change.",
-  },
-];
-
-const teamRoles = [
-  {
-    title: "Journey Specialist",
-    text: "Your planning contact, responsible for understanding the people behind the trip.",
-  },
-  {
-    title: "Route Designer",
-    text: "Balances geography, travel time, hotel logic and the rhythm of each day.",
-  },
-  {
-    title: "China Operations",
-    text: "Checks bookings and coordinates the local services that make the route work.",
-  },
-  {
-    title: "On-Trip Support",
-    text: "Responds when a flight moves, the weather turns or the plan needs to adapt.",
   },
 ];
 
@@ -202,22 +188,7 @@ export default function AboutPage() {
           inLanguage: "en-US",
           isPartOf: { "@id": `${siteConfig.url}/#website` },
           publisher: { "@id": `${siteConfig.url}/#organization` },
-          mainEntity: {
-            "@type": "TravelAgency",
-            "@id": `${siteConfig.url}/#organization`,
-            name: siteConfig.siteName,
-            legalName: siteConfig.operator.legalName,
-            foundingDate: siteConfig.operator.founded,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: siteConfig.operator.address.streetAddress,
-              addressLocality: siteConfig.operator.address.addressLocality,
-              addressRegion: siteConfig.operator.address.addressRegion,
-              addressCountry: siteConfig.operator.country,
-            },
-            email: siteConfig.email,
-            telephone: siteConfig.phone,
-          },
+          mainEntity: { "@id": `${siteConfig.url}/#organization` },
         }}
       />
 
@@ -239,8 +210,8 @@ export default function AboutPage() {
             <p className={styles.heroEyebrow}>ABOUT AVIORA</p>
             <h1 id="about-title">China, Seen Differently.</h1>
             <p>
-              Private journeys designed around you, then handled in China by one accountable local
-              team.
+              We design private China journeys for international travelers, connecting thoughtful
+              routes, local guides and practical support through one China-based team.
             </p>
             <Link className={styles.heroLink} href="#understood">
               How We Look After Your Journey <ArrowUpRight aria-hidden="true" />
@@ -249,28 +220,79 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className={styles.section} aria-label="Company and operating facts">
+      <div className={`${styles.container} ${styles.routeNavigation}`}>
+        <AboutNavigation current="/about" />
+        <nav className={styles.pageIndex} aria-label="On this page">
+          <span>On this page</span>
+          <a href="#our-story">Our story</a>
+          <a href="#designed-around-you">Your journey</a>
+          <a href="#the-standard">Our standards</a>
+          <a href="#people">Our team</a>
+          <a href="#founder">Our founder</a>
+          <a href="#about-questions">Questions</a>
+        </nav>
+      </div>
+
+      <section className={`${styles.section} ${styles.introduction}`} aria-labelledby="who-we-are">
         <div className={styles.container}>
-          <div className="grid gap-6 md:grid-cols-3">
-            {verifiedCredentials.map((fact) => (
-              <div key={fact.title}>
-                <h2 className="text-lg font-semibold">{fact.title}</h2>
-                <p className="text-muted mt-3 text-base leading-7">{fact.description}</p>
+          <div className={styles.identityIntro}>
+            <SectionHeading
+              id="who-we-are"
+              eyebrow="LOCAL KNOWLEDGE. CLEAR RESPONSIBILITY."
+              title="Your travel partner, here in China."
+              copy="AVIORA brings together journey planning and local operation for travelers who want to explore China at their own pace. We work through a Guangzhou-registered travel company established in 2018, with offices in Beijing, Shanghai and Xi’an."
+            />
+            <div className={styles.identityAside}>
+              <p>
+                From the first route discussion to the last transfer, we connect the decisions that
+                make a journey work: where to stay, how far to travel, who will guide you and what
+                to do when plans change.
+              </p>
+              <Link className={styles.textLink} href="/company">
+                Meet the company behind AVIORA <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+          <dl className={styles.achievements}>
+            {serviceAchievements.map((fact) => (
+              <div key={fact.id}>
+                <dt>{fact.englishLabel}</dt>
+                <dd>{fact.display}</dd>
               </div>
             ))}
-          </div>
-          <p className="text-muted mt-6 text-base">
-            Planning, route coordination and on-trip support are handled by our China team.
-            Enquiries normally receive a personal reply within 24 hours.
+          </dl>
+          <p className={styles.figuresNote}>
+            Service figures reported by AVIORA.{" "}
+            <Link href="/company">View our company details</Link>.
           </p>
         </div>
       </section>
+      <section id="our-story" className={styles.section} aria-labelledby="our-story-title">
+        <div className={styles.container}>
+          <div className={styles.storyIntroduction}>
+            <p className={styles.eyebrow}>WHY AVIORA EXISTS</p>
+            <h2 id="our-story-title">
+              A country this rich deserves a journey that feels personal.
+            </h2>
+            <p className={styles.storyLead}>
+              There is a difference between reaching a destination and having the time, context and
+              confidence to experience it.
+            </p>
+          </div>
+          <div className={styles.storyNarrative}>
+            {brandStory.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="understood" className={`${styles.section} ${styles.understood}`}>
         <div className={styles.container}>
           <SectionHeading
             eyebrow="YOU WILL NOT FACE IT ALONE"
             title="China Can Feel Complex. Your Journey Does Not Have To."
-            copy="Language, payments, fast-moving transport and unfamiliar systems can make a first trip feel uncertain. Our role is to remove that uncertainty before it reaches you."
+            copy="Language, payment apps, transport and unfamiliar systems can raise practical questions. We help you prepare and connect the arrangements before arrival, with local support for the agreed services while you travel."
           />
           <div className={styles.concernGrid}>
             {travelConcerns.map((item) => {
@@ -305,9 +327,8 @@ export default function AboutPage() {
             </Link>
           </div>
           <div className={styles.needsGrid}>
-            {travelerNeeds.map((item, index) => (
+            {travelerNeeds.map((item) => (
               <article className={styles.need} key={item.title}>
-                <span aria-hidden="true">0{index + 1}</span>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
@@ -325,6 +346,37 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className={styles.section} aria-label="The thinking behind your itinerary">
+        <div className={styles.container}>
+          <SectionHeading
+            eyebrow="THE THINKING BEHIND YOUR ITINERARY"
+            title="Good journeys are made through thoughtful decisions."
+            copy="A list of places is a starting point. The quality of a journey comes from how those places fit together, and how the days feel to the people traveling."
+          />
+          <div className={styles.craftLayout}>
+            <figure className={styles.craftPhoto}>
+              <OptimizedImage
+                src={homeEditorialImages.tradeConsultation.src}
+                alt={homeEditorialImages.tradeConsultation.alt}
+                fill
+                sizes="(max-width: 767px) 100vw, 38vw"
+                frameClassName={styles.peopleImageFrame}
+                className={styles.coverImage}
+              />
+            </figure>
+            <div className={styles.decisions}>
+              {travelDecisions.map((item) => (
+                <article key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
+                  <p className={styles.decisionQuestion}>{item.example}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="the-standard" className={styles.section}>
         <div className={styles.container}>
           <div className={styles.standardLayout}>
@@ -332,7 +384,7 @@ export default function AboutPage() {
               <SectionHeading
                 eyebrow="THE AVIORA STANDARD"
                 title="Trust Should Be Built Into the Journey."
-                copy="Reassurance is not a slogan. It comes from clear commitments, responsible local operation and knowing what has been agreed before you travel."
+                copy="Before you commit, you should know who is responsible, what your price includes and which conditions apply. We put those details in writing so you can make an informed decision."
               />
               <div className={styles.legalIdentity}>
                 <ShieldCheck aria-hidden="true" />
@@ -391,14 +443,26 @@ export default function AboutPage() {
 
       <section id="founder" className={styles.section}>
         <div className={styles.container}>
-          <SectionHeading
-            eyebrow="THE PERSON BEHIND THE JOURNEY"
-            title={founder.pullQuote}
-            copy={`${founder.name}, ${founder.jobTitle}, ${founder.organization}`}
-          />
-          <Link className={styles.textLink} href={founder.path}>
-            Read the founder&apos;s story <ArrowUpRight aria-hidden="true" />
-          </Link>
+          <div className={styles.founderFeature}>
+            <div>
+              <p className={styles.eyebrow}>THE PERSON BEHIND AVIORA</p>
+              <h2>{founder.name}</h2>
+              <p className={styles.sectionCopy}>
+                {founder.jobTitle}, {founder.organization}
+              </p>
+              <Link className={styles.textLink} href={founder.path}>
+                Read Guohui&apos;s letter <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </div>
+            <div>
+              <blockquote>“{founder.pullQuote}”</blockquote>
+              <p className={styles.sectionCopy}>
+                In his own words, Guohui explains why he founded AVIORA: to make travel personal,
+                give the practical details proper attention and help international visitors feel
+                closer to China.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -415,22 +479,25 @@ export default function AboutPage() {
                 className={styles.coverImage}
                 style={{ objectPosition: homeEditorialImages.tradeBuyerMeeting.objectPosition }}
               />
-              <figcaption>AVIORA in conversation with international travel partners.</figcaption>
+              <figcaption>
+                Our team discussing China travel with international travel professionals in
+                Malaysia.
+              </figcaption>
             </figure>
             <div className={styles.peopleCopy}>
               <SectionHeading
                 eyebrow="THE PEOPLE RESPONSIBLE"
-                title="Your Journey Is Handled by People, Not Passed Between Platforms."
-                copy="Different specialists contribute their expertise, but the responsibility stays connected. Your requirements do not disappear when planning becomes operation."
+                title="A China team that understands your brief."
+                copy="The people planning your trip work with the local arrangements that bring it to life. Your interests, preferred pace and practical needs inform the route, the guide requirements and the day-to-day coordination."
               />
-              <div className={styles.roles}>
-                {teamRoles.map((role) => (
-                  <article key={role.title}>
-                    <h3>{role.title}</h3>
-                    <p>{role.text}</p>
-                  </article>
-                ))}
-              </div>
+              <p className={styles.peopleDetail}>
+                Our work connects planning, route design, local operation and support while you
+                travel. The written proposal explains the services included; before departure,
+                review your arrival instructions and on-trip contact details with the team.
+              </p>
+              <Link className={styles.textLink} href="/company#responsibilities">
+                How the responsibilities connect <ArrowUpRight aria-hidden="true" />
+              </Link>
               <Link
                 className={styles.textLink}
                 href={whatsappHref}
@@ -440,6 +507,24 @@ export default function AboutPage() {
                 Speak With Our China Team <ArrowUpRight aria-hidden="true" />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section} aria-label="Our approach to hospitality">
+        <div className={styles.container}>
+          <SectionHeading
+            eyebrow="WHAT WE VALUE"
+            title="Care is a way of working."
+            copy="The warmth of a welcome matters. So do the decisions made long before you arrive. These principles guide how we discuss, design and coordinate your journey."
+          />
+          <div className={styles.valuesGrid}>
+            {hospitalityPrinciples.map((item) => (
+              <article key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -479,49 +564,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="start" className={styles.finalCta}>
+      <section className={styles.section} aria-labelledby="about-questions">
         <div className={styles.container}>
-          <div className={styles.finalCtaGrid}>
+          <div className={styles.questionsLayout}>
             <div>
-              <p className={styles.eyebrow}>YOUR CHINA STORY STARTS HERE</p>
-              <h2>You Reach China. We Take Care of What Comes Next.</h2>
-            </div>
-            <div className={styles.finalCtaCopy}>
-              <p>
-                Share your approximate dates, number of travelers and travel style. We will reply
-                personally within 24 hours with the right next questions and a considered first
-                direction.
+              <p className={styles.eyebrow}>BEFORE YOU DECIDE</p>
+              <h2 id="about-questions">A few questions worth asking.</h2>
+              <p className={styles.sectionCopy}>
+                Take time to understand the people and arrangements behind your trip.
               </p>
-              <div className={styles.finalActions}>
-                <Link className={styles.primaryAction} href="/start-planning?source=about-final">
-                  Plan My Private Journey <ArrowUpRight aria-hidden="true" />
-                </Link>
-                <Link
-                  className={styles.whatsappAction}
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <WhatsAppIcon aria-hidden="true" /> WhatsApp Our Team
-                </Link>
-              </div>
-              <div className={styles.finalTrust}>
-                <span>
-                  <Check aria-hidden="true" /> No Obligation
-                </span>
-                <span>
-                  <Check aria-hidden="true" /> Personal Reply
-                </span>
-                <span>
-                  <Check aria-hidden="true" /> Clear Next Step
-                </span>
-              </div>
+              <Link className={styles.textLink} href="/terms">
+                Read booking terms <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </div>
+            <div className={styles.questions}>
+              {aboutQuestions.map((item) => (
+                <details key={item.question}>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <EnquirySection placement="about" />
+      <div id="start" className={styles.enquiryAnchor}>
+        <EnquirySection
+          placement="about"
+          title="Let’s begin with your idea of China."
+          intro="Share your approximate dates, who is traveling and what you would love to experience. We normally reply personally within 24 hours to discuss the route and the details that matter to you."
+        />
+      </div>
 
       <SiteFooter
         columns={[
@@ -553,10 +627,12 @@ export default function AboutPage() {
 }
 
 function SectionHeading({
+  id,
   eyebrow,
   title,
   copy,
 }: {
+  id?: string;
   eyebrow: string;
   title: string;
   copy: string;
@@ -564,7 +640,7 @@ function SectionHeading({
   return (
     <header className={styles.sectionHeading}>
       <p className={styles.eyebrow}>{eyebrow}</p>
-      <h2>{title}</h2>
+      <h2 id={id}>{title}</h2>
       <span className={styles.breathingLine} aria-hidden="true" />
       <p className={styles.sectionCopy}>{copy}</p>
     </header>

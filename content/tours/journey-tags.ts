@@ -5,15 +5,12 @@
  * 不负责：筛选逻辑（见 lib/tours/journey-explorer.ts）与页面展示。
  * 关键规则：标签只在行程自己的文案能支持时才出现；每类最多 2 个；
  * Muslim-friendly 只用于确有清真与礼拜安排的行程；不做任何无障碍或医疗承诺。
- * 状态：已按提案定稿（2026-11-04）；依据见 docs/audit/journeys-tag-proposal.md。
+ * 主分类见 classification.ts；本文件只维护辅助客群和兴趣。
  */
 
 import type { publicJourneySlugs } from "@/content/tours/catalog";
 
-/**
- * "Friends" 与 "Multi-generational" 暂时不列：目前没有任何行程的文案支持这两类人群，
- * 空的筛选项比没有更糟。出现对应产品后，把它们加回这个数组即可。
- */
+/** 同行人是可重叠的辅助标签，不决定产品主分类。 */
 export const whoTags = ["First-time", "Family", "Couples", "Multi-generational"] as const;
 export type WhoTag = (typeof whoTags)[number];
 
@@ -42,7 +39,7 @@ type PublicSlug = (typeof publicJourneySlugs)[number];
 
 export const journeyTags: Record<PublicSlug, JourneyTagSet> = {
   "beijing-xian-shanghai-private-10-day-tour": {
-    who: ["Multi-generational", "First-time"],
+    who: ["First-time", "Couples"],
     interest: ["Culture & heritage", "History"],
     easierPace: true,
   },
@@ -62,7 +59,6 @@ export const journeyTags: Record<PublicSlug, JourneyTagSet> = {
   "private-xian-terracotta-warriors-day-tour": {
     who: ["First-time", "Family"],
     interest: ["History"],
-    easierPace: true,
   },
   "private-chengdu-panda-day-tour-early-morning": {
     who: ["Family", "Couples"],
@@ -73,7 +69,7 @@ export const journeyTags: Record<PublicSlug, JourneyTagSet> = {
     interest: ["Nature & landscapes", "Photography"],
   },
   "china-family-tour-with-pandas-12-day-private-tour": {
-    who: ["Family"],
+    who: ["Family", "Multi-generational"],
     interest: ["Pandas & wildlife", "Culture & heritage"],
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
@@ -82,7 +78,7 @@ export const journeyTags: Record<PublicSlug, JourneyTagSet> = {
     easierPace: true,
   },
   "china-at-an-easier-pace-12-day-private-tour": {
-    who: ["Couples"],
+    who: ["Couples", "Multi-generational"],
     interest: ["Slow travel", "Culture & heritage"],
     easierPace: true,
   },

@@ -267,7 +267,7 @@
 .thumb {
   position: relative;
   display: block;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: var(--aspect-content-photo);
   overflow: hidden;
   border-radius: 4px;
   background: var(--stone);
@@ -308,13 +308,19 @@
 .banner {
   position: relative;
   grid-column: 1 / -1;
-  display: flex;
-  align-items: flex-end;
-  min-height: clamp(320px, 38vw, 440px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
   overflow: hidden;
   border-radius: 6px;
   background: var(--night);
   color: #fff;
+}
+.bannerMedia {
+  position: relative;
+  display: block;
+  aspect-ratio: var(--aspect-content-photo);
+  overflow: hidden;
 }
 .bannerImage {
   object-fit: cover;
@@ -386,6 +392,9 @@
   text-decoration: none;
 }
 @media (max-width: 700px) {
+  .banner {
+    grid-template-columns: 1fr;
+  }
   .bannerActions {
     flex-direction: column;
     align-items: stretch;

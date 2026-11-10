@@ -1,4 +1,5 @@
 import { getDestinationBySlug } from "@/content/destinations";
+import { explorerDestinations } from "@/content/destinations/explorer";
 import { destinationAsset } from "@/content/destinations/assets";
 import { journalArticles } from "@/content/journal";
 import { getTourBySlug, tours } from "@/content/tours";
@@ -68,7 +69,7 @@ const journalDestinationImages: Record<string, MediaAsset> = {
 export function getRelationshipsForArticle(article: JournalArticle): ContentRelationships {
   const manualDestinationSlugs = article.related?.destinations ?? [];
   const inferredDestinationSlugs = article.tags.filter((tag) =>
-    ["beijing", "xian", "chengdu", "shanghai", "guilin", "zhangjiajie"].includes(tag),
+    explorerDestinations.some((destination) => destination.id === tag),
   );
   const destinationSlugs = unique([...manualDestinationSlugs, ...inferredDestinationSlugs]);
 
@@ -143,9 +144,7 @@ function relatedArticleScore(candidate: JournalArticle, source: JournalArticle) 
   const sourceRole = getJournalSearchRole(source.slug);
   const sharedTags = candidate.tags.filter((tag) => source.tags.includes(tag));
   const sharedDestinationTags = sharedTags.filter((tag) =>
-    ["beijing", "xian", "chengdu", "chongqing", "shanghai", "jiuzhaigou", "zhangjiajie"].includes(
-      tag,
-    ),
+    explorerDestinations.some((destination) => destination.id === tag),
   );
   const sharedTours = candidate.related?.tours?.filter((tour) =>
     source.related?.tours?.includes(tour),

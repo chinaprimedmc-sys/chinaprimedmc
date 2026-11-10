@@ -104,14 +104,12 @@
 .heroLink svg,
 .textLink svg,
 .softCta a svg,
-.storyCaption svg,
-.primaryAction svg {
+.storyCaption svg {
   width: 1rem;
   height: 1rem;
 }
 
-.section,
-.finalCta {
+.section {
   padding: var(--space-section-default) 0;
   border-bottom: 1px solid var(--about-line);
   background: #fff;
@@ -127,8 +125,7 @@
   max-width: 68ch;
 }
 
-.sectionHeading h2,
-.finalCta h2 {
+.sectionHeading h2 {
   color: var(--about-ink);
   font-size: var(--type-section-title-size);
   font-weight: var(--type-section-title-weight);
@@ -156,8 +153,7 @@
 .concernGrid,
 .needsGrid,
 .proofList,
-.processList,
-.roles {
+.processList {
   display: grid;
   margin-top: 2.5rem;
   border-top: 1px solid var(--about-line);
@@ -188,7 +184,6 @@
 .need h3,
 .proof h3,
 .processList h3,
-.roles h3,
 .storyCaption h3 {
   margin: 1.25rem 0 0;
   color: var(--about-ink);
@@ -200,8 +195,7 @@
 .concern p,
 .need p,
 .proof p,
-.processList p,
-.roles p {
+.processList p {
   margin: 0.65rem 0 0;
   color: var(--about-muted);
   font-size: 1rem;
@@ -269,8 +263,7 @@
 }
 
 .standardLayout,
-.peopleLayout,
-.finalCtaGrid {
+.peopleLayout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 4rem;
@@ -356,7 +349,7 @@
 
 .peoplePhoto {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: var(--aspect-content-photo);
   margin: 0;
 }
 
@@ -385,24 +378,6 @@
   max-width: 42rem;
 }
 
-.roles {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.roles article {
-  min-width: 0;
-  padding: 1.25rem;
-  border-bottom: 1px solid var(--about-line);
-}
-
-.roles article:nth-child(even) {
-  border-left: 1px solid var(--about-line);
-}
-
-.roles h3 {
-  margin-top: 0;
-}
-
 .peopleCopy > .textLink {
   margin-top: 1.5rem;
 }
@@ -416,7 +391,7 @@
 
 .story {
   position: relative;
-  min-height: 28rem;
+  aspect-ratio: var(--aspect-content-photo);
   overflow: hidden;
   border-radius: var(--radius-feature);
 }
@@ -456,63 +431,6 @@
   grid-column: 2;
   grid-row: 1 / span 2;
   align-self: end;
-}
-
-.finalCtaGrid {
-  align-items: end;
-}
-
-.finalCtaCopy > p {
-  max-width: 65ch;
-  color: var(--about-muted);
-  font-size: 1rem;
-  line-height: 1.65;
-}
-
-.finalActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-}
-
-.primaryAction,
-.whatsappAction {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.75rem 1.15rem;
-  border: var(--border-subtle);
-  border-radius: var(--radius-pill);
-  background: var(--glass-surface);
-  box-shadow: var(--button-glass-shadow);
-  color: var(--about-ink);
-  font-size: 0.9375rem;
-  font-weight: 650;
-  white-space: nowrap;
-  backdrop-filter: blur(16px) saturate(112%);
-}
-
-.finalTrust {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.25rem;
-  margin-top: 1.25rem;
-  color: var(--about-muted);
-  font-size: 0.875rem;
-}
-
-.finalTrust span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.finalTrust svg {
-  width: 0.9rem;
-  height: 0.9rem;
 }
 
 @media (max-width: 1023px) {
@@ -560,9 +478,7 @@
   .standardLayout,
   .processList,
   .peopleLayout,
-  .roles,
-  .storyGrid,
-  .finalCtaGrid {
+  .storyGrid {
     grid-template-columns: 1fr;
   }
 
@@ -581,8 +497,7 @@
   .concern:nth-child(3),
   .need:nth-child(even),
   .processList li + li,
-  .processList li:nth-child(odd),
-  .roles article:nth-child(even) {
+  .processList li:nth-child(odd) {
     border-left: 0;
   }
 
@@ -592,31 +507,320 @@
   }
 
   .standardLayout,
-  .peopleLayout,
-  .finalCtaGrid {
+  .peopleLayout {
     gap: 2.5rem;
   }
 
   .peoplePhoto {
     order: -1;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: var(--aspect-content-photo);
   }
 
   .story {
-    min-height: 24rem;
-  }
-
-  .finalActions,
-  .primaryAction,
-  .whatsappAction {
-    width: 100%;
+    min-height: 0;
   }
 }
 
-@media (prefers-reduced-transparency: reduce) {
-  .primaryAction,
-  .whatsappAction {
-    background: #fff;
-    backdrop-filter: none;
+/* Evidence and personal identity sit ahead of the service story. */
+.introduction {
+  background: var(--color-canvas);
+}
+.identityIntro,
+.founderFeature,
+.questionsLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.identityAside p {
+  margin: 0 0 1rem;
+  color: var(--about-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 3rem 0 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--about-line);
+}
+.achievements > div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.6rem;
+}
+.achievements dt {
+  color: var(--about-muted);
+  font-size: 0.9375rem;
+}
+.achievements dd {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.founderFeature h2,
+.questionsLayout h2 {
+  margin: 0.75rem 0 1rem;
+  font-size: var(--type-section-title-size);
+  line-height: var(--type-section-title-line);
+}
+.founderFeature .textLink {
+  margin-top: 1rem;
+}
+.founderFeature blockquote {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-lora-loaded), Georgia, serif;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.4;
+}
+.questionsLayout > div > .textLink {
+  margin-top: 1rem;
+}
+.questions details {
+  border-bottom: 1px solid var(--about-line);
+}
+.questions summary {
+  padding: 1.25rem 0;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.questions details p {
+  margin: 0 0 1.5rem;
+  color: var(--about-muted);
+  line-height: 1.75;
+}
+.page :is(a, summary):focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 5px;
+}
+.page section[id] {
+  scroll-margin-top: calc(var(--site-nav-offset) + 1.5rem);
+}
+@media (max-width: 767px) {
+  .identityIntro,
+  .founderFeature,
+  .questionsLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .achievements {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .achievements > div {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .achievements dt {
+    max-width: 22ch;
+  }
+  .textLink {
+    white-space: normal;
+  }
+}
+
+.storyIntroduction {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 0 4rem;
+  align-items: start;
+}
+.storyIntroduction > .eyebrow {
+  grid-column: 1 / -1;
+}
+.storyIntroduction h2 {
+  margin-top: 0.8rem;
+  font-size: var(--type-section-title-size);
+  line-height: var(--type-section-title-line);
+}
+.storyLead {
+  margin-top: 0.8rem;
+  color: var(--about-muted);
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+.storyNarrative {
+  max-width: 68ch;
+  margin: 2rem 0 0 auto;
+}
+.storyNarrative p {
+  color: var(--about-muted);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+.storyNarrative p + p {
+  margin-top: 1.25rem;
+}
+.craftLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 3rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+.craftPhoto {
+  position: sticky;
+  top: calc(var(--site-nav-offset) + 1rem);
+  aspect-ratio: 4 / 5;
+  margin: 0;
+}
+.decisions {
+  border-top: 1px solid var(--about-line);
+}
+.decisions article {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--about-line);
+}
+.decisions h3,
+.valuesGrid h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.45;
+  font-weight: 650;
+}
+.decisions p,
+.valuesGrid p {
+  margin: 0.65rem 0 0;
+  color: var(--about-muted);
+  line-height: 1.75;
+}
+.decisions .decisionQuestion {
+  color: var(--about-ink);
+  font-weight: 600;
+}
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--about-line);
+}
+.valuesGrid article {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--about-line);
+}
+@media (max-width: 767px) {
+  .storyIntroduction,
+  .craftLayout,
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+  .storyIntroduction {
+    gap: 0.5rem;
+  }
+  .storyNarrative {
+    margin-top: 1.5rem;
+  }
+  .craftPhoto {
+    position: relative;
+    top: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.routeNavigation {
+  padding-block: 1.25rem 0;
+}
+.pageIndex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.25rem;
+  padding-block: 1rem;
+  font-size: 0.875rem;
+}
+.pageIndex > span {
+  color: var(--about-muted);
+}
+.pageIndex a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.figuresNote {
+  margin: 1rem 0 0;
+  color: var(--about-muted);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.figuresNote a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.peopleDetail {
+  margin-top: 1.25rem;
+  color: var(--about-muted);
+  line-height: 1.8;
+}
+.peopleCopy > .textLink {
+  display: flex;
+  width: fit-content;
+  white-space: normal;
+}
+.peoplePhoto {
+  padding-bottom: 2.75rem;
+  aspect-ratio: auto;
+}
+.peoplePhoto .peopleImageFrame {
+  position: relative !important;
+  aspect-ratio: 4 / 3;
+}
+.peoplePhoto figcaption {
+  position: static;
+  margin-top: 0.75rem;
+  color: var(--about-muted);
+  line-height: 1.6;
+  text-shadow: none;
+}
+.enquiryAnchor,
+.page [id] {
+  scroll-margin-top: calc(var(--site-nav-offset) + 1.5rem);
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .standardLayout,
+  .peopleLayout,
+  .identityIntro,
+  .founderFeature,
+  .questionsLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .craftLayout {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: 2rem;
+  }
+}
+@media (max-width: 767px) {
+  .pageIndex {
+    gap: 0.1rem 1rem;
+  }
+  .pageIndex > span {
+    flex-basis: 100%;
+  }
+  .concern,
+  .need,
+  .processList li {
+    padding-inline: 0;
+  }
+  .need h3 {
+    margin-top: 0;
+  }
+  .peoplePhoto {
+    padding-bottom: 0;
+  }
+  .legalIdentity {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+  .legalIdentity strong {
+    overflow-wrap: anywhere;
   }
 }

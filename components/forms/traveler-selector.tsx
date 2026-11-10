@@ -1,6 +1,6 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "@/components/icons/symbols";
 
 import { iconButtonStyles } from "@/components/ui/button-styles";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Trash2 } from "lucide-react";
+import { ArrowUpRight, Trash2 } from "@/components/icons/symbols";
 import Link from "next/link";
 
 import { CtaButton } from "@/components/cta";

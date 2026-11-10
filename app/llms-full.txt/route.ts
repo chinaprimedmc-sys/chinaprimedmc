@@ -292,7 +292,7 @@ Operating note: ${day.guideNote ?? "Final timing is confirmed for the travel dat
 Canonical product URL: ${tourUrl}
 Product identifier: ${tour.slug}
 Published: ${tour.publishedAt ?? "Date not separately stated"}
-Last itinerary and price-basis review: ${tour.updatedAt ?? "Date not separately stated"}
+Content last updated: ${tour.updatedAt ?? "Date not separately stated"}
 Brand: ${siteConfig.name}
 Provider and seller: ${siteConfig.operator.englishReferenceName}
 Duration: ${tour.duration}
@@ -301,14 +301,14 @@ Journey format: Private, tailor-made, no compulsory shopping stops
 Pace: ${pace}
 Suitable for: ${audience}
 
-## Price and availability
+${tour.overview.answer ? `## Product summary\n\n${tour.overview.answer}\n\n` : ""}${tour.overview.practicalities?.length ? `## Practical details\n\n${tour.overview.practicalities.map(({ label, value }) => `- ${label}: ${value}`).join("\n")}\n\n` : ""}## Price and availability
 
 ${pricing.fromUsd === undefined ? "Price: Available by written proposal for your travel dates and party." : `Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} ${pricing.pricingUnit === "per-person" ? "per person" : `per private group of ${pricing.basePartySize}`}`}
 Price basis: ${pricing.basis}
-Typical tailored range: ${pricing.finalPriceNote}
+Pricing conditions: ${pricing.finalPriceNote}
 Additional pricing note: ${pricing.additionalNote ?? "No additional published pricing note."}
 Availability status: Date-specific; subject to written supplier confirmation
-Price status: Indicative until dates, hotel availability, room categories, transport inventory and services are confirmed in a written proposal
+Price status: ${pricing.fromUsd === undefined ? "Quote only; no public numerical starting price." : "Published starting price subject to the stated basis."} Exact dates, party, tickets, transport and included services are confirmed in a written proposal.
 
 ## Included in the published design
 
@@ -318,7 +318,7 @@ ${tour.included.map((item) => `- ${item}`).join("\n")}
 
 ${tour.excluded.map((item) => `- ${item}`).join("\n")}
 
-## Day-by-day itinerary
+${tour.visitOptions ? `## Ways to visit\n\n${tour.visitOptions.intro}\n\n${tour.visitOptions.options.map((option) => `### ${option.title}\n\n${option.description}\nWalking: ${option.walking}\nQuote: ${option.priceNote}`).join("\n\n")}\n\n${tour.visitOptions.note}\n\n` : ""}## Day-by-day itinerary
 
 ${itinerary}
 
@@ -330,7 +330,7 @@ ${tour.faqs.map((faq) => `### ${faq.question}\n\n${faq.answer}`).join("\n\n")}
 
 ${evidence.map(([label, path]) => `- ${label}: ${new URL(path, siteConfig.url).toString()}`).join("\n")}
 
-## Contact and next step
+${tour.planningResources?.length ? `## Additional planning resources\n\n${tour.planningResources.map(({ label, href, description }) => `- ${label}: ${new URL(href, siteConfig.url)} — ${description}`).join("\n")}\n\n` : ""}## Contact and next step
 
 - Request a private proposal: ${siteConfig.url}/start-planning?journey=${tour.slug}
 - Product page: ${tourUrl}

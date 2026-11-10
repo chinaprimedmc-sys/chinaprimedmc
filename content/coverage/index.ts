@@ -258,8 +258,8 @@ const regions: Region[] = [
       {
         title: "Guilin and Yangshuo",
         body: "The Li River, limestone peaks and countryside, best seen by cruise and bamboo raft.",
-        href: "/tours/guilin-yangshuo-li-river-cruise-private-day-tour",
-        linkLabel: "See the Li River day",
+        href: "/destinations/guilin",
+        linkLabel: "Guilin & Yangshuo guide",
       },
       {
         title: "Guangzhou",

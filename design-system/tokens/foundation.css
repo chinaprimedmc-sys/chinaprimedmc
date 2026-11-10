@@ -16,6 +16,7 @@
   --color-on-dark: #ffffff;
   --color-on-dark-muted: #d9dcde;
   --color-focus: #25292c;
+  --gallery-scrim: rgba(18, 16, 13, 0.6);
 
   /* 兼容现有变量；新组件只使用上面的语义色。 */
   --bg-primary: var(--color-surface);
@@ -101,22 +102,38 @@
   --radius-control: 2px;
   --radius-surface: 2px;
   --radius-feature: 2px;
-  --radius-pill: 2px;
+  --radius-pill: 999px;
+  --radius-editorial: 0.5rem;
+  --aspect-content-photo: 3 / 4;
   --radius-card: var(--radius-feature);
+  /* Chrome controls use a capsule silhouette; content surfaces keep the existing corner scale. */
+  --radius-glass-control: var(--radius-pill);
   --border-subtle: 1px solid var(--color-line);
   --border-strong: 1px solid var(--color-line-strong);
   --shadow-small: 0 1px 2px rgba(26, 24, 22, 0.05);
   --shadow-medium: 0 10px 28px rgba(26, 24, 22, 0.07);
   --shadow-large: 0 18px 48px rgba(26, 24, 22, 0.1);
-  --glass-surface: rgba(255, 255, 255, 0.62);
-  --glass-surface-strong: rgba(255, 255, 255, 0.8);
-  --glass-surface-subtle: rgba(255, 255, 255, 0.42);
-  --glass-border: rgba(255, 255, 255, 0.78);
-  --glass-line: rgba(121, 132, 140, 0.2);
-  --glass-blur: 24px;
+  /* Web approximation of Liquid Glass, with solid fallbacks for unsupported or reduced transparency. */
+  --glass-surface: rgba(255, 255, 255, 0.72);
+  --glass-surface-strong: rgba(255, 255, 255, 0.9);
+  --glass-surface-subtle: rgba(255, 255, 255, 0.5);
+  --glass-surface-over-image: rgba(20, 24, 25, 0.72);
+  --glass-control-over-image: rgba(20, 24, 25, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.82);
+  --glass-border-over-image: rgba(255, 255, 255, 0.36);
+  --glass-line: rgba(31, 74, 69, 0.2);
+  --glass-blur: 20px;
+  --glass-filter: blur(var(--glass-blur)) saturate(135%);
+  --glass-highlight: rgba(255, 255, 255, 0.72);
   --shadow-glass:
     0 20px 54px rgba(31, 42, 49, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.94),
     inset 0 -1px 0 rgba(93, 109, 119, 0.08);
+  --shadow-glass-chrome:
+    0 8px 28px rgba(26, 34, 38, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -1px 0 rgba(26, 34, 38, 0.05);
+  --shadow-glass-chrome-over-image:
+    0 8px 28px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
   --button-glass-shadow:
     0 8px 24px rgba(31, 42, 49, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.96),
     inset 0 -1px 0 rgba(93, 109, 119, 0.08);
@@ -142,8 +159,29 @@
   --motion-content: 360ms;
   --motion-image: 480ms;
 
-  --site-nav-offset: 4rem;
-  --mobile-sticky-cta-height: 0px;
+  --site-nav-height: 3.5rem;
+  --site-nav-offset: var(--site-nav-height);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root {
+    --glass-surface: var(--color-surface);
+    --glass-surface-strong: var(--color-surface);
+    --glass-surface-subtle: var(--color-surface);
+    --glass-surface-over-image: var(--color-night);
+    --glass-filter: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root {
+    --glass-surface: var(--color-surface);
+    --glass-surface-strong: var(--color-surface);
+    --glass-surface-subtle: var(--color-surface);
+    --glass-surface-over-image: var(--color-night);
+    --glass-control-over-image: var(--color-night);
+    --glass-filter: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -167,6 +205,7 @@
 @media (min-width: 1024px) {
   :root {
     --page-gutter: 2.75rem;
+    --site-nav-height: 4rem;
   }
 }
 
@@ -191,7 +230,6 @@
     --space-section-compact: 3rem;
     --space-section-default: 4rem;
     --space-section-spacious: 4.5rem;
-    --site-nav-offset: 4rem;
   }
 }
 

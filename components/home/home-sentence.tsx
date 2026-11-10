@@ -7,7 +7,7 @@
  * 不负责：筛选结果本身，由 /tours 渲染。
  */
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/icons/symbols";
 import Link from "next/link";
 import { useState } from "react";
 

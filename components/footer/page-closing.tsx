@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail } from "@/components/icons/symbols";
 import { TrackedLink } from "@/components/cta/tracked-link";
 import { WhatsAppIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";

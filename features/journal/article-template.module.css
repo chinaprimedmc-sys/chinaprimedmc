@@ -421,7 +421,7 @@
 
 .figureFrame {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: var(--aspect-content-photo);
   overflow: hidden;
   border-radius: var(--radius-surface);
   background: var(--color-surface-muted);
@@ -869,38 +869,22 @@
   .mobileReader {
     position: sticky;
     z-index: 38;
-    top: var(--site-nav-offset);
+    top: var(--site-nav-height);
     display: block;
     padding: 0.55rem var(--page-gutter) 0;
     pointer-events: none;
-    transition: top 220ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .mobileReader[data-docked="true"] {
-    top: max(0.35rem, env(safe-area-inset-top));
-  }
-
-  :global(html[data-journal-reader-active="true"]) .page :global([data-global-navigation="true"]) {
-    opacity: 0;
-    transform: translateY(-0.75rem);
-    pointer-events: none;
-  }
-
-  .page :global([data-global-navigation="true"]) {
-    transition:
-      opacity 180ms ease,
-      transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .mobileReaderShell {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(218, 223, 221, 0.9);
-    border-radius: var(--radius-surface);
-    background: rgba(255, 255, 255, 0.92);
+    border-radius: var(--radius-pill);
+    background: var(--glass-surface-strong);
     box-shadow: 0 0.55rem 1.8rem rgba(20, 28, 25, 0.09);
     pointer-events: auto;
-    backdrop-filter: blur(22px) saturate(128%);
+    -webkit-backdrop-filter: var(--glass-filter);
+    backdrop-filter: var(--glass-filter);
     transition:
       border-radius 200ms ease,
       box-shadow 200ms ease,
@@ -929,7 +913,7 @@
     width: 2.75rem;
     height: 2.75rem;
     border: 0;
-    border-radius: var(--radius-surface);
+    border-radius: var(--radius-pill);
     background: transparent;
     color: var(--article-ink);
     font: inherit;
@@ -1640,7 +1624,7 @@
 .relatedThumb {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: var(--aspect-content-photo);
   margin-bottom: 0.4rem;
   overflow: hidden;
   background: var(--rule);
@@ -1710,7 +1694,7 @@
   font-size: 1.125rem;
 }
 .invitationAction {
-  border-radius: 0 !important;
+  border-radius: var(--radius-pill) !important;
   background: var(--ivory) !important;
   color: var(--ink) !important;
   font-family: var(--label);
@@ -1762,7 +1746,7 @@
   }
 }
 
-/* Mobile reading comfort, table scroll indicator and sticky tour bar */
+/* Mobile reading comfort and table scroll indicator. */
 .tableWrap {
   scrollbar-width: thin;
   scrollbar-color: #3b3731 #ebe8e1;
@@ -1777,88 +1761,10 @@
   border-radius: 3px;
   background: #3b3731;
 }
-.stickyCta {
-  display: none;
-}
 @media (max-width: 768px) {
   .blocks > p,
   .blocks li {
     font-size: clamp(17px, 4.4vw, 18px);
     line-height: 1.65;
-  }
-  .stickyCta {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 90;
-    display: flex;
-    align-items: stretch;
-    border-top: 1px solid var(--article-line);
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(10px);
-    padding-bottom: env(safe-area-inset-bottom);
-    opacity: 0;
-    pointer-events: none;
-    translate: 0 100%;
-    transition:
-      opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-      translate 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .stickyCta[data-visible="true"] {
-    opacity: 1;
-    pointer-events: auto;
-    translate: 0 0;
-  }
-  .stickyCta a {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    min-width: 0;
-    min-height: 60px;
-    padding: 8px 4px 8px var(--page-gutter);
-    color: inherit;
-    text-decoration: none;
-  }
-  .stickyCta a span {
-    display: grid;
-    min-width: 0;
-  }
-  .stickyCta small {
-    color: #6b665d;
-    font-size: 12px;
-  }
-  .stickyCta strong {
-    overflow: hidden;
-    font-size: 14px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .stickyCta a b {
-    display: inline-flex;
-    flex: none;
-    align-items: center;
-    min-height: 44px;
-    padding: 0 18px;
-    border-radius: 999px;
-    background: #12100d;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .stickyCta button {
-    flex: none;
-    width: 48px;
-    border: 0;
-    background: none;
-    color: #6b665d;
-    cursor: pointer;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .stickyCta {
-    transition: none;
   }
 }

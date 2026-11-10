@@ -63,9 +63,14 @@
   width: 170px;
 }
 
-.heroImage,
 .featured > div,
 .grid article > div {
+  aspect-ratio: var(--aspect-content-photo);
+  background: #eceeef;
+  border-radius: var(--radius-surface);
+}
+
+.heroImage {
   aspect-ratio: 16 / 11;
   background: #eceeef;
   border-radius: var(--radius-surface);
@@ -104,7 +109,7 @@
 }
 
 .grid article > div {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: var(--aspect-content-photo);
   border-radius: var(--radius-surface);
 }
 

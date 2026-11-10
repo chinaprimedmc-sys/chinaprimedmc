@@ -44,38 +44,88 @@ export const privateShanghaiDayTour: Tour = {
   slug: "private-shanghai-day-tour-guide-driver",
   visualStatus: "ready",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-08-21",
-  title: "Private Shanghai in One Day, Guide and Driver Included",
+  updatedAt: "2026-11-10",
+  title: "Private Shanghai Day Tour with Guide and Driver",
   subtitle:
-    "A private guide and vehicle connect Yu Garden, the Old City, a Huangpu ferry, the Bund and the former French Concession from your Shanghai hotel, without shopping stops or transport guesswork.",
+    "See Yu Garden, the Bund and the former French Concession with your own guide and driver. Central Shanghai hotel pickup, garden admission and one public Huangpu ferry crossing are included; lunch, tower tickets and evening cruises are optional.",
   duration: "1 Day · Private · About 8 hours",
+  durationIso: "PT8H",
   route: "Shanghai hotel · Old City · Bund · Former French Concession · Shanghai hotel",
   styles: ["Culture", "Food", "Family", "Photography"],
   hero: {
     eyebrow: "Private Shanghai day tour · guide, driver and Yu Garden admission · no shopping",
     image: lujiazui,
-    primary: { label: "Check My Date", href: "#inquiry" },
-    secondary: { label: "See What Is Included", href: "#price" },
+    primary: { label: "Check My Date", href: "#enquiry" },
+    secondary: { label: "See What Is Included", href: "#included" },
   },
   seo: {
-    title: "Private Shanghai Day Tour with Guide & Driver",
+    title: "Private Shanghai Day Tour with Guide and Driver",
     description:
-      "Private Shanghai day tour with hotel pickup, multilingual guide and driver, Yu Garden, the Bund, Huangpu ferry and no shopping stops.",
+      "See Yu Garden, the Bund and the former French Concession on a private Shanghai day tour with hotel pickup, your own guide and driver, and a public ferry crossing.",
+    preserveCopy: true,
     keywords: [
       "private Shanghai day tour",
       "Shanghai private tour with guide and driver",
-      "Shanghai one day private tour",
-      "Shanghai hotel pickup private tour",
+      "Shanghai one day tour with hotel pickup",
       "Yu Garden Bund French Concession tour",
-      "Shanghai private tour no shopping",
-      "Shanghai tour for families",
-      "Shanghai tour for first time visitors",
+      "Shanghai private tour English speaking guide",
     ],
   },
   overview: {
     pitch:
-      "Shanghai is easy to underestimate from a map: Yu Garden's lanes, the Bund, the river crossing and the former French Concession are each simple alone, but inefficient when a first-time visitor has to solve tickets, traffic, meeting points and what is actually worth seeing between them. This private day begins at your central Shanghai hotel. Your multilingual guide, private vehicle and Yu Garden admission are arranged before you leave. You will move from the older, intimate side of the city to the riverfront and then into leafy former-concession streets, using the public Huangpu ferry for the perspective it gives rather than treating it as a transfer problem. There are no compulsory shopping stops.",
+      "Start with the garden and Old City, compare the Bund with Pudong across the Huangpu River, then slow down on the tree-lined streets of the former French Concession. Your guide connects the history and daily life behind these places while your driver handles the transfers. The route leaves room for lunch and pauses; adding a tower visit or an evening cruise means choosing what to replace or extending the service window.",
+    answer:
+      "This private Shanghai day tour is an approximately eight-hour city sightseeing tour for one booking party, with a private guide, a separate driver and central-hotel pickup and return. It connects Yu Garden (Yuyuan Garden), the Old City, the Bund, one public Huangpu River ferry crossing and the former French Concession. Yu Garden admission and the ferry fare are included. Lunch, Shanghai Tower and an evening sightseeing cruise are separate; airport and cruise-port pickups require a different written quote.",
+    practicalities: [
+      {
+        label: "Duration",
+        value:
+          "About 8 hours from central-hotel pickup to return; the service window is confirmed in writing.",
+      },
+      {
+        label: "Private service",
+        value:
+          "Your own guide and a separate driver with an air-conditioned vehicle; public attractions and the ferry are shared.",
+      },
+      {
+        label: "Pickup area",
+        value:
+          "Central Shanghai hotels. Pudong (PVG), Hongqiao (SHA), railway stations and Wusongkou cruise-port transfers are quoted separately.",
+      },
+      {
+        label: "Guide language",
+        value:
+          "Request an English-speaking guide or another available language; date-specific availability is confirmed before booking.",
+      },
+      {
+        label: "Included tickets",
+        value:
+          "Yu Garden interior admission and one ordinary Huangpu public-ferry crossing, subject to operation.",
+      },
+      {
+        label: "Optional experiences",
+        value:
+          "Lunch, Shanghai Tower observation-deck tickets and an evening sightseeing cruise are separate unless listed in your written quote.",
+      },
+      {
+        label: "Walking and access",
+        value:
+          "Garden paths, steps, uneven paving and ferry boarding remain part of the visit; share mobility needs before confirmation.",
+      },
+      {
+        label: "Pricing and accommodation",
+        value: "One written total for your private party. No overnight accommodation is included.",
+      },
+    ],
     facts: [
+      {
+        label: "Suitable for",
+        value: "First-time Shanghai visitors who want a guided city day from their hotel",
+      },
+      {
+        label: "Pacing",
+        value: "Easy to moderate walking, with garden steps and public-ferry boarding",
+      },
       {
         label: "Time",
         value: "About 8 hours door to door",
@@ -84,7 +134,7 @@ export const privateShanghaiDayTour: Tour = {
       },
       {
         label: "Included",
-        value: "Private vehicle, multilingual guide, Yu Garden admission and Huangpu ferry",
+        value: "Private vehicle, guide, Yu Garden admission and public Huangpu ferry",
         helper:
           "Pickup and return are included at hotels in Shanghai's main central districts. Airport, cruise-port and distant locations are priced before booking.",
       },
@@ -124,7 +174,7 @@ export const privateShanghaiDayTour: Tour = {
       days: "Morning",
       title: "See Shanghai before the towers, in a garden and lanes built to slow you down",
       description:
-        "Enter Yu Garden with admission already arranged, then follow your guide through the Old City context around it. This is the intimate, older Shanghai of pavilions, rockwork, bridges, temple roofs, shop signs and food scents, not a generic photo stop.",
+        "Enter the ticketed interior of Yu Garden (also called Yuyuan Garden) with admission arranged, then explore the surrounding Old City and Yuyuan Bazaar with your guide. This is the intimate, older Shanghai of pavilions, rockwork, bridges, shop signs and food scents, not a generic photo stop.",
       see: "A classical Chinese garden and the dense historic streets that show how the city looked before its modern skyline.",
       do: "Walk at a comfortable pace, hear why the garden was made, identify details you would otherwise pass, and choose a short independent snack stop if desired.",
       feel: "That Shanghai has a human scale and an older story before its famous modern image.",
@@ -176,7 +226,7 @@ export const privateShanghaiDayTour: Tour = {
       },
       {
         label: "04 · A guide for the whole day",
-        value: "One private multilingual guide stays responsible for the route",
+        value: "One private guide in the confirmed language stays responsible for the route",
         helper:
           "The guide explains the city and manages the practical transitions; this is not a driver-only transfer service.",
       },
@@ -224,7 +274,7 @@ export const privateShanghaiDayTour: Tour = {
       title: "Old Shanghai, riverfront contrast and a leafy final chapter",
       destination: "Shanghai",
       summary:
-        "Meet your private multilingual guide and vehicle at the confirmed Shanghai hotel. Begin in Yu Garden and the Old City, then move to the Bund and cross the Huangpu by public ferry for the river perspective. After independent lunch time or a pre-booked dining upgrade, continue through a walkable former French Concession neighborhood before a private return to the hotel. The exact sequence is adjusted around weather, traffic, opening hours and the group, while keeping these core Shanghai chapters intact.",
+        "Meet your private guide and vehicle at the confirmed Shanghai hotel. Begin in Yu Garden and the Old City, then move to the Bund and cross the Huangpu by public ferry for the river perspective. After independent lunch time or a pre-booked dining upgrade, continue through a walkable former French Concession neighborhood before a private return to the hotel. The exact sequence is adjusted around weather, traffic, opening hours and the group, with any unavailable core stop and proposed replacement explained before you agree.",
       image: lujiazui,
       hotel: "No overnight stay required · pickup and return at your Shanghai hotel",
       meals: ["Independent lunch time; curated Shanghainese lunch available as an upgrade"],
@@ -232,29 +282,40 @@ export const privateShanghaiDayTour: Tour = {
         "Private central-Shanghai hotel pickup and return, private vehicle during the confirmed service window, plus one Huangpu public-ferry crossing",
       activities: [
         {
-          title: "A confirmed hotel pickup",
+          title: "Central Shanghai hotel pickup",
+          time: "Around 09:00 · confirmed for your hotel",
           description:
             "Meet in your hotel lobby or another agreed central Shanghai address. The final operating message names the pickup time, guide contact and return arrangement.",
         },
         {
-          title: "Yu Garden and the Old City",
+          title: "Yu Garden (Yuyuan Garden) and the Old City",
+          time: "Morning · allow around 1.5–2 hours",
           description:
-            "Use the included Yu Garden admission, then explore the surrounding historic context with a guide who explains the garden, streets and details rather than simply leading a walk-through.",
+            "Enter the classical garden with the included admission, then explore a selected part of the surrounding Old City and Yuyuan Bazaar. Garden entry is distinct from a walk through the shopping streets outside. Opening and reservation conditions are checked for your date.",
         },
         {
-          title: "The Bund and Huangpu ferry",
+          title: "The Bund and one Huangpu public-ferry crossing",
+          time: "Late morning to early afternoon · allow around 1.5–2 hours including transfers",
           description:
-            "View the waterfront from the Bund, then take the included public ferry with your guide for the short, revealing cross-river perspective of Pudong and the historic city side.",
+            "Walk a section of the Bund to compare its historic west-bank buildings with the Pudong skyline. Your guide accompanies one ordinary public-ferry crossing when service permits. The driver coordinates the onward pickup on the arrival bank; a second crossing or sightseeing cruise is not implied.",
+        },
+        {
+          title: "Lunch break",
+          time: "Around midday · allow around 1 hour",
+          description:
+            "Keep lunch independent or request a pre-arranged Shanghainese meal. Food, drinks and any paid tasting are separate unless listed in your quote. Share allergies or dietary requirements before booking.",
         },
         {
           title: "Former French Concession at your pace",
+          time: "Afternoon · allow around 1–1.5 hours",
           description:
-            "Walk a selected leafy neighborhood with flexibility for coffee, a small snack, photographs or a shorter route when weather, energy or interests require it.",
+            "Explore a selected stretch of tree-lined streets and lane-house architecture in the former French Concession. Coffee and snacks are optional personal purchases. This is a public neighborhood walk, not guaranteed entry to residential lanes or private homes.",
         },
         {
-          title: "A private hotel return",
+          title: "Private hotel return",
+          time: "Around 17:00 · traffic permitting",
           description:
-            "Return directly to the confirmed central hotel address without shared-coach logistics or compulsory shopping stops.",
+            "Return to the agreed central hotel or address within the confirmed service window. The timing is illustrative; tell us about any train, flight, ship or evening reservation so we can assess a safe route and return margin before booking.",
         },
       ],
       guideNote:
@@ -276,8 +337,8 @@ export const privateShanghaiDayTour: Tour = {
   included: [
     "Private pickup and return at a Shanghai hotel in the main central districts; airport, cruise-port, out-of-area and non-standard locations are quoted before booking",
     "Private air-conditioned vehicle with professional driver for the confirmed service window",
-    "Private multilingual guide for the full confirmed sightseeing day",
-    "Yu Garden admission and one ordinary Huangpu public-ferry crossing",
+    "Private guide for the confirmed sightseeing day; English or another requested language subject to date-specific written confirmation",
+    "Yu Garden interior admission and one ordinary Huangpu public-ferry crossing (shared public services; subject to operation)",
     "Pre-trip review of your hotel address, date, group details, walking preferences and route priorities",
     "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
     "No compulsory shopping stops",
@@ -293,7 +354,7 @@ export const privateShanghaiDayTour: Tour = {
     {
       title: "Shanghai Tower, 118th-floor observation deck",
       description:
-        "Add advance-arranged Shanghai Tower observation-deck admission. The arrangement includes the ticket booking and itinerary coordination; it does not turn the day into an unlimited-hours extension.",
+        "Add advance-arranged Shanghai Tower observation-deck admission. The written quote states the ticket and timing. To fit it within about eight hours, shorten or replace a neighborhood stop, or separately confirm additional guide and vehicle hours. Skyline visibility depends on the weather.",
       badges: ["Advance arrangement"],
       image: lujiazui,
     },
@@ -307,8 +368,8 @@ export const privateShanghaiDayTour: Tour = {
     {
       title: "Huangpu River night-cruise extension",
       description:
-        "Extend the private day into the evening. This includes standard cruise tickets, private vehicle, guide assistance and up to 2.5 additional service hours; it is not only a boat-ticket markup.",
-      badges: ["Up to 4 guests", "Evening extension"],
+        "Extend the private day into the evening. Request a separate quote stating the sailing, standard shared-boat tickets, guide assistance, private return transfer and any additional service hours. A private boat charter is a different request.",
+      badges: ["Separately quoted", "Evening extension"],
       image: bundWaterfront,
     },
     {
@@ -394,54 +455,105 @@ export const privateShanghaiDayTour: Tour = {
     ],
   },
   gallery: shanghaiGallery.slice(1),
+  faqLimit: 17,
   faqs: [
     {
-      question: "What does the private-tour price include?",
+      question: "What can I see in Shanghai in one day on this private tour?",
       answer:
-        "Your written quote is for a private group and includes pickup and return within Shanghai's main central hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private multilingual guide, Yu Garden admission, one ordinary Huangpu public-ferry crossing, bottled water and no compulsory shopping stops. Lunch, Shanghai Tower, evening cruises and other upgrades are not included.",
+        "The core route covers Yu Garden and the surrounding Old City, the Bund, one ordinary Huangpu public-ferry crossing and a selected walk in the former French Concession. Plan about eight hours from central-hotel pickup to return, including transfers and a lunch break. The exact order follows opening conditions, traffic and your pace; any unavailable stop and replacement are explained.",
     },
     {
-      question: "How does group size affect the price?",
+      question: "Does the Shanghai day tour include hotel pickup and a private driver?",
       answer:
-        "Private-group pricing follows the size of your group and your pickup point, so the cost per guest usually falls as more people share the vehicle and guide. Your written quote shows the exact total for your date, group size, vehicle and hotel address. Optional experiences remain separate. Six guests may require a larger vehicle.",
+        "Yes. The core package includes pickup and return at a confirmed central Shanghai hotel, a private air-conditioned vehicle with a professional driver, and a separate private guide during the agreed service window. Send your full hotel address before booking. Airport, station, cruise-port and out-of-area transfers require a separate quote.",
     },
     {
-      question: "Is this a private tour or a shared group tour?",
+      question: "Can I book an English-speaking private guide in Shanghai?",
       answer:
-        "It is private for your booking party. You have your own vehicle, driver and multilingual guide during the confirmed service window. Yu Garden, the Bund, the ferry and public streets remain shared public places, so other visitors will be present.",
+        "Request an English-speaking guide when you inquire. Your written quote confirms the guide language and date-specific availability. Other languages can be requested subject to availability. This package includes both a guide and a separate driver; guide-only arrangements have a different scope and quote.",
     },
     {
-      question: "Can you collect us from the airport, cruise port or railway station?",
+      question: "Is Yu Garden admission included, or do we only visit Yuyuan Bazaar?",
       answer:
-        "Yes, where the timing and route are workable, but these are not priced the same as a central-hotel day because flight, train or ship timing, luggage, traffic and terminal or port access can change the service hours. Hongqiao, Pudong airport, railway-station and Wusongkou cruise-port transfers are quoted separately, subject to the actual date and timing.",
+        "Admission to the ticketed interior of Yu Garden, also called Yuyuan Garden, is included. The surrounding Yuyuan Bazaar and Old City lanes are a separate public shopping area. Nearby temple admission, food and purchases are not automatically included. We check garden opening and ticket arrangements for your date; if access is unavailable, a replacement is explained before confirmation.",
     },
     {
-      question: "Is lunch included?",
+      question: "Is the Huangpu River ferry a private sightseeing cruise?",
       answer:
-        "No. The base price stays clear and does not force every guest into a tourist lunch. You can keep independent lunch time, ask your guide for a practical suggestion, or add the pre-arranged curated Shanghainese lunch. Drinks are separate unless the written menu says otherwise.",
+        "No. The included river experience is one ordinary public-ferry crossing with your guide, shared with other passengers. It is a short transport crossing, not a narrated cruise, private charter or evening skyline cruise. The boarding point and onward vehicle pickup are coordinated for the operating route. Ferry service, queues and boarding conditions can change.",
     },
     {
-      question: "How is the Huangpu night-cruise upgrade priced?",
+      question: "Is this a private Shanghai tour or a small-group departure?",
       answer:
-        "The price is for an evening service extension, not just public cruise tickets. It includes standard cruise tickets for up to four guests, private vehicle, guide assistance and up to 2.5 additional service hours. The exact sailing, operator price and timing are confirmed before booking; premium cabin, dinner or private-charter products are not included unless quoted.",
+        "The guide, vehicle and driver are private to your booking party. You do not join a scheduled group of other tour guests. Yu Garden, the Bund, public streets and the public ferry are shared with other visitors; private touring does not provide exclusive venue access or automatic priority entry.",
     },
     {
-      question: "Can this tour work for children or older travelers?",
+      question: "How much does a private Shanghai day tour cost for two people or a family?",
       answer:
-        "Often yes. The vehicle and private guide allow pauses and a shorter walking route, but Yu Garden and historic lanes still have uneven paving, steps, crowds and standing time. Share ages, mobility needs, heat sensitivity, strollers or wheelchairs before booking so we can state what can and cannot be responsibly adapted.",
+        "Request one total for your actual private party. The written quote states your date, adult and child numbers, vehicle, guide language, pickup and return addresses, service hours and any chosen extras. A two-person quote and a family quote may require different vehicle or ticket arrangements. No published starting price is currently verified for this tour; the total is confirmed before payment.",
     },
     {
-      question: "What happens if weather, crowds or venue access changes?",
+      question: "Can this be a Shanghai shore excursion from Wusongkou cruise port?",
       answer:
-        "Your guide adjusts the sequence where practical and explains the available alternative. Yu Garden, ferries, Shanghai Tower and cruises can change operation because of weather, capacity, safety, maintenance, reservation rules or public decisions. We do not promise empty lanes, a specific ferry sailing or a venue that has not been confirmed for your date.",
+        "Potentially, with a separately planned and quoted port pickup and return. Wusongkou cruise port is not a central-hotel pickup point. Send the ship name, date, port or terminal, earliest permitted disembarkation and required all-aboard time. The sightseeing route is reduced if necessary. Return margins and port access must be reviewed; a return-to-ship guarantee is not included.",
     },
     {
-      question: "How quickly can you confirm my date?",
+      question: "Can I take a Shanghai layover tour from Pudong or Hongqiao airport?",
       answer:
-        "Send your date, group size and Shanghai hotel through the form or WhatsApp. During China business hours, we aim to reply within one hour with an availability check, a practical pickup plan and any relevant supplement. A booking is confirmed only after the written proposal, required payment and supplier arrangements are confirmed in writing.",
+        "A separately quoted layover tour may be possible after the actual flight, airport, terminal, arrival process, luggage and onward check-in deadline are reviewed. The standard city day does not include Pudong (PVG) or Hongqiao (SHA) airport transfers. Scheduled layover length is not the same as usable sightseeing time. Confirm your eligibility to enter China using official immigration guidance; booking a tour does not grant entry.",
+    },
+    {
+      question: "Can we add Shanghai Tower and still finish in about eight hours?",
+      answer:
+        "Shanghai Tower observation-deck admission is optional. To keep the same service window, we may shorten or replace part of the neighborhood walk; otherwise additional guide, vehicle and driver hours need a separate quote. Tickets, opening conditions and visibility are checked for the chosen date. The tower is not automatically included with a Pudong skyline view.",
+    },
+    {
+      question: "Can we add a Huangpu River night cruise?",
+      answer:
+        "Yes, request an evening extension when you inquire. Your quote must state the cruise ticket type, sailing, extra guide and vehicle hours, and return arrangement. The standard day finishes around late afternoon and does not include an evening cruise. A standard sightseeing cruise is shared with other passengers; private charter, premium seating and dinner are separate requests.",
+    },
+    {
+      question: "Is lunch included, and are there compulsory shopping stops?",
+      answer:
+        "Lunch is separate unless a specific arranged meal appears in your written quote. You can take independent lunch time or request a restaurant plan with dietary requirements reviewed in advance. There are no compulsory factory, tea or sales stops. Walking through Yuyuan Bazaar does not create an obligation to shop; personal purchases, snacks and drinks are separate.",
+    },
+    {
+      question: "How much walking is involved for children or older travelers?",
+      answer:
+        "Expect walking and standing at Yu Garden, the Bund and the former French Concession, with possible steps, uneven paving, crowds and ferry boarding. Private transfers and shorter walks can help, but this is not a guaranteed step-free tour. Share child ages, stroller or wheelchair use, stairs and standing tolerance before booking; the route and ferry suitability are reviewed individually.",
+    },
+    {
+      question: "What happens if Yu Garden is closed, the ferry stops or it rains?",
+      answer:
+        "We check the date-specific plan and explain any unavailable stop before confirmation where known. If conditions change during the day, your guide discusses a revised sequence or alternative with you. An alternative paid admission, different transfer or extended service time is confirmed before an additional charge. Applicable change and cancellation terms are set out in your written booking terms; we do not promise a specific ferry sailing or venue operation.",
+    },
+    {
+      question: "How do I check availability and confirm the Shanghai tour?",
+      answer:
+        "Send your preferred date, party details, pickup and return addresses, guide language, main interests and any fixed departure deadline. We check guide, vehicle and ticket arrangements before sending a written proposal. An inquiry does not hold the date. Booking becomes binding only after the agreed terms, required payment and written booking and supplier confirmation.",
+    },
+  ],
+  planningResources: [
+    {
+      label: "Shanghai destination guide",
+      href: "/destinations/shanghai",
+      description: "Choose the city neighborhoods and experiences that matter most to you.",
+    },
+    {
+      label: "Private guide and driver services in China",
+      href: "/private-guide-and-driver-china",
+      description:
+        "Compare a planned sightseeing day with a guide-and-driver service built around your own route.",
+    },
+    {
+      label: "Shanghai official visitor information",
+      href: "https://english.shanghai.gov.cn/en-TravelinShanghai/index.html",
+      description:
+        "Use the municipal visitor portal for official travel information; date-specific venue and transport conditions still need confirmation.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
         title: "China, Considered: Beijing, Xi'an & Shanghai",
@@ -466,11 +578,17 @@ export const privateShanghaiDayTour: Tour = {
     ],
     destinations: [],
   },
+  inquiryChecklist: [
+    "Preferred date, number of adults and children's ages",
+    "Hotel or pickup address, return point and any fixed departure deadline",
+    "Preferred guide language and main sightseeing interests",
+    "Walking, ferry boarding, dietary and luggage requirements",
+    "Optional lunch, Shanghai Tower or evening cruise; flight or ship details for terminal pickups",
+  ],
   inquiry: {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Private%20Shanghai%20Day%20Tour&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20to%20check%20a%20private%20Shanghai%20day%20tour.%0A%0ADate%3A%0ANumber%20of%20guests%20and%20ages%20if%20children%3A%0AShanghai%20hotel%20or%20pickup%20address%3A%0AAny%20airport%2C%20cruise-port%20or%20evening%20connection%3A%0AOptional%20experiences%20of%20interest%3A%0AAny%20mobility%2C%20dietary%20or%20other%20considerations%3A%0A",
-    whatsappHref:
-      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20check%20a%20private%20Shanghai%20day%20tour.%20My%20date%2C%20group%20size%20and%20Shanghai%20hotel%20are%3A",
+    whatsappHref: `https://wa.me/8618027438191?text=${encodeURIComponent("Hello AVIORA, I would like a private-group quote for the Shanghai day tour.\nPreferred date:\nAdults and children (with ages):\nHotel / pickup address:\nReturn address and fixed departure deadline:\nPreferred guide language:\nPriorities: Yu Garden / Bund / former French Concession\nOptional: Shanghai Tower / lunch / evening cruise\nWalking, ferry boarding, dietary or luggage needs:\nIf airport or cruise port: flight / ship / terminal and arrival / departure details:")}`,
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage: "I would like to check a private Shanghai day tour from my Shanghai hotel.",
   },

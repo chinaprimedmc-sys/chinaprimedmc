@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { AboutNavigation } from "@/components/about/about-navigation";
+import { TravelTradeNote } from "@/components/about/travel-trade-note";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
@@ -54,25 +56,40 @@ export default function FounderPage() {
             jobTitle: founder.jobTitle,
             worksFor: { "@id": `${siteConfig.url}/#organization` },
             description:
-              "Founder of AVIORA China, a licensed China-based operator of private, tailor-made journeys for international travelers.",
+              "Founder of AVIORA China Travel, focused on private, tailor-made journeys for international visitors.",
           },
         }}
       />
 
       <SiteNavigation />
 
+      <div className={styles.routeNavigation}>
+        <AboutNavigation current="/about/founder" />
+      </div>
       <header className={styles.hero}>
-        <p className={styles.eyebrow}>The person behind the journey</p>
-        <h1>
-          A message from <em>our founder.</em>
-        </h1>
+        <p className={styles.eyebrow}>A letter from our founder</p>
+        <h1>{founder.name}</h1>
         <p className={styles.byline}>
-          <strong>{founder.name}</strong>
           {founder.jobTitle}, {founder.organization}
         </p>
+        <p className={styles.profileIntro}>
+          Guohui Shi founded AVIORA around a straightforward belief: travel should help you discover
+          a place, not leave you occupied with managing it. His letter explores what it takes to
+          make a journey through China feel personal, considered and well supported.
+        </p>
+        <nav className={styles.letterNav} aria-label="In this letter">
+          <p>In this letter</p>
+          <ul>
+            {founder.sections.map((section) => (
+              <li key={section.id}>
+                <a href={`#${section.id}`}>{section.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </header>
 
-      <article className={styles.letter}>
+      <article id="founder-letter" className={styles.letter} aria-label="A letter from Guohui Shi">
         <section className={`${styles.body} ${styles.lead}`} aria-label="Introduction">
           <span aria-hidden="true" />
           <div className={styles.text}>
@@ -83,8 +100,13 @@ export default function FounderPage() {
         </section>
 
         {founder.sections.map((section) => (
-          <section key={section.title} className={styles.body}>
-            <h2>{section.title}</h2>
+          <section
+            id={section.id}
+            key={section.id}
+            className={styles.body}
+            aria-labelledby={`${section.id}-title`}
+          >
+            <h2 id={`${section.id}-title`}>{section.title}</h2>
             <div className={styles.text}>
               {section.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
@@ -114,6 +136,9 @@ export default function FounderPage() {
         </div>
       </section>
 
+      <div className={styles.tradeRecord}>
+        <TravelTradeNote id="founder-trade-record" showImage />
+      </div>
       <SiteFooter />
     </main>
   );

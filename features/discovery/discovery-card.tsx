@@ -19,7 +19,7 @@ export function DiscoveryCard({ item }: { item: DiscoveryItem }) {
             height={item.image.height ?? 680}
             sizes="(min-width:1024px) 280px, 100vw"
             objectPosition={item.image.objectPosition}
-            frameClassName="aspect-[4/3]"
+            frameClassName="aspect-portrait"
             className="h-full w-full"
           />
         </Link>

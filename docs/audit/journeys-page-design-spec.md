@@ -179,7 +179,7 @@ Four quiet blocks, each one screen or less: **How it works** (4 steps in a row) 
 
 ### 4.4 Persistent actions
 
-- Existing bottom bar kept: **Plan my journey** (primary) and a WhatsApp button, with safe-area padding.
+- No fixed mobile bottom action bar. Planning links stay in page flow and in the top navigation; one compact contact control floats above the device safe area.
 - The "design it for me" card is the 7th item in the list, same as desktop.
 
 ### 4.5 Mobile-specific details

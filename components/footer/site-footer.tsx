@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Mail } from "lucide-react";
+import { Facebook, Instagram, Mail } from "@/components/icons/symbols";
 
 import { CookiePreferencesButton } from "@/components/privacy/cookie-preferences-button";
 import { siteConfig } from "@/config/site";

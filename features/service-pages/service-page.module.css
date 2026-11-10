@@ -107,6 +107,7 @@
   margin-top: 34px;
 }
 .button {
+  border-radius: var(--radius-pill);
   display: inline-block;
   padding: 17px 30px;
   border: 1px solid #fff;

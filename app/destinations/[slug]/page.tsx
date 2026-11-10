@@ -1,3 +1,4 @@
+import { destinationPlanningGuides } from "@/content/destinations/planning-guides";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -12,6 +13,7 @@ import {
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo/schema";
+import { explorerDestinations, journeyIncludesDestination } from "@/content/destinations/explorer";
 import { journeyCatalog } from "@/content/tours/catalog";
 
 type DestinationPageProps = { params: Promise<{ slug: string }> };
@@ -48,6 +50,8 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
     getPublicSiteSettings(),
   ]);
   if (!destination) notFound();
+  const sourceDestination = explorerDestinations.find((item) => item.id === slug)!;
+  const guide = destinationPlanningGuides[slug];
   const url = new URL(`/destinations/${slug}`, siteConfig.url).toString();
 
   return (
@@ -56,7 +60,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
         id={`${slug}-webpage-schema`}
         data={webPageSchema({
           url,
-          name: `${destination.name} Private Travel | AVIORA`,
+          name: destination.seoTitle,
           description: destination.seoDescription,
           about: { "@id": `${url}#destination` },
         })}
@@ -78,12 +82,31 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
             ? new URL(destination.heroImage.src, siteConfig.url).toString()
             : undefined,
           touristType: destination.bestFor.split(",").map((item) => item.trim()),
-          containsPlace: destination.highlights.map((highlight) => ({
+          containsPlace: guide?.attractions.map((name) => ({
             "@type": "TouristAttraction",
-            name: highlight,
+            name,
           })),
         }}
       />
+      {guide ? (
+        <JsonLd
+          id={`${slug}-journey-list-schema`}
+          data={{
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "@id": `${url}#private-journeys`,
+            name: `Private tours including ${destination.name}`,
+            mainEntityOfPage: { "@id": `${url}#webpage` },
+            numberOfItems: guide.products.length,
+            itemListElement: guide.products.map((product, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: product.label,
+              url: new URL(`/tours/${product.slug}`, siteConfig.url).toString(),
+            })),
+          }}
+        />
+      ) : null}
       <JsonLd
         id={`${slug}-breadcrumb-schema`}
         data={breadcrumbSchema([
@@ -108,7 +131,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
         destination={destination}
         destinations={destinations}
         journeys={journeyCatalog.filter((journey) =>
-          journey.destinationFilters.includes(destination.name),
+          journeyIncludesDestination(sourceDestination, journey),
         )}
         cta={{ label: "Plan My Trip", href: settings.primaryCtaHref }}
       />

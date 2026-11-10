@@ -1,7 +1,9 @@
 "use client";
 
-import { ArrowRight, Clock3 } from "lucide-react";
+import { ArrowRight, Clock3 } from "@/components/icons/symbols";
 import Link from "next/link";
+import { useState } from "react";
+import { destinationInterests, destinationRegions } from "@/content/destinations/explorer";
 
 import { CtaButton } from "@/components/cta";
 import { OptimizedImage } from "@/components/media/optimized-image";
@@ -11,6 +13,8 @@ export type CmsDestinationCard = {
   slug: string;
   name: string;
   region: string;
+  regionId?: string;
+  relatedDestinationIds?: string[];
   kicker: string;
   summary: string;
   recommendedStay: string;
@@ -53,12 +57,25 @@ export function DestinationExplorer({
   destinations: CmsDestinationCard[];
   journeys: JourneyPanelData[];
 }) {
+  const [region, setRegion] = useState("");
+  const [interest, setInterest] = useState("");
+  const filtered = destinations.filter(
+    (destination) =>
+      (!region || destination.regionId === region) &&
+      (!interest || destination.interests.includes(interest)),
+  );
+  const availableRegions = destinationRegions.filter((item) =>
+    destinations.some((destination) => destination.regionId === item.id),
+  );
   const beijing = destinations.find((destination) => destination.slug === "beijing");
   const shanghai = destinations.find((destination) => destination.slug === "shanghai");
 
   return (
     <div className="bg-white text-[var(--color-ink)]">
-      <section className="mx-auto grid w-full max-w-[85rem] items-center gap-12 px-[var(--page-gutter)] pt-32 pb-[var(--space-section-compact)] md:pt-40 lg:min-h-[52rem] lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+      <section
+        data-hero-layout="true"
+        className="mx-auto grid w-full max-w-[85rem] items-center gap-12 px-[var(--page-gutter)] pt-32 pb-[var(--space-section-compact)] md:pt-40 lg:min-h-[52rem] lg:grid-cols-[0.82fr_1.18fr] lg:gap-16"
+      >
         <div className="max-w-xl min-w-0">
           <p className="text-xs font-semibold text-[var(--color-muted)]">{content.heroEyebrow}</p>
           <h1 className="type-hero mt-6 max-w-full">{content.heroTitle}</h1>
@@ -83,7 +100,7 @@ export function DestinationExplorer({
         >
           <EditorialImage destination={beijing} aspect="aspect-video" priority />
           <div className="hidden min-w-0 sm:block">
-            <EditorialImage destination={shanghai} aspect="aspect-[3/4]" />
+            <EditorialImage destination={shanghai} aspect="aspect-portrait" />
           </div>
         </div>
       </section>
@@ -105,11 +122,79 @@ export function DestinationExplorer({
             </p>
           </div>
 
-          <div className="mt-14 grid gap-x-12 gap-y-20 md:grid-cols-2 lg:gap-x-20 lg:gap-y-28">
-            {destinations.map((destination, index) => (
+          <div className="mt-8 flex flex-wrap items-end gap-5">
+            <label className="grid min-w-48 flex-1 gap-2 text-sm font-semibold sm:flex-none">
+              Region
+              <select
+                value={region}
+                onChange={(event) => setRegion(event.target.value)}
+                className="min-h-12 rounded-[var(--radius-surface)] border border-[var(--color-line)] bg-white px-3 text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                <option value="">All regions</option>
+                {availableRegions.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="grid min-w-48 flex-1 gap-2 text-sm font-semibold sm:flex-none">
+              Travel interest
+              <select
+                value={interest}
+                onChange={(event) => setInterest(event.target.value)}
+                className="min-h-12 rounded-[var(--radius-surface)] border border-[var(--color-line)] bg-white px-3 text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                <option value="">All interests</option>
+                {destinationInterests.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {(region || interest) && (
+              <button
+                type="button"
+                onClick={() => {
+                  setRegion("");
+                  setInterest("");
+                }}
+                className="min-h-12 px-2 text-sm font-semibold underline underline-offset-4"
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
+          <p className="mt-5 text-sm text-[var(--color-copy)]" role="status" aria-live="polite">
+            {filtered.length} of {destinations.length} destination guides
+          </p>
+          {filtered.length === 0 && (
+            <div className="mt-8 border-t border-[var(--color-line)] py-8">
+              <h3 className="text-xl font-semibold">No guides match both choices.</h3>
+              <p className="mt-3 text-[var(--color-copy)]">
+                Try another region or interest, or explore our coverage across China.
+              </p>
+              <Link
+                href="/china-destinations"
+                className="mt-5 inline-block font-semibold underline underline-offset-4"
+              >
+                Explore all seven regions
+              </Link>
+            </div>
+          )}
+          <div className="mt-10 grid gap-x-12 gap-y-16 md:grid-cols-2 lg:gap-x-20 lg:gap-y-20">
+            {filtered.map((destination, index) => (
               <DestinationFeature key={destination.slug} destination={destination} index={index} />
             ))}
           </div>
+          <p className="mt-12 max-w-2xl text-base leading-7 text-[var(--color-copy)]">
+            Looking beyond these guides?{" "}
+            <Link href="/china-destinations" className="font-semibold underline underline-offset-4">
+              Explore all seven regions of China
+            </Link>{" "}
+            for more places we can include in a private route.
+          </p>
         </div>
       </section>
 
@@ -196,16 +281,12 @@ function DestinationFeature({
   destination: CmsDestinationCard;
   index: number;
 }) {
-  const portrait = (destination.heroImage?.height ?? 0) > (destination.heroImage?.width ?? 0);
-
   return (
     <Link
       href={`/destinations/${destination.slug}`}
       className={`group block ${index % 2 === 1 ? "md:mt-20" : ""}`}
     >
-      <span
-        className={`relative block overflow-hidden rounded-[var(--radius-surface)] bg-[#f3f4f4] ${portrait ? "aspect-[3/4] md:mx-auto md:w-[78%]" : "aspect-[3/2]"}`}
-      >
+      <span className="relative block aspect-[4/3] overflow-hidden rounded-[var(--radius-surface)] bg-[#f3f4f4]">
         <OptimizedImage
           src={destination.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"}
           alt={destination.heroImage?.alt ?? `${destination.name} destination guide`}
@@ -218,7 +299,7 @@ function DestinationFeature({
       <span className="mt-5 block border-t border-black/10 pt-5">
         <span className="flex items-center justify-between gap-4">
           <span className="text-xs font-semibold text-[var(--color-muted)]">
-            0{index + 1} · {destination.kicker}
+            {destination.region}
           </span>
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1b1c19]/48">
             <Clock3 className="size-3.5" />
@@ -226,7 +307,7 @@ function DestinationFeature({
           </span>
         </span>
         <span className="mt-3 flex items-end justify-between gap-4">
-          <span className="font-[family-name:var(--font-display)] text-4xl font-medium sm:text-5xl">
+          <span className="font-[family-name:var(--font-display)] text-3xl font-medium sm:text-4xl">
             {destination.name}
           </span>
           <ArrowRight className="mb-2 size-5 shrink-0 transition group-hover:translate-x-1" />
