@@ -8,6 +8,7 @@ import {
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
+import { renderHomepageSearchGuide } from "@/lib/content/homepage-search-guide";
 import type { Tour } from "@/types/tour";
 
 const journeyProfiles = [
@@ -139,6 +140,8 @@ Contact: ${siteConfig.email} · ${siteConfig.phone}
 Company details and registration evidence: ${siteConfig.url}/company
 Official company-record search: https://www.gsxt.gov.cn/
 The displayed business license proves company registration; it is not represented as the separate travel-agency business permit.
+
+${renderHomepageSearchGuide()}
 
 ## AVIORA service record
 

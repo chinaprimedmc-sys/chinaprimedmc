@@ -14,6 +14,7 @@
     "test:journey": "node --test tests/journey-brief.test.mjs tests/journey-filter.test.mjs tests/journey-match.test.mjs tests/journey-explorer.test.mjs tests/review-board.test.mjs",
     "test:experience": "node scripts/test-experience.mjs",
     "audit:seo": "node scripts/audit-seo.mjs",
+    "audit:home-search": "node scripts/audit-home-search.mjs",
     "audit:structured-data": "node scripts/audit-structured-data.mjs",
     "audit:images": "node scripts/audit-images.mjs",
     "audit:images:rendered": "node scripts/audit-rendered-images.mjs",

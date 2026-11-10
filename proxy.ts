@@ -11,8 +11,17 @@ const legacyPublicRedirects = new Map([
   ["/tours/private-shanghai-day-tour", "/tours/private-shanghai-day-tour-guide-driver"],
 ]);
 
-function buildContentSecurityPolicy(nonce = "", upgradeInsecureRequests = true) {
+function buildContentSecurityPolicy(
+  nonce = "",
+  upgradeInsecureRequests = true,
+  localHttpPreview = false,
+) {
   const development = process.env.NODE_ENV !== "production";
+  const httpFormFrames = development
+    ? " http://*.hsforms.net http://*.hsforms.com"
+    : localHttpPreview
+      ? " http://js-na2.hsforms.net"
+      : "";
   return [
     "default-src 'self'",
     "base-uri 'self'",
@@ -24,7 +33,7 @@ function buildContentSecurityPolicy(nonce = "", upgradeInsecureRequests = true) 
     `script-src 'self' 'nonce-${nonce}' https://*.salesmartly.com https://connect.facebook.net https://www.googletagmanager.com https://js-na2.hsforms.net https://js.hsforms.net${development ? " 'unsafe-eval'" : ""}`,
     "style-src 'self' 'unsafe-inline' https://*.salesmartly.com",
     `connect-src 'self' mailto: https://*.salesmartly.com wss://*.salesmartly.com https://connect.facebook.net https://www.facebook.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.hsforms.com https://*.hsforms.net https://*.hubspot.com${development ? " ws: wss:" : ""}`,
-    `frame-src 'self' https://*.salesmartly.com https://*.hsforms.net https://*.hsforms.com${development ? " http://*.hsforms.net http://*.hsforms.com" : ""}`,
+    `frame-src 'self' https://*.salesmartly.com https://*.hsforms.net https://*.hsforms.com${httpFormFrames}`,
     "media-src 'self' https://*.salesmartly.com",
     "worker-src 'self' blob:",
     ...(upgradeInsecureRequests ? ["upgrade-insecure-requests"] : []),
@@ -52,11 +61,17 @@ export async function proxy(request: NextRequest) {
   const nonce = createNonce();
   // 本地生产预览仍使用 HTTP，不能把同源图片强制升级成不存在的 HTTPS。
   const secureRequest = getRequestProtocol(request) === "https";
-  const csp = buildContentSecurityPolicy(nonce, secureRequest);
+  const requestHost = request.headers.get("host") ?? "";
+  // HubSpot follows the page protocol when creating its iframe. Allow that frame only on
+  // loopback HTTP previews; deployed pages retain the existing HTTPS-only policy.
+  const localHttpPreview =
+    !secureRequest &&
+    !process.env.VERCEL_ENV &&
+    /^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/i.test(requestHost);
+  const csp = buildContentSecurityPolicy(nonce, secureRequest, localHttpPreview);
 
   // 只在 Vercel 生产部署上做主机名规范化：vercel.app 生产别名等非规范域名
   // 一律 308 到正式域名，避免重复内容被收录。预览部署和本地预览不受影响。
-  const requestHost = request.headers.get("host") ?? "";
   if (process.env.VERCEL_ENV === "production" && requestHost !== canonicalHost) {
     const canonicalUrl = new URL(request.nextUrl.pathname + request.nextUrl.search, siteConfig.url);
     const redirect = NextResponse.redirect(canonicalUrl, 308);

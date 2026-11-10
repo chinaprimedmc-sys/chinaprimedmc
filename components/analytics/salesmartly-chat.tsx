@@ -53,6 +53,7 @@ export function SalesmartlyChat() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [enquiryInViewOnPath, setEnquiryInViewOnPath] = useState<string | null>(null);
   const [closeSpot, setCloseSpot] = useState<{ top: number; right: number } | null>(null);
 
   useEffect(() => {
@@ -94,6 +95,21 @@ export function SalesmartlyChat() {
     };
   }, []);
 
+  // Keep the floating dock clear of the homepage enquiry controls.
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+    const visible = new Set<Element>();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
+      }
+      setEnquiryInViewOnPath(visible.size ? pathname : null);
+    });
+    document.querySelectorAll("[data-home-enquiry-form]").forEach((form) => observer.observe(form));
+    return () => observer.disconnect();
+  }, [pathname]);
+
   // 手机端：向下滚动时收起入口，向上滚动或停下时再出现，不长期遮挡内容。
   useEffect(() => {
     let last = window.scrollY;
@@ -128,6 +144,7 @@ export function SalesmartlyChat() {
   return (
     <div
       className={styles.dock}
+      data-suppressed={enquiryInViewOnPath === pathname ? "true" : undefined}
       data-hidden={hidden && !menuOpen ? "true" : undefined}
       data-lifted={liftedForBar ? "true" : undefined}
       data-open={menuOpen ? "true" : undefined}

@@ -3,7 +3,7 @@ export const siteConfig = {
   siteName: "AVIORA China Travel",
   url: "https://www.chinaprimedmc.com",
   description:
-    "AVIORA China Travel plans private China tours for international travelers throughout China, with offices in Beijing, Shanghai and Xi'an and a Guangzhou-registered China operator coordinating routes, hotels, guides, transport and local support.",
+    "AVIORA China Travel provides full-service private China tours, coordinating itinerary design, hotels, guides, transport and support from arrival to departure.",
   email: "chinaprimedmc@gmail.com",
   phone: "+86 180 2743 8191",
   phoneHref: "tel:+8618027438191",
@@ -51,7 +51,7 @@ export const siteConfig = {
     guestBrandRelationship:
       "AVIORA China Travel (AVIORA) is a travel brand for individual international travelers, operated by a Guangzhou-registered, licensed inbound tourism company.",
     services: [
-      "Private tailor-made China journeys",
+      "Full-service private China journeys: planning, bookings and arrival-to-departure support",
       "Private China day tours",
       "Private guide, driver and transport coordination",
     ],

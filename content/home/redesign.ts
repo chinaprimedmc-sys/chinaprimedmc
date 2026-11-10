@@ -3,6 +3,8 @@
  * 只放置品牌表达和导航逻辑，价格与行程数据仍从 tours catalog 读取。
  */
 
+import { siteConfig } from "@/config/site";
+
 export const homeLocalSupport = {
   eyebrow: "Tailor-Made Journeys",
   title: "Looking for something more personal?",
@@ -264,6 +266,11 @@ export const homePlanningGuides = [
 
 export const homeFaqs = [
   {
+    question: "Can AVIORA arrange my whole China trip from planning to departure?",
+    answer:
+      "Yes. AVIORA provides one-stop service for a complete private China journey: itinerary design, hotel and room arrangements, agreed reservations, airport pickup, private guides and vehicles, domestic trains and flights, in-trip support and the final airport transfer. One China-based team coordinates the local services and city-to-city handovers. Your written proposal confirms the exact scope and price. International flights, visas and travel insurance are arranged separately.",
+  },
+  {
     question: "Are your journeys private or group tours?",
     answer:
       "Private. Your guide, vehicle and daily plan are arranged for your party alone. Flights, trains and ticketed sites such as museums remain shared public services, but your guide meets you and handles the logistics around them.",
@@ -279,14 +286,27 @@ export const homeFaqs = [
       "Every journey is priced individually. Your written proposal reflects your actual dates, party size, hotels and inclusions, so the total is clear before you decide. International flights are not included.",
   },
   {
-    question: "Do your guides speak my language?",
+    question: "What is included in a private China tour?",
     answer:
-      "Our guides work in English, French, German, Spanish, Russian, Italian, Japanese, Chinese and Thai. Tell us your language when you plan your trip, and your written proposal names the guide arranged for your dates.",
+      "Your proposal lists the hotels and room categories, privately guided days, vehicle and driver hours, transfers, admissions, meals and domestic trains or flights included in your trip. Optional experiences and excluded costs are listed separately. Flights and trains are shared public services, even when AVIORA arranges the tickets. International flights are not included.",
+  },
+  {
+    question: "Can you plan a China tour for children and aging parents together?",
+    answer:
+      "Yes. AVIORA plans multigenerational trips around the children's ages, grandparents' walking comfort, room arrangements and time to rest. The 12-day family route includes Beijing, Xi'an, Chengdu and Shanghai. Connecting rooms, suites and mobility arrangements require written supplier confirmation; historic attractions are not uniformly step-free. Tell us about stairs, standing tolerance and recovery needs before the route is confirmed.",
+  },
+  {
+    question: "Do AVIORA tours have compulsory shopping stops?",
+    answer:
+      "No. AVIORA does not include compulsory shops, sales detours or commission-led retail stops in its tours. If you want to shop, ask your guide; optional purchases are your choice and are separate from the agreed tour price.",
+  },
+  {
+    question: "Do your guides speak my language?",
+    answer: `Our guides work in ${siteConfig.guideLanguages.slice(0, -1).join(", ")} and ${siteConfig.guideLanguages.at(-1)}. Guide availability for your dates and preferred language is confirmed in your written proposal.`,
   },
   {
     question: "Who runs the trip in China?",
-    answer:
-      "AVIORA is operated by Youyouhui (Guangzhou) International Travel Service Co., Ltd. (游友汇（广州）国际旅行社有限公司), a registered China company licensed for inbound tourism. AVIORA China Travel is the travel brand for individual travelers. We have offices in Beijing, Shanghai and Xi'an, and the registered company is based in Guangzhou.",
+    answer: `AVIORA China Travel is operated by ${siteConfig.operator.englishReferenceName} (${siteConfig.operator.legalName}), a registered China company ${siteConfig.operator.tourismLicense.statement}. AVIORA is the travel brand for individual international travelers. We have offices in Beijing, Shanghai and Xi'an, and the registered company is based in ${siteConfig.operator.locality}.`,
   },
   {
     question: "What if I need to cancel?",

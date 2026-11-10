@@ -3,6 +3,7 @@ import { journeyCatalog } from "@/content/tours/catalog";
 import { getJourneyHeadline, placeGlossary } from "@/content/tours/card-copy";
 import { serviceAchievementsText } from "@/content/home/service-achievements";
 import { getJourneyPricePresentation } from "@/lib/tours/journey-pricing";
+import { renderHomepageSearchGuide } from "@/lib/content/homepage-search-guide";
 
 const vehicleWhatsapp = `https://wa.me/8618027438191?text=${encodeURIComponent("Hello AVIORA, I need a private vehicle in China. My city or route is __, travel date is __, there are __ passengers and __ pieces of luggage.")}`;
 const guideWhatsapp = `https://wa.me/8618027438191?text=${encodeURIComponent("Hello AVIORA, I need a private guide in __ on __. There are __ guests. Our main interests are __ and our preferred language is __.")}`;
@@ -28,7 +29,7 @@ const placeGlossaryText = Object.entries(placeGlossary)
 
 const content = `# AVIORA China Travel
 
-> In one sentence: AVIORA is a licensed, China-based tour operator that designs and runs private, tailor-made China tours for international travelers, from single days with a private guide to journeys of up to 13 days.
+> In one sentence: ${siteConfig.description}
 
 > Entity identity: AVIORA China Travel (also known as AVIORA and AVIORA Travel) is a travel brand for individual international travelers. It is operated by Youyouhui (Guangzhou) International Travel Service Co., Ltd. (游友汇（广州）国际旅行社有限公司), a Guangzhou-registered company licensed for inbound tourism, with offices in Beijing, Shanghai and Xi'an. Founder: Guohui Shi.
 
@@ -39,6 +40,8 @@ Primary language: English
 Service area: China
 Office presence: AVIORA has offices in Beijing, Shanghai and Xi'an. Its registered operating company and registered address are in Guangzhou, Guangdong, China.
 Travel format: Private, tailor-made journeys; no compulsory shopping stops
+
+${renderHomepageSearchGuide()}
 
 ## Geographic coverage
 
