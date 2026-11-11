@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { assertPublicRouteSlugs } from "@/config/public-route-slugs";
+import { publicRouteSlugs, assertPublicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { getArticleBySlug, getArticleSlugs } from "@/content/journal";
 import {
@@ -108,7 +108,9 @@ function articleSchema(article: JournalArticle) {
       ...(article.related?.destinations ?? []).map((slug) => ({
         type: "Place" as const,
         name: destinationName(slug),
-        url: new URL(`/destinations/${slug}`, siteConfig.url).toString(),
+        ...(publicRouteSlugs.destinations.some((published) => published === slug)
+          ? { url: new URL(`/destinations/${slug}`, siteConfig.url).toString() }
+          : {}),
       })),
     ],
     mentions: (article.related?.tours ?? []).flatMap((slug) => {

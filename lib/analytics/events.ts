@@ -4,13 +4,19 @@ import { track } from "@vercel/analytics";
 
 import { hasAnalyticsConsent } from "@/lib/privacy/cookie-consent";
 
+import { pageConversionContext } from "./destination-context";
+
 type AnalyticsValue = string | number | boolean | null;
 
 export function trackEvent(name: string, properties?: Record<string, AnalyticsValue>) {
   if (!hasAnalyticsConsent()) return;
-  track(name, properties);
+  const enriched = {
+    ...pageConversionContext(window.location.pathname, window.location.search),
+    ...properties,
+  };
+  track(name, enriched);
   if (name === "whatsapp_click") window.__avioraLastWhatsappEvent = Date.now();
-  window.gtag?.("event", name, properties);
+  window.gtag?.("event", name, enriched);
 }
 
 export function trackCtaClick(
@@ -23,7 +29,9 @@ export function trackCtaClick(
     label: label.slice(0, 80),
     destination: getSafeDestination(href),
     ...(placement ? { placement: placement.slice(0, 40) } : {}),
-    ...(journeySlug ? { journey: journeySlug.slice(0, 160) } : {}),
+    ...(journeySlug
+      ? { journey: journeySlug.slice(0, 160), journey_slug: journeySlug.slice(0, 160) }
+      : {}),
   });
 }
 

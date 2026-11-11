@@ -12,44 +12,39 @@
 }
 
 .hero {
-  position: relative;
   display: grid;
-  min-height: 44rem;
-  align-items: end;
-  overflow: hidden;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--container-page));
+  margin-inline: auto;
+  padding-block: calc(var(--site-nav-offset) + 3rem) 3rem;
+  background: #fff;
 }
-
+.heroInner {
+  min-width: 0;
+}
+.heroCopy {
+  max-width: 42rem;
+  color: var(--about-ink);
+}
+.heroPhoto {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+}
 .heroImage {
   position: absolute !important;
   inset: 0;
+  background: #fff;
 }
-
 .heroImageElement,
 .coverImage {
   object-fit: cover;
 }
-
 .heroImageElement {
   object-position: 50% 48%;
-}
-
-.heroShade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(7, 12, 15, 0.72), rgba(7, 12, 15, 0.22) 68%);
-}
-
-.heroInner {
-  position: relative;
-  z-index: 2;
-  width: min(calc(100% - (var(--page-gutter) * 2)), var(--container-page));
-  margin-inline: auto;
-  padding: calc(var(--site-nav-offset) + 3rem) 0 4rem;
-}
-
-.heroCopy {
-  max-width: 42rem;
-  color: #fff;
 }
 
 .heroEyebrow,
@@ -63,7 +58,7 @@
 }
 
 .heroEyebrow {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--about-muted);
 }
 
 .heroCopy h1 {
@@ -77,7 +72,7 @@
 .heroCopy > p:not(.heroEyebrow) {
   max-width: 58ch;
   margin: 1.5rem 0 0;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--about-muted);
   font-size: var(--type-body-large-size);
   line-height: var(--type-body-large-line);
 }
@@ -96,7 +91,7 @@
 
 .heroLink {
   margin-top: 1.5rem;
-  color: #fff;
+  color: var(--about-ink);
   text-decoration: underline;
   text-underline-offset: 0.3rem;
 }
@@ -359,7 +354,7 @@
   inset: 0;
   overflow: hidden;
   border-radius: var(--radius-feature);
-  background: var(--color-surface-muted);
+  background: #fff;
 }
 
 .peoplePhoto figcaption {
@@ -390,30 +385,21 @@
 }
 
 .story {
-  position: relative;
-  aspect-ratio: var(--aspect-content-photo);
-  overflow: hidden;
-  border-radius: var(--radius-feature);
+  display: grid;
+  align-content: start;
+  min-width: 0;
+  background: #fff;
 }
-
+.story .storyImage {
+  position: relative !important;
+  aspect-ratio: 4 / 3;
+}
 .storyCaption {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 2;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.35rem 1rem;
-  color: #fff;
-}
-
-.storyCaption::before {
-  position: absolute;
-  inset: -8rem -1rem -1rem;
-  z-index: -1;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
-  content: "";
+  gap: 0.4rem 1rem;
+  padding-top: 1.25rem;
+  color: var(--about-ink);
 }
 
 .storyCaption span {
@@ -424,7 +410,7 @@
 .storyCaption h3 {
   grid-column: 1;
   margin-top: 0;
-  color: #fff;
+  color: var(--about-ink);
 }
 
 .storyCaption svg {
@@ -465,12 +451,10 @@
 
 @media (max-width: 767px) {
   .hero {
-    min-height: 38rem;
-  }
-
-  .heroInner {
+    grid-template-columns: 1fr;
     padding-top: calc(var(--site-nav-offset) + 2rem);
-    padding-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    gap: 2rem;
   }
 
   .concernGrid,
@@ -822,5 +806,110 @@
   }
   .legalIdentity strong {
     overflow-wrap: anywhere;
+  }
+}
+
+.founderFeature {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+}
+.founderPortrait {
+  width: 100%;
+  max-width: 430px;
+  margin: 0;
+}
+.founderPortraitImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+}
+.founderPortrait figcaption {
+  margin-top: 0.85rem;
+  color: var(--about-muted);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+.founderFeature blockquote {
+  margin-top: 2rem;
+}
+@media (max-width: 1023px) {
+  .founderFeature {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile reading and touch targets. */
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: calc(var(--site-nav-offset) + 1.5rem);
+    gap: 1.5rem;
+  }
+  .heroCopy h1 {
+    max-width: 14ch;
+    font-size: clamp(2.25rem, 9vw, 3rem);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  .heroCopy > p:not(.heroEyebrow) {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .heroPhoto {
+    aspect-ratio: 3 / 2;
+  }
+  .section {
+    padding-block: 2.5rem;
+  }
+  .pageIndex {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.15rem 1rem;
+  }
+  .pageIndex > span {
+    grid-column: 1 / -1;
+    margin-bottom: 0.5rem;
+  }
+  .pageIndex a {
+    min-height: 44px;
+  }
+  .identityIntro > *,
+  .founderFeature > *,
+  .questionsLayout > * {
+    min-width: 0;
+  }
+  .founderPortrait {
+    max-width: min(100%, 280px);
+    margin-inline: auto;
+  }
+  .founderFeature blockquote {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.45;
+  }
+  .storyLead {
+    font-size: 1.0625rem;
+  }
+  .storyNarrative p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  .achievements {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+  .achievements dd {
+    flex-shrink: 0;
+  }
+  .heroLink,
+  .textLink {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .heroLink svg,
+  .textLink svg {
+    flex-shrink: 0;
   }
 }

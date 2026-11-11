@@ -39,7 +39,7 @@ export default function ContactPage() {
               <h2 className="type-card-title">Plan your private trip</h2>
               <p className="text-muted mt-2 text-base leading-7">
                 Share the essential trip details through our secure planning form. A China
-                specialist will review them and reply within 24 hours.
+                specialist will review them and normally reply within 24 hours.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-1">

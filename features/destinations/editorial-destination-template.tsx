@@ -1,7 +1,6 @@
 import {
   ArrowLeft,
   ArrowRight,
-  BedDouble,
   CalendarDays,
   Compass,
   Lightbulb,
@@ -19,7 +18,7 @@ import { SiteNavigation } from "@/components/navigation/site-navigation";
 import type { CmsDestinationCard } from "@/components/destinations/destination-explorer";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 import { destinationPlanningGuides } from "@/content/destinations/planning-guides";
-import { TrackedLink } from "@/components/cta/tracked-link";
+import { DestinationJourneyCard } from "@/features/destinations/destination-journey-card";
 import { journalArticles } from "@/content/journal";
 
 export function EditorialDestinationTemplate({
@@ -54,7 +53,7 @@ export function EditorialDestinationTemplate({
       )
     : journeys;
   const primaryJourney = selectedJourneys[0];
-  const planningHref = `${cta.href}?destination=${encodeURIComponent(destination.name)}&source=destination-guide`;
+  const planningHref = `${cta.href}?destination=${encodeURIComponent(destination.slug)}&source=destination-guide`;
   const related = (destination.relatedDestinationIds ?? [])
     .flatMap((slug) => destinations.find((item) => item.slug === slug) ?? [])
     .slice(0, 3);
@@ -112,12 +111,12 @@ export function EditorialDestinationTemplate({
               </CtaButton>
               {primaryJourney ? (
                 <CtaButton
-                  href={primaryJourney.href}
+                  href="#private-journeys"
                   data-cta-placement={`destination-${destination.slug}-hero`}
                   size="lg"
                   variant="secondary"
                 >
-                  {guide?.products[0].label ?? "View a real itinerary"}
+                  {selectedJourneys.length > 1 ? "Compare tours" : "View the itinerary"}
                 </CtaButton>
               ) : null}
             </div>
@@ -127,8 +126,10 @@ export function EditorialDestinationTemplate({
 
       <nav aria-label="In this destination guide" className="border-y border-black/8">
         <div className="mx-auto flex max-w-[85rem] flex-wrap gap-x-7 gap-y-3 px-[var(--page-gutter)] py-5 text-sm font-semibold">
+          <a href="#destination-stay">How long to stay</a>
           <a href="#destination-experiences">What to see</a>
-          <a href="#destination-itinerary">Suggested stay</a>
+          <a href="#destination-itinerary">Sample itinerary</a>
+          <a href="#destination-hotels">Where to stay</a>
           <a href="#destination-practical">Travel planning</a>
           <a href="#private-journeys">Private journeys</a>
           <a href="#destination-faq">FAQ</a>
@@ -141,28 +142,17 @@ export function EditorialDestinationTemplate({
           className="mx-auto max-w-[85rem] px-[var(--page-gutter)] py-[var(--space-section-default)]"
         >
           <h2 id="destination-decision-title" className="type-section-title">
-            Is {destination.name} right for your trip?
+            Why visit {destination.name}?
           </h2>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-copy)]">
             {guide.answer}
           </p>
-          <p className="mt-5 max-w-3xl leading-7 text-[var(--color-copy)]">{guide.serviceScope}</p>
-          {primaryJourney ? (
-            <div className="mt-7 max-w-3xl border-t border-black/10 pt-6">
-              <p className="leading-7 text-[var(--color-copy)]">{guide.products[0].reason}</p>
-              <TrackedLink
-                href={primaryJourney.href}
-                trackingLabel={guide.products[0].label}
-                trackingPlacement={`destination-${destination.slug}-decision`}
-                className="mt-4 inline-flex min-h-11 items-center font-semibold underline underline-offset-4"
-              >
-                {guide.products[0].label}
-              </TrackedLink>
-            </div>
-          ) : null}
-          <h2 className="type-section-title mt-12">
-            {guide.stayHeading ?? `How many nights do you need in ${destination.name}?`}
+          <h2 id="destination-stay" className="type-section-title mt-12 scroll-mt-28">
+            {guide.stayHeading ?? `How many days do you need in ${destination.name}?`}
           </h2>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-copy)]">
+            {guide.stayAnswer}
+          </p>
           <div className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
             {guide.stays.map((stay) => (
               <article key={stay.label}>
@@ -170,6 +160,254 @@ export function EditorialDestinationTemplate({
                 <p className="mt-3 leading-7 text-[var(--color-copy)]">{stay.advice}</p>
               </article>
             ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section
+        id="destination-experiences"
+        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
+      >
+        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
+            Signature experiences
+          </p>
+          <h2 className="type-section-title mt-5 max-w-3xl">
+            What to see and experience in {destination.name}
+          </h2>
+          <p className="mt-6 max-w-3xl leading-7 text-[var(--color-copy)]">
+            {guide?.practicalPlanning.timing ?? destination.orientation}
+          </p>
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {destination.highlights.map((experience, index) => (
+              <article key={experience} className="border-t border-black/10 py-5">
+                <span className="text-xs font-semibold text-[var(--color-muted)]">
+                  0{index + 1}
+                </span>
+                <h3 className="mt-4 text-xl leading-8 font-semibold">{experience}</h3>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="destination-itinerary"
+        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]"
+      >
+        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
+            Suggested {destination.name} itinerary
+          </p>
+          <h2 className="type-section-title mt-5 max-w-4xl">
+            What can you fit into your {destination.name} itinerary?
+          </h2>
+          <div className="mt-12 divide-y divide-black/10 border-y border-black/10">
+            {destination.itinerary.map((item) => (
+              <article
+                key={`${item.day}-${item.title}`}
+                className="grid gap-3 py-6 md:grid-cols-[8rem_18rem_1fr] md:items-baseline"
+              >
+                <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
+                  {item.day}
+                </p>
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+                <p className="leading-7 text-[var(--color-copy)]">{item.description}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {primaryJourney ? (
+              <CtaButton
+                href="#private-journeys"
+                data-cta-placement={`destination-${destination.slug}-stay`}
+                size="lg"
+              >
+                {selectedJourneys.length > 1
+                  ? "Compare tours for this itinerary"
+                  : "See the itinerary and service options"}
+              </CtaButton>
+            ) : null}
+            <CtaButton href={planningHref} variant="secondary" size="lg">
+              Customize this pace
+            </CtaButton>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] py-[var(--space-section-compact)] md:grid-cols-2 md:py-[var(--space-section-default)]">
+        <div>
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">When to go</p>
+          <h2 className="type-section-title mt-5">When to visit {destination.name}</h2>
+          <p className="mt-6 text-base leading-8 text-[var(--color-copy)]">
+            {destination.bestTime}
+          </p>
+        </div>
+        <div>
+          <h2 className="type-section-title">
+            What affects the cost of a {destination.name} trip?
+          </h2>
+          <p className="mt-6 text-base leading-8 text-[var(--color-copy)]">
+            {guide?.practicalPlanning.cost ?? destination.planningNotes.join(". ")}
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="destination-practical"
+        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
+      >
+        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
+            Getting there and getting around
+          </p>
+          <h2 className="type-section-title mt-5 max-w-4xl">
+            How to get to {destination.name} and plan your stay
+          </h2>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            <PlanningCard
+              icon={<Route className="size-5" />}
+              title="Arriving and connecting"
+              text={destination.arrival}
+            />
+            <PlanningCard
+              icon={<Compass className="size-5" />}
+              title="Getting around"
+              text={destination.gettingAround}
+            />
+            <PlanningCard
+              icon={<MapPin className="size-5" />}
+              title="Walking and access"
+              text={guide?.practicalPlanning.walking ?? destination.stayStrategy}
+            />
+          </div>
+          <div className="mt-5 flex gap-4 rounded-[1.25rem] border border-[var(--color-line)] bg-white p-6">
+            <Lightbulb
+              className="mt-1 size-5 shrink-0 text-[var(--color-muted)]"
+              aria-hidden="true"
+            />
+            <div>
+              <h3 className="font-semibold">What first-time visitors often underestimate</h3>
+              <p className="mt-2 leading-7 text-[var(--color-copy)]">
+                {destination.firstTimerNote}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {guide ? (
+        <section
+          id="destination-hotels"
+          aria-labelledby="destination-hotel-title"
+          className="mx-auto max-w-[85rem] scroll-mt-28 px-[var(--page-gutter)] py-[var(--space-section-default)]"
+        >
+          <h2 id="destination-hotel-title" className="type-section-title">
+            {guide.hotelHeading ?? `Where to stay in ${destination.name}`}
+          </h2>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-copy)]">
+            {guide.hotelAnswer}
+          </p>
+          <div className="mt-8 grid gap-8">
+            {guide.hotelAreas.map((area) => (
+              <article key={area.name} className="grid gap-3 md:grid-cols-[1fr_2fr]">
+                <h3 className="text-xl font-semibold">{area.name}</h3>
+                <p className="leading-7 text-[var(--color-copy)]">{area.advice}</p>
+              </article>
+            ))}
+          </div>
+          <h2 id="destination-sightseeing" className="type-section-title mt-12 scroll-mt-28">
+            {guide.sightseeingQuestion}
+          </h2>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-copy)]">
+            {guide.sightseeingAnswer}
+          </p>
+          <div className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
+            {guide.tradeoffs.map((item) => (
+              <article key={item.title}>
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+                <p className="mt-3 leading-7 text-[var(--color-copy)]">{item.advice}</p>
+                {item.articleSlug && item.articleLabel ? (
+                  <Link
+                    href={`/journal/${item.articleSlug}`}
+                    className="mt-3 inline-flex min-h-11 items-center font-semibold underline underline-offset-4"
+                  >
+                    {item.articleLabel}
+                  </Link>
+                ) : null}
+              </article>
+            ))}
+          </div>
+          <aside
+            aria-labelledby="destination-sources-title"
+            className="mt-10 border-t border-black/10 pt-6"
+          >
+            <h3 id="destination-sources-title" className="text-xl font-semibold">
+              Sources and visitor information
+            </h3>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--color-muted)]">
+              Our recommendations help you choose where to stay, how long to allow and which route
+              suits you. Use the sources below for the visitor information or background described
+              beside each link. Your proposal sets out the arrangements for your travel dates.
+            </p>
+            <ul className="mt-5 grid max-w-3xl gap-5">
+              {guide.visitorResources.map((resource) => (
+                <li key={resource.href}>
+                  <a href={resource.href} className="font-semibold underline underline-offset-4">
+                    {resource.label}
+                  </a>
+                  <p className="mt-2 text-sm leading-6 text-[var(--color-copy)]">
+                    {resource.scope}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </section>
+      ) : null}
+
+      {guide && selectedJourneys.length ? (
+        <section
+          id="private-journeys"
+          className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
+        >
+          <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
+              {selectedJourneys.length > 1 ? "Compare private tours" : "Suggested private tour"}
+            </p>
+            <h2 className="type-section-title mt-5 max-w-3xl">
+              {guide.routeHeading ??
+                (selectedJourneys.length > 1
+                  ? `Which ${destination.name} tour fits your plans?`
+                  : `A private itinerary for your ${destination.name} visit`)}
+            </h2>
+            <p className="mt-5 max-w-3xl leading-7 text-[var(--color-copy)]">
+              {guide?.routeAdvice ??
+                "Compare the sightseeing days, hotel stays and included services before choosing your tour."}
+            </p>
+            <details className="mt-6 max-w-3xl border-t border-black/10 pt-5">
+              <summary className="cursor-pointer font-semibold">
+                Your private tour: arrangements and inclusions
+              </summary>
+              <p className="mt-4 leading-7 text-[var(--color-copy)]">{guide.serviceScope}</p>
+            </details>
+            <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--color-muted)]">
+              Planning advice by AVIORA China Travel. Read our{" "}
+              <Link href="/editorial-policy" className="underline underline-offset-4">
+                editorial and verification policy
+              </Link>
+              .
+            </p>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {selectedJourneys.map((journey) => (
+                <DestinationJourneyCard
+                  key={journey.slug}
+                  journey={journey}
+                  product={guide.products.find((product) => product.slug === journey.slug)!}
+                  destinationSlug={destination.slug}
+                />
+              ))}
+            </div>
           </div>
         </section>
       ) : null}
@@ -188,23 +426,6 @@ export function EditorialDestinationTemplate({
             </div>
           </div>
           <EditorialImage image={destination.gallery[0]} />
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] py-[var(--space-section-compact)] md:grid-cols-[.72fr_1.28fr] md:py-[var(--space-section-default)]">
-        <div>
-          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-            Why this destination
-          </p>
-          <h2 className="type-section-title mt-5">What to plan around in {destination.name}</h2>
-        </div>
-        <div className="grid gap-6 text-base leading-8 text-[var(--color-copy)] md:text-lg">
-          <p>{destination.orientation}</p>
-          <p>
-            We recommend {destination.recommendedStay.toLowerCase()} here. The right onward
-            connection depends on your season, available time and the contrast you want from the
-            next destination.
-          </p>
         </div>
       </section>
 
@@ -243,291 +464,6 @@ export function EditorialDestinationTemplate({
       </section>
 
       <section
-        id="destination-experiences"
-        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
-      >
-        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
-          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-            Signature experiences
-          </p>
-          <h2 className="type-section-title mt-5 max-w-3xl">
-            What to see and experience in {destination.name}
-          </h2>
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {destination.highlights.map((experience, index) => (
-              <article key={experience} className="border-t border-black/10 py-5">
-                <span className="text-xs font-semibold text-[var(--color-muted)]">
-                  0{index + 1}
-                </span>
-                <h3 className="mt-4 text-xl leading-8 font-semibold">{experience}</h3>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="destination-itinerary"
-        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]"
-      >
-        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
-          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-            Suggested {destination.name} itinerary
-          </p>
-          <h2 className="type-section-title mt-5 max-w-4xl">
-            A realistic way to use {destination.recommendedStay.toLowerCase()}.
-          </h2>
-          <div className="mt-12 divide-y divide-black/10 border-y border-black/10">
-            {destination.itinerary.map((item) => (
-              <article
-                key={`${item.day}-${item.title}`}
-                className="grid gap-3 py-6 md:grid-cols-[8rem_18rem_1fr] md:items-baseline"
-              >
-                <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-                  {item.day}
-                </p>
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="leading-7 text-[var(--color-copy)]">{item.description}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {primaryJourney ? (
-              <CtaButton
-                href={primaryJourney.href}
-                data-cta-placement={`destination-${destination.slug}-stay`}
-                size="lg"
-              >
-                {guide?.products[0].label ?? "See the complete journey"}
-              </CtaButton>
-            ) : null}
-            <CtaButton href={planningHref} variant="secondary" size="lg">
-              Customize this pace
-            </CtaButton>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] py-[var(--space-section-compact)] md:grid-cols-2 md:py-[var(--space-section-default)]">
-        <div>
-          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">When to go</p>
-          <h2 className="type-section-title mt-5">When to visit {destination.name}</h2>
-          <p className="mt-6 text-base leading-8 text-[var(--color-copy)]">
-            {destination.bestTime}
-          </p>
-        </div>
-        <div>
-          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-            Planning notes
-          </p>
-          <ul className="mt-5 divide-y divide-black/8 border-y border-black/8">
-            {destination.planningNotes.map((note) => (
-              <li key={note} className="flex gap-4 py-5 text-base leading-7">
-                <MapPin className="mt-1 size-4 shrink-0 text-[var(--color-muted)]" />
-                {note}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section
-        id="destination-practical"
-        className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
-      >
-        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
-          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-            Practical orientation for international visitors
-          </p>
-          <h2 className="type-section-title mt-5 max-w-4xl">
-            How {destination.name} works on the ground.
-          </h2>
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            <PlanningCard
-              icon={<Route className="size-5" />}
-              title="Arriving and connecting"
-              text={destination.arrival}
-            />
-            <PlanningCard
-              icon={<Compass className="size-5" />}
-              title="Getting around"
-              text={destination.gettingAround}
-            />
-            <PlanningCard
-              icon={<BedDouble className="size-5" />}
-              title="Where and how long to stay"
-              text={destination.stayStrategy}
-            />
-          </div>
-          <div className="mt-5 flex gap-4 rounded-[1.25rem] border border-[var(--color-line)] bg-white p-6">
-            <Lightbulb
-              className="mt-1 size-5 shrink-0 text-[var(--color-muted)]"
-              aria-hidden="true"
-            />
-            <div>
-              <h3 className="font-semibold">What first-time visitors often underestimate</h3>
-              <p className="mt-2 leading-7 text-[var(--color-copy)]">
-                {destination.firstTimerNote}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {guide ? (
-        <section
-          aria-labelledby="destination-hotel-title"
-          className="mx-auto max-w-[85rem] px-[var(--page-gutter)] py-[var(--space-section-default)]"
-        >
-          <h2 id="destination-hotel-title" className="type-section-title">
-            {guide.hotelHeading ?? `Where to stay in ${destination.name}`}
-          </h2>
-          <div className="mt-8 grid gap-8">
-            {guide.hotelAreas.map((area) => (
-              <article key={area.name} className="grid gap-3 md:grid-cols-[1fr_2fr]">
-                <h3 className="text-xl font-semibold">{area.name}</h3>
-                <p className="leading-7 text-[var(--color-copy)]">{area.advice}</p>
-              </article>
-            ))}
-          </div>
-          <h2 className="type-section-title mt-12">How to plan sightseeing, walking and breaks</h2>
-          <div className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
-            {guide.tradeoffs.map((item) => (
-              <article key={item.title}>
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 leading-7 text-[var(--color-copy)]">{item.advice}</p>
-                {item.articleSlug && item.articleLabel ? (
-                  <Link
-                    href={`/journal/${item.articleSlug}`}
-                    className="mt-3 inline-flex min-h-11 items-center font-semibold underline underline-offset-4"
-                  >
-                    {item.articleLabel}
-                  </Link>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
-      <section className="py-[var(--space-section-compact)]">
-        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
-          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-            Route combinations
-          </p>
-          <h2 className="type-section-title mt-5">
-            Where to go before or after {destination.name}.
-          </h2>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {related.map((item) => (
-              <Link key={item.slug} href={`/destinations/${item.slug}`} className="group">
-                <span className="aspect-portrait relative block overflow-hidden rounded-[1.4rem]">
-                  <OptimizedImage
-                    src={
-                      item.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"
-                    }
-                    alt={item.heroImage?.alt ?? item.name}
-                    fill
-                    sizes="(min-width:768px) 33vw, 100vw"
-                    frameClassName="absolute inset-0 h-full w-full"
-                    className="object-cover transition duration-700 group-hover:scale-105"
-                    style={{ objectPosition: item.heroImage?.objectPosition }}
-                  />
-                </span>
-                <span className="mt-5 flex items-center justify-between text-xl font-semibold">
-                  {item.name}
-                  <ArrowRight className="size-4 transition group-hover:translate-x-1" />
-                </span>
-                <span className="mt-2 block text-sm text-[var(--color-copy)]">
-                  {item.kicker} · {item.recommendedStay}
-                </span>
-                {guide?.connections.find((connection) => connection.slug === item.slug) ? (
-                  <span className="mt-3 block leading-7 text-[var(--color-copy)]">
-                    {guide.connections.find((connection) => connection.slug === item.slug)!.advice}
-                  </span>
-                ) : null}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {journeys.length ? (
-        <section
-          id="private-journeys"
-          className="border-y border-black/8 bg-white py-[var(--space-section-compact)]"
-        >
-          <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
-            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-              Private journeys including {destination.name}
-            </p>
-            <h2 className="type-section-title mt-5 max-w-3xl">
-              See how {destination.name} fits into a considered route.
-            </h2>
-            <p className="mt-5 max-w-3xl leading-7 text-[var(--color-copy)]">
-              These are published AVIORA products, not generic route suggestions. Open any journey
-              to review its day-by-day structure, included private services and planning options.
-            </p>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {selectedJourneys.map((journey) => (
-                <TrackedLink
-                  key={journey.slug}
-                  href={journey.href}
-                  trackingLabel={
-                    guide?.products.find((product) => product.slug === journey.slug)?.label ??
-                    journey.title
-                  }
-                  trackingPlacement={`destination-${destination.slug}-products`}
-                  className="group grid gap-5 sm:grid-cols-[.8fr_1.2fr]"
-                >
-                  <span className="aspect-portrait relative block overflow-hidden rounded-[1.25rem] bg-[#f3f4f4]">
-                    {journey.visualStatus === "pending" ? (
-                      <span className="absolute inset-0 flex flex-col justify-end gap-2 p-5 text-[var(--color-muted)]">
-                        <span className="mb-auto block h-px w-12 bg-black/20" />
-                        <span className="text-xs font-semibold">Photography being prepared</span>
-                        <span className="text-xs leading-5 text-[var(--color-muted)]">
-                          Route and service details are ready to plan
-                        </span>
-                      </span>
-                    ) : (
-                      <OptimizedImage
-                        src={journey.image.src}
-                        alt={journey.image.alt}
-                        fill
-                        sizes="(min-width:768px) 30vw, 100vw"
-                        frameClassName="absolute inset-0 h-full w-full"
-                        className="object-cover transition duration-700 group-hover:scale-105"
-                        style={{ objectPosition: journey.image.objectPosition }}
-                      />
-                    )}
-                  </span>
-                  <span className="self-center">
-                    <span className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-                      {journey.durationLabel}
-                    </span>
-                    <span className="mt-2 block text-xl font-semibold">{journey.title}</span>
-                    <span className="mt-2 block text-base leading-6 text-[var(--color-copy)]">
-                      {journey.routeLabel}
-                    </span>
-                    {guide?.products.find((product) => product.slug === journey.slug) ? (
-                      <span className="mt-3 block leading-7 text-[var(--color-copy)]">
-                        {guide.products.find((product) => product.slug === journey.slug)!.reason}
-                      </span>
-                    ) : null}
-                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold">
-                      {guide?.products.find((product) => product.slug === journey.slug)?.label ??
-                        "View journey"}{" "}
-                      <ArrowRight className="size-4 transition group-hover:translate-x-1" />
-                    </span>
-                  </span>
-                </TrackedLink>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      <section
         id="destination-faq"
         className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
       >
@@ -535,7 +471,7 @@ export function EditorialDestinationTemplate({
           <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
             {destination.name} travel FAQ
           </p>
-          <h2 className="type-section-title mt-5">Clear answers before you choose the route.</h2>
+          <h2 className="type-section-title mt-5">Questions about visiting {destination.name}</h2>
           <div className="mt-10 divide-y divide-black/10 border-y border-black/10">
             {destination.faqs.map((faq) => (
               <details key={faq.question} className="group py-6">
@@ -586,6 +522,48 @@ export function EditorialDestinationTemplate({
         </section>
       ) : null}
 
+      <section className="py-[var(--space-section-compact)]">
+        <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+          <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
+            Route combinations
+          </p>
+          <h2 className="type-section-title mt-5">
+            Where to go before or after {destination.name}
+          </h2>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {related.map((item) => (
+              <Link key={item.slug} href={`/destinations/${item.slug}`} className="group">
+                <span className="aspect-portrait relative block overflow-hidden rounded-[1.4rem]">
+                  <OptimizedImage
+                    src={
+                      item.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"
+                    }
+                    alt={item.heroImage?.alt ?? item.name}
+                    fill
+                    sizes="(min-width:768px) 33vw, 100vw"
+                    frameClassName="absolute inset-0 h-full w-full"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                    style={{ objectPosition: item.heroImage?.objectPosition }}
+                  />
+                </span>
+                <span className="mt-5 flex items-center justify-between text-xl font-semibold">
+                  {item.name}
+                  <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                </span>
+                <span className="mt-2 block text-sm text-[var(--color-copy)]">
+                  {item.kicker} · {item.recommendedStay}
+                </span>
+                {guide?.connections.find((connection) => connection.slug === item.slug) ? (
+                  <span className="mt-3 block leading-7 text-[var(--color-copy)]">
+                    {guide.connections.find((connection) => connection.slug === item.slug)!.advice}
+                  </span>
+                ) : null}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-[85rem] px-[var(--page-gutter)] py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
         <div className="grid gap-10 border-t border-black/10 pt-8 md:grid-cols-[1fr_auto] md:items-end">
           <div>
@@ -593,24 +571,33 @@ export function EditorialDestinationTemplate({
               Private China planning
             </p>
             <h2 className="type-section-title mt-5 max-w-3xl">
-              Build {destination.name} into the right private tour.
+              Plan your {destination.name} trip with us
             </h2>
             <p className="mt-5 max-w-2xl leading-7 text-[var(--color-copy)]">
-              Share your dates, travelers and hotel expectations. We will recommend the right stay,
-              onward connection and private service plan.
+              Share your dates, arrival and departure cities, interests and any plans already
+              booked. Tell us how much walking you are comfortable with. We’ll recommend an
+              itinerary that fits your time and set out the hotels, transfers and guided visits in
+              your proposal.
             </p>
+            <Link
+              href="/reviews"
+              className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4"
+            >
+              Read guest feedback on traveling with AVIORA
+            </Link>
           </div>
           <CtaButton href={planningHref} size="lg">
-            Plan this destination
+            Plan my trip
           </CtaButton>
         </div>
       </section>
 
       <EnquirySection
         placement="destination"
+        destinationName={destination.name}
         journeyTitle={destination.name}
-        title={`Plan ${destination.name} as a private trip`}
-        intro="Share your dates, travellers and hotel expectations. We will recommend the right stay, onward connection and private service plan."
+        title={`Plan your private ${destination.name} tour`}
+        intro="Share your dates, interests, arrival and departure cities, and any plans already booked. We’ll recommend an itinerary at a pace that suits you, with the arrangements and price explained before you book."
       />
 
       <SiteFooter

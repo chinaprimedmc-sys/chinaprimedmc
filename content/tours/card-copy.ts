@@ -58,7 +58,7 @@ const sensoryDescriptions: Record<string, string> = {
   "beijing-xian-chengdu-shanghai-private-11-day-tour":
     "One clear 12-day route through four distinct cities, with the connections planned around your dates.",
   "beijing-xian-shanghai-private-10-day-tour":
-    "A slow-paced first China journey: zero-stair Great Wall access, luggage-free bullet trains and a 3:30 PM hotel return.",
+    "Beijing, Xi'an and Shanghai in ten days, with local private guides, nine hotel nights and two planned city moves.",
   "chengdu-pandas-sichuan-table":
     "Begin with pandas, linger over tea and understand Chengdu one generous meal at a time.",
   "chengdu-pandas-jiuzhaigou-private-7-day-tour":
@@ -76,12 +76,11 @@ const sensoryDescriptions: Record<string, string> = {
  * 城市名只作为副标题出现，避免读者与搜索引擎自行推断路线含义。
  */
 const journeyHeadlines: Record<string, string> = {
-  "beijing-xian-shanghai-private-10-day-tour":
-    "The Slow-Paced Golden Triangle: Beijing, Xi'an & Shanghai",
+  "beijing-xian-shanghai-private-10-day-tour": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
   "china-family-tour-with-pandas-12-day-private-tour":
     "Pandas, Warriors & the Great Wall, Made for Families",
   "luxury-yunnan-private-tour": "Yunnan's Tea Horse Road: Snow Mountains & Old Towns",
-  "china-at-an-easier-pace-12-day-private-tour": "Imperial China at an Unhurried Pace",
+  "china-at-an-easier-pace-12-day-private-tour": "12-Day Private China Tour at an Easier Pace",
   "beijing-xian-chengdu-shanghai-private-11-day-tour": "Four Cities, One Clear Route Through China",
   "chengdu-chongqing-zhangjiajie-private-11-day-tour":
     "Pandas, Sichuan Food & Zhangjiajie's Floating Mountains",
@@ -164,10 +163,10 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
  * 不能再用"看点优先"的写法，否则与"private Beijing Xi'an Shanghai tour"类查询失去匹配。
  */
 const journeySeoTitleOverrides: Record<string, string> = {
+  "china-at-an-easier-pace-12-day-private-tour": "12-Day Private China Tour at an Easier Pace",
   "private-xian-terracotta-warriors-day-tour": "Private Terracotta Warriors Tour from Xi'an",
   "private-shanghai-day-tour-guide-driver": "Private Shanghai Day Tour with Guide and Driver",
-  "beijing-xian-shanghai-private-10-day-tour":
-    "Slow-Paced Beijing Xi'an Shanghai 10-Day Private Tour",
+  "beijing-xian-shanghai-private-10-day-tour": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
   // 站点审计按 HTML 转义后的长度计数（& 会变成 &amp;），含 & 的标题要留出余量。
   "chengdu-chongqing-zhangjiajie-private-11-day-tour":
     "Chengdu, Chongqing & Zhangjiajie 11-Day Private Tour",

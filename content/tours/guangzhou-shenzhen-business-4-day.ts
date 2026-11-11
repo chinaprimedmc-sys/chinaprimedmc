@@ -11,8 +11,9 @@ const pendingImage: MediaAsset = {
 };
 
 const hotelByPlace = {
-  guangzhou: "Selected premium Guangzhou business hotel · 2 nights · two rooms",
-  shenzhen: "Selected premium Shenzhen business hotel · 1 night · two rooms",
+  guangzhou:
+    "Selected premium Guangzhou business hotel · 2 nights · rooms confirmed for your party",
+  shenzhen: "Selected premium Shenzhen business hotel · 1 night · rooms confirmed for your party",
 };
 
 export const guangzhouShenzhenBusiness4DayTour: Tour = {
@@ -74,7 +75,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
         label: "Hotels",
         value: "Premium business hotels selected by meeting geography",
         helper:
-          "Two rooms for four guests; exact hotels are named after the working locations are known.",
+          "Rooms and occupancy confirmed for your actual party; exact hotels are named after the working locations are known.",
       },
       {
         label: "Private Service",
@@ -322,7 +323,8 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
       destination: "Guangzhou",
       description:
         "Two nights chosen from the actual exhibition, meeting and arrival geography, with room comfort, breakfast timing and vehicle access reviewed before brand prestige alone.",
-      roomStyle: "Two rooms; exact category, bedding and cancellation terms named before booking",
+      roomStyle:
+        "Rooms for your actual party; exact category, bedding and cancellation terms named before booking",
       highlights: [
         "Meeting-location review",
         "Reliable vehicle access",
@@ -337,7 +339,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
       description:
         "One night in the district that best supports the confirmed Shenzhen commitment and departure gateway, avoiding a visually impressive but operationally poor location.",
       roomStyle:
-        "Two rooms; exact category and district confirmed after the Shenzhen agenda is known",
+        "Rooms for your actual party; exact category and district confirmed after the Shenzhen agenda is known",
       highlights: [
         "Agenda-led district",
         "Late arrival handling",
@@ -348,7 +350,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
     },
   ],
   included: [
-    "3 nights in selected premium business hotels based on four guests sharing two rooms: 2 nights in Guangzhou and 1 night in Shenzhen in the sample framework",
+    "3 nights in selected premium business hotels with rooms and occupancy confirmed for your actual party: 2 nights in Guangzhou and 1 night in Shenzhen in the sample framework",
     "Private arrival, Guangzhou-to-Shenzhen and departure transfers, plus private vehicle service during the day-by-day windows named in the written proposal",
     "multilingual guide, interpreter or bilingual business assistant during the confirmed service periods, with the exact role and hours stated before booking",
     "Pre-trip agenda review covering flights, meetings, exhibition sessions, supplier addresses, hotel geography and transfer feasibility",

@@ -21,3 +21,137 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.status {
+  color: var(--color-copy);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.status:empty {
+  display: none;
+}
+.status p {
+  margin: 0 0 1rem;
+}
+.context {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--color-line);
+  background: #fff;
+  color: #191919;
+}
+.context h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.context p {
+  margin: 0.75rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #525252;
+}
+.context textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.875rem;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  background: #fff;
+  color: #191919;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.7;
+  resize: vertical;
+}
+.contextActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 0.75rem;
+}
+.contextActions a,
+.contextActions button,
+.retry {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding-block: 0.5rem;
+  background: #fff;
+  color: #191919;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+.context :is(a, button, textarea):focus-visible,
+.retry:focus-visible {
+  outline: 2px solid #191919;
+  outline-offset: 4px;
+}
+
+/* Mobile reading and touch targets. */
+
+.formAnchor {
+  scroll-margin-top: calc(var(--site-nav-offset) + 1rem);
+  min-width: 0;
+}
+.formJump {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.notesDisclosure {
+  margin-top: 0.5rem;
+}
+.notesDisclosure summary {
+  min-height: 48px;
+  padding-block: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.notesDisclosure[open] summary {
+  margin-bottom: 0.5rem;
+}
+.context summary:focus-visible {
+  outline: 2px solid #191919;
+  outline-offset: 4px;
+}
+.wrap {
+  min-width: 0;
+}
+.wrap :global(.hs-form-frame) iframe {
+  display: block;
+  max-width: 100%;
+}
+@media (max-width: 767px) {
+  .context {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  .contextActions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
+  .contextActions a,
+  .contextActions button,
+  .retry {
+    min-height: 48px;
+  }
+  .fallback {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+  .fallback a {
+    display: inline-block;
+    padding-block: 0.45rem;
+  }
+}

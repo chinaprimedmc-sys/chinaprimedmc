@@ -80,9 +80,9 @@ test("museum duration, visible service boundaries and quote-only group units sur
     schema.additionalProperty.map(({ name, value }) => ({ label: name, value })),
     model.practicalities,
   );
-  assert.equal(catalog.pricing.status, "quote-only");
-  assert.equal(model.price.pricingUnit, "private-group");
-  assert.equal(model.price.fromUsd, undefined);
+  assert.equal(catalog.pricing.status, "published-from");
+  assert.equal(model.price.pricingUnit, "per-person");
+  assert.equal(model.price.fromUsd, 219);
   assert.doesNotMatch(JSON.stringify(model.price), /US\$|room categor|hotel standard/i);
   assert.match(model.answerSummary, /Pits 1, 2 and 3 when open/);
   assert.match(model.answerSummary, /Lintong, outside central Xi'an/);
@@ -188,7 +188,7 @@ test("the actual AI text routes and sitemap publish the same Xi'an facts and sta
   const section = text.split(`# Product: ${tour.title}\n`)[1].split("\n# Product:")[0];
   assert.ok(section.includes(model.answerSummary));
   for (const { value } of model.practicalities) assert.ok(section.includes(value));
-  assert.match(section, /Quote only; no public numerical starting price/);
+  assert.match(section, /Published starting price subject to the stated basis/);
   assert.doesNotMatch(section, /US\$|room categories/);
   const shortText = await short().text();
   assert.ok(shortText.includes(url));

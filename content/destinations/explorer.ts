@@ -14,7 +14,7 @@ export const destinationInterests = [
   { id: "heritage", label: "Living heritage", note: "Old towns, Silk Road stories and craft" },
   {
     id: "city",
-    label: "Future-facing cities",
+    label: "Modern cities",
     note: "Skylines, design, energy and easy connections",
   },
 ] as const;
@@ -31,7 +31,7 @@ export const destinationRegions = [
   {
     id: "southwest",
     label: "Southwest China",
-    note: "Pandas, spice, mountains and minority cultures",
+    note: "Pandas, spice, mountains and local cultures",
   },
   {
     id: "northeast",
@@ -95,7 +95,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     region: "north",
     kicker: "Imperial China",
     description:
-      "Plan the Forbidden City, a separate Great Wall day and hutong life with private guiding and transfers, allowing time for walking, tickets and your onward route.",
+      "Discover imperial Beijing, spend a day on the Great Wall and explore the hutongs, with private guiding and transfers planned around your interests and pace.",
     stay: "3–5 nights",
     bestFor: "A first trip to China",
     interests: ["icons", "heritage", "food"],
@@ -109,7 +109,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     region: "northwest",
     kicker: "Ancient capital",
     description:
-      "Plan the Terracotta Warriors and Xi’an’s Old City with private guiding, realistic transfer time and room for the City Wall, neighborhood food and Silk Road history.",
+      "Explore the Terracotta Warriors with a private guide, then make time for Xi’an’s City Wall, neighborhood food and the history of the Silk Road.",
     stay: "2–3 nights",
     bestFor: "History in context",
     interests: ["icons", "heritage", "food"],
@@ -122,7 +122,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     region: "east",
     kicker: "Modern China",
     description:
-      "Plan the Bund, Yu Garden and neighborhood walks with practical hotel choices, private guiding and transfers matched to your Shanghai airport or onward route.",
+      "Discover the Bund, Yu Garden and Shanghai’s neighborhood streets, with private guiding and time for the food, architecture and city life that interest you.",
     stay: "2–4 nights",
     bestFor: "An easy finale",
     interests: ["city", "food", "heritage"],
@@ -134,9 +134,9 @@ export const explorerDestinations: ExplorerDestination[] = [
     id: "chengdu",
     name: "Chengdu",
     region: "southwest",
-    kicker: "Pandas & Sichuan table",
+    kicker: "Pandas & Sichuan food",
     description:
-      "Plan a panda morning, Sichuan meals and time for tea, with private guiding, a practical Chengdu base and a separate Leshan or Jiuzhaigou extension if it fits.",
+      "Enjoy a panda morning, Sichuan cooking and time for tea. We’ll help you plan a Chengdu stay, with Leshan or Jiuzhaigou added when the route and time allow.",
     stay: "3–5 nights",
     bestFor: "Families and food lovers",
     interests: ["pandas", "food", "city"],
@@ -150,7 +150,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     region: "southwest",
     kicker: "Vertical megacity",
     description:
-      "Plan Chongqing’s river views, hillside neighborhoods and hotpot with realistic walking, hotel access and private transfers between districts.",
+      "Explore Chongqing’s river views, hillside neighborhoods and hotpot, with private guiding and transfers planned around the city’s hills and your pace.",
     stay: "2–3 nights",
     bestFor: "Urban energy",
     interests: ["city", "food"],
@@ -163,9 +163,9 @@ export const explorerDestinations: ExplorerDestination[] = [
     region: "southwest",
     kicker: "Giant Buddha & river landscape",
     description:
-      "Plan the Leshan Giant Buddha from Chengdu with a clear choice of boat or walking views, realistic transfers and a route matched to steps, weather and mobility.",
+      "Visit the Leshan Giant Buddha from Chengdu, choosing a river view or a closer land visit to suit your interests and walking ability.",
     stay: "Day trip or 1 night",
-    bestFor: "Culture and monumental heritage",
+    bestFor: "Buddhist heritage & river scenery",
     interests: ["icons", "heritage", "landscape"],
     relatedDestinationIds: ["chengdu"],
     image: destinationGuideAssets.leshan.hero,
@@ -174,9 +174,9 @@ export const explorerDestinations: ExplorerDestination[] = [
     id: "jiuzhaigou",
     name: "Jiuzhaigou",
     region: "southwest",
-    kicker: "Alpine colour",
+    kicker: "Mountain lakes & forests",
     description:
-      "Plan Jiuzhaigou’s lakes and forests with realistic mountain transfers, a practical hotel base, park-bus and walking choices, and time for altitude and weather.",
+      "Explore Jiuzhaigou’s lakes, forests and waterfalls with a well-planned mountain journey, a suitable hotel base and walks chosen around your interests and comfort.",
     stay: "3–4 nights",
     bestFor: "Landscape seekers",
     interests: ["landscape"],
@@ -187,9 +187,9 @@ export const explorerDestinations: ExplorerDestination[] = [
     id: "zhangjiajie",
     name: "Zhangjiajie",
     region: "central",
-    kicker: "Sandstone worlds",
+    kicker: "Sandstone peaks & forests",
     description:
-      "Vertical pillar forests and dramatic viewpoints, with route design crucial for crowd and walking comfort.",
+      "Explore Zhangjiajie’s sandstone peaks and forest valleys, with private guiding, well-chosen hotel bases and a separate Tianmen Mountain visit if you choose.",
     stay: "3–4 nights",
     bestFor: "Big scenery",
     interests: ["landscape"],

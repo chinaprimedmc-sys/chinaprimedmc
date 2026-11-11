@@ -65,7 +65,7 @@ test("Li River metadata and H1 identify the same bookable service and stable can
   assert.equal(tour.hero.secondary.href, "#included");
 });
 
-test("visible facts, cruise-service limits and quote-only units survive schema projection", () => {
+test("visible facts, cruise-service limits and published price units survive schema projection", () => {
   const schema = itineraryProductSchema({
     ...tourSearchSpecification(tour),
     name: model.headline,
@@ -81,9 +81,9 @@ test("visible facts, cruise-service limits and quote-only units survive schema p
     schema.additionalProperty.map(({ name, value }) => ({ label: name, value })),
     model.practicalities,
   );
-  assert.equal(catalog.pricing.status, "quote-only");
-  assert.equal(model.price.pricingUnit, "private-group");
-  assert.equal(model.price.fromUsd, undefined);
+  assert.equal(catalog.pricing.status, "published-from");
+  assert.equal(model.price.pricingUnit, "per-person");
+  assert.equal(model.price.fromUsd, 349);
   assert.doesNotMatch(JSON.stringify(model.price), /US\$|room categor|hotel standard/i);
   assert.ok(!catalog.planningNeedFilters.includes("mobility-aware"));
   assert.ok(!catalog.planningNeedFilters.includes("slower-pacing"));
@@ -193,14 +193,14 @@ test("existing cruise guides return to this product and destination resources re
   assert.doesNotMatch(JSON.stringify(tour.related), /great-wall-private-china-travel/);
 });
 
-test("AI text routes and sitemap expose the same base, scope and quote-only product", async () => {
+test("AI text routes and sitemap expose the same base, scope and published starting-price product", async () => {
   const { GET: full } = await import("../app/llms-full.txt/route.ts");
   const { GET: short } = await import("../app/llms.txt/route.ts");
   const text = await full().text();
   const section = text.split("# Product: " + tour.title + "\n")[1].split("\n# Product:")[0];
   assert.ok(section.includes(model.answerSummary));
   for (const { value } of model.practicalities) assert.ok(section.includes(value));
-  assert.match(section, /Quote only; no public numerical starting price/);
+  assert.match(section, /Published starting price subject to the stated basis/);
   assert.doesNotMatch(section, /US\$|room categories/);
   const shortText = await short().text();
   assert.ok(shortText.includes(url));

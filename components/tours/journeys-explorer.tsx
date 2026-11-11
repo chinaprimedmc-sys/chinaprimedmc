@@ -419,7 +419,7 @@ export function JourneysExplorer({
         </div>
       </div>
 
-      <main className={styles.wrap} id="journey-results">
+      <section className={styles.wrap} id="journey-results" aria-label="Journey results">
         <div className={styles.explain}>
           <p>
             {state.tier === "all"
@@ -548,7 +548,7 @@ export function JourneysExplorer({
             </div>
           ) : null}
         </div>
-      </main>
+      </section>
 
       <dialog
         ref={sheet}

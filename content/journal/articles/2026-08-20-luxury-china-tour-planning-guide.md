@@ -141,11 +141,11 @@ We would usually prioritize:
 
 We would question a costly upgrade that exists mainly for the proposal: another city, an airport lounge on a simple domestic sector, a performance nobody requested or a prestige restaurant that ignores how the day feels.
 
-## A published premium price with visible assumptions
+## A private quote with visible service assumptions
 
-AVIORA's 12-day easier-paced journey is priced individually for your dates and party. The published design includes 11 nights in selected premium five-star hotels, private guiding and vehicles on confirmed touring days, listed entrance tickets, Beijing-Xi'an first-class rail, a nonstop Xi'an-Shanghai economy flight, selected meals, listed private cultural encounters and China-based journey support.
+AVIORA's 12-day easier-paced journey is priced individually for your dates and party. The published design includes 11 nights in selected premium five-star hotels, local private guides and drivers on Days 2–4, 7–8 and 10, agreed transfers and admissions, Beijing–Xi'an first-class rail, a Xi'an–Shanghai economy flight and hotel breakfasts on Days 2–12. Days 5 and 11 are independent free days without scheduled guiding or a vehicle. Additional meals, cultural encounters and specialist hosts are quoted separately.
 
-Peninsula-level hotels, larger rooms and transport upgrades are quoted separately. Because the service basis is published, you can compare what a written proposal includes before you compare totals.
+Specific hotel requests, larger rooms and transport upgrades are quoted separately. Because the service basis is published, you can compare what a written proposal includes before you compare totals.
 
 ## FAQ
 

@@ -19,3 +19,10 @@ dist
 .next-*-cache-stale-*/
 artifacts/
 outputs/
+
+# Rebuilt from registered content and source photography before every build.
+public/og/generated/
+playwright-report/
+test-results/
+.lighthouseci/
+public/maps/vendor/

@@ -115,7 +115,7 @@ Arranging overseas travel for aging parents should feel rewarding, not worrying.
 
 With proper pacing, step-free options and dedicated local coordination, China's great historic sights become a smooth and comfortable experience.
 
-If you are planning an unhurried, fatigue-free trip for your family, explore [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour), designed around low-step transfers, a 3:30 PM return to the hotel and 24/7 support.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## Sources
 

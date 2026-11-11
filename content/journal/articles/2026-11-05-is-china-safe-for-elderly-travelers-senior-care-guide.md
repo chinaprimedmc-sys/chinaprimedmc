@@ -18,12 +18,12 @@ Beijing, Shanghai and Xi'an are major cities with modern infrastructure, large h
 
 Here is a clear look at health, dietary safety and accessibility for senior travel in China.
 
-## 1. Medical safety and a 24/7 channel
+## 1. Agree assistance and medical arrangements before travel
 
 Medical safety matters most for mature travelers, and a good operator sets up the plan before you arrive.
 
 - **International clinics:** the big cities have international hospitals and clinics, such as United Family Healthcare in Beijing and Shanghai, that offer English-language care.
-- **A 24/7 medical channel:** your China-based team has direct access to English-speaking international medical departments at leading hospitals, so you are seen quickly if you feel unwell.
+- **Operating contact:** confirm whom to call and the agreed escalation process. Clinical availability, language, waiting time and fees depend on the provider; a private tour does not guarantee priority treatment.
 - **Insurance:** travel insurance with medical cover is not included in a tour price, and we recommend arranging it before you travel. Please also speak to your own doctor before a long flight.
 
 ## 2. Dietary safety: gluten-free, low-sodium and allergens
@@ -38,7 +38,7 @@ Chinese food is wonderfully varied, but soy sauce contains wheat, peanut oil is 
 
 Restroom quality is a frequent worry for older travelers. Public facilities in China have improved a great deal, and a private itinerary goes a step further with **pre-vetted stops**.
 
-- **Step-free, seated toilets:** every restroom on the planned route is checked in advance to be clean, step-free and Western-style.
+- **Toilet access:** explain essential access needs and ask which facilities can be checked. Public facility conditions and availability may change.
 - **Rest stops that fit your day:** your guide plans stops around your needs, not a fixed timetable.
 
 ## 4. Vehicle comfort and mobility
@@ -66,13 +66,13 @@ Not on the Beijing, Xi'an and Shanghai route. All three cities are at low elevat
 
 ### Who do we call if someone feels unwell?
 
-Your guide is with you on touring days, and the 24/7 medical channel gives you direct access to English-speaking international medical departments at leading hospitals. We share the contact details before you travel.
+Use the confirmed operating contact to request logistical help. In an emergency, seek appropriate emergency assistance; guide support does not replace clinical assessment, insurance or medical services. Provider availability, language and admission procedures need checking.
 
 ## Peace of mind for you and your family
 
-A trip to China with elderly parents can be inspiring and easy. With a 24/7 medical channel, careful meal planning and attention to mobility, you can travel with confidence.
+A trip to China with elderly parents can be inspiring and easy. Confirm contact procedures, dietary feasibility and mobility requirements before travel, with suitable insurance and realistic expectations.
 
-To learn more about how we look after senior guests, see the full itinerary of [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour) or contact us for a private consultation.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## Sources
 

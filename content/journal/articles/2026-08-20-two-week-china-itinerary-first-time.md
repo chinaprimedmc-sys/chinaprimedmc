@@ -150,7 +150,7 @@ Read the [best first-trip destination comparison](/journal/best-places-to-visit-
 
 ## What this route costs - and what the published price does not prove
 
-Our [12-day Shanghai, Chengdu, Xi'an and Beijing private journey](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) is a separate, clearly defined route with 11 hotel nights. Its date-specific proposal confirms hotels, transport, guiding, admissions and total price; no unverified starting price is shown.
+Our [12-day Shanghai, Chengdu, Xi'an and Beijing private journey](/tours/beijing-xian-chengdu-shanghai-private-11-day-tour) is a separate, clearly defined route with 11 hotel nights. Its date-specific proposal confirms hotels, transport, guiding, admissions and total price; the published starting rate is a guide, with final availability and services confirmed in writing.
 
 It is a useful benchmark for the same four-city geography, not a quote for this 14-day article. Adding three days changes the hotel nights, guide and vehicle coverage, meals, tickets and possibly the domestic transport schedule. A proposal should show those additions instead of multiplying an average daily price. Two extra free days and one transfer day do not cost the same as three privately guided touring days.
 

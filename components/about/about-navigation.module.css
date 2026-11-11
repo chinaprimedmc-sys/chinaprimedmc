@@ -42,3 +42,25 @@
     font-size: 0.875rem;
   }
 }
+
+/* Mobile reading and touch targets. */
+
+@media (max-width: 600px) {
+  .navigation ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 0.5rem;
+    align-items: stretch;
+  }
+  .navigation li {
+    display: flex;
+    min-width: 0;
+  }
+  .navigation a {
+    width: 100%;
+    min-height: 56px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+}

@@ -119,6 +119,50 @@
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
+/* Share content tracks across each card row; longer copy expands the whole row. */
+@media (min-width: 700px) {
+  @supports (grid-template-rows: subgrid) {
+    .card:not([data-featured]) {
+      display: grid;
+      grid-row: span 7;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+    }
+    .card:not([data-featured]) .cardBody,
+    .card:not([data-featured]) .cardFoot {
+      display: contents;
+    }
+    .card:not([data-featured]) .cardMedia {
+      grid-row: 1;
+    }
+    .card:not([data-featured]) .cardMeta {
+      grid-row: 2;
+      padding-top: 1.5rem;
+    }
+    .card:not([data-featured]) .cardBody h3 {
+      grid-row: 3;
+      margin-top: 0.75rem;
+    }
+    .card:not([data-featured]) .cardLine {
+      grid-row: 4;
+      margin-top: 0.75rem;
+    }
+    .card:not([data-featured]) .suitability {
+      grid-row: 5;
+      margin-top: 0.75rem;
+    }
+    .card:not([data-featured]) .cardPrice {
+      grid-row: 6;
+      align-content: start;
+      padding-top: 2rem;
+    }
+    .card:not([data-featured]) .cardGo {
+      grid-row: 7;
+      align-self: start;
+      margin-block: 1rem 1.5rem;
+    }
+  }
+}
 @media (hover: hover) and (pointer: fine) {
   .card:hover .cardMedia img {
     transform: scale(1.025);

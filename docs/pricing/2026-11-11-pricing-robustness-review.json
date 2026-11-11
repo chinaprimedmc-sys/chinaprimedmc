@@ -1,0 +1,1918 @@
+{
+  "asOf": "2026-11-11",
+  "purpose": "pricing robustness review; strategic proposal, not market-validated rate",
+  "supersedes": "v1 recommendations for discussion; original historical model retained",
+  "assumptions": {
+    "fxCnyPerUsd": 7.2,
+    "procurementReserveRate": 0.05,
+    "paymentFeeRate": 0.03,
+    "acquisitionRate": 0.1,
+    "corporateOverheadRate": 0.08,
+    "procurementStressRates": [0.15, 0.3],
+    "alternativeAgencyCommissionRate": 0.15,
+    "agencyCommissionReplacesAcquisition": true,
+    "profitIsNotActualOrNetAfterTax": true
+  },
+  "products": [
+    {
+      "slug": "private-mutianyu-great-wall-day-tour",
+      "nameZh": "慕田峪长城私人一日游",
+      "basisPartySize": 2,
+      "oldFromUsd": 225.0,
+      "revisedFromUsd": 249,
+      "proposedLabel": "From USD 249",
+      "increaseRate": 0.10666666666666669,
+      "originalBaseCostCny": 2120,
+      "revisedBaseCostCny": 2120,
+      "configurationUpgradeCostCny": 0,
+      "reason": "基础车导日游；适度提高收入缓冲，缆车仍另计，不把涨价解释为新增含项。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 450.0,
+        "reservedDeliveryCostUsd": 309.1666666666667,
+        "paymentFeesUsd": 13.5,
+        "acquisitionOrCommissionUsd": 45.0,
+        "corporateOverheadAllocationUsd": 36.0,
+        "preTaxOperatingRemainderUsd": 46.33333333333332,
+        "preTaxOperatingRemainderRate": 0.10296296296296303
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 450.0,
+        "reservedDeliveryCostUsd": 355.54166666666663,
+        "paymentFeesUsd": 13.5,
+        "acquisitionOrCommissionUsd": 45.0,
+        "corporateOverheadAllocationUsd": 36.0,
+        "preTaxOperatingRemainderUsd": -0.04166666666662877,
+        "preTaxOperatingRemainderRate": -9.259259259242203e-5
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 427.5,
+        "reservedDeliveryCostUsd": 355.54166666666663,
+        "paymentFeesUsd": 12.825,
+        "acquisitionOrCommissionUsd": 42.75,
+        "corporateOverheadAllocationUsd": 34.2,
+        "preTaxOperatingRemainderUsd": -17.81666666666663,
+        "preTaxOperatingRemainderRate": -0.04167641325536042
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 450.0,
+        "reservedDeliveryCostUsd": 309.1666666666667,
+        "paymentFeesUsd": 13.5,
+        "acquisitionOrCommissionUsd": 67.5,
+        "corporateOverheadAllocationUsd": 36.0,
+        "preTaxOperatingRemainderUsd": 23.83333333333332,
+        "preTaxOperatingRemainderRate": 0.05296296296296299
+      },
+      "revisedBase": {
+        "revenueUsd": 498.0,
+        "reservedDeliveryCostUsd": 309.1666666666667,
+        "paymentFeesUsd": 14.94,
+        "acquisitionOrCommissionUsd": 49.8,
+        "corporateOverheadAllocationUsd": 39.84,
+        "preTaxOperatingRemainderUsd": 84.25333333333337,
+        "preTaxOperatingRemainderRate": 0.1691834002677376
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 498.0,
+        "reservedDeliveryCostUsd": 355.54166666666663,
+        "paymentFeesUsd": 14.94,
+        "acquisitionOrCommissionUsd": 49.8,
+        "corporateOverheadAllocationUsd": 39.84,
+        "preTaxOperatingRemainderUsd": 37.878333333333416,
+        "preTaxOperatingRemainderRate": 0.07606091030789841
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 498.0,
+        "reservedDeliveryCostUsd": 401.9166666666667,
+        "paymentFeesUsd": 14.94,
+        "acquisitionOrCommissionUsd": 49.8,
+        "corporateOverheadAllocationUsd": 39.84,
+        "preTaxOperatingRemainderUsd": -8.496666666666657,
+        "preTaxOperatingRemainderRate": -0.017061579651941106
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 498.0,
+        "reservedDeliveryCostUsd": 309.1666666666667,
+        "paymentFeesUsd": 14.94,
+        "acquisitionOrCommissionUsd": 74.69999999999999,
+        "corporateOverheadAllocationUsd": 39.84,
+        "preTaxOperatingRemainderUsd": 59.35333333333334,
+        "preTaxOperatingRemainderRate": 0.11918340026773755
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 2120,
+          "recommendedGroupUsd": 498,
+          "referencePerPersonUsd": 249.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 2500,
+          "recommendedGroupUsd": 590,
+          "referencePerPersonUsd": 147.5
+        }
+      ]
+    },
+    {
+      "slug": "private-shanghai-day-tour-guide-driver",
+      "nameZh": "上海私人城市一日游",
+      "basisPartySize": 2,
+      "oldFromUsd": 215.0,
+      "revisedFromUsd": 239,
+      "proposedLabel": "From USD 239",
+      "increaseRate": 0.1116279069767443,
+      "originalBaseCostCny": 2030,
+      "revisedBaseCostCny": 2030,
+      "configurationUpgradeCostCny": 0,
+      "reason": "车导组合和中心城区定位不变；提高约 11%，仍须证明讲解与衔接价值。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 430.0,
+        "reservedDeliveryCostUsd": 296.0416666666667,
+        "paymentFeesUsd": 12.899999999999999,
+        "acquisitionOrCommissionUsd": 43.0,
+        "corporateOverheadAllocationUsd": 34.4,
+        "preTaxOperatingRemainderUsd": 43.65833333333335,
+        "preTaxOperatingRemainderRate": 0.10153100775193802
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 430.0,
+        "reservedDeliveryCostUsd": 340.44791666666663,
+        "paymentFeesUsd": 12.899999999999999,
+        "acquisitionOrCommissionUsd": 43.0,
+        "corporateOverheadAllocationUsd": 34.4,
+        "preTaxOperatingRemainderUsd": -0.7479166666666338,
+        "preTaxOperatingRemainderRate": -0.0017393410852712954
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 408.49999999999994,
+        "reservedDeliveryCostUsd": 340.44791666666663,
+        "paymentFeesUsd": 12.254999999999999,
+        "acquisitionOrCommissionUsd": 40.85,
+        "corporateOverheadAllocationUsd": 32.68,
+        "preTaxOperatingRemainderUsd": -17.732916666666686,
+        "preTaxOperatingRemainderRate": -0.04340983272133825
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 430.0,
+        "reservedDeliveryCostUsd": 296.0416666666667,
+        "paymentFeesUsd": 12.899999999999999,
+        "acquisitionOrCommissionUsd": 64.5,
+        "corporateOverheadAllocationUsd": 34.4,
+        "preTaxOperatingRemainderUsd": 22.158333333333328,
+        "preTaxOperatingRemainderRate": 0.051531007751937974
+      },
+      "revisedBase": {
+        "revenueUsd": 478.0,
+        "reservedDeliveryCostUsd": 296.0416666666667,
+        "paymentFeesUsd": 14.339999999999998,
+        "acquisitionOrCommissionUsd": 47.800000000000004,
+        "corporateOverheadAllocationUsd": 38.239999999999995,
+        "preTaxOperatingRemainderUsd": 81.57833333333333,
+        "preTaxOperatingRemainderRate": 0.17066596931659694
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 478.0,
+        "reservedDeliveryCostUsd": 340.44791666666663,
+        "paymentFeesUsd": 14.339999999999998,
+        "acquisitionOrCommissionUsd": 47.800000000000004,
+        "corporateOverheadAllocationUsd": 38.239999999999995,
+        "preTaxOperatingRemainderUsd": 37.17208333333335,
+        "preTaxOperatingRemainderRate": 0.07776586471408653
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 478.0,
+        "reservedDeliveryCostUsd": 384.8541666666667,
+        "paymentFeesUsd": 14.339999999999998,
+        "acquisitionOrCommissionUsd": 47.800000000000004,
+        "corporateOverheadAllocationUsd": 38.239999999999995,
+        "preTaxOperatingRemainderUsd": -7.2341666666667,
+        "preTaxOperatingRemainderRate": -0.015134239888424106
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 478.0,
+        "reservedDeliveryCostUsd": 296.0416666666667,
+        "paymentFeesUsd": 14.339999999999998,
+        "acquisitionOrCommissionUsd": 71.7,
+        "corporateOverheadAllocationUsd": 38.239999999999995,
+        "preTaxOperatingRemainderUsd": 57.67833333333335,
+        "preTaxOperatingRemainderRate": 0.1206659693165969
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 2030,
+          "recommendedGroupUsd": 478,
+          "referencePerPersonUsd": 239.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 2370,
+          "recommendedGroupUsd": 560,
+          "referencePerPersonUsd": 140.0
+        }
+      ]
+    },
+    {
+      "slug": "private-xian-terracotta-warriors-day-tour",
+      "nameZh": "西安兵马俑与老城一日游",
+      "basisPartySize": 2,
+      "oldFromUsd": 195.0,
+      "revisedFromUsd": 219,
+      "proposedLabel": "From USD 219",
+      "increaseRate": 0.12307692307692308,
+      "originalBaseCostCny": 1840,
+      "revisedBaseCostCny": 1840,
+      "configurationUpgradeCostCny": 0,
+      "reason": "保留兵马俑＋老城基础服务；涨幅约 12%，不加入未计价工坊。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 390.0,
+        "reservedDeliveryCostUsd": 268.3333333333333,
+        "paymentFeesUsd": 11.7,
+        "acquisitionOrCommissionUsd": 39.0,
+        "corporateOverheadAllocationUsd": 31.200000000000003,
+        "preTaxOperatingRemainderUsd": 39.76666666666669,
+        "preTaxOperatingRemainderRate": 0.101965811965812
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 390.0,
+        "reservedDeliveryCostUsd": 308.5833333333333,
+        "paymentFeesUsd": 11.7,
+        "acquisitionOrCommissionUsd": 39.0,
+        "corporateOverheadAllocationUsd": 31.200000000000003,
+        "preTaxOperatingRemainderUsd": -0.48333333333327266,
+        "preTaxOperatingRemainderRate": -0.0012393162393160573
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 370.5,
+        "reservedDeliveryCostUsd": 308.5833333333333,
+        "paymentFeesUsd": 11.114999999999998,
+        "acquisitionOrCommissionUsd": 37.05,
+        "corporateOverheadAllocationUsd": 29.639999999999997,
+        "preTaxOperatingRemainderUsd": -15.888333333333296,
+        "preTaxOperatingRemainderRate": -0.04288349077822751
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 390.0,
+        "reservedDeliveryCostUsd": 268.3333333333333,
+        "paymentFeesUsd": 11.7,
+        "acquisitionOrCommissionUsd": 58.5,
+        "corporateOverheadAllocationUsd": 31.200000000000003,
+        "preTaxOperatingRemainderUsd": 20.266666666666676,
+        "preTaxOperatingRemainderRate": 0.05196581196581196
+      },
+      "revisedBase": {
+        "revenueUsd": 438.0,
+        "reservedDeliveryCostUsd": 268.3333333333333,
+        "paymentFeesUsd": 13.139999999999999,
+        "acquisitionOrCommissionUsd": 43.800000000000004,
+        "corporateOverheadAllocationUsd": 35.04,
+        "preTaxOperatingRemainderUsd": 77.68666666666667,
+        "preTaxOperatingRemainderRate": 0.17736681887366823
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 438.0,
+        "reservedDeliveryCostUsd": 308.5833333333333,
+        "paymentFeesUsd": 13.139999999999999,
+        "acquisitionOrCommissionUsd": 43.800000000000004,
+        "corporateOverheadAllocationUsd": 35.04,
+        "preTaxOperatingRemainderUsd": 37.43666666666671,
+        "preTaxOperatingRemainderRate": 0.08547184170471855
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 438.0,
+        "reservedDeliveryCostUsd": 348.8333333333333,
+        "paymentFeesUsd": 13.139999999999999,
+        "acquisitionOrCommissionUsd": 43.800000000000004,
+        "corporateOverheadAllocationUsd": 35.04,
+        "preTaxOperatingRemainderUsd": -2.8133333333333135,
+        "preTaxOperatingRemainderRate": -0.006423135464231344
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 438.0,
+        "reservedDeliveryCostUsd": 268.3333333333333,
+        "paymentFeesUsd": 13.139999999999999,
+        "acquisitionOrCommissionUsd": 65.69999999999999,
+        "corporateOverheadAllocationUsd": 35.04,
+        "preTaxOperatingRemainderUsd": 55.78666666666663,
+        "preTaxOperatingRemainderRate": 0.12736681887366819
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 1840,
+          "recommendedGroupUsd": 438,
+          "referencePerPersonUsd": 219.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 2340,
+          "recommendedGroupUsd": 560,
+          "referencePerPersonUsd": 140.0
+        }
+      ]
+    },
+    {
+      "slug": "private-chengdu-panda-day-tour-early-morning",
+      "nameZh": "成都熊猫与人民公园一日游",
+      "basisPartySize": 2,
+      "oldFromUsd": 175.0,
+      "revisedFromUsd": 199,
+      "proposedLabel": "From USD 199",
+      "increaseRate": 0.13714285714285723,
+      "originalBaseCostCny": 1650,
+      "revisedBaseCostCny": 1650,
+      "configurationUpgradeCostCny": 0,
+      "reason": "早班服务及取消／延时风险值得计提；不以动物互动作溢价依据。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 350.0,
+        "reservedDeliveryCostUsd": 240.625,
+        "paymentFeesUsd": 10.499999999999998,
+        "acquisitionOrCommissionUsd": 35.0,
+        "corporateOverheadAllocationUsd": 28.0,
+        "preTaxOperatingRemainderUsd": 35.87500000000002,
+        "preTaxOperatingRemainderRate": 0.10250000000000004
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 350.0,
+        "reservedDeliveryCostUsd": 276.71874999999994,
+        "paymentFeesUsd": 10.499999999999998,
+        "acquisitionOrCommissionUsd": 35.0,
+        "corporateOverheadAllocationUsd": 28.0,
+        "preTaxOperatingRemainderUsd": -0.21874999999994316,
+        "preTaxOperatingRemainderRate": -0.0006249999999998757
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 332.5,
+        "reservedDeliveryCostUsd": 276.71874999999994,
+        "paymentFeesUsd": 9.975,
+        "acquisitionOrCommissionUsd": 33.25,
+        "corporateOverheadAllocationUsd": 26.6,
+        "preTaxOperatingRemainderUsd": -14.043749999999969,
+        "preTaxOperatingRemainderRate": -0.04223684210526302
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 350.0,
+        "reservedDeliveryCostUsd": 240.625,
+        "paymentFeesUsd": 10.499999999999998,
+        "acquisitionOrCommissionUsd": 52.5,
+        "corporateOverheadAllocationUsd": 28.0,
+        "preTaxOperatingRemainderUsd": 18.374999999999993,
+        "preTaxOperatingRemainderRate": 0.05249999999999999
+      },
+      "revisedBase": {
+        "revenueUsd": 398.0,
+        "reservedDeliveryCostUsd": 240.625,
+        "paymentFeesUsd": 11.939999999999998,
+        "acquisitionOrCommissionUsd": 39.8,
+        "corporateOverheadAllocationUsd": 31.839999999999996,
+        "preTaxOperatingRemainderUsd": 73.795,
+        "preTaxOperatingRemainderRate": 0.18541457286432161
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 398.0,
+        "reservedDeliveryCostUsd": 276.71874999999994,
+        "paymentFeesUsd": 11.939999999999998,
+        "acquisitionOrCommissionUsd": 39.8,
+        "corporateOverheadAllocationUsd": 31.839999999999996,
+        "preTaxOperatingRemainderUsd": 37.70125000000004,
+        "preTaxOperatingRemainderRate": 0.09472675879396997
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 398.0,
+        "reservedDeliveryCostUsd": 312.8125,
+        "paymentFeesUsd": 11.939999999999998,
+        "acquisitionOrCommissionUsd": 39.8,
+        "corporateOverheadAllocationUsd": 31.839999999999996,
+        "preTaxOperatingRemainderUsd": 1.6075000000000095,
+        "preTaxOperatingRemainderRate": 0.004038944723618099
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 398.0,
+        "reservedDeliveryCostUsd": 240.625,
+        "paymentFeesUsd": 11.939999999999998,
+        "acquisitionOrCommissionUsd": 59.699999999999996,
+        "corporateOverheadAllocationUsd": 31.839999999999996,
+        "preTaxOperatingRemainderUsd": 53.89499999999998,
+        "preTaxOperatingRemainderRate": 0.13541457286432157
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 1650,
+          "recommendedGroupUsd": 398,
+          "referencePerPersonUsd": 199.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 2010,
+          "recommendedGroupUsd": 490,
+          "referencePerPersonUsd": 122.5
+        }
+      ]
+    },
+    {
+      "slug": "guilin-yangshuo-li-river-cruise-private-day-tour",
+      "nameZh": "桂林漓江四星公共游船至阳朔一日游",
+      "basisPartySize": 2,
+      "oldFromUsd": 320.0,
+      "revisedFromUsd": 349,
+      "proposedLabel": "From USD 349",
+      "increaseRate": 0.09062499999999996,
+      "originalBaseCostCny": 3020,
+      "revisedBaseCostCny": 3020,
+      "configurationUpgradeCostCny": 0,
+      "reason": "只适度上调；公共四星船舱位与阳朔地面服务的边界保持，若指定优选席位须重算。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 640.0,
+        "reservedDeliveryCostUsd": 440.41666666666663,
+        "paymentFeesUsd": 19.2,
+        "acquisitionOrCommissionUsd": 64.0,
+        "corporateOverheadAllocationUsd": 51.199999999999996,
+        "preTaxOperatingRemainderUsd": 65.18333333333335,
+        "preTaxOperatingRemainderRate": 0.1018489583333334
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 640.0,
+        "reservedDeliveryCostUsd": 506.47916666666663,
+        "paymentFeesUsd": 19.2,
+        "acquisitionOrCommissionUsd": 64.0,
+        "corporateOverheadAllocationUsd": 51.199999999999996,
+        "preTaxOperatingRemainderUsd": -0.8791666666665934,
+        "preTaxOperatingRemainderRate": -0.0013736979166665275
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 607.9999999999999,
+        "reservedDeliveryCostUsd": 506.47916666666663,
+        "paymentFeesUsd": 18.239999999999995,
+        "acquisitionOrCommissionUsd": 60.8,
+        "corporateOverheadAllocationUsd": 48.63999999999999,
+        "preTaxOperatingRemainderUsd": -26.159166666666668,
+        "preTaxOperatingRemainderRate": -0.043024945175438534
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 640.0,
+        "reservedDeliveryCostUsd": 440.41666666666663,
+        "paymentFeesUsd": 19.2,
+        "acquisitionOrCommissionUsd": 95.99999999999999,
+        "corporateOverheadAllocationUsd": 51.199999999999996,
+        "preTaxOperatingRemainderUsd": 33.183333333333344,
+        "preTaxOperatingRemainderRate": 0.05184895833333336
+      },
+      "revisedBase": {
+        "revenueUsd": 698.0,
+        "reservedDeliveryCostUsd": 440.41666666666663,
+        "paymentFeesUsd": 20.94,
+        "acquisitionOrCommissionUsd": 69.80000000000001,
+        "corporateOverheadAllocationUsd": 55.84,
+        "preTaxOperatingRemainderUsd": 111.00333333333342,
+        "preTaxOperatingRemainderRate": 0.15903056351480427
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 698.0,
+        "reservedDeliveryCostUsd": 506.47916666666663,
+        "paymentFeesUsd": 20.94,
+        "acquisitionOrCommissionUsd": 69.80000000000001,
+        "corporateOverheadAllocationUsd": 55.84,
+        "preTaxOperatingRemainderUsd": 44.940833333333465,
+        "preTaxOperatingRemainderRate": 0.064385148042025
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 698.0,
+        "reservedDeliveryCostUsd": 572.5416666666666,
+        "paymentFeesUsd": 20.94,
+        "acquisitionOrCommissionUsd": 69.80000000000001,
+        "corporateOverheadAllocationUsd": 55.84,
+        "preTaxOperatingRemainderUsd": -21.121666666666606,
+        "preTaxOperatingRemainderRate": -0.030260267430754495
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 698.0,
+        "reservedDeliveryCostUsd": 440.41666666666663,
+        "paymentFeesUsd": 20.94,
+        "acquisitionOrCommissionUsd": 104.7,
+        "corporateOverheadAllocationUsd": 55.84,
+        "preTaxOperatingRemainderUsd": 76.1033333333334,
+        "preTaxOperatingRemainderRate": 0.10903056351480422
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 3020,
+          "recommendedGroupUsd": 698,
+          "referencePerPersonUsd": 349.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 4260,
+          "recommendedGroupUsd": 990,
+          "referencePerPersonUsd": 247.5
+        }
+      ]
+    },
+    {
+      "slug": "beijing-xian-shanghai-private-10-day-tour",
+      "nameZh": "北京—西安—上海十天经典初访",
+      "basisPartySize": 2,
+      "oldFromUsd": 2650.0,
+      "revisedFromUsd": 3290,
+      "proposedLabel": "From USD 3,290",
+      "increaseRate": 0.2415094339622641,
+      "originalBaseCostCny": 24800,
+      "revisedBaseCostCny": 24800,
+      "configurationUpgradeCostCny": 0,
+      "reason": "多城直客主力，需要为获客、跨城异常和公司运营留空间；维持四星主档与二等座计价，不暗改五星。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 5300.0,
+        "reservedDeliveryCostUsd": 3616.6666666666665,
+        "paymentFeesUsd": 159.0,
+        "acquisitionOrCommissionUsd": 530.0,
+        "corporateOverheadAllocationUsd": 424.0,
+        "preTaxOperatingRemainderUsd": 570.3333333333335,
+        "preTaxOperatingRemainderRate": 0.10761006289308184
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 5300.0,
+        "reservedDeliveryCostUsd": 4159.166666666666,
+        "paymentFeesUsd": 159.0,
+        "acquisitionOrCommissionUsd": 530.0,
+        "corporateOverheadAllocationUsd": 424.0,
+        "preTaxOperatingRemainderUsd": 27.83333333333404,
+        "preTaxOperatingRemainderRate": 0.005251572327044207
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 5035.0,
+        "reservedDeliveryCostUsd": 4159.166666666666,
+        "paymentFeesUsd": 151.04999999999998,
+        "acquisitionOrCommissionUsd": 503.5,
+        "corporateOverheadAllocationUsd": 402.79999999999995,
+        "preTaxOperatingRemainderUsd": -181.5166666666659,
+        "preTaxOperatingRemainderRate": -0.036050976497848275
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 5300.0,
+        "reservedDeliveryCostUsd": 3616.6666666666665,
+        "paymentFeesUsd": 159.0,
+        "acquisitionOrCommissionUsd": 795.0,
+        "corporateOverheadAllocationUsd": 424.0,
+        "preTaxOperatingRemainderUsd": 305.33333333333354,
+        "preTaxOperatingRemainderRate": 0.05761006289308179
+      },
+      "revisedBase": {
+        "revenueUsd": 6580.0,
+        "reservedDeliveryCostUsd": 3616.6666666666665,
+        "paymentFeesUsd": 197.39999999999998,
+        "acquisitionOrCommissionUsd": 658.0,
+        "corporateOverheadAllocationUsd": 526.4,
+        "preTaxOperatingRemainderUsd": 1581.5333333333333,
+        "preTaxOperatingRemainderRate": 0.2403546099290781
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 6580.0,
+        "reservedDeliveryCostUsd": 4159.166666666666,
+        "paymentFeesUsd": 197.39999999999998,
+        "acquisitionOrCommissionUsd": 658.0,
+        "corporateOverheadAllocationUsd": 526.4,
+        "preTaxOperatingRemainderUsd": 1039.033333333334,
+        "preTaxOperatingRemainderRate": 0.15790780141843985
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 6580.0,
+        "reservedDeliveryCostUsd": 4701.666666666667,
+        "paymentFeesUsd": 197.39999999999998,
+        "acquisitionOrCommissionUsd": 658.0,
+        "corporateOverheadAllocationUsd": 526.4,
+        "preTaxOperatingRemainderUsd": 496.5333333333334,
+        "preTaxOperatingRemainderRate": 0.0754609929078015
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 6580.0,
+        "reservedDeliveryCostUsd": 3616.6666666666665,
+        "paymentFeesUsd": 197.39999999999998,
+        "acquisitionOrCommissionUsd": 986.9999999999999,
+        "corporateOverheadAllocationUsd": 526.4,
+        "preTaxOperatingRemainderUsd": 1252.533333333333,
+        "preTaxOperatingRemainderRate": 0.19035460992907804
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 24800,
+          "recommendedGroupUsd": 6580,
+          "referencePerPersonUsd": 3290.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 39500,
+          "recommendedGroupUsd": 10500,
+          "referencePerPersonUsd": 2625.0
+        }
+      ]
+    },
+    {
+      "slug": "china-at-an-easier-pace-12-day-private-tour",
+      "nameZh": "北京—西安—上海十二天慢节奏",
+      "basisPartySize": 2,
+      "oldFromUsd": 3800.0,
+      "revisedFromUsd": 4690,
+      "proposedLabel": "From USD 4,690",
+      "increaseRate": 0.23421052631578942,
+      "originalBaseCostCny": 35550,
+      "revisedBaseCostCny": 35550,
+      "configurationUpgradeCostCny": 0,
+      "reason": "五星酒店与一等座、六个观光日的成本假设尚未核实，原价对住宿上涨敏感；新价仍不是含照护和自由日车导的全包。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 7600.0,
+        "reservedDeliveryCostUsd": 5184.375,
+        "paymentFeesUsd": 227.99999999999997,
+        "acquisitionOrCommissionUsd": 760.0,
+        "corporateOverheadAllocationUsd": 608.0,
+        "preTaxOperatingRemainderUsd": 819.6250000000003,
+        "preTaxOperatingRemainderRate": 0.10784539473684218
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 7600.0,
+        "reservedDeliveryCostUsd": 5962.03125,
+        "paymentFeesUsd": 227.99999999999997,
+        "acquisitionOrCommissionUsd": 760.0,
+        "corporateOverheadAllocationUsd": 608.0,
+        "preTaxOperatingRemainderUsd": 41.968750000000405,
+        "preTaxOperatingRemainderRate": 0.005522203947368465
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 7220.0,
+        "reservedDeliveryCostUsd": 5962.03125,
+        "paymentFeesUsd": 216.6,
+        "acquisitionOrCommissionUsd": 722.0000000000001,
+        "corporateOverheadAllocationUsd": 577.6,
+        "preTaxOperatingRemainderUsd": -258.23124999999993,
+        "preTaxOperatingRemainderRate": -0.035766101108033244
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 7600.0,
+        "reservedDeliveryCostUsd": 5184.375,
+        "paymentFeesUsd": 227.99999999999997,
+        "acquisitionOrCommissionUsd": 1140.0,
+        "corporateOverheadAllocationUsd": 608.0,
+        "preTaxOperatingRemainderUsd": 439.6250000000004,
+        "preTaxOperatingRemainderRate": 0.05784539473684214
+      },
+      "revisedBase": {
+        "revenueUsd": 9380.0,
+        "reservedDeliveryCostUsd": 5184.375,
+        "paymentFeesUsd": 281.4,
+        "acquisitionOrCommissionUsd": 938.0,
+        "corporateOverheadAllocationUsd": 750.4,
+        "preTaxOperatingRemainderUsd": 2225.8250000000003,
+        "preTaxOperatingRemainderRate": 0.23729477611940297
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 9380.0,
+        "reservedDeliveryCostUsd": 5962.03125,
+        "paymentFeesUsd": 281.4,
+        "acquisitionOrCommissionUsd": 938.0,
+        "corporateOverheadAllocationUsd": 750.4,
+        "preTaxOperatingRemainderUsd": 1448.1687500000003,
+        "preTaxOperatingRemainderRate": 0.15438899253731342
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 9380.0,
+        "reservedDeliveryCostUsd": 6739.6875,
+        "paymentFeesUsd": 281.4,
+        "acquisitionOrCommissionUsd": 938.0,
+        "corporateOverheadAllocationUsd": 750.4,
+        "preTaxOperatingRemainderUsd": 670.5125000000003,
+        "preTaxOperatingRemainderRate": 0.07148320895522386
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 9380.0,
+        "reservedDeliveryCostUsd": 5184.375,
+        "paymentFeesUsd": 281.4,
+        "acquisitionOrCommissionUsd": 1407.0,
+        "corporateOverheadAllocationUsd": 750.4,
+        "preTaxOperatingRemainderUsd": 1756.8249999999998,
+        "preTaxOperatingRemainderRate": 0.18729477611940293
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 35550,
+          "recommendedGroupUsd": 9380,
+          "referencePerPersonUsd": 4690.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 58400,
+          "recommendedGroupUsd": 15500,
+          "referencePerPersonUsd": 3875.0
+        }
+      ]
+    },
+    {
+      "slug": "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      "nameZh": "上海—成都—西安—北京十二天成人四城",
+      "basisPartySize": 2,
+      "oldFromUsd": 4050.0,
+      "revisedFromUsd": 4790,
+      "proposedLabel": "From USD 4,790",
+      "increaseRate": 0.18271604938271602,
+      "originalBaseCostCny": 37960,
+      "revisedBaseCostCny": 37960,
+      "configurationUpgradeCostCny": 0,
+      "reason": "四城涉及三个跨城段和四次本地团队交接；提高缓冲，但 TCM、酒文化和熊猫具体项目仍须确认。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 8100.0,
+        "reservedDeliveryCostUsd": 5535.833333333333,
+        "paymentFeesUsd": 242.99999999999997,
+        "acquisitionOrCommissionUsd": 810.0,
+        "corporateOverheadAllocationUsd": 648.0,
+        "preTaxOperatingRemainderUsd": 863.1666666666671,
+        "preTaxOperatingRemainderRate": 0.10656378600823047
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 8100.0,
+        "reservedDeliveryCostUsd": 6366.208333333333,
+        "paymentFeesUsd": 242.99999999999997,
+        "acquisitionOrCommissionUsd": 810.0,
+        "corporateOverheadAllocationUsd": 648.0,
+        "preTaxOperatingRemainderUsd": 32.791666666667474,
+        "preTaxOperatingRemainderRate": 0.004048353909465119
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 7695.0,
+        "reservedDeliveryCostUsd": 6366.208333333333,
+        "paymentFeesUsd": 230.84999999999997,
+        "acquisitionOrCommissionUsd": 769.5,
+        "corporateOverheadAllocationUsd": 615.5999999999999,
+        "preTaxOperatingRemainderUsd": -287.15833333333245,
+        "preTaxOperatingRemainderRate": -0.03731752220056306
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 8100.0,
+        "reservedDeliveryCostUsd": 5535.833333333333,
+        "paymentFeesUsd": 242.99999999999997,
+        "acquisitionOrCommissionUsd": 1215.0,
+        "corporateOverheadAllocationUsd": 648.0,
+        "preTaxOperatingRemainderUsd": 458.1666666666671,
+        "preTaxOperatingRemainderRate": 0.05656378600823042
+      },
+      "revisedBase": {
+        "revenueUsd": 9580.0,
+        "reservedDeliveryCostUsd": 5535.833333333333,
+        "paymentFeesUsd": 287.4,
+        "acquisitionOrCommissionUsd": 958.0,
+        "corporateOverheadAllocationUsd": 766.4,
+        "preTaxOperatingRemainderUsd": 2032.3666666666668,
+        "preTaxOperatingRemainderRate": 0.2121468336812805
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 9580.0,
+        "reservedDeliveryCostUsd": 6366.208333333333,
+        "paymentFeesUsd": 287.4,
+        "acquisitionOrCommissionUsd": 958.0,
+        "corporateOverheadAllocationUsd": 766.4,
+        "preTaxOperatingRemainderUsd": 1201.9916666666672,
+        "preTaxOperatingRemainderRate": 0.12546885873347258
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 9580.0,
+        "reservedDeliveryCostUsd": 7196.583333333333,
+        "paymentFeesUsd": 287.4,
+        "acquisitionOrCommissionUsd": 958.0,
+        "corporateOverheadAllocationUsd": 766.4,
+        "preTaxOperatingRemainderUsd": 371.61666666666656,
+        "preTaxOperatingRemainderRate": 0.03879088378566464
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 9580.0,
+        "reservedDeliveryCostUsd": 5535.833333333333,
+        "paymentFeesUsd": 287.4,
+        "acquisitionOrCommissionUsd": 1437.0,
+        "corporateOverheadAllocationUsd": 766.4,
+        "preTaxOperatingRemainderUsd": 1553.3666666666663,
+        "preTaxOperatingRemainderRate": 0.16214683368128047
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 37960,
+          "recommendedGroupUsd": 9580,
+          "referencePerPersonUsd": 4790.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 58020,
+          "recommendedGroupUsd": 14700,
+          "referencePerPersonUsd": 3675.0
+        }
+      ]
+    },
+    {
+      "slug": "china-family-tour-with-pandas-12-day-private-tour",
+      "nameZh": "北京—西安—成都—上海十二天亲子旗舰",
+      "basisPartySize": 4,
+      "oldFromUsd": 4325.0,
+      "revisedFromUsd": 5290,
+      "proposedLabel": "From USD 5,290",
+      "increaseRate": 0.22312138728323694,
+      "originalBaseCostCny": 81700,
+      "revisedBaseCostCny": 81700,
+      "configurationUpgradeCostCny": 0,
+      "reason": "四人家庭两间房、摄影及工坊的多人协调需要独立利润；每个孩子是否参与与收费要写清。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 17300.0,
+        "reservedDeliveryCostUsd": 11914.583333333334,
+        "paymentFeesUsd": 519.0,
+        "acquisitionOrCommissionUsd": 1730.0,
+        "corporateOverheadAllocationUsd": 1384.0000000000002,
+        "preTaxOperatingRemainderUsd": 1752.4166666666679,
+        "preTaxOperatingRemainderRate": 0.10129576107899807
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 17300.0,
+        "reservedDeliveryCostUsd": 13701.77083333333,
+        "paymentFeesUsd": 519.0,
+        "acquisitionOrCommissionUsd": 1730.0,
+        "corporateOverheadAllocationUsd": 1384.0000000000002,
+        "preTaxOperatingRemainderUsd": -34.770833333330096,
+        "preTaxOperatingRemainderRate": -0.0020098747591520416
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 16435.0,
+        "reservedDeliveryCostUsd": 13701.77083333333,
+        "paymentFeesUsd": 493.05,
+        "acquisitionOrCommissionUsd": 1643.5,
+        "corporateOverheadAllocationUsd": 1314.8,
+        "preTaxOperatingRemainderUsd": -718.1208333333315,
+        "preTaxOperatingRemainderRate": -0.043694605009633736
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 17300.0,
+        "reservedDeliveryCostUsd": 11914.583333333334,
+        "paymentFeesUsd": 519.0,
+        "acquisitionOrCommissionUsd": 2595.0,
+        "corporateOverheadAllocationUsd": 1384.0000000000002,
+        "preTaxOperatingRemainderUsd": 887.4166666666658,
+        "preTaxOperatingRemainderRate": 0.051295761078998026
+      },
+      "revisedBase": {
+        "revenueUsd": 21160.0,
+        "reservedDeliveryCostUsd": 11914.583333333334,
+        "paymentFeesUsd": 634.8,
+        "acquisitionOrCommissionUsd": 2116.0,
+        "corporateOverheadAllocationUsd": 1692.8,
+        "preTaxOperatingRemainderUsd": 4801.816666666667,
+        "preTaxOperatingRemainderRate": 0.22692895400126023
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 21160.0,
+        "reservedDeliveryCostUsd": 13701.77083333333,
+        "paymentFeesUsd": 634.8,
+        "acquisitionOrCommissionUsd": 2116.0,
+        "corporateOverheadAllocationUsd": 1692.8,
+        "preTaxOperatingRemainderUsd": 3014.629166666669,
+        "preTaxOperatingRemainderRate": 0.14246829710144937
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 21160.0,
+        "reservedDeliveryCostUsd": 15488.958333333332,
+        "paymentFeesUsd": 634.8,
+        "acquisitionOrCommissionUsd": 2116.0,
+        "corporateOverheadAllocationUsd": 1692.8,
+        "preTaxOperatingRemainderUsd": 1227.4416666666668,
+        "preTaxOperatingRemainderRate": 0.0580076402016384
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 21160.0,
+        "reservedDeliveryCostUsd": 11914.583333333334,
+        "paymentFeesUsd": 634.8,
+        "acquisitionOrCommissionUsd": 3174.0,
+        "corporateOverheadAllocationUsd": 1692.8,
+        "preTaxOperatingRemainderUsd": 3743.816666666666,
+        "preTaxOperatingRemainderRate": 0.17692895400126019
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 53200,
+          "recommendedGroupUsd": 13800,
+          "referencePerPersonUsd": 6900.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 81700,
+          "recommendedGroupUsd": 21160,
+          "referencePerPersonUsd": 5290.0
+        }
+      ]
+    },
+    {
+      "slug": "beijing-great-wall-private-5-day-tour",
+      "nameZh": "北京与长城五天城市深游",
+      "basisPartySize": 2,
+      "oldFromUsd": 1100.0,
+      "revisedFromUsd": 1690,
+      "proposedLabel": "From USD 1,690",
+      "increaseRate": 0.5363636363636364,
+      "originalBaseCostCny": 10350,
+      "revisedBaseCostCny": 12750,
+      "configurationUpgradeCostCny": 2400,
+      "reason": "新价基于升级版：三天新增独立英语导游，预算每团增加 ¥2,400；不是原司机兼接待版本无条件涨 54%。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 2200.0,
+        "reservedDeliveryCostUsd": 1509.375,
+        "paymentFeesUsd": 66.0,
+        "acquisitionOrCommissionUsd": 220.0,
+        "corporateOverheadAllocationUsd": 176.0,
+        "preTaxOperatingRemainderUsd": 228.62500000000006,
+        "preTaxOperatingRemainderRate": 0.10392045454545462
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 2200.0,
+        "reservedDeliveryCostUsd": 1735.7812499999998,
+        "paymentFeesUsd": 66.0,
+        "acquisitionOrCommissionUsd": 220.0,
+        "corporateOverheadAllocationUsd": 176.0,
+        "preTaxOperatingRemainderUsd": 2.2187500000003033,
+        "preTaxOperatingRemainderRate": 0.0010085227272729202
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 2090.0,
+        "reservedDeliveryCostUsd": 1735.7812499999998,
+        "paymentFeesUsd": 62.699999999999996,
+        "acquisitionOrCommissionUsd": 209.00000000000003,
+        "corporateOverheadAllocationUsd": 167.2,
+        "preTaxOperatingRemainderUsd": -84.68124999999974,
+        "preTaxOperatingRemainderRate": -0.040517344497607466
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 2200.0,
+        "reservedDeliveryCostUsd": 1509.375,
+        "paymentFeesUsd": 66.0,
+        "acquisitionOrCommissionUsd": 330.0,
+        "corporateOverheadAllocationUsd": 176.0,
+        "preTaxOperatingRemainderUsd": 118.62500000000004,
+        "preTaxOperatingRemainderRate": 0.05392045454545458
+      },
+      "revisedBase": {
+        "revenueUsd": 3380.0,
+        "reservedDeliveryCostUsd": 1859.375,
+        "paymentFeesUsd": 101.39999999999999,
+        "acquisitionOrCommissionUsd": 338.0,
+        "corporateOverheadAllocationUsd": 270.40000000000003,
+        "preTaxOperatingRemainderUsd": 810.8250000000003,
+        "preTaxOperatingRemainderRate": 0.23988905325443788
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 3380.0,
+        "reservedDeliveryCostUsd": 2138.2812499999995,
+        "paymentFeesUsd": 101.39999999999999,
+        "acquisitionOrCommissionUsd": 338.0,
+        "corporateOverheadAllocationUsd": 270.40000000000003,
+        "preTaxOperatingRemainderUsd": 531.9187500000006,
+        "preTaxOperatingRemainderRate": 0.1573724112426037
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 3380.0,
+        "reservedDeliveryCostUsd": 2417.1875,
+        "paymentFeesUsd": 101.39999999999999,
+        "acquisitionOrCommissionUsd": 338.0,
+        "corporateOverheadAllocationUsd": 270.40000000000003,
+        "preTaxOperatingRemainderUsd": 253.01250000000033,
+        "preTaxOperatingRemainderRate": 0.07485576923076931
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 3380.0,
+        "reservedDeliveryCostUsd": 1859.375,
+        "paymentFeesUsd": 101.39999999999999,
+        "acquisitionOrCommissionUsd": 507.0,
+        "corporateOverheadAllocationUsd": 270.40000000000003,
+        "preTaxOperatingRemainderUsd": 641.8249999999999,
+        "preTaxOperatingRemainderRate": 0.18988905325443783
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 12750,
+          "recommendedGroupUsd": 3380,
+          "referencePerPersonUsd": 1690.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 18350,
+          "recommendedGroupUsd": 4900,
+          "referencePerPersonUsd": 1225.0
+        }
+      ]
+    },
+    {
+      "slug": "chengdu-pandas-sichuan-table",
+      "nameZh": "成都熊猫与川味五天",
+      "basisPartySize": 2,
+      "oldFromUsd": 1250.0,
+      "revisedFromUsd": 1490,
+      "proposedLabel": "From USD 1,490",
+      "increaseRate": 0.19199999999999995,
+      "originalBaseCostCny": 11560,
+      "revisedBaseCostCny": 11560,
+      "configurationUpgradeCostCny": 0,
+      "reason": "三天观光、乐山和食品体验需要明确套餐；价格提高约 19%，不默含所有烹饪／茶体验。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 2500.0,
+        "reservedDeliveryCostUsd": 1685.8333333333333,
+        "paymentFeesUsd": 75.0,
+        "acquisitionOrCommissionUsd": 250.0,
+        "corporateOverheadAllocationUsd": 200.0,
+        "preTaxOperatingRemainderUsd": 289.1666666666667,
+        "preTaxOperatingRemainderRate": 0.1156666666666667
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 2500.0,
+        "reservedDeliveryCostUsd": 1938.708333333333,
+        "paymentFeesUsd": 75.0,
+        "acquisitionOrCommissionUsd": 250.0,
+        "corporateOverheadAllocationUsd": 200.0,
+        "preTaxOperatingRemainderUsd": 36.29166666666682,
+        "preTaxOperatingRemainderRate": 0.014516666666666733
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 2375.0,
+        "reservedDeliveryCostUsd": 1938.708333333333,
+        "paymentFeesUsd": 71.25,
+        "acquisitionOrCommissionUsd": 237.5,
+        "corporateOverheadAllocationUsd": 190.0,
+        "preTaxOperatingRemainderUsd": -62.45833333333318,
+        "preTaxOperatingRemainderRate": -0.026298245614035043
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 2500.0,
+        "reservedDeliveryCostUsd": 1685.8333333333333,
+        "paymentFeesUsd": 75.0,
+        "acquisitionOrCommissionUsd": 375.0,
+        "corporateOverheadAllocationUsd": 200.0,
+        "preTaxOperatingRemainderUsd": 164.16666666666666,
+        "preTaxOperatingRemainderRate": 0.06566666666666665
+      },
+      "revisedBase": {
+        "revenueUsd": 2980.0,
+        "reservedDeliveryCostUsd": 1685.8333333333333,
+        "paymentFeesUsd": 89.39999999999999,
+        "acquisitionOrCommissionUsd": 298.0,
+        "corporateOverheadAllocationUsd": 238.4,
+        "preTaxOperatingRemainderUsd": 668.3666666666669,
+        "preTaxOperatingRemainderRate": 0.22428411633109624
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 2980.0,
+        "reservedDeliveryCostUsd": 1938.708333333333,
+        "paymentFeesUsd": 89.39999999999999,
+        "acquisitionOrCommissionUsd": 298.0,
+        "corporateOverheadAllocationUsd": 238.4,
+        "preTaxOperatingRemainderUsd": 415.491666666667,
+        "preTaxOperatingRemainderRate": 0.13942673378076076
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 2980.0,
+        "reservedDeliveryCostUsd": 2191.583333333333,
+        "paymentFeesUsd": 89.39999999999999,
+        "acquisitionOrCommissionUsd": 298.0,
+        "corporateOverheadAllocationUsd": 238.4,
+        "preTaxOperatingRemainderUsd": 162.61666666666693,
+        "preTaxOperatingRemainderRate": 0.054569351230425056
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 2980.0,
+        "reservedDeliveryCostUsd": 1685.8333333333333,
+        "paymentFeesUsd": 89.39999999999999,
+        "acquisitionOrCommissionUsd": 447.0,
+        "corporateOverheadAllocationUsd": 238.4,
+        "preTaxOperatingRemainderUsd": 519.3666666666667,
+        "preTaxOperatingRemainderRate": 0.1742841163310962
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 11560,
+          "recommendedGroupUsd": 2980,
+          "referencePerPersonUsd": 1490.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 16970,
+          "recommendedGroupUsd": 4400,
+          "referencePerPersonUsd": 1100.0
+        }
+      ]
+    },
+    {
+      "slug": "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "nameZh": "西安—北京六天历史短线",
+      "basisPartySize": 2,
+      "oldFromUsd": 1500.0,
+      "revisedFromUsd": 1890,
+      "proposedLabel": "From USD 1,890",
+      "increaseRate": 0.26,
+      "originalBaseCostCny": 13950,
+      "revisedBaseCostCny": 13950,
+      "configurationUpgradeCostCny": 0,
+      "reason": "仅为长城主日、不保证同日故宫的可执行边界建议价；若要故宫必须先重排或加夜，新方案另核价。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 3000.0,
+        "reservedDeliveryCostUsd": 2034.375,
+        "paymentFeesUsd": 90.0,
+        "acquisitionOrCommissionUsd": 300.0,
+        "corporateOverheadAllocationUsd": 240.0,
+        "preTaxOperatingRemainderUsd": 335.625,
+        "preTaxOperatingRemainderRate": 0.11187500000000006
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 3000.0,
+        "reservedDeliveryCostUsd": 2339.53125,
+        "paymentFeesUsd": 90.0,
+        "acquisitionOrCommissionUsd": 300.0,
+        "corporateOverheadAllocationUsd": 240.0,
+        "preTaxOperatingRemainderUsd": 30.46875,
+        "preTaxOperatingRemainderRate": 0.010156250000000089
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 2850.0,
+        "reservedDeliveryCostUsd": 2339.53125,
+        "paymentFeesUsd": 85.5,
+        "acquisitionOrCommissionUsd": 285.0,
+        "corporateOverheadAllocationUsd": 228.0,
+        "preTaxOperatingRemainderUsd": -88.03124999999984,
+        "preTaxOperatingRemainderRate": -0.030888157894736756
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 3000.0,
+        "reservedDeliveryCostUsd": 2034.375,
+        "paymentFeesUsd": 90.0,
+        "acquisitionOrCommissionUsd": 450.0,
+        "corporateOverheadAllocationUsd": 240.0,
+        "preTaxOperatingRemainderUsd": 185.625,
+        "preTaxOperatingRemainderRate": 0.06187500000000001
+      },
+      "revisedBase": {
+        "revenueUsd": 3780.0,
+        "reservedDeliveryCostUsd": 2034.375,
+        "paymentFeesUsd": 113.4,
+        "acquisitionOrCommissionUsd": 378.00000000000006,
+        "corporateOverheadAllocationUsd": 302.40000000000003,
+        "preTaxOperatingRemainderUsd": 951.8249999999999,
+        "preTaxOperatingRemainderRate": 0.2518055555555556
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 3780.0,
+        "reservedDeliveryCostUsd": 2339.53125,
+        "paymentFeesUsd": 113.4,
+        "acquisitionOrCommissionUsd": 378.00000000000006,
+        "corporateOverheadAllocationUsd": 302.40000000000003,
+        "preTaxOperatingRemainderUsd": 646.6687499999999,
+        "preTaxOperatingRemainderRate": 0.17107638888888888
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 3780.0,
+        "reservedDeliveryCostUsd": 2644.6875,
+        "paymentFeesUsd": 113.4,
+        "acquisitionOrCommissionUsd": 378.00000000000006,
+        "corporateOverheadAllocationUsd": 302.40000000000003,
+        "preTaxOperatingRemainderUsd": 341.51249999999993,
+        "preTaxOperatingRemainderRate": 0.09034722222222225
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 3780.0,
+        "reservedDeliveryCostUsd": 2034.375,
+        "paymentFeesUsd": 113.4,
+        "acquisitionOrCommissionUsd": 566.9999999999999,
+        "corporateOverheadAllocationUsd": 302.40000000000003,
+        "preTaxOperatingRemainderUsd": 762.825,
+        "preTaxOperatingRemainderRate": 0.20180555555555557
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 13950,
+          "recommendedGroupUsd": 3780,
+          "referencePerPersonUsd": 1890.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 21350,
+          "recommendedGroupUsd": 5800,
+          "referencePerPersonUsd": 1450.0
+        }
+      ]
+    },
+    {
+      "slug": "luxury-yunnan-private-tour",
+      "nameZh": "云南茶马古道十天精品深游",
+      "basisPartySize": 2,
+      "oldFromUsd": 5200.0,
+      "revisedFromUsd": 6490,
+      "proposedLabel": "From USD 6,490",
+      "increaseRate": 0.24807692307692308,
+      "originalBaseCostCny": 49000,
+      "revisedBaseCostCny": 49000,
+      "configurationUpgradeCostCny": 0,
+      "reason": "连续异地车辆、主持人与高原酒店的采购波动及内容交付应留空间；高端品牌酒店没有核实前不承诺。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 10400.0,
+        "reservedDeliveryCostUsd": 7145.833333333333,
+        "paymentFeesUsd": 312.0,
+        "acquisitionOrCommissionUsd": 1040.0,
+        "corporateOverheadAllocationUsd": 832.0,
+        "preTaxOperatingRemainderUsd": 1070.1666666666672,
+        "preTaxOperatingRemainderRate": 0.10290064102564112
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 10400.0,
+        "reservedDeliveryCostUsd": 8217.708333333332,
+        "paymentFeesUsd": 312.0,
+        "acquisitionOrCommissionUsd": 1040.0,
+        "corporateOverheadAllocationUsd": 832.0,
+        "preTaxOperatingRemainderUsd": -1.7083333333317163,
+        "preTaxOperatingRemainderRate": -0.00016426282051273944
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 9880.0,
+        "reservedDeliveryCostUsd": 8217.708333333332,
+        "paymentFeesUsd": 296.4,
+        "acquisitionOrCommissionUsd": 988.0,
+        "corporateOverheadAllocationUsd": 790.4,
+        "preTaxOperatingRemainderUsd": -412.50833333333196,
+        "preTaxOperatingRemainderRate": -0.04175185560053962
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 10400.0,
+        "reservedDeliveryCostUsd": 7145.833333333333,
+        "paymentFeesUsd": 312.0,
+        "acquisitionOrCommissionUsd": 1560.0,
+        "corporateOverheadAllocationUsd": 832.0,
+        "preTaxOperatingRemainderUsd": 550.1666666666663,
+        "preTaxOperatingRemainderRate": 0.05290064102564107
+      },
+      "revisedBase": {
+        "revenueUsd": 12980.0,
+        "reservedDeliveryCostUsd": 7145.833333333333,
+        "paymentFeesUsd": 389.4,
+        "acquisitionOrCommissionUsd": 1298.0,
+        "corporateOverheadAllocationUsd": 1038.4,
+        "preTaxOperatingRemainderUsd": 3108.3666666666672,
+        "preTaxOperatingRemainderRate": 0.23947354904982032
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 12980.0,
+        "reservedDeliveryCostUsd": 8217.708333333332,
+        "paymentFeesUsd": 389.4,
+        "acquisitionOrCommissionUsd": 1298.0,
+        "corporateOverheadAllocationUsd": 1038.4,
+        "preTaxOperatingRemainderUsd": 2036.4916666666684,
+        "preTaxOperatingRemainderRate": 0.1568945814072934
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 12980.0,
+        "reservedDeliveryCostUsd": 9289.583333333334,
+        "paymentFeesUsd": 389.4,
+        "acquisitionOrCommissionUsd": 1298.0,
+        "corporateOverheadAllocationUsd": 1038.4,
+        "preTaxOperatingRemainderUsd": 964.6166666666674,
+        "preTaxOperatingRemainderRate": 0.07431561376476636
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 12980.0,
+        "reservedDeliveryCostUsd": 7145.833333333333,
+        "paymentFeesUsd": 389.4,
+        "acquisitionOrCommissionUsd": 1947.0,
+        "corporateOverheadAllocationUsd": 1038.4,
+        "preTaxOperatingRemainderUsd": 2459.366666666667,
+        "preTaxOperatingRemainderRate": 0.18947354904982028
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 49000,
+          "recommendedGroupUsd": 12980,
+          "referencePerPersonUsd": 6490.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 74000,
+          "recommendedGroupUsd": 19700,
+          "referencePerPersonUsd": 4925.0
+        }
+      ]
+    },
+    {
+      "slug": "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "nameZh": "成都熊猫与九寨沟七天",
+      "basisPartySize": 2,
+      "oldFromUsd": 2150.0,
+      "revisedFromUsd": 2690,
+      "proposedLabel": "From USD 2,690",
+      "increaseRate": 0.25116279069767433,
+      "originalBaseCostCny": 20150,
+      "revisedBaseCostCny": 20150,
+      "configurationUpgradeCostCny": 0,
+      "reason": "山地接驳、天气和当地终点构成成本风险；提高缓冲并保持当地结束边界。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 4300.0,
+        "reservedDeliveryCostUsd": 2938.5416666666665,
+        "paymentFeesUsd": 129.0,
+        "acquisitionOrCommissionUsd": 430.0,
+        "corporateOverheadAllocationUsd": 344.0,
+        "preTaxOperatingRemainderUsd": 458.45833333333354,
+        "preTaxOperatingRemainderRate": 0.10661821705426355
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 4300.0,
+        "reservedDeliveryCostUsd": 3379.322916666666,
+        "paymentFeesUsd": 129.0,
+        "acquisitionOrCommissionUsd": 430.0,
+        "corporateOverheadAllocationUsd": 344.0,
+        "preTaxOperatingRemainderUsd": 17.67708333333404,
+        "preTaxOperatingRemainderRate": 0.004110949612403214
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 4085.0,
+        "reservedDeliveryCostUsd": 3379.322916666666,
+        "paymentFeesUsd": 122.55,
+        "acquisitionOrCommissionUsd": 408.5,
+        "corporateOverheadAllocationUsd": 326.8,
+        "preTaxOperatingRemainderUsd": -152.17291666666623,
+        "preTaxOperatingRemainderRate": -0.03725163198694392
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 4300.0,
+        "reservedDeliveryCostUsd": 2938.5416666666665,
+        "paymentFeesUsd": 129.0,
+        "acquisitionOrCommissionUsd": 645.0,
+        "corporateOverheadAllocationUsd": 344.0,
+        "preTaxOperatingRemainderUsd": 243.45833333333354,
+        "preTaxOperatingRemainderRate": 0.05661821705426351
+      },
+      "revisedBase": {
+        "revenueUsd": 5380.0,
+        "reservedDeliveryCostUsd": 2938.5416666666665,
+        "paymentFeesUsd": 161.39999999999998,
+        "acquisitionOrCommissionUsd": 538.0,
+        "corporateOverheadAllocationUsd": 430.4,
+        "preTaxOperatingRemainderUsd": 1311.6583333333335,
+        "preTaxOperatingRemainderRate": 0.24380266418835195
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 5380.0,
+        "reservedDeliveryCostUsd": 3379.322916666666,
+        "paymentFeesUsd": 161.39999999999998,
+        "acquisitionOrCommissionUsd": 538.0,
+        "corporateOverheadAllocationUsd": 430.4,
+        "preTaxOperatingRemainderUsd": 870.8770833333341,
+        "preTaxOperatingRemainderRate": 0.16187306381660482
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 5380.0,
+        "reservedDeliveryCostUsd": 3820.1041666666665,
+        "paymentFeesUsd": 161.39999999999998,
+        "acquisitionOrCommissionUsd": 538.0,
+        "corporateOverheadAllocationUsd": 430.4,
+        "preTaxOperatingRemainderUsd": 430.09583333333364,
+        "preTaxOperatingRemainderRate": 0.07994346344485759
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 5380.0,
+        "reservedDeliveryCostUsd": 2938.5416666666665,
+        "paymentFeesUsd": 161.39999999999998,
+        "acquisitionOrCommissionUsd": 806.9999999999999,
+        "corporateOverheadAllocationUsd": 430.4,
+        "preTaxOperatingRemainderUsd": 1042.6583333333333,
+        "preTaxOperatingRemainderRate": 0.1938026641883519
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 20150,
+          "recommendedGroupUsd": 5380,
+          "referencePerPersonUsd": 2690.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 30000,
+          "recommendedGroupUsd": 8100,
+          "referencePerPersonUsd": 2025.0
+        }
+      ]
+    },
+    {
+      "slug": "shanghai-zhangjiajie-floating-peaks",
+      "nameZh": "上海与张家界八天",
+      "basisPartySize": 2,
+      "oldFromUsd": 2450.0,
+      "revisedFromUsd": 3090,
+      "proposedLabel": "From USD 3,090",
+      "increaseRate": 0.2612244897959184,
+      "originalBaseCostCny": 23100,
+      "revisedBaseCostCny": 23100,
+      "configurationUpgradeCostCny": 0,
+      "reason": "往返国内航空与三个住宿段、景区系统增加波动；不删除返上海缓冲夜来做表面低价。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 4900.0,
+        "reservedDeliveryCostUsd": 3368.75,
+        "paymentFeesUsd": 146.99999999999997,
+        "acquisitionOrCommissionUsd": 490.0,
+        "corporateOverheadAllocationUsd": 392.0,
+        "preTaxOperatingRemainderUsd": 502.2500000000001,
+        "preTaxOperatingRemainderRate": 0.10250000000000004
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 4900.0,
+        "reservedDeliveryCostUsd": 3874.0624999999995,
+        "paymentFeesUsd": 146.99999999999997,
+        "acquisitionOrCommissionUsd": 490.0,
+        "corporateOverheadAllocationUsd": 392.0,
+        "preTaxOperatingRemainderUsd": -3.0624999999993934,
+        "preTaxOperatingRemainderRate": -0.0006249999999998757
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 4655.0,
+        "reservedDeliveryCostUsd": 3874.0624999999995,
+        "paymentFeesUsd": 139.65,
+        "acquisitionOrCommissionUsd": 465.50000000000006,
+        "corporateOverheadAllocationUsd": 372.40000000000003,
+        "preTaxOperatingRemainderUsd": -196.61249999999956,
+        "preTaxOperatingRemainderRate": -0.04223684210526302
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 4900.0,
+        "reservedDeliveryCostUsd": 3368.75,
+        "paymentFeesUsd": 146.99999999999997,
+        "acquisitionOrCommissionUsd": 735.0,
+        "corporateOverheadAllocationUsd": 392.0,
+        "preTaxOperatingRemainderUsd": 257.2500000000001,
+        "preTaxOperatingRemainderRate": 0.05249999999999999
+      },
+      "revisedBase": {
+        "revenueUsd": 6180.0,
+        "reservedDeliveryCostUsd": 3368.75,
+        "paymentFeesUsd": 185.39999999999998,
+        "acquisitionOrCommissionUsd": 618.0,
+        "corporateOverheadAllocationUsd": 494.40000000000003,
+        "preTaxOperatingRemainderUsd": 1513.4500000000005,
+        "preTaxOperatingRemainderRate": 0.2448948220064725
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 6180.0,
+        "reservedDeliveryCostUsd": 3874.0624999999995,
+        "paymentFeesUsd": 185.39999999999998,
+        "acquisitionOrCommissionUsd": 618.0,
+        "corporateOverheadAllocationUsd": 494.40000000000003,
+        "preTaxOperatingRemainderUsd": 1008.137500000001,
+        "preTaxOperatingRemainderRate": 0.16312904530744343
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 6180.0,
+        "reservedDeliveryCostUsd": 4379.375,
+        "paymentFeesUsd": 185.39999999999998,
+        "acquisitionOrCommissionUsd": 618.0,
+        "corporateOverheadAllocationUsd": 494.40000000000003,
+        "preTaxOperatingRemainderUsd": 502.8250000000005,
+        "preTaxOperatingRemainderRate": 0.08136326860841425
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 6180.0,
+        "reservedDeliveryCostUsd": 3368.75,
+        "paymentFeesUsd": 185.39999999999998,
+        "acquisitionOrCommissionUsd": 926.9999999999999,
+        "corporateOverheadAllocationUsd": 494.40000000000003,
+        "preTaxOperatingRemainderUsd": 1204.45,
+        "preTaxOperatingRemainderRate": 0.19489482200647246
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 23100,
+          "recommendedGroupUsd": 6180,
+          "referencePerPersonUsd": 3090.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 37000,
+          "recommendedGroupUsd": 9900,
+          "referencePerPersonUsd": 2475.0
+        }
+      ]
+    },
+    {
+      "slug": "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      "nameZh": "成都—重庆—张家界十一天",
+      "basisPartySize": 2,
+      "oldFromUsd": 2600.0,
+      "revisedFromUsd": 3290,
+      "proposedLabel": "From USD 3,290",
+      "increaseRate": 0.26538461538461533,
+      "originalBaseCostCny": 24300,
+      "revisedBaseCostCny": 24300,
+      "configurationUpgradeCostCny": 0,
+      "reason": "两个自主日不变；渝张交通和景区方案需按日期锁定，未含天门山不能靠标题暗示。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 5200.0,
+        "reservedDeliveryCostUsd": 3543.75,
+        "paymentFeesUsd": 156.0,
+        "acquisitionOrCommissionUsd": 520.0,
+        "corporateOverheadAllocationUsd": 416.0,
+        "preTaxOperatingRemainderUsd": 564.2500000000003,
+        "preTaxOperatingRemainderRate": 0.10850961538461545
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 5200.0,
+        "reservedDeliveryCostUsd": 4075.3124999999995,
+        "paymentFeesUsd": 156.0,
+        "acquisitionOrCommissionUsd": 520.0,
+        "corporateOverheadAllocationUsd": 416.0,
+        "preTaxOperatingRemainderUsd": 32.68750000000081,
+        "preTaxOperatingRemainderRate": 0.006286057692307834
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 4940.0,
+        "reservedDeliveryCostUsd": 4075.3124999999995,
+        "paymentFeesUsd": 148.2,
+        "acquisitionOrCommissionUsd": 494.0,
+        "corporateOverheadAllocationUsd": 395.2,
+        "preTaxOperatingRemainderUsd": -172.71249999999932,
+        "preTaxOperatingRemainderRate": -0.03496204453441287
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 5200.0,
+        "reservedDeliveryCostUsd": 3543.75,
+        "paymentFeesUsd": 156.0,
+        "acquisitionOrCommissionUsd": 780.0,
+        "corporateOverheadAllocationUsd": 416.0,
+        "preTaxOperatingRemainderUsd": 304.2499999999998,
+        "preTaxOperatingRemainderRate": 0.05850961538461541
+      },
+      "revisedBase": {
+        "revenueUsd": 6580.0,
+        "reservedDeliveryCostUsd": 3543.75,
+        "paymentFeesUsd": 197.39999999999998,
+        "acquisitionOrCommissionUsd": 658.0,
+        "corporateOverheadAllocationUsd": 526.4,
+        "preTaxOperatingRemainderUsd": 1654.45,
+        "preTaxOperatingRemainderRate": 0.251436170212766
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 6580.0,
+        "reservedDeliveryCostUsd": 4075.3124999999995,
+        "paymentFeesUsd": 197.39999999999998,
+        "acquisitionOrCommissionUsd": 658.0,
+        "corporateOverheadAllocationUsd": 526.4,
+        "preTaxOperatingRemainderUsd": 1122.8875000000005,
+        "preTaxOperatingRemainderRate": 0.17065159574468092
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 6580.0,
+        "reservedDeliveryCostUsd": 4606.875,
+        "paymentFeesUsd": 197.39999999999998,
+        "acquisitionOrCommissionUsd": 658.0,
+        "corporateOverheadAllocationUsd": 526.4,
+        "preTaxOperatingRemainderUsd": 591.3250000000002,
+        "preTaxOperatingRemainderRate": 0.08986702127659574
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 6580.0,
+        "reservedDeliveryCostUsd": 3543.75,
+        "paymentFeesUsd": 197.39999999999998,
+        "acquisitionOrCommissionUsd": 986.9999999999999,
+        "corporateOverheadAllocationUsd": 526.4,
+        "preTaxOperatingRemainderUsd": 1325.4499999999996,
+        "preTaxOperatingRemainderRate": 0.20143617021276594
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 24300,
+          "recommendedGroupUsd": 6580,
+          "referencePerPersonUsd": 3290.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 37550,
+          "recommendedGroupUsd": 10200,
+          "referencePerPersonUsd": 2550.0
+        }
+      ]
+    },
+    {
+      "slug": "muslim-friendly-china-tour-great-wall-desert-stars",
+      "nameZh": "长城—西安—宁夏—沙漠—上海十三天穆斯林友好定制",
+      "basisPartySize": 2,
+      "oldFromUsd": 7150.0,
+      "revisedFromUsd": 8490,
+      "proposedLabel": "From USD 8,490",
+      "increaseRate": 0.18741258741258737,
+      "originalBaseCostCny": 67300,
+      "revisedBaseCostCny": 67300,
+      "configurationUpgradeCostCny": 0,
+      "reason": "原起价本身已高，不属于明显低价产品；适度增加专项协调空间，关键是清真依据、沙漠住宿和航班可执行。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 14300.0,
+        "reservedDeliveryCostUsd": 9814.583333333334,
+        "paymentFeesUsd": 428.99999999999994,
+        "acquisitionOrCommissionUsd": 1430.0,
+        "corporateOverheadAllocationUsd": 1143.9999999999998,
+        "preTaxOperatingRemainderUsd": 1482.4166666666679,
+        "preTaxOperatingRemainderRate": 0.10366550116550122
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 14300.0,
+        "reservedDeliveryCostUsd": 11286.770833333334,
+        "paymentFeesUsd": 428.99999999999994,
+        "acquisitionOrCommissionUsd": 1430.0,
+        "corporateOverheadAllocationUsd": 1143.9999999999998,
+        "preTaxOperatingRemainderUsd": 10.22916666666788,
+        "preTaxOperatingRemainderRate": 0.0007153263403263388
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 13585.0,
+        "reservedDeliveryCostUsd": 11286.770833333334,
+        "paymentFeesUsd": 407.54999999999995,
+        "acquisitionOrCommissionUsd": 1358.5,
+        "corporateOverheadAllocationUsd": 1086.8,
+        "preTaxOperatingRemainderUsd": -554.6208333333319,
+        "preTaxOperatingRemainderRate": -0.040825972273340616
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 14300.0,
+        "reservedDeliveryCostUsd": 9814.583333333334,
+        "paymentFeesUsd": 428.99999999999994,
+        "acquisitionOrCommissionUsd": 2145.0,
+        "corporateOverheadAllocationUsd": 1143.9999999999998,
+        "preTaxOperatingRemainderUsd": 767.4166666666658,
+        "preTaxOperatingRemainderRate": 0.05366550116550117
+      },
+      "revisedBase": {
+        "revenueUsd": 16980.0,
+        "reservedDeliveryCostUsd": 9814.583333333334,
+        "paymentFeesUsd": 509.4,
+        "acquisitionOrCommissionUsd": 1698.0,
+        "corporateOverheadAllocationUsd": 1358.3999999999999,
+        "preTaxOperatingRemainderUsd": 3599.6166666666672,
+        "preTaxOperatingRemainderRate": 0.21199155869650577
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 16980.0,
+        "reservedDeliveryCostUsd": 11286.770833333334,
+        "paymentFeesUsd": 509.4,
+        "acquisitionOrCommissionUsd": 1698.0,
+        "corporateOverheadAllocationUsd": 1358.3999999999999,
+        "preTaxOperatingRemainderUsd": 2127.4291666666672,
+        "preTaxOperatingRemainderRate": 0.12529029250098156
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 16980.0,
+        "reservedDeliveryCostUsd": 12758.958333333332,
+        "paymentFeesUsd": 509.4,
+        "acquisitionOrCommissionUsd": 1698.0,
+        "corporateOverheadAllocationUsd": 1358.3999999999999,
+        "preTaxOperatingRemainderUsd": 655.2416666666674,
+        "preTaxOperatingRemainderRate": 0.03858902630545746
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 16980.0,
+        "reservedDeliveryCostUsd": 9814.583333333334,
+        "paymentFeesUsd": 509.4,
+        "acquisitionOrCommissionUsd": 2546.9999999999995,
+        "corporateOverheadAllocationUsd": 1358.3999999999999,
+        "preTaxOperatingRemainderUsd": 2750.616666666667,
+        "preTaxOperatingRemainderRate": 0.16199155869650572
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 67300,
+          "recommendedGroupUsd": 16980,
+          "referencePerPersonUsd": 8490.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 104500,
+          "recommendedGroupUsd": 26400,
+          "referencePerPersonUsd": 6600.0
+        }
+      ]
+    },
+    {
+      "slug": "qingcheng-mountain-private-wellness-retreat-10-day",
+      "nameZh": "成都与青城山十天高端静修",
+      "basisPartySize": 2,
+      "oldFromUsd": 4600.0,
+      "revisedFromUsd": 5990,
+      "proposedLabel": "From USD 5,990",
+      "increaseRate": 0.3021739130434782,
+      "originalBaseCostCny": 43100,
+      "revisedBaseCostCny": 43100,
+      "configurationUpgradeCostCny": 0,
+      "reason": "七晚度假村及疗程供应决定价格；提高约 30% 的情景提案，仍不等于任何 Six Senses 日期可按此价入住。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 9200.0,
+        "reservedDeliveryCostUsd": 6285.416666666666,
+        "paymentFeesUsd": 275.99999999999994,
+        "acquisitionOrCommissionUsd": 920.0,
+        "corporateOverheadAllocationUsd": 736.0,
+        "preTaxOperatingRemainderUsd": 982.5833333333342,
+        "preTaxOperatingRemainderRate": 0.10680253623188407
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 9200.0,
+        "reservedDeliveryCostUsd": 7228.229166666665,
+        "paymentFeesUsd": 275.99999999999994,
+        "acquisitionOrCommissionUsd": 920.0,
+        "corporateOverheadAllocationUsd": 736.0,
+        "preTaxOperatingRemainderUsd": 39.770833333335155,
+        "preTaxOperatingRemainderRate": 0.004322916666666843
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 8740.0,
+        "reservedDeliveryCostUsd": 7228.229166666665,
+        "paymentFeesUsd": 262.2,
+        "acquisitionOrCommissionUsd": 874.0,
+        "corporateOverheadAllocationUsd": 699.1999999999999,
+        "preTaxOperatingRemainderUsd": -323.6291666666653,
+        "preTaxOperatingRemainderRate": -0.03702850877192965
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 9200.0,
+        "reservedDeliveryCostUsd": 6285.416666666666,
+        "paymentFeesUsd": 275.99999999999994,
+        "acquisitionOrCommissionUsd": 1380.0,
+        "corporateOverheadAllocationUsd": 736.0,
+        "preTaxOperatingRemainderUsd": 522.5833333333331,
+        "preTaxOperatingRemainderRate": 0.05680253623188403
+      },
+      "revisedBase": {
+        "revenueUsd": 11980.0,
+        "reservedDeliveryCostUsd": 6285.416666666666,
+        "paymentFeesUsd": 359.4,
+        "acquisitionOrCommissionUsd": 1198.0,
+        "corporateOverheadAllocationUsd": 958.4000000000001,
+        "preTaxOperatingRemainderUsd": 3178.7833333333338,
+        "preTaxOperatingRemainderRate": 0.2653408458542015
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 11980.0,
+        "reservedDeliveryCostUsd": 7228.229166666665,
+        "paymentFeesUsd": 359.4,
+        "acquisitionOrCommissionUsd": 1198.0,
+        "corporateOverheadAllocationUsd": 958.4000000000001,
+        "preTaxOperatingRemainderUsd": 2235.970833333335,
+        "preTaxOperatingRemainderRate": 0.18664197273233174
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 11980.0,
+        "reservedDeliveryCostUsd": 8171.041666666666,
+        "paymentFeesUsd": 359.4,
+        "acquisitionOrCommissionUsd": 1198.0,
+        "corporateOverheadAllocationUsd": 958.4000000000001,
+        "preTaxOperatingRemainderUsd": 1293.158333333334,
+        "preTaxOperatingRemainderRate": 0.10794309961046189
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 11980.0,
+        "reservedDeliveryCostUsd": 6285.416666666666,
+        "paymentFeesUsd": 359.4,
+        "acquisitionOrCommissionUsd": 1797.0,
+        "corporateOverheadAllocationUsd": 958.4000000000001,
+        "preTaxOperatingRemainderUsd": 2579.7833333333338,
+        "preTaxOperatingRemainderRate": 0.21534084585420143
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 43100,
+          "recommendedGroupUsd": 11980,
+          "referencePerPersonUsd": 5990.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 73400,
+          "recommendedGroupUsd": 20500,
+          "referencePerPersonUsd": 5125.0
+        }
+      ]
+    },
+    {
+      "slug": "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+      "nameZh": "广州—深圳四天商务文化定制范例",
+      "basisPartySize": 2,
+      "oldFromUsd": 1900.0,
+      "revisedFromUsd": 2490,
+      "proposedLabel": "From USD 2,490",
+      "increaseRate": 0.31052631578947376,
+      "originalBaseCostCny": 17800,
+      "revisedBaseCostCny": 17800,
+      "configurationUpgradeCostCny": 0,
+      "reason": "四天议程的助理工时和会展地理存在范围扩张风险；新价仅适用明确的四天三晚范例，不含同传、审厂或跨境。",
+      "status": "ESTIMATE; no supplier or market verification",
+      "oldBase": {
+        "revenueUsd": 3800.0,
+        "reservedDeliveryCostUsd": 2595.8333333333335,
+        "paymentFeesUsd": 113.99999999999999,
+        "acquisitionOrCommissionUsd": 380.0,
+        "corporateOverheadAllocationUsd": 304.0,
+        "preTaxOperatingRemainderUsd": 406.16666666666686,
+        "preTaxOperatingRemainderRate": 0.10688596491228075
+      },
+      "oldProcurementPlus15": {
+        "revenueUsd": 3800.0,
+        "reservedDeliveryCostUsd": 2985.2083333333335,
+        "paymentFeesUsd": 113.99999999999999,
+        "acquisitionOrCommissionUsd": 380.0,
+        "corporateOverheadAllocationUsd": 304.0,
+        "preTaxOperatingRemainderUsd": 16.791666666666867,
+        "preTaxOperatingRemainderRate": 0.004418859649122808
+      },
+      "oldProcurementPlus15AndDiscount5": {
+        "revenueUsd": 3610.0,
+        "reservedDeliveryCostUsd": 2985.2083333333335,
+        "paymentFeesUsd": 108.3,
+        "acquisitionOrCommissionUsd": 361.00000000000006,
+        "corporateOverheadAllocationUsd": 288.8,
+        "preTaxOperatingRemainderUsd": -133.30833333333328,
+        "preTaxOperatingRemainderRate": -0.03692751615881806
+      },
+      "oldAgencyCommission15": {
+        "revenueUsd": 3800.0,
+        "reservedDeliveryCostUsd": 2595.8333333333335,
+        "paymentFeesUsd": 113.99999999999999,
+        "acquisitionOrCommissionUsd": 570.0,
+        "corporateOverheadAllocationUsd": 304.0,
+        "preTaxOperatingRemainderUsd": 216.16666666666686,
+        "preTaxOperatingRemainderRate": 0.056885964912280707
+      },
+      "revisedBase": {
+        "revenueUsd": 4980.0,
+        "reservedDeliveryCostUsd": 2595.8333333333335,
+        "paymentFeesUsd": 149.4,
+        "acquisitionOrCommissionUsd": 498.00000000000006,
+        "corporateOverheadAllocationUsd": 398.4,
+        "preTaxOperatingRemainderUsd": 1338.3666666666668,
+        "preTaxOperatingRemainderRate": 0.2687483266398929
+      },
+      "revisedProcurementPlus15": {
+        "revenueUsd": 4980.0,
+        "reservedDeliveryCostUsd": 2985.2083333333335,
+        "paymentFeesUsd": 149.4,
+        "acquisitionOrCommissionUsd": 498.00000000000006,
+        "corporateOverheadAllocationUsd": 398.4,
+        "preTaxOperatingRemainderUsd": 948.9916666666669,
+        "preTaxOperatingRemainderRate": 0.19056057563587692
+      },
+      "revisedProcurementPlus30": {
+        "revenueUsd": 4980.0,
+        "reservedDeliveryCostUsd": 3374.583333333333,
+        "paymentFeesUsd": 149.4,
+        "acquisitionOrCommissionUsd": 498.00000000000006,
+        "corporateOverheadAllocationUsd": 398.4,
+        "preTaxOperatingRemainderUsd": 559.6166666666669,
+        "preTaxOperatingRemainderRate": 0.11237282463186082
+      },
+      "revisedAgencyCommission15": {
+        "revenueUsd": 4980.0,
+        "reservedDeliveryCostUsd": 2595.8333333333335,
+        "paymentFeesUsd": 149.4,
+        "acquisitionOrCommissionUsd": 746.9999999999999,
+        "corporateOverheadAllocationUsd": 398.4,
+        "preTaxOperatingRemainderUsd": 1089.3666666666666,
+        "preTaxOperatingRemainderRate": 0.21874832663989285
+      },
+      "revisedGroupScenarios": [
+        {
+          "travelers": 2,
+          "baseCostCny": 17800,
+          "recommendedGroupUsd": 4980,
+          "referencePerPersonUsd": 2490.0
+        },
+        {
+          "travelers": 4,
+          "baseCostCny": 24400,
+          "recommendedGroupUsd": 6900,
+          "referencePerPersonUsd": 1725.0
+        }
+      ]
+    }
+  ]
+}

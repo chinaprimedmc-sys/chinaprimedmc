@@ -1,3 +1,4 @@
+import { formatJourneyStartingPrice } from "@/lib/tours/journey-pricing";
 /**
  * 本模块职责：行程详情页——把一条行程呈现为一份"私人行程提案"。
  * 输入：TourDetailModel（价格、日程、包含项均来自 catalog 与 content，本组件不另写）。
@@ -14,6 +15,7 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { PageContainer } from "@/components/layout/page-container";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { JourneyGallery } from "@/components/media/journey-gallery";
+import { JourneyRouteMap } from "@/components/tours/route-map/journey-route-map";
 import { journeyCatalog } from "@/content/tours/catalog";
 import { journeyTiers } from "@/content/tours/tiers";
 import { InlineEnquiryForm } from "@/components/forms/inline-enquiry-form";
@@ -35,17 +37,21 @@ import { TourDayItinerary } from "@/features/tours/detail/tour-day-itinerary";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
 import type { JourneyPriceSelection } from "@/lib/tours/journey-price";
 
+import { JourneyDecisionSummary } from "./journey-decision-summary";
+
 import styles from "./tour-journey.module.css";
 
-/** 旗舰行程：专家指南区使用 2027 规划标题，并优先链接三篇长者专项文章。 */
+/** Core first-visit route shows the broader planning collection selected in journey-links. */
 const FLAGSHIP_SLUG = "beijing-xian-shanghai-private-10-day-tour";
 
 export function TourDetailLanding({
   model,
   initialSelection,
+  originDestinationName,
 }: {
   model: TourDetailModel;
   initialSelection?: JourneyPriceSelection;
+  originDestinationName?: string;
 }) {
   const hero = detailHeroPhotos[model.slug] ??
     journeyPhotos[model.slug] ?? {
@@ -55,7 +61,7 @@ export function TourDetailLanding({
   const price = model.pricingBlock
     ? `From ${model.pricingBlock.from}`
     : model.price?.fromUsd
-      ? `US$${model.price.fromUsd.toLocaleString("en-US")}`
+      ? formatJourneyStartingPrice(model.price.fromUsd)
       : "Individually priced";
   const catalogItem = journeyCatalog.find((item) => item.slug === model.slug);
   const tier = journeyTiers[model.slug as keyof typeof journeyTiers];
@@ -96,6 +102,26 @@ export function TourDetailLanding({
       fact("Ideal for") ? ` Best for ${lowerFirst(fact("Ideal for") ?? "")}.` : "",
     ].join("");
 
+  const answerSentences = Array.from(
+    new Intl.Segmenter("en", { granularity: "sentence" }).segment(answer),
+    ({ segment }) => segment.trim(),
+  ).filter(Boolean);
+  const hasLongAnswer = answer.split(/\s+/).length > 70 && answerSentences.length > 1;
+  const experienceSentences = Array.from(
+    new Intl.Segmenter("en", { granularity: "sentence" }).segment(model.decisionSummary),
+    ({ segment }) => segment.trim(),
+  ).filter(Boolean);
+  const leadWithExperience = hasLongAnswer && experienceSentences.length > 1;
+  const leadAnswer = leadWithExperience
+    ? experienceSentences[0]
+    : hasLongAnswer
+      ? answerSentences[0]
+      : answer;
+  const overviewBody = leadWithExperience
+    ? experienceSentences.slice(1).join(" ")
+    : model.decisionSummary;
+  const serviceSentences = leadWithExperience ? answerSentences : answerSentences.slice(1);
+
   return (
     <JourneyConfigurationProvider
       basePrice={model.price?.fromUsd}
@@ -104,6 +130,7 @@ export function TourDetailLanding({
       duration={model.duration}
       priceBasis={model.price?.basis ?? "Final price confirmed in writing"}
       pricingUnit={model.price?.pricingUnit ?? "per-person"}
+      basePartySize={model.price?.basePartySize ?? 2}
     >
       <PageContainer className={`${styles.page}`} tone="white" data-new-tour-detail="true">
         <RecordViewed
@@ -156,6 +183,53 @@ export function TourDetailLanding({
         )}
 
         <div className={styles.wrap}>
+          <section className={styles.mobileOverview} aria-label="Journey at a glance">
+            <p className={styles.mobilePriceLabel}>
+              {model.price?.fromUsd || model.pricingBlock ? "Starting price" : "Your journey price"}
+            </p>
+            <div className={styles.mobilePrice}>
+              {model.pricingBlock ? (
+                <>
+                  <strong>{model.pricingBlock.from}</strong>
+                  <small>
+                    {model.pricingBlock.unit} · {model.pricingBlock.currencyNote}
+                  </small>
+                </>
+              ) : (
+                <JourneyPrice fallback={price} journeySlug={model.slug} />
+              )}
+            </div>
+            {!model.price?.fromUsd ? (
+              <p className={styles.mobileBasis}>
+                {model.pricingBlock?.note ??
+                  model.price?.basis ??
+                  "Prepared around your dates and party. Final services and price are confirmed in writing."}
+              </p>
+            ) : null}
+            {fact("Ideal for") ? (
+              <p className={styles.mobileFit}>
+                <b>Best for:</b> {fact("Ideal for")}
+              </p>
+            ) : null}
+            <a className={styles.mobileEnquire} href="#enquire">
+              Ask about this journey <ArrowRight size={16} aria-hidden="true" />
+            </a>
+            <p className={styles.mobileReassurance}>
+              No payment to enquire. Personal reply normally within 24 hours.
+            </p>
+          </section>
+          <nav className={styles.sectionNavigation} aria-label="Journey sections">
+            {!model.isFramework && days.length > 0 ? (
+              <a href="#itinerary">Daily itinerary</a>
+            ) : null}
+            <a href="#included">Included &amp; excluded</a>
+            {model.pricingBlock ? (
+              <a href="#pricing">Price details</a>
+            ) : (
+              <a href="#enquiry">Price details</a>
+            )}
+            <a href="#faq">Questions</a>
+          </nav>
           <dl className={styles.facts}>
             <div>
               <dt>Length</dt>
@@ -184,15 +258,9 @@ export function TourDetailLanding({
           <div className={styles.layout}>
             <div className={styles.main}>
               <section className={styles.summary} aria-label={detailCopy.summaryLead}>
-                <p className={styles.answer}>{answer}</p>
-                <p className={styles.lede}>{model.decisionSummary}</p>
-                {model.answerSummary && model.lastReviewedLabel && (
-                  <p className={styles.footnote}>
-                    Product information updated: {model.lastReviewedLabel}. Date-specific services
-                    are confirmed before booking.
-                  </p>
-                )}
-                {glossary.length > 0 && <p className={styles.gloss}>{glossary.join(" · ")}</p>}
+                <p className={styles.answer}>{leadAnswer}</p>
+                <JourneyDecisionSummary model={model} />
+                <p className={styles.lede}>{overviewBody}</p>
                 {model.signatureMoments.length > 0 && (
                   <ul className={styles.moments}>
                     {model.signatureMoments.map((moment) => (
@@ -200,21 +268,102 @@ export function TourDetailLanding({
                     ))}
                   </ul>
                 )}
+                {(hasLongAnswer || glossary.length > 0) && (
+                  <details className={styles.overviewDetails}>
+                    <summary>Services &amp; practical details</summary>
+                    <div>
+                      {hasLongAnswer &&
+                        serviceSentences.map((sentence) => <p key={sentence}>{sentence}</p>)}
+                      {glossary.length > 0 && (
+                        <p className={styles.gloss}>{glossary.join(" · ")}</p>
+                      )}
+                    </div>
+                  </details>
+                )}
+                {model.answerSummary && model.lastReviewedLabel && (
+                  <p className={styles.footnote}>
+                    Product information updated: {model.lastReviewedLabel}. Date-specific services
+                    are confirmed before booking.
+                  </p>
+                )}
               </section>
+
+              <GuestVoice
+                topic="pace"
+                count={1}
+                seed={model.slug}
+                title="What guests say about the pace"
+              />
+
+              {model.routeStops.length > 1 && (
+                <section aria-labelledby="route-title">
+                  <h2 id="route-title" className={styles.h2}>
+                    {detailCopy.routeTitle}
+                  </h2>
+                  <JourneyRouteMap stops={model.routeMap.stops} />
+                </section>
+              )}
+
+              {model.comparison && (
+                <section id="compare-durations" aria-labelledby="compare-durations-title">
+                  <h2 id="compare-durations-title" className={styles.h2}>
+                    {model.comparison.title}
+                  </h2>
+                  <p className={styles.note}>{model.comparison.intro}</p>
+                  <div
+                    className={styles.comparisonScroll}
+                    role="region"
+                    aria-label={model.comparison.title}
+                    tabIndex={0}
+                  >
+                    <table className={styles.comparisonTable}>
+                      <caption className={styles.comparisonCaption}>
+                        {model.comparison.title}
+                      </caption>
+                      <thead>
+                        <tr>
+                          {model.comparison.columns.map((column) => (
+                            <th scope="col" key={column}>
+                              {column}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {model.comparison.rows.map(([label, shorter, longer]) => (
+                          <tr key={label}>
+                            <th scope="row">{label}</th>
+                            <td>{shorter}</td>
+                            <td>{longer}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <Link href={model.comparison.href} className={styles.link}>
+                    {model.comparison.linkLabel}
+                  </Link>
+                </section>
+              )}
 
               {model.practicalities && (
                 <section id="tour-details" aria-labelledby="tour-details-title">
                   <h2 id="tour-details-title" className={styles.h2}>
-                    What this private day tour includes
+                    {isDayTour
+                      ? "What this private day tour includes"
+                      : "What this private journey includes"}
                   </h2>
-                  <dl className={styles.standards}>
-                    {model.practicalities.map(({ label, value }) => (
-                      <div key={label}>
-                        <dt>{label}</dt>
-                        <dd>{value}</dd>
-                      </div>
-                    ))}
-                  </dl>
+                  <details className={styles.serviceDetails}>
+                    <summary>Read the full service specification</summary>
+                    <dl className={styles.standards}>
+                      {model.practicalities.map(({ label, value }) => (
+                        <div key={label}>
+                          <dt>{label}</dt>
+                          <dd>{value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </details>
                 </section>
               )}
 
@@ -294,23 +443,6 @@ export function TourDetailLanding({
                     </ol>
                   </section>
                 </>
-              )}
-
-              {model.routeStops.length > 1 && (
-                <section aria-labelledby="route-title">
-                  <h2 id="route-title" className={styles.h2}>
-                    {detailCopy.routeTitle}
-                  </h2>
-                  <ol className={styles.stops}>
-                    {model.routeStops.map((stop) => (
-                      <li key={stop.name}>
-                        <b>{stop.name}</b>
-                        {stop.days && <span>{stop.days}</span>}
-                        {placeGlossary[stop.name] && <small>{placeGlossary[stop.name]}</small>}
-                      </li>
-                    ))}
-                  </ol>
-                </section>
               )}
 
               {!model.isFramework && days.length > 0 && (
@@ -399,7 +531,26 @@ export function TourDetailLanding({
                 </section>
               )}
 
-              <GuestVoice topic={isDayTour ? "transport" : "hotels"} count={2} seed={model.slug} />
+              <aside className={styles.serviceRecords} aria-labelledby="service-records-title">
+                <h3 id="service-records-title">Check the service behind the itinerary</h3>
+                <p>
+                  See who operates your trip, how bookings are confirmed and where guest feedback
+                  comes from.
+                </p>
+                <ul>
+                  <li>
+                    <Link href="/company">Operating company &amp; licensing details</Link>
+                  </li>
+                  <li>
+                    <Link href="/terms">Payment, changes &amp; cancellation terms</Link>
+                  </li>
+                  <li>
+                    <Link href="/reviews">Guest feedback &amp; source information</Link>
+                  </li>
+                </ul>
+              </aside>
+
+              <GuestVoice topic={isDayTour ? "transport" : "hotels"} count={1} seed={model.slug} />
 
               {model.guideProfile && (
                 <section aria-labelledby="guides-profile-title">
@@ -422,7 +573,7 @@ export function TourDetailLanding({
                 </section>
               )}
 
-              <GuestVoice topic="guides" count={2} seed={model.slug} />
+              <GuestVoice topic="guides" count={1} seed={model.slug} />
 
               <section aria-labelledby="why-title">
                 <h2 id="why-title" className={styles.h2}>
@@ -456,20 +607,15 @@ export function TourDetailLanding({
                 </>
               ) : (
                 <>
-                  <p className={styles.bookingFrom}>
-                    {model.price?.fromUsd
-                      ? `From · ${model.price.pricingUnit === "private-group" ? "per private group" : "per person"}`
-                      : "Pricing"}
-                  </p>
+                  {!model.price?.fromUsd ? <p className={styles.bookingFrom}>Pricing</p> : null}
                   <div className={styles.price}>
                     <JourneyPrice fallback={price} journeySlug={model.slug} />
                   </div>
-                  <p className={styles.basis}>
-                    {model.price?.basis ?? "Prepared around your dates"}
-                  </p>
+
                   {adjustableNote ? <p className={styles.basis}>{adjustableNote}</p> : null}
                   <details className={styles.priceDetails}>
                     <summary>How this price is set</summary>
+                    <p>{model.price?.basis ?? "Prepared around your dates"}</p>
                     <p>
                       {model.price?.detail ?? "The final proposal confirms the exact services."}
                     </p>
@@ -480,7 +626,14 @@ export function TourDetailLanding({
               )}
               <div className={styles.bookingForm}>
                 <p className={styles.bookingFormTitle}>Tell us about your trip</p>
-                <InlineEnquiryForm placement="tour-detail-aside" />
+                <InlineEnquiryForm
+                  planningContext={{
+                    currentJourney: { slug: model.slug, title: model.displayTitle },
+                    destinationName: originDestinationName,
+                  }}
+                  placement="tour-detail-aside"
+                  journeyTitle={model.displayTitle}
+                />
               </div>
               <JourneyWhatsAppAction
                 baseHref={model.whatsappHref}
@@ -511,13 +664,6 @@ export function TourDetailLanding({
             </aside>
           </div>
 
-          <GuestVoice
-            topic="pace"
-            count={3}
-            seed={model.slug}
-            title="Guests on the pace and comfort"
-          />
-
           {model.gallery.length > 2 && (
             <JourneyGallery
               images={model.gallery.filter((image) => image.src !== hero.src).slice(0, 8)}
@@ -540,9 +686,7 @@ export function TourDetailLanding({
           {guides.length > 0 && (
             <section aria-labelledby="guides-title">
               <h2 id="guides-title" className={styles.h2}>
-                {model.slug === FLAGSHIP_SLUG
-                  ? "Expert Guides & 2027 Planning Advice"
-                  : detailCopy.guidesTitle}
+                {detailCopy.guidesTitle}
               </h2>
               <div className={styles.guides}>
                 {guides.map((article) => (
@@ -555,23 +699,35 @@ export function TourDetailLanding({
             </section>
           )}
 
-          {model.planningResources && (
-            <section aria-labelledby="planning-resources-title">
-              <h2 id="planning-resources-title" className={styles.h2}>
-                More planning information
-              </h2>
-              <ul className={styles.why}>
-                {model.planningResources.map((resource) => (
-                  <li key={resource.href}>
-                    <b>
-                      <a href={resource.href}>{resource.label}</a>
-                    </b>
-                    <span>{resource.description}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          {[
+            { official: true, title: "Official sources and visitor rules", id: "official-sources" },
+            { official: false, title: "More planning information", id: "planning-resources" },
+          ].map(({ official, title, id }) => {
+            const resources = model.planningResources?.filter(
+              (resource) => Boolean(resource.officialPublisher) === official,
+            );
+            if (!resources?.length) return null;
+            return (
+              <section key={id} aria-labelledby={`${id}-title`}>
+                <h2 id={`${id}-title`} className={styles.h2}>
+                  {title}
+                </h2>
+                <ul className={styles.why}>
+                  {resources.map((resource) => (
+                    <li key={resource.href}>
+                      <b>
+                        <a href={resource.href}>{resource.label}</a>
+                      </b>
+                      {resource.officialPublisher && (
+                        <span>Publisher: {resource.officialPublisher}</span>
+                      )}
+                      <span>{resource.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            );
+          })}
 
           <section id="faq" aria-labelledby="faq-title" className={styles.faq}>
             <h2 id="faq-title" className={styles.h2}>

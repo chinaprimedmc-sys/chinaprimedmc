@@ -64,7 +64,7 @@ test("commercial metadata retains the complete guide-and-driver intent and one c
   assert.equal(metadata.robots.index, true);
 });
 
-test("visible Shanghai facts and TouristTrip data describe the same eight-hour quote-only service", () => {
+test("visible Shanghai facts and TouristTrip data describe the same eight-hour published starting-price service", () => {
   const specification = tourSearchSpecification(tour);
   const schema = itineraryProductSchema({
     ...specification,
@@ -76,9 +76,9 @@ test("visible Shanghai facts and TouristTrip data describe the same eight-hour q
   assert.equal(schema.duration, "PT8H");
   assert.equal(schema.description, model.answerSummary);
   assert.equal(schema.offers, undefined);
-  assert.equal(catalog.pricing.status, "quote-only");
-  assert.equal(catalog.pricing.pricingUnit, "private-group");
-  assert.equal(catalog.pricing.fromUsd, undefined);
+  assert.equal(catalog.pricing.status, "published-from");
+  assert.equal(catalog.pricing.pricingUnit, "per-person");
+  assert.equal(catalog.pricing.fromUsd, 239);
   assert.deepEqual(
     schema.additionalProperty.map(({ name, value }) => ({ label: name, value })),
     model.practicalities,
@@ -174,7 +174,7 @@ test("Shanghai WhatsApp inquiry retains terminal, guide language and return-dead
   assert.ok(model.inquiryChecklist.length >= 4);
 });
 
-test("the actual machine-readable routes retain Shanghai summary, service facts and quote-only pricing", async () => {
+test("the actual machine-readable routes retain Shanghai summary, service facts and published pricing", async () => {
   const { GET: full } = await import("../app/llms-full.txt/route.ts");
   const { GET: short } = await import("../app/llms.txt/route.ts");
   const fullResponse = full();
@@ -183,7 +183,7 @@ test("the actual machine-readable routes retain Shanghai summary, service facts 
   const section = text.split(`# Product: ${tour.title}\n`)[1].split("\n# Product:")[0];
   assert.ok(section.includes(model.answerSummary));
   for (const fact of model.practicalities) assert.ok(section.includes(fact.value), fact.label);
-  assert.match(section, /Quote only; no public numerical starting price/);
+  assert.match(section, /Published starting price subject to the stated basis/);
   assert.doesNotMatch(section, /US\$|room categories|Typical tailored range/);
   const shortText = await short().text();
   assert.ok(shortText.includes(url));

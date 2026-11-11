@@ -131,7 +131,7 @@ For four cities across two weeks, see the [14-day Beijing, Xi'an, Chengdu and Sh
 
 ## What the published land prices do - and do not include
 
-AVIORA quotes every journey in writing by travel date, party size, room setup and confirmed services, rather than publishing a single headline figure.
+AVIORA quotes every journey in writing by travel date, party size, room setup and confirmed services, with the published starting rate as a guide.
 
 Those figures do not include the US-China flights. They are not package averages. Each journey page states its hotels or hotel level, guiding, vehicles, tickets and domestic transport assumptions. A couple will usually have a higher per-person private-service share than four travelers. Exact dates, rooms and supplier availability still require a written proposal.
 

@@ -17,10 +17,9 @@ const JourneyConfigurationContext = createContext<JourneyConfiguration | null>(n
 export function JourneyConfigurationProvider({
   basePrice,
   initialSelection,
-  journeySlug,
   duration,
   priceBasis,
-  pricingUnit,
+  basePartySize = 2,
   children,
 }: {
   basePrice?: number;
@@ -29,57 +28,37 @@ export function JourneyConfigurationProvider({
   duration: string;
   priceBasis: string;
   pricingUnit: "per-person" | "private-group";
+  basePartySize?: number;
   children: ReactNode;
 }) {
   const [guests, setGuests] = useState<JourneyGuests>(
-    (initialSelection?.guests as JourneyGuests) ?? "4",
+    (initialSelection?.guests as JourneyGuests) ?? (String(basePartySize) as JourneyGuests),
   );
 
   useEffect(() => {
     const syncFromUrl = () => {
-      const selection = readJourneyConfiguration(new URLSearchParams(window.location.search));
+      const selection = readJourneyConfiguration(
+        new URLSearchParams(window.location.search),
+        String(basePartySize),
+      );
       setGuests(selection.guests as JourneyGuests);
     };
 
     syncFromUrl();
     window.addEventListener("popstate", syncFromUrl);
     return () => window.removeEventListener("popstate", syncFromUrl);
-  }, []);
+  }, [basePartySize]);
 
   const value = useMemo<JourneyConfiguration>(
     () => ({
       priceBasis,
       guests,
       duration,
-      priceFromUsd: guests === "4" ? basePrice : undefined,
+      // A starting rate keeps its stated basis; requested party size receives a written quote.
+      priceFromUsd: basePrice,
     }),
     [basePrice, duration, guests, priceBasis],
   );
-
-  useEffect(() => {
-    const script = document.getElementById(`${journeySlug}-tour-schema`);
-    if (!script?.textContent) return;
-    const schema = JSON.parse(script.textContent);
-    if (value.priceFromUsd === undefined) delete schema.offers;
-    else
-      schema.offers = {
-        ...schema.offers,
-        "@type": "Offer",
-        price: value.priceFromUsd,
-        priceCurrency: "USD",
-        description: value.priceBasis,
-        url: window.location.href,
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: value.priceFromUsd,
-          priceCurrency: "USD",
-          unitText:
-            pricingUnit === "private-group" ? "per private group of four guests" : "per person",
-          description: value.priceBasis,
-        },
-      };
-    script.textContent = JSON.stringify(schema).replace(/</g, "\\u003c");
-  }, [journeySlug, pricingUnit, value.priceBasis, value.priceFromUsd]);
 
   return (
     <JourneyConfigurationContext.Provider value={value}>

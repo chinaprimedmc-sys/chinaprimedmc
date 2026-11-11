@@ -89,7 +89,7 @@ We keep arrival day free of sightseeing. On our 10-day tour, your guide meets yo
 
 Travel to China with aging parents should be a calm family experience built on care and thoughtful planning. When food, rooms and daily support are arranged in advance, you can spend your energy enjoying the trip.
 
-If you are planning a trip for your family, explore [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour). It is designed around a relaxed pace, a culinary concierge who briefs the chef on dietary needs, seated step-free restrooms checked in advance, a 3:30 PM hotel return and 24/7 support, from US$3,800 per person.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## Sources
 

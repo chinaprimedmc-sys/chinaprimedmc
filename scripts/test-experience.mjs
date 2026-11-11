@@ -1,9 +1,6 @@
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
-const { chromium } = require(
-  process.env.PLAYWRIGHT_PATH ||
-    "/Users/Admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright",
-);
+const { chromium } = require("@playwright/test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const base = process.env.PREVIEW_URL || "http://127.0.0.1:3148";
@@ -11,8 +8,7 @@ const tour = "/tours/china-family-tour-with-pandas-12-day-private-tour";
 (async () => {
   const browser = await chromium.launch({
     headless: true,
-    executablePath:
-      process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    executablePath: process.env.CHROME_PATH || undefined,
   });
   try {
     const context = await browser.newContext({
@@ -236,6 +232,7 @@ const tour = "/tours/china-family-tour-with-pandas-12-day-private-tour";
     const fallbackGallery = fallback.locator(
       "[data-journey-gallery] [aria-roledescription=carousel]",
     );
+    await fallbackGallery.waitFor({ state: "visible" });
     assert.equal(await fallbackGallery.getAttribute("data-ready"), null);
     assert.ok(await fallbackGallery.evaluate((el) => el.scrollWidth > el.clientWidth));
     assert.equal(await fallbackGallery.evaluate((el) => getComputedStyle(el).overflowX), "auto");

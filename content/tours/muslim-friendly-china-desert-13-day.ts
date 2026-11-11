@@ -13,11 +13,12 @@ const pendingImage: MediaAsset = {
 };
 
 const hotelByPlace = {
-  beijing: "Selected premium five-star Beijing hotel · 4 nights · two rooms",
-  xian: "Selected premium five-star Xi'an hotel · 3 nights · two rooms",
-  ningxia: "Best-available premium Ningxia stay · 3 nights · two rooms",
-  zhongwei: "Premium desert lodge or strongest confirmed equivalent · 1 night · two rooms",
-  shanghai: "Selected premium five-star Shanghai hotel · 1 night · two rooms",
+  beijing: "Selected premium five-star Beijing hotel · 4 nights · rooms confirmed for your party",
+  xian: "Selected premium five-star Xi'an hotel · 3 nights · rooms confirmed for your party",
+  ningxia: "Best-available premium Ningxia stay · 3 nights · rooms confirmed for your party",
+  zhongwei:
+    "Premium desert lodge or strongest confirmed equivalent · 1 night · rooms confirmed for your party",
+  shanghai: "Selected premium five-star Shanghai hotel · 1 night · rooms confirmed for your party",
 };
 
 export const muslimFriendlyChinaDesert13DayTour: Tour = {
@@ -73,7 +74,8 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       {
         label: "Hotels",
         value: "Premium city hotels and best-available desert stay",
-        helper: "Two rooms for four guests; Ningxia accommodation is date-specific.",
+        helper:
+          "Rooms and occupancy confirmed for your actual party; Ningxia accommodation is date-specific.",
       },
       {
         label: "Private Service",
@@ -212,7 +214,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       image: pendingImage,
       hotel: hotelByPlace.beijing,
       meals: ["As confirmed after your dietary profile"],
-      transport: "Private airport transfer, vehicle sized for four guests and luggage",
+      transport: "Private airport transfer, vehicle sized for your actual party and luggage",
       activities: [
         {
           title: "Arrival and requirements review",
@@ -551,7 +553,8 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       destination: "Beijing",
       description:
         "Four nights in a carefully selected premium hotel with quiet rooms, practical access to the imperial core and Great Wall departure route, and room categories reviewed around your group.",
-      roomStyle: "Two rooms; connecting or adjacent setup requested and confirmed where available",
+      roomStyle:
+        "Rooms for your actual party; connecting or adjacent setup requested and confirmed where available",
       highlights: [
         "4-night continuity",
         "Prayer-aware timing",
@@ -566,7 +569,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       description:
         "Three nights in a premium city hotel selected for access to the historic core, reliable service after the Terracotta Army day and practical room setup.",
       roomStyle:
-        "Two rooms; room location and prayer-friendly practicalities checked before confirmation",
+        "Rooms for your actual party; room location and prayer-friendly practicalities checked before confirmation",
       highlights: ["3-night continuity", "Old-city access", "Room audit", "Verified dining nearby"],
       image: pendingImage,
     },
@@ -575,7 +578,8 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       destination: "Yinchuan",
       description:
         "Three nights in Yinchuan's strongest suitable available property for the dates, assessed for cleanliness, room comfort, service response, location and practical dining access.",
-      roomStyle: "Two rooms; exact property and categories named in the written proposal",
+      roomStyle:
+        "Rooms for your actual party; exact property and categories named in the written proposal",
       highlights: [
         "Date-specific audit",
         "Dining access reviewed",
@@ -589,7 +593,8 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       destination: "Zhongwei",
       description:
         "One night at the best suitable desert lodge or strongest confirmed equivalent, chosen for the actual room condition, dinner practice, privacy, heating or cooling and access to the landscape.",
-      roomStyle: "Two rooms or the strongest practical configuration confirmed to the date",
+      roomStyle:
+        "Rooms for your actual party or the strongest practical configuration confirmed to the date",
       highlights: [
         "Desert setting",
         "Alcohol-free dinner plan",
@@ -603,7 +608,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       destination: "Shanghai",
       description:
         "One night in a premium hotel with a clear airport-transfer plan and a location that makes a short final city chapter possible without compromising departure safety.",
-      roomStyle: "Two rooms; exact room category confirmed before booking",
+      roomStyle: "Rooms for your actual party; exact room category confirmed before booking",
       highlights: [
         "Airport logic",
         "Final-night comfort",
@@ -614,7 +619,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
     },
   ],
   included: [
-    "12 nights in selected premium city hotels plus the strongest date-specific Ningxia and desert accommodation, based on four guests sharing two rooms",
+    "12 nights in selected premium city hotels plus the strongest date-specific Ningxia and desert accommodation, with rooms and occupancy confirmed for your actual party",
     "Daily hotel breakfast and the private or hosted meals specifically stated in the written proposal",
     "Private multilingual guides, private vehicles and airport or station handovers on confirmed touring days",
     "First-class Beijing–Xi'an high-speed rail, an economy flight from Xi'an to Yinchuan when practical, and the best available flight routing from Zhongwei to Shanghai",
@@ -815,6 +820,6 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20China%2C%20From%20the%20Great%20Wall%20to%20Desert%20Stars.%20We%20are%20considering%20four%20guests%20and%20two%20rooms.%20Please%20advise%20on%20verified%20meals%2C%20prayer-aware%20timing%2C%20Ningxia%20and%20desert%20accommodation.",
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
-      "I am interested in the 13-day Muslim-friendly China journey from the Great Wall to desert stars. Please advise on verified meals, prayer-aware planning, hotels and a private quote for four guests.",
+      "I am interested in the 13-day Muslim-friendly China journey from the Great Wall to desert stars. Please advise on verified meals, prayer-aware planning, hotels and a private quote for our group.",
   },
 };

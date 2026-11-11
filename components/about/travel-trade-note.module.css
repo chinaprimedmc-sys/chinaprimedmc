@@ -80,5 +80,21 @@
 @media (max-width: 767px) {
   .withImage {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .links {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
+  .links a {
+    min-height: 48px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  .copy .source,
+  .photo figcaption {
+    font-size: 0.875rem;
+    line-height: 1.75;
   }
 }

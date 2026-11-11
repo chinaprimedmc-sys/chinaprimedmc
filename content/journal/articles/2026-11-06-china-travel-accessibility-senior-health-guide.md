@@ -107,7 +107,7 @@ Many major attractions, airports, stations and modern shopping centers have acce
 
 Age should not stop anyone from seeing the world. With a realistic route, honest answers about each site, private transport and a clear plan for medical care, many older travelers can enjoy China comfortably.
 
-If you are planning a trip for your family, explore [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour). It is designed around a relaxed pace, low-step transfers, a 3:30 PM return to the hotel and 24/7 support, and you can tell us about any mobility needs before we confirm the route.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## Sources
 

@@ -7,7 +7,7 @@
  * 不负责：表单字段与提交（HubSpot）、页内表单（见 enquiry-section.tsx）。
  * 关键规则：监听在捕获阶段，才能先于 Next <Link>；渐进增强——没有 JS 或使用修饰键/新标签页点击时，链接照常跳转到 /start-planning；
  * 当前页已有页内表单时只滚动到它，绝不同时出现两个 HubSpot 实例；
- * 带 match / journeys 参数的链接保持原样跳转（它们携带弹窗放不下的上下文）。
+ * 携带行程或偏好上下文的链接保持跳转，交给规划页完整呈现并传递备注。
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -63,7 +63,12 @@ export function EnquiryDialog({ journeyTitles }: { journeyTitles: Record<string,
       }
       if (url.origin !== window.location.origin || url.pathname !== "/start-planning") return;
       if (window.location.pathname === "/start-planning") return;
-      if (url.searchParams.has("match") || url.searchParams.has("journeys")) return;
+      if (
+        ["match", "journeys", "journey", "destination", "preference"].some((key) =>
+          url.searchParams.has(key),
+        )
+      )
+        return;
 
       event.preventDefault();
       const inline = document.querySelector<HTMLElement>("[data-enquiry-inline]");

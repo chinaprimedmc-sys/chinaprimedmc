@@ -86,7 +86,7 @@ Sometimes. Fewer hotel changes can protect rest, but a longer stay in one city i
 
 Only after the hotel or venue confirms the specific feature for the date. Requests should be recorded in writing and reconfirmed before travel.
 
-The clearest example is [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour), which sets a daily step budget and a 3:30 PM hotel return.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## Plan around your comfortable day
 

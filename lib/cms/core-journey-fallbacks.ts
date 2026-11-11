@@ -6,8 +6,7 @@ import type { Tour } from "@/types/tour";
 const coreJourneyTitleOverrides: Record<string, string> = {
   "china-family-tour-with-pandas-12-day-private-tour":
     "China, Made for Families: Great Wall, Warriors & Pandas",
-  "china-at-an-easier-pace-12-day-private-tour":
-    "China, Considered: 12-Day Beijing, Xi'an & Shanghai Private Journey",
+  "china-at-an-easier-pace-12-day-private-tour": "12-Day Private China Tour at an Easier Pace",
   "beijing-xian-chengdu-shanghai-private-11-day-tour":
     "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
   "beijing-xian-shanghai-private-10-day-tour": "10-Day Beijing, Xi'an & Shanghai Private Tour",

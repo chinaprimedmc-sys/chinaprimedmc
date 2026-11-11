@@ -10,6 +10,7 @@ import type { JourneyCatalogItem } from "@/content/tours/catalog";
 
 export type JourneyPricePresentation = {
   amount: string;
+  displayText: string;
   label: string;
   basis: string;
   accessibleText: string;
@@ -17,17 +18,37 @@ export type JourneyPricePresentation = {
 
 export function getJourneyPricePresentation(item: JourneyCatalogItem): JourneyPricePresentation {
   const amount = item.pricing.fromUsd
-    ? `US$${item.pricing.fromUsd.toLocaleString("en-US")}`
+    ? `USD ${item.pricing.fromUsd.toLocaleString("en-US")}`
     : "Individually priced";
-  const label = item.pricing.pricingUnit === "private-group" ? "Private group from" : "From";
+  const label = "From";
   const unit = item.pricing.pricingUnit === "per-person" ? " per person" : "";
 
   return {
     amount,
+    displayText: item.pricing.fromUsd ? `${label} ${amount}` : amount,
     label,
     basis: item.pricing.cardBasis,
     accessibleText: item.pricing.fromUsd
       ? `${label} ${amount}${unit}. ${item.pricing.cardBasis}.`
       : `${amount}. ${item.pricing.cardBasis}.`,
+  };
+}
+
+export function formatJourneyStartingPrice(amount: number) {
+  return `From USD ${amount.toLocaleString("en-US")}`;
+}
+
+/** Server-rendered starting offer; requested group size does not change this stated basis. */
+export function getJourneyStartingOffer(item: JourneyCatalogItem, url: string) {
+  if (item.pricing.fromUsd === undefined) return undefined;
+  return {
+    price: item.pricing.fromUsd,
+    priceCurrency: "USD",
+    url,
+    description: item.pricing.basis,
+    unitText:
+      item.pricing.pricingUnit === "per-person"
+        ? "per person"
+        : `per private group of ${item.pricing.basePartySize} guests`,
   };
 }

@@ -1,3 +1,6 @@
+export const serviceFiguresDisclosure =
+  "Service figures are reported by AVIORA. A reporting period and independent audit are not provided on this website.";
+
 export const serviceAchievements = [
   {
     id: "countries-served",
@@ -34,8 +37,8 @@ export const serviceAchievements = [
 
 export function serviceAchievementsText() {
   // 面向游客的机器可读摘要只放游客相关数据；企业客户数据不在此列。
-  return serviceAchievements
+  return `${serviceFiguresDisclosure}\n${serviceAchievements
     .filter(({ id }) => id !== "overseas-companies-served")
     .map(({ display, englishLabel, description }) => `- ${display} ${englishLabel}: ${description}`)
-    .join("\n");
+    .join("\n")}`;
 }

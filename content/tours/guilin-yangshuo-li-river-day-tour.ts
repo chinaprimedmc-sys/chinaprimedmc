@@ -503,7 +503,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     {
       question: "What does the tour cost for two people or a family?",
       answer:
-        "Request one written total for your actual party, travel date and selected finish. The base Yangshuo-finish version includes central Guilin hotel pickup, private guide and road transport, standard four-star public cruise tickets, a short Yangshuo countryside route and pre-confirmed normal luggage transfer to the Yangshuo hotel. A meal is included only when attached to the confirmed ticket. Child fares, seats, optional activities and any Guilin return are specified in the quote. No public numerical starting price is published.",
+        "Request one written total for your actual party, travel date and selected finish. The base Yangshuo-finish version includes central Guilin hotel pickup, private guide and road transport, standard four-star public cruise tickets, a short Yangshuo countryside route and pre-confirmed normal luggage transfer to the Yangshuo hotel. A meal is included only when attached to the confirmed ticket. Child fares, seats, optional activities and any Guilin return are specified in the quote. The published starting rate has a stated party-size basis; your written quote confirms the total for your actual group.",
     },
     {
       question: "Can we finish in Yangshuo instead of returning to Guilin?",
@@ -625,6 +625,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     {
       label: "Guilin Municipal Government",
       href: "https://www.guilin.gov.cn/",
+      officialPublisher: "Guilin Municipal Government",
       description:
         "Regional visitor information; this does not replace the booked cruise operator's sailing and ticket confirmation.",
     },

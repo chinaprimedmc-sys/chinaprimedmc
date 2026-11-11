@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons/symbols";
 import { OptimizedImage } from "@/components/media/optimized-image";
+import { companyIdentity } from "@/content/about/identity";
 import { travelTradeRecord } from "@/content/about";
 import { homeEditorialImages } from "@/content/home/homepage";
 import styles from "./travel-trade-note.module.css";
@@ -28,10 +29,7 @@ export function TravelTradeNote({ id, showImage = false }: { id: string; showIma
         <p className={styles.eyebrow}>A documented industry appearance</p>
         <h2 id={`${id}-title`}>Guohui Shi in TTG Asia’s MATTA Connect coverage.</h2>
         <p>{travelTradeRecord.summary}</p>
-        <p>
-          The report identifies him through China Prime DMC, the travel services identity used by
-          AVIORA’s China team.
-        </p>
+        <p>{companyIdentity.tradeRelationship}</p>
         <div className={styles.links}>
           <a href={travelTradeRecord.sourceUrl} target="_blank" rel="noreferrer">
             Read the TTG Asia report <ArrowUpRight aria-hidden="true" />

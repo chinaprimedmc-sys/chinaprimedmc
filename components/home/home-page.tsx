@@ -61,8 +61,6 @@ export function HomePage({ planningHref }: { planningHref: string }) {
   const quote = quoted ? quotedSentence : review ? excerpt(review.paragraphs[0], 220) : null;
   const since = new Date(siteConfig.operator.founded).getFullYear();
   const familyTour = getTourBySlug("china-family-tour-with-pandas-12-day-private-tour");
-  const familyBasis = familyTour?.overview.facts.find((fact) => fact.label === "Published Basis");
-  const familyAmount = familyBasis?.helper?.match(/US\$[\d,]+/)?.[0];
 
   return (
     <div className={styles.page}>
@@ -162,7 +160,6 @@ export function HomePage({ planningHref }: { planningHref: string }) {
               if (!item) return null;
               const photo = getJourneyCardPhoto(item.slug) ?? item.image;
               const price = getJourneyPricePresentation(item);
-              const publishedFamilyPrice = item.slug === familyTour?.slug ? familyAmount : null;
               return (
                 <article className={styles.journeyCard} key={item.slug}>
                   <TrackedLink
@@ -197,16 +194,8 @@ export function HomePage({ planningHref }: { planningHref: string }) {
                     </p>
                     <p className={styles.journeyDescription}>{selection.description}</p>
                     <div className={styles.journeyPrice}>
-                      <strong>
-                        {publishedFamilyPrice
-                          ? `From ${publishedFamilyPrice} per person`
-                          : price.amount}
-                      </strong>
-                      <p>
-                        {publishedFamilyPrice
-                          ? "Two adults + two children aged 6–11, sharing two rooms outside peak periods. Your dates and room choices determine the final quote."
-                          : "A written quote for your dates, party size and hotel choices."}
-                      </p>
+                      <strong aria-label={price.accessibleText}>{price.displayText}</strong>
+                      <p>A written quote for your dates, party size and hotel choices.</p>
                     </div>
                     <TrackedLink
                       href={item.href}

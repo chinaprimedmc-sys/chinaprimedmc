@@ -1,4 +1,5 @@
 "use client";
+import { getJourneyPricePresentation } from "@/lib/tours/journey-pricing";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowLeft, ArrowRight, Check, X } from "@/components/icons/symbols";
@@ -482,20 +483,8 @@ export function MobileJourneyMatch({
                     <p className={styles.difference}>{top.differences.join(" ")}</p>
                   )}
                   <div className={styles.priceRow}>
-                    <span>
-                      {top.item.pricing.fromUsd ? (
-                        <>
-                          From{" "}
-                          <strong>US${top.item.pricing.fromUsd.toLocaleString("en-US")}</strong>
-                        </>
-                      ) : (
-                        <strong>Individually priced</strong>
-                      )}{" "}
-                      <small>
-                        {top.item.pricing.pricingUnit === "private-group"
-                          ? "per private group of four"
-                          : "per person · based on four guests"}
-                      </small>
+                    <span aria-label={getJourneyPricePresentation(top.item).accessibleText}>
+                      <strong>{getJourneyPricePresentation(top.item).displayText}</strong>
                     </span>
                   </div>
                   <Link href={top.item.href} onClick={close} className={styles.viewLink}>
@@ -535,13 +524,8 @@ export function MobileJourneyMatch({
                         <span className={styles.otherCopy}>
                           <strong>{getJourneyCardTitle(item)}</strong>
                           <small>{differences[0] ?? item.bestForSummary}</small>
-                          <em>
-                            {item.pricing.fromUsd
-                              ? `From US$${item.pricing.fromUsd.toLocaleString("en-US")}`
-                              : "Individually priced"}{" "}
-                            {item.pricing.pricingUnit === "private-group"
-                              ? "per private group of four"
-                              : "per person · four guests"}
+                          <em aria-label={getJourneyPricePresentation(item).accessibleText}>
+                            {getJourneyPricePresentation(item).displayText}
                           </em>
                         </span>
                         <ArrowRight size={17} aria-hidden="true" />

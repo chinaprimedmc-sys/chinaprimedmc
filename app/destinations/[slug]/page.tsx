@@ -39,6 +39,9 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
     description: destination.seoDescription,
     path: `/destinations/${slug}`,
     image: destination.heroImage?.src,
+    imageWidth: destination.heroImage?.width,
+    imageHeight: destination.heroImage?.height,
+    imageAlt: destination.heroImage?.alt,
   });
 }
 
@@ -58,12 +61,26 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
     <>
       <JsonLd
         id={`${slug}-webpage-schema`}
-        data={webPageSchema({
-          url,
-          name: destination.seoTitle,
-          description: destination.seoDescription,
-          about: { "@id": `${url}#destination` },
-        })}
+        data={{
+          ...webPageSchema({
+            url,
+            name: destination.seoTitle,
+            description: destination.seoDescription,
+            about: { "@id": `${url}#destination` },
+            mainEntity: { "@id": `${url}#destination` },
+          }),
+          citation: guide?.visitorResources.map((resource) => ({
+            "@type": "CreativeWork",
+            name: resource.label,
+            url: resource.href,
+            description: resource.scope,
+          })),
+          // Nearby excursions are subjects of the guide, not necessarily inside this place.
+          mentions: guide?.attractions.map((name) => ({
+            "@type": "TouristAttraction",
+            name,
+          })),
+        }}
       />
       <JsonLd
         id={`${slug}-destination-schema`}
@@ -74,18 +91,11 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
           name: destination.name,
           description: destination.seoDescription,
           url,
-          inLanguage: "en-US",
-          isPartOf: { "@id": `${siteConfig.url}/#website` },
-          provider: { "@id": `${siteConfig.url}/#organization` },
           mainEntityOfPage: { "@id": `${url}#webpage` },
           image: destination.heroImage
             ? new URL(destination.heroImage.src, siteConfig.url).toString()
             : undefined,
           touristType: destination.bestFor.split(",").map((item) => item.trim()),
-          containsPlace: guide?.attractions.map((name) => ({
-            "@type": "TouristAttraction",
-            name,
-          })),
         }}
       />
       {guide ? (
@@ -95,7 +105,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
             "@context": "https://schema.org",
             "@type": "ItemList",
             "@id": `${url}#private-journeys`,
-            name: `Private tours including ${destination.name}`,
+            name: `Private tour planning for ${destination.name}`,
             mainEntityOfPage: { "@id": `${url}#webpage` },
             numberOfItems: guide.products.length,
             itemListElement: guide.products.map((product, index) => ({

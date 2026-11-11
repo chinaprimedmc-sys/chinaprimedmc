@@ -36,8 +36,6 @@ const { itemsToIndex, readExplorerState, writeExplorerState, runExplorer, emptyS
   await import("../lib/tours/journey-explorer.ts");
 const { journeyTags } = await import("../content/tours/journey-tags.ts");
 const { journeyCatalog } = await import("../content/tours/catalog.ts");
-const { slowPacedSlug, pricingBlock } =
-  await import("../content/tours/slow-paced-golden-triangle.ts");
 
 const items = buildExplorerItems();
 const index = itemsToIndex(items);
@@ -45,19 +43,15 @@ const find = (q, extra = {}) =>
   runExplorer(index, { ...emptyState, q, ...extra }).map((r) => r.item.slug);
 const state = (query) => readExplorerState(new URLSearchParams(query));
 
-test("every public journey has tags and a tier; only the published flagship exception shows a price", () => {
+test("every public journey has tags and a tier; all approved starting prices appear without raw catalog data", () => {
   assert.equal(items.length, journeyCatalog.length);
   assert.equal(Object.keys(journeyTags).length, journeyCatalog.length);
   assert.ok(!JSON.stringify(items).includes('"fromUsd"'), "Do not expose raw catalog prices");
-  const priced = items.filter((item) => /US\$|\$\s?\d/.test(item.priceLabel));
-  assert.deepEqual(
-    priced.map((item) => item.slug),
-    [slowPacedSlug],
-  );
-  assert.equal(priced[0].priceLabel, `From ${pricingBlock.from} ${pricingBlock.unit}`);
-  for (const item of items.filter((item) => item.slug !== slowPacedSlug)) {
-    assert.equal(item.priceLabel, "Priced for your dates");
-    assert.ok(!/US\$|\$\s?\d/.test(item.priceNote));
+  for (const item of items) {
+    const catalog = journeyCatalog.find((journey) => journey.slug === item.slug);
+    assert.equal(item.priceLabel, `From USD ${catalog.pricing.fromUsd.toLocaleString("en-US")}`);
+    assert.equal(item.priceNote, "");
+    assert.ok(item.priceAccessibleText.includes(catalog.pricing.cardBasis));
   }
   for (const item of items) {
     assert.ok(
@@ -194,7 +188,8 @@ test("every offered 'who' tag is backed by at least one journey", () => {
   }
 });
 
-test("medical support is searchable only where the operator confirmed it (the slow-paced 9-day journey)", () => {
-  assert.deepEqual(find("medical"), ["beijing-xian-shanghai-private-10-day-tour"]);
-  assert.deepEqual(find("seniors").includes("beijing-xian-shanghai-private-10-day-tour"), true);
+test("classic first-visit route is not advertised as a senior or medical-support product", () => {
+  assert.deepEqual(find("medical"), []);
+  assert.equal(find("seniors").includes("beijing-xian-shanghai-private-10-day-tour"), false);
+  assert.ok(find("seniors").includes("china-at-an-easier-pace-12-day-private-tour"));
 });

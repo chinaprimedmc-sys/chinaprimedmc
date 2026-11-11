@@ -30,13 +30,18 @@ export default async function ReviewsPage({
   return (
     <PageContainer>
       <SiteNavigation />
-      <main className={styles.archive}>
+      <section className={styles.archive} aria-label="Guest feedback">
         <header className={styles.intro}>
           <p className={styles.eyebrow}>Guest feedback</p>
           <h1>A more considered way to travel China.</h1>
+          <p className={styles.sourceNote}>
+            Feedback published on AVIORA’s own website. Ratings are calculated from the feedback
+            displayed here. These are separate from reviews on independent platforms; a Verified
+            label appears only when a source check is recorded.
+          </p>
         </header>
         <ReviewsBoard reviews={reviews} initialQueryString={query.toString()} />
-      </main>
+      </section>
       <EnquirySection placement="reviews" tone="stone" />
       <SiteFooter />
     </PageContainer>

@@ -1,0 +1,182 @@
+.guide {
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+  background: #fff;
+  color: #171717;
+}
+.section {
+  padding-block: clamp(2.75rem, 6vw, 5rem);
+  border-top: 1px solid #ddd;
+  scroll-margin-top: 7rem;
+}
+.heading {
+  max-width: 46rem;
+}
+.eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+.heading h2,
+.questions h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.heading > p:last-child {
+  margin: 1.25rem 0 0;
+  max-width: 62ch;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #525252;
+}
+.steps {
+  display: grid;
+  list-style: decimal;
+  gap: 2.5rem;
+  margin: 2.75rem 0 0;
+  padding: 0 0 0 1.5rem;
+}
+.steps li {
+  padding-left: 0.75rem;
+}
+.steps li::marker {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.steps h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.steps p,
+.checklist dd,
+.questions details p {
+  margin: 0;
+  color: #525252;
+  line-height: 1.8;
+}
+.steps .detail {
+  margin-top: 0.75rem;
+  color: #333;
+  font-size: 0.9375rem;
+}
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.25rem 4rem;
+  margin: 2.75rem 0;
+}
+.checklist dt {
+  margin-bottom: 0.65rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.references {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem 2rem;
+  font-size: 0.9375rem;
+}
+.references p {
+  flex-basis: 100%;
+  margin: 0;
+  color: #525252;
+}
+.references a {
+  padding-block: 0.5rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+.questions {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: start;
+  gap: 2rem 5rem;
+  padding-top: clamp(2.75rem, 6vw, 5rem);
+  border-top: 1px solid #ddd;
+}
+.questions h2 {
+  font-size: clamp(1.65rem, 2.7vw, 2.25rem);
+}
+.questions details + details {
+  margin-top: 0.75rem;
+}
+.questions summary {
+  padding-block: 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.questions details p {
+  padding: 0.25rem 0 1rem;
+}
+.guide a:focus-visible,
+.questions summary:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 5px;
+}
+@media (min-width: 900px) {
+  .steps li {
+    padding-left: 1rem;
+  }
+  .stepContent {
+    display: grid;
+    grid-template-columns: 0.45fr 1fr;
+    gap: 3rem;
+  }
+}
+@media (max-width: 767px) {
+  .checklist,
+  .questions {
+    grid-template-columns: 1fr;
+  }
+  .checklist {
+    gap: 1.75rem;
+  }
+}
+
+/* Mobile reading and touch targets. */
+
+@media (max-width: 767px) {
+  .heading h2 {
+    font-size: clamp(1.75rem, 7vw, 2.15rem);
+    line-height: 1.2;
+  }
+  .heading > p:last-child {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .steps {
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-left: 1.25rem;
+  }
+  .steps li {
+    padding-left: 0.25rem;
+  }
+  .steps h3 {
+    font-size: 1.125rem;
+  }
+  .checklist {
+    margin-block: 2rem;
+  }
+  .references {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .references a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+  }
+  .questions summary {
+    min-height: 48px;
+    line-height: 1.6;
+  }
+}

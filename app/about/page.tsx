@@ -10,14 +10,18 @@ import {
   WalletCards,
 } from "@/components/icons/symbols";
 import type { Metadata } from "next";
+import white from "@/components/about/white-editorial.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
+import { ServiceCases } from "@/components/about/service-cases";
 import { AboutNavigation } from "@/components/about/about-navigation";
 import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
+import { companyIdentity } from "@/content/about/identity";
 import { founder } from "@/content/founder";
 import {
   aboutQuestions,
@@ -25,7 +29,7 @@ import {
   travelDecisions,
   hospitalityPrinciples,
 } from "@/content/about";
-import { serviceAchievements } from "@/content/home/service-achievements";
+import { serviceAchievements, serviceFiguresDisclosure } from "@/content/home/service-achievements";
 import { homeEditorialImages } from "@/content/home/homepage";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -168,7 +172,7 @@ const whatsappHref = `https://wa.me/8618027438191?text=${encodeURIComponent(
 
 export default function AboutPage() {
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${white.page}`}>
       <JsonLd
         id="about-breadcrumb-schema"
         data={breadcrumbSchema([
@@ -195,29 +199,27 @@ export default function AboutPage() {
       <SiteNavigation />
 
       <section className={styles.hero} aria-labelledby="about-title" data-hero-layout="true">
-        <OptimizedImage
-          src="/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp"
-          alt="The Great Wall crossing mountain ridges in warm early light"
-          fill
-          priority
-          sizes="100vw"
-          frameClassName={styles.heroImage}
-          className={styles.heroImageElement}
-        />
-        <div className={styles.heroShade} aria-hidden="true" />
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <p className={styles.heroEyebrow}>ABOUT AVIORA</p>
             <h1 id="about-title">China, Seen Differently.</h1>
-            <p>
-              We design private China journeys for international travelers, connecting thoughtful
-              routes, local guides and practical support through one China-based team.
-            </p>
+            <p>{companyIdentity.brandSummary}</p>
             <Link className={styles.heroLink} href="#understood">
               How We Look After Your Journey <ArrowUpRight aria-hidden="true" />
             </Link>
           </div>
         </div>
+        <figure className={styles.heroPhoto}>
+          <OptimizedImage
+            src="/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.webp"
+            alt="The Great Wall crossing mountain ridges in warm early light"
+            fill
+            priority
+            sizes="(max-width: 767px) 100vw, 48vw"
+            frameClassName={styles.heroImage}
+            className={styles.heroImageElement}
+          />
+        </figure>
       </section>
 
       <div className={`${styles.container} ${styles.routeNavigation}`}>
@@ -227,6 +229,7 @@ export default function AboutPage() {
           <a href="#our-story">Our story</a>
           <a href="#designed-around-you">Your journey</a>
           <a href="#the-standard">Our standards</a>
+          <a href="#service-cases">Service stories</a>
           <a href="#people">Our team</a>
           <a href="#founder">Our founder</a>
           <a href="#about-questions">Questions</a>
@@ -262,8 +265,7 @@ export default function AboutPage() {
             ))}
           </dl>
           <p className={styles.figuresNote}>
-            Service figures reported by AVIORA.{" "}
-            <Link href="/company">View our company details</Link>.
+            {serviceFiguresDisclosure} <Link href="/company">View our company details</Link>.
           </p>
         </div>
       </section>
@@ -441,9 +443,22 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <ServiceCases />
+
       <section id="founder" className={styles.section}>
         <div className={styles.container}>
           <div className={styles.founderFeature}>
+            <figure className={styles.founderPortrait}>
+              <Image
+                src={founder.photo.src}
+                alt={founder.photo.alt}
+                width={founder.photo.width}
+                height={founder.photo.height}
+                sizes="(max-width: 767px) calc(100vw - 40px), 430px"
+                className={styles.founderPortraitImage}
+              />
+              <figcaption>{founder.photo.caption}</figcaption>
+            </figure>
             <div>
               <p className={styles.eyebrow}>THE PERSON BEHIND AVIORA</p>
               <h2>{founder.name}</h2>
@@ -453,8 +468,6 @@ export default function AboutPage() {
               <Link className={styles.textLink} href={founder.path}>
                 Read Guohui&apos;s letter <ArrowUpRight aria-hidden="true" />
               </Link>
-            </div>
-            <div>
               <blockquote>“{founder.pullQuote}”</blockquote>
               <p className={styles.sectionCopy}>
                 In his own words, Guohui explains why he founded AVIORA: to make travel personal,
@@ -607,6 +620,7 @@ export default function AboutPage() {
               { label: "The AVIORA Standard", href: "#the-standard" },
               { label: "Company & Licensing", href: "/company" },
               { label: "Our Process", href: "#how-it-works" },
+              { label: "Service Stories", href: "#service-cases" },
               { label: "The People", href: "#people" },
             ],
           },

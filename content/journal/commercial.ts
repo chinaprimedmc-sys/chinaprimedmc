@@ -694,6 +694,7 @@ export const commercialJournalArticles: JournalArticle[] = [
   commercialArticle({
     slug: "how-many-days-beijing-xian-shanghai",
     publishedAt: "2026-08-19",
+    updatedAt: "2026-11-11",
     title: "How Many Days Do You Need for Beijing, Xi'an and Shanghai? 8, 10 or 12 Days Compared",
     dek: "Compare the real usable time inside eight, ten and twelve-day routes after arrival, departure and two hotel-to-hotel transitions are counted honestly.",
     excerpt:
@@ -732,7 +733,10 @@ export const commercialJournalArticles: JournalArticle[] = [
       "how long to spend in Beijing Xian Shanghai",
     ],
     destinations: ["beijing", "xian", "shanghai"],
-    tours: ["china-at-an-easier-pace-12-day-private-tour"],
+    tours: [
+      "beijing-xian-shanghai-private-10-day-tour",
+      "china-at-an-easier-pace-12-day-private-tour",
+    ],
     experiences: ["private-guides", "train-travel"],
     articles: [
       "first-trip-to-china-planning-guide",
@@ -1712,13 +1716,14 @@ export const commercialJournalArticles: JournalArticle[] = [
   commercialArticle({
     slug: "china-itinerary-older-travelers-10-days",
     publishedAt: "2026-08-18",
+    updatedAt: "2026-11-11",
     title: "A 12-Day China Itinerary at an Easier Pace",
-    dek: "See Beijing, Xi'an and Shanghai through a measured 12-day route designed for more freedom, meaningful days and private support shaped around you.",
+    dek: "Plan five nights in Beijing, three in Xi'an and three in Shanghai, with first-class rail, separate landmark days and two independent rest or choice days.",
     excerpt:
-      "A considered 12-day route for a new season of travel, with cultural depth, recovery time and a measured daily rhythm, including families planning with parents.",
+      "A practical 12-day itinerary for older travelers and families planning with parents: real walking demands, included services, optional activities and official visitor sources.",
     category: "Travel Guides",
     tags: ["senior-travel", "first-time-china", "beijing", "xian", "shanghai", "private-guides"],
-    readingTime: "24 min read",
+    readingTime: "12 min read",
     eyebrow: "China at an easier pace",
     hero: firstChinaAsset.beijingGreatWallCouple,
     gallery: [

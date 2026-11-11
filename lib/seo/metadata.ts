@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/config/site";
+import { socialCardPath } from "@/lib/seo/social-card";
 
 type CreateMetadataInput = {
   title?: string;
@@ -54,14 +55,21 @@ export function createMetadata({
   const pageDescription = callToAction
     ? composeDescription(description, callToAction, 150)
     : description;
+  const shareRoute = path.match(/^\/(tours|journal)\/([a-z0-9-]+)\/?$/);
+  const shareImage = shareRoute
+    ? socialCardPath(shareRoute[1] as "tours" | "journal", shareRoute[2])
+    : image;
   const defaultImageDimensions = image === siteConfig.ogImage ? { width: 1200, height: 630 } : {};
   const suppliedImageDimensions =
     imageWidth && imageHeight ? { width: imageWidth, height: imageHeight } : {};
   const openGraphImage = {
-    url: image,
-    ...defaultImageDimensions,
-    ...suppliedImageDimensions,
-    alt: imageAlt ?? `${title} — ${siteConfig.siteName}`,
+    url: shareImage,
+    ...(shareRoute
+      ? { width: 1200, height: 630 }
+      : { ...defaultImageDimensions, ...suppliedImageDimensions }),
+    alt: shareRoute
+      ? `${title} — ${siteConfig.siteName}`
+      : (imageAlt ?? `${title} — ${siteConfig.siteName}`),
   };
 
   const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
@@ -113,7 +121,7 @@ export function createMetadata({
       card: "summary_large_image",
       title: brandedTitle,
       description: pageDescription,
-      images: [image],
+      images: [shareImage],
     },
     verification: googleVerification ? { google: googleVerification } : undefined,
   };

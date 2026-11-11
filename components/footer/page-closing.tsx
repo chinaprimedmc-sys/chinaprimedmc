@@ -93,8 +93,8 @@ export function PageClosing({
           <p>{copy.eyebrow}</p>
           <h2 id={`closing-${intent}-title`}>{copy.title}</h2>
           <span>
-            Share your dates, interests and preferred pace. Our China-based team will reply within
-            24 hours with a clear first direction.
+            Share your dates, interests and preferred pace. Our China-based team normally replies
+            within 24 hours to discuss your plans and next steps.
           </span>
         </div>
         <div className={styles.actions}>

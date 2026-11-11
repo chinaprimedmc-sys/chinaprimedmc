@@ -34,7 +34,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
     arrival:
       "Beijing Capital Airport and Beijing Daxing Airport both serve international arrivals. High-speed rail connects Beijing with Xi'an and Shanghai; the correct station matters because the terminals are far apart.",
     gettingAround:
-      "The metro is extensive, but a private vehicle is valuable when combining large sites, traveling with luggage, or managing children and older parents. Vehicles cannot remove the walking inside palace and temple complexes.",
+      "The metro is extensive, but a private vehicle is valuable when combining large sites, traveling with luggage, or traveling with children or older parents. Vehicles cannot remove the walking inside palace and temple complexes.",
     stayStrategy:
       "For a first visit, stay within practical reach of the historic center rather than choosing a hotel only for a skyline view. Count full sightseeing days separately from nights. Four nights usually give three full days between arrival and departure; three nights require a more selective route and favorable transport times.",
     firstTimerNote:
@@ -68,7 +68,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Should I book a Beijing day tour or a longer private itinerary?",
         answer:
-          "A private Mutianyu day suits travelers who already have accommodation and other arrangements. A Beijing-focused multi-day itinerary helps coordinate city sightseeing and the Wall within one stay. Choose a Beijing, Xi’an and Shanghai journey when the wider China route and domestic connections also need planning; the published product and written proposal define the services.",
+          "A private Mutianyu day suits travelers who already have accommodation and other arrangements. A Beijing-focused multi-day itinerary helps coordinate city sightseeing and the Wall within one stay. Choose a Beijing, Xi’an and Shanghai journey when the wider China route and domestic connections also need planning; your chosen itinerary and proposal set out what is included.",
       },
     ],
     culturalStory: {
@@ -128,7 +128,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       "Compare actual Beijing–Xi’an rail and flight schedules, including hotel transfers and boarding time",
     ],
     arrival:
-      "Xi’an can be reached by high-speed rail or flight. Xi’an North Railway Station and Xi’an Xianyang International Airport are outside the Old City, and they are not interchangeable transfer points. Check the station or airport on your ticket, then plan the road journey to your actual hotel.",
+      "Xi’an can be reached by high-speed rail or flight. Xi’an North Railway Station and Xi’an Xianyang International Airport are outside the Old City, and they are not interchangeable transfer points. Check the station or airport on your ticket, then plan the road journey to your hotel.",
     gettingAround:
       "The metro is useful for central journeys, while a private vehicle helps with the Terracotta Warriors and luggage transfers. Hotel entrances, pedestrian streets and attraction rules affect where a driver can stop. Allow for walking inside the museum and up to City Wall entrances.",
     stayStrategy:
@@ -154,7 +154,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Are museum tickets included in the private Terracotta Warriors day tour?",
         answer:
-          "Standard museum admission for confirmed travelers is included in AVIORA’s published day tour. Booking and entry follow current identity, reservation and security rules; private guiding does not guarantee tickets or exclusive viewing. Lunch, City Wall admission, bicycle rental and clay-making are separate unless confirmed in writing.",
+          "Standard museum admission for the guests named in your booking is included in our day tour. Booking and entry follow current identity, reservation and security rules; private guiding does not guarantee tickets or exclusive viewing. Lunch, City Wall admission, bicycle rental and clay-making are separate unless confirmed in writing.",
       },
       {
         question: "Can children or older travelers visit the Terracotta Warriors?",
@@ -234,7 +234,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Should I stay near the Bund or in the former French Concession?",
         answer:
-          "Choose the Bund for riverfront evenings and historic waterfront architecture. Former-concession streets suit cafes, restaurants and neighborhood walks. Compare the actual hotel address, room noise, lifts and transport access: neither area is a single compact block, and a central address does not remove every transfer.",
+          "Choose the Bund for riverfront evenings and historic waterfront architecture. Former-concession streets suit cafes, restaurants and neighborhood walks. Compare the hotel address, room noise, lifts and transport access: neither area is a single compact block, and a central address does not remove every transfer.",
       },
       {
         question: "Are Pudong and Hongqiao airports interchangeable?",
@@ -244,12 +244,12 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Does the private Shanghai day tour include a Huangpu sightseeing cruise?",
         answer:
-          "The published base tour includes one ordinary public-ferry crossing when operating, not a sightseeing cruise or private vessel. A longer river cruise, Shanghai Tower, lunch and evening service are separate unless included in the written confirmation. Yu Garden interior admission is included in the base tour, subject to operation and confirmed entry arrangements.",
+          "Our standard day tour includes one ordinary public-ferry crossing when operating, not a sightseeing cruise or private vessel. A longer river cruise, Shanghai Tower, lunch and evening service are separate unless included in the written confirmation. The standard day tour includes entry to Yu Garden, subject to opening and admission availability.",
       },
       {
         question: "Can a Shanghai day tour start at the airport or cruise port?",
         answer:
-          "It can be assessed separately using your flight or ship details, actual terminal, entry arrangements, luggage and required return time. The central-hotel day-tour price does not include airport, station or cruise-port service. Confirm current entry eligibility through official guidance before booking a layover plan.",
+          "It can be assessed separately using your flight or ship details, terminal, entry arrangements, luggage and required return time. The central-hotel day-tour price does not include airport, station or cruise-port service. Confirm current entry eligibility through official guidance before booking a layover plan.",
       },
       {
         question: "Is Shanghai suitable for children and older travelers?",
@@ -304,7 +304,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
     ],
     planningNotes: [
       "Confirm the exact panda facility, gate and identity-linked admission before setting hotel pickup",
-      "Keep lunch, tea, internal carts and evening activities distinct from the published panda-day inclusions",
+      "Keep lunch, tea, internal carts and evening activities distinct from our panda-day inclusions",
       "Count full sightseeing days separately from nights, and give Leshan its own day if selected",
     ],
     arrival:
@@ -324,7 +324,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Which panda base does the private Chengdu day tour visit?",
         answer:
-          "The published day tour visits Chengdu Research Base of Giant Panda Breeding. Other facilities near Dujiangyan are separate destinations. Follow the facility, gate and entry period on your confirmed booking when arranging pickup.",
+          "Our day tour visits Chengdu Research Base of Giant Panda Breeding. Other facilities near Dujiangyan are separate destinations. Follow the facility, gate and entry period on your confirmed booking when arranging pickup.",
       },
       {
         question: "Does an early visit guarantee active pandas or panda cubs?",
@@ -334,7 +334,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Are lunch, tea and electric carts included in the panda day tour?",
         answer:
-          "The published base tour includes central-hotel pickup and return, a private guide and vehicle, standard panda-base admission and a flexible People’s Park walk. Lunch, tea, internal electric carts, cooking classes and performances are separate unless included in your written confirmation.",
+          "Our standard day tour includes central-hotel pickup and return, a private guide and vehicle, standard panda-base admission and a flexible People’s Park walk. Lunch, tea, internal electric carts, cooking classes and performances are separate unless included in your written confirmation.",
       },
       {
         question: "Can Sichuan meals be arranged without very spicy food?",
@@ -344,7 +344,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Should I add Leshan to a Chengdu stay?",
         answer:
-          "Add a separate day if the Giant Buddha and its setting interest you and the road travel and walking suit the group. Discuss steps and any boat-view option before booking; operation is date-dependent. In the published five-day Chengdu route, a slower city day is an alternative to Leshan.",
+          "Add a separate day if the Giant Buddha and its setting interest you and the road travel and walking suit the group. Discuss steps and any boat-view option before booking; operation is date-dependent. In our five-day Chengdu route, a slower city day is an alternative to Leshan.",
       },
     ],
     culturalStory: {
@@ -366,7 +366,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
         day: "Full day 1",
         title: "Panda morning and a lighter afternoon",
         description:
-          "Start from the confirmed hotel for the booked gate and entry period. Follow a focused public-base route, then have lunch and rest. A short People’s Park walk can follow if the group has energy; tea and other additions need separate confirmation.",
+          "Start from the confirmed hotel for the booked gate and entry period. Follow a focused route through the public panda base, then have lunch and rest. A short People’s Park walk can follow if the group has energy; tea and other additions need separate confirmation.",
       },
       {
         day: "Full day 2",
@@ -434,7 +434,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Is Dazu included on the open Chongqing day in the 11-day journey?",
         answer:
-          "No. In the published Chengdu–Chongqing–Zhangjiajie framework, the Chongqing open day has no automatic guide, vehicle or excursion. Dazu and other private experiences are quoted separately when selected. You can keep the day for independent exploration or rest instead.",
+          "No. In our Chengdu–Chongqing–Zhangjiajie itinerary, the Chongqing free day has no automatic guide, vehicle or excursion. Dazu and other private experiences are quoted separately when selected. You can keep the day for independent exploration or rest instead.",
       },
     ],
     culturalStory: {
@@ -462,7 +462,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
         day: "Full day 2",
         title: "A neighborhood, local transit and food",
         description:
-          "Choose a hillside walk, a Liziba viewing stop or cableway ride according to interests, operation and walking comfort. Add time for lunch or hotpot. In the 11-day product, the open Chongqing day requires a separately selected guide or vehicle if you want private service.",
+          "Choose a hillside walk, a Liziba viewing stop or cableway ride according to interests, operation and walking comfort. Add time for lunch or hotpot. In our eleven-day tour, this Chongqing day is free time. Ask us to add guiding and transport if you want an arranged visit.",
       },
       {
         day: "Optional extra day",
@@ -499,7 +499,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Can I visit the Leshan Giant Buddha as a day trip from Chengdu?",
         answer:
-          "Yes. Allow a full day for road travel or rail with transfers, the chosen viewing approach, waiting and a meal. Keep the return evening flexible and avoid a tight onward flight or train. In the published five-day Chengdu route, Leshan is a separate optional day.",
+          "Yes. Allow a full day for road travel or rail with transfers, the chosen viewing approach, waiting and a meal. Keep the return evening flexible and avoid a tight onward flight or train. In our five-day Chengdu route, Leshan is a separate optional day.",
       },
       {
         question: "Should I choose the Leshan boat view or walking route?",
@@ -524,7 +524,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Is Leshan automatically included in the five-day Chengdu tour?",
         answer:
-          "No. The published framework offers Leshan or more time in Chengdu. Select the day and confirm the viewing method, guiding, transport, tickets and meals in the written proposal. The linked five-day product is a Chengdu-based journey, not a separately published standalone Leshan day tour.",
+          "Leshan is an option in our five-day Chengdu itinerary, with more city time as an alternative. Tell us which you prefer, and we’ll set out the viewing method, guiding, transport, tickets and meals in your proposal. If you only need a standalone Leshan day trip, ask us for a separate plan.",
       },
     ],
     culturalStory: {
@@ -582,7 +582,7 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
     gettingAround:
       "Private transfers connect the hotel, park entrance and onward transport points. Inside Jiuzhaigou, visitors normally use shared park buses and walk selected paths or boardwalks. Bus routes, boarding, queues and open walking sections follow park rules; a private guide helps plan within that system rather than replacing it.",
     stayStrategy:
-      "Three nights allow an arrival day, a full park day, a flexible second day and departure. Two nights can work for one focused park day with suitable transport times, but give less room for rest or changes. Check actual hotel distance from the entrance, breakfast timing, heating and lifts before choosing by scenery alone.",
+      "Three nights allow an arrival day, a full park day, a flexible second day and departure. Two nights can work for one focused park day with suitable transport times, but give less room for rest or changes. Check hotel distance from the entrance, breakfast timing, heating and lifts before choosing by scenery alone.",
     firstTimerNote:
       "A transport booking labeled for Jiuzhaigou does not put you at the park gate. Include the final road transfer and check where you will sleep. Huanglong is a separate, higher-elevation visit, and its cableway does not eliminate altitude exposure or all walking.",
     faqs: [
@@ -609,12 +609,12 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Is Huanglong included automatically with Jiuzhaigou?",
         answer:
-          "No. Huanglong is a separate scenic area at higher elevation. In the published seven-day route, it is an optional second-day choice when health, walking, weather and current access support it. A gentler day can replace it; confirm tickets and transport for the selected option in writing.",
+          "No. Huanglong is a separate scenic area at higher elevation. In our seven-day route, it is an optional second-day choice when health, walking, weather and current access support it. A gentler day can replace it; confirm tickets and transport for the selected option in writing.",
       },
       {
         question: "Does the seven-day Chengdu and Jiuzhaigou tour return to Chengdu?",
         answer:
-          "The published framework ends in the Jiuzhaigou area after three nights in Chengdu and three in the region. A Chengdu return can be added and quoted separately, including extra time or accommodation when needed. Confirm the ending before booking an onward flight from Chengdu.",
+          "The itinerary ends in the Jiuzhaigou area after three nights in Chengdu and three in the region. A Chengdu return can be added and quoted separately, including extra time or accommodation when needed. Confirm the ending before booking an onward flight from Chengdu.",
       },
     ],
     culturalStory: {
@@ -660,80 +660,97 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
   },
   zhangjiajie: {
     bestTime:
-      "April to May and September to November are often comfortable, but mountain visibility changes quickly. Mist can be atmospheric; heavy rain or low cloud may require a different sequence.",
+      "April to May and September to November are often comfortable for mountain visits, but visibility can change quickly. Rain, low cloud and wind affect routes in any season; winter brings cold and possible ice-related changes. Check current scenic-area notices and avoid choosing dates on the promise of a clear pillar view.",
     orientation:
-      "Zhangjiajie is a region with several distinct scenic areas, not one viewpoint. Wulingyuan, Yuanjiajie, Tianzi Mountain, Golden Whip Stream and Tianmen Mountain require different bases and transport logic.",
+      "Zhangjiajie has several separate sightseeing areas. Yuanjiajie’s pillar viewpoints, Tianzi Mountain and Golden Whip Stream belong to the wider forest-park visit around Wulingyuan. Tianmen Mountain is nearer Zhangjiajie City, and the Grand Canyon glass bridge is another excursion. Choose the areas first, then the hotels, tickets and transport sequence.",
     experiences: [
-      "See the sandstone pillars from contrasting cliff-top and valley perspectives",
-      "Use cableways, lifts and park shuttles intelligently to manage walking load",
-      "Spend time in the forest and streams instead of reducing the region to one famous platform",
+      "See the sandstone pillars from cliff-top viewpoints, with time for changing visibility and queues",
+      "Walk a suitable section of Golden Whip Stream for forest and a view of the landscape from below",
+      "Visit Tianmen on a separate day if its cableway, cliff paths and height exposure suit the group",
     ],
     planningNotes: [
-      "Choose Wulingyuan or Zhangjiajie City according to the next day's sightseeing area",
-      "Keep one flexible window for weather-dependent mountain views",
-      "Discuss steps, heights and cableway comfort before fixing the route",
+      "Match Wulingyuan or a city hotel to the confirmed gate, ticket route and next day’s visit",
+      "Discuss walking, stairs, heights and any glass sections before booking scenic transport",
+      "Keep extra attractions and weather-driven changes within actual ticket and service rules",
     ],
     arrival:
-      "Zhangjiajie has a regional airport and rail connections. Arrival in Zhangjiajie City does not mean you are already at the Wulingyuan park entrances; the final transfer must be included.",
+      "Zhangjiajie Hehua Airport and the region’s railway stations require onward road transfers to your hotel. An arrival in Zhangjiajie City is not an arrival at a Wulingyuan forest-park gate. Check the exact station or airport, hotel base and expected arrival before planning the next morning’s admission.",
     gettingAround:
-      "Private vehicles handle airport, station, hotel and park-gate transfers. Inside major scenic areas, travelers use regulated park buses, cableways and lifts shared with other visitors.",
+      "Private vehicles connect airports, stations, hotels and permitted scenic-area drop-off points. Inside the major scenic areas, shared park buses, cableways and elevators serve the confirmed route. Expect walks, queues and steps between them; the private vehicle does not follow you to each viewpoint.",
     stayStrategy:
-      "Wulingyuan is practical for the national forest park, while Zhangjiajie City suits Tianmen Mountain and transport connections. Three to four nights, sometimes split between bases, reduce backtracking.",
+      "Four nights usually allow three full sightseeing days between arrival and departure: two for the forest park and one for Tianmen if selected. Three nights require a more selective two-day plan. A Wulingyuan-to-city hotel move may reduce backtracking, but confirm luggage handling and the next ticket’s boarding point before choosing a split stay.",
     firstTimerNote:
-      "A hotel labeled 'Zhangjiajie' may be far from the entrance needed the next morning. Confirm the exact base, not only the city name.",
+      "The word Zhangjiajie on a hotel listing or ticket is not enough to locate the visit. The forest park, Tianmen and the Grand Canyon have different approaches and admissions. Check the actual gate or boarding point; a cableway or elevator does not remove all walking or height exposure.",
     faqs: [
+      {
+        question: "How many days and nights do I need in Zhangjiajie?",
+        answer:
+          "Allow three full sightseeing days, usually with four nights, for two forest-park days and a separate Tianmen visit. Three nights can support a selective two-day plan. More nights provide options for rest or another visit, but do not guarantee clear weather or automatic park re-entry.",
+      },
       {
         question: "Should I stay in Wulingyuan or Zhangjiajie City?",
         answer:
-          "Use Wulingyuan for national forest park days and Zhangjiajie City for Tianmen Mountain and many transport connections. A split stay can be the most efficient choice.",
+          "Wulingyuan is useful for forest-park days; a city hotel can suit Tianmen and transport connections. Choose by the actual gate, ticket route and next departure. A split stay can reduce backtracking, but adds packing and luggage handling, so compare the full sequence before booking.",
       },
       {
-        question: "How many days are enough for Zhangjiajie?",
+        question: "Are Tianmen Mountain, the forest park and the glass bridge the same place?",
         answer:
-          "Three full sightseeing days provide a strong introduction. Four nights offer better weather flexibility and a more manageable walking pace.",
+          "No. The forest-park visit includes areas such as Yuanjiajie, Tianzi Mountain and Golden Whip Stream. Tianmen Mountain is a separate scenic area, and the Grand Canyon glass bridge is another outing. Tianmen also has glass walkways, which are different from that bridge. Confirm each selected admission and transport arrangement.",
       },
       {
-        question: "Is Zhangjiajie suitable for travelers with limited mobility?",
+        question: "Do cableways and the Bailong Elevator make Zhangjiajie step-free?",
         answer:
-          "Some major viewpoints are accessible with cableways, lifts and shuttle buses, but steps and queues remain. The route must be selected around the traveler's specific mobility needs.",
+          "No. They reduce some climbs, but walks between stops, steps, queues, boarding and uneven surfaces remain. Share mobility, balance and wheelchair or stroller needs before choosing a route. A private guide can adapt the plan but cannot guarantee access to every viewpoint.",
+      },
+      {
+        question: "What happens if mist or weather affects the mountain views?",
+        answer:
+          "The guide can review the sequence within current access, transport and ticket rules. Some visits may be shortened, moved or replaced where workable, with material changes discussed. An extra night does not guarantee clearer views, available replacement tickets or operating cableways.",
+      },
+      {
+        question: "Which Zhangjiajie tour includes Tianmen Mountain?",
+        answer:
+          "Our eight-day Shanghai and Zhangjiajie tour includes a separate Tianmen Mountain day. The eleven-day Chengdu, Chongqing and Zhangjiajie tour includes two guided forest park days and a free day; Tianmen or the Grand Canyon can be added at extra cost. Your proposal sets out the tickets, guiding and transport for the option you choose.",
       },
     ],
     culturalStory: {
-      title: "A landscape shaped by geology, weather and Tujia culture",
+      title: "Sandstone pillars, forest valleys and the wider Tujia region",
       paragraphs: [
-        "Zhangjiajie's quartz-sandstone pillars were shaped over immense periods by uplift, water and erosion. Their vertical forms look otherworldly, yet the region is a real ecological system of forest, streams and changing mountain weather rather than a single cinematic viewpoint.",
-        "The wider area is also home to Tujia and other communities whose history predates modern tourism. A thoughtful guide separates genuine regional context from staged claims, while helping visitors understand how park development, conservation and local livelihoods interact.",
+        "Zhangjiajie’s quartz-sandstone pillars were shaped by geological processes and erosion over long periods. The high viewpoints show their scale, while a valley walk reveals forest, water and the bases of the formations. These are two different ways to understand the landscape, rather than interchangeable photo stops.",
+        "The wider region is home to Tujia and other communities whose lives extend beyond scenic-area tourism. If you choose a cultural visit or performance, ask what it represents and whether the setting is staged or residential. Respect private spaces and ask before photographing residents; a landscape itinerary does not automatically include a community encounter.",
       ],
     },
     foodStory: {
-      title: "Hunan flavors after a day in the mountains",
+      title: "Plan mountain-day meals as carefully as the viewpoints",
       paragraphs: [
-        "Local cooking belongs to the broader Hunan tradition, known for fresh chilies, smoked ingredients, pickled vegetables and direct, savory flavors. Meals can feel particularly restorative after cool or wet mountain days.",
-        "Spice tolerance should be discussed before ordering, and mountain-area restaurant choices should balance regional character with consistency. The most useful guide orders a coherent shared meal instead of presenting unfamiliar dishes without explanation.",
+        "Local menus may include smoked or cured meats, pickled vegetables and chili-seasoned dishes. Zhangjiajie’s sanxiaguo is a mixed-ingredient hotpot-style dish whose contents vary by restaurant. Ask which meats, offal, stocks and seasonings are used rather than assuming a fixed recipe or a mild preparation.",
+        "Choose lunch around the actual park route and available facilities, not a distant restaurant you cannot reasonably reach midday. Tell the planner about allergies, vegetarian or halal requirements before meals are arranged. After a wet or tiring day, a practical meal near the hotel may be more useful than another long transfer for a famous dish.",
       ],
     },
     itinerary: [
       {
-        day: "Day 1",
+        day: "Full day 1",
         title: "Yuanjiajie and Tianzi Mountain",
-        description: "Use lifts, shuttles and cableways for the main cliff-top pillar landscapes.",
-      },
-      {
-        day: "Day 2",
-        title: "Golden Whip Stream",
         description:
-          "Experience the forest and sandstone from the valley rather than another high platform.",
+          "Use the booked park transport, elevator or cableway route for a manageable group of cliff-top viewpoints. Leave room for queues, lunch and short walks. Reverse or shorten sections only where current tickets and access allow.",
       },
       {
-        day: "Day 3",
-        title: "Tianmen Mountain",
+        day: "Full day 2",
+        title: "Golden Whip Stream and the lower forest",
         description:
-          "Move to the city base for the cableway, cliff route and Tianmen Cave when conditions allow.",
+          "Choose a suitable walking distance and turnaround point rather than completing the entire trail by default. Keep another area optional. If moving to a city hotel for Tianmen, confirm the transfer and luggage plan before the day begins.",
       },
       {
-        day: "Day 4",
-        title: "Weather buffer or chosen extension",
-        description: "Keep flexibility for photography, Grand Canyon or a slower mountain day.",
+        day: "Full day 3, if selected",
+        title: "Tianmen Mountain as a separate visit",
+        description:
+          "Follow the confirmed ticket route and boarding point, with cliff paths and glass sections assessed around height comfort and walking needs. In our eleven-day southwest tour, Tianmen is an optional visit on the free day and is quoted separately.",
+      },
+      {
+        day: "Optional extra day",
+        title: "Rest, a revisit or the Grand Canyon",
+        description:
+          "Add a distinct visit only with suitable weather, tickets and energy, or keep the day for rest. A revisit needs confirmed admission and services; with four nights, arrival and departure do not create a fourth full sightseeing day.",
       },
     ],
   },
@@ -774,13 +791,13 @@ export const destinationEditorial: Record<string, DestinationEditorial> = {
       {
         question: "Is the Li River cruise private?",
         answer:
-          "No. The published AVIORA day tour uses a scheduled four-star public sailing shared with other passengers. Your guide, road transfers and agreed luggage arrangements are private for your party. A private boat charter is not included.",
+          "No. Our day tour uses a scheduled four-star public sailing shared with other passengers. Your guide, road transfers and agreed luggage arrangements are private for your party. A private boat charter is not included.",
       },
       {
         question:
           "Can I finish the Li River cruise day in Yangshuo instead of returning to Guilin?",
         answer:
-          "Yes, the published private day tour can finish at a confirmed Yangshuo hotel, with normal pre-confirmed luggage carried separately by the private vehicle. A return to central Guilin is also available and priced before booking. Confirm your hotel address and selected finish in the written proposal.",
+          "Yes, our private day tour can finish at a confirmed Yangshuo hotel, with the agreed number and size of bags delivered separately in the private vehicle. A return to central Guilin is also available and priced before booking. Confirm your hotel address and selected finish in the written proposal.",
       },
       {
         question: "Can I visit Longji Rice Terraces after the Li River cruise?",

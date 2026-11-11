@@ -43,7 +43,7 @@ Our own easier-paced route uses five nights in Beijing, three in Xi'an and three
 
 That is a commercial sacrifice: one fewer city to advertise. It is also the reason the route can respond when a traveler wakes after the Great Wall and wants a different kind of day.
 
-The published [China, Considered 12-day private journey](/tours/china-at-an-easier-pace-12-day-private-tour) is priced individually for your dates and party. The published design includes 11 nights in selected premium five-star hotels, private guiding and vehicles on confirmed touring days, listed admissions, Beijing-Xi'an first-class rail, a nonstop Xi'an-Shanghai economy flight, selected meals, private cultural encounters and China-based support. The price moves with dates, rooms, party size and interests. International flights are separate unless stated.
+The published [12-day private China tour at an easier pace](/tours/china-at-an-easier-pace-12-day-private-tour) is priced individually for your dates and party. The published design includes 11 nights in selected premium five-star hotels, local private guides and drivers on Days 2–4, 7–8 and 10, agreed transfers and admissions, Beijing–Xi'an first-class rail, a Xi'an–Shanghai economy flight and hotel breakfasts on Days 2–12. Days 5 and 11 are independent free days without scheduled guiding or a vehicle. Lunches, dinners, workshops and specialist hosts are optional extras. The price moves with dates, rooms, party size and interests. International flights are separate unless stated.
 
 The price is not evidence that the route suits a particular traveler. The visible inclusions and the planning conversation are. A couple should also expect a different per-person figure because private guide and vehicle costs are shared across two travelers rather than four.
 
@@ -59,7 +59,7 @@ Cable access reduces the climb; it does not remove the Wall's gradients and unev
 
 ### The Terracotta Army
 
-The challenge is the scale of the complex, crowd movement and standing on hard floors. We plan the order of the pits and protect the rest of the day. A seated clay-artisan encounter after lunch adds context without asking for another museum.
+The challenge is the scale of the complex, crowd movement and standing on hard floors. We plan the order of the pits and protect the rest of the day. A clay-artisan encounter can be requested at extra cost, but it is optional and should fit the travelers' remaining energy.
 
 These are not reasons to avoid the landmarks. They are reasons to stop describing them as ordinary sightseeing stops.
 
@@ -104,7 +104,7 @@ We will not call every ancient site step-free. We will not say a cable car makes
 
 Those boundaries are not disclaimers added by lawyers. They are part of making the right sale.
 
-If you want a concrete example of a slow-paced route, see [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour): zero-stair Great Wall access, luggage-free bullet trains and a 3:30 PM hotel return each day.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## How to Compare Two China Tour Quotes
 

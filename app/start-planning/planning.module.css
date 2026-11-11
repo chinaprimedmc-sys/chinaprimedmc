@@ -1,0 +1,79 @@
+.page {
+  --color-canvas: #fff;
+  --color-surface: #fff;
+  --color-surface-muted: #fff;
+  --color-ink: #191919;
+  --color-copy: #383838;
+  --color-muted: #606060;
+  --color-line: #e7e7e7;
+  --color-line-strong: #ccc;
+  --color-forest: #191919;
+  --color-forest-hover: #444;
+  --bg-primary: #fff;
+  --bg-secondary: #fff;
+  --text-primary: #191919;
+  --text-secondary: #606060;
+  --border: #e7e7e7;
+  --accent: #191919;
+  --accent-hover: #444;
+  --action-primary: #191919;
+  --action-primary-hover: #444;
+  --action-explore-hover: #fff;
+  background: #fff;
+  color: #191919;
+}
+
+/* Mobile reading and touch targets. */
+
+.mobileFormLink {
+  display: none;
+}
+.formColumn,
+.introduction {
+  min-width: 0;
+}
+@media (max-width: 767px) {
+  .introduction h1 {
+    max-width: 15ch;
+    font-size: clamp(2rem, 8.5vw, 2.6rem);
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+  .introduction > p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .mobileFormLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 48px;
+    margin-top: 1.25rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-weight: 600;
+  }
+  .reassurance {
+    margin-top: 1rem;
+    gap: 0.4rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .formColumn {
+    gap: 1rem;
+  }
+  .formIntro p {
+    line-height: 1.65;
+  }
+  .directContact {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
+  .directContact a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+  }
+}

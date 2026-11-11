@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import white from "@/components/about/white-editorial.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Building2, MapPin, ShieldCheck } from "@/components/icons/symbols";
@@ -9,6 +10,7 @@ import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { bookingClarity, companyCapabilities, journeyResponsibilities } from "@/content/about";
+import { companyIdentity } from "@/content/about/identity";
 import { founder } from "@/content/founder";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { breadcrumbSchema, webPageSchema } from "@/lib/seo/schema";
@@ -27,7 +29,7 @@ const offices = siteConfig.operator.officeCities;
 
 export default function CompanyPage() {
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${white.page}`}>
       <SiteNavigation />
       <JsonLd
         id="company-page-schema"
@@ -52,11 +54,7 @@ export default function CompanyPage() {
         <header className={styles.intro}>
           <p className={styles.eyebrow}>Company &amp; Licensing</p>
           <h1>Know who is behind your China journey.</h1>
-          <p className={styles.lead}>
-            AVIORA China Travel, also known as AVIORA Travel, is a travel brand for individual
-            international travelers. It is operated by {siteConfig.operator.legalName} (
-            {siteConfig.operator.englishReferenceName}), the China-registered operating company.
-          </p>
+          <p className={styles.lead}>{companyIdentity.operatorSummary}</p>
           <p className={styles.summary}>
             AVIORA is the name you travel with. The legal company responsible for your booking, the
             agreed service scope and the payment terms are identified in writing before you pay.
@@ -69,6 +67,34 @@ export default function CompanyPage() {
             <a href="#booking-heading">Before you pay</a>
           </nav>
         </header>
+
+        <section className={styles.identitySection} aria-labelledby="names-heading">
+          <p className={styles.eyebrow}>ONE SERVICE, CLEAR IDENTITIES</p>
+          <h2 id="names-heading">How AVIORA, China Prime DMC and the operating company connect.</h2>
+          <dl className={styles.identityFacts}>
+            <div>
+              <dt>Travel brand</dt>
+              <dd>
+                AVIORA China Travel, also called AVIORA or AVIORA Travel. Founded by{" "}
+                {companyIdentity.founderName}, it serves international visitors planning private
+                journeys in China.
+              </dd>
+            </div>
+            <div>
+              <dt>Travel-trade name</dt>
+              <dd>{companyIdentity.tradeRelationship}</dd>
+            </div>
+            <div>
+              <dt>Legal operating company</dt>
+              <dd>
+                {siteConfig.operator.legalName}
+                <br />
+                {siteConfig.operator.englishReferenceName}. Its Guangzhou registration date is March
+                28, 2018; this is the company registration date.
+              </dd>
+            </div>
+          </dl>
+        </section>
 
         <section className={styles.companyOverview} aria-labelledby="company-overview-title">
           <p className={styles.eyebrow}>COMPANY PROFILE</p>
@@ -292,8 +318,15 @@ export default function CompanyPage() {
               <p>
                 Business registration and travel-agency licensing serve different purposes. Ask our
                 team for the travel-agency business permit details so you can review the licensing
-                position alongside the registration record.
+                position alongside the registration record. A separate travel-agency permit image
+                and permit number are not displayed on this page.
               </p>
+              <a
+                className={styles.officialLink}
+                href={`mailto:${siteConfig.email}?subject=${encodeURIComponent("Travel-agency permit verification")}&body=${encodeURIComponent(`Hello AVIORA, please share the travel-agency business permit number, issuing authority and permitted business scope for ${siteConfig.operator.legalName}, together with the permit copy and a way to verify it. Thank you.`)}`}
+              >
+                Request tourism permit details <ArrowUpRight aria-hidden="true" />
+              </a>
             </li>
             <li>
               <h3>Match your booking and payment details</h3>

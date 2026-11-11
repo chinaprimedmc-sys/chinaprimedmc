@@ -191,8 +191,22 @@ export type Tour = {
     practicalities?: TourOverviewFact[];
     facts: TourOverviewFact[];
   };
+  comparison?: {
+    title: string;
+    intro: string;
+    columns: [string, string, string];
+    rows: Array<[string, string, string]>;
+    href: string;
+    linkLabel: string;
+  };
   inquiryChecklist?: string[];
-  planningResources?: Array<{ label: string; href: string; description: string }>;
+  planningResources?: Array<{
+    label: string;
+    href: string;
+    description: string;
+    /** Identifies the official publisher, not verification or endorsement of our service. */
+    officialPublisher?: string;
+  }>;
   experienceChapters?: TourExperienceChapter[];
   planningSupport?: TourPlanningSupport;
   guideProfile?: TourGuideProfile;

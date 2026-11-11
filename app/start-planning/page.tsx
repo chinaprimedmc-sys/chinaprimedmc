@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Check } from "@/components/icons/symbols";
 
-import { SectionHeader } from "@/components/content";
+import { BookingGuide } from "@/components/planning/booking-guide";
 import { TrackedLink } from "@/components/cta/tracked-link";
 import { StartPlanningForm } from "@/components/forms";
 import { SiteFooter } from "@/components/footer/site-footer";
@@ -19,6 +20,8 @@ import { JsonLd } from "@/lib/seo/json-ld";
 import { describeMatchAnswers, readMatchAnswers } from "@/lib/tours/journey-match";
 import { createMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/schema";
+
+import styles from "./planning.module.css";
 
 export const metadata: Metadata = createMetadata({
   title: "Request a Private China Travel Proposal",
@@ -49,7 +52,7 @@ export default async function StartPlanningPage({
   const match = readMatchAnswers(params.match ?? null);
 
   return (
-    <PageContainer>
+    <PageContainer tone="white" className={styles.page}>
       <JsonLd
         id="start-planning-breadcrumb-schema"
         data={breadcrumbSchema([
@@ -63,12 +66,9 @@ export default async function StartPlanningPage({
           "@context": "https://schema.org",
           "@type": "Service",
           name: "Private China Journey Planning",
-          provider: {
-            "@type": "TravelAgency",
-            name: siteConfig.name,
-            email: siteConfig.email,
-            telephone: siteConfig.phone,
-          },
+          provider: { "@id": `${siteConfig.url}/#organization` },
+          url: `${siteConfig.url}/start-planning`,
+          termsOfService: `${siteConfig.url}/terms`,
           areaServed: "China",
           serviceType: "Private inbound China travel planning",
         }}
@@ -80,20 +80,17 @@ export default async function StartPlanningPage({
         className="start-planning-experience py-8 md:py-[var(--space-section-spacious)]"
       >
         <ContentContainer size="xl" className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
-          <div className="lg:sticky lg:top-28 lg:self-start">
+          <div className={`${styles.introduction} lg:sticky lg:top-28 lg:self-start`}>
             <p className="type-caption text-muted hidden uppercase lg:block">Plan My Trip</p>
-            <h1 className="type-page-title max-w-2xl lg:mt-5">
-              Start a conversation about your China journey.
-            </h1>
+            <h1 className="type-page-title max-w-2xl lg:mt-5">Your China journey starts here.</h1>
             <p className="type-body text-muted mt-4 max-w-2xl lg:mt-5">
-              Share a few details about yourself and your trip. We will ask about your dates and
-              priorities when we reply.
+              Tell us what you have in mind. A China specialist will help you find the route and
+              pace that feel right for you.
             </p>
-            <p className="text-muted mt-8 hidden max-w-sm border-t border-[var(--border)] pt-5 text-base leading-7 lg:block">
-              A China specialist will learn what matters to you before suggesting a route. This does
-              not confirm a booking.
-            </p>
-            <ul className="mt-5 hidden max-w-sm gap-2 border-b border-[var(--border)] pb-5 text-base leading-7 lg:grid">
+            <a href="#planning-enquiry" className={styles.mobileFormLink}>
+              Tell us about your trip <span aria-hidden="true">↓</span>
+            </a>
+            <ul className={`${styles.reassurance} mt-6 grid max-w-sm gap-2 text-base leading-7`}>
               {planningReassurance.map((item) => (
                 <li key={item} className="grid grid-cols-[1rem_1fr] items-start gap-2.5">
                   <Check
@@ -105,8 +102,21 @@ export default async function StartPlanningPage({
                 </li>
               ))}
             </ul>
+            <Link
+              href="#planning-process"
+              className="mt-5 inline-flex min-h-11 items-center text-sm underline underline-offset-4"
+            >
+              How planning and booking work
+            </Link>
           </div>
-          <div className="grid gap-6">
+          <div id="planning-enquiry" className={`${styles.formColumn} grid gap-6`}>
+            <div className={`${styles.formIntro} max-w-2xl`}>
+              <h2 className="text-xl font-semibold">A few details to get started.</h2>
+              <p className="text-muted mt-2 text-base leading-7">
+                Share approximate dates, who is traveling and what matters most. Still deciding?
+                That is enough to begin.
+              </p>
+            </div>
             <StartPlanningForm
               savedJourneys={savedJourneys}
               currentJourney={currentJourney}
@@ -114,7 +124,9 @@ export default async function StartPlanningPage({
               preference={params.preference}
               matchSummary={match ? describeMatchAnswers(match) : undefined}
             />
-            <div className="text-muted flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--border)] pt-5 text-sm">
+            <div
+              className={`${styles.directContact} text-muted flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--border)] pt-5 text-sm`}
+            >
               <span>Prefer direct contact?</span>
               <TrackedLink
                 href="https://wa.me/8618027438191"
@@ -137,39 +149,7 @@ export default async function StartPlanningPage({
         </ContentContainer>
       </Section>
 
-      <Section spacing="default" className="bg-white">
-        <ContentContainer size="xl" className="grid gap-8">
-          <SectionHeader
-            eyebrow="What happens next"
-            title="This starts a conversation. It does not confirm a booking."
-            description="A China specialist will reach out on WhatsApp to understand your dates and priorities before preparing a quotation."
-          />
-          <div className="grid gap-0 border-y border-[var(--border)] md:grid-cols-3">
-            {[
-              {
-                title: "1. We review your priorities",
-                body: "Your dates, group, interests, hotel expectations and practical needs shape our first reply.",
-              },
-              {
-                title: "2. We suggest a direction",
-                body: "We suggest a route, length of stay and daily pace that make sense for your time in China.",
-              },
-              {
-                title: "3. You receive a written quotation",
-                body: "Once the direction is clear, we confirm hotels, services, inclusions and pricing in writing.",
-              },
-            ].map((item) => (
-              <article
-                key={item.title}
-                className="border-b border-[var(--border)] p-5 last:border-b-0 md:border-r md:border-b-0 md:p-6 md:last:border-r-0"
-              >
-                <h2 className="text-xl font-semibold">{item.title}</h2>
-                <p className="text-muted mt-3 text-base leading-7">{item.body}</p>
-              </article>
-            ))}
-          </div>
-        </ContentContainer>
-      </Section>
+      <BookingGuide />
 
       <SiteFooter
         columns={[

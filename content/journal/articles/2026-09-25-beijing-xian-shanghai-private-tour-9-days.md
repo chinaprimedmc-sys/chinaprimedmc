@@ -8,7 +8,7 @@ slug: "beijing-xian-shanghai-private-tour-9-days"
 category: "Travel Guides"
 tags: ["beijing", "xian", "shanghai", "first-time-china", "private-guides"]
 seo_title: "Beijing, Xi'an and Shanghai Private Tour: 10 Days"
-seo_description: "See how a 10-day private Beijing, Xi'an and Shanghai route works, including nights, rail, walking, hotels, pacing and who it suits."
+seo_description: "See how a 10-day private Beijing, Xi'an and Shanghai route works, including nights, rail and flight, walking, hotels, pacing and who it suits."
 primary_keyword: "Beijing Xi'an Shanghai private tour"
 secondary_keywords:
   ["9 day China private tour", "Beijing Xi'an Shanghai itinerary", "first China private journey"]
@@ -18,7 +18,7 @@ sources_verified_at: "2026-09-25"
 
 ## Draft
 
-A ten-day Beijing, Xi'an and Shanghai journey works when it is treated as **three complete chapters connected by two carefully managed handovers**, not as a race through a list of famous sights. Four Beijing nights protect the Great Wall and imperial city, two Xi'an nights give the Terracotta Army a real day, and two Shanghai nights create a coherent finish before departure.
+A ten-day Beijing, Xi'an and Shanghai journey works when it is treated as **three complete chapters connected by two carefully managed handovers**, not as a race through a list of famous sights. Four Beijing nights protect the Great Wall and imperial city, two Xi'an nights give the Terracotta Army a real day, and three Shanghai nights allow a city day, a free choice day and departure.
 
 This is the operating logic behind AVIORA's [Beijing, Xi'an and Shanghai private first journey](/tours/beijing-xian-shanghai-private-10-day-tour). It is designed for travelers who want China's essential historical arc without adding a fourth city simply to make the route look larger.
 

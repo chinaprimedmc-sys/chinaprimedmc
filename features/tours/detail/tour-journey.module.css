@@ -159,14 +159,17 @@
 /* Summary */
 .answer {
   max-width: 34em;
-  font-size: clamp(22px, 2.2vw, 30px);
+  font-size: clamp(22px, 2vw, 28px);
   font-weight: 400;
   line-height: 1.35;
 }
 .lede {
   max-width: 44em;
-  margin-top: 22px;
-  color: #3b3731;
+  margin-top: 18px;
+  color: var(--stone);
+  font-family: var(--font-body);
+  font-size: var(--type-body-size);
+  line-height: 1.75;
 }
 .gloss {
   max-width: 54ch;
@@ -190,6 +193,55 @@
 }
 
 /* Route */
+.serviceDetails {
+  margin-top: 1.5rem;
+  border-block: 1px solid var(--color-line);
+}
+.serviceDetails > summary {
+  padding-block: 1.25rem;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--type-body-size);
+  font-weight: 600;
+  cursor: pointer;
+}
+.serviceDetails > dl {
+  margin-block: 0 1.5rem;
+}
+.serviceRecords {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-editorial);
+  background: var(--color-surface-muted);
+  font-family: var(--font-body);
+}
+.serviceRecords h3 {
+  font-family: var(--font-brand);
+  font-size: var(--type-card-title-size);
+  font-weight: 400;
+  line-height: 1.25;
+}
+.serviceRecords p {
+  margin-top: 0.75rem;
+  color: var(--color-copy);
+  font-size: var(--type-nav-size);
+  line-height: 1.6;
+}
+.serviceRecords ul {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+.serviceRecords a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--color-forest);
+  font-size: var(--type-nav-size);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
 .stops {
   display: flex;
   flex-wrap: wrap;
@@ -1271,5 +1323,289 @@
   }
   .dayMetrics > div:first-child {
     grid-column: 1 / -1;
+  }
+}
+
+.comparisonScroll {
+  overflow-x: auto;
+  margin-block: 1.25rem;
+}
+.comparisonTable {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.comparisonTable th,
+.comparisonTable td {
+  padding: 1rem;
+  border-bottom: 1px solid currentColor;
+  text-align: left;
+  vertical-align: top;
+}
+.comparisonTable thead th {
+  font-weight: 600;
+}
+
+.comparisonCaption {
+  text-align: left;
+  font-weight: 600;
+  padding-block-end: 0.75rem;
+}
+
+/* Overview: one editorial lead, scannable highlights, progressive service detail. */
+.overviewDetails {
+  margin-top: 24px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-body);
+}
+.overviewDetails summary {
+  padding: 16px 0;
+  cursor: pointer;
+  color: var(--ink);
+  font-size: var(--type-nav-size);
+  font-weight: 600;
+}
+.overviewDetails summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-pill);
+}
+.overviewDetails > div {
+  padding: 0 0 20px;
+  color: var(--stone);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+}
+.overviewDetails > div > p + p {
+  margin-top: 12px;
+}
+
+/* White mobile journey dossier: price basis and actions precede the long itinerary. */
+.mobileOverview {
+  display: none;
+}
+.sectionNavigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--label);
+}
+.sectionNavigation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.dayControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1rem;
+  font-family: var(--label);
+}
+.dayControls button {
+  min-height: 48px;
+  padding-block: 0.5rem;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+.page :is(a, button, summary):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+@media (max-width: 767px) {
+  .page {
+    --ivory: #fff;
+    --paper: #fff;
+    --accent: #191919;
+    --ink: #191919;
+    --stone: #606060;
+    font-size: 1rem;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    margin-top: 0;
+    background: #fff;
+    color: #191919;
+    overflow: visible;
+  }
+  .hero .heroImage {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: clamp(180px, 57vw, 300px) !important;
+    order: 2;
+  }
+  .heroShade {
+    display: none;
+  }
+  .heroBody {
+    padding: 1.75rem var(--gutter) 1.5rem;
+  }
+  .hero h1 {
+    max-width: 22ch;
+    font-size: clamp(2rem, 8.2vw, 2.75rem);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  .hero .eyebrow {
+    margin-bottom: 0.75rem;
+    color: #606060;
+  }
+  .route {
+    color: #525252;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    text-transform: none;
+  }
+  .heroBody > div:last-child {
+    display: none;
+  }
+  .wrap > .mobileOverview {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobilePriceLabel {
+    color: var(--stone);
+    font-family: var(--label);
+    font-size: 0.875rem;
+  }
+  .mobilePrice {
+    display: grid;
+    gap: 0.35rem;
+  }
+  .mobilePrice strong {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  .mobilePrice small {
+    font-family: var(--label);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .mobileBasis,
+  .mobileFit,
+  .mobileReassurance {
+    color: var(--stone);
+    font-family: var(--label);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+  .mobileEnquire {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: #fff;
+    font-family: var(--label);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .mobileEnquire svg {
+    flex-shrink: 0;
+  }
+  .sectionNavigation {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.25rem 1rem;
+  }
+  .sectionNavigation a {
+    line-height: 1.5;
+  }
+  .facts dt,
+  .dayLabel,
+  .dayMetrics dt {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+  .facts dd,
+  .dayMeta dd,
+  .dayMetrics dd {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+  .facts div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .main,
+  .booking,
+  .daySummary > span,
+  .dayNarrative {
+    min-width: 0;
+  }
+  .dayJump {
+    background: #fff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+  .dayJumpChip {
+    min-height: 48px;
+  }
+  .dayJumpChip[aria-current="true"] {
+    background: #fff;
+    color: #191919;
+    border-color: #191919;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .daySummary {
+    min-height: 72px;
+  }
+  .day h3 {
+    font-size: 1.35rem;
+    line-height: 1.35;
+  }
+  .dayNarrative > p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  .dayMetrics,
+  .dayMeta {
+    grid-template-columns: 1fr;
+  }
+  .dayMeta > div:last-child {
+    grid-column: auto;
+  }
+  .booking {
+    padding: 1.25rem;
+    scroll-margin-top: calc(var(--site-nav-offset) + 1rem);
+  }
+  .coverage h3 {
+    font-size: 1.25rem;
+  }
+  .priceHeadline {
+    flex-wrap: wrap;
+  }
+  .priceHeadline b {
+    overflow-wrap: anywhere;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .daySummary svg {
+    transition: none;
   }
 }

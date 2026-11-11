@@ -7,7 +7,7 @@
   padding: 0;
   border: 0;
   border-radius: 14px;
-  background: var(--color-canvas);
+  background: #fff;
   color: var(--color-ink);
   box-shadow: 0 24px 80px rgba(18, 16, 13, 0.35);
 }
@@ -81,6 +81,7 @@
   margin: 16px 0 0;
   color: var(--color-muted);
   font-size: 14px;
+  line-height: 1.8;
 }
 .alt a {
   color: var(--color-ink);
@@ -99,5 +100,41 @@
     .dialog[open] {
       translate: 0 100%;
     }
+  }
+}
+
+/* Mobile reading and touch targets. */
+
+@media (max-width: 700px) {
+  .dialog {
+    max-height: 94dvh;
+  }
+  .panel {
+    min-height: 0;
+  }
+  .head {
+    flex-shrink: 0;
+    padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right));
+  }
+  .body {
+    min-height: 0;
+    overscroll-behavior-y: contain;
+    padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right));
+  }
+  .intro {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .close {
+    width: 48px;
+    height: 48px;
+  }
+  .alt a {
+    display: inline-block;
+    padding-block: 0.5rem;
+  }
+  .close:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 }

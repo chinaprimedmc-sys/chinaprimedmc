@@ -9,7 +9,7 @@ export type TravelerReview = {
   paragraphs: string[];
   reviewStatus: "approved" | "pending" | "rejected";
   authorizationStatus: "authorized" | "withheld";
-  sourceType: "guest-submitted" | "manual-verification";
+  sourceType: "guest-submitted" | "manual-verification" | "legacy-site-content";
   publishedAt: string;
   /** 以下字段用于行程结束后收集的新评价；既有评价没有这些记录，所以全部可选。 */
   journey?: string;
@@ -2576,14 +2576,15 @@ const submittedTravelerReviews: SubmittedTravelerReview[] = [
 ];
 
 /**
- * Only approved feedback with website-use authorization may reach public UI.
- * Future review submissions should be mapped through this same shape.
+ * Historical publication flags reflect the existing site's editorial state.
+ * They are not individual authorization documents or booking-verification records.
+ * Never derive verifiedOn from these defaults. New submissions need their own source checks.
  */
 export const travelerReviews: TravelerReview[] = submittedTravelerReviews.map((review) => ({
   ...review,
   reviewStatus: "approved",
   authorizationStatus: "authorized",
-  sourceType: "guest-submitted",
+  sourceType: "legacy-site-content",
   publishedAt: "2026-10-04",
 }));
 

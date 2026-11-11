@@ -11,8 +11,9 @@ const pendingImage: MediaAsset = {
 };
 
 const hotelByPlace = {
-  chengdu: "Selected luxury Chengdu hotel · 2 nights · two rooms",
-  qingcheng: "Selected Qingcheng Mountain luxury retreat · 7 nights · two rooms",
+  chengdu: "Selected luxury Chengdu hotel · 2 nights · rooms confirmed for your party",
+  qingcheng:
+    "Selected Qingcheng Mountain luxury retreat · 7 nights · rooms confirmed for your party",
 };
 
 export const qingchengMountainWellness10DayTour: Tour = {
@@ -70,7 +71,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
         label: "Hotels",
         value: "Luxury Chengdu base and Qingcheng retreat",
         helper:
-          "Two rooms for four guests; exact properties and room categories are named before booking.",
+          "Rooms and occupancy confirmed for your actual party; exact properties and room categories are named before booking.",
       },
       {
         label: "Private Service",
@@ -469,7 +470,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
       description:
         "Two nights in a quiet, high-service city hotel chosen for room comfort, airport logic and an easy departure toward Qingcheng rather than for the longest list of nearby sights.",
       roomStyle:
-        "Two rooms; quiet location, bedding and room proximity requested before confirmation",
+        "Rooms for your actual party; quiet location, bedding and room proximity requested before confirmation",
       highlights: [
         "Two-night arrival buffer",
         "Quiet-room review",
@@ -484,7 +485,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
       description:
         "Seven consecutive nights at a property selected for actual room quality, forest or garden setting, spa practice, food flexibility and access to Qingcheng. A resort such as Six Senses Qing Cheng Mountain may be proposed when it is the strongest fit for the dates.",
       roomStyle:
-        "Two premium rooms or villas; exact property, room category, view, inclusions and cancellation terms named before booking",
+        "Premium rooms or villas for your actual party; exact property, room category, view, inclusions and cancellation terms named before booking",
       highlights: [
         "Seven-night continuity",
         "Two included treatments per guest",
@@ -495,7 +496,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
     },
   ],
   included: [
-    "9 nights based on four guests sharing two rooms: 2 nights in a selected luxury Chengdu hotel and 7 nights in a selected Qingcheng Mountain luxury retreat",
+    "9 nights with rooms and occupancy confirmed for your actual party: 2 nights in a selected luxury Chengdu hotel and 7 nights in a selected Qingcheng Mountain luxury retreat",
     "Daily hotel breakfast plus the seven private, hosted or resort lunches and dinners identified in the confirmed proposal",
     "Private multilingual guide or interpreter, private vehicle and airport support on the confirmed service days",
     "Private Chengdu-to-Qingcheng transfer and private Qingcheng-to-Chengdu airport transfer",
@@ -677,6 +678,6 @@ export const qingchengMountainWellness10DayTour: Tour = {
       "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20plan%20Ten%20Days%20at%20Qingcheng%20Mountain.%20Please%20advise%20on%20dates%2C%20the%20seven-night%20retreat%2C%20room%20options%20and%20a%20private%20quote%20for%20four%20guests.",
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
-      "I am interested in Ten Days at Qingcheng Mountain. Please advise on retreat availability, room options, daily rhythm and a private quote for four guests.",
+      "I am interested in Ten Days at Qingcheng Mountain. Please advise on retreat availability, room options, daily rhythm and a private quote for our group.",
   },
 };

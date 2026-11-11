@@ -279,17 +279,13 @@ const firstChina: JourneyCatalogBase = {
     "first-time",
     "couples",
     "families",
-    "multigenerational",
     "older-travelers",
     "private-groups",
     "solo-travelers",
   ],
   planningNeedFilters: [
-    "muslim-friendly",
     "vegetarian-friendly",
-    "slower-pacing",
     "child-friendly",
-    "mobility-aware",
     "quiet-luxury",
     "food-focused",
     "photography-led",
@@ -298,7 +294,7 @@ const firstChina: JourneyCatalogBase = {
   recommendedDaysMax: 10,
   destinations: [
     { label: "Beijing", href: "/destinations/beijing" },
-    { label: "Xi'an", href: `/tours/${flagship.slug}#itinerary` },
+    { label: "Xi'an", href: "/destinations/xian" },
     { label: "Shanghai", href: "/destinations/shanghai" },
   ],
 };
@@ -308,7 +304,7 @@ const chinaConsideredJourney: JourneyCatalogBase = {
   title: chinaConsidered.title,
   eyebrow: "AVIORA flagship journey",
   summary: chinaConsidered.subtitle,
-  hook: "China's defining first route with five-star hotels, local masters, private cultural encounters and protected recovery between the landmark days.",
+  hook: "Beijing, Xi'an and Shanghai with five-star hotel options, first-class rail, two independent choice days and only two hotel changes.",
   image: firstChinaAsset.beijingGreatWallCouple,
   href: `/tours/${chinaConsidered.slug}`,
   kind: "featured",
@@ -353,7 +349,7 @@ const chinaConsideredJourney: JourneyCatalogBase = {
     { label: "Shanghai", href: "/destinations/shanghai" },
   ],
   planningNote:
-    "The published route includes two choice days and only two hotel changes; the final walking plan is reviewed around the travellers before confirmation.",
+    "Days 5 and 11 are independent choice or rest days; additional guiding and activities are quoted separately. Walking, rooms and assistance needs are reviewed before confirmation.",
 };
 
 const chinaFamilyJourney: JourneyCatalogBase = {
@@ -1336,14 +1332,14 @@ const commercialDetails: Record<
       "Muslim families, couples and private groups who want iconic China plus living Muslim heritage and a desert finale",
   },
   "china-at-an-easier-pace-12-day-private-tour": {
-    paceLabel: "Easy to moderate, with protected recovery",
+    paceLabel: "More time between major visits; walking and steps remain",
     transportSummary:
-      "Private transfers, first-class high-speed rail and a nonstop domestic flight",
+      "Private transfers, Beijing–Xi'an first-class rail and a Xi'an–Shanghai economy flight",
     highlights: [
-      "Tai chi with a local teacher",
-      "A private Beijing courtyard table",
-      "Terracotta Army and clay artisan encounter",
-      "Shanghai with an architecture specialist",
+      "Five Beijing nights, three Xi'an nights and three Shanghai nights",
+      "Separate Forbidden City and Mutianyu Great Wall days",
+      "A Xi'an city day and a separate Terracotta Army day",
+      "Independent choice or rest days in Beijing and Shanghai",
     ],
     bestForSummary:
       "Mature travellers and couples who value comfort, depth and fewer rushed decisions",
@@ -1385,17 +1381,18 @@ const commercialDetails: Record<
       "First-time visitors who want four distinct cities without planning every handoff themselves",
   },
   "beijing-xian-shanghai-private-10-day-tour": {
-    paceLabel: "Slow-paced, with a 3:30 PM hotel return",
+    paceLabel:
+      "Focused first visit; public-site walking, two intercity travel days and a free Day 9",
     transportSummary:
-      "Door-to-door Mercedes vans, luggage-free bullet trains to Xi\'an and Shanghai, and porters at every station",
+      "Private local transfers, Beijing–Xi'an high-speed rail and a Xi'an–Shanghai domestic flight; classes and baggage confirmed before booking",
     highlights: [
-      "Zero-stair Great Wall access",
-      "Luggage-free bullet trains",
-      "3:30 PM hotel return every day",
-      "24/7 international medical channel",
+      "Beijing 4 nights, Xi'an 2 nights and Shanghai 3 nights",
+      "Separate Forbidden City and Mutianyu Great Wall days",
+      "A dedicated Terracotta Warriors museum visit",
+      "Shanghai neighborhoods and one independent choice day",
     ],
     bestForSummary:
-      "Active retirees, senior travelers and multi-generational families who want China without physical strain",
+      "First-time visitors, couples and private groups with limited time who are comfortable with walking and standing",
   },
   "chengdu-pandas-sichuan-table": {
     paceLabel: "Easy one-base stay",
@@ -1466,7 +1463,6 @@ const sharedPricingDetails = {
 
 const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
   "luxury-yunnan-private-tour": {
-    fromUsd: 6680,
     pricingUnit: "per-person",
     basePartySize: 4,
     cardBasis: "Based on four guests sharing two rooms",
@@ -1481,7 +1477,6 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
   },
   "guilin-yangshuo-li-river-cruise-private-day-tour": {
     pricingUnit: "private-group",
-    // Shared catalog compatibility only; no public amount is calculated from this party size.
     basePartySize: 4,
     cardBasis: "One total for your party · Yangshuo finish",
     basis:
@@ -1489,13 +1484,12 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
     inclusionSummary:
       "Includes central Guilin hotel pickup, private guide in the confirmed language, separate driver and road vehicle, standard shared four-star Li River cruise tickets, an onboard meal only if attached to those tickets, a short Yangshuo countryside route, pre-confirmed normal luggage delivery to the Yangshuo hotel and bottled water. No compulsory shopping stops.",
     finalPriceNote:
-      "One written total is quoted for your actual party and confirmed services. No public numerical starting price is published; child fares and seat arrangements are checked separately.",
+      "One written total is quoted for your actual party and confirmed services. The published starting rate is a guide; child fares and seat arrangements are checked separately.",
     additionalNote:
       "Private road return to Guilin, bamboo rafting, Ruyi Peak, cycling, shows, extra hours and airport or railway-station transfers are separate unless expressly included in the written quote.",
   },
   "private-chengdu-panda-day-tour-early-morning": {
     pricingUnit: "private-group",
-    // Shared catalog compatibility only; no public amount is calculated from this party size.
     basePartySize: 4,
     cardBasis: "One total for your private party",
     basis:
@@ -1503,13 +1497,12 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
     inclusionSummary:
       "Includes central Chengdu hotel pickup and return, private guide in the confirmed language, separate driver and vehicle, standard Chengdu Panda Base admission, a People's Park walk and bottled water. No compulsory shopping stops.",
     finalPriceNote:
-      "The written quote states one total for your actual party and confirmed services. No public numerical starting price is published.",
+      "The written quote states one total for your actual party and confirmed services. The published starting rate is a guide.",
     additionalNote:
       "Lunch, tea, internal electric carts, cooking, opera, extra hours and airport or railway-station transfers are separate unless expressly included in the written quote.",
   },
   "private-xian-terracotta-warriors-day-tour": {
     pricingUnit: "private-group",
-    // Shared catalog compatibility only; no public amount is calculated from this party size.
     basePartySize: 4,
     cardBasis: "One total for your private party",
     basis:
@@ -1523,7 +1516,6 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
   },
   "private-shanghai-day-tour-guide-driver": {
     pricingUnit: "private-group",
-    // Shared catalog compatibility only; this quote-only product has no calculated base price.
     basePartySize: 4,
     cardBasis: "One total for your private party",
     basis:
@@ -1536,14 +1528,13 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
       "Any selected upgrade lists the ticket type, extra service time and return arrangement. A public ferry, shared sightseeing cruise and private boat charter are different products.",
   },
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": {
-    fromUsd: 2280,
     pricingUnit: "per-person",
     basePartySize: 4,
     cardBasis: "Based on four guests sharing two rooms",
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside major exhibition and peak periods, equivalent to a group total from US$9,120.",
     inclusionSummary:
-      "The published starting price covers the sample 4-day, 3-night framework: selected premium business hotels, two rooms, confirmed private transfers and vehicle windows, bilingual support as stated, agenda planning, the selected Guangzhou market-to-kitchen culture module, one Shenzhen innovation chapter and China-based operating support.",
+      "The published starting price covers the sample 4-day, 3-night framework: selected premium business hotels, rooms for your actual party, confirmed private transfers and vehicle windows, bilingual support as stated, agenda planning, the selected Guangzhou market-to-kitchen culture module, one Shenzhen innovation chapter and China-based operating support.",
     finalPriceNote:
       "Most journeys run for 4–7 days and are priced after the fixed agenda is reviewed. Fully tailored 4-day versions commonly fall between US$2,600 and US$3,600 per person; additional days, nights and service hours are quoted transparently. A typical two-guest 4-day version starts from approximately US$2,880 per person outside major exhibition periods.",
     additionalNote:
@@ -1564,54 +1555,50 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
       "Round-trip cable car or chairlift-up/toboggan-down tickets are optional and itemized at the confirmed rate for your date. Any mixed route and fallback descent require confirmation.",
   },
   "qingcheng-mountain-private-wellness-retreat-10-day": {
-    fromUsd: 11800,
     pricingUnit: "per-person",
     basePartySize: 4,
     cardBasis: "Based on four guests sharing two rooms",
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$47,200.",
     inclusionSummary:
-      "Includes 9 nights across a luxury Chengdu hotel and seven-night Qingcheng Mountain retreat, two rooms, private transfers, confirmed private guiding and cultural sessions, seven listed lunches or dinners, two resort treatments per guest, entrance arrangements and AVIORA Quiet Journey Standard support.",
+      "Includes 9 nights across a luxury Chengdu hotel and seven-night Qingcheng Mountain retreat, rooms for your confirmed party, private transfers, confirmed private guiding and cultural sessions, seven listed lunches or dinners, two resort treatments per guest, entrance arrangements and AVIORA Quiet Journey Standard support.",
     finalPriceNote:
       "Most fully tailored versions fall between US$13,800 and US$18,800 per person, depending on dates, exact retreat, room category, practitioner program, spa inclusions and private dining.",
     additionalNote:
       "Signature versions above US$20,000 per person may include larger villas or suites, deeper private practitioner programs and a separate Hangzhou extension. International flights and any unconfirmed medical or clinical service are excluded.",
   },
   "muslim-friendly-china-tour-great-wall-desert-stars": {
-    fromUsd: 7680,
     pricingUnit: "per-person",
     basePartySize: 4,
     cardBasis: "Based on four guests sharing two rooms",
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$30,720.",
     inclusionSummary:
-      "Includes 12 nights in selected premium city hotels plus the best suitable Ningxia and desert accommodation available for your dates, two rooms, private guides and vehicles, first-class Beijing–Xi'an rail, domestic transport named before booking, planned verified meals, listed private experiences and AVIORA Muslim Journey Standard support.",
+      "Includes 12 nights in selected premium city hotels plus the best suitable Ningxia and desert accommodation available for your dates, rooms for your actual party, private guides and vehicles, first-class Beijing–Xi'an rail, domestic transport named before booking, planned verified meals, listed private experiences and AVIORA Muslim Journey Standard support.",
     finalPriceNote:
       "Most fully tailored versions fall between US$8,300 and US$10,800 per person, depending on dates, city hotels, Ningxia and desert room categories, transport class, meal research and confirmed hosts.",
     additionalNote:
       "Premium suites, business-class rail, full photographer coverage, signature desert lodges and a 14-day Shanghai extension are quoted separately. International flights are not included.",
   },
   "china-at-an-easier-pace-12-day-private-tour": {
-    fromUsd: 6480,
-    pricingUnit: "per-person",
+    pricingUnit: "private-group",
     basePartySize: 4,
-    cardBasis: "Based on four guests sharing two rooms",
+    cardBasis: "Quoted for your actual group, dates and rooms",
     basis:
-      "Indicative starting price per person, based on four guests sharing two rooms outside peak holiday periods.",
+      "A written total for your actual party, travel dates, hotel rooms and agreed services; no fixed four-person occupancy assumption.",
     inclusionSummary:
-      "Includes 11 nights in selected premium five-star hotels, private guiding and vehicles on confirmed touring days, listed entrance tickets, Beijing–Xi'an first-class rail, a nonstop Xi'an–Shanghai economy flight, selected meals, the listed private cultural encounters and China-based journey support.",
+      "Proposed basis: 11 nights in selected five-star hotels, breakfasts on Days 2–12, local private guides and separate drivers on Days 2–4, 7–8 and 10, agreed transfers and admissions, Beijing–Xi'an first-class rail and a Xi'an–Shanghai economy flight. Specific arrangements require confirmation.",
     finalPriceNote:
-      "Most privately designed versions fall between US$6,800 and US$8,500 per person, depending on dates, hotel and room selection, party size and personal interests.",
+      "Your proposal specifies properties, room categories, occupancy, guide language and hours, transport, baggage allowances, tickets and payment conditions before booking.",
     additionalNote:
-      "Luxury and Signature versions with Peninsula-level hotels, larger rooms and transport upgrades are quoted separately.",
+      "Days 5 and 11 are independent free days without scheduled guiding or a vehicle. Lunches, dinners, workshops, specialist hosts, porters and international flights are separate unless expressly added. Larger rooms and transport upgrades are quoted on request.",
   },
   "china-family-tour-with-pandas-12-day-private-tour": {
-    fromUsd: 5850,
     pricingUnit: "per-person",
     basePartySize: 4,
     cardBasis: "Based on a family of four sharing two rooms",
     basis:
-      "Indicative starting price per person, based on a family of four: two adults and two children aged 6–11 sharing two rooms outside Chinese public holidays, school-holiday pressure dates and other peak periods, equivalent to a family total from US$23,400.",
+      "Starting price per person, based on two adults and two children aged 6–11 sharing two rooms outside peak periods. The current approved rate and family total are confirmed in your written proposal.",
     inclusionSummary:
       "Includes 11 nights in selected premium five-star hotels, two rooms, private family-ready guides and vehicles, listed entrance tickets, two first-class rail sectors, a nonstop Chengdu–Shanghai economy flight, selected meals, the listed hands-on private experiences and China-based family journey support.",
     finalPriceNote:
@@ -1620,35 +1607,35 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
       "Luxury and Signature versions with larger connecting rooms or suites, Peninsula-level hotels, upgraded transport and additional specialist access are quoted separately.",
   },
   "chengdu-pandas-sichuan-table": {
-    fromUsd: 1590,
     ...sharedPricingDetails,
   },
   "beijing-great-wall-private-5-day-tour": {
-    fromUsd: 1690,
     ...sharedPricingDetails,
   },
   "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour": {
-    fromUsd: 2090,
     ...sharedPricingDetails,
   },
   "chengdu-pandas-jiuzhaigou-private-7-day-tour": {
-    fromUsd: 2690,
     ...sharedPricingDetails,
   },
   "shanghai-zhangjiajie-floating-peaks": {
-    fromUsd: 2990,
     ...sharedPricingDetails,
   },
   "beijing-xian-shanghai-private-10-day-tour": {
-    fromUsd: 3190,
-    ...sharedPricingDetails,
+    pricingUnit: "private-group",
+    // Shared type compatibility only; the written total uses the actual party and rooms.
+    basePartySize: 4,
+    cardBasis: "One total for your party and room setup",
+    basis:
+      "A written total for your dates, actual travelers and room occupancy. Nine hotel nights use Beijing 4, Xi'an 2 and Shanghai 3; hotel and ticket availability must be confirmed.",
     inclusionSummary:
-      "Includes selected hotels, private guiding on listed sightseeing days, private airport and city transfers where stated, Beijing–Xi'an high-speed rail, listed admissions, hotel breakfasts and the Day 2 welcome dinner.",
+      "The itinerary includes nine hotel nights and breakfasts on Days 2–10, listed local private guiding and transfers, Beijing–Xi'an high-speed rail, a Xi'an–Shanghai domestic flight, listed standard admissions and planned Mutianyu round-trip enclosed cable-car tickets. No compulsory shopping stops.",
     finalPriceNote:
-      "The final price depends on your travel dates, room setup, hotel selection, rail class and the services your group chooses. Lunches and dinners beyond the Day 2 welcome dinner are not included unless listed in your proposal.",
+      "Your quote is tailored to your dates, group and rooms. Hotel rooms, rail and air classes, baggage, admission coverage and service hours are stated before booking. Day 9 is independent free time in this itinerary.",
+    additionalNote:
+      "International flights, visas, insurance, lunches, dinners, paid workshops, river cruises, porters, extra hours and Day 9 guided choices are separate unless expressly included.",
   },
   "chengdu-chongqing-zhangjiajie-private-11-day-tour": {
-    fromUsd: 3990,
     ...sharedPricingDetails,
     additionalNote:
       "Two open days are intentionally unprogrammed. Optional private experiences are quoted separately.",
@@ -1659,7 +1646,7 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
       "A written price is prepared for your travel dates, party size, room setup, hotel selection and confirmed services.",
     cardBasis: "Written quote for your dates and group",
     finalPriceNote:
-      "Request a date-specific proposal for the complete 12-day route. No unverified starting price is published.",
+      "Request a date-specific proposal for the complete 12-day route. The published starting rate is a guide.",
   },
 };
 
@@ -1715,7 +1702,10 @@ function buildDiscoveryData(
   ]
     .join(" ")
     .toLowerCase();
-  const slow = /slow|comfortable|unhurried|easy/.test(commercial.paceLabel.toLowerCase());
+  // Extra rest time changes the pace, but does not make heritage-site walking minimal.
+  const easierPaceChina = journey.slug === "china-at-an-easier-pace-12-day-private-tour";
+  const slow =
+    easierPaceChina || /slow|comfortable|unhurried|easy/.test(commercial.paceLabel.toLowerCase());
   const active = /active|efficient/.test(commercial.paceLabel.toLowerCase());
   const transportText = commercial.transportSummary.toLowerCase();
   const focus = new Set<JourneyFocusId>();
@@ -1739,7 +1729,7 @@ function buildDiscoveryData(
   return {
     focus: Array.from(focus),
     pace: active ? "active" : slow ? "easy" : "balanced",
-    walkingLevel: active ? "active" : slow ? "minimal" : "moderate",
+    walkingLevel: easierPaceChina ? "moderate" : active ? "active" : slow ? "minimal" : "moderate",
     altitude: journey.destinationFilters.includes("Jiuzhaigou") ? "some" : "none",
     transport: [
       "private-car" as const,

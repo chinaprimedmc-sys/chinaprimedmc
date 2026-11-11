@@ -603,12 +603,14 @@ export const privateChengduPandaDayTour: Tour = {
     {
       label: "Official Panda Base visitor notices",
       href: "https://www.panda.org.cn/en/service/notice",
+      officialPublisher: "Chengdu Research Base of Giant Panda Breeding",
       description:
         "Consult the attraction's notices; current access and visitor rules need date-specific checking.",
     },
     {
       label: "Official Panda Base opening information",
       href: "https://www.panda.org.cn/en/service/opentime",
+      officialPublisher: "Chengdu Research Base of Giant Panda Breeding",
       description:
         "Check published opening information; a hotel departure time is not a promise of early admission.",
     },

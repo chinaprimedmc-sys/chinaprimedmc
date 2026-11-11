@@ -490,7 +490,7 @@ export const privateShanghaiDayTour: Tour = {
     {
       question: "How much does a private Shanghai day tour cost for two people or a family?",
       answer:
-        "Request one total for your actual private party. The written quote states your date, adult and child numbers, vehicle, guide language, pickup and return addresses, service hours and any chosen extras. A two-person quote and a family quote may require different vehicle or ticket arrangements. No published starting price is currently verified for this tour; the total is confirmed before payment.",
+        "Request one total for your actual private party. The written quote states your date, adult and child numbers, vehicle, guide language, pickup and return addresses, service hours and any chosen extras. A two-person quote and a family quote may require different vehicle or ticket arrangements. The published starting rate is based on two adults traveling together; the total for your actual party is confirmed before payment.",
     },
     {
       question: "Can this be a Shanghai shore excursion from Wusongkou cruise port?",
@@ -548,6 +548,7 @@ export const privateShanghaiDayTour: Tour = {
     {
       label: "Shanghai official visitor information",
       href: "https://english.shanghai.gov.cn/en-TravelinShanghai/index.html",
+      officialPublisher: "Shanghai Municipal Government",
       description:
         "Use the municipal visitor portal for official travel information; date-specific venue and transport conditions still need confirmation.",
     },

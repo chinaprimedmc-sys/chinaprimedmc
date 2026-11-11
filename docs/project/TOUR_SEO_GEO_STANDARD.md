@@ -65,3 +65,19 @@ TouristTrip 与 WebPage 连接到同一 product／operator 实体，FAQ 与面�
 能够运行预览时，检查最终 HTML、桌面和手机展示、图片语义与性能、内链及表单。无法访问浏览器或 HTTP 时，清楚记录哪些检查完成、哪些没有完成，不能用类型检查替代视觉验收或真实抓取。
 
 上线后观察真实查询与询价质量，再修改布局。排名、FAQ 展示、AI 摘录和引用由外部平台决定；编辑目标是提高事实质量、可读性、抓取一致性和需求匹配，不作结果保证。
+
+## 官方来源与 AI 搜索引用标准（2026-11-11）
+
+`planningResources.officialPublisher` 仅用于明确发布机构的官方资源。`description` 写明支持范围和仍需确认的事项；可见页面单列 Official sources and visitor rules，WebPage citation 和 AI 文本读取相同数据。不把官方出处加入产品 sameAs，不暗示背书，也不伪造最近核验日期。没有实时联网核验时，官方入口不等于当前政策已核验。
+
+AI Overview 沿用一般抓取、索引及摘要资格；结构化数据和 llms.txt 都不是被引用保证。官方参考出站链接与第三方反向链接分别管理，获链只通过真实关系、资质和有用的原创材料。详细来源登记、上线验收和获链执行方案见 [实施记录](../audit/tour-official-sources-ai-search-2026-11-11.md)。
+
+## 面向欧美客人的英文与可信度
+
+采用自然、清楚的国际旅游英语；同一页统一美式或英式拼写。产品标题可以保留目的地、天数和 private tour 等核心词，但须有正常语法与标点，不为关键词把城市名生硬串联。卡片、H1 和 metadata 的人工标题应同步。
+
+专业感体现在具体安排与解释：为什么给景点单独一天、何时留出恢复时间、报价包含什么、客户需要提供哪些信息。少用没有证据的 best、world-class、unmatched、officially approved 等宣传。官方引用证明相应规则的出处，不证明我们优于同行，也不表示机构背书。
+
+对外避免内部字段语言，例如 first-China journey、public numerical starting price、base version、internal palace-cart entitlement。可用 your first trip to China、a personalized quote、this itinerary、skip-the-line access 等常用表达，并保留准确的服务边界。每日提示写当天独有的实用信息，不在十天日程重复同一段免责内容。
+
+引用具体政策时，先说明与客户有关的规则，再给发布机构、原文链接和适用条件；原文、发布日期或有效期尚未核验时，只能称为官方查询入口，不能写 According to the latest policy 或 falsely imply that the rules were checked today。UNESCO 遗产背景、景区运营规定、铁路乘车要求、移民政策及本公司服务条款分别说明。

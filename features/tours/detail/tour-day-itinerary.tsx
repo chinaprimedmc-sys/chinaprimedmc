@@ -65,10 +65,27 @@ export function TourDayItinerary({ days }: { days: TourDetailDay[] }) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     item.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
     setActive(index);
+    item.querySelector("summary")?.focus({ preventScroll: true });
+  };
+
+  const toggleAll = (open: boolean) => {
+    listRef.current?.querySelectorAll<HTMLDetailsElement>("details").forEach((item) => {
+      item.open = open;
+    });
   };
 
   return (
     <>
+      {days.length > 1 ? (
+        <div className={styles.dayControls} aria-label="Itinerary display">
+          <button type="button" onClick={() => toggleAll(true)}>
+            Expand all days
+          </button>
+          <button type="button" onClick={() => toggleAll(false)}>
+            Collapse all days
+          </button>
+        </div>
+      ) : null}
       {showJump ? (
         <nav className={styles.dayJump} aria-label="Jump to a day">
           <div className={styles.dayJumpTrack} ref={jumpRef}>

@@ -41,7 +41,7 @@ To protect your parents' health and enjoyment, shift the design from seeing as m
 Our 10-day, nine-night senior-friendly tour spends three nights each in Beijing, Xi'an and Shanghai. It shows how the rules above work in practice:
 
 - **Arrival day is a rest day.** Your guide meets you at the baggage-claim exit, a private Mercedes van takes you to a central 5-star hotel and nothing is scheduled, so jet lag does not cost a sightseeing day. The step budget that day is under 1,500.
-- **The Great Wall has a day to itself.** At Mutianyu an enclosed gondola takes you up to the wall, so there is no climb. The step budget is under 3,500 and the group is back at the hotel by 3:30 PM.
+- **The Great Wall has a day to itself.** At Mutianyu an enclosed cable car reduces part of the ascent, but steps and uneven surfaces remain. Agree the walking extent and service window rather than relying on a universal step cap or return time.
 - **City changes by bullet train.** First Class seats, with luggage handled for you at the stations, so no one carries bags.
 - **Afternoons are for rest.** Each day lists a step budget and a hotel-return time, so you know the physical load before you arrive.
 
@@ -94,7 +94,7 @@ For spring and autumn, which are the most popular seasons, we suggest planning f
 
 A trip with elderly parents should be about family and wonder, not exhaustion. Careful pacing, private transport and a dedicated local guide turn a long, complicated trip into one that is manageable and enjoyable.
 
-If you are planning a trip for your family, explore [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour). It is designed around a relaxed pace, low-step transfers, 5-star hotels and 24/7 support, with pricing from US$3,800 per person.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## Sources
 

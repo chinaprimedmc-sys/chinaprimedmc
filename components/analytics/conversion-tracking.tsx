@@ -1,8 +1,10 @@
 "use client";
 
+import { trackEvent } from "@/lib/analytics/events";
 import { useEffect } from "react";
+import { hubspotForm } from "@/lib/hubspot";
+import { isCurrentHubSpotEvent, readHubSpotMessage } from "@/lib/forms/hubspot-bridge";
 
-const HUBSPOT_ORIGIN = /^https:\/\/([a-z0-9-]+\.)*(hsforms\.(net|com)|hubspot\.com)$/;
 const DEDUPE_WINDOW_MS = 600;
 
 declare global {
@@ -18,16 +20,26 @@ declare global {
  */
 export function ConversionTracking() {
   useEffect(() => {
-    const onMessage = (event: MessageEvent) => {
-      const sameOrigin = event.origin === window.location.origin;
-      if (!sameOrigin && !HUBSPOT_ORIGIN.test(event.origin)) return;
-      const data = event.data as { type?: string; eventName?: string; id?: string } | null;
-      if (data?.type !== "hsFormCallback" || data.eventName !== "onFormSubmitted") return;
-      window.gtag?.("event", "generate_lead", {
+    let lastSubmission = 0;
+    const reportSubmission = () => {
+      const now = Date.now();
+      if (lastSubmission && now - lastSubmission < DEDUPE_WINDOW_MS) return;
+      lastSubmission = now;
+      trackEvent("generate_lead", {
         lead_source: "hubspot_form",
-        form_id: typeof data.id === "string" ? data.id.slice(0, 60) : undefined,
+        form_id: hubspotForm.formId,
         page_path: window.location.pathname,
       });
+    };
+    const onMessage = (event: MessageEvent) => {
+      const frames = Array.from(
+        document.querySelectorAll<HTMLIFrameElement>(".hs-form-frame iframe"),
+        (frame) => frame.contentWindow,
+      );
+      if (readHubSpotMessage(event, frames) === "submitted") reportSubmission();
+    };
+    const onSuccess = (event: Event) => {
+      if (isCurrentHubSpotEvent(event)) reportSubmission();
     };
 
     const onClick = (event: MouseEvent) => {
@@ -37,16 +49,18 @@ export function ConversionTracking() {
       // trackEvent("whatsapp_click") already ran for this click on the tracked buttons.
       const last = window.__avioraLastWhatsappEvent;
       if (last && Date.now() - last < DEDUPE_WINDOW_MS) return;
-      window.gtag?.("event", "whatsapp_click", {
+      trackEvent("whatsapp_click", {
         placement: "inline_link",
         page_path: window.location.pathname,
       });
     };
 
     window.addEventListener("message", onMessage);
+    window.addEventListener("hs-form-event:on-submission:success", onSuccess);
     document.addEventListener("click", onClick);
     return () => {
       window.removeEventListener("message", onMessage);
+      window.removeEventListener("hs-form-event:on-submission:success", onSuccess);
       document.removeEventListener("click", onClick);
     };
   }, []);

@@ -9,18 +9,36 @@
  * 所以详情页不再渲染底部的 EnquirySection；全站弹窗发现它会直接滚动到这里。
  */
 
+import type { PlanningContext } from "@/lib/forms/planning-context";
 import { trackEvent } from "@/lib/analytics/events";
 
 import { LazyHubSpotForm } from "./lazy-hubspot-form";
 
-export function InlineEnquiryForm({ placement }: { placement: string }) {
+export function InlineEnquiryForm({
+  placement,
+  journeyTitle,
+  planningContext,
+}: {
+  placement: string;
+  journeyTitle?: string;
+  planningContext?: PlanningContext;
+}) {
   return (
     <div
       id="enquire"
       data-enquiry-inline
       style={{ scrollMarginTop: "calc(var(--site-nav-offset) + 16px)" }}
     >
-      <LazyHubSpotForm onVisible={() => trackEvent("enquiry_form_view", { placement })} />
+      {journeyTitle ? (
+        <p style={{ fontSize: "1rem", lineHeight: 1.65, marginBottom: 16 }}>
+          You are asking about <strong>{journeyTitle}</strong>. Please include it in your message.
+        </p>
+      ) : null}
+      <LazyHubSpotForm
+        planningContext={planningContext}
+        contextSummary={journeyTitle ? `Journey: ${journeyTitle}` : undefined}
+        onVisible={() => trackEvent("enquiry_form_view", { placement })}
+      />
     </div>
   );
 }

@@ -1,4 +1,16 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+
+const publishedPrices = await readFile(
+  new URL("../content/tours/published-prices.ts", import.meta.url),
+  "utf8",
+);
+const familyFromUsd = Number(
+  publishedPrices.match(
+    /"china-family-tour-with-pandas-12-day-private-tour":\s*\{\s*fromUsd:\s*(\d+)/,
+  )?.[1],
+);
+assert.ok(familyFromUsd > 0, "Family starting rate must exist in the published price registry");
 
 const base = new URL(process.env.SEO_BASE_URL || "https://www.chinaprimedmc.com");
 const origin = (process.env.SEO_SITE_ORIGIN || "https://www.chinaprimedmc.com").replace(/\/$/, "");
@@ -59,7 +71,10 @@ assert.equal(page.publisher["@id"], agency["@id"]);
 assert.equal(page.mainEntity["@id"], service["@id"]);
 assert.equal(service.provider["@id"], agency["@id"]);
 assert.equal(service.areaServed.name, "China");
-assert.match(agency.description, /full-service private China tours/);
+assert.match(agency.description, /private.*(?:tour|journey)/i);
+for (const scope of ["planning", "hotels", "guides", "transport"]) {
+  assert.ok(agency.description.includes(scope), `Agency description omits ${scope}`);
+}
 assert.match(service.description, /one-stop, full-service/);
 for (const phase of [
   "itinerary design",
@@ -171,9 +186,12 @@ for (const file of ["/llms.txt", "/llms-full.txt"]) {
       `${file} FAQ mismatch`,
     );
   }
-  assert.match(guide, /US\$5,850/);
+  assert.ok(
+    guide.includes(familyFromUsd.toLocaleString("en-US")),
+    `${file} must publish the current family starting rate`,
+  );
   assert.match(guide, /(?:2|two) adults and (?:2|two) children aged 6[–-]11/);
-  assert.match(guide, /non-peak seasons/);
+  assert.match(guide, /non-peak seasons|outside peak periods/);
 }
 
 const image = await fetch(new URL(new URL(meta("property", "og:image"), base).pathname, base));

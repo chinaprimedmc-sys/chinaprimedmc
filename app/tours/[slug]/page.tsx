@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { assertPublicRouteSlugs } from "@/config/public-route-slugs";
+import { destinationOriginName } from "@/lib/content/destination-origin";
 import { siteConfig } from "@/config/site";
 import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
@@ -17,10 +18,12 @@ import {
 import { TourDetailLanding } from "@/features/tours/detail/tour-detail-landing";
 import { frameworkTourFaqs } from "@/features/tours/detail/tour-detail-model";
 import { JsonLd } from "@/lib/seo/json-ld";
+import { tourOfficialCitations } from "@/lib/seo/tour-sources";
 import { tourSearchSpecification } from "@/lib/seo/tour-specification";
 import { createTourMetadata } from "@/lib/seo/tour-metadata";
 import { createMetadata } from "@/lib/seo/metadata";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
+import { getJourneyStartingOffer } from "@/lib/tours/journey-pricing";
 import { readJourneyConfiguration } from "@/lib/tours/journey-price";
 
 type TourPageProps = {
@@ -71,24 +74,20 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 export default async function TourPage({ params, searchParams }: TourPageProps) {
   const { slug } = await params;
   const search = await searchParams;
+  const originDestinationName = destinationOriginName(search.from_destination, slug);
   const initialSelection = readJourneyConfiguration(
     new URLSearchParams(
       Object.entries(search).filter(
         (entry): entry is [string, string] => typeof entry[1] === "string",
       ),
     ),
+    String(getJourneyCatalogItem(slug)?.pricing.basePartySize ?? 2),
   );
   const staticTour = getTourBySlug(slug);
 
   if (staticTour) {
     const catalogItem = getJourneyCatalogItem(staticTour.slug);
     const searchSpecification = tourSearchSpecification(staticTour);
-    const isFixedFourCityRoute = slug === "beijing-xian-chengdu-shanghai-private-11-day-tour";
-    const selectedPrice = isFixedFourCityRoute
-      ? undefined
-      : initialSelection.guests === "4"
-        ? catalogItem?.pricing.fromUsd
-        : undefined;
     const reading = getJourneyReadingArticles(staticTour.slug);
     const tourUrl = new URL(`/tours/${staticTour.slug}`, siteConfig.url).toString();
     const isChinaConsidered = staticTour.slug === "china-at-an-easier-pace-12-day-private-tour";
@@ -249,21 +248,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
               })),
             })),
             touristType: catalogItem?.bestForFilters ?? staticTour.styles,
-            offer:
-              catalogItem && selectedPrice !== undefined
-                ? {
-                    price: selectedPrice,
-                    priceCurrency: "USD",
-                    url: tourUrl,
-                    availability: "https://schema.org/LimitedAvailability",
-                    category: "Private premium China tour",
-                    description: catalogItem.pricing.basis,
-                    unitText:
-                      catalogItem.pricing.pricingUnit === "private-group"
-                        ? "per private group of four guests"
-                        : "per person",
-                  }
-                : undefined,
+            offer: catalogItem ? getJourneyStartingOffer(catalogItem, tourUrl) : undefined,
             additionalProperties: [
               ...(catalogItem
                 ? [
@@ -298,6 +283,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
             publisher: { "@id": `${siteConfig.url}/#organization` },
             reviewedBy: { "@id": `${siteConfig.url}/#organization` },
             mainEntity: { "@id": `${tourUrl}#tour` },
+            citation: tourOfficialCitations(staticTour),
             isPartOf: { "@id": `${siteConfig.url}/#website` },
           }}
         />
@@ -320,6 +306,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
         <TourDetailLanding
           model={createTourDetailModel(staticTour)}
           initialSelection={initialSelection}
+          originDestinationName={originDestinationName}
         />
       </>
     );
@@ -392,6 +379,7 @@ export default async function TourPage({ params, searchParams }: TourPageProps) 
       <TourDetailLanding
         model={createFrameworkTourDetailModel(journey)}
         initialSelection={initialSelection}
+        originDestinationName={originDestinationName}
       />
     </>
   );

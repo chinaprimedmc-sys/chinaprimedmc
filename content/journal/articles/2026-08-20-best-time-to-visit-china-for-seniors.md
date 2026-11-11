@@ -83,7 +83,7 @@ A private journey can change its daily rhythm to suit the weather:
 
 Spring and autumn dates are the most popular, so good hotel rooms, first-class train seats and the best guides are booked early. If you have a specific month in mind, plan well ahead.
 
-If you want an unhurried, low-fatigue journey in China's best weather months, explore [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour). It is designed around low-step transfers, a 3:30 PM return to the hotel, 5-star hotel comfort and 24/7 on-ground support.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## Sources
 

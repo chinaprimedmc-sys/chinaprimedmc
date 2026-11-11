@@ -1,0 +1,254 @@
+.section {
+  padding-block: var(--space-section-default);
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  scroll-margin-top: calc(var(--site-nav-offset) + 1.5rem);
+}
+.inner {
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--container-page));
+  margin-inline: auto;
+}
+.heading {
+  max-width: 70ch;
+}
+.eyebrow {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+.heading h2 {
+  margin: 0.75rem 0 1rem;
+  font-size: var(--type-section-title-size);
+  line-height: var(--type-section-title-line);
+  font-weight: var(--type-section-title-weight);
+}
+.heading > p:not(.eyebrow) {
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+.heading .sourceNote {
+  font-size: 0.875rem;
+}
+.stories {
+  margin-top: 2.5rem;
+}
+.story {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--color-line);
+  scroll-margin-top: calc(var(--site-nav-offset) + 1.5rem);
+}
+.storyHeading,
+.account {
+  min-width: 0;
+}
+.storyHeading h3 {
+  margin: 0.75rem 0 1rem;
+  max-width: 24ch;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.storyHeading > p:not(.eyebrow) {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+.quote {
+  margin: 1.5rem 0 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--color-forest);
+}
+.quote blockquote {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+.quote figcaption {
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.sourceLink {
+  margin-top: 1rem;
+}
+.account dl {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+}
+.account dt {
+  font-weight: 650;
+  line-height: 1.5;
+}
+.account dd {
+  margin: 0.5rem 0 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.takeaway {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-line);
+}
+.takeaway h4 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 650;
+}
+.takeaway p {
+  margin: 0.5rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+.sourceLink,
+.nextStep a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 0.5rem;
+  color: var(--color-forest);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.nextStep {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+}
+.nextStep p {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.section a:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 4px;
+}
+@media (max-width: 1023px) {
+  .story {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .storyHeading h3 {
+    max-width: 32ch;
+  }
+}
+@media (max-width: 420px) {
+  .quote {
+    padding-left: 1rem;
+  }
+  .nextStep {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* White editorial rhythm: hierarchy comes from type and spacing. */
+.section {
+  background: #fff;
+}
+.heading h2 {
+  max-width: 24ch;
+  font-family: var(--font-brand);
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  line-height: 1.12;
+  font-weight: 400;
+}
+.stories {
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+.story {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+.storyHeading h3 {
+  font-family: var(--font-brand);
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  line-height: 1.18;
+  font-weight: 400;
+}
+.quote {
+  padding-left: 1.25rem;
+  border-left-color: var(--color-line-strong);
+}
+.quote blockquote {
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  line-height: 1.55;
+}
+.sourceLink,
+.nextStep a {
+  color: var(--color-ink);
+}
+.account dl {
+  gap: 1.75rem;
+}
+.takeaway {
+  padding-top: 1.5rem;
+  margin-top: 1.75rem;
+  background: #fff;
+}
+@media (min-width: 1024px) {
+  .storyHeading {
+    align-self: start;
+    position: sticky;
+    top: calc(var(--site-nav-offset) + 1.5rem);
+  }
+}
+@media (max-width: 767px) {
+  .story {
+    gap: 2rem;
+  }
+  .quote {
+    margin-top: 1.25rem;
+  }
+}
+
+/* Mobile reading and touch targets. */
+
+@media (max-width: 767px) {
+  .section {
+    padding-block: 2.5rem;
+  }
+  .heading h2 {
+    font-size: clamp(1.85rem, 7.5vw, 2.5rem);
+    line-height: 1.2;
+  }
+  .stories {
+    margin-top: 2rem;
+  }
+  .story {
+    padding-block: 2rem;
+    gap: 1.5rem;
+  }
+  .storyHeading h3 {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+  .quote {
+    padding-left: 1rem;
+  }
+  .quote blockquote {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  .sourceLink,
+  .nextStep a {
+    min-height: 48px;
+  }
+}

@@ -11,15 +11,21 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import type { PlanningContext } from "@/lib/forms/planning-context";
+import { StartPlanningForm } from "./start-planning-form";
 import { HubSpotForm } from "./hubspot-form";
 import { FormContactFallback } from "./form-contact-fallback";
 
 export function LazyHubSpotForm({
   onVisible,
+  planningContext,
   rootMargin = "600px 0px",
+  contextSummary,
 }: {
   onVisible?: () => void;
+  planningContext?: PlanningContext;
   rootMargin?: string;
+  contextSummary?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
@@ -52,7 +58,11 @@ export function LazyHubSpotForm({
   return (
     <div ref={ref} style={{ minHeight: 320 }}>
       {show ? (
-        <HubSpotForm />
+        planningContext ? (
+          <StartPlanningForm {...planningContext} />
+        ) : (
+          <HubSpotForm contextSummary={contextSummary} />
+        )
       ) : (
         <div aria-live="polite">
           <p style={{ opacity: 0.6 }}>The enquiry form will load here.</p>

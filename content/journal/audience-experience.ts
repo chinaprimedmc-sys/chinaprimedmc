@@ -741,14 +741,14 @@ export const audienceExperienceArticles: JournalArticle[] = [
   {
     slug: "how-to-visit-great-wall-without-climbing-stairs",
     title: "How to Visit the Great Wall of China Without Climbing Stairs: A Senior-Friendly Guide",
-    dek: "How to see Mutianyu with an enclosed gondola, a flat platform at Watchtower 14, a portable seat and a realistic step budget.",
+    dek: "What an enclosed cable car can reduce at Mutianyu, what steps remain and which access questions to check before booking.",
     excerpt:
-      "A practical guide to a step-free Great Wall visit: why Mutianyu suits seniors, how the gondola works and what to check before you go.",
+      "A practical guide to reducing the climb at the Great Wall while reviewing steps, boarding, slopes and individual access needs.",
     category: "Travel Guides",
     tags: ["senior-travel", "beijing", "private-guides"],
     author,
     publishedAt: "2026-11-05",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-05",
     readingTime: "6 min read",
     hero: { image: textHeroImage, eyebrow: "Plan a comfortable Great Wall day", mode: "text" },
@@ -757,7 +757,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     seo: {
       title: "How to Visit the Great Wall Without Climbing Stairs | Seniors",
       description:
-        "Discover how to experience the Great Wall of China with zero stairs. Complete guide to Mutianyu cable cars, VIP step-free access, and slow-paced senior travel.",
+        "Can you visit the Great Wall without stairs? Understand Mutianyu cable-car limits, remaining walking and the access details to review before booking.",
       keywords: [
         "how to visit great wall without stairs",
         "senior friendly great wall tour",
@@ -767,7 +767,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "mutianyu-older-travelers-short-walk"],
     },
     conversion: {
@@ -784,7 +784,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
       contentType: "operator",
       decisionStage: "evaluate",
       keyAnswer:
-        "Mutianyu is the usual choice for a step-free Great Wall visit: an enclosed gondola glides to a flat brick platform at Watchtower 14, and a guide-carried seat and a step budget keep the day comfortable.",
+        "An enclosed cable car can reduce the climb at Mutianyu, but steps, slopes and public boarding constraints remain. Confirm the whole route against individual access needs.",
       appliesTo: [
         "Older travelers",
         "Travelers with limited mobility",
@@ -792,20 +792,20 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "Beijing first-timers",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour builds the Mutianyu gondola day into a slow-paced Beijing, Xi'an and Shanghai route.",
+        "The twelve-day Easier Pace route provides more recovery time; confirm walking, rooms and the actual service scope before booking.",
     },
   },
   {
     slug: "slow-paced-china-tour-for-seniors-itinerary-guide",
-    title: "Slow-Paced China Travel for Seniors: How to Plan a Fatigue-Free Itinerary",
-    dek: "The 3:30 PM hotel return, a daily step budget, luggage-free bullet trains and the three-night rhythm that make a Golden Triangle trip easy.",
+    title: "Slow-Paced China Travel for Seniors: Recovery and Route Planning",
+    dek: "Compare ten and twelve days, full transfer-day demands, recovery time and the services that need individual confirmation.",
     excerpt:
       "How slow pacing works in practice for older travelers: return times, step budgets, bullet-train logistics and a three-city route.",
     category: "Travel Guides",
     tags: ["senior-travel", "first-time-china", "private-guides"],
     author,
     publishedAt: "2026-11-05",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-05",
     readingTime: "6 min read",
     hero: { image: textHeroImage, eyebrow: "Pace the journey around your energy", mode: "text" },
@@ -814,7 +814,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     seo: {
       title: "Slow-Paced China Travel for Seniors: Pacing & Itinerary Tips",
       description:
-        "Planning a trip to China for elderly parents? Learn how slow-paced itineraries, early hotel returns, and bullet train transfers prevent fatigue.",
+        "Plan a slower China trip for older parents with realistic walking, full transfer days and recovery time. Compare ten- and twelve-day route structures.",
       keywords: [
         "slow paced china tour for seniors",
         "senior travel china pacing",
@@ -824,7 +824,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "china-travel-for-seniors"],
     },
     conversion: {
@@ -841,7 +841,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
       contentType: "operator",
       decisionStage: "prepare",
       keyAnswer:
-        "A slow-paced China itinerary returns you to the hotel by 3:30 PM, sets a daily step budget under 4,000 steps, handles luggage on bullet trains and gives each city three nights.",
+        "A slower private itinerary allocates recovery and choice time around real walking, standing and transfer demands, without fixed step caps or hotel-return guarantees.",
       appliesTo: [
         "Older travelers",
         "Adult children planning for parents",
@@ -849,7 +849,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "Active retirees",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour applies these pacing rules to Beijing, Xi'an and Shanghai with three nights in each city.",
+        "The twelve-day Easier Pace route provides more recovery time; confirm walking, rooms and the actual service scope before booking.",
     },
   },
   {
@@ -857,12 +857,12 @@ export const audienceExperienceArticles: JournalArticle[] = [
     title: "Is China Safe for Elderly Travelers? A Complete Health, Safety and Logistics Guide",
     dek: "Medical access, dietary planning, restrooms and vehicle comfort: what to arrange before an older traveler flies to China.",
     excerpt:
-      "A clear look at health and logistics for senior travel in China: the 24/7 medical channel, dietary coordination, pre-vetted restrooms and comfortable transfers.",
+      "Review operating contacts, medical arrangements, dietary feasibility, public toilets and vehicle access before travel.",
     category: "Travel Guides",
     tags: ["senior-travel", "food", "private-guides"],
     author,
     publishedAt: "2026-11-05",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-05",
     readingTime: "6 min read",
     hero: { image: textHeroImage, eyebrow: "Answer the safety questions first", mode: "text" },
@@ -871,7 +871,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     seo: {
       title: "Is China Safe for Elderly Travelers? Senior Care & Health Guide",
       description:
-        "Is traveling to China safe for seniors? Read our complete guide on medical green channels, dietary allergen safety, accessibility, and private care.",
+        "Plan China travel for older adults with clear operating contacts, insurance, dietary checks, public-facility access and realistic assistance arrangements.",
       keywords: [
         "is china safe for elderly travelers",
         "china travel seniors medical",
@@ -881,7 +881,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: [
         "food-allergies-dietary-restrictions-china-travel",
         "china-travel-emergency-support-what-to-do",
@@ -901,7 +901,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
       contentType: "operator",
       decisionStage: "evaluate",
       keyAnswer:
-        "Beijing, Shanghai and Xi'an have international clinics and large hospitals; a private tour adds a 24/7 medical channel, chef coordination for dietary needs, pre-vetted restrooms and a pre-conditioned vehicle.",
+        "A private tour can coordinate logistics, but medical care, provider availability, dietary feasibility, toilet access and assistance must be checked separately; do not assume priority clinical treatment.",
       appliesTo: [
         "Older travelers",
         "Adult children planning for parents",
@@ -909,7 +909,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "Families with medical concerns",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour includes the 24/7 medical channel and the care standards described here.",
+        "The twelve-day Easier Pace route provides more recovery time; confirm walking, rooms and the actual service scope before booking.",
     },
   },
   {
@@ -922,7 +922,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     tags: ["senior-travel", "first-time-china", "private-guides"],
     author,
     publishedAt: "2026-11-05",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-05",
     readingTime: "7 min read",
     hero: { image: textHeroImage, eyebrow: "Judge the pace before you book", mode: "text" },
@@ -941,7 +941,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "china-travel-for-seniors"],
     },
     conversion: {
@@ -957,14 +957,14 @@ export const audienceExperienceArticles: JournalArticle[] = [
       contentType: "operator",
       decisionStage: "evaluate",
       keyAnswer:
-        "Many commercial group tours demand long walking days and early starts; a private, low-step journey with a 3:30 PM hotel return, porters and a stated step budget is gentler for older travelers.",
+        "Compare the actual walking, standing, start times, rest options and transfer arrangements of each offer; neither a private label nor a step target guarantees suitability.",
       appliesTo: [
         "Older travelers",
         "Adult children planning for parents",
         "Travelers comparing group and private tours",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour applies these pacing rules to Beijing, Xi'an and Shanghai.",
+        "The twelve-day Easier Pace route provides more recovery time; confirm walking, rooms and the actual service scope before booking.",
     },
   },
   {
@@ -977,7 +977,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     tags: ["senior-travel", "destinations", "private-guides"],
     author,
     publishedAt: "2026-11-05",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-05",
     readingTime: "8 min read",
     hero: { image: textHeroImage, eyebrow: "Choose the place before the pace", mode: "text" },
@@ -996,7 +996,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "china-travel-for-seniors"],
     },
     conversion: {
@@ -1019,7 +1019,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "Travelers choosing destinations for a first China trip",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour covers the three lowest-strain cities with the pacing rules described here.",
+        "The twelve-day Easier Pace route provides more recovery time; confirm walking, rooms and the actual service scope before booking.",
     },
   },
   {
@@ -1032,7 +1032,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     tags: ["senior-travel", "best-time", "private-guides"],
     author,
     publishedAt: "2026-11-05",
-    updatedAt: "2026-11-05",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-05",
     readingTime: "6 min read",
     hero: { image: textHeroImage, eyebrow: "Choose the season first", mode: "text" },
@@ -1051,7 +1051,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "best-places-china-senior-travelers"],
     },
     conversion: {
@@ -1074,7 +1074,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "Travelers choosing dates for a first China trip",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour can be scheduled in the spring and autumn windows described here.",
+        "The twelve-day Easier Pace route provides more recovery time; confirm walking, rooms and the actual service scope before booking.",
     },
   },
   {
@@ -1082,12 +1082,12 @@ export const audienceExperienceArticles: JournalArticle[] = [
     title: "China Tour Cost for Seniors (2027): Transparent Budget & Price Breakdown",
     dek: "What drives the price of a senior-friendly private tour in China, where the money goes and what to check in cheaper offers.",
     excerpt:
-      "A plain look at private tour costs for older travelers, with the verified 10-day starting price and the questions to ask any operator.",
+      "Compare actual party totals, room occupancy, transport, required assistance and exclusions before choosing a private China tour.",
     category: "Travel Guides",
     tags: ["senior-travel", "tour-cost", "private-guides"],
     author,
     publishedAt: "2026-11-06",
-    updatedAt: "2026-11-06",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-06",
     readingTime: "7 min read",
     hero: { image: textHeroImage, eyebrow: "Know what you are paying for", mode: "text" },
@@ -1096,7 +1096,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     seo: {
       title: "China Tour Cost for Seniors: Budget & Price Breakdown",
       description:
-        "What a private China tour costs for senior travelers in 2027: what the price covers, what changes your quote and how to avoid hidden fees. 10-day tour from US$3,800.",
+        "Understand private China tour costs for older travelers: rooms, transport, assistance, exclusions and questions to ask. Request a written total for your party.",
       keywords: [
         "china tour cost for seniors",
         "private china tour cost elderly",
@@ -1106,7 +1106,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "best-time-to-visit-china-for-seniors"],
     },
     conversion: {
@@ -1122,14 +1122,14 @@ export const audienceExperienceArticles: JournalArticle[] = [
       contentType: "operator",
       decisionStage: "evaluate",
       keyAnswer:
-        "Our 10-day private Golden Triangle tour starts from US$3,800 per person and generally runs to US$6,500, depending on hotel, season and party size; the written proposal sets the exact price.",
+        "No verified public numerical starting price is published for the proposed ten-day route. Request a written total for actual dates, travelers, rooms, transport and required assistance.",
       appliesTo: [
         "Older travelers",
         "Adult children planning for parents",
         "Travelers comparing private and group tour costs",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour shows its starting price and range openly.",
+        "Compare the ten-day first-visit route and twelve-day recovery-focused route using their actual scope and room setup.",
     },
   },
   {
@@ -1142,7 +1142,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     tags: ["senior-travel", "family-travel", "itinerary-pacing"],
     author,
     publishedAt: "2026-11-06",
-    updatedAt: "2026-11-06",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-06",
     readingTime: "7 min read",
     hero: { image: textHeroImage, eyebrow: "Pace the trip before you plan it", mode: "text" },
@@ -1161,7 +1161,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: ["slow-paced-china-tour-for-seniors", "china-trip-with-older-parents"],
     },
     conversion: {
@@ -1185,7 +1185,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "Multi-generational families",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour applies these pacing rules to Beijing, Xi'an and Shanghai.",
+        "The twelve-day Easier Pace route provides more recovery time; confirm walking, rooms and the actual service scope before booking.",
     },
   },
   {
@@ -1198,7 +1198,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     tags: ["senior-travel", "accessibility", "health"],
     author,
     publishedAt: "2026-11-06",
-    updatedAt: "2026-11-06",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-06",
     readingTime: "8 min read",
     hero: { image: textHeroImage, eyebrow: "Plan access before you book", mode: "text" },
@@ -1217,7 +1217,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: [
         "is-china-safe-for-elderly-travelers-senior-care-guide",
         "china-tours-seniors-limited-mobility",
@@ -1244,7 +1244,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "Travelers with limited mobility",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour is paced around low-step transfers and a 3:30 PM hotel return.",
+        "The twelve-day Easier Pace route allows more recovery time, with access and assistance reviewed for the actual travelers.",
     },
   },
   {
@@ -1257,7 +1257,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     tags: ["senior-travel", "dining", "hotels"],
     author,
     publishedAt: "2026-11-06",
-    updatedAt: "2026-11-06",
+    updatedAt: "2026-11-11",
     lastFactCheckedAt: "2026-11-06",
     readingTime: "6 min read",
     hero: { image: textHeroImage, eyebrow: "Plan the small comforts first", mode: "text" },
@@ -1276,7 +1276,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
     },
     related: {
       destinations: ["beijing", "xian", "shanghai"],
-      tours: ["beijing-xian-shanghai-private-10-day-tour"],
+      tours: ["china-at-an-easier-pace-12-day-private-tour"],
       articles: ["china-travel-accessibility-senior-health-guide", "china-trip-with-older-parents"],
     },
     conversion: {
@@ -1300,7 +1300,7 @@ export const audienceExperienceArticles: JournalArticle[] = [
         "Travelers with dietary needs",
       ],
       relatedJourneyReason:
-        "The 10-day senior-friendly tour includes a culinary concierge, checked restrooms and a 3:30 PM hotel return.",
+        "The twelve-day Easier Pace route is a planning option; dietary feasibility, toilet access and service hours require specific confirmation.",
     },
   },
 ];

@@ -41,7 +41,6 @@ export const journeyTags: Record<PublicSlug, JourneyTagSet> = {
   "beijing-xian-shanghai-private-10-day-tour": {
     who: ["First-time", "Couples"],
     interest: ["Culture & heritage", "History"],
-    easierPace: true,
   },
   "luxury-yunnan-private-tour": {
     who: ["Couples"],

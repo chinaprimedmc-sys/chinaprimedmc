@@ -1,0 +1,21 @@
+/* Shared by the three About pages only: white surfaces and neutral typography. */
+.page {
+  --color-canvas: #fff;
+  --color-surface: #fff;
+  --color-surface-muted: #fff;
+  --color-ink: #191919;
+  --color-copy: #383838;
+  --color-muted: #606060;
+  --color-line: #e7e7e7;
+  --color-line-strong: #ccc;
+  --color-forest: #191919;
+  --color-forest-hover: #444;
+  --bg-primary: #fff;
+  --bg-secondary: #fff;
+  --accent: #191919;
+  --accent-hover: #444;
+  --action-primary: #191919;
+  --action-primary-hover: #444;
+  background: #fff;
+  color: var(--color-ink);
+}

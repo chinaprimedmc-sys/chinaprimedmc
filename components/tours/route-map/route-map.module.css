@@ -1,0 +1,239 @@
+.figure {
+  margin: 1.5rem 0 0;
+  border: var(--border-subtle);
+  border-radius: var(--radius-editorial);
+  overflow: hidden;
+}
+.preview {
+  background: var(--color-surface-muted);
+  padding: 1rem;
+}
+.preview svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  overflow: hidden;
+}
+.basemap {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.line {
+  fill: none;
+  stroke: var(--color-forest);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+.point {
+  fill: var(--color-forest);
+  stroke: var(--color-surface);
+  stroke-width: 2;
+}
+.number {
+  fill: var(--color-on-dark);
+  font: 12px var(--font-body);
+  text-anchor: middle;
+}
+.label {
+  fill: var(--color-ink);
+  font: 15px var(--font-body);
+  text-anchor: middle;
+}
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  color: var(--color-muted);
+  font: var(--type-nav-size)/1.6 var(--font-body);
+}
+.caption > span {
+  max-width: 48ch;
+}
+.button {
+  flex: none;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  padding: 0.75rem 1.25rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+.button:hover {
+  background: var(--color-brass-soft);
+}
+.stage {
+  position: relative;
+  aspect-ratio: 640 / 330;
+  background: var(--color-surface-muted);
+}
+.stage[data-expanded] {
+  aspect-ratio: auto;
+  height: 23rem;
+}
+.preview {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.preview[hidden] {
+  display: none;
+}
+.interactive {
+  position: absolute;
+  inset: 0;
+}
+.pending {
+  visibility: hidden;
+}
+.ready {
+  visibility: visible;
+}
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+.cityMarker {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-family: var(--font-body);
+  pointer-events: none;
+}
+.cityNumber {
+  display: grid;
+  place-items: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-forest);
+  color: var(--color-on-dark);
+  border: 2px solid var(--color-surface);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.cityName {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+.loading,
+.fallback {
+  padding: 1.5rem;
+  color: var(--color-copy);
+  font: var(--type-body-size)/1.6 var(--font-body);
+}
+.legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  list-style: none;
+  font: var(--type-nav-size)/1.6 var(--font-body);
+  border-top: 1px solid var(--color-line);
+}
+.legend li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  min-width: 0;
+}
+.legend strong {
+  display: block;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.legend small {
+  display: block;
+  color: var(--color-muted);
+  font-size: var(--type-caption-size);
+}
+.stopNumber {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-forest);
+  color: var(--color-on-dark);
+  font-size: var(--type-caption-size);
+}
+@media (max-width: 639px) {
+  .caption {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .preview {
+    padding: 0.5rem;
+  }
+  .label {
+    font-size: 17px;
+  }
+  .stage[data-expanded] {
+    height: 20rem;
+  }
+  .legend {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+.cityDays {
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border-radius: var(--radius-pill);
+  padding: 0.125rem 0.5rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+}
+
+.mapStatus {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  margin: 0;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font: var(--type-nav-size)/1.5 var(--font-body);
+}
+.credit {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--color-muted);
+  font-size: 0.6875rem;
+}
+
+.attribution {
+  margin: 0;
+  padding: 0.375rem 0.75rem;
+  text-align: right;
+  color: var(--color-muted);
+  background: var(--color-surface);
+  font: 0.625rem/1.5 var(--font-body);
+}
+.attribution a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+}

@@ -10,6 +10,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  ...(process.env.AVIORA_PREVIEW_DIST_DIR ? { distDir: process.env.AVIORA_PREVIEW_DIST_DIR } : {}),
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,

@@ -31,12 +31,16 @@ test("field errors identify every missing required value", () => {
   assert.equal(withoutGuestSelection.timing, "");
 });
 
-test("journey configuration keeps the four-guest pricing basis and rejects unknown values", () => {
-  assert.deepEqual(readJourneyConfiguration(new URLSearchParams("")), { guests: "4" });
+test("journey configuration uses the two-traveler default and supports a different starting basis and rejects unknown values", () => {
+  assert.deepEqual(readJourneyConfiguration(new URLSearchParams("")), { guests: "2" });
   assert.deepEqual(readJourneyConfiguration(new URLSearchParams("guests=7%2B")), {
     guests: "7+",
   });
-  assert.deepEqual(readJourneyConfiguration(new URLSearchParams("guests=99")), { guests: "4" });
+  assert.deepEqual(readJourneyConfiguration(new URLSearchParams("guests=99")), { guests: "2" });
+});
+
+test("family configuration defaults to the four-traveler basis", () => {
+  assert.deepEqual(readJourneyConfiguration(new URLSearchParams(""), "4"), { guests: "4" });
 });
 
 test("the offer reduces the real base price without an invented reference price", () => {

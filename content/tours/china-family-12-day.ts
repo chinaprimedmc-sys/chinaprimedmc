@@ -1,3 +1,4 @@
+import { publishedJourneyPrices } from "@/content/tours/published-prices";
 import {
   beijingUnhurriedAsset,
   chengduAsset,
@@ -60,8 +61,7 @@ export const chinaFamily12DayTour: Tour = {
       {
         label: "Published Basis",
         value: "Four guests · two rooms",
-        helper:
-          "Starting from US$5,850 per person (estimated investment for two adults and two children aged 6–11, sharing two hotel-confirmed rooms during non-peak seasons).",
+        helper: `From USD ${publishedJourneyPrices["china-family-tour-with-pandas-12-day-private-tour"].fromUsd.toLocaleString("en-US")} per person, based on two adults and two children aged 6–11 sharing two confirmed rooms outside peak periods.`,
       },
       {
         label: "Custom Pricing",
@@ -657,8 +657,7 @@ export const chinaFamily12DayTour: Tour = {
     },
     {
       question: "How is this 12-day family journey priced?",
-      answer:
-        "The published baseline starts from approximately US$5,850 per person, calculated for a party of four (two adults and two children aged 6–11) sharing two hotel-confirmed five-star rooms outside peak periods. The family total starts from US$23,400. Final pricing is custom-quoted for your precise travel dates, group size, and room setup, including confirmed connecting rooms or luxury family suites.",
+      answer: `The published starting price is USD ${publishedJourneyPrices["china-family-tour-with-pandas-12-day-private-tour"].fromUsd.toLocaleString("en-US")} per person, based on two adults and two children aged 6–11 sharing two hotel-confirmed five-star rooms outside peak periods. The family total starts from USD ${(publishedJourneyPrices["china-family-tour-with-pandas-12-day-private-tour"].fromUsd * 4).toLocaleString("en-US")}. Your written proposal confirms dates, room categories, included activities and the total. Connecting rooms and suites require separate confirmation.`,
     },
     {
       question: "What is included in the estimated investment?",
@@ -668,7 +667,7 @@ export const chinaFamily12DayTour: Tour = {
     {
       question: "Why does AVIORA price the journey for your dates instead of using a flat rate?",
       answer:
-        "Luxury multigenerational travel is non-standard. Hotel and transport rates vary between shoulder seasons and peak holidays, and families have different room requirements, from confirmed connecting king/twin configurations to executive suites. We provide an itemized written proposal within 24 hours of your inquiry, subject to confirming availability and rates for the requested hotels and services.",
+        "Luxury multigenerational travel is non-standard. Hotel and transport rates vary between shoulder seasons and peak holidays, and families have different room requirements, from confirmed connecting king/twin configurations to executive suites. We normally reply personally within 24 hours to discuss your plans. An itemized written proposal follows once the route, availability and rates for the requested hotels and services have been checked.",
     },
     {
       question: "Will this itinerary work for teenagers as well as younger children?",

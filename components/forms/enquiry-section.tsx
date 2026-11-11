@@ -30,8 +30,9 @@ const promises = [
 export function EnquirySection({
   placement,
   title = "Tell us about your trip",
-  intro = "Share your dates, who is travelling and what matters most. A few lines is enough, and we reply with a route and a written proposal.",
+  intro = "Share your dates, who is travelling and what matters most. A few lines is enough to start a conversation with our China team.",
   journeyTitle,
+  destinationName,
   tone = "light",
 }: {
   placement: string;
@@ -39,6 +40,7 @@ export function EnquirySection({
   intro?: string;
   /** 来自某个具体行程页时，用一句话提示访客，提交时 HubSpot 会自动记录当前页面地址。 */
   journeyTitle?: string;
+  destinationName?: string;
   tone?: "light" | "stone";
 }) {
   return (
@@ -58,13 +60,22 @@ export function EnquirySection({
               You are asking about <strong>{journeyTitle}</strong>.
             </p>
           ) : null}
+        </div>
+        <div className={styles.form}>
+          <LazyHubSpotForm
+            planningContext={destinationName ? { destinationName } : undefined}
+            onVisible={() => trackEvent("enquiry_form_view", { placement })}
+          />
+        </div>
+        <aside className={styles.reassurance} aria-label="Planning expectations and guest feedback">
+          <h3 className={styles.reassuranceTitle}>Before you book</h3>
           <ul className={styles.promises}>
             {promises.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
           <Link href="/reviews" className={styles.rating}>
-            <b>{formStats.average}</b> · Read what our guests say
+            <b>{formStats.average}</b> · Guest feedback on our website
           </Link>
           <figure className={styles.quote}>
             <blockquote>“{quote.text}”</blockquote>
@@ -83,10 +94,7 @@ export function EnquirySection({
             or <a href={`mailto:${siteConfig.email}`}>email our China team</a>. Company, licence and
             office details are on our <Link href="/company">company page</Link>.
           </p>
-        </div>
-        <div className={styles.form}>
-          <LazyHubSpotForm onVisible={() => trackEvent("enquiry_form_view", { placement })} />
-        </div>
+        </aside>
       </div>
     </section>
   );

@@ -169,5 +169,10 @@ export function matchJourneys(items: JourneyCatalogItem[], answers: MatchAnswers
         index,
       };
     })
-    .sort((a, b) => b.score - a.score || a.index - b.index);
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        b.item.commercialPriority - a.item.commercialPriority ||
+        a.index - b.index,
+    );
 }

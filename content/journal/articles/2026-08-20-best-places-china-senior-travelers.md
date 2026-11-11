@@ -105,7 +105,7 @@ A successful journey for older parents rests on **realistic logistics, energy co
 
 Instead of trying to see six cities in ten days, choose a route with few city changes, use high-speed trains rather than extra airport days, and plan an early-afternoon return to the hotel for rest.
 
-If you are planning ahead for 2027 and want a balanced itinerary built around aging parents, explore [our 10-day senior-friendly private tour](/tours/beijing-xian-shanghai-private-10-day-tour). It is designed around low-step transfers, a 3:30 PM return to the hotel, 5-star hotel comfort and 24/7 support, so the trip can be enjoyed with confidence.
+For a focused first visit, compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour), with four Beijing nights, two Xi'an nights and three Shanghai nights. For more recovery time, compare the [12-day Easier Pace route](/tours/china-at-an-easier-pace-12-day-private-tour). Neither route promises a daily step cap, fixed hotel-return time or continuous step-free access; the actual travelers' needs must be reviewed before booking.
 
 ## Sources
 

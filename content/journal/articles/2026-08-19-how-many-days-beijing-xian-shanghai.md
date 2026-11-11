@@ -40,9 +40,9 @@ cssclasses:
 
 ## Draft
 
-Allow **12 days for Beijing, Xi'an and Shanghai** if you want the Great Wall, Forbidden City and Terracotta Army to have their own space, and if two intercity journeys should not compete with the reason you came. Eight days can cover all three cities, but under a realistic arrival-Beijing, departure-Shanghai model it often contains only four fully usable sightseeing days. Ten days is workable for travelers comfortable making firmer choices. Twelve days gives the route about eight complete sightseeing days and enough room to change the plan without losing its shape.
+**Ten days is enough for a focused first trip to Beijing, Xi'an and Shanghai; twelve days is the better choice when you want more recovery and a second full day in Xi'an.** AVIORA's ten-day route uses four Beijing nights, two Xi'an nights and three Shanghai nights. Our twelve-day route uses five, three and three nights respectively. Both involve two hotel changes. Eight days can cover the main landmarks, but leaves about four complete sightseeing days once arrival, departure and two intercity travel days are allowed for. These are itinerary-planning judgments, not official minimum-stay requirements.
 
-The important difference is not four more attractions. It is four more chances to separate effort, protect recovery and let each city become more than a handover between hotels.
+The extra days let you spread out the major visits, take breaks and explore beyond the headline sights.
 
 | Trip length | Nights | Approximate fully usable sightseeing days | What the route can feel like                                                        | Main trade-off                                                      |
 | ----------- | -----: | ----------------------------------------: | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
@@ -57,7 +57,7 @@ If twelve days already sounds closer to the trip you want, see the [complete 12-
 
 ## How we compared the itineraries
 
-This comparison comes from AVIORA's China-based private-tour planning and on-the-ground operating experience. We count the whole lived sequence: arrival formalities, baggage, hotel check-in, checkout, station or airport access, security, waiting, the transport segment, the next meeting point and the next hotel. Only then do we ask what a day can responsibly hold.
+This comparison comes from AVIORA's China-based private-tour planning and on-the-ground operating experience. We count the full sequence of each journey: arrival formalities, baggage, hotel check-in, checkout, station or airport access, security, waiting, the transport segment, the next meeting point and the next hotel. Only then do we ask what a day can responsibly hold.
 
 The method uses four parts of the existing **AVIORA Journey Rhythm**:
 
@@ -66,13 +66,13 @@ The method uses four parts of the existing **AVIORA Journey Rhythm**:
 - **Effort concentration:** whether the Great Wall, Forbidden City and Terracotta Army are separated or stacked.
 - **Recovery and choice:** whether a traveler can shorten, replace or leave something open without breaking the rest of the route.
 
-It is a planning framework, not a promise about an exact train, queue or walking distance. Timetables, attraction rules, weather, hotel location and the international flights must be confirmed for the travel date. The purpose is to stop a headline duration from hiding the days that already have a job.
+These estimates help you compare itineraries; they do not guarantee train times, queue lengths or walking distances. Timetables, attraction rules, weather, hotel location and the international flights must be confirmed for the travel date. The purpose is to stop a advertised trip length from hiding the days that already have a job.
 
 > The useful question is not how many city names fit between two flights. It is how many days remain fully available after the route has done its necessary work.
 
-## The four days a headline duration does not explain
+## The four days a advertised trip length does not explain
 
-Every version of this route has four sequences that deserve to be visible before sightseeing is added.
+Every version needs to allow for arrival, departure and two intercity journeys before sightseeing is added.
 
 ### Arrival in Beijing
 
@@ -80,7 +80,7 @@ Immigration, baggage, the airport meeting point, the drive and hotel check-in ar
 
 ### Beijing to Xi'an
 
-The time printed on a high-speed rail ticket is only the middle of the transfer. The actual sequence begins at the Beijing hotel and ends in the Xi'an room. First class can improve the hours aboard; it does not move a suitcase through station security or from the arrival platform to the next vehicle. Our [China high-speed train guide](/journal/china-high-speed-train-foreigners) explains that passport-to-platform process in detail.
+The time printed on a high-speed rail ticket is only the middle of the transfer. The actual sequence begins at the Beijing hotel and ends in the Xi'an room. First class can make the train journey more comfortable, but luggage still needs to be moved through security, along the platforms and to the next vehicle. Our [China high-speed train guide](/journal/china-high-speed-train-foreigners) explains that passport-to-platform process in detail.
 
 ### Xi'an to Shanghai
 
@@ -107,15 +107,15 @@ An eight-day route is possible. It is also much more specific than the phrase "e
 
 That leaves four complete sightseeing days: two in Beijing, one in Xi'an and one in Shanghai. It can suit travelers with a firm holiday limit who value the defining landmarks over unstructured time and are comfortable making decisions before they arrive.
 
-The compromise is not simply a faster walking speed. Beijing has to absorb the Temple of Heaven, Forbidden City, local life and any special interest around two full days. Xi'an risks becoming a delivery system for the Terracotta Army. Shanghai becomes a final overview rather than a city allowed to respond to what the travelers have enjoyed so far.
+The compromise is not simply a faster walking speed. Beijing has to absorb the Temple of Heaven, Forbidden City, local life and any special interest around two full days. Xi'an may leave little time beyond the Terracotta Army, while Shanghai becomes a brief introduction rather than a chance to explore your own interests.
 
-An operator can make the handovers smoother. A private vehicle can reduce avoidable friction. A strong guide can keep interpretation focused. None of those services creates another full day. If an eight-day proposal appears to contain considerably more, look for the cost: an early start after arrival, sightseeing after a transfer, two substantial sites joined without recovery, or a departure day treated as fixed free time.
+Coordinated transfers and a knowledgeable guide can help you use your time well, but they cannot create another full day. If an eight-day proposal appears to contain considerably more, look for the cost: an early start after arrival, sightseeing after a transfer, two substantial sites joined without recovery, or a departure day treated as fixed free time.
 
 > **Who should choose eight days?** Travelers whose dates cannot move, who accept a structured rhythm and who would rather see the three-city arc briefly than remove one of its chapters.
 
 ## When 10 days is enough
 
-Ten days creates a credible middle ground. After the same four necessary sequences, about six complete sightseeing days remain. That is enough for a coherent first trip, but the extra two days still need a purpose.
+Ten days is a practical middle ground. After arrival, departure and two intercity journeys, about six complete sightseeing days remain. That is enough for a coherent first trip, but the extra two days still need a purpose.
 
 They could give Beijing three complete days, Xi'an two and Shanghai one. They could give Beijing three, Xi'an one and Shanghai two. A very favorable flight or train might preserve a partial period elsewhere, but the basic decision remains: **which city should carry less depth?**
 
@@ -123,15 +123,46 @@ For many travelers, ten days works when:
 
 - the Great Wall and Forbidden City are both essential, but a Beijing choice day is not;
 - one focused Terracotta Army day is enough for Xi'an;
-- Shanghai is expected to be a compact finale rather than an open-ended last chapter;
+- a guided Shanghai introduction and a free day are enough for your interests;
 - hotel changes and substantial visits on neighboring days are acceptable;
 - the group is comfortable deciding most priorities before the trip.
 
-Ten days stops working well when every famous attraction is described as essential, when the travelers want several private cultural encounters, or when a demanding morning reliably needs an open afternoon. In those cases the route does not need better adjectives. It needs either more time or fewer commitments.
+Ten days stops working well when every famous attraction is described as essential, when the travelers want several private cultural encounters, or when a demanding morning reliably needs an open afternoon. In those cases, allow more time or reduce the number of planned visits.
+
+## Beijing, Xi'an and Shanghai: 10 days vs 12 days
+
+The following compares AVIORA's two published private-tour itineraries, not every itinerary sold for these durations. Adding two days gives this route an extra Beijing night and an extra Xi'an night; it does not add another city or remove the walking at historic sites.
+
+| Decision                                                   | 10-day private route                                                             | 12-day Easier Pace route                                                 |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Total accommodation                                        | 9 nights                                                                         | 11 nights                                                                |
+| Beijing / Xi'an / Shanghai nights                          | 4 / 2 / 3                                                                        | 5 / 3 / 3                                                                |
+| Hotel changes                                              | 2                                                                                | 2                                                                        |
+| Arrival and departure                                      | Arrive Beijing; depart Shanghai                                                  | Arrive Beijing; depart Shanghai                                          |
+| Complete days between arrival and onward travel in Beijing | 3                                                                                | 4                                                                        |
+| Complete days between travel days in Xi'an                 | 1                                                                                | 2                                                                        |
+| Complete days before departure in Shanghai                 | 2; Day 9 is free or a separately quoted activity                                 | 2; Day 11 is independent; guided additions cost extra                    |
+| Key compromise                                             | One focused Xi'an visit; Beijing Day 4 chooses Temple of Heaven or Summer Palace | More room for a Beijing choice or recovery day and a second Xi'an day    |
+| Mobility implication                                       | Steps, standing and public-site walking remain                                   | More time to distribute effort; no step-free guarantee                   |
+| Price comparison                                           | Quote for the actual party, rooms and dates                                      | Quote for the actual party, rooms and dates; compare the same inclusions |
+
+A complete day in a city is not automatically an included private-guiding day. For example, the ten-day tour's Shanghai Day 9 and the twelve-day tour's Beijing Day 5 and Shanghai Day 11 have no scheduled private guide or vehicle; additions require a separate quote. Read the written service schedule rather than assuming every non-travel day includes a guide and driver.
+
+Compare the [10-day Beijing, Xi'an and Shanghai private tour](/tours/beijing-xian-shanghai-private-10-day-tour) with the [12-day China at an Easier Pace private tour](/tours/china-at-an-easier-pace-12-day-private-tour). The ten-day product currently plans high-speed rail from Beijing to Xi'an and a flight from Xi'an to Shanghai. Transport, ticket availability and exact services must be reconfirmed for the travel dates; they are not guaranteed by this comparison.
+
+### Which should you choose for a first trip?
+
+Choose ten days if one full Terracotta Army day meets your Xi'an priorities and you accept choosing between Beijing's Temple of Heaven and Summer Palace. Choose twelve if the party needs more recovery opportunities or wants another complete Xi'an day. If the international flight dates are fixed, compare the nine or eleven actual hotel nights before comparing the tour titles. Neither duration automatically establishes visa or transit-without-visa eligibility.
+
+### Official rules versus our itinerary judgment
+
+The night allocations, estimates of full sightseeing days and ten-versus-twelve recommendation above are AVIORA's own itinerary recommendations. They are not recommendations issued by UNESCO, a museum or China Railway.
+
+For independent rule checks, use [China Railway 12306 passenger information](https://www.12306.cn/en/faq.html), [the Palace Museum](https://en.dpm.org.cn/), [Mutianyu Great Wall visitor information](https://www.mutianyugreatwall.com/) and [Emperor Qinshihuang's Mausoleum Site Museum](https://www.bmy.com.cn/). Check entry policy with the [National Immigration Administration](https://en.nia.gov.cn/). Each institution publishes information within its own remit. Check the relevant notices and eligibility requirements for your travel dates. They do not validate our package inclusions or guarantee reservations.
 
 ## What changes when you have 12 days
 
-The 12-day version uses the extra time to improve sequence rather than inflate the attraction count. Under AVIORA's current **China, Considered** framework, the shape is five Beijing nights, three Xi'an nights and three Shanghai nights, followed by departure on day 12.
+The 12-day version uses the extra time to improve sequence rather than inflate the attraction count. In AVIORA's **China at an Easier Pace** itinerary, you spend five nights in Beijing, three in Xi'an and three in Shanghai, followed by departure on day 12.
 
 That produces approximately:
 
@@ -139,7 +170,7 @@ That produces approximately:
 - **Two complete Xi'an days:** the Terracotta Army as the main objective of one day, plus a second day for the City Wall, Silk Road context, food, craft or rest.
 - **Two complete Shanghai days:** the Bund with one neighborhood, followed by a final day chosen around architecture, food, a museum, a private experience or recovery.
 
-The arrival and both transitions keep their own jobs. Nothing important depends on the travelers feeling energetic after a station, flight or hotel change. That is what makes the route resilient.
+Arrival and intercity travel days are set aside for getting settled. Major visits do not depend on having energy left after a train journey, flight or hotel change.
 
 ### The Great Wall gets a weather decision
 
@@ -155,7 +186,7 @@ Shanghai is deliberately last because it is easier to edit. A museum can replace
 
 _A second Xi'an day allows the archaeology to stand on its own instead of turning the city into a hurried transfer point._
 
-The corresponding [China, Considered private journey](/tours/china-at-an-easier-pace-12-day-private-tour) turns this logic into a date-specific proposal with premium five-star hotels, private guides and vehicles, first-class rail, named experiences and China-based support. The final route is reviewed around the people traveling before confirmation.
+The corresponding [China, Considered private journey](/tours/china-at-an-easier-pace-12-day-private-tour) puts this approach into a proposal for your travel dates with selected five-star hotels, local guides and drivers on the listed sightseeing days, first-class Beijing–Xi'an rail, an economy flight to Shanghai and hotel breakfasts. Days 5 and 11 are independent free days; additional guiding, meals and cultural experiences are quoted separately. The final route is reviewed around the people traveling before confirmation.
 
 ## The best way to divide 12 days between the three cities
 
@@ -173,7 +204,7 @@ Three nights also prevent the Xi'an-to-Shanghai transition from beginning immedi
 
 ### Shanghai: three nights
 
-[Shanghai](/destinations/shanghai) receives the arrival night from Xi'an and two complete days. That is enough to understand the Bund in relation to one neighborhood, then choose the final chapter after the journey has already revealed what the travelers value.
+[Shanghai](/destinations/shanghai) receives the arrival night from Xi'an and two complete days. That is enough to understand the Bund in relation to one neighborhood, then choose how to spend the final day based on the interests and energy of your group.
 
 Adding a water town is not automatic. Bridges, uneven surfaces, road time and crowd conditions may make an architecture walk, museum, food experience or unhurried city day the better ending.
 
@@ -181,7 +212,7 @@ _Two complete Shanghai days leave room for one coherent city story and a final c
 
 ## What twelve days buys, and what it does not
 
-The extra days buy **control over sequence**:
+The extra days give you **more flexibility**:
 
 - a major heritage visit can remain the day's one important effort;
 - a transition does not need to masquerade as a sightseeing day;
@@ -218,7 +249,7 @@ The right answer is not the longest duration available. It is the shortest versi
 
 ### How many days do you need for Beijing, Xi'an and Shanghai?
 
-Allow eight days for a compact highlights route, ten days for a workable classic trip and twelve days for a more complete journey with protected transitions and meaningful choice. Under a realistic arrival-Beijing and departure-Shanghai model, twelve days creates about eight fully usable sightseeing days.
+Allow eight days for a compact highlights route, ten days for a workable classic trip and twelve days for a more complete journey with dedicated travel days and more time for your own interests. Under a realistic arrival-Beijing and departure-Shanghai model, twelve days creates about eight fully usable sightseeing days.
 
 ### Is eight days enough for Beijing, Xi'an and Shanghai?
 
@@ -242,19 +273,21 @@ It can be, but age is not the deciding fact. Comfortable walking time, stairs, s
 
 ### Does a private tour make an eight-day itinerary feel like twelve days?
 
-No. Private guides, vehicles and coordinated tickets can remove avoidable friction and improve the hours available. They cannot create another complete day, remove public security or turn every transfer into rest. The value of private planning is control and judgment, not fictional time.
+No. Private guides, vehicles and coordinated tickets can remove avoidable friction and improve the hours available. They cannot create another complete day, remove public security or turn every transfer into rest. Good private planning makes the best use of the time you have.
 
 ### Is twelve days too long for only three cities?
 
-Not when arrival, departure and two intercity journeys are counted honestly. The route contains approximately eight complete sightseeing days: four in Beijing, two in Xi'an and two in Shanghai. Travelers who prefer continuous activity can add optional experiences; the underlying itinerary remains stable.
+Not when arrival, departure and two intercity journeys are counted honestly. The route contains approximately eight complete sightseeing days: four in Beijing, two in Xi'an and two in Shanghai. Travelers who prefer continuous activity can add optional experiences; the route still allows room for breaks.
 
 ## Sources
 
-- China Railway 12306 English FAQ: https://www.12306.cn/en/faq.html — reviewed 2026-08-19.
-- The Palace Museum official international website: https://intl.dpm.org.cn/ — reviewed 2026-08-19.
-- Mutianyu Great Wall official English website: https://en.mutianyugreatwall.com/ — reviewed 2026-08-19.
-- Emperor Qinshihuang's Mausoleum Site Museum official website: https://www.bmy.com.cn/ — reviewed 2026-08-19.
-- UNESCO World Heritage Centre, The Great Wall: https://whc.unesco.org/en/list/438/ — reviewed 2026-08-19.
+- AVIORA, 10-day Beijing, Xi'an and Shanghai product: /tours/beijing-xian-shanghai-private-10-day-tour — first-party itinerary and service scope, compared 2026-11-11.
+- AVIORA, 12-day China at an Easier Pace product: /tours/china-at-an-easier-pace-12-day-private-tour — first-party itinerary framework, compared 2026-11-11.
+- China Railway 12306: https://www.12306.cn/en/faq.html — passenger-information reference entry point; current rules not reverified in this edit.
+- The Palace Museum: https://en.dpm.org.cn/ — museum visitor-information reference entry point; current rules not reverified in this edit.
+- Mutianyu Great Wall: https://www.mutianyugreatwall.com/ — scenic-area reference entry point; current rules not reverified in this edit.
+- Emperor Qinshihuang's Mausoleum Site Museum: https://www.bmy.com.cn/ — museum reference entry point; current rules not reverified in this edit.
+- National Immigration Administration: https://en.nia.gov.cn/ — entry-policy reference entry point; current rules not reverified in this edit.
 
 ## Review Notes
 

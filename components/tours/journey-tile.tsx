@@ -4,7 +4,7 @@
  * 本模块职责：行程卡片——Journeys 页与三个层级页（Day / Signature / Tailor-Made）共用的唯一卡片。
  * 输入：整理好的行程条目、可选的搜索词（用于高亮）和位置（用于埋点）。
  * 输出：单链接的编辑式卡片：竖图、路线与时长、标题、一个差异点、适用性和透明报价依据。
- * 不负责：价格计算（只显示已核实的起价）、筛选或网格布局。
+ * 不负责：价格计算（只显示已批准公开的起价）、筛选或网格布局。
  * 关键规则：整张卡片只有一个链接目标；关键信息不依赖悬停，也不叠在照片上。
  */
 
@@ -72,7 +72,7 @@ export function JourneyTile({
           <p className={styles.suitability}>{attributes.join(" · ")}</p>
         ) : null}
         <div className={styles.cardFoot}>
-          <span className={styles.cardPrice}>
+          <span className={styles.cardPrice} aria-label={item.priceAccessibleText}>
             <strong>{item.priceLabel}</strong>
             {item.priceNote ? <small>{item.priceNote}</small> : null}
           </span>

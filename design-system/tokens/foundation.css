@@ -17,6 +17,8 @@
   --color-on-dark-muted: #d9dcde;
   --color-focus: #25292c;
   --gallery-scrim: rgba(18, 16, 13, 0.6);
+  --map-water: #edf2f4;
+  --map-land: #dedfd5;
 
   /* 兼容现有变量；新组件只使用上面的语义色。 */
   --bg-primary: var(--color-surface);

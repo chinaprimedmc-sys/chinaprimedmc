@@ -75,6 +75,7 @@ const images = {
 } satisfies Record<string, MediaAsset>;
 
 type Input = {
+  updatedAt?: string;
   slug: string;
   title: string;
   dek: string;
@@ -108,7 +109,7 @@ function article(input: Input): JournalArticle {
     tags: input.tags,
     author,
     publishedAt: "2026-08-20",
-    updatedAt: "2026-08-20",
+    updatedAt: input.updatedAt ?? "2026-08-20",
     readingTime: input.readingTime,
     editorPick: true,
     hero: { eyebrow: input.eyebrow, image: input.hero },
@@ -141,6 +142,7 @@ function article(input: Input): JournalArticle {
 export const growthLaunchArticles: JournalArticle[] = [
   article({
     slug: "china-tours-for-seniors",
+    updatedAt: "2026-11-11",
     title: "China Tours for Seniors: What a Good Tour Should Actually Change",
     dek: "A senior-friendly label proves nothing. See which route, hotel, transfer and guide decisions should be visibly different before you pay.",
     excerpt:
@@ -267,6 +269,7 @@ export const growthLaunchArticles: JournalArticle[] = [
   }),
   article({
     slug: "how-much-does-a-trip-to-china-cost",
+    updatedAt: "2026-11-11",
     title: "How Much Does a Trip to China Cost? Build a Budget That Matches the Journey",
     dek: "Flights are only the first number. Hotels, city changes, guide coverage, rail class, meals and the dates you choose decide whether a China budget is realistic.",
     excerpt:
@@ -363,6 +366,7 @@ export const growthLaunchArticles: JournalArticle[] = [
   }),
   article({
     slug: "luxury-china-tour-planning-guide",
+    updatedAt: "2026-11-11",
     title: "Luxury China Tours: What Should Be Better Beyond the Hotel Name?",
     dek: "Real luxury appears in time, access, guide judgment, room detail and recovery when conditions change - not in a string of five-star logos.",
     excerpt:

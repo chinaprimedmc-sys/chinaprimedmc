@@ -594,12 +594,14 @@ export const privateXianTerracottaDayTour: Tour = {
     {
       label: "Official museum information",
       href: "https://www.bmy.com.cn/",
+      officialPublisher: "Emperor Qinshihuang’s Mausoleum Site Museum",
       description:
         "Use Emperor Qinshihuang's Mausoleum Site Museum for its current notices and access information; the plan is confirmed for your travel date.",
     },
     {
       label: "UNESCO: Mausoleum of the First Qin Emperor",
       href: "https://whc.unesco.org/en/list/441/",
+      officialPublisher: "UNESCO World Heritage Centre",
       description:
         "Read the World Heritage property's historical context; the listing is not a ticket or guided-access promise.",
     },

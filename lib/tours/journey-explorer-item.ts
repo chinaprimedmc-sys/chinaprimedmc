@@ -1,6 +1,5 @@
 /** Pure card projection: safe in client components; never imports the complete catalog. */
 
-import { pricingBlock, slowPacedSlug } from "@/content/tours/slow-paced-golden-triangle";
 import { getJourneyClassification } from "@/content/tours/classification";
 import {
   getJourneyCardDescription,
@@ -8,6 +7,7 @@ import {
   getJourneyHeadline,
 } from "@/content/tours/card-copy";
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
+import { getJourneyPricePresentation } from "@/lib/tours/journey-pricing";
 import { getJourneyCardPhoto } from "@/lib/tours/journey-card-media";
 import { journeyTags } from "@/content/tours/journey-tags";
 import { journeyTiers } from "@/content/tours/tiers";
@@ -40,20 +40,13 @@ function keywordsFor(
   return extra.join(" ");
 }
 
-/** Preserve the existing flagship publication exception; other catalog prices stay private. */
+/** Display only the formatted approved rate; retain its basis for assistive technology. */
 function cardPrice(item: JourneyCatalogItem) {
-  if (item.slug === slowPacedSlug) {
-    return {
-      priceLabel: `From ${pricingBlock.from} ${pricingBlock.unit}`,
-      priceNote: item.pricing.cardBasis,
-    };
-  }
+  const price = getJourneyPricePresentation(item);
   return {
-    priceLabel: "Priced for your dates",
-    priceNote:
-      journeyTiers[item.slug as keyof typeof journeyTiers] === "day"
-        ? "Private-party quote · pickup and route confirmed"
-        : "Quoted for your party and room choices",
+    priceLabel: price.displayText,
+    priceNote: "",
+    priceAccessibleText: price.accessibleText,
   };
 }
 

@@ -28,3 +28,10 @@
   color: var(--color-muted);
   font-size: 15px;
 }
+.sourceNote {
+  max-width: 68ch;
+  margin: 1.25rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}

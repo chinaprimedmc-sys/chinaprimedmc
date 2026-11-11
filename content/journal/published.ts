@@ -533,13 +533,13 @@ const basePublishedJournalArticles: JournalArticle[] = [
     title: "A Well-Paced 10-Day China Itinerary for First-Time Visitors",
     dek: "Use Beijing, Xi’an and Shanghai to build a first China trip with realistic travel days, three strong city chapters and room to enjoy them.",
     excerpt:
-      "A day-by-day Beijing, Xi’an and Shanghai route with practical pacing, transport choices and alternatives for families and older travelers.",
+      "Plan nine nights across Beijing, Xi’an and Shanghai, with clear travel days, a Shanghai free day and questions to check before booking.",
     category: "Travel Guides",
     tags: ["first-time-china", "beijing", "xian", "shanghai", "train-travel"],
     author,
     publishedAt: "2026-08-10",
-    updatedAt: "2026-08-13",
-    readingTime: "14 min read",
+    updatedAt: "2026-11-11",
+    readingTime: "13 min read",
     editorPick: true,
     hero: { eyebrow: "First China itinerary", image: journalImages.tenDayChinaItinerary },
     gallery: [
@@ -551,7 +551,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     seo: {
       title: "10-Day China Itinerary for First-Time Visitors (2026)",
       description:
-        "Plan 10 days in China with Beijing, Xi’an and Shanghai, realistic travel time, a Great Wall day and practical private-tour pacing.",
+        "Plan a 10-day Beijing, Xi’an and Shanghai itinerary: nine hotel nights, train and flight transfers, a free day, ticket checks and private-tour inclusions.",
       keywords: [
         "10 day China itinerary",
         "China itinerary 10 days",
@@ -569,6 +569,8 @@ const basePublishedJournalArticles: JournalArticle[] = [
       ],
       experiences: ["private-guides", "train-travel"],
       articles: [
+        "how-many-days-beijing-xian-shanghai",
+        "what-is-included-private-china-tour",
         "private-china-tour-cost-2026",
         "china-high-speed-train-foreigners",
         "mutianyu-badaling-jinshanling-great-wall",
@@ -767,7 +769,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     tags: ["train-travel", "first-time-china", "family-travel"],
     author,
     publishedAt: "2026-08-06",
-    updatedAt: "2026-08-13",
+    updatedAt: "2026-11-11",
     readingTime: "9 min read",
     hero: { eyebrow: "Rail planning", image: journalImages.highSpeedTrain },
     gallery: [journalImages.highSpeedTrain, destinationAsset.shanghaiSkyline],
@@ -830,7 +832,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     tags: ["beijing", "first-time-china", "private-guides"],
     author,
     publishedAt: "2026-08-06",
-    updatedAt: "2026-08-13",
+    updatedAt: "2026-11-11",
     readingTime: "8 min read",
     hero: { eyebrow: "Beijing planning", image: journalImages.forbiddenCityEntrance },
     gallery: [journalImages.forbiddenCityEntrance, journalImages.greatWallComparison],
@@ -1040,7 +1042,7 @@ const basePublishedJournalArticles: JournalArticle[] = [
     tags: ["xian", "first-time-china", "private-guides"],
     author,
     publishedAt: "2026-08-08",
-    updatedAt: "2026-08-13",
+    updatedAt: "2026-11-11",
     readingTime: "9 min read",
     editorPick: true,
     hero: { eyebrow: "Xi’an planning", image: journalImages.terracottaArmy },

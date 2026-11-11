@@ -131,7 +131,8 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
       {
         label: "Hotels",
         value: "Luxury boutique and heritage stays",
-        helper: "Two rooms are included in the published four-guest price basis.",
+        helper:
+          "The starting rate is based on two adults sharing one room; rooms for your actual party are confirmed in the proposal.",
       },
       {
         label: "Private Service",
@@ -538,7 +539,7 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
     },
   ],
   included: [
-    "9 nights in selected luxury boutique, heritage and highland hotels, based on four guests sharing two rooms",
+    "9 nights in selected luxury boutique, heritage and highland hotels, with rooms and occupancy confirmed for your actual party",
     "Daily hotel breakfast, selected lunches, private picnic or countryside table, Shaxi courtyard dinner and Shangri-La farewell dinner as confirmed in the proposal",
     "Private multilingual guides and private premium vehicle on confirmed touring and transfer days",
     "Private Dali arrival transfer and Shangri-La departure transfer",
@@ -602,7 +603,7 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
       {
         label: "Vehicle standard",
         value: "Premium private vehicle",
-        helper: "Final size confirmed around four guests and their luggage.",
+        helper: "Final size confirmed around your actual party and luggage.",
       },
     ],
   },

@@ -43,12 +43,15 @@ function locateCloseSpot(root: ShadowRoot) {
 }
 
 /**
- * 加载 SaleSmartly 在线客服（对所有访客加载），并在右侧边缘提供两个带说明的入口：
+ * 所有访客均可使用；点击 Chat now 后加载客服，避免与首屏争抢网络和主线程。
  * Chat now（打开 SaleSmartly）和 WhatsApp（跳转 WhatsApp）。
  */
 export function SalesmartlyChat() {
   const nonce = useCspNonce();
   const [chatReady, setChatReady] = useState(false);
+  const [chatRequested, setChatRequested] = useState(0);
+  const [chatUnavailable, setChatUnavailable] = useState(false);
+  const pendingOpen = useRef(false);
   const [chatOpen, setChatOpen] = useState(false);
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,27 +60,44 @@ export function SalesmartlyChat() {
   const dockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (document.querySelector("script[data-aviora-salesmartly]")) return;
-    const script = document.createElement("script");
-    script.src = SALESMARTLY_SRC;
-    script.async = true;
-    script.dataset.avioraSalesmartly = "true";
-    if (nonce) script.nonce = nonce;
-    document.body.appendChild(script);
-  }, [nonce]);
-
-  // 等 SaleSmartly 挂载后：隐藏它自带的图标，并跟踪聊天窗口是否打开。
-  useEffect(() => {
+    if (!chatRequested) return;
+    let active = true;
+    let script = document.querySelector<HTMLScriptElement>("script[data-aviora-salesmartly]");
+    if (script?.dataset.loadFailed === "true") {
+      script.remove();
+      script = null;
+    }
+    const unavailable = () => {
+      if (!active) return;
+      pendingOpen.current = false;
+      setChatUnavailable(true);
+    };
+    if (!script) {
+      script = document.createElement("script");
+      script.src = SALESMARTLY_SRC;
+      script.async = true;
+      script.dataset.avioraSalesmartly = "true";
+      if (nonce) script.nonce = nonce;
+      document.body.appendChild(script);
+    }
+    const onError = () => {
+      script.dataset.loadFailed = "true";
+      unavailable();
+    };
+    script.addEventListener("error", onError);
     let observer: MutationObserver | undefined;
     let tries = 0;
     const poll = window.setInterval(() => {
       tries += 1;
       const root = window.__SS_CHAT_SHADOWROOT__;
-      if (root?.querySelector("#ss-chat-wrapper")) {
+      if (root?.querySelector("#ss-chat-wrapper") && window.ssmEvent?.track) {
         window.clearInterval(poll);
-        const style = document.createElement("style");
-        style.textContent = HIDE_NATIVE_LAUNCHER;
-        root.appendChild(style);
+        if (!root.querySelector("#aviora-hide-chat-launcher")) {
+          const style = document.createElement("style");
+          style.id = "aviora-hide-chat-launcher";
+          style.textContent = HIDE_NATIVE_LAUNCHER;
+          root.appendChild(style);
+        }
         setChatReady(true);
         observer = new MutationObserver(() => {
           const open = isChatOpen(root);
@@ -85,15 +105,23 @@ export function SalesmartlyChat() {
           setCloseSpot(open ? locateCloseSpot(root) : null);
         });
         observer.observe(root, { attributes: true, attributeFilter: ["class"], subtree: true });
+        if (pendingOpen.current) {
+          pendingOpen.current = false;
+          setMenuOpen(false);
+          window.ssmEvent.track("chatOpen");
+        }
       } else if (tries > 40) {
         window.clearInterval(poll);
+        unavailable();
       }
     }, 500);
     return () => {
+      active = false;
       window.clearInterval(poll);
       observer?.disconnect();
+      script.removeEventListener("error", onError);
     };
-  }, []);
+  }, [nonce, chatRequested]);
 
   // Keep the floating dock clear of the homepage enquiry controls.
   useEffect(() => {
@@ -170,17 +198,29 @@ export function SalesmartlyChat() {
         role="group"
         aria-label="Contact AVIORA"
       >
-        {chatReady ? (
-          <button
-            type="button"
-            className={`${styles.item} ${styles.chat}`}
-            onClick={() => {
+        <button
+          type="button"
+          className={`${styles.item} ${styles.chat}`}
+          aria-busy={chatRequested > 0 && !chatReady && !chatUnavailable}
+          disabled={chatRequested > 0 && !chatReady && !chatUnavailable}
+          onClick={() => {
+            if (chatReady) {
               setMenuOpen(false);
               window.ssmEvent?.track("chatOpen");
-            }}
-          >
-            <MessageCircle aria-hidden="true" /> Chat now
-          </button>
+            } else {
+              pendingOpen.current = true;
+              setChatUnavailable(false);
+              setChatRequested((attempt) => attempt + 1);
+            }
+          }}
+        >
+          <MessageCircle aria-hidden="true" />
+          {chatRequested > 0 && !chatReady && !chatUnavailable ? "Connecting…" : "Chat now"}
+        </button>
+        {chatUnavailable ? (
+          <p className={styles.status} role="status">
+            Chat could not connect. Try again or use WhatsApp.
+          </p>
         ) : null}
         <a
           className={`${styles.item} ${styles.whatsapp}`}

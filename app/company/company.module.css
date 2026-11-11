@@ -18,7 +18,7 @@
 
 .eyebrow {
   margin: 0;
-  color: #527265;
+  color: var(--color-muted);
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.3;
@@ -37,7 +37,7 @@
 .lead,
 .summary {
   max-width: 72ch;
-  color: #36413c;
+  color: var(--color-copy);
   font-size: 1.0625rem;
   line-height: 1.75;
 }
@@ -66,7 +66,7 @@
   width: 1.35rem;
   height: 1.35rem;
   margin-top: 0.15rem;
-  color: #527265;
+  color: var(--color-muted);
 }
 
 .sectionHeading h2 {
@@ -171,7 +171,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: #345c4e;
+  color: var(--color-ink);
   font-size: 0.9rem;
   font-weight: 650;
   line-height: 1.5;
@@ -198,8 +198,8 @@
 .document a {
   display: block;
   overflow: hidden;
-  border: 1px solid #d9ddd9;
-  background: #f7f8f6;
+  border: 1px solid var(--color-line);
+  background: #fff;
 }
 
 .document img {
@@ -220,7 +220,7 @@
 .document figcaption svg {
   width: 1rem;
   height: 1rem;
-  color: #527265;
+  color: var(--color-muted);
 }
 
 .nextStep {
@@ -541,4 +541,93 @@
 
 .registrationCopy {
   min-width: 0;
+}
+
+.identitySection {
+  padding-block: 2.5rem;
+  border-bottom: 1px solid var(--color-line);
+  background: #fff;
+}
+.identitySection h2 {
+  max-width: 32ch;
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.3;
+}
+.identityFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 1.75rem 0 0;
+}
+.identityFacts > div {
+  min-width: 0;
+}
+.identityFacts dt {
+  font-size: 1rem;
+  font-weight: 650;
+}
+.identityFacts dd {
+  margin: 0.65rem 0 0;
+  color: var(--color-muted);
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1023px) {
+  .identityFacts {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile reading and touch targets. */
+
+@media (max-width: 767px) {
+  .container {
+    padding-top: calc(var(--site-nav-offset) + 1rem);
+  }
+  .intro {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+  .intro h1 {
+    max-width: 16ch;
+    font-size: clamp(2rem, 8.5vw, 2.6rem);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  .pageLinks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.25rem 1rem;
+  }
+  .pageLinks a {
+    min-height: 48px;
+    line-height: 1.5;
+  }
+  .registrationCopy,
+  .contactSection > *,
+  .verification > * {
+    min-width: 0;
+  }
+  .officialLink,
+  .nextStep a {
+    min-height: 48px;
+    overflow-wrap: anywhere;
+  }
+  .document figcaption {
+    align-items: flex-start;
+    line-height: 1.6;
+  }
+  .document figcaption svg {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .companyFacts dd span {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+  .bookingSection {
+    padding: 1.25rem 0;
+  }
 }

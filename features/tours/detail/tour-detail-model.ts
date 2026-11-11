@@ -64,6 +64,7 @@ export type TourDetailModel = {
   hasPhotography: boolean;
   planningSupport?: Tour["planningSupport"];
   guideProfile?: Tour["guideProfile"];
+  comparison?: Tour["comparison"];
   seniorStandard?: Tour["seniorStandard"];
   pricingBlock?: Tour["pricingBlock"];
   visitOptions?: Tour["visitOptions"];
@@ -72,6 +73,7 @@ export type TourDetailModel = {
   optionalExperiences?: Tour["optionalExperiences"];
   price?: {
     fromUsd?: number;
+    basePartySize: number;
     pricingUnit: "per-person" | "private-group";
     cardBasis: string;
     basis: string;
@@ -169,6 +171,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
         : tour.overview.pitch,
     answerSummary: tour.overview.answer,
     practicalities: tour.overview.practicalities,
+    comparison: tour.comparison,
     planningResources: tour.planningResources,
     inquiryChecklist: tour.inquiryChecklist ?? tour.visitOptions?.inquiryChecklist,
     relatedTourHrefs: tour.related.useListedTours
@@ -191,6 +194,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     price: catalog
       ? {
           fromUsd: catalog.pricing.fromUsd,
+          basePartySize: catalog.pricing.basePartySize,
           pricingUnit: catalog.pricing.pricingUnit,
           cardBasis: catalog.pricing.cardBasis,
           basis: catalog.pricing.basis,
@@ -266,16 +270,7 @@ export function createTourDetailModel(tour: Tour): TourDetailModel {
     excluded: tour.excluded,
     faqs: getVisibleTourFaqs(tour),
     planningHref: planningHref(tour.slug, "detail-template"),
-    whatsappHref:
-      (isAgendaFirstBusinessJourney ||
-        isMutianyuPrivateDayTour ||
-        isPrivateShanghaiDayTour ||
-        isPrivateXianTerracottaDayTour ||
-        isPrivateChengduPandaDayTour ||
-        isGuilinLiRiverDayTour) &&
-      tour.inquiry.whatsappHref
-        ? tour.inquiry.whatsappHref
-        : tourWhatsAppHref(tour.title, tour.duration),
+    whatsappHref: tour.inquiry.whatsappHref || tourWhatsAppHref(tour.title, tour.duration),
     primaryActionLabel: isAgendaFirstBusinessJourney
       ? "Build My Business Journey"
       : isMutianyuPrivateDayTour
@@ -336,6 +331,7 @@ export function createFrameworkTourDetailModel(item: JourneyCatalogItem): TourDe
     })),
     price: {
       fromUsd: item.pricing.fromUsd,
+      basePartySize: item.pricing.basePartySize,
       pricingUnit: item.pricing.pricingUnit,
       cardBasis: item.pricing.cardBasis,
       basis: item.pricing.basis,

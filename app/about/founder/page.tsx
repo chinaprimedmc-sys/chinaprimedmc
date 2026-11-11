@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import white from "@/components/about/white-editorial.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 import { AboutNavigation } from "@/components/about/about-navigation";
 import { TravelTradeNote } from "@/components/about/travel-trade-note";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
+import { companyIdentity } from "@/content/about/identity";
 import { founder } from "@/content/founder";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -14,7 +17,7 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 import styles from "./founder.module.css";
 
 const description =
-  "A message from Guohui Shi, founder of AVIORA China, on why private, tailor-made travel and real hospitality shape every journey in China.";
+  "A message from Guohui Shi, founder of AVIORA China Travel, on why private, tailor-made travel and real hospitality shape every journey in China.";
 
 export const metadata: Metadata = createMetadata({
   title: "Founder's Story: Guohui Shi on Travel in China",
@@ -28,7 +31,7 @@ export default function FounderPage() {
   const personId = `${siteConfig.url}/#founder`;
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${white.page}`}>
       <JsonLd
         id="founder-breadcrumb-schema"
         data={breadcrumbSchema([
@@ -53,10 +56,16 @@ export default function FounderPage() {
             "@type": "Person",
             "@id": personId,
             name: founder.name,
+            url,
+            subjectOf: {
+              "@type": "NewsArticle",
+              headline: "MATTA Connect gains traction as B2B platform",
+              url: "https://www.ttgasia.com/2026/07/30/matta-connect-gains-traction-as-b2b-platform/",
+              publisher: { "@type": "Organization", name: "TTG Asia" },
+            },
             jobTitle: founder.jobTitle,
             worksFor: { "@id": `${siteConfig.url}/#organization` },
-            description:
-              "Founder of AVIORA China Travel, focused on private, tailor-made journeys for international visitors.",
+            description: companyIdentity.founderSummary,
           },
         }}
       />
@@ -67,16 +76,28 @@ export default function FounderPage() {
         <AboutNavigation current="/about/founder" />
       </div>
       <header className={styles.hero}>
-        <p className={styles.eyebrow}>A letter from our founder</p>
-        <h1>{founder.name}</h1>
-        <p className={styles.byline}>
-          {founder.jobTitle}, {founder.organization}
-        </p>
-        <p className={styles.profileIntro}>
-          Guohui Shi founded AVIORA around a straightforward belief: travel should help you discover
-          a place, not leave you occupied with managing it. His letter explores what it takes to
-          make a journey through China feel personal, considered and well supported.
-        </p>
+        <div className={styles.heroLayout}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>A letter from our founder</p>
+            <h1>{founder.name}</h1>
+            <p className={styles.byline}>
+              {founder.jobTitle}, {founder.organization}
+            </p>
+            <p className={styles.profileIntro}>{companyIdentity.founderSummary}</p>
+          </div>
+          <figure className={styles.founderPortrait}>
+            <Image
+              src={founder.photo.src}
+              alt={founder.photo.alt}
+              width={founder.photo.width}
+              height={founder.photo.height}
+              sizes="(max-width: 767px) calc(100vw - 40px), 430px"
+              priority
+              className={styles.portraitImage}
+            />
+            <figcaption>{founder.photo.caption}</figcaption>
+          </figure>
+        </div>
         <nav className={styles.letterNav} aria-label="In this letter">
           <p>In this letter</p>
           <ul>

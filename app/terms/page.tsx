@@ -132,7 +132,7 @@ export default function TermsPage() {
         </ContentContainer>
       </header>
 
-      <main>
+      <div>
         <section className={styles.summarySection} aria-labelledby="terms-at-a-glance">
           <ContentContainer size="xl">
             <div className={styles.sectionIntro}>
@@ -434,7 +434,7 @@ export default function TermsPage() {
             </div>
           </ContentContainer>
         </section>
-      </main>
+      </div>
       <PageClosing
         intent="legal"
         primaryHref={`/contact?subject=${encodeURIComponent("Booking terms question")}`}

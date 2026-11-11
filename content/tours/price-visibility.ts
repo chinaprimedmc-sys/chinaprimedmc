@@ -1,15 +1,13 @@
 /**
- * 本模块职责：决定每个行程的价格以何种方式对访客展示。
- * 输入：行程 slug 与 catalog 中的原始价格数据。
- * 输出：可直接渲染的 JourneyPricing（含 status）。
- * 不负责：核实成本、计算折扣或在页面上排版价格。
- * 关键规则：只有 slug 被加入 verifiedPriceSlugs，才会公开数字价格；
- * 其余产品一律使用"按需求个性化报价"文案，原始数字保留在 catalog 以便日后核实后启用。
+ * Owner-approved published starting prices and supplier verification are separate states.
+ * Approval authorizes display; it does not assert that supplier costs were verified.
+ * Unknown or unapproved legacy amounts continue to be withheld.
  */
 
 import type { JourneyPricing } from "@/content/tours/catalog";
+import { getPublishedJourneyPrice } from "@/content/tours/published-prices";
 
-export type PriceStatus = "verified-from" | "indicative" | "quote-only";
+export type PriceStatus = "published-from" | "verified-from" | "indicative" | "quote-only";
 
 /**
  * 价格已核实、可以公开 From 价格的行程。
@@ -33,6 +31,18 @@ export function resolveJourneyPricing(
   slug: string,
   pricing: Omit<JourneyPricing, "status">,
 ): JourneyPricing {
+  const published = getPublishedJourneyPrice(slug);
+  if (published) {
+    return {
+      ...pricing,
+      ...published,
+      pricingUnit: "per-person",
+      status: "published-from",
+      finalPriceNote:
+        "The published starting rate is a guide. Availability and the final total for your dates, actual group, rooms and agreed services are confirmed in writing before booking.",
+      additionalNote: hasAmount(pricing.additionalNote) ? undefined : pricing.additionalNote,
+    };
+  }
   if (verifiedPriceSlugs.has(slug) && pricing.fromUsd !== undefined) {
     return { ...pricing, status: "verified-from" };
   }

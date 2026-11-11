@@ -473,6 +473,22 @@ export const mutianyuPrivateDayTour: Tour = {
         "Send your date, group size and Beijing hotel through the form or WhatsApp. We check guide and vehicle availability, your pickup and the selected Wall route before sending a written quote. Sending an inquiry does not reserve the date. A booking is confirmed only after the written proposal, required payment and supplier arrangements are confirmed in writing.",
     },
   ],
+  planningResources: [
+    {
+      label: "Official Mutianyu Great Wall visitor information",
+      href: "https://www.mutianyugreatwall.com/",
+      officialPublisher: "Mutianyu Great Wall scenic area",
+      description:
+        "Consult the scenic area's visitor information and notices. Confirm ticket options, lift operation and safety restrictions for your date; our guide, vehicle and package inclusions are set out in our written proposal.",
+    },
+    {
+      label: "UNESCO: The Great Wall",
+      href: "https://whc.unesco.org/en/list/438/",
+      officialPublisher: "UNESCO World Heritage Centre",
+      description:
+        "Historical context and World Heritage status of the Great Wall. This listing does not establish ticket availability, lift operation, step-free access or endorsement of this tour.",
+    },
+  ],
   related: {
     tours: [
       {

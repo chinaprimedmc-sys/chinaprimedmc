@@ -6,9 +6,17 @@
 export const founder = {
   name: "Guohui Shi",
   jobTitle: "Founder",
-  organization: "AVIORA CHINA",
+  organization: "AVIORA China Travel",
   tagline: "Private & Tailor-Made Journeys Across China",
   path: "/about/founder",
+  photo: {
+    src: "/company/founder-chongqing-travel-agents-2026.webp",
+    alt: "Founder photograph supplied by AVIORA, with two attendees in front of the 2026 Chongqing International Travel Agents Matchmaking Session backdrop",
+    width: 1024,
+    height: 1536,
+    caption:
+      "2026 Chongqing International Travel Agents Matchmaking Session · Chongqing, China · April 26, 2026",
+  },
   pullQuote: "Discovering China should be an experience to remember, not a journey to navigate.",
   closingLine: "Your journey. Your interests. Your own way of discovering China.",
   intro: [
@@ -57,5 +65,5 @@ export const founder = {
       ],
     },
   ],
-  welcome: "Welcome to AVIORA CHINA.",
+  welcome: "Welcome to AVIORA China Travel.",
 } as const;

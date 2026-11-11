@@ -1,5 +1,6 @@
 "use client";
 
+import { formatJourneyStartingPrice } from "@/lib/tours/journey-pricing";
 import { configuredWhatsAppHref } from "@/lib/tours/journey-whatsapp";
 import { MessageCircle } from "@/components/icons/symbols";
 import { getJourneyCatalogItem } from "@/content/tours/catalog";
@@ -8,13 +9,13 @@ import { calculateOfferPrice, formatOfferUsd } from "@/lib/tours/journey-offer";
 
 import { useOptionalJourneyConfiguration } from "@/features/tours/detail/journey-configuration";
 import { TrackedTourLink } from "@/features/tours/detail/tour-detail-interactions";
-import styles from "@/features/tours/detail/tour-detail-landing.module.css";
+import styles from "@/features/tours/detail/journey-booking-summary.module.css";
 
 export function JourneyPrice({ fallback, journeySlug }: { fallback: string; journeySlug: string }) {
   const configuration = useOptionalJourneyConfiguration();
   const amount = configuration
     ? configuration.priceFromUsd
-      ? `US$${configuration.priceFromUsd.toLocaleString("en-US")}`
+      ? formatJourneyStartingPrice(configuration.priceFromUsd)
       : "Individually priced"
     : fallback;
   const pricing = getJourneyCatalogItem(journeySlug)?.pricing;
@@ -37,17 +38,7 @@ export function JourneyPrice({ fallback, journeySlug }: { fallback: string; jour
         </>
       ) : (
         <>
-          <strong>{amount}</strong>
-          <small>
-            {configuration?.priceFromUsd
-              ? `${pricing?.pricingUnit === "private-group" ? "Per private group of four" : "Per person · based on four guests"}`
-              : configuration
-                ? configuration.guests === "Not sure yet"
-                  ? "Group size to be confirmed"
-                  : `Quote prepared for ${configuration.guests} guests`
-                : (getJourneyCatalogItem(journeySlug)?.pricing.cardBasis ??
-                  "Price confirmed in your proposal")}
-          </small>
+          <strong aria-label={pricing ? `${amount}. ${pricing.basis}` : amount}>{amount}</strong>
         </>
       )}
     </>

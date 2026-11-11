@@ -45,7 +45,7 @@ cssclasses:
 
 ## Draft
 
-Foreign visitors must reserve the Terracotta Army in advance through an accepted real-name booking channel and bring the **original passport used for the reservation**. The official Qin Shi Huang Mausoleum Museum page says all visitors, including foreign visitors and people eligible for free admission, must book ahead. At entry, the visitor, ticket and identity document must match.
+Foreign visitors must reserve the Terracotta Army in advance through an accepted real-name booking channel and bring the **original passport used for the reservation**. The museum’s [official ticketing page](https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html), recorded in our August 8, 2026 source review, required advance reservations for all visitors, including those eligible for free admission. Check the latest instructions and your booking confirmation for your date. At entry, the visitor, ticket and identity document must match.
 
 The museum is in Lintong District, outside central Xi’an. Treat it as a dedicated half-day excursion with a confirmed vehicle, ticket time and return plan—not as a quick stop between the railway station and a flight.
 
@@ -70,11 +70,11 @@ The official page states that the Qin Shi Huang Mausoleum Museum consists of two
 - the **Terracotta Army Museum**, where the excavated pits and associated displays are located; and
 - the **Qin Shi Huang Mausoleum Archaeological Site Park**, also called Lishan Garden.
 
-The same-day ticket includes shuttle service between the two sites according to the current official visitor information. The page advises allowing approximately 1.5 hours for the museum components, but a private itinerary should protect more time for security, orientation, shuttle queues, interpretation and the party’s walking pace. A half-day block is a planning recommendation, not an official minimum.
+The ticketing information recorded in our source review included shuttle service between the two sites. Plan time for security, orientation, shuttle queues, interpretation and your group’s walking pace rather than treating the ticket’s coverage as a fixed visit duration. A half-day block is a planning recommendation, not an official minimum.
 
-## Current opening and ticket information
+## Opening hours, ticket prices and arrival instructions
 
-As verified on August 8, 2026, the official page lists:
+Our August 8, 2026 source record listed the following details. These are historical reference figures, not a newly verified price or schedule for your travel date:
 
 - **Peak season, March 16–November 15:** ticket checking from 8:30, last check at 17:00.
 - **Low season, November 16–March 15:** ticket checking from 8:30, last check at 16:30.
@@ -82,7 +82,7 @@ As verified on August 8, 2026, the official page lists:
 
 Major-holiday opening hours are subject to the latest announcement. Prices, discount eligibility and operating times can change, so the live museum page remains the authority at booking and again shortly before the visit.
 
-The museum currently instructs time-slot visitors to arrive about 30 minutes before their reserved time. It also states that the North Gate is the entrance and that the visitor, ticket and identity document must match at verification.
+The same source record specified arrival about 30 minutes before the reserved slot and entry at the North Gate. Recheck the current arrival margin, entrance and identification instructions on the official ticketing page and your reservation before leaving the hotel.
 
 ## A booking sequence for foreign visitors
 
@@ -96,7 +96,7 @@ Start at the museum’s official visitor page and follow its current booking cha
 
 ### 3. Enter every passport carefully
 
-Copy the machine-readable identity details exactly. For a family or private group, check every traveler separately; one correct adult booking does not repair an error in another passenger’s record.
+Enter the identity details requested by the booking system exactly as shown in the passport. For a family or private group, check every traveler separately; one correct adult booking does not repair an error in another visitor’s record.
 
 ### 4. Save proof in more than one format
 
@@ -105,6 +105,14 @@ Keep the order record, booking reference, selected time and customer-service con
 ### 5. Reconfirm holiday notices
 
 During National Day, school holidays or other demand peaks, capacity and hours may be adjusted. Check the museum’s latest notice shortly before travel. If no ticket is secured, do not travel to Lintong expecting a guaranteed walk-in solution.
+
+## What a private museum day should confirm
+
+A private tour provides your own guide and road transport; the museum remains a public visitor attraction. Before paying, ask for the museum date, reservation status, standard admission coverage, pickup and return points, guide language and any separately priced additions in writing.
+
+Our [private Terracotta Warriors day tour from Xi’an](/tours/private-xian-terracotta-warriors-day-tour) combines the museum with a flexible Old City walk when conditions allow. Lunch, City Wall admission and clay-making are separate unless included in your quote. A museum ticket does not provide an archaeologist, a private gallery or entry to the emperor’s burial chamber.
+
+If your ticket covers Lishan Garden, distinguish that ticket entitlement from the actual guided route: ask whether the park, inter-site shuttle time and any additional walking are part of your day. The [UNESCO property description](https://whc.unesco.org/en/list/441/) explains the wider heritage site; it does not set current ticket prices or confirm tour services.
 
 ## How to pace the pits
 
@@ -143,11 +151,11 @@ Do not rely on walk-in sales. The museum says all visitors must reserve in advan
 
 ### How early should I arrive for my time slot?
 
-The current official guidance tells time-slot visitors to arrive about 30 minutes before the reserved time.
+The official guidance recorded in our August 8, 2026 review specified about 30 minutes before the reserved slot. Confirm the current instructions on your reservation; allow additional time for the journey from your hotel.
 
 ### Is Lishan Garden included?
 
-The current official visitor page says the ticket covers both the Terracotta Army Museum and the archaeological site park, with shuttle service between them. Confirm the live terms when booking.
+The official information recorded in our August 8, 2026 review included both museum areas and the shuttle between them. Check the current ticket terms. Ticket coverage does not mean your private itinerary automatically includes enough time for both sites.
 
 ## Structured Data Recommendation
 

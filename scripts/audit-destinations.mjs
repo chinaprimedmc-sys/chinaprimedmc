@@ -44,6 +44,13 @@ const { destinations } = await import("../content/destinations/index.ts");
 const { discoveryIndex } = await import("../content/discovery/index.ts");
 const { publicRouteSlugs } = await import("../config/public-route-slugs.ts");
 const { journeyCatalog } = await import("../content/tours/catalog.ts");
+const { createMetadata } = await import("../lib/seo/metadata.ts");
+const { siteConfig } = await import("../config/site.ts");
+const { GET: getLlms } = await import("../app/llms.txt/route.ts");
+const { GET: getLlmsFull } = await import("../app/llms-full.txt/route.ts");
+const machineReadableGuides = await Promise.all([getLlms().text(), getLlmsFull().text()]);
+const titles = new Set();
+const descriptions = new Set();
 const { default: sitemap } = await import("../app/sitemap.ts");
 const slugs = explorerDestinations.map((item) => item.id);
 const same = (actual, message) => assert.deepEqual([...actual].sort(), [...slugs].sort(), message);
@@ -151,7 +158,75 @@ for (const destination of explorerDestinations) {
 for (const [slug, guide] of Object.entries(destinationPlanningGuides)) {
   const destination = explorerDestinations.find((item) => item.id === slug);
   assert.ok(destination, `Planning guide without destination: ${slug}`);
-  assert.ok(guide.answer && guide.serviceScope && guide.seoTitle && guide.seoDescription);
+  assert.ok(
+    guide.answer &&
+      guide.serviceScope &&
+      guide.routeAdvice &&
+      guide.seoTitle &&
+      guide.seoDescription,
+  );
+  const hero = destinationGuideAssets[slug].hero;
+  const metadata = createMetadata({
+    title: guide.seoTitle,
+    description: guide.seoDescription,
+    path: `/destinations/${slug}`,
+    image: hero.src,
+    imageWidth: hero.width,
+    imageHeight: hero.height,
+    imageAlt: hero.alt,
+  });
+  assert.equal(metadata.title, guide.seoTitle, `SEO title is silently truncated: ${slug}`);
+  assert.equal(
+    metadata.alternates.canonical,
+    `${siteConfig.url}/destinations/${slug}`,
+    `Incorrect canonical: ${slug}`,
+  );
+  assert.equal(metadata.robots.index, true, `Destination is noindex: ${slug}`);
+  assert.equal(metadata.robots.follow, true, `Destination links are nofollow: ${slug}`);
+  assert.equal(
+    metadata.robots.googleBot["max-snippet"],
+    -1,
+    `Google snippet access changed: ${slug}`,
+  );
+  assert.ok(guide.visitorResources.length > 0, `Missing scoped visitor sources: ${slug}`);
+  assert.equal(
+    new Set(guide.visitorResources.map((item) => item.href)).size,
+    guide.visitorResources.length,
+    `Duplicate visitor source: ${slug}`,
+  );
+  assert.ok(!titles.has(metadata.title), `Duplicate SEO title: ${slug}`);
+  assert.ok(!descriptions.has(metadata.description), `Duplicate SEO description: ${slug}`);
+  titles.add(metadata.title);
+  descriptions.add(metadata.description);
+  for (const text of machineReadableGuides) {
+    assert.ok(text.includes(`${siteConfig.url}/destinations/${slug}`), `AI guide missing: ${slug}`);
+    assert.ok(text.includes(guide.answer), `AI answer differs from visible guide: ${slug}`);
+    assert.ok(text.includes(guide.routeAdvice), `AI tour-selection advice missing: ${slug}`);
+    for (const [label, advice] of Object.entries(guide.practicalPlanning))
+      assert.ok(
+        advice.trim() && text.includes(advice),
+        `AI practical guidance missing: ${slug}/${label}`,
+      );
+    for (const key of ["stayAnswer", "hotelAnswer", "sightseeingQuestion", "sightseeingAnswer"])
+      assert.ok(
+        guide[key]?.trim() && text.includes(guide[key]),
+        `AI planning answer missing: ${slug}/${key}`,
+      );
+    for (const resource of guide.visitorResources) {
+      assert.equal(new URL(resource.href).protocol, "https:", `Invalid visitor source: ${slug}`);
+      assert.ok(
+        resource.label && resource.scope,
+        `Visitor source needs a label and scope: ${slug}`,
+      );
+      assert.ok(
+        text.includes(resource.href) && text.includes(resource.scope),
+        `AI source context missing: ${slug}`,
+      );
+    }
+    assert.ok(text.includes(guide.serviceScope), `AI service scope missing: ${slug}`);
+    for (const product of guide.products)
+      assert.ok(text.includes(product.reason), `AI product qualification missing: ${slug}`);
+  }
   assert.ok(guide.stays.length >= 3 && guide.hotelAreas.length >= 2 && guide.tradeoffs.length >= 3);
   assert.ok(guide.products.length >= 1, `No relevant published product: ${slug}`);
   for (const product of guide.products) {
@@ -161,6 +236,19 @@ for (const [slug, guide] of Object.entries(destinationPlanningGuides)) {
       `Unrelated product: ${slug}/${product.slug}`,
     );
     assert.ok(product.label && product.reason, `Missing product rationale: ${slug}`);
+    for (const [label, value] of Object.entries(product.comparison)) {
+      assert.ok(value.trim(), `Incomplete product comparison: ${slug}/${product.slug}/${label}`);
+      for (const text of machineReadableGuides)
+        assert.ok(
+          text.includes(value),
+          `AI product comparison missing: ${slug}/${product.slug}/${label}`,
+        );
+    }
+    for (const text of machineReadableGuides)
+      assert.ok(
+        text.includes(journey.durationLabel),
+        `AI complete-tour duration missing: ${slug}/${product.slug}`,
+      );
   }
   for (const choice of guide.tradeoffs) {
     if (choice.articleSlug) {
@@ -171,11 +259,19 @@ for (const [slug, guide] of Object.entries(destinationPlanningGuides)) {
       );
     }
   }
-  for (const article of guide.articles)
+  for (const article of guide.articles) {
     assert.ok(
       journalArticles.some((item) => item.slug === article.slug),
       `Unpublished article: ${article.slug}`,
     );
+    const publishedArticle = journalArticles.find((item) => item.slug === article.slug);
+    assert.ok(
+      publishedArticle.tags.includes(slug) ||
+        publishedArticle.related?.destinations?.includes(slug),
+      `Curated article removed by destination template filter: ${slug}/${article.slug}`,
+    );
+  }
+  assert.ok(guide.articles.length <= 3, `Curated articles exceed visible template limit: ${slug}`);
   for (const connection of guide.connections)
     assert.ok(
       destination.relatedDestinationIds.includes(connection.slug) && connection.advice,
@@ -211,5 +307,5 @@ assert.equal(
   `Replace links relying on fallback redirects:\n${legacyLinks.join("\n")}`,
 );
 console.log(
-  `Destination audit passed: ${slugs.length} guides, ${media.size} media assets, ${checkedLinks} source links; routes, search and sitemap agree.`,
+  `Destination audit passed: ${slugs.length} guides, ${media.size} media assets, ${checkedLinks} source links; routes, search, sitemap, effective metadata and both AI reading files agree.`,
 );

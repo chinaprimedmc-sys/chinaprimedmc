@@ -45,11 +45,11 @@ cssclasses:
 
 Foreign visitors can buy real-name China Railway tickets with a valid passport through official channels, including the 12306 English website or app. The passport used for purchase is also the journey credential: carry the original to enter the station, pass identity checks and board. Allow time for security, large-station navigation and any manual passport verification.
 
-High-speed rail is often the strongest city-centre-to-city-centre choice on routes such as Beijing–Xi’an or Shanghai–nearby Yangtze River Delta cities. It is not automatically better than flying on every sector. Compare total door-to-door time, departure station, seat availability, luggage and the day’s wider itinerary.
+High-speed rail can work well between Beijing and Xi’an or between Shanghai and nearby Yangtze River Delta cities. Stations may be some distance from the historic center, so include the hotel transfers in your comparison. It is not automatically better than flying on every sector. Compare total door-to-door time, departure station, seat availability, luggage and the day’s wider itinerary.
 
 ## Book through a traceable channel
 
-China Railway states that 12306 is its official customer-service website and that the railway department does not handle problems arising on other websites. A travel company or booking platform can still be useful, but the traveler should understand who issued the ticket, how changes are handled and where the confirmed train number appears.
+Start with [China Railway’s official 12306 English website](https://www.12306.cn/en/faq.html) for its passenger guidance. If you book through an intermediary, confirm which company will handle changes, refunds and support. A travel company or booking platform can still be useful, but the traveler should understand who issued the ticket, how changes are handled and where the confirmed train number appears.
 
 For every passenger, enter the name, passport type and passport number exactly. A mismatch can create verification problems at the station. If a passport is renewed after booking, do not assume the old ticket will work with the new document; resolve the credential change before travel.
 
@@ -87,7 +87,7 @@ Some gates read foreign passports directly; another journey may require staff as
 
 ## Choosing a seat class
 
-Train type determines the available seating. On many high-speed services, second class provides a practical, comfortable base; first class offers a wider seat and a quieter, lower-density cabin; business class is the most spacious and carries a significant price premium. Exact layouts and services vary by train set, so confirm the specific service rather than promise a universal configuration.
+Train type determines the available seating. On many high-speed services, second class provides a practical, comfortable base; first class usually offers wider seats and fewer passengers per row; business class is the most spacious and carries a significant price premium. Exact layouts and services vary by train set, so confirm the specific service rather than promise a universal configuration.
 
 Choose around the traveler:
 
@@ -99,17 +99,32 @@ Book the party in one order where practical, but never guarantee adjacent seats 
 
 ## Baggage and accessibility
 
-China Railway’s English FAQ states a free carry-on limit of 20 kg for most passengers, with each item up to 20 kg. It lists a maximum combined dimension of 130 cm for EMU trains. Foldable wheelchairs used by travelers with disabilities are excluded from that range.
+Our August 6, 2026 review of [China Railway’s English FAQ](https://www.12306.cn/en/faq.html) recorded a 20 kg free carry-on allowance for most passengers, a 20 kg limit per item and a 130 cm combined-dimension limit for EMU trains, with an exception for eligible folding wheelchairs. Treat these as the details in that dated source record; confirm the current rules for your passenger category, train and equipment before travel.
 
-This rule is not an invitation to bring the maximum. Large suitcases must still be moved through security, station concourses and carriage storage. A mid-to-high-end rail plan works better with manageable luggage, a vehicle sized for it and porter expectations confirmed rather than assumed.
+This rule is not an invitation to bring the maximum. Large suitcases must still be moved through security, station concourses and carriage storage. Travel is easier with manageable luggage, a vehicle with enough luggage space and any porter assistance arranged in advance.
 
 Some large stations provide priority and wheelchair services, but the FAQ advises consulting the station for details. Request mobility support before the journey and design transfers around walking distance, not only train duration. AVIORA’s [easy-paced private China journey](/tours/china-at-an-easier-pace-12-day-private-tour) explains why these loads must be designed.
 
 ## Changes, missed trains and operational risk
 
-China Railway has formal endorsement, refund and destination-change rules, all dependent on timing, ticket availability and ticket status. Do not publish a blanket claim that every ticket is freely changeable. If plans move, contact the issuing channel immediately.
+China Railway has rules for ticket changes, refunds and changes of destination, all dependent on timing, ticket availability and ticket status. Do not publish a blanket claim that every ticket is freely changeable. If plans move, contact the issuing channel immediately.
 
 A missed train can consume the day’s availability during busy periods. Protect the sector by avoiding a tight same-day connection from an international flight and by keeping the guide, driver and hotel informed through one contact path.
+
+## What your rail arrangements should include
+
+Official railway rules and your private-tour services are different things. Check both before booking:
+
+| Detail                         | Where to check                             | Question to ask                                                                 |
+| ------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------- |
+| Passenger identification       | 12306 guidance and the booking record      | Does the ticket use the valid document I will carry?                            |
+| Exact train and stations       | Issued ticket or confirmed booking         | Which departure and arrival stations, date, carriage and seats are booked?      |
+| Luggage and restricted items   | Current 12306 guidance                     | Which rules apply to my bags, equipment and passenger category?                 |
+| Hotel-to-station transfers     | The private-tour proposal                  | Are transfers included at both ends, and where does each local team meet me?    |
+| Luggage assistance             | Confirmed service arrangements             | Who helps at the station, and which parts must I manage myself?                 |
+| Changes and missed connections | Railway fare terms and the issuing channel | Who handles a change, what are the charges and what happens if no seats remain? |
+
+On our [ten-day Beijing, Xi’an and Shanghai tour](/tours/beijing-xian-shanghai-private-10-day-tour), the planned rail journey is Beijing to Xi’an; Xi’an to Shanghai is by air. A local transfer does not automatically include a guide accompanying you on the train or a porter carrying bags through the station. The [multi-city luggage guide](/journal/luggage-multi-city-china-trip) explains what to request if you need additional assistance.
 
 ## Where rail fits AVIORA routes
 
@@ -127,7 +142,7 @@ Not for an e-ticket journey. Carry the original passport used for booking and re
 
 ### How much luggage can I take on a high-speed train?
 
-The official FAQ lists 20 kg for most passengers, a 20 kg maximum for each item and a 130 cm combined-dimension limit on EMU trains. Reconfirm before travel and keep luggage practically manageable.
+Our August 6, 2026 source record lists 20 kg for most passengers, a 20 kg maximum per item and a 130 cm combined-dimension limit for EMU trains. Check current 12306 rules for your passenger category and equipment. You also need to be able to move and stow your bags safely.
 
 ### Is first class necessary?
 

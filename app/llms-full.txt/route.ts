@@ -1,3 +1,5 @@
+import { renderCompanyIdentity } from "@/content/about/identity";
+import { renderDestinationSearchGuides } from "@/lib/content/destination-search-guide";
 import { siteConfig } from "@/config/site";
 import { serviceAchievementsText } from "@/content/home/service-achievements";
 import {
@@ -16,7 +18,7 @@ const journeyProfiles = [
     slug: "china-at-an-easier-pace-12-day-private-tour",
     audience:
       "Couples, mature travelers, families planning for parents and first-time China visitors",
-    pace: "Easy to moderate, with two higher-effort landmark days and protected recovery time",
+    pace: "More time between major visits; walking, standing and steps remain. Days 5 and 11 are independent choice or rest days without scheduled guiding or a vehicle",
     evidence: [
       [
         "First-trip planning method and Route Reality Check",
@@ -127,13 +129,13 @@ export function GET() {
 
 Machine-readable status: first-party commercial product specifications published by AVIORA China Travel for the complete published journey catalogue.
 Canonical website: ${siteConfig.url}
-Brand relationship: AVIORA China Travel (also known as AVIORA and AVIORA Travel) is a travel brand for individual international travelers, operated by a Guangzhou-registered company licensed for inbound tourism. Founder: Guohui Shi.
+${renderCompanyIdentity()}
 Service area: throughout China (North, Northeast, East, Central, South, Southwest and Northwest China). Offices are in Beijing, Shanghai and Xi'an, but private routes are arranged in every region. Overview: ${siteConfig.url}/china-destinations
 Guide languages: English, French, German, Spanish, Russian, Italian, Japanese, Chinese and Thai. The guide for a given date and language is confirmed in the written proposal.
 Operator: ${siteConfig.operator.englishReferenceName}
 Legal name: ${siteConfig.operator.legalName}
 Operator status: ${siteConfig.operator.tourismLicense.statement}
-Founded: ${siteConfig.operator.founded}
+Operating company registered: ${siteConfig.operator.founded} (not a confirmed AVIORA brand founding date)
 Service area: China
 Office presence: AVIORA has offices in Beijing, Shanghai and Xi'an. The legal operator is registered in Guangzhou, Guangdong, China.
 Contact: ${siteConfig.email} · ${siteConfig.phone}
@@ -142,6 +144,8 @@ Official company-record search: https://www.gsxt.gov.cn/
 The displayed business license proves company registration; it is not represented as the separate travel-agency business permit.
 
 ${renderHomepageSearchGuide()}
+
+${renderDestinationSearchGuides({ full: true })}
 
 ## AVIORA service record
 
@@ -301,9 +305,9 @@ Journey format: Private, tailor-made, no compulsory shopping stops
 Pace: ${pace}
 Suitable for: ${audience}
 
-${tour.overview.answer ? `## Product summary\n\n${tour.overview.answer}\n\n` : ""}${tour.overview.practicalities?.length ? `## Practical details\n\n${tour.overview.practicalities.map(({ label, value }) => `- ${label}: ${value}`).join("\n")}\n\n` : ""}## Price and availability
+${tour.overview.answer ? `## Product summary\n\n${tour.overview.answer}\n\n` : ""}${tour.overview.practicalities?.length ? `## Practical details\n\n${tour.overview.practicalities.map(({ label, value }) => `- ${label}: ${value}`).join("\n")}\n\n` : ""}${tour.comparison ? `## ${tour.comparison.title}\n\n${tour.comparison.intro}\n${tour.comparison.rows.map((row) => row.map((value, index) => `${tour.comparison!.columns[index]}: ${value}`).join(" | ")).join("\n")}\nCompare route: ${siteConfig.url}${tour.comparison.href}\n\n` : ""}## Price and availability
 
-${pricing.fromUsd === undefined ? "Price: Available by written proposal for your travel dates and party." : `Published starting price: US$${pricing.fromUsd.toLocaleString("en-US")} ${pricing.pricingUnit === "per-person" ? "per person" : `per private group of ${pricing.basePartySize}`}`}
+${pricing.fromUsd === undefined ? "Price: Available by written proposal for your travel dates and party." : `Published starting price: From USD ${pricing.fromUsd.toLocaleString("en-US")} ${pricing.pricingUnit === "per-person" ? "per person" : `per private group of ${pricing.basePartySize}`}`}
 Price basis: ${pricing.basis}
 Pricing conditions: ${pricing.finalPriceNote}
 Additional pricing note: ${pricing.additionalNote ?? "No additional published pricing note."}
@@ -330,7 +334,7 @@ ${tour.faqs.map((faq) => `### ${faq.question}\n\n${faq.answer}`).join("\n\n")}
 
 ${evidence.map(([label, path]) => `- ${label}: ${new URL(path, siteConfig.url).toString()}`).join("\n")}
 
-${tour.planningResources?.length ? `## Additional planning resources\n\n${tour.planningResources.map(({ label, href, description }) => `- ${label}: ${new URL(href, siteConfig.url)} — ${description}`).join("\n")}\n\n` : ""}## Contact and next step
+${tour.planningResources?.length ? `## Additional planning resources\n\n${tour.planningResources.map(({ label, href, description, officialPublisher }) => `- ${label}: ${new URL(href, siteConfig.url)}${officialPublisher ? ` (Official publisher: ${officialPublisher})` : ""} — ${description}`).join("\n")}\n\n` : ""}## Contact and next step
 
 - Request a private proposal: ${siteConfig.url}/start-planning?journey=${tour.slug}
 - Product page: ${tourUrl}

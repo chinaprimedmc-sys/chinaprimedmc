@@ -43,7 +43,7 @@ cssclasses:
 
 ## Draft
 
-Foreign visitors should reserve Palace Museum tickets in advance using the passport number for each traveler. The museum states that it does not sell tickets on the day of the visit, limits daily visitors to 40,000 and normally opens Tuesday through Sunday, closing on Mondays except specified national-holiday arrangements. Bring the original passport used for the reservation.
+**Plan to reserve Forbidden City tickets in advance with the passport each traveler will carry.** The Palace Museum’s [official visitor information](https://intl.dpm.org.cn/visit.html), recorded in our August 6, 2026 source review, described advance booking, no same-day sales and normal Monday closure with holiday exceptions. Check its latest notices before fixing your visit date; this guide’s editorial update does not constitute a fresh check of the museum’s rules.
 
 “Forbidden City” is the familiar destination name; **Palace Museum** is the institution whose official ticket and visitor information should govern the booking. Treat social posts, reseller pages and old screenshots as secondary to the live museum rules.
 
@@ -51,7 +51,7 @@ Foreign visitors should reserve Palace Museum tickets in advance using the passp
 
 ### There is no same-day ticket safety net
 
-The official English visitor page says the Palace Museum does not sell tickets on the day of the visit and asks visitors to make arrangements in advance. Do not arrive at Tian’anmen expecting a normal walk-up museum counter.
+The museum’s visitor information recorded in our source review specified advance booking rather than same-day ticket sales. Do not arrive at Tian’anmen expecting a normal walk-up museum counter.
 
 ### Every foreign visitor needs accurate passport details
 
@@ -59,7 +59,7 @@ The museum requires foreign visitors to provide passport numbers during online b
 
 ### Monday is normally closed
 
-The Palace Museum normally opens Tuesday to Sunday and closes Monday, with stated exceptions around national holidays. It may also close irregularly. Build the Beijing sequence around the live opening calendar rather than place the museum on the first available day.
+The museum’s published guidance recorded in our source review listed normal opening from Tuesday to Sunday, with Monday closure and specified holiday exceptions. Special closures may also occur. Build the Beijing sequence around the live opening calendar rather than place the museum on the first available day.
 
 ## A reliable reservation workflow
 
@@ -77,6 +77,20 @@ AVIORA’s role is to place this workflow inside the wider route: ticket date, h
 The Palace Museum sits within a security-sensitive central Beijing area. Access procedures around Tian’anmen can change, and a museum ticket should not be treated as a universal pass for every adjacent area or checkpoint. Verify the live approach instructions and allow for security screening.
 
 A vague instruction such as “meet at the Forbidden City” is insufficient. The written day plan should state the drop-off strategy, named meeting point, guide contact and what happens if access controls slow the approach.
+
+## What we confirm before arranging your visit
+
+The official rules determine whether you can enter; our job is to fit the visit into a workable Beijing day. Your written plan should distinguish these responsibilities:
+
+| Item                              | Official source or confirmation                               | What it means for your trip                                                           |
+| --------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Opening date and reservations     | Palace Museum visitor information and booking confirmation    | Do not finalize the Beijing day order around an unconfirmed ticket                    |
+| Identification                    | Museum booking instructions and each visitor’s reservation    | Use the same valid document for reservation and entry                                 |
+| Areas covered                     | The confirmed ticket and any separate exhibition reservations | Ask which paid areas are included rather than assuming access to every hall           |
+| Nearby security and meeting point | Relevant access notices and the agreed day plan               | Museum admission is not a reservation for every neighboring attraction or access zone |
+| Guide, vehicle and walking route  | AVIORA’s written proposal                                     | Private service does not include a private museum entrance or exemption from security |
+
+For a full capital stay, compare the [five-day Beijing itinerary](/tours/beijing-great-wall-private-5-day-tour). For a single Great Wall day, see our [private Mutianyu tour](/tours/private-mutianyu-great-wall-day-tour); it is a separate outing, not an add-on to a full palace visit.
 
 ## How long should a first visit take?
 
@@ -96,7 +110,7 @@ Families may need a shorter narrative and a definite lunch; photographers may pr
 
 Do not pair the Forbidden City with the Great Wall. Each deserves its own day and has different transport demands. Temple of Heaven can work on another imperial-city day, while a hutong or quieter neighborhood experience can provide a useful change in scale.
 
-The [five-day Beijing and Great Wall itinerary](/tours/beijing-great-wall-private-5-day-tour) separates the Forbidden City, Mutianyu Great Wall and other imperial sites into a clearer rhythm. The [ten-day first-China route](/tours/beijing-xian-shanghai-private-10-day-tour) shows how Beijing can lead into Xi’an and Shanghai without compressing the capital.
+The [five-day Beijing and Great Wall itinerary](/tours/beijing-great-wall-private-5-day-tour) separates the Forbidden City, Mutianyu Great Wall and other imperial sites into a clearer rhythm. The [ten-day Beijing, Xi’an and Shanghai route](/tours/beijing-xian-shanghai-private-10-day-tour) shows how Beijing can lead into Xi’an and Shanghai without compressing the capital.
 
 ## Common booking mistakes
 
@@ -128,9 +142,9 @@ Foreign visitors provide passport numbers when booking and should carry the orig
 
 It is normally closed Monday, except Mondays that fall on specified national holidays. Special closures can also occur, so check the live calendar.
 
-### How many people can visit each day?
+### Does booking a private tour guarantee Forbidden City tickets?
 
-The official visitor page states a daily limit of 40,000. That figure and all booking rules should be reverified immediately before publication and travel.
+No. A private tour does not override the museum’s reservation system or capacity limits. Ask whether admission has actually been confirmed for each visitor, which ticket areas are covered and what alternative is offered if the requested visit cannot be booked.
 
 ## Suggested structured data
 

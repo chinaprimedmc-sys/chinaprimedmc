@@ -1,3 +1,4 @@
+import { companyIdentity } from "@/content/about/identity";
 import { siteConfig } from "@/config/site";
 import { serviceAchievements } from "@/content/home/service-achievements";
 
@@ -66,16 +67,28 @@ export function organizationSchema() {
     "@id": organizationId,
     name: siteConfig.siteName,
     alternateName: [siteConfig.name, "AVIORA Travel"],
-    legalName: siteConfig.operator.legalName,
     url: siteConfig.url,
     logo: new URL(siteConfig.logo, siteConfig.url).toString(),
     image: new URL(siteConfig.ogImage, siteConfig.url).toString(),
-    description: siteConfig.description,
-    foundingDate: siteConfig.operator.founded,
+    description: companyIdentity.brandSummary,
+    parentOrganization: {
+      "@type": "TravelAgency",
+      "@id": `${siteConfig.url}/#operator`,
+      name: siteConfig.operator.englishReferenceName,
+      legalName: siteConfig.operator.legalName,
+      foundingDate: siteConfig.operator.founded,
+      url: new URL("/company", siteConfig.url).toString(),
+      description: "The China-registered company operating the AVIORA China Travel brand.",
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "Unified Social Credit Code",
+        value: "91440101MA5ARE270P",
+      },
+    },
     founder: {
       "@type": "Person",
       "@id": `${siteConfig.url}/#founder`,
-      name: "Guohui Shi",
+      name: companyIdentity.founderName,
       jobTitle: "Founder",
       url: new URL("/about/founder", siteConfig.url).toString(),
     },
@@ -150,7 +163,7 @@ export function organizationSchema() {
       "@type": "PropertyValue",
       name: achievement.englishLabel,
       value: achievement.display,
-      description: achievement.description,
+      description: `Company-reported service figure. ${achievement.description}`,
     })),
   };
 }

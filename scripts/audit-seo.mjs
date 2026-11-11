@@ -1,3 +1,5 @@
+import { chromium } from "@playwright/test";
+
 const baseUrl = new URL(process.env.SEO_BASE_URL || "https://www.chinaprimedmc.com");
 const configuredCanonicalOrigin = process.env.SEO_SITE_ORIGIN?.replace(/\/$/, "");
 const expectedSiteName = process.env.SEO_SITE_NAME || "AVIORA China Travel";
@@ -16,74 +18,105 @@ if (new Set(sitemapUrls).size !== sitemapUrls.length) {
   issues.push("Sitemap contains duplicate URLs.");
 }
 
-for (const canonicalUrl of sitemapUrls) {
-  const canonical = new URL(canonicalUrl);
-  if (canonical.search) issues.push(`${canonicalUrl}: sitemap URL contains a query string`);
+let browser;
+try {
+  for (const canonicalUrl of sitemapUrls) {
+    const canonical = new URL(canonicalUrl);
+    if (canonical.search) issues.push(`${canonicalUrl}: sitemap URL contains a query string`);
 
-  const response = await fetch(new URL(canonical.pathname, baseUrl), { redirect: "manual" });
-  const html = await response.text();
+    const response = await fetch(new URL(canonical.pathname, baseUrl), { redirect: "manual" });
+    const html = await response.text();
 
-  if (!response.headers.get("content-type")?.includes("text/html")) {
+    if (!response.headers.get("content-type")?.includes("text/html")) {
+      if (response.status !== 200) issues.push(`${canonicalUrl}: HTTP ${response.status}`);
+      continue;
+    }
+
+    const title = decodeHtml(html.match(/<title>([^<]*)<\/title>/i)?.[1]?.trim() || "");
+    const description = decodeHtml(
+      html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || "",
+    );
+    const siteName =
+      html.match(/<meta\s+property="og:site_name"\s+content="([^"]*)"/i)?.[1]?.trim() || "";
+    const imageCount = [...html.matchAll(/<img\b/gi)].length;
+    const missingAltCount = [...html.matchAll(/<img\b(?![^>]*\balt=)[^>]*>/gi)].length;
+    const bodyText = html
+      .replace(/<script(?![^>]*self\.__next_f)[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    const contentText = canonical.pathname.startsWith("/journal/")
+      ? bodyText + " " + extractNextFlightText(html)
+      : bodyText;
+    pages.push({
+      canonicalUrl,
+      title,
+      description,
+      siteName,
+      imageCount,
+      missingAltCount,
+      contentText,
+    });
+
     if (response.status !== 200) issues.push(`${canonicalUrl}: HTTP ${response.status}`);
-    continue;
-  }
+    checkTag(html, /<title>[^<]+<\/title>/i, canonicalUrl, "title");
+    checkTag(html, /<meta\s+name="description"\s+content="[^"]+"/i, canonicalUrl, "description");
+    if (siteName !== expectedSiteName) {
+      issues.push(`${canonicalUrl}: Open Graph site name is "${siteName || "missing"}"`);
+    }
+    // Next.js may stream the rendered heading inside an RSC payload. Check both
+    // the final HTML and the serialized element name to avoid a false negative.
+    if (!hasH1(html)) issues.push(`${canonicalUrl}: missing H1`);
+    const mainCount = [...html.matchAll(/<main(?:\s|>)/gi)].length;
+    if (mainCount !== 1) {
+      // Loading fallbacks may contain an extra main in the raw streamed response.
+      // Confirm the composed document before reporting a landmark failure.
+      browser ??= await chromium.launch();
+      const page = await browser.newPage();
+      try {
+        await page.route("**/*", (route) =>
+          new URL(route.request().url()).origin === baseUrl.origin
+            ? route.continue()
+            : route.abort(),
+        );
+        await page.goto(new URL(canonical.pathname, baseUrl).href, { waitUntil: "load" });
+        const renderedCount = await page.getByRole("main").count();
+        if (renderedCount !== 1)
+          issues.push(`${canonicalUrl}: expected one main landmark, found ${renderedCount}`);
+      } finally {
+        await page.close();
+      }
+    }
 
-  const title = html.match(/<title>([^<]*)<\/title>/i)?.[1]?.trim() || "";
-  const description = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || "";
-  const siteName =
-    html.match(/<meta\s+property="og:site_name"\s+content="([^"]*)"/i)?.[1]?.trim() || "";
-  const imageCount = [...html.matchAll(/<img\b/gi)].length;
-  const missingAltCount = [...html.matchAll(/<img\b(?![^>]*\balt=)[^>]*>/gi)].length;
-  const bodyText = html
-    .replace(/<script(?![^>]*self\.__next_f)[\s\S]*?<\/script>/gi, " ")
-    .replace(/<style[\s\S]*?<\/style>/gi, " ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-  const contentText = canonical.pathname.startsWith("/journal/")
-    ? bodyText + " " + extractNextFlightText(html)
-    : bodyText;
-  pages.push({
-    canonicalUrl,
-    title,
-    description,
-    siteName,
-    imageCount,
-    missingAltCount,
-    contentText,
-  });
-
-  if (response.status !== 200) issues.push(`${canonicalUrl}: HTTP ${response.status}`);
-  checkTag(html, /<title>[^<]+<\/title>/i, canonicalUrl, "title");
-  checkTag(html, /<meta\s+name="description"\s+content="[^"]+"/i, canonicalUrl, "description");
-  if (siteName !== expectedSiteName) {
-    issues.push(`${canonicalUrl}: Open Graph site name is "${siteName || "missing"}"`);
+    const canonicalMatch = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i);
+    if (!canonicalMatch?.[1] || normalizeUrl(canonicalMatch[1]) !== normalizeUrl(canonicalUrl)) {
+      issues.push(`${canonicalUrl}: canonical is ${canonicalMatch?.[1] || "missing"}`);
+    }
+    if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) {
+      issues.push(`${canonicalUrl}: sitemap URL is noindex`);
+    }
+    if (response.headers.get("location")) {
+      issues.push(`${canonicalUrl}: sitemap URL redirects to ${response.headers.get("location")}`);
+    }
+    if (
+      /foundation mode|not built yet|built for long-term seo|metadata and internal linking/i.test(
+        html,
+      )
+    ) {
+      issues.push(`${canonicalUrl}: developer-facing copy detected`);
+    }
+    if (missingAltCount)
+      issues.push(`${canonicalUrl}: ${missingAltCount} image(s) missing alt text`);
+    if (
+      contentText.split(/\s+/).filter(Boolean).length < 120 &&
+      !isUtilityPage(canonical.pathname)
+    ) {
+      issues.push(`${canonicalUrl}: body content appears thin`);
+    }
   }
-  // Next.js may stream the rendered heading inside an RSC payload. Check both
-  // the final HTML and the serialized element name to avoid a false negative.
-  if (!hasH1(html)) issues.push(`${canonicalUrl}: missing H1`);
-
-  const canonicalMatch = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i);
-  if (!canonicalMatch?.[1] || normalizeUrl(canonicalMatch[1]) !== normalizeUrl(canonicalUrl)) {
-    issues.push(`${canonicalUrl}: canonical is ${canonicalMatch?.[1] || "missing"}`);
-  }
-  if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) {
-    issues.push(`${canonicalUrl}: sitemap URL is noindex`);
-  }
-  if (response.headers.get("location")) {
-    issues.push(`${canonicalUrl}: sitemap URL redirects to ${response.headers.get("location")}`);
-  }
-  if (
-    /foundation mode|not built yet|built for long-term seo|metadata and internal linking/i.test(
-      html,
-    )
-  ) {
-    issues.push(`${canonicalUrl}: developer-facing copy detected`);
-  }
-  if (missingAltCount) issues.push(`${canonicalUrl}: ${missingAltCount} image(s) missing alt text`);
-  if (contentText.split(/\s+/).filter(Boolean).length < 120 && !isUtilityPage(canonical.pathname)) {
-    issues.push(`${canonicalUrl}: body content appears thin`);
-  }
+} finally {
+  await browser?.close();
 }
 
 const titles = new Map();
@@ -186,9 +219,22 @@ function extractNextFlightText(html) {
 }
 
 function normalizeUrl(value) {
-  const url = new URL(value);
+  const url = new URL(decodeHtml(value));
   const pathname = url.pathname === "/" ? "" : url.pathname.replace(/\/$/, "");
   return `${url.origin}${pathname}${url.search}`;
+}
+
+// Count the text a crawler reads: React escapes Xi'an as Xi&#x27;an in HTML.
+function decodeHtml(value) {
+  const named = { amp: "&", quot: '"', apos: "'", lt: "<", gt: ">", nbsp: " " };
+  return value.replace(/&(#x[\da-f]+|#\d+|amp|quot|apos|lt|gt|nbsp);/gi, (entity, code) => {
+    if (!code.startsWith("#")) return named[code.toLowerCase()] ?? entity;
+    const point =
+      code[1].toLowerCase() === "x"
+        ? Number.parseInt(code.slice(2), 16)
+        : Number.parseInt(code.slice(1), 10);
+    return point > 0 && point <= 0x10ffff ? String.fromCodePoint(point) : entity;
+  });
 }
 
 function fail(message) {

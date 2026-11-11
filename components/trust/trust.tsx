@@ -60,6 +60,9 @@ export function GuestVoice({
   return (
     <aside className={styles.voice} aria-label={title ?? topicTitles[topic]}>
       <p className={styles.voiceTitle}>{title ?? topicTitles[topic]}</p>
+      <p className={styles.voiceSource}>
+        From feedback published on AVIORA’s website, about our service across different journeys.
+      </p>
       <div className={styles.voiceGrid}>
         {voices.map((voice) => (
           <figure key={voice.id}>

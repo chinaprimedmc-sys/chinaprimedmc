@@ -41,12 +41,12 @@ const { configuredWhatsAppHref } = await import("../lib/tours/journey-whatsapp.t
 const model = createTourDetailModel(tour);
 const catalog = getJourneyCatalogItem(tour.slug);
 
-test("Mutianyu remains a quote-only private-group product across catalog, card and detail", () => {
-  assert.equal(catalog.pricing.status, "quote-only");
-  assert.equal(catalog.pricing.pricingUnit, "private-group");
-  assert.equal(catalog.pricing.fromUsd, undefined);
-  assert.equal(model.price.pricingUnit, "private-group");
-  assert.equal(model.price.fromUsd, undefined);
+test("Mutianyu remains a published per-person starting-price product across catalog, card and detail", () => {
+  assert.equal(catalog.pricing.status, "published-from");
+  assert.equal(catalog.pricing.pricingUnit, "per-person");
+  assert.equal(catalog.pricing.fromUsd, 249);
+  assert.equal(model.price.pricingUnit, "per-person");
+  assert.equal(model.price.fromUsd, 249);
   assert.doesNotMatch(buildExplorerItem(catalog).priceNote, /room/i);
   assert.doesNotMatch(JSON.stringify(model.price), /US\$|\$\d/);
 });
@@ -97,5 +97,5 @@ test("configured WhatsApp links retain the Mutianyu pickup and route questions",
     }),
   ).searchParams.get("text");
   assert.match(fallback, /Example tour/);
-  assert.match(fallback, /US\$500. Per group/);
+  assert.match(fallback, /From USD 500. Per group/);
 });
