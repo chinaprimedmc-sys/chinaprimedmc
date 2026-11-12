@@ -1,0 +1,294 @@
+{
+  "checkedAt": "2026-11-12T00:05:55.891673+00:00",
+  "scope": "Actual TourDetailLanding components rendered with React renderToStaticMarkup and Next PathnameContext; actual metadata/schema and machine routes checked by tests. Not an HTTP, hydration, CSS layout or browser-interaction test.",
+  "command": "pnpm test:journey",
+  "testCount": 134,
+  "products": [
+    {
+      "slug": "guilin-yangshuo-li-river-cruise-private-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 76964,
+      "htmlSha256": "335020c351ad886d22ad6e188f1a880b26f14877b2258606bb349ad9095f0a84",
+      "nativeDisclosureCount": 27,
+      "expectedVisibleFaqs": 19,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": []
+    },
+    {
+      "slug": "private-chengdu-panda-day-tour-early-morning",
+      "h1Count": 1,
+      "htmlBytes": 75012,
+      "htmlSha256": "331bcfddfcb9e45e9a86490ff917bec03e751b5a5f0db4ec9bfd451c67dbd1b3",
+      "nativeDisclosureCount": 26,
+      "expectedVisibleFaqs": 18,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "chengdu-pandas-sichuan-table",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour"
+      ]
+    },
+    {
+      "slug": "private-xian-terracotta-warriors-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 77144,
+      "htmlSha256": "16b7a1e5d942dbeba2789c811095e553cdfd20e77e584dde726049a8328b2db3",
+      "nativeDisclosureCount": 26,
+      "expectedVisibleFaqs": 18,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+        "china-at-an-easier-pace-12-day-private-tour"
+      ]
+    },
+    {
+      "slug": "private-shanghai-day-tour-guide-driver",
+      "h1Count": 1,
+      "htmlBytes": 74054,
+      "htmlSha256": "1c1a3d5e1ffaf8aa3da14157174a39d07e1f61878a59f1fd0651265cba39f7bc",
+      "nativeDisclosureCount": 25,
+      "expectedVisibleFaqs": 17,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "shanghai-zhangjiajie-floating-peaks",
+        "beijing-xian-shanghai-private-10-day-tour"
+      ]
+    },
+    {
+      "slug": "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+      "h1Count": 1,
+      "htmlBytes": 64520,
+      "htmlSha256": "1c77176cd913018aac19e534f0d8279b906f27292318fcfc445bcd140ba4a116",
+      "nativeDisclosureCount": 24,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "private-shanghai-day-tour-guide-driver",
+        "qingcheng-mountain-private-wellness-retreat-10-day"
+      ]
+    },
+    {
+      "slug": "private-mutianyu-great-wall-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 75879,
+      "htmlSha256": "b419f75bb2adc75546a7b5708b07ddabce775cf79a2bda278e05bd2a4a35a6e9",
+      "nativeDisclosureCount": 28,
+      "expectedVisibleFaqs": 20,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "beijing-great-wall-private-5-day-tour",
+        "china-at-an-easier-pace-12-day-private-tour"
+      ]
+    },
+    {
+      "slug": "china-at-an-easier-pace-12-day-private-tour",
+      "h1Count": 1,
+      "htmlBytes": 124415,
+      "htmlSha256": "bff0b7099ad23bb28577d68737c0e7fe6c41b803d171291dddc78eb90071fbfc",
+      "nativeDisclosureCount": 39,
+      "expectedVisibleFaqs": 20,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "beijing-xian-shanghai-private-10-day-tour",
+        "china-family-tour-with-pandas-12-day-private-tour"
+      ]
+    },
+    {
+      "slug": "china-family-tour-with-pandas-12-day-private-tour",
+      "h1Count": 1,
+      "htmlBytes": 116968,
+      "htmlSha256": "9bf4f3299aae5322202dced2ee3e2d3d668eb759ba10e432915ee0cfb7367be2",
+      "nativeDisclosureCount": 32,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+        "china-at-an-easier-pace-12-day-private-tour"
+      ]
+    },
+    {
+      "slug": "muslim-friendly-china-tour-great-wall-desert-stars",
+      "h1Count": 1,
+      "htmlBytes": 78254,
+      "htmlSha256": "4465086598e10d53a49a979320275178f2898ff3dd0b85e3e768965a766c3c7a",
+      "nativeDisclosureCount": 33,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "china-at-an-easier-pace-12-day-private-tour",
+        "luxury-yunnan-private-tour"
+      ]
+    },
+    {
+      "slug": "qingcheng-mountain-private-wellness-retreat-10-day",
+      "h1Count": 1,
+      "htmlBytes": 70577,
+      "htmlSha256": "d1c66c83e89036511501978714a3f9bb085d7e7a579d2a9093b10df55dc9c71c",
+      "nativeDisclosureCount": 30,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": ["luxury-yunnan-private-tour", "chengdu-pandas-sichuan-table"]
+    },
+    {
+      "slug": "luxury-yunnan-private-tour",
+      "h1Count": 1,
+      "htmlBytes": 101122,
+      "htmlSha256": "3237c6e6c122169748f98a194358b0f37e03704f3daad733a5d0898c4ca9943f",
+      "nativeDisclosureCount": 30,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "qingcheng-mountain-private-wellness-retreat-10-day",
+        "chengdu-chongqing-zhangjiajie-private-11-day-tour"
+      ]
+    },
+    {
+      "slug": "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 108096,
+      "htmlSha256": "8a6ce198305d9e9a80e8a590524b936db5e498648ee3ad7adb74945639a293ba",
+      "nativeDisclosureCount": 31,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+        "shanghai-zhangjiajie-floating-peaks"
+      ]
+    },
+    {
+      "slug": "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 109977,
+      "htmlSha256": "681823b834484103463e55d740eeb6fd07c298af15e9da47f45ab6a2b4e2825a",
+      "nativeDisclosureCount": 32,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "china-family-tour-with-pandas-12-day-private-tour",
+        "beijing-xian-shanghai-private-10-day-tour"
+      ]
+    },
+    {
+      "slug": "beijing-xian-shanghai-private-10-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 121742,
+      "htmlSha256": "29b6a693b40a5cf118c1efd08ec5023a05bf7ab38d039a3aecc86a2c38ff28f1",
+      "nativeDisclosureCount": 37,
+      "expectedVisibleFaqs": 20,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "china-at-an-easier-pace-12-day-private-tour",
+        "beijing-xian-chengdu-shanghai-private-11-day-tour",
+        "china-family-tour-with-pandas-12-day-private-tour"
+      ]
+    },
+    {
+      "slug": "chengdu-pandas-sichuan-table",
+      "h1Count": 1,
+      "htmlBytes": 80525,
+      "htmlSha256": "0b015c54de615471cb9b9dade683a48b61d8f06342bbb4647eb2c262d28380f1",
+      "nativeDisclosureCount": 25,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "private-chengdu-panda-day-tour-early-morning",
+        "chengdu-pandas-jiuzhaigou-private-7-day-tour"
+      ]
+    },
+    {
+      "slug": "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 89556,
+      "htmlSha256": "1f29cd21b3fbdb08479d23ba322e35d0ac65931334e91820b3d5e17e9d795f4e",
+      "nativeDisclosureCount": 27,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "chengdu-pandas-sichuan-table",
+        "shanghai-zhangjiajie-floating-peaks"
+      ]
+    },
+    {
+      "slug": "beijing-great-wall-private-5-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 85280,
+      "htmlSha256": "1dcc5276d3c6f0e17f38692dc6e6c4b87ea09b58f30bc4cbc5d11bc19eaa0142",
+      "nativeDisclosureCount": 25,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "private-mutianyu-great-wall-day-tour",
+        "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour"
+      ]
+    },
+    {
+      "slug": "shanghai-zhangjiajie-floating-peaks",
+      "h1Count": 1,
+      "htmlBytes": 98689,
+      "htmlSha256": "f436f2b02fd2f32f51168194cc61d1737d073fc851888ddc6d0896b1f797f6dd",
+      "nativeDisclosureCount": 28,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+        "private-shanghai-day-tour-guide-driver"
+      ]
+    },
+    {
+      "slug": "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "h1Count": 1,
+      "htmlBytes": 88478,
+      "htmlSha256": "e9166801d908ec4b9527ae2ea401c8ad73deacaadc1f00c78b0217a68d2af0ed",
+      "nativeDisclosureCount": 26,
+      "expectedVisibleFaqs": 13,
+      "brokenLocalFragments": [],
+      "allPublishedFactsAndDaySummariesAndFaqsInHtml": true,
+      "officialSourceLinksAndPublisherNamesInHtml": true,
+      "curatedAlternativeSlugs": [
+        "private-xian-terracotta-warriors-day-tour",
+        "beijing-xian-shanghai-private-10-day-tour"
+      ]
+    }
+  ],
+  "remaining": [
+    "Desktop and mobile visual / hydration / inquiry interaction validation",
+    "Network-enabled production build with real Google Fonts",
+    "Live official policy review",
+    "Date-specific supplier cost and service verification"
+  ]
+}

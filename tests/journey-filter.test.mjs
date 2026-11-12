@@ -10,31 +10,45 @@ registerHooks({
   resolve(specifier, context, next) {
     let path;
     if (specifier.startsWith("@/")) path = resolve(root, specifier.slice(2));
-    else if (specifier.startsWith(".") && context.parentURL?.startsWith("file:")) path = fileURLToPath(new URL(specifier, context.parentURL));
+    else if (specifier.startsWith(".") && context.parentURL?.startsWith("file:"))
+      path = fileURLToPath(new URL(specifier, context.parentURL));
     if (path) {
       for (const candidate of [path + ".ts", path + "/index.ts"]) {
-        if (existsSync(candidate)) return { url: pathToFileURL(candidate).href, shortCircuit: true };
+        if (existsSync(candidate))
+          return { url: pathToFileURL(candidate).href, shortCircuit: true };
       }
     }
     return next(specifier, context);
   },
   load(url, context, next) {
-    if (url.endsWith(".ts")) return { format: "module", source: stripTypeScriptTypes(readFileSync(fileURLToPath(url), "utf8")), shortCircuit: true };
+    if (url.endsWith(".ts"))
+      return {
+        format: "module",
+        source: stripTypeScriptTypes(readFileSync(fileURLToPath(url), "utf8")),
+        shortCircuit: true,
+      };
     return next(url, context);
   },
 });
 
 const { journeyCatalog } = await import("../content/tours/catalog.ts");
 const { getJourneyCardTitle } = await import("../content/tours/card-copy.ts");
-const { readJourneyFilters, writeJourneyFilters, filterJourneys, journeyFilterUrl } = await import("../lib/tours/journey-filter.ts");
-const select = (query) => filterJourneys(journeyCatalog, readJourneyFilters(new URLSearchParams(query))).map((item) => item.slug);
+const { readJourneyFilters, writeJourneyFilters, filterJourneys, journeyFilterUrl } =
+  await import("../lib/tours/journey-filter.ts");
+const select = (query) =>
+  filterJourneys(journeyCatalog, readJourneyFilters(new URLSearchParams(query))).map(
+    (item) => item.slug,
+  );
 
 test("legacy links and canonical filters select the same journeys", () => {
   assert.deepEqual(select("type=day-tour"), select("format=day-tour"));
   assert.deepEqual(select("travellers=families"), select("need=child-friendly"));
   assert.deepEqual(select("needs=muslim-friendly"), select("need=muslim-friendly"));
   assert.deepEqual(select("focus=wildlife"), select("travelStyle=wildlife"));
-  assert.deepEqual(select("region=North+China&style=Family"), select("destination=north&travelStyle=family"));
+  assert.deepEqual(
+    select("region=North+China&style=Family"),
+    select("destination=north&travelStyle=family"),
+  );
   assert.deepEqual(select("days=8-12"), select("duration=8-12"));
 });
 
@@ -47,37 +61,58 @@ test("public journeys remain discoverable through the available format filters",
 });
 
 test("serialization retains multi-select, need, focus and sort", () => {
-  const state = readJourneyFilters(new URLSearchParams("destination=north,east&focus=family,culture&need=child-friendly&sort=longest&pace=easy,balanced"));
+  const state = readJourneyFilters(
+    new URLSearchParams(
+      "destination=north,east&focus=family,culture&need=child-friendly&sort=longest&pace=easy,balanced",
+    ),
+  );
   assert.deepEqual(readJourneyFilters(writeJourneyFilters(state)), state);
   assert.equal(state.sort, "duration-high");
   assert.equal(state.need, "child-friendly");
 });
 
 test("URL migration preserves attribution and search result category", () => {
-  const url = new URL("https://example.com/search?type=tour&region=north&utm_source=test#journey-catalog");
+  const url = new URL(
+    "https://example.com/search?type=tour&region=north&utm_source=test#journey-catalog",
+  );
   const result = journeyFilterUrl(readJourneyFilters(url.searchParams), url);
   assert.equal(result, "/search?utm_source=test&destination=north&type=tour#journey-catalog");
 });
 
 test("price sorting compares consistent per-person units", () => {
-  const results = filterJourneys(journeyCatalog, readJourneyFilters(new URLSearchParams("sort=price-low")));
+  const results = filterJourneys(
+    journeyCatalog,
+    readJourneyFilters(new URLSearchParams("sort=price-low")),
+  );
   // 价格未核实时目录不公开数字，此时排序必须稳定且不丢失任何行程。
   assert.equal(results.length, journeyCatalog.length);
   const prices = results
     .filter((item) => item.pricing.fromUsd !== undefined)
-    .map((item) => item.pricing.fromUsd / (item.pricing.pricingUnit === "private-group" ? item.pricing.basePartySize : 1));
-  assert.deepEqual(prices, [...prices].sort((a, b) => a - b));
+    .map(
+      (item) =>
+        item.pricing.fromUsd /
+        (item.pricing.pricingUnit === "private-group" ? item.pricing.basePartySize : 1),
+    );
+  assert.deepEqual(
+    prices,
+    [...prices].sort((a, b) => a - b),
+  );
 });
 
 test("every journey display title is location plus its published day count", () => {
-  assert.equal(journeyCatalog.length, 19);
+  assert.equal(journeyCatalog.length, 20);
   for (const item of journeyCatalog) {
     const match = item.durationLabel.match(/^(\d+)(?:[–-](\d+))?\s*(?:private\s+)?day/i);
     assert.ok(match, `Missing published day count: ${item.slug}`);
     const duration = `${match[1]}${match[2] ? `–${match[2]}` : ""} ${match[1] === "1" && !match[2] ? "Day" : "Days"}`;
     assert.ok(getJourneyCardTitle(item).endsWith(` · ${duration}`), item.slug);
   }
-  assert.equal(getJourneyCardTitle(journeyCatalog[0]), "Beijing · Xi'an · Shanghai · 10 Days");
+  assert.equal(
+    getJourneyCardTitle(
+      journeyCatalog.find((item) => item.slug === "beijing-xian-shanghai-private-10-day-tour"),
+    ),
+    "Beijing · Xi'an · Shanghai · 10 Days",
+  );
 });
 
 test("recommended ordering follows commercial priority", () => {
@@ -94,6 +129,7 @@ test("recommended ordering follows commercial priority", () => {
       "qingcheng-mountain-private-wellness-retreat-10-day",
       "chengdu-chongqing-zhangjiajie-private-11-day-tour",
       "shanghai-zhangjiajie-floating-peaks",
+      "guilin-yangshuo-longji-private-5-day-tour",
       "chengdu-pandas-jiuzhaigou-private-7-day-tour",
       "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
       "beijing-great-wall-private-5-day-tour",
@@ -106,5 +142,10 @@ test("recommended ordering follows commercial priority", () => {
       "guilin-yangshuo-li-river-cruise-private-day-tour",
     ],
   );
-  assert.ok(results.every((item, index) => index === 0 || results[index - 1].commercialPriority >= item.commercialPriority));
+  assert.ok(
+    results.every(
+      (item, index) =>
+        index === 0 || results[index - 1].commercialPriority >= item.commercialPriority,
+    ),
+  );
 });

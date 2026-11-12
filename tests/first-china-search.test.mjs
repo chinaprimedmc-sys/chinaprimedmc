@@ -115,11 +115,16 @@ test("visible facts, P10D and published per-person units survive structured proj
     identifier: tour.slug,
     url,
   });
-  assert.equal(schema.duration, "P10D");
+  assert.equal(
+    schema.subjectOf[0].mainEntity.find(({ name }) => name === "ISO 8601 duration").value,
+    "P10D",
+  );
   assert.equal(schema.description, model.answerSummary);
   assert.equal(schema.offers, undefined);
   assert.deepEqual(
-    schema.additionalProperty.map(({ name, value }) => ({ label: name, value })),
+    schema.subjectOf[0].mainEntity
+      .filter(({ name }) => model.practicalities.some((fact) => fact.label === name))
+      .map(({ name, value }) => ({ label: name, value })),
     model.practicalities,
   );
   assert.equal(schema.provider["@id"], siteConfig.url + "/#organization");

@@ -199,18 +199,15 @@ export function TourDetailLanding({
                 <JourneyPrice fallback={price} journeySlug={model.slug} />
               )}
             </div>
-            {!model.price?.fromUsd ? (
-              <p className={styles.mobileBasis}>
-                {model.pricingBlock?.note ??
-                  model.price?.basis ??
-                  "Prepared around your dates and party. Final services and price are confirmed in writing."}
-              </p>
-            ) : null}
-            {fact("Ideal for") ? (
-              <p className={styles.mobileFit}>
-                <b>Best for:</b> {fact("Ideal for")}
-              </p>
-            ) : null}
+            <p className={styles.mobileBasis}>
+              {(
+                model.pricingBlock?.note ??
+                model.price?.basis ??
+                "Prepared around your dates and party. Final services and price are confirmed in writing."
+              )
+                .split(/(?<=[.!?])\s/)[0]
+                .replace(/^Starting price per person, based on /, "Per person, based on ")}
+            </p>
             <a className={styles.mobileEnquire} href="#enquire">
               Ask about this journey <ArrowRight size={16} aria-hidden="true" />
             </a>
@@ -260,26 +257,22 @@ export function TourDetailLanding({
               <section className={styles.summary} aria-label={detailCopy.summaryLead}>
                 <p className={styles.answer}>{leadAnswer}</p>
                 <JourneyDecisionSummary model={model} />
-                <p className={styles.lede}>{overviewBody}</p>
-                {model.signatureMoments.length > 0 && (
-                  <ul className={styles.moments}>
-                    {model.signatureMoments.map((moment) => (
-                      <li key={moment}>{moment}</li>
-                    ))}
-                  </ul>
-                )}
-                {(hasLongAnswer || glossary.length > 0) && (
-                  <details className={styles.overviewDetails}>
-                    <summary>Services &amp; practical details</summary>
-                    <div>
-                      {hasLongAnswer &&
-                        serviceSentences.map((sentence) => <p key={sentence}>{sentence}</p>)}
-                      {glossary.length > 0 && (
-                        <p className={styles.gloss}>{glossary.join(" · ")}</p>
-                      )}
-                    </div>
-                  </details>
-                )}
+                <details className={styles.overviewDetails}>
+                  <summary>Journey highlights &amp; service notes</summary>
+                  <div>
+                    <p className={styles.lede}>{overviewBody}</p>
+                    {model.signatureMoments.length > 0 && (
+                      <ul className={styles.moments}>
+                        {model.signatureMoments.map((moment) => (
+                          <li key={moment}>{moment}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {hasLongAnswer &&
+                      serviceSentences.map((sentence) => <p key={sentence}>{sentence}</p>)}
+                    {glossary.length > 0 && <p className={styles.gloss}>{glossary.join(" · ")}</p>}
+                  </div>
+                </details>
                 {model.answerSummary && model.lastReviewedLabel && (
                   <p className={styles.footnote}>
                     Product information updated: {model.lastReviewedLabel}. Date-specific services
@@ -288,19 +281,22 @@ export function TourDetailLanding({
                 )}
               </section>
 
-              <GuestVoice
-                topic="pace"
-                count={1}
-                seed={model.slug}
-                title="What guests say about the pace"
-              />
-
               {model.routeStops.length > 1 && (
                 <section aria-labelledby="route-title">
                   <h2 id="route-title" className={styles.h2}>
                     {detailCopy.routeTitle}
                   </h2>
                   <JourneyRouteMap stops={model.routeMap.stops} />
+                </section>
+              )}
+
+              {!model.isFramework && days.length > 0 && (
+                <section id="itinerary" aria-labelledby="days-title">
+                  <h2 id="days-title" className={styles.h2}>
+                    {isDayTour ? "The day" : detailCopy.daysTitle}
+                  </h2>
+                  <p className={styles.note}>{detailCopy.daysNote}</p>
+                  <TourDayItinerary days={days} />
                 </section>
               )}
 
@@ -343,27 +339,6 @@ export function TourDetailLanding({
                   <Link href={model.comparison.href} className={styles.link}>
                     {model.comparison.linkLabel}
                   </Link>
-                </section>
-              )}
-
-              {model.practicalities && (
-                <section id="tour-details" aria-labelledby="tour-details-title">
-                  <h2 id="tour-details-title" className={styles.h2}>
-                    {isDayTour
-                      ? "What this private day tour includes"
-                      : "What this private journey includes"}
-                  </h2>
-                  <details className={styles.serviceDetails}>
-                    <summary>Read the full service specification</summary>
-                    <dl className={styles.standards}>
-                      {model.practicalities.map(({ label, value }) => (
-                        <div key={label}>
-                          <dt>{label}</dt>
-                          <dd>{value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </details>
                 </section>
               )}
 
@@ -445,16 +420,6 @@ export function TourDetailLanding({
                 </>
               )}
 
-              {!model.isFramework && days.length > 0 && (
-                <section id="itinerary" aria-labelledby="days-title">
-                  <h2 id="days-title" className={styles.h2}>
-                    {isDayTour ? "The day" : detailCopy.daysTitle}
-                  </h2>
-                  <p className={styles.note}>{detailCopy.daysNote}</p>
-                  <TourDayItinerary days={days} />
-                </section>
-              )}
-
               {model.seniorStandard && (
                 <section id="accessibility" aria-labelledby="dining-title">
                   <h2 id="dining-title" className={styles.h2}>
@@ -531,6 +496,27 @@ export function TourDetailLanding({
                 </section>
               )}
 
+              {model.practicalities && (
+                <section id="tour-details" aria-labelledby="tour-details-title">
+                  <h2 id="tour-details-title" className={styles.h2}>
+                    {isDayTour
+                      ? "What this private day tour includes"
+                      : "What this private journey includes"}
+                  </h2>
+                  <details className={styles.serviceDetails}>
+                    <summary>Read the full service specification</summary>
+                    <dl className={styles.standards}>
+                      {model.practicalities.map(({ label, value }) => (
+                        <div key={label}>
+                          <dt>{label}</dt>
+                          <dd>{value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </details>
+                </section>
+              )}
+
               <aside className={styles.serviceRecords} aria-labelledby="service-records-title">
                 <h3 id="service-records-title">Check the service behind the itinerary</h3>
                 <p>
@@ -550,7 +536,7 @@ export function TourDetailLanding({
                 </ul>
               </aside>
 
-              <GuestVoice topic={isDayTour ? "transport" : "hotels"} count={1} seed={model.slug} />
+              <GuestVoice topic={isDayTour ? "transport" : "pace"} count={1} seed={model.slug} />
 
               {model.guideProfile && (
                 <section aria-labelledby="guides-profile-title">
@@ -573,20 +559,25 @@ export function TourDetailLanding({
                 </section>
               )}
 
-              <GuestVoice topic="guides" count={1} seed={model.slug} />
-
               <section aria-labelledby="why-title">
-                <h2 id="why-title" className={styles.h2}>
-                  {detailCopy.whyTitle}
+                <details className={styles.serviceDetails}>
+                  <summary id="why-title">{detailCopy.whyTitle}</summary>
+
+                  <ul className={styles.why}>
+                    {detailCopy.why.map((point) => (
+                      <li key={point.title}>
+                        <b>{point.title}</b>
+                        <span>{point.body}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </section>
+              <section id="faq" aria-labelledby="faq-title" className={styles.faq}>
+                <h2 id="faq-title" className={styles.h2}>
+                  {detailCopy.faqTitle}
                 </h2>
-                <ul className={styles.why}>
-                  {detailCopy.why.map((point) => (
-                    <li key={point.title}>
-                      <b>{point.title}</b>
-                      <span>{point.body}</span>
-                    </li>
-                  ))}
-                </ul>
+                <TourFaqAccordion faqs={model.faqs} journeySlug={model.slug} />
               </section>
             </div>
 
@@ -612,9 +603,12 @@ export function TourDetailLanding({
                     <JourneyPrice fallback={price} journeySlug={model.slug} />
                   </div>
 
-                  {adjustableNote ? <p className={styles.basis}>{adjustableNote}</p> : null}
+                  <p className={styles.basis}>
+                    {catalogItem?.pricing.cardBasis ?? model.price?.basis}
+                  </p>
                   <details className={styles.priceDetails}>
-                    <summary>How this price is set</summary>
+                    <summary>Price basis &amp; inclusions</summary>
+                    {adjustableNote ? <p>{adjustableNote}</p> : null}
                     <p>{model.price?.basis ?? "Prepared around your dates"}</p>
                     <p>
                       {model.price?.detail ?? "The final proposal confirms the exact services."}
@@ -625,7 +619,7 @@ export function TourDetailLanding({
                 </>
               )}
               <div className={styles.bookingForm}>
-                <p className={styles.bookingFormTitle}>Tell us about your trip</p>
+                <p className={styles.bookingFormTitle}>Plan your journey</p>
                 <InlineEnquiryForm
                   planningContext={{
                     currentJourney: { slug: model.slug, title: model.displayTitle },
@@ -728,13 +722,6 @@ export function TourDetailLanding({
               </section>
             );
           })}
-
-          <section id="faq" aria-labelledby="faq-title" className={styles.faq}>
-            <h2 id="faq-title" className={styles.h2}>
-              {detailCopy.faqTitle}
-            </h2>
-            <TourFaqAccordion faqs={model.faqs} journeySlug={model.slug} />
-          </section>
         </div>
 
         <p className={styles.seeAll}>

@@ -29,6 +29,10 @@ const CHENGDU_PANDA_DAY_TOUR = "private-chengdu-panda-day-tour-early-morning";
 const GUILIN_LI_RIVER_DAY_TOUR = "guilin-yangshuo-li-river-cruise-private-day-tour";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  "guilin-yangshuo-longji-private-5-day-tour": [
+    "guilin-yangshuo-itinerary-5-days",
+    "li-river-cruise-yangshuo-or-guilin-return",
+  ],
   [YUNNAN_PRIVATE_RESERVE]: [
     "luxury-yunnan-private-tour-10-days",
     "yunnan-altitude-private-tour",
@@ -360,6 +364,14 @@ export const journeyJournalLinks: Record<string, JourneyJournalLinkRule> = Objec
 );
 
 Object.assign(journeyJournalLinks, {
+  "guilin-yangshuo-itinerary-5-days": {
+    primaryJourney: "guilin-yangshuo-longji-private-5-day-tour",
+    alternativeJourneys: [GUILIN_LI_RIVER_DAY_TOUR],
+    title: "Explore a five-day Guilin, Yangshuo and Longji private journey",
+    description:
+      "Compare the four-night route, separate Longji day, shared Li River cruise and privately arranged transfers, then request a written quote for your dates.",
+    journeyLabel: "Explore the five-day Guilin journey",
+  },
   "5-day-beijing-great-wall-itinerary": {
     primaryJourney: BEIJING,
     alternativeJourneys: [MUTIANYU_DAY_TOUR, FIRST_CHINA],

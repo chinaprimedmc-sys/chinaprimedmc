@@ -1,0 +1,859 @@
+{
+  "asOf": "2026-11-11",
+  "checkTimeUtc": "2026-11-11T08:05:35.955503+00:00",
+  "verificationStatus": "All 18 attempted URLs failed DNS resolution in this environment; no policy text was reviewed live this pass.",
+  "sourceUseRule": "Attribute only the scoped claim. Operator homepages are lookup portals; UNESCO supports heritage background only. None endorses AVIORA or proves our contracted services.",
+  "products": [
+    {
+      "slug": "private-mutianyu-great-wall-day-tour",
+      "sources": [
+        {
+          "label": "Official Mutianyu Great Wall visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Official reference for visitor notices and date-specific admission, shuttle and mountain-transport information. Check operating and eligibility rules for your travel date; these services are distinct from AVIORA’s private guide and road vehicle.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.mutianyugreatwall.com/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "UNESCO: The Great Wall",
+          "href": "https://whc.unesco.org/en/list/438/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Historical context and World Heritage status of the Great Wall. This listing does not establish ticket availability, lift operation, step-free access or endorsement of this tour.",
+          "sourceRole": "heritage-background",
+          "verification": {
+            "url": "https://whc.unesco.org/en/list/438/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "private-shanghai-day-tour-guide-driver",
+      "sources": [
+        {
+          "label": "Shanghai official visitor information",
+          "href": "https://english.shanghai.gov.cn/en-TravelinShanghai/index.html",
+          "officialPublisher": "Shanghai Municipal Government",
+          "description": "Use the municipal visitor portal for official travel information; date-specific venue and transport conditions still need confirmation.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://english.shanghai.gov.cn/en-TravelinShanghai/index.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "private-xian-terracotta-warriors-day-tour",
+      "sources": [
+        {
+          "label": "Official museum information",
+          "href": "https://www.bmy.com.cn/",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Use Emperor Qinshihuang's Mausoleum Site Museum for its current notices and access information; the plan is confirmed for your travel date.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.bmy.com.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "UNESCO: Mausoleum of the First Qin Emperor",
+          "href": "https://whc.unesco.org/en/list/441/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Read the World Heritage property's historical context; the listing is not a ticket or guided-access promise.",
+          "sourceRole": "heritage-background",
+          "verification": {
+            "url": "https://whc.unesco.org/en/list/441/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "private-chengdu-panda-day-tour-early-morning",
+      "sources": [
+        {
+          "label": "Official Panda Base visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Consult the attraction's notices; current access and visitor rules need date-specific checking.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.panda.org.cn/en/service/notice",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Official Panda Base opening information",
+          "href": "https://www.panda.org.cn/en/service/opentime",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check published opening information; a hotel departure time is not a promise of early admission.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.panda.org.cn/en/service/opentime",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "guilin-yangshuo-li-river-cruise-private-day-tour",
+      "sources": [
+        {
+          "label": "Guilin Municipal Government",
+          "href": "https://www.guilin.gov.cn/",
+          "officialPublisher": "Guilin Municipal Government",
+          "description": "Regional visitor information; this does not replace the booked cruise operator's sailing and ticket confirmation.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.guilin.gov.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "beijing-xian-shanghai-private-10-day-tour",
+      "sources": [
+        {
+          "label": "Official Mutianyu Great Wall visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Consult the scenic area's visitor information and notices. Confirm ticket options, lift operation and safety restrictions for your date; our guide, vehicle and package inclusions are set out in our written proposal.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.mutianyugreatwall.com/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Consult China Railway’s passenger guidance for ticketing, accepted identification and boarding procedures. The actual train, seats, baggage arrangements and departure times require confirmation for your booking.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Official Palace Museum information",
+          "href": "https://en.dpm.org.cn/",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check museum information; reservations and visitor rules still need date-specific confirmation.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://en.dpm.org.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Official Terracotta Warriors museum",
+          "href": "https://www.bmy.com.cn/",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult the museum's visitor information for the actual travel date.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.bmy.com.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Official China immigration information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check passport- and route-specific entry requirements using official information.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://en.nia.gov.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "china-at-an-easier-pace-12-day-private-tour",
+      "sources": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "description": "Consult the museum for reservation, identification and opening notices. Tickets and entry arrangements must be confirmed for your visit.",
+          "officialPublisher": "The Palace Museum",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://intl.dpm.org.cn/visit.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Mutianyu Great Wall: official visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "description": "Consult the scenic area for visitor and safety notices. Actual cable-car operation, ticket arrangements and suitability require date-specific checks.",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.mutianyugreatwall.com/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "description": "Consult the museum for reservation, identity, entry and ticket information. Museum admission does not confirm a private guide or artisan session.",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "description": "Check ticket identification, boarding, luggage and assistance guidance. Seats, transfers and any porter service are confirmed separately for your booking.",
+          "officialPublisher": "China Railway 12306",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "description": "Check the policy that applies to your passport and full international route. A twelve-day tour does not establish visa-free or transit eligibility.",
+          "officialPublisher": "National Immigration Administration of China",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://en.nia.gov.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "china-family-tour-with-pandas-12-day-private-tour",
+      "sources": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://intl.dpm.org.cn/visit.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Mutianyu Great Wall: official visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.mutianyugreatwall.com/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Chengdu Panda Base: official visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.panda.org.cn/en/service/notice",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://en.nia.gov.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      "sources": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://intl.dpm.org.cn/visit.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://en.nia.gov.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "beijing-great-wall-private-5-day-tour",
+      "sources": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://intl.dpm.org.cn/visit.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Mutianyu Great Wall: official visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.mutianyugreatwall.com/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://en.nia.gov.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "chengdu-pandas-sichuan-table",
+      "sources": [
+        {
+          "label": "Chengdu Panda Base: official visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.panda.org.cn/en/service/notice",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "sources": [
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://intl.dpm.org.cn/visit.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Mutianyu Great Wall: official visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.mutianyugreatwall.com/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "luxury-yunnan-private-tour",
+      "sources": [
+        {
+          "label": "UNESCO: Old Town of Lijiang",
+          "href": "https://whc.unesco.org/en/list/811/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Historical background on Lijiang. The listing does not certify our hosts, hotel quality, altitude suitability or access to private homes.",
+          "sourceRole": "heritage-background",
+          "verification": {
+            "url": "https://whc.unesco.org/en/list/811/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "sources": [
+        {
+          "label": "Jiuzhaigou: official scenic-area information",
+          "href": "https://www.jiuzhai.com/",
+          "officialPublisher": "Jiuzhaigou scenic area",
+          "description": "Check dated visitor notices, admission and park operation. A park notice does not confirm your rail connection, hotel or private transfer.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.jiuzhai.com/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Chengdu Panda Base: official visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.panda.org.cn/en/service/notice",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "shanghai-zhangjiajie-floating-peaks",
+      "sources": [
+        {
+          "label": "UNESCO: Wulingyuan Scenic and Historic Interest Area",
+          "href": "https://whc.unesco.org/en/list/640/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Understand the sandstone landscape and protected property. This is not the operating authority for Tianmen Mountain, the Glass Bridge, park lifts or ticket availability.",
+          "sourceRole": "heritage-background",
+          "verification": {
+            "url": "https://whc.unesco.org/en/list/640/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      "sources": [
+        {
+          "label": "Chengdu Panda Base: official visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.panda.org.cn/en/service/notice",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "UNESCO: Wulingyuan Scenic and Historic Interest Area",
+          "href": "https://whc.unesco.org/en/list/640/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Understand the sandstone landscape and protected property. This is not the operating authority for Tianmen Mountain, the Glass Bridge, park lifts or ticket availability.",
+          "sourceRole": "heritage-background",
+          "verification": {
+            "url": "https://whc.unesco.org/en/list/640/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "muslim-friendly-china-tour-great-wall-desert-stars",
+      "sources": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://intl.dpm.org.cn/visit.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://en.nia.gov.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "UNESCO: The Great Wall",
+          "href": "https://whc.unesco.org/en/list/438/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "World Heritage background only; not evidence of halal certification, private access or a picnic operating permission.",
+          "sourceRole": "heritage-background",
+          "verification": {
+            "url": "https://whc.unesco.org/en/list/438/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "qingcheng-mountain-private-wellness-retreat-10-day",
+      "sources": [
+        {
+          "label": "UNESCO: Mount Qingcheng and Dujiangyan",
+          "href": "https://whc.unesco.org/en/list/1001/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Background on the World Heritage property. This does not establish access, current tickets, a private teacher or a health benefit.",
+          "sourceRole": "heritage-background",
+          "verification": {
+            "url": "https://whc.unesco.org/en/list/1001/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    },
+    {
+      "slug": "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+      "sources": [
+        {
+          "label": "Canton Fair: official organizer",
+          "href": "https://www.cantonfair.org.cn/",
+          "officialPublisher": "China Import and Export Fair",
+          "description": "Official reference for registration, event information and visitor access. Dates, credentials and category-specific eligibility need current organizer confirmation.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://www.cantonfair.org.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+          "sourceRole": "official-lookup-portal",
+          "verification": {
+            "url": "https://en.nia.gov.cn/",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+          "sourceRole": "official-information-page-unreviewed",
+          "verification": {
+            "url": "https://www.12306.cn/en/faq.html",
+            "status": "not-live-verified",
+            "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+          },
+          "policyTextReviewed": false,
+          "requiredBeforeRelease": "Open the actual dated rule or notice; confirm issuer, publication/update date, applicability and exact supported statement. Record an evidence excerpt; do not turn operator availability into a guarantee."
+        }
+      ]
+    }
+  ]
+}

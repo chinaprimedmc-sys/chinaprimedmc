@@ -84,7 +84,7 @@ ${guide.routeAdvice}
 
 Private service scope: ${guide.serviceScope}
 
-Published product connections (read each qualification before treating an excursion as included):
+${guide.products.length ? "Published product connections (read each qualification before treating an excursion as included):" : "No published itinerary is recommended on this guide. Use the tailored-planning contact to discuss feasibility and a written proposal."}
 ${products}`;
   });
 

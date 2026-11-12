@@ -50,7 +50,7 @@ test("HubSpot receives trip notes when its existing message field is available",
   await expect(
     page.frameLocator(".hs-form-frame iframe").getByRole("textbox", { name: "Message" }),
   ).toHaveValue(/Pandas & tea/);
-  await page.getByText("Review or copy your selected trip notes", { exact: true }).click();
+  await page.getByText("Review trip notes", { exact: true }).click();
   await expect(
     page.getByRole("textbox", { name: "Trip notes to include with your enquiry" }),
   ).toHaveValue(/Slow mornings/);
@@ -67,7 +67,7 @@ test("prefill preserves an existing message and retains complete manual sharing 
   await expect(
     page.frameLocator(".hs-form-frame iframe").getByRole("textbox", { name: "Message" }),
   ).toHaveValue("Please keep my own request");
-  await page.getByText("Review or copy your selected trip notes", { exact: true }).click();
+  await page.getByText("Review trip notes", { exact: true }).click();
   await expect(page.getByRole("button", { name: "Copy trip notes" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Email these notes" })).toHaveAttribute(
     "href",
@@ -83,7 +83,7 @@ test("blocked HubSpot script presents a retry and direct contact without claimin
   await page.goto(planningUrl());
   await expect(page.locator('[data-hubspot-status="load-error"]')).toBeVisible();
   await expect(page.getByRole("button", { name: "Reload enquiry form" })).toBeVisible();
-  await page.getByText("Review or copy your selected trip notes", { exact: true }).click();
+  await page.getByText("Review trip notes", { exact: true }).click();
   await expect(page.getByRole("link", { name: "Email these notes" })).toBeVisible();
   await expect(page.getByText("Your enquiry has been submitted.", { exact: false })).toHaveCount(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
@@ -127,11 +127,13 @@ for (const width of [320, 390, 430]) {
     await page.goto(planningUrl());
     const disclosure = page
       .locator("details")
-      .filter({ has: page.getByText("Review or copy your selected trip notes", { exact: true }) });
+      .filter({ has: page.getByText("Review trip notes", { exact: true }) });
     await expect(disclosure).not.toHaveAttribute("open");
     await page.getByRole("link", { name: "Tell us about your trip", exact: false }).click();
     await expect(page.locator("#planning-enquiry")).toBeInViewport();
-    await page.getByRole("link", { name: "Continue to enquiry form" }).click();
+    const frame = page.locator(".hs-form-frame iframe");
+    await expect(frame).toBeAttached();
+    expect((await frame.boundingBox())!.y).toBeLessThan((await disclosure.boundingBox())!.y);
     await expect(page.locator(".hs-form-frame iframe")).toBeInViewport();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
       true,
@@ -140,7 +142,7 @@ for (const width of [320, 390, 430]) {
       .getByRole("link", { name: "Tell us about your trip", exact: false })
       .boundingBox();
     expect(target!.height).toBeGreaterThanOrEqual(48);
-    await page.getByText("Review or copy your selected trip notes", { exact: true }).click();
+    await page.getByText("Review trip notes", { exact: true }).click();
     await expect(
       page.getByRole("textbox", { name: "Trip notes to include with your enquiry" }),
     ).toBeVisible();

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { legacyRouteMigrations } from "./config/legacy-route-migrations";
 
 const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -41,6 +42,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...legacyRouteMigrations,
       {
         // 行程由 9 天改为 10 天后更名；旧网址永久跳转，保住外链与排名。
         source: "/tours/beijing-xian-shanghai-private-9-day-tour",
@@ -103,11 +105,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/styles/:path*",
-        destination: "/tours",
-        permanent: true,
-      },
-      {
         source: "/planning",
         destination: "/start-planning",
         permanent: true,
@@ -129,22 +126,22 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tours/family-china",
-        destination: "/tours",
+        destination: "/china-family-tours",
         permanent: true,
       },
       {
         source: "/tours/quiet-luxury-china",
-        destination: "/tours",
+        destination: "/luxury-china-tours",
         permanent: true,
       },
       {
         source: "/tours/slow-travel-china",
-        destination: "/tours",
+        destination: "/tours?pace=easy&sort=relaxed",
         permanent: true,
       },
       {
         source: "/tours/photography-focused-china",
-        destination: "/tours",
+        destination: "/special-interest-china-tours",
         permanent: true,
       },
       {
@@ -154,27 +151,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/senior-travel",
-        destination: "/tours/china-at-an-easier-pace-12-day-private-tour",
+        destination: "/china-tours-for-seniors",
         permanent: true,
       },
       {
         source: "/family-travel",
-        destination: "/tours?travellers=families",
+        destination: "/china-family-tours",
         permanent: true,
       },
       {
         source: "/tours/discover/muslim-friendly-china",
-        destination: "/tours?needs=muslim-friendly",
+        destination: "/china-tours-for-muslim-travelers",
         permanent: true,
       },
       {
         source: "/tours/discover/family-china-tours",
-        destination: "/tours?travellers=families",
+        destination: "/china-family-tours",
         permanent: true,
       },
       {
         source: "/tours/discover/china-tours-for-women",
-        destination: "/tours?needs=women-traveler-support",
+        destination: "/china-tours-for-women",
         permanent: true,
       },
       {
@@ -310,31 +307,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/destinations/urumqi",
-        destination: "/destinations",
-        permanent: true,
-      },
-      {
-        source: "/destinations/dunhuang",
-        destination: "/destinations",
-        permanent: true,
-      },
-      {
-        source: "/destinations/dali",
-        destination: "/destinations",
-        permanent: true,
-      },
-      {
-        source: "/destinations/guangzhou",
-        destination: "/destinations",
-        permanent: true,
-      },
-      {
-        source: "/destinations/shangri-la",
-        destination: "/destinations",
-        permanent: true,
-      },
-      {
         source: "/china-travel-guide/china-high-speed-rail-guide-foreign-travelers",
         destination: "/journal/china-high-speed-train-foreigners",
         permanent: true,
@@ -421,32 +393,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/journeys/female-friendly-cultural-china-10-day",
-        destination: "/tours?needs=women-traveler-support",
+        destination: "/china-tours-for-women",
         permanent: true,
       },
       {
         source: "/journeys/women-beijing-zhangjiajie-shanghai-11-day",
-        destination: "/tours?needs=women-traveler-support",
-        permanent: true,
-      },
-      {
-        source: "/journey/beijing-xian-chengdu-shanghai-private-11-day-tour",
-        destination: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
-        permanent: true,
-      },
-      {
-        source: "/journeys/beijing-xian-chengdu-shanghai-private-11-day-tour",
-        destination: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
-        permanent: true,
-      },
-      {
-        source: "/journeys/:slug",
-        destination: "/tours",
-        permanent: true,
-      },
-      {
-        source: "/journey/:slug",
-        destination: "/tours",
+        destination: "/china-tours-for-women",
         permanent: true,
       },
     ];

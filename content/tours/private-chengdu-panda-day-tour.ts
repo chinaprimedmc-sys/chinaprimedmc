@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
@@ -34,7 +35,7 @@ const sichuanHotpot = chengduImage(
 );
 const privateVehicle: MediaAsset = {
   src: "/tours/mutianyu-private-day-tour/05-private-luxury-vehicle.webp",
-  alt: "Spacious premium vehicle interior for a private Chengdu day tour",
+  alt: "Illustrative private vehicle interior for a private Chengdu day tour",
   width: 1440,
   height: 1920,
 };
@@ -49,7 +50,7 @@ export const privateChengduPandaDayTour: Tour = {
   slug: "private-chengdu-panda-day-tour-early-morning",
   visualStatus: "ready",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-11-10",
+  updatedAt: "2026-11-11",
   title: "Private Chengdu Panda Tour with Hotel Pickup",
   subtitle:
     "Start from your Chengdu hotel at a sensible early hour, enter with admission arranged and follow a private guide who adapts the panda-base route around live openings, crowds, weather and animal activity before a slower Chengdu afternoon.",
@@ -83,7 +84,7 @@ export const privateChengduPandaDayTour: Tour = {
     pitch:
       "A panda day is shaped as much by timing as by the ticket. Giant pandas choose their own rhythm, public areas can become crowded and the base may change which enclosures or nurseries are open. This private tour begins early from your Chengdu hotel, with admission, vehicle and multilingual guide arranged in advance. Your guide checks the practical conditions and chooses a sensible route through the public base rather than promising a fixed animal performance. After the morning visit, return to central Chengdu for an unhurried People's Park and tea-culture chapter. There are no compulsory shopping stops, panda-souvenir factories or claims of private animal access.",
     answer:
-      "This private Chengdu panda tour is an approximately eight-hour day, usually 7\u20139 hours, from a central Chengdu hotel to Chengdu Research Base of Giant Panda Breeding and People's Park. Your party has its own guide, separate driver and vehicle, with standard Panda Base admission and hotel return included. Panda habitats and entry facilities are public; early timing does not guarantee active pandas, cubs or queue-free entry. Lunch, tea, internal carts and airport or railway-station transfers are separate. This is an observation visit with no touching, feeding, volunteering or keeper access.",
+      "Visit Chengdu Panda Base with your own guide and separate driver, then explore People's Park. This private hotel-to-hotel day is planned around eight hours, usually 7–9 hours. Central Chengdu transfers, standard admission and the park walk are included. Lunch, tea and internal electric carts cost extra. Timing follows public opening rules; panda activity, cub sightings and direct animal contact are not guaranteed.",
     practicalities: [
       {
         label: "Duration",
@@ -135,6 +136,11 @@ export const privateChengduPandaDayTour: Tour = {
         value:
           "One written total for your private party, based on date, guests, guide language, addresses and service window. No overnight accommodation is included.",
       },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("private-chengdu-panda-day-tour-early-morning"),
+      },
+      { label: "Accommodation", value: "No overnight accommodation is included." },
     ],
     facts: [
       {
@@ -482,7 +488,8 @@ export const privateChengduPandaDayTour: Tour = {
       question:
         "What is included, and how much does a private panda tour cost for two people or a family?",
       answer:
-        "Request one total for your party rather than multiplying a published per-person price. The quote includes central-hotel pickup and return, private guide in the confirmed language, separate driver and vehicle, standard Panda Base admission, a People's Park walk and bottled water. Date, adult and child numbers, guide language and addresses affect the quote. Lunch, tea, carts, transfers beyond the agreed area and extra hours are separate. No compulsory shopping stops.",
+        getPublishedPriceDisclosure("private-chengdu-panda-day-tour-early-morning") +
+        " Lunch, People's Park tea, internal carts and airport or station transfers are separate unless expressly added.",
     },
     {
       question: "How early is pickup, and is this a VIP or skip-the-line panda tour?",
@@ -559,26 +566,37 @@ export const privateChengduPandaDayTour: Tour = {
     useListedTours: true,
     tours: [
       {
-        title: "Chengdu, Pandas & the Sichuan Table",
+        title: "5-Day Chengdu Panda and Sichuan Food Tour",
         description:
-          "A five-day private Chengdu stay with better-timed pandas, Sichuan food, tea-house culture and an optional Leshan chapter.",
-        tags: ["Private", "Pandas", "Food"],
-        image: pandaBase,
-        route: "Chengdu · optional Leshan",
+          "Stay four nights in Chengdu and add the agreed Sichuan food experience and a preselected Day 4 route.",
+        tags: ["Family", "Food", "Culture"],
+        image: {
+          src: "/tours/chengdu-pandas/chengdu-hero-panda.webp",
+          alt: "A giant panda resting among bamboo near Chengdu",
+          width: 6016,
+          height: 4016,
+        },
+        route: "Chengdu and Leshan",
         duration: "5 days / 4 nights",
         href: "/tours/chengdu-pandas-sichuan-table",
       },
       {
-        title: "China Through the Ages: Shanghai, Chengdu, Xi'an & Beijing",
+        title: "12-Day Private China Tour: Shanghai to Beijing",
         description:
-          "A twelve-day private route from Shanghai through Chengdu and Xi'an to Beijing, connecting pandas, the Terracotta Army and the Great Wall.",
-        tags: ["Private", "First-time China", "Pandas"],
-        image: pandaBase,
+          "Add Chengdu and public Dujiangyan panda observation to a twelve-day Shanghai–Chengdu–Xi’an–Beijing journey. This longer route visits a different panda facility.",
+        tags: ["First-time China", "Family", "Culture"],
+        image: {
+          src: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour/photo-42.webp",
+          alt: "Shanghai's towers and riverfront illuminated beneath a pink evening sky",
+          priority: true,
+          objectPosition: "50% 48%",
+        },
         route: "Shanghai · Chengdu · Xi'an · Beijing",
         duration: "12 days / 11 nights",
         href: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
       },
     ],
+
     destinations: [],
   },
   inquiryChecklist: [

@@ -3,7 +3,7 @@
 /**
  * 本模块职责：行程逐日展示——可折叠的每日卡片，加上手机端也能一指点按的“Day 1…Day N”跳转条。
  * 输入：已整理好的每日行程数据。
- * 输出：前两天默认展开、其余折叠的 <details> 列表；点击跳转条会展开并滚动到对应日期。
+ * 输出：一个代表日默认展开、其余折叠的 <details> 列表；点击跳转条会展开并滚动到对应日期。
  * 不负责：每日数据的来源（见 tour-detail-model.ts）与页面其他区块。
  * 关键规则：折叠内容仍在 HTML 中（原生 details），搜索引擎和无脚本环境都能读到完整行程；
  * 少于 4 天的行程不显示跳转条；滚动遵守“减少动态效果”偏好。
@@ -16,7 +16,6 @@ import { useEffect, useRef, useState } from "react";
 import type { TourDetailDay } from "./tour-detail-model";
 import styles from "./tour-journey.module.css";
 
-const OPEN_BY_DEFAULT = 2;
 const JUMP_BAR_MIN_DAYS = 4;
 
 export function TourDayItinerary({ days }: { days: TourDetailDay[] }) {
@@ -24,6 +23,7 @@ export function TourDayItinerary({ days }: { days: TourDetailDay[] }) {
   const jumpRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const showJump = days.length >= JUMP_BAR_MIN_DAYS;
+  const initialOpenDay = days.length > 2 ? 1 : 0;
 
   useEffect(() => {
     if (!showJump) return;
@@ -106,13 +106,22 @@ export function TourDayItinerary({ days }: { days: TourDetailDay[] }) {
       <ol className={styles.days} ref={listRef}>
         {days.map((day, index) => (
           <li key={day.label} id={`day-${index + 1}`} className={styles.day} data-day-item>
-            <details className={styles.dayDetails} open={index < OPEN_BY_DEFAULT || undefined}>
+            <details className={styles.dayDetails} open={index === initialOpenDay || undefined}>
               <summary className={styles.daySummary}>
                 <span>
                   <span className={styles.dayLabel}>
                     {day.label} · {day.destination}
                   </span>
                   <h3>{day.title}</h3>
+                  {(day.transit || day.steps || day.rest) && (
+                    <span className={styles.dayPreview}>
+                      {day.steps
+                        ? `Walking: ${day.steps}`
+                        : day.transit
+                          ? `Transit: ${day.transit}`
+                          : `Rest: ${day.rest}`}
+                    </span>
+                  )}
                 </span>
                 <ChevronDown size={22} aria-hidden="true" />
               </summary>

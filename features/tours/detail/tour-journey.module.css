@@ -1609,3 +1609,44 @@
     transition: none;
   }
 }
+.dayPreview {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--color-muted);
+  font: var(--type-caption-size)/1.6 var(--font-body);
+}
+@media (max-width: 899px) {
+  .main > section + section {
+    margin-top: var(--space-section-default);
+  }
+}
+/* One quiet surface: editorial price, readable form UI, no nested notes panel. */
+.booking {
+  background: var(--color-surface);
+  border-radius: var(--radius-editorial);
+  font-family: var(--font-body);
+  gap: 1rem;
+}
+.price strong {
+  font-family: var(--font-brand);
+  font-size: var(--type-section-title-size);
+}
+.booking .basis {
+  font-size: var(--type-nav-size);
+  line-height: 1.6;
+}
+.booking .priceDetails {
+  border-bottom: 0;
+  padding-block: 0.25rem;
+  font-size: var(--type-nav-size);
+}
+.priceDetails > summary {
+  min-height: 2.75rem;
+  padding-block: 0.75rem;
+  font-weight: 500;
+}
+.bookingFormTitle {
+  font-family: var(--font-brand);
+  font-size: var(--type-card-title-size);
+  line-height: 1.3;
+}

@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import { firstChinaAsset } from "@/content/tours/assets";
 import type { Tour } from "@/types/tour";
 
@@ -43,7 +44,7 @@ export const chinaConsidered12DayTour: Tour = {
     pitch:
       "Take more time in the same three cities. Five nights in Beijing give the Forbidden City and Great Wall their own days plus a day to rest or choose another outing. Three nights in Xi'an allow a city visit and a separate Terracotta Army day. Shanghai ends the journey with a guided introduction and an independent final day.",
     answer:
-      "This 12-day private China tour connects Beijing, Xi'an and Shanghai with eleven hotel nights: five in Beijing, three in Xi'an and three in Shanghai. The proposed itinerary includes selected five-star hotels, hotel breakfasts, local private guides and drivers on the listed sightseeing days, scheduled transfers, standard admission to the listed sights, Beijing–Xi'an first-class high-speed rail and a Xi'an–Shanghai economy flight. Beijing Day 5 and Shanghai Day 11 are free for independent time or rest; guided activities are quoted separately. Compared with our ten-day tour, the extra nights are in Beijing and Xi'an, with the same two hotel changes. Lunches, dinners, workshops and international flights are separate. Historic sights still involve walking, standing and steps; an easier pace does not mean a step-free route. Dates, rooms, transport and tickets require confirmation in your written proposal.",
+      "Travel privately from Beijing through Xi’an to Shanghai over twelve days, with eleven five-star hotel nights and two hotel changes. Listed sightseeing, breakfasts, transfers, first-class Beijing–Xi’an rail and a Xi’an–Shanghai economy flight are included. Days 5 and 11 are independent rest days without a scheduled guide or vehicle. Historic sites still involve walking and steps. International flights, lunches, dinners and optional experiences are separate.",
     practicalities: [
       {
         label: "Duration and hotel nights",
@@ -104,6 +105,10 @@ export const chinaConsidered12DayTour: Tour = {
         label: "Quote and availability",
         value:
           "One written total for your actual group, dates and rooms. An inquiry does not reserve inventory. Passport and full-route entry requirements must be checked with official authorities; twelve days alone does not establish visa-free eligibility.",
+      },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("china-at-an-easier-pace-12-day-private-tour"),
       },
     ],
     facts: [
@@ -752,8 +757,7 @@ export const chinaConsidered12DayTour: Tour = {
     },
     {
       question: "How much does the 12-day private China tour cost for two people or a family?",
-      answer:
-        "We prepare one written total for your actual group, dates and rooms, with the published starting rate as a guide. The proposal specifies hotels, guided days, transfers, first-class rail, the economy flight, admissions, meals, extras and payment terms. Single rooms, children, extra beds and added experiences affect the total. International flights are separate.",
+      answer: getPublishedPriceDisclosure("china-at-an-easier-pace-12-day-private-tour"),
     },
     {
       question: "Which hotels, room types and breakfasts are included?",
@@ -825,26 +829,38 @@ export const chinaConsidered12DayTour: Tour = {
     useListedTours: true,
     tours: [
       {
-        title: "10-Day Private Tour of Beijing, Xi’an and Shanghai",
+        title: "10-Day Private Tour of Beijing, Xi'an and Shanghai",
         description:
-          "A focused three-city introduction for travelers with fewer days; compare the extra Beijing and Xi’an nights before choosing.",
-        tags: ["Private", "First-time China"],
-        image: firstChinaAsset.shanghaiWaterfrontGroup,
+          "Choose the ten-day version when time is limited; it keeps three cities with fewer nights in Beijing and Xi’an.",
+        tags: ["First-time China", "Culture", "Photography"],
+        image: {
+          src: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.jpg",
+          alt: "The Great Wall winding across mountain ridges near Beijing in warm evening light",
+          width: 1920,
+          height: 1080,
+        },
         route: "Beijing · Xi'an · Shanghai",
         duration: "10 days / 9 nights",
         href: "/tours/beijing-xian-shanghai-private-10-day-tour",
       },
       {
-        title: "China, Made for Families",
+        title: "12-Day Private China Family Tour with Pandas",
         description:
-          "Compare a child-focused route with pandas and activities planned around children’s ages.",
-        tags: ["Private", "Family"],
-        image: firstChinaAsset.beijingGreatWallGroup,
+          "Choose the four-city family route when pandas, hands-on activities and child-aware days are central.",
+        tags: ["Family", "Luxury", "Culture"],
+        image: {
+          src: "/home/editorial/philosophy-family-friendly.avif",
+          alt: "Parents, children and local hosts making dumplings together in a Beijing courtyard",
+          width: 1536,
+          height: 1024,
+          objectPosition: "center",
+        },
         route: "Beijing · Xi'an · Chengdu · Shanghai",
         duration: "12 days / 11 nights",
         href: "/tours/china-family-tour-with-pandas-12-day-private-tour",
       },
     ],
+
     destinations: [],
   },
   inquiryChecklist: [

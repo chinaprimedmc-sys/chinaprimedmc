@@ -14,6 +14,7 @@ import white from "@/components/about/white-editorial.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
+import { TrackedLink } from "@/components/cta/tracked-link";
 import { ServiceCases } from "@/components/about/service-cases";
 import { AboutNavigation } from "@/components/about/about-navigation";
 import { EnquirySection } from "@/components/forms/enquiry-section";
@@ -22,6 +23,8 @@ import { OptimizedImage } from "@/components/media/optimized-image";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
 import { companyIdentity } from "@/content/about/identity";
+import { aboutSearch } from "@/content/about/search";
+import { aboutPageSchema } from "@/lib/seo/about";
 import { founder } from "@/content/founder";
 import {
   aboutQuestions,
@@ -37,9 +40,9 @@ import { breadcrumbSchema } from "@/lib/seo/schema";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = createMetadata({
-  title: "About AVIORA | Meet Your Local China Travel Team",
-  description:
-    "Meet AVIORA, a licensed China travel operator designing private journeys with clear planning, trusted local partners and on-trip support from arrival to departure.",
+  title: aboutSearch.title,
+  description: aboutSearch.description,
+  keywords: [],
   path: "/about",
   image: homeEditorialImages.greatWall.src,
 });
@@ -70,26 +73,38 @@ const travelConcerns = [
 const travelerNeeds = [
   {
     title: "Families",
+    href: "/china-family-tours",
+    readMore: "Read our family travel guide",
     text: "Room arrangements, rest time and travel days planned around children’s ages and your family’s pace.",
   },
   {
     title: "Women Travelers",
+    href: "/china-tours-for-women",
+    readMore: "Read our women’s travel guide",
     text: "Thoughtful hotel locations, reliable transfers and clear local support throughout the trip.",
   },
   {
     title: "Older Travelers",
+    href: "/china-tours-for-seniors",
+    readMore: "Read our guide to traveling at your pace",
     text: "Walking distances, stairs, rest time and vehicle access checked against your needs before confirmation.",
   },
   {
     title: "Muslim Travelers",
+    href: "/china-tours-for-muslim-travelers",
+    readMore: "Read our Muslim travel planning guide",
     text: "Meal planning, prayer considerations and honest advice tailored to each destination.",
   },
   {
     title: "First-Time Visitors",
+    href: "/first-time-china-tours",
+    readMore: "Read our first-time China travel guide",
     text: "A clear route, practical arrival guidance and fewer unknowns in an unfamiliar country.",
   },
   {
     title: "Special Interests",
+    href: "/special-interest-china-tours",
+    readMore: "Read our special-interest travel guide",
     text: "Food, photography, culture, nature or heritage shaped into a journey with depth and focus.",
   },
 ];
@@ -180,21 +195,7 @@ export default function AboutPage() {
           { name: "About AVIORA", path: "/about" },
         ])}
       />
-      <JsonLd
-        id="about-page-schema"
-        data={{
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          name: "About AVIORA China Travel",
-          url: new URL("/about", siteConfig.url).toString(),
-          description:
-            "How AVIORA designs and operates tailored private journeys in China, from planning through on-trip support.",
-          inLanguage: "en-US",
-          isPartOf: { "@id": `${siteConfig.url}/#website` },
-          publisher: { "@id": `${siteConfig.url}/#organization` },
-          mainEntity: { "@id": `${siteConfig.url}/#organization` },
-        }}
-      />
+      <JsonLd id="about-page-schema" data={aboutPageSchema()} />
 
       <SiteNavigation />
 
@@ -229,6 +230,8 @@ export default function AboutPage() {
           <a href="#our-story">Our story</a>
           <a href="#designed-around-you">Your journey</a>
           <a href="#the-standard">Our standards</a>
+          <a href="#brand-questions">Brand & company</a>
+          <a href="#before-booking-guides">Before booking</a>
           <a href="#service-cases">Service stories</a>
           <a href="#people">Our team</a>
           <a href="#founder">Our founder</a>
@@ -256,6 +259,17 @@ export default function AboutPage() {
               </Link>
             </div>
           </div>
+          <dl className={styles.brandFacts} aria-label="AVIORA at a glance">
+            {aboutSearch.facts.map((fact) => (
+              <div key={fact.label}>
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+                <dd>
+                  <Link href={fact.href}>{fact.linkLabel}</Link>
+                </dd>
+              </div>
+            ))}
+          </dl>
           <dl className={styles.achievements}>
             {serviceAchievements.map((fact) => (
               <div key={fact.id}>
@@ -328,22 +342,40 @@ export default function AboutPage() {
               Explore Private Journeys <ArrowUpRight aria-hidden="true" />
             </Link>
           </div>
-          <div className={styles.needsGrid}>
-            {travelerNeeds.map((item) => (
-              <article className={styles.need} key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
+          <div id="traveler-guides" className={styles.needsGrid}>
+            {travelerNeeds.map((item) =>
+              item.href ? (
+                <Link
+                  href={item.href}
+                  className={`${styles.need} ${styles.needLink}`}
+                  key={item.title}
+                >
+                  <h3>
+                    {item.title} <ArrowUpRight aria-hidden="true" />
+                  </h3>
+                  <p>{item.text}</p>
+                  <span className={styles.needReadMore}>{item.readMore}</span>
+                </Link>
+              ) : (
+                <article className={styles.need} key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ),
+            )}
           </div>
           <div className={styles.softCta}>
             <div>
               <p className={styles.softCtaLabel}>A USEFUL FIRST CONVERSATION</p>
               <p>Tell us who is traveling and what would make China feel right for you.</p>
             </div>
-            <Link href="/start-planning?source=about-capability">
+            <TrackedLink
+              href="/start-planning?source=about-capability"
+              trackingLabel="Share Your Priorities"
+              trackingPlacement="about-capability"
+            >
               Share Your Priorities <ArrowUpRight aria-hidden="true" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>
@@ -577,6 +609,68 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section
+        id="brand-questions"
+        className={styles.section}
+        aria-labelledby="brand-questions-title"
+      >
+        <div className={styles.container}>
+          <div className={styles.questionsLayout}>
+            <div>
+              <p className={styles.eyebrow}>THE NAMES BEHIND YOUR BOOKING</p>
+              <h2 id="brand-questions-title">Understand who you are booking with.</h2>
+              <p className={styles.sectionCopy}>
+                The travel brand, trade name and contracting company have different roles. Here is
+                how they connect.
+              </p>
+            </div>
+            <div className={styles.questions}>
+              {aboutSearch.identityAnswers.map((item) => (
+                <details id={item.id} key={item.id}>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                  <p>
+                    <Link href={item.href}>{item.linkLabel}</Link>
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="before-booking-guides"
+        className={styles.section}
+        aria-labelledby="before-booking-title"
+      >
+        <div className={styles.container}>
+          <SectionHeading
+            id="before-booking-title"
+            eyebrow="READ BEFORE YOU COMMIT"
+            title="Make your booking decision with the details in front of you."
+            copy="These practical guides help you compare operators, understand the proposed services and check the arrangements before paying."
+          />
+          <div className={styles.verificationReading}>
+            {aboutSearch.reading.map((item) => (
+              <article key={item.href}>
+                <h3>
+                  <Link href={item.href}>
+                    {item.title} <ArrowUpRight aria-hidden="true" />
+                  </Link>
+                </h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <p className={styles.sectionCopy}>
+            <Link href="/editorial-policy">How we select sources and handle corrections</Link>.
+            Government rules and supplier conditions remain the responsibility of the relevant
+            authority or provider.
+          </p>
+        </div>
+      </section>
+
       <section className={styles.section} aria-labelledby="about-questions">
         <div className={styles.container}>
           <div className={styles.questionsLayout}>
@@ -591,8 +685,8 @@ export default function AboutPage() {
               </Link>
             </div>
             <div className={styles.questions}>
-              {aboutQuestions.map((item) => (
-                <details key={item.question}>
+              {aboutQuestions.map((item, index) => (
+                <details key={item.question} id={`about-answer-${index + 1}`}>
                   <summary>{item.question}</summary>
                   <p>{item.answer}</p>
                 </details>

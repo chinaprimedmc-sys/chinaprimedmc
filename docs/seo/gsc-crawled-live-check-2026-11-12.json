@@ -1,0 +1,748 @@
+{
+  "checkedAt": "2026-11-12T03:46:24.293Z",
+  "sitemapPages": 203,
+  "rows": [
+    {
+      "URL": "https://www.chinaprimedmc.com/destination/beijing",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/destinations/beijing",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/destinations/beijing",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/destinations/beijing"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/destinations/zhangjiajie",
+      "Last crawled": "2026-10-13",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "Zhangjiajie Private Tours: Parks, Hotels & Walking | AVIORA",
+      "canonical": ["https://www.chinaprimedmc.com/destinations/zhangjiajie"],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "Zhangjiajie Private Tours: Parks, Hotels & Walking | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/destinations/zhangjiajie"],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "Zhangjiajie Private Tours: Parks, Hotels & Walking | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/destinations/zhangjiajie"],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/experience/panda-morning-chengdu",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours/chengdu-pandas-sichuan-table",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours/chengdu-pandas-sichuan-table",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours/chengdu-pandas-sichuan-table"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/home/editorial/philosophy-family-friendly.avif",
+      "Last crawled": "2026-10-25",
+      "status": 200,
+      "contentType": "image/avif",
+      "location": null,
+      "inLiveSitemap": false,
+      "verifiedLocal": {
+        "status": 200,
+        "location": null
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/home/story-optimized/culture-013.avif",
+      "Last crawled": "2026-09-23",
+      "status": 200,
+      "contentType": "image/avif",
+      "location": null,
+      "inLiveSitemap": false,
+      "verifiedLocal": {
+        "status": 200,
+        "location": null
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/home/story-optimized/culture-031.avif",
+      "Last crawled": "2026-09-11",
+      "status": 200,
+      "contentType": "image/avif",
+      "location": null,
+      "inLiveSitemap": false,
+      "verifiedLocal": {
+        "status": 200,
+        "location": null
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journal/china-accommodation-registration-foreigners",
+      "Last crawled": "2026-09-02",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "China Hotel Registration for Foreigners: (2026) | AVIORA",
+      "canonical": [
+        "https://www.chinaprimedmc.com/journal/china-accommodation-registration-foreigners"
+      ],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "China Hotel Registration for Foreigners: 2026 Guide | AVIORA",
+        "canonical": [
+          "https://www.chinaprimedmc.com/journal/china-accommodation-registration-foreigners"
+        ],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "China Hotel Registration for Foreigners: 2026 Guide | AVIORA",
+        "canonical": [
+          "https://www.chinaprimedmc.com/journal/china-accommodation-registration-foreigners"
+        ],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journal/china-golden-week-travel-2026",
+      "Last crawled": "2026-09-27",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "China Golden Week 2026: Dates, Crowds & (2026) | AVIORA",
+      "canonical": ["https://www.chinaprimedmc.com/journal/china-golden-week-travel-2026"],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "China Golden Week 2026: Dates, Crowds & Advice | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/china-golden-week-travel-2026"],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "China Golden Week 2026: Dates, Crowds & Advice | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/china-golden-week-travel-2026"],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journal/china-high-speed-train-foreigners",
+      "Last crawled": "2026-10-11",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "China High-Speed Trains for Foreigners: 2026 (2026) | AVIORA",
+      "canonical": ["https://www.chinaprimedmc.com/journal/china-high-speed-train-foreigners"],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "China High-Speed Trains for Foreigners: 2026 Guide | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/china-high-speed-train-foreigners"],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "China High-Speed Trains for Foreigners: 2026 Guide | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/china-high-speed-train-foreigners"],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journal/first-trip-to-china-planning-guide",
+      "Last crawled": "2026-08-27",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "How to Plan a Trip to China: 12 Decisions (2026) | AVIORA",
+      "canonical": ["https://www.chinaprimedmc.com/journal/first-trip-to-china-planning-guide"],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "How to Plan a Trip to China: 12 Decisions Before | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/first-trip-to-china-planning-guide"],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "First Trip to China: 12 Decisions Before Booking | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/first-trip-to-china-planning-guide"],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journal/how-many-days-beijing-xian-shanghai",
+      "Last crawled": "2026-11-07",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "Beijing, Xi'an & Shanghai: 8, 10 or 12 Days? (2026) | AVIORA",
+      "canonical": ["https://www.chinaprimedmc.com/journal/how-many-days-beijing-xian-shanghai"],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "Beijing, Xi'an & Shanghai: 8, 10 or 12 Days? | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/how-many-days-beijing-xian-shanghai"],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "Beijing, Xi'an & Shanghai: 8, 10 or 12 Days? | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/how-many-days-beijing-xian-shanghai"],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journal/mutianyu-badaling-jinshanling-great-wall",
+      "Last crawled": "2026-09-23",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "Mutianyu vs Badaling vs Jinshanling Great (2026) | AVIORA",
+      "canonical": [
+        "https://www.chinaprimedmc.com/journal/mutianyu-badaling-jinshanling-great-wall"
+      ],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "Mutianyu vs Badaling vs Jinshanling Great Wall | AVIORA",
+        "canonical": [
+          "https://www.chinaprimedmc.com/journal/mutianyu-badaling-jinshanling-great-wall"
+        ],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "Mutianyu vs Badaling vs Jinshanling Great Wall | AVIORA",
+        "canonical": [
+          "https://www.chinaprimedmc.com/journal/mutianyu-badaling-jinshanling-great-wall"
+        ],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journal/terracotta-army-tickets-foreign-visitors",
+      "Last crawled": "2026-08-10",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "Terracotta Army Tickets for Foreigners: 2026 (2026) | AVIORA",
+      "canonical": [
+        "https://www.chinaprimedmc.com/journal/terracotta-army-tickets-foreign-visitors"
+      ],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "Terracotta Army Tickets for Foreigners: 2026 Guide | AVIORA",
+        "canonical": [
+          "https://www.chinaprimedmc.com/journal/terracotta-army-tickets-foreign-visitors"
+        ],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "Terracotta Army Tickets for Foreigners: 2026 Guide | AVIORA",
+        "canonical": [
+          "https://www.chinaprimedmc.com/journal/terracotta-army-tickets-foreign-visitors"
+        ],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journal/where-to-stay-in-zhangjiajie",
+      "Last crawled": "2026-08-28",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": true,
+      "title": "Where to Stay in Zhangjiajie: Wulingyuan vs (2026) | AVIORA",
+      "canonical": ["https://www.chinaprimedmc.com/journal/where-to-stay-in-zhangjiajie"],
+      "noindex": false,
+      "h1Count": 1,
+      "localPreview": {
+        "status": 200,
+        "title": "Where to Stay in Zhangjiajie: Wulingyuan vs City | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/where-to-stay-in-zhangjiajie"],
+        "noindex": false,
+        "h1Count": 1
+      },
+      "verifiedLocal": {
+        "status": 200,
+        "location": null,
+        "title": "Where to Stay in Zhangjiajie: Wulingyuan vs City | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com/journal/where-to-stay-in-zhangjiajie"],
+        "noindex": false
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/beijing-great-wall-heritage-5-days",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours/beijing-great-wall-private-5-day-tour",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours/beijing-great-wall-private-5-day-tour"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/beijing-xian-shanghai-essential-8-days",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours/beijing-xian-shanghai-private-10-day-tour",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours/beijing-xian-shanghai-private-10-day-tour",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours/beijing-xian-shanghai-private-10-day-tour"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/china-by-high-speed-rail",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours/beijing-xian-shanghai-private-10-day-tour",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours/beijing-xian-shanghai-private-10-day-tour",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours/beijing-xian-shanghai-private-10-day-tour"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/guilin-yangshuo-soft-adventure",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/luxury-china-slow-rhythm",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours/china-at-an-easier-pace-12-day-private-tour",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours/china-at-an-easier-pace-12-day-private-tour",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours/china-at-an-easier-pace-12-day-private-tour"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/private-china-for-couples",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours/china-at-an-easier-pace-12-day-private-tour",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours/china-at-an-easier-pace-12-day-private-tour",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours/china-at-an-easier-pace-12-day-private-tour"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/senior-friendly-china-icons",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours/china-at-an-easier-pace-12-day-private-tour",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours/china-at-an-easier-pace-12-day-private-tour",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours/china-at-an-easier-pace-12-day-private-tour"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/shanghai-suzhou-hangzhou-elegant-east",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/destinations/shanghai",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/destinations/shanghai",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/destinations/shanghai"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journey/yunnan-slow-luxury",
+      "Last crawled": "2026-07-01",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/destinations",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/destinations",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/destinations"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/beijing-xian-guilin-shanghai",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/china-with-kids-made-effortless",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/china-with-teens",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/chongqing-chengdu-culture-food-5-day",
+      "Last crawled": "2026-06-29",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/female-friendly-cultural-china-10-day",
+      "Last crawled": "2026-08-18",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours?needs=women-traveler-support",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/china-tours-for-women",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/china-tours-for-women"
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/great-wall-sunrise-ancient-capitals",
+      "Last crawled": "2026-07-09",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/imperial-beijing-ancient-xian",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/inner-mongolia-cultural-5-day",
+      "Last crawled": "2026-08-15",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/jiuzhaigou-nature-escape",
+      "Last crawled": "2026-07-05",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/luxury-honeymoon-china",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/muslim-friendly-silk-road-china",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/scenic-china-peaks-rivers-rice-terraces",
+      "Last crawled": "2026-08-15",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/shanghai-jiangnan",
+      "Last crawled": "2026-07-11",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/shanghai-stopover-private-tour",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/suzhou-gardens-shanghai-design",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/tibet-lhasa-nyingchi-8-day",
+      "Last crawled": "2026-06-29",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/western-china-tibet-edge",
+      "Last crawled": "2026-08-16",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/journeys/zhangjiajie-avatar-mountains",
+      "Last crawled": "2026-07-06",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours",
+      "inLiveSitemap": false,
+      "localPlannedStatus": 404,
+      "verifiedLocal": {
+        "status": 404,
+        "location": null,
+        "title": "Page Not Found | AVIORA | AVIORA",
+        "canonical": ["https://www.chinaprimedmc.com"],
+        "noindex": true
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/manifest.webmanifest",
+      "Last crawled": "2026-07-23",
+      "status": 200,
+      "contentType": "application/manifest+json; charset=utf-8",
+      "location": null,
+      "inLiveSitemap": false,
+      "verifiedLocal": {
+        "status": 200,
+        "location": null
+      }
+    },
+    {
+      "URL": "https://www.chinaprimedmc.com/tours/first-china-beautifully-paced",
+      "Last crawled": "2026-07-29",
+      "status": 308,
+      "contentType": "text/plain",
+      "location": "/tours/beijing-xian-shanghai-private-10-day-tour",
+      "inLiveSitemap": false,
+      "localPlannedRedirect": "/tours/beijing-xian-shanghai-private-10-day-tour",
+      "verifiedLocal": {
+        "status": 308,
+        "location": "/tours/beijing-xian-shanghai-private-10-day-tour"
+      }
+    }
+  ],
+  "localVerifiedAt": "2026-11-12T03:49:05.038Z"
+}

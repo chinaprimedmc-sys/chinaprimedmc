@@ -1,5 +1,10 @@
+import { publishedJourneyPrices } from "@/content/tours/published-prices";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
+
+const startingRate = publishedJourneyPrices["private-mutianyu-great-wall-day-tour"].fromUsd;
+const startingPrice = `USD ${startingRate.toLocaleString("en-US")}`;
+const twoAdultTotal = `USD ${(startingRate * 2).toLocaleString("en-US")}`;
 
 const mutianyuImage = (file: string, alt: string, width: number, height: number): MediaAsset => ({
   src: `/tours/mutianyu-private-day-tour/${file}`,
@@ -34,7 +39,7 @@ const watchtower = mutianyuImage(
 );
 const privateVehicle = mutianyuImage(
   "05-private-luxury-vehicle.webp",
-  "Spacious premium vehicle interior for a private Beijing day tour",
+  "Example vehicle interior for a private Beijing day tour; the assigned vehicle is confirmed before booking",
   1440,
   1920,
 );
@@ -44,11 +49,12 @@ export const mutianyuPrivateDayTour: Tour = {
   slug: "private-mutianyu-great-wall-day-tour",
   visualStatus: "ready",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-11-10",
-  title: "Private Mutianyu Great Wall Tour, Hotel Pickup to Return",
+  updatedAt: "2026-11-11",
+  title: "Private Mutianyu Great Wall Tour from Beijing",
   subtitle:
-    "Your own guide and driver, Beijing hotel pickup and return, admission and scenic-area shuttle. Choose a cable-car, walk-up or chairlift-and-toboggan visit, with the full private-group price confirmed before booking.",
+    "Spend a full day at Mutianyu with your own guide and driver, Beijing hotel pickup and return, admission and scenic-area shuttle. Choose your walking route and add mountain transport if it suits your day.",
   duration: "1 Day · Private",
+  durationIso: "PT8H",
   route: "Beijing · Mutianyu Great Wall · Beijing",
   styles: ["Culture", "Family", "Photography"],
   hero: {
@@ -58,23 +64,75 @@ export const mutianyuPrivateDayTour: Tour = {
     secondary: { label: "See What Is Included", href: "#included" },
   },
   seo: {
-    title: "Private Mutianyu Great Wall Day Tour from Beijing",
+    title: "Private Mutianyu Great Wall Tour from Beijing",
+    preserveCopy: true,
     description:
-      "Private Mutianyu Great Wall day tour from Beijing with hotel pickup, multilingual guide, private driver, tickets and no shopping stops.",
+      "Private Mutianyu Great Wall tour from Beijing with your own guide, driver, hotel pickup, admission and shuttle. Cable car optional; no shopping stops.",
     keywords: [
-      "private Mutianyu Great Wall tour",
-      "Mutianyu Great Wall private day tour",
-      "private Great Wall tour from Beijing hotel",
-      "Mutianyu Great Wall tour with private car",
+      "private Mutianyu Great Wall tour from Beijing",
+      "Mutianyu Great Wall tour with hotel pickup",
+      "private Great Wall tour with guide and driver",
+      "Mutianyu private tour for two people",
+      "Mutianyu tour with English-speaking guide",
       "Mutianyu cable car private tour",
-      "Great Wall tour for families",
-      "Great Wall tour for seniors",
-      "no shopping Great Wall tour",
+      "Mutianyu Great Wall tour for families",
+      "Mutianyu Great Wall tour for older travelers",
+      "no shopping Great Wall tour from Beijing",
     ],
   },
   overview: {
+    answer:
+      "Visit Mutianyu Great Wall from your Beijing hotel on a private 7–9-hour day tour. Your own guide, separate driver, air-conditioned vehicle, admission and scenic-area shuttle are included, with around 2–3 hours for the Wall visit. Cable car, chairlift, toboggan and lunch are extra unless added to your proposal. Walking is adapted to your group; steps remain. No compulsory shopping stops.",
     pitch:
-      "A Great Wall day should not begin with ticket uncertainty, a confusing pickup point or an argument about how far to walk. This private Mutianyu tour starts at your Beijing hotel. Before the day, we confirm the hotel address, group, ticket details, likely road timing and whether walking, cable car, chairlift or toboggan is the most sensible choice. At the Wall, your guide adapts the tower range and turnaround point to the people actually traveling. Your private vehicle remains responsible for the return to Beijing. No shopping stops are built into the day.",
+      "Give the Great Wall its own day. We check your hotel address, walking preferences and return plans before choosing a departure time and ascent. At Mutianyu, spend your time exploring the ramparts and stopping for views while your guide helps choose a manageable section and turnaround point. Your vehicle waits through the agreed service window; there are no factory visits or sales stops built into the route.",
+    practicalities: [
+      {
+        label: "Duration",
+        value: "Usually 7–9 hours door to door; allow around 2–3 hours for the Wall visit.",
+      },
+      {
+        label: "Route",
+        value: "Beijing hotel → Mutianyu Great Wall → confirmed Beijing return address.",
+      },
+      {
+        label: "Private service",
+        value:
+          "Your own guide, a separate driver and an air-conditioned vehicle for the agreed service window.",
+      },
+      {
+        label: "Hotel pickup",
+        value:
+          "Beijing main urban hotel districts; exact address and any supplement confirmed before booking.",
+      },
+      {
+        label: "Tickets included",
+        value:
+          "Mutianyu admission and scenic-area shuttle. The shuttle does not take you onto the Wall.",
+      },
+      {
+        label: "Mountain transport",
+        value:
+          "Cable car, chairlift and toboggan are optional paid additions, confirmed before booking.",
+      },
+      {
+        label: "Walking and access",
+        value:
+          "Steps, slopes and uneven stone remain after lift access; this is not a step-free tour.",
+      },
+      {
+        label: "Starting-price basis",
+        value: `${startingPrice} per person, based on two adults traveling together; ${twoAdultTotal} for two on that basis.`,
+      },
+      {
+        label: "Meals and accommodation",
+        value: "Lunch is separate. No overnight accommodation is included.",
+      },
+      {
+        label: "Public-site services",
+        value:
+          "The guide and road vehicle are private; the Wall, shuttle and any selected lifts are shared with other visitors.",
+      },
+    ],
     facts: [
       {
         label: "Suitable for",
@@ -242,10 +300,10 @@ export const mutianyuPrivateDayTour: Tour = {
       image: privateVehicle,
     },
     {
-      title: "A Wall route chosen for the people actually traveling",
+      title: "A Great Wall walk planned around your group",
       description:
         "The ascent, tower range and turnaround point are adjusted to your group, live conditions and selected mountain transport instead of a fixed fitness test.",
-      category: "Senior-friendly",
+      category: "Culture",
       image: cableCar,
     },
     {
@@ -364,7 +422,7 @@ export const mutianyuPrivateDayTour: Tour = {
   transportation: {
     title: "One private vehicle, one confirmed route, no coach-group logistics",
     description:
-      "Your service is planned from the actual hotel address and the expected ticket window. A private car reduces unnecessary transfers; it does not guarantee a fixed road time in Beijing traffic or replace the scenic area's own shuttle and mountain-transport systems.",
+      "Your service is planned from the actual hotel address and the expected ticket window. Your own vehicle keeps hotel transfers straightforward, with its size and service hours agreed before booking. At the scenic area, the included shuttle and any optional lifts are shared services; road times depend on traffic.",
     items: [
       {
         label: "Pickup",
@@ -420,66 +478,128 @@ export const mutianyuPrivateDayTour: Tour = {
     ],
   },
   gallery: mutianyuGallery.slice(1),
-  faqLimit: 12,
+  faqLimit: 20,
   faqs: [
     {
-      question: "What does the private-tour price include?",
+      question: "What is included in this private Mutianyu Great Wall tour?",
       answer:
-        "Your written quote is for a private group and includes pickup and return within Beijing's main urban hotel districts, a private air-conditioned vehicle and driver during the confirmed service window, a private guide in the confirmed language, Mutianyu admission, the scenic-area shuttle, bottled water and no compulsory shopping stops. The core package excludes mountain transport and lunch. Selected lift tickets are included only when explicitly listed in your written quote.",
+        "The tour includes pickup and return in the confirmed Beijing urban hotel area, your own guide, a separate driver and private air-conditioned vehicle for the agreed service window, Mutianyu admission, the scenic-area shuttle, bottled water and pre-trip coordination. Cable car, chairlift, toboggan, lunch and extra hours are separate unless listed in your written proposal. There are no compulsory shopping stops.",
     },
     {
-      question: "Is this a private tour or a shared coach tour?",
-      answer:
-        "It is private for your booking party. You have your own vehicle, driver and guide in the confirmed language during the confirmed service window. Mutianyu itself is a public scenic area, so other visitors will be present and scenic-area services follow the operator's own rules.",
+      question: "How much is a private Mutianyu tour for two people?",
+      answer: `${startingPrice} per person is the published starting rate, based on two adults traveling together: ${twoAdultTotal} for two on that basis. It covers the listed guide, vehicle, admission and shuttle service, without mountain transport or lunch. Your dates, pickup address, requested guide language, vehicle and selected extras determine the final written total. Prices for one person, families and larger parties are quoted separately.`,
     },
     {
-      question: "Is the quote per person or for our whole group?",
+      question: "Will we have our own English-speaking guide and driver?",
       answer:
-        "We quote the total for your own party, not a per-person headline based on an assumed group of four. The quote states your date, number of adults and children, guide language, vehicle, hotel address, service window and chosen ascent and descent. Any mountain-transport supplement is itemized; lunch remains separate unless specifically added.",
+        "You have your own guide and a separate driver. Request English-speaking service when you send your date so availability can be confirmed. Your guide accompanies the agreed visit rather than simply dropping you at the entrance. Other guide languages are subject to availability and may affect the quote. The vehicle and guiding are private for your party; the scenic area, shuttle and lifts are shared with other visitors.",
     },
     {
-      question: "Can you pick us up from our Beijing hotel?",
+      question: "Does the price include Mutianyu cable-car or toboggan tickets?",
       answer:
-        "Yes, pickup and return within Beijing's main urban hotel districts are included. Send the exact hotel or address before booking so we can confirm the pickup window. Airports, distant suburbs, out-of-area hotels and unusual return locations may require a clearly stated supplement.",
+        "No. Admission and the scenic-area shuttle are included, but cable car, chairlift and toboggan tickets are optional additions. The shuttle connects parts of the visitor area; it is not a lift onto the Wall. We confirm your preferred ascent and descent, ticket cost and any fallback before booking.",
     },
     {
-      question: "How much walking is involved at Mutianyu?",
+      question: "Should we choose the cable car or the chairlift and toboggan?",
       answer:
-        "The right answer depends on the ascent choice, tower section, weather, balance, confidence with heights and your own pace. Cable or chairlift access can reduce the uphill approach, but the Wall still has slopes, uneven stone paving, steps and exposed sections. Tell us what feels comfortable; your guide will plan a sensible route and turnaround point rather than force a fixed tower target.",
+        "Consider the enclosed cable car if reducing the uphill approach is your priority. The open chairlift and toboggan may suit visitors comfortable with heights who meet the operator’s current eligibility rules. These systems serve different access points and their tickets are not assumed to be interchangeable. Tell us your walking needs, children’s ages and preferences so we can propose a route and alternative descent.",
     },
     {
-      question: "What are the cable car, chairlift and toboggan options?",
+      question: "How long does a Mutianyu day trip from Beijing take?",
       answer:
-        "They are optional scenic-area products, not hidden charges. Options include a round-trip cable car, a chairlift-up and toboggan-down combination, or a one-way sector. We confirm the current operator rate and suitable route before booking. Operations can change because of weather, safety, maintenance, capacity or scenic-area rules.",
+        "Plan on about 7–9 hours from hotel pickup to return, usually allowing around 2–3 hours for the Wall visit. Each road journey can take roughly 1.5–2.5 hours, depending on your address and traffic. Entry checks, shuttle and lift queues, lunch and a walk-up route can change that balance. These are planning ranges, not a guaranteed return time.",
     },
     {
-      question: "Can children or older travelers take this tour?",
+      question: "What time should we leave Beijing for Mutianyu?",
       answer:
-        "Often yes, but their ages, confidence with heights, walking ability and any support needs should be shared before booking. We can propose a shorter Wall section and appropriate mountain transport where it is operating. The Wall is not step-free, and toboggan eligibility depends on the operator's current age, height and safety rules.",
+        "We set the pickup time around your hotel, travel date, ticket arrangements and preferred walking route. An earlier departure may help avoid some road traffic or busy arrival periods, but cannot guarantee an empty Wall. Tell us about any evening reservation, train or flight before booking so we can assess the return margin rather than rely on an optimistic timetable.",
     },
     {
-      question: "What happens if weather affects the Wall or mountain transport?",
+      question: "Which Beijing hotels are covered by pickup and return?",
       answer:
-        "We check the practical date-specific conditions and explain the options. A cable car, chairlift or toboggan may be suspended for safety. If the scenic area or a selected service cannot operate, we discuss the workable alternative with you; no itinerary promises a weather-proof mountain experience.",
+        "Pickup and return in Beijing’s main urban hotel districts are included, subject to confirmation of the exact address. Send the hotel name and full address; an airport-area hotel or distant suburb can require a different route and supplement. A different central return address may be possible if agreed in advance. Airport and railway-station transfers are not automatically included.",
     },
     {
-      question: "Is lunch included?",
+      question: "How much walking is involved if we take the cable car?",
       answer:
-        "No. Lunch is paid separately and there is no compulsory restaurant stop. Your guide can allow independent lunch time, or we can reserve a suitable restaurant along the confirmed route and show the cost before booking.",
+        "The cable car reduces the uphill approach, but steps, slopes and uneven stone remain on the Wall. There is no single walking distance suitable for every group. Your guide agrees a manageable section and turnaround point around balance, stamina, weather and available time. Walking up and down from the visitor area adds substantially more climbing than using a lift.",
     },
     {
-      question: "How quickly can you confirm my date?",
+      question: "Is this Mutianyu tour suitable for families with children?",
       answer:
-        "Send your date, group size and Beijing hotel through the form or WhatsApp. We check guide and vehicle availability, your pickup and the selected Wall route before sending a written quote. Sending an inquiry does not reserve the date. A booking is confirmed only after the written proposal, required payment and supplier arrangements are confirmed in writing.",
+        "It can be, with a route matched to the children’s ages and the adults’ expectations. Share ages, walking tolerance, any child-seat request and interest in the toboggan before booking. Toboggan use depends on the operator’s current restrictions and live conditions; it is not guaranteed. We plan breaks and a manageable turnaround rather than require every family to reach the same tower.",
+    },
+    {
+      question: "Can older travelers visit Mutianyu, and is it wheelchair accessible?",
+      answer:
+        "Older travelers may enjoy a shorter visit with lift access where appropriate, but suitability depends on individual walking ability and balance. This published itinerary is not step-free and should not be booked as a wheelchair-accessible Wall tour. Tell us about stairs, slopes, assistance and equipment needs before payment so we can assess what is practical. A guide is not a substitute for a porter or medical support.",
+    },
+    {
+      question: "What happens if rain or wind stops the cable car or toboggan?",
+      answer:
+        "Mountain transport may stop because of weather, safety, maintenance or operator decisions. We review the workable alternatives with you; we do not automatically replace lift access with a strenuous climb. Before booking, check the written proposal for how affected tickets and services are handled and which change or cancellation terms apply. Check those terms before payment, especially if your visit depends on a particular lift or descent.",
+    },
+    {
+      question: "Do you arrange tickets, and do foreign visitors need a passport?",
+      answer:
+        "Mutianyu admission and the scenic-area shuttle are included. We confirm the booking, identification and entry requirements that apply to your date before departure. Keep your passport available for checks if required in the operating instructions. Do not send passport numbers through an initial public inquiry; any details needed for ticketing are requested through the agreed booking process. Current requirements should be checked against the scenic area’s official visitor information.",
+    },
+    {
+      question: "What is the difference between this private tour and a shuttle-bus trip?",
+      answer:
+        "This tour includes your own guide and driver, confirmed hotel pickup and return, admission coordination and a walking plan adapted to your party. A transfer-only or shared-bus proposal may include a different pickup point, ticket package or level of guiding, so compare the written inclusions. Our private service does not provide exclusive use of the Wall or guaranteed queue-free entry.",
+    },
+    {
+      question: "Can we visit the Forbidden City or another Great Wall section on the same day?",
+      answer:
+        "This itinerary gives Mutianyu a focused day and does not include the Forbidden City, Badaling or Jinshanling. Adding a major site changes ticket needs, road time and the time available on the Wall. Ask for a revised proposal rather than assume it fits the same price and service window. Our five-day Beijing journey is a better starting point if you want the palace, neighborhoods and Great Wall planned together.",
+    },
+    {
+      question: "Can this tour start at Beijing Capital or Daxing Airport during a layover?",
+      answer:
+        "Airport pickup and drop-off are outside the standard hotel-based tour and require a separate feasibility review and quote. Share the airport, flight times, luggage and any immigration or entry constraints. Admission to China and eligibility for a visa exemption are determined by the authorities, not this tour booking. We do not promise that a full Mutianyu visit fits every layover or airport connection.",
+    },
+    {
+      question: "Is lunch included, and can you accommodate dietary requirements?",
+      answer:
+        "Lunch is paid separately, with no compulsory restaurant stop. You can keep lunch independent or ask us to reserve a restaurant along the confirmed route and itemize it in the proposal. Tell us about allergies and dietary requirements before booking so the restaurant can be checked. A reservation request alone does not confirm an allergen-free kitchen or a particular certification.",
+    },
+    {
+      question: "What do you need to confirm our private Great Wall day?",
+      answer:
+        "Send your date, number of adults and children with ages, Beijing hotel address, return address and any fixed deadline, preferred guide language, mountain-transport choice and walking needs. We check availability before sending the full party price and service terms. An inquiry does not reserve the date; the written proposal, required payment and supplier arrangements must be confirmed before the booking is accepted.",
     },
   ],
   planningResources: [
+    {
+      label: "Plan a realistic Mutianyu day from Beijing",
+      href: "/journal/mutianyu-private-day-tour-itinerary-from-beijing",
+      description:
+        "How to balance transfers, the Wall visit, lunch and the return without overloading the day.",
+    },
+    {
+      label: "Mutianyu walking and cable-car guide",
+      href: "/journal/mutianyu-great-wall-walking-cable-car",
+      description:
+        "Compare mountain access and the steps that remain when planning for different walking abilities.",
+    },
+    {
+      label: "Mutianyu private tour or shuttle bus?",
+      href: "/journal/mutianyu-private-tour-vs-shuttle-bus",
+      description:
+        "Compare pickup arrangements, guiding and included services before choosing how to visit.",
+    },
+    {
+      label: "Explore Beijing",
+      href: "/destinations/beijing",
+      description: "Plan the Great Wall alongside Beijing’s imperial sites and neighborhoods.",
+    },
     {
       label: "Official Mutianyu Great Wall visitor information",
       href: "https://www.mutianyugreatwall.com/",
       officialPublisher: "Mutianyu Great Wall scenic area",
       description:
-        "Consult the scenic area's visitor information and notices. Confirm ticket options, lift operation and safety restrictions for your date; our guide, vehicle and package inclusions are set out in our written proposal.",
+        "Official reference for visitor notices and date-specific admission, shuttle and mountain-transport information. Check operating and eligibility rules for your travel date; these services are distinct from AVIORA’s private guide and road vehicle.",
     },
     {
       label: "UNESCO: The Great Wall",
@@ -490,28 +610,40 @@ export const mutianyuPrivateDayTour: Tour = {
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
-        title: "Five Days in Beijing, With the Wall Given Its Own Day",
+        title: "5-Day Beijing and Great Wall Private Tour",
         description:
-          "A privately paced Beijing journey for travelers who want the Great Wall, imperial sites and neighborhoods without compressing everything into one stay.",
-        tags: ["Private", "Beijing", "Culture"],
-        image: panorama,
-        route: "Beijing · Mutianyu Great Wall",
+          "Choose four Beijing hotel nights and several private sightseeing days if you need a complete city stay.",
+        tags: ["Culture", "Luxury", "Senior-friendly"],
+        image: {
+          src: "/tours/beijing-unhurried/great-wall-walk.webp",
+          alt: "A cable car passing the Mutianyu Great Wall across Beijing's mountain landscape",
+          width: 2400,
+          height: 1641,
+        },
+        route: "Beijing",
         duration: "5 days / 4 nights",
         href: "/tours/beijing-great-wall-private-5-day-tour",
       },
       {
-        title: "China, Considered: Beijing, Xi'an & Shanghai",
+        title: "12-Day Private China Tour at an Easier Pace",
         description:
-          "A longer premium private China journey that protects a full Great Wall day within a well-paced first visit.",
-        tags: ["Private", "First-time China", "Easy pace"],
-        image: panorama,
+          "Keep Mutianyu within a three-city journey with eleven hotel nights and two independent rest days.",
+        tags: ["First-time China", "Senior-friendly", "Luxury"],
+        image: {
+          src: "/tours/first-china-beautifully-paced/beijing-great-wall-couple.webp",
+          alt: "Two travelers beside the Great Wall and wooded hills near Beijing",
+          width: 1280,
+          height: 1920,
+        },
         route: "Beijing · Xi'an · Shanghai",
         duration: "12 days / 11 nights",
         href: "/tours/china-at-an-easier-pace-12-day-private-tour",
       },
     ],
+
     destinations: [],
   },
   inquiry: {

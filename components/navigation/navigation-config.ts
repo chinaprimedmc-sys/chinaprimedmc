@@ -121,7 +121,7 @@ export const navigationConfig = {
         {
           links: [
             { label: "Our Approach", href: "/about" },
-            { label: "Fully Private Travel", href: "/about#designed-around-you" },
+            { label: "Travel Guides by Your Needs", href: "/about#traveler-guides" },
             { label: "Private Guides", href: "/about#people" },
           ],
         },
@@ -130,7 +130,7 @@ export const navigationConfig = {
             { label: "Private Transportation", href: "/about#the-standard" },
             { label: "Hotels & Dining", href: "/about#the-standard" },
             { label: "Founder's Story", href: "/about/founder" },
-            { label: "About AVIORA China", href: "/about" },
+            { label: "Company & Registration", href: "/company" },
           ],
         },
       ],

@@ -1,0 +1,11 @@
+.root {
+  min-width: 0;
+  scroll-margin-top: calc(var(--site-nav-offset) + 1rem);
+  font-family: var(--font-body);
+}
+.journey {
+  margin-bottom: 1rem;
+  color: var(--color-muted);
+  font-size: var(--type-nav-size);
+  line-height: 1.6;
+}

@@ -19,10 +19,11 @@ import { createMetadata } from "@/lib/seo/metadata";
 import styles from "./company.module.css";
 
 export const metadata: Metadata = createMetadata({
-  title: "AVIORA China Travel | Company, Offices & Registration",
+  title: "AVIORA China Travel: Company & Registration",
   description:
     "Learn who operates AVIORA China Travel, where our offices are in Beijing, Shanghai and Xi'an, and view the company's business registration record.",
   path: "/company",
+  keywords: [],
 });
 
 const offices = siteConfig.operator.officeCities;

@@ -1,0 +1,224 @@
+{
+  "asOf": "2026-11-12",
+  "authorization": "User adopted full portfolio expansion; execute sequentially starting with Guilin/Yangshuo/Longji.",
+  "baselinePublicProducts": 19,
+  "localPublicProductsAfterFirstAddition": 20,
+  "policy": "All candidates adopted into the backlog. Queued concepts are not empty public product pages or confirmed supply. No borrowed photography or invented prices.",
+  "items": [
+    {
+      "order": 1,
+      "id": "guilin-yangshuo-longji",
+      "nameZh": "桂林、阳朔与龙脊五天四晚",
+      "batch": 1,
+      "status": "local-quote-only-product",
+      "slug": "guilin-yangshuo-longji-private-5-day-tour",
+      "imagePolicy": "Use client-supplied photos only; hotel and vehicle photography illustrative pending supplier confirmation.",
+      "supplierVerified": false,
+      "priceUsd": null,
+      "imageryStatus": "10-client-supplied-photos-integrated-locally"
+    },
+    {
+      "order": 2,
+      "id": "shanghai-suzhou-hangzhou",
+      "nameZh": "上海、苏州与杭州七天六晚",
+      "batch": 1,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 3,
+      "id": "zhangjiajie-regional",
+      "nameZh": "张家界四天三晚",
+      "batch": 1,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 4,
+      "id": "huangshan-hongcun",
+      "nameZh": "黄山与宏村四天三晚",
+      "batch": 1,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 5,
+      "id": "chengdu-chongqing",
+      "nameZh": "成都与重庆六天五晚",
+      "batch": 1,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 6,
+      "id": "xian-regional",
+      "nameZh": "西安三天两晚",
+      "batch": 1,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 7,
+      "id": "shanxi-architecture",
+      "nameZh": "大同、太原与平遥六天五晚",
+      "batch": 1,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 8,
+      "id": "fujian-culture",
+      "nameZh": "厦门、泉州与福建土楼六天五晚",
+      "batch": 1,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 9,
+      "id": "gansu-silk-road",
+      "nameZh": "甘肃丝路八天七晚",
+      "batch": 2,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 10,
+      "id": "yangtze-cruise",
+      "nameZh": "长江游轮与重庆／宜昌",
+      "batch": 2,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 11,
+      "id": "guizhou-villages",
+      "nameZh": "贵州村寨与荔波七天六晚",
+      "batch": 2,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 12,
+      "id": "jingdezhen-wuyuan",
+      "nameZh": "景德镇与婺源四天三晚",
+      "batch": 2,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 13,
+      "id": "hong-kong-guilin",
+      "nameZh": "香港至桂林阳朔七天六晚",
+      "batch": 2,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 14,
+      "id": "harbin-winter",
+      "nameZh": "哈尔滨冬季四天三晚",
+      "batch": 2,
+      "status": "queued-for-design",
+      "slug": null,
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 15,
+      "id": "xinjiang",
+      "nameZh": "新疆区域线路",
+      "batch": "research",
+      "status": "queued-for-feasibility-research",
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 16,
+      "id": "tibet",
+      "nameZh": "西藏线路",
+      "batch": "research",
+      "status": "queued-for-feasibility-research",
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 17,
+      "id": "qinghai",
+      "nameZh": "青海高原线路",
+      "batch": "research",
+      "status": "queued-for-feasibility-research",
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 18,
+      "id": "inner-mongolia",
+      "nameZh": "内蒙古草原／沙漠",
+      "batch": "research",
+      "status": "queued-for-feasibility-research",
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 19,
+      "id": "sanya",
+      "nameZh": "三亚度假",
+      "batch": "research",
+      "status": "queued-for-feasibility-research",
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    },
+    {
+      "order": 20,
+      "id": "contemporary-china",
+      "nameZh": "当代中国主题",
+      "batch": "research",
+      "status": "queued-for-feasibility-research",
+      "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
+      "supplierVerified": false,
+      "priceUsd": null
+    }
+  ]
+}

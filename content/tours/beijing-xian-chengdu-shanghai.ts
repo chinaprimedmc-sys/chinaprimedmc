@@ -1,18 +1,17 @@
-import { destinationAsset } from "@/content/destinations/assets";
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import {
   fourCityAsset,
   fourCityGallery,
 } from "@/content/tours/beijing-xian-chengdu-shanghai-assets";
-import { firstChinaAsset } from "@/content/tours/assets";
 import type { Tour } from "@/types/tour";
 
 const slug = "beijing-xian-chengdu-shanghai-private-11-day-tour";
 
 export const beijingXianChengduShanghaiTour: Tour = {
   slug,
-  title: "China Through the Ages: Shanghai, Chengdu, Xi'an & Beijing",
+  title: "12-Day Private China Tour: Shanghai to Beijing",
   subtitle:
-    "A 12-day private journey from Shanghai's riverfront and layered neighborhoods to Chengdu's panda conservation and food culture, Xi'an's ancient heritage, and Beijing's imperial landmarks and Great Wall.",
+    "A 12-day private journey from Shanghai's riverfront and layered neighborhoods to Chengdu's public panda observation and food culture, Xi'an's ancient heritage, and Beijing's imperial landmarks and Great Wall.",
   duration: "12 Days / 11 Nights",
   route: "Shanghai, Chengdu, Xi'an, Beijing",
   styles: ["First-time China", "Family", "Culture", "Food"],
@@ -20,63 +19,94 @@ export const beijingXianChengduShanghaiTour: Tour = {
     eyebrow: "Signature first-time China journey",
     image: fourCityAsset.hero,
     primary: { label: "Explore Itinerary", href: "#itinerary" },
-    secondary: { label: "Plan My Trip", href: "#proposal" },
+    secondary: { label: "Plan My Trip", href: "#enquiry" },
   },
   seo: {
-    title: "12-Day Shanghai, Chengdu, Xi'an & Beijing Private China Tour",
+    title: "12-Day Private China Tour: Shanghai to Beijing",
     description:
-      "Explore Shanghai, Chengdu, Xi'an and Beijing on one 12-day private China journey, from a close-up panda visit to the Terracotta Warriors and Great Wall.",
+      "A private 12-day tour from Shanghai to Beijing via Chengdu and Xian, with panda viewing, cultural visits, private guides and a full Jinshanling Great Wall day.",
     keywords: [
-      "Shanghai Chengdu Xi'an Beijing private tour",
-      "12 day Shanghai Chengdu Xi'an Beijing tour",
-      "China private tour with pandas",
-      "first time China itinerary",
-      "private China family tour",
-      "Great Wall Terracotta Warriors panda tour",
+      "Shanghai Chengdu Xian Beijing 12 day private tour",
+      "China private tour Jinshanling Great Wall",
+      "Dujiangyan panda visit private China tour",
+      "China tour Shanghai arrival Beijing departure",
     ],
+
+    preserveCopy: true,
   },
   overview: {
     pitch:
       "A single, carefully sequenced route through China's modern waterfront, living traditions and imperial history.",
     facts: [
+      { label: "Hotels", value: "Selected hotels and room categories named in the proposal" },
+      { label: "Pacing", value: "Cultural sightseeing with an active Jinshanling hiking day" },
       {
-        label: "Duration",
-        value: "12 days / 11 nights",
-        helper: "Shanghai 3 nights, Chengdu 3, Xi'an 2 and Beijing 3.",
-      },
-      {
-        label: "Route",
-        value: "4 defining cities",
-        helper: "Shanghai, Chengdu, Xi'an and Beijing, in that order.",
-      },
-      {
-        label: "Travel Style",
-        value: "A private trip, not a fixed departure",
-        helper: "Dates, hotels, room setup and daily rhythm are confirmed for your party.",
-      },
-      {
-        label: "Pacing",
-        value: "One defined 12-day itinerary",
-        helper: "A clear day-by-day route with no alternate duration to compare.",
-      },
-      {
-        label: "Suitable For",
-        value: "First-time visitors",
-        helper: "Landmarks, food, wildlife and modern city life in one coherent route.",
-      },
-      {
-        label: "Proposal",
-        value: "A written, itemized proposal",
-        helper:
-          "Hotel choices, transport, inclusions and final pricing are confirmed before booking.",
+        label: "Suitable for",
+        value:
+          "First-time or returning visitors who want four cities, regional culture and an active Great Wall walk rather than a family-specific program.",
       },
     ],
+
+    practicalities: [
+      {
+        label: "Best for",
+        value:
+          "First-time or returning visitors who want four cities, regional culture and an active Great Wall walk rather than a family-specific program.",
+      },
+      {
+        label: "Nights and direction",
+        value:
+          "12 days / 11 nights: Shanghai 3, Chengdu 3, Xi’an 2 and Beijing 3. Arrive in Shanghai and depart from Beijing.",
+      },
+      {
+        label: "Domestic travel",
+        value:
+          "Shanghai–Chengdu flight; Chengdu–Xi’an and Xi’an–Beijing connections are selected and ticketed as stated in the proposal. Train class, baggage and transfers must be specified.",
+      },
+      {
+        label: "Hotels",
+        value:
+          "Selected hotels with breakfast; property, room category and occupancy are named before booking. Luxury room categories are not automatic.",
+      },
+      {
+        label: "Panda facility",
+        value:
+          "A public visit to the confirmed Dujiangyan panda facility. This is not the Chengdu city Panda Base and does not include volunteering or backstage access.",
+      },
+      {
+        label: "Cultural appointments",
+        value:
+          "The proposed TCM introduction and Sichuan spirits visit need a confirmed provider, appointment, language and scope. TCM is educational, not a medical service.",
+      },
+      {
+        label: "Great Wall",
+        value:
+          "Jinshanling has uneven, steep and exposed sections. Route length, turnaround and fitness are reviewed; cable cars or an easier section are separate design choices.",
+      },
+      {
+        label: "Meals",
+        value:
+          "Hotel breakfasts begin after the first hotel night; the listed welcome dinner is included. Other meals and tastings are included only when expressly stated.",
+      },
+      {
+        label: "Private and public services",
+        value:
+          "Local guiding and road vehicles are private during the agreed hours. Museums, panda enclosures, rail, flights and any shared river cruise remain public services.",
+      },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("beijing-xian-chengdu-shanghai-private-11-day-tour"),
+      },
+    ],
+
+    answer:
+      "Travel privately from Shanghai to Beijing in 12 days, with three nights in Shanghai, three in Chengdu, two in Xi’an and three in Beijing. The route combines city culture, a public Dujiangyan panda visit, the Terracotta Army and an active Jinshanling Great Wall day. Local guides, selected hotels and the listed domestic connections are arranged for your party; meals and specialist visits follow the proposal.",
   },
   planningSupport: {
     eyebrow: "Why this route works",
     title: "Four cities, connected around the experiences that matter.",
     description:
-      "Begin in Shanghai with its gardens, old lanes and river skyline. Continue to Chengdu for panda conservation and Sichuan's culinary traditions, then follow Xi'an's ancient story north to Beijing and the Great Wall. Your private proposal will map each intercity connection and city transfer around your dates.",
+      "Begin in Shanghai with its gardens, old lanes and river skyline. Continue to Chengdu for public panda observation and Sichuan's culinary traditions, then follow Xi'an's ancient story north to Beijing and the Great Wall. Your private proposal will map each intercity connection and city transfer around your dates.",
     items: [
       {
         label: "For first visits",
@@ -105,9 +135,9 @@ export const beijingXianChengduShanghaiTour: Tour = {
       image: fourCityAsset.greatWall,
     },
     {
-      title: "See panda conservation up close",
+      title: "Observe pandas at Dujiangyan",
       description:
-        "Visit the Dujiangyan Panda Base for a conservation-focused experience that adds context to the encounter, not just a quick photo stop.",
+        "Observe pandas from the public visitor areas at the confirmed Dujiangyan facility. Your private guide explains behavior, habitat and the role of the care center, with time to watch rather than hurry between enclosures.",
       category: "Nature",
       image: fourCityAsset.pandaHighlight,
     },
@@ -119,9 +149,9 @@ export const beijingXianChengduShanghaiTour: Tour = {
       image: fourCityAsset.food,
     },
     {
-      title: "Sail Shanghai's skyline at sunset",
+      title: "See Shanghai's waterfront from the river",
       description:
-        "See the Huangpu waterfront from a private yacht as the skyline changes with the evening light, then explore the city's historic neighborhoods and contemporary art.",
+        "See Shanghai's historic waterfront and Pudong skyline from the river experience named in your proposal. A shared sightseeing cruise and a private charter are different arrangements; vessel category, sailing time and any extra cost are confirmed before booking.",
       category: "Culture",
       image: fourCityAsset.shanghaiBund,
     },
@@ -135,7 +165,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         "Meet your local guide on arrival, transfer to your hotel and leave time to recover from the journey. If your arrival time allows, ease into the city before dinner.",
       image: fourCityAsset.arrival,
       hotel: "Shanghai stay: hotel and room category confirmed in your private proposal",
-      meals: ["Hotel breakfast"],
+      meals: ["No breakfast included before the first hotel night; other meals as confirmed"],
       transport: "Private airport transfer",
       activities: [
         {
@@ -206,7 +236,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
         },
       ],
       guideNote:
-        "Museum opening, yacht availability and sailing time are checked for your travel date.",
+        "Museum opening, the confirmed river-cruise category and sailing time are checked for your travel date.",
       coordinates: { latitude: 31.2402, longitude: 121.4905 },
     },
     {
@@ -240,7 +270,7 @@ export const beijingXianChengduShanghaiTour: Tour = {
       title: "Meet the pandas at Dujiangyan",
       destination: "Chengdu and Dujiangyan",
       summary:
-        "Spend time at the Dujiangyan Panda Base, where a conservation-focused visit can offer a deeper understanding of the work behind panda care.",
+        "Visit the public areas of Dujiangyan Panda Base with private guide interpretation of panda behavior, habitat and the work of a care facility. This is a public visitor experience, not an exclusive or backstage conservation program.",
       image: fourCityAsset.chengduPandas,
       hotel: "Chengdu stay: confirmed in your private proposal",
       meals: ["Hotel breakfast"],
@@ -248,13 +278,13 @@ export const beijingXianChengduShanghaiTour: Tour = {
       activities: [
         {
           time: "Morning",
-          title: "A conservation-led panda experience",
+          title: "Panda observation with private interpretation",
           description:
-            "Learn about panda protection and care in context. Access to behind-the-scenes areas is not assumed and must be confirmed for the actual date.",
+            "Observe the animals from permitted public viewing areas and discuss behavior and habitat. No touching, holding, keeper access or volunteer participation is included or guaranteed.",
         },
       ],
       guideNote:
-        "The base is outside central Chengdu; transfer time, access and any conservation activity are confirmed in the proposal.",
+        "Confirm the named Dujiangyan facility, public ticket, visiting hours and road transfers in the proposal. This is a different destination from the Chengdu Research Base.",
       coordinates: { latitude: 30.9976, longitude: 103.6477 },
     },
     {
@@ -557,91 +587,143 @@ export const beijingXianChengduShanghaiTour: Tour = {
   gallery: fourCityGallery,
   faqs: [
     {
-      question: "Is this a fixed group tour?",
-      answer:
-        "No. This is a private route, not a fixed group departure. We confirm your dates, hotel and room choices, guide service, transport and daily pace in a written proposal.",
+      question: "What does this private tour cost, and what is the starting-price basis?",
+      answer: getPublishedPriceDisclosure("beijing-xian-chengdu-shanghai-private-11-day-tour"),
     },
     {
-      question: "How is the final price calculated?",
+      question: "Where does this 12-day China tour start and end?",
       answer:
-        "Pricing is prepared for your dates, party size, room setup, hotel choices, transport and confirmed experiences. Request a written proposal for the full price.",
+        "Start in Shanghai and finish in Beijing over 12 days and 11 nights: Shanghai 3 nights, Chengdu 3, Xi'an 2 and Beijing 3. The route includes three city-to-city journeys and an active Jinshanling Great Wall day. Confirm the domestic connections before booking international arrival and departure flights.",
     },
     {
-      question: "Is this a good first trip to China?",
+      question: "How is this different from the Beijing Xian Shanghai ten-day tour?",
       answer:
-        "Yes. The 12-day route brings together contemporary Shanghai, Chengdu's pandas and food, Xi'an's ancient history, and Beijing's imperial landmarks and Great Wall.",
+        "This route adds Chengdu and a third city-to-city move, includes different cultural appointments and finishes with an active Jinshanling Great Wall day. The ten-day journey uses three cities and Mutianyu. Choose four cities for that broader cultural range, not because twelve days automatically means a gentler pace.",
     },
     {
-      question: "Can this journey work for children or older parents?",
+      question: "Does the Dujiangyan panda visit include a volunteer program?",
       answer:
-        "We can review walking distances, rest breaks, room needs, vehicle access and start times with you. The Great Wall, Forbidden City and Panda Base still involve walking, so we discuss mobility needs before confirming the plan.",
+        "No volunteer place, keeper role, feeding, holding or backstage access is included. The plan is a public visitor experience with private guiding and transfers. The exact facility and access are named in the proposal. Do not confuse Dujiangyan with the Chengdu Research Base or assume their ticket rules are identical.",
     },
     {
-      question: "Can you support halal, vegetarian or allergy requirements?",
+      question: "How demanding is the Jinshanling Great Wall walk?",
       answer:
-        "Share dietary requirements before we prepare your proposal. We check suitable restaurants and meal arrangements for your dates; availability and certification vary by city.",
+        "It is an active mountain-wall visit with uneven steps, steep gradients and exposed stretches. A fixed distance is not imposed before discussing your ability and the season. Tell us about knees, balance, heat or a fear of heights. Changing to Mutianyu or a shorter route requires a revised plan, not a promise of equivalent access.",
     },
     {
-      question: "Are the trains and domestic flight included?",
+      question: "Is the traditional Chinese medicine session a consultation or treatment?",
       answer:
-        "Your written proposal lists each included train or flight, the class or baggage allowance, and the related station or airport transfers.",
+        "The proposed session is a cultural and educational introduction with the provider and content confirmed for your dates. It does not diagnose, prescribe or promise a health outcome. Medical services would require separately contracted qualified care; do not stop or change medication because of an itinerary activity.",
     },
     {
-      question: "Can we extend the trip beyond 12 days?",
+      question: "Does the Shanghai river experience include a private yacht?",
       answer:
-        "This is one defined 12-day route. If you have extra time, tell us when you enquire and we can discuss a separately quoted extension.",
+        "Not automatically. The proposal must name any included river ticket or charter and specify whether it is shared or private. A standard sightseeing cruise is not a private yacht. Sailing time and visibility depend on the operator and conditions, and an unavailable sunset does not create a new included service.",
     },
     {
-      question: "Are there compulsory shopping stops?",
+      question: "Are the domestic flights and rail tickets included?",
       answer:
-        "No. There are no compulsory shopping stops. We include a market or shopping time only when you ask for it or it has a clear connection to your interests.",
+        "The package includes the domestic sectors expressly listed in the written proposal, with departure points, classes, baggage, fare conditions and local transfers. The designed route flies Shanghai to Chengdu and then continues north. Exact schedules and rail-versus-flight choices are checked for the dates; international flights remain separate.",
+    },
+    {
+      question: "Are spirits tastings suitable for non-drinkers?",
+      answer:
+        "The Sichuan visit is about production and regional food culture, with any tasting separately identified. Tell us if you avoid alcohol or want an alternative. Do not assume an alcohol-free production site or a suitable substitute without confirmation. Underage travelers do not participate in alcohol tasting.",
+    },
+    {
+      question: "Is this the same as the twelve-day family tour?",
+      answer:
+        "No. This route is designed around adult cultural interests and Jinshanling walking. The family itinerary travels Beijing to Shanghai, uses age-matched workshops and family room planning, and protects more child-oriented downtime. A family can request adaptation, but this page does not automatically supply that family package.",
+    },
+    {
+      question: "Can we change the order or shorten the journey?",
+      answer:
+        "Yes, as a revised proposal. Changing gateways, removing a city or replacing Jinshanling affects nights, transport, reservations and price. Keep international tickets flexible until the operator has checked the domestic route. A shorter trip does not cost a fixed fraction of the twelve-day price.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
-        title: "10-Day Beijing, Xi'an & Shanghai Private Tour",
-        description: "See Beijing, Xi'an and Shanghai in less time, without the Chengdu chapter.",
-        tags: ["10 days", "Senior-friendly"],
-        image: firstChinaAsset.shanghaiWaterfrontGroup,
-        route: "Beijing, Xi'an, Shanghai",
+        title: "12-Day Private China Family Tour with Pandas",
+        description:
+          "Choose age-aware workshops, family room planning and protected breaks for travel with children.",
+        tags: ["Family", "Luxury", "Culture"],
+        image: {
+          src: "/home/editorial/philosophy-family-friendly.avif",
+          alt: "Parents, children and local hosts making dumplings together in a Beijing courtyard",
+          width: 1536,
+          height: 1024,
+          objectPosition: "center",
+        },
+        route: "Beijing · Xi'an · Chengdu · Shanghai",
+        duration: "12 days / 11 nights",
+        href: "/tours/china-family-tour-with-pandas-12-day-private-tour",
+      },
+      {
+        title: "10-Day Private Tour of Beijing, Xi'an and Shanghai",
+        description:
+          "Choose a shorter three-city introduction with fewer hotel changes and no Chengdu chapter.",
+        tags: ["First-time China", "Culture", "Photography"],
+        image: {
+          src: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.jpg",
+          alt: "The Great Wall winding across mountain ridges near Beijing in warm evening light",
+          width: 1920,
+          height: 1080,
+        },
+        route: "Beijing · Xi'an · Shanghai",
         duration: "10 days / 9 nights",
         href: "/tours/beijing-xian-shanghai-private-10-day-tour",
       },
-      {
-        title: "7-Day Chengdu Panda & Jiuzhaigou Private Journey",
-        description:
-          "Pair Chengdu's pandas and food with Jiuzhaigou's alpine lakes and forest scenery.",
-        tags: ["7 days", "Nature"],
-        image: destinationAsset.jiuzhaigouLake,
-        route: "Chengdu, Jiuzhaigou",
-        duration: "7 days / 6 nights",
-        href: "/tours/chengdu-pandas-jiuzhaigou-private-7-day-tour",
-      },
     ],
+
     destinations: [
       {
         name: "Beijing",
         description: "Imperial landmarks, historic neighborhoods and the Great Wall.",
-        image: destinationAsset.beijingForbiddenCityWide,
+        image: {
+          src: "/home/editorial/great-wall-private-china-travel.webp",
+          alt: "A traveler looking across the Great Wall near Beijing",
+          width: 1086,
+          height: 1448,
+          objectPosition: "50% 44%",
+        },
         href: "/destinations/beijing",
       },
       {
         name: "Xi'an",
         description: "Terracotta Warriors, ancient walls and Silk Road history.",
-        image: destinationAsset.xianTerracotta,
+        image: {
+          src: "/home/xian-terracotta-army.webp",
+          alt: "Terracotta Army figures in Xi'an",
+          width: 1400,
+          height: 927,
+          objectPosition: "50% 48%",
+        },
         href: "/destinations/xian",
       },
       {
         name: "Chengdu",
         description: "Giant pandas, tea-house culture and Sichuan food.",
-        image: destinationAsset.chengduPanda,
+        image: {
+          src: "/home/chengdu-panda.webp",
+          alt: "A giant panda in Chengdu",
+          width: 1920,
+          height: 1200,
+          objectPosition: "54% 42%",
+        },
         href: "/destinations/chengdu",
       },
       {
         name: "Shanghai",
         description: "Historic waterfront architecture and contemporary city life.",
-        image: destinationAsset.shanghaiSkyline,
+        image: {
+          src: "/home/shanghai-pudong-skyline.webp",
+          alt: "Shanghai Pudong skyline at dusk",
+          width: 1920,
+          height: 1080,
+          objectPosition: "50% 45%",
+        },
         href: "/destinations/shanghai",
       },
     ],
@@ -654,6 +736,67 @@ export const beijingXianChengduShanghaiTour: Tour = {
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in the 12-day Shanghai, Chengdu, Xi'an and Beijing private journey. Please send me a proposal for my group and travel dates.",
+  },
+
+  planningResources: [
+    {
+      label: "The Palace Museum: official visitor information",
+      href: "https://intl.dpm.org.cn/visit.html",
+      officialPublisher: "The Palace Museum",
+      description:
+        "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+    },
+    {
+      label: "Terracotta Army: official museum ticketing",
+      href: "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+      officialPublisher: "Emperor Qinshihuang’s Mausoleum Site Museum",
+      description:
+        "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access.",
+    },
+    {
+      label: "China Railway 12306: passenger information",
+      href: "https://www.12306.cn/en/faq.html",
+      officialPublisher: "China Railway 12306",
+      description:
+        "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+    },
+    {
+      label: "China entry requirements: official information",
+      href: "https://en.nia.gov.cn/",
+      officialPublisher: "National Immigration Administration of China",
+      description:
+        "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+    },
+  ],
+
+  faqLimit: 13,
+
+  updatedAt: "2026-11-12",
+
+  inquiryChecklist: [
+    "Dates and arrival in Shanghai / departure from Beijing",
+    "Number of travelers, rooms and hotel preference",
+    "Walking comfort for Jinshanling and archaeological sites",
+    "Guide language and interests",
+    "Optional cultural sessions and dietary needs",
+  ],
+
+  comparison: {
+    title: "Four cities or a focused three-city first trip?",
+    intro:
+      "The panda and Sichuan chapter adds another city move. Keep three cities when you prefer fewer hotel bases.",
+    columns: ["Decision", "This four-city journey", "10-day Beijing–Xi’an–Shanghai journey"],
+    rows: [
+      ["Route", "Shanghai → Chengdu → Xi’an → Beijing", "Beijing → Xi’an → Shanghai"],
+      ["Hotel bases", "Four bases and three changes", "Three bases and two changes"],
+      [
+        "Main difference",
+        "Dujiangyan pandas, Sichuan culture and active Jinshanling walking",
+        "A shorter introduction without a panda city",
+      ],
+    ],
+    href: "/tours/beijing-xian-shanghai-private-10-day-tour",
+    linkLabel: "Compare the alternative itinerary",
   },
 };
 

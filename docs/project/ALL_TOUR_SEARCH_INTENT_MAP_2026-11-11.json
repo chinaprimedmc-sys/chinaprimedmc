@@ -1,0 +1,661 @@
+{
+  "asOf": "2026-11-12",
+  "status": "Editorial search-intent hypotheses based on the actual products; no keyword-volume, Search Console or live SERP research performed this pass.",
+  "rules": [
+    "One stable canonical per actual product; preserve historic slugs.",
+    "Primary commercial query in natural title and lead; decision queries answered in visible matching sections.",
+    "No hidden AI-only claims; FAQ schema mirrors all visible questions.",
+    "AIO inclusion and FAQ rich results are not guaranteed. llms files are supplementary."
+  ],
+  "products": [
+    {
+      "slug": "private-mutianyu-great-wall-day-tour",
+      "canonicalPath": "/tours/private-mutianyu-great-wall-day-tour",
+      "title": "Private Mutianyu Great Wall Tour from Beijing",
+      "primaryQuery": "private Mutianyu Great Wall tour from Beijing",
+      "supportingQueryIntents": [
+        "Mutianyu Great Wall tour with hotel pickup",
+        "private Great Wall tour with guide and driver",
+        "Mutianyu private tour for two people",
+        "Mutianyu tour with English-speaking guide",
+        "Mutianyu cable car private tour",
+        "Mutianyu Great Wall tour for families",
+        "Mutianyu Great Wall tour for older travelers",
+        "no shopping Great Wall tour from Beijing"
+      ],
+      "placement": {
+        "title": "Private Mutianyu Great Wall Tour from Beijing",
+        "description": "Private Mutianyu Great Wall tour from Beijing with your own guide, driver, hotel pickup, admission and shuttle. Cable car optional; no shopping stops.",
+        "visibleLead": "Visit Mutianyu Great Wall from your Beijing hotel on a private 7–9-hour day tour. Your own guide, separate driver, air-conditioned vehicle, admission and scenic-area shuttle are included, with around 2–3 hours for the Wall visit. Cable car, chairlift, toboggan and lunch are extra unless added to your proposal. Walking is adapted to your group; steps remain. No compulsory shopping stops.",
+        "productQuestions": [
+          "What is included in this private Mutianyu Great Wall tour?",
+          "How much is a private Mutianyu tour for two people?",
+          "Will we have our own English-speaking guide and driver?",
+          "Does the price include Mutianyu cable-car or toboggan tickets?",
+          "Should we choose the cable car or the chairlift and toboggan?",
+          "How long does a Mutianyu day trip from Beijing take?",
+          "What time should we leave Beijing for Mutianyu?",
+          "Which Beijing hotels are covered by pickup and return?",
+          "How much walking is involved if we take the cable car?",
+          "Is this Mutianyu tour suitable for families with children?",
+          "Can older travelers visit Mutianyu, and is it wheelchair accessible?",
+          "What happens if rain or wind stops the cable car or toboggan?",
+          "Do you arrange tickets, and do foreign visitors need a passport?",
+          "What is the difference between this private tour and a shuttle-bus trip?",
+          "Can we visit the Forbidden City or another Great Wall section on the same day?",
+          "Can this tour start at Beijing Capital or Daxing Airport during a layover?",
+          "Is lunch included, and can you accommodate dietary requirements?",
+          "What do you need to confirm our private Great Wall day?"
+        ],
+        "decisionComparison": null
+      },
+      "officialReferences": 2
+    },
+    {
+      "slug": "private-shanghai-day-tour-guide-driver",
+      "canonicalPath": "/tours/private-shanghai-day-tour-guide-driver",
+      "title": "Private Shanghai Day Tour with Guide and Driver",
+      "primaryQuery": "private Shanghai day tour",
+      "supportingQueryIntents": [
+        "Shanghai private tour with guide and driver",
+        "Shanghai one day tour with hotel pickup",
+        "Yu Garden Bund French Concession tour",
+        "Shanghai private tour English speaking guide"
+      ],
+      "placement": {
+        "title": "Private Shanghai Day Tour with Guide and Driver",
+        "description": "See Yu Garden, the Bund and the former French Concession on a private Shanghai day tour with hotel pickup, your own guide and driver, and a public ferry crossing.",
+        "visibleLead": "Explore Yu Garden (Yuyuan Garden), the Old City, the Bund and the former French Concession on a private Shanghai day tour. Your own guide, separate driver, central-hotel transfers, garden admission and one public Huangpu ferry crossing are included. Allow about eight hours. Lunch, Shanghai Tower and evening cruises cost extra; the ferry is shared, and airport or cruise-port transfers need a separate quote.",
+        "productQuestions": [
+          "What can I see in Shanghai in one day on this private tour?",
+          "Does the Shanghai day tour include hotel pickup and a private driver?",
+          "Can I book an English-speaking private guide in Shanghai?",
+          "Is Yu Garden admission included, or do we only visit Yuyuan Bazaar?",
+          "Is the Huangpu River ferry a private sightseeing cruise?",
+          "Is this a private Shanghai tour or a small-group departure?",
+          "How much does a private Shanghai day tour cost for two people or a family?",
+          "Can this be a Shanghai shore excursion from Wusongkou cruise port?",
+          "Can I take a Shanghai layover tour from Pudong or Hongqiao airport?",
+          "Can we add Shanghai Tower and still finish in about eight hours?",
+          "Can we add a Huangpu River night cruise?",
+          "Is lunch included, and are there compulsory shopping stops?",
+          "How much walking is involved for children or older travelers?",
+          "What happens if Yu Garden is closed, the ferry stops or it rains?",
+          "How do I check availability and confirm the Shanghai tour?"
+        ],
+        "decisionComparison": null
+      },
+      "officialReferences": 1
+    },
+    {
+      "slug": "private-xian-terracotta-warriors-day-tour",
+      "canonicalPath": "/tours/private-xian-terracotta-warriors-day-tour",
+      "title": "Private Terracotta Warriors Tour from Xi'an",
+      "primaryQuery": "private Terracotta Warriors tour from Xi'an",
+      "supportingQueryIntents": [
+        "Terracotta Army tour with guide and driver",
+        "Terracotta Warriors tour with hotel pickup and tickets",
+        "Xi'an private day tour English speaking guide",
+        "Terracotta Warriors private tour no shopping"
+      ],
+      "placement": {
+        "title": "Private Terracotta Warriors Tour from Xi'an",
+        "description": "Visit the Terracotta Army from Xi'an with a private guide, driver, hotel pickup and museum tickets. Explore the main pits, then choose an Old City walk.",
+        "visibleLead": "Explore the Terracotta Army in Lintong, outside central Xi'an, with your own guide and separate driver. This private eight-hour hotel-to-hotel tour includes standard museum admission, Pits 1, 2 and 3 when open, and one selected Old City walk. Allow around 2.5–3 hours at the museum. Lunch, City Wall admission and clay-making are optional; public entry checks and queues still apply.",
+        "productQuestions": [
+          "What is included in this private Terracotta Warriors tour from Xi'an?",
+          "Are Terracotta Warriors tickets included, and do I need my passport?",
+          "Can I book an English-speaking guide and private driver?",
+          "How long do we spend at the Terracotta Army museum?",
+          "Does the tour visit all three Terracotta Warriors pits?",
+          "Does a private tour include skip-the-line or VIP museum access?",
+          "How much does a private Terracotta Warriors tour cost for two people or a family?",
+          "Can you pick us up at Xi'an airport or Xi'an North Railway Station?",
+          "Can I visit the Terracotta Warriors as a day trip from Beijing or Shanghai?",
+          "Does the Old City walk include Xi'an City Wall admission?",
+          "Does the tour include Lishan Garden or entry to the emperor's tomb?",
+          "Are there jade-factory stops, and can we make a clay warrior instead?",
+          "Is lunch included, and can you arrange halal or other dietary meals?",
+          "Is the Terracotta Warriors tour suitable for children, older travelers or wheelchair users?",
+          "What happens if it rains, an exhibition closes or tickets are unavailable?",
+          "How do I check availability and book the Xi'an tour?"
+        ],
+        "decisionComparison": null
+      },
+      "officialReferences": 2
+    },
+    {
+      "slug": "private-chengdu-panda-day-tour-early-morning",
+      "canonicalPath": "/tours/private-chengdu-panda-day-tour-early-morning",
+      "title": "Private Chengdu Panda Tour with Hotel Pickup",
+      "primaryQuery": "private Chengdu panda tour",
+      "supportingQueryIntents": [
+        "Chengdu Panda Base private day tour",
+        "Chengdu panda tour with guide and driver",
+        "early morning Chengdu panda tour",
+        "Chengdu panda tour hotel pickup",
+        "private Chengdu day tour",
+        "Chengdu panda family tour",
+        "Chengdu panda tour no shopping"
+      ],
+      "placement": {
+        "title": "Private Chengdu Panda Tour with Hotel Pickup",
+        "description": "Visit Chengdu Panda Base with a private guide, driver, hotel pickup and admission, then walk in People's Park. Early start; lunch and tea are optional.",
+        "visibleLead": "Visit Chengdu Panda Base with your own guide and separate driver, then explore People's Park. This private hotel-to-hotel day is planned around eight hours, usually 7–9 hours. Central Chengdu transfers, standard admission and the park walk are included. Lunch, tea and internal electric carts cost extra. Timing follows public opening rules; panda activity, cub sightings and direct animal contact are not guaranteed.",
+        "productQuestions": [
+          "Which panda base does this Chengdu private tour visit?",
+          "What is included, and how much does a private panda tour cost for two people or a family?",
+          "How early is pickup, and is this a VIP or skip-the-line panda tour?",
+          "Can you guarantee active pandas, panda cubs or red pandas?",
+          "Can we hold, touch or feed a panda?",
+          "Is a panda volunteer program included at Dujiangyan or Wolong?",
+          "Can we book an English-speaking guide and a separate driver?",
+          "Are Panda Base tickets included, and do foreign visitors need a passport?",
+          "How much walking is involved, and is the internal electric cart included?",
+          "Is this panda tour suitable for children or older travelers?",
+          "Are lunch and People's Park tea included?",
+          "Can we add Sichuan cooking or an evening opera performance?",
+          "Can pickup be at Tianfu Airport, Shuangliu Airport or a railway station?",
+          "What happens in summer heat, rain, crowds or a closure?",
+          "How long is the day, and can we book only a panda-base morning?",
+          "How do we check availability and confirm the booking?"
+        ],
+        "decisionComparison": null
+      },
+      "officialReferences": 2
+    },
+    {
+      "slug": "guilin-yangshuo-li-river-cruise-private-day-tour",
+      "canonicalPath": "/tours/guilin-yangshuo-li-river-cruise-private-day-tour",
+      "title": "Guilin to Yangshuo Li River Cruise with Guide",
+      "primaryQuery": "Guilin to Yangshuo Li River cruise",
+      "supportingQueryIntents": [
+        "private Guilin Yangshuo day tour",
+        "Li River cruise hotel pickup",
+        "four star Li River cruise",
+        "Guilin day tour to Yangshuo",
+        "Li River cruise with private guide",
+        "Guilin Yangshuo tour with luggage",
+        "Li River cruise return to Guilin"
+      ],
+      "placement": {
+        "title": "Guilin to Yangshuo Li River Cruise with Guide",
+        "description": "Take a shared four-star Li River cruise from Guilin to Yangshuo with a private guide, hotel pickup and luggage transfer. Guilin return is separately quoted.",
+        "visibleLead": "Cruise from Guilin to Yangshuo on a shared four-star Li River boat with your own guide. Private hotel pickup, road transfers, a short countryside visit and confirmed normal luggage delivery to your Yangshuo hotel are included. Allow usually 9–11 hours; this version ends in Yangshuo. Returning to Guilin costs extra. Boat meals follow the confirmed ticket; a private boat or particular seat is not included.",
+        "productQuestions": [
+          "Is the Li River cruise private or shared?",
+          "What does the tour cost for two people or a family?",
+          "Can we finish in Yangshuo instead of returning to Guilin?",
+          "Is the return from Yangshuo to Guilin included, and is it by boat?",
+          "Can our luggage travel from Guilin to our Yangshuo hotel?",
+          "Which port does the cruise use, and what time is hotel pickup?",
+          "How long is the Li River cruise and the whole day?",
+          "Can we have an English-speaking guide on the cruise?",
+          "Are four-star cruise tickets, a window seat and an upper deck guaranteed?",
+          "Do foreign visitors need a passport, and how are children's tickets handled?",
+          "Is lunch included, and can the boat provide vegetarian or allergy-safe food?",
+          "Is the Li River cruise suitable for children, older travelers or wheelchair users?",
+          "Is Yulong River bamboo rafting included after the cruise?",
+          "Can we add Ruyi Peak, cycling or an evening show?",
+          "What happens if rain, low water or a navigation closure affects the cruise?",
+          "Can you collect us at Guilin airport or a railway station, or start in Yangshuo?",
+          "How do we reserve the cruise day?"
+        ],
+        "decisionComparison": null
+      },
+      "officialReferences": 1
+    },
+    {
+      "slug": "beijing-xian-shanghai-private-10-day-tour",
+      "canonicalPath": "/tours/beijing-xian-shanghai-private-10-day-tour",
+      "title": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
+      "primaryQuery": "Beijing Xian Shanghai 10 day private tour",
+      "supportingQueryIntents": [
+        "10 day China itinerary first time visitors",
+        "private China tour with English speaking guides",
+        "Beijing Xian Shanghai tour cost for two",
+        "10 or 12 days in China itinerary"
+      ],
+      "placement": {
+        "title": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
+        "description": "Explore Beijing, Xi'an and Shanghai on a 10-day private China tour with nine hotel nights, local guides, rail and a domestic flight. Request a personalized quote.",
+        "visibleLead": "A ten-day private journey from Beijing through Xi’an to Shanghai, with nine hotel nights, breakfast, listed private sightseeing and transfers, Beijing–Xi’an rail and a Xi’an–Shanghai flight. Visit the Forbidden City, Mutianyu and Terracotta Army, then explore Shanghai. Day 9 is independent, without a scheduled guide or vehicle. International flights, lunches, dinners and optional experiences cost extra. Hotels, transport class and reservations are confirmed in writing.",
+        "productQuestions": [
+          "Is 10 days enough for Beijing, Xi'an and Shanghai?",
+          "Should we choose the 10-day or 12-day Beijing, Xi'an and Shanghai tour?",
+          "How much does this 10-day private China tour cost for two people or a family?",
+          "Which hotels and room types are included?",
+          "Do we have English-speaking guides and the same guide throughout China?",
+          "Is the tour private, and are there compulsory shopping stops?",
+          "Do we take a train or a flight between the cities?",
+          "Will someone carry all our luggage at stations and airports?",
+          "Are the Forbidden City and Terracotta Warriors tickets guaranteed?",
+          "Does the Mutianyu cable car mean there are no stairs at the Great Wall?",
+          "Is the 10-day route suitable for older parents, children or wheelchair users?",
+          "Are meals, river cruises and cultural workshops included?",
+          "What is included on Day 9: rest, Shanghai sightseeing or Zhujiajiao?",
+          "When is the best time for this three-city China itinerary?",
+          "Should we fly into Beijing and out of Shanghai, and are airport transfers included?",
+          "Can we add Chengdu pandas, or reverse the route?",
+          "Does a 10-day itinerary qualify us for visa-free entry or transit?",
+          "How do we book, and what happens if a service changes?"
+        ],
+        "decisionComparison": "10 or 12 days in Beijing, Xi'an and Shanghai?"
+      },
+      "officialReferences": 5
+    },
+    {
+      "slug": "china-at-an-easier-pace-12-day-private-tour",
+      "canonicalPath": "/tours/china-at-an-easier-pace-12-day-private-tour",
+      "title": "12-Day Private China Tour at an Easier Pace",
+      "primaryQuery": "12 day private China tour",
+      "supportingQueryIntents": [
+        "Beijing Xian Shanghai 12 day itinerary",
+        "China private tour with older parents",
+        "10 vs 12 days in China",
+        "slow paced China private tour",
+        "China tour for seniors walking requirements"
+      ],
+      "placement": {
+        "title": "12-Day Private China Tour at an Easier Pace",
+        "description": "Explore Beijing, Xi'an and Shanghai over 12 days with 11 hotel nights, local private guides, first-class rail and time for rest. Request a personalized quote.",
+        "visibleLead": "Travel privately from Beijing through Xi’an to Shanghai over twelve days, with eleven five-star hotel nights and two hotel changes. Listed sightseeing, breakfasts, transfers, first-class Beijing–Xi’an rail and a Xi’an–Shanghai economy flight are included. Days 5 and 11 are independent rest days without a scheduled guide or vehicle. Historic sites still involve walking and steps. International flights, lunches, dinners and optional experiences are separate.",
+        "productQuestions": [
+          "Why choose 12 days instead of the 10-day Beijing, Xi’an and Shanghai tour?",
+          "How many nights do we spend in each city?",
+          "Is this private China tour suitable for older parents or seniors?",
+          "Can wheelchair users or travelers with limited mobility take this route?",
+          "How much does the 12-day private China tour cost for two people or a family?",
+          "Which hotels, room types and breakfasts are included?",
+          "Do we have English-speaking guides and the same guide throughout China?",
+          "What is included on the Beijing and Shanghai choice days?",
+          "Do we take first-class trains or domestic flights between cities?",
+          "Will someone carry our luggage at stations and airports?",
+          "Are Forbidden City and Terracotta Army tickets guaranteed?",
+          "Does the Mutianyu cable car make the Great Wall step-free?",
+          "Are tai chi, craft workshops, private boats and farewell dinners included?",
+          "Are lunches, dinners and special dietary arrangements included?",
+          "Can we move a visit to a choice day if we need rest or the weather changes?",
+          "When is the best time for this 12-day China itinerary?",
+          "Can adult children plan this trip for their parents, and can we add Chengdu?",
+          "Does a 12-day tour qualify for visa-free entry or transit?"
+        ],
+        "decisionComparison": "10 or 12 days in Beijing, Xi'an and Shanghai?"
+      },
+      "officialReferences": 5
+    },
+    {
+      "slug": "china-family-tour-with-pandas-12-day-private-tour",
+      "canonicalPath": "/tours/china-family-tour-with-pandas-12-day-private-tour",
+      "title": "12-Day Private China Family Tour with Pandas",
+      "primaryQuery": "private China family tour with pandas 12 days",
+      "supportingQueryIntents": [
+        "China family tour two rooms",
+        "China tour with kids private guide",
+        "Great Wall family photographer tour",
+        "China family holiday first class train"
+      ],
+      "placement": {
+        "title": "12-Day Private China Family Tour with Pandas",
+        "description": "Visit Beijing, Xian, Chengdu and Shanghai in 12 days with private family guides, pandas, hands-on workshops and five-star hotels. Check the age and room basis.",
+        "visibleLead": "A private 12-day China family tour through Beijing, Xi’an, Chengdu and Shanghai, with 11 hotel nights, family guides, two first-class train journeys and a domestic flight. Children explore the Great Wall, Terracotta Army and pandas through age-matched activities. Five-star hotels, selected meals and listed workshops are included. The starting basis is two adults and two children aged 6–11 in two rooms.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Is this China family tour designed for young children or teenagers?",
+          "Are connecting hotel rooms guaranteed for our family?",
+          "Which panda base do we visit, and can children hold a panda?",
+          "Are the Great Wall cable car and photographer included?",
+          "Can we choose cooking, Sanxingdui, Leshan or rest in Chengdu?",
+          "How busy is the Shanghai family day?",
+          "Are child seats, strollers and luggage assistance included?",
+          "What happens if a child is tired or a workshop host is unavailable?",
+          "How does this differ from the adult four-city China tour?",
+          "Are international flights, visas and all meals included?"
+        ],
+        "decisionComparison": "Family route or adult four-city route?"
+      },
+      "officialReferences": 6
+    },
+    {
+      "slug": "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      "canonicalPath": "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
+      "title": "12-Day Private China Tour: Shanghai to Beijing",
+      "primaryQuery": "Shanghai Chengdu Xian Beijing 12 day private tour",
+      "supportingQueryIntents": [
+        "China private tour Jinshanling Great Wall",
+        "Dujiangyan panda visit private China tour",
+        "China tour Shanghai arrival Beijing departure"
+      ],
+      "placement": {
+        "title": "12-Day Private China Tour: Shanghai to Beijing",
+        "description": "A private 12-day tour from Shanghai to Beijing via Chengdu and Xian, with panda viewing, cultural visits, private guides and a full Jinshanling Great Wall day.",
+        "visibleLead": "Travel privately from Shanghai to Beijing in 12 days, with three nights in Shanghai, three in Chengdu, two in Xi’an and three in Beijing. The route combines city culture, a public Dujiangyan panda visit, the Terracotta Army and an active Jinshanling Great Wall day. Local guides, selected hotels and the listed domestic connections are arranged for your party; meals and specialist visits follow the proposal.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Where does this 12-day China tour start and end?",
+          "How is this different from the Beijing Xian Shanghai ten-day tour?",
+          "Does the Dujiangyan panda visit include a volunteer program?",
+          "How demanding is the Jinshanling Great Wall walk?",
+          "Is the traditional Chinese medicine session a consultation or treatment?",
+          "Does the Shanghai river experience include a private yacht?",
+          "Are the domestic flights and rail tickets included?",
+          "Are spirits tastings suitable for non-drinkers?",
+          "Is this the same as the twelve-day family tour?",
+          "Can we change the order or shorten the journey?"
+        ],
+        "decisionComparison": "Four cities or a focused three-city first trip?"
+      },
+      "officialReferences": 4
+    },
+    {
+      "slug": "beijing-great-wall-private-5-day-tour",
+      "canonicalPath": "/tours/beijing-great-wall-private-5-day-tour",
+      "title": "5-Day Beijing and Great Wall Private Tour",
+      "primaryQuery": "Beijing Great Wall private tour 5 days",
+      "supportingQueryIntents": [
+        "Beijing tour hotel airport transfers included",
+        "Forbidden City Mutianyu private itinerary",
+        "Beijing private guide separate driver"
+      ],
+      "placement": {
+        "title": "5-Day Beijing and Great Wall Private Tour",
+        "description": "Explore Beijing in five days with four hotel nights, private guides and drivers, the Forbidden City, hutongs and a dedicated Mutianyu Great Wall day.",
+        "visibleLead": "Spend five days in Beijing with one hotel base, four nights and private transfers. Explore the Forbidden City and hutongs, give Mutianyu Great Wall its own day, then visit the Temple of Heaven and Summer Palace. A private English-speaking guide and separate driver support the listed sightseeing days. Breakfast and confirmed standard admissions are included; lunch, dinner, workshops and optional cable-car tickets are separate.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Does this five-day Beijing tour include hotels and airport transfers?",
+          "Will we have both a private guide and a driver?",
+          "Are Forbidden City tickets guaranteed?",
+          "Does the Mutianyu day include the cable car?",
+          "Are Temple of Heaven and Summer Palace too much for one day?",
+          "How much walking is involved for older travelers?",
+          "Can we add a hutong cooking class or a courtyard lunch?",
+          "Are meals or shopping stops built into the tour?",
+          "Can we arrive by train and depart from a different Beijing airport?",
+          "Should we choose this or a private Great Wall day tour?"
+        ],
+        "decisionComparison": "Five days in Beijing or one Great Wall day?"
+      },
+      "officialReferences": 3
+    },
+    {
+      "slug": "chengdu-pandas-sichuan-table",
+      "canonicalPath": "/tours/chengdu-pandas-sichuan-table",
+      "title": "5-Day Chengdu Panda and Sichuan Food Tour",
+      "primaryQuery": "Chengdu private tour pandas Sichuan food 5 days",
+      "supportingQueryIntents": [
+        "Chengdu cooking class private tour",
+        "Chengdu Leshan five day itinerary",
+        "Chengdu panda tour hotel package"
+      ],
+      "placement": {
+        "title": "5-Day Chengdu Panda and Sichuan Food Tour",
+        "description": "Spend five days in Chengdu with four hotel nights, private guides, panda viewing and Sichuan food experiences. Choose Leshan or a slower city day before booking.",
+        "visibleLead": "A five-day private Chengdu stay with four hotel nights, arrival and departure transfers, panda viewing and Sichuan food culture. Use one city base for guided visits, tea-house time and the confirmed cooking or meal experience. Choose a Leshan excursion or a slower Chengdu day before booking. Breakfasts and the selected services are listed in the proposal; animal contact and unlimited tastings are not included.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Are four hotel nights included in the Chengdu package?",
+          "What is the difference between this and the one-day panda tour?",
+          "Do we visit Chengdu Panda Base or Dujiangyan?",
+          "Does an early visit guarantee active pandas?",
+          "Is Leshan included, or is Day 4 a free choice?",
+          "Can we see the Leshan Giant Buddha by boat instead of climbing?",
+          "Can the Sichuan cooking experience be mild or vegetarian?",
+          "Are tea, tastings and every lunch included?",
+          "Can older travelers or children take this Chengdu tour?",
+          "Which airport should we use for arrival and departure?"
+        ],
+        "decisionComparison": "A Chengdu stay or a single panda day?"
+      },
+      "officialReferences": 2
+    },
+    {
+      "slug": "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "canonicalPath": "/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "title": "6-Day Xi'an and Beijing Private Tour",
+      "primaryQuery": "Xian Beijing private tour 6 days",
+      "supportingQueryIntents": [
+        "Terracotta Warriors Forbidden City Great Wall itinerary",
+        "Xian to Beijing high speed train private tour",
+        "six day China history tour"
+      ],
+      "placement": {
+        "title": "6-Day Xi'an and Beijing Private Tour",
+        "description": "Visit Xian and Beijing in six days with private guides, five hotel nights and high-speed rail. See the Terracotta Army, Forbidden City and Great Wall. Plan a trip.",
+        "visibleLead": "Connect Xi’an and Beijing in six days with five hotel nights: two in Xi’an and three in Beijing. Visit the Terracotta Army, travel north by high-speed rail, then give the Forbidden City and Mutianyu Great Wall separate days. Private local guides, drivers, listed admissions and transfers are included as confirmed. Breakfasts are included; other meals, workshops and optional Great Wall lift tickets are separate.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Can the Forbidden City and Great Wall be visited on separate days?",
+          "How are the five hotel nights split between Xi'an and Beijing?",
+          "Are high-speed rail tickets and station transfers included?",
+          "Does the Terracotta Army visit include an archaeologist?",
+          "Are Forbidden City tickets guaranteed if we book a private tour?",
+          "Are Great Wall cable-car tickets included in this price?",
+          "Can we add Xi’an City Wall, a clay workshop or a halal meal?",
+          "Is six days enough for a first China visit?",
+          "Can we start in Beijing and finish in Xi’an?",
+          "Is this suitable for older parents?"
+        ],
+        "decisionComparison": "Two capitals or three cities?"
+      },
+      "officialReferences": 4
+    },
+    {
+      "slug": "luxury-yunnan-private-tour",
+      "canonicalPath": "/tours/luxury-yunnan-private-tour",
+      "title": "10-Day Luxury Yunnan Private Tour",
+      "primaryQuery": "luxury Yunnan private tour 10 days",
+      "supportingQueryIntents": [
+        "Dali Shaxi Lijiang Shangri La itinerary",
+        "Yunnan Tea Horse Road private guide",
+        "Yunnan altitude private tour"
+      ],
+      "placement": {
+        "title": "10-Day Luxury Yunnan Private Tour",
+        "description": "Follow Yunnan’s Tea Horse Road through Dali, Shaxi, Lijiang and Shangri-La in ten days, with boutique hotels, private guides and cultural sessions confirmed for you.",
+        "visibleLead": "Follow Yunnan’s Tea Horse Road in ten days from Dali through Shaxi and Lijiang to Shangri-La. Nine nights in selected boutique, heritage and highland hotels, private overland travel and listed cultural sessions are included. The route rises in altitude, with light arrival periods and optional higher mountain access. Gateway flights, the highest Jade Dragon cableway and unlisted meals or spa treatments are separate.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "What makes this a luxury Yunnan tour rather than a standard sightseeing circuit?",
+          "How many nights do we spend in each Yunnan town?",
+          "Are flights to Dali and from Shangri-La included?",
+          "Is Shangri-La altitude safe for everyone?",
+          "Do we have to take the highest Jade Dragon Snow Mountain cableway?",
+          "Are the private artisan and cultural sessions guaranteed?",
+          "Does Tiger Leaping Gorge mean a full trekking day?",
+          "Can the vehicle take us directly to every heritage hotel door?",
+          "Which meals and wellness services are included?",
+          "When is the best season for this private Yunnan route?"
+        ],
+        "decisionComparison": "An overland cultural journey or a mountain retreat?"
+      },
+      "officialReferences": 1
+    },
+    {
+      "slug": "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "canonicalPath": "/tours/chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "title": "7-Day Chengdu and Jiuzhaigou Private Tour",
+      "primaryQuery": "Chengdu panda Jiuzhaigou private tour 7 days",
+      "supportingQueryIntents": [
+        "Chengdu to Jiuzhaigou train private transfer",
+        "Jiuzhaigou Huanglong altitude tour",
+        "Jiuzhaigou tour end airport or Chengdu"
+      ],
+      "placement": {
+        "title": "7-Day Chengdu and Jiuzhaigou Private Tour",
+        "description": "Combine Chengdu pandas and Sichuan food with Jiuzhaigou in seven days. See six hotel nights, mountain transfers, park transport and the optional Huanglong day.",
+        "visibleLead": "A seven-day private journey combining Chengdu pandas and Sichuan culture with Jiuzhaigou’s lakes and forests. Spend three nights in Chengdu and three near Jiuzhaigou, with the listed rail, road transfers, guides and park services confirmed together. Huanglong is an optional higher-altitude Day 6 choice. The published route ends in the Jiuzhaigou area; returning to Chengdu needs a separately arranged connection or extra day.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Does the seven-day tour return to Chengdu?",
+          "How do we travel from Chengdu to Jiuzhaigou?",
+          "Is Huanglong included on Day 6?",
+          "Is Jiuzhaigou suitable for someone worried about altitude?",
+          "Are park buses and cableways private?",
+          "Can we avoid long walks in Jiuzhaigou?",
+          "What panda access is included in Chengdu?",
+          "What happens if weather or park controls change the visit?",
+          "Which hotel location is used near Jiuzhaigou?",
+          "When should we visit for autumn colors or quieter conditions?"
+        ],
+        "decisionComparison": "Jiuzhaigou lakes or Zhangjiajie sandstone peaks?"
+      },
+      "officialReferences": 3
+    },
+    {
+      "slug": "shanghai-zhangjiajie-floating-peaks",
+      "canonicalPath": "/tours/shanghai-zhangjiajie-floating-peaks",
+      "title": "8-Day Shanghai and Zhangjiajie Private Tour",
+      "primaryQuery": "Shanghai Zhangjiajie private tour 8 days",
+      "supportingQueryIntents": [
+        "Zhangjiajie Wulingyuan Tianmen Mountain itinerary",
+        "Shanghai Zhangjiajie flights private tour",
+        "Zhangjiajie tour Glass Bridge optional"
+      ],
+      "placement": {
+        "title": "8-Day Shanghai and Zhangjiajie Private Tour",
+        "description": "Combine Shanghai and Zhangjiajie in eight days with seven hotel nights, private guides, domestic flights, Wulingyuan and Tianmen Mountain. Glass Bridge is optional.",
+        "visibleLead": "Combine Shanghai with Zhangjiajie in eight days and seven nights. After Shanghai, fly to the mountain region for Wulingyuan’s sandstone peaks, Golden Whip Stream and a separate Tianmen Mountain day. Private local guides, transfers and the confirmed park transport are included. Fly back to Shanghai on Day 7 before departure on Day 8; Glass Bridge and river-cruise additions are optional.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Does this itinerary include both Wulingyuan and Tianmen Mountain?",
+          "Is the Zhangjiajie Glass Bridge included?",
+          "How many times do we change hotels?",
+          "Are the two domestic flights and airport transfers included?",
+          "Why return to Shanghai a day before departure?",
+          "How difficult is the walking in Zhangjiajie?",
+          "Do we have a private vehicle inside the national park?",
+          "Is a Huangpu River evening cruise included in Shanghai?",
+          "What if cloud or wind affects Tianmen Mountain?",
+          "Should we choose this or Chengdu Chongqing Zhangjiajie?"
+        ],
+        "decisionComparison": "Shanghai and peaks or a southwest-China circuit?"
+      },
+      "officialReferences": 1
+    },
+    {
+      "slug": "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      "canonicalPath": "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      "title": "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
+      "primaryQuery": "Chengdu Chongqing Zhangjiajie private tour 11 days",
+      "supportingQueryIntents": [
+        "China pandas Chongqing mountain itinerary",
+        "Chongqing to Zhangjiajie private tour",
+        "Zhangjiajie tour independent free days"
+      ],
+      "placement": {
+        "title": "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
+        "description": "Travel from Chengdu to Chongqing and Zhangjiajie in eleven days, with pandas, food culture, private local guides and two independent days. See what is included.",
+        "visibleLead": "Explore Chengdu, Chongqing and Zhangjiajie in eleven days with ten hotel nights. Combine public panda viewing and Sichuan food culture with Chongqing’s river city and Wulingyuan’s sandstone peaks. Private local guiding, confirmed intercity transport and transfers cover the listed service days. Days 6 and 10 are independent without included guides, vehicles or paid activities; Tianmen Mountain and other additions require a separate quote.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "What is included on the two open days?",
+          "Does this tour include Tianmen Mountain?",
+          "Are hotel nights and intercity transport included?",
+          "How do we travel from Chongqing to Zhangjiajie?",
+          "Which panda experience is included in Chengdu?",
+          "Are hotpot, tea and Sichuan meals included?",
+          "Is Chongqing manageable for travelers with knee or balance problems?",
+          "Can Day 10 be used to move a weather-affected park visit?",
+          "Does the trip return to Chengdu or Shanghai?",
+          "How does this compare with Shanghai and Zhangjiajie in eight days?"
+        ],
+        "decisionComparison": "Three southwest chapters or a shorter panda-and-lakes trip?"
+      },
+      "officialReferences": 3
+    },
+    {
+      "slug": "muslim-friendly-china-tour-great-wall-desert-stars",
+      "canonicalPath": "/tours/muslim-friendly-china-tour-great-wall-desert-stars",
+      "title": "13-Day Muslim-Friendly China Private Tour",
+      "primaryQuery": "Muslim friendly China private tour halal food",
+      "supportingQueryIntents": [
+        "China private tour prayer times Ramadan",
+        "Beijing Xian Ningxia halal itinerary",
+        "China desert Muslim family private tour"
+      ],
+      "placement": {
+        "title": "13-Day Muslim-Friendly China Private Tour",
+        "description": "Explore Beijing, Xian, Ningxia and Shanghai on a private Muslim-friendly China tour, with dietary checks, prayer-aware planning and confirmed desert arrangements.",
+        "visibleLead": "A 13-day Muslim-friendly private China journey through Beijing, Xi’an, Yinchuan, Zhongwei and Shanghai, with 12 hotel nights. Combine the Great Wall, Terracotta Army, Hui food culture and a desert stay. Private services include a dietary and prayer profile, confirmed meals and the listed domestic connections. Halal certification, mosque access, Friday arrangements and desert activities must be checked individually; this is not a blanket religious certification.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Does Muslim-friendly mean every meal is certified halal?",
+          "Can you plan around prayer times and Friday prayer?",
+          "Can the trip be adapted for Ramadan?",
+          "Are hotel breakfasts halal and alcohol-free?",
+          "Does the Great Wall picnic include a photographer?",
+          "Will we visit a private home or enter prayer halls?",
+          "Is Ningxia the same destination as Xinjiang?",
+          "Does the desert stay guarantee stars, camels or a private camp?",
+          "Is there a direct flight from Zhongwei to Shanghai?",
+          "Can you guarantee no pork or alcohol contact in every kitchen?"
+        ],
+        "decisionComparison": "A dedicated Muslim-friendly route or adaptations to a classic tour?"
+      },
+      "officialReferences": 5
+    },
+    {
+      "slug": "qingcheng-mountain-private-wellness-retreat-10-day",
+      "canonicalPath": "/tours/qingcheng-mountain-private-wellness-retreat-10-day",
+      "title": "10-Day Qingcheng Mountain Wellness Retreat",
+      "primaryQuery": "Qingcheng Mountain private wellness retreat China",
+      "supportingQueryIntents": [
+        "Chengdu Qingcheng ten day retreat",
+        "private tai chi tea retreat Sichuan",
+        "Qingcheng resort retreat non medical"
+      ],
+      "placement": {
+        "title": "10-Day Qingcheng Mountain Wellness Retreat",
+        "description": "Spend two nights in Chengdu and seven near Qingcheng Mountain, with private tai chi, tea, cultural visits and two confirmed resort treatments. Non-medical retreat.",
+        "visibleLead": "A private ten-day wellness retreat with two nights in Chengdu and seven at a selected Qingcheng Mountain resort. Combine confirmed tai chi, tea and Daoist cultural sessions with Dujiangyan, a tailored mountain day and protected unscheduled time. Breakfast, seven specified lunches or dinners and two resort treatments per guest are included as confirmed. Flights, additional treatments and medical care are separate; no health outcome is promised.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "What do you arrange beyond booking the Qingcheng hotel?",
+          "Are Six Senses or a named luxury resort guaranteed?",
+          "How many spa treatments and meals are included?",
+          "Is this a medical, detox or mental-health treatment program?",
+          "Can beginners take the private tai chi sessions?",
+          "Will we have a private guide and car every day?",
+          "Does the free retreat day still include a spa treatment?",
+          "How strenuous is the Qingcheng Mountain visit?",
+          "Can we attend a private Daoist ritual or receive spiritual instruction?",
+          "Can we shorten the retreat or add another destination?"
+        ],
+        "decisionComparison": "A quiet retreat or an active cultural route?"
+      },
+      "officialReferences": 1
+    },
+    {
+      "slug": "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+      "canonicalPath": "/tours/guangzhou-shenzhen-tailor-made-business-tour-4-day",
+      "title": "Guangzhou and Shenzhen Private Business Tour",
+      "primaryQuery": "Guangzhou Shenzhen business trip private guide",
+      "supportingQueryIntents": [
+        "Canton Fair private transfer bilingual assistant",
+        "Shenzhen business interpreter private driver",
+        "Guangzhou Shenzhen four day business itinerary"
+      ],
+      "placement": {
+        "title": "Guangzhou and Shenzhen Private Business Tour",
+        "description": "Plan Guangzhou and Shenzhen around meetings and exhibitions, with private transfers and confirmed bilingual support. Four-day hotel example; longer stays tailored.",
+        "visibleLead": "A private Guangzhou and Shenzhen business trip built around your meetings, exhibition sessions and confirmed visits. The four-day example includes three hotel nights, agreed vehicle windows, intercity transfer and the specified bilingual support; four to seven days can be designed separately. Canton Fair credentials, supplier due diligence, professional interpreting and Hong Kong border services are not automatic inclusions. Optional cultural modules fit around the working agenda.",
+        "productQuestions": [
+          "What does this private tour cost, and what is the starting-price basis?",
+          "Does the starting price cover four days or seven days?",
+          "Can you arrange Canton Fair admission or buyer credentials?",
+          "Is the bilingual assistant a professional business interpreter?",
+          "Does this include supplier sourcing, factory audits or negotiation?",
+          "Can you guarantee access to a Shenzhen technology company?",
+          "How many hours are the driver and assistant available?",
+          "Can the trip fit around changing meetings and fair dates?",
+          "Can you arrange Hong Kong departure or cross-border transfers?",
+          "Are Robotaxi rides or traditional Chinese medicine treatments included?",
+          "Can you accommodate confidentiality and restricted photography?"
+        ],
+        "decisionComparison": "A business operating plan or a leisure itinerary?"
+      },
+      "officialReferences": 3
+    }
+  ]
+}

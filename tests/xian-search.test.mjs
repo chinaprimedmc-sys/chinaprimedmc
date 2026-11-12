@@ -72,17 +72,22 @@ test("museum duration, visible service boundaries and quote-only group units sur
     identifier: tour.slug,
     url,
   });
-  assert.equal(schema.duration, "PT8H");
+  assert.equal(
+    schema.subjectOf[0].mainEntity.find(({ name }) => name === "ISO 8601 duration").value,
+    "PT8H",
+  );
   assert.equal(schema.description, model.answerSummary);
   assert.equal(schema.offers, undefined);
   assert.equal(schema.provider["@id"], `${siteConfig.url}/#organization`);
   assert.deepEqual(
-    schema.additionalProperty.map(({ name, value }) => ({ label: name, value })),
+    schema.subjectOf[0].mainEntity
+      .filter(({ name }) => model.practicalities.some((fact) => fact.label === name))
+      .map(({ name, value }) => ({ label: name, value })),
     model.practicalities,
   );
   assert.equal(catalog.pricing.status, "published-from");
   assert.equal(model.price.pricingUnit, "per-person");
-  assert.equal(model.price.fromUsd, 219);
+  assert.equal(model.price.fromUsd, 299);
   assert.doesNotMatch(JSON.stringify(model.price), /US\$|room categor|hotel standard/i);
   assert.match(model.answerSummary, /Pits 1, 2 and 3 when open/);
   assert.match(model.answerSummary, /Lintong, outside central Xi'an/);

@@ -38,37 +38,12 @@ export function JourneyDecisionSummary({ model }: { model: TourDetailModel }) {
             )}
           </dd>
         </div>
-        {model.included.length > 0 && (
-          <div>
-            <dt>Covered in this itinerary</dt>
-            <dd>
-              <ul>
-                {model.included.slice(0, 2).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <a href="#included" className={styles.link}>
-                See all inclusions
-              </a>
-            </dd>
-          </div>
-        )}
-        {model.excluded.length > 0 && (
-          <div>
-            <dt>Budget separately for</dt>
-            <dd>
-              <ul>
-                {model.excluded.slice(0, 2).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <a href="#included" className={styles.link}>
-                See all exclusions
-              </a>
-            </dd>
-          </div>
-        )}
       </dl>
+      <nav className={styles.scopeLinks} aria-label="Journey service scope">
+        {model.included.length > 0 && <a href="#included">See all inclusions</a>}
+        {model.excluded.length > 0 && <a href="#included">See all exclusions</a>}
+        {model.comparison && <a href="#compare-durations">Compare these itineraries</a>}
+      </nav>
       <p className={styles.confirmation}>
         Your written proposal confirms the services, availability and price for your dates.{" "}
         <Link href="/terms">Booking terms</Link>

@@ -14,7 +14,14 @@ async function run(script, env = process.env) {
   if (code !== 0) throw new Error(`${script} failed (${signal || code}).`);
 }
 
-for (const script of ["lint", "typecheck", "test:unit", "build", "audit:media"]) {
+for (const script of [
+  "lint",
+  "typecheck",
+  "test:unit",
+  "build",
+  "audit:about-search",
+  "audit:media",
+]) {
   await run(script);
 }
 
@@ -60,6 +67,7 @@ try {
   const env = { ...process.env, PREVIEW_URL: origin, SEO_BASE_URL: origin, AUDIT_BASE_URL: origin };
   for (const script of [
     "audit:seo",
+    "audit:indexability",
     "audit:home-search",
     "audit:structured-data",
     "audit:journal-rendered",

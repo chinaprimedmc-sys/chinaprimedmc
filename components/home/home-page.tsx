@@ -174,7 +174,7 @@ export function HomePage({ planningHref }: { planningHref: string }) {
                       src={photo.src}
                       alt={photo.alt}
                       fill
-                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 31vw"
+                      sizes="(max-width: 767px) 38vw, (max-width: 1023px) 50vw, 31vw"
                     />
                   </TrackedLink>
                   <div className={styles.journeyBody}>
@@ -195,7 +195,6 @@ export function HomePage({ planningHref }: { planningHref: string }) {
                     <p className={styles.journeyDescription}>{selection.description}</p>
                     <div className={styles.journeyPrice}>
                       <strong aria-label={price.accessibleText}>{price.displayText}</strong>
-                      <p>A written quote for your dates, party size and hotel choices.</p>
                     </div>
                     <TrackedLink
                       href={item.href}
@@ -212,6 +211,10 @@ export function HomePage({ planningHref }: { planningHref: string }) {
               );
             })}
           </div>
+          <p className={styles.priceNote}>
+            Starting rates follow each journey’s stated basis. Your written proposal confirms dates,
+            rooms, services and the total for your party.
+          </p>
           <div className={styles.browseLinks}>
             <TrackedLink
               href="/tours"
@@ -322,6 +325,13 @@ export function HomePage({ planningHref }: { planningHref: string }) {
               </div>
             ))}
           </dl>
+          <details className={styles.serviceOverview} id="about-aviora">
+            <summary>{homeSearch.overviewTitle}</summary>
+            <p>{homeSearch.overview}</p>
+            <Link href="/about" className={styles.textLink}>
+              Meet AVIORA China Travel <ArrowRight size={15} aria-hidden="true" />
+            </Link>
+          </details>
           <p className={styles.extensionNote}>
             Already have a longer trip arranged?{" "}
             <Link href="/private-china-day-tours">Add a private day extension</Link> or{" "}
@@ -396,19 +406,6 @@ export function HomePage({ planningHref }: { planningHref: string }) {
           </div>
         </section>
 
-        <section
-          className={`${styles.section} ${styles.about}`}
-          id="about-aviora"
-          aria-labelledby="about-aviora-title"
-        >
-          <h2 id="about-aviora-title">{homeSearch.overviewTitle}</h2>
-          <div>
-            <p>{homeSearch.overview}</p>
-            <Link href="/about" className={styles.textLink}>
-              Meet AVIORA China Travel <ArrowRight size={15} aria-hidden="true" />
-            </Link>
-          </div>
-        </section>
         <section
           className={`${styles.section} ${styles.faq}`}
           id="home-faq"

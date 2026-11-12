@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { publicRouteSlugs, assertPublicRouteSlugs } from "@/config/public-route-slugs";
 import { siteConfig } from "@/config/site";
 import { getArticleBySlug, getArticleSlugs } from "@/content/journal";
+import { getArticlePhoto } from "@/content/journal/article-photos";
 import {
   firstTripPlanningDecisions,
   firstTripPlanningGuide,
@@ -47,8 +48,6 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     path: article.seo.canonicalPath ?? `/journal/${article.slug}`,
     type: "article",
     noIndex: false,
-    titleYear: Number((article.updatedAt ?? article.publishedAt).slice(0, 4)),
-    callToAction: "Read the guide and plan your China journey",
   });
 }
 
@@ -89,11 +88,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 function articleSchema(article: JournalArticle) {
   const isFirstTripPlanningGuide = article.slug === firstTripPlanningGuide.slug;
   const articleUrl = new URL(`/journal/${article.slug}`, siteConfig.url).toString();
+  const photo = getArticlePhoto(article.slug);
 
   const schema: Record<string, unknown> = articleSchemaData({
     headline: article.title,
     description: article.seo.description,
     url: articleUrl,
+    image: { url: new URL(photo.src, siteConfig.url).toString() },
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
     authorName: article.author.name,
@@ -158,18 +159,6 @@ function articleSchema(article: JournalArticle) {
     ...schema,
     ...(article.governance
       ? {
-          additionalProperty: [
-            {
-              "@type": "PropertyValue",
-              name: "Primary search intent",
-              value: article.governance.primaryIntent,
-            },
-            {
-              "@type": "PropertyValue",
-              name: "Content source class",
-              value: article.governance.sourceClass,
-            },
-          ],
           about: [
             ...(Array.isArray(schema.about) ? schema.about : []),
             {

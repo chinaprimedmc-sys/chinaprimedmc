@@ -1,3 +1,4 @@
+import { expandedDestinationGuides } from "./expansion";
 import type { MediaAsset } from "@/types/component-library";
 
 function image(src: string, alt: string, width = 1600, height = 1067): MediaAsset {
@@ -11,6 +12,8 @@ const chengdu = "/tours/chengdu-pandas";
 const jiuzhaigou = "/tours/chengdu-pandas-jiuzhaigou";
 
 export const destinationGuideAssets: Record<string, { hero: MediaAsset; gallery: MediaAsset[] }> = {
+  ...Object.fromEntries(expandedDestinationGuides.map((guide) => [guide.id, guide.assets])),
+
   guilin: {
     hero: image(
       "/home/editorial/guilin-li-river-karst-landscape.webp",

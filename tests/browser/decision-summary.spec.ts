@@ -15,7 +15,7 @@ test("decision summary is server-rendered and service specifications use native 
     // Next streams this dynamic route behind its loading boundary. Check SSR
     // presence here; visibility and native disclosure are checked after navigation below.
     await expect(summary.getByText("Best suited to", { exact: true })).toBeAttached();
-    await expect(summary.getByText("Budget separately for", { exact: true })).toBeAttached();
+    await expect(summary.locator('nav[aria-label="Journey service scope"]')).toBeAttached();
     await expect(
       summary.getByRole("link", { name: "See all inclusions", includeHidden: true }),
     ).toHaveAttribute("href", "#included");

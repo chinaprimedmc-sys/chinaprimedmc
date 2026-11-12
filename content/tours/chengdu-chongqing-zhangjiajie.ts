@@ -1,10 +1,8 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import {
   chengduChongqingZhangjiajieAsset as asset,
   chengduChongqingZhangjiajieGallery,
-  chengduImages,
-  chongqingImages,
   optionalImages,
-  zhangjiajieImages,
 } from "@/content/tours/chengdu-chongqing-zhangjiajie-assets";
 import type { Tour } from "@/types/tour";
 
@@ -14,7 +12,7 @@ const inquiryMessage =
 
 export const chengduChongqingZhangjiajieTour: Tour = {
   slug,
-  title: "11-Day Chengdu, Chongqing & Zhangjiajie",
+  title: "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
   subtitle:
     "Giant pandas, Sichuan flavors, Chongqing's vertical cityscape and Zhangjiajie's floating peaks, privately arranged with two days left open for your own rhythm.",
   duration: "11 Days / 10 Nights",
@@ -24,58 +22,89 @@ export const chengduChongqingZhangjiajieTour: Tour = {
     eyebrow: "Private nature and city journey",
     image: asset.hero,
     primary: { label: "Explore the 11 Days", href: "#itinerary" },
-    secondary: { label: "Plan My Trip", href: "#proposal" },
+    secondary: { label: "Plan My Trip", href: "#enquiry" },
   },
   seo: {
-    title: "11-Day Chengdu Chongqing Zhangjiajie Private Tour",
+    title: "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
     description:
-      "Explore Chengdu, Chongqing and Zhangjiajie on an 11-day private China tour with pandas, Sichuan food, flexible open days and expert local support.",
+      "Travel from Chengdu to Chongqing and Zhangjiajie in eleven days, with pandas, food culture, private local guides and two independent days. See what is included.",
     keywords: [
-      "Chengdu Chongqing Zhangjiajie private tour",
-      "11 day Chengdu Chongqing Zhangjiajie itinerary",
-      "private China panda and Zhangjiajie tour",
-      "Chongqing Zhangjiajie luxury tour",
-      "Chengdu pandas Chongqing Zhangjiajie tour",
-      "private Zhangjiajie tour for families",
-      "China nature and food itinerary",
+      "Chengdu Chongqing Zhangjiajie private tour 11 days",
+      "China pandas Chongqing mountain itinerary",
+      "Chongqing to Zhangjiajie private tour",
+      "Zhangjiajie tour independent free days",
     ],
+
+    preserveCopy: true,
   },
   overview: {
     pitch:
       "Three vivid chapters of southwest China, joined without turning the journey into a race.",
     facts: [
       {
-        label: "Duration",
-        value: "11 days / 10 nights",
-        helper:
-          "Three nights Chengdu, three Chongqing and four Zhangjiajie, adjusted to transport.",
-      },
-      {
-        label: "Route",
-        value: "3 contrasting places",
-        helper: "Pandas and food, a vertical river city, then sandstone mountains.",
-      },
-      {
-        label: "Travel Style",
-        value: "Private and tailor-made",
-        helper: "Private local guiding, transfers and a proposal built for your party.",
+        label: "Hotels",
+        value: "Chengdu 3 · Chongqing 3 · Zhangjiajie 4; ten confirmed hotel nights",
       },
       {
         label: "Pacing",
-        value: "Balanced with 2 open days",
-        helper: "Keep them free or add experiences only when they suit you.",
+        value: "Balanced guided chapters and 2 independent days; stairs and park walking remain",
       },
       {
-        label: "Best For",
-        value: "Couples, families and photographers",
-        helper: "Especially travelers drawn to wildlife, food and remarkable landscapes.",
-      },
-      {
-        label: "Proposal",
-        value: "Prepared for your dates",
-        helper: "Hotels, transport and optional experiences are confirmed in writing.",
+        label: "Suitable for",
+        value:
+          "Travelers who want southwest China’s food, city life and mountain scenery, with room for independent choices rather than continuous escorted touring.",
       },
     ],
+
+    practicalities: [
+      {
+        label: "Best for",
+        value:
+          "Travelers who want southwest China’s food, city life and mountain scenery, with room for independent choices rather than continuous escorted touring.",
+      },
+      {
+        label: "Nights and direction",
+        value:
+          "Chengdu 3 nights, Chongqing 3 and Zhangjiajie 4: 10 nights. Arrive in Chengdu and depart from Zhangjiajie.",
+      },
+      {
+        label: "Intercity travel",
+        value:
+          "Chengdu–Chongqing high-speed rail and a dated Chongqing–Zhangjiajie rail or flight arrangement, with private station or airport transfers.",
+      },
+      {
+        label: "Guided chapters",
+        value:
+          "Chengdu Days 2–3, Chongqing Day 5 and Zhangjiajie Days 8–9 have the confirmed local service. Transfer-day assistance is stated separately.",
+      },
+      {
+        label: "Independent days",
+        value:
+          "Days 6 and 10 include no scheduled private guide, vehicle, admission or activity. Adding services requires availability and a revised quote.",
+      },
+      {
+        label: "Mountain scope",
+        value:
+          "The listed park visits prioritize Yuanjiajie, Tianzi Mountain and selected Golden Whip Stream walking. Tianmen Mountain and Glass Bridge are not automatically included.",
+      },
+      {
+        label: "Hotels and food",
+        value:
+          "Ten confirmed hotel nights and specified breakfasts; other meals, tastings and tea are included only when identified in the written proposal.",
+      },
+      {
+        label: "Walking",
+        value:
+          "Chongqing has stairs, slopes and layered streets; Zhangjiajie uses public transport plus walking and queues. Two free days do not make the route step-free.",
+      },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("chengdu-chongqing-zhangjiajie-private-11-day-tour"),
+      },
+    ],
+
+    answer:
+      "Explore Chengdu, Chongqing and Zhangjiajie in eleven days with ten hotel nights. Combine public panda viewing and Sichuan food culture with Chongqing’s river city and Wulingyuan’s sandstone peaks. Private local guiding, confirmed intercity transport and transfers cover the listed service days. Days 6 and 10 are independent without included guides, vehicles or paid activities; Tianmen Mountain and other additions require a separate quote.",
   },
   planningSupport: {
     eyebrow: "Why eleven days works",
@@ -140,7 +169,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Meet your driver for a private airport or station transfer, settle into the hotel and keep the first evening light.",
       image: asset.chengduArrival,
       hotel: "Chengdu stay: hotel and room category confirmed in your private proposal",
-      meals: ["As confirmed in your written proposal"],
+      meals: ["No meals included today"],
       transport: "Private arrival transfer",
       activities: [
         {
@@ -166,7 +195,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Visit a suitable panda base early, then slow the afternoon through one quieter side of Chengdu.",
       image: asset.pandaMorning,
       hotel: "Chengdu stay: confirmed in your private proposal",
-      meals: ["Breakfast when included with the confirmed hotel", "Other meals as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "Private vehicle and multilingual guide",
       activities: [
         {
@@ -194,7 +223,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Discover Chengdu's everyday rhythm through covered-bowl tea, local streets and a privately guided introduction to Sichuan flavor.",
       image: asset.chengduLife,
       hotel: "Chengdu stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Tastings or meals only as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "Private vehicle and guided walking as confirmed",
       activities: [
         {
@@ -219,10 +248,10 @@ export const chengduChongqingZhangjiajieTour: Tour = {
       title: "High-speed rail to Chongqing",
       destination: "Chengdu to Chongqing",
       summary:
-        "Travel between the two cities with private station transfers, coordinated luggage handling and a gentle first look at Chongqing.",
+        "Travel to Chongqing by the confirmed high-speed train, with private station transfers at both ends. After hotel check-in, rest or take an independent neighborhood walk; a guided arrival outing requires separately confirmed staff and service hours.",
       image: asset.rail,
       hotel: "Chongqing stay: hotel and room category confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "Private station transfers and high-speed rail",
       activities: [
         {
@@ -233,7 +262,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         {
           title: "First orientation in the mountain city",
           description:
-            "After check-in, take a short introduction to Chongqing's levels and river geography when timing allows.",
+            "After check-in, rest or use the local team's suggestions for a short independent walk near your hotel. A guide-led city introduction is not included on the transfer day unless added to the proposal.",
         },
       ],
       guideNote:
@@ -248,7 +277,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Read the city vertically through its streets, viewpoints and transit, then stay out as the riverfront lights appear.",
       image: asset.chongqingBlueHour,
       hotel: "Chongqing stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "Private vehicle, guided walking and local transit where useful",
       activities: [
         {
@@ -261,7 +290,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
           time: "Blue hour and evening",
           title: "River light and city scale",
           description:
-            "See the skyline from a suitable riverbank or viewpoint, with a cruise added only when it improves the evening.",
+            "See the skyline from a suitable riverbank or viewpoint within the agreed guide and vehicle window. A river cruise, evening extension or extra transfer is separately selected and priced; the daytime booking is not unlimited evening service.",
         },
       ],
       guideNote:
@@ -276,7 +305,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Keep the day entirely open or add one paid private experience after you understand what genuinely interests you.",
       image: asset.chongqingOpenDay,
       hotel: "Chongqing stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals independently or as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "None on an open day; private service available by request",
       activities: [
         {
@@ -302,7 +331,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Continue to Zhangjiajie using the most practical confirmed connection, with private transfers at both ends and a quiet evening near the park.",
       image: asset.zhangjiajieArrival,
       hotel: "Zhangjiajie stay: hotel and room category confirmed in your private proposal",
-      meals: ["Breakfast when included", "Meals during travel as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "Rail or flight and private transfers, selected for your date",
       activities: [
         {
@@ -328,7 +357,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Reach Zhangjiajie's elevated viewpoints for its defining sandstone pillars, using park transport and walking sections chosen for your group.",
       image: asset.yuanjiajie,
       hotel: "Zhangjiajie stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "Private hotel transfer, park shuttle and scenic lift or cableway as confirmed",
       activities: [
         {
@@ -356,7 +385,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Experience the park from below, following clear water and forest beneath the pillars for a calmer contrast with the previous day.",
       image: asset.goldenWhip,
       hotel: "Zhangjiajie stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "Private hotel transfer and park shuttle as confirmed",
       activities: [
         {
@@ -384,7 +413,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         "Protect a final day for rest, weather flexibility or one paid experience that adds something meaningfully different.",
       image: asset.zhangjiajieOpenDay,
       hotel: "Zhangjiajie stay: confirmed in your private proposal",
-      meals: ["Breakfast when included", "Other meals independently or as confirmed"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "None on an open day; private service available by request",
       activities: [
         {
@@ -399,7 +428,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
         },
       ],
       guideNote:
-        "Tianmen Mountain and the Grand Canyon are separate paid experiences. We recommend only one for a comfortable day.",
+        "Day 10 has no standby guide, vehicle or reserved replacement tickets. Moving a weather-affected park visit here requires new availability and any additional charges to be agreed. Tianmen Mountain and the Grand Canyon are separately priced options; choose one if it fits the confirmed service window.",
       coordinates: { latitude: 29.1171, longitude: 110.4792 },
     },
     {
@@ -409,7 +438,7 @@ export const chengduChongqingZhangjiajieTour: Tour = {
       summary:
         "Meet your driver for a private airport or station transfer, timed around your confirmed onward journey.",
       image: asset.departure,
-      meals: ["Breakfast when included with the confirmed hotel"],
+      meals: ["Hotel breakfast; other meals independent unless expressly included"],
       transport: "Private departure transfer",
       activities: [
         {
@@ -462,13 +491,13 @@ export const chengduChongqingZhangjiajieTour: Tour = {
     },
   ],
   included: [
-    "Private arrival and departure transfers listed in the final proposal",
-    "Private sightseeing vehicle and multilingual guide on confirmed guided days",
-    "Accommodation and daily hotel breakfast when stated in the final proposal",
-    "Intercity rail or domestic flight services specifically listed in writing",
-    "Entrance tickets and mandatory scenic transport specifically listed in writing",
-    "Twenty-four-hour local contact support while traveling",
-    "No compulsory shopping stops",
+    "Ten hotel nights: Chengdu 3, Chongqing 3 and Zhangjiajie 4, with properties and rooms specified in the proposal",
+    "Hotel breakfasts on Days 2–11",
+    "Private arrival and departure transfers and the listed intercity station or airport transfers",
+    "Local private guide and separate driver on scheduled sightseeing Days 2–3, 5 and 8–9; no standby service on independent Days 6 and 10",
+    "Chengdu–Chongqing high-speed rail and the confirmed Chongqing–Zhangjiajie rail or flight sector, with class and baggage terms stated",
+    "Standard admission and public scenic transport required by the listed confirmed visits",
+    "China-based travel support and no compulsory shopping stops",
   ],
   excluded: [
     "International flights and services not named in the final proposal",
@@ -563,96 +592,127 @@ export const chengduChongqingZhangjiajieTour: Tour = {
   gallery: chengduChongqingZhangjiajieGallery,
   faqs: [
     {
-      question: "Is eleven days enough for Chengdu, Chongqing and Zhangjiajie?",
-      answer:
-        "Yes, when the route is privately managed. It includes three substantive Chengdu days, a full Chongqing city day, two core Zhangjiajie park days and two deliberately open days. We can add nights when you prefer even more rest or need a particular flight connection.",
+      question: "What does this private tour cost, and what is the starting-price basis?",
+      answer: getPublishedPriceDisclosure("chengdu-chongqing-zhangjiajie-private-11-day-tour"),
     },
     {
-      question: "Are Days 6 and 10 really free to use as we wish?",
+      question: "What is included on the two open days?",
       answer:
-        "Yes. They can remain completely open with no touring service, or become paid private experiences selected in advance. Your proposal separates the core journey, open days and optional additions clearly.",
+        "Days 6 in Chongqing and 10 in Zhangjiajie are independent time. Your confirmed hotel and breakfast arrangements continue, but no private guide, vehicle, admission or paid activity is included by default. Support contacts remain as agreed. Ask for a separately priced service if you want one; an open day is not a driver waiting on standby.",
     },
     {
-      question: "Is this a fixed group tour?",
+      question: "Does this tour include Tianmen Mountain?",
       answer:
-        "No. It is a private route framework. Dates, hotels, room types, guide service, transport and daily pacing are tailored to your party and confirmed in writing.",
+        "No, not in the standard listed mountain chapter. The included design focuses on Wulingyuan’s pillar scenery and lower forest. Tianmen may be considered for Day 10 with separate tickets, transfers, guide hours and an availability review. It is a different attraction from the national forest park.",
     },
     {
-      question: "How is the final price calculated?",
+      question: "Are hotel nights and intercity transport included?",
       answer:
-        "Your written proposal prices the journey around travel dates, party size, room configuration, hotel preference, transport and selected open-day experiences.",
+        "The priced package identifies ten hotel nights and the domestic sectors in writing, with rooms, breakfast, train or flight class and transfer points. The complete itinerary should not rely on a generic transport promise. International flights and any unselected sector or upgrade remain separate.",
     },
     {
-      question: "How physically demanding is Zhangjiajie?",
+      question: "How do we travel from Chongqing to Zhangjiajie?",
       answer:
-        "The parks involve walking, stairs, slopes, scenic lifts and sometimes queues. Private planning lets us choose suitable sections and rest windows, but it cannot remove every physical demand. We discuss mobility and comfort honestly before confirmation.",
+        "The connection is selected for your actual date and named in the proposal, together with the local transfers and remaining road time. Do not assume a published duration or direct service exists on every departure. The final plan considers total hotel-to-hotel time, luggage and arrival-hour practicality.",
     },
     {
-      question: "What happens if mountain weather affects visibility?",
+      question: "Which panda experience is included in Chengdu?",
       answer:
-        "Local guides can adjust the order of viewpoints where tickets and operating rules allow. The open day also gives the route useful flexibility, although clear views can never be guaranteed in a mountain environment.",
+        "A standard public viewing visit at the facility confirmed in your proposal, supported by private local guiding and road transport. It does not include holding, feeding, keeper work or guaranteed cub sightings. If a particular base matters, request it before confirmation so the route and costs can be checked.",
     },
     {
-      question: "Can this journey work for children or older parents?",
+      question: "Are hotpot, tea and Sichuan meals included?",
       answer:
-        "Yes for many private groups, provided we understand ages, mobility and room needs early. We can shorten walking sections, use suitable scenic transport and protect rest time, while explaining unavoidable stairs or long park days clearly.",
+        "Only the food and drinks expressly identified in the proposal are included. A culinary walk introduces ingredients and local life but does not automatically include every tasting or a full meal. Tell us spice, dietary and allergy needs; a restaurant suggestion is not the same as a contracted kitchen service.",
     },
     {
-      question: "Can you support halal, vegetarian or allergy requirements?",
+      question: "Is Chongqing manageable for travelers with knee or balance problems?",
       answer:
-        "Yes, when requirements are shared before quotation. We research practical meal options in each location, but certification and availability vary and must be checked for your actual dates.",
+        "It needs careful review. Elevation changes, steps, crossings and busy transit can matter even with a private vehicle. Share actual limitations so viewpoints, pickup points and walking sections can be chosen. The itinerary cannot promise an entirely flat city route or public lifts operating everywhere you need them.",
     },
     {
-      question: "Are the hotels shown guaranteed?",
+      question: "Can Day 10 be used to move a weather-affected park visit?",
       answer:
-        "No. Images communicate the intended room and location style. Your proposal names the actual available properties, room categories, breakfast terms and cancellation conditions before you confirm.",
+        "It provides possible time flexibility, not guaranteed spare staff or transferable tickets. A change depends on supplier availability, reservations, guide and vehicle hours and applicable fees. Any revised services should be agreed; keeping a day free does not automatically include an extra guided outing.",
     },
     {
-      question: "Are there compulsory shopping stops?",
+      question: "Does the trip return to Chengdu or Shanghai?",
       answer:
-        "No. This journey has no compulsory shopping stops. Markets, shopping districts or portrait experiences are included only when they genuinely interest you.",
+        "No. The standard journey finishes in Zhangjiajie on Day 11 with the confirmed departure transfer. Onward flights, trains, extra nights and a different final gateway need a separate plan. Share your full international route before purchasing tickets so the last connection is realistic.",
+    },
+    {
+      question: "How does this compare with Shanghai and Zhangjiajie in eight days?",
+      answer:
+        "This route adds pandas, Sichuan culture and Chongqing, uses two open days and finishes in the mountain region. The eight-day route is a Shanghai return journey and includes a dedicated Tianmen plan. Choose according to gateways and interests; shared Zhangjiajie scenery does not mean identical tickets or service coverage.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
-        title: "7-Day Chengdu Panda & Jiuzhaigou Private Journey",
+        title: "7-Day Chengdu and Jiuzhaigou Private Tour",
         description:
-          "A shorter, alpine alternative combining Chengdu's pandas and food with Jiuzhaigou's lakes.",
-        tags: ["7 days", "Pandas and nature"],
-        image: chengduImages[12] ?? asset.pandaMorning,
-        route: "Chengdu, Jiuzhaigou",
+          "Choose a shorter Chengdu-and-lakes route with six hotel nights; the mountain landscape and departure gateway differ.",
+        tags: ["Nature", "Family", "Food"],
+        image: {
+          src: "/tours/chengdu-pandas-jiuzhaigou/hero.webp",
+          alt: "Autumn forest and a turquoise lake in Jiuzhaigou National Park",
+          width: 1600,
+          height: 1067,
+        },
+        route: "Chengdu · Jiuzhaigou",
         duration: "7 days / 6 nights",
         href: "/tours/chengdu-pandas-jiuzhaigou-private-7-day-tour",
       },
       {
-        title: "8-Day Shanghai & Zhangjiajie Private Journey",
+        title: "8-Day Shanghai and Zhangjiajie Private Tour",
         description:
-          "Pair Shanghai's waterfront energy with Zhangjiajie's sandstone peaks in a shorter two-region route.",
-        tags: ["8 days", "City and nature"],
-        image: zhangjiajieImages[14] ?? asset.yuanjiajie,
-        route: "Shanghai, Zhangjiajie",
+          "Choose Shanghai and a shorter sandstone-mountain route that includes Tianmen and returns to Shanghai.",
+        tags: ["Nature", "Luxury", "Family"],
+        image: {
+          src: "/tours/shanghai-zhangjiajie-floating-peaks/zhangjiajie-sunny-peaks.webp",
+          alt: "Sunlit sandstone peaks and forested valleys in Zhangjiajie",
+          width: 1600,
+          height: 800,
+        },
+        route: "Shanghai · Wulingyuan · Zhangjiajie",
         duration: "8 days / 7 nights",
         href: "/tours/shanghai-zhangjiajie-floating-peaks",
       },
     ],
+
     destinations: [
       {
         name: "Chengdu",
         description: "Giant pandas, tea-house culture and Sichuan flavor.",
-        image: chengduImages[11] ?? asset.pandaMorning,
+        image: {
+          src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/chengdu-12.webp",
+          alt: "A young giant panda enjoying bamboo in Chengdu",
+          width: 1600,
+          height: 1067,
+        },
         href: "/destinations/chengdu",
       },
       {
         name: "Chongqing",
         description: "A river metropolis shaped by hills, bridges and unexpected levels.",
-        image: chongqingImages[6] ?? asset.chongqingBlueHour,
+        image: {
+          src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/chongqing-07.webp",
+          alt: "Raffles City rising above Chaotianmen in Chongqing",
+          width: 1600,
+          height: 1067,
+        },
         href: "/destinations/chongqing",
       },
       {
         name: "Zhangjiajie",
         description: "Sandstone pillar forests, mountain mist and layered park trails.",
-        image: zhangjiajieImages[14] ?? asset.yuanjiajie,
+        image: {
+          src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/zhangjiajie-15.webp",
+          alt: "Zhangjiajie's quartz-sandstone pillars emerging from morning mist",
+          width: 1600,
+          height: 1067,
+        },
         href: "/destinations/zhangjiajie",
       },
     ],
@@ -664,6 +724,66 @@ export const chengduChongqingZhangjiajieTour: Tour = {
     whatsappHref: `https://wa.me/8618027438191?text=${encodeURIComponent(inquiryMessage)}`,
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage: inquiryMessage,
+  },
+
+  planningResources: [
+    {
+      label: "Chengdu Panda Base: official visitor notices",
+      href: "https://www.panda.org.cn/en/service/notice",
+      officialPublisher: "Chengdu Research Base of Giant Panda Breeding",
+      description:
+        "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals.",
+    },
+    {
+      label: "China Railway 12306: passenger information",
+      href: "https://www.12306.cn/en/faq.html",
+      officialPublisher: "China Railway 12306",
+      description:
+        "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+    },
+    {
+      label: "UNESCO: Wulingyuan Scenic and Historic Interest Area",
+      href: "https://whc.unesco.org/en/list/640/",
+      officialPublisher: "UNESCO World Heritage Centre",
+      description:
+        "Understand the sandstone landscape and protected property. This is not the operating authority for Tianmen Mountain, the Glass Bridge, park lifts or ticket availability.",
+    },
+    {
+      label: "Chengdu, Chongqing and Zhangjiajie planning",
+      href: "/journal/chengdu-chongqing-zhangjiajie-itinerary",
+      description:
+        "Review the city and mountain sequence, intercity travel and independent-day trade-offs.",
+    },
+  ],
+
+  faqLimit: 13,
+
+  updatedAt: "2026-11-12",
+
+  inquiryChecklist: [
+    "Dates and arrival / departure gateways",
+    "Travelers, rooms and hotel preference",
+    "Plans for independent Days 6 and 10",
+    "Walking comfort, heights and luggage",
+    "Dietary needs and optional Tianmen interest",
+  ],
+
+  comparison: {
+    title: "Three southwest chapters or a shorter panda-and-lakes trip?",
+    intro:
+      "The eleven-day route adds Chongqing and independent days; the seven-day option explores a different mountain region.",
+    columns: ["Decision", "This eleven-day route", "Seven-day Chengdu–Jiuzhaigou route"],
+    rows: [
+      ["Scenery", "Zhangjiajie sandstone pillars", "Jiuzhaigou lakes and waterfalls"],
+      ["Cities", "Chengdu and Chongqing", "Chengdu"],
+      [
+        "Independent days",
+        "Days 6 and 10 have no scheduled guide or vehicle",
+        "Day 6 mountain option is agreed in the proposal",
+      ],
+    ],
+    href: "/tours/chengdu-pandas-jiuzhaigou-private-7-day-tour",
+    linkLabel: "Compare the alternative itinerary",
   },
 };
 

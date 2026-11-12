@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
@@ -83,8 +84,8 @@ const hotelByPlace = {
 export const yunnanTeaHorseRoad10DayTour: Tour = {
   slug: "luxury-yunnan-private-tour",
   publishedAt: "2026-08-20",
-  updatedAt: "2026-08-20",
-  title: "Yunnan, Along the Tea Horse Road",
+  updatedAt: "2026-11-12",
+  title: "10-Day Luxury Yunnan Private Tour",
   subtitle:
     "A 10-day private highland journey through Dali, Shaxi, Lijiang and Shangri-La, shaped by living cultures, remarkable landscapes and boutique stays with a strong sense of place.",
   duration: "10 Days / 9 Nights",
@@ -94,52 +95,94 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
     eyebrow: "AVIORA signature Yunnan journey",
     image: yunnanTeaHorseRoadAsset.hero,
     primary: { label: "Explore the 10 Days", href: "#itinerary" },
-    secondary: { label: "See Price & Inclusions", href: "#price" },
+    secondary: { label: "See What Is Included", href: "#included" },
   },
   seo: {
-    title: "10-Day Luxury Yunnan Private Tour | Tea Horse Road",
+    title: "10-Day Luxury Yunnan Private Tour",
     description:
-      "Travel privately through Dali, Shaxi, Lijiang and Shangri-La on a 10-day luxury Yunnan tour with boutique stays and expert local access.",
+      "Follow Yunnan’s Tea Horse Road through Dali, Shaxi, Lijiang and Shangri-La in ten days, with boutique hotels, private guides and cultural sessions confirmed for you.",
     keywords: [
-      "luxury Yunnan tour",
-      "Yunnan private tour",
-      "Dali Lijiang Shangri-La itinerary",
-      "Tea Horse Road tour",
-      "private Yunnan cultural journey",
-      "luxury China nature tour",
+      "luxury Yunnan private tour 10 days",
+      "Dali Shaxi Lijiang Shangri La itinerary",
+      "Yunnan Tea Horse Road private guide",
+      "Yunnan altitude private tour",
     ],
+
+    preserveCopy: true,
   },
   overview: {
     pitch:
       "Follow one of China's great cultural corridors from the shores of Erhai to the Tibetan plateau. The route is slow enough to hear the stories behind the scenery, and private enough to change when weather, altitude or curiosity asks for a different day.",
     facts: [
       {
-        label: "Duration",
-        value: "10 days / 9 nights",
-        helper: "Dali 3 nights, Shaxi 2, Lijiang 2 and Shangri-La 2.",
-      },
-      {
-        label: "Best For",
-        value: "Couples, friends and repeat visitors",
-        helper: "For travelers drawn to culture, landscapes, tea, design and photography.",
+        label: "Hotels",
+        value: "Dali 3 · Shaxi 2 · Lijiang 2 · Shangri-La 2; selected boutique and highland hotels",
       },
       {
         label: "Pacing",
-        value: "Balanced, with altitude-aware choices",
-        helper: "Three private overland sectors and no same-day sightseeing races.",
+        value:
+          "Private overland cultural journey with rising altitude and optional high mountain access",
+      },
+      {
+        label: "Suitable for",
+        value:
+          "Travelers interested in regional culture, tea, artisan practice and distinctive stays who accept an overland route and increasing altitude.",
+      },
+    ],
+
+    practicalities: [
+      {
+        label: "Best for",
+        value:
+          "Travelers interested in regional culture, tea, artisan practice and distinctive stays who accept an overland route and increasing altitude.",
+      },
+      {
+        label: "Nights",
+        value: "Dali 3 nights, Shaxi 2, Lijiang 2 and Shangri-La 2: 9 nights in 4 hotel bases.",
+      },
+      {
+        label: "Gateways",
+        value:
+          "Arrive in Dali and depart from Diqing Shangri-La. Flights to Dali and from Shangri-La are not included in the published package.",
+      },
+      {
+        label: "Road travel",
+        value:
+          "Private vehicle on the confirmed travel and sightseeing days. Dali–Shaxi, Shaxi–Lijiang and Lijiang–Shangri-La are substantial overland segments, with breaks and final times checked.",
       },
       {
         label: "Hotels",
-        value: "Luxury boutique and heritage stays",
-        helper:
-          "The starting rate is based on two adults sharing one room; rooms for your actual party are confirmed in the proposal.",
+        value:
+          "Selected luxury boutique, heritage and highland stays. Exact property, category, room approach and luggage arrangements are confirmed; old-town roads may restrict vehicle access.",
       },
       {
-        label: "Private Service",
-        value: "Guides, premium vehicle and local hosts",
-        helper: "No compulsory shopping and no fixed group timetable.",
+        label: "Culture",
+        value:
+          "The listed Bai tea, tie-dye, tea-specialist, Tea Horse Road and Dongba sessions are privately arranged with a confirmed host or agreed equivalent.",
+      },
+      {
+        label: "Altitude",
+        value:
+          "Dali and Lijiang already sit at elevation; Shangri-La is roughly 3,200 meters. Gradual sequencing does not prevent altitude illness. Seek individual medical advice if relevant.",
+      },
+      {
+        label: "Mountain choices",
+        value:
+          "The highest Jade Dragon Snow Mountain cableway is optional and not included unless quoted. Gorge viewpoints and lower mountain routes still need a current access and fitness review.",
+      },
+      {
+        label: "Meals",
+        value:
+          "Breakfast and specifically listed lunches, courtyard tables and farewell dining are included. Hotel spas, unlisted meals, drinks and purchases remain separate.",
+      },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("luxury-yunnan-private-tour"),
       },
     ],
+
+    answer:
+      "Follow Yunnan’s Tea Horse Road in ten days from Dali through Shaxi and Lijiang to Shangri-La. Nine nights in selected boutique, heritage and highland hotels, private overland travel and listed cultural sessions are included. The route rises in altitude, with light arrival periods and optional higher mountain access. Gateway flights, the highest Jade Dragon cableway and unlisted meals or spa treatments are separate.",
   },
   planningSupport: {
     eyebrow: "The highland design",
@@ -411,7 +454,7 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
         {
           title: "Tiger Leaping Gorge without a forced hike",
           description:
-            "Take in the Jinsha River and mountain walls from the most suitable accessible viewpoint; a longer walking route is added only by prior design.",
+            "Use a viewpoint selected around current access, weather and your walking ability. Viewpoint approaches can still involve steps and uneven ground; this is not a guaranteed step-free visit. A longer gorge hike requires a separately designed route.",
         },
         {
           title: "A deliberate highland arrival",
@@ -650,78 +693,148 @@ export const yunnanTeaHorseRoad10DayTour: Tour = {
   ],
   faqs: [
     {
-      question: "What does the price depend on?",
-      answer:
-        "Your written proposal is priced for your own party and dates, and peak holiday periods cost more. Final pricing depends on dates, exact hotels and room categories, guide and host availability, transport and selected upgrades.",
+      question: "What does this private tour cost, and what is the starting-price basis?",
+      answer: getPublishedPriceDisclosure("luxury-yunnan-private-tour"),
     },
     {
-      question: "Is this a luxury Yunnan tour or a standard sightseeing package?",
+      question: "What makes this a luxury Yunnan tour rather than a standard sightseeing circuit?",
       answer:
-        "It is designed as a premium private journey: boutique and heritage stays, a dedicated private vehicle, private guiding, carefully contracted cultural encounters, selected meals, no compulsory shopping and a route that protects the quiet hours in each place. Exact hotels and practitioners are named before booking.",
+        "The proposed value is nine nights in selected distinctive stays, private road travel, contracted cultural time and selected hosted meals along a coherent route. The proposal names properties, rooms, hosts and inclusions. Luxury is not a promise of a particular brand, unrestricted access or identical hotel facilities in every town.",
     },
     {
-      question: "How serious is the altitude in Shangri-La?",
+      question: "How many nights do we spend in each Yunnan town?",
       answer:
-        "Shangri-La is roughly 3,200 metres above sea level, and altitude affects people differently. The route gains height gradually, the first highland evening is protected and Day 9 can be reduced to lodge rest. This is not medical advice; guests with relevant health conditions should consult a qualified clinician before booking.",
+        "Three in Dali, two in Shaxi, two in Lijiang and two in Shangri-La. This gives time to stay in Shaxi rather than treat it as a roadside photo stop, while leaving light periods after higher-altitude arrival. The trip involves three hotel changes; it is not a single-resort retreat.",
     },
     {
-      question: "Do we have to take the high cableway at Jade Dragon Snow Mountain?",
+      question: "Are flights to Dali and from Shangri-La included?",
       answer:
-        "No. The day is designed with a foothill, Baisha and scenic landscape version that does not depend on extreme altitude. A high cableway visit is included only when the travelers request it and health, weather, operating conditions and ticket availability all support the choice.",
+        "No. The published package includes the confirmed local arrival and departure transfers, not the gateway flights. Your international and domestic tickets should be coordinated with the road route before purchase. Kunming, Meili or another onward destination needs a separate extension rather than an assumed included connection.",
     },
     {
-      question: "When is the best time for this Yunnan journey?",
+      question: "Is Shangri-La altitude safe for everyone?",
       answer:
-        "Spring and autumn often offer the most comfortable overall balance, but Yunnan conditions vary by elevation. Summer brings greener landscapes and a greater rain risk; winter can be clear and atmospheric but colder, especially in Shangri-La. We price and adjust the route for the actual month.",
+        "No route can guarantee that. Shangri-La is around 3,200 meters, and earlier towns are also at elevation. The itinerary builds in slower arrival periods but is not medical supervision. Discuss health concerns with your clinician before booking and tell us if a lower-altitude redesign is essential; that is a different route and quote.",
     },
     {
-      question: "Are the private cultural visits guaranteed?",
+      question: "Do we have to take the highest Jade Dragon Snow Mountain cableway?",
       answer:
-        "No individual host, private home, artisan, specialist or religious access is represented as confirmed until the date and terms are agreed in writing. If a named practitioner is unavailable, AVIORA proposes an equivalent experience for approval rather than quietly substituting a retail demonstration.",
+        "No. The highest cableway is an optional, separately confirmed choice, subject to tickets, weather and personal suitability. The planned cultural and foothill alternatives do not require proving anything by reaching the highest point. A lower outing still has its own access, walking and elevation considerations.",
     },
     {
-      question: "Can this journey work for travelers who prefer less walking?",
+      question: "Are the private artisan and cultural sessions guaranteed?",
       answer:
-        "Yes, within practical limits. Old-town paving, Shibaoshan and monastery areas still include uneven ground or steps, but routes can be shortened and the mountain day can remain at lower altitude. We review daily walking, balance and rest needs before confirmation.",
+        "The package includes the listed sessions as confirmed, but a specific named person or private home is not guaranteed before agreement. Your proposal identifies the host or an agreed equivalent, venue, duration, interpretation and any making materials. Visits respect consent and do not require buying tea, textiles or other goods.",
     },
     {
-      question: "Are flights included?",
+      question: "Does Tiger Leaping Gorge mean a full trekking day?",
       answer:
-        "Flights to Dali and from Shangri-La are not included in the land price because the correct sectors depend on the international itinerary. AVIORA can quote and coordinate them with the private transfers once the gateway plan is known.",
+        "No. The route uses a viewpoint or shorter visit selected for safe access during the northbound transfer. A longer gorge hike is a separately designed activity with different time, fitness and weather requirements. Do not assume every viewpoint is step-free because the itinerary avoids a full trek.",
+    },
+    {
+      question: "Can the vehicle take us directly to every heritage hotel door?",
+      answer:
+        "Not always. Old-town paving, narrow lanes and vehicle restrictions can affect the last part of the approach. The proposal should explain the actual arrival point, walking distance and any contracted luggage handling. Send mobility and luggage needs before choosing the hotel, especially in Shaxi and Lijiang.",
+    },
+    {
+      question: "Which meals and wellness services are included?",
+      answer:
+        "Hotel breakfasts and the specifically listed hosted meals, picnics or reserved tables are included as confirmed. Spa treatments, room service and unlisted drinks or meals are separate. A hotel with a spa does not make this a therapeutic program. Dietary requirements must be checked with each kitchen and host.",
+    },
+    {
+      question: "When is the best season for this private Yunnan route?",
+      answer:
+        "Choose by your priorities and tolerance for rain, cold, altitude and holiday crowds. The towns and mountain sections can have different conditions on the same trip. We check date-specific road, activity and hotel arrangements; no season guarantees clear peaks, flowers or an identical cultural calendar.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
-        title: "China in Motion: Chengdu, Chongqing & Zhangjiajie",
+        title: "10-Day Qingcheng Mountain Wellness Retreat",
         description:
-          "A more contemporary regional journey pairing Sichuan food, pandas, city energy and extraordinary mountain scenery.",
-        tags: ["Nature", "Food", "Private"],
-        image: yunnanTeaHorseRoadAsset.tigerLeapingGorge,
+          "Choose a continuous seven-night mountain resort stay with confirmed cultural sessions and two treatments per guest.",
+        tags: ["Wellness", "Luxury", "Nature"],
+        image: {
+          src: "/home/editorial/great-wall-private-china-travel.webp",
+          alt: "Photography for the Qingcheng Mountain retreat is being prepared",
+          width: 1920,
+          height: 1080,
+        },
+        route: "Chengdu · Qingcheng Mountain",
+        duration: "10 days / 9 nights",
+        href: "/tours/qingcheng-mountain-private-wellness-retreat-10-day",
+      },
+      {
+        title: "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
+        description:
+          "Choose pandas, Sichuan and Chongqing city life, and sandstone scenery instead of Yunnan’s overland cultural route.",
+        tags: ["Nature", "Food", "Photography"],
+        image: {
+          src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/hero-01.webp",
+          alt: "International travelers looking across Zhangjiajie's sandstone peaks in soft mountain light",
+          width: 1600,
+          height: 1067,
+          priority: true,
+        },
         route: "Chengdu · Chongqing · Zhangjiajie",
         duration: "11 days / 10 nights",
         href: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour",
       },
-      {
-        title: "China, Considered: Beijing, Xi'an & Shanghai",
-        description:
-          "The flagship first-China route for travelers who want iconic history with a measured pace and premium support.",
-        tags: ["First-time China", "Luxury"],
-        image: yunnanTeaHorseRoadAsset.lijiangNight,
-        route: "Beijing · Xi'an · Shanghai",
-        duration: "12 days / 11 nights",
-        href: "/tours/china-at-an-easier-pace-12-day-private-tour",
-      },
     ],
+
     destinations: [],
   },
   inquiry: {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Private%20Yunnan%20Tea%20Horse%20Road%20Proposal&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20private%20proposal%20for%20the%2010-day%20Yunnan%20Tea%20Horse%20Road%20journey.%0A%0ATravel%20month%20or%20dates%3A%0ATravellers%3A%0ARooms%3A%0AHotel%20preference%3A%0AAltitude%20or%20walking%20considerations%3A%0ASpecial%20interests%3A%0A",
     whatsappHref:
-      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20Yunnan%2C%20Along%20the%20Tea%20Horse%20Road%20%2810%20days%3A%20Dali%2C%20Shaxi%2C%20Lijiang%20and%20Shangri-La%29.%20We%20are%20considering%20four%20guests%20and%20two%20rooms.%20Please%20advise%20on%20dates%2C%20hotels%20and%20altitude-aware%20pacing.",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%20am%20interested%20in%20your%2010-Day%20Luxury%20Yunnan%20Private%20Tour.%20Our%20travelers%3A%20__.%20Dates%3A%20__.%20Rooms%3A%20__.%20Please%20recommend%20the%20right%20service%20plan%20and%20quote%20for%20our%20actual%20party.",
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in the 10-day private Yunnan Tea Horse Road journey. Please recommend the right hotel level, room setup and altitude-aware plan for our group.",
+  },
+
+  planningResources: [
+    {
+      label: "UNESCO: Old Town of Lijiang",
+      href: "https://whc.unesco.org/en/list/811/",
+      officialPublisher: "UNESCO World Heritage Centre",
+      description:
+        "Historical background on Lijiang. The listing does not certify our hosts, hotel quality, altitude suitability or access to private homes.",
+    },
+    {
+      label: "Yunnan altitude and route planning",
+      href: "/journal/yunnan-altitude-private-tour",
+      description:
+        "Understand why lower mountain choices and arrival pacing still require individual health and access decisions.",
+    },
+  ],
+
+  faqLimit: 13,
+
+  inquiryChecklist: [
+    "Dates and Dali arrival / Shangri-La departure plans",
+    "Travelers, rooms and preferred hotel level",
+    "Comfort with altitude and overland transfers",
+    "Tea, artisan or cultural interests",
+    "Dietary needs and preferred mountain option",
+  ],
+
+  comparison: {
+    title: "An overland cultural journey or a mountain retreat?",
+    intro: "Both allow time to pause, but the travel pattern and altitude are very different.",
+    columns: ["Decision", "This Yunnan journey", "Qingcheng retreat"],
+    rows: [
+      ["Bases", "Dali, Shaxi, Lijiang and Shangri-La", "Chengdu and one mountain resort"],
+      ["Movement", "Three hotel changes and regional road journeys", "One hotel change"],
+      [
+        "Purpose",
+        "Tea, artisans, regional history and rising altitude",
+        "Cultural wellbeing sessions and protected quiet time",
+      ],
+    ],
+    href: "/tours/qingcheng-mountain-private-wellness-retreat-10-day",
+    linkLabel: "Compare the alternative itinerary",
   },
 };

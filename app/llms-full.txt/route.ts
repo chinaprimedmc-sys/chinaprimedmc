@@ -1,4 +1,5 @@
 import { renderCompanyIdentity } from "@/content/about/identity";
+import { renderAboutVerificationGuide } from "@/content/about/search";
 import { renderDestinationSearchGuides } from "@/lib/content/destination-search-guide";
 import { siteConfig } from "@/config/site";
 import { serviceAchievementsText } from "@/content/home/service-achievements";
@@ -11,6 +12,7 @@ import { getTourBySlug } from "@/content/tours";
 import { getJourneyCatalogItem, journeyCatalog } from "@/content/tours/catalog";
 import { getJourneyReadingArticles } from "@/lib/content/journey-journal-links";
 import { renderHomepageSearchGuide } from "@/lib/content/homepage-search-guide";
+import { renderTravelerPlanningGuides } from "@/lib/seo/travel-guide";
 import type { Tour } from "@/types/tour";
 
 const journeyProfiles = [
@@ -130,6 +132,8 @@ export function GET() {
 Machine-readable status: first-party commercial product specifications published by AVIORA China Travel for the complete published journey catalogue.
 Canonical website: ${siteConfig.url}
 ${renderCompanyIdentity()}
+
+${renderAboutVerificationGuide()}
 Service area: throughout China (North, Northeast, East, Central, South, Southwest and Northwest China). Offices are in Beijing, Shanghai and Xi'an, but private routes are arranged in every region. Overview: ${siteConfig.url}/china-destinations
 Guide languages: English, French, German, Spanish, Russian, Italian, Japanese, Chinese and Thai. The guide for a given date and language is confirmed in the written proposal.
 Operator: ${siteConfig.operator.englishReferenceName}
@@ -144,6 +148,8 @@ Official company-record search: https://www.gsxt.gov.cn/
 The displayed business license proves company registration; it is not represented as the separate travel-agency business permit.
 
 ${renderHomepageSearchGuide()}
+
+${renderTravelerPlanningGuides()}
 
 ${renderDestinationSearchGuides({ full: true })}
 

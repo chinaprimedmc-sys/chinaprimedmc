@@ -41,12 +41,111 @@ const { configuredWhatsAppHref } = await import("../lib/tours/journey-whatsapp.t
 const model = createTourDetailModel(tour);
 const catalog = getJourneyCatalogItem(tour.slug);
 
+const { createTourMetadata } = await import("../lib/seo/tour-metadata.ts");
+const { tourSearchSpecification } = await import("../lib/seo/tour-specification.ts");
+const { itineraryProductSchema, faqPageSchema } = await import("../lib/seo/schema.ts");
+const { getVisibleTourFaqs } = await import("../features/tours/detail/tour-detail-model.ts");
+const { getJourneySeoTitle } = await import("../content/tours/card-copy.ts");
+const { getJourneyStartingOffer } = await import("../lib/tours/journey-pricing.ts");
+const { tourOfficialCitations } = await import("../lib/seo/tour-sources.ts");
+
+test("Mutianyu metadata, H1 and canonical use the complete commercial intent without a clipped title", () => {
+  const metadata = createTourMetadata(tour);
+  assert.equal(metadata.title, tour.title);
+  assert.equal(metadata.title, model.headline);
+  assert.equal(metadata.title, getJourneySeoTitle(catalog));
+  assert.equal(metadata.description, tour.seo.description);
+  assert.ok(metadata.description.length >= 120 && metadata.description.length <= 165);
+  assert.ok(metadata.alternates.canonical.endsWith(`/tours/${tour.slug}`));
+  assert.equal(metadata.openGraph.url, metadata.alternates.canonical);
+  assert.equal(metadata.robots.index, true);
+  assert.equal(metadata.robots.googleBot["max-snippet"], -1);
+  // The shared landing page collapses summaries over 70 words: keep the whole answer visible.
+  assert.ok(model.answerSummary.split(/\s+/).length <= 70);
+});
+
+test("Mutianyu's visible service facts and starting offer match TouristTrip without including optional lifts", () => {
+  const url = createTourMetadata(tour).alternates.canonical;
+  const schema = itineraryProductSchema({
+    ...tourSearchSpecification(tour),
+    name: model.headline,
+    url,
+    offer: getJourneyStartingOffer(catalog, url),
+  });
+  assert.equal(
+    schema.subjectOf[0].mainEntity.find(({ name }) => name === "ISO 8601 duration").value,
+    "PT8H",
+  );
+  assert.equal(schema.description, model.answerSummary);
+  assert.equal(schema.offers.price, 349);
+  assert.equal(schema.offers.priceSpecification.unitText, "per person");
+  assert.equal(schema.offers.availability, undefined);
+  assert.deepEqual(
+    schema.subjectOf[0].mainEntity
+      .filter(({ name }) => model.practicalities.some((fact) => fact.label === name))
+      .map(({ name, value }) => ({ label: name, value })),
+    model.practicalities,
+  );
+  assert.match(
+    model.practicalities.find(({ label }) => label === "Starting-price basis").value,
+    /USD 349 per person.*USD 698 for two/,
+  );
+  assert.match(
+    model.practicalities.find(({ label }) => label === "Mountain transport").value,
+    /optional paid/,
+  );
+  assert.match(model.answerSummary, /Cable car, chairlift, toboggan and lunch are extra/);
+  assert.doesNotMatch(tour.included.join(" "), /business MPV|round-trip cable car|lunch included/i);
+});
+
+test("all Mutianyu decision answers and booking terms are visible and identical to FAQ schema", () => {
+  const visible = getVisibleTourFaqs(tour);
+  const schema = faqPageSchema(visible);
+  assert.equal(visible.length, 20);
+  assert.equal(tour.faqs.length, 18);
+  assert.equal(new Set(visible.map(({ question }) => question)).size, visible.length);
+  assert.deepEqual(
+    schema.mainEntity.map(({ name, acceptedAnswer }) => ({
+      question: name,
+      answer: acceptedAnswer.text,
+    })),
+    model.faqs,
+  );
+  const cost = visible.find(({ question }) => /two people/.test(question)).answer;
+  assert.match(cost, /USD 349 per person.*USD 698 for two/);
+  assert.doesNotMatch(cost, /not a per-person|USD 249|USD 399/);
+  assert.match(visible.find(({ question }) => /wheelchair/.test(question)).answer, /not step-free/);
+  assert.match(
+    visible.find(({ question }) => /layover/.test(question)).answer,
+    /separate feasibility review/,
+  );
+  assert.match(
+    visible.find(({ question }) => /passport/.test(question)).answer,
+    /Do not send passport numbers/,
+  );
+});
+
+test("Mutianyu official references have scoped publishers and recommendations stay within Beijing", () => {
+  const citations = tourOfficialCitations(tour);
+  assert.equal(citations.length, 2);
+  assert.ok(citations.some(({ url }) => url === "https://www.mutianyugreatwall.com/"));
+  assert.ok(citations.some(({ url }) => url === "https://whc.unesco.org/en/list/438/"));
+  assert.equal(
+    citations.find(({ url }) => url.includes("unesco")).publisher.name,
+    "UNESCO World Heritage Centre",
+  );
+  assert.equal(model.relatedTourHrefs.length, 2);
+  for (const href of model.relatedTourHrefs) {
+    assert.ok(getJourneyCatalogItem(href.split("/").at(-1)).destinationFilters.includes("Beijing"));
+  }
+});
+
 test("Mutianyu remains a published per-person starting-price product across catalog, card and detail", () => {
   assert.equal(catalog.pricing.status, "published-from");
   assert.equal(catalog.pricing.pricingUnit, "per-person");
-  assert.equal(catalog.pricing.fromUsd, 249);
+  assert.equal(catalog.pricing.fromUsd, 349);
   assert.equal(model.price.pricingUnit, "per-person");
-  assert.equal(model.price.fromUsd, 249);
+  assert.equal(model.price.fromUsd, 349);
   assert.doesNotMatch(buildExplorerItem(catalog).priceNote, /room/i);
   assert.doesNotMatch(JSON.stringify(model.price), /US\$|\$\d/);
 });

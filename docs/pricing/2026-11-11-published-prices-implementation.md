@@ -1,5 +1,9 @@
 # Published starting prices — 2026-11-11
 
+Latest day-service review: Shanghai USD 349, Xi’an USD 299, Chengdu USD 279 and Li River USD 499 per person on a two-adult basis. Service scope is unchanged. See `2026-11-11-day-tour-editorial-price-review.json` for explicit internal assumptions and stress scenarios; no supplier quote or market acceptance was verified. All 14 multi-day rates remain unchanged in this editorial pass. Business pricing now explicitly applies to its 4-day / 3-night example.
+
+Subsequent individual review: Mutianyu was revised from USD 249 to USD 349 per person, retaining its existing inclusions (no included lift or lunch). See `../audit/mutianyu-product-seo-geo-2026-11-11.md`. The original batch review below is an implementation history, not the current authority for that one rate; `published-prices.ts` is the current numeric source.
+
 The owner-approved revised rates from `2026-11-11-pricing-robustness-review.md` are now implemented for all 19 public journeys. The numeric source is `content/tours/published-prices.ts`.
 
 ## Public presentation

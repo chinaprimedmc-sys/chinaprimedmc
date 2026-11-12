@@ -1,4 +1,5 @@
 import { publicRouteSlugs } from "@/config/public-route-slugs";
+import { travelerContentContext } from "@/config/traveler-guide-routes";
 
 /** Only public route identifiers enter analytics; never copy arbitrary query values. */
 export function pageConversionContext(pathname: string, search = "") {
@@ -16,6 +17,7 @@ export function pageConversionContext(pathname: string, search = "") {
         ? query.get("journey")
         : null;
   return {
+    ...travelerContentContext(pathname, search),
     ...(destination && (publicRouteSlugs.destinations as readonly string[]).includes(destination)
       ? { destination_slug: destination }
       : {}),

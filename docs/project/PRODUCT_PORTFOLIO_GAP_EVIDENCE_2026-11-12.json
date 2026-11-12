@@ -1,0 +1,399 @@
+{
+  "asOf": "2026-11-12",
+  "scope": "Current local registered products and guides, not live deployed inventory or market demand.",
+  "evidence": {
+    "productCount": 19,
+    "destinationGuideCount": 242,
+    "guidesWithProductCards": 21,
+    "distinctDirectDestinationPathsInProductCatalog": 18,
+    "categoryCounts": {
+      "private-day": 5,
+      "business": 1,
+      "unhurried-china": 1,
+      "family": 1,
+      "muslim-friendly": 1,
+      "wellness": 1,
+      "regional-culture": 4,
+      "nature-landscapes": 3,
+      "first-china": 2
+    },
+    "actualDayCountDistribution": {
+      "1": 5,
+      "4": 1,
+      "12": 3,
+      "13": 1,
+      "10": 3,
+      "11": 1,
+      "5": 2,
+      "7": 1,
+      "8": 1,
+      "6": 1
+    },
+    "routeMentionCounts": {
+      "Beijing": 8,
+      "Shanghai": 7,
+      "Xi'an": 7,
+      "Chengdu": 7
+    }
+  },
+  "currentProducts": [
+    {
+      "slug": "guilin-yangshuo-li-river-cruise-private-day-tour",
+      "title": "Guilin to Yangshuo Li River Cruise with Guide",
+      "duration": "1 Day · Private support · Usually 9–11 hours",
+      "route": "Guilin hotel · Li River four-star public cruise · Yangshuo · Yangshuo finish or Guilin return",
+      "category": "private-day"
+    },
+    {
+      "slug": "private-chengdu-panda-day-tour-early-morning",
+      "title": "Private Chengdu Panda Tour with Hotel Pickup",
+      "duration": "1 Day · Private · About 8 hours",
+      "route": "Chengdu hotel · Chengdu Panda Base · People's Park · Chengdu hotel",
+      "category": "private-day"
+    },
+    {
+      "slug": "private-xian-terracotta-warriors-day-tour",
+      "title": "Private Terracotta Warriors Tour from Xi'an",
+      "duration": "1 Day · Private · About 8 hours",
+      "route": "Xi'an hotel · Terracotta Warriors · Xi'an Old City · Xi'an hotel",
+      "category": "private-day"
+    },
+    {
+      "slug": "private-shanghai-day-tour-guide-driver",
+      "title": "Private Shanghai Day Tour with Guide and Driver",
+      "duration": "1 Day · Private · About 8 hours",
+      "route": "Shanghai hotel · Old City · Bund · Former French Concession · Shanghai hotel",
+      "category": "private-day"
+    },
+    {
+      "slug": "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+      "title": "Guangzhou and Shenzhen Private Business Tour",
+      "duration": "4–7 Days / Fully Tailor-Made",
+      "route": "Guangzhou, Shenzhen",
+      "category": "business"
+    },
+    {
+      "slug": "private-mutianyu-great-wall-day-tour",
+      "title": "Private Mutianyu Great Wall Tour from Beijing",
+      "duration": "1 Day · Private",
+      "route": "Beijing · Mutianyu Great Wall · Beijing",
+      "category": "private-day"
+    },
+    {
+      "slug": "china-at-an-easier-pace-12-day-private-tour",
+      "title": "12-Day Private China Tour at an Easier Pace",
+      "duration": "12 Days / 11 Nights",
+      "route": "Beijing · Xi'an · Shanghai",
+      "category": "unhurried-china"
+    },
+    {
+      "slug": "china-family-tour-with-pandas-12-day-private-tour",
+      "title": "12-Day Private China Family Tour with Pandas",
+      "duration": "12 Days / 11 Nights",
+      "route": "Beijing, Xi'an, Chengdu, Shanghai",
+      "category": "family"
+    },
+    {
+      "slug": "muslim-friendly-china-tour-great-wall-desert-stars",
+      "title": "13-Day Muslim-Friendly China Private Tour",
+      "duration": "13 Days / 12 Nights",
+      "route": "Beijing, Xi'an, Yinchuan, Zhongwei, Shanghai",
+      "category": "muslim-friendly"
+    },
+    {
+      "slug": "qingcheng-mountain-private-wellness-retreat-10-day",
+      "title": "10-Day Qingcheng Mountain Wellness Retreat",
+      "duration": "10 Days / 9 Nights",
+      "route": "Chengdu, Qingcheng Mountain",
+      "category": "wellness"
+    },
+    {
+      "slug": "luxury-yunnan-private-tour",
+      "title": "10-Day Luxury Yunnan Private Tour",
+      "duration": "10 Days / 9 Nights",
+      "route": "Dali, Shaxi, Lijiang, Shangri-La",
+      "category": "regional-culture"
+    },
+    {
+      "slug": "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      "title": "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
+      "duration": "11 Days / 10 Nights",
+      "route": "Chengdu, Chongqing, Zhangjiajie",
+      "category": "nature-landscapes"
+    },
+    {
+      "slug": "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      "title": "12-Day Private China Tour: Shanghai to Beijing",
+      "duration": "12 Days / 11 Nights",
+      "route": "Shanghai, Chengdu, Xi'an, Beijing",
+      "category": "first-china"
+    },
+    {
+      "slug": "beijing-xian-shanghai-private-10-day-tour",
+      "title": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
+      "duration": "10 Days / 9 Nights",
+      "route": "Beijing · Xi'an · Shanghai",
+      "category": "first-china"
+    },
+    {
+      "slug": "chengdu-pandas-sichuan-table",
+      "title": "5-Day Chengdu Panda and Sichuan Food Tour",
+      "duration": "5 Days / 4 Nights",
+      "route": "Chengdu and Leshan",
+      "category": "regional-culture"
+    },
+    {
+      "slug": "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "title": "7-Day Chengdu and Jiuzhaigou Private Tour",
+      "duration": "7 Days / 6 Nights",
+      "route": "Chengdu, Jiuzhaigou",
+      "category": "nature-landscapes"
+    },
+    {
+      "slug": "beijing-great-wall-private-5-day-tour",
+      "title": "5-Day Beijing and Great Wall Private Tour",
+      "duration": "5 Days / 4 Nights",
+      "route": "Beijing",
+      "category": "regional-culture"
+    },
+    {
+      "slug": "shanghai-zhangjiajie-floating-peaks",
+      "title": "8-Day Shanghai and Zhangjiajie Private Tour",
+      "duration": "8 Days / 7 Nights",
+      "route": "Shanghai, Wulingyuan, Zhangjiajie",
+      "category": "nature-landscapes"
+    },
+    {
+      "slug": "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "title": "6-Day Xi'an and Beijing Private Tour",
+      "duration": "6 Days / 5 Nights",
+      "route": "Xi'an, Beijing",
+      "category": "regional-culture"
+    }
+  ],
+  "recommendedConcepts": [
+    {
+      "id": "guilin-yangshuo-longji",
+      "batch": 1,
+      "nameZh": "桂林、阳朔与龙脊五天四晚",
+      "englishWorkingTitle": "5-Day Guilin, Yangshuo and Longji Private Tour",
+      "designDays": 5,
+      "designNights": 4,
+      "existingGuidePaths": ["/destinations/guilin"],
+      "gap": "Adds accommodation, rice-terrace day and rural time beyond the current one-way cruise day.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "shanghai-suzhou-hangzhou",
+      "batch": 1,
+      "nameZh": "上海、苏州与杭州七天六晚",
+      "englishWorkingTitle": "7-Day Shanghai, Suzhou and Hangzhou Private Tour",
+      "designDays": 7,
+      "designNights": 6,
+      "existingGuidePaths": [
+        "/destinations/shanghai",
+        "/destinations/suzhou",
+        "/destinations/hangzhou"
+      ],
+      "gap": "Creates the currently missing Jiangnan regional journey, with Shanghai arrival and Hangzhou departure.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "zhangjiajie-regional",
+      "batch": 1,
+      "nameZh": "张家界四天三晚",
+      "englishWorkingTitle": "4-Day Zhangjiajie Private Tour with Tianmen Mountain",
+      "designDays": 4,
+      "designNights": 3,
+      "existingGuidePaths": ["/destinations/zhangjiajie"],
+      "gap": "Standalone regional handling without requiring Shanghai or Sichuan; final-day Tianmen requires verified late departure.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "huangshan-hongcun",
+      "batch": 1,
+      "nameZh": "黄山与宏村四天三晚",
+      "englishWorkingTitle": "4-Day Huangshan and Hongcun Private Tour",
+      "designDays": 4,
+      "designNights": 3,
+      "existingGuidePaths": ["/destinations/huangshan", "/destinations/hongcun"],
+      "gap": "New East China mountain and village product, with a specifically confirmed mountain overnight.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "chengdu-chongqing",
+      "batch": 1,
+      "nameZh": "成都与重庆六天五晚",
+      "englishWorkingTitle": "6-Day Chengdu and Chongqing Private Tour",
+      "designDays": 6,
+      "designNights": 5,
+      "existingGuidePaths": ["/destinations/chengdu", "/destinations/chongqing"],
+      "gap": "Two-city food and urban route without the Zhangjiajie mountain chapter.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "xian-regional",
+      "batch": 1,
+      "nameZh": "西安三天两晚",
+      "englishWorkingTitle": "3-Day Xian Private Tour with the Terracotta Warriors",
+      "designDays": 3,
+      "designNights": 2,
+      "existingGuidePaths": ["/destinations/xian"],
+      "gap": "Hotel-and-transfer regional short stay between existing museum day and two-city six-day package.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "shanxi-architecture",
+      "batch": 1,
+      "nameZh": "大同、太原与平遥六天五晚",
+      "englishWorkingTitle": "6-Day Datong, Taiyuan and Pingyao Private Tour",
+      "designDays": 6,
+      "designNights": 5,
+      "existingGuidePaths": [
+        "/destinations/datong",
+        "/destinations/taiyuan",
+        "/destinations/pingyao"
+      ],
+      "gap": "Adds northern grotto, timber architecture and merchant-city cultural corridor.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "fujian-culture",
+      "batch": 1,
+      "nameZh": "厦门、泉州与福建土楼六天五晚",
+      "englishWorkingTitle": "6-Day Xiamen, Quanzhou and Fujian Tulou Private Tour",
+      "designDays": 6,
+      "designNights": 5,
+      "existingGuidePaths": ["/destinations/xiamen", "/destinations/quanzhou"],
+      "gap": "New southeast coastal and maritime-history corridor; exact Tulou site and overnight must be confirmed.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "gansu-silk-road",
+      "batch": 2,
+      "nameZh": "甘肃丝路八天七晚",
+      "englishWorkingTitle": "Gansu Silk Road Private Tour",
+      "designDays": 8,
+      "designNights": 7,
+      "existingGuidePaths": [
+        "/destinations/lanzhou",
+        "/destinations/zhangye",
+        "/destinations/dunhuang"
+      ],
+      "gap": "Regional Silk Road corridor; cave ticket and rail/road timings need evidence.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "yangtze-cruise",
+      "batch": 2,
+      "nameZh": "长江游轮与重庆／宜昌",
+      "englishWorkingTitle": "Yangtze River Cruise with Private Transfers",
+      "designDays": null,
+      "designNights": null,
+      "existingGuidePaths": ["/destinations/chongqing", "/destinations/yichang"],
+      "gap": "Shared ship with private land logistics; duration depends on actual sailing direction and operator.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "guizhou-villages",
+      "batch": 2,
+      "nameZh": "贵州村寨与荔波七天六晚",
+      "englishWorkingTitle": "Guizhou Private Tour with Zhaoxing and Libo",
+      "designDays": 7,
+      "designNights": 6,
+      "existingGuidePaths": [
+        "/destinations/guiyang",
+        "/destinations/libo",
+        "/destinations/zhaoxing"
+      ],
+      "gap": "Community-led village culture and karst landscapes; hosts, road plan and consent required.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "jingdezhen-wuyuan",
+      "batch": 2,
+      "nameZh": "景德镇与婺源四天三晚",
+      "englishWorkingTitle": "Jingdezhen Pottery and Wuyuan Private Tour",
+      "designDays": 4,
+      "designNights": 3,
+      "existingGuidePaths": ["/destinations/jingdezhen", "/destinations/wuyuan"],
+      "gap": "Craft-centered short stay; teaching, firing and shipping must be contracted.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "hong-kong-guilin",
+      "batch": 2,
+      "nameZh": "香港至桂林阳朔七天六晚",
+      "englishWorkingTitle": "Hong Kong Guilin and Yangshuo Private Tour",
+      "designDays": 7,
+      "designNights": 6,
+      "existingGuidePaths": ["/destinations/hong-kong", "/destinations/guilin"],
+      "gap": "International gateway and mainland rural pairing; local operators and cross-boundary handoffs required.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    },
+    {
+      "id": "harbin-winter",
+      "batch": 2,
+      "nameZh": "哈尔滨冬季四天三晚",
+      "englishWorkingTitle": "Harbin Winter Private Tour",
+      "designDays": 4,
+      "designNights": 3,
+      "existingGuidePaths": ["/destinations/harbin"],
+      "gap": "Season-specific winter product with confirmed opening dates and cold-weather operations.",
+      "status": "internal-concept-not-published",
+      "supplierVerified": false,
+      "liveDemandVerified": false,
+      "priceUsd": null
+    }
+  ],
+  "targetPortfolioSizes": {
+    "afterBatch1": 27,
+    "afterAllBatch2IfValidated": 33,
+    "notQuota": true
+  },
+  "methodLimits": [
+    "Priorities are editorial and operating hypotheses; no current search-volume, SERP, supplier-cost or sales verification.",
+    "Existing competitor research contains historical observations and obsolete portfolio snapshots; not treated as current inventory.",
+    "New concepts are not public products and have no confirmed price or supplier commitment."
+  ],
+  "reportPath": "docs/project/PRODUCT_PORTFOLIO_GAP_ANALYSIS_2026-11-12.md"
+}

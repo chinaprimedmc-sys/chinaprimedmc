@@ -278,18 +278,16 @@ export function articleSchemaData(input: {
       url: new URL("/editorial-policy", siteConfig.url).toString(),
       parentOrganization: { "@id": `${siteConfig.url}/#organization` },
     },
-    ...(input.factChecked
-      ? {
-          reviewedBy: {
-            "@type": "Organization",
-            "@id": `${siteConfig.url}/#organization`,
-          },
-        }
-      : {}),
     publisher: { "@id": `${siteConfig.url}/#organization` },
     copyrightHolder: { "@id": `${siteConfig.url}/#organization` },
     copyrightYear: new Date(input.datePublished).getUTCFullYear(),
-    mainEntityOfPage: { "@type": "WebPage", "@id": input.url },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": input.url,
+      ...(input.factChecked
+        ? { reviewedBy: { "@type": "Organization", "@id": `${siteConfig.url}/#organization` } }
+        : {}),
+    },
     isPartOf: { "@id": `${siteConfig.url}/#website` },
     ...(input.keywords?.length ? { keywords: input.keywords } : {}),
     ...(input.about?.length
@@ -366,24 +364,36 @@ export function itineraryProductSchema(input: ItineraryProductInput) {
     "@context": "https://schema.org",
     "@type": schemaType,
     "@id": tripId,
-    ...(input.identifier ? { identifier: input.identifier, sku: input.identifier } : {}),
+    ...(input.identifier
+      ? {
+          identifier: input.identifier,
+          ...(schemaType === "Product" ? { sku: input.identifier } : {}),
+        }
+      : {}),
     name: input.name,
     ...(input.alternateName ? { alternateName: input.alternateName } : {}),
     description: input.description,
     url: input.url,
     ...(input.mainEntityOfPage ? { mainEntityOfPage: { "@id": input.mainEntityOfPage } } : {}),
-    ...(input.category ? { category: input.category } : {}),
-    ...(input.duration ? { duration: input.duration } : {}),
-    ...(input.brandName ? { brand: { "@type": "Brand", name: input.brandName } } : {}),
-    ...(input.audienceType
+    ...(schemaType === "Product" && input.category ? { category: input.category } : {}),
+    ...(schemaType === "Product" && input.brandName
+      ? { brand: { "@type": "Brand", name: input.brandName } }
+      : {}),
+    ...(schemaType === "Product" && input.audienceType
       ? { audience: { "@type": "PeopleAudience", audienceType: input.audienceType } }
       : {}),
     ...(input.image
       ? { image: (Array.isArray(input.image) ? input.image : [input.image]).filter(Boolean) }
       : {}),
-    ...(input.touristType?.length ? { touristType: input.touristType } : {}),
-    ...(input.areaServed?.length
-      ? { areaServed: input.areaServed.map((name) => ({ "@type": "Place", name })) }
+    ...(schemaType === "TouristTrip" && (input.touristType?.length || input.audienceType)
+      ? {
+          touristType: [
+            ...new Set([
+              ...(input.touristType ?? []),
+              ...(input.audienceType ? [input.audienceType] : []),
+            ]),
+          ],
+        }
       : {}),
     ...(schemaType === "TouristTrip" && input.itinerary?.length
       ? {
@@ -473,7 +483,7 @@ export function itineraryProductSchema(input: ItineraryProductInput) {
           },
         }
       : {}),
-    ...(input.additionalProperties?.length
+    ...(schemaType === "Product" && input.additionalProperties?.length
       ? {
           additionalProperty: input.additionalProperties.map(({ name, value }) => ({
             "@type": "PropertyValue",
@@ -482,15 +492,54 @@ export function itineraryProductSchema(input: ItineraryProductInput) {
           })),
         }
       : {}),
-    ...(input.subjectOf?.length
+    ...(input.subjectOf?.length ||
+    (schemaType === "TouristTrip" &&
+      (input.duration ||
+        input.additionalProperties?.length ||
+        input.areaServed?.length ||
+        input.category ||
+        input.brandName))
       ? {
-          subjectOf: input.subjectOf.map(({ name, url }) => ({
-            "@type": "Article",
-            name,
-            url,
-          })),
+          subjectOf: [
+            // TouristTrip is an Intangible, not a Product or Event. Its duration
+            // and operational facts belong to a describing specification;
+            // duration/sku/brand/additionalProperty are not Trip properties.
+            ...(schemaType === "TouristTrip"
+              ? [
+                  {
+                    "@type": "WebPage",
+                    "@id": `${input.url}#specification`,
+                    url: input.url,
+                    name: `${input.name}: journey specification`,
+                    isPartOf: { "@id": `${siteConfig.url}/#website` },
+                    publisher: { "@id": input.providerId ?? `${siteConfig.url}/#organization` },
+                    about: { "@id": tripId },
+                    mainEntity: [
+                      ...(input.duration
+                        ? [{ name: "ISO 8601 duration", value: input.duration }]
+                        : []),
+                      ...(input.category
+                        ? [{ name: "Journey category", value: input.category }]
+                        : []),
+                      ...(input.brandName ? [{ name: "Brand", value: input.brandName }] : []),
+                      ...(input.areaServed?.length
+                        ? [{ name: "Travel area", value: input.areaServed.join("; ") }]
+                        : []),
+                      ...(input.additionalProperties ?? []),
+                    ].map(({ name, value }) => ({ "@type": "PropertyValue", name, value })),
+                  },
+                ]
+              : []),
+            ...(input.subjectOf ?? []).map(({ name, url }) => ({
+              "@type": "Article",
+              name,
+              url,
+            })),
+          ],
         }
       : {}),
-    provider: { "@id": input.providerId ?? `${siteConfig.url}/#organization` },
+    ...(schemaType === "TouristTrip"
+      ? { provider: { "@id": input.providerId ?? `${siteConfig.url}/#organization` } }
+      : {}),
   };
 }

@@ -44,7 +44,10 @@ const cards = [
     title: getJourneyHeadline(item) ?? item.title,
     subtitle: `${item.durationLabel} · ${item.routeLabel}`,
     label: "PRIVATE CHINA JOURNEYS",
-    image: item.visualStatus === "pending" ? siteConfig.ogImage : item.image.src,
+    image:
+      item.visualStatus === "pending"
+        ? "/tours/placeholders/photography-pending.svg"
+        : item.image.src,
     file: socialCardPath("tours", item.slug),
   })),
   ...journalArticles.map((article) => ({

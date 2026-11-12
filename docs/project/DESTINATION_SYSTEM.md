@@ -209,3 +209,13 @@ introduced. Event sending remains conditional on analytics consent. Origin param
 navigation context, not proof of a search acquisition channel or a complete multi-step funnel.
 Run `node --test tests/destination-conversion.test.mjs tests/enquiry-context.test.mjs`.
 Real analytics/CRM delivery and multi-step generic-page attribution need separate acceptance.
+
+## Nationwide expansion — 2026-11-11
+
+The user authorized full national expansion and guides without matching published tours.
+This supersedes the earlier requirement that every guide have a product. Empty products
+must produce a tailored-planning state, no product cards and no empty ItemList schema.
+Expanded guides live in `content/destinations/expansion`, with explicit release selection;
+the national candidate inventory never auto-publishes routes. Refer to
+`NATIONAL_DESTINATION_EXPANSION_PLAN.md` and `NATIONAL_DESTINATION_COVERAGE.md`.
+The inventory is not an exhaustive official list of all administrative cities.

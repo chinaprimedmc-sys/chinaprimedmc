@@ -85,20 +85,20 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
     seoTitle: "Is China Safe for Elderly Travelers? Senior Care & Health Guide",
   },
   "muslim-friendly-private-china-travel": {
-    title: "Muslim-Friendly Private China Travel: Meals, Prayer and Planning",
-    seoTitle: "Muslim-Friendly China Tours: Halal and Prayer Planning",
+    title: "Halal Meals and Prayer in China: What Your Travel Plan Should Confirm",
+    seoTitle: "Halal Meals & Prayer in China: Service Checklist",
   },
   "women-private-china-travel": {
-    title: "Women Traveling in China: What Thoughtful Private Support Looks Like",
-    seoTitle: "Women Traveling in China: Private Tours and Support",
+    title: "China Travel Support for Women: What to Confirm Before Booking",
+    seoTitle: "China Travel Support for Women: What to Confirm",
   },
   "slow-paced-china-tour-for-seniors": {
-    title: "A Slower-Paced China Tour: Design for Comfort, Not Fewer Photos",
-    seoTitle: "Slow-Paced China Tours for Seniors: Comfort and Planning",
+    title: "Slow-Paced China Travel: A Daily Comfort and Service Checklist",
+    seoTitle: "Slow-Paced China Travel: Daily Comfort Checklist",
   },
   "private-china-family-tour-planning": {
-    title: "Private China Family Tours: Plan the Trip Around Every Age",
-    seoTitle: "Private China Family Tours: Rooms, Pace and Planning",
+    title: "How to Brief a Planner for a China Family Trip: Ages, Rooms and Pace",
+    seoTitle: "China Family Travel Brief: Ages, Rooms & Pace",
   },
   "china-family-hotel-rooms-connecting-rooms-extra-beds": {
     title: "China Hotel Rooms for Families: What to Confirm Before Booking",
@@ -174,7 +174,7 @@ const editorialUpgrades: Record<string, JournalEditorialUpgrade> = {
   },
   "first-trip-to-china-planning-guide": {
     title: "How AVIORA Plans a First Trip to China Before You Book",
-    seoTitle: "How to Plan a Trip to China: 12 Decisions Before Booking",
+    seoTitle: "First Trip to China: 12 Decisions Before Booking",
     preserveTitleCase: true,
   },
   "how-much-walking-china-tour": {

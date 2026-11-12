@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
@@ -20,8 +21,8 @@ export const qingchengMountainWellness10DayTour: Tour = {
   slug: "qingcheng-mountain-private-wellness-retreat-10-day",
   visualStatus: "pending",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-08-21",
-  title: "Ten Days at Qingcheng Mountain",
+  updatedAt: "2026-11-12",
+  title: "10-Day Qingcheng Mountain Wellness Retreat",
   subtitle:
     "Ten private days shaped by forest, Daoist tradition and time entirely your own. Arrive with nothing to manage; leave with a rhythm worth keeping.",
   duration: "10 Days / 9 Nights",
@@ -30,56 +31,95 @@ export const qingchengMountainWellness10DayTour: Tour = {
   hero: {
     eyebrow: "AVIORA private Daoist-inspired retreat",
     image: pendingImage,
-    primary: { label: "Design My Private Retreat", href: "#inquiry" },
+    primary: { label: "Design My Private Retreat", href: "#enquiry" },
     secondary: { label: "See the 10-Day Rhythm", href: "#itinerary" },
   },
   seo: {
-    title: "10-Day Private Wellness Retreat in China",
+    title: "10-Day Qingcheng Mountain Wellness Retreat",
     description:
-      "A private 10-day luxury wellness retreat in Chengdu and Qingcheng Mountain with tai chi, Daoist culture, tea, forest walks and spa treatments.",
+      "Spend two nights in Chengdu and seven near Qingcheng Mountain, with private tai chi, tea, cultural visits and two confirmed resort treatments. Non-medical retreat.",
     keywords: [
-      "China wellness retreat",
-      "luxury wellness retreat China",
-      "Qingcheng Mountain retreat",
-      "private wellness travel China",
-      "Daoist wellness retreat",
-      "Six Senses Qing Cheng Mountain itinerary",
-      "China retreat for women",
-      "executive wellness retreat China",
+      "Qingcheng Mountain private wellness retreat China",
+      "Chengdu Qingcheng ten day retreat",
+      "private tai chi tea retreat Sichuan",
+      "Qingcheng resort retreat non medical",
     ],
+
+    preserveCopy: true,
   },
   overview: {
     pitch:
       "Spend two gentle nights in Chengdu, then stay seven uninterrupted nights beneath Qingcheng Mountain. Private tai chi, tea, Daoist cultural interpretation, restorative treatments and quiet forest walks are balanced with protected hours in which nothing is scheduled. Rooms, meals, transfers and daily decisions are held by one China-based team.",
     facts: [
       {
-        label: "Duration",
-        value: "10 days / 9 nights",
-        helper: "Chengdu 2 nights and Qingcheng Mountain 7 nights, with only one hotel change.",
-      },
-      {
-        label: "Best For",
-        value: "Executives, women, couples and private groups",
-        helper: "For people who value privacy, cultural substance and genuinely unclaimed time.",
-      },
-      {
-        label: "Daily Rhythm",
-        value: "One anchor, one choice and protected blank space",
-        helper: "No consecutive early starts and no pressure to complete every optional activity.",
-      },
-      {
         label: "Hotels",
-        value: "Luxury Chengdu base and Qingcheng retreat",
-        helper:
-          "Rooms and occupancy confirmed for your actual party; exact properties and room categories are named before booking.",
+        value: "2 Chengdu hotel nights and 7 Qingcheng retreat nights; one hotel change",
       },
       {
-        label: "Private Service",
-        value: "AVIORA Quiet Journey Standard",
-        helper:
-          "Rhythm profile, minimal transitions, private support and protected unscheduled hours.",
+        label: "Pacing",
+        value: "Slow retreat with optional shorter mountain routes; protected unescorted time",
+      },
+      {
+        label: "Suitable for",
+        value:
+          "Travelers seeking a well-supported mountain stay, cultural context and quiet time, not medical treatment or a daily sightseeing circuit.",
       },
     ],
+
+    practicalities: [
+      {
+        label: "Best for",
+        value:
+          "Travelers seeking a well-supported mountain stay, cultural context and quiet time, not medical treatment or a daily sightseeing circuit.",
+      },
+      {
+        label: "Nights and transfers",
+        value:
+          "2 Chengdu nights and 7 Qingcheng-area nights; one hotel change. Confirm the actual resort address and Chengdu airport for each transfer.",
+      },
+      {
+        label: "Included cultural program",
+        value:
+          "Confirmed private tai chi, tea and Daoist interpretation, a Dujiangyan half day and one tailored Qingcheng Mountain day; teachers, venues and service hours are named in the proposal.",
+      },
+      {
+        label: "Treatments",
+        value:
+          "Two selected resort wellbeing treatments per guest, each planned for 60–90 minutes subject to provider consultation, suitability and written confirmation.",
+      },
+      {
+        label: "Meals",
+        value:
+          "Breakfasts plus seven specified lunches or dinners: Day 2 lunch; Days 3, 5, 7 and 9 dinners; Days 6 and 8 lunches. Day 4 lunch is independent.",
+      },
+      {
+        label: "Protected time",
+        value:
+          "Day 7 has no scheduled sightseeing, guide or vehicle. Its included treatment and dinner are arranged around agreed times, not automatic full-day staffing.",
+      },
+      {
+        label: "Walking",
+        value:
+          "Qingcheng and Dujiangyan routes can involve stairs, slopes and public transport. A lower route reduces ambition, not all access barriers.",
+      },
+      {
+        label: "Hotel and scope",
+        value:
+          "A selected luxury Chengdu hotel and mountain retreat; a particular brand, suite, private temple or named practitioner is not guaranteed until confirmed.",
+      },
+      {
+        label: "Health boundary",
+        value:
+          "No diagnosis, psychotherapy, clinical care, prescription or promised physical or mental-health result. Travel insurance and personal medical advice remain separate.",
+      },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("qingcheng-mountain-private-wellness-retreat-10-day"),
+      },
+    ],
+
+    answer:
+      "A private ten-day wellness retreat with two nights in Chengdu and seven at a selected Qingcheng Mountain resort. Combine confirmed tai chi, tea and Daoist cultural sessions with Dujiangyan, a tailored mountain day and protected unscheduled time. Breakfast, seven specified lunches or dinners and two resort treatments per guest are included as confirmed. Flights, additional treatments and medical care are separate; no health outcome is promised.",
   },
   experienceChapters: [
     {
@@ -87,7 +127,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
       days: "Days 1-2",
       title: "Arrive without immediately beginning another itinerary",
       description:
-        "The first forty-eight hours remove decisions rather than add attractions. Your arrival, room, first meals and next transfer are already held, while Chengdu introduces a slower social rhythm through tea and an unhurried neighborhood morning.",
+        "The first two nights give you time to settle in. Airport pickup, the hotel and the onward transfer are coordinated in advance. Chengdu introduces the journey through tea and an unhurried neighborhood morning; arrival dining can be arranged separately.",
       see: "A contemporary Chinese city at human scale: shaded streets, a working tea house, courtyard life and the quiet details normally missed between headline sights.",
       do: "Sleep, take tea with a private host, discuss the rhythm you want from the mountain stay and choose either a gentle walk or complete hotel time.",
       feel: "That the journey has started without asking you to perform, organize or recover quickly from the flight.",
@@ -196,7 +236,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
     {
       title: "A full day that is intentionally left alone",
       description:
-        "No guide waits in the lobby and no attraction is added to justify the price. Sleep, spa, reading and solitude are protected as part of the journey itself.",
+        "Day 7 has no sightseeing, guide or standby vehicle. The second included treatment and dinner take place at agreed times, leaving the rest of the day for sleep, reading or quiet time.",
       category: "Wellness",
       image: pendingImage,
     },
@@ -207,16 +247,18 @@ export const qingchengMountainWellness10DayTour: Tour = {
       title: "Arrive in Chengdu, with nothing else expected of you",
       destination: "Chengdu",
       summary:
-        "Your private team meets the confirmed flight, manages luggage and takes you directly to the hotel. There is no compulsory welcome tour and no briefing that cannot wait; the room, first meal and next morning are arranged around arrival time.",
+        "Your private team meets the confirmed flight, helps with luggage and takes you directly to the hotel. Keep the evening free of sightseeing. An arrival meal or room service can be arranged at additional cost unless your written proposal includes it.",
       image: pendingImage,
       hotel: hotelByPlace.chengdu,
-      meals: ["Arrival meal or room service as confirmed"],
+      meals: [
+        "Arrival meal or room service optional; additional cost unless included in your proposal",
+      ],
       transport: "Private Chengdu airport transfer with luggage support",
       activities: [
         {
           title: "A protected arrival",
           description:
-            "Terminal, vehicle, luggage capacity, room readiness and a suitable first meal are checked around the actual flight.",
+            "Terminal, vehicle, luggage capacity and room readiness are checked against the actual flight. The team can help arrange a suitable arrival meal; its cost is separate unless included in your proposal.",
         },
         {
           title: "Nothing to catch up on",
@@ -256,7 +298,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
     },
     {
       day: 3,
-      title: "Enter Qingcheng Mountain without another travel day",
+      title: "A Short Regional Transfer to Qingcheng Mountain",
       destination: "Chengdu to Qingcheng Mountain",
       summary:
         "Travel privately from Chengdu to the Qingcheng area, usually in around ninety minutes depending on traffic and the confirmed hotel. Check in for seven nights, learn only what is useful and leave the remainder of the day open.",
@@ -288,7 +330,7 @@ export const qingchengMountainWellness10DayTour: Tour = {
         "Meet a private tai chi teacher for a gentle session shaped around mobility and experience. Later, a cultural interpreter introduces the Daoist ideas connected with Qingcheng without making spiritual claims on the guest's behalf.",
       image: pendingImage,
       hotel: hotelByPlace.qingcheng,
-      meals: ["Breakfast", "Private light lunch"],
+      meals: ["Breakfast; lunch and dinner independent"],
       transport: "Private local transfer if the confirmed practice venue requires it",
       activities: [
         {
@@ -367,7 +409,8 @@ export const qingchengMountainWellness10DayTour: Tour = {
       image: pendingImage,
       hotel: hotelByPlace.qingcheng,
       meals: ["Breakfast", "Private or resort dinner"],
-      transport: "No scheduled transport",
+      transport:
+        "No scheduled sightseeing vehicle or guide; treatment and dinner coordinated at agreed times",
       activities: [
         {
           title: "Protected unscheduled time",
@@ -444,7 +487,10 @@ export const qingchengMountainWellness10DayTour: Tour = {
         "Your team confirms the flight, terminal, traffic allowance, luggage and meal timing before the private transfer. No sightseeing is added before the airport unless the flight genuinely allows it and you request it.",
       image: pendingImage,
       hotel: "Departure day",
-      meals: ["Breakfast", "Departure meal if included in the confirmed timing"],
+      meals: [
+        "Breakfast",
+        "Departure meal optional; additional cost unless included in your proposal",
+      ],
       transport: "Private transfer to Chengdu Tianfu or Shuangliu airport",
       activities: [
         {
@@ -591,93 +637,153 @@ export const qingchengMountainWellness10DayTour: Tour = {
   gallery: [],
   faqs: [
     {
-      question: "Where are Chengdu and Qingcheng Mountain?",
-      answer:
-        "Chengdu is the capital of Sichuan Province in southwest China and the international gateway for this journey. Qingcheng Mountain lies near Dujiangyan, roughly 70 kilometers northwest of central Chengdu. The private road transfer usually takes around ninety minutes depending on traffic and the confirmed hotels. The journey starts and ends in Chengdu, so no domestic flight is required inside the core itinerary.",
+      question: "What does this private tour cost, and what is the starting-price basis?",
+      answer: getPublishedPriceDisclosure("qingcheng-mountain-private-wellness-retreat-10-day"),
     },
     {
-      question: "What does the price include?",
+      question: "What do you arrange beyond booking the Qingcheng hotel?",
       answer:
-        "Your written proposal is priced for your own party and dates, and includes nine nights, private transfers, confirmed guiding and cultural sessions, seven listed lunches or dinners, two resort treatments per guest, entrance arrangements and AVIORA Quiet Journey Standard support as detailed in the written proposal.",
+        "The package combines the two-city transfer plan, private cultural appointments, agreed meals, treatment coordination and local support around your preferred rhythm. The proposal should name each service and its hours. It does not imply a guide or vehicle available all day simply because you are staying in the resort.",
     },
     {
-      question: "Is Six Senses Qing Cheng Mountain guaranteed?",
+      question: "Are Six Senses or a named luxury resort guaranteed?",
       answer:
-        "Only when it is named with the room category, rate and cancellation terms in your written confirmation. The published design assumes a genuine luxury retreat standard and may propose Six Senses Qing Cheng Mountain or another property after comparing actual availability, room condition, inclusions and fit for your dates.",
+        "No named property or room is guaranteed before confirmation. The proposal identifies the actual Chengdu hotel, mountain retreat, categories, occupancy and inclusions. A brand example, photograph or destination name is not a booking. Ask about spa access, dietary needs, room approach and facilities before choosing.",
     },
     {
-      question: "Is this a medical or mental-health retreat?",
+      question: "How many spa treatments and meals are included?",
       answer:
-        "No. This is a private cultural and wellbeing journey, not medical treatment, psychotherapy or rehabilitation. Tai chi, tea, spa and breathing-related experiences are voluntary and do not promise to diagnose, treat or cure a condition. Any clinical service requires a separately confirmed qualified provider and your own medical advice where appropriate.",
+        "Two confirmed resort treatments per guest and seven specified lunches or dinners, plus the confirmed hotel breakfasts. The treatment duration is planned within 60–90 minutes subject to consultation. The included meals are listed by day; Day 4 lunch is independent. Extra treatments, minibar, room service and unlisted meals are separate.",
     },
     {
-      question: "Why are there so few destinations in ten days?",
+      question: "Is this a medical, detox or mental-health treatment program?",
       answer:
-        "Because continuity is the product. Two Chengdu nights absorb the international arrival, then seven nights in one Qingcheng room remove repeated packing, check-in and travel decisions. Adding another city to the middle would weaken the quiet the journey is designed to deliver.",
+        "No. It is a non-medical travel and wellbeing retreat with cultural sessions and selected resort services. It does not diagnose, treat or promise to improve a condition. Discuss suitability with your clinician and the actual treatment provider before booking, and do not change medication because of a travel activity.",
     },
     {
-      question: "Do we have to join every tai chi, tea or spa session?",
+      question: "Can beginners take the private tai chi sessions?",
       answer:
-        "No. This is a private journey, not a fixed group retreat. Every session can be adjusted, shortened or declined. Protected free time remains free and is not automatically replaced by sightseeing because you choose not to attend an activity.",
+        "The proposed teacher adapts the confirmed session to experience and the needs discussed beforehand. Tell us about balance, pain, pregnancy or other concerns so suitability can be checked with the provider. A gentle description is not a medical clearance, and a named teacher is only included when confirmed.",
     },
     {
-      question: "Is this suitable for a woman traveling alone?",
+      question: "Will we have a private guide and car every day?",
       answer:
-        "Yes, subject to the same personal, health and travel review used for every guest. AVIORA can request female guides or practitioners where available, coordinate every airport and hotel handover, record preferred contact levels and keep a China-based support channel active throughout. Specific personnel are confirmed before booking.",
+        "No. Guiding, interpretation and vehicle support operate during the service windows listed for cultural visits, transfers and mountain outings. Protected retreat time is deliberately unescorted unless you add support. Agree how to reach the local team and how extra services are requested and priced.",
     },
     {
-      question: "How physically demanding is Qingcheng Mountain?",
+      question: "Does the free retreat day still include a spa treatment?",
       answer:
-        "The resort days can be very gentle, but the historic mountain includes stone steps, slopes, weather exposure and sections that are not step-free. We select a lower- or upper-mountain route only after reviewing walking comfort and current transport. Dujiangyan or the mountain day can be replaced with a lower-effort cultural alternative.",
+        "Yes, the designed Day 7 can include the second confirmed treatment and its listed dinner at agreed times. There is no sightseeing schedule or standby vehicle. If you prefer the treatment on another day, check appointment availability before changing the program.",
     },
     {
-      question: "Does the journey require a digital detox?",
+      question: "How strenuous is the Qingcheng Mountain visit?",
       answer:
-        "No. You decide how connected to remain. We can reduce nonessential messages, agree one daily contact window and keep printed information available, but phones and work contact are never confiscated or treated as a failure of the retreat.",
+        "The route is selected around weather, energy, steps and available public transport. A shorter or lower route can reduce the effort but does not make every path step-free. Share actual walking and standing limits before booking; a private guide cannot remove historic stairs or guarantee lift operation.",
     },
     {
-      question: "How should international travelers reach Chengdu?",
+      question: "Can we attend a private Daoist ritual or receive spiritual instruction?",
       answer:
-        "The journey starts and ends in Chengdu. Depending on your origin and date, you may fly directly or connect through a major Asian or Chinese gateway. International flights are excluded. Share the proposed flights before ticketing so AVIORA can verify whether they use Tianfu or Shuangliu airport and build the arrival and departure days around the actual terminal.",
+        "The included cultural interpretation does not grant private religious access or represent a promise of spiritual instruction. Any hosted encounter depends on consent, appropriate conduct and written confirmation. We do not claim that a visit confers religious authority or a particular personal outcome.",
     },
     {
-      question: "Can we add Hangzhou, pandas or another part of China?",
+      question: "Can we shorten the retreat or add another destination?",
       answer:
-        "Yes, but additions should sit before or after the seven-night Qingcheng stay rather than break it apart. A panda morning can be added in Chengdu, while Hangzhou works best as a separate three-night extension after the retreat. AVIORA will show the extra transport and price clearly before confirmation.",
+        "Yes, as a separately designed program with new hotel nights, service windows and appointment costs. The ten-day starting basis cannot be divided mechanically by days. A shorter stay may suit your flights, but it should still preserve enough unscheduled time to meet the purpose of the retreat.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
-        title: "China, Considered: Beijing, Xi'an & Shanghai",
+        title: "10-Day Luxury Yunnan Private Tour",
         description:
-          "A premium first-China route for travelers who want the classic capitals with protected recovery between landmark days.",
-        tags: ["First-time China", "Luxury", "Private"],
-        image: pendingImage,
-        route: "Beijing · Xi'an · Shanghai",
-        duration: "12 days / 11 nights",
-        href: "/tours/china-at-an-easier-pace-12-day-private-tour",
+          "Choose an overland cultural journey through four Yunnan towns when you prefer exploration to a single resort base.",
+        tags: ["Luxury", "Culture", "Nature"],
+        image: {
+          src: "/tours/luxury-yunnan-private-tour/jade-dragon.jpg",
+          alt: "Jade Dragon Snow Mountain rising above northwest Yunnan",
+          width: 1920,
+          height: 864,
+          objectPosition: "center 45%",
+        },
+        route: "Dali · Shaxi · Lijiang · Shangri-La",
+        duration: "10 days / 9 nights",
+        href: "/tours/luxury-yunnan-private-tour",
       },
       {
-        title: "Chengdu: Pandas & the Sichuan Table",
+        title: "5-Day Chengdu Panda and Sichuan Food Tour",
         description:
-          "A focused private Chengdu extension combining pandas, tea-house life and Sichuan food culture.",
-        tags: ["Chengdu", "Food", "Wildlife"],
-        image: pendingImage,
-        route: "Chengdu",
-        duration: "4 days / 3 nights",
+          "Choose a shorter four-night Chengdu stay with public panda viewing and the confirmed Sichuan food experience.",
+        tags: ["Family", "Food", "Culture"],
+        image: {
+          src: "/tours/chengdu-pandas/chengdu-hero-panda.webp",
+          alt: "A giant panda resting among bamboo near Chengdu",
+          width: 6016,
+          height: 4016,
+        },
+        route: "Chengdu and Leshan",
+        duration: "5 days / 4 nights",
         href: "/tours/chengdu-pandas-sichuan-table",
       },
     ],
+
     destinations: [],
   },
   inquiry: {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Ten%20Days%20at%20Qingcheng%20Mountain&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20private%20proposal%20for%20Ten%20Days%20at%20Qingcheng%20Mountain.%0A%0ATravel%20dates%20or%20month%3A%0ATravellers%3A%0ARooms%20and%20bed%20setup%3A%0APreferred%20daily%20rhythm%3A%0AMovement%2C%20spa%20or%20dietary%20considerations%3A%0AAnything%20you%20should%20plan%20around%3A%0A",
     whatsappHref:
-      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20to%20plan%20Ten%20Days%20at%20Qingcheng%20Mountain.%20Please%20advise%20on%20dates%2C%20the%20seven-night%20retreat%2C%20room%20options%20and%20a%20private%20quote%20for%20four%20guests.",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%20am%20interested%20in%20the%2010-day%20Qingcheng%20Mountain%20retreat.%20Our%20travelers%3A%20__.%20Dates%3A%20__.%20Room%20preferences%3A%20__.%20Please%20advise%20on%20the%20seven-night%20retreat%2C%20included%20sessions%20and%20a%20quote%20for%20our%20actual%20party.",
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in Ten Days at Qingcheng Mountain. Please advise on retreat availability, room options, daily rhythm and a private quote for our group.",
+  },
+
+  planningResources: [
+    {
+      label: "UNESCO: Mount Qingcheng and Dujiangyan",
+      href: "https://whc.unesco.org/en/list/1001/",
+      officialPublisher: "UNESCO World Heritage Centre",
+      description:
+        "Background on the World Heritage property. This does not establish access, current tickets, a private teacher or a health benefit.",
+    },
+    {
+      label: "Explore Chengdu and the surrounding region",
+      href: "/destinations/chengdu",
+      description:
+        "Understand the city chapter and how the mountain stay differs from a sightseeing itinerary.",
+    },
+  ],
+
+  faqLimit: 13,
+
+  inquiryChecklist: [
+    "Dates, travelers, rooms and Chengdu airport",
+    "Preferred resort level and room privacy",
+    "Movement experience and walking comfort",
+    "Treatment preferences for provider consultation",
+    "Dietary needs and desired level of contact",
+  ],
+
+  comparison: {
+    title: "A quiet retreat or an active cultural route?",
+    intro:
+      "Choose the retreat for continuity in one mountain base, and Yunnan for a regional overland journey.",
+    columns: ["Decision", "This Qingcheng retreat", "Yunnan Tea Horse Road journey"],
+    rows: [
+      ["Nights", "Two Chengdu and seven at one mountain retreat", "Nine nights across four towns"],
+      [
+        "Program",
+        "Confirmed tai chi, tea, culture and two treatments",
+        "Tea, artisans and regional cultural encounters",
+      ],
+      [
+        "Travel pattern",
+        "One hotel change; no domestic flight in the core route",
+        "Three hotel changes and increasing altitude",
+      ],
+    ],
+    href: "/tours/luxury-yunnan-private-tour",
+    linkLabel: "Compare the alternative itinerary",
   },
 };

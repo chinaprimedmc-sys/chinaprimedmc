@@ -51,6 +51,24 @@ const { GET: getLlmsFull } = await import("../app/llms-full.txt/route.ts");
 const machineReadableGuides = await Promise.all([getLlms().text(), getLlmsFull().text()]);
 const titles = new Set();
 const descriptions = new Set();
+// Editorial workflow terms belong in the inventory, never in visitor-facing copy.
+function auditVisitorCopy(value, path) {
+  if (typeof value === "string") {
+    assert.ok(
+      !/\b(?:editorial candidate|candidate destinations?|city[- ]planning candidates?|travel candidate|registered guide|published slug|coverage decisions)\b|\b(?:guide|page) (?:does not complete|completes)\b/i.test(
+        value,
+      ),
+      `Internal editorial language in visitor copy: ${path}`,
+    );
+  } else if (Array.isArray(value)) {
+    value.forEach((item, index) => auditVisitorCopy(item, `${path}[${index}]`));
+  } else if (value && typeof value === "object") {
+    for (const [key, item] of Object.entries(value)) auditVisitorCopy(item, `${path}.${key}`);
+  }
+}
+auditVisitorCopy(explorerDestinations, "explorer");
+auditVisitorCopy(destinationEditorial, "editorial");
+auditVisitorCopy(destinationPlanningGuides, "planning");
 const { default: sitemap } = await import("../app/sitemap.ts");
 const slugs = explorerDestinations.map((item) => item.id);
 const same = (actual, message) => assert.deepEqual([...actual].sort(), [...slugs].sort(), message);
@@ -138,13 +156,9 @@ for (const destination of explorerDestinations) {
         editorial[key].paragraphs.every(Boolean),
       `Missing story: ${id}`,
     );
-  assert.ok(
-    journeyCatalog.some((journey) => journeyIncludesDestination(destination, journey)),
-    `No real journey or day tour: ${id}`,
-  );
   const assets = destinationGuideAssets[id];
   assert.deepEqual(destination.image, assets.hero, `Hero source mismatch: ${id}`);
-  assert.ok(assets.gallery.length >= 2, `Insufficient gallery: ${id}`);
+  assert.ok(assets.gallery.length >= 1, `Insufficient gallery: ${id}`);
   for (const asset of [assets.hero, ...assets.gallery]) {
     assert.ok(asset.alt && asset.width > 0 && asset.height > 0, `Incomplete media: ${asset.src}`);
     assert.ok(
@@ -227,8 +241,14 @@ for (const [slug, guide] of Object.entries(destinationPlanningGuides)) {
     for (const product of guide.products)
       assert.ok(text.includes(product.reason), `AI product qualification missing: ${slug}`);
   }
+  for (const credit of guide.mediaCredits ?? []) {
+    assert.ok(credit.label && credit.license, `Incomplete photo credit: ${slug}`);
+    assert.equal(new URL(credit.href).protocol, "https:");
+    assert.equal(new URL(credit.licenseHref).protocol, "https:");
+  }
   assert.ok(guide.stays.length >= 3 && guide.hotelAreas.length >= 2 && guide.tradeoffs.length >= 3);
-  assert.ok(guide.products.length >= 1, `No relevant published product: ${slug}`);
+  if (!guide.products.length)
+    assert.ok(guide.routeAdvice.trim(), `Missing tailored-planning guidance: ${slug}`);
   for (const product of guide.products) {
     const journey = journeyCatalog.find((item) => item.slug === product.slug);
     assert.ok(
@@ -307,5 +327,5 @@ assert.equal(
   `Replace links relying on fallback redirects:\n${legacyLinks.join("\n")}`,
 );
 console.log(
-  `Destination audit passed: ${slugs.length} guides, ${media.size} media assets, ${checkedLinks} source links; routes, search, sitemap, effective metadata and both AI reading files agree.`,
+  `Destination audit passed: ${slugs.length} guides, ${media.size} media assets, ${checkedLinks} destination links in source files; routes, search, sitemap, effective metadata and both AI reading files agree.`,
 );

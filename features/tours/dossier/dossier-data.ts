@@ -1,3 +1,4 @@
+import { overnightHotelChanges } from "@/content/tours/route-facts";
 import type { Tour, TourOverviewFact } from "@/types/tour";
 
 export type DossierFitItem = {
@@ -28,7 +29,11 @@ export function getDossierData(tour: Tour) {
   const bestFor =
     findFact(facts, ["best for", "suitable for"]) ??
     `${tour.styles.slice(0, 3).join(", ")} travellers`;
-  const hotelChanges = Math.max(0, stops.length - 1);
+  // Route-map stops include excursions and final returns; they are not hotel bases.
+  const hotelChanges = overnightHotelChanges[tour.slug] ?? 0;
+  const details = tour.overview.practicalities ?? [];
+  const walking = findFact(details, ["walking", "physical", "access"]);
+  const altitude = findFact(details, ["altitude"]);
   const transportModes = Array.from(
     new Set(
       tour.itinerary.map((day) => day.transport).filter((value): value is string => Boolean(value)),
@@ -46,7 +51,10 @@ export function getDossierData(tour: Tour) {
     },
     {
       label: "Walking level",
-      value: pace,
+      value:
+        walking ??
+        findFact(facts, ["walking"]) ??
+        "Review the walking, standing and steps in the daily itinerary",
       helper: "Exact walking and rest stops are adjusted before confirmation.",
     },
     {
@@ -56,7 +64,7 @@ export function getDossierData(tour: Tour) {
     },
     {
       label: "Altitude",
-      value: "Reviewed against the confirmed route",
+      value: altitude ?? "Review the confirmed route and any optional mountain extension",
       helper: "We will flag any relevant elevation before you book.",
     },
     {

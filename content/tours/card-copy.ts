@@ -9,6 +9,7 @@
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 
 const journeyLocations: Record<string, string> = {
+  "guilin-yangshuo-longji-private-5-day-tour": "Guilin · Longji · Yangshuo",
   "private-mutianyu-great-wall-day-tour": "Mutianyu Great Wall",
   "private-shanghai-day-tour-guide-driver": "Shanghai",
   "private-xian-terracotta-warriors-day-tour": "Xi'an",
@@ -31,8 +32,10 @@ const journeyLocations: Record<string, string> = {
 };
 
 const sensoryDescriptions: Record<string, string> = {
+  "guilin-yangshuo-longji-private-5-day-tour":
+    "A dedicated Longji day, a shared Li River cruise and Yangshuo countryside, with four hotel nights and one hotel change.",
   "private-mutianyu-great-wall-day-tour":
-    "Your own guide and driver, hotel pickup and admission, with a cable-car or walking route agreed before the day.",
+    "Your own guide and driver, Beijing hotel pickup, admission and shuttle. Cable car optional, with no shopping stops.",
   "private-shanghai-day-tour-guide-driver":
     "Yu Garden, the Bund and the former French Concession, with your own guide, driver and central-hotel pickup.",
   "private-xian-terracotta-warriors-day-tour":
@@ -76,27 +79,28 @@ const sensoryDescriptions: Record<string, string> = {
  * 城市名只作为副标题出现，避免读者与搜索引擎自行推断路线含义。
  */
 const journeyHeadlines: Record<string, string> = {
+  "guilin-yangshuo-longji-private-5-day-tour": "5-Day Guilin, Yangshuo & Longji Private Tour",
   "beijing-xian-shanghai-private-10-day-tour": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
   "china-family-tour-with-pandas-12-day-private-tour":
-    "Pandas, Warriors & the Great Wall, Made for Families",
-  "luxury-yunnan-private-tour": "Yunnan's Tea Horse Road: Snow Mountains & Old Towns",
+    "12-Day Private China Family Tour with Pandas",
+  "luxury-yunnan-private-tour": "10-Day Luxury Yunnan Private Tour",
   "china-at-an-easier-pace-12-day-private-tour": "12-Day Private China Tour at an Easier Pace",
-  "beijing-xian-chengdu-shanghai-private-11-day-tour": "Four Cities, One Clear Route Through China",
+  "beijing-xian-chengdu-shanghai-private-11-day-tour":
+    "12-Day Private China Tour: Shanghai to Beijing",
   "chengdu-chongqing-zhangjiajie-private-11-day-tour":
-    "Pandas, Sichuan Food & Zhangjiajie's Floating Mountains",
-  "shanghai-zhangjiajie-floating-peaks": "Shanghai's Skyline & Zhangjiajie's Floating Mountains",
-  "chengdu-pandas-jiuzhaigou-private-7-day-tour": "Pandas & the Turquoise Lakes of Jiuzhaigou",
+    "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
+  "shanghai-zhangjiajie-floating-peaks": "8-Day Shanghai and Zhangjiajie Private Tour",
+  "chengdu-pandas-jiuzhaigou-private-7-day-tour": "7-Day Chengdu and Jiuzhaigou Private Tour",
   "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour":
-    "Terracotta Warriors & the Great Wall",
-  "beijing-great-wall-private-5-day-tour": "Beijing's Forbidden City & the Great Wall",
-  "chengdu-pandas-sichuan-table": "Pandas, Tea Houses & the Sichuan Table",
-  "muslim-friendly-china-tour-great-wall-desert-stars":
-    "Muslim-Friendly China: Great Wall to Ningxia Desert",
+    "6-Day Xi'an and Beijing Private Tour",
+  "beijing-great-wall-private-5-day-tour": "5-Day Beijing and Great Wall Private Tour",
+  "chengdu-pandas-sichuan-table": "5-Day Chengdu Panda and Sichuan Food Tour",
+  "muslim-friendly-china-tour-great-wall-desert-stars": "13-Day Muslim-Friendly China Private Tour",
   "qingcheng-mountain-private-wellness-retreat-10-day":
-    "A Private Wellness Retreat at Mount Qingcheng",
+    "10-Day Qingcheng Mountain Wellness Retreat",
   "guangzhou-shenzhen-tailor-made-business-tour-4-day":
-    "A Tailor-Made Business Trip to Guangzhou & Shenzhen",
-  "private-mutianyu-great-wall-day-tour": "Private Great Wall Day Tour at Mutianyu, from Beijing",
+    "Guangzhou and Shenzhen Private Business Tour",
+  "private-mutianyu-great-wall-day-tour": "Private Mutianyu Great Wall Tour from Beijing",
   "private-shanghai-day-tour-guide-driver": "Private Shanghai Day Tour with Guide and Driver",
   "private-xian-terracotta-warriors-day-tour": "Private Terracotta Warriors Tour from Xi'an",
   "private-chengdu-panda-day-tour-early-morning": "Private Chengdu Panda Tour with Hotel Pickup",
@@ -163,14 +167,31 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
  * 不能再用"看点优先"的写法，否则与"private Beijing Xi'an Shanghai tour"类查询失去匹配。
  */
 const journeySeoTitleOverrides: Record<string, string> = {
+  "guilin-yangshuo-longji-private-5-day-tour": "5-Day Guilin, Yangshuo & Longji Private Tour",
+  "private-mutianyu-great-wall-day-tour": "Private Mutianyu Great Wall Tour from Beijing",
   "china-at-an-easier-pace-12-day-private-tour": "12-Day Private China Tour at an Easier Pace",
   "private-xian-terracotta-warriors-day-tour": "Private Terracotta Warriors Tour from Xi'an",
   "private-shanghai-day-tour-guide-driver": "Private Shanghai Day Tour with Guide and Driver",
   "beijing-xian-shanghai-private-10-day-tour": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
   // 站点审计按 HTML 转义后的长度计数（& 会变成 &amp;），含 & 的标题要留出余量。
   "chengdu-chongqing-zhangjiajie-private-11-day-tour":
-    "Chengdu, Chongqing & Zhangjiajie 11-Day Private Tour",
-  "shanghai-zhangjiajie-floating-peaks": "Shanghai & Zhangjiajie Floating Mountains 8-Day Tour",
+    "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
+  "shanghai-zhangjiajie-floating-peaks": "8-Day Shanghai and Zhangjiajie Private Tour",
+  "china-family-tour-with-pandas-12-day-private-tour":
+    "12-Day Private China Family Tour with Pandas",
+  "beijing-xian-chengdu-shanghai-private-11-day-tour":
+    "12-Day Private China Tour: Shanghai to Beijing",
+  "beijing-great-wall-private-5-day-tour": "5-Day Beijing and Great Wall Private Tour",
+  "chengdu-pandas-sichuan-table": "5-Day Chengdu Panda and Sichuan Food Tour",
+  "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour":
+    "6-Day Xi'an and Beijing Private Tour",
+  "chengdu-pandas-jiuzhaigou-private-7-day-tour": "7-Day Chengdu and Jiuzhaigou Private Tour",
+  "luxury-yunnan-private-tour": "10-Day Luxury Yunnan Private Tour",
+  "muslim-friendly-china-tour-great-wall-desert-stars": "13-Day Muslim-Friendly China Private Tour",
+  "qingcheng-mountain-private-wellness-retreat-10-day":
+    "10-Day Qingcheng Mountain Wellness Retreat",
+  "guangzhou-shenzhen-tailor-made-business-tour-4-day":
+    "Guangzhou and Shenzhen Private Business Tour",
 };
 
 export function getJourneySeoTitle(item: JourneyCatalogItem) {

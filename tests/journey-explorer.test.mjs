@@ -49,7 +49,12 @@ test("every public journey has tags and a tier; all approved starting prices app
   assert.ok(!JSON.stringify(items).includes('"fromUsd"'), "Do not expose raw catalog prices");
   for (const item of items) {
     const catalog = journeyCatalog.find((journey) => journey.slug === item.slug);
-    assert.equal(item.priceLabel, `From USD ${catalog.pricing.fromUsd.toLocaleString("en-US")}`);
+    assert.equal(
+      item.priceLabel,
+      catalog.pricing.fromUsd === undefined
+        ? "Individually priced"
+        : `From USD ${catalog.pricing.fromUsd.toLocaleString("en-US")}`,
+    );
     assert.equal(item.priceNote, "");
     assert.ok(item.priceAccessibleText.includes(catalog.pricing.cardBasis));
   }
@@ -135,7 +140,7 @@ test("short fragments only match the start of words", () => {
 
 test("tier tabs, filters and sorting", () => {
   assert.equal(find("", { tier: "day" }).length, 5);
-  assert.equal(find("", { tier: "signature" }).length, 11);
+  assert.equal(find("", { tier: "signature" }).length, 12);
   assert.equal(find("", { tier: "tailor-made-example" }).length, 3);
   const short = find("", { sort: "short" }).map((slug) => items.find((i) => i.slug === slug).days);
   assert.deepEqual(

@@ -180,3 +180,13 @@
     line-height: 1.6;
   }
 }
+.proposalDetails > summary {
+  cursor: pointer;
+  min-height: 2.75rem;
+  padding-block: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.proposalDetails {
+  margin-block: 1.5rem;
+}

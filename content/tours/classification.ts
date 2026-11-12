@@ -66,6 +66,13 @@ export type JourneyClassification = {
 };
 
 export const journeyClassification: Record<PublicJourneySlug, JourneyClassification> = {
+  "guilin-yangshuo-longji-private-5-day-tour": {
+    category: "nature-landscapes",
+    purposeZh: "补齐广西五天住宿、龙脊梯田、漓江转场与阳朔乡村的完整区域产品。",
+    audienceZh: "情侣、家庭及将广西加入中国长线的私人小团。",
+    boundaryZh:
+      "与漓江单日游区分：四晚住宿、独立龙脊日、完整乡村日及抵离接送；公共船并非包船，竹筏与骑行不默认包含。",
+  },
   "private-mutianyu-great-wall-day-tour": {
     category: "private-day",
     purposeZh: "替已在北京的客人解决长城往返、入园、上山方式和步行路线的一日协调。",

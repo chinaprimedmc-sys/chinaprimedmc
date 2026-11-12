@@ -1,0 +1,2494 @@
+{
+  "asOf": "2026-11-12",
+  "purpose": "Procurement and operating verification of all 19 current products. A current editorial snapshot and specific confirmation requests, not supplier quotes or proof of delivery.",
+  "sourceFiles": ["content/tours/*.ts", "content/tours/published-prices.ts"],
+  "scopeRule": "Retain published service lists. Meal wording can contain optional or separately priced meals; do not count every meals-array element as an included meal. Use each product inclusion list and confirmed proposal.",
+  "quoteEvidenceRequired": [
+    "supplier identity and written reference",
+    "travel date, party ages and room/bed configuration",
+    "item, unit, quantity, currency, unit cost, tax and fees",
+    "start/end service window and overtime",
+    "availability/hold expiry, payment, cancellation, change and weather terms"
+  ],
+  "products": [
+    {
+      "order": 1,
+      "slug": "private-mutianyu-great-wall-day-tour",
+      "title": "Private Mutianyu Great Wall Tour from Beijing",
+      "nameZh": "慕田峪私人一日游",
+      "priority": "P1",
+      "sourceUpdatedAt": "2026-11-11",
+      "publishedPrice": {
+        "fromUsdPerPerson": 349,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 698,
+        "supplierVerified": false,
+        "disclosure": "USD 349 per person, based on two adults traveling together; USD 698 for two on that basis."
+      },
+      "includedVerbatim": [
+        "Private pickup and return within Beijing's main urban hotel districts; non-central hotels, airports and locations outside the confirmed service area are quoted before booking",
+        "Private air-conditioned vehicle with professional driver for the confirmed service window",
+        "Private guide for the confirmed Mutianyu visit and return; requested language and availability confirmed before booking",
+        "Mutianyu Great Wall admission and the scenic-area shuttle bus",
+        "Pre-trip review of your hotel address, group details, ticket requirements and preferred walking or mountain-transport approach",
+        "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
+        "No compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "Cable car, chairlift, toboggan or any mountain transport not selected in your written confirmation",
+        "Lunch, personal purchases, gratuities, travel insurance and items not expressly listed as included",
+        "Airport pickup or drop-off, out-of-area hotels, late-night return or additional vehicle and guide hours unless quoted",
+        "Guaranteed operation of a cable car, chairlift, toboggan or any scenic-area service affected by weather, safety, maintenance, capacity or operator rules",
+        "Wheelchair, porter, medical care or accessibility equipment unless separately requested and confirmed"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Beijing · Mutianyu Great Wall · Beijing",
+          "hotel": "No overnight stay required · pickup and return at your Beijing hotel",
+          "mealWording": ["Independent lunch time; meal reservation available when requested"],
+          "transportWording": "Private Beijing hotel pickup, Mutianyu return transfer and scenic-area shuttle; exact service window stated before booking",
+          "operatingNote": "Please tell us in advance about young children, mobility limitations, pregnancy, a fear of heights, a desire to use the toboggan, large luggage or a non-central pickup. These details change the responsible route and should not be guessed on the morning."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Official Mutianyu Great Wall visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Official reference for visitor notices and date-specific admission, shuttle and mountain-transport information. Check operating and eligibility rules for your travel date; these services are distinct from AVIORA’s private guide and road vehicle."
+        },
+        {
+          "label": "UNESCO: The Great Wall",
+          "href": "https://whc.unesco.org/en/list/438/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Historical context and World Heritage status of the Great Wall. This listing does not establish ticket availability, lift operation, step-free access or endorsement of this tour."
+        }
+      ],
+      "confirmationRequests": [
+        "接送地址及服务区；独立司机和导游的总工时、停车及加时费",
+        "景区门票、摆渡和山地交通分别列价；缆车不默认包含",
+        "旅行日期对应的票务、索道运行与儿童／行动限制"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 2,
+      "slug": "private-shanghai-day-tour-guide-driver",
+      "title": "Private Shanghai Day Tour with Guide and Driver",
+      "nameZh": "上海私人城市一日游",
+      "priority": "P1",
+      "sourceUpdatedAt": "2026-11-11",
+      "publishedPrice": {
+        "fromUsdPerPerson": 349,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 698,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 349 per person. Starting price per person for two adults traveling together, including a private guide, separate driver, vehicle, central Shanghai hotel pickup and return, Yu Garden admission and one shared public-ferry crossing. Lunch, Shanghai Tower, evening cruises and airport or port transfers are separate unless added to your written proposal. The date, pickup address, guide language and final party total are confirmed before booking. On that stated basis, the starting total is USD 698 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Private pickup and return at a Shanghai hotel in the main central districts; airport, cruise-port, out-of-area and non-standard locations are quoted before booking",
+        "Private air-conditioned vehicle with professional driver for the confirmed service window",
+        "Private guide for the confirmed sightseeing day; English or another requested language subject to date-specific written confirmation",
+        "Yu Garden interior admission and one ordinary Huangpu public-ferry crossing (shared public services; subject to operation)",
+        "Pre-trip review of your hotel address, date, group details, walking preferences and route priorities",
+        "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
+        "No compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "Lunch, drinks, personal purchases, gratuities, travel insurance and items not expressly listed as included",
+        "Shanghai Tower admission, Huangpu night-cruise tickets, shows, cooking experiences and other upgrades unless selected in the written confirmation",
+        "Airport, railway-station or cruise-port pickup or drop-off, out-of-area hotels, late-night return or additional vehicle and guide hours unless quoted",
+        "Guaranteed entry, sailing, venue operation or a specific guide, vehicle or route affected by weather, maintenance, capacity, traffic, reservation rules or operator decisions",
+        "Wheelchair, porter, medical care or accessibility equipment unless separately requested and confirmed"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Shanghai",
+          "hotel": "No overnight stay required · pickup and return at your Shanghai hotel",
+          "mealWording": [
+            "Independent lunch time; curated Shanghainese lunch available as an upgrade"
+          ],
+          "transportWording": "Private central-Shanghai hotel pickup and return, private vehicle during the confirmed service window, plus one Huangpu public-ferry crossing",
+          "operatingNote": "Tell us before booking about children, mobility limitations, a desire for a longer photography stop, a dietary need, an airport or cruise-port connection, or an evening upgrade. These details affect the responsible route and service window."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Shanghai official visitor information",
+          "href": "https://english.shanghai.gov.cn/en-TravelinShanghai/index.html",
+          "officialPublisher": "Shanghai Municipal Government",
+          "description": "Use the municipal visitor portal for official travel information; date-specific venue and transport conditions still need confirmation."
+        }
+      ],
+      "confirmationRequests": [
+        "八小时车导、等候、停车、延时；机场／码头接送另列",
+        "豫园预约／票项及渡轮运营；公共渡轮与观光游船不得混算",
+        "实际结束时间；夜景照片不转化为默认夜间服务"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 3,
+      "slug": "private-xian-terracotta-warriors-day-tour",
+      "title": "Private Terracotta Warriors Tour from Xi'an",
+      "nameZh": "西安兵马俑与老城一日游",
+      "priority": "P1",
+      "sourceUpdatedAt": "2026-11-11",
+      "publishedPrice": {
+        "fromUsdPerPerson": 299,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 598,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 299 per person. Starting price per person for two adults traveling together, including a private guide, separate driver, vehicle, central Xi'an hotel pickup and return, standard Terracotta Warriors museum admission and one selected Old City walk. Lunch, City Wall or tower entry, clay-making and airport or station transfers are separate unless added to your written proposal. The date, guide language and final party total are confirmed before booking. On that stated basis, the starting total is USD 598 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Private pickup and return at a hotel in Xi'an's main urban districts; airport, railway-station, out-of-area and non-standard locations are quoted before booking",
+        "Private air-conditioned vehicle with professional driver for the confirmed service window",
+        "Private guide for the confirmed Terracotta Warriors and selected Old City route; requested language and availability confirmed before booking",
+        "Terracotta Warriors museum admission for the confirmed travelers",
+        "Pre-trip review of hotel address, date, group details, passport-linked ticket information, walking preferences and route priorities",
+        "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
+        "No compulsory shopping stops, jade factories or commission-based souvenir workshops"
+      ],
+      "excludedVerbatim": [
+        "Lunch, drinks, personal purchases, gratuities, travel insurance and items not expressly listed as included",
+        "Xi'an City Wall or tower admission, bicycle rental, clay-warrior making, food tastings, shows and any optional museum transport unless selected in the written confirmation",
+        "Airport or railway-station pickup or drop-off, out-of-area hotels, late-night return or additional vehicle and guide hours unless quoted",
+        "Guaranteed access to a specific display, viewing position, workshop, performance or venue affected by reservation, security, weather, maintenance, capacity or operator decisions",
+        "Wheelchair, porter, medical care, hearing equipment or accessibility services unless separately requested and confirmed"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Xi'an · Lintong · Xi'an",
+          "hotel": "No overnight stay required · pickup and return at your Xi'an hotel",
+          "mealWording": [
+            "Independent lunch time; selected Xi'an noodle lunch available as an upgrade"
+          ],
+          "transportWording": "Private central-Xi'an hotel pickup and return, with private vehicle and professional driver during the confirmed service window",
+          "operatingNote": "For the initial inquiry, send the date, hotel, party size, child ages, preferred language, walking or hearing needs and any flight or train deadline. Any required ticket identity information is collected later through the agreed booking channel. Private guiding does not provide exclusive access or personal-care assistance."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Official museum information",
+          "href": "https://www.bmy.com.cn/",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Use Emperor Qinshihuang's Mausoleum Site Museum for its current notices and access information; the plan is confirmed for your travel date."
+        },
+        {
+          "label": "UNESCO: Mausoleum of the First Qin Emperor",
+          "href": "https://whc.unesco.org/en/list/441/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Read the World Heritage property's historical context; the listing is not a ticket or guided-access promise."
+        }
+      ],
+      "confirmationRequests": [
+        "实名预约与证件资料；入场票和导游实际语种／工时",
+        "老城选项、城墙门票及工作坊各自价格；避免全部默认包含",
+        "博物馆往返车程、总服务时长和延时成本"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 4,
+      "slug": "private-chengdu-panda-day-tour-early-morning",
+      "title": "Private Chengdu Panda Tour with Hotel Pickup",
+      "nameZh": "成都熊猫与人民公园一日游",
+      "priority": "P1",
+      "sourceUpdatedAt": "2026-11-11",
+      "publishedPrice": {
+        "fromUsdPerPerson": 279,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 558,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 279 per person. Starting price per person for two adults traveling together, including a private guide, separate driver, vehicle, central Chengdu hotel pickup and return, standard Chengdu Panda Base admission and the People's Park walk. Lunch, tea, internal electric carts and airport or station transfers are separate unless added to your written proposal. The date, guide language and final party total are confirmed before booking. On that stated basis, the starting total is USD 558 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Private pickup and return at a hotel in Chengdu's main urban districts; airports, railway stations, out-of-area hotels and non-standard locations are quoted before booking",
+        "Private air-conditioned vehicle with professional driver for the confirmed service window",
+        "Private guide in the language confirmed before booking for the Panda Base and central Chengdu day",
+        "A flexible guided People's Park walk; tea and drinks are separate",
+        "Standard admission to Chengdu Research Base of Giant Panda Breeding for the confirmed travelers",
+        "Pre-trip review of hotel address, date, group details, ticket information, walking preferences and child or mobility considerations",
+        "Bottled water in the vehicle and one final operating message with pickup, contacts and the confirmed plan",
+        "No compulsory shopping stops or claims of private animal contact"
+      ],
+      "excludedVerbatim": [
+        "Lunch, tea, drinks, personal purchases, gratuities, travel insurance and items not expressly listed as included",
+        "Internal electric cart, hosted tea, cooking class, evening performance and other upgrades unless selected in the written confirmation",
+        "Airport or railway-station pickup or drop-off, out-of-area hotels, late-night return or additional vehicle and guide hours unless quoted",
+        "Panda holding, touching, feeding, keeper access, a specific panda, cub, behavior, nursery, red-panda area or behind-the-scenes access",
+        "Guaranteed operation of any public habitat, internal transport or visitor facility affected by animal welfare, weather, maintenance, capacity, safety or base decisions",
+        "Wheelchair, porter, medical care or accessibility equipment unless separately requested and confirmed"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Chengdu",
+          "hotel": "No overnight stay required · pickup and return at your Chengdu hotel",
+          "mealWording": ["Independent lunch time; selected Sichuan lunch available as an upgrade"],
+          "transportWording": "Private central-Chengdu hotel pickup and return, with private vehicle and professional driver during the confirmed service window",
+          "operatingNote": "Tell us about child ages, stroller or wheelchair use, walking limitations, heat sensitivity, dietary needs and any airport or rail connection with a fixed return deadline, preferred guide language, luggage and standing concerns. Live animals determine their own visibility and behavior; the guide can adapt the public route but cannot guarantee a specific panda or encounter."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Official Panda Base visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Consult the attraction's notices; current access and visitor rules need date-specific checking."
+        },
+        {
+          "label": "Official Panda Base opening information",
+          "href": "https://www.panda.org.cn/en/service/opentime",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check published opening information; a hotel departure time is not a promise of early admission."
+        }
+      ],
+      "confirmationRequests": [
+        "早班司机与导游实际出发时间、服务时长及加班成本",
+        "熊猫基地预约、内部车、人民公园茶费分别列项",
+        "确认公共游览与动物行为不可保证；不采购不存在的接触项目"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 5,
+      "slug": "guilin-yangshuo-li-river-cruise-private-day-tour",
+      "title": "Guilin to Yangshuo Li River Cruise with Guide",
+      "nameZh": "桂林漓江至阳朔一日游",
+      "priority": "P1",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 499,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 998,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 499 per person. Starting price per person for two adults traveling together, including a private guide, separate driver, agreed road transfers, standard four-star shared Li River cruise tickets, a short Yangshuo countryside visit and pre-confirmed normal luggage delivery to your Yangshuo hotel. This version ends in Yangshuo; a road return to Guilin costs extra. Onboard food is included only as specified by the confirmed cruise ticket. Accommodation, rafting and airport or station transfers are separate. The sailing, pickup address, service window and final party total are confirmed before booking. On that stated basis, the starting total is USD 998 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Private pickup at a hotel in Guilin's main urban area; airports, railway stations, distant hotels and non-standard addresses are quoted before booking",
+        "Private air-conditioned vehicle and professional driver for the confirmed road-service window",
+        "Private guide in the language confirmed before booking for the hotel, port, cruise and Yangshuo service window",
+        "Standard four-star public Li River cruise tickets for the confirmed travelers; child fare and seat arrangements are stated before booking",
+        "The standard onboard meal only when it is part of the confirmed cruise ticket; exact format is stated before the day",
+        "A short private Yangshuo countryside-oriented land chapter, adjusted to the actual arrival, weather and selected finish",
+        "For the Yangshuo-finish version, transfer of a normal pre-confirmed quantity of travel luggage to the confirmed Yangshuo hotel",
+        "Bottled water in the private vehicle, one final operating message and no compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "Accommodation, restaurant meals beyond any confirmed cruise-ticket meal, drinks, personal purchases, gratuities, travel insurance and items not expressly listed as included",
+        "Private boat charter, exclusive cabin, guaranteed deck, guaranteed seat, guaranteed window position or a specific vessel unless separately confirmed in writing",
+        "Private road return from Yangshuo to Guilin unless the Guilin-return finish is selected and priced in the written proposal",
+        "Yulong River bamboo rafting, Ruyi Peak, evening shows, cycling, e-bikes and other optional experiences unless selected and confirmed",
+        "Airport or railway-station pickup or drop-off, out-of-area hotels, late-night service and additional guide or vehicle hours unless quoted",
+        "Guaranteed sailing, route, water level, scenery visibility, weather, meal format or public facility operation affected by river, navigation, safety, maintenance, capacity or operator decisions",
+        "Wheelchair, porter, medical care, specialist accessibility equipment or handling of unconfirmed oversized, fragile or valuable luggage"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Guilin · Li River · Yangshuo",
+          "hotel": "No accommodation included · Yangshuo hotel finish; private return to Guilin costs extra",
+          "mealWording": [
+            "The standard onboard meal attached to the confirmed four-star cruise ticket, if supplied by the cruise operator; exact format confirmed for the date"
+          ],
+          "transportWording": "Private central-Guilin hotel pickup and port transfer; shared four-star public cruise to Yangshuo; private Yangshuo land transport; optional private road return to Guilin",
+          "operatingNote": "Send your travel date, Guilin hotel, group size, child ages, luggage quantity, Yangshuo hotel if applicable and preferred finish. Also share your preferred guide language, stair, balance, wheelchair, heat or dietary concerns and any fixed flight or train deadline. Keep passports, medication and valuables with you rather than in transferred bags. Cruise operation and visible scenery remain subject to live river and weather conditions."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Guilin Municipal Government",
+          "href": "https://www.guilin.gov.cn/",
+          "officialPublisher": "Guilin Municipal Government",
+          "description": "Regional visitor information; this does not replace the booked cruise operator's sailing and ticket confirmation."
+        }
+      ],
+      "confirmationRequests": [
+        "四星公共游船舱位类别、实际港口、含餐和退改条款",
+        "私人地面车导、行李转运及阳朔最终送达地址",
+        "返桂林接送单列；天气／水位变化与替代安排"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 6,
+      "slug": "beijing-xian-shanghai-private-10-day-tour",
+      "title": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
+      "nameZh": "北京—西安—上海十天",
+      "priority": "P2",
+      "sourceUpdatedAt": "2026-11-11",
+      "publishedPrice": {
+        "fromUsdPerPerson": 3290,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 6580,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 3,290 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 6,580 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Nine hotel nights: Beijing 4, Xi'an 2 and Shanghai 3; confirmed hotels, rooms and occupancy stated in the proposal",
+        "Hotel breakfasts on Days 2–10, as confirmed with the selected hotels",
+        "Local private guides and separate drivers with vehicles on Days 2–4, 6 and 8 during the written service windows",
+        "Agreed arrival and departure airport transfers and the listed local station and domestic-airport transfers",
+        "Beijing–Xi'an high-speed rail and a Xi'an–Shanghai domestic flight; actual class, baggage and ticket conditions stated before booking",
+        "Standard admission for the Forbidden City, Mutianyu and its planned round-trip enclosed cable car, one selected Temple of Heaven or Summer Palace visit, and the Terracotta Warriors museum, subject to reservation and operation",
+        "Pre-trip itinerary coordination and operating contacts; no compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights, visas or entry-document fees and travel insurance",
+        "Lunches, dinners, drinks and meals beyond the confirmed hotel breakfasts",
+        "Day 9 private guide, vehicle and paid activities unless selected and quoted",
+        "City Wall admission, Huangpu River cruise, Shanghai Tower, Yu Garden interior, workshops, hosted meals, tea services and other unlisted paid activities",
+        "A guide traveling between cities, station porters, guaranteed luggage carrying, specialist medical services or accessibility equipment unless separately confirmed",
+        "VIP or airside access, private attraction areas, queue bypass, private boats and guaranteed step-free routes",
+        "Hotel upgrades, single-room or extra-bed supplements, early check-in, late checkout, gratuities, personal expenses and additional service hours unless included in the quote"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 1 of 4",
+          "mealWording": ["No included meal on arrival day"],
+          "transportWording": "Private airport-to-hotel transfer",
+          "operatingNote": "Let us know your arrival airport and flight time so we can plan the pickup. Early check-in is subject to hotel availability."
+        },
+        {
+          "day": 2,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 2 of 4",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "We may reorder the Beijing days to fit confirmed palace reservations. Wear comfortable shoes for the long paved courtyards."
+        },
+        {
+          "day": 3,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 3 of 4",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "Tell us about concerns with steps or heights before booking. Cable-car operation depends on weather, maintenance and safety conditions."
+        },
+        {
+          "day": 4,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 4 of 4",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "Choose the Temple of Heaven or the Summer Palace before booking so your proposal includes the right admission and route."
+        },
+        {
+          "day": 5,
+          "destination": "Xi'an",
+          "hotel": "Xi'an · night 1 of 2",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private station transfers and booked high-speed rail",
+          "operatingNote": "Keep your booking identification, medication and valuables with you. Tell us in advance if you need help lifting or carrying bags."
+        },
+        {
+          "day": 6,
+          "destination": "Xi'an",
+          "hotel": "Xi'an · night 2 of 2",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "Leave the afternoon flexible after the museum. City Wall entry and other paid additions need to be arranged separately."
+        },
+        {
+          "day": 7,
+          "destination": "Shanghai",
+          "hotel": "Shanghai · night 1 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private airport transfers and booked domestic flight",
+          "operatingNote": "Check the baggage allowance on your domestic ticket; it may differ from your international allowance."
+        },
+        {
+          "day": 8,
+          "destination": "Shanghai",
+          "hotel": "Shanghai · night 2 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "Let your guide know whether architecture, street life or food interests you most so the neighborhood walk has a clear focus."
+        },
+        {
+          "day": 9,
+          "destination": "Shanghai",
+          "hotel": "Shanghai · night 3 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Free day; private guide and vehicle available at additional cost",
+          "operatingNote": "If you would like a guided activity, request it before booking. Otherwise, enjoy an independent day with no scheduled private guide or vehicle."
+        },
+        {
+          "day": 10,
+          "destination": "Shanghai",
+          "hotel": null,
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private departure-airport transfer",
+          "operatingNote": "We arrange pickup around the confirmed airport, terminal and flight time. Extra touring and late checkout need separate confirmation."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Official Mutianyu Great Wall visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Consult the scenic area's visitor information and notices. Confirm ticket options, lift operation and safety restrictions for your date; our guide, vehicle and package inclusions are set out in our written proposal."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Consult China Railway’s passenger guidance for ticketing, accepted identification and boarding procedures. The actual train, seats, baggage arrangements and departure times require confirmation for your booking."
+        },
+        {
+          "label": "Official Palace Museum information",
+          "href": "https://en.dpm.org.cn/",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check museum information; reservations and visitor rules still need date-specific confirmation."
+        },
+        {
+          "label": "Official Terracotta Warriors museum",
+          "href": "https://www.bmy.com.cn/",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult the museum's visitor information for the actual travel date."
+        },
+        {
+          "label": "Official China immigration information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check passport- and route-specific entry requirements using official information."
+        }
+      ],
+      "confirmationRequests": [
+        "北京4／西安2／上海3晚的实名酒店及房型",
+        "铁路等级、航班、行李及每段私人接送",
+        "Day 9独立日配置；无默认车导，不以全程车导核价"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 7,
+      "slug": "china-at-an-easier-pace-12-day-private-tour",
+      "title": "12-Day Private China Tour at an Easier Pace",
+      "nameZh": "北京—西安—上海十二天慢游",
+      "priority": "P2",
+      "sourceUpdatedAt": "2026-11-11",
+      "publishedPrice": {
+        "fromUsdPerPerson": 4690,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 9380,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 4,690 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 9,380 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Eleven hotel nights: Beijing 5, Xi'an 3 and Shanghai 3, in selected five-star hotels with the property, rooms and occupancy stated in the proposal",
+        "Hotel breakfasts on Days 2–12, as confirmed with the selected hotels",
+        "Local private guides and separate drivers with vehicles on Days 2–4, 7–8 and 10 for the agreed service hours",
+        "Agreed Beijing arrival and Shanghai departure airport transfers, plus local transfers for the listed train and domestic flight",
+        "Beijing–Xi'an first-class high-speed rail and a Xi'an–Shanghai economy flight, with actual schedules, baggage and fare conditions specified before booking",
+        "Standard admission for the Temple of Heaven, Forbidden City, Mutianyu with planned round-trip enclosed cable car, the agreed Xi’an City Wall visit and the Terracotta Army, subject to reservations and operation",
+        "Pre-trip planning, local meeting contacts and coordination of the booked services; no compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights, visa and entry-document fees, travel insurance and personal medical expenses",
+        "Lunches, dinners, drinks and hosted meals beyond the confirmed hotel breakfasts",
+        "Private guide, vehicle and paid activities on Days 5 and 11 unless selected and quoted",
+        "Tai chi lessons, private tea sessions, courtyard meals, Summer Palace, boats, artisan or clay workshops, specialist visits and farewell dinners unless added to the proposal",
+        "A guide accompanying you between cities, station porters, guaranteed luggage carrying, mobility equipment, personal care and medical services unless separately arranged",
+        "City Wall electric carts and cycle hire, additional exhibitions, observation decks, cruises, private venues, VIP or airside access and skip-the-line privileges",
+        "Hotel upgrades, single-room or extra-bed supplements, early check-in, late checkout, spa treatments, tips, personal expenses and extra service hours unless expressly included"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 1 of 5",
+          "mealWording": ["No included meal on arrival day"],
+          "transportWording": "Private airport-to-hotel transfer",
+          "operatingNote": "An airport transfer does not include airside assistance or help through immigration. Let us know if you need a specific service."
+        },
+        {
+          "day": 2,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 2 of 5",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "We plan around your preferred walking time and suitable entrances; park distances and seating still need consideration."
+        },
+        {
+          "day": 3,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 3 of 5",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "Beijing sightseeing days may change order to fit confirmed museum reservations. This visit has no private entrance or skip-the-line access."
+        },
+        {
+          "day": 4,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 4 of 5",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "Weather, maintenance or safety decisions can suspend mountain transport. Moving the visit to another day requires new ticket and staff checks."
+        },
+        {
+          "day": 5,
+          "destination": "Beijing",
+          "hotel": "Beijing · night 5 of 5",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "No scheduled private guide or vehicle; additions quoted separately",
+          "operatingNote": "A free day is not a reserved backup ticket or a standby guide. Changes to the Wall or palace day need availability and any fees checked."
+        },
+        {
+          "day": 6,
+          "destination": "Xi'an",
+          "hotel": "Xi'an · night 1 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private station transfers and first-class high-speed rail",
+          "operatingNote": "You may need to carry or wheel bags through security, along platforms and onto the train. Porters or an accompanying guide require separate arrangements."
+        },
+        {
+          "day": 7,
+          "destination": "Xi'an",
+          "hotel": "Xi'an · night 2 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "Tell us about steps and balance before booking. If the Wall is unsuitable, agree an alternative route and ticket changes in the proposal."
+        },
+        {
+          "day": 8,
+          "destination": "Xi'an",
+          "hotel": "Xi'an · night 3 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "Standing and hard surfaces can be as tiring as walking. Share any seating or mobility needs before the visit."
+        },
+        {
+          "day": 9,
+          "destination": "Shanghai",
+          "hotel": "Shanghai · night 1 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private airport transfers and an economy domestic flight",
+          "operatingNote": "Your domestic baggage allowance may differ from your international ticket. Airport assistance beyond the public transfer points needs separate confirmation."
+        },
+        {
+          "day": 10,
+          "destination": "Shanghai",
+          "hotel": "Shanghai · night 2 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and local guide",
+          "operatingNote": "The vehicle connects districts, but neighborhood streets and the riverfront are explored on foot. We agree suitable walking blocks with you."
+        },
+        {
+          "day": 11,
+          "destination": "Shanghai",
+          "hotel": "Shanghai · night 3 of 3",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "No scheduled private guide or vehicle; additions quoted separately",
+          "operatingNote": "A curator, chef, private room or dietary accommodation is a specific request, not a guaranteed feature of this itinerary."
+        },
+        {
+          "day": 12,
+          "destination": "Shanghai",
+          "hotel": null,
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private hotel-to-airport transfer",
+          "operatingNote": "International flights, late checkout, extra service hours and any airside assistance are separate arrangements."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "description": "Consult the museum for reservation, identification and opening notices. Tickets and entry arrangements must be confirmed for your visit.",
+          "officialPublisher": "The Palace Museum"
+        },
+        {
+          "label": "Mutianyu Great Wall: official visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "description": "Consult the scenic area for visitor and safety notices. Actual cable-car operation, ticket arrangements and suitability require date-specific checks.",
+          "officialPublisher": "Mutianyu Great Wall scenic area"
+        },
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "description": "Consult the museum for reservation, identity, entry and ticket information. Museum admission does not confirm a private guide or artisan session.",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum"
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "description": "Check ticket identification, boarding, luggage and assistance guidance. Seats, transfers and any porter service are confirmed separately for your booking.",
+          "officialPublisher": "China Railway 12306"
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "description": "Check the policy that applies to your passport and full international route. A twelve-day tour does not establish visa-free or transit eligibility.",
+          "officialPublisher": "National Immigration Administration of China"
+        }
+      ],
+      "confirmationRequests": [
+        "北京5／西安3／上海3晚的房型与酒店位置",
+        "每天真实车导窗口和恢复时段；慢游不等于全天陪护",
+        "铁路／航班配置与十天线成本差异，不机械按天乘价"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 8,
+      "slug": "china-family-tour-with-pandas-12-day-private-tour",
+      "title": "12-Day Private China Family Tour with Pandas",
+      "nameZh": "中国亲子熊猫十二天",
+      "priority": "P0",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 5290,
+        "partyBasis": 4,
+        "startingPartyTotalUsd": 21160,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 5,290 per person. Starting price per person, based on two adults and two children aged 6–11 sharing two rooms outside peak periods. Your written proposal confirms dates, rooms, included experiences and the total for your family. On that stated basis, the starting total is USD 21,160 for 4 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "11 nights in selected premium five-star hotels, based on two adults and two children aged 6–11 sharing two rooms",
+        "Daily hotel breakfast, selected lunches and the farewell dinner stated in the final proposal",
+        "Private multilingual, family-ready guides and private vehicles on confirmed touring days",
+        "Private airport and railway-station transfers with luggage and handover support",
+        "Beijing–Xi'an and Xi'an–Chengdu first-class high-speed rail tickets",
+        "Chengdu–Shanghai nonstop economy-class domestic flight",
+        "Confirmed entrance tickets and listed cable-car or site transport arrangements",
+        "Private tai chi, Beijing courtyard lunch, half-day family photographer, clay-warrior studio, selected Chengdu experience and Shanghai private-kitchen session",
+        "Age-aware travel passports, activity materials and the family journey keepsake concept",
+        "AVIORA family itinerary design, restaurant planning and China-based journey support",
+        "No compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights to Beijing and from Shanghai",
+        "Travel insurance, visas and personal medical expenses",
+        "Meals, drinks and room-service charges not stated as included",
+        "Hotel spa treatments, laundry, babysitting and personal purchases",
+        "Business-class rail, premium flight cabins, suites and exclusive venue access unless quoted",
+        "Panda holding, keeper access or any unconfirmed direct animal interaction",
+        "Tips and gratuities unless specifically included in the written proposal"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Beijing",
+          "hotel": "Premium five-star family hotel in Beijing · 4 nights",
+          "mealWording": ["Hotel breakfast begins the following morning", "Optional light dinner"],
+          "transportWording": "Private airport transfer with family arrival support",
+          "operatingNote": "No important sightseeing is placed after a long-haul flight."
+        },
+        {
+          "day": 2,
+          "destination": "Beijing",
+          "hotel": "Premium five-star family hotel in Beijing · 4 nights",
+          "mealWording": ["Breakfast", "Private courtyard dumpling lunch"],
+          "transportWording": "Private family vehicle and private guide",
+          "operatingNote": "The afternoon is protected for pool, nap or unstructured family time."
+        },
+        {
+          "day": 3,
+          "destination": "Beijing",
+          "hotel": "Premium five-star family hotel in Beijing · 4 nights",
+          "mealWording": ["Breakfast", "Selected lunch"],
+          "transportWording": "Private vehicle, timed entry and private family guide",
+          "operatingNote": "The walking estimate is approximate and varies with access, crowd controls and the route open on the day. The guide plans shaded pauses and confirms the route and exit point before travel; this is not a step-free visit."
+        },
+        {
+          "day": 4,
+          "destination": "Beijing",
+          "hotel": "Premium five-star family hotel in Beijing · 4 nights",
+          "mealWording": ["Breakfast", "Mountain-view family lunch"],
+          "transportWording": "Private vehicle, guide and suitable cable-car plan",
+          "operatingNote": "The cable-car model and boarding point are confirmed against current scenic-area operations for the travel date. The Wall still has slopes, steps and uneven paving; the walking estimate is a planning range, not a step-free guarantee. Toboggan descent is considered only when age, weather, operation and family preference make it appropriate."
+        },
+        {
+          "day": 5,
+          "destination": "Beijing to Xi'an",
+          "hotel": "Premium five-star family hotel in Xi'an · 2 nights",
+          "mealWording": ["Breakfast", "Meals at leisure during the transition"],
+          "transportWording": "Private transfers plus Beijing–Xi'an first-class high-speed rail",
+          "operatingNote": "Business-class rail can be quoted, subject to inventory."
+        },
+        {
+          "day": 6,
+          "destination": "Xi'an",
+          "hotel": "Premium five-star family hotel in Xi'an · 2 nights",
+          "mealWording": ["Breakfast", "Selected lunch"],
+          "transportWording": "Private vehicle and private family guide",
+          "operatingNote": "Priority timing means a planned entry slot, not a queue-free or skip-the-line guarantee. The museum has crowds, standing and hard surfaces; final entry time depends on the ticket inventory and operating rules for the confirmed date."
+        },
+        {
+          "day": 7,
+          "destination": "Xi'an to Chengdu",
+          "hotel": "Premium five-star family hotel in Chengdu · 3 nights",
+          "mealWording": ["Breakfast", "Meals at leisure during the transition"],
+          "transportWording": "Private transfers plus Xi'an–Chengdu first-class high-speed rail",
+          "operatingNote": "The teahouse is optional; hotel time remains the default if the family is tired."
+        },
+        {
+          "day": 8,
+          "destination": "Chengdu",
+          "hotel": "Premium five-star family hotel in Chengdu · 3 nights",
+          "mealWording": ["Breakfast", "Selected lunch"],
+          "transportWording": "Private early transfer and private family guide",
+          "operatingNote": "The afternoon remains free of scheduled touring. This itinerary does not promise panda holding, keeper access or direct animal contact. Any specialist is subject to availability and may be replaced by a mutually agreed equivalent."
+        },
+        {
+          "day": 9,
+          "destination": "Chengdu",
+          "hotel": "Premium five-star family hotel in Chengdu · 3 nights",
+          "mealWording": ["Breakfast", "Meals included according to the confirmed option"],
+          "transportWording": "Private service matched to the selected option",
+          "operatingNote": "Choose one option before booking so its tickets, host, meal and vehicle hours can be priced and confirmed. Changing the option later may affect availability and cost. A rest day does not automatically include a standby guide or vehicle; any refund or replacement follows the agreed change terms."
+        },
+        {
+          "day": 10,
+          "destination": "Chengdu to Shanghai",
+          "hotel": "Premium five-star family hotel in Shanghai · 2 nights",
+          "mealWording": ["Breakfast", "Meals at leisure during the transition"],
+          "transportWording": "Private transfers plus nonstop Chengdu–Shanghai economy flight",
+          "operatingNote": "The first city view remains optional if flight operations change."
+        },
+        {
+          "day": 11,
+          "destination": "Shanghai",
+          "hotel": "Premium five-star family hotel in Shanghai · 2 nights",
+          "mealWording": ["Breakfast", "Private kitchen lunch", "Farewell dinner"],
+          "transportWording": "Private vehicle and private family guide",
+          "operatingNote": "Keep the afternoon break in the operating plan. The private kitchen lunch and farewell dinner remain included; confirm host, menu, venue and transport hours in writing."
+        },
+        {
+          "day": 12,
+          "destination": "Shanghai",
+          "hotel": null,
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private airport transfer with departure support",
+          "operatingNote": "Late checkout can be requested when hotel availability and flight timing justify it."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules."
+        },
+        {
+          "label": "Mutianyu Great Wall: official visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included."
+        },
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates."
+        },
+        {
+          "label": "Chengdu Panda Base: official visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility."
+        }
+      ],
+      "confirmationRequests": [
+        "两成人两名6–11岁儿童，四城两间房11晚：报价应覆盖22间房晚；每城逐一确认床型、早餐和儿童政策",
+        "北京–西安及西安–成都首等座、成都–上海经济舱：按儿童实际年龄／身高和证件核价，不直接使用成人比例",
+        "长城公共缆车票、半日摄影拍摄时长／张数／交片时间／隐私授权／天气改期",
+        "北京太极及院落餐、陶俑工作室；成都第9天四选一须先定项，含餐／车导／门票单列",
+        "上海厨房午餐与告别晚餐分别计价；保护下午休息，纪念册时间不是默认额外摄影服务",
+        "车辆行李空间与儿童座椅；祖辈步行需求、照护职责及酒店泳池可用性"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 9,
+      "slug": "beijing-xian-chengdu-shanghai-private-11-day-tour",
+      "title": "12-Day Private China Tour: Shanghai to Beijing",
+      "nameZh": "上海—成都—西安—北京十二天",
+      "priority": "P2",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 4790,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 9580,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 4,790 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 9,580 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Private itinerary planning around your travel dates and party",
+        "Selected hotels with daily hotel breakfast",
+        "A hosted welcome dinner on Day 2",
+        "The private transfers, local guide services and sightseeing transport listed in your proposal",
+        "High-speed rail and domestic flight arrangements listed in your proposal",
+        "Attraction admission and required scenic-area transport listed in your proposal",
+        "Advance planning for family, mobility, halal, vegetarian and allergy needs",
+        "Local support before arrival and while you travel in China",
+        "No compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights and travel insurance",
+        "Visa fees and personal expenses",
+        "Optional experiences not selected in your proposal",
+        "Gratuities"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Shanghai",
+          "hotel": "Shanghai stay: hotel and room category confirmed in your private proposal",
+          "mealWording": [
+            "No breakfast included before the first hotel night; other meals as confirmed"
+          ],
+          "transportWording": "Private airport transfer",
+          "operatingNote": "The day is planned around your actual arrival rather than a fixed sightseeing schedule."
+        },
+        {
+          "day": 2,
+          "destination": "Shanghai",
+          "hotel": "Shanghai stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; hosted welcome dinner"],
+          "transportWording": "Private vehicle and multilingual guide",
+          "operatingNote": "The session is cultural and educational; it is not a substitute for medical advice or treatment."
+        },
+        {
+          "day": 3,
+          "destination": "Shanghai",
+          "hotel": "Shanghai stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private touring; Huangpu River cruise as confirmed",
+          "operatingNote": "Museum opening, the confirmed river-cruise category and sailing time are checked for your travel date."
+        },
+        {
+          "day": 4,
+          "destination": "Shanghai to Chengdu",
+          "hotel": "Chengdu stay: hotel and room category confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private airport transfers and domestic flight as listed in your proposal",
+          "operatingNote": "The confirmed proposal names the flight, airport, baggage allowance and transfer arrangements."
+        },
+        {
+          "day": 5,
+          "destination": "Chengdu and Dujiangyan",
+          "hotel": "Chengdu stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private transfers and guided visit, as confirmed",
+          "operatingNote": "Confirm the named Dujiangyan facility, public ticket, visiting hours and road transfers in the proposal. This is a different destination from the Chengdu Research Base."
+        },
+        {
+          "day": 6,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private touring and local transfers as confirmed",
+          "operatingNote": "The visits and any tastings are confirmed against your dates and the services listed in your proposal."
+        },
+        {
+          "day": 7,
+          "destination": "Chengdu to Xi'an",
+          "hotel": "Xi'an stay: hotel and room category confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Intercity transport and private transfers as listed in your proposal",
+          "operatingNote": "The specific service is confirmed once schedules and inventory for your dates are available."
+        },
+        {
+          "day": 8,
+          "destination": "Xi'an",
+          "hotel": "Xi'an stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private touring and transfers as confirmed",
+          "operatingNote": "Admission, transfers and any additional stops are listed in the date-specific proposal."
+        },
+        {
+          "day": 9,
+          "destination": "Xi'an to Beijing",
+          "hotel": "Beijing stay: hotel and room category confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Intercity transport and private transfers as listed in your proposal",
+          "operatingNote": "The actual rail or flight arrangement is subject to confirmation for your travel dates."
+        },
+        {
+          "day": 10,
+          "destination": "Beijing",
+          "hotel": "Beijing stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private vehicle and multilingual guide as confirmed",
+          "operatingNote": "Forbidden City tickets are date-specific; availability is checked before the itinerary is finalized."
+        },
+        {
+          "day": 11,
+          "destination": "Beijing",
+          "hotel": "Beijing stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private round-trip transfer and guided hike, as confirmed",
+          "operatingNote": "Jinshanling is a physically active visit with uneven steps; it is not an easy-access Wall section."
+        },
+        {
+          "day": 12,
+          "destination": "Beijing",
+          "hotel": "Departure day",
+          "mealWording": ["Hotel breakfast"],
+          "transportWording": "Private departure transfer as listed in your proposal",
+          "operatingNote": "No extra sightseeing is added unless your flight timing leaves a reliable window."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules."
+        },
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility."
+        }
+      ],
+      "confirmationRequests": [
+        "上海／成都／西安／北京实际四城房晚、交通顺序",
+        "都江堰熊猫公共参观，不含保育或后台资格",
+        "上海水上体验明确公共游船或包船类别、时段和费用；金山岭步行强度"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 10,
+      "slug": "beijing-great-wall-private-5-day-tour",
+      "title": "5-Day Beijing and Great Wall Private Tour",
+      "nameZh": "北京与长城五天",
+      "priority": "P2",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 1690,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 3380,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 1,690 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 3,380 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Four nights at the Beijing hotel confirmed in your written quotation",
+        "Hotel breakfast on Days 2-5",
+        "Private airport or railway-station arrival and departure transfers",
+        "Air-conditioned private touring vehicle",
+        "Private English-speaking guide and separate professional driver on the listed sightseeing days; other languages confirmed on request",
+        "Standard admission and scenic-area transport required by the confirmed itinerary",
+        "Mutianyu cable-car option only when listed in the final confirmation",
+        "No compulsory shopping stops",
+        "Planning discussion for dietary preferences, prayer timing, walking comfort and privacy needs"
+      ],
+      "excludedVerbatim": [
+        "International flights, visa, travel insurance and personal expenses",
+        "Lunches and dinners unless specifically included in your written quotation",
+        "Specific restaurant meal costs unless stated in the final confirmation",
+        "Room upgrades, single supplements, early check-in and late check-out",
+        "Optional cultural workshops, boat rides or cable-car upgrades unless confirmed",
+        "Host, guide and driver gratuities",
+        "Extra costs caused by weather, traffic, venue operations or events beyond reasonable control"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Beijing",
+          "hotel": "One Beijing hotel throughout the journey, selected and confirmed around your comfort level",
+          "mealWording": ["No meals included today"],
+          "transportWording": "Private airport or railway-station transfer",
+          "operatingNote": "Share dietary, prayer, mobility and room preferences before arrival so the local team can prepare the right first-day support."
+        },
+        {
+          "day": 2,
+          "destination": "Beijing",
+          "hotel": "Beijing hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private vehicle, multilingual support and walking",
+          "operatingNote": "Lunch and prayer timing can be planned around the Forbidden City and hutong route. Specific restaurant certification, prayer space and opening hours are checked for your dates before booking."
+        },
+        {
+          "day": 3,
+          "destination": "Beijing",
+          "hotel": "Beijing hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private vehicle and multilingual support; scenic-area transport as required",
+          "operatingNote": "The Wall includes uneven surfaces, steps and changing weather. Dining and prayer timing can be built into the day after the route and requirements are confirmed."
+        },
+        {
+          "day": 4,
+          "destination": "Beijing",
+          "hotel": "Beijing hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private vehicle, multilingual support and walking",
+          "operatingNote": "The afternoon remains flexible for rest, prayer timing or a shorter cultural route. Your local host or guide can recommend and reserve suitable places; meal costs are paid directly unless the final confirmation states otherwise."
+        },
+        {
+          "day": 5,
+          "destination": "Beijing",
+          "hotel": null,
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private airport or railway-station transfer",
+          "operatingNote": "There is no hotel stay tonight. Early departures may require a breakfast box, subject to hotel policy."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules."
+        },
+        {
+          "label": "Mutianyu Great Wall: official visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility."
+        }
+      ],
+      "confirmationRequests": [
+        "北京四晚及酒店早餐，酒店与实际游览出发点匹配",
+        "独立车导工作日、长城票项和可选项目分别核价",
+        "故宫预约失效或闭馆时的换序与退款／替代条件"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 11,
+      "slug": "chengdu-pandas-sichuan-table",
+      "title": "5-Day Chengdu Panda and Sichuan Food Tour",
+      "nameZh": "成都熊猫与四川餐桌五天",
+      "priority": "P2",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 1490,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 2980,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 1,490 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 2,980 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Four hotel nights in Chengdu, with property, room category and occupancy named in your proposal",
+        "Hotel breakfasts on Days 2–5",
+        "Private arrival and departure transfers and private vehicle with a separate driver for the listed sightseeing days",
+        "Local private guide in the confirmed language on Days 2–4",
+        "Listed public admissions and the Sichuan meal or cooking experience specifically identified in the written proposal",
+        "The Day 4 Leshan or Chengdu route selected before booking; the quote specifies tickets, service hours and any difference in price",
+        "Pre-trip planning and local travel support; unlisted meals, tastings and extra activities are separate"
+      ],
+      "excludedVerbatim": [
+        "International flights",
+        "China visa fees or documentation costs when applicable",
+        "Hotel, guide, transport and meal upgrades not listed in your quotation",
+        "Personal expenses and travel insurance"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: selected comfort tier",
+          "mealWording": ["No meals included today"],
+          "transportWording": "Private airport or station transfer",
+          "operatingNote": "Arrival timing and the first evening are shaped around your flight and energy."
+        },
+        {
+          "day": 2,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: selected comfort tier",
+          "mealWording": ["Breakfast; other meals as arranged"],
+          "transportWording": "Private vehicle and guide",
+          "operatingNote": "The panda base is the day's main experience; the afternoon remains intentionally light."
+        },
+        {
+          "day": 3,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: selected comfort tier",
+          "mealWording": ["Breakfast; Sichuan meal or cooking experience as arranged"],
+          "transportWording": "Private vehicle and guide",
+          "operatingNote": "A slower afternoon, extra tea, or a rest window can replace any optional stop."
+        },
+        {
+          "day": 4,
+          "destination": "Leshan / Chengdu",
+          "hotel": "Chengdu stay: selected comfort tier",
+          "mealWording": ["Breakfast; lunch as arranged"],
+          "transportWording": "Private vehicle, separate driver and local guide for the selected Leshan or Chengdu route during the confirmed hours",
+          "operatingNote": "Leshan is optional and never treated as a test of endurance."
+        },
+        {
+          "day": 5,
+          "destination": "Chengdu",
+          "hotel": null,
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private departure transfer",
+          "operatingNote": "Departure timing follows your confirmed connection, with a practical margin for the group."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Chengdu Panda Base: official visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates."
+        }
+      ],
+      "confirmationRequests": [
+        "成都四晚房型／早餐与实际导游车辆使用日",
+        "四川餐桌的菜单、主办方、场地及语言支持",
+        "乐山为选项；河上或陆地路线、票项、餐食及变动价格"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 12,
+      "slug": "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+      "title": "6-Day Xi'an and Beijing Private Tour",
+      "nameZh": "西安—北京六天",
+      "priority": "P2",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 1890,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 3780,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 1,890 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 3,780 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Five hotel nights: two in Xi'an and three in Beijing, with properties and room categories named in the proposal",
+        "Hotel breakfasts on Days 2–6",
+        "Private arrival and departure transfers and station transfers at both ends of the rail journey",
+        "Local private guide and separate driver for the scheduled sightseeing on Days 2, 4 and 5",
+        "Confirmed Xi'an–Beijing high-speed rail; train and seat class stated before booking",
+        "Standard admission and required scenic-area transport for the listed confirmed visits; Great Wall lifts are extra unless added",
+        "Dietary and prayer-timing planning when shared before confirmation; unlisted meals are separate",
+        "Local planning support and no compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights",
+        "China visa costs or documentation services unless stated",
+        "Meals, drinks and optional experiences not listed in the final proposal",
+        "Travel insurance, medical costs and personal expenses",
+        "Any service not confirmed in the final written proposal"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Xi'an",
+          "hotel": "Xi'an hotel selected around the Old City and your room requirements",
+          "mealWording": ["No meals included today"],
+          "transportWording": "Private airport or railway-station transfer",
+          "operatingNote": "Arrival timing is kept flexible. The final meeting point and transfer plan are confirmed around your international or domestic connection."
+        },
+        {
+          "day": 2,
+          "destination": "Xi'an / Lintong",
+          "hotel": "Xi'an hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private vehicle to and from the museum",
+          "operatingNote": "Museum entry and open exhibition areas depend on the confirmed ticket and current operating arrangements. Your guide checks photography and equipment rules with the museum; follow the notices displayed on the day."
+        },
+        {
+          "day": 3,
+          "destination": "Xi'an to Beijing",
+          "hotel": "Beijing hotel selected around the historic centre and departure plan",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private station transfers and confirmed high-speed rail",
+          "operatingNote": "The proposal names the train, seat class, stations and private transfers at both ends. Allow time for public security and boarding. Tell us before booking if you need help carrying or lifting bags; porter service or an accompanying guide requires a separate arrangement."
+        },
+        {
+          "day": 4,
+          "destination": "Beijing",
+          "hotel": "Beijing hotel selected around the historic centre and departure plan",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private vehicle, local guide and walking",
+          "operatingNote": "The palace reservation determines the practical day order. If the Beijing visits need to swap, the team checks both attraction tickets and guide availability; a transfer booking does not guarantee museum entry."
+        },
+        {
+          "day": 5,
+          "destination": "Beijing / Mutianyu",
+          "hotel": "Beijing hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private vehicle; cable car or chairlift optional at the Great Wall",
+          "operatingNote": "The Great Wall involves uneven ground and steps even when assisted access is used. We match the section and timing honestly to the group."
+        },
+        {
+          "day": 6,
+          "destination": "Beijing",
+          "hotel": null,
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private airport transfer",
+          "operatingNote": "The journey can be extended with additional Beijing nights, a slower Great Wall day or another city when your wider China plans require it."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access."
+        },
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules."
+        },
+        {
+          "label": "Mutianyu Great Wall: official visitor information",
+          "href": "https://www.mutianyugreatwall.com/",
+          "officialPublisher": "Mutianyu Great Wall scenic area",
+          "description": "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates."
+        }
+      ],
+      "confirmationRequests": [
+        "西安两晚／北京三晚；城际列车、席别与两端接送",
+        "Day 2／4／5导游与车辆；长城、故宫分日执行",
+        "到达／离开窗口；跨城高铁日不叠加不现实的游览承诺"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 13,
+      "slug": "luxury-yunnan-private-tour",
+      "title": "10-Day Luxury Yunnan Private Tour",
+      "nameZh": "云南茶马古道十天",
+      "priority": "P3",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 6490,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 12980,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 6,490 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 12,980 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "9 nights in selected luxury boutique, heritage and highland hotels, with rooms and occupancy confirmed for your actual party",
+        "Daily hotel breakfast, selected lunches, private picnic or countryside table, Shaxi courtyard dinner and Shangri-La farewell dinner as confirmed in the proposal",
+        "Private multilingual guides and private premium vehicle on confirmed touring and transfer days",
+        "Private Dali arrival transfer and Shangri-La departure transfer",
+        "Confirmed entrance tickets and listed site transport arrangements",
+        "Private Bai three-course tea, tie-dye artisan session, Yunnan tea specialist session, Tea Horse Road salon and Dongba culture session, or a written equivalent when a named practitioner is unavailable",
+        "The altitude-aware route design, weather alternatives, restaurant reservations and China-based journey support",
+        "No compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights and domestic flights to Dali or from Shangri-La",
+        "Travel insurance, visas and personal medical expenses",
+        "Meals, drinks and room-service charges not stated as included",
+        "Hotel spa treatments, laundry and personal purchases",
+        "Jade Dragon Snow Mountain high cableway unless specifically included in the written proposal",
+        "Meili Snow Mountain, Kunming or other pre- and post-tour extensions",
+        "Tips and gratuities unless specifically included in the written proposal"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Dali",
+          "hotel": "Selected luxury lakeside or heritage stay in Dali · 3 nights",
+          "mealWording": ["Welcome tea", "Optional light dinner"],
+          "transportWording": "Private Dali arrival transfer",
+          "operatingNote": "No major touring is scheduled on arrival day."
+        },
+        {
+          "day": 2,
+          "destination": "Dali and Xizhou",
+          "hotel": "Selected luxury lakeside or heritage stay in Dali · 3 nights",
+          "mealWording": ["Breakfast", "Selected lakeside or courtyard lunch"],
+          "transportWording": "Private vehicle and private guide",
+          "operatingNote": "The final host and studio are named in the proposal; private homes and working spaces remain subject to consent and availability."
+        },
+        {
+          "day": 3,
+          "destination": "Dali",
+          "hotel": "Selected luxury lakeside or heritage stay in Dali · 3 nights",
+          "mealWording": ["Breakfast", "Private picnic or selected countryside lunch"],
+          "transportWording": "Private vehicle matched to the selected option",
+          "operatingNote": "Tea content is adapted for enthusiasts and newcomers; tasting does not require buying tea."
+        },
+        {
+          "day": 4,
+          "destination": "Dali to Shaxi",
+          "hotel": "Selected restored courtyard or boutique retreat in Shaxi · 2 nights",
+          "mealWording": ["Breakfast", "Selected lunch en route"],
+          "transportWording": "Private overland transfer from Dali to Shaxi, approximately 3 to 4 hours plus stops",
+          "operatingNote": "Drive time varies with road and weather conditions; no rigid dinner timing is imposed."
+        },
+        {
+          "day": 5,
+          "destination": "Shaxi and Shibaoshan",
+          "hotel": "Selected restored courtyard or boutique retreat in Shaxi · 2 nights",
+          "mealWording": ["Breakfast", "Selected lunch", "Private courtyard dinner"],
+          "transportWording": "Private vehicle and private guide",
+          "operatingNote": "Shibaoshan includes steps and uneven ground. A valley culture and countryside plan is available when the mountain route is unsuitable."
+        },
+        {
+          "day": 6,
+          "destination": "Shaxi to Lijiang",
+          "hotel": "Selected luxury heritage or mountain-view stay in Lijiang · 2 nights",
+          "mealWording": ["Breakfast", "Selected lunch en route"],
+          "transportWording": "Private overland transfer from Shaxi to Lijiang, approximately 2.5 to 3 hours",
+          "operatingNote": "Old-town paving is uneven and vehicle access is limited; luggage handling and the final hotel approach are planned in advance."
+        },
+        {
+          "day": 7,
+          "destination": "Lijiang and Baisha",
+          "hotel": "Selected luxury heritage or mountain-view stay in Lijiang · 2 nights",
+          "mealWording": ["Breakfast", "Private picnic or selected Baisha lunch"],
+          "transportWording": "Private vehicle and private guide",
+          "operatingNote": "The highest cableway reaches very high elevation and is never treated as compulsory. Ticketing and operating conditions are reconfirmed for the date."
+        },
+        {
+          "day": 8,
+          "destination": "Lijiang to Shangri-La",
+          "hotel": "Selected premium highland lodge in Shangri-La · 2 nights",
+          "mealWording": ["Breakfast", "Selected lunch en route", "Light arrival dinner"],
+          "transportWording": "Private overland transfer from Lijiang to Shangri-La, approximately 4.5 to 6 hours including the gorge stop",
+          "operatingNote": "Road, weather and access conditions can change. The route and viewpoint are confirmed close to travel."
+        },
+        {
+          "day": 9,
+          "destination": "Shangri-La",
+          "hotel": "Selected premium highland lodge in Shangri-La · 2 nights",
+          "mealWording": ["Breakfast", "Selected lunch", "Hosted farewell dinner"],
+          "transportWording": "Private vehicle and private guide",
+          "operatingNote": "No private home or religious access is promised until the host and date are confirmed in writing."
+        },
+        {
+          "day": 10,
+          "destination": "Shangri-La",
+          "hotel": null,
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private Shangri-La airport transfer",
+          "operatingNote": "The published journey ends in Shangri-La; domestic flights and post-tour accommodation are quoted around the international itinerary."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "UNESCO: Old Town of Lijiang",
+          "href": "https://whc.unesco.org/en/list/811/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Historical background on Lijiang. The listing does not certify our hosts, hotel quality, altitude suitability or access to private homes."
+        }
+      ],
+      "confirmationRequests": [
+        "大理／沙溪／丽江／香格里拉九晚具体酒店与房型",
+        "工坊和文化主持的身份、语言、场次、工作时长及费用",
+        "跨城车辆、行李、海拔逐步上升的路线和恶劣天气替代"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 14,
+      "slug": "chengdu-pandas-jiuzhaigou-private-7-day-tour",
+      "title": "7-Day Chengdu and Jiuzhaigou Private Tour",
+      "nameZh": "成都熊猫与九寨沟七天",
+      "priority": "P3",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 2690,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 5380,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 2,690 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 5,380 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Private itinerary planning around your dates and travelers",
+        "Six hotel nights: three in Chengdu and three in the Jiuzhaigou area, plus hotel breakfasts on Days 2–7",
+        "Private airport, station and road transfers listed in the final proposal",
+        "Local private guide in the confirmed language on the listed guided days; transfer-day assistance specified separately",
+        "The confirmed Chengdu-to-mountain rail and private road connection; an alternative flight arrangement is separately confirmed and priced",
+        "National park transport and attraction tickets listed in the final proposal",
+        "Local support before arrival and while traveling",
+        "No forced shopping visits"
+      ],
+      "excludedVerbatim": [
+        "International flights",
+        "China visa costs or documentation services unless stated",
+        "Meals, drinks and optional experiences not listed in the final proposal",
+        "Travel insurance, medical costs and personal expenses",
+        "Any service not confirmed in the final written proposal"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: hotel and room category selected after inquiry",
+          "mealWording": ["No meals included today"],
+          "transportWording": "Private airport or station transfer",
+          "operatingNote": "Arrival support and transfer timing are arranged around your confirmed details."
+        },
+        {
+          "day": 2,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: hotel and room category selected after inquiry",
+          "mealWording": ["Breakfast; other meals as confirmed"],
+          "transportWording": "Private vehicle and multilingual guide",
+          "operatingNote": "Earlier starts generally support a more comfortable panda visit; the afternoon remains flexible."
+        },
+        {
+          "day": 3,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: hotel and room category selected after inquiry",
+          "mealWording": ["Breakfast; food experience as confirmed"],
+          "transportWording": "Private vehicle and multilingual guide",
+          "operatingNote": "Halal, vegetarian, allergy and other dietary requirements must be shared before confirmation so suitable options can be checked."
+        },
+        {
+          "day": 4,
+          "destination": "Chengdu to Jiuzhaigou",
+          "hotel": "Jiuzhaigou area stay: selected around park access and comfort",
+          "mealWording": ["Breakfast; other meals as confirmed"],
+          "transportWording": "Rail and private road transfer, confirmed for your travel date",
+          "operatingNote": "The exact connection depends on seasonal schedules and operating conditions and will be stated in your written proposal."
+        },
+        {
+          "day": 5,
+          "destination": "Jiuzhaigou",
+          "hotel": "Jiuzhaigou area stay: selected around park access and comfort",
+          "mealWording": ["Breakfast; other meals as confirmed"],
+          "transportWording": "Private hotel transfers and national park transport",
+          "operatingNote": "Park transport reduces distance, but paths, steps, queues and changing weather cannot be removed completely."
+        },
+        {
+          "day": 6,
+          "destination": "Jiuzhaigou / Huanglong",
+          "hotel": "Jiuzhaigou area stay: selected around park access and comfort",
+          "mealWording": ["Breakfast; other meals as confirmed"],
+          "transportWording": "Private vehicle according to the confirmed option",
+          "operatingNote": "Huanglong is a separately quoted optional route, reaches higher altitude and is never compulsory. The base proposal must name the gentler Day 6 plan and its actual service; adding Huanglong changes tickets, transfers and potentially timing."
+        },
+        {
+          "day": 7,
+          "destination": "Jiuzhaigou",
+          "hotel": null,
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private departure transfer",
+          "operatingNote": "This seven-day version ends in the Jiuzhaigou area; a Chengdu return is quoted separately."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Jiuzhaigou: official scenic-area information",
+          "href": "https://www.jiuzhai.com/",
+          "officialPublisher": "Jiuzhaigou scenic area",
+          "description": "Check dated visitor notices, admission and park operation. A park notice does not confirm your rail connection, hotel or private transfer."
+        },
+        {
+          "label": "Chengdu Panda Base: official visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates."
+        }
+      ],
+      "confirmationRequests": [
+        "成都三晚／九寨附近三晚的实际酒店位置与接驳距离",
+        "城际铁路、车站至景区车辆、景区公共交通分别列项",
+        "在九寨地区结束；返回成都另价，黄龙另选并确认海拔限制"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 15,
+      "slug": "shanghai-zhangjiajie-floating-peaks",
+      "title": "8-Day Shanghai and Zhangjiajie Private Tour",
+      "nameZh": "上海与张家界八天",
+      "priority": "P3",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 3090,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 6180,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 3,090 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 6,180 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Seven nights at the hotels confirmed in your written quotation",
+        "Hotel breakfast on Days 2-8",
+        "Private airport transfers in Shanghai and Zhangjiajie",
+        "Air-conditioned private touring vehicle outside restricted scenic areas",
+        "Professional multilingual local guides on sightseeing days",
+        "Economy-class domestic flights between Shanghai and Zhangjiajie when listed in the final confirmation",
+        "Standard admission, park shuttles, elevators, and cableways required by the confirmed itinerary",
+        "Huangpu River cruise and Glass Bridge only when listed in the final confirmation",
+        "Bottled water during touring and 24-hour emergency support",
+        "No compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights to and from China",
+        "Lunches and dinners throughout the journey",
+        "Visa, travel insurance, medical costs, and personal expenses",
+        "Early check-in, late check-out, room upgrades, and single supplements",
+        "Guide and driver gratuities",
+        "Optional shows, premium cruise upgrades, and activities not confirmed in writing",
+        "Excess baggage and airline seat-selection fees unless specifically included",
+        "Extra costs caused by weather, traffic, flight disruption, or events beyond reasonable control"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Shanghai",
+          "hotel": "Carefully selected Shanghai hotel; final property and room category confirmed in writing",
+          "mealWording": ["No meals included today"],
+          "transportWording": "Private airport or railway-station transfer",
+          "operatingNote": "The first day is about arriving well. Drive time is usually 45-90 minutes, depending on the airport, hotel, and traffic."
+        },
+        {
+          "day": 2,
+          "destination": "Shanghai",
+          "hotel": "Shanghai hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private vehicle, walking, and standard river cruise when confirmed",
+          "operatingNote": "Typical walking is 3-5 kilometres and can be adjusted around the group."
+        },
+        {
+          "day": 3,
+          "destination": "Shanghai to Wulingyuan",
+          "hotel": "Carefully selected Wulingyuan hotel near the national-park entrance",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private transfers and economy-class domestic flight",
+          "operatingNote": "Seasonal flight schedules may require a different timing or connection. The final sector and baggage basis are confirmed before payment."
+        },
+        {
+          "day": 4,
+          "destination": "Wulingyuan Scenic Area",
+          "hotel": "Wulingyuan hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private transfer outside the park, then official scenic-area transport",
+          "operatingNote": "Private vehicles cannot enter the core scenic area. Your guide stays with you and manages shared park shuttles, tickets, queues, and route decisions."
+        },
+        {
+          "day": 5,
+          "destination": "Zhangjiajie National Forest Park",
+          "hotel": "Carefully selected Zhangjiajie City hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private vehicle and scenic-area access",
+          "operatingNote": "Wild macaques may be present near Golden Whip Stream. Keep food packed away, give wildlife space, and follow your guide's instructions."
+        },
+        {
+          "day": 6,
+          "destination": "Zhangjiajie City",
+          "hotel": "Zhangjiajie City hotel",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private transfer and Tianmen Mountain transport system",
+          "operatingNote": "Visibility changes quickly. The local team may reorder Days 4-6 when weather and ticket availability support a better experience."
+        },
+        {
+          "day": 7,
+          "destination": "Zhangjiajie to Shanghai",
+          "hotel": "Shanghai hotel selected around the final departure plan",
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private transfers and economy-class domestic flight",
+          "operatingNote": "If timing and energy allow, add a simple riverside walk or dinner; no fixed sightseeing is required."
+        },
+        {
+          "day": 8,
+          "destination": "Shanghai",
+          "hotel": null,
+          "mealWording": ["Breakfast"],
+          "transportWording": "Private airport transfer",
+          "operatingNote": "Very early flights may require a breakfast box, subject to hotel policy. There is no hotel stay tonight."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "UNESCO: Wulingyuan Scenic and Historic Interest Area",
+          "href": "https://whc.unesco.org/en/list/640/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Understand the sandstone landscape and protected property. This is not the operating authority for Tianmen Mountain, the Glass Bridge, park lifts or ticket availability."
+        }
+      ],
+      "confirmationRequests": [
+        "上海2／武陵源2／张家界市区2／上海1晚；三次换酒店的接驳",
+        "上海往返航班、行李、公共景区交通与天门山门票",
+        "玻璃桥／游船为选项；天气换序和末晚上海衔接国际航班的裕量"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 16,
+      "slug": "chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      "title": "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
+      "nameZh": "成都—重庆—张家界十一天",
+      "priority": "P3",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 3290,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 6580,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 3,290 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 6,580 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Ten hotel nights: Chengdu 3, Chongqing 3 and Zhangjiajie 4, with properties and rooms specified in the proposal",
+        "Hotel breakfasts on Days 2–11",
+        "Private arrival and departure transfers and the listed intercity station or airport transfers",
+        "Local private guide and separate driver on scheduled sightseeing Days 2–3, 5 and 8–9; no standby service on independent Days 6 and 10",
+        "Chengdu–Chongqing high-speed rail and the confirmed Chongqing–Zhangjiajie rail or flight sector, with class and baggage terms stated",
+        "Standard admission and public scenic transport required by the listed confirmed visits",
+        "China-based travel support and no compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights and services not named in the final proposal",
+        "Open-day transport, guiding and admissions unless selected",
+        "Paid optional experiences on Days 6 and 10 unless selected",
+        "Meals, drinks and gratuities not specifically included in writing",
+        "Travel insurance, visas and personal expenses",
+        "Costs arising from weather, closures or traveler-requested changes after confirmation"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: hotel and room category confirmed in your private proposal",
+          "mealWording": ["No meals included today"],
+          "transportWording": "Private arrival transfer",
+          "operatingNote": "We plan Day 1 around your international or domestic arrival rather than forcing sightseeing into a limited window."
+        },
+        {
+          "day": 2,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "Private vehicle and multilingual guide",
+          "operatingNote": "Animal activity cannot be guaranteed. We give honest advice on walking, heat and crowds before the visit."
+        },
+        {
+          "day": 3,
+          "destination": "Chengdu",
+          "hotel": "Chengdu stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "Private vehicle and guided walking as confirmed",
+          "operatingNote": "Tell us about allergies, vegetarian preferences or halal requirements before quotation so research can be specific."
+        },
+        {
+          "day": 4,
+          "destination": "Chengdu to Chongqing",
+          "hotel": "Chongqing stay: hotel and room category confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "Private station transfers and high-speed rail",
+          "operatingNote": "The final train and seat class are confirmed in writing; schedules can change by travel date."
+        },
+        {
+          "day": 5,
+          "destination": "Chongqing",
+          "hotel": "Chongqing stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "Private vehicle, guided walking and local transit where useful",
+          "operatingNote": "Chongqing involves slopes, stairs and traffic. We adapt the walking route and vehicle access to your group."
+        },
+        {
+          "day": 6,
+          "destination": "Chongqing",
+          "hotel": "Chongqing stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "None on an open day; private service available by request",
+          "operatingNote": "The open day is intentional. Nothing is automatically added or charged; selected services appear clearly in your proposal."
+        },
+        {
+          "day": 7,
+          "destination": "Chongqing to Zhangjiajie",
+          "hotel": "Zhangjiajie stay: hotel and room category confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "Rail or flight and private transfers, selected for your date",
+          "operatingNote": "Transport schedules determine the final shape of Day 7 and are confirmed before booking."
+        },
+        {
+          "day": 8,
+          "destination": "Zhangjiajie",
+          "hotel": "Zhangjiajie stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "Private hotel transfer, park shuttle and scenic lift or cableway as confirmed",
+          "operatingNote": "Cloud and mist are part of the landscape but affect visibility. Your guide may reverse sections when conditions favor it."
+        },
+        {
+          "day": 9,
+          "destination": "Zhangjiajie",
+          "hotel": "Zhangjiajie stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "Private hotel transfer and park shuttle as confirmed",
+          "operatingNote": "The full stream route is not compulsory. We agree a realistic walking plan before entering the park."
+        },
+        {
+          "day": 10,
+          "destination": "Zhangjiajie",
+          "hotel": "Zhangjiajie stay: confirmed in your private proposal",
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "None on an open day; private service available by request",
+          "operatingNote": "Day 10 has no standby guide, vehicle or reserved replacement tickets. Moving a weather-affected park visit here requires new availability and any additional charges to be agreed. Tianmen Mountain and the Grand Canyon are separately priced options; choose one if it fits the confirmed service window."
+        },
+        {
+          "day": 11,
+          "destination": "Zhangjiajie",
+          "hotel": null,
+          "mealWording": ["Hotel breakfast; other meals independent unless expressly included"],
+          "transportWording": "Private departure transfer",
+          "operatingNote": "Do not book a tight independent connection before we review the operating schedule and transfer time."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Chengdu Panda Base: official visitor notices",
+          "href": "https://www.panda.org.cn/en/service/notice",
+          "officialPublisher": "Chengdu Research Base of Giant Panda Breeding",
+          "description": "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates."
+        },
+        {
+          "label": "UNESCO: Wulingyuan Scenic and Historic Interest Area",
+          "href": "https://whc.unesco.org/en/list/640/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Understand the sandstone landscape and protected property. This is not the operating authority for Tianmen Mountain, the Glass Bridge, park lifts or ticket availability."
+        }
+      ],
+      "confirmationRequests": [
+        "成都3／重庆3／张家界4晚住宿、实际城际交通和接送",
+        "Day 6／10不含默认车导门票；逐个服务日报价",
+        "天门山为选项；张家界结束、离境衔接及未使用服务退改规则"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 17,
+      "slug": "muslim-friendly-china-tour-great-wall-desert-stars",
+      "title": "13-Day Muslim-Friendly China Private Tour",
+      "nameZh": "穆斯林友好中国与宁夏沙漠十三天",
+      "priority": "P0",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 8490,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 16980,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 8,490 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 16,980 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "Twelve hotel nights in total: Beijing 4, Xi'an 3, Yinchuan area 3, desert lodge 1 and Shanghai 1, with properties, rooms and occupancy confirmed for your party",
+        "Daily hotel breakfast and the private or hosted meals specifically stated in the written proposal",
+        "Private multilingual guides, private vehicles and airport or station handovers on confirmed touring days",
+        "First-class Beijing–Xi'an high-speed rail, an economy flight from Xi'an to Yinchuan when practical, and the best available flight routing from Zhongwei to Shanghai",
+        "Confirmed entrance tickets and listed site transport arrangements",
+        "AVIORA Muslim Journey Standard: dietary and prayer profile, meal verification, Friday planning where relevant, room requirements and China-based backup support",
+        "Great Wall picnic or countryside table, Xi'an clay studio, halal noodle or paomo workshop and the listed Ningxia or desert hosted experiences as confirmed; a photographer is an optional extra",
+        "Alcohol-free meal planning where requested and no compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International flights to Beijing and from Shanghai",
+        "Visa, travel insurance and personal medical expenses",
+        "Meals, drinks and room-service charges not stated as included in the written proposal",
+        "Premium suites, business-class rail, premium flight cabins, private aircraft or guaranteed named specialists unless quoted",
+        "Any private-home, mosque-access, religious or hosted encounter not confirmed in writing",
+        "Personal purchases, laundry, spa treatments and gratuities unless specifically included"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Beijing",
+          "hotel": "Selected premium five-star Beijing hotel · 4 nights · rooms confirmed for your party",
+          "mealWording": ["As confirmed after your dietary profile"],
+          "transportWording": "Private airport transfer, vehicle sized for your actual party and luggage",
+          "operatingNote": "Arrival arrangements, hotel and first meal are confirmed in writing for the actual flight date."
+        },
+        {
+          "day": 2,
+          "destination": "Beijing",
+          "hotel": "Selected premium five-star Beijing hotel · 4 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Verified meal according to your profile"],
+          "transportWording": "Private vehicle and multilingual guide",
+          "operatingNote": "Entry time, site sequence, prayer pause and meal venue are checked for your dates rather than assumed from a template."
+        },
+        {
+          "day": 3,
+          "destination": "Beijing",
+          "hotel": "Selected premium five-star Beijing hotel · 4 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private halal picnic or confirmed countryside table"],
+          "transportWording": "Private vehicle with flexible Great Wall timing",
+          "operatingNote": "The photographer, exact picnic setting and Wall section are subject to date-specific confirmation; no access is represented as guaranteed before booking."
+        },
+        {
+          "day": 4,
+          "destination": "Beijing",
+          "hotel": "Selected premium five-star Beijing hotel · 4 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Verified Muslim-owned or halal meal"],
+          "transportWording": "Private vehicle and neighborhood walking route",
+          "operatingNote": "Mosque etiquette, photography boundaries and any hosted encounter are explained before arrival. No private home or exclusive access is promised until confirmed."
+        },
+        {
+          "day": 5,
+          "destination": "Beijing to Xi'an",
+          "hotel": "Selected premium five-star Xi'an hotel · 3 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Verified meal after arrival"],
+          "transportWording": "Private station transfers and first-class Beijing–Xi'an high-speed rail",
+          "operatingNote": "Train class, departure time and final transfer details are confirmed around your dates and passports."
+        },
+        {
+          "day": 6,
+          "destination": "Xi'an",
+          "hotel": "Selected premium five-star Xi'an hotel · 3 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Verified halal or Muslim-owned lunch"],
+          "transportWording": "Private vehicle and guide",
+          "operatingNote": "Workshop host, venue and ticketing are date-specific. No compulsory purchase is attached to the experience."
+        },
+        {
+          "day": 7,
+          "destination": "Xi'an",
+          "hotel": "Selected premium five-star Xi'an hotel · 3 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private halal cooking session and meal"],
+          "transportWording": "Private vehicle and walking route through Xi'an's historic core",
+          "operatingNote": "Religious access and workshop host are subject to respectful, written confirmation. A suitable equivalent is offered if the preferred host is unavailable."
+        },
+        {
+          "day": 8,
+          "destination": "Xi'an to Yinchuan",
+          "hotel": "Best-available premium Ningxia stay · 3 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Verified halal or Muslim-owned dinner"],
+          "transportWording": "Xi'an-Yinchuan economy flight when the schedule is practical, plus private airport transfers",
+          "operatingNote": "Flight times and the most suitable Yinchuan arrival plan are date-specific; domestic availability is reconfirmed before ticketing."
+        },
+        {
+          "day": 9,
+          "destination": "Yinchuan and Helan Mountain",
+          "hotel": "Best-available premium Ningxia stay · 3 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Verified meal according to your profile"],
+          "transportWording": "Private vehicle and guide; exact route confirmed to conditions",
+          "operatingNote": "Rock-art access, heat, wind and walking conditions vary. A lower-effort cultural alternative is always reviewed for the date."
+        },
+        {
+          "day": 10,
+          "destination": "Ningxia",
+          "hotel": "Best-available premium Ningxia stay · 3 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Hosted Hui meal or verified Muslim-owned table"],
+          "transportWording": "Private vehicle and guide",
+          "operatingNote": "The encounter proceeds only with consent and confirmed terms. If the preferred host is unavailable, AVIORA proposes an equivalent for your approval."
+        },
+        {
+          "day": 11,
+          "destination": "Yinchuan to Zhongwei",
+          "hotel": "Premium desert lodge or strongest confirmed equivalent · 1 night · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Alcohol-free sunset dinner, verified to your brief"],
+          "transportWording": "Private vehicle; exact road and transfer timing confirmed to dates",
+          "operatingNote": "Ningxia and desert accommodation varies more than major-city hotels; the confirmed property, room setup and facilities are named before booking."
+        },
+        {
+          "day": 12,
+          "destination": "Zhongwei to Shanghai",
+          "hotel": "Selected premium five-star Shanghai hotel · 1 night · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Verified Shanghai dinner or light arrival meal"],
+          "transportWording": "Private transfer and the most practical domestic flight routing to Shanghai",
+          "operatingNote": "Flight routing, baggage and airport transfer times are confirmed for the travel date. Do not assume a direct flight or a usable Shanghai sightseeing window."
+        },
+        {
+          "day": 13,
+          "destination": "Shanghai",
+          "hotel": null,
+          "mealWording": ["Breakfast", "Optional verified farewell meal"],
+          "transportWording": "Private airport transfer and departure support",
+          "operatingNote": "If your international flight leaves earlier, this becomes a departure day and the Shanghai chapter can be extended to a 14-day version."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "The Palace Museum: official visitor information",
+          "href": "https://intl.dpm.org.cn/visit.html",
+          "officialPublisher": "The Palace Museum",
+          "description": "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules."
+        },
+        {
+          "label": "Terracotta Army: official museum ticketing",
+          "href": "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+          "officialPublisher": "Emperor Qinshihuang’s Mausoleum Site Museum",
+          "description": "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility."
+        },
+        {
+          "label": "UNESCO: The Great Wall",
+          "href": "https://whc.unesco.org/en/list/438/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "World Heritage background only; not evidence of halal certification, private access or a picnic operating permission."
+        }
+      ],
+      "confirmationRequests": [
+        "北京4／西安3／银川3／中卫1／上海1晚，共12晚；沙漠酒店房况、冷热设备、隐私和实际到达路线",
+        "逐餐记录客人接受的证据：认证、经营者、采购、厨房分区及酒精接触；酒店自助餐另核验",
+        "逐日礼拜需求及周五／斋月安排；场所开放和许可必须按日期确认",
+        "长城餐桌、陶俑工作坊、西安烹饪和宁夏接待逐项确认；摄影另价",
+        "中卫–上海可能转机，实际航段、行李和门到门时间决定上海可用时间",
+        "星空仅依天气观测；望远镜／天文向导另确认；第13天厨房和额外城市游览不默认包含"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 18,
+      "slug": "qingcheng-mountain-private-wellness-retreat-10-day",
+      "title": "10-Day Qingcheng Mountain Wellness Retreat",
+      "nameZh": "成都与青城山私人静修十天",
+      "priority": "P0",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 5990,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 11980,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 5,990 per person. Starting price per person, based on two adults sharing one double or twin room outside peak periods. Your written proposal confirms the travel dates, named hotels, transport, included services and total for your party. On that stated basis, the starting total is USD 11,980 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "9 nights with rooms and occupancy confirmed for your actual party: 2 nights in a selected luxury Chengdu hotel and 7 nights in a selected Qingcheng Mountain luxury retreat",
+        "Daily hotel breakfast plus the seven private, hosted or resort lunches and dinners identified in the confirmed proposal",
+        "Private multilingual guide or interpreter, private vehicle and airport support on the confirmed service days",
+        "Private Chengdu-to-Qingcheng transfer and private Qingcheng-to-Chengdu airport transfer",
+        "AVIORA Quiet Journey Standard: pre-trip rhythm profile, one hotel change, protected unscheduled hours, room and meal requirements, and China-based support",
+        "Private tea-house chapter in Chengdu, private tai chi sessions, Daoist cultural interpretation, private tea session, Dujiangyan half-day and privately guided Qingcheng Mountain day as confirmed",
+        "Two individually selected 60- to 90-minute resort wellbeing treatments per guest, subject to provider consultation and written confirmation",
+        "Confirmed entrance tickets and public site transport specifically named in the written proposal",
+        "No compulsory shopping stops and no replacement sightseeing added to the protected retreat day"
+      ],
+      "excludedVerbatim": [
+        "International or domestic flights to and from Chengdu",
+        "Visa, travel insurance, medical care, medication and personal health expenses",
+        "Meals, drinks, minibar and room-service charges not stated as included in the written proposal",
+        "Medical diagnosis, psychotherapy, clinical treatment or any guaranteed physical or mental-health outcome",
+        "Additional spa treatments, premium practitioner programs, private medical consultations or therapies not specifically quoted",
+        "Guaranteed Six Senses, named suites, named teachers, private temple access or exclusive public-site access unless confirmed in writing",
+        "Personal purchases, laundry and gratuities unless specifically included"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Chengdu",
+          "hotel": "Selected luxury Chengdu hotel · 2 nights · rooms confirmed for your party",
+          "mealWording": [
+            "Arrival meal or room service optional; additional cost unless included in your proposal"
+          ],
+          "transportWording": "Private Chengdu airport transfer with luggage support",
+          "operatingNote": "Early check-in, room category and arrival meal are requests until confirmed in the written proposal."
+        },
+        {
+          "day": 2,
+          "destination": "Chengdu",
+          "hotel": "Selected luxury Chengdu hotel · 2 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private tea-house lunch or equivalent"],
+          "transportWording": "Private vehicle with a short, optional neighborhood walk",
+          "operatingNote": "The tea venue and host are selected for comfort, context and date-specific availability; no exclusive public venue is implied."
+        },
+        {
+          "day": 3,
+          "destination": "Chengdu to Qingcheng Mountain",
+          "hotel": "Selected Qingcheng Mountain luxury retreat · 7 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private or resort welcome dinner"],
+          "transportWording": "Private overland transfer from Chengdu to the confirmed Qingcheng retreat",
+          "operatingNote": "A property such as Six Senses Qing Cheng Mountain may be proposed, but the exact hotel and room category are only guaranteed when named in writing."
+        },
+        {
+          "day": 4,
+          "destination": "Qingcheng Mountain",
+          "hotel": "Selected Qingcheng Mountain luxury retreat · 7 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast; lunch and dinner independent"],
+          "transportWording": "Private local transfer if the confirmed practice venue requires it",
+          "operatingNote": "Teacher, interpreter, venue and session length are confirmed for the dates. No named master or private temple access is promised before agreement."
+        },
+        {
+          "day": 5,
+          "destination": "Qingcheng Mountain",
+          "hotel": "Selected Qingcheng Mountain luxury retreat · 7 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private tea session", "Resort dinner"],
+          "transportWording": "No transfer unless the confirmed tea host is off property",
+          "operatingNote": "Spa menus and treatment suitability are provider-led and date-specific. Medical or therapeutic outcomes are not promised."
+        },
+        {
+          "day": 6,
+          "destination": "Qingcheng Mountain and Dujiangyan",
+          "hotel": "Selected Qingcheng Mountain luxury retreat · 7 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private local lunch"],
+          "transportWording": "Private vehicle and guide; walking route adapted before departure",
+          "operatingNote": "Dujiangyan includes walking, bridges, steps and exposure to weather. A lower-effort route or full retreat day can replace it."
+        },
+        {
+          "day": 7,
+          "destination": "Qingcheng Mountain",
+          "hotel": "Selected Qingcheng Mountain luxury retreat · 7 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private or resort dinner"],
+          "transportWording": "No scheduled sightseeing vehicle or guide; treatment and dinner coordinated at agreed times",
+          "operatingNote": "Treatment cancellation windows and resort availability are confirmed in the proposal. Declining a session does not trigger replacement sightseeing."
+        },
+        {
+          "day": 8,
+          "destination": "Qingcheng Mountain",
+          "hotel": "Selected Qingcheng Mountain luxury retreat · 7 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private mountain-area lunch"],
+          "transportWording": "Private vehicle, guide and confirmed public site transport where useful",
+          "operatingNote": "Qingcheng is not fully step-free. Temple entry, cable transport and private cultural access remain subject to current rules and conditions."
+        },
+        {
+          "day": 9,
+          "destination": "Qingcheng Mountain",
+          "hotel": "Selected Qingcheng Mountain luxury retreat · 7 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Private farewell dinner"],
+          "transportWording": "Local private transfer only if required by the chosen session",
+          "operatingNote": "Any recording requires the teacher's consent. The practice is educational and does not replace medical or mental-health care."
+        },
+        {
+          "day": 10,
+          "destination": "Qingcheng Mountain to Chengdu",
+          "hotel": "Departure day",
+          "mealWording": [
+            "Breakfast",
+            "Departure meal optional; additional cost unless included in your proposal"
+          ],
+          "transportWording": "Private transfer to Chengdu Tianfu or Shuangliu airport",
+          "operatingNote": "The correct Chengdu airport matters: Tianfu and Shuangliu have different transfer times. The written plan names the terminal and pickup buffer."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "UNESCO: Mount Qingcheng and Dujiangyan",
+          "href": "https://whc.unesco.org/en/list/1001/",
+          "officialPublisher": "UNESCO World Heritage Centre",
+          "description": "Background on the World Heritage property. This does not establish access, current tickets, a private teacher or a health benefit."
+        }
+      ],
+      "confirmationRequests": [
+        "成都2晚／青城7晚，共9晚；一间双人基础房的酒店及房型，指定品牌须取得书面报价",
+        "九份酒店早餐的时段与早出发安排；七份正餐：D2午、D3晚、D5晚、D6午、D7晚、D8午、D9晚",
+        "抵达餐／离境餐、D4午晚餐与其他未列餐单独报价，不能因餐食字段出现即认为包含",
+        "每人两次60–90分钟疗程，共四次／两人基础；核验提供方、适用性、语言及取消窗口",
+        "太极、茶、道教文化解说和D9复习课：教师／译员、时长、场地及转移安排",
+        "D6都江堰半日及D8青城山路线／门票／公共交通；D7无导游和待命车辆，治疗预约及晚餐仍保留",
+        "天府或双流机场分别核算；转机时间、实际酒店地址与行李要求"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    },
+    {
+      "order": 19,
+      "slug": "guangzhou-shenzhen-tailor-made-business-tour-4-day",
+      "title": "Guangzhou and Shenzhen Private Business Tour",
+      "nameZh": "广州—深圳商务四至七天",
+      "priority": "P0",
+      "sourceUpdatedAt": "2026-11-12",
+      "publishedPrice": {
+        "fromUsdPerPerson": 2490,
+        "partyBasis": 2,
+        "startingPartyTotalUsd": 4980,
+        "supplierVerified": false,
+        "disclosure": "The published starting rate is USD 2,490 per person. Starting price per person for the 4-day / 3-night Guangzhou–Shenzhen example, based on two adults sharing one double or twin room outside peak exhibition periods. This does not price every 4–7-day agenda. Your written proposal names the hotels, working hours, vehicle service, bilingual support role and total for your party. Exhibition credentials, specialist interpreting and Hong Kong services are separate unless expressly contracted. On that stated basis, the starting total is USD 4,980 for 2 travelers. Changes to the party, travel dates or selected services require a revised written quote."
+      },
+      "includedVerbatim": [
+        "3 nights in selected premium business hotels with rooms and occupancy confirmed for your actual party: 2 nights in Guangzhou and 1 night in Shenzhen in the sample framework",
+        "Private arrival, Guangzhou-to-Shenzhen and departure transfers, plus private vehicle service during the day-by-day windows named in the written proposal",
+        "Guide or bilingual business-assistant support during the confirmed service periods, with language, role and hours stated; specialist or professional interpreting requires its own agreed scope and quote",
+        "Pre-trip agenda review covering flights, meetings, exhibition sessions, supplier addresses, hotel geography and transfer feasibility",
+        "Market-to-kitchen Cantonese cultural experience with ingredients and hosted meal when selected in the confirmed itinerary",
+        "Traditional Chinese medicine cultural introduction at a suitable confirmed institution when selected; educational scope only unless a licensed medical service is separately contracted",
+        "One confirmed Shenzhen innovation, industry or urban-technology chapter selected for the travel date",
+        "Daily hotel breakfast and the additional meals specifically identified in the written proposal",
+        "China-based operating support and one final itinerary containing confirmed addresses, contacts, pickup points and service boundaries",
+        "No compulsory shopping stops"
+      ],
+      "excludedVerbatim": [
+        "International or domestic flights, China visa, travel insurance and personal expenses",
+        "Canton Fair or exhibition credentials, admission charges and organizer fees unless explicitly named as included",
+        "A VIP fast-track, queue bypass or access outside the organizer's official rules",
+        "Supplier sourcing, commercial due diligence, factory audit, legal advice, negotiation or professional simultaneous interpretation unless separately quoted",
+        "Guaranteed entry to a named company, factory, private facility or technology campus before written confirmation",
+        "Guaranteed Robotaxi operation, drone flight or other service controlled by a third-party operator, regulation, weather or operating zone",
+        "Unlimited or 24-hour vehicle and bilingual-assistant service; confirmed daily hours and overtime rules apply",
+        "Medical diagnosis, treatment, medication or a promised health outcome from any traditional Chinese medicine experience",
+        "Hong Kong accommodation or cross-boundary vehicle service unless specifically included"
+      ],
+      "dailyScope": [
+        {
+          "day": 1,
+          "destination": "Guangzhou",
+          "hotel": "Selected premium Guangzhou business hotel · 2 nights · rooms confirmed for your party",
+          "mealWording": ["Arrival dinner when selected in the written proposal"],
+          "transportWording": "Private Guangzhou airport or railway transfer; vehicle size matched to party and luggage",
+          "operatingNote": "The starting city can be Shenzhen or Hong Kong instead. The final route and price are rebuilt around the actual arrival."
+        },
+        {
+          "day": 2,
+          "destination": "Guangzhou",
+          "hotel": "Selected premium Guangzhou business hotel · 2 nights · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Market-to-kitchen Cantonese meal when selected"],
+          "transportWording": "Private vehicle during the confirmed service window; exhibition drop-off and pickup planned around current access rules",
+          "operatingNote": "Canton Fair badge applications are made under the organizer's official rules. AVIORA can assist with the process but does not sell admission or promise a VIP bypass. The culture and TCM modules can be shortened, moved or removed."
+        },
+        {
+          "day": 3,
+          "destination": "Guangzhou to Shenzhen",
+          "hotel": "Selected premium Shenzhen business hotel · 1 night · rooms confirmed for your party",
+          "mealWording": ["Breakfast", "Business lunch or dinner when selected"],
+          "transportWording": "Private intercity MPV and local Shenzhen service during the confirmed hours",
+          "operatingNote": "Company access, factory visits and Robotaxi operation are date-specific and never guaranteed by the published itinerary. Alternatives are agreed before booking."
+        },
+        {
+          "day": 4,
+          "destination": "Shenzhen, Guangzhou or Hong Kong departure",
+          "hotel": null,
+          "mealWording": ["Breakfast", "Departure meal when confirmed"],
+          "transportWording": "Private airport or rail departure transfer within the confirmed mainland service area; Hong Kong or cross-boundary service is separately quoted",
+          "operatingNote": "Cross-boundary vehicle permissions and Hong Kong transfer arrangements must be confirmed separately; a standard mainland vehicle cannot be assumed to cross the border."
+        }
+      ],
+      "officialReferences": [
+        {
+          "label": "Canton Fair: official organizer",
+          "href": "https://www.cantonfair.org.cn/",
+          "officialPublisher": "China Import and Export Fair",
+          "description": "Official reference for registration, event information and visitor access. Dates, credentials and category-specific eligibility need current organizer confirmation."
+        },
+        {
+          "label": "China entry requirements: official information",
+          "href": "https://en.nia.gov.cn/",
+          "officialPublisher": "National Immigration Administration of China",
+          "description": "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility."
+        },
+        {
+          "label": "China Railway 12306: passenger information",
+          "href": "https://www.12306.cn/en/faq.html",
+          "officialPublisher": "China Railway 12306",
+          "description": "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates."
+        }
+      ],
+      "confirmationRequests": [
+        "四天三晚样例：广州两晚／深圳一晚，一间双人基础房；展会高峰日期另核价",
+        "按每一天记录司机／车辆／双语人员起止、地址、等候、停车、里程、加班和跨区费用",
+        "双语助理与专业口译分别报价；语言对、行业术语、会议格式、保密和资料准备须先定义",
+        "广州–深圳交通方式与工作安排；公司入内须书面同意，不能用车导订单代替访问许可",
+        "酒店早餐及逐项已选择餐食；市场厨房、TCM文化介绍和创新项目须列选项及时长",
+        "展会证件／官方注册费、香港住宿及跨境交通分开；四至七天不共享同一基础总价"
+      ],
+      "supplierEvidence": {
+        "status": "pending",
+        "supplier": null,
+        "quoteReference": null,
+        "travelDates": null,
+        "currency": null,
+        "validUntil": null,
+        "costLines": [],
+        "cancellationAndChangeTerms": null
+      },
+      "releaseGate": {
+        "applicableOfficialRulesVerified": false,
+        "supplierConfigurationAndCostVerified": false,
+        "desktopAndMobileInquiryVerified": false
+      }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
@@ -34,7 +35,7 @@ const bundWaterfront = shanghaiImage(
 );
 const privateVehicle: MediaAsset = {
   src: "/tours/mutianyu-private-day-tour/05-private-luxury-vehicle.webp",
-  alt: "Spacious premium vehicle interior for a private Shanghai day tour",
+  alt: "Illustrative private vehicle interior for a private Shanghai day tour",
   width: 1440,
   height: 1920,
 };
@@ -44,7 +45,7 @@ export const privateShanghaiDayTour: Tour = {
   slug: "private-shanghai-day-tour-guide-driver",
   visualStatus: "ready",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-11-10",
+  updatedAt: "2026-11-11",
   title: "Private Shanghai Day Tour with Guide and Driver",
   subtitle:
     "See Yu Garden, the Bund and the former French Concession with your own guide and driver. Central Shanghai hotel pickup, garden admission and one public Huangpu ferry crossing are included; lunch, tower tickets and evening cruises are optional.",
@@ -73,9 +74,9 @@ export const privateShanghaiDayTour: Tour = {
   },
   overview: {
     pitch:
-      "Start with the garden and Old City, compare the Bund with Pudong across the Huangpu River, then slow down on the tree-lined streets of the former French Concession. Your guide connects the history and daily life behind these places while your driver handles the transfers. The route leaves room for lunch and pauses; adding a tower visit or an evening cruise means choosing what to replace or extending the service window.",
+      "Shanghai makes more sense when its neighborhoods are connected. Begin inside Yu Garden, compare the Bund with Pudong across the river, then slow down among the former French Concession's plane trees and lane houses. Your guide gives the places context while a separate driver handles the city transfers. Choose any tower or evening extension before booking so the day keeps a workable pace.",
     answer:
-      "This private Shanghai day tour is an approximately eight-hour city sightseeing tour for one booking party, with a private guide, a separate driver and central-hotel pickup and return. It connects Yu Garden (Yuyuan Garden), the Old City, the Bund, one public Huangpu River ferry crossing and the former French Concession. Yu Garden admission and the ferry fare are included. Lunch, Shanghai Tower and an evening sightseeing cruise are separate; airport and cruise-port pickups require a different written quote.",
+      "Explore Yu Garden (Yuyuan Garden), the Old City, the Bund and the former French Concession on a private Shanghai day tour. Your own guide, separate driver, central-hotel transfers, garden admission and one public Huangpu ferry crossing are included. Allow about eight hours. Lunch, Shanghai Tower and evening cruises cost extra; the ferry is shared, and airport or cruise-port transfers need a separate quote.",
     practicalities: [
       {
         label: "Duration",
@@ -113,9 +114,10 @@ export const privateShanghaiDayTour: Tour = {
           "Garden paths, steps, uneven paving and ferry boarding remain part of the visit; share mobility needs before confirmation.",
       },
       {
-        label: "Pricing and accommodation",
-        value: "One written total for your private party. No overnight accommodation is included.",
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("private-shanghai-day-tour-guide-driver"),
       },
+      { label: "Accommodation", value: "No overnight accommodation is included." },
     ],
     facts: [
       {
@@ -490,7 +492,8 @@ export const privateShanghaiDayTour: Tour = {
     {
       question: "How much does a private Shanghai day tour cost for two people or a family?",
       answer:
-        "Request one total for your actual private party. The written quote states your date, adult and child numbers, vehicle, guide language, pickup and return addresses, service hours and any chosen extras. A two-person quote and a family quote may require different vehicle or ticket arrangements. The published starting rate is based on two adults traveling together; the total for your actual party is confirmed before payment.",
+        getPublishedPriceDisclosure("private-shanghai-day-tour-guide-driver") +
+        " Shanghai Tower, lunch, an evening cruise and airport or port transfers are separate unless expressly added.",
     },
     {
       question: "Can this be a Shanghai shore excursion from Wusongkou cruise port?",
@@ -557,26 +560,37 @@ export const privateShanghaiDayTour: Tour = {
     useListedTours: true,
     tours: [
       {
-        title: "China, Considered: Beijing, Xi'an & Shanghai",
+        title: "8-Day Shanghai and Zhangjiajie Private Tour",
         description:
-          "A 12-day premium private China journey that gives Shanghai multiple unhurried chapters after Beijing and Xi'an.",
-        tags: ["Private", "First-time China", "Easy pace"],
-        image: lujiazui,
-        route: "Beijing · Xi'an · Shanghai",
-        duration: "12 days / 11 nights",
-        href: "/tours/china-at-an-easier-pace-12-day-private-tour",
-      },
-      {
-        title: "Shanghai & Zhangjiajie: City and Mountain Contrast",
-        description:
-          "A longer private route linking Shanghai's city life with major sandstone mountain scenery.",
-        tags: ["Private", "Shanghai", "Nature"],
-        image: lujiazui,
-        route: "Shanghai · Zhangjiajie",
+          "Add Wulingyuan and Tianmen Mountain to a Shanghai stay, with a final return night in Shanghai.",
+        tags: ["Nature", "Luxury", "Family"],
+        image: {
+          src: "/tours/shanghai-zhangjiajie-floating-peaks/zhangjiajie-sunny-peaks.webp",
+          alt: "Sunlit sandstone peaks and forested valleys in Zhangjiajie",
+          width: 1600,
+          height: 800,
+        },
+        route: "Shanghai · Wulingyuan · Zhangjiajie",
         duration: "8 days / 7 nights",
         href: "/tours/shanghai-zhangjiajie-floating-peaks",
       },
+      {
+        title: "10-Day Private Tour of Beijing, Xi'an and Shanghai",
+        description:
+          "Combine Shanghai with Beijing and Xi’an in a nine-night first-time China itinerary.",
+        tags: ["First-time China", "Culture", "Photography"],
+        image: {
+          src: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.jpg",
+          alt: "The Great Wall winding across mountain ridges near Beijing in warm evening light",
+          width: 1920,
+          height: 1080,
+        },
+        route: "Beijing · Xi'an · Shanghai",
+        duration: "10 days / 9 nights",
+        href: "/tours/beijing-xian-shanghai-private-10-day-tour",
+      },
     ],
+
     destinations: [],
   },
   inquiryChecklist: [

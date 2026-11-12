@@ -1,4 +1,5 @@
 import { renderCompanyIdentity } from "@/content/about/identity";
+import { renderAboutVerificationGuide } from "@/content/about/search";
 import { renderDestinationSearchGuides } from "@/lib/content/destination-search-guide";
 import { siteConfig } from "@/config/site";
 import { journeyCatalog } from "@/content/tours/catalog";
@@ -6,6 +7,7 @@ import { getJourneyHeadline, placeGlossary } from "@/content/tours/card-copy";
 import { serviceAchievementsText } from "@/content/home/service-achievements";
 import { getJourneyPricePresentation } from "@/lib/tours/journey-pricing";
 import { renderHomepageSearchGuide } from "@/lib/content/homepage-search-guide";
+import { renderTravelerPlanningGuides } from "@/lib/seo/travel-guide";
 
 const vehicleWhatsapp = `https://wa.me/8618027438191?text=${encodeURIComponent("Hello AVIORA, I need a private vehicle in China. My city or route is __, travel date is __, there are __ passengers and __ pieces of luggage.")}`;
 const guideWhatsapp = `https://wa.me/8618027438191?text=${encodeURIComponent("Hello AVIORA, I need a private guide in __ on __. There are __ guests. Our main interests are __ and our preferred language is __.")}`;
@@ -21,7 +23,7 @@ const catalogSummary = journeyCatalog
     const format =
       journey.recommendedDaysMax <= 1 ? "private day tour" : "private multi-day journey";
     const headline = getJourneyHeadline(journey);
-    return `- [${headline ?? journey.title}](${new URL(journey.href, siteConfig.url)}): ${headline ? `also titled "${journey.title}"; ` : ""}${format}; ${journey.commercialRoleLabel}; ${journey.durationLabel}; route ${journey.routeLabel}; ${priceText}; price basis: ${price.basis}; service includes: ${journey.pricing.inclusionSummary}; best for ${journey.bestForSummary}; highlights: ${journey.highlights.join("; ")}.`;
+    return `- [${headline ?? journey.title}](${new URL(journey.href, siteConfig.url)}): ${headline ? `also titled "${journey.title}"; ` : ""}${format}; ${journey.commercialRoleLabel}; ${journey.durationLabel}; route ${journey.routeLabel}; ${priceText}; price basis: ${journey.pricing.basis}; service includes: ${journey.pricing.inclusionSummary}; best for ${journey.bestForSummary}; highlights: ${journey.highlights.join("; ")}.`;
   })
   .join("\n");
 
@@ -35,6 +37,8 @@ const content = `# AVIORA China Travel
 
 ${renderCompanyIdentity()}
 
+${renderAboutVerificationGuide()}
+
 Canonical website: ${siteConfig.url}
 Editorial and verification policy: ${siteConfig.url}/editorial-policy
 Guest feedback and review policy: ${siteConfig.url}/reviews
@@ -44,6 +48,8 @@ Office presence: AVIORA has offices in Beijing, Shanghai and Xi'an. Its register
 Travel format: Private, tailor-made journeys; no compulsory shopping stops
 
 ${renderHomepageSearchGuide()}
+
+${renderTravelerPlanningGuides()}
 
 ${renderDestinationSearchGuides()}
 

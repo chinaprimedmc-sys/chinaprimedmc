@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackedLink } from "@/components/cta/tracked-link";
 import { getServiceCases } from "@/content/about/service-cases";
 import styles from "./service-cases.module.css";
 
@@ -68,7 +69,13 @@ export function ServiceCases() {
         </div>
         <div className={styles.nextStep}>
           <p>What would make the biggest difference to your trip?</p>
-          <Link href="/start-planning?source=about-service-cases">Tell us what matters to you</Link>
+          <TrackedLink
+            href="/start-planning?source=about-service-cases"
+            trackingLabel="Tell us what matters to you"
+            trackingPlacement="about-service-cases"
+          >
+            Tell us what matters to you
+          </TrackedLink>
           <Link href="/reviews">Explore more guest feedback</Link>
         </div>
       </div>

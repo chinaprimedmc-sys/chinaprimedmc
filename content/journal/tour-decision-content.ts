@@ -84,6 +84,7 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
       {
         title: "Booking checklist before you pay",
         paragraphs: [
+          "If adding Huanglong, compare a revised complete route rather than only an extra ticket. The [Huanglong planning guide](/destinations/huanglong) explains why a station arrival is not scenic-entrance arrival, why the actual sleeping base matters and why remaining walking after the cableway needs review. Huanglong is outside the standard seven-day Jiuzhaigou inclusions and is separately arranged and priced.",
           "Ask for the exact station or airport, train or flight number, baggage assumptions, vehicle type, meeting point and expected hotel arrival window. Confirm how passport details will be collected and corrected. Ask whether transport is ticketed, requested or still subject to schedule release. Those words describe different levels of certainty.",
           "Also confirm the contingency plan for weather or schedule disruption. A credible operator will explain which services can move, who contacts you in China and what costs might remain outside the quote. That operational clarity is more useful than a promise that nothing will change.",
         ],
@@ -172,6 +173,7 @@ export const tourDecisionArticleContent: Record<string, JournalContentBlock[]> =
       {
         title: "How the private tour should protect you",
         paragraphs: [
+          "Assess a proposed Huanglong day separately from Jiuzhaigou. Its higher main scenic route and remaining cableway connections create a different load; comfort in Jiuzhaigou does not establish suitability. Review the [Huanglong altitude, cableway and walking guide](/destinations/huanglong), the complete sleeping-elevation profile and appropriate personal medical advice. A rest day or leaving the higher park out is a valid choice.",
           "The [7-day Chengdu Panda and Jiuzhaigou private tour](/tours/chengdu-pandas-jiuzhaigou-private-7-day-tour) should be tailored from honest mobility information, not sold unchanged to every traveler. Ask for the transfer sequence, hotel area, expected park duration, essential walking and the decisions your guide can make on the day.",
           "**A good proposal is specific about limitations.** It distinguishes park shuttles from private transport, describes altitude as an individual consideration and keeps a lower-effort option available. Share medical or mobility concerns only through an appropriate private channel and seek personal medical advice where needed.",
         ],

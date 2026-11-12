@@ -93,11 +93,11 @@ const { JourneyConfigurationProvider } =
 const { itineraryProductSchema } = await import("../lib/seo/schema.ts");
 const { configuredWhatsAppHref } = await import("../lib/tours/journey-whatsapp.ts");
 const expected = {
-  "private-mutianyu-great-wall-day-tour": 249,
-  "private-shanghai-day-tour-guide-driver": 239,
-  "private-xian-terracotta-warriors-day-tour": 219,
-  "private-chengdu-panda-day-tour-early-morning": 199,
-  "guilin-yangshuo-li-river-cruise-private-day-tour": 349,
+  "private-mutianyu-great-wall-day-tour": 349,
+  "private-shanghai-day-tour-guide-driver": 349,
+  "private-xian-terracotta-warriors-day-tour": 299,
+  "private-chengdu-panda-day-tour-early-morning": 279,
+  "guilin-yangshuo-li-river-cruise-private-day-tour": 499,
   "beijing-xian-shanghai-private-10-day-tour": 3290,
   "china-at-an-easier-pace-12-day-private-tour": 4690,
   "beijing-xian-chengdu-shanghai-private-11-day-tour": 4790,
@@ -115,10 +115,11 @@ const expected = {
 };
 
 test("all 19 owner-approved rates preserve exact amounts and party bases without claiming supplier verification", () => {
-  assert.equal(journeyCatalog.length, 19);
+  assert.equal(journeyCatalog.length, 20);
+  assert.equal(journeyCatalog.filter((item) => item.pricing.fromUsd !== undefined).length, 19);
   assert.deepEqual(Object.keys(publishedJourneyPrices).sort(), Object.keys(expected).sort());
   assert.equal(verifiedPriceSlugs.size, 0);
-  for (const item of journeyCatalog) {
+  for (const item of journeyCatalog.filter((item) => item.slug in expected)) {
     assert.equal(item.pricing.fromUsd, expected[item.slug], item.slug);
     assert.equal(item.pricing.pricingUnit, "per-person");
     assert.equal(item.pricing.status, "published-from");
@@ -139,7 +140,7 @@ test("all 19 owner-approved rates preserve exact amounts and party bases without
 });
 
 test("actual server-rendered cards display only From USD xxxx as the price and retain accessible basis", () => {
-  for (const item of journeyCatalog) {
+  for (const item of journeyCatalog.filter((item) => item.slug in expected)) {
     const expectedLabel = `From USD ${expected[item.slug].toLocaleString("en-US")}`;
     const presentation = getJourneyPricePresentation(item);
     assert.equal(presentation.displayText, expectedLabel);
@@ -153,7 +154,7 @@ test("actual server-rendered cards display only From USD xxxx as the price and r
 });
 
 test("detail price renders consistently for two, four and other requested group sizes without multiplying per-person rates", () => {
-  for (const item of journeyCatalog) {
+  for (const item of journeyCatalog.filter((item) => item.slug in expected)) {
     const expectedLabel = `From USD ${expected[item.slug].toLocaleString("en-US")}`;
     for (const guests of ["2", "4", "7+"]) {
       const html = renderToStaticMarkup(
@@ -178,7 +179,7 @@ test("detail price renders consistently for two, four and other requested group 
 });
 
 test("shared route Offer and inquiry use exactly the published rate, unit and stated basis", () => {
-  for (const item of journeyCatalog) {
+  for (const item of journeyCatalog.filter((item) => item.slug in expected)) {
     const url = `https://www.chinaprimedmc.com${item.href}`;
     const offer = getJourneyStartingOffer(item, url);
     const schema = itineraryProductSchema({
@@ -211,16 +212,25 @@ test("both actual AI routes expose all approved prices and retain date-specific 
   const { GET: short } = await import("../app/llms.txt/route.ts");
   const longText = await full().text(),
     shortText = await short().text();
-  for (const item of journeyCatalog) {
+  const mutianyu = getTourBySlug("private-mutianyu-great-wall-day-tour");
+  const productBlock = longText.split(`# Product: ${mutianyu.title}\n`)[1]?.split("# Product:")[0];
+  assert.ok(productBlock, "Mutianyu has its own canonical product section");
+  assert.ok(productBlock.includes(mutianyu.overview.answer));
+  assert.ok(productBlock.includes("USD 698 for two"));
+  assert.ok(productBlock.includes("Published starting price: From USD 349 per person"));
+  for (const { question, answer } of mutianyu.faqs) {
+    assert.ok(productBlock.includes(question), question);
+    assert.ok(productBlock.includes(answer), question);
+  }
+  for (const { href } of mutianyu.planningResources) assert.ok(productBlock.includes(href), href);
+  assert.doesNotMatch(productBlock, /USD 249|USD 399|not a per-person headline/);
+  for (const item of journeyCatalog.filter((item) => item.slug in expected)) {
     const price = `From USD ${expected[item.slug].toLocaleString("en-US")}`;
     assert.ok(longText.includes(price), item.slug);
     assert.ok(shortText.includes(price), item.slug);
     assert.ok(longText.includes(item.pricing.basis));
   }
-  assert.doesNotMatch(
-    longText,
-    /Quote only; no public numerical starting price|US\$5,850|US\$23,400/,
-  );
+  assert.doesNotMatch(longText, /US\$5,850|US\$23,400/);
   assert.match(longText, /subject to written supplier confirmation/);
 });
 

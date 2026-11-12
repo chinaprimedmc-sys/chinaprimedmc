@@ -267,11 +267,11 @@ const strategyGroups: Array<{
       [
         "muslim-friendly-private-china-travel",
         "evaluate",
-        "Muslim friendly private China travel",
+        "halal meals prayer China service checklist",
         1,
       ],
-      ["women-private-china-travel", "evaluate", "women traveling in China private support", 1],
-      ["slow-paced-china-tour-for-seniors", "evaluate", "slow paced China tour for seniors", 1],
+      ["women-private-china-travel", "evaluate", "China travel support checklist for women", 1],
+      ["slow-paced-china-tour-for-seniors", "evaluate", "slow paced China travel daily comfort", 1],
       [
         "china-travel-with-elderly-parents-pacing-guide",
         "plan",
@@ -327,7 +327,7 @@ const strategyGroups: Array<{
         "is China safe for elderly travelers",
         1,
       ],
-      ["private-china-family-tour-planning", "plan", "private China family tour planning", 1],
+      ["private-china-family-tour-planning", "plan", "China family travel planning brief", 1],
     ],
   },
   {

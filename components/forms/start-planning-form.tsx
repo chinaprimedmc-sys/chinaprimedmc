@@ -40,19 +40,22 @@ export function StartPlanningForm(context: PlanningContext & { placement?: strin
 
   return (
     <div>
+      <div id="planning-hubspot" className={styles.formAnchor}>
+        <HubSpotForm
+          key={summary}
+          contextSummary={summary}
+          onContextAttached={(isAttached) => setAttachedSummary(isAttached ? summary : null)}
+        />
+      </div>
       {summary ? (
         <section className={styles.context} aria-label="Your trip notes">
-          <h3>Your trip notes</h3>
-          <p>
-            {attached
-              ? "These notes have been added to the message field. You can review and edit that message before sending."
-              : "Keep your selected journeys and preferences together. Copy these notes into your form message, or send them directly by email or WhatsApp."}
-          </p>
-          <a href="#planning-hubspot" className={styles.formJump}>
-            Continue to enquiry form <span aria-hidden="true">↓</span>
-          </a>
           <details className={styles.notesDisclosure}>
-            <summary>Review or copy your selected trip notes</summary>
+            <summary>Review trip notes</summary>
+            <p>
+              {attached
+                ? "Review and edit the notes in your message before sending."
+                : "Copy these notes into your message, or share them by email or WhatsApp."}
+            </p>
             <textarea
               ref={notes}
               value={summary}
@@ -69,17 +72,10 @@ export function StartPlanningForm(context: PlanningContext & { placement?: strin
             </div>
           </details>
           <p role="status" aria-live="polite">
-            {copyStatus}
+            {copyStatus || (attached ? "These notes have been added to the message field." : "")}
           </p>
         </section>
       ) : null}
-      <div id="planning-hubspot" className={styles.formAnchor}>
-        <HubSpotForm
-          key={summary}
-          contextSummary={summary}
-          onContextAttached={(isAttached) => setAttachedSummary(isAttached ? summary : null)}
-        />
-      </div>
     </div>
   );
 }

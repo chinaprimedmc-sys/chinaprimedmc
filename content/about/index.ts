@@ -40,6 +40,16 @@ export const aboutQuestions = [
     answer:
       "No payment is required to enquire. Share your dates, group size and priorities; we normally reply personally within 24 hours. You can review the proposed journey and written terms before deciding whether to book.",
   },
+  {
+    question: "Does a private China tour include a guide and vehicle every day?",
+    answer:
+      "Only the services listed in your itinerary and quotation are included. A private journey may combine guided sightseeing, transfers and independent time; a free day does not automatically include a guide or vehicle. Check the service hours, meeting points, admissions and city-to-city transport for each day. Local coordination does not mean a guide accompanies you continuously.",
+  },
+  {
+    question: "Can AVIORA arrange a private day tour within my own China trip?",
+    answer:
+      "Yes. Alongside multi-city journeys, AVIORA arranges private day tours and local guide or driver services around an existing trip. Tell us your hotel, travel dates, party size and the places you hope to visit. The proposal specifies whether guiding, a vehicle, transfers, tickets or meals are included; a driver arrangement is not automatically a guided tour. Availability and essential requests must be confirmed before booking.",
+  },
 ] as const;
 
 /** Editorial brand narrative grounded in the founder's letter and existing service scope. */

@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
@@ -25,8 +26,8 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
   slug: "muslim-friendly-china-tour-great-wall-desert-stars",
   visualStatus: "pending",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-08-21",
-  title: "China, From the Great Wall to Desert Stars",
+  updatedAt: "2026-11-12",
+  title: "13-Day Muslim-Friendly China Private Tour",
   subtitle:
     "Stand on the Great Wall with a private halal picnic, make noodles in Xi'an, discover Hui Muslim food traditions in northwest China and watch the stars above the desert before a final night in Shanghai.",
   duration: "13 Days / 12 Nights",
@@ -35,55 +36,93 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
   hero: {
     eyebrow: "AVIORA signature Muslim-friendly journey",
     image: pendingImage,
-    primary: { label: "Request My Private Proposal", href: "#inquiry" },
+    primary: { label: "Request My Private Proposal", href: "#enquiry" },
     secondary: { label: "See the 13-Day Route", href: "#itinerary" },
   },
   seo: {
-    title: "13-Day Muslim-Friendly Private China Tour",
+    title: "13-Day Muslim-Friendly China Private Tour",
     description:
-      "A private 13-day Muslim-friendly China tour through Beijing, Xi'an, Ningxia and Shanghai with verified dining, Silk Road culture and desert stars.",
+      "Explore Beijing, Xian, Ningxia and Shanghai on a private Muslim-friendly China tour, with dietary checks, prayer-aware planning and confirmed desert arrangements.",
     keywords: [
-      "Muslim friendly China tour",
-      "halal China tour",
-      "private Muslim China tour",
-      "China Muslim family tour",
-      "Ningxia private tour",
-      "Xi'an halal food tour",
-      "China desert stargazing tour",
+      "Muslim friendly China private tour halal food",
+      "China private tour prayer times Ramadan",
+      "Beijing Xian Ningxia halal itinerary",
+      "China desert Muslim family private tour",
     ],
+
+    preserveCopy: true,
   },
   overview: {
     pitch:
       "Over thirteen days, walk through imperial courtyards, eat beside the Great Wall, shape a clay warrior, enter Xi'an's Chinese-Islamic world, read ancient marks beneath the Helan Mountains and watch the desert turn from gold to black. Every meal, prayer-aware transition and room requirement is reviewed before confirmation.",
     facts: [
-      {
-        label: "Duration",
-        value: "13 days / 12 nights",
-        helper: "Beijing 4 nights, Xi'an 3, Ningxia 3, Zhongwei 1 and Shanghai 1.",
-      },
-      {
-        label: "Best For",
-        value: "Muslim families, couples and private groups",
-        helper: "For travelers who want iconic China without compromising food, faith or comfort.",
-      },
+      { label: "Hotels", value: "Beijing 4 · Xi’an 3 · Yinchuan area 3 · desert 1 · Shanghai 1" },
       {
         label: "Pacing",
-        value: "Balanced, with protected prayer and recovery windows",
-        helper: "One principal experience per day, with timing adapted to your group.",
+        value:
+          "Private cultural touring with prayer-aware timing; desert and intercity travel days",
+      },
+      {
+        label: "Suitable for",
+        value:
+          "Muslim travelers whose actual food, prayer, privacy and room requirements should shape a private cultural itinerary.",
+      },
+    ],
+
+    practicalities: [
+      {
+        label: "Best for",
+        value:
+          "Muslim travelers whose actual food, prayer, privacy and room requirements should shape a private cultural itinerary.",
+      },
+      {
+        label: "Nights",
+        value:
+          "Beijing 4, Xi’an 3, Yinchuan area 3, Zhongwei desert 1 and Shanghai 1: 12 hotel nights.",
+      },
+      {
+        label: "Dietary verification",
+        value:
+          "Agree your accepted evidence: certification, Muslim ownership, ingredient checks, preparation and cross-contact. These are different standards and are not treated as interchangeable.",
+      },
+      {
+        label: "Prayer planning",
+        value:
+          "Build reasonable prayer stops and Friday priorities around your stated needs, confirmed access and local conditions. A planned stop is not guaranteed entry to every mosque.",
+      },
+      {
+        label: "Domestic transport",
+        value:
+          "First-class Beijing–Xi’an rail, a practical Xi’an–Yinchuan economy flight and the confirmed Zhongwei–Shanghai routing, which may require a connection.",
       },
       {
         label: "Hotels",
-        value: "Premium city hotels and best-available desert stay",
-        helper:
-          "Rooms and occupancy confirmed for your actual party; Ningxia accommodation is date-specific.",
+        value:
+          "Premium city hotels and the strongest suitable confirmed Ningxia and desert stays; rooms, privacy requirements and exact lodge are named before booking.",
       },
       {
-        label: "Private Service",
-        value: "AVIORA Muslim Journey Standard",
-        helper:
-          "Dietary profile, meal verification, prayer-aware planning and China-based backup support.",
+        label: "Food and hosts",
+        value:
+          "Only the listed, confirmed meals and cultural sessions are included. A Great Wall picnic, kitchen host or Hui table requires an agreed location, food verification and host consent.",
+      },
+      {
+        label: "Desert and Shanghai",
+        value:
+          "One desert night precedes one Shanghai night. Stars, a particular lodge, direct flights and enough time for a departure-day city visit are not guaranteed.",
+      },
+      {
+        label: "Excluded or optional",
+        value:
+          "International flights, unlisted meals, optional photographer or specialist, private religious access and premium room or transport upgrades are separate.",
+      },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("muslim-friendly-china-tour-great-wall-desert-stars"),
       },
     ],
+
+    answer:
+      "A 13-day Muslim-friendly private China journey through Beijing, Xi’an, Yinchuan, Zhongwei and Shanghai, with 12 hotel nights. Combine the Great Wall, Terracotta Army, Hui food culture and a desert stay. Private services include a dietary and prayer profile, confirmed meals and the listed domestic connections. Halal certification, mosque access, Friday arrangements and desert activities must be checked individually; this is not a blanket religious certification.",
   },
   experienceChapters: [
     {
@@ -123,7 +162,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       description:
         "At Zhongwei, on the edge of the Tengger Desert in northwest China, the journey deliberately slows. There is no second checklist: just the dunes, changing light, dinner and the sky after dark.",
       see: "Sand meeting the Yellow River landscape, long shadows across the dunes, a clear horizon at sunset and stars when weather and sky conditions allow.",
-      do: "Walk the dune edge at your preferred level, eat an alcohol-free dinner planned to your dietary brief and stargaze with simple equipment or an available local guide.",
+      do: "Walk the dune edge at your preferred level and share an alcohol-free dinner planned to your dietary brief. Look at the night sky from the lodge if conditions allow; a telescope or astronomy guide requires a separate confirmed arrangement.",
       feel: "The rare quiet of a China journey that finally stops moving, with one night your family is likely to talk about long after returning home.",
     },
     {
@@ -133,7 +172,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       description:
         "Shanghai is a short, deliberate finale rather than another full destination compressed into a day. It lets the journey end with China's modern confidence in view.",
       see: "The Bund's historic facades facing the Pudong skyline, river traffic and, flight time permitting, the texture of a lived-in lane neighborhood.",
-      do: "Choose a concise architecture walk, a verified farewell meal or a private kitchen chapter before a protected airport transfer.",
+      do: "Keep the airport transfer as the priority. A short architecture walk depends on the flight and confirmed service window; a farewell meal or private kitchen experience can be quoted separately.",
       feel: "The contrast of thirteen days in one final frame: imperial China, Muslim China, desert China and the future-facing city across the river.",
     },
   ],
@@ -185,7 +224,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
     {
       title: "The Great Wall, with your own table in the hills",
       description:
-        "Choose a quieter Wall section and a private halal picnic or countryside table, with a family photographer available so the day belongs to your group rather than the crowd.",
+        "Choose a Wall section suited to your group and a picnic or countryside table checked against your dietary requirements. A half-day photographer can be quoted separately.",
       category: "Muslim-friendly",
       image: pendingImage,
     },
@@ -199,7 +238,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
     {
       title: "Ningxia and the desert chapter most China tours miss",
       description:
-        "Meet Hui culinary culture, read the Helan Mountain landscape and end at the Yellow River desert edge with an alcohol-free sunset dinner and stargazing.",
+        "Explore Hui food traditions and the Helan Mountain landscape, then stay beside the desert for an alcohol-free sunset dinner. Look for stars after dark when weather and light conditions allow.",
       category: "Nature",
       image: pendingImage,
     },
@@ -236,7 +275,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       title: "Imperial Beijing, at a prayer-aware pace",
       destination: "Beijing",
       summary:
-        "Read the Forbidden City as a system of power, ritual and space, then move to the Temple of Heaven and its living park culture without forcing a second heavy museum day.",
+        "Explore a focused Forbidden City route with prayer and rest breaks. A shorter Temple of Heaven visit follows only when reservations, travel time and energy permit; the final sequence should protect comfort rather than promise two exhaustive landmark tours in one day.",
       image: pendingImage,
       hotel: hotelByPlace.beijing,
       meals: ["Breakfast", "Verified meal according to your profile"],
@@ -264,7 +303,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       title: "The Great Wall, a private halal picnic and your family frame",
       destination: "Beijing",
       summary:
-        "Give the Great Wall a full day and choose the section around your walking level, crowd tolerance and season. A private halal picnic or reserved countryside table turns the landmark into a shared memory; a family photographer can quietly document the day.",
+        "Give the Great Wall a full day and choose the section around walking ability, season and practical access. The included picnic or countryside table is checked against your agreed dietary standard. A family photographer can be added at extra cost; it is not part of the base package.",
       image: pendingImage,
       hotel: hotelByPlace.beijing,
       meals: ["Breakfast", "Private halal picnic or confirmed countryside table"],
@@ -276,9 +315,9 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
             "Mutianyu, Jinshanling or another practical section is recommended around conditions, walking and crowd levels, then confirmed with your party.",
         },
         {
-          title: "Private picnic and family photography",
+          title: "A dietary-checked picnic; photography optional",
           description:
-            "Eat from a meal plan checked against your dietary brief, with a photographer available for a relaxed half-day family story rather than a staged shoot.",
+            "Share the confirmed picnic or countryside meal prepared to your agreed dietary brief. Add a half-day photographer only if it is separately quoted and accepted.",
         },
       ],
       guideNote:
@@ -421,7 +460,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       title: "Helan Mountain rock art and the northwest horizon",
       destination: "Yinchuan and Helan Mountain",
       summary:
-        "Read the rock art and dry mountain landscape as a long human record, then choose a quiet afternoon in the vineyards, river country or hotel. The day is about scale and context, not racing between distant attractions.",
+        "Explore Helan Mountain rock art and its landscape, then choose river scenery, a cultural museum or hotel rest. The afternoon is selected around your interests and comfort; alcohol-related visits are not included by default.",
       image: pendingImage,
       hotel: hotelByPlace.ningxia,
       meals: ["Breakfast", "Verified meal according to your profile"],
@@ -487,7 +526,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
         {
           title: "Sunset above the dunes",
           description:
-            "Take a private dune-edge walk or remain close to the lodge, then dine without alcohol as the desert cools.",
+            "Take a private dune-edge walk or remain close to the lodge, then share the agreed alcohol-free dinner. After dark, look for stars if weather, light and lodge access allow; astronomy equipment and specialist guiding are separate unless confirmed.",
         },
       ],
       guideNote:
@@ -496,19 +535,19 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
     },
     {
       day: 12,
-      title: "Desert stars, then a considered Shanghai finale",
+      title: "A desert morning, then fly to Shanghai",
       destination: "Zhongwei to Shanghai",
       summary:
-        "Use the clearest part of the morning for a quiet desert or Yellow River experience, then take the most practical domestic connection to Shanghai. The evening is intentionally light: a riverfront first look, hotel rest or a private dinner according to arrival time.",
+        "Take a short desert or Yellow River walk only if the flight schedule allows, then travel to Shanghai on the most practical confirmed domestic routing, which may require a connection. The evening can simply be hotel rest. A city introduction or dinner depends on actual arrival time.",
       image: pendingImage,
       hotel: hotelByPlace.shanghai,
       meals: ["Breakfast", "Verified Shanghai dinner or light arrival meal"],
       transport: "Private transfer and the most practical domestic flight routing to Shanghai",
       activities: [
         {
-          title: "Stargazing or sunrise farewell",
+          title: "A short desert morning, flight time permitting",
           description:
-            "A local astronomy guide, telescope or simple unhurried sky watch can be arranged only where conditions and the lodge support it; otherwise the dawn landscape carries the moment.",
+            "Take a short walk near the lodge only if there is time before the confirmed airport transfer. The departure time takes priority over a sunrise outing.",
         },
         {
           title: "Shanghai arrival without a forced checklist",
@@ -517,7 +556,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
         },
       ],
       guideNote:
-        "Stargazing depends on weather, light pollution and lodge operations. Transport is selected and quoted around the travel date.",
+        "Flight routing, baggage and airport transfer times are confirmed for the travel date. Do not assume a direct flight or a usable Shanghai sightseeing window.",
       coordinates: { latitude: 31.2304, longitude: 121.4737 },
     },
     {
@@ -525,16 +564,16 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
       title: "Shanghai's modern China, then a protected departure",
       destination: "Shanghai",
       summary:
-        "Close the journey with one readable modern-China chapter: the Bund and Pudong skyline, a design-led lane walk or a private market-to-table experience. Your departure transfer is timed around the confirmed flight, with no risky sightseeing added before the airport.",
+        "Keep the final morning for breakfast and a private airport transfer. A short Bund or neighborhood visit is possible only when flight timing allows and the service is confirmed. A private kitchen finale or an extended city program requires a separate arrangement.",
       image: pendingImage,
-      hotel: hotelByPlace.shanghai,
+
       meals: ["Breakfast", "Optional verified farewell meal"],
       transport: "Private airport transfer and departure support",
       activities: [
         {
           title: "A final Shanghai perspective",
           description:
-            "Choose riverfront architecture, a neighborhood story or a private kitchen finale that reflects what your group most enjoyed in China.",
+            "A brief riverfront or neighborhood visit is possible only within the confirmed service window and departure buffer. A private kitchen finale needs its own quote and enough time; it is not part of the standard departure morning.",
         },
         {
           title: "Departure handover",
@@ -559,7 +598,7 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
         "4-night continuity",
         "Prayer-aware timing",
         "Quiet-room request",
-        "Two-room basis",
+        "Rooms confirmed for your party",
       ],
       image: pendingImage,
     },
@@ -619,13 +658,13 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
     },
   ],
   included: [
-    "12 nights in selected premium city hotels plus the strongest date-specific Ningxia and desert accommodation, with rooms and occupancy confirmed for your actual party",
+    "Twelve hotel nights in total: Beijing 4, Xi'an 3, Yinchuan area 3, desert lodge 1 and Shanghai 1, with properties, rooms and occupancy confirmed for your party",
     "Daily hotel breakfast and the private or hosted meals specifically stated in the written proposal",
     "Private multilingual guides, private vehicles and airport or station handovers on confirmed touring days",
     "First-class Beijing–Xi'an high-speed rail, an economy flight from Xi'an to Yinchuan when practical, and the best available flight routing from Zhongwei to Shanghai",
     "Confirmed entrance tickets and listed site transport arrangements",
     "AVIORA Muslim Journey Standard: dietary and prayer profile, meal verification, Friday planning where relevant, room requirements and China-based backup support",
-    "Great Wall private picnic or countryside table, family photographer option, Xi'an clay studio, halal noodle or paomo workshop and Ningxia or desert hosted experiences as confirmed",
+    "Great Wall picnic or countryside table, Xi'an clay studio, halal noodle or paomo workshop and the listed Ningxia or desert hosted experiences as confirmed; a photographer is an optional extra",
     "Alcohol-free meal planning where requested and no compulsory shopping stops",
   ],
   excluded: [
@@ -728,98 +767,175 @@ export const muslimFriendlyChinaDesert13DayTour: Tour = {
   gallery: [],
   faqs: [
     {
-      question: "Where are Ningxia, Yinchuan and Zhongwei?",
-      answer:
-        "Ningxia is a region in northwest China known for Hui Muslim culture, the Yellow River and dry mountain-and-desert landscapes. Yinchuan is its capital and your base for three nights. Zhongwei lies about 200 kilometers south, where the Yellow River meets the edge of the Tengger Desert. You reach Ningxia after Xi'an and continue from the desert to Shanghai.",
+      question: "What does this private tour cost, and what is the starting-price basis?",
+      answer: getPublishedPriceDisclosure("muslim-friendly-china-tour-great-wall-desert-stars"),
     },
     {
-      question:
-        "How should we arrange international flights from Europe, the USA or Southeast Asia?",
+      question: "Does Muslim-friendly mean every meal is certified halal?",
       answer:
-        "Book an open-jaw journey arriving in Beijing and departing from Shanghai; you do not need to return to Beijing. International flights are not included in the price. Share your preferred gateway flights before ticketing and AVIORA will shape the first and final days around the actual arrival, departure and terminal, including private airport pickup and drop-off. One-stop options are common from many European and US cities, while many Southeast Asian hubs have direct links to Beijing and Shanghai; schedules depend on your city and travel date.",
+        "No blanket certification is claimed. Before booking, agree what evidence you require: recognized certification, Muslim ownership, ingredient sourcing, preparation or separation from pork and alcohol. The team records what can actually be checked for each confirmed meal and explains gaps. You decide whether the available arrangements meet your requirements.",
     },
     {
-      question: "Is this suitable for a first trip to China?",
+      question: "Can you plan around prayer times and Friday prayer?",
       answer:
-        "Yes. Beijing, the Great Wall, Xi'an's Terracotta Warriors and Shanghai give first-time visitors China's essential contrasts. Ningxia and the desert add the part most standard first trips miss: living Hui Muslim food culture, northwest landscapes and a night beneath open sky. Private guides and managed transfers mean you do not need previous China travel experience or Chinese-language skills.",
+        "Share your prayer needs and any Friday priority before the route is finalized. We review timing, travel segments, local access and suitable stops rather than guarantee every named mosque is open to visitors. Exact prayer arrangements are confirmed for the date; guide assistance does not override a religious institution’s rules.",
     },
     {
-      question: "What does the price include?",
+      question: "Can the trip be adapted for Ramadan?",
       answer:
-        "Your written proposal is priced for your own party and dates, and includes the 12 nights, private guides and vehicles, first-class Beijing–Xi'an rail, domestic flights and transfers named in your proposal, planned verified meals and the listed private experiences as confirmed in writing.",
+        "Yes, as a specific redesign. Fasting hours, early food access, iftar, long transfers, heat and activity levels need a coordinated plan. Ordinary hotel breakfast hours may not meet your needs, and the standard daily menu is not a Ramadan promise. Tell us your dates and requirements before accepting the quote.",
     },
     {
-      question: "What exactly do you mean by Muslim-friendly?",
+      question: "Are hotel breakfasts halal and alcohol-free?",
       answer:
-        "We use the term operationally, not as a vague label. Before pricing we record your dietary rules, allergies, prayer practice, Friday needs, room setup, preferred guide gender where possible and comfort with local encounters. We distinguish halal-certified, Muslim-owned, no-pork and vegetarian options, then reconfirm the actual suppliers for your dates.",
+        "Not automatically. A hotel buffet may serve pork or alcohol elsewhere even if some dishes are suitable. Tell us whether you need certification, a separate preparation arrangement or an alternative meal. Alcohol-free meal planning on request is not a claim that every hotel or kitchen is alcohol-free.",
     },
     {
-      question: "Will every meal be halal-certified?",
+      question: "Does the Great Wall picnic include a photographer?",
       answer:
-        "Not automatically, because halal certification and kitchen practice vary by city and venue. Your written proposal will identify what is halal-certified, Muslim-owned, no-pork or vegetarian, and any meal that requires a specific caveat. We never describe a meal as certified without checking the venue's actual status.",
+        "The confirmed picnic or countryside table is part of the selected food plan. A photographer is an option unless explicitly included in writing. Food sourcing, location, seating, permits if applicable, weather alternative and any photo session need distinct confirmation. The arrangement does not grant exclusive use of the Wall.",
     },
     {
-      question: "Can you plan prayer times and Friday prayer?",
+      question: "Will we visit a private home or enter prayer halls?",
       answer:
-        "Yes. We plan prayer-aware transitions, identify practical prayer options near the route and flag Friday timing in the pre-trip brief. A specific mosque, prayer room or access arrangement is only promised after it is checked for the date and confirmed respectfully in writing.",
+        "Only with the host or institution’s consent and date-specific confirmation. A Hui cultural table may use a suitable public or hosted setting rather than a private home. Religious visit areas and worship areas may have different rules. Neither cultural interest nor a tour payment establishes access.",
     },
     {
-      question: "Is the desert hotel a five-star international hotel?",
+      question: "Is Ningxia the same destination as Xinjiang?",
       answer:
-        "Not necessarily. Ningxia and the desert have a smaller premium accommodation base than Beijing or Shanghai. We assess the best available property for your dates and state its actual room, heating or cooling, dining and access standard before you book, rather than presenting it as an urban international five-star equivalent.",
+        "No. This route visits the Ningxia Hui Autonomous Region, including the Yinchuan and Zhongwei chapters. Xinjiang is a different region and is not included. The journey focuses on the confirmed local hosts, food and landscape, without treating every Muslim community or practice as identical.",
     },
     {
-      question: "Are private homes, mosque access or named local hosts guaranteed?",
+      question: "Does the desert stay guarantee stars, camels or a private camp?",
       answer:
-        "No. We do not promise private homes, named specialists, exclusive mosque access or a host before consent and date-specific confirmation. Hosted encounters are fairly compensated and replaced with a suitable equivalent only after you approve the change.",
+        "No. The quoted lodge, room and listed activities are confirmed individually. Cloud, weather, safety and light conditions affect the night sky. Camel rides, off-road activities, a private camp or an astronomy specialist are not assumed. An alcohol-free dinner still requires the agreed food-verification process.",
     },
     {
-      question: "Can families with children or older parents take this route?",
+      question: "Is there a direct flight from Zhongwei to Shanghai?",
       answer:
-        "Yes, if the group is comfortable with several intercity transitions and one desert night. Private timing, room setup, walking distance and meal choices can be adapted; Helan Mountain, historic sites and desert terrain still involve uneven ground, steps or weather exposure and are reviewed before confirmation.",
+        "Do not assume one. The itinerary uses the most practical confirmed routing for your dates, potentially with a connection. This affects the usable time in Shanghai. The proposal names the flights, baggage and transfers; the final city visit is offered only if the onward international departure leaves a reliable margin.",
     },
     {
-      question: "Why is Ningxia included instead of adding Chengdu or Zhangjiajie?",
+      question: "Can you guarantee no pork or alcohol contact in every kitchen?",
       answer:
-        "Ningxia gives the journey a clear and uncommon point of difference: living Hui culture, northwest landscapes, Helan Mountain and the Yellow River desert edge. It is designed for travelers who want China beyond the standard Beijing–Xi'an–Shanghai circuit and are willing to value depth over another headline attraction.",
-    },
-    {
-      question: "Can we extend Shanghai to 14 days?",
-      answer:
-        "Yes. A second Shanghai night is the recommended extension when your international flight timing, food interests or desire for a gentler finale justify it. We can add a private kitchen, design or neighborhood chapter without compressing the desert transition.",
+        "Only the preparation arrangement actually verified and accepted in the written plan can be promised. If a kitchen cannot demonstrate your required separation or certification, we should identify that limitation and discuss another option. Dietary planning is valuable precisely because a generic halal label does not answer every traveler’s needs.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
-        title: "China, Considered: Beijing, Xi'an & Shanghai",
+        title: "12-Day Private China Tour at an Easier Pace",
         description:
-          "A premium first-China route for travelers who want the classic capitals with a measured pace.",
-        tags: ["First-time China", "Luxury", "Private"],
-        image: pendingImage,
+          "Consider the simpler three-city route with separately checked dietary and prayer arrangements, without the Ningxia and desert chapters.",
+        tags: ["First-time China", "Senior-friendly", "Luxury"],
+        image: {
+          src: "/tours/first-china-beautifully-paced/beijing-great-wall-couple.webp",
+          alt: "Two travelers beside the Great Wall and wooded hills near Beijing",
+          width: 1280,
+          height: 1920,
+        },
         route: "Beijing · Xi'an · Shanghai",
         duration: "12 days / 11 nights",
         href: "/tours/china-at-an-easier-pace-12-day-private-tour",
       },
       {
-        title: "Yunnan, Along the Tea Horse Road",
-        description: "A cultural highland journey through Dali, Shaxi, Lijiang and Shangri-La.",
-        tags: ["Culture", "Nature", "Boutique"],
-        image: pendingImage,
+        title: "10-Day Luxury Yunnan Private Tour",
+        description:
+          "Consider a regional cultural journey if tea, artisans and Yunnan are your priority; dietary arrangements need their own review.",
+        tags: ["Luxury", "Culture", "Nature"],
+        image: {
+          src: "/tours/luxury-yunnan-private-tour/jade-dragon.jpg",
+          alt: "Jade Dragon Snow Mountain rising above northwest Yunnan",
+          width: 1920,
+          height: 864,
+          objectPosition: "center 45%",
+        },
         route: "Dali · Shaxi · Lijiang · Shangri-La",
         duration: "10 days / 9 nights",
         href: "/tours/luxury-yunnan-private-tour",
       },
     ],
+
     destinations: [],
   },
   inquiry: {
     emailHref:
       "mailto:chinaprimedmc@gmail.com?subject=Muslim-friendly%20China%20Desert%20Stars%20Proposal&body=Hello%20AVIORA%2C%0A%0AI%27d%20like%20a%20private%20proposal%20for%20China%2C%20From%20the%20Great%20Wall%20to%20Desert%20Stars.%0A%0ATravel%20dates%20or%20month%3A%0ATravellers%20(adults%20%2F%20children)%3A%0ARooms%20and%20bed%20setup%3A%0ADietary%20and%20halal%20requirements%3A%0APrayer%20or%20Friday%20planning%3A%0AOther%20needs%3A%0A",
     whatsappHref:
-      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%27d%20like%20a%20private%20proposal%20for%20China%2C%20From%20the%20Great%20Wall%20to%20Desert%20Stars.%20We%20are%20considering%20four%20guests%20and%20two%20rooms.%20Please%20advise%20on%20verified%20meals%2C%20prayer-aware%20timing%2C%20Ningxia%20and%20desert%20accommodation.",
+      "https://wa.me/8618027438191?text=Hello%20AVIORA%2C%20I%20am%20interested%20in%20your%2013-Day%20Muslim-Friendly%20China%20Private%20Tour.%20Our%20travelers%3A%20__.%20Dates%3A%20__.%20Rooms%3A%20__.%20Please%20recommend%20the%20right%20service%20plan%20and%20quote%20for%20our%20actual%20party.",
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in the 13-day Muslim-friendly China journey from the Great Wall to desert stars. Please advise on verified meals, prayer-aware planning, hotels and a private quote for our group.",
+  },
+
+  planningResources: [
+    {
+      label: "The Palace Museum: official visitor information",
+      href: "https://intl.dpm.org.cn/visit.html",
+      officialPublisher: "The Palace Museum",
+      description:
+        "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+    },
+    {
+      label: "Terracotta Army: official museum ticketing",
+      href: "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+      officialPublisher: "Emperor Qinshihuang’s Mausoleum Site Museum",
+      description:
+        "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access.",
+    },
+    {
+      label: "China Railway 12306: passenger information",
+      href: "https://www.12306.cn/en/faq.html",
+      officialPublisher: "China Railway 12306",
+      description:
+        "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+    },
+    {
+      label: "China entry requirements: official information",
+      href: "https://en.nia.gov.cn/",
+      officialPublisher: "National Immigration Administration of China",
+      description:
+        "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+    },
+    {
+      label: "UNESCO: The Great Wall",
+      href: "https://whc.unesco.org/en/list/438/",
+      officialPublisher: "UNESCO World Heritage Centre",
+      description:
+        "World Heritage background only; not evidence of halal certification, private access or a picnic operating permission.",
+    },
+  ],
+
+  faqLimit: 13,
+
+  inquiryChecklist: [
+    "Dates, travelers, rooms and arrival / departure details",
+    "Required dietary evidence, ingredients and kitchen separation",
+    "Prayer timing, Friday and Ramadan considerations",
+    "Desert comfort, privacy and walking needs",
+    "Whether to quote an optional photographer",
+  ],
+
+  comparison: {
+    title: "A dedicated Muslim-friendly route or adaptations to a classic tour?",
+    intro:
+      "Choose the Ningxia and desert route when Hui culture and faith-aware operating detail are central to the journey.",
+    columns: ["Decision", "This thirteen-day route", "Classic three-city route"],
+    rows: [
+      ["Regions", "Beijing, Xi’an, Ningxia, desert and Shanghai", "Beijing, Xi’an and Shanghai"],
+      [
+        "Dining process",
+        "Explicit dietary evidence and preparation brief",
+        "Dietary adaptations checked on request",
+      ],
+      [
+        "Travel pattern",
+        "More regions, flights and hotel changes",
+        "A shorter route with two hotel changes",
+      ],
+    ],
+    href: "/tours/beijing-xian-shanghai-private-10-day-tour",
+    linkLabel: "Compare the alternative itinerary",
   },
 };

@@ -1,0 +1,431 @@
+{
+  "checkedAt": "2026-11-12",
+  "scope": "Local editorial records and registered guides; not a complete official city reconciliation or live search audit",
+  "guides": 193,
+  "candidates": 595,
+  "coveredCandidates": 195,
+  "pendingInInventory": 400,
+  "additionalCityRecordOmissions": 33,
+  "identifiedBacklogIncludingCitySamples": 433,
+  "cityOmissions": [
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "新泰",
+      "slug": "xintai",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "肥城",
+      "slug": "feicheng",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "莱州",
+      "slug": "laizhou",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "莱西",
+      "slug": "laixi",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "平度",
+      "slug": "pingdu",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "胶州",
+      "slug": "jiaozhou",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "海阳",
+      "slug": "haiyang",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "莱阳",
+      "slug": "laiyang",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shandong",
+      "provinceZh": "山东",
+      "nameZh": "招远",
+      "slug": "zhaoyuan",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "新密",
+      "slug": "xinmi",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "荥阳",
+      "slug": "xingyang",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "邓州",
+      "slug": "dengzhou",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "禹州",
+      "slug": "yuzhou",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "长葛",
+      "slug": "changge",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "灵宝",
+      "slug": "lingbao",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "项城",
+      "slug": "xiangcheng",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "义马",
+      "slug": "yima",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "舞钢",
+      "slug": "wugang",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "孟州",
+      "slug": "mengzhou",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "沁阳",
+      "slug": "qinyang",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "辉县",
+      "slug": "huixian",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Henan",
+      "provinceZh": "河南",
+      "nameZh": "卫辉",
+      "slug": "weihui",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shanxi",
+      "provinceZh": "山西",
+      "nameZh": "高平",
+      "slug": "gaoping",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shanxi",
+      "provinceZh": "山西",
+      "nameZh": "怀仁",
+      "slug": "huairen",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shanxi",
+      "provinceZh": "山西",
+      "nameZh": "永济",
+      "slug": "yongji",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Shanxi",
+      "provinceZh": "山西",
+      "nameZh": "河津",
+      "slug": "hejin",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Jiangxi",
+      "provinceZh": "江西",
+      "nameZh": "丰城",
+      "slug": "fengcheng",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Jiangxi",
+      "provinceZh": "江西",
+      "nameZh": "樟树",
+      "slug": "zhangshu",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Jiangxi",
+      "provinceZh": "江西",
+      "nameZh": "高安",
+      "slug": "gaoan",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Jiangxi",
+      "provinceZh": "江西",
+      "nameZh": "贵溪",
+      "slug": "guixi",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Jiangxi",
+      "provinceZh": "江西",
+      "nameZh": "德兴",
+      "slug": "dexing",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Jiangxi",
+      "provinceZh": "江西",
+      "nameZh": "瑞昌",
+      "slug": "ruichang",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    },
+    {
+      "province": "Jiangxi",
+      "provinceZh": "江西",
+      "nameZh": "共青城",
+      "slug": "gongqingcheng",
+      "status": "missing-inventory-record-and-dedicated-guide",
+      "administrativeVerification": "Pending dated official register reconciliation; editorial sample only",
+      "currentStatus": "in-inventory-awaiting-guide-and-official-register-reconciliation"
+    }
+  ],
+  "travelEntityScopeReview": [
+    {
+      "provinceZh": "云南",
+      "nameZh": "福贡",
+      "slug": "fugong",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "贡山",
+      "slug": "gongshan",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "独龙江",
+      "slug": "dulongjiang",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "茨中",
+      "slug": "cizhong",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "雨崩",
+      "slug": "yubeng",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "普者黑",
+      "slug": "puzhehei",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "坝美",
+      "slug": "bamei",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "巍山",
+      "slug": "weishan",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "鹤庆",
+      "slug": "heqing",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "剑川",
+      "slug": "jianchuan",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "云南",
+      "nameZh": "白沙",
+      "slug": "baisha",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "浙江",
+      "nameZh": "南浔",
+      "slug": "nanxun",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page",
+      "currentStatus": "registered-guide-complete-local-only"
+    },
+    {
+      "provinceZh": "福建",
+      "nameZh": "蟳埔",
+      "slug": "xunpu",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "福建",
+      "nameZh": "惠安",
+      "slug": "huian",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "广西",
+      "nameZh": "程阳",
+      "slug": "chengyang",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "贵州",
+      "nameZh": "榕江",
+      "slug": "rongjiang",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "贵州",
+      "nameZh": "加榜梯田",
+      "slug": "jiabang",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    },
+    {
+      "provinceZh": "贵州",
+      "nameZh": "雷公山",
+      "slug": "leigongshan",
+      "status": "No separate candidate ID; review aliases, parent coverage and independent search intent before adding a page"
+    }
+  ],
+  "excludedFalsePositive": "Longji is already listed as longji-rice-terraces; short-slug absence is not an omission.",
+  "integrationUpdate": {
+    "date": "2026-11-12",
+    "citySamplesAddedToInventory": 33,
+    "nanxunGuideCompleted": true,
+    "currentGuides": 194,
+    "currentCandidates": 629,
+    "currentCovered": 196,
+    "currentPending": 433,
+    "note": "Original discovery fields above are historical. Do not add 33 again to current pending count. Other 17 travel-entity candidates need scope review."
+  }
+}

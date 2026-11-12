@@ -1,3 +1,4 @@
+import { expandedDestinationGuides } from "./expansion";
 /** Decision-led destination editing. Only add guides after product and article links are checked. */
 export type DestinationPlanningGuide = {
   title: string;
@@ -11,6 +12,7 @@ export type DestinationPlanningGuide = {
   sightseeingQuestion: string;
   sightseeingAnswer: string;
   visitorResources: Array<{ label: string; href: string; scope: string }>;
+  mediaCredits?: Array<{ label: string; href: string; license: string; licenseHref: string }>;
   serviceScope: string;
   routeAdvice: string;
   routeHeading?: string;
@@ -30,6 +32,8 @@ export type DestinationPlanningGuide = {
 };
 
 export const destinationPlanningGuides: Record<string, DestinationPlanningGuide> = {
+  ...Object.fromEntries(expandedDestinationGuides.map((guide) => [guide.id, guide.planning])),
+
   beijing: {
     practicalPlanning: {
       timing:
@@ -189,6 +193,16 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
     ],
     connections: [
       {
+        slug: "chengde",
+        advice:
+          "Chengde adds the Qing court's Mountain Resort landscape and distinct outlying temples. Allow a separate stay for estate and temple days, with route choices matched to walking and stairs. A Jinshanling stop changes the road sequence and physical demands; it is not automatically included in the city connection.",
+      },
+      {
+        slug: "tianjin",
+        advice:
+          "Tianjin adds trading-city architecture, Haihe riverfront time and a different northern food tradition. Compare a focused rail day trip with an overnight for a particular hotel and evening. Protect Beijing's main sightseeing days and check both exact stations; Binhai and cruise-port transfers need a separate plan.",
+      },
+      {
         slug: "xian",
         advice:
           "Add Xi’an for the Terracotta Army and the history of China’s earlier capitals. Compare the actual rail or flight schedule and protect time for the station or airport transfer; the travel day should not also carry a full sightseeing program.",
@@ -304,6 +318,19 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
     ],
     products: [
       {
+        slug: "guilin-yangshuo-longji-private-5-day-tour",
+        comparison: {
+          bestFor: "A complete five-day regional journey with four hotel nights.",
+          localPlan:
+            "Two Guilin nights, a separate Longji day, a shared Li River cruise and two Yangshuo nights.",
+          importantChoice:
+            "Review Longji steps, actual hotel locations and your exact departure point; quote confirmed for your dates.",
+        },
+        label: "Explore five days in Guilin, Yangshuo and Longji",
+        reason:
+          "Add four hotel nights, a dedicated terrace excursion, Yangshuo countryside time and arrival and departure transfers. Your guide and road services are private; the cruise is shared. Hotels, tickets, walking and price are confirmed in writing.",
+      },
+      {
         slug: "guilin-yangshuo-li-river-cruise-private-day-tour",
         comparison: {
           bestFor: "A Li River cruise day within a trip you have already planned.",
@@ -329,6 +356,22 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
       },
     ],
     connections: [
+      {
+        slug: "longji-rice-terraces",
+        advice:
+          "Longji needs its own mountain-road journey and a choice between Ping’an and Dazhai/Jinkeng. Compare a focused day visit with one or two village nights, checking field conditions, final hotel steps and luggage. The Li River cruise day does not include the terraces.",
+      },
+      {
+        slug: "sanjiang",
+        advice:
+          "Sanjiang adds Chengyang's Dong village architecture and covered bridge as a separate cultural stay. Allow useful local nights, a suitable room and the complete dated connection from Guilin or Yangshuo. Existing Guilin tours do not automatically include Chengyang, village hosts or performances; compare this extension with a separate Zhaoxing stay.",
+      },
+      {
+        slug: "daxin",
+        advice:
+          "Daxin offers Detian Waterfall and a separately chosen Mingshi countryside property in another part of Guangxi. Compare the full transfer and meaningful contrast before adding a second karst stay. Existing Li River and Yangshuo products do not include Daxin hotels, boats or border-related arrangements by default.",
+      },
+
       {
         slug: "shanghai",
         advice:
@@ -493,6 +536,11 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
       },
     ],
     connections: [
+      {
+        slug: "yinchuan",
+        advice:
+          "Continue to Yinchuan for a different northwestern chapter: Helan rock art, Western Xia history and Hui food culture. The Muslim-friendly China route uses three Yinchuan-area nights before a separate Zhongwei desert night. Compare the actual flight or rail schedule and hotel transfers; a regional connection is not an extra full sightseeing day.",
+      },
       {
         slug: "beijing",
         advice:
@@ -665,6 +713,21 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
       },
     ],
     connections: [
+      {
+        slug: "shengsi",
+        advice:
+          "Shengsi adds a sea escape with Sijiao and Shengshan–Gouqi as different bases. Allow the mainland road, actual sailing and island hotel transfer, with a separate return plan before fixed flights. Existing Shanghai tours do not include these ferries or rooms unless explicitly stated; choose useful island nights rather than a rushed photographic detour.",
+      },
+      {
+        slug: "hangzhou",
+        advice:
+          "Add Hangzhou for West Lake, Longjing tea and a different hotel setting. Compare a focused day trip with two or three nights, including station-to-hotel transfers. This extension is separately planned and is not an automatic addition to a Shanghai day tour or published multi-city route.",
+      },
+      {
+        slug: "suzhou",
+        advice:
+          "Choose Suzhou for classical gardens and canal neighborhoods. A selective day trip can work, while an overnight stay adds local evening time. Confirm the actual rail stations and garden reservations; Tongli or Zhouzhuang needs a separate decision rather than being added to every city visit.",
+      },
       {
         slug: "beijing",
         advice:
@@ -840,6 +903,57 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
     ],
     connections: [
       {
+        slug: "mount-emei",
+        advice:
+          "Mount Emei adds a Buddhist mountain chapter with Golden Summit or selected lower temples. Protect useful local nights, review the full bus, cableway and walking chain, and compare actual sleeping elevation and rooms. Existing Chengdu products do not automatically include Emei accommodation, admission or scenic transport.",
+      },
+      {
+        slug: "dujiangyan",
+        advice:
+          "Dujiangyan adds a working water-heritage chapter northwest of the city. Compare the full outing, public route, bridge and step demands with a local overnight or separate Qingcheng day. A panda facility in the Dujiangyan area is a distinct destination and does not establish an included irrigation-system visit.",
+      },
+      {
+        slug: "guanghan",
+        advice:
+          "Guanghan's Sanxingdui Museum adds a focused ancient-Shu chapter beyond Chengdu's city and panda interests. Protect substantial gallery time, breaks and the full return rather than combine it with Leshan. The 12-day family journey offers it as one Chengdu choice-day option; other Chengdu products do not automatically include it.",
+      },
+      {
+        slug: "mianzhu",
+        advice:
+          "Mianzhu adds a specific New Year picture and printmaking interest north of Chengdu. Confirm whether the visit is museum interpretation, a studio demonstration or practical teaching, then compare the complete road and local room options. Existing Chengdu itineraries do not automatically include Mianzhu hosts or classes.",
+      },
+      {
+        slug: "qionglai",
+        advice:
+          "Qionglai adds Pingle, a confirmed tea visit or selected ceramic heritage southwest of the central city. Choose one lead subject for a day trip, or two or three nights for a rural chapter and separate mountain interest. Existing Chengdu itineraries do not automatically include Qionglai hosts, rooms or Tiantai routes.",
+      },
+      {
+        slug: "chongzhou",
+        advice:
+          "Choose Chongzhou for a defined Daoming bamboo-craft visit, Jiezi walk or settled countryside stay. A focused day trip can keep your Chengdu room; two local nights create one full day. Confirm the actual host and teaching format rather than substitute a shopping stop. Existing Chengdu tours do not automatically include this extension.",
+      },
+      {
+        slug: "langzhong",
+        advice:
+          "Langzhong adds a smaller historic river-town stay with courtyard streets, Zhang Fei commemoration and examination history. Allow useful nights and check the bedroom, noise and luggage access. Compare the full dated train or road journey rather than treat this as a short panda-day add-on. Existing Chengdu products do not include the extension.",
+      },
+      {
+        slug: "danba",
+        advice:
+          "Danba provides a distinct village-and-tower chapter through a substantial western Sichuan road journey. Compare the actual room, village approach and complete pass and sleeping-altitude profile. A Chengdu city or panda product does not include Danba accommodation or private hosts by default.",
+      },
+      {
+        slug: "mount-siguniang",
+        advice:
+          "Mount Siguniang requires a separately assessed highland stay and road journey. Choose the actual valley, maximum and sleeping elevations, walking and individual suitability. A shuttle-assisted day remains a high-altitude visit, and existing Chengdu products do not automatically include this extension.",
+      },
+
+      {
+        slug: "qingcheng-mountain",
+        advice:
+          "Choose Qingcheng for Daoist heritage and forest walking, or a separate resort stay. Compare a city-based excursion with two or three nights nearby; the published retreat protects seven consecutive mountain-area nights. Review the actual stairs, hotel address and quiet-day service before choosing.",
+      },
+      {
         slug: "leshan",
         advice:
           "Choose Leshan for the Giant Buddha and its river setting if the extra journey suits your interests and mobility. Keep it separate from the panda morning, and confirm the walking or boat-view plan rather than assuming both are always available.",
@@ -976,6 +1090,11 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
     ],
     connections: [
       {
+        slug: "langzhong",
+        advice:
+          "Langzhong provides a quieter Sichuan old-town contrast to Chongqing's steep urban riverfronts. Give the lanes and selected interiors a useful full day, with an assessed room and a verified onward connection. It is a separate overnight chapter, not a neighborhood excursion or an included stop on existing Chongqing tours.",
+      },
+      {
         slug: "chengdu",
         advice:
           "Pair Chongqing with Chengdu for pandas, tea and a different Sichuan city experience. Compare confirmed rail times and stations, and include hotel transfers at both ends. Avoid turning the transfer into a full panda morning plus a long Chongqing night tour.",
@@ -1104,6 +1223,11 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
       },
     ],
     connections: [
+      {
+        slug: "mount-emei",
+        advice:
+          "Mount Emei adds a distinct Buddhist mountain and forest stay. The shared UNESCO property does not create a combined entrance or remove the full transfer. Allow useful Emei nights and review summit transport, steps and sleeping altitude; a Leshan itinerary does not automatically include the mountain.",
+      },
       {
         slug: "chengdu",
         advice:
@@ -1242,6 +1366,11 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
       },
     ],
     connections: [
+      {
+        slug: "huanglong",
+        advice:
+          "Huanglong adds a separate high-altitude travertine landscape, not another section of Jiuzhaigou. Review its actual cableway connection, remaining walking, full road journey and sleeping elevations before choosing it. It is not included in the published seven-day route; any addition is separately arranged and priced.",
+      },
       {
         slug: "chengdu",
         advice:
@@ -1397,6 +1526,11 @@ export const destinationPlanningGuides: Record<string, DestinationPlanningGuide>
       },
     ],
     connections: [
+      {
+        slug: "changsha",
+        advice:
+          "Changsha adds a different Hunan chapter through Mawangdui discoveries, Yuelu learning history and regional food. Give it useful city nights and a confirmed museum plan, then compare dated trains and both hotel transfers. The published Zhangjiajie products do not automatically include Changsha rooms, sightseeing or this extension.",
+      },
       {
         slug: "chongqing",
         advice:

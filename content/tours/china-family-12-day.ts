@@ -1,4 +1,4 @@
-import { publishedJourneyPrices } from "@/content/tours/published-prices";
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import {
   beijingUnhurriedAsset,
   chengduAsset,
@@ -17,8 +17,8 @@ const hotelByCity = {
 export const chinaFamily12DayTour: Tour = {
   slug: "china-family-tour-with-pandas-12-day-private-tour",
   publishedAt: "2026-08-19",
-  updatedAt: "2026-08-19",
-  title: "China, Made for Families: Great Wall, Warriors & Pandas",
+  updatedAt: "2026-11-12",
+  title: "12-Day Private China Family Tour with Pandas",
   subtitle:
     "For children, China becomes a story they can enter. For parents, it becomes a journey they do not have to manage.",
   duration: "12 Days / 11 Nights",
@@ -28,66 +28,94 @@ export const chinaFamily12DayTour: Tour = {
     eyebrow: "AVIORA flagship private family journey",
     image: chinaFamilyAsset.hero,
     primary: { label: "Explore the 12 Days", href: "#itinerary" },
-    secondary: { label: "Design Our Family Journey", href: "#inquiry" },
+    secondary: { label: "Design Our Family Journey", href: "#enquiry" },
   },
   seo: {
     title: "12-Day Private China Family Tour with Pandas",
     description:
-      "A premium 12-day private China family tour through Beijing, Xi'an, Chengdu and Shanghai, with pandas, the Great Wall, hands-on culture and protected downtime.",
+      "Visit Beijing, Xian, Chengdu and Shanghai in 12 days with private family guides, pandas, hands-on workshops and five-star hotels. Check the age and room basis.",
     keywords: [
-      "12 day China family tour",
-      "private China tour with pandas",
-      "China family holiday with kids",
-      "luxury China family tour",
-      "Great Wall Terracotta Warriors panda tour",
-      "Beijing Xi'an Chengdu Shanghai family itinerary",
+      "private China family tour with pandas 12 days",
+      "China family tour two rooms",
+      "China tour with kids private guide",
+      "Great Wall family photographer tour",
+      "China family holiday first class train",
     ],
+
+    preserveCopy: true,
   },
   overview: {
     pitch:
       "A private four-city journey engineered for parents, children aged 6–17 and grandparents: one clear daily highlight, hands-on cultural encounters and active coordination of room configuration, private transport, mobility pace and changing family energy. Rest buffers and practical handovers are built into the route so parents can travel with their family rather than manage it.",
     facts: [
+      { label: "Hotels", value: "Selected five-star family hotels; two-room starting basis" },
+      { label: "Pacing", value: "Family-paced with active site days and protected rest" },
       {
-        label: "Duration",
-        value: "12 days / 11 nights",
-        helper: "Beijing 4 nights, Xi'an 2 nights, Chengdu 3 nights and Shanghai 2 nights.",
+        label: "Suitable for",
+        value:
+          "Families with children aged 6–17 who want cultural participation and planned downtime; the price example uses ages 6–11.",
+      },
+    ],
+
+    practicalities: [
+      {
+        label: "Best for",
+        value:
+          "Families with children aged 6–17 who want cultural participation and planned downtime; the price example uses ages 6–11.",
       },
       {
-        label: "Designed For",
-        value: "Families with children aged 6–17",
-        helper:
-          "Stories, challenges and hands-on sessions are adjusted for ages 6–9, 10–13 and 14–17.",
+        label: "Nights and route",
+        value:
+          "Beijing 4 nights, Xi’an 2, Chengdu 3 and Shanghai 2: 11 nights, with arrival in Beijing and departure from Shanghai.",
       },
       {
-        label: "Published Basis",
-        value: "Four guests · two rooms",
-        helper: `From USD ${publishedJourneyPrices["china-family-tour-with-pandas-12-day-private-tour"].fromUsd.toLocaleString("en-US")} per person, based on two adults and two children aged 6–11 sharing two confirmed rooms outside peak periods.`,
+        label: "Private family service",
+        value:
+          "Local family-oriented guides and separate drivers on the confirmed touring days, plus agreed arrival, departure and intercity transfers. No automatic babysitting or personal care.",
       },
       {
-        label: "Custom Pricing",
-        value: "Priced for your dates & group",
-        helper:
-          "The written proposal reflects your dates, children's ages, confirmed room setup and selected options. Peak-period rates and room availability vary.",
+        label: "Rooms",
+        value:
+          "Selected five-star hotels; two rooms for the starting family example. Connecting rooms, bedding and child occupancy need individual confirmation.",
       },
       {
-        label: "Hotels",
-        value: "Premium five-star hotels",
-        helper:
-          "Connecting rooms or a family suite are confirmed with the hotel and recorded in writing before booking; unconfirmed room requests are not sold as guarantees.",
+        label: "Intercity travel",
+        value:
+          "Beijing–Xi’an and Xi’an–Chengdu first-class high-speed rail; Chengdu–Shanghai nonstop economy flight, with schedules and baggage confirmed.",
+      },
+      {
+        label: "Activities",
+        value:
+          "Listed tai chi, courtyard meal, half-day Great Wall photographer, clay studio and Shanghai kitchen; one Chengdu option is selected before booking.",
       },
       {
         label: "Pacing",
-        value: "Multigenerational pacing with rest buffers",
-        helper:
-          "Daily starts, walking routes and optional stops can shift with grandparents' mobility and the children's energy.",
+        value:
+          "Arrival and travel days stay lighter; the Panda Base afternoon is free. Shanghai combines a short neighborhood introduction, kitchen lunch, rest and the included farewell dinner.",
       },
       {
-        label: "Private Service",
-        value: "100% private · zero shopping traps",
-        helper:
-          "Private family touring with no group timetables, compulsory retail stops or hidden vendor commissions.",
+        label: "Walking",
+        value:
+          "The Forbidden City, Wall, museums and stations involve steps, distance and queues. Child ages and every traveler’s walking needs shape the route.",
+      },
+      {
+        label: "Food",
+        value:
+          "Hotel breakfasts and specifically listed meals are included. Allergies, spice and kitchen suitability require advance discussion.",
+      },
+      {
+        label: "Animal visits",
+        value:
+          "Public panda observation only; no holding, feeding, keeper or backstage access is included.",
+      },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("china-family-tour-with-pandas-12-day-private-tour"),
       },
     ],
+
+    answer:
+      "A private 12-day China family tour through Beijing, Xi’an, Chengdu and Shanghai, with 11 hotel nights, family guides, two first-class train journeys and a domestic flight. Children explore the Great Wall, Terracotta Army and pandas through age-matched activities. Five-star hotels, selected meals and listed workshops are included. The starting basis is two adults and two children aged 6–11 in two rooms.",
   },
   planningSupport: {
     eyebrow: "Designed around your family",
@@ -136,7 +164,7 @@ export const chinaFamily12DayTour: Tour = {
     {
       title: "A family story worth keeping",
       description:
-        "A half-day family photographer, food made together in private kitchens and a final Shanghai memory-book session create a record of what your family noticed, made and laughed about together.",
+        "A half-day Great Wall photographer and hands-on kitchen sessions give your family moments to remember. Optional keepsake time in Shanghai can bring together the photographs, field books and things the children have made.",
       category: "Luxury",
       image: firstChinaAsset.shanghaiWaterfrontGroup,
     },
@@ -202,7 +230,7 @@ export const chinaFamily12DayTour: Tour = {
       title: "The Forbidden City becomes a family mystery",
       destination: "Beijing",
       summary:
-        "Allow about 2.5 hours inside the Forbidden City for a selected route of approximately 3.5 km on foot, with several shaded pauses. An age-aware Junior Curator Mission turns roof figures, animals and court rituals into an active search; a seated tea-and-object session follows. Family energy: Medium to high.",
+        "Explore a selected Forbidden City route through roof figures, animals and court rituals, using an age-aware Junior Curator Mission. Around 2.5 hours and 3.5 km is an illustrative route, not a required distance; reservation timing, weather and the children's stamina determine the final plan. Pauses and a seated tea-and-object session are planned where practical. Family energy: Medium to high.",
       image: firstChinaAsset.beijingForbiddenCityLion,
       hotel: hotelByCity.beijing,
       meals: ["Breakfast", "Selected lunch"],
@@ -228,7 +256,7 @@ export const chinaFamily12DayTour: Tour = {
       title: "Your family's Great Wall chapter",
       destination: "Beijing",
       summary:
-        "Travel to Mutianyu by private vehicle and use the scenic area's private-booked cable-car arrangement selected for the family and live operations. Plan 1.5–2 hours of gentle, guide-supported walking between selected watchtowers, with turnaround points set by the youngest and least-mobile guest. A professional photographer joins for a half-day session; a relaxed lunch and free evening follow. Family energy: High.",
+        "Travel to Mutianyu by private vehicle with confirmed public cable-car tickets, subject to operation. This is not a private cabin. A selected watchtower walk may take around 1.5–2 hours, but the guide sets turn-back points around the youngest and least-mobile guest. A professional photographer joins for a half-day session; the listed lunch and a free evening follow. Family energy: High.",
       image: firstChinaAsset.beijingGreatWallWide,
       hotel: hotelByCity.beijing,
       meals: ["Breakfast", "Mountain-view family lunch"],
@@ -259,7 +287,7 @@ export const chinaFamily12DayTour: Tour = {
       title: "First-class rail to Xi'an and the city wall at sunset",
       destination: "Beijing to Xi'an",
       summary:
-        "AVIORA manages luggage, station navigation and boarding for the first-class high-speed train. After hotel check-in and a pause, see Xi'an's wall in gentler evening light by bicycle, tandem or electric cart according to age and confidence. Family energy: Low to medium.",
+        "Take the confirmed first-class high-speed train with station and luggage coordination. After hotel check-in and a pause, a short Xi'an City Wall visit can use the mode agreed in your proposal. Bicycles, tandems and electric carts depend on age, availability and site rules; they are not all included alternatives. Family energy: Low to medium.",
       image: chengduAsset.rail,
       hotel: hotelByCity.xian,
       meals: ["Breakfast", "Meals at leisure during the transition"],
@@ -273,7 +301,7 @@ export const chinaFamily12DayTour: Tour = {
         {
           title: "Xi'an City Wall, your way",
           description:
-            "Choose family bicycles, a tandem, an electric cart or a short walk. The decision can change with weather and energy after arrival.",
+            "Use the short walk or permitted riding arrangement selected before booking. Age and height restrictions, availability, weather and any extra charge must be checked; a different mode is not automatically an included swap.",
         },
       ],
       guideNote: "Business-class rail can be quoted, subject to inventory.",
@@ -394,7 +422,7 @@ export const chinaFamily12DayTour: Tour = {
         },
       ],
       guideNote:
-        "Only one headline option is planned; the day is not built as a multi-stop checklist.",
+        "Choose one option before booking so its tickets, host, meal and vehicle hours can be priced and confirmed. Changing the option later may affect availability and cost. A rest day does not automatically include a standby guide or vehicle; any refund or replacement follows the agreed change terms.",
       coordinates: { latitude: 30.5728, longitude: 104.0668 },
     },
     {
@@ -424,29 +452,29 @@ export const chinaFamily12DayTour: Tour = {
     },
     {
       day: 11,
-      title: "Decode Shanghai, cook lunch and keep the story",
+      title: "A Shanghai Kitchen, Time to Rest and a Family Farewell",
       destination: "Shanghai",
       summary:
-        "Follow an architecture and lane-life hunt designed for your children's ages, then move from a neighborhood market to a private kitchen for lunch. The family closes its AVIORA travel passports and builds a small journey keepsake before a private-room farewell dinner. Family energy: Medium.",
+        "Begin with a brief neighborhood introduction if the children feel ready, then make the private kitchen lunch the main daytime experience. Protect the afternoon for hotel rest, with optional keepsake time. End with the included farewell dinner. A longer architecture hunt can replace another element by agreement. Family energy: Medium, with a protected afternoon break.",
       image: firstChinaAsset.shanghaiMarketVisit,
       hotel: hotelByCity.shanghai,
       meals: ["Breakfast", "Private kitchen lunch", "Farewell dinner"],
       transport: "Private vehicle and private family guide",
       activities: [
         {
-          title: "Lane and architecture discovery hunt",
+          title: "A short neighborhood introduction",
           description:
-            "Younger children match doors, signs and shapes; tweens trace trade and neighborhood clues; teenagers photograph the contrast between Art Deco, lane houses and contemporary Shanghai.",
+            "Notice a few lane houses, signs and architectural details on a short route adjusted to the children. A longer discovery hunt is an alternative arrangement, not a compulsory extra.",
         },
         {
           title: "Market to private kitchen",
           description:
-            "Choose ingredients with a culinary host, then make several Shanghainese dishes together in a private studio with allergies and preferences planned ahead.",
+            "Join the confirmed culinary host to prepare lunch in a private studio. A short market stop is included only when specified in the proposal and practical that day. Review allergies, menu and kitchen suitability before booking.",
         },
         {
-          title: "The family journey keepsake",
+          title: "Protected rest, with optional keepsake time",
           description:
-            "Photographs, passport stamps, children's observations and favorite family moments are brought together in a small memory book to finish after returning home.",
+            "Return to the hotel for a real afternoon break. If the family wishes, collect observations and passport stamps for the small memory-book concept; it can be finished at home. Confirm photographer image delivery separately.",
         },
         {
           title: "A farewell dinner designed around your table",
@@ -454,7 +482,8 @@ export const chinaFamily12DayTour: Tour = {
             "End in a private room or intimate restaurant selected around the family's food preferences, service style and the flavors they loved most.",
         },
       ],
-      guideNote: "The sequence and walking distance adjust to weather and family energy.",
+      guideNote:
+        "Keep the afternoon break in the operating plan. The private kitchen lunch and farewell dinner remain included; confirm host, menu, venue and transport hours in writing.",
       coordinates: { latitude: 31.2208, longitude: 121.4547 },
     },
     {
@@ -651,93 +680,95 @@ export const chinaFamily12DayTour: Tour = {
   ],
   faqs: [
     {
-      question: "How does AVIORA support a family travelling with aging parents?",
-      answer:
-        "Before confirming the route, we ask about comfortable walking time, stairs, balance, heat tolerance, seating and any mobility aids. We size private vehicles for the party and luggage, request suitable legroom and child seats where needed, plan shorter routes with rest buffers, and check whether site electric carts or other assistance can be booked for the specific date. Site carts are subject to local availability and access rules, so they are confirmed in the written plan rather than assumed. A family member can pause or return to the vehicle while others continue when the site layout allows.",
+      question: "What does this private tour cost, and what is the starting-price basis?",
+      answer: getPublishedPriceDisclosure("china-family-tour-with-pandas-12-day-private-tour"),
     },
     {
-      question: "How is this 12-day family journey priced?",
-      answer: `The published starting price is USD ${publishedJourneyPrices["china-family-tour-with-pandas-12-day-private-tour"].fromUsd.toLocaleString("en-US")} per person, based on two adults and two children aged 6–11 sharing two hotel-confirmed five-star rooms outside peak periods. The family total starts from USD ${(publishedJourneyPrices["china-family-tour-with-pandas-12-day-private-tour"].fromUsd * 4).toLocaleString("en-US")}. Your written proposal confirms dates, room categories, included activities and the total. Connecting rooms and suites require separate confirmation.`,
+      question: "Is this China family tour designed for young children or teenagers?",
+      answer:
+        "Activities are adapted for ages 6–9, 10–13 and 14–17 rather than assigning every child the same task. Younger children can focus on shapes and making; teenagers can explore evidence, architecture and food. Share exact ages, interests and walking tolerance. Children outside these bands need an individual review, and the published price uses the younger family example.",
     },
     {
-      question: "What is included in the estimated investment?",
+      question: "Are connecting hotel rooms guaranteed for our family?",
       answer:
-        "The published basis covers 11 nights in selected premium five-star hotels and two rooms, daily breakfasts, the meals and culinary experiences listed in the itinerary, two first-class high-speed rail sectors, the nonstop Chengdu–Shanghai economy flight, private family-friendly guides and vehicles on confirmed touring days, listed site admissions and transport, and the private experiences named in the itinerary: hutong cooking, a half-day Great Wall photographer, the clay-warrior studio and the Shanghai kitchen session. China-based journey planning and support are included as specified in the written proposal. International flights, insurance, visas, unlisted meals, gratuities and optional upgrades are excluded. Express or VIP access is not guaranteed and is included only when available and explicitly confirmed in writing.",
+        "No. Two rooms are part of the starting-price basis, but connecting rooms are an additional availability question. The proposal names properties, room categories, beds and occupancy. Tell us if an internal connecting door is essential rather than merely preferred; neighboring rooms are not the same arrangement. Suites, extra beds and single occupancy change the quote.",
     },
     {
-      question: "Why does AVIORA price the journey for your dates instead of using a flat rate?",
+      question: "Which panda base do we visit, and can children hold a panda?",
       answer:
-        "Luxury multigenerational travel is non-standard. Hotel and transport rates vary between shoulder seasons and peak holidays, and families have different room requirements, from confirmed connecting king/twin configurations to executive suites. We normally reply personally within 24 hours to discuss your plans. An itemized written proposal follows once the route, availability and rates for the requested hotels and services have been checked.",
+        "The proposal names the booked public panda facility. No holding, feeding, keeper access or guaranteed encounter is included. The visit uses the facility’s public opening and visitor routes, with the morning planned for observation and the afternoon protected for rest. Animal behavior and cub sightings cannot be guaranteed.",
     },
     {
-      question: "Will this itinerary work for teenagers as well as younger children?",
+      question: "Are the Great Wall cable car and photographer included?",
       answer:
-        "Yes. Ages 6–9 receive shorter visual missions and more making; ages 10–13 receive clues, challenges and meaningful choices; ages 14–17 receive stronger photography, design, archaeology, food and contemporary-culture angles. We do not give every age the same script.",
+        "The listed family package includes the confirmed mountain-transport arrangement and a half-day photographer session. This does not mean a private cable-car cabin or an empty Wall. Before booking, confirm the lift route, photographer hours, image delivery, turnaround and private-use permissions. Steps and slopes remain after cable-car access.",
     },
     {
-      question: "Are connecting rooms guaranteed?",
+      question: "Can we choose cooking, Sanxingdui, Leshan or rest in Chengdu?",
       answer:
-        "We do not treat a request as a guarantee. Before you book, AVIORA checks the exact hotel, dates, room categories, occupancy and connecting door or family-suite configuration with the property. The confirmed arrangement must be stated in writing in the final proposal or booking documents before payment; if it cannot be confirmed, we present the available alternatives and you decide whether to proceed.",
+        "Choose one principal option for Day 9, not all four. Your proposal states the selected tickets, transfers, host, meal and service hours. A rest choice changes the day’s service plan; it is not an automatic refund of an assumed activity price. Leshan and Sanxingdui require different travel and walking arrangements.",
     },
     {
-      question: "Does AVIORA include shopping stops or receive commission for shopping?",
+      question: "How busy is the Shanghai family day?",
       answer:
-        "No. This is a 100% private journey with a strict zero-shopping-trap policy: no compulsory factory, showroom or retail stops are inserted into sightseeing, and guides do not redirect the family to a shop as a condition of the tour. A market visit appears only where it is a stated cultural or culinary activity, such as choosing ingredients for the planned cooking session; purchases are optional.",
+        "Begin with a short neighborhood introduction if everyone feels ready, then make the private kitchen lunch the main daytime experience. Keep the afternoon for hotel rest or optional keepsake time, followed by the included farewell dinner. A longer architecture hunt is a substitute to discuss, not another compulsory activity added to the day.",
     },
     {
-      question: "How are activities adapted for ages 6–9, 10–13 and 14–17?",
+      question: "Are child seats, strollers and luggage assistance included?",
       answer:
-        "For ages 6–9, guides use short visual missions, movement and making, with frequent changes of focus. Ages 10–13 get clues, team challenges and choices that reward observation. Ages 14–17 can go deeper into architecture, archaeology, photography, food systems and contemporary China, with room to question the guide rather than follow a children's script. Families travelling across age bands share the same visit while each child receives a different prompt; the exact activity is agreed during planning.",
+        "Vehicle capacity and any child-seat arrangement are checked for the actual family before booking; send ages, luggage and seat requirements. Strollers, porters, guaranteed luggage carrying and personal care are not assumed. Station assistance coordinates the connection but does not remove security, walking or the family’s responsibility for belongings.",
     },
     {
-      question: "Does the tour include holding or feeding a panda?",
+      question: "What happens if a child is tired or a workshop host is unavailable?",
       answer:
-        "No. The itinerary does not promise holding, feeding, keeper access or direct animal contact. It provides a well-timed visit and responsible conservation-focused interpretation. Any specialist access is subject to availability and replaced only with a mutually agreed equivalent.",
+        "The guide can shorten the walking route and protect scheduled downtime within the confirmed service window. Material changes to tickets, transport or hosts need agreement and may affect cost. A named specialist is not guaranteed until confirmed; any proposed equivalent should be explained before booking rather than quietly substituted.",
     },
     {
-      question: "How much downtime is built in?",
+      question: "How does this differ from the adult four-city China tour?",
       answer:
-        "Arrival day is protected, the Great Wall has a free evening, the panda day has a protected afternoon, the Chengdu choice day can become a full rest day, and transition days carry only optional light activities. Because the journey is private, individual visits can also be shortened on the day.",
+        "This route starts in Beijing and ends in Shanghai, using family rooms, age-matched materials, hands-on sessions and protected rest. The adult four-city route runs the other way, includes different cultural visits and an active Jinshanling Wall day. Shared cities do not make the two itineraries interchangeable.",
     },
     {
-      question: "Can you plan for allergies, selective eaters or different spice levels?",
+      question: "Are international flights, visas and all meals included?",
       answer:
-        "Yes. We collect dietary information before confirmation, brief guides and restaurants, separate spice levels where practical and identify familiar alternatives near key stops. Severe allergies require a specific risk review because kitchen practices vary by venue.",
-    },
-    {
-      question: "Can grandparents travel on this family journey?",
-      answer:
-        "Yes. The itinerary is designed for multigenerational parties, with private transport, flexible starts, shorter walking options and rest buffers. We can request more legroom in the vehicle, arrange an electric cart where a site offers one and it is available, and let grandparents skip a section without forcing the whole family to abandon the day. Historic sites still include steps, uneven ground and standing; share mobility details before booking so we can confirm what each venue can support.",
-    },
-    {
-      question: "Can we upgrade the journey further?",
-      answer:
-        "Yes. Larger connecting rooms or suites, Peninsula-level hotels, business-class rail, premium domestic flights, additional photography and verified specialist access can be quoted as Luxury or Signature enhancements.",
+        "No. The itinerary includes the named domestic flight and train sectors, not international flights. Visa costs, insurance and unlisted meals are separate. Entry rules depend on passports and the complete international route. Dietary planning is included, but a particular allergy-safe kitchen or certification must be checked with the actual provider.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
-        title: "11-Day Beijing, Xi'an, Chengdu & Shanghai Private Tour",
+        title: "12-Day Private China Tour: Shanghai to Beijing",
         description:
-          "A shorter first-China route with the same four-city arc and a more conventional daily structure.",
-        tags: ["First-time China", "Pandas", "Private"],
-        image: chengduAsset.heroPanda,
-        route: "Beijing · Xi'an · Chengdu · Shanghai",
-        duration: "11 days / 10 nights",
+          "Choose the adult four-city route for public Dujiangyan panda observation, regional culture and active Jinshanling walking.",
+        tags: ["First-time China", "Family", "Culture"],
+        image: {
+          src: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour/photo-42.webp",
+          alt: "Shanghai's towers and riverfront illuminated beneath a pink evening sky",
+          priority: true,
+          objectPosition: "50% 48%",
+        },
+        route: "Shanghai · Chengdu · Xi'an · Beijing",
+        duration: "12 days / 11 nights",
         href: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
       },
       {
-        title: "China, Considered: Beijing, Xi'an & Shanghai",
+        title: "12-Day Private China Tour at an Easier Pace",
         description:
-          "A 12-day flagship route designed around mature travelers, measured pacing and cultural depth.",
-        tags: ["Quiet luxury", "Easier pace"],
-        image: firstChinaAsset.beijingGreatWallCouple,
+          "Choose three cities and fewer hotel changes when recovery time matters more than adding a panda city.",
+        tags: ["First-time China", "Senior-friendly", "Luxury"],
+        image: {
+          src: "/tours/first-china-beautifully-paced/beijing-great-wall-couple.webp",
+          alt: "Two travelers beside the Great Wall and wooded hills near Beijing",
+          width: 1280,
+          height: 1920,
+        },
         route: "Beijing · Xi'an · Shanghai",
         duration: "12 days / 11 nights",
         href: "/tours/china-at-an-easier-pace-12-day-private-tour",
       },
     ],
+
     destinations: [],
   },
   inquiry: {
@@ -748,5 +779,81 @@ export const chinaFamily12DayTour: Tour = {
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I am interested in China, Made for Families. Our children's ages are: __. Please recommend the right dates, two-room setup and age-aware experiences for us.",
+  },
+
+  planningResources: [
+    {
+      label: "The Palace Museum: official visitor information",
+      href: "https://intl.dpm.org.cn/visit.html",
+      officialPublisher: "The Palace Museum",
+      description:
+        "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+    },
+    {
+      label: "Mutianyu Great Wall: official visitor information",
+      href: "https://www.mutianyugreatwall.com/",
+      officialPublisher: "Mutianyu Great Wall scenic area",
+      description:
+        "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included.",
+    },
+    {
+      label: "Terracotta Army: official museum ticketing",
+      href: "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+      officialPublisher: "Emperor Qinshihuang’s Mausoleum Site Museum",
+      description:
+        "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access.",
+    },
+    {
+      label: "China Railway 12306: passenger information",
+      href: "https://www.12306.cn/en/faq.html",
+      officialPublisher: "China Railway 12306",
+      description:
+        "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+    },
+    {
+      label: "Chengdu Panda Base: official visitor notices",
+      href: "https://www.panda.org.cn/en/service/notice",
+      officialPublisher: "Chengdu Research Base of Giant Panda Breeding",
+      description:
+        "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals.",
+    },
+    {
+      label: "China entry requirements: official information",
+      href: "https://en.nia.gov.cn/",
+      officialPublisher: "National Immigration Administration of China",
+      description:
+        "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+    },
+  ],
+
+  faqLimit: 13,
+
+  inquiryChecklist: [
+    "Dates, adults and children’s ages",
+    "Two-room, connecting-room or extra-bed requirements",
+    "Comfortable walking time and required breaks",
+    "Allergies, spice preferences and kitchen requirements",
+    "Preferred Chengdu option and photography priorities",
+  ],
+
+  comparison: {
+    title: "Family route or adult four-city route?",
+    intro: "Choose by the way your party wants to spend the day, not just the shared city list.",
+    columns: ["Decision", "This family journey", "Adult four-city journey"],
+    rows: [
+      [
+        "Main emphasis",
+        "Age-aware activities, kitchen sessions and protected family breaks",
+        "City history, food and public panda observation",
+      ],
+      ["Route", "Beijing → Xi’an → Chengdu → Shanghai", "Shanghai → Chengdu → Xi’an → Beijing"],
+      [
+        "Great Wall",
+        "Mutianyu with confirmed public cable-car tickets",
+        "Jinshanling walking; a more active outing",
+      ],
+    ],
+    href: "/tours/beijing-xian-chengdu-shanghai-private-11-day-tour",
+    linkLabel: "Compare the alternative itinerary",
   },
 };

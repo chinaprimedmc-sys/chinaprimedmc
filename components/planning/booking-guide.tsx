@@ -44,14 +44,17 @@ export function BookingGuide() {
             with your specialist before making a payment.
           </p>
         </header>
-        <dl className={styles.checklist}>
-          {proposalChecklist.map((item) => (
-            <div key={item.title}>
-              <dt>{item.title}</dt>
-              <dd>{item.body}</dd>
-            </div>
-          ))}
-        </dl>
+        <details className={styles.proposalDetails}>
+          <summary>Review the six things your proposal should confirm</summary>
+          <dl className={styles.checklist}>
+            {proposalChecklist.map((item) => (
+              <div key={item.title}>
+                <dt>{item.title}</dt>
+                <dd>{item.body}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
         <div className={styles.references}>
           <p>For the full policy and operating company details:</p>
           <Link href="/terms">

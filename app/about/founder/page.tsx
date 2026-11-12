@@ -20,10 +20,15 @@ const description =
   "A message from Guohui Shi, founder of AVIORA China Travel, on why private, tailor-made travel and real hospitality shape every journey in China.";
 
 export const metadata: Metadata = createMetadata({
-  title: "Founder's Story: Guohui Shi on Travel in China",
+  title: "Guohui Shi, Founder of AVIORA China Travel",
   description,
   path: founder.path,
   type: "article",
+  keywords: [],
+  image: founder.photo.src,
+  imageWidth: founder.photo.width,
+  imageHeight: founder.photo.height,
+  imageAlt: founder.photo.alt,
 });
 
 export default function FounderPage() {
@@ -57,6 +62,7 @@ export default function FounderPage() {
             "@id": personId,
             name: founder.name,
             url,
+            image: new URL(founder.photo.src, siteConfig.url).toString(),
             subjectOf: {
               "@type": "NewsArticle",
               headline: "MATTA Connect gains traction as B2B platform",

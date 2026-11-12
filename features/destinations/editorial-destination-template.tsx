@@ -131,7 +131,11 @@ export function EditorialDestinationTemplate({
           <a href="#destination-itinerary">Sample itinerary</a>
           <a href="#destination-hotels">Where to stay</a>
           <a href="#destination-practical">Travel planning</a>
-          <a href="#private-journeys">Private journeys</a>
+          {selectedJourneys.length ? (
+            <a href="#private-journeys">Private journeys</a>
+          ) : (
+            <a href="#destination-custom-planning">Tailored planning</a>
+          )}
           <a href="#destination-faq">FAQ</a>
         </div>
       </nav>
@@ -153,14 +157,79 @@ export function EditorialDestinationTemplate({
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-copy)]">
             {guide.stayAnswer}
           </p>
-          <div className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
-            {guide.stays.map((stay) => (
-              <article key={stay.label}>
-                <h3 className="text-xl font-semibold">{stay.label}</h3>
-                <p className="mt-3 leading-7 text-[var(--color-copy)]">{stay.advice}</p>
-              </article>
-            ))}
+          <details className="mt-6 border-t border-black/10 pt-3">
+            <summary className="min-h-11 cursor-pointer py-3 font-semibold">
+              Compare stays by number of nights
+            </summary>
+            <div className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
+              {guide.stays.map((stay) => (
+                <article key={stay.label}>
+                  <h3 className="text-xl font-semibold">{stay.label}</h3>
+                  <p className="mt-3 leading-7 text-[var(--color-copy)]">{stay.advice}</p>
+                </article>
+              ))}
+            </div>
+          </details>
+        </section>
+      ) : null}
+
+      {guide && selectedJourneys.length ? (
+        <section
+          id="private-journeys"
+          className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
+        >
+          <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
+            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
+              {selectedJourneys.length > 1 ? "Compare private tours" : "Suggested private tour"}
+            </p>
+            <h2 className="type-section-title mt-5 max-w-3xl">
+              {guide.routeHeading ??
+                (selectedJourneys.length > 1
+                  ? `Which ${destination.name} tour fits your plans?`
+                  : `A private itinerary for your ${destination.name} visit`)}
+            </h2>
+            <p className="mt-5 max-w-3xl leading-7 text-[var(--color-copy)]">
+              {guide?.routeAdvice ??
+                "Compare the sightseeing days, hotel stays and included services before choosing your tour."}
+            </p>
+            <details className="mt-6 max-w-3xl border-t border-black/10 pt-5">
+              <summary className="cursor-pointer font-semibold">
+                Your private tour: arrangements and inclusions
+              </summary>
+              <p className="mt-4 leading-7 text-[var(--color-copy)]">{guide.serviceScope}</p>
+            </details>
+            <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--color-muted)]">
+              Planning advice by AVIORA China Travel. Read our{" "}
+              <Link href="/editorial-policy" className="underline underline-offset-4">
+                editorial and verification policy
+              </Link>
+              .
+            </p>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {selectedJourneys.map((journey) => (
+                <DestinationJourneyCard
+                  key={journey.slug}
+                  journey={journey}
+                  product={guide.products.find((product) => product.slug === journey.slug)!}
+                  destinationSlug={destination.slug}
+                />
+              ))}
+            </div>
           </div>
+        </section>
+      ) : null}
+
+      {guide && !selectedJourneys.length ? (
+        <section
+          id="destination-custom-planning"
+          className="mx-auto max-w-[85rem] scroll-mt-28 px-[var(--page-gutter)] py-[var(--space-section-compact)]"
+        >
+          <h2 className="type-section-title">Plan a tailored {destination.name} visit</h2>
+          <p className="mt-5 max-w-3xl leading-7">{guide.routeAdvice}</p>
+          <p className="mt-4 max-w-3xl leading-7">{guide.serviceScope}</p>
+          <CtaButton href={planningHref} className="mt-6">
+            Discuss my plans
+          </CtaButton>
         </section>
       ) : null}
 
@@ -308,14 +377,19 @@ export function EditorialDestinationTemplate({
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-copy)]">
             {guide.hotelAnswer}
           </p>
-          <div className="mt-8 grid gap-8">
-            {guide.hotelAreas.map((area) => (
-              <article key={area.name} className="grid gap-3 md:grid-cols-[1fr_2fr]">
-                <h3 className="text-xl font-semibold">{area.name}</h3>
-                <p className="leading-7 text-[var(--color-copy)]">{area.advice}</p>
-              </article>
-            ))}
-          </div>
+          <details className="mt-6 border-t border-black/10 pt-3">
+            <summary className="min-h-11 cursor-pointer py-3 font-semibold">
+              Compare hotel areas
+            </summary>
+            <div className="mt-8 grid gap-8">
+              {guide.hotelAreas.map((area) => (
+                <article key={area.name} className="grid gap-3 md:grid-cols-[1fr_2fr]">
+                  <h3 className="text-xl font-semibold">{area.name}</h3>
+                  <p className="leading-7 text-[var(--color-copy)]">{area.advice}</p>
+                </article>
+              ))}
+            </div>
+          </details>
           <h2 id="destination-sightseeing" className="type-section-title mt-12 scroll-mt-28">
             {guide.sightseeingQuestion}
           </h2>
@@ -366,52 +440,6 @@ export function EditorialDestinationTemplate({
         </section>
       ) : null}
 
-      {guide && selectedJourneys.length ? (
-        <section
-          id="private-journeys"
-          className="scroll-mt-28 border-y border-black/8 bg-white py-[var(--space-section-compact)]"
-        >
-          <div className="mx-auto max-w-[85rem] px-[var(--page-gutter)]">
-            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-              {selectedJourneys.length > 1 ? "Compare private tours" : "Suggested private tour"}
-            </p>
-            <h2 className="type-section-title mt-5 max-w-3xl">
-              {guide.routeHeading ??
-                (selectedJourneys.length > 1
-                  ? `Which ${destination.name} tour fits your plans?`
-                  : `A private itinerary for your ${destination.name} visit`)}
-            </h2>
-            <p className="mt-5 max-w-3xl leading-7 text-[var(--color-copy)]">
-              {guide?.routeAdvice ??
-                "Compare the sightseeing days, hotel stays and included services before choosing your tour."}
-            </p>
-            <details className="mt-6 max-w-3xl border-t border-black/10 pt-5">
-              <summary className="cursor-pointer font-semibold">
-                Your private tour: arrangements and inclusions
-              </summary>
-              <p className="mt-4 leading-7 text-[var(--color-copy)]">{guide.serviceScope}</p>
-            </details>
-            <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--color-muted)]">
-              Planning advice by AVIORA China Travel. Read our{" "}
-              <Link href="/editorial-policy" className="underline underline-offset-4">
-                editorial and verification policy
-              </Link>
-              .
-            </p>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
-              {selectedJourneys.map((journey) => (
-                <DestinationJourneyCard
-                  key={journey.slug}
-                  journey={journey}
-                  product={guide.products.find((product) => product.slug === journey.slug)!}
-                  destinationSlug={destination.slug}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
       <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
         <div className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_.95fr]">
           <div className="self-center">
@@ -430,8 +458,10 @@ export function EditorialDestinationTemplate({
       </section>
 
       <section className="border-y border-black/8 bg-white py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
-        <div className="mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] lg:grid-cols-[.9fr_1.1fr]">
-          <div className="grid grid-cols-2 gap-4">
+        <div
+          className={`mx-auto grid max-w-[85rem] gap-12 px-[var(--page-gutter)] ${destination.gallery.length > 1 ? "lg:grid-cols-[.9fr_1.1fr]" : ""}`}
+        >
+          <div className={destination.gallery.length > 1 ? "grid grid-cols-2 gap-4" : "hidden"}>
             {destination.gallery.slice(1, 3).map((image, index) => (
               <div
                 key={image.src}
@@ -532,29 +562,33 @@ export function EditorialDestinationTemplate({
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {related.map((item) => (
-              <Link key={item.slug} href={`/destinations/${item.slug}`} className="group">
-                <span className="aspect-portrait relative block overflow-hidden rounded-[1.4rem]">
+              <Link
+                key={item.slug}
+                href={`/destinations/${item.slug}`}
+                className="group grid grid-cols-3 items-start gap-x-4 md:block"
+              >
+                <span className="aspect-portrait relative row-span-2 block overflow-hidden rounded-[1.4rem]">
                   <OptimizedImage
                     src={
                       item.heroImage?.src ?? "/home/editorial/great-wall-private-china-travel.webp"
                     }
                     alt={item.heroImage?.alt ?? item.name}
                     fill
-                    sizes="(min-width:768px) 33vw, 100vw"
+                    sizes="(min-width:768px) 33vw, 30vw"
                     frameClassName="absolute inset-0 h-full w-full"
                     className="object-cover transition duration-700 group-hover:scale-105"
                     style={{ objectPosition: item.heroImage?.objectPosition }}
                   />
                 </span>
-                <span className="mt-5 flex items-center justify-between text-xl font-semibold">
+                <span className="col-span-2 flex items-center justify-between text-xl font-semibold md:mt-5">
                   {item.name}
                   <ArrowRight className="size-4 transition group-hover:translate-x-1" />
                 </span>
-                <span className="mt-2 block text-sm text-[var(--color-copy)]">
+                <span className="col-span-2 mt-2 block text-sm text-[var(--color-copy)]">
                   {item.kicker} · {item.recommendedStay}
                 </span>
                 {guide?.connections.find((connection) => connection.slug === item.slug) ? (
-                  <span className="mt-3 block leading-7 text-[var(--color-copy)]">
+                  <span className="col-span-3 mt-3 block leading-7 text-[var(--color-copy)]">
                     {guide.connections.find((connection) => connection.slug === item.slug)!.advice}
                   </span>
                 ) : null}
@@ -564,33 +598,27 @@ export function EditorialDestinationTemplate({
         </div>
       </section>
 
-      <section className="mx-auto max-w-[85rem] px-[var(--page-gutter)] py-[var(--space-section-compact)] md:py-[var(--space-section-default)]">
-        <div className="grid gap-10 border-t border-black/10 pt-8 md:grid-cols-[1fr_auto] md:items-end">
-          <div>
-            <p className="text-xs font-semibold text-[var(--color-muted)] uppercase">
-              Private China planning
-            </p>
-            <h2 className="type-section-title mt-5 max-w-3xl">
-              Plan your {destination.name} trip with us
-            </h2>
-            <p className="mt-5 max-w-2xl leading-7 text-[var(--color-copy)]">
-              Share your dates, arrival and departure cities, interests and any plans already
-              booked. Tell us how much walking you are comfortable with. We’ll recommend an
-              itinerary that fits your time and set out the hotels, transfers and guided visits in
-              your proposal.
-            </p>
-            <Link
-              href="/reviews"
-              className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4"
-            >
-              Read guest feedback on traveling with AVIORA
-            </Link>
-          </div>
-          <CtaButton href={planningHref} size="lg">
-            Plan my trip
-          </CtaButton>
-        </div>
-      </section>
+      {guide?.mediaCredits?.length ? (
+        <aside
+          aria-label="Photograph credits"
+          className="mx-auto max-w-[85rem] px-[var(--page-gutter)] pb-8 text-sm leading-6 text-[var(--color-muted)]"
+        >
+          <p className="font-semibold">Photograph credits</p>
+          <ul className="mt-3 space-y-2">
+            {guide.mediaCredits.map((credit) => (
+              <li key={credit.href}>
+                <a href={credit.href} className="underline underline-offset-4">
+                  {credit.label}
+                </a>
+                {" · "}
+                <a href={credit.licenseHref} className="underline underline-offset-4">
+                  {credit.license}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      ) : null}
 
       <EnquirySection
         placement="destination"

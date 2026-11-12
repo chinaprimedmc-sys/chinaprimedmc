@@ -1,0 +1,61 @@
+{
+  "asOf": "2026-11-11",
+  "status": "Internal operating scenario, not supplier quotes, achieved margin, or proof of willingness to pay.",
+  "assumptions": {
+    "cnyPerUsd": 7.2,
+    "costReserve": 0.05,
+    "paymentFx": 0.03,
+    "acquisition": 0.1,
+    "overhead": 0.08,
+    "costStress": 0.15
+  },
+  "formula": "Operating remainder = 1 - paymentFX - acquisition - overhead - (estimated base cost * 1.05 * stress multiplier)/(published person rate * 2 * 7.2). Excludes corporate tax and unmodeled expenses.",
+  "prices": [
+    {
+      "slug": "private-mutianyu-great-wall-day-tour",
+      "fromUsdPerPerson": 349,
+      "basePartySize": 2,
+      "estimatedBaseCostCny": 2120,
+      "modeledOperatingRemainderBaseline": 0.3471,
+      "modeledOperatingRemainderWith15PercentCostIncrease": 0.2806,
+      "supplierVerified": false
+    },
+    {
+      "slug": "private-shanghai-day-tour-guide-driver",
+      "fromUsdPerPerson": 349,
+      "basePartySize": 2,
+      "estimatedBaseCostCny": 2030,
+      "modeledOperatingRemainderBaseline": 0.3659,
+      "modeledOperatingRemainderWith15PercentCostIncrease": 0.3023,
+      "supplierVerified": false
+    },
+    {
+      "slug": "private-xian-terracotta-warriors-day-tour",
+      "fromUsdPerPerson": 299,
+      "basePartySize": 2,
+      "estimatedBaseCostCny": 1840,
+      "modeledOperatingRemainderBaseline": 0.3413,
+      "modeledOperatingRemainderWith15PercentCostIncrease": 0.274,
+      "supplierVerified": false
+    },
+    {
+      "slug": "private-chengdu-panda-day-tour-early-morning",
+      "fromUsdPerPerson": 279,
+      "basePartySize": 2,
+      "estimatedBaseCostCny": 1650,
+      "modeledOperatingRemainderBaseline": 0.3588,
+      "modeledOperatingRemainderWith15PercentCostIncrease": 0.2941,
+      "supplierVerified": false
+    },
+    {
+      "slug": "guilin-yangshuo-li-river-cruise-private-day-tour",
+      "fromUsdPerPerson": 499,
+      "basePartySize": 2,
+      "estimatedBaseCostCny": 3020,
+      "modeledOperatingRemainderBaseline": 0.3487,
+      "modeledOperatingRemainderWith15PercentCostIncrease": 0.2825,
+      "supplierVerified": false
+    }
+  ],
+  "multidayDecision": "Retain the existing 14 multi-day rates this pass. Do not apply a blanket luxury premium. Requote the actual hotel, room, guide days, meals, experiences, intercity fare and procurement risks before any further change. The six-day Xi’an/Beijing night reallocation specifically needs procurement review."
+}

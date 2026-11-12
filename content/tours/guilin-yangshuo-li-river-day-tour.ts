@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
@@ -57,7 +58,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
   slug: "guilin-yangshuo-li-river-cruise-private-day-tour",
   visualStatus: "ready",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-11-10",
+  updatedAt: "2026-11-12",
   title: "Guilin to Yangshuo Li River Cruise with Guide",
   subtitle:
     "Leave your Guilin hotel with the cruise ticket, port transfer and luggage plan already handled, travel to Yangshuo on a four-star public Li River cruise, then finish at your confirmed Yangshuo hotel or add a separately quoted private road return to Guilin.",
@@ -93,7 +94,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     pitch:
       "Watch limestone peaks, villages and bamboo-lined banks unfold from the river, with time to photograph the landscape or simply sit and look. Your guide adds context without filling every quiet moment. The afternoon stays deliberately short: a countryside perspective and the hotel finish that fits your onward journey, rather than a race through Yangshuo's attractions.",
     answer:
-      "This Guilin to Yangshuo Li River cruise day combines a shared four-star passenger sailing with a private guide, separate driver and road transfers for your party. Plan around ten hours, usually 9\u201311 hours depending on the selected finish and sailing. Standard cruise tickets, central Guilin hotel pickup, a short Yangshuo countryside route and pre-confirmed normal luggage transfer to your Yangshuo hotel are included. The base version ends in Yangshuo; a private road return to Guilin costs extra and must be selected before booking. This is not a private boat charter. Any onboard meal follows the confirmed ticket; bamboo rafting and other attractions are separate.",
+      "Cruise from Guilin to Yangshuo on a shared four-star Li River boat with your own guide. Private hotel pickup, road transfers, a short countryside visit and confirmed normal luggage delivery to your Yangshuo hotel are included. Allow usually 9–11 hours; this version ends in Yangshuo. Returning to Guilin costs extra. Boat meals follow the confirmed ticket; a private boat or particular seat is not included.",
     practicalities: [
       {
         label: "Cruise and location",
@@ -145,6 +146,11 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
         value:
           "One written total for your actual party and selected finish. Bamboo rafting, Ruyi Peak, cycling, shows, extra hours and airport or railway-station transfers are separate. No accommodation is included.",
       },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("guilin-yangshuo-li-river-cruise-private-day-tour"),
+      },
+      { label: "Accommodation", value: "No overnight accommodation is included." },
     ],
     facts: [
       {
@@ -305,10 +311,10 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
       title: "Guilin hotel to the Li River, then finish the day your way",
       destination: "Guilin · Li River · Yangshuo",
       summary:
-        "Meet your private multilingual guide and vehicle at the confirmed central Guilin hotel. Transfer to the port assigned for the booked sailing and board the included standard four-star public Li River cruise. Travel downstream through the karst landscape to Yangshuo, then reunite with the private vehicle for a short countryside-oriented land chapter. Finish at a confirmed Yangshuo hotel with normal luggage transferred by road, or select the longer private return to your Guilin hotel. Exact port, sailing, vessel, timing, ticket inclusions and river conditions remain date-specific.",
+        "Meet your private multilingual guide and vehicle at the confirmed central Guilin hotel. Transfer to the port assigned for the booked sailing and board the included standard four-star public Li River cruise. Travel downstream through the karst landscape to Yangshuo, then reunite with the private vehicle for a short countryside-oriented land chapter. Finish at a confirmed Yangshuo hotel with normal luggage transferred by road, or add a separately quoted private return to your Guilin hotel. Exact port, sailing, vessel, timing, ticket inclusions and river conditions remain date-specific.",
       image: rainyLiRiver,
       hotel:
-        "No overnight stay included · finish at a confirmed Yangshuo hotel or return to your central Guilin hotel",
+        "No accommodation included · Yangshuo hotel finish; private return to Guilin costs extra",
       meals: [
         "The standard onboard meal attached to the confirmed four-star cruise ticket, if supplied by the cruise operator; exact format confirmed for the date",
       ],
@@ -450,7 +456,7 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
         label: "Finish",
         value: "Yangshuo hotel or private road return to central Guilin",
         helper:
-          "The final address, guide and vehicle service window, luggage plan and total price are written into the proposal.",
+          "The base version ends at your Yangshuo hotel; a private road return to Guilin costs extra. The final address, service window, luggage plan and total are written into the proposal.",
       },
     ],
   },
@@ -503,7 +509,8 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
     {
       question: "What does the tour cost for two people or a family?",
       answer:
-        "Request one written total for your actual party, travel date and selected finish. The base Yangshuo-finish version includes central Guilin hotel pickup, private guide and road transport, standard four-star public cruise tickets, a short Yangshuo countryside route and pre-confirmed normal luggage transfer to the Yangshuo hotel. A meal is included only when attached to the confirmed ticket. Child fares, seats, optional activities and any Guilin return are specified in the quote. The published starting rate has a stated party-size basis; your written quote confirms the total for your actual group.",
+        getPublishedPriceDisclosure("guilin-yangshuo-li-river-cruise-private-day-tour") +
+        " This starting version ends at your confirmed Yangshuo hotel; returning to Guilin, bamboo rafting and other optional activities are separately quoted.",
     },
     {
       question: "Can we finish in Yangshuo instead of returning to Guilin?",
@@ -589,7 +596,12 @@ export const guilinYangshuoLiRiverDayTour: Tour = {
       {
         name: "Guilin & Yangshuo",
         description: "Explore the river, karst countryside and hotel bases for a longer stay.",
-        image: yangshuoKarst,
+        image: {
+          src: "/tours/guilin-yangshuo-li-river-day-tour/01-yangshuo-karst-countryside.webp",
+          alt: "Karst peaks and a quiet countryside retreat in Yangshuo",
+          width: 1600,
+          height: 2133,
+        },
         href: "/destinations/guilin",
       },
     ],

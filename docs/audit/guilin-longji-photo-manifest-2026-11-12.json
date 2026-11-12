@@ -1,0 +1,140 @@
+{
+  "asOf": "2026-11-12",
+  "sourceDirectory": "/Users/Admin/Desktop/图片",
+  "items": [
+    {
+      "id": 12,
+      "source": "/Users/Admin/Desktop/图片/image_横屏打开误入现实里的山水之镜青山..._0.jpg",
+      "sourceSha256": "1008489fa4732ef5f4ed10470337daf95447737379740216a876f6edfdd883f5",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/01-karst-water-reflections.webp",
+      "alt": "Karst peaks reflected in landscaped water beneath a blue sky",
+      "width": 2400,
+      "height": 1350,
+      "bytes": 325478,
+      "rotationDegrees": 270,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 16,
+      "source": "/Users/Admin/Desktop/图片/image_龙脊天梯叠翠大地之上千年耕出年轮..._1.jpg",
+      "sourceSha256": "0bc11f839e104a9cf33f34f999ff1858bec783fe967eb335edfd635118928349",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/02-longji-terraces.webp",
+      "alt": "Layered Longji rice terraces with fields and hillside buildings",
+      "width": 1600,
+      "height": 2133,
+      "bytes": 974130,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 17,
+      "source": "/Users/Admin/Desktop/图片/image_龙脊天梯叠翠大地之上千年耕出年轮..._2.jpg",
+      "sourceSha256": "3e55116376306d165e0958b1668850fb314161105c71939658a4d0a923217afa",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/03-longji-morning-light.webp",
+      "alt": "Morning light and mist above the Longji rice terraces",
+      "width": 1600,
+      "height": 2133,
+      "bytes": 427148,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 18,
+      "source": "/Users/Admin/Desktop/图片/image_龙脊天梯叠翠大地之上千年耕出年轮..._3.jpg",
+      "sourceSha256": "18c1246898ff16cf8d240ee099b75ab8c0846c04a5d9ab164322c494c8e0545a",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/04-longji-village-path.webp",
+      "alt": "Stone steps between timber village buildings beneath rice terraces",
+      "width": 1600,
+      "height": 2133,
+      "bytes": 686936,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 10,
+      "source": "/Users/Admin/Desktop/图片/image_桂林阳朔四星游船最值得的一笔来之..._3.jpg",
+      "sourceSha256": "5635fc35ea73e1429f4a598c5306f6bc12cb71df1fd2ad0598f61f5d47305900",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/05-li-river-cruise-interior.webp",
+      "alt": "Seating and windows inside a Li River cruise vessel",
+      "width": 1600,
+      "height": 2133,
+      "bytes": 372216,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 13,
+      "source": "/Users/Admin/Desktop/图片/image_这是阳朔附近保存比较完好的古村落..._0.jpg",
+      "sourceSha256": "325c58d617e597b9e8b8e381e8d3045df5b1752f8370af2994fd3f65c056bf12",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/06-yangshuo-area-village-rooftops.webp",
+      "alt": "Traditional tiled rooftops in a village in the Yangshuo area",
+      "width": 1600,
+      "height": 2315,
+      "bytes": 696968,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 14,
+      "source": "/Users/Admin/Desktop/图片/image_这是阳朔附近保存比较完好的古村落..._3.jpg",
+      "sourceSha256": "1c92acf420e93594be7dcf609a6eeed9f57f628b1ce930aba09c6c47282137d0",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/07-yangshuo-area-village-lane.webp",
+      "alt": "Village rooftops and distant hills seen through an opening",
+      "width": 1600,
+      "height": 2133,
+      "bytes": 408148,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 4,
+      "source": "/Users/Admin/Desktop/图片/image_二刷桂林漓江边我最爱的酒店138..._3.jpg",
+      "sourceSha256": "885ddcc6daa2732e08c929ece5bfd94fa41c7b798fd7c17fe362b06c6dc75223",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/08-riverside-room-reference.webp",
+      "alt": "Example guest room with a broad window facing water and karst hills",
+      "width": 1242,
+      "height": 1656,
+      "bytes": 174496,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 8,
+      "source": "/Users/Admin/Desktop/图片/image_桂林阳朔staycation天花..._0.jpg",
+      "sourceSha256": "44cff8978d0cd48499d76d84a6e4ce936f91ef626cf4b83aeddf55beb0e323e9",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/09-countryside-room-reference.webp",
+      "alt": "Example countryside guest room with open views of fields and karst peaks",
+      "width": 1600,
+      "height": 2133,
+      "bytes": 414838,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    },
+    {
+      "id": 7,
+      "source": "/Users/Admin/Desktop/图片/image_别克GL8的座椅你敢坐坐标南宁西..._7.jpg",
+      "sourceSha256": "e961b00856e4c6fc8aaa21759e0695de845ee61b6fdec3ec15c9c73bcaf48fc8",
+      "output": "/tours/guilin-yangshuo-longji-private-5-day-tour/10-private-vehicle-interior-reference.webp",
+      "alt": "Example private vehicle interior for guided road transfers; final vehicle confirmed in the proposal",
+      "width": 1600,
+      "height": 1200,
+      "bytes": 218598,
+      "rotationDegrees": 0,
+      "provenance": "Client supplied local image, authorized for this task. Hotel, vessel and vehicle identities not independently confirmed."
+    }
+  ],
+  "omitted": "Duplicate rice-terrace photo; redundant room and vehicle images; close portraits; photographs of uncertain site identity. No external image sources used.",
+  "checks": {
+    "journeyTestsPassed": 136,
+    "journeyTestsFailed": 0,
+    "typecheck": "passed",
+    "affectedEslint": "passed",
+    "visualInspection": "Reviewed source contact sheet, oriented hero and final WebP contact sheet. No browser screenshot verification.",
+    "renderedHtml": "/tmp/aviora-tour-editorial-rendered/guilin-yangshuo-longji-private-5-day-tour.html",
+    "buildLog": "/tmp/guilin-photos-build.log",
+    "productionBuild": "passed",
+    "affectedFormatting": "passed",
+    "renderedPlaceholderReferences": 0,
+    "renderedOtherTourPhotographyReferences": 0
+  }
+}

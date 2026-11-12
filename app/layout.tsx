@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Newsreader } from "next/font/google";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
@@ -16,21 +15,7 @@ import { PageTransition } from "@/components/loading/page-transition";
 import { createMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
-
-const inter = Inter({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-inter-loaded",
-  weight: ["400", "500", "600", "700"],
-});
-
-const newsreader = Newsreader({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-newsreader-loaded",
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-});
+import "@/styles/fonts.css";
 
 const rootMetadata = createMetadata();
 export const metadata: Metadata = {
@@ -57,12 +42,30 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const requestHeaders = await headers();
   const nonce = requestHeaders.get("x-nonce") ?? "";
   return (
-    <html
-      lang="en-US"
-      className={`${inter.variable} ${newsreader.variable}`}
-      data-scroll-behavior="smooth"
-      suppressHydrationWarning
-    >
+    <html lang="en-US" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/e4af272ccee01ff0-s.p.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/5611c55482296524-s.p.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/4b9bb515ce6d026f-s.p.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="font-sans antialiased">
         <CspNonceProvider nonce={nonce}>
           <PageTransition>{children}</PageTransition>

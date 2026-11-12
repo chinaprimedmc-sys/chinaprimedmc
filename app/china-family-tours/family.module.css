@@ -1,0 +1,315 @@
+.page {
+  --color-canvas: #fff;
+  --color-surface: #fff;
+  --color-surface-muted: #fff;
+  --color-ink: #191919;
+  --color-copy: #383838;
+  --color-muted: #606060;
+  --color-line: #e7e7e7;
+  --color-line-strong: #ccc;
+  --color-forest: #191919;
+  --color-forest-hover: #444;
+  --bg-primary: #fff;
+  --bg-secondary: #fff;
+  --text-primary: #191919;
+  --text-secondary: #606060;
+  --border: #e7e7e7;
+  --accent: #191919;
+  --accent-hover: #444;
+  --action-primary: #191919;
+  --action-primary-hover: #444;
+  --action-explore-hover: #fff;
+  background: #fff;
+  color: #191919;
+}
+
+.container {
+  width: min(calc(100% - 2 * var(--page-gutter)), 1200px);
+  margin-inline: auto;
+  padding-block: 2rem 6rem;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  color: #606060;
+  font-size: 0.875rem;
+}
+
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.hero {
+  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(3rem, 6vw, 5.5rem);
+}
+
+.eyebrow {
+  margin: 0 0 1.25rem;
+  color: #606060;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.hero h1 {
+  max-width: 20ch;
+  margin: 0;
+  font-family: var(--font-newsreader-loaded), Georgia, serif;
+  font-size: clamp(2.25rem, 4.8vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.subtitle {
+  max-width: 56ch;
+  margin: 1.75rem 0 2rem;
+  color: #606060;
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  line-height: 1.75;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 48px;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid #191919;
+  background: #fff;
+  color: #191919;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  padding-top: 2rem;
+  border-top: 1px solid #e7e7e7;
+}
+
+.contents {
+  position: sticky;
+  top: calc(var(--site-nav-offset) + 2rem);
+  max-height: calc(100dvh - var(--site-nav-offset) - 4rem);
+  overflow-y: auto;
+}
+
+.contents > p {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.contents ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contents a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 0.5rem;
+  color: #606060;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.article {
+  min-width: 0;
+  max-width: 72ch;
+  color: #383838;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+}
+
+.article p {
+  margin: 0 0 1.25rem;
+}
+
+.introduction {
+  font-size: 1.125rem;
+}
+
+.article section {
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+}
+
+.article h2 {
+  margin: 0 0 1.5rem;
+  color: #191919;
+  font-family: var(--font-newsreader-loaded), Georgia, serif;
+  font-size: clamp(1.625rem, 2.6vw, 2.125rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.article h3 {
+  margin: 2rem 0 0.75rem;
+  color: #191919;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.article ul,
+.dayExample {
+  margin: 0 0 1.5rem;
+  padding-left: 1.4rem;
+  list-style-position: outside;
+}
+
+.article ul {
+  list-style-type: disc;
+}
+
+.dayExample {
+  list-style-type: decimal;
+}
+
+.article li + li {
+  margin-top: 0.65rem;
+}
+
+.article a:not(.button),
+.breadcrumb a {
+  color: #191919;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.factList {
+  margin-block: 1.5rem 2rem;
+}
+
+.factList > div {
+  margin-top: 1.25rem;
+}
+
+.factList dt {
+  color: #191919;
+  font-weight: 600;
+}
+
+.factList dd {
+  margin: 0.25rem 0 0;
+}
+
+.destinations {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 2rem;
+  margin-block: 1.5rem;
+}
+
+.destinations h3 {
+  margin-top: 0.5rem;
+}
+
+.questions details {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.questions summary {
+  min-height: 48px;
+  padding-block: 1.25rem;
+  color: #191919;
+  font-weight: 600;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.questions details p {
+  padding-bottom: 0.5rem;
+}
+
+.closing {
+  padding-top: 2.5rem;
+  border-top: 1px solid #e7e7e7;
+}
+
+.closing .button {
+  margin-block: 0.75rem 1.5rem;
+}
+
+.page a:focus-visible,
+.questions summary:focus-visible {
+  outline: 2px solid #191919;
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .contents a:hover,
+  .button:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .contents {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .contents ol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+  }
+
+  .article {
+    max-width: 72ch;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    width: calc(100% - 2.5rem);
+    padding-block: 1rem 4rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8.5vw, 3rem);
+  }
+
+  .contents ol,
+  .destinations {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .article,
+  .introduction {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

@@ -73,14 +73,19 @@ test("visible Shanghai facts and TouristTrip data describe the same eight-hour p
     url,
   });
   assert.equal(schema["@type"], "TouristTrip");
-  assert.equal(schema.duration, "PT8H");
+  assert.equal(
+    schema.subjectOf[0].mainEntity.find(({ name }) => name === "ISO 8601 duration").value,
+    "PT8H",
+  );
   assert.equal(schema.description, model.answerSummary);
   assert.equal(schema.offers, undefined);
   assert.equal(catalog.pricing.status, "published-from");
   assert.equal(catalog.pricing.pricingUnit, "per-person");
-  assert.equal(catalog.pricing.fromUsd, 239);
+  assert.equal(catalog.pricing.fromUsd, 349);
   assert.deepEqual(
-    schema.additionalProperty.map(({ name, value }) => ({ label: name, value })),
+    schema.subjectOf[0].mainEntity
+      .filter(({ name }) => model.practicalities.some((fact) => fact.label === name))
+      .map(({ name, value }) => ({ label: name, value })),
     model.practicalities,
   );
   assert.match(JSON.stringify(model.practicalities), /No overnight accommodation/);

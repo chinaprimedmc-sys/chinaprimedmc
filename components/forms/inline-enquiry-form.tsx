@@ -13,6 +13,7 @@ import type { PlanningContext } from "@/lib/forms/planning-context";
 import { trackEvent } from "@/lib/analytics/events";
 
 import { LazyHubSpotForm } from "./lazy-hubspot-form";
+import styles from "./inline-enquiry-form.module.css";
 
 export function InlineEnquiryForm({
   placement,
@@ -24,14 +25,10 @@ export function InlineEnquiryForm({
   planningContext?: PlanningContext;
 }) {
   return (
-    <div
-      id="enquire"
-      data-enquiry-inline
-      style={{ scrollMarginTop: "calc(var(--site-nav-offset) + 16px)" }}
-    >
-      {journeyTitle ? (
-        <p style={{ fontSize: "1rem", lineHeight: 1.65, marginBottom: 16 }}>
-          You are asking about <strong>{journeyTitle}</strong>. Please include it in your message.
+    <div id="enquire" data-enquiry-inline className={styles.root}>
+      {journeyTitle && !planningContext ? (
+        <p className={styles.journey}>
+          Your journey: <strong>{journeyTitle}</strong>.
         </p>
       ) : null}
       <LazyHubSpotForm

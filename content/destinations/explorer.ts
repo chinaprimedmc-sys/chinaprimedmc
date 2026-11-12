@@ -1,3 +1,4 @@
+import { expandedDestinationGuides } from "./expansion";
 import { destinationAsset } from "@/content/destinations/assets";
 import { destinationGuideAssets } from "@/content/destinations/guide-assets";
 import type { MediaAsset } from "@/types/component-library";
@@ -89,6 +90,20 @@ const images = {
 };
 
 export const explorerDestinations: ExplorerDestination[] = [
+  ...expandedDestinationGuides.map((guide) => ({
+    id: guide.id,
+    name: guide.name,
+    region: guide.region,
+    kicker: guide.kicker,
+    description: guide.description,
+    stay: guide.stay,
+    bestFor: guide.bestFor,
+    interests: guide.interests,
+    relatedDestinationIds: guide.relatedDestinationIds,
+    journeyDestinationNames: guide.journeyDestinationNames,
+    image: guide.assets.hero,
+  })),
+
   {
     id: "beijing",
     name: "Beijing",
@@ -99,7 +114,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–5 nights",
     bestFor: "A first trip to China",
     interests: ["icons", "heritage", "food"],
-    relatedDestinationIds: ["xian", "shanghai"],
+    relatedDestinationIds: ["xian", "shanghai", "tianjin", "chengde"],
     image: destinationGuideAssets.beijing.hero,
     guideHref: "/destinations/beijing",
   },
@@ -113,7 +128,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "2–3 nights",
     bestFor: "History in context",
     interests: ["icons", "heritage", "food"],
-    relatedDestinationIds: ["beijing", "chengdu"],
+    relatedDestinationIds: ["beijing", "chengdu", "yinchuan"],
     image: destinationGuideAssets.xian.hero,
   },
   {
@@ -126,7 +141,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "2–4 nights",
     bestFor: "An easy finale",
     interests: ["city", "food", "heritage"],
-    relatedDestinationIds: ["beijing", "guilin"],
+    relatedDestinationIds: ["shengsi", "beijing", "guilin", "hangzhou", "suzhou"],
     image: destinationGuideAssets.shanghai.hero,
     guideHref: "/destinations/shanghai",
   },
@@ -140,7 +155,21 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–5 nights",
     bestFor: "Families and food lovers",
     interests: ["pandas", "food", "city"],
-    relatedDestinationIds: ["chongqing", "leshan", "jiuzhaigou"],
+    relatedDestinationIds: [
+      "mount-emei",
+      "dujiangyan",
+      "guanghan",
+      "mianzhu",
+      "qionglai",
+      "chongzhou",
+      "langzhong",
+      "chongqing",
+      "leshan",
+      "jiuzhaigou",
+      "qingcheng-mountain",
+      "danba",
+      "mount-siguniang",
+    ],
     image: destinationGuideAssets.chengdu.hero,
     guideHref: "/destinations/chengdu",
   },
@@ -154,7 +183,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "2–3 nights",
     bestFor: "Urban energy",
     interests: ["city", "food"],
-    relatedDestinationIds: ["chengdu", "zhangjiajie"],
+    relatedDestinationIds: ["langzhong", "chengdu", "zhangjiajie"],
     image: destinationGuideAssets.chongqing.hero,
   },
   {
@@ -167,7 +196,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "Day trip or 1 night",
     bestFor: "Buddhist heritage & river scenery",
     interests: ["icons", "heritage", "landscape"],
-    relatedDestinationIds: ["chengdu"],
+    relatedDestinationIds: ["mount-emei", "chengdu"],
     image: destinationGuideAssets.leshan.hero,
   },
   {
@@ -180,7 +209,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–4 nights",
     bestFor: "Landscape seekers",
     interests: ["landscape"],
-    relatedDestinationIds: ["chengdu"],
+    relatedDestinationIds: ["chengdu", "huanglong"],
     image: destinationGuideAssets.jiuzhaigou.hero,
   },
   {
@@ -193,7 +222,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–4 nights",
     bestFor: "Big scenery",
     interests: ["landscape"],
-    relatedDestinationIds: ["chongqing", "guilin"],
+    relatedDestinationIds: ["changsha", "chongqing", "guilin"],
     image: destinationGuideAssets.zhangjiajie.hero,
   },
   {
@@ -207,7 +236,7 @@ export const explorerDestinations: ExplorerDestination[] = [
     stay: "3–4 nights",
     bestFor: "Landscape and a slower pace",
     interests: ["landscape", "heritage", "food"],
-    relatedDestinationIds: ["shanghai", "zhangjiajie"],
+    relatedDestinationIds: ["longji-rice-terraces", "sanjiang", "shanghai", "zhangjiajie", "daxin"],
     image: destinationGuideAssets.guilin.hero,
   },
 ];
@@ -232,9 +261,11 @@ export function getDestinationRegionLabel(region: DestinationRegion) {
 
 export function journeyIncludesDestination(
   destination: ExplorerDestination,
-  journey: { destinationFilters: string[] },
+  journey: { destinationFilters: string[]; optionalDestinationFilters?: string[] },
 ) {
-  return (destination.journeyDestinationNames ?? [destination.name]).some((name) =>
-    journey.destinationFilters.includes(name),
+  return (destination.journeyDestinationNames ?? [destination.name]).some(
+    (name) =>
+      journey.destinationFilters.includes(name) ||
+      (journey.optionalDestinationFilters?.includes(name) ?? false),
   );
 }

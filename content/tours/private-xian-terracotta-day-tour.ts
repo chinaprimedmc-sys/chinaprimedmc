@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
@@ -43,7 +44,7 @@ export const privateXianTerracottaDayTour: Tour = {
   slug: "private-xian-terracotta-warriors-day-tour",
   visualStatus: "ready",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-11-10",
+  updatedAt: "2026-11-11",
   title: "Private Terracotta Warriors Tour from Xi'an",
   subtitle:
     "Explore the Terracotta Army with your own guide and driver, museum admission and central Xi'an hotel pickup. Keep time for one Old City walk; lunch, City Wall tickets and clay-warrior making are optional. No compulsory shopping or jade-factory stops.",
@@ -75,7 +76,7 @@ export const privateXianTerracottaDayTour: Tour = {
     pitch:
       "Look beyond the ranks of figures: compare faces and armor, follow the military formations and ask how broken fragments become restored warriors. Your guide connects the main pits with Qin history and conservation, adapting the depth to your interests. The museum is the day's priority. After lunch, choose one short Old City walk rather than trying to fit every Xi'an landmark into the afternoon.",
     answer:
-      "This private Terracotta Warriors tour from Xi'an is an approximately eight-hour day for one booking party, with a private guide, a separate driver, central-hotel pickup and return, and standard museum admission. The planned museum route covers Pits 1, 2 and 3 when open, followed by one flexible Xi'an Old City walk. The Terracotta Army is in Lintong, outside central Xi'an. Lunch, City Wall admission, clay-warrior making and airport or railway-station transfers are separate; private touring does not provide exclusive access or guaranteed queue-free entry.",
+      "Explore the Terracotta Army in Lintong, outside central Xi'an, with your own guide and separate driver. This private eight-hour hotel-to-hotel tour includes standard museum admission, Pits 1, 2 and 3 when open, and one selected Old City walk. Allow around 2.5–3 hours at the museum. Lunch, City Wall admission and clay-making are optional; public entry checks and queues still apply.",
     practicalities: [
       {
         label: "Duration",
@@ -122,6 +123,11 @@ export const privateXianTerracottaDayTour: Tour = {
         value:
           "One written total for your private party. Lunch, City Wall tickets, clay-making and additional service hours are separate unless listed. No overnight accommodation is included.",
       },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("private-xian-terracotta-warriors-day-tour"),
+      },
+      { label: "Accommodation", value: "No overnight accommodation is included." },
     ],
     facts: [
       {
@@ -488,7 +494,7 @@ export const privateXianTerracottaDayTour: Tour = {
     {
       question: "How long do we spend at the Terracotta Army museum?",
       answer:
-        "We normally plan around 2.5\u20133 hours for the principal museum visit, with arrival checks, road travel and lunch considered separately. The actual pace depends on crowds, open areas and your interests. A central Xi'an to Lintong drive may take roughly 1\u20131.5 hours each way as a planning range, with longer traffic delays possible. This is why the museum remains the priority over a long afternoon checklist.",
+        "We normally plan around 2.5–3 hours for the principal museum visit, with arrival checks, road travel and lunch considered separately. The actual pace depends on crowds, open areas and your interests. A central Xi'an to Lintong drive may take roughly 1–1.5 hours each way as a planning range, with longer traffic delays possible. This is why the museum remains the priority over a long afternoon checklist.",
     },
     {
       question: "Does the tour visit all three Terracotta Warriors pits?",
@@ -503,7 +509,8 @@ export const privateXianTerracottaDayTour: Tour = {
     {
       question: "How much does a private Terracotta Warriors tour cost for two people or a family?",
       answer:
-        "We provide one written total for your actual private party. The quote states the date, adult and child numbers, vehicle, guide language, pickup and return addresses, service window and selected extras. Ticket arrangements and vehicle needs can differ between a couple and a family. No numerical starting price is currently verified for this tour; the full total is confirmed before payment.",
+        getPublishedPriceDisclosure("private-xian-terracotta-warriors-day-tour") +
+        " Lunch, City Wall admission, clay-making and airport or station transfers are separate unless expressly added.",
     },
     {
       question: "Can you pick us up at Xi'an airport or Xi'an North Railway Station?",
@@ -556,26 +563,36 @@ export const privateXianTerracottaDayTour: Tour = {
     useListedTours: true,
     tours: [
       {
-        title: "Xi'an & Beijing: Warriors, Walls and Imperial Capitals",
+        title: "6-Day Xi'an and Beijing Private Tour",
         description:
-          "A six-day private journey linking the Terracotta Army, Xi'an's living heritage, high-speed rail, imperial Beijing and the Great Wall.",
-        tags: ["Private", "History", "High-speed rail"],
-        image: terracottaWarriors,
+          "Add Beijing, with the Forbidden City and Mutianyu on separate sightseeing days.",
+        tags: ["First-time China", "Culture", "Luxury"],
+        image: {
+          src: "/tours/xian-beijing-private-journey/hero.webp",
+          alt: "The Great Wall rising above the mountains near Beijing in warm evening light",
+          width: 1600,
+          height: 1067,
+        },
         route: "Xi'an · Beijing",
         duration: "6 days / 5 nights",
         href: "/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
       },
       {
-        title: "China, Considered: Beijing, Xi'an & Shanghai",
-        description:
-          "A premium 12-day private China journey with three full Xi'an nights and time to understand the Terracotta Army without a rushed connection.",
-        tags: ["Private", "First-time China", "Easy pace"],
-        image: terracottaWarriors,
+        title: "12-Day Private China Tour at an Easier Pace",
+        description: "Give Xi’an three nights within a longer Beijing–Xi’an–Shanghai route.",
+        tags: ["First-time China", "Senior-friendly", "Luxury"],
+        image: {
+          src: "/tours/first-china-beautifully-paced/beijing-great-wall-couple.webp",
+          alt: "Two travelers beside the Great Wall and wooded hills near Beijing",
+          width: 1280,
+          height: 1920,
+        },
         route: "Beijing · Xi'an · Shanghai",
         duration: "12 days / 11 nights",
         href: "/tours/china-at-an-easier-pace-12-day-private-tour",
       },
     ],
+
     destinations: [],
   },
   planningResources: [

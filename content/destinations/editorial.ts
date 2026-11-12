@@ -1,3 +1,4 @@
+import { expandedDestinationGuides } from "./expansion";
 import type { ExplorerDestination } from "@/content/destinations/explorer";
 
 export type DestinationEditorial = {
@@ -16,6 +17,8 @@ export type DestinationEditorial = {
 };
 
 export const destinationEditorial: Record<string, DestinationEditorial> = {
+  ...Object.fromEntries(expandedDestinationGuides.map((guide) => [guide.id, guide.editorial])),
+
   beijing: {
     bestTime:
       "April to May and September to October are usually comfortable for walking, although public holidays can be busy. Check your dates against the Chinese holiday calendar before booking. Summer calls for shade, water and indoor breaks; winter visits need warm layers, especially on the exposed Great Wall.",

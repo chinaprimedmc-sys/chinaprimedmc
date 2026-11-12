@@ -54,7 +54,9 @@ export const destinations: Destination[] = explorerDestinations.map((destination
       tagline: destination.kicker,
       summary: destination.description,
       image: destination.image,
-      primary: { label: "Explore private journeys", href: "#private-journeys" },
+      primary: tours.length
+        ? { label: "Explore private journeys", href: "#private-journeys" }
+        : { label: "Discuss a tailored visit", href: planningHref },
       secondary: { label: "Plan this destination", href: planningHref },
     },
     seo: {

@@ -1,5 +1,6 @@
+import { guilinYangshuoLongji5DayTour } from "@/content/tours/guilin-yangshuo-longji-5-day";
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import { firstChina10DayTour } from "@/content/tours/first-china-10-day";
-import { destinationAsset } from "@/content/destinations/assets";
 import { beijingXianChengduShanghaiTour } from "@/content/tours/beijing-xian-chengdu-shanghai";
 import { chengduChongqingZhangjiajieTour } from "@/content/tours/chengdu-chongqing-zhangjiajie";
 import { chinaConsidered12DayTour } from "@/content/tours/china-considered-12-day";
@@ -129,6 +130,7 @@ const chengduJiuzhaigouAsset = {
 };
 
 const baseTours: Tour[] = [
+  guilinYangshuoLongji5DayTour,
   guilinYangshuoLiRiverDayTour,
   privateChengduPandaDayTour,
   privateXianTerracottaDayTour,
@@ -145,7 +147,7 @@ const baseTours: Tour[] = [
   firstChina10DayTour,
   {
     slug: "chengdu-pandas-sichuan-table",
-    title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
+    title: "5-Day Chengdu Panda and Sichuan Food Tour",
     subtitle:
       "Early panda encounters, teahouse culture and Sichuan food, with a private guide and one comfortable Chengdu base.",
     duration: "5 Days / 4 Nights",
@@ -155,52 +157,95 @@ const baseTours: Tour[] = [
       eyebrow: "Private Chengdu journey",
       image: chengduAsset.heroPanda,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
-      secondary: { label: "Plan This Tour", href: "#inquiry" },
+      secondary: { label: "Plan This Tour", href: "#enquiry" },
     },
     seo: {
-      title: "5-Day Private Chengdu Panda and Sichuan Food Tour",
+      title: "5-Day Chengdu Panda and Sichuan Food Tour",
       description:
-        "A 5-day private Chengdu tour with pandas, teahouse culture, Sichuan food, private transport and an optional Leshan day trip.",
+        "Spend five days in Chengdu with four hotel nights, private guides, panda viewing and Sichuan food experiences. Choose Leshan or a slower city day before booking.",
       keywords: [
-        "private Chengdu panda tour",
-        "5 day Chengdu itinerary",
-        "Sichuan food tour",
-        "Chengdu family tour",
-        "private China tour Chengdu",
+        "Chengdu private tour pandas Sichuan food 5 days",
+        "Chengdu cooking class private tour",
+        "Chengdu Leshan five day itinerary",
+        "Chengdu panda tour hotel package",
       ],
+
+      preserveCopy: true,
     },
     overview: {
       pitch:
         "See Chengdu at its best hours, then enjoy its food and daily life without changing hotels.",
       facts: [
-        { label: "Duration", value: "5 days / 4 nights", helper: "Four nights based in Chengdu." },
         {
-          label: "Destinations",
-          value: "Chengdu + Leshan",
-          helper: "Leshan is optional, not compulsory.",
-        },
-        {
-          label: "Travel Style",
-          value: "Private, flexible",
-          helper: "Private car and personally vetted guide.",
+          label: "Hotels",
+          value: "Four Chengdu hotel nights; property and room category confirmed",
         },
         {
           label: "Pacing",
-          value: "Easy to moderate",
-          helper: "The panda visit anchors the day; afternoons stay breathable.",
+          value: "One base; public panda viewing, city walks and one selected regional day",
         },
         {
-          label: "Suitable For",
-          value: "Families, seniors, food lovers",
-          helper: "Activities and spice levels are adjusted around your group.",
+          label: "Suitable for",
+          value:
+            "Travelers who want pandas and Sichuan food from one Chengdu base rather than a four-city China itinerary.",
         },
       ],
+
+      practicalities: [
+        {
+          label: "Best for",
+          value:
+            "Travelers who want pandas and Sichuan food from one Chengdu base rather than a four-city China itinerary.",
+        },
+        {
+          label: "Nights and gateways",
+          value:
+            "Four nights in Chengdu, arriving on Day 1 and departing on Day 5. Confirm Tianfu, Shuangliu or the exact rail station.",
+        },
+        {
+          label: "Service days",
+          value:
+            "Private guide and separate driver on the confirmed sightseeing days, with airport or station arrival and departure transfers.",
+        },
+        {
+          label: "Panda visit",
+          value:
+            "Public Chengdu Research Base observation, planned around opening and conditions; no guaranteed behavior, cub, holding or keeper access.",
+        },
+        {
+          label: "Food experience",
+          value:
+            "The proposal specifies the Day 3 cooking session or meal, host, ingredients, dietary arrangements and included food. These are not unlimited restaurant meals.",
+        },
+        {
+          label: "Day 4 choice",
+          value:
+            "Choose Leshan or a Chengdu-focused day before booking. Different transfers, tickets and activity costs are priced for the selected version.",
+        },
+        {
+          label: "Hotels and breakfast",
+          value:
+            "Four hotel nights and breakfasts on Days 2–5 are part of the package basis, with properties, rooms and occupancy specified in writing.",
+        },
+        {
+          label: "Walking",
+          value:
+            "The Panda Base and Wuhou Shrine involve walking and standing. Leshan land steps and any river-view option require a separate access and operating review.",
+        },
+        {
+          label: "Starting-price basis",
+          value: getPublishedPriceDisclosure("chengdu-pandas-sichuan-table"),
+        },
+      ],
+
+      answer:
+        "A five-day private Chengdu stay with four hotel nights, arrival and departure transfers, panda viewing and Sichuan food culture. Use one city base for guided visits, tea-house time and the confirmed cooking or meal experience. Choose a Leshan excursion or a slower Chengdu day before booking. Breakfasts and the selected services are listed in the proposal; animal contact and unlimited tastings are not included.",
     },
     highlights: [
       {
-        title: "Pandas before the crowds",
+        title: "A morning with Chengdu's pandas",
         description:
-          "Enter early, stay as long as the group enjoys it, then return by private car for tea and lunch rather than stacking another sightseeing block.",
+          "Plan an early public visit around the base's opening arrangements and your group's walking comfort. Afterward, return to Chengdu for a flexible park visit and lunch break; animal activity and crowd levels vary, and tea or meals are included only as listed in your proposal.",
         category: "Family",
         image: chengduAsset.pandaDetail,
       },
@@ -228,7 +273,7 @@ const baseTours: Tour[] = [
           "Your private driver meets you at the airport or station and settles you into the city without adding a sightseeing obligation.",
         image: chengduAsset.heroCity,
         hotel: "Chengdu stay: selected comfort tier",
-        meals: ["As confirmed in your written quotation"],
+        meals: ["No meals included today"],
         transport: "Private airport or station transfer",
         activities: [
           {
@@ -245,7 +290,7 @@ const baseTours: Tour[] = [
         title: "Pandas before the day begins",
         destination: "Chengdu",
         summary:
-          "Visit the Chengdu Research Base early, when the pandas are most active and the paths are quieter, then return to the city for tea.",
+          "Visit the Chengdu Research Base early, aiming for cooler conditions and a useful observation window. Panda activity and crowd levels vary; neither is guaranteed. Return to the city for the tea arrangement confirmed in your proposal.",
         image: chengduAsset.pandaMorning,
         hotel: "Chengdu stay: selected comfort tier",
         meals: ["Breakfast; other meals as arranged"],
@@ -261,7 +306,7 @@ const baseTours: Tour[] = [
             time: "Afternoon",
             title: "People's Park tea",
             description:
-              "A proper teahouse pause gives children room to move and grandparents time to watch the city.",
+              "Walk through the park and pause at a teahouse if you wish. A reserved table, hosted tea, drinks or lunch are included only when specifically listed in your proposal; otherwise these are personal purchases.",
           },
         ],
         guideNote:
@@ -287,7 +332,7 @@ const baseTours: Tour[] = [
           {
             title: "Market or cooking",
             description:
-              "Choose a food walk or small cooking lesson around your group's appetite, allergies, and confidence with spice.",
+              "Confirm one food experience before booking: the specified Sichuan meal or cooking session, with its host, menu, duration and any market visit stated in your proposal. A food walk is a different format; tastings and meal coverage must be listed rather than assumed.",
           },
         ],
         guideNote: "A slower afternoon, extra tea, or a rest window can replace any optional stop.",
@@ -298,16 +343,17 @@ const baseTours: Tour[] = [
         title: "Leshan, or more Chengdu",
         destination: "Leshan / Chengdu",
         summary:
-          "Those who want the scale of the Leshan Giant Buddha can make the private journey; others can stay in Chengdu for a market, gallery, or long lunch.",
+          "Choose the Leshan day trip or a Chengdu-based alternative before the proposal is confirmed. Leshan is a longer road day; a city route offers more time for a market, gallery or lunch. They are different service plans, with tickets, meals and price checked in advance.",
         image: chengduAsset.leshan,
         hotel: "Chengdu stay: selected comfort tier",
         meals: ["Breakfast; lunch as arranged"],
-        transport: "Private vehicle, with a flexible return",
+        transport:
+          "Private vehicle, separate driver and local guide for the selected Leshan or Chengdu route during the confirmed hours",
         activities: [
           {
             title: "Leshan option",
             description:
-              "Choose an accessible viewing route and return when the river cliffs have said enough.",
+              "Choose a land visit or a river-view cruise after reviewing steps, standing, boarding, weather and current operation. These offer different views and costs; neither is assumed to be step-free, and a boat cannot be guaranteed to operate.",
           },
           {
             title: "Chengdu alternative",
@@ -322,7 +368,7 @@ const baseTours: Tour[] = [
         title: "A final morning, then onward",
         destination: "Chengdu",
         summary:
-          "Have one last bowl of noodles, a quiet park walk, or a lie-in before your driver takes you to the station or airport.",
+          "Have breakfast and keep any remaining time for rest or an independent neighborhood walk before your private departure transfer. The confirmed flight or train sets the pickup time; guided sightseeing or extra vehicle hours require a separate arrangement.",
         image: chengduAsset.rail,
         meals: ["Breakfast"],
         transport: "Private departure transfer",
@@ -330,7 +376,7 @@ const baseTours: Tour[] = [
           {
             title: "A final choice",
             description:
-              "Use the remaining time for tea, breakfast, or a gentle local walk before departure.",
+              "Enjoy breakfast or an independent walk only when the confirmed pickup time leaves a comfortable margin. Late checkout, paid tea and additional guiding are separate unless listed in your proposal.",
           },
           {
             title: "Onward support",
@@ -348,18 +394,20 @@ const baseTours: Tour[] = [
         name: "Private travel comfort | selected around your group",
         destination: "Chengdu",
         description:
-          "The final hotel and vehicle plan is chosen around room configuration, quiet rest, easy access, and the mobility needs of your family.",
+          "Four nights at a Chengdu hotel selected around your preferred comfort tier, room arrangement and access to the confirmed routes. The proposal names the property and room category; early check-in, connecting rooms and upgrades require confirmation.",
         roomStyle: "Hotel and room configuration confirmed after inquiry",
         highlights: ["Private transfers", "Quiet rest", "Easy access"],
         image: chengduAsset.carInterior,
       },
     ],
     included: [
-      "Private itinerary planning around your dates and travelers",
-      "Private car and driver on the days listed in your written quotation",
-      "Multilingual, personally vetted guide support",
-      "Sightseeing and reservations listed in your written quotation",
-      "WhatsApp support while traveling",
+      "Four hotel nights in Chengdu, with property, room category and occupancy named in your proposal",
+      "Hotel breakfasts on Days 2–5",
+      "Private arrival and departure transfers and private vehicle with a separate driver for the listed sightseeing days",
+      "Local private guide in the confirmed language on Days 2–4",
+      "Listed public admissions and the Sichuan meal or cooking experience specifically identified in the written proposal",
+      "The Day 4 Leshan or Chengdu route selected before booking; the quote specifies tickets, service hours and any difference in price",
+      "Pre-trip planning and local travel support; unlisted meals, tastings and extra activities are separate",
     ],
     excluded: [
       "International flights",
@@ -443,33 +491,106 @@ const baseTours: Tour[] = [
     ],
     faqs: [
       {
-        question: "Is this a fixed package?",
-        answer:
-          "No. This is a five-day route idea. Hotel tier, starts, meals, walking load, and the Leshan option are confirmed around your travelers.",
+        question: "What does this private tour cost, and what is the starting-price basis?",
+        answer: getPublishedPriceDisclosure("chengdu-pandas-sichuan-table"),
       },
       {
-        question: "Can we skip Leshan?",
+        question: "Are four hotel nights included in the Chengdu package?",
         answer:
-          "Yes. Leshan is optional. A slower Chengdu day with tea, food, markets, or rest is a complete alternative.",
+          "Yes, in the five-day package basis. The proposal names the Chengdu property, room category, occupancy and four nights, plus hotel breakfasts on Days 2–5. A day-service-only arrangement is a different quote. Hotel upgrades, early check-in and extra beds are not automatically included.",
       },
       {
-        question: "Is the route suitable for older travelers?",
+        question: "What is the difference between this and the one-day panda tour?",
         answer:
-          "Often yes, when the panda-base walking route and daily starts are reviewed honestly in advance. Private transport makes shorter days possible.",
+          "This journey coordinates a four-night stay, airport or station transfers and several days of Chengdu life and food. The one-day tour covers a hotel-to-hotel Panda Base and People’s Park day without accommodation. Choose the longer stay for regional depth and a confirmed cooking or food experience, not extra panda-access privileges.",
       },
       {
-        question: "Can Sichuan food be mild?",
+        question: "Do we visit Chengdu Panda Base or Dujiangyan?",
         answer:
-          "Yes. We plan around allergies, children, and spice tolerance, from fragrant and mild to properly fiery.",
+          "The planned city visit uses the Chengdu Research Base of Giant Panda Breeding, with the facility confirmed in your proposal. Dujiangyan, Wolong and Bifengxia are different destinations and are not automatically included. A different base changes the road plan, ticketing and cost.",
+      },
+      {
+        question: "Does an early visit guarantee active pandas?",
+        answer:
+          "No. Earlier public visiting hours may be a useful planning choice, but activity depends on the animals, season and husbandry. We do not promise cubs, a particular enclosure or any handling. The guide adapts the public walking route and breaks to conditions.",
+      },
+      {
+        question: "Is Leshan included, or is Day 4 a free choice?",
+        answer:
+          "Day 4 is selected before booking. The priced proposal states whether it includes a private Leshan excursion or a Chengdu day, with the associated tickets and service hours. The options are not assumed to have the same cost.",
+      },
+      {
+        question: "Can we see the Leshan Giant Buddha by boat instead of climbing?",
+        answer:
+          "Ask for the actual route to be checked. A land visit and river-view cruise are different products with different views, queues and operating conditions. Water, weather and operator decisions can affect sailing. No boat departure, step-free access or replacement arrangement is automatic.",
+      },
+      {
+        question: "Can the Sichuan cooking experience be mild or vegetarian?",
+        answer:
+          "Tell us before booking about spice preferences, vegetarian requirements and allergies. The host, menu and kitchen arrangements need confirmation; removing chili does not by itself remove meat stock, peanuts or cross-contact. The written inclusion should state the meal or class and whether any market visit is part of it.",
+      },
+      {
+        question: "Are tea, tastings and every lunch included?",
+        answer:
+          "No. Hotel breakfasts and expressly listed meals or cooking services are included. A tea-house visit or food-oriented walk does not mean unlimited drinks or tastings. The proposal identifies what is paid in advance and what you buy independently, so you can choose without compulsory sales stops.",
+      },
+      {
+        question: "Can older travelers or children take this Chengdu tour?",
+        answer:
+          "Often, with individual planning. Discuss Panda Base distances, heat, stairs, child ages and any Leshan route before confirmation. A single hotel base reduces packing but does not make the sites step-free. Personal care, specialist equipment and babysitting are separate arrangements.",
+      },
+      {
+        question: "Which airport should we use for arrival and departure?",
+        answer:
+          "State the actual flight: Chengdu Tianfu (TFU) and Shuangliu (CTU) require different transfers. Rail arrivals need the full station name. The itinerary does not treat an arrival time as sightseeing time, and the final transfer is set around check-in and traffic rather than a fixed morning tour.",
       },
     ],
     related: {
-      tours: [],
+      useListedTours: true,
+      tours: [
+        {
+          title: "Private Chengdu Panda Tour with Hotel Pickup",
+          description:
+            "Choose a single panda-and-park day if your Chengdu hotel and wider plans are already arranged.",
+          tags: ["Family", "Nature", "Culture"],
+          image: {
+            src: "/tours/private-chengdu-panda-day-tour/01-chengdu-panda-base-morning.webp",
+            alt: "A giant panda resting among trees at Chengdu Research Base of Giant Panda Breeding",
+            width: 1600,
+            height: 2133,
+          },
+          route: "Chengdu hotel · Chengdu Panda Base · People's Park · Chengdu hotel",
+          duration: "1 day · private · about 8 hours",
+          href: "/tours/private-chengdu-panda-day-tour-early-morning",
+        },
+        {
+          title: "7-Day Chengdu and Jiuzhaigou Private Tour",
+          description:
+            "Add three mountain-area nights and a full Jiuzhaigou park day instead of staying entirely in Chengdu.",
+          tags: ["Nature", "Family", "Food"],
+          image: {
+            src: "/tours/chengdu-pandas-jiuzhaigou/hero.webp",
+            alt: "Autumn forest and a turquoise lake in Jiuzhaigou National Park",
+            width: 1600,
+            height: 1067,
+          },
+          route: "Chengdu · Jiuzhaigou",
+          duration: "7 days / 6 nights",
+          href: "/tours/chengdu-pandas-jiuzhaigou-private-7-day-tour",
+        },
+      ],
+
       destinations: [
         {
           name: "Chengdu",
           description: "Pandas, tea houses, Sichuan food, and a slower sense of daily life.",
-          image: destinationAsset.chengduPanda,
+          image: {
+            src: "/home/chengdu-panda.webp",
+            alt: "A giant panda in Chengdu",
+            width: 1920,
+            height: 1200,
+            objectPosition: "54% 42%",
+          },
           href: "/destinations/chengdu",
         },
       ],
@@ -483,10 +604,59 @@ const baseTours: Tour[] = [
       defaultMessage:
         "I am interested in Chengdu, Pandas & Sichuan Table. Please suggest the best pacing for my travelers.",
     },
+
+    planningResources: [
+      {
+        label: "Chengdu Panda Base: official visitor notices",
+        href: "https://www.panda.org.cn/en/service/notice",
+        officialPublisher: "Chengdu Research Base of Giant Panda Breeding",
+        description:
+          "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals.",
+      },
+      {
+        label: "China Railway 12306: passenger information",
+        href: "https://www.12306.cn/en/faq.html",
+        officialPublisher: "China Railway 12306",
+        description:
+          "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+      },
+      {
+        label: "Plan Chengdu and Leshan",
+        href: "/destinations/chengdu",
+        description:
+          "Compare a city stay with regional excursions and the practical choices for your dates.",
+      },
+    ],
+
+    faqLimit: 13,
+
+    updatedAt: "2026-11-12",
+
+    inquiryChecklist: [
+      "Dates, travelers, rooms and hotel preference",
+      "Choose Leshan or a Chengdu-based Day 4",
+      "Cooking class or hosted meal preference",
+      "Allergies, spice tolerance and dietary needs",
+      "Walking comfort and guide language",
+    ],
+
+    comparison: {
+      title: "A Chengdu stay or a single panda day?",
+      intro:
+        "Food and tea need their own time. The five-day version adds a hotel base and deeper city experiences.",
+      columns: ["Decision", "This five-day package", "Panda day service"],
+      rows: [
+        ["Accommodation", "Four Chengdu hotel nights", "No accommodation"],
+        ["Food program", "The meal or class named in the proposal", "Lunch and tea cost extra"],
+        ["Day 4", "Leshan or city route selected before booking", "No additional touring day"],
+      ],
+      href: "/tours/private-chengdu-panda-day-tour-early-morning",
+      linkLabel: "Compare the alternative itinerary",
+    },
   },
   {
     slug: "chengdu-pandas-jiuzhaigou-private-7-day-tour",
-    title: "7-Day Chengdu Panda & Jiuzhaigou Private Journey",
+    title: "7-Day Chengdu and Jiuzhaigou Private Tour",
     subtitle:
       "Giant pandas, Sichuan food and Jiuzhaigou's alpine lakes, connected with private support and a comfortable daily rhythm.",
     duration: "7 Days / 6 Nights",
@@ -496,53 +666,92 @@ const baseTours: Tour[] = [
       eyebrow: "Private Sichuan journey",
       image: chengduJiuzhaigouAsset.hero,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
-      secondary: { label: "Request a Tailored Proposal", href: "#inquiry" },
+      secondary: { label: "Request a Tailored Proposal", href: "#enquiry" },
     },
     seo: {
-      title: "7-Day Chengdu Panda & Jiuzhaigou Private Tour",
+      title: "7-Day Chengdu and Jiuzhaigou Private Tour",
       description:
-        "Plan a private 7-day Chengdu and Jiuzhaigou tour with pandas, Sichuan food, alpine lakes, private transfers and flexible pacing.",
+        "Combine Chengdu pandas and Sichuan food with Jiuzhaigou in seven days. See six hotel nights, mountain transfers, park transport and the optional Huanglong day.",
       keywords: [
-        "Chengdu and Jiuzhaigou private tour",
-        "7 day Chengdu Jiuzhaigou itinerary",
-        "Chengdu panda and Jiuzhaigou tour",
-        "private Jiuzhaigou tour",
-        "Jiuzhaigou tour from Chengdu",
-        "China panda and nature tour",
-        "Chengdu family private tour",
-        "Jiuzhaigou tour for seniors",
+        "Chengdu panda Jiuzhaigou private tour 7 days",
+        "Chengdu to Jiuzhaigou train private transfer",
+        "Jiuzhaigou Huanglong altitude tour",
+        "Jiuzhaigou tour end airport or Chengdu",
       ],
+
+      preserveCopy: true,
     },
     overview: {
       pitch:
         "See pandas at a better hour, understand Chengdu through food and tea, then reach Jiuzhaigou with the regional logistics handled around your group.",
       facts: [
-        {
-          label: "Duration",
-          value: "7 days / 6 nights",
-          helper: "Three nights in Chengdu and three in the Jiuzhaigou area.",
-        },
-        {
-          label: "Destinations",
-          value: "Chengdu + Jiuzhaigou",
-          helper: "City culture, pandas and alpine landscapes in one Sichuan route.",
-        },
-        {
-          label: "Travel Style",
-          value: "Private, tailored",
-          helper: "Hotels, transport and daily intensity are confirmed around your group.",
-        },
+        { label: "Hotels", value: "3 nights Chengdu and 3 near Jiuzhaigou; properties confirmed" },
         {
           label: "Pacing",
-          value: "Easy to moderate",
-          helper: "Park transport reduces distance, but paths, steps and altitude remain.",
+          value:
+            "City sightseeing and mountain transfers; altitude and park walking require review",
         },
         {
-          label: "Suitable For",
-          value: "Couples, families, private groups",
-          helper: "Especially strong for nature, pandas and photography interests.",
+          label: "Suitable for",
+          value:
+            "Nature-focused visitors who want pandas and alpine lakes, with time for mountain transfers and individual altitude review.",
         },
       ],
+
+      practicalities: [
+        {
+          label: "Best for",
+          value:
+            "Nature-focused visitors who want pandas and alpine lakes, with time for mountain transfers and individual altitude review.",
+        },
+        {
+          label: "Nights and endpoint",
+          value:
+            "3 Chengdu nights and 3 Jiuzhaigou-area nights. Day 7 departs from the confirmed mountain-area gateway; it does not automatically return to Chengdu.",
+        },
+        {
+          label: "Mountain connection",
+          value:
+            "The Day 4 plan combines a booked rail or alternative domestic connection with a private road transfer. A station is not the park gate; the full transfer is confirmed.",
+        },
+        {
+          label: "Private service",
+          value:
+            "Local private guides and road transfers on the specified touring and travel days. Park buses and booked rail or flights remain shared public services.",
+        },
+        {
+          label: "Pandas and food",
+          value:
+            "Public Panda Base visit plus the agreed Chengdu food experience; no direct panda contact or guaranteed animal behavior.",
+        },
+        {
+          label: "Park day",
+          value:
+            "Day 5 focuses on Jiuzhaigou using required park transport and selected walking sections, subject to reservation and operation.",
+        },
+        {
+          label: "Day 6 choice",
+          value:
+            "Select a gentler local day or separately confirmed Huanglong. Ticket, guide, road time and any price difference are stated before booking.",
+        },
+        {
+          label: "Altitude and walking",
+          value:
+            "Jiuzhaigou, the mountain gateway and Huanglong have different elevations. Shuttle access does not remove all walking, stairs, cold or altitude exposure.",
+        },
+        {
+          label: "Meals",
+          value:
+            "Hotel breakfasts and the specified food experience are included as confirmed; other meals, drinks and personal purchases are separate.",
+        },
+        {
+          label: "Starting-price basis",
+          value: getPublishedPriceDisclosure("chengdu-pandas-jiuzhaigou-private-7-day-tour"),
+        },
+      ],
+
+      answer:
+        "A seven-day private journey combining Chengdu pandas and Sichuan culture with Jiuzhaigou’s lakes and forests. Spend three nights in Chengdu and three near Jiuzhaigou, with the listed rail, road transfers, guides and park services confirmed together. Huanglong is an optional higher-altitude Day 6 choice. The published route ends in the Jiuzhaigou area; returning to Chengdu needs a separately arranged connection or extra day.",
     },
     planningSupport: {
       eyebrow: "Before your proposal",
@@ -605,7 +814,7 @@ const baseTours: Tour[] = [
           "Meet your local team on arrival and transfer privately to your hotel. The first evening stays light so you can settle in and begin without pressure.",
         image: chengduJiuzhaigouAsset.day01,
         hotel: "Chengdu stay: hotel and room category selected after inquiry",
-        meals: ["As confirmed in your written quotation"],
+        meals: ["No meals included today"],
         transport: "Private airport or station transfer",
         activities: [
           {
@@ -670,7 +879,7 @@ const baseTours: Tour[] = [
           {
             title: "A Sichuan table shaped around you",
             description:
-              "Select a guided meal, food walk or cooking experience suited to your appetite and preferences.",
+              "Choose a food-oriented walk, meal or cooking session before booking so the proposal names its format, host and any food charge. Private guiding does not automatically include a paid lunch, tastings or a cooking class; unlisted food and drinks are separate.",
           },
         ],
         guideNote:
@@ -748,11 +957,11 @@ const baseTours: Tour[] = [
           {
             title: "Huanglong option",
             description:
-              "Visit Huanglong only when current access and the group's altitude and walking considerations support it.",
+              "Huanglong is a separately quoted option with different road travel, tickets and altitude considerations. Confirm suitability and availability before replacing the gentler Day 6 plan; its transport and admission are not included merely because it appears here.",
           },
         ],
         guideNote:
-          "Huanglong is optional, reaches higher altitude and is never presented as compulsory.",
+          "Huanglong is a separately quoted optional route, reaches higher altitude and is never compulsory. The base proposal must name the gentler Day 6 plan and its actual service; adding Huanglong changes tickets, transfers and potentially timing.",
         coordinates: { latitude: 32.754, longitude: 103.83 },
       },
       {
@@ -803,10 +1012,10 @@ const baseTours: Tour[] = [
     ],
     included: [
       "Private itinerary planning around your dates and travelers",
-      "Hotels and breakfasts listed in the final written proposal",
+      "Six hotel nights: three in Chengdu and three in the Jiuzhaigou area, plus hotel breakfasts on Days 2–7",
       "Private airport, station and road transfers listed in the final proposal",
-      "multilingual guide service as confirmed for each destination",
-      "Domestic rail or flight segment when stated in the final proposal",
+      "Local private guide in the confirmed language on the listed guided days; transfer-day assistance specified separately",
+      "The confirmed Chengdu-to-mountain rail and private road connection; an alternative flight arrangement is separately confirmed and priced",
       "National park transport and attraction tickets listed in the final proposal",
       "Local support before arrival and while traveling",
       "No forced shopping visits",
@@ -896,81 +1105,117 @@ const baseTours: Tour[] = [
     ],
     faqs: [
       {
+        question: "What does this private tour cost, and what is the starting-price basis?",
+        answer: getPublishedPriceDisclosure("chengdu-pandas-jiuzhaigou-private-7-day-tour"),
+      },
+      {
+        question: "Does the seven-day tour return to Chengdu?",
+        answer:
+          "No, not by default. It ends with the confirmed departure transfer from the Jiuzhaigou area on Day 7. An onward train or flight must be checked for your actual departure. A more relaxed return to Chengdu can be designed as an eighth day, with the extra transfer, ticket and night priced separately.",
+      },
+      {
         question: "How do we travel from Chengdu to Jiuzhaigou?",
         answer:
-          "The most suitable rail, road or flight combination is selected for your dates. Your written proposal will name the stations or airports, ticket class, private transfers and expected journey flow.",
+          "The planned connection combines rail and private road travel where practical for the dates. Your proposal names the service, station, seat class, arrival pickup and remaining road transfer. Do not treat a mountain-area station as the park entrance. If schedules require another route, its timing and cost must be agreed.",
       },
       {
-        question: "Does this seven-day itinerary return to Chengdu?",
+        question: "Is Huanglong included on Day 6?",
         answer:
-          "No. The seven-day version ends in the Jiuzhaigou area. A return connection and additional Chengdu night can be added as an eighth day when it suits your onward travel.",
+          "It is a choice requiring confirmation, not a compulsory second park. The proposal specifies whether Day 6 is Huanglong or a gentler local plan, what tickets and transport are included and any cost difference. Health, altitude, weather and operating access are reviewed before accepting Huanglong.",
       },
       {
-        question: "Is Jiuzhaigou suitable for older travelers?",
+        question: "Is Jiuzhaigou suitable for someone worried about altitude?",
         answer:
-          "It can be, when walking comfort, altitude, hotel access and the park route are reviewed honestly before booking. Park vehicles reduce distance, but paths, steps and queues remain.",
+          "It requires an individual review. The valley, gateway and nearby Huanglong have different elevations, and a lower route does not remove all exposure. Discuss medical concerns with your clinician; tell us about walking and altitude limitations before booking. A guide and private car are not medical supervision.",
       },
       {
-        question: "How much walking is involved?",
+        question: "Are park buses and cableways private?",
         answer:
-          "The main park day is easy to moderate for many travelers, using park transport between selected areas. The final walking plan depends on seasonal access, crowds and your group's comfort.",
+          "No. Required scenic-area transport is normally shared under the park’s rules. Private vehicles connect hotels and authorized access points; they do not automatically drive through protected visitor routes. Included lifts, buses and admissions are identified in the proposal, with queues and operating conditions explained.",
       },
       {
-        question: "What altitude should we expect?",
+        question: "Can we avoid long walks in Jiuzhaigou?",
         answer:
-          "Jiuzhaigou is a mountain destination and Huanglong is higher. Share relevant health or mobility concerns before planning and seek medical advice when appropriate; Huanglong remains optional.",
+          "The guide can select fewer stops and shorter walking sections, using operating park transport where appropriate. Boarding, paths, steps and waiting still remain. Share comfortable walking and standing limits and any equipment needs. A shuttle-based plan is not a guarantee of step-free access throughout the day.",
       },
       {
-        question: "Can families with children take this journey?",
+        question: "What panda access is included in Chengdu?",
         answer:
-          "Yes. Panda timing, private transfers, lighter afternoons and a flexible second mountain day make the route adaptable for many families.",
+          "A standard public viewing visit at the confirmed facility with private local guiding and transfers. No holding, feeding, keeper work, volunteering or guaranteed cub sighting is included. Timing follows public entry rules; the route and breaks can change with weather, animal welfare and crowds.",
       },
       {
-        question: "Can you arrange halal or vegetarian meals?",
+        question: "What happens if weather or park controls change the visit?",
         answer:
-          "We can discuss and check suitable options before confirmation. Availability and menu suitability vary by destination, so dietary requirements should be shared before quotation.",
+          "The team checks known material changes and explains workable alternatives, service differences and applicable booking terms. A closed valley, suspended lift or disrupted train cannot be treated as if the same product still operates unchanged. No automatic full refund or identical replacement is promised outside the agreed terms.",
       },
       {
-        question: "Can Huanglong be added?",
+        question: "Which hotel location is used near Jiuzhaigou?",
         answer:
-          "Yes, when seasonal access, weather, altitude and walking ability make it appropriate. It is an optional choice rather than a compulsory part of the journey.",
+          "The proposal names the actual property, room and access plan, balancing comfort with the drive to the park. A hotel marketed with the regional name is not necessarily at the entrance. The final plan should state morning pickup and transfer arrangements rather than relying on the hotel’s destination label.",
       },
       {
-        question: "What happens if mountain weather affects the plan?",
+        question: "When should we visit for autumn colors or quieter conditions?",
         answer:
-          "The local team reviews current conditions and adjusts timing or the second scenic day where possible. Access and visibility cannot be guaranteed, and material changes are discussed with you.",
-      },
-      {
-        question: "How is the private tour quotation calculated?",
-        answer:
-          "Your written proposal prices the journey around dates, party size, hotel and room preferences, transport schedule, guide configuration and requested inclusions.",
+          "Autumn foliage is a seasonal possibility, not a guarantee for a particular booking. Weather, holidays and capacity can affect demand and routes. Choose dates after comparing your scenery priorities, cold tolerance and availability; booking a private guide does not remove public park crowds or reservation requirements.",
       },
     ],
     related: {
+      useListedTours: true,
       tours: [
         {
-          title: "5-Day Chengdu Panda & Sichuan Food Private Tour",
+          title: "5-Day Chengdu Panda and Sichuan Food Tour",
           description:
-            "A compact Chengdu stay for travelers who want pandas, food and tea without adding a mountain journey.",
-          tags: ["Pandas", "Food", "One hotel base"],
-          image: chengduJiuzhaigouAsset.day02,
+            "Stay at one Chengdu hotel and choose a food-focused city program when mountain transfers and altitude do not suit.",
+          tags: ["Family", "Food", "Culture"],
+          image: {
+            src: "/tours/chengdu-pandas/chengdu-hero-panda.webp",
+            alt: "A giant panda resting among bamboo near Chengdu",
+            width: 6016,
+            height: 4016,
+          },
           route: "Chengdu and Leshan",
-          duration: "5 Days / 4 Nights",
+          duration: "5 days / 4 nights",
           href: "/tours/chengdu-pandas-sichuan-table",
         },
+        {
+          title: "8-Day Shanghai and Zhangjiajie Private Tour",
+          description:
+            "Choose sandstone pillars and Tianmen Mountain via Shanghai instead of Jiuzhaigou’s highland lakes.",
+          tags: ["Nature", "Luxury", "Family"],
+          image: {
+            src: "/tours/shanghai-zhangjiajie-floating-peaks/zhangjiajie-sunny-peaks.webp",
+            alt: "Sunlit sandstone peaks and forested valleys in Zhangjiajie",
+            width: 1600,
+            height: 800,
+          },
+          route: "Shanghai · Wulingyuan · Zhangjiajie",
+          duration: "8 days / 7 nights",
+          href: "/tours/shanghai-zhangjiajie-floating-peaks",
+        },
       ],
+
       destinations: [
         {
           name: "Chengdu",
           description: "Pandas, tea houses, Sichuan food and an easy local rhythm.",
-          image: chengduJiuzhaigouAsset.day02,
+          image: {
+            src: "/tours/chengdu-pandas-jiuzhaigou/day-02.webp",
+            alt: "Giant panda resting among bamboo at Chengdu Panda Base",
+            width: 1600,
+            height: 1067,
+          },
           href: "/destinations/chengdu",
         },
         {
           name: "Jiuzhaigou",
           description:
             "Clear alpine lakes, waterfalls and forested valleys shaped by season and light.",
-          image: chengduJiuzhaigouAsset.day05,
+          image: {
+            src: "/tours/chengdu-pandas-jiuzhaigou/day-05.webp",
+            alt: "Clear turquoise lake surrounded by forest in Jiuzhaigou",
+            width: 1600,
+            height: 1067,
+          },
           href: "/destinations/jiuzhaigou",
         },
       ],
@@ -984,10 +1229,82 @@ const baseTours: Tour[] = [
       defaultMessage:
         "I am interested in the 7-Day Chengdu Panda & Jiuzhaigou Private Journey. Please recommend the right hotels, transport plan and daily pace for my group.",
     },
+
+    planningResources: [
+      {
+        label: "Jiuzhaigou: official scenic-area information",
+        href: "https://www.jiuzhai.com/",
+        officialPublisher: "Jiuzhaigou scenic area",
+        description:
+          "Check dated visitor notices, admission and park operation. A park notice does not confirm your rail connection, hotel or private transfer.",
+      },
+      {
+        label: "Chengdu Panda Base: official visitor notices",
+        href: "https://www.panda.org.cn/en/service/notice",
+        officialPublisher: "Chengdu Research Base of Giant Panda Breeding",
+        description:
+          "Check public visitor notices for the Chengdu Research Base. This is not evidence of access at another panda center or permission to touch animals.",
+      },
+      {
+        label: "China Railway 12306: passenger information",
+        href: "https://www.12306.cn/en/faq.html",
+        officialPublisher: "China Railway 12306",
+        description:
+          "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+      },
+      {
+        label: "Chengdu to Jiuzhaigou: the complete connection",
+        href: "/journal/chengdu-to-jiuzhaigou-transport",
+        description: "Review the station-to-park road transfer as part of the journey.",
+      },
+      {
+        label: "Jiuzhaigou altitude and walking",
+        href: "/journal/jiuzhaigou-altitude-walking-accessibility",
+        description: "Compare elevation, park transport and unavoidable walking before booking.",
+      },
+    ],
+
+    faqLimit: 13,
+
+    updatedAt: "2026-11-12",
+
+    inquiryChecklist: [
+      "Dates and Chengdu arrival details",
+      "Choose local departure or an extra return-to-Chengdu day",
+      "Travelers, rooms and luggage",
+      "Altitude and walking considerations",
+      "Whether to price optional Huanglong",
+    ],
+
+    comparison: {
+      title: "Jiuzhaigou lakes or Zhangjiajie sandstone peaks?",
+      intro:
+        "Choose the landscape and gateway pattern you want; these are different parks in different regions.",
+      columns: ["Decision", "This seven-day journey", "Shanghai–Zhangjiajie eight-day journey"],
+      rows: [
+        [
+          "Landscape",
+          "Jiuzhaigou lakes and forest valleys",
+          "Wulingyuan pillars and Tianmen Mountain",
+        ],
+        [
+          "Gateways",
+          "Chengdu arrival; local mountain-area departure",
+          "Shanghai arrival and return",
+        ],
+        [
+          "Planning issue",
+          "Altitude and rail-to-road mountain connection",
+          "Domestic flights, stairs, heights and weather",
+        ],
+      ],
+      href: "/tours/shanghai-zhangjiajie-floating-peaks",
+      linkLabel: "Compare the alternative itinerary",
+    },
   },
   {
     slug: "beijing-great-wall-private-5-day-tour",
-    title: "5-Day Beijing & Great Wall Private Tour",
+    title: "5-Day Beijing and Great Wall Private Tour",
     subtitle:
       "One well-located hotel, private support and five considered days across imperial Beijing and the Great Wall.",
     duration: "5 Days / 4 Nights",
@@ -997,54 +1314,84 @@ const baseTours: Tour[] = [
       eyebrow: "Private Beijing journey",
       image: beijingUnhurriedAsset.hero,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
-      secondary: { label: "Plan My Beijing Journey", href: "#inquiry" },
+      secondary: { label: "Plan My Beijing Journey", href: "#enquiry" },
     },
     seo: {
-      title: "5-Day Private Beijing Tour with Great Wall",
+      title: "5-Day Beijing and Great Wall Private Tour",
       description:
-        "A 5-day private Beijing tour with the Forbidden City, Mutianyu Great Wall, hutongs, private transfers and Muslim-friendly planning on request.",
+        "Explore Beijing in five days with four hotel nights, private guides and drivers, the Forbidden City, hutongs and a dedicated Mutianyu Great Wall day.",
       keywords: [
-        "5 day private Beijing tour",
-        "Beijing private itinerary",
-        "Beijing Great Wall and Forbidden City tour",
-        "Muslim-friendly Beijing tour",
-        "luxury Beijing private journey",
-        "Beijing hutong private tour",
+        "Beijing Great Wall private tour 5 days",
+        "Beijing tour hotel airport transfers included",
+        "Forbidden City Mutianyu private itinerary",
+        "Beijing private guide separate driver",
       ],
+
+      preserveCopy: true,
     },
     overview: {
       pitch:
         "Beijing's essential landmarks, one hotel base and a daily plan adjusted to your interests and walking comfort.",
       facts: [
-        {
-          label: "Duration",
-          value: "5 days / 4 nights",
-          helper: "One Beijing hotel throughout the journey.",
-        },
-        {
-          label: "Destinations",
-          value: "Beijing",
-          helper:
-            "Forbidden City, hutongs, Mutianyu Great Wall, Temple of Heaven and Summer Palace.",
-        },
-        {
-          label: "Travel Style",
-          value: "Private and flexible",
-          helper:
-            "Private English-speaking guide and separate driver on sightseeing days; other languages confirmed on request.",
-        },
+        { label: "Hotels", value: "Four nights in one confirmed Beijing hotel" },
         {
           label: "Pacing",
-          value: "Easy to moderate",
-          helper:
-            "Walking, rest periods, cable-car options and starts are reviewed around the group.",
+          value: "Three sightseeing days; walking and standing at major heritage sites",
         },
         {
-          label: "Planning",
-          value: "Muslim-friendly available",
-          helper: "Dining preferences and prayer timing are discussed before confirmation.",
+          label: "Suitable for",
+          value:
+            "Visitors who want Beijing’s imperial sites and Great Wall in one city stay, without arranging a multi-city China tour.",
         },
       ],
+
+      practicalities: [
+        {
+          label: "Best for",
+          value:
+            "Visitors who want Beijing’s imperial sites and Great Wall in one city stay, without arranging a multi-city China tour.",
+        },
+        {
+          label: "Nights",
+          value: "Four nights in one Beijing hotel; arrival on Day 1 and departure on Day 5.",
+        },
+        {
+          label: "Sightseeing service",
+          value:
+            "Private English-speaking guide and separate professional driver on Days 2–4; other languages and service hours confirmed before booking.",
+        },
+        {
+          label: "Main route",
+          value:
+            "Forbidden City and hutongs on Day 2, Mutianyu on Day 3, Temple of Heaven and Summer Palace on Day 4. Beijing days may swap around reservations.",
+        },
+        {
+          label: "Transport",
+          value:
+            "Private arrival and departure transfers plus the listed touring vehicle. Airports, stations, luggage capacity and any out-of-area supplement are confirmed.",
+        },
+        {
+          label: "Tickets",
+          value:
+            "The confirmed standard admissions and required scenic-area transport are included. Mutianyu cable-car or other lift tickets are included only if expressly selected.",
+        },
+        {
+          label: "Meals",
+          value: "Hotel breakfasts on Days 2–5; lunches and dinners are separate unless added.",
+        },
+        {
+          label: "Walking",
+          value:
+            "Palace courts, garden paths and Wall steps require walking and standing. Day 4 spans two large sites and can be shortened by prior agreement.",
+        },
+        {
+          label: "Starting-price basis",
+          value: getPublishedPriceDisclosure("beijing-great-wall-private-5-day-tour"),
+        },
+      ],
+
+      answer:
+        "Spend five days in Beijing with one hotel base, four nights and private transfers. Explore the Forbidden City and hutongs, give Mutianyu Great Wall its own day, then visit the Temple of Heaven and Summer Palace. A private English-speaking guide and separate driver support the listed sightseeing days. Breakfast and confirmed standard admissions are included; lunch, dinner, workshops and optional cable-car tickets are separate.",
     },
     planningSupport: {
       eyebrow: "Muslim-friendly planning",
@@ -1149,9 +1496,9 @@ const baseTours: Tour[] = [
           },
           {
             time: "Afternoon",
-            title: "Hutong workshop and local texture",
+            title: "Hutong lanes, with an optional workshop",
             description:
-              "Add a private cultural workshop or a slower courtyard and neighborhood walk, depending on the group's interests.",
+              "Follow a selected public neighborhood walk after the palace, or finish earlier if the group prefers. A private cultural workshop or courtyard lunch is a separately quoted addition with its own host, venue and duration; it may replace part of the walk or require extra service hours.",
           },
         ],
         guideNote:
@@ -1179,7 +1526,7 @@ const baseTours: Tour[] = [
             time: "Afternoon",
             title: "Flexible descent and return",
             description:
-              "Use the cable car when it suits the group, then return to Beijing with the evening deliberately left open.",
+              "Use the ascent and descent selected in your written proposal, then return to Beijing with the evening free. Cable car, chairlift and toboggan tickets are separate unless expressly included; operation and eligibility are checked for the travel date.",
           },
         ],
         guideNote:
@@ -1207,7 +1554,7 @@ const baseTours: Tour[] = [
             time: "Afternoon",
             title: "Summer Palace",
             description:
-              "Take a calm route around Kunming Lake and the imperial gardens, with boat or walking options subject to operations and comfort.",
+              "Follow a focused walking route around selected garden and lakeside areas. A lake boat is an optional paid service, subject to operation and separate confirmation; it is not needed to complete the planned visit.",
           },
         ],
         guideNote:
@@ -1368,44 +1715,107 @@ const baseTours: Tour[] = [
     ],
     faqs: [
       {
-        question: "Is this a fixed package or can it be adjusted?",
-        answer:
-          "It is a complete five-day tour that can be adjusted. Hotel level, start times, walking load, meals, cultural workshop, cable-car option and final price are confirmed for your group and dates.",
+        question: "What does this private tour cost, and what is the starting-price basis?",
+        answer: getPublishedPriceDisclosure("beijing-great-wall-private-5-day-tour"),
       },
       {
-        question: "How is the journey Muslim-friendly?",
+        question: "Does this five-day Beijing tour include hotels and airport transfers?",
         answer:
-          "We discuss halal preferences, certification requirements, no-pork or no-alcohol needs, prayer timing, nearby prayer-space information and privacy preferences before confirmation. Specific restaurant certification, mosque access, prayer space and opening hours are checked for your dates rather than assumed.",
+          "Yes. The package includes four nights in the named Beijing hotel and the confirmed arrival and departure transfers. The proposal specifies rooms, beds, breakfast, airport or station and vehicle capacity. Early check-in, late checkout and unusual transfer hours are not assumed. Staying in one hotel avoids packing between sightseeing days.",
       },
       {
-        question: "Can you guarantee certified halal restaurants?",
+        question: "Will we have both a private guide and a driver?",
         answer:
-          "We check the actual route and dates before making any commitment. Tell us whether certification is essential; your written confirmation will state the dining basis and any verified restaurant information.",
+          "Yes. The listed sightseeing days use a private English-speaking guide and a separate professional driver. They have different roles: your guide interprets the sites and manages the visit while the driver handles the vehicle. Other languages and any evening extension need date-specific confirmation. Arrival and departure transfers do not automatically include a full guided tour.",
       },
       {
-        question: "Is the Great Wall suitable for older travelers?",
+        question: "Are Forbidden City tickets guaranteed?",
         answer:
-          "Often yes, when the section, start time, cable-car option, rest points and walking expectations are reviewed honestly in advance. The Wall still includes uneven ground and steps, so the route should be matched to the group rather than assumed.",
+          "No. Standard admission is planned, but tickets must be successfully reserved under the museum’s current rules. The Beijing sightseeing days can be reordered where practical. Ask what happens if admission cannot be secured before paying; a private guide does not create an allocation or override security and capacity limits.",
       },
       {
-        question: "Are lunch and dinner included?",
+        question: "Does the Mutianyu day include the cable car?",
         answer:
-          "They are not included unless your written quotation says otherwise. Your guide may recommend and reserve suitable places after your dietary requirements are checked; meal costs are paid directly unless included in the booking confirmation.",
+          "Only when selected and listed in the final confirmation. Standard admission and required scenic-area transport are distinct from mountain lifts. Discuss enclosed cable car, chairlift or walking before booking and check the total. The Great Wall still has steps and slopes after lift access.",
       },
       {
-        question: "Are there compulsory shopping stops?",
+        question: "Are Temple of Heaven and Summer Palace too much for one day?",
         answer:
-          "No. Restaurants and shopping venues are not selected to generate commission, and this tour has no compulsory shopping stops.",
+          "They form the proposed third sightseeing day, but they are both large sites with travel between them. The guide selects focused routes rather than promising every garden, hall and lake activity. Tell us if you prefer one major site with more rest. Removing or replacing admissions should be agreed before the final quote.",
+      },
+      {
+        question: "How much walking is involved for older travelers?",
+        answer:
+          "There is substantial walking or standing at the palace, gardens and Great Wall, even with a private vehicle. Share individual stair, balance and heat limitations. A shorter route may be possible, but this is not automatically a step-free tour and personal care or mobility equipment are not included.",
+      },
+      {
+        question: "Can we add a hutong cooking class or a courtyard lunch?",
+        answer:
+          "Yes, as a separately quoted activity with a confirmed host, meal, venue and duration. A hutong walk does not itself include a private-home visit or cooking lesson. Adding a workshop may replace another stop or extend guide and vehicle time; the revised plan should explain the trade-off.",
+      },
+      {
+        question: "Are meals or shopping stops built into the tour?",
+        answer:
+          "Hotel breakfasts are included. Lunch and dinner remain independent unless specifically added, and there are no compulsory shopping stops. Tell us dietary needs so suitable options can be checked. A restaurant reservation is not automatically a paid meal or certification of an allergy-safe kitchen.",
+      },
+      {
+        question: "Can we arrive by train and depart from a different Beijing airport?",
+        answer:
+          "Yes, subject to a written transfer plan. State the exact station or airport and flight or train details. Beijing Capital and Daxing are different gateways; the pickup timing depends on the confirmed one. The last day does not assume sightseeing fits before any departure.",
+      },
+      {
+        question: "Should we choose this or a private Great Wall day tour?",
+        answer:
+          "Choose five days if you want Beijing accommodation, arrival and departure transfers and three guided sightseeing days planned together. Choose the Mutianyu day tour if you already have your Beijing stay arranged and only need one day’s hotel-to-hotel service. Their included lift and meal arrangements must be compared separately.",
       },
     ],
     related: {
-      tours: [],
+      useListedTours: true,
+      tours: [
+        {
+          title: "Private Mutianyu Great Wall Tour from Beijing",
+          description:
+            "Choose a single Wall day if your Beijing accommodation and other sightseeing are already arranged.",
+          tags: ["Culture", "Family", "Photography"],
+          image: {
+            src: "/tours/mutianyu-private-day-tour/01-mutianyu-great-wall-autumn-panorama.webp",
+            alt: "Mutianyu Great Wall winding through autumn-colored mountains near Beijing",
+            width: 2160,
+            height: 3240,
+          },
+          route: "Beijing · Mutianyu Great Wall · Beijing",
+          duration: "1 day · private",
+          href: "/tours/private-mutianyu-great-wall-day-tour",
+        },
+        {
+          title: "6-Day Xi'an and Beijing Private Tour",
+          description:
+            "Add the Terracotta Army and a high-speed train connection, with two Xi’an nights and three in Beijing.",
+          tags: ["First-time China", "Culture", "Luxury"],
+          image: {
+            src: "/tours/xian-beijing-private-journey/hero.webp",
+            alt: "The Great Wall rising above the mountains near Beijing in warm evening light",
+            width: 1600,
+            height: 1067,
+          },
+          route: "Xi'an · Beijing",
+          duration: "6 days / 5 nights",
+          href: "/tours/xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+        },
+      ],
+
       destinations: [
         {
           name: "Beijing",
           description:
             "Imperial architecture, hutong neighborhoods, the Great Wall and a capital with many different rhythms.",
-          image: destinationAsset.beijingForbiddenCityWide,
+          image: {
+            src: "/home/editorial/great-wall-private-china-travel.webp",
+            alt: "A traveler looking across the Great Wall near Beijing",
+            width: 1086,
+            height: 1448,
+            objectPosition: "50% 44%",
+          },
           href: "/destinations/beijing",
         },
       ],
@@ -1419,10 +1829,60 @@ const baseTours: Tour[] = [
       defaultMessage:
         "I am interested in the 5-Day Beijing & Great Wall Private Tour. Please help me plan dining preferences, prayer timing and a suitable pace for my travelers.",
     },
+
+    planningResources: [
+      {
+        label: "The Palace Museum: official visitor information",
+        href: "https://intl.dpm.org.cn/visit.html",
+        officialPublisher: "The Palace Museum",
+        description:
+          "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+      },
+      {
+        label: "Mutianyu Great Wall: official visitor information",
+        href: "https://www.mutianyugreatwall.com/",
+        officialPublisher: "Mutianyu Great Wall scenic area",
+        description:
+          "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included.",
+      },
+      {
+        label: "China entry requirements: official information",
+        href: "https://en.nia.gov.cn/",
+        officialPublisher: "National Immigration Administration of China",
+        description:
+          "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+      },
+    ],
+
+    faqLimit: 13,
+
+    updatedAt: "2026-11-12",
+
+    inquiryChecklist: [
+      "Dates and flight or rail details",
+      "Travelers, rooms and hotel preference",
+      "Great Wall walking and lift preferences",
+      "Guide language and dietary requirements",
+      "Any optional hosted experience",
+    ],
+
+    comparison: {
+      title: "Five days in Beijing or one Great Wall day?",
+      intro:
+        "Choose the package if you need accommodation and several days of private touring. Choose the day service if your Beijing arrangements already exist.",
+      columns: ["Decision", "This five-day package", "Mutianyu day service"],
+      rows: [
+        ["Accommodation", "Four Beijing hotel nights", "No accommodation"],
+        ["Sightseeing", "Palace, Wall and further Beijing visits", "One Mutianyu outing"],
+        ["Best fit", "A supported Beijing stay", "An addition to your own itinerary"],
+      ],
+      href: "/tours/private-mutianyu-great-wall-day-tour",
+      linkLabel: "Compare the alternative itinerary",
+    },
   },
   {
     slug: "shanghai-zhangjiajie-floating-peaks",
-    title: "8-Day Shanghai & Zhangjiajie Private Tour",
+    title: "8-Day Shanghai and Zhangjiajie Private Tour",
     subtitle:
       "Shanghai's riverfront and Zhangjiajie's sandstone peaks, connected by private transfers, local guides and a protected final night.",
     duration: "8 Days / 7 Nights",
@@ -1432,56 +1892,97 @@ const baseTours: Tour[] = [
       eyebrow: "Private Shanghai and Zhangjiajie journey",
       image: shanghaiZhangjiajieAsset.hero,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
-      secondary: { label: "Request My Quotation", href: "#inquiry" },
+      secondary: { label: "Request My Quotation", href: "#enquiry" },
     },
     seo: {
-      title: "8-Day Private Shanghai and Zhangjiajie Tour",
+      title: "8-Day Shanghai and Zhangjiajie Private Tour",
       description:
-        "An 8-day private Shanghai and Zhangjiajie tour with expert guides, private transfers, domestic flights, park transport and selected hotels.",
+        "Combine Shanghai and Zhangjiajie in eight days with seven hotel nights, private guides, domestic flights, Wulingyuan and Tianmen Mountain. Glass Bridge is optional.",
       keywords: [
-        "Shanghai Zhangjiajie private tour",
-        "8 day Shanghai Zhangjiajie itinerary",
-        "luxury Zhangjiajie tour",
-        "private China nature tour",
-        "Shanghai and Avatar Mountains tour",
+        "Shanghai Zhangjiajie private tour 8 days",
+        "Zhangjiajie Wulingyuan Tianmen Mountain itinerary",
+        "Shanghai Zhangjiajie flights private tour",
+        "Zhangjiajie tour Glass Bridge optional",
       ],
+
+      preserveCopy: true,
     },
     overview: {
       pitch:
         "Contemporary Shanghai and extraordinary mountain scenery, joined by a carefully managed domestic flight plan.",
       facts: [
-        {
-          label: "Duration",
-          value: "8 days / 7 nights",
-          helper: "Three Shanghai nights and four nights across the Zhangjiajie region.",
-        },
-        {
-          label: "Destinations",
-          value: "Shanghai + Zhangjiajie",
-          helper: "City skyline, Wulingyuan peaks, Golden Whip Stream, and Tianmen Mountain.",
-        },
-        {
-          label: "Travel Style",
-          value: "Private and unhurried",
-          helper: "Private transfers and multilingual local guides.",
-        },
+        { label: "Hotels", value: "Shanghai 2 · Wulingyuan 2 · Zhangjiajie City 2 · Shanghai 1" },
         {
           label: "Pacing",
-          value: "Easy to moderate",
-          helper: "Walking routes and glass experiences can be adjusted.",
+          value: "Mountain sightseeing with shared lifts, steps and 3 hotel changes",
         },
         {
-          label: "Suitable For",
-          value: "Couples, families, private groups",
-          helper: "Designed for mid- to high-end international travelers.",
+          label: "Suitable for",
+          value:
+            "Visitors who want a major city and sandstone-mountain contrast, accepting hotel changes, flights and public scenic transport.",
         },
       ],
+
+      practicalities: [
+        {
+          label: "Best for",
+          value:
+            "Visitors who want a major city and sandstone-mountain contrast, accepting hotel changes, flights and public scenic transport.",
+        },
+        {
+          label: "Nights",
+          value:
+            "Shanghai 2 nights, Wulingyuan 2, Zhangjiajie City 2 and final Shanghai 1: 7 nights across 4 stay blocks.",
+        },
+        {
+          label: "Flights",
+          value:
+            "Economy domestic flights Shanghai–Zhangjiajie and back are included as confirmed, with actual dates, airports, baggage and fare conditions stated.",
+        },
+        {
+          label: "Park geography",
+          value:
+            "Wulingyuan / Zhangjiajie National Forest Park, Tianmen Mountain and the Glass Bridge are separate places and ticket products.",
+        },
+        {
+          label: "Included mountain plan",
+          value:
+            "Yuanjiajie and Tianzi Mountain, selected Golden Whip Stream walking and Tianmen Mountain, with the confirmed required admission and park transport.",
+        },
+        {
+          label: "Optional services",
+          value:
+            "Glass Bridge and Huangpu sightseeing cruise are included only if separately selected and listed. They are not implied by landscape or night photographs.",
+        },
+        {
+          label: "Private and shared",
+          value:
+            "Private road transfers and local guiding; park buses, elevators, cableways and public attractions are shared.",
+        },
+        {
+          label: "Return buffer",
+          value:
+            "Day 7 returns to Shanghai before the Day 8 international departure. This adds margin but does not guarantee protection against every flight disruption.",
+        },
+        {
+          label: "Meals and walking",
+          value:
+            "Hotel breakfasts on Days 2–8 are included; lunch and dinner are separate. Mountain steps, boarding, standing and exposed viewpoints remain.",
+        },
+        {
+          label: "Starting-price basis",
+          value: getPublishedPriceDisclosure("shanghai-zhangjiajie-floating-peaks"),
+        },
+      ],
+
+      answer:
+        "Combine Shanghai with Zhangjiajie in eight days and seven nights. After Shanghai, fly to the mountain region for Wulingyuan’s sandstone peaks, Golden Whip Stream and a separate Tianmen Mountain day. Private local guides, transfers and the confirmed park transport are included. Fly back to Shanghai on Day 7 before departure on Day 8; Glass Bridge and river-cruise additions are optional.",
     },
     highlights: [
       {
         title: "Shanghai from old lanes to river lights",
         description:
-          "Move from Yu Garden and the historic Bund to Pudong's illuminated skyline, with a Huangpu River cruise when conditions allow.",
+          "Explore Yu Garden, the Bund and Shanghai's changing waterfront. A Huangpu sightseeing cruise is a separately selected option; the quote confirms its ticket, timing and any additional service hours.",
         category: "Culture",
         image: shanghaiZhangjiajieAsset.shanghaiDusk,
       },
@@ -1533,7 +2034,7 @@ const baseTours: Tour[] = [
         title: "Old and New Shanghai",
         destination: "Shanghai",
         summary:
-          "Classical garden details, historic waterfront architecture, and Shanghai's skyline after dark.",
+          "Explore Yu Garden and a selected stretch of the Bund with your private guide. A Huangpu evening cruise can be added only when selected and priced in your proposal; otherwise return to the hotel after the confirmed city route.",
         image: shanghaiZhangjiajieAsset.shanghaiBund,
         hotel: "Shanghai hotel",
         meals: ["Breakfast"],
@@ -1553,9 +2054,9 @@ const baseTours: Tour[] = [
           },
           {
             time: "Evening",
-            title: "Huangpu River lights",
+            title: "Optional Huangpu evening cruise",
             description:
-              "Take a standard evening cruise if weather and operations allow, or return to the hotel earlier.",
+              "Add a shared sightseeing cruise only if its ticket, sailing, guiding and return transport are selected and priced in your proposal. Weather and operator decisions affect sailing; declining the cruise leaves the confirmed daytime itinerary in place.",
           },
         ],
         guideNote: "Typical walking is 3-5 kilometres and can be adjusted around the group.",
@@ -1576,7 +2077,7 @@ const baseTours: Tour[] = [
             time: "Morning",
             title: "Shanghai at street level",
             description:
-              "Take a short neighborhood walk selected around the hotel's location and flight time.",
+              "Keep any remaining morning for an independent walk close to the hotel, or ask for a separately confirmed guided activity. The airport pickup and actual flight schedule take priority.",
           },
           {
             time: "Afternoon",
@@ -1628,7 +2129,7 @@ const baseTours: Tour[] = [
         title: "Golden Whip Stream and Optional Glass Bridge",
         destination: "Zhangjiajie National Forest Park",
         summary:
-          "A gentler forest-and-water morning, followed by a glass experience only for travelers who want it.",
+          "Walk a selected Golden Whip Stream section, then transfer to Zhangjiajie City for the next two nights. A Grand Canyon Glass Bridge visit is an optional paid addition, selected before booking and checked against park time, the hotel move and your comfort with heights.",
         image: shanghaiZhangjiajieAsset.goldenWhipStream,
         hotel: "Carefully selected Zhangjiajie City hotel",
         meals: ["Breakfast"],
@@ -1642,9 +2143,9 @@ const baseTours: Tour[] = [
           },
           {
             time: "Afternoon",
-            title: "Zhangjiajie Grand Canyon",
+            title: "Optional Grand Canyon Glass Bridge",
             description:
-              "Cross the Glass Bridge only if everyone is comfortable; a non-glass alternative can be arranged before tickets are confirmed.",
+              "The Grand Canyon and Glass Bridge are separate from the forest-park visit. Add them only when their tickets, transfers and guide hours are quoted and confirmed. Without that addition, keep the agreed forest route and city transfer; a non-glass alternative needs its own service and price confirmation.",
           },
           {
             time: "Evening",
@@ -1874,45 +2375,120 @@ const baseTours: Tour[] = [
     ],
     faqs: [
       {
-        question: "Is this a fixed package?",
-        answer:
-          "It is a complete eight-day tour that can be adjusted. Hotels, room types, flights, vehicle size, tickets and final price are confirmed in writing for your dates and group.",
+        question: "What does this private tour cost, and what is the starting-price basis?",
+        answer: getPublishedPriceDisclosure("shanghai-zhangjiajie-floating-peaks"),
       },
       {
-        question: "Are the Glass Bridge and glass walkways compulsory?",
+        question: "Does this itinerary include both Wulingyuan and Tianmen Mountain?",
         answer:
-          "No. Glass experiences are optional. A non-glass alternative or a slower afternoon can be arranged before tickets are confirmed.",
+          "Yes, in the proposed confirmed package, on separate days. Wulingyuan contains the sandstone-pillar park areas, while Tianmen Mountain is nearer Zhangjiajie City and uses another ticket and transport system. They are not two names for one attraction. Operating routes and ticket options need date-specific confirmation.",
       },
       {
-        question: "How difficult is the walking?",
+        question: "Is the Zhangjiajie Glass Bridge included?",
         answer:
-          "The route is easy to moderate and uses cableways, elevators, escalators, and adjustable walking sections. Uneven paths, steps, queues, and changing weather cannot be removed completely.",
+          "Not automatically. It is an optional separate attraction and ticket, considered after the Golden Whip Stream plan and the move to the city hotel. Adding it affects road time, walking, service hours and cost. The existing itinerary does not include every glass walkway or promise suitability for travelers afraid of heights.",
       },
       {
-        question: "Why does the journey return to Shanghai on Day 7?",
+        question: "How many times do we change hotels?",
         answer:
-          "The final Shanghai night protects the international departure from the risk and stress of a same-day domestic connection.",
+          "The seven nights use Shanghai for two nights, Wulingyuan for two, Zhangjiajie City for two and Shanghai again for the final night. Moving from Wulingyuan to the city makes the Tianmen and airport chapters more practical. The return Shanghai hotel may differ from the first one and is confirmed in the proposal.",
       },
       {
-        question: "Can you support dietary or mobility needs?",
+        question: "Are the two domestic flights and airport transfers included?",
         answer:
-          "Yes, when shared before quotation. Tell us about allergies, vegetarian or vegan needs, halal preferences, walking comfort, child seats, and room arrangements so they can be checked properly.",
+          "Yes, as specified in the written package. Check the actual Shanghai airport, flight times, economy fare, baggage and all local transfers before booking international tickets. A published route does not establish a specific nonstop schedule on every date. Any connection or schedule change is explained in the proposal.",
+      },
+      {
+        question: "Why return to Shanghai a day before departure?",
+        answer:
+          "The final Shanghai night reduces reliance on a same-day mountain flight connecting with an international departure. It is a planning buffer, not a disruption guarantee or insurance policy. Your tickets’ connection conditions, baggage and travel insurance remain important, and major cancellations can still require a revised plan.",
+      },
+      {
+        question: "How difficult is the walking in Zhangjiajie?",
+        answer:
+          "Lifts and cableways reduce some climbing but do not remove steps, queues, standing, boarding and uneven paths. The guide selects routes around conditions and the group. Share knees, balance, wheelchair needs and comfort with heights before booking. A panoramic photo does not prove that its viewpoint is accessible to everyone.",
+      },
+      {
+        question: "Do we have a private vehicle inside the national park?",
+        answer:
+          "No private-car access is assumed through restricted core areas. The driver handles authorized road transfers, and your guide accompanies the booked public park systems. Required buses, elevators and cableways are included only as stated. Shared operations can have queues and route changes.",
+      },
+      {
+        question: "Is a Huangpu River evening cruise included in Shanghai?",
+        answer:
+          "Only if selected in the final confirmation. The city itinerary and its skyline photographs do not automatically include a cruise, premium seats, private boat or extended nighttime guide service. If you want one, the ticket, transfers, guide hours and return plan need to be priced together.",
+      },
+      {
+        question: "What if cloud or wind affects Tianmen Mountain?",
+        answer:
+          "Visibility and operation cannot be guaranteed. The team reviews the available route and any material closure with you, explains possible alternatives and applies the written change terms. A different attraction is not automatically equivalent. Tell us if your booking depends on one particular cableway or glass feature.",
+      },
+      {
+        question: "Should we choose this or Chengdu Chongqing Zhangjiajie?",
+        answer:
+          "Choose eight days for Shanghai gateways, a city-and-mountain contrast and a return Shanghai night. Choose eleven days for Sichuan food, pandas, Chongqing and a mountain finish, with two independent days. Tianmen is planned in this eight-day route but not automatically included in the eleven-day route.",
       },
     ],
     related: {
-      tours: [],
+      useListedTours: true,
+      tours: [
+        {
+          title: "11-Day Chengdu, Chongqing and Zhangjiajie Tour",
+          description:
+            "Choose eleven days with Chengdu and Chongqing, two independent days and departure from Zhangjiajie.",
+          tags: ["Nature", "Food", "Photography"],
+          image: {
+            src: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour/hero-01.webp",
+            alt: "International travelers looking across Zhangjiajie's sandstone peaks in soft mountain light",
+            width: 1600,
+            height: 1067,
+            priority: true,
+          },
+          route: "Chengdu · Chongqing · Zhangjiajie",
+          duration: "11 days / 10 nights",
+          href: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour",
+        },
+        {
+          title: "Private Shanghai Day Tour with Guide and Driver",
+          description:
+            "Keep only a private Shanghai day if you are arranging the mountain region and flights yourself.",
+          tags: ["Culture", "Food", "Family"],
+          image: {
+            src: "/tours/private-shanghai-day-tour/01-shanghai-lujiazui-at-dusk.webp",
+            alt: "Lujiazui skyline at dusk, with the Oriental Pearl Tower and Shanghai Tower",
+            width: 4649,
+            height: 6000,
+          },
+          route: "Shanghai hotel · Old City · Bund · Former French Concession · Shanghai hotel",
+          duration: "1 day · private · about 8 hours",
+          href: "/tours/private-shanghai-day-tour-guide-driver",
+        },
+      ],
+
       destinations: [
         {
           name: "Shanghai",
           description: "Historic riverfront architecture, neighborhood life, and Pudong's skyline.",
-          image: destinationAsset.shanghaiSkyline,
+          image: {
+            src: "/home/shanghai-pudong-skyline.webp",
+            alt: "Shanghai Pudong skyline at dusk",
+            width: 1920,
+            height: 1080,
+            objectPosition: "50% 45%",
+          },
           href: "/destinations/shanghai",
         },
         {
           name: "Zhangjiajie",
           description:
             "Sandstone peaks, forest paths, cableways, and weather-shaped mountain days.",
-          image: destinationAsset.zhangjiajieForest,
+          image: {
+            src: "/home/zhangjiajie-national-forest.webp",
+            alt: "Sandstone pillar forest in Zhangjiajie",
+            width: 1920,
+            height: 1200,
+            objectPosition: "52% 38%",
+          },
           href: "/destinations/zhangjiajie",
         },
       ],
@@ -1926,10 +2502,58 @@ const baseTours: Tour[] = [
       defaultMessage:
         "I am interested in the 8-Day Shanghai & Zhangjiajie Private Tour. Please prepare a quotation for my party.",
     },
+
+    planningResources: [
+      {
+        label: "UNESCO: Wulingyuan Scenic and Historic Interest Area",
+        href: "https://whc.unesco.org/en/list/640/",
+        officialPublisher: "UNESCO World Heritage Centre",
+        description:
+          "Understand the sandstone landscape and protected property. This is not the operating authority for Tianmen Mountain, the Glass Bridge, park lifts or ticket availability.",
+      },
+      {
+        label: "How difficult is Zhangjiajie?",
+        href: "/journal/how-difficult-is-zhangjiajie",
+        description:
+          "Understand steps, cableways, public transport and exposure before choosing a route.",
+      },
+      {
+        label: "Explore Zhangjiajie",
+        href: "/destinations/zhangjiajie",
+        description:
+          "Distinguish the pillar park, Tianmen Mountain and separate glass attractions.",
+      },
+    ],
+
+    faqLimit: 13,
+
+    updatedAt: "2026-11-12",
+
+    inquiryChecklist: [
+      "Dates and international flight details",
+      "Travelers, rooms and luggage",
+      "Walking comfort with stairs and heights",
+      "Whether to price the optional glass bridge or river cruise",
+      "Guide language and dietary requirements",
+    ],
+
+    comparison: {
+      title: "Shanghai and peaks or a southwest-China circuit?",
+      intro:
+        "Choose the city chapters and trip length rather than assuming every Zhangjiajie tour includes the same mountains.",
+      columns: ["Decision", "This eight-day route", "11-day southwest route"],
+      rows: [
+        ["City chapters", "Shanghai", "Chengdu and Chongqing"],
+        ["Tianmen Mountain", "Listed in the base itinerary", "Optional paid Day 10 choice"],
+        ["Finish", "Return to Shanghai for the final night", "Depart Zhangjiajie"],
+      ],
+      href: "/tours/chengdu-chongqing-zhangjiajie-private-11-day-tour",
+      linkLabel: "Compare the alternative itinerary",
+    },
   },
   {
     slug: "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
-    title: "6-Day Xi'an & Beijing Private Tour",
+    title: "6-Day Xi'an and Beijing Private Tour",
     subtitle:
       "Terracotta Warriors, the Great Wall and two imperial capitals, arranged with private guiding, comfortable rail travel and a pace shaped around your group.",
     duration: "6 Days / 5 Nights",
@@ -1939,55 +2563,88 @@ const baseTours: Tour[] = [
       eyebrow: "Private two-city China journey",
       image: xianBeijingAsset.hero,
       primary: { label: "Explore Itinerary", href: "#itinerary" },
-      secondary: { label: "Request My Tailored Proposal", href: "#inquiry" },
+      secondary: { label: "Request My Tailored Proposal", href: "#enquiry" },
     },
     seo: {
-      title: "6-Day Private Xi'an and Beijing Tour",
+      title: "6-Day Xi'an and Beijing Private Tour",
       description:
-        "A private six-day Xi'an and Beijing tour with the Terracotta Warriors, Forbidden City, Mutianyu Great Wall, high-speed rail and tailored pacing.",
+        "Visit Xian and Beijing in six days with private guides, five hotel nights and high-speed rail. See the Terracotta Army, Forbidden City and Great Wall. Plan a trip.",
       keywords: [
-        "private Xi'an and Beijing tour",
-        "6 day Xi'an Beijing itinerary",
-        "Terracotta Warriors and Great Wall tour",
-        "Beijing Xi'an private tour",
-        "private Terracotta Warriors tour",
-        "Muslim-friendly Xi'an Beijing tour",
-        "China imperial capitals itinerary",
-        "luxury Xi'an and Beijing travel",
+        "Xian Beijing private tour 6 days",
+        "Terracotta Warriors Forbidden City Great Wall itinerary",
+        "Xian to Beijing high speed train private tour",
+        "six day China history tour",
       ],
+
+      preserveCopy: true,
     },
     overview: {
       pitch:
         "Two of China's most meaningful chapters, privately paced: Xi'an for the Terracotta Warriors and Silk Road heritage, then Beijing for imperial landmarks and the Great Wall.",
       facts: [
         {
-          label: "Duration",
-          value: "6 days / 5 nights",
-          helper: "Three nights in Xi'an and two nights in Beijing.",
+          label: "Hotels",
+          value: "Two nights Xi’an and three Beijing; five confirmed hotel nights",
         },
+        { label: "Pacing", value: "Focused museum and heritage days; rail transfer on Day 3" },
         {
-          label: "Destinations",
-          value: "Xi'an + Beijing",
-          helper: "Terracotta Warriors, City Wall, Forbidden City and Mutianyu Great Wall.",
-        },
-        {
-          label: "Travel Style",
-          value: "Private and considered",
-          helper: "Private touring, multilingual support and high-speed rail between cities.",
-        },
-        {
-          label: "Pacing",
-          value: "Easy to moderate",
-          helper:
-            "Walking, start times, rest windows and Great Wall access are reviewed around your group.",
-        },
-        {
-          label: "Planning",
-          value: "Muslim-friendly available",
-          helper:
-            "Halal dining, prayer timing and dietary needs can be planned before confirmation.",
+          label: "Suitable for",
+          value:
+            "Travelers with a short stay who want the Terracotta Army and Beijing’s imperial sites without attempting two major Beijing visits in one day.",
         },
       ],
+
+      practicalities: [
+        {
+          label: "Best for",
+          value:
+            "Travelers with a short stay who want the Terracotta Army and Beijing’s imperial sites without attempting two major Beijing visits in one day.",
+        },
+        {
+          label: "Night allocation",
+          value:
+            "Xi’an 2 nights and Beijing 3 nights: 5 hotel nights. The transfer is on Day 3, leaving Days 4 and 5 for Beijing sightseeing.",
+        },
+        {
+          label: "Route",
+          value:
+            "Arrive Xi’an; Terracotta Army Day 2; high-speed rail Day 3; Forbidden City Day 4; Mutianyu Day 5; Beijing departure Day 6.",
+        },
+        {
+          label: "Private service",
+          value:
+            "Local private guides and separate drivers on the listed sightseeing days, plus the booked station, airport and hotel transfers.",
+        },
+        {
+          label: "Rail",
+          value:
+            "Xi’an–Beijing high-speed rail is part of the selected package, with class, station, time, baggage and fare rules specified before booking.",
+        },
+        {
+          label: "Admissions",
+          value:
+            "Standard Terracotta Army, Forbidden City and Mutianyu admissions, subject to successful reservation. Other city tickets are included only if named.",
+        },
+        {
+          label: "Meals and options",
+          value:
+            "Hotel breakfasts on Days 2–6; lunches, dinners, clay workshops and Great Wall cable-car or chairlift tickets are separate unless selected.",
+        },
+        {
+          label: "Walking",
+          value:
+            "Museum halls, large palace courts, stations and the Wall involve distance, steps and queues. This is a focused cultural route, not a step-free itinerary.",
+        },
+        {
+          label: "Starting-price basis",
+          value: getPublishedPriceDisclosure(
+            "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+          ),
+        },
+      ],
+
+      answer:
+        "Connect Xi’an and Beijing in six days with five hotel nights: two in Xi’an and three in Beijing. Visit the Terracotta Army, travel north by high-speed rail, then give the Forbidden City and Mutianyu Great Wall separate days. Private local guides, drivers, listed admissions and transfers are included as confirmed. Breakfasts are included; other meals, workshops and optional Great Wall lift tickets are separate.",
     },
     highlights: [
       {
@@ -2066,77 +2723,71 @@ const baseTours: Tour[] = [
           },
         ],
         guideNote:
-          "Museum entry is subject to operating rules and ticket availability. Flash photography and tripods are not permitted in the exhibition halls.",
+          "Museum entry and open exhibition areas depend on the confirmed ticket and current operating arrangements. Your guide checks photography and equipment rules with the museum; follow the notices displayed on the day.",
         coordinates: { latitude: 34.3841, longitude: 109.2785 },
       },
       {
         day: 3,
-        title: "Xi'an's City Wall, Food and Night Heritage",
-        destination: "Xi'an",
-        summary:
-          "See Xi'an beyond the museum: the City Wall, old-city rhythm, Muslim Quarter food culture and an evening shaped around your interests.",
-        image: xianBeijingAsset.day03,
-        hotel: "Xi'an hotel",
-        meals: ["Breakfast"],
-        transport: "Private vehicle and walking",
-        activities: [
-          {
-            time: "Morning",
-            title: "City Wall and central Xi'an",
-            description:
-              "Walk or cycle a manageable section of the Ming-era wall, then continue through the central city with pauses for photographs and local context.",
-          },
-          {
-            time: "Afternoon",
-            title: "A table planned around you",
-            description:
-              "Explore the Muslim Quarter or another neighborhood with dining checked around halal, vegetarian, allergy, spice and family requirements.",
-          },
-          {
-            time: "Evening",
-            title: "Datang Everbright City or a quieter alternative",
-            description:
-              "Choose the illuminated Tang-inspired promenade when the atmosphere suits you, or replace it with a calm dinner and early return.",
-          },
-        ],
-        guideNote:
-          "Xi'an's Muslim Quarter is a living food and trading district, not a staged attraction. The route can be adjusted around crowds, prayer timing and dining preferences.",
-        coordinates: { latitude: 34.2583, longitude: 108.9471 },
-      },
-      {
-        day: 4,
         title: "High-Speed Rail to Beijing",
         destination: "Xi'an to Beijing",
         summary:
-          "Move from Xi'an to Beijing by high-speed rail, with private station transfers and an afternoon introduction to the capital after arrival.",
-        image: xianBeijingAsset.day04,
+          "Travel from Xi'an to Beijing by the confirmed high-speed train, with private station transfers at both ends. Leave the evening for check-in, dinner and rest; no major Beijing monument is added to this transfer day.",
+        image: xianBeijingAsset.day03,
         hotel: "Beijing hotel selected around the historic centre and departure plan",
         meals: ["Breakfast"],
-        transport: "Private station transfers and high-speed rail",
+        transport: "Private station transfers and confirmed high-speed rail",
         activities: [
           {
-            time: "Morning",
-            title: "A comfortable rail transition",
+            time: "At the confirmed train time",
+            title: "One coordinated rail journey",
             description:
-              "Your local team manages the hotel departure, station arrival and luggage flow around the confirmed train and seat class.",
+              "Your local teams coordinate hotel departure, station arrival and luggage. The proposal specifies the train and seat class; public station security and boarding rules apply.",
           },
           {
-            time: "Afternoon",
-            title: "Beijing at street level",
+            time: "After arrival",
+            title: "Settle into Beijing",
             description:
-              "After checking in, take a light introduction through a nearby hutong, park or historic quarter rather than forcing a major landmark into the arrival day.",
+              "Meet the Beijing driver and transfer to the hotel. A nearby self-guided walk is optional if time and energy allow.",
           },
         ],
         guideNote:
-          "The exact train and station details are confirmed in writing before payment. A private transfer is arranged at both ends.",
+          "The proposal names the train, seat class, stations and private transfers at both ends. Allow time for public security and boarding. Tell us before booking if you need help carrying or lifting bags; porter service or an accompanying guide requires a separate arrangement.",
+        coordinates: { latitude: 39.9042, longitude: 116.4074 },
+      },
+      {
+        day: 4,
+        title: "The Forbidden City and Beijing at Street Level",
+        destination: "Beijing",
+        summary:
+          "Give the Forbidden City a dedicated sightseeing day, with a focused private interpretation of palace architecture and imperial life. A shorter hutong introduction can follow when time and energy allow. Adjust the day order around confirmed reservations and opening arrangements.",
+        image: xianBeijingAsset.day04,
+        hotel: "Beijing hotel selected around the historic centre and departure plan",
+        meals: ["Breakfast"],
+        transport: "Private vehicle, local guide and walking",
+        activities: [
+          {
+            time: "At the confirmed reservation time",
+            title: "The Forbidden City",
+            description:
+              "Follow a selected palace route with time for context and pauses. Admission depends on successful reservation; private guiding does not bypass public security or queues.",
+          },
+          {
+            time: "Remaining service time",
+            title: "A shorter neighborhood perspective",
+            description:
+              "Choose a manageable hutong walk or return to the hotel. The Temple of Heaven is a possible substitute agreed before booking, rather than another major site promised on top.",
+          },
+        ],
+        guideNote:
+          "The palace reservation determines the practical day order. If the Beijing visits need to swap, the team checks both attraction tickets and guide availability; a transfer booking does not guarantee museum entry.",
         coordinates: { latitude: 39.9042, longitude: 116.4074 },
       },
       {
         day: 5,
-        title: "Imperial Beijing and the Great Wall",
+        title: "A Full Day for Mutianyu Great Wall",
         destination: "Beijing / Mutianyu",
         summary:
-          "Choose the order that best fits current ticketing and weather: a carefully timed Great Wall visit and the essential imperial centre of Beijing.",
+          "Travel privately to Mutianyu and spend the day on one Great Wall section. Your guide sets a realistic walking route with turn-back points and time for the return drive. The Forbidden City is visited on a different day.",
         image: xianBeijingAsset.day06,
         hotel: "Beijing hotel",
         meals: ["Breakfast"],
@@ -2144,15 +2795,21 @@ const baseTours: Tour[] = [
         activities: [
           {
             time: "Morning",
-            title: "Mutianyu Great Wall",
+            title: "Private drive to Mutianyu",
             description:
-              "Walk a selected section of the Wall with pauses for views and photographs. Cable-car or chairlift access can be considered around walking comfort.",
+              "The pickup time allows for road conditions and the planned wall route. Admission and required scenic-area transport are specified in your proposal.",
+          },
+          {
+            time: "At the Wall",
+            title: "Selected watchtowers and a sensible return",
+            description:
+              "Walk as far as suits the least-mobile traveler. Cable car, chairlift and toboggan are optional extras unless expressly added; stairs and uneven paving remain even with a lift.",
           },
           {
             time: "Afternoon",
-            title: "Forbidden City or Temple of Heaven",
+            title: "Return to Beijing",
             description:
-              "When opening hours, tickets and energy allow, continue with one imperial landmark; otherwise the visit is paced across the most suitable available order.",
+              "Allow for lunch at your expense and the return drive. No second major Beijing monument is added after the Wall.",
           },
         ],
         guideNote:
@@ -2188,7 +2845,7 @@ const baseTours: Tour[] = [
     accommodations: [
       {
         name: "Xi'an historic-centre stay",
-        destination: "Xi'an, 3 nights",
+        destination: "Xi'an, 2 nights",
         description:
           "A well-located hotel selected around access to the Old City, room configuration, breakfast and a comfortable return after the museum day.",
         roomStyle: "Hotel tier and room category confirmed after inquiry",
@@ -2197,7 +2854,7 @@ const baseTours: Tour[] = [
       },
       {
         name: "Beijing historic-centre stay",
-        destination: "Beijing, 2 nights",
+        destination: "Beijing, 3 nights",
         description:
           "A practical, comfortable base selected around the historic centre, airport plan and your preferred balance of convenience and atmosphere.",
         roomStyle: "Hotel tier and room category confirmed after inquiry",
@@ -2206,15 +2863,14 @@ const baseTours: Tour[] = [
       },
     ],
     included: [
-      "Private itinerary planning around your dates and travelers",
-      "Hotels and breakfasts listed in the final written proposal",
-      "Private airport, station and sightseeing transfers listed in the final proposal",
-      "multilingual guide service as confirmed for each destination",
-      "High-speed rail between Xi'an and Beijing when stated in the final proposal",
-      "Attraction tickets and required scenic-area transport listed in the final proposal",
-      "Halal, vegetarian, allergy and prayer-timing planning when shared before confirmation",
-      "Local support before arrival and while traveling",
-      "No forced shopping visits",
+      "Five hotel nights: two in Xi'an and three in Beijing, with properties and room categories named in the proposal",
+      "Hotel breakfasts on Days 2–6",
+      "Private arrival and departure transfers and station transfers at both ends of the rail journey",
+      "Local private guide and separate driver for the scheduled sightseeing on Days 2, 4 and 5",
+      "Confirmed Xi'an–Beijing high-speed rail; train and seat class stated before booking",
+      "Standard admission and required scenic-area transport for the listed confirmed visits; Great Wall lifts are extra unless added",
+      "Dietary and prayer-timing planning when shared before confirmation; unlisted meals are separate",
+      "Local planning support and no compulsory shopping stops",
     ],
     excluded: [
       "International flights",
@@ -2271,20 +2927,20 @@ const baseTours: Tour[] = [
     routeMap: {
       title: "Two imperial capitals, privately paced.",
       description:
-        "Three nights in Xi'an create space for the Terracotta Warriors, City Wall and food culture before two nights in Beijing bring the route to the Forbidden City and Great Wall.",
+        "Two nights in Xi'an allow a focused Terracotta Army visit before a train transfer to three nights in Beijing. The Forbidden City and Mutianyu Great Wall each have their own sightseeing day.",
       stops: [
         {
           name: "Xi'an",
-          days: "Days 1-4",
+          days: "Days 1–3",
           description:
-            "Arrival, Terracotta Warriors, City Wall, Muslim Quarter and Tang-era night life.",
+            "Arrival and Terracotta Army, with a short Old City introduction only when practical.",
           coordinates: { latitude: 34.3416, longitude: 108.9398 },
         },
         {
           name: "Beijing",
-          days: "Days 4-6",
+          days: "Days 3–6",
           description:
-            "High-speed rail arrival, imperial landmarks, Mutianyu Great Wall and departure.",
+            "Rail arrival, a separate Forbidden City day, a full Mutianyu day and departure.",
           coordinates: { latitude: 39.9042, longitude: 116.4074 },
         },
       ],
@@ -2301,56 +2957,122 @@ const baseTours: Tour[] = [
     ],
     faqs: [
       {
-        question: "Is this a fixed package or can it be customized?",
-        answer:
-          "It is a complete private journey framework. Hotels, room types, train class, vehicle size, sightseeing order and final quotation are confirmed around your dates and group.",
+        question: "What does this private tour cost, and what is the starting-price basis?",
+        answer: getPublishedPriceDisclosure(
+          "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",
+        ),
       },
       {
-        question: "Can you arrange halal food in Xi'an and Beijing?",
+        question: "Can the Forbidden City and Great Wall be visited on separate days?",
         answer:
-          "Yes. Share halal, vegetarian, allergy, spice and prayer-timing requirements before quotation so restaurants and daily timing can be checked properly.",
+          "Yes. Stay two nights in Xi'an and three in Beijing, travel by train on Day 3, then give the Forbidden City and Mutianyu separate days. Days 4 and 5 can swap around confirmed reservations. Each major visit has room for its road transfers, public entry procedures and a route suited to your group.",
       },
       {
-        question: "How do we travel from Xi'an to Beijing?",
+        question: "How are the five hotel nights split between Xi'an and Beijing?",
         answer:
-          "The route uses high-speed rail when the schedule suits your dates. Your written proposal names the train, station transfers, seat class and expected journey flow.",
+          "Two nights in Xi'an and three in Beijing. Xi'an has an arrival day and a dedicated Terracotta Army day before the Day 3 train. Beijing has two complete sightseeing days and departure on Day 6. Add a Xi'an night if you want a separate full day for the City Wall, food or additional museums.",
       },
       {
-        question: "Is the Great Wall suitable for older travelers?",
+        question: "Are high-speed rail tickets and station transfers included?",
         answer:
-          "It can be suitable when the section, start time, cable-car option, rest points and walking expectations are reviewed honestly. Uneven ground and steps remain part of the experience.",
+          "Yes, for the sector specified in the proposal. It names the train, class, departure and arrival stations, fare conditions and local transfers. A transfer day still includes security, boarding and luggage handling; it is not automatically a free afternoon of guided sightseeing. International flights remain separate.",
       },
       {
-        question: "Are meals included?",
+        question: "Does the Terracotta Army visit include an archaeologist?",
         answer:
-          "Breakfast is included when stated in the written proposal. Lunches and dinners can be arranged around dietary preferences and paid directly unless specifically included.",
+          "The standard service is a private local guide and regular museum admission. A specialist researcher, curator or restricted-area visit is not included. Tell us your historical interests so interpretation can be focused, and ask separately if you want a particular specialist to be checked.",
       },
       {
-        question: "Are there compulsory shopping stops?",
+        question: "Are Forbidden City tickets guaranteed if we book a private tour?",
         answer:
-          "No. This journey has no compulsory shopping stops. Any market or neighborhood visit is included for cultural interest and remains optional.",
+          "No. The museum’s date-specific reservation and entry rules apply to private tours too. The Beijing days can swap where practical. The proposal should explain what is offered if tickets cannot be secured. Private guiding does not bypass security or create special ticket access.",
       },
       {
-        question: "Can the trip be extended?",
+        question: "Are Great Wall cable-car tickets included in this price?",
         answer:
-          "Yes. Add Beijing nights, a slower Wall day, more time in Xi'an or another destination when your wider China plans require it.",
+          "Not automatically. Admission and the required scenic-area transport are distinguished from optional mountain lifts. Select your ascent and descent before booking; the proposal lists any cable-car or chairlift ticket and charge. Even with a lift, Wall steps and uneven ground remain.",
+      },
+      {
+        question: "Can we add Xi’an City Wall, a clay workshop or a halal meal?",
+        answer:
+          "Request the specific activity before confirmation. It may fit around the museum or require extra time, and its ticket, host, transport and meal cost must be stated. A Muslim Quarter walk does not verify every restaurant’s ingredients or certification. These extras are not bundled merely because Xi’an is on the route.",
+      },
+      {
+        question: "Is six days enough for a first China visit?",
+        answer:
+          "It is enough for this focused two-city framework if you accept the travel day and a selective itinerary. It does not cover Shanghai, pandas or a full independent Xi’an city day. The ten-day three-city route is better if your available time allows wider coverage without adding multiple major visits to each day.",
+      },
+      {
+        question: "Can we start in Beijing and finish in Xi’an?",
+        answer:
+          "Ask for a reversed proposal. Rail timing, hotel nights, arrival and departure gateways and attraction reservations must be redesigned together. Do not book international flights on the assumption that simply reading this itinerary backwards preserves the same availability or price.",
+      },
+      {
+        question: "Is this suitable for older parents?",
+        answer:
+          "Suitability depends on walking, balance, stamina and the rail connection, not age alone. Share actual support needs before booking. The itinerary uses private transfers and separate major Beijing days, but does not include a porter, personal care, wheelchair equipment or a guaranteed short daily walking limit.",
       },
     ],
     related: {
-      tours: [],
+      useListedTours: true,
+      tours: [
+        {
+          title: "Private Terracotta Warriors Tour from Xi'an",
+          description:
+            "Keep only the Terracotta Army day if you already have Xi’an accommodation and onward travel.",
+          tags: ["Culture", "Family", "Photography"],
+          image: {
+            src: "/tours/private-xian-terracotta-warriors-day-tour/01-xian-terracotta-warriors.webp",
+            alt: "Rows of life-sized Terracotta Warriors inside the Qin emperor's mausoleum pits in Xi'an",
+            width: 1600,
+            height: 2400,
+          },
+          route: "Xi'an hotel · Terracotta Warriors · Xi'an Old City · Xi'an hotel",
+          duration: "1 day · private · about 8 hours",
+          href: "/tours/private-xian-terracotta-warriors-day-tour",
+        },
+        {
+          title: "10-Day Private Tour of Beijing, Xi'an and Shanghai",
+          description:
+            "Allow ten days for Beijing, Xi’an and Shanghai, with nine hotel nights and one independent day.",
+          tags: ["First-time China", "Culture", "Photography"],
+          image: {
+            src: "/tours/first-china-beautifully-paced/beijing-great-wall-sunrise-hero.jpg",
+            alt: "The Great Wall winding across mountain ridges near Beijing in warm evening light",
+            width: 1920,
+            height: 1080,
+          },
+          route: "Beijing · Xi'an · Shanghai",
+          duration: "10 days / 9 nights",
+          href: "/tours/beijing-xian-shanghai-private-10-day-tour",
+        },
+      ],
+
       destinations: [
         {
           name: "Xi'an",
           description:
             "Terracotta Warriors, ancient city walls, Silk Road history and Muslim food culture.",
-          image: destinationAsset.xianTerracotta,
+          image: {
+            src: "/home/xian-terracotta-army.webp",
+            alt: "Terracotta Army figures in Xi'an",
+            width: 1400,
+            height: 927,
+            objectPosition: "50% 48%",
+          },
           href: "/destinations/xian",
         },
         {
           name: "Beijing",
           description:
             "The Forbidden City, hutongs, imperial parks and the Great Wall beyond the city.",
-          image: destinationAsset.beijingForbiddenCityWide,
+          image: {
+            src: "/home/editorial/great-wall-private-china-travel.webp",
+            alt: "A traveler looking across the Great Wall near Beijing",
+            width: 1086,
+            height: 1448,
+            objectPosition: "50% 44%",
+          },
           href: "/destinations/beijing",
         },
       ],
@@ -2363,6 +3085,67 @@ const baseTours: Tour[] = [
       scheduleCallHref: "tel:+8618027438191",
       defaultMessage:
         "I am interested in the 6-Day Xi'an & Beijing Private Tour. Please recommend the right hotels, rail plan, daily pace and dining arrangements for my group.",
+    },
+
+    planningResources: [
+      {
+        label: "Terracotta Army: official museum ticketing",
+        href: "https://www.bmy.com.cn/jingtai/bmyweb/ticketing.html",
+        officialPublisher: "Emperor Qinshihuang’s Mausoleum Site Museum",
+        description:
+          "Consult reservation and entry information for the booked date. A museum ticket does not include private guiding or workshop access.",
+      },
+      {
+        label: "The Palace Museum: official visitor information",
+        href: "https://intl.dpm.org.cn/visit.html",
+        officialPublisher: "The Palace Museum",
+        description:
+          "Check reservation, identification and visitor notices for your travel date. Private guiding does not bypass museum admission rules.",
+      },
+      {
+        label: "Mutianyu Great Wall: official visitor information",
+        href: "https://www.mutianyugreatwall.com/",
+        officialPublisher: "Mutianyu Great Wall scenic area",
+        description:
+          "Check visitor notices and mountain-transport operation. Admission, shuttle and lift tickets are distinct services; the written proposal specifies which are included.",
+      },
+      {
+        label: "China Railway 12306: passenger information",
+        href: "https://www.12306.cn/en/faq.html",
+        officialPublisher: "China Railway 12306",
+        description:
+          "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+      },
+    ],
+
+    faqLimit: 13,
+
+    updatedAt: "2026-11-12",
+
+    inquiryChecklist: [
+      "Dates and arrival / departure gateways",
+      "Travelers, rooms and hotel preference",
+      "Preferred train class and luggage",
+      "Great Wall lift preferences and walking comfort",
+      "Guide language and dietary requirements",
+    ],
+
+    comparison: {
+      title: "Two capitals or three cities?",
+      intro:
+        "This six-day route focuses on northern heritage. Add Shanghai and more time when the modern-city chapter matters.",
+      columns: ["Decision", "This six-day route", "10-day classic route"],
+      rows: [
+        ["Nights", "Xi’an 2 and Beijing 3", "Beijing 4, Xi’an 2 and Shanghai 3"],
+        ["Direction", "Arrive Xi’an; depart Beijing", "Arrive Beijing; depart Shanghai"],
+        [
+          "Great Wall and palace",
+          "Separate full sightseeing days",
+          "Separate full sightseeing days",
+        ],
+      ],
+      href: "/tours/beijing-xian-shanghai-private-10-day-tour",
+      linkLabel: "Compare the alternative itinerary",
     },
   },
 ];

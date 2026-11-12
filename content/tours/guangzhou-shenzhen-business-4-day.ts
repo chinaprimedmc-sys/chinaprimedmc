@@ -1,3 +1,4 @@
+import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import type { MediaAsset } from "@/types/component-library";
 import type { Tour } from "@/types/tour";
 
@@ -20,8 +21,8 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
   slug: "guangzhou-shenzhen-tailor-made-business-tour-4-day",
   visualStatus: "pending",
   publishedAt: "2026-08-21",
-  updatedAt: "2026-08-21",
-  title: "Your Greater Bay Business Tour, Built Around You",
+  updatedAt: "2026-11-12",
+  title: "Guangzhou and Shenzhen Private Business Tour",
   subtitle:
     "A private Guangzhou and Shenzhen business tour usually takes 4–7 days, but the length is never fixed. Send us your flights, meetings, exhibitions and supplier visits; we build the cities, hotels, transport, bilingual support and meaningful time around them.",
   duration: "4–7 Days / Fully Tailor-Made",
@@ -30,59 +31,95 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
   hero: {
     eyebrow: "Tailor-made Guangzhou & Shenzhen business tour",
     image: pendingImage,
-    primary: { label: "Build My Business Journey", href: "#inquiry" },
+    primary: { label: "Build My Business Journey", href: "#enquiry" },
     secondary: { label: "See the Flexible Framework", href: "#itinerary" },
   },
   seo: {
-    title: "4–7 Day Guangzhou & Shenzhen Business Tour",
+    title: "Guangzhou and Shenzhen Private Business Tour",
     description:
-      "A private 4–7 day Guangzhou and Shenzhen business journey—or a completely custom duration—built around your meetings, flights, exhibitions and supplier visits.",
+      "Plan Guangzhou and Shenzhen around meetings and exhibitions, with private transfers and confirmed bilingual support. Four-day hotel example; longer stays tailored.",
     keywords: [
-      "Guangzhou Shenzhen business tour",
-      "4 to 7 day Greater Bay Area itinerary",
-      "Canton Fair private tour",
-      "Guangzhou business travel support",
-      "Shenzhen technology tour",
-      "tailor made China business trip",
-      "bilingual business assistant Guangzhou",
-      "private business tour China",
-      "Guangzhou Shenzhen corporate travel",
-      "Greater Bay Area business travel itinerary",
+      "Guangzhou Shenzhen business trip private guide",
+      "Canton Fair private transfer bilingual assistant",
+      "Shenzhen business interpreter private driver",
+      "Guangzhou Shenzhen four day business itinerary",
     ],
+
+    preserveCopy: true,
   },
   overview: {
     pitch:
       "This private business tour is not a fixed sightseeing package, and 4–7 days is a planning range rather than a choice between only four days and seven. Share what cannot move: flights, meetings, exhibition hours, supplier visits and preferred cities. AVIORA then determines the right number of nights and builds the rooms, vehicles, bilingual support, meals and optional Guangzhou or Shenzhen experiences around those commitments. The four-day plan below is simply a starting framework; every block can move, shorten, expand, disappear or be replaced.",
     facts: [
       {
-        label: "Duration",
-        value: "Usually 4–7 days; exact length is yours",
-        helper:
-          "Choose 4, 5, 6 or 7 days—or request a shorter or longer journey when your agenda requires it.",
-      },
-      {
-        label: "Best For",
-        value: "Executives, founders, buyers and small business teams",
-        helper: "Especially useful when part of the schedule is already confirmed independently.",
-      },
-      {
-        label: "Schedule",
-        value: "Your fixed commitments come first",
-        helper:
-          "Meetings, fair hours and flights are placed before any cultural or technology block.",
-      },
-      {
         label: "Hotels",
-        value: "Premium business hotels selected by meeting geography",
-        helper:
-          "Rooms and occupancy confirmed for your actual party; exact hotels are named after the working locations are known.",
+        value: "Sample: Guangzhou 2 nights and Shenzhen 1; premium business rooms confirmed",
       },
       {
-        label: "Private Service",
-        value: "One China-based operating team",
-        helper: "Airport, vehicle, bilingual support and confirmed bookings are held together.",
+        label: "Pacing",
+        value: "Agenda-led with contracted daily service hours; culture is optional",
+      },
+      {
+        label: "Suitable for",
+        value:
+          "Business travelers who already have meetings, exhibition or supplier priorities and need practical local coordination, with optional cultural time.",
       },
     ],
+
+    practicalities: [
+      {
+        label: "Best for",
+        value:
+          "Business travelers who already have meetings, exhibition or supplier priorities and need practical local coordination, with optional cultural time.",
+      },
+      {
+        label: "Price example",
+        value:
+          "The published starting rate applies to the selected 4-day / 3-night framework, not every 4–7-day business itinerary.",
+      },
+      {
+        label: "Nights",
+        value:
+          "Sample framework: Guangzhou 2 nights and Shenzhen 1. Hotels are chosen around the actual meeting geography, not sightseeing alone.",
+      },
+      {
+        label: "Vehicle service",
+        value:
+          "Private arrival, intercity and departure transfers plus the stated daily service windows. Driver hours, waiting, overtime, parking and extra districts require explicit agreement.",
+      },
+      {
+        label: "Language role",
+        value:
+          "The proposal names whether you have a guide, bilingual assistant or interpreter, the languages, subject matter, hours and confidentiality arrangements.",
+      },
+      {
+        label: "Exhibitions",
+        value:
+          "Registration, credentials, organizer fees and access follow the event’s rules. A booked vehicle does not grant fair admission or VIP access.",
+      },
+      {
+        label: "Company visits",
+        value:
+          "Appointments require the company’s written confirmation. A technology chapter may use a suitable public venue rather than private factory or campus access.",
+      },
+      {
+        label: "Culture and meals",
+        value:
+          "Hotel breakfasts and only the selected, listed meals or cultural modules are included. Agenda changes can replace or remove optional activities.",
+      },
+      {
+        label: "Hong Kong and health",
+        value:
+          "Cross-boundary transfers and Hong Kong accommodation are separate unless expressly included. Any TCM introduction is educational, not a clinical service.",
+      },
+      {
+        label: "Starting-price basis",
+        value: getPublishedPriceDisclosure("guangzhou-shenzhen-tailor-made-business-tour-4-day"),
+      },
+    ],
+
+    answer:
+      "A private Guangzhou and Shenzhen business trip built around your meetings, exhibition sessions and confirmed visits. The four-day example includes three hotel nights, agreed vehicle windows, intercity transfer and the specified bilingual support; four to seven days can be designed separately. Canton Fair credentials, supplier due diligence, professional interpreting and Hong Kong border services are not automatic inclusions. Optional cultural modules fit around the working agenda.",
   },
   experienceChapters: [
     {
@@ -100,7 +137,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
       days: "Flexible half day",
       title: "Understand family culture through a market, a kitchen and a real table",
       description:
-        "Shop for seasonal ingredients with a local cultural host, prepare a Cantonese meal and use the table to discuss family roles, hospitality and the historical influence of the Twenty-Four Filial Exemplars, including how people interpret those stories today.",
+        "If your meeting schedule allows, shop for seasonal ingredients with a local host and prepare a Cantonese meal. The conversation can explore local food and hospitality; venue, menu, session length and dietary arrangements are confirmed in your proposal.",
       see: "A working neighborhood market, the ingredients behind Cantonese home cooking and family values expressed through ordinary food rituals.",
       do: "Choose ingredients, cook several dishes and join a contextual conversation rather than watch a staged cooking demonstration.",
       feel: "That traditional ideas are being explained with nuance, not presented as a rulebook for modern Chinese life.",
@@ -192,7 +229,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
     {
       title: "Guangzhou family culture through food and conversation",
       description:
-        "Market shopping, shared cooking and a carefully hosted discussion make family ethics and the Twenty-Four Filial Exemplars understandable without reducing modern China to an old moral text.",
+        "A market visit and hosted Cantonese cooking session offer a personal introduction to Guangzhou beyond the meeting room. Include this module only when it fits the working agenda, with menu, host, venue and timing agreed in advance.",
       category: "Culture",
       image: pendingImage,
     },
@@ -237,7 +274,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
       title: "Your Guangzhou priorities, plus a culture module that can move around them",
       destination: "Guangzhou",
       summary:
-        "Use the principal hours for the Canton Fair, another exhibition, your own meetings, a supplier visit or a market study. When the schedule allows, enter a neighborhood market with a local host, select ingredients and cook a Cantonese meal while exploring family hospitality and the historical influence of the Twenty-Four Filial Exemplars. A separately confirmed traditional Chinese medicine visit can introduce pulse-taking and diagnostic traditions without promising a medical result.",
+        "Keep the main service window for your confirmed exhibition sessions, meetings or company appointments. If time allows, add the selected market-to-kitchen Cantonese meal or a separately confirmed cultural introduction to traditional Chinese medicine. These modules fit around your agenda; they are not extra commitments to complete after a full working day.",
       image: pendingImage,
       hotel: hotelByPlace.guangzhou,
       meals: ["Breakfast", "Market-to-kitchen Cantonese meal when selected"],
@@ -250,12 +287,12 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
             "Exhibition hours, meetings and supplier appointments remain the fixed spine; bilingual support is briefed around the confirmed purpose.",
         },
         {
-          title: "Market, kitchen and family culture",
+          title: "Optional Cantonese market and kitchen session",
           description:
-            "Shop for seasonal ingredients, prepare several home-style Cantonese dishes and discuss how food, hospitality, elders and family responsibility are understood across generations.",
+            "If selected in your proposal, visit a neighborhood market with a culinary host, prepare Cantonese dishes and share a meal. Venue, menu, duration and dietary arrangements are confirmed around your working agenda.",
         },
         {
-          title: "Traditional Chinese medicine in context",
+          title: "Optional introduction to traditional Chinese medicine",
           description:
             "Where selected, visit a suitable institution for an introduction to history, pulse-taking and consultation logic. Clinical diagnosis or treatment is outside the base experience.",
         },
@@ -295,11 +332,11 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
       title: "Use the last hours well, then leave through the right gateway",
       destination: "Shenzhen, Guangzhou or Hong Kong departure",
       summary:
-        "Keep the morning for a final meeting, focused visit or uninterrupted work. The transfer is then built backward from the confirmed terminal, ticket, luggage and any border requirement, whether departure is from Shenzhen, Guangzhou or Hong Kong.",
+        "Use the final morning for an agreed meeting or uninterrupted work, then take the private transfer to the mainland departure gateway named in your proposal. Shenzhen and Guangzhou require different pickup plans. A Hong Kong departure needs separately contracted cross-boundary transport and a review of the applicable entry requirements.",
       image: pendingImage,
-      hotel: "Departure day",
       meals: ["Breakfast", "Departure meal when confirmed"],
-      transport: "Private airport, rail or agreed cross-boundary transfer named in the proposal",
+      transport:
+        "Private airport or rail departure transfer within the confirmed mainland service area; Hong Kong or cross-boundary service is separately quoted",
       activities: [
         {
           title: "A final usable window",
@@ -352,7 +389,7 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
   included: [
     "3 nights in selected premium business hotels with rooms and occupancy confirmed for your actual party: 2 nights in Guangzhou and 1 night in Shenzhen in the sample framework",
     "Private arrival, Guangzhou-to-Shenzhen and departure transfers, plus private vehicle service during the day-by-day windows named in the written proposal",
-    "multilingual guide, interpreter or bilingual business assistant during the confirmed service periods, with the exact role and hours stated before booking",
+    "Guide or bilingual business-assistant support during the confirmed service periods, with language, role and hours stated; specialist or professional interpreting requires its own agreed scope and quote",
     "Pre-trip agenda review covering flights, meetings, exhibition sessions, supplier addresses, hotel geography and transfer feasibility",
     "Market-to-kitchen Cantonese cultural experience with ingredients and hosted meal when selected in the confirmed itinerary",
     "Traditional Chinese medicine cultural introduction at a suitable confirmed institution when selected; educational scope only unless a licensed medical service is separately contracted",
@@ -446,84 +483,95 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
   gallery: [],
   faqs: [
     {
-      question: "Is this limited to either four days or seven days?",
-      answer:
-        "No. Most guests need somewhere between four and seven days, which can mean four, five, six or seven days. The duration is not selected from a fixed package menu. Send us your flights, meetings, exhibition hours, supplier addresses and priorities; we determine the useful number of nights and build the route, hotels, transfers, bilingual support, meals and optional experiences around them. Shorter or longer journeys can also be designed when the agenda calls for them.",
+      question: "What does this private tour cost, and what is the starting-price basis?",
+      answer: getPublishedPriceDisclosure("guangzhou-shenzhen-tailor-made-business-tour-4-day"),
     },
     {
-      question: "Is this a business tour or a leisure sightseeing tour?",
+      question: "Does the starting price cover four days or seven days?",
       answer:
-        "It is a private Guangzhou and Shenzhen business tour designed for executives, founders, buyers and small teams. Meetings, trade fairs, supplier visits, flights and working locations form the fixed spine of the trip. Hotels, private transport, bilingual support and optional cultural, dining or technology experiences are then arranged around the business agenda rather than competing with it.",
+        "It applies to the selected four-day, three-night example. Four to seven days describes the possible planning range, not a seven-day entitlement at the same price. The final proposal is built from your fixed agenda, hotel nights, daily hours, addresses and required language role.",
     },
     {
-      question: "What does the price include?",
+      question: "Can you arrange Canton Fair admission or buyer credentials?",
       answer:
-        "Your written proposal is priced for your own party and fixed schedule. The sample four-day, three-night framework assumes three premium hotel nights, the named private transfers and vehicle windows, confirmed bilingual support, breakfast, the selected Guangzhou culture module, one Shenzhen innovation chapter and China-based operating support. Five-, six- and seven-day journeys are quoted according to the additional nights, service hours and experiences selected.",
+        "Only the service specifically agreed and permitted by the organizer can be offered. Credentials, registration, fees and entry eligibility are not automatically included. Use the official organizer’s process and confirm requirements for your category. A private assistant or car does not provide VIP access or queue bypass.",
     },
     {
-      question: "Can two executives book this journey?",
+      question: "Is the bilingual assistant a professional business interpreter?",
       answer:
-        "Yes. Smaller parties pay more per person because the guide and vehicle are shared by fewer people, and major exhibition periods raise hotel costs, depending on rooms, vehicle hours, bilingual support and the experiences selected. The exact total is quoted after the fixed schedule is reviewed.",
+        "Not necessarily. A guide, bilingual coordinator, consecutive interpreter and simultaneous interpreter have different roles and preparation needs. State the language pair, industry, meeting format and terminology in advance. The proposal identifies the contracted role and hours; professional interpreting is separately scoped rather than implied by bilingual support.",
     },
     {
-      question: "Can you guarantee Canton Fair VIP access or fast-track entry?",
+      question: "Does this include supplier sourcing, factory audits or negotiation?",
       answer:
-        "No. Overseas buyer eligibility, registration, badges, collection and entry remain governed by the Canton Fair organizer's current official rules. AVIORA can assist with the published process, documents, routing, transport and on-site bilingual support, but does not sell an unofficial badge, bypass or access right.",
+        "No. Transport and language coordination do not replace sourcing, due diligence, technical inspection, legal advice or a commercial negotiation mandate. Such work requires a separately agreed scope and qualified provider. You remain responsible for business decisions and should not treat a sightseeing visit as a verified supplier assessment.",
     },
     {
-      question: "What happens in the Guangzhou market and cooking experience?",
+      question: "Can you guarantee access to a Shenzhen technology company?",
       answer:
-        "With a suitable local host, guests visit a working market, choose seasonal ingredients and prepare a Cantonese home-style meal. Conversation explores hospitality, family roles, relationships with elders and the historical influence of the Twenty-Four Filial Exemplars, including different modern interpretations. It is cultural dialogue, not a moral lesson or a claim that every Chinese family lives the same way.",
+        "No named company, factory or private campus is guaranteed before written permission and appointment confirmation. The selected innovation chapter may use an appropriate public exhibition or urban visit instead. Do not book on the basis of a company logo or assume that a driver can obtain access on arrival.",
     },
     {
-      question: "Does the traditional Chinese medicine pulse consultation provide a diagnosis?",
+      question: "How many hours are the driver and assistant available?",
       answer:
-        "Not in the base cultural experience. It introduces the history, language and logic of traditional Chinese medicine, which may include observing pulse-taking at a suitable confirmed institution. Medical diagnosis, treatment, medication or health claims require a separately contracted licensed provider and are not promised by this tour.",
+        "Only the daily windows stated in the proposal. Confirm start and finish locations, waiting time, overtime rates and any evening work before payment. Guangzhou–Shenzhen travel consumes part of the schedule. A multi-day booking is not unlimited or 24-hour staffed service.",
     },
     {
-      question: "Is a Robotaxi ride guaranteed in Shenzhen?",
+      question: "Can the trip fit around changing meetings and fair dates?",
       answer:
-        "No. Public Robotaxi services depend on the travel date, current operating zone, account or identity requirements, dispatch availability and regulation. AVIORA may assist when it is practical, but the private vehicle remains the reliable transport plan and a confirmed alternative is agreed before booking.",
+        "That is the planning purpose, but availability and change conditions still matter. Share fixed commitments, tentative appointments, supplier addresses and travel deadlines. Late changes can affect hotels, staffing, parking and overtime. A cultural meal or visit should be moved or removed rather than displace a business commitment.",
     },
     {
-      question: "Can the journey start in Shenzhen or end in Hong Kong?",
+      question: "Can you arrange Hong Kong departure or cross-border transfers?",
       answer:
-        "Yes. The sample sequence can be reversed, kept in one city or extended into Hong Kong. Cross-boundary vehicles, immigration requirements, luggage and airport timing are different from mainland transfers, so the exact service and price are confirmed after the flights and passports are reviewed.",
+        "Ask for a separately confirmed plan. Border eligibility, vehicle permissions, baggage handling, operating hours and the actual Hong Kong terminal must be reviewed. A Shenzhen vehicle booking does not automatically include a through car, border clearance or Hong Kong hotel night.",
     },
     {
-      question: "What level of bilingual business support is included?",
+      question: "Are Robotaxi rides or traditional Chinese medicine treatments included?",
       answer:
-        "The written proposal distinguishes a guide, interpreter and business assistant, and states service hours and meeting involvement. Sector specialization, simultaneous interpretation, negotiation, due diligence, factory audits and professional reports are not assumed; they can be scoped and quoted separately.",
+        "A public Robotaxi trial depends on operating zone, account access, regulation and availability; the confirmed private road transfer remains the main plan. A selected TCM introduction is cultural and educational. Medical diagnosis or treatment is not included without a separate qualified clinical arrangement.",
     },
     {
-      question: "Can you make the journey five, six or seven days—or another length?",
+      question: "Can you accommodate confidentiality and restricted photography?",
       answer:
-        "Yes. Four to seven days is the most useful range for this Guangzhou and Shenzhen journey, but it is not a restriction. Additional fair days, supplier visits, factories, Hong Kong, recovery time or cultural experiences can determine the exact duration. AVIORA will show the additional hotels, vehicle hours, bilingual support and confirmed visits clearly before you commit.",
+        "Share requirements before confirmation so staff roles, documents, photography permissions and any confidentiality agreement can be reviewed. Do not assume an NDA, legal privilege or factory photography permission merely from booking the itinerary. Sensitive commercial materials should use the agreed handling process rather than a public initial inquiry.",
     },
   ],
   related: {
+    useListedTours: true,
     tours: [
       {
-        title: "China, Considered: Beijing, Xi'an & Shanghai",
+        title: "Private Shanghai Day Tour with Guide and Driver",
         description:
-          "A longer premium private journey for guests adding China's classic capitals before or after their business commitments.",
-        tags: ["Private", "Luxury", "First-time China"],
-        image: pendingImage,
-        route: "Beijing · Xi'an · Shanghai",
-        duration: "12 days / 11 nights",
-        href: "/tours/china-at-an-easier-pace-12-day-private-tour",
+          "Add a separate Shanghai day if meetings take you to Shanghai and you have a free day there; intercity travel is additional.",
+        tags: ["Culture", "Food", "Family"],
+        image: {
+          src: "/tours/private-shanghai-day-tour/01-shanghai-lujiazui-at-dusk.webp",
+          alt: "Lujiazui skyline at dusk, with the Oriental Pearl Tower and Shanghai Tower",
+          width: 4649,
+          height: 6000,
+        },
+        route: "Shanghai hotel · Old City · Bund · Former French Concession · Shanghai hotel",
+        duration: "1 day · private · about 8 hours",
+        href: "/tours/private-shanghai-day-tour-guide-driver",
       },
       {
-        title: "Ten Days at Qingcheng Mountain",
+        title: "10-Day Qingcheng Mountain Wellness Retreat",
         description:
-          "A private mountain retreat for executives who want a protected recovery chapter after a demanding China schedule.",
-        tags: ["Wellness", "Private", "Quiet luxury"],
-        image: pendingImage,
+          "Consider a separate ten-day Chengdu and Qingcheng retreat after the working trip, with gateway travel arranged separately.",
+        tags: ["Wellness", "Luxury", "Nature"],
+        image: {
+          src: "/home/editorial/great-wall-private-china-travel.webp",
+          alt: "Photography for the Qingcheng Mountain retreat is being prepared",
+          width: 1920,
+          height: 1080,
+        },
         route: "Chengdu · Qingcheng Mountain",
         duration: "10 days / 9 nights",
         href: "/tours/qingcheng-mountain-private-wellness-retreat-10-day",
       },
     ],
+
     destinations: [],
   },
   inquiry: {
@@ -534,5 +582,65 @@ export const guangzhouShenzhenBusiness4DayTour: Tour = {
     scheduleCallHref: "tel:+8618027438191",
     defaultMessage:
       "I would like AVIORA to build a Guangzhou and Shenzhen journey around my confirmed flights, meetings and exhibition plans.",
+  },
+
+  planningResources: [
+    {
+      label: "Canton Fair: official organizer",
+      href: "https://www.cantonfair.org.cn/",
+      officialPublisher: "China Import and Export Fair",
+      description:
+        "Official reference for registration, event information and visitor access. Dates, credentials and category-specific eligibility need current organizer confirmation.",
+    },
+    {
+      label: "China entry requirements: official information",
+      href: "https://en.nia.gov.cn/",
+      officialPublisher: "National Immigration Administration of China",
+      description:
+        "Check the rule that applies to your passport and full international route. Booking this tour does not establish visa-free or transit eligibility.",
+    },
+    {
+      label: "China Railway 12306: passenger information",
+      href: "https://www.12306.cn/en/faq.html",
+      officialPublisher: "China Railway 12306",
+      description:
+        "Check accepted identification, ticketing, boarding and baggage guidance. The train, class, seat and transfer arrangements are confirmed for your dates.",
+    },
+  ],
+
+  faqLimit: 13,
+
+  inquiryChecklist: [
+    "Fixed meeting addresses, dates and daily agenda",
+    "Travelers, rooms and luggage",
+    "Guide, bilingual assistant or specialist interpreter needs",
+    "Fair registration or prearranged factory visit status",
+    "Confidentiality, dietary and optional cultural preferences",
+  ],
+
+  comparison: {
+    title: "A business operating plan or a leisure itinerary?",
+    intro:
+      "Begin with fixed appointments. Add a separate leisure route when you have enough days outside the working agenda.",
+    columns: ["Decision", "This business framework", "10-day classic leisure route"],
+    rows: [
+      [
+        "Starting point",
+        "Confirmed meetings, exhibition sessions and addresses",
+        "Sightseeing priorities",
+      ],
+      [
+        "Duration basis",
+        "Four-day example; four to seven days quoted separately",
+        "Ten days and nine nights",
+      ],
+      [
+        "Language support",
+        "Role, subject matter and working hours contracted",
+        "Local sightseeing guides",
+      ],
+    ],
+    href: "/tours/beijing-xian-shanghai-private-10-day-tour",
+    linkLabel: "Compare the alternative itinerary",
   },
 };

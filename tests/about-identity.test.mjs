@@ -34,6 +34,10 @@ const { siteConfig } = await import("../config/site.ts");
 const { getServiceCases } = await import("../content/about/service-cases.ts");
 const { getPublicTravelerReviews } = await import("../content/home/traveler-reviews.ts");
 const { serviceAchievementsText } = await import("../content/home/service-achievements.ts");
+const { aboutSearch, renderAboutVerificationGuide } = await import("../content/about/search.ts");
+const { aboutPageSchema } = await import("../lib/seo/about.ts");
+const { PUBLIC_JOURNAL_SLUGS } = await import("../content/journal/public-manifest.ts");
+const { createMetadata } = await import("../lib/seo/metadata.ts");
 
 test("company registration belongs to the operator, while the founder belongs to AVIORA", () => {
   const brand = organizationSchema();
@@ -90,4 +94,49 @@ test("legacy feedback is identified as site content without inferred booking ver
   assert.ok(reviews.length > 0);
   assert.ok(reviews.every((review) => review.sourceType === "legacy-site-content"));
   assert.ok(reviews.every((review) => review.verifiedOn === undefined));
+});
+
+test("brand answers preserve legal roles and only link to public verification articles", () => {
+  const text = renderAboutVerificationGuide();
+  assert.equal(aboutSearch.identityAnswers.length, 4);
+  assert.equal(aboutSearch.reading.length, 6);
+  assert.equal(aboutSearch.identityAnswers[0].answer, companyIdentity.tradeRelationship);
+  assert.match(
+    aboutSearch.identityAnswers.find((item) => item.id === "when-registered").answer,
+    /not presented here as AVIORA’s brand founding date/,
+  );
+  for (const answer of aboutSearch.identityAnswers) {
+    assert.ok(text.includes(answer.answer));
+    assert.ok(text.includes(`/about#${answer.id}`));
+  }
+  for (const link of aboutSearch.reading) {
+    assert.ok(PUBLIC_JOURNAL_SLUGS.includes(link.href.replace("/journal/", "")), link.href);
+    assert.ok(text.includes(link.href));
+  }
+});
+
+test("About schema answers match visible sources and point to the existing brand entities", () => {
+  const graph = aboutPageSchema()["@graph"];
+  const page = graph.find((item) => item["@type"] === "AboutPage");
+  const list = graph.find((item) => item["@type"] === "ItemList");
+  assert.equal(page.mainEntity["@id"], organizationSchema()["@id"]);
+  assert.equal(page.mentions[1]["@id"], organizationSchema().parentOrganization["@id"]);
+  assert.equal(list.itemListElement.length, 6);
+  for (const answer of aboutSearch.identityAnswers) {
+    const part = page.hasPart.find((item) => item.url === `${siteConfig.url}/about#${answer.id}`);
+    assert.equal(part.text, answer.answer);
+    assert.equal(part.name, answer.question);
+  }
+  const visible = readFileSync(resolve(root, "app/about/page.tsx"), "utf8");
+  assert.ok(visible.includes("aboutSearch.identityAnswers.map"));
+  assert.ok(visible.includes("aboutSearch.reading.map"));
+  assert.ok(visible.includes("aboutSearch.facts.map"));
+  assert.ok(visible.includes("id={`about-answer-${index + 1}`}"));
+  const metadata = createMetadata({
+    title: aboutSearch.title,
+    description: aboutSearch.description,
+    path: "/about",
+  });
+  assert.equal(metadata.title, aboutSearch.title);
+  assert.equal(metadata.alternates.canonical, `${siteConfig.url}/about`);
 });

@@ -38,6 +38,10 @@ export type JourneyTagSet = {
 type PublicSlug = (typeof publicJourneySlugs)[number];
 
 export const journeyTags: Record<PublicSlug, JourneyTagSet> = {
+  "guilin-yangshuo-longji-private-5-day-tour": {
+    who: ["Couples", "Family"],
+    interest: ["Nature & landscapes", "Culture & heritage"],
+  },
   "beijing-xian-shanghai-private-10-day-tour": {
     who: ["First-time", "Couples"],
     interest: ["Culture & heritage", "History"],

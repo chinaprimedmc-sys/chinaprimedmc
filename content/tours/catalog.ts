@@ -1,3 +1,8 @@
+import {
+  guilinYangshuoLongji5DayTour,
+  guilinLongjiImages,
+} from "@/content/tours/guilin-yangshuo-longji-5-day";
+import { overnightHotelChanges } from "@/content/tours/route-facts";
 import { getJourneyClassification, type PublicJourneySlug } from "@/content/tours/classification";
 import { tours } from "@/content/tours";
 import { chinaFamilyAsset, firstChinaAsset } from "@/content/tours/assets";
@@ -25,6 +30,8 @@ export type JourneyCatalogItem = {
   bestForSummary: string;
   styleFilters: string[];
   destinationFilters: string[];
+  /** Explicitly published choice-day destinations; not guaranteed itinerary inclusions. */
+  optionalDestinationFilters?: string[];
   bestForFilters: string[];
   experienceFilters: JourneyExperienceId[];
   travelerFilters: JourneyTravelerId[];
@@ -365,6 +372,8 @@ const chinaFamilyJourney: JourneyCatalogBase = {
   durationLabel: "12 days / 11 nights",
   styleFilters: ["Family", "Culture", "Wildlife"],
   destinationFilters: ["Beijing", "Xi'an", "Chengdu", "Shanghai"],
+  // Day 9 option B is Sanxingdui in Guanghan, not an additional included city stay.
+  optionalDestinationFilters: ["Guanghan"],
   bestForFilters: [
     "Families",
     "Multigenerational families",
@@ -445,8 +454,8 @@ const muslimFriendlyChinaJourney: JourneyCatalogBase = {
   destinations: [
     { label: "Beijing", href: "/destinations/beijing" },
     { label: "Xi'an", href: "/destinations/xian" },
-    { label: "Yinchuan", href: `/tours/${muslimFriendlyChina.slug}#itinerary` },
-    { label: "Zhongwei", href: `/tours/${muslimFriendlyChina.slug}#itinerary` },
+    { label: "Yinchuan", href: "/destinations/yinchuan" },
+    { label: "Zhongwei", href: "/destinations/zhongwei" },
     { label: "Shanghai", href: "/destinations/shanghai" },
   ],
   planningNote:
@@ -479,8 +488,8 @@ const greaterBayBusinessJourney: JourneyCatalogBase = {
   recommendedDaysMin: 4,
   recommendedDaysMax: 7,
   destinations: [
-    { label: "Guangzhou", href: `/tours/${greaterBayBusiness.slug}#itinerary` },
-    { label: "Shenzhen", href: `/tours/${greaterBayBusiness.slug}#itinerary` },
+    { label: "Guangzhou", href: "/destinations/guangzhou" },
+    { label: "Shenzhen", href: "/destinations/shenzhen" },
   ],
   planningNote:
     "Four to seven days is the usual planning range, not a fixed package length. Confirmed flights, meetings, fairs and supplier addresses are placed first; the cities, nights and experiences are then built around them.",
@@ -704,7 +713,7 @@ const qingchengWellnessJourney: JourneyCatalogBase = {
   routeLabel: qingchengWellness.route,
   durationLabel: "10 days / 9 nights",
   styleFilters: ["Wellness", "Quiet Luxury", "Nature", "Culture", "Slow Travel"],
-  destinationFilters: ["Chengdu", "Qingcheng Mountain"],
+  destinationFilters: ["Chengdu", "Qingcheng Mountain", "Dujiangyan"],
   bestForFilters: ["Executives", "Women travelers", "Couples", "Solo travelers", "Private groups"],
   experienceFilters: ["wellness", "scenery", "ancient-china", "food", "local-life"],
   travelerFilters: ["couples", "older-travelers", "solo-travelers", "private-groups"],
@@ -720,7 +729,7 @@ const qingchengWellnessJourney: JourneyCatalogBase = {
   recommendedDaysMax: 13,
   destinations: [
     { label: "Chengdu", href: "/destinations/chengdu" },
-    { label: "Qingcheng Mountain", href: `/tours/${qingchengWellness.slug}#itinerary` },
+    { label: "Qingcheng Mountain", href: "/destinations/qingcheng-mountain" },
   ],
   planningNote:
     "The core product protects seven consecutive Qingcheng nights. Hangzhou, pandas or another China chapter is added before or after the retreat, never through its middle.",
@@ -738,7 +747,7 @@ const yunnanTeaHorseRoadJourney: JourneyCatalogBase = {
   routeLabel: yunnanTeaHorseRoad.route,
   durationLabel: "10 days / 9 nights",
   styleFilters: ["Private Reserve", "Luxury", "Culture", "Nature", "Slow Travel"],
-  destinationFilters: ["Dali", "Shaxi", "Lijiang", "Shangri-La"],
+  destinationFilters: ["Dali", "Shaxi", "Lijiang", "Baisha", "Shangri-La"],
   bestForFilters: ["Couples", "Friends", "Repeat visitors", "Private groups"],
   experienceFilters: ["scenery", "food", "local-life", "photography", "wellness"],
   travelerFilters: ["couples", "older-travelers", "private-groups"],
@@ -752,10 +761,11 @@ const yunnanTeaHorseRoadJourney: JourneyCatalogBase = {
   recommendedDaysMin: 10,
   recommendedDaysMax: 10,
   destinations: [
-    { label: "Dali", href: `/tours/${yunnanTeaHorseRoad.slug}#itinerary` },
-    { label: "Shaxi", href: `/tours/${yunnanTeaHorseRoad.slug}#itinerary` },
-    { label: "Lijiang", href: `/tours/${yunnanTeaHorseRoad.slug}#itinerary` },
-    { label: "Shangri-La", href: `/tours/${yunnanTeaHorseRoad.slug}#itinerary` },
+    { label: "Dali", href: "/destinations/dali" },
+    { label: "Shaxi", href: "/destinations/shaxi" },
+    { label: "Lijiang", href: "/destinations/lijiang" },
+    { label: "Baisha visit", href: "/destinations/baisha" },
+    { label: "Shangri-La", href: "/destinations/shangri-la" },
   ],
   planningNote:
     "Every departure is reviewed around the actual month, altitude comfort, room preferences and private cultural access before the final proposal is confirmed.",
@@ -868,7 +878,7 @@ const chengduJourney: JourneyCatalogBase = {
   title: chengdu.title,
   eyebrow: "Private Chengdu extension",
   summary: chengdu.subtitle,
-  hook: "Pandas at the right hour, one comfortable hotel base and Sichuan food guided by local knowledge.",
+  hook: "An early public Panda Base visit, one comfortable hotel base and Sichuan food guided by local knowledge.",
   image: chengdu.hero.image,
   href: `/tours/${chengdu.slug}`,
   kind: "framework",
@@ -1072,7 +1082,33 @@ const xianBeijingJourney: JourneyCatalogBase = {
   ],
 };
 
+const guilinLongjiJourney: JourneyCatalogBase = {
+  slug: guilinYangshuoLongji5DayTour.slug,
+  title: guilinYangshuoLongji5DayTour.title,
+  eyebrow: "Private Guangxi landscapes journey",
+  summary: guilinYangshuoLongji5DayTour.subtitle,
+  hook: "Give Longji, the Li River and Yangshuo countryside their own days, with four nights and one hotel change.",
+  image: guilinLongjiImages.hero,
+  visualStatus: "ready",
+  href: `/tours/${guilinYangshuoLongji5DayTour.slug}`,
+  kind: "framework",
+  routeLabel: guilinYangshuoLongji5DayTour.route,
+  durationLabel: "5 days / 4 nights",
+  styleFilters: ["Nature", "Culture", "Photography", "Family"],
+  destinationFilters: ["Guilin", "Yangshuo", "Longji"],
+  bestForFilters: ["Couples", "Families", "Photographers"],
+  experienceFilters: ["scenery", "local-life", "photography"],
+  travelerFilters: ["first-time", "couples", "families", "private-groups", "solo-travelers"],
+  planningNeedFilters: ["child-friendly", "photography-led"],
+  recommendedDaysMin: 5,
+  recommendedDaysMax: 5,
+  destinations: [{ label: "Guilin and Yangshuo", href: "/destinations/guilin" }],
+  planningNote:
+    "A proposed route, quoted for your dates. Hotels, cruise tickets and the Longji walking plan are confirmed in writing before booking.",
+};
+
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  guilinLongjiJourney,
   guilinYangshuoLiRiverDayJourney,
   privateChengduPandaDayJourney,
   privateXianTerracottaDayJourney,
@@ -1099,6 +1135,7 @@ const journeyCatalogBase: JourneyCatalogBase[] = [
  * catalogue, search index, generated routes, sitemap and journey matcher.
  */
 export const publicJourneySlugs = [
+  "guilin-yangshuo-longji-private-5-day-tour",
   "beijing-xian-shanghai-private-10-day-tour",
   "luxury-yunnan-private-tour",
   "private-mutianyu-great-wall-day-tour",
@@ -1124,6 +1161,10 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialPriority">
 > = {
+  "guilin-yangshuo-longji-private-5-day-tour": {
+    commercialRole: "nature",
+    commercialPriority: 105,
+  },
   "luxury-yunnan-private-tour": {
     commercialRole: "signature",
     commercialPriority: 170,
@@ -1206,6 +1247,19 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "guilin-yangshuo-longji-private-5-day-tour": {
+    paceLabel: "Balanced, with a full Longji day and one hotel change; steps require review",
+    transportSummary:
+      "Private road transfers and guiding; shared four-star Li River cruise; agreed luggage delivery to Yangshuo",
+    highlights: [
+      "Two nights in Guilin and two in Yangshuo",
+      "Separate Longji rice-terrace excursion",
+      "Shared river cruise with your private guide",
+      "Countryside time without compulsory cycling or rafting",
+    ],
+    bestForSummary:
+      "Couples, families and private parties who want a complete five-day Guangxi landscape chapter",
+  },
   "luxury-yunnan-private-tour": {
     paceLabel: "Balanced private pacing with gradual altitude gain and protected quiet time",
     transportSummary:
@@ -1360,9 +1414,10 @@ const commercialDetails: Record<
   },
   "chengdu-chongqing-zhangjiajie-private-11-day-tour": {
     paceLabel: "Balanced overall, with active mountain days and two flexible days",
-    transportSummary: "Private transfers, high-speed rail and a domestic flight",
+    transportSummary:
+      "Private transfers, Chengdu–Chongqing high-speed rail and a confirmed rail or flight onward to Zhangjiajie",
     highlights: [
-      "Pandas at their most active time of day",
+      "Early panda observation; activity varies",
       "Chongqing's layered nightscape with a local host",
       "Two distinct Zhangjiajie mountain days",
     ],
@@ -1373,7 +1428,7 @@ const commercialDetails: Record<
     transportSummary: "Three intercity connections with coordinated private transfers",
     highlights: [
       "Shanghai's historic lanes and riverfront",
-      "Panda conservation and Sichuan food culture",
+      "Public panda observation at Dujiangyan and Sichuan food culture",
       "The Terracotta Warriors and Beijing's imperial landmarks",
       "A guided walk on the Jinshanling Great Wall",
     ],
@@ -1398,7 +1453,7 @@ const commercialDetails: Record<
     paceLabel: "Easy one-base stay",
     transportSummary: "Private vehicle throughout, with an optional Leshan day trip",
     highlights: [
-      "Pandas at the right hour",
+      "An early public Panda Base visit",
       "A guided Sichuan table",
       "Tea-house culture with local context",
       "An optional private Leshan day",
@@ -1407,9 +1462,10 @@ const commercialDetails: Record<
   },
   "chengdu-pandas-jiuzhaigou-private-7-day-tour": {
     paceLabel: "Active nature days, planned rests",
-    transportSummary: "Private transfers plus the fastest suitable Chengdu connection",
+    transportSummary:
+      "Confirmed rail and private road connection from Chengdu to the mountain area",
     highlights: [
-      "Pandas at their most active time",
+      "Early panda observation; activity varies",
       "A full day among Jiuzhaigou's lakes and waterfalls",
       "Plateau landscapes with altitude-aware planning",
     ],
@@ -1428,7 +1484,7 @@ const commercialDetails: Record<
   },
   "shanghai-zhangjiajie-floating-peaks": {
     paceLabel: "Moderate with active park days",
-    transportSummary: "Private transfers and a domestic flight between regions",
+    transportSummary: "Private transfers and economy flights from Shanghai to Zhangjiajie and back",
     highlights: [
       "Shanghai's riverfront and lived-in neighborhoods",
       "A managed flight into the mountain region",
@@ -1442,7 +1498,7 @@ const commercialDetails: Record<
     transportSummary: "Private transfers and high-speed rail from Xi'an to Beijing",
     highlights: [
       "Terracotta Warriors with historical interpretation",
-      "Xi'an's Muslim Quarter and halal food heritage",
+      "Two Xi'an nights followed by three Beijing nights",
       "High-speed rail between the imperial capitals",
       "A privately paced Great Wall day",
     ],
@@ -1462,6 +1518,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
+  "guilin-yangshuo-longji-private-5-day-tour": {
+    pricingUnit: "private-group",
+    basePartySize: 2,
+    cardBasis: "Written quote for your actual party",
+    basis:
+      "A date-specific private-group quote naming four hotel nights, rooms, guide hours, road vehicle and luggage capacity, shared cruise ticket, selected Longji route and exact arrival and departure points.",
+    inclusionSummary:
+      "Proposed basis: two Guilin nights and two Yangshuo nights, four breakfasts, private guide and separate driver for Days 2–4, driver-only arrival and departure transfers, selected Longji admission and required local transport, shared four-star cruise ticket and agreed road luggage delivery. A boat lunch is included only if attached to the confirmed ticket.",
+    finalPriceNote:
+      "No public starting rate is set. Availability, named hotels, tickets, optional activities and the total for your actual party are confirmed in writing before booking.",
+  },
   "luxury-yunnan-private-tour": {
     pricingUnit: "per-person",
     basePartySize: 4,
@@ -1574,7 +1641,7 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
     basis:
       "Indicative starting price per person, based on four guests sharing two rooms outside peak periods, equivalent to a group total from US$30,720.",
     inclusionSummary:
-      "Includes 12 nights in selected premium city hotels plus the best suitable Ningxia and desert accommodation available for your dates, rooms for your actual party, private guides and vehicles, first-class Beijing–Xi'an rail, domestic transport named before booking, planned verified meals, listed private experiences and AVIORA Muslim Journey Standard support.",
+      "Includes twelve hotel nights in total (Beijing 4, Xi'an 3, Yinchuan area 3, desert 1 and Shanghai 1), hotel breakfasts and the meals specifically identified in the proposal, listed private guiding and transfers, first-class Beijing–Xi'an rail, confirmed domestic flight routing and the listed hosted experiences. Dietary evidence and preparation standards are agreed before booking; a photographer is an optional extra.",
     finalPriceNote:
       "Most fully tailored versions fall between US$8,300 and US$10,800 per person, depending on dates, city hotels, Ningxia and desert room categories, transport class, meal research and confirmed hosts.",
     additionalNote:
@@ -1608,18 +1675,28 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
   },
   "chengdu-pandas-sichuan-table": {
     ...sharedPricingDetails,
+    inclusionSummary:
+      "Includes four Chengdu hotel nights, breakfasts on Days 2–5, private arrival and departure transfers, local private guide and separate driver on Days 2–4, listed public admissions and the Sichuan meal or cooking experience identified in the proposal. Choose the Leshan or Chengdu Day 4 plan before booking; its services and any price difference are specified in writing.",
   },
   "beijing-great-wall-private-5-day-tour": {
     ...sharedPricingDetails,
+    inclusionSummary:
+      "Includes four nights in one confirmed Beijing hotel, breakfasts on Days 2–5, private arrival and departure transfers, a local private guide and separate driver on the listed sightseeing days, and standard admissions and required scenic-area transport. Great Wall lifts, lunches, dinners and hosted cultural experiences are extra unless expressly added.",
   },
   "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour": {
     ...sharedPricingDetails,
+    inclusionSummary:
+      "Includes five hotel nights (Xi'an 2 and Beijing 3), breakfasts on Days 2–6, private arrival, departure and station transfers, confirmed Xi'an–Beijing high-speed rail, and local private guide and separate driver on Days 2, 4 and 5. The Forbidden City and Mutianyu have separate sightseeing days. Great Wall lifts and unlisted meals cost extra.",
   },
   "chengdu-pandas-jiuzhaigou-private-7-day-tour": {
     ...sharedPricingDetails,
+    inclusionSummary:
+      "Includes six hotel nights (Chengdu 3 and the Jiuzhaigou area 3), breakfasts on Days 2–7, listed private guiding, transfers, the confirmed Chengdu-to-mountain rail and road connection and listed public admissions and park transport. The route ends in the Jiuzhaigou area. Huanglong and a return to Chengdu are separately arranged and priced.",
   },
   "shanghai-zhangjiajie-floating-peaks": {
     ...sharedPricingDetails,
+    inclusionSummary:
+      "Includes seven hotel nights (Shanghai 2, Wulingyuan 2, Zhangjiajie City 2 and Shanghai 1), breakfasts on Days 2–8, private local guides and transfers, the confirmed economy flights between Shanghai and Zhangjiajie in both directions, and listed admission and public scenic transport for Wulingyuan and Tianmen Mountain. The Huangpu cruise and glass bridge are optional extras.",
   },
   "beijing-xian-shanghai-private-10-day-tour": {
     pricingUnit: "private-group",
@@ -1639,6 +1716,8 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
     ...sharedPricingDetails,
     additionalNote:
       "Two open days are intentionally unprogrammed. Optional private experiences are quoted separately.",
+    inclusionSummary:
+      "Includes ten hotel nights (Chengdu 3, Chongqing 3 and Zhangjiajie 4), breakfasts on Days 2–11, the listed transfers, local private guide and separate driver on Days 2–3, 5 and 8–9, confirmed intercity rail or flight services and listed park admission and public scenic transport. Days 6 and 10 have no scheduled guide, vehicle or activity.",
   },
   "beijing-xian-chengdu-shanghai-private-11-day-tour": {
     ...sharedPricingDetails,
@@ -1647,12 +1726,16 @@ const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
     cardBasis: "Written quote for your dates and group",
     finalPriceNote:
       "Request a date-specific proposal for the complete 12-day route. The published starting rate is a guide.",
+    inclusionSummary:
+      "The 12-day design includes 11 hotel nights across Shanghai, Chengdu, Xi'an and Beijing, hotel breakfasts, the listed private touring and transfers, confirmed domestic connections and standard admissions. The Dujiangyan panda visit uses public areas. Hotels, transport classes and cultural sessions are specified in the written proposal.",
   },
 };
 
 const completeJourneyCatalog: JourneyCatalogItem[] = journeyCatalogBase.map((journey) => {
+  const authored = tours.find((tour) => tour.slug === journey.slug);
   const enrichedJourney: JourneyCatalogBase = {
     ...journey,
+    title: authored?.title ?? journey.title,
     planningNeedFilters: journey.travelerFilters.includes("solo-travelers")
       ? [...journey.planningNeedFilters, "women-traveler-support"]
       : journey.planningNeedFilters,
@@ -1729,15 +1812,21 @@ function buildDiscoveryData(
   return {
     focus: Array.from(focus),
     pace: active ? "active" : slow ? "easy" : "balanced",
-    walkingLevel: easierPaceChina ? "moderate" : active ? "active" : slow ? "minimal" : "moderate",
-    altitude: journey.destinationFilters.includes("Jiuzhaigou") ? "some" : "none",
+    // Rest days and private transfers do not remove stairs at public heritage sites.
+    walkingLevel:
+      journey.slug === "beijing-xian-chengdu-shanghai-private-11-day-tour" ? "active" : "moderate",
+    altitude:
+      journey.slug === "luxury-yunnan-private-tour" ||
+      journey.slug === "chengdu-pandas-jiuzhaigou-private-7-day-tour"
+        ? "high"
+        : "none",
     transport: [
       "private-car" as const,
       ...(transportText.includes("rail") ? (["high-speed-rail"] as const) : []),
       ...(transportText.includes("flight") ? (["domestic-flight"] as const) : []),
     ],
     seasons: ["spring", "summer", "autumn", "winter"],
-    hotelChanges: Math.max(0, journey.destinationFilters.length - 1),
+    hotelChanges: overnightHotelChanges[journey.slug] ?? 0,
     featuredRank: commercialPortfolio[journey.slug].commercialPriority,
     searchableText: text,
   };

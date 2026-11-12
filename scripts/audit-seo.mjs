@@ -149,22 +149,13 @@ for (const pathname of [
   "/tours/__seo-missing__",
   "/journal/__seo-missing__",
   "/destinations/__seo-missing__",
+  "/styles/__seo-missing__",
+  "/journey/__seo-missing__",
+  "/journeys/__seo-missing__",
 ]) {
   const response = await fetch(new URL(pathname, baseUrl), { redirect: "manual" });
   if (response.status !== 404)
     issues.push(`${pathname}: expected 404, received ${response.status}`);
-}
-
-const legacyStylesResponse = await fetch(new URL("/styles/__seo-missing__", baseUrl), {
-  redirect: "manual",
-});
-if (
-  legacyStylesResponse.status !== 308 ||
-  legacyStylesResponse.headers.get("location") !== "/tours"
-) {
-  issues.push(
-    `/styles/__seo-missing__: expected permanent redirect to /tours, received ${legacyStylesResponse.status} ${legacyStylesResponse.headers.get("location") || "without location"}`,
-  );
 }
 
 const searchResponse = await fetch(new URL("/search?q=china", baseUrl));

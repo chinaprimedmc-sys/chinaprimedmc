@@ -9,6 +9,7 @@ import { EnquirySection } from "@/components/forms/enquiry-section";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { siteConfig } from "@/config/site";
+import { TravelGuideArticleLinks } from "@/components/travel-guides/search-support";
 import { journalCategories } from "@/content/journal";
 import { getArticlePhoto } from "@/content/journal/article-photos";
 import { getJournalSearchRole } from "@/content/journal/search-strategy";
@@ -105,6 +106,7 @@ export function ArticleTemplate({ article, relationships }: ArticleTemplateProps
             </Fragment>
           ))}
           <span id="article-content-end" aria-hidden="true" />
+          <TravelGuideArticleLinks slug={article.slug} className={styles.commercialCollection} />
         </div>
       </section>
 

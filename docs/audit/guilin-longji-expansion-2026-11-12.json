@@ -1,0 +1,35 @@
+{
+  "asOf": "2026-11-12",
+  "slug": "guilin-yangshuo-longji-private-5-day-tour",
+  "state": "local-quote-only-product-not-deployed",
+  "catalogProducts": 20,
+  "newProductFaqs": 20,
+  "tests": {
+    "journey": {
+      "passed": 136,
+      "failed": 0,
+      "log": "/tmp/guilin-expansion-tests.log"
+    },
+    "typecheck": "passed",
+    "affectedEslint": "passed",
+    "affectedPrettier": "passed",
+    "productionBuild": {
+      "status": "passed",
+      "log": "/tmp/guilin-expansion-build.log"
+    }
+  },
+  "renderedHtml": "/tmp/aviora-tour-editorial-rendered/guilin-yangshuo-longji-private-5-day-tour.html",
+  "renderedImageSources": [
+    "/tours/placeholders/guilin-yangshuo-longji.svg",
+    "/maps/china-geographic-context.svg"
+  ],
+  "otherTourPhotographyReferences": [],
+  "schemaFactsAndFaqParity": "passed",
+  "startingPrice": null,
+  "offer": "omitted",
+  "limitations": [
+    "Official URLs and specific current operator policies were not live verified.",
+    "Hotels, tickets, service hours, local walking route and supplier costs require date-specific confirmation.",
+    "No deployment, indexing, live SERP or AI Overview citation claim."
+  ]
+}

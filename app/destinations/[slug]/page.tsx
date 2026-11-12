@@ -98,7 +98,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
           touristType: destination.bestFor.split(",").map((item) => item.trim()),
         }}
       />
-      {guide ? (
+      {guide?.products.length ? (
         <JsonLd
           id={`${slug}-journey-list-schema`}
           data={{

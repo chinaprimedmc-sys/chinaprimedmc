@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img">
+<title>Harbin planning diagram</title>
+<desc>A schematic comparison of stay choices, not a geographic map or destination photograph.</desc>
+<rect width="1600" height="1200" fill="#f1eee6"/>
+<path d="M1040 240V960" stroke="#b4b6a0" stroke-width="3"/>
+<text x="90" y="145" fill="#52605a" font-family="Georgia,serif" font-size="64">Harbin</text>
+<text x="90" y="205" fill="#5b625e" font-family="Arial,sans-serif" font-size="28">Choose actual venues and a comfortable pace</text>
+<rect x="640" y="255" width="830" height="175" rx="16" fill="#fffdf7" stroke="#d2d5c9"/>
+<circle cx="700" cy="330" r="19" fill="#53665b"/>
+<text x="755" y="320" fill="#263b31" font-family="Georgia,serif" font-size="36">Central city base</text>
+<text x="755" y="372" fill="#4e5b54" font-family="Arial,sans-serif" font-size="25">Warm meals, room heating and clear pickups</text>
+<rect x="640" y="505" width="830" height="175" rx="16" fill="#fffdf7" stroke="#d2d5c9"/>
+<circle cx="700" cy="580" r="19" fill="#53665b"/>
+<text x="755" y="570" fill="#263b31" font-family="Georgia,serif" font-size="36">Seasonal ice visit</text>
+<text x="755" y="622" fill="#4e5b54" font-family="Arial,sans-serif" font-size="25">Confirm the venue, dates and warm-up plan</text>
+<rect x="640" y="755" width="830" height="175" rx="16" fill="#fffdf7" stroke="#d2d5c9"/>
+<circle cx="700" cy="830" r="19" fill="#53665b"/>
+<text x="755" y="820" fill="#263b31" font-family="Georgia,serif" font-size="36">Separate ski extension</text>
+<text x="755" y="872" fill="#4e5b54" font-family="Arial,sans-serif" font-size="25">Check resort, equipment and the full journey</text>
+<text x="90" y="1110" fill="#626b61" font-family="Arial,sans-serif" font-size="24">AVIORA · Planning diagram · Schematic, not to scale</text>
+</svg>

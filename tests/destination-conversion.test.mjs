@@ -29,6 +29,55 @@ registerHooks({
 });
 
 const { pageConversionContext } = await import("../lib/analytics/destination-context.ts");
+const { travelerGuideRoutes } = await import("../config/traveler-guide-routes.ts");
+const { travelGuideSearch } = await import("../content/travel-guides/search.ts");
+
+test("traveler guides keep the same public identity from article CTA to planning conversion", () => {
+  for (const route of travelerGuideRoutes) {
+    assert.equal(route.path, travelGuideSearch[route.id].path);
+    assert.deepEqual(pageConversionContext(route.path), { traveler_guide: route.id });
+    assert.deepEqual(
+      pageConversionContext(
+        "/start-planning",
+        `?source=${route.source}&preference=private%20request&email=private@example.com`,
+      ),
+      { traveler_guide: route.id },
+    );
+    const page = readFileSync(resolve(root, `app${route.path}/page.tsx`), "utf8");
+    assert.ok(page.includes(`source=${route.source}`));
+    assert.ok(page.includes('trackingPlacement="guide-hero"'));
+    assert.ok(page.includes('trackingPlacement="guide-closing"'));
+  }
+});
+
+test("brand pages and unknown sources do not leak arbitrary query values", () => {
+  assert.deepEqual(pageConversionContext("/about"), { brand_page: "about" });
+  assert.deepEqual(pageConversionContext("/company"), { brand_page: "company" });
+  assert.deepEqual(pageConversionContext("/about/founder"), { brand_page: "founder" });
+  assert.deepEqual(pageConversionContext("/start-planning", "?source=founder-story"), {
+    brand_page: "founder",
+  });
+  for (const source of ["about-capability", "about-service-cases"]) {
+    assert.deepEqual(
+      pageConversionContext("/start-planning", `?source=${source}&email=private@example.com`),
+      { brand_page: "about" },
+    );
+    assert.deepEqual(pageConversionContext("/company", `?source=${source}`), {
+      brand_page: "company",
+    });
+  }
+  assert.deepEqual(
+    pageConversionContext(
+      "/start-planning",
+      "?source=private@example.com&preference=medical%20details",
+    ),
+    {},
+  );
+  assert.deepEqual(pageConversionContext("/not-a-guide", "?source=family-guide"), {});
+  assert.deepEqual(pageConversionContext("/china-tours-for-women", "?source=family-guide"), {
+    traveler_guide: "women",
+  });
+});
 
 test("direct destination and planning visits use public identifiers", () => {
   assert.deepEqual(pageConversionContext("/destinations/guilin"), { destination_slug: "guilin" });

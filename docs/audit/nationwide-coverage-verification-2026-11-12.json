@@ -1,0 +1,3405 @@
+{
+  "date": "2026-11-12",
+  "scope": "Local registered guides and editorial candidates, not live deployed or indexed pages, not an official nationwide administrative city reconciliation",
+  "guides": 243,
+  "candidates": 645,
+  "covered": 245,
+  "pendingCount": 400,
+  "coveragePercent": 38,
+  "unclassified": 309,
+  "classifiedCountyLevelCityPending": 146,
+  "unclassifiedPending": 245,
+  "groups": [
+    {
+      "province": "Shandong",
+      "total": 35,
+      "pending": 31
+    },
+    {
+      "province": "Sichuan",
+      "total": 49,
+      "pending": 29
+    },
+    {
+      "province": "Jiangsu",
+      "total": 35,
+      "pending": 24
+    },
+    {
+      "province": "Hebei",
+      "total": 28,
+      "pending": 21
+    },
+    {
+      "province": "Henan",
+      "total": 35,
+      "pending": 21
+    },
+    {
+      "province": "Zhejiang",
+      "total": 47,
+      "pending": 20
+    },
+    {
+      "province": "Jiangxi",
+      "total": 24,
+      "pending": 19
+    },
+    {
+      "province": "Guangdong",
+      "total": 43,
+      "pending": 18
+    },
+    {
+      "province": "Yunnan",
+      "total": 44,
+      "pending": 18
+    },
+    {
+      "province": "Anhui",
+      "total": 30,
+      "pending": 17
+    },
+    {
+      "province": "Fujian",
+      "total": 23,
+      "pending": 15
+    },
+    {
+      "province": "Shaanxi",
+      "total": 16,
+      "pending": 15
+    },
+    {
+      "province": "Hunan",
+      "total": 16,
+      "pending": 14
+    },
+    {
+      "province": "Shanxi",
+      "total": 17,
+      "pending": 13
+    },
+    {
+      "province": "Liaoning",
+      "total": 14,
+      "pending": 12
+    },
+    {
+      "province": "Heilongjiang",
+      "total": 13,
+      "pending": 12
+    },
+    {
+      "province": "Guizhou",
+      "total": 20,
+      "pending": 12
+    },
+    {
+      "province": "Xinjiang",
+      "total": 20,
+      "pending": 11
+    },
+    {
+      "province": "Hubei",
+      "total": 19,
+      "pending": 10
+    },
+    {
+      "province": "Guangxi",
+      "total": 21,
+      "pending": 9
+    },
+    {
+      "province": "Tibet",
+      "total": 12,
+      "pending": 9
+    },
+    {
+      "province": "Gansu",
+      "total": 17,
+      "pending": 9
+    },
+    {
+      "province": "Inner Mongolia",
+      "total": 12,
+      "pending": 8
+    },
+    {
+      "province": "Jilin",
+      "total": 10,
+      "pending": 8
+    },
+    {
+      "province": "Taiwan",
+      "total": 10,
+      "pending": 8
+    },
+    {
+      "province": "Hainan",
+      "total": 10,
+      "pending": 6
+    },
+    {
+      "province": "Qinghai",
+      "total": 9,
+      "pending": 3
+    },
+    {
+      "province": "Ningxia",
+      "total": 5,
+      "pending": 3
+    },
+    {
+      "province": "Beijing",
+      "total": 3,
+      "pending": 2
+    },
+    {
+      "province": "Chongqing",
+      "total": 3,
+      "pending": 2
+    },
+    {
+      "province": "Shanghai",
+      "total": 2,
+      "pending": 1
+    },
+    {
+      "province": "Tianjin",
+      "total": 1,
+      "pending": 0
+    },
+    {
+      "province": "Hong Kong",
+      "total": 1,
+      "pending": 0
+    },
+    {
+      "province": "Macao",
+      "total": 1,
+      "pending": 0
+    }
+  ],
+  "additionalNicheScopeReview": [
+    {
+      "province": "Yunnan",
+      "name": "Fugong",
+      "nameZh": "福贡",
+      "proposedSlug": "fugong",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    },
+    {
+      "province": "Yunnan",
+      "name": "Gongshan",
+      "nameZh": "贡山",
+      "proposedSlug": "gongshan",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    },
+    {
+      "province": "Yunnan",
+      "name": "Dulong Valley",
+      "nameZh": "独龙江",
+      "proposedSlug": "dulong-valley",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    },
+    {
+      "province": "Fujian",
+      "name": "Xunpu",
+      "nameZh": "蟳埔",
+      "proposedSlug": "xunpu",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    },
+    {
+      "province": "Fujian",
+      "name": "Hui’an",
+      "nameZh": "惠安",
+      "proposedSlug": "huian",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    },
+    {
+      "province": "Guangxi",
+      "name": "Chengyang",
+      "nameZh": "程阳",
+      "proposedSlug": "chengyang",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    },
+    {
+      "province": "Guizhou",
+      "name": "Rongjiang",
+      "nameZh": "榕江",
+      "proposedSlug": "rongjiang",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    },
+    {
+      "province": "Guizhou",
+      "name": "Jiabang Rice Terraces",
+      "nameZh": "加榜梯田",
+      "proposedSlug": "jiabang-rice-terraces",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    },
+    {
+      "province": "Guizhou",
+      "name": "Leigong Mountain",
+      "nameZh": "雷公山",
+      "proposedSlug": "leigong-mountain",
+      "exactInventoryMatch": false,
+      "exactRegisteredGuideMatch": false,
+      "status": "scope-review-required; parent-page mentions and aliases are not resolved by this exact-match check"
+    }
+  ],
+  "pending": [
+    {
+      "slug": "miyun",
+      "name": "Miyun",
+      "province": "Beijing",
+      "region": "north"
+    },
+    {
+      "slug": "yanqing",
+      "name": "Yanqing",
+      "province": "Beijing",
+      "region": "north"
+    },
+    {
+      "slug": "zhangjiakou",
+      "name": "Zhangjiakou",
+      "province": "Hebei",
+      "region": "north"
+    },
+    {
+      "slug": "xingtai",
+      "name": "Xingtai",
+      "province": "Hebei",
+      "region": "north"
+    },
+    {
+      "slug": "cangzhou",
+      "name": "Cangzhou",
+      "province": "Hebei",
+      "region": "north"
+    },
+    {
+      "slug": "langfang",
+      "name": "Langfang",
+      "province": "Hebei",
+      "region": "north"
+    },
+    {
+      "slug": "hengshui",
+      "name": "Hengshui",
+      "province": "Hebei",
+      "region": "north"
+    },
+    {
+      "slug": "xinji",
+      "name": "Xinji",
+      "nameZh": "辛集",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "jinzhou-hebei",
+      "name": "Jinzhou, Hebei",
+      "nameZh": "晋州",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "xinle",
+      "name": "Xinle",
+      "nameZh": "新乐",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "zunhua",
+      "name": "Zunhua",
+      "nameZh": "遵化",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "qianan",
+      "name": "Qian’an",
+      "nameZh": "迁安",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "wuan",
+      "name": "Wu’an",
+      "nameZh": "武安",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "hejian",
+      "name": "Hejian",
+      "nameZh": "河间",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "renqiu",
+      "name": "Renqiu",
+      "nameZh": "任丘",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "huanghua",
+      "name": "Huanghua",
+      "nameZh": "黄骅",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "botou",
+      "name": "Botou",
+      "nameZh": "泊头",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "dingzhou",
+      "name": "Dingzhou",
+      "nameZh": "定州",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "anguo",
+      "name": "Anguo",
+      "nameZh": "安国",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "gaobeidian",
+      "name": "Gaobeidian",
+      "nameZh": "高碑店",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "shenzhou-hebei",
+      "name": "Shenzhou, Hebei",
+      "nameZh": "深州",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "shahe",
+      "name": "Shahe",
+      "nameZh": "沙河",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "nangong",
+      "name": "Nangong",
+      "nameZh": "南宫",
+      "province": "Hebei",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Hebei",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "jinzhong",
+      "name": "Jinzhong",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "xinzhou",
+      "name": "Xinzhou",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "linfen",
+      "name": "Linfen",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "yuncheng",
+      "name": "Yuncheng",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "changzhi",
+      "name": "Changzhi",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "jincheng",
+      "name": "Jincheng",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "shuozhou",
+      "name": "Shuozhou",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "lvliang",
+      "name": "Lvliang",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "yangquan",
+      "name": "Yangquan",
+      "province": "Shanxi",
+      "region": "north"
+    },
+    {
+      "slug": "baotou",
+      "name": "Baotou",
+      "province": "Inner Mongolia",
+      "region": "north"
+    },
+    {
+      "slug": "ordos",
+      "name": "Ordos",
+      "province": "Inner Mongolia",
+      "region": "north"
+    },
+    {
+      "slug": "xilinhot",
+      "name": "Xilinhot",
+      "province": "Inner Mongolia",
+      "region": "north"
+    },
+    {
+      "slug": "chifeng",
+      "name": "Chifeng",
+      "province": "Inner Mongolia",
+      "region": "north"
+    },
+    {
+      "slug": "tongliao",
+      "name": "Tongliao",
+      "province": "Inner Mongolia",
+      "region": "north"
+    },
+    {
+      "slug": "ulanqab",
+      "name": "Ulanqab",
+      "province": "Inner Mongolia",
+      "region": "north"
+    },
+    {
+      "slug": "bayannur",
+      "name": "Bayannur",
+      "province": "Inner Mongolia",
+      "region": "north"
+    },
+    {
+      "slug": "wuhai",
+      "name": "Wuhai",
+      "province": "Inner Mongolia",
+      "region": "north"
+    },
+    {
+      "slug": "dandong",
+      "name": "Dandong",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "anshan",
+      "name": "Anshan",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "fushun",
+      "name": "Fushun",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "benxi",
+      "name": "Benxi",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "jinzhou",
+      "name": "Jinzhou",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "yingkou",
+      "name": "Yingkou",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "fuxin",
+      "name": "Fuxin",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "liaoyang",
+      "name": "Liaoyang",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "panjin",
+      "name": "Panjin",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "tieling",
+      "name": "Tieling",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "chaoyang",
+      "name": "Chaoyang",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "huludao",
+      "name": "Huludao",
+      "province": "Liaoning",
+      "region": "northeast"
+    },
+    {
+      "slug": "jilin-city",
+      "name": "Jilin City",
+      "province": "Jilin",
+      "region": "northeast"
+    },
+    {
+      "slug": "yanji",
+      "name": "Yanji",
+      "province": "Jilin",
+      "region": "northeast"
+    },
+    {
+      "slug": "siping",
+      "name": "Siping",
+      "province": "Jilin",
+      "region": "northeast"
+    },
+    {
+      "slug": "liaoyuan",
+      "name": "Liaoyuan",
+      "province": "Jilin",
+      "region": "northeast"
+    },
+    {
+      "slug": "tonghua",
+      "name": "Tonghua",
+      "province": "Jilin",
+      "region": "northeast"
+    },
+    {
+      "slug": "baishan",
+      "name": "Baishan",
+      "province": "Jilin",
+      "region": "northeast"
+    },
+    {
+      "slug": "songyuan",
+      "name": "Songyuan",
+      "province": "Jilin",
+      "region": "northeast"
+    },
+    {
+      "slug": "baicheng",
+      "name": "Baicheng",
+      "province": "Jilin",
+      "region": "northeast"
+    },
+    {
+      "slug": "yichun",
+      "name": "Yichun",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "mohe",
+      "name": "Mohe",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "mudanjiang",
+      "name": "Mudanjiang",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "jiamusi",
+      "name": "Jiamusi",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "qiqihar",
+      "name": "Qiqihar",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "daqing",
+      "name": "Daqing",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "heihe",
+      "name": "Heihe",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "jixi",
+      "name": "Jixi",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "hegang",
+      "name": "Hegang",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "shuangyashan",
+      "name": "Shuangyashan",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "qitaihe",
+      "name": "Qitaihe",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "suihua",
+      "name": "Suihua",
+      "province": "Heilongjiang",
+      "region": "northeast"
+    },
+    {
+      "slug": "zhujiajiao",
+      "name": "Zhujiajiao",
+      "province": "Shanghai",
+      "region": "east"
+    },
+    {
+      "slug": "nantong",
+      "name": "Nantong",
+      "province": "Jiangsu",
+      "region": "east"
+    },
+    {
+      "slug": "xuzhou",
+      "name": "Xuzhou",
+      "province": "Jiangsu",
+      "region": "east"
+    },
+    {
+      "slug": "lianyungang",
+      "name": "Lianyungang",
+      "province": "Jiangsu",
+      "region": "east"
+    },
+    {
+      "slug": "huaian",
+      "name": "Huai'an",
+      "province": "Jiangsu",
+      "region": "east"
+    },
+    {
+      "slug": "yancheng",
+      "name": "Yancheng",
+      "province": "Jiangsu",
+      "region": "east"
+    },
+    {
+      "slug": "taizhou-jiangsu",
+      "name": "Taizhou Jiangsu",
+      "province": "Jiangsu",
+      "region": "east"
+    },
+    {
+      "slug": "suqian",
+      "name": "Suqian",
+      "province": "Jiangsu",
+      "region": "east"
+    },
+    {
+      "slug": "kunshan",
+      "name": "Kunshan",
+      "province": "Jiangsu",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Suzhou",
+      "editorialBoundary": "City guide distinct from Zhouzhuang and other individual water towns."
+    },
+    {
+      "slug": "jiangyin",
+      "name": "Jiangyin",
+      "province": "Jiangsu",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Wuxi",
+      "editorialBoundary": "A separate city-level travel candidate, not a second name for Wuxi."
+    },
+    {
+      "slug": "jinhua",
+      "name": "Jinhua",
+      "province": "Zhejiang",
+      "region": "east"
+    },
+    {
+      "slug": "quzhou",
+      "name": "Quzhou",
+      "province": "Zhejiang",
+      "region": "east"
+    },
+    {
+      "slug": "zhoushan",
+      "name": "Zhoushan",
+      "province": "Zhejiang",
+      "region": "east"
+    },
+    {
+      "slug": "taizhou-zhejiang",
+      "name": "Taizhou Zhejiang",
+      "province": "Zhejiang",
+      "region": "east"
+    },
+    {
+      "slug": "yiwu",
+      "name": "Yiwu",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jinhua",
+      "editorialBoundary": "Business and city planning; distinguish market visits from supplier appointments."
+    },
+    {
+      "slug": "cixi",
+      "name": "Cixi",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Ningbo",
+      "editorialBoundary": "Distinct city entity within the wider Ningbo administrative area."
+    },
+    {
+      "slug": "dongyang",
+      "name": "Dongyang",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jinhua",
+      "editorialBoundary": "Distinguish the city, woodcarving interests and individual Hengdian visitor venues."
+    },
+    {
+      "slug": "yongkang",
+      "name": "Yongkang",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jinhua",
+      "editorialBoundary": "Distinct city entity; do not infer factory or supplier access from destination coverage."
+    },
+    {
+      "slug": "zhuji",
+      "name": "Zhuji",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaoxing",
+      "editorialBoundary": "Local heritage and actual landscape routes; separate from a general Shaoxing city visit."
+    },
+    {
+      "slug": "shengzhou",
+      "name": "Shengzhou",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaoxing",
+      "editorialBoundary": "Yue opera heritage and local food; performances or practitioner meetings are not guaranteed."
+    },
+    {
+      "slug": "yueqing",
+      "name": "Yueqing",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Wenzhou",
+      "editorialBoundary": "City and selected Yandang Mountain routes; do not treat every mountain sector as one interchangeable visit."
+    },
+    {
+      "slug": "ruian",
+      "name": "Rui’an",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Wenzhou",
+      "editorialBoundary": "Distinct city and cultural landscape routes; generic Wenzhou coverage is not sufficient."
+    },
+    {
+      "slug": "wenling",
+      "name": "Wenling",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Taizhou",
+      "editorialBoundary": "Coastal villages and actual accommodation bases; no unverified private coastal access."
+    },
+    {
+      "slug": "yuhuan",
+      "name": "Yuhuan",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Taizhou",
+      "editorialBoundary": "Coastal city and selected island routes; boat services and conditions must be checked separately."
+    },
+    {
+      "slug": "bengbu",
+      "name": "Bengbu",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "huainan",
+      "name": "Huainan",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "maanshan",
+      "name": "Ma'anshan",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "huaibei",
+      "name": "Huaibei",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "tongling",
+      "name": "Tongling",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "chuzhou",
+      "name": "Chuzhou",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "fuyang",
+      "name": "Fuyang",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "suzhou-anhui",
+      "name": "Suzhou Anhui",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "luan",
+      "name": "Lu'an",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "bozhou",
+      "name": "Bozhou",
+      "province": "Anhui",
+      "region": "east"
+    },
+    {
+      "slug": "chaohu",
+      "name": "Chaohu",
+      "nameZh": "巢湖",
+      "province": "Anhui",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Anhui",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "tianchang",
+      "name": "Tianchang",
+      "nameZh": "天长",
+      "province": "Anhui",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Anhui",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "mingguang",
+      "name": "Mingguang",
+      "nameZh": "明光",
+      "province": "Anhui",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Anhui",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "jieshou",
+      "name": "Jieshou",
+      "nameZh": "界首",
+      "province": "Anhui",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Anhui",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "ningguo",
+      "name": "Ningguo",
+      "nameZh": "宁国",
+      "province": "Anhui",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Anhui",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "guangde",
+      "name": "Guangde",
+      "nameZh": "广德",
+      "province": "Anhui",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Anhui",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "wuwei-anhui",
+      "name": "Wuwei, Anhui",
+      "nameZh": "无为",
+      "province": "Anhui",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Anhui",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "zhangzhou",
+      "name": "Zhangzhou",
+      "province": "Fujian",
+      "region": "east"
+    },
+    {
+      "slug": "nanping",
+      "name": "Nanping",
+      "province": "Fujian",
+      "region": "east"
+    },
+    {
+      "slug": "longyan",
+      "name": "Longyan",
+      "province": "Fujian",
+      "region": "east"
+    },
+    {
+      "slug": "ningde",
+      "name": "Ningde",
+      "province": "Fujian",
+      "region": "east"
+    },
+    {
+      "slug": "putian",
+      "name": "Putian",
+      "province": "Fujian",
+      "region": "east"
+    },
+    {
+      "slug": "sanming",
+      "name": "Sanming",
+      "province": "Fujian",
+      "region": "east"
+    },
+    {
+      "slug": "jianou",
+      "name": "Jian'ou",
+      "province": "Fujian",
+      "region": "south",
+      "entityType": "county-level-city",
+      "administrativeParent": "Nanping",
+      "editorialBoundary": "Separate city entity from Wuyishan and the wider Nanping administrative area."
+    },
+    {
+      "slug": "shaowu",
+      "name": "Shaowu",
+      "province": "Fujian",
+      "region": "south",
+      "entityType": "county-level-city",
+      "administrativeParent": "Nanping",
+      "editorialBoundary": "Separate city planning candidate; no automatic coverage from Wuyishan."
+    },
+    {
+      "slug": "shangrao",
+      "name": "Shangrao",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "jiujiang",
+      "name": "Jiujiang",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "lushan",
+      "name": "Lushan",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "ganzhou",
+      "name": "Ganzhou",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "jian",
+      "name": "Ji'an",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "yichun-jiangxi",
+      "name": "Yichun Jiangxi",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "fuzhou-jiangxi",
+      "name": "Fuzhou Jiangxi",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "pingxiang",
+      "name": "Pingxiang",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "xinyu",
+      "name": "Xinyu",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "yingtan",
+      "name": "Yingtan",
+      "province": "Jiangxi",
+      "region": "east"
+    },
+    {
+      "slug": "yantai",
+      "name": "Yantai",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "weihai",
+      "name": "Weihai",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "zibo",
+      "name": "Zibo",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "zaozhuang",
+      "name": "Zaozhuang",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "dongying",
+      "name": "Dongying",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "weifang",
+      "name": "Weifang",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "jining",
+      "name": "Jining",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "rizhao",
+      "name": "Rizhao",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "linyi",
+      "name": "Linyi",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "dezhou",
+      "name": "Dezhou",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "liaocheng",
+      "name": "Liaocheng",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "binzhou",
+      "name": "Binzhou",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "heze",
+      "name": "Heze",
+      "province": "Shandong",
+      "region": "east"
+    },
+    {
+      "slug": "puyang",
+      "name": "Puyang",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "luohe",
+      "name": "Luohe",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "sanmenxia",
+      "name": "Sanmenxia",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "shangqiu",
+      "name": "Shangqiu",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "xinyang",
+      "name": "Xinyang",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "zhoukou",
+      "name": "Zhoukou",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "zhumadian",
+      "name": "Zhumadian",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "pingdingshan",
+      "name": "Pingdingshan",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "jiyuan",
+      "name": "Jiyuan",
+      "province": "Henan",
+      "region": "central"
+    },
+    {
+      "slug": "xinzheng",
+      "name": "Xinzheng",
+      "nameZh": "新郑市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zhengzhou, Henan",
+      "editorialBoundary": "Independent city planning candidate; a parent-city guide, nearby airport or passing place-name mention does not establish complete destination coverage.",
+      "inventoryEvidence": "Local omission sample added 2026-11-12. Provisional editorial classification and parent, pending dated official register, administrative code and alias reconciliation. No public guide or route created by this entry."
+    },
+    {
+      "slug": "huangshi",
+      "name": "Huangshi",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "ezhou",
+      "name": "Ezhou",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "jingmen",
+      "name": "Jingmen",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "xiaogan",
+      "name": "Xiaogan",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "huanggang",
+      "name": "Huanggang",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "xianning",
+      "name": "Xianning",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "suizhou",
+      "name": "Suizhou",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "xiantao",
+      "name": "Xiantao",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "qianjiang",
+      "name": "Qianjiang",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "tianmen",
+      "name": "Tianmen",
+      "province": "Hubei",
+      "region": "central"
+    },
+    {
+      "slug": "fenghuang",
+      "name": "Fenghuang",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "furong-town",
+      "name": "Furong Town",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "yueyang",
+      "name": "Yueyang",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "hengyang",
+      "name": "Hengyang",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "zhuzhou",
+      "name": "Zhuzhou",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "xiangtan",
+      "name": "Xiangtan",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "shaoyang",
+      "name": "Shaoyang",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "changde",
+      "name": "Changde",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "yiyang",
+      "name": "Yiyang",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "chenzhou",
+      "name": "Chenzhou",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "yongzhou",
+      "name": "Yongzhou",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "huaihua",
+      "name": "Huaihua",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "loudi",
+      "name": "Loudi",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "jishou",
+      "name": "Jishou",
+      "province": "Hunan",
+      "region": "central"
+    },
+    {
+      "slug": "maoming",
+      "name": "Maoming",
+      "province": "Guangdong",
+      "region": "south"
+    },
+    {
+      "slug": "shanwei",
+      "name": "Shanwei",
+      "province": "Guangdong",
+      "region": "south"
+    },
+    {
+      "slug": "yangjiang",
+      "name": "Yangjiang",
+      "province": "Guangdong",
+      "region": "south"
+    },
+    {
+      "slug": "yunfu",
+      "name": "Yunfu",
+      "province": "Guangdong",
+      "region": "south"
+    },
+    {
+      "slug": "wuzhou",
+      "name": "Wuzhou",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "fangchenggang",
+      "name": "Fangchenggang",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "qinzhou",
+      "name": "Qinzhou",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "guigang",
+      "name": "Guigang",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "yulin-guangxi",
+      "name": "Yulin Guangxi",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "baise",
+      "name": "Baise",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "hezhou",
+      "name": "Hezhou",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "hechi",
+      "name": "Hechi",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "laibin",
+      "name": "Laibin",
+      "province": "Guangxi",
+      "region": "south"
+    },
+    {
+      "slug": "wenchang",
+      "name": "Wenchang",
+      "province": "Hainan",
+      "region": "south"
+    },
+    {
+      "slug": "qionghai",
+      "name": "Qionghai",
+      "province": "Hainan",
+      "region": "south"
+    },
+    {
+      "slug": "danzhou",
+      "name": "Danzhou",
+      "province": "Hainan",
+      "region": "south"
+    },
+    {
+      "slug": "wuzhishan",
+      "name": "Wuzhishan",
+      "province": "Hainan",
+      "region": "south"
+    },
+    {
+      "slug": "dazu",
+      "name": "Dazu",
+      "province": "Chongqing",
+      "region": "southwest"
+    },
+    {
+      "slug": "wulong",
+      "name": "Wulong",
+      "province": "Chongqing",
+      "region": "southwest"
+    },
+    {
+      "slug": "seda",
+      "name": "Seda",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "xichang",
+      "name": "Xichang",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "yaan",
+      "name": "Ya'an",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "zigong",
+      "name": "Zigong",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "luzhou",
+      "name": "Luzhou",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "deyang",
+      "name": "Deyang",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "mianyang",
+      "name": "Mianyang",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "guangyuan",
+      "name": "Guangyuan",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "suining",
+      "name": "Suining",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "neijiang",
+      "name": "Neijiang",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "nanchong",
+      "name": "Nanchong",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "meishan",
+      "name": "Meishan",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "yibin",
+      "name": "Yibin",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "guangan",
+      "name": "Guang'an",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "dazhou",
+      "name": "Dazhou",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "bazhong",
+      "name": "Bazhong",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "ziyang",
+      "name": "Ziyang",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "panzhihua",
+      "name": "Panzhihua",
+      "province": "Sichuan",
+      "region": "southwest"
+    },
+    {
+      "slug": "jiangyou",
+      "name": "Jiangyou",
+      "province": "Sichuan",
+      "region": "southwest",
+      "entityType": "county-level-city",
+      "administrativeParent": "Mianyang",
+      "editorialBoundary": "Li Bai-related heritage and local routes; distinguish literary associations from surviving original structures."
+    },
+    {
+      "slug": "pengzhou",
+      "name": "Pengzhou",
+      "province": "Sichuan",
+      "region": "southwest",
+      "entityType": "county-level-city",
+      "administrativeParent": "Chengdu",
+      "editorialBoundary": "Selected mountain-edge and rural stays; actual road access, weather and property facilities require review."
+    },
+    {
+      "slug": "shifang",
+      "name": "Shifang",
+      "province": "Sichuan",
+      "region": "southwest",
+      "entityType": "county-level-city",
+      "administrativeParent": "Deyang",
+      "editorialBoundary": "Distinct city and mountain-edge planning; transport and accommodation checked on actual route."
+    },
+    {
+      "slug": "kaili",
+      "name": "Kaili",
+      "province": "Guizhou",
+      "region": "southwest"
+    },
+    {
+      "slug": "anshun",
+      "name": "Anshun",
+      "province": "Guizhou",
+      "region": "southwest"
+    },
+    {
+      "slug": "huangguoshu",
+      "name": "Huangguoshu",
+      "province": "Guizhou",
+      "region": "southwest"
+    },
+    {
+      "slug": "zunyi",
+      "name": "Zunyi",
+      "province": "Guizhou",
+      "region": "southwest"
+    },
+    {
+      "slug": "bijie",
+      "name": "Bijie",
+      "province": "Guizhou",
+      "region": "southwest"
+    },
+    {
+      "slug": "liupanshui",
+      "name": "Liupanshui",
+      "province": "Guizhou",
+      "region": "southwest"
+    },
+    {
+      "slug": "duyun",
+      "name": "Duyun",
+      "province": "Guizhou",
+      "region": "southwest"
+    },
+    {
+      "slug": "ruili",
+      "name": "Ruili",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "yuxi",
+      "name": "Yuxi",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "qujing",
+      "name": "Qujing",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "zhaotong",
+      "name": "Zhaotong",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "baoshan",
+      "name": "Baoshan",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "lincang",
+      "name": "Lincang",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "chuxiong",
+      "name": "Chuxiong",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "honghe",
+      "name": "Honghe",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "wenshan",
+      "name": "Wenshan",
+      "province": "Yunnan",
+      "region": "southwest"
+    },
+    {
+      "slug": "shigatse",
+      "name": "Shigatse",
+      "province": "Tibet",
+      "region": "southwest"
+    },
+    {
+      "slug": "gyantse",
+      "name": "Gyantse",
+      "province": "Tibet",
+      "region": "southwest"
+    },
+    {
+      "slug": "tsedang",
+      "name": "Tsedang",
+      "province": "Tibet",
+      "region": "southwest"
+    },
+    {
+      "slug": "nam-co",
+      "name": "Nam Co",
+      "province": "Tibet",
+      "region": "southwest"
+    },
+    {
+      "slug": "everest-north-base-camp",
+      "name": "Everest North Base Camp",
+      "province": "Tibet",
+      "region": "southwest"
+    },
+    {
+      "slug": "mount-kailash",
+      "name": "Mount Kailash",
+      "province": "Tibet",
+      "region": "southwest"
+    },
+    {
+      "slug": "chamdo",
+      "name": "Chamdo",
+      "province": "Tibet",
+      "region": "southwest"
+    },
+    {
+      "slug": "nagqu",
+      "name": "Nagqu",
+      "province": "Tibet",
+      "region": "southwest"
+    },
+    {
+      "slug": "motuo",
+      "name": "Motuo",
+      "province": "Tibet",
+      "region": "southwest",
+      "entityType": "county",
+      "administrativeParent": "Nyingchi",
+      "editorialBoundary": "Also known as Medog; candidate research only until foreign-visitor access, road conditions and services are verified."
+    },
+    {
+      "slug": "baoji",
+      "name": "Baoji",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "xianyang",
+      "name": "Xianyang",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "yanan",
+      "name": "Yan'an",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "hanzhong",
+      "name": "Hanzhong",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "yulin-shaanxi",
+      "name": "Yulin Shaanxi",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "ankang",
+      "name": "Ankang",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "shangluo",
+      "name": "Shangluo",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "weinan",
+      "name": "Weinan",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "tongchuan",
+      "name": "Tongchuan",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "mount-hua",
+      "name": "Mount Hua",
+      "province": "Shaanxi",
+      "region": "northwest"
+    },
+    {
+      "slug": "xingping",
+      "name": "Xingping",
+      "nameZh": "兴平",
+      "province": "Shaanxi",
+      "region": "northwest",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaanxi",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "hancheng",
+      "name": "Hancheng",
+      "nameZh": "韩城",
+      "province": "Shaanxi",
+      "region": "northwest",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaanxi",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "huayin",
+      "name": "Huayin",
+      "nameZh": "华阴",
+      "province": "Shaanxi",
+      "region": "northwest",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaanxi",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "shenmu",
+      "name": "Shenmu",
+      "nameZh": "神木",
+      "province": "Shaanxi",
+      "region": "northwest",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaanxi",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "binzhou-shaanxi",
+      "name": "Binzhou, Shaanxi",
+      "nameZh": "彬州",
+      "province": "Shaanxi",
+      "region": "northwest",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaanxi",
+      "editorialBoundary": "City-level editorial candidate. A guide to a surrounding prefecture, mountain, lake or scenic area does not automatically answer this city’s distinct travel decisions. Exact scope to be researched before writing.",
+      "classificationNote": "Provisional editorial county-level-city classification, not official-register verification. Current status, administrative hierarchy, standardized English name and aliases require reconciliation against a dated official source.",
+      "inventoryEvidence": "Local gap review and inventory comparison, 2026-11-12. Official statistical-register acquisition failed (DNS resolution; browser host unavailable); no official source body was obtained."
+    },
+    {
+      "slug": "jiuquan",
+      "name": "Jiuquan",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "wuwei",
+      "name": "Wuwei",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "jinchang",
+      "name": "Jinchang",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "baiyin",
+      "name": "Baiyin",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "pingliang",
+      "name": "Pingliang",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "qingyang",
+      "name": "Qingyang",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "dingxi",
+      "name": "Dingxi",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "longnan",
+      "name": "Longnan",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "linxia",
+      "name": "Linxia",
+      "province": "Gansu",
+      "region": "northwest"
+    },
+    {
+      "slug": "chaka",
+      "name": "Chaka",
+      "province": "Qinghai",
+      "region": "northwest"
+    },
+    {
+      "slug": "golmud",
+      "name": "Golmud",
+      "province": "Qinghai",
+      "region": "northwest"
+    },
+    {
+      "slug": "delingha",
+      "name": "Delingha",
+      "province": "Qinghai",
+      "region": "northwest"
+    },
+    {
+      "slug": "wuzhong",
+      "name": "Wuzhong",
+      "province": "Ningxia",
+      "region": "northwest"
+    },
+    {
+      "slug": "guyuan",
+      "name": "Guyuan",
+      "province": "Ningxia",
+      "region": "northwest"
+    },
+    {
+      "slug": "shizuishan",
+      "name": "Shizuishan",
+      "province": "Ningxia",
+      "region": "northwest"
+    },
+    {
+      "slug": "ili",
+      "name": "Ili",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "altay",
+      "name": "Altay",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "hotan",
+      "name": "Hotan",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "aksu",
+      "name": "Aksu",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "korla",
+      "name": "Korla",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "karamay",
+      "name": "Karamay",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "tacheng",
+      "name": "Tacheng",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "hami",
+      "name": "Hami",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "bole",
+      "name": "Bole",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "artux",
+      "name": "Artux",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "shihezi",
+      "name": "Shihezi",
+      "province": "Xinjiang",
+      "region": "northwest"
+    },
+    {
+      "slug": "kaohsiung",
+      "name": "Kaohsiung",
+      "province": "Taiwan",
+      "region": "east"
+    },
+    {
+      "slug": "taichung",
+      "name": "Taichung",
+      "province": "Taiwan",
+      "region": "east"
+    },
+    {
+      "slug": "hualien",
+      "name": "Hualien",
+      "province": "Taiwan",
+      "region": "east"
+    },
+    {
+      "slug": "taitung",
+      "name": "Taitung",
+      "province": "Taiwan",
+      "region": "east"
+    },
+    {
+      "slug": "alishan",
+      "name": "Alishan",
+      "province": "Taiwan",
+      "region": "east"
+    },
+    {
+      "slug": "sun-moon-lake",
+      "name": "Sun Moon Lake",
+      "province": "Taiwan",
+      "region": "east"
+    },
+    {
+      "slug": "penghu",
+      "name": "Penghu",
+      "province": "Taiwan",
+      "region": "east"
+    },
+    {
+      "slug": "kinmen",
+      "name": "Kinmen",
+      "province": "Taiwan",
+      "region": "east"
+    },
+    {
+      "slug": "zhangjiagang",
+      "name": "Zhangjiagang",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "张家港",
+      "entityType": "county-level-city",
+      "administrativeParent": "Suzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "taicang",
+      "name": "Taicang",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "太仓",
+      "entityType": "county-level-city",
+      "administrativeParent": "Suzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "qidong",
+      "name": "Qidong",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "启东",
+      "entityType": "county-level-city",
+      "administrativeParent": "Nantong",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "rugao",
+      "name": "Rugao",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "如皋",
+      "entityType": "county-level-city",
+      "administrativeParent": "Nantong",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "haian",
+      "name": "Hai'an",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "海安",
+      "entityType": "county-level-city",
+      "administrativeParent": "Nantong",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "dongtai",
+      "name": "Dongtai",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "东台",
+      "entityType": "county-level-city",
+      "administrativeParent": "Yancheng",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "xinghua",
+      "name": "Xinghua",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "兴化",
+      "entityType": "county-level-city",
+      "administrativeParent": "Taizhou Jiangsu",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "jingjiang",
+      "name": "Jingjiang",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "靖江",
+      "entityType": "county-level-city",
+      "administrativeParent": "Taizhou Jiangsu",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "taixing",
+      "name": "Taixing",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "泰兴",
+      "entityType": "county-level-city",
+      "administrativeParent": "Taizhou Jiangsu",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "gaoyou",
+      "name": "Gaoyou",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "高邮",
+      "entityType": "county-level-city",
+      "administrativeParent": "Yangzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "yizheng",
+      "name": "Yizheng",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "仪征",
+      "entityType": "county-level-city",
+      "administrativeParent": "Yangzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "danyang",
+      "name": "Danyang",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "丹阳",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zhenjiang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "yangzhong",
+      "name": "Yangzhong",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "扬中",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zhenjiang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "xinyi-jiangsu",
+      "name": "Xinyi Jiangsu",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "新沂",
+      "entityType": "county-level-city",
+      "administrativeParent": "Xuzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "pizhou",
+      "name": "Pizhou",
+      "province": "Jiangsu",
+      "region": "east",
+      "nameZh": "邳州",
+      "entityType": "county-level-city",
+      "administrativeParent": "Xuzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "yuyao",
+      "name": "Yuyao",
+      "province": "Zhejiang",
+      "region": "east",
+      "nameZh": "余姚",
+      "entityType": "county-level-city",
+      "administrativeParent": "Ningbo",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "lanxi",
+      "name": "Lanxi",
+      "province": "Zhejiang",
+      "region": "east",
+      "nameZh": "兰溪",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jinhua",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "jiangshan",
+      "name": "Jiangshan",
+      "province": "Zhejiang",
+      "region": "east",
+      "nameZh": "江山",
+      "entityType": "county-level-city",
+      "administrativeParent": "Quzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "fuan",
+      "name": "Fu'an",
+      "province": "Fujian",
+      "region": "south",
+      "nameZh": "福安",
+      "entityType": "county-level-city",
+      "administrativeParent": "Ningde",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "fuqing",
+      "name": "Fuqing",
+      "province": "Fujian",
+      "region": "south",
+      "nameZh": "福清",
+      "entityType": "county-level-city",
+      "administrativeParent": "Fuzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "yongan",
+      "name": "Yong'an",
+      "province": "Fujian",
+      "region": "south",
+      "nameZh": "永安",
+      "entityType": "county-level-city",
+      "administrativeParent": "Sanming",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "shishi",
+      "name": "Shishi",
+      "province": "Fujian",
+      "region": "south",
+      "nameZh": "石狮",
+      "entityType": "county-level-city",
+      "administrativeParent": "Quanzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "jinjiang",
+      "name": "Jinjiang",
+      "province": "Fujian",
+      "region": "south",
+      "nameZh": "晋江",
+      "entityType": "county-level-city",
+      "administrativeParent": "Quanzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "nanan",
+      "name": "Nan'an",
+      "province": "Fujian",
+      "region": "south",
+      "nameZh": "南安",
+      "entityType": "county-level-city",
+      "administrativeParent": "Quanzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "zhangping",
+      "name": "Zhangping",
+      "province": "Fujian",
+      "region": "south",
+      "nameZh": "漳平",
+      "entityType": "county-level-city",
+      "administrativeParent": "Longyan",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "lechang",
+      "name": "Lechang",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "乐昌",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaoguan",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "nanxiong",
+      "name": "Nanxiong",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "南雄",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shaoguan",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "xingning-guangdong",
+      "name": "Xingning Guangdong",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "兴宁",
+      "entityType": "county-level-city",
+      "administrativeParent": "Meizhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "lufeng-guangdong",
+      "name": "Lufeng Guangdong",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "陆丰",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shanwei",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "puning",
+      "name": "Puning",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "普宁",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jieyang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "luoding",
+      "name": "Luoding",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "罗定",
+      "entityType": "county-level-city",
+      "administrativeParent": "Yunfu",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "sihui",
+      "name": "Sihui",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "四会",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zhaoqing",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "yangchun",
+      "name": "Yangchun",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "阳春",
+      "entityType": "county-level-city",
+      "administrativeParent": "Yangjiang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "lianjiang-guangdong",
+      "name": "Lianjiang Guangdong",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "廉江",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zhanjiang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "leizhou",
+      "name": "Leizhou",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "雷州",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zhanjiang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "wuchuan",
+      "name": "Wuchuan",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "吴川",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zhanjiang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "gaozhou",
+      "name": "Gaozhou",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "高州",
+      "entityType": "county-level-city",
+      "administrativeParent": "Maoming",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "huazhou",
+      "name": "Huazhou",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "化州",
+      "entityType": "county-level-city",
+      "administrativeParent": "Maoming",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "xinyi-guangdong",
+      "name": "Xinyi Guangdong",
+      "province": "Guangdong",
+      "region": "south",
+      "nameZh": "信宜",
+      "entityType": "county-level-city",
+      "administrativeParent": "Maoming",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "jianyang",
+      "name": "Jianyang",
+      "province": "Sichuan",
+      "region": "southwest",
+      "nameZh": "简阳",
+      "entityType": "county-level-city",
+      "administrativeParent": "Chengdu",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "longchang",
+      "name": "Longchang",
+      "province": "Sichuan",
+      "region": "southwest",
+      "nameZh": "隆昌",
+      "entityType": "county-level-city",
+      "administrativeParent": "Neijiang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "shehong",
+      "name": "Shehong",
+      "province": "Sichuan",
+      "region": "southwest",
+      "nameZh": "射洪",
+      "entityType": "county-level-city",
+      "administrativeParent": "Suining",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "huaying",
+      "name": "Huaying",
+      "province": "Sichuan",
+      "region": "southwest",
+      "nameZh": "华蓥",
+      "entityType": "county-level-city",
+      "administrativeParent": "Guang'an",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "wanyuan",
+      "name": "Wanyuan",
+      "province": "Sichuan",
+      "region": "southwest",
+      "nameZh": "万源",
+      "entityType": "county-level-city",
+      "administrativeParent": "Dazhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "malkang",
+      "name": "Malkang",
+      "province": "Sichuan",
+      "region": "southwest",
+      "nameZh": "马尔康",
+      "entityType": "county-level-city",
+      "administrativeParent": "Ngawa",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "jinghong",
+      "name": "Jinghong",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "景洪",
+      "entityType": "county-level-city",
+      "administrativeParent": "Xishuangbanna",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "mile",
+      "name": "Mile",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "弥勒",
+      "entityType": "county-level-city",
+      "administrativeParent": "Honghe",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "mengzi",
+      "name": "Mengzi",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "蒙自",
+      "entityType": "county-level-city",
+      "administrativeParent": "Honghe",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "gejiu",
+      "name": "Gejiu",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "个旧",
+      "entityType": "county-level-city",
+      "administrativeParent": "Honghe",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "kaiyuan-yunnan",
+      "name": "Kaiyuan Yunnan",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "开远",
+      "entityType": "county-level-city",
+      "administrativeParent": "Honghe",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "anning-yunnan",
+      "name": "Anning Yunnan",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "安宁",
+      "entityType": "county-level-city",
+      "administrativeParent": "Kunming",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "xuanwei",
+      "name": "Xuanwei",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "宣威",
+      "entityType": "county-level-city",
+      "administrativeParent": "Qujing",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "shuifu",
+      "name": "Shuifu",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "水富",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zhaotong",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "lufeng-yunnan",
+      "name": "Lufeng Yunnan",
+      "province": "Yunnan",
+      "region": "southwest",
+      "nameZh": "禄丰",
+      "entityType": "county-level-city",
+      "administrativeParent": "Chuxiong",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "longkou",
+      "name": "Longkou",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "龙口",
+      "entityType": "county-level-city",
+      "administrativeParent": "Yantai",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "penglai",
+      "name": "Penglai",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "蓬莱",
+      "entityType": "district",
+      "administrativeParent": "Yantai",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "qingzhou",
+      "name": "Qingzhou",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "青州",
+      "entityType": "county-level-city",
+      "administrativeParent": "Weifang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "zhucheng",
+      "name": "Zhucheng",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "诸城",
+      "entityType": "county-level-city",
+      "administrativeParent": "Weifang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "shouguang",
+      "name": "Shouguang",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "寿光",
+      "entityType": "county-level-city",
+      "administrativeParent": "Weifang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "tengzhou",
+      "name": "Tengzhou",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "滕州",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zaozhuang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "zoucheng",
+      "name": "Zoucheng",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "邹城",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jining",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "rongcheng",
+      "name": "Rongcheng",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "荣成",
+      "entityType": "county-level-city",
+      "administrativeParent": "Weihai",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "rushan",
+      "name": "Rushan",
+      "province": "Shandong",
+      "region": "east",
+      "nameZh": "乳山",
+      "entityType": "county-level-city",
+      "administrativeParent": "Weihai",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "renhuai",
+      "name": "Renhuai",
+      "province": "Guizhou",
+      "region": "southwest",
+      "nameZh": "仁怀",
+      "entityType": "county-level-city",
+      "administrativeParent": "Zunyi",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "panzhou",
+      "name": "Panzhou",
+      "province": "Guizhou",
+      "region": "southwest",
+      "nameZh": "盘州",
+      "entityType": "county-level-city",
+      "administrativeParent": "Liupanshui",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "qingzhen",
+      "name": "Qingzhen",
+      "province": "Guizhou",
+      "region": "southwest",
+      "nameZh": "清镇",
+      "entityType": "county-level-city",
+      "administrativeParent": "Guiyang",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "fuquan",
+      "name": "Fuquan",
+      "province": "Guizhou",
+      "region": "southwest",
+      "nameZh": "福泉",
+      "entityType": "county-level-city",
+      "administrativeParent": "Qiannan",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "xingren",
+      "name": "Xingren",
+      "province": "Guizhou",
+      "region": "southwest",
+      "nameZh": "兴仁",
+      "entityType": "county-level-city",
+      "administrativeParent": "Qianxinan",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "deqing",
+      "name": "Deqing",
+      "province": "Zhejiang",
+      "region": "east",
+      "nameZh": "德清",
+      "entityType": "county",
+      "administrativeParent": "Huzhou",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "ninghai",
+      "name": "Ninghai",
+      "province": "Zhejiang",
+      "region": "east",
+      "nameZh": "宁海",
+      "entityType": "county",
+      "administrativeParent": "Ningbo",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "jingning-zhejiang",
+      "name": "Jingning, Zhejiang",
+      "nameZh": "景宁畲族自治县",
+      "province": "Zhejiang",
+      "region": "east",
+      "entityType": "autonomous-county",
+      "administrativeParent": "Lishui, Zhejiang",
+      "editorialBoundary": "Zhejiang Jingning county cultural and stay-planning candidate; distinguish from Jingning, Gansu. A mention in Lishui does not complete an independent county guide or establish private community access.",
+      "inventoryEvidence": "Local omission sample added 2026-11-12. Provisional editorial classification and parent, pending dated official register, administrative code and alias reconciliation. No public guide or route created by this entry."
+    },
+    {
+      "slug": "ruijin",
+      "name": "Ruijin",
+      "nameZh": "瑞金市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Ganzhou, Jiangxi",
+      "editorialBoundary": "Independent city planning candidate; a parent-city guide, nearby airport or passing place-name mention does not establish complete destination coverage.",
+      "inventoryEvidence": "Local omission sample added 2026-11-12. Provisional editorial classification and parent, pending dated official register, administrative code and alias reconciliation. No public guide or route created by this entry."
+    },
+    {
+      "slug": "leping",
+      "name": "Leping",
+      "nameZh": "乐平市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jingdezhen, Jiangxi",
+      "editorialBoundary": "Independent city planning candidate; a parent-city guide, nearby airport or passing place-name mention does not establish complete destination coverage.",
+      "inventoryEvidence": "Local omission sample added 2026-11-12. Provisional editorial classification and parent, pending dated official register, administrative code and alias reconciliation. No public guide or route created by this entry."
+    },
+    {
+      "slug": "bifengxia",
+      "name": "Bifengxia",
+      "province": "Sichuan",
+      "region": "southwest",
+      "nameZh": "碧峰峡",
+      "entityType": "scenic-area",
+      "administrativeParent": "Ya’an",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "liujiang-ancient-town",
+      "name": "Liujiang Ancient Town",
+      "province": "Sichuan",
+      "region": "southwest",
+      "nameZh": "柳江古镇",
+      "entityType": "town",
+      "administrativeParent": "Hongya, Meishan",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "baoting",
+      "name": "Baoting",
+      "province": "Hainan",
+      "region": "south",
+      "nameZh": "保亭",
+      "entityType": "county",
+      "administrativeParent": "Hainan",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "qiongzhong",
+      "name": "Qiongzhong",
+      "province": "Hainan",
+      "region": "south",
+      "nameZh": "琼中",
+      "entityType": "county",
+      "administrativeParent": "Hainan",
+      "editorialBoundary": "Separate editorial candidate; parent or nearby destination coverage does not automatically cover this entity. Administrative classification and English naming remain pending dated official-register reconciliation.",
+      "inventoryEvidence": "Editorial gap review 2026-11-11; not live verified against an official administrative register."
+    },
+    {
+      "slug": "xintai",
+      "name": "Xintai",
+      "nameZh": "新泰市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "feicheng",
+      "name": "Feicheng",
+      "nameZh": "肥城市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "laizhou",
+      "name": "Laizhou",
+      "nameZh": "莱州市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "laixi",
+      "name": "Laixi",
+      "nameZh": "莱西市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "pingdu",
+      "name": "Pingdu",
+      "nameZh": "平度市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "jiaozhou",
+      "name": "Jiaozhou",
+      "nameZh": "胶州市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "haiyang",
+      "name": "Haiyang",
+      "nameZh": "海阳市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "laiyang",
+      "name": "Laiyang",
+      "nameZh": "莱阳市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "zhaoyuan",
+      "name": "Zhaoyuan",
+      "nameZh": "招远市",
+      "province": "Shandong",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shandong",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "xinmi",
+      "name": "Xinmi",
+      "nameZh": "新密市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "xingyang",
+      "name": "Xingyang",
+      "nameZh": "荥阳市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "dengzhou",
+      "name": "Dengzhou",
+      "nameZh": "邓州市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "changge",
+      "name": "Changge",
+      "nameZh": "长葛市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "lingbao",
+      "name": "Lingbao",
+      "nameZh": "灵宝市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "xiangcheng",
+      "name": "Xiangcheng",
+      "nameZh": "项城市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "yima",
+      "name": "Yima",
+      "nameZh": "义马市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "wugang",
+      "name": "Wugang",
+      "nameZh": "舞钢市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "mengzhou",
+      "name": "Mengzhou",
+      "nameZh": "孟州市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "qinyang",
+      "name": "Qinyang",
+      "nameZh": "沁阳市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "weihui",
+      "name": "Weihui",
+      "nameZh": "卫辉市",
+      "province": "Henan",
+      "region": "central",
+      "entityType": "county-level-city",
+      "administrativeParent": "Henan",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "gaoping",
+      "name": "Gaoping",
+      "nameZh": "高平市",
+      "province": "Shanxi",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shanxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "huairen",
+      "name": "Huairen",
+      "nameZh": "怀仁市",
+      "province": "Shanxi",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shanxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "yongji",
+      "name": "Yongji",
+      "nameZh": "永济市",
+      "province": "Shanxi",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shanxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "hejin",
+      "name": "Hejin",
+      "nameZh": "河津市",
+      "province": "Shanxi",
+      "region": "north",
+      "entityType": "county-level-city",
+      "administrativeParent": "Shanxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "fengcheng",
+      "name": "Fengcheng",
+      "nameZh": "丰城市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jiangxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "zhangshu",
+      "name": "Zhangshu",
+      "nameZh": "樟树市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jiangxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "gaoan",
+      "name": "Gaoan",
+      "nameZh": "高安市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jiangxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "guixi",
+      "name": "Guixi",
+      "nameZh": "贵溪市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jiangxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "dexing",
+      "name": "Dexing",
+      "nameZh": "德兴市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jiangxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "ruichang",
+      "name": "Ruichang",
+      "nameZh": "瑞昌市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jiangxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    },
+    {
+      "slug": "gongqingcheng",
+      "name": "Gongqingcheng",
+      "nameZh": "共青城市",
+      "province": "Jiangxi",
+      "region": "east",
+      "entityType": "county-level-city",
+      "administrativeParent": "Jiangxi",
+      "inventoryEvidence": "Editorial omission sample added 2026-11-12. Provisional city classification and province association; exact administrative parent, code, aliases and current status require reconciliation against a dated official register. No public page generated."
+    }
+  ]
+}

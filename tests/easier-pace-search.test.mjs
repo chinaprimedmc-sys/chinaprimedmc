@@ -118,10 +118,15 @@ test("published per-person basis persists through catalog, cards and TouristTrip
     identifier: tour.slug,
     url,
   });
-  assert.equal(schema.duration, "P12D");
+  assert.equal(
+    schema.subjectOf[0].mainEntity.find(({ name }) => name === "ISO 8601 duration").value,
+    "P12D",
+  );
   assert.equal(schema.description, model.answerSummary);
   assert.deepEqual(
-    schema.additionalProperty.map(({ name, value }) => ({ label: name, value })),
+    schema.subjectOf[0].mainEntity
+      .filter(({ name }) => model.practicalities.some((fact) => fact.label === name))
+      .map(({ name, value }) => ({ label: name, value })),
     model.practicalities,
   );
   assert.equal(schema.offers, undefined);
