@@ -1,0 +1,339 @@
+{
+  "asOf": "2026-11-12",
+  "slug": "guilin-yangshuo-longji-private-5-day-tour",
+  "status": "recommendation-only-not-published",
+  "recommendationUsdPerPerson": 2390,
+  "basis": "Two adults sharing one double or twin room, normal non-holiday dates; specific hotels/rooms and availability must be established before using a From rate.",
+  "evidenceLimits": [
+    "All cost lines are planning assumptions, not supplier quotations.",
+    "No current comparable competitor prices or actual willingness-to-pay verified.",
+    "6.65 CNY/USD is supplied by the owner for this calculation; bank conversion spreads and actual settlement fees must be reconciled separately.",
+    "Percent allowances are scenarios, not actual AVIORA accounting rates; residual is not net profit and excludes separately determined taxes and exceptional losses."
+  ],
+  "fxAssumptionCnyPerUsd": 6.65,
+  "directCostRows": [
+    {
+      "item": "桂林酒店2晚／1间房",
+      "centralCny": 2200,
+      "lowCny": 1800,
+      "highCny": 2800,
+      "assumption": "每晚1100元，含两人早餐；预算占位，非酒店报价"
+    },
+    {
+      "item": "阳朔精品住宿2晚／1间房",
+      "centralCny": 3600,
+      "lowCny": 2800,
+      "highCny": 5000,
+      "assumption": "每晚1800元，含两人早餐；不是指定奢华品牌或保证景观房"
+    },
+    {
+      "item": "五天分段私人用车",
+      "centralCny": 4400,
+      "lowCny": 3600,
+      "highCny": 5400,
+      "assumption": "D1接站400；D2龙脊1500；D3码头及行李1000；D4乡村800；D5送站700。须含油路停及司机开支并核工时"
+    },
+    {
+      "item": "D2–4独立英语导游",
+      "centralCny": 2400,
+      "lowCny": 2100,
+      "highCny": 3000,
+      "assumption": "3天×800元；D1与D5司机接送，不含五天全程导游"
+    },
+    {
+      "item": "两位成人公共四星游船票",
+      "centralCny": 1200,
+      "lowCny": 1000,
+      "highCny": 1500,
+      "assumption": "每人600元预算；票种、餐食、码头和日期待核"
+    },
+    {
+      "item": "随船导游票务／必要餐费预留",
+      "centralCny": 400,
+      "lowCny": 0,
+      "highCny": 600,
+      "assumption": "先预留；若免费随团则按实际减除，避免与船票及导游费重复"
+    },
+    {
+      "item": "龙脊两位成人门票及必要景区交通",
+      "centralCny": 360,
+      "lowCny": 300,
+      "highCny": 700,
+      "assumption": "选一村路线；不假定索道均已包括，供应确认后定"
+    },
+    {
+      "item": "本项目设计、预订与地面协调",
+      "centralCny": 1000,
+      "lowCny": 800,
+      "highCny": 1400,
+      "assumption": "项目直接工时；公司间接费用另列且不得重复核算"
+    },
+    {
+      "item": "饮水与小额杂项",
+      "centralCny": 200,
+      "lowCny": 150,
+      "highCny": 300,
+      "assumption": "非午晚餐预算"
+    }
+  ],
+  "baseCostCny": 15760,
+  "rangeCny": [12550, 20700],
+  "contingencyPct": 5,
+  "deliveryBudgetCny": 16548.0,
+  "fees": {
+    "payment": 0.03,
+    "directAcquisition": 0.1,
+    "indirectOverhead": 0.08
+  },
+  "priceComparisons": [
+    {
+      "perPersonUsd": 1490,
+      "partySize": 2,
+      "partyUsd": 2980,
+      "revenueCny": 19817.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 4161.57,
+      "preTaxOperatingResidualCny": -892.57,
+      "residualPct": -4.5,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 1690,
+      "partySize": 2,
+      "partyUsd": 3380,
+      "revenueCny": 22477.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 4720.17,
+      "preTaxOperatingResidualCny": 1208.83,
+      "residualPct": 5.38,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 1890,
+      "partySize": 2,
+      "partyUsd": 3780,
+      "revenueCny": 25137.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 5278.77,
+      "preTaxOperatingResidualCny": 3310.23,
+      "residualPct": 13.17,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 1990,
+      "partySize": 2,
+      "partyUsd": 3980,
+      "revenueCny": 26467.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 5558.07,
+      "preTaxOperatingResidualCny": 4360.93,
+      "residualPct": 16.48,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 2190,
+      "partySize": 2,
+      "partyUsd": 4380,
+      "revenueCny": 29127.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 6116.67,
+      "preTaxOperatingResidualCny": 6462.33,
+      "residualPct": 22.19,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 2290,
+      "partySize": 2,
+      "partyUsd": 4580,
+      "revenueCny": 30457.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 6395.97,
+      "preTaxOperatingResidualCny": 7513.03,
+      "residualPct": 24.67,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 2390,
+      "partySize": 2,
+      "partyUsd": 4780,
+      "revenueCny": 31787.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 6675.27,
+      "preTaxOperatingResidualCny": 8563.73,
+      "residualPct": 26.94,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 2490,
+      "partySize": 2,
+      "partyUsd": 4980,
+      "revenueCny": 33117.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 6954.57,
+      "preTaxOperatingResidualCny": 9614.43,
+      "residualPct": 29.03,
+      "channel": "direct acquisition"
+    }
+  ],
+  "stressAt2190": [
+    {
+      "costIncreasePct": 0,
+      "perPersonUsd": 2190,
+      "partySize": 2,
+      "partyUsd": 4380,
+      "revenueCny": 29127.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 6116.67,
+      "preTaxOperatingResidualCny": 6462.33,
+      "residualPct": 22.19,
+      "channel": "direct acquisition"
+    },
+    {
+      "costIncreasePct": 15,
+      "perPersonUsd": 2190,
+      "partySize": 2,
+      "partyUsd": 4380,
+      "revenueCny": 29127.0,
+      "deliveryBudgetCny": 19030.2,
+      "nonDeliveryAllowanceCny": 6116.67,
+      "preTaxOperatingResidualCny": 3980.13,
+      "residualPct": 13.66,
+      "channel": "direct acquisition"
+    },
+    {
+      "costIncreasePct": 30,
+      "perPersonUsd": 2190,
+      "partySize": 2,
+      "partyUsd": 4380,
+      "revenueCny": 29127.0,
+      "deliveryBudgetCny": 21512.4,
+      "nonDeliveryAllowanceCny": 6116.67,
+      "preTaxOperatingResidualCny": 1497.93,
+      "residualPct": 5.14,
+      "channel": "direct acquisition"
+    }
+  ],
+  "channelAt2190": {
+    "perPersonUsd": 2190,
+    "partySize": 2,
+    "partyUsd": 4380,
+    "revenueCny": 29127.0,
+    "deliveryBudgetCny": 16548.0,
+    "nonDeliveryAllowanceCny": 7573.02,
+    "preTaxOperatingResidualCny": 5005.98,
+    "residualPct": 17.19,
+    "channel": "15% commission replacing 10% direct acquisition"
+  },
+  "fxSensitivity": [
+    {
+      "cnyPerUsd": 6.4,
+      "perPersonUsd": 2390,
+      "residualPct": 24.91
+    },
+    {
+      "cnyPerUsd": 6.65,
+      "perPersonUsd": 2390,
+      "residualPct": 26.94
+    },
+    {
+      "cnyPerUsd": 6.8,
+      "perPersonUsd": 2390,
+      "residualPct": 28.09
+    },
+    {
+      "cnyPerUsd": 7.0,
+      "perPersonUsd": 2390,
+      "residualPct": 29.54
+    }
+  ],
+  "maxDeliveryBudgetAt20PctResidualCny": 18754.33,
+  "maxBaseCostAt20PctResidualCny": 17861.27,
+  "maxDeliveryBudgetAt15PctResidualCny": 20343.68,
+  "configurationScenarios": [
+    {
+      "partySize": 4,
+      "rooms": 2,
+      "budgetCostBeforeContingencyCny": 24470,
+      "candidatePerPersonUsd": [1890, 2090],
+      "example": {
+        "perPersonUsd": 1890,
+        "partySize": 4,
+        "partyUsd": 7560,
+        "revenueCny": 50274.0,
+        "deliveryBudgetCny": 25693.5,
+        "nonDeliveryAllowanceCny": 10557.54,
+        "preTaxOperatingResidualCny": 14022.96,
+        "residualPct": 27.89,
+        "channel": "direct acquisition"
+      }
+    },
+    {
+      "partySize": 6,
+      "rooms": 3,
+      "budgetCostBeforeContingencyCny": 32830,
+      "candidatePerPersonUsd": [1690, 1890],
+      "example": {
+        "perPersonUsd": 1690,
+        "partySize": 6,
+        "partyUsd": 10140,
+        "revenueCny": 67431.0,
+        "deliveryBudgetCny": 34471.5,
+        "nonDeliveryAllowanceCny": 14160.51,
+        "preTaxOperatingResidualCny": 18798.99,
+        "residualPct": 27.88,
+        "channel": "direct acquisition"
+      }
+    }
+  ],
+  "revision": "User corrected settlement planning exchange rate to 6.65 CNY/USD. Prior 7.20 recommendation superseded.",
+  "stressAtRecommendedPrice": [
+    {
+      "costIncreasePct": 0,
+      "perPersonUsd": 2390,
+      "partySize": 2,
+      "partyUsd": 4780,
+      "revenueCny": 31787.0,
+      "deliveryBudgetCny": 16548.0,
+      "nonDeliveryAllowanceCny": 6675.27,
+      "preTaxOperatingResidualCny": 8563.73,
+      "residualPct": 26.94,
+      "channel": "direct acquisition"
+    },
+    {
+      "costIncreasePct": 15,
+      "perPersonUsd": 2390,
+      "partySize": 2,
+      "partyUsd": 4780,
+      "revenueCny": 31787.0,
+      "deliveryBudgetCny": 19030.2,
+      "nonDeliveryAllowanceCny": 6675.27,
+      "preTaxOperatingResidualCny": 6081.53,
+      "residualPct": 19.13,
+      "channel": "direct acquisition"
+    },
+    {
+      "costIncreasePct": 30,
+      "perPersonUsd": 2390,
+      "partySize": 2,
+      "partyUsd": 4780,
+      "revenueCny": 31787.0,
+      "deliveryBudgetCny": 21512.4,
+      "nonDeliveryAllowanceCny": 6675.27,
+      "preTaxOperatingResidualCny": 3599.33,
+      "residualPct": 11.32,
+      "channel": "direct acquisition"
+    }
+  ],
+  "channelAtRecommendedPrice": {
+    "perPersonUsd": 2390,
+    "partySize": 2,
+    "partyUsd": 4780,
+    "revenueCny": 31787.0,
+    "deliveryBudgetCny": 16548.0,
+    "nonDeliveryAllowanceCny": 8264.62,
+    "preTaxOperatingResidualCny": 6974.38,
+    "residualPct": 21.94,
+    "channel": "15% commission replacing 10% direct acquisition"
+  },
+  "fxEquivalentOfPrior2190Usd": 2371.13
+}
