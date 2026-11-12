@@ -1,41 +1,27 @@
-# China Prime DMC V2.0 Architecture
+# AVIORA architecture
 
-## Purpose
+## Responsibilities
 
-This foundation establishes a long-lived Next.js 16 frontend architecture before any business pages are built.
-
-## Principles
-
-- Pages assemble sections and features.
-- Features own business logic.
-- Components remain reusable and brand-system driven.
-- Design tokens are the source of visual truth.
-- Animation comes from the motion system.
-- SEO and structured data are generated through shared helpers.
-- B2C and future B2B modules stay isolated.
-
-## Directory Map
-
-- `app/`: Next.js App Router, root layout, metadata, loading, not-found, sitemap, robots.
-- `components/`: reusable UI, foundation, and media components.
-- `animations/`: shared Framer Motion and GSAP-ready motion presets.
-- `design-system/`: tokens and primitives.
-- `features/`: future business domains.
-- `sections/`: future page sections composed from components and features.
-- `layouts/`: future shared layout shells.
-- `hooks/`: reusable React hooks.
-- `services/`: external APIs, server actions, CMS, email, analytics.
-- `lib/`: utilities, SEO helpers, i18n helpers.
-- `providers/`: app-level client providers.
+- `app/`: App Router entry points, metadata, sitemap, robots, errors and redirects.
+- `content/`: typed tours, destinations, journal entries and Markdown assets.
+- `features/`: domain-specific page composition for tours, destinations, journal and service pages.
+- `components/`: shared navigation, forms, media, maps, layout and UI.
+- `design-system/`: shared visual tokens and primitives.
+- `lib/`: domain logic, content relationships, integrations, analytics and SEO helpers.
+- `config/`: site settings, public route registries and legacy migrations.
+- `stores/`: shared client state.
 - `types/`: shared TypeScript contracts.
-- `constants/`: global constants such as navigation.
-- `content/`: future MDX/data content.
-- `config/`: site, i18n, and runtime configuration.
-- `styles/`: Tailwind v4 global stylesheet.
+- `styles/`: global styles, fonts and motion rules.
+- `scripts/`, `tests/`: content preparation, audits and release verification.
+- `docs/`: operating notes and historical audit evidence.
 
-## Guardrails
+## Boundaries
 
-- Do not add page-specific styling outside the design system unless a component abstraction is missing.
-- Do not write animation variants inside pages.
-- Do not hard-code colors, spacing, motion curves, or breakpoints in page files.
-- Do not mix B2B and B2C feature logic.
+Routes assemble features and shared components. Content registries own published
+business data; preserve their exports, prices, slugs and verified service terms.
+HubSpot remains the enquiry provider. Integration helpers live under `lib/` and
+provider UI under `components/`; no unused CMS or database scaffold is required.
+
+Use shared metadata and JSON-LD helpers, semantic visual tokens and component CSS
+modules. Keep historical URL redirects intact when removing unused source files.
+Run the checks documented in the root README before publishing changes.

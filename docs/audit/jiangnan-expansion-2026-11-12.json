@@ -1,0 +1,54 @@
+{
+  "asOf": "2026-11-12",
+  "slug": "shanghai-suzhou-hangzhou-private-7-day-tour",
+  "state": "local-published-from-product-not-deployed",
+  "localCatalogProducts": 21,
+  "itineraryDays": 7,
+  "hotelNights": 6,
+  "overnightBases": {
+    "Shanghai": 3,
+    "Suzhou": 1,
+    "Hangzhou": 2
+  },
+  "hotelChanges": 2,
+  "dedicatedFaqs": 22,
+  "pricingFxForFutureCalculationCnyPerUsd": 6.65,
+  "publishedPrice": {
+    "currency": "USD",
+    "fromPerPerson": 3690,
+    "twoAdultsTotal": 7380,
+    "basePartySize": 2,
+    "roomBasis": "Two adults sharing one double or twin room",
+    "ownerApproved": true,
+    "supplierVerified": false
+  },
+  "checks": {
+    "journeyTestsPassed": 136,
+    "journeyTestsFailed": 0,
+    "typecheck": "passed",
+    "affectedEslint": "passed",
+    "affectedPrettier": "passed",
+    "productionBuild": "passed",
+    "visibleFactsAndFaqSchemaParity": "passed",
+    "threeDestinationProductLinks": "passed",
+    "priceSortPublishedBeforeQuoteOnly": "passed",
+    "clientSuppliedMediaAndAuthorizedVehicleReuse": "passed",
+    "browserScreenshotVerification": "not-run-local-preview-server-could-not-bind"
+  },
+  "renderedImageSources": ["See docs/audit/jiangnan-photo-manifest-2026-11-12.json"],
+  "otherTourPhotoReferences": [
+    "/tours/guilin-yangshuo-longji-private-5-day-tour/10-private-vehicle-interior-reference.webp (explicitly authorized vehicle reuse)"
+  ],
+  "logs": {
+    "tests": "/tmp/jiangnan-photos-tests.log",
+    "build": "/tmp/jiangnan-photos-build.log",
+    "renderedHtml": "/tmp/aviora-tour-editorial-rendered/shanghai-suzhou-hangzhou-private-7-day-tour.html"
+  },
+  "limitations": [
+    "No live official policy, supplier, train, hotel, tea-venue or cost verification.",
+    "No browser screenshot verification.",
+    "No deployment, indexing, ranking or AI Overview citation claim."
+  ],
+  "imageChecklist": "docs/products/21-jiangnan-image-checklist.md",
+  "visualState": "client-supplied-photography-with-two-hotel-placeholders"
+}

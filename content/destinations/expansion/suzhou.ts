@@ -60,7 +60,7 @@ export const suzhouGuide: ExpandedDestination = {
     serviceScope:
       "We can discuss Suzhou as part of a tailored China itinerary, specifying gardens, transfers, guiding, hotel and any agreed cultural session in the proposal. Your guide helps explain design and history rather than simply moving between entrances. Public gardens retain normal reservations, shared access and walking. A private garden visit, craft workshop or evening performance is included only when the venue and terms are confirmed.",
     routeAdvice:
-      "Consider Suzhou as a tailored Shanghai extension when garden design and canal neighborhoods add something you want to understand. With more nights, compare adding Hangzhou for tea and lake landscapes, or a separate water-town stay. This page does not currently recommend a published Suzhou package. The final route, room arrangements, admission and any private host are confirmed through an individual proposal rather than assumed from this illustrative guide.",
+      "Consider Suzhou as a tailored Shanghai extension when garden design and canal neighborhoods add something you want to understand. With more nights, compare adding Hangzhou for tea and lake landscapes, or a separate water-town stay. The seven-day Shanghai, Suzhou and Hangzhou route includes one Suzhou night, one principal garden and a separate old-town walk. The final route, room arrangements, admission and any private host are confirmed through an individual proposal rather than assumed from this illustrative guide.",
     practicalPlanning: {
       timing:
         "Choose a main garden while the group is ready to look closely, then give the next stop a different purpose: a museum, canal neighborhood, meal or arranged craft encounter. Avoid filling the day with repeated garden interiors simply because they are nearby on a list. Include station transfers and fixed booking windows before deciding whether a water town also fits.",
@@ -131,7 +131,21 @@ export const suzhouGuide: ExpandedDestination = {
           "Courtyard character can come with thresholds, stairs and limits on luggage access or sound insulation. Ask about the exact room, bathroom, temperature control and breakfast. Heritage atmosphere should support a comfortable stay rather than conceal unsuitable practical details.",
       },
     ],
-    products: [],
+    products: [
+      {
+        slug: "shanghai-suzhou-hangzhou-private-7-day-tour",
+        label: "Explore the 7-day Shanghai, Suzhou and Hangzhou private tour",
+        reason:
+          "Follow a one-way six-night route through Shanghai, a Suzhou garden and Hangzhou tea country, with one Zhujiajiao excursion. Private local transfers connect two public trains; the itinerary ends in Hangzhou and is quoted for your dates.",
+        comparison: {
+          bestFor: "A complete Jiangnan regional journey with six hotel nights.",
+          localPlan:
+            "Shanghai three nights, Suzhou one and Hangzhou two; a garden, one water town and one hosted tea tasting.",
+          importantChoice:
+            "Two hotel changes, self-carried train luggage and local guide handovers. Return to Shanghai is separate.",
+        },
+      },
+    ],
     articles: [],
     connections: [
       {

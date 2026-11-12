@@ -66,6 +66,13 @@ export type JourneyClassification = {
 };
 
 export const journeyClassification: Record<PublicJourneySlug, JourneyClassification> = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": {
+    category: "regional-culture",
+    purposeZh: "补齐以上海为门户、含江南园林、水乡及杭州茶文化的七天区域住宿产品。",
+    audienceZh: "重视文化、园林与茶的情侣、家庭及自主拼接中国行程的私人小团。",
+    boundaryZh:
+      "与上海日游及上海张家界线区分：上海3晚、苏州1晚、杭州2晚，两段公共高铁，当地导游不默认随车，杭州结束；只选朱家角一处水乡。",
+  },
   "guilin-yangshuo-longji-private-5-day-tour": {
     category: "nature-landscapes",
     purposeZh: "补齐广西五天住宿、龙脊梯田、漓江转场与阳朔乡村的完整区域产品。",

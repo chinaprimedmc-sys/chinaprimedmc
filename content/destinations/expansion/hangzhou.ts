@@ -135,7 +135,21 @@ export const hangzhouGuide: ExpandedDestination = {
           "Hangzhou emphasizes lake landscape, tea and a longer resort-style stay; Suzhou offers classical gardens and canal neighborhoods. Choose one if the schedule is short. Combine them when each has its own nights and purpose, rather than moving hotels to collect two names.",
       },
     ],
-    products: [],
+    products: [
+      {
+        slug: "shanghai-suzhou-hangzhou-private-7-day-tour",
+        label: "Explore the 7-day Shanghai, Suzhou and Hangzhou private tour",
+        reason:
+          "Follow a one-way six-night route through Shanghai, a Suzhou garden and Hangzhou tea country, with one Zhujiajiao excursion. Private local transfers connect two public trains; the itinerary ends in Hangzhou and is quoted for your dates.",
+        comparison: {
+          bestFor: "A complete Jiangnan regional journey with six hotel nights.",
+          localPlan:
+            "Shanghai three nights, Suzhou one and Hangzhou two; a garden, one water town and one hosted tea tasting.",
+          importantChoice:
+            "Two hotel changes, self-carried train luggage and local guide handovers. Return to Shanghai is separate.",
+        },
+      },
+    ],
     articles: [],
     connections: [
       {

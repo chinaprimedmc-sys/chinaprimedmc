@@ -2469,37 +2469,6 @@ svg {
   outline-offset: 4px;
 }
 
-.skeleton {
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary),
-    color-mix(in srgb, var(--bg-secondary) 86%, var(--border))
-  );
-  overflow: hidden;
-  position: relative;
-}
-
-.skeleton[data-shimmer="true"]::after {
-  animation: skeleton-shimmer var(--skeleton-shimmer-duration, var(--motion-duration-shimmer))
-    var(--motion-ease-in-out) infinite;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    color-mix(in srgb, var(--border) 70%, transparent),
-    transparent
-  );
-  content: "";
-  inset: 0;
-  position: absolute;
-  transform: translateX(-100%);
-}
-
-@keyframes skeleton-shimmer {
-  100% {
-    transform: translateX(100%);
-  }
-}
-
 @keyframes journey-card-enter {
   from {
     opacity: 0;
@@ -2574,11 +2543,6 @@ svg {
     opacity: 1;
   }
 
-  .skeleton[data-shimmer="true"]::after {
-    animation-duration: var(--skeleton-shimmer-duration, var(--motion-duration-shimmer)) !important;
-    animation-iteration-count: infinite !important;
-  }
-
   .social-contact-rail {
     transition-duration: 0.01ms;
   }
@@ -2612,8 +2576,7 @@ svg {
   .journal-breathing-divider--bottom::after,
   .home-conversion-hero__image,
   .home-hero-split__image,
-  .home-featured-cinema__progress span,
-  .skeleton[data-shimmer="true"]::after
+  .home-featured-cinema__progress span
 ) {
   animation: none !important;
 }

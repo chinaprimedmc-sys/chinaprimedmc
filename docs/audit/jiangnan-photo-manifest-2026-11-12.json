@@ -1,0 +1,151 @@
+{
+  "asOf": "2026-11-12",
+  "sourceDirectory": "/Users/Admin/Desktop/图片",
+  "provenance": "Client supplied and authorized for this task; specific hotel and tea venue identities unconfirmed.",
+  "items": [
+    {
+      "source": "/Users/Admin/Desktop/图片/image_上海外滩总要去趟上海吹吹黄浦江的..._1.jpg",
+      "sourceSha256": "3a1338990a021d8af1825566bd46cae331f453269b57e080a867b1a86b4c84c8",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/01-shanghai-pudong-skyline.webp",
+      "alt": "Pudong skyline across the Huangpu River, viewed from the Bund in Shanghai",
+      "width": 2400,
+      "height": 1600,
+      "rotationDegrees": 270,
+      "bytes": 461050
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_上海梧桐赏秋天花板这9条街直接封..._0.jpg",
+      "sourceSha256": "898310136e6855d64387c7b0de5d02626cae8d2db104f183263156b5c3f236a5",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/02-shanghai-tree-lined-street.webp",
+      "alt": "Autumn foliage above a tree-lined street in Shanghai",
+      "width": 1440,
+      "height": 1920,
+      "rotationDegrees": 0,
+      "bytes": 758972
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_大豫园又next_level了花..._3.jpg",
+      "sourceSha256": "cef9e6183a85b52ece98bb1a04b929592bb8805a0ad3cca9ff18bcabc4f862a0",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/03-yuyuan-bazaar-evening.webp",
+      "alt": "Illuminated traditional buildings in the Yuyuan Bazaar area of Shanghai",
+      "width": 1600,
+      "height": 2133,
+      "rotationDegrees": 0,
+      "bytes": 497910
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_杭州..四舍五入也是和周杰伦喝过..._1.jpg",
+      "sourceSha256": "a1e656caed8f26891e3e85fe9a6857dcf647905ad3a541129f43d903db6a43cd",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/04-hangzhou-tea-landscape.webp",
+      "alt": "Outdoor tea and refreshments overlooking tea terraces in the Hangzhou area; illustrative setting, not a confirmed tasting venue",
+      "width": 1600,
+      "height": 2133,
+      "rotationDegrees": 0,
+      "bytes": 505044
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_杭州步行西湖好住不舍得退房杭州随..._1.jpg",
+      "sourceSha256": "008cb1582ebefd5a475358b1fc927bff580ab10b9c958fa94a4cd5e266e29c9a",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/05-hangzhou-room-reference.webp",
+      "alt": "Example Hangzhou guest room; property and room category subject to confirmation",
+      "width": 1086,
+      "height": 1448,
+      "rotationDegrees": 0,
+      "bytes": 102956
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_杭州西湖秋天最诗意的打开方式水光..._0.jpg",
+      "sourceSha256": "30ef30f268df3e98298610ac9a55e87c1860c497b74373bf547eeb94984eb37d",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/06-west-lake-pavilion.webp",
+      "alt": "Pavilion and willow branches beside West Lake in Hangzhou",
+      "width": 1600,
+      "height": 2133,
+      "rotationDegrees": 0,
+      "bytes": 593020
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_杭州西湖秋天最诗意的打开方式水光..._4.jpg",
+      "sourceSha256": "c3abf5896b54ec10436203449a353ddcef334d542e7687d98dae02084741bb65",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/07-west-lake-rowboat.webp",
+      "alt": "A small passenger boat on West Lake in autumn; boat rides are optional",
+      "width": 1600,
+      "height": 2133,
+      "rotationDegrees": 0,
+      "bytes": 656426
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_珠里古镇朱家角朱家角在宋元时已形..._0.jpg",
+      "sourceSha256": "edb485387954d1e355f38d139a0770d6539c3f461e0af7db3586292f070d3383",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/08-zhujiajiao-canals.webp",
+      "alt": "Stone bridge and tiled rooftops beside a canal in Zhujiajiao water town",
+      "width": 1600,
+      "height": 2135,
+      "rotationDegrees": 0,
+      "bytes": 1059886
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_珠里古镇朱家角朱家角在宋元时已形..._6.jpg",
+      "sourceSha256": "9682c48a2682b82d96ec7e403665782806f3fe29a568c5247a6e59d05f941473",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/09-zhujiajiao-waterfront.webp",
+      "alt": "Traditional waterfront roof and a passing boat in Zhujiajiao",
+      "width": 1600,
+      "height": 2135,
+      "rotationDegrees": 0,
+      "bytes": 702388
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_第一次去苏州先看完这篇城市游玩指..._0.jpg",
+      "sourceSha256": "d51a83ee5d68fae7dd5cf06a22bd458d6b69f9dabc4a7cb692399ea28c4d0bad",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/10-suzhou-canal-courtyard.webp",
+      "alt": "A shaded seating area overlooking a narrow canal in Suzhou",
+      "width": 1600,
+      "height": 2133,
+      "rotationDegrees": 0,
+      "bytes": 683506
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_第一次去苏州先看完这篇城市游玩指..._7.jpg",
+      "sourceSha256": "9a9166f7e059cca5c2e76cc455bb69e12369c27f9d0bd067ddef68c9bfa8ed0b",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/11-suzhou-old-town-canal.webp",
+      "alt": "Canal, stone bridge and whitewashed buildings in Suzhou old town",
+      "width": 1600,
+      "height": 2133,
+      "rotationDegrees": 0,
+      "bytes": 472936
+    },
+    {
+      "source": "/Users/Admin/Desktop/图片/image_苏州citywalk_比起山塘街..._0.jpg",
+      "sourceSha256": "930adbc9c25711539ce441ad87c19ab7a576e60b5b6ede41860eea5af6c79542",
+      "src": "/tours/shanghai-suzhou-hangzhou-private-7-day-tour/12-suzhou-canal-walk.webp",
+      "alt": "Canal-side houses and a stone walkway in Suzhou",
+      "width": 1600,
+      "height": 2134,
+      "rotationDegrees": 0,
+      "bytes": 792496
+    }
+  ],
+  "reusedVehicle": {
+    "src": "/tours/guilin-yangshuo-longji-private-5-day-tour/10-private-vehicle-interior-reference.webp",
+    "alt": "Example private vehicle interior for local road transfers; vehicle and luggage capacity confirmed in your proposal",
+    "width": 1600,
+    "height": 1200
+  },
+  "remainingPlaceholders": ["Shanghai hotel", "Suzhou hotel"],
+  "limitations": [
+    "No supplied photograph positively identifies the Humble Administrator’s Garden interior.",
+    "Yuyuan image shows the bazaar, not the paid garden interior.",
+    "Tea landscape image does not verify the included tasting venue.",
+    "Hangzhou room is an unconfirmed reference."
+  ],
+  "notUsedSourceIndices": [4, 6, 11, 15],
+  "validation": {
+    "journeyTestsPassed": 136,
+    "journeyTestsFailed": 0,
+    "typecheck": "passed",
+    "affectedEslint": "passed",
+    "productionBuild": "passed",
+    "heroOrientation": "visually verified",
+    "browserScreenshots": "not run: local preview server could not bind",
+    "deployed": false
+  }
+}

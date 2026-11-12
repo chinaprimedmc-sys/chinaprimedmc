@@ -22,11 +22,14 @@
       "id": "shanghai-suzhou-hangzhou",
       "nameZh": "上海、苏州与杭州七天六晚",
       "batch": 1,
-      "status": "queued-for-design",
-      "slug": null,
+      "status": "local-published-from-product",
+      "slug": "shanghai-suzhou-hangzhou-private-7-day-tour",
       "imagePolicy": "original-owner-photography-only; placeholders-until-supplied",
       "supplierVerified": false,
-      "priceUsd": null
+      "priceUsd": 3690,
+      "imageryStatus": "placeholder-only",
+      "pricingFxCnyPerUsd": 6.65,
+      "pricingBasis": "per person; two adults sharing one room; six nights; Shanghai arrival and Hangzhou departure"
     },
     {
       "order": 3,
@@ -220,5 +223,6 @@
       "supplierVerified": false,
       "priceUsd": null
     }
-  ]
+  ],
+  "localPublicProductsAfterSecondAddition": 21
 }

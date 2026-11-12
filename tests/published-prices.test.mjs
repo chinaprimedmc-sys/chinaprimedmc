@@ -93,6 +93,7 @@ const { JourneyConfigurationProvider } =
 const { itineraryProductSchema } = await import("../lib/seo/schema.ts");
 const { configuredWhatsAppHref } = await import("../lib/tours/journey-whatsapp.ts");
 const expected = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": 3690,
   "private-mutianyu-great-wall-day-tour": 349,
   "private-shanghai-day-tour-guide-driver": 349,
   "private-xian-terracotta-warriors-day-tour": 299,
@@ -114,9 +115,9 @@ const expected = {
   "guangzhou-shenzhen-tailor-made-business-tour-4-day": 2490,
 };
 
-test("all 19 owner-approved rates preserve exact amounts and party bases without claiming supplier verification", () => {
-  assert.equal(journeyCatalog.length, 20);
-  assert.equal(journeyCatalog.filter((item) => item.pricing.fromUsd !== undefined).length, 19);
+test("all 20 owner-approved rates preserve exact amounts and party bases without claiming supplier verification", () => {
+  assert.equal(journeyCatalog.length, 21);
+  assert.equal(journeyCatalog.filter((item) => item.pricing.fromUsd !== undefined).length, 20);
   assert.deepEqual(Object.keys(publishedJourneyPrices).sort(), Object.keys(expected).sort());
   assert.equal(verifiedPriceSlugs.size, 0);
   for (const item of journeyCatalog.filter((item) => item.slug in expected)) {

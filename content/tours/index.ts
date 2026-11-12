@@ -1,3 +1,4 @@
+import { shanghaiSuzhouHangzhou7DayTour } from "@/content/tours/shanghai-suzhou-hangzhou-7-day";
 import { guilinYangshuoLongji5DayTour } from "@/content/tours/guilin-yangshuo-longji-5-day";
 import { getPublishedPriceDisclosure } from "@/content/tours/published-price-copy";
 import { firstChina10DayTour } from "@/content/tours/first-china-10-day";
@@ -130,6 +131,7 @@ const chengduJiuzhaigouAsset = {
 };
 
 const baseTours: Tour[] = [
+  shanghaiSuzhouHangzhou7DayTour,
   guilinYangshuoLongji5DayTour,
   guilinYangshuoLiRiverDayTour,
   privateChengduPandaDayTour,

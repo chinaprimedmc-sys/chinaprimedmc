@@ -29,6 +29,11 @@ const CHENGDU_PANDA_DAY_TOUR = "private-chengdu-panda-day-tour-early-morning";
 const GUILIN_LI_RIVER_DAY_TOUR = "guilin-yangshuo-li-river-cruise-private-day-tour";
 
 export const journeyReadingPriority: Record<string, string[]> = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": [
+    "shanghai-itinerary-4-days",
+    "shanghai-pudong-hongqiao-airport-guide",
+    "luggage-multi-city-china-trip",
+  ],
   "guilin-yangshuo-longji-private-5-day-tour": [
     "guilin-yangshuo-itinerary-5-days",
     "li-river-cruise-yangshuo-or-guilin-return",
@@ -364,6 +369,14 @@ export const journeyJournalLinks: Record<string, JourneyJournalLinkRule> = Objec
 );
 
 Object.assign(journeyJournalLinks, {
+  "shanghai-itinerary-4-days": {
+    primaryJourney: "shanghai-suzhou-hangzhou-private-7-day-tour",
+    alternativeJourneys: [SHANGHAI_DAY_TOUR, FIRST_CHINA],
+    title: "Extend Shanghai with a Suzhou garden and Hangzhou tea",
+    description:
+      "Compare the seven-day route, six hotel nights, two public trains and Hangzhou finish before choosing your regional extension.",
+    journeyLabel: "Explore the Jiangnan journey",
+  },
   "guilin-yangshuo-itinerary-5-days": {
     primaryJourney: "guilin-yangshuo-longji-private-5-day-tour",
     alternativeJourneys: [GUILIN_LI_RIVER_DAY_TOUR],

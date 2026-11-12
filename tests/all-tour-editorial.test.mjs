@@ -87,6 +87,7 @@ const { createTourDetailModel, bookingPolicyFaqs } =
   await import("../features/tours/detail/tour-detail-model.ts");
 const { siteConfig } = await import("../config/site.ts");
 const expected = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": [7, 6, 2],
   "guilin-yangshuo-longji-private-5-day-tour": [5, 4, 1],
   "private-mutianyu-great-wall-day-tour": [1, 0, 0],
   "private-shanghai-day-tour-guide-driver": [1, 0, 0],
@@ -313,7 +314,7 @@ test("price specifications retain product-specific nights, independent days and 
   );
 });
 
-test("all 20 actual landing pages render complete readable facts, itinerary, FAQ and source links before hydration", async () => {
+test("all 21 actual landing pages render complete readable facts, itinerary, FAQ and source links before hydration", async () => {
   const { TourDetailLanding } = await import("../features/tours/detail/tour-detail-landing.tsx");
   const { PathnameContext } =
     await import("next/dist/shared/lib/hooks-client-context.shared-runtime.js");
@@ -431,4 +432,55 @@ test("Guilin regional product uses supplied local photography and exposes no inv
   assert.match(block, /Quote only; no public numerical starting price/);
   for (const ref of tour.planningResources) assert.ok(block.includes(ref.href), ref.href);
   for (const faq of tour.faqs) assert.ok(block.includes(faq.answer), faq.question);
+});
+
+test("Jiangnan supplied photography, rail handovers and Hangzhou finish stay consistent across public outputs", async () => {
+  const slug = "shanghai-suzhou-hangzhou-private-7-day-tour";
+  const tour = getTourBySlug(slug);
+  const item = journeyCatalog.find((j) => j.slug === slug);
+  const model = createTourDetailModel(tour);
+  const { getJourneyStartingOffer } = await import("../lib/tours/journey-pricing.ts");
+  assert.equal(item.pricing.status, "published-from");
+  assert.equal(item.pricing.fromUsd, 3690);
+  assert.equal(getJourneyStartingOffer(item, `${siteConfig.url}${item.href}`).price, 3690);
+  assert.equal(tour.visualStatus, "ready");
+  assert.equal(model.hasPhotography, true);
+  assert.equal(new Set(tour.gallery.map((photo) => photo.src)).size, 13);
+  assert.equal(model.gallery.filter((photo) => !photo.src.includes("/placeholders/")).length, 13);
+  const inspect = (value) => {
+    if (!value || typeof value !== "object") return;
+    if (typeof value.src === "string") {
+      assert.ok(
+        value.src.startsWith("/tours/shanghai-suzhou-hangzhou-private-7-day-tour/") ||
+          value.src ===
+            "/tours/guilin-yangshuo-longji-private-5-day-tour/10-private-vehicle-interior-reference.webp" ||
+          value.src === "/tours/placeholders/shanghai-suzhou-hangzhou.svg",
+        value.src,
+      );
+      assert.ok(existsSync(resolve(root, "public", value.src.slice(1))));
+    }
+    for (const child of Object.values(value)) inspect(child);
+  };
+  inspect(tour);
+  inspect(item.image);
+  assert.equal(tour.faqs.length, 22);
+  assert.match(tour.itinerary[6].summary, /does not return to Shanghai/);
+  assert.match(tour.itinerary[3].activities[0].description, /no guide rides with you/);
+  assert.match(tour.transportation.description, /Guests carry bags/);
+  const { destinationPlanningGuides } = await import("../content/destinations/planning-guides.ts");
+  for (const destination of ["shanghai", "suzhou", "hangzhou"])
+    assert.ok(
+      destinationPlanningGuides[destination].products.some((p) => p.slug === slug),
+      destination,
+    );
+  const { publicRouteSlugs } = await import("../config/public-route-slugs.ts");
+  assert.ok(publicRouteSlugs.tours.includes(slug));
+  const { GET } = await import("../app/llms-full.txt/route.ts");
+  const block = (await GET().text()).split(`# Product: ${tour.title}\n`)[1]?.split("# Product:")[0];
+  assert.ok(block.includes(tour.overview.answer));
+  assert.match(block, /Published starting price: From USD 3,690 per person/);
+  assert.match(block, /USD 7,380/);
+  assert.doesNotMatch(block, /no public starting price|no public numerical starting price/i);
+  for (const ref of tour.planningResources) assert.ok(block.includes(ref.href));
+  for (const faq of tour.faqs) assert.ok(block.includes(faq.answer));
 });

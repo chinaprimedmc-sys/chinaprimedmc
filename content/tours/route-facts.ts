@@ -1,6 +1,7 @@
 // Count changes between overnight bases, including the final return to Shanghai.
 // Day excursions (Leshan, Mutianyu) are not hotel changes.
 export const overnightHotelChanges: Readonly<Record<string, number>> = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": 2,
   "guilin-yangshuo-longji-private-5-day-tour": 1,
   "beijing-xian-shanghai-private-10-day-tour": 2,
   "china-at-an-easier-pace-12-day-private-tour": 2,

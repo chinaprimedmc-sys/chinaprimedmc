@@ -1,3 +1,4 @@
+import { shanghaiSuzhouHangzhou7DayTour } from "@/content/tours/shanghai-suzhou-hangzhou-7-day";
 import {
   guilinYangshuoLongji5DayTour,
   guilinLongjiImages,
@@ -1107,7 +1108,37 @@ const guilinLongjiJourney: JourneyCatalogBase = {
     "A proposed route, quoted for your dates. Hotels, cruise tickets and the Longji walking plan are confirmed in writing before booking.",
 };
 
+const jiangnanJourney: JourneyCatalogBase = {
+  slug: shanghaiSuzhouHangzhou7DayTour.slug,
+  title: shanghaiSuzhouHangzhou7DayTour.title,
+  eyebrow: "Private Jiangnan culture journey",
+  summary: shanghaiSuzhouHangzhou7DayTour.subtitle,
+  hook: "Shanghai streets, one water town, a Suzhou garden and Hangzhou tea, in a one-way seven-day route.",
+  image: shanghaiSuzhouHangzhou7DayTour.hero.image,
+  visualStatus: shanghaiSuzhouHangzhou7DayTour.visualStatus,
+  href: `/tours/${shanghaiSuzhouHangzhou7DayTour.slug}`,
+  kind: "framework",
+  routeLabel: shanghaiSuzhouHangzhou7DayTour.route,
+  durationLabel: "7 days / 6 nights",
+  styleFilters: ["Culture", "Nature", "Food", "Photography"],
+  destinationFilters: ["Shanghai", "Suzhou", "Hangzhou", "Zhujiajiao"],
+  bestForFilters: ["Couples", "Families", "Garden and tea enthusiasts"],
+  experienceFilters: ["local-life", "scenery", "food", "photography"],
+  travelerFilters: ["first-time", "couples", "families", "private-groups", "solo-travelers"],
+  planningNeedFilters: ["photography-led", "food-focused"],
+  recommendedDaysMin: 7,
+  recommendedDaysMax: 7,
+  destinations: [
+    { label: "Shanghai", href: "/destinations/shanghai" },
+    { label: "Suzhou", href: "/destinations/suzhou" },
+    { label: "Hangzhou", href: "/destinations/hangzhou" },
+  ],
+  planningNote:
+    "Shanghai arrival, Hangzhou departure. Public trains with local handovers; no train escort or porter by default. Quote confirmed for your dates.",
+};
+
 const journeyCatalogBase: JourneyCatalogBase[] = [
+  jiangnanJourney,
   guilinLongjiJourney,
   guilinYangshuoLiRiverDayJourney,
   privateChengduPandaDayJourney,
@@ -1135,6 +1166,7 @@ const journeyCatalogBase: JourneyCatalogBase[] = [
  * catalogue, search index, generated routes, sitemap and journey matcher.
  */
 export const publicJourneySlugs = [
+  "shanghai-suzhou-hangzhou-private-7-day-tour",
   "guilin-yangshuo-longji-private-5-day-tour",
   "beijing-xian-shanghai-private-10-day-tour",
   "luxury-yunnan-private-tour",
@@ -1161,6 +1193,10 @@ const commercialPortfolio: Record<
   string,
   Pick<JourneyCatalogItem, "commercialRole" | "commercialPriority">
 > = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": {
+    commercialRole: "extension",
+    commercialPriority: 108,
+  },
   "guilin-yangshuo-longji-private-5-day-tour": {
     commercialRole: "nature",
     commercialPriority: 105,
@@ -1247,6 +1283,19 @@ const commercialDetails: Record<
   string,
   Pick<JourneyCatalogItem, "paceLabel" | "transportSummary" | "highlights" | "bestForSummary">
 > = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": {
+    paceLabel: "Balanced touring with two hotel changes; garden paths and bridge steps need review",
+    transportSummary:
+      "Private local road transfers and guides; two shared high-speed rail journeys with local handovers, ending in Hangzhou",
+    highlights: [
+      "Three Shanghai nights, one Suzhou night and two Hangzhou nights",
+      "One Zhujiajiao water-town excursion",
+      "A dedicated Suzhou garden visit",
+      "West Lake and an included hosted tea tasting",
+    ],
+    bestForSummary:
+      "Couples, families and private parties interested in Jiangnan gardens, urban history, water-town life and tea",
+  },
   "guilin-yangshuo-longji-private-5-day-tour": {
     paceLabel: "Balanced, with a full Longji day and one hotel change; steps require review",
     transportSummary:
@@ -1518,6 +1567,17 @@ const sharedPricingDetails = {
 };
 
 const journeyPricing: Record<string, Omit<JourneyPricing, "status">> = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": {
+    pricingUnit: "private-group",
+    basePartySize: 2,
+    cardBasis: "Written quote for your actual party",
+    basis:
+      "A date-specific private-group quote naming six hotel nights, rooms, local guide windows, private road vehicles and station transfers, two second-class rail journeys, listed admissions, one tea tasting and the exact Shanghai arrival and Hangzhou departure points.",
+    inclusionSummary:
+      "Proposed basis: Shanghai three nights, Suzhou one and Hangzhou two, six breakfasts, local English-speaking guides and separate drivers for scheduled Days 2–6 touring, driver-only arrival and departure transfers, two second-class train tickets, listed Yu Garden, Suzhou garden and Zhujiajiao admissions, and one confirmed hosted tea tasting. No guide escort on the trains, porter or Shanghai return by default.",
+    finalPriceNote:
+      "The published starting rate is a guide. Hotels, rail services, seats, ticket availability, the tea venue and the total for your actual party are confirmed in writing before booking.",
+  },
   "guilin-yangshuo-longji-private-5-day-tour": {
     pricingUnit: "private-group",
     basePartySize: 2,

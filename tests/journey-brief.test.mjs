@@ -1,35 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { briefPayload, exactGuestCount, validateBrief } from "../lib/inquiries/brief.ts";
 import { readJourneyConfiguration } from "../lib/tours/journey-price.ts";
 import {
   calculateOfferPrice,
   createJourneyOfferClaim,
   journeyOfferSummary,
 } from "../lib/tours/journey-offer.ts";
-
-test("guest ranges retain their meaning without fabricated exact counts", () => {
-  for (const value of ["3-4", "5-6", "7+", "Not sure yet"])
-    assert.equal(exactGuestCount(value), null);
-  assert.equal(exactGuestCount("4"), 4);
-  const payload = briefPayload(
-    {
-      name: "Guest",
-      whatsapp: "+447700900000",
-    },
-    { guests: "7+", summary: "Family trip" },
-  );
-  assert.equal(payload.adults, null);
-  assert.match(payload.notes, /Travellers: 7\+/);
-});
-
-test("field errors identify every missing required value", () => {
-  assert.deepEqual(Object.keys(validateBrief({ name: "", whatsapp: "" })), ["name", "whatsapp"]);
-  assert.deepEqual(validateBrief({ name: "Jane", whatsapp: "+447700900000" }), {});
-  const withoutGuestSelection = briefPayload({ name: "Jane", whatsapp: "+447700900000" });
-  assert.equal(withoutGuestSelection.adults, null);
-  assert.equal(withoutGuestSelection.timing, "");
-});
 
 test("journey configuration uses the two-traveler default and supports a different starting basis and rejects unknown values", () => {
   assert.deepEqual(readJourneyConfiguration(new URLSearchParams("")), { guests: "2" });

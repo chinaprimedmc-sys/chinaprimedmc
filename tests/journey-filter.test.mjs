@@ -97,10 +97,16 @@ test("price sorting compares consistent per-person units", () => {
     prices,
     [...prices].sort((a, b) => a - b),
   );
+  const firstUnpriced = results.findIndex((item) => item.pricing.fromUsd === undefined);
+  assert.ok(firstUnpriced >= 0);
+  assert.ok(
+    results.slice(firstUnpriced).every((item) => item.pricing.fromUsd === undefined),
+    "quote-only products follow every numerical price",
+  );
 });
 
 test("every journey display title is location plus its published day count", () => {
-  assert.equal(journeyCatalog.length, 20);
+  assert.equal(journeyCatalog.length, 21);
   for (const item of journeyCatalog) {
     const match = item.durationLabel.match(/^(\d+)(?:[–-](\d+))?\s*(?:private\s+)?day/i);
     assert.ok(match, `Missing published day count: ${item.slug}`);
@@ -129,6 +135,7 @@ test("recommended ordering follows commercial priority", () => {
       "qingcheng-mountain-private-wellness-retreat-10-day",
       "chengdu-chongqing-zhangjiajie-private-11-day-tour",
       "shanghai-zhangjiajie-floating-peaks",
+      "shanghai-suzhou-hangzhou-private-7-day-tour",
       "guilin-yangshuo-longji-private-5-day-tour",
       "chengdu-pandas-jiuzhaigou-private-7-day-tour",
       "xian-beijing-terracotta-warriors-great-wall-private-6-day-tour",

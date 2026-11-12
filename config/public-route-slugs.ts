@@ -3,6 +3,7 @@ import { PUBLIC_JOURNAL_SLUGS } from "../content/journal/public-manifest";
 
 export const publicRouteSlugs = {
   tours: [
+    "shanghai-suzhou-hangzhou-private-7-day-tour",
     "guilin-yangshuo-longji-private-5-day-tour",
     "beijing-xian-shanghai-private-10-day-tour",
     "luxury-yunnan-private-tour",

@@ -247,7 +247,7 @@ export function filterJourneys(items: JourneyCatalogItem[], filters: JourneyFilt
       if (filters.sort === "price-low") {
         const diff = perPerson(a) - perPerson(b);
         // 两个都没有公开价格时 Infinity - Infinity 是 NaN，退回推荐顺序。
-        if (Number.isFinite(diff) && diff !== 0) return diff;
+        if (!Number.isNaN(diff) && diff !== 0) return diff;
         if (Number.isNaN(diff))
           return b.commercialPriority - a.commercialPriority || a.title.localeCompare(b.title);
       }

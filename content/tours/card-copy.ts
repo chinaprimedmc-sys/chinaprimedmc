@@ -9,6 +9,7 @@
 import type { JourneyCatalogItem } from "@/content/tours/catalog";
 
 const journeyLocations: Record<string, string> = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": "Shanghai · Suzhou · Hangzhou",
   "guilin-yangshuo-longji-private-5-day-tour": "Guilin · Longji · Yangshuo",
   "private-mutianyu-great-wall-day-tour": "Mutianyu Great Wall",
   "private-shanghai-day-tour-guide-driver": "Shanghai",
@@ -32,6 +33,8 @@ const journeyLocations: Record<string, string> = {
 };
 
 const sensoryDescriptions: Record<string, string> = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour":
+    "Shanghai streets, Zhujiajiao canals, a Suzhou garden and Hangzhou tea, with six nights and two shared train journeys.",
   "guilin-yangshuo-longji-private-5-day-tour":
     "A dedicated Longji day, a shared Li River cruise and Yangshuo countryside, with four hotel nights and one hotel change.",
   "private-mutianyu-great-wall-day-tour":
@@ -79,6 +82,7 @@ const sensoryDescriptions: Record<string, string> = {
  * 城市名只作为副标题出现，避免读者与搜索引擎自行推断路线含义。
  */
 const journeyHeadlines: Record<string, string> = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": "7-Day Shanghai, Suzhou & Hangzhou Private Tour",
   "guilin-yangshuo-longji-private-5-day-tour": "5-Day Guilin, Yangshuo & Longji Private Tour",
   "beijing-xian-shanghai-private-10-day-tour": "10-Day Private Tour of Beijing, Xi'an and Shanghai",
   "china-family-tour-with-pandas-12-day-private-tour":
@@ -167,6 +171,7 @@ export function getJourneyHeadline(item: JourneyCatalogItem) {
  * 不能再用"看点优先"的写法，否则与"private Beijing Xi'an Shanghai tour"类查询失去匹配。
  */
 const journeySeoTitleOverrides: Record<string, string> = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": "7-Day Shanghai, Suzhou & Hangzhou Private Tour",
   "guilin-yangshuo-longji-private-5-day-tour": "5-Day Guilin, Yangshuo & Longji Private Tour",
   "private-mutianyu-great-wall-day-tour": "Private Mutianyu Great Wall Tour from Beijing",
   "china-at-an-easier-pace-12-day-private-tour": "12-Day Private China Tour at an Easier Pace",

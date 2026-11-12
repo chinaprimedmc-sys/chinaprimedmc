@@ -1,7 +1,14 @@
-/** Owner-approved starting rates, 2026-11-11. Supplier verification is tracked separately. */
+/** Owner-approved starting rates, updated 2026-11-12. Supplier verification is tracked separately. */
 import type { PublicJourneySlug } from "@/content/tours/classification";
 
 export const publishedJourneyPrices = {
+  "shanghai-suzhou-hangzhou-private-7-day-tour": {
+    fromUsd: 3690,
+    basePartySize: 2,
+    cardBasis: "Per person · 2 travelers sharing one room",
+    basis:
+      "Starting price per person, based on two adults sharing one double or twin room for six nights outside peak periods, arriving in Shanghai and departing from Hangzhou. The published design includes local English-speaking guides and separate drivers during scheduled touring, private road transfers, two public second-class rail journeys, listed admissions and one hosted tea tasting. Train escorts, porters, separate luggage delivery, most lunches and dinners, optional boats and return transport to Shanghai are extra unless added in writing. Named hotels, rooms, dates, supplier availability and the final total for your actual party are confirmed in the written proposal before booking.",
+  },
   "private-mutianyu-great-wall-day-tour": {
     fromUsd: 349,
     basePartySize: 2,

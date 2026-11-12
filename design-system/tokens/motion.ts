@@ -3,19 +3,16 @@ export const motionTokens = {
     micro: 0.2,
     enter: 0.5,
     transition: 0.6,
-    shimmer: 1.6,
   },
   durationMs: {
     micro: 200,
     enter: 500,
     transition: 600,
-    shimmer: 1600,
   },
   durationCss: {
     micro: "200ms",
     enter: "500ms",
     transition: "600ms",
-    shimmer: "1600ms",
   },
   easing: {
     out: [0.16, 1, 0.3, 1],

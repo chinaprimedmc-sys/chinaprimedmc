@@ -140,7 +140,7 @@ test("short fragments only match the start of words", () => {
 
 test("tier tabs, filters and sorting", () => {
   assert.equal(find("", { tier: "day" }).length, 5);
-  assert.equal(find("", { tier: "signature" }).length, 12);
+  assert.equal(find("", { tier: "signature" }).length, 13);
   assert.equal(find("", { tier: "tailor-made-example" }).length, 3);
   const short = find("", { sort: "short" }).map((slug) => items.find((i) => i.slug === slug).days);
   assert.deepEqual(

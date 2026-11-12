@@ -1,0 +1,410 @@
+{
+  "asOf": "2026-11-12",
+  "slug": "shanghai-suzhou-hangzhou-private-7-day-tour",
+  "status": "owner-approved-starting-rate-implemented-locally-not-deployed",
+  "recommendationUsdPerPerson": 3690,
+  "basis": "Two adults sharing one double or twin room for six nights, normal non-holiday dates, Shanghai arrival and Hangzhou departure. Public second-class trains, local guides without train escort; no separate luggage delivery. Named hotels and real available dates must be confirmed before publishing a From rate.",
+  "fxAssumptionCnyPerUsd": 6.65,
+  "fxSource": "User-specified calculation rate, not claimed as live market or net settlement rate.",
+  "evidenceLimits": [
+    "All procurement amounts are internal planning allowances, not supplier quotations.",
+    "No live matching competitor quotes, search demand or customer willingness-to-pay verified.",
+    "Cost range is a configuration envelope, not a confidence interval or an available low-price bundle.",
+    "Fee allowances are scenarios, not actual company accounts; residual excludes separately determined taxes and exceptional losses."
+  ],
+  "directCostRows": [
+    {
+      "item": "上海3晚／1间房",
+      "centralCny": 4200,
+      "lowCny": 3300,
+      "highCny": 6000,
+      "assumption": "每晚1400元，含两位成人早餐；精选位置与房型，非指定奢华品牌或外滩景观保证。"
+    },
+    {
+      "item": "苏州1晚／1间房",
+      "centralCny": 1400,
+      "lowCny": 1000,
+      "highCny": 2200,
+      "assumption": "一晚1400元含两位早餐，需核老城车辆停靠、台阶及行李距离。"
+    },
+    {
+      "item": "杭州2晚／1间房",
+      "centralCny": 3200,
+      "lowCny": 2400,
+      "highCny": 4800,
+      "assumption": "每晚1600元含两位早餐，不默认西湖景观房。"
+    },
+    {
+      "item": "七天分段私人车辆及司机",
+      "centralCny": 7250,
+      "lowCny": 6000,
+      "highCny": 9000,
+      "assumption": "按分段调度预算，含油路停及司机支出，长途与超时另核；详见transportSegments，不按7个全天包车重算。"
+    },
+    {
+      "item": "D2–6五个日历日当地导游服务",
+      "centralCny": 5550,
+      "lowCny": 4500,
+      "highCny": 7000,
+      "assumption": "跨城日需核两端独立排班和最低出勤费，共7个当地服务时段；无导游跨城随车。详见guideSegments。"
+    },
+    {
+      "item": "两段公共高铁／两成人二等座",
+      "centralCny": 460,
+      "lowCny": 350,
+      "highCny": 700,
+      "assumption": "两人合计预算，实际车站、列车、席位及退改待核。"
+    },
+    {
+      "item": "豫园、拙政园、朱家角选定门票",
+      "centralCny": 600,
+      "lowCny": 400,
+      "highCny": 900,
+      "assumption": "两人组合预算，不是官方门票价；不含小船、苏博、其他园林或湖上游船。"
+    },
+    {
+      "item": "一次主持茶介绍与品饮",
+      "centralCny": 700,
+      "lowCny": 500,
+      "highCny": 1400,
+      "assumption": "两人一场的接待预算，普通茶品与场地；导游翻译已在导游费中，不重复计；购买非强制。"
+    },
+    {
+      "item": "项目设计、预订及直接协调",
+      "centralCny": 1400,
+      "lowCny": 1100,
+      "highCny": 1800,
+      "assumption": "跨三城的项目直接工时；与公司间接费不得重复计算。"
+    },
+    {
+      "item": "饮水及小额杂项",
+      "centralCny": 300,
+      "lowCny": 200,
+      "highCny": 500,
+      "assumption": "不包含旅客其他午晚餐或司机导游支出的再次加算。"
+    }
+  ],
+  "transportSegments": [
+    {
+      "segment": "D1上海抵达接送",
+      "budgetCny": 600
+    },
+    {
+      "segment": "D2上海城市",
+      "budgetCny": 1100
+    },
+    {
+      "segment": "D3朱家角往返",
+      "budgetCny": 1500
+    },
+    {
+      "segment": "D4上海送站",
+      "budgetCny": 450
+    },
+    {
+      "segment": "D4苏州接站／园林／酒店",
+      "budgetCny": 750
+    },
+    {
+      "segment": "D5苏州老城／送站",
+      "budgetCny": 500
+    },
+    {
+      "segment": "D5杭州接站／酒店",
+      "budgetCny": 650
+    },
+    {
+      "segment": "D6杭州西湖／茶区",
+      "budgetCny": 1100
+    },
+    {
+      "segment": "D7杭州送机场或站",
+      "budgetCny": 600
+    }
+  ],
+  "guideSegments": [
+    {
+      "segment": "D2上海",
+      "budgetCny": 1100
+    },
+    {
+      "segment": "D3朱家角",
+      "budgetCny": 1100
+    },
+    {
+      "segment": "D4上海送站协助",
+      "budgetCny": 400
+    },
+    {
+      "segment": "D4苏州园林",
+      "budgetCny": 850
+    },
+    {
+      "segment": "D5苏州老城及送站",
+      "budgetCny": 650
+    },
+    {
+      "segment": "D5杭州接站及可行短介绍",
+      "budgetCny": 450
+    },
+    {
+      "segment": "D6杭州湖与茶",
+      "budgetCny": 1000
+    }
+  ],
+  "baseCostCny": 25060,
+  "rangeCny": [19750, 34300],
+  "contingencyPct": 5,
+  "deliveryBudgetCny": 26313.0,
+  "deliveryBudgetUsd": 3956.84,
+  "fees": {
+    "payment": 0.03,
+    "directAcquisition": 0.1,
+    "indirectOverhead": 0.08
+  },
+  "priceComparisons": [
+    {
+      "perPersonUsd": 2690,
+      "partySize": 2,
+      "partyUsd": 5380,
+      "revenueCny": 35777.0,
+      "deliveryBudgetCny": 26313.0,
+      "nonDeliveryAllowanceCny": 7513.17,
+      "preTaxOperatingResidualCny": 1950.83,
+      "residualPct": 5.45,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 2990,
+      "partySize": 2,
+      "partyUsd": 5980,
+      "revenueCny": 39767.0,
+      "deliveryBudgetCny": 26313.0,
+      "nonDeliveryAllowanceCny": 8351.07,
+      "preTaxOperatingResidualCny": 5102.93,
+      "residualPct": 12.83,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 3290,
+      "partySize": 2,
+      "partyUsd": 6580,
+      "revenueCny": 43757.0,
+      "deliveryBudgetCny": 26313.0,
+      "nonDeliveryAllowanceCny": 9188.97,
+      "preTaxOperatingResidualCny": 8255.03,
+      "residualPct": 18.87,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 3490,
+      "partySize": 2,
+      "partyUsd": 6980,
+      "revenueCny": 46417.0,
+      "deliveryBudgetCny": 26313.0,
+      "nonDeliveryAllowanceCny": 9747.57,
+      "preTaxOperatingResidualCny": 10356.43,
+      "residualPct": 22.31,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 3590,
+      "partySize": 2,
+      "partyUsd": 7180,
+      "revenueCny": 47747.0,
+      "deliveryBudgetCny": 26313.0,
+      "nonDeliveryAllowanceCny": 10026.87,
+      "preTaxOperatingResidualCny": 11407.13,
+      "residualPct": 23.89,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 3690,
+      "partySize": 2,
+      "partyUsd": 7380,
+      "revenueCny": 49077.0,
+      "deliveryBudgetCny": 26313.0,
+      "nonDeliveryAllowanceCny": 10306.17,
+      "preTaxOperatingResidualCny": 12457.83,
+      "residualPct": 25.38,
+      "channel": "direct acquisition"
+    },
+    {
+      "perPersonUsd": 3990,
+      "partySize": 2,
+      "partyUsd": 7980,
+      "revenueCny": 53067.0,
+      "deliveryBudgetCny": 26313.0,
+      "nonDeliveryAllowanceCny": 11144.07,
+      "preTaxOperatingResidualCny": 15609.93,
+      "residualPct": 29.42,
+      "channel": "direct acquisition"
+    }
+  ],
+  "stressAtRecommendedPrice": [
+    {
+      "costIncreasePct": 0,
+      "perPersonUsd": 3690,
+      "partySize": 2,
+      "partyUsd": 7380,
+      "revenueCny": 49077.0,
+      "deliveryBudgetCny": 26313.0,
+      "nonDeliveryAllowanceCny": 10306.17,
+      "preTaxOperatingResidualCny": 12457.83,
+      "residualPct": 25.38,
+      "channel": "direct acquisition"
+    },
+    {
+      "costIncreasePct": 15,
+      "perPersonUsd": 3690,
+      "partySize": 2,
+      "partyUsd": 7380,
+      "revenueCny": 49077.0,
+      "deliveryBudgetCny": 30259.95,
+      "nonDeliveryAllowanceCny": 10306.17,
+      "preTaxOperatingResidualCny": 8510.88,
+      "residualPct": 17.34,
+      "channel": "direct acquisition"
+    },
+    {
+      "costIncreasePct": 30,
+      "perPersonUsd": 3690,
+      "partySize": 2,
+      "partyUsd": 7380,
+      "revenueCny": 49077.0,
+      "deliveryBudgetCny": 34206.9,
+      "nonDeliveryAllowanceCny": 10306.17,
+      "preTaxOperatingResidualCny": 4563.93,
+      "residualPct": 9.3,
+      "channel": "direct acquisition"
+    }
+  ],
+  "channelAtRecommendedPrice": {
+    "perPersonUsd": 3690,
+    "partySize": 2,
+    "partyUsd": 7380,
+    "revenueCny": 49077.0,
+    "deliveryBudgetCny": 26313.0,
+    "nonDeliveryAllowanceCny": 12760.02,
+    "preTaxOperatingResidualCny": 10003.98,
+    "residualPct": 20.38,
+    "channel": "15% commission replacing 10% direct acquisition"
+  },
+  "maximumDeliveryBudgetAt20PctResidualCny": 28955.43,
+  "maximumBaseCostAt20PctResidualCny": 27576.6,
+  "hotelUpgradeExample": {
+    "addedRoomCostPerNightCny": 1000,
+    "nights": 6,
+    "addedBasePartyCostCny": 6000,
+    "assumedContingencyPct": 5,
+    "targetResidualPct": 25,
+    "requiredAdditionalUsdPerPerson": 877.19
+  },
+  "configurationScenarios": [
+    {
+      "partySize": 4,
+      "rooms": 2,
+      "baseCostRowsCny": {
+        "hotels": 17600,
+        "vehicles": 8800,
+        "guides": 5550,
+        "rail": 920,
+        "admissions": 1200,
+        "teaSession": 1100,
+        "directCoordination": 1700,
+        "misc": 500
+      },
+      "baseCostCny": 37370,
+      "deliveryBudgetCny": 39238.5,
+      "candidatePerPersonUsd": [2790, 2990],
+      "examples": [
+        {
+          "perPersonUsd": 2790,
+          "partySize": 4,
+          "partyUsd": 11160,
+          "revenueCny": 74214.0,
+          "deliveryBudgetCny": 39238.5,
+          "nonDeliveryAllowanceCny": 15584.94,
+          "preTaxOperatingResidualCny": 19390.56,
+          "residualPct": 26.13,
+          "channel": "direct acquisition"
+        },
+        {
+          "perPersonUsd": 2990,
+          "partySize": 4,
+          "partyUsd": 11960,
+          "revenueCny": 79534.0,
+          "deliveryBudgetCny": 39238.5,
+          "nonDeliveryAllowanceCny": 16702.14,
+          "preTaxOperatingResidualCny": 23593.36,
+          "residualPct": 29.66,
+          "channel": "direct acquisition"
+        }
+      ]
+    },
+    {
+      "partySize": 6,
+      "rooms": 3,
+      "baseCostRowsCny": {
+        "hotels": 26400,
+        "vehicles": 11000,
+        "guides": 5550,
+        "rail": 1380,
+        "admissions": 1800,
+        "teaSession": 1400,
+        "directCoordination": 2000,
+        "misc": 650
+      },
+      "baseCostCny": 50180,
+      "deliveryBudgetCny": 52689.0,
+      "candidatePerPersonUsd": [2490, 2690],
+      "examples": [
+        {
+          "perPersonUsd": 2490,
+          "partySize": 6,
+          "partyUsd": 14940,
+          "revenueCny": 99351.0,
+          "deliveryBudgetCny": 52689.0,
+          "nonDeliveryAllowanceCny": 20863.71,
+          "preTaxOperatingResidualCny": 25798.29,
+          "residualPct": 25.97,
+          "channel": "direct acquisition"
+        },
+        {
+          "perPersonUsd": 2690,
+          "partySize": 6,
+          "partyUsd": 16140,
+          "revenueCny": 107331.0,
+          "deliveryBudgetCny": 52689.0,
+          "nonDeliveryAllowanceCny": 22539.51,
+          "preTaxOperatingResidualCny": 32102.49,
+          "residualPct": 29.91,
+          "channel": "direct acquisition"
+        }
+      ]
+    }
+  ],
+  "fxSensitivity": [
+    {
+      "cnyPerUsd": 6.4,
+      "residualPct": 23.29
+    },
+    {
+      "cnyPerUsd": 6.65,
+      "residualPct": 25.38
+    },
+    {
+      "cnyPerUsd": 6.8,
+      "residualPct": 26.57
+    }
+  ],
+  "notIncluded": [
+    "Flights into Shanghai or out of Hangzhou",
+    "Shanghai return and extra night",
+    "Train escort, porter and separate luggage delivery",
+    "Most lunches and dinners",
+    "Optional cruises, boats, premium workshops, train upgrades and extra hours"
+  ],
+  "ownerApprovedUsdPerPerson": 3690,
+  "supplierVerified": false
+}
